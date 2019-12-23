@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  TabActivateEvent,
+} from './components/my-tab/my-tab';
 
 export namespace Components {
   interface MyComponent {
@@ -24,7 +26,17 @@ export namespace Components {
     */
     'middle': string;
   }
-  interface SbpButton {}
+  interface MyTab {
+    'active': boolean;
+    'name': string;
+    'tab': string;
+  }
+  interface MyTabHeader {
+    'activeTab': string;
+  }
+  interface SbpButton {
+    'action': Function;
+  }
 }
 
 declare global {
@@ -36,6 +48,18 @@ declare global {
     new (): HTMLMyComponentElement;
   };
 
+  interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {}
+  var HTMLMyTabElement: {
+    prototype: HTMLMyTabElement;
+    new (): HTMLMyTabElement;
+  };
+
+  interface HTMLMyTabHeaderElement extends Components.MyTabHeader, HTMLStencilElement {}
+  var HTMLMyTabHeaderElement: {
+    prototype: HTMLMyTabHeaderElement;
+    new (): HTMLMyTabHeaderElement;
+  };
+
   interface HTMLSbpButtonElement extends Components.SbpButton, HTMLStencilElement {}
   var HTMLSbpButtonElement: {
     prototype: HTMLSbpButtonElement;
@@ -43,6 +67,8 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'my-tab': HTMLMyTabElement;
+    'my-tab-header': HTMLMyTabHeaderElement;
     'sbp-button': HTMLSbpButtonElement;
   }
 }
@@ -62,10 +88,23 @@ declare namespace LocalJSX {
     */
     'middle'?: string;
   }
-  interface SbpButton {}
+  interface MyTab {
+    'active'?: boolean;
+    'name'?: string;
+    'onTabActivate'?: (event: CustomEvent<TabActivateEvent>) => void;
+    'tab'?: string;
+  }
+  interface MyTabHeader {
+    'activeTab'?: string;
+  }
+  interface SbpButton {
+    'action'?: Function;
+  }
 
   interface IntrinsicElements {
     'my-component': MyComponent;
+    'my-tab': MyTab;
+    'my-tab-header': MyTabHeader;
     'sbp-button': SbpButton;
   }
 }
@@ -77,6 +116,8 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
+      'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
     }
   }
