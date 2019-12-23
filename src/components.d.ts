@@ -10,30 +10,49 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
+  interface BdsIcon {
     /**
-    * The first name
+    * Specifies the label to use for accessibility. Defaults to the icon name.
     */
-    'first': string;
+    'ariaLabel'?: string;
     /**
-    * The last name
+    * Specifies the label to use for accessibility. Defaults to the icon name.
     */
-    'last': string;
+    'color'?: string;
     /**
-    * The middle name
+    * Specifies the icon height (eg.: 50)
     */
-    'middle': string;
+    'height'?: string;
+    /**
+    * Specifies which icon to use from the built-in set of icons.
+    */
+    'name': string;
+    /**
+    * Specifies the theme to use outline or solid icons. Defaults to outline.
+    */
+    'theme': 'outline' | 'solid';
+    /**
+    * Specifies the icon width (eg.: 50)
+    */
+    'width'?: string;
   }
+  interface BdsList {}
   interface SbpButton {}
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {}
+  var HTMLBdsIconElement: {
+    prototype: HTMLBdsIconElement;
+    new (): HTMLBdsIconElement;
+  };
+
+  interface HTMLBdsListElement extends Components.BdsList, HTMLStencilElement {}
+  var HTMLBdsListElement: {
+    prototype: HTMLBdsListElement;
+    new (): HTMLBdsListElement;
   };
 
   interface HTMLSbpButtonElement extends Components.SbpButton, HTMLStencilElement {}
@@ -42,30 +61,45 @@ declare global {
     new (): HTMLSbpButtonElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'bds-icon': HTMLBdsIconElement;
+    'bds-list': HTMLBdsListElement;
     'sbp-button': HTMLSbpButtonElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
+  interface BdsIcon {
     /**
-    * The first name
+    * Specifies the label to use for accessibility. Defaults to the icon name.
     */
-    'first'?: string;
+    'ariaLabel'?: string;
     /**
-    * The last name
+    * Specifies the label to use for accessibility. Defaults to the icon name.
     */
-    'last'?: string;
+    'color'?: string;
     /**
-    * The middle name
+    * Specifies the icon height (eg.: 50)
     */
-    'middle'?: string;
+    'height'?: string;
+    /**
+    * Specifies which icon to use from the built-in set of icons.
+    */
+    'name': string;
+    /**
+    * Specifies the theme to use outline or solid icons. Defaults to outline.
+    */
+    'theme'?: 'outline' | 'solid';
+    /**
+    * Specifies the icon width (eg.: 50)
+    */
+    'width'?: string;
   }
+  interface BdsList {}
   interface SbpButton {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'bds-icon': BdsIcon;
+    'bds-list': BdsList;
     'sbp-button': SbpButton;
   }
 }
@@ -76,7 +110,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+      'bds-list': LocalJSX.BdsList & JSXBase.HTMLAttributes<HTMLBdsListElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
     }
   }
