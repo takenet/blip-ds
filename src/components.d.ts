@@ -36,7 +36,6 @@ export namespace Components {
     */
     'width'?: string;
   }
-  interface BdsList {}
   interface SbpButton {}
 }
 
@@ -49,12 +48,6 @@ declare global {
     new (): HTMLBdsIconElement;
   };
 
-  interface HTMLBdsListElement extends Components.BdsList, HTMLStencilElement {}
-  var HTMLBdsListElement: {
-    prototype: HTMLBdsListElement;
-    new (): HTMLBdsListElement;
-  };
-
   interface HTMLSbpButtonElement extends Components.SbpButton, HTMLStencilElement {}
   var HTMLSbpButtonElement: {
     prototype: HTMLSbpButtonElement;
@@ -62,7 +55,6 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'bds-icon': HTMLBdsIconElement;
-    'bds-list': HTMLBdsListElement;
     'sbp-button': HTMLSbpButtonElement;
   }
 }
@@ -94,12 +86,10 @@ declare namespace LocalJSX {
     */
     'width'?: string;
   }
-  interface BdsList {}
   interface SbpButton {}
 
   interface IntrinsicElements {
     'bds-icon': BdsIcon;
-    'bds-list': BdsList;
     'sbp-button': SbpButton;
   }
 }
@@ -111,7 +101,6 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
-      'bds-list': LocalJSX.BdsList & JSXBase.HTMLAttributes<HTMLBdsListElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
     }
   }

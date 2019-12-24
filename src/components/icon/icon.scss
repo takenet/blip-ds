@@ -1,9 +1,4 @@
-:host {
-  display: inline-block;
-
-  // contain: strict;
-
-  // fill: currentColor;
-
-  // box-sizing: content-box !important;
+.icon__inner {
+  display: inline-flex;
+  align-items: center;
 }

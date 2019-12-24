@@ -1,6 +1,14 @@
 import { getAssetPath } from '@stencil/core';
 
 export const getSvgPath = (name: string, theme: string) => {
+  if(!name) {
+    return '';
+  }
+
+  if(!theme) {
+    return '';
+  }
+
   return getAssetPath(`svg/${theme}/${name}.svg`);
 }
 
@@ -8,7 +16,7 @@ export const getSvgContent = async (url: string) => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error('Invalid icon name');
+    throw new Error('Invalid icon');
   }
 
   const svgContent = await response.text();

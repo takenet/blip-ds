@@ -33,7 +33,7 @@ export class Icon {
   /**
   * Specifies the label to use for accessibility. Defaults to the icon name.
   */
-  @Prop() color?: string = 'black';
+  @Prop() color?: string;
 
   /**
   * Specifies the theme to use outline or solid icons. Defaults to outline.
@@ -50,8 +50,12 @@ export class Icon {
 
   render() {
     return (
-      <Host role="img" class="ion-color">
-        <div class="ion-color" innerHTML={this.svgContent}></div>
+      <Host role="img"
+        class={{
+          'icon': true,
+        }}
+      >
+        <div class="icon__inner" innerHTML={this.svgContent}></div>
       </Host>
     );
   }
