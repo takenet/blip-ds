@@ -1,4 +1,4 @@
-import { Component, Host, State, Prop, h } from '@stencil/core';
+import { Component, Host, State, Prop, h, Watch } from '@stencil/core';
 import { getSvgPath, getSvgContent, formatSvg } from './utils';
 
 @Component({
@@ -21,14 +21,9 @@ export class Icon {
   @Prop({ mutable: true, reflectToAttr: true }) ariaLabel?: string;
 
   /**
-   * Specifies the icon width (eg.: 50)
+   * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
    */
-  @Prop() width?: string = '32';
-
-  /**
-   * Specifies the icon height (eg.: 50)
-   */
-  @Prop() height?: string = '32';
+  @Prop() size?: string = 'medium';
 
   /**
   * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -41,21 +36,26 @@ export class Icon {
   @Prop({ reflect: true }) theme: 'outline' | 'solid' = 'outline';
 
   async connectedCallback() {
+    await this.loadSvg();
+  }
+
+  @Watch('name')
+  async loadSvg() {
     const url = getSvgPath(this.name, this.theme);
     const svgContent = await getSvgContent(url);
-    const formatedSvg = formatSvg(svgContent, this.height, this.width, this.color);
+    const formatedSvg = formatSvg(svgContent, this.color);
 
     this.svgContent = formatedSvg;
   }
 
   render() {
     return (
-      <Host role="img"
-        class={{
-          'icon': true,
+      <Host role="img">
+        <div class={{
+          'bds-icon': true,
+          [`bds-icon__size--${this.size}`]: true
         }}
-      >
-        <div class="icon__inner" innerHTML={this.svgContent}></div>
+          innerHTML={this.svgContent}></div>
       </Host>
     );
   }

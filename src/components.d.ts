@@ -20,21 +20,17 @@ export namespace Components {
     */
     'color'?: string;
     /**
-    * Specifies the icon height (eg.: 50)
-    */
-    'height'?: string;
-    /**
     * Specifies which icon to use from the built-in set of icons.
     */
     'name': string;
     /**
+    * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+    */
+    'size'?: string;
+    /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
     'theme': 'outline' | 'solid';
-    /**
-    * Specifies the icon width (eg.: 50)
-    */
-    'width'?: string;
   }
   interface SbpButton {}
 }
@@ -70,21 +66,17 @@ declare namespace LocalJSX {
     */
     'color'?: string;
     /**
-    * Specifies the icon height (eg.: 50)
-    */
-    'height'?: string;
-    /**
     * Specifies which icon to use from the built-in set of icons.
     */
     'name': string;
     /**
+    * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+    */
+    'size'?: string;
+    /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
     'theme'?: 'outline' | 'solid';
-    /**
-    * Specifies the icon width (eg.: 50)
-    */
-    'width'?: string;
   }
   interface SbpButton {}
 

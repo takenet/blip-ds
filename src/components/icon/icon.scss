@@ -1,4 +1,54 @@
-.icon__inner {
+.bds-icon {
   display: inline-flex;
   align-items: center;
+  svg {
+    fill: currentColor;
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+.bds-icon__size--xxx-large {
+  width: 32px;
+  height: 32px;
+}
+
+.bds-icon__size--xx-large {
+  width: 28px;
+  height: 28px;
+}
+
+.bds-icon__size--x-large {
+  width: 24px;
+  height: 24px;
+}
+
+.bds-icon__size--large {
+  width: 20px;
+  height: 20px;
+}
+
+.bds-icon__size--medium {
+  width: 16px;
+  height: 16px;
+}
+
+.bds-icon__size--small {
+  width: 12px;
+  height: 12px;
+}
+
+.bds-icon__size--x-small {
+  width: 8px;
+  height: 8px;
+}
+
+.bds-icon__size--xx-small {
+  width: 4px;
+  height: 4px;
+}
+
+.bds-icon__size--xxx-small {
+  width: 1px;
+  height: 1px;
 }

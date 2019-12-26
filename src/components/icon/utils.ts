@@ -23,15 +23,15 @@ export const getSvgContent = async (url: string) => {
   return svgContent;
 };
 
-export const formatSvg = (svgContent: string | null, height: string| null, width: string | null, color: string | null) => {
+export const formatSvg = (svgContent: string | null, color: string | null) => {
   if (svgContent) {
     const div = document.createElement('div');
     div.innerHTML = svgContent;
 
     const svgElm = div.firstElementChild;
 
-    width && svgElm.setAttribute('width', width);
-    height && svgElm.setAttribute('height', height);
+    svgElm.removeAttribute('width');
+    svgElm.removeAttribute('height');
     color && clearPathsAndFillColor(svgElm, color);
 
     return div.innerHTML;
