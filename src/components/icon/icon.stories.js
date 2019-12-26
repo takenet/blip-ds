@@ -9,7 +9,7 @@ export default {
 
 export const iconDefault = () => '<bds-icon name="user"></bds-icon>';
 
-export const iconSizes = () => `
+export  const iconSizes = () => `
   <bds-icon name="user" size="xxx-large"></bds-icon>
   <bds-icon name="user" size="xx-large"></bds-icon>
   <bds-icon name="user" size="x-large"></bds-icon>

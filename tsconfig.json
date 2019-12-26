@@ -14,7 +14,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "types"
+    ],
   },
   "include": [
     "src",
