@@ -1,5 +1,10 @@
+import readme from './readme.md';
+
 export default {
   title: 'Icon',
+  parameters: { 
+    notes: { markdown: readme },
+  },
 };
 
 export const iconDefault = () => '<bds-icon name="user"></bds-icon>';
