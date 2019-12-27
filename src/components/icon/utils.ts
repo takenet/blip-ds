@@ -27,7 +27,7 @@ const clearPathsAndFillColor = (svg: Element, color: string): void => {
   const paths = svg.getElementsByTagName('path');
 
   for (let i = 0; i < paths.length; i++) {
-    paths[i].setAttribute('fill', '');
+    paths[i].setAttribute('fill', color);
   }
 
   svg.setAttribute('fill', color);

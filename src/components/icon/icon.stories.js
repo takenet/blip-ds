@@ -10,16 +10,32 @@ export default {
   },
 };
 
-export const iconDefault = () => `<bds-icon name="${text('name', 'user')}"></bds-icon>`;
+const name = text("name", "user");
+const themeSolid = text("theme", "solid");
+
+export const iconDefault = () => `<bds-icon name="${name}"></bds-icon>`;
+
+export const iconTheme = () => `<bds-icon name="${name}" theme="${themeSolid}"></bds-icon>`;
 
 export const iconSizes = () => `
-  <bds-icon name="user" size="xxx-large"></bds-icon>
-  <bds-icon name="user" size="xx-large"></bds-icon>
-  <bds-icon name="user" size="x-large"></bds-icon>
-  <bds-icon name="user" size="large"></bds-icon>
-  <bds-icon name="user" size="medium"></bds-icon>
-  <bds-icon name="user" size="small"></bds-icon>
-  <bds-icon name="user" size="x-small"></bds-icon>
-  <bds-icon name="user" size="xx-small"></bds-icon>
-  <bds-icon name="user" size="xxx-small"></bds-icon>
+  <bds-icon name="${name}" size="xxx-large"></bds-icon>
+  <bds-icon name="${name}" size="xx-large"></bds-icon>
+  <bds-icon name="${name}" size="x-large"></bds-icon>
+  <bds-icon name="${name}" size="large"></bds-icon>
+  <bds-icon name="${name}" size="medium"></bds-icon>
+  <bds-icon name="${name}" size="small"></bds-icon>
+  <bds-icon name="${name}" size="x-small"></bds-icon>
+  <bds-icon name="${name}" size="xx-small"></bds-icon>
+  <bds-icon name="${name}" size="xxx-small"></bds-icon>
 `;
+
+export const iconColors = () => `
+  <bds-icon name="${name}" size="xxx-large" color="${text("color1", "#2CC3D5")}"></bds-icon>
+  <bds-icon name="${name}" size="xxx-large" color="${text("color2", "#87DDE8")}"></bds-icon>
+  <bds-icon name="${name}" size="xxx-large" color="${text("color3", "#2498A8")}"></bds-icon>
+  <bds-icon name="${name}" size="xxx-large" theme="solid" color="${text("color1", "#2CC3D5")}"></bds-icon>
+  <bds-icon name="${name}" size="xxx-large" theme="solid" color="${text("color2", "#87DDE8")}"></bds-icon>
+  <bds-icon name="${name}" size="xxx-large" theme="solid" color="${text("color3", "#2498A8")}"></bds-icon>
+`;
+
+

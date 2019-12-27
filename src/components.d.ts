@@ -16,7 +16,7 @@ export namespace Components {
     */
     'ariaLabel'?: string;
     /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
+    * Specifies the color to use.Specifies a color to use. The default is svg.
     */
     'color'?: string;
     /**
@@ -62,7 +62,7 @@ declare namespace LocalJSX {
     */
     'ariaLabel'?: string;
     /**
-    * Specifies the label to use for accessibility. Defaults to the icon name.
+    * Specifies the color to use.Specifies a color to use. The default is svg.
     */
     'color'?: string;
     /**
