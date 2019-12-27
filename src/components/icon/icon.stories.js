@@ -1,13 +1,16 @@
+import { withKnobs, text } from "@storybook/addon-knobs";
+
 import readme from './readme.md';
 
 export default {
   title: 'Icon',
+  decoratos: [withKnobs],
   parameters: { 
     notes: { markdown: readme },
   },
 };
 
-export const iconDefault = () => '<bds-icon name="user"></bds-icon>';
+export const iconDefault = () => `<bds-icon name="${text('name', 'user')}"></bds-icon>`;
 
 export  const iconSizes = () => `
   <bds-icon name="user" size="xxx-large"></bds-icon>

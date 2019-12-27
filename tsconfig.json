@@ -16,6 +16,7 @@
     "jsx": "react",
     "jsxFactory": "h",
     "types": [
+      "jest",
       "node"
     ],
     "typeRoots": [

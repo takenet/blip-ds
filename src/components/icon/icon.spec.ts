@@ -1,5 +1,3 @@
-// import { newSpecPage } from "@stencil/core/testing";
-
 import { Icon } from './icon';
 import { getSvgPath } from './utils';
 
@@ -15,21 +13,8 @@ describe('bds-icon', () => {
   });
 
   it('should render with default sizes', () => {
-    expect(icon.width).toBe('32');
-    expect(icon.height).toBe('32');
+    expect(icon.size).toBe('medium');
   });
-
-  // describe('Alter props after render', () => {
-
-  //   it('should alter svg value after render', async () => {
-  //     const page = await newSpecPage({
-  //       components: [Icon],
-  //       html: `<bds-icon name="user"></bds-icon>`
-  //     });
-
-  //     expect(page.root.('svg')).toBe('aa');
-  //   });
-  // });
 
   describe('Utils', () => {
     const mockPath = '/svg/outline/user.svg';
