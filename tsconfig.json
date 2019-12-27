@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "declaration": false,
@@ -14,13 +15,22 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "typeRoots": [
+      "types"
+    ],
+    "pretty": true,
   },
   "include": [
     "src",
     "types/jsx.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
