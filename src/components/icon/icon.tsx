@@ -35,12 +35,12 @@ export class Icon {
   */
   @Prop({ reflect: true }) theme: 'outline' | 'solid' = 'outline';
 
-  async connectedCallback() {
+  async connectedCallback(): Promise<void> {
     await this.loadSvg();
   }
 
   @Watch('name')
-  async loadSvg() {
+  async loadSvg(): Promise<void> {
     const url = getSvgPath(this.name, this.theme);
     const svgContent = await getSvgContent(url);
     const formatedSvg = formatSvg(svgContent, this.color);
@@ -48,9 +48,9 @@ export class Icon {
     this.svgContent = formatedSvg;
   }
 
-  render() {
+  render(): HTMLElement {
     return (
-      <Host role="img">
+      <Host role="img" >
         <div class={{
           'bds-icon': true,
           [`bds-icon__size--${this.size}`]: true

@@ -5,7 +5,7 @@ import { Component, h} from "@stencil/core";
   styleUrl: 'button.scss'
 })
 export class Button {
-  render() {
+  render(): HTMLElement {
     return (
       <button class="button">
         <slot></slot>

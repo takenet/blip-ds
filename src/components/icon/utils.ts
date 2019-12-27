@@ -1,18 +1,18 @@
 import { getAssetPath } from '@stencil/core';
 
-export const getSvgPath = (name: string, theme: string) => {
-  if(!name) {
+export const getSvgPath = (name: string, theme: string): string => {
+  if (!name) {
     return '';
   }
 
-  if(!theme) {
+  if (!theme) {
     return '';
   }
 
   return getAssetPath(`svg/${theme}/${name}.svg`);
 }
 
-export const getSvgContent = async (url: string) => {
+export const getSvgContent = async (url: string): Promise<string> => {
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -23,7 +23,18 @@ export const getSvgContent = async (url: string) => {
   return svgContent;
 };
 
-export const formatSvg = (svgContent: string | null, color: string | null) => {
+const clearPathsAndFillColor = (svg: Element, color: string): void => {
+  const paths = svg.getElementsByTagName('path');
+
+  for (let i = 0; i < paths.length; i++) {
+    paths[i].setAttribute('fill', '');
+  }
+
+  svg.setAttribute('fill', color);
+}
+
+
+export const formatSvg = (svgContent: string | null, color: string | null): string => {
   if (svgContent) {
     const div = document.createElement('div');
     div.innerHTML = svgContent;
@@ -40,12 +51,3 @@ export const formatSvg = (svgContent: string | null, color: string | null) => {
   return '';
 }
 
-const clearPathsAndFillColor = (svg: Element, color: string) => {
-  let paths = svg.getElementsByTagName('path');
-
-  for (let i = 0; i < paths.length; i++) {
-      paths[i].setAttribute('fill', '');
-  }
-
-  svg.setAttribute('fill', color);
-}

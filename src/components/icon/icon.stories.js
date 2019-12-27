@@ -5,14 +5,14 @@ import readme from './readme.md';
 export default {
   title: 'Icon',
   decoratos: [withKnobs],
-  parameters: { 
+  parameters: {
     notes: { markdown: readme },
   },
 };
 
 export const iconDefault = () => `<bds-icon name="${text('name', 'user')}"></bds-icon>`;
 
-export  const iconSizes = () => `
+export const iconSizes = () => `
   <bds-icon name="user" size="xxx-large"></bds-icon>
   <bds-icon name="user" size="xx-large"></bds-icon>
   <bds-icon name="user" size="x-large"></bds-icon>
