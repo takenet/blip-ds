@@ -11,7 +11,21 @@
 </head>
 
 <body>
-  <bds-icon name="user" size="xxx-large" color="red"></bds-icon>
+  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+  <sbp-button >Click-Me</sbp-button>
+  
+  <my-tab-header>
+    <my-tab name="tab1" tab="Tab 1" active>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sunt incidunt quo nam voluptatum id corrupti, reprehenderit autem nulla sapiente accusamus vero dolorum alias cum molestiae maxime quam quasi animi.</my-tab>
+    <my-tab name="tab2" tab="Tab 2">Content 2</my-tab>
+  </my-tab-header>
+  
+  <script>
+    function handleTabActivate(e) {
+      console.log(e.detail.name)
+    }
+
+    document.addEventListener('tabActivate', handleTabActivate)
+  </script>
 </body>
 
 </html>

@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  TabActivateEvent,
+} from './components/my-tab/my-tab';
 
 export namespace Components {
   interface BdsIcon {
@@ -32,7 +34,17 @@ export namespace Components {
     */
     'theme': 'outline' | 'solid';
   }
-  interface SbpButton {}
+  interface MyTab {
+    'active': boolean;
+    'name': string;
+    'tab': string;
+  }
+  interface MyTabHeader {
+    'activeTab': string;
+  }
+  interface SbpButton {
+    'action': Function;
+  }
 }
 
 declare global {
@@ -44,6 +56,18 @@ declare global {
     new (): HTMLBdsIconElement;
   };
 
+  interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {}
+  var HTMLMyTabElement: {
+    prototype: HTMLMyTabElement;
+    new (): HTMLMyTabElement;
+  };
+
+  interface HTMLMyTabHeaderElement extends Components.MyTabHeader, HTMLStencilElement {}
+  var HTMLMyTabHeaderElement: {
+    prototype: HTMLMyTabHeaderElement;
+    new (): HTMLMyTabHeaderElement;
+  };
+
   interface HTMLSbpButtonElement extends Components.SbpButton, HTMLStencilElement {}
   var HTMLSbpButtonElement: {
     prototype: HTMLSbpButtonElement;
@@ -51,6 +75,8 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'bds-icon': HTMLBdsIconElement;
+    'my-tab': HTMLMyTabElement;
+    'my-tab-header': HTMLMyTabHeaderElement;
     'sbp-button': HTMLSbpButtonElement;
   }
 }
@@ -78,10 +104,23 @@ declare namespace LocalJSX {
     */
     'theme'?: 'outline' | 'solid';
   }
-  interface SbpButton {}
+  interface MyTab {
+    'active'?: boolean;
+    'name'?: string;
+    'onTabActivate'?: (event: CustomEvent<TabActivateEvent>) => void;
+    'tab'?: string;
+  }
+  interface MyTabHeader {
+    'activeTab'?: string;
+  }
+  interface SbpButton {
+    'action'?: Function;
+  }
 
   interface IntrinsicElements {
     'bds-icon': BdsIcon;
+    'my-tab': MyTab;
+    'my-tab-header': MyTabHeader;
     'sbp-button': SbpButton;
   }
 }
@@ -93,6 +132,8 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+      'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
+      'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
     }
   }
