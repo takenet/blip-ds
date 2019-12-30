@@ -1,0 +1,123 @@
+:export {
+  /** 
+  * Primary Colours
+  * Nossa paleta principal é composta por tons de azul que rementem diretamente as cores da marca, 
+  * essas cores estão presentes na maioria dos pontos de contato, do marketing ao produto como também por toda a plataforma.
+  */
+  color-primary-main: $color-primary-main;
+  color-primary-light: $color-primary-light;
+  color-primary-dark: $color-primary-dark;
+  color-primary-ghost: $color-primary-ghost;
+
+  /** 
+  * Secondary Colours
+  * A paleta secundária é composta de vermelho, amarelo, verde e roxo. Cada cor é selecionada com o objetivo de fornecer feedback significativo em nossos produtos.
+  */
+  color-secondary-delete: $color-secondary-delete;
+  color-secondary-cheetos: $color-secondary-cheetos;
+  color-secondary-true: $color-secondary-true;
+
+  /** 
+  * Neutral Colours
+  * Os neutros têm graus variados de saturação. Normalmente, eles são usados ​​para texto e fundos sutis 
+  * quando não queremos chamar muita atenção para um ponto de contato específico ou transmitir informações como "a fazer" ou "desativado".
+  */
+
+  // Disabled Blues
+  color-neutral-disbled-blues-text: $color-neutral-disbled-blues-text;
+  color-neutral-disbled-blues-bg: $color-neutral-disbled-blues-bg;
+
+  // Dark neutrals
+  color-neutral-dark-onix: $color-neutral-dark-onix;
+  color-neutral-dark-suit: $color-neutral-dark-suit;
+  color-neutral-dark-city: $color-neutral-dark-city;
+  color-neutral-dark-rooftop: $color-neutral-dark-rooftop;
+
+  // Medium neutrals
+  color-neutral-medium-desk: $color-neutral-medium-desk;
+  color-neutral-medium-cloud: $color-neutral-medium-cloud;
+  color-neutral-medium-silver: $color-neutral-medium-silver;
+
+  // Light neutrals
+  color-neutral-light-wave: $color-neutral-light-wave;
+  color-neutral-light-off: $color-neutral-light-off;
+  color-neutral-light-brezze: $color-neutral-light-brezze;
+  color-neutral-light-whisper: $color-neutral-light-whisper;
+
+  /**
+  * Extended colors
+  * As cores estendidas são todos os tons de cores utilizáveis ​​na plataforma. O uso dessas cores varia de acordo com o ponto de 
+  * contato, mas são úteis para ilustrações e componentes no produto.
+  */
+
+  // Vermelhos / Rosas
+  color-extend-rr-b-vitamin: $color-extend-rr-b-vitamin;
+  color-extend-rr-flower: $color-extend-rr-flower;
+  color-extend-rr-lipstick: $color-extend-rr-lipstick;
+  color-extend-rr-dragon: $color-extend-rr-dragon;
+  color-extend-rr-ballet: $color-extend-rr-ballet;
+  color-extend-rr-yogurt: $color-extend-rr-yogurt;
+  color-extend-rr-watermelon: $color-extend-rr-watermelon;
+  color-extend-rr-blush: $color-extend-rr-blush;
+
+  // Amarelos / Laranjas
+  color-extend-yo-fairy: $color-extend-yo-fairy;
+  color-extend-yo-d-vitamin: $color-extend-yo-d-vitamin;
+  color-extend-yo-melon: $color-extend-yo-melon;
+  color-extend-yo-hay: $color-extend-yo-hay;
+  color-extend-yo-sand: $color-extend-yo-sand;
+  color-extend-yo-c-vitamin: $color-extend-yo-c-vitamin;
+  color-extend-yo-Sphinx: $color-extend-yo-Sphinx;
+  color-extend-yo-moose: $color-extend-yo-moose;
+  color-extend-yo-summer: $color-extend-yo-summer;
+  color-extend-yo-doritos: $color-extend-yo-doritos;
+  color-extend-yo-carrot: $color-extend-yo-carrot;
+
+  // Verdes
+  color-exnted-green-chameleon: $color-exnted-green-chameleon;
+  color-exnted-green-mint: $color-exnted-green-mint;
+  color-exnted-green-corn: $color-exnted-green-corn;
+  color-exnted-green-asparagus: $color-exnted-green-asparagus;
+  color-exnted-green-bamboo: $color-exnted-green-bamboo;
+  color-exnted-green-lime: $color-exnted-green-lime;
+  color-exnted-green-leaf: $color-exnted-green-leaf;
+  color-exnted-green-algae: $color-exnted-green-algae;
+
+  // Azuis
+  color-exnted-blue-sky: $color-exnted-blue-sky;
+  color-exnted-blue-wind: $color-exnted-blue-wind;
+  color-exnted-blue-mermaid: $color-exnted-blue-mermaid;
+  color-exnted-blue-galaxy: $color-exnted-blue-galaxy;
+
+  color-exnted-blue-ice: $color-exnted-blue-ice;
+  color-exnted-blue-frozen: $color-exnted-blue-frozen;
+  color-exnted-blue-smurf: $color-exnted-blue-smurf;
+  color-exnted-blue-whale: $color-exnted-blue-whale;
+
+  color-exnted-blue-genie: $color-exnted-blue-genie;
+  color-exnted-blue-unicorn: $color-exnted-blue-unicorn;
+  color-exnted-blue-sea: $color-exnted-blue-sea;
+  color-exnted-blue-jazz: $color-exnted-blue-jazz;
+
+  // Roxos
+  color-exnted-purples-eggplant: $color-exnted-purples-eggplant;
+  color-exnted-purples-pixie: $color-exnted-purples-pixie;
+  color-exnted-purples-witch: $color-exnted-purples-witch;
+  color-exnted-purples-grape: $color-exnted-purples-grape;
+  color-exnted-purples-violet: $color-exnted-purples-violet;
+  color-exnted-purples-wine: $color-exnted-purples-wine;
+  color-exnted-purples-acai: $color-exnted-purples-acai;
+
+  // Gradients
+  color-gradient-universe: $color-gradient-universe;
+  color-gradient-street: $color-gradient-street;
+  color-gradient-chair: $color-gradient-chair;
+  color-gradient-shine: $color-gradient-shine;
+  color-gradient-dg-blip-system: $color-gradient-dg-blip-system;
+  color-gradient-error: $color-gradient-error;
+  color-gradient-phoenix: $color-gradient-phoenix;
+  color-gradient-success: $color-gradient-success;
+  color-gradient-jeans: $color-gradient-jeans;
+  color-gradient-ocean: $color-gradient-ocean;
+  color-gradient-smurfette: $color-gradient-smurfette;
+}
