@@ -11,6 +11,7 @@
 | -------- | --------- | ----------- | --------- | ----------- |
 | `active` | `active`  |             | `boolean` | `undefined` |
 | `name`   | `name`    |             | `string`  | `undefined` |
+| `tab`    | `tab`     |             | `string`  | `undefined` |
 
 
 ## Events
