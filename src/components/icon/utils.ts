@@ -16,7 +16,7 @@ export const getSvgContent = async (url: string): Promise<string> => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error('Invalid icon');
+    throw new Error(`Invalid Icon - ${url}`);
   }
 
   const svgContent = await response.text();

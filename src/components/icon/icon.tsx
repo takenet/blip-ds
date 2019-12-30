@@ -1,6 +1,18 @@
 import { Component, Host, State, Prop, h, Watch } from '@stencil/core';
 import { getSvgPath, getSvgContent, formatSvg } from './utils';
 
+export type iconSizes = 'xxx-small'
+  | 'xx-small'
+  | 'x-small'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'x-large'
+  | 'xx-large'
+  | 'xxx-large';
+
+export type iconThemes = 'outline' | 'solid';
+
 @Component({
   tag: 'bds-icon',
   styleUrl: 'icon.scss',
@@ -21,9 +33,10 @@ export class Icon {
   @Prop({ mutable: true, reflectToAttr: true }) ariaLabel?: string;
 
   /**
-   * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+   * Icon size. Entered as one of the icon size design tokens. Can be one of: 
+   * "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
    */
-  @Prop() size?: string = 'medium';
+  @Prop() size?: iconSizes = 'medium';
 
   /**
   * Specifies the color to use.Specifies a color to use. The default is svg.
@@ -33,7 +46,7 @@ export class Icon {
   /**
   * Specifies the theme to use outline or solid icons. Defaults to outline.
   */
-  @Prop({ reflect: true }) theme: 'outline' | 'solid' = 'outline';
+  @Prop({ reflect: true }) theme: iconThemes = 'outline';
 
   async connectedCallback(): Promise<void> {
     await this.loadSvg();
@@ -48,6 +61,13 @@ export class Icon {
     this.svgContent = formatedSvg;
   }
 
+  getAccessibilityName(): string {
+    const defaultAccessibilityName = 'Icon';
+
+    if (!this.ariaLabel) return `${defaultAccessibilityName} ${this.name}`
+    return this.ariaLabel;
+  }
+
   render(): HTMLElement {
     return (
       <Host role="img" >
@@ -55,6 +75,7 @@ export class Icon {
           'bds-icon': true,
           [`bds-icon__size--${this.size}`]: true
         }}
+          aria-label={this.getAccessibilityName()}
           innerHTML={this.svgContent}></div>
       </Host>
     );
