@@ -24,10 +24,14 @@ $border-radius: 8px;
   margin-left: 8px;
   margin-top: 8px;
 
-  &--color{
+  &--color {
     flex: 2;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 
     &-primary-main {
       background-color: $color-primary-main;
@@ -238,6 +242,46 @@ $border-radius: 8px;
     }
     &-exnted-purples-acai {
       background-color: $color-exnted-purples-acai;
+    }
+
+    &-gradient-universe {
+      background: $color-gradient-universe;
+    }
+    &-gradient-street {
+      background: $color-gradient-street;
+    }
+    &-gradient-chair {
+      background: $color-gradient-chair;
+    }
+    &-gradient-shine {
+      background: $color-gradient-shine;
+    }
+    &-gradient-olaf {
+      background: $color-gradient-olaf;
+    }
+    &-gradient-dg-blip-system {
+      background: $color-gradient-dg-blip-system;
+    }
+    &-gradient-error {
+      background: $color-gradient-error;
+    }
+    &-gradient-phoenix {
+      background: $color-gradient-phoenix;
+    }
+    &-gradient-success {
+      background: $color-gradient-success;
+    }
+    &-gradient-barbie {
+      background: $color-gradient-barbie;
+    }
+    &-gradient-jeans {
+      background: $color-gradient-jeans;
+    }
+    &-gradient-ocean {
+      background: $color-gradient-ocean;
+    }
+    &-gradient-smurfette {
+      background: $color-gradient-smurfette;
     }
   }
 

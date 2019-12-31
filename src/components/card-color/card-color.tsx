@@ -15,7 +15,7 @@ export class CardColor {
   /**
   * Specifies HEX color, use Figma docs in Blip DS.
   */
-  @Prop() hex!: string;
+  @Prop() hex?: string;
 
   /**
    * Specifies variabel sass color, _variables.scss.
@@ -28,16 +28,20 @@ export class CardColor {
         <div class={{
           'card-color--color': true,
           [`card-color--${this.variable}`]: true,
-        }}></div>
+        }}>
+          ${this.variable}
+        </div>
         <div class="card-color__description">
           <div class="card-color__description__name">
             <div class="card-color__description__name__label">Name</div>
             <div class="card-color__description__name__text">{this.name}</div>
           </div>
-          <div class="card-color__description__value">
-            <div class="card-color__description__value__label">HEX</div>
-            <div class="card-color__description__value__text">{this.hex}</div>
-          </div>
+          {this.hex && (
+            <div class="card-color__description__value">
+              <div class="card-color__description__value__label">HEX</div>
+              <div class="card-color__description__value__text">{this.hex}</div>
+            </div>
+          )}
         </div>
       </div>
     );

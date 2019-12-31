@@ -1,6 +1,6 @@
- /** 
+ /**
  * Primary Colours
- * Nossa paleta principal é composta por tons de azul que rementem diretamente as cores da marca, 
+ * Nossa paleta principal é composta por tons de azul que rementem diretamente as cores da marca,
  * essas cores estão presentes na maioria dos pontos de contato, do marketing ao produto como também por toda a plataforma.
  */
 $color-primary-main: #2cc3d5;
@@ -8,7 +8,7 @@ $color-primary-light: #87DDE8;
 $color-primary-dark: #2498A8;
 $color-primary-ghost: #F8FBFB;
 
-/** 
+/**
 * Secondary Colours
 * A paleta secundária é composta de vermelho, amarelo, verde e roxo. Cada cor é selecionada com o objetivo de fornecer feedback significativo em nossos produtos.
 */
@@ -16,9 +16,9 @@ $color-secondary-delete: #FF5A60;
 $color-secondary-cheetos: #F9B42F;
 $color-secondary-true: #4DCB7B;
 
-/** 
+/**
 * Neutral Colours
-* Os neutros têm graus variados de saturação. Normalmente, eles são usados ​​para texto e fundos sutis 
+* Os neutros têm graus variados de saturação. Normalmente, eles são usados ​​para texto e fundos sutis
 * quando não queremos chamar muita atenção para um ponto de contato específico ou transmitir informações como "a fazer" ou "desativado".
 */
 
@@ -45,7 +45,7 @@ $color-neutral-light-whisper: #F5F8F9;
 
 /**
 * Extended colors
-* As cores estendidas são todos os tons de cores utilizáveis ​​na plataforma. O uso dessas cores varia de acordo com o ponto de 
+* As cores estendidas são todos os tons de cores utilizáveis ​​na plataforma. O uso dessas cores varia de acordo com o ponto de
 * contato, mas são úteis para ilustrações e componentes no produto.
 */
 
@@ -106,17 +106,19 @@ $color-exnted-purples-wine: #894CB9;
 $color-exnted-purples-acai: #5B337B;
 
 // Gradients
-$color-gradient-universe: linear-gradient(#343C4C 0%, #242B36 43.89%, #1D1D1D 100%);
-$color-gradient-street: linear-gradient(#6D7A81 0%, #52636C 43.89%, #312F44 99.99%, #3D4A51 100%);
+$color-gradient-universe: linear-gradient(195.12deg, #343C4C -10.36%, #242B36 45.63%, #1D1D1D 117.21%);
+$color-gradient-street: linear-gradient(195.12deg, #6D7A81 -10.36%, #52636C 45.63%, #312F44 117.2%, #3D4A51 117.21%);
 $color-gradient-chair: linear-gradient(#788CA3 0%, #607B99 43.89%, #485C73 100%);
-$color-gradient-shine: linear-gradient(#F5F8F9 0%, #DEE8EC 43.89%, #D2DFE6 100%);
-$color-gradient-dg-blip-system: linear-gradient(#87DDE8 0%, #2CC3D5 43.89%, #2498A8 100%);
-$color-gradient-error: linear-gradient(#FF5A60 0%, #F04847 43.89%, #B43635 100%);
-$color-gradient-phoenix: linear-gradient(#FFCF33 0%, #F9B42F 43.89%, #F99B45 100%);
-$color-gradient-success: linear-gradient(#93D2AA 0%, #4DCB7B 43.89%, #4AA86C 100%);
-$color-gradient-jeans: linear-gradient(#514F64 0%, #2C2A46 43.89%, #312F44 99.99%, #312F44 100%);
-$color-gradient-ocean: linear-gradient(#6D8CE5 0%, #517BF2 43.89%, #4D6CC5 100%);
-$color-gradient-smurfette: linear-gradient(#9EE3FF 0%, #55CFFF 43.89%, #51B2DD 100%);
+$color-gradient-shine: linear-gradient(195.12deg, #F5F8F9 -10.36%, #DEE8EC 45.63%, #D2DFE6 117.21%);
+$color-gradient-olaf: linear-gradient(195.12deg, #FAFCFC -10.36%, #F5F8F9 45.63%, #E8EAEB 117.2%, #E8EAEB 117.21%);
+$color-gradient-dg-blip-system: linear-gradient(195.12deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
+$color-gradient-error: linear-gradient(195.12deg, #FF5A60 -10.36%, #F04847 45.63%, #B43635 117.21%);
+$color-gradient-phoenix: linear-gradient(195.12deg, #FFCF33 -10.36%, #F9B42F 45.63%, #F99B45 117.21%);
+$color-gradient-success: linear-gradient(195.12deg, #93D2AA -10.36%, #4DCB7B 45.63%, #4AA86C 117.21%);
+$color-gradient-barbie: linear-gradient(195.12deg, #FBB3C4 -10.36%, #F66689 45.63%, #C85C77 117.21%);
+$color-gradient-jeans: linear-gradient(195.12deg, #514F64 -10.36%, #2C2A46 45.63%, #312F44 117.2%, #312F44 117.21%);
+$color-gradient-ocean: linear-gradient(195.12deg, #6D8CE5 -10.36%, #517BF2 45.63%, #4D6CC5 117.21%);
+$color-gradient-smurfette: linear-gradient(195.12deg, #9EE3FF -10.36%, #55CFFF 45.63%, #51B2DD 117.21%);
 
 // Shadows
 $shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.3);
