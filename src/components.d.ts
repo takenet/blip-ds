@@ -38,6 +38,7 @@ export namespace Components {
     */
     'theme': iconThemes;
   }
+  interface BdsText {}
   interface MyTab {
     'active': boolean;
     'name': string;
@@ -60,6 +61,12 @@ declare global {
     new (): HTMLBdsIconElement;
   };
 
+  interface HTMLBdsTextElement extends Components.BdsText, HTMLStencilElement {}
+  var HTMLBdsTextElement: {
+    prototype: HTMLBdsTextElement;
+    new (): HTMLBdsTextElement;
+  };
+
   interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {}
   var HTMLMyTabElement: {
     prototype: HTMLMyTabElement;
@@ -79,6 +86,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'bds-icon': HTMLBdsIconElement;
+    'bds-text': HTMLBdsTextElement;
     'my-tab': HTMLMyTabElement;
     'my-tab-header': HTMLMyTabHeaderElement;
     'sbp-button': HTMLSbpButtonElement;
@@ -108,6 +116,7 @@ declare namespace LocalJSX {
     */
     'theme'?: iconThemes;
   }
+  interface BdsText {}
   interface MyTab {
     'active'?: boolean;
     'name'?: string;
@@ -123,6 +132,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'bds-icon': BdsIcon;
+    'bds-text': BdsText;
     'my-tab': MyTab;
     'my-tab-header': MyTabHeader;
     'sbp-button': SbpButton;
@@ -136,6 +146,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+      'bds-text': LocalJSX.BdsText & JSXBase.HTMLAttributes<HTMLBdsTextElement>;
       'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
       'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;

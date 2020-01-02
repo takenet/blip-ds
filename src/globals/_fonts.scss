@@ -1,0 +1,49 @@
+/*
+
+  Font family is Nunito. Its fallback is Helvetica
+
+*/
+
+$font-family: 'Nunito', 'Helvetica', sans-serif;
+
+/*
+
+  Font sizes have been converted to rem considering a base size of 16px.
+  For more information, check the calculator at https://offroadcode.com/rem-calculator/
+
+*/
+
+$base-font-size: 16px;
+
+$fs-40: 2.5em; // 40px
+$fs-32: 2em; // 32px
+$fs-24: 1.5em; // 24px
+$fs-16: 1em; // 16px
+$fs-14: 0.875em; // 20px
+$fs-12: 0.75em; // 12px
+$fs-10: 0.625em; // 10px
+
+//2 medium fonts (for headline text, major titles and subtitles)
+$font-margin-bo-1: 1.25rem; //20px
+$font-medium-2: 1.5rem; //24px
+
+//2 large fonts (for major numbers or things with really high emphasis)
+$font-large-1: 2rem; //32px
+$font-large-2: 3rem; //48px
+
+// Typography
+$regular: 300;
+$medium: 400;
+$bold: 700;
+
+$base-font-family: 'Nunito', 'Helvetica', 'Arial', sans-serif;
+$base-font-weight: $regular;
+$base-font-size: $fs-16;
+$regular-font-size: $fs-14;
+$base-letter-spacing: -0.04em;
+
+$small-font-size: $fs-7;
+
+$serif-font-family: 'Merriweather', serif;
+
+$monospace-font-family: 'Consolas', monospace;
