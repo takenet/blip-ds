@@ -6,7 +6,10 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader'
+      esmLoaderPath: '../loader',
+      copy: [
+        { src: 'globals', dest: 'styles'},
+      ]
     },
     {
       type: 'docs-readme'
@@ -14,13 +17,14 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null // disable service workers
-    },
+    }, 
   ],
+  excludeSrc: ['/test/', '**/.spec.', '**/.stories.'],
   plugins: [
     sass({
+      includePaths: ['src/globals'],
       injectGlobalPaths: [
-        'src/globals/variables.scss',
-        'src/globals/_fonts.scss',
+        'src/globals/app.scss',
       ]
     })
   ],
