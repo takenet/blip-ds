@@ -38,7 +38,9 @@ export namespace Components {
     */
     'theme': iconThemes;
   }
-  interface BdsText {}
+  interface BdsText {
+    'variant'?: string;
+  }
   interface MyTab {
     'active': boolean;
     'name': string;
@@ -116,7 +118,9 @@ declare namespace LocalJSX {
     */
     'theme'?: iconThemes;
   }
-  interface BdsText {}
+  interface BdsText {
+    'variant'?: string;
+  }
   interface MyTab {
     'active'?: boolean;
     'name'?: string;
