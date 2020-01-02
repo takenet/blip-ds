@@ -20,7 +20,7 @@ export namespace Components {
     /**
     * Specifies HEX color, use Figma docs in Blip DS.
     */
-    'hex': string;
+    'hex'?: string;
     /**
     * Specifies name color, use Figma docs in Blip DS.
     */
@@ -111,7 +111,7 @@ declare namespace LocalJSX {
     /**
     * Specifies HEX color, use Figma docs in Blip DS.
     */
-    'hex': string;
+    'hex'?: string;
     /**
     * Specifies name color, use Figma docs in Blip DS.
     */
