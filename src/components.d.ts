@@ -8,8 +8,8 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  iconSizes,
-  iconThemes,
+  IconSize,
+  IconTheme,
 } from './components/icon/icon';
 import {
   TabActivateEvent,
@@ -46,11 +46,11 @@ export namespace Components {
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of:  "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
-    'size'?: iconSizes;
+    'size'?: IconSize;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
-    'theme': iconThemes;
+    'theme': IconTheme;
   }
   interface MyTab {
     'active': boolean;
@@ -137,11 +137,11 @@ declare namespace LocalJSX {
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of:  "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
-    'size'?: iconSizes;
+    'size'?: IconSize;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
-    'theme'?: iconThemes;
+    'theme'?: IconTheme;
   }
   interface MyTab {
     'active'?: boolean;

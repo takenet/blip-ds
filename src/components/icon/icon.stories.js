@@ -204,7 +204,7 @@ export const allIcons = () => {
 
   solidIcons.forEach(name => {
     story += /*html*/`
-     <bds-icon theme="solid" size="xxx-large" name="${name}" title="${name}"></bds-icon>
+     <bds-icon theme="solid" size="xxx-large" name="${name}"></bds-icon>
     `;
   });
 
@@ -212,7 +212,7 @@ export const allIcons = () => {
 
   outlineIcons.forEach(name => {
     story += /*html*/`
-     <bds-icon theme="outline" size="xxx-large" name="${name}" title="${name}"></bds-icon>
+     <bds-icon theme="outline" size="xxx-large" name="${name}"></bds-icon>
     `;
   });
 
