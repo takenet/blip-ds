@@ -8,22 +8,22 @@
 .text {
   &__variant {
     &--fs-10 {
-      @include font-base();
+      @include text-base();
       font-size: $fs-10;
     }
 
     &--fs-12 {
-      @include font-base();
+      @include text-base();
       font-size: $fs-12;
     }
 
     &--fs-14 {
-      @include font-base();
+      @include text-base();
       font-size: $fs-14;
     }
 
     &--fs-16 {
-      @include font-base();
+      @include text-base();
       font-size: $fs-16;
     }
   }

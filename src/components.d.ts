@@ -12,6 +12,9 @@ import {
   IconTheme,
 } from './components/icon/icon';
 import {
+  FontSize,
+} from './components/text/text';
+import {
   TabActivateEvent,
 } from './components/my-tab/my-tab';
 
@@ -53,7 +56,10 @@ export namespace Components {
     'theme': IconTheme;
   }
   interface BdsText {
-    'variant'?: string;
+    /**
+    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    */
+    'variant'?: FontSize;
   }
   interface MyTab {
     'active': boolean;
@@ -154,7 +160,10 @@ declare namespace LocalJSX {
     'theme'?: IconTheme;
   }
   interface BdsText {
-    'variant'?: string;
+    /**
+    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    */
+    'variant'?: FontSize;
   }
   interface MyTab {
     'active'?: boolean;
