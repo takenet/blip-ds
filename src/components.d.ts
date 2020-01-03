@@ -57,6 +57,14 @@ export namespace Components {
   }
   interface BdsText {
     /**
+    * Added style no wrap
+    */
+    'noWrap'?: boolean;
+    /**
+    * Tranform text in paragraph
+    */
+    'paragraph'?: boolean;
+    /**
     * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
     */
     'variant'?: FontSize;
@@ -160,6 +168,14 @@ declare namespace LocalJSX {
     'theme'?: IconTheme;
   }
   interface BdsText {
+    /**
+    * Added style no wrap
+    */
+    'noWrap'?: boolean;
+    /**
+    * Tranform text in paragraph
+    */
+    'paragraph'?: boolean;
     /**
     * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
     */
