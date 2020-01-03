@@ -7,7 +7,7 @@ module.exports = async ({ config }) => {
   config.entry.push(path.join(__dirname, "../dist/blip-ds.js"));
   fs.readdirSync(
     path.join(__dirname, "../dist/collection/components")
-  ).map(function(file) {
+  ).map(function (file) {
     jsFilePath = path.join(
       __dirname,
       `../dist/collection/components/${file}/${file}.js`
@@ -44,6 +44,12 @@ module.exports = async ({ config }) => {
   );
 
   config.plugins.push(new WriteFilePlugin());
+
+  config.module.rules.push({
+    test: /\.stories\.jsx?$/,
+    loaders: [require.resolve('@storybook/source-loader')],
+    enforce: 'pre',
+  });
 
   return config;
 };

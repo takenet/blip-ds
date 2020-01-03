@@ -8,14 +8,28 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  iconSizes,
-  iconThemes,
+  IconSize,
+  IconTheme,
 } from './components/icon/icon';
 import {
   TabActivateEvent,
 } from './components/my-tab/my-tab';
 
 export namespace Components {
+  interface BdsCardColor {
+    /**
+    * Specifies HEX color, use Figma docs in Blip DS.
+    */
+    'hex'?: string;
+    /**
+    * Specifies name color, use Figma docs in Blip DS.
+    */
+    'name': string;
+    /**
+    * Specifies variabel sass color, _variables.scss.
+    */
+    'variable': string;
+  }
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -32,11 +46,11 @@ export namespace Components {
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of:  "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
-    'size'?: iconSizes;
+    'size'?: IconSize;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
-    'theme': iconThemes;
+    'theme': IconTheme;
   }
   interface MyTab {
     'active': boolean;
@@ -53,6 +67,12 @@ export namespace Components {
 
 declare global {
 
+
+  interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {}
+  var HTMLBdsCardColorElement: {
+    prototype: HTMLBdsCardColorElement;
+    new (): HTMLBdsCardColorElement;
+  };
 
   interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {}
   var HTMLBdsIconElement: {
@@ -78,6 +98,7 @@ declare global {
     new (): HTMLSbpButtonElement;
   };
   interface HTMLElementTagNameMap {
+    'bds-card-color': HTMLBdsCardColorElement;
     'bds-icon': HTMLBdsIconElement;
     'my-tab': HTMLMyTabElement;
     'my-tab-header': HTMLMyTabHeaderElement;
@@ -86,6 +107,20 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface BdsCardColor {
+    /**
+    * Specifies HEX color, use Figma docs in Blip DS.
+    */
+    'hex'?: string;
+    /**
+    * Specifies name color, use Figma docs in Blip DS.
+    */
+    'name': string;
+    /**
+    * Specifies variabel sass color, _variables.scss.
+    */
+    'variable': string;
+  }
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -102,11 +137,11 @@ declare namespace LocalJSX {
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of:  "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
-    'size'?: iconSizes;
+    'size'?: IconSize;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
-    'theme'?: iconThemes;
+    'theme'?: IconTheme;
   }
   interface MyTab {
     'active'?: boolean;
@@ -122,6 +157,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'bds-card-color': BdsCardColor;
     'bds-icon': BdsIcon;
     'my-tab': MyTab;
     'my-tab-header': MyTabHeader;
@@ -135,6 +171,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
       'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;

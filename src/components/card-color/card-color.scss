@@ -1,0 +1,320 @@
+@mixin fontDescriptionLabel() {
+  color: $color-neutral-medium-cloud;
+  font-size: 10px;
+  line-height: 15px;
+  font-weight: lighter;
+}
+
+@mixin fontDescriptionValue() {
+  color: $color-neutral-dark-city;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: lighter;
+}
+
+$border-radius: 8px;
+
+.card-color {
+  width: 239px;
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius;
+  box-shadow: $shadow-drop;
+  margin-left: 8px;
+  margin-top: 8px;
+
+  &--color {
+    flex: 2;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &-primary-main {
+      background-color: $color-primary-main;
+    }
+    &-primary-light {
+      background-color: $color-primary-light;
+    }
+    &-primary-dark {
+      background-color: $color-primary-dark;
+    }
+    &-primary-ghost {
+      background-color: $color-primary-ghost;
+    }
+
+    &-secondary-delete {
+      background-color: $color-secondary-delete;
+    }
+    &-secondary-cheetos {
+      background-color: $color-secondary-cheetos;
+    }
+    &-secondary-true {
+      background-color: $color-secondary-true;
+    }
+
+    &-neutral-disbled-blues-text {
+      background-color: $color-neutral-disbled-blues-text;
+    }
+    &-neutral-disbled-blues-bg {
+      background-color: $color-neutral-disbled-blues-bg;
+    }
+
+    &-neutral-dark-onix {
+      background-color: $color-neutral-dark-onix;
+    }
+    &-neutral-dark-suit {
+      background-color: $color-neutral-dark-suit;
+    }
+    &-neutral-dark-city {
+      background-color: $color-neutral-dark-city;
+    }
+    &-neutral-dark-rooftop {
+      background-color: $color-neutral-dark-rooftop;
+    }
+
+    &-neutral-medium-desk {
+      background-color: $color-neutral-medium-desk;
+    }
+    &-neutral-medium-cloud {
+      background-color: $color-neutral-medium-cloud;
+    }
+    &-neutral-medium-silver {
+      background-color: $color-neutral-medium-silver;
+    }
+
+    &-neutral-light-wave {
+      background-color: $color-neutral-light-wave;
+    }
+    &-neutral-light-off {
+      background-color: $color-neutral-light-off;
+    }
+    &-neutral-light-brezze {
+      background-color: $color-neutral-light-brezze;
+    }
+    &-neutral-light-whisper {
+      background-color: $color-neutral-light-whisper;
+    }
+
+    &-extend-rr-b-vitamin {
+      background-color: $color-extend-rr-b-vitamin;
+    }
+    &-extend-rr-flower {
+      background-color: $color-extend-rr-flower;
+    }
+    &-extend-rr-lipstick {
+      background-color: $color-extend-rr-lipstick;
+    }
+    &-extend-rr-dragon {
+      background-color: $color-extend-rr-dragon;
+    }
+    &-extend-rr-ballet {
+      background-color: $color-extend-rr-ballet;
+    }
+    &-extend-rr-yogurt {
+      background-color: $color-extend-rr-yogurt;
+    }
+    &-extend-rr-watermelon {
+      background-color: $color-extend-rr-watermelon;
+    }
+    &-extend-rr-blush {
+      background-color: $color-extend-rr-blush;
+    }
+
+    &-extend-yo-fairy {
+      background-color: $color-extend-yo-fairy;
+    }
+    &-extend-yo-d-vitamin {
+      background-color: $color-extend-yo-d-vitamin;
+    }
+    &-extend-yo-melon {
+      background-color: $color-extend-yo-melon;
+    }
+    &-extend-yo-hay {
+      background-color: $color-extend-yo-hay;
+    }
+    &-extend-yo-sand {
+      background-color: $color-extend-yo-sand;
+    }
+    &-extend-yo-c-vitamin {
+      background-color: $color-extend-yo-c-vitamin;
+    }
+    &-extend-yo-Sphinx {
+      background-color: $color-extend-yo-Sphinx;
+    }
+    &-extend-yo-moose {
+      background-color: $color-extend-yo-moose;
+    }
+    &-extend-yo-summer {
+      background-color: $color-extend-yo-summer;
+    }
+    &-extend-yo-doritos {
+      background-color: $color-extend-yo-doritos;
+    }
+    &-extend-yo-carrot {
+      background-color: $color-extend-yo-carrot;
+    }
+
+    &-exnted-green-chameleon {
+      background-color: $color-exnted-green-chameleon;
+    }
+    &-exnted-green-mint {
+      background-color: $color-exnted-green-mint;
+    }
+    &-exnted-green-corn {
+      background-color: $color-exnted-green-corn;
+    }
+    &-exnted-green-asparagus {
+      background-color: $color-exnted-green-asparagus;
+    }
+    &-exnted-green-bamboo {
+      background-color: $color-exnted-green-bamboo;
+    }
+    &-exnted-green-lime {
+      background-color: $color-exnted-green-lime;
+    }
+    &-exnted-green-leaf {
+      background-color: $color-exnted-green-leaf;
+    }
+    &-exnted-green-algae {
+      background-color: $color-exnted-green-algae;
+    }
+
+    &-exnted-blue-sky {
+      background-color: $color-exnted-blue-sky;
+    }
+    &-exnted-blue-wind {
+      background-color: $color-exnted-blue-wind;
+    }
+    &-exnted-blue-mermaid {
+      background-color: $color-exnted-blue-mermaid;
+    }
+    &-exnted-blue-galaxy {
+      background-color: $color-exnted-blue-galaxy;
+    }
+
+    &-exnted-blue-ice {
+      background-color: $color-exnted-blue-ice;
+    }
+    &-exnted-blue-frozen {
+      background-color: $color-exnted-blue-frozen;
+    }
+    &-exnted-blue-smurf {
+      background-color: $color-exnted-blue-smurf;
+    }
+    &-exnted-blue-whale {
+      background-color: $color-exnted-blue-whale;
+    }
+
+    &-exnted-blue-genie {
+      background-color: $color-exnted-blue-genie;
+    }
+    &-exnted-blue-unicorn {
+      background-color: $color-exnted-blue-unicorn;
+    }
+    &-exnted-blue-sea {
+      background-color: $color-exnted-blue-sea;
+    }
+    &-exnted-blue-jazz {
+      background-color: $color-exnted-blue-jazz;
+    }
+
+    &-exnted-purples-eggplant {
+      background-color: $color-exnted-purples-eggplant;
+    }
+    &-exnted-purples-pixie {
+      background-color: $color-exnted-purples-pixie;
+    }
+    &-exnted-purples-witch {
+      background-color: $color-exnted-purples-witch;
+    }
+    &-exnted-purples-grape {
+      background-color: $color-exnted-purples-grape;
+    }
+    &-exnted-purples-violet {
+      background-color: $color-exnted-purples-violet;
+    }
+    &-exnted-purples-wine {
+      background-color: $color-exnted-purples-wine;
+    }
+    &-exnted-purples-acai {
+      background-color: $color-exnted-purples-acai;
+    }
+
+    &-gradient-universe {
+      background: $color-gradient-universe;
+    }
+    &-gradient-street {
+      background: $color-gradient-street;
+    }
+    &-gradient-chair {
+      background: $color-gradient-chair;
+    }
+    &-gradient-shine {
+      background: $color-gradient-shine;
+    }
+    &-gradient-olaf {
+      background: $color-gradient-olaf;
+    }
+    &-gradient-dg-blip-system {
+      background: $color-gradient-dg-blip-system;
+    }
+    &-gradient-error {
+      background: $color-gradient-error;
+    }
+    &-gradient-phoenix {
+      background: $color-gradient-phoenix;
+    }
+    &-gradient-success {
+      background: $color-gradient-success;
+    }
+    &-gradient-barbie {
+      background: $color-gradient-barbie;
+    }
+    &-gradient-jeans {
+      background: $color-gradient-jeans;
+    }
+    &-gradient-ocean {
+      background: $color-gradient-ocean;
+    }
+    &-gradient-smurfette {
+      background: $color-gradient-smurfette;
+    }
+  }
+
+  &__description {
+    flex: 1;
+    padding: 0 8px;
+    background-color: $color-neutral-light-whisper;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+
+    &__name {
+      &__label {
+        @include fontDescriptionLabel();
+      }
+
+      &__text {
+        @include fontDescriptionValue();
+      }
+    }
+
+    &__value {
+      &__label {
+        @include fontDescriptionLabel();
+      }
+
+      &__text {
+        @include fontDescriptionValue();
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { Component, Host, State, Prop, h, Watch } from '@stencil/core';
 import { getSvgPath, getSvgContent, formatSvg } from './utils';
 
-export type iconSizes = 'xxx-small'
+export type IconSize = 'xxx-small'
   | 'xx-small'
   | 'x-small'
   | 'small'
@@ -11,7 +11,7 @@ export type iconSizes = 'xxx-small'
   | 'xx-large'
   | 'xxx-large';
 
-export type iconThemes = 'outline' | 'solid';
+export type IconTheme = 'outline' | 'solid';
 
 @Component({
   tag: 'bds-icon',
@@ -36,7 +36,7 @@ export class Icon {
    * Icon size. Entered as one of the icon size design tokens. Can be one of: 
    * "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
    */
-  @Prop() size?: iconSizes = 'medium';
+  @Prop() size?: IconSize = 'medium';
 
   /**
   * Specifies the color to use.Specifies a color to use. The default is svg.
@@ -46,7 +46,7 @@ export class Icon {
   /**
   * Specifies the theme to use outline or solid icons. Defaults to outline.
   */
-  @Prop({ reflect: true }) theme: iconThemes = 'outline';
+  @Prop({ reflect: true }) theme: IconTheme = 'outline';
 
   async connectedCallback(): Promise<void> {
     await this.loadSvg();
