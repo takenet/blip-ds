@@ -12,8 +12,10 @@ import {
   IconTheme,
 } from './components/icon/icon';
 import {
+  Bold,
+  FontLineHeight,
   FontSize,
-} from './components/text/text';
+} from './components/typo/typo';
 import {
   TabActivateEvent,
 } from './components/my-tab/my-tab';
@@ -55,7 +57,19 @@ export namespace Components {
     */
     'theme': IconTheme;
   }
-  interface BdsText {
+  interface BdsTypo {
+    /**
+    * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
+    */
+    'bold'?: Bold;
+    /**
+    * Added font style italic
+    */
+    'italic'?: boolean;
+    /**
+    * Line Height. Entered as one of the line hieght. Can be one of:  'none', 'small', 'simple', 'plus', 'double'
+    */
+    'lineHeight'?: FontLineHeight;
     /**
     * Added style no wrap
     */
@@ -65,7 +79,7 @@ export namespace Components {
     */
     'paragraph'?: boolean;
     /**
-    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
     */
     'variant'?: FontSize;
   }
@@ -97,10 +111,10 @@ declare global {
     new (): HTMLBdsIconElement;
   };
 
-  interface HTMLBdsTextElement extends Components.BdsText, HTMLStencilElement {}
-  var HTMLBdsTextElement: {
-    prototype: HTMLBdsTextElement;
-    new (): HTMLBdsTextElement;
+  interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
+  var HTMLBdsTypoElement: {
+    prototype: HTMLBdsTypoElement;
+    new (): HTMLBdsTypoElement;
   };
 
   interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {}
@@ -123,7 +137,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-icon': HTMLBdsIconElement;
-    'bds-text': HTMLBdsTextElement;
+    'bds-typo': HTMLBdsTypoElement;
     'my-tab': HTMLMyTabElement;
     'my-tab-header': HTMLMyTabHeaderElement;
     'sbp-button': HTMLSbpButtonElement;
@@ -167,7 +181,19 @@ declare namespace LocalJSX {
     */
     'theme'?: IconTheme;
   }
-  interface BdsText {
+  interface BdsTypo {
+    /**
+    * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
+    */
+    'bold'?: Bold;
+    /**
+    * Added font style italic
+    */
+    'italic'?: boolean;
+    /**
+    * Line Height. Entered as one of the line hieght. Can be one of:  'none', 'small', 'simple', 'plus', 'double'
+    */
+    'lineHeight'?: FontLineHeight;
     /**
     * Added style no wrap
     */
@@ -177,7 +203,7 @@ declare namespace LocalJSX {
     */
     'paragraph'?: boolean;
     /**
-    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
     */
     'variant'?: FontSize;
   }
@@ -197,7 +223,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'bds-card-color': BdsCardColor;
     'bds-icon': BdsIcon;
-    'bds-text': BdsText;
+    'bds-typo': BdsTypo;
     'my-tab': MyTab;
     'my-tab-header': MyTabHeader;
     'sbp-button': SbpButton;
@@ -212,7 +238,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
-      'bds-text': LocalJSX.BdsText & JSXBase.HTMLAttributes<HTMLBdsTextElement>;
+      'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
       'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
       'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;

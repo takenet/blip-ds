@@ -1,0 +1,106 @@
+.typo {
+  margin: 0;
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: normal;
+
+  &--italic {
+    font-style: italic;
+  }
+
+  &--no-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &--paragraph {
+    margin-bottom: $paragraph-margin;
+  }
+
+  &__variant {
+    &--fs-10 {
+      font-size: $fs-10;
+      line-height: $line-hight-plus;
+    }
+
+    &--fs-12 {
+      font-size: $fs-12;
+      line-height: $line-hight-plus;
+    }
+
+    &--fs-14 {
+      font-size: $fs-14;
+      line-height: $line-hight-plus;
+    }
+
+    &--fs-16 {
+      font-size: $fs-16;
+      line-height: $line-hight-plus;
+    }
+
+    &--fs-20 {
+      font-size: $fs-20;
+      margin-bottom: $title-margin-large;
+      line-height: $line-hight-simple;
+    }
+
+    &--fs-24 {
+      font-size: $fs-24;
+      margin-bottom: $title-margin-large;
+      line-height: $line-hight-simple;
+    }
+
+    &--fs-32 {
+      font-size: $fs-32;
+      margin-bottom: $title-margin-large;
+      line-height: $line-hight-simple;
+    }
+
+    &--fs-40 {
+      font-size: $fs-40;
+      margin-bottom: $title-margin-medium;
+      line-height: $line-hight-simple;
+    }
+  }
+
+  &__line-height {
+    &--none {
+      line-height: $line-hight-none;
+    }
+
+    &--small {
+      line-height: $line-hight-small;
+    }
+
+    &--simple {
+      line-height: $line-hight-simple;
+    }
+
+    &--plus {
+      line-height: $line-hight-plus;
+    }
+
+    &--double {
+      line-height: $line-hight-double;
+    }
+  }
+
+  &__bold {
+    &--regular {
+      font-weight: $font-weight-regular;
+    }
+
+    &--semi-bold {
+      font-weight: $font-weight-semi-bold;
+    }
+
+    &--bold {
+      font-weight: $font-weight-bold;
+    }
+
+    &--extra-bold {
+      font-weight: $font-weight-extra-bold;
+    }
+  }
+}
