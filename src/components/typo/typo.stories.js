@@ -70,3 +70,9 @@ export const typoParapgraph = () => /*html*/`
   <bds-typo variant="${text("variant", "fs-16")}" paragraph="${boolean("paragraph", true)}">${text("text", paragraph)}</bds-typo>
   <bds-typo variant="${text("variant", "fs-16")}" paragraph="${boolean("paragraph", true)}">${text("text", paragraph)}</bds-typo>
 `;
+
+export const typoTag = () => /*html*/`
+  <bds-typo variant="${text("variant", "fs-40")}" tag=${text("tag", "h1")}>${text("text", "Wearetaketeam")}</bds-typo>
+  <bds-typo variant="${text("variant", "fs-40")}" tag=${text("tag", "h2")}>${text("text", "Wearetaketeam")}</bds-typo>
+  <bds-typo variant="${text("variant", "fs-40")}" tag=${text("tag", "p")}>${text("text", "Wearetaketeam")}</bds-typo>
+`;

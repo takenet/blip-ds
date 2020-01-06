@@ -12,6 +12,7 @@ describe('bds-typo', () => {
 
     expect(page.root.shadowRoot.querySelector(".typo")).toBeTruthy();
     expect(page.root.querySelector(".typo")).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector("p")).toBeTruthy();
     expect(page.root.shadowRoot.querySelector(".typo__variant--fs-16")).toBeTruthy();
     expect(page.root.shadowRoot.querySelector(".typo--no-wrap")).toBeFalsy();
     expect(page.root.shadowRoot.querySelector(".typo--paragraph")).toBeFalsy();
@@ -45,5 +46,15 @@ describe('bds-typo', () => {
     });
 
     expect(page.root.shadowRoot.querySelector(".typo--paragraph")).toBeTruthy();
+  });
+
+  it('should render passed tag', async () => {
+    const page = await newSpecPage({
+      html: `<bds-typo tag="h1">Test</bds-typo>`,
+      components: [Typo]
+    });
+
+    expect(page.root.shadowRoot.querySelector("p")).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector("h1")).toBeTruthy();
   });
 });

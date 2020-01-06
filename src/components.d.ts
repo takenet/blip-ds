@@ -15,6 +15,7 @@ import {
   Bold,
   FontLineHeight,
   FontSize,
+  Tag,
 } from './components/typo/typo';
 import {
   TabActivateEvent,
@@ -78,6 +79,10 @@ export namespace Components {
     * Tranform text in paragraph
     */
     'paragraph'?: boolean;
+    /**
+    * Define element tag, must be used for acessibilty
+    */
+    'tag'?: Tag;
     /**
     * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
     */
@@ -202,6 +207,10 @@ declare namespace LocalJSX {
     * Tranform text in paragraph
     */
     'paragraph'?: boolean;
+    /**
+    * Define element tag, must be used for acessibilty
+    */
+    'tag'?: Tag;
     /**
     * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
     */

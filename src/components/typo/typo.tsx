@@ -20,6 +20,12 @@ export type Bold = 'regular'
   | 'bold'
   | 'extra-bold';
 
+export type Tag = 'p'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4';
+  
 @Component({
   tag: 'bds-typo',
   styleUrl: 'typo.scss',
@@ -59,9 +65,16 @@ export class Typo {
    */
   @Prop() paragraph?: boolean = false;
 
+  /**
+   * Define element tag, must be used for acessibilty
+   */
+  @Prop() tag?: Tag = 'p';
+
   render(): HTMLElement {
+    const Element = this.tag;
+
     return (
-      <p class={{
+      <Element class={{
         'typo': true,
         [`typo__variant--${this.variant}`]: true,
         'typo--no-wrap': this.noWrap,
@@ -71,7 +84,7 @@ export class Typo {
         [`typo__bold--${this.bold}`]: !!this.bold
       }}>
         <slot></slot>
-      </p>
+      </Element>
     );
   }
 
