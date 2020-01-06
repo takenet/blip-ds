@@ -1,0 +1,20 @@
+<head>
+</head>
+<script>
+    // Replace Stencil Polyfill document.baseURI
+    if (typeof document.baseURI !== 'string') {
+        Object.defineProperty(Document.prototype, 'baseURI', {
+            enumerable: true,
+            configurable: true,
+            get: function () {
+                var base = document.querySelector('base');
+                if (base && base.href) {
+                    return base.href;
+                }
+                return document.URL;
+            }
+        });
+    }
+</script>
+<script type="module" src="/build/blip-ds.esm.js"></script>
+<script nomodule src="/build/blip-ds.js"></script>

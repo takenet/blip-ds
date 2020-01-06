@@ -12,11 +12,11 @@ import {
   IconTheme,
 } from './components/icon/icon';
 import {
+  Bold,
+  FontLineHeight,
   FontSize,
-} from './components/text/text';
-import {
-  TabActivateEvent,
-} from './components/my-tab/my-tab';
+  Tag,
+} from './components/typo/typo';
 
 export namespace Components {
   interface BdsCardColor {
@@ -55,7 +55,19 @@ export namespace Components {
     */
     'theme': IconTheme;
   }
-  interface BdsText {
+  interface BdsTypo {
+    /**
+    * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
+    */
+    'bold'?: Bold;
+    /**
+    * Added font style italic
+    */
+    'italic'?: boolean;
+    /**
+    * Line Height. Entered as one of the line hieght. Can be one of:  'none', 'small', 'simple', 'plus', 'double'
+    */
+    'lineHeight'?: FontLineHeight;
     /**
     * Added style no wrap
     */
@@ -65,17 +77,13 @@ export namespace Components {
     */
     'paragraph'?: boolean;
     /**
-    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    * Define element tag, must be used for acessibilty
+    */
+    'tag'?: Tag;
+    /**
+    * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
     */
     'variant'?: FontSize;
-  }
-  interface MyTab {
-    'active': boolean;
-    'name': string;
-    'tab': string;
-  }
-  interface MyTabHeader {
-    'activeTab': string;
   }
   interface SbpButton {
     'action': Function;
@@ -97,22 +105,10 @@ declare global {
     new (): HTMLBdsIconElement;
   };
 
-  interface HTMLBdsTextElement extends Components.BdsText, HTMLStencilElement {}
-  var HTMLBdsTextElement: {
-    prototype: HTMLBdsTextElement;
-    new (): HTMLBdsTextElement;
-  };
-
-  interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {}
-  var HTMLMyTabElement: {
-    prototype: HTMLMyTabElement;
-    new (): HTMLMyTabElement;
-  };
-
-  interface HTMLMyTabHeaderElement extends Components.MyTabHeader, HTMLStencilElement {}
-  var HTMLMyTabHeaderElement: {
-    prototype: HTMLMyTabHeaderElement;
-    new (): HTMLMyTabHeaderElement;
+  interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
+  var HTMLBdsTypoElement: {
+    prototype: HTMLBdsTypoElement;
+    new (): HTMLBdsTypoElement;
   };
 
   interface HTMLSbpButtonElement extends Components.SbpButton, HTMLStencilElement {}
@@ -123,9 +119,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-icon': HTMLBdsIconElement;
-    'bds-text': HTMLBdsTextElement;
-    'my-tab': HTMLMyTabElement;
-    'my-tab-header': HTMLMyTabHeaderElement;
+    'bds-typo': HTMLBdsTypoElement;
     'sbp-button': HTMLSbpButtonElement;
   }
 }
@@ -167,7 +161,19 @@ declare namespace LocalJSX {
     */
     'theme'?: IconTheme;
   }
-  interface BdsText {
+  interface BdsTypo {
+    /**
+    * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
+    */
+    'bold'?: Bold;
+    /**
+    * Added font style italic
+    */
+    'italic'?: boolean;
+    /**
+    * Line Height. Entered as one of the line hieght. Can be one of:  'none', 'small', 'simple', 'plus', 'double'
+    */
+    'lineHeight'?: FontLineHeight;
     /**
     * Added style no wrap
     */
@@ -177,18 +183,13 @@ declare namespace LocalJSX {
     */
     'paragraph'?: boolean;
     /**
-    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    * Define element tag, must be used for acessibilty
+    */
+    'tag'?: Tag;
+    /**
+    * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
     */
     'variant'?: FontSize;
-  }
-  interface MyTab {
-    'active'?: boolean;
-    'name'?: string;
-    'onTabActivate'?: (event: CustomEvent<TabActivateEvent>) => void;
-    'tab'?: string;
-  }
-  interface MyTabHeader {
-    'activeTab'?: string;
   }
   interface SbpButton {
     'action'?: Function;
@@ -197,9 +198,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'bds-card-color': BdsCardColor;
     'bds-icon': BdsIcon;
-    'bds-text': BdsText;
-    'my-tab': MyTab;
-    'my-tab-header': MyTabHeader;
+    'bds-typo': BdsTypo;
     'sbp-button': SbpButton;
   }
 }
@@ -212,9 +211,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
-      'bds-text': LocalJSX.BdsText & JSXBase.HTMLAttributes<HTMLBdsTextElement>;
-      'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
-      'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;
+      'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
     }
   }

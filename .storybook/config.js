@@ -1,4 +1,4 @@
-import { configure, addParameters, addDecorator } from '@storybook/html';
+import { configure, addParameters, addDecorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withTests } from "@storybook/addon-jest";
 
@@ -18,4 +18,4 @@ addDecorator(
 );
 
 // automatically import all files ending in *.stories.js
-configure(require.context('../src/components', true, /\.stories\.js$/), module);
+configure(require.context('../src/components', true, /\.stories\.jsx$/), module);

@@ -10,25 +10,26 @@ $font-family: 'Nunito', 'Helvetica', 'Arial', sans-serif;
   Font sizes have been converted to rem considering a base size of 16px.
 */
 
-$base-font-size: 16px;
-
 $fs-40: 2.5rem; // 40px
 $fs-32: 2rem; // 32px
 $fs-24: 1.5rem; // 24px
+$fs-20: 1.25rem; // 20px
 $fs-16: 1rem; // 16px
 $fs-14: 0.875rem; // 20px
 $fs-12: 0.75rem; // 12px
 $fs-10: 0.625rem; // 10px
 
-$base-font-size: $fs-16;
-$regular-font-size: $fs-14;
-$small-font-size: $fs-10;
+$line-hight-none: 0%;
+$line-hight-small: 5%;
+$line-hight-simple: 100%;
+$line-hight-plus: 150%;
+$line-hight-double: 200%;
 
-// Typography
-$regular: 300;
-$medium: 400;
-$bold: 700;
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
 
-$base-font-weight: $regular;
-
-$base-letter-spacing: -0.04em;
+$paragraph-margin: 16px;
+$title-margin-medium: 20px;
+$title-margin-large: 22px;
