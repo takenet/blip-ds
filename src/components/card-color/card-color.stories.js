@@ -125,7 +125,7 @@ const gradientsColours = [
 
 const getSectionColor = (title, content) => /*html*/`
     <div>
-        <h2>${title}</h2>
+        <bds-typo variant="fs-20">${title}</bds-typo>
         <div style=" display: flex; flex-wrap: wrap; justify-content: start;">
             ${content}
         <div>

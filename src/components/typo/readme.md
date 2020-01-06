@@ -18,6 +18,19 @@
 | `variant`    | `variant`     | Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40'; | `"fs-10" \| "fs-12" \| "fs-14" \| "fs-16" \| "fs-20" \| "fs-24" \| "fs-32" \| "fs-40"` | `'fs-16'` |
 
 
+## Dependencies
+
+### Used by
+
+ - [bds-card-color](../card-color)
+
+### Graph
+```mermaid
+graph TD;
+  bds-card-color --> bds-typo
+  style bds-typo fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

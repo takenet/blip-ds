@@ -29,17 +29,26 @@ export class CardColor {
           'card-color--color': true,
           [`card-color--${this.variable}`]: true,
         }}>
-          ${this.variable}
+          <bds-typo variant="fs-14">${this.variable}</bds-typo>
         </div>
         <div class="card-color__description">
           <div class="card-color__description__name">
-            <div class="card-color__description__name__label">Name</div>
-            <div class="card-color__description__name__text">{this.name}</div>
+            <div class="card-color__description__name__label">
+              <bds-typo variant="fs-10">Name</bds-typo>
+            </div>
+            <div class="card-color__description__name__text">
+
+              <bds-typo variant="fs-12">{this.name}</bds-typo>
+            </div>
           </div>
           {this.hex && (
             <div class="card-color__description__value">
-              <div class="card-color__description__value__label">HEX</div>
-              <div class="card-color__description__value__text">{this.hex}</div>
+              <div class="card-color__description__value__label">
+                <bds-typo variant="fs-10">HEX</bds-typo>
+              </div>
+              <div class="card-color__description__value__text">
+                <bds-typo variant="fs-12">{this.hex}</bds-typo>
+              </div>
             </div>
           )}
         </div>
