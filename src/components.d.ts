@@ -12,6 +12,9 @@ import {
   IconTheme,
 } from './components/icon/icon';
 import {
+  FontSize,
+} from './components/text/text';
+import {
   TabActivateEvent,
 } from './components/my-tab/my-tab';
 
@@ -52,6 +55,20 @@ export namespace Components {
     */
     'theme': IconTheme;
   }
+  interface BdsText {
+    /**
+    * Added style no wrap
+    */
+    'noWrap'?: boolean;
+    /**
+    * Tranform text in paragraph
+    */
+    'paragraph'?: boolean;
+    /**
+    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    */
+    'variant'?: FontSize;
+  }
   interface MyTab {
     'active': boolean;
     'name': string;
@@ -80,6 +97,12 @@ declare global {
     new (): HTMLBdsIconElement;
   };
 
+  interface HTMLBdsTextElement extends Components.BdsText, HTMLStencilElement {}
+  var HTMLBdsTextElement: {
+    prototype: HTMLBdsTextElement;
+    new (): HTMLBdsTextElement;
+  };
+
   interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {}
   var HTMLMyTabElement: {
     prototype: HTMLMyTabElement;
@@ -100,6 +123,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-icon': HTMLBdsIconElement;
+    'bds-text': HTMLBdsTextElement;
     'my-tab': HTMLMyTabElement;
     'my-tab-header': HTMLMyTabHeaderElement;
     'sbp-button': HTMLSbpButtonElement;
@@ -143,6 +167,20 @@ declare namespace LocalJSX {
     */
     'theme'?: IconTheme;
   }
+  interface BdsText {
+    /**
+    * Added style no wrap
+    */
+    'noWrap'?: boolean;
+    /**
+    * Tranform text in paragraph
+    */
+    'paragraph'?: boolean;
+    /**
+    * Variant. Entered as one of the font size variant. Can be one of:  fs-10,  fs-12, fs-14,  fs-16
+    */
+    'variant'?: FontSize;
+  }
   interface MyTab {
     'active'?: boolean;
     'name'?: string;
@@ -159,6 +197,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'bds-card-color': BdsCardColor;
     'bds-icon': BdsIcon;
+    'bds-text': BdsText;
     'my-tab': MyTab;
     'my-tab-header': MyTabHeader;
     'sbp-button': SbpButton;
@@ -173,6 +212,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+      'bds-text': LocalJSX.BdsText & JSXBase.HTMLAttributes<HTMLBdsTextElement>;
       'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
       'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
