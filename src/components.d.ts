@@ -17,9 +17,6 @@ import {
   FontSize,
   Tag,
 } from './components/typo/typo';
-import {
-  TabActivateEvent,
-} from './components/my-tab/my-tab';
 
 export namespace Components {
   interface BdsCardColor {
@@ -88,14 +85,6 @@ export namespace Components {
     */
     'variant'?: FontSize;
   }
-  interface MyTab {
-    'active': boolean;
-    'name': string;
-    'tab': string;
-  }
-  interface MyTabHeader {
-    'activeTab': string;
-  }
   interface SbpButton {
     'action': Function;
   }
@@ -122,18 +111,6 @@ declare global {
     new (): HTMLBdsTypoElement;
   };
 
-  interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {}
-  var HTMLMyTabElement: {
-    prototype: HTMLMyTabElement;
-    new (): HTMLMyTabElement;
-  };
-
-  interface HTMLMyTabHeaderElement extends Components.MyTabHeader, HTMLStencilElement {}
-  var HTMLMyTabHeaderElement: {
-    prototype: HTMLMyTabHeaderElement;
-    new (): HTMLMyTabHeaderElement;
-  };
-
   interface HTMLSbpButtonElement extends Components.SbpButton, HTMLStencilElement {}
   var HTMLSbpButtonElement: {
     prototype: HTMLSbpButtonElement;
@@ -143,8 +120,6 @@ declare global {
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-typo': HTMLBdsTypoElement;
-    'my-tab': HTMLMyTabElement;
-    'my-tab-header': HTMLMyTabHeaderElement;
     'sbp-button': HTMLSbpButtonElement;
   }
 }
@@ -216,15 +191,6 @@ declare namespace LocalJSX {
     */
     'variant'?: FontSize;
   }
-  interface MyTab {
-    'active'?: boolean;
-    'name'?: string;
-    'onTabActivate'?: (event: CustomEvent<TabActivateEvent>) => void;
-    'tab'?: string;
-  }
-  interface MyTabHeader {
-    'activeTab'?: string;
-  }
   interface SbpButton {
     'action'?: Function;
   }
@@ -233,8 +199,6 @@ declare namespace LocalJSX {
     'bds-card-color': BdsCardColor;
     'bds-icon': BdsIcon;
     'bds-typo': BdsTypo;
-    'my-tab': MyTab;
-    'my-tab-header': MyTabHeader;
     'sbp-button': SbpButton;
   }
 }
@@ -248,8 +212,6 @@ declare module "@stencil/core" {
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
-      'my-tab': LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
-      'my-tab-header': LocalJSX.MyTabHeader & JSXBase.HTMLAttributes<HTMLMyTabHeaderElement>;
       'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
     }
   }

@@ -1,3 +1,4 @@
+import React from 'react';
 import readme from './readme.md';
 
 export default {
@@ -123,43 +124,47 @@ const gradientsColours = [
   { name: 'Smurfette', variable: 'color-gradient-smurfette' },
 ];
 
-const getSectionColor = (title, content) => /*html*/`
+const getSectionColor = (title, content) => (
+  <>
     <div>
-        <bds-typo variant="fs-20">${title}</bds-typo>
-        <div style=" display: flex; flex-wrap: wrap; justify-content: start;">
-            ${content}
-        <div>
-    <div>
+      <bds-typo variant="fs-20">{title}</bds-typo>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'start' }}>
+        {content}
+      </div>
+    </div>
     <br />
-`;
+  </>
+);
 
 const getComponentCardColours = (name, variable, hex) => {
   if (hex) {
-    return /*html*/`<bds-card-color name="${name}" variable="${variable}" hex="${hex}"></bds-card-color>`
+    return (<bds-card-color name={name} variable={variable} hex={hex}></bds-card-color>);
   }
-  return /*html*/`<bds-card-color name="${name}" variable="${variable}"></bds-card-color>`
+  return (<bds-card-color name={name} variable={variable}></bds-card-color>);
 };
 
 const getColorsCards = (colors) => {
-  let html = '';
+  const elements = [];
 
-  for (let color of colors) {
-    html += getComponentCardColours(color.name, color.variable, color.hex);
+  for (const color of colors) {
+    elements.push(getComponentCardColours(color.name, color.variable, color.hex));
   }
-  return html;
+  return elements;
 }
 
-export const allColors = () => /*html*/`
-    ${getSectionColor('Primary Colours', getColorsCards(primaryColorus))}
-    ${getSectionColor('Secondary Colours', getColorsCards(secondaryColours))}
-    ${getSectionColor('Neutral Colours - Disabled Blues', getColorsCards(neutralColoursBlues))}
-    ${getSectionColor('Neutral Colours - Dark', getColorsCards(neutralColoursDark))}
-    ${getSectionColor('Neutral Colours - Medium', getColorsCards(neutralColoursMedium))}
-    ${getSectionColor('Neutral Colours - Light', getColorsCards(neutralColoursMediumLight))}
-    ${getSectionColor('Extended colors - Vermelhos / Rosas', getColorsCards(extendColoursRr))}
-    ${getSectionColor('Extended colors - Amarelos / Laranjas', getColorsCards(extendColoursYo))}
-    ${getSectionColor('Extended colors - Verdes', getColorsCards(extendColoursGreens))}
-    ${getSectionColor('Extended colors - Azuis', getColorsCards(extendColoursBlues))}
-    ${getSectionColor('Extended colors - Roxos', getColorsCards(extendColoursPurples))}
-    ${getSectionColor('Gradients', getColorsCards(gradientsColours))}
-`;
+export const allColors = () => (
+  <>
+    {getSectionColor('Primary Colours', getColorsCards(primaryColorus))}
+    {getSectionColor('Secondary Colours', getColorsCards(secondaryColours))}
+    {getSectionColor('Neutral Colours - Disabled Blues', getColorsCards(neutralColoursBlues))}
+    {getSectionColor('Neutral Colours - Dark', getColorsCards(neutralColoursDark))}
+    {getSectionColor('Neutral Colours - Medium', getColorsCards(neutralColoursMedium))}
+    {getSectionColor('Neutral Colours - Light', getColorsCards(neutralColoursMediumLight))}
+    {getSectionColor('Extended colors - Vermelhos / Rosas', getColorsCards(extendColoursRr))}
+    {getSectionColor('Extended colors - Amarelos / Laranjas', getColorsCards(extendColoursYo))}
+    {getSectionColor('Extended colors - Verdes', getColorsCards(extendColoursGreens))}
+    {getSectionColor('Extended colors - Azuis', getColorsCards(extendColoursBlues))}
+    {getSectionColor('Extended colors - Roxos', getColorsCards(extendColoursPurples))}
+    {getSectionColor('Gradients', getColorsCards(gradientsColours))}
+  </>
+);

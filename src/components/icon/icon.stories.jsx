@@ -1,3 +1,4 @@
+import React from 'react';
 import { withKnobs, text } from "@storybook/addon-knobs";
 
 import readme from './readme.md';
@@ -200,48 +201,46 @@ const outlineIcons = [
 ];
 
 export const allIcons = () => {
-  let story = '';
+  const story = [];
 
   solidIcons.forEach(name => {
-    story += /*html*/`
-     <bds-icon theme="solid" size="xxx-large" name="${name}"></bds-icon>
-    `;
+    story.push(<bds-icon theme="solid" size="xxx-large" name={name}></bds-icon>);
   });
 
-  story += '<br />';
+  story.push(<br />);
 
   outlineIcons.forEach(name => {
-    story += /*html*/`
-     <bds-icon theme="outline" size="xxx-large" name="${name}"></bds-icon>
-    `;
+    story.push(<bds-icon theme="outline" size="xxx-large" name={name}></bds-icon>);
   });
 
   return story;
 }
 
-export const iconDefault = () => `<bds-icon name="${text("name", "user")}"></bds-icon>`;
+export const iconDefault = () => (<bds-icon name="${text('name', 'user')}"></bds-icon>);
 
-export const iconTheme = () => /*html*/`
-  <bds-icon name="${text("name", "user")}" theme="${text("theme", "solid")}"></bds-icon>
-`;
+export const iconTheme = () => (<bds-icon name="${text('name', 'user')}" theme="${text('theme', 'solid')}"></bds-icon>);
 
-export const iconSizes = () => /*html*/`
-  <bds-icon name="${text("name", "user")}" size="xxx-large"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xx-large"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="x-large"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="large"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="medium"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="small"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="x-small"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xx-small"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xxx-small"></bds-icon>
-`;
+export const iconSizes = () => (
+  <>
+    <bds-icon name="${text('name', 'user')}" size="xxx-large"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xx-large"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="x-large"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="large"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="medium"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="small"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="x-small"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xx-small"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xxx-small"></bds-icon>
+  </>
+);
 
-export const iconColors = () => /*html*/`
-  <bds-icon name="${text("name", "user")}" size="xxx-large" color="${text("color1", "#2CC3D5")}"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xxx-large" color="${text("color2", "#87DDE8")}"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xxx-large" color="${text("color3", "#2498A8")}"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xxx-large" theme="solid" color="${text("color1", "#2CC3D5")}"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xxx-large" theme="solid" color="${text("color2", "#87DDE8")}"></bds-icon>
-  <bds-icon name="${text("name", "user")}" size="xxx-large" theme="solid" color="${text("color3", "#2498A8")}"></bds-icon>
-`;
+export const iconColors = () => (
+  <>
+    <bds-icon name="${text('name', 'user')}" size="xxx-large" color="${text('color1', '#2CC3D5')}"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xxx-large" color="${text('color2', '#87DDE8')}"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xxx-large" color="${text('color3', '#2498A8')}"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xxx-large" theme="solid" color="${text('color1', '#2CC3D5')}"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xxx-large" theme="solid" color="${text('color2', '#87DDE8')}"></bds-icon>
+    <bds-icon name="${text('name', 'user')}" size="xxx-large" theme="solid" color="${text('color3', '#2498A8')}"></bds-icon>
+  </>
+);

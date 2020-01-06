@@ -29,6 +29,7 @@
     "story": "npm-run-all --parallel start storybook",
     "story:test": "npm run test:generate && npm run story",
     "storybook": "start-storybook -p 9001 -c .storybook -s www",
+    "storybook:build": "build-storybook && cp -r www/build/ storybook-static/build/",
     "eslint": "eslint . --ext .jsx,.ts,.tsx"
   },
   "dependencies": {},
@@ -43,6 +44,7 @@
     "@storybook/addon-storysource": "^5.2.8",
     "@storybook/addon-viewport": "^5.2.8",
     "@storybook/html": "^5.2.8",
+    "@storybook/react": "^5.2.8",
     "@storybook/source-loader": "^5.2.8",
     "@types/jest": "24.0.24",
     "@types/puppeteer": "1.19.0",

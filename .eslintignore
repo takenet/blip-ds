@@ -8,3 +8,4 @@ loader
 coverage
 
 **/*.js
+**/*.jsx
