@@ -30,7 +30,7 @@ const neutralColoursDark = [
   { name: 'Onix', variable: 'color-neutral-dark-onix', hex: '#1A2437' },
   { name: 'Suit', variable: 'color-neutral-dark-suit', hex: '#343C4C' },
   { name: 'City', variable: 'color-neutral-dark-city', hex: '#56616E' },
-  { name: 'Rooftop', variable: 'color-neutral-dark-rooftop', hex: '#DAF2F4' },
+  { name: 'Rooftop', variable: 'color-neutral-dark-rooftop', hex: '#738192' },
 ];
 
 const neutralColoursMedium = [

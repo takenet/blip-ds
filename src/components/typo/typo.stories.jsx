@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 
 import readme from './readme.md';
 
@@ -29,12 +29,12 @@ export const allTypos = () => (
 export const typoBase = () => (
   <div style={{ width: '250px' }}>
     <bds-typo
-      variant="${text('variant', 'fs-16')}"
-      line-height="${text('lineHeight', '')}"
-      bold="${text('bold', '')}"
-      italic="${boolean('italic', false)}"
-      no-wrap="${boolean('noWrap', false)}"
-      paragraph="${boolean('paragraph', false)}"
+      variant={text('variant', 'fs-16')}
+      line-height={text('lineHeight', '')}
+      bold={text('bold', '')}
+      italic={boolean('italic', false)}
+      no-wrap={boolean('noWrap', false)}
+      paragraph={boolean('paragraph', false)}
     >
       {text("text", "Wearetaketeam")}
     </bds-typo>
@@ -71,21 +71,21 @@ export const typoItalic = () => (
 
 export const typoNoWrap = () => (
   <div style={{ width: '250px' }}>
-    <bds-typo variant="${text('variant', 'fs-16')}" no-wrap="${boolean('noWrap', true)}">{text('text', paragraph)}</bds-typo>
+    <bds-typo variant={text('variant', 'fs-16')} no-wrap={boolean('noWrap', true)}>{text('text', paragraph)}</bds-typo>
   </div>
 );
 
 export const typoParapgraph = () => (
   <>
-    <bds-typo variant="${text('variant', 'fs-16')}" paragraph="${boolean('paragraph', true)}">{text('text', paragraph)}</bds-typo>
-    <bds-typo variant="${text('variant', 'fs-16')}" paragraph="${boolean('paragraph', true)}" >{text('text', paragraph)}</bds-typo>
+    <bds-typo variant={text('variant', 'fs-16')} paragraph={boolean('paragraph', true)}>{text('text', paragraph)}</bds-typo>
+    <bds-typo variant={text('variant', 'fs-16')} paragraph={boolean('paragraph', true)} >{text('text', paragraph)}</bds-typo>
   </>
 );
 
 export const typoTag = () => (
   <>
-    <bds-typo variant="${text('variant', 'fs-40')}" tag="${text('tag', 'h1')}">{text('text', 'Wearetaketeam')}</bds-typo>
-    <bds-typo variant="${text('variant', 'fs-40')}" tag="${text('tag', 'h2')}">{text('text', 'Wearetaketeam')}</bds-typo>
-    <bds-typo variant="${text('variant', 'fs-40')}" tag="${text('tag', 'p')}">{text('text', 'Wearetaketeam')}</bds-typo>
+    <bds-typo variant={text('variant', 'fs-40')} tag={text('tag', 'h1')}>{text('text', 'Wearetaketeam')}</bds-typo>
+    <bds-typo variant={text('variant', 'fs-40')} tag={text('tag', 'h2')}>{text('text', 'Wearetaketeam')}</bds-typo>
+    <bds-typo variant={text('variant', 'fs-40')} tag={text('tag', 'p')}>{text('text', 'Wearetaketeam')}</bds-typo>
   </>
 );

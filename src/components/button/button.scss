@@ -1,3 +1,140 @@
+$button-border-radius: 8px;
+$button-min-height: 32px;
+
+$button-size-tall: 14px 16px;
+$button-size-standard: 10px 16px;
+$button-size-short: 6px 16px;
+
+@mixin reset-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  outline: none;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+
+  /* Remove excess padding and border in Firefox 4+ */
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+@mixin disable-button {
+  cursor: not-allowed;
+  background: $color-neutral-disbled-blues-bg;
+  color: $color-neutral-disbled-blues-text;
+
+  &:hover,
+  &:focus {
+    background: $color-neutral-disbled-blues-bg;
+  }
+
+  &:active {
+    background: $color-neutral-disbled-blues-bg;
+  }
+}
+
+@mixin padding-button($padding) {
+  padding: $padding;
+}
+
 .button {
-    background: $color-gradient-smurfette;
+  @include reset-button();
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  border-radius: $button-border-radius;
+  min-height: $button-min-height;
+  height: 100%;
+
+  &--size-tall {
+    @include padding-button($button-size-tall);
+  }
+
+  &--size-standard {
+    @include padding-button($button-size-standard);
+  }
+
+  &--size-short {
+    @include padding-button($button-size-short);
+  }
+
+  &__primary {
+    background: $color-primary-main;
+
+    &:hover,
+    &:focus {
+      background: $color-primary-dark;
+    }
+
+    &:active {
+      background: $color-primary-main;
+    }
+
+    &--loading {
+      background: $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button();
+    }
+  }
+
+  &__second {
+    background: transparent;
+
+    &:hover,
+    &:focus {
+      background: $color-primary-dark;
+    }
+
+    &:active {
+      background: $color-primary-main;
+    }
+
+    &--loading {
+      background: $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button();
+    }
+  }
+
+  &__content {
+    height: 20px;
+    display: flex;
+    align-items: center;
+
+    &__primary {
+      color: $color-primary-ghost;
+      &--disabled {
+        @include disable-button();
+      }
+    }
+
+    &__second {
+      color: $color-neutral-dark-rooftop;
+      &--disabled {
+        @include disable-button();
+      }
+    }
+  }
 }

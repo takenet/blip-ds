@@ -8,6 +8,10 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  ButtonSize,
+  ButtonVariant,
+} from './components/button/button';
+import {
   IconSize,
   IconTheme,
 } from './components/icon/icon';
@@ -19,6 +23,11 @@ import {
 } from './components/typo/typo';
 
 export namespace Components {
+  interface BdsButton {
+    'disabled'?: boolean;
+    'size'?: ButtonSize;
+    'variant'?: ButtonVariant;
+  }
   interface BdsCardColor {
     /**
     * Specifies HEX color, use Figma docs in Blip DS.
@@ -85,13 +94,16 @@ export namespace Components {
     */
     'variant'?: FontSize;
   }
-  interface SbpButton {
-    'action': Function;
-  }
 }
 
 declare global {
 
+
+  interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {}
+  var HTMLBdsButtonElement: {
+    prototype: HTMLBdsButtonElement;
+    new (): HTMLBdsButtonElement;
+  };
 
   interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {}
   var HTMLBdsCardColorElement: {
@@ -110,21 +122,20 @@ declare global {
     prototype: HTMLBdsTypoElement;
     new (): HTMLBdsTypoElement;
   };
-
-  interface HTMLSbpButtonElement extends Components.SbpButton, HTMLStencilElement {}
-  var HTMLSbpButtonElement: {
-    prototype: HTMLSbpButtonElement;
-    new (): HTMLSbpButtonElement;
-  };
   interface HTMLElementTagNameMap {
+    'bds-button': HTMLBdsButtonElement;
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-typo': HTMLBdsTypoElement;
-    'sbp-button': HTMLSbpButtonElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface BdsButton {
+    'disabled'?: boolean;
+    'size'?: ButtonSize;
+    'variant'?: ButtonVariant;
+  }
   interface BdsCardColor {
     /**
     * Specifies HEX color, use Figma docs in Blip DS.
@@ -191,15 +202,12 @@ declare namespace LocalJSX {
     */
     'variant'?: FontSize;
   }
-  interface SbpButton {
-    'action'?: Function;
-  }
 
   interface IntrinsicElements {
+    'bds-button': BdsButton;
     'bds-card-color': BdsCardColor;
     'bds-icon': BdsIcon;
     'bds-typo': BdsTypo;
-    'sbp-button': SbpButton;
   }
 }
 
@@ -209,10 +217,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'bds-button': LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
-      'sbp-button': LocalJSX.SbpButton & JSXBase.HTMLAttributes<HTMLSbpButtonElement>;
     }
   }
 }

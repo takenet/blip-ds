@@ -22,11 +22,13 @@
 
 ### Used by
 
+ - [bds-button](../button)
  - [bds-card-color](../card-color)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-button --> bds-typo
   bds-card-color --> bds-typo
   style bds-typo fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -1,24 +1,40 @@
 import { Component, h, Prop } from "@stencil/core";
 
+export type ButtonSize = 'tall'
+  | 'standard'
+  | 'short';
+
+export type ButtonVariant = 'primary'
+  | 'second'
+  | 'ghost'
+  | 'dashed';
+
 @Component({
-  tag: 'sbp-button',
+  tag: 'bds-button',
   styleUrl: 'button.scss'
 })
 export class Button {
-  @Prop() action: Function;
+  @Prop() disabled?: boolean = false;
 
-  handleClick = () => {
-    if (this.action) {
-      this.action();
-    } else {
-      console.log('oie')
-    }
-  }
+  @Prop() size?: ButtonSize = 'standard';
 
-  render() {
+  @Prop() variant?: ButtonVariant = 'primary';
+
+  render(): HTMLElement {
     return (
-      <button class="button" onClick={this.handleClick}>
-        <slot></slot>
+      <button class={{
+        'button': true,
+        [`button__${this.variant}`]: true,
+        [`button__${this.variant}--disabled`]: this.disabled,
+        [`button--size-${this.size}`]: true
+      }}>
+        <div class={{
+          'button__content': true,
+          [`button__content__${this.variant}`]: true,
+          [`button__content__${this.variant}--disabled`]: this.disabled,
+        }}>
+          <bds-typo variant="fs-14" lineHeight="simple" bold="regular">Text Button</bds-typo>
+        </div>
       </button>
     )
   }

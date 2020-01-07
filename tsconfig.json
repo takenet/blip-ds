@@ -16,12 +16,13 @@
     "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "types": [
+    "types": [      
+      "node",
       "jest",
-      "node"
     ],
     "typeRoots": [
-      "types"
+      "node_modules/@types",
+      "types",
     ],
     "pretty": true,
   },
