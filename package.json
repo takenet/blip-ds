@@ -17,7 +17,7 @@
   "scripts": {
     "generate": "stencil generate",
     "commit": "./node_modules/.bin/git-cz",
-    "build": "stencil build --prerender --docs",
+    "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve --docs",
     "test": "stencil test --spec",
     "test:e2e": "stencil test --e2e",

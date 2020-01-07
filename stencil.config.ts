@@ -8,7 +8,7 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       copy: [
-        { src: 'globals', dest: 'styles'},
+        { src: 'globals', dest: 'styles' },
       ]
     },
     {
@@ -17,7 +17,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null // disable service workers
-    }, 
+    },
   ],
   excludeSrc: ['/test/', '**/.spec.', '**/.stories.'],
   plugins: [

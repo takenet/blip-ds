@@ -24,8 +24,17 @@ import {
 
 export namespace Components {
   interface BdsButton {
+    /**
+    * If true, the base button will be disabled.
+    */
     'disabled'?: boolean;
+    /**
+    * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
+    */
     'size'?: ButtonSize;
+    /**
+    * Variant. Entered as one of the variant. Can be one of:  'primary', 'second', 'ghost', 'dashed';
+    */
     'variant'?: ButtonVariant;
   }
   interface BdsCardColor {
@@ -132,8 +141,17 @@ declare global {
 
 declare namespace LocalJSX {
   interface BdsButton {
+    /**
+    * If true, the base button will be disabled.
+    */
     'disabled'?: boolean;
+    /**
+    * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
+    */
     'size'?: ButtonSize;
+    /**
+    * Variant. Entered as one of the variant. Can be one of:  'primary', 'second', 'ghost', 'dashed';
+    */
     'variant'?: ButtonVariant;
   }
   interface BdsCardColor {

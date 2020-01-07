@@ -34,8 +34,8 @@ describe('bds-card-color', () => {
       components: [CardColor]
     });
 
-    expect(page.root.shadowRoot.querySelector('.card-color__description__name__text').innerHTML).toBe(nameMock);
-    expect(page.root.shadowRoot.querySelector('.card-color--color').innerHTML).toBe(`$${variableMock}`);
+    expect(page.root.shadowRoot.querySelector('.card-color__description__name__text').textContent).toBe(nameMock);
+    expect(page.root.shadowRoot.querySelector('.card-color--color').textContent).toBe(`$${variableMock}`);
   })
 
   it('should render props with HEX', async () => {
@@ -44,7 +44,7 @@ describe('bds-card-color', () => {
       components: [CardColor]
     });
 
-    expect(page.root.shadowRoot.querySelector('.card-color__description__value__text').innerHTML).toBe(hexMock);
+    expect(page.root.shadowRoot.querySelector('.card-color__description__value__text').textContent).toBe(hexMock);
   })
 
 });

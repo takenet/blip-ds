@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                                           | Default      |
-| ---------- | ---------- | ----------- | ---------------------------------------------- | ------------ |
-| `disabled` | `disabled` |             | `boolean`                                      | `false`      |
-| `size`     | `size`     |             | `"short" \| "standard" \| "tall"`              | `'standard'` |
-| `variant`  | `variant`  |             | `"dashed" \| "ghost" \| "primary" \| "second"` | `'primary'`  |
+| Property   | Attribute  | Description                                                                                     | Type                                           | Default      |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------ |
+| `disabled` | `disabled` | If true, the base button will be disabled.                                                      | `boolean`                                      | `false`      |
+| `size`     | `size`     | Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';                  | `"short" \| "standard" \| "tall"`              | `'standard'` |
+| `variant`  | `variant`  | Variant. Entered as one of the variant. Can be one of:  'primary', 'second', 'ghost', 'dashed'; | `"dashed" \| "ghost" \| "primary" \| "second"` | `'primary'`  |
 
 
 ## Dependencies

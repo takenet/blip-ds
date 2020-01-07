@@ -1,6 +1,4 @@
 $button-border-radius: 8px;
-$button-min-height: 32px;
-
 $button-size-tall: 14px 16px;
 $button-size-standard: 10px 16px;
 $button-size-short: 6px 16px;
@@ -44,10 +42,72 @@ $button-size-short: 6px 16px;
   &:hover,
   &:focus {
     background: $color-neutral-disbled-blues-bg;
+    color: $color-neutral-disbled-blues-text;
   }
 
   &:active {
     background: $color-neutral-disbled-blues-bg;
+    color: $color-neutral-disbled-blues-text;
+  }
+}
+
+@mixin disable-button-second {
+  cursor: not-allowed;
+  background: transparent;
+  color: $color-neutral-disbled-blues-text;
+
+  &:hover,
+  &:focus {
+    background: transparent;
+    color: $color-neutral-disbled-blues-text;
+  }
+
+  &:active {
+    background: transparent;
+    color: $color-neutral-disbled-blues-text;
+  }
+}
+
+@mixin disable-button-ghost {
+  cursor: not-allowed;
+  background: transparent;
+  color: $color-neutral-disbled-blues-text;
+  border: 1px solid $color-neutral-disbled-blues-text;
+
+  &:hover,
+  &:focus {
+    background: transparent;
+    color: $color-neutral-disbled-blues-text;
+    border: 1px solid $color-neutral-disbled-blues-text;
+  }
+
+  &:active {
+    background: transparent;
+    color: $color-neutral-disbled-blues-text;
+    border: 1px solid $color-neutral-disbled-blues-text;
+  }
+}
+
+@mixin disable-button-dashed {
+  cursor: not-allowed;
+  background: transparent;
+  color: $color-neutral-disbled-blues-text;
+  border: 1px solid $color-neutral-disbled-blues-text;
+  border-style: dashed;
+
+  &:hover,
+  &:focus {
+    background: transparent;
+    color: $color-neutral-disbled-blues-text;
+    border: 1px solid $color-neutral-disbled-blues-text;
+    border-style: dashed;
+  }
+
+  &:active {
+    background: transparent;
+    color: $color-neutral-disbled-blues-text;
+    border: 1px solid $color-neutral-disbled-blues-text;
+    border-style: dashed;
   }
 }
 
@@ -61,7 +121,6 @@ $button-size-short: 6px 16px;
   display: flex;
   flex-direction: row;
   border-radius: $button-border-radius;
-  min-height: $button-min-height;
   height: 100%;
 
   &--size-tall {
@@ -76,8 +135,17 @@ $button-size-short: 6px 16px;
     @include padding-button($button-size-short);
   }
 
+  &__content {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    color: inherit;
+    background-color: inherit;
+  }
+
   &__primary {
     background: $color-primary-main;
+    color: $color-primary-ghost;
 
     &:hover,
     &:focus {
@@ -86,10 +154,7 @@ $button-size-short: 6px 16px;
 
     &:active {
       background: $color-primary-main;
-    }
-
-    &--loading {
-      background: $color-primary-main;
+      color: $color-primary-ghost;
     }
 
     &--disabled {
@@ -99,42 +164,74 @@ $button-size-short: 6px 16px;
 
   &__second {
     background: transparent;
+    color: $color-neutral-dark-rooftop;
 
-    &:hover,
+    &:hover {
+      background: $color-neutral-disbled-blues-bg;
+      color: $color-primary-main;
+    }
+
     &:focus {
-      background: $color-primary-dark;
+      background: $color-neutral-disbled-blues-bg;
+      color: $color-primary-main;
     }
 
     &:active {
-      background: $color-primary-main;
-    }
-
-    &--loading {
-      background: $color-primary-main;
+      background: $color-exnted-blue-sky;
+      color: $color-primary-main;
     }
 
     &--disabled {
-      @include disable-button();
+      @include disable-button-second();
     }
   }
 
-  &__content {
-    height: 20px;
-    display: flex;
-    align-items: center;
+  &__ghost {
+    background: transparent;
+    color: $color-primary-main;
+    border: 1px solid $color-primary-main;
 
-    &__primary {
-      color: $color-primary-ghost;
-      &--disabled {
-        @include disable-button();
-      }
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: $color-primary-dark;
+      border: 1px solid $color-primary-dark;
     }
 
-    &__second {
-      color: $color-neutral-dark-rooftop;
-      &--disabled {
-        @include disable-button();
-      }
+    &:active {
+      background: transparent;
+      color: $color-primary-main;
+      border: 1px solid $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button-ghost();
+    }
+  }
+
+  &__dashed {
+    background: transparent;
+    color: $color-primary-main;
+    border: 1px solid $color-primary-main;
+    border-style: dashed;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: $color-primary-dark;
+      border: 1px solid $color-primary-dark;
+      border-style: dashed;
+    }
+
+    &:active {
+      background: transparent;
+      color: $color-primary-main;
+      border: 1px solid $color-primary-main;
+      border-style: dashed;
+    }
+
+    &--disabled {
+      @include disable-button-dashed();
     }
   }
 }
