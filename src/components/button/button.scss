@@ -34,85 +34,46 @@ $button-size-short: 6px 16px;
   }
 }
 
-@mixin disable-button {
-  cursor: not-allowed;
-  background: $color-neutral-disbled-blues-bg;
-  color: $color-neutral-disbled-blues-text;
-
-  &:hover,
-  &:focus {
-    background: $color-neutral-disbled-blues-bg;
-    color: $color-neutral-disbled-blues-text;
-  }
-
-  &:active {
-    background: $color-neutral-disbled-blues-bg;
-    color: $color-neutral-disbled-blues-text;
-  }
-}
-
-@mixin disable-button-second {
-  cursor: not-allowed;
-  background: transparent;
-  color: $color-neutral-disbled-blues-text;
-
-  &:hover,
-  &:focus {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-  }
-
-  &:active {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-  }
-}
-
-@mixin disable-button-ghost {
-  cursor: not-allowed;
-  background: transparent;
-  color: $color-neutral-disbled-blues-text;
-  border: 1px solid $color-neutral-disbled-blues-text;
-
-  &:hover,
-  &:focus {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-  }
-
-  &:active {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-  }
-}
-
-@mixin disable-button-dashed {
-  cursor: not-allowed;
-  background: transparent;
-  color: $color-neutral-disbled-blues-text;
-  border: 1px solid $color-neutral-disbled-blues-text;
-  border-style: dashed;
-
-  &:hover,
-  &:focus {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-    border-style: dashed;
-  }
-
-  &:active {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-    border-style: dashed;
-  }
-}
-
 @mixin padding-button($padding) {
   padding: $padding;
+}
+
+@mixin disable-button($background, $color: null, $border: null) {
+  cursor: not-allowed;
+  background: $background;
+
+  @if ($color) {
+    color: $color;
+  }
+
+  @if ($border) {
+    border: $border;
+  }
+
+  &:hover,
+  &:focus {
+    background: $background;
+
+    @if ($color) {
+      color: $color;
+    }
+
+    @if ($border) {
+      border: $border;
+    }
+  }
+
+  &:active {
+    background: $background;
+
+    @if ($color) {
+      color: $color;
+    }
+
+    @if ($border) {
+      border: $border;
+    }
+  }
 }
 
 .button {
@@ -158,7 +119,7 @@ $button-size-short: 6px 16px;
     }
 
     &--disabled {
-      @include disable-button();
+      @include disable-button($color-neutral-disbled-blues-bg, $color-neutral-disbled-blues-text);
     }
   }
 
@@ -166,11 +127,7 @@ $button-size-short: 6px 16px;
     background: transparent;
     color: $color-neutral-dark-rooftop;
 
-    &:hover {
-      background: $color-neutral-disbled-blues-bg;
-      color: $color-primary-main;
-    }
-
+    &:hover,
     &:focus {
       background: $color-neutral-disbled-blues-bg;
       color: $color-primary-main;
@@ -182,7 +139,7 @@ $button-size-short: 6px 16px;
     }
 
     &--disabled {
-      @include disable-button-second();
+      @include disable-button(transparent, $color-neutral-disbled-blues-text);
     }
   }
 
@@ -205,33 +162,38 @@ $button-size-short: 6px 16px;
     }
 
     &--disabled {
-      @include disable-button-ghost();
+      @include disable-button(
+        transparent,
+        $color-neutral-disbled-blues-text,
+        1px solid $color-neutral-disbled-blues-text
+      );
     }
   }
 
   &__dashed {
     background: transparent;
     color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-    border-style: dashed;
+    border: 1px dashed $color-primary-main;
 
     &:hover,
     &:focus {
       background: transparent;
       color: $color-primary-dark;
-      border: 1px solid $color-primary-dark;
-      border-style: dashed;
+      border: 1px dashed $color-primary-dark;
     }
 
     &:active {
       background: transparent;
       color: $color-primary-main;
-      border: 1px solid $color-primary-main;
-      border-style: dashed;
+      border: 1px dashed $color-primary-main;
     }
 
     &--disabled {
-      @include disable-button-dashed();
+      @include disable-button(
+        transparent,
+        $color-neutral-disbled-blues-text,
+        1px dashed $color-neutral-disbled-blues-text
+      );
     }
   }
 }
