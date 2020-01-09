@@ -1,7 +1,15 @@
 $button-border-radius: 8px;
-$button-size-tall: 14px 16px;
-$button-size-standard: 10px 16px;
-$button-size-short: 6px 16px;
+
+$button-size-tall: 14px;
+$button-size-standard: 10px;
+$button-size-short: 6px;
+
+$button-size-tall-icon: 12px;
+$button-size-standard-icon: 8px;
+$button-size-short-icon: 4px;
+
+$button-padding-left-right-icon: 12px;
+$button-padding-left-right: 16px;
 
 @mixin reset-button {
   border: none;
@@ -34,8 +42,9 @@ $button-size-short: 6px 16px;
   }
 }
 
-@mixin padding-button($padding) {
-  padding: $padding;
+@mixin padding-button-top-bottom($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
 }
 
 @mixin disable-button($background, $color: null, $border: null) {
@@ -76,32 +85,73 @@ $button-size-short: 6px 16px;
   }
 }
 
+@mixin inherit-color() {
+  color: inherit;
+  background-color: inherit;
+}
+
 .button {
   @include reset-button();
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  border-radius: $button-border-radius;
+  align-items: center;
+  justify-content: center;
   height: 100%;
+  border-radius: $button-border-radius;
+  padding-left: $button-padding-left-right;
+  padding-right: $button-padding-left-right;
 
   &--size-tall {
-    @include padding-button($button-size-tall);
+    @include padding-button-top-bottom($button-size-tall);
+
+    &--icon {
+      @include padding-button-top-bottom($button-size-tall-icon);
+    }
   }
 
   &--size-standard {
-    @include padding-button($button-size-standard);
+    @include padding-button-top-bottom($button-size-standard);
+
+    &--icon {
+      @include padding-button-top-bottom($button-size-standard-icon);
+    }
   }
 
   &--size-short {
-    @include padding-button($button-size-short);
+    @include padding-button-top-bottom($button-size-short);
+
+    &--icon {
+      @include padding-button-top-bottom($button-size-short-icon);
+    }
+  }
+
+  &--size-icon {
+    &--left {
+      padding-left: $button-padding-left-right-icon;
+    }
+    &--right {
+      padding-right: $button-padding-left-right-icon;
+    }
+  }
+
+  &__icon {
+    @include inherit-color();
+    height: 24px;
+    margin-right: 2px;
+  }
+
+  &__arrow {
+    @include inherit-color();
+    height: 24px;
+    margin-left: 2px;
   }
 
   &__content {
+    @include inherit-color();
     height: 20px;
     display: flex;
     align-items: center;
-    color: inherit;
-    background-color: inherit;
   }
 
   &__primary {
