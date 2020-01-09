@@ -2,11 +2,24 @@ import { newSpecPage, SpecPage } from '@stencil/core/dist/testing';
 import { Button } from './button';
 
 describe('bds-button', () => {
-    const getPage = async (icon?: string): Promise<SpecPage> => (
-        await (newSpecPage({
-            html: icon ? `<bds-button icon=${icon}>click</bds-button>` : `<bds-button>click</bds-button>`,
+    const getPage = async ({ icon, arrow } = { icon: '', arrow: false }): Promise<SpecPage> => {
+        const getButtonElement = (): string => {
+            if (icon) {
+                return `<bds-button icon=${icon}>click</bds-button>`;
+            }
+
+            if (arrow) {
+                return `<bds-button arrow>click</bds-button>`;
+            }
+
+            return `<bds-button>click</bds-button>`;
+        }
+
+        return await (newSpecPage({
+            html: getButtonElement(),
             components: [Button]
-        })));
+        }))
+    };
 
     it('should render', async () => {
         const page = await getPage();
@@ -40,10 +53,22 @@ describe('bds-button', () => {
 
 
     it('should render the icon passed by prop', async () => {
-        const page = await getPage('file-new');
+        const page = await getPage({ icon: 'file-new', arrow: false });
 
         expect(page.root.shadowRoot.querySelector(".button__icon")).toBeTruthy();
         expect(page.root.shadowRoot.querySelector("bds-icon")).toBeTruthy();
+    });
+
+    it('should render without arrow', async () => {
+        const page = await getPage({ icon: '', arrow: false });
+
+        expect(page.root.shadowRoot.querySelector(".button__arrow")).toBeFalsy();
+    });
+
+    it('should render the arrow passed by prop', async () => {
+        const page = await getPage({ icon: '', arrow: true });
+
+        expect(page.root.shadowRoot.querySelector(".button__arrow")).toBeTruthy();
     });
 
 
