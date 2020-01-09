@@ -25,9 +25,17 @@ import {
 export namespace Components {
   interface BdsButton {
     /**
+    * The arrow button
+    */
+    'arrow'?: boolean;
+    /**
     * If true, the base button will be disabled.
     */
     'disabled'?: boolean;
+    /**
+    * The icon name
+    */
+    'icon'?: string;
     /**
     * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
     */
@@ -142,9 +150,17 @@ declare global {
 declare namespace LocalJSX {
   interface BdsButton {
     /**
+    * The arrow button
+    */
+    'arrow'?: boolean;
+    /**
     * If true, the base button will be disabled.
     */
     'disabled'?: boolean;
+    /**
+    * The icon name
+    */
+    'icon'?: string;
     /**
     * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
     */

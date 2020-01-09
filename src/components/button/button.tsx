@@ -32,7 +32,23 @@ export class Button {
    */
   @Prop() variant?: ButtonVariant = 'primary';
 
+  /**
+   * The icon name
+   */
+  @Prop() icon?: string = null;
+
+  /**
+   * The arrow button
+   */
+  @Prop() arrow?: boolean = false;
+
+  getSizeClass = (): string => {
+    return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
+  }
+
   render(): HTMLElement {
+    const sizeClass = this.getSizeClass();
+
     return (
       <button
         disabled={this.disabled}
@@ -40,8 +56,15 @@ export class Button {
           'button': true,
           [`button__${this.variant}`]: true,
           [`button__${this.variant}--disabled`]: this.disabled,
-          [`button--size-${this.size}`]: true
+          [sizeClass]: true,
+          'button--size-icon--left': !!this.icon,
+          'button--size-icon--right': this.arrow,
         }}>
+        {this.icon && (
+          <div class="button__icon">
+            <bds-icon name={this.icon} color="inherit"></bds-icon>
+          </div>
+        )}
         <div class={{
           'button__content': true,
           [`button__content__${this.variant}`]: true,
@@ -51,6 +74,11 @@ export class Button {
             <slot></slot>
           </bds-typo>
         </div>
+        {this.arrow && (
+          <div class="button__arrow">
+            <bds-icon name="arrow-right" color="inherit"></bds-icon>
+          </div>
+        )}
       </button>
     )
   }

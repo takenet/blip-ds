@@ -1,7 +1,15 @@
 $button-border-radius: 8px;
-$button-size-tall: 14px 16px;
-$button-size-standard: 10px 16px;
-$button-size-short: 6px 16px;
+
+$button-size-tall: 14px;
+$button-size-standard: 10px;
+$button-size-short: 6px;
+
+$button-size-tall-icon: 12px;
+$button-size-standard-icon: 8px;
+$button-size-short-icon: 4px;
+
+$button-padding-left-right-icon: 12px;
+$button-padding-left-right: 16px;
 
 @mixin reset-button {
   border: none;
@@ -34,85 +42,52 @@ $button-size-short: 6px 16px;
   }
 }
 
-@mixin disable-button {
+@mixin padding-button-top-bottom($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin disable-button($background, $color: null, $border: null) {
   cursor: not-allowed;
-  background: $color-neutral-disbled-blues-bg;
-  color: $color-neutral-disbled-blues-text;
+  background: $background;
+
+  @if ($color) {
+    color: $color;
+  }
+
+  @if ($border) {
+    border: $border;
+  }
 
   &:hover,
   &:focus {
-    background: $color-neutral-disbled-blues-bg;
-    color: $color-neutral-disbled-blues-text;
+    background: $background;
+
+    @if ($color) {
+      color: $color;
+    }
+
+    @if ($border) {
+      border: $border;
+    }
   }
 
   &:active {
-    background: $color-neutral-disbled-blues-bg;
-    color: $color-neutral-disbled-blues-text;
+    background: $background;
+
+    @if ($color) {
+      color: $color;
+    }
+
+    @if ($border) {
+      border: $border;
+    }
   }
 }
 
-@mixin disable-button-second {
-  cursor: not-allowed;
-  background: transparent;
-  color: $color-neutral-disbled-blues-text;
-
-  &:hover,
-  &:focus {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-  }
-
-  &:active {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-  }
-}
-
-@mixin disable-button-ghost {
-  cursor: not-allowed;
-  background: transparent;
-  color: $color-neutral-disbled-blues-text;
-  border: 1px solid $color-neutral-disbled-blues-text;
-
-  &:hover,
-  &:focus {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-  }
-
-  &:active {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-  }
-}
-
-@mixin disable-button-dashed {
-  cursor: not-allowed;
-  background: transparent;
-  color: $color-neutral-disbled-blues-text;
-  border: 1px solid $color-neutral-disbled-blues-text;
-  border-style: dashed;
-
-  &:hover,
-  &:focus {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-    border-style: dashed;
-  }
-
-  &:active {
-    background: transparent;
-    color: $color-neutral-disbled-blues-text;
-    border: 1px solid $color-neutral-disbled-blues-text;
-    border-style: dashed;
-  }
-}
-
-@mixin padding-button($padding) {
-  padding: $padding;
+@mixin inherit-color() {
+  color: inherit;
+  background-color: inherit;
 }
 
 .button {
@@ -120,27 +95,63 @@ $button-size-short: 6px 16px;
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  border-radius: $button-border-radius;
+  align-items: center;
+  justify-content: center;
   height: 100%;
+  border-radius: $button-border-radius;
+  padding-left: $button-padding-left-right;
+  padding-right: $button-padding-left-right;
 
   &--size-tall {
-    @include padding-button($button-size-tall);
+    @include padding-button-top-bottom($button-size-tall);
+
+    &--icon {
+      @include padding-button-top-bottom($button-size-tall-icon);
+    }
   }
 
   &--size-standard {
-    @include padding-button($button-size-standard);
+    @include padding-button-top-bottom($button-size-standard);
+
+    &--icon {
+      @include padding-button-top-bottom($button-size-standard-icon);
+    }
   }
 
   &--size-short {
-    @include padding-button($button-size-short);
+    @include padding-button-top-bottom($button-size-short);
+
+    &--icon {
+      @include padding-button-top-bottom($button-size-short-icon);
+    }
+  }
+
+  &--size-icon {
+    &--left {
+      padding-left: $button-padding-left-right-icon;
+    }
+    &--right {
+      padding-right: $button-padding-left-right-icon;
+    }
+  }
+
+  &__icon {
+    @include inherit-color();
+    height: 24px;
+    margin-right: 2px;
+  }
+
+  &__arrow {
+    @include inherit-color();
+    height: 24px;
+    margin-left: 2px;
   }
 
   &__content {
+    @include inherit-color();
     height: 20px;
     display: flex;
     align-items: center;
-    color: inherit;
-    background-color: inherit;
   }
 
   &__primary {
@@ -158,7 +169,7 @@ $button-size-short: 6px 16px;
     }
 
     &--disabled {
-      @include disable-button();
+      @include disable-button($color-neutral-disbled-blues-bg, $color-neutral-disbled-blues-text);
     }
   }
 
@@ -166,11 +177,7 @@ $button-size-short: 6px 16px;
     background: transparent;
     color: $color-neutral-dark-rooftop;
 
-    &:hover {
-      background: $color-neutral-disbled-blues-bg;
-      color: $color-primary-main;
-    }
-
+    &:hover,
     &:focus {
       background: $color-neutral-disbled-blues-bg;
       color: $color-primary-main;
@@ -182,7 +189,7 @@ $button-size-short: 6px 16px;
     }
 
     &--disabled {
-      @include disable-button-second();
+      @include disable-button(transparent, $color-neutral-disbled-blues-text);
     }
   }
 
@@ -205,33 +212,38 @@ $button-size-short: 6px 16px;
     }
 
     &--disabled {
-      @include disable-button-ghost();
+      @include disable-button(
+        transparent,
+        $color-neutral-disbled-blues-text,
+        1px solid $color-neutral-disbled-blues-text
+      );
     }
   }
 
   &__dashed {
     background: transparent;
     color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-    border-style: dashed;
+    border: 1px dashed $color-primary-main;
 
     &:hover,
     &:focus {
       background: transparent;
       color: $color-primary-dark;
-      border: 1px solid $color-primary-dark;
-      border-style: dashed;
+      border: 1px dashed $color-primary-dark;
     }
 
     &:active {
       background: transparent;
       color: $color-primary-main;
-      border: 1px solid $color-primary-main;
-      border-style: dashed;
+      border: 1px dashed $color-primary-main;
     }
 
     &--disabled {
-      @include disable-button-dashed();
+      @include disable-button(
+        transparent,
+        $color-neutral-disbled-blues-text,
+        1px dashed $color-neutral-disbled-blues-text
+      );
     }
   }
 }
