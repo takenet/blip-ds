@@ -1,7 +1,11 @@
 {
   "name": "blip-ds",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Blip Design System",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/takenet/blip-ds.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
