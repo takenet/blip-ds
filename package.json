@@ -1,6 +1,6 @@
 {
   "name": "blip-ds",
-  "version": "0.0.0-development",
+  "version": "0.0.1",
   "description": "Blip Design System",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
