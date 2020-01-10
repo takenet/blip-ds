@@ -19,6 +19,17 @@ jobs:
         npm run eslint
         npm run test
         npm run build
-        npm publish --access public
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Semantic Release
+      uses: cycjimmy/semantic-release-action@v2
+      with:
+        branch: master
+        semantic_version: 15.13.28
       env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
+
+
