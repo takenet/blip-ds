@@ -1,4 +1,4 @@
-name: Publish NPM
+name: Publish
 
 on:
   release:
@@ -19,17 +19,15 @@ jobs:
         npm run eslint
         npm run test
         npm run build
-    - name: Checkout
-      uses: actions/checkout@v1
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       with:
         branch: master
         semantic_version: 15.13.28
+        extra_plugins: |
+          @semantic-release/commit-analyzer
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-
 
 
