@@ -169,7 +169,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-neutral-disbled-blues-bg, $color-neutral-disbled-blues-text);
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
     }
   }
 
@@ -179,7 +179,7 @@ $button-padding-left-right: 16px;
 
     &:hover,
     &:focus {
-      background: $color-neutral-disbled-blues-bg;
+      background: $color-neutral-disabled-blues-bg;
       color: $color-primary-main;
     }
 
@@ -189,7 +189,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-neutral-disbled-blues-text);
+      @include disable-button(transparent, $color-neutral-disabled-blues-text);
     }
   }
 
@@ -214,8 +214,8 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button(
         transparent,
-        $color-neutral-disbled-blues-text,
-        1px solid $color-neutral-disbled-blues-text
+        $color-neutral-disabled-blues-text,
+        1px solid $color-neutral-disabled-blues-text
       );
     }
   }
@@ -241,8 +241,8 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button(
         transparent,
-        $color-neutral-disbled-blues-text,
-        1px dashed $color-neutral-disbled-blues-text
+        $color-neutral-disabled-blues-text,
+        1px dashed $color-neutral-disabled-blues-text
       );
     }
   }

@@ -22,8 +22,8 @@ const secondaryColours = [
 ];
 
 const neutralColoursBlues = [
-  { name: 'Disabled Text', variable: 'color-neutral-disbled-blues-text', hex: '#76C1CA' },
-  { name: 'Disabled BG', variable: 'color-neutral-disbled-blues-bg', hex: '#DAF2F4' },
+  { name: 'Disabled Text', variable: 'color-neutral-disabled-blues-text', hex: '#76C1CA' },
+  { name: 'Disabled BG', variable: 'color-neutral-disabled-blues-bg', hex: '#DAF2F4' },
 ];
 
 const neutralColoursDark = [
@@ -42,7 +42,7 @@ const neutralColoursMedium = [
 const neutralColoursMediumLight = [
   { name: 'Wave', variable: 'color-neutral-light-wave', hex: '#D2DFE6' },
   { name: 'Off', variable: 'color-neutral-light-off', hex: '#DEE8EC' },
-  { name: 'Breeze', variable: 'color-neutral-light-brezze', hex: '#E7EEF1' },
+  { name: 'Breeze', variable: 'color-neutral-light-breeze', hex: '#E7EEF1' },
   { name: 'Whisper', variable: 'color-neutral-light-whisper', hex: '#F5F8F9' },
 ];
 
