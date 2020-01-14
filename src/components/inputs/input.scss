@@ -1,10 +1,137 @@
-.input__container {
-  display: flex;
-  flex-direction: column;
+$input-padding: 8px 12px 9px 12px;
+$input-padding-title: 7px 12px 8px 12px;
+$input-width: 312px;
+
+@mixin input-text {
+  font-family: $font-family;
+  font-size: $fs-14;
+  line-height: $line-hight-plus;
 }
 
-.input__label {
+@mixin border($color) {
+  border: 1px solid $color;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
-.input__text {
+@mixin form-reset-input-specific {
+  &:focus {
+    outline: 0;
+  }
+
+  &[type="checkbox"],
+  &[type="radio"] {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Make webkit render the search input like a normal text field */
+  &[type="search"] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+  }
+
+  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
+  @at-root {
+    ::-webkit-search-decoration {
+      display: none;
+    }
+  }
+
+  /* Fix IE7 display bug */
+  &[type="reset"],
+  &[type="button"],
+  &[type="submit"] {
+    overflow: visible;
+  }
+}
+
+@mixin reset-input {
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: auto;
+  vertical-align: middle; // IE6,IE7
+  white-space: normal;
+  line-height: inherit;
+  background: none;
+
+  /* Browsers have different default form fonts */
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::-webkit-file-upload-button {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  @include form-reset-input-specific();
+}
+
+@mixin color-input($background, $color) {
+  background-color: $background;
+  color: $color;
+}
+
+.input {
+  &__container {
+    @include border($color-neutral-light-wave);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $input-padding;
+    color: $color-neutral-medium-cloud;
+    width: $input-width;
+
+    &:hover {
+      @include border($color-primary-main)
+    }
+
+    &--title {
+      padding: $input-padding-title;
+    }
+
+    &__icon-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background-color: $color-primary-light;
+      color: $color-primary-main;
+      margin-right: 8px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+
+      &__title {
+        display: flex;
+        align-items: center;
+      }
+
+      &__text {
+        @include reset-input();
+        @include input-text();
+        color: $color-neutral-dark-city;
+
+        &::placeholder {
+          color: $color-neutral-dark-rooftop;
+        }
+      }
+    }
+  }
 }

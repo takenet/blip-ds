@@ -81,7 +81,11 @@ export namespace Components {
     */
     'theme': IconTheme;
   }
-  interface BdsInput {}
+  interface BdsInput {
+    'iconLeft'?: string;
+    'iconRight'?: string;
+    'title'?: string;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -214,7 +218,11 @@ declare namespace LocalJSX {
     */
     'theme'?: IconTheme;
   }
-  interface BdsInput {}
+  interface BdsInput {
+    'iconLeft'?: string;
+    'iconRight'?: string;
+    'title'?: string;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';

@@ -1,4 +1,4 @@
-import { Component, Host, State, Prop, h, Watch } from '@stencil/core';
+import { Component, State, Prop, h, Watch } from '@stencil/core';
 import { getSvgPath, getSvgContent, formatSvg } from './utils';
 
 export type IconSize = 'xxx-small'
@@ -70,14 +70,12 @@ export class Icon {
 
   render(): HTMLElement {
     return (
-      <Host role="img" >
-        <div class={{
-          'bds-icon': true,
-          [`bds-icon__size--${this.size}`]: true
-        }}
-          aria-label={this.getAccessibilityName()}
-          innerHTML={this.svgContent}></div>
-      </Host>
+      <div class={{
+        'bds-icon': true,
+        [`bds-icon__size--${this.size}`]: true
+      }}
+        aria-label={this.getAccessibilityName()}
+        innerHTML={this.svgContent}></div>
     );
   }
 
