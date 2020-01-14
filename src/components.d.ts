@@ -81,6 +81,7 @@ export namespace Components {
     */
     'theme': IconTheme;
   }
+  interface BdsInput {}
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -134,6 +135,12 @@ declare global {
     new (): HTMLBdsIconElement;
   };
 
+  interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {}
+  var HTMLBdsInputElement: {
+    prototype: HTMLBdsInputElement;
+    new (): HTMLBdsInputElement;
+  };
+
   interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
   var HTMLBdsTypoElement: {
     prototype: HTMLBdsTypoElement;
@@ -143,6 +150,7 @@ declare global {
     'bds-button': HTMLBdsButtonElement;
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-icon': HTMLBdsIconElement;
+    'bds-input': HTMLBdsInputElement;
     'bds-typo': HTMLBdsTypoElement;
   }
 }
@@ -206,6 +214,7 @@ declare namespace LocalJSX {
     */
     'theme'?: IconTheme;
   }
+  interface BdsInput {}
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -241,6 +250,7 @@ declare namespace LocalJSX {
     'bds-button': BdsButton;
     'bds-card-color': BdsCardColor;
     'bds-icon': BdsIcon;
+    'bds-input': BdsInput;
     'bds-typo': BdsTypo;
   }
 }
@@ -254,6 +264,7 @@ declare module "@stencil/core" {
       'bds-button': LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+      'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }
   }
