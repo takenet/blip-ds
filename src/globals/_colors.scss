@@ -16,12 +16,15 @@ $color-secondary-delete: #FF5A60;
 $color-secondary-cheetos: #F9B42F;
 $color-secondary-true: #4DCB7B;
 
+$color-secondary-bg-delete: rgba(255, 123, 128, 0.6);
+$color-primary-bg-main: rgba(44, 195, 213, 0.70);
+
 /**
 * Neutral Colors
 * Os neutros têm graus variados de saturação. Normalmente, eles são usados ​​para texto e fundos sutis
 * quando não queremos chamar muita atenção para um ponto de contato específico ou transmitir informações como "a fazer" ou "desativado".
 */
-
+// rgba(255, 123, 128, 0.6)
 // Disabled Blues
 $color-neutral-disabled-blues-text: #76C1CA;
 $color-neutral-disabled-blues-bg: #DAF2F4;

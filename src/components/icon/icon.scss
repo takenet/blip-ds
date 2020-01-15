@@ -4,7 +4,7 @@
   max-height: $size;
 }
 
-$icon-xxx-large: 40px; 
+$icon-xxx-large: 40px;
 $icon-xx-large: 36px;
 $icon-x-large: 32px;
 $icon-large: 28px;
@@ -14,8 +14,12 @@ $icon-x-small: 16px;
 $icon-xx-small: 12px;
 $icon-xxx-small: 8px;
 
+:host {
+  display: inline-block;
+}
+
 .bds-icon {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   svg {
     fill: currentColor;
@@ -31,31 +35,31 @@ $icon-xxx-small: 8px;
     &--xx-large {
       @include size($icon-xx-large);
     }
-    
+
     &--x-large {
       @include size($icon-x-large);
     }
-    
+
     &--large {
       @include size($icon-large);
     }
-    
+
     &--medium {
       @include size($icon-medium);
     }
-    
+
     &--small {
       @include size($icon-small);
     }
-    
+
     &--x-small {
       @include size($icon-x-small);
     }
-    
+
     &--xx-small {
       @include size($icon-xx-small);
     }
-    
+
     &--xxx-small {
       @include size($icon-xxx-small);
     }

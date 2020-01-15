@@ -1,5 +1,5 @@
 $input-padding: 8px 12px 9px 12px;
-$input-padding-title: 7px 12px 8px 12px;
+$input-padding-label: 7px 12px 8px 12px;
 $input-width: 312px;
 
 @mixin input-text {
@@ -79,59 +79,92 @@ $input-width: 312px;
   @include form-reset-input-specific();
 }
 
-@mixin color-input($background, $color) {
-  background-color: $background;
-  color: $color;
+@mixin input-theme($primary, $secondary, $label, $boxShadow) {
+  color: $color-neutral-dark-city;
+
+  .input--hover {
+    background-color: purple;
+  }
+
+  &--pressed {
+    @include border($primary);
+  }
+
+  &--focus {
+    @include border($primary);
+    -webkit-box-shadow: 0 0 0 2px $boxShadow;
+    box-shadow: 0 0 0 2px $boxShadow;
+  }
+
+  .input__container__icon-left {
+    color: $primary;
+    background-color: $secondary;
+  }
+
+  .input__container__content__label {
+    color: $label;
+  }
 }
 
 .input {
-  &__container {
-    @include border($color-neutral-light-wave);
+  @include border($color-neutral-light-wave);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $input-padding;
+  width: $input-width;
+
+  &--state {
+    &-primary {
+      @include input-theme(
+        $color-primary-main,
+        $color-neutral-disabled-blues-bg,
+        $color-neutral-medium-cloud,
+        $color-primary-bg-main
+      );
+    }
+
+    &-danger {
+      @include input-theme(
+        $color-secondary-delete,
+        $color-extend-rr-b-vitamin,
+        $color-secondary-delete,
+        $color-secondary-bg-delete
+      );
+    }
+  }
+
+  &--label {
+    padding: $input-padding-label;
+  }
+
+  &__icon-left {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    padding: $input-padding;
-    color: $color-neutral-medium-cloud;
-    width: $input-width;
+    justify-content: center;
+    border-radius: 8px;
+    margin-right: 8px;
+    padding: 2.5px;
 
-    &:hover {
-      @include border($color-primary-main)
+    &--large {
+      padding: 4px;
     }
+  }
 
-    &--title {
-      padding: $input-padding-title;
-    }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 
-    &__icon-left {
+    &__label {
       display: flex;
       align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      background-color: $color-primary-light;
-      color: $color-primary-main;
-      margin-right: 8px;
     }
 
-    &__content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-
-      &__title {
-        display: flex;
-        align-items: center;
-      }
-
-      &__text {
-        @include reset-input();
-        @include input-text();
-        color: $color-neutral-dark-city;
-
-        &::placeholder {
-          color: $color-neutral-dark-rooftop;
-        }
-      }
+    &__text {
+      @include reset-input();
+      @include input-text();
     }
   }
 }

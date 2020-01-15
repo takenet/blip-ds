@@ -16,6 +16,9 @@ import {
   IconTheme,
 } from './components/icon/icon';
 import {
+  InputType,
+} from './components/inputs/inputs';
+import {
   Bold,
   FontLineHeight,
   FontSize,
@@ -82,9 +85,15 @@ export namespace Components {
     'theme': IconTheme;
   }
   interface BdsInput {
+    'danger'?: boolean;
     'iconLeft'?: string;
     'iconRight'?: string;
-    'title'?: string;
+    'inputId': string;
+    'inputName'?: string;
+    'label'?: string;
+    'placeholder'?: string;
+    'type'?: InputType;
+    'value'?: string;
   }
   interface BdsTypo {
     /**
@@ -219,9 +228,15 @@ declare namespace LocalJSX {
     'theme'?: IconTheme;
   }
   interface BdsInput {
+    'danger'?: boolean;
     'iconLeft'?: string;
     'iconRight'?: string;
-    'title'?: string;
+    'inputId': string;
+    'inputName'?: string;
+    'label'?: string;
+    'placeholder'?: string;
+    'type'?: InputType;
+    'value'?: string;
   }
   interface BdsTypo {
     /**
