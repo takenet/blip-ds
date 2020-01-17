@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
 
 export type ButtonSize = 'tall'
   | 'standard'
@@ -42,8 +42,47 @@ export class Button {
    */
   @Prop() arrow?: boolean = false;
 
-  getSizeClass = (): string => {
+  /**
+   * Set the handler to handle click event	
+   */
+  @Event() click: EventEmitter;
+
+  onHandleClick = (event): void => {
+    this.click.emit(event);
+  }
+
+  getSizeClass(): string {
     return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
+  }
+
+  renderIcon(): HTMLElement {
+    return this.icon && (
+      <div class="button__icon">
+        <bds-icon name={this.icon} color="inherit"></bds-icon>
+      </div>
+    )
+  }
+
+  renderText(): HTMLElement {
+    return (
+      <div class={{
+        'button__content': true,
+        [`button__content__${this.variant}`]: true,
+        [`button__content__${this.variant}--disabled`]: this.disabled,
+      }}>
+        <bds-typo variant="fs-14" lineHeight="simple" bold="regular">
+          <slot></slot>
+        </bds-typo>
+      </div>
+    )
+  }
+
+  renderArrow(): HTMLElement {
+    return this.arrow && (
+      <div class="button__arrow">
+        <bds-icon name="arrow-right" color="inherit"></bds-icon>
+      </div>
+    )
   }
 
   render(): HTMLElement {
@@ -51,6 +90,7 @@ export class Button {
 
     return (
       <button
+        onClick={this.onHandleClick}
         disabled={this.disabled}
         class={{
           'button': true,
@@ -60,25 +100,9 @@ export class Button {
           'button--size-icon--left': !!this.icon,
           'button--size-icon--right': this.arrow,
         }}>
-        {this.icon && (
-          <div class="button__icon">
-            <bds-icon name={this.icon} color="inherit"></bds-icon>
-          </div>
-        )}
-        <div class={{
-          'button__content': true,
-          [`button__content__${this.variant}`]: true,
-          [`button__content__${this.variant}--disabled`]: this.disabled,
-        }}>
-          <bds-typo variant="fs-14" lineHeight="simple" bold="regular">
-            <slot></slot>
-          </bds-typo>
-        </div>
-        {this.arrow && (
-          <div class="button__arrow">
-            <bds-icon name="arrow-right" color="inherit"></bds-icon>
-          </div>
-        )}
+        {this.renderIcon()}
+        {this.renderText()}
+        {this.renderArrow()}
       </button>
     )
   }
