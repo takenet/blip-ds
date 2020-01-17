@@ -21,7 +21,7 @@
 ### Used by
 
  - [bds-button](../button)
- - [bds-input](../inputs)
+ - [bds-input](../input)
 
 ### Graph
 ```mermaid

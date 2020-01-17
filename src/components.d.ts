@@ -17,7 +17,7 @@ import {
 } from './components/icon/icon';
 import {
   InputType,
-} from './components/inputs/inputs';
+} from './components/input/inputs';
 import {
   Bold,
   FontLineHeight,

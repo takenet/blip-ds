@@ -24,7 +24,7 @@
 
  - [bds-button](../button)
  - [bds-card-color](../card-color)
- - [bds-input](../inputs)
+ - [bds-input](../input)
 
 ### Graph
 ```mermaid
