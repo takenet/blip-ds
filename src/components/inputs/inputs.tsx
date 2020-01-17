@@ -16,13 +16,15 @@ export class Input {
   @Prop() type?: InputType = 'text';
   @Prop() label?: string = '';
   @Prop() placeholder?: string = '';
+  @Prop() helperMessage?: string = '';
+  @Prop() errorMessage?: string = '';
 
   @Prop() iconLeft?: string = '';
   @Prop() iconRight?: string = '';
 
   @Prop() value?: string = '';
 
-  @Prop() danger?: boolean = false;
+  @Prop({ reflect: true }) danger?: boolean = false;
 
   renderIconLeft(): HTMLElement {
     return this.iconLeft && (
@@ -47,6 +49,33 @@ export class Input {
     )
   }
 
+  renderMessageError(): HTMLElement {
+    if (!this.danger && this.helperMessage) {
+      return (
+        <div class="input__message">
+          <bds-typo variant="fs-12">{this.helperMessage}</bds-typo>
+        </div>
+      )
+    }
+
+    if (this.danger && this.errorMessage) {
+      return (
+        <div class="input__message input__message--danger">
+          <bds-icon
+            size="x-small"
+            name="error"
+            theme="solid"
+            color="inherit">
+          </bds-icon>
+          <bds-typo variant="fs-12">{this.errorMessage}</bds-typo>
+        </div>
+      )
+    }
+
+    return null;
+
+  }
+
   render(): HTMLElement {
     return (
       <div class={{
@@ -54,7 +83,6 @@ export class Input {
         "input--state-primary": !this.danger,
         "input--state-danger": this.danger,
         "input--label": !!this.label,
-        "input--hover": true,
       }}>
         {this.renderIconLeft()}
         <div class="input__container">
@@ -68,6 +96,7 @@ export class Input {
             value={this.value}
           />
         </div>
+        {this.renderMessageError()}
       </div>
     )
   }

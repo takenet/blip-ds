@@ -86,6 +86,8 @@ export namespace Components {
   }
   interface BdsInput {
     'danger'?: boolean;
+    'errorMessage'?: string;
+    'helperMessage'?: string;
     'iconLeft'?: string;
     'iconRight'?: string;
     'inputId': string;
@@ -229,6 +231,8 @@ declare namespace LocalJSX {
   }
   interface BdsInput {
     'danger'?: boolean;
+    'errorMessage'?: string;
+    'helperMessage'?: string;
     'iconLeft'?: string;
     'iconRight'?: string;
     'inputId': string;

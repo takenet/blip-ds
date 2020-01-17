@@ -82,15 +82,12 @@ $input-width: 312px;
 @mixin input-theme($primary, $secondary, $label, $boxShadow) {
   color: $color-neutral-dark-city;
 
-  .input--hover {
-    background-color: purple;
-  }
-
-  &--pressed {
+  &.input--hover {
     @include border($primary);
   }
 
-  &--focus {
+  &.input--pressed,
+  &.input--focus {
     @include border($primary);
     -webkit-box-shadow: 0 0 0 2px $boxShadow;
     box-shadow: 0 0 0 2px $boxShadow;
@@ -107,12 +104,14 @@ $input-width: 312px;
 }
 
 .input {
-  @include border($color-neutral-light-wave);
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: $input-padding;
   width: $input-width;
+
+  @include border($color-neutral-light-wave);
 
   &--state {
     &-primary {
@@ -165,6 +164,21 @@ $input-width: 312px;
     &__text {
       @include reset-input();
       @include input-text();
+    }
+  }
+
+  &__message {
+    display: flex;
+    align-items: center;
+    height: 18px;
+    left: 0px;
+    position: absolute;
+    bottom: -22px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: $color-neutral-medium-cloud;
+
+    &--danger {
+      color: $color-secondary-delete;
     }
   }
 }
