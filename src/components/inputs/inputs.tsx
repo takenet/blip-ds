@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from "@stencil/core";
+import { Component, h, Prop, Element, State } from "@stencil/core";
 
 export type InputType = 'text' | 'textarea';
 
@@ -22,9 +22,13 @@ export class Input {
   @Prop() iconLeft?: string = '';
   @Prop() iconRight?: string = '';
 
-  @Prop() value?: string = '';
+  @Prop({ reflect: true }) value?: string = '';
 
   @Prop({ reflect: true }) danger?: boolean = false;
+
+  @Prop() onChangeValue: Function;
+
+  @State() isPressed?= false;
 
   renderIconLeft(): HTMLElement {
     return this.iconLeft && (
@@ -61,12 +65,14 @@ export class Input {
     if (this.danger && this.errorMessage) {
       return (
         <div class="input__message input__message--danger">
-          <bds-icon
-            size="x-small"
-            name="error"
-            theme="solid"
-            color="inherit">
-          </bds-icon>
+          <div class="input__message__icon">
+            <bds-icon
+              size="x-small"
+              name="error"
+              theme="solid"
+              color="inherit">
+            </bds-icon>
+          </div>
           <bds-typo variant="fs-12">{this.errorMessage}</bds-typo>
         </div>
       )
@@ -76,6 +82,12 @@ export class Input {
 
   }
 
+  inputChanged(event): void {
+    if (this.onChangeValue) {
+      this.onChangeValue(event.target.value);
+    }
+  }
+
   render(): HTMLElement {
     return (
       <div class={{
@@ -83,12 +95,18 @@ export class Input {
         "input--state-primary": !this.danger,
         "input--state-danger": this.danger,
         "input--label": !!this.label,
-      }}>
+        "input--pressed": this.isPressed,
+      }}
+        onClick={(): void => { this.isPressed = true; }}
+      >
         {this.renderIconLeft()}
         <div class="input__container">
           {this.renderLabel()}
           <input
             class="input__container__text"
+            onInput={(event: UIEvent): void => this.inputChanged(event)}
+            onBlur={(): void => { this.isPressed = false; }}
+            onFocus={(): void => { this.isPressed = true; }}
             id={this.inputId}
             name={this.inputName}
             placeholder={this.placeholder}

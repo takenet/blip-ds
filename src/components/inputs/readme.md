@@ -17,6 +17,7 @@
 | `inputId` _(required)_ | `input-id`       |             | `string`               | `undefined` |
 | `inputName`            | `input-name`     |             | `string`               | `''`        |
 | `label`                | `label`          |             | `string`               | `''`        |
+| `onChangeValue`        | --               |             | `Function`             | `undefined` |
 | `placeholder`          | `placeholder`    |             | `string`               | `''`        |
 | `type`                 | `type`           |             | `"text" \| "textarea"` | `'text'`    |
 | `value`                | `value`          |             | `string`               | `''`        |

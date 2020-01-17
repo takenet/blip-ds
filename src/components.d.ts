@@ -93,6 +93,7 @@ export namespace Components {
     'inputId': string;
     'inputName'?: string;
     'label'?: string;
+    'onChangeValue': Function;
     'placeholder'?: string;
     'type'?: InputType;
     'value'?: string;
@@ -238,6 +239,7 @@ declare namespace LocalJSX {
     'inputId': string;
     'inputName'?: string;
     'label'?: string;
+    'onChangeValue'?: Function;
     'placeholder'?: string;
     'type'?: InputType;
     'value'?: string;
