@@ -37,30 +37,28 @@ export class Input {
 
   @Prop() onChangeValue: Function;
 
-  connectedCallback() {
-    if (this.type == 'password') {
-      this.isPassword = true;
-      console.log('INPUT: connectedCallback: password', this.isPassword)
-    }
+  connectedCallback(): void {
+    if (this.type == 'password') this.isPassword = true;
   }
 
   toggleShowPassword(): void {
-    console.log('trace: toggleShowPassword', this.showPassword, !this.showPassword)
     this.showPassword = !this.showPassword;
   }
 
-  getTypeInput() {
-    if (this.isPassword && this.showPassword) {
-      return 'text'
-    }
+  getTypeInput(): string {
+    if (this.isPassword && this.showPassword) return 'text';
 
     return this.type;
   }
 
-  getAutoCompleteInput() {
+  getAutoCompleteInput(): string {
     if (!this.showPassword) return 'current-password';
 
     return this.autoComplete;
+  }
+
+  inputChanged(event): void {
+    if (this.onChangeValue) this.onChangeValue(event.target.value);
   }
 
   renderIcon(): HTMLElement {
@@ -125,10 +123,6 @@ export class Input {
 
     return null;
 
-  }
-
-  inputChanged(event): void {
-    if (this.onChangeValue) this.onChangeValue(event.target.value);
   }
 
   render(): HTMLElement {
