@@ -21,11 +21,13 @@
 ### Used by
 
  - [bds-button](../button)
+ - [bds-input](../input)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-button --> bds-icon
+  bds-input --> bds-icon
   style bds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

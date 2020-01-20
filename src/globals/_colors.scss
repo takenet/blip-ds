@@ -1,5 +1,5 @@
  /**
- * Primary Colours
+ * Primary Colors
  * Nossa paleta principal é composta por tons de azul que rementem diretamente as cores da marca,
  * essas cores estão presentes na maioria dos pontos de contato, do marketing ao produto como também por toda a plataforma.
  */
@@ -9,19 +9,22 @@ $color-primary-dark: #2498A8;
 $color-primary-ghost: #F8FBFB;
 
 /**
-* Secondary Colours
+* Secondary Colors
 * A paleta secundária é composta de vermelho, amarelo, verde e roxo. Cada cor é selecionada com o objetivo de fornecer feedback significativo em nossos produtos.
 */
 $color-secondary-delete: #FF5A60;
 $color-secondary-cheetos: #F9B42F;
 $color-secondary-true: #4DCB7B;
 
+$color-secondary-bg-delete: rgba(255, 123, 128, 0.6);
+$color-primary-bg-main: rgba(44, 195, 213, 0.70);
+
 /**
-* Neutral Colours
+* Neutral Colors
 * Os neutros têm graus variados de saturação. Normalmente, eles são usados ​​para texto e fundos sutis
 * quando não queremos chamar muita atenção para um ponto de contato específico ou transmitir informações como "a fazer" ou "desativado".
 */
-
+// rgba(255, 123, 128, 0.6)
 // Disabled Blues
 $color-neutral-disabled-blues-text: #76C1CA;
 $color-neutral-disabled-blues-bg: #DAF2F4;
@@ -66,44 +69,44 @@ $color-extend-yo-melon: #F1E733;
 $color-extend-yo-hay: #B5AD26;
 $color-extend-yo-sand: #FEECCB;
 $color-extend-yo-c-vitamin: #FCDA97;
-$color-extend-yo-Sphinx: #CB9733;
+$color-extend-yo-sphinx: #CB9733;
 $color-extend-yo-moose: #FEE6D1;
 $color-extend-yo-summer: #FCCDA2;
 $color-extend-yo-doritos: #F99B45;
 $color-extend-yo-carrot: #FA7E25;
 
 // Verdes
-$color-exnted-green-chameleon: #D3F2DE;
-$color-exnted-green-mint: #A6E5BD;
-$color-exnted-green-corn: #4AA86C;
-$color-exnted-green-asparagus: #26663D;
-$color-exnted-green-bamboo: #EFF4CA;
-$color-exnted-green-lime: #DFEA95;
-$color-exnted-green-leaf: #BED42B;
-$color-exnted-green-algae: #8E9F20;
+$color-extended-green-chameleon: #D3F2DE;
+$color-extended-green-mint: #A6E5BD;
+$color-extended-green-corn: #4AA86C;
+$color-extended-green-asparagus: #26663D;
+$color-extended-green-bamboo: #EFF4CA;
+$color-extended-green-lime: #DFEA95;
+$color-extended-green-leaf: #BED42B;
+$color-extended-green-algae: #8E9F20;
 
 // Azuis
-$color-exnted-blue-sky: #C3EEF4;
-$color-exnted-blue-wind: #ADE7EE;
-$color-exnted-blue-mermaid: #41B2C0;
-$color-exnted-blue-galaxy: #16626B;
-$color-exnted-blue-ice: #D5F3FF;
-$color-exnted-blue-frozen: #AAE7FF;
-$color-exnted-blue-smurf: #55CFFF;
-$color-exnted-blue-whale: #409BBF;
-$color-exnted-blue-genie: #D3DEFC;
-$color-exnted-blue-unicorn: #A8BDF9;
-$color-exnted-blue-sea: #517BF2;
-$color-exnted-blue-jazz: #3D5CB6;
+$color-extended-blue-sky: #C3EEF4;
+$color-extended-blue-wind: #ADE7EE;
+$color-extended-blue-mermaid: #41B2C0;
+$color-extended-blue-galaxy: #16626B;
+$color-extended-blue-ice: #D5F3FF;
+$color-extended-blue-frozen: #AAE7FF;
+$color-extended-blue-smurf: #55CFFF;
+$color-extended-blue-whale: #409BBF;
+$color-extended-blue-genie: #D3DEFC;
+$color-extended-blue-unicorn: #A8BDF9;
+$color-extended-blue-sea: #517BF2;
+$color-extended-blue-jazz: #3D5CB6;
 
 // Roxos
-$color-exnted-purples-eggplant: #EDD9FD;
-$color-exnted-purples-pixie: #DBB3FB;
-$color-exnted-purples-witch: #B97CE8;
-$color-exnted-purples-grape: #B766F6;
-$color-exnted-purples-violet: #995CC8;
-$color-exnted-purples-wine: #894CB9;
-$color-exnted-purples-acai: #5B337B;
+$color-extended-purples-eggplant: #EDD9FD;
+$color-extended-purples-pixie: #DBB3FB;
+$color-extended-purples-witch: #B97CE8;
+$color-extended-purples-grape: #B766F6;
+$color-extended-purples-violet: #995CC8;
+$color-extended-purples-wine: #894CB9;
+$color-extended-purples-acai: #5B337B;
 
 // Gradients
 $color-gradient-universe: linear-gradient(195.12deg, #343C4C -10.36%, #242B36 45.63%, #1D1D1D 117.21%);

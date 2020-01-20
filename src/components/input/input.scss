@@ -1,0 +1,139 @@
+@import "resets";
+
+$input-padding: 8px 12px 9px 12px;
+$input-padding-label: 7px 12px 8px 12px;
+$input-width: 312px;
+
+@mixin input-text {
+  font-family: $font-family;
+  font-size: $fs-14;
+  line-height: $line-hight-plus;
+}
+
+@mixin input-border($color, $boxShadow: false) {
+  border: 1px solid $color;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  @if ($boxShadow) {
+    -webkit-box-shadow: 0 0 0 2px $boxShadow;
+    box-shadow: 0 0 0 2px $boxShadow;
+  }
+}
+
+@mixin input-theme($name, $primary, $secondary, $label, $boxShadow) {
+  color: $color-neutral-dark-city;
+
+  @if ($name == "danger") {
+    @include input-border($primary, $boxShadow);
+  } @else {
+    @include input-border($color-neutral-light-wave);
+  }
+
+  &:hover {
+    @include input-border($primary);
+  }
+
+  &.input--pressed {
+    @include input-border($primary, $boxShadow);
+  }
+
+  .input__icon-left {
+    color: $primary;
+    background-color: $secondary;
+  }
+
+  .input__container__label {
+    color: $label;
+  }
+
+  .input__container__text {
+    color: $color-neutral-dark-city;
+  }
+}
+
+.input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: $input-padding;
+  width: $input-width;
+
+  &--state {
+    &-primary {
+      @include input-theme(
+        "primary",
+        $color-primary-main,
+        $color-neutral-disabled-blues-bg,
+        $color-neutral-medium-cloud,
+        $color-primary-bg-main
+      );
+    }
+
+    &-danger {
+      @include input-theme(
+        "danger",
+        $color-secondary-delete,
+        $color-extend-rr-b-vitamin,
+        $color-secondary-delete,
+        $color-secondary-bg-delete
+      );
+    }
+  }
+
+  &--label {
+    padding: $input-padding-label;
+  }
+
+  &__icon-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-right: 8px;
+    padding: 2.5px;
+
+    &--large {
+      padding: 4px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    &__label {
+      display: flex;
+      align-items: center;
+    }
+
+    &__text {
+      @include reset-input();
+      @include input-text();
+    }
+  }
+
+  &__message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    left: 0px;
+    position: absolute;
+    bottom: -22px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: $color-neutral-medium-cloud;
+
+    &__icon {
+      display: flex;
+      padding-right: 4px;
+    }
+
+    &--danger {
+      color: $color-secondary-delete;
+    }
+  }
+}

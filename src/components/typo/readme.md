@@ -1,4 +1,4 @@
-# bds-text
+# bds-typo
 
 
 
@@ -24,12 +24,14 @@
 
  - [bds-button](../button)
  - [bds-card-color](../card-color)
+ - [bds-input](../input)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-button --> bds-typo
   bds-card-color --> bds-typo
+  bds-input --> bds-typo
   style bds-typo fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

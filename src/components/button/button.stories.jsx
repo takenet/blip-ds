@@ -13,9 +13,9 @@ export default {
 
 export const defaultButton = () => (
     <>
-        <bds-button 
-            variant={text('variant', 'primary')} 
-            size={text('size', 'standard')} 
+        <bds-button
+            variant={text('variant', 'primary')}
+            size={text('size', 'standard')}
             disabled={boolean('disabled', false)}
             arrow={boolean('arrow', false)}
             icon={text('icon', '')}
@@ -58,7 +58,7 @@ export const variantPrimaryButton = () => (
         <bds-button icon="file-new" size="standard">Text button</bds-button>
         <br />
         <bds-button icon="file-new" size="short">Text button</bds-button>
-        
+
         <br />
 
         <bds-typo variant="fs-24">Arrow</bds-typo>
@@ -93,7 +93,7 @@ export const variantSecondButton = () => (
         <bds-button variant="second" icon="file-new" size="standard">Text button</bds-button>
         <br />
         <bds-button variant="second" icon="file-new" size="short">Text button</bds-button>
-        
+
         <br />
 
         <bds-typo variant="fs-24">Arrow</bds-typo>
@@ -128,7 +128,7 @@ export const variantGhostButton = () => (
         <bds-button variant="ghost" icon="file-new" size="standard">Text button</bds-button>
         <br />
         <bds-button variant="ghost" icon="file-new" size="short">Text button</bds-button>
-        
+
         <br />
 
         <bds-typo variant="fs-24">Arrow</bds-typo>
