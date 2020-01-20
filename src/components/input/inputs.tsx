@@ -28,7 +28,7 @@ export class Input {
 
   @Prop() onChangeValue: Function;
 
-  @State() isPressed?= false;
+  @State() isPressed? = false;
 
   renderIconLeft(): HTMLElement {
     return this.iconLeft && (
@@ -77,15 +77,10 @@ export class Input {
         </div>
       )
     }
-
-    return null;
-
   }
 
   inputChanged(event): void {
-    if (this.onChangeValue) {
-      this.onChangeValue(event.target.value);
-    }
+    if (this.onChangeValue) this.onChangeValue(event.target.value);
   }
 
   render(): HTMLElement {
