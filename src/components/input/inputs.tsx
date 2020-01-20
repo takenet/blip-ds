@@ -14,9 +14,9 @@ export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-passwor
 export class Input {
   @Element() element: HTMLElement;
 
-  @State() isPressed?= false;
-  @State() isPassword?= false;
-  @State() showPassword?= false;
+  @State() isPressed? = false;
+  @State() isPassword? = false;
+  @State() showPassword? = false;
 
   @Prop() inputId!: string;
   @Prop() inputName?: string = '';
@@ -120,9 +120,6 @@ export class Input {
         </div>
       )
     }
-
-    return null;
-
   }
 
   render(): HTMLElement {
