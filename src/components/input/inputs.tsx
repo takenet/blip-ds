@@ -42,7 +42,7 @@ export class Input {
   /**
    * Input type. Can be one of: "text" or "password".
    */
-  @Prop() type?: InputType = 'text';
+  @Prop({ reflect: true }) type?: InputType = 'text';
 
   /**
    *  label in input, with he the input size increases.

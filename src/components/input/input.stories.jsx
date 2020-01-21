@@ -27,6 +27,18 @@ export const defaultInput = () => (
     </>
 );
 
+export const dangerInput = () => (
+    <>
+        <bds-input danger></bds-input>
+        <br />
+        <bds-input danger icon="email"></bds-input>
+        <br />
+        <bds-input danger label="Name"></bds-input>
+        <br />
+        <bds-input danger icon="email" label="Name"></bds-input>
+    </>
+);
+
 export const passwordInput = () => (
     <>
         <bds-input type="password"></bds-input>
