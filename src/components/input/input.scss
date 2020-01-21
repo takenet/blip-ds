@@ -21,21 +21,33 @@ $input-width: 312px;
   }
 }
 
-@mixin input-theme($name, $primary, $secondary, $label, $boxShadow) {
-  color: $color-neutral-dark-city;
-
-  @if ($name == "danger") {
-    @include input-border($primary, $boxShadow);
+@mixin input-theme($name, $primary, $secondary, $label, $border) {
+  // Font color
+  @if ($name == "disabled") {
+    background: $color-neutral-light-whisper;
+    color: $color-neutral-medium-silver;
   } @else {
-    @include input-border($color-neutral-light-wave);
+    color: $color-neutral-dark-city;
   }
 
+  // Border
+  @if ($name == "danger") {
+    @include input-border($primary, $border);
+  } @else {
+    @include input-border($border);
+  }
+
+  // States
   &:hover {
-    @include input-border($primary);
+    @if ($name == "disabled") {
+      @include input-border($secondary);
+    } @else {
+      @include input-border($primary);
+    }
   }
 
   &.input--pressed {
-    @include input-border($primary, $boxShadow);
+    @include input-border($primary, $border);
   }
 
   .input__icon {
@@ -48,7 +60,13 @@ $input-width: 312px;
   }
 
   .input__container__text {
-    color: $color-neutral-dark-city;
+    caret-color: $primary;
+
+    @if ($name == "disabled") {
+      color: $color-neutral-medium-silver;
+    } @else {
+      color: $color-neutral-dark-city;
+    }
   }
 }
 
@@ -78,6 +96,16 @@ $input-width: 312px;
         $color-extend-rr-b-vitamin,
         $color-secondary-delete,
         $color-secondary-bg-delete
+      );
+    }
+
+    &-disabled {
+      @include input-theme(
+        "disabled",
+        $color-neutral-medium-cloud,
+        $color-neutral-light-breeze,
+        $color-neutral-medium-silver,
+        $color-neutral-light-off
       );
     }
   }

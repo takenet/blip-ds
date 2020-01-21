@@ -1,23 +1,23 @@
- /**
+/**
  * Primary Colors
  * Nossa paleta principal é composta por tons de azul que rementem diretamente as cores da marca,
  * essas cores estão presentes na maioria dos pontos de contato, do marketing ao produto como também por toda a plataforma.
  */
 $color-primary-main: #2cc3d5;
-$color-primary-light: #87DDE8;
-$color-primary-dark: #2498A8;
-$color-primary-ghost: #F8FBFB;
+$color-primary-light: #87dde8;
+$color-primary-dark: #2498a8;
+$color-primary-ghost: #f8fbfb;
 
 /**
 * Secondary Colors
 * A paleta secundária é composta de vermelho, amarelo, verde e roxo. Cada cor é selecionada com o objetivo de fornecer feedback significativo em nossos produtos.
 */
-$color-secondary-delete: #FF5A60;
-$color-secondary-cheetos: #F9B42F;
-$color-secondary-true: #4DCB7B;
+$color-secondary-delete: #ff5a60;
+$color-secondary-cheetos: #f9b42f;
+$color-secondary-true: #4dcb7b;
 
 $color-secondary-bg-delete: rgba(255, 123, 128, 0.6);
-$color-primary-bg-main: rgba(44, 195, 213, 0.70);
+$color-primary-bg-main: rgba(44, 195, 213, 0.7);
 
 /**
 * Neutral Colors
@@ -26,25 +26,25 @@ $color-primary-bg-main: rgba(44, 195, 213, 0.70);
 */
 // rgba(255, 123, 128, 0.6)
 // Disabled Blues
-$color-neutral-disabled-blues-text: #76C1CA;
-$color-neutral-disabled-blues-bg: #DAF2F4;
+$color-neutral-disabled-blues-text: #76c1ca;
+$color-neutral-disabled-blues-bg: #daf2f4;
 
 // Dark neutrals
-$color-neutral-dark-onix: #1A2437;
-$color-neutral-dark-suit: #202C44;
-$color-neutral-dark-city: #56616E;
+$color-neutral-dark-onix: #1a2437;
+$color-neutral-dark-suit: #202c44;
+$color-neutral-dark-city: #56616e;
 $color-neutral-dark-rooftop: #738192;
 
 // Medium neutrals
-$color-neutral-medium-desk: #607B99;
-$color-neutral-medium-cloud: #8CA0B3;
-$color-neutral-medium-silver: #B9CBD3;
+$color-neutral-medium-desk: #607b99;
+$color-neutral-medium-cloud: #8ca0b3;
+$color-neutral-medium-silver: #b9cbd3;
 
 // Light neutrals
-$color-neutral-light-wave: #D2DFE6;
-$color-neutral-light-off: #DEE8EC;
-$color-neutral-light-breeze: #E7EEF1;
-$color-neutral-light-whisper: #F5F8F9;
+$color-neutral-light-wave: #d2dfe6;
+$color-neutral-light-off: #dee8ec;
+$color-neutral-light-breeze: #e7eef1;
+$color-neutral-light-whisper: #f5f8f9;
 
 /**
 * Extended colors
@@ -53,76 +53,75 @@ $color-neutral-light-whisper: #F5F8F9;
 */
 
 // Vermelhos / Rosas
-$color-extend-rr-b-vitamin: #FFD6D7;
-$color-extend-rr-flower: #FF7B80;
-$color-extend-rr-lipstick: #CF5358;
-$color-extend-rr-dragon: #802D30;
-$color-extend-rr-ballet: #FDD9E1;
-$color-extend-rr-yogurt: #FBB3C4;
-$color-extend-rr-watermelon: #F66689;
-$color-extend-rr-blush: #C85C77;
+$color-extend-rr-b-vitamin: #ffd6d7;
+$color-extend-rr-flower: #ff7b80;
+$color-extend-rr-lipstick: #cf5358;
+$color-extend-rr-dragon: #802d30;
+$color-extend-rr-ballet: #fdd9e1;
+$color-extend-rr-yogurt: #fbb3c4;
+$color-extend-rr-watermelon: #f66689;
+$color-extend-rr-blush: #c85c77;
 
 // Amarelos / Laranjas
-$color-extend-yo-fairy: #FBF9CC;
-$color-extend-yo-d-vitamin: #F8F399;
-$color-extend-yo-melon: #F1E733;
-$color-extend-yo-hay: #B5AD26;
-$color-extend-yo-sand: #FEECCB;
-$color-extend-yo-c-vitamin: #FCDA97;
-$color-extend-yo-sphinx: #CB9733;
-$color-extend-yo-moose: #FEE6D1;
-$color-extend-yo-summer: #FCCDA2;
-$color-extend-yo-doritos: #F99B45;
-$color-extend-yo-carrot: #FA7E25;
+$color-extend-yo-fairy: #fbf9cc;
+$color-extend-yo-d-vitamin: #f8f399;
+$color-extend-yo-melon: #f1e733;
+$color-extend-yo-hay: #b5ad26;
+$color-extend-yo-sand: #feeccb;
+$color-extend-yo-c-vitamin: #fcda97;
+$color-extend-yo-sphinx: #cb9733;
+$color-extend-yo-moose: #fee6d1;
+$color-extend-yo-summer: #fccda2;
+$color-extend-yo-doritos: #f99b45;
+$color-extend-yo-carrot: #fa7e25;
 
 // Verdes
-$color-extended-green-chameleon: #D3F2DE;
-$color-extended-green-mint: #A6E5BD;
-$color-extended-green-corn: #4AA86C;
-$color-extended-green-asparagus: #26663D;
-$color-extended-green-bamboo: #EFF4CA;
-$color-extended-green-lime: #DFEA95;
-$color-extended-green-leaf: #BED42B;
-$color-extended-green-algae: #8E9F20;
+$color-extended-green-chameleon: #d3f2de;
+$color-extended-green-mint: #a6e5bd;
+$color-extended-green-corn: #4aa86c;
+$color-extended-green-asparagus: #26663d;
+$color-extended-green-bamboo: #eff4ca;
+$color-extended-green-lime: #dfea95;
+$color-extended-green-leaf: #bed42b;
+$color-extended-green-algae: #8e9f20;
 
 // Azuis
-$color-extended-blue-sky: #C3EEF4;
-$color-extended-blue-wind: #ADE7EE;
-$color-extended-blue-mermaid: #41B2C0;
-$color-extended-blue-galaxy: #16626B;
-$color-extended-blue-ice: #D5F3FF;
-$color-extended-blue-frozen: #AAE7FF;
-$color-extended-blue-smurf: #55CFFF;
-$color-extended-blue-whale: #409BBF;
-$color-extended-blue-genie: #D3DEFC;
-$color-extended-blue-unicorn: #A8BDF9;
-$color-extended-blue-sea: #517BF2;
-$color-extended-blue-jazz: #3D5CB6;
+$color-extended-blue-sky: #c3eef4;
+$color-extended-blue-wind: #ade7ee;
+$color-extended-blue-mermaid: #41b2c0;
+$color-extended-blue-galaxy: #16626b;
+$color-extended-blue-ice: #d5f3ff;
+$color-extended-blue-frozen: #aae7ff;
+$color-extended-blue-smurf: #55cfff;
+$color-extended-blue-whale: #409bbf;
+$color-extended-blue-genie: #d3defc;
+$color-extended-blue-unicorn: #a8bdf9;
+$color-extended-blue-sea: #517bf2;
+$color-extended-blue-jazz: #3d5cb6;
 
 // Roxos
-$color-extended-purples-eggplant: #EDD9FD;
-$color-extended-purples-pixie: #DBB3FB;
-$color-extended-purples-witch: #B97CE8;
-$color-extended-purples-grape: #B766F6;
-$color-extended-purples-violet: #995CC8;
-$color-extended-purples-wine: #894CB9;
-$color-extended-purples-acai: #5B337B;
+$color-extended-purples-eggplant: #edd9fd;
+$color-extended-purples-pixie: #dbb3fb;
+$color-extended-purples-witch: #b97ce8;
+$color-extended-purples-grape: #b766f6;
+$color-extended-purples-violet: #995cc8;
+$color-extended-purples-wine: #894cb9;
+$color-extended-purples-acai: #5b337b;
 
 // Gradients
-$color-gradient-universe: linear-gradient(195.12deg, #343C4C -10.36%, #242B36 45.63%, #1D1D1D 117.21%);
-$color-gradient-street: linear-gradient(195.12deg, #6D7A81 -10.36%, #52636C 45.63%, #312F44 117.2%, #3D4A51 117.21%);
-$color-gradient-chair: linear-gradient(#788CA3 0%, #607B99 43.89%, #485C73 100%);
-$color-gradient-shine: linear-gradient(195.12deg, #F5F8F9 -10.36%, #DEE8EC 45.63%, #D2DFE6 117.21%);
-$color-gradient-olaf: linear-gradient(195.12deg, #FAFCFC -10.36%, #F5F8F9 45.63%, #E8EAEB 117.2%, #E8EAEB 117.21%);
-$color-gradient-dg-blip-system: linear-gradient(195.12deg, #87DDE8 -10.36%, #2CC3D5 45.63%, #2498A8 117.21%);
-$color-gradient-error: linear-gradient(195.12deg, #FF5A60 -10.36%, #F04847 45.63%, #B43635 117.21%);
-$color-gradient-phoenix: linear-gradient(195.12deg, #FFCF33 -10.36%, #F9B42F 45.63%, #F99B45 117.21%);
-$color-gradient-success: linear-gradient(195.12deg, #93D2AA -10.36%, #4DCB7B 45.63%, #4AA86C 117.21%);
-$color-gradient-barbie: linear-gradient(195.12deg, #FBB3C4 -10.36%, #F66689 45.63%, #C85C77 117.21%);
-$color-gradient-jeans: linear-gradient(195.12deg, #514F64 -10.36%, #2C2A46 45.63%, #312F44 117.2%, #312F44 117.21%);
-$color-gradient-ocean: linear-gradient(195.12deg, #6D8CE5 -10.36%, #517BF2 45.63%, #4D6CC5 117.21%);
-$color-gradient-smurfette: linear-gradient(195.12deg, #9EE3FF -10.36%, #55CFFF 45.63%, #51B2DD 117.21%);
+$color-gradient-universe: linear-gradient(195.12deg, #343c4c -10.36%, #242b36 45.63%, #1d1d1d 117.21%);
+$color-gradient-street: linear-gradient(195.12deg, #6d7a81 -10.36%, #52636c 45.63%, #312f44 117.2%, #3d4a51 117.21%);
+$color-gradient-chair: linear-gradient(#788ca3 0%, #607b99 43.89%, #485c73 100%);
+$color-gradient-shine: linear-gradient(195.12deg, #f5f8f9 -10.36%, #dee8ec 45.63%, #d2dfe6 117.21%);
+$color-gradient-olaf: linear-gradient(195.12deg, #fafcfc -10.36%, #f5f8f9 45.63%, #e8eaeb 117.2%, #e8eaeb 117.21%);
+$color-gradient-dg-blip-system: linear-gradient(195.12deg, #87dde8 -10.36%, #2cc3d5 45.63%, #2498a8 117.21%);
+$color-gradient-error: linear-gradient(195.12deg, #ff5a60 -10.36%, #f04847 45.63%, #b43635 117.21%);
+$color-gradient-phoenix: linear-gradient(195.12deg, #ffcf33 -10.36%, #f9b42f 45.63%, #f99b45 117.21%);
+$color-gradient-success: linear-gradient(195.12deg, #93d2aa -10.36%, #4dcb7b 45.63%, #4aa86c 117.21%);
+$color-gradient-barbie: linear-gradient(195.12deg, #fbb3c4 -10.36%, #f66689 45.63%, #c85c77 117.21%);
+$color-gradient-jeans: linear-gradient(195.12deg, #514f64 -10.36%, #2c2a46 45.63%, #312f44 117.2%, #312f44 117.21%);
+$color-gradient-ocean: linear-gradient(195.12deg, #6d8ce5 -10.36%, #517bf2 45.63%, #4d6cc5 117.21%);
+$color-gradient-smurfette: linear-gradient(195.12deg, #9ee3ff -10.36%, #55cfff 45.63%, #51b2dd 117.21%);
 
 // Shadows
 $shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.3);
-
