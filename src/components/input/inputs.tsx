@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element, State } from "@stencil/core";
 
-export type InputType = 'text' | 'textarea' | 'password';
+export type InputType = 'text' | 'password';
 
 export type InputAutocapitalize = 'off' | 'none' | 'words' | 'on' | 'sentences' | 'characters';
 
@@ -14,29 +14,86 @@ export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-passwor
 export class Input {
   @Element() element: HTMLElement;
 
+  /**
+   * Conditions the element to say whether it is pressed or not, to add styles.
+   */
   @State() isPressed?= false;
+
+  /**
+   * Indicates if the input is password, adding the eye icon.
+   */
   @State() isPassword?= false;
+
+  /**
+   * When the input is of the password type, this field informs if the eye is open or closed.
+   */
   @State() showPassword?= false;
 
+  /**
+   * Input Id
+   */
   @Prop() inputId!: string;
+
+  /**
+   * Input Name
+   */
   @Prop() inputName?: string = '';
 
+  /**
+   * Input type. Can be one of: "text" or "password".
+   */
   @Prop() type?: InputType = 'text';
+
+  /**
+   *  label in input, with he the input size increases.
+   */
   @Prop() label?: string = '';
+
+  /**
+   * A tip for the user who can enter no controls.
+   */
   @Prop() placeholder?: string = '';
-  @Prop() helperMessage?: string = '';
-  @Prop() errorMessage?: string = '';
+
+  /**
+   * Capitalizes every word's second character.
+   */
   @Prop() autoCapitalize?: InputAutocapitalize = 'off';
+
+  /**
+   * Hint for form autofill feature
+   */
   @Prop() autoComplete?: InputAutoComplete = 'off';
 
-  @Prop() icon?: string = '';
+  /**
+   * Indicated to pass a help the user in complex filling.
+   */
+  @Prop() helperMessage?: string = '';
 
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop() errorMessage?: string = '';
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
+
+  /**
+   * Input value.
+   */
   @Prop({ reflect: true }) value?: string = '';
 
+  /**
+   * Add state danger on input, use for use feedback.
+   */
   @Prop({ reflect: true }) danger?: boolean = false;
 
   @Prop() onChangeValue: Function;
 
+  /**
+   * Disabled input.
+   */
   @Prop() disabled?= false;
 
 

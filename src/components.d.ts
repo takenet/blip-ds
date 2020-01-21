@@ -87,19 +87,58 @@ export namespace Components {
     'theme': IconTheme;
   }
   interface BdsInput {
+    /**
+    * Capitalizes every word's second character.
+    */
     'autoCapitalize'?: InputAutocapitalize;
+    /**
+    * Hint for form autofill feature
+    */
     'autoComplete'?: InputAutoComplete;
+    /**
+    * Add state danger on input, use for use feedback.
+    */
     'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
     'disabled'?: boolean;
+    /**
+    * Indicated to pass an feeback to user.
+    */
     'errorMessage'?: string;
+    /**
+    * Indicated to pass a help the user in complex filling.
+    */
     'helperMessage'?: string;
+    /**
+    * used for add icon in input left. Uses the bds-icon component.
+    */
     'icon'?: string;
+    /**
+    * Input Id
+    */
     'inputId': string;
+    /**
+    * Input Name
+    */
     'inputName'?: string;
+    /**
+    * label in input, with he the input size increases.
+    */
     'label'?: string;
     'onChangeValue': Function;
+    /**
+    * A tip for the user who can enter no controls.
+    */
     'placeholder'?: string;
+    /**
+    * Input type. Can be one of: "text" or "password".
+    */
     'type'?: InputType;
+    /**
+    * Input value.
+    */
     'value'?: string;
   }
   interface BdsTypo {
@@ -239,19 +278,58 @@ declare namespace LocalJSX {
     'theme'?: IconTheme;
   }
   interface BdsInput {
+    /**
+    * Capitalizes every word's second character.
+    */
     'autoCapitalize'?: InputAutocapitalize;
+    /**
+    * Hint for form autofill feature
+    */
     'autoComplete'?: InputAutoComplete;
+    /**
+    * Add state danger on input, use for use feedback.
+    */
     'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
     'disabled'?: boolean;
+    /**
+    * Indicated to pass an feeback to user.
+    */
     'errorMessage'?: string;
+    /**
+    * Indicated to pass a help the user in complex filling.
+    */
     'helperMessage'?: string;
+    /**
+    * used for add icon in input left. Uses the bds-icon component.
+    */
     'icon'?: string;
+    /**
+    * Input Id
+    */
     'inputId': string;
+    /**
+    * Input Name
+    */
     'inputName'?: string;
+    /**
+    * label in input, with he the input size increases.
+    */
     'label'?: string;
     'onChangeValue'?: Function;
+    /**
+    * A tip for the user who can enter no controls.
+    */
     'placeholder'?: string;
+    /**
+    * Input type. Can be one of: "text" or "password".
+    */
     'type'?: InputType;
+    /**
+    * Input value.
+    */
     'value'?: string;
   }
   interface BdsTypo {

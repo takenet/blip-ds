@@ -60,6 +60,8 @@ $input-width: 312px;
   }
 
   .input__container__text {
+    caret-color: $primary;
+
     @if ($name == "disabled") {
       color: $color-neutral-medium-silver;
     } @else {
@@ -83,7 +85,7 @@ $input-width: 312px;
         $color-primary-main,
         $color-neutral-disabled-blues-bg,
         $color-neutral-medium-cloud,
-        $color-neutral-light-wave
+        $color-primary-bg-main
       );
     }
 
@@ -97,7 +99,6 @@ $input-width: 312px;
       );
     }
 
-    // $color-neutral-light-whisper background
     &-disabled {
       @include input-theme(
         "disabled",

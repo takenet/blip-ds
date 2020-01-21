@@ -17,9 +17,11 @@ export const defaultInput = () => (
             placeholder={text('placeholder', 'nome completo')}
             label={text('label', '')}
             danger={boolean('danger', false)}
-            icon-left={text('icon-left', '')}
+            icon={text('icon', '')}
             value={text('value', '')}
             type={text('type', '')}
+            error-message={text('errorMessage', '')}
+            helper-message={text('helperMessage', '')}
         >
         </bds-input>
     </>
