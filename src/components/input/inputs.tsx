@@ -1,6 +1,10 @@
 import { Component, h, Prop, Element, State } from "@stencil/core";
 
-export type InputType = 'text' | 'textarea';
+export type InputType = 'text' | 'textarea' | 'password';
+
+export type InputAutocapitalize = 'off' | 'none' | 'words' | 'on' | 'sentences' | 'characters';
+
+export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-password' | 'username';
 
 @Component({
   tag: 'bds-input',
@@ -10,6 +14,10 @@ export type InputType = 'text' | 'textarea';
 export class Input {
   @Element() element: HTMLElement;
 
+  @State() isPressed? = false;
+  @State() isPassword? = false;
+  @State() showPassword? = false;
+
   @Prop() inputId!: string;
   @Prop() inputName?: string = '';
 
@@ -18,9 +26,10 @@ export class Input {
   @Prop() placeholder?: string = '';
   @Prop() helperMessage?: string = '';
   @Prop() errorMessage?: string = '';
+  @Prop() autoCapitalize?: InputAutocapitalize = 'off';
+  @Prop() autoComplete?: InputAutoComplete = 'off';
 
-  @Prop() iconLeft?: string = '';
-  @Prop() iconRight?: string = '';
+  @Prop() icon?: string = '';
 
   @Prop({ reflect: true }) value?: string = '';
 
@@ -28,19 +37,51 @@ export class Input {
 
   @Prop() onChangeValue: Function;
 
-  @State() isPressed? = false;
+  connectedCallback(): void {
+    if (this.type == 'password') this.isPassword = true;
+  }
 
-  renderIconLeft(): HTMLElement {
-    return this.iconLeft && (
+  toggleShowPassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  getTypeInput(): string {
+    if (this.isPassword && this.showPassword) return 'text';
+
+    return this.type;
+  }
+
+  getAutoCompleteInput(): string {
+    if (!this.showPassword) return 'current-password';
+
+    return this.autoComplete;
+  }
+
+  inputChanged(event): void {
+    if (this.onChangeValue) this.onChangeValue(event.target.value);
+  }
+
+  renderIcon(): HTMLElement {
+    return this.icon && (
       <div class={{
-        "input__icon-left": true,
-        "input__icon-left--large": !!this.label,
+        "input__icon": true,
+        "input__icon--large": !!this.label,
       }}>
         <bds-icon
           size={this.label ? "medium" : "small"}
-          name={this.iconLeft}
+          name={this.icon}
           color="inherit">
         </bds-icon>
+      </div>
+    )
+  }
+
+  renderEyeIcon(): HTMLElement {
+    const name = this.showPassword ? "eye-open" : "eye-closed";
+
+    return this.isPassword && (
+      <div class="input__icon_eye" onClick={(): void => this.toggleShowPassword()}>
+        <bds-icon size="small" name={name} color="inherit"></bds-icon>
       </div>
     )
   }
@@ -79,10 +120,6 @@ export class Input {
     }
   }
 
-  inputChanged(event): void {
-    if (this.onChangeValue) this.onChangeValue(event.target.value);
-  }
-
   render(): HTMLElement {
     return (
       <div class={{
@@ -94,7 +131,7 @@ export class Input {
       }}
         onClick={(): void => { this.isPressed = true; }}
       >
-        {this.renderIconLeft()}
+        {this.renderIcon()}
         <div class="input__container">
           {this.renderLabel()}
           <input
@@ -105,10 +142,13 @@ export class Input {
             id={this.inputId}
             name={this.inputName}
             placeholder={this.placeholder}
-            type={this.type}
+            type={this.getTypeInput()}
             value={this.value}
+            autocapitalize={this.autoCapitalize}
+            autocomplete={this.getAutoCompleteInput()}
           />
         </div>
+        {this.renderEyeIcon()}
         {this.renderMessageError()}
       </div>
     )

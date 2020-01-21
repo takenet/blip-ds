@@ -24,3 +24,15 @@ export const defaultInput = () => (
         </bds-input>
     </>
 );
+
+export const passwordInput = () => (
+    <>
+        <bds-input type="password"></bds-input>
+        <br />
+        <bds-input type="password" label="Password"></bds-input>
+        <br />
+        <bds-input type="password" danger></bds-input>
+        <br />
+        <bds-input type="password" label="Password" danger></bds-input>
+    </>
+)

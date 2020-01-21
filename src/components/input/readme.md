@@ -7,20 +7,21 @@
 
 ## Properties
 
-| Property               | Attribute        | Description | Type                   | Default     |
-| ---------------------- | ---------------- | ----------- | ---------------------- | ----------- |
-| `danger`               | `danger`         |             | `boolean`              | `false`     |
-| `errorMessage`         | `error-message`  |             | `string`               | `''`        |
-| `helperMessage`        | `helper-message` |             | `string`               | `''`        |
-| `iconLeft`             | `icon-left`      |             | `string`               | `''`        |
-| `iconRight`            | `icon-right`     |             | `string`               | `''`        |
-| `inputId` _(required)_ | `input-id`       |             | `string`               | `undefined` |
-| `inputName`            | `input-name`     |             | `string`               | `''`        |
-| `label`                | `label`          |             | `string`               | `''`        |
-| `onChangeValue`        | --               |             | `Function`             | `undefined` |
-| `placeholder`          | `placeholder`    |             | `string`               | `''`        |
-| `type`                 | `type`           |             | `"text" \| "textarea"` | `'text'`    |
-| `value`                | `value`          |             | `string`               | `''`        |
+| Property               | Attribute         | Description | Type                                                                  | Default     |
+| ---------------------- | ----------------- | ----------- | --------------------------------------------------------------------- | ----------- |
+| `autoCapitalize`       | `auto-capitalize` |             | `"characters" \| "none" \| "off" \| "on" \| "sentences" \| "words"`   | `'off'`     |
+| `autoComplete`         | `auto-complete`   |             | `"current-password" \| "new-password" \| "off" \| "on" \| "username"` | `'off'`     |
+| `danger`               | `danger`          |             | `boolean`                                                             | `false`     |
+| `errorMessage`         | `error-message`   |             | `string`                                                              | `''`        |
+| `helperMessage`        | `helper-message`  |             | `string`                                                              | `''`        |
+| `icon`                 | `icon`            |             | `string`                                                              | `''`        |
+| `inputId` _(required)_ | `input-id`        |             | `string`                                                              | `undefined` |
+| `inputName`            | `input-name`      |             | `string`                                                              | `''`        |
+| `label`                | `label`           |             | `string`                                                              | `''`        |
+| `onChangeValue`        | --                |             | `Function`                                                            | `undefined` |
+| `placeholder`          | `placeholder`     |             | `string`                                                              | `''`        |
+| `type`                 | `type`            |             | `"password" \| "text" \| "textarea"`                                  | `'text'`    |
+| `value`                | `value`           |             | `string`                                                              | `''`        |
 
 
 ## Dependencies

@@ -16,6 +16,8 @@ import {
   IconTheme,
 } from './components/icon/icon';
 import {
+  InputAutocapitalize,
+  InputAutoComplete,
   InputType,
 } from './components/input/inputs';
 import {
@@ -85,11 +87,12 @@ export namespace Components {
     'theme': IconTheme;
   }
   interface BdsInput {
+    'autoCapitalize'?: InputAutocapitalize;
+    'autoComplete'?: InputAutoComplete;
     'danger'?: boolean;
     'errorMessage'?: string;
     'helperMessage'?: string;
-    'iconLeft'?: string;
-    'iconRight'?: string;
+    'icon'?: string;
     'inputId': string;
     'inputName'?: string;
     'label'?: string;
@@ -235,11 +238,12 @@ declare namespace LocalJSX {
     'theme'?: IconTheme;
   }
   interface BdsInput {
+    'autoCapitalize'?: InputAutocapitalize;
+    'autoComplete'?: InputAutoComplete;
     'danger'?: boolean;
     'errorMessage'?: string;
     'helperMessage'?: string;
-    'iconLeft'?: string;
-    'iconRight'?: string;
+    'icon'?: string;
     'inputId': string;
     'inputName'?: string;
     'label'?: string;

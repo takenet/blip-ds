@@ -38,7 +38,7 @@ $input-width: 312px;
     @include input-border($primary, $boxShadow);
   }
 
-  .input__icon-left {
+  .input__icon {
     color: $primary;
     background-color: $secondary;
   }
@@ -86,7 +86,12 @@ $input-width: 312px;
     padding: $input-padding-label;
   }
 
-  &__icon-left {
+  &__icon_eye {
+    color: $color-neutral-medium-cloud;
+    display: flex;
+  }
+
+  &__icon {
     display: flex;
     align-items: center;
     justify-content: center;
