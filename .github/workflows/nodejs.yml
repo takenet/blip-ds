@@ -26,9 +26,7 @@ jobs:
       uses: cycjimmy/semantic-release-action@v2
       with:
         branch: master
-        semantic_version: 15.13.28
+        semantic_version: 16.0.2
         extra_plugins: |
           @semantic-release/commit-analyzer
-
-
 
