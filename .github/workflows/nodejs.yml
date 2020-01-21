@@ -8,25 +8,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-        registry-url: https://registry.npmjs.org/
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run eslint
-        npm run test
-        npm run build
-    - name: Semantic Release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      uses: cycjimmy/semantic-release-action@v2
-      with:
-        branch: master
-        semantic_version: 16.0.2
-        extra_plugins: |
-          @semantic-release/commit-analyzer
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        with:
+          branch: master
+          extra_plugins: |
+            @semantic-release/commit-analyzer
+            @semantic-release/git
+            @semantic-release/changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          egistry-url: https://registry.npmjs.org/
+      
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run eslint
+          npm run test
+          npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
