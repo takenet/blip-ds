@@ -20,14 +20,15 @@ jobs:
         npm run test
         npm run build
     - name: Semantic Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       uses: cycjimmy/semantic-release-action@v2
       with:
         branch: master
         semantic_version: 15.13.28
         extra_plugins: |
           @semantic-release/commit-analyzer
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 
 
