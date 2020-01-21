@@ -17,7 +17,7 @@ jobs:
           node-version: 12
           egistry-url: https://registry.npmjs.org/
       
-      - name: npm install, build, and test
+      - name: NPM Install, Build, and Test
         run: |
           npm install
           npm run eslint
