@@ -90,6 +90,7 @@ export namespace Components {
     'autoCapitalize'?: InputAutocapitalize;
     'autoComplete'?: InputAutoComplete;
     'danger'?: boolean;
+    'disabled'?: boolean;
     'errorMessage'?: string;
     'helperMessage'?: string;
     'icon'?: string;
@@ -241,6 +242,7 @@ declare namespace LocalJSX {
     'autoCapitalize'?: InputAutocapitalize;
     'autoComplete'?: InputAutoComplete;
     'danger'?: boolean;
+    'disabled'?: boolean;
     'errorMessage'?: string;
     'helperMessage'?: string;
     'icon'?: string;

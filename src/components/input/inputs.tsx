@@ -14,9 +14,9 @@ export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-passwor
 export class Input {
   @Element() element: HTMLElement;
 
-  @State() isPressed? = false;
-  @State() isPassword? = false;
-  @State() showPassword? = false;
+  @State() isPressed?= false;
+  @State() isPassword?= false;
+  @State() showPassword?= false;
 
   @Prop() inputId!: string;
   @Prop() inputName?: string = '';
@@ -36,6 +36,9 @@ export class Input {
   @Prop({ reflect: true }) danger?: boolean = false;
 
   @Prop() onChangeValue: Function;
+
+  @Prop() disabled?= false;
+
 
   connectedCallback(): void {
     if (this.type == 'password') this.isPassword = true;
@@ -128,8 +131,9 @@ export class Input {
         "input": true,
         "input--state-primary": !this.danger,
         "input--state-danger": this.danger,
+        "input--state-disabled": this.disabled,
         "input--label": !!this.label,
-        "input--pressed": this.isPressed,
+        "input--pressed": this.isPressed && !this.disabled,
       }}
         onClick={(): void => { this.isPressed = true; }}
       >
@@ -137,6 +141,7 @@ export class Input {
         <div class="input__container">
           {this.renderLabel()}
           <input
+            disabled={this.disabled}
             class="input__container__text"
             onInput={(event: UIEvent): void => this.inputChanged(event)}
             onBlur={(): void => { this.isPressed = false; }}

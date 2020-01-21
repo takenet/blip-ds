@@ -12,6 +12,7 @@
 | `autoCapitalize`       | `auto-capitalize` |             | `"characters" \| "none" \| "off" \| "on" \| "sentences" \| "words"`   | `'off'`     |
 | `autoComplete`         | `auto-complete`   |             | `"current-password" \| "new-password" \| "off" \| "on" \| "username"` | `'off'`     |
 | `danger`               | `danger`          |             | `boolean`                                                             | `false`     |
+| `disabled`             | `disabled`        |             | `boolean`                                                             | `false`     |
 | `errorMessage`         | `error-message`   |             | `string`                                                              | `''`        |
 | `helperMessage`        | `helper-message`  |             | `string`                                                              | `''`        |
 | `icon`                 | `icon`            |             | `string`                                                              | `''`        |

@@ -36,3 +36,17 @@ export const passwordInput = () => (
         <bds-input type="password" label="Password" danger></bds-input>
     </>
 )
+
+export const disabledInput = () => (
+    <>
+        <bds-input disabled></bds-input>
+        <br />
+        <bds-input disabled value="Action descripition"></bds-input>
+        <br />
+        <bds-input disabled icon="email" value="Action descripition"></bds-input>
+        <br />
+        <bds-input disabled label="Action" value="Action descripition"></bds-input>
+        <br />
+        <bds-input disabled icon="email" label="Action" value="Action descripition"></bds-input>
+    </>
+)
