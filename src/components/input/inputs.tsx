@@ -77,11 +77,9 @@ export class Input {
   }
 
   renderEyeIcon(): HTMLElement {
-    if (!this.isPassword) return null;
-
     const name = this.showPassword ? "eye-open" : "eye-closed";
 
-    return (
+    return this.isPassword && (
       <div class="input__icon_eye" onClick={(): void => this.toggleShowPassword()}>
         <bds-icon size="small" name={name} color="inherit"></bds-icon>
       </div>
