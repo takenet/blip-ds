@@ -25,7 +25,7 @@ $input-width: 312px;
   // Font color
   @if ($name == "disabled") {
     background: $color-neutral-light-whisper;
-    color: $color-neutral-medium-silver;
+    color: $color-neutral-medium-cloud;
   } @else {
     color: $color-neutral-dark-city;
   }
@@ -63,7 +63,7 @@ $input-width: 312px;
     caret-color: $primary;
 
     @if ($name == "disabled") {
-      color: $color-neutral-medium-silver;
+      color: $color-neutral-medium-cloud;
     } @else {
       color: $color-neutral-dark-city;
     }
@@ -105,7 +105,7 @@ $input-width: 312px;
         $color-neutral-medium-cloud,
         $color-neutral-light-breeze,
         $color-neutral-medium-silver,
-        $color-neutral-light-off
+        $color-neutral-light-wave
       );
     }
   }
