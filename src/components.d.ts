@@ -236,10 +236,6 @@ declare namespace LocalJSX {
     */
     'icon'?: string;
     /**
-    * Set the handler to handle click event
-    */
-    'onClick'?: (event: CustomEvent<any>) => void;
-    /**
     * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
     */
     'size'?: ButtonSize;

@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 
 export type ButtonSize = 'tall'
   | 'standard'
@@ -42,14 +42,6 @@ export class Button {
    */
   @Prop() arrow?: boolean = false;
 
-  /**
-   * Set the handler to handle click event	
-   */
-  @Event() click: EventEmitter;
-
-  onHandleClick = (event): void => {
-    this.click.emit(event);
-  }
 
   getSizeClass(): string {
     return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
@@ -90,7 +82,6 @@ export class Button {
 
     return (
       <button
-        onClick={this.onHandleClick}
         disabled={this.disabled}
         class={{
           'button': true,

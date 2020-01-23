@@ -16,13 +16,6 @@
 | `variant`  | `variant`  | Variant. Entered as one of the variant. Can be one of:  'primary', 'second', 'ghost', 'dashed'; | `"dashed" \| "ghost" \| "primary" \| "second"` | `'primary'`  |
 
 
-## Events
-
-| Event   | Description                           | Type               |
-| ------- | ------------------------------------- | ------------------ |
-| `click` | Set the handler to handle click event | `CustomEvent<any>` |
-
-
 ## Dependencies
 
 ### Depends on
