@@ -222,6 +222,8 @@ export class Input {
         </div>
       )
     }
+
+    return undefined;
   }
 
   render(): HTMLElement {
