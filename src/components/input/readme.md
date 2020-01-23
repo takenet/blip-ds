@@ -19,10 +19,40 @@
 | `inputId` _(required)_ | `input-id`        | Input Id                                                      | `string`                                                              | `undefined` |
 | `inputName`            | `input-name`      | Input Name                                                    | `string`                                                              | `''`        |
 | `label`                | `label`           | label in input, with he the input size increases.             | `string`                                                              | `''`        |
-| `onChangeValue`        | --                |                                                               | `Function`                                                            | `undefined` |
 | `placeholder`          | `placeholder`     | A tip for the user who can enter no controls.                 | `string`                                                              | `''`        |
 | `type`                 | `type`            | Input type. Can be one of: "text" or "password".              | `"password" \| "text"`                                                | `'text'`    |
-| `value`                | `value`           | Input value.                                                  | `string`                                                              | `''`        |
+| `value`                | `value`           | The value of the input.                                       | `string`                                                              | `''`        |
+
+
+## Events
+
+| Event       | Description                         | Type               |
+| ----------- | ----------------------------------- | ------------------ |
+| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>` |
+
+
+## Methods
+
+### `getInputElement() => Promise<HTMLInputElement>`
+
+Returns the native `<input>` element used under the hood.
+
+#### Returns
+
+Type: `Promise<HTMLInputElement>`
+
+
+
+### `setFocus() => Promise<void>`
+
+Sets focus on the specified `ion-input`. Use this method instead of the global
+`input.focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

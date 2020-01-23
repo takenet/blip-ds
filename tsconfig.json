@@ -14,9 +14,12 @@
     "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "removeComments": false,
     "jsx": "react",
     "jsxFactory": "h",
-    "types": [      
+    "types": [
       "node",
       "jest",
     ],
@@ -33,5 +36,5 @@
   "exclude": [
     "node_modules",
     "dist"
-  ]
+  ],
 }
