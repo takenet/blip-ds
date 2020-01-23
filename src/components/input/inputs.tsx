@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, State } from "@stencil/core";
+import { Component, h, Prop, Element, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
 
 export type InputType = 'text' | 'password';
 
@@ -9,9 +9,12 @@ export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-passwor
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  shadow: true
+  // shadow: true,
+  scoped: true
 })
 export class Input {
+  private nativeInput?: HTMLInputElement;
+
   @Element() element: HTMLElement;
 
   /**
@@ -80,48 +83,91 @@ export class Input {
   @Prop({ reflect: true }) icon?: string = '';
 
   /**
-   * Input value.
+   * Disabled input.
    */
-  @Prop({ reflect: true }) value?: string = '';
+  @Prop() disabled?= false;
 
   /**
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true }) danger?: boolean = false;
 
-  @Prop() onChangeValue: Function;
+  /**
+   * The value of the input.
+   */
+  @Prop({ mutable: true, reflect: true }) value?: string | null = '';
 
   /**
-   * Disabled input.
+   * Update the native input element when the value changes
    */
-  @Prop() disabled?= false;
+  @Watch('value')
+  protected valueChanged(): void {
+    this.bdsChange.emit({ value: this.value });
+  }
+
+  /**
+   * Emitted when the value has changed.
+   */
+  @Event() bdsChange!: EventEmitter;
 
 
   connectedCallback(): void {
     if (this.type == 'password') this.isPassword = true;
   }
 
-  toggleShowPassword(): void {
+  /**
+   * Sets focus on the specified `ion-input`. Use this method instead of the global
+   * `input.focus()`.
+   */
+  @Method()
+  async setFocus(): Promise<void> {
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  }
+
+  /**
+   * Returns the native `<input>` element used under the hood.
+   */
+  @Method()
+  getInputElement(): Promise<HTMLInputElement> {
+    return Promise.resolve(this.nativeInput!);
+  }
+
+  private onInput = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    console.log('private onInput', ev);
+    this.bdsChange.emit(ev as KeyboardEvent);
+  }
+
+  private onBlur = (): void => { this.isPressed = false; }
+
+  private onFocus = (): void => { this.isPressed = true; }
+
+  private onClick = (): void => { this.isPressed = true; }
+
+  private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
+
+  private toggleShowPassword(): void {
     this.showPassword = !this.showPassword;
   }
 
-  getTypeInput(): string {
+  private getTypeInput(): string {
     if (this.isPassword && this.showPassword) return 'text';
 
     return this.type;
   }
 
-  getAutoCompleteInput(): string {
+  private getAutoCompleteInput(): string {
     if (!this.showPassword) return 'current-password';
 
     return this.autoComplete;
   }
 
-  inputChanged(event): void {
-    if (this.onChangeValue) this.onChangeValue(event.target.value);
-  }
-
-  renderIcon(): HTMLElement {
+  private renderIcon(): HTMLElement {
     return this.icon && (
       <div class={{
         "input__icon": true,
@@ -136,7 +182,7 @@ export class Input {
     )
   }
 
-  renderEyeIcon(): HTMLElement {
+  private renderEyeIcon(): HTMLElement {
     const name = this.showPassword ? "eye-open" : "eye-closed";
 
     return this.isPassword && (
@@ -146,7 +192,7 @@ export class Input {
     )
   }
 
-  renderLabel(): HTMLElement {
+  private renderLabel(): HTMLElement {
     return this.label && (
       <label class="input__container__label">
         <bds-typo variant="fs-12" bold="bold">{this.label}</bds-typo>
@@ -154,7 +200,7 @@ export class Input {
     )
   }
 
-  renderMessageError(): HTMLElement {
+  private renderMessageError(): HTMLElement {
     if (!this.danger && this.helperMessage) {
       return (
         <div class="input__message">
@@ -181,6 +227,9 @@ export class Input {
   }
 
   render(): HTMLElement {
+    const autocomplete = this.getAutoCompleteInput();
+    const type = this.getTypeInput();
+
     return (
       <div class={{
         "input": true,
@@ -190,24 +239,25 @@ export class Input {
         "input--label": !!this.label,
         "input--pressed": this.isPressed && !this.disabled,
       }}
-        onClick={(): void => { this.isPressed = true; }}
+        onClick={this.onClick}
       >
         {this.renderIcon()}
         <div class="input__container">
           {this.renderLabel()}
           <input
-            disabled={this.disabled}
+            autocapitalize={this.autoCapitalize}
+            autocomplete={autocomplete}
             class="input__container__text"
-            onInput={(event: UIEvent): void => this.inputChanged(event)}
-            onBlur={(): void => { this.isPressed = false; }}
-            onFocus={(): void => { this.isPressed = true; }}
+            disabled={this.disabled}
             id={this.inputId}
             name={this.inputName}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            onInput={this.onInput}
             placeholder={this.placeholder}
-            type={this.getTypeInput()}
+            ref={this.refNativeInput}
+            type={type}
             value={this.value}
-            autocapitalize={this.autoCapitalize}
-            autocomplete={this.getAutoCompleteInput()}
           />
         </div>
         {this.renderEyeIcon()}

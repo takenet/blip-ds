@@ -108,6 +108,10 @@ export namespace Components {
     */
     'errorMessage'?: string;
     /**
+    * Returns the native `<input>` element used under the hood.
+    */
+    'getInputElement': () => Promise<HTMLInputElement>;
+    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -127,19 +131,22 @@ export namespace Components {
     * label in input, with he the input size increases.
     */
     'label'?: string;
-    'onChangeValue': Function;
     /**
     * A tip for the user who can enter no controls.
     */
     'placeholder'?: string;
     /**
+    * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
+    */
+    'setFocus': () => Promise<void>;
+    /**
     * Input type. Can be one of: "text" or "password".
     */
     'type'?: InputType;
     /**
-    * Input value.
+    * The value of the input.
     */
-    'value'?: string;
+    'value'?: string | null;
   }
   interface BdsTypo {
     /**
@@ -318,7 +325,10 @@ declare namespace LocalJSX {
     * label in input, with he the input size increases.
     */
     'label'?: string;
-    'onChangeValue'?: Function;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onBdsChange'?: (event: CustomEvent<any>) => void;
     /**
     * A tip for the user who can enter no controls.
     */
@@ -328,9 +338,9 @@ declare namespace LocalJSX {
     */
     'type'?: InputType;
     /**
-    * Input value.
+    * The value of the input.
     */
-    'value'?: string;
+    'value'?: string | null;
   }
   interface BdsTypo {
     /**
