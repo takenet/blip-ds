@@ -131,7 +131,7 @@ export class Input {
    */
   @Method()
   getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput!);
+    return Promise.resolve(this.nativeInput);
   }
 
   private onInput = (ev: Event): void => {
@@ -139,7 +139,6 @@ export class Input {
     if (input) {
       this.value = input.value || '';
     }
-    console.log('private onInput', ev);
     this.bdsChange.emit(ev as KeyboardEvent);
   }
 
