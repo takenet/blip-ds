@@ -9,8 +9,7 @@ export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-passwor
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  // shadow: true,
-  scoped: true
+  shadow: true
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
