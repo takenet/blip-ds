@@ -326,6 +326,10 @@ declare namespace LocalJSX {
     */
     'onBdsChange'?: (event: CustomEvent<any>) => void;
     /**
+    * Emitted when the input has changed.
+    */
+    'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
+    /**
     * A tip for the user who can enter no controls.
     */
     'placeholder'?: string;
