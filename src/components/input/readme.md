@@ -26,9 +26,10 @@
 
 ## Events
 
-| Event       | Description                         | Type               |
-| ----------- | ----------------------------------- | ------------------ |
-| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>` |
+| Event       | Description                         | Type                         |
+| ----------- | ----------------------------------- | ---------------------------- |
+| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
+| `bdsInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
 
 
 ## Methods

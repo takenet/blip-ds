@@ -109,7 +109,15 @@ export class Input {
    */
   @Event() bdsChange!: EventEmitter;
 
+  /**
+   * Emitted when the input has changed.
+   */
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
 
+
+  /**
+   * Lifecycle
+   */
   connectedCallback(): void {
     if (this.type == 'password') this.isPassword = true;
   }
@@ -138,7 +146,7 @@ export class Input {
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsChange.emit(ev as KeyboardEvent);
+    this.bdsInput.emit(ev as KeyboardEvent);
   }
 
   private onBlur = (): void => { this.isPressed = false; }
@@ -245,9 +253,9 @@ export class Input {
         <div class="input__container">
           {this.renderLabel()}
           <input
+            class="input__container__text"
             autocapitalize={this.autoCapitalize}
             autocomplete={autocomplete}
-            class="input__container__text"
             disabled={this.disabled}
             id={this.inputId}
             name={this.inputName}
