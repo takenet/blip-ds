@@ -1,12 +1,12 @@
 ![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
 
-# Stencil Component Starter
+# BliP DS 
 
-This is a starter project for building a standalone Web Component using Stencil.
+This project was born based on the need to create a Deisgn System to be used within Take, the components are written in Web Components using the StencilJS library created by the Ionic team.
 
-Stencil is also great for building entire apps. For that, use the [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter) instead.
+This project was created using [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter).
 
-# Stencil
+## Stencil
 
 Stencil is a compiler for building fast web apps using Web Components.
 
@@ -14,21 +14,245 @@ Stencil combines the best concepts of the most popular frontend frameworks into 
 
 Stencil components are just Web Components, so they work in any major framework or with no framework at all.
 
-## Getting Started
+## Installation
 
-To start building a new web component using Stencil, clone this repo to a new directory:
+Blip-DS is available as an npm package.
 
 ```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
-cd my-component
-git remote rm origin
+npm i blip-ds
 ```
 
-and run:
+## Framework Integrations
+
+There is not much secret, if you need something more detailed I recommend reading the [documentação do StencilJS](https://stenciljs.com/docs/overview).
+
+### Angular
+
+File: main.ts
+```
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+// Note: loader import location set using "esmLoaderPath" within the output target confg
+import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+applyPolyfills().then(() => {
+  defineCustomElements(window)
+})
+```
+
+
+File: app.module.ts
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule { }
+```
+
+**Examples**
+
+File: app.component.html
+```
+<div>
+  <div class="container-count">
+    <bds-typo variant="fs-16">{{ count }}</bds-typo>
+    <bds-button (click)="addCount()">+</bds-button>
+    <bds-button (click)="subCount()">-</bds-button>
+    <bds-input value={{count}} (bdsChange)="onChange($event)"></bds-input>
+  </div>
+</div>
+```
+
+File: app.component.ts
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  count = 0;
+
+  addCount() {
+    this.count++;
+  }
+
+  subCount() {
+    this.count--;
+  }
+
+  onChange(event) {
+    this.count = event.target.value;
+  }
+}
+
+```
+
+### React
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+applyPolyfills().then(() => {
+    defineCustomElements(window);
+});
+```
+
+**Examples**
+
+React has a big problem working with web components, as properties and events are not handled correctly. The solution to these two problems is to create a web component wrapper with a React component, and thus using the Ref of the custom element. As in the example below:
+
+```
+const InputExample = ({ onInput, onChange, value }) => {
+  const elementRf = useRef(null);
+
+  useEffect(() => {
+    elementRf.current.value = value;
+    elementRf.current.addEventListener('bdsChange', (event) => {
+      onChange(event);
+    });
+
+    elementRf.current.addEventListener('bdsInput', (event) => {
+      console.log('bdsInput', { event })
+    });
+  }, [value, onChange, onInput]);
+
+  return <bds-input ref={elementRf} value={value}></bds-input>
+
+}
+```
+
+Here we create a functional component named InputExample to be the wrapper for the Custom Element bds-input.
+
+```
+function CountBlipDS() {
+  const [count, changeCount] = useState(0);
+
+  return (
+    <div>
+      <p> {count} </p>
+      <InputExample value={count} onChange={(event) => { changeCount(event.target.value) }}></InputExample>
+    </div>
+  );
+}
+```
+
+### Vue
+
+```
+import Vue from 'vue'
+import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+
+import App from './App.vue'
+
+
+Vue.config.productionTip = false
+
+Vue.config.ignoredElements = [/bds-\w*/];
+
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+```
+
+The components should then be available in any of the Vue components
+
+
+**Examples**
+
+```
+<template>
+  <div id="app">
+    {{ count }}
+    <bds-button v-on:click="count++">+</bds-button>
+    <bds-button v-on:click="count--">-</bds-button>
+    <bds-input v-bind:value="count" v-on:bdsChange="change"></bds-input>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "app",
+  components: {},
+  data: function() {
+    return {
+      count: 0
+    };
+  },
+  methods: {
+    change(event) {
+      this.count = event.target.value;
+    }
+  }
+};
+</script>
+
+<style>
+#app {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+</style>
+
+}
+```
+
+
+## Building 
+
+
+### Getting Started
+
+To start building a new web component:
+
+Run:
 
 ```bash
 npm install
 npm start
+```
+
+Run with Storybook
+
+```bash
+npm story 
 ```
 
 To build the component for production, run:
@@ -43,30 +267,13 @@ To run the unit tests for the components, run:
 npm test
 ```
 
-Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
+Create component:
 
 
-## Naming Components
+```bash
+npm run generate
+```
 
-When creating new component tags, we recommend _not_ using `stencil` in the component name (ex: `<stencil-datepicker>`). This is because the generated component has little to nothing to do with Stencil; it's just a web component!
+## License
 
-Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the Ionic generated web components use the prefix `ion`.
-
-
-## Using this component
-
-### Script tag
-
-- [Publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages)
-- Put a script tag similar to this `<script src='https://unpkg.com/my-component@0.0.1/dist/mycomponent.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
-
-### Node Modules
-- Run `npm install my-component --save`
-- Put a script tag similar to this `<script src='node_modules/my-component/dist/mycomponent.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
-
-### In a stencil-starter app
-- Run `npm install my-component --save`
-- Add an import to the npm packages `import my-component;`
-- Then you can use the element anywhere in your template, JSX, html etc
+`blip-ds` is under the [ISC license](https://opensource.org/licenses/ISC).
