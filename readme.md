@@ -30,7 +30,7 @@ There is not much secret, if you need something more detailed I recommend readin
 ### Angular
 
 File: main.ts
-```
+```typescript
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -53,7 +53,7 @@ applyPolyfills().then(() => {
 
 
 File: app.module.ts
-```
+```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
@@ -76,7 +76,7 @@ export class AppModule { }
 **Examples**
 
 File: app.component.html
-```
+```html
 <div>
   <div class="container-count">
     <bds-typo variant="fs-16">{{ count }}</bds-typo>
@@ -88,7 +88,7 @@ File: app.component.html
 ```
 
 File: app.component.ts
-```
+```typescript
 import { Component } from '@angular/core';
 
 @Component({
@@ -116,7 +116,7 @@ export class AppComponent {
 
 ### React
 
-```
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -135,7 +135,7 @@ applyPolyfills().then(() => {
 
 React has a big problem working with web components, as properties and events are not handled correctly. The solution to these two problems is to create a web component wrapper with a React component, and thus using the Ref of the custom element. As in the example below:
 
-```
+```jsx
 const InputExample = ({ onInput, onChange, value }) => {
   const elementRf = useRef(null);
 
@@ -157,7 +157,7 @@ const InputExample = ({ onInput, onChange, value }) => {
 
 Here we create a functional component named InputExample to be the wrapper for the Custom Element bds-input.
 
-```
+```jsx
 function CountBlipDS() {
   const [count, changeCount] = useState(0);
 
@@ -172,7 +172,7 @@ function CountBlipDS() {
 
 ### Vue
 
-```
+```javascript
 import Vue from 'vue'
 import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
 
@@ -197,7 +197,7 @@ The components should then be available in any of the Vue components
 
 **Examples**
 
-```
+```vue
 <template>
   <div id="app">
     {{ count }}
