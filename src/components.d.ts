@@ -64,7 +64,21 @@ export namespace Components {
     */
     'variable': string;
   }
-  interface BdsCheckbox {}
+  interface BdsCheckbox {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked': boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled': boolean;
+    'getInputElement': () => Promise<HTMLInputElement>;
+    'getValue': () => Promise<boolean>;
+    'group': string;
+    'label': string;
+    'refer': string;
+  }
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -266,7 +280,27 @@ declare namespace LocalJSX {
     */
     'variable': string;
   }
-  interface BdsCheckbox {}
+  interface BdsCheckbox {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked'?: boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled'?: boolean;
+    'group': string;
+    'label': string;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onBdsChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Emitted when the input has changed.
+    */
+    'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
+    'refer': string;
+  }
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
