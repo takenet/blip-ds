@@ -64,6 +64,7 @@ export namespace Components {
     */
     'variable': string;
   }
+  interface BdsCheckbox {}
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -195,6 +196,12 @@ declare global {
     new (): HTMLBdsCardColorElement;
   };
 
+  interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {}
+  var HTMLBdsCheckboxElement: {
+    prototype: HTMLBdsCheckboxElement;
+    new (): HTMLBdsCheckboxElement;
+  };
+
   interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {}
   var HTMLBdsIconElement: {
     prototype: HTMLBdsIconElement;
@@ -215,6 +222,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'bds-button': HTMLBdsButtonElement;
     'bds-card-color': HTMLBdsCardColorElement;
+    'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
     'bds-typo': HTMLBdsTypoElement;
@@ -258,6 +266,7 @@ declare namespace LocalJSX {
     */
     'variable': string;
   }
+  interface BdsCheckbox {}
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -376,6 +385,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'bds-button': BdsButton;
     'bds-card-color': BdsCardColor;
+    'bds-checkbox': BdsCheckbox;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
     'bds-typo': BdsTypo;
@@ -390,6 +400,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'bds-button': LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
+      'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
