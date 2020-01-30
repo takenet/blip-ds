@@ -51,6 +51,7 @@
     "@storybook/storybook-deployer": "^2.8.1",
     "@types/jest": "24.0.24",
     "@types/puppeteer": "1.19.0",
+    "@types/uuid": "^3.4.7",
     "@typescript-eslint/eslint-plugin": "^2.13.0",
     "@typescript-eslint/parser": "^2.13.0",
     "babel-loader": "^8.0.6",
@@ -70,7 +71,9 @@
     "puppeteer": "1.19.0",
     "semantic-release": "^16.0.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "uuid": "^3.4.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/takenet/blip-ds.git"

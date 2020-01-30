@@ -1,0 +1,107 @@
+$checkbox-size: 18px;
+$checkbox-icon-radius: 4px;
+$checkbox-spacing-text: 8px;
+
+@mixin animation {
+  transition: all 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox {
+  display: inline;
+
+  input[type="checkbox"] {
+    display: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    margin: 0;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &--selected {
+    .checkbox__icon {
+      background-color: $color-primary-main;
+    }
+  }
+
+  &--selected-disabled {
+    .checkbox__label {
+      cursor: not-allowed;
+    }
+
+    .checkbox__icon {
+      color: $color-neutral-disabled-blues-text;
+      border: 1px solid $color-neutral-disabled-blues-text;
+      background-color: $color-neutral-disabled-blues-bg;
+    }
+  }
+
+  &--deselected {
+    .checkbox__icon {
+      background-color: transparent;
+    }
+
+    .checkbox__icon__svg {
+      display: none;
+    }
+  }
+
+  &--deselected-disabled {
+    .checkbox__label {
+      cursor: not-allowed;
+    }
+
+    .checkbox__icon {
+      background-color: $color-neutral-disabled-blues-bg;
+      border: 1px solid $color-neutral-disabled-blues-text;
+    }
+
+    .checkbox__icon__svg {
+      display: none;
+    }
+  }
+
+  &__label {
+    @include flex-align-center();
+    cursor: pointer;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  &__icon {
+    @include flex-align-center();
+    height: $checkbox-size;
+    width: $checkbox-size;
+    border-radius: $checkbox-icon-radius;
+    color: $color-primary-ghost;
+    border: 1px solid $color-primary-main;
+    box-sizing: border-box;
+    border-radius: 4px;
+    @include animation();
+
+  }
+
+  &__text {
+    margin-left: $checkbox-spacing-text;
+    color: $color-neutral-dark-rooftop;
+  }
+}

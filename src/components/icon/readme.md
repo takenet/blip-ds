@@ -21,12 +21,14 @@
 ### Used by
 
  - [bds-button](../button)
+ - [bds-checkbox](../checkbox)
  - [bds-input](../input)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-button --> bds-icon
+  bds-checkbox --> bds-icon
   bds-input --> bds-icon
   style bds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

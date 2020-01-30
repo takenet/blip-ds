@@ -64,6 +64,24 @@ export namespace Components {
     */
     'variable': string;
   }
+  interface BdsCheckbox {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked': boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled': boolean;
+    'getInputElement': () => Promise<HTMLInputElement>;
+    'getValue': () => Promise<boolean>;
+    'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
+    'refer': string;
+  }
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -195,6 +213,12 @@ declare global {
     new (): HTMLBdsCardColorElement;
   };
 
+  interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {}
+  var HTMLBdsCheckboxElement: {
+    prototype: HTMLBdsCheckboxElement;
+    new (): HTMLBdsCheckboxElement;
+  };
+
   interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {}
   var HTMLBdsIconElement: {
     prototype: HTMLBdsIconElement;
@@ -215,6 +239,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'bds-button': HTMLBdsButtonElement;
     'bds-card-color': HTMLBdsCardColorElement;
+    'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
     'bds-typo': HTMLBdsTypoElement;
@@ -257,6 +282,30 @@ declare namespace LocalJSX {
     * Specifies variabel sass color, _variables.scss.
     */
     'variable': string;
+  }
+  interface BdsCheckbox {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked'?: boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled'?: boolean;
+    'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onBdsChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Emitted when the input has changed.
+    */
+    'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
+    'refer': string;
   }
   interface BdsIcon {
     /**
@@ -376,6 +425,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'bds-button': BdsButton;
     'bds-card-color': BdsCardColor;
+    'bds-checkbox': BdsCheckbox;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
     'bds-typo': BdsTypo;
@@ -390,6 +440,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'bds-button': LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
+      'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
