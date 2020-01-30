@@ -10,12 +10,6 @@ $checkbox-spacing-text: 8px;
   transition-delay: 0s;
 }
 
-@mixin flex-align-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .checkbox {
   display: inline;
 
@@ -76,9 +70,10 @@ $checkbox-spacing-text: 8px;
   }
 
   &__label {
-    @include flex-align-center();
+    display: flex;
+    align-items: center;
     cursor: pointer;
-
+    max-width: fit-content;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -88,7 +83,9 @@ $checkbox-spacing-text: 8px;
   }
 
   &__icon {
-    @include flex-align-center();
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: $checkbox-size;
     width: $checkbox-size;
     border-radius: $checkbox-icon-radius;
