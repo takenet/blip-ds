@@ -1,4 +1,4 @@
-import { Component, h } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 
 @Component({
     tag: 'bds-radio',
@@ -7,9 +7,15 @@ import { Component, h } from "@stencil/core";
 })
 export class Radio {
 
+    @Prop() label!: string;
+
     render(): HTMLElement {
         return (
-            <div> Radio </div>
+            <label htmlFor="test">
+                <input type="radio" />
+                <div></div>
+                <span>{this.label}</span>
+            </label>
         )
     }
 }

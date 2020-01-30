@@ -12,18 +12,13 @@
 
 <body style="background-color: #35363a; margin: 0;">
   <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh">
-    <bds-checkbox id="check1" label="3x1" checked disabled></bds-checkbox>
-    <bds-checkbox id="check2" label="2x0" disabled></bds-checkbox>
-    <bds-checkbox id="check1" label="3x1" checked></bds-checkbox>
-    <bds-checkbox id="check2" label="2x0"></bds-checkbox>
+    <bds-radio label="Radio 1"></bds-radio>
   </div>
 </body>
 
 <script>
-  const elCheck1 = document.querySelector('#check1');
-  const elCheck2 = document.querySelector('#check2');
+  const el = document.querySelector('bds-radio');
 
-  elCheck1.addEventListener('bdsChange', e => console.log(e))
 </script>
 
 </html>

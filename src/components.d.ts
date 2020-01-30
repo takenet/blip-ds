@@ -166,6 +166,9 @@ export namespace Components {
     */
     'value'?: string | null;
   }
+  interface BdsRadio {
+    'label': string;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -231,6 +234,12 @@ declare global {
     new (): HTMLBdsInputElement;
   };
 
+  interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {}
+  var HTMLBdsRadioElement: {
+    prototype: HTMLBdsRadioElement;
+    new (): HTMLBdsRadioElement;
+  };
+
   interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
   var HTMLBdsTypoElement: {
     prototype: HTMLBdsTypoElement;
@@ -242,6 +251,7 @@ declare global {
     'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
+    'bds-radio': HTMLBdsRadioElement;
     'bds-typo': HTMLBdsTypoElement;
   }
 }
@@ -391,6 +401,9 @@ declare namespace LocalJSX {
     */
     'value'?: string | null;
   }
+  interface BdsRadio {
+    'label': string;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -428,6 +441,7 @@ declare namespace LocalJSX {
     'bds-checkbox': BdsCheckbox;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
+    'bds-radio': BdsRadio;
     'bds-typo': BdsTypo;
   }
 }
@@ -443,6 +457,7 @@ declare module "@stencil/core" {
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+      'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }
   }
