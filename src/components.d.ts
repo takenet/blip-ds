@@ -75,8 +75,11 @@ export namespace Components {
     'disabled': boolean;
     'getInputElement': () => Promise<HTMLInputElement>;
     'getValue': () => Promise<boolean>;
-    'group': string;
     'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
     'refer': string;
   }
   interface BdsIcon {
@@ -289,8 +292,11 @@ declare namespace LocalJSX {
     * If `true`, the user cannot interact with the checkbox.
     */
     'disabled'?: boolean;
-    'group': string;
     'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
     /**
     * Emitted when the value has changed.
     */

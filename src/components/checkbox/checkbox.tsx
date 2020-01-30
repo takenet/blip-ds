@@ -15,7 +15,10 @@ export class Checkbox {
 
   @Prop() label!: string;
 
-  @Prop() group!: string;
+  /**
+ * The name of the control, which is submitted with the form data.
+ */
+  @Prop() name!: string;
 
   /**
    * If `true`, the checkbox is selected.
@@ -64,21 +67,50 @@ export class Checkbox {
 
   private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
 
+  private getStyleState = (): string => {
+    if (this.checked && !this.disabled) {
+      return 'checkbox--selected'
+    }
+
+    if (!this.checked && !this.disabled) {
+      return 'checkbox--deselected';
+    }
+
+    if (this.checked && this.disabled) {
+      return 'checkbox--selected-disabled'
+    }
+
+    if (!this.checked && this.disabled) {
+      return 'checkbox--deselected-disabled';
+    }
+
+    return '';
+  }
+
+
   render(): HTMLElement {
+    const styleState = this.getStyleState();
+
     return (
-      <div class="checkbox">
+      <div
+        class={{
+          'checkbox': true,
+          [styleState]: true,
+        }}
+      >
         <input
+          type="checkbox"
           ref={this.refNativeInput}
           id={this.checkBoxId}
-          name={this.group}
-          type="checkbox"
+          name={this.name}
           onClick={this.onClick}
           checked={this.checked}
+          disabled={this.disabled}
         >
         </input>
         <label class="checkbox__label" htmlFor={this.checkBoxId}>
           <div class="checkbox__icon">
-            <bds-icon size="x-small" name="true" color="inherit"></bds-icon>
+            <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit"></bds-icon>
           </div>
           <bds-typo class="checkbox__text" variant="fs-14" tag="span">{this.label}</bds-typo>
         </label>

@@ -2,6 +2,14 @@ $checkbox-size: 18px;
 $checkbox-icon-radius: 4px;
 $checkbox-spacing-text: 8px;
 
+@mixin animation {
+  transition: all 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
 @mixin flex-align-center {
   display: flex;
   align-items: center;
@@ -9,7 +17,7 @@ $checkbox-spacing-text: 8px;
 }
 
 .checkbox {
-  display: inline-block;
+  display: inline;
 
   input[type="checkbox"] {
     display: none;
@@ -24,18 +32,72 @@ $checkbox-spacing-text: 8px;
     }
   }
 
+  &--selected {
+    .checkbox__icon {
+      background-color: $color-primary-main;
+    }
+  }
+
+  &--selected-disabled {
+    .checkbox__label {
+      cursor: not-allowed;
+    }
+
+    .checkbox__icon {
+      color: $color-neutral-disabled-blues-text;
+      border: 1px solid $color-neutral-disabled-blues-text;
+      background-color: $color-neutral-disabled-blues-bg;
+    }
+  }
+
+  &--deselected {
+    .checkbox__icon {
+      background-color: transparent;
+    }
+
+    .checkbox__icon__svg {
+      display: none;
+    }
+  }
+
+  &--deselected-disabled {
+    .checkbox__label {
+      cursor: not-allowed;
+    }
+
+    .checkbox__icon {
+      background-color: $color-neutral-disabled-blues-bg;
+      border: 1px solid $color-neutral-disabled-blues-text;
+    }
+
+    .checkbox__icon__svg {
+      display: none;
+    }
+  }
+
   &__label {
     @include flex-align-center();
     cursor: pointer;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   &__icon {
     @include flex-align-center();
     height: $checkbox-size;
     width: $checkbox-size;
-    background-color: $color-primary-main;
-    color: $color-primary-ghost;
     border-radius: $checkbox-icon-radius;
+    color: $color-primary-ghost;
+    border: 1px solid $color-primary-main;
+    box-sizing: border-box;
+    border-radius: 4px;
+    @include animation();
+
   }
 
   &__text {

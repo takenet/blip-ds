@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property             | Attribute  | Description                                            | Type      | Default     |
-| -------------------- | ---------- | ------------------------------------------------------ | --------- | ----------- |
-| `checked`            | `checked`  | If `true`, the checkbox is selected.                   | `boolean` | `false`     |
-| `disabled`           | `disabled` | If `true`, the user cannot interact with the checkbox. | `boolean` | `false`     |
-| `group` _(required)_ | `group`    |                                                        | `string`  | `undefined` |
-| `label` _(required)_ | `label`    |                                                        | `string`  | `undefined` |
-| `refer` _(required)_ | `refer`    |                                                        | `string`  | `undefined` |
+| Property             | Attribute  | Description                                                     | Type      | Default     |
+| -------------------- | ---------- | --------------------------------------------------------------- | --------- | ----------- |
+| `checked`            | `checked`  | If `true`, the checkbox is selected.                            | `boolean` | `false`     |
+| `disabled`           | `disabled` | If `true`, the user cannot interact with the checkbox.          | `boolean` | `false`     |
+| `label` _(required)_ | `label`    |                                                                 | `string`  | `undefined` |
+| `name` _(required)_  | `name`     | The name of the control, which is submitted with the form data. | `string`  | `undefined` |
+| `refer` _(required)_ | `refer`    |                                                                 | `string`  | `undefined` |
 
 
 ## Events
