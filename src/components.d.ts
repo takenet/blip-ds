@@ -167,7 +167,22 @@ export namespace Components {
     'value'?: string | null;
   }
   interface BdsRadio {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked': boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled': boolean;
+    'getInputElement': () => Promise<HTMLInputElement>;
+    'getValue': () => Promise<boolean>;
     'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
+    'refer': string;
   }
   interface BdsTypo {
     /**
@@ -402,7 +417,28 @@ declare namespace LocalJSX {
     'value'?: string | null;
   }
   interface BdsRadio {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked'?: boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled'?: boolean;
     'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onBdsChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Emitted when the input has changed.
+    */
+    'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
+    'refer': string;
   }
   interface BdsTypo {
     /**

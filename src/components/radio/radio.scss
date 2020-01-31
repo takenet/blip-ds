@@ -1,0 +1,58 @@
+$radio-spacing-text: 8px;
+$radio-circle-width: 10px;
+$radio-circle-height: 10px;
+
+@mixin no-select {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+@mixin animation {
+  transition: all 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.radio {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  [type="radio"] {
+    display: none;
+  }
+
+  &__circle {
+    color: transparent;
+    flex-shrink: 0;
+    border: 2px solid $color-primary-main;
+    @include animation();
+
+    width: $radio-circle-width;
+    height: $radio-circle-height;
+    padding: 4px;
+    border-radius: 100%;
+    background-clip: content-box;
+
+    &:hover {
+      border-color: $color-primary-dark;
+    }
+  }
+
+  &__text {
+    @include no-select();
+    margin-left: $radio-spacing-text;
+    color: $color-neutral-dark-rooftop;
+  }
+
+  &__input[type="radio"]:checked ~ &__circle {
+    background-color: $color-primary-main;
+    border-color: $color-primary-main;
+  }
+}
