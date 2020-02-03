@@ -1,0 +1,27 @@
+/** Customs */
+
+@mixin no-select {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/** Animations */
+
+@mixin animation {
+  transition: all 0.3s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+/** Aligns */
+
+@mixin flex-align-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

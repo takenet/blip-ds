@@ -1,22 +1,11 @@
+@import "mixins";
+
 $radio-spacing-text: 8px;
-$radio-circle-width: 10px;
-$radio-circle-height: 10px;
-
-@mixin no-select {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-@mixin animation {
-  transition: all 0.3s;
-  transition-property: all;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-}
+$radio-circle-width: 16px;
+$radio-circle-height: 16px;
+$radio-boder-radius: 100%;
+$radio-circle-pointer-width: 10px;
+$radio-circle-pointer-height: 10px;
 
 .radio {
   cursor: pointer;
@@ -26,19 +15,27 @@ $radio-circle-height: 10px;
 
   [type="radio"] {
     display: none;
+    &:focus {
+      outline: 0;
+    }
   }
 
   &__circle {
-    color: transparent;
-    flex-shrink: 0;
-    border: 2px solid $color-primary-main;
     @include animation();
-
+    @include flex-align-middle();
     width: $radio-circle-width;
     height: $radio-circle-height;
-    padding: 4px;
+    flex-shrink: 0;
+    border: 1px solid $color-primary-main;
     border-radius: 100%;
-    background-clip: content-box;
+
+    &__pointer {
+      @include animation();
+      border-radius: 100%;
+      background-color: transparent;
+      height: $radio-circle-pointer-height;
+      width: $radio-circle-pointer-width;
+    }
 
     &:hover {
       border-color: $color-primary-dark;
@@ -47,12 +44,35 @@ $radio-circle-height: 10px;
 
   &__text {
     @include no-select();
-    margin-left: $radio-spacing-text;
+    padding-left: $radio-spacing-text;
     color: $color-neutral-dark-rooftop;
   }
 
+  /** State Checked */
   &__input[type="radio"]:checked ~ &__circle {
-    background-color: $color-primary-main;
-    border-color: $color-primary-main;
+    background-color: transparent;
+
+    &:hover {
+      border-color: $color-primary-main;
+    }
+
+    .radio__circle__pointer {
+      background-color: $color-primary-main;
+    }
+  }
+
+  /** State Disabled */
+  &__input[type="radio"]:disabled ~ &__circle {
+    border-color: $color-neutral-disabled-blues-text;
+    background-color: $color-neutral-disabled-blues-bg;
+
+    .radio__circle__pointer--checked {
+      background-color: $color-neutral-disabled-blues-text;
+    }
+  }
+
+  &__input[type="radio"]:disabled ~ &__text,
+  &__input[type="radio"]:disabled ~ &__circle {
+    cursor: not-allowed;
   }
 }

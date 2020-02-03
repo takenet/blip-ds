@@ -14,6 +14,7 @@
 | `label` _(required)_ | `label`    |                                                                 | `string`  | `undefined` |
 | `name` _(required)_  | `name`     | The name of the control, which is submitted with the form data. | `string`  | `undefined` |
 | `refer` _(required)_ | `refer`    |                                                                 | `string`  | `undefined` |
+| `value` _(required)_ | `value`    |                                                                 | `string`  | `undefined` |
 
 
 ## Events

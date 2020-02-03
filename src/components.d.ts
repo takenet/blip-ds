@@ -183,6 +183,7 @@ export namespace Components {
     */
     'name': string;
     'refer': string;
+    'value': string;
   }
   interface BdsTypo {
     /**
@@ -439,6 +440,7 @@ declare namespace LocalJSX {
     */
     'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     'refer': string;
+    'value': string;
   }
   interface BdsTypo {
     /**

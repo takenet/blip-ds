@@ -1,22 +1,8 @@
+@import "mixins";
+
 $checkbox-size: 18px;
 $checkbox-icon-radius: 4px;
 $checkbox-spacing-text: 8px;
-
-@mixin animation {
-  transition: all 0.3s;
-  transition-property: all;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-}
-
-@mixin no-select {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
 
 .checkbox {
   display: inline;

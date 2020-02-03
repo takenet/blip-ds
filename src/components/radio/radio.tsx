@@ -4,7 +4,7 @@ import uuidv4 from 'uuid/v4';
 @Component({
   tag: 'bds-radio',
   styleUrl: 'radio.scss',
-  shadow: true
+  shadow: false
 })
 export class Radio {
   private nativeInput?: HTMLInputElement;
@@ -14,6 +14,8 @@ export class Radio {
   @Prop() refer!: string;
 
   @Prop() label!: string;
+
+  @Prop() value!: string;
 
   /**
    * The name of the control, which is submitted with the form data.
@@ -42,9 +44,7 @@ export class Radio {
 
   @Watch('checked')
   protected checkedChanged(isChecked: boolean): void {
-    this.bdsChange.emit({
-      checked: isChecked,
-    });
+    this.bdsChange.emit({ checked: isChecked });
   }
 
   @Method()
@@ -57,14 +57,17 @@ export class Radio {
     return Promise.resolve(this.nativeInput.checked)
   }
 
-  private onClick = (): void => {
+  private onClick = (event: Event): void => {
     this.checked = !this.checked;
+    (event.target as HTMLInputElement).checked = this.checked
   }
 
-  private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
+  private refNativeInput = (input: HTMLInputElement): void => {
+    this.nativeInput = input
+  }
 
   connectedCallback(): void {
-    this.radioId = this.refer || uuidv4();
+    this.radioId = this.refer || `bds-radio-${uuidv4()}`;
   }
 
   render(): HTMLElement {
@@ -76,11 +79,17 @@ export class Radio {
           ref={this.refNativeInput}
           id={this.radioId}
           onClick={this.onClick}
-          checked={this.checked}
           disabled={this.disabled}
+          checked={this.checked}
+          value={this.value}
+          name={this.name}
         />
-        <div class="radio__circle"></div>
-        <bds-typo class="radio__text" variant="fs-14" tag="span">{this.label}</bds-typo>
+        <div class="radio__circle">
+          <div class="radio__circle__pointer"></div>
+        </div>
+        <bds-typo class="radio__text" variant="fs-14" tag="span">
+          {this.label}
+        </bds-typo>
       </label>
     )
   }
