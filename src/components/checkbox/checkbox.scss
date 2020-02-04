@@ -1,14 +1,8 @@
+@import "mixins";
+
 $checkbox-size: 18px;
 $checkbox-icon-radius: 4px;
 $checkbox-spacing-text: 8px;
-
-@mixin animation {
-  transition: all 0.3s;
-  transition-property: all;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-}
 
 .checkbox {
   display: inline;
@@ -70,16 +64,11 @@ $checkbox-spacing-text: 8px;
   }
 
   &__label {
+    @include no-select();
     display: flex;
     align-items: center;
     cursor: pointer;
     max-width: fit-content;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
 
   &__icon {
@@ -94,7 +83,6 @@ $checkbox-spacing-text: 8px;
     box-sizing: border-box;
     border-radius: 4px;
     @include animation();
-
   }
 
   &__text {

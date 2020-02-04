@@ -166,6 +166,25 @@ export namespace Components {
     */
     'value'?: string | null;
   }
+  interface BdsRadio {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked': boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled': boolean;
+    'getInputElement': () => Promise<HTMLInputElement>;
+    'getValue': () => Promise<boolean>;
+    'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
+    'refer': string;
+    'value': string;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -231,6 +250,12 @@ declare global {
     new (): HTMLBdsInputElement;
   };
 
+  interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {}
+  var HTMLBdsRadioElement: {
+    prototype: HTMLBdsRadioElement;
+    new (): HTMLBdsRadioElement;
+  };
+
   interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
   var HTMLBdsTypoElement: {
     prototype: HTMLBdsTypoElement;
@@ -242,6 +267,7 @@ declare global {
     'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
+    'bds-radio': HTMLBdsRadioElement;
     'bds-typo': HTMLBdsTypoElement;
   }
 }
@@ -391,6 +417,31 @@ declare namespace LocalJSX {
     */
     'value'?: string | null;
   }
+  interface BdsRadio {
+    /**
+    * If `true`, the checkbox is selected.
+    */
+    'checked'?: boolean;
+    /**
+    * If `true`, the user cannot interact with the checkbox.
+    */
+    'disabled'?: boolean;
+    'label': string;
+    /**
+    * The name of the control, which is submitted with the form data.
+    */
+    'name': string;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onBdsChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Emitted when the input has changed.
+    */
+    'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
+    'refer': string;
+    'value': string;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -428,6 +479,7 @@ declare namespace LocalJSX {
     'bds-checkbox': BdsCheckbox;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
+    'bds-radio': BdsRadio;
     'bds-typo': BdsTypo;
   }
 }
@@ -443,6 +495,7 @@ declare module "@stencil/core" {
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+      'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }
   }

@@ -1,0 +1,78 @@
+@import "mixins";
+
+$radio-spacing-text: 8px;
+$radio-circle-width: 16px;
+$radio-circle-height: 16px;
+$radio-boder-radius: 100%;
+$radio-circle-pointer-width: 10px;
+$radio-circle-pointer-height: 10px;
+
+.radio {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  [type="radio"] {
+    display: none;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__circle {
+    @include animation();
+    @include flex-align-middle();
+    width: $radio-circle-width;
+    height: $radio-circle-height;
+    flex-shrink: 0;
+    border: 1px solid $color-primary-main;
+    border-radius: 100%;
+
+    &__pointer {
+      @include animation();
+      border-radius: 100%;
+      background-color: transparent;
+      height: $radio-circle-pointer-height;
+      width: $radio-circle-pointer-width;
+    }
+
+    &:hover {
+      border-color: $color-primary-dark;
+    }
+  }
+
+  &__text {
+    @include no-select();
+    padding-left: $radio-spacing-text;
+    color: $color-neutral-dark-rooftop;
+  }
+
+  /** State Checked */
+  &__input[type="radio"]:checked ~ &__circle {
+    background-color: transparent;
+
+    &:hover {
+      border-color: $color-primary-main;
+    }
+
+    .radio__circle__pointer {
+      background-color: $color-primary-main;
+    }
+  }
+
+  /** State Disabled */
+  &__input[type="radio"]:disabled ~ &__circle {
+    border-color: $color-neutral-disabled-blues-text;
+    background-color: $color-neutral-disabled-blues-bg;
+
+    .radio__circle__pointer--checked {
+      background-color: $color-neutral-disabled-blues-text;
+    }
+  }
+
+  &__input[type="radio"]:disabled ~ &__text,
+  &__input[type="radio"]:disabled ~ &__circle {
+    cursor: not-allowed;
+  }
+}
