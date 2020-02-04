@@ -19,7 +19,7 @@ import {
   InputAutocapitalize,
   InputAutoComplete,
   InputType,
-} from './components/input/inputs';
+} from './components/input/interfaces';
 import {
   Bold,
   FontLineHeight,
@@ -138,10 +138,6 @@ export namespace Components {
     */
     'icon'?: string;
     /**
-    * Input Id
-    */
-    'inputId': string;
-    /**
     * Input Name
     */
     'inputName'?: string;
@@ -161,6 +157,49 @@ export namespace Components {
     * Input type. Can be one of: "text" or "password".
     */
     'type'?: InputType;
+    /**
+    * The value of the input.
+    */
+    'value'?: string | null;
+  }
+  interface BdsInputPassword {
+    /**
+    * Capitalizes every word's second character.
+    */
+    'autoCapitalize'?: InputAutocapitalize;
+    /**
+    * Hint for form autofill feature
+    */
+    'autoComplete'?: InputAutoComplete;
+    /**
+    * Add state danger on input, use for use feedback.
+    */
+    'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicated to pass an feeback to user.
+    */
+    'errorMessage'?: string;
+    /**
+    * Indicated to pass a help the user in complex filling.
+    */
+    'helperMessage'?: string;
+    /**
+    * used for add icon in input left. Uses the bds-icon component.
+    */
+    'icon'?: string;
+    /**
+    * Input Name
+    */
+    'inputName'?: string;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
+    'openEyes'?: boolean;
     /**
     * The value of the input.
     */
@@ -250,6 +289,12 @@ declare global {
     new (): HTMLBdsInputElement;
   };
 
+  interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {}
+  var HTMLBdsInputPasswordElement: {
+    prototype: HTMLBdsInputPasswordElement;
+    new (): HTMLBdsInputPasswordElement;
+  };
+
   interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {}
   var HTMLBdsRadioElement: {
     prototype: HTMLBdsRadioElement;
@@ -267,6 +312,7 @@ declare global {
     'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
+    'bds-input-password': HTMLBdsInputPasswordElement;
     'bds-radio': HTMLBdsRadioElement;
     'bds-typo': HTMLBdsTypoElement;
   }
@@ -385,10 +431,6 @@ declare namespace LocalJSX {
     */
     'icon'?: string;
     /**
-    * Input Id
-    */
-    'inputId': string;
-    /**
     * Input Name
     */
     'inputName'?: string;
@@ -412,6 +454,49 @@ declare namespace LocalJSX {
     * Input type. Can be one of: "text" or "password".
     */
     'type'?: InputType;
+    /**
+    * The value of the input.
+    */
+    'value'?: string | null;
+  }
+  interface BdsInputPassword {
+    /**
+    * Capitalizes every word's second character.
+    */
+    'autoCapitalize'?: InputAutocapitalize;
+    /**
+    * Hint for form autofill feature
+    */
+    'autoComplete'?: InputAutoComplete;
+    /**
+    * Add state danger on input, use for use feedback.
+    */
+    'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicated to pass an feeback to user.
+    */
+    'errorMessage'?: string;
+    /**
+    * Indicated to pass a help the user in complex filling.
+    */
+    'helperMessage'?: string;
+    /**
+    * used for add icon in input left. Uses the bds-icon component.
+    */
+    'icon'?: string;
+    /**
+    * Input Name
+    */
+    'inputName'?: string;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
+    'openEyes'?: boolean;
     /**
     * The value of the input.
     */
@@ -479,6 +564,7 @@ declare namespace LocalJSX {
     'bds-checkbox': BdsCheckbox;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
+    'bds-input-password': BdsInputPassword;
     'bds-radio': BdsRadio;
     'bds-typo': BdsTypo;
   }
@@ -495,6 +581,7 @@ declare module "@stencil/core" {
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+      'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
       'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }

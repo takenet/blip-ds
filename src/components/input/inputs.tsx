@@ -1,10 +1,5 @@
 import { Component, h, Prop, Element, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
-
-export type InputType = 'text' | 'password';
-
-export type InputAutocapitalize = 'off' | 'none' | 'words' | 'on' | 'sentences' | 'characters';
-
-export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-password' | 'username';
+import { InputType, InputAutocapitalize, InputAutoComplete } from './interfaces';
 
 @Component({
   tag: 'bds-input',
@@ -30,11 +25,6 @@ export class Input {
    * When the input is of the password type, this field informs if the eye is open or closed.
    */
   @State() showPassword?= false;
-
-  /**
-   * Input Id
-   */
-  @Prop() inputId!: string;
 
   /**
    * Input Name
@@ -114,14 +104,6 @@ export class Input {
    */
   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
 
-
-  /**
-   * Lifecycle
-   */
-  connectedCallback(): void {
-    if (this.type == 'password') this.isPassword = true;
-  }
-
   /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
    * `input.focus()`.
@@ -157,22 +139,6 @@ export class Input {
 
   private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
 
-  private toggleShowPassword(): void {
-    this.showPassword = !this.showPassword;
-  }
-
-  private getTypeInput(): string {
-    if (this.isPassword && this.showPassword) return 'text';
-
-    return this.type;
-  }
-
-  private getAutoCompleteInput(): string {
-    if (!this.showPassword) return 'current-password';
-
-    return this.autoComplete;
-  }
-
   private renderIcon(): HTMLElement {
     return this.icon && (
       <div class={{
@@ -184,16 +150,6 @@ export class Input {
           name={this.icon}
           color="inherit">
         </bds-icon>
-      </div>
-    )
-  }
-
-  private renderEyeIcon(): HTMLElement {
-    const name = this.showPassword ? "eye-open" : "eye-closed";
-
-    return this.isPassword && (
-      <div class="input__icon_eye" onClick={(): void => this.toggleShowPassword()}>
-        <bds-icon size="small" name={name} color="inherit"></bds-icon>
       </div>
     )
   }
@@ -235,9 +191,6 @@ export class Input {
   }
 
   render(): HTMLElement {
-    const autocomplete = this.getAutoCompleteInput();
-    const type = this.getTypeInput();
-
     return (
       <div class={{
         "input": true,
@@ -255,20 +208,19 @@ export class Input {
           <input
             class="input__container__text"
             autocapitalize={this.autoCapitalize}
-            autocomplete={autocomplete}
+            autocomplete={this.autoComplete}
             disabled={this.disabled}
-            id={this.inputId}
             name={this.inputName}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             onInput={this.onInput}
             placeholder={this.placeholder}
             ref={this.refNativeInput}
-            type={type}
+            type={this.type}
             value={this.value}
           />
         </div>
-        {this.renderEyeIcon()}
+        <slot name='input-right' />
         {this.renderMessageError()}
       </div>
     )
