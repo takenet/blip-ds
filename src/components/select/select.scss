@@ -1,0 +1,70 @@
+$select-options-box-shadow: 0px 2px 8px rgba(96, 123, 153, 0.3);
+$select-options-radius: 8px;
+$select-options-max-height: 250px;
+
+@mixin custom-scroll() {
+  &::-webkit-scrollbar-track {
+    background-color: $color-primary-ghost;
+    border-radius: 0px 8px 8px 0px;
+    border-left: 1px solid $color-neutral-medium-silver;
+  }
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: $color-primary-ghost;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    border: 4px solid transparent;
+    border-radius: 10px;
+    background-clip: content-box;
+
+    background-color: $color-neutral-medium-silver;
+  }
+}
+
+.select {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  &__icon {
+    color: $color-neutral-medium-cloud;
+    display: flex;
+  }
+
+  &__options {
+    background: $color-primary-ghost;
+    width: 100%;
+    max-height: 250px;
+    position: absolute;
+    top: 99%;
+    left: 0;
+    border-radius: $select-options-radius;
+    box-shadow: $select-options-box-shadow;
+    display: none;
+    opacity: 0;
+    overflow-y: auto;
+    z-index: 2;
+    margin-top: 4px;
+
+    transition: 1s;
+    transform-origin: 0 0;
+    transform: scale(0);
+
+    @include custom-scroll;
+
+    &--open {
+      display: block;
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+.test {
+  height: 500px;
+  background-color: white;
+}

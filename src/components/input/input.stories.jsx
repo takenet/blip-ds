@@ -39,18 +39,6 @@ export const dangerInput = () => (
     </>
 );
 
-export const passwordInput = () => (
-    <>
-        <bds-input type="password"></bds-input>
-        <br />
-        <bds-input type="password" label="Password"></bds-input>
-        <br />
-        <bds-input type="password" danger></bds-input>
-        <br />
-        <bds-input type="password" label="Password" danger></bds-input>
-    </>
-)
-
 export const disabledInput = () => (
     <>
         <bds-input disabled></bds-input>

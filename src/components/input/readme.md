@@ -60,6 +60,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [bds-input-password](../input-password)
+ - [bds-select](../select)
 
 ### Depends on
 
@@ -72,6 +73,7 @@ graph TD;
   bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input-password --> bds-input
+  bds-select --> bds-input
   style bds-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

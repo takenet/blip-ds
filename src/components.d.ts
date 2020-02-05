@@ -224,6 +224,7 @@ export namespace Components {
     'refer': string;
     'value': string;
   }
+  interface BdsSelect {}
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -301,6 +302,12 @@ declare global {
     new (): HTMLBdsRadioElement;
   };
 
+  interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {}
+  var HTMLBdsSelectElement: {
+    prototype: HTMLBdsSelectElement;
+    new (): HTMLBdsSelectElement;
+  };
+
   interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
   var HTMLBdsTypoElement: {
     prototype: HTMLBdsTypoElement;
@@ -314,6 +321,7 @@ declare global {
     'bds-input': HTMLBdsInputElement;
     'bds-input-password': HTMLBdsInputPasswordElement;
     'bds-radio': HTMLBdsRadioElement;
+    'bds-select': HTMLBdsSelectElement;
     'bds-typo': HTMLBdsTypoElement;
   }
 }
@@ -527,6 +535,7 @@ declare namespace LocalJSX {
     'refer': string;
     'value': string;
   }
+  interface BdsSelect {}
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -566,6 +575,7 @@ declare namespace LocalJSX {
     'bds-input': BdsInput;
     'bds-input-password': BdsInputPassword;
     'bds-radio': BdsRadio;
+    'bds-select': BdsSelect;
     'bds-typo': BdsTypo;
   }
 }
@@ -583,6 +593,7 @@ declare module "@stencil/core" {
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
       'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
+      'bds-select': LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }
   }
