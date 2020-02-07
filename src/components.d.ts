@@ -21,6 +21,9 @@ import {
   InputType,
 } from './components/input/interfaces';
 import {
+  Option,
+} from './components/select/select';
+import {
   Bold,
   FontLineHeight,
   FontSize,
@@ -224,7 +227,25 @@ export namespace Components {
     'refer': string;
     'value': string;
   }
-  interface BdsSelect {}
+  interface BdsSelect {
+    'options'?: Array<Option>;
+  }
+  interface BdsSelectOption {
+    /**
+    * Quantity Description on option value, this item is locate to rigth in component.
+    */
+    'bulkOption'?: string;
+    /**
+    * If `true`, the user cannot interact with the select option.
+    */
+    'disabled'?: boolean;
+    'label': any;
+    /**
+    * The text value of the option.
+    */
+    'selected'?: boolean;
+    'value': any;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -308,6 +329,12 @@ declare global {
     new (): HTMLBdsSelectElement;
   };
 
+  interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {}
+  var HTMLBdsSelectOptionElement: {
+    prototype: HTMLBdsSelectOptionElement;
+    new (): HTMLBdsSelectOptionElement;
+  };
+
   interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
   var HTMLBdsTypoElement: {
     prototype: HTMLBdsTypoElement;
@@ -322,6 +349,7 @@ declare global {
     'bds-input-password': HTMLBdsInputPasswordElement;
     'bds-radio': HTMLBdsRadioElement;
     'bds-select': HTMLBdsSelectElement;
+    'bds-select-option': HTMLBdsSelectOptionElement;
     'bds-typo': HTMLBdsTypoElement;
   }
 }
@@ -535,7 +563,26 @@ declare namespace LocalJSX {
     'refer': string;
     'value': string;
   }
-  interface BdsSelect {}
+  interface BdsSelect {
+    'options'?: Array<Option>;
+  }
+  interface BdsSelectOption {
+    /**
+    * Quantity Description on option value, this item is locate to rigth in component.
+    */
+    'bulkOption'?: string;
+    /**
+    * If `true`, the user cannot interact with the select option.
+    */
+    'disabled'?: boolean;
+    'label': any;
+    'onOptionSelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * The text value of the option.
+    */
+    'selected'?: boolean;
+    'value': any;
+  }
   interface BdsTypo {
     /**
     * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -576,6 +623,7 @@ declare namespace LocalJSX {
     'bds-input-password': BdsInputPassword;
     'bds-radio': BdsRadio;
     'bds-select': BdsSelect;
+    'bds-select-option': BdsSelectOption;
     'bds-typo': BdsTypo;
   }
 }
@@ -594,6 +642,7 @@ declare module "@stencil/core" {
       'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
       'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
       'bds-select': LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
+      'bds-select-option': LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }
   }
