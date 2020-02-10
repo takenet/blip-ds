@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
-import { InputType, InputAutocapitalize, InputAutoComplete } from './interfaces';
+import { InputType, InputAutocapitalize, InputAutoComplete, InputInterface } from './input-interface';
 
 @Component({
   tag: 'bds-input',
@@ -85,6 +85,8 @@ export class Input {
    * The value of the input.
    */
   @Prop({ mutable: true, reflect: true }) value?: string | null = '';
+
+  @Prop() interface?: InputInterface = 'input';
 
   /**
    * Update the native input element when the value changes
@@ -190,6 +192,41 @@ export class Input {
     return undefined;
   }
 
+  private renderInterface = (): HTMLElement => {
+    if (this.interface === 'input') {
+      return (
+        <input
+          class="input__container__text"
+          autocapitalize={this.autoCapitalize}
+          autocomplete={this.autoComplete}
+          disabled={this.disabled}
+          name={this.inputName}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
+          onInput={this.onInput}
+          placeholder={this.placeholder}
+          ref={this.refNativeInput}
+          type={this.type}
+          value={this.value}
+        />
+      )
+    }
+
+    if (this.interface === 'text') {
+      return (
+        <bds-typo
+          class="input__container__text input__container__text--text"
+          variant="fs-14"
+          tag="span"
+        >
+          {this.value}
+        </bds-typo>
+      )
+    }
+
+    return undefined;
+  }
+
   render(): HTMLElement {
     return (
       <div class={{
@@ -205,20 +242,7 @@ export class Input {
         {this.renderIcon()}
         <div class="input__container">
           {this.renderLabel()}
-          <input
-            class="input__container__text"
-            autocapitalize={this.autoCapitalize}
-            autocomplete={this.autoComplete}
-            disabled={this.disabled}
-            name={this.inputName}
-            onBlur={this.onBlur}
-            onFocus={this.onFocus}
-            onInput={this.onInput}
-            placeholder={this.placeholder}
-            ref={this.refNativeInput}
-            type={this.type}
-            value={this.value}
-          />
+          {this.renderInterface()}
         </div>
         <slot name='input-right' />
         {this.renderMessageError()}

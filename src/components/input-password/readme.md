@@ -34,8 +34,8 @@
 graph TD;
   bds-input-password --> bds-input
   bds-input-password --> bds-icon
-  bds-input --> bds-icon
   bds-input --> bds-typo
+  bds-input --> bds-icon
   style bds-input-password fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,5 +1,5 @@
 import { Component, Prop, h } from "@stencil/core";
-import { InputAutocapitalize, InputAutoComplete } from '../input/interfaces';
+import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
   tag: 'bds-input-password',

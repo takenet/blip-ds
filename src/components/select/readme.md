@@ -7,9 +7,21 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type       | Default |
-| --------- | --------- | ----------- | ---------- | ------- |
-| `options` | --        |             | `Option[]` | `[]`    |
+| Property   | Attribute  | Description                                          | Type       | Default     |
+| ---------- | ---------- | ---------------------------------------------------- | ---------- | ----------- |
+| `disabled` | `disabled` | If `true`, the user cannot interact with the select. | `boolean`  | `false`     |
+| `options`  | --         |                                                      | `Option[]` | `[]`        |
+| `value`    | `value`    | the value of the select.                             | `any`      | `undefined` |
+
+
+## Events
+
+| Event       | Description                              | Type                                   |
+| ----------- | ---------------------------------------- | -------------------------------------- |
+| `bdsBlur`   | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
+| `bdsCancel` | Emitted when the selection is cancelled. | `CustomEvent<void>`                    |
+| `bdsChange` | Emitted when the value has changed.      | `CustomEvent<SelectChangeEventDetail>` |
+| `bdsFocus`  | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
 
 
 ## Dependencies
@@ -27,8 +39,8 @@ graph TD;
   bds-select --> bds-input
   bds-select --> bds-icon
   bds-select-option --> bds-typo
-  bds-input --> bds-icon
   bds-input --> bds-typo
+  bds-input --> bds-icon
   style bds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,11 +1,5 @@
-import { Component, h, State, Prop } from "@stencil/core";
-
-export interface Option {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  value: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  label: any;
-}
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
+import { Option, SelectChangeEventDetail } from './select-interface';
 
 @Component({
   tag: 'bds-select',
@@ -15,20 +9,63 @@ export interface Option {
 export class Select {
   @State() isOpen?= false;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @State() selectedOption?: Option = { label: null, value: null };
-
   @Prop() options?: Array<Option> = [];
+
+  /**
+   * the value of the select.
+   */
+  @Prop({ mutable: true }) value?: any | null;
+
+  /**
+   * If `true`, the user cannot interact with the select.
+   */
+  @Prop() disabled = false;
+
+  /**
+   * Emitted when the value has changed.
+   */
+  @Event() bdsChange!: EventEmitter<SelectChangeEventDetail>;
+
+  /**
+   * Emitted when the selection is cancelled.
+   */
+  @Event() bdsCancel!: EventEmitter<void>;
+
+  /**
+   * Emitted when the select loses focus.
+   */
+  @Event() bdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the select loses focus.
+   */
+  @Event() bdsBlur!: EventEmitter<void>;
+
+  @Watch('value')
+  valueChanged(): void {
+    this.bdsChange.emit({ value: this.value })
+  }
+
+  private onFocus = (): void => {
+    this.bdsFocus.emit();
+  }
+
+  private onBlur = (): void => {
+    this.bdsBlur.emit();
+  }
 
   private toggle = (): void => {
     this.isOpen = !this.isOpen;
   }
 
-  private selectValue = (event: CustomEvent): void => {
-    const { detail: { value, label } } = event;
-    if (this.selectedOption.value !== value) {
-      this.selectedOption = { value, label };
-    }
+  private getText = (): string => {
+    const opt = this.options.find(option => option.value == this.value)
+    return opt ? opt.label : '';
+  }
+
+  private handler = (event: CustomEvent): void => {
+    const { detail: { value } } = event;
+    this.value = value;
     this.toggle();
   }
 
@@ -39,9 +76,8 @@ export class Select {
           key={`select-option-${option.value}`}
           value={option.value}
           label={option.label}
-          onOptionSelected={this.selectValue}
-          selected={this.selectedOption.value === option.value}
-          bulk-option="(30) itens"
+          onOptionSelected={this.handler}
+          selected={this.value === option.value}
         >
         </bds-select-option>
       );
@@ -51,18 +87,17 @@ export class Select {
 
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
-    console.log('RENDER')
+    const selectText = this.getText();
 
     return (
-      <div
-        class="select"
-      // onFocus={() => { console.log('onFocus') }}
-      // onMouseEnter={() => { console.log('onMouseEnter'); }}
-      // onMouseLeave={() => { console.log('onMouseLeave') }}
-      // onFocusCapture={() => { console.log('onFocusCapture') }}
-      // onBlur={() => { console.log('onBlur') }}
-      >
-        <bds-input onClick={this.toggle} value={this.selectedOption.label}>
+      <div class="select">
+        <bds-input
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onClick={this.toggle}
+          value={selectText}
+          interface="text"
+        >
           <div
             slot="input-right"
             class="select__icon"

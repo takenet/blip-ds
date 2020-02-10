@@ -37,41 +37,40 @@ export class SelectOption {
   }
 
   private attachOptionKeyboardListeners = (event: KeyboardEvent): void => {
-    // const element = event.target
+    const element = (event.target as HTMLElement);
+    const enterKey = 13;
+    const arrowDownKey = 40;
+    const arrowUpKey = 38;
 
     switch (event.keyCode) {
-      case 13: // enter
+      case enterKey:
         this.onClickSelectOption();
-        console.log('key enter');
         break
-      case 40: // arrow down
-        console.log('arrow down');
-        // if (element.nextSibling) {
-        //   event.preventDefault()
-        //   event.stopPropagation()
-        //   element.nextSibling.focus()
-        // }
+      case arrowDownKey:
+        if (element.nextSibling) {
+          event.preventDefault();
+          event.stopPropagation();
+          (element.nextSibling as HTMLInputElement).focus();
+        }
         break
-      case 38: // arrow up
-        console.log('arrow up');
-        // event.preventDefault()
-        // event.stopPropagation()
+      case arrowUpKey:
+        event.preventDefault()
+        event.stopPropagation()
 
-        // if (element.previousElementSibling) {
-        //   element.previousElementSibling.focus()
-        // } else if (this.options.onTryAccessInput) {
-        //   this.options.onTryAccessInput()
-        // }
-        break
+        if (element.previousElementSibling) {
+          (element.previousElementSibling as HTMLInputElement).focus();
+        }
     }
   }
 
   render(): HTMLElement {
     return (
       <div
+        id={`bds-select-option-${this.value}`}
         tabindex="0"
         onKeyDown={this.attachOptionKeyboardListeners}
         onClick={this.onClickSelectOption}
+        data-value={this.value}
         class={{
           "select-option": true,
           "select-option--selected": this.selected,

@@ -18,11 +18,13 @@ import {
 import {
   InputAutocapitalize,
   InputAutoComplete,
+  InputInterface,
   InputType,
-} from './components/input/interfaces';
+} from './components/input/input-interface';
 import {
   Option,
-} from './components/select/select';
+  SelectChangeEventDetail,
+} from './components/select/select-interface';
 import {
   Bold,
   FontLineHeight,
@@ -144,6 +146,7 @@ export namespace Components {
     * Input Name
     */
     'inputName'?: string;
+    'interface'?: InputInterface;
     /**
     * label in input, with he the input size increases.
     */
@@ -228,7 +231,15 @@ export namespace Components {
     'value': string;
   }
   interface BdsSelect {
+    /**
+    * If `true`, the user cannot interact with the select.
+    */
+    'disabled': boolean;
     'options'?: Array<Option>;
+    /**
+    * the value of the select.
+    */
+    'value'?: any | null;
   }
   interface BdsSelectOption {
     /**
@@ -470,6 +481,7 @@ declare namespace LocalJSX {
     * Input Name
     */
     'inputName'?: string;
+    'interface'?: InputInterface;
     /**
     * label in input, with he the input size increases.
     */
@@ -564,7 +576,31 @@ declare namespace LocalJSX {
     'value': string;
   }
   interface BdsSelect {
+    /**
+    * If `true`, the user cannot interact with the select.
+    */
+    'disabled'?: boolean;
+    /**
+    * Emitted when the select loses focus.
+    */
+    'onBdsBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the selection is cancelled.
+    */
+    'onBdsCancel'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onBdsChange'?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+    /**
+    * Emitted when the select loses focus.
+    */
+    'onBdsFocus'?: (event: CustomEvent<void>) => void;
     'options'?: Array<Option>;
+    /**
+    * the value of the select.
+    */
+    'value'?: any | null;
   }
   interface BdsSelectOption {
     /**

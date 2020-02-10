@@ -29,7 +29,7 @@ $select-options-max-height: 250px;
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  max-height: 1000px;
+  cursor: pointer;
 
   &__icon {
     color: $color-neutral-medium-cloud;

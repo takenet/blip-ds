@@ -142,6 +142,10 @@ $input-width: 312px;
       @include reset-input();
       @include input-text();
     }
+
+    &__text--text {
+      cursor: pointer;
+    }
   }
 
   &__message {
