@@ -20,9 +20,19 @@ $checkbox-spacing-text: 8px;
     }
   }
 
+  &__icon {
+    &:hover {
+      border-color: $color-primary-dark;
+    }
+  }
+
   &--selected {
     .checkbox__icon {
       background-color: $color-primary-main;
+
+      &:hover {
+        background-color: $color-primary-dark;
+      }
     }
   }
 

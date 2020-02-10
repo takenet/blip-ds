@@ -52,12 +52,16 @@ $radio-circle-pointer-height: 10px;
   &__input[type="radio"]:checked ~ &__circle {
     background-color: transparent;
 
-    &:hover {
-      border-color: $color-primary-main;
-    }
-
     .radio__circle__pointer {
       background-color: $color-primary-main;
+    }
+
+    &:hover {
+      border-color: $color-primary-dark;
+
+      .radio__circle__pointer {
+        background-color: $color-primary-dark;
+      }
     }
   }
 
