@@ -3,7 +3,7 @@
 
 # BliP DS 
 
-This project was born based on the need to create a Deisgn System to be used within Take, the components are written in Web Components using the StencilJS library created by the Ionic team.
+This project was born based on the need to create a Design System to be used within Take. The components are written in Web Components using the StencilJS library created by the Ionic team.
 
 This project was created using [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter).
 
