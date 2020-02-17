@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from './select-interface';
 
 @Component({
@@ -17,9 +17,14 @@ export class Select {
   @Prop({ mutable: true }) value?: any | null;
 
   /**
-   * If `true`, the user cannot interact with the select.
+   * Add state danger on input, use for use feedback.
    */
-  @Prop() disabled = false;
+  @Prop({ reflect: true }) danger?: boolean = false;
+
+  /**
+   * Disabled input.
+   */
+  @Prop({ reflect: true }) disabled?: boolean = false;
 
   /**
    * Emitted when the value has changed.
@@ -55,7 +60,9 @@ export class Select {
   }
 
   private toggle = (): void => {
-    this.isOpen = !this.isOpen;
+    if (!this.disabled) {
+      this.isOpen = !this.isOpen;
+    }
   }
 
   private getText = (): string => {
@@ -81,7 +88,8 @@ export class Select {
         >
         </bds-select-option>
       );
-    })
+    });
+
     return options;
   };
 
@@ -97,6 +105,8 @@ export class Select {
           onClick={this.toggle}
           value={selectText}
           interface="text"
+          danger={this.danger}
+          disabled={this.disabled}
         >
           <div
             slot="input-right"

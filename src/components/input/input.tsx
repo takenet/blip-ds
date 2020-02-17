@@ -21,10 +21,7 @@ export class Input {
    */
   @State() isPassword?= false;
 
-  /**
-   * When the input is of the password type, this field informs if the eye is open or closed.
-   */
-  @State() showPassword?= false;
+  @State() hasFocus?= false;
 
   /**
    * Input Name
@@ -74,7 +71,8 @@ export class Input {
   /**
    * Disabled input.
    */
-  @Prop() disabled?= false;
+  @Prop({ reflect: true }) disabled?: boolean = false;
+
 
   /**
    * Add state danger on input, use for use feedback.
@@ -135,7 +133,10 @@ export class Input {
 
   private onBlur = (): void => { this.isPressed = false; }
 
-  private onFocus = (): void => { this.isPressed = true; }
+  private onFocus = (): void => {
+    this.hasFocus = true;
+    this.isPressed = true;
+  }
 
   private onClick = (): void => { this.isPressed = true; }
 
@@ -158,33 +159,34 @@ export class Input {
 
   private renderLabel(): HTMLElement {
     return this.label && (
-      <label class="input__container__label">
+      <label class={{
+        "input__container__label": true,
+        "input__container__label--pressed": this.isPressed && !this.disabled,
+      }}>
         <bds-typo variant="fs-12" bold="bold">{this.label}</bds-typo>
       </label>
     )
   }
 
-  private renderMessageError(): HTMLElement {
-    if (!this.danger && this.helperMessage) {
-      return (
-        <div class="input__message">
-          <bds-typo variant="fs-12">{this.helperMessage}</bds-typo>
-        </div>
-      )
-    }
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : 'info';
+    const message = this.danger ? this.errorMessage : this.helperMessage;
+    const styles = this.danger ? 'input__message input__message--danger' : 'input__message';
 
-    if (this.danger && this.errorMessage) {
+
+    if ((this.danger && this.errorMessage) ||
+      (!this.danger && this.helperMessage)) {
       return (
-        <div class="input__message input__message--danger">
+        <div class={styles}>
           <div class="input__message__icon">
             <bds-icon
               size="x-small"
-              name="error"
+              name={icon}
               theme="solid"
               color="inherit">
             </bds-icon>
           </div>
-          <bds-typo variant="fs-12">{this.errorMessage}</bds-typo>
+          <bds-typo variant="fs-12">{message}</bds-typo>
         </div>
       )
     }
@@ -244,8 +246,8 @@ export class Input {
           {this.renderLabel()}
           {this.renderInterface()}
         </div>
-        <slot name='input-right' />
-        {this.renderMessageError()}
+        <slot name="input-right" />
+        {this.renderMessage()}
       </div>
     )
   }

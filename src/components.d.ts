@@ -232,9 +232,13 @@ export namespace Components {
   }
   interface BdsSelect {
     /**
-    * If `true`, the user cannot interact with the select.
+    * Add state danger on input, use for use feedback.
     */
-    'disabled': boolean;
+    'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
+    'disabled'?: boolean;
     'options'?: Array<Option>;
     /**
     * the value of the select.
@@ -577,7 +581,11 @@ declare namespace LocalJSX {
   }
   interface BdsSelect {
     /**
-    * If `true`, the user cannot interact with the select.
+    * Add state danger on input, use for use feedback.
+    */
+    'danger'?: boolean;
+    /**
+    * Disabled input.
     */
     'disabled'?: boolean;
     /**
