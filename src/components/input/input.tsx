@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
+import { Component, h, Prop, Element, State, Watch, Event, EventEmitter, Method, Listen } from "@stencil/core";
 import { InputType, InputAutocapitalize, InputAutoComplete, InputInterface } from './input-interface';
 
 @Component({
@@ -8,6 +8,7 @@ import { InputType, InputAutocapitalize, InputAutoComplete, InputInterface } fro
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
+  private node?: HTMLElement;
 
   @Element() element: HTMLElement;
 
@@ -15,6 +16,9 @@ export class Input {
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
   @State() isPressed?= false;
+
+  @State() isHover?= false;
+  @State() isActive?= false;
 
   /**
    * Indicates if the input is password, adding the eye icon.
@@ -104,6 +108,17 @@ export class Input {
    */
   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
 
+
+  @Listen('click', { target: 'window' })
+  handleClick(ev) {
+    if (this.node.contains(ev.target)) {
+      console.log('inside')
+      return;
+    }
+
+    console.log('outside')
+  }
+
   /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
    * `input.focus()`.
@@ -123,6 +138,7 @@ export class Input {
     return Promise.resolve(this.nativeInput);
   }
 
+
   private onInput = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
@@ -134,11 +150,15 @@ export class Input {
   private onBlur = (): void => { this.isPressed = false; }
 
   private onFocus = (): void => {
-    this.hasFocus = true;
+    console.log(`onFocus -input`);
     this.isPressed = true;
+    this.isActive = true;
   }
 
-  private onClick = (): void => { this.isPressed = true; }
+  private onClick = (): void => {
+    this.isPressed = true;
+    this.isActive = true;
+  }
 
   private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
 
@@ -230,16 +250,23 @@ export class Input {
   }
 
   render(): HTMLElement {
+    console.log(`RENDER: isActive: `, this.isActive)
     return (
-      <div class={{
-        "input": true,
-        "input--state-primary": !this.danger,
-        "input--state-danger": this.danger,
-        "input--state-disabled": this.disabled,
-        "input--label": !!this.label,
-        "input--pressed": this.isPressed && !this.disabled,
-      }}
-        onClick={this.onClick}
+      <div
+        ref={node => this.node = node}
+        onMouseLeave={() => console.log(`onMouseLeave -wrapper`)}
+        onMouseEnter={() => console.log(`onMouseEnter -wrapper`)}
+        onClick={() => console.log(`onClick -wrapper`)}
+        onFocus={() => console.log(`onFocus -wrapper`)}
+        class={{
+          "input": true,
+          "input--state-primary": !this.danger,
+          "input--state-danger": this.danger,
+          "input--state-disabled": this.disabled,
+          "input--label": !!this.label,
+          "input--pressed": this.isPressed && !this.disabled,
+        }}
+      // onClick={this.onClick}
       >
         {this.renderIcon()}
         <div class="input__container">
