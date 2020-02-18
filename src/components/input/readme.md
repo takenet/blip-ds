@@ -44,6 +44,16 @@ Type: `Promise<HTMLInputElement>`
 
 
 
+### `removeFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setFocus() => Promise<void>`
 
 Sets focus on the specified `ion-input`. Use this method instead of the global

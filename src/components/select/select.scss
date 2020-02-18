@@ -30,6 +30,7 @@ $select-options-max-height: 250px;
   flex-wrap: wrap;
   position: relative;
   cursor: pointer;
+  outline: none;
 
   &__icon {
     color: $color-neutral-medium-cloud;

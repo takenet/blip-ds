@@ -7,6 +7,8 @@ import { Option, SelectChangeEventDetail } from './select-interface';
   shadow: true
 })
 export class Select {
+  private nativeInput?: HTMLBdsInputElement;
+
   @State() isOpen?= false;
 
   @Prop() options?: Array<Option> = [];
@@ -14,17 +16,18 @@ export class Select {
   /**
    * the value of the select.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop({ mutable: true }) value?: any | null;
 
   /**
    * Add state danger on input, use for use feedback.
    */
-  @Prop({ reflect: true }) danger?: boolean = false;
+  @Prop({ reflect: true }) danger?= false;
 
   /**
    * Disabled input.
    */
-  @Prop({ reflect: true }) disabled?: boolean = false;
+  @Prop({ reflect: true }) disabled?= false;
 
   /**
    * Emitted when the value has changed.
@@ -49,6 +52,11 @@ export class Select {
   @Watch('value')
   valueChanged(): void {
     this.bdsChange.emit({ value: this.value })
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private refNativeInput = (el: any): void => {
+    this.nativeInput = el
   }
 
   private onFocus = (): void => {
@@ -77,7 +85,7 @@ export class Select {
   }
 
   private getSelectOptions = (): Array<HTMLElement> => {
-    const options = this.options.map(option => {
+    return this.options.map(option => {
       return (
         <bds-select-option
           key={`select-option-${option.value}`}
@@ -89,22 +97,35 @@ export class Select {
         </bds-select-option>
       );
     });
-
-    return options;
   };
+
+  private setFocusWrapper = (): void => {
+    if (this.nativeInput) { this.nativeInput.setFocus(); }
+  }
+
+  private removeFocusWrapper = (): void => {
+    if (this.nativeInput) { this.nativeInput.setFocus(); }
+  }
+
 
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
     const selectText = this.getText();
 
     return (
-      <div class="select">
+      <div class="select"
+        tabindex="0"
+        onFocus={this.setFocusWrapper}
+        onBlur={this.removeFocusWrapper}
+        onKeyPress={(e) => console.log('keyPress select', e)}
+      >
         <bds-input
+          label="teste"
+          ref={this.refNativeInput}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.toggle}
           value={selectText}
-          interface="text"
           danger={this.danger}
           disabled={this.disabled}
         >

@@ -105,20 +105,22 @@ export class Input {
    * `input.focus()`.
    */
   @Method()
-  setFocus(): void {
-    if (this.nativeInput) {
-      this.nativeInput.focus();
-    }
+  async setFocus(): Promise<void> {
+    this.onClickWrapper();
+  }
+
+  @Method()
+  async removeFocus(): Promise<void> {
+    this.onBlur();
   }
 
   /**
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput);
+  async getInputElement(): Promise<HTMLInputElement> {
+    return this.nativeInput;
   }
-
 
   private onInput = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
@@ -141,7 +143,9 @@ export class Input {
     if (this.nativeInput) { this.nativeInput.focus(); }
   }
 
-  private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
+  private refNativeInput = (input: HTMLInputElement): void => {
+    this.nativeInput = input
+  }
 
   private renderIcon(): HTMLElement {
     return this.icon && (
@@ -231,6 +235,7 @@ export class Input {
   }
 
   render(): HTMLElement {
+    console.log('RENDER:' + this.label, { isPressed: this.isPressed })
     return (
       <div
         class={{

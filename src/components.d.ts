@@ -155,6 +155,7 @@ export namespace Components {
     * A tip for the user who can enter no controls.
     */
     'placeholder'?: string;
+    'removeFocus': () => Promise<void>;
     /**
     * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
     */
