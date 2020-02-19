@@ -25,6 +25,36 @@ export class InputPassword {
   @Prop() inputName?: string = '';
 
   /**
+   * Definied full width on input
+   */
+  @Prop() fullwidth?= false;
+
+  /**
+   * The maximum value, which must not be less than its minimum (min attribute) value.
+   */
+  @Prop() max?: string;
+
+  /**
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+   */
+  @Prop() maxlength?: number;
+
+  /**
+   * The minimum value, which must not be greater than its maximum (max attribute) value.
+   */
+  @Prop() min?: string;
+
+  /**
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+   */
+  @Prop() minlength?: number;
+
+  /**
+   * If `true`, the user cannot modify the value.
+   */
+  @Prop() readonly = false;
+
+  /**
    * Indicated to pass a help the user in complex filling.
    */
   @Prop() helperMessage?: string = '';
@@ -81,13 +111,19 @@ export class InputPassword {
         input-name={this.inputName}
         value={this.value}
         label={this.label}
+        min={this.min}
+        max={this.max}
+        minlength={this.minlength}
+        maxlength={this.maxlength}
         helper-message={this.helperMessage}
         error-message={this.errorMessage}
         danger={this.danger}
         icon={this.icon}
         disabled={this.disabled}
+        readonly={this.readonly}
         auto-complete={autocomplete}
         auto-capitalize={this.autoCapitalize}
+        fullwidth={this.fullwidth}
       >
         <div
           slot="input-right"

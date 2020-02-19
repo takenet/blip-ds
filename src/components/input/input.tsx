@@ -1,5 +1,5 @@
 import { Component, h, Prop, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
-import { InputType, InputAutocapitalize, InputAutoComplete, InputInterface } from './input-interface';
+import { InputType, InputAutocapitalize, InputAutoComplete } from './input-interface';
 
 @Component({
   tag: 'bds-input',
@@ -22,7 +22,7 @@ export class Input {
   /**
    * Input Name
    */
-  @Prop() inputName?: string = '';
+  @Prop() inputName?= '';
 
   /**
    * Input type. Can be one of: "text" or "password".
@@ -32,7 +32,7 @@ export class Input {
   /**
    *  label in input, with he the input size increases.
    */
-  @Prop() label?: string = '';
+  @Prop() label?= '';
 
   /**
    * A tip for the user who can enter no controls.
@@ -48,6 +48,36 @@ export class Input {
    * Hint for form autofill feature
    */
   @Prop() autoComplete?: InputAutoComplete = 'off';
+
+  /**
+   * Definied full width on input
+   */
+  @Prop() fullwidth?= false;
+
+  /**
+   * The maximum value, which must not be less than its minimum (min attribute) value.
+   */
+  @Prop() max?: string;
+
+  /**
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+   */
+  @Prop() maxlength?: number;
+
+  /**
+   * The minimum value, which must not be greater than its maximum (max attribute) value.
+   */
+  @Prop() min?: string;
+
+  /**
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+   */
+  @Prop() minlength?: number;
+
+  /**
+   * If `true`, the user cannot modify the value.
+   */
+  @Prop() readonly = false;
 
   /**
    * Indicated to pass a help the user in complex filling.
@@ -80,8 +110,6 @@ export class Input {
    */
   @Prop({ mutable: true, reflect: true }) value?: string | null = '';
 
-  @Prop() interface?: InputInterface = 'input';
-
   /**
    * Update the native input element when the value changes
    */
@@ -99,6 +127,16 @@ export class Input {
    * Emitted when the input has changed.
    */
   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+
+  /**
+   * Event input onblur.
+   */
+  @Event() bdsOnBlur: EventEmitter;
+
+  /**
+   * Event input focus.
+   */
+  @Event() bdsFocus: EventEmitter;
 
   /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
@@ -131,11 +169,14 @@ export class Input {
   }
 
   private onBlur = (): void => {
+    console.log('input onBlur')
     this.isPressed = false;
+    this.bdsOnBlur.emit();
   }
 
   private onFocus = (): void => {
     this.isPressed = true;
+    this.bdsFocus.emit();
   }
 
   private onClickWrapper = (): void => {
@@ -199,43 +240,7 @@ export class Input {
     return undefined;
   }
 
-  private renderInterface = (): HTMLElement => {
-    if (this.interface === 'input') {
-      return (
-        <input
-          class="input__container__text"
-          autocapitalize={this.autoCapitalize}
-          autocomplete={this.autoComplete}
-          disabled={this.disabled}
-          name={this.inputName}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          onInput={this.onInput}
-          placeholder={this.placeholder}
-          ref={this.refNativeInput}
-          type={this.type}
-          value={this.value}
-        />
-      )
-    }
-
-    if (this.interface === 'text') {
-      return (
-        <bds-typo
-          class="input__container__text input__container__text--text"
-          variant="fs-14"
-          tag="span"
-        >
-          {this.value}
-        </bds-typo>
-      )
-    }
-
-    return undefined;
-  }
-
   render(): HTMLElement {
-    console.log('RENDER:' + this.label, { isPressed: this.isPressed })
     return (
       <div
         class={{
@@ -245,13 +250,32 @@ export class Input {
           "input--state-disabled": this.disabled,
           "input--label": !!this.label,
           "input--pressed": this.isPressed && !this.disabled,
+          "input--full-width": this.fullwidth,
         }}
         onClick={this.onClickWrapper}
       >
         {this.renderIcon()}
         <div class="input__container">
           {this.renderLabel()}
-          {this.renderInterface()}
+          <input
+            class="input__container__text"
+            autocapitalize={this.autoCapitalize}
+            autocomplete={this.autoComplete}
+            disabled={this.disabled}
+            min={this.min}
+            max={this.max}
+            minLength={this.minlength}
+            maxLength={this.maxlength}
+            name={this.inputName}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            onInput={this.onInput}
+            placeholder={this.placeholder}
+            readOnly={this.readonly}
+            ref={this.refNativeInput}
+            type={this.type}
+            value={this.value}
+          />
         </div>
         <slot name="input-right" />
         {this.renderMessage()}

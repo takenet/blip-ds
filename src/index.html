@@ -11,21 +11,13 @@
 </head>
 
 <body style="margin: 0;">
-
-  <div style="display: flex; flex-direction: column; align-items: center; padding-top: 10vh; padding-bottom: 10px;">
-    <bds-input icon="user" label="Usuario"></bds-input>
-    <br />
-    <bds-input></bds-input>
-    <br />
-    <bds-input helper-message="Me ama mais q ta pouco"></bds-input>
-    <br />
-    <bds-select></bds-select>
+  <div style="flex-direction: column; ; padding-top: 10vh; padding-bottom: 10px; width: 100%;">
+    <bds-select fullwidth></bds-select>
   </div>
 
 </body>
 
 <script>
-
   const el = document.querySelector('bds-select');
 
   el.options = [
@@ -42,7 +34,6 @@
     { label: 'O Pintassilgo 4', value: 31 },
     { label: 'Bela Adormecida 5', value: 41 },
   ];
-
 </script>
 
 </html>

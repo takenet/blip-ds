@@ -18,7 +18,6 @@ import {
 import {
   InputAutocapitalize,
   InputAutoComplete,
-  InputInterface,
   InputType,
 } from './components/input/input-interface';
 import {
@@ -131,6 +130,10 @@ export namespace Components {
     */
     'errorMessage'?: string;
     /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
     * Returns the native `<input>` element used under the hood.
     */
     'getInputElement': () => Promise<HTMLInputElement>;
@@ -146,15 +149,34 @@ export namespace Components {
     * Input Name
     */
     'inputName'?: string;
-    'interface'?: InputInterface;
     /**
     * label in input, with he the input size increases.
     */
     'label'?: string;
     /**
+    * The maximum value, which must not be less than its minimum (min attribute) value.
+    */
+    'max'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+    */
+    'maxlength'?: number;
+    /**
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
+    */
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
+    /**
     * A tip for the user who can enter no controls.
     */
     'placeholder'?: string;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly': boolean;
     'removeFocus': () => Promise<void>;
     /**
     * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
@@ -191,6 +213,10 @@ export namespace Components {
     */
     'errorMessage'?: string;
     /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -206,7 +232,27 @@ export namespace Components {
     * label in input, with he the input size increases.
     */
     'label'?: string;
+    /**
+    * The maximum value, which must not be less than its minimum (min attribute) value.
+    */
+    'max'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+    */
+    'maxlength'?: number;
+    /**
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
+    */
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
     'openEyes'?: boolean;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly': boolean;
     /**
     * The value of the input.
     */
@@ -240,6 +286,14 @@ export namespace Components {
     * Disabled input.
     */
     'disabled'?: boolean;
+    /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
     'options'?: Array<Option>;
     /**
     * the value of the select.
@@ -475,6 +529,10 @@ declare namespace LocalJSX {
     */
     'errorMessage'?: string;
     /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -486,23 +544,50 @@ declare namespace LocalJSX {
     * Input Name
     */
     'inputName'?: string;
-    'interface'?: InputInterface;
     /**
     * label in input, with he the input size increases.
     */
     'label'?: string;
     /**
+    * The maximum value, which must not be less than its minimum (min attribute) value.
+    */
+    'max'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+    */
+    'maxlength'?: number;
+    /**
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
+    */
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
+    /**
     * Emitted when the value has changed.
     */
     'onBdsChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Event input focus.
+    */
+    'onBdsFocus'?: (event: CustomEvent<any>) => void;
     /**
     * Emitted when the input has changed.
     */
     'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     /**
+    * Event input onblur.
+    */
+    'onBdsOnBlur'?: (event: CustomEvent<any>) => void;
+    /**
     * A tip for the user who can enter no controls.
     */
     'placeholder'?: string;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly'?: boolean;
     /**
     * Input type. Can be one of: "text" or "password".
     */
@@ -534,6 +619,10 @@ declare namespace LocalJSX {
     */
     'errorMessage'?: string;
     /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -549,7 +638,27 @@ declare namespace LocalJSX {
     * label in input, with he the input size increases.
     */
     'label'?: string;
+    /**
+    * The maximum value, which must not be less than its minimum (min attribute) value.
+    */
+    'max'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+    */
+    'maxlength'?: number;
+    /**
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
+    */
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
     'openEyes'?: boolean;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly'?: boolean;
     /**
     * The value of the input.
     */
@@ -589,6 +698,14 @@ declare namespace LocalJSX {
     * Disabled input.
     */
     'disabled'?: boolean;
+    /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
     /**
     * Emitted when the select loses focus.
     */

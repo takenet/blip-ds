@@ -80,6 +80,10 @@ $input-width: 312px;
   padding: $input-padding;
   width: $input-width;
 
+  &--full-width {
+    width: 100%;
+  }
+
   &--state {
     &-primary {
       @include input-theme(
@@ -152,10 +156,6 @@ $input-width: 312px;
     &__text {
       @include reset-input();
       @include input-text();
-    }
-
-    &__text--text {
-      cursor: pointer;
     }
   }
 

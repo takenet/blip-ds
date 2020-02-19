@@ -30,6 +30,11 @@ export class Select {
   @Prop({ reflect: true }) disabled?= false;
 
   /**
+   * Definied full width on input
+   */
+  @Prop() fullwidth?= false;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<SelectChangeEventDetail>;
@@ -49,10 +54,20 @@ export class Select {
    */
   @Event() bdsBlur!: EventEmitter<void>;
 
+  /**
+   *  label in input, with he the input size increases.
+   */
+  @Prop() label?= '';
+
   @Watch('value')
   valueChanged(): void {
     this.bdsChange.emit({ value: this.value })
   }
+
+  // @Listen('bdsOnBlur')
+  // todoCompletedHandler(event: CustomEvent): void {
+  //   console.log('Received the custom todoCompleted event: ', event.detail);
+  // }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private refNativeInput = (el: any): void => {
@@ -100,13 +115,40 @@ export class Select {
   };
 
   private setFocusWrapper = (): void => {
-    if (this.nativeInput) { this.nativeInput.setFocus(); }
+    console.log('TRACE: setFocusWrapper 1')
+    if (this.nativeInput) {
+      console.log('TRACE: setFocusWrapper 2')
+      this.nativeInput.setFocus();
+    }
   }
 
-  private removeFocusWrapper = (): void => {
-    if (this.nativeInput) { this.nativeInput.setFocus(); }
+  private removeFocusWrapper = (event: FocusEvent): void => {
+    const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
+
+    console.log('TRACE: removeFocusWrapper 1', event, event.relatedTarget)
+    if (this.nativeInput && !isInputElement) {
+      console.log('TRACE: removeFocusWrapper 2')
+      this.nativeInput.removeFocus();
+    }
   }
 
+  private keyPressWrapper = (event: KeyboardEvent): void => {
+    const isSelectElement = (event.target as Element).localName === 'bds-select';
+    const isInputElement = (event.target as Element).localName === 'bds-input';
+
+    switch (event.key) {
+      case 'Enter':
+        console.log('ENTEEEER', event, event.target);
+        if (!this.isOpen && (isSelectElement || isInputElement)) {
+          console.log('ENTEEEER 1');
+          this.toggle();
+        } else {
+          console.log('ENTEEEER 2');
+
+        }
+        break;
+    }
+  }
 
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
@@ -117,10 +159,10 @@ export class Select {
         tabindex="0"
         onFocus={this.setFocusWrapper}
         onBlur={this.removeFocusWrapper}
-        onKeyPress={(e) => console.log('keyPress select', e)}
+        onKeyPress={this.keyPressWrapper}
       >
         <bds-input
-          label="teste"
+          label={this.label}
           ref={this.refNativeInput}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
@@ -128,6 +170,8 @@ export class Select {
           value={selectText}
           danger={this.danger}
           disabled={this.disabled}
+          fullwidth={this.fullwidth}
+          readonly
         >
           <div
             slot="input-right"

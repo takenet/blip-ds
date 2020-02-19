@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                      | Type       | Default     |
-| ---------- | ---------- | ------------------------------------------------ | ---------- | ----------- |
-| `danger`   | `danger`   | Add state danger on input, use for use feedback. | `boolean`  | `false`     |
-| `disabled` | `disabled` | Disabled input.                                  | `boolean`  | `false`     |
-| `options`  | --         |                                                  | `Option[]` | `[]`        |
-| `value`    | `value`    | the value of the select.                         | `any`      | `undefined` |
+| Property    | Attribute   | Description                                       | Type       | Default     |
+| ----------- | ----------- | ------------------------------------------------- | ---------- | ----------- |
+| `danger`    | `danger`    | Add state danger on input, use for use feedback.  | `boolean`  | `false`     |
+| `disabled`  | `disabled`  | Disabled input.                                   | `boolean`  | `false`     |
+| `fullwidth` | `fullwidth` | Definied full width on input                      | `boolean`  | `false`     |
+| `label`     | `label`     | label in input, with he the input size increases. | `string`   | `''`        |
+| `options`   | --          |                                                   | `Option[]` | `[]`        |
+| `value`     | `value`     | the value of the select.                          | `any`      | `undefined` |
 
 
 ## Events
@@ -40,8 +42,8 @@ graph TD;
   bds-select --> bds-input
   bds-select --> bds-icon
   bds-select-option --> bds-typo
-  bds-input --> bds-typo
   bds-input --> bds-icon
+  bds-input --> bds-typo
   style bds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
