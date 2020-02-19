@@ -5,7 +5,7 @@ export type ButtonSize = 'tall'
   | 'short';
 
 export type ButtonVariant = 'primary'
-  | 'second'
+  | 'secondary'
   | 'ghost'
   | 'dashed';
 
@@ -28,7 +28,7 @@ export class Button {
 
   /**
    * Variant. Entered as one of the variant. Can be one of: 
-   * 'primary', 'second', 'ghost', 'dashed';
+   * 'primary', 'secondary', 'ghost', 'dashed';
    */
   @Prop() variant?: ButtonVariant = 'primary';
 
