@@ -50,7 +50,7 @@ export namespace Components {
     */
     'size'?: ButtonSize;
     /**
-    * Variant. Entered as one of the variant. Can be one of:  'primary', 'second', 'ghost', 'dashed';
+    * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
     */
     'variant'?: ButtonVariant;
   }
@@ -443,7 +443,7 @@ declare namespace LocalJSX {
     */
     'size'?: ButtonSize;
     /**
-    * Variant. Entered as one of the variant. Can be one of:  'primary', 'second', 'ghost', 'dashed';
+    * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
     */
     'variant'?: ButtonVariant;
   }

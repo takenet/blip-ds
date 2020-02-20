@@ -72,39 +72,39 @@ export const variantPrimaryButton = () => (
   </>
 );
 
-export const variantSecondButton = () => (
-  <>
-    <bds-typo variant="fs-24">Text Only</bds-typo>
-    <bds-button variant="second" disabled>Text button</bds-button>
-    <br />
-    <bds-button variant="second" size="tall">Text button</bds-button>
-    <br />
-    <bds-button variant="second" size="standard">Text button</bds-button>
-    <br />
-    <bds-button variant="second" size="short">Text button</bds-button>
+export const variantSecondaryButton = () => (
+    <>
+        <bds-typo variant="fs-24">Text Only</bds-typo>
+        <bds-button variant="secondary" disabled>Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" size="tall">Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" size="standard">Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" size="short">Text button</bds-button>
 
-    <br />
+        <br />
 
-    <bds-typo variant="fs-24">Icon Left</bds-typo>
-    <bds-button variant="second" icon="file-new" disabled>Text button</bds-button>
-    <br />
-    <bds-button variant="second" icon="file-new" size="tall">Text button</bds-button>
-    <br />
-    <bds-button variant="second" icon="file-new" size="standard">Text button</bds-button>
-    <br />
-    <bds-button variant="second" icon="file-new" size="short">Text button</bds-button>
+        <bds-typo variant="fs-24">Icon Left</bds-typo>
+        <bds-button variant="secondary" icon="file-new" disabled>Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" icon="file-new" size="tall">Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" icon="file-new" size="standard">Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" icon="file-new" size="short">Text button</bds-button>
 
-    <br />
+        <br />
 
-    <bds-typo variant="fs-24">Arrow</bds-typo>
-    <bds-button variant="second" arrow disabled>Text button</bds-button>
-    <br />
-    <bds-button variant="second" arrow size="tall">Text button</bds-button>
-    <br />
-    <bds-button variant="second" arrow size="standard">Text button</bds-button>
-    <br />
-    <bds-button variant="second" arrow size="short">Text button</bds-button>
-  </>
+        <bds-typo variant="fs-24">Arrow</bds-typo>
+        <bds-button variant="secondary" arrow disabled>Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" arrow size="tall">Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" arrow size="standard">Text button</bds-button>
+        <br />
+        <bds-button variant="secondary" arrow size="short">Text button</bds-button>
+    </>
 );
 
 export const variantGhostButton = () => (
