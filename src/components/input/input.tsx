@@ -169,7 +169,6 @@ export class Input {
   }
 
   private onBlur = (): void => {
-    console.log('input onBlur')
     this.isPressed = false;
     this.bdsOnBlur.emit();
   }

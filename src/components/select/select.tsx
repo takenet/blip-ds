@@ -64,11 +64,6 @@ export class Select {
     this.bdsChange.emit({ value: this.value })
   }
 
-  // @Listen('bdsOnBlur')
-  // todoCompletedHandler(event: CustomEvent): void {
-  //   console.log('Received the custom todoCompleted event: ', event.detail);
-  // }
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private refNativeInput = (el: any): void => {
     this.nativeInput = el
@@ -115,9 +110,7 @@ export class Select {
   };
 
   private setFocusWrapper = (): void => {
-    console.log('TRACE: setFocusWrapper 1')
     if (this.nativeInput) {
-      console.log('TRACE: setFocusWrapper 2')
       this.nativeInput.setFocus();
     }
   }
@@ -125,9 +118,7 @@ export class Select {
   private removeFocusWrapper = (event: FocusEvent): void => {
     const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
 
-    console.log('TRACE: removeFocusWrapper 1', event, event.relatedTarget)
     if (this.nativeInput && !isInputElement) {
-      console.log('TRACE: removeFocusWrapper 2')
       this.nativeInput.removeFocus();
     }
   }
@@ -138,13 +129,8 @@ export class Select {
 
     switch (event.key) {
       case 'Enter':
-        console.log('ENTEEEER', event, event.target);
         if (!this.isOpen && (isSelectElement || isInputElement)) {
-          console.log('ENTEEEER 1');
           this.toggle();
-        } else {
-          console.log('ENTEEEER 2');
-
         }
         break;
     }
