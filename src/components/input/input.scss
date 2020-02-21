@@ -21,52 +21,54 @@ $input-width: 312px;
   }
 }
 
-@mixin input-theme($name, $primary, $secondary, $label, $border) {
+@mixin input-theme($name, $primary, $secondary, $label, $text, $border, $hover, $focus) {
+  $color-input-primary: $primary;
+  $color-input-secondary: $secondary;
+
+  $color-input-label: $label;
+  $color-input-text: $text;
+  $color-input-border: $border;
+  $color-input-hover: $hover;
+  $color-input-focus: $focus;
+
+  $color-input-disable-background: $color-neutral-light-whisper;
+
+  @include input-border($color-input-border);
+
   // Font color
   @if ($name == "disabled") {
-    background: $color-neutral-light-whisper;
-    color: $color-neutral-medium-cloud;
-  } @else {
-    color: $color-neutral-dark-city;
-  }
-
-  // Border
-  @if ($name == "danger") {
-    @include input-border($primary, $border);
-  } @else {
-    @include input-border($border);
+    background: $color-input-disable-background;
   }
 
   // States
   &:hover {
+    @include input-border($color-input-primary);
+
     @if ($name == "disabled") {
-      @include input-border($secondary);
-    } @else {
-      @include input-border($primary);
+      @include input-border($color-input-border);
     }
   }
 
   &.input--pressed {
-    @include input-border($primary, $border);
+    @include input-border($color-input-primary, $color-input-focus);
   }
 
   .input__icon {
-    color: $primary;
-    background-color: $secondary;
+    color: $color-input-primary;
+    background-color: $color-input-secondary;
   }
 
   .input__container__label {
-    color: $label;
+    color: $color-input-label;
+
+    &--pressed {
+      color: $color-input-primary;
+    }
   }
 
   .input__container__text {
-    caret-color: $primary;
-
-    @if ($name == "disabled") {
-      color: $color-neutral-medium-cloud;
-    } @else {
-      color: $color-neutral-dark-city;
-    }
+    caret-color: $color-input-primary;
+    color: $color-input-text;
   }
 }
 
@@ -78,6 +80,10 @@ $input-width: 312px;
   padding: $input-padding;
   width: $input-width;
 
+  &--full-width {
+    width: 100%;
+  }
+
   &--state {
     &-primary {
       @include input-theme(
@@ -85,7 +91,10 @@ $input-width: 312px;
         $color-primary-main,
         $color-neutral-disabled-blues-bg,
         $color-neutral-medium-cloud,
-        $color-primary-bg-main
+        $color-neutral-dark-city,
+        $color-neutral-light-wave,
+        $color-primary-main,
+        $color-extended-blue-wind
       );
     }
 
@@ -94,29 +103,30 @@ $input-width: 312px;
         "danger",
         $color-secondary-delete,
         $color-extend-rr-b-vitamin,
+        $color-neutral-medium-cloud,
+        $color-neutral-dark-city,
         $color-secondary-delete,
-        $color-secondary-bg-delete
+        $color-secondary-delete,
+        $color-extend-rr-flower
       );
     }
 
     &-disabled {
       @include input-theme(
         "disabled",
-        $color-neutral-medium-cloud,
+        $color-neutral-dark-city,
         $color-neutral-light-breeze,
-        $color-neutral-medium-silver,
-        $color-neutral-light-wave
+        $color-neutral-medium-cloud,
+        $color-neutral-dark-city,
+        $color-neutral-light-off,
+        $color-neutral-dark-city,
+        $color-neutral-light-off
       );
     }
   }
 
   &--label {
     padding: $input-padding-label;
-  }
-
-  &__icon_eye {
-    color: $color-neutral-medium-cloud;
-    display: flex;
   }
 
   &__icon {

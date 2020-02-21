@@ -19,7 +19,11 @@ import {
   InputAutocapitalize,
   InputAutoComplete,
   InputType,
-} from './components/input/inputs';
+} from './components/input/input-interface';
+import {
+  Option,
+  SelectChangeEventDetail,
+} from './components/select/select-interface';
 import {
   Bold,
   FontLineHeight,
@@ -126,6 +130,10 @@ export namespace Components {
     */
     'errorMessage'?: string;
     /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
     * Returns the native `<input>` element used under the hood.
     */
     'getInputElement': () => Promise<HTMLInputElement>;
@@ -138,9 +146,84 @@ export namespace Components {
     */
     'icon'?: string;
     /**
-    * Input Id
+    * Input Name
     */
-    'inputId': string;
+    'inputName'?: string;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
+    /**
+    * The maximum value, which must not be less than its minimum (min attribute) value.
+    */
+    'max'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+    */
+    'maxlength'?: number;
+    /**
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
+    */
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
+    /**
+    * A tip for the user who can enter no controls.
+    */
+    'placeholder'?: string;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly': boolean;
+    'removeFocus': () => Promise<void>;
+    /**
+    * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
+    */
+    'setFocus': () => Promise<void>;
+    /**
+    * Input type. Can be one of: "text" or "password".
+    */
+    'type'?: InputType;
+    /**
+    * The value of the input.
+    */
+    'value'?: string | null;
+  }
+  interface BdsInputPassword {
+    /**
+    * Capitalizes every word's second character.
+    */
+    'autoCapitalize'?: InputAutocapitalize;
+    /**
+    * Hint for form autofill feature
+    */
+    'autoComplete'?: InputAutoComplete;
+    /**
+    * Add state danger on input, use for use feedback.
+    */
+    'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicated to pass an feeback to user.
+    */
+    'errorMessage'?: string;
+    /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
+    * Indicated to pass a help the user in complex filling.
+    */
+    'helperMessage'?: string;
+    /**
+    * used for add icon in input left. Uses the bds-icon component.
+    */
+    'icon'?: string;
     /**
     * Input Name
     */
@@ -150,17 +233,26 @@ export namespace Components {
     */
     'label'?: string;
     /**
-    * A tip for the user who can enter no controls.
+    * The maximum value, which must not be less than its minimum (min attribute) value.
     */
-    'placeholder'?: string;
+    'max'?: string;
     /**
-    * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
     */
-    'setFocus': () => Promise<void>;
+    'maxlength'?: number;
     /**
-    * Input type. Can be one of: "text" or "password".
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
     */
-    'type'?: InputType;
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
+    'openEyes'?: boolean;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly': boolean;
     /**
     * The value of the input.
     */
@@ -184,6 +276,45 @@ export namespace Components {
     'name': string;
     'refer': string;
     'value': string;
+  }
+  interface BdsSelect {
+    /**
+    * Add state danger on input, use for use feedback.
+    */
+    'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
+    'disabled'?: boolean;
+    /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
+    'options'?: Array<Option>;
+    /**
+    * the value of the select.
+    */
+    'value'?: any | null;
+  }
+  interface BdsSelectOption {
+    /**
+    * Quantity Description on option value, this item is locate to rigth in component.
+    */
+    'bulkOption'?: string;
+    /**
+    * If `true`, the user cannot interact with the select option.
+    */
+    'disabled'?: boolean;
+    'label': any;
+    /**
+    * The text value of the option.
+    */
+    'selected'?: boolean;
+    'value': any;
   }
   interface BdsTypo {
     /**
@@ -250,10 +381,28 @@ declare global {
     new (): HTMLBdsInputElement;
   };
 
+  interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {}
+  var HTMLBdsInputPasswordElement: {
+    prototype: HTMLBdsInputPasswordElement;
+    new (): HTMLBdsInputPasswordElement;
+  };
+
   interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {}
   var HTMLBdsRadioElement: {
     prototype: HTMLBdsRadioElement;
     new (): HTMLBdsRadioElement;
+  };
+
+  interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {}
+  var HTMLBdsSelectElement: {
+    prototype: HTMLBdsSelectElement;
+    new (): HTMLBdsSelectElement;
+  };
+
+  interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {}
+  var HTMLBdsSelectOptionElement: {
+    prototype: HTMLBdsSelectOptionElement;
+    new (): HTMLBdsSelectOptionElement;
   };
 
   interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {}
@@ -267,7 +416,10 @@ declare global {
     'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
+    'bds-input-password': HTMLBdsInputPasswordElement;
     'bds-radio': HTMLBdsRadioElement;
+    'bds-select': HTMLBdsSelectElement;
+    'bds-select-option': HTMLBdsSelectOptionElement;
     'bds-typo': HTMLBdsTypoElement;
   }
 }
@@ -377,6 +529,10 @@ declare namespace LocalJSX {
     */
     'errorMessage'?: string;
     /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -384,10 +540,6 @@ declare namespace LocalJSX {
     * used for add icon in input left. Uses the bds-icon component.
     */
     'icon'?: string;
-    /**
-    * Input Id
-    */
-    'inputId': string;
     /**
     * Input Name
     */
@@ -397,21 +549,116 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
+    * The maximum value, which must not be less than its minimum (min attribute) value.
+    */
+    'max'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+    */
+    'maxlength'?: number;
+    /**
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
+    */
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
+    /**
     * Emitted when the value has changed.
     */
     'onBdsChange'?: (event: CustomEvent<any>) => void;
+    /**
+    * Event input focus.
+    */
+    'onBdsFocus'?: (event: CustomEvent<any>) => void;
     /**
     * Emitted when the input has changed.
     */
     'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     /**
+    * Event input onblur.
+    */
+    'onBdsOnBlur'?: (event: CustomEvent<any>) => void;
+    /**
     * A tip for the user who can enter no controls.
     */
     'placeholder'?: string;
     /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly'?: boolean;
+    /**
     * Input type. Can be one of: "text" or "password".
     */
     'type'?: InputType;
+    /**
+    * The value of the input.
+    */
+    'value'?: string | null;
+  }
+  interface BdsInputPassword {
+    /**
+    * Capitalizes every word's second character.
+    */
+    'autoCapitalize'?: InputAutocapitalize;
+    /**
+    * Hint for form autofill feature
+    */
+    'autoComplete'?: InputAutoComplete;
+    /**
+    * Add state danger on input, use for use feedback.
+    */
+    'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
+    'disabled'?: boolean;
+    /**
+    * Indicated to pass an feeback to user.
+    */
+    'errorMessage'?: string;
+    /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
+    * Indicated to pass a help the user in complex filling.
+    */
+    'helperMessage'?: string;
+    /**
+    * used for add icon in input left. Uses the bds-icon component.
+    */
+    'icon'?: string;
+    /**
+    * Input Name
+    */
+    'inputName'?: string;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
+    /**
+    * The maximum value, which must not be less than its minimum (min attribute) value.
+    */
+    'max'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+    */
+    'maxlength'?: number;
+    /**
+    * The minimum value, which must not be greater than its maximum (max attribute) value.
+    */
+    'min'?: string;
+    /**
+    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+    */
+    'minlength'?: number;
+    'openEyes'?: boolean;
+    /**
+    * If `true`, the user cannot modify the value.
+    */
+    'readonly'?: boolean;
     /**
     * The value of the input.
     */
@@ -441,6 +688,62 @@ declare namespace LocalJSX {
     'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     'refer': string;
     'value': string;
+  }
+  interface BdsSelect {
+    /**
+    * Add state danger on input, use for use feedback.
+    */
+    'danger'?: boolean;
+    /**
+    * Disabled input.
+    */
+    'disabled'?: boolean;
+    /**
+    * Definied full width on input
+    */
+    'fullwidth'?: boolean;
+    /**
+    * label in input, with he the input size increases.
+    */
+    'label'?: string;
+    /**
+    * Emitted when the select loses focus.
+    */
+    'onBdsBlur'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the selection is cancelled.
+    */
+    'onBdsCancel'?: (event: CustomEvent<void>) => void;
+    /**
+    * Emitted when the value has changed.
+    */
+    'onBdsChange'?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+    /**
+    * Emitted when the select loses focus.
+    */
+    'onBdsFocus'?: (event: CustomEvent<void>) => void;
+    'options'?: Array<Option>;
+    /**
+    * the value of the select.
+    */
+    'value'?: any | null;
+  }
+  interface BdsSelectOption {
+    /**
+    * Quantity Description on option value, this item is locate to rigth in component.
+    */
+    'bulkOption'?: string;
+    /**
+    * If `true`, the user cannot interact with the select option.
+    */
+    'disabled'?: boolean;
+    'label': any;
+    'onOptionSelected'?: (event: CustomEvent<any>) => void;
+    /**
+    * The text value of the option.
+    */
+    'selected'?: boolean;
+    'value': any;
   }
   interface BdsTypo {
     /**
@@ -479,7 +782,10 @@ declare namespace LocalJSX {
     'bds-checkbox': BdsCheckbox;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
+    'bds-input-password': BdsInputPassword;
     'bds-radio': BdsRadio;
+    'bds-select': BdsSelect;
+    'bds-select-option': BdsSelectOption;
     'bds-typo': BdsTypo;
   }
 }
@@ -495,7 +801,10 @@ declare module "@stencil/core" {
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+      'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
       'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
+      'bds-select': LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
+      'bds-select-option': LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }
   }
