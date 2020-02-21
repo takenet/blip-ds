@@ -1,4 +1,5 @@
 import { Component, h, Prop, EventEmitter, Event } from "@stencil/core";
+import { Keyboard } from '../../utils/enums';
 
 @Component({
   tag: 'bds-select-option',
@@ -38,22 +39,19 @@ export class SelectOption {
 
   private attachOptionKeyboardListeners = (event: KeyboardEvent): void => {
     const element = (event.target as HTMLElement);
-    const enterKey = 13;
-    const arrowDownKey = 40;
-    const arrowUpKey = 38;
 
     switch (event.keyCode) {
-      case enterKey:
+      case Keyboard.ENTER:
         this.onClickSelectOption();
         break
-      case arrowDownKey:
+      case Keyboard.ARROW_DOWN:
         if (element.nextSibling) {
           event.preventDefault();
           event.stopPropagation();
           (element.nextSibling as HTMLInputElement).focus();
         }
         break
-      case arrowUpKey:
+      case Keyboard.ARROW_UP:
         event.preventDefault()
         event.stopPropagation()
 
