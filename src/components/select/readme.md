@@ -7,14 +7,13 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                       | Type       | Default     |
-| ----------- | ----------- | ------------------------------------------------- | ---------- | ----------- |
-| `danger`    | `danger`    | Add state danger on input, use for use feedback.  | `boolean`  | `false`     |
-| `disabled`  | `disabled`  | Disabled input.                                   | `boolean`  | `false`     |
-| `fullwidth` | `fullwidth` | Definied full width on input                      | `boolean`  | `false`     |
-| `label`     | `label`     | label in input, with he the input size increases. | `string`   | `''`        |
-| `options`   | --          |                                                   | `Option[]` | `[]`        |
-| `value`     | `value`     | the value of the select.                          | `any`      | `undefined` |
+| Property   | Attribute  | Description                                       | Type       | Default     |
+| ---------- | ---------- | ------------------------------------------------- | ---------- | ----------- |
+| `danger`   | `danger`   | Add state danger on input, use for use feedback.  | `boolean`  | `false`     |
+| `disabled` | `disabled` | Disabled input.                                   | `boolean`  | `false`     |
+| `label`    | `label`    | label in input, with he the input size increases. | `string`   | `''`        |
+| `options`  | --         |                                                   | `Option[]` | `[]`        |
+| `value`    | `value`    | the value of the select.                          | `any`      | `undefined` |
 
 
 ## Events

@@ -30,11 +30,6 @@ export class Select {
   @Prop({ reflect: true }) disabled?= false;
 
   /**
-   * Definied full width on input
-   */
-  @Prop() fullwidth?= false;
-
-  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<SelectChangeEventDetail>;
@@ -156,7 +151,6 @@ export class Select {
           value={selectText}
           danger={this.danger}
           disabled={this.disabled}
-          fullwidth={this.fullwidth}
           readonly
         >
           <div

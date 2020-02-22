@@ -130,10 +130,6 @@ export namespace Components {
     */
     'errorMessage'?: string;
     /**
-    * Definied full width on input
-    */
-    'fullwidth'?: boolean;
-    /**
     * Returns the native `<input>` element used under the hood.
     */
     'getInputElement': () => Promise<HTMLInputElement>;
@@ -213,10 +209,6 @@ export namespace Components {
     */
     'errorMessage'?: string;
     /**
-    * Definied full width on input
-    */
-    'fullwidth'?: boolean;
-    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -286,10 +278,6 @@ export namespace Components {
     * Disabled input.
     */
     'disabled'?: boolean;
-    /**
-    * Definied full width on input
-    */
-    'fullwidth'?: boolean;
     /**
     * label in input, with he the input size increases.
     */
@@ -529,10 +517,6 @@ declare namespace LocalJSX {
     */
     'errorMessage'?: string;
     /**
-    * Definied full width on input
-    */
-    'fullwidth'?: boolean;
-    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -619,10 +603,6 @@ declare namespace LocalJSX {
     */
     'errorMessage'?: string;
     /**
-    * Definied full width on input
-    */
-    'fullwidth'?: boolean;
-    /**
     * Indicated to pass a help the user in complex filling.
     */
     'helperMessage'?: string;
@@ -698,10 +678,6 @@ declare namespace LocalJSX {
     * Disabled input.
     */
     'disabled'?: boolean;
-    /**
-    * Definied full width on input
-    */
-    'fullwidth'?: boolean;
     /**
     * label in input, with he the input size increases.
     */

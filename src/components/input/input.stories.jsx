@@ -11,8 +11,12 @@ export default {
   },
 };
 
+const inputStyle = {
+  width: '312px'
+}
+
 export const defaultInput = () => (
-  <>
+  <div style={inputStyle}>
     <bds-input
       placeholder={text('placeholder', 'nome completo')}
       label={text('label', '')}
@@ -28,14 +32,13 @@ export const defaultInput = () => (
       max={text('max', null)}
       maxlength={number('maxlength', null)}
       readonly={boolean('readonly', false)}
-      fullwidth={boolean('fullwidth', false)}
     >
     </bds-input>
-  </>
+  </div>
 );
 
 export const dangerInput = () => (
-  <>
+  <div style={inputStyle}>
     <bds-input danger></bds-input>
     <br />
     <bds-input danger icon="email"></bds-input>
@@ -43,11 +46,11 @@ export const dangerInput = () => (
     <bds-input danger label="Name"></bds-input>
     <br />
     <bds-input danger icon="email" label="Name"></bds-input>
-  </>
+  </div>
 );
 
 export const disabledInput = () => (
-  <>
+  <div style={inputStyle}>
     <bds-input disabled></bds-input>
     <br />
     <bds-input disabled value="Action descripition"></bds-input>
@@ -57,5 +60,5 @@ export const disabledInput = () => (
     <bds-input disabled label="Action" value="Action descripition"></bds-input>
     <br />
     <bds-input disabled icon="email" label="Action" value="Action descripition"></bds-input>
-  </>
+  </div>
 )
