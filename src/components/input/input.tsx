@@ -50,11 +50,6 @@ export class Input {
   @Prop() autoComplete?: InputAutoComplete = 'off';
 
   /**
-   * Definied full width on input
-   */
-  @Prop() fullwidth?= false;
-
-  /**
    * The maximum value, which must not be less than its minimum (min attribute) value.
    */
   @Prop() max?: string;
@@ -249,7 +244,6 @@ export class Input {
           "input--state-disabled": this.disabled,
           "input--label": !!this.label,
           "input--pressed": this.isPressed && !this.disabled,
-          "input--full-width": this.fullwidth,
         }}
         onClick={this.onClickWrapper}
       >

@@ -4,14 +4,14 @@ $select-options-max-height: 250px;
 
 @mixin custom-scroll() {
   &::-webkit-scrollbar-track {
-    background-color: $color-primary-ghost;
+    background-color: $color-neutral-light-whisper;
     border-radius: 0px 8px 8px 0px;
-    border-left: 1px solid $color-neutral-medium-silver;
+    border-left: 1px solid $color-neutral-light-breeze;
   }
 
   &::-webkit-scrollbar {
     width: 12px;
-    background-color: $color-primary-ghost;
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -55,6 +55,8 @@ $select-options-max-height: 250px;
     transform: scaleY(0);
     visibility: hidden;
     opacity: 0;
+
+    box-shadow: 0px 2px 12px $shadow-drop;
 
     &--open {
       visibility: visible;

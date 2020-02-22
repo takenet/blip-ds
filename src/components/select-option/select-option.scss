@@ -26,21 +26,24 @@ $select-option-left: 12px;
 
   &:hover {
     background-color: $color-neutral-light-whisper;
+    color: $color-neutral-dark-city;
   }
 
   &:focus {
-    background-color: $color-neutral-light-whisper;
+    background-color: $color-neutral-select-background;
+    color: $color-primary-main;
   }
 
   &:active > &__value,
   &:active > &__bulk {
+    background-color: $color-neutral-select-background;
     color: $color-primary-main;
   }
 
   &--selected,
   &--selected > &__value,
   &--selected > &__bulk {
-    background-color: $color-neutral-light-whisper;
+    background-color: $color-neutral-select-background;
     color: $color-primary-main;
   }
 
@@ -50,7 +53,7 @@ $select-option-left: 12px;
     &:hover {
       background-color: $color-snow-white;
     }
-    
+
     cursor: not-allowed;
     color: $color-neutral-medium-silver;
   }

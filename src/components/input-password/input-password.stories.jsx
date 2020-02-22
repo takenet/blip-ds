@@ -11,28 +11,33 @@ export default {
 	},
 };
 
+const inputStyle = {
+	width: '312px'
+}
+
 export const defaultInputPassword = () => (
-	<bds-input-password
-		label={text('label', '')}
-		danger={boolean('danger', false)}
-		disabled={boolean('disabled', false)}
-		value={text('value', '')}
-		error-message={text('errorMessage', '')}
-		helper-message={text('helperMessage', '')}
-		min={text('min', null)}
-		minlength={number('minlength', null)}
-		max={text('max', null)}
-		maxlength={number('maxlength', null)}
-		readonly={boolean('readonly', false)}
-		fullwidth={boolean('fullwidth', false)}
-	>
-	</bds-input-password>
+	<div style={inputStyle}>
+		<bds-input-password
+			label={text('label', '')}
+			danger={boolean('danger', false)}
+			disabled={boolean('disabled', false)}
+			value={text('value', '')}
+			error-message={text('errorMessage', '')}
+			helper-message={text('helperMessage', '')}
+			min={text('min', null)}
+			minlength={number('minlength', null)}
+			max={text('max', null)}
+			maxlength={number('maxlength', null)}
+			readonly={boolean('readonly', false)}
+		>
+		</bds-input-password>
+	</div>
 );
 
 export const dangerInputPassword = () => (
-	<>
+	<div style={inputStyle}>
 		<bds-input-password value="password" danger error-message="Oops"></bds-input-password>
 		<br />
 		<bds-input-password value="password" label="Password" danger error-message="Oops"></bds-input-password>
-	</>
+	</div>
 );

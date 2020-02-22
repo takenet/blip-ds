@@ -25,11 +25,6 @@ export class InputPassword {
   @Prop() inputName?: string = '';
 
   /**
-   * Definied full width on input
-   */
-  @Prop() fullwidth?= false;
-
-  /**
    * The maximum value, which must not be less than its minimum (min attribute) value.
    */
   @Prop() max?: string;
@@ -123,7 +118,6 @@ export class InputPassword {
         readonly={this.readonly}
         auto-complete={autocomplete}
         auto-capitalize={this.autoCapitalize}
-        fullwidth={this.fullwidth}
       >
         <div
           slot="input-right"

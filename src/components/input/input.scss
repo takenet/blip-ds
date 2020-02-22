@@ -2,7 +2,7 @@
 
 $input-padding: 8px 12px 9px 12px;
 $input-padding-label: 7px 12px 8px 12px;
-$input-width: 312px;
+$input-width: 100%;
 
 @mixin input-text {
   font-family: $font-family;
@@ -79,10 +79,6 @@ $input-width: 312px;
   align-items: center;
   padding: $input-padding;
   width: $input-width;
-
-  &--full-width {
-    width: 100%;
-  }
 
   &--state {
     &-primary {
