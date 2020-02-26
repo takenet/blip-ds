@@ -1,0 +1,14 @@
+.menu-list-item {
+  background-color: $color-neutrals-light-white;
+  cursor: pointer;
+  width: 76px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    color: $color-neutral-medium-cloud;
+  }
+}

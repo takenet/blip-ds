@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                     | Type                                           | Default      |
-| ---------- | ---------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------ |
-| `arrow`    | `arrow`    | The arrow button                                                                                | `boolean`                                      | `false`      |
-| `disabled` | `disabled` | If true, the base button will be disabled.                                                      | `boolean`                                      | `false`      |
-| `icon`     | `icon`     | The icon name                                                                                   | `string`                                       | `null`       |
-| `size`     | `size`     | Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';                  | `"short" \| "standard" \| "tall"`              | `'standard'` |
+| Property   | Attribute  | Description                                                                                        | Type                                              | Default      |
+| ---------- | ---------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
+| `arrow`    | `arrow`    | The arrow button                                                                                   | `boolean`                                         | `false`      |
+| `disabled` | `disabled` | If true, the base button will be disabled.                                                         | `boolean`                                         | `false`      |
+| `icon`     | `icon`     | The icon name                                                                                      | `string`                                          | `null`       |
+| `size`     | `size`     | Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                 | `'standard'` |
 | `variant`  | `variant`  | Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed'; | `"dashed" \| "ghost" \| "primary" \| "secondary"` | `'primary'`  |
 
 

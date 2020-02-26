@@ -166,6 +166,11 @@ export namespace Components {
     */
     'value'?: string | null;
   }
+  interface BdsMenuList {}
+  interface BdsMenuListItem {
+    'color': string;
+    'icon': string;
+  }
   interface BdsRadio {
     /**
     * If `true`, the checkbox is selected.
@@ -250,6 +255,18 @@ declare global {
     new (): HTMLBdsInputElement;
   };
 
+  interface HTMLBdsMenuListElement extends Components.BdsMenuList, HTMLStencilElement {}
+  var HTMLBdsMenuListElement: {
+    prototype: HTMLBdsMenuListElement;
+    new (): HTMLBdsMenuListElement;
+  };
+
+  interface HTMLBdsMenuListItemElement extends Components.BdsMenuListItem, HTMLStencilElement {}
+  var HTMLBdsMenuListItemElement: {
+    prototype: HTMLBdsMenuListItemElement;
+    new (): HTMLBdsMenuListItemElement;
+  };
+
   interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {}
   var HTMLBdsRadioElement: {
     prototype: HTMLBdsRadioElement;
@@ -267,6 +284,8 @@ declare global {
     'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
+    'bds-menu-list': HTMLBdsMenuListElement;
+    'bds-menu-list-item': HTMLBdsMenuListItemElement;
     'bds-radio': HTMLBdsRadioElement;
     'bds-typo': HTMLBdsTypoElement;
   }
@@ -417,6 +436,11 @@ declare namespace LocalJSX {
     */
     'value'?: string | null;
   }
+  interface BdsMenuList {}
+  interface BdsMenuListItem {
+    'color'?: string;
+    'icon': string;
+  }
   interface BdsRadio {
     /**
     * If `true`, the checkbox is selected.
@@ -479,6 +503,8 @@ declare namespace LocalJSX {
     'bds-checkbox': BdsCheckbox;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
+    'bds-menu-list': BdsMenuList;
+    'bds-menu-list-item': BdsMenuListItem;
     'bds-radio': BdsRadio;
     'bds-typo': BdsTypo;
   }
@@ -495,6 +521,8 @@ declare module "@stencil/core" {
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+      'bds-menu-list': LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
+      'bds-menu-list-item': LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
       'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
       'bds-typo': LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
     }

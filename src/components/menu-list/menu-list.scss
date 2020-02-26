@@ -1,0 +1,28 @@
+$menu-list-width: 7px;
+$menu-list-height: 56px;
+$menu-list-border-left: 8px 0px 0px 8px;
+$menu-list-border-right: 8px 0px 0px 8px;
+
+.menu-list {
+  display: flex;
+  flex-direction: row;
+  box-shadow: $shadow-drop;
+
+  &__left {
+    width: $menu-list-width;
+    height: $menu-list-height;
+    border-radius: $menu-list-border-left;
+    background-color: $color-neutrals-light-white;
+  }
+
+  &__right {
+    width: $menu-list-width;
+    height: $menu-list-height;
+    border-radius: $menu-list-border-right;
+    background-color: $color-neutrals-light-white;
+  }
+}
+
+.menu-list bds-menu-list-item + bds-menu-list-item {
+  border-left: 1px solid $color-neutral-light-wave;
+}
