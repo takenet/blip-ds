@@ -1,5 +1,5 @@
 import { Component, h, Prop, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
-import { InputType, InputAutocapitalize, InputAutoComplete } from './input-interface';
+import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 
 @Component({
   tag: 'bds-input',
@@ -103,7 +103,19 @@ export class Input {
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true, reflect: true }) value?: string | null = '';
+  @Prop({ mutable: true }) value?: string | null = '';
+
+  /**
+   * Passing true to display a counter of available size, it is necessary to
+   * pass another maxlength property.
+   */
+  @Prop() counterLength?= false;
+
+  /**
+   * Make it possible to pass the base values to the warning level and exclude, 
+   * using the values between min and max.
+   */
+  @Prop() counterLengthRule?: InputCounterLengthRules | {} = {};
 
   /**
    * Update the native input element when the value changes
@@ -213,7 +225,6 @@ export class Input {
     const message = this.danger ? this.errorMessage : this.helperMessage;
     const styles = this.danger ? 'input__message input__message--danger' : 'input__message';
 
-
     if ((this.danger && this.errorMessage) ||
       (!this.danger && this.helperMessage)) {
       return (
@@ -235,6 +246,8 @@ export class Input {
   }
 
   render(): HTMLElement {
+    const isPressed = this.isPressed && !this.disabled
+
     return (
       <div
         class={{
@@ -243,7 +256,7 @@ export class Input {
           "input--state-danger": this.danger,
           "input--state-disabled": this.disabled,
           "input--label": !!this.label,
-          "input--pressed": this.isPressed && !this.disabled,
+          "input--pressed": isPressed,
         }}
         onClick={this.onClickWrapper}
       >
@@ -270,6 +283,13 @@ export class Input {
             value={this.value}
           />
         </div>
+        {this.counterLength &&
+          <bds-counter-text
+            length={this.value.length}
+            max={this.maxlength}
+            active={isPressed}
+            {...this.counterLengthRule}
+          />}
         <slot name="input-right" />
         {this.renderMessage()}
       </div>

@@ -12,12 +12,16 @@ import {
   ButtonVariant,
 } from './components/button/button';
 import {
+  CounterTextRule,
+} from './components/counter-text/counter-text-interface';
+import {
   IconSize,
   IconTheme,
 } from './components/icon/icon';
 import {
   InputAutocapitalize,
   InputAutoComplete,
+  InputCounterLengthRules,
   InputType,
 } from './components/input/input-interface';
 import {
@@ -86,6 +90,13 @@ export namespace Components {
     'name': string;
     'refer': string;
   }
+  interface BdsCounterText {
+    'active'?: boolean;
+    'delete'?: CounterTextRule;
+    'length': number;
+    'max'?: number;
+    'warning'?: CounterTextRule;
+  }
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -117,6 +128,14 @@ export namespace Components {
     * Hint for form autofill feature
     */
     'autoComplete'?: InputAutoComplete;
+    /**
+    * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+    */
+    'counterLength'?: boolean;
+    /**
+    * Make it possible to pass the base values to the warning level and exclude,  using the values between min and max.
+    */
+    'counterLengthRule'?: InputCounterLengthRules | {};
     /**
     * Add state danger on input, use for use feedback.
     */
@@ -362,6 +381,12 @@ declare global {
     new (): HTMLBdsCheckboxElement;
   };
 
+  interface HTMLBdsCounterTextElement extends Components.BdsCounterText, HTMLStencilElement {}
+  var HTMLBdsCounterTextElement: {
+    prototype: HTMLBdsCounterTextElement;
+    new (): HTMLBdsCounterTextElement;
+  };
+
   interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {}
   var HTMLBdsIconElement: {
     prototype: HTMLBdsIconElement;
@@ -419,6 +444,7 @@ declare global {
     'bds-button': HTMLBdsButtonElement;
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-checkbox': HTMLBdsCheckboxElement;
+    'bds-counter-text': HTMLBdsCounterTextElement;
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
     'bds-input-password': HTMLBdsInputPasswordElement;
@@ -492,6 +518,13 @@ declare namespace LocalJSX {
     'onBdsInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     'refer': string;
   }
+  interface BdsCounterText {
+    'active'?: boolean;
+    'delete'?: CounterTextRule;
+    'length': number;
+    'max'?: number;
+    'warning'?: CounterTextRule;
+  }
   interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -523,6 +556,14 @@ declare namespace LocalJSX {
     * Hint for form autofill feature
     */
     'autoComplete'?: InputAutoComplete;
+    /**
+    * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+    */
+    'counterLength'?: boolean;
+    /**
+    * Make it possible to pass the base values to the warning level and exclude,  using the values between min and max.
+    */
+    'counterLengthRule'?: InputCounterLengthRules | {};
     /**
     * Add state danger on input, use for use feedback.
     */
@@ -780,6 +821,7 @@ declare namespace LocalJSX {
     'bds-button': BdsButton;
     'bds-card-color': BdsCardColor;
     'bds-checkbox': BdsCheckbox;
+    'bds-counter-text': BdsCounterText;
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
     'bds-input-password': BdsInputPassword;
@@ -801,6 +843,7 @@ declare module "@stencil/core" {
       'bds-button': LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
+      'bds-counter-text': LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
