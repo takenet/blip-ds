@@ -25,6 +25,7 @@
  - [bds-button](../button)
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
+ - [bds-counter-text](../counter-text)
  - [bds-input](../input)
  - [bds-menu-list-item](../menu-list-item)
  - [bds-radio](../radio)
@@ -36,6 +37,7 @@ graph TD;
   bds-button --> bds-typo
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
+  bds-counter-text --> bds-typo
   bds-input --> bds-typo
   bds-menu-list-item --> bds-typo
   bds-radio --> bds-typo

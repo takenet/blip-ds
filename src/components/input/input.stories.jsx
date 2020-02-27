@@ -62,3 +62,23 @@ export const disabledInput = () => (
     <bds-input disabled icon="email" label="Action" value="Action descripition"></bds-input>
   </div>
 )
+
+export const counterInput = () => (
+  <div style={inputStyle}>
+    <bds-input
+      maxlength={number('maxlength1', 30)}
+      counter-length></bds-input>
+    <br />
+    <bds-input
+      maxlength={number('maxlength2', 30)}
+      counter-length icon="email"></bds-input>
+    <br />
+    <bds-input
+      maxlength={number('maxlength3', 30)}
+      counter-length label="Name"></bds-input>
+    <br />
+    <bds-input
+      maxlength={number('maxlength4', 30)}
+      counter-length icon="email" label="Name"></bds-input>
+  </div>
+);

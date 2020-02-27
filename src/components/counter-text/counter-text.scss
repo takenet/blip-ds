@@ -1,0 +1,27 @@
+@import "mixins";
+
+.counter-text {
+  background: $color-neutral-light-breeze;
+  color: $color-neutral-medium-cloud;
+  box-sizing: content-box;
+  width: fit-content;
+  border-radius: 11px;
+  padding: 0 8px;
+
+  &--active {
+    background: $color-primary-main;
+    color: $color-neutral-light-whisper;
+  }
+
+  &--warning {
+    background: $color-secondary-cheetos;
+    color: $color-neutral-light-whisper;
+  }
+
+  &--delete {
+    background: $color-secondary-delete;
+    color: $color-neutral-light-whisper;
+  }
+
+  @include no-select;
+}
