@@ -29,9 +29,13 @@ $color-primary-bg-main: rgba(44, 195, 213, 0.7);
 $color-neutral-disabled-blues-text: #76c1ca;
 $color-neutral-disabled-blues-bg: #daf2f4;
 
+// Select neutrals
+$color-neutral-select-background: #e9f7f8;
+
 // Dark neutrals
 $color-neutral-dark-onix: #1a2437;
 $color-neutral-dark-suit: #202c44;
+$color-neutral-dark-ultron: #283143;
 $color-neutral-dark-city: #56616e;
 $color-neutral-dark-rooftop: #738192;
 
@@ -45,7 +49,7 @@ $color-neutral-light-wave: #d2dfe6;
 $color-neutral-light-off: #dee8ec;
 $color-neutral-light-breeze: #e7eef1;
 $color-neutral-light-whisper: #f5f8f9;
-$color-neutrals-light-white: #ffffff;
+$color-snow-white: #ffffff;
 
 /**
 * Extended colors
@@ -125,4 +129,4 @@ $color-gradient-ocean: linear-gradient(195.12deg, #6d8ce5 -10.36%, #517bf2 45.63
 $color-gradient-smurfette: linear-gradient(195.12deg, #9ee3ff -10.36%, #55cfff 45.63%, #51b2dd 117.21%);
 
 // Shadows
-$shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.3);
+$shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.4);

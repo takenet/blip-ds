@@ -11,7 +11,7 @@ export default {
   },
 };
 
-const solidIcons = [
+const solidIconsName = [
   "add",
   "arrow-ball-down",
   "arrow-ball-left",
@@ -47,7 +47,6 @@ const solidIcons = [
   "folder-save",
   "heart",
   "info",
-  "integration",
   "operator",
   "organize-blocks",
   "organize-list",
@@ -63,7 +62,7 @@ const solidIcons = [
   "voip",
 ];
 
-const outlineIcons = [
+const outlineIconsName = [
   "ab",
   "add",
   "add-persistent-menu",
@@ -82,6 +81,7 @@ const outlineIcons = [
   "audio",
   "avatar-deafult",
   "avatar-user",
+  "back",
   "bell",
   "builder-carrousel",
   "builder-menu",
@@ -164,6 +164,7 @@ const outlineIcons = [
   "paint",
   "plus",
   "question",
+  "redo-arrow",
   "refresh",
   "restore",
   "robot",
@@ -187,7 +188,7 @@ const outlineIcons = [
   "transfer",
   "trash",
   "true",
-  "undo",
+  "undo-arrow",
   "unlock",
   "upload",
   "user",
@@ -200,20 +201,48 @@ const outlineIcons = [
   "xml",
 ];
 
-export const allIcons = () => {
+const iconStyles = {
+  width: "80px",
+  height: "64px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+  padding: "1px",
+}
+
+const iconWrapperStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+}
+
+export const outlineIcons = () => {
   const story = [];
 
-  solidIcons.forEach(name => {
-    story.push(<bds-icon theme="solid" size="xxx-large" name={name}></bds-icon>);
+  outlineIconsName.forEach(name => {
+    story.push(
+      <div style={iconStyles}>
+        <bds-icon theme="outline" size="xxx-large" name={name}></bds-icon>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
   });
 
-  story.push(<br />);
+  return (<div style={iconWrapperStyles}>{story}</div>);
+}
 
-  outlineIcons.forEach(name => {
-    story.push(<bds-icon theme="outline" size="xxx-large" name={name}></bds-icon>);
+export const solidIcons = () => {
+  const story = [];
+
+  solidIconsName.forEach(name => {
+    story.push(
+      <div style={iconStyles}>
+        <bds-icon theme="solid" size="xxx-large" name={name}></bds-icon>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>);
   });
 
-  return story;
+  return (<div style={iconWrapperStyles}>{story}</div>);
 }
 
 export const iconDefault = () => (<bds-icon name={text('name', 'user')}></bds-icon>);

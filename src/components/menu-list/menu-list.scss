@@ -18,14 +18,14 @@ $menu-list-border-right: 0px 8px 8px 0px;
     width: $menu-list-width;
     height: $menu-list-height;
     border-radius: $menu-list-border-left;
-    background-color: $color-neutrals-light-white;
+    background-color: $color-snow-white;
   }
 
   &__right {
     width: $menu-list-width;
     height: $menu-list-height;
     border-radius: $menu-list-border-right;
-    background-color: $color-neutrals-light-white;
+    background-color: $color-snow-white;
   }
 }
 

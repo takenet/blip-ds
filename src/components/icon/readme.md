@@ -24,6 +24,8 @@
  - [bds-checkbox](../checkbox)
  - [bds-input](../input)
  - [bds-menu-list-item](../menu-list-item)
+ - [bds-input-password](../input-password)
+ - [bds-select](../select)
 
 ### Graph
 ```mermaid
@@ -32,6 +34,8 @@ graph TD;
   bds-checkbox --> bds-icon
   bds-input --> bds-icon
   bds-menu-list-item --> bds-icon
+  bds-input-password --> bds-icon
+  bds-select --> bds-icon
   style bds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

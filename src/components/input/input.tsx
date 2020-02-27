@@ -1,10 +1,5 @@
-import { Component, h, Prop, Element, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
-
-export type InputType = 'text' | 'password';
-
-export type InputAutocapitalize = 'off' | 'none' | 'words' | 'on' | 'sentences' | 'characters';
-
-export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-password' | 'username';
+import { Component, h, Prop, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
+import { InputType, InputAutocapitalize, InputAutoComplete } from './input-interface';
 
 @Component({
   tag: 'bds-input',
@@ -13,8 +8,6 @@ export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-passwor
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
-
-  @Element() element: HTMLElement;
 
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
@@ -27,19 +20,9 @@ export class Input {
   @State() isPassword?= false;
 
   /**
-   * When the input is of the password type, this field informs if the eye is open or closed.
-   */
-  @State() showPassword?= false;
-
-  /**
-   * Input Id
-   */
-  @Prop() inputId!: string;
-
-  /**
    * Input Name
    */
-  @Prop() inputName?: string = '';
+  @Prop() inputName?= '';
 
   /**
    * Input type. Can be one of: "text" or "password".
@@ -49,7 +32,7 @@ export class Input {
   /**
    *  label in input, with he the input size increases.
    */
-  @Prop() label?: string = '';
+  @Prop() label?= '';
 
   /**
    * A tip for the user who can enter no controls.
@@ -65,6 +48,31 @@ export class Input {
    * Hint for form autofill feature
    */
   @Prop() autoComplete?: InputAutoComplete = 'off';
+
+  /**
+   * The maximum value, which must not be less than its minimum (min attribute) value.
+   */
+  @Prop() max?: string;
+
+  /**
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+   */
+  @Prop() maxlength?: number;
+
+  /**
+   * The minimum value, which must not be greater than its maximum (max attribute) value.
+   */
+  @Prop() min?: string;
+
+  /**
+   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+   */
+  @Prop() minlength?: number;
+
+  /**
+   * If `true`, the user cannot modify the value.
+   */
+  @Prop() readonly = false;
 
   /**
    * Indicated to pass a help the user in complex filling.
@@ -84,7 +92,8 @@ export class Input {
   /**
    * Disabled input.
    */
-  @Prop() disabled?= false;
+  @Prop({ reflect: true }) disabled?: boolean = false;
+
 
   /**
    * Add state danger on input, use for use feedback.
@@ -114,13 +123,15 @@ export class Input {
    */
   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
 
+  /**
+   * Event input onblur.
+   */
+  @Event() bdsOnBlur: EventEmitter;
 
   /**
-   * Lifecycle
+   * Event input focus.
    */
-  connectedCallback(): void {
-    if (this.type == 'password') this.isPassword = true;
-  }
+  @Event() bdsFocus: EventEmitter;
 
   /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
@@ -128,17 +139,20 @@ export class Input {
    */
   @Method()
   async setFocus(): Promise<void> {
-    if (this.nativeInput) {
-      this.nativeInput.focus();
-    }
+    this.onClickWrapper();
+  }
+
+  @Method()
+  async removeFocus(): Promise<void> {
+    this.onBlur();
   }
 
   /**
    * Returns the native `<input>` element used under the hood.
    */
   @Method()
-  getInputElement(): Promise<HTMLInputElement> {
-    return Promise.resolve(this.nativeInput);
+  async getInputElement(): Promise<HTMLInputElement> {
+    return this.nativeInput;
   }
 
   private onInput = (ev: Event): void => {
@@ -149,28 +163,23 @@ export class Input {
     this.bdsInput.emit(ev as KeyboardEvent);
   }
 
-  private onBlur = (): void => { this.isPressed = false; }
-
-  private onFocus = (): void => { this.isPressed = true; }
-
-  private onClick = (): void => { this.isPressed = true; }
-
-  private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
-
-  private toggleShowPassword(): void {
-    this.showPassword = !this.showPassword;
+  private onBlur = (): void => {
+    this.isPressed = false;
+    this.bdsOnBlur.emit();
   }
 
-  private getTypeInput(): string {
-    if (this.isPassword && this.showPassword) return 'text';
-
-    return this.type;
+  private onFocus = (): void => {
+    this.isPressed = true;
+    this.bdsFocus.emit();
   }
 
-  private getAutoCompleteInput(): string {
-    if (!this.showPassword) return 'current-password';
+  private onClickWrapper = (): void => {
+    this.onFocus();
+    if (this.nativeInput) { this.nativeInput.focus(); }
+  }
 
-    return this.autoComplete;
+  private refNativeInput = (input: HTMLInputElement): void => {
+    this.nativeInput = input
   }
 
   private renderIcon(): HTMLElement {
@@ -188,45 +197,36 @@ export class Input {
     )
   }
 
-  private renderEyeIcon(): HTMLElement {
-    const name = this.showPassword ? "eye-open" : "eye-closed";
-
-    return this.isPassword && (
-      <div class="input__icon_eye" onClick={(): void => this.toggleShowPassword()}>
-        <bds-icon size="small" name={name} color="inherit"></bds-icon>
-      </div>
-    )
-  }
-
   private renderLabel(): HTMLElement {
     return this.label && (
-      <label class="input__container__label">
+      <label class={{
+        "input__container__label": true,
+        "input__container__label--pressed": this.isPressed && !this.disabled,
+      }}>
         <bds-typo variant="fs-12" bold="bold">{this.label}</bds-typo>
       </label>
     )
   }
 
-  private renderMessageError(): HTMLElement {
-    if (!this.danger && this.helperMessage) {
-      return (
-        <div class="input__message">
-          <bds-typo variant="fs-12">{this.helperMessage}</bds-typo>
-        </div>
-      )
-    }
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : 'info';
+    const message = this.danger ? this.errorMessage : this.helperMessage;
+    const styles = this.danger ? 'input__message input__message--danger' : 'input__message';
 
-    if (this.danger && this.errorMessage) {
+
+    if ((this.danger && this.errorMessage) ||
+      (!this.danger && this.helperMessage)) {
       return (
-        <div class="input__message input__message--danger">
+        <div class={styles}>
           <div class="input__message__icon">
             <bds-icon
               size="x-small"
-              name="error"
+              name={icon}
               theme="solid"
               color="inherit">
             </bds-icon>
           </div>
-          <bds-typo variant="fs-12">{this.errorMessage}</bds-typo>
+          <bds-typo variant="fs-12">{message}</bds-typo>
         </div>
       )
     }
@@ -235,19 +235,17 @@ export class Input {
   }
 
   render(): HTMLElement {
-    const autocomplete = this.getAutoCompleteInput();
-    const type = this.getTypeInput();
-
     return (
-      <div class={{
-        "input": true,
-        "input--state-primary": !this.danger,
-        "input--state-danger": this.danger,
-        "input--state-disabled": this.disabled,
-        "input--label": !!this.label,
-        "input--pressed": this.isPressed && !this.disabled,
-      }}
-        onClick={this.onClick}
+      <div
+        class={{
+          "input": true,
+          "input--state-primary": !this.danger,
+          "input--state-danger": this.danger,
+          "input--state-disabled": this.disabled,
+          "input--label": !!this.label,
+          "input--pressed": this.isPressed && !this.disabled,
+        }}
+        onClick={this.onClickWrapper}
       >
         {this.renderIcon()}
         <div class="input__container">
@@ -255,21 +253,25 @@ export class Input {
           <input
             class="input__container__text"
             autocapitalize={this.autoCapitalize}
-            autocomplete={autocomplete}
+            autocomplete={this.autoComplete}
             disabled={this.disabled}
-            id={this.inputId}
+            min={this.min}
+            max={this.max}
+            minLength={this.minlength}
+            maxLength={this.maxlength}
             name={this.inputName}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             onInput={this.onInput}
             placeholder={this.placeholder}
+            readOnly={this.readonly}
             ref={this.refNativeInput}
-            type={type}
+            type={this.type}
             value={this.value}
           />
         </div>
-        {this.renderEyeIcon()}
-        {this.renderMessageError()}
+        <slot name="input-right" />
+        {this.renderMessage()}
       </div>
     )
   }

@@ -1,4 +1,4 @@
-# bds-input
+# bds-input-password
 
 
 
@@ -22,76 +22,26 @@
 | `maxlength`      | `maxlength`       | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter. | `number`                                                              | `undefined` |
 | `min`            | `min`             | The minimum value, which must not be greater than its maximum (max attribute) value.                                                                                             | `string`                                                              | `undefined` |
 | `minlength`      | `minlength`       | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter. | `number`                                                              | `undefined` |
-| `placeholder`    | `placeholder`     | A tip for the user who can enter no controls.                                                                                                                                    | `string`                                                              | `''`        |
+| `openEyes`       | `open-eyes`       |                                                                                                                                                                                  | `boolean`                                                             | `false`     |
 | `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                                                                                                                                     | `boolean`                                                             | `false`     |
-| `type`           | `type`            | Input type. Can be one of: "text" or "password".                                                                                                                                 | `"password" \| "text"`                                                | `'text'`    |
 | `value`          | `value`           | The value of the input.                                                                                                                                                          | `string`                                                              | `''`        |
-
-
-## Events
-
-| Event       | Description                         | Type                         |
-| ----------- | ----------------------------------- | ---------------------------- |
-| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
-| `bdsFocus`  | Event input focus.                  | `CustomEvent<any>`           |
-| `bdsInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
-| `bdsOnBlur` | Event input onblur.                 | `CustomEvent<any>`           |
-
-
-## Methods
-
-### `getInputElement() => Promise<HTMLInputElement>`
-
-Returns the native `<input>` element used under the hood.
-
-#### Returns
-
-Type: `Promise<HTMLInputElement>`
-
-
-
-### `removeFocus() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `setFocus() => Promise<void>`
-
-Sets focus on the specified `ion-input`. Use this method instead of the global
-`input.focus()`.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
 
 
 ## Dependencies
 
-### Used by
-
- - [bds-input-password](../input-password)
- - [bds-select](../select)
-
 ### Depends on
 
+- [bds-input](../input)
 - [bds-icon](../icon)
-- [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-input-password --> bds-input
+  bds-input-password --> bds-icon
   bds-input --> bds-icon
   bds-input --> bds-typo
-  bds-input-password --> bds-input
-  bds-select --> bds-input
-  style bds-input fill:#f9f,stroke:#333,stroke-width:4px
+  style bds-input-password fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
