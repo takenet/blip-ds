@@ -7,12 +7,14 @@ $menu-list-border-right: 0px 8px 8px 0px;
 
 .menu-list {
   display: flex;
-  flex-direction: row;
-  align-content: flex-start;
   width: fit-content;
   box-shadow: $shadow-drop;
   height: $menu-list-height;
   border-radius: $menu-list-border;
+
+  bds-menu-list-item + bds-menu-list-item {
+    border-left: 1px solid $color-neutral-light-wave;
+  }
 
   &__left {
     width: $menu-list-width;
@@ -27,8 +29,4 @@ $menu-list-border-right: 0px 8px 8px 0px;
     border-radius: $menu-list-border-right;
     background-color: $color-snow-white;
   }
-}
-
-.menu-list bds-menu-list-item + bds-menu-list-item {
-  border-left: 1px solid $color-neutral-light-wave;
 }

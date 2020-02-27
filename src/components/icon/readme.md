@@ -23,8 +23,8 @@
  - [bds-button](../button)
  - [bds-checkbox](../checkbox)
  - [bds-input](../input)
- - [bds-menu-list-item](../menu-list-item)
  - [bds-input-password](../input-password)
+ - [bds-menu-list-item](../menu-list-item)
  - [bds-select](../select)
 
 ### Graph
@@ -33,8 +33,8 @@ graph TD;
   bds-button --> bds-icon
   bds-checkbox --> bds-icon
   bds-input --> bds-icon
-  bds-menu-list-item --> bds-icon
   bds-input-password --> bds-icon
+  bds-menu-list-item --> bds-icon
   bds-select --> bds-icon
   style bds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
