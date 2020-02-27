@@ -250,6 +250,11 @@ export namespace Components {
     */
     'value'?: string | null;
   }
+  interface BdsMenuList {}
+  interface BdsMenuListItem {
+    'color': string;
+    'icon': string;
+  }
   interface BdsRadio {
     /**
     * If `true`, the checkbox is selected.
@@ -375,6 +380,18 @@ declare global {
     new (): HTMLBdsInputPasswordElement;
   };
 
+  interface HTMLBdsMenuListElement extends Components.BdsMenuList, HTMLStencilElement {}
+  var HTMLBdsMenuListElement: {
+    prototype: HTMLBdsMenuListElement;
+    new (): HTMLBdsMenuListElement;
+  };
+
+  interface HTMLBdsMenuListItemElement extends Components.BdsMenuListItem, HTMLStencilElement {}
+  var HTMLBdsMenuListItemElement: {
+    prototype: HTMLBdsMenuListItemElement;
+    new (): HTMLBdsMenuListItemElement;
+  };
+
   interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {}
   var HTMLBdsRadioElement: {
     prototype: HTMLBdsRadioElement;
@@ -405,6 +422,8 @@ declare global {
     'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
     'bds-input-password': HTMLBdsInputPasswordElement;
+    'bds-menu-list': HTMLBdsMenuListElement;
+    'bds-menu-list-item': HTMLBdsMenuListItemElement;
     'bds-radio': HTMLBdsRadioElement;
     'bds-select': HTMLBdsSelectElement;
     'bds-select-option': HTMLBdsSelectOptionElement;
@@ -644,6 +663,11 @@ declare namespace LocalJSX {
     */
     'value'?: string | null;
   }
+  interface BdsMenuList {}
+  interface BdsMenuListItem {
+    'color'?: string;
+    'icon': string;
+  }
   interface BdsRadio {
     /**
     * If `true`, the checkbox is selected.
@@ -759,6 +783,8 @@ declare namespace LocalJSX {
     'bds-icon': BdsIcon;
     'bds-input': BdsInput;
     'bds-input-password': BdsInputPassword;
+    'bds-menu-list': BdsMenuList;
+    'bds-menu-list-item': BdsMenuListItem;
     'bds-radio': BdsRadio;
     'bds-select': BdsSelect;
     'bds-select-option': BdsSelectOption;
@@ -778,6 +804,8 @@ declare module "@stencil/core" {
       'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
+      'bds-menu-list': LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
+      'bds-menu-list-item': LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
       'bds-radio': LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
       'bds-select': LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
       'bds-select-option': LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;

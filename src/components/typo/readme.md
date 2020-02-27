@@ -26,6 +26,7 @@
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
  - [bds-input](../input)
+ - [bds-menu-list-item](../menu-list-item)
  - [bds-radio](../radio)
  - [bds-select-option](../select-option)
 
@@ -36,6 +37,7 @@ graph TD;
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
   bds-input --> bds-typo
+  bds-menu-list-item --> bds-typo
   bds-radio --> bds-typo
   bds-select-option --> bds-typo
   style bds-typo fill:#f9f,stroke:#333,stroke-width:4px

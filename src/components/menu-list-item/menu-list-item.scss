@@ -1,0 +1,34 @@
+@import "mixins";
+
+$menu-list-item-width: 76px;
+$menu-list-item-height: 56px;
+
+.menu-list-item {
+  background-color: $color-snow-white;
+  color: $color-neutral-medium-cloud;
+
+  cursor: pointer;
+  width: $menu-list-item-width;
+  height: $menu-list-item-height;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include no-select();
+
+  &:hover {
+    background-color: $color-neutral-light-whisper;
+    color: $color-primary-main;
+  }
+
+  &:active {
+    background-color: $color-neutral-select-background;
+    color: $color-primary-main;
+  }
+
+  &:focus {
+    background-color: $color-neutral-light-whisper;
+    color: $color-primary-main;
+  }
+}
