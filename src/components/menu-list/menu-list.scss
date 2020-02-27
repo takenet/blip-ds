@@ -1,12 +1,18 @@
 $menu-list-width: 7px;
 $menu-list-height: 56px;
+$menu-list-border: 8px;
+
 $menu-list-border-left: 8px 0px 0px 8px;
-$menu-list-border-right: 8px 0px 0px 8px;
+$menu-list-border-right: 0px 8px 8px 0px;
 
 .menu-list {
   display: flex;
   flex-direction: row;
+  align-content: flex-start;
+  width: fit-content;
   box-shadow: $shadow-drop;
+  height: $menu-list-height;
+  border-radius: $menu-list-border;
 
   &__left {
     width: $menu-list-width;
