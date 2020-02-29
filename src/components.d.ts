@@ -111,7 +111,7 @@ export namespace Components {
     */
     'name': string;
     /**
-    * Icon size. Entered as one of the icon size design tokens. Can be one of:  "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+    * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
     'size'?: IconSize;
     /**
@@ -133,7 +133,7 @@ export namespace Components {
     */
     'counterLength'?: boolean;
     /**
-    * Make it possible to pass the base values to the warning level and exclude,  using the values between min and max.
+    * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
     */
     'counterLengthRule'?: InputCounterLengthRules | {};
     /**
@@ -539,7 +539,7 @@ declare namespace LocalJSX {
     */
     'name': string;
     /**
-    * Icon size. Entered as one of the icon size design tokens. Can be one of:  "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+    * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
     'size'?: IconSize;
     /**
@@ -561,7 +561,7 @@ declare namespace LocalJSX {
     */
     'counterLength'?: boolean;
     /**
-    * Make it possible to pass the base values to the warning level and exclude,  using the values between min and max.
+    * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
     */
     'counterLengthRule'?: InputCounterLengthRules | {};
     /**

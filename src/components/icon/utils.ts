@@ -1,17 +1,3 @@
-import { getAssetPath } from '@stencil/core';
-
-export const getSvgPath = (name: string, theme: string): string => {
-  if (!name) {
-    return '';
-  }
-
-  if (!theme) {
-    return '';
-  }
-
-  return getAssetPath(`svg/${theme}/${name}.svg`);
-}
-
 export const getSvgContent = async (url: string): Promise<string> => {
   const response = await fetch(url);
 
@@ -32,7 +18,6 @@ const clearPathsAndFillColor = (svg: Element, color: string): void => {
 
   svg.setAttribute('fill', color);
 }
-
 
 export const formatSvg = (svgContent: string | null, color: string | null): string => {
   if (svgContent) {
