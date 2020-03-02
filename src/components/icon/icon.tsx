@@ -1,5 +1,5 @@
-import { Component, State, Prop, h, Watch, Host } from '@stencil/core';
-import { getSvgPath, getSvgContent, formatSvg } from './utils';
+import { Component, State, Prop, h, Watch, Host, getAssetPath } from '@stencil/core';
+import { getSvgContent, formatSvg } from './utils';
 
 export type IconSize = 'xxx-small'
   | 'xx-small'
@@ -16,7 +16,7 @@ export type IconTheme = 'outline' | 'solid';
 @Component({
   tag: 'bds-icon',
   styleUrl: 'icon.scss',
-  assetsDir: 'svg',
+  assetsDirs: ['assets'],
   shadow: true
 })
 export class Icon {
@@ -33,7 +33,7 @@ export class Icon {
   @Prop({ mutable: true, reflectToAttr: true }) ariaLabel?: string;
 
   /**
-   * Icon size. Entered as one of the icon size design tokens. Can be one of: 
+   * Icon size. Entered as one of the icon size design tokens. Can be one of:
    * "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
    */
   @Prop() size?: IconSize = 'medium';
@@ -54,7 +54,7 @@ export class Icon {
 
   @Watch('name')
   async loadSvg(): Promise<void> {
-    const url = getSvgPath(this.name, this.theme);
+    const url = this.getSvgPath(this.name, this.theme);
     const svgContent = await getSvgContent(url);
     const formatedSvg = formatSvg(svgContent, this.color);
 
@@ -68,6 +68,18 @@ export class Icon {
     return this.ariaLabel;
   }
 
+  getSvgPath(name: string, theme: string): string {
+    if (!name) {
+      return '';
+    }
+
+    if (!theme) {
+      return '';
+    }
+
+    return getAssetPath(`./assets/${theme}/${name}.svg`);
+  }
+
   render(): HTMLElement {
     return (
       <Host role="img" >
@@ -77,7 +89,6 @@ export class Icon {
         }}
           aria-label={this.getAccessibilityName()}
           innerHTML={this.svgContent}>
-
         </div>
       </Host>
     );
