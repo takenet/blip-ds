@@ -107,13 +107,29 @@ export namespace Components {
     */
     'color'?: string;
     /**
+    * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
+    */
+    'flipRtl'?: boolean;
+    /**
+    * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
+    */
+    'icon'?: any;
+    /**
+    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+    */
+    'lazy': boolean;
+    /**
     * Specifies which icon to use from the built-in set of icons.
     */
-    'name': string;
+    'name'?: string;
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
     'size'?: IconSize;
+    /**
+    * Specifies the exact `src` of an SVG file to use.
+    */
+    'src'?: string;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
@@ -535,13 +551,29 @@ declare namespace LocalJSX {
     */
     'color'?: string;
     /**
+    * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
+    */
+    'flipRtl'?: boolean;
+    /**
+    * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
+    */
+    'icon'?: any;
+    /**
+    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+    */
+    'lazy'?: boolean;
+    /**
     * Specifies which icon to use from the built-in set of icons.
     */
-    'name': string;
+    'name'?: string;
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
     'size'?: IconSize;
+    /**
+    * Specifies the exact `src` of an SVG file to use.
+    */
+    'src'?: string;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */

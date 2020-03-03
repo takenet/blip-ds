@@ -27,4 +27,5 @@ UserInterfaceState.xcuserstate
 
 /coverage
 
-/playground-react
+icons/
+scripts/*.js

@@ -17,7 +17,10 @@
   "scripts": {
     "generate": "stencil generate",
     "commit": "./node_modules/.bin/git-cz",
-    "build": "npm run eslint && npm run test && stencil build --docs",
+    "build": "npm run eslint && npm run test && tsc -p scripts/tsconfig.json && npm run build:files && npm run build:component && npm run collection:copy",
+    "build:files": "node scripts/build.js",
+    "build:component": "stencil build --docs",
+    "collection:copy": "node scripts/collection-copy.js",
     "start": "stencil build --dev --watch --serve --docs",
     "test": "stencil test --spec",
     "test:e2e": "stencil test --e2e",
@@ -46,6 +49,7 @@
     "@storybook/react": "^5.2.8",
     "@storybook/source-loader": "^5.2.8",
     "@storybook/storybook-deployer": "^2.8.1",
+    "@types/fs-extra": "^8.1.0",
     "@types/jest": "24.0.24",
     "@types/puppeteer": "1.19.0",
     "@types/uuid": "^3.4.7",
@@ -61,13 +65,15 @@
     "eslint-config-standard-with-typescript": "^11.0.1",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-react": "^7.17.0",
+    "fs-extra": "^8.1.0",
     "ghooks": "^2.0.4",
     "jest": "24.9.0",
     "jest-cli": "24.9.0",
     "npm-run-all": "^4.1.5",
     "puppeteer": "1.19.0",
     "semantic-release": "^16.0.2",
-    "tslint-react": "^4.2.0"
+    "tslint-react": "^4.2.0",
+    "workbox-build": "^4.3.1"
   },
   "dependencies": {
     "uuid": "^3.4.0"

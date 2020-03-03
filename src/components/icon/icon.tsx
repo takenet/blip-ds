@@ -1,5 +1,7 @@
-import { Component, State, Prop, h, Watch, Host, getAssetPath } from '@stencil/core';
-import { getSvgContent, formatSvg } from './utils';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
+import { getSvgContent, ioniconContent } from './request';
+import { getName, getUrl, formatSvg } from './utils';
 
 export type IconSize = 'xxx-small'
   | 'xx-small'
@@ -15,22 +17,49 @@ export type IconTheme = 'outline' | 'solid';
 
 @Component({
   tag: 'bds-icon',
+  assetsDir: 'svg',
   styleUrl: 'icon.scss',
-  assetsDirs: ['assets'],
   shadow: true
 })
 export class Icon {
-  @State() svgContent?: string;
+  private io?: IntersectionObserver;
+
+  @Element() el!: HTMLElement;
+
+  @State() private svgContent?: string;
+  @State() private isVisible = false;
 
   /**
-  * Specifies which icon to use from the built-in set of icons.
+  * Specifies the color to use.Specifies a color to use. The default is svg.
   */
-  @Prop({ reflect: true }) name!: string;
+  @Prop() color?: string;
 
   /**
-  * Specifies the label to use for accessibility. Defaults to the icon name.
-  */
+   * Specifies the label to use for accessibility. Defaults to the icon name.
+   */
   @Prop({ mutable: true, reflectToAttr: true }) ariaLabel?: string;
+
+  /**
+   * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
+   */
+  @Prop() flipRtl?: boolean;
+
+  /**
+   * Specifies which icon to use from the built-in set of icons.
+   */
+  @Prop() name?: string;
+
+  /**
+   * Specifies the exact `src` of an SVG file to use.
+   */
+  @Prop() src?: string;
+
+  /**
+   * A combination of both `name` and `src`. If a `src` url is detected
+   * it will set the `src` property. Otherwise it assumes it's a built-in named
+   * SVG and set the `name` property.
+   */
+  @Prop() icon?: any;
 
   /**
    * Icon size. Entered as one of the icon size design tokens. Can be one of:
@@ -39,57 +68,96 @@ export class Icon {
   @Prop() size?: IconSize = 'medium';
 
   /**
-  * Specifies the color to use.Specifies a color to use. The default is svg.
-  */
-  @Prop() color?: string;
+   * If enabled, ion-icon will be loaded lazily when it's visible in the viewport.
+   * Default, `false`.
+   */
+  @Prop() lazy = false;
 
   /**
   * Specifies the theme to use outline or solid icons. Defaults to outline.
   */
   @Prop({ reflect: true }) theme: IconTheme = 'outline';
 
-  async connectedCallback(): Promise<void> {
-    await this.loadSvg();
+  connectedCallback(): void {
+    // purposely do not return the promise here because loading
+    // the svg file should not hold up loading the app
+    // only load the svg if it's visible
+    this.waitUntilVisible(this.el, '50px', () => {
+      this.isVisible = true;
+      this.loadIcon();
+    });
+  }
+
+  disconnectedCallback(): void {
+    if (this.io) {
+      this.io.disconnect();
+      this.io = undefined;
+    }
+  }
+
+  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
+    if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
+      const io = this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
+        if (data[0].isIntersecting) {
+          io.disconnect();
+          this.io = undefined;
+          cb();
+        }
+      }, { rootMargin });
+
+      io.observe(el);
+
+    } else {
+      // browser doesn't support IntersectionObserver
+      // so just fallback to always show it
+      cb();
+    }
   }
 
   @Watch('name')
-  async loadSvg(): Promise<void> {
-    const url = this.getSvgPath(this.name, this.theme);
-    const svgContent = await getSvgContent(url);
-    const formatedSvg = formatSvg(svgContent, this.color);
+  @Watch('src')
+  @Watch('icon')
+  loadIcon(): void {
+    if (Build.isBrowser && this.isVisible) {
+      const url = getUrl(this);
+      if (url) {
+        if (ioniconContent.has(url)) {
+          // sync if it's already loaded
+          const svgContent = ioniconContent.get(url);
+          this.svgContent = formatSvg(svgContent, this.color);
 
-    this.svgContent = formatedSvg;
-  }
+        } else {
+          // async if it hasn't been loaded
+          getSvgContent(url).then(() => {
+            const svgContent = ioniconContent.get(url)
+            this.svgContent = formatSvg(svgContent, this.color);
 
-  getAccessibilityName(): string {
-    const defaultAccessibilityName = 'Icon';
-
-    if (!this.ariaLabel) return `${defaultAccessibilityName} ${this.name}`
-    return this.ariaLabel;
-  }
-
-  getSvgPath(name: string, theme: string): string {
-    if (!name) {
-      return '';
+          });
+        }
+      }
     }
 
-    if (!theme) {
-      return '';
+    if (!this.ariaLabel) {
+      const label = getName(this.name, this.icon);
+      // user did not provide a label
+      // come up with the label based on the icon name
+      if (label) {
+        this.ariaLabel = label;
+      }
     }
-
-    return getAssetPath(`./assets/${theme}/${name}.svg`);
   }
 
   render(): HTMLElement {
     return (
-      <Host role="img" >
-        <div class={{
-          'bds-icon': true,
-          [`bds-icon__size--${this.size}`]: true
-        }}
-          aria-label={this.getAccessibilityName()}
-          innerHTML={this.svgContent}>
-        </div>
+      <Host role="img" class={{
+        'bds-icon': true,
+        [`bds-icon__size--${this.size}`]: true,
+        // 'flip-rtl': !!flipRtl && (this.el.ownerDocument as Document).dir === 'rtl'
+      }}>{(
+        (Build.isBrowser && this.svgContent)
+          ? <div class="icon-inner" innerHTML={this.svgContent}></div>
+          : <div class="icon-inner"></div>
+      )}
       </Host>
     );
   }

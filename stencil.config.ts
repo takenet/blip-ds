@@ -9,14 +9,15 @@ export const config: Config = {
       esmLoaderPath: '../loader',
       copy: [
         { src: 'globals', dest: 'styles' },
-      ]
+      ],
+      empty: false
     },
     {
       type: 'docs-readme'
     },
     {
       type: 'www',
-      serviceWorker: null // disable service workers
+      empty: false
     },
   ],
   excludeSrc: ['/test/', '**/.spec.', '**/.stories.'],
