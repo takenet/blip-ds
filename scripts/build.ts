@@ -200,10 +200,6 @@ async function copyToTesting(rootDir: string, distDir: string, srcSvgData: SvgDa
     const testSvgFilePath = join(testSvgDir, svgData.fileName);
     await fs.writeFile(testSvgFilePath, svgData.optimizedSvgContent);
   }));
-
-  const distCheatsheetFilePath = join(distDir, 'cheatsheet.html');
-  const testCheatsheetFilePath = join(testDir, 'cheatsheet.html');
-  await fs.copyFile(distCheatsheetFilePath, testCheatsheetFilePath);
 }
 
 async function getSvgs(srcSvgDir: string, rootDir: string, distIoniconsDir: string): Promise<SvgData[]> {
@@ -392,28 +388,12 @@ async function createCjsIcons(version: string, iconDir: string, srcSvgData: SvgD
   await fs.writeFile(iconCjsFilePath, o.join('\n') + '\n');
 }
 
-
-async function createDtsIcons(version: string, iconDir: string, srcSvgData: SvgData[]) {
-  const iconDtsFilePath = join(iconDir, 'index.d.ts');
-
-  const o = [
-    `/* Ionicons v${version}, Types */`, ``
-  ];
-
-  srcSvgData.forEach(svgData => {
-    o.push(`export declare var ${svgData.exportName}: string;`);
-  });
-
-  await fs.writeFile(iconDtsFilePath, o.join('\n') + '\n');
-}
-
 async function createIconPackage(version: string, iconDir: string, srcSvgData: SvgData[]) {
   const iconPkgJsonFilePath = join(iconDir, 'package.json');
 
   await Promise.all([
     createEsmIcons(version, iconDir, srcSvgData),
     createCjsIcons(version, iconDir, srcSvgData),
-    createDtsIcons(version, iconDir, srcSvgData),
   ]);
 
   const iconPkgJson = {
