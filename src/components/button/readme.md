@@ -20,13 +20,11 @@
 
 ### Depends on
 
-- [bds-icon](../icon)
 - [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-button --> bds-icon
   bds-button --> bds-typo
   style bds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

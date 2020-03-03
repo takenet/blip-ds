@@ -16,6 +16,19 @@ $icon-xxx-small: 8px;
 
 :host {
   display: inline-block;
+
+  width: 1em;
+  height: 1em;
+
+  contain: strict;
+
+  fill: currentColor;
+
+  box-sizing: content-box !important;
+}
+
+:host .ionicon {
+  stroke: currentColor;
 }
 
 .bds-icon {
@@ -25,6 +38,15 @@ $icon-xxx-small: 8px;
     fill: currentColor;
     width: 100%;
     min-width: 100%;
+  }
+
+  .icon-inner,
+  .ionicon,
+  svg {
+    display: block;
+
+    height: 100%;
+    width: 100%;
   }
 
   &__size {

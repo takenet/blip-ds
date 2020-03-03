@@ -51,13 +51,11 @@ Type: `Promise<boolean>`
 
 ### Depends on
 
-- [bds-icon](../icon)
 - [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
   style bds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```

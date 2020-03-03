@@ -32,14 +32,11 @@
 ### Depends on
 
 - [bds-input](../input)
-- [bds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-input-password --> bds-input
-  bds-input-password --> bds-icon
-  bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo

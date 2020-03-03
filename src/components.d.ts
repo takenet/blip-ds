@@ -97,7 +97,7 @@ export namespace Components {
     'max'?: number;
     'warning'?: CounterTextRule;
   }
-  interface BdsIcon {
+  interface BdsIcon2 {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
     */
@@ -107,13 +107,29 @@ export namespace Components {
     */
     'color'?: string;
     /**
+    * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
+    */
+    'flipRtl'?: boolean;
+    /**
+    * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
+    */
+    'icon'?: any;
+    /**
+    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+    */
+    'lazy': boolean;
+    /**
     * Specifies which icon to use from the built-in set of icons.
     */
-    'name': string;
+    'name'?: string;
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
     'size'?: IconSize;
+    /**
+    * Specifies the exact `src` of an SVG file to use.
+    */
+    'src'?: string;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
@@ -387,10 +403,10 @@ declare global {
     new (): HTMLBdsCounterTextElement;
   };
 
-  interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {}
-  var HTMLBdsIconElement: {
-    prototype: HTMLBdsIconElement;
-    new (): HTMLBdsIconElement;
+  interface HTMLBdsIcon2Element extends Components.BdsIcon2, HTMLStencilElement {}
+  var HTMLBdsIcon2Element: {
+    prototype: HTMLBdsIcon2Element;
+    new (): HTMLBdsIcon2Element;
   };
 
   interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {}
@@ -445,7 +461,7 @@ declare global {
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-counter-text': HTMLBdsCounterTextElement;
-    'bds-icon': HTMLBdsIconElement;
+    'bds-icon-2': HTMLBdsIcon2Element;
     'bds-input': HTMLBdsInputElement;
     'bds-input-password': HTMLBdsInputPasswordElement;
     'bds-menu-list': HTMLBdsMenuListElement;
@@ -525,7 +541,7 @@ declare namespace LocalJSX {
     'max'?: number;
     'warning'?: CounterTextRule;
   }
-  interface BdsIcon {
+  interface BdsIcon2 {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
     */
@@ -535,13 +551,29 @@ declare namespace LocalJSX {
     */
     'color'?: string;
     /**
+    * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
+    */
+    'flipRtl'?: boolean;
+    /**
+    * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
+    */
+    'icon'?: any;
+    /**
+    * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+    */
+    'lazy'?: boolean;
+    /**
     * Specifies which icon to use from the built-in set of icons.
     */
-    'name': string;
+    'name'?: string;
     /**
     * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
     */
     'size'?: IconSize;
+    /**
+    * Specifies the exact `src` of an SVG file to use.
+    */
+    'src'?: string;
     /**
     * Specifies the theme to use outline or solid icons. Defaults to outline.
     */
@@ -822,7 +854,7 @@ declare namespace LocalJSX {
     'bds-card-color': BdsCardColor;
     'bds-checkbox': BdsCheckbox;
     'bds-counter-text': BdsCounterText;
-    'bds-icon': BdsIcon;
+    'bds-icon-2': BdsIcon2;
     'bds-input': BdsInput;
     'bds-input-password': BdsInputPassword;
     'bds-menu-list': BdsMenuList;
@@ -844,7 +876,7 @@ declare module "@stencil/core" {
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-counter-text': LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
-      'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+      'bds-icon-2': LocalJSX.BdsIcon2 & JSXBase.HTMLAttributes<HTMLBdsIcon2Element>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
       'bds-menu-list': LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
