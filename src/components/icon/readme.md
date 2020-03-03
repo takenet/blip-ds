@@ -20,6 +20,29 @@
 | `theme`     | `theme`      | Specifies the theme to use outline or solid icons. Defaults to outline.                                                                                                        | `"outline" \| "solid"`                                                                                               | `'outline'` |
 
 
+## Dependencies
+
+### Used by
+
+ - [bds-button](../button)
+ - [bds-checkbox](../checkbox)
+ - [bds-input](../input)
+ - [bds-input-password](../input-password)
+ - [bds-menu-list-item](../menu-list-item)
+ - [bds-select](../select)
+
+### Graph
+```mermaid
+graph TD;
+  bds-button --> bds-icon
+  bds-checkbox --> bds-icon
+  bds-input --> bds-icon
+  bds-input-password --> bds-icon
+  bds-menu-list-item --> bds-icon
+  bds-select --> bds-icon
+  style bds-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

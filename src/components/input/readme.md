@@ -83,12 +83,14 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [bds-icon](../icon)
 - [bds-typo](../typo)
 - [bds-counter-text](../counter-text)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo

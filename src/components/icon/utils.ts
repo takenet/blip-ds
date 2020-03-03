@@ -123,5 +123,3 @@ export const getUrl = (i: Icon): string => {
 
   return null;
 };
-
-

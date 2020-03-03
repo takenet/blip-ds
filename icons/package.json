@@ -1,8 +1,0 @@
-{
-  "name": "ionicons/icons",
-  "version": "0.0.0-development",
-  "module": "index.mjs",
-  "main": "index.js",
-  "typings": "index.d.ts",
-  "private": true
-}

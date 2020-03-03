@@ -97,7 +97,7 @@ export namespace Components {
     'max'?: number;
     'warning'?: CounterTextRule;
   }
-  interface BdsIcon2 {
+  interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
     */
@@ -403,10 +403,10 @@ declare global {
     new (): HTMLBdsCounterTextElement;
   };
 
-  interface HTMLBdsIcon2Element extends Components.BdsIcon2, HTMLStencilElement {}
-  var HTMLBdsIcon2Element: {
-    prototype: HTMLBdsIcon2Element;
-    new (): HTMLBdsIcon2Element;
+  interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {}
+  var HTMLBdsIconElement: {
+    prototype: HTMLBdsIconElement;
+    new (): HTMLBdsIconElement;
   };
 
   interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {}
@@ -461,7 +461,7 @@ declare global {
     'bds-card-color': HTMLBdsCardColorElement;
     'bds-checkbox': HTMLBdsCheckboxElement;
     'bds-counter-text': HTMLBdsCounterTextElement;
-    'bds-icon-2': HTMLBdsIcon2Element;
+    'bds-icon': HTMLBdsIconElement;
     'bds-input': HTMLBdsInputElement;
     'bds-input-password': HTMLBdsInputPasswordElement;
     'bds-menu-list': HTMLBdsMenuListElement;
@@ -541,7 +541,7 @@ declare namespace LocalJSX {
     'max'?: number;
     'warning'?: CounterTextRule;
   }
-  interface BdsIcon2 {
+  interface BdsIcon {
     /**
     * Specifies the label to use for accessibility. Defaults to the icon name.
     */
@@ -854,7 +854,7 @@ declare namespace LocalJSX {
     'bds-card-color': BdsCardColor;
     'bds-checkbox': BdsCheckbox;
     'bds-counter-text': BdsCounterText;
-    'bds-icon-2': BdsIcon2;
+    'bds-icon': BdsIcon;
     'bds-input': BdsInput;
     'bds-input-password': BdsInputPassword;
     'bds-menu-list': BdsMenuList;
@@ -876,7 +876,7 @@ declare module "@stencil/core" {
       'bds-card-color': LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
       'bds-checkbox': LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
       'bds-counter-text': LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
-      'bds-icon-2': LocalJSX.BdsIcon2 & JSXBase.HTMLAttributes<HTMLBdsIcon2Element>;
+      'bds-icon': LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
       'bds-input': LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
       'bds-input-password': LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
       'bds-menu-list': LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;

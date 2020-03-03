@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 import { getSvgContent, ioniconContent } from './request';
-import { getName, getUrl } from './utils';
+import { getName, getUrl, formatSvg } from './utils';
 
 export type IconSize = 'xxx-small'
   | 'xx-small'
@@ -16,7 +16,7 @@ export type IconSize = 'xxx-small'
 export type IconTheme = 'outline' | 'solid';
 
 @Component({
-  tag: 'bds-icon-2',
+  tag: 'bds-icon',
   assetsDir: 'svg',
   styleUrl: 'icon.scss',
   shadow: true
@@ -123,10 +123,16 @@ export class Icon {
       if (url) {
         if (ioniconContent.has(url)) {
           // sync if it's already loaded
-          this.svgContent = ioniconContent.get(url);
+          const svgContent = ioniconContent.get(url);
+          this.svgContent = formatSvg(svgContent, this.color);
+
         } else {
           // async if it hasn't been loaded
-          getSvgContent(url).then(() => this.svgContent = ioniconContent.get(url));
+          getSvgContent(url).then(() => {
+            const svgContent = ioniconContent.get(url)
+            this.svgContent = formatSvg(svgContent, this.color);
+
+          });
         }
       }
     }

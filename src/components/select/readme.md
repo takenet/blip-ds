@@ -32,13 +32,16 @@
 
 - [bds-select-option](../select-option)
 - [bds-input](../input)
+- [bds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-select --> bds-select-option
   bds-select --> bds-input
+  bds-select --> bds-icon
   bds-select-option --> bds-typo
+  bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
