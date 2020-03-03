@@ -64,7 +64,7 @@ async function copyToTesting(rootDir: string, distDir: string, srcSvgData: SvgDa
   }));
 }
 
-async function getSvgs(srcSvgDir: string, rootDir: string): Promise<SvgData[]> {
+async function getSvgs(srcSvgDir: string): Promise<SvgData[]> {
   const svgFiles = (await fs.readdir(srcSvgDir)).filter(fileName => {
     return !fileName.startsWith('.') && fileName.endsWith('.svg');
   });
@@ -138,7 +138,7 @@ async function build(rootDir: string) {
       fs.emptyDir(destWwwBuildSvgDir),
     ]);
 
-    const srcSvgData = await getSvgs(srcSvgDir, rootDir);
+    const srcSvgData = await getSvgs(srcSvgDir);
 
     await copyToTesting(rootDir, distDir, srcSvgData);
 
