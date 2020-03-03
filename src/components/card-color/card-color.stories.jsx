@@ -27,6 +27,7 @@ const neutralColorsBlues = [
 ];
 
 const neutralColorsDark = [
+  { name: 'Eclipse', variable: 'color-neutral-dark-eclipse', hex: '#0A0F1A' },
   { name: 'Onix', variable: 'color-neutral-dark-onix', hex: '#1A2437' },
   { name: 'Suit', variable: 'color-neutral-dark-suit', hex: '#202C44' },
   { name: 'City', variable: 'color-neutral-dark-city', hex: '#56616E' },

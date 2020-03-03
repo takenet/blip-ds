@@ -21,7 +21,16 @@ $input-width: 100%;
   }
 }
 
-@mixin input-theme($name, $primary, $secondary, $label, $text, $border, $hover, $focus) {
+@mixin input-theme(
+  $name,
+  $primary,
+  $secondary,
+  $label,
+  $text,
+  $border,
+  $hover,
+  $focus
+) {
   $color-input-primary: $primary;
   $color-input-secondary: $secondary;
 
@@ -108,6 +117,7 @@ $input-width: 100%;
     }
 
     &-disabled {
+      cursor: not-allowed;
       @include input-theme(
         "disabled",
         $color-neutral-dark-city,
@@ -126,6 +136,7 @@ $input-width: 100%;
   }
 
   &__icon {
+    cursor: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,6 +163,7 @@ $input-width: 100%;
     &__text {
       @include reset-input();
       @include input-text();
+      cursor: inherit;
     }
   }
 

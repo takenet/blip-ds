@@ -10,9 +10,11 @@ export class MenuListItem {
 
   render(): HTMLElement {
     return (
-      <Host class="menu-list-item">
-        <bds-icon color={this.color} name={this.icon}></bds-icon>
-        <bds-typo class="menu-list-item__text" variant="fs-10"><slot></slot></bds-typo>
+      <Host>
+        <div class="menu-list-item">
+          <bds-icon color={this.color} name={this.icon}></bds-icon>
+          <bds-typo class="menu-list-item__text" variant="fs-10"><slot></slot></bds-typo>
+        </div>
       </Host>
     )
   }
