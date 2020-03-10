@@ -1,4 +1,4 @@
-import { newSpecPage } from '@stencil/core/dist/testing';
+import { newSpecPage } from '@stencil/core/testing';
 import { Typo } from './typo';
 
 describe('bds-typo', () => {

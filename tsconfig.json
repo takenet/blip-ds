@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "declaration": false,
@@ -14,27 +13,18 @@
     "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "removeComments": false,
     "jsx": "react",
     "jsxFactory": "h",
-    "types": [
-      "node",
-      "jest",
-    ],
     "typeRoots": [
       "node_modules/@types",
       "types",
     ],
-    "pretty": true,
   },
   "include": [
     "src",
     "types/jsx.d.ts"
   ],
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ],
 }

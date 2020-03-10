@@ -10,14 +10,13 @@ export const config: Config = {
       copy: [
         { src: 'globals', dest: 'styles' },
       ],
-      empty: false
     },
     {
       type: 'docs-readme'
     },
     {
       type: 'www',
-      empty: false
+      serviceWorker: null // disable service workers
     },
   ],
   excludeSrc: ['/test/', '**/.spec.', '**/.stories.'],
@@ -29,4 +28,7 @@ export const config: Config = {
       ]
     })
   ],
+  extras: {
+    appendChildSlotFix: true
+  }
 };
