@@ -2,23 +2,20 @@ import { configure, addParameters, addDecorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import centered from '@storybook/addon-centered/react';
 
-// import { withTests } from "@storybook/addon-jest";
-
-// import results from "../jest-test-results.json";
-
 addDecorator(centered);
 addParameters({
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
+  backgrounds: [
+    { name: 'Light', value: '#f5f8f9', default: true },
+    { name: 'Suit', value: '#202c44', default: false },
+    { name: 'Builder', value: '#283143', default: false },
+    { name: 'Main', value: '#2cc3d5', default: false },
+  ],
+  options: {
+    isToolshown: false,
+  }
 });
 
-// addDecorator(
-//   withTests({
-//     results,
-//     filesExt: ".spec.ts"
-//   })
-// );
-
-// automatically import all files ending in *.stories.js
 configure(require.context('../src/components', true, /\.stories\.jsx$/), module);

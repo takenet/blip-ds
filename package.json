@@ -16,34 +16,32 @@
   ],
   "scripts": {
     "generate": "stencil generate",
-    "commit": "./node_modules/.bin/git-cz",
+    "dev": "npm-run-all --parallel start storybook",
     "start": "stencil build --dev --watch --serve --docs",
     "build": "npm run eslint && npm run test && npm run build:component",
     "build:component": "stencil build --docs",
     "test": "stencil test --spec",
     "test:e2e": "stencil test --e2e",
     "test:snapshot": "stencil test --e2e --screenshot",
-    "test:generate": "stencil test --spec --json --outputFile=jest-test-results.json",
-    "test:generate:watch": "stencil test --spec --json --outputFile=jest-test-results.json --watch",
     "test:watch": "stencil test --spec --watch",
     "test:coverage": "stencil test --spec --coverage",
-    "story": "npm-run-all --parallel start storybook",
     "storybook": "start-storybook -p 9001 -c .storybook -s www",
     "storybook:build": "build-storybook -s www -o .docs",
-    "deploy-storybook": "storybook-to-ghpages",
+    "storybook:deploy": "storybook-to-ghpages",
     "eslint": "eslint . --ext .jsx,.ts,.tsx",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commit": "./node_modules/.bin/git-cz"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@stencil/core": "1.9.0",
     "@stencil/sass": "^1.1.1",
-    "@storybook/addon-backgrounds": "5.2.6",
-    "@storybook/addon-centered": "5.2.6",
-    "@storybook/addon-knobs": "5.2.6",
-    "@storybook/addon-notes": "5.2.6",
-    "@storybook/addon-viewport": "5.2.6",
-    "@storybook/react": "5.2.6",
+    "@storybook/addon-backgrounds": "^5.3.14",
+    "@storybook/addon-centered": "^5.3.14",
+    "@storybook/addon-knobs": "^5.3.14",
+    "@storybook/addon-notes": "^5.3.14",
+    "@storybook/addon-viewport": "^5.3.14",
+    "@storybook/react": "^6.0.0-alpha.25",
     "@storybook/storybook-deployer": "2.8.1",
     "@types/fs-extra": "^8.1.0",
     "@types/jest": "24.0.24",
@@ -72,7 +70,6 @@
     "tslint-react": "^4.2.0"
   },
   "dependencies": {
-    "@storybook/source-loader": "^5.3.14",
     "uuid": "^3.4.0"
   },
   "repository": {
