@@ -13,10 +13,11 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/no-unknown-property': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off'
   },
-  "settings": {
-    "react": {
-      "pragma": "h",
+  'settings': {
+    'react': {
+      'pragma': 'h',
     },
   },
 };
