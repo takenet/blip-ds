@@ -70,6 +70,7 @@
     "tslint-react": "^4.2.0"
   },
   "dependencies": {
+    "jc-test-sd": "^1.0.0",
     "uuid": "^3.4.0"
   },
   "repository": {

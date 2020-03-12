@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-import { getSvgContent, ioniconContent } from './request';
-import { getName, getUrl, formatSvg } from './utils';
+// import { getName, getUrl, formatSvg } from './utils';
+import icons from 'jc-test-sd/build/json/assets_icons.json';
 
 export type IconSize = 'xxx-small'
   | 'xx-small'
@@ -84,6 +84,7 @@ export class Icon {
     // only load the svg if it's visible
     this.waitUntilVisible(this.el, '50px', () => {
       this.isVisible = true;
+      console.log('callback');
       this.loadIcon();
     });
   }
@@ -119,26 +120,14 @@ export class Icon {
   @Watch('icon')
   loadIcon(): void {
     if (Build.isBrowser && this.isVisible) {
-      const url = getUrl(this);
-      if (url) {
-        if (ioniconContent.has(url)) {
-          // sync if it's already loaded
-          const svgContent = ioniconContent.get(url);
-          this.svgContent = formatSvg(svgContent, this.color);
-
-        } else {
-          // async if it hasn't been loaded
-          getSvgContent(url).then(() => {
-            const svgContent = ioniconContent.get(url)
-            this.svgContent = formatSvg(svgContent, this.color);
-
-          });
-        }
-      }
+      const iconKey = 'asset-icon-alert-circle';
+      const svg = atob(icons[iconKey]);
+      this.svgContent = svg;
+      console.log('trace loadIcon', this.svgContent);
     }
 
     if (!this.ariaLabel) {
-      const label = getName(this.name, this.icon);
+      const label = this.name;
       // user did not provide a label
       // come up with the label based on the icon name
       if (label) {
@@ -148,13 +137,10 @@ export class Icon {
   }
 
   render(): HTMLElement {
+    console.log('render', this.isVisible, Boolean(this.svgContent));
     return (
-      <Host role="img" class={{
-        'bds-icon': true,
-        [`bds-icon__size--${this.size}`]: true,
-        // 'flip-rtl': !!flipRtl && (this.el.ownerDocument as Document).dir === 'rtl'
-      }}>{(
-        (Build.isBrowser && this.svgContent)
+      <Host role="img" class="example-icon">{(
+        (this.svgContent)
           ? <div class="icon-inner" innerHTML={this.svgContent}></div>
           : <div class="icon-inner"></div>
       )}
