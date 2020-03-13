@@ -15,11 +15,11 @@
     "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types",
       "types",
     ],
+    "resolveJsonModule": true,
   },
   "include": [
     "src",

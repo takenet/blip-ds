@@ -10,11 +10,27 @@
   <script nomodule src="/build/blip-ds.js"></script>
 </head>
 <style>
-
+  .icon-color {
+    color: blue;
+  }
 </style>
 
 <body>
-  <bds-icon></bds-icon>
+  <bds-icon size="xxx-large"></bds-icon>
+
+  <bds-icon color="red" size="xxx-large"></bds-icon>
+
+  <bds-icon class="icon-color" size="xxx-large"></bds-icon>
+
+  <div class="icon-color">
+    <bds-icon size="xxx-large"></bds-icon>
+  </div>
+
+  <bds-icon class="icon-fill" size="xxx-large"></bds-icon>
+
+  <div class="icon-fill">
+    <bds-icon size="xxx-large"></bds-icon>
+  </div>
 </body>
 
 <script>
