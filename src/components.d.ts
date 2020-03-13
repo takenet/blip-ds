@@ -66,17 +66,12 @@ export namespace Components {
         "name": string;
         "refer": string;
     }
-    interface BdsColumn {
-        "size"?: number;
-    }
     interface BdsCounterText {
         "active"?: boolean;
         "delete"?: CounterTextRule;
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
-    }
-    interface BdsGrid {
     }
     interface BdsIcon {
         /**
@@ -291,8 +286,6 @@ export namespace Components {
         "refer": string;
         "value": string;
     }
-    interface BdsRow {
-    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -378,23 +371,11 @@ declare global {
         prototype: HTMLBdsCheckboxElement;
         new (): HTMLBdsCheckboxElement;
     };
-    interface HTMLBdsColumnElement extends Components.BdsColumn, HTMLStencilElement {
-    }
-    var HTMLBdsColumnElement: {
-        prototype: HTMLBdsColumnElement;
-        new (): HTMLBdsColumnElement;
-    };
     interface HTMLBdsCounterTextElement extends Components.BdsCounterText, HTMLStencilElement {
     }
     var HTMLBdsCounterTextElement: {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
-    };
-    interface HTMLBdsGridElement extends Components.BdsGrid, HTMLStencilElement {
-    }
-    var HTMLBdsGridElement: {
-        prototype: HTMLBdsGridElement;
-        new (): HTMLBdsGridElement;
     };
     interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
     }
@@ -432,12 +413,6 @@ declare global {
         prototype: HTMLBdsRadioElement;
         new (): HTMLBdsRadioElement;
     };
-    interface HTMLBdsRowElement extends Components.BdsRow, HTMLStencilElement {
-    }
-    var HTMLBdsRowElement: {
-        prototype: HTMLBdsRowElement;
-        new (): HTMLBdsRowElement;
-    };
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
     }
     var HTMLBdsSelectElement: {
@@ -460,16 +435,13 @@ declare global {
         "bds-button": HTMLBdsButtonElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
-        "bds-column": HTMLBdsColumnElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
-        "bds-grid": HTMLBdsGridElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-input": HTMLBdsInputElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
         "bds-radio": HTMLBdsRadioElement;
-        "bds-row": HTMLBdsRowElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-typo": HTMLBdsTypoElement;
@@ -536,17 +508,12 @@ declare namespace LocalJSX {
         "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         "refer": string;
     }
-    interface BdsColumn {
-        "size"?: number;
-    }
     interface BdsCounterText {
         "active"?: boolean;
         "delete"?: CounterTextRule;
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
-    }
-    interface BdsGrid {
     }
     interface BdsIcon {
         /**
@@ -774,8 +741,6 @@ declare namespace LocalJSX {
         "refer": string;
         "value": string;
     }
-    interface BdsRow {
-    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -862,16 +827,13 @@ declare namespace LocalJSX {
         "bds-button": BdsButton;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
-        "bds-column": BdsColumn;
         "bds-counter-text": BdsCounterText;
-        "bds-grid": BdsGrid;
         "bds-icon": BdsIcon;
         "bds-input": BdsInput;
         "bds-input-password": BdsInputPassword;
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
         "bds-radio": BdsRadio;
-        "bds-row": BdsRow;
         "bds-select": BdsSelect;
         "bds-select-option": BdsSelectOption;
         "bds-typo": BdsTypo;
@@ -884,16 +846,13 @@ declare module "@stencil/core" {
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
-            "bds-column": LocalJSX.BdsColumn & JSXBase.HTMLAttributes<HTMLBdsColumnElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
-            "bds-grid": LocalJSX.BdsGrid & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
-            "bds-row": LocalJSX.BdsRow & JSXBase.HTMLAttributes<HTMLBdsRowElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
