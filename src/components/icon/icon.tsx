@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-import { getSvgContent, ioniconContent } from './request';
-import { getName, getUrl, formatSvg } from './utils';
+import icons from 'jc-test-sd/build/json/assets_icons.json';
+import { formatSvg } from './utils';
 
 export type IconSize = 'xxx-small'
   | 'xx-small'
@@ -82,8 +82,9 @@ export class Icon {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
     // only load the svg if it's visible
-    this.waitUntilVisible(this.el, '50px', () => {
+    this.waitUntilVisible(this.el, () => {
       this.isVisible = true;
+      console.log('callback');
       this.loadIcon();
     });
   }
@@ -95,7 +96,7 @@ export class Icon {
     }
   }
 
-  private waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void): void {
+  private waitUntilVisible(el: HTMLElement, cb: () => void): void {
     if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
       const io = this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
         if (data[0].isIntersecting) {
@@ -103,7 +104,7 @@ export class Icon {
           this.io = undefined;
           cb();
         }
-      }, { rootMargin });
+      });
 
       io.observe(el);
 
@@ -119,26 +120,13 @@ export class Icon {
   @Watch('icon')
   loadIcon(): void {
     if (Build.isBrowser && this.isVisible) {
-      const url = getUrl(this);
-      if (url) {
-        if (ioniconContent.has(url)) {
-          // sync if it's already loaded
-          const svgContent = ioniconContent.get(url);
-          this.svgContent = formatSvg(svgContent, this.color);
-
-        } else {
-          // async if it hasn't been loaded
-          getSvgContent(url).then(() => {
-            const svgContent = ioniconContent.get(url)
-            this.svgContent = formatSvg(svgContent, this.color);
-
-          });
-        }
-      }
+      const iconKey = 'asset-icon-alert-circle';
+      const svg = atob(icons[iconKey]);
+      this.svgContent = formatSvg(svg, this.color);
     }
 
     if (!this.ariaLabel) {
-      const label = getName(this.name, this.icon);
+      const label = this.name;
       // user did not provide a label
       // come up with the label based on the icon name
       if (label) {
@@ -148,13 +136,14 @@ export class Icon {
   }
 
   render(): HTMLElement {
+    console.log('render', this.isVisible, Boolean(this.svgContent));
     return (
       <Host role="img" class={{
         'bds-icon': true,
         [`bds-icon__size--${this.size}`]: true,
         // 'flip-rtl': !!flipRtl && (this.el.ownerDocument as Document).dir === 'rtl'
       }}>{(
-        (Build.isBrowser && this.svgContent)
+        (this.svgContent)
           ? <div class="icon-inner" innerHTML={this.svgContent}></div>
           : <div class="icon-inner"></div>
       )}

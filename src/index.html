@@ -4,13 +4,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <title>Blip DS</title>
 
   <script type="module" src="/build/blip-ds.esm.js"></script>
   <script nomodule src="/build/blip-ds.js"></script>
 </head>
+<style>
+  .icon-color {
+    color: blue;
+  }
+</style>
 
 <body>
+  <bds-icon size="xxx-large"></bds-icon>
+
+  <bds-icon color="red" size="xxx-large"></bds-icon>
+
+  <bds-icon class="icon-color" size="xxx-large"></bds-icon>
+
+  <div class="icon-color">
+    <bds-icon size="xxx-large"></bds-icon>
+  </div>
+
+  <bds-icon class="icon-fill" size="xxx-large"></bds-icon>
+
+  <div class="icon-fill">
+    <bds-icon size="xxx-large"></bds-icon>
+  </div>
 </body>
 
 <script>

@@ -15,8 +15,6 @@ $icon-xx-small: 12px;
 $icon-xxx-small: 8px;
 
 :host {
-  display: inline-block;
-
   width: 1em;
   height: 1em;
 
@@ -27,63 +25,47 @@ $icon-xxx-small: 8px;
   box-sizing: content-box !important;
 }
 
-:host .ionicon {
-  stroke: currentColor;
-}
-
-.bds-icon {
-  display: flex;
-  align-items: center;
+:host(.bds-icon) {
+  display: inline-block;
   svg {
     fill: currentColor;
     width: 100%;
     min-width: 100%;
   }
+}
 
-  .icon-inner,
-  .ionicon,
-  svg {
-    display: block;
+:host(.bds-icon__size--xxx-large) {
+  @include size($icon-xxx-large);
+}
 
-    height: 100%;
-    width: 100%;
-  }
+:host(.bds-icon__size--xx-large) {
+  @include size($icon-xx-large);
+}
 
-  &__size {
-    &--xxx-large {
-      @include size($icon-xxx-large);
-    }
+:host(.bds-icon__size--x-large) {
+  @include size($icon-x-large);
+}
 
-    &--xx-large {
-      @include size($icon-xx-large);
-    }
+:host(.bds-icon__size--large) {
+  @include size($icon-large);
+}
 
-    &--x-large {
-      @include size($icon-x-large);
-    }
+:host(.bds-icon__size--medium) {
+  @include size($icon-medium);
+}
 
-    &--large {
-      @include size($icon-large);
-    }
+:host(.bds-icon__size--small) {
+  @include size($icon-small);
+}
 
-    &--medium {
-      @include size($icon-medium);
-    }
+:host(.bds-icon__size--x-small) {
+  @include size($icon-x-small);
+}
 
-    &--small {
-      @include size($icon-small);
-    }
+:host(.bds-icon__size--xx-small) {
+  @include size($icon-xx-small);
+}
 
-    &--x-small {
-      @include size($icon-x-small);
-    }
-
-    &--xx-small {
-      @include size($icon-xx-small);
-    }
-
-    &--xxx-small {
-      @include size($icon-xxx-small);
-    }
-  }
+:host(.bds-icon__size--xxx-small) {
+  @include size($icon-xxx-small);
 }
