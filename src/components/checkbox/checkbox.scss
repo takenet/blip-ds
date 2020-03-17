@@ -21,6 +21,8 @@ $checkbox-spacing-text: 8px;
   }
 
   &__icon {
+    background: $color-snow-white;
+
     &:hover {
       border-color: $color-primary-dark;
     }
@@ -49,10 +51,6 @@ $checkbox-spacing-text: 8px;
   }
 
   &--deselected {
-    .checkbox__icon {
-      background-color: transparent;
-    }
-
     .checkbox__icon__svg {
       display: none;
     }
