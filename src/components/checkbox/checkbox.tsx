@@ -1,6 +1,6 @@
 import { Component, h, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
-import uuidv4 from 'uuid/v4';
 
+let checkBoxIds = 0;
 @Component({
   tag: 'bds-checkbox',
   styleUrl: 'checkbox.scss',
@@ -31,7 +31,7 @@ export class Checkbox {
   @Prop() disabled = false;
 
   connectedCallback(): void {
-    this.checkBoxId = this.refer || uuidv4();
+    this.checkBoxId = this.refer || `bds-checkbox-${checkBoxIds++}`;
   }
 
   @Watch('checked')

@@ -1,3 +1,5 @@
+import { IconTheme } from "./icon-interface";
+
 const clearPathsAndFillColor = (svg: Element, color: string): void => {
   const paths = svg.getElementsByTagName('path');
 
@@ -26,4 +28,8 @@ export const formatSvg = (svgContent: string | null, color: string | null): stri
   }
 
   return '';
+}
+
+export const getName = (name: string, theme: IconTheme) => {
+  return `asset-icon-${name}-${theme}`;
 }

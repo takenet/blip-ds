@@ -1,19 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-import icons from 'jc-test-sd/build/json/assets_icons.json';
-import { formatSvg } from './utils';
-
-export type IconSize = 'xxx-small'
-  | 'xx-small'
-  | 'x-small'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'x-large'
-  | 'xx-large'
-  | 'xxx-large';
-
-export type IconTheme = 'outline' | 'solid';
+import icons from 'blip-tokens/build/json/assets_icons.json';
+import { IconSize, IconTheme } from './icon-interface';
+import { formatSvg, getName } from './utils';
 
 @Component({
   tag: 'bds-icon',
@@ -120,7 +109,7 @@ export class Icon {
   @Watch('icon')
   loadIcon(): void {
     if (Build.isBrowser && this.isVisible) {
-      const iconKey = 'asset-icon-alert-circle';
+      const iconKey = getName(this.name, this.theme);
       const svg = atob(icons[iconKey]);
       this.svgContent = formatSvg(svg, this.color);
     }

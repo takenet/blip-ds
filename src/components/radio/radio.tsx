@@ -1,6 +1,6 @@
 import { Component, h, Prop, Event, EventEmitter, Watch, State, Method } from "@stencil/core";
-import uuidv4 from 'uuid/v4';
 
+let radioButtonIds = 0;
 @Component({
   tag: 'bds-radio',
   styleUrl: 'radio.scss',
@@ -67,7 +67,7 @@ export class Radio {
   }
 
   connectedCallback(): void {
-    this.radioId = this.refer || `bds-radio-${uuidv4()}`;
+    this.radioId = this.refer || `bds-radio-${radioButtonIds++}`;
   }
 
   render(): HTMLElement {
@@ -94,3 +94,4 @@ export class Radio {
     )
   }
 }
+
