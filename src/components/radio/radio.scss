@@ -28,11 +28,12 @@ $radio-circle-pointer-height: 10px;
     flex-shrink: 0;
     border: 1px solid $color-primary-main;
     border-radius: 100%;
+    background: $color-snow-white;
 
     &__pointer {
       @include animation();
       border-radius: 100%;
-      background-color: transparent;
+      background: $color-snow-white;
       height: $radio-circle-pointer-height;
       width: $radio-circle-pointer-width;
     }
@@ -50,7 +51,7 @@ $radio-circle-pointer-height: 10px;
 
   /** State Checked */
   &__input[type="radio"]:checked ~ &__circle {
-    background-color: transparent;
+    background: $color-snow-white;
 
     .radio__circle__pointer {
       background-color: $color-primary-main;
