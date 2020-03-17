@@ -89,6 +89,8 @@ $input-width: 100%;
   padding: $input-padding;
   width: $input-width;
 
+  background: $color-snow-white;
+
   &--state {
     &-primary {
       @include input-theme(

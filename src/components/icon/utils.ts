@@ -31,5 +31,5 @@ export const formatSvg = (svgContent: string | null, color: string | null): stri
 }
 
 export const getName = (name: string, theme: IconTheme) => {
-  return `asset-${name}-${theme}`;
+  return `asset-icon-${name}-${theme}`;
 }
