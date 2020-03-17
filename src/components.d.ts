@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonSize, ButtonVariant, } from "./components/button/button";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
-import { IconSize, IconTheme, } from "./components/icon/icon";
+import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
