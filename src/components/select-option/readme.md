@@ -25,10 +25,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-select](../select)
-
 ### Depends on
 
 - [bds-typo](../typo)
@@ -37,7 +33,6 @@
 ```mermaid
 graph TD;
   bds-select-option --> bds-typo
-  bds-select --> bds-select-option
   style bds-select-option fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

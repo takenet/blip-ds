@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch, Element } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from './select-interface';
 
 @Component({
@@ -8,6 +8,8 @@ import { Option, SelectChangeEventDetail } from './select-interface';
 })
 export class Select {
   private nativeInput?: HTMLBdsInputElement;
+
+  @Element() el!: HTMLBdsSelectElement;
 
   @State() isOpen?= false;
 
@@ -57,6 +59,20 @@ export class Select {
   @Watch('value')
   valueChanged(): void {
     this.bdsChange.emit({ value: this.value })
+    for (const option of this.childOptions) {
+      option.selected = this.value === option.value;
+    }
+  }
+
+  async connectedCallback() {
+    for (const option of this.childOptions) {
+      option.selected = this.value === option.value;
+      option.addEventListener("optionSelected", this.handler);
+    }
+  }
+
+  private get childOptions(): HTMLBdsSelectOptionElement[] {
+    return Array.from(this.el.querySelectorAll("*"));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -79,7 +95,7 @@ export class Select {
   }
 
   private getText = (): string => {
-    const opt = this.options.find(option => option.value == this.value)
+    const opt = this.childOptions.find(option => option.value == this.value)
     return opt ? opt.label : '';
   }
 
@@ -88,21 +104,6 @@ export class Select {
     this.value = value;
     this.toggle();
   }
-
-  private getSelectOptions = (): Array<HTMLElement> => {
-    return this.options.map(option => {
-      return (
-        <bds-select-option
-          key={`select-option-${option.value}`}
-          value={option.value}
-          label={option.label}
-          onOptionSelected={this.handler}
-          selected={this.value === option.value}
-        >
-        </bds-select-option>
-      );
-    });
-  };
 
   private setFocusWrapper = (): void => {
     if (this.nativeInput) {
@@ -170,7 +171,9 @@ export class Select {
             "select__options": true,
             "select__options--open": this.isOpen
           }}>
-          {this.getSelectOptions()}
+          {/* {this.getSelectOptions()} */}
+          {/* {this.childOptions} */}
+          <slot />
         </div>
       </div>
     )
