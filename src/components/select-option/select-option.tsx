@@ -23,13 +23,12 @@ export class SelectOption {
    */
   @Prop() disabled?= false;
 
-  /** 
+  /**
    *  Quantity Description on option value, this item is locate to rigth in component.
    */
   @Prop() bulkOption?= '';
 
   @Event() optionSelected: EventEmitter;
-
 
   private onClickSelectOption = (): void => {
     if (!this.disabled) {

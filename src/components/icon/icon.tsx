@@ -73,7 +73,6 @@ export class Icon {
     // only load the svg if it's visible
     this.waitUntilVisible(this.el, () => {
       this.isVisible = true;
-      console.log('callback');
       this.loadIcon();
     });
   }
@@ -116,8 +115,6 @@ export class Icon {
 
     if (!this.ariaLabel) {
       const label = this.name;
-      // user did not provide a label
-      // come up with the label based on the icon name
       if (label) {
         this.ariaLabel = label;
       }
@@ -125,12 +122,10 @@ export class Icon {
   }
 
   render(): HTMLElement {
-    console.log('render', this.isVisible, Boolean(this.svgContent));
     return (
       <Host role="img" class={{
         'bds-icon': true,
         [`bds-icon__size--${this.size}`]: true,
-        // 'flip-rtl': !!flipRtl && (this.el.ownerDocument as Document).dir === 'rtl'
       }}>{(
         (this.svgContent)
           ? <div class="icon-inner" innerHTML={this.svgContent}></div>
