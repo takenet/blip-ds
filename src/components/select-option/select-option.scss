@@ -36,14 +36,15 @@ $select-option-left: 12px;
 
   &:active > &__value,
   &:active > &__bulk {
-    background-color: $color-neutral-select-background;
     color: $color-primary-main;
   }
 
-  &--selected,
+  &--selected {
+    background-color: $color-neutral-select-background;
+  }
+  
   &--selected > &__value,
   &--selected > &__bulk {
-    background-color: $color-neutral-select-background;
     color: $color-primary-main;
   }
 

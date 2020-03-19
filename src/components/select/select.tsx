@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch, Element } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from './select-interface';
 
 @Component({
@@ -61,6 +61,13 @@ export class Select {
     this.bdsChange.emit({ value: this.value })
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
+    }
+  }
+
+  @Listen('mousedown', { target: 'window', passive: true })
+  handleWindow(ev: Event) {
+    if (!this.el.contains((ev.target as HTMLInputElement))) {
+      this.isOpen = false;
     }
   }
 
@@ -171,8 +178,6 @@ export class Select {
             "select__options": true,
             "select__options--open": this.isOpen
           }}>
-          {/* {this.getSelectOptions()} */}
-          {/* {this.childOptions} */}
           <slot />
         </div>
       </div>

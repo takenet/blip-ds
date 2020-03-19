@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
-    />
-    <title>Blip DS</title>
 
-    <script type="module" src="/build/blip-ds.esm.js"></script>
-    <script nomodule src="/build/blip-ds.js"></script>
-  </head>
-  <style>
-    body {
-      background: #f5f8f9;
-      /* background: #0A0F1A; */
-    }
-  </style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Blip DS</title>
 
-  <body>
-    <bds-select>
-      <bds-select-option value="1" label="AAAA"></bds-select-option>
-      <bds-select-option value="2" label="BBBB"></bds-select-option>
-    </bds-select>
-  </body>
+  <script type="module" src="/build/blip-ds.esm.js"></script>
+  <script nomodule src="/build/blip-ds.js"></script>
+</head>
+<style>
+  body {
+    background: #f5f8f9;
+    /* background: #0A0F1A; */
+  }
 
-  <script></script>
+  .container {
+    width: 200px;
+  }
+</style>
+
+<body>
+  <bds-select class="container">
+    <bds-select-option value="1" label="AAAA"></bds-select-option>
+    <bds-select-option value="2" label="BBBB"></bds-select-option>
+  </bds-select>
+</body>
+
+<script></script>
+
 </html>

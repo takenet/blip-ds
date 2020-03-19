@@ -12,7 +12,6 @@ $icon-medium: 24px;
 $icon-small: 20px;
 $icon-x-small: 16px;
 $icon-xx-small: 12px;
-$icon-xxx-small: 8px;
 
 :host {
   width: 1em;
@@ -64,8 +63,4 @@ $icon-xxx-small: 8px;
 
 :host(.bds-icon__size--xx-small) {
   @include size($icon-xx-small);
-}
-
-:host(.bds-icon__size--xxx-small) {
-  @include size($icon-xxx-small);
 }
