@@ -259,7 +259,6 @@ export const iconSizes = () => (
     <bds-icon name={text('name', 'user')} size="small"></bds-icon>
     <bds-icon name={text('name', 'user')} size="x-small"></bds-icon>
     <bds-icon name={text('name', 'user')} size="xx-small"></bds-icon>
-    <bds-icon name={text('name', 'user')} size="xxx-small"></bds-icon>
   </>
 );
 
