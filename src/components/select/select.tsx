@@ -103,7 +103,7 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find(option => option.value == this.value)
-    return opt ? opt.label : '';
+    return opt ? opt.innerText : '';
   }
 
   private handler = (event: CustomEvent): void => {

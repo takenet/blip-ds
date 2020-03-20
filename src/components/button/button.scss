@@ -139,6 +139,11 @@ $button-padding-left-right: 16px;
       color: $color-primary-ghost;
     }
 
+    &:active {
+      background: $color-primary-main;
+      color: $color-primary-ghost;
+    }
+
     &--disabled {
       @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
     }
