@@ -296,6 +296,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
@@ -749,6 +753,10 @@ declare namespace LocalJSX {
           * Disabled input.
          */
         "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
         /**
           * label in input, with he the input size increases.
          */
