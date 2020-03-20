@@ -26,7 +26,11 @@ $select-option-left: 12px;
 
   &:hover {
     background-color: $color-neutral-light-whisper;
-    color: $color-neutral-dark-city;
+  }
+
+  &:hover > &__bulk,
+  &:hover > &__value {
+    color: $color-primary-main;
   }
 
   &:focus {
@@ -42,7 +46,7 @@ $select-option-left: 12px;
   &--selected {
     background-color: $color-neutral-select-background;
   }
-  
+
   &--selected > &__value,
   &--selected > &__bulk {
     color: $color-primary-main;

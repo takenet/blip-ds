@@ -13,6 +13,8 @@ export class Select {
 
   @State() isOpen?= false;
 
+  @State() text?= '';
+
   @Prop() options?: Array<Option> = [];
 
   /**
@@ -30,6 +32,11 @@ export class Select {
    * Disabled input.
    */
   @Prop({ reflect: true }) disabled?= false;
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
 
   /**
    * Emitted when the value has changed.
@@ -62,6 +69,7 @@ export class Select {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
+    this.text = this.getText();
   }
 
   @Listen('mousedown', { target: 'window', passive: true })
@@ -76,6 +84,8 @@ export class Select {
       option.selected = this.value === option.value;
       option.addEventListener("optionSelected", this.handler);
     }
+
+    this.text = this.getText();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
@@ -103,7 +113,7 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find(option => option.value == this.value)
-    return opt ? opt.label : '';
+    return opt ? opt.innerText : '';
   }
 
   private handler = (event: CustomEvent): void => {
@@ -141,7 +151,6 @@ export class Select {
 
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
-    const selectText = this.getText();
 
     return (
       <div class="select"
@@ -151,12 +160,13 @@ export class Select {
         onKeyPress={this.keyPressWrapper}
       >
         <bds-input
+          icon={this.icon}
           label={this.label}
           ref={this.refNativeInput}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.toggle}
-          value={selectText}
+          value={this.text}
           danger={this.danger}
           disabled={this.disabled}
           readonly

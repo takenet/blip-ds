@@ -296,6 +296,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
@@ -314,7 +318,6 @@ export namespace Components {
           * If `true`, the user cannot interact with the select option.
          */
         "disabled"?: boolean;
-        "label": any;
         /**
           * The text value of the option.
          */
@@ -751,6 +754,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
@@ -785,7 +792,6 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the select option.
          */
         "disabled"?: boolean;
-        "label": any;
         "onOptionSelected"?: (event: CustomEvent<any>) => void;
         /**
           * The text value of the option.
