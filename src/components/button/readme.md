@@ -11,9 +11,9 @@
 | ---------- | ---------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
 | `arrow`    | `arrow`    | The arrow button                                                                                   | `boolean`                                         | `false`      |
 | `disabled` | `disabled` | If true, the base button will be disabled.                                                         | `boolean`                                         | `false`      |
-| `icon`     | `icon`     | The icon name                                                                                      | `string`                                          | `null`       |
-| `size`     | `size`     | Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                 | `'standard'` |
-| `variant`  | `variant`  | Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed'; | `"dashed" \| "ghost" \| "primary" \| "secondary"` | `'primary'`  |
+| `icon`     | `icon`     | used for add icon in input left. Uses the bds-icon component.                                      | `string`                                          | `null`       |
+| `size`     | `size`     | Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';                     | `"short" or "standard" or "tall"`                 | `'standard'` |
+| `variant`  | `variant`  | Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed'; | `"dashed" or "ghost" or "primary" or "secondary"` | `'primary'`  |
 
 
 ## Dependencies

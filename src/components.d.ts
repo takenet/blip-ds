@@ -22,7 +22,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The icon name
+          * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
         /**
@@ -265,6 +265,9 @@ export namespace Components {
     }
     interface BdsMenuListItem {
         "color": string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
         "icon": string;
     }
     interface BdsRadio {
@@ -461,7 +464,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The icon name
+          * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
         /**
@@ -717,6 +720,9 @@ declare namespace LocalJSX {
     }
     interface BdsMenuListItem {
         "color"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
         "icon": string;
     }
     interface BdsRadio {
