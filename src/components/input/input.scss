@@ -33,13 +33,11 @@ $input-width: 100%;
 ) {
   $color-input-primary: $primary;
   $color-input-secondary: $secondary;
-
   $color-input-label: $label;
   $color-input-text: $text;
   $color-input-border: $border;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
-
   $color-input-disable-background: $color-neutral-light-whisper;
 
   @include input-border($color-input-border);
@@ -80,13 +78,25 @@ $input-width: 100%;
   }
 }
 
-.input {
+:host {
+  display: flex;
   position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.input {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: $input-padding;
-  width: $input-width;
+
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 
   background: $color-snow-white;
 

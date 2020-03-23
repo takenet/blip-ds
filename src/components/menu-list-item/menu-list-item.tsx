@@ -9,11 +9,13 @@ export class MenuListItem {
   @Prop() icon!: string;
 
   render(): HTMLElement {
+    const color = this.color || "currentColor";
+
     return (
-      <Host>
+      <Host role="button">
         <div class="menu-list-item">
-          <bds-icon color={this.color} name={this.icon}></bds-icon>
-          <bds-typo class="menu-list-item__text" variant="fs-10"><slot></slot></bds-typo>
+          <bds-icon color={color} name={this.icon}></bds-icon>
+          <bds-typo class="menu-list-item__text" variant="fs-10"><slot /></bds-typo>
         </div>
       </Host>
     )

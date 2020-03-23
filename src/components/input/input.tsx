@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Watch, Event, EventEmitter, Method } from "@stencil/core";
+import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from "@stencil/core";
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 
 @Component({
@@ -249,50 +249,52 @@ export class Input {
     const isPressed = this.isPressed && !this.disabled
 
     return (
-      <div
-        class={{
-          "input": true,
-          "input--state-primary": !this.danger,
-          "input--state-danger": this.danger,
-          "input--state-disabled": this.disabled,
-          "input--label": !!this.label,
-          "input--pressed": isPressed,
-        }}
-        onClick={this.onClickWrapper}
-      >
-        {this.renderIcon()}
-        <div class="input__container">
-          {this.renderLabel()}
-          <input
-            class="input__container__text"
-            autocapitalize={this.autoCapitalize}
-            autocomplete={this.autoComplete}
-            disabled={this.disabled}
-            min={this.min}
-            max={this.max}
-            minLength={this.minlength}
-            maxLength={this.maxlength}
-            name={this.inputName}
-            onBlur={this.onBlur}
-            onFocus={this.onFocus}
-            onInput={this.onInput}
-            placeholder={this.placeholder}
-            readOnly={this.readonly}
-            ref={this.refNativeInput}
-            type={this.type}
-            value={this.value}
-          />
+      <Host aria-disabled={this.disabled ? 'true' : null}>
+        <div
+          class={{
+            "input": true,
+            "input--state-primary": !this.danger,
+            "input--state-danger": this.danger,
+            "input--state-disabled": this.disabled,
+            "input--label": !!this.label,
+            "input--pressed": isPressed,
+          }}
+          onClick={this.onClickWrapper}
+        >
+          {this.renderIcon()}
+          <div class="input__container">
+            {this.renderLabel()}
+            <input
+              class="input__container__text"
+              autocapitalize={this.autoCapitalize}
+              autocomplete={this.autoComplete}
+              disabled={this.disabled}
+              min={this.min}
+              max={this.max}
+              minLength={this.minlength}
+              maxLength={this.maxlength}
+              name={this.inputName}
+              onBlur={this.onBlur}
+              onFocus={this.onFocus}
+              onInput={this.onInput}
+              placeholder={this.placeholder}
+              readOnly={this.readonly}
+              ref={this.refNativeInput}
+              type={this.type}
+              value={this.value}
+            />
+          </div>
+          {this.counterLength &&
+            <bds-counter-text
+              length={this.value.length}
+              max={this.maxlength}
+              active={isPressed}
+              {...this.counterLengthRule}
+            />}
+          <slot name="input-right" />
+          {this.renderMessage()}
         </div>
-        {this.counterLength &&
-          <bds-counter-text
-            length={this.value.length}
-            max={this.maxlength}
-            active={isPressed}
-            {...this.counterLengthRule}
-          />}
-        <slot name="input-right" />
-        {this.renderMessage()}
-      </div>
+      </Host>
     )
   }
 }
