@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property            | Attribute | Description | Type     | Default     |
-| ------------------- | --------- | ----------- | -------- | ----------- |
-| `color`             | `color`   |             | `string` | `undefined` |
-| `icon` _(required)_ | `icon`    |             | `string` | `undefined` |
+| Property            | Attribute | Description                                                   | Type     | Default     |
+| ------------------- | --------- | ------------------------------------------------------------- | -------- | ----------- |
+| `color`             | `color`   |                                                               | `string` | `undefined` |
+| `icon` _(required)_ | `icon`    | used for add icon in input left. Uses the bds-icon component. | `string` | `undefined` |
 
 
 ## Dependencies

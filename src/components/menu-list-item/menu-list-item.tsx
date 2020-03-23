@@ -3,6 +3,7 @@ import { Component, Host, h, Prop } from "@stencil/core";
 @Component({
   tag: 'bds-menu-list-item',
   styleUrl: 'menu-list-item.scss',
+  shadow: true,
 })
 export class MenuListItem {
   @Prop() color: string;
