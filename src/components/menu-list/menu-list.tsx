@@ -8,10 +8,12 @@ import { Component, Host, h } from "@stencil/core";
 export class MenuList {
   render(): HTMLElement {
     return (
-      <Host class="menu-list">
-        <div class="menu-list__left"></div>
-        <slot></slot>
-        <div class="menu-list__right"></div>
+      <Host>
+        <div class="menu-list">
+          <div class="menu-list__left"></div>
+          <slot></slot>
+          <div class="menu-list__right"></div>
+        </div>
       </Host>
     )
   }
