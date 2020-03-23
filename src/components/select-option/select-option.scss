@@ -28,8 +28,9 @@ $select-option-left: 12px;
     background-color: $color-neutral-light-whisper;
   }
 
-  &:hover > &__bulk,
-  &:hover > &__value {
+  &:hover > &__value,
+  &:hover > &__bulk {
+    background-color: $color-neutral-light-whisper;
     color: $color-primary-main;
   }
 

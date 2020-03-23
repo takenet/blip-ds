@@ -34,11 +34,6 @@ export class Select {
   @Prop({ reflect: true }) disabled?= false;
 
   /**
-   * used for add icon in input left. Uses the bds-icon component.
-   */
-  @Prop({ reflect: true }) icon?: string = '';
-
-  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<SelectChangeEventDetail>;
@@ -62,6 +57,11 @@ export class Select {
    *  label in input, with he the input size increases.
    */
   @Prop() label?= '';
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
 
   @Watch('value')
   valueChanged(): void {
