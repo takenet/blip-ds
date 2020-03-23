@@ -5,11 +5,6 @@ $menu-list-border: 8px;
 $menu-list-border-left: 8px 0px 0px 8px;
 $menu-list-border-right: 0px 8px 8px 0px;
 
-:host {
-  display: flex;
-  flex: 1;
-}
-
 .menu-list {
   display: flex;
   width: fit-content;
