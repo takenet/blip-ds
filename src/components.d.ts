@@ -318,7 +318,6 @@ export namespace Components {
           * If `true`, the user cannot interact with the select option.
          */
         "disabled"?: boolean;
-        "label": any;
         /**
           * The text value of the option.
          */
@@ -793,7 +792,6 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the select option.
          */
         "disabled"?: boolean;
-        "label": any;
         "onOptionSelected"?: (event: CustomEvent<any>) => void;
         /**
           * The text value of the option.

@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch, Element } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from './select-interface';
 
 @Component({
@@ -12,6 +12,8 @@ export class Select {
   @Element() el!: HTMLBdsSelectElement;
 
   @State() isOpen?= false;
+
+  @State() text?= '';
 
   @Prop() options?: Array<Option> = [];
 
@@ -67,6 +69,14 @@ export class Select {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
+    this.text = this.getText();
+  }
+
+  @Listen('mousedown', { target: 'window', passive: true })
+  handleWindow(ev: Event) {
+    if (!this.el.contains((ev.target as HTMLInputElement))) {
+      this.isOpen = false;
+    }
   }
 
   async connectedCallback() {
@@ -74,6 +84,8 @@ export class Select {
       option.selected = this.value === option.value;
       option.addEventListener("optionSelected", this.handler);
     }
+
+    this.text = this.getText();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
@@ -101,7 +113,7 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find(option => option.value == this.value)
-    return opt ? opt.label : '';
+    return opt ? opt.innerText : '';
   }
 
   private handler = (event: CustomEvent): void => {
@@ -139,7 +151,6 @@ export class Select {
 
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
-    const selectText = this.getText();
 
     return (
       <div class="select"
@@ -149,15 +160,15 @@ export class Select {
         onKeyPress={this.keyPressWrapper}
       >
         <bds-input
+          icon={this.icon}
           label={this.label}
           ref={this.refNativeInput}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.toggle}
-          value={selectText}
+          value={this.text}
           danger={this.danger}
           disabled={this.disabled}
-          icon={this.icon}
           readonly
         >
           <div

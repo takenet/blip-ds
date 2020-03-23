@@ -10,9 +10,6 @@ export class SelectOption {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop() value!: any;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop() label!: any;
-
   /**
    * The text value of the option.
   */
@@ -32,7 +29,7 @@ export class SelectOption {
 
   private onClickSelectOption = (): void => {
     if (!this.disabled) {
-      this.optionSelected.emit({ label: this.label, value: this.value });
+      this.optionSelected.emit({ value: this.value });
     }
   }
 
@@ -73,7 +70,7 @@ export class SelectOption {
           "select-option--selected": this.selected,
           "select-option--disabled": this.disabled,
         }}>
-        <bds-typo class="select-option__value" variant="fs-14">{this.label}</bds-typo>
+        <bds-typo class="select-option__value" variant="fs-14"><slot /></bds-typo>
         <bds-typo class="select-option__bulk" variant="fs-10">{this.bulkOption}</bds-typo>
       </div>
     )

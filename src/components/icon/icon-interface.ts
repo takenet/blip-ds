@@ -5,7 +5,6 @@ export type IconSize = 'xxx-small'
   | 'medium'
   | 'large'
   | 'x-large'
-  | 'xx-large'
-  | 'xxx-large';
+  | 'xx-large';
 
 export type IconTheme = 'outline' | 'solid';
