@@ -122,12 +122,12 @@ $input-width: 100%;
       cursor: not-allowed;
       @include input-theme(
         "disabled",
-        $color-neutral-dark-city,
+        $color-neutral-medium-silver,
         $color-neutral-light-breeze,
-        $color-neutral-medium-cloud,
-        $color-neutral-dark-city,
+        $color-neutral-medium-silver,
+        $color-neutral-medium-silver,
         $color-neutral-light-off,
-        $color-neutral-dark-city,
+        $color-neutral-medium-silver,
         $color-neutral-light-off
       );
     }

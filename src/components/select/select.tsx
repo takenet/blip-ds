@@ -56,6 +56,11 @@ export class Select {
    */
   @Prop() label?= '';
 
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
+
   @Watch('value')
   valueChanged(): void {
     this.bdsChange.emit({ value: this.value })
@@ -152,6 +157,7 @@ export class Select {
           value={selectText}
           danger={this.danger}
           disabled={this.disabled}
+          icon={this.icon}
           readonly
         >
           <div
@@ -171,8 +177,6 @@ export class Select {
             "select__options": true,
             "select__options--open": this.isOpen
           }}>
-          {/* {this.getSelectOptions()} */}
-          {/* {this.childOptions} */}
           <slot />
         </div>
       </div>
