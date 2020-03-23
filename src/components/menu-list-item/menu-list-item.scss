@@ -3,9 +3,14 @@
 $menu-list-item-width: 76px;
 $menu-list-item-height: 56px;
 
+:host {
+  display: flex;
+  flex: 1;
+}
+
 .menu-list-item {
   background-color: $color-snow-white;
-  color: $color-neutral-medium-cloud;
+  color: currentColor;
 
   cursor: pointer;
   width: $menu-list-item-width;
@@ -17,18 +22,25 @@ $menu-list-item-height: 56px;
 
   @include no-select();
 
-  &:hover {
+  &:hover,
+  &:hover > &__text {
     background-color: $color-neutral-light-whisper;
     color: $color-primary-main;
   }
 
-  &:active {
+  &:active,
+  &:active > &__text {
     background-color: $color-neutral-select-background;
     color: $color-primary-main;
   }
 
-  &:focus {
+  &:focus,
+  &:focus > &__text {
     background-color: $color-neutral-light-whisper;
     color: $color-primary-main;
+  }
+
+  &__text {
+    color: $color-neutral-medium-cloud;
   }
 }
