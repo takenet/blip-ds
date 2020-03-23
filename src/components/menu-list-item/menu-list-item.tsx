@@ -6,7 +6,11 @@ import { Component, Host, h, Prop } from "@stencil/core";
 })
 export class MenuListItem {
   @Prop() color: string;
-  @Prop() icon!: string;
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon!: string;
 
   render(): HTMLElement {
     const color = this.color || "currentColor";

@@ -107,6 +107,8 @@ export class Icon {
   @Watch('src')
   @Watch('icon')
   loadIcon(): void {
+    if (!this.name) return;
+
     if (Build.isBrowser && this.isVisible) {
       const iconKey = getName(this.name, this.theme);
       const svg = atob(icons[iconKey]);

@@ -33,9 +33,9 @@ export class Button {
   @Prop() variant?: ButtonVariant = 'primary';
 
   /**
-   * The icon name
+   * used for add icon in input left. Uses the bds-icon component.
    */
-  @Prop() icon?: string = null;
+  @Prop({ reflect: true }) icon?: string = null;
 
   /**
    * The arrow button
