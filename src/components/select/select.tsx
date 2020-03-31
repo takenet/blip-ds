@@ -65,10 +65,12 @@ export class Select {
 
   @Watch('value')
   valueChanged(): void {
-    this.bdsChange.emit({ value: this.value })
+    this.bdsChange.emit({ value: this.value });
+
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
+    
     this.text = this.getText();
   }
 
@@ -113,7 +115,7 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find(option => option.value == this.value)
-    return opt ? opt.innerText : '';
+    return opt ? opt.innerHTML : '';
   }
 
   private handler = (event: CustomEvent): void => {
