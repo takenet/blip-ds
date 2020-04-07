@@ -1,0 +1,29 @@
+.alert__header {
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+
+    bds-typo {
+      margin-left: 16px;
+      color: $color-snow-white;
+    }
+
+    &--system {
+      background: $color-primary-main;
+    }
+    
+    &--error {
+      background: $color-secondary-delete;
+    }
+
+    &--warning {
+      background: $color-secondary-cheetos;
+    }
+
+    &--delete {
+      background: $color-secondary-delete;
+    }
+}
