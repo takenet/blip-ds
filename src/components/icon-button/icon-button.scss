@@ -1,0 +1,152 @@
+@import 'resets';
+
+$icon-button-border-radius: 8px;
+$icon-button-padding: 4px;
+
+@mixin icon-button-primary {
+  color: $color-neutral-dark-rooftop;
+  background: transparent;
+
+  &:hover {
+    color: $color-primary-main;
+    background: $color-neutral-disabled-blues-bg;
+  }
+
+  &:focus {
+    color: $color-primary-main;
+    background: $color-extended-blue-sky;
+  }
+
+  &:active {
+    color: $color-neutral-dark-rooftop;
+    background: transparent;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    color: $color-neutral-medium-silver;
+    background: transparent;
+
+    &:hover {
+      color: $color-neutral-medium-silver;
+      background: transparent;
+    }
+
+    &:focus {
+      color: $color-neutral-medium-silver;
+      background: transparent;
+    }
+
+    &:active {
+      color: $color-neutral-medium-silver;
+      background: transparent;
+    }
+  }
+}
+
+@mixin icon-button-secondary {
+  color: $color-snow-white;
+  background: $color-primary-main;
+
+  &:hover {
+    color: $color-snow-white;
+    background: $color-primary-dark;
+  }
+
+  &:focus {
+    color: $color-snow-white;
+    background: $color-primary-dark;
+  }
+
+  &:active {
+    color: $color-snow-white;
+    background: $color-primary-main;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    color: $color-neutral-disabled-blues-text;
+    background: $color-neutral-disabled-blues-bg;
+
+    &:hover {
+      color: $color-neutral-disabled-blues-text;
+      background: $color-neutral-disabled-blues-bg;
+    }
+
+    &:focus {
+      color: $color-neutral-disabled-blues-text;
+      background: $color-neutral-disabled-blues-bg;
+    }
+
+    &:active {
+      color: $color-neutral-disabled-blues-text;
+      background: $color-neutral-disabled-blues-bg;
+    }
+  }
+}
+
+@mixin icon-button-delete {
+  color: $color-neutral-dark-rooftop;
+  background: transparent;
+
+  &:hover {
+    color: $color-secondary-delete;
+    background: $color-extend-rr-b-vitamin;
+  }
+
+  &:focus {
+    color: $color-secondary-delete;
+    background: $color-extend-rr-b-vitamin;
+  }
+
+  &:active {
+    color: $color-neutral-dark-rooftop;
+    background: transparent;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    color: $color-neutral-medium-silver;
+    background: transparent;
+
+    &:hover {
+      color: $color-neutral-medium-silver;
+      background: transparent;
+    }
+  
+    &:focus {
+      color: $color-neutral-medium-silver;
+      background: transparent;
+    }
+  
+    &:active {
+      color: $color-neutral-medium-silver;
+      background: transparent;
+    }
+  }
+}
+
+.icon__button {
+  @include reset-button();
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  border-radius: $icon-button-border-radius;
+  padding: $icon-button-padding;
+
+  &--primary {
+    @include icon-button-primary();
+  }
+
+  &--secondary {
+    @include icon-button-secondary();
+  }
+
+  &--delete {
+    @include icon-button-delete();
+  }
+}

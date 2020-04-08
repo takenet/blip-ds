@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonSize, ButtonVariant, } from "./components/button/button";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
+import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
@@ -110,6 +111,24 @@ export namespace Components {
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
         "theme": IconTheme;
+    }
+    interface BdsIconButton {
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: IconButtonSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: IconButtonVariant;
     }
     interface BdsInput {
         /**
@@ -389,6 +408,12 @@ declare global {
         prototype: HTMLBdsIconElement;
         new (): HTMLBdsIconElement;
     };
+    interface HTMLBdsIconButtonElement extends Components.BdsIconButton, HTMLStencilElement {
+    }
+    var HTMLBdsIconButtonElement: {
+        prototype: HTMLBdsIconButtonElement;
+        new (): HTMLBdsIconButtonElement;
+    };
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
     }
     var HTMLBdsInputElement: {
@@ -443,6 +468,7 @@ declare global {
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
         "bds-icon": HTMLBdsIconElement;
+        "bds-icon-button": HTMLBdsIconButtonElement;
         "bds-input": HTMLBdsInputElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-menu-list": HTMLBdsMenuListElement;
@@ -558,6 +584,24 @@ declare namespace LocalJSX {
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
         "theme"?: IconTheme;
+    }
+    interface BdsIconButton {
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: IconButtonSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: IconButtonVariant;
     }
     interface BdsInput {
         /**
@@ -841,6 +885,7 @@ declare namespace LocalJSX {
         "bds-checkbox": BdsCheckbox;
         "bds-counter-text": BdsCounterText;
         "bds-icon": BdsIcon;
+        "bds-icon-button": BdsIconButton;
         "bds-input": BdsInput;
         "bds-input-password": BdsInputPassword;
         "bds-menu-list": BdsMenuList;
@@ -860,6 +905,7 @@ declare module "@stencil/core" {
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+            "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
