@@ -14,7 +14,7 @@ export default {
 export const systemAlert = () => (
   <>
     <bds-alert open>
-      <bds-alert-header variant="system" icon="info">
+      <bds-alert-header variant={text('variant', 'system')} icon={text('icon', 'info')}>
         Sair do chatbot
       </bds-alert-header>
       <bds-alert-body>
@@ -31,7 +31,7 @@ export const systemAlert = () => (
 export const errorAlert = () => (
   <>
     <bds-alert open>
-      <bds-alert-header variant="error" icon="error">
+      <bds-alert-header variant={text('variant', 'error')} icon={text('icon', 'error')}>
         Ops... algo deu errado
       </bds-alert-header>
       <bds-alert-body>
@@ -48,7 +48,7 @@ export const errorAlert = () => (
 export const warningAlert = () => (
   <>
     <bds-alert open>
-      <bds-alert-header variant="warning" icon="info">
+      <bds-alert-header variant={text('variant', 'warning')} icon={text('icon', 'info')}>
         Você possui alterações não salvas
       </bds-alert-header>
       <bds-alert-body>
@@ -65,7 +65,7 @@ export const warningAlert = () => (
 export const deleteAlert = () => (
   <>
     <bds-alert open>
-      <bds-alert-header variant="delete" icon="trash">
+      <bds-alert-header variant={text('variant', 'delete')} icon={text('icon', 'trash')}>
         Quer mesmo excluir sua conta?
       </bds-alert-header>
       <bds-alert-body>
