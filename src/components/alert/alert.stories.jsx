@@ -31,11 +31,11 @@ export const systemAlert = () => (
 export const errorAlert = () => (
   <>
     <bds-alert open>
-      <bds-alert-header variant="error" icon="info">
+      <bds-alert-header variant="error" icon="error">
         Ops... algo deu errado
       </bds-alert-header>
       <bds-alert-body>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error! Aspernatur, deserunt iusto nisi facere rem consequatur, sit voluptates harum labore, molestiae doloribus
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!
       </bds-alert-body> 
       <bds-alert-actions>
         <bds-button variant="secondary">Cancelar</bds-button>
@@ -65,11 +65,11 @@ export const warningAlert = () => (
 export const deleteAlert = () => (
   <>
     <bds-alert open>
-      <bds-alert-header variant="delete" icon="info">
+      <bds-alert-header variant="delete" icon="trash">
         Quer mesmo excluir sua conta?
       </bds-alert-header>
       <bds-alert-body>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error! Aspernatur, deserunt iusto nisi facere rem consequatur, sit voluptates harum labore, molestiae doloribus
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!
       </bds-alert-body> 
       <bds-alert-actions>
         <bds-button variant="secondary">Cancelar</bds-button>
