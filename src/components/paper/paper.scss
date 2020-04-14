@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  background: $color-snow-white;
+  border-radius: 7px;
+}
+
+:host(.paper__elevation--static) {
+  box-shadow: 0px 2px 12px rgba(96, 123, 153, 0.15);
+}
+
+:host(.paper__elevation--primary) {
+  box-shadow: 0px 8px 12px rgba(96, 123, 153, 0.2);
+}
+
+:host(.paper__elevation--secondary) {
+  box-shadow: 0px 8px 12px rgba(96, 123, 153, 0.2), 0px 0px 4px rgba(96, 123, 153, 0.2);
+}

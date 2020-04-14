@@ -10,6 +10,7 @@ import { CounterTextRule, } from "./components/counter-text/counter-text-interfa
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
+import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
@@ -289,6 +290,12 @@ export namespace Components {
          */
         "icon": string;
     }
+    interface BdsPaper {
+        /**
+          * Size. Entered as one of the size. Can be one of:  'static', 'primary', 'secondary';
+         */
+        "elevation"?: PaperElevation;
+    }
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
@@ -438,6 +445,12 @@ declare global {
         prototype: HTMLBdsMenuListItemElement;
         new (): HTMLBdsMenuListItemElement;
     };
+    interface HTMLBdsPaperElement extends Components.BdsPaper, HTMLStencilElement {
+    }
+    var HTMLBdsPaperElement: {
+        prototype: HTMLBdsPaperElement;
+        new (): HTMLBdsPaperElement;
+    };
     interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
     }
     var HTMLBdsRadioElement: {
@@ -473,6 +486,7 @@ declare global {
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
+        "bds-paper": HTMLBdsPaperElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
@@ -769,6 +783,12 @@ declare namespace LocalJSX {
          */
         "icon": string;
     }
+    interface BdsPaper {
+        /**
+          * Size. Entered as one of the size. Can be one of:  'static', 'primary', 'secondary';
+         */
+        "elevation"?: PaperElevation;
+    }
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
@@ -890,6 +910,7 @@ declare namespace LocalJSX {
         "bds-input-password": BdsInputPassword;
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
+        "bds-paper": BdsPaper;
         "bds-radio": BdsRadio;
         "bds-select": BdsSelect;
         "bds-select-option": BdsSelectOption;
@@ -910,6 +931,7 @@ declare module "@stencil/core" {
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
+            "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
