@@ -22,6 +22,8 @@
 
 ### Used by
 
+ - [bds-alert-body](../alert/alert-body)
+ - [bds-alert-header](../alert/alert-header)
  - [bds-button](../button)
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
@@ -34,6 +36,8 @@
 ### Graph
 ```mermaid
 graph TD;
+  bds-alert-body --> bds-typo
+  bds-alert-header --> bds-typo
   bds-button --> bds-typo
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
