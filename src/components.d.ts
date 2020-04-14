@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AlertHeaderVariannt, } from "./components/alert/alert-header/alert-header";
 import { ButtonSize, ButtonVariant, } from "./components/button/button";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
@@ -14,6 +15,30 @@ import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
+    interface BdsAlert {
+        /**
+          * Used to open/close the alert
+         */
+        "open"?: boolean;
+        /**
+          * Can be used outside to open/close the alert
+         */
+        "toggle": () => Promise<void>;
+    }
+    interface BdsAlertActions {
+    }
+    interface BdsAlertBody {
+    }
+    interface BdsAlertHeader {
+        /**
+          * used for add icon the header. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Variant. Entered as one of the variant. Can be one of:  'system', 'error', 'warning', 'delete';
+         */
+        "variant"?: AlertHeaderVariannt;
+    }
     interface BdsButton {
         /**
           * The arrow button
@@ -385,6 +410,30 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
+    }
+    var HTMLBdsAlertElement: {
+        prototype: HTMLBdsAlertElement;
+        new (): HTMLBdsAlertElement;
+    };
+    interface HTMLBdsAlertActionsElement extends Components.BdsAlertActions, HTMLStencilElement {
+    }
+    var HTMLBdsAlertActionsElement: {
+        prototype: HTMLBdsAlertActionsElement;
+        new (): HTMLBdsAlertActionsElement;
+    };
+    interface HTMLBdsAlertBodyElement extends Components.BdsAlertBody, HTMLStencilElement {
+    }
+    var HTMLBdsAlertBodyElement: {
+        prototype: HTMLBdsAlertBodyElement;
+        new (): HTMLBdsAlertBodyElement;
+    };
+    interface HTMLBdsAlertHeaderElement extends Components.BdsAlertHeader, HTMLStencilElement {
+    }
+    var HTMLBdsAlertHeaderElement: {
+        prototype: HTMLBdsAlertHeaderElement;
+        new (): HTMLBdsAlertHeaderElement;
+    };
     interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
     }
     var HTMLBdsButtonElement: {
@@ -476,6 +525,10 @@ declare global {
         new (): HTMLBdsTypoElement;
     };
     interface HTMLElementTagNameMap {
+        "bds-alert": HTMLBdsAlertElement;
+        "bds-alert-actions": HTMLBdsAlertActionsElement;
+        "bds-alert-body": HTMLBdsAlertBodyElement;
+        "bds-alert-header": HTMLBdsAlertHeaderElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
@@ -494,6 +547,26 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BdsAlert {
+        /**
+          * Used to open/close the alert
+         */
+        "open"?: boolean;
+    }
+    interface BdsAlertActions {
+    }
+    interface BdsAlertBody {
+    }
+    interface BdsAlertHeader {
+        /**
+          * used for add icon the header. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Variant. Entered as one of the variant. Can be one of:  'system', 'error', 'warning', 'delete';
+         */
+        "variant"?: AlertHeaderVariannt;
+    }
     interface BdsButton {
         /**
           * The arrow button
@@ -900,6 +973,10 @@ declare namespace LocalJSX {
         "variant"?: FontSize;
     }
     interface IntrinsicElements {
+        "bds-alert": BdsAlert;
+        "bds-alert-actions": BdsAlertActions;
+        "bds-alert-body": BdsAlertBody;
+        "bds-alert-header": BdsAlertHeader;
         "bds-button": BdsButton;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
@@ -921,6 +998,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
+            "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
+            "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
+            "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
