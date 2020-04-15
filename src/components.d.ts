@@ -45,6 +45,10 @@ export namespace Components {
          */
         "arrow"?: boolean;
         /**
+          * If true, the text will be bold
+         */
+        "bold"?: boolean;
+        /**
           * If true, the base button will be disabled.
          */
         "disabled"?: boolean;
@@ -572,6 +576,10 @@ declare namespace LocalJSX {
           * The arrow button
          */
         "arrow"?: boolean;
+        /**
+          * If true, the text will be bold
+         */
+        "bold"?: boolean;
         /**
           * If true, the base button will be disabled.
          */

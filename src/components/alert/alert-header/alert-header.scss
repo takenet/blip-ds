@@ -6,6 +6,10 @@
   display: inline-flex;
   align-items: center;
 
+    bds-icon {
+      min-width: 32px;
+    }
+
     bds-typo {
       margin-left: 8px;
       color: $color-snow-white;

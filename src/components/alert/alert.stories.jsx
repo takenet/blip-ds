@@ -13,16 +13,16 @@ export default {
 
 export const systemAlert = () => (
   <>
-    <bds-alert open>
+    <bds-alert open={boolean('open', true)}>
       <bds-alert-header variant={text('variant', 'system')} icon={text('icon', 'info')}>
-        Sair do chatbot
+      {text('header text', 'Atenção!')}
       </bds-alert-header>
       <bds-alert-body>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!
+        {text('body text', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!')}
       </bds-alert-body> 
       <bds-alert-actions>
-        <bds-button variant="secondary">Cancelar</bds-button>
-        <bds-button >Confirmar</bds-button>
+        <bds-button variant={text('left button variant', 'secondary')} bold={boolean('left button bold', true)}>Cancelar</bds-button>
+        <bds-button variant={text('right button variant', 'secondary')} bold={boolean('right button bold', true)}>Confirmar</bds-button>
       </bds-alert-actions>
     </bds-alert>
   </>
@@ -32,15 +32,15 @@ export const errorAlert = () => (
   <>
     <bds-alert open>
       <bds-alert-header variant={text('variant', 'error')} icon={text('icon', 'error')}>
-        Ops... algo deu errado
-      </bds-alert-header>
-      <bds-alert-body>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!
-      </bds-alert-body> 
-      <bds-alert-actions>
-        <bds-button variant="secondary">Cancelar</bds-button>
-        <bds-button >Confirmar</bds-button>
-      </bds-alert-actions>
+        {text('header text', 'Atenção!')}
+        </bds-alert-header>
+        <bds-alert-body>
+          {text('body text', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!')}
+        </bds-alert-body> 
+        <bds-alert-actions>
+          <bds-button variant={text('left button variant', 'secondary')} bold={boolean('left button bold', true)}>Cancelar</bds-button>
+          <bds-button variant={text('right button variant', 'secondary')} bold={boolean('right button bold', true)}>Confirmar</bds-button>
+        </bds-alert-actions>
     </bds-alert>
   </>
 );
@@ -48,16 +48,16 @@ export const errorAlert = () => (
 export const warningAlert = () => (
   <>
     <bds-alert open>
-      <bds-alert-header variant={text('variant', 'warning')} icon={text('icon', 'info')}>
-        Você possui alterações não salvas
-      </bds-alert-header>
-      <bds-alert-body>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit...
-      </bds-alert-body> 
-      <bds-alert-actions>
-        <bds-button variant="secondary">Cancelar</bds-button>
-        <bds-button >Confirmar</bds-button>
-      </bds-alert-actions>
+      <bds-alert-header variant={text('variant', 'warning')} icon={text('icon', 'warning')}>
+        {text('header text', 'Atenção!')}
+        </bds-alert-header>
+        <bds-alert-body>
+          {text('body text', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!')}
+        </bds-alert-body> 
+        <bds-alert-actions>
+          <bds-button variant={text('left button variant', 'secondary')} bold={boolean('left button bold', true)}>Cancelar</bds-button>
+          <bds-button variant={text('right button variant', 'secondary')} bold={boolean('right button bold', true)}>Confirmar</bds-button>
+        </bds-alert-actions>
     </bds-alert>
   </>
 );
@@ -66,15 +66,15 @@ export const deleteAlert = () => (
   <>
     <bds-alert open>
       <bds-alert-header variant={text('variant', 'delete')} icon={text('icon', 'trash')}>
-        Quer mesmo excluir sua conta?
-      </bds-alert-header>
-      <bds-alert-body>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!
-      </bds-alert-body> 
-      <bds-alert-actions>
-        <bds-button variant="secondary">Cancelar</bds-button>
-        <bds-button >Confirmar</bds-button>
-      </bds-alert-actions>
+        {text('header text', 'Atenção!')}
+        </bds-alert-header>
+        <bds-alert-body>
+          {text('body text', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi')}
+        </bds-alert-body> 
+        <bds-alert-actions>
+          <bds-button variant={text('left button variant', 'secondary')} bold={boolean('left button bold', true)}>Cancelar</bds-button>
+          <bds-button variant={text('right button variant', 'secondary')} bold={boolean('right button bold', true)}>Confirmar</bds-button>
+        </bds-alert-actions>
     </bds-alert>
   </>
 );

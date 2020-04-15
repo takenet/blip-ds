@@ -10,6 +10,7 @@
 | Property   | Attribute  | Description                                                                                        | Type                                              | Default      |
 | ---------- | ---------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
 | `arrow`    | `arrow`    | The arrow button                                                                                   | `boolean`                                         | `false`      |
+| `bold`     | `bold`     | If true, the text will be bold                                                                     | `boolean`                                         | `false`      |
 | `disabled` | `disabled` | If true, the base button will be disabled.                                                         | `boolean`                                         | `false`      |
 | `icon`     | `icon`     | used for add icon in input left. Uses the bds-icon component.                                      | `string`                                          | `null`       |
 | `size`     | `size`     | Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                 | `'standard'` |

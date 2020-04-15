@@ -18,6 +18,7 @@ export const defaultButton = () => (
     disabled={boolean('disabled', false)}
     arrow={boolean('arrow', false)}
     icon={text('icon', '')}
+    bold={boolean('bold', false)}
   >
     {text('text', 'Text button')}
   </bds-button>
