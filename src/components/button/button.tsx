@@ -42,6 +42,11 @@ export class Button {
    */
   @Prop() arrow?: boolean = false;
 
+    /**
+   * If true, the text will be bold
+   */
+  @Prop() bold?: boolean = false;
+
 
   getSizeClass(): string {
     return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
@@ -62,7 +67,7 @@ export class Button {
         [`button__content__${this.variant}`]: true,
         [`button__content__${this.variant}--disabled`]: this.disabled,
       }}>
-        <bds-typo variant="fs-14" lineHeight="simple" bold="regular">
+        <bds-typo variant="fs-14" lineHeight="simple" bold={this.bold ? "bold" : "regular"}>
           <slot></slot>
         </bds-typo>
       </div>
