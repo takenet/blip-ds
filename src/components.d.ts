@@ -269,6 +269,10 @@ export namespace Components {
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
+          * Hint for form autofill feature
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -829,6 +833,10 @@ declare namespace LocalJSX {
           * Capitalizes every word's second character.
          */
         "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Hint for form autofill feature
+         */
+        "autoComplete"?: InputAutoComplete;
         /**
           * Add state danger on input, use for use feedback.
          */
