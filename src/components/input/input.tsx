@@ -92,7 +92,7 @@ export class Input {
   /**
    * Disabled input.
    */
-  @Prop({ reflect: true }) disabled?: boolean = false;
+  @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
 
   /**
    * Add state danger on input, use for use feedback.
@@ -192,11 +192,14 @@ export class Input {
   }
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
+
     switch (event.key) {
       case 'Enter':
         this.bdsSubmit.emit({ event, value: this.value });
+
         if (this.isSubmit) {
           this.value = "";
+          event.preventDefault();
         }
         break;
     }
