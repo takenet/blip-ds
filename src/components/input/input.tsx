@@ -94,7 +94,6 @@ export class Input {
    */
   @Prop({ reflect: true }) disabled?: boolean = false;
 
-
   /**
    * Add state danger on input, use for use feedback.
    */
@@ -116,6 +115,26 @@ export class Input {
    * using the values between min and max.
    */
   @Prop() counterLengthRule?: InputCounterLengthRules | {} = {};
+
+  /**
+   * If `true`, the user cannot modify the value.
+   */
+  @Prop() isSubmit = false;
+
+  /**
+   * if `true` input switched to textarea
+   */
+  @Prop() isTextarea = false;
+
+  /**
+   * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+   */
+  @Prop() rows?: number = 1;
+
+  /**
+   * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+   */
+  @Prop() cols?: number = 0;
 
   /**
    * Update the native input element when the value changes
@@ -146,6 +165,11 @@ export class Input {
   @Event() bdsFocus: EventEmitter;
 
   /**
+   * Event input enter.
+   */
+  @Event() bdsSubmit: EventEmitter;
+
+  /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
    * `input.focus()`.
    */
@@ -165,6 +189,17 @@ export class Input {
   @Method()
   async getInputElement(): Promise<HTMLInputElement> {
     return this.nativeInput;
+  }
+
+  private keyPressWrapper = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case 'Enter':
+        this.bdsSubmit.emit({ event, value: this.value });
+        if (this.isSubmit) {
+          this.value = "";
+        }
+        break;
+    }
   }
 
   private onInput = (ev: Event): void => {
@@ -188,10 +223,6 @@ export class Input {
   private onClickWrapper = (): void => {
     this.onFocus();
     if (this.nativeInput) { this.nativeInput.focus(); }
-  }
-
-  private refNativeInput = (input: HTMLInputElement): void => {
-    this.nativeInput = input
   }
 
   private renderIcon(): HTMLElement {
@@ -246,7 +277,8 @@ export class Input {
   }
 
   render(): HTMLElement {
-    const isPressed = this.isPressed && !this.disabled
+    const isPressed = this.isPressed && !this.disabled;
+    const Element = this.isTextarea ? 'textarea' : 'input';
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
@@ -260,12 +292,15 @@ export class Input {
             "input--pressed": isPressed,
           }}
           onClick={this.onClickWrapper}
+          onKeyPress={this.keyPressWrapper}
         >
           {this.renderIcon()}
           <div class="input__container">
             {this.renderLabel()}
-            <input
+            <Element
               class="input__container__text"
+              rows={this.rows}
+              cols={this.cols}
               autocapitalize={this.autoCapitalize}
               autocomplete={this.autoComplete}
               disabled={this.disabled}
@@ -279,10 +314,10 @@ export class Input {
               onInput={this.onInput}
               placeholder={this.placeholder}
               readOnly={this.readonly}
-              ref={this.refNativeInput}
               type={this.type}
               value={this.value}
-            />
+            >
+            </Element>
           </div>
           {this.counterLength &&
             <bds-counter-text
