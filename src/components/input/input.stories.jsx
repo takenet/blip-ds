@@ -91,3 +91,17 @@ export const counterInput = () => (
     ></bds-input>
   </div>
 );
+
+export const inputTextarea = () => (
+  <div style={inputStyle}>
+    <bds-input is-textarea rows="2"></bds-input>
+    <br />    
+    <bds-input is-textarea rows="2" icon="email"></bds-input>
+    <br />
+    <bds-input is-textarea rows="2" danger></bds-input>
+    <br />
+    <bds-input is-textarea rows="2" disabled></bds-input>
+    <br />    
+    <bds-input is-textarea rows="4"></bds-input>
+  </div>
+);

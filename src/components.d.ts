@@ -166,6 +166,10 @@ export namespace Components {
          */
         "autoComplete"?: InputAutoComplete;
         /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "cols"?: number;
+        /**
           * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
          */
         "counterLength"?: boolean;
@@ -202,9 +206,13 @@ export namespace Components {
          */
         "inputName"?: string;
         /**
-          * TODO:  If `true`, the user cannot modify the value.
+          * If `true`, the user cannot modify the value.
          */
         "isSubmit": boolean;
+        /**
+          * if `true` input switched to textarea
+         */
+        "isTextarea": boolean;
         /**
           * label in input, with he the input size increases.
          */
@@ -235,6 +243,10 @@ export namespace Components {
         "readonly": boolean;
         "removeFocus": () => Promise<void>;
         /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "rows"?: number;
+        /**
           * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
          */
         "setFocus": () => Promise<void>;
@@ -252,10 +264,6 @@ export namespace Components {
           * Capitalizes every word's second character.
          */
         "autoCapitalize"?: InputAutocapitalize;
-        /**
-          * Hint for form autofill feature
-         */
-        "autoComplete"?: InputAutoComplete;
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -704,6 +712,10 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputAutoComplete;
         /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "cols"?: number;
+        /**
           * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
          */
         "counterLength"?: boolean;
@@ -736,9 +748,13 @@ declare namespace LocalJSX {
          */
         "inputName"?: string;
         /**
-          * TODO:  If `true`, the user cannot modify the value.
+          * If `true`, the user cannot modify the value.
          */
         "isSubmit"?: boolean;
+        /**
+          * if `true` input switched to textarea
+         */
+        "isTextarea"?: boolean;
         /**
           * label in input, with he the input size increases.
          */
@@ -788,6 +804,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "rows"?: number;
+        /**
           * Input type. Can be one of: "text" or "password".
          */
         "type"?: InputType;
@@ -801,10 +821,6 @@ declare namespace LocalJSX {
           * Capitalizes every word's second character.
          */
         "autoCapitalize"?: InputAutocapitalize;
-        /**
-          * Hint for form autofill feature
-         */
-        "autoComplete"?: InputAutoComplete;
         /**
           * Add state danger on input, use for use feedback.
          */
