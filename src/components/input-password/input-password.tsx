@@ -1,5 +1,5 @@
 import { Component, Prop, h } from "@stencil/core";
-import { InputAutocapitalize } from '../input/input-interface';
+import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
   tag: 'bds-input-password',
@@ -79,15 +79,26 @@ export class InputPassword {
    */
   @Prop() autoCapitalize?: InputAutocapitalize = 'off';
 
+  /**
+   * Hint for form autofill feature
+   */
+  @Prop() autoComplete?: InputAutoComplete = 'off';
+
   private toggleEyePassword = (): void => {
     if (!this.disabled) {
       this.openEyes = !this.openEyes;
     }
   }
 
+  private getAutoComplete(): string {
+    if (!this.openEyes) return 'current-password';
+    return this.autoComplete;
+  }
+
   render(): HTMLElement {
     const iconPassword = this.openEyes ? 'eye-open' : 'eye-closed';
     const type = this.openEyes ? 'text' : 'password';
+    const autocomplete = this.getAutoComplete();
 
     return (
       <bds-input
@@ -105,6 +116,7 @@ export class InputPassword {
         icon={this.icon}
         disabled={this.disabled}
         readonly={this.readonly}
+        auto-complete={autocomplete}
         auto-capitalize={this.autoCapitalize}
       >
         <div
