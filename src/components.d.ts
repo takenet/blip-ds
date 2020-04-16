@@ -202,6 +202,10 @@ export namespace Components {
          */
         "inputName"?: string;
         /**
+          * TODO:  If `true`, the user cannot modify the value.
+         */
+        "isSubmit": boolean;
+        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
@@ -732,6 +736,10 @@ declare namespace LocalJSX {
          */
         "inputName"?: string;
         /**
+          * TODO:  If `true`, the user cannot modify the value.
+         */
+        "isSubmit"?: boolean;
+        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
@@ -767,6 +775,10 @@ declare namespace LocalJSX {
           * Event input onblur.
          */
         "onBdsOnBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event input enter.
+         */
+        "onBdsSubmit"?: (event: CustomEvent<any>) => void;
         /**
           * A tip for the user who can enter no controls.
          */

@@ -17,8 +17,9 @@
 | `disabled`          | `disabled`        | Disabled input.                                                                                                                                                                  | `boolean`                                                             | `false`     |
 | `errorMessage`      | `error-message`   | Indicated to pass an feeback to user.                                                                                                                                            | `string`                                                              | `''`        |
 | `helperMessage`     | `helper-message`  | Indicated to pass a help the user in complex filling.                                                                                                                            | `string`                                                              | `''`        |
-| `icon`              | `icon`            | used for add icon in input left. Uses the bds-icon component.                                                                                                                    | `string`                                                              | `''`        |
+| `icon`              | `icon`            | Used for add icon in input left. Uses the bds-icon component.                                                                                                                    | `string`                                                              | `''`        |
 | `inputName`         | `input-name`      | Input Name                                                                                                                                                                       | `string`                                                              | `''`        |
+| `isSubmit`          | `is-submit`       | Used to dispatch an event after "Enter" key press                                                                                                                            | `boolean`                                                             | `false`     |
 | `label`             | `label`           | label in input, with he the input size increases.                                                                                                                                | `string`                                                              | `''`        |
 | `max`               | `max`             | The maximum value, which must not be less than its minimum (min attribute) value.                                                                                                | `string`                                                              | `undefined` |
 | `maxlength`         | `maxlength`       | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter. | `number`                                                              | `undefined` |
@@ -38,6 +39,7 @@
 | `bdsFocus`  | Event input focus.                  | `CustomEvent<any>`           |
 | `bdsInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
 | `bdsOnBlur` | Event input onblur.                 | `CustomEvent<any>`           |
+| `bdsSubmit` | Event input enter.                  | `CustomEvent<any>`           |
 
 
 ## Methods

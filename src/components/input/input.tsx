@@ -118,6 +118,12 @@ export class Input {
   @Prop() counterLengthRule?: InputCounterLengthRules | {} = {};
 
   /**
+   * TODO: 
+   * If `true`, the user cannot modify the value.
+   */
+  @Prop() isSubmit = false;
+
+  /**
    * Update the native input element when the value changes
    */
   @Watch('value')
@@ -146,6 +152,11 @@ export class Input {
   @Event() bdsFocus: EventEmitter;
 
   /**
+   * Event input enter.
+   */
+  @Event() bdsSubmit: EventEmitter;
+
+  /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
    * `input.focus()`.
    */
@@ -165,6 +176,17 @@ export class Input {
   @Method()
   async getInputElement(): Promise<HTMLInputElement> {
     return this.nativeInput;
+  }
+
+  private keyPressWrapper = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case 'Enter':
+        this.bdsSubmit.emit({ event, value: this.value });
+        if (this.isSubmit) {
+          this.value = "";
+        }
+        break;
+    }
   }
 
   private onInput = (ev: Event): void => {
@@ -260,6 +282,7 @@ export class Input {
             "input--pressed": isPressed,
           }}
           onClick={this.onClickWrapper}
+          onKeyPress={this.keyPressWrapper}
         >
           {this.renderIcon()}
           <div class="input__container">
