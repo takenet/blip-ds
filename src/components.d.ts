@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt, } from "./components/alert/alert-header/alert-header";
-import { ButtonSize, ButtonVariant, } from "./components/button/button";
+import { ButtonSize, ButtonType, ButtonVariant, } from "./components/button/button";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
@@ -60,6 +60,10 @@ export namespace Components {
           * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
          */
         "size"?: ButtonSize;
+        /**
+          * The type of the button. Can be one of:  'button', 'submit', 'reset';
+         */
+        "type": ButtonType;
         /**
           * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
          */
@@ -608,6 +612,10 @@ declare namespace LocalJSX {
           * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
          */
         "size"?: ButtonSize;
+        /**
+          * The type of the button. Can be one of:  'button', 'submit', 'reset';
+         */
+        "type"?: ButtonType;
         /**
           * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
          */

@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, Element } from "@stencil/core";
 
 export type ButtonSize = 'tall'
   | 'standard'
@@ -9,12 +9,18 @@ export type ButtonVariant = 'primary'
   | 'ghost'
   | 'dashed';
 
+  export type ButtonType = 'button'
+  | 'submit'
+  | 'reset'
+
 @Component({
   tag: 'bds-button',
   styleUrl: 'button.scss',
   shadow: true,
 })
 export class Button {
+  @Element() el!: HTMLElement;
+
   /**
    * 	If true, the base button will be disabled.
    */
@@ -46,6 +52,12 @@ export class Button {
    * If true, the text will be bold
    */
   @Prop() bold?: boolean = false;
+
+    /**
+   * The type of the button. Can be one of: 
+   * 'button', 'submit', 'reset';
+   */
+  @Prop() type: ButtonType = 'button';
 
 
   getSizeClass(): string {
@@ -82,12 +94,28 @@ export class Button {
     )
   }
 
+  private handleClick = (ev: Event) => {
+    const form = this.el.closest('form');
+    if (form) {
+      ev.preventDefault();
+
+      const fakeButton = document.createElement('button');
+      fakeButton.type = this.type;
+      fakeButton.style.display = 'none';
+      form.appendChild(fakeButton);
+      fakeButton.click();
+      fakeButton.remove();
+    }
+  }
+
   render(): HTMLElement {
     const sizeClass = this.getSizeClass();
 
     return (
       <button
+        onClick={this.handleClick}
         disabled={this.disabled}
+        type={this.type}
         class={{
           'button': true,
           [`button__${this.variant}`]: true,
