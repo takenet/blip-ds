@@ -31,7 +31,9 @@ To make these scss files available, the outputTargets.copy property was configur
 
 ### How to use
 
+```css
 @import "~blip-ds/dist/collection/styles/_colors.scss";
+```
 
 ## Framework Integrations
 
