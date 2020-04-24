@@ -29,6 +29,10 @@ Some SCSS Tokens have been defined within the Design System. Currently we have: 
 
 To make these scss files available, the outputTargets.copy property was configured inside stencil.config.ts, in which after build it is exported to the dist / collection / styles destination.
 
+### How to use
+
+@import "~blip-ds/dist/collection/styles/_colors.scss";
+
 ## Framework Integrations
 
 There is not much secret, if you need something more detailed I recommend reading the [documentação do StencilJS](https://stenciljs.com/docs/overview).
