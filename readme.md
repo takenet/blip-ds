@@ -23,6 +23,12 @@ Blip-DS is available as an npm package.
 npm i blip-ds
 ```
 
+## Style Tokens
+
+Some SCSS Tokens have been defined within the Design System. Currently we have: colors, fonts and zindex.
+
+To make these scss files available, the outputTargets.copy property was configured inside stencil.config.ts, in which after build it is exported to the dist / collection / styles destination.
+
 ## Framework Integrations
 
 There is not much secret, if you need something more detailed I recommend reading the [documentação do StencilJS](https://stenciljs.com/docs/overview).
