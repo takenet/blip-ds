@@ -60,6 +60,7 @@ const solidIconsName = [
   "user-engaged",
   "video",
   "voip",
+  "warning"
 ];
 
 const outlineIconsName = [
