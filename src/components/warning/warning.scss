@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.warning__body {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: $color-neutral-light-breeze;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.warning__icon {
+  color: $color-secondary-cheetos;
+}
+
+.warning__message {
+  color: $color-neutral-dark-rooftop;
+  margin-left: 8px;
+}

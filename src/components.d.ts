@@ -432,6 +432,8 @@ export namespace Components {
          */
         "variant"?: FontSize;
     }
+    interface BdsWarning {
+    }
 }
 declare global {
     interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
@@ -548,6 +550,12 @@ declare global {
         prototype: HTMLBdsTypoElement;
         new (): HTMLBdsTypoElement;
     };
+    interface HTMLBdsWarningElement extends Components.BdsWarning, HTMLStencilElement {
+    }
+    var HTMLBdsWarningElement: {
+        prototype: HTMLBdsWarningElement;
+        new (): HTMLBdsWarningElement;
+    };
     interface HTMLElementTagNameMap {
         "bds-alert": HTMLBdsAlertElement;
         "bds-alert-actions": HTMLBdsAlertActionsElement;
@@ -568,6 +576,7 @@ declare global {
         "bds-select": HTMLBdsSelectElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-typo": HTMLBdsTypoElement;
+        "bds-warning": HTMLBdsWarningElement;
     }
 }
 declare namespace LocalJSX {
@@ -1024,6 +1033,8 @@ declare namespace LocalJSX {
          */
         "variant"?: FontSize;
     }
+    interface BdsWarning {
+    }
     interface IntrinsicElements {
         "bds-alert": BdsAlert;
         "bds-alert-actions": BdsAlertActions;
@@ -1044,6 +1055,7 @@ declare namespace LocalJSX {
         "bds-select": BdsSelect;
         "bds-select-option": BdsSelectOption;
         "bds-typo": BdsTypo;
+        "bds-warning": BdsWarning;
     }
 }
 export { LocalJSX as JSX };
@@ -1069,6 +1081,7 @@ declare module "@stencil/core" {
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
+            "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
         }
     }
 }
