@@ -1,0 +1,94 @@
+@import "mixins";
+
+.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation:toastAnimation 2s;
+}
+
+.toast {
+  ::before {
+    display: block;
+  }
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: $shadow-toast;
+  color: $color-snow-white;
+  opacity: 0;
+  visibility: hidden;
+
+  &--action--icon {
+    min-width: 440px;
+    max-width: 440px;
+    padding: 8px 20px;
+  }
+
+  &--action--button {
+    min-width: 440px;
+    max-width: 456px;
+    padding: 10px 20px;
+  }
+  
+  &--system {
+    background: $color-primary-main;
+  }
+  
+  &--error {
+    background: $color-secondary-delete;
+  }
+
+  &--success {
+    background: $color-secondary-true;
+  }
+
+  &--warning {
+    background: $color-secondary-cheetos;
+  }
+
+  bds-icon {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    &__icon {
+      //TODO: Verificar pq o ícone está bloqueando o alinhamento ao centro.
+      display: flex !important;
+      align-items: center;
+
+      bds-icon {
+        height: 100%;
+        // margin-left: 4px;
+      }
+    }
+    &__button {
+      bds-button {
+        // margin-left: 10px;
+      }
+    }
+  }
+}
+
+// TODO: Change the animation
+@keyframes toastAnimation {
+	0% {left: -200px;}
+	40% {left: 1px;}
+	60% {left: 1px;}
+	100% {left: -600px;}
+}

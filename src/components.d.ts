@@ -13,6 +13,7 @@ import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/ico
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
+import { ActionType, ActionVariant, } from "./components/toast/toast";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
     interface BdsAlert {
@@ -402,6 +403,36 @@ export namespace Components {
         "selected"?: boolean;
         "value": any;
     }
+    interface BdsToast {
+        /**
+          * ActionType. Defines if the button should have a button or an icon. Can be one of:  'icon', 'button';
+         */
+        "actionType": ActionType;
+        /**
+          * If the action type is button, this will be the text of the button:
+         */
+        "buttonText": string;
+        /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Can be used outside to open the toast
+         */
+        "open": () => Promise<void>;
+        /**
+          * The text content of the component:
+         */
+        "text": string;
+        /**
+          * The title of the component:
+         */
+        "toastTitle": string;
+        /**
+          * Variant. Defines the color of the toast. Can be one of:  'system', 'error', 'success', 'warning';
+         */
+        "variant": ActionVariant;
+    }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -433,6 +464,8 @@ export namespace Components {
         "variant"?: FontSize;
     }
     interface BdsWarning {
+    }
+    interface ToastContainer {
     }
 }
 declare global {
@@ -544,6 +577,12 @@ declare global {
         prototype: HTMLBdsSelectOptionElement;
         new (): HTMLBdsSelectOptionElement;
     };
+    interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
+    }
+    var HTMLBdsToastElement: {
+        prototype: HTMLBdsToastElement;
+        new (): HTMLBdsToastElement;
+    };
     interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {
     }
     var HTMLBdsTypoElement: {
@@ -555,6 +594,12 @@ declare global {
     var HTMLBdsWarningElement: {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
+    };
+    interface HTMLToastContainerElement extends Components.ToastContainer, HTMLStencilElement {
+    }
+    var HTMLToastContainerElement: {
+        prototype: HTMLToastContainerElement;
+        new (): HTMLToastContainerElement;
     };
     interface HTMLElementTagNameMap {
         "bds-alert": HTMLBdsAlertElement;
@@ -575,8 +620,10 @@ declare global {
         "bds-radio": HTMLBdsRadioElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
+        "bds-toast": HTMLBdsToastElement;
         "bds-typo": HTMLBdsTypoElement;
         "bds-warning": HTMLBdsWarningElement;
+        "toast-container": HTMLToastContainerElement;
     }
 }
 declare namespace LocalJSX {
@@ -1003,6 +1050,32 @@ declare namespace LocalJSX {
         "selected"?: boolean;
         "value": any;
     }
+    interface BdsToast {
+        /**
+          * ActionType. Defines if the button should have a button or an icon. Can be one of:  'icon', 'button';
+         */
+        "actionType"?: ActionType;
+        /**
+          * If the action type is button, this will be the text of the button:
+         */
+        "buttonText"?: string;
+        /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * The text content of the component:
+         */
+        "text"?: string;
+        /**
+          * The title of the component:
+         */
+        "toastTitle"?: string;
+        /**
+          * Variant. Defines the color of the toast. Can be one of:  'system', 'error', 'success', 'warning';
+         */
+        "variant"?: ActionVariant;
+    }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -1035,6 +1108,8 @@ declare namespace LocalJSX {
     }
     interface BdsWarning {
     }
+    interface ToastContainer {
+    }
     interface IntrinsicElements {
         "bds-alert": BdsAlert;
         "bds-alert-actions": BdsAlertActions;
@@ -1054,8 +1129,10 @@ declare namespace LocalJSX {
         "bds-radio": BdsRadio;
         "bds-select": BdsSelect;
         "bds-select-option": BdsSelectOption;
+        "bds-toast": BdsToast;
         "bds-typo": BdsTypo;
         "bds-warning": BdsWarning;
+        "toast-container": ToastContainer;
     }
 }
 export { LocalJSX as JSX };
@@ -1080,8 +1157,10 @@ declare module "@stencil/core" {
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
+            "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+            "toast-container": LocalJSX.ToastContainer & JSXBase.HTMLAttributes<HTMLToastContainerElement>;
         }
     }
 }
