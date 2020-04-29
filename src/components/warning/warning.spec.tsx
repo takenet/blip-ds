@@ -16,7 +16,7 @@ describe('bds-warning', () => {
       <bds-warning>
         <mock:shadow-root>
           <div class="warning__body">
-            <bds-icon name="warning" theme="outline" class="warning__icon"></bds-icon>
+              <bds-icon class="warning__icon" name="warning" size="small" theme="solid"></bds-icon>
               <bds-typo variant="fs-14" tag="span" class="warning__message">
                 <slot></slot>
             </bds-typo>
