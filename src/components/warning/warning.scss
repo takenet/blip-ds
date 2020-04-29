@@ -1,6 +1,10 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
 .warning__body {
   display: flex;
-  position: relative;
   align-items: center;
   width: 100%;
   max-width: 100%;
@@ -15,5 +19,6 @@
 }
 
 .warning__message {
+  color: $color-neutral-dark-rooftop;
   margin-left: 8px;
 }

@@ -1,8 +1,8 @@
-import { Component, ComponentInterface, Host, h, } from '@stencil/core';
+import { Component, ComponentInterface, Host, h } from "@stencil/core";
 
 @Component({
-  tag: 'bds-warning',
-  styleUrl: 'warning.scss',
+  tag: "bds-warning",
+  styleUrl: "warning.scss",
   shadow: true,
 })
 export class Warning implements ComponentInterface {
@@ -10,10 +10,15 @@ export class Warning implements ComponentInterface {
     return (
       <Host>
         <div class="warning__body">
-            <bds-icon name="warning" theme="outline" class="warning__icon"></bds-icon>
-            <bds-typo variant="fs-14" tag="span" class="warning__message">
-              <slot></slot>
-            </bds-typo>
+          <bds-icon
+            class="warning__icon"
+            theme="solid"
+            size="small"
+            name="warning"
+          ></bds-icon>
+          <bds-typo variant="fs-14" tag="span" class="warning__message">
+            <slot />
+          </bds-typo>
         </div>
       </Host>
     );
