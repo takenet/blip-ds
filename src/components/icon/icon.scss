@@ -1,7 +1,9 @@
 @mixin size($size) {
   width: $size;
+  min-width: $size;
   height: $size;
   max-height: $size;
+  min-height: $size;
 }
 
 $icon-xxx-large: 40px;
