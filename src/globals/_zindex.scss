@@ -1,3 +1,15 @@
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+
+// Base Variables
+
 $zindex-1000: 1000;
 $zindex-2000: 2000;
 $zindex-3000: 3000;
@@ -18,3 +30,15 @@ $zindex-17000: 17000;
 $zindex-18000: 18000;
 $zindex-19000: 19000;
 $zindex-20000: 20000;
+
+// Declarative Variables
+
+$zindex-footer: 1000;
+$zindex-header: 2000;
+$zindex-subHeader: 3000;
+$zindex-sidebar: 4000;
+$zindex-page: 5000; //(full-screen-container)
+$zindex-dropdown: 6000;
+$zindex-modaloverlay: 7000; //Modal Overlay/Toast Overlay
+$zindex-modal: 8000;
+$zindex-toast: 9000;
