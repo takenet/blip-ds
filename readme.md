@@ -29,17 +29,22 @@ Some SCSS Tokens have been defined within the Design System. Currently we have: 
 
 To make these scss files available, the outputTargets.copy property was configured inside stencil.config.ts, in which after build it is exported to the dist / collection / styles destination.
 
-### How to use
+#### How to use
 
 ```css
 @import "~blip-ds/dist/collection/styles/_colors.scss";
 ```
 
+## Style Guide
+
+It is recommended that you use the Style Guide defined by the Stenciljs team.
+[https://stenciljs.com/docs/style-guide](https://stenciljs.com/docs/style-guide)
+
 ## Framework Integrations
 
 There is not much secret, if you need something more detailed I recommend reading the [documentação do StencilJS](https://stenciljs.com/docs/overview).
 
-### Angular
+#### Angular
 
 File: main.ts
 ```typescript
@@ -126,7 +131,7 @@ export class AppComponent {
 
 ```
 
-### React
+#### React
 
 ```jsx
 import React from 'react';
@@ -182,7 +187,7 @@ function CountBlipDS() {
 }
 ```
 
-### Vue
+#### Vue
 
 ```javascript
 import Vue from 'vue'
@@ -251,7 +256,7 @@ export default {
 ## Building 
 
 
-### Getting Started
+#### Getting Started
 
 To start building a new web component:
 
