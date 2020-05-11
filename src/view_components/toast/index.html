@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Blip DS</title>
+
+    <script type="module" src="/build/blip-ds.esm.js"></script>
+    <script nomodule src="/build/blip-ds.js"></script>
+  </head>
+  <style>
+    body {
+      /* background: #f5f8f9; */
+      background: #0a0f1a;
+    }
+
+    .toast-container {
+      position: absolute;
+      bottom: 20px;
+      left: 32px;
+    }
+  </style>
+
+  <body>
+    <toast-container>
+      <bds-toast
+        icon="info"
+        toast-name="default-toast"
+        toast-title="Default Toast"
+        text="Lorem ipsum dolor sit amet"
+        variant="system"
+        action-type="icon"
+        button-text="Fechar"
+        button-action="close"
+        duration="0"
+      >
+      </bds-toast>
+      <bds-toast
+        icon="error"
+        toast-name="error-toast"
+        toast-title="Error!"
+        text="Lorem ipsum dolor sit amet"
+        variant="error"
+        action-type="icon"
+        button-text="Atualizar"
+        button-action="custom"
+        duration="0"
+      >
+      <bds-toast
+        icon="bell"
+        toast-name="success-toast"
+        toast-title="Success!"
+        text="Lorem ipsum dolor sit amet"
+        variant="success"
+        action-type="icon"
+        button-text="Ok"
+        duration="0"
+      >
+      <bds-toast
+        icon="warning"
+        toast-name="warning-toast"
+        toast-title="Warning!"
+        text="Lorem ipsum dolor sit amet"
+        variant="warning"
+        action-type="button"
+        button-text="Fechar"
+        duration="0"
+      >
+      </bds-toast>
+    </toast-container>
+
+    <bds-button type="button" size="short" id="open1" style="float: left; margin-right: 5px;">show Default</bds-button>
+    <bds-button type="button" size="short" id="open2" style="float: left; margin-right: 5px;">show Error</bds-button>
+    <bds-button type="button" size="short" id="open3" style="float: left; margin-right: 5px;">show Sucess</bds-button>
+    <bds-button type="button" size="short" id="open4" style="float: left; margin-right: 5px;">show Warning</bds-button>
+  </body>
+
+  <script>
+    const botaoDefault = document.querySelector("bds-button#open1");
+    const botaoError = document.querySelector("bds-button#open2");
+    const botaoSuccess = document.querySelector("bds-button#open3");
+    const botaoWarning = document.querySelector("bds-button#open4");
+
+    const container = document.querySelector("toast-container");
+    const toastDefault = container.querySelector("bds-toast[toast-name='default-toast']");
+    const toastError = container.querySelector("bds-toast[toast-name='error-toast']");
+    const toastSuccess = container.querySelector("bds-toast[toast-name='success-toast']");
+    const toastWarning = container.querySelector("bds-toast[toast-name='warning-toast']");
+
+    botaoDefault.addEventListener("click", () => {
+      toastDefault.open();
+    });
+
+    botaoError.addEventListener("click", () => {
+      toastError.open();
+    });
+    
+    botaoSuccess.addEventListener("click", () => {
+      toastSuccess.open();
+    });
+    
+    botaoWarning.addEventListener("click", () => {
+      toastWarning.open();
+    });
+
+    /**
+     * Event to execute when the action button on toast is clicked
+     */
+    document.addEventListener("toastButtonClick", (element) => {
+      switch (element.path[0].toastName) {
+        case toastDefault.getAttribute('toast-name'):
+          //location.reload();
+          toastDefault.close(element);
+          break;
+        case toastError.getAttribute('toast-name'):
+          alert('oi');
+          location.reload();
+          //toastError.close(element);
+          break;
+        case toastSuccess.getAttribute('toast-name'):
+          toastSuccess.close(element);
+          break;
+        case toastWarning.getAttribute('toast-name'):
+          toastWarning.close(element);
+          break;
+        default:
+          break;
+      }
+    });
+  </script>
+</html>

@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Blip DS</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>Blip DS</title>
+    <script type="module" src="/build/blip-ds.esm.js"></script>
+    <script nomodule src="/build/blip-ds.js"></script>
+  </head>
+  <style>
+    body {
+      /* background: #f5f8f9; */
+      background: #0a0f1a;
+    }
 
-  <script type="module" src="/build/blip-ds.esm.js"></script>
-  <script nomodule src="/build/blip-ds.js"></script>
-</head>
-<style>
-  body {
-    /* background: #f5f8f9; */
-    background: #0a0f1a;
-  }
+    .toast-container {
+      position: absolute;
+      bottom: 20px;
+      left: 32px;
+    }
+  </style>
 
-  .toast-container {
-    position: absolute;
-    bottom: 20px;
-    left: 32px;
-  }
-</style>
+  <body>
+    <toast-container>
+      <bds-toast
+        icon="bell"
+        action-type="button"
+        toast-title="titulo toast"
+        text="Lorem ipsum"
+        button-text="Cancelar"
+      >
+      </bds-toast>
+    </toast-container>
 
-<body>
-  <toast-container>
-    <bds-toast icon="bell" action-type="button" toast-title="titulo toast"
-      text="Lorem ipsum" button-text="Cancelar">
-    </bds-toast>
-  </toast-container>
+    <button>add toast</button>
+  </body>
 
-<button>add toast</button>
-</body>
-
-<script>
-  const botao = document.querySelector('button');
-  botao.addEventListener('click', () => {
-    const toast = document.querySelector('bds-toast');
-    toast.open();
-    // const container = document.querySelector('toast-container');
-    // console.log(container);
-    // const toast = document.createElement('bds-toast');
-    // container.appendChild(toast);
-    // setTimeout(() => {
-    //   container.removeChild(toast);
-    // }, 4000);
-  })
-</script>
-
+  <script>
+    const botao = document.querySelector("button");
+    botao.addEventListener("click", () => {
+      const toast = document.querySelector("bds-toast");
+      toast.open();
+      // const container = document.querySelector('toast-container');
+      // console.log(container);
+      // const toast = document.createElement('bds-toast');
+      // container.appendChild(toast);
+      // setTimeout(() => {
+      //   container.removeChild(toast);
+      // }, 4000);
+    });
+  </script>
 </html>

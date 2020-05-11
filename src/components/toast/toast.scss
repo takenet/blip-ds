@@ -1,9 +1,23 @@
 @import "mixins";
 
+@mixin inherit-color() {
+  color: inherit;
+  background-color: inherit;
+}
+
 .show {
   opacity: 1 !important;
   visibility: visible !important;
-  animation:toastAnimation 2s;
+  animation:toastAnimationFadeIn 1s;
+
+  &:hover {
+    animation-play-state:paused;
+  }
+}
+
+.hidde {
+  transition: all 1s;
+  animation: toastAnimationFadeOut 0.5s;
 }
 
 .toast {
@@ -20,6 +34,7 @@
   color: $color-snow-white;
   opacity: 0;
   visibility: hidden;
+  margin-top: 10px;
 
   &--action--icon {
     min-width: 440px;
@@ -73,8 +88,9 @@
       align-items: center;
 
       bds-icon {
-        height: 100%;
-        // margin-left: 4px;
+        color: $color-snow-white;
+        border-radius: 4px;
+        cursor: pointer;
       }
     }
     &__button {
@@ -86,9 +102,48 @@
 }
 
 // TODO: Change the animation
-@keyframes toastAnimation {
-	0% {left: -200px;}
-	40% {left: 1px;}
-	60% {left: 1px;}
-	100% {left: -600px;}
+@keyframes toastAnimationFadeIn {
+	0% {
+    opacity: 0;
+    left: -200px;
+  }
+	50% {
+    opacity: 0.9;
+    left: 1px;
+  }
+	100% {
+    opacity: 1;
+  }
 }
+
+@keyframes toastAnimationFadeOut {
+  0% {
+    opacity: 1;
+  }
+	30% {
+    max-height: 60px;
+  }
+	80% {
+    opacity: 0;
+    max-height: 30px;
+  }
+	100% {
+    max-height: 0px;
+  }
+}
+// @keyframes toastAnimationFadeOut {
+//   0% {
+//     opacity: 1;
+//     left: -10px;
+//   }
+// 	50% {
+//     opacity: 0.1;
+//   }
+// 	80% {
+//     opacity: 0;
+//   }
+// 	100% {
+//     opacity: 0;
+//     left: -600px;
+//   }
+// }

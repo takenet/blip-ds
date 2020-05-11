@@ -85,6 +85,43 @@ $icon-button-padding: 4px;
   }
 }
 
+@mixin icon-button-secondary-white {
+  background: transparent;
+  color: $color-snow-white;
+
+  &:hover,
+  &:focus {
+    background: $color-secondary-white-bg-hover;
+    color: $color-snow-white;
+  }
+
+  &:active {
+    background: $color-secondary-white-bg-active;
+    color: $color-snow-white;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    color: $color-neutral-disabled-blues-text;
+    background: $color-neutral-disabled-blues-bg;
+
+    &:hover {
+      color: $color-neutral-disabled-blues-text;
+      background: $color-neutral-disabled-blues-bg;
+    }
+
+    &:focus {
+      color: $color-neutral-disabled-blues-text;
+      background: $color-neutral-disabled-blues-bg;
+    }
+
+    &:active {
+      color: $color-neutral-disabled-blues-text;
+      background: $color-neutral-disabled-blues-bg;
+    }
+  }
+}
+
 @mixin icon-button-delete {
   color: $color-neutral-dark-rooftop;
   background: transparent;
@@ -143,6 +180,10 @@ $icon-button-padding: 4px;
 
   &--secondary {
     @include icon-button-secondary();
+  }
+  
+  &--secondary-white {
+    @include icon-button-secondary-white();
   }
 
   &--delete {

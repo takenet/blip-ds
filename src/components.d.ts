@@ -13,7 +13,7 @@ import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/ico
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
-import { ActionType, ActionVariant, } from "./components/toast/toast";
+import { ActionType, ActionVariant, ButtonActionType, } from "./components/toast/toast";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
     interface BdsAlert {
@@ -58,15 +58,15 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: ButtonSize;
         /**
-          * The type of the button. Can be one of:  'button', 'submit', 'reset';
+          * The type of the button. Can be one of: 'button', 'submit', 'reset';
          */
         "type": ButtonType;
         /**
-          * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
     }
@@ -405,13 +405,25 @@ export namespace Components {
     }
     interface BdsToast {
         /**
-          * ActionType. Defines if the button should have a button or an icon. Can be one of:  'icon', 'button';
+          * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
          */
         "actionType": ActionType;
+        /**
+          * Define an action to the button toast
+         */
+        "buttonAction": ButtonActionType;
         /**
           * If the action type is button, this will be the text of the button:
          */
         "buttonText": string;
+        /**
+          * Can be used outside the component to close the toast
+         */
+        "close": (event: any) => Promise<void>;
+        /**
+          * Time to close the toast in seconds 0 = no auto close (default value)
+         */
+        "duration": number;
         /**
           * used for add the icon. Uses the bds-icon component.
          */
@@ -425,11 +437,15 @@ export namespace Components {
          */
         "text": string;
         /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "toastName": string;
+        /**
           * The title of the component:
          */
         "toastTitle": string;
         /**
-          * Variant. Defines the color of the toast. Can be one of:  'system', 'error', 'success', 'warning';
+          * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';
          */
         "variant": ActionVariant;
     }
@@ -665,15 +681,15 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: ButtonSize;
         /**
-          * The type of the button. Can be one of:  'button', 'submit', 'reset';
+          * The type of the button. Can be one of: 'button', 'submit', 'reset';
          */
         "type"?: ButtonType;
         /**
-          * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
     }
@@ -1052,27 +1068,43 @@ declare namespace LocalJSX {
     }
     interface BdsToast {
         /**
-          * ActionType. Defines if the button should have a button or an icon. Can be one of:  'icon', 'button';
+          * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
          */
         "actionType"?: ActionType;
+        /**
+          * Define an action to the button toast
+         */
+        "buttonAction"?: ButtonActionType;
         /**
           * If the action type is button, this will be the text of the button:
          */
         "buttonText"?: string;
         /**
+          * Time to close the toast in seconds 0 = no auto close (default value)
+         */
+        "duration"?: number;
+        /**
           * used for add the icon. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Event used to execute some action when the action button on the toast is clicked
+         */
+        "onToastButtonClick"?: (event: CustomEvent<any>) => void;
         /**
           * The text content of the component:
          */
         "text"?: string;
         /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "toastName"?: string;
+        /**
           * The title of the component:
          */
         "toastTitle"?: string;
         /**
-          * Variant. Defines the color of the toast. Can be one of:  'system', 'error', 'success', 'warning';
+          * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';
          */
         "variant"?: ActionVariant;
     }
