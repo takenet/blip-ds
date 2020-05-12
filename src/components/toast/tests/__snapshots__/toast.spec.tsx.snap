@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`bds-toast should render the component 1`] = `
+<toast-container>
+  <mock:shadow-root>
+    <div>
+      <slot></slot>
+    </div>
+  </mock:shadow-root>
+</toast-container>
+`;

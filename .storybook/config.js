@@ -1,7 +1,9 @@
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { addReadme } from 'storybook-readme/html';
 import centered from '@storybook/addon-centered/react';
 
+addDecorator(addReadme);
 addDecorator(centered);
 addParameters({
   viewport: {

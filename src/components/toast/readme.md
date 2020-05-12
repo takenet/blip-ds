@@ -7,17 +7,18 @@
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                                         | Type                                            | Default     |
-| -------------- | --------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----------- |
-| `actionType`   | `action-type`   | ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button'; | `"button" \| "icon"`                            | `"icon"`    |
-| `buttonAction` | `button-action` | Define an action to the button toast                                                                | `"close" \| "custom"`                           | `"custom"`  |
-| `buttonText`   | `button-text`   | If the action type is button, this will be the text of the button:                                  | `string`                                        | `undefined` |
-| `duration`     | `duration`      | Time to close the toast in seconds 0 = no auto close (default value)                                | `number`                                        | `0`         |
-| `icon`         | `icon`          | used for add the icon. Uses the bds-icon component.                                                 | `string`                                        | `null`      |
-| `text`         | `text`          | The text content of the component:                                                                  | `string`                                        | `undefined` |
-| `toastName`    | `toast-name`    | used for add the icon. Uses the bds-icon component.                                                 | `string`                                        | `null`      |
-| `toastTitle`   | `toast-title`   | The title of the component:                                                                         | `string`                                        | `undefined` |
-| `variant`      | `variant`       | Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';    | `"error" \| "success" \| "system" \| "warning"` | `"system"`  |
+| Property       | Attribute       | Description                                                                                                                                                                                                                                              | Type                                            | Default     |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----------- |
+| `actionType`   | `action-type`   | ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';                                                                                                                                                      | `"button" \| "icon"`                            | `"button"`  |
+| `buttonAction` | `button-action` | Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted. | `"close" \| "custom"`                           | `"close"`   |
+| `buttonText`   | `button-text`   | If the action type is button, this will be the text of the button:                                                                                                                                                                                       | `string`                                        | `undefined` |
+| `duration`     | `duration`      | Time to close the toast in seconds 0 = no auto close (default value)                                                                                                                                                                                     | `number`                                        | `0`         |
+| `hide`         | `hide`          | Controls the hide event of the component:                                                                                                                                                                                                                | `boolean`                                       | `false`     |
+| `icon`         | `icon`          | used for add the icon. Uses the bds-icon component.                                                                                                                                                                                                      | `string`                                        | `null`      |
+| `show`         | `show`          | Controls the open event of the component:                                                                                                                                                                                                                | `boolean`                                       | `false`     |
+| `toastText`    | `toast-text`    | The text content of the component:                                                                                                                                                                                                                       | `string`                                        | `undefined` |
+| `toastTitle`   | `toast-title`   | The title of the component:                                                                                                                                                                                                                              | `string`                                        | `undefined` |
+| `variant`      | `variant`       | Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';                                                                                                                                                         | `"error" \| "success" \| "system" \| "warning"` | `"system"`  |
 
 
 ## Events
@@ -39,7 +40,7 @@ Type: `Promise<void>`
 
 
 
-### `open() => Promise<void>`
+### `create({ toastContainer, toastElement, actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>`
 
 Can be used outside to open the toast
 

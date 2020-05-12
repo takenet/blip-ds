@@ -5,7 +5,7 @@ export type ButtonSize = "tall" | "standard" | "short";
 export type ButtonVariant =
   | "primary"
   | "secondary"
-  | "secondary_white"
+  | "secondary--white"
   | "ghost"
   | "dashed";
 

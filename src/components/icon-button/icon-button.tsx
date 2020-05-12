@@ -5,7 +5,7 @@ export type IconButtonSize = "tall" | "standard" | "short";
 export type IconButtonVariant =
   | "primary"
   | "secondary"
-  | "secondary_white"
+  | "secondary--white"
   | "delete";
 export type IconSizeMap = { [key in string]: IconSize };
 export type IconButtonVariantMap = { [key in IconButtonVariant]: string };
@@ -47,9 +47,8 @@ export class IconButton {
   private mapVariantStyle: IconButtonVariantMap = {
     primary: "icon__button--primary",
     secondary: "icon__button--secondary",
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    secondary_white: "icon__button--secondary-white",
     delete: "icon__button--delete",
+    "secondary--white": "icon__button--secondary-white",
   };
 
   render(): HTMLElement {

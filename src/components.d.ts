@@ -13,7 +13,7 @@ import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/ico
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
-import { ActionType, ActionVariant, ButtonActionType, } from "./components/toast/toast";
+import { ActionType, ButtonActionType, CreateToastType, VariantType, } from "./components/toast/toast";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
     interface BdsAlert {
@@ -409,7 +409,7 @@ export namespace Components {
          */
         "actionType": ActionType;
         /**
-          * Define an action to the button toast
+          * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
          */
         "buttonAction": ButtonActionType;
         /**
@@ -421,25 +421,29 @@ export namespace Components {
          */
         "close": (event: any) => Promise<void>;
         /**
+          * Can be used outside to open the toast
+         */
+        "create": ({ toastContainer, toastElement, actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        /**
           * Time to close the toast in seconds 0 = no auto close (default value)
          */
         "duration": number;
+        /**
+          * Controls the hide event of the component:
+         */
+        "hide": boolean;
         /**
           * used for add the icon. Uses the bds-icon component.
          */
         "icon"?: string;
         /**
-          * Can be used outside to open the toast
+          * Controls the open event of the component:
          */
-        "open": () => Promise<void>;
+        "show": boolean;
         /**
           * The text content of the component:
          */
-        "text": string;
-        /**
-          * used for add the icon. Uses the bds-icon component.
-         */
-        "toastName": string;
+        "toastText": string;
         /**
           * The title of the component:
          */
@@ -447,7 +451,7 @@ export namespace Components {
         /**
           * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';
          */
-        "variant": ActionVariant;
+        "variant": VariantType;
     }
     interface BdsTypo {
         /**
@@ -1072,7 +1076,7 @@ declare namespace LocalJSX {
          */
         "actionType"?: ActionType;
         /**
-          * Define an action to the button toast
+          * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
          */
         "buttonAction"?: ButtonActionType;
         /**
@@ -1084,6 +1088,10 @@ declare namespace LocalJSX {
          */
         "duration"?: number;
         /**
+          * Controls the hide event of the component:
+         */
+        "hide"?: boolean;
+        /**
           * used for add the icon. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -1092,13 +1100,13 @@ declare namespace LocalJSX {
          */
         "onToastButtonClick"?: (event: CustomEvent<any>) => void;
         /**
+          * Controls the open event of the component:
+         */
+        "show"?: boolean;
+        /**
           * The text content of the component:
          */
-        "text"?: string;
-        /**
-          * used for add the icon. Uses the bds-icon component.
-         */
-        "toastName"?: string;
+        "toastText"?: string;
         /**
           * The title of the component:
          */
@@ -1106,7 +1114,7 @@ declare namespace LocalJSX {
         /**
           * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';
          */
-        "variant"?: ActionVariant;
+        "variant"?: VariantType;
     }
     interface BdsTypo {
         /**

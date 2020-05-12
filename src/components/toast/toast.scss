@@ -7,15 +7,14 @@
 
 .show {
   opacity: 1 !important;
-  visibility: visible !important;
   animation:toastAnimationFadeIn 1s;
 
   &:hover {
-    animation-play-state:paused;
+    animation-play-state: paused;
   }
 }
 
-.hidde {
+.hide {
   transition: all 1s;
   animation: toastAnimationFadeOut 0.5s;
 }
@@ -33,13 +32,16 @@
   box-shadow: $shadow-toast;
   color: $color-snow-white;
   opacity: 0;
-  visibility: hidden;
-  margin-top: 10px;
+  margin-top: 16px;
 
   &--action--icon {
     min-width: 440px;
     max-width: 440px;
     padding: 8px 20px;
+
+    bds-icon-button {
+      height: 32px;
+    }
   }
 
   &--action--button {
@@ -83,7 +85,6 @@
     display: flex;
     align-items: center;
     &__icon {
-      //TODO: Verificar pq o ícone está bloqueando o alinhamento ao centro.
       display: flex !important;
       align-items: center;
 
@@ -93,15 +94,9 @@
         cursor: pointer;
       }
     }
-    &__button {
-      bds-button {
-        // margin-left: 10px;
-      }
-    }
   }
 }
 
-// TODO: Change the animation
 @keyframes toastAnimationFadeIn {
 	0% {
     opacity: 0;
@@ -131,19 +126,3 @@
     max-height: 0px;
   }
 }
-// @keyframes toastAnimationFadeOut {
-//   0% {
-//     opacity: 1;
-//     left: -10px;
-//   }
-// 	50% {
-//     opacity: 0.1;
-//   }
-// 	80% {
-//     opacity: 0;
-//   }
-// 	100% {
-//     opacity: 0;
-//     left: -600px;
-//   }
-// }
