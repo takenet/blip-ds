@@ -77,8 +77,7 @@ export class Button {
     return (
       <div
         class={{
-          // eslint-disable-next-line @typescript-eslint/camelcase
-          button__content: true,
+          "button__content": true,
           [`button__content__${this.variant}`]: true,
           [`button__content__${this.variant}--disabled`]: this.disabled,
         }}

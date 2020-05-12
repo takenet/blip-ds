@@ -40,7 +40,6 @@
     "@stencil/sass": "^1.1.1",
     "@storybook/addon-backgrounds": "^5.3.14",
     "@storybook/addon-centered": "^5.3.14",
-    "@storybook/addon-info": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.14",
     "@storybook/addon-notes": "^5.3.14",
     "@storybook/addon-viewport": "^5.3.14",
