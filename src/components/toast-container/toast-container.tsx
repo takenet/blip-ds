@@ -1,11 +1,11 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'toast-container',
+  tag: 'bds-toast-container',
   styleUrl: 'toast-container.scss',
   shadow: true,
 })
-export class ToastContainer {
+export class BdsToastContainer {
   render() {
     return (
       <Host>

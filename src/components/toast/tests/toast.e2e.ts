@@ -3,7 +3,7 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('toast e2e tests', () => {
     it('should open the toast', async () => {
         const page = await newE2EPage({
-            html: `<toast-container></toast-container><bds-toast></bds-toast>`
+            html: `<bds-toast-container></bds-toast-container><bds-toast></bds-toast>`
         });
         
         const toast = await page.find('bds-toast');
@@ -17,7 +17,7 @@ describe('toast e2e tests', () => {
 
     it('should hide the toast', async () => {
         const page = await newE2EPage({
-            html: `<toast-container></toast-container><bds-toast></bds-toast>`
+            html: `<bds-toast-container></bds-toast-container><bds-toast></bds-toast>`
         });
         
         const toast = await page.find('bds-toast');

@@ -16,7 +16,7 @@ export type VariantType = "system" | "error" | "success" | "warning";
 export type ButtonActionType = "close" | "custom";
 
 export type CreateToastType = {
-  toastContainer: HTMLToastContainerElement;
+  toastContainer: HTMLBdsToastContainerElement;
   toastElement: HTMLBdsToastElement;
   actionType: ActionType;
   buttonAction: ButtonActionType;
@@ -43,12 +43,12 @@ export class BdsToast implements ComponentInterface {
    * ActionType. Defines if the button should have a button or an icon. Can be one of:
    * 'icon', 'button';
    */
-  @Prop() actionType: ActionType = "button";
+  @Prop() actionType: ActionType = 'button';
   /**
    * Variant. Defines the color of the toast. Can be one of:
    * 'system', 'error', 'success', 'warning';
    */
-  @Prop() variant: VariantType = "system";
+  @Prop() variant: VariantType = 'system';
   /**
    * The title of the component:
    */
@@ -72,7 +72,7 @@ export class BdsToast implements ComponentInterface {
    * if the action type is set to close, the button will close automatically.
    * if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
    */
-  @Prop() buttonAction: ButtonActionType = "close";
+  @Prop() buttonAction: ButtonActionType = 'close';
   /**
    * Controls the open event of the component:
    */
@@ -88,11 +88,9 @@ export class BdsToast implements ComponentInterface {
   /**
    * Sends an event to be used when creating an action when clicking the toast button
    */
-  private _buttonClickHandler = (event) => {
-    const element = event.path.find((item) => item.localName === "bds-toast");
-
-    if (this.buttonAction === "close") this.close(event);
-    else this.toastButtonClick.emit({ element });
+  private _buttonClickHandler = () => {
+    if (this.buttonAction === 'close') this.close();
+    else this.toastButtonClick.emit( this.el );
   };
 
   /**
@@ -100,7 +98,6 @@ export class BdsToast implements ComponentInterface {
    */
   @Method()
   async create({
-    toastContainer,
     toastElement,
     actionType,
     buttonAction,
@@ -120,7 +117,6 @@ export class BdsToast implements ComponentInterface {
     toastElement.variant = variant || 'system';
     toastElement.duration = duration * 1000 || 0;
 
-    toastContainer.appendChild(toastElement);
     toastElement.show = true;
 
     if (toastElement.duration > 0) {
@@ -137,15 +133,12 @@ export class BdsToast implements ComponentInterface {
    * Can be used outside the component to close the toast
    */
   @Method()
-  async close(event) {
-    const element = event.path.find((item) => item.localName === "bds-toast");
-    const tElement = await element.shadowRoot.childNodes[1];
-
-    tElement.classList.remove('show');
-    tElement.classList.add('hide');
+  async close() {
+    this.el.shadowRoot.querySelector('div').classList.remove('show');
+    this.el.shadowRoot.querySelector('div').classList.add('hide');
 
     setTimeout(() => {
-      element.remove();
+      this.el.remove();
     }, 400);
   }
 
@@ -183,20 +176,22 @@ export class BdsToast implements ComponentInterface {
           }}
         >
           {this.actionType === "button" ? (
-            <bds-button
-              variant="secondary--white"
-              onClick={(event) => this._buttonClickHandler(event)}
-              size="short"
-            >
-              {this.buttonText}
-            </bds-button>
+            <button onClick={() => this._buttonClickHandler()}>
+              <bds-button
+                variant="secondary--white"
+                size="short"
+              >
+                {this.buttonText}
+              </bds-button>
+            </button>
           ) : (
-            <bds-icon-button
-              size="short"
-              variant="secondary--white"
-              icon="close"
-              onClick={(event) => this.close(event)}
-            />
+            <button onClick={() => this._buttonClickHandler()}>
+              <bds-icon-button
+                size="short"
+                variant="secondary--white"
+                icon="close"
+              />
+            </button>
           )}
         </div>
       </div>

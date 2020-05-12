@@ -19,7 +19,7 @@ export const toastSystem = () => {
 
   const showToast = async () => {
     const newtoast = document.createElement('bds-toast');
-    const toastContainer = document.querySelector("toast-container").shadowRoot;
+    const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
     toastContainer.appendChild(newtoast);
 
     const icon = text('icon', 'info');
@@ -32,7 +32,6 @@ export const toastSystem = () => {
     const buttonAction = select('button-action', buttonActionOptions, 'close');
 
     await newtoast.create({
-      toastContainer: toastContainer,
       toastElement: newtoast,
       variant,
       actionType,
@@ -48,7 +47,7 @@ export const toastSystem = () => {
   
   return (
     <>
-    <toast-container></toast-container>
+    <bds-toast-container></bds-toast-container>
     <bds-button onClick={() => showToast()}>Show toast</bds-button>
     </>
   );

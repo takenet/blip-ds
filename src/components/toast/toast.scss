@@ -84,6 +84,13 @@
   &__action {
     display: flex;
     align-items: center;
+
+    button {
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+    
     &__icon {
       display: flex !important;
       align-items: center;

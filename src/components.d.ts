@@ -419,11 +419,11 @@ export namespace Components {
         /**
           * Can be used outside the component to close the toast
          */
-        "close": (event: any) => Promise<void>;
+        "close": () => Promise<void>;
         /**
           * Can be used outside to open the toast
          */
-        "create": ({ toastContainer, toastElement, actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        "create": ({ toastElement, actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
         /**
           * Time to close the toast in seconds 0 = no auto close (default value)
          */
@@ -452,6 +452,8 @@ export namespace Components {
           * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';
          */
         "variant": VariantType;
+    }
+    interface BdsToastContainer {
     }
     interface BdsTypo {
         /**
@@ -484,8 +486,6 @@ export namespace Components {
         "variant"?: FontSize;
     }
     interface BdsWarning {
-    }
-    interface ToastContainer {
     }
 }
 declare global {
@@ -603,6 +603,12 @@ declare global {
         prototype: HTMLBdsToastElement;
         new (): HTMLBdsToastElement;
     };
+    interface HTMLBdsToastContainerElement extends Components.BdsToastContainer, HTMLStencilElement {
+    }
+    var HTMLBdsToastContainerElement: {
+        prototype: HTMLBdsToastContainerElement;
+        new (): HTMLBdsToastContainerElement;
+    };
     interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {
     }
     var HTMLBdsTypoElement: {
@@ -614,12 +620,6 @@ declare global {
     var HTMLBdsWarningElement: {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
-    };
-    interface HTMLToastContainerElement extends Components.ToastContainer, HTMLStencilElement {
-    }
-    var HTMLToastContainerElement: {
-        prototype: HTMLToastContainerElement;
-        new (): HTMLToastContainerElement;
     };
     interface HTMLElementTagNameMap {
         "bds-alert": HTMLBdsAlertElement;
@@ -641,9 +641,9 @@ declare global {
         "bds-select": HTMLBdsSelectElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-toast": HTMLBdsToastElement;
+        "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-typo": HTMLBdsTypoElement;
         "bds-warning": HTMLBdsWarningElement;
-        "toast-container": HTMLToastContainerElement;
     }
 }
 declare namespace LocalJSX {
@@ -1116,6 +1116,8 @@ declare namespace LocalJSX {
          */
         "variant"?: VariantType;
     }
+    interface BdsToastContainer {
+    }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -1148,8 +1150,6 @@ declare namespace LocalJSX {
     }
     interface BdsWarning {
     }
-    interface ToastContainer {
-    }
     interface IntrinsicElements {
         "bds-alert": BdsAlert;
         "bds-alert-actions": BdsAlertActions;
@@ -1170,9 +1170,9 @@ declare namespace LocalJSX {
         "bds-select": BdsSelect;
         "bds-select-option": BdsSelectOption;
         "bds-toast": BdsToast;
+        "bds-toast-container": BdsToastContainer;
         "bds-typo": BdsTypo;
         "bds-warning": BdsWarning;
-        "toast-container": ToastContainer;
     }
 }
 export { LocalJSX as JSX };
@@ -1198,9 +1198,9 @@ declare module "@stencil/core" {
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
+            "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
-            "toast-container": LocalJSX.ToastContainer & JSXBase.HTMLAttributes<HTMLToastContainerElement>;
         }
     }
 }

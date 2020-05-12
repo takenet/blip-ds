@@ -17,55 +17,11 @@
       background: #0a0f1a;
     }
 
-    .toast-container {
-      position: absolute;
-      bottom: 20px;
-      left: 32px;
-    }
   </style>
 
   <body>
-    <toast-container>
-    </toast-container>
-    <button id="toast1">add toast</button>
-    <button id="toast2">add toast</button>
   </body>
 
   <script>
-    const botao = document.querySelector("#toast1");
-    const botao2 = document.querySelector("#toast2");
-
-    botao.addEventListener("click", async () => {
-      const newtoast = document.createElement('bds-toast');
-      const toastContainer = document.querySelector("toast-container").shadowRoot;
-      toastContainer.appendChild(newtoast);
-      await newtoast.create({
-        toastContainer: toastContainer,
-        toastElement: newtoast,
-        buttonText: 'cancelar',
-        actionType: 'icon',
-        buttonAction: 'close',
-        toastText: 'ola alerta',
-        toastTitle: 'titulo',
-        variant: 'system',
-        duration: 0
-      });
-    });
-    botao2.addEventListener("click", async () => {
-      const newtoast = document.createElement('bds-toast');
-      const toastContainer = document.querySelector("toast-container").shadowRoot;
-      toastContainer.appendChild(newtoast);
-      await newtoast.create({
-        toastContainer: toastContainer,
-        toastElement: newtoast,
-        buttonText: 'cancelar',
-        actionType: 'button',
-        buttonAction: 'close',
-        toastText: 'ola alerta',
-        toastTitle: 'titulo',
-        variant: 'warning',
-        duration: 0
-      });
-    });
   </script>
 </html>
