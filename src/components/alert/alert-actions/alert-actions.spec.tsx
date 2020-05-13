@@ -20,21 +20,21 @@ describe('alert-actions', () => {
         </mock:shadow-root>
       </bds-alert-actions>
     `);
-  })
+  });
 
   it('should render with shadow dom', async () => {
-    expect(page.root.shadowRoot.querySelector(".alert__actions")).toBeTruthy();
-    expect(page.root.querySelector(".alert__actions")).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.alert__actions')).toBeTruthy();
+    expect(page.root.querySelector('.alert__actions')).toBeFalsy();
   });
 
   it('should render without shadow dom', async () => {
     page = await newSpecPage({
       components: [AlertActions],
       html: `<bds-alert-actions></bds-alert-actions>`,
-      supportsShadowDom: false
+      supportsShadowDom: false,
     });
 
     expect(page.root.shadowRoot).toBeFalsy();
-    expect(page.root.querySelector(".alert__actions")).toBeTruthy();
+    expect(page.root.querySelector('.alert__actions')).toBeTruthy();
   });
 });

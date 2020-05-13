@@ -25,22 +25,22 @@ describe('bds-alert', () => {
   });
 
   it('should render with shadow dom', async () => {
-    expect(page.root.shadowRoot.querySelector(".alert__dialog")).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector(".alert")).toBeTruthy();
-    expect(page.root.querySelector(".alert__dialog")).toBeFalsy();
-    expect(page.root.querySelector(".alert")).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.alert__dialog')).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.alert')).toBeTruthy();
+    expect(page.root.querySelector('.alert__dialog')).toBeFalsy();
+    expect(page.root.querySelector('.alert')).toBeFalsy();
   });
 
   it('should render without shadow dom', async () => {
     page = await newSpecPage({
       components: [BdsAlert],
       html: `<bds-alert></bds-alert>`,
-      supportsShadowDom: false
+      supportsShadowDom: false,
     });
 
     expect(page.root.shadowRoot).toBeFalsy();
-    expect(page.root.querySelector(".alert__dialog")).toBeTruthy();
-    expect(page.root.querySelector(".alert")).toBeTruthy();
+    expect(page.root.querySelector('.alert__dialog')).toBeTruthy();
+    expect(page.root.querySelector('.alert')).toBeTruthy();
   });
 
   it('should open and close the dialog', async () => {

@@ -1,13 +1,13 @@
-import { Component, Prop, h } from "@stencil/core";
+import { Component, Prop, h } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
   tag: 'bds-input-password',
   styleUrl: 'input-password.scss',
-  shadow: true
+  shadow: true,
 })
 export class InputPassword {
-  @Prop() openEyes?= false;
+  @Prop() openEyes? = false;
 
   /**
    * The value of the input.
@@ -72,7 +72,7 @@ export class InputPassword {
   /**
    * Disabled input.
    */
-  @Prop() disabled?= false;
+  @Prop() disabled? = false;
 
   /**
    * Capitalizes every word's second character.
@@ -88,7 +88,7 @@ export class InputPassword {
     if (!this.disabled) {
       this.openEyes = !this.openEyes;
     }
-  }
+  };
 
   private getAutoComplete(): string {
     if (!this.openEyes) return 'current-password';
@@ -119,20 +119,10 @@ export class InputPassword {
         auto-complete={autocomplete}
         auto-capitalize={this.autoCapitalize}
       >
-        <div
-          slot="input-right"
-          class="input__password--icon"
-          onClick={this.toggleEyePassword}
-        >
-          <bds-icon
-            size="small"
-            name={iconPassword}
-            color="inherit"
-          >
-          </bds-icon>
+        <div slot="input-right" class="input__password--icon" onClick={this.toggleEyePassword}>
+          <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
         </div>
       </bds-input>
-    )
+    );
   }
 }
-

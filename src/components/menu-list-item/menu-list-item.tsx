@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from "@stencil/core";
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-menu-list-item',
@@ -14,15 +14,17 @@ export class MenuListItem {
   @Prop({ reflect: true }) icon!: string;
 
   render(): HTMLElement {
-    const color = this.color || "currentColor";
+    const color = this.color || 'currentColor';
 
     return (
       <Host role="button">
         <div class="menu-list-item">
           <bds-icon color={color} name={this.icon}></bds-icon>
-          <bds-typo class="menu-list-item__text" variant="fs-10"><slot /></bds-typo>
+          <bds-typo class="menu-list-item__text" variant="fs-10">
+            <slot />
+          </bds-typo>
         </div>
       </Host>
-    )
+    );
   }
 }

@@ -1,10 +1,10 @@
-import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from "@stencil/core";
+import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from '@stencil/core';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  shadow: true
+  shadow: true,
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
@@ -12,17 +12,17 @@ export class Input {
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
-  @State() isPressed?= false;
+  @State() isPressed? = false;
 
   /**
    * Indicates if the input is password, adding the eye icon.
    */
-  @State() isPassword?= false;
+  @State() isPassword? = false;
 
   /**
    * Input Name
    */
-  @Prop() inputName?= '';
+  @Prop() inputName? = '';
 
   /**
    * Input type. Can be one of: "text" or "password".
@@ -32,7 +32,7 @@ export class Input {
   /**
    *  label in input, with he the input size increases.
    */
-  @Prop() label?= '';
+  @Prop() label? = '';
 
   /**
    * A tip for the user who can enter no controls.
@@ -108,7 +108,7 @@ export class Input {
    * Passing true to display a counter of available size, it is necessary to
    * pass another maxlength property.
    */
-  @Prop() counterLength?= false;
+  @Prop() counterLength? = false;
 
   /**
    * Make it possible to pass the base values to the warning level and exclude,
@@ -192,18 +192,17 @@ export class Input {
   }
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
-
     switch (event.key) {
       case 'Enter':
         this.bdsSubmit.emit({ event, value: this.value });
 
         if (this.isSubmit) {
-          this.value = "";
+          this.value = '';
           event.preventDefault();
         }
         break;
     }
-  }
+  };
 
   private onInput = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
@@ -211,47 +210,55 @@ export class Input {
       this.value = input.value || '';
     }
     this.bdsInput.emit(ev as KeyboardEvent);
-  }
+  };
 
   private onBlur = (): void => {
     this.isPressed = false;
     this.bdsOnBlur.emit();
-  }
+  };
 
   private onFocus = (): void => {
     this.isPressed = true;
     this.bdsFocus.emit();
-  }
+  };
 
   private onClickWrapper = (): void => {
     this.onFocus();
-    if (this.nativeInput) { this.nativeInput.focus(); }
-  }
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  };
 
   private renderIcon(): HTMLElement {
-    return this.icon && (
-      <div class={{
-        "input__icon": true,
-        "input__icon--large": !!this.label,
-      }}>
-        <bds-icon
-          size={this.label ? "medium" : "small"}
-          name={this.icon}
-          color="inherit">
-        </bds-icon>
-      </div>
-    )
+    return (
+      this.icon && (
+        <div
+          class={{
+            input__icon: true,
+            'input__icon--large': !!this.label,
+          }}
+        >
+          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
+        </div>
+      )
+    );
   }
 
   private renderLabel(): HTMLElement {
-    return this.label && (
-      <label class={{
-        "input__container__label": true,
-        "input__container__label--pressed": this.isPressed && !this.disabled,
-      }}>
-        <bds-typo variant="fs-12" bold="bold">{this.label}</bds-typo>
-      </label>
-    )
+    return (
+      this.label && (
+        <label
+          class={{
+            input__container__label: true,
+            'input__container__label--pressed': this.isPressed && !this.disabled,
+          }}
+        >
+          <bds-typo variant="fs-12" bold="bold">
+            {this.label}
+          </bds-typo>
+        </label>
+      )
+    );
   }
 
   private renderMessage(): HTMLElement {
@@ -259,21 +266,15 @@ export class Input {
     const message = this.danger ? this.errorMessage : this.helperMessage;
     const styles = this.danger ? 'input__message input__message--danger' : 'input__message';
 
-    if ((this.danger && this.errorMessage) ||
-      (!this.danger && this.helperMessage)) {
+    if ((this.danger && this.errorMessage) || (!this.danger && this.helperMessage)) {
       return (
         <div class={styles}>
           <div class="input__message__icon">
-            <bds-icon
-              size="x-small"
-              name={icon}
-              theme="solid"
-              color="inherit">
-            </bds-icon>
+            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
           </div>
           <bds-typo variant="fs-12">{message}</bds-typo>
         </div>
-      )
+      );
     }
 
     return undefined;
@@ -287,12 +288,12 @@ export class Input {
       <Host aria-disabled={this.disabled ? 'true' : null}>
         <div
           class={{
-            "input": true,
-            "input--state-primary": !this.danger,
-            "input--state-danger": this.danger,
-            "input--state-disabled": this.disabled,
-            "input--label": !!this.label,
-            "input--pressed": isPressed,
+            input: true,
+            'input--state-primary': !this.danger,
+            'input--state-danger': this.danger,
+            'input--state-disabled': this.disabled,
+            'input--label': !!this.label,
+            'input--pressed': isPressed,
           }}
           onClick={this.onClickWrapper}
           onKeyPress={this.keyPressWrapper}
@@ -302,7 +303,7 @@ export class Input {
             {this.renderLabel()}
             <Element
               class="input__container__text"
-              ref={input => this.nativeInput = input}
+              ref={(input) => (this.nativeInput = input)}
               rows={this.rows}
               cols={this.cols}
               autocapitalize={this.autoCapitalize}
@@ -320,20 +321,20 @@ export class Input {
               readOnly={this.readonly}
               type={this.type}
               value={this.value}
-            >
-            </Element>
+            ></Element>
           </div>
-          {this.counterLength &&
+          {this.counterLength && (
             <bds-counter-text
               length={this.value.length}
               max={this.maxlength}
               active={isPressed}
               {...this.counterLengthRule}
-            />}
+            />
+          )}
           <slot name="input-right" />
           {this.renderMessage()}
         </div>
       </Host>
-    )
+    );
   }
 }

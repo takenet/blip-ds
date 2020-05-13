@@ -8,7 +8,7 @@ import { PaperElevation, PaperElevationMap } from './paper-interface';
 })
 export class Paper implements ComponentInterface {
   /**
-   * Size. Entered as one of the size. Can be one of: 
+   * Size. Entered as one of the size. Can be one of:
    * 'static', 'primary', 'secondary';
    */
   @Prop() elevation?: PaperElevation = 'static';
@@ -17,7 +17,7 @@ export class Paper implements ComponentInterface {
     static: 'paper__elevation--static',
     primary: 'paper__elevation--primary',
     secondary: 'paper__elevation--secondary',
-  }
+  };
 
   render() {
     const elevation = this.mapElevation[this.elevation];
@@ -28,5 +28,4 @@ export class Paper implements ComponentInterface {
       </Host>
     );
   }
-
 }

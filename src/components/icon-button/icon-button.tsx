@@ -38,7 +38,7 @@ export class IconButton {
     tall: 'xxx-large',
     standard: 'x-large',
     short: 'medium',
-  }
+  };
 
   private mapVariantStyle: IconButtonVariantMap = {
     primary: 'icon__button--primary',
@@ -63,6 +63,6 @@ export class IconButton {
       >
         <bds-icon name={this.icon} size={size} color="inherit"></bds-icon>
       </button>
-    )
+    );
   }
 }

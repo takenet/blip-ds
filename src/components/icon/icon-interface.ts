@@ -1,4 +1,5 @@
-export type IconSize = 'xxx-small'
+export type IconSize =
+  | 'xxx-small'
   | 'xx-small'
   | 'x-small'
   | 'small'

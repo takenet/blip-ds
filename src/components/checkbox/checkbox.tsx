@@ -4,7 +4,7 @@ let checkBoxIds = 0;
 @Component({
   tag: 'bds-checkbox',
   styleUrl: 'checkbox.scss',
-  shadow: true
+  shadow: true,
 })
 export class Checkbox {
   private nativeInput?: HTMLInputElement;
@@ -16,8 +16,8 @@ export class Checkbox {
   @Prop() label!: string;
 
   /**
- * The name of the control, which is submitted with the form data.
- */
+   * The name of the control, which is submitted with the form data.
+   */
   @Prop() name!: string;
 
   /**
@@ -58,18 +58,20 @@ export class Checkbox {
 
   @Method()
   getValue(): Promise<boolean> {
-    return Promise.resolve(this.nativeInput.checked)
+    return Promise.resolve(this.nativeInput.checked);
   }
 
   private onClick = (): void => {
     this.checked = !this.checked;
-  }
+  };
 
-  private refNativeInput = (input: HTMLInputElement): void => { this.nativeInput = input }
+  private refNativeInput = (input: HTMLInputElement): void => {
+    this.nativeInput = input;
+  };
 
   private getStyleState = (): string => {
     if (this.checked && !this.disabled) {
-      return 'checkbox--selected'
+      return 'checkbox--selected';
     }
 
     if (!this.checked && !this.disabled) {
@@ -77,7 +79,7 @@ export class Checkbox {
     }
 
     if (this.checked && this.disabled) {
-      return 'checkbox--selected-disabled'
+      return 'checkbox--selected-disabled';
     }
 
     if (!this.checked && this.disabled) {
@@ -85,8 +87,7 @@ export class Checkbox {
     }
 
     return '';
-  }
-
+  };
 
   render(): HTMLElement {
     const styleState = this.getStyleState();
@@ -94,7 +95,7 @@ export class Checkbox {
     return (
       <div
         class={{
-          'checkbox': true,
+          checkbox: true,
           [styleState]: true,
         }}
       >
@@ -106,16 +107,16 @@ export class Checkbox {
           onClick={this.onClick}
           checked={this.checked}
           disabled={this.disabled}
-        >
-        </input>
+        ></input>
         <label class="checkbox__label" htmlFor={this.checkBoxId}>
           <div class="checkbox__icon">
             <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit"></bds-icon>
           </div>
-          <bds-typo class="checkbox__text" variant="fs-14" tag="span">{this.label}</bds-typo>
+          <bds-typo class="checkbox__text" variant="fs-14" tag="span">
+            {this.label}
+          </bds-typo>
         </label>
       </div>
     );
   }
-
 }

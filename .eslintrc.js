@@ -1,23 +1,22 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint',
-  ],
+  plugins: ['@typescript-eslint'],
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/no-unknown-property': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    "@typescript-eslint/camelcase": "off",
   },
-  'settings': {
-    'react': {
-      'pragma': 'h',
+  settings: {
+    react: {
+      pragma: 'h',
     },
   },
 };

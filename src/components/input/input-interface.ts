@@ -8,4 +8,4 @@ export type InputAutoComplete = 'on' | 'off' | 'current-password' | 'new-passwor
 export type InputCounterLengthRules = {
   warning: CounterTextRule;
   delete: CounterTextRule;
-}
+};
