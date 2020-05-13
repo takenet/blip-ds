@@ -15,5 +15,4 @@ export class BdsToastContainer {
       </Host>
     );
   }
-
 }

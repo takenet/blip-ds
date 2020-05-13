@@ -30,5 +30,8 @@ export const config: Config = {
   ],
   extras: {
     appendChildSlotFix: true
+  },
+  testing: {
+    timers: 'fake'
   }
 };

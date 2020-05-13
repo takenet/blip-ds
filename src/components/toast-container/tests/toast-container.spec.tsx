@@ -10,6 +10,10 @@ describe("bds-toast-container", () => {
     });
   });
 
+  it("should build", () => {
+    expect(new BdsToastContainer()).toBeTruthy();
+  });
+
   it("should render the component", async () => {
     expect(page).toMatchSnapshot();
     expect(page.root).toMatchSnapshot();

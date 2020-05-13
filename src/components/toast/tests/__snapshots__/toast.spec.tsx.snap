@@ -1,5 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`bds-toast should be able to set all the props 1`] = `
+<bds-toast icon="info">
+  <mock:shadow-root>
+    <div class="toast toast--action--button toast--error">
+      <bds-icon color="#fff" name="info" size="x-large" theme="outline"></bds-icon>
+      <div class="toast__content">
+        <bds-typo bold="bold" variant="fs-14">
+          Toast
+        </bds-typo>
+        <bds-typo variant="fs-14">
+          Lorem ipsum
+        </bds-typo>
+      </div>
+      <div class="toast__action toast__action__button">
+        <button>
+          <bds-button size="short" variant="secondary--white">
+            Close
+          </bds-button>
+        </button>
+      </div>
+    </div>
+  </mock:shadow-root>
+</bds-toast>
+`;
+
 exports[`bds-toast should render the component and match the snapshot 1`] = `
 Object {
   "body": <body>
