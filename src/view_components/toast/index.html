@@ -37,7 +37,7 @@
 
     botao.addEventListener("click", async () => {
       const newtoast = document.createElement('bds-toast');
-      const toastContainer = document.querySelector("toast-container").shadowRoot;
+      const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
       toastContainer.appendChild(newtoast);
       await newtoast.create({
         toastElement: newtoast,
@@ -52,7 +52,7 @@
     });
     botao2.addEventListener("click", async () => {
       const newtoast = document.createElement('bds-toast');
-      const toastContainer = document.querySelector("toast-container").shadowRoot;
+      const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
       toastContainer.appendChild(newtoast);
       await newtoast.create({
         toastElement: newtoast,

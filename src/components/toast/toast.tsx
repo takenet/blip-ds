@@ -116,7 +116,7 @@ export class BdsToast implements ComponentInterface {
     toastElement.toastTitle = toastTitle;
     toastElement.variant = variant || "system";
     toastElement.duration = duration * 1000 || 0;
-
+    
     toastElement.show = true;
 
     if (toastElement.duration > 0) {

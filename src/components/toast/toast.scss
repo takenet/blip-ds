@@ -4,19 +4,19 @@
   color: inherit;
   background-color: inherit;
 }
+:host {
+  .show {
+    opacity: 1;
+    animation: toastAnimationFadeIn 1s;
 
-.show {
-  opacity: 1 !important;
-  animation:toastAnimationFadeIn 1s;
-
-  &:hover {
-    animation-play-state: paused;
+    &:hover {
+      animation-play-state: paused;
+    }
   }
-}
-
-.hide {
-  transition: all 1s;
-  animation: toastAnimationFadeOut 0.5s;
+  .hide {
+    transition: all 1s;
+    animation: toastAnimationFadeOut 0.5s;
+  }
 }
 
 .toast {
@@ -49,11 +49,11 @@
     max-width: 456px;
     padding: 10px 20px;
   }
-  
+
   &--system {
     background: $color-primary-main;
   }
-  
+
   &--error {
     background: $color-secondary-delete;
   }
@@ -90,7 +90,7 @@
       border: none;
       outline: none;
     }
-    
+
     &__icon {
       display: flex !important;
       align-items: center;
@@ -105,15 +105,15 @@
 }
 
 @keyframes toastAnimationFadeIn {
-	0% {
+  0% {
     opacity: 0;
     left: -200px;
   }
-	50% {
+  50% {
     opacity: 0.9;
     left: 1px;
   }
-	100% {
+  100% {
     opacity: 1;
   }
 }
@@ -122,14 +122,14 @@
   0% {
     opacity: 1;
   }
-	30% {
+  30% {
     max-height: 60px;
   }
-	80% {
+  80% {
     opacity: 0;
     max-height: 30px;
   }
-	100% {
+  100% {
     max-height: 0px;
   }
 }

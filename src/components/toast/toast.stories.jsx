@@ -1,35 +1,40 @@
-import React from 'react';
+import React from "react";
 import { withKnobs, text, select } from "@storybook/addon-knobs";
 
-
-import readme from './readme.md';
+import readme from "./readme.md";
 
 export default {
-  title: 'Toast',
+  title: "Toast",
   decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
-  }
+  },
 };
 
 export const toastSystem = () => {
-  const variantOptions = { System: 'system', Error: 'error', Success: 'success', Warning: 'warning' };
-  const actionTypeOptions = { Button: 'button', Icon: 'icon' };
-  const buttonActionOptions = { Close: 'close', Custom: 'custom' };
+  const variantOptions = {
+    System: "system",
+    Error: "error",
+    Success: "success",
+    Warning: "warning",
+  };
+  const actionTypeOptions = { Button: "button", Icon: "icon" };
+  const buttonActionOptions = { Close: "close", Custom: "custom" };
 
   const showToast = async () => {
-    const newtoast = document.createElement('bds-toast');
-    const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
+    const newtoast = document.createElement("bds-toast");
+    const toastContainer = document.querySelector("bds-toast-container")
+      .shadowRoot;
     toastContainer.appendChild(newtoast);
 
-    const icon = text('icon', 'info');
-    const variant = select('variant', variantOptions, 'system');
-    const actionType = select('action-type', actionTypeOptions, 'button');
-    const toastTitle = text('toast-title', 'Toast Title');
-    const toastText = text('toast-text', 'Lorem ipsum');
-    const buttonText = text('button-text','Cancelar');
-    const duration = text('duration', 0);
-    const buttonAction = select('button-action', buttonActionOptions, 'close');
+    const icon = text("icon", "info");
+    const variant = select("variant", variantOptions, "system");
+    const actionType = select("action-type", actionTypeOptions, "button");
+    const toastTitle = text("toast-title", "Toast Title");
+    const toastText = text("toast-text", "Lorem ipsum");
+    const buttonText = text("button-text", "Cancelar");
+    const duration = text("duration", 0);
+    const buttonAction = select("button-action", buttonActionOptions, "close");
 
     await newtoast.create({
       toastElement: newtoast,
@@ -41,15 +46,14 @@ export const toastSystem = () => {
       toastText,
       variant,
       duration,
-      icon
+      icon,
     });
-  }
-  
+  };
+
   return (
     <>
-    <bds-toast-container></bds-toast-container>
-    <bds-button onClick={() => showToast()}>Show toast</bds-button>
+      <bds-toast-container></bds-toast-container>
+      <bds-button onClick={() => showToast()}>Show toast</bds-button>
     </>
   );
-  
-}
+};
