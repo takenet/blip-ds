@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { IconSize } from '../icon/icon-interface';
 
 export type IconButtonSize = 'tall' | 'standard' | 'short';
-export type IconButtonVariant = 'primary' | 'secondary' | 'delete';
+export type IconButtonVariant = 'primary' | 'secondary' | 'secondary--white' | 'delete';
 export type IconSizeMap = { [key in string]: IconSize };
 export type IconButtonVariantMap = { [key in IconButtonVariant]: string };
 
@@ -44,6 +44,7 @@ export class IconButton {
     primary: 'icon__button--primary',
     secondary: 'icon__button--secondary',
     delete: 'icon__button--delete',
+    'secondary--white': 'icon__button--secondary-white',
   };
 
   render(): HTMLElement {

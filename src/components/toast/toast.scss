@@ -1,0 +1,135 @@
+@import "mixins";
+
+@mixin inherit-color() {
+  color: inherit;
+  background-color: inherit;
+}
+:host {
+  .show {
+    opacity: 1;
+    animation: toastAnimationFadeIn 1s;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+  .hide {
+    transition: all 1s;
+    animation: toastAnimationFadeOut 0.5s;
+  }
+}
+
+.toast {
+  ::before {
+    display: block;
+  }
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: $shadow-toast;
+  color: $color-snow-white;
+  opacity: 0;
+  margin-top: 16px;
+
+  &--action--icon {
+    min-width: 440px;
+    max-width: 440px;
+    padding: 8px 20px;
+
+    bds-icon-button {
+      height: 32px;
+    }
+  }
+
+  &--action--button {
+    min-width: 440px;
+    max-width: 456px;
+    padding: 10px 20px;
+  }
+
+  &--system {
+    background: $color-primary-main;
+  }
+
+  &--error {
+    background: $color-secondary-delete;
+  }
+
+  &--success {
+    background: $color-secondary-true;
+  }
+
+  &--warning {
+    background: $color-secondary-cheetos;
+  }
+
+  bds-icon {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+
+    button {
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    &__icon {
+      display: flex !important;
+      align-items: center;
+
+      bds-icon {
+        color: $color-snow-white;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes toastAnimationFadeIn {
+  0% {
+    opacity: 0;
+    left: -200px;
+  }
+  50% {
+    opacity: 0.9;
+    left: 1px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes toastAnimationFadeOut {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    max-height: 60px;
+  }
+  80% {
+    opacity: 0;
+    max-height: 30px;
+  }
+  100% {
+    max-height: 0px;
+  }
+}

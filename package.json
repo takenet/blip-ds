@@ -26,7 +26,7 @@
     "test:e2e": "stencil test --e2e",
     "test:snapshot": "stencil test --e2e --screenshot",
     "test:watch": "stencil test --spec --watch",
-    "test:coverage": "stencil test --spec --coverage",
+    "test:coverage": "stencil test --spec --e2e --coverage",
     "storybook": "start-storybook -p 9001 -c .storybook -s www",
     "storybook:build": "build-storybook -s www -o .docs",
     "storybook:deploy": "storybook-to-ghpages -e .docs",

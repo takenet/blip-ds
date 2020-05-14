@@ -13,6 +13,7 @@ import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/ico
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
+import { ActionType, ButtonActionType, CreateToastType, VariantType, } from "./components/toast/toast";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
     interface BdsAlert {
@@ -57,15 +58,15 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: ButtonSize;
         /**
-          * The type of the button. Can be one of:  'button', 'submit', 'reset';
+          * The type of the button. Can be one of: 'button', 'submit', 'reset';
          */
         "type": ButtonType;
         /**
-          * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
     }
@@ -402,6 +403,58 @@ export namespace Components {
         "selected"?: boolean;
         "value": any;
     }
+    interface BdsToast {
+        /**
+          * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
+         */
+        "actionType": ActionType;
+        /**
+          * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
+         */
+        "buttonAction": ButtonActionType;
+        /**
+          * If the action type is button, this will be the text of the button:
+         */
+        "buttonText": string;
+        /**
+          * Can be used outside the component to close the toast
+         */
+        "close": () => Promise<void>;
+        /**
+          * Can be used outside to open the toast
+         */
+        "create": ({ toastElement, actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        /**
+          * Time to close the toast in seconds 0 = no auto close (default value)
+         */
+        "duration": number;
+        /**
+          * Controls the hide event of the component:
+         */
+        "hide": boolean;
+        /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Controls the open event of the component:
+         */
+        "show": boolean;
+        /**
+          * The text content of the component:
+         */
+        "toastText": string;
+        /**
+          * The title of the component:
+         */
+        "toastTitle": string;
+        /**
+          * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';
+         */
+        "variant": VariantType;
+    }
+    interface BdsToastContainer {
+    }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -544,6 +597,18 @@ declare global {
         prototype: HTMLBdsSelectOptionElement;
         new (): HTMLBdsSelectOptionElement;
     };
+    interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
+    }
+    var HTMLBdsToastElement: {
+        prototype: HTMLBdsToastElement;
+        new (): HTMLBdsToastElement;
+    };
+    interface HTMLBdsToastContainerElement extends Components.BdsToastContainer, HTMLStencilElement {
+    }
+    var HTMLBdsToastContainerElement: {
+        prototype: HTMLBdsToastContainerElement;
+        new (): HTMLBdsToastContainerElement;
+    };
     interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {
     }
     var HTMLBdsTypoElement: {
@@ -575,6 +640,8 @@ declare global {
         "bds-radio": HTMLBdsRadioElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
+        "bds-toast": HTMLBdsToastElement;
+        "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-typo": HTMLBdsTypoElement;
         "bds-warning": HTMLBdsWarningElement;
     }
@@ -618,15 +685,15 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Size. Entered as one of the size. Can be one of:  'tall', 'standard', 'short';
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: ButtonSize;
         /**
-          * The type of the button. Can be one of:  'button', 'submit', 'reset';
+          * The type of the button. Can be one of: 'button', 'submit', 'reset';
          */
         "type"?: ButtonType;
         /**
-          * Variant. Entered as one of the variant. Can be one of:  'primary', 'secondary', 'ghost', 'dashed';
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
     }
@@ -1003,6 +1070,54 @@ declare namespace LocalJSX {
         "selected"?: boolean;
         "value": any;
     }
+    interface BdsToast {
+        /**
+          * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
+         */
+        "actionType"?: ActionType;
+        /**
+          * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
+         */
+        "buttonAction"?: ButtonActionType;
+        /**
+          * If the action type is button, this will be the text of the button:
+         */
+        "buttonText"?: string;
+        /**
+          * Time to close the toast in seconds 0 = no auto close (default value)
+         */
+        "duration"?: number;
+        /**
+          * Controls the hide event of the component:
+         */
+        "hide"?: boolean;
+        /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Event used to execute some action when the action button on the toast is clicked
+         */
+        "onToastButtonClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Controls the open event of the component:
+         */
+        "show"?: boolean;
+        /**
+          * The text content of the component:
+         */
+        "toastText"?: string;
+        /**
+          * The title of the component:
+         */
+        "toastTitle"?: string;
+        /**
+          * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning';
+         */
+        "variant"?: VariantType;
+    }
+    interface BdsToastContainer {
+    }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -1054,6 +1169,8 @@ declare namespace LocalJSX {
         "bds-radio": BdsRadio;
         "bds-select": BdsSelect;
         "bds-select-option": BdsSelectOption;
+        "bds-toast": BdsToast;
+        "bds-toast-container": BdsToastContainer;
         "bds-typo": BdsTypo;
         "bds-warning": BdsWarning;
     }
@@ -1080,6 +1197,8 @@ declare module "@stencil/core" {
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
+            "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
+            "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
         }

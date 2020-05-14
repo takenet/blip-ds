@@ -119,7 +119,6 @@ $button-padding-left-right: 16px;
   }
 
   &__content {
-    @include inherit-color();
     height: 20px;
     display: flex;
     align-items: center;
@@ -166,6 +165,29 @@ $button-padding-left-right: 16px;
 
     &--disabled {
       @include disable-button(transparent, $color-neutral-disabled-blues-text);
+    }
+  }
+  
+  &__secondary--white {
+    background: transparent;
+    color: $color-snow-white;
+
+    &:hover,
+    &:focus {
+      background: $color-secondary-white-bg-hover;
+      color: $color-snow-white;
+    }
+
+    &:active {
+      background: $color-secondary-white-bg-active;
+      color: $color-snow-white;
+    }
+
+    &--disabled {
+      @include disable-button(
+        $color-neutral-disabled-blues-bg, 
+        $color-neutral-disabled-blues-text
+      );
     }
   }
 

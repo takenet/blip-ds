@@ -2,7 +2,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
 
 export type ButtonSize = 'tall' | 'standard' | 'short';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'dashed';
+export type ButtonVariant = 'primary' | 'secondary' | 'secondary--white' | 'ghost' | 'dashed';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 

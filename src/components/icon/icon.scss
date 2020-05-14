@@ -25,7 +25,9 @@ $icon-xx-small: 12px;
 
   box-sizing: content-box !important;
 }
-
+.icon-inner {
+  height: 100%;
+}
 :host(.bds-icon) {
   display: inline-block;
   svg {
