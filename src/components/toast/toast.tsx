@@ -6,6 +6,17 @@ export type VariantType = 'system' | 'error' | 'success' | 'warning';
 
 export type ButtonActionType = 'close' | 'custom';
 
+export type OpenToastType = {
+  buttonAction: ButtonActionType;
+  buttonText: string;
+  toastText: string;
+  toastTitle: string;
+  icon?: string;
+  actionType?: ActionType;
+  variant?: VariantType;
+  duration?: number;
+};
+
 export type CreateToastType = {
   toastElement: HTMLBdsToastElement;
   buttonAction: ButtonActionType;

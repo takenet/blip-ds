@@ -36,7 +36,7 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Variant. Entered as one of the variant. Can be one of:  'system', 'error', 'warning', 'delete';
+          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
          */
         "variant"?: AlertHeaderVariannt;
     }
@@ -342,7 +342,7 @@ export namespace Components {
     }
     interface BdsPaper {
         /**
-          * Size. Entered as one of the size. Can be one of:  'static', 'primary', 'secondary';
+          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
     }
@@ -457,7 +457,7 @@ export namespace Components {
     }
     interface BdsTypo {
         /**
-          * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
+          * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
          */
         "bold"?: Bold;
         /**
@@ -465,7 +465,7 @@ export namespace Components {
          */
         "italic"?: boolean;
         /**
-          * Line Height. Entered as one of the line hieght. Can be one of:  'none', 'small', 'simple', 'plus', 'double'
+          * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
          */
         "lineHeight"?: FontLineHeight;
         /**
@@ -481,7 +481,7 @@ export namespace Components {
          */
         "tag"?: Tag;
         /**
-          * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
          */
         "variant"?: FontSize;
     }
@@ -663,7 +663,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Variant. Entered as one of the variant. Can be one of:  'system', 'error', 'warning', 'delete';
+          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
          */
         "variant"?: AlertHeaderVariannt;
     }
@@ -986,7 +986,7 @@ declare namespace LocalJSX {
     }
     interface BdsPaper {
         /**
-          * Size. Entered as one of the size. Can be one of:  'static', 'primary', 'secondary';
+          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
     }
@@ -1120,7 +1120,7 @@ declare namespace LocalJSX {
     }
     interface BdsTypo {
         /**
-          * Bold. Entered as one of the bold. Can be one of:  'regular', 'semi-bold', 'bold', 'extra-bold';
+          * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
          */
         "bold"?: Bold;
         /**
@@ -1128,7 +1128,7 @@ declare namespace LocalJSX {
          */
         "italic"?: boolean;
         /**
-          * Line Height. Entered as one of the line hieght. Can be one of:  'none', 'small', 'simple', 'plus', 'double'
+          * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
          */
         "lineHeight"?: FontLineHeight;
         /**
@@ -1144,7 +1144,7 @@ declare namespace LocalJSX {
          */
         "tag"?: Tag;
         /**
-          * Variant. Entered as one of the font size variant. Can be one of:  'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
          */
         "variant"?: FontSize;
     }

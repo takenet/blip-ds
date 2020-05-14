@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                     | Type                                           | Default    |
-| --------- | --------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- | ---------- |
-| `icon`    | `icon`    | used for add icon the header. Uses the bds-icon component.                                      | `string`                                       | `null`     |
-| `variant` | `variant` | Variant. Entered as one of the variant. Can be one of:  'system', 'error', 'warning', 'delete'; | `"delete" \| "error" \| "system" \| "warning"` | `'system'` |
+| Property  | Attribute | Description                                                                                    | Type                                           | Default    |
+| --------- | --------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------- | ---------- |
+| `icon`    | `icon`    | used for add icon the header. Uses the bds-icon component.                                     | `string`                                       | `null`     |
+| `variant` | `variant` | Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete'; | `"delete" \| "error" \| "system" \| "warning"` | `'system'` |
 
 
 ## Dependencies
