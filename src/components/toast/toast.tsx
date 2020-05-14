@@ -7,16 +7,15 @@ export type VariantType = 'system' | 'error' | 'success' | 'warning';
 export type ButtonActionType = 'close' | 'custom';
 
 export type CreateToastType = {
-  toastContainer: HTMLBdsToastContainerElement;
   toastElement: HTMLBdsToastElement;
-  actionType: ActionType;
   buttonAction: ButtonActionType;
-  buttonText?: string;
+  buttonText: string;
+  toastText: string;
+  toastTitle: string;
   icon?: string;
-  toastText?: string;
-  toastTitle?: string;
+  actionType?: ActionType;
   variant?: VariantType;
-  duration: number;
+  duration?: number;
 };
 
 @Component({
