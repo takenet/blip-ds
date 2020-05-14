@@ -1,45 +1,16 @@
 import { Component, ComponentInterface, h, Prop, Method, Element, Event, EventEmitter } from '@stencil/core';
-
-export type ActionType = 'button' | 'icon';
-
-export type VariantType = 'system' | 'error' | 'success' | 'warning';
-
-export type ButtonActionType = 'close' | 'custom';
-
-export type OpenToastType = {
-  buttonAction: ButtonActionType;
-  buttonText: string;
-  toastText: string;
-  toastTitle: string;
-  icon?: string;
-  actionType?: ActionType;
-  variant?: VariantType;
-  duration?: number;
-};
-
-export type CreateToastType = {
-  toastElement: HTMLBdsToastElement;
-  buttonAction: ButtonActionType;
-  buttonText: string;
-  toastText: string;
-  toastTitle: string;
-  icon?: string;
-  actionType?: ActionType;
-  variant?: VariantType;
-  duration?: number;
-};
-
+import { ActionType, VariantType, ButtonActionType, CreateToastType, IconVariantMap } from './toast-interface';
 @Component({
   tag: 'bds-toast',
   styleUrl: 'toast.scss',
   shadow: true,
 })
 export class BdsToast implements ComponentInterface {
-  @Element() el: HTMLElement;
+  @Element() el: HTMLBdsToastElement;
   /**
    * used for add the icon. Uses the bds-icon component.
    */
-  @Prop({ reflect: true }) icon?: string = null;
+  @Prop({ reflect: true }) icon?: string = '';
   /**
    * ActionType. Defines if the button should have a button or an icon. Can be one of:
    * 'icon', 'button';
@@ -64,7 +35,7 @@ export class BdsToast implements ComponentInterface {
   @Prop() buttonText: string;
   /**
    * Time to close the toast in seconds
-   * 0 = no auto close (default value)
+   * 0 = never close automatically (default value)
    */
   @Prop() duration = 0;
   /**
@@ -99,7 +70,6 @@ export class BdsToast implements ComponentInterface {
    */
   @Method()
   async create({
-    toastElement,
     actionType,
     buttonAction,
     buttonText,
@@ -109,24 +79,25 @@ export class BdsToast implements ComponentInterface {
     variant,
     duration,
   }: CreateToastType) {
-    toastElement.actionType = actionType || 'button';
-    toastElement.buttonAction = buttonAction;
-    toastElement.buttonText = buttonText;
-    toastElement.icon = icon || 'info';
-    toastElement.toastText = toastText;
-    toastElement.toastTitle = toastTitle;
-    toastElement.variant = variant || 'system';
-    toastElement.duration = duration * 1000 || 0;
+    this.el.actionType = actionType || 'button';
+    this.el.buttonAction = buttonAction;
+    this.el.buttonText = buttonText;
+    this.el.toastText = toastText;
+    this.el.toastTitle = toastTitle;
+    this.el.variant = variant || 'system';
+    this.el.duration = duration * 1000 || 0;
 
-    toastElement.show = true;
+    this.el.icon = icon?.length ? icon : this.mapIconName[this.variant];
 
-    if (toastElement.duration > 0) {
+    this.el.show = true;
+
+    if (this.el.duration > 0) {
       setTimeout(() => {
-        toastElement.hide = true;
+        this.el.hide = true;
         setTimeout(() => {
-          toastElement.remove();
+          this.el.remove();
         }, 400);
-      }, toastElement.duration);
+      }, this.el.duration);
     }
   }
 
@@ -142,6 +113,13 @@ export class BdsToast implements ComponentInterface {
       this.el.remove();
     }, 400);
   }
+
+  private mapIconName: IconVariantMap = {
+    system: 'bell',
+    error: 'error',
+    success: 'like',
+    warning: 'attention',
+  };
 
   render() {
     return (

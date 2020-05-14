@@ -13,7 +13,7 @@ import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/ico
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
-import { ActionType, ButtonActionType, CreateToastType, VariantType, } from "./components/toast/toast";
+import { ActionType, ButtonActionType, CreateToastType, VariantType, } from "./components/toast/toast-interface";
 import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
     interface BdsAlert {
@@ -423,9 +423,9 @@ export namespace Components {
         /**
           * Can be used outside to open the toast
          */
-        "create": ({ toastElement, actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
         /**
-          * Time to close the toast in seconds 0 = no auto close (default value)
+          * Time to close the toast in seconds 0 = never close automatically (default value)
          */
         "duration": number;
         /**
@@ -1084,7 +1084,7 @@ declare namespace LocalJSX {
          */
         "buttonText"?: string;
         /**
-          * Time to close the toast in seconds 0 = no auto close (default value)
+          * Time to close the toast in seconds 0 = never close automatically (default value)
          */
         "duration"?: number;
         /**

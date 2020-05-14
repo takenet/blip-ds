@@ -9,7 +9,7 @@ describe('bds-toast', () => {
     return await newSpecPage({
       components: [BdsToast],
       html: `
-      <bds-toast toast-title="titulo" toast-text="texto" icon="close" action-type="button" button-action="close" button-text="cancel" variant="system" duration="0" show="true"></bds-toast>`,
+      <bds-toast toast-title="titulo" toast-text="texto" action-type="button" button-action="close" button-text="cancel" variant="system" duration="0" show="true"></bds-toast>`,
       supportsShadowDom: false,
     });
   };
@@ -18,7 +18,7 @@ describe('bds-toast', () => {
     return await newSpecPage({
       components: [BdsToast],
       html: `
-      <bds-toast toast-title="titulo" toast-text="texto" icon="close" action-type="button" button-action="close" button-text="cancel" variant="system" duration="0" show="true"></bds-toast>`,
+      <bds-toast toast-title="titulo" toast-text="texto" action-type="button" button-action="close" button-text="cancel" variant="system" duration="0" show="true"></bds-toast>`,
     });
   };
 
@@ -128,8 +128,12 @@ describe('bds-toast', () => {
 
     let newToast = page.root.shadowRoot.querySelector('.toast--warning');
     expect(newToast).toBeTruthy();
+
     newToast = page.root.shadowRoot.querySelector('.toast--action--button');
     expect(newToast).toBeTruthy();
+
+    const icon = page.root.shadowRoot.querySelector('.toast').firstElementChild;
+    expect(icon.getAttribute('name')).toBe('trash');
   });
 
   it('should be able to set all the props', async () => {
@@ -147,5 +151,57 @@ describe('bds-toast', () => {
     await toast.waitForChanges();
 
     expect(toast.root).toMatchSnapshot();
+  });
+
+  it('should render the default icon (attention) if the variant is warning icon prop is not passed', async () => {
+    const page = await getToast();
+
+    const toastContainer = page.doc.createElement('bds-toast-container');
+    page.body.appendChild(toastContainer);
+
+    const toastElement = page.body.querySelector('bds-toast');
+    page.body.querySelector('bds-toast-container').appendChild(toastElement);
+
+    await page.root.create({
+      toastElement,
+      actionType: 'button',
+      buttonAction: 'close',
+      buttonText: 'cancel',
+      toastText: 'lorem ipsum is very cool',
+      toastTitle: 'Best title ever',
+      variant: 'warning',
+      duration: 0,
+    });
+
+    await page.waitForChanges();
+
+    const icon = page.root.shadowRoot.querySelector('.toast').firstElementChild;
+    expect(icon.getAttribute('name')).toBe('attention');
+  });
+
+  it('should render the default icon (like) if the variant is success icon prop is not passed', async () => {
+    const page = await getToast();
+
+    const toastContainer = page.doc.createElement('bds-toast-container');
+    page.body.appendChild(toastContainer);
+
+    const toastElement = page.body.querySelector('bds-toast');
+    page.body.querySelector('bds-toast-container').appendChild(toastElement);
+
+    await page.root.create({
+      toastElement,
+      actionType: 'button',
+      buttonAction: 'close',
+      buttonText: 'cancel',
+      toastText: 'lorem ipsum is very cool',
+      toastTitle: 'Best title ever',
+      variant: 'success',
+      duration: 0,
+    });
+
+    await page.waitForChanges();
+
+    const icon = page.root.shadowRoot.querySelector('.toast').firstElementChild;
+    expect(icon.getAttribute('name')).toBe('like');
   });
 });
