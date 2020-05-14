@@ -47,17 +47,17 @@ describe('alert-header', () => {
   });
 
   it('should render with shadow dom', async () => {
-    expect(page.root.shadowRoot.querySelector(".alert__header")).toBeTruthy();
-    expect(page.root.querySelector(".alert__header")).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.alert__header')).toBeTruthy();
+    expect(page.root.querySelector('.alert__header')).toBeFalsy();
   });
 
   it('should render with warning variant', async () => {
     const page = await newSpecPage({
       html: `<bds-alert-header variant=${variantMock}></bds-alert-header>`,
-      components: [AlertHeader]
+      components: [AlertHeader],
     });
 
-      expect(page.root).toEqualHtml(`
+    expect(page.root).toEqualHtml(`
       <bds-alert-header variant="warning">
         <mock:shadow-root>
           <div class="alert__header alert__header--warning">

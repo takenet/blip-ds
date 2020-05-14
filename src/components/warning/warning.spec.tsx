@@ -7,9 +7,9 @@ describe('bds-warning', () => {
   beforeEach(async () => {
     page = await newSpecPage({
       components: [Warning],
-      html: `<bds-warning></bds-warning>`
-    })
-  })
+      html: `<bds-warning></bds-warning>`,
+    });
+  });
 
   it('should render', async () => {
     expect(page.root).toEqualHtml(`
@@ -27,18 +27,18 @@ describe('bds-warning', () => {
   });
 
   it('should render with shadow dom', async () => {
-    expect(page.root.shadowRoot.querySelector(".warning__body")).toBeTruthy();
-    expect(page.root.querySelector(".warning__body")).toBeFalsy();
-  })
+    expect(page.root.shadowRoot.querySelector('.warning__body')).toBeTruthy();
+    expect(page.root.querySelector('.warning__body')).toBeFalsy();
+  });
 
   it('should render without shadow dom', async () => {
     page = await newSpecPage({
       components: [Warning],
       html: `<bds-warning></bds-warning>`,
-      supportsShadowDom: false
+      supportsShadowDom: false,
     });
 
     expect(page.root.shadowRoot).toBeFalsy();
-    expect(page.root.querySelector(".warning__body")).toBeTruthy();
-  })
+    expect(page.root.querySelector('.warning__body')).toBeTruthy();
+  });
 });

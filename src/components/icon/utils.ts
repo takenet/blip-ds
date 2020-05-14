@@ -1,4 +1,4 @@
-import { IconTheme } from "./icon-interface";
+import { IconTheme } from './icon-interface';
 
 const clearPathsAndFillColor = (svg: Element, color: string): void => {
   const paths = svg.getElementsByTagName('path');
@@ -8,10 +8,9 @@ const clearPathsAndFillColor = (svg: Element, color: string): void => {
   }
 
   svg.setAttribute('fill', color);
-}
+};
 
 export const formatSvg = (svgContent: string | null, color: string | null): string => {
-
   if (svgContent) {
     const div = document.createElement('div');
     div.innerHTML = svgContent;
@@ -28,8 +27,8 @@ export const formatSvg = (svgContent: string | null, color: string | null): stri
   }
 
   return '';
-}
+};
 
 export const getName = (name: string, theme: IconTheme) => {
   return `asset-icon-${name}-${theme}`;
-}
+};

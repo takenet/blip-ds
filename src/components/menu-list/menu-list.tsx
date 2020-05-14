@@ -1,4 +1,4 @@
-import { Component, Host, h } from "@stencil/core";
+import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'bds-menu-list',
@@ -15,6 +15,6 @@ export class MenuList {
           <div class="menu-list__right"></div>
         </div>
       </Host>
-    )
+    );
   }
 }

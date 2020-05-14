@@ -8,7 +8,7 @@ import { formatSvg, getName } from './utils';
   tag: 'bds-icon',
   assetsDir: 'svg',
   styleUrl: 'icon.scss',
-  shadow: true
+  shadow: true,
 })
 export class Icon {
   private io?: IntersectionObserver;
@@ -19,8 +19,8 @@ export class Icon {
   @State() private isVisible = false;
 
   /**
-  * Specifies the color to use.Specifies a color to use. The default is svg.
-  */
+   * Specifies the color to use.Specifies a color to use. The default is svg.
+   */
   @Prop() color?: string;
 
   /**
@@ -63,8 +63,8 @@ export class Icon {
   @Prop() lazy = false;
 
   /**
-  * Specifies the theme to use outline or solid icons. Defaults to outline.
-  */
+   * Specifies the theme to use outline or solid icons. Defaults to outline.
+   */
   @Prop({ reflect: true }) theme: IconTheme = 'outline';
 
   connectedCallback(): void {
@@ -86,16 +86,15 @@ export class Icon {
 
   private waitUntilVisible(el: HTMLElement, cb: () => void): void {
     if (Build.isBrowser && this.lazy && typeof window !== 'undefined' && (window as any).IntersectionObserver) {
-      const io = this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
+      const io = (this.io = new (window as any).IntersectionObserver((data: IntersectionObserverEntry[]) => {
         if (data[0].isIntersecting) {
           io.disconnect();
           this.io = undefined;
           cb();
         }
-      });
+      }));
 
       io.observe(el);
-
     } else {
       // browser doesn't support IntersectionObserver
       // so just fallback to always show it
@@ -125,16 +124,15 @@ export class Icon {
 
   render(): HTMLElement {
     return (
-      <Host role="img" class={{
-        'bds-icon': true,
-        [`bds-icon__size--${this.size}`]: true,
-      }}>{(
-        (this.svgContent)
-          ? <div class="icon-inner" innerHTML={this.svgContent}></div>
-          : <div class="icon-inner"></div>
-      )}
+      <Host
+        role="img"
+        class={{
+          'bds-icon': true,
+          [`bds-icon__size--${this.size}`]: true,
+        }}
+      >
+        {this.svgContent ? <div class="icon-inner" innerHTML={this.svgContent}></div> : <div class="icon-inner"></div>}
       </Host>
     );
   }
-
 }

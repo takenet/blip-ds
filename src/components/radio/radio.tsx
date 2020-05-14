@@ -1,10 +1,10 @@
-import { Component, h, Prop, Event, EventEmitter, Watch, State, Method } from "@stencil/core";
+import { Component, h, Prop, Event, EventEmitter, Watch, State, Method } from '@stencil/core';
 
 let radioButtonIds = 0;
 @Component({
   tag: 'bds-radio',
   styleUrl: 'radio.scss',
-  shadow: false
+  shadow: false,
 })
 export class Radio {
   private nativeInput?: HTMLInputElement;
@@ -54,17 +54,17 @@ export class Radio {
 
   @Method()
   getValue(): Promise<boolean> {
-    return Promise.resolve(this.nativeInput.checked)
+    return Promise.resolve(this.nativeInput.checked);
   }
 
   private onClick = (event: Event): void => {
     this.checked = !this.checked;
-    (event.target as HTMLInputElement).checked = this.checked
-  }
+    (event.target as HTMLInputElement).checked = this.checked;
+  };
 
   private refNativeInput = (input: HTMLInputElement): void => {
-    this.nativeInput = input
-  }
+    this.nativeInput = input;
+  };
 
   connectedCallback(): void {
     this.radioId = this.refer || `bds-radio-${radioButtonIds++}`;
@@ -91,7 +91,6 @@ export class Radio {
           {this.label}
         </bds-typo>
       </label>
-    )
+    );
   }
 }
-

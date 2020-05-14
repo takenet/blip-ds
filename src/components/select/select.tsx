@@ -4,16 +4,16 @@ import { Option, SelectChangeEventDetail } from './select-interface';
 @Component({
   tag: 'bds-select',
   styleUrl: 'select.scss',
-  shadow: true
+  shadow: true,
 })
 export class Select {
   private nativeInput?: HTMLBdsInputElement;
 
   @Element() el!: HTMLBdsSelectElement;
 
-  @State() isOpen?= false;
+  @State() isOpen? = false;
 
-  @State() text?= '';
+  @State() text? = '';
 
   @Prop() options?: Array<Option> = [];
 
@@ -26,12 +26,12 @@ export class Select {
   /**
    * Add state danger on input, use for use feedback.
    */
-  @Prop({ reflect: true }) danger?= false;
+  @Prop({ reflect: true }) danger? = false;
 
   /**
    * Disabled input.
    */
-  @Prop({ reflect: true }) disabled?= false;
+  @Prop({ reflect: true }) disabled? = false;
 
   /**
    * Emitted when the value has changed.
@@ -56,7 +56,7 @@ export class Select {
   /**
    *  label in input, with he the input size increases.
    */
-  @Prop() label?= '';
+  @Prop() label? = '';
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
@@ -70,13 +70,13 @@ export class Select {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
-    
+
     this.text = this.getText();
   }
 
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
-    if (!this.el.contains((ev.target as HTMLInputElement))) {
+    if (!this.el.contains(ev.target as HTMLInputElement)) {
       this.isOpen = false;
     }
   }
@@ -84,51 +84,53 @@ export class Select {
   async connectedCallback() {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
-      option.addEventListener("optionSelected", this.handler);
+      option.addEventListener('optionSelected', this.handler);
     }
 
     this.text = this.getText();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll("*"));
+    return Array.from(this.el.querySelectorAll('*'));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private refNativeInput = (el: any): void => {
-    this.nativeInput = el
-  }
+    this.nativeInput = el;
+  };
 
   private onFocus = (): void => {
     this.bdsFocus.emit();
-  }
+  };
 
   private onBlur = (): void => {
     this.bdsBlur.emit();
-  }
+  };
 
   private toggle = (): void => {
     if (!this.disabled) {
       this.isOpen = !this.isOpen;
     }
-  }
+  };
 
   private getText = (): string => {
-    const opt = this.childOptions.find(option => option.value == this.value)
+    const opt = this.childOptions.find((option) => option.value == this.value);
     return opt ? opt.innerHTML : '';
-  }
+  };
 
   private handler = (event: CustomEvent): void => {
-    const { detail: { value } } = event;
+    const {
+      detail: { value },
+    } = event;
     this.value = value;
     this.toggle();
-  }
+  };
 
   private setFocusWrapper = (): void => {
     if (this.nativeInput) {
       this.nativeInput.setFocus();
     }
-  }
+  };
 
   private removeFocusWrapper = (event: FocusEvent): void => {
     const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
@@ -136,7 +138,7 @@ export class Select {
     if (this.nativeInput && !isInputElement) {
       this.nativeInput.removeFocus();
     }
-  }
+  };
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
     const isSelectElement = (event.target as Element).localName === 'bds-select';
@@ -149,13 +151,14 @@ export class Select {
         }
         break;
     }
-  }
+  };
 
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
     return (
-      <div class="select"
+      <div
+        class="select"
         tabindex="0"
         onFocus={this.setFocusWrapper}
         onBlur={this.removeFocusWrapper}
@@ -173,26 +176,19 @@ export class Select {
           disabled={this.disabled}
           readonly
         >
-          <div
-            slot="input-right"
-            class="select__icon"
-          >
-            <bds-icon
-              size="small"
-              name={iconArrow}
-              color="inherit"
-            >
-            </bds-icon>
+          <div slot="input-right" class="select__icon">
+            <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
           </div>
         </bds-input>
         <div
           class={{
-            "select__options": true,
-            "select__options--open": this.isOpen
-          }}>
+            select__options: true,
+            'select__options--open': this.isOpen,
+          }}
+        >
           <slot />
         </div>
       </div>
-    )
+    );
   }
 }
