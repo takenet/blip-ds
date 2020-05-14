@@ -1,19 +1,10 @@
-import {
-  Component,
-  ComponentInterface,
-  h,
-  Prop,
-  Method,
-  Element,
-  Event,
-  EventEmitter,
-} from "@stencil/core";
+import { Component, ComponentInterface, h, Prop, Method, Element, Event, EventEmitter } from '@stencil/core';
 
-export type ActionType = "button" | "icon";
+export type ActionType = 'button' | 'icon';
 
-export type VariantType = "system" | "error" | "success" | "warning";
+export type VariantType = 'system' | 'error' | 'success' | 'warning';
 
-export type ButtonActionType = "close" | "custom";
+export type ButtonActionType = 'close' | 'custom';
 
 export type CreateToastType = {
   toastContainer: HTMLBdsToastContainerElement;
@@ -29,8 +20,8 @@ export type CreateToastType = {
 };
 
 @Component({
-  tag: "bds-toast",
-  styleUrl: "toast.scss",
+  tag: 'bds-toast',
+  styleUrl: 'toast.scss',
   shadow: true,
 })
 export class BdsToast implements ComponentInterface {
@@ -43,12 +34,12 @@ export class BdsToast implements ComponentInterface {
    * ActionType. Defines if the button should have a button or an icon. Can be one of:
    * 'icon', 'button';
    */
-  @Prop() actionType: ActionType = "button";
+  @Prop() actionType: ActionType = 'button';
   /**
    * Variant. Defines the color of the toast. Can be one of:
    * 'system', 'error', 'success', 'warning';
    */
-  @Prop() variant: VariantType = "system";
+  @Prop() variant: VariantType = 'system';
   /**
    * The title of the component:
    */
@@ -72,7 +63,7 @@ export class BdsToast implements ComponentInterface {
    * if the action type is set to close, the button will close automatically.
    * if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
    */
-  @Prop() buttonAction: ButtonActionType = "close";
+  @Prop() buttonAction: ButtonActionType = 'close';
   /**
    * Controls the open event of the component:
    */
@@ -89,7 +80,7 @@ export class BdsToast implements ComponentInterface {
    * Sends an event to be used when creating an action when clicking the toast button
    */
   private _buttonClickHandler = () => {
-    if (this.buttonAction === "close") this.close();
+    if (this.buttonAction === 'close') this.close();
     else this.toastButtonClick.emit(this.el);
   };
 
@@ -108,15 +99,15 @@ export class BdsToast implements ComponentInterface {
     variant,
     duration,
   }: CreateToastType) {
-    toastElement.actionType = actionType || "button";
+    toastElement.actionType = actionType || 'button';
     toastElement.buttonAction = buttonAction;
     toastElement.buttonText = buttonText;
-    toastElement.icon = icon || "info";
+    toastElement.icon = icon || 'info';
     toastElement.toastText = toastText;
     toastElement.toastTitle = toastTitle;
-    toastElement.variant = variant || "system";
+    toastElement.variant = variant || 'system';
     toastElement.duration = duration * 1000 || 0;
-    
+
     toastElement.show = true;
 
     if (toastElement.duration > 0) {
@@ -134,8 +125,8 @@ export class BdsToast implements ComponentInterface {
    */
   @Method()
   async close() {
-    this.el.shadowRoot.querySelector("div").classList.remove("show");
-    this.el.shadowRoot.querySelector("div").classList.add("hide");
+    this.el.shadowRoot.querySelector('div').classList.remove('show');
+    this.el.shadowRoot.querySelector('div').classList.add('hide');
 
     setTimeout(() => {
       this.el.remove();
@@ -153,31 +144,22 @@ export class BdsToast implements ComponentInterface {
           hide: this.hide,
         }}
       >
-        {this.icon && (
-          <bds-icon
-            theme="outline"
-            size="x-large"
-            color="#fff"
-            name={this.icon}
-          />
-        )}
+        {this.icon && <bds-icon theme="outline" size="x-large" color="#fff" name={this.icon} />}
         <div class="toast__content">
           {this.toastTitle && (
             <bds-typo variant="fs-14" bold="bold">
               {this.toastTitle}
             </bds-typo>
           )}
-          {this.toastText && (
-            <bds-typo variant="fs-14">{this.toastText}</bds-typo>
-          )}
+          {this.toastText && <bds-typo variant="fs-14">{this.toastText}</bds-typo>}
         </div>
         <div
           class={{
-            "toast__action": true,
+            toast__action: true,
             [`toast__action__${this.actionType}`]: true,
           }}
         >
-          {this.actionType === "button" ? (
+          {this.actionType === 'button' ? (
             <button onClick={() => this._buttonClickHandler()}>
               <bds-button variant="secondary--white" size="short">
                 {this.buttonText}
@@ -185,11 +167,7 @@ export class BdsToast implements ComponentInterface {
             </button>
           ) : (
             <button onClick={() => this._buttonClickHandler()}>
-              <bds-icon-button
-                size="short"
-                variant="secondary--white"
-                icon="close"
-              />
+              <bds-icon-button size="short" variant="secondary--white" icon="close" />
             </button>
           )}
         </div>

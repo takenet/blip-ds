@@ -1,7 +1,7 @@
-import { newSpecPage } from "@stencil/core/testing";
-import { BdsToastContainer } from "../toast-container";
+import { newSpecPage } from '@stencil/core/testing';
+import { BdsToastContainer } from '../toast-container';
 
-describe("bds-toast-container", () => {
+describe('bds-toast-container', () => {
   let page;
   beforeEach(async () => {
     page = await newSpecPage({
@@ -10,16 +10,16 @@ describe("bds-toast-container", () => {
     });
   });
 
-  it("should build", () => {
+  it('should build', () => {
     expect(new BdsToastContainer()).toBeTruthy();
   });
 
-  it("should render the component", async () => {
+  it('should render the component', async () => {
     expect(page).toMatchSnapshot();
     expect(page.root).toMatchSnapshot();
   });
 
-  it("should match html", async () => {
+  it('should match html', async () => {
     expect(page.root).toEqualHtml(`
       <bds-toast-container>
         <mock:shadow-root>
@@ -28,6 +28,6 @@ describe("bds-toast-container", () => {
         </div>
         </mock:shadow-root>
       </bds-toast-container>
-    `)
-  })
+    `);
+  });
 });

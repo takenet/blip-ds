@@ -7,31 +7,27 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-      copy: [
-        { src: 'globals', dest: 'styles' },
-      ],
+      copy: [{ src: 'globals', dest: 'styles' }],
     },
     {
-      type: 'docs-readme'
+      type: 'docs-readme',
     },
     {
       type: 'www',
-      serviceWorker: null // disable service workers
+      serviceWorker: null, // disable service workers
     },
   ],
   excludeSrc: ['/test/', '**/.spec.', '**/.stories.'],
   plugins: [
     sass({
       includePaths: ['src/globals'],
-      injectGlobalPaths: [
-        'src/globals/app.scss',
-      ]
-    })
+      injectGlobalPaths: ['src/globals/app.scss'],
+    }),
   ],
   extras: {
-    appendChildSlotFix: true
+    appendChildSlotFix: true,
   },
   testing: {
-    timers: 'fake'
-  }
+    timers: 'fake',
+  },
 };

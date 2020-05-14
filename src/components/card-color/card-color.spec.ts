@@ -9,42 +9,41 @@ describe('bds-card-color', () => {
   it('should render', async () => {
     const page = await newSpecPage({
       html: `<bds-card-color name="${nameMock}" variable="${variableMock}"></bds-card-color>`,
-      components: [CardColor]
+      components: [CardColor],
     });
 
-    expect(page.root.shadowRoot.querySelector(".card-color")).toBeTruthy();
-    expect(page.root.querySelector(".card-color")).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector(".color__description__value")).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.card-color')).toBeTruthy();
+    expect(page.root.querySelector('.card-color')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.color__description__value')).toBeFalsy();
   });
 
   it('should render with HEX', async () => {
     const page = await newSpecPage({
       html: `<bds-card-color name="${nameMock}" variable="${variableMock}" hex="${hexMock}"></bds-card-color>`,
-      components: [CardColor]
+      components: [CardColor],
     });
 
-    expect(page.root.shadowRoot.querySelector(".card-color")).toBeTruthy();
-    expect(page.root.querySelector(".card-color")).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector(".card-color__description__value")).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.card-color')).toBeTruthy();
+    expect(page.root.querySelector('.card-color')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.card-color__description__value')).toBeTruthy();
   });
 
   it('should render props', async () => {
     const page = await newSpecPage({
       html: `<bds-card-color name="${nameMock}" variable="${variableMock}"></bds-card-color>`,
-      components: [CardColor]
+      components: [CardColor],
     });
 
     expect(page.root.shadowRoot.querySelector('.card-color__description__name__text').textContent).toBe(nameMock);
     expect(page.root.shadowRoot.querySelector('.card-color--color').textContent).toBe(`$${variableMock}`);
-  })
+  });
 
   it('should render props with HEX', async () => {
     const page = await newSpecPage({
       html: `<bds-card-color name="${nameMock}" variable="${variableMock}" hex="${hexMock}"></bds-card-color>`,
-      components: [CardColor]
+      components: [CardColor],
     });
 
     expect(page.root.shadowRoot.querySelector('.card-color__description__value__text').textContent).toBe(hexMock);
-  })
-
+  });
 });

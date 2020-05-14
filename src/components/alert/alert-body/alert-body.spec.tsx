@@ -44,18 +44,18 @@ describe('alert-body', () => {
   });
 
   it('should render with shadow dom', async () => {
-    expect(page.root.shadowRoot.querySelector(".alert__body")).toBeTruthy();
-    expect(page.root.querySelector(".alert__body")).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.alert__body')).toBeTruthy();
+    expect(page.root.querySelector('.alert__body')).toBeFalsy();
   });
 
   it('should render without shadow dom', async () => {
     page = await newSpecPage({
       components: [AlertBody],
       html: `<bds-alert-body></bds-alert-body>`,
-      supportsShadowDom: false
+      supportsShadowDom: false,
     });
 
     expect(page.root.shadowRoot).toBeFalsy();
-    expect(page.root.querySelector(".alert__body")).toBeTruthy();
+    expect(page.root.querySelector('.alert__body')).toBeTruthy();
   });
 });

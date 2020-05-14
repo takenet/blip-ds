@@ -3,18 +3,17 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'bds-card-color',
   styleUrl: 'card-color.scss',
-  shadow: true
+  shadow: true,
 })
 export class CardColor {
-
   /**
-  * Specifies name color, use Figma docs in Blip DS.
-  */
+   * Specifies name color, use Figma docs in Blip DS.
+   */
   @Prop() name!: string;
 
   /**
-  * Specifies HEX color, use Figma docs in Blip DS.
-  */
+   * Specifies HEX color, use Figma docs in Blip DS.
+   */
   @Prop() hex?: string;
 
   /**
@@ -25,10 +24,12 @@ export class CardColor {
   render(): HTMLDivElement {
     return (
       <div class="card-color">
-        <div class={{
-          'card-color--color': true,
-          [`card-color--${this.variable}`]: true,
-        }}>
+        <div
+          class={{
+            'card-color--color': true,
+            [`card-color--${this.variable}`]: true,
+          }}
+        >
           <bds-typo variant="fs-14">${this.variable}</bds-typo>
         </div>
         <div class="card-color__description">
@@ -37,7 +38,6 @@ export class CardColor {
               <bds-typo variant="fs-10">Name</bds-typo>
             </div>
             <div class="card-color__description__name__text">
-
               <bds-typo variant="fs-12">{this.name}</bds-typo>
             </div>
           </div>
@@ -55,5 +55,4 @@ export class CardColor {
       </div>
     );
   }
-
 }
