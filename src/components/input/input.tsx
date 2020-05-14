@@ -302,6 +302,7 @@ export class Input {
             {this.renderLabel()}
             <Element
               class="input__container__text"
+              ref={input => this.nativeInput = input}
               rows={this.rows}
               cols={this.cols}
               autocapitalize={this.autoCapitalize}

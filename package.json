@@ -68,7 +68,7 @@
     "tslint-react": "^4.2.0"
   },
   "dependencies": {
-    "blip-tokens": "^1.1.0"
+    "blip-tokens": "^1.2.0"
   },
   "repository": {
     "type": "git",
