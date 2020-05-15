@@ -1,4 +1,4 @@
-@import "resets";
+@import 'resets';
 
 $button-border-radius: 8px;
 
@@ -146,6 +146,12 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
     }
+
+    bds-loading-spinner {
+      width: auto;
+      max-height: 20px;
+      position: absolute;
+    }
   }
 
   &__secondary {
@@ -167,7 +173,7 @@ $button-padding-left-right: 16px;
       @include disable-button(transparent, $color-neutral-disabled-blues-text);
     }
   }
-  
+
   &__secondary--white {
     background: transparent;
     color: $color-snow-white;
@@ -184,10 +190,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(
-        $color-neutral-disabled-blues-bg, 
-        $color-neutral-disabled-blues-text
-      );
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
     }
   }
 
@@ -243,5 +246,9 @@ $button-padding-left-right: 16px;
         1px dashed $color-neutral-disabled-blues-text
       );
     }
+  }
+
+  .hide {
+    opacity: 0;
   }
 }

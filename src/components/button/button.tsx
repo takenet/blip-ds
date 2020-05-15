@@ -1,4 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
+import { LoadingSpinnerColor } from '../loading-spinner/loading-spinner';
 
 export type ButtonSize = 'tall' | 'standard' | 'short';
 
@@ -52,6 +53,11 @@ export class Button {
    */
   @Prop() type: ButtonType = 'button';
 
+  /**
+   * 	If not empty, Sets the color of the spinner, can be 'light' or 'dark'
+   */
+  @Prop() bdsLoading: LoadingSpinnerColor = undefined;
+
   getSizeClass(): string {
     return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
   }
@@ -59,7 +65,7 @@ export class Button {
   renderIcon(): HTMLElement {
     return (
       this.icon && (
-        <div class="button__icon">
+        <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
           <bds-icon name={this.icon} color="inherit"></bds-icon>
         </div>
       )
@@ -73,6 +79,7 @@ export class Button {
           button__content: true,
           [`button__content__${this.variant}`]: true,
           [`button__content__${this.variant}--disabled`]: this.disabled,
+          hide: this.bdsLoading && true,
         }}
       >
         <bds-typo variant="fs-14" lineHeight="simple" bold={this.bold ? 'bold' : 'regular'}>
@@ -85,11 +92,15 @@ export class Button {
   renderArrow(): HTMLElement {
     return (
       this.arrow && (
-        <div class="button__arrow">
+        <div class={{ button__arrow: true, hide: this.bdsLoading && true }}>
           <bds-icon name="arrow-right" color="inherit"></bds-icon>
         </div>
       )
     );
+  }
+
+  renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
+    return <bds-loading-spinner color={this.bdsLoading}></bds-loading-spinner>;
   }
 
   private handleClick = (ev: Event) => {
@@ -123,9 +134,7 @@ export class Button {
           'button--size-icon--right': this.arrow,
         }}
       >
-        {this.renderIcon()}
-        {this.renderText()}
-        {this.renderArrow()}
+        {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
       </button>
     );
   }
