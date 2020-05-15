@@ -28,13 +28,13 @@ export const toastSystem = () => {
     toastContainer.appendChild(newtoast);
 
     const icon = text("icon", undefined);
-    const variant = select("variant", variantOptions, "system");
-    const actionType = select("action-type", actionTypeOptions, "button");
+    const variant = select("variant", variantOptions);
+    const actionType = select("action-type", actionTypeOptions);
     const toastTitle = text("toast-title", "Toast Title");
     const toastText = text("toast-text", "Lorem ipsum");
     const buttonText = text("button-text", "Cancelar");
     const duration = text("duration", 0);
-    const buttonAction = select("button-action", buttonActionOptions, "close");
+    const buttonAction = select("button-action", buttonActionOptions);
 
     await newtoast.create({
       variant,
