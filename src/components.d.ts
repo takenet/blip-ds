@@ -7,10 +7,12 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt, } from "./components/alert/alert-header/alert-header";
 import { ButtonSize, ButtonType, ButtonVariant, } from "./components/button/button";
+import { LoadingSpinnerColor, } from "./components/loading-spinner/loading-spinner";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
+import { LoadingSpinnerColor as LoadingSpinnerColor1, } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
 import { ActionType, ButtonActionType, CreateToastType, VariantType, } from "./components/toast/toast";
@@ -45,6 +47,10 @@ export namespace Components {
           * The arrow button
          */
         "arrow"?: boolean;
+        /**
+          * If not empty, Sets the color of the spinner, can be 'light' or 'dark'
+         */
+        "bdsLoading": LoadingSpinnerColor;
         /**
           * If true, the text will be bold
          */
@@ -331,6 +337,12 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BdsLoadingSpinner {
+        /**
+          * Sets the color of the spinner, can be 'light' or 'dark'
+         */
+        "color": LoadingSpinnerColor;
+    }
     interface BdsMenuList {
     }
     interface BdsMenuListItem {
@@ -561,6 +573,12 @@ declare global {
         prototype: HTMLBdsInputPasswordElement;
         new (): HTMLBdsInputPasswordElement;
     };
+    interface HTMLBdsLoadingSpinnerElement extends Components.BdsLoadingSpinner, HTMLStencilElement {
+    }
+    var HTMLBdsLoadingSpinnerElement: {
+        prototype: HTMLBdsLoadingSpinnerElement;
+        new (): HTMLBdsLoadingSpinnerElement;
+    };
     interface HTMLBdsMenuListElement extends Components.BdsMenuList, HTMLStencilElement {
     }
     var HTMLBdsMenuListElement: {
@@ -634,6 +652,7 @@ declare global {
         "bds-icon-button": HTMLBdsIconButtonElement;
         "bds-input": HTMLBdsInputElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
+        "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
         "bds-paper": HTMLBdsPaperElement;
@@ -672,6 +691,10 @@ declare namespace LocalJSX {
           * The arrow button
          */
         "arrow"?: boolean;
+        /**
+          * If not empty, Sets the color of the spinner, can be 'light' or 'dark'
+         */
+        "bdsLoading"?: LoadingSpinnerColor;
         /**
           * If true, the text will be bold
          */
@@ -975,6 +998,12 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    interface BdsLoadingSpinner {
+        /**
+          * Sets the color of the spinner, can be 'light' or 'dark'
+         */
+        "color"?: LoadingSpinnerColor;
+    }
     interface BdsMenuList {
     }
     interface BdsMenuListItem {
@@ -1163,6 +1192,7 @@ declare namespace LocalJSX {
         "bds-icon-button": BdsIconButton;
         "bds-input": BdsInput;
         "bds-input-password": BdsInputPassword;
+        "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
         "bds-paper": BdsPaper;
@@ -1191,6 +1221,7 @@ declare module "@stencil/core" {
             "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
+            "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;

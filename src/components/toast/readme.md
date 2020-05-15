@@ -69,6 +69,7 @@ graph TD;
   bds-toast --> bds-icon-button
   bds-button --> bds-icon
   bds-button --> bds-typo
+  bds-button --> bds-loading-spinner
   bds-icon-button --> bds-icon
   style bds-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
