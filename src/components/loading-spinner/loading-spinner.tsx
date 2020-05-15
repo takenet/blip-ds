@@ -15,10 +15,12 @@ export class BdsLoadingSpinner {
    */
   @Prop() color: LoadingSpinnerColor = 'light';
 
+  private readonly CHILD_COUNT = 12;
+
   render() {
     return (
       <div class="sk-circle">
-        {[...Array(12).keys()].map((_, i) => (
+        {[...Array(this.CHILD_COUNT).keys()].map((_, i) => (
           <div class={`sk-circle${i + 1} sk-child sk-child--${this.color}`} key={i}></div>
         ))}
       </div>
