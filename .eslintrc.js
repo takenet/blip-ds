@@ -12,7 +12,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/no-unknown-property': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    "@typescript-eslint/camelcase": "off",
+    '@typescript-eslint/camelcase': 'off',
+    'no-console': ['error'],
   },
   settings: {
     react: {

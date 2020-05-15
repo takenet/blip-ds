@@ -27,7 +27,7 @@ export const toastSystem = () => {
       .shadowRoot;
     toastContainer.appendChild(newtoast);
 
-    const icon = text("icon", "info");
+    const icon = text("icon", undefined);
     const variant = select("variant", variantOptions, "system");
     const actionType = select("action-type", actionTypeOptions, "button");
     const toastTitle = text("toast-title", "Toast Title");
@@ -37,7 +37,6 @@ export const toastSystem = () => {
     const buttonAction = select("button-action", buttonActionOptions, "close");
 
     await newtoast.create({
-      toastElement: newtoast,
       variant,
       actionType,
       toastTitle,
