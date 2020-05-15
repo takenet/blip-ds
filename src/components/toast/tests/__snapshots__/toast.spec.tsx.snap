@@ -28,7 +28,7 @@ exports[`bds-toast should be able to set all the props 1`] = `
 exports[`bds-toast should render the component and match the snapshot 1`] = `
 Object {
   "body": <body>
-  <bds-toast action-type="button" button-action="close" button-text="cancel" duration="0" icon="" show="true" toast-text="texto" toast-title="titulo" variant="system">
+  <bds-toast action-type="button" button-action="close" button-text="cancel" duration="0" show="true" toast-text="texto" toast-title="titulo" variant="system">
     <mock:shadow-root>
       <div class="show toast toast--action--button toast--system">
         <div class="toast__content">
@@ -145,7 +145,7 @@ Object {
 `;
 
 exports[`bds-toast should render the component and match the snapshot 2`] = `
-<bds-toast action-type="button" button-action="close" button-text="cancel" duration="0" icon="" show="true" toast-text="texto" toast-title="titulo" variant="system">
+<bds-toast action-type="button" button-action="close" button-text="cancel" duration="0" show="true" toast-text="texto" toast-title="titulo" variant="system">
   <mock:shadow-root>
     <div class="show toast toast--action--button toast--system">
       <div class="toast__content">

@@ -10,7 +10,7 @@ export class BdsToast implements ComponentInterface {
   /**
    * used for add the icon. Uses the bds-icon component.
    */
-  @Prop({ reflect: true }) icon?: string = '';
+  @Prop({ reflect: true }) icon?: string = null;
   /**
    * ActionType. Defines if the button should have a button or an icon. Can be one of:
    * 'icon', 'button';
@@ -87,7 +87,8 @@ export class BdsToast implements ComponentInterface {
     this.el.variant = variant || 'system';
     this.el.duration = duration * 1000 || 0;
 
-    this.el.icon = icon?.length ? icon : this.mapIconName[this.variant];
+    console.log(icon);
+    this.el.icon = icon ?? this.mapIconName[this.variant];
 
     this.el.show = true;
 

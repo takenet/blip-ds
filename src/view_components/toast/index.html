@@ -40,7 +40,6 @@
       const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
       toastContainer.appendChild(newtoast);
       await newtoast.create({
-        toastElement: newtoast,
         buttonText: 'cancelar',
         actionType: 'button',
         buttonAction: 'close',
@@ -55,7 +54,6 @@
       const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
       toastContainer.appendChild(newtoast);
       await newtoast.create({
-        toastElement: newtoast,
         buttonText: 'cancelar',
         actionType: 'button',
         buttonAction: 'close',
