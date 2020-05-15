@@ -87,7 +87,6 @@ export class BdsToast implements ComponentInterface {
     this.el.variant = variant || 'system';
     this.el.duration = duration * 1000 || 0;
 
-    console.log(icon);
     this.el.icon = icon ?? this.mapIconName[this.variant];
 
     this.el.show = true;
