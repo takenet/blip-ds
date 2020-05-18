@@ -139,7 +139,7 @@ export class BdsToast implements ComponentInterface {
               {this.toastTitle}
             </bds-typo>
           )}
-          {this.toastText && <bds-typo variant="fs-14">{this.toastText}</bds-typo>}
+          {this.toastText && <bds-typo variant="fs-14" innerHTML={this.toastText}></bds-typo>}
         </div>
         <div
           class={{
