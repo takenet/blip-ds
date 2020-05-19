@@ -201,6 +201,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Error message when the value isn't an email
+         */
+        "emailErrorMessage": string;
+        /**
           * Indicated to pass an feeback to user.
          */
         "errorMessage"?: string;
@@ -237,6 +241,10 @@ export namespace Components {
          */
         "max"?: string;
         /**
+          * Error message when the value is higher than the max value
+         */
+        "maxErrorMessage": string;
+        /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
         "maxlength"?: number;
@@ -244,6 +252,14 @@ export namespace Components {
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */
         "min"?: string;
+        /**
+          * Error message when the value is lower than the min value
+         */
+        "minErrorMessage": string;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minLengthErrorMessage": string;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
@@ -258,6 +274,14 @@ export namespace Components {
         "readonly": boolean;
         "removeFocus": () => Promise<void>;
         /**
+          * If `true`, the input value will be required.
+         */
+        "required": boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage": string;
+        /**
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
         "rows"?: number;
@@ -266,7 +290,7 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * Input type. Can be one of: "text" or "password".
+          * Input type. Can be one of: "text", "password", "number" or "email".
          */
         "type"?: InputType;
         /**
@@ -851,6 +875,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Error message when the value isn't an email
+         */
+        "emailErrorMessage"?: string;
+        /**
           * Indicated to pass an feeback to user.
          */
         "errorMessage"?: string;
@@ -883,6 +911,10 @@ declare namespace LocalJSX {
          */
         "max"?: string;
         /**
+          * Error message when the value is higher than the max value
+         */
+        "maxErrorMessage"?: string;
+        /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
          */
         "maxlength"?: number;
@@ -890,6 +922,14 @@ declare namespace LocalJSX {
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */
         "min"?: string;
+        /**
+          * Error message when the value is lower than the min value
+         */
+        "minErrorMessage"?: string;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minLengthErrorMessage"?: string;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
@@ -923,11 +963,19 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * If `true`, the input value will be required.
+         */
+        "required"?: boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage"?: string;
+        /**
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
         "rows"?: number;
         /**
-          * Input type. Can be one of: "text" or "password".
+          * Input type. Can be one of: "text", "password", "number" or "email".
          */
         "type"?: InputType;
         /**
