@@ -351,7 +351,6 @@ export class Input {
       this.danger = true;
       return;
     }
-
     this.danger = false;
   }
 
