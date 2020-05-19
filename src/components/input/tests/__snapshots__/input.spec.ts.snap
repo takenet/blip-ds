@@ -1,54 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`bds-toast should be able to set all the props 1`] = `
-<bds-toast icon="info">
-  <mock:shadow-root>
-    <div class="toast toast--action--button toast--error">
-      <bds-icon color="#fff" name="info" size="x-large" theme="outline"></bds-icon>
-      <div class="toast__content">
-        <bds-typo bold="bold" variant="fs-14">
-          Toast
-        </bds-typo>
-        <bds-typo variant="fs-14">
-          Lorem ipsum
-        </bds-typo>
-      </div>
-      <div class="toast__action toast__action__button">
-        <button>
-          <bds-button size="short" variant="secondary--white">
-            Close
-          </bds-button>
-        </button>
-      </div>
-    </div>
-  </mock:shadow-root>
-</bds-toast>
-`;
-
-exports[`bds-toast should render the component and match the snapshot 1`] = `
+exports[`bds-button should render the component 1`] = `
 Object {
   "body": <body>
-  <bds-toast action-type="button" button-action="close" button-text="cancel" duration="0" show="true" toast-text="texto" toast-title="titulo" variant="system">
+  <bds-input icon="" type="text">
     <mock:shadow-root>
-      <div class="show toast toast--action--button toast--system">
-        <div class="toast__content">
-          <bds-typo bold="bold" variant="fs-14">
-            titulo
-          </bds-typo>
-          <bds-typo variant="fs-14">
-            texto
-          </bds-typo>
+      <div class="input input--state-primary">
+        <div class="input__container">
+          <input autocapitalize="off" autocomplete="off" class="input__container__text" cols="0" placeholder="" rows="1" type="text" value="">
         </div>
-        <div class="toast__action toast__action__button">
-          <button>
-            <bds-button size="short" variant="secondary--white">
-              cancel
-            </bds-button>
-          </button>
-        </div>
+        <slot name="input-right"></slot>
       </div>
     </mock:shadow-root>
-  </bds-toast>
+  </bds-input>
 </body>,
   "build": Object {
     "allRenderFn": true,
@@ -137,7 +101,7 @@ Object {
   "flushQueue": [Function],
   "setContent": [Function],
   "styles": Map {
-    "BDS-TOAST" => null,
+    "BDS-INPUT" => null,
   },
   "waitForChanges": [Function],
   "win": [MockWindow],

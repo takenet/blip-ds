@@ -8,7 +8,6 @@ import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRu
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
-
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
@@ -25,7 +24,7 @@ export class Input {
   @Prop() inputName? = '';
 
   /**
-   * Input type. Can be one of: "text" or "password".
+   * Input type. Can be one of: "text", "password", "number" or "email".
    */
   @Prop({ reflect: true }) type?: InputType = 'text';
 
@@ -73,6 +72,11 @@ export class Input {
    * If `true`, the user cannot modify the value.
    */
   @Prop() readonly = false;
+
+  /**
+   * If `true`, the input value will be required.
+   */
+  @Prop() required: boolean;
 
   /**
    * Indicated to pass a help the user in complex filling.
@@ -135,6 +139,26 @@ export class Input {
    * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
    */
   @Prop() cols?: number = 0;
+  /**
+   * Error message when input is required
+   */
+  @Prop() requiredErrorMessage: string;
+  /**
+   * Error message when the value is lower than the minlength
+   */
+  @Prop() minLengthErrorMessage: string;
+  /**
+   * Error message when the value is lower than the min value
+   */
+  @Prop() minErrorMessage: string;
+  /**
+   * Error message when the value is higher than the max value
+   */
+  @Prop() maxErrorMessage: string;
+  /**
+   * Error message when the value isn't an email
+   */
+  @Prop() emailErrorMessage: string;
 
   /**
    * Update the native input element when the value changes
@@ -205,6 +229,7 @@ export class Input {
   };
 
   private onInput = (ev: Event): void => {
+    this.onBdsInputValidations();
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
@@ -213,6 +238,7 @@ export class Input {
   };
 
   private onBlur = (): void => {
+    this.onBlurValidations();
     this.isPressed = false;
     this.bdsOnBlur.emit();
   };
@@ -280,6 +306,64 @@ export class Input {
     return undefined;
   }
 
+  private onBlurValidations() {
+    this.required && this.requiredValidation();
+    this.type === 'email' && this.emailValidation();
+  }
+
+  private onBdsInputValidations() {
+    (this.minlength || this.maxlength) && this.lengthValidation();
+    (this.min || this.max) && this.minMaxValidation();
+  }
+
+  private requiredValidation() {
+    if (this.nativeInput.validity.valueMissing) {
+      this.errorMessage = this.requiredErrorMessage;
+      this.danger = true;
+    } else {
+      this.danger = false;
+    }
+  }
+
+  private lengthValidation() {
+    if (this.nativeInput.validity.tooShort) {
+      this.errorMessage = this.minLengthErrorMessage;
+      this.danger = true;
+      return;
+    }
+
+    if (this.nativeInput.validity.tooLong) {
+      this.danger = true;
+      return;
+    }
+    this.danger = false;
+  }
+
+  private minMaxValidation() {
+    if (this.nativeInput.validity.rangeUnderflow) {
+      this.errorMessage = this.minErrorMessage;
+      this.danger = true;
+      return;
+    }
+
+    if (this.nativeInput.validity.rangeOverflow) {
+      this.errorMessage = this.maxErrorMessage;
+      this.danger = true;
+      return;
+    }
+    this.danger = false;
+  }
+
+  private emailValidation() {
+    const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;
+    if (this.nativeInput.value && !emailRegex.test(this.nativeInput.value)) {
+      this.errorMessage = this.emailErrorMessage;
+      this.danger = true;
+    } else {
+      this.danger = false;
+    }
+  }
+
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const Element = this.isTextarea ? 'textarea' : 'input';
@@ -321,6 +405,7 @@ export class Input {
               readOnly={this.readonly}
               type={this.type}
               value={this.value}
+              required={this.required}
             ></Element>
           </div>
           {this.counterLength && (

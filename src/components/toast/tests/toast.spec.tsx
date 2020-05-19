@@ -53,7 +53,6 @@ describe('bds-toast', () => {
   it('should render the component and match the snapshot', async () => {
     const page = await getToast();
     expect(page).toMatchSnapshot();
-    expect(page.root).toMatchSnapshot();
   });
 
   it('should render the component in the shadow dom', async () => {
