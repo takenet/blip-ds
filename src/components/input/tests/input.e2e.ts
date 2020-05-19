@@ -5,6 +5,10 @@ describe('input e2e tests', () => {
   let inputRootElement;
   let inputNativeElement;
 
+  const eventMock = {
+    isTrusted: true,
+  };
+
   beforeEach(async () => {
     page = await newE2EPage({
       html: `<bds-input></bds-input>`,
@@ -184,7 +188,7 @@ describe('input e2e tests', () => {
 
     await inputNativeElement.type('a');
 
-    expect(spy).toHaveReceivedEvent();
+    expect(spy).toHaveReceivedEventDetail(eventMock);
   });
 
   it('should emit the bdsOnBlur event', async () => {
@@ -215,9 +219,7 @@ describe('input e2e tests', () => {
     await inputNativeElement.press('Enter');
 
     expect(spy).toHaveReceivedEventDetail({
-      event: {
-        isTrusted: true,
-      },
+      event: eventMock,
       value: 'blip',
     });
 
