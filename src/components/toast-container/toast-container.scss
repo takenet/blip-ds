@@ -1,5 +1,7 @@
 :host {
-  position: absolute;
-  bottom: 20px;
+  position: fixed;
+  bottom: 40px;
   left: 32px;
+  display: flex;
+  flex-direction: column-reverse;
 }

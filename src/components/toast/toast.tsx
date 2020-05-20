@@ -80,7 +80,7 @@ export class BdsToast implements ComponentInterface {
     duration,
   }: CreateToastType) {
     this.el.actionType = actionType || 'button';
-    this.el.buttonAction = buttonAction;
+    this.el.buttonAction = buttonAction || 'close';
     this.el.buttonText = buttonText;
     this.el.toastText = toastText;
     this.el.toastTitle = toastTitle;
