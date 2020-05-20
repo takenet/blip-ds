@@ -7,8 +7,8 @@ export type ButtonActionType = 'close' | 'custom';
 export type IconVariantMap = { [key in VariantType]: string };
 
 export type CreateToastType = {
-  buttonAction: ButtonActionType;
-  buttonText: string;
+  buttonAction?: ButtonActionType;
+  buttonText?: string;
   toastText: string;
   toastTitle: string;
   icon?: string;
