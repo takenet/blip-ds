@@ -33,7 +33,6 @@ describe('toast e2e tests', () => {
     const spy = await page.spyOnEvent('toastButtonClick');
 
     const button = await page.find('bds-toast >>> button');
-
     button.click();
     await page.waitForChanges();
 

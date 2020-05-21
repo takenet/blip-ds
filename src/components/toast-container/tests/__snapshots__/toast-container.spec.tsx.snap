@@ -104,13 +104,3 @@ Object {
   "win": [MockWindow],
 }
 `;
-
-exports[`bds-toast-container should render the component 2`] = `
-<bds-toast-container>
-  <mock:shadow-root>
-    <div>
-      <slot></slot>
-    </div>
-  </mock:shadow-root>
-</bds-toast-container>
-`;

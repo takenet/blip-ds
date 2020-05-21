@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'bds-toast-container',
@@ -8,11 +8,9 @@ import { Component, Host, h } from '@stencil/core';
 export class BdsToastContainer {
   render() {
     return (
-      <Host>
-        <div>
-          <slot></slot>
-        </div>
-      </Host>
+      <div>
+        <slot></slot>
+      </div>
     );
   }
 }

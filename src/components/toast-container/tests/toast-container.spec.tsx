@@ -16,18 +16,5 @@ describe('bds-toast-container', () => {
 
   it('should render the component', async () => {
     expect(page).toMatchSnapshot();
-    expect(page.root).toMatchSnapshot();
-  });
-
-  it('should match html', async () => {
-    expect(page.root).toEqualHtml(`
-      <bds-toast-container>
-        <mock:shadow-root>
-        <div>
-          <slot />
-        </div>
-        </mock:shadow-root>
-      </bds-toast-container>
-    `);
   });
 });

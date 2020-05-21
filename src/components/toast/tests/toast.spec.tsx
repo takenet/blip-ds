@@ -105,14 +105,7 @@ describe('bds-toast', () => {
   it('should create a new toast', async () => {
     const page = await getEmptyToast();
 
-    const toastContainer = page.doc.createElement('bds-toast-container');
-    page.body.appendChild(toastContainer);
-
-    const toastElement = page.body.querySelector('bds-toast');
-    page.body.querySelector('bds-toast-container').appendChild(toastElement);
-
     await page.root.create({
-      toastElement,
       actionType: 'button',
       buttonAction: 'close',
       buttonText: 'cancel',
@@ -133,6 +126,10 @@ describe('bds-toast', () => {
 
     const icon = page.root.shadowRoot.querySelector('.toast').firstElementChild;
     expect(icon.getAttribute('name')).toBe('trash');
+
+    const toastContainer = page.body.querySelectorAll('bds-toast-container');
+
+    expect(toastContainer[0].childElementCount).toBe(1);
   });
 
   it('should be able to set all the props', async () => {
@@ -155,14 +152,7 @@ describe('bds-toast', () => {
   it('should render the default icon (attention) if the variant is warning icon prop is not passed', async () => {
     const page = await getToast();
 
-    const toastContainer = page.doc.createElement('bds-toast-container');
-    page.body.appendChild(toastContainer);
-
-    const toastElement = page.body.querySelector('bds-toast');
-    page.body.querySelector('bds-toast-container').appendChild(toastElement);
-
     await page.root.create({
-      toastElement,
       actionType: 'button',
       buttonAction: 'close',
       buttonText: 'cancel',
@@ -181,14 +171,7 @@ describe('bds-toast', () => {
   it('should render the default icon (like) if the variant is success icon prop is not passed', async () => {
     const page = await getToast();
 
-    const toastContainer = page.doc.createElement('bds-toast-container');
-    page.body.appendChild(toastContainer);
-
-    const toastElement = page.body.querySelector('bds-toast');
-    page.body.querySelector('bds-toast-container').appendChild(toastElement);
-
     await page.root.create({
-      toastElement,
       actionType: 'button',
       buttonAction: 'close',
       buttonText: 'cancel',
