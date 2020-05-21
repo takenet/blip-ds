@@ -18,14 +18,19 @@
     position: absolute;
     left: 0;
     top: 0;
-    &--light {
+    &--primary {
       &::before {
         background-color: $color-snow-white;
       }
     }
-    &--dark {
+    &--secondary {
       &::before {
-        background-color: $color-neutral-dark-onix;
+        background-color: $color-primary-main;
+      }
+    }
+    &--ghost {
+      &::before {
+        background-color: $color-neutral-dark-rooftop;
       }
     }
   }

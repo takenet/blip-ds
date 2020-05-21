@@ -80,9 +80,28 @@ describe('bds-button', () => {
   });
 
   it('should render the loading spinner', async () => {
-    const page = await getPage({ icon: '', arrow: false, loading: 'light' });
+    const page = await getPage({ icon: '', arrow: false, loading: true });
 
     expect(page.root.shadowRoot.querySelector('button').innerHTML).toContain('</bds-loading-spinner>');
+    expect(
+      page.root.shadowRoot.querySelector('button').querySelector('bds-loading-spinner').getAttribute('variant')
+    ).toBe('primary');
     expect(page.root.shadowRoot.querySelector('.button__content')).toHaveClass('hide');
+
+    page.root.bdsLoadingVariant = 'secondary';
+
+    await page.waitForChanges();
+
+    expect(
+      page.root.shadowRoot.querySelector('button').querySelector('bds-loading-spinner').getAttribute('variant')
+    ).toBe('secondary');
+
+    page.root.bdsLoadingVariant = 'ghost';
+
+    await page.waitForChanges();
+
+    expect(
+      page.root.shadowRoot.querySelector('button').querySelector('bds-loading-spinner').getAttribute('variant')
+    ).toBe('ghost');
   });
 });

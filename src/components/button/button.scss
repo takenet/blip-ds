@@ -146,12 +146,6 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
     }
-
-    bds-loading-spinner {
-      width: auto;
-      max-height: 20px;
-      position: absolute;
-    }
   }
 
   &__secondary {
@@ -248,7 +242,14 @@ $button-padding-left-right: 16px;
     }
   }
 
+  bds-loading-spinner {
+    width: auto;
+    max-height: 20px;
+    position: absolute;
+  }
+
   .hide {
+    cursor: not-allowed;
     opacity: 0;
   }
 }

@@ -22,7 +22,7 @@ describe('input e2e tests', () => {
     await page.$eval('bds-input', (elm: HTMLBdsInputElement) => {
       elm.minlength = 3;
       elm.maxlength = 10;
-      elm.minLengthErrorMessage = 'the min length should be 3';
+      elm.minlengthErrorMessage = 'the min length should be 3';
     });
 
     await page.waitForChanges();
@@ -52,7 +52,7 @@ describe('input e2e tests', () => {
     await page.$eval('bds-input', (elm: HTMLBdsInputElement) => {
       elm.minlength = 1;
       elm.maxlength = 3;
-      elm.minLengthErrorMessage = 'the min length should be 3';
+      elm.minlengthErrorMessage = 'the min length should be 3';
     });
 
     page.waitForChanges();
@@ -155,10 +155,12 @@ describe('input e2e tests', () => {
       elm.emailErrorMessage = 'please type a valid email';
     });
 
-    await inputNativeElement.press('a');
-    await inputNativeElement.press('Tab');
+    await page.waitForChanges();
+
+    await inputNativeElement.type('a');
 
     let danger = await inputRootElement.getProperty('danger');
+
     let errorMessage = await page.find('bds-input >>> .input__message');
     expect(danger).toBeTruthy();
     expect(errorMessage.textContent).toBe('please type a valid email');
@@ -171,6 +173,42 @@ describe('input e2e tests', () => {
     errorMessage = await page.find('bds-input >>> .input__message');
 
     expect(await inputNativeElement.getProperty('value')).toBe('valid@take.net');
+    expect(danger).toBeFalsy();
+    expect(errorMessage).toBeFalsy();
+  });
+
+  it('should test thte input with two validations', async () => {
+    await page.$eval('bds-input', (elm: HTMLBdsInputElement) => {
+      elm.required = true;
+      elm.type = 'email';
+      elm.requiredErrorMessage = 'the input is required';
+      elm.emailErrorMessage = 'the input must be an email';
+    });
+
+    await page.waitForChanges();
+
+    await inputNativeElement.click();
+    await inputNativeElement.press('Tab');
+
+    let danger = await inputRootElement.getProperty('danger');
+    let errorMessage = await page.find('bds-input >>> .input__message');
+
+    expect(danger).toBeTruthy();
+    expect(errorMessage.textContent).toBe('the input is required');
+
+    await inputNativeElement.type('invalidmail');
+
+    danger = await inputRootElement.getProperty('danger');
+    errorMessage = await page.find('bds-input >>> .input__message');
+
+    expect(danger).toBeTruthy();
+    expect(errorMessage.textContent).toBe('the input must be an email');
+
+    await inputNativeElement.type('blip@take.net');
+
+    danger = await inputRootElement.getProperty('danger');
+    errorMessage = await page.find('bds-input >>> .input__message');
+
     expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
   });

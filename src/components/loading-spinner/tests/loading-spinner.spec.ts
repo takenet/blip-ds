@@ -12,7 +12,7 @@ describe('toast spinner tests', () => {
   const getLightLoadingSpinner = async () => {
     return await newSpecPage({
       components: [BdsLoadingSpinner],
-      html: `<bds-loading-spinner color="light"></bds-loading-spinner>`,
+      html: `<bds-loading-spinner variant="primary"></bds-loading-spinner>`,
     });
   };
 
@@ -24,12 +24,13 @@ describe('toast spinner tests', () => {
     const page = await getLoadingSpinner();
 
     const spinner = await page.doc.querySelector('bds-loading-spinner');
-    spinner.color = 'light';
+    spinner.variant = 'primary';
 
     await page.waitForChanges();
 
-    expect(await page.root.shadowRoot.querySelector('.sk-child--light')).toBeTruthy();
-    expect(await page.root.shadowRoot.querySelector('.sk-child--dark')).toBeFalsy();
+    expect(await page.root.shadowRoot.querySelector('.sk-child--primary')).toBeTruthy();
+    expect(await page.root.shadowRoot.querySelector('.sk-child--secondary')).toBeFalsy();
+    expect(await page.root.shadowRoot.querySelector('.sk-child--ghost')).toBeFalsy();
   });
 
   it('should change the color prop', async () => {
@@ -39,16 +40,17 @@ describe('toast spinner tests', () => {
 
     let spinnerClasses = await page.root.shadowRoot.querySelector('.sk-child');
 
-    expect(spinnerClasses).toHaveClass('sk-child--light');
-    expect(spinnerClasses).not.toHaveClass('sk-child--dark');
+    expect(spinnerClasses).toHaveClass('sk-child--primary');
+    expect(spinnerClasses).not.toHaveClass('sk-child--secondary');
 
-    spinner.color = 'dark';
+    spinner.variant = 'secondary';
 
     await page.waitForChanges();
 
     spinnerClasses = await page.root.shadowRoot.querySelector('.sk-child');
 
-    expect(spinnerClasses).not.toHaveClass('sk-child--light');
-    expect(spinnerClasses).toHaveClass('sk-child--dark');
+    expect(spinnerClasses).not.toHaveClass('sk-child--ghost');
+    expect(spinnerClasses).not.toHaveClass('sk-child--primary');
+    expect(spinnerClasses).toHaveClass('sk-child--secondary');
   });
 });

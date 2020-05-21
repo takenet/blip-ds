@@ -1,4 +1,4 @@
-@import "resets";
+@import 'resets';
 
 $input-padding: 8px 8px 9px 12px;
 $input-padding-label: 7px 8px 8px 12px;
@@ -21,16 +21,7 @@ $input-width: 100%;
   }
 }
 
-@mixin input-theme(
-  $name,
-  $primary,
-  $secondary,
-  $label,
-  $text,
-  $border,
-  $hover,
-  $focus
-) {
+@mixin input-theme($name, $primary, $secondary, $label, $text, $border, $hover, $focus) {
   $color-input-primary: $primary;
   $color-input-secondary: $secondary;
   $color-input-label: $label;
@@ -42,7 +33,7 @@ $input-width: 100%;
 
   @include input-border($color-input-border);
 
-  @if ($name == "disabled") {
+  @if ($name == 'disabled') {
     background: $color-input-disable-background;
   }
 
@@ -50,7 +41,7 @@ $input-width: 100%;
   &:hover {
     @include input-border($color-input-primary);
 
-    @if ($name == "disabled") {
+    @if ($name == 'disabled') {
       @include input-border($color-input-border);
     }
   }
@@ -124,7 +115,7 @@ $input-width: 100%;
   &--state {
     &-primary {
       @include input-theme(
-        "primary",
+        'primary',
         $color-primary-main,
         $color-neutral-disabled-blues-bg,
         $color-neutral-medium-cloud,
@@ -137,7 +128,7 @@ $input-width: 100%;
 
     &-danger {
       @include input-theme(
-        "danger",
+        'danger',
         $color-secondary-delete,
         $color-extend-rr-b-vitamin,
         $color-neutral-medium-cloud,
@@ -151,7 +142,7 @@ $input-width: 100%;
     &-disabled {
       cursor: not-allowed;
       @include input-theme(
-        "disabled",
+        'disabled',
         $color-neutral-medium-silver,
         $color-neutral-light-breeze,
         $color-neutral-medium-silver,
@@ -212,10 +203,14 @@ $input-width: 100%;
     bottom: -22px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: $color-neutral-medium-cloud;
+    bds-typo {
+      margin-top: 4px;
+    }
 
     &__icon {
       display: flex;
       padding-right: 4px;
+      margin-top: 6px;
     }
 
     &--danger {
