@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
-import { LoadingSpinnerColor } from '../loading-spinner/loading-spinner';
+import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 
 export type ButtonSize = 'tall' | 'standard' | 'short';
 
@@ -54,9 +54,14 @@ export class Button {
   @Prop() type: ButtonType = 'button';
 
   /**
-   * 	If not empty, Sets the color of the spinner, can be 'light' or 'dark'
+   * 	If true, shows the loading spinner
    */
-  @Prop() bdsLoading: LoadingSpinnerColor = undefined;
+  @Prop() bdsLoading?: boolean = false;
+
+  /**
+   * 	If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
+   */
+  @Prop() bdsLoadingVariant: LoadingSpinnerVariant = 'primary';
 
   getSizeClass(): string {
     return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
@@ -100,7 +105,7 @@ export class Button {
   }
 
   renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
-    return <bds-loading-spinner color={this.bdsLoading}></bds-loading-spinner>;
+    return <bds-loading-spinner variant={this.bdsLoadingVariant}></bds-loading-spinner>;
   }
 
   private handleClick = (ev: Event) => {

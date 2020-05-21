@@ -1,8 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
 
-export type LoadingSpinnerColor = 'dark' | 'light';
+export type LoadingSpinnerVariant = 'primary' | 'secondary' | 'ghost';
 
-export type LoadingSpinnerColorMap = { [key in LoadingSpinnerColor]: string };
+export type LoadingSpinnerColorMap = { [key in LoadingSpinnerVariant]: string };
 
 @Component({
   tag: 'bds-loading-spinner',
@@ -11,9 +11,9 @@ export type LoadingSpinnerColorMap = { [key in LoadingSpinnerColor]: string };
 })
 export class BdsLoadingSpinner {
   /**
-   * 	Sets the color of the spinner, can be 'light' or 'dark'
+   * 	Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
    */
-  @Prop() color: LoadingSpinnerColor = 'light';
+  @Prop() variant: LoadingSpinnerVariant = 'primary';
 
   private readonly CHILD_COUNT = 12;
 
@@ -21,7 +21,7 @@ export class BdsLoadingSpinner {
     return (
       <div class="sk-circle">
         {[...Array(this.CHILD_COUNT).keys()].map((_, i) => (
-          <div class={`sk-circle${i + 1} sk-child sk-child--${this.color}`} key={i}></div>
+          <div class={`sk-circle${i + 1} sk-child sk-child--${this.variant}`} key={i}></div>
         ))}
       </div>
     );

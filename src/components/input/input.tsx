@@ -146,7 +146,7 @@ export class Input {
   /**
    * Error message when the value is lower than the minlength
    */
-  @Prop() minLengthErrorMessage: string;
+  @Prop() minlengthErrorMessage: string;
   /**
    * Error message when the value is lower than the min value
    */
@@ -308,26 +308,26 @@ export class Input {
 
   private onBlurValidations() {
     this.required && this.requiredValidation();
-    this.type === 'email' && this.emailValidation();
+    this.checkValidity();
   }
 
   private onBdsInputValidations() {
     (this.minlength || this.maxlength) && this.lengthValidation();
     (this.min || this.max) && this.minMaxValidation();
+    this.type === 'email' && this.emailValidation();
+    this.checkValidity();
   }
 
   private requiredValidation() {
     if (this.nativeInput.validity.valueMissing) {
       this.errorMessage = this.requiredErrorMessage;
       this.danger = true;
-    } else {
-      this.danger = false;
     }
   }
 
   private lengthValidation() {
     if (this.nativeInput.validity.tooShort) {
-      this.errorMessage = this.minLengthErrorMessage;
+      this.errorMessage = this.minlengthErrorMessage;
       this.danger = true;
       return;
     }
@@ -336,7 +336,6 @@ export class Input {
       this.danger = true;
       return;
     }
-    this.danger = false;
   }
 
   private minMaxValidation() {
@@ -351,7 +350,6 @@ export class Input {
       this.danger = true;
       return;
     }
-    this.danger = false;
   }
 
   private emailValidation() {
@@ -359,7 +357,11 @@ export class Input {
     if (this.nativeInput.value && !emailRegex.test(this.nativeInput.value)) {
       this.errorMessage = this.emailErrorMessage;
       this.danger = true;
-    } else {
+    }
+  }
+
+  private checkValidity() {
+    if (this.nativeInput.validity.valid) {
       this.danger = false;
     }
   }

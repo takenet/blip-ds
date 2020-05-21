@@ -7,12 +7,12 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt, } from "./components/alert/alert-header/alert-header";
 import { ButtonSize, ButtonType, ButtonVariant, } from "./components/button/button";
-import { LoadingSpinnerColor, } from "./components/loading-spinner/loading-spinner";
+import { LoadingSpinnerVariant, } from "./components/loading-spinner/loading-spinner";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
-import { LoadingSpinnerColor as LoadingSpinnerColor1, } from "./components/loading-spinner/loading-spinner";
+import { LoadingSpinnerVariant as LoadingSpinnerVariant1, } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
 import { ActionType, ButtonActionType, CreateToastType, VariantType, } from "./components/toast/toast-interface";
@@ -48,9 +48,13 @@ export namespace Components {
          */
         "arrow"?: boolean;
         /**
-          * If not empty, Sets the color of the spinner, can be 'light' or 'dark'
+          * If true, shows the loading spinner
          */
-        "bdsLoading": LoadingSpinnerColor;
+        "bdsLoading"?: boolean;
+        /**
+          * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
+         */
+        "bdsLoadingVariant": LoadingSpinnerVariant;
         /**
           * If true, the text will be bold
          */
@@ -257,13 +261,13 @@ export namespace Components {
          */
         "minErrorMessage": string;
         /**
-          * Error message when the value is lower than the minlength
-         */
-        "minLengthErrorMessage": string;
-        /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
         "minlength"?: number;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minlengthErrorMessage": string;
         /**
           * A tip for the user who can enter no controls.
          */
@@ -363,9 +367,9 @@ export namespace Components {
     }
     interface BdsLoadingSpinner {
         /**
-          * Sets the color of the spinner, can be 'light' or 'dark'
+          * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
          */
-        "color": LoadingSpinnerColor;
+        "variant": LoadingSpinnerVariant;
     }
     interface BdsMenuList {
     }
@@ -716,9 +720,13 @@ declare namespace LocalJSX {
          */
         "arrow"?: boolean;
         /**
-          * If not empty, Sets the color of the spinner, can be 'light' or 'dark'
+          * If true, shows the loading spinner
          */
-        "bdsLoading"?: LoadingSpinnerColor;
+        "bdsLoading"?: boolean;
+        /**
+          * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
+         */
+        "bdsLoadingVariant"?: LoadingSpinnerVariant;
         /**
           * If true, the text will be bold
          */
@@ -927,13 +935,13 @@ declare namespace LocalJSX {
          */
         "minErrorMessage"?: string;
         /**
-          * Error message when the value is lower than the minlength
-         */
-        "minLengthErrorMessage"?: string;
-        /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
         "minlength"?: number;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minlengthErrorMessage"?: string;
         /**
           * Emitted when the value has changed.
          */
@@ -1048,9 +1056,9 @@ declare namespace LocalJSX {
     }
     interface BdsLoadingSpinner {
         /**
-          * Sets the color of the spinner, can be 'light' or 'dark'
+          * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
          */
-        "color"?: LoadingSpinnerColor;
+        "variant"?: LoadingSpinnerVariant;
     }
     interface BdsMenuList {
     }

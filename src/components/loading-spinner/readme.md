@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                                             | Type                | Default   |
-| -------- | --------- | ------------------------------------------------------- | ------------------- | --------- |
-| `color`  | `color`   | Sets the color of the spinner, can be 'light' or 'dark' | `"dark" \| "light"` | `'light'` |
+| Property  | Attribute | Description                                                             | Type                                  | Default     |
+| --------- | --------- | ----------------------------------------------------------------------- | ------------------------------------- | ----------- |
+| `variant` | `variant` | Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost' | `"ghost" \| "primary" \| "secondary"` | `'primary'` |
 
 
 ## Dependencies
