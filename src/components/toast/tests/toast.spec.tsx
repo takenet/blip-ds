@@ -126,10 +126,6 @@ describe('bds-toast', () => {
 
     const icon = page.root.shadowRoot.querySelector('.toast').firstElementChild;
     expect(icon.getAttribute('name')).toBe('trash');
-
-    const toastContainer = page.body.querySelectorAll('bds-toast-container');
-
-    expect(toastContainer[0].childElementCount).toBe(1);
   });
 
   it('should be able to set all the props', async () => {

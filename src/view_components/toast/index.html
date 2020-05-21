@@ -25,6 +25,8 @@
   </style>
 
   <body>
+    <bds-toast-container>
+    </bds-toast-container>
     <button id="toast1">add toast</button>
     <button id="toast2">add toast</button>
   </body>
@@ -35,7 +37,8 @@
 
     botao.addEventListener("click", async () => {
       const newtoast = document.createElement('bds-toast');
-      document.body.appendChild(newtoast);
+      const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
+      toastContainer.appendChild(newtoast);
       await newtoast.create({
         buttonText: 'cancelar',
         actionType: 'button',
@@ -48,7 +51,8 @@
     });
     botao2.addEventListener("click", async () => {
       const newtoast = document.createElement('bds-toast');
-      document.body.appendChild(newtoast);
+      const toastContainer = document.querySelector("bds-toast-container").shadowRoot;
+      toastContainer.appendChild(newtoast);
       await newtoast.create({
         buttonText: 'cancelar',
         actionType: 'button',

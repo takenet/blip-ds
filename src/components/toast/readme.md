@@ -55,7 +55,6 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [bds-toast-container](../toast-container)
 - [bds-icon](../icon)
 - [bds-typo](../typo)
 - [bds-button](../button)
@@ -64,7 +63,6 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  bds-toast --> bds-toast-container
   bds-toast --> bds-icon
   bds-toast --> bds-typo
   bds-toast --> bds-button
