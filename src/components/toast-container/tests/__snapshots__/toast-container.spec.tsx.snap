@@ -5,9 +5,7 @@ Object {
   "body": <body>
   <bds-toast-container>
     <mock:shadow-root>
-      <div>
-        <slot></slot>
-      </div>
+      <slot></slot>
     </mock:shadow-root>
   </bds-toast-container>
 </body>,
