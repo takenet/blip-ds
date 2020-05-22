@@ -61,6 +61,16 @@ Type: `Promise<HTMLInputElement>`
 
 
 
+### `isValid() => Promise<boolean>`
+
+Return the validity of the input.
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 

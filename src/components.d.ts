@@ -237,6 +237,10 @@ export namespace Components {
          */
         "isTextarea": boolean;
         /**
+          * Return the validity of the input.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
