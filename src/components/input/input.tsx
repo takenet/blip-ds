@@ -4,7 +4,7 @@ import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRu
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  shadow: true,
+  scoped: true,
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
@@ -215,6 +215,14 @@ export class Input {
     return this.nativeInput;
   }
 
+  /**
+   * Return the validity of the input.
+   */
+  @Method()
+  async isValid(): Promise<boolean> {
+    return this.nativeInput.validity.valid;
+  }
+
   private keyPressWrapper = (event: KeyboardEvent): void => {
     switch (event.key) {
       case 'Enter':
@@ -360,7 +368,7 @@ export class Input {
     }
   }
 
-  private checkValidity() {
+  async checkValidity() {
     if (this.nativeInput.validity.valid) {
       this.danger = false;
     }

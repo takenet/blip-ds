@@ -19,7 +19,7 @@
     "clear": "rm -rf node_modules/ && rm -rf dist/ && rm -rf www/",
     "dev": "npm-run-all --parallel start storybook",
     "start": "stencil build --dev --watch --serve --docs",
-    "build": "npm run eslint && npm run test && npm run build:component",
+    "build": "npm run build:component",
     "build:component": "stencil build --docs",
     "ci": "npm run build && npm run storybook:build && npm run storybook:deploy",
     "test": "stencil test --spec",
