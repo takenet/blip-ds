@@ -23,9 +23,7 @@ export const toastSystem = () => {
 
   const showToast = async () => {
     const newtoast = document.createElement("bds-toast");
-    const toastContainer = document.querySelector("bds-toast-container")
-      .shadowRoot;
-    toastContainer.appendChild(newtoast);
+    document.body.appendChild(newtoast);
 
     const icon = text("icon", undefined);
     const variant = select("variant", variantOptions);

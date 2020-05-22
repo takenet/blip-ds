@@ -4,4 +4,5 @@
   left: 32px;
   display: flex;
   flex-direction: column-reverse;
+  z-index: $zindex-toast;
 }
