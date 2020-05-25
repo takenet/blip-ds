@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt, } from "./components/alert/alert-header/alert-header";
 import { ButtonSize, ButtonType, ButtonVariant, } from "./components/button/button";
 import { LoadingSpinnerVariant, } from "./components/loading-spinner/loading-spinner";
+import { ChipSize, ChipVariant, } from "./components/chip/chip";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
@@ -111,6 +112,20 @@ export namespace Components {
          */
         "name": string;
         "refer": string;
+    }
+    interface BdsChip {
+        /**
+          * Add state danger on chip, use for use feedback.
+         */
+        "danger"?: boolean;
+        "deletable": boolean;
+        "disabled": boolean;
+        "icon"?: string;
+        "size"?: ChipSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
+         */
+        "variant"?: ChipVariant;
     }
     interface BdsCounterText {
         "active"?: boolean;
@@ -571,6 +586,12 @@ declare global {
         prototype: HTMLBdsCheckboxElement;
         new (): HTMLBdsCheckboxElement;
     };
+    interface HTMLBdsChipElement extends Components.BdsChip, HTMLStencilElement {
+    }
+    var HTMLBdsChipElement: {
+        prototype: HTMLBdsChipElement;
+        new (): HTMLBdsChipElement;
+    };
     interface HTMLBdsCounterTextElement extends Components.BdsCounterText, HTMLStencilElement {
     }
     var HTMLBdsCounterTextElement: {
@@ -675,6 +696,7 @@ declare global {
         "bds-button": HTMLBdsButtonElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
+        "bds-chip": HTMLBdsChipElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-icon-button": HTMLBdsIconButtonElement;
@@ -789,6 +811,24 @@ declare namespace LocalJSX {
          */
         "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         "refer": string;
+    }
+    interface BdsChip {
+        /**
+          * Add state danger on chip, use for use feedback.
+         */
+        "danger"?: boolean;
+        "deletable"?: boolean;
+        "disabled"?: boolean;
+        "icon"?: string;
+        /**
+          * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
+         */
+        "onBdsDelete"?: (event: CustomEvent<any>) => void;
+        "size"?: ChipSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
+         */
+        "variant"?: ChipVariant;
     }
     interface BdsCounterText {
         "active"?: boolean;
@@ -1243,6 +1283,7 @@ declare namespace LocalJSX {
         "bds-button": BdsButton;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
+        "bds-chip": BdsChip;
         "bds-counter-text": BdsCounterText;
         "bds-icon": BdsIcon;
         "bds-icon-button": BdsIconButton;
@@ -1272,6 +1313,7 @@ declare module "@stencil/core" {
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
+            "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;

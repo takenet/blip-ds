@@ -1,0 +1,55 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+  white-space: nowrap;
+  font-family: $font-family;
+}
+
+:host(.chip) {
+  border-radius: 8px;
+  padding: 3px 8px;
+}
+
+:host(.chip--primary) {
+  background: $color-neutral-disabled-blues-bg;
+  color: $color-primary-main;
+}
+
+:host(.chip--primary:hover) {
+  background: $color-extended-blue-wind;
+  color: $color-primary-dark;
+}
+
+:host(.chip--default) {
+  background: $color-neutral-light-breeze;
+  color: $color-neutral-medium-cloud;
+}
+
+:host(.chip--danger) {
+  background: $color-extend-rr-b-vitamin;
+  color: $color-secondary-delete;
+}
+
+:host(.chip--standard) {
+  height: 24px;
+  font-size: $fs-12;
+}
+
+:host(.chip--tall) {
+  height: 32px;
+  font-size: $fs-14;
+}
+
+.chip__delete {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 6px;
+  cursor: pointer;
+}
+
+.chip__icon {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 4px;
+}
