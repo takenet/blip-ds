@@ -178,6 +178,11 @@ $input-width: 100%;
     justify-content: center;
     width: 100%;
 
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     &__label {
       display: flex;
       align-items: center;
@@ -216,5 +221,31 @@ $input-width: 100%;
     &--danger {
       color: $color-secondary-delete;
     }
+  }
+}
+
+.input__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    @include reset-input();
+    @include input-text();
+    @include custom-scroll();
+
+    resize: none;
+    cursor: inherit;
   }
 }

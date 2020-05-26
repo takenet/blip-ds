@@ -1,12 +1,15 @@
-import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from '@stencil/core';
+/* eslint-disable no-console */
+import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host, Element } from '@stencil/core';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  shadow: true,
+  scoped: true,
 })
 export class Input {
+  @Element() private element: HTMLElement;
+
   private nativeInput?: HTMLInputElement;
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
@@ -366,6 +369,11 @@ export class Input {
     }
   }
 
+  private handleSlotLeft() {
+    const inputElement = this.element.shadowRoot.querySelector('input');
+    this.element.querySelector('span[slot="input-left"]').appendChild(inputElement);
+  }
+
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const Element = this.isTextarea ? 'textarea' : 'input';
@@ -387,28 +395,31 @@ export class Input {
           {this.renderIcon()}
           <div class="input__container">
             {this.renderLabel()}
-            <Element
-              class="input__container__text"
-              ref={(input) => (this.nativeInput = input)}
-              rows={this.rows}
-              cols={this.cols}
-              autocapitalize={this.autoCapitalize}
-              autocomplete={this.autoComplete}
-              disabled={this.disabled}
-              min={this.min}
-              max={this.max}
-              minLength={this.minlength}
-              maxLength={this.maxlength}
-              name={this.inputName}
-              onBlur={this.onBlur}
-              onFocus={this.onFocus}
-              onInput={this.onInput}
-              placeholder={this.placeholder}
-              readOnly={this.readonly}
-              type={this.type}
-              value={this.value}
-              required={this.required}
-            ></Element>
+            <div class="input__container__wrapper">
+              <slot name="input-left" onSlotchange={() => this.handleSlotLeft()} />
+              <Element
+                class="input__container__text"
+                ref={(input) => (this.nativeInput = input)}
+                rows={this.rows}
+                cols={this.cols}
+                autocapitalize={this.autoCapitalize}
+                autocomplete={this.autoComplete}
+                disabled={this.disabled}
+                min={this.min}
+                max={this.max}
+                minLength={this.minlength}
+                maxLength={this.maxlength}
+                name={this.inputName}
+                onBlur={this.onBlur}
+                onFocus={this.onFocus}
+                onInput={this.onInput}
+                placeholder={this.placeholder}
+                readOnly={this.readonly}
+                type={this.type}
+                value={this.value}
+                required={this.required}
+              ></Element>
+            </div>
           </div>
           {this.counterLength && (
             <bds-counter-text

@@ -87,6 +87,7 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [bds-input-chips](../input-chips)
  - [bds-input-password](../input-password)
  - [bds-select](../select)
 
@@ -103,6 +104,7 @@ graph TD;
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
+  bds-input-chips --> bds-input
   bds-input-password --> bds-input
   bds-select --> bds-input
   style bds-input fill:#f9f,stroke:#333,stroke-width:4px

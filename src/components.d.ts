@@ -318,6 +318,8 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BdsInputChips {
+    }
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -617,6 +619,12 @@ declare global {
         prototype: HTMLBdsInputElement;
         new (): HTMLBdsInputElement;
     };
+    interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
+    }
+    var HTMLBdsInputChipsElement: {
+        prototype: HTMLBdsInputChipsElement;
+        new (): HTMLBdsInputChipsElement;
+    };
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
     }
     var HTMLBdsInputPasswordElement: {
@@ -702,6 +710,7 @@ declare global {
         "bds-icon": HTMLBdsIconElement;
         "bds-icon-button": HTMLBdsIconButtonElement;
         "bds-input": HTMLBdsInputElement;
+        "bds-input-chips": HTMLBdsInputChipsElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu-list": HTMLBdsMenuListElement;
@@ -1033,6 +1042,8 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    interface BdsInputChips {
+    }
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -1290,6 +1301,7 @@ declare namespace LocalJSX {
         "bds-icon": BdsIcon;
         "bds-icon-button": BdsIconButton;
         "bds-input": BdsInput;
+        "bds-input-chips": BdsInputChips;
         "bds-input-password": BdsInputPassword;
         "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu-list": BdsMenuList;
@@ -1320,6 +1332,7 @@ declare module "@stencil/core" {
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+            "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;

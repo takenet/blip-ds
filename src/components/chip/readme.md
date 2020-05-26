@@ -27,6 +27,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-input-chips](../input-chips)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -35,6 +39,7 @@
 ```mermaid
 graph TD;
   bds-chip --> bds-icon
+  bds-input-chips --> bds-chip
   style bds-chip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
