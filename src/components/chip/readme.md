@@ -9,6 +9,7 @@
 
 | Property    | Attribute   | Description                                                                  | Type                     | Default      |
 | ----------- | ----------- | ---------------------------------------------------------------------------- | ------------------------ | ------------ |
+| `clickable` | `clickable` |                                                                              | `boolean`                | `false`      |
 | `danger`    | `danger`    | Add state danger on chip, use for use feedback.                              | `boolean`                | `false`      |
 | `deletable` | `deletable` |                                                                              | `boolean`                | `false`      |
 | `disabled`  | `disabled`  |                                                                              | `boolean`                | `false`      |

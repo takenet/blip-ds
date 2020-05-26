@@ -16,7 +16,7 @@
   color: $color-primary-main;
 }
 
-:host(.chip--primary:hover) {
+:host(.chip--click.chip--primary:hover) {
   background: $color-extended-blue-wind;
   color: $color-primary-dark;
 }

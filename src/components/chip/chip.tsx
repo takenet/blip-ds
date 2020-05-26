@@ -10,8 +10,8 @@ export type ChipVariant = 'primary' | 'default';
 })
 export class Chip {
   @Element() private element: HTMLElement;
-  @Prop() icon?: string;
 
+  @Prop() icon?: string;
   @Prop() size?: ChipSize = 'standard';
 
   /**
@@ -25,6 +25,7 @@ export class Chip {
    */
   @Prop({ reflect: true }) danger?: boolean = false;
 
+  @Prop() clickable = false;
   @Prop() deletable = false;
   @Prop() disabled = false;
 
@@ -37,6 +38,10 @@ export class Chip {
     if (!this.deletable || this.disabled) return;
     event.preventDefault();
     this.bdsDelete.emit({ id: this.element.id });
+  }
+
+  private getClickClass() {
+    return this.clickable ? { 'chip--click': true } : {};
   }
 
   private getSizeClass() {
@@ -61,7 +66,7 @@ export class Chip {
 
   render() {
     return (
-      <Host class={{ chip: true, ...this.getStateClass(), ...this.getSizeClass() }}>
+      <Host class={{ chip: true, ...this.getClickClass(), ...this.getStateClass(), ...this.getSizeClass() }}>
         {this.icon && (
           <div class="chip__icon">
             <bds-icon size="x-small" name={this.icon}></bds-icon>
@@ -70,7 +75,7 @@ export class Chip {
         <slot />
         {this.deletable && (
           <div class="chip__delete" onClick={this.handleClickDelete.bind(this)}>
-            <bds-icon size="x-small" name="error"></bds-icon>
+            <bds-icon size="x-small" theme="solid" name="error"></bds-icon>
           </div>
         )}
       </Host>

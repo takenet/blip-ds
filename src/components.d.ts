@@ -114,6 +114,7 @@ export namespace Components {
         "refer": string;
     }
     interface BdsChip {
+        "clickable": boolean;
         /**
           * Add state danger on chip, use for use feedback.
          */
@@ -813,6 +814,7 @@ declare namespace LocalJSX {
         "refer": string;
     }
     interface BdsChip {
+        "clickable"?: boolean;
         /**
           * Add state danger on chip, use for use feedback.
          */
