@@ -38,9 +38,15 @@
     min-width: 440px;
     max-width: 440px;
     padding: 8px 20px;
-
+    
     bds-icon-button {
       height: 32px;
+    }
+
+    @media (max-width: 780px) {
+      min-width: 220px;
+      width: 95%;
+      margin: 16px auto 0px auto;
     }
   }
 
@@ -48,6 +54,12 @@
     min-width: 440px;
     max-width: 456px;
     padding: 10px 20px;
+
+    @media (max-width: 780px) {
+      min-width: 220px;
+      width: 95%;
+      margin: 16px auto 0px auto;
+    }
   }
 
   &--system {

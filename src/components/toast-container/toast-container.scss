@@ -5,4 +5,10 @@
   display: flex;
   flex-direction: column-reverse;
   z-index: $zindex-toast;
+
+  @media (max-width: 780px) {
+    left: 0px;
+    bottom: 20px;
+    width: 100%;
+  }
 }
