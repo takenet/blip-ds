@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop, Method } from '@stencil/core';
+import { Component, Host, h, State, Prop, Method, Event, EventEmitter } from '@stencil/core';
 import { emailValidation } from '../../utils/validations';
 import { ChipItem, InputChipsTypes } from './input-chips-interface';
 
@@ -10,11 +10,36 @@ import { ChipItem, InputChipsTypes } from './input-chips-interface';
 export class InputChips {
   @State() chips: ChipItem[] = [];
 
-  @Prop() danger: false;
-
-  @Prop() label: string;
-
+  /**
+   * Defining the type is important so that it is possible to carry out validations. Can be one of:
+   * 'text' and 'email;
+   */
   @Prop() type: InputChipsTypes = 'text';
+
+  /**
+   *  label in input, with he the input size increases.
+   */
+  @Prop() label? = '';
+
+  /**
+   * The delimiter is used to add multiple chips in the same string.
+   */
+  @Prop() delimiter = ',';
+
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop() errorMessage? = '';
+
+  /**
+   * Add state danger on input, use for use feedback.
+   */
+  @Prop({ reflect: true }) danger? = false;
+
+  /**
+   * Emitted when the value has changed.
+   */
+  @Event() bdsChange!: EventEmitter;
 
   /**
    * Return the validity of the input chips.
@@ -22,6 +47,14 @@ export class InputChips {
   @Method()
   async isValid(): Promise<boolean> {
     return this.validateChips();
+  }
+
+  /**
+   * Return the chips
+   */
+  @Method()
+  async get(): Promise<ChipItem[]> {
+    return this.chips;
   }
 
   private validateChips() {
@@ -37,7 +70,11 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    if (value) this.setChip(value);
+    if (value && value.includes(this.delimiter)) {
+      this.setChipList(value.split(this.delimiter));
+    } else {
+      this.setChip(value);
+    }
   }
 
   private handleBackRemove(event: CustomEvent<{ value: string }>): void {
@@ -45,7 +82,7 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    if (value.length <= 1) {
+    if (value.length <= 1 && this.chips.length) {
       this.removeLastChip();
     }
   }
@@ -54,18 +91,30 @@ export class InputChips {
     return (this.chips.length++).toString();
   }
 
+  private setChipList(names: string[]) {
+    names.forEach((name) => {
+      if (name) this.setChip(name);
+    });
+  }
+
   private setChip(name: string) {
-    let valid = true;
+    if (!name) return;
 
+    const isValid = this.validateChip(name);
+    const newChip = { name, id: this.getChipId(), valid: isValid };
+    this.chips = [...this.chips, newChip];
+    this.bdsChange.emit(newChip);
+  }
+
+  private validateChip(name: string) {
     if (this.type === 'email' && emailValidation(name)) {
-      valid = false;
+      return false;
     }
-
-    this.chips = [...this.chips, { name, id: this.getChipId(), valid }];
+    return true;
   }
 
   private removeLastChip() {
-    this.chips = [];
+    this.chips = this.chips.slice(0, this.chips.length - 1);
   }
 
   private removeChip(event: CustomEvent<{ id: string }>) {
@@ -104,6 +153,7 @@ export class InputChips {
           onBdsKeyDownBackspace={(event) => this.handleBackRemove(event)}
           onBdsSubmit={(event) => this.handleAddChip(event)}
           is-submit
+          error-message={this.errorMessage}
           danger={this.danger}
         >
           <span slot="input-left">{this.renderChips()}</span>
