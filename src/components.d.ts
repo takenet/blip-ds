@@ -13,7 +13,7 @@ import { CounterTextRule, } from "./components/counter-text/counter-text-interfa
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
-import { InputChipsTypes, } from "./components/input-chips/input-chips-interface";
+import { ChipItem, InputChipsTypes, } from "./components/input-chips/input-chips-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1, } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
@@ -320,12 +320,33 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsInputChips {
-        "danger": false;
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiter": string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Return the chips
+         */
+        "get": () => Promise<ChipItem[]>;
         /**
           * Return the validity of the input chips.
          */
         "isValid": () => Promise<boolean>;
-        "label": string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
         "type": InputChipsTypes;
     }
     interface BdsInputPassword {
@@ -1055,8 +1076,29 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsInputChips {
-        "danger"?: false;
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiter"?: string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
         "label"?: string;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
         "type"?: InputChipsTypes;
     }
     interface BdsInputPassword {

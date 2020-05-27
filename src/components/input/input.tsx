@@ -223,7 +223,6 @@ export class Input {
   }
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
-    console.log(event.key);
     switch (event.key) {
       case 'Enter':
         this.bdsSubmit.emit({ event, value: this.value });

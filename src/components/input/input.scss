@@ -238,14 +238,14 @@ $input-width: 100%;
 
 .input__container__wrapper {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .input__container__text {
   @include reset-input();
   @include input-text();
   @include custom-scroll();
-
+  width: 100%;
   resize: none;
   cursor: inherit;
 }
