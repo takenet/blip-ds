@@ -11,7 +11,15 @@ export type ChipVariant = 'primary' | 'default';
 export class Chip {
   @Element() private element: HTMLElement;
 
+  /**
+   * used for add icon in left container. Uses the bds-icon component.
+   */
   @Prop() icon?: string;
+
+  /**
+   * Chip size. Entered as one of the size design tokens. Can be one of:
+   * "standard" and "tall"
+   */
   @Prop() size?: ChipSize = 'standard';
 
   /**
@@ -23,10 +31,21 @@ export class Chip {
   /**
    * Add state danger on chip, use for use feedback.
    */
-  @Prop({ reflect: true }) danger?: boolean = false;
+  @Prop({ reflect: true }) danger? = false;
 
+  /**
+   * When 'true' and the component is using the primary variant, a hover is added
+   */
   @Prop() clickable = false;
+
+  /**
+   * When 'true', the component recive remove button and dispach event onBdsDelete
+   */
   @Prop() deletable = false;
+
+  /**
+   * When 'true', no events will be dispatched
+   */
   @Prop() disabled = false;
 
   /**

@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { Chip } from './chip';
+import { Chip } from '../chip';
 
 describe('bds-chip', () => {
   let page;

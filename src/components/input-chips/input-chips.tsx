@@ -37,7 +37,7 @@ export class InputChips {
   @Prop({ reflect: true }) danger? = false;
 
   /**
-   * Emitted when the value has changed.
+   * Emitted when the chip has added.
    */
   @Event() bdsChange!: EventEmitter;
 
@@ -75,6 +75,8 @@ export class InputChips {
     } else {
       this.setChip(value);
     }
+
+    this.bdsChange.emit(this.chips);
   }
 
   private handleBackRemove(event: CustomEvent<{ value: string }>): void {
@@ -101,9 +103,7 @@ export class InputChips {
     if (!name) return;
 
     const isValid = this.validateChip(name);
-    const newChip = { name, id: this.getChipId(), valid: isValid };
-    this.chips = [...this.chips, newChip];
-    this.bdsChange.emit(newChip);
+    this.chips = [...this.chips, { name, id: this.getChipId(), valid: isValid }];
   }
 
   private validateChip(name: string) {
