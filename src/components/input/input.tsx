@@ -1,15 +1,14 @@
 /* eslint-disable no-console */
-import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host, Element } from '@stencil/core';
+import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from '@stencil/core';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
+import { emailValidation } from '../../utils/validations';
 
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  scoped: true,
+  shadow: true,
 })
 export class Input {
-  @Element() private element: HTMLElement;
-
   private nativeInput?: HTMLInputElement;
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
@@ -197,6 +196,11 @@ export class Input {
   @Event() bdsSubmit: EventEmitter;
 
   /**
+   * Event input key down backspace.
+   */
+  @Event() bdsKeyDownBackspace: EventEmitter;
+
+  /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
    * `input.focus()`.
    */
@@ -219,6 +223,7 @@ export class Input {
   }
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
+    console.log(event.key);
     switch (event.key) {
       case 'Enter':
         this.bdsSubmit.emit({ event, value: this.value });
@@ -227,6 +232,9 @@ export class Input {
           this.value = '';
           event.preventDefault();
         }
+        break;
+      case 'Backspace' || 'Delete':
+        this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
   };
@@ -356,8 +364,7 @@ export class Input {
   }
 
   private emailValidation() {
-    const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;
-    if (this.nativeInput.value && !emailRegex.test(this.nativeInput.value)) {
+    if (emailValidation(this.nativeInput.value)) {
       this.errorMessage = this.emailErrorMessage;
       this.danger = true;
     }
@@ -370,8 +377,8 @@ export class Input {
   }
 
   private handleSlotLeft() {
-    const inputElement = this.element.shadowRoot.querySelector('input');
-    this.element.querySelector('span[slot="input-left"]').appendChild(inputElement);
+    // const inputElement = this.element.shadowRoot.querySelector('input');
+    // this.element.querySelector('span[slot="input-left"]').appendChild(inputElement);
   }
 
   render(): HTMLElement {
@@ -390,7 +397,7 @@ export class Input {
             'input--pressed': isPressed,
           }}
           onClick={this.onClickWrapper}
-          onKeyPress={this.keyPressWrapper}
+          onKeyDown={this.keyPressWrapper}
         >
           {this.renderIcon()}
           <div class="input__container">

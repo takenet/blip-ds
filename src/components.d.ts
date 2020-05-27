@@ -13,6 +13,7 @@ import { CounterTextRule, } from "./components/counter-text/counter-text-interfa
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
+import { InputChipsTypes, } from "./components/input-chips/input-chips-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1, } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
@@ -319,6 +320,13 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsInputChips {
+        "danger": false;
+        /**
+          * Return the validity of the input chips.
+         */
+        "isValid": () => Promise<boolean>;
+        "label": string;
+        "type": InputChipsTypes;
     }
     interface BdsInputPassword {
         /**
@@ -1006,6 +1014,10 @@ declare namespace LocalJSX {
          */
         "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
+          * Event input key down backspace.
+         */
+        "onBdsKeyDownBackspace"?: (event: CustomEvent<any>) => void;
+        /**
           * Event input onblur.
          */
         "onBdsOnBlur"?: (event: CustomEvent<any>) => void;
@@ -1043,6 +1055,9 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsInputChips {
+        "danger"?: false;
+        "label"?: string;
+        "type"?: InputChipsTypes;
     }
     interface BdsInputPassword {
         /**

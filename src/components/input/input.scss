@@ -230,22 +230,22 @@ $input-width: 100%;
   justify-content: center;
   width: 100%;
 
-  &__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   &__label {
     display: flex;
     align-items: center;
   }
+}
 
-  &__text {
-    @include reset-input();
-    @include input-text();
-    @include custom-scroll();
+.input__container__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-    resize: none;
-    cursor: inherit;
-  }
+.input__container__text {
+  @include reset-input();
+  @include input-text();
+  @include custom-scroll();
+
+  resize: none;
+  cursor: inherit;
 }

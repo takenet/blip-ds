@@ -5,6 +5,28 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description | Type                | Default     |
+| -------- | --------- | ----------- | ------------------- | ----------- |
+| `danger` | `danger`  |             | `boolean`           | `undefined` |
+| `label`  | `label`   |             | `string`            | `undefined` |
+| `type`   | `type`    |             | `"email" \| "text"` | `'text'`    |
+
+
+## Methods
+
+### `isValid() => Promise<boolean>`
+
+Return the validity of the input chips.
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+
 ## Dependencies
 
 ### Depends on
