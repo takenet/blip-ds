@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event       | Description                         | Type               |
-| ----------- | ----------------------------------- | ------------------ |
-| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>` |
+| Event       | Description                      | Type               |
+| ----------- | -------------------------------- | ------------------ |
+| `bdsChange` | Emitted when the chip has added. | `CustomEvent<any>` |
 
 
 ## Methods

@@ -115,14 +115,29 @@ export namespace Components {
         "refer": string;
     }
     interface BdsChip {
+        /**
+          * When 'true' and the component is using the primary variant, a hover is added
+         */
         "clickable": boolean;
         /**
           * Add state danger on chip, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * When 'true', the component recive remove button and dispach event onBdsDelete
+         */
         "deletable": boolean;
+        /**
+          * When 'true', no events will be dispatched
+         */
         "disabled": boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
         "icon"?: string;
+        /**
+          * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
+         */
         "size"?: ChipSize;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
@@ -852,18 +867,33 @@ declare namespace LocalJSX {
         "refer": string;
     }
     interface BdsChip {
+        /**
+          * When 'true' and the component is using the primary variant, a hover is added
+         */
         "clickable"?: boolean;
         /**
           * Add state danger on chip, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * When 'true', the component recive remove button and dispach event onBdsDelete
+         */
         "deletable"?: boolean;
+        /**
+          * When 'true', no events will be dispatched
+         */
         "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
         "icon"?: string;
         /**
           * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
          */
         "onBdsDelete"?: (event: CustomEvent<any>) => void;
+        /**
+          * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
+         */
         "size"?: ChipSize;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
@@ -1093,7 +1123,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Emitted when the value has changed.
+          * Emitted when the chip has added.
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
         /**
