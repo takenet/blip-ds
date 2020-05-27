@@ -101,6 +101,11 @@
       background: transparent;
       border: none;
       outline: none;
+      padding: 0;
+    }
+
+    &__button {
+      white-space: nowrap;
     }
 
     &__icon {
