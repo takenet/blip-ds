@@ -7,7 +7,10 @@ Object {
     <mock:shadow-root>
       <div class="input input--state-primary">
         <div class="input__container">
-          <input autocapitalize="off" autocomplete="off" class="input__container__text" cols="0" placeholder="" rows="1" type="text" value="">
+          <div class="input__container__wrapper">
+            <slot name="input-left"></slot>
+            <input autocapitalize="off" autocomplete="off" class="input__container__text" cols="0" placeholder="" rows="1" type="text" value="">
+          </div>
         </div>
         <slot name="input-right"></slot>
       </div>
