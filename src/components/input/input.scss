@@ -164,9 +164,9 @@ $input-width: 100%;
     }
 
     &__wrapper__chips {
-      @include custom-scroll;
+      @include custom-scroll();
       display: inline;
-      max-height: 376px;
+      max-height: 100px;
       overflow: auto;
     }
 
@@ -178,6 +178,7 @@ $input-width: 100%;
     &__text {
       @include reset-input();
       @include input-text();
+      @include custom-scroll();
 
       resize: none;
       cursor: inherit;
@@ -235,7 +236,8 @@ $input-width: 100%;
   cursor: inherit;
 
   &__chips {
+    width: auto;
+    min-width: 216px;
     max-width: 216px;
-    width: 100%;
   }
 }
