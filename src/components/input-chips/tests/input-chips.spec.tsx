@@ -10,7 +10,7 @@ describe('bds-input-chips', () => {
     expect(page.root).toEqualHtml(`
       <bds-input-chips>
         <mock:shadow-root>
-          <bds-input error-message="" is-submit="" label="">
+          <bds-input chips="" error-message="" is-submit="" label="">
             <span slot="input-left"></span>
           </bds-input>
         </mock:shadow-root>
