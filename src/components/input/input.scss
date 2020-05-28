@@ -1,7 +1,8 @@
 @import 'resets';
+@import 'mixins';
 
-$input-padding: 8px 8px 9px 12px;
-$input-padding-label: 7px 8px 8px 12px;
+$input-padding: 8px 4px 9px 12px;
+$input-padding-label: 7px 4px 8px 12px;
 $input-width: 100%;
 
 @mixin input-text {
@@ -66,27 +67,6 @@ $input-width: 100%;
   .input__container__text {
     caret-color: $color-input-primary;
     color: $color-input-text;
-  }
-}
-
-@mixin custom-scroll() {
-  &::-webkit-scrollbar-track {
-    border-left: 1px solid $color-neutral-light-breeze;
-  }
-
-  &::-webkit-scrollbar {
-    width: 12px;
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-
-    border: 4px solid transparent;
-    border-radius: 10px;
-    background-clip: content-box;
-
-    background-color: $color-neutral-medium-silver;
   }
 }
 
@@ -184,7 +164,10 @@ $input-width: 100%;
     }
 
     &__wrapper__chips {
+      @include custom-scroll;
       display: inline;
+      max-height: 376px;
+      overflow: auto;
     }
 
     &__label {
@@ -195,7 +178,6 @@ $input-width: 100%;
     &__text {
       @include reset-input();
       @include input-text();
-      @include custom-scroll();
 
       resize: none;
       cursor: inherit;
@@ -243,19 +225,17 @@ $input-width: 100%;
 .input__container__wrapper {
   display: flex;
   flex-wrap: nowrap;
-  max-height: 376px;
-  overflow: auto;
 }
 
 .input__container__text {
   @include reset-input();
   @include input-text();
-  @include custom-scroll();
   width: 100%;
   resize: none;
   cursor: inherit;
 
   &__chips {
-    width: auto;
+    max-width: 216px;
+    width: 100%;
   }
 }
