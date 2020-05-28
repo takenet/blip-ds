@@ -82,10 +82,10 @@ export class BdsToast implements ComponentInterface {
     const toastContainer = document.querySelector('bds-toast-container');
 
     if (toastContainer) {
-      toastContainer.appendChild(this.el);
+      toastContainer.prepend(this.el);
     } else {
       document.body.appendChild(document.createElement('bds-toast-container'));
-      document.querySelector('bds-toast-container').appendChild(this.el);
+      document.querySelector('bds-toast-container').prepend(this.el);
     }
     this.el.actionType = actionType || 'button';
     this.el.buttonAction = buttonAction || 'close';
