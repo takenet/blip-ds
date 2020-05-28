@@ -217,6 +217,10 @@ export namespace Components {
          */
         "autoComplete"?: InputAutoComplete;
         /**
+          * Internal prop to identify input chips
+         */
+        "chips": boolean;
+        /**
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
         "cols"?: number;
@@ -972,6 +976,10 @@ declare namespace LocalJSX {
           * Hint for form autofill feature
          */
         "autoComplete"?: InputAutoComplete;
+        /**
+          * Internal prop to identify input chips
+         */
+        "chips"?: boolean;
         /**
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */

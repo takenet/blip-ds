@@ -155,6 +155,7 @@ export class InputChips {
           is-submit
           error-message={this.errorMessage}
           danger={this.danger}
+          chips={true}
         >
           <span slot="input-left">{this.renderChips()}</span>
         </bds-input>

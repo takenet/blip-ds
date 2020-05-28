@@ -183,6 +183,10 @@ $input-width: 100%;
       flex-wrap: wrap;
     }
 
+    &__wrapper__chips {
+      display: inline;
+    }
+
     &__label {
       display: flex;
       align-items: center;
@@ -248,4 +252,8 @@ $input-width: 100%;
   width: 100%;
   resize: none;
   cursor: inherit;
+  
+  &__chips {
+    width: auto;
+  }
 }

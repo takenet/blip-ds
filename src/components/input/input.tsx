@@ -6,7 +6,7 @@ import { emailValidation } from '../../utils/validations';
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  shadow: true,
+  scoped: true,
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
@@ -141,26 +141,36 @@ export class Input {
    * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
    */
   @Prop() cols?: number = 0;
+
   /**
    * Error message when input is required
    */
   @Prop() requiredErrorMessage: string;
+
   /**
    * Error message when the value is lower than the minlength
    */
   @Prop() minlengthErrorMessage: string;
+
   /**
    * Error message when the value is lower than the min value
    */
   @Prop() minErrorMessage: string;
+
   /**
    * Error message when the value is higher than the max value
    */
   @Prop() maxErrorMessage: string;
+
   /**
    * Error message when the value isn't an email
    */
   @Prop() emailErrorMessage: string;
+
+  /**
+   * Internal prop to identify input chips
+   */
+  @Prop() chips: boolean;
 
   /**
    * Update the native input element when the value changes
@@ -401,10 +411,10 @@ export class Input {
           {this.renderIcon()}
           <div class="input__container">
             {this.renderLabel()}
-            <div class="input__container__wrapper">
+            <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
               <slot name="input-left" onSlotchange={() => this.handleSlotLeft()} />
               <Element
-                class="input__container__text"
+                class={{ input__container__text: true, input__container__text__chips: this.chips }}
                 ref={(input) => (this.nativeInput = input)}
                 rows={this.rows}
                 cols={this.cols}
