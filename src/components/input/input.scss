@@ -243,6 +243,8 @@ $input-width: 100%;
 .input__container__wrapper {
   display: flex;
   flex-wrap: nowrap;
+  max-height: 376px;
+  overflow: auto;
 }
 
 .input__container__text {
@@ -252,7 +254,7 @@ $input-width: 100%;
   width: 100%;
   resize: none;
   cursor: inherit;
-  
+
   &__chips {
     width: auto;
   }

@@ -86,6 +86,7 @@ export class InputChips {
 
     if (value.length <= 1 && this.chips.length) {
       this.removeLastChip();
+      this.bdsChange.emit(this.chips);
     }
   }
 
