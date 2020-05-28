@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from '@stencil/core';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 import { emailValidation } from '../../utils/validations';
