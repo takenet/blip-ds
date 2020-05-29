@@ -31,6 +31,10 @@ export const inputChipsDefault = () => {
 
 export const inputChipsEmail = () => {
   const delimiter = text('delimiter', ',');
+  const danger = boolean('danger', false);
+  const errorMessage = text('errorMessage', '');
 
-  return <bds-input-chips type="email" delimiter={delimiter}></bds-input-chips>;
+  return (
+    <bds-input-chips type="email" delimiter={delimiter} danger={danger} error-message={errorMessage}></bds-input-chips>
+  );
 };
