@@ -1,5 +1,5 @@
 import { Component, Host, h, State, Prop, Method, Event, EventEmitter } from '@stencil/core';
-import { emailValidation } from '../../utils/validations';
+import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { ChipItem, InputChipsTypes } from './input-chips-interface';
 
 @Component({
@@ -69,6 +69,10 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
+
+    if (!whitespaceValidation(value)) {
+      return;
+    }
 
     if (value && value.includes(this.delimiter)) {
       this.setChipList(value.split(this.delimiter));

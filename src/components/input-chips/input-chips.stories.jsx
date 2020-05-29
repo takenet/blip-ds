@@ -12,7 +12,6 @@ export default {
 };
 
 export const inputChipsDefault = () => {
-  const types = select('type', ['text', 'email']);
   const sizes = select('size', ['standard', 'tall']);
   const label = text('label', '');
   const delimiter = text('delimiter', ',');
@@ -21,7 +20,6 @@ export const inputChipsDefault = () => {
 
   return (
     <bds-input-chips
-      types={types}
       sizes={sizes}
       label={label}
       delimiter={delimiter}
@@ -29,4 +27,10 @@ export const inputChipsDefault = () => {
       error-message={errorMessage}
     ></bds-input-chips>
   );
+};
+
+export const inputChipsEmail = () => {
+  const delimiter = text('delimiter', ',');
+
+  return <bds-input-chips type="email" delimiter={delimiter}></bds-input-chips>;
 };
