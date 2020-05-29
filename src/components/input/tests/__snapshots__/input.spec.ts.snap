@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`bds-button should render the component 1`] = `
+exports[`bds-input should render the component 1`] = `
 Object {
   "body": <body>
   <bds-input icon="" type="text">
-    <mock:shadow-root>
-      <div class="input input--state-primary">
-        <div class="input__container">
+    <!---->
+    <div class="input input--state-primary">
+      <div class="input__container">
+        <div class="input__container__wrapper">
           <input autocapitalize="off" autocomplete="off" class="input__container__text" cols="0" placeholder="" rows="1" type="text" value="">
         </div>
-        <slot name="input-right"></slot>
       </div>
-    </mock:shadow-root>
+    </div>
   </bds-input>
 </body>,
   "build": Object {

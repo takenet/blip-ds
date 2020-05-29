@@ -27,6 +27,7 @@
  - [bds-alert-header](../alert/alert-header)
  - [bds-button](../button)
  - [bds-checkbox](../checkbox)
+ - [bds-chip](../chip)
  - [bds-icon-button](../icon-button)
  - [bds-input](../input)
  - [bds-input-password](../input-password)
@@ -41,6 +42,7 @@ graph TD;
   bds-alert-header --> bds-icon
   bds-button --> bds-icon
   bds-checkbox --> bds-icon
+  bds-chip --> bds-icon
   bds-icon-button --> bds-icon
   bds-input --> bds-icon
   bds-input-password --> bds-icon

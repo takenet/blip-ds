@@ -8,10 +8,12 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt, } from "./components/alert/alert-header/alert-header";
 import { ButtonSize, ButtonType, ButtonVariant, } from "./components/button/button";
 import { LoadingSpinnerVariant, } from "./components/loading-spinner/loading-spinner";
+import { ChipSize, ChipVariant, } from "./components/chip/chip";
 import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
+import { ChipItem, InputChipsTypes, } from "./components/input-chips/input-chips-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1, } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation, } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
@@ -112,6 +114,36 @@ export namespace Components {
         "name": string;
         "refer": string;
     }
+    interface BdsChip {
+        /**
+          * When 'true' and the component is using the primary variant, a hover is added
+         */
+        "clickable": boolean;
+        /**
+          * Add state danger on chip, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * When 'true', the component recive remove button and dispach event onBdsDelete
+         */
+        "deletable": boolean;
+        /**
+          * When 'true', no events will be dispatched
+         */
+        "disabled": boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
+         */
+        "size"?: ChipSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
+         */
+        "variant"?: ChipVariant;
+    }
     interface BdsCounterText {
         "active"?: boolean;
         "delete"?: CounterTextRule;
@@ -184,6 +216,10 @@ export namespace Components {
           * Hint for form autofill feature
          */
         "autoComplete"?: InputAutoComplete;
+        /**
+          * Internal prop to identify input chips
+         */
+        "chips": boolean;
         /**
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
@@ -301,6 +337,36 @@ export namespace Components {
           * The value of the input.
          */
         "value"?: string | null;
+    }
+    interface BdsInputChips {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiter": string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Return the chips
+         */
+        "get": () => Promise<ChipItem[]>;
+        /**
+          * Return the validity of the input chips.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
+        "type": InputChipsTypes;
     }
     interface BdsInputPassword {
         /**
@@ -571,6 +637,12 @@ declare global {
         prototype: HTMLBdsCheckboxElement;
         new (): HTMLBdsCheckboxElement;
     };
+    interface HTMLBdsChipElement extends Components.BdsChip, HTMLStencilElement {
+    }
+    var HTMLBdsChipElement: {
+        prototype: HTMLBdsChipElement;
+        new (): HTMLBdsChipElement;
+    };
     interface HTMLBdsCounterTextElement extends Components.BdsCounterText, HTMLStencilElement {
     }
     var HTMLBdsCounterTextElement: {
@@ -594,6 +666,12 @@ declare global {
     var HTMLBdsInputElement: {
         prototype: HTMLBdsInputElement;
         new (): HTMLBdsInputElement;
+    };
+    interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
+    }
+    var HTMLBdsInputChipsElement: {
+        prototype: HTMLBdsInputChipsElement;
+        new (): HTMLBdsInputChipsElement;
     };
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
     }
@@ -675,10 +753,12 @@ declare global {
         "bds-button": HTMLBdsButtonElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
+        "bds-chip": HTMLBdsChipElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-icon-button": HTMLBdsIconButtonElement;
         "bds-input": HTMLBdsInputElement;
+        "bds-input-chips": HTMLBdsInputChipsElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu-list": HTMLBdsMenuListElement;
@@ -790,6 +870,40 @@ declare namespace LocalJSX {
         "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         "refer": string;
     }
+    interface BdsChip {
+        /**
+          * When 'true' and the component is using the primary variant, a hover is added
+         */
+        "clickable"?: boolean;
+        /**
+          * Add state danger on chip, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * When 'true', the component recive remove button and dispach event onBdsDelete
+         */
+        "deletable"?: boolean;
+        /**
+          * When 'true', no events will be dispatched
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
+         */
+        "onBdsDelete"?: (event: CustomEvent<any>) => void;
+        /**
+          * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
+         */
+        "size"?: ChipSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
+         */
+        "variant"?: ChipVariant;
+    }
     interface BdsCounterText {
         "active"?: boolean;
         "delete"?: CounterTextRule;
@@ -862,6 +976,10 @@ declare namespace LocalJSX {
           * Hint for form autofill feature
          */
         "autoComplete"?: InputAutoComplete;
+        /**
+          * Internal prop to identify input chips
+         */
+        "chips"?: boolean;
         /**
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
@@ -955,6 +1073,10 @@ declare namespace LocalJSX {
          */
         "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
+          * Event input key down backspace.
+         */
+        "onBdsKeyDownBackspace"?: (event: CustomEvent<any>) => void;
+        /**
           * Event input onblur.
          */
         "onBdsOnBlur"?: (event: CustomEvent<any>) => void;
@@ -990,6 +1112,32 @@ declare namespace LocalJSX {
           * The value of the input.
          */
         "value"?: string | null;
+    }
+    interface BdsInputChips {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiter"?: string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
+        "type"?: InputChipsTypes;
     }
     interface BdsInputPassword {
         /**
@@ -1243,10 +1391,12 @@ declare namespace LocalJSX {
         "bds-button": BdsButton;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
+        "bds-chip": BdsChip;
         "bds-counter-text": BdsCounterText;
         "bds-icon": BdsIcon;
         "bds-icon-button": BdsIconButton;
         "bds-input": BdsInput;
+        "bds-input-chips": BdsInputChips;
         "bds-input-password": BdsInputPassword;
         "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu-list": BdsMenuList;
@@ -1272,10 +1422,12 @@ declare module "@stencil/core" {
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
+            "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+            "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;

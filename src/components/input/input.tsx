@@ -1,10 +1,11 @@
 import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from '@stencil/core';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
+import { emailValidation } from '../../utils/validations';
 
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  shadow: true,
+  scoped: true,
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
@@ -144,26 +145,36 @@ export class Input {
    * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
    */
   @Prop() cols?: number = 0;
+
   /**
    * Error message when input is required
    */
   @Prop() requiredErrorMessage: string;
+
   /**
    * Error message when the value is lower than the minlength
    */
   @Prop() minlengthErrorMessage: string;
+
   /**
    * Error message when the value is lower than the min value
    */
   @Prop() minErrorMessage: string;
+
   /**
    * Error message when the value is higher than the max value
    */
   @Prop() maxErrorMessage: string;
+
   /**
    * Error message when the value isn't an email
    */
   @Prop() emailErrorMessage: string;
+
+  /**
+   * Internal prop to identify input chips
+   */
+  @Prop() chips: boolean;
 
   /**
    * Update the native input element when the value changes
@@ -199,6 +210,11 @@ export class Input {
   @Event() bdsSubmit: EventEmitter;
 
   /**
+   * Event input key down backspace.
+   */
+  @Event() bdsKeyDownBackspace: EventEmitter;
+
+  /**
    * Sets focus on the specified `ion-input`. Use this method instead of the global
    * `input.focus()`.
    */
@@ -229,6 +245,9 @@ export class Input {
           this.value = '';
           event.preventDefault();
         }
+        break;
+      case 'Backspace' || 'Delete':
+        this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
   };
@@ -361,8 +380,7 @@ export class Input {
   }
 
   private emailValidation() {
-    const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;
-    if (this.nativeInput.value && !emailRegex.test(this.nativeInput.value)) {
+    if (emailValidation(this.nativeInput.value)) {
       this.validationMesage = this.emailErrorMessage;
       this.danger = true;
     }
@@ -372,6 +390,11 @@ export class Input {
     if (this.nativeInput.validity.valid) {
       this.danger = false;
     }
+  }
+
+  private handleSlotLeft() {
+    // const inputElement = this.element.shadowRoot.querySelector('input');
+    // this.element.querySelector('span[slot="input-left"]').appendChild(inputElement);
   }
 
   render(): HTMLElement {
@@ -390,33 +413,36 @@ export class Input {
             'input--pressed': isPressed,
           }}
           onClick={this.onClickWrapper}
-          onKeyPress={this.keyPressWrapper}
+          onKeyDown={this.keyPressWrapper}
         >
           {this.renderIcon()}
           <div class="input__container">
             {this.renderLabel()}
-            <Element
-              class="input__container__text"
-              ref={(input) => (this.nativeInput = input)}
-              rows={this.rows}
-              cols={this.cols}
-              autocapitalize={this.autoCapitalize}
-              autocomplete={this.autoComplete}
-              disabled={this.disabled}
-              min={this.min}
-              max={this.max}
-              minLength={this.minlength}
-              maxLength={this.maxlength}
-              name={this.inputName}
-              onBlur={this.onBlur}
-              onFocus={this.onFocus}
-              onInput={this.onInput}
-              placeholder={this.placeholder}
-              readOnly={this.readonly}
-              type={this.type}
-              value={this.value}
-              required={this.required}
-            ></Element>
+            <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
+              <slot name="input-left" onSlotchange={() => this.handleSlotLeft()} />
+              <Element
+                class={{ input__container__text: true, input__container__text__chips: this.chips }}
+                ref={(input) => (this.nativeInput = input)}
+                rows={this.rows}
+                cols={this.cols}
+                autocapitalize={this.autoCapitalize}
+                autocomplete={this.autoComplete}
+                disabled={this.disabled}
+                min={this.min}
+                max={this.max}
+                minLength={this.minlength}
+                maxLength={this.maxlength}
+                name={this.inputName}
+                onBlur={this.onBlur}
+                onFocus={this.onFocus}
+                onInput={this.onInput}
+                placeholder={this.placeholder}
+                readOnly={this.readonly}
+                type={this.type}
+                value={this.value}
+                required={this.required}
+              ></Element>
+            </div>
           </div>
           {this.counterLength && (
             <bds-counter-text
