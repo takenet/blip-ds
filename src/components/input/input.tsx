@@ -19,6 +19,11 @@ export class Input {
   @State() isPassword? = false;
 
   /**
+   * Used to set the error message setted by the internal validators
+   */
+  @State() validationMesage? = '';
+
+  /**
    * Input Name
    */
   @Prop() inputName? = '';
@@ -289,10 +294,13 @@ export class Input {
 
   private renderMessage(): HTMLElement {
     const icon = this.danger ? 'error' : 'info';
-    const message = this.danger ? this.errorMessage : this.helperMessage;
+    let message = this.danger ? this.errorMessage : this.helperMessage;
+
+    if (!message && this.danger) message = this.validationMesage;
+
     const styles = this.danger ? 'input__message input__message--danger' : 'input__message';
 
-    if ((this.danger && this.errorMessage) || (!this.danger && this.helperMessage)) {
+    if (message) {
       return (
         <div class={styles}>
           <div class="input__message__icon">
@@ -320,14 +328,14 @@ export class Input {
 
   private requiredValidation() {
     if (this.nativeInput.validity.valueMissing) {
-      this.errorMessage = this.requiredErrorMessage;
+      this.validationMesage = this.requiredErrorMessage;
       this.danger = true;
     }
   }
 
   private lengthValidation() {
     if (this.nativeInput.validity.tooShort) {
-      this.errorMessage = this.minlengthErrorMessage;
+      this.validationMesage = this.minlengthErrorMessage;
       this.danger = true;
       return;
     }
@@ -340,13 +348,13 @@ export class Input {
 
   private minMaxValidation() {
     if (this.nativeInput.validity.rangeUnderflow) {
-      this.errorMessage = this.minErrorMessage;
+      this.validationMesage = this.minErrorMessage;
       this.danger = true;
       return;
     }
 
     if (this.nativeInput.validity.rangeOverflow) {
-      this.errorMessage = this.maxErrorMessage;
+      this.validationMesage = this.maxErrorMessage;
       this.danger = true;
       return;
     }
@@ -355,7 +363,7 @@ export class Input {
   private emailValidation() {
     const emailRegex = /^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;
     if (this.nativeInput.value && !emailRegex.test(this.nativeInput.value)) {
-      this.errorMessage = this.emailErrorMessage;
+      this.validationMesage = this.emailErrorMessage;
       this.danger = true;
     }
   }

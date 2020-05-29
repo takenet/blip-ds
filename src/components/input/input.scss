@@ -204,13 +204,13 @@ $input-width: 100%;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: $color-neutral-medium-cloud;
     bds-typo {
-      margin-top: 4px;
+      margin-top: 10px;
     }
 
     &__icon {
       display: flex;
       padding-right: 4px;
-      margin-top: 6px;
+      margin-top: 12px;
     }
 
     &--danger {
