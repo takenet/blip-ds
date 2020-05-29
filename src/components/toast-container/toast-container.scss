@@ -3,7 +3,7 @@
   bottom: 40px;
   left: 32px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   z-index: $zindex-toast;
 
   @media (max-width: 780px) {
