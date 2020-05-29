@@ -8,10 +8,6 @@
   .show {
     opacity: 1;
     animation: toastAnimationFadeIn 1s;
-
-    &:hover {
-      animation-play-state: paused;
-    }
   }
   .hide {
     transition: all 1s;
