@@ -368,7 +368,7 @@ export class Input {
     }
   }
 
-  async checkValidity() {
+  private checkValidity() {
     if (this.nativeInput.validity.valid) {
       this.danger = false;
     }
