@@ -15,14 +15,21 @@ export class BdsLoadingSpinner {
    */
   @Prop() variant: LoadingSpinnerVariant = 'primary';
 
-  private readonly CHILD_COUNT = 12;
-
   render() {
     return (
       <div class="sk-circle">
-        {[...Array(this.CHILD_COUNT).keys()].map((_, i) => (
-          <div class={`sk-circle${i + 1} sk-child sk-child--${this.variant}`} key={i}></div>
-        ))}
+        <div class={`sk-circle1 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle2 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle3 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle4 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle5 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle6 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle7 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle8 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle9 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle10 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle11 sk-child sk-child--${this.variant}`}></div>
+        <div class={`sk-circle12 sk-child sk-child--${this.variant}`}></div>
       </div>
     );
   }

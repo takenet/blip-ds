@@ -4,9 +4,7 @@ exports[`bds-toast-container should render the component 1`] = `
 Object {
   "body": <body>
   <bds-toast-container>
-    <mock:shadow-root>
-      <slot></slot>
-    </mock:shadow-root>
+    <!---->
   </bds-toast-container>
 </body>,
   "build": Object {

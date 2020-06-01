@@ -3,5 +3,13 @@
   bottom: 40px;
   left: 32px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  z-index: $zindex-toast;
+  width: 456px;
+
+  @media (max-width: 780px) {
+    left: 0px;
+    bottom: 20px;
+    width: 100%;
+  }
 }

@@ -5,7 +5,7 @@ describe('toast e2e tests', () => {
 
   beforeEach(async () => {
     page = await newE2EPage({
-      html: `<bds-toast-container><bds-toast button-action="custom"></bds-toast></bds-toast-container>`,
+      html: `<bds-toast-container><bds-toast action-type="button" button-action="custom"></bds-toast></bds-toast-container>`,
     });
   });
 
@@ -30,9 +30,16 @@ describe('toast e2e tests', () => {
   });
 
   it('should emit a toastButtonClick event if the action is custom', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent(`
+      <bds-toast action-type="button" button-action="custom"></bds-toast>
+    `);
+
     const spy = await page.spyOnEvent('toastButtonClick');
 
     const button = await page.find('bds-toast >>> button');
+
     button.click();
     await page.waitForChanges();
 

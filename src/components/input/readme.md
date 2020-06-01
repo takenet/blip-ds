@@ -9,6 +9,7 @@
 | ----------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ----------- |
 | `autoCapitalize`        | `auto-capitalize`         | Capitalizes every word's second character.                                                                                                                                       | `"characters" \| "none" \| "off" \| "on" \| "sentences" \| "words"`   | `'off'`     |
 | `autoComplete`          | `auto-complete`           | Hint for form autofill feature                                                                                                                                                   | `"current-password" \| "new-password" \| "off" \| "on" \| "username"` | `'off'`     |
+| `chips`                 | `chips`                   | Internal prop to identify input chips                                                                                                                                            | `boolean`                                                             | `undefined` |
 | `cols`                  | `cols`                    | The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.      | `number`                                                              | `0`         |
 | `counterLength`         | `counter-length`          | Passing true to display a counter of available size, it is necessary to pass another maxlength property.                                                                         | `boolean`                                                             | `false`     |
 | `counterLengthRule`     | --                        | Make it possible to pass the base values to the warning level and exclude, using the values between min and max.                                                                 | `{ warning: CounterTextRule; delete: CounterTextRule; } \| {}`        | `{}`        |
@@ -40,13 +41,14 @@
 
 ## Events
 
-| Event       | Description                         | Type                         |
-| ----------- | ----------------------------------- | ---------------------------- |
-| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
-| `bdsFocus`  | Event input focus.                  | `CustomEvent<any>`           |
-| `bdsInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
-| `bdsOnBlur` | Event input onblur.                 | `CustomEvent<any>`           |
-| `bdsSubmit` | Event input enter.                  | `CustomEvent<any>`           |
+| Event                 | Description                         | Type                         |
+| --------------------- | ----------------------------------- | ---------------------------- |
+| `bdsChange`           | Emitted when the value has changed. | `CustomEvent<any>`           |
+| `bdsFocus`            | Event input focus.                  | `CustomEvent<any>`           |
+| `bdsInput`            | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
+| `bdsKeyDownBackspace` | Event input key down backspace.     | `CustomEvent<any>`           |
+| `bdsOnBlur`           | Event input onblur.                 | `CustomEvent<any>`           |
+| `bdsSubmit`           | Event input enter.                  | `CustomEvent<any>`           |
 
 
 ## Methods
@@ -97,6 +99,7 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [bds-input-chips](../input-chips)
  - [bds-input-password](../input-password)
  - [bds-select](../select)
 
@@ -113,6 +116,7 @@ graph TD;
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
+  bds-input-chips --> bds-input
   bds-input-password --> bds-input
   bds-select --> bds-input
   style bds-input fill:#f9f,stroke:#333,stroke-width:4px

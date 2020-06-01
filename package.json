@@ -71,7 +71,7 @@
     "prettier": "^2.0.5"
   },
   "dependencies": {
-    "blip-tokens": "^1.2.0"
+    "blip-tokens": "^1.4.0"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Input } from '../input';
 
-describe('bds-button', () => {
+describe('bds-input', () => {
   let page;
   let inputRootElement;
 
