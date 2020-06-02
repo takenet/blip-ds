@@ -9,6 +9,7 @@
 
 | Property       | Attribute       | Description                                                                                                       | Type                | Default  |
 | -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
+| `chips`        | --              |                                                                                                                   | `string[]`          | `[]`     |
 | `danger`       | `danger`        | Add state danger on input, use for use feedback.                                                                  | `boolean`           | `false`  |
 | `delimiter`    | `delimiter`     | The delimiter is used to add multiple chips in the same string.                                                   | `string`            | `','`    |
 | `errorMessage` | `error-message` | Indicated to pass an feeback to user.                                                                             | `string`            | `''`     |
@@ -25,13 +26,23 @@
 
 ## Methods
 
-### `get() => Promise<ChipItem[]>`
+### `clear() => Promise<void>`
+
+Clear all chips
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `get() => Promise<string[]>`
 
 Return the chips
 
 #### Returns
 
-Type: `Promise<ChipItem[]>`
+Type: `Promise<string[]>`
 
 
 
