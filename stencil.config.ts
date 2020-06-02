@@ -30,4 +30,8 @@ export const config: Config = {
   testing: {
     timers: 'fake',
   },
+  devServer: {
+    reloadStrategy: 'pageReload',
+    port: 4444,
+  },
 };

@@ -1,6 +1,6 @@
-import { Component, Host, h, State, Prop, Method, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
-import { ChipItem, InputChipsTypes } from './input-chips-interface';
+import { InputChipsTypes } from './input-chips-interface';
 
 @Component({
   tag: 'bds-input-chips',
@@ -8,7 +8,7 @@ import { ChipItem, InputChipsTypes } from './input-chips-interface';
   shadow: true,
 })
 export class InputChips {
-  @State() chips: ChipItem[] = [];
+  @Prop({ mutable: true }) chips: string[] = [];
 
   /**
    * Defining the type is important so that it is possible to carry out validations. Can be one of:
@@ -42,6 +42,14 @@ export class InputChips {
   @Event() bdsChange!: EventEmitter;
 
   /**
+   * Call change event before alter chips values.
+   */
+  @Watch('chips')
+  protected valueChanged(): void {
+    this.bdsChange.emit({ data: this.chips, value: this.getLastChip() });
+  }
+
+  /**
    * Return the validity of the input chips.
    */
   @Method()
@@ -53,13 +61,21 @@ export class InputChips {
    * Return the chips
    */
   @Method()
-  async get(): Promise<ChipItem[]> {
+  async get(): Promise<string[]> {
     return this.chips;
+  }
+
+  /**
+   * Clear all chips
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.chips = [];
   }
 
   private validateChips() {
     if (this.type === 'email') {
-      return !this.chips.some((chip) => !chip.valid);
+      return !this.chips.some((chip) => !this.validateChip(chip));
     } else {
       return true;
     }
@@ -79,8 +95,10 @@ export class InputChips {
     } else {
       this.setChip(value);
     }
+  }
 
-    this.bdsChange.emit(this.chips);
+  private getLastChip(): string {
+    return this.chips[this.chips.length - 1];
   }
 
   private handleBackRemove(event: CustomEvent<{ value: string }>): void {
@@ -94,10 +112,6 @@ export class InputChips {
     }
   }
 
-  private getChipId() {
-    return (this.chips.length++).toString();
-  }
-
   private setChipList(names: string[]) {
     names.forEach((name) => {
       if (name) this.setChip(name);
@@ -105,10 +119,7 @@ export class InputChips {
   }
 
   private setChip(name: string) {
-    if (!name) return;
-
-    const isValid = this.validateChip(name);
-    this.chips = [...this.chips, { name, id: this.getChipId(), valid: isValid }];
+    this.chips = [...this.chips, name];
   }
 
   private validateChip(name: string) {
@@ -127,7 +138,7 @@ export class InputChips {
       detail: { id },
     } = event;
 
-    this.chips = this.chips.filter((chip) => chip.id !== id);
+    this.chips = this.chips.filter((_chip, index) => index.toString() !== id);
   }
 
   private renderChips() {
@@ -135,19 +146,23 @@ export class InputChips {
       return [];
     }
 
-    return this.chips.map((chip) => (
-      <bds-chip
-        class="input-chips__chip"
-        key={chip.id}
-        id={chip.id}
-        variant="primary"
-        danger={!chip.valid}
-        deletable
-        onBdsDelete={(event) => this.removeChip(event)}
-      >
-        {chip.name}
-      </bds-chip>
-    ));
+    return this.chips.map((chip, index) => {
+      const id = index.toString();
+
+      return (
+        <bds-chip
+          class="input-chips__chip"
+          id={id}
+          key={id}
+          variant="primary"
+          danger={!this.validateChip(chip)}
+          deletable
+          onBdsDelete={(event) => this.removeChip(event)}
+        >
+          {chip}
+        </bds-chip>
+      );
+    });
   }
 
   render() {
