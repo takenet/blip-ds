@@ -37,7 +37,7 @@ describe('bds-input', () => {
     inputRootElement.autoComplete = 'on';
     inputRootElement.value = 'blip input';
 
-    const input: HTMLInputElement = inputRootElement.querySelector('input');
+    const input: HTMLInputElement = inputRootElement.shadowRoot.querySelector('input');
 
     await page.waitForChanges();
 
@@ -52,7 +52,7 @@ describe('bds-input', () => {
   });
 
   it('should be able to set a value to the input', () => {
-    const input: HTMLInputElement = inputRootElement.querySelector('input');
+    const input: HTMLInputElement = inputRootElement.shadowRoot.querySelector('input');
 
     input.value = 'blip input text';
 
@@ -64,7 +64,7 @@ describe('bds-input', () => {
 
     await page.waitForChanges();
 
-    const label = inputRootElement.querySelector('.input__container__label');
+    const label = inputRootElement.shadowRoot.querySelector('.input__container__label');
 
     expect(label.textContent).toBe('blip label');
   });
@@ -74,7 +74,7 @@ describe('bds-input', () => {
 
     await page.waitForChanges();
 
-    const icon = inputRootElement.querySelector('.input__icon');
+    const icon = inputRootElement.shadowRoot.querySelector('.input__icon');
 
     expect(icon.firstElementChild.getAttribute('name')).toBe('info');
   });
@@ -84,7 +84,7 @@ describe('bds-input', () => {
 
     await page.waitForChanges();
 
-    const helperMessage = await page.doc.querySelector('bds-input').firstElementChild;
+    const helperMessage = await page.doc.querySelector('bds-input').shadowRoot.firstElementChild;
 
     expect(helperMessage.textContent).toBe('blip helper message');
   });
@@ -95,7 +95,7 @@ describe('bds-input', () => {
 
     await page.waitForChanges();
 
-    const counterText = inputRootElement.querySelector('.input').querySelector('bds-counter-text');
+    const counterText = inputRootElement.shadowRoot.querySelector('.input').querySelector('bds-counter-text');
 
     expect(counterText.outerHTML).toBeTruthy();
   });
@@ -107,7 +107,7 @@ describe('bds-input', () => {
 
     await page.waitForChanges();
 
-    const textarea = inputRootElement.querySelector('textarea');
+    const textarea = inputRootElement.shadowRoot.querySelector('textarea');
 
     expect(textarea).toBeTruthy();
     expect(textarea.getAttribute('cols')).toBe('2');
