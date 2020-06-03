@@ -1,6 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('bds-input-chips', () => {
+describe.skip('bds-input-chips', () => {
   let page;
   let inputRootElement;
   let inputNativeElement;

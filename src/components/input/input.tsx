@@ -5,7 +5,7 @@ import { emailValidation } from '../../utils/validations';
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
-  scoped: true,
+  shadow: true,
 })
 export class Input {
   private nativeInput?: HTMLInputElement;

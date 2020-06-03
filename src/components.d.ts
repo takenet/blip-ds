@@ -5,20 +5,20 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
-import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
-import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
-import { ChipSize, ChipVariant } from "./components/chip/chip";
-import { CounterTextRule } from "./components/counter-text/counter-text-interface";
-import { IconSize, IconTheme } from "./components/icon/icon-interface";
-import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
-import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
-import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
-import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
-import { PaperElevation } from "./components/paper/paper-interface";
-import { Option, SelectChangeEventDetail } from "./components/select/select-interface";
-import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
-import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
+import { AlertHeaderVariannt, } from "./components/alert/alert-header/alert-header";
+import { ButtonSize, ButtonType, ButtonVariant, } from "./components/button/button";
+import { LoadingSpinnerVariant, } from "./components/loading-spinner/loading-spinner";
+import { ChipSize, ChipVariant, } from "./components/chip/chip";
+import { CounterTextRule, } from "./components/counter-text/counter-text-interface";
+import { IconSize, IconTheme, } from "./components/icon/icon-interface";
+import { IconButtonSize, IconButtonVariant, } from "./components/icon-button/icon-button";
+import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, } from "./components/input/input-interface";
+import { InputChipsTypes, } from "./components/input-chips/input-chips-interface";
+import { LoadingSpinnerVariant as LoadingSpinnerVariant1, } from "./components/loading-spinner/loading-spinner";
+import { PaperElevation, } from "./components/paper/paper-interface";
+import { Option, SelectChangeEventDetail, } from "./components/select/select-interface";
+import { ActionType, ButtonActionType, CreateToastType, VariantType, } from "./components/toast/toast-interface";
+import { Bold, FontLineHeight, FontSize, Tag, } from "./components/typo/typo";
 export namespace Components {
     interface BdsAlert {
         /**
