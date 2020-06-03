@@ -34,17 +34,13 @@ describe('input e2e tests', () => {
 
     let errorMessage = await page.find('bds-input >>> .input__message');
 
-    let danger = await inputRootElement.getProperty('danger');
-    expect(danger).toBeTruthy();
     expect(errorMessage.textContent).toBe('the min length should be 3');
 
     await inputNativeElement.press(2);
     await inputNativeElement.press(3);
 
-    danger = await inputRootElement.getProperty('danger');
     errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
   });
 
@@ -63,10 +59,8 @@ describe('input e2e tests', () => {
     await inputNativeElement.press(4);
 
     const value = await inputNativeElement.getProperty('value');
-    const danger = await inputRootElement.getProperty('danger');
     const errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
     expect(value).toBe('123');
   });
@@ -84,16 +78,12 @@ describe('input e2e tests', () => {
 
     let errorMessage = await page.find('bds-input >>> .input__message');
 
-    let danger = await inputRootElement.getProperty('danger');
-    expect(danger).toBeTruthy();
     expect(errorMessage.textContent).toBe('the minimum value should be 2');
 
     await inputNativeElement.press(0);
 
-    danger = await inputRootElement.getProperty('danger');
     errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
   });
 
@@ -110,17 +100,13 @@ describe('input e2e tests', () => {
 
     let errorMessage = await page.find('bds-input >>> .input__message');
 
-    let danger = await inputRootElement.getProperty('danger');
-    expect(danger).toBeTruthy();
     expect(errorMessage.textContent).toBe('the max value should be 3');
 
     await inputNativeElement.press('Backspace');
     await inputNativeElement.press(1);
 
-    danger = await inputRootElement.getProperty('danger');
     errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
   });
 
@@ -134,18 +120,15 @@ describe('input e2e tests', () => {
 
     await inputNativeElement.press('Tab');
 
-    let danger = await inputRootElement.getProperty('danger');
     let errorMessage = await page.find('bds-input >>> .input__message');
-    expect(danger).toBeTruthy();
+
     expect(errorMessage.textContent).toBe('this field is required');
 
     await inputNativeElement.press('a');
     await inputNativeElement.press('Tab');
 
-    danger = await inputRootElement.getProperty('danger');
     errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
   });
 
@@ -159,21 +142,16 @@ describe('input e2e tests', () => {
 
     await inputNativeElement.type('a');
 
-    let danger = await inputRootElement.getProperty('danger');
-
     let errorMessage = await page.find('bds-input >>> .input__message');
-    expect(danger).toBeTruthy();
     expect(errorMessage.textContent).toBe('please type a valid email');
 
     await inputNativeElement.press('Backspace');
     await inputNativeElement.type('valid@take.net');
     await inputNativeElement.press('Tab');
 
-    danger = await inputRootElement.getProperty('danger');
     errorMessage = await page.find('bds-input >>> .input__message');
 
     expect(await inputNativeElement.getProperty('value')).toBe('valid@take.net');
-    expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
   });
 
@@ -190,26 +168,20 @@ describe('input e2e tests', () => {
     await inputNativeElement.click();
     await inputNativeElement.press('Tab');
 
-    let danger = await inputRootElement.getProperty('danger');
     let errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeTruthy();
     expect(errorMessage.textContent).toBe('the input is required');
 
     await inputNativeElement.type('invalidmail');
 
-    danger = await inputRootElement.getProperty('danger');
     errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeTruthy();
     expect(errorMessage.textContent).toBe('the input must be an email');
 
     await inputNativeElement.type('blip@take.net');
 
-    danger = await inputRootElement.getProperty('danger');
     errorMessage = await page.find('bds-input >>> .input__message');
 
-    expect(danger).toBeFalsy();
     expect(errorMessage).toBeFalsy();
   });
 
@@ -262,5 +234,33 @@ describe('input e2e tests', () => {
     });
 
     expect(await inputNativeElement.getProperty('value')).toBe('');
+  });
+
+  it('should test the danger and error-message prop', async () => {
+    await page.$eval('bds-input', (elm: HTMLBdsInputElement) => {
+      elm.required = true;
+      elm.type = 'email';
+      elm.errorMessage = 'error message';
+      elm.danger = true;
+    });
+
+    await page.waitForChanges();
+
+    let danger = await inputRootElement.getProperty('danger');
+    let errorMessage = await page.find('bds-input >>> .input__message');
+
+    expect(errorMessage.textContent).toBe('error message');
+    expect(danger).toBeTruthy();
+
+    await page.$eval('bds-input', (elm: HTMLBdsInputElement) => {
+      elm.errorMessage = 'error message';
+      elm.danger = false;
+    });
+
+    danger = await inputRootElement.getProperty('danger');
+    errorMessage = await page.find('bds-input >>> .input__message');
+
+    expect(errorMessage).toBeFalsy();
+    expect(danger).toBeFalsy();
   });
 });

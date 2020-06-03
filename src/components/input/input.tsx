@@ -23,6 +23,10 @@ export class Input {
    * Used to set the error message setted by the internal validators
    */
   @State() validationMesage? = '';
+  /**
+   * Used to set the danger behavior by the internal validators
+   */
+  @State() validationDanger? = false;
 
   /**
    * Input Name
@@ -323,9 +327,9 @@ export class Input {
     const icon = this.danger ? 'error' : 'info';
     let message = this.danger ? this.errorMessage : this.helperMessage;
 
-    if (!message && this.danger) message = this.validationMesage;
+    if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger ? 'input__message input__message--danger' : 'input__message';
+    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
 
     if (message) {
       return (
@@ -356,19 +360,19 @@ export class Input {
   private requiredValidation() {
     if (this.nativeInput.validity.valueMissing) {
       this.validationMesage = this.requiredErrorMessage;
-      this.danger = true;
+      this.validationDanger = true;
     }
   }
 
   private lengthValidation() {
     if (this.nativeInput.validity.tooShort) {
       this.validationMesage = this.minlengthErrorMessage;
-      this.danger = true;
+      this.validationDanger = true;
       return;
     }
 
     if (this.nativeInput.validity.tooLong) {
-      this.danger = true;
+      this.validationDanger = true;
       return;
     }
   }
@@ -376,13 +380,13 @@ export class Input {
   private minMaxValidation() {
     if (this.nativeInput.validity.rangeUnderflow) {
       this.validationMesage = this.minErrorMessage;
-      this.danger = true;
+      this.validationDanger = true;
       return;
     }
 
     if (this.nativeInput.validity.rangeOverflow) {
       this.validationMesage = this.maxErrorMessage;
-      this.danger = true;
+      this.validationDanger = true;
       return;
     }
   }
@@ -390,19 +394,14 @@ export class Input {
   private emailValidation() {
     if (emailValidation(this.nativeInput.value)) {
       this.validationMesage = this.emailErrorMessage;
-      this.danger = true;
+      this.validationDanger = true;
     }
   }
 
   private checkValidity() {
     if (this.nativeInput.validity.valid) {
-      this.danger = false;
+      this.validationDanger = false;
     }
-  }
-
-  private handleSlotLeft() {
-    // const inputElement = this.element.shadowRoot.querySelector('input');
-    // this.element.querySelector('span[slot="input-left"]').appendChild(inputElement);
   }
 
   render(): HTMLElement {
@@ -414,8 +413,8 @@ export class Input {
         <div
           class={{
             input: true,
-            'input--state-primary': !this.danger,
-            'input--state-danger': this.danger,
+            'input--state-primary': !this.danger && !this.validationDanger,
+            'input--state-danger': this.danger || this.validationDanger,
             'input--state-disabled': this.disabled,
             'input--label': !!this.label,
             'input--pressed': isPressed,
@@ -427,7 +426,7 @@ export class Input {
           <div class="input__container">
             {this.renderLabel()}
             <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
-              <slot name="input-left" onSlotchange={() => this.handleSlotLeft()} />
+              <slot name="input-left"></slot>
               <Element
                 class={{ input__container__text: true, input__container__text__chips: this.chips }}
                 ref={(input) => (this.nativeInput = input)}
