@@ -42,6 +42,11 @@ export class InputChips {
   @Event() bdsChange!: EventEmitter;
 
   /**
+   * Emitted when the chip has added.
+   */
+  @Event() bdsBlur!: EventEmitter;
+
+  /**
    * Call change event before alter chips values.
    */
   @Watch('chips')
@@ -79,6 +84,10 @@ export class InputChips {
     } else {
       return true;
     }
+  }
+
+  private handleOnBlur(): void {
+    this.bdsBlur.emit(this.chips);
   }
 
   private handleAddChip(event: CustomEvent<{ value: string }>): void {
@@ -172,6 +181,7 @@ export class InputChips {
           label={this.label}
           onBdsKeyDownBackspace={(event) => this.handleBackRemove(event)}
           onBdsSubmit={(event) => this.handleAddChip(event)}
+          onBdsOnBlur={() => this.handleOnBlur()}
           is-submit
           error-message={this.errorMessage}
           danger={this.danger}
