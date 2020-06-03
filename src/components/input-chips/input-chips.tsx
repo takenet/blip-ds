@@ -29,12 +29,12 @@ export class InputChips {
   /**
    * Indicated to pass an feeback to user.
    */
-  @Prop() errorMessage? = '';
+  @Prop({ mutable: true }) errorMessage? = '';
 
   /**
    * Add state danger on input, use for use feedback.
    */
-  @Prop({ reflect: true }) danger? = false;
+  @Prop({ reflect: true, mutable: true }) danger? = false;
 
   /**
    * Emitted when the chip has added.
