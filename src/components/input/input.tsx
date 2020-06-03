@@ -92,7 +92,7 @@ export class Input {
   /**
    * Indicated to pass an feeback to user.
    */
-  @Prop() errorMessage?: string = '';
+  @Prop({ mutable: true }) errorMessage?: string = '';
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
@@ -107,7 +107,7 @@ export class Input {
   /**
    * Add state danger on input, use for use feedback.
    */
-  @Prop({ reflect: true }) danger?: boolean = false;
+  @Prop({ reflect: true, mutable: true }) danger?: boolean = false;
 
   /**
    * The value of the input.

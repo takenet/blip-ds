@@ -21,6 +21,7 @@
 
 | Event       | Description                      | Type               |
 | ----------- | -------------------------------- | ------------------ |
+| `bdsBlur`   | Emitted when the chip has added. | `CustomEvent<any>` |
 | `bdsChange` | Emitted when the chip has added. | `CustomEvent<any>` |
 
 
