@@ -18,7 +18,6 @@ $icon-xx-small: 12px;
 :host {
   width: 1em;
   height: 1em;
-
   contain: strict;
 
   fill: currentColor;
@@ -26,6 +25,7 @@ $icon-xx-small: 12px;
   box-sizing: content-box !important;
 }
 .icon-inner {
+  max-width: 100%;
   height: 100%;
 }
 :host(.bds-icon) {
