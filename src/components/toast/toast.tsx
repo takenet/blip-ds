@@ -114,8 +114,13 @@ export class BdsToast implements ComponentInterface {
    */
   @Method()
   async close() {
-    this.el.shadowRoot.querySelector('div').classList.remove('show');
-    this.el.shadowRoot.querySelector('div').classList.add('hide');
+    if (this.el.shadowRoot) {
+      this.el.shadowRoot.querySelector('div').classList.remove('show');
+      this.el.shadowRoot.querySelector('div').classList.add('hide');
+    } else {
+      this.el.querySelector('div').classList.remove('show');
+      this.el.querySelector('div').classList.add('hide');
+    }
 
     setTimeout(() => {
       this.el.remove();
