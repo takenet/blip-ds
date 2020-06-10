@@ -29,12 +29,18 @@ describe('toast e2e tests', () => {
     expect(toast.shadowRoot.querySelector('.toast')).toHaveClass('hide');
   });
 
-  it('should emit a toastButtonClick event if the action is custom', async () => {
+  it('should emit a toastButtonClick event and close the toast after emit if the action is custom', async () => {
     const page = await newE2EPage();
 
     await page.setContent(`
       <bds-toast action-type="button" button-action="custom"></bds-toast>
     `);
+
+    let toast = await page.find('bds-toast');
+
+    toast.setProperty('show', true);
+
+    await page.waitForChanges();
 
     const spy = await page.spyOnEvent('toastButtonClick');
 
@@ -44,5 +50,11 @@ describe('toast e2e tests', () => {
     await page.waitForChanges();
 
     expect(spy).toHaveReceivedEvent();
+
+    await page.waitFor(500);
+
+    toast = await page.find('bds-toast');
+
+    expect(toast).toBeFalsy();
   });
 });

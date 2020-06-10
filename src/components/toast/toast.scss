@@ -5,6 +5,9 @@
   background-color: inherit;
 }
 :host {
+  .show, .hide {
+    display: flex;
+  }
   .show {
     opacity: 1;
     animation: toastAnimationFadeIn 1s;
@@ -16,12 +19,8 @@
 }
 
 .toast {
-  ::before {
-    display: block;
-  }
-
+  display: none;
   position: relative;
-  display: flex;
   align-items: center;
   box-sizing: border-box;
   border-radius: 8px;

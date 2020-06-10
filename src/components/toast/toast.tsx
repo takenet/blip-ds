@@ -62,7 +62,10 @@ export class BdsToast implements ComponentInterface {
    */
   private _buttonClickHandler = () => {
     if (this.buttonAction === 'close') this.close();
-    else this.toastButtonClick.emit(this.el);
+    else {
+      this.toastButtonClick.emit(this.el);
+      this.close();
+    }
   };
 
   /**
