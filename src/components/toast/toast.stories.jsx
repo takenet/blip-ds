@@ -17,6 +17,8 @@ export const toastSystem = () => {
     Error: "error",
     Success: "success",
     Warning: "warning",
+    Undo: "undo",
+    Redo: "redo"
   };
   const actionTypeOptions = { Button: "button", Icon: "icon" };
   const buttonActionOptions = { Close: "close", Custom: "custom" };

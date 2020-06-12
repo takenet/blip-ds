@@ -73,6 +73,14 @@
     background: $color-secondary-cheetos;
   }
 
+  &--undo{
+    background-color: $color-primary-main;
+  }
+
+  &--redo{
+    background-color: $color-secondary-redo;
+  }
+
   bds-icon {
     margin-right: 8px;
     display: flex;
