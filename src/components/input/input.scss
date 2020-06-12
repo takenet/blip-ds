@@ -77,9 +77,18 @@ $input-width: 100%;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
-  
+
   input {
     box-shadow: inherit;
+    &::placeholder {
+      color: $color-neutral-medium-silver;
+      opacity: 1;
+    }
+    
+    &::-webkit-input-placeholder {
+      color: $color-neutral-medium-silver;
+      opacity: 1;
+    }
   }
 }
 
