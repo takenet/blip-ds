@@ -18,7 +18,7 @@ export class BdsToast implements ComponentInterface {
   @Prop() actionType: ActionType = 'button';
   /**
    * Variant. Defines the color of the toast. Can be one of:
-   * 'system', 'error', 'success', 'warning';
+   * 'system', 'error', 'success', 'warning', 'undo', 'redo';
    */
   @Prop() variant: VariantType = 'system';
   /**
@@ -132,6 +132,8 @@ export class BdsToast implements ComponentInterface {
     error: 'error',
     success: 'like',
     warning: 'attention',
+    undo: 'undo-arrow',
+    redo: 'redo-arrow',
   };
 
   render() {
