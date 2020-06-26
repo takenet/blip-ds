@@ -7,1452 +7,1453 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
+import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
-import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { IconSize, IconTheme } from "./components/icon/icon-interface";
-import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
+import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
-import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
+import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
+import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { Option, SelectChangeEventDetail } from "./components/select/select-interface";
 import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
-  interface BdsAlert {
-    /**
-      * Used to open/close the alert
-     */
-    "open"?: boolean;
-    /**
-      * Can be used outside to open/close the alert
-     */
-    "toggle": () => Promise<void>;
-  }
-  interface BdsAlertActions {
-  }
-  interface BdsAlertBody {
-  }
-  interface BdsAlertHeader {
-    /**
-      * used for add icon the header. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
-     */
-    "variant"?: AlertHeaderVariannt;
-  }
-  interface BdsButton {
-    /**
-      * The arrow button
-     */
-    "arrow"?: boolean;
-    /**
-      * If true, shows the loading spinner
-     */
-    "bdsLoading"?: boolean;
-    /**
-      * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
-     */
-    "bdsLoadingVariant": LoadingSpinnerVariant;
-    /**
-      * If true, the text will be bold
-     */
-    "bold"?: boolean;
-    /**
-      * If true, the base button will be disabled.
-     */
-    "disabled"?: boolean;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-     */
-    "size"?: ButtonSize;
-    /**
-      * The type of the button. Can be one of: 'button', 'submit', 'reset';
-     */
-    "type": ButtonType;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-     */
-    "variant"?: ButtonVariant;
-  }
-  interface BdsCardColor {
-    /**
-      * Specifies HEX color, use Figma docs in Blip DS.
-     */
-    "hex"?: string;
-    /**
-      * Specifies name color, use Figma docs in Blip DS.
-     */
-    "name": string;
-    /**
-      * Specifies variabel sass color, _variables.scss.
-     */
-    "variable": string;
-  }
-  interface BdsCheckbox {
-    /**
-      * If `true`, the checkbox is selected.
-     */
-    "checked": boolean;
-    /**
-      * If `true`, the user cannot interact with the checkbox.
-     */
-    "disabled": boolean;
-    "getInputElement": () => Promise<HTMLInputElement>;
-    "getValue": () => Promise<boolean>;
-    "label": string;
-    /**
-      * The name of the control, which is submitted with the form data.
-     */
-    "name": string;
-    "refer": string;
-  }
-  interface BdsChip {
-    /**
-      * When 'true' and the component is using the primary variant, a hover is added
-     */
-    "clickable": boolean;
-    /**
-      * Add state danger on chip, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * When 'true', the component recive remove button and dispach event onBdsDelete
-     */
-    "deletable": boolean;
-    /**
-      * When 'true', no events will be dispatched
-     */
-    "disabled": boolean;
-    /**
-      * used for add icon in left container. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
-     */
-    "size"?: ChipSize;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
-     */
-    "variant"?: ChipVariant;
-  }
-  interface BdsCounterText {
-    "active"?: boolean;
-    "delete"?: CounterTextRule;
-    "length": number;
-    "max"?: number;
-    "warning"?: CounterTextRule;
-  }
-  interface BdsIcon {
-    /**
-      * Specifies the label to use for accessibility. Defaults to the icon name.
-     */
-    "ariaLabel"?: string;
-    /**
-      * Specifies the color to use.Specifies a color to use. The default is svg.
-     */
-    "color"?: string;
-    /**
-      * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
-     */
-    "flipRtl"?: boolean;
-    /**
-      * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
-     */
-    "icon"?: any;
-    /**
-      * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
-     */
-    "lazy": boolean;
-    /**
-      * Specifies which icon to use from the built-in set of icons.
-     */
-    "name"?: string;
-    /**
-      * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
-     */
-    "size"?: IconSize;
-    /**
-      * Specifies the exact `src` of an SVG file to use.
-     */
-    "src"?: string;
-    /**
-      * Specifies the theme to use outline or solid icons. Defaults to outline.
-     */
-    "theme": IconTheme;
-  }
-  interface BdsIconButton {
-    /**
-      * If true, the base button will be disabled.
-     */
-    "disabled"?: boolean;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-     */
-    "size"?: IconButtonSize;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-     */
-    "variant"?: IconButtonVariant;
-  }
-  interface BdsInput {
-    /**
-      * Capitalizes every word's second character.
-     */
-    "autoCapitalize"?: InputAutocapitalize;
-    /**
-      * Hint for form autofill feature
-     */
-    "autoComplete"?: InputAutoComplete;
-    /**
-      * Internal prop to identify input chips
-     */
-    "chips": boolean;
-    /**
-      * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
-     */
-    "cols"?: number;
-    /**
-      * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
-     */
-    "counterLength"?: boolean;
-    /**
-      * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
-     */
-    "counterLengthRule"?: InputCounterLengthRules | {};
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * Disabled input.
-     */
-    "disabled"?: boolean;
-    /**
-      * Error message when the value isn't an email
-     */
-    "emailErrorMessage": string;
-    /**
-      * Indicated to pass an feeback to user.
-     */
-    "errorMessage"?: string;
-    /**
-      * Returns the native `<input>` element used under the hood.
-     */
-    "getInputElement": () => Promise<HTMLInputElement>;
-    /**
-      * Indicated to pass a help the user in complex filling.
-     */
-    "helperMessage"?: string;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Input Name
-     */
-    "inputName"?: string;
-    /**
-      * If `true`, the user cannot modify the value.
-     */
-    "isSubmit": boolean;
-    /**
-      * if `true` input switched to textarea
-     */
-    "isTextarea": boolean;
-    /**
-      * Return the validity of the input.
-     */
-    "isValid": () => Promise<boolean>;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    /**
-      * The maximum value, which must not be less than its minimum (min attribute) value.
-     */
-    "max"?: string;
-    /**
-      * Error message when the value is higher than the max value
-     */
-    "maxErrorMessage": string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-     */
-    "maxlength"?: number;
-    /**
-      * The minimum value, which must not be greater than its maximum (max attribute) value.
-     */
-    "min"?: string;
-    /**
-      * Error message when the value is lower than the min value
-     */
-    "minErrorMessage": string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-     */
-    "minlength"?: number;
-    /**
-      * Error message when the value is lower than the minlength
-     */
-    "minlengthErrorMessage": string;
-    /**
-      * A tip for the user who can enter no controls.
-     */
-    "placeholder"?: string;
-    /**
-      * If `true`, the user cannot modify the value.
-     */
-    "readonly": boolean;
-    "removeFocus": () => Promise<void>;
-    /**
-      * If `true`, the input value will be required.
-     */
-    "required": boolean;
-    /**
-      * Error message when input is required
-     */
-    "requiredErrorMessage": string;
-    /**
-      * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
-     */
-    "rows"?: number;
-    /**
-      * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
-     */
-    "setFocus": () => Promise<void>;
-    /**
-      * Input type. Can be one of: "text", "password", "number" or "email".
-     */
-    "type"?: InputType;
-    /**
-      * The value of the input.
-     */
-    "value"?: string | null;
-  }
-  interface BdsInputChips {
-    "chips": string[];
-    /**
-      * Clear all chips
-     */
-    "clear": () => Promise<void>;
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * The delimiter is used to add multiple chips in the same string.
-     */
-    "delimiter": string;
-    /**
-      * Indicated to pass an feeback to user.
-     */
-    "errorMessage"?: string;
-    /**
-      * Return the chips
-     */
-    "get": () => Promise<string[]>;
-    /**
-      * Return the validity of the input chips.
-     */
-    "isValid": () => Promise<boolean>;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    /**
-      * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
-     */
-    "type": InputChipsTypes;
-  }
-  interface BdsInputPassword {
-    /**
-      * Capitalizes every word's second character.
-     */
-    "autoCapitalize"?: InputAutocapitalize;
-    /**
-      * Hint for form autofill feature
-     */
-    "autoComplete"?: InputAutoComplete;
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * Disabled input.
-     */
-    "disabled"?: boolean;
-    /**
-      * Indicated to pass an feeback to user.
-     */
-    "errorMessage"?: string;
-    /**
-      * Indicated to pass a help the user in complex filling.
-     */
-    "helperMessage"?: string;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Input Name
-     */
-    "inputName"?: string;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    /**
-      * The maximum value, which must not be less than its minimum (min attribute) value.
-     */
-    "max"?: string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-     */
-    "maxlength"?: number;
-    /**
-      * The minimum value, which must not be greater than its maximum (max attribute) value.
-     */
-    "min"?: string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-     */
-    "minlength"?: number;
-    "openEyes"?: boolean;
-    /**
-      * If `true`, the user cannot modify the value.
-     */
-    "readonly": boolean;
-    /**
-      * The value of the input.
-     */
-    "value"?: string | null;
-  }
-  interface BdsLoadingSpinner {
-    /**
-      * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
-     */
-    "variant": LoadingSpinnerVariant;
-  }
-  interface BdsMenuList {
-  }
-  interface BdsMenuListItem {
-    "color": string;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon": string;
-  }
-  interface BdsPaper {
-    /**
-      * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
-     */
-    "elevation"?: PaperElevation;
-  }
-  interface BdsRadio {
-    /**
-      * If `true`, the checkbox is selected.
-     */
-    "checked": boolean;
-    /**
-      * If `true`, the user cannot interact with the checkbox.
-     */
-    "disabled": boolean;
-    "getInputElement": () => Promise<HTMLInputElement>;
-    "getValue": () => Promise<boolean>;
-    "label": string;
-    /**
-      * The name of the control, which is submitted with the form data.
-     */
-    "name": string;
-    "refer": string;
-    "value": string;
-  }
-  interface BdsSelect {
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * Disabled input.
-     */
-    "disabled"?: boolean;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    "options"?: Array<Option>;
-    /**
-      * the value of the select.
-     */
-    "value"?: any | null;
-  }
-  interface BdsSelectOption {
-    /**
-      * Quantity Description on option value, this item is locate to rigth in component.
-     */
-    "bulkOption"?: string;
-    /**
-      * If `true`, the user cannot interact with the select option.
-     */
-    "disabled"?: boolean;
-    /**
-      * The text value of the option.
-     */
-    "selected"?: boolean;
-    "value": any;
-  }
-  interface BdsToast {
-    /**
-      * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
-     */
-    "actionType": ActionType;
-    /**
-      * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
-     */
-    "buttonAction": ButtonActionType;
-    /**
-      * If the action type is button, this will be the text of the button:
-     */
-    "buttonText": string;
-    /**
-      * Can be used outside the component to close the toast
-     */
-    "close": () => Promise<void>;
-    /**
-      * Can be used outside to open the toast
-     */
-    "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
-    /**
-      * Time to close the toast in seconds 0 = never close automatically (default value)
-     */
-    "duration": number;
-    /**
-      * Controls the hide event of the component:
-     */
-    "hide": boolean;
-    /**
-      * used for add the icon. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Controls the open event of the component:
-     */
-    "show": boolean;
-    /**
-      * The text content of the component:
-     */
-    "toastText": string;
-    /**
-      * The title of the component:
-     */
-    "toastTitle": string;
-    /**
-      * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning', 'undo', 'redo';
-     */
-    "variant": VariantType;
-  }
-  interface BdsToastContainer {
-  }
-  interface BdsTypo {
-    /**
-      * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
-     */
-    "bold"?: Bold;
-    /**
-      * Added font style italic
-     */
-    "italic"?: boolean;
-    /**
-      * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
-     */
-    "lineHeight"?: FontLineHeight;
-    /**
-      * Added style no wrap
-     */
-    "noWrap"?: boolean;
-    /**
-      * Tranform text in paragraph
-     */
-    "paragraph"?: boolean;
-    /**
-      * Define element tag, must be used for acessibilty
-     */
-    "tag"?: Tag;
-    /**
-      * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
-     */
-    "variant"?: FontSize;
-  }
-  interface BdsWarning {
-  }
+    interface BdsAlert {
+        /**
+          * Used to open/close the alert
+         */
+        "open"?: boolean;
+        /**
+          * Can be used outside to open/close the alert
+         */
+        "toggle": () => Promise<void>;
+    }
+    interface BdsAlertActions {
+    }
+    interface BdsAlertBody {
+    }
+    interface BdsAlertHeader {
+        /**
+          * used for add icon the header. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
+         */
+        "variant"?: AlertHeaderVariannt;
+    }
+    interface BdsButton {
+        /**
+          * The arrow button
+         */
+        "arrow"?: boolean;
+        /**
+          * If true, shows the loading spinner
+         */
+        "bdsLoading"?: boolean;
+        /**
+          * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
+         */
+        "bdsLoadingVariant": LoadingSpinnerVariant;
+        /**
+          * If true, the text will be bold
+         */
+        "bold"?: boolean;
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: ButtonSize;
+        /**
+          * The type of the button. Can be one of: 'button', 'submit', 'reset';
+         */
+        "type": ButtonType;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: ButtonVariant;
+    }
+    interface BdsCardColor {
+        /**
+          * Specifies HEX color, use Figma docs in Blip DS.
+         */
+        "hex"?: string;
+        /**
+          * Specifies name color, use Figma docs in Blip DS.
+         */
+        "name": string;
+        /**
+          * Specifies variabel sass color, _variables.scss.
+         */
+        "variable": string;
+    }
+    interface BdsCheckbox {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled": boolean;
+        "getInputElement": () => Promise<HTMLInputElement>;
+        "getValue": () => Promise<boolean>;
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "refer": string;
+    }
+    interface BdsChip {
+        /**
+          * When 'true' and the component is using the primary variant, a hover is added
+         */
+        "clickable": boolean;
+        /**
+          * Add state danger on chip, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * When 'true', the component recive remove button and dispach event onBdsDelete
+         */
+        "deletable": boolean;
+        /**
+          * When 'true', no events will be dispatched
+         */
+        "disabled": boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
+         */
+        "size"?: ChipSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
+         */
+        "variant"?: ChipVariant;
+    }
+    interface BdsCounterText {
+        "active"?: boolean;
+        "delete"?: CounterTextRule;
+        "length": number;
+        "max"?: number;
+        "warning"?: CounterTextRule;
+    }
+    interface BdsIcon {
+        /**
+          * Specifies the label to use for accessibility. Defaults to the icon name.
+         */
+        "ariaLabel"?: string;
+        /**
+          * Specifies the color to use.Specifies a color to use. The default is svg.
+         */
+        "color"?: string;
+        /**
+          * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
+         */
+        "flipRtl"?: boolean;
+        /**
+          * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
+         */
+        "icon"?: any;
+        /**
+          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+         */
+        "lazy": boolean;
+        /**
+          * Specifies which icon to use from the built-in set of icons.
+         */
+        "name"?: string;
+        /**
+          * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+         */
+        "size"?: IconSize;
+        /**
+          * Specifies the exact `src` of an SVG file to use.
+         */
+        "src"?: string;
+        /**
+          * Specifies the theme to use outline or solid icons. Defaults to outline.
+         */
+        "theme": IconTheme;
+    }
+    interface BdsIconButton {
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: IconButtonSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: IconButtonVariant;
+    }
+    interface BdsInput {
+        /**
+          * Capitalizes every word's second character.
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Hint for form autofill feature
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * Internal prop to identify input chips
+         */
+        "chips": boolean;
+        /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "cols"?: number;
+        /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
+          * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
+         */
+        "counterLengthRule"?: InputCounterLengthRules | {};
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message when the value isn't an email
+         */
+        "emailErrorMessage": string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Returns the native `<input>` element used under the hood.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "isSubmit": boolean;
+        /**
+          * if `true` input switched to textarea
+         */
+        "isTextarea": boolean;
+        /**
+          * Return the validity of the input.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * Error message when the value is higher than the max value
+         */
+        "maxErrorMessage": string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * Error message when the value is lower than the min value
+         */
+        "minErrorMessage": string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minlengthErrorMessage": string;
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        "removeFocus": () => Promise<void>;
+        /**
+          * If `true`, the input value will be required.
+         */
+        "required": boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage": string;
+        /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "rows"?: number;
+        /**
+          * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Input type. Can be one of: "text", "password", "number" or "email".
+         */
+        "type"?: InputType;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
+    interface BdsInputChips {
+        "chips": string[];
+        /**
+          * Clear all chips
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiter": string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Return the chips
+         */
+        "get": () => Promise<string[]>;
+        /**
+          * Return the validity of the input chips.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
+        "type": InputChipsTypes;
+    }
+    interface BdsInputPassword {
+        /**
+          * Capitalizes every word's second character.
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Hint for form autofill feature
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        "openEyes"?: boolean;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
+    interface BdsLoadingSpinner {
+        /**
+          * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
+         */
+        "variant": LoadingSpinnerVariant;
+    }
+    interface BdsMenuList {
+    }
+    interface BdsMenuListItem {
+        "color": string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon": string;
+    }
+    interface BdsPaper {
+        /**
+          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
+         */
+        "elevation"?: PaperElevation;
+    }
+    interface BdsRadio {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled": boolean;
+        "getInputElement": () => Promise<HTMLInputElement>;
+        "getValue": () => Promise<boolean>;
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "refer": string;
+        "value": string;
+    }
+    interface BdsSelect {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        "options"?: Array<Option>;
+        /**
+          * the value of the select.
+         */
+        "value"?: any | null;
+    }
+    interface BdsSelectOption {
+        /**
+          * Quantity Description on option value, this item is locate to rigth in component.
+         */
+        "bulkOption"?: string;
+        /**
+          * If `true`, the user cannot interact with the select option.
+         */
+        "disabled"?: boolean;
+        /**
+          * The text value of the option.
+         */
+        "selected"?: boolean;
+        "value": any;
+    }
+    interface BdsToast {
+        /**
+          * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
+         */
+        "actionType": ActionType;
+        /**
+          * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
+         */
+        "buttonAction": ButtonActionType;
+        /**
+          * If the action type is button, this will be the text of the button:
+         */
+        "buttonText": string;
+        /**
+          * Can be used outside the component to close the toast
+         */
+        "close": () => Promise<void>;
+        /**
+          * Can be used outside to open the toast
+         */
+        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        /**
+          * Time to close the toast in seconds 0 = never close automatically (default value)
+         */
+        "duration": number;
+        /**
+          * Controls the hide event of the component:
+         */
+        "hide": boolean;
+        /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Controls the open event of the component:
+         */
+        "show": boolean;
+        /**
+          * The text content of the component:
+         */
+        "toastText": string;
+        /**
+          * The title of the component:
+         */
+        "toastTitle": string;
+        /**
+          * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning', 'undo', 'redo';
+         */
+        "variant": VariantType;
+    }
+    interface BdsToastContainer {
+    }
+    interface BdsTypo {
+        /**
+          * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
+         */
+        "bold"?: Bold;
+        /**
+          * Added font style italic
+         */
+        "italic"?: boolean;
+        /**
+          * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
+         */
+        "lineHeight"?: FontLineHeight;
+        /**
+          * Added style no wrap
+         */
+        "noWrap"?: boolean;
+        /**
+          * Tranform text in paragraph
+         */
+        "paragraph"?: boolean;
+        /**
+          * Define element tag, must be used for acessibilty
+         */
+        "tag"?: Tag;
+        /**
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
+         */
+        "variant"?: FontSize;
+    }
+    interface BdsWarning {
+    }
 }
 declare global {
-  interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
-  }
-  var HTMLBdsAlertElement: {
-    prototype: HTMLBdsAlertElement;
-    new(): HTMLBdsAlertElement;
-  };
-  interface HTMLBdsAlertActionsElement extends Components.BdsAlertActions, HTMLStencilElement {
-  }
-  var HTMLBdsAlertActionsElement: {
-    prototype: HTMLBdsAlertActionsElement;
-    new(): HTMLBdsAlertActionsElement;
-  };
-  interface HTMLBdsAlertBodyElement extends Components.BdsAlertBody, HTMLStencilElement {
-  }
-  var HTMLBdsAlertBodyElement: {
-    prototype: HTMLBdsAlertBodyElement;
-    new(): HTMLBdsAlertBodyElement;
-  };
-  interface HTMLBdsAlertHeaderElement extends Components.BdsAlertHeader, HTMLStencilElement {
-  }
-  var HTMLBdsAlertHeaderElement: {
-    prototype: HTMLBdsAlertHeaderElement;
-    new(): HTMLBdsAlertHeaderElement;
-  };
-  interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
-  }
-  var HTMLBdsButtonElement: {
-    prototype: HTMLBdsButtonElement;
-    new(): HTMLBdsButtonElement;
-  };
-  interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
-  }
-  var HTMLBdsCardColorElement: {
-    prototype: HTMLBdsCardColorElement;
-    new(): HTMLBdsCardColorElement;
-  };
-  interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
-  }
-  var HTMLBdsCheckboxElement: {
-    prototype: HTMLBdsCheckboxElement;
-    new(): HTMLBdsCheckboxElement;
-  };
-  interface HTMLBdsChipElement extends Components.BdsChip, HTMLStencilElement {
-  }
-  var HTMLBdsChipElement: {
-    prototype: HTMLBdsChipElement;
-    new(): HTMLBdsChipElement;
-  };
-  interface HTMLBdsCounterTextElement extends Components.BdsCounterText, HTMLStencilElement {
-  }
-  var HTMLBdsCounterTextElement: {
-    prototype: HTMLBdsCounterTextElement;
-    new(): HTMLBdsCounterTextElement;
-  };
-  interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
-  }
-  var HTMLBdsIconElement: {
-    prototype: HTMLBdsIconElement;
-    new(): HTMLBdsIconElement;
-  };
-  interface HTMLBdsIconButtonElement extends Components.BdsIconButton, HTMLStencilElement {
-  }
-  var HTMLBdsIconButtonElement: {
-    prototype: HTMLBdsIconButtonElement;
-    new(): HTMLBdsIconButtonElement;
-  };
-  interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
-  }
-  var HTMLBdsInputElement: {
-    prototype: HTMLBdsInputElement;
-    new(): HTMLBdsInputElement;
-  };
-  interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
-  }
-  var HTMLBdsInputChipsElement: {
-    prototype: HTMLBdsInputChipsElement;
-    new(): HTMLBdsInputChipsElement;
-  };
-  interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
-  }
-  var HTMLBdsInputPasswordElement: {
-    prototype: HTMLBdsInputPasswordElement;
-    new(): HTMLBdsInputPasswordElement;
-  };
-  interface HTMLBdsLoadingSpinnerElement extends Components.BdsLoadingSpinner, HTMLStencilElement {
-  }
-  var HTMLBdsLoadingSpinnerElement: {
-    prototype: HTMLBdsLoadingSpinnerElement;
-    new(): HTMLBdsLoadingSpinnerElement;
-  };
-  interface HTMLBdsMenuListElement extends Components.BdsMenuList, HTMLStencilElement {
-  }
-  var HTMLBdsMenuListElement: {
-    prototype: HTMLBdsMenuListElement;
-    new(): HTMLBdsMenuListElement;
-  };
-  interface HTMLBdsMenuListItemElement extends Components.BdsMenuListItem, HTMLStencilElement {
-  }
-  var HTMLBdsMenuListItemElement: {
-    prototype: HTMLBdsMenuListItemElement;
-    new(): HTMLBdsMenuListItemElement;
-  };
-  interface HTMLBdsPaperElement extends Components.BdsPaper, HTMLStencilElement {
-  }
-  var HTMLBdsPaperElement: {
-    prototype: HTMLBdsPaperElement;
-    new(): HTMLBdsPaperElement;
-  };
-  interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
-  }
-  var HTMLBdsRadioElement: {
-    prototype: HTMLBdsRadioElement;
-    new(): HTMLBdsRadioElement;
-  };
-  interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
-  }
-  var HTMLBdsSelectElement: {
-    prototype: HTMLBdsSelectElement;
-    new(): HTMLBdsSelectElement;
-  };
-  interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {
-  }
-  var HTMLBdsSelectOptionElement: {
-    prototype: HTMLBdsSelectOptionElement;
-    new(): HTMLBdsSelectOptionElement;
-  };
-  interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
-  }
-  var HTMLBdsToastElement: {
-    prototype: HTMLBdsToastElement;
-    new(): HTMLBdsToastElement;
-  };
-  interface HTMLBdsToastContainerElement extends Components.BdsToastContainer, HTMLStencilElement {
-  }
-  var HTMLBdsToastContainerElement: {
-    prototype: HTMLBdsToastContainerElement;
-    new(): HTMLBdsToastContainerElement;
-  };
-  interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {
-  }
-  var HTMLBdsTypoElement: {
-    prototype: HTMLBdsTypoElement;
-    new(): HTMLBdsTypoElement;
-  };
-  interface HTMLBdsWarningElement extends Components.BdsWarning, HTMLStencilElement {
-  }
-  var HTMLBdsWarningElement: {
-    prototype: HTMLBdsWarningElement;
-    new(): HTMLBdsWarningElement;
-  };
-  interface HTMLElementTagNameMap {
-    "bds-alert": HTMLBdsAlertElement;
-    "bds-alert-actions": HTMLBdsAlertActionsElement;
-    "bds-alert-body": HTMLBdsAlertBodyElement;
-    "bds-alert-header": HTMLBdsAlertHeaderElement;
-    "bds-button": HTMLBdsButtonElement;
-    "bds-card-color": HTMLBdsCardColorElement;
-    "bds-checkbox": HTMLBdsCheckboxElement;
-    "bds-chip": HTMLBdsChipElement;
-    "bds-counter-text": HTMLBdsCounterTextElement;
-    "bds-icon": HTMLBdsIconElement;
-    "bds-icon-button": HTMLBdsIconButtonElement;
-    "bds-input": HTMLBdsInputElement;
-    "bds-input-chips": HTMLBdsInputChipsElement;
-    "bds-input-password": HTMLBdsInputPasswordElement;
-    "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
-    "bds-menu-list": HTMLBdsMenuListElement;
-    "bds-menu-list-item": HTMLBdsMenuListItemElement;
-    "bds-paper": HTMLBdsPaperElement;
-    "bds-radio": HTMLBdsRadioElement;
-    "bds-select": HTMLBdsSelectElement;
-    "bds-select-option": HTMLBdsSelectOptionElement;
-    "bds-toast": HTMLBdsToastElement;
-    "bds-toast-container": HTMLBdsToastContainerElement;
-    "bds-typo": HTMLBdsTypoElement;
-    "bds-warning": HTMLBdsWarningElement;
-  }
+    interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
+    }
+    var HTMLBdsAlertElement: {
+        prototype: HTMLBdsAlertElement;
+        new (): HTMLBdsAlertElement;
+    };
+    interface HTMLBdsAlertActionsElement extends Components.BdsAlertActions, HTMLStencilElement {
+    }
+    var HTMLBdsAlertActionsElement: {
+        prototype: HTMLBdsAlertActionsElement;
+        new (): HTMLBdsAlertActionsElement;
+    };
+    interface HTMLBdsAlertBodyElement extends Components.BdsAlertBody, HTMLStencilElement {
+    }
+    var HTMLBdsAlertBodyElement: {
+        prototype: HTMLBdsAlertBodyElement;
+        new (): HTMLBdsAlertBodyElement;
+    };
+    interface HTMLBdsAlertHeaderElement extends Components.BdsAlertHeader, HTMLStencilElement {
+    }
+    var HTMLBdsAlertHeaderElement: {
+        prototype: HTMLBdsAlertHeaderElement;
+        new (): HTMLBdsAlertHeaderElement;
+    };
+    interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
+    }
+    var HTMLBdsButtonElement: {
+        prototype: HTMLBdsButtonElement;
+        new (): HTMLBdsButtonElement;
+    };
+    interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
+    }
+    var HTMLBdsCardColorElement: {
+        prototype: HTMLBdsCardColorElement;
+        new (): HTMLBdsCardColorElement;
+    };
+    interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
+    }
+    var HTMLBdsCheckboxElement: {
+        prototype: HTMLBdsCheckboxElement;
+        new (): HTMLBdsCheckboxElement;
+    };
+    interface HTMLBdsChipElement extends Components.BdsChip, HTMLStencilElement {
+    }
+    var HTMLBdsChipElement: {
+        prototype: HTMLBdsChipElement;
+        new (): HTMLBdsChipElement;
+    };
+    interface HTMLBdsCounterTextElement extends Components.BdsCounterText, HTMLStencilElement {
+    }
+    var HTMLBdsCounterTextElement: {
+        prototype: HTMLBdsCounterTextElement;
+        new (): HTMLBdsCounterTextElement;
+    };
+    interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
+    }
+    var HTMLBdsIconElement: {
+        prototype: HTMLBdsIconElement;
+        new (): HTMLBdsIconElement;
+    };
+    interface HTMLBdsIconButtonElement extends Components.BdsIconButton, HTMLStencilElement {
+    }
+    var HTMLBdsIconButtonElement: {
+        prototype: HTMLBdsIconButtonElement;
+        new (): HTMLBdsIconButtonElement;
+    };
+    interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
+    }
+    var HTMLBdsInputElement: {
+        prototype: HTMLBdsInputElement;
+        new (): HTMLBdsInputElement;
+    };
+    interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
+    }
+    var HTMLBdsInputChipsElement: {
+        prototype: HTMLBdsInputChipsElement;
+        new (): HTMLBdsInputChipsElement;
+    };
+    interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
+    }
+    var HTMLBdsInputPasswordElement: {
+        prototype: HTMLBdsInputPasswordElement;
+        new (): HTMLBdsInputPasswordElement;
+    };
+    interface HTMLBdsLoadingSpinnerElement extends Components.BdsLoadingSpinner, HTMLStencilElement {
+    }
+    var HTMLBdsLoadingSpinnerElement: {
+        prototype: HTMLBdsLoadingSpinnerElement;
+        new (): HTMLBdsLoadingSpinnerElement;
+    };
+    interface HTMLBdsMenuListElement extends Components.BdsMenuList, HTMLStencilElement {
+    }
+    var HTMLBdsMenuListElement: {
+        prototype: HTMLBdsMenuListElement;
+        new (): HTMLBdsMenuListElement;
+    };
+    interface HTMLBdsMenuListItemElement extends Components.BdsMenuListItem, HTMLStencilElement {
+    }
+    var HTMLBdsMenuListItemElement: {
+        prototype: HTMLBdsMenuListItemElement;
+        new (): HTMLBdsMenuListItemElement;
+    };
+    interface HTMLBdsPaperElement extends Components.BdsPaper, HTMLStencilElement {
+    }
+    var HTMLBdsPaperElement: {
+        prototype: HTMLBdsPaperElement;
+        new (): HTMLBdsPaperElement;
+    };
+    interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
+    }
+    var HTMLBdsRadioElement: {
+        prototype: HTMLBdsRadioElement;
+        new (): HTMLBdsRadioElement;
+    };
+    interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
+    }
+    var HTMLBdsSelectElement: {
+        prototype: HTMLBdsSelectElement;
+        new (): HTMLBdsSelectElement;
+    };
+    interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {
+    }
+    var HTMLBdsSelectOptionElement: {
+        prototype: HTMLBdsSelectOptionElement;
+        new (): HTMLBdsSelectOptionElement;
+    };
+    interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
+    }
+    var HTMLBdsToastElement: {
+        prototype: HTMLBdsToastElement;
+        new (): HTMLBdsToastElement;
+    };
+    interface HTMLBdsToastContainerElement extends Components.BdsToastContainer, HTMLStencilElement {
+    }
+    var HTMLBdsToastContainerElement: {
+        prototype: HTMLBdsToastContainerElement;
+        new (): HTMLBdsToastContainerElement;
+    };
+    interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {
+    }
+    var HTMLBdsTypoElement: {
+        prototype: HTMLBdsTypoElement;
+        new (): HTMLBdsTypoElement;
+    };
+    interface HTMLBdsWarningElement extends Components.BdsWarning, HTMLStencilElement {
+    }
+    var HTMLBdsWarningElement: {
+        prototype: HTMLBdsWarningElement;
+        new (): HTMLBdsWarningElement;
+    };
+    interface HTMLElementTagNameMap {
+        "bds-alert": HTMLBdsAlertElement;
+        "bds-alert-actions": HTMLBdsAlertActionsElement;
+        "bds-alert-body": HTMLBdsAlertBodyElement;
+        "bds-alert-header": HTMLBdsAlertHeaderElement;
+        "bds-button": HTMLBdsButtonElement;
+        "bds-card-color": HTMLBdsCardColorElement;
+        "bds-checkbox": HTMLBdsCheckboxElement;
+        "bds-chip": HTMLBdsChipElement;
+        "bds-counter-text": HTMLBdsCounterTextElement;
+        "bds-icon": HTMLBdsIconElement;
+        "bds-icon-button": HTMLBdsIconButtonElement;
+        "bds-input": HTMLBdsInputElement;
+        "bds-input-chips": HTMLBdsInputChipsElement;
+        "bds-input-password": HTMLBdsInputPasswordElement;
+        "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
+        "bds-menu-list": HTMLBdsMenuListElement;
+        "bds-menu-list-item": HTMLBdsMenuListItemElement;
+        "bds-paper": HTMLBdsPaperElement;
+        "bds-radio": HTMLBdsRadioElement;
+        "bds-select": HTMLBdsSelectElement;
+        "bds-select-option": HTMLBdsSelectOptionElement;
+        "bds-toast": HTMLBdsToastElement;
+        "bds-toast-container": HTMLBdsToastContainerElement;
+        "bds-typo": HTMLBdsTypoElement;
+        "bds-warning": HTMLBdsWarningElement;
+    }
 }
 declare namespace LocalJSX {
-  interface BdsAlert {
-    /**
-      * Used to open/close the alert
-     */
-    "open"?: boolean;
-  }
-  interface BdsAlertActions {
-  }
-  interface BdsAlertBody {
-  }
-  interface BdsAlertHeader {
-    /**
-      * used for add icon the header. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
-     */
-    "variant"?: AlertHeaderVariannt;
-  }
-  interface BdsButton {
-    /**
-      * The arrow button
-     */
-    "arrow"?: boolean;
-    /**
-      * If true, shows the loading spinner
-     */
-    "bdsLoading"?: boolean;
-    /**
-      * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
-     */
-    "bdsLoadingVariant"?: LoadingSpinnerVariant;
-    /**
-      * If true, the text will be bold
-     */
-    "bold"?: boolean;
-    /**
-      * If true, the base button will be disabled.
-     */
-    "disabled"?: boolean;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-     */
-    "size"?: ButtonSize;
-    /**
-      * The type of the button. Can be one of: 'button', 'submit', 'reset';
-     */
-    "type"?: ButtonType;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-     */
-    "variant"?: ButtonVariant;
-  }
-  interface BdsCardColor {
-    /**
-      * Specifies HEX color, use Figma docs in Blip DS.
-     */
-    "hex"?: string;
-    /**
-      * Specifies name color, use Figma docs in Blip DS.
-     */
-    "name": string;
-    /**
-      * Specifies variabel sass color, _variables.scss.
-     */
-    "variable": string;
-  }
-  interface BdsCheckbox {
-    /**
-      * If `true`, the checkbox is selected.
-     */
-    "checked"?: boolean;
-    /**
-      * If `true`, the user cannot interact with the checkbox.
-     */
-    "disabled"?: boolean;
-    "label": string;
-    /**
-      * The name of the control, which is submitted with the form data.
-     */
-    "name": string;
-    /**
-      * Emitted when the value has changed.
-     */
-    "onBdsChange"?: (event: CustomEvent<any>) => void;
-    /**
-      * Emitted when the input has changed.
-     */
-    "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
-    "refer": string;
-  }
-  interface BdsChip {
-    /**
-      * When 'true' and the component is using the primary variant, a hover is added
-     */
-    "clickable"?: boolean;
-    /**
-      * Add state danger on chip, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * When 'true', the component recive remove button and dispach event onBdsDelete
-     */
-    "deletable"?: boolean;
-    /**
-      * When 'true', no events will be dispatched
-     */
-    "disabled"?: boolean;
-    /**
-      * used for add icon in left container. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
-     */
-    "onBdsDelete"?: (event: CustomEvent<any>) => void;
-    /**
-      * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
-     */
-    "size"?: ChipSize;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
-     */
-    "variant"?: ChipVariant;
-  }
-  interface BdsCounterText {
-    "active"?: boolean;
-    "delete"?: CounterTextRule;
-    "length": number;
-    "max"?: number;
-    "warning"?: CounterTextRule;
-  }
-  interface BdsIcon {
-    /**
-      * Specifies the label to use for accessibility. Defaults to the icon name.
-     */
-    "ariaLabel"?: string;
-    /**
-      * Specifies the color to use.Specifies a color to use. The default is svg.
-     */
-    "color"?: string;
-    /**
-      * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
-     */
-    "flipRtl"?: boolean;
-    /**
-      * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
-     */
-    "icon"?: any;
-    /**
-      * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
-     */
-    "lazy"?: boolean;
-    /**
-      * Specifies which icon to use from the built-in set of icons.
-     */
-    "name"?: string;
-    /**
-      * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
-     */
-    "size"?: IconSize;
-    /**
-      * Specifies the exact `src` of an SVG file to use.
-     */
-    "src"?: string;
-    /**
-      * Specifies the theme to use outline or solid icons. Defaults to outline.
-     */
-    "theme"?: IconTheme;
-  }
-  interface BdsIconButton {
-    /**
-      * If true, the base button will be disabled.
-     */
-    "disabled"?: boolean;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-     */
-    "size"?: IconButtonSize;
-    /**
-      * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-     */
-    "variant"?: IconButtonVariant;
-  }
-  interface BdsInput {
-    /**
-      * Capitalizes every word's second character.
-     */
-    "autoCapitalize"?: InputAutocapitalize;
-    /**
-      * Hint for form autofill feature
-     */
-    "autoComplete"?: InputAutoComplete;
-    /**
-      * Internal prop to identify input chips
-     */
-    "chips"?: boolean;
-    /**
-      * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
-     */
-    "cols"?: number;
-    /**
-      * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
-     */
-    "counterLength"?: boolean;
-    /**
-      * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
-     */
-    "counterLengthRule"?: InputCounterLengthRules | {};
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * Disabled input.
-     */
-    "disabled"?: boolean;
-    /**
-      * Error message when the value isn't an email
-     */
-    "emailErrorMessage"?: string;
-    /**
-      * Indicated to pass an feeback to user.
-     */
-    "errorMessage"?: string;
-    /**
-      * Indicated to pass a help the user in complex filling.
-     */
-    "helperMessage"?: string;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Input Name
-     */
-    "inputName"?: string;
-    /**
-      * If `true`, the user cannot modify the value.
-     */
-    "isSubmit"?: boolean;
-    /**
-      * if `true` input switched to textarea
-     */
-    "isTextarea"?: boolean;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    /**
-      * The maximum value, which must not be less than its minimum (min attribute) value.
-     */
-    "max"?: string;
-    /**
-      * Error message when the value is higher than the max value
-     */
-    "maxErrorMessage"?: string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-     */
-    "maxlength"?: number;
-    /**
-      * The minimum value, which must not be greater than its maximum (max attribute) value.
-     */
-    "min"?: string;
-    /**
-      * Error message when the value is lower than the min value
-     */
-    "minErrorMessage"?: string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-     */
-    "minlength"?: number;
-    /**
-      * Error message when the value is lower than the minlength
-     */
-    "minlengthErrorMessage"?: string;
-    /**
-      * Emitted when the value has changed.
-     */
-    "onBdsChange"?: (event: CustomEvent<any>) => void;
-    /**
-      * Event input focus.
-     */
-    "onBdsFocus"?: (event: CustomEvent<any>) => void;
-    /**
-      * Emitted when the input has changed.
-     */
-    "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
-    /**
-      * Event input key down backspace.
-     */
-    "onBdsKeyDownBackspace"?: (event: CustomEvent<any>) => void;
-    /**
-      * Event input onblur.
-     */
-    "onBdsOnBlur"?: (event: CustomEvent<any>) => void;
-    /**
-      * Event input enter.
-     */
-    "onBdsSubmit"?: (event: CustomEvent<any>) => void;
-    /**
-      * A tip for the user who can enter no controls.
-     */
-    "placeholder"?: string;
-    /**
-      * If `true`, the user cannot modify the value.
-     */
-    "readonly"?: boolean;
-    /**
-      * If `true`, the input value will be required.
-     */
-    "required"?: boolean;
-    /**
-      * Error message when input is required
-     */
-    "requiredErrorMessage"?: string;
-    /**
-      * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
-     */
-    "rows"?: number;
-    /**
-      * Input type. Can be one of: "text", "password", "number" or "email".
-     */
-    "type"?: InputType;
-    /**
-      * The value of the input.
-     */
-    "value"?: string | null;
-  }
-  interface BdsInputChips {
-    "chips"?: string[];
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * The delimiter is used to add multiple chips in the same string.
-     */
-    "delimiter"?: string;
-    /**
-      * Indicated to pass an feeback to user.
-     */
-    "errorMessage"?: string;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    /**
-      * Emitted when the chip has added.
-     */
-    "onBdsBlur"?: (event: CustomEvent<any>) => void;
-    /**
-      * Emitted when the chip has added.
-     */
-    "onBdsChange"?: (event: CustomEvent<any>) => void;
-    /**
-      * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
-     */
-    "type"?: InputChipsTypes;
-  }
-  interface BdsInputPassword {
-    /**
-      * Capitalizes every word's second character.
-     */
-    "autoCapitalize"?: InputAutocapitalize;
-    /**
-      * Hint for form autofill feature
-     */
-    "autoComplete"?: InputAutoComplete;
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * Disabled input.
-     */
-    "disabled"?: boolean;
-    /**
-      * Indicated to pass an feeback to user.
-     */
-    "errorMessage"?: string;
-    /**
-      * Indicated to pass a help the user in complex filling.
-     */
-    "helperMessage"?: string;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Input Name
-     */
-    "inputName"?: string;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    /**
-      * The maximum value, which must not be less than its minimum (min attribute) value.
-     */
-    "max"?: string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-     */
-    "maxlength"?: number;
-    /**
-      * The minimum value, which must not be greater than its maximum (max attribute) value.
-     */
-    "min"?: string;
-    /**
-      * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-     */
-    "minlength"?: number;
-    "openEyes"?: boolean;
-    /**
-      * If `true`, the user cannot modify the value.
-     */
-    "readonly"?: boolean;
-    /**
-      * The value of the input.
-     */
-    "value"?: string | null;
-  }
-  interface BdsLoadingSpinner {
-    /**
-      * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
-     */
-    "variant"?: LoadingSpinnerVariant;
-  }
-  interface BdsMenuList {
-  }
-  interface BdsMenuListItem {
-    "color"?: string;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon": string;
-  }
-  interface BdsPaper {
-    /**
-      * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
-     */
-    "elevation"?: PaperElevation;
-  }
-  interface BdsRadio {
-    /**
-      * If `true`, the checkbox is selected.
-     */
-    "checked"?: boolean;
-    /**
-      * If `true`, the user cannot interact with the checkbox.
-     */
-    "disabled"?: boolean;
-    "label": string;
-    /**
-      * The name of the control, which is submitted with the form data.
-     */
-    "name": string;
-    /**
-      * Emitted when the value has changed.
-     */
-    "onBdsChange"?: (event: CustomEvent<any>) => void;
-    /**
-      * Emitted when the input has changed.
-     */
-    "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
-    "refer": string;
-    "value": string;
-  }
-  interface BdsSelect {
-    /**
-      * Add state danger on input, use for use feedback.
-     */
-    "danger"?: boolean;
-    /**
-      * Disabled input.
-     */
-    "disabled"?: boolean;
-    /**
-      * used for add icon in input left. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * label in input, with he the input size increases.
-     */
-    "label"?: string;
-    /**
-      * Emitted when the select loses focus.
-     */
-    "onBdsBlur"?: (event: CustomEvent<void>) => void;
-    /**
-      * Emitted when the selection is cancelled.
-     */
-    "onBdsCancel"?: (event: CustomEvent<void>) => void;
-    /**
-      * Emitted when the value has changed.
-     */
-    "onBdsChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
-    /**
-      * Emitted when the select loses focus.
-     */
-    "onBdsFocus"?: (event: CustomEvent<void>) => void;
-    "options"?: Array<Option>;
-    /**
-      * the value of the select.
-     */
-    "value"?: any | null;
-  }
-  interface BdsSelectOption {
-    /**
-      * Quantity Description on option value, this item is locate to rigth in component.
-     */
-    "bulkOption"?: string;
-    /**
-      * If `true`, the user cannot interact with the select option.
-     */
-    "disabled"?: boolean;
-    "onOptionSelected"?: (event: CustomEvent<any>) => void;
-    /**
-      * The text value of the option.
-     */
-    "selected"?: boolean;
-    "value": any;
-  }
-  interface BdsToast {
-    /**
-      * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
-     */
-    "actionType"?: ActionType;
-    /**
-      * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
-     */
-    "buttonAction"?: ButtonActionType;
-    /**
-      * If the action type is button, this will be the text of the button:
-     */
-    "buttonText"?: string;
-    /**
-      * Time to close the toast in seconds 0 = never close automatically (default value)
-     */
-    "duration"?: number;
-    /**
-      * Controls the hide event of the component:
-     */
-    "hide"?: boolean;
-    /**
-      * used for add the icon. Uses the bds-icon component.
-     */
-    "icon"?: string;
-    /**
-      * Event used to execute some action when the action button on the toast is clicked
-     */
-    "onToastButtonClick"?: (event: CustomEvent<any>) => void;
-    /**
-      * Controls the open event of the component:
-     */
-    "show"?: boolean;
-    /**
-      * The text content of the component:
-     */
-    "toastText"?: string;
-    /**
-      * The title of the component:
-     */
-    "toastTitle"?: string;
-    /**
-      * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning', 'undo', 'redo';
-     */
-    "variant"?: VariantType;
-  }
-  interface BdsToastContainer {
-  }
-  interface BdsTypo {
-    /**
-      * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
-     */
-    "bold"?: Bold;
-    /**
-      * Added font style italic
-     */
-    "italic"?: boolean;
-    /**
-      * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
-     */
-    "lineHeight"?: FontLineHeight;
-    /**
-      * Added style no wrap
-     */
-    "noWrap"?: boolean;
-    /**
-      * Tranform text in paragraph
-     */
-    "paragraph"?: boolean;
-    /**
-      * Define element tag, must be used for acessibilty
-     */
-    "tag"?: Tag;
-    /**
-      * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
-     */
-    "variant"?: FontSize;
-  }
-  interface BdsWarning {
-  }
-  interface IntrinsicElements {
-    "bds-alert": BdsAlert;
-    "bds-alert-actions": BdsAlertActions;
-    "bds-alert-body": BdsAlertBody;
-    "bds-alert-header": BdsAlertHeader;
-    "bds-button": BdsButton;
-    "bds-card-color": BdsCardColor;
-    "bds-checkbox": BdsCheckbox;
-    "bds-chip": BdsChip;
-    "bds-counter-text": BdsCounterText;
-    "bds-icon": BdsIcon;
-    "bds-icon-button": BdsIconButton;
-    "bds-input": BdsInput;
-    "bds-input-chips": BdsInputChips;
-    "bds-input-password": BdsInputPassword;
-    "bds-loading-spinner": BdsLoadingSpinner;
-    "bds-menu-list": BdsMenuList;
-    "bds-menu-list-item": BdsMenuListItem;
-    "bds-paper": BdsPaper;
-    "bds-radio": BdsRadio;
-    "bds-select": BdsSelect;
-    "bds-select-option": BdsSelectOption;
-    "bds-toast": BdsToast;
-    "bds-toast-container": BdsToastContainer;
-    "bds-typo": BdsTypo;
-    "bds-warning": BdsWarning;
-  }
+    interface BdsAlert {
+        /**
+          * Used to open/close the alert
+         */
+        "open"?: boolean;
+    }
+    interface BdsAlertActions {
+    }
+    interface BdsAlertBody {
+    }
+    interface BdsAlertHeader {
+        /**
+          * used for add icon the header. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
+         */
+        "variant"?: AlertHeaderVariannt;
+    }
+    interface BdsButton {
+        /**
+          * The arrow button
+         */
+        "arrow"?: boolean;
+        /**
+          * If true, shows the loading spinner
+         */
+        "bdsLoading"?: boolean;
+        /**
+          * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
+         */
+        "bdsLoadingVariant"?: LoadingSpinnerVariant;
+        /**
+          * If true, the text will be bold
+         */
+        "bold"?: boolean;
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: ButtonSize;
+        /**
+          * The type of the button. Can be one of: 'button', 'submit', 'reset';
+         */
+        "type"?: ButtonType;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: ButtonVariant;
+    }
+    interface BdsCardColor {
+        /**
+          * Specifies HEX color, use Figma docs in Blip DS.
+         */
+        "hex"?: string;
+        /**
+          * Specifies name color, use Figma docs in Blip DS.
+         */
+        "name": string;
+        /**
+          * Specifies variabel sass color, _variables.scss.
+         */
+        "variable": string;
+    }
+    interface BdsCheckbox {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled"?: boolean;
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "refer": string;
+    }
+    interface BdsChip {
+        /**
+          * When 'true' and the component is using the primary variant, a hover is added
+         */
+        "clickable"?: boolean;
+        /**
+          * Add state danger on chip, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * When 'true', the component recive remove button and dispach event onBdsDelete
+         */
+        "deletable"?: boolean;
+        /**
+          * When 'true', no events will be dispatched
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
+         */
+        "onBdsDelete"?: (event: CustomEvent<any>) => void;
+        /**
+          * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
+         */
+        "size"?: ChipSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
+         */
+        "variant"?: ChipVariant;
+    }
+    interface BdsCounterText {
+        "active"?: boolean;
+        "delete"?: CounterTextRule;
+        "length": number;
+        "max"?: number;
+        "warning"?: CounterTextRule;
+    }
+    interface BdsIcon {
+        /**
+          * Specifies the label to use for accessibility. Defaults to the icon name.
+         */
+        "ariaLabel"?: string;
+        /**
+          * Specifies the color to use.Specifies a color to use. The default is svg.
+         */
+        "color"?: string;
+        /**
+          * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
+         */
+        "flipRtl"?: boolean;
+        /**
+          * A combination of both `name` and `src`. If a `src` url is detected it will set the `src` property. Otherwise it assumes it's a built-in named SVG and set the `name` property.
+         */
+        "icon"?: any;
+        /**
+          * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
+         */
+        "lazy"?: boolean;
+        /**
+          * Specifies which icon to use from the built-in set of icons.
+         */
+        "name"?: string;
+        /**
+          * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+         */
+        "size"?: IconSize;
+        /**
+          * Specifies the exact `src` of an SVG file to use.
+         */
+        "src"?: string;
+        /**
+          * Specifies the theme to use outline or solid icons. Defaults to outline.
+         */
+        "theme"?: IconTheme;
+    }
+    interface BdsIconButton {
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: IconButtonSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: IconButtonVariant;
+    }
+    interface BdsInput {
+        /**
+          * Capitalizes every word's second character.
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Hint for form autofill feature
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * Internal prop to identify input chips
+         */
+        "chips"?: boolean;
+        /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "cols"?: number;
+        /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
+          * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
+         */
+        "counterLengthRule"?: InputCounterLengthRules | {};
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Error message when the value isn't an email
+         */
+        "emailErrorMessage"?: string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "isSubmit"?: boolean;
+        /**
+          * if `true` input switched to textarea
+         */
+        "isTextarea"?: boolean;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * Error message when the value is higher than the max value
+         */
+        "maxErrorMessage"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * Error message when the value is lower than the min value
+         */
+        "minErrorMessage"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event input focus.
+         */
+        "onBdsFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
+          * Event input key down backspace.
+         */
+        "onBdsKeyDownBackspace"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event input onblur.
+         */
+        "onBdsOnBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event input enter.
+         */
+        "onBdsSubmit"?: (event: CustomEvent<any>) => void;
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * If `true`, the input value will be required.
+         */
+        "required"?: boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+         */
+        "rows"?: number;
+        /**
+          * Input type. Can be one of: "text", "password", "number" or "email".
+         */
+        "type"?: InputType;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
+    interface BdsInputChips {
+        "chips"?: string[];
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiter"?: string;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
+        "type"?: InputChipsTypes;
+    }
+    interface BdsInputPassword {
+        /**
+          * Capitalizes every word's second character.
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Hint for form autofill feature
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        "openEyes"?: boolean;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
+    interface BdsLoadingSpinner {
+        /**
+          * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
+         */
+        "variant"?: LoadingSpinnerVariant;
+    }
+    interface BdsMenuList {
+    }
+    interface BdsMenuListItem {
+        "color"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon": string;
+    }
+    interface BdsPaper {
+        /**
+          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
+         */
+        "elevation"?: PaperElevation;
+    }
+    interface BdsRadio {
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled"?: boolean;
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "refer": string;
+        "value": string;
+    }
+    interface BdsSelect {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is cancelled.
+         */
+        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        "options"?: Array<Option>;
+        /**
+          * the value of the select.
+         */
+        "value"?: any | null;
+    }
+    interface BdsSelectOption {
+        /**
+          * Quantity Description on option value, this item is locate to rigth in component.
+         */
+        "bulkOption"?: string;
+        /**
+          * If `true`, the user cannot interact with the select option.
+         */
+        "disabled"?: boolean;
+        "onOptionSelected"?: (event: CustomEvent<any>) => void;
+        /**
+          * The text value of the option.
+         */
+        "selected"?: boolean;
+        "value": any;
+    }
+    interface BdsToast {
+        /**
+          * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
+         */
+        "actionType"?: ActionType;
+        /**
+          * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
+         */
+        "buttonAction"?: ButtonActionType;
+        /**
+          * If the action type is button, this will be the text of the button:
+         */
+        "buttonText"?: string;
+        /**
+          * Time to close the toast in seconds 0 = never close automatically (default value)
+         */
+        "duration"?: number;
+        /**
+          * Controls the hide event of the component:
+         */
+        "hide"?: boolean;
+        /**
+          * used for add the icon. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Event used to execute some action when the action button on the toast is clicked
+         */
+        "onToastButtonClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Controls the open event of the component:
+         */
+        "show"?: boolean;
+        /**
+          * The text content of the component:
+         */
+        "toastText"?: string;
+        /**
+          * The title of the component:
+         */
+        "toastTitle"?: string;
+        /**
+          * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning', 'undo', 'redo';
+         */
+        "variant"?: VariantType;
+    }
+    interface BdsToastContainer {
+    }
+    interface BdsTypo {
+        /**
+          * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
+         */
+        "bold"?: Bold;
+        /**
+          * Added font style italic
+         */
+        "italic"?: boolean;
+        /**
+          * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
+         */
+        "lineHeight"?: FontLineHeight;
+        /**
+          * Added style no wrap
+         */
+        "noWrap"?: boolean;
+        /**
+          * Tranform text in paragraph
+         */
+        "paragraph"?: boolean;
+        /**
+          * Define element tag, must be used for acessibilty
+         */
+        "tag"?: Tag;
+        /**
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
+         */
+        "variant"?: FontSize;
+    }
+    interface BdsWarning {
+    }
+    interface IntrinsicElements {
+        "bds-alert": BdsAlert;
+        "bds-alert-actions": BdsAlertActions;
+        "bds-alert-body": BdsAlertBody;
+        "bds-alert-header": BdsAlertHeader;
+        "bds-button": BdsButton;
+        "bds-card-color": BdsCardColor;
+        "bds-checkbox": BdsCheckbox;
+        "bds-chip": BdsChip;
+        "bds-counter-text": BdsCounterText;
+        "bds-icon": BdsIcon;
+        "bds-icon-button": BdsIconButton;
+        "bds-input": BdsInput;
+        "bds-input-chips": BdsInputChips;
+        "bds-input-password": BdsInputPassword;
+        "bds-loading-spinner": BdsLoadingSpinner;
+        "bds-menu-list": BdsMenuList;
+        "bds-menu-list-item": BdsMenuListItem;
+        "bds-paper": BdsPaper;
+        "bds-radio": BdsRadio;
+        "bds-select": BdsSelect;
+        "bds-select-option": BdsSelectOption;
+        "bds-toast": BdsToast;
+        "bds-toast-container": BdsToastContainer;
+        "bds-typo": BdsTypo;
+        "bds-warning": BdsWarning;
+    }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
-  export namespace JSX {
-    interface IntrinsicElements {
-      "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
-      "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
-      "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
-      "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
-      "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
-      "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
-      "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
-      "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
-      "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
-      "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
-      "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
-      "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
-      "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
-      "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
-      "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
-      "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
-      "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
-      "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
-      "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
-      "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
-      "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
-      "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
-      "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
-      "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
-      "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+    export namespace JSX {
+        interface IntrinsicElements {
+            "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
+            "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
+            "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
+            "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
+            "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
+            "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
+            "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
+            "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
+            "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+            "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
+            "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+            "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
+            "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
+            "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
+            "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
+            "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
+            "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
+            "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
+            "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
+            "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
+            "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
+            "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
+            "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
+            "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+        }
     }
-  }
 }
