@@ -242,6 +242,25 @@ $button-padding-left-right: 16px;
     }
   }
 
+  &__facebook {
+    background: $color-facebook-main;
+    color: $color-primary-ghost;
+
+    &:hover,
+    &:focus {
+      background: $color-facebook-dark;
+    }
+
+    &:active {
+      background: $color-primary-main;
+      color: $color-primary-ghost;
+    }
+
+    &--disabled {
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
+    }
+  }
+
   bds-loading-spinner {
     width: auto;
     max-height: 20px;
