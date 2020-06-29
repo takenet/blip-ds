@@ -3,7 +3,7 @@ import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 
 export type ButtonSize = 'tall' | 'standard' | 'short';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'secondary--white' | 'ghost' | 'dashed';
+export type ButtonVariant = 'primary' | 'secondary' | 'secondary--white' | 'ghost' | 'dashed' | 'facebook';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 
