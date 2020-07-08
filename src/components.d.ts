@@ -44,6 +44,10 @@ export namespace Components {
          */
         "variant"?: AlertHeaderVariannt;
     }
+    interface BdsBanner {
+        "fixed": boolean;
+        "toggle": () => Promise<void>;
+    }
     interface BdsButton {
         /**
           * The arrow button
@@ -628,6 +632,12 @@ declare global {
         prototype: HTMLBdsAlertHeaderElement;
         new (): HTMLBdsAlertHeaderElement;
     };
+    interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
+    }
+    var HTMLBdsBannerElement: {
+        prototype: HTMLBdsBannerElement;
+        new (): HTMLBdsBannerElement;
+    };
     interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
     }
     var HTMLBdsButtonElement: {
@@ -759,6 +769,7 @@ declare global {
         "bds-alert-actions": HTMLBdsAlertActionsElement;
         "bds-alert-body": HTMLBdsAlertBodyElement;
         "bds-alert-header": HTMLBdsAlertHeaderElement;
+        "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
@@ -802,6 +813,9 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
          */
         "variant"?: AlertHeaderVariannt;
+    }
+    interface BdsBanner {
+        "fixed"?: boolean;
     }
     interface BdsButton {
         /**
@@ -1402,6 +1416,7 @@ declare namespace LocalJSX {
         "bds-alert-actions": BdsAlertActions;
         "bds-alert-body": BdsAlertBody;
         "bds-alert-header": BdsAlertHeader;
+        "bds-banner": BdsBanner;
         "bds-button": BdsButton;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
@@ -1433,6 +1448,7 @@ declare module "@stencil/core" {
             "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
             "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
+            "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;

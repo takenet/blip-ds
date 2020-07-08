@@ -25,6 +25,7 @@
 ### Used by
 
  - [bds-alert-header](../alert/alert-header)
+ - [bds-banner](../banner)
  - [bds-button](../button)
  - [bds-checkbox](../checkbox)
  - [bds-chip](../chip)
@@ -40,6 +41,7 @@
 ```mermaid
 graph TD;
   bds-alert-header --> bds-icon
+  bds-banner --> bds-icon
   bds-button --> bds-icon
   bds-checkbox --> bds-icon
   bds-chip --> bds-icon
