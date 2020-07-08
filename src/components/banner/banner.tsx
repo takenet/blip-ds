@@ -6,9 +6,7 @@ import { Component, Host, h, ComponentInterface, Prop, State, Method } from '@st
   shadow: true,
 })
 export class Banner implements ComponentInterface {
-
   @State() visible = true;
-
   @Prop() fixed = false;
 
   @Method()
@@ -16,28 +14,27 @@ export class Banner implements ComponentInterface {
     this.visible = !this.visible;
   }
 
- private close = (): void => {
+  private close = (): void => {
     this.visible = false;
   };
 
-
   render() {
     return (
-      <Host class={{
-        banner: true,
-        'banner--hide': !this.visible
-      }}>
+      <Host
+        class={{
+          banner: true,
+          'banner--hide': !this.visible,
+        }}
+      >
         <div class="banner__content">
           <slot></slot>
         </div>
         {!this.fixed && (
           <div class="banner__action" onClick={this.close}>
-            <bds-icon name='close'></bds-icon>
+            <bds-icon name="close"></bds-icon>
           </div>
         )}
-
       </Host>
     );
   }
-
 }
