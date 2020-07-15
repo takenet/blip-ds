@@ -225,6 +225,10 @@ export namespace Components {
          */
         "chips": boolean;
         /**
+          * Return the validity of the input.
+         */
+        "clear": () => Promise<void>;
+        /**
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
         "cols"?: number;
@@ -380,6 +384,10 @@ export namespace Components {
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
         "type": InputChipsTypes;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
     }
     interface BdsInputPassword {
         /**
@@ -435,6 +443,10 @@ export namespace Components {
          */
         "minlength"?: number;
         "openEyes"?: boolean;
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
@@ -1166,6 +1178,10 @@ declare namespace LocalJSX {
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
         "type"?: InputChipsTypes;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
     }
     interface BdsInputPassword {
         /**
@@ -1221,6 +1237,10 @@ declare namespace LocalJSX {
          */
         "minlength"?: number;
         "openEyes"?: boolean;
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
          */
