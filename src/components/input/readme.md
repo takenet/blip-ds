@@ -53,6 +53,16 @@
 
 ## Methods
 
+### `clear() => Promise<void>`
+
+Return the validity of the input.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `getInputElement() => Promise<HTMLInputElement>`
 
 Returns the native `<input>` element used under the hood.

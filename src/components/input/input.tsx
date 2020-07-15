@@ -248,6 +248,14 @@ export class Input {
     return this.nativeInput.validity.valid;
   }
 
+  /**
+   * Return the validity of the input.
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.value = '';
+  }
+
   private keyPressWrapper = (event: KeyboardEvent): void => {
     switch (event.key) {
       case 'Enter':

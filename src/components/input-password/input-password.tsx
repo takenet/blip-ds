@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Host } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
@@ -84,6 +84,11 @@ export class InputPassword {
    */
   @Prop() autoComplete?: InputAutoComplete = 'off';
 
+  /**
+   * A tip for the user who can enter no controls.
+   */
+  @Prop() placeholder?: string = '';
+
   private toggleEyePassword = (): void => {
     if (!this.disabled) {
       this.openEyes = !this.openEyes;
@@ -101,28 +106,31 @@ export class InputPassword {
     const autocomplete = this.getAutoComplete();
 
     return (
-      <bds-input
-        type={type}
-        input-name={this.inputName}
-        value={this.value}
-        label={this.label}
-        min={this.min}
-        max={this.max}
-        minlength={this.minlength}
-        maxlength={this.maxlength}
-        helper-message={this.helperMessage}
-        error-message={this.errorMessage}
-        danger={this.danger}
-        icon={this.icon}
-        disabled={this.disabled}
-        readonly={this.readonly}
-        auto-complete={autocomplete}
-        auto-capitalize={this.autoCapitalize}
-      >
-        <div slot="input-right" class="input__password--icon" onClick={this.toggleEyePassword}>
-          <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
-        </div>
-      </bds-input>
+      <Host>
+        <bds-input
+          type={type}
+          input-name={this.inputName}
+          value={this.value}
+          label={this.label}
+          min={this.min}
+          max={this.max}
+          minlength={this.minlength}
+          maxlength={this.maxlength}
+          helper-message={this.helperMessage}
+          error-message={this.errorMessage}
+          danger={this.danger}
+          icon={this.icon}
+          disabled={this.disabled}
+          readonly={this.readonly}
+          auto-complete={autocomplete}
+          auto-capitalize={this.autoCapitalize}
+          placeholder={this.placeholder}
+        >
+          <div slot="input-right" class="input__password--icon" onClick={this.toggleEyePassword}>
+            <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
+          </div>
+        </bds-input>
+      </Host>
     );
   }
 }

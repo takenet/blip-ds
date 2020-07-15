@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { InputChipsTypes } from './input-chips-interface';
@@ -8,6 +9,8 @@ import { InputChipsTypes } from './input-chips-interface';
   shadow: true,
 })
 export class InputChips {
+  private nativeInput?: HTMLBdsInputElement;
+
   @Prop({ mutable: true }) chips: string[] = [];
 
   /**
@@ -35,6 +38,11 @@ export class InputChips {
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true, mutable: true }) danger? = false;
+
+  /**
+   * The value of the input.
+   */
+  @Prop({ mutable: true }) value?: string | null = '';
 
   /**
    * Emitted when the chip has added.
@@ -121,6 +129,30 @@ export class InputChips {
     }
   }
 
+  private async handleChange(event: CustomEvent<{ value: string }>) {
+    const {
+      detail: { value },
+    } = event;
+
+    const term = /,|;/;
+    const existTerm = value.match(term);
+
+    if (existTerm === null) return;
+
+    const words = value.split(term);
+
+    words.forEach((word) => {
+      if (!whitespaceValidation(word)) {
+        return;
+      }
+      this.setChip(word);
+    });
+
+    const el = await this.nativeInput;
+    el.clear();
+    this.value = '';
+  }
+
   private setChipList(names: string[]) {
     names.forEach((name) => {
       if (name) this.setChip(name);
@@ -178,11 +210,14 @@ export class InputChips {
     return (
       <Host>
         <bds-input
+          ref={(input) => (this.nativeInput = input) as HTMLBdsInputElement}
           label={this.label}
           onBdsKeyDownBackspace={(event) => this.handleBackRemove(event)}
           onBdsSubmit={(event) => this.handleAddChip(event)}
           onBdsOnBlur={() => this.handleOnBlur()}
+          onBdsChange={(event) => this.handleChange(event)}
           is-submit
+          value={this.value}
           error-message={this.errorMessage}
           danger={this.danger}
           chips={true}

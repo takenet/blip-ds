@@ -15,6 +15,7 @@
 | `errorMessage` | `error-message` | Indicated to pass an feeback to user.                                                                             | `string`            | `''`     |
 | `label`        | `label`         | label in input, with he the input size increases.                                                                 | `string`            | `''`     |
 | `type`         | `type`          | Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email; | `"email" \| "text"` | `'text'` |
+| `value`        | `value`         | The value of the input.                                                                                           | `string`            | `''`     |
 
 
 ## Events
