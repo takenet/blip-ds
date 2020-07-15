@@ -12,7 +12,6 @@ Object {
     "appendChildSlotFix": false,
     "asyncLoading": true,
     "asyncQueue": true,
-    "attachStyles": false,
     "cloneNodeFix": false,
     "cmpDidLoad": true,
     "cmpDidRender": true,
@@ -94,7 +93,9 @@ Object {
   "flushLoadModule": [Function],
   "flushQueue": [Function],
   "setContent": [Function],
-  "styles": Map {},
+  "styles": Map {
+    "BDS-TOAST-CONTAINER" => null,
+  },
   "waitForChanges": [Function],
   "win": [MockWindow],
 }

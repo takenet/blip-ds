@@ -150,6 +150,7 @@ export class InputChips {
 
     const el = await this.nativeInput;
     el.clear();
+    this.value = '';
   }
 
   private setChipList(names: string[]) {
