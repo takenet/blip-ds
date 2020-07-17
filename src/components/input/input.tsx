@@ -191,7 +191,7 @@ export class Input {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsChange!: EventEmitter;
+  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
 
   /**
    * Emitted when the input has changed.
