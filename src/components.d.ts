@@ -1236,8 +1236,6 @@ declare namespace LocalJSX {
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
         "minlength"?: number;
-        "onBdsPasswordChange"?: (event: CustomEvent<any>) => void;
-        "onBdsPwdChange"?: (event: CustomEvent<any>) => void;
         "openEyes"?: boolean;
         /**
           * A tip for the user who can enter no controls.
