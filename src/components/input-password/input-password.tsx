@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import { Component, Prop, h, Host, Listen, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, h, Host } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
