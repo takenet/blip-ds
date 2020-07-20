@@ -1,4 +1,5 @@
-import { Component, Prop, h, Host } from '@stencil/core';
+/* eslint-disable no-console */
+import { Component, Prop, h, Host, Listen, Event, EventEmitter } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
@@ -89,6 +90,19 @@ export class InputPassword {
    */
   @Prop() placeholder?: string = '';
 
+  @Event({ bubbles: true, composed: true }) bdsPasswordChange!: EventEmitter;
+
+  @Event({ bubbles: true, composed: true }) bdsPwdChange!: EventEmitter;
+
+  @Listen('bdsChange')
+  inputBdsChange(event) {
+    this.bdsPasswordChange.emit(event.detail);
+  }
+
+  private handleBdsChange = (event) => {
+    this.bdsPwdChange.emit(event.detail);
+  };
+
   private toggleEyePassword = (): void => {
     if (!this.disabled) {
       this.openEyes = !this.openEyes;
@@ -125,6 +139,7 @@ export class InputPassword {
           auto-complete={autocomplete}
           auto-capitalize={this.autoCapitalize}
           placeholder={this.placeholder}
+          onBdsChange={this.handleBdsChange}
         >
           <div slot="input-right" class="input__password--icon" onClick={this.toggleEyePassword}>
             <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>

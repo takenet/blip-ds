@@ -28,6 +28,14 @@
 | `value`          | `value`           | The value of the input.                                                                                                                                                          | `string`                                                              | `''`        |
 
 
+## Events
+
+| Event               | Description | Type               |
+| ------------------- | ----------- | ------------------ |
+| `bdsPasswordChange` |             | `CustomEvent<any>` |
+| `bdsPwdChange`      |             | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Depends on
