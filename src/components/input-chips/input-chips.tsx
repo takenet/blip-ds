@@ -6,7 +6,7 @@ import { InputChipsTypes } from './input-chips-interface';
 @Component({
   tag: 'bds-input-chips',
   styleUrl: 'input-chips.scss',
-  shadow: true,
+  scoped: true,
 })
 export class InputChips {
   private nativeInput?: HTMLBdsInputElement;
@@ -123,7 +123,7 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    if (value.length <= 1 && this.chips.length) {
+    if (value.length <= 0 && this.chips.length) {
       this.removeLastChip();
       this.bdsChange.emit(this.chips);
     }
