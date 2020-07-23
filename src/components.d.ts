@@ -363,7 +363,7 @@ export namespace Components {
         /**
           * The delimiter is used to add multiple chips in the same string.
          */
-        "delimiter": string;
+        "delimiters": RegExp;
         /**
           * Indicated to pass an feeback to user.
          */
@@ -1157,7 +1157,7 @@ declare namespace LocalJSX {
         /**
           * The delimiter is used to add multiple chips in the same string.
          */
-        "delimiter"?: string;
+        "delimiters"?: RegExp;
         /**
           * Indicated to pass an feeback to user.
          */

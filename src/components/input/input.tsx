@@ -185,7 +185,7 @@ export class Input {
    */
   @Watch('value')
   protected valueChanged(): void {
-    this.bdsChange.emit({ value: this.value });
+    this.bdsChange.emit({ value: this.value == null ? this.value : this.value.toString() });
   }
 
   /**
@@ -262,8 +262,7 @@ export class Input {
         this.bdsSubmit.emit({ event, value: this.value });
 
         if (this.isSubmit) {
-          this.value = '';
-          event.preventDefault();
+          this.clearTextInput();
         }
         break;
       case 'Backspace' || 'Delete':
@@ -296,6 +295,24 @@ export class Input {
     this.onFocus();
     if (this.nativeInput) {
       this.nativeInput.focus();
+    }
+  };
+
+  private clearTextInput = (ev?: Event) => {
+    if (!this.readonly && !this.disabled && ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+
+    this.value = '';
+
+    /**
+     * This is needed for clearOnEdit
+     * Otherwise the value will not be cleared
+     * if user is inside the input
+     */
+    if (this.nativeInput) {
+      this.nativeInput.value = '';
     }
   };
 
@@ -409,6 +426,12 @@ export class Input {
   private checkValidity() {
     if (this.nativeInput.validity.valid) {
       this.validationDanger = false;
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.nativeInput && this.value != this.nativeInput.value) {
+      this.nativeInput.value = this.value;
     }
   }
 
