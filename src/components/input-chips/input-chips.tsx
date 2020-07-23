@@ -143,12 +143,15 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
-    if (value.trim().length === 0) return;
+    const trimValue = value.trim()
+    if (trimValue.length === 0) return;
 
-    const existTerm = value.match(this.delimiters);
+    const existTerm = trimValue.match(this.delimiters);
     if (existTerm === null) return;
 
-    const newValue = this.verifyAndSubstituteDelimiters(value);
+    const newValue = this.verifyAndSubstituteDelimiters(trimValue);
+
+    if(!newValue || newValue.length === 0) return;
 
     const words = newValue.split(this.delimiters);
 
