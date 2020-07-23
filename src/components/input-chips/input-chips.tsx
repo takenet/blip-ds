@@ -27,7 +27,7 @@ export class InputChips {
   /**
    * The delimiter is used to add multiple chips in the same string.
    */
-  @Prop() delimiter = ',';
+  @Prop() delimiters = /,|;/;
 
   /**
    * Indicated to pass an feeback to user.
@@ -102,16 +102,13 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
+    console.log('handleaddchips ' + value)
 
     if (!whitespaceValidation(value)) {
       return;
     }
 
-    if (value && value.includes(this.delimiter)) {
-      this.setChipList(value.split(this.delimiter));
-    } else {
-      this.setChip(value);
-    }
+    this.setChip(value);
   }
 
   private getLastChip(): string {
@@ -129,17 +126,33 @@ export class InputChips {
     }
   }
 
+  private verifyAndSubstituteDelimiters(value: string) {
+    if(value.length === 1 && value[0].match(this.delimiters)) {
+      console.log('value length = 1')
+      return this.value = ' '
+    }
+
+    let newValue = value.replace(/;/g, ',').replace(/\,+|;+/g, ',');
+
+    if(newValue[0].match(this.delimiters)) {
+      newValue = newValue.substring(1)
+    }
+
+    return newValue
+  }
+
   private async handleChange(event: CustomEvent<{ value: string }>) {
     const {
       detail: { value },
     } = event;
+    if(value.trim().length === 0) return;
 
-    const term = /,|;/;
-    const existTerm = value.match(term);
-
+    const existTerm = value.match(this.delimiters);
     if (existTerm === null) return;
 
-    const words = value.split(term);
+    const newValue = this.verifyAndSubstituteDelimiters(value);
+
+    const words = newValue.split(this.delimiters);
 
     words.forEach((word) => {
       if (!whitespaceValidation(word)) {
@@ -148,15 +161,7 @@ export class InputChips {
       this.setChip(word);
     });
 
-    const el = await this.nativeInput;
-    el.clear();
-    this.value = '';
-  }
-
-  private setChipList(names: string[]) {
-    names.forEach((name) => {
-      if (name) this.setChip(name);
-    });
+    this.value = ' ';
   }
 
   private setChip(name: string) {
