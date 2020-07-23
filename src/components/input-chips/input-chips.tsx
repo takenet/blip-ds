@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { InputChipsTypes } from './input-chips-interface';
@@ -42,7 +41,7 @@ export class InputChips {
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: string | null = '';
+  @Prop({ mutable: true, reflect: true }) value?: string | null = '';
 
   /**
    * Emitted when the chip has added.
@@ -126,8 +125,7 @@ export class InputChips {
 
   private verifyAndSubstituteDelimiters(value: string) {
     if (value.length === 1 && value[0].match(this.delimiters)) {
-      this.value = ' ';
-      return;
+      return '';
     }
 
     let newValue = value.replace(/;/g, ',').replace(/\,+|;+/g, ',');
@@ -143,26 +141,34 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
-    const trimValue = value.trim()
+
+    this.value = value;
+
+    const trimValue = value.trim();
     if (trimValue.length === 0) return;
 
     const existTerm = trimValue.match(this.delimiters);
-    if (existTerm === null) return;
+    if (!existTerm) return;
 
     const newValue = this.verifyAndSubstituteDelimiters(trimValue);
-
-    if(!newValue || newValue.length === 0) return;
+    if (!newValue) {
+      this.clearInputValues();
+      return;
+    }
 
     const words = newValue.split(this.delimiters);
-
     words.forEach((word) => {
-      if (!whitespaceValidation(word)) {
-        return;
+      if (whitespaceValidation(word)) {
+        this.setChip(word);
       }
-      this.setChip(word);
     });
 
-    this.value = ' ';
+    this.clearInputValues();
+  }
+
+  private clearInputValues(value = '') {
+    this.nativeInput.value = value;
+    this.value = value;
   }
 
   private setChip(name: string) {
@@ -216,7 +222,7 @@ export class InputChips {
     return (
       <Host>
         <bds-input
-          ref={(input) => (this.nativeInput = input) as HTMLBdsInputElement}
+          ref={(input) => (this.nativeInput = input)}
           label={this.label}
           onBdsKeyDownBackspace={(event) => this.handleBackRemove(event)}
           onBdsSubmit={(event) => this.handleAddChip(event)}
