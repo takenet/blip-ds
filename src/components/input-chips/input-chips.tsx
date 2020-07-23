@@ -102,8 +102,6 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
-    console.log('handleaddchips ' + value)
-
     if (!whitespaceValidation(value)) {
       return;
     }
@@ -127,25 +125,25 @@ export class InputChips {
   }
 
   private verifyAndSubstituteDelimiters(value: string) {
-    if(value.length === 1 && value[0].match(this.delimiters)) {
-      console.log('value length = 1')
-      return this.value = ' '
+    if (value.length === 1 && value[0].match(this.delimiters)) {
+      this.value = ' ';
+      return;
     }
 
     let newValue = value.replace(/;/g, ',').replace(/\,+|;+/g, ',');
 
-    if(newValue[0].match(this.delimiters)) {
-      newValue = newValue.substring(1)
+    if (newValue[0].match(this.delimiters)) {
+      newValue = newValue.substring(1);
     }
 
-    return newValue
+    return newValue;
   }
 
   private async handleChange(event: CustomEvent<{ value: string }>) {
     const {
       detail: { value },
     } = event;
-    if(value.trim().length === 0) return;
+    if (value.trim().length === 0) return;
 
     const existTerm = value.match(this.delimiters);
     if (existTerm === null) return;
