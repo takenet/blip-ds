@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { InputChipsTypes } from './input-chips-interface';
@@ -27,7 +26,7 @@ export class InputChips {
   /**
    * The delimiter is used to add multiple chips in the same string.
    */
-  @Prop() delimiter = ',';
+  @Prop() delimiters = /,|;/;
 
   /**
    * Indicated to pass an feeback to user.
@@ -42,7 +41,7 @@ export class InputChips {
   /**
    * The value of the input.
    */
-  @Prop({ mutable: true }) value?: string | null = '';
+  @Prop({ mutable: true, reflect: true }) value?: string | null = '';
 
   /**
    * Emitted when the chip has added.
@@ -102,16 +101,11 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
-
     if (!whitespaceValidation(value)) {
       return;
     }
 
-    if (value && value.includes(this.delimiter)) {
-      this.setChipList(value.split(this.delimiter));
-    } else {
-      this.setChip(value);
-    }
+    this.setChip(value);
   }
 
   private getLastChip(): string {
@@ -123,10 +117,24 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    if (value.length <= 1 && this.chips.length) {
+    if (value.length <= 0 && this.chips.length) {
       this.removeLastChip();
       this.bdsChange.emit(this.chips);
     }
+  }
+
+  private verifyAndSubstituteDelimiters(value: string) {
+    if (value.length === 1 && value[0].match(this.delimiters)) {
+      return '';
+    }
+
+    let newValue = value.replace(/;/g, ',').replace(/\,+|;+/g, ',');
+
+    if (newValue[0].match(this.delimiters)) {
+      newValue = newValue.substring(1);
+    }
+
+    return newValue;
   }
 
   private async handleChange(event: CustomEvent<{ value: string }>) {
@@ -134,29 +142,33 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    const term = /,|;/;
-    const existTerm = value.match(term);
+    this.value = value;
 
-    if (existTerm === null) return;
+    const trimValue = value.trim();
+    if (trimValue.length === 0) return;
 
-    const words = value.split(term);
+    const existTerm = trimValue.match(this.delimiters);
+    if (!existTerm) return;
 
+    const newValue = this.verifyAndSubstituteDelimiters(trimValue);
+    if (!newValue) {
+      this.clearInputValues();
+      return;
+    }
+
+    const words = newValue.split(this.delimiters);
     words.forEach((word) => {
-      if (!whitespaceValidation(word)) {
-        return;
+      if (whitespaceValidation(word)) {
+        this.setChip(word);
       }
-      this.setChip(word);
     });
 
-    const el = await this.nativeInput;
-    el.clear();
-    this.value = '';
+    this.clearInputValues();
   }
 
-  private setChipList(names: string[]) {
-    names.forEach((name) => {
-      if (name) this.setChip(name);
-    });
+  private clearInputValues(value = '') {
+    this.nativeInput.value = value;
+    this.value = value;
   }
 
   private setChip(name: string) {
@@ -210,7 +222,7 @@ export class InputChips {
     return (
       <Host>
         <bds-input
-          ref={(input) => (this.nativeInput = input) as HTMLBdsInputElement}
+          ref={(input) => (this.nativeInput = input)}
           label={this.label}
           onBdsKeyDownBackspace={(event) => this.handleBackRemove(event)}
           onBdsSubmit={(event) => this.handleAddChip(event)}
