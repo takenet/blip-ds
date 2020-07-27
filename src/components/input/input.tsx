@@ -468,8 +468,8 @@ export class Input {
             />
           )}
           <slot name="input-right" />
-          {this.renderMessage()}
         </div>
+        {this.renderMessage()}
       </Host>
     );
   }

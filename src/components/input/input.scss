@@ -72,6 +72,7 @@ $input-width: 100%;
 
 :host {
   display: flex;
+  flex-direction: column;
   position: relative;
   flex: 1;
   width: 100%;
@@ -84,7 +85,7 @@ $input-width: 100%;
       color: $color-neutral-medium-silver;
       opacity: 1;
     }
-    
+
     &::-webkit-input-placeholder {
       color: $color-neutral-medium-silver;
       opacity: 1;
@@ -200,14 +201,14 @@ $input-width: 100%;
 
   &__message {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: baseline;
     height: 20px;
-    left: 0px;
-    position: absolute;
-    bottom: -22px;
+    margin: 3.7px 2.5px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: $color-neutral-medium-cloud;
+    word-break: break-word;
+    height: auto;
+    min-height: 20px;
     bds-typo {
       margin-top: 0px;
       align-self: self-start;
@@ -217,6 +218,7 @@ $input-width: 100%;
       display: flex;
       padding-right: 4px;
       margin-top: 0px;
+      padding-top: 2px;
     }
 
     &--danger {
