@@ -84,7 +84,7 @@ describe('bds-input', () => {
 
     await page.waitForChanges();
 
-    const helperMessage = await page.doc.querySelector('bds-input').shadowRoot.firstElementChild;
+    const helperMessage = await page.doc.querySelector('bds-input').shadowRoot.querySelector('.input__message');
 
     expect(helperMessage.textContent).toBe('blip helper message');
   });
