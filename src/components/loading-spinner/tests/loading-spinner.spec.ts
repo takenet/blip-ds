@@ -28,9 +28,9 @@ describe('toast spinner tests', () => {
 
     await page.waitForChanges();
 
-    expect(await page.root.shadowRoot.querySelector('.sk-child--primary')).toBeTruthy();
-    expect(await page.root.shadowRoot.querySelector('.sk-child--secondary')).toBeFalsy();
-    expect(await page.root.shadowRoot.querySelector('.sk-child--ghost')).toBeFalsy();
+    expect(await page.root.querySelector('.sk-child--primary')).toBeTruthy();
+    expect(await page.root.querySelector('.sk-child--secondary')).toBeFalsy();
+    expect(await page.root.querySelector('.sk-child--ghost')).toBeFalsy();
   });
 
   it('should change the color prop', async () => {
@@ -38,7 +38,7 @@ describe('toast spinner tests', () => {
 
     const spinner = await page.doc.querySelector('bds-loading-spinner');
 
-    let spinnerClasses = await page.root.shadowRoot.querySelector('.sk-child');
+    let spinnerClasses = await page.root.querySelector('.sk-child');
 
     expect(spinnerClasses).toHaveClass('sk-child--primary');
     expect(spinnerClasses).not.toHaveClass('sk-child--secondary');
@@ -47,7 +47,7 @@ describe('toast spinner tests', () => {
 
     await page.waitForChanges();
 
-    spinnerClasses = await page.root.shadowRoot.querySelector('.sk-child');
+    spinnerClasses = await page.root.querySelector('.sk-child');
 
     expect(spinnerClasses).not.toHaveClass('sk-child--ghost');
     expect(spinnerClasses).not.toHaveClass('sk-child--primary');

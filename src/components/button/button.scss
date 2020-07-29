@@ -72,6 +72,7 @@ $button-padding-left-right: 16px;
   border-radius: $button-border-radius;
   padding-left: $button-padding-left-right;
   padding-right: $button-padding-left-right;
+  position: relative;
 
   &--size-tall {
     @include padding-button-top-bottom($button-size-tall);
