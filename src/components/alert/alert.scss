@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 .alert__dialog {
   opacity: 0;
@@ -10,8 +10,7 @@
   top: 0;
   left: 0;
   transition: opacity .3s ease-in-out;
-  // TODO: we need to define the z-index defaults
-  z-index: 9999991;
+  z-index: $zindex-modal-overlay;
   
     .alert {
       position: absolute;
