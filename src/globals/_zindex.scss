@@ -33,12 +33,14 @@ $zindex-20000: 20000;
 
 // Declarative Variables
 
-$zindex-footer: 1000;
-$zindex-header: 2000;
-$zindex-subHeader: 3000;
-$zindex-sidebar: 4000;
-$zindex-page: 5000; //(full-screen-container)
-$zindex-dropdown: 6000;
-$zindex-modaloverlay: 7000; //Modal Overlay/Toast Overlay
-$zindex-modal: 8000;
-$zindex-toast: 9000;
+$zindex-footer: 10000;
+$zindex-local-sidebar: 20000;
+$zindex-subheader: 30000;
+$zindex-header: 40000;
+$zindex-full-screen-sidebar: 50000;
+$zindex-page: 60000; //(full-screen-container)
+$zindex-dropdown: 70000;
+$zindex-modal-overlay: 80000; //Modal Overlay/Toast Overlay
+$zindex-modal: 90000;
+$zindex-loading: 100000;
+$zindex-toast: 110000;
