@@ -83,6 +83,7 @@ export class InputChips {
   @Method()
   async clear(): Promise<void> {
     this.chips = [];
+    this.value = '';
   }
 
   private validateChips() {
