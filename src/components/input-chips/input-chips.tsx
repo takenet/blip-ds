@@ -24,6 +24,11 @@ export class InputChips {
   @Prop() label? = '';
 
   /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
+
+  /**
    * The delimiter is used to add multiple chips in the same string.
    */
   @Prop() delimiters = /,|;/;
@@ -83,6 +88,21 @@ export class InputChips {
   @Method()
   async clear(): Promise<void> {
     this.chips = [];
+  }
+
+  @Method()
+  async add(value: string): Promise<void> {
+    this.setChip(value);
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    this.nativeInput.setFocus();
+  }
+
+  @Method()
+  async removeFocus(): Promise<void> {
+    this.nativeInput.removeFocus();
   }
 
   private validateChips() {
@@ -223,6 +243,7 @@ export class InputChips {
       <Host>
         <bds-input
           ref={(input) => (this.nativeInput = input)}
+          icon={this.icon}
           label={this.label}
           onBdsKeyDownBackspace={(event) => this.handleBackRemove(event)}
           onBdsSubmit={(event) => this.handleAddChip(event)}

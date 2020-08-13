@@ -12,11 +12,22 @@
     body {
       /* background: #f5f8f9; */
       background: #0a0f1a;
+      color: #f0f0f0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    bds-input-chips {
+      margin-bottom: 16px;
     }
   </style>
 
   <body>
-    <bds-input helper-message="teste"></bds-input>
+    <h3>Select Chips</h3>
+    <bds-select-chips>
+      <bds-select-option value="x">Arena MRV</bds-select-option>
+      <bds-select-option value="z">Mineirao</bds-select-option>
+      <bds-select-option value="y">Arena Independencia</bds-select-option>
+    </bds-select-chips>
   </body>
 
   <script>

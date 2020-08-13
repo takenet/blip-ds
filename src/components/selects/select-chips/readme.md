@@ -1,4 +1,4 @@
-# bds-select
+# bds-select-chips
 
 
 
@@ -31,19 +31,25 @@
 
 ### Depends on
 
-- [bds-input](../input)
-- [bds-icon](../icon)
+- [bds-input-chips](../../input-chips)
+- [bds-icon](../../icon)
+- [bds-select-option](../../select-option)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-select --> bds-input
-  bds-select --> bds-icon
+  bds-select-chips --> bds-input-chips
+  bds-select-chips --> bds-icon
+  bds-select-chips --> bds-select-option
+  bds-input-chips --> bds-chip
+  bds-input-chips --> bds-input
+  bds-chip --> bds-icon
   bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
-  style bds-select fill:#f9f,stroke:#333,stroke-width:4px
+  bds-select-option --> bds-typo
+  style bds-select-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

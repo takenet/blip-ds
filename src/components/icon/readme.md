@@ -33,7 +33,8 @@
  - [bds-input](../input)
  - [bds-input-password](../input-password)
  - [bds-menu-list-item](../menu-list-item)
- - [bds-select](../select)
+ - [bds-select](../selects/select)
+ - [bds-select-chips](../selects/select-chips)
  - [bds-toast](../toast)
  - [bds-warning](../warning)
 
@@ -50,6 +51,7 @@ graph TD;
   bds-input-password --> bds-icon
   bds-menu-list-item --> bds-icon
   bds-select --> bds-icon
+  bds-select-chips --> bds-icon
   bds-toast --> bds-icon
   bds-warning --> bds-icon
   style bds-icon fill:#f9f,stroke:#333,stroke-width:4px

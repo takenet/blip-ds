@@ -111,7 +111,7 @@ Type: `Promise<void>`
 
  - [bds-input-chips](../input-chips)
  - [bds-input-password](../input-password)
- - [bds-select](../select)
+ - [bds-select](../selects/select)
 
 ### Depends on
 

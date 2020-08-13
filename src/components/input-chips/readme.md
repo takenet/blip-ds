@@ -13,6 +13,7 @@
 | `danger`       | `danger`        | Add state danger on input, use for use feedback.                                                                  | `boolean`           | `false`  |
 | `delimiters`   | --              | The delimiter is used to add multiple chips in the same string.                                                   | `RegExp`            | `/,\|;/` |
 | `errorMessage` | `error-message` | Indicated to pass an feeback to user.                                                                             | `string`            | `''`     |
+| `icon`         | `icon`          | used for add icon in input left. Uses the bds-icon component.                                                     | `string`            | `''`     |
 | `label`        | `label`         | label in input, with he the input size increases.                                                                 | `string`            | `''`     |
 | `type`         | `type`          | Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email; | `"email" \| "text"` | `'text'` |
 | `value`        | `value`         | The value of the input.                                                                                           | `string`            | `''`     |
@@ -27,6 +28,16 @@
 
 
 ## Methods
+
+### `add(value: string) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 ### `clear() => Promise<void>`
 
@@ -58,8 +69,32 @@ Type: `Promise<boolean>`
 
 
 
+### `removeFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Dependencies
+
+### Used by
+
+ - [bds-select-chips](../selects/select-chips)
 
 ### Depends on
 
@@ -76,6 +111,7 @@ graph TD;
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
+  bds-select-chips --> bds-input-chips
   style bds-input-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
