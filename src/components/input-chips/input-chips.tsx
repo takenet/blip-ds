@@ -88,6 +88,7 @@ export class InputChips {
   @Method()
   async clear(): Promise<void> {
     this.chips = [];
+    this.value = '';
   }
 
   @Method()
@@ -196,7 +197,8 @@ export class InputChips {
   }
 
   private validateChip(name: string) {
-    if (this.type === 'email' && emailValidation(name)) {
+    const trimmedName = name.trim();
+    if (this.type === 'email' && emailValidation(trimmedName)) {
       return false;
     }
     return true;
