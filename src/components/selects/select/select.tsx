@@ -1,9 +1,9 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
-import { Option, SelectChangeEventDetail } from './select-interface';
+import { Option, SelectChangeEventDetail } from '../select-interface';
 
 @Component({
   tag: 'bds-select',
-  styleUrl: 'select.scss',
+  styleUrl: '../select.scss',
   shadow: true,
 })
 export class Select {

@@ -63,4 +63,8 @@ $select-option-left: 12px;
     cursor: not-allowed;
     color: $color-neutral-medium-silver;
   }
+
+  &--invisible {
+    display: none;
+  }
 }

@@ -21,6 +21,16 @@ export class SelectOption {
   @Prop() disabled? = false;
 
   /**
+   * Add state danger on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) invisible? = false;
+
+  /**
+   * Add state danger on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) danger?: boolean = false;
+
+  /**
    *  Quantity Description on option value, this item is locate to rigth in component.
    */
   @Prop() bulkOption? = '';
@@ -69,6 +79,7 @@ export class SelectOption {
           'select-option': true,
           'select-option--selected': this.selected,
           'select-option--disabled': this.disabled,
+          'select-option--invisible': this.invisible,
         }}
       >
         <bds-typo class="select-option__value" variant="fs-14">
