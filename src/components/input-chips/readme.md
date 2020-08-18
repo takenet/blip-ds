@@ -12,7 +12,8 @@
 | `chips`        | --              |                                                                                                                   | `string[]`          | `[]`     |
 | `danger`       | `danger`        | Add state danger on input, use for use feedback.                                                                  | `boolean`           | `false`  |
 | `delimiters`   | --              | The delimiter is used to add multiple chips in the same string.                                                   | `RegExp`            | `/,\|;/` |
-| `errorMessage` | `error-message` | Indicated to pass an feeback to user.                                                                             | `string`            | `''`     |
+| `duplicated`   | `duplicated`    | Do not accept duplicate chip elements.                                                                            | `boolean`           | `true`   |
+| `errorMessage` | `error-message` | Indicated to pass an feedback to user.                                                                            | `string`            | `''`     |
 | `icon`         | `icon`          | used for add icon in input left. Uses the bds-icon component.                                                     | `string`            | `''`     |
 | `label`        | `label`         | label in input, with he the input size increases.                                                                 | `string`            | `''`     |
 | `type`         | `type`          | Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email; | `"email" \| "text"` | `'text'` |
@@ -21,10 +22,12 @@
 
 ## Events
 
-| Event       | Description                      | Type               |
-| ----------- | -------------------------------- | ------------------ |
-| `bdsBlur`   | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsChange` | Emitted when the chip has added. | `CustomEvent<any>` |
+| Event            | Description                      | Type               |
+| ---------------- | -------------------------------- | ------------------ |
+| `bdsBlur`        | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsChange`      | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsChangeChips` | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsSubmit`      | Emitted when the chip has added. | `CustomEvent<any>` |
 
 
 ## Methods

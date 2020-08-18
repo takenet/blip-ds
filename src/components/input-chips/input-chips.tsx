@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { InputChipsTypes } from './input-chips-interface';
@@ -34,7 +35,7 @@ export class InputChips {
   @Prop() delimiters = /,|;/;
 
   /**
-   * Indicated to pass an feeback to user.
+   * Indicated to pass an feedback to user.
    */
   @Prop({ mutable: true }) errorMessage? = '';
 
@@ -49,6 +50,11 @@ export class InputChips {
   @Prop({ mutable: true, reflect: true }) value?: string | null = '';
 
   /**
+   * Do not accept duplicate chip elements.
+   */
+  @Prop() duplicated?: boolean = true;
+
+  /**
    * Emitted when the chip has added.
    */
   @Event() bdsChange!: EventEmitter;
@@ -56,14 +62,24 @@ export class InputChips {
   /**
    * Emitted when the chip has added.
    */
+  @Event() bdsChangeChips!: EventEmitter;
+
+  /**
+   * Emitted when the chip has added.
+   */
   @Event() bdsBlur!: EventEmitter;
+
+  /**
+   * Emitted when the chip has added.
+   */
+  @Event() bdsSubmit!: EventEmitter;
 
   /**
    * Call change event before alter chips values.
    */
   @Watch('chips')
   protected valueChanged(): void {
-    this.bdsChange.emit({ data: this.chips, value: this.getLastChip() });
+    this.bdsChangeChips.emit({ data: this.chips, value: this.getLastChip() });
   }
 
   /**
@@ -122,10 +138,6 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
-    if (!whitespaceValidation(value)) {
-      return;
-    }
-
     this.setChip(value);
   }
 
@@ -138,9 +150,9 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    if (value.length <= 0 && this.chips.length) {
+    if ((value === null || value.length <= 0) && this.chips.length) {
       this.removeLastChip();
-      this.bdsChange.emit(this.chips);
+      this.bdsChangeChips.emit({ data: this.chips, value });
     }
   }
 
@@ -163,15 +175,14 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    this.value = value;
+    this.value = value ? value.trim() : '';
 
-    const trimValue = value.trim();
-    if (trimValue.length === 0) return;
+    if (value.length === 0) return;
 
-    const existTerm = trimValue.match(this.delimiters);
+    const existTerm = value.match(this.delimiters);
     if (!existTerm) return;
 
-    const newValue = this.verifyAndSubstituteDelimiters(trimValue);
+    const newValue = this.verifyAndSubstituteDelimiters(value);
     if (!newValue) {
       this.clearInputValues();
       return;
@@ -179,9 +190,7 @@ export class InputChips {
 
     const words = newValue.split(this.delimiters);
     words.forEach((word) => {
-      if (whitespaceValidation(word)) {
-        this.setChip(word);
-      }
+      this.setChip(word);
     });
 
     this.clearInputValues();
@@ -193,6 +202,15 @@ export class InputChips {
   }
 
   private setChip(name: string) {
+    if (!this.duplicated) {
+      const exists = this.chips.some((chip) => chip === name);
+      if (exists) return;
+    }
+
+    if (!whitespaceValidation(name)) {
+      return;
+    }
+
     this.chips = [...this.chips, name];
   }
 

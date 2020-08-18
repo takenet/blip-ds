@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, h, State, Prop, EventEmitter, Event, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../select-interface';
 
@@ -9,7 +10,7 @@ import { Option, SelectChangeEventDetail } from '../select-interface';
 export class SelectChips {
   private nativeInput?: HTMLBdsInputChipsElement;
 
-  @Element() el!: HTMLBdsSelectElement;
+  @Element() el!: HTMLElement;
 
   @State() isOpen? = false;
 
@@ -18,15 +19,24 @@ export class SelectChips {
   @Prop() options?: Array<Option> = [];
 
   /**
+   * Used for add prefix on new option select.
+   */
+  @Prop({ reflect: true }) newPrefix?: string = '';
+
+  /**
    * the value of the select.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ mutable: true }) value?: any | null;
+  @Prop({ mutable: true }) value?: string | null = '';
 
   /**
    * Add state danger on input, use for use feedback.
    */
-  @Prop({ reflect: true }) danger? = false;
+  @Prop({ reflect: true, mutable: true }) danger? = false;
+
+  /**
+   * Indicated to pass an feedback to user.
+   */
+  @Prop({ mutable: true }) errorMessage? = '';
 
   /**
    * Disabled input.
@@ -63,6 +73,11 @@ export class SelectChips {
    */
   @Prop({ reflect: true }) icon?: string = '';
 
+  /**
+   * Do not accept duplicate chip elements.
+   */
+  @Prop() duplicated?: boolean = false;
+
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
     if (!this.el.contains(ev.target as HTMLInputElement)) {
@@ -72,19 +87,20 @@ export class SelectChips {
 
   async connectedCallback() {
     for (const option of this.childOptions) {
-      if (this.value) {
-        option.selected = this.value === option.value;
-        this.text = option.innerHTML;
-      }
-
       option.addEventListener('optionSelected', this.handler);
     }
-
-    if (this.nativeInput) this.nativeInput.add(this.text);
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return Array.from(this.el.querySelectorAll('*'));
+  }
+
+  private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
+    return Array.from(this.el.querySelectorAll('*:not([invisible])'));
+  }
+
+  private enableCreateOption(): boolean {
+    return !!(this.childOptionsEnabled.length === 0 && this.text);
   }
 
   private onFocus = (): void => {
@@ -101,17 +117,22 @@ export class SelectChips {
     }
   };
 
-  private handler = (event: CustomEvent): void => {
-    const {
-      detail: { value },
-      target,
-    } = event;
-
-    const el = target as HTMLBdsSelectOptionElement;
-    this.nativeInput.add(el.innerHTML);
-    this.value = value;
-    this.toggle();
+  private handler = async (event: CustomEvent) => {
+    const { target } = event;
+    const text = (target as HTMLBdsSelectOptionElement).innerHTML;
+    await this.addChip(text);
   };
+
+  private handlerNewOption = async (text: string) => {
+    await this.addChip(text);
+  };
+
+  private async addChip(chip: string) {
+    await this.nativeInput.add(chip);
+    this.text = '';
+    this.nativeInput.value = '';
+    this.toggle();
+  }
 
   private setFocusWrapper = (): void => {
     if (this.nativeInput) {
@@ -144,22 +165,45 @@ export class SelectChips {
     const {
       detail: { value },
     } = event;
+
     this.text = value;
     this.filterOptions(value);
 
-    if (this.isOpen === false) {
+    if (this.text && this.isOpen === false) {
       this.isOpen = true;
     }
   };
 
-  private filterOptions(term) {
+  private handleChangeChipsValue = () => {
+    this.resetFilterOptions();
+  };
+
+  private filterOptions(term: string) {
     for (const option of this.childOptions) {
-      if (term && option.innerHTML.includes(term)) {
+      const isExistsChip = this.existsChip(option.innerHTML, this.nativeInput.chips);
+
+      if (term && option.innerHTML.includes(term) && !isExistsChip) {
         option.removeAttribute('invisible');
-      } else {
+      }
+
+      if (term && !option.innerHTML.includes(term) && !isExistsChip) {
         option.setAttribute('invisible', 'invisible');
       }
     }
+  }
+
+  private resetFilterOptions() {
+    for (const option of this.childOptions) {
+      if (this.existsChip(option.innerHTML, this.nativeInput.chips)) {
+        option.setAttribute('invisible', 'invisible');
+      } else {
+        option.removeAttribute('invisible');
+      }
+    }
+  }
+
+  private existsChip(optionChip: string, chips: string[]) {
+    return chips.some((chip) => optionChip === chip);
   }
 
   render(): HTMLElement {
@@ -175,14 +219,16 @@ export class SelectChips {
       >
         <bds-input-chips
           ref={(el) => (this.nativeInput = el as HTMLBdsInputChipsElement)}
+          onBdsChangeChips={this.handleChangeChipsValue}
           onBdsChange={this.changedInputValue}
           icon={this.icon}
           label={this.label}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onClick={this.toggle}
-          value={this.text}
           danger={this.danger}
+          error-message={this.errorMessage}
+          duplicated={this.duplicated}
         >
           <div slot="input-right" class="select__icon">
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
@@ -195,7 +241,12 @@ export class SelectChips {
           }}
         >
           <slot />
-          <bds-select-option value="add">Criar: {this.text}</bds-select-option>
+          {this.enableCreateOption() && (
+            <bds-select-option value="add" onClick={() => this.handlerNewOption(this.text)}>
+              {this.newPrefix}
+              {this.text}
+            </bds-select-option>
+          )}
         </div>
       </div>
     );

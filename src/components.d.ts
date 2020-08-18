@@ -366,7 +366,11 @@ export namespace Components {
          */
         "delimiters": RegExp;
         /**
-          * Indicated to pass an feeback to user.
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
          */
         "errorMessage"?: string;
         /**
@@ -536,6 +540,14 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
+         */
+        "errorMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -543,11 +555,15 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Used for add prefix on new option select.
+         */
+        "newPrefix"?: string;
         "options"?: Array<Option>;
         /**
           * the value of the select.
          */
-        "value"?: any | null;
+        "value"?: string | null;
     }
     interface BdsSelectOption {
         /**
@@ -1204,7 +1220,11 @@ declare namespace LocalJSX {
          */
         "delimiters"?: RegExp;
         /**
-          * Indicated to pass an feeback to user.
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
          */
         "errorMessage"?: string;
         /**
@@ -1223,6 +1243,14 @@ declare namespace LocalJSX {
           * Emitted when the chip has added.
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsChangeChips"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsSubmit"?: (event: CustomEvent<any>) => void;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
@@ -1394,6 +1422,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
+         */
+        "errorMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -1401,6 +1437,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Used for add prefix on new option select.
+         */
+        "newPrefix"?: string;
         /**
           * Emitted when the select loses focus.
          */
@@ -1421,7 +1461,7 @@ declare namespace LocalJSX {
         /**
           * the value of the select.
          */
-        "value"?: any | null;
+        "value"?: string | null;
     }
     interface BdsSelectOption {
         /**
