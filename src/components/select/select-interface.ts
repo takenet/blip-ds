@@ -9,3 +9,5 @@ export interface Option {
 export interface SelectChangeEventDetail {
   value: any | any[] | undefined | null;
 }
+
+export type SelectType = 'text' | 'icon';

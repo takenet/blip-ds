@@ -32,6 +32,7 @@
  - [bds-icon-button](../icon-button)
  - [bds-input](../input)
  - [bds-input-password](../input-password)
+ - [bds-input-phone-number](../input-phone-number)
  - [bds-menu-list-item](../menu-list-item)
  - [bds-select](../select)
  - [bds-toast](../toast)
@@ -48,6 +49,7 @@ graph TD;
   bds-icon-button --> bds-icon
   bds-input --> bds-icon
   bds-input-password --> bds-icon
+  bds-input-phone-number --> bds-icon
   bds-menu-list-item --> bds-icon
   bds-select --> bds-icon
   bds-toast --> bds-icon

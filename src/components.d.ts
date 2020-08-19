@@ -14,9 +14,9 @@ import { IconSize, IconTheme } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
+import { Option, SelectChangeEventDetail } from "./components/select/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
-import { Option, SelectChangeEventDetail } from "./components/select/select-interface";
 import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
@@ -456,6 +456,29 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BdsInputPhoneNumber {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        "options"?: Array<Option>;
+        /**
+          * the value of the select.
+         */
+        "value"?: any | null;
+    }
     interface BdsLoadingSpinner {
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
@@ -710,6 +733,12 @@ declare global {
         prototype: HTMLBdsInputPasswordElement;
         new (): HTMLBdsInputPasswordElement;
     };
+    interface HTMLBdsInputPhoneNumberElement extends Components.BdsInputPhoneNumber, HTMLStencilElement {
+    }
+    var HTMLBdsInputPhoneNumberElement: {
+        prototype: HTMLBdsInputPhoneNumberElement;
+        new (): HTMLBdsInputPhoneNumberElement;
+    };
     interface HTMLBdsLoadingSpinnerElement extends Components.BdsLoadingSpinner, HTMLStencilElement {
     }
     var HTMLBdsLoadingSpinnerElement: {
@@ -792,6 +821,7 @@ declare global {
         "bds-input": HTMLBdsInputElement;
         "bds-input-chips": HTMLBdsInputChipsElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
+        "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
@@ -1250,6 +1280,45 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    interface BdsInputPhoneNumber {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is cancelled.
+         */
+        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        "options"?: Array<Option>;
+        /**
+          * the value of the select.
+         */
+        "value"?: any | null;
+    }
     interface BdsLoadingSpinner {
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
@@ -1447,6 +1516,7 @@ declare namespace LocalJSX {
         "bds-input": BdsInput;
         "bds-input-chips": BdsInputChips;
         "bds-input-password": BdsInputPassword;
+        "bds-input-phone-number": BdsInputPhoneNumber;
         "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
@@ -1479,6 +1549,7 @@ declare module "@stencil/core" {
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
+            "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;

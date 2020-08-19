@@ -29,6 +29,7 @@
  - [bds-checkbox](../checkbox)
  - [bds-counter-text](../counter-text)
  - [bds-input](../input)
+ - [bds-input-phone-number](../input-phone-number)
  - [bds-menu-list-item](../menu-list-item)
  - [bds-radio](../radio)
  - [bds-select-option](../select-option)
@@ -45,6 +46,7 @@ graph TD;
   bds-checkbox --> bds-typo
   bds-counter-text --> bds-typo
   bds-input --> bds-typo
+  bds-input-phone-number --> bds-typo
   bds-menu-list-item --> bds-typo
   bds-radio --> bds-typo
   bds-select-option --> bds-typo

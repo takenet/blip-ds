@@ -454,10 +454,11 @@ export class Input {
           onKeyDown={this.keyPressWrapper}
         >
           {this.renderIcon()}
+          <slot name="input-left"></slot>
           <div class="input__container">
             {this.renderLabel()}
             <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
-              <slot name="input-left"></slot>
+              <slot name="country-select-code"></slot>
               <Element
                 class={{ input__container__text: true, input__container__text__chips: this.chips }}
                 ref={(input) => (this.nativeInput = input)}

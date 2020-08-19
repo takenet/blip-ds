@@ -24,6 +24,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-input-phone-number](../input-phone-number)
+
 ### Depends on
 
 - [bds-typo](../typo)
@@ -32,6 +36,7 @@
 ```mermaid
 graph TD;
   bds-select-option --> bds-typo
+  bds-input-phone-number --> bds-select-option
   style bds-select-option fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
