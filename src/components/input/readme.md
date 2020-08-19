@@ -112,7 +112,7 @@ Type: `Promise<void>`
  - [bds-input-chips](../input-chips)
  - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
- - [bds-select](../select)
+ - [bds-select](../selects/select)
 
 ### Depends on
 

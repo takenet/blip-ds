@@ -1,5 +1,5 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
-import { Option, SelectChangeEventDetail } from '../select/select-interface';
+import { Option, SelectChangeEventDetail } from '../selects/select-interface';
 
 @Component({
   tag: 'bds-input-phone-number',
@@ -70,8 +70,6 @@ export class InputPhoneNumber {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
-
-    this.text = this.getText();
   }
 
   @Listen('mousedown', { target: 'window', passive: true })
@@ -86,13 +84,10 @@ export class InputPhoneNumber {
       option.selected = this.value === option.value;
       option.addEventListener('optionSelected', this.handler);
     }
-
-    this.text = this.getText();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     // eslint-disable-next-line no-console
-    console.log(this.el.shadowRoot.querySelectorAll('bds-select-option'));
     return Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option')); // !
   }
 
@@ -113,11 +108,6 @@ export class InputPhoneNumber {
     if (!this.disabled) {
       this.isOpen = !this.isOpen;
     }
-  };
-
-  private getText = (): string => {
-    const opt = this.childOptions.find((option) => option.value == this.value);
-    return opt ? opt.innerHTML : '';
   };
 
   private handler = (event: CustomEvent): void => {
@@ -182,7 +172,7 @@ export class InputPhoneNumber {
             <bds-icon size="medium" name={iconArrow} color="inherit"></bds-icon>
           </div>
           <div slot="country-select-code" class="select-phone-number__country-code">
-            <bds-typo variant="fs-14">+55</bds-typo>
+            <bds-typo variant="fs-14">{this.value}</bds-typo>
           </div>
         </bds-input>
         <div
@@ -191,8 +181,10 @@ export class InputPhoneNumber {
             'select-phone-number__options--open': this.isOpen,
           }}
         >
-          <bds-select-option value="faq">Brazil +55</bds-select-option>
-          <bds-select-option value="faq">Finn Wolfhard</bds-select-option>
+          <bds-select-option onOptionSelected={this.handler} value="+55">
+            Brazil +55
+          </bds-select-option>
+          <bds-select-option value="+250">Finn Wolfhard</bds-select-option>
         </div>
       </div>
     );

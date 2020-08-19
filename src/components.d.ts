@@ -14,7 +14,7 @@ import { IconSize, IconTheme } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
-import { Option, SelectChangeEventDetail } from "./components/select/select-interface";
+import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
@@ -351,6 +351,7 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsInputChips {
+        "add": (value: string) => Promise<void>;
         "chips": string[];
         /**
           * Clear all chips
@@ -365,13 +366,21 @@ export namespace Components {
          */
         "delimiters": RegExp;
         /**
-          * Indicated to pass an feeback to user.
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
          */
         "errorMessage"?: string;
         /**
           * Return the chips
          */
         "get": () => Promise<string[]>;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
         /**
           * Return the validity of the input chips.
          */
@@ -380,6 +389,8 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        "removeFocus": () => Promise<void>;
+        "setFocus": () => Promise<void>;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
@@ -542,15 +553,58 @@ export namespace Components {
          */
         "value"?: any | null;
     }
+    interface BdsSelectChips {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Used for add prefix on new option select.
+         */
+        "newPrefix"?: string;
+        "options"?: Array<Option>;
+        /**
+          * the value of the select.
+         */
+        "value"?: string | null;
+    }
     interface BdsSelectOption {
         /**
           * Quantity Description on option value, this item is locate to rigth in component.
          */
         "bulkOption"?: string;
         /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
           * If `true`, the user cannot interact with the select option.
          */
         "disabled"?: boolean;
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "invisible"?: boolean;
         /**
           * The text value of the option.
          */
@@ -775,6 +829,12 @@ declare global {
         prototype: HTMLBdsSelectElement;
         new (): HTMLBdsSelectElement;
     };
+    interface HTMLBdsSelectChipsElement extends Components.BdsSelectChips, HTMLStencilElement {
+    }
+    var HTMLBdsSelectChipsElement: {
+        prototype: HTMLBdsSelectChipsElement;
+        new (): HTMLBdsSelectChipsElement;
+    };
     interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {
     }
     var HTMLBdsSelectOptionElement: {
@@ -828,6 +888,7 @@ declare global {
         "bds-paper": HTMLBdsPaperElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-select": HTMLBdsSelectElement;
+        "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
@@ -1189,9 +1250,17 @@ declare namespace LocalJSX {
          */
         "delimiters"?: RegExp;
         /**
-          * Indicated to pass an feeback to user.
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
          */
         "errorMessage"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
         /**
           * label in input, with he the input size increases.
          */
@@ -1204,6 +1273,14 @@ declare namespace LocalJSX {
           * Emitted when the chip has added.
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsChangeChips"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsSubmit"?: (event: CustomEvent<any>) => void;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
@@ -1404,15 +1481,74 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface BdsSelectChips {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Do not accept duplicate chip elements.
+         */
+        "duplicated"?: boolean;
+        /**
+          * Indicated to pass an feedback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Used for add prefix on new option select.
+         */
+        "newPrefix"?: string;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is cancelled.
+         */
+        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        "options"?: Array<Option>;
+        /**
+          * the value of the select.
+         */
+        "value"?: string | null;
+    }
     interface BdsSelectOption {
         /**
           * Quantity Description on option value, this item is locate to rigth in component.
          */
         "bulkOption"?: string;
         /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
           * If `true`, the user cannot interact with the select option.
          */
         "disabled"?: boolean;
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "invisible"?: boolean;
         "onOptionSelected"?: (event: CustomEvent<any>) => void;
         /**
           * The text value of the option.
@@ -1523,6 +1659,7 @@ declare namespace LocalJSX {
         "bds-paper": BdsPaper;
         "bds-radio": BdsRadio;
         "bds-select": BdsSelect;
+        "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
@@ -1556,6 +1693,7 @@ declare module "@stencil/core" {
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
+            "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;

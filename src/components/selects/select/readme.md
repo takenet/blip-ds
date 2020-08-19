@@ -31,8 +31,8 @@
 
 ### Depends on
 
-- [bds-input](../input)
-- [bds-icon](../icon)
+- [bds-input](../../input)
+- [bds-icon](../../icon)
 
 ### Graph
 ```mermaid
