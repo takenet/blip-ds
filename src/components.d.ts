@@ -62,10 +62,6 @@ export namespace Components {
          */
         "bdsLoadingVariant": LoadingSpinnerVariant;
         /**
-          * If true, the text will be bold
-         */
-        "bold"?: boolean;
-        /**
           * If true, the base button will be disabled.
          */
         "disabled"?: boolean;
@@ -903,10 +899,6 @@ declare namespace LocalJSX {
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
-        /**
-          * If true, the text will be bold
-         */
-        "bold"?: boolean;
         /**
           * If true, the base button will be disabled.
          */
