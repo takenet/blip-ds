@@ -92,7 +92,7 @@ export class Input {
   /**
    * Indicated to pass a regex pattern to input
    */
-  @Prop() pattern?: string = '';
+  @Prop() pattern?: string;
 
   /**
    * Indicated to pass a help the user in complex filling.
