@@ -32,7 +32,9 @@
     "storybook:deploy": "storybook-to-ghpages -e .docs",
     "eslint": "eslint . --ext .jsx,.ts,.tsx",
     "semantic-release": "semantic-release",
-    "commit": "./node_modules/.bin/git-cz"
+    "commit": "./node_modules/.bin/git-cz",
+    "docz:dev": "wait-on http://localhost:3333/ && docz dev",
+    "docz:build": "docz build"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
@@ -71,7 +73,13 @@
     "tslint-react": "^4.2.0"
   },
   "dependencies": {
-    "blip-tokens": "^1.4.0"
+    "blip-tokens": "^1.4.0",
+    "concurrently": "^5.3.0",
+    "docz": "^2.3.1",
+    "docz-plugin-stencil": "^0.4.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "wait-on": "^5.2.0"
   },
   "repository": {
     "type": "git",
