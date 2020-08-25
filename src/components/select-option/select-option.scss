@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 $select-option-padding: 8px;
 $select-option-left: 12px;
@@ -13,25 +13,55 @@ $select-option-left: 12px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   outline: none;
 
-  &__value {
-    color: $color-neutral-dark-city;
+  ::slotted(bds-icon) {
+    margin-right: 10px;
   }
 
-  &__bulk {
-    color: $color-neutral-medium-cloud;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--value {
+      color: $color-neutral-dark-city;
+    }
+
+    &--bulk {
+      color: $color-neutral-medium-cloud;
+    }
+
+    &:hover > &--value,
+    &:hover > &--bulk {
+      background-color: $color-neutral-light-whisper;
+      color: $color-primary-main;
+    }
+
+    &:active > &--value,
+    &:active > &--bulk {
+      color: $color-primary-main;
+    }
+
+    &--selected > &--value,
+    &--selected > &--bulk {
+      color: $color-primary-main;
+    }
+
+    &--disabled,
+    &--disabled > &--value,
+    &--disabled > &--bulk {
+      &:hover {
+        background-color: $color-snow-white;
+      }
+
+      cursor: not-allowed;
+      color: $color-neutral-medium-silver;
+    }
   }
 
   &:hover {
     background-color: $color-neutral-light-whisper;
-  }
-
-  &:hover > &__value,
-  &:hover > &__bulk {
-    background-color: $color-neutral-light-whisper;
-    color: $color-primary-main;
   }
 
   &:focus {
@@ -39,29 +69,8 @@ $select-option-left: 12px;
     color: $color-primary-main;
   }
 
-  &:active > &__value,
-  &:active > &__bulk {
-    color: $color-primary-main;
-  }
-
   &--selected {
     background-color: $color-neutral-select-background;
-  }
-
-  &--selected > &__value,
-  &--selected > &__bulk {
-    color: $color-primary-main;
-  }
-
-  &--disabled,
-  &--disabled > &__value,
-  &--disabled > &__bulk {
-    &:hover {
-      background-color: $color-snow-white;
-    }
-
-    cursor: not-allowed;
-    color: $color-neutral-medium-silver;
   }
 
   &--invisible {

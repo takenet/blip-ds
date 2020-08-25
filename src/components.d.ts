@@ -317,6 +317,14 @@ export namespace Components {
          */
         "minlengthErrorMessage": string;
         /**
+          * Error message when the value isn't an email
+         */
+        "numberErrorMessage": string;
+        /**
+          * Indicated to pass a regex pattern to input
+         */
+        "pattern"?: string;
+        /**
           * A tip for the user who can enter no controls.
          */
         "placeholder"?: string;
@@ -484,7 +492,20 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Error message when input is required
+         */
+        "numberErrorMessage": string;
         "options"?: Array<Option>;
+        /**
+          * If `true`, the input value will be required.
+         */
+        "required": boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage": string;
+        "text"?: string;
         /**
           * the value of the select.
          */
@@ -1187,6 +1208,10 @@ declare namespace LocalJSX {
          */
         "minlengthErrorMessage"?: string;
         /**
+          * Error message when the value isn't an email
+         */
+        "numberErrorMessage"?: string;
+        /**
           * Emitted when the value has changed.
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
@@ -1210,6 +1235,10 @@ declare namespace LocalJSX {
           * Event input enter.
          */
         "onBdsSubmit"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicated to pass a regex pattern to input
+         */
+        "pattern"?: string;
         /**
           * A tip for the user who can enter no controls.
          */
@@ -1375,6 +1404,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Error message when input is required
+         */
+        "numberErrorMessage"?: string;
+        /**
           * Emitted when the select loses focus.
          */
         "onBdsBlur"?: (event: CustomEvent<void>) => void;
@@ -1391,6 +1424,15 @@ declare namespace LocalJSX {
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
         "options"?: Array<Option>;
+        /**
+          * If `true`, the input value will be required.
+         */
+        "required"?: boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage"?: string;
+        "text"?: string;
         /**
           * the value of the select.
          */

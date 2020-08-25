@@ -7,14 +7,18 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                   | Type       | Default  |
-| ---------- | ---------- | ------------------------------------------------------------- | ---------- | -------- |
-| `danger`   | `danger`   | Add state danger on input, use for use feedback.              | `boolean`  | `false`  |
-| `disabled` | `disabled` | Disabled input.                                               | `boolean`  | `false`  |
-| `icon`     | `icon`     | used for add icon in input left. Uses the bds-icon component. | `string`   | `''`     |
-| `label`    | `label`    | label in input, with he the input size increases.             | `string`   | `''`     |
-| `options`  | --         |                                                               | `Option[]` | `[]`     |
-| `value`    | `value`    | the value of the select.                                      | `any`      | `'user'` |
+| Property               | Attribute                | Description                                                   | Type       | Default          |
+| ---------------------- | ------------------------ | ------------------------------------------------------------- | ---------- | ---------------- |
+| `danger`               | `danger`                 | Add state danger on input, use for use feedback.              | `boolean`  | `false`          |
+| `disabled`             | `disabled`               | Disabled input.                                               | `boolean`  | `false`          |
+| `icon`                 | `icon`                   | used for add icon in input left. Uses the bds-icon component. | `string`   | `''`             |
+| `label`                | `label`                  | label in input, with he the input size increases.             | `string`   | `'Phone number'` |
+| `numberErrorMessage`   | `number-error-message`   | Error message when input is required                          | `string`   | `undefined`      |
+| `options`              | --                       |                                                               | `Option[]` | `[]`             |
+| `required`             | `required`               | If `true`, the input value will be required.                  | `boolean`  | `undefined`      |
+| `requiredErrorMessage` | `required-error-message` | Error message when input is required                          | `string`   | `undefined`      |
+| `text`                 | `text`                   |                                                               | `string`   | `''`             |
+| `value`                | `value`                  | the value of the select.                                      | `any`      | `'+55'`          |
 
 
 ## Events

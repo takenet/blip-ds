@@ -1,0 +1,858 @@
+{
+  "brazil-flag": {
+    "code": "+55",
+    "name": "Brasil"
+  },
+  "united-states-flag": {
+    "code": "+1",
+    "name": "Estados Unidos"
+  },
+  "afghanistan-flag": {
+    "code": "+93",
+    "name": "Afeganistão"
+  },
+  "south-africa-flag": {
+    "code": "+27",
+    "name": "África do Sul"
+  },
+  "albania-flag": {
+    "code": "+355",
+    "name": "Albânia"
+  },
+  "germany-flag": {
+    "code": "+49",
+    "name": "Alemanha"
+  },
+  "andorra-flag": {
+    "code": "+376",
+    "name": "Andorra"
+  },
+  "angola-flag": {
+    "code": "+244",
+    "name": "Angola"
+  },
+  "anguilla-flag": {
+    "code": "+1",
+    "name": "Anguilla"
+  },
+  "antigua-and-barbuda-flag": {
+    "code": "+1",
+    "name": "Antígua e Barbuda"
+  },
+  "saudi-arabia-flag": {
+    "code": "+966",
+    "name": "Arábia Saudita"
+  },
+  "algeria-flag": {
+    "code": "+213",
+    "name": "Argélia"
+  },
+  "argentina-flag": {
+    "code": "+54",
+    "name": "Argentina"
+  },
+  "armenia-flag": {
+    "code": "+374",
+    "name": "Armênia"
+  },
+  "aruba-flag": {
+    "code": "+297",
+    "name": "Aruba"
+  },
+  "australia-flag": {
+    "code": "+61",
+    "name": "Austrália"
+  },
+  "austria-flag": {
+    "code": "+43",
+    "name": "Áustria"
+  },
+  "azerbaijan-flag": {
+    "code": "+994",
+    "name": "Azerbaijão"
+  },
+  "bahamas-flag": {
+    "code": "+1",
+    "name": "Bahamas"
+  },
+  "bangladesh-flag": {
+    "code": "+880",
+    "name": "Bangladesh"
+  },
+  "barbados-flag": {
+    "code": "+1",
+    "name": "Barbados"
+  },
+  "bahrain-flag": {
+    "code": "+973",
+    "name": "Bahrein"
+  },
+  "belgium-flag": {
+    "code": "+32",
+    "name": "Bélgica"
+  },
+  "belize-flag": {
+    "code": "+501",
+    "name": "Belize"
+  },
+  "benin-flag": {
+    "code": "+229",
+    "name": "Benim"
+  },
+  "bermuda-flag": {
+    "code": "+1",
+    "name": "Bermudas"
+  },
+  "belarus-flag": {
+    "code": "+375",
+    "name": "Bielorrússia"
+  },
+  "bolivia-flag": {
+    "code": "+591",
+    "name": "Bolívia"
+  },
+  "bosnia-and-herzegovina-flag": {
+    "code": "+387",
+    "name": "Bósnia e Herzegovina"
+  },
+  "botswana-flag": {
+    "code": "+267",
+    "name": "Botswana"
+  },
+  "brunei-flag": {
+    "code": "+673",
+    "name": "Brunei"
+  },
+  "bulgaria-flag": {
+    "code": "+359",
+    "name": "Bulgária"
+  },
+  "burundi-flag": {
+    "code": "+257",
+    "name": "Burundi"
+  },
+  "bhutan-flag": {
+    "code": "+975",
+    "name": "Butão"
+  },
+  "cambodia-flag": {
+    "code": "+855",
+    "name": "Camboja"
+  },
+  "canada-flag": {
+    "code": "+1",
+    "name": "Canadá"
+  },
+  "kazakhstan-flag": {
+    "code": "+7",
+    "name": "Cazaquistão"
+  },
+  "chad-flag": {
+    "code": "+235",
+    "name": "Chade"
+  },
+  "chile-flag": {
+    "code": "+56",
+    "name": "Chile"
+  },
+  "china-flag": {
+    "code": "+86",
+    "name": "China"
+  },
+  "northern-cyprus-flag": {
+    "code": "+357",
+    "name": "Chipre"
+  },
+  "colombia-flag": {
+    "code": "+57",
+    "name": "Colômbia"
+  },
+  "comoros-flag": {
+    "code": "+269",
+    "name": "Comores"
+  },
+  "north-korea-flag": {
+    "code": "+850",
+    "name": "Coreia do Norte"
+  },
+  "south-korea-flag": {
+    "code": "+82",
+    "name": "Coreia do Sul"
+  },
+  "ivory-coast-flag": {
+    "code": "+225",
+    "name": "Costa do Marfim"
+  },
+  "costa-rica-flag": {
+    "code": "+506",
+    "name": "Costa Rica"
+  },
+  "croatia-flag": {
+    "code": "+385",
+    "name": "Croácia"
+  },
+  "cuba-flag": {
+    "code": "+53",
+    "name": "Cuba"
+  },
+  "denmark-flag": {
+    "code": "+45",
+    "name": "Dinamarca"
+  },
+  "djibouti-flag": {
+    "code": "+253",
+    "name": "Dijibuti"
+  },
+  "dominica-flag": {
+    "code": "+1",
+    "name": "Dominica"
+  },
+  "egypt-flag": {
+    "code": "+20",
+    "name": "Egito"
+  },
+  "el-salvador-flag": {
+    "code": "+503",
+    "name": "El Salvador"
+  },
+  "united-arab-emirates-flag": {
+    "code": "+971",
+    "name": "Emirados Árabes Unidos"
+  },
+  "ecuador-flag": {
+    "code": "+593",
+    "name": "Equador"
+  },
+  "eritrea-flag": {
+    "code": "+291",
+    "name": "Eritreia"
+  },
+  "slovakia-flag": {
+    "code": "+421",
+    "name": "Eslováquia"
+  },
+  "slovenia-flag": {
+    "code": "+386",
+    "name": "Eslovênia"
+  },
+  "spain-flag": {
+    "code": "+34",
+    "name": "Espanha"
+  },
+  "estonia-flag": {
+    "code": "+372",
+    "name": "Estônia"
+  },
+  "ethiopia-flag": {
+    "code": "+251",
+    "name": "Etiópia"
+  },
+  "fiji-flag": {
+    "code": "+679",
+    "name": "Fiji"
+  },
+  "philippines-flag": {
+    "code": "+63",
+    "name": "Filipinas"
+  },
+  "finland-flag": {
+    "code": "+358",
+    "name": "Finlândia"
+  },
+  "france-flag": {
+    "code": "+33",
+    "name": "França"
+  },
+  "gabon-flag": {
+    "code": "+241",
+    "name": "Gabão"
+  },
+  "gambia-flag": {
+    "code": "+220",
+    "name": "Gâmbia"
+  },
+  "ghana-flag": {
+    "code": "+233",
+    "name": "Ghana"
+  },
+  "georgia-flag": {
+    "code": "+995",
+    "name": "Geórgia"
+  },
+  "gibraltar-flag": {
+    "code": "+350",
+    "name": "Gibraltar"
+  },
+  "grenada-flag": {
+    "code": "+1",
+    "name": "Granada"
+  },
+  "greece-flag": {
+    "code": "+30",
+    "name": "Grécia"
+  },
+  "greenland-flag": {
+    "code": "+299",
+    "name": "Groenlândia"
+  },
+  "guam-flag": {
+    "code": "+671",
+    "name": "Guam"
+  },
+  "guatemala-flag": {
+    "code": "+502",
+    "name": "Guatemala"
+  },
+  "guinea-flag": {
+    "code": "+224",
+    "name": "Guiné"
+  },
+  "guinea-bissau-flag": {
+    "code": "+245",
+    "name": "Guiné-Bissau"
+  },
+  "haiti-flag": {
+    "code": "+509",
+    "name": "Haiti"
+  },
+  "netherlands-flag": {
+    "code": "+31",
+    "name": "Holanda"
+  },
+  "honduras-flag": {
+    "code": "+504",
+    "name": "Honduras"
+  },
+  "hong-kong-flag": {
+    "code": "+852",
+    "name": "Hong Kong"
+  },
+  "hungary-flag": {
+    "code": "+36",
+    "name": "Hungria"
+  },
+  "yemen-flag": {
+    "code": "+967",
+    "name": "Iêmen"
+  },
+  "cayman-islands-flag": {
+    "code": "+1",
+    "name": "Ilhas Cayman"
+  },
+  "christmas-island-flag": {
+    "code": "+672",
+    "name": "Ilha Christmas"
+  },
+  "cocos-island-flag": {
+    "code": "+672",
+    "name": "Ilhas Cocos"
+  },
+  "cook-islands-flag": {
+    "code": "+682",
+    "name": "Ilhas Cook"
+  },
+  "maldives-flag": {
+    "code": "+960",
+    "name": "Maldivas"
+  },
+  "northern-marianas-islands-flag": {
+    "code": "+1",
+    "name": "Ilhas Marianas do Norte"
+  },
+  "marshall-island-flag": {
+    "code": "+692",
+    "name": "Ilhas Marshall"
+  },
+  "norfolk-island-flag": {
+    "code": "+672",
+    "name": "Ilha Norfolk"
+  },
+  "solomon-islands-flag": {
+    "code": "+677",
+    "name": "Ilhas Salomão"
+  },
+  "virgin-islands-flag": {
+    "code": "+1",
+    "name": "Ilhas Virgens Americanas"
+  },
+  "british-virgin-islands-flag": {
+    "code": "+1",
+    "name": "Ilhas Virgens Britânicas"
+  },
+  "india-flag": {
+    "code": "+91",
+    "name": "Índia"
+  },
+  "indonesia-flag": {
+    "code": "+62",
+    "name": "Indonésia"
+  },
+  "iran-flag": {
+    "code": "+98",
+    "name": "Irã"
+  },
+  "iraq-flag": {
+    "code": "+964",
+    "name": "Iraque"
+  },
+  "ireland-flag": {
+    "code": "+353",
+    "name": "Irlanda"
+  },
+  "iceland-flag": {
+    "code": "+354",
+    "name": "Islândia"
+  },
+  "israel-flag": {
+    "code": "+972",
+    "name": "Israel"
+  },
+  "italy-flag": {
+    "code": "+39",
+    "name": "Itália"
+  },
+  "jamaica-flag": {
+    "code": "+1",
+    "name": "Jamaica"
+  },
+  "japan-flag": {
+    "code": "+81",
+    "name": "Japão"
+  },
+  "jordan-flag": {
+    "code": "+962",
+    "name": "Jordânia"
+  },
+  "kiribati-flag": {
+    "code": "+686",
+    "name": "Kiribati"
+  },
+  "kosovo-flag": {
+    "code": "+383",
+    "name": "Kosovo"
+  },
+  "kwait-flag": {
+    "code": "+965",
+    "name": "Kuwait"
+  },
+  "laos-flag": {
+    "code": "+856",
+    "name": "Laos"
+  },
+  "lesotho-flag": {
+    "code": "+266",
+    "name": "Lesoto"
+  },
+  "latvia-flag": {
+    "code": "+371",
+    "name": "Letônia"
+  },
+  "lebanon-flag": {
+    "code": "+961",
+    "name": "Líbano"
+  },
+  "liberia-flag": {
+    "code": "+231",
+    "name": "Libéria"
+  },
+  "libya-flag": {
+    "code": "+218",
+    "name": "Líbia"
+  },
+  "liechtenstein-flag": {
+    "code": "+237",
+    "name": "Liechtenstein"
+  },
+  "lithuania-flag": {
+    "code": "+370",
+    "name": "Lituânia"
+  },
+  "luxembourg-flag": {
+    "code": "+352",
+    "name": "Luxemburgo"
+  },
+  "macao-flag": {
+    "code": "+853",
+    "name": "Macau"
+  },
+  "republic-of-macedonia-flag": {
+    "code": "+389",
+    "name": "Macedônia"
+  },
+  "madagascar-flag": {
+    "code": "+261",
+    "name": "Madagascar"
+  },
+  "malasya-flag": {
+    "code": "+60",
+    "name": "Malásia"
+  },
+  "malawi-flag": {
+    "code": "+265",
+    "name": "Malawi"
+  },
+  "mali-flag": {
+    "code": "+223",
+    "name": "Mali"
+  },
+  "malta-flag": {
+    "code": "+356",
+    "name": "Malta"
+  },
+  "morocco-flag": {
+    "code": "+212",
+    "name": "Marrocos"
+  },
+  "martinique-flag": {
+    "code": "+596",
+    "name": "Martinica"
+  },
+  "mauritius-flag": {
+    "code": "+230",
+    "name": "Maurícia"
+  },
+  "mauritania-flag": {
+    "code": "+222",
+    "name": "Mauritânia"
+  },
+  "mexico-flag": {
+    "code": "+52",
+    "name": "México"
+  },
+  "micronesia-flag": {
+    "code": "+237",
+    "name": "Micronesia"
+  },
+  "mozambique-flag": {
+    "code": "+258",
+    "name": "Moçambique"
+  },
+  "moldova-flag": {
+    "code": "+373",
+    "name": "Moldávia"
+  },
+  "monaco-flag": {
+    "code": "+377",
+    "name": "Mônaco"
+  },
+  "mongolia-flag": {
+    "code": "+976",
+    "name": "Mongólia"
+  },
+  "montenegro-flag": {
+    "code": "+382",
+    "name": "Montenegro"
+  },
+  "montserrat-flag": {
+    "code": "+1",
+    "name": "Montserrat"
+  },
+  "myanmar-flag": {
+    "code": "+95",
+    "name": "Myanmar"
+  },
+  "namibia-flag": {
+    "code": "+264",
+    "name": "Namíbia"
+  },
+  "nauru-flag": {
+    "code": "+674",
+    "name": "Nauru"
+  },
+  "nepal-flag": {
+    "code": "+977",
+    "name": "Nepal"
+  },
+  "nicaragua-flag": {
+    "code": "+505",
+    "name": "Nicarágua"
+  },
+  "niger-flag": {
+    "code": "+227",
+    "name": "Níger"
+  },
+  "nigeria-flag": {
+    "code": "+234",
+    "name": "Nigéria"
+  },
+  "niue-flag": {
+    "code": "+683",
+    "name": "Niue"
+  },
+  "norway-flag": {
+    "code": "+47",
+    "name": "Noruega"
+  },
+  "new-zealand-flag": {
+    "code": "+64",
+    "name": "Nova Zelândia"
+  },
+  "oman-flag": {
+    "code": "+968",
+    "name": "Omã"
+  },
+  "palau-flag": {
+    "code": "+680",
+    "name": "Palau"
+  },
+  "palestine-flag": {
+    "code": "+970",
+    "name": "Palestina"
+  },
+  "panama-flag": {
+    "code": "+507",
+    "name": "Panamá"
+  },
+  "papua-new-guinea-flag": {
+    "code": "+675",
+    "name": "Papua-Nova Guiné"
+  },
+  "pakistan-flag": {
+    "code": "+92",
+    "name": "Paquistão"
+  },
+  "paraguay-flag": {
+    "code": "+595",
+    "name": "Paraguai"
+  },
+  "peru-flag": {
+    "code": "+51",
+    "name": "Peru"
+  },
+  "french-polynesia-flag": {
+    "code": "+689",
+    "name": "Polinésia Francesa"
+  },
+  "poland-flag": {
+    "code": "+48",
+    "name": "Polônia"
+  },
+  "puerto-rico-flag": {
+    "code": "+1",
+    "name": "Porto Rico"
+  },
+  "portugal-flag": {
+    "code": "+351",
+    "name": "Portugal"
+  },
+  "qatar-flag": {
+    "code": "+974",
+    "name": "Qatar"
+  },
+  "kenya-flag": {
+    "code": "+254",
+    "name": "Quênia"
+  },
+  "kyrgyzstan-flag": {
+    "code": "+996",
+    "name": "Quirguistão"
+  },
+  "united-kingdom-flag": {
+    "code": "+44",
+    "name": "Reino Unido"
+  },
+  "central-african-republic-flag": {
+    "code": "+236",
+    "name": "República Centro-Africana"
+  },
+  "dominican-republic-flag": {
+    "code": "+1",
+    "name": "República Dominicana"
+  },
+  "czech-republic-flag": {
+    "code": "+420",
+    "name": "República Tcheca"
+  },
+  "romania-flag": {
+    "code": "+40",
+    "name": "Romênia"
+  },
+  "rwanda-flag": {
+    "code": "+250",
+    "name": "Ruanda"
+  },
+  "russia-flag": {
+    "code": "+7",
+    "name": "Rússia"
+  },
+  "samoa-flag": {
+    "code": "+685",
+    "name": "Samoa"
+  },
+  "american-samoa-flag": {
+    "code": "+1",
+    "name": "Samoa Americana"
+  },
+  "st-lucia-flag": {
+    "code": "+1",
+    "name": "Santa Lúcia"
+  },
+  "saint-kitts-and-nevis-flag": {
+    "code": "+1",
+    "name": "São Cristóvão e Nevis"
+  },
+  "san-marino-flag": {
+    "code": "+378",
+    "name": "São Marinho"
+  },
+  "sao-tome-and-prince-flag": {
+    "code": "+239",
+    "name": "São Tomé e Príncipe"
+  },
+  "st-vincent-and-the-grenadines-flag": {
+    "code": "+1",
+    "name": "São Vicente e Granadinas"
+  },
+  "seychelles-flag": {
+    "code": "+248",
+    "name": "Seicheles"
+  },
+  "senegal-flag": {
+    "code": "+221",
+    "name": "Senegal"
+  },
+  "sierra-leone-flag": {
+    "code": "+232",
+    "name": "Serra Leoa"
+  },
+  "serbia-flag": {
+    "code": "+381",
+    "name": "Sérvia"
+  },
+  "singapore-flag": {
+    "code": "+65",
+    "name": "Singapura"
+  },
+  "syria-flag": {
+    "code": "+963",
+    "name": "Síria"
+  },
+  "somalia-flag": {
+    "code": "+252",
+    "name": "Somália"
+  },
+  "sri-lanka-flag": {
+    "code": "+94",
+    "name": "Sri Lanka"
+  },
+  "sudan-flag": {
+    "code": "+249",
+    "name": "Sudão"
+  },
+  "south-sudan-flag": {
+    "code": "+211",
+    "name": "Sudão do Sul"
+  },
+  "sweden-flag": {
+    "code": "+46",
+    "name": "Suécia"
+  },
+  "switzerland-flag": {
+    "code": "+41",
+    "name": "Suíça"
+  },
+  "suriname-flag": {
+    "code": "+597",
+    "name": "Suriname"
+  },
+  "tajikistan-flag": {
+    "code": "+992",
+    "name": "Tadjiquistão"
+  },
+  "thailand-flag": {
+    "code": "+66",
+    "name": "Tailândia"
+  },
+  "taiwan-flag": {
+    "code": "+886",
+    "name": "Taiwan"
+  },
+  "tanzania-flag": {
+    "code": "+255",
+    "name": "Tanzânia"
+  },
+  "british-indian-ocean-territory-flag": {
+    "code": "+246",
+    "name": "Território Britânico do Oceano Índico"
+  },
+  "east-timor-flag": {
+    "code": "+670",
+    "name": "Timor Leste"
+  },
+  "togo-flag": {
+    "code": "+228",
+    "name": "Togo"
+  },
+  "tokelau-flag": {
+    "code": "+690",
+    "name": "Tokelau"
+  },
+  "tonga-flag": {
+    "code": "+676",
+    "name": "Tonga"
+  },
+  "trinidad-and-tobago-flag": {
+    "code": "+1",
+    "name": "Trinidad e Tobago"
+  },
+  "tunisia-flag": {
+    "code": "+216",
+    "name": "Tunísia"
+  },
+  "turks-and-caicos-flag": {
+    "code": "+1",
+    "name": "Turcas e Caicos"
+  },
+  "turkmenistan-flag": {
+    "code": "+993",
+    "name": "Turquemenistão"
+  },
+  "turkey-flag": {
+    "code": "+90",
+    "name": "Turquia"
+  },
+  "tuvalu-flag": {
+    "code": "+638",
+    "name": "Tuvalu"
+  },
+  "ukraine-flag": {
+    "code": "+380",
+    "name": "Ucrânia"
+  },
+  "uganda-flag": {
+    "code": "+256",
+    "name": "Uganda"
+  },
+  "uruguay-flag": {
+    "code": "+598",
+    "name": "Uruguai"
+  },
+  "uzbekistn-flag": {
+    "code": "+998",
+    "name": "Uzbequistão"
+  },
+  "vanuatu-flag": {
+    "code": "+678",
+    "name": "Vanuatu"
+  },
+  "vatican-city-flag": {
+    "code": "+379",
+    "name": "Vaticano"
+  },
+  "venezuela-flag": {
+    "code": "+58",
+    "name": "Venezuela"
+  },
+  "vietnam-flag": {
+    "code": "+84",
+    "name": "Vietnã"
+  },
+  "zambia-flag": {
+    "code": "+260",
+    "name": "Zâmbia"
+  },
+  "zimbabwe-flag": {
+    "code": "+263",
+    "name": "Zimbábue"
+  }
+}

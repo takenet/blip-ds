@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } from '@stencil/core';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
-import { emailValidation } from '../../utils/validations';
+import { emailValidation, numberValidation } from '../../utils/validations';
 
 @Component({
   tag: 'bds-input',
@@ -89,6 +90,11 @@ export class Input {
   @Prop() required: boolean;
 
   /**
+   * Indicated to pass a regex pattern to input
+   */
+  @Prop() pattern?: string = '';
+
+  /**
    * Indicated to pass a help the user in complex filling.
    */
   @Prop() helperMessage?: string = '';
@@ -174,6 +180,11 @@ export class Input {
    * Error message when the value isn't an email
    */
   @Prop() emailErrorMessage: string;
+
+  /**
+   * Error message when the value isn't an email
+   */
+  @Prop() numberErrorMessage: string;
 
   /**
    * Internal prop to identify input chips
@@ -379,6 +390,7 @@ export class Input {
     (this.minlength || this.maxlength) && this.lengthValidation();
     (this.min || this.max) && this.minMaxValidation();
     this.type === 'email' && this.emailValidation();
+    this.type === 'phonenumber' && this.numberValidation();
     this.checkValidity();
   }
 
@@ -423,6 +435,13 @@ export class Input {
     }
   }
 
+  private numberValidation() {
+    if (numberValidation(this.nativeInput.value)) {
+      this.validationMesage = this.numberErrorMessage;
+      this.validationDanger = true;
+    }
+  }
+
   private checkValidity() {
     if (this.nativeInput.validity.valid) {
       this.validationDanger = false;
@@ -458,7 +477,7 @@ export class Input {
           <div class="input__container">
             {this.renderLabel()}
             <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
-              <slot name="country-select-code"></slot>
+              <slot name="inside-input-left"></slot>
               <Element
                 class={{ input__container__text: true, input__container__text__chips: this.chips }}
                 ref={(input) => (this.nativeInput = input)}
@@ -479,6 +498,7 @@ export class Input {
                 readOnly={this.readonly}
                 type={this.type}
                 value={this.value}
+                pattern={this.pattern}
                 required={this.required}
               ></Element>
             </div>

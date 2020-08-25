@@ -16,6 +16,7 @@ $select-options-max-height: 250px;
   outline: none;
 
   &__icon {
+    color: $color-neutral-medium-cloud;
     background-color: $color-primary-ghost;
     display: flex;
     align-items: center;

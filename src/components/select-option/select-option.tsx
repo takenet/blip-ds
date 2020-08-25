@@ -82,12 +82,15 @@ export class SelectOption {
           'select-option--invisible': this.invisible,
         }}
       >
-        <bds-typo class="select-option__value" variant="fs-14">
-          <slot />
-        </bds-typo>
-        <bds-typo class="select-option__bulk" variant="fs-10">
-          {this.bulkOption}
-        </bds-typo>
+        <slot name="input-left"></slot>
+        <div class="select-option__container">
+          <bds-typo class="select-option__container--value" variant="fs-14">
+            <slot />
+          </bds-typo>
+          <bds-typo class="select-option__container--bulk" variant="fs-10">
+            {this.bulkOption}
+          </bds-typo>
+        </div>
       </div>
     );
   }

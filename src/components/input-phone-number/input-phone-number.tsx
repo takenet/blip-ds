@@ -1,5 +1,6 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../selects/select-interface';
+import * as countriesJson from './countries.json';
 
 @Component({
   tag: 'bds-input-phone-number',
@@ -13,15 +14,17 @@ export class InputPhoneNumber {
 
   @State() isOpen? = false;
 
-  @State() text? = '';
+  @State() selectedCountry: string;
 
   @Prop() options?: Array<Option> = [];
+
+  @Prop() text? = '';
 
   /**
    * the value of the select.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ mutable: true }) value?: any | null = 'user';
+  @Prop({ mutable: true }) value?: any | null = '+55';
 
   /**
    * Add state danger on input, use for use feedback.
@@ -32,6 +35,21 @@ export class InputPhoneNumber {
    * Disabled input.
    */
   @Prop({ reflect: true }) disabled? = false;
+
+  /**
+   * If `true`, the input value will be required.
+   */
+  @Prop() required: boolean;
+
+  /**
+   * Error message when input is required
+   */
+  @Prop() requiredErrorMessage: string;
+
+  /**
+   * Error message when input is required
+   */
+  @Prop() numberErrorMessage: string;
 
   /**
    * Emitted when the value has changed.
@@ -56,16 +74,16 @@ export class InputPhoneNumber {
   /**
    *  label in input, with he the input size increases.
    */
-  @Prop() label? = '';
+  @Prop() label? = 'Phone number';
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
    */
   @Prop({ reflect: true }) icon?: string = '';
 
-  @Watch('value')
+  @Watch('text')
   valueChanged(): void {
-    this.bdsChange.emit({ value: this.value });
+    this.bdsChange.emit({ value: `${this.value}${this.text}` });
 
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
@@ -87,7 +105,6 @@ export class InputPhoneNumber {
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    // eslint-disable-next-line no-console
     return Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option')); // !
   }
 
@@ -114,7 +131,9 @@ export class InputPhoneNumber {
     const {
       detail: { value },
     } = event;
-    this.value = value;
+
+    this.value = value.code;
+    this.selectedCountry = value.flag;
     this.toggle();
   };
 
@@ -148,6 +167,9 @@ export class InputPhoneNumber {
 
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
+    const countries = countriesJson['default'];
+
+    const flagsNames = Object.keys(countries);
 
     return (
       <div
@@ -158,6 +180,11 @@ export class InputPhoneNumber {
         onKeyPress={this.keyPressWrapper}
       >
         <bds-input
+          type="phonenumber"
+          required={this.required}
+          requiredErrorMessage={this.requiredErrorMessage}
+          pattern="[0-9]*"
+          numberErrorMessage={this.numberErrorMessage}
           label={this.label}
           ref={this.refNativeInput}
           onFocus={this.onFocus}
@@ -165,13 +192,18 @@ export class InputPhoneNumber {
           value={this.text}
           danger={this.danger}
           disabled={this.disabled}
-          maxlength={11}
+          {...{ maxlength: this.value === '+55' ? 11 : null }}
         >
           <div slot="input-left" onClick={this.toggle} class="select-phone-number__icon">
-            <bds-icon size="xx-large" name={this.value} color="primary"></bds-icon>
-            <bds-icon size="medium" name={iconArrow} color="inherit"></bds-icon>
+            <bds-icon
+              size="xx-large"
+              theme="solid"
+              name={this.selectedCountry || flagsNames[0]}
+              color="primary"
+            ></bds-icon>
+            <bds-icon size="medium" name={iconArrow}></bds-icon>
           </div>
-          <div slot="country-select-code" class="select-phone-number__country-code">
+          <div slot="inside-input-left" class="select-phone-number__country-code">
             <bds-typo variant="fs-14">{this.value}</bds-typo>
           </div>
         </bds-input>
@@ -181,14 +213,14 @@ export class InputPhoneNumber {
             'select-phone-number__options--open': this.isOpen,
           }}
         >
-          <bds-select-option onOptionSelected={this.handler} value="+55">
-            Brazil +55
-          </bds-select-option>
-          <bds-select-option value="+250">Finn Wolfhard</bds-select-option>
+          {flagsNames.map((flag) => (
+            <bds-select-option key={flag} onOptionSelected={this.handler} value={{ code: countries[flag].code, flag }}>
+              <bds-icon slot="input-left" size="xx-large" theme="solid" name={flag} color="primary"></bds-icon>
+              {countries[flag].name} {countries[flag].code}
+            </bds-select-option>
+          ))}
         </div>
       </div>
     );
   }
 }
-
-// TODO: color icon, estilizar input
