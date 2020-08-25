@@ -179,14 +179,18 @@ export class SelectChips {
   };
 
   private filterOptions(term: string) {
+    if (!term) return;
+
     for (const option of this.childOptions) {
       const isExistsChip = this.existsChip(option.innerHTML, this.nativeInput.chips);
+      const optionTextLower = option.innerHTML.toLowerCase();
+      const termLower = term.toLowerCase();
 
-      if (term && option.innerHTML.includes(term) && !isExistsChip) {
+      if (term && optionTextLower.includes(termLower) && !isExistsChip) {
         option.removeAttribute('invisible');
       }
 
-      if (term && !option.innerHTML.includes(term) && !isExistsChip) {
+      if (term && !optionTextLower.includes(termLower) && !isExistsChip) {
         option.setAttribute('invisible', 'invisible');
       }
     }
