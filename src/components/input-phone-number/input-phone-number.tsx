@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../selects/select-interface';
 import * as countriesJson from './countries.json';
@@ -81,9 +82,10 @@ export class InputPhoneNumber {
    */
   @Prop({ reflect: true }) icon?: string = '';
 
-  @Watch('text')
+  @Watch('value')
   valueChanged(): void {
-    this.bdsChange.emit({ value: `${this.value}${this.text}` });
+    console.log(this.text);
+    this.bdsChange.emit({ value: this.text });
 
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;

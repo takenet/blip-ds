@@ -21,5 +21,16 @@
     </bds-input-phone-number>
   </body>
 
-  <script></script>
+  <script>
+    const traceChange = ({detail, target}) => {
+      const { value: coutryCode } = target;
+      const { value: phoneNumber } = detail;
+
+      console.log(`${coutryCode} ${phoneNumber}`);
+    }
+
+    const input = document.querySelector('bds-input-phone-number');
+
+    input.addEventListener('bdsChange', traceChange);
+  </script>
 </html>
