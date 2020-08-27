@@ -527,6 +527,7 @@ export namespace Components {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        "chips": string[];
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -1405,6 +1406,7 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        "chips"?: string[];
         /**
           * Add state danger on input, use for use feedback.
          */

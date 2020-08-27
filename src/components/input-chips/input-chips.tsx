@@ -6,7 +6,7 @@ import { InputChipsTypes } from './input-chips-interface';
 @Component({
   tag: 'bds-input-chips',
   styleUrl: 'input-chips.scss',
-  shadow: true,
+  scoped: true,
 })
 export class InputChips {
   private nativeInput?: HTMLBdsInputElement;
@@ -276,6 +276,9 @@ export class InputChips {
           chips={true}
         >
           <span slot="input-left">{this.renderChips()}</span>
+          <div slot="input-right">
+            <slot name="input-right"></slot>
+          </div>
         </bds-input>
       </Host>
     );
