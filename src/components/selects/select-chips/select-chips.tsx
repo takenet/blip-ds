@@ -1,11 +1,10 @@
-/* eslint-disable no-console */
 import { Component, h, State, Prop, EventEmitter, Event, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../select-interface';
 
 @Component({
   tag: 'bds-select-chips',
   styleUrl: '../select.scss',
-  shadow: true,
+  scoped: true,
 })
 export class SelectChips {
   private nativeInput?: HTMLBdsInputChipsElement;
@@ -17,6 +16,8 @@ export class SelectChips {
   @State() text? = '';
 
   @Prop() options?: Array<Option> = [];
+
+  @Prop({ mutable: true }) chips: string[] = [];
 
   /**
    * Used for add prefix on new option select.
@@ -91,12 +92,17 @@ export class SelectChips {
     }
   }
 
+  componentDidLoad() {
+    this.resetFilterOptions();
+  }
+
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('*'));
+    return Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add)'));
   }
 
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('*:not([invisible])'));
+    const queryElements = 'bds-select-option:not([invisible]) + bds-select-option:not(#option-add)';
+    return Array.from(this.el.querySelectorAll(queryElements));
   }
 
   private enableCreateOption(): boolean {
@@ -118,9 +124,16 @@ export class SelectChips {
   };
 
   private handler = async (event: CustomEvent) => {
-    const { target } = event;
-    const text = (target as HTMLBdsSelectOptionElement).innerHTML;
+    const {
+      detail: { value },
+    } = event;
+    const text = this.getText(value);
     await this.addChip(text);
+  };
+
+  private getText = (value: string) => {
+    const el: HTMLBdsSelectOptionElement = this.childOptions.find((option) => option.value === value);
+    return el.innerText;
   };
 
   private handlerNewOption = async (text: string) => {
@@ -179,12 +192,16 @@ export class SelectChips {
   };
 
   private filterOptions(term: string) {
-    if (!term) return;
+    if (!term) term = '';
 
     for (const option of this.childOptions) {
-      const isExistsChip = this.existsChip(option.innerHTML, this.nativeInput.chips);
-      const optionTextLower = option.innerHTML.toLowerCase();
+      const isExistsChip = this.existsChip(option.innerText, this.nativeInput.chips);
+      const optionTextLower = option.innerText.toLowerCase();
       const termLower = term.toLowerCase();
+
+      if (isExistsChip) {
+        option.setAttribute('invisible', 'invisible');
+      }
 
       if (term && optionTextLower.includes(termLower) && !isExistsChip) {
         option.removeAttribute('invisible');
@@ -198,7 +215,8 @@ export class SelectChips {
 
   private resetFilterOptions() {
     for (const option of this.childOptions) {
-      if (this.existsChip(option.innerHTML, this.nativeInput.chips)) {
+      const optionText = option.querySelector('bds-typo').innerHTML;
+      if (this.existsChip(optionText, this.nativeInput.chips)) {
         option.setAttribute('invisible', 'invisible');
       } else {
         option.removeAttribute('invisible');
@@ -232,6 +250,7 @@ export class SelectChips {
           onClick={this.toggle}
           danger={this.danger}
           error-message={this.errorMessage}
+          chips={this.chips}
           duplicated={this.duplicated}
         >
           <div slot="input-right" class="select__icon">
@@ -246,7 +265,7 @@ export class SelectChips {
         >
           <slot />
           {this.enableCreateOption() && (
-            <bds-select-option value="add" onClick={() => this.handlerNewOption(this.text)}>
+            <bds-select-option id="option-add" value="add" onClick={() => this.handlerNewOption(this.text)}>
               {this.newPrefix}
               {this.text}
             </bds-select-option>

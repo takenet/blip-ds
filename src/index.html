@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Blip DS</title>
 
-    <script type="module" src="/build/blip-ds.esm.js"></script>
-    <script nomodule src="/build/blip-ds.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-  </head>
-  <style>
-    body {
-      /* background: #f5f8f9; */
-      background: #0a0f1a;
-      color: #f0f0f0;
-    }
-  </style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Blip DS</title>
 
-  <body>
-    <bds-button>Button label</bds-button>
-  </body>
+  <script type="module" src="/build/blip-ds.esm.js"></script>
+  <script nomodule src="/build/blip-ds.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+</head>
+<style>
+  body {
+    /* background: #f5f8f9; */
+    background: #0a0f1a;
+    color: #f0f0f0;
+  }
+</style>
 
-  <script>
-  </script>
+<body>
+  <bds-select-chips id="chips-teams" label="Times" error-message="aaaaa" new-prefix="Create: ">
+    <!-- <bds-select-option ng-repeat="team in $ctrl.teams track by team.name" value="{{team.name}}">
+        {{team.name}}
+    </bds-select-option> -->
+    <bds-select-option value="1">A</bds-select-option>
+    <bds-select-option value="2">B</bds-select-option>
+  </bds-select-chips>
+</body>
+
+<script>
+  const data = ['Default', 'A'];
+  document.querySelector('bds-select-chips').chips = data;
+
+</script>
+
 </html>

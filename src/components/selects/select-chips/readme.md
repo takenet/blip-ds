@@ -9,6 +9,7 @@
 
 | Property       | Attribute       | Description                                                   | Type       | Default |
 | -------------- | --------------- | ------------------------------------------------------------- | ---------- | ------- |
+| `chips`        | --              |                                                               | `string[]` | `[]`    |
 | `danger`       | `danger`        | Add state danger on input, use for use feedback.              | `boolean`  | `false` |
 | `disabled`     | `disabled`      | Disabled input.                                               | `boolean`  | `false` |
 | `duplicated`   | `duplicated`    | Do not accept duplicate chip elements.                        | `boolean`  | `false` |
