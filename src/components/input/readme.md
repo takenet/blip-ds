@@ -30,12 +30,14 @@
 | `minErrorMessage`       | `min-error-message`       | Error message when the value is lower than the min value                                                                                                                         | `string`                                                              | `undefined` |
 | `minlength`             | `minlength`               | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter. | `number`                                                              | `undefined` |
 | `minlengthErrorMessage` | `minlength-error-message` | Error message when the value is lower than the minlength                                                                                                                         | `string`                                                              | `undefined` |
+| `numberErrorMessage`    | `number-error-message`    | Error message when the value isn't an email                                                                                                                                      | `string`                                                              | `undefined` |
+| `pattern`               | `pattern`                 | Indicated to pass a regex pattern to input                                                                                                                                       | `string`                                                              | `undefined` |
 | `placeholder`           | `placeholder`             | A tip for the user who can enter no controls.                                                                                                                                    | `string`                                                              | `''`        |
 | `readonly`              | `readonly`                | If `true`, the user cannot modify the value.                                                                                                                                     | `boolean`                                                             | `false`     |
 | `required`              | `required`                | If `true`, the input value will be required.                                                                                                                                     | `boolean`                                                             | `undefined` |
 | `requiredErrorMessage`  | `required-error-message`  | Error message when input is required                                                                                                                                             | `string`                                                              | `undefined` |
 | `rows`                  | `rows`                    | The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.      | `number`                                                              | `1`         |
-| `type`                  | `type`                    | Input type. Can be one of: "text", "password", "number" or "email".                                                                                                              | `"email" \| "number" \| "password" \| "text"`                         | `'text'`    |
+| `type`                  | `type`                    | Input type. Can be one of: "text", "password", "number" or "email".                                                                                                              | `"email" \| "number" \| "password" \| "phonenumber" \| "text"`        | `'text'`    |
 | `value`                 | `value`                   | The value of the input.                                                                                                                                                          | `string`                                                              | `''`        |
 
 
@@ -111,6 +113,7 @@ Type: `Promise<void>`
 
  - [bds-input-chips](../input-chips)
  - [bds-input-password](../input-password)
+ - [bds-input-phone-number](../input-phone-number)
  - [bds-select](../selects/select)
 
 ### Depends on
@@ -128,6 +131,7 @@ graph TD;
   bds-counter-text --> bds-typo
   bds-input-chips --> bds-input
   bds-input-password --> bds-input
+  bds-input-phone-number --> bds-input
   bds-select --> bds-input
   style bds-input fill:#f9f,stroke:#333,stroke-width:4px
 ```

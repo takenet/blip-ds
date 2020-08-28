@@ -8,13 +8,26 @@ $select-options-max-height: 250px;
   display: block;
 }
 
-.select {
+.select-phone-number {
+  display: flex;
+  border-radius: 8px;
   position: relative;
+  cursor: pointer;
   outline: none;
 
   &__icon {
     color: $color-neutral-medium-cloud;
+    background-color: $color-primary-ghost;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 15%;
+    padding-right: 10px;
+  }
+
+  &__country-code {
+    color: $color-neutral-medium-cloud;
+    padding-right: 5px;
   }
 
   &__options {
@@ -35,10 +48,7 @@ $select-options-max-height: 250px;
     transition: transform 0.25s, opacity 0.75s, visibility 0.75s;
     transform-origin: top left;
     transform: scaleY(0);
-    visibility: hidden;
     opacity: 0;
-
-    box-shadow: 0px 2px 12px $shadow-drop;
 
     &--open {
       visibility: visible;
@@ -47,3 +57,4 @@ $select-options-max-height: 250px;
     }
   }
 }
+

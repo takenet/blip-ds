@@ -1,5 +1,5 @@
 import { CounterTextRule } from '../counter-text/counter-text-interface';
-export type InputType = 'text' | 'password' | 'email' | 'number';
+export type InputType = 'text' | 'password' | 'email' | 'number' | 'phonenumber';
 
 export type InputAutocapitalize = 'off' | 'none' | 'words' | 'on' | 'sentences' | 'characters';
 

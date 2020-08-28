@@ -14,9 +14,9 @@ import { IconSize, IconTheme } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
+import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
-import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
@@ -313,6 +313,14 @@ export namespace Components {
          */
         "minlengthErrorMessage": string;
         /**
+          * Error message when the value isn't an email
+         */
+        "numberErrorMessage": string;
+        /**
+          * Indicated to pass a regex pattern to input
+         */
+        "pattern"?: string;
+        /**
           * A tip for the user who can enter no controls.
          */
         "placeholder"?: string;
@@ -462,6 +470,48 @@ export namespace Components {
           * The value of the input.
          */
         "value"?: string | null;
+    }
+    interface BdsInputPhoneNumber {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Error message when input is required
+         */
+        "numberErrorMessage": string;
+        /**
+          * The options of select.
+         */
+        "options"?: Array<Option>;
+        /**
+          * If `true`, the input value will be required.
+         */
+        "required": boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage": string;
+        /**
+          * The value of the phone number input.
+         */
+        "text"?: string;
+        /**
+          * the value of the select.
+         */
+        "value"?: any | null;
     }
     interface BdsLoadingSpinner {
         /**
@@ -765,6 +815,12 @@ declare global {
         prototype: HTMLBdsInputPasswordElement;
         new (): HTMLBdsInputPasswordElement;
     };
+    interface HTMLBdsInputPhoneNumberElement extends Components.BdsInputPhoneNumber, HTMLStencilElement {
+    }
+    var HTMLBdsInputPhoneNumberElement: {
+        prototype: HTMLBdsInputPhoneNumberElement;
+        new (): HTMLBdsInputPhoneNumberElement;
+    };
     interface HTMLBdsLoadingSpinnerElement extends Components.BdsLoadingSpinner, HTMLStencilElement {
     }
     var HTMLBdsLoadingSpinnerElement: {
@@ -853,6 +909,7 @@ declare global {
         "bds-input": HTMLBdsInputElement;
         "bds-input-chips": HTMLBdsInputChipsElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
+        "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
@@ -1154,6 +1211,10 @@ declare namespace LocalJSX {
          */
         "minlengthErrorMessage"?: string;
         /**
+          * Error message when the value isn't an email
+         */
+        "numberErrorMessage"?: string;
+        /**
           * Emitted when the value has changed.
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
@@ -1177,6 +1238,10 @@ declare namespace LocalJSX {
           * Event input enter.
          */
         "onBdsSubmit"?: (event: CustomEvent<any>) => void;
+        /**
+          * Indicated to pass a regex pattern to input
+         */
+        "pattern"?: string;
         /**
           * A tip for the user who can enter no controls.
          */
@@ -1323,6 +1388,64 @@ declare namespace LocalJSX {
           * The value of the input.
          */
         "value"?: string | null;
+    }
+    interface BdsInputPhoneNumber {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Error message when input is required
+         */
+        "numberErrorMessage"?: string;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is cancelled.
+         */
+        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsPhoneNumberChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * The options of select.
+         */
+        "options"?: Array<Option>;
+        /**
+          * If `true`, the input value will be required.
+         */
+        "required"?: boolean;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * The value of the phone number input.
+         */
+        "text"?: string;
+        /**
+          * the value of the select.
+         */
+        "value"?: any | null;
     }
     interface BdsLoadingSpinner {
         /**
@@ -1581,6 +1704,7 @@ declare namespace LocalJSX {
         "bds-input": BdsInput;
         "bds-input-chips": BdsInputChips;
         "bds-input-password": BdsInputPassword;
+        "bds-input-phone-number": BdsInputPhoneNumber;
         "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
@@ -1614,6 +1738,7 @@ declare module "@stencil/core" {
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
+            "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
