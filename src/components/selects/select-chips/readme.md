@@ -31,6 +31,19 @@
 | `bdsFocus`  | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
 
 
+## Methods
+
+### `isValid() => Promise<boolean>`
+
+Return the validity of the input chips.
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
+
+
 ## Dependencies
 
 ### Depends on

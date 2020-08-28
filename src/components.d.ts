@@ -549,6 +549,10 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * Return the validity of the input chips.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
