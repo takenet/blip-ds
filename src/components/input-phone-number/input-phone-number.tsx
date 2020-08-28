@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../selects/select-interface';
 import * as countriesJson from './countries.json';
@@ -6,7 +5,7 @@ import * as countriesJson from './countries.json';
 @Component({
   tag: 'bds-input-phone-number',
   styleUrl: 'input-phone-number.scss',
-  shadow: true,
+  scoped: true,
 })
 export class InputPhoneNumber {
   private nativeInput?: HTMLBdsInputElement;
@@ -55,7 +54,7 @@ export class InputPhoneNumber {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsChange!: EventEmitter<SelectChangeEventDetail>;
+  @Event() bdsPhoneNumberChange!: EventEmitter<SelectChangeEventDetail>;
 
   /**
    * Emitted when the selection is cancelled.
@@ -84,8 +83,7 @@ export class InputPhoneNumber {
 
   @Watch('value')
   valueChanged(): void {
-    console.log(this.text);
-    this.bdsChange.emit({ value: this.text });
+    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value });
 
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
@@ -107,7 +105,7 @@ export class InputPhoneNumber {
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option')); // !
+    return Array.from(this.el.querySelectorAll('bds-select-option'));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -121,6 +119,17 @@ export class InputPhoneNumber {
 
   private onBlur = (): void => {
     this.bdsBlur.emit();
+  };
+
+  private handleInputChange = (event: CustomEvent): void => {
+    const {
+      detail: { value },
+    } = event;
+
+    this.text = value;
+
+    event.preventDefault();
+    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value });
   };
 
   private toggle = (): void => {
@@ -189,6 +198,7 @@ export class InputPhoneNumber {
           numberErrorMessage={this.numberErrorMessage}
           label={this.label}
           ref={this.refNativeInput}
+          onBdsChange={this.handleInputChange}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           value={this.text}

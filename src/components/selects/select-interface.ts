@@ -8,6 +8,7 @@ export interface Option {
 
 export interface SelectChangeEventDetail {
   value: any | any[] | undefined | null;
+  code?: string;
 }
 
 export type SelectType = 'text' | 'icon';

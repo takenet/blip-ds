@@ -1416,13 +1416,13 @@ declare namespace LocalJSX {
          */
         "onBdsCancel"?: (event: CustomEvent<void>) => void;
         /**
-          * Emitted when the value has changed.
-         */
-        "onBdsChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
-        /**
           * Emitted when the select loses focus.
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsPhoneNumberChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
         "options"?: Array<Option>;
         /**
           * If `true`, the input value will be required.
