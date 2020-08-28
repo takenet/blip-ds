@@ -62,10 +62,6 @@ export namespace Components {
          */
         "bdsLoadingVariant": LoadingSpinnerVariant;
         /**
-          * If true, the text will be bold
-         */
-        "bold"?: boolean;
-        /**
           * If true, the base button will be disabled.
          */
         "disabled"?: boolean;
@@ -575,6 +571,7 @@ export namespace Components {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        "chips": string[];
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -595,6 +592,10 @@ export namespace Components {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Return the validity of the input chips.
+         */
+        "isValid": () => Promise<boolean>;
         /**
           * label in input, with he the input size increases.
          */
@@ -954,10 +955,6 @@ declare namespace LocalJSX {
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
-        /**
-          * If true, the text will be bold
-         */
-        "bold"?: boolean;
         /**
           * If true, the base button will be disabled.
          */
@@ -1524,6 +1521,7 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        "chips"?: string[];
         /**
           * Add state danger on input, use for use feedback.
          */

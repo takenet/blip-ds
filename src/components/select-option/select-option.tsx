@@ -4,7 +4,7 @@ import { Keyboard } from '../../utils/enums';
 @Component({
   tag: 'bds-select-option',
   styleUrl: 'select-option.scss',
-  shadow: true,
+  scoped: true,
 })
 export class SelectOption {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
