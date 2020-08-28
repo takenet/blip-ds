@@ -11,9 +11,9 @@ export class SelectChips {
 
   @Element() el!: HTMLElement;
 
-  @State() isOpen?= false;
+  @State() isOpen? = false;
 
-  @State() text?= '';
+  @State() text? = '';
 
   @Prop() options?: Array<Option> = [];
 
@@ -32,17 +32,17 @@ export class SelectChips {
   /**
    * Add state danger on input, use for use feedback.
    */
-  @Prop({ reflect: true, mutable: true }) danger?= false;
+  @Prop({ reflect: true, mutable: true }) danger? = false;
 
   /**
    * Indicated to pass an feedback to user.
    */
-  @Prop({ mutable: true }) errorMessage?= '';
+  @Prop({ mutable: true }) errorMessage? = '';
 
   /**
    * Disabled input.
    */
-  @Prop({ reflect: true }) disabled?= false;
+  @Prop({ reflect: true }) disabled? = false;
 
   /**
    * Emitted when the value has changed.
@@ -67,7 +67,7 @@ export class SelectChips {
   /**
    *  label in input, with he the input size increases.
    */
-  @Prop() label?= '';
+  @Prop() label? = '';
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
