@@ -9,6 +9,7 @@
 
 | Property       | Attribute       | Description                                                   | Type       | Default |
 | -------------- | --------------- | ------------------------------------------------------------- | ---------- | ------- |
+| `chips`        | --              |                                                               | `string[]` | `[]`    |
 | `danger`       | `danger`        | Add state danger on input, use for use feedback.              | `boolean`  | `false` |
 | `disabled`     | `disabled`      | Disabled input.                                               | `boolean`  | `false` |
 | `duplicated`   | `duplicated`    | Do not accept duplicate chip elements.                        | `boolean`  | `false` |
@@ -28,6 +29,19 @@
 | `bdsCancel` | Emitted when the selection is cancelled. | `CustomEvent<void>`                    |
 | `bdsChange` | Emitted when the value has changed.      | `CustomEvent<SelectChangeEventDetail>` |
 | `bdsFocus`  | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
+
+
+## Methods
+
+### `isValid() => Promise<boolean>`
+
+Return the validity of the input chips.
+
+#### Returns
+
+Type: `Promise<boolean>`
+
+
 
 
 ## Dependencies

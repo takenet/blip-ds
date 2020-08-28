@@ -43,11 +43,6 @@ export class Button {
   @Prop() arrow?: boolean = false;
 
   /**
-   * If true, the text will be bold
-   */
-  @Prop() bold?: boolean = false;
-
-  /**
    * The type of the button. Can be one of:
    * 'button', 'submit', 'reset';
    */
@@ -87,7 +82,7 @@ export class Button {
           hide: this.bdsLoading && true,
         }}
       >
-        <bds-typo variant="fs-14" lineHeight="simple" bold={this.bold ? 'bold' : 'regular'}>
+        <bds-typo variant="fs-14" lineHeight="simple" bold="bold">
           <slot></slot>
         </bds-typo>
       </div>
