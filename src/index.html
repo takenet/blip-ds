@@ -17,5 +17,23 @@
   </style>
 
   <body>
+    <bds-input-phone-number required required-error-message="required amigao" number-error-message="so numero amigao">
+    </bds-input-phone-number>
   </body>
+
+  <script>
+    const traceChange = (event) => {
+      // const { value: coutryCode } = target;
+      // const { value: phoneNumber } = detail;
+      console.log(event);
+      const coutryCode = event.detail.code;
+      const phoneNumber = event.detail.value;
+
+      console.log(`${coutryCode} ${phoneNumber}`);
+    }
+
+    const input = document.querySelector('bds-input-phone-number');
+
+    input.addEventListener('bdsPhoneNumberChange', traceChange);
+  </script>
 </html>

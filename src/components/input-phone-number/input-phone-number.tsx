@@ -16,8 +16,14 @@ export class InputPhoneNumber {
 
   @State() selectedCountry: string;
 
+  /**
+   * The options of select.
+   */
   @Prop() options?: Array<Option> = [];
 
+  /**
+   * The value of the phone number input.
+   */
   @Prop() text? = '';
 
   /**
@@ -108,8 +114,7 @@ export class InputPhoneNumber {
     return Array.from(this.el.querySelectorAll('bds-select-option'));
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private refNativeInput = (el: any): void => {
+  private refNativeInput = (el: HTMLBdsInputElement): void => {
     this.nativeInput = el;
   };
 

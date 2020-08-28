@@ -496,6 +496,9 @@ export namespace Components {
           * Error message when input is required
          */
         "numberErrorMessage": string;
+        /**
+          * The options of select.
+         */
         "options"?: Array<Option>;
         /**
           * If `true`, the input value will be required.
@@ -505,6 +508,9 @@ export namespace Components {
           * Error message when input is required
          */
         "requiredErrorMessage": string;
+        /**
+          * The value of the phone number input.
+         */
         "text"?: string;
         /**
           * the value of the select.
@@ -1423,6 +1429,9 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onBdsPhoneNumberChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * The options of select.
+         */
         "options"?: Array<Option>;
         /**
           * If `true`, the input value will be required.
@@ -1432,6 +1441,9 @@ declare namespace LocalJSX {
           * Error message when input is required
          */
         "requiredErrorMessage"?: string;
+        /**
+          * The value of the phone number input.
+         */
         "text"?: string;
         /**
           * the value of the select.

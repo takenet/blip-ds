@@ -50,8 +50,6 @@ $select-options-max-height: 250px;
     transform: scaleY(0);
     opacity: 0;
 
-    box-shadow: 0px 2px 12px $shadow-drop;
-
     &--open {
       visibility: visible;
       transform: scale(1);
