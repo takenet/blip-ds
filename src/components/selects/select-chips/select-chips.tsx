@@ -15,7 +15,7 @@ export class SelectChips {
 
   @State() text? = '';
 
-  @Prop() options?: Array<Option> = [];
+  @Prop({ mutable: true }) options?: Array<Option> = [];
 
   @Prop({ mutable: true }) chips: string[] = [];
 
@@ -271,6 +271,12 @@ export class SelectChips {
             'select__options--open': this.isOpen,
           }}
         >
+          {this.options.length &&
+            this.options.map((option, index) => (
+              <bds-select-option key={`option-${index}`} onOptionSelected={this.handler} value={option.value}>
+                {option.label}
+              </bds-select-option>
+            ))}
           <slot />
           {this.enableCreateOption() && (
             <bds-select-option id="option-add" value="add" onClick={() => this.handlerNewOption(this.text)}>
