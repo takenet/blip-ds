@@ -275,7 +275,7 @@ export class InputChips {
           danger={this.danger}
           chips={true}
         >
-          <span slot="input-left">{this.renderChips()}</span>
+          <span slot="inside-input-left">{this.renderChips()}</span>
           <div slot="input-right">
             <slot name="input-right"></slot>
           </div>
