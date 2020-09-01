@@ -10,7 +10,7 @@ describe('bds-input-chips', () => {
     expect(page.root).toEqualHtml(`
       <bds-input-chips icon="" value="">
         <bds-input chips="" error-message="" icon="" is-submit="" label="" value="">
-          <span slot="input-left"></span>
+          <span slot="inside-input-left"></span>
           <div slot="input-right"></div>
         </bds-input>
       </bds-input-chips>
