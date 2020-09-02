@@ -55,6 +55,11 @@ export class InputChips {
   @Prop() duplicated?: boolean = true;
 
   /**
+   * If `true`, the user cannot modify the value.
+   */
+  @Prop() disableSubmit = false;
+
+  /**
    * Emitted when the chip has added.
    */
   @Event() bdsChange!: EventEmitter;
@@ -135,6 +140,10 @@ export class InputChips {
   }
 
   private handleAddChip(event: CustomEvent<{ value: string }>): void {
+    if (this.disableSubmit) {
+      return;
+    }
+
     const {
       detail: { value },
     } = event;
@@ -203,7 +212,7 @@ export class InputChips {
 
   private setChip(name: string) {
     if (!this.duplicated) {
-      const exists = this.chips.some((chip) => chip === name);
+      const exists = this.chips.some((chip) => chip.toLowerCase() === name.toLowerCase());
       if (exists) return;
     }
 
@@ -269,7 +278,6 @@ export class InputChips {
           onBdsSubmit={(event) => this.handleAddChip(event)}
           onBdsOnBlur={() => this.handleOnBlur()}
           onBdsChange={(event) => this.handleChange(event)}
-          is-submit
           value={this.value}
           error-message={this.errorMessage}
           danger={this.danger}

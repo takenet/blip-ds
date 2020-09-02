@@ -370,6 +370,10 @@ export namespace Components {
          */
         "delimiters": RegExp;
         /**
+          * If `true`, the user cannot modify the value.
+         */
+        "disableSubmit": boolean;
+        /**
           * Do not accept duplicate chip elements.
          */
         "duplicated"?: boolean;
@@ -1281,6 +1285,10 @@ declare namespace LocalJSX {
           * The delimiter is used to add multiple chips in the same string.
          */
         "delimiters"?: RegExp;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "disableSubmit"?: boolean;
         /**
           * Do not accept duplicate chip elements.
          */

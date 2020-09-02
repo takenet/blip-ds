@@ -109,8 +109,7 @@ export class SelectChips {
   }
 
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
-    const queryElements = 'bds-select-option:not([invisible]) + bds-select-option:not(#option-add)';
-    return Array.from(this.el.querySelectorAll(queryElements));
+    return Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add)'));
   }
 
   private enableCreateOption(): boolean {
@@ -175,6 +174,14 @@ export class SelectChips {
 
     switch (event.key) {
       case 'Enter':
+        if (this.childOptionsEnabled.length === 1) {
+          this.nativeInput.add(this.childOptionsEnabled[0].textContent);
+        } else {
+          this.nativeInput.add(this.text);
+        }
+
+        this.nativeInput.value = '';
+
         if (!this.isOpen && (isSelectElement || isInputElement)) {
           this.toggle();
         }
@@ -200,11 +207,14 @@ export class SelectChips {
   };
 
   private filterOptions(term: string) {
-    if (!term) term = '';
+    if (!term) {
+      this.resetFilterOptions();
+      return;
+    }
 
     for (const option of this.childOptions) {
-      const isExistsChip = this.existsChip(option.innerText, this.nativeInput.chips);
-      const optionTextLower = option.innerText.toLowerCase();
+      const isExistsChip = this.existsChip(option.textContent, this.nativeInput.chips);
+      const optionTextLower = option.textContent.toLowerCase();
       const termLower = term.toLowerCase();
 
       if (isExistsChip) {
@@ -223,7 +233,7 @@ export class SelectChips {
 
   private resetFilterOptions() {
     for (const option of this.childOptions) {
-      const optionText = option.querySelector('bds-typo').innerHTML;
+      const optionText = option.querySelector('bds-typo').textContent;
       if (this.existsChip(optionText, this.nativeInput.chips)) {
         option.setAttribute('invisible', 'invisible');
       } else {
@@ -259,6 +269,7 @@ export class SelectChips {
           danger={this.danger}
           error-message={this.errorMessage}
           chips={this.chips}
+          disable-submit={true}
           duplicated={this.duplicated}
         >
           <div slot="input-right" class="select__icon">
