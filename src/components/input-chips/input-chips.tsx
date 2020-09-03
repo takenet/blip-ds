@@ -52,7 +52,7 @@ export class InputChips {
   /**
    * Do not accept duplicate chip elements.
    */
-  @Prop() duplicated?: boolean = true;
+  @Prop() duplicated?: boolean = false;
 
   /**
    * If `true`, the user cannot modify the value.
@@ -148,6 +148,7 @@ export class InputChips {
       detail: { value },
     } = event;
     this.setChip(value);
+    this.value = '';
   }
 
   private getLastChip(): string {

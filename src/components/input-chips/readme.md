@@ -13,7 +13,7 @@
 | `danger`        | `danger`         | Add state danger on input, use for use feedback.                                                                  | `boolean`           | `false`  |
 | `delimiters`    | --               | The delimiter is used to add multiple chips in the same string.                                                   | `RegExp`            | `/,\|;/` |
 | `disableSubmit` | `disable-submit` | If `true`, the user cannot modify the value.                                                                      | `boolean`           | `false`  |
-| `duplicated`    | `duplicated`     | Do not accept duplicate chip elements.                                                                            | `boolean`           | `true`   |
+| `duplicated`    | `duplicated`     | Do not accept duplicate chip elements.                                                                            | `boolean`           | `false`  |
 | `errorMessage`  | `error-message`  | Indicated to pass an feedback to user.                                                                            | `string`            | `''`     |
 | `icon`          | `icon`           | used for add icon in input left. Uses the bds-icon component.                                                     | `string`            | `''`     |
 | `label`         | `label`          | label in input, with he the input size increases.                                                                 | `string`            | `''`     |
