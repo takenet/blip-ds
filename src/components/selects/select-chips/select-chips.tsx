@@ -246,6 +246,10 @@ export class SelectChips {
     return chips.some((chip) => optionChip === chip);
   }
 
+  private generateKey(value: string) {
+    return value.toLowerCase().replace(/ /g, '-');
+  }
+
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
@@ -283,14 +287,23 @@ export class SelectChips {
           }}
         >
           {this.options.length &&
-            this.options.map((option, index) => (
-              <bds-select-option key={`option-${index}`} onOptionSelected={this.handler} value={option.value}>
+            this.options.map((option) => (
+              <bds-select-option
+                key={this.generateKey(option.value)}
+                onOptionSelected={this.handler}
+                value={option.value}
+              >
                 {option.label}
               </bds-select-option>
             ))}
           <slot />
           {this.enableCreateOption() && (
-            <bds-select-option id="option-add" value="add" onClick={() => this.handlerNewOption(this.text)}>
+            <bds-select-option
+              id="option-add"
+              key="option-add"
+              value="add"
+              onClick={() => this.handlerNewOption(this.text)}
+            >
               {this.newPrefix}
               {this.text}
             </bds-select-option>
