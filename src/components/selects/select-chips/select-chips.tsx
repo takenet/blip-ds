@@ -259,7 +259,6 @@ export class SelectChips {
         onKeyPress={this.keyPressWrapper}
       >
         <bds-input-chips
-          key={nanoid()}
           ref={(el) => (this.nativeInput = el as HTMLBdsInputChipsElement)}
           onBdsChangeChips={this.handleChangeChipsValue}
           onBdsChange={this.changedInputValue}
