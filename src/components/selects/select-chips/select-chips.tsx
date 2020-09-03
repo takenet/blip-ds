@@ -1,4 +1,5 @@
 import { Component, h, State, Prop, EventEmitter, Event, Element, Listen, Method } from '@stencil/core';
+import { nanoid } from 'nanoid';
 import { Option, SelectChangeEventDetail } from '../select-interface';
 
 @Component({
@@ -258,6 +259,7 @@ export class SelectChips {
         onKeyPress={this.keyPressWrapper}
       >
         <bds-input-chips
+          key={nanoid()}
           ref={(el) => (this.nativeInput = el as HTMLBdsInputChipsElement)}
           onBdsChangeChips={this.handleChangeChipsValue}
           onBdsChange={this.changedInputValue}
@@ -283,14 +285,19 @@ export class SelectChips {
           }}
         >
           {this.options.length &&
-            this.options.map((option, index) => (
-              <bds-select-option key={`option-${index}`} onOptionSelected={this.handler} value={option.value}>
+            this.options.map((option) => (
+              <bds-select-option key={nanoid()} onOptionSelected={this.handler} value={option.value}>
                 {option.label}
               </bds-select-option>
             ))}
           <slot />
           {this.enableCreateOption() && (
-            <bds-select-option id="option-add" value="add" onClick={() => this.handlerNewOption(this.text)}>
+            <bds-select-option
+              id="option-add"
+              key="option-add"
+              value="add"
+              onClick={() => this.handlerNewOption(this.text)}
+            >
               {this.newPrefix}
               {this.text}
             </bds-select-option>
