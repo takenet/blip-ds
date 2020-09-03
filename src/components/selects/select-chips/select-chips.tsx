@@ -1,5 +1,4 @@
 import { Component, h, State, Prop, EventEmitter, Event, Element, Listen, Method } from '@stencil/core';
-import { nanoid } from 'nanoid';
 import { Option, SelectChangeEventDetail } from '../select-interface';
 
 @Component({
@@ -247,6 +246,10 @@ export class SelectChips {
     return chips.some((chip) => optionChip === chip);
   }
 
+  private generateKey(value: string) {
+    return value.toLowerCase().replace(/ /g, '-');
+  }
+
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
@@ -285,7 +288,11 @@ export class SelectChips {
         >
           {this.options.length &&
             this.options.map((option) => (
-              <bds-select-option key={nanoid()} onOptionSelected={this.handler} value={option.value}>
+              <bds-select-option
+                key={this.generateKey(option.value)}
+                onOptionSelected={this.handler}
+                value={option.value}
+              >
                 {option.label}
               </bds-select-option>
             ))}
