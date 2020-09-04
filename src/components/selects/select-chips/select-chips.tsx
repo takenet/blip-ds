@@ -13,8 +13,6 @@ export class SelectChips {
 
   @State() isOpen? = false;
 
-  @State() text? = '';
-
   @Prop({ mutable: true }) options?: Array<Option> = [];
 
   @Prop({ mutable: true }) chips: string[] = [];
@@ -113,7 +111,7 @@ export class SelectChips {
   }
 
   private enableCreateOption(): boolean {
-    return !!(this.childOptionsEnabled.length === 0 && this.text);
+    return !!(this.childOptionsEnabled.length === 0 && this.nativeInput.value);
   }
 
   private onFocus = (): void => {
@@ -140,7 +138,7 @@ export class SelectChips {
 
   private getText = (value: string) => {
     const el: HTMLBdsSelectOptionElement = this.childOptions.find((option) => option.value === value);
-    return el.innerText;
+    return el.textContent;
   };
 
   private handlerNewOption = async (text: string) => {
@@ -149,7 +147,6 @@ export class SelectChips {
 
   private async addChip(chip: string) {
     await this.nativeInput.add(chip);
-    this.text = '';
     this.nativeInput.value = '';
     this.toggle();
   }
@@ -177,7 +174,7 @@ export class SelectChips {
         if (this.childOptionsEnabled.length === 1) {
           this.nativeInput.add(this.childOptionsEnabled[0].textContent);
         } else {
-          this.nativeInput.add(this.text);
+          this.nativeInput.add(this.nativeInput.value);
         }
 
         this.nativeInput.value = '';
@@ -189,20 +186,23 @@ export class SelectChips {
     }
   };
 
-  private changedInputValue = (event) => {
-    const {
-      detail: { value },
-    } = event;
+  private changedInputValue = () => {
+    // Update this.value for trigger render componente, same two-way binding
+    this.value = this.nativeInput.value;
 
-    this.text = value;
-    this.filterOptions(value);
+    if (this.nativeInput.value) {
+      this.filterOptions(this.nativeInput.value);
+    } else {
+      this.resetFilterOptions();
+    }
 
-    if (this.text && this.isOpen === false) {
+    if (this.value && this.isOpen === false) {
       this.isOpen = true;
     }
   };
 
   private handleChangeChipsValue = () => {
+    this.nativeInput.value = '';
     this.resetFilterOptions();
   };
 
@@ -286,26 +286,24 @@ export class SelectChips {
             'select__options--open': this.isOpen,
           }}
         >
-          {this.options.length &&
-            this.options.map((option) => (
-              <bds-select-option
-                key={this.generateKey(option.value)}
-                onOptionSelected={this.handler}
-                value={option.value}
-              >
-                {option.label}
-              </bds-select-option>
-            ))}
+          {this.options.map((option) => (
+            <bds-select-option
+              key={this.generateKey(option.value)}
+              onOptionSelected={this.handler}
+              value={option.value}
+            >
+              {option.label}
+            </bds-select-option>
+          ))}
           <slot />
           {this.enableCreateOption() && (
             <bds-select-option
               id="option-add"
-              key="option-add"
               value="add"
-              onClick={() => this.handlerNewOption(this.text)}
+              onClick={() => this.handlerNewOption(this.nativeInput.value)}
             >
               {this.newPrefix}
-              {this.text}
+              {this.nativeInput.value}
             </bds-select-option>
           )}
         </div>
