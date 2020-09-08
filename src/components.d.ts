@@ -45,10 +45,6 @@ export namespace Components {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
-        /**
-          * Specifies the background color to use. The default background color is $color-primary-main.
-         */
-        "background": string;
         "fixed": boolean;
         /**
           * Pulbic method to close the banner
@@ -957,10 +953,6 @@ declare namespace LocalJSX {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
-        /**
-          * Specifies the background color to use. The default background color is $color-primary-main.
-         */
-        "background"?: string;
         "fixed"?: boolean;
         /**
           * Emitted when the X icon is clicked.
