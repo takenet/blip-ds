@@ -111,7 +111,7 @@ export class SelectChips {
   }
 
   private enableCreateOption(): boolean {
-    return !!(this.childOptionsEnabled.length === 0 && this.nativeInput.value);
+    return !!(this.childOptionsEnabled.length === 0 && this.nativeInput && this.nativeInput.value);
   }
 
   private onFocus = (): void => {
