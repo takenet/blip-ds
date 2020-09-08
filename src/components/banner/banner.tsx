@@ -9,11 +9,6 @@ export class Banner implements ComponentInterface {
   @State() visible = true;
   @Prop() fixed = false;
   /**
-   * Specifies the background color to use. The default background color is $color-primary-main.
-   */
-  @Prop() background: string = undefined;
-
-  /**
    * Emitted when the X icon is clicked.
    */
   @Event() bdsBannerClick!: EventEmitter;
@@ -37,9 +32,7 @@ export class Banner implements ComponentInterface {
         class={{
           banner: true,
           'banner--hide': !this.visible,
-          'banner__background--main': !this.background,
         }}
-        style={{ background: this.background }}
       >
         <div class="banner__content">
           <slot></slot>
