@@ -46,6 +46,9 @@ export namespace Components {
     }
     interface BdsBanner {
         "fixed": boolean;
+        /**
+          * Pulbic method to close the banner
+         */
         "toggle": () => Promise<void>;
     }
     interface BdsButton {
@@ -951,6 +954,10 @@ declare namespace LocalJSX {
     }
     interface BdsBanner {
         "fixed"?: boolean;
+        /**
+          * Emitted when the X icon is clicked.
+         */
+        "onBdsBannerClick"?: (event: CustomEvent<any>) => void;
     }
     interface BdsButton {
         /**
