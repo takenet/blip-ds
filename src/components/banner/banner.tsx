@@ -8,6 +8,10 @@ import { Component, Host, h, ComponentInterface, Prop, State, Method } from '@st
 export class Banner implements ComponentInterface {
   @State() visible = true;
   @Prop() fixed = false;
+  /**
+   * Specifies the background color to use. The default background color is $color-primary-main.
+   */
+  @Prop() background: string = undefined;
 
   @Method()
   async toggle() {
@@ -24,7 +28,9 @@ export class Banner implements ComponentInterface {
         class={{
           banner: true,
           'banner--hide': !this.visible,
+          'banner__background--main': !this.background,
         }}
+        style={{ background: this.background }}
       >
         <div class="banner__content">
           <slot></slot>
