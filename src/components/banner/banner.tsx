@@ -9,20 +9,20 @@ export class Banner implements ComponentInterface {
   @State() visible = true;
   @Prop() fixed = false;
   /**
-   * Emitted when the X icon is clicked.
+   * Emitted when the banner is closed.
    */
-  @Event() bdsBannerClick!: EventEmitter;
+  @Event() bdsBannerClose!: EventEmitter;
 
   /**
    * Pulbic method to close the banner
    */
   @Method()
   async toggle() {
-    this.bdsBannerClick.emit();
     this.visible = !this.visible;
   }
 
   private close = (): void => {
+    this.bdsBannerClose.emit();
     this.visible = false;
   };
 
