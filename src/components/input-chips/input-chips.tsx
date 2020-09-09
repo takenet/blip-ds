@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { InputChipsTypes } from './input-chips-interface';
@@ -6,7 +5,7 @@ import { InputChipsTypes } from './input-chips-interface';
 @Component({
   tag: 'bds-input-chips',
   styleUrl: 'input-chips.scss',
-  shadow: true,
+  scoped: true,
 })
 export class InputChips {
   private nativeInput?: HTMLBdsInputElement;
@@ -184,6 +183,8 @@ export class InputChips {
     const {
       detail: { value },
     } = event;
+
+    // console.log('TRACE [input-chips] handleChange 1:', { value });
 
     this.value = value ? value.trim() : '';
 

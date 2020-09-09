@@ -187,6 +187,7 @@ export class SelectChips {
   };
 
   private changedInputValue = () => {
+    // console.log('TRACE [select-chips] changedInputValue:', { nativeInput: this.nativeInput.value, value: this.value });
     // Update this.value for trigger render componente, same two-way binding
     this.value = this.nativeInput.value;
 
@@ -202,17 +203,20 @@ export class SelectChips {
   };
 
   private handleChangeChipsValue = () => {
+    // console.log('TRACE [select-chips] handleChangeChipsValue 1:', { chips: this.nativeInput.chips });
     this.nativeInput.value = '';
     this.resetFilterOptions();
   };
 
   private filterOptions(term: string) {
+    // console.log('TRACE [select-chips] filterOptions 1:', { term, childOptions: this.childOptions });
     if (!term) {
       this.resetFilterOptions();
       return;
     }
 
     for (const option of this.childOptions) {
+      // console.log('TRACE [select-chips] filterOptions 2:', { option });
       const isExistsChip = this.existsChip(option.textContent, this.nativeInput.chips);
       const optionTextLower = option.textContent.toLowerCase();
       const termLower = term.toLowerCase();
@@ -251,6 +255,7 @@ export class SelectChips {
   }
 
   render(): HTMLElement {
+    // console.log('TRACE [select-chips] render', this.childOptions);
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
     return (
