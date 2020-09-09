@@ -9,7 +9,7 @@ export class Banner implements ComponentInterface {
   @State() visible = true;
   @Prop() fixed = false;
   /**
-   * Emitted when the X icon is clicked.
+   * Emitted when the banner is closed.
    */
   @Event() bdsBannerClose!: EventEmitter;
 
