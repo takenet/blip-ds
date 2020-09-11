@@ -1,29 +1,89 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Blip DS</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>Blip DS</title>
+    <script type="module" src="/build/blip-ds.esm.js"></script>
+    <script nomodule src="/build/blip-ds.js"></script>
+  </head>
+  <style>
+    body {
+      /* background: #f5f8f9; */
+      background: #0a0f1a;
+    }
+  </style>
 
-  <script type="module" src="/build/blip-ds.esm.js"></script>
-  <script nomodule src="/build/blip-ds.js"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,300;1,400;1,600;1,700;1,800&display=swap"
-    rel="stylesheet">
-</head>
-<style>
-  body {
-    /* background: #f5f8f9; */
-    background: #0a0f1a;
-    color: #f0f0f0;
-  }
-</style>
+  <body>
+  </body>
 
-<body>
-</body>
+  <script>
+  </script>
+</html>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Blip DS</title>
 
-<script>
-</script>
+    <script type="module" src="/build/blip-ds.esm.js"></script>
+    <script nomodule src="/build/blip-ds.js"></script>
+  </head>
+  <style>
+    body {
+      /* background: #f5f8f9; */
+      background: #0a0f1a;
+    }
 
+    .toast-container {
+      position: absolute;
+      bottom: 20px;
+      left: 32px;
+    }
+  </style>
+
+  <body>
+    <button id="toast1">add toast</button>
+    <button id="toast2">add toast</button>
+  </body>
+
+  <script>
+    const botao = document.querySelector("#toast1");
+    const botao2 = document.querySelector("#toast2");
+
+    botao.addEventListener("click", async () => {
+      const newtoast = document.createElement('bds-toast');
+      document.body.appendChild(newtoast);
+      await newtoast.create({
+        buttonText: 'cancelar',
+        actionType: 'icon',
+        buttonAction: 'close',
+        toastText: 'ola alerta',
+        toastTitle: 'titulo',
+        variant: 'system',
+        duration: 0
+      });
+    });
+    botao2.addEventListener("click", async () => {
+      const newtoast = document.createElement('bds-toast');
+      document.body.appendChild(newtoast);
+      await newtoast.create({
+        buttonText: 'cancelar',
+        actionType: 'button',
+        buttonAction: 'close',
+        toastText: 'ola alerta',
+        toastTitle: 'titulo',
+        variant: 'warning',
+        duration: 0
+      });
+    });
+  </script>
 </html>
