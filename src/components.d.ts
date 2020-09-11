@@ -955,9 +955,9 @@ declare namespace LocalJSX {
     interface BdsBanner {
         "fixed"?: boolean;
         /**
-          * Emitted when the X icon is clicked.
+          * Emitted when the banner is closed.
          */
-        "onBdsBannerClick"?: (event: CustomEvent<any>) => void;
+        "onBdsBannerClose"?: (event: CustomEvent<any>) => void;
     }
     interface BdsButton {
         /**

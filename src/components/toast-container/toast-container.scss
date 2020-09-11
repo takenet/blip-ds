@@ -7,7 +7,7 @@
   z-index: $zindex-toast;
   width: 456px;
 
-  @media (max-width: 780px) {
+  @media (max-width: $sm-screen) {
     left: 0px;
     bottom: 20px;
     width: 100%;
