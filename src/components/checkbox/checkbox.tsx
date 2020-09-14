@@ -23,7 +23,7 @@ export class Checkbox {
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true, reflectToAttr: true }) checked = false;
+  @Prop({ mutable: true, reflect: true }) checked = false;
 
   /**
    * If `true`, the user cannot interact with the checkbox.

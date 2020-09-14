@@ -11,7 +11,7 @@ export class BdsAlert implements ComponentInterface {
    */
   @Prop({
     mutable: true,
-    reflectToAttr: true,
+    reflect: true,
   })
   public open?: boolean = false;
 
