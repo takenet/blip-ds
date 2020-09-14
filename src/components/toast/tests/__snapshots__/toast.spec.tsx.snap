@@ -133,7 +133,6 @@ Object {
     "watchCallback": true,
   },
   "doc": ,
-  "flush": [Function],
   "flushLoadModule": [Function],
   "flushQueue": [Function],
   "setContent": [Function],
