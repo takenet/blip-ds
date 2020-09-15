@@ -23,9 +23,16 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
-  excludeSrc: ['/test/', '**/.spec.', '**/.stories.'],
+  buildEs5: 'prod',
   extras: {
     appendChildSlotFix: true,
+    cssVarsShim: true,
+    dynamicImportShim: true,
+    shadowDomShim: true,
+    safari10: true,
+    scriptDataOpts: true,
+    cloneNodeFix: false,
+    slotChildNodesFix: true,
   },
   testing: {
     timers: 'fake',
