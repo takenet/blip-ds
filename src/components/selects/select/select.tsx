@@ -91,7 +91,7 @@ export class Select {
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('*'));
+    return Array.from(this.el.querySelectorAll('bds-select-option'));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -115,7 +115,7 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find((option) => option.value == this.value);
-    return opt ? opt.innerHTML : '';
+    return opt ? opt.textContent : '';
   };
 
   private handler = (event: CustomEvent): void => {
