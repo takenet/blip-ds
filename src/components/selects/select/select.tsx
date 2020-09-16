@@ -115,7 +115,7 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find((option) => option.value == this.value);
-    return opt ? opt.textContent : '';
+    return opt?.textContent?.trim() ?? '';
   };
 
   private handler = (event: CustomEvent): void => {
