@@ -10,7 +10,7 @@ const clearPathsAndFillColor = (svg: Element, color: string): void => {
   svg.setAttribute('fill', color);
 };
 
-export const formatSvg = (svgContent: string | null, color: string | null): string => {
+export const formatSvg = (svgContent: string | null, color: string | null, emoji = false): string => {
   if (svgContent) {
     const div = document.createElement('div');
     div.innerHTML = svgContent;
@@ -21,8 +21,9 @@ export const formatSvg = (svgContent: string | null, color: string | null): stri
     svgElm.removeAttribute('height');
     svgElm.setAttribute('fill', 'currentColor');
 
-    clearPathsAndFillColor(svgElm, color || 'currentColor');
-
+    if (!emoji) {
+      clearPathsAndFillColor(svgElm, color || 'currentColor');
+    }
     return div.innerHTML;
   }
 

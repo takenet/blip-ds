@@ -131,11 +131,12 @@ export class Icon {
     if (this.type === 'icon') {
       const key = getIconName(this.name, this.theme);
       svg = atob(icons[key]);
+      this.svgContent = formatSvg(svg, this.color);
     } else {
       const key = getEmojiName(this.name);
       svg = atob(emojis[key]);
+      this.svgContent = formatSvg(svg, this.color, true);
     }
-    this.svgContent = formatSvg(svg, this.color);
   };
 
   render(): HTMLElement {
