@@ -10,7 +10,7 @@ import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/butto
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
-import { IconSize, IconTheme } from "./components/icon/icon-interface";
+import { IconSize, IconTheme, IconType } from "./components/icon/icon-interface";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
@@ -191,6 +191,10 @@ export namespace Components {
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
         "theme": IconTheme;
+        /**
+          * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
+         */
+        "type": IconType;
     }
     interface BdsIconButton {
         /**
@@ -1109,6 +1113,10 @@ declare namespace LocalJSX {
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
         "theme"?: IconTheme;
+        /**
+          * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
+         */
+        "type"?: IconType;
     }
     interface BdsIconButton {
         /**

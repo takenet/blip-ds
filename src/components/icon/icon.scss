@@ -24,10 +24,18 @@ $icon-xx-small: 12px;
 
   box-sizing: content-box !important;
 }
+
 .icon-inner {
   max-width: 100%;
   height: 100%;
 }
+
+.emoji-inner {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+}
+
 :host(.bds-icon) {
   display: inline-block;
   svg {

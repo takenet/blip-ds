@@ -10,3 +10,5 @@ export type IconSize =
   | 'xxx-large';
 
 export type IconTheme = 'outline' | 'solid';
+
+export type IconType = 'icon' | 'emoji';

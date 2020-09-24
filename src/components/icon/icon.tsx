@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 import icons from 'blip-tokens/build/json/assets_icons.json';
-import { IconSize, IconTheme } from './icon-interface';
-import { formatSvg, getName } from './utils';
+import emojis from 'blip-tokens/build/json/assets_emojis.json';
+import { IconSize, IconTheme, IconType } from './icon-interface';
+import { formatSvg, getIconName, getEmojiName } from './utils';
 
 @Component({
   tag: 'bds-icon',
@@ -67,6 +68,11 @@ export class Icon {
    */
   @Prop({ reflect: true }) theme: IconTheme = 'outline';
 
+  /**
+   * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
+   */
+  @Prop() type: IconType = 'icon';
+
   connectedCallback(): void {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
@@ -109,9 +115,7 @@ export class Icon {
     if (!this.name) return;
 
     if (Build.isBrowser && this.isVisible) {
-      const iconKey = getName(this.name, this.theme);
-      const svg = atob(icons[iconKey]);
-      this.svgContent = formatSvg(svg, this.color);
+      this.setSvgContent();
     }
 
     if (!this.ariaLabel) {
@@ -122,6 +126,19 @@ export class Icon {
     }
   }
 
+  setSvgContent = () => {
+    let svg;
+    if (this.type === 'icon') {
+      const key = getIconName(this.name, this.theme);
+      svg = atob(icons[key]);
+      this.svgContent = formatSvg(svg, this.color);
+    } else {
+      const key = getEmojiName(this.name);
+      svg = atob(emojis[key]);
+      this.svgContent = formatSvg(svg, this.color, true);
+    }
+  };
+
   render(): HTMLElement {
     return (
       <Host
@@ -131,7 +148,14 @@ export class Icon {
           [`bds-icon__size--${this.size}`]: true,
         }}
       >
-        {this.svgContent ? <div class="icon-inner" innerHTML={this.svgContent}></div> : <div class="icon-inner"></div>}
+        {this.svgContent ? (
+          <div
+            class={{ 'icon-inner': this.type === 'icon', 'emoji-inner': this.type === 'emoji' }}
+            innerHTML={this.svgContent}
+          ></div>
+        ) : (
+          <div class="icon-inner"></div>
+        )}
       </Host>
     );
   }
