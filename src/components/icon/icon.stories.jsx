@@ -304,7 +304,7 @@ export const emojis = () => {
   emojiNames.forEach((name) => {
     story.push(
       <div style={emojiStyles}>
-        <bds-icon type="emoji" size="x-large" name={name}></bds-icon>
+        <bds-icon type="emoji" size={text('size', 'x-large')} name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
