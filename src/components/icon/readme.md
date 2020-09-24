@@ -18,6 +18,7 @@
 | `size`      | `size`       | Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".   | `"large" \| "medium" \| "small" \| "x-large" \| "x-small" \| "xx-large" \| "xx-small" \| "xxx-large" \| "xxx-small"` | `'medium'`  |
 | `src`       | `src`        | Specifies the exact `src` of an SVG file to use.                                                                                                                               | `string`                                                                                                             | `undefined` |
 | `theme`     | `theme`      | Specifies the theme to use outline or solid icons. Defaults to outline.                                                                                                        | `"outline" \| "solid"`                                                                                               | `'outline'` |
+| `type`      | `type`       | Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.                                                             | `"emoji" \| "icon"`                                                                                                  | `'icon'`    |
 
 
 ## Dependencies

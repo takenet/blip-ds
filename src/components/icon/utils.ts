@@ -29,6 +29,10 @@ export const formatSvg = (svgContent: string | null, color: string | null): stri
   return '';
 };
 
-export const getName = (name: string, theme: IconTheme) => {
+export const getIconName = (name: string, theme: IconTheme) => {
   return `asset-icon-${name}-${theme}`;
+};
+
+export const getEmojiName = (name: string) => {
+  return `asset-emoji-${name}`;
 };
