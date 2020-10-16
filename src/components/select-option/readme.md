@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property             | Attribute     | Description                                                                      | Type      | Default     |
-| -------------------- | ------------- | -------------------------------------------------------------------------------- | --------- | ----------- |
-| `bulkOption`         | `bulk-option` | Quantity Description on option value, this item is locate to rigth in component. | `string`  | `''`        |
-| `danger`             | `danger`      | Add state danger on input, use for use feedback.                                 | `boolean` | `false`     |
-| `disabled`           | `disabled`    | If `true`, the user cannot interact with the select option.                      | `boolean` | `false`     |
-| `invisible`          | `invisible`   | Add state danger on input, use for use feedback.                                 | `boolean` | `false`     |
-| `selected`           | `selected`    | The text value of the option.                                                    | `boolean` | `false`     |
-| `value` _(required)_ | `value`       |                                                                                  | `any`     | `undefined` |
+| Property             | Attribute     | Description                                                                                               | Type      | Default     |
+| -------------------- | ------------- | --------------------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `bulkOption`         | `bulk-option` | Quantity Description on option value, this item is locate to rigth in component.                          | `string`  | `''`        |
+| `danger`             | `danger`      | Add state danger on input, use for use feedback.                                                          | `boolean` | `false`     |
+| `disabled`           | `disabled`    | If `true`, the user cannot interact with the select option.                                               | `boolean` | `false`     |
+| `invisible`          | `invisible`   | Add state danger on input, use for use feedback.                                                          | `boolean` | `false`     |
+| `selected`           | `selected`    | The text value of the option.                                                                             | `boolean` | `false`     |
+| `slotAlign`          | `slot-align`  | Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property. | `string`  | `'center'`  |
+| `value` _(required)_ | `value`       |                                                                                                           | `any`     | `undefined` |
 
 
 ## Events

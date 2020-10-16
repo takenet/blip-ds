@@ -35,6 +35,11 @@ export class SelectOption {
    */
   @Prop() bulkOption? = '';
 
+  /**
+   *  Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
+   */
+  @Prop() slotAlign? = 'center';
+
   @Event() optionSelected: EventEmitter;
 
   private onClickSelectOption = (): void => {
@@ -82,7 +87,9 @@ export class SelectOption {
           'select-option--invisible': this.invisible,
         }}
       >
-        <slot name="input-left"></slot>
+        <div style={{ alignSelf: this.slotAlign }}>
+          <slot name="input-left"></slot>
+        </div>
         <div class="select-option__container">
           <bds-typo class="select-option__container--value" variant="fs-14">
             <slot />

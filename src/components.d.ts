@@ -648,6 +648,10 @@ export namespace Components {
           * The text value of the option.
          */
         "selected"?: boolean;
+        /**
+          * Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
+         */
+        "slotAlign"?: string;
         "value": any;
     }
     interface BdsToast {
@@ -1629,6 +1633,10 @@ declare namespace LocalJSX {
           * The text value of the option.
          */
         "selected"?: boolean;
+        /**
+          * Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
+         */
+        "slotAlign"?: string;
         "value": any;
     }
     interface BdsToast {
