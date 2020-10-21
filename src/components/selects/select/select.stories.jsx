@@ -93,33 +93,18 @@ export const disabledSelect = () => (
 );
 
 export const selectWithIconOnSlot = () => (
-  <bds-select>
-    <bds-select-option value="1" slot-align="flex-start">
-      <div slot="input-left">
-        <bds-icon name="eye-open" size="small" color="#F66689"></bds-icon>
-      </div>
-      <div style={margin}>
-        <bds-typo variant="fs-12">Pode visualizar</bds-typo>
-        <bds-typo variant="fs-10">Apenas visualiza informações do contrato.</bds-typo>
-      </div>
+  <bds-select placeholder="Selecione" label="Permissão">
+    <bds-select-option value="1" slot-align="flex-start" title-text="Convidado">
+        <bds-icon slot="input-left" name="eye-open" size="medium" color="#F66689"></bds-icon>
+        Apenas visualiza informações do contrato.
     </bds-select-option>
-    <bds-select-option value="2" slot-align="flex-start">
-      <div slot="input-left">
-        <bds-icon name="edit" size="small" color="#F9B42F"></bds-icon>
-      </div>
-      <div style={margin}>
-        <bds-typo variant="fs-12">Pode editar</bds-typo>
-        <bds-typo variant="fs-10">Cria e edita chatbots, mas não gerencia os membros do contrato.</bds-typo>
-      </div>
+    <bds-select-option value="2" slot-align="flex-start" title-text="Membro">
+        <bds-icon slot="input-left" name="edit" size="medium" color="#F9B42F"></bds-icon>
+        Cria e edita chatbots, mas não gerencia os membros do contrato.
     </bds-select-option>
-    <bds-select-option value="3" slot-align="flex-start">
-      <div slot="input-left">
-        <bds-icon name="avatar-user" size="small" color="#2CC3D5"></bds-icon>
-      </div>
-      <div style={margin}>
-        <bds-typo variant="fs-12">Admin</bds-typo>
-        <bds-typo variant="fs-10">Edita todos os dados do contrato, gerencia membros, cria e edita chatbots.</bds-typo>
-      </div>
+    <bds-select-option value="3" slot-align="flex-start" title-text="Admin">
+        <bds-icon slot="input-left" name="avatar-user" size="medium" color="#2CC3D5"></bds-icon>
+        Edita todos os dados do contrato, gerencia membros, cria e edita chatbots.
     </bds-select-option>
   </bds-select>
 );

@@ -15,6 +15,7 @@
 | `invisible`          | `invisible`   | Add state danger on input, use for use feedback.                                                          | `boolean` | `false`     |
 | `selected`           | `selected`    | The text value of the option.                                                                             | `boolean` | `false`     |
 | `slotAlign`          | `slot-align`  | Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property. | `string`  | `'center'`  |
+| `titleText`          | `title-text`  | If set, a title will be shown under the text                                                              | `string`  | `undefined` |
 | `value` _(required)_ | `value`       |                                                                                                           | `any`     | `undefined` |
 
 

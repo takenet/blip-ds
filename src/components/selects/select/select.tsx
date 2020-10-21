@@ -63,6 +63,11 @@ export class Select {
    */
   @Prop({ reflect: true }) icon?: string = '';
 
+  /**
+   * Placeholder for native input element.
+   */
+  @Prop() placeholder?: string = '';
+
   @Watch('value')
   valueChanged(): void {
     this.bdsChange.emit({ value: this.value });
@@ -115,7 +120,7 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find((option) => option.value == this.value);
-    return opt?.textContent?.trim() ?? '';
+    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
   };
 
   private handler = (event: CustomEvent): void => {
@@ -174,6 +179,7 @@ export class Select {
           value={this.text}
           danger={this.danger}
           disabled={this.disabled}
+          placeholder={this.placeholder}
           readonly
         >
           <div slot="input-right" class="select__icon">

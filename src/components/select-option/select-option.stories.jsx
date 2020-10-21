@@ -25,14 +25,16 @@ export const bulkSelectOption = () => (
   </div>
 );
 
-export const selectOptionWithIconOnSlot = () => (
-  <bds-select-option value="1" slot-align="flex-start">
-    <div slot="input-left">
-      <bds-icon name="true" size="small"></bds-icon>
-    </div>
-    <div>
-      <bds-typo variant="fs-12">Pode visualizar</bds-typo>
-      <bds-typo variant="fs-10">Apenas visualiza informações do contrato.</bds-typo>
-    </div>
+export const selectOptionWithTitle = () => (
+  <bds-select-option value="2" slot-align="flex-start" title-text="Membro">
+    Cria e edita chatbots, mas não gerencia os membros do contrato.
   </bds-select-option>
 );
+
+export const selectOptionWithTitleAndIcon = () => (
+  <bds-select-option value="2" slot-align="flex-start" title-text="Membro">
+    <bds-icon slot="input-left" name="edit" size="medium" color="#F9B42F"></bds-icon>
+    Cria e edita chatbots, mas não gerencia os membros do contrato.
+  </bds-select-option>
+);
+
