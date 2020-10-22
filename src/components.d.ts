@@ -583,6 +583,10 @@ export namespace Components {
         "label"?: string;
         "options"?: Array<Option>;
         /**
+          * Placeholder for native input element.
+         */
+        "placeholder"?: string;
+        /**
           * the value of the select.
          */
         "value"?: any | null;
@@ -648,6 +652,14 @@ export namespace Components {
           * The text value of the option.
          */
         "selected"?: boolean;
+        /**
+          * Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
+         */
+        "slotAlign"?: string;
+        /**
+          * If set, a title will be shown under the text
+         */
+        "titleText": string;
         "value": any;
     }
     interface BdsToast {
@@ -1551,6 +1563,10 @@ declare namespace LocalJSX {
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
         "options"?: Array<Option>;
         /**
+          * Placeholder for native input element.
+         */
+        "placeholder"?: string;
+        /**
           * the value of the select.
          */
         "value"?: any | null;
@@ -1629,6 +1645,14 @@ declare namespace LocalJSX {
           * The text value of the option.
          */
         "selected"?: boolean;
+        /**
+          * Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
+         */
+        "slotAlign"?: string;
+        /**
+          * If set, a title will be shown under the text
+         */
+        "titleText"?: string;
         "value": any;
     }
     interface BdsToast {
