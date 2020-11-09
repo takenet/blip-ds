@@ -51,13 +51,13 @@ $tooltip-border-width: 6px;
 
     &--top-left {
       &::before {
-        left: 20%;
+        left: 25%;
       }
     }
 
     &--top-right {
       &::before {
-        left: 80%;
+        left: 75%;
       }
     }
 
@@ -99,13 +99,13 @@ $tooltip-border-width: 6px;
 
     &--bottom-right {
       &::before {
-        left: 80%;
+        left: 75%;
       }
     }
 
     &--bottom-left {
       &::before {
-        left: 20%;
+        left: 25%;
       }
     }
 
