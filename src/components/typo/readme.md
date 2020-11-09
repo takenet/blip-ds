@@ -34,6 +34,7 @@
  - [bds-radio](../radio)
  - [bds-select-option](../select-option)
  - [bds-toast](../toast)
+ - [bds-tooltip](../tooltip)
  - [bds-warning](../warning)
 
 ### Graph
@@ -51,6 +52,7 @@ graph TD;
   bds-radio --> bds-typo
   bds-select-option --> bds-typo
   bds-toast --> bds-typo
+  bds-tooltip --> bds-typo
   bds-warning --> bds-typo
   style bds-typo fill:#f9f,stroke:#333,stroke-width:4px
 ```
