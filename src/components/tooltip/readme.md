@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property      | Attribute      | Description          | Type                                                                                                                                                                     | Default     |
-| ------------- | -------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| `position`    | `position`     | Tooltip content text | `"bottom" \| "bottom-left" \| "bottom-right" \| "left" \| "left-bottom" \| "left-top" \| "right" \| "right-bottom" \| "right-top" \| "top" \| "top-left" \| "top-right"` | `'left'`    |
-| `tooltipText` | `tooltip-text` | Tooltip content text | `string`                                                                                                                                                                 | `'Tooltip'` |
+| Property      | Attribute      | Description                  | Type                                                                                                                                                                     | Default     |
+| ------------- | -------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `position`    | `position`     | Used to set tooltip position | `"bottom" \| "bottom-left" \| "bottom-right" \| "left" \| "left-bottom" \| "left-top" \| "right" \| "right-bottom" \| "right-top" \| "top" \| "top-left" \| "top-right"` | `'left'`    |
+| `tooltipText` | `tooltip-text` | Used to set tooltip text     | `string`                                                                                                                                                                 | `'Tooltip'` |
 
 
 ## Dependencies

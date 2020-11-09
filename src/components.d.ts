@@ -717,11 +717,11 @@ export namespace Components {
     }
     interface BdsTooltip {
         /**
-          * Tooltip content text
+          * Used to set tooltip position
          */
         "position": TooltipPostionType;
         /**
-          * Tooltip content text
+          * Used to set tooltip text
          */
         "tooltipText": string;
     }
@@ -1723,11 +1723,11 @@ declare namespace LocalJSX {
     }
     interface BdsTooltip {
         /**
-          * Tooltip content text
+          * Used to set tooltip position
          */
         "position"?: TooltipPostionType;
         /**
-          * Tooltip content text
+          * Used to set tooltip text
          */
         "tooltipText"?: string;
     }
