@@ -6,7 +6,7 @@ describe('tooltip e2e tests', () => {
   beforeEach(async () => {
     page = await newE2EPage({
       html: `
-        <bds-tooltip tooltip-text="Tooltip text test" position="top">
+        <bds-tooltip tooltip-text="Tooltip text test" position="top-center">
             <bds-button>Button text</bds-button>
         </bds-tooltip>
         `,

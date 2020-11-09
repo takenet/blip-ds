@@ -15,7 +15,7 @@ describe('bds-tooltip', () => {
   };
 
   it('should build', async () => {
-    const page = await getTooltipWithButton('top');
+    const page = await getTooltipWithButton('top-center');
 
     expect(page.body.querySelector('bds-tooltip')).toBeTruthy();
     expect(page.body.querySelector('bds-button')).toBeTruthy();
@@ -23,16 +23,16 @@ describe('bds-tooltip', () => {
 
   it('it should test all position props', async () => {
     const positions = [
-      'top',
+      'top-center',
       'top-left',
       'top-right',
-      'left',
+      'left-center',
       'left-top',
       'left-bottom',
-      'bottom',
+      'bottom-center',
       'bottom-right',
       'bottom-left',
-      'right',
+      'right-center',
       'right-top',
       'right-bottom',
     ];
@@ -51,7 +51,7 @@ describe('bds-tooltip', () => {
   });
 
   it('should render text on tooltipText prop', async () => {
-    const page = await getTooltipWithButton('top');
+    const page = await getTooltipWithButton('top-center');
 
     const tooltip = page.body.querySelector('bds-tooltip');
 

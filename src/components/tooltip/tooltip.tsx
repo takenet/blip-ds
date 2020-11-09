@@ -1,16 +1,16 @@
 import { Component, h, Prop, State } from '@stencil/core';
 
 export type TooltipPostionType =
-  | 'top'
+  | 'top-center'
   | 'top-left'
   | 'top-right'
-  | 'left'
+  | 'left-center'
   | 'left-top'
   | 'left-bottom'
-  | 'bottom'
+  | 'bottom-center'
   | 'bottom-right'
   | 'bottom-left'
-  | 'right'
+  | 'right-center'
   | 'right-top'
   | 'right-bottom';
 
@@ -32,7 +32,7 @@ export class Tooltip {
   /**
    * Used to set tooltip position
    */
-  @Prop() position: TooltipPostionType = 'left';
+  @Prop() position: TooltipPostionType = 'left-center';
 
   private setVisibility(value: boolean) {
     this.isMouseOver = value;

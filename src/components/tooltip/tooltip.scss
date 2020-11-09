@@ -16,8 +16,10 @@ $tooltip-border-width: 6px;
     background: $color-neutral-dark-eclipse;
     transform: translateX(-50%);
     z-index: $zindex-dropdown;
-    white-space: nowrap;
+    white-space: normal;
+    width: max-content;
     min-width: 20px;
+    max-width: 320px;
     filter: drop-shadow($shadow-drop);
     opacity: 0;
     transition: all 0.2s ease-in-out;
@@ -28,23 +30,22 @@ $tooltip-border-width: 6px;
     &::before {
       content: '';
       left: 50%;
-      border: $tooltip-border-width solid $color-neutral-dark-eclipse;
+      border: solid transparent;
       height: 0;
       width: 0;
       position: absolute;
       pointer-events: none;
       margin-left: -$tooltip-border-width;
-      border-radius: 50% 50% 0% 100% / 100% 100% 0% 0%;
+      border-width: $tooltip-border-width;
     }
 
-    &--top,
+    &--top-center,
     &--top-left,
     &--top-right {
       top: -42px;
       &::before {
         top: 100%;
-        transform: rotate(-180deg);
-        transform-origin: 50% 25%;
+        border-top-color: $color-neutral-dark-eclipse;
       }
     }
 
@@ -60,7 +61,7 @@ $tooltip-border-width: 6px;
       }
     }
 
-    &--right,
+    &--right-center,
     &--right-top,
     &--right-bottom {
       left: calc(100% + #{$tooltip-horizontal-margin});
@@ -69,30 +70,30 @@ $tooltip-border-width: 6px;
       &::before {
         left: -6px;
         top: 50%;
-        transform: rotate(-90deg);
-        transform-origin: 50% 5%;
+        transform: translateX(0) translateY(-50%);
+        border-right-color: $color-neutral-dark-eclipse;
       }
     }
 
     &--right-top {
       &::before {
-        top: 35%;
+        top: 40%;
       }
     }
 
     &--right-bottom {
       &::before {
-        top: 65%;
+        top: 60%;
       }
     }
 
-    &--bottom,
+    &--bottom-center,
     &--bottom-right,
     &--bottom-left {
       bottom: -42px;
       &::before {
         bottom: 100%;
-        top: -6px;
+        border-bottom-color: $color-neutral-dark-eclipse;
       }
     }
 
@@ -108,7 +109,7 @@ $tooltip-border-width: 6px;
       }
     }
 
-    &--left,
+    &--left-center,
     &--left-top,
     &--left-bottom {
       left: auto;
@@ -119,20 +120,20 @@ $tooltip-border-width: 6px;
         left: auto;
         right: -12px;
         top: 50%;
-        transform: rotate(90deg);
-        transform-origin: 50% 5%;
+        transform: translateX(0) translateY(-50%);
+        border-left-color: $color-neutral-dark-eclipse;
       }
     }
 
     &--left-top {
       &::before {
-        top: 35%;
+        top: 40%;
       }
     }
 
     &--left-bottom {
       &::before {
-        top: 65%;
+        top: 60%;
       }
     }
   }

@@ -13,16 +13,16 @@ export default {
 
 export const Tooltip = () => {
   const positions = [
-    'left',
+    'left-center',
     'left-top',
     'left-bottom',
-    'top',
+    'top-center',
     'top-left',
     'top-right',
-    'right',
+    'right-center',
     'right-top',
     'right-bottom',
-    'bottom',
+    'bottom-center',
     'bottom-right',
     'bottom-left',
   ];
