@@ -17,7 +17,7 @@ $tooltip-border-width: 6px;
     z-index: $zindex-dropdown;
     white-space: normal;
     width: max-content;
-    min-width: 20px;
+    min-width: 32px;
     max-width: 320px;
     filter: drop-shadow($shadow-drop);
     opacity: 0;
@@ -52,7 +52,7 @@ $tooltip-border-width: 6px;
     &--top-left {
       left: 0;
       &::before {
-        left: 25%;
+        left: calc(15% + #{$tooltip-border-width});
       }
     }
 
@@ -60,7 +60,7 @@ $tooltip-border-width: 6px;
       left: initial;
       right: 0;
       &::before {
-        left: 75%;
+        left: calc(85% - #{$tooltip-border-width});
       }
     }
 
@@ -114,14 +114,15 @@ $tooltip-border-width: 6px;
       left: initial;
       right: 0;
       &::before {
-        left: 75%;
+        left: calc(85% - #{$tooltip-border-width});
+        
       }
     }
 
     &--bottom-left {
       left: 0;
       &::before {
-        left: 25%;
+        left: calc(15% + #{$tooltip-border-width});
       }
     }
 
