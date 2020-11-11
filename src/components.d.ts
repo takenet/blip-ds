@@ -18,6 +18,7 @@ import { Option, SelectChangeEventDetail } from "./components/selects/select-int
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
+import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
     interface BdsAlert {
@@ -714,6 +715,16 @@ export namespace Components {
     }
     interface BdsToastContainer {
     }
+    interface BdsTooltip {
+        /**
+          * Used to set tooltip position
+         */
+        "position": TooltipPostionType;
+        /**
+          * Used to set tooltip text
+         */
+        "tooltipText": string;
+    }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -904,6 +915,12 @@ declare global {
         prototype: HTMLBdsToastContainerElement;
         new (): HTMLBdsToastContainerElement;
     };
+    interface HTMLBdsTooltipElement extends Components.BdsTooltip, HTMLStencilElement {
+    }
+    var HTMLBdsTooltipElement: {
+        prototype: HTMLBdsTooltipElement;
+        new (): HTMLBdsTooltipElement;
+    };
     interface HTMLBdsTypoElement extends Components.BdsTypo, HTMLStencilElement {
     }
     var HTMLBdsTypoElement: {
@@ -943,6 +960,7 @@ declare global {
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
+        "bds-tooltip": HTMLBdsTooltipElement;
         "bds-typo": HTMLBdsTypoElement;
         "bds-warning": HTMLBdsWarningElement;
     }
@@ -1703,6 +1721,16 @@ declare namespace LocalJSX {
     }
     interface BdsToastContainer {
     }
+    interface BdsTooltip {
+        /**
+          * Used to set tooltip position
+         */
+        "position"?: TooltipPostionType;
+        /**
+          * Used to set tooltip text
+         */
+        "tooltipText"?: string;
+    }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
@@ -1762,6 +1790,7 @@ declare namespace LocalJSX {
         "bds-select-option": BdsSelectOption;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
+        "bds-tooltip": BdsTooltip;
         "bds-typo": BdsTypo;
         "bds-warning": BdsWarning;
     }
@@ -1796,6 +1825,7 @@ declare module "@stencil/core" {
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
+            "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
         }
