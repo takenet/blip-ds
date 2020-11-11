@@ -14,7 +14,6 @@ $tooltip-border-width: 6px;
     padding: 8px;
     color: $color-snow-white;
     background: $color-neutral-dark-eclipse;
-    transform: translateX(-50%);
     z-index: $zindex-dropdown;
     white-space: normal;
     width: max-content;
@@ -23,6 +22,7 @@ $tooltip-border-width: 6px;
     filter: drop-shadow($shadow-drop);
     opacity: 0;
     transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
     &--visible {
       opacity: 1;
     }
@@ -42,7 +42,7 @@ $tooltip-border-width: 6px;
     &--top-center,
     &--top-left,
     &--top-right {
-      top: -42px;
+      bottom: calc(100% + 10px);
       &::before {
         top: 100%;
         border-top-color: $color-neutral-dark-eclipse;
@@ -50,15 +50,26 @@ $tooltip-border-width: 6px;
     }
 
     &--top-left {
+      left: 0;
       &::before {
         left: 25%;
       }
     }
 
     &--top-right {
+      left: initial;
+      right: 0;
       &::before {
         left: 75%;
       }
+    }
+
+    &--bottom-center, &--top-center {
+      transform: translateX(-50%);
+    }
+
+    &--left-center, &--right-center {
+      transform: translateX(0) translateY(-50%);
     }
 
     &--right-center,
@@ -66,7 +77,6 @@ $tooltip-border-width: 6px;
     &--right-bottom {
       left: calc(100% + #{$tooltip-horizontal-margin});
       top: 50%;
-      transform: translateX(0) translateY(-50%);
       &::before {
         left: -6px;
         top: 50%;
@@ -76,12 +86,15 @@ $tooltip-border-width: 6px;
     }
 
     &--right-top {
+      top: 0;
       &::before {
         top: 40%;
       }
     }
 
     &--right-bottom {
+      top: initial;
+      bottom: 0;
       &::before {
         top: 60%;
       }
@@ -90,7 +103,7 @@ $tooltip-border-width: 6px;
     &--bottom-center,
     &--bottom-right,
     &--bottom-left {
-      bottom: -42px;
+      top: calc(100% + 10px);
       &::before {
         bottom: 100%;
         border-bottom-color: $color-neutral-dark-eclipse;
@@ -98,12 +111,15 @@ $tooltip-border-width: 6px;
     }
 
     &--bottom-right {
+      left: initial;
+      right: 0;
       &::before {
         left: 75%;
       }
     }
 
     &--bottom-left {
+      left: 0;
       &::before {
         left: 25%;
       }
@@ -115,7 +131,6 @@ $tooltip-border-width: 6px;
       left: auto;
       right: calc(100% + #{$tooltip-horizontal-margin});
       top: 50%;
-      transform: translateX(0) translateY(-50%);
       &::before {
         left: auto;
         right: -12px;
@@ -126,12 +141,15 @@ $tooltip-border-width: 6px;
     }
 
     &--left-top {
+      top: 0;
       &::before {
         top: 40%;
       }
     }
 
     &--left-bottom {
+      top: initial;
+      bottom: 0;
       &::before {
         top: 60%;
       }
