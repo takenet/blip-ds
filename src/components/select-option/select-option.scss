@@ -15,18 +15,33 @@ $select-option-left: 12px;
   align-items: center;
   outline: none;
 
+  &--selected {
+    .select-option__container--value {
+      color: $color-primary-main;
+    }
+  }
+
+  &--disabled {
+    .select-option__container--value,
+    .select-option__container--bulk {
+      &:hover {
+        background-color: $color-snow-white;
+      }
+
+      cursor: not-allowed;
+      color: $color-neutral-medium-silver;
+    }
+  }
+
   ::slotted(bds-icon) {
     margin-right: 10px;
   }
 
   &__container {
+    color: $color-neutral-dark-city;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    &--value {
-      color: $color-neutral-dark-city;
-    }
 
     &--bulk {
       color: $color-neutral-medium-cloud;
@@ -41,22 +56,6 @@ $select-option-left: 12px;
     &:active > &--value,
     &:active > &--bulk {
       color: $color-primary-main;
-    }
-
-    &--selected > &--value,
-    &--selected > &--bulk {
-      color: $color-primary-main;
-    }
-
-    &--disabled,
-    &--disabled > &--value,
-    &--disabled > &--bulk {
-      &:hover {
-        background-color: $color-snow-white;
-      }
-
-      cursor: not-allowed;
-      color: $color-neutral-medium-silver;
     }
   }
 

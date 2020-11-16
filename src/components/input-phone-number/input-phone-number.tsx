@@ -194,6 +194,8 @@ export class InputPhoneNumber {
 
     const flagsNames = Object.keys(countries);
 
+    this.selectedCountry = this.selectedCountry || flagsNames[0];
+
     return (
       <div
         class={{
@@ -225,7 +227,7 @@ export class InputPhoneNumber {
             <bds-icon
               size="medium"
               theme="solid"
-              name={this.selectedCountry || flagsNames[0]}
+              name={this.selectedCountry}
               color="primary"
             ></bds-icon>
             <bds-icon size="x-small" name={iconArrow}></bds-icon>
@@ -241,7 +243,7 @@ export class InputPhoneNumber {
           }}
         >
           {flagsNames.map((flag) => (
-            <bds-select-option key={flag} onOptionSelected={this.handler} value={{ code: countries[flag].code, flag }}>
+            <bds-select-option key={flag} onOptionSelected={this.handler} selected={flag == this.selectedCountry} value={{ code: countries[flag].code, flag }}>
               <bds-icon slot="input-left" size="xx-large" theme="solid" name={flag} color="primary"></bds-icon>
               {countries[flag].name} {countries[flag].code}
             </bds-select-option>
