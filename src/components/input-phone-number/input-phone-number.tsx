@@ -224,12 +224,7 @@ export class InputPhoneNumber {
           {...{ maxlength: this.value === '+55' ? 11 : null }}
         >
           <div slot="input-left" onClick={this.toggle} class="select-phone-number__icon">
-            <bds-icon
-              size="medium"
-              theme="solid"
-              name={this.selectedCountry}
-              color="primary"
-            ></bds-icon>
+            <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
             <bds-icon size="x-small" name={iconArrow}></bds-icon>
           </div>
           <div slot="inside-input-left" class="select-phone-number__country-code">
@@ -243,7 +238,12 @@ export class InputPhoneNumber {
           }}
         >
           {flagsNames.map((flag) => (
-            <bds-select-option key={flag} onOptionSelected={this.handler} selected={flag == this.selectedCountry} value={{ code: countries[flag].code, flag }}>
+            <bds-select-option
+              key={flag}
+              onOptionSelected={this.handler}
+              selected={flag == this.selectedCountry}
+              value={{ code: countries[flag].code, flag }}
+            >
               <bds-icon slot="input-left" size="xx-large" theme="solid" name={flag} color="primary"></bds-icon>
               {countries[flag].name} {countries[flag].code}
             </bds-select-option>
