@@ -57,20 +57,19 @@ $select-options-max-height: 250px;
       opacity: 1;
     }
   }
-  &:hover, &--pressed {
+  &:hover,
+  &--pressed {
     .select-phone-number__icon {
       &::before {
         content: '';
         background: $color-neutral-light-whisper;
         width: 70px;
-        height: calc(100% - 2px);
+        height: 54px;
         position: absolute;
         left: 1px;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 1px;
         border-radius: 8px 0px 0px 8px;
       }
     }
   }
 }
-
