@@ -17,6 +17,11 @@ export class InputPhoneNumber {
   @State() selectedCountry: string;
 
   /**
+   * Conditions the element to say whether it is pressed or not, to add styles.
+   */
+  @State() isPressed? = false;
+
+  /**
    * The options of select.
    */
   @Prop() options?: Array<Option> = [];
@@ -120,10 +125,12 @@ export class InputPhoneNumber {
 
   private onFocus = (): void => {
     this.bdsFocus.emit();
+    this.isPressed = true;
   };
 
   private onBlur = (): void => {
     this.bdsBlur.emit();
+    this.isPressed = false;
   };
 
   private handleInputChange = (event: CustomEvent): void => {
@@ -187,9 +194,14 @@ export class InputPhoneNumber {
 
     const flagsNames = Object.keys(countries);
 
+    this.selectedCountry = this.selectedCountry || flagsNames[0];
+
     return (
       <div
-        class="select-phone-number"
+        class={{
+          'select-phone-number': true,
+          'select-phone-number--pressed': this.isPressed,
+        }}
         tabindex="0"
         onFocus={this.setFocusWrapper}
         onBlur={this.removeFocusWrapper}
@@ -213,12 +225,12 @@ export class InputPhoneNumber {
         >
           <div slot="input-left" onClick={this.toggle} class="select-phone-number__icon">
             <bds-icon
-              size="xx-large"
+              size="medium"
               theme="solid"
-              name={this.selectedCountry || flagsNames[0]}
+              name={this.selectedCountry}
               color="primary"
             ></bds-icon>
-            <bds-icon size="medium" name={iconArrow}></bds-icon>
+            <bds-icon size="x-small" name={iconArrow}></bds-icon>
           </div>
           <div slot="inside-input-left" class="select-phone-number__country-code">
             <bds-typo variant="fs-14">{this.value}</bds-typo>
@@ -231,7 +243,7 @@ export class InputPhoneNumber {
           }}
         >
           {flagsNames.map((flag) => (
-            <bds-select-option key={flag} onOptionSelected={this.handler} value={{ code: countries[flag].code, flag }}>
+            <bds-select-option key={flag} onOptionSelected={this.handler} selected={flag == this.selectedCountry} value={{ code: countries[flag].code, flag }}>
               <bds-icon slot="input-left" size="xx-large" theme="solid" name={flag} color="primary"></bds-icon>
               {countries[flag].name} {countries[flag].code}
             </bds-select-option>

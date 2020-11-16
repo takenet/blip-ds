@@ -16,13 +16,14 @@ $select-options-max-height: 250px;
   outline: none;
 
   &__icon {
+    bds-icon:first-child {
+      margin-right: 8px;
+    }
     color: $color-neutral-medium-cloud;
-    background-color: $color-primary-ghost;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 15%;
-    padding-right: 10px;
+    padding-right: 16px;
   }
 
   &__country-code {
@@ -54,6 +55,21 @@ $select-options-max-height: 250px;
       visibility: visible;
       transform: scale(1);
       opacity: 1;
+    }
+  }
+  &:hover, &--pressed {
+    .select-phone-number__icon {
+      &::before {
+        content: '';
+        background: $color-neutral-light-whisper;
+        width: 70px;
+        height: calc(100% - 2px);
+        position: absolute;
+        left: 1px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 8px 0px 0px 8px;
+      }
     }
   }
 }
