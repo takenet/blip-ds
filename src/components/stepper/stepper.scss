@@ -1,0 +1,16 @@
+:host {
+  .stepper__container {
+    width: 100%;
+    background: $color-snow-white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 16px;
+    display: flex;
+    box-shadow: $light-drop;
+    justify-content: space-between;
+    
+    ::slotted(bds-step:last-child) {
+      flex: inherit;
+    }
+  }
+}

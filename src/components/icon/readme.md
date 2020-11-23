@@ -37,6 +37,7 @@
  - [bds-menu-list-item](../menu-list-item)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
+ - [bds-step](../stepper/step)
  - [bds-toast](../toast)
  - [bds-warning](../warning)
 
@@ -55,6 +56,7 @@ graph TD;
   bds-menu-list-item --> bds-icon
   bds-select --> bds-icon
   bds-select-chips --> bds-icon
+  bds-step --> bds-icon
   bds-toast --> bds-icon
   bds-warning --> bds-icon
   style bds-icon fill:#f9f,stroke:#333,stroke-width:4px

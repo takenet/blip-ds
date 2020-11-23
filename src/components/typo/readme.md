@@ -33,6 +33,7 @@
  - [bds-menu-list-item](../menu-list-item)
  - [bds-radio](../radio)
  - [bds-select-option](../select-option)
+ - [bds-step](../stepper/step)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
  - [bds-warning](../warning)
@@ -51,6 +52,7 @@ graph TD;
   bds-menu-list-item --> bds-typo
   bds-radio --> bds-typo
   bds-select-option --> bds-typo
+  bds-step --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo
   bds-warning --> bds-typo
