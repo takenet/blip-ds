@@ -36,6 +36,16 @@ export const step = () => {
     setStep(activeStep + 1);
   };
 
+  const handlePreviousStep = async () => {
+    const stepperComponent = document.querySelector('bds-stepper');
+
+    const activeStep = await stepperComponent.getActiveStep();
+
+    stepperComponent.setActiveStep(activeStep - 1);
+
+    setStep(activeStep - 1);
+  };
+
   const getStepContentByIndex = (index) => {
     const content = {
       0: 'Step one',
@@ -57,8 +67,15 @@ export const step = () => {
           {getStepContentByIndex(step)}
           {step === 3 && 'Finished!'}
         </bds-paper>
-        {(step == 0 || step == 1) && <bds-button onClick={handleNextStep}>Next step</bds-button>}
-        {step == 2 && <bds-button onClick={handleNextStep}>Finish</bds-button>}
+        <div style={{ display: 'flex' }}>
+          {(step == 1 || step == 2) && (
+            <bds-button style={{ marginRight: '8px' }} onClick={handlePreviousStep}>
+              Previous step
+            </bds-button>
+          )}
+          {(step == 0 || step == 1) && <bds-button onClick={handleNextStep}>Next step</bds-button>}
+          {step == 2 && <bds-button onClick={handleNextStep}>Finish</bds-button>}
+        </div>
       </div>
     </>
   );
