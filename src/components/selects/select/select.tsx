@@ -1,6 +1,6 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../select-interface';
-
+import { Keyboard } from '../../../utils/enums';
 @Component({
   tag: 'bds-select',
   styleUrl: '../select.scss',
@@ -99,6 +99,10 @@ export class Select {
     return Array.from(this.el.querySelectorAll('bds-select-option'));
   }
 
+  private get childOptionSelected(): HTMLBdsSelectOptionElement {
+    return Array.from(this.el.querySelectorAll('bds-select-option')).find((option) => option.selected);
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private refNativeInput = (el: any): void => {
     this.nativeInput = el;
@@ -150,10 +154,24 @@ export class Select {
     const isInputElement = (event.target as Element).localName === 'bds-input';
 
     switch (event.key) {
-      case 'Enter':
+      case Keyboard.ENTER:
         if (!this.isOpen && (isSelectElement || isInputElement)) {
           this.toggle();
         }
+        break;
+      case Keyboard.ARROW_DOWN:
+        if (this.childOptionSelected) {
+          (this.childOptionSelected.nextElementSibling?.firstElementChild as HTMLInputElement)?.focus();
+          return;
+        }
+        (this.el.firstElementChild?.firstElementChild as HTMLInputElement)?.focus();
+        break;
+      case Keyboard.ARROW_UP:
+        if (this.childOptionSelected) {
+          (this.childOptionSelected.previousElementSibling?.firstElementChild as HTMLInputElement)?.focus();
+          return;
+        }
+        (this.el.previousElementSibling?.firstElementChild as HTMLInputElement)?.focus();
         break;
     }
   };
@@ -167,7 +185,7 @@ export class Select {
         tabindex="0"
         onFocus={this.setFocusWrapper}
         onBlur={this.removeFocusWrapper}
-        onKeyPress={this.keyPressWrapper}
+        onKeyDown={this.keyPressWrapper}
       >
         <bds-input
           icon={this.icon}

@@ -14,6 +14,7 @@ $select-options-max-height: 250px;
   position: relative;
   cursor: pointer;
   outline: none;
+  min-width: 200px;
 
   &__icon {
     bds-icon:first-child {

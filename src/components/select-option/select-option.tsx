@@ -55,23 +55,22 @@ export class SelectOption {
   private attachOptionKeyboardListeners = (event: KeyboardEvent): void => {
     const element = event.target as HTMLElement;
 
-    switch (event.keyCode) {
+    switch (event.key) {
       case Keyboard.ENTER:
         this.onClickSelectOption();
         break;
       case Keyboard.ARROW_DOWN:
-        if (element.nextSibling) {
+        if (element.parentElement.nextElementSibling) {
           event.preventDefault();
           event.stopPropagation();
-          (element.nextSibling as HTMLInputElement).focus();
+          (element.parentElement.nextElementSibling.firstElementChild as HTMLInputElement).focus();
         }
         break;
       case Keyboard.ARROW_UP:
         event.preventDefault();
         event.stopPropagation();
-
-        if (element.previousElementSibling) {
-          (element.previousElementSibling as HTMLInputElement).focus();
+        if (element.parentElement.previousElementSibling) {
+          (element.parentElement.previousElementSibling.firstElementChild as HTMLInputElement).focus();
         }
     }
   };
