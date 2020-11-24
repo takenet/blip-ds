@@ -22,6 +22,10 @@
         color: $color-primary-main;
       }
 
+      &--pointer {
+        cursor: pointer;
+      }
+
       &__ellipse {
         display: inline-flex;
         justify-content: center;

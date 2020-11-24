@@ -684,6 +684,10 @@ export namespace Components {
           * Used to define the last step component on the list
          */
         "last"?: boolean;
+        /**
+          * Used to set cursor pointer on the step (useful to allow clicks on the steps)
+         */
+        "pointer"?: boolean;
     }
     interface BdsStepper {
         /**
@@ -1759,6 +1763,10 @@ declare namespace LocalJSX {
           * Used to define the last step component on the list
          */
         "last"?: boolean;
+        /**
+          * Used to set cursor pointer on the step (useful to allow clicks on the steps)
+         */
+        "pointer"?: boolean;
     }
     interface BdsStepper {
     }

@@ -31,6 +31,11 @@ export class BdsStep implements ComponentInterface {
    */
   @Prop() index?: number = 0;
 
+  /**
+   * Used to set cursor pointer on the step (useful to allow clicks on the steps)
+   */
+  @Prop() pointer?: boolean = false;
+
   render() {
     return (
       <div class="step">
@@ -40,6 +45,7 @@ export class BdsStep implements ComponentInterface {
             'step__content--active': this.active,
             'step__content--completed': this.completed,
             'step__content--disabled': this.disabled,
+            'step__content--pointer': this.pointer,
             'step--last': this.last,
           }}
         >
