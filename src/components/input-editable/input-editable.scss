@@ -1,0 +1,69 @@
+.input__editable {
+  &--static {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      .input__editable--static__typo {
+        border: 1px solid $color-extended-blue-main;
+      }
+
+      .input__editable--static__icon {
+        color: $color-extended-blue-main;
+      }
+    }
+
+    &__typo {
+      border: 1px solid transparent;
+      margin: 0;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    &__icon {
+      margin-left: 8px;
+      color: $color-neutral-medium-cloud;
+    }
+  }
+
+  &--active {
+    display: flex;
+    align-items: center;
+
+    bds-input {
+      min-width: 120px;
+      max-width: 140px;
+      margin-right: 4px;
+      height: 40px;
+
+      &::part(input) {
+        font-size: $fs-24;
+      }
+
+      &::part(input__message) {
+        min-width: 180px;
+      }
+    }
+
+    bds-icon {
+      cursor: pointer;
+    }
+
+    &__icon--error {
+      color: $color-extend-reds-delete;
+
+      &:hover {
+        color: $color-extend-reds-lipstick;
+      }
+    }
+
+    &__icon--checkball {
+      color: $color-extended-blue-main;
+
+      &:hover {
+        color: $color-extended-blue-dark;
+      }
+    }
+  }
+}
