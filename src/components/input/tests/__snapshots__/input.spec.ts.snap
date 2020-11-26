@@ -10,7 +10,7 @@ Object {
         <div class="input__container">
           <div class="input__container__wrapper">
             <slot name="inside-input-left"></slot>
-            <input autocapitalize="off" autocomplete="off" class="input__container__text" cols="0" placeholder="" rows="1" type="text" value="">
+            <input autocapitalize="off" autocomplete="off" class="input__container__text" cols="0" part="input" placeholder="" rows="1" type="text" value="">
           </div>
         </div>
         <slot name="input-right"></slot>
