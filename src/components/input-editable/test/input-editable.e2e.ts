@@ -13,9 +13,9 @@ describe('input-editable', () => {
     typo = await page.find('bds-input-editable >>> bds-typo');
   });
 
-  const clickOnEditIcon = async (): Promise<void> => {
-    const editIcon = await page.find('bds-input-editable >>> .input__editable--static__icon');
-    editIcon.click();
+  const clickOnEditRegion = async (): Promise<void> => {
+    const divEdit = await page.find('bds-input-editable >>> .input__editable--static');
+    divEdit.click();
     await page.waitForChanges();
   };
 
@@ -32,13 +32,13 @@ describe('input-editable', () => {
   };
 
   it('sould hide edit icon when click on edit icon', async () => {
-    await clickOnEditIcon();
+    await clickOnEditRegion();
     const element = await page.find('bds-input-editable >>> .input__editable--static__icon');
     expect(element).toBeNull();
   });
 
   it('sould show input and icons when click in edit icon', async () => {
-    await clickOnEditIcon();
+    await clickOnEditRegion();
     const inputElement = await page.find('bds-input-editable >>> bds-input');
     const errorIcon = await page.find('bds-input-editable >>> .input__editable--active__icon--error');
     const checkballIcon = await page.find('bds-input-editable >>> .input__editable--active__icon--checkball');
@@ -48,7 +48,7 @@ describe('input-editable', () => {
   });
 
   it('sould cancel edit when click on cancel icon', async () => {
-    await clickOnEditIcon();
+    await clickOnEditRegion();
     const inputElement = await page.find('bds-input-editable >>> bds-input');
     await inputElement.setProperty('value', 'new value');
     await clickOnCancelIcon();
@@ -56,7 +56,7 @@ describe('input-editable', () => {
   });
 
   it('sould confirm edit when click on confirm icon', async () => {
-    await clickOnEditIcon();
+    await clickOnEditRegion();
     const inputElement = await page.find('bds-input-editable >>> bds-input');
     await inputElement.setProperty('value', 'new value');
     await page.waitForChanges();
@@ -67,7 +67,7 @@ describe('input-editable', () => {
 
   it('sould emit event bdsInputEditableSave edit when click on confirm icon', async () => {
     const spy = await page.spyOnEvent('bdsInputEditableSave');
-    await clickOnEditIcon();
+    await clickOnEditRegion();
     const inputElement = await page.find('bds-input-editable >>> bds-input');
     await inputElement.setProperty('value', 'new value');
     await page.waitForChanges();
@@ -77,7 +77,7 @@ describe('input-editable', () => {
 
   it('sould enter in danger state when click on confirm icon with empty input', async () => {
     const spy = await page.spyOnEvent('bdsInputEditableSave');
-    await clickOnEditIcon();
+    await clickOnEditRegion();
     const inputElement = await page.find('bds-input-editable >>> bds-input');
     await inputElement.setProperty('value', '');
     await page.waitForChanges();

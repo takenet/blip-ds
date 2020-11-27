@@ -91,16 +91,16 @@ export class InputEditable {
       <Host>
         <div class="input__editable">
           {!this.isEditing ? (
-            <div class="input__editable--static">
-              <bds-typo tag="span" class="input__editable--static__typo" variant="fs-24">
+            <div class="input__editable--static" onClick={this.handleEditing}>
+              <bds-typo
+                tag="span"
+                part="input__editable--static__typo"
+                class="input__editable--static__typo"
+                variant="fs-24"
+              >
                 {this.value}
               </bds-typo>
-              <bds-icon
-                key="edit-icon"
-                class="input__editable--static__icon"
-                name="edit"
-                onClick={this.handleEditing}
-              ></bds-icon>
+              <bds-icon key="edit-icon" class="input__editable--static__icon" name="edit"></bds-icon>
             </div>
           ) : (
             <div class="input__editable--active">

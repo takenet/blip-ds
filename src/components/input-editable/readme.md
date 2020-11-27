@@ -27,6 +27,13 @@
 | `bdsInputEditableSave` | Emitted when input text confirm. | `CustomEvent<InputEditableEventDetail>` |
 
 
+## Shadow Parts
+
+| Part                              | Description |
+| --------------------------------- | ----------- |
+| `"input__editable--static__typo"` |             |
+
+
 ## Dependencies
 
 ### Depends on

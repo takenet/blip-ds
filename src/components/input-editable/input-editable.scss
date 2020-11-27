@@ -6,11 +6,11 @@
 
     &:hover {
       .input__editable--static__typo {
-        border: 1px solid $color-extended-blue-main;
+        border: 1px solid $color-primary-main;
       }
 
       .input__editable--static__icon {
-        color: $color-extended-blue-main;
+        color: $color-primary-main;
       }
     }
 
@@ -19,6 +19,10 @@
       margin: 0;
       padding: 8px;
       border-radius: 8px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 80%;
     }
 
     &__icon {
@@ -59,10 +63,10 @@
     }
 
     &__icon--checkball {
-      color: $color-extended-blue-main;
+      color: $color-primary-main;
 
       &:hover {
-        color: $color-extended-blue-dark;
+        color: $color-primary-dark;
       }
     }
   }
