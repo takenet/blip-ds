@@ -28,9 +28,9 @@ export const defaultInputEditable = () => (
       type={select('type', typeOptions)}
       input-name={text('input name', '')}
       value={text('value', 'Storybook')}
-      minlength={number('minlength', null)}
-      minlengthErrorMessage={text('minlength-error-message', '')}
-      required-error-message={text('required-error-message', '')}
+      minlength={number('minlength', '3')}
+      minlength-error-message={text('minlength-error-message', 'tamanho menor que o mínimo')}
+      required-error-message={text('required-error-message', 'campo não pode ser vazio')}
       maxlength={number('maxlength', null)}
       error-message={text('error-message', '')}
       danger={boolean('danger', false)}

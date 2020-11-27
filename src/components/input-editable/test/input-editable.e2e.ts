@@ -7,6 +7,7 @@ describe('input-editable', () => {
   beforeEach(async () => {
     page = await newE2EPage({
       html: `<bds-input-editable
+        minlength="3"
         value="Test"
         ></bds-input-editable>`,
     });
@@ -80,6 +81,16 @@ describe('input-editable', () => {
     await clickOnEditRegion();
     const inputElement = await page.find('bds-input-editable >>> bds-input');
     await inputElement.setProperty('value', '');
+    await page.waitForChanges();
+    await clickOnConfirmIcon();
+    expect(spy).not.toHaveReceivedEvent();
+  });
+
+  it('sould enter in danger state when value lenght is less than minlenght and confirm icon', async () => {
+    const spy = await page.spyOnEvent('bdsInputEditableSave');
+    await clickOnEditRegion();
+    const inputElement = await page.find('bds-input-editable >>> bds-input');
+    await inputElement.setProperty('value', '12');
     await page.waitForChanges();
     await clickOnConfirmIcon();
     expect(spy).not.toHaveReceivedEvent();
