@@ -126,7 +126,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-medium-cloud);
     }
   }
 
@@ -164,7 +164,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-medium-cloud);
     }
   }
 
@@ -188,7 +188,7 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button(
         transparent,
-        $color-neutral-disabled-blues-text,
+        $color-neutral-medium-cloud,
         1px solid $color-neutral-disabled-blues-text
       );
     }
@@ -214,7 +214,7 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button(
         transparent,
-        $color-neutral-disabled-blues-text,
+        $color-neutral-medium-cloud,
         1px dashed $color-neutral-disabled-blues-text
       );
     }
@@ -234,7 +234,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-medium-cloud);
     }
   }
 
