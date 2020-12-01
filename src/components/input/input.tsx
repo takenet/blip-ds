@@ -369,7 +369,7 @@ export class Input {
 
     if (message) {
       return (
-        <div class={styles}>
+        <div class={styles} part="input__message">
           <div class="input__message__icon">
             <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
           </div>
@@ -500,6 +500,7 @@ export class Input {
                 value={this.value}
                 pattern={this.pattern}
                 required={this.required}
+                part="input"
               ></Element>
             </div>
           </div>

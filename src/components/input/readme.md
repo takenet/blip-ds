@@ -107,11 +107,20 @@ Type: `Promise<void>`
 
 
 
+## Shadow Parts
+
+| Part               | Description |
+| ------------------ | ----------- |
+| `"input"`          |             |
+| `"input__message"` |             |
+
+
 ## Dependencies
 
 ### Used by
 
  - [bds-input-chips](../input-chips)
+ - [bds-input-editable](../input-editable)
  - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
  - [bds-select](../selects/select)
@@ -130,6 +139,7 @@ graph TD;
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
   bds-input-chips --> bds-input
+  bds-input-editable --> bds-input
   bds-input-password --> bds-input
   bds-input-phone-number --> bds-input
   bds-select --> bds-input

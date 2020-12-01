@@ -73,6 +73,8 @@ $color-extend-rr-ballet: #fdd9e1;
 $color-extend-rr-yogurt: #fbb3c4;
 $color-extend-rr-watermelon: #f66689;
 $color-extend-rr-blush: #c85c77;
+$color-extend-reds-delete: #ff4c4c;
+$color-extend-reds-lipstick: #a01c2c;
 
 // Amarelos / Laranjas
 $color-extend-yo-fairy: #fbf9cc;
@@ -110,6 +112,8 @@ $color-extended-blue-genie: #d3defc;
 $color-extended-blue-unicorn: #a8bdf9;
 $color-extended-blue-sea: #517bf2;
 $color-extended-blue-jazz: #3d5cb6;
+$color-extended-blue-main: #4786f1;
+$color-extended-blue-dark: #0052cc;
 $color-extended-blue-brand: #00c6d7;
 
 // Roxos
@@ -125,96 +129,27 @@ $color-extended-purples-acai: #5b337b;
 $color-extend-browns-cheetos: #f6a721;
 
 // Gradients
-$color-gradient-universe: linear-gradient(
-  195.12deg,
-  #343c4c -10.36%,
-  #242b36 45.63%,
-  #1d1d1d 117.21%
-);
-$color-gradient-street: linear-gradient(
-  195.12deg,
-  #6d7a81 -10.36%,
-  #52636c 45.63%,
-  #312f44 117.2%,
-  #3d4a51 117.21%
-);
-$color-gradient-chair: linear-gradient(
-  #788ca3 0%,
-  #607b99 43.89%,
-  #485c73 100%
-);
-$color-gradient-shine: linear-gradient(
-  195.12deg,
-  #f5f8f9 -10.36%,
-  #dee8ec 45.63%,
-  #d2dfe6 117.21%
-);
-$color-gradient-olaf: linear-gradient(
-  195.12deg,
-  #fafcfc -10.36%,
-  #f5f8f9 45.63%,
-  #e8eaeb 117.2%,
-  #e8eaeb 117.21%
-);
-$color-gradient-dg-blip-system: linear-gradient(
-  195.12deg,
-  #87dde8 -10.36%,
-  #2cc3d5 45.63%,
-  #2498a8 117.21%
-);
-$color-gradient-error: linear-gradient(
-  195.12deg,
-  #ff5a60 -10.36%,
-  #f04847 45.63%,
-  #b43635 117.21%
-);
-$color-gradient-phoenix: linear-gradient(
-  195.12deg,
-  #ffcf33 -10.36%,
-  #f9b42f 45.63%,
-  #f99b45 117.21%
-);
-$color-gradient-success: linear-gradient(
-  195.12deg,
-  #93d2aa -10.36%,
-  #4dcb7b 45.63%,
-  #4aa86c 117.21%
-);
-$color-gradient-barbie: linear-gradient(
-  195.12deg,
-  #fbb3c4 -10.36%,
-  #f66689 45.63%,
-  #c85c77 117.21%
-);
-$color-gradient-jeans: linear-gradient(
-  195.12deg,
-  #514f64 -10.36%,
-  #2c2a46 45.63%,
-  #312f44 117.2%,
-  #312f44 117.21%
-);
-$color-gradient-ocean: linear-gradient(
-  195.12deg,
-  #6d8ce5 -10.36%,
-  #517bf2 45.63%,
-  #4d6cc5 117.21%
-);
-$color-gradient-smurfette: linear-gradient(
-  195.12deg,
-  #9ee3ff -10.36%,
-  #55cfff 45.63%,
-  #51b2dd 117.21%
-);
+$color-gradient-universe: linear-gradient(195.12deg, #343c4c -10.36%, #242b36 45.63%, #1d1d1d 117.21%);
+$color-gradient-street: linear-gradient(195.12deg, #6d7a81 -10.36%, #52636c 45.63%, #312f44 117.2%, #3d4a51 117.21%);
+$color-gradient-chair: linear-gradient(#788ca3 0%, #607b99 43.89%, #485c73 100%);
+$color-gradient-shine: linear-gradient(195.12deg, #f5f8f9 -10.36%, #dee8ec 45.63%, #d2dfe6 117.21%);
+$color-gradient-olaf: linear-gradient(195.12deg, #fafcfc -10.36%, #f5f8f9 45.63%, #e8eaeb 117.2%, #e8eaeb 117.21%);
+$color-gradient-dg-blip-system: linear-gradient(195.12deg, #87dde8 -10.36%, #2cc3d5 45.63%, #2498a8 117.21%);
+$color-gradient-error: linear-gradient(195.12deg, #ff5a60 -10.36%, #f04847 45.63%, #b43635 117.21%);
+$color-gradient-phoenix: linear-gradient(195.12deg, #ffcf33 -10.36%, #f9b42f 45.63%, #f99b45 117.21%);
+$color-gradient-success: linear-gradient(195.12deg, #93d2aa -10.36%, #4dcb7b 45.63%, #4aa86c 117.21%);
+$color-gradient-barbie: linear-gradient(195.12deg, #fbb3c4 -10.36%, #f66689 45.63%, #c85c77 117.21%);
+$color-gradient-jeans: linear-gradient(195.12deg, #514f64 -10.36%, #2c2a46 45.63%, #312f44 117.2%, #312f44 117.21%);
+$color-gradient-ocean: linear-gradient(195.12deg, #6d8ce5 -10.36%, #517bf2 45.63%, #4d6cc5 117.21%);
+$color-gradient-smurfette: linear-gradient(195.12deg, #9ee3ff -10.36%, #55cfff 45.63%, #51b2dd 117.21%);
 
 // Shadows
 $shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.4);
 $shadow-box: 0px 4px 10px rgba(51, 51, 51, 0.3);
-$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4),
-  0px 0px 4px rgba(96, 123, 153, 0.3);
-
+$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
 
 //Custom Colors
-$color-secondary-undo: #485C73;
-$color-secondary-redo: #485C73;
-$color-facebook-main: #1877F2;
-$color-facebook-dark: #1771E6;
+$color-secondary-undo: #485c73;
+$color-secondary-redo: #485c73;
+$color-facebook-main: #1877f2;
+$color-facebook-dark: #1771e6;
