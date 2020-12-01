@@ -57,7 +57,7 @@ export class InputEditable {
   /**
    * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
    */
-  @Prop() maxlength?: number = 0;
+  @Prop() maxlength?: number;
 
   /**
    * Indicated to pass an feeback to user.
@@ -79,7 +79,7 @@ export class InputEditable {
 
   private handleSaveText = (): void => {
     const newValue = this.el.shadowRoot.querySelector('bds-input').value;
-    if (newValue.length > 0 && newValue.length >= this.minlength) {
+    if (newValue.length > 0 && newValue.length >= this.minlength && !this.danger) {
       this.bdsInputEditableSave.emit({ value: newValue, oldValue: this.value });
       this.value = newValue;
       this.toggleEditing();

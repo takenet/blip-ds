@@ -1,4 +1,6 @@
 .input__editable {
+  display: table;
+
   &--static {
     display: flex;
     align-items: center;

@@ -11,10 +11,6 @@ export default {
   },
 };
 
-const inputStyle = {
-  width: '312px',
-};
-
 const typeOptions = {
   Text: 'text',
   Password: 'password',
@@ -23,7 +19,7 @@ const typeOptions = {
 };
 
 export const defaultInputEditable = () => (
-  <div style={inputStyle}>
+  <div>
     <bds-input-editable
       type={select('type', typeOptions)}
       input-name={text('input name', '')}
