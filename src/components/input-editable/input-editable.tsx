@@ -25,11 +25,6 @@ export class InputEditable {
   @State() isEditing? = false;
 
   /**
-   * Input type. Can be one of: "text", "password", "number" or "email".
-   */
-  @Prop({ reflect: true }) type?: InputType = 'text';
-
-  /**
    * Input Name
    */
   @Prop() inputName?: string = '';
@@ -65,7 +60,7 @@ export class InputEditable {
   @Prop() errorMessage?: string = '';
 
   /**
-   * Add state danger on input, use for use feedback.
+   * Add state danger on input, use for use feedback. If true avoid save confirmation.
    */
   @Prop({ reflect: true }) danger?: boolean = false;
 
@@ -105,7 +100,7 @@ export class InputEditable {
           ) : (
             <div class="input__editable--active">
               <bds-input
-                type={this.type}
+                type="text"
                 input-name={this.inputName}
                 value={this.value}
                 minlength={this.minlength}

@@ -11,17 +11,9 @@ export default {
   },
 };
 
-const typeOptions = {
-  Text: 'text',
-  Password: 'password',
-  Number: 'number',
-  Email: 'email',
-};
-
 export const defaultInputEditable = () => (
   <div>
     <bds-input-editable
-      type={select('type', typeOptions)}
       input-name={text('input name', '')}
       value={text('value', 'Storybook')}
       minlength={number('minlength', '3')}
