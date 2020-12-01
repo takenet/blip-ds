@@ -30,20 +30,7 @@ $button-padding-left-right: 16px;
     border: $border;
   }
 
-  &:hover,
-  &:focus {
-    background: $background;
-
-    @if ($color) {
-      color: $color;
-    }
-
-    @if ($border) {
-      border: $border;
-    }
-  }
-
-  &:active {
+  &:hover, &:active {
     background: $background;
 
     @if ($color) {
@@ -129,8 +116,7 @@ $button-padding-left-right: 16px;
     background: $color-primary-main;
     color: $color-primary-ghost;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: $color-primary-dark;
     }
 
@@ -139,13 +125,8 @@ $button-padding-left-right: 16px;
       color: $color-primary-ghost;
     }
 
-    &:active {
-      background: $color-primary-main;
-      color: $color-primary-ghost;
-    }
-
     &--disabled {
-      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-medium-cloud);
     }
   }
 
@@ -153,8 +134,7 @@ $button-padding-left-right: 16px;
     background: transparent;
     color: $color-neutral-dark-rooftop;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: $color-neutral-disabled-blues-bg;
       color: $color-primary-main;
     }
@@ -165,7 +145,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-neutral-disabled-blues-text);
+      @include disable-button(transparent, $color-neutral-medium-cloud);
     }
   }
 
@@ -173,8 +153,7 @@ $button-padding-left-right: 16px;
     background: transparent;
     color: $color-snow-white;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: $color-secondary-white-bg-hover;
       color: $color-snow-white;
     }
@@ -185,7 +164,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-medium-cloud);
     }
   }
 
@@ -194,8 +173,7 @@ $button-padding-left-right: 16px;
     color: $color-primary-main;
     border: 1px solid $color-primary-main;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: transparent;
       color: $color-primary-dark;
       border: 1px solid $color-primary-dark;
@@ -210,7 +188,7 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button(
         transparent,
-        $color-neutral-disabled-blues-text,
+        $color-neutral-medium-cloud,
         1px solid $color-neutral-disabled-blues-text
       );
     }
@@ -221,8 +199,7 @@ $button-padding-left-right: 16px;
     color: $color-primary-main;
     border: 1px dashed $color-primary-main;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: transparent;
       color: $color-primary-dark;
       border: 1px dashed $color-primary-dark;
@@ -237,7 +214,7 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button(
         transparent,
-        $color-neutral-disabled-blues-text,
+        $color-neutral-medium-cloud,
         1px dashed $color-neutral-disabled-blues-text
       );
     }
@@ -247,8 +224,7 @@ $button-padding-left-right: 16px;
     background: $color-facebook-main;
     color: $color-primary-ghost;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: $color-facebook-dark;
     }
 
@@ -258,7 +234,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-disabled-blues-text);
+      @include disable-button($color-neutral-disabled-blues-bg, $color-neutral-medium-cloud);
     }
   }
 
