@@ -95,7 +95,7 @@ export class BdsToast implements ComponentInterface {
     duration,
     position,
   }: CreateToastType) {
-    let toastContainer = document.querySelector('bds-toast-container');
+    let toastContainer = document.querySelector(`bds-toast-container.${position}`);
 
     if (toastContainer) {
       toastContainer.appendChild(this.el);

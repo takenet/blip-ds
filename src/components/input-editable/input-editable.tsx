@@ -1,5 +1,4 @@
 import { Component, Prop, State, Event, EventEmitter, Element, h, Host } from '@stencil/core';
-import { InputType } from '../input/input-interface';
 
 export interface InputEditableEventDetail {
   value: string;
