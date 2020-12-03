@@ -6,6 +6,8 @@ export type ButtonActionType = 'close' | 'custom';
 
 export type IconVariantMap = { [key in VariantType]: string };
 
+export type PositionType = 'topright' | 'topleft' | 'bottomright' | 'bottomleft';
+
 export type CreateToastType = {
   buttonAction?: ButtonActionType;
   buttonText?: string;
@@ -15,4 +17,5 @@ export type CreateToastType = {
   actionType?: ActionType;
   variant?: VariantType;
   duration?: number;
+  position?: PositionType;
 };

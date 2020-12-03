@@ -1,15 +1,43 @@
 :host {
   position: fixed;
-  bottom: 40px;
-  left: 32px;
   display: flex;
   flex-direction: column;
   z-index: $zindex-toast;
   width: 456px;
+  
+  &.bottomright {
+    bottom: 40px;
+    right: 32px
+  }
+  
+  &.bottomleft {
+    bottom: 40px;
+    left: 32px
+  }
+
+  &.topright {
+    top: 40px;
+    right: 32px
+  }
+  
+  &.topleft {
+    top: 40px;
+    left: 32px
+  }
 
   @media (max-width: $sm-screen) {
+    right: 0px;
     left: 0px;
-    bottom: 20px;
     width: 100%;
+
+    &.topleft,
+    &.topright{
+      top: 20px;
+    }
+
+    &.bottomleft,
+    &.bottomright{
+      bottom: 20px;
+    }
   }
 }

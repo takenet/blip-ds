@@ -18,7 +18,7 @@ import { InputEditableEventDetail } from "./components/input-editable/input-edit
 import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
-import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
+import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
@@ -718,7 +718,7 @@ export namespace Components {
         /**
           * Can be used outside to open the toast
          */
-        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, position, }: CreateToastType) => Promise<void>;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
@@ -731,6 +731,10 @@ export namespace Components {
           * used for add the icon. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Event used to execute some action when the action button on the toast is clicked
+         */
+        "position": PositionType;
         /**
           * Controls the open event of the component:
          */
@@ -1779,9 +1783,13 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Event used to execute some action when the action button on the toast is clicked
+          * The toast position on the screen. Can be one of: 'topright', 'topleft', 'bottomright', 'bottomleft' (default value);
          */
         "onToastButtonClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event used to execute some action when the action button on the toast is clicked
+         */
+        "position"?: PositionType;
         /**
           * Controls the open event of the component:
          */
