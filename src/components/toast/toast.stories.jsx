@@ -22,7 +22,7 @@ export const toastSystem = () => {
   };
   const actionTypeOptions = { Button: "button", Icon: "icon" };
   const buttonActionOptions = { Close: "close", Custom: "custom" };
-  const positionTypeOptions = { BottomLeft: 'bottomleft', BottomRight: 'bottomright', TopLeft: 'topleft', TopRight: 'topright' };
+  const positionTypeOptions = { BottomLeft: 'bottom-left', BottomRight: 'bottom-right', TopLeft: 'top-left', TopRight: 'top-right' };
 
   const showToast = async () => {
     const newtoast = document.createElement("bds-toast");

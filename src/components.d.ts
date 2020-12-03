@@ -1783,7 +1783,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * The toast position on the screen. Can be one of: 'topright', 'topleft', 'bottomright', 'bottomleft' (default value);
+          * The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
          */
         "onToastButtonClick"?: (event: CustomEvent<any>) => void;
         /**

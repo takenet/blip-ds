@@ -5,22 +5,22 @@
   z-index: $zindex-toast;
   width: 456px;
   
-  &.bottomright {
+  &.bottom-right {
     bottom: 40px;
     right: 32px
   }
   
-  &.bottomleft {
+  &.bottom-left {
     bottom: 40px;
     left: 32px
   }
 
-  &.topright {
+  &.top-right {
     top: 40px;
     right: 32px
   }
   
-  &.topleft {
+  &.top-left {
     top: 40px;
     left: 32px
   }
@@ -30,13 +30,13 @@
     left: 0px;
     width: 100%;
 
-    &.topleft,
-    &.topright{
+    &.top-left,
+    &.top-right{
       top: 20px;
     }
 
-    &.bottomleft,
-    &.bottomright{
+    &.bottom-left,
+    &.bottom-right{
       bottom: 20px;
     }
   }

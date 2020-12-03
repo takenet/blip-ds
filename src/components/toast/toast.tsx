@@ -63,10 +63,10 @@ export class BdsToast implements ComponentInterface {
   /**
    * Event used to execute some action when the action button on the toast is clicked
    */
-  @Prop() position: PositionType = 'bottomleft';
+  @Prop() position: PositionType = 'bottom-left';
   /**
    * The toast position on the screen. Can be one of:
-   * 'topright', 'topleft', 'bottomright', 'bottomleft' (default value);
+   * 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
    */
   @Event() toastButtonClick!: EventEmitter;
   /**
@@ -113,7 +113,7 @@ export class BdsToast implements ComponentInterface {
     this.el.toastTitle = toastTitle;
     this.el.variant = variant || 'system';
     this.el.duration = duration * 1000 || 0;
-    this.el.position = position || 'bottomleft';
+    this.el.position = position || 'bottom-left';
 
     this.el.icon = icon ?? this.mapIconName[this.variant];
 
