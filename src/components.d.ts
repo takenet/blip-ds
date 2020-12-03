@@ -419,7 +419,7 @@ export namespace Components {
     }
     interface BdsInputEditable {
         /**
-          * Add state danger on input, use for use feedback.
+          * Add state danger on input, use for use feedback. If true avoid save confirmation.
          */
         "danger"?: boolean;
         /**
@@ -446,10 +446,6 @@ export namespace Components {
           * Error message when input is required
          */
         "requiredErrorMessage": string;
-        /**
-          * Input type. Can be one of: "text", "password", "number" or "email".
-         */
-        "type"?: InputType;
         /**
           * The value of the input.
          */
@@ -1423,7 +1419,7 @@ declare namespace LocalJSX {
     }
     interface BdsInputEditable {
         /**
-          * Add state danger on input, use for use feedback.
+          * Add state danger on input, use for use feedback. If true avoid save confirmation.
          */
         "danger"?: boolean;
         /**
@@ -1454,10 +1450,6 @@ declare namespace LocalJSX {
           * Error message when input is required
          */
         "requiredErrorMessage"?: string;
-        /**
-          * Input type. Can be one of: "text", "password", "number" or "email".
-         */
-        "type"?: InputType;
         /**
           * The value of the input.
          */
