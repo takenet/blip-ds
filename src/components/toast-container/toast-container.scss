@@ -1,15 +1,46 @@
+$vertical-margin: 40px;
+$horizontal-margin: 32px;
+
 :host {
   position: fixed;
-  bottom: 40px;
-  left: 32px;
   display: flex;
   flex-direction: column;
   z-index: $zindex-toast;
   width: 456px;
+  
+  &.bottom-right {
+    bottom: $vertical-margin;
+    right: $horizontal-margin
+  }
+  
+  &.bottom-left {
+    bottom: $vertical-margin;
+    left: $horizontal-margin
+  }
+
+  &.top-right {
+    top: $vertical-margin;
+    right: $horizontal-margin
+  }
+  
+  &.top-left {
+    top: $vertical-margin;
+    left: $horizontal-margin
+  }
 
   @media (max-width: $sm-screen) {
+    right: 0px;
     left: 0px;
-    bottom: 20px;
     width: 100%;
+
+    &.top-left,
+    &.top-right{
+      top: 20px;
+    }
+
+    &.bottom-left,
+    &.bottom-right{
+      bottom: 20px;
+    }
   }
 }

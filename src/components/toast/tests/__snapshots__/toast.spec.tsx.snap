@@ -30,7 +30,7 @@ Object {
   "body": <body>
   <bds-toast action-type="button" button-action="close" button-text="cancel" duration="0" show="true" toast-text="texto" toast-title="titulo" variant="system">
     <mock:shadow-root>
-      <div class="show toast toast--action--button toast--system">
+      <div class="show show--bottom-left toast toast--action--button toast--system">
         <div class="toast__content">
           <bds-typo bold="bold" variant="fs-14">
             titulo
