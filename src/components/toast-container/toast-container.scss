@@ -1,3 +1,6 @@
+$vertical-margin: 40px;
+$horizontal-margin: 32px;
+
 :host {
   position: fixed;
   display: flex;
@@ -6,23 +9,23 @@
   width: 456px;
   
   &.bottom-right {
-    bottom: 40px;
-    right: 32px
+    bottom: $vertical-margin;
+    right: $horizontal-margin
   }
   
   &.bottom-left {
-    bottom: 40px;
-    left: 32px
+    bottom: $vertical-margin;
+    left: $horizontal-margin
   }
 
   &.top-right {
-    top: 40px;
-    right: 32px
+    top: $vertical-margin;
+    right: $horizontal-margin
   }
   
   &.top-left {
-    top: 40px;
-    left: 32px
+    top: $vertical-margin;
+    left: $horizontal-margin
   }
 
   @media (max-width: $sm-screen) {
