@@ -3,7 +3,7 @@
  * Nossa paleta principal é composta por tons de azul que rementem diretamente as cores da marca,
  * essas cores estão presentes na maioria dos pontos de contato, do marketing ao produto como também por toda a plataforma.
  */
-$color-primary-main: #2cc3d5;
+$color-primary-main: #00C6D7;
 $color-primary-light: #87dde8;
 $color-primary-dark: #2498a8;
 $color-primary-ghost: #f8fbfb;
@@ -146,6 +146,9 @@ $color-gradient-smurfette: linear-gradient(195.12deg, #9ee3ff -10.36%, #55cfff 4
 // Shadows
 $shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.4);
 $shadow-box: 0px 4px 10px rgba(51, 51, 51, 0.3);
+$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4),
+  0px 0px 4px rgba(96, 123, 153, 0.3);
+$light-drop: 0px 2px 8px rgba(7, 71, 166, 0.15);
 $shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
 
 //Custom Colors
