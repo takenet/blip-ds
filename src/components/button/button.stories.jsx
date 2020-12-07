@@ -106,7 +106,7 @@ export const variantSecondaryButton = () => (
     <div style={contentStyle}>
       <bds-typo variant="fs-20">Text Only</bds-typo>
       <bds-button variant="secondary" disabled>
-        Text button
+        Disabled
       </bds-button>
       <br />
       <bds-button variant="secondary" size="tall">
@@ -125,7 +125,7 @@ export const variantSecondaryButton = () => (
     <div style={contentStyle}>
       <bds-typo variant="fs-20">Icon Left</bds-typo>
       <bds-button variant="secondary" icon="file-new" disabled>
-        Text button
+        Disabled
       </bds-button>
       <br />
       <bds-button variant="secondary" icon="file-new" size="tall">
@@ -144,7 +144,7 @@ export const variantSecondaryButton = () => (
     <div style={contentStyle}>
       <bds-typo variant="fs-20">Arrow</bds-typo>
       <bds-button variant="secondary" arrow disabled>
-        Text button
+        Disabled
       </bds-button>
       <br />
       <bds-button variant="secondary" arrow size="tall">

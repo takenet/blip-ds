@@ -145,6 +145,34 @@ describe('bds-toast', () => {
     expect(toast.root).toMatchSnapshot();
   });
 
+  it('should create a new toast on right position', async () => {
+    const positions = ['top-left', 'top-right', 'bottom-right', 'bottom-left'];
+
+    for (const position in positions) {
+      const page = await getEmptyToast();
+
+      await page.root.create({
+        actionType: 'button',
+        buttonAction: 'close',
+        buttonText: 'cancel',
+        icon: 'trash',
+        toastText: 'lorem ipsum is very cool',
+        toastTitle: 'Best title ever',
+        variant: 'system',
+        duration: 0,
+        position,
+      });
+
+      await page.waitForChanges();
+
+      const newToast = page.root.shadowRoot.querySelector(`.show--${position}`);
+      expect(newToast).toBeTruthy();
+
+      const toastContainer = page.body.querySelector('bds-toast-container');
+      expect(toastContainer).toHaveClass(position);
+    }
+  });
+
   it('should render the default icon (attention) if the variant is warning icon prop is not passed', async () => {
     const page = await getToast();
 
@@ -156,6 +184,7 @@ describe('bds-toast', () => {
       toastTitle: 'Best title ever',
       variant: 'warning',
       duration: 0,
+      position: 'bottom-left',
     });
 
     await page.waitForChanges();

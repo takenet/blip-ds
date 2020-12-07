@@ -1,5 +1,12 @@
 import { Component, ComponentInterface, h, Prop, Method, Element, Event, EventEmitter } from '@stencil/core';
-import { ActionType, VariantType, ButtonActionType, CreateToastType, IconVariantMap } from './toast-interface';
+import {
+  ActionType,
+  VariantType,
+  ButtonActionType,
+  CreateToastType,
+  IconVariantMap,
+  PositionType,
+} from './toast-interface';
 @Component({
   tag: 'bds-toast',
   styleUrl: 'toast.scss',
@@ -54,6 +61,11 @@ export class BdsToast implements ComponentInterface {
    */
   @Prop() hide = false;
   /**
+   * The toast position on the screen. Can be one of:
+   * 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
+   */
+  @Prop() position: PositionType = 'bottom-left';
+  /**
    * Event used to execute some action when the action button on the toast is clicked
    */
   @Event() toastButtonClick!: EventEmitter;
@@ -81,14 +93,18 @@ export class BdsToast implements ComponentInterface {
     toastTitle,
     variant,
     duration,
+    position,
   }: CreateToastType) {
-    const toastContainer = document.querySelector('bds-toast-container');
+    let toastContainer = document.querySelector(`bds-toast-container.${position}`);
 
     if (toastContainer) {
       toastContainer.appendChild(this.el);
+      toastContainer.classList.add(position);
     } else {
-      document.body.appendChild(document.createElement('bds-toast-container'));
-      document.querySelector('bds-toast-container').appendChild(this.el);
+      toastContainer = document.createElement('bds-toast-container');
+      toastContainer.classList.add(position);
+      document.body.appendChild(toastContainer);
+      toastContainer.appendChild(this.el);
     }
     this.el.actionType = actionType || 'button';
     this.el.buttonAction = buttonAction || 'close';
@@ -97,6 +113,7 @@ export class BdsToast implements ComponentInterface {
     this.el.toastTitle = toastTitle;
     this.el.variant = variant || 'system';
     this.el.duration = duration * 1000 || 0;
+    this.el.position = position || 'bottom-left';
 
     this.el.icon = icon ?? this.mapIconName[this.variant];
 
@@ -146,7 +163,7 @@ export class BdsToast implements ComponentInterface {
           toast: true,
           [`toast--${this.variant}`]: true,
           [`toast--action--${this.actionType}`]: true,
-          show: this.show,
+          [`show show--${this.position}`]: this.show,
           hide: this.hide,
         }}
       >

@@ -8,7 +8,16 @@
   }
   .show {
     opacity: 1;
-    animation: toastAnimationFadeIn 1s;
+
+    &--top-right,
+    &--bottom-right {
+      animation: toastAnimationFadeInFromRight 1s;
+    }
+    
+    &--top-left,
+    &--bottom-left {
+      animation: toastAnimationFadeInFromLeft 1s;
+    }
   }
   .hide {
     transition: all 1s;
@@ -123,7 +132,21 @@
   }
 }
 
-@keyframes toastAnimationFadeIn {
+@keyframes toastAnimationFadeInFromRight {
+  0% {
+    opacity: 0;
+    right: -200px;
+  }
+  50% {
+    opacity: 0.9;
+    right: 1px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes toastAnimationFadeInFromLeft {
   0% {
     opacity: 0;
     left: -200px;

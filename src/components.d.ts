@@ -14,10 +14,11 @@ import { IconSize, IconTheme, IconType } from "./components/icon/icon-interface"
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
+import { InputEditableEventDetail } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
-import { ActionType, ButtonActionType, CreateToastType, VariantType } from "./components/toast/toast-interface";
+import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
@@ -416,6 +417,40 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BdsInputEditable {
+        /**
+          * Add state danger on input, use for use feedback. If true avoid save confirmation.
+         */
+        "danger"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minlengthErrorMessage": string;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage": string;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -738,7 +773,7 @@ export namespace Components {
         /**
           * Can be used outside to open the toast
          */
-        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, position, }: CreateToastType) => Promise<void>;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
@@ -751,6 +786,10 @@ export namespace Components {
           * used for add the icon. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Event used to execute some action when the action button on the toast is clicked
+         */
+        "position": PositionType;
         /**
           * Controls the open event of the component:
          */
@@ -898,6 +937,12 @@ declare global {
         prototype: HTMLBdsInputChipsElement;
         new (): HTMLBdsInputChipsElement;
     };
+    interface HTMLBdsInputEditableElement extends Components.BdsInputEditable, HTMLStencilElement {
+    }
+    var HTMLBdsInputEditableElement: {
+        prototype: HTMLBdsInputEditableElement;
+        new (): HTMLBdsInputEditableElement;
+    };
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
     }
     var HTMLBdsInputPasswordElement: {
@@ -1015,6 +1060,7 @@ declare global {
         "bds-icon-button": HTMLBdsIconButtonElement;
         "bds-input": HTMLBdsInputElement;
         "bds-input-chips": HTMLBdsInputChipsElement;
+        "bds-input-editable": HTMLBdsInputEditableElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
@@ -1444,6 +1490,44 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    interface BdsInputEditable {
+        /**
+          * Add state danger on input, use for use feedback. If true avoid save confirmation.
+         */
+        "danger"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+         */
+        "maxlength"?: number;
+        /**
+          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+         */
+        "minlength"?: number;
+        /**
+          * Error message when the value is lower than the minlength
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Emitted when input text confirm.
+         */
+        "onBdsInputEditableSave"?: (event: CustomEvent<InputEditableEventDetail>) => void;
+        /**
+          * Error message when input is required
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * The value of the input.
+         */
+        "value"?: string | null;
+    }
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -1796,9 +1880,13 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Event used to execute some action when the action button on the toast is clicked
+          * The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
          */
         "onToastButtonClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event used to execute some action when the action button on the toast is clicked
+         */
+        "position"?: PositionType;
         /**
           * Controls the open event of the component:
          */
@@ -1875,6 +1963,7 @@ declare namespace LocalJSX {
         "bds-icon-button": BdsIconButton;
         "bds-input": BdsInput;
         "bds-input-chips": BdsInputChips;
+        "bds-input-editable": BdsInputEditable;
         "bds-input-password": BdsInputPassword;
         "bds-input-phone-number": BdsInputPhoneNumber;
         "bds-loading-spinner": BdsLoadingSpinner;
@@ -1912,6 +2001,7 @@ declare module "@stencil/core" {
             "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
+            "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;

@@ -22,6 +22,7 @@ export const toastSystem = () => {
   };
   const actionTypeOptions = { Button: "button", Icon: "icon" };
   const buttonActionOptions = { Close: "close", Custom: "custom" };
+  const positionTypeOptions = { BottomLeft: 'bottom-left', BottomRight: 'bottom-right', TopLeft: 'top-left', TopRight: 'top-right' };
 
   const showToast = async () => {
     const newtoast = document.createElement("bds-toast");
@@ -35,6 +36,7 @@ export const toastSystem = () => {
     const buttonText = text("button-text", "Cancelar");
     const duration = text("duration", 0);
     const buttonAction = select("button-action", buttonActionOptions);
+    const position = select("position", positionTypeOptions, positionTypeOptions.BottomLeft);
 
     await newtoast.create({
       variant,
@@ -46,12 +48,12 @@ export const toastSystem = () => {
       variant,
       duration,
       icon,
+      position
     });
   };
 
   return (
     <>
-      <bds-toast-container></bds-toast-container>
       <bds-button onClick={() => showToast()}>Show toast</bds-button>
     </>
   );
