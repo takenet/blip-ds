@@ -78,6 +78,11 @@
     "type": "git",
     "url": "https://github.com/takenet/blip-ds.git"
   },
+  "storybook-deployer": {
+    "gitUsername": "mmdfmateus",
+    "gitEmail": "mmdfmateus@gmail.com",
+    "commitMessage": "Deploy Storybook"
+  },
   "bugs": {
     "url": "https://github.com/takenet/blip-ds/issues"
   },
