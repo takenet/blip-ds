@@ -30,8 +30,6 @@ jobs:
         run: |
           npm run storybook:build
           npm run storybook:deploy
-        with:
-          FOLDER: .docs        
         env:
           GITHUB_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
         
