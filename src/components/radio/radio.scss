@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 $radio-spacing-text: 8px;
 $radio-circle-width: 16px;
@@ -13,7 +13,7 @@ $radio-circle-pointer-height: 10px;
   align-items: center;
   flex-wrap: nowrap;
 
-  [type="radio"] {
+  [type='radio'] {
     display: none;
     &:focus {
       outline: 0;
@@ -28,12 +28,12 @@ $radio-circle-pointer-height: 10px;
     flex-shrink: 0;
     border: 1px solid $color-primary-main;
     border-radius: 100%;
-    background: $color-snow-white;
+    background: $color-neutral-light-snow;
 
     &__pointer {
       @include animation();
       border-radius: 100%;
-      background: $color-snow-white;
+      background: $color-neutral-light-snow;
       height: $radio-circle-pointer-height;
       width: $radio-circle-pointer-width;
     }
@@ -50,8 +50,8 @@ $radio-circle-pointer-height: 10px;
   }
 
   /** State Checked */
-  &__input[type="radio"]:checked ~ &__circle {
-    background: $color-snow-white;
+  &__input[type='radio']:checked ~ &__circle {
+    background: $color-neutral-light-snow;
 
     .radio__circle__pointer {
       background-color: $color-primary-main;
@@ -67,17 +67,17 @@ $radio-circle-pointer-height: 10px;
   }
 
   /** State Disabled */
-  &__input[type="radio"]:disabled ~ &__circle {
-    border-color: $color-neutral-disabled-blues-text;
-    background-color: $color-neutral-disabled-blues-bg;
+  &__input[type='radio']:disabled ~ &__circle {
+    border-color: $color-disabled-text;
+    background-color: $color-disabled-bg;
 
     .radio__circle__pointer--checked {
-      background-color: $color-neutral-disabled-blues-text;
+      background-color: $color-disabled-text;
     }
   }
 
-  &__input[type="radio"]:disabled ~ &__text,
-  &__input[type="radio"]:disabled ~ &__circle {
+  &__input[type='radio']:disabled ~ &__text,
+  &__input[type='radio']:disabled ~ &__circle {
     cursor: not-allowed;
   }
 }

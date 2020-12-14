@@ -3,7 +3,8 @@
   background-color: inherit;
 }
 :host {
-  .show, .hide {
+  .show,
+  .hide {
     display: flex;
   }
   .show {
@@ -13,7 +14,7 @@
     &--bottom-right {
       animation: toastAnimationFadeInFromRight 1s;
     }
-    
+
     &--top-left,
     &--bottom-left {
       animation: toastAnimationFadeInFromLeft 1s;
@@ -32,7 +33,7 @@
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: $shadow-toast;
-  color: $color-snow-white;
+  color: $color-neutral-light-snow;
   opacity: 0;
   margin-top: 16px;
 
@@ -40,7 +41,7 @@
     min-width: 440px;
     max-width: 440px;
     padding: 8px 20px;
-    
+
     bds-icon-button {
       height: 32px;
     }
@@ -69,22 +70,22 @@
   }
 
   &--error {
-    background: $color-secondary-delete;
+    background: $color-extend-reds-delete;
   }
 
   &--success {
-    background: $color-secondary-true;
+    background: $color-primary-greens-true;
   }
 
   &--warning {
-    background: $color-secondary-cheetos;
+    background: $color-extend-browns-cheetos;
   }
 
-  &--undo{
+  &--undo {
     background-color: $color-primary-main;
   }
 
-  &--redo{
+  &--redo {
     background-color: $color-secondary-redo;
   }
 
@@ -124,7 +125,7 @@
       align-items: center;
 
       bds-icon {
-        color: $color-snow-white;
+        color: $color-neutral-light-snow;
         border-radius: 4px;
         cursor: pointer;
       }

@@ -7,7 +7,7 @@ $select-option-left: 12px;
   width: 100%;
   @include no-select();
   cursor: pointer;
-  background-color: $color-snow-white;
+  background-color: $color-neutral-light-snow;
   padding: $select-option-padding;
   padding-left: $select-option-left;
   box-sizing: border-box;
@@ -25,7 +25,7 @@ $select-option-left: 12px;
     .select-option__container--value,
     .select-option__container--bulk {
       &:hover {
-        background-color: $color-snow-white;
+        background-color: $color-neutral-light-snow;
       }
 
       cursor: not-allowed;
@@ -64,12 +64,12 @@ $select-option-left: 12px;
   }
 
   &:focus {
-    background-color: $color-neutral-select-background;
+    background-color: $color-hover-light;
     color: $color-primary-main;
   }
 
   &--selected {
-    background-color: $color-neutral-select-background;
+    background-color: $color-hover-light;
   }
 
   &--invisible {

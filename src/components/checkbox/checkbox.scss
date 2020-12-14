@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 $checkbox-size: 18px;
 $checkbox-icon-radius: 4px;
@@ -7,7 +7,7 @@ $checkbox-spacing-text: 8px;
 .checkbox {
   display: inline;
 
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     display: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -21,7 +21,7 @@ $checkbox-spacing-text: 8px;
   }
 
   &__icon {
-    background: $color-snow-white;
+    background: $color-neutral-light-snow;
 
     &:hover {
       border-color: $color-primary-dark;
@@ -44,9 +44,9 @@ $checkbox-spacing-text: 8px;
     }
 
     .checkbox__icon {
-      color: $color-neutral-disabled-blues-text;
-      border: 1px solid $color-neutral-disabled-blues-text;
-      background-color: $color-neutral-disabled-blues-bg;
+      color: $color-disabled-text;
+      border: 1px solid $color-disabled-text;
+      background-color: $color-disabled-bg;
     }
   }
 
@@ -62,8 +62,8 @@ $checkbox-spacing-text: 8px;
     }
 
     .checkbox__icon {
-      background-color: $color-neutral-disabled-blues-bg;
-      border: 1px solid $color-neutral-disabled-blues-text;
+      background-color: $color-disabled-bg;
+      border: 1px solid $color-disabled-text;
     }
 
     .checkbox__icon__svg {
@@ -86,7 +86,7 @@ $checkbox-spacing-text: 8px;
     height: $checkbox-size;
     width: $checkbox-size;
     border-radius: $checkbox-icon-radius;
-    color: $color-primary-ghost;
+    color: $color-neutral-light-breeze;
     border: 1px solid $color-primary-main;
     box-sizing: border-box;
     border-radius: 4px;

@@ -13,20 +13,20 @@ $menu-list-border-right: 0px 8px 8px 0px;
   border-radius: $menu-list-border;
 
   bds-menu-list-item + bds-menu-list-item {
-    border-left: 1px solid $color-neutral-light-wave;
+    border-left: 1px solid $color-neutral-medium-wave;
   }
 
   &__left {
     width: $menu-list-width;
     height: $menu-list-height;
     border-radius: $menu-list-border-left;
-    background-color: $color-snow-white;
+    background-color: $color-neutral-light-snow;
   }
 
   &__right {
     width: $menu-list-width;
     height: $menu-list-height;
     border-radius: $menu-list-border-right;
-    background-color: $color-snow-white;
+    background-color: $color-neutral-light-snow;
   }
 }

@@ -12,7 +12,7 @@ $tooltip-border-width: 6px;
     left: 50%;
     border-radius: 8px;
     padding: 8px;
-    color: $color-snow-white;
+    color: $color-neutral-light-snow;
     background: $color-neutral-dark-eclipse;
     z-index: $zindex-dropdown;
     white-space: normal;
@@ -64,11 +64,13 @@ $tooltip-border-width: 6px;
       }
     }
 
-    &--bottom-center, &--top-center {
+    &--bottom-center,
+    &--top-center {
       transform: translateX(-50%);
     }
 
-    &--left-center, &--right-center {
+    &--left-center,
+    &--right-center {
       transform: translateX(0) translateY(-50%);
     }
 
@@ -115,7 +117,6 @@ $tooltip-border-width: 6px;
       right: 0;
       &::before {
         left: calc(85% - #{$tooltip-border-width});
-        
       }
     }
 

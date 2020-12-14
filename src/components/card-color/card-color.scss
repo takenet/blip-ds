@@ -42,25 +42,28 @@ $border-radius: 8px;
     &-primary-dark {
       background-color: $color-primary-dark;
     }
-    &-primary-ghost {
-      background-color: $color-primary-ghost;
+    &-primary-night {
+      background-color: $color-primary-night;
     }
 
-    &-secondary-delete {
-      background-color: $color-secondary-delete;
+    &-extends-reds-delete {
+      background-color: $color-extend-reds-delete;
     }
-    &-secondary-cheetos {
-      background-color: $color-secondary-cheetos;
+    &-extend-browns-cheetos {
+      background-color: $color-extend-browns-cheetos;
     }
-    &-secondary-true {
-      background-color: $color-secondary-true;
+    &-primary-greens-true {
+      background-color: $color-primary-greens-true;
+    }
+    &-primary-greens-forest {
+      background-color: $color-primary-greens-forest;
     }
 
-    &-neutral-disabled-blues-text {
-      background-color: $color-neutral-disabled-blues-text;
+    &-disabled-text {
+      background-color: $color-disabled-text;
     }
-    &-neutral-disabled-blues-bg {
-      background-color: $color-neutral-disabled-blues-bg;
+    &-disabled-bg {
+      background-color: $color-disabled-bg;
     }
 
     &-neutral-dark-onix {
@@ -77,7 +80,7 @@ $border-radius: 8px;
     }
 
     &-neutral-medium-desk {
-      background-color: $color-neutral-medium-desk;
+      background-color: $color-neutral-dark-desk;
     }
     &-neutral-medium-cloud {
       background-color: $color-neutral-medium-cloud;
@@ -86,11 +89,11 @@ $border-radius: 8px;
       background-color: $color-neutral-medium-silver;
     }
 
-    &-neutral-light-wave {
-      background-color: $color-neutral-light-wave;
+    &-neutral-medium-wave {
+      background-color: $color-neutral-medium-wave;
     }
-    &-neutral-light-off {
-      background-color: $color-neutral-light-off;
+    &-neutral-light-box {
+      background-color: $color-neutral-light-box;
     }
     &-neutral-light-breeze {
       background-color: $color-neutral-light-breeze;
@@ -99,149 +102,118 @@ $border-radius: 8px;
       background-color: $color-neutral-light-whisper;
     }
 
-    &-extend-rr-b-vitamin {
-      background-color: $color-extend-rr-b-vitamin;
+    &-extend-reds-flower {
+      background-color: $color-extend-reds-flower;
     }
-    &-extend-rr-flower {
-      background-color: $color-extend-rr-flower;
+    &-extend-reds-lipstick {
+      background-color: $color-extend-reds-lipstick;
     }
-    &-extend-rr-lipstick {
-      background-color: $color-extend-rr-lipstick;
+    &-extend-reds-dragon {
+      background-color: $color-extend-reds-dragon;
     }
-    &-extend-rr-dragon {
-      background-color: $color-extend-rr-dragon;
+    &-primary-pinks-yogurt {
+      background-color: $color-primary-pinks-yogurt;
     }
-    &-extend-rr-ballet {
-      background-color: $color-extend-rr-ballet;
+    &-primary-pinks-yogurt{
+      background-color: $color-primary-pinks-yogurt;
     }
-    &-extend-rr-yogurt {
-      background-color: $color-extend-rr-yogurt;
+    &-primary-pinks-watermelon {
+      background-color: $color-primary-pinks-watermelon;
     }
-    &-extend-rr-watermelon {
-      background-color: $color-extend-rr-watermelon;
-    }
-    &-extend-rr-blush {
-      background-color: $color-extend-rr-blush;
+    &-primary-pinks-blush {
+      background-color: $color-primary-pinks-blush;
     }
 
-    &-extend-yo-fairy {
-      background-color: $color-extend-yo-fairy;
+    &-primary-yellows-corn {
+      background-color: $color-primary-yellows-corn;
     }
-    &-extend-yo-d-vitamin {
-      background-color: $color-extend-yo-d-vitamin;
+    &-primary-yellows-corn {
+      background-color: $color-primary-yellows-corn;
     }
-    &-extend-yo-melon {
-      background-color: $color-extend-yo-melon;
+    &-primary-yellows-sun {
+      background-color: $color-primary-yellows-sun;
     }
-    &-extend-yo-hay {
-      background-color: $color-extend-yo-hay;
+    &-primary-yellows-guarana {
+      background-color: $color-primary-yellows-guarana;
     }
-    &-extend-yo-sand {
-      background-color: $color-extend-yo-sand;
+    &-extend-browns-sand {
+      background-color: $color-extend-browns-sand;
     }
-    &-extend-yo-c-vitamin {
-      background-color: $color-extend-yo-c-vitamin;
+    &-extend-browns-sand {
+      background-color: $color-extend-browns-sand;
     }
-    &-extend-yo-sphinx {
-      background-color: $color-extend-yo-sphinx;
+    &-extend-browns-sphinx {
+      background-color: $color-extend-browns-sphinx;
     }
-    &-extend-yo-moose {
-      background-color: $color-extend-yo-moose;
+    &-primary-oranges-sunset {
+      background-color: $color-primary-oranges-sunset;
     }
-    &-extend-yo-summer {
-      background-color: $color-extend-yo-summer;
+    &-primary-oranges-sunset {
+      background-color: $color-primary-oranges-sunset;
     }
-    &-extend-yo-doritos {
-      background-color: $color-extend-yo-doritos;
-    }
-    &-extend-yo-carrot {
-      background-color: $color-extend-yo-carrot;
+    &-primary-oranges-carrot {
+      background-color: $color-primary-oranges-carrot;
     }
 
-    &-extended-green-chameleon {
-      background-color: $color-extended-green-chameleon;
+    &-illustration-green-bamboo {
+      background-color: $color-illustration-green-bamboo;
     }
-    &-extended-green-mint {
-      background-color: $color-extended-green-mint;
+    &-primary-greens-mint {
+      background-color: $color-primary-greens-mint;
     }
-    &-extended-green-corn {
-      background-color: $color-extended-green-corn;
+    &-primary-greens-true {
+      background-color: $color-primary-greens-true;
     }
-    &-extended-green-asparagus {
-      background-color: $color-extended-green-asparagus;
+    &-primary-greens-aligator {
+      background-color: $color-primary-greens-aligator;
     }
-    &-extended-green-bamboo {
-      background-color: $color-extended-green-bamboo;
+    &-illustration-green-lime {
+      background-color: $color-illustration-green-lime;
     }
-    &-extended-green-lime {
-      background-color: $color-extended-green-lime;
+    &-illustration-green-leaf {
+      background-color: $color-illustration-green-leaf;
     }
-    &-extended-green-leaf {
-      background-color: $color-extended-green-leaf;
-    }
-    &-extended-green-algae {
-      background-color: $color-extended-green-algae;
+    &-illustration-green-algae {
+      background-color: $color-illustration-green-algae;
     }
 
-    &-extended-blue-sky {
-      background-color: $color-extended-blue-sky;
+    &-illustration-blue-sky {
+      background-color: $color-illustration-blue-sky;
     }
-    &-extended-blue-wind {
-      background-color: $color-extended-blue-wind;
+    &-illustration-blue-genie {
+      background-color: $color-illustration-blue-genie;
     }
-    &-extended-blue-mermaid {
-      background-color: $color-extended-blue-mermaid;
+    &-illustration-blue-brand {
+      background-color: $color-illustration-blue-brand;
     }
-    &-extended-blue-galaxy {
-      background-color: $color-extended-blue-galaxy;
-    }
-
-    &-extended-blue-ice {
-      background-color: $color-extended-blue-ice;
-    }
-    &-extended-blue-frozen {
-      background-color: $color-extended-blue-frozen;
-    }
-    &-extended-blue-smurf {
-      background-color: $color-extended-blue-smurf;
-    }
-    &-extended-blue-whale {
-      background-color: $color-extended-blue-whale;
+    &-illustration-blue-sea {
+      background-color: $color-illustration-blue-sea;
     }
 
-    &-extended-blue-genie {
-      background-color: $color-extended-blue-genie;
+    &-primary-light {
+      background-color: $color-primary-light;
     }
-    &-extended-blue-unicorn {
-      background-color: $color-extended-blue-unicorn;
+    &-primary-light {
+      background-color: $color-primary-light;
     }
-    &-extended-blue-sea {
-      background-color: $color-extended-blue-sea;
+    &-primary-main {
+      background-color: $color-primary-main;
     }
-    &-extended-blue-jazz {
-      background-color: $color-extended-blue-jazz;
+    &-primary-night {
+      background-color: $color-primary-night;
     }
 
-    &-extended-purples-eggplant {
-      background-color: $color-extended-purples-eggplant;
+    &-primary-purples-pixie {
+      background-color: $color-primary-purples-pixie;
     }
-    &-extended-purples-pixie {
-      background-color: $color-extended-purples-pixie;
+    &-primary-purples-bell {
+      background-color: $color-primary-purples-bell;
     }
-    &-extended-purples-witch {
-      background-color: $color-extended-purples-witch;
+    &-primary-purples-witch {
+      background-color: $color-primary-purples-witch;
     }
-    &-extended-purples-grape {
-      background-color: $color-extended-purples-grape;
-    }
-    &-extended-purples-violet {
-      background-color: $color-extended-purples-violet;
-    }
-    &-extended-purples-wine {
-      background-color: $color-extended-purples-wine;
-    }
-    &-extended-purples-acai {
-      background-color: $color-extended-purples-acai;
+    &-primary-purples-acai {
+      background-color: $color-primary-purples-acai;
     }
 
     &-gradient-universe {
@@ -251,37 +223,37 @@ $border-radius: 8px;
       background: $color-gradient-street;
     }
     &-gradient-chair {
-      background: $color-gradient-chair;
+      background: $color-gradient-street;
     }
     &-gradient-shine {
-      background: $color-gradient-shine;
+      background: $color-neutral-light-whisper;
     }
     &-gradient-olaf {
-      background: $color-gradient-olaf;
+      background: $color-neutral-light-whisper;
     }
     &-gradient-dg-blip-system {
-      background: $color-gradient-dg-blip-system;
+      background: $color-gradient-smurf;
     }
     &-gradient-error {
-      background: $color-gradient-error;
+      background: $color-gradient-rose;
     }
     &-gradient-phoenix {
       background: $color-gradient-phoenix;
     }
     &-gradient-success {
-      background: $color-gradient-success;
+      background: $color-gradient-tree;
     }
     &-gradient-barbie {
-      background: $color-gradient-barbie;
+      background: $color-gradient-fabulous;
     }
     &-gradient-jeans {
-      background: $color-gradient-jeans;
+      background: $color-gradient-universe;
     }
     &-gradient-ocean {
       background: $color-gradient-ocean;
     }
     &-gradient-smurfette {
-      background: $color-gradient-smurfette;
+      background: $color-gradient-smurf;
     }
   }
 

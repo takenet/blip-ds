@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 .counter-text {
   background: $color-neutral-light-breeze;
@@ -14,12 +14,12 @@
   }
 
   &--warning {
-    background: $color-secondary-cheetos;
+    background: $color-extend-browns-cheetos;
     color: $color-neutral-light-whisper;
   }
 
   &--delete {
-    background: $color-secondary-delete;
+    background: $color-extend-reds-delete;
     color: $color-neutral-light-whisper;
   }
 

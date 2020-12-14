@@ -8,121 +8,167 @@ export default {
   },
 };
 
-const primaryColors = [
-  { name: 'Main BLiP', variable: 'color-primary-main', hex: '#2cc3d5' },
-  { name: 'Light BLiP', variable: 'color-primary-light', hex: '#87DDE8' },
-  { name: 'Dark BLiP', variable: 'color-primary-dark', hex: '#2498A8' },
-  { name: 'Ghost', variable: 'color-primary-ghost', hex: '#F8FBFB' },
+const blipBlues = [
+  { name: 'Main', variable: 'color-primary-main', hex: '#3F7DE8' },
+  { name: 'Light', variable: 'color-primary-light', hex: '#B3D4FF' },
+  { name: 'Dark', variable: 'color-primary-dark', hex: '#125AD5' },
+  { name: 'Night', variable: 'color-primary-night', hex: '#0747a6' },
 ];
 
-const secondaryColors = [
-  { name: 'Delete', variable: 'color-secondary-delete', hex: '#FF5A60' },
-  { name: 'Cheetos', variable: 'color-secondary-cheetos', hex: '#F9B42F' },
-  { name: 'True', variable: 'color-secondary-true', hex: '#4DCB7B' },
+const purples = [
+  { name: 'Purple Pixie', variable: 'color-primary-purples-pixie', hex: '#CC99FF' },
+  { name: 'Purple Bell', variable: 'color-primary-purples-bell', hex: '#C226FBF' },
+  { name: 'Purple Witch', variable: 'color-primary-purples-witch', hex: '#9933CC' },
+  { name: 'Purple acai', variable: 'color-primary-purples-acai', hex: '#4F0E87' },
+]
+
+const greens = [
+  { name: 'Green Mint', variable: 'color-primary-greens-mint', hex: '#90E6BC' },
+  { name: 'Green True', variable: 'color-primary-greens-true', hex: '#21CC79' },
+  { name: 'Green Aligator', variable: 'color-primary-greens-aligator', hex: '#008767' },
+  { name: 'Green Forest', variable: 'color-primary-greens-forest', hex: '#0A6045' },
 ];
 
-const neutralColorsBlues = [
-  { name: 'Disabled Text', variable: 'color-neutral-disabled-blues-text', hex: '#76C1CA' },
-  { name: 'Disabled BG', variable: 'color-neutral-disabled-blues-bg', hex: '#DAF2F4' },
+const pinks = [
+  { name: 'Pink Yogurt', variable: 'color-primary-pinks-yogurt', hex: '#FDACC5' },
+  { name: 'Pink Watermelon', variable: 'color-primary-pinks-watermelon', hex: '#FB5A8B' },
+  { name: 'Pink Barbie', variable: 'color-primary-pinks-barbie', hex: '#AA398D' },
+  { name: 'Pink Blush', variable: 'color-primary-pinks-blush', hex: '#821A67' },
 ];
 
-const neutralColorsDark = [
-  { name: 'Eclipse', variable: 'color-neutral-dark-eclipse', hex: '#0A0F1A' },
-  { name: 'Onix', variable: 'color-neutral-dark-onix', hex: '#1A2437' },
-  { name: 'Suit', variable: 'color-neutral-dark-suit', hex: '#202C44' },
-  { name: 'City', variable: 'color-neutral-dark-city', hex: '#56616E' },
-  { name: 'Rooftop', variable: 'color-neutral-dark-rooftop', hex: '#738192' },
+const oranges = [
+  { name: 'Orange Sunset', variable: 'color-primary-oranges-sunset', hex: '#FFB186' },
+  { name: 'Orange Carrot', variable: 'color-primary-oranges-carrot', hex: '#FF6E1D' },
+  { name: 'Orange Doritos', variable: 'color-primary-oranges-doritos', hex: '#C64026' },
+  { name: 'Orange Clay', variable: 'color-primary-oranges-clay', hex: '#8E3925' },
 ];
 
-const neutralColorsMedium = [
-  { name: 'Desk', variable: 'color-neutral-medium-desk', hex: '#607B99' },
-  { name: 'Cloud', variable: 'color-neutral-medium-cloud', hex: '#8CA0B3' },
-  { name: 'Silver', variable: 'color-neutral-medium-silver', hex: '#B9CBD3' },
+const yellows = [
+  { name: 'Yellow Corn', variable: 'color-primary-yellows-corn', hex: '#FFF6A8' },
+  { name: 'Yellow Sun', variable: 'color-primary-yellows-sun', hex: '#FFEC03' },
+  { name: 'Yellow Guarana', variable: 'color-primary-yellows-guarana', hex: '#B2B229' },
+  { name: 'Yellow Moss', variable: 'color-primary-yellows-moss', hex: '#757010' },
 ];
 
-const neutralColorsMediumLight = [
-  { name: 'Wave', variable: 'color-neutral-light-wave', hex: '#D2DFE6' },
-  { name: 'Off', variable: 'color-neutral-light-off', hex: '#DEE8EC' },
-  { name: 'Breeze', variable: 'color-neutral-light-breeze', hex: '#E7EEF1' },
-  { name: 'Whisper', variable: 'color-neutral-light-whisper', hex: '#F5F8F9' },
+const secondaryColorsAlerts = [
+  { name: 'Main', variable: 'color-primary-main', hex: '#3F7DE8' },
+  { name: 'Brown Cheetos', variable: 'color-extend-browns-cheetos', hex: '#F6A721' },
+  { name: 'Red Delete', variable: 'color-extend-reds-delete', hex: '#FF4C4C' },
+  { name: 'Green True', variable: 'color-primary-greens-true', hex: '#21CC79' },
+  { name: 'Purple Bell', variable: 'color-primary-purples-bell', hex: '#C226FB' },
+]
+const reds = [
+  { name: 'Red Flower', variable: 'color-extend-reds-flower', hex: '#FFA5A5' },
+  { name: 'Red Delete', variable: 'color-extend-reds-delete', hex: '#FF4C4C' },
+  { name: 'Red Lipstick', variable: 'color-extend-reds-lipstick', hex: '#A01C2C' },
+  { name: 'Red Dragon', variable: 'color-extend-reds-dragon', hex: '#6A2026' },
 ];
 
-const extendColorsRr = [
-  { name: 'B Vitamin', variable: 'color-extend-rr-b-vitamin', hex: '#FFD6D7' },
-  { name: 'Flower', variable: 'color-extend-rr-flower', hex: '#FF7B80' },
-  { name: 'Lipstick', variable: 'color-extend-rr-lipstick', hex: '#CF5358' },
-  { name: 'Dragon', variable: 'color-extend-rr-dragon', hex: '#802D30' },
-  { name: 'Ballet', variable: 'color-extend-rr-ballet', hex: '#FDD9E1' },
-  { name: 'Yogurt', variable: 'color-extend-rr-yogurt', hex: '#FBB3C4' },
-  { name: 'Watermelon', variable: 'color-extend-rr-watermelon', hex: '#F66689' },
-  { name: 'Blush', variable: 'color-extend-rr-blush', hex: '#C85C77' },
+const browns = [
+  { name: 'Brown Sand', variable: 'color-extend-browns-sand', hex: '#FFD29E' },
+  { name: 'Brown Cheetos', variable: 'color-extend-browns-cheetos', hex: '#F6A721' },
+  { name: 'Brown Sphinx', variable: 'color-extend-browns-sphinx', hex: '#D78935' },
+  { name: 'Brown Woord', variable: 'color-extend-browns-wood', hex: '#845D37' },
 ];
 
-const extendColorsYo = [
-  { name: 'Fairy', variable: 'color-extend-yo-fairy', hex: '#FBF9CC' },
-  { name: 'D Vitamin', variable: 'color-extend-yo-d-vitamin', hex: '#F8F399' },
-  { name: 'Melon', variable: 'color-extend-yo-melon', hex: '#F1E733' },
-  { name: 'Hay', variable: 'color-extend-yo-hay', hex: '#B5AD26' },
-  { name: 'Sand', variable: 'color-extend-yo-sand', hex: '#FEECCB' },
-  { name: 'C Vitamin', variable: 'color-extend-yo-c-vitamin', hex: '#FCDA97' },
-  { name: 'Sphinx', variable: 'color-extend-yo-sphinx', hex: '#CB9733' },
-  { name: 'Moose', variable: 'color-extend-yo-moose', hex: '#FEE6D1' },
-  { name: 'Summer', variable: 'color-extend-yo-summer', hex: '#FCCDA2' },
-  { name: 'Doritos', variable: 'color-extend-yo-doritos', hex: '#F99B45' },
-  { name: 'Carrot', variable: 'color-extend-yo-carrot', hex: '#FA7E25' },
+const grays = [
+  { name: 'Gray Moon', variable: 'color-extend-grays-moon', hex: '#D1D3D4' },
+  { name: 'Gray Elevator', variable: 'color-extend-grays-elevator', hex: '#A7A9AC' },
+  { name: 'Gray Street', variable: 'color-extend-grays-street', hex: '#6D6F71' },
+  { name: 'Gray Blackwidow', variable: 'color-extend-grays-blackwidow', hex: '#000000' },
 ];
 
-const extendColorsGreens = [
-  { name: 'Chameleon', variable: 'color-extended-green-chameleon', hex: '#D3F2DE' },
-  { name: 'Mint', variable: 'color-extended-green-mint', hex: '#A6E5BD' },
-  { name: 'Corn', variable: 'color-extended-green-corn', hex: '#4AA86C' },
-  { name: 'Asparagus', variable: 'color-extended-green-asparagus', hex: '#26663D' },
-  { name: 'Bamboo', variable: 'color-extended-green-bamboo', hex: '#EFF4CA' },
-  { name: 'Lime', variable: 'color-extended-green-lime', hex: '#DFEA95' },
-  { name: 'Leaf', variable: 'color-extended-green-leaf', hex: '#BED42B' },
-  { name: 'Algae', variable: 'color-extended-green-algae', hex: '#8E9F20' },
+const lightGreens = [
+  { name: 'Green Bamboo', variable: 'color-illustration-green-bamboo', hex: '#DFEA95' },
+  { name: 'Green Lime', variable: 'color-illustration-green-lime', hex: '#BED42B' },
+  { name: 'Green Leaf', variable: 'color-illustration-green-leaf', hex: '#9EAF30' },
+  { name: 'Green Algae', variable: 'color-illustration-green-algae', hex: '#5F6A15' },
 ];
 
-const extendColorsBlues = [
-  { name: 'Sky', variable: 'color-extended-blue-sky', hex: '#C3EEF4' },
-  { name: 'Wind', variable: 'color-extended-blue-wind', hex: '#ADE7EE' },
-  { name: 'Mermaid', variable: 'color-extended-blue-mermaid', hex: '#41B2C0' },
-  { name: 'Galaxy', variable: 'color-extended-blue-galaxy', hex: '#16626B' },
-  { name: 'Ice', variable: 'color-extended-blue-ice', hex: '#D5F3FF' },
-  { name: 'Frozen', variable: 'color-extended-blue-frozen', hex: '#AAE7FF' },
-  { name: 'Smurf', variable: 'color-extended-blue-smurf', hex: '#55CFFF' },
-  { name: 'Whale', variable: 'color-extended-blue-whale', hex: '#409BBF' },
-  { name: 'Petroleum', variable: 'color-extended-blue-genie', hex: '#D3DEFC' },
-  { name: 'Genie', variable: 'color-extended-blue-unicorn', hex: '#A8BDF9' },
-  { name: 'Unicorn', variable: 'color-extended-blue-sea', hex: '#517BF2' },
-  { name: 'Sea', variable: 'color-extended-blue-jazz', hex: '#3D5CB6' },
+const lightBlues = [
+  { name: 'Blue Sky', variable: 'color-illustration-blue-sky', hex: '#E9F7F8' },
+  { name: 'Blue Genie', variable: 'color-illustration-blue-genie', hex: '#80E3EB' },
+  { name: 'Blue Brand', variable: 'color-illustration-blue-brand', hex: '#00C6D7' },
+  { name: 'Blue Sea', variable: 'color-illustration-blue-sea', hex: '#167491' },
+  { name: 'Blue Jeans', variable: 'color-illustration-blue-jeans', hex: '#0747A6' },
 ];
 
-
-const extendColorsPurples = [
-  { name: 'Eggplant', variable: 'color-extended-purples-eggplant', hex: '#EDD9FD' },
-  { name: 'Pixie', variable: 'color-extended-purples-pixie', hex: '#DBB3FB' },
-  { name: 'Witch', variable: 'color-extended-purples-witch', hex: '#B97CE8' },
-  { name: 'Grape', variable: 'color-extended-purples-grape', hex: '#B766F6' },
-  { name: 'Violet', variable: 'color-extended-purples-violet', hex: '#995CC8' },
-  { name: 'Wine', variable: 'color-extended-purples-wine', hex: '#894CB9' },
-  { name: 'Açai', variable: 'color-extended-purples-acai', hex: '#5B337B' },
+const whiteSkin = [
+  { name: 'Skin Nicole', variable: 'color-illustration-skin-nicole', hex: '#FDC2BF' }, 
+  { name: 'Skin Keanu', variable: 'color-illustration-skin-keanu', hex: '#FFBBB8' }, 
+  { name: 'Skin Scarlett', variable: 'color-illustration-skin-scarlett', hex: '#F4B1AF' }, 
+  { name: 'Skin Evaristo', variable: 'color-illustration-skin-evaristo', hex: '#F3A6A3' }, 
 ];
 
-const gradientsColors = [
-  { name: 'Universe', variable: 'color-gradient-universe ' },
-  { name: 'Street', variable: 'color-gradient-street' },
-  { name: 'Chair', variable: 'color-gradient-chair' },
-  { name: 'Shine', variable: 'color-gradient-shine' },
-  { name: 'Olaf', variable: 'color-gradient-olaf' },
-  { name: 'DG BLiP System', variable: 'color-gradient-dg-blip-system' },
-  { name: 'Error', variable: 'color-gradient-error' },
-  { name: 'Phoenix', variable: 'color-gradient-phoenix' },
-  { name: 'Success', variable: 'color-gradient-success' },
-  { name: 'Barbie', variable: 'color-gradient-barbie' },
-  { name: 'Jeans', variable: 'color-gradient-jeans' },
-  { name: 'Ocean', variable: 'color-gradient-ocean' },
-  { name: 'Smurfette', variable: 'color-gradient-smurfette' },
+const yellowSkin = [
+  { name: 'Skin Jackie', variable: 'color-illustration-skin-jackie', hex: '#F3C29F' }, 
+  { name: 'Skin Lucy', variable: 'color-illustration-skin-Lucy', hex: '#EDB58D' }, 
+  { name: 'Skin Hideo', variable: 'color-illustration-skin-hideo', hex: '#E8AA7D' }, 
+  { name: 'Skin Jung', variable: 'color-illustration-skin-jung', hex: '#E29E6C' }, 
+];
+
+const brownSkin = [
+  { name: 'Skin zoe', variable: 'color-illustration-skin-zoe', hex: '#CB9685' },
+  { name: 'Skin Jason', variable: 'color-illustration-skin-jason', hex: '#2C2A46' },
+  { name: 'Skin Jeniffer', variable: 'color-illustration-skin-jeniffer', hex: '#BF7D68' },
+  { name: 'Skin Dwayne', variable: 'color-illustration-skin-dwayne', hex: '#B5705A' },
+];
+
+const darkSkin = [
+  { name: 'Skin Oprah', variable: 'color-illustration-skin-oprah', hex: '#CB8591' }, 
+  { name: 'Skin Tais', variable: 'color-illustration-skin-tais', hex: '#BC7785' }, 
+  { name: 'Skin Michelle', variable: 'color-illustration-skin-michelle', hex: '#A8747D' }, 
+  { name: 'Skinn Will', variable: 'color-illustration-skin-will', hex: '#98646D' },
+];
+
+const disabledBlues = [
+  { name: 'Disabled Bg', variable: 'color-disabled-bg', hex: '#DAF2F4' },
+  { name: 'Hover Light', variable: 'color-hover-light', hex: '#C3EEF4' },
+  { name: 'Disabled Text', variable: 'color-disabled-text', hex: '#6B9AA8' },
+];
+
+const disabledReds = [
+  { name: 'Disabled Delete', variable: 'color-disabled-delete', hex: '#FCCCCC' },
+  { name: 'Disabled error', variable: 'color-disabled-error', hex: '#DA7A7A' },
+  { name: 'Disabled wrong', variable: 'color-disabled-wrong', hex: '#BA5A5A' },
+];
+
+const darkNeutrals = [
+  { name: 'Dark Eclipse', variable: 'color-neutral-dark-eclipse', hex: '#0A0F1A' },
+  { name: 'Dark Onix', variable: 'color-neutral-dark-onix', hex: '#1A2437' },
+  { name: 'Dark Suit', variable: 'color-neutral-dark-suit', hex: '#212A3C' },
+  { name: 'Dark Icoe', variable: 'color-neutral-dark-icoe', hex: '#192438' },
+  { name: 'Dark Skate', variable: 'color-neutral-dark-skate', hex: '#233049' },
+  { name: 'Dark City', variable: 'color-neutral-dark-city', hex: '#202C44' },
+  { name: 'Dark Desk', variable: 'color-neutral-dark-desk', hex: '#3A4A65' },
+  { name: 'Dark Rooftop', variable: 'color-neutral-dark-rooftop', hex: '#505F79' },
+];
+
+const mediumNeutrals = [
+  { name: 'Medium Elephant', variable: 'color-neutral-medium-elephant', hex: '#6E7B91' }, 
+  { name: 'Medium Cloud', variable: 'color-neutral-medium-cloud', hex: '#8CA0B3' }, 
+  { name: 'Medium Silver', variable: 'color-neutral-medium-silver', hex: '#B9CBD3' }, 
+  { name: 'Medium Wave', variable: 'color-neutral-medium-wave', hex: '#D2DFE6' }, 
+];
+
+const lightNeutrals = [
+  { name: 'Light Box', variable: 'color-neutral-light-box', hex: '#E7EDF4' }, 
+  { name: 'Light Whisper', variable: 'color-neutral-light-whisper', hex: '# F3F6FA' }, 
+  { name: 'Light Breeze', variable: 'color-neutral-light-breeze', hex: '#F8FBFB' }, 
+  { name: 'Light Snow', variable: 'color-neutral-light-snow', hex: '#FFFFFF' }, 
+];
+
+const gradientColors = [
+  { name: 'Rose', variable: 'color-gradient-rose', hex: 'linear-gradient(213.89deg, #ff4c4c 7.75%, #821a67 135.08%)' }, 
+  { name: 'Phoenix', variable: 'color-gradient-phoenix', hex: 'linear-gradient(213.98deg, #f6a721 7.74%, #fb5a8b 111.22%)' }, 
+  { name: 'Cactus', variable: 'color-gradient-cactus', hex: 'linear-gradient(215.84deg, #bed42b 24.15%, #167491 143.37%)' }, 
+  { name: 'Tree', variable: 'color-gradient-tree', hex: 'linear-gradient(213.19deg, #21cc79 26.38%, #167491 113.59%)' }, 
+  { name: 'Oceanr', variable: 'color-gradient-ocean', hex: 'linear-gradient(206.67deg, #4786f1 25.46%, #4f0e87 187.1%)' }, 
+  { name: 'Smurf', variable: 'color-gradient-smurf', hex: 'linear-gradient(213.61deg, #00c6d7 26.39%, #4786f1 100%)' }, 
+  { name: 'Grape', variable: 'color-gradient-grape', hex: 'linear-gradient(214.56deg, #c226fb 0%, #0052cc 174.21%)' }, 
+  { name: 'Fabulous', variable: 'color-gradient-fabulous', hex: 'linear-gradient(212.75deg, #fb5a8b 37.1%, #9933cc 171.27%)' }, 
+  { name: 'Street', variable: 'color-gradient-street', hex: 'linear-gradient(213.69deg, #6e7b91 25.43%, #233049 147.21%)' }, 
+  { name: 'Universe', variable: 'color-gradient-universe', hex: 'linear-gradient(213.69deg, #202c44 25.43%, #000000 147.21%)' }, 
 ];
 
 const getSectionColor = (title, content) => (
@@ -155,17 +201,28 @@ const getColorsCards = (colors) => {
 
 export const allColors = () => (
   <>
-    {getSectionColor('Primary Colors', getColorsCards(primaryColors))}
-    {getSectionColor('Secondary Colors', getColorsCards(secondaryColors))}
-    {getSectionColor('Neutral Colors - Disabled Blues', getColorsCards(neutralColorsBlues))}
-    {getSectionColor('Neutral Colors - Dark', getColorsCards(neutralColorsDark))}
-    {getSectionColor('Neutral Colors - Medium', getColorsCards(neutralColorsMedium))}
-    {getSectionColor('Neutral Colors - Light', getColorsCards(neutralColorsMediumLight))}
-    {getSectionColor('Extended colors - Vermelhos / Rosas', getColorsCards(extendColorsRr))}
-    {getSectionColor('Extended colors - Amarelos / Laranjas', getColorsCards(extendColorsYo))}
-    {getSectionColor('Extended colors - Verdes', getColorsCards(extendColorsGreens))}
-    {getSectionColor('Extended colors - Azuis', getColorsCards(extendColorsBlues))}
-    {getSectionColor('Extended colors - Roxos', getColorsCards(extendColorsPurples))}
-    {getSectionColor('Gradients', getColorsCards(gradientsColors))}
+    {getSectionColor('Blip Blues', getColorsCards(blipBlues))}
+    {getSectionColor('Purples', getColorsCards(purples))}
+    {getSectionColor('Greens', getColorsCards(greens))}
+    {getSectionColor('Pinks', getColorsCards(pinks))}
+    {getSectionColor('Oranges', getColorsCards(oranges))}
+    {getSectionColor('Yellows', getColorsCards(yellows))}
+    {getSectionColor('Secondary Colors Alerts', getColorsCards(secondaryColorsAlerts))}
+    {getSectionColor('Reds', getColorsCards(reds))}
+    {getSectionColor('Browns', getColorsCards(browns))}
+    {getSectionColor('Grays', getColorsCards(grays))}
+    {getSectionColor('Light Greens', getColorsCards(lightGreens))}
+    {getSectionColor('Light Blues', getColorsCards(lightBlues))}
+    {getSectionColor('Light Greens', getColorsCards(lightGreens))}
+    {getSectionColor('Yellow Skin', getColorsCards(yellowSkin))}
+    {getSectionColor('White Skin', getColorsCards(whiteSkin))}
+    {getSectionColor('Brown Skin', getColorsCards(brownSkin))}
+    {getSectionColor('Dark Skin', getColorsCards(darkSkin))}
+    {getSectionColor('Disabled Blues', getColorsCards(disabledBlues))}
+    {getSectionColor('Disabled Reds', getColorsCards(disabledReds))}
+    {getSectionColor('Dark Neutrals', getColorsCards(darkNeutrals))}
+    {getSectionColor('Medium Neutrals', getColorsCards(mediumNeutrals))}
+    {getSectionColor('Light Neutrals', getColorsCards(lightNeutrals))}
+    {getSectionColor('Gradient Colors', getColorsCards(gradientColors))}
   </>
 );
