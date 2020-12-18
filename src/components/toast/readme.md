@@ -15,7 +15,7 @@
 | `duration`     | `duration`      | Time to close the toast in seconds 0 = never close automatically (default value)                                                                                                                                                                         | `number`                                                            | `0`             |
 | `hide`         | `hide`          | Controls the hide event of the component:                                                                                                                                                                                                                | `boolean`                                                           | `false`         |
 | `icon`         | `icon`          | used for add the icon. Uses the bds-icon component.                                                                                                                                                                                                      | `string`                                                            | `null`          |
-| `position`     | `position`      | Event used to execute some action when the action button on the toast is clicked                                                                                                                                                                         | `"bottom-left" \| "bottom-right" \| "top-left" \| "top-right"`      | `'bottom-left'` |
+| `position`     | `position`      | The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);                                                                                                                                 | `"bottom-left" \| "bottom-right" \| "top-left" \| "top-right"`      | `'bottom-left'` |
 | `show`         | `show`          | Controls the open event of the component:                                                                                                                                                                                                                | `boolean`                                                           | `false`         |
 | `toastText`    | `toast-text`    | The text content of the component:                                                                                                                                                                                                                       | `string`                                                            | `undefined`     |
 | `toastTitle`   | `toast-title`   | The title of the component:                                                                                                                                                                                                                              | `string`                                                            | `undefined`     |
@@ -24,9 +24,9 @@
 
 ## Events
 
-| Event              | Description                                                                                                              | Type               |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------ |
-| `toastButtonClick` | The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value); | `CustomEvent<any>` |
+| Event              | Description                                                                      | Type               |
+| ------------------ | -------------------------------------------------------------------------------- | ------------------ |
+| `toastButtonClick` | Event used to execute some action when the action button on the toast is clicked | `CustomEvent<any>` |
 
 
 ## Methods
