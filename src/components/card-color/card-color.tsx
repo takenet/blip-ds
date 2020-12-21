@@ -21,12 +21,18 @@ export class CardColor {
    */
   @Prop() variable!: string;
 
+  /**
+   * If true, the text will be white
+   */
+  @Prop() lightText = false;
+
   render(): HTMLDivElement {
     return (
       <div class="card-color">
         <div
           class={{
             'card-color--color': true,
+            'card-color--light': this.lightText,
             [`card-color--${this.variable}`]: true,
           }}
         >

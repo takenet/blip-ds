@@ -1,5 +1,6 @@
 import React from 'react';
 import readme from './readme.md';
+import Color from 'color';
 
 export default {
   title: 'Colors',
@@ -102,7 +103,7 @@ const whiteSkin = [
 
 const yellowSkin = [
   { name: 'Skin Jackie', variable: 'color-illustration-skin-jackie', hex: '#F3C29F' }, 
-  { name: 'Skin Lucy', variable: 'color-illustration-skin-Lucy', hex: '#EDB58D' }, 
+  { name: 'Skin Lucy', variable: 'color-illustration-skin-lucy', hex: '#EDB58D' }, 
   { name: 'Skin Hideo', variable: 'color-illustration-skin-hideo', hex: '#E8AA7D' }, 
   { name: 'Skin Jung', variable: 'color-illustration-skin-jung', hex: '#E29E6C' }, 
 ];
@@ -137,7 +138,7 @@ const darkNeutrals = [
   { name: 'Dark Eclipse', variable: 'color-neutral-dark-eclipse', hex: '#0A0F1A' },
   { name: 'Dark Onix', variable: 'color-neutral-dark-onix', hex: '#1A2437' },
   { name: 'Dark Suit', variable: 'color-neutral-dark-suit', hex: '#212A3C' },
-  { name: 'Dark Icoe', variable: 'color-neutral-dark-icoe', hex: '#192438' },
+  { name: 'Dark Ico', variable: 'color-neutral-dark-ico', hex: '#192438' },
   { name: 'Dark Skate', variable: 'color-neutral-dark-skate', hex: '#233049' },
   { name: 'Dark City', variable: 'color-neutral-dark-city', hex: '#202C44' },
   { name: 'Dark Desk', variable: 'color-neutral-dark-desk', hex: '#3A4A65' },
@@ -196,6 +197,7 @@ const getColorsCards = (colors) => {
   for (const color of colors) {
     elements.push(getComponentCardColors(color.name, color.variable, color.hex));
   }
+  console.log(elements);
   return elements;
 }
 
