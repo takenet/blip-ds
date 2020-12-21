@@ -155,12 +155,12 @@ $button-padding-left-right: 16px;
     color: $color-neutral-light-snow;
 
     &:hover {
-      background: rgba($color-neutral-light-snow, .3);
+      background: rgba($color-neutral-light-snow, 0.3);
       color: $color-neutral-light-snow;
     }
 
     &:active {
-      background: rgba($color-neutral-light-snow, .4);
+      background: rgba($color-neutral-light-snow, 0.4);
       color: $color-neutral-light-snow;
     }
 
@@ -171,7 +171,7 @@ $button-padding-left-right: 16px;
 
   &__ghost {
     background: transparent;
-    color: $color-neutral-medium-cloud;
+    color: $color-primary-main;
     border: 1px solid $color-primary-main;
 
     &:hover {
@@ -193,7 +193,7 @@ $button-padding-left-right: 16px;
 
   &__dashed {
     background: transparent;
-    color: $color-neutral-medium-cloud;
+    color: $color-primary-main;
     border: 1px dashed $color-primary-main;
 
     &:hover {
