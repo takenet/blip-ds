@@ -66,6 +66,7 @@ export class Typo {
           [`typo__line-height--${this.lineHeight}`]: !!this.lineHeight,
           [`typo__bold--${this.bold}`]: !!this.bold,
         }}
+        part="bds-typo__text"
       >
         <slot></slot>
       </Element>

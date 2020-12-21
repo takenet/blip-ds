@@ -186,9 +186,9 @@ const getSectionColor = (title, content) => (
 
 const getComponentCardColors = (name, variable, hex) => {
   if (hex) {
-    return (<bds-card-color name={name} variable={variable} hex={hex}></bds-card-color>);
+    return (<bds-card-color name={name} variable={variable} hex={hex} light-text="true"></bds-card-color>);
   }
-  return (<bds-card-color name={name} variable={variable}></bds-card-color>);
+  return (<bds-card-color name={name} variable={variable} light-text="true"></bds-card-color>);
 };
 
 const getColorsCards = (colors) => {
