@@ -141,7 +141,7 @@ $button-padding-left-right: 16px;
     }
 
     &:active {
-      background: $color-illustration-blue-sky;
+      background: $color-hover-light;
       color: $color-primary-main;
     }
 
@@ -187,7 +187,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-neutral-medium-cloud, 1px solid $color-disabled-text);
+      @include disable-button(transparent, $color-neutral-medium-cloud, 1px solid $color-neutral-medium-cloud);
     }
   }
 
@@ -209,7 +209,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-neutral-medium-cloud, 1px dashed $color-disabled-text);
+      @include disable-button(transparent, $color-neutral-medium-cloud, 1px dashed $color-neutral-medium-cloud);
     }
   }
 

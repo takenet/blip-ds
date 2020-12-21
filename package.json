@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "@types/color": "^3.0.1",
-    "blip-tokens": "^1.13.0",
+    "blip-tokens": "^1.14.0",
     "color": "^3.1.3"
   },
   "repository": {
