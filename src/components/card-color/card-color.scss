@@ -25,7 +25,10 @@ $border-radius: 8px;
   margin-top: 8px;
 
   &--light {
-    :part(bds-typo__text) {
+    &::part(bds-typo__text) {
+      color: white;
+    }
+    ::part(bds-typo__text) {
       color: white;
     }
   }
@@ -392,6 +395,11 @@ $border-radius: 8px;
       &__text {
         @include fontDescriptionValue();
       }
+    }
+
+    &--gradient {
+      text-align: center;
+      flex-direction: column;
     }
   }
 }

@@ -17,6 +17,11 @@ export class CardColor {
   @Prop() hex?: string;
 
   /**
+   * Specifies if the hex is a linear gradient
+   */
+  @Prop() gradient = false;
+
+  /**
    * Specifies variabel sass color, _variables.scss.
    */
   @Prop() variable!: string;
@@ -38,7 +43,7 @@ export class CardColor {
         >
           <bds-typo variant="fs-14">${this.variable}</bds-typo>
         </div>
-        <div class="card-color__description">
+        <div class={{ 'card-color__description': true, 'card-color__description--gradient': this.gradient }}>
           <div class="card-color__description__name">
             <div class="card-color__description__name__label">
               <bds-typo variant="fs-10">Name</bds-typo>

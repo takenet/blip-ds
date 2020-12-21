@@ -89,9 +89,17 @@ export namespace Components {
     }
     interface BdsCardColor {
         /**
+          * Specifies if the hex is a linear gradient
+         */
+        "gradient": boolean;
+        /**
           * Specifies HEX color, use Figma docs in Blip DS.
          */
         "hex"?: string;
+        /**
+          * If true, the text will be white
+         */
+        "lightText": boolean;
         /**
           * Specifies name color, use Figma docs in Blip DS.
          */
@@ -1144,9 +1152,17 @@ declare namespace LocalJSX {
     }
     interface BdsCardColor {
         /**
+          * Specifies if the hex is a linear gradient
+         */
+        "gradient"?: boolean;
+        /**
           * Specifies HEX color, use Figma docs in Blip DS.
          */
         "hex"?: string;
+        /**
+          * If true, the text will be white
+         */
+        "lightText"?: boolean;
         /**
           * Specifies name color, use Figma docs in Blip DS.
          */

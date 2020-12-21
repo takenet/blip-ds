@@ -1,6 +1,6 @@
 import React from 'react';
 import readme from './readme.md';
-import Color from 'color';
+import * as Color from 'color';
 
 export default {
   title: 'Colors',
@@ -18,10 +18,10 @@ const blipBlues = [
 
 const purples = [
   { name: 'Purple Pixie', variable: 'color-primary-purples-pixie', hex: '#CC99FF' },
-  { name: 'Purple Bell', variable: 'color-primary-purples-bell', hex: '#C226FBF' },
+  { name: 'Purple Bell', variable: 'color-primary-purples-bell', hex: '#c226fb' },
   { name: 'Purple Witch', variable: 'color-primary-purples-witch', hex: '#9933CC' },
   { name: 'Purple acai', variable: 'color-primary-purples-acai', hex: '#4F0E87' },
-]
+];
 
 const greens = [
   { name: 'Green Mint', variable: 'color-primary-greens-mint', hex: '#90E6BC' },
@@ -57,7 +57,7 @@ const secondaryColorsAlerts = [
   { name: 'Red Delete', variable: 'color-extend-reds-delete', hex: '#FF4C4C' },
   { name: 'Green True', variable: 'color-primary-greens-true', hex: '#21CC79' },
   { name: 'Purple Bell', variable: 'color-primary-purples-bell', hex: '#C226FB' },
-]
+];
 const reds = [
   { name: 'Red Flower', variable: 'color-extend-reds-flower', hex: '#FFA5A5' },
   { name: 'Red Delete', variable: 'color-extend-reds-delete', hex: '#FF4C4C' },
@@ -95,17 +95,17 @@ const lightBlues = [
 ];
 
 const whiteSkin = [
-  { name: 'Skin Nicole', variable: 'color-illustration-skin-nicole', hex: '#FDC2BF' }, 
-  { name: 'Skin Keanu', variable: 'color-illustration-skin-keanu', hex: '#FFBBB8' }, 
-  { name: 'Skin Scarlett', variable: 'color-illustration-skin-scarlett', hex: '#F4B1AF' }, 
-  { name: 'Skin Evaristo', variable: 'color-illustration-skin-evaristo', hex: '#F3A6A3' }, 
+  { name: 'Skin Nicole', variable: 'color-illustration-skin-nicole', hex: '#FDC2BF' },
+  { name: 'Skin Keanu', variable: 'color-illustration-skin-keanu', hex: '#FFBBB8' },
+  { name: 'Skin Scarlett', variable: 'color-illustration-skin-scarlett', hex: '#F4B1AF' },
+  { name: 'Skin Evaristo', variable: 'color-illustration-skin-evaristo', hex: '#F3A6A3' },
 ];
 
 const yellowSkin = [
-  { name: 'Skin Jackie', variable: 'color-illustration-skin-jackie', hex: '#F3C29F' }, 
-  { name: 'Skin Lucy', variable: 'color-illustration-skin-lucy', hex: '#EDB58D' }, 
-  { name: 'Skin Hideo', variable: 'color-illustration-skin-hideo', hex: '#E8AA7D' }, 
-  { name: 'Skin Jung', variable: 'color-illustration-skin-jung', hex: '#E29E6C' }, 
+  { name: 'Skin Jackie', variable: 'color-illustration-skin-jackie', hex: '#F3C29F' },
+  { name: 'Skin Lucy', variable: 'color-illustration-skin-lucy', hex: '#EDB58D' },
+  { name: 'Skin Hideo', variable: 'color-illustration-skin-hideo', hex: '#E8AA7D' },
+  { name: 'Skin Jung', variable: 'color-illustration-skin-jung', hex: '#E29E6C' },
 ];
 
 const brownSkin = [
@@ -116,9 +116,9 @@ const brownSkin = [
 ];
 
 const darkSkin = [
-  { name: 'Skin Oprah', variable: 'color-illustration-skin-oprah', hex: '#CB8591' }, 
-  { name: 'Skin Tais', variable: 'color-illustration-skin-tais', hex: '#BC7785' }, 
-  { name: 'Skin Michelle', variable: 'color-illustration-skin-michelle', hex: '#A8747D' }, 
+  { name: 'Skin Oprah', variable: 'color-illustration-skin-oprah', hex: '#CB8591' },
+  { name: 'Skin Tais', variable: 'color-illustration-skin-tais', hex: '#BC7785' },
+  { name: 'Skin Michelle', variable: 'color-illustration-skin-michelle', hex: '#A8747D' },
   { name: 'Skinn Will', variable: 'color-illustration-skin-will', hex: '#98646D' },
 ];
 
@@ -146,60 +146,124 @@ const darkNeutrals = [
 ];
 
 const mediumNeutrals = [
-  { name: 'Medium Elephant', variable: 'color-neutral-medium-elephant', hex: '#6E7B91' }, 
-  { name: 'Medium Cloud', variable: 'color-neutral-medium-cloud', hex: '#8CA0B3' }, 
-  { name: 'Medium Silver', variable: 'color-neutral-medium-silver', hex: '#B9CBD3' }, 
-  { name: 'Medium Wave', variable: 'color-neutral-medium-wave', hex: '#D2DFE6' }, 
+  { name: 'Medium Elephant', variable: 'color-neutral-medium-elephant', hex: '#6E7B91' },
+  { name: 'Medium Cloud', variable: 'color-neutral-medium-cloud', hex: '#8CA0B3' },
+  { name: 'Medium Silver', variable: 'color-neutral-medium-silver', hex: '#B9CBD3' },
+  { name: 'Medium Wave', variable: 'color-neutral-medium-wave', hex: '#D2DFE6' },
 ];
 
 const lightNeutrals = [
-  { name: 'Light Box', variable: 'color-neutral-light-box', hex: '#E7EDF4' }, 
-  { name: 'Light Whisper', variable: 'color-neutral-light-whisper', hex: '# F3F6FA' }, 
-  { name: 'Light Breeze', variable: 'color-neutral-light-breeze', hex: '#F8FBFB' }, 
-  { name: 'Light Snow', variable: 'color-neutral-light-snow', hex: '#FFFFFF' }, 
+  { name: 'Light Box', variable: 'color-neutral-light-box', hex: '#E7EDF4' },
+  { name: 'Light Whisper', variable: 'color-neutral-light-whisper', hex: '#F3F6FA' },
+  { name: 'Light Breeze', variable: 'color-neutral-light-breeze', hex: '#F8FBFB' },
+  { name: 'Light Snow', variable: 'color-neutral-light-snow', hex: '#FFFFFF' },
 ];
 
 const gradientColors = [
-  { name: 'Rose', variable: 'color-gradient-rose', hex: 'linear-gradient(213.89deg, #ff4c4c 7.75%, #821a67 135.08%)' }, 
-  { name: 'Phoenix', variable: 'color-gradient-phoenix', hex: 'linear-gradient(213.98deg, #f6a721 7.74%, #fb5a8b 111.22%)' }, 
-  { name: 'Cactus', variable: 'color-gradient-cactus', hex: 'linear-gradient(215.84deg, #bed42b 24.15%, #167491 143.37%)' }, 
-  { name: 'Tree', variable: 'color-gradient-tree', hex: 'linear-gradient(213.19deg, #21cc79 26.38%, #167491 113.59%)' }, 
-  { name: 'Oceanr', variable: 'color-gradient-ocean', hex: 'linear-gradient(206.67deg, #4786f1 25.46%, #4f0e87 187.1%)' }, 
-  { name: 'Smurf', variable: 'color-gradient-smurf', hex: 'linear-gradient(213.61deg, #00c6d7 26.39%, #4786f1 100%)' }, 
-  { name: 'Grape', variable: 'color-gradient-grape', hex: 'linear-gradient(214.56deg, #c226fb 0%, #0052cc 174.21%)' }, 
-  { name: 'Fabulous', variable: 'color-gradient-fabulous', hex: 'linear-gradient(212.75deg, #fb5a8b 37.1%, #9933cc 171.27%)' }, 
-  { name: 'Street', variable: 'color-gradient-street', hex: 'linear-gradient(213.69deg, #6e7b91 25.43%, #233049 147.21%)' }, 
-  { name: 'Universe', variable: 'color-gradient-universe', hex: 'linear-gradient(213.69deg, #202c44 25.43%, #000000 147.21%)' }, 
+  {
+    name: 'Rose',
+    variable: 'color-gradient-rose',
+    gradient: true,
+    hex: 'linear-gradient(213.89deg, #ff4c4c 7.75%, #821a67 135.08%)',
+  },
+  {
+    name: 'Phoenix',
+    variable: 'color-gradient-phoenix',
+    gradient: true,
+    hex: 'linear-gradient(213.98deg, #f6a721 7.74%, #fb5a8b 111.22%)',
+  },
+  {
+    name: 'Cactus',
+    variable: 'color-gradient-cactus',
+    gradient: true,
+    hex: 'linear-gradient(215.84deg, #bed42b 24.15%, #167491 143.37%)',
+  },
+  {
+    name: 'Tree',
+    variable: 'color-gradient-tree',
+    gradient: true,
+    hex: 'linear-gradient(213.19deg, #21cc79 26.38%, #167491 113.59%)',
+  },
+  {
+    name: 'Oceanr',
+    variable: 'color-gradient-ocean',
+    gradient: true,
+    hex: 'linear-gradient(206.67deg, #4786f1 25.46%, #4f0e87 187.1%)',
+  },
+  {
+    name: 'Smurf',
+    variable: 'color-gradient-smurf',
+    gradient: true,
+    hex: 'linear-gradient(213.61deg, #00c6d7 26.39%, #4786f1 100%)',
+  },
+  {
+    name: 'Grape',
+    variable: 'color-gradient-grape',
+    gradient: true,
+    hex: 'linear-gradient(214.56deg, #c226fb 0%, #0052cc 174.21%)',
+  },
+  {
+    name: 'Fabulous',
+    variable: 'color-gradient-fabulous',
+    gradient: true,
+    hex: 'linear-gradient(212.75deg, #fb5a8b 37.1%, #9933cc 171.27%)',
+  },
+  {
+    name: 'Street',
+    variable: 'color-gradient-street',
+    gradient: true,
+    hex: 'linear-gradient(213.69deg, #6e7b91 25.43%, #233049 147.21%)',
+  },
+  {
+    name: 'Universe',
+    variable: 'color-gradient-universe',
+    gradient: true,
+    hex: 'linear-gradient(213.69deg, #202c44 25.43%, #000000 147.21%)',
+  },
 ];
 
 const getSectionColor = (title, content) => (
   <>
     <div>
       <bds-typo variant="fs-20">{title}</bds-typo>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'start' }}>
-        {content}
-      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'start' }}>{content}</div>
     </div>
     <br />
   </>
 );
 
-const getComponentCardColors = (name, variable, hex) => {
+const getComponentCardColors = (name, variable, hex, gradient) => {
+  let lightText = false;
+
   if (hex) {
-    return (<bds-card-color name={name} variable={variable} hex={hex} light-text="true"></bds-card-color>);
+    if (!gradient) {
+      const lightness = Color(hex).lightness();
+
+      if (lightness < 50) lightText = true;
+    }
+
+    return (
+      <bds-card-color
+        name={name}
+        variable={variable}
+        hex={hex}
+        light-text={lightText}
+        gradient={gradient}
+      ></bds-card-color>
+    );
   }
-  return (<bds-card-color name={name} variable={variable} light-text="true"></bds-card-color>);
+  return <bds-card-color name={name} variable={variable} light-text={lightText}></bds-card-color>;
 };
 
 const getColorsCards = (colors) => {
   const elements = [];
 
   for (const color of colors) {
-    elements.push(getComponentCardColors(color.name, color.variable, color.hex));
+    elements.push(getComponentCardColors(color.name, color.variable, color.hex, color.gradient));
   }
   console.log(elements);
   return elements;
-}
+};
 
 export const allColors = () => (
   <>
