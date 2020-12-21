@@ -171,7 +171,7 @@ $button-padding-left-right: 16px;
 
   &__ghost {
     background: transparent;
-    color: $color-primary-main;
+    color: $color-neutral-medium-cloud;
     border: 1px solid $color-primary-main;
 
     &:hover {
@@ -193,7 +193,7 @@ $button-padding-left-right: 16px;
 
   &__dashed {
     background: transparent;
-    color: $color-primary-main;
+    color: $color-neutral-medium-cloud;
     border: 1px dashed $color-primary-main;
 
     &:hover {
