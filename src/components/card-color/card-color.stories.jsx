@@ -261,7 +261,6 @@ const getColorsCards = (colors) => {
   for (const color of colors) {
     elements.push(getComponentCardColors(color.name, color.variable, color.hex, color.gradient));
   }
-  console.log(elements);
   return elements;
 };
 

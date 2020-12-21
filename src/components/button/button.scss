@@ -155,12 +155,12 @@ $button-padding-left-right: 16px;
     color: $color-neutral-light-snow;
 
     &:hover {
-      background: rgba($color-neutral-light-snow, 3);
+      background: rgba($color-neutral-light-snow, .3);
       color: $color-neutral-light-snow;
     }
 
     &:active {
-      background: rgba($color-neutral-light-snow, 4);
+      background: rgba($color-neutral-light-snow, .4);
       color: $color-neutral-light-snow;
     }
 
