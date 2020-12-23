@@ -24,6 +24,15 @@ $border-radius: 8px;
   margin-left: 8px;
   margin-top: 8px;
 
+  &--light {
+    &::part(bds-typo__text) {
+      color: white;
+    }
+    ::part(bds-typo__text) {
+      color: white;
+    }
+  }
+
   &--color {
     flex: 2;
     border-top-left-radius: $border-radius;
@@ -42,29 +51,44 @@ $border-radius: 8px;
     &-primary-dark {
       background-color: $color-primary-dark;
     }
-    &-primary-ghost {
-      background-color: $color-primary-ghost;
+    &-primary-night {
+      background-color: $color-primary-night;
     }
 
-    &-secondary-delete {
-      background-color: $color-secondary-delete;
+    &-extend-reds-delete {
+      background-color: $color-extend-reds-delete;
     }
-    &-secondary-cheetos {
-      background-color: $color-secondary-cheetos;
+    &-extend-browns-cheetos {
+      background-color: $color-extend-browns-cheetos;
     }
-    &-secondary-true {
-      background-color: $color-secondary-true;
+    &-primary-greens-true {
+      background-color: $color-primary-greens-true;
+    }
+    &-primary-greens-forest {
+      background-color: $color-primary-greens-forest;
     }
 
-    &-neutral-disabled-blues-text {
-      background-color: $color-neutral-disabled-blues-text;
+    &-disabled-bg {
+      background-color: $color-disabled-bg;
     }
-    &-neutral-disabled-blues-bg {
-      background-color: $color-neutral-disabled-blues-bg;
+    &-disabled-text {
+      background-color: $color-disabled-text;
+    }
+    &-disabled-delete {
+      background-color: $color-disabled-delete;
+    }
+    &-disabled-error {
+      background-color: $color-disabled-error;
+    }
+    &-disabled-wrong {
+      background-color: $color-disabled-wrong;
     }
 
     &-neutral-dark-onix {
       background-color: $color-neutral-dark-onix;
+    }
+    &-neutral-dark-eclipse {
+      background-color: $color-neutral-dark-eclipse;
     }
     &-neutral-dark-suit {
       background-color: $color-neutral-dark-suit;
@@ -75,9 +99,18 @@ $border-radius: 8px;
     &-neutral-dark-rooftop {
       background-color: $color-neutral-dark-rooftop;
     }
+    &-neutral-dark-ico {
+      background-color: $color-neutral-dark-ico;
+    }
+    &-neutral-dark-skate {
+      background-color: $color-neutral-dark-skate;
+    }
+    &-neutral-dark-desk {
+      background-color: $color-neutral-dark-desk;
+    }
 
-    &-neutral-medium-desk {
-      background-color: $color-neutral-medium-desk;
+    &-neutral-medium-elephant {
+      background-color: $color-neutral-medium-elephant;
     }
     &-neutral-medium-cloud {
       background-color: $color-neutral-medium-cloud;
@@ -86,202 +119,252 @@ $border-radius: 8px;
       background-color: $color-neutral-medium-silver;
     }
 
-    &-neutral-light-wave {
-      background-color: $color-neutral-light-wave;
+    &-neutral-medium-wave {
+      background-color: $color-neutral-medium-wave;
     }
-    &-neutral-light-off {
-      background-color: $color-neutral-light-off;
+    &-neutral-light-box {
+      background-color: $color-neutral-light-box;
     }
     &-neutral-light-breeze {
       background-color: $color-neutral-light-breeze;
+    }
+    &-neutral-light-snow {
+      background-color: $color-neutral-light-snow;
     }
     &-neutral-light-whisper {
       background-color: $color-neutral-light-whisper;
     }
 
-    &-extend-rr-b-vitamin {
-      background-color: $color-extend-rr-b-vitamin;
+    &-extend-reds-flower {
+      background-color: $color-extend-reds-flower;
     }
-    &-extend-rr-flower {
-      background-color: $color-extend-rr-flower;
+    &-extend-reds-lipstick {
+      background-color: $color-extend-reds-lipstick;
     }
-    &-extend-rr-lipstick {
-      background-color: $color-extend-rr-lipstick;
+    &-extend-reds-dragon {
+      background-color: $color-extend-reds-dragon;
     }
-    &-extend-rr-dragon {
-      background-color: $color-extend-rr-dragon;
+    &-primary-pinks-yogurt {
+      background-color: $color-primary-pinks-yogurt;
     }
-    &-extend-rr-ballet {
-      background-color: $color-extend-rr-ballet;
+    &-primary-pinks-barbie{
+      background-color: $color-primary-pinks-barbie;
     }
-    &-extend-rr-yogurt {
-      background-color: $color-extend-rr-yogurt;
+    &-primary-pinks-watermelon {
+      background-color: $color-primary-pinks-watermelon;
     }
-    &-extend-rr-watermelon {
-      background-color: $color-extend-rr-watermelon;
-    }
-    &-extend-rr-blush {
-      background-color: $color-extend-rr-blush;
+    &-primary-pinks-blush {
+      background-color: $color-primary-pinks-blush;
     }
 
-    &-extend-yo-fairy {
-      background-color: $color-extend-yo-fairy;
+    &-extend-grays-moon {
+      background-color: $color-extend-grays-moon;
     }
-    &-extend-yo-d-vitamin {
-      background-color: $color-extend-yo-d-vitamin;
+    &-extend-grays-elevator {
+      background-color: $color-extend-grays-elevator;
     }
-    &-extend-yo-melon {
-      background-color: $color-extend-yo-melon;
+    &-extend-grays-street {
+      background-color: $color-extend-grays-street;
     }
-    &-extend-yo-hay {
-      background-color: $color-extend-yo-hay;
-    }
-    &-extend-yo-sand {
-      background-color: $color-extend-yo-sand;
-    }
-    &-extend-yo-c-vitamin {
-      background-color: $color-extend-yo-c-vitamin;
-    }
-    &-extend-yo-sphinx {
-      background-color: $color-extend-yo-sphinx;
-    }
-    &-extend-yo-moose {
-      background-color: $color-extend-yo-moose;
-    }
-    &-extend-yo-summer {
-      background-color: $color-extend-yo-summer;
-    }
-    &-extend-yo-doritos {
-      background-color: $color-extend-yo-doritos;
-    }
-    &-extend-yo-carrot {
-      background-color: $color-extend-yo-carrot;
+    &-extend-grays-blackwidow {
+      background-color: $color-extend-grays-blackwidow;
     }
 
-    &-extended-green-chameleon {
-      background-color: $color-extended-green-chameleon;
+    &-primary-yellows-corn {
+      background-color: $color-primary-yellows-corn;
     }
-    &-extended-green-mint {
-      background-color: $color-extended-green-mint;
+    &-primary-yellows-moss {
+      background-color: $color-primary-yellows-moss;
     }
-    &-extended-green-corn {
-      background-color: $color-extended-green-corn;
+    &-primary-yellows-sun {
+      background-color: $color-primary-yellows-sun;
     }
-    &-extended-green-asparagus {
-      background-color: $color-extended-green-asparagus;
+    &-primary-yellows-guarana {
+      background-color: $color-primary-yellows-guarana;
     }
-    &-extended-green-bamboo {
-      background-color: $color-extended-green-bamboo;
+    &-extend-browns-wood {
+      background-color: $color-extend-browns-wood;
     }
-    &-extended-green-lime {
-      background-color: $color-extended-green-lime;
+    &-extend-browns-sand {
+      background-color: $color-extend-browns-sand;
     }
-    &-extended-green-leaf {
-      background-color: $color-extended-green-leaf;
+    &-extend-browns-sphinx {
+      background-color: $color-extend-browns-sphinx;
     }
-    &-extended-green-algae {
-      background-color: $color-extended-green-algae;
+    &-primary-oranges-sunset {
+      background-color: $color-primary-oranges-sunset;
     }
-
-    &-extended-blue-sky {
-      background-color: $color-extended-blue-sky;
+    &-primary-oranges-doritos {
+      background-color: $color-primary-oranges-doritos;
     }
-    &-extended-blue-wind {
-      background-color: $color-extended-blue-wind;
+    &-primary-oranges-clay {
+      background-color: $color-primary-oranges-clay;
     }
-    &-extended-blue-mermaid {
-      background-color: $color-extended-blue-mermaid;
-    }
-    &-extended-blue-galaxy {
-      background-color: $color-extended-blue-galaxy;
+    &-primary-oranges-carrot {
+      background-color: $color-primary-oranges-carrot;
     }
 
-    &-extended-blue-ice {
-      background-color: $color-extended-blue-ice;
+    &-illustration-green-bamboo {
+      background-color: $color-illustration-green-bamboo;
     }
-    &-extended-blue-frozen {
-      background-color: $color-extended-blue-frozen;
+    &-primary-greens-mint {
+      background-color: $color-primary-greens-mint;
     }
-    &-extended-blue-smurf {
-      background-color: $color-extended-blue-smurf;
+    &-primary-greens-true {
+      background-color: $color-primary-greens-true;
     }
-    &-extended-blue-whale {
-      background-color: $color-extended-blue-whale;
+    &-primary-greens-aligator {
+      background-color: $color-primary-greens-aligator;
     }
-
-    &-extended-blue-genie {
-      background-color: $color-extended-blue-genie;
+    &-illustration-green-lime {
+      background-color: $color-illustration-green-lime;
     }
-    &-extended-blue-unicorn {
-      background-color: $color-extended-blue-unicorn;
+    &-illustration-green-leaf {
+      background-color: $color-illustration-green-leaf;
     }
-    &-extended-blue-sea {
-      background-color: $color-extended-blue-sea;
-    }
-    &-extended-blue-jazz {
-      background-color: $color-extended-blue-jazz;
+    &-illustration-green-algae {
+      background-color: $color-illustration-green-algae;
     }
 
-    &-extended-purples-eggplant {
-      background-color: $color-extended-purples-eggplant;
+    &-illustration-blue-sky {
+      background-color: $color-illustration-blue-sky;
     }
-    &-extended-purples-pixie {
-      background-color: $color-extended-purples-pixie;
+    &-illustration-blue-genie {
+      background-color: $color-illustration-blue-genie;
     }
-    &-extended-purples-witch {
-      background-color: $color-extended-purples-witch;
+    &-illustration-blue-brand {
+      background-color: $color-illustration-blue-brand;
     }
-    &-extended-purples-grape {
-      background-color: $color-extended-purples-grape;
+    &-illustration-blue-sea {
+      background-color: $color-illustration-blue-sea;
     }
-    &-extended-purples-violet {
-      background-color: $color-extended-purples-violet;
-    }
-    &-extended-purples-wine {
-      background-color: $color-extended-purples-wine;
-    }
-    &-extended-purples-acai {
-      background-color: $color-extended-purples-acai;
+    &-illustration-blue-jeans {
+      background-color: $color-illustration-blue-jeans;
     }
 
+    &-illustration-skin-jackie {
+      background-color: $color-illustration-skin-jackie;
+    }
+    &-illustration-skin-lucy {
+      background-color: $color-illustration-skin-lucy;
+    }
+    &-illustration-skin-hideo {
+      background-color: $color-illustration-skin-hideo;
+    }
+    &-illustration-skin-jung {
+      background-color: $color-illustration-skin-jung;
+    }
+
+    &-illustration-skin-nicole {
+      background-color: $color-illustration-skin-nicole;
+    }
+    &-illustration-skin-keanu {
+      background-color: $color-illustration-skin-keanu;
+    }
+    &-illustration-skin-scarlett {
+      background-color: $color-illustration-skin-scarlett;
+    }
+    &-illustration-skin-evaristo {
+      background-color: $color-illustration-skin-evaristo;
+    }
+
+    &-illustration-skin-zoe {
+      background-color: $color-illustration-skin-zoe;
+    }
+    &-illustration-skin-jason {
+      background-color: $color-illustration-skin-jason;
+    }
+    &-illustration-skin-jeniffer {
+      background-color: $color-illustration-skin-jeniffer;
+    }
+    &-illustration-skin-dwayne {
+      background-color: $color-illustration-skin-dwayne;
+    }
+
+    &-illustration-skin-oprah {
+      background-color: $color-illustration-skin-oprah;
+    }
+    &-illustration-skin-tais {
+      background-color: $color-illustration-skin-tais;
+    }
+    &-illustration-skin-michelle {
+      background-color: $color-illustration-skin-michelle;
+    }
+    &-illustration-skin-will {
+      background-color: $color-illustration-skin-will;
+    }
+
+    &-hover-light {
+      background-color: $color-hover-light;
+    }
+
+    &-primary-light {
+      background-color: $color-primary-light;
+    }
+    &-primary-light {
+      background-color: $color-primary-light;
+    }
+    &-primary-main {
+      background-color: $color-primary-main;
+    }
+    &-primary-night {
+      background-color: $color-primary-night;
+    }
+
+    &-primary-purples-pixie {
+      background-color: $color-primary-purples-pixie;
+    }
+    &-primary-purples-bell {
+      background-color: $color-primary-purples-bell;
+    }
+    &-primary-purples-witch {
+      background-color: $color-primary-purples-witch;
+    }
+    &-primary-purples-acai {
+      background-color: $color-primary-purples-acai;
+    }
+
+    &-gradient-fabulous {
+      background: $color-gradient-fabulous;
+    }
     &-gradient-universe {
       background: $color-gradient-universe;
     }
     &-gradient-street {
       background: $color-gradient-street;
     }
-    &-gradient-chair {
-      background: $color-gradient-chair;
-    }
     &-gradient-shine {
-      background: $color-gradient-shine;
+      background: $color-neutral-light-whisper;
     }
-    &-gradient-olaf {
-      background: $color-gradient-olaf;
+    &-gradient-ocean {
+      background: $color-gradient-ocean;
+    }
+    &-gradient-grape {
+      background: $color-gradient-grape;
     }
     &-gradient-dg-blip-system {
-      background: $color-gradient-dg-blip-system;
+      background: $color-gradient-smurf;
     }
     &-gradient-error {
-      background: $color-gradient-error;
+      background: $color-gradient-rose;
     }
     &-gradient-phoenix {
       background: $color-gradient-phoenix;
     }
     &-gradient-success {
-      background: $color-gradient-success;
+      background: $color-gradient-tree;
     }
-    &-gradient-barbie {
-      background: $color-gradient-barbie;
+    &-gradient-rose {
+      background: $color-gradient-rose;
     }
-    &-gradient-jeans {
-      background: $color-gradient-jeans;
+    &-gradient-cactus {
+      background: $color-gradient-cactus;
     }
-    &-gradient-ocean {
-      background: $color-gradient-ocean;
+    &-gradient-tree {
+      background: $color-gradient-tree;
     }
-    &-gradient-smurfette {
-      background: $color-gradient-smurfette;
+    &-gradient-smurf {
+      background: $color-gradient-smurf;
     }
   }
 
@@ -315,6 +398,11 @@ $border-radius: 8px;
       &__text {
         @include fontDescriptionValue();
       }
+    }
+
+    &--gradient {
+      text-align: center;
+      flex-direction: column;
     }
   }
 }

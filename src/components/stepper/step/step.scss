@@ -34,10 +34,10 @@
         margin-right: 4px;
         min-width: 24px;
         min-height: 24px;
-        color: $color-snow-white;
+        color: $color-neutral-light-snow;
 
         &--active {
-          background: $color-neutral-dark-ultron;
+          background: $color-neutral-dark-rooftop;
         }
 
         &--completed {
@@ -50,7 +50,7 @@
       flex: 1;
       align-self: center;
       height: 1.5px;
-      background: $color-neutral-light-wave;
+      background: $color-neutral-medium-wave;
       margin: 0px 8px;
 
       &--completed {

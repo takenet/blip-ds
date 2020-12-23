@@ -1,168 +1,24 @@
-/**
- * Primary Colors
- * Nossa paleta principal é composta por tons de azul que rementem diretamente as cores da marca,
- * essas cores estão presentes na maioria dos pontos de contato, do marketing ao produto como também por toda a plataforma.
- */
-$color-primary-main: #00C6D7;
-$color-primary-light: #87dde8;
-$color-primary-dark: #2498a8;
-$color-primary-ghost: #f8fbfb;
-
-//Verdes
-$color-primary-greens-true: #21cc79;
-
-/**
-* Secondary Colors
-* A paleta secundária é composta de vermelho, amarelo, verde e roxo. Cada cor é selecionada com o objetivo de fornecer feedback significativo em nossos produtos.
-*/
-$color-secondary-delete: #ff5a60;
-$color-secondary-cheetos: #f9b42f;
-$color-secondary-true: #4dcb7b;
-
-$color-secondary-bg-delete: rgba(255, 123, 128, 0.6);
-$color-primary-bg-main: rgba(44, 195, 213, 0.7);
-
-$color-secondary-white-bg-hover: rgba(255, 255, 255, 0.3);
-$color-secondary-white-bg-active: rgba(255, 255, 255, 0.4);
-
-/**
-* Neutral Colors
-* Os neutros têm graus variados de saturação. Normalmente, eles são usados ​​para texto e fundos sutis
-* quando não queremos chamar muita atenção para um ponto de contato específico ou transmitir informações como "a fazer" ou "desativado".
-*/
-
-// Disabled Blues
-$color-neutral-disabled-blues-text: #76c1ca;
-$color-neutral-disabled-blues-bg: #daf2f4;
-
-// Select neutrals
-$color-neutral-select-background: #e9f7f8;
-
-// Dark neutrals
-$color-neutral-dark-eclipse: #0a0f1a;
-$color-neutral-dark-onix: #1a2437;
-$color-neutral-dark-suit: #202c44;
-$color-neutral-dark-ultron: #283143;
-$color-neutral-dark-city: #56616e;
-$color-neutral-dark-rooftop: #738192;
-
-// Medium neutrals
-$color-neutral-medium-desk: #607b99;
-$color-neutral-medium-cloud: #8ca0b3;
-$color-neutral-medium-silver: #b9cbd3;
-
-// Light neutrals
-$color-neutral-light-wave: #d2dfe6;
-$color-neutral-light-off: #dee8ec;
-$color-neutral-light-breeze: #e7eef1;
-$color-neutral-light-whisper: #f5f8f9;
-$color-snow-white: #ffffff;
-
-/**
-* Extended colors
-* As cores estendidas são todos os tons de cores utilizáveis ​​na plataforma. O uso dessas cores varia de acordo com o ponto de
-* contato, mas são úteis para ilustrações e componentes no produto.
-*/
-
-// Vermelhos / Rosas
-$color-extend-rr-b-vitamin: #ffd6d7;
-$color-extend-rr-flower: #ff7b80;
-$color-extend-rr-lipstick: #cf5358;
-$color-extend-rr-dragon: #802d30;
-$color-extend-rr-ballet: #fdd9e1;
-$color-extend-rr-yogurt: #fbb3c4;
-$color-extend-rr-watermelon: #f66689;
-$color-extend-rr-blush: #c85c77;
-$color-extend-reds-delete: #ff4c4c;
-$color-extend-reds-lipstick: #a01c2c;
-
-// Amarelos / Laranjas
-$color-extend-yo-fairy: #fbf9cc;
-$color-extend-yo-d-vitamin: #f8f399;
-$color-extend-yo-melon: #f1e733;
-$color-extend-yo-hay: #b5ad26;
-$color-extend-yo-sand: #feeccb;
-$color-extend-yo-c-vitamin: #fcda97;
-$color-extend-yo-sphinx: #cb9733;
-$color-extend-yo-moose: #fee6d1;
-$color-extend-yo-summer: #fccda2;
-$color-extend-yo-doritos: #f99b45;
-$color-extend-yo-carrot: #fa7e25;
-
-// Verdes
-$color-extended-green-chameleon: #d3f2de;
-$color-extended-green-mint: #a6e5bd;
-$color-extended-green-corn: #4aa86c;
-$color-extended-green-asparagus: #26663d;
-$color-extended-green-bamboo: #eff4ca;
-$color-extended-green-lime: #dfea95;
-$color-extended-green-leaf: #bed42b;
-$color-extended-green-algae: #8e9f20;
-
-// Azuis
-$color-extended-blue-sky: #c3eef4;
-$color-extended-blue-wind: #ade7ee;
-$color-extended-blue-mermaid: #41b2c0;
-$color-extended-blue-galaxy: #16626b;
-$color-extended-blue-ice: #d5f3ff;
-$color-extended-blue-frozen: #aae7ff;
-$color-extended-blue-smurf: #55cfff;
-$color-extended-blue-whale: #409bbf;
-$color-extended-blue-genie: #d3defc;
-$color-extended-blue-unicorn: #a8bdf9;
-$color-extended-blue-sea: #517bf2;
-$color-extended-blue-jazz: #3d5cb6;
-$color-extended-blue-main: #4786f1;
-$color-extended-blue-dark: #0052cc;
-$color-extended-blue-brand: #00c6d7;
-
-// Roxos
-$color-extended-purples-eggplant: #edd9fd;
-$color-extended-purples-pixie: #dbb3fb;
-$color-extended-purples-witch: #b97ce8;
-$color-extended-purples-grape: #b766f6;
-$color-extended-purples-violet: #995cc8;
-$color-extended-purples-wine: #894cb9;
-$color-extended-purples-acai: #5b337b;
-
-// Marrons
-$color-extend-browns-cheetos: #f6a721;
-
-// Gradients
-$color-gradient-universe: linear-gradient(195.12deg, #343c4c -10.36%, #242b36 45.63%, #1d1d1d 117.21%);
-$color-gradient-street: linear-gradient(195.12deg, #6d7a81 -10.36%, #52636c 45.63%, #312f44 117.2%, #3d4a51 117.21%);
-$color-gradient-chair: linear-gradient(#788ca3 0%, #607b99 43.89%, #485c73 100%);
-$color-gradient-shine: linear-gradient(195.12deg, #f5f8f9 -10.36%, #dee8ec 45.63%, #d2dfe6 117.21%);
-$color-gradient-olaf: linear-gradient(195.12deg, #fafcfc -10.36%, #f5f8f9 45.63%, #e8eaeb 117.2%, #e8eaeb 117.21%);
-$color-gradient-dg-blip-system: linear-gradient(195.12deg, #87dde8 -10.36%, #2cc3d5 45.63%, #2498a8 117.21%);
-$color-gradient-error: linear-gradient(195.12deg, #ff5a60 -10.36%, #f04847 45.63%, #b43635 117.21%);
-$color-gradient-phoenix: linear-gradient(195.12deg, #ffcf33 -10.36%, #f9b42f 45.63%, #f99b45 117.21%);
-$color-gradient-success: linear-gradient(195.12deg, #93d2aa -10.36%, #4dcb7b 45.63%, #4aa86c 117.21%);
-$color-gradient-barbie: linear-gradient(195.12deg, #fbb3c4 -10.36%, #f66689 45.63%, #c85c77 117.21%);
-$color-gradient-jeans: linear-gradient(195.12deg, #514f64 -10.36%, #2c2a46 45.63%, #312f44 117.2%, #312f44 117.21%);
-$color-gradient-ocean: linear-gradient(195.12deg, #6d8ce5 -10.36%, #517bf2 45.63%, #4d6cc5 117.21%);
-$color-gradient-smurfette: linear-gradient(195.12deg, #9ee3ff -10.36%, #55cfff 45.63%, #51b2dd 117.21%);
+@import 'node_modules/blip-tokens/build/scss/variables.scss';
 
 // Shadows
 $shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.4);
 $shadow-box: 0px 4px 10px rgba(51, 51, 51, 0.3);
-$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4),
-  0px 0px 4px rgba(96, 123, 153, 0.3);
+$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
 $light-drop: 0px 2px 8px rgba(7, 71, 166, 0.15);
 $shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
 
 //Custom Colors
-$color-secondary-undo: #485C73;
-$color-secondary-redo: #485C73;
-$color-facebook-main: #1877F2;
-$color-facebook-dark: #1771E6;
-$color-gradient-rose: linear-gradient(213.89deg, #FF4C4C 7.75%, #821A67 135.08%);
-$color-gradient-phoenix: linear-gradient(213.98deg, #F6A721 7.74%, #FB5A8B 111.22%);
-$color-gradient-cactus: linear-gradient(215.84deg, #BED42B 24.15%, #167491 143.37%);
-$color-gradient-tree: linear-gradient(213.19deg, #21CC79 26.38%, #167491 113.59%);
-$color-gradient-ocean: linear-gradient(206.67deg, #4786F1 25.46%, #4F0E87 187.1%);
-$color-gradient-smurf: linear-gradient(213.61deg, #00C6D7 26.39%, #4786F1 100%);
-$color-gradient-grape: linear-gradient(214.56deg, #C226FB 0%, #0052CC 174.21%);
-$color-gradient-barbie: linear-gradient(212.75deg, #FB5A8B 37.1%, #9933CC 171.27%);
-$color-gradient-street: linear-gradient(213.69deg, #6E7B91 25.43%, #233049 147.21%);
-$color-gradient-universe: linear-gradient(213.69deg, #202C44 25.43%, #000000 147.21%);
+$color-secondary-undo: #485c73;
+$color-secondary-redo: #485c73;
+$color-facebook-main: #1877f2;
+$color-facebook-dark: #1771e6;
+$color-gradient-rose: linear-gradient(213.89deg, #ff4c4c 7.75%, #821a67 135.08%);
+$color-gradient-phoenix: linear-gradient(213.98deg, #f6a721 7.74%, #fb5a8b 111.22%);
+$color-gradient-cactus: linear-gradient(215.84deg, #bed42b 24.15%, #167491 143.37%);
+$color-gradient-tree: linear-gradient(213.19deg, #21cc79 26.38%, #167491 113.59%);
+$color-gradient-ocean: linear-gradient(206.67deg, #4786f1 25.46%, #4f0e87 187.1%);
+$color-gradient-smurf: linear-gradient(213.61deg, #00c6d7 26.39%, #4786f1 100%);
+$color-gradient-grape: linear-gradient(214.56deg, #c226fb 0%, #0052cc 174.21%);
+$color-gradient-fabulous: linear-gradient(212.75deg, #fb5a8b 37.1%, #9933cc 171.27%);
+$color-gradient-street: linear-gradient(213.69deg, #6e7b91 25.43%, #233049 147.21%);
+$color-gradient-universe: linear-gradient(213.69deg, #202c44 25.43%, #000000 147.21%);

@@ -9,12 +9,12 @@ $icon-button-padding: 4px;
 
   &:hover {
     color: $color-primary-main;
-    background: $color-neutral-disabled-blues-bg;
+    background: $color-disabled-bg;
   }
 
   &:focus {
     color: $color-primary-main;
-    background: $color-extended-blue-sky;
+    background: $color-illustration-blue-sky;
   }
 
   &:active {
@@ -45,79 +45,79 @@ $icon-button-padding: 4px;
 }
 
 @mixin icon-button-secondary {
-  color: $color-snow-white;
+  color: $color-neutral-light-snow;
   background: $color-primary-main;
 
   &:hover {
-    color: $color-snow-white;
+    color: $color-neutral-light-snow;
     background: $color-primary-dark;
   }
 
   &:focus {
-    color: $color-snow-white;
+    color: $color-neutral-light-snow;
     background: $color-primary-dark;
   }
 
   &:active {
-    color: $color-snow-white;
+    color: $color-neutral-light-snow;
     background: $color-primary-main;
   }
 
   &--disabled {
     cursor: not-allowed;
-    color: $color-neutral-disabled-blues-text;
-    background: $color-neutral-disabled-blues-bg;
+    color: $color-disabled-text;
+    background: $color-disabled-bg;
 
     &:hover {
-      color: $color-neutral-disabled-blues-text;
-      background: $color-neutral-disabled-blues-bg;
+      color: $color-disabled-text;
+      background: $color-disabled-bg;
     }
 
     &:focus {
-      color: $color-neutral-disabled-blues-text;
-      background: $color-neutral-disabled-blues-bg;
+      color: $color-disabled-text;
+      background: $color-disabled-bg;
     }
 
     &:active {
-      color: $color-neutral-disabled-blues-text;
-      background: $color-neutral-disabled-blues-bg;
+      color: $color-disabled-text;
+      background: $color-disabled-bg;
     }
   }
 }
 
 @mixin icon-button-secondary-white {
   background: transparent;
-  color: $color-snow-white;
+  color: $color-neutral-light-snow;
 
   &:hover,
   &:focus {
-    background: $color-secondary-white-bg-hover;
-    color: $color-snow-white;
+    background: rgba($color-neutral-light-snow, .3);
+    color: $color-neutral-light-snow;
   }
 
   &:active {
-    background: $color-secondary-white-bg-active;
-    color: $color-snow-white;
+    background: rgba($color-neutral-light-snow, .4);
+    color: $color-neutral-light-snow;
   }
 
   &--disabled {
     cursor: not-allowed;
-    color: $color-neutral-disabled-blues-text;
-    background: $color-neutral-disabled-blues-bg;
+    color: $color-disabled-text;
+    background: $color-disabled-bg;
 
     &:hover {
-      color: $color-neutral-disabled-blues-text;
-      background: $color-neutral-disabled-blues-bg;
+      color: $color-disabled-text;
+      background: $color-disabled-bg;
     }
 
     &:focus {
-      color: $color-neutral-disabled-blues-text;
-      background: $color-neutral-disabled-blues-bg;
+      color: $color-disabled-text;
+      background: $color-disabled-bg;
     }
 
     &:active {
-      color: $color-neutral-disabled-blues-text;
-      background: $color-neutral-disabled-blues-bg;
+      color: $color-disabled-text;
+      background: $color-disabled-bg;
     }
   }
 }
@@ -127,13 +127,13 @@ $icon-button-padding: 4px;
   background: transparent;
 
   &:hover {
-    color: $color-secondary-delete;
-    background: $color-extend-rr-b-vitamin;
+    color: $color-extend-reds-delete;
+    background: $color-extend-reds-flower;
   }
 
   &:focus {
-    color: $color-secondary-delete;
-    background: $color-extend-rr-b-vitamin;
+    color: $color-extend-reds-delete;
+    background: $color-extend-reds-flower;
   }
 
   &:active {
@@ -150,12 +150,12 @@ $icon-button-padding: 4px;
       color: $color-neutral-medium-silver;
       background: transparent;
     }
-  
+
     &:focus {
       color: $color-neutral-medium-silver;
       background: transparent;
     }
-  
+
     &:active {
       color: $color-neutral-medium-silver;
       background: transparent;
@@ -181,7 +181,7 @@ $icon-button-padding: 4px;
   &--secondary {
     @include icon-button-secondary();
   }
-  
+
   &--secondary-white {
     @include icon-button-secondary-white();
   }

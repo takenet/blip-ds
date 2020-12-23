@@ -104,32 +104,32 @@ $input-width: 100%;
   max-width: 100%;
   max-height: 100%;
 
-  background: $color-snow-white;
+  background: $color-neutral-light-snow;
 
   &--state {
     &-primary {
       @include input-theme(
         'primary',
         $color-primary-main,
-        $color-neutral-disabled-blues-bg,
+        $color-disabled-bg,
         $color-neutral-medium-cloud,
         $color-neutral-dark-city,
-        $color-neutral-light-wave,
+        $color-neutral-medium-wave,
         $color-primary-main,
-        $color-extended-blue-wind
+        rgba($color-primary-main, 0.4)
       );
     }
 
     &-danger {
       @include input-theme(
         'danger',
-        $color-secondary-delete,
-        $color-extend-rr-b-vitamin,
+        $color-extend-reds-delete,
+        $color-extend-reds-flower,
         $color-neutral-medium-cloud,
         $color-neutral-dark-city,
-        $color-secondary-delete,
-        $color-secondary-delete,
-        $color-extend-rr-flower
+        $color-extend-reds-delete,
+        $color-extend-reds-delete,
+        $color-extend-reds-flower
       );
     }
 
@@ -141,9 +141,9 @@ $input-width: 100%;
         $color-neutral-light-breeze,
         $color-neutral-medium-silver,
         $color-neutral-medium-silver,
-        $color-neutral-light-off,
+        $color-neutral-light-box,
         $color-neutral-medium-silver,
-        $color-neutral-light-off
+        $color-neutral-light-box
       );
     }
   }
@@ -222,7 +222,7 @@ $input-width: 100%;
     }
 
     &--danger {
-      color: $color-secondary-delete;
+      color: $color-extend-reds-delete;
     }
   }
 }

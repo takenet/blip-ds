@@ -12,12 +12,12 @@
 }
 
 :host(.chip--primary) {
-  background: $color-neutral-disabled-blues-bg;
+  background: $color-disabled-bg;
   color: $color-primary-main;
 }
 
 :host(.chip--click.chip--primary:hover) {
-  background: $color-extended-blue-wind;
+  background: $color-illustration-blue-genie;
   color: $color-primary-dark;
 }
 
@@ -27,8 +27,8 @@
 }
 
 :host(.chip--danger) {
-  background: $color-extend-rr-b-vitamin;
-  color: $color-secondary-delete;
+  background: $color-extend-reds-flower;
+  color: $color-extend-reds-delete;
 }
 
 :host(.chip--standard) {

@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 $menu-list-item-width: 76px;
 $menu-list-item-height: 56px;
@@ -9,7 +9,7 @@ $menu-list-item-height: 56px;
 }
 
 .menu-list-item {
-  background-color: $color-snow-white;
+  background-color: $color-neutral-light-snow;
   color: currentColor;
 
   cursor: pointer;
@@ -30,7 +30,7 @@ $menu-list-item-height: 56px;
 
   &:active,
   &:active > &__text {
-    background-color: $color-neutral-select-background;
+    background-color: $color-hover-light;
     color: $color-primary-main;
   }
 

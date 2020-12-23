@@ -6,28 +6,28 @@
   display: inline-flex;
   align-items: center;
 
-    bds-icon {
-      min-width: 32px;
-    }
+  bds-icon {
+    min-width: 32px;
+  }
 
-    bds-typo {
-      margin-left: 8px;
-      color: $color-snow-white;
-    }
+  bds-typo {
+    margin-left: 8px;
+    color: $color-neutral-light-snow;
+  }
 
-    &--system {
-      background: $color-primary-main;
-    }
-    
-    &--error {
-      background: $color-secondary-delete;
-    }
+  &--system {
+    background: $color-primary-main;
+  }
 
-    &--warning {
-      background: $color-secondary-cheetos;
-    }
+  &--error {
+    background: $color-extend-reds-delete;
+  }
 
-    &--delete {
-      background: $color-secondary-delete;
-    }
+  &--warning {
+    background: $color-extend-browns-cheetos;
+  }
+
+  &--delete {
+    background: $color-extend-reds-delete;
+  }
 }
