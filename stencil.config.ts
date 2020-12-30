@@ -25,7 +25,7 @@ export const config: Config = {
     },
     reactOutputTarget({
       componentCorePackage: 'blip-ds',
-      proxiesFile: './dist/blip-ds-react/src/components.ts',
+      proxiesFile: './blip-ds-react/src/components.ts',
     }),
   ],
   buildEs5: 'prod',

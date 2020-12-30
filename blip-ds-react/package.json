@@ -1,0 +1,54 @@
+{
+  "name": "blip-ds-react",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "private": true,
+  "description": "React specific wrapper for blip-ds",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionic-team/ionic.git"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf dist",
+    "compile": "npm run tsc",
+    "tsc": "tsc -p .",
+    "rollup": "rollup -c"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "resolutions": {
+    "@types/react": "17.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "23.3.9",
+    "@types/node": "14.14.16",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "16.0.9",
+    "jest": "^23.0.0",
+    "jest-dom": "^3.0.2",
+    "np": "^3.1.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "typescript": "^3.3.4000"
+  },
+  "dependencies": {
+    "blip-ds": "^1.85.0"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  }
+}

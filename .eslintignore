@@ -9,3 +9,5 @@ coverage
 
 **/*.js
 **/*.jsx
+# dont lint the blip-ds-react package
+blip-ds-react
