@@ -17,12 +17,13 @@ jobs:
           node-version: 12
           egistry-url: https://registry.npmjs.org/
       
-      - name: NPM Install, Build, and Test
+      - name: NPM Install, Build, Build React and Test
         run: |
           npm install
           npm run eslint
           npm run test
           npm run build
+          npm run build:react
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
