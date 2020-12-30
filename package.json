@@ -21,7 +21,7 @@
     "start": "stencil build --dev --watch --serve --docs",
     "build": "npm run build:component",
     "build:component": "stencil build --docs",
-    "build:react": "cd ./blip-ds-react && npm run build",
+    "build:react": "cd ./blip-ds-react && npm install && npm run build",
     "ci": "npm run build && npm run storybook:build && npm run storybook:deploy",
     "test": "stencil test --spec",
     "test:e2e": "stencil test --e2e",
