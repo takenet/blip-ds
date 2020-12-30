@@ -322,4 +322,3 @@ npm run generate
 ## License
 
 `blip-ds` is under the [ISC license](https://opensource.org/licenses/ISC).
-
