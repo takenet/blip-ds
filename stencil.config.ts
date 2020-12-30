@@ -14,7 +14,7 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-      copy: [{ src: 'globals', dest: 'styles' }],
+      copy: [{ src: 'globals', dest: 'styles' }, { src: '../blip-ds-react' }],
     },
     {
       type: 'docs-readme',
