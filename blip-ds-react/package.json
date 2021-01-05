@@ -36,9 +36,6 @@
     "react-dom": "^16.7.0",
     "typescript": "^3.3.4000"
   },
-  "dependencies": {
-    "blip-ds": "^1.85.0"
-  },
   "peerDependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

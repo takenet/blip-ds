@@ -35,16 +35,20 @@
 
   &--active {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     bds-input {
       min-width: 120px;
       max-width: 140px;
       margin-right: 4px;
-      height: 40px;
 
       &::part(input) {
         font-size: $fs-24;
+        line-height: 0px;
+      }
+
+      &::part(input-container) {
+        padding: 4px 4px 5px 12px;
       }
 
       &::part(input__message) {
@@ -56,19 +60,25 @@
       cursor: pointer;
     }
 
-    &__icon--error {
-      color: $color-extend-reds-delete;
+    &__icon {
+      display: flex;
+      align-items: center;
+      height: 40px;
 
-      &:hover {
-        color: $color-extend-reds-lipstick;
+      &--error {
+        color: $color-extend-reds-delete;
+
+        &:hover {
+          color: $color-extend-reds-lipstick;
+        }
       }
-    }
 
-    &__icon--checkball {
-      color: $color-primary-main;
+      &--checkball {
+        color: $color-primary-main;
 
-      &:hover {
-        color: $color-primary-dark;
+        &:hover {
+          color: $color-primary-dark;
+        }
       }
     }
   }

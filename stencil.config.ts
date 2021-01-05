@@ -27,7 +27,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      componentCorePackage: 'blip-ds',
+      componentCorePackage: '../../loader',
       proxiesFile: './blip-ds-react/src/components.ts',
     }),
   ],
