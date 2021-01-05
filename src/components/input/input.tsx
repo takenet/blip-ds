@@ -471,6 +471,7 @@ export class Input {
           }}
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}
+          part="input-container"
         >
           {this.renderIcon()}
           <slot name="input-left"></slot>

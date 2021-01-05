@@ -110,20 +110,22 @@ export class InputEditable {
                 error-message={this.errorMessage}
                 danger={this.danger}
               ></bds-input>
-              <bds-icon
-                key="error-icon"
-                class="input__editable--active__icon--error"
-                theme="solid"
-                name="error"
-                onClick={this.handleEditing}
-              ></bds-icon>
-              <bds-icon
-                key="checkball-icon"
-                class="input__editable--active__icon--checkball"
-                theme="solid"
-                name="checkball"
-                onClick={this.handleSaveText}
-              ></bds-icon>
+              <div class="input__editable--active__icon">
+                <bds-icon
+                  key="error-icon"
+                  class="input__editable--active__icon--error"
+                  theme="solid"
+                  name="error"
+                  onClick={this.handleEditing}
+                ></bds-icon>
+                <bds-icon
+                  key="checkball-icon"
+                  class="input__editable--active__icon--checkball"
+                  theme="solid"
+                  name="checkball"
+                  onClick={this.handleSaveText}
+                ></bds-icon>
+              </div>
             </div>
           )}
         </div>
