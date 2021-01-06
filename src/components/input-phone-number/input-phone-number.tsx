@@ -111,7 +111,6 @@ export class InputPhoneNumber {
   async connectedCallback() {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
-      option.addEventListener('optionSelected', this.handler);
     }
   }
 
@@ -244,7 +243,6 @@ export class InputPhoneNumber {
               selected={flag == this.selectedCountry}
               value={{ code: countries[flag].code, flag }}
             >
-              <bds-icon slot="input-left" size="xx-large" theme="solid" name={flag} color="primary"></bds-icon>
               {countries[flag].name} {countries[flag].code}
             </bds-select-option>
           ))}
