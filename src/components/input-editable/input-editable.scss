@@ -79,7 +79,19 @@
         &:hover {
           color: $color-primary-dark;
         }
+
+        &--error {
+          color: $color-disabled-bg;
+
+          &:hover {
+            color: $color-disabled-bg;
+          }
+        }
       }
     }
+  }
+
+  &--hidden {
+    display: none;
   }
 }

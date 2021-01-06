@@ -1,4 +1,4 @@
-import { Component, Prop, State, Event, EventEmitter, Element, h, Host } from '@stencil/core';
+import { Component, Prop, State, Event, EventEmitter, Element, h, Host, Listen } from '@stencil/core';
 
 export interface InputEditableEventDetail {
   value: string;
@@ -21,7 +21,12 @@ export class InputEditable {
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
-  @State() isEditing? = false;
+  @State() isEditing = false;
+
+  /**
+   * Used to block the confirm icon.
+   */
+  @State() isValid = false;
 
   /**
    * Input Name
@@ -59,9 +64,25 @@ export class InputEditable {
   @Prop() errorMessage?: string = '';
 
   /**
+   * Indicated to pass a help to the user in complex filling.
+   */
+  @Prop() helperMessage?: string = '';
+
+  /**
    * Add state danger on input, use for use feedback. If true avoid save confirmation.
    */
-  @Prop({ reflect: true }) danger?: boolean = false;
+  @Prop({ mutable: true, reflect: true }) danger?: boolean = false;
+
+  @Listen('bdsChange', { target: 'body' })
+  onBdsInputChange(event: CustomEvent) {
+    if (event.detail) {
+      if (event.detail.value.length <= Number(this.minlength)) {
+        this.isValid = true;
+      } else {
+        this.isValid = false;
+      }
+    }
+  }
 
   private handleEditing = (): void => {
     this.toggleEditing();
@@ -84,50 +105,54 @@ export class InputEditable {
     return (
       <Host>
         <div class="input__editable">
-          {!this.isEditing ? (
-            <div class="input__editable--static" onClick={this.handleEditing}>
-              <bds-typo
-                tag="span"
-                part="input__editable--static__typo"
-                class="input__editable--static__typo"
-                variant="fs-24"
-              >
-                {this.value}
-              </bds-typo>
-              <bds-icon key="edit-icon" class="input__editable--static__icon" name="edit"></bds-icon>
+          <div
+            class={{ 'input__editable--static': true, 'input__editable--hidden': this.isEditing }}
+            onClick={this.handleEditing}
+          >
+            <bds-typo
+              tag="span"
+              part="input__editable--static__typo"
+              class="input__editable--static__typo"
+              variant="fs-24"
+            >
+              {this.value}
+            </bds-typo>
+            <bds-icon key="edit-icon" class="input__editable--static__icon" name="edit"></bds-icon>
+          </div>
+          <div class={{ 'input__editable--active': true, 'input__editable--hidden': !this.isEditing }}>
+            <bds-input
+              type="text"
+              input-name={this.inputName}
+              value={this.value}
+              minlength={this.minlength}
+              minlengthErrorMessage={this.minlengthErrorMessage}
+              maxlength={this.maxlength}
+              required={true}
+              required-error-message={this.requiredErrorMessage}
+              error-message={this.errorMessage}
+              danger={this.danger}
+              helperMessage={this.helperMessage}
+            ></bds-input>
+            <div class="input__editable--active__icon">
+              <bds-icon
+                key="error-icon"
+                class="input__editable--active__icon--error"
+                theme="solid"
+                name="error"
+                onClick={this.handleEditing}
+              ></bds-icon>
+              <bds-icon
+                key="checkball-icon"
+                class={{
+                  'input__editable--active__icon--checkball': true,
+                  'input__editable--active__icon--checkball--error': this.isValid,
+                }}
+                theme="solid"
+                name="checkball"
+                onClick={this.handleSaveText}
+              ></bds-icon>
             </div>
-          ) : (
-            <div class="input__editable--active">
-              <bds-input
-                type="text"
-                input-name={this.inputName}
-                value={this.value}
-                minlength={this.minlength}
-                minlengthErrorMessage={this.minlengthErrorMessage}
-                maxlength={this.maxlength}
-                required={true}
-                required-error-message={this.requiredErrorMessage}
-                error-message={this.errorMessage}
-                danger={this.danger}
-              ></bds-input>
-              <div class="input__editable--active__icon">
-                <bds-icon
-                  key="error-icon"
-                  class="input__editable--active__icon--error"
-                  theme="solid"
-                  name="error"
-                  onClick={this.handleEditing}
-                ></bds-icon>
-                <bds-icon
-                  key="checkball-icon"
-                  class="input__editable--active__icon--checkball"
-                  theme="solid"
-                  name="checkball"
-                  onClick={this.handleSaveText}
-                ></bds-icon>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </Host>
     );

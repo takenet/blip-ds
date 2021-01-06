@@ -435,6 +435,10 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Indicated to pass a help to the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * Input Name
          */
         "inputName"?: string;
@@ -1515,6 +1519,10 @@ declare namespace LocalJSX {
           * Indicated to pass an feeback to user.
          */
         "errorMessage"?: string;
+        /**
+          * Indicated to pass a help to the user in complex filling.
+         */
+        "helperMessage"?: string;
         /**
           * Input Name
          */
