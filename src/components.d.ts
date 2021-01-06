@@ -710,6 +710,61 @@ export namespace Components {
         "titleText": string;
         "value": any;
     }
+    interface BdsStep {
+        /**
+          * Used to set the step as active
+         */
+        "active"?: boolean;
+        /**
+          * Used to complete the step
+         */
+        "completed"?: boolean;
+        /**
+          * Used to set the step as disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Used to set the index of the steps
+         */
+        "index"?: number;
+        /**
+          * Used to define the last step component on the list
+         */
+        "last"?: boolean;
+        /**
+          * Used to set cursor pointer on the step (useful to allow clicks on the steps)
+         */
+        "pointer"?: boolean;
+    }
+    interface BdsStepper {
+        /**
+          * Returns the active step
+          * @returns HTMLBdsStepElement
+         */
+        "getActiveStep": () => Promise<number>;
+        /**
+          * Reset all active steps
+          * @returns void
+         */
+        "resetActiveSteps": () => Promise<void>;
+        /**
+          * Reset all completed steps
+          * @returns void
+         */
+        "resetCompletedSteps": () => Promise<void>;
+        /**
+          * Set the active step
+          * @param index The index of the step to be set as active
+          * @returns void
+         */
+        "setActiveStep": (index: number) => Promise<void>;
+        /**
+          * Set the completed step
+          * @param index The index of the step to be set as completed
+          * @returns void
+         */
+        "setCompletedStep": (index: number) => Promise<void>;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -960,6 +1015,18 @@ declare global {
         prototype: HTMLBdsSelectOptionElement;
         new (): HTMLBdsSelectOptionElement;
     };
+    interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
+    }
+    var HTMLBdsStepElement: {
+        prototype: HTMLBdsStepElement;
+        new (): HTMLBdsStepElement;
+    };
+    interface HTMLBdsStepperElement extends Components.BdsStepper, HTMLStencilElement {
+    }
+    var HTMLBdsStepperElement: {
+        prototype: HTMLBdsStepperElement;
+        new (): HTMLBdsStepperElement;
+    };
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
     }
     var HTMLBdsToastElement: {
@@ -1016,6 +1083,8 @@ declare global {
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
+        "bds-step": HTMLBdsStepElement;
+        "bds-stepper": HTMLBdsStepperElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
@@ -1781,6 +1850,34 @@ declare namespace LocalJSX {
         "titleText"?: string;
         "value": any;
     }
+    interface BdsStep {
+        /**
+          * Used to set the step as active
+         */
+        "active"?: boolean;
+        /**
+          * Used to complete the step
+         */
+        "completed"?: boolean;
+        /**
+          * Used to set the step as disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Used to set the index of the steps
+         */
+        "index"?: number;
+        /**
+          * Used to define the last step component on the list
+         */
+        "last"?: boolean;
+        /**
+          * Used to set cursor pointer on the step (useful to allow clicks on the steps)
+         */
+        "pointer"?: boolean;
+    }
+    interface BdsStepper {
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -1901,6 +1998,8 @@ declare namespace LocalJSX {
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
+        "bds-step": BdsStep;
+        "bds-stepper": BdsStepper;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
@@ -1937,6 +2036,8 @@ declare module "@stencil/core" {
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
+            "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
+            "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
