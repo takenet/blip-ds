@@ -1,4 +1,4 @@
-import { Component, Prop, State, Event, EventEmitter, Element, h, Host, Listen } from '@stencil/core';
+import { Component, Prop, State, Event, EventEmitter, Element, h, Host } from '@stencil/core';
 
 export interface InputEditableEventDetail {
   value: string;
@@ -73,16 +73,15 @@ export class InputEditable {
    */
   @Prop({ mutable: true, reflect: true }) danger?: boolean = false;
 
-  @Listen('bdsChange', { target: 'body' })
-  onBdsInputChange(event: CustomEvent) {
+  private onInputChange = (event) => {
     if (event.detail) {
-      if (event.detail.value.length <= Number(this.minlength)) {
-        this.isValid = true;
-      } else {
+      if (event.detail.value.length < Number(this.minlength)) {
         this.isValid = false;
+      } else {
+        this.isValid = true;
       }
     }
-  }
+  };
 
   private handleEditing = (): void => {
     this.toggleEditing();
@@ -130,6 +129,7 @@ export class InputEditable {
               required={true}
               required-error-message={this.requiredErrorMessage}
               error-message={this.errorMessage}
+              onBdsChange={this.onInputChange}
               danger={this.danger}
               helperMessage={this.helperMessage}
             ></bds-input>
@@ -145,7 +145,7 @@ export class InputEditable {
                 key="checkball-icon"
                 class={{
                   'input__editable--active__icon--checkball': true,
-                  'input__editable--active__icon--checkball--error': this.isValid,
+                  'input__editable--active__icon--checkball--error': !this.isValid,
                 }}
                 theme="solid"
                 name="checkball"
