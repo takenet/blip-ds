@@ -40,12 +40,10 @@ export class Tooltip {
 
   render() {
     return (
-      <div
-        class="tooltip__wrapper"
-        onMouseOver={() => this.setVisibility(true)}
-        onMouseLeave={() => this.setVisibility(false)}
-      >
-        <slot />
+      <div class="tooltip__wrapper">
+        <div onMouseOver={() => this.setVisibility(true)} onMouseLeave={() => this.setVisibility(false)}>
+          <slot />
+        </div>
         <div
           class={{
             tooltip__tip: true,
