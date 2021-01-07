@@ -26,7 +26,7 @@ export class InputEditable {
   /**
    * Used to block the confirm icon.
    */
-  @State() isValid = false;
+  @State() isValid = true;
 
   /**
    * Input Name
