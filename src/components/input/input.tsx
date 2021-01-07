@@ -383,12 +383,12 @@ export class Input {
 
   private onBlurValidations() {
     this.required && this.requiredValidation();
+    (this.minlength || this.maxlength) && this.lengthValidation();
+    (this.min || this.max) && this.minMaxValidation();
     this.checkValidity();
   }
 
   private onBdsInputValidations() {
-    (this.minlength || this.maxlength) && this.lengthValidation();
-    (this.min || this.max) && this.minMaxValidation();
     this.type === 'email' && this.emailValidation();
     this.type === 'phonenumber' && this.numberValidation();
     this.checkValidity();
