@@ -31,6 +31,7 @@ describe('input e2e tests', () => {
     expect(value).toBe('');
 
     await inputNativeElement.press(1);
+    await inputNativeElement.press('Tab');
 
     let errorMessage = await page.find('bds-input >>> .input__message');
 
@@ -38,6 +39,7 @@ describe('input e2e tests', () => {
 
     await inputNativeElement.press(2);
     await inputNativeElement.press(3);
+    await inputNativeElement.press('Tab');
 
     errorMessage = await page.find('bds-input >>> .input__message');
 
@@ -75,12 +77,14 @@ describe('input e2e tests', () => {
     await page.waitForChanges();
 
     await inputNativeElement.press(1);
+    await inputNativeElement.press('Tab');
 
     let errorMessage = await page.find('bds-input >>> .input__message');
 
     expect(errorMessage.textContent).toBe('the minimum value should be 2');
 
     await inputNativeElement.press(0);
+    await inputNativeElement.press('Tab');
 
     errorMessage = await page.find('bds-input >>> .input__message');
 
@@ -97,6 +101,7 @@ describe('input e2e tests', () => {
     await page.waitForChanges();
 
     await inputNativeElement.press(4);
+    await inputNativeElement.press('Tab');
 
     let errorMessage = await page.find('bds-input >>> .input__message');
 
@@ -104,6 +109,7 @@ describe('input e2e tests', () => {
 
     await inputNativeElement.press('Backspace');
     await inputNativeElement.press(1);
+    await inputNativeElement.press('Tab');
 
     errorMessage = await page.find('bds-input >>> .input__message');
 
