@@ -23,6 +23,7 @@ $tooltip-border-width: 6px;
     opacity: 0;
     transition: all 0.2s ease-in-out;
     box-sizing: border-box;
+    cursor: default;
     &--visible {
       opacity: 1;
     }
