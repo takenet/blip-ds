@@ -133,6 +133,7 @@ export class Button {
           'button--size-icon--left': !!this.icon,
           'button--size-icon--right': this.arrow,
         }}
+        part="button"
       >
         {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
       </button>
