@@ -19,6 +19,13 @@
 | `variant`           | `variant`             | Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed'; | `"dashed" \| "facebook" \| "ghost" \| "primary" \| "secondary" \| "secondary--white"` | `'primary'`  |
 
 
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"button"` |             |
+
+
 ## Dependencies
 
 ### Used by
