@@ -314,7 +314,6 @@ npm test
 
 Create component:
 
-
 ```bash
 npm run generate
 ```
