@@ -5,13 +5,13 @@
 }
 
 :host(.paper__elevation--static) {
-  box-shadow: 0px 2px 12px rgba(96, 123, 153, 0.15);
+  box-shadow: 0px 2px 8px rgba(7, 71, 166, 0.15);
 }
 
 :host(.paper__elevation--primary) {
-  box-shadow: 0px 8px 12px rgba(96, 123, 153, 0.2);
+  box-shadow: 0px 10px 16px rgba(7, 71, 166, 0.12);
 }
 
 :host(.paper__elevation--secondary) {
-  box-shadow: 0px 8px 12px rgba(96, 123, 153, 0.2), 0px 0px 4px rgba(96, 123, 153, 0.2);
+  box-shadow: 0px 16px 20px rgba(7, 71, 166, 0.16), 0px 0px 2px rgba(7, 71, 166, 0.2);
 }
