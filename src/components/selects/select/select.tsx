@@ -15,8 +15,14 @@ export class Select {
 
   @State() text? = '';
 
-  @Prop() options?: Array<Option> = [];
-
+  @State() internalOptions: Option[];
+  /**
+   * The options of the select
+   * Should be passed this way:
+   * options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
+   * Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+   */
+  @Prop() options?: string | Option[];
   /**
    * the value of the select.
    */
@@ -86,21 +92,39 @@ export class Select {
     }
   }
 
-  async connectedCallback() {
+  componentWillLoad() {
+    this.options && this.parseOptions();
+  }
+
+  @Watch('options')
+  parseOptions() {
+    if (this.options) {
+      if (typeof this.options === 'string') {
+        this.internalOptions = JSON.parse(this.options);
+      } else {
+        this.internalOptions = this.options;
+      }
+    }
+  }
+
+  componentDidLoad() {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
       option.addEventListener('optionSelected', this.handler);
     }
-
     this.text = this.getText();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option'));
+    return this.options
+      ? Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option'))
+      : Array.from(this.el.querySelectorAll('bds-select-option'));
   }
 
   private get childOptionSelected(): HTMLBdsSelectOptionElement {
-    return Array.from(this.el.querySelectorAll('bds-select-option')).find((option) => option.selected);
+    return this.options
+      ? Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option')).find((option) => option.selected)
+      : Array.from(this.el.querySelectorAll('bds-select-option')).find((option) => option.selected);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -210,7 +234,15 @@ export class Select {
             'select__options--open': this.isOpen,
           }}
         >
-          <slot />
+          {this.internalOptions ? (
+            this.internalOptions.map((option, idx) => (
+              <bds-select-option value={option.value} key={idx}>
+                {option.label}
+              </bds-select-option>
+            ))
+          ) : (
+            <slot />
+          )}
         </div>
       </div>
     );
