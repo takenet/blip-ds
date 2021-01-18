@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                                   | Type       | Default     |
-| ------------- | ------------- | ------------------------------------------------------------- | ---------- | ----------- |
-| `danger`      | `danger`      | Add state danger on input, use for use feedback.              | `boolean`  | `false`     |
-| `disabled`    | `disabled`    | Disabled input.                                               | `boolean`  | `false`     |
-| `icon`        | `icon`        | used for add icon in input left. Uses the bds-icon component. | `string`   | `''`        |
-| `label`       | `label`       | label in input, with he the input size increases.             | `string`   | `''`        |
-| `options`     | --            |                                                               | `Option[]` | `[]`        |
-| `placeholder` | `placeholder` | Placeholder for native input element.                         | `string`   | `''`        |
-| `value`       | `value`       | the value of the select.                                      | `any`      | `undefined` |
+| Property      | Attribute     | Description                                                                                                                                                                                                                                                                                   | Type                 | Default     |
+| ------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
+| `danger`      | `danger`      | Add state danger on input, use for use feedback.                                                                                                                                                                                                                                              | `boolean`            | `false`     |
+| `disabled`    | `disabled`    | Disabled input.                                                                                                                                                                                                                                                                               | `boolean`            | `false`     |
+| `icon`        | `icon`        | used for add icon in input left. Uses the bds-icon component.                                                                                                                                                                                                                                 | `string`             | `''`        |
+| `label`       | `label`       | label in input, with he the input size increases.                                                                                                                                                                                                                                             | `string`             | `''`        |
+| `options`     | `options`     | The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular. | `Option[] \| string` | `undefined` |
+| `placeholder` | `placeholder` | Placeholder for native input element.                                                                                                                                                                                                                                                         | `string`             | `''`        |
+| `value`       | `value`       | the value of the select.                                                                                                                                                                                                                                                                      | `any`                | `undefined` |
 
 
 ## Events
@@ -34,16 +34,19 @@
 
 - [bds-input](../../input)
 - [bds-icon](../../icon)
+- [bds-select-option](../../select-option)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-select --> bds-input
   bds-select --> bds-icon
+  bds-select --> bds-select-option
   bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
+  bds-select-option --> bds-typo
   style bds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

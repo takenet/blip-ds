@@ -629,7 +629,10 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
-        "options"?: Array<Option>;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | Option[];
         /**
           * Placeholder for native input element.
          */
@@ -1756,7 +1759,10 @@ declare namespace LocalJSX {
           * Emitted when the select loses focus.
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
-        "options"?: Array<Option>;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | Option[];
         /**
           * Placeholder for native input element.
          */
