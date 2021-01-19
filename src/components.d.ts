@@ -145,6 +145,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Add state filter on chip whith specific color.
+         */
+        "filter": boolean;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -1217,6 +1221,10 @@ declare namespace LocalJSX {
           * When 'true', no events will be dispatched
          */
         "disabled"?: boolean;
+        /**
+          * Add state filter on chip whith specific color.
+         */
+        "filter"?: boolean;
         /**
           * used for add icon in left container. Uses the bds-icon component.
          */

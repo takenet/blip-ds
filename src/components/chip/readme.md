@@ -13,6 +13,7 @@
 | `danger`    | `danger`    | Add state danger on chip, use for use feedback.                                           | `boolean`                | `false`      |
 | `deletable` | `deletable` | When 'true', the component recive remove button and dispach event onBdsDelete             | `boolean`                | `false`      |
 | `disabled`  | `disabled`  | When 'true', no events will be dispatched                                                 | `boolean`                | `false`      |
+| `filter`    | `filter`    | Add state filter on chip whith specific color.                                            | `boolean`                | `false`      |
 | `icon`      | `icon`      | used for add icon in left container. Uses the bds-icon component.                         | `string`                 | `undefined`  |
 | `size`      | `size`      | Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall" | `"standard" \| "tall"`   | `'standard'` |
 | `variant`   | `variant`   | Variant. Entered as one of the variant. Can be one of: 'primary', 'default';              | `"default" \| "primary"` | `'default'`  |

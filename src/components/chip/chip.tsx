@@ -34,6 +34,11 @@ export class Chip {
   @Prop({ reflect: true }) danger? = false;
 
   /**
+   * Add state filter on chip whith specific color.
+   */
+  @Prop() filter = false;
+
+  /**
    * When 'true' and the component is using the primary variant, a hover is added
    */
   @Prop() clickable = false;
@@ -74,6 +79,10 @@ export class Chip {
 
     if (this.danger) {
       return { 'chip--danger': true };
+    }
+
+    if (this.filter) {
+      return { 'chip--filter': true };
     }
 
     if (this.variant === 'primary') {
