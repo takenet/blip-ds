@@ -1,7 +1,7 @@
 :host {
   display: inline-flex;
   align-items: center;
-  cursor: default;
+  cursor: pointer;
   white-space: nowrap;
   font-family: $font-family;
 }
@@ -17,7 +17,7 @@
 }
 
 :host(.chip--click.chip--primary:hover) {
-  background: $color-illustration-blue-genie;
+  background: $color-hover-light;
   color: $color-primary-dark;
 }
 
@@ -29,6 +29,21 @@
 :host(.chip--danger) {
   background: $color-extend-reds-flower;
   color: $color-extend-reds-delete;
+}
+
+:host(.chip--click.chip--danger:hover) {
+  background: $color-disabled-delete;
+  color: $color-extend-reds-dragon;
+}
+
+:host(.chip--filter) {
+  background: $color-primary-dark;
+  color: $color-neutral-light-snow;
+}
+
+:host(.chip--click.chip--filter:hover) {
+  background: $color-primary-night;
+  color: $color-neutral-light-snow;
 }
 
 :host(.chip--standard) {
