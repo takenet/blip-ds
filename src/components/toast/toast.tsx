@@ -152,8 +152,8 @@ export class BdsToast implements ComponentInterface {
     error: 'error',
     success: 'like',
     warning: 'attention',
-    undo: 'undo-arrow',
-    redo: 'redo-arrow',
+    undo: 'undo',
+    redo: 'redo',
   };
 
   render() {
