@@ -418,6 +418,10 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Set maximum length value for the chip content
+         */
+        "maxlength"?: number;
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
         /**
@@ -1496,6 +1500,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Set maximum length value for the chip content
+         */
+        "maxlength"?: number;
         /**
           * Emitted when the chip has added.
          */

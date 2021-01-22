@@ -24,6 +24,11 @@ export class InputChips {
   @Prop() label? = '';
 
   /**
+   *  Set maximum length value for the chip content
+   */
+  @Prop() maxlength?: number;
+
+  /**
    * used for add icon in input left. Uses the bds-icon component.
    */
   @Prop({ reflect: true }) icon?: string = '';
@@ -280,6 +285,7 @@ export class InputChips {
           onBdsSubmit={(event) => this.handleAddChip(event)}
           onBdsOnBlur={() => this.handleOnBlur()}
           onBdsChange={(event) => this.handleChange(event)}
+          maxlength={this.maxlength}
           value={this.value}
           error-message={this.errorMessage}
           danger={this.danger}
