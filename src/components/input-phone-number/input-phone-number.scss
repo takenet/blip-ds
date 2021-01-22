@@ -64,8 +64,8 @@ $select-options-max-height: 250px;
       &::before {
         content: '';
         background: $color-neutral-light-whisper;
+        height: calc(100% - 2px);
         width: 70px;
-        height: 54px;
         position: absolute;
         left: 1px;
         top: 1px;

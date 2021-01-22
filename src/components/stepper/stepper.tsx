@@ -8,13 +8,12 @@ export class BdsStepper implements ComponentInterface {
   @Element() el: HTMLBdsStepperElement;
 
   connectedCallback() {
-    for (const [index, option] of this.childOptions.entries()) {
+    this.childOptions.forEach((option, index) => {
       option.index = index;
-
       if (index === this.childOptions.length - 1) {
         option.last = true;
       }
-    }
+    });
   }
 
   /**
