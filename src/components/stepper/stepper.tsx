@@ -76,19 +76,16 @@ export class BdsStepper implements ComponentInterface {
     }
   }
 
-  private get childOptions() {
-    return Array.from(this.el.children) as HTMLBdsStepElement[];
+  private get childOptions(): HTMLBdsStepElement[] {
+    return Array.from(this.el.querySelectorAll('bds-step'));
   }
 
   private renderLine() {
     const line = document.createElement('div');
     line.classList.add('stepper__container__divisor');
 
-    const childrenCount = this.el.firstElementChild.children.length;
-    const child = this.el.firstElementChild.children;
-
-    Array.from(child).forEach((item, idx) => {
-      if (childrenCount - 1 != idx) {
+    Array.from(this.childOptions).forEach((item, idx) => {
+      if (this.childOptions.length - 1 != idx) {
         item.insertAdjacentHTML('afterend', line.outerHTML);
       }
     });

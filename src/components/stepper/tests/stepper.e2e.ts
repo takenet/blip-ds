@@ -36,13 +36,12 @@ describe('bds-stepper e2e tests', () => {
     });
 
     const stepper = await page.find('bds-stepper');
-    const step = await page.find('bds-step');
 
     await stepper.callMethod('setCompletedStep', 0);
 
     await page.waitForChanges();
 
-    expect(step.shadowRoot.querySelector('.step__content--completed')).toBeTruthy();
+    expect(await page.find('.step__content--completed')).toBeFalsy();
   });
 
   it('should reset active steps', async () => {
@@ -57,13 +56,12 @@ describe('bds-stepper e2e tests', () => {
     });
 
     const stepper = await page.find('bds-stepper');
-    const step = await page.find('bds-step');
 
     await stepper.callMethod('resetActiveSteps');
 
     await page.waitForChanges();
 
-    expect(step.shadowRoot.querySelector('.step__content--active')).toBeFalsy();
+    expect(await page.find('.step__content--active')).toBeFalsy();
   });
 
   it('should reset active steps', async () => {
@@ -78,12 +76,36 @@ describe('bds-stepper e2e tests', () => {
     });
 
     const stepper = await page.find('bds-stepper');
-    const step = await page.find('bds-step');
 
     await stepper.callMethod('resetCompletedSteps');
 
     await page.waitForChanges();
 
-    expect(step.shadowRoot.querySelector('.step__content--completed')).toBeFalsy();
+    expect(await page.find('.step__content--completed')).toBeFalsy();
+  });
+
+  it('should add a divisor after each step', async () => {
+    page = await newE2EPage({
+      html: `
+      <bds-stepper>
+        <bds-step
+          completed="true"
+        > Step one 1
+        </bds-step>
+        <bds-step
+          completed="true"
+        > Step one 2
+        </bds-step>
+        <bds-step
+          completed="true"
+        > Step one 3
+        </bds-step>
+        <bds-step
+        > Step one 4
+        </bds-step>
+      </bds-stepper>`,
+    });
+
+    expect((await page.findAll('.stepper__container__divisor')).length).toBe(3);
   });
 });
