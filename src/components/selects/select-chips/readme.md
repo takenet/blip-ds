@@ -7,18 +7,19 @@
 
 ## Properties
 
-| Property       | Attribute       | Description                                                   | Type       | Default |
-| -------------- | --------------- | ------------------------------------------------------------- | ---------- | ------- |
-| `chips`        | --              |                                                               | `string[]` | `[]`    |
-| `danger`       | `danger`        | Add state danger on input, use for use feedback.              | `boolean`  | `false` |
-| `disabled`     | `disabled`      | Disabled input.                                               | `boolean`  | `false` |
-| `duplicated`   | `duplicated`    | Do not accept duplicate chip elements.                        | `boolean`  | `false` |
-| `errorMessage` | `error-message` | Indicated to pass an feedback to user.                        | `string`   | `''`    |
-| `icon`         | `icon`          | used for add icon in input left. Uses the bds-icon component. | `string`   | `''`    |
-| `label`        | `label`         | label in input, with he the input size increases.             | `string`   | `''`    |
-| `newPrefix`    | `new-prefix`    | Used for add prefix on new option select.                     | `string`   | `''`    |
-| `options`      | --              |                                                               | `Option[]` | `[]`    |
-| `value`        | `value`         | the value of the select.                                      | `string`   | `''`    |
+| Property       | Attribute       | Description                                                   | Type       | Default     |
+| -------------- | --------------- | ------------------------------------------------------------- | ---------- | ----------- |
+| `chips`        | --              |                                                               | `string[]` | `[]`        |
+| `danger`       | `danger`        | Add state danger on input, use for use feedback.              | `boolean`  | `false`     |
+| `disabled`     | `disabled`      | Disabled input.                                               | `boolean`  | `false`     |
+| `duplicated`   | `duplicated`    | Do not accept duplicate chip elements.                        | `boolean`  | `false`     |
+| `errorMessage` | `error-message` | Indicated to pass an feedback to user.                        | `string`   | `''`        |
+| `icon`         | `icon`          | used for add icon in input left. Uses the bds-icon component. | `string`   | `''`        |
+| `label`        | `label`         | label in input, with he the input size increases.             | `string`   | `''`        |
+| `maxlength`    | `maxlength`     | Set maximum length value for the chip content                 | `number`   | `undefined` |
+| `newPrefix`    | `new-prefix`    | Used for add prefix on new option select.                     | `string`   | `''`        |
+| `options`      | --              |                                                               | `Option[]` | `[]`        |
+| `value`        | `value`         | the value of the select.                                      | `string`   | `''`        |
 
 
 ## Events

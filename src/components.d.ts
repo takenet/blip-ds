@@ -681,6 +681,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Set maximum length value for the chip content
+         */
+        "maxlength"?: number;
+        /**
           * Used for add prefix on new option select.
          */
         "newPrefix"?: string;
@@ -1814,6 +1818,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Set maximum length value for the chip content
+         */
+        "maxlength"?: number;
         /**
           * Used for add prefix on new option select.
          */

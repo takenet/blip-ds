@@ -33,6 +33,12 @@ export class SelectChips {
   @Prop({ reflect: true, mutable: true }) danger? = false;
 
   /**
+   * Set maximum length value for the chip content
+   */
+
+  @Prop() maxlength?: number;
+
+  /**
    * Indicated to pass an feedback to user.
    */
   @Prop({ mutable: true }) errorMessage? = '';
@@ -274,6 +280,7 @@ export class SelectChips {
           label={this.label}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          maxlength={this.maxlength}
           onClick={this.toggle}
           danger={this.danger}
           error-message={this.errorMessage}
