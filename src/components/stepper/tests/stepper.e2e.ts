@@ -36,12 +36,13 @@ describe('bds-stepper e2e tests', () => {
     });
 
     const stepper = await page.find('bds-stepper');
+    const step = await page.find('bds-step');
 
     await stepper.callMethod('setCompletedStep', 0);
 
     await page.waitForChanges();
 
-    expect(await page.find('.step__content--completed')).toBeFalsy();
+    expect(await step.getProperty('completed')).toBeTruthy();
   });
 
   it('should reset active steps', async () => {
@@ -56,15 +57,16 @@ describe('bds-stepper e2e tests', () => {
     });
 
     const stepper = await page.find('bds-stepper');
+    const step = await page.find('bds-step');
 
     await stepper.callMethod('resetActiveSteps');
 
     await page.waitForChanges();
 
-    expect(await page.find('.step__content--active')).toBeFalsy();
+    expect(await step.getProperty('active')).toBeFalsy();
   });
 
-  it('should reset active steps', async () => {
+  it('should reset completed steps', async () => {
     page = await newE2EPage({
       html: `
       <bds-stepper>
@@ -76,12 +78,13 @@ describe('bds-stepper e2e tests', () => {
     });
 
     const stepper = await page.find('bds-stepper');
+    const step = await page.find('bds-step');
 
     await stepper.callMethod('resetCompletedSteps');
 
     await page.waitForChanges();
 
-    expect(await page.find('.step__content--completed')).toBeFalsy();
+    expect(await step.getProperty('completed')).toBeFalsy();
   });
 
   it('should add a divisor after each step', async () => {
