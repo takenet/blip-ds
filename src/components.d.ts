@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
+import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
@@ -47,11 +48,14 @@ export namespace Components {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
+        "bannerAlign"?: BannerAlign;
         "fixed": boolean;
+        "icon"?: string;
         /**
           * Pulbic method to close the banner
          */
         "toggle": () => Promise<void>;
+        "variant"?: BannerVariant;
     }
     interface BdsButton {
         /**
@@ -1121,11 +1125,14 @@ declare namespace LocalJSX {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
+        "bannerAlign"?: BannerAlign;
         "fixed"?: boolean;
+        "icon"?: string;
         /**
           * Emitted when the banner is closed.
          */
         "onBdsBannerClose"?: (event: CustomEvent<any>) => void;
+        "variant"?: BannerVariant;
     }
     interface BdsButton {
         /**

@@ -1,21 +1,47 @@
-:host {
+:host(.banner) {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-neutral-light-breeze;
-  background: $color-primary-purples-bell;
-}
-
-:host(.banner) {
-  width: 100%;
-  min-height: 40px;
-  box-sizing: border-box;
+  
   font-family: $font-family;
   font-size: $fs-14;
   font-weight: $font-weight-semi-bold;
+}
+
+.banner__holder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+
+  color: $color-neutral-light-breeze;
+  background: $color-primary-purples-bell;
 
   @media (max-width: $sm-screen) {
     padding: 16px;
+  }
+
+  @media (min-width: $sm-screen) {
+    padding: 0 16px;
+  }
+
+  &--left{
+    justify-content: flex-start;
+  }
+
+  &--right{
+    justify-content: flex-end;
+  }
+
+  &--warning{
+    background-color: $color-neutral-light-box;
+    color: $color-neutral-dark-rooftop;
+    
+    bds-icon{
+      color: $color-extend-browns-cheetos;
+    }
   }
 }
 
@@ -23,6 +49,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &--left{
+    justify-content: flex-start;
+  }
+
+  &--center{
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--right{
+    justify-content: flex-start;
+  }
 
   @media (max-width: $sm-screen) {
     display: inline;

@@ -7,9 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default |
-| -------- | --------- | ----------- | --------- | ------- |
-| `fixed`  | `fixed`   |             | `boolean` | `false` |
+| Property      | Attribute      | Description | Type                            | Default |
+| ------------- | -------------- | ----------- | ------------------------------- | ------- |
+| `bannerAlign` | `banner-align` |             | `"center" \| "left" \| "right"` | `null`  |
+| `fixed`       | `fixed`        |             | `boolean`                       | `false` |
+| `icon`        | `icon`         |             | `string`                        | `null`  |
+| `variant`     | `variant`      |             | `"system" \| "warning"`         | `null`  |
 
 
 ## Events
