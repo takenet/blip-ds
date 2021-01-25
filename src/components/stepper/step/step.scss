@@ -1,6 +1,5 @@
 :host {
   padding: 8px;
-  flex: 1;
 
   .step {
     width: 100%;
@@ -43,22 +42,6 @@
         &--completed {
           background: $color-primary-main;
         }
-      }
-    }
-
-    &__divisor {
-      flex: 1;
-      align-self: center;
-      height: 1.5px;
-      background: $color-neutral-medium-wave;
-      margin: 0px 8px;
-
-      &--completed {
-        border-top: 2px solid $color-primary-main;
-      }
-
-      @media (max-width: $sm-screen) {
-        display: none;
       }
     }
   }
