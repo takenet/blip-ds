@@ -63,7 +63,6 @@ export class BdsStep implements ComponentInterface {
             <slot />
           </bds-typo>
         </div>
-        {!this.last && <div class="step__divisor"></div>}
       </div>
     );
   }

@@ -1,16 +1,31 @@
-:host {
-  .stepper__container {
-    width: 100%;
-    background: $color-neutral-light-snow;
-    border-radius: 8px;
-    box-sizing: border-box;
-    padding: 16px;
-    display: flex;
-    box-shadow: $light-drop;
-    justify-content: space-between;
+.stepper__container {
+  width: 100%;
+  background: $color-neutral-light-snow;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  box-shadow: $light-drop;
+  justify-content: space-between;
 
-    ::slotted(bds-step:last-child) {
-      flex: inherit;
+  ::slotted(bds-step:last-child) {
+    flex: inherit;
+  }
+
+  &__divisor {
+    flex: 1 1 auto;
+    align-self: center;
+    height: 1.5px;
+    background: $color-neutral-medium-wave;
+    margin: 0px 8px;
+    min-width: 24px;
+
+    &--completed {
+      border-top: 2px solid $color-primary-main;
+    }
+
+    @media (max-width: $sm-screen) {
+      display: none;
     }
   }
 }

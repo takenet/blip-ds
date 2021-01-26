@@ -42,7 +42,7 @@ describe('bds-stepper e2e tests', () => {
 
     await page.waitForChanges();
 
-    expect(step.shadowRoot.querySelector('.step__content--completed')).toBeTruthy();
+    expect(await step.getProperty('completed')).toBeTruthy();
   });
 
   it('should reset active steps', async () => {
@@ -63,10 +63,10 @@ describe('bds-stepper e2e tests', () => {
 
     await page.waitForChanges();
 
-    expect(step.shadowRoot.querySelector('.step__content--active')).toBeFalsy();
+    expect(await step.getProperty('active')).toBeFalsy();
   });
 
-  it('should reset active steps', async () => {
+  it('should reset completed steps', async () => {
     page = await newE2EPage({
       html: `
       <bds-stepper>
@@ -84,6 +84,31 @@ describe('bds-stepper e2e tests', () => {
 
     await page.waitForChanges();
 
-    expect(step.shadowRoot.querySelector('.step__content--completed')).toBeFalsy();
+    expect(await step.getProperty('completed')).toBeFalsy();
+  });
+
+  it('should add a divisor after each step', async () => {
+    page = await newE2EPage({
+      html: `
+      <bds-stepper>
+        <bds-step
+          completed="true"
+        > Step one 1
+        </bds-step>
+        <bds-step
+          completed="true"
+        > Step one 2
+        </bds-step>
+        <bds-step
+          completed="true"
+        > Step one 3
+        </bds-step>
+        <bds-step
+        > Step one 4
+        </bds-step>
+      </bds-stepper>`,
+    });
+
+    expect((await page.findAll('.stepper__container__divisor')).length).toBe(3);
   });
 });

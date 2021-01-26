@@ -2,7 +2,6 @@ import { Component, ComponentInterface, h, Element, Method } from '@stencil/core
 @Component({
   tag: 'bds-stepper',
   styleUrl: 'stepper.scss',
-  shadow: true,
 })
 export class BdsStepper implements ComponentInterface {
   @Element() el: HTMLBdsStepperElement;
@@ -14,6 +13,10 @@ export class BdsStepper implements ComponentInterface {
         option.last = true;
       }
     });
+  }
+
+  componentDidLoad() {
+    this.renderLine();
   }
 
   /**
@@ -73,8 +76,19 @@ export class BdsStepper implements ComponentInterface {
     }
   }
 
-  private get childOptions() {
+  private get childOptions(): HTMLBdsStepElement[] {
     return Array.from(this.el.querySelectorAll('bds-step'));
+  }
+
+  private renderLine() {
+    const line = document.createElement('div');
+    line.classList.add('stepper__container__divisor');
+
+    Array.from(this.childOptions).forEach((item, idx) => {
+      if (this.childOptions.length - 1 != idx) {
+        item.insertAdjacentHTML('afterend', line.outerHTML);
+      }
+    });
   }
 
   render() {
