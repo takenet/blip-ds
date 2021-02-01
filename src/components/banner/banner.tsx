@@ -33,12 +33,7 @@ export class Banner implements ComponentInterface {
 
   render() {
     return (
-      <Host
-        class={{
-          banner: true,
-          'banner--hide': !this.visible,
-        }}
-      >
+      <Host class={{ banner: true, 'banner--hide': !this.visible }}>
         <div
           class={{
             banner__holder: true,
@@ -46,15 +41,18 @@ export class Banner implements ComponentInterface {
             [`banner__holder--${this.variant}`]: this.variant !== null,
           }}
         >
+          {this.variant !== 'warning' && <div class="space_left"></div>}
           <div
             class={{
               banner__content: true,
             }}
           >
-            {this.icon && <bds-icon theme="outline" size="large" name={this.icon}></bds-icon>}
+            {this.variant === 'warning' && (
+              <bds-icon class="icon_warning" theme="solid" size="large" name="warning"></bds-icon>
+            )}
             <slot></slot>
           </div>
-          {!this.fixed && (
+          {this.variant !== 'warning' && (
             <div class="banner__action" onClick={this.close}>
               <bds-icon name="close"></bds-icon>
             </div>

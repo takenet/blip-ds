@@ -11,7 +11,7 @@
 
 .banner__holder{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   min-height: 40px;
@@ -45,6 +45,10 @@
   }
 }
 
+.space_left {
+  display: flex;
+}
+
 .banner__content {
   display: flex;
   justify-content: center;
@@ -66,6 +70,10 @@
   @media (max-width: $sm-screen) {
     display: inline;
     box-sizing: border-box;
+  }
+
+  .icon_warning {
+    padding-right: 8px;
   }
 }
 
