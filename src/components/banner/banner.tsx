@@ -9,10 +9,14 @@ export type BannerAlign = 'left' | 'right' | 'center';
 })
 export class Banner implements ComponentInterface {
   @State() visible = true;
-  @Prop() fixed = false;
-  @Prop() icon?: string = null;
-  @Prop() bannerAlign?: BannerAlign = null;
-  @Prop() variant?: BannerVariant = null;
+  /**
+   * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
+   */
+  @Prop() bannerAlign?: BannerAlign = 'center';
+  /**
+   * Set the banner varient, it can be 'system' or 'warning'.
+   */
+  @Prop() variant?: BannerVariant = 'system';
   /**
    * Emitted when the banner is closed.
    */
@@ -37,8 +41,8 @@ export class Banner implements ComponentInterface {
         <div
           class={{
             banner__holder: true,
-            [`banner__holder--${this.bannerAlign}`]: this.bannerAlign != null,
-            [`banner__holder--${this.variant}`]: this.variant !== null,
+            [`banner__holder--align--${this.bannerAlign}`]: true,
+            [`banner__holder--${this.variant}`]: true,
           }}
         >
           {this.variant !== 'warning' && <div class="space_left"></div>}

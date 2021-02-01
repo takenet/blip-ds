@@ -48,13 +48,17 @@ export namespace Components {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
+        /**
+          * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
+         */
         "bannerAlign"?: BannerAlign;
-        "fixed": boolean;
-        "icon"?: string;
         /**
           * Pulbic method to close the banner
          */
         "toggle": () => Promise<void>;
+        /**
+          * Set the banner varient, it can be 'system' or 'warning'.
+         */
         "variant"?: BannerVariant;
     }
     interface BdsButton {
@@ -1125,13 +1129,17 @@ declare namespace LocalJSX {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
+        /**
+          * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
+         */
         "bannerAlign"?: BannerAlign;
-        "fixed"?: boolean;
-        "icon"?: string;
         /**
           * Emitted when the banner is closed.
          */
         "onBdsBannerClose"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set the banner varient, it can be 'system' or 'warning'.
+         */
         "variant"?: BannerVariant;
     }
     interface BdsButton {
