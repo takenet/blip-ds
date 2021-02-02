@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+.expansion-content {
+  display: flex;
+  padding-left: 22px;
+  
+
+  .with-line {
+    border-left: 2px solid rgba(140, 160, 179, 1);
+    padding-left: 9px;
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(140, 160, 179, 1);
+    position: relative;
+    right: 14px;
+  }
+}
