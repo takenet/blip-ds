@@ -17,7 +17,7 @@ export class ExpansionPanelBody implements ComponentInterface {
             <slot></slot>
             {this.text ? (
               <div class="text">
-                <div>{this.text}</div>
+                <p>{this.text}</p>
               </div>
             ) : (
               <div class="circle"></div>
