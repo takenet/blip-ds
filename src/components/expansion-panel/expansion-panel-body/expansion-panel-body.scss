@@ -4,7 +4,7 @@
 .expansion-content {
   display: flex;
   padding-left: 22px;
-  
+
 
   .with-line {
     border-left: 2px solid rgba(140, 160, 179, 1);
@@ -22,5 +22,24 @@
     background-color: rgba(140, 160, 179, 1);
     position: relative;
     right: 14px;
+  }
+
+  .text{
+    right: 28px;
+    width: 37px;
+    height: 30px;
+    position: relative;
+    background: #D2DFE6;
+    justify-content: center;
+    border-radius: 8px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #202C44;
+    top: 10px ;
   }
 }
