@@ -22,261 +22,66 @@ const contentStyle = {
   margin: "0 8px",
 }
 
+const defaultButtonStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center"
+}
+
+const spaceBetween = {
+  padding: '8px'
+}
+
 export const defaultButton = () => (
-  <bds-button
-    variant={text('variant', 'primary')}
-    size={text('size', 'standard')}
-    disabled={boolean('disabled', false)}
-    arrow={boolean('arrow', false)}
-    icon={text('icon', '')}
-    type={text('type', 'button')}
-    bds-loading={select('bds-loading', { None: null, Light: 'light', Dark: 'dark', })}
-  >
-    {text('text', 'Text button')}
-  </bds-button>
+  <div style={defaultButtonStyle}>
+    <bds-button style={spaceBetween} variant='primary'>Button primary</bds-button>
+    <bds-button style={spaceBetween} variant='secondary'>Text secondary</bds-button>
+    <bds-button style={spaceBetween} variant='tertiary'>Text tertiary</bds-button>
+    <bds-button style={spaceBetween} variant='ghost'>Text ghost</bds-button>
+    <bds-button style={spaceBetween} variant='delete'>Text delete</bds-button>
+  </div>
 );
 
-export const disabedButton = () => <bds-button disabled>Text button</bds-button>;
+export const disabedButton = () => (
+  <div style={defaultButtonStyle}>
+    <bds-button style={spaceBetween} variant='primary' disabled>Button primary</bds-button>
+    <bds-button style={spaceBetween} variant='secondary' disabled>Text secondary</bds-button>
+    <bds-button style={spaceBetween} variant='tertiary' disabled>Text tertiary</bds-button>
+    <bds-button style={spaceBetween} variant='ghost' disabled>Text ghost</bds-button>
+    <bds-button style={spaceBetween} variant='delete' disabled>Text delete</bds-button>
+  </div>
+);
 
 export const sizeButtons = () => (
+  <div style={defaultButtonStyle}>
+    <bds-button style={spaceBetween} size="standard">Text button</bds-button>
+    <bds-button style={spaceBetween} size="short">Text button</bds-button>
+  </div>
+);
+
+export const buttonWithIcon = () => (
+  <div style={defaultButtonStyle}>
+    <bds-button style={spaceBetween} icon="file-new" size="standard">Text button</bds-button>
+    <bds-button style={spaceBetween} arrow size="standard">Text button</bds-button>
+  </div>
+);
+
+export const buttonWithoutText = () => (
   <>
-    <bds-button size="tall">Text button</bds-button>
-    <br />
-    <bds-button size="standard">Text button</bds-button>
-    <br />
-    <bds-button size="short">Text button</bds-button>
+    <div style={defaultButtonStyle}>
+      <bds-button-icon style={spaceBetween} variant="primary" icon="file-new" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} variant="secondary" icon="notes" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} variant="tertiary" icon="warning" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} variant="ghost" icon="info" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} variant="delete" icon="attention" size="standard"></bds-button-icon>
+
+    </div>
+    <div style={defaultButtonStyle}>
+      <bds-button-icon style={spaceBetween} disabled variant="primary" icon="file-new" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} disabled variant="secondary" icon="notes" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} disabled variant="tertiary" icon="warning" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} disabled variant="ghost" icon="info" size="standard"></bds-button-icon>
+      <bds-button-icon style={spaceBetween} disabled variant="delete" icon="attention" size="standard"></bds-button-icon>
+    </div>
   </>
-);
-
-export const variantPrimaryButton = () => (
-  <div style={containerStyle}>
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Text Only</bds-typo>
-      <bds-button disabled>Text button</bds-button>
-      <br /> 
-      <bds-button size="tall">Text button</bds-button>
-      <br /> 
-      <bds-button size="standard">Text button</bds-button>
-      <br />
-      <bds-button size="short">Text button</bds-button>
-    </div>
-
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Icon Left</bds-typo>
-      <bds-button icon="file-new" disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button icon="file-new" size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button icon="file-new" size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button icon="file-new" size="short">
-        Text button
-      </bds-button>
-    </div>
-
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Arrow</bds-typo>
-      <bds-button arrow disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button arrow size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button arrow size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button arrow size="short">
-        Text button
-      </bds-button>
-    </div>
-  </div>
-);
-
-export const variantSecondaryButton = () => (
-  <div style={containerStyle}>
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Text Only</bds-typo>
-      <bds-button variant="secondary" disabled>
-        Disabled
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" size="short">
-        Text button
-      </bds-button>
-    </div>
-
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Icon Left</bds-typo>
-      <bds-button variant="secondary" icon="file-new" disabled>
-        Disabled
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" icon="file-new" size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" icon="file-new" size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" icon="file-new" size="short">
-        Text button
-      </bds-button>
-    </div>
-
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Arrow</bds-typo>
-      <bds-button variant="secondary" arrow disabled>
-        Disabled
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" arrow size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" arrow size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="secondary" arrow size="short">
-        Text button
-      </bds-button>
-    </div>
-  </div>
-);
-
-export const variantGhostButton = () => (
-  <div style={containerStyle}>
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Text Only</bds-typo>
-      <bds-button variant="ghost" disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" size="short">
-        Text button
-      </bds-button>
-    </div>
-
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Icon Left</bds-typo>
-      <bds-button variant="ghost" icon="file-new" disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" icon="file-new" size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" icon="file-new" size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" icon="file-new" size="short">
-        Text button
-      </bds-button>
-    </div>
-
-    <div style={contentStyle}>
-      <bds-typo variant="fs-20">Arrow</bds-typo>
-      <bds-button variant="ghost" arrow disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" arrow size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" arrow size="standard">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="ghost" arrow size="short">
-        Text button
-      </bds-button>
-    </div>
-  </div>
-);
-
-export const variantDashedButton = () => (
-  <div style={containerStyle}>
-    <div style={contentStyle}>
-      <bds-typo variant="fs-24">Text Only</bds-typo>
-      <bds-button variant="dashed" disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed">Text button</bds-button>
-      <br />
-      <bds-button variant="dashed" size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed" size="short">
-        Text button
-      </bds-button>
-    </div>
-    <div style={contentStyle}>
-      <bds-typo variant="fs-24">Icon Left</bds-typo>
-      <bds-button variant="dashed" icon="file-new" disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed" icon="file-new">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed" icon="file-new" size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed" icon="file-new" size="short">
-        Text button
-      </bds-button>
-    </div>
-
-    <div style={contentStyle}>
-      <bds-typo variant="fs-24">Arrow</bds-typo>
-      <bds-button variant="dashed" arrow disabled>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed" arrow>
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed" arrow size="tall">
-        Text button
-      </bds-button>
-      <br />
-      <bds-button variant="dashed" arrow size="short">
-        Text button
-      </bds-button>
-    </div>
-  </div>
 );
