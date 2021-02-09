@@ -190,6 +190,7 @@ export namespace Components {
     }
     interface BdsExpansionPanelBody {
         "open"?: boolean;
+        "text"?: string;
     }
     interface BdsExpansionPanelHeader {
         "text"?: string;
@@ -1311,6 +1312,7 @@ declare namespace LocalJSX {
     }
     interface BdsExpansionPanelBody {
         "open"?: boolean;
+        "text"?: string;
     }
     interface BdsExpansionPanelHeader {
         "text"?: string;
