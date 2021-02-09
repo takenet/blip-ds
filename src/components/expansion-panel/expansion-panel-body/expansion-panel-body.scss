@@ -4,10 +4,10 @@
 .expansion-content {
   display: flex;
   padding-left: 22px;
-  
+
 
   .with-line {
-    border-left: 2px solid rgba(140, 160, 179, 1);
+    border-left: 2px solid $color-neutral-medium-cloud;
     padding-left: 9px;
     padding-top: 16px;
     display: flex;
@@ -19,8 +19,27 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: rgba(140, 160, 179, 1);
+    background-color: $color-neutral-medium-cloud;
     position: relative;
     right: 14px;
+  }
+
+  .text{
+    right: 28px;
+    width: 37px;
+    height: 30px;
+    position: relative;
+    background: $color-neutral-medium-wave;
+    justify-content: center;
+    border-radius: 8px;
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: $color-neutral-dark-city;
+    top: 10px ;
   }
 }
