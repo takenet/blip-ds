@@ -7,6 +7,7 @@ import { Component, Host, h, Prop, ComponentInterface } from '@stencil/core';
 })
 export class ExpansionPanelBody implements ComponentInterface {
   @Prop() open?: boolean = false;
+  @Prop() text?: string = null;
 
   render() {
     return (
@@ -14,7 +15,13 @@ export class ExpansionPanelBody implements ComponentInterface {
         <div class="expansion-content" hidden={this.open}>
           <div class="with-line">
             <slot></slot>
-            <div class="circle"></div>
+            {this.text ? (
+              <div class="text">
+                <p>{this.text}</p>
+              </div>
+            ) : (
+              <div class="circle"></div>
+            )}
           </div>
         </div>
       </Host>
