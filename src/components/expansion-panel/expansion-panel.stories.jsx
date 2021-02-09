@@ -15,7 +15,7 @@ const space = {
   paddingTop: "8px",
 }
 
-export const defaultIconButton = () => (
+export const defaulExpansionPanel = () => (
   <>
     <bds-expansion-panel>
       <bds-expansion-panel-header text="qualquer uma das condições abaixo">
