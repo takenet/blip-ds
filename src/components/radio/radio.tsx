@@ -5,6 +5,7 @@ let radioButtonIds = 0;
   tag: 'bds-radio',
   styleUrl: 'radio.scss',
   shadow: false,
+  scoped: true
 })
 export class Radio {
   private nativeInput?: HTMLInputElement;
@@ -87,9 +88,13 @@ export class Radio {
         <div class="radio__circle">
           <div class="radio__circle__pointer"></div>
         </div>
-        <bds-typo class="radio__text" variant="fs-14" tag="span">
-          {this.label}
-        </bds-typo>
+
+        { this.label && 
+          <bds-typo class="radio__text" variant="fs-14" tag="span">
+            {this.label}
+          </bds-typo> }
+
+        <slot />
       </label>
     );
   }
