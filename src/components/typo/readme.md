@@ -35,6 +35,7 @@
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
  - [bds-counter-text](../counter-text)
+ - [bds-expansion-panel-header](../expansion-panel/expansion-panel-header)
  - [bds-input](../input)
  - [bds-input-editable](../input-editable)
  - [bds-input-phone-number](../input-phone-number)
@@ -55,6 +56,7 @@ graph TD;
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
   bds-counter-text --> bds-typo
+  bds-expansion-panel-header --> bds-typo
   bds-input --> bds-typo
   bds-input-editable --> bds-typo
   bds-input-phone-number --> bds-typo
