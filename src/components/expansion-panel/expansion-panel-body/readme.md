@@ -10,6 +10,7 @@
 | Property | Attribute | Description | Type      | Default |
 | -------- | --------- | ----------- | --------- | ------- |
 | `open`   | `open`    |             | `boolean` | `false` |
+| `text`   | `text`    |             | `string`  | `null`  |
 
 
 ----------------------------------------------

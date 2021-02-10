@@ -168,6 +168,15 @@ export namespace Components {
         "max"?: number;
         "warning"?: CounterTextRule;
     }
+    interface BdsExpansionPanel {
+    }
+    interface BdsExpansionPanelBody {
+        "open"?: boolean;
+        "text"?: string;
+    }
+    interface BdsExpansionPanelHeader {
+        "text"?: string;
+    }
     interface BdsIcon {
         /**
           * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -940,6 +949,24 @@ declare global {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
     };
+    interface HTMLBdsExpansionPanelElement extends Components.BdsExpansionPanel, HTMLStencilElement {
+    }
+    var HTMLBdsExpansionPanelElement: {
+        prototype: HTMLBdsExpansionPanelElement;
+        new (): HTMLBdsExpansionPanelElement;
+    };
+    interface HTMLBdsExpansionPanelBodyElement extends Components.BdsExpansionPanelBody, HTMLStencilElement {
+    }
+    var HTMLBdsExpansionPanelBodyElement: {
+        prototype: HTMLBdsExpansionPanelBodyElement;
+        new (): HTMLBdsExpansionPanelBodyElement;
+    };
+    interface HTMLBdsExpansionPanelHeaderElement extends Components.BdsExpansionPanelHeader, HTMLStencilElement {
+    }
+    var HTMLBdsExpansionPanelHeaderElement: {
+        prototype: HTMLBdsExpansionPanelHeaderElement;
+        new (): HTMLBdsExpansionPanelHeaderElement;
+    };
     interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
     }
     var HTMLBdsIconElement: {
@@ -1083,6 +1110,9 @@ declare global {
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
+        "bds-expansion-panel": HTMLBdsExpansionPanelElement;
+        "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
+        "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-icon-button": HTMLBdsIconButtonElement;
         "bds-input": HTMLBdsInputElement;
@@ -1259,6 +1289,15 @@ declare namespace LocalJSX {
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
+    }
+    interface BdsExpansionPanel {
+    }
+    interface BdsExpansionPanelBody {
+        "open"?: boolean;
+        "text"?: string;
+    }
+    interface BdsExpansionPanelHeader {
+        "text"?: string;
     }
     interface BdsIcon {
         /**
@@ -2013,6 +2052,9 @@ declare namespace LocalJSX {
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-counter-text": BdsCounterText;
+        "bds-expansion-panel": BdsExpansionPanel;
+        "bds-expansion-panel-body": BdsExpansionPanelBody;
+        "bds-expansion-panel-header": BdsExpansionPanelHeader;
         "bds-icon": BdsIcon;
         "bds-icon-button": BdsIconButton;
         "bds-input": BdsInput;
@@ -2051,6 +2093,9 @@ declare module "@stencil/core" {
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
+            "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
+            "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
+            "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
