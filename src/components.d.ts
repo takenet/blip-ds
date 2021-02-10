@@ -8,10 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
+import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { IconSize, IconTheme, IconType } from "./components/icon/icon-interface";
-import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail } from "./components/input-editable/input-editable";
@@ -86,6 +86,24 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonIcon {
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: IconButtonSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: IconButtonVariant;
     }
     interface BdsCardColor {
         /**
@@ -218,24 +236,6 @@ export namespace Components {
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
         "type": IconType;
-    }
-    interface BdsIconButton {
-        /**
-          * If true, the base button will be disabled.
-         */
-        "disabled"?: boolean;
-        /**
-          * used for add icon in input left. Uses the bds-icon component.
-         */
-        "icon"?: string;
-        /**
-          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-         */
-        "size"?: IconButtonSize;
-        /**
-          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-         */
-        "variant"?: IconButtonVariant;
     }
     interface BdsInput {
         /**
@@ -925,6 +925,12 @@ declare global {
         prototype: HTMLBdsButtonElement;
         new (): HTMLBdsButtonElement;
     };
+    interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
+    }
+    var HTMLBdsButtonIconElement: {
+        prototype: HTMLBdsButtonIconElement;
+        new (): HTMLBdsButtonIconElement;
+    };
     interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
     }
     var HTMLBdsCardColorElement: {
@@ -972,12 +978,6 @@ declare global {
     var HTMLBdsIconElement: {
         prototype: HTMLBdsIconElement;
         new (): HTMLBdsIconElement;
-    };
-    interface HTMLBdsIconButtonElement extends Components.BdsIconButton, HTMLStencilElement {
-    }
-    var HTMLBdsIconButtonElement: {
-        prototype: HTMLBdsIconButtonElement;
-        new (): HTMLBdsIconButtonElement;
     };
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
     }
@@ -1106,6 +1106,7 @@ declare global {
         "bds-alert-header": HTMLBdsAlertHeaderElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
+        "bds-button-icon": HTMLBdsButtonIconElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
@@ -1114,7 +1115,6 @@ declare global {
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
         "bds-icon": HTMLBdsIconElement;
-        "bds-icon-button": HTMLBdsIconButtonElement;
         "bds-input": HTMLBdsInputElement;
         "bds-input-chips": HTMLBdsInputChipsElement;
         "bds-input-editable": HTMLBdsInputEditableElement;
@@ -1198,6 +1198,24 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonIcon {
+        /**
+          * If true, the base button will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: IconButtonSize;
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
+         */
+        "variant"?: IconButtonVariant;
     }
     interface BdsCardColor {
         /**
@@ -1340,24 +1358,6 @@ declare namespace LocalJSX {
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
         "type"?: IconType;
-    }
-    interface BdsIconButton {
-        /**
-          * If true, the base button will be disabled.
-         */
-        "disabled"?: boolean;
-        /**
-          * used for add icon in input left. Uses the bds-icon component.
-         */
-        "icon"?: string;
-        /**
-          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-         */
-        "size"?: IconButtonSize;
-        /**
-          * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-         */
-        "variant"?: IconButtonVariant;
     }
     interface BdsInput {
         /**
@@ -2048,6 +2048,7 @@ declare namespace LocalJSX {
         "bds-alert-header": BdsAlertHeader;
         "bds-banner": BdsBanner;
         "bds-button": BdsButton;
+        "bds-button-icon": BdsButtonIcon;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
@@ -2056,7 +2057,6 @@ declare namespace LocalJSX {
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
         "bds-icon": BdsIcon;
-        "bds-icon-button": BdsIconButton;
         "bds-input": BdsInput;
         "bds-input-chips": BdsInputChips;
         "bds-input-editable": BdsInputEditable;
@@ -2089,6 +2089,7 @@ declare module "@stencil/core" {
             "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
@@ -2097,7 +2098,6 @@ declare module "@stencil/core" {
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
-            "bds-icon-button": LocalJSX.BdsIconButton & JSXBase.HTMLAttributes<HTMLBdsIconButtonElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;

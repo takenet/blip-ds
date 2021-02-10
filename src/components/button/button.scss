@@ -2,20 +2,24 @@
 
 $button-border-radius: 8px;
 
+$height-standard: 40px;
+$height-short: 32px;
+
 $button-size-tall: 14px;
-$button-size-standard: 10px;
-$button-size-short: 6px;
+$button-size-standard: 9px;
+$button-size-short: 5px;
 
 $button-size-tall-icon: 12px;
 $button-size-standard-icon: 8px;
 $button-size-short-icon: 4px;
 
-$button-padding-left-right-icon: 12px;
+$button-padding-left-right-icon: 16px;
 $button-padding-left-right: 16px;
 
-@mixin padding-button-top-bottom($padding) {
+@mixin padding-button-top-bottom($padding, $height) {
   padding-top: $padding;
   padding-bottom: $padding;
+  height: $height;
 }
 
 @mixin disable-button($background, $color: null, $border: null) {
@@ -62,27 +66,31 @@ $button-padding-left-right: 16px;
   padding-right: $button-padding-left-right;
   position: relative;
 
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+
   &--size-tall {
-    @include padding-button-top-bottom($button-size-tall);
+    @include padding-button-top-bottom($button-size-tall, $height-standard);
 
     &--icon {
-      @include padding-button-top-bottom($button-size-tall-icon);
+      @include padding-button-top-bottom($button-size-tall-icon, $height-standard);
     }
   }
 
   &--size-standard {
-    @include padding-button-top-bottom($button-size-standard);
+    @include padding-button-top-bottom($button-size-standard, $height-standard);
 
     &--icon {
-      @include padding-button-top-bottom($button-size-standard-icon);
+      @include padding-button-top-bottom($button-size-standard-icon, $height-standard);
     }
   }
 
   &--size-short {
-    @include padding-button-top-bottom($button-size-short);
+    @include padding-button-top-bottom($button-size-short, $height-short);
 
     &--icon {
-      @include padding-button-top-bottom($button-size-short-icon);
+      @include padding-button-top-bottom($button-size-short-icon, $height-standard);
     }
   }
 
@@ -98,7 +106,7 @@ $button-padding-left-right: 16px;
   &__icon {
     @include inherit-color();
     height: 24px;
-    margin-right: 2px;
+    margin-right: 4px;
   }
 
   &__arrow {
@@ -115,19 +123,19 @@ $button-padding-left-right: 16px;
 
   &__primary {
     background: $color-primary-main;
-    color: $color-neutral-light-breeze;
+    color: $color-neutral-light-snow;
 
     &:hover {
       background: $color-primary-dark;
     }
 
     &:active {
-      background: $color-primary-main;
-      color: $color-neutral-light-breeze;
+      background: $color-primary-night;
+      color: $color-neutral-light-snow;
     }
 
     &--disabled {
-      @include disable-button($color-disabled-bg, $color-neutral-medium-cloud);
+      @include disable-button($color-disabled-bg, $color-disabled-text);
     }
   }
 
@@ -146,7 +154,29 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-neutral-medium-cloud);
+      @include disable-button(transparent, $color-disabled-text);
+    }
+  }
+
+  &__tertiary {
+    background: transparent;
+    color: $color-primary-main;
+    border: 1px solid $color-neutral-medium-wave;
+    @include padding-button-top-bottom($button-size-standard - 1px, $height-standard);
+
+    &:hover {
+      border: 1px solid $color-primary-main;
+      color: $color-primary-main;
+    }
+
+    &:active {
+      background: $color-hover-light;
+      border: 1px solid $color-primary-main;
+      color: $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
     }
   }
 
@@ -173,22 +203,41 @@ $button-padding-left-right: 16px;
     background: transparent;
     color: $color-primary-main;
     border: 1px solid $color-primary-main;
-    @include padding-button-top-bottom($button-size-standard - 1px);
+    @include padding-button-top-bottom($button-size-standard - 1px, $height-standard);
 
     &:hover {
-      background: transparent;
-      color: $color-primary-dark;
-      border: 1px solid $color-primary-dark;
+      background: $color-disabled-bg;
+      color: $color-primary-main;
+      border: 1px solid $color-primary-main;
     }
 
     &:active {
-      background: transparent;
+      background: $color-hover-light;
       color: $color-primary-main;
       border: 1px solid $color-primary-main;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-neutral-medium-cloud, 1px solid $color-neutral-medium-cloud);
+      @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+    }
+  }
+
+  &__delete {
+    background: $color-extend-reds-delete;
+    color: $color-neutral-light-snow;
+
+    &:hover {
+      background: $color-extend-reds-lipstick;
+      color: $color-neutral-light-snow;
+    }
+
+    &:active {
+      background: $color-extend-reds-dragon;
+      color: $color-neutral-light-snow;
+    }
+
+    &--disabled {
+      @include disable-button($color-disabled-delete, $color-disabled-wrong);
     }
   }
 
@@ -196,7 +245,7 @@ $button-padding-left-right: 16px;
     background: transparent;
     color: $color-primary-main;
     border: 1px dashed $color-primary-main;
-    @include padding-button-top-bottom($button-size-standard - 1px);
+    @include padding-button-top-bottom($button-size-standard - 1px, $height-standard);
 
     &:hover {
       background: transparent;
