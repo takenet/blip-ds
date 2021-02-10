@@ -22,17 +22,18 @@
     "dist/"
   ],
   "resolutions": {
-    "@types/react": "^15.0.16"
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0"
   },
   "devDependencies": {
     "@types/jest": "23.3.9",
     "@types/node": "14.14.16",
-    "@types/react": "^15.0.16",
-    "@types/react-dom": "^0.14.23",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0",
     "jest": "^23.0.0",
     "jest-dom": "^3.0.2",
     "np": "^3.1.0",
-    "react": "16.7.0",
+    "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "typescript": "^3.3.4000"
   },
