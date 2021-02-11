@@ -106,6 +106,7 @@ const outlineIconsName = [
   'data-security',
   'date-time',
   'debug',
+  'delete',
   'deslike',
   'download',
   'edit',
