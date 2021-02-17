@@ -23,6 +23,7 @@ export const inputChipsDefault = () => {
       label={label}
       danger={danger}
       error-message={errorMessage}
+      chips-string='["chip1", "chip2"]'
     ></bds-input-chips>
   );
 };

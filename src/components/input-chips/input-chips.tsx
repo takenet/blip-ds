@@ -11,6 +11,7 @@ export class InputChips {
   private nativeInput?: HTMLBdsInputElement;
 
   @Prop({ mutable: true }) chips: string[] = [];
+  @Prop({ mutable: true }) chipsString?: string | null = '';
 
   /**
    * Defining the type is important so that it is possible to carry out validations. Can be one of:
@@ -86,6 +87,19 @@ export class InputChips {
   /**
    * Call change event before alter chips values.
    */
+  @Watch('chipsString')
+  protected stringValueChanged(): void {
+    try {
+      if (this.chipsString) {
+        this.chips = JSON.parse(this.chipsString);
+      }
+    } finally {
+    }
+  }
+
+  /**
+   * Call change event before alter chips values.
+   */
   @Watch('chips')
   protected valueChanged(): void {
     this.bdsChangeChips.emit({ data: this.chips, value: this.getLastChip() });
@@ -129,6 +143,15 @@ export class InputChips {
   @Method()
   async removeFocus(): Promise<void> {
     this.nativeInput.removeFocus();
+  }
+
+  componentWillLoad() {
+    try {
+      if (this.chipsString) {
+        this.chips = JSON.parse(this.chipsString);
+      }
+    } finally {
+    }
   }
 
   private validateChips() {

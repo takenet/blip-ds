@@ -10,6 +10,7 @@
 | Property        | Attribute        | Description                                                                                                       | Type                | Default     |
 | --------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
 | `chips`         | --               |                                                                                                                   | `string[]`          | `[]`        |
+| `chipsString`   | `chips-string`   |                                                                                                                   | `string`            | `''`        |
 | `danger`        | `danger`         | Add state danger on input, use for use feedback.                                                                  | `boolean`           | `false`     |
 | `delimiters`    | --               | The delimiter is used to add multiple chips in the same string.                                                   | `RegExp`            | `/,\|;/`    |
 | `disableSubmit` | `disable-submit` | If `true`, the user cannot modify the value.                                                                      | `boolean`           | `false`     |

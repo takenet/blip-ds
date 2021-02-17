@@ -387,6 +387,7 @@ export namespace Components {
     interface BdsInputChips {
         "add": (value: string) => Promise<void>;
         "chips": string[];
+        "chipsString"?: string | null;
         /**
           * Clear all chips
          */
@@ -1515,6 +1516,7 @@ declare namespace LocalJSX {
     }
     interface BdsInputChips {
         "chips"?: string[];
+        "chipsString"?: string | null;
         /**
           * Add state danger on input, use for use feedback.
          */
