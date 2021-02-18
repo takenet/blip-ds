@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 
-export type LoadingSpinnerVariant = 'primary' | 'secondary' | 'ghost';
+export type LoadingSpinnerVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'delete';
 
 export type LoadingSpinnerColorMap = { [key in LoadingSpinnerVariant]: string };
 
