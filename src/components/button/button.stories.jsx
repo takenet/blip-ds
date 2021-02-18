@@ -54,8 +54,8 @@ export const disabedButton = () => (
 
 export const sizeButtons = () => (
   <div style={defaultButtonStyle}>
-    <bds-button style={spaceBetween} size="standard">Text button</bds-button>
-    <bds-button style={spaceBetween} size="short">Text button</bds-button>
+    <bds-button style={spaceBetween} size="standard">Standard Button</bds-button>
+    <bds-button style={spaceBetween} size="short"> Short Button</bds-button>
   </div>
 );
 
@@ -63,6 +63,12 @@ export const buttonWithIcon = () => (
   <div style={defaultButtonStyle}>
     <bds-button style={spaceBetween} icon="file-new" size="standard">Text button</bds-button>
     <bds-button style={spaceBetween} arrow size="standard">Text button</bds-button>
+  </div>
+);
+
+export const buttonLoading = () => (
+  <div style={defaultButtonStyle}>
+    <bds-button style={spaceBetween} bds-loading variant='primary'>Button primary</bds-button>
   </div>
 );
 
