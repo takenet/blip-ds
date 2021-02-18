@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default |
-| -------- | --------- | ----------- | --------- | ------- |
-| `fixed`  | `fixed`   |             | `boolean` | `false` |
+| Property      | Attribute      | Description                                                             | Type                            | Default    |
+| ------------- | -------------- | ----------------------------------------------------------------------- | ------------------------------- | ---------- |
+| `bannerAlign` | `banner-align` | Set the banner aligment, it can be one of: 'center', 'right' or 'left'. | `"center" \| "left" \| "right"` | `'center'` |
+| `variant`     | `variant`      | Set the banner varient, it can be 'system' or 'warning'.                | `"system" \| "warning"`         | `'system'` |
 
 
 ## Events

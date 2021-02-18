@@ -18,21 +18,13 @@ const content = {
 
 export const defaultBanner = () => (
   <div style={content}>
-    <bds-banner>Banner Text</bds-banner>
+    <bds-banner variant="system">Banner Text</bds-banner>
   </div>
 );
 
-export const bannerWithIcon = () => (
+export const bannerWarning = () => (
   <div style={content}>
-    <bds-banner>
-      <bds-icon name="email"></bds-icon> Banner Text
-    </bds-banner>
-  </div>
-);
-
-export const bannerNotClose = () => (
-  <div style={content}>
-    <bds-banner fixed>
+    <bds-banner variant="warning" fixed>
       Banner Text
     </bds-banner>
   </div>

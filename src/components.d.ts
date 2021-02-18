@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
+import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
@@ -47,11 +48,18 @@ export namespace Components {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
-        "fixed": boolean;
+        /**
+          * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
+         */
+        "bannerAlign"?: BannerAlign;
         /**
           * Pulbic method to close the banner
          */
         "toggle": () => Promise<void>;
+        /**
+          * Set the banner varient, it can be 'system' or 'warning'.
+         */
+        "variant"?: BannerVariant;
     }
     interface BdsButton {
         /**
@@ -1159,11 +1167,18 @@ declare namespace LocalJSX {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsBanner {
-        "fixed"?: boolean;
+        /**
+          * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
+         */
+        "bannerAlign"?: BannerAlign;
         /**
           * Emitted when the banner is closed.
          */
         "onBdsBannerClose"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set the banner varient, it can be 'system' or 'warning'.
+         */
+        "variant"?: BannerVariant;
     }
     interface BdsButton {
         /**
