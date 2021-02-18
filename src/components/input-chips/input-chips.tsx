@@ -108,6 +108,10 @@ export class InputChips {
     } else {
       this.internalChips = [];
     }
+  }
+
+  @Watch('internalChips')
+  protected internalValueChanged(): void {
     this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
