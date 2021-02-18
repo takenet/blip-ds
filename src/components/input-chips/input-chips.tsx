@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch, State } from '@stencil/core';
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { InputChipsTypes } from './input-chips-interface';
 
@@ -10,8 +10,14 @@ import { InputChipsTypes } from './input-chips-interface';
 export class InputChips {
   private nativeInput?: HTMLBdsInputElement;
 
-  @Prop({ mutable: true }) chips: string[] = [];
-  @Prop({ mutable: true }) chipsString?: string | null = '';
+  @State() internalChips: string[] = [];
+
+  /**
+   * The chips on the component
+   * Should be passed this way:
+   * chips='["chip1", "chip2"]'
+   */
+  @Prop({ mutable: true }) chips: string[] | string = [];
 
   /**
    * Defining the type is important so that it is possible to carry out validations. Can be one of:
@@ -87,22 +93,22 @@ export class InputChips {
   /**
    * Call change event before alter chips values.
    */
-  @Watch('chipsString')
-  protected stringValueChanged(): void {
-    try {
-      if (this.chipsString) {
-        this.chips = JSON.parse(this.chipsString);
-      }
-    } finally {
-    }
-  }
-
-  /**
-   * Call change event before alter chips values.
-   */
   @Watch('chips')
   protected valueChanged(): void {
-    this.bdsChangeChips.emit({ data: this.chips, value: this.getLastChip() });
+    if (this.chips) {
+      if (typeof this.chips === 'string') {
+        try {
+          this.internalChips = JSON.parse(this.chips);
+        } catch {
+          this.internalChips = [];
+        }
+      } else {
+        this.internalChips = this.chips;
+      }
+    } else {
+      this.internalChips = [];
+    }
+    this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
   /**
@@ -118,7 +124,7 @@ export class InputChips {
    */
   @Method()
   async get(): Promise<string[]> {
-    return this.chips;
+    return this.internalChips;
   }
 
   /**
@@ -126,7 +132,7 @@ export class InputChips {
    */
   @Method()
   async clear(): Promise<void> {
-    this.chips = [];
+    this.internalChips = [];
     this.value = '';
   }
 
@@ -146,24 +152,19 @@ export class InputChips {
   }
 
   componentWillLoad() {
-    try {
-      if (this.chipsString) {
-        this.chips = JSON.parse(this.chipsString);
-      }
-    } finally {
-    }
+    this.valueChanged();
   }
 
   private validateChips() {
     if (this.type === 'email') {
-      return !this.chips.some((chip) => !this.validateChip(chip));
+      return !this.internalChips.some((chip) => !this.validateChip(chip));
     } else {
       return true;
     }
   }
 
   private handleOnBlur(): void {
-    this.bdsBlur.emit(this.chips);
+    this.bdsBlur.emit(this.internalChips);
   }
 
   private handleAddChip(event: CustomEvent<{ value: string }>): void {
@@ -179,7 +180,7 @@ export class InputChips {
   }
 
   private getLastChip(): string {
-    return this.chips[this.chips.length - 1];
+    return this.internalChips[this.internalChips.length - 1];
   }
 
   private handleBackRemove(event: CustomEvent<{ value: string }>): void {
@@ -187,9 +188,9 @@ export class InputChips {
       detail: { value },
     } = event;
 
-    if ((value === null || value.length <= 0) && this.chips.length) {
+    if ((value === null || value.length <= 0) && this.internalChips.length) {
       this.removeLastChip();
-      this.bdsChangeChips.emit({ data: this.chips, value });
+      this.bdsChangeChips.emit({ data: this.internalChips, value });
     }
   }
 
@@ -242,7 +243,7 @@ export class InputChips {
 
   private setChip(name: string) {
     if (!this.duplicated) {
-      const exists = this.chips.some((chip) => chip.toLowerCase() === name.toLowerCase());
+      const exists = this.internalChips.some((chip) => chip.toLowerCase() === name.toLowerCase());
       if (exists) return;
     }
 
@@ -250,7 +251,7 @@ export class InputChips {
       return;
     }
 
-    this.chips = [...this.chips, name];
+    this.internalChips = [...this.internalChips, name];
   }
 
   private validateChip(name: string) {
@@ -262,7 +263,7 @@ export class InputChips {
   }
 
   private removeLastChip() {
-    this.chips = this.chips.slice(0, this.chips.length - 1);
+    this.internalChips = this.internalChips.slice(0, this.internalChips.length - 1);
   }
 
   private removeChip(event: CustomEvent<{ id: string }>) {
@@ -270,15 +271,15 @@ export class InputChips {
       detail: { id },
     } = event;
 
-    this.chips = this.chips.filter((_chip, index) => index.toString() !== id);
+    this.internalChips = this.internalChips.filter((_chip, index) => index.toString() !== id);
   }
 
   private renderChips() {
-    if (!this.chips.length) {
+    if (!this.internalChips.length) {
       return [];
     }
 
-    return this.chips.map((chip, index) => {
+    return this.internalChips.map((chip, index) => {
       const id = index.toString();
 
       return (
