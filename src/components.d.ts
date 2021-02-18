@@ -394,7 +394,10 @@ export namespace Components {
     }
     interface BdsInputChips {
         "add": (value: string) => Promise<void>;
-        "chips": string[];
+        /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips": string[] | string;
         /**
           * Clear all chips
          */
@@ -1529,7 +1532,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsInputChips {
-        "chips"?: string[];
+        /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips"?: string[] | string;
         /**
           * Add state danger on input, use for use feedback.
          */

@@ -104,8 +104,8 @@ export class SelectChips {
     }
   }
 
-  componentDidLoad() {
-    this.resetFilterOptions();
+  async componentDidLoad() {
+    await this.resetFilterOptions();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
@@ -192,15 +192,15 @@ export class SelectChips {
     }
   };
 
-  private changedInputValue = () => {
+  private changedInputValue = async () => {
     // console.log('TRACE [select-chips] changedInputValue:', { nativeInput: this.nativeInput.value, value: this.value });
     // Update this.value for trigger render componente, same two-way binding
     this.value = this.nativeInput.value;
 
     if (this.nativeInput.value) {
-      this.filterOptions(this.nativeInput.value);
+      await this.filterOptions(this.nativeInput.value);
     } else {
-      this.resetFilterOptions();
+      await this.resetFilterOptions();
     }
 
     if (this.value && this.isOpen === false) {
@@ -208,22 +208,22 @@ export class SelectChips {
     }
   };
 
-  private handleChangeChipsValue = () => {
+  private handleChangeChipsValue = async () => {
     // console.log('TRACE [select-chips] handleChangeChipsValue 1:', { chips: this.nativeInput.chips });
     this.nativeInput.value = '';
-    this.resetFilterOptions();
+    await this.resetFilterOptions();
   };
 
-  private filterOptions(term: string) {
+  private async filterOptions(term: string) {
     // console.log('TRACE [select-chips] filterOptions 1:', { term, childOptions: this.childOptions });
     if (!term) {
-      this.resetFilterOptions();
+      await this.resetFilterOptions();
       return;
     }
 
     for (const option of this.childOptions) {
       // console.log('TRACE [select-chips] filterOptions 2:', { option });
-      const isExistsChip = this.existsChip(option.textContent, this.nativeInput.chips);
+      const isExistsChip = this.existsChip(option.textContent, await this.nativeInput.get());
       const optionTextLower = option.textContent.toLowerCase();
       const termLower = term.toLowerCase();
 
@@ -241,10 +241,10 @@ export class SelectChips {
     }
   }
 
-  private resetFilterOptions() {
+  private async resetFilterOptions() {
     for (const option of this.childOptions) {
       const optionText = option.querySelector('bds-typo').textContent;
-      if (this.existsChip(optionText, this.nativeInput.chips)) {
+      if (this.existsChip(optionText, await this.nativeInput.get())) {
         option.setAttribute('invisible', 'invisible');
       } else {
         option.removeAttribute('invisible');
