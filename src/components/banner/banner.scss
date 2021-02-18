@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 
   font-family: $font-family;
   font-size: $fs-14;
@@ -13,6 +14,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
+
       min-height: 40px;
 
       color: $color-neutral-light-breeze;
@@ -79,6 +81,7 @@
 
     &__action {
       cursor: pointer;
+      display: flex;
     }
   }
 }
