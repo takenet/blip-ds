@@ -30,7 +30,17 @@
     }
     &--ghost {
       &::before {
+        background-color: $color-primary-main;
+      }
+    }
+    &--tertiary {
+      &::before {
         background-color: $color-neutral-dark-rooftop;
+      }
+    }
+    &--delete {
+      &::before {
+        background-color: $color-neutral-light-snow;
       }
     }
   }

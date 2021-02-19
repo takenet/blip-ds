@@ -68,7 +68,11 @@ export const buttonWithIcon = () => (
 
 export const buttonLoading = () => (
   <div style={defaultButtonStyle}>
-    <bds-button style={spaceBetween} bds-loading variant='primary'>Button primary</bds-button>
+    <bds-button style={spaceBetween} bds-loading bds-loading-variant="primary" variant='primary'>Button primary</bds-button>
+    <bds-button style={spaceBetween} bds-loading bds-loading-variant="secondary" variant='secondary'>Button primary</bds-button>
+    <bds-button style={spaceBetween} bds-loading bds-loading-variant="tertiary" variant='tertiary'>Button primary</bds-button>
+    <bds-button style={spaceBetween} bds-loading bds-loading-variant="ghost" variant='ghost'>Button primary</bds-button>
+    <bds-button style={spaceBetween} bds-loading bds-loading-variant="delete" variant='delete'>Button primary</bds-button>
   </div>
 );
 
