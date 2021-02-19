@@ -61,6 +61,7 @@ export class Radio {
   private onClick = (event: Event): void => {
     this.checked = !this.checked;
     (event.target as HTMLInputElement).checked = this.checked;
+    event.stopPropagation();
   };
 
   private refNativeInput = (input: HTMLInputElement): void => {
