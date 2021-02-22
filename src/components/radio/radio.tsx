@@ -4,8 +4,7 @@ let radioButtonIds = 0;
 @Component({
   tag: 'bds-radio',
   styleUrl: 'radio.scss',
-  shadow: false,
-  scoped: true,
+  shadow: true,
 })
 export class Radio {
   private nativeInput?: HTMLInputElement;
@@ -37,11 +36,6 @@ export class Radio {
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter;
-
-  /**
-   * Emitted when the input has changed.
-   */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
 
   @Watch('checked')
   protected checkedChanged(isChecked: boolean): void {
