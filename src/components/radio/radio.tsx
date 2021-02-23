@@ -37,6 +37,11 @@ export class Radio {
    */
   @Event() bdsChange!: EventEmitter;
 
+  /**
+   * Emitted when the value has changed because of a click event.
+   */
+  @Event() bdsClickChange!: EventEmitter;
+
   @Watch('checked')
   protected checkedChanged(isChecked: boolean): void {
     this.bdsChange.emit({ checked: isChecked });
@@ -54,7 +59,7 @@ export class Radio {
 
   private onClick = (event: Event): void => {
     this.checked = !this.checked;
-    (event.target as HTMLInputElement).checked = this.checked;
+    this.bdsClickChange.emit({ checked: this.checked });
     event.stopPropagation();
   };
 
