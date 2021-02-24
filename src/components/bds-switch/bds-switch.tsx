@@ -75,16 +75,37 @@ export class Switch {
   };
 
   getSizeClass(): string {
-    return `switch switch--size-${this.size}`;
+    return `switch switch--size-${this.size} `;
   }
 
   getSizeSliderClass(): string {
     return `slider slider--size-${this.size} round `;
   }
 
+  private getStyleState = (): string => {
+    if (this.checked && !this.disabled) {
+      return 'slider--selected';
+    }
+
+    if (!this.checked && !this.disabled) {
+      return 'slider--deselected';
+    }
+
+    if (this.checked && this.disabled) {
+      return 'slider--selected-disabled';
+    }
+
+    if (!this.checked && this.disabled) {
+      return 'slider--deselected-disabled';
+    }
+
+    return '';
+  };
+
   render(): HTMLElement {
     const sizeClass = this.getSizeClass();
     const sizeSliderClass = this.getSizeSliderClass();
+    const styleState = this.getStyleState();
 
     return (
       <label class={{ [sizeClass]: true }}>
@@ -97,7 +118,7 @@ export class Switch {
           checked={this.checked}
           disabled={this.disabled}
         ></input>
-        <span class={{ [sizeSliderClass]: true }}></span>
+        <span class={{ [sizeSliderClass]: true, [styleState]: true }}></span>
       </label>
     );
   }

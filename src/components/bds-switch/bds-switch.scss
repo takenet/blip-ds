@@ -1,24 +1,24 @@
 @import 'resets';
 
-$switch-size-width-tall: 96px;
-$switch-size-width-standard: 64px;
+$switch-size-width-tall: 56px;
+$switch-size-width-standard: 42px;
 $switch-size-width-short: 32px;
 
-$switch-size-height-tall: 54.87px;
-$switch-size-height-standard: 36.58px;
-$switch-size-height-short: 18.29px;
+$switch-size-height-tall: 32px;
+$switch-size-height-standard: 24px;
+$switch-size-height-short: 18px;
 
-$switch-size-slider-tall: 41.13px;
-$switch-size-slider-standard: 27.42px;
-$switch-size-slider-short: 13.71px;
+$switch-size-slider-tall: 24px;
+$switch-size-slider-standard: 18px;
+$switch-size-slider-short: 13.5px;
 
-$switch-size-translateX-tall:42px;
-$switch-size-translateX-standard:28px;
-$switch-size-translateX-short:14px;
+$switch-size-translateX-tall:24px;
+$switch-size-translateX-standard:18px;
+$switch-size-translateX-short:13.75px;
 
-$slider-size-content-tall:6.87px;
-$slider-size-content-standard:4.58px;
-$slider-size-content-short:2.29px;
+$slider-size-content-tall:4px;
+$slider-size-content-standard:3px;
+$slider-size-content-short:2.25px;
 
 @mixin translateX_values($value) {
   -webkit-transform: translateX($value);
@@ -58,6 +58,10 @@ $slider-size-content-short:2.29px;
   &--size-short {
     @include switch_width_height($switch-size-width-short,$switch-size-height-short);
   }
+
+  
+  
+
 }
 
 .switch input { 
@@ -78,34 +82,63 @@ $slider-size-content-short:2.29px;
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px;
+  
   &--size-tall::before {
     @include slider_width_height($switch-size-slider-tall, $slider-size-content-tall);
   }
+
   &--size-standard::before {
     @include slider_width_height($switch-size-slider-standard,$slider-size-content-standard);
   }
+
   &--size-short::before {
     @include slider_width_height($switch-size-slider-short,$slider-size-content-short);
+  }
+  
+  &--deselected-disabled {
+    cursor: not-allowed;
+    background-color: $color-neutral-medium-wave;
   }
 }
 
 input:checked + .slider {
   background-color: $color-primary-main;
+
+  &--selected-disabled {
+    cursor: not-allowed;
+    background-color:$color-neutral-medium-silver;
+  }
+
+  
 }
 
 input:focus + .slider {
   box-shadow: 0 0 1px $color-primary-main;
+
+  &--selected-disabled {
+    box-shadow: 0 0 1px $color-neutral-medium-silver;
+  }
+
+  &--deselected-disabled {
+    box-shadow: 0 0 1px $color-neutral-medium-wave;
+  }
 }
 
 input:checked + .slider {
+
   &--size-tall::before {
     @include translateX_values($switch-size-translateX-tall);
   }
+
   &--size-standard::before {
     @include translateX_values($switch-size-translateX-standard);
   }
+
   &--size-short::before {
     @include translateX_values($switch-size-translateX-short);
   }
+
+  
+
 }
 

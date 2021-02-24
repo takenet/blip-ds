@@ -15,7 +15,7 @@ export const defaultSwitch = () => (
     <bds-switch
       name={text('name', 'cb1')}
       disabled={boolean('disabled', false)}
-      checked={boolean('checked', false)}
+      checked={boolean('checked', true)}
     >
     </bds-switch>
   </>
@@ -27,6 +27,13 @@ export const withoutLabelSwitch = () => (
     <bds-switch id="check2"></bds-switch>
     <bds-switch id="check1" checked disabled></bds-switch>
     <bds-switch id="check2" disabled></bds-switch>
+  </>
+)
+
+export const disabledSwitch = () => (
+  <>
+     <bds-switch  size="standard"  disabled></bds-switch>
+    <bds-switch  size="standard" checked={true}  disabled></bds-switch>
   </>
 )
 
