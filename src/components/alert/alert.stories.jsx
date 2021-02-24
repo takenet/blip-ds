@@ -13,7 +13,7 @@ export default {
 
 export const systemAlert = () => (
   <>
-    <bds-alert open={boolean('open', true)}>
+    <bds-alert open={boolean('open', true)} size={text('size', 'standard')}>
       <bds-alert-header variant={text('variant', 'system')} icon={text('icon', 'info')}>
       {text('header text', 'Atenção!')}
       </bds-alert-header>

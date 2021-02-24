@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AlertSize } from "./components/alert/alert";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
@@ -28,6 +29,10 @@ export namespace Components {
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'wide', 'standard';
+         */
+        "size"?: AlertSize;
         /**
           * Can be used outside to open/close the alert
          */
@@ -1154,6 +1159,10 @@ declare namespace LocalJSX {
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'wide', 'standard';
+         */
+        "size"?: AlertSize;
     }
     interface BdsAlertActions {
     }
@@ -1799,10 +1808,6 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
-        /**
-          * Emitted when the input has changed.
-         */
-        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         "refer": string;
         "value": string;
     }

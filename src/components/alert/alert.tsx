@@ -1,5 +1,7 @@
 import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
 
+export type AlertSize = 'wide' | 'standard';
+
 @Component({
   tag: 'bds-alert',
   styleUrl: 'alert.scss',
@@ -14,6 +16,12 @@ export class BdsAlert implements ComponentInterface {
     reflect: true,
   })
   public open?: boolean = false;
+
+  /**
+   * Size. Entered as one of the size. Can be one of:
+   * 'wide', 'standard';
+   */
+  @Prop() size?: AlertSize = 'standard';
 
   /**
    * Can be used outside to open/close the alert
@@ -31,7 +39,7 @@ export class BdsAlert implements ComponentInterface {
           'alert__dialog--open': this.open,
         }}
       >
-        <div class="alert">
+        <div class={{alert: true, [`alert-${this.size}`]: true}}>
           <slot></slot>
         </div>
       </div>

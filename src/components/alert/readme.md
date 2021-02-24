@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                  | Type      | Default |
-| -------- | --------- | ---------------------------- | --------- | ------- |
-| `open`   | `open`    | Used to open/close the alert | `boolean` | `false` |
+| Property | Attribute | Description                                                          | Type                   | Default      |
+| -------- | --------- | -------------------------------------------------------------------- | ---------------------- | ------------ |
+| `open`   | `open`    | Used to open/close the alert                                         | `boolean`              | `false`      |
+| `size`   | `size`    | Size. Entered as one of the size. Can be one of: 'wide', 'standard'; | `"standard" \| "wide"` | `'standard'` |
 
 
 ## Methods
