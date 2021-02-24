@@ -1808,6 +1808,10 @@ declare namespace LocalJSX {
           * Emitted when the value has changed.
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed because of a click event.
+         */
+        "onBdsClickChange"?: (event: CustomEvent<any>) => void;
         "refer": string;
         "value": string;
     }
