@@ -19,6 +19,7 @@ import { InputEditableEventDetail } from "./components/input-editable/input-edit
 import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
+import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -800,6 +801,27 @@ export namespace Components {
          */
         "setCompletedStep": (index: number) => Promise<void>;
     }
+    interface BdsSwitch {
+        /**
+          * If `true`, the switch is selected.
+         */
+        "checked": boolean;
+        /**
+          * If `true`, the user cannot interact with the switch.
+         */
+        "disabled": boolean;
+        "getInputElement": () => Promise<HTMLInputElement>;
+        "getValue": () => Promise<boolean>;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        "refer": string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: SwitchSize;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -1080,6 +1102,12 @@ declare global {
         prototype: HTMLBdsStepperElement;
         new (): HTMLBdsStepperElement;
     };
+    interface HTMLBdsSwitchElement extends Components.BdsSwitch, HTMLStencilElement {
+    }
+    var HTMLBdsSwitchElement: {
+        prototype: HTMLBdsSwitchElement;
+        new (): HTMLBdsSwitchElement;
+    };
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
     }
     var HTMLBdsToastElement: {
@@ -1141,6 +1169,7 @@ declare global {
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
+        "bds-switch": HTMLBdsSwitchElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
@@ -1968,6 +1997,33 @@ declare namespace LocalJSX {
     }
     interface BdsStepper {
     }
+    interface BdsSwitch {
+        /**
+          * If `true`, the switch is selected.
+         */
+        "checked"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the switch.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "refer": string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: SwitchSize;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -2093,6 +2149,7 @@ declare namespace LocalJSX {
         "bds-select-option": BdsSelectOption;
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
+        "bds-switch": BdsSwitch;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
@@ -2134,6 +2191,7 @@ declare module "@stencil/core" {
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
+            "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;

@@ -37,6 +37,7 @@ export const BdsSelectChips = /*@__PURE__*/createReactComponent<JSX.BdsSelectChi
 export const BdsSelectOption = /*@__PURE__*/createReactComponent<JSX.BdsSelectOption, HTMLBdsSelectOptionElement>('bds-select-option');
 export const BdsStep = /*@__PURE__*/createReactComponent<JSX.BdsStep, HTMLBdsStepElement>('bds-step');
 export const BdsStepper = /*@__PURE__*/createReactComponent<JSX.BdsStepper, HTMLBdsStepperElement>('bds-stepper');
+export const BdsSwitch = /*@__PURE__*/createReactComponent<JSX.BdsSwitch, HTMLBdsSwitchElement>('bds-switch');
 export const BdsToast = /*@__PURE__*/createReactComponent<JSX.BdsToast, HTMLBdsToastElement>('bds-toast');
 export const BdsToastContainer = /*@__PURE__*/createReactComponent<JSX.BdsToastContainer, HTMLBdsToastContainerElement>('bds-toast-container');
 export const BdsTooltip = /*@__PURE__*/createReactComponent<JSX.BdsTooltip, HTMLBdsTooltipElement>('bds-tooltip');
