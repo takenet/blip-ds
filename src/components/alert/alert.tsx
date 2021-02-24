@@ -39,7 +39,7 @@ export class BdsAlert implements ComponentInterface {
           'alert__dialog--open': this.open,
         }}
       >
-        <div class={{ alert: true, [`alert-${this.size}`]: true }}>
+        <div class={{ alert: true, [`alert--${this.size}`]: true }}>
           <slot></slot>
         </div>
       </div>
