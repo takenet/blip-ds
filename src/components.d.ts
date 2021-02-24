@@ -1800,9 +1800,9 @@ declare namespace LocalJSX {
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
         /**
-          * Emitted when the input has changed.
+          * Emitted when the value has changed because of a click event.
          */
-        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBdsClickChange"?: (event: CustomEvent<any>) => void;
         "refer": string;
         "value": string;
     }
