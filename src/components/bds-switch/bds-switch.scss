@@ -1,0 +1,111 @@
+@import 'resets';
+
+$switch-size-width-tall: 96px;
+$switch-size-width-standard: 64px;
+$switch-size-width-short: 32px;
+
+$switch-size-height-tall: 54.87px;
+$switch-size-height-standard: 36.58px;
+$switch-size-height-short: 18.29px;
+
+$switch-size-slider-tall: 41.13px;
+$switch-size-slider-standard: 27.42px;
+$switch-size-slider-short: 13.71px;
+
+$switch-size-translateX-tall:42px;
+$switch-size-translateX-standard:28px;
+$switch-size-translateX-short:14px;
+
+$slider-size-content-tall:6.87px;
+$slider-size-content-standard:4.58px;
+$slider-size-content-short:2.29px;
+
+@mixin translateX_values($value) {
+  -webkit-transform: translateX($value);
+  -ms-transform: translateX($value);
+  transform: translateX($value);
+}
+
+@mixin switch_width_height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin slider_width_height($value, $margin) {
+  position: absolute;
+  content: " ";
+  left: $margin;
+  bottom: $margin;
+  top:$margin;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+  width: $value;
+  height: $value;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  
+  &.tall {
+    @include switch_width_height($switch-size-width-tall,$switch-size-height-tall);
+  }
+  &.standard {
+    @include switch_width_height($switch-size-width-standard,$switch-size-height-standard);
+  }
+  &.short {
+    @include switch_width_height($switch-size-width-short,$switch-size-height-short);
+  }
+}
+
+.switch input { 
+  opacity: 100;
+  width: 0;
+  height: 0;
+  
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:$color-primary-light;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+  &.tall::before {
+    @include slider_width_height($switch-size-slider-tall, $slider-size-content-tall);
+  }
+  &.standard::before {
+    @include slider_width_height($switch-size-slider-standard,$slider-size-content-standard);
+  }
+  &.short::before {
+    @include slider_width_height($switch-size-slider-short,$slider-size-content-short);
+  }
+}
+
+input:checked + .slider {
+  background-color: $color-primary-main;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $color-primary-main;
+}
+
+input:checked + .slider {
+  &.tall::before {
+    @include translateX_values($switch-size-translateX-tall);
+  }
+  &.standard::before {
+    @include translateX_values($switch-size-translateX-standard);
+  }
+  &.short::before {
+    @include translateX_values($switch-size-translateX-short);
+  }
+}
+
