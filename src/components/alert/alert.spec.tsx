@@ -14,7 +14,7 @@ describe('bds-alert', () => {
     expect(page.root).toEqualHtml(`
       <bds-alert>
         <mock:shadow-root>
-        <div class="alert__dialog">
+        <div class="alert__dialog alert-standard">
           <div class="alert">
             <slot />
           </div>
