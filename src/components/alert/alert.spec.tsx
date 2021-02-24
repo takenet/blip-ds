@@ -15,7 +15,7 @@ describe('bds-alert', () => {
       <bds-alert>
         <mock:shadow-root>
         <div class="alert__dialog">
-          <div class="alert alert-standard">
+          <div class="alert alert--standard">
             <slot />
           </div>
         </div>
