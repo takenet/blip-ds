@@ -49,13 +49,13 @@ $slider-size-content-short:2.29px;
   position: relative;
   display: inline-block;
   
-  &.tall {
+  &--size-tall {
     @include switch_width_height($switch-size-width-tall,$switch-size-height-tall);
   }
-  &.standard {
+  &--size-standard {
     @include switch_width_height($switch-size-width-standard,$switch-size-height-standard);
   }
-  &.short {
+  &--size-short {
     @include switch_width_height($switch-size-width-short,$switch-size-height-short);
   }
 }
@@ -78,13 +78,13 @@ $slider-size-content-short:2.29px;
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px;
-  &.tall::before {
+  &--size-tall::before {
     @include slider_width_height($switch-size-slider-tall, $slider-size-content-tall);
   }
-  &.standard::before {
+  &--size-standard::before {
     @include slider_width_height($switch-size-slider-standard,$slider-size-content-standard);
   }
-  &.short::before {
+  &--size-short::before {
     @include slider_width_height($switch-size-slider-short,$slider-size-content-short);
   }
 }
@@ -98,13 +98,13 @@ input:focus + .slider {
 }
 
 input:checked + .slider {
-  &.tall::before {
+  &--size-tall::before {
     @include translateX_values($switch-size-translateX-tall);
   }
-  &.standard::before {
+  &--size-standard::before {
     @include translateX_values($switch-size-translateX-standard);
   }
-  &.short::before {
+  &--size-short::before {
     @include translateX_values($switch-size-translateX-short);
   }
 }

@@ -75,11 +75,11 @@ export class Switch {
   };
 
   getSizeClass(): string {
-    return `switch ${this.size}`;
+    return `switch switch--size-${this.size}`;
   }
 
   getSizeSliderClass(): string {
-    return `slider ${this.size} round `;
+    return `slider slider--size-${this.size} round `;
   }
 
   render(): HTMLElement {
