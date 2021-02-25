@@ -75,7 +75,7 @@ $slider-size-content-short:2.25px;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color:$color-primary-light;
+  background-color:$color-neutral-medium-silver;   
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px;
@@ -103,7 +103,7 @@ input:checked + .slider {
 
   &--selected-disabled {
     cursor: not-allowed;
-    background-color:$color-neutral-medium-silver;
+    background-color:$color-primary-light;
   }
   
 }
