@@ -818,7 +818,7 @@ export namespace Components {
         "name": string;
         "refer": string;
         /**
-          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short'; An evolution for the component will be to apply responsiveness (make it dynamic)
          */
         "size"?: SwitchSize;
     }
@@ -2020,7 +2020,7 @@ declare namespace LocalJSX {
         "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         "refer": string;
         /**
-          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short'; An evolution for the component will be to apply responsiveness (make it dynamic)
          */
         "size"?: SwitchSize;
     }
