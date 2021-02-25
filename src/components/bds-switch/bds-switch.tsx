@@ -52,11 +52,6 @@ export class Switch {
    */
   @Event() bdsChange!: EventEmitter;
 
-  /**
-   * Emitted when the input has changed.
-   */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
-
   @Method()
   getInputElement(): Promise<HTMLInputElement> {
     return Promise.resolve(this.nativeInput);
