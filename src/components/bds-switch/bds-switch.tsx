@@ -10,15 +10,18 @@ let switchIds = 0;
 })
 export class Switch {
   private nativeInput?: HTMLInputElement;
-
+  /**
+   * Component identifier.
+   */
   @State() switchId?: string;
-
+  /**
+   * The refer of the control.
+   */
   @Prop() refer!: string;
 
   /**
    * Size. Entered as one of the size. Can be one of:
    * 'tall', 'standard', 'short';
-   * An evolution for the component will be to apply responsiveness (make it dynamic)
    */
   @Prop() size?: SwitchSize = 'standard';
   /**
