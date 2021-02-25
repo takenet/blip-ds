@@ -18,6 +18,7 @@ export class Switch {
   /**
    * Size. Entered as one of the size. Can be one of:
    * 'tall', 'standard', 'short';
+   * An evolution for the component will be to apply responsiveness (make it dynamic)
    */
   @Prop() size?: SwitchSize = 'standard';
   /**
