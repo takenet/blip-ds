@@ -816,9 +816,12 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
+        /**
+          * The refer of the control.
+         */
         "refer": string;
         /**
-          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short'; An evolution for the component will be to apply responsiveness (make it dynamic)
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: SwitchSize;
     }
@@ -2015,12 +2018,11 @@ declare namespace LocalJSX {
          */
         "onBdsChange"?: (event: CustomEvent<any>) => void;
         /**
-          * Emitted when the input has changed.
+          * The refer of the control.
          */
-        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         "refer": string;
         /**
-          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short'; An evolution for the component will be to apply responsiveness (make it dynamic)
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: SwitchSize;
     }
