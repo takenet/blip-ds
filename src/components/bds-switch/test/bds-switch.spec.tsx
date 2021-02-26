@@ -91,8 +91,13 @@ describe('bds-switch', () => {
 
   it('should be able to set check', async () => {
     const page = await getPage({ size: null, disabled: false, checked: false, name: null });
-    page.root.shadowRoot.querySelectorAll('input')[0].click();
+    const input = page.root.shadowRoot.querySelectorAll('input')[0];
+    input.click();
     await page.waitForChanges();
     expect(page.root.shadowRoot.querySelector('.slider--selected')).toBeTruthy();
+
+    input.click();
+    await page.waitForChanges();
+    expect(page.root.shadowRoot.querySelector('.slider--deselected')).toBeTruthy();
   });
 });
