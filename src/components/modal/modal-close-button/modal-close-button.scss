@@ -1,0 +1,13 @@
+.modal__close__button-icon {  
+  opacity: 0;
+  visibility: hidden;
+  color: $color-neutral-dark-rooftop;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 16px;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+}

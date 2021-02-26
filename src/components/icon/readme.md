@@ -36,6 +36,7 @@
  - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
  - [bds-menu-list-item](../menu-list-item)
+ - [bds-modal-close-button](../modal/modal-close-button)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
  - [bds-step](../stepper/step)
@@ -56,6 +57,7 @@ graph TD;
   bds-input-password --> bds-icon
   bds-input-phone-number --> bds-icon
   bds-menu-list-item --> bds-icon
+  bds-modal-close-button --> bds-icon
   bds-select --> bds-icon
   bds-select-chips --> bds-icon
   bds-step --> bds-icon

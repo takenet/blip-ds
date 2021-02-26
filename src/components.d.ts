@@ -615,6 +615,25 @@ export namespace Components {
          */
         "icon": string;
     }
+    interface BdsModal {
+        /**
+          * Used to open/close the modal
+         */
+        "closeButton"?: boolean;
+        /**
+          * Used to open/close the modal
+         */
+        "open"?: boolean;
+        /**
+          * Used to show or hide close button
+         */
+        "toggle": () => Promise<void>;
+    }
+    interface BdsModalButtons {
+    }
+    interface BdsModalCloseButton {
+        "active"?: boolean;
+    }
     interface BdsPaper {
         /**
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
@@ -1038,6 +1057,24 @@ declare global {
         prototype: HTMLBdsMenuListItemElement;
         new (): HTMLBdsMenuListItemElement;
     };
+    interface HTMLBdsModalElement extends Components.BdsModal, HTMLStencilElement {
+    }
+    var HTMLBdsModalElement: {
+        prototype: HTMLBdsModalElement;
+        new (): HTMLBdsModalElement;
+    };
+    interface HTMLBdsModalButtonsElement extends Components.BdsModalButtons, HTMLStencilElement {
+    }
+    var HTMLBdsModalButtonsElement: {
+        prototype: HTMLBdsModalButtonsElement;
+        new (): HTMLBdsModalButtonsElement;
+    };
+    interface HTMLBdsModalCloseButtonElement extends Components.BdsModalCloseButton, HTMLStencilElement {
+    }
+    var HTMLBdsModalCloseButtonElement: {
+        prototype: HTMLBdsModalCloseButtonElement;
+        new (): HTMLBdsModalCloseButtonElement;
+    };
     interface HTMLBdsPaperElement extends Components.BdsPaper, HTMLStencilElement {
     }
     var HTMLBdsPaperElement: {
@@ -1134,6 +1171,9 @@ declare global {
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
+        "bds-modal": HTMLBdsModalElement;
+        "bds-modal-buttons": HTMLBdsModalButtonsElement;
+        "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-select": HTMLBdsSelectElement;
@@ -1775,6 +1815,21 @@ declare namespace LocalJSX {
          */
         "icon": string;
     }
+    interface BdsModal {
+        /**
+          * Used to open/close the modal
+         */
+        "closeButton"?: boolean;
+        /**
+          * Used to open/close the modal
+         */
+        "open"?: boolean;
+    }
+    interface BdsModalButtons {
+    }
+    interface BdsModalCloseButton {
+        "active"?: boolean;
+    }
     interface BdsPaper {
         /**
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
@@ -2086,6 +2141,9 @@ declare namespace LocalJSX {
         "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
+        "bds-modal": BdsModal;
+        "bds-modal-buttons": BdsModalButtons;
+        "bds-modal-close-button": BdsModalCloseButton;
         "bds-paper": BdsPaper;
         "bds-radio": BdsRadio;
         "bds-select": BdsSelect;
@@ -2127,6 +2185,9 @@ declare module "@stencil/core" {
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
+            "bds-modal": LocalJSX.BdsModal & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
+            "bds-modal-buttons": LocalJSX.BdsModalButtons & JSXBase.HTMLAttributes<HTMLBdsModalButtonsElement>;
+            "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
