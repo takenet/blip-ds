@@ -55,8 +55,8 @@ describe('bds-switch', () => {
 
     expect(page.root.shadowRoot.querySelector('.switch')).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('.switch--size-standard')).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('checked')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('disabled')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.switch')).not.toHaveProperty('checked');
+    expect(page.root.shadowRoot.querySelector('.switch')).not.toHaveProperty('disabled');
   });
 
   it('should render the size passed by prop', async () => {
@@ -64,8 +64,8 @@ describe('bds-switch', () => {
 
     expect(page.root.shadowRoot.querySelector('.switch')).toBeTruthy();
     expect(page.root.shadowRoot.querySelector('.switch--size-short')).toBeTruthy();
-    expect(page.root.shadowRoot.querySelector('checked')).toBeFalsy();
-    expect(page.root.shadowRoot.querySelector('disabled')).toBeFalsy();
+    expect(page.root.shadowRoot.querySelector('.switch')).not.toHaveProperty('checked');
+    expect(page.root.shadowRoot.querySelector('.switch')).not.toHaveProperty('disabled');
   });
 
   it('should render the disabled=true passed by prop', async () => {
@@ -99,5 +99,20 @@ describe('bds-switch', () => {
     input.click();
     await page.waitForChanges();
     expect(page.root.shadowRoot.querySelector('.slider--deselected')).toBeTruthy();
+  });
+
+  it('should execute a custom action on button click', async () => {
+    const page = await getPage({ size: null, disabled: false, checked: false, name: null });
+    const switchComponent = page.body.querySelector('bds-switch');
+    const _callback = jest.fn();
+    page.doc.addEventListener('bdsChange', _callback);
+
+    await page.waitForChanges();
+
+    switchComponent.shadowRoot.querySelector('input').click();
+
+    await page.waitForChanges();
+
+    expect(_callback).toHaveBeenCalled();
   });
 });

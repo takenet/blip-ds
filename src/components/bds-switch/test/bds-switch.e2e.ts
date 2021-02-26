@@ -1,43 +1,59 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('switch e2e tests', () => {
-  it('should must disable', async () => {
-    const page = await newE2EPage({
+  let page;
+
+  beforeEach(async () => {
+    page = await newE2EPage({
       html: `<bds-switch></bds-switch>`,
     });
+  });
 
+  it('should be disable', async () => {
     const bdsSwitch = await page.find('bds-switch');
 
-    bdsSwitch.setProperty('disabled', 'true');
+    bdsSwitch.setProperty('disabled', true);
 
     await page.waitForChanges();
 
-    let value = await bdsSwitch.getProperty('disabled');
+    const value = await bdsSwitch.getProperty('disabled');
 
-    expect(value).toBe('true');
+    expect(value).toBe(true);
+  });
 
-    bdsSwitch.setProperty('disabled', 'false');
+  it('should not be disable', async () => {
+    const bdsSwitch = await page.find('bds-switch');
 
-    await page.waitForChanges();
-
-    value = await bdsSwitch.getProperty('disabled');
-
-    expect(value).toBe('false');
-
-    bdsSwitch.setProperty('checked', 'false');
+    bdsSwitch.setProperty('disabled', false);
 
     await page.waitForChanges();
 
-    value = await bdsSwitch.getProperty('checked');
+    const value = await bdsSwitch.getProperty('disabled');
 
-    expect(value).toBe('false');
+    expect(value).toBe(false);
+  });
 
-    bdsSwitch.setProperty('checked', 'true');
+  it('should be checked', async () => {
+    const bdsSwitch = await page.find('bds-switch');
+
+    bdsSwitch.setProperty('checked', true);
 
     await page.waitForChanges();
 
-    value = await bdsSwitch.getProperty('checked');
+    const value = await bdsSwitch.getProperty('checked');
 
-    expect(value).toBe('true');
+    expect(value).toBe(true);
+  });
+
+  it('should not be checked', async () => {
+    const bdsSwitch = await page.find('bds-switch');
+
+    bdsSwitch.setProperty('checked', false);
+
+    await page.waitForChanges();
+
+    const value = await bdsSwitch.getProperty('checked');
+
+    expect(value).toBe(false);
   });
 });
