@@ -16,21 +16,13 @@ export class BdsModal implements ComponentInterface {
   public open?: boolean = false;
 
   /**
-   * Used to open/close the modal
+   * Used to hide or show the close button
    */
   @Prop({
     mutable: true,
     reflect: true,
   })
   public closeButton?: boolean = true;
-
-  /**
-   * Used to show or hide close button
-   */
-  @Prop({
-    mutable: true,
-    reflect: true,
-  })
 
   /**
    * Can be used outside to open/close the modal

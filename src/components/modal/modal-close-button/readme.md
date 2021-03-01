@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default |
-| -------- | --------- | ----------- | --------- | ------- |
-| `active` | `active`  |             | `boolean` | `true`  |
+| Property | Attribute | Description                           | Type      | Default |
+| -------- | --------- | ------------------------------------- | --------- | ------- |
+| `active` | `active`  | Used to hide or show the close button | `boolean` | `true`  |
 
 
 ## Dependencies

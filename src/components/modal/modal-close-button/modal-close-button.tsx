@@ -6,6 +6,9 @@ import { Component, ComponentInterface, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class BdsModalCloseButton implements ComponentInterface {
+  /**
+   * Used to hide or show the close button
+   */
   @Prop({
     mutable: true,
     reflect: true,

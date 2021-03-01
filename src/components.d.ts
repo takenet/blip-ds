@@ -617,7 +617,7 @@ export namespace Components {
     }
     interface BdsModal {
         /**
-          * Used to open/close the modal
+          * Used to hide or show the close button
          */
         "closeButton"?: boolean;
         /**
@@ -625,13 +625,16 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * Used to show or hide close button
+          * Can be used outside to open/close the modal
          */
         "toggle": () => Promise<void>;
     }
     interface BdsModalAction {
     }
     interface BdsModalCloseButton {
+        /**
+          * Used to hide or show the close button
+         */
         "active"?: boolean;
     }
     interface BdsPaper {
@@ -1817,7 +1820,7 @@ declare namespace LocalJSX {
     }
     interface BdsModal {
         /**
-          * Used to open/close the modal
+          * Used to hide or show the close button
          */
         "closeButton"?: boolean;
         /**
@@ -1828,6 +1831,9 @@ declare namespace LocalJSX {
     interface BdsModalAction {
     }
     interface BdsModalCloseButton {
+        /**
+          * Used to hide or show the close button
+         */
         "active"?: boolean;
     }
     interface BdsPaper {

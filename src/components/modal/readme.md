@@ -7,17 +7,17 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                  | Type      | Default |
-| ------------- | -------------- | ---------------------------- | --------- | ------- |
-| `closeButton` | `close-button` | Used to open/close the modal | `boolean` | `true`  |
-| `open`        | `open`         | Used to open/close the modal | `boolean` | `false` |
+| Property      | Attribute      | Description                           | Type      | Default |
+| ------------- | -------------- | ------------------------------------- | --------- | ------- |
+| `closeButton` | `close-button` | Used to hide or show the close button | `boolean` | `true`  |
+| `open`        | `open`         | Used to open/close the modal          | `boolean` | `false` |
 
 
 ## Methods
 
 ### `toggle() => Promise<void>`
 
-Used to show or hide close button
+Can be used outside to open/close the modal
 
 #### Returns
 
