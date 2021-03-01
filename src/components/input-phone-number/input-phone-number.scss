@@ -16,6 +16,12 @@ $select-options-max-height: 250px;
   outline: none;
   min-width: 200px;
 
+  bds-input {
+    &::part(input-container) {
+      position: relative;
+    }
+  }
+
   &__icon {
     bds-icon:first-child {
       margin-right: 8px;
