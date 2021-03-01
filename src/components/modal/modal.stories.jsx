@@ -13,7 +13,7 @@ export default {
 
 export const defaultModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} closeButton={boolean('closeButton', false)}>
+    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', false)}>
       <div style={{ display: 'flex', alignItems: 'center', height: '343px' }}>
         <div style={{paddingRight: '20px'}}>
           <img src="https://picsum.photos/200/210?random=2"/>
