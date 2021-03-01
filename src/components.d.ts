@@ -1824,6 +1824,10 @@ declare namespace LocalJSX {
          */
         "closeButton"?: boolean;
         /**
+          * Emitted when modal status has changed.
+         */
+        "onBdsModalChanged"?: (event: CustomEvent<any>) => void;
+        /**
           * Used to open/close the modal
          */
         "open"?: boolean;

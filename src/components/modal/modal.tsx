@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Method, Event, EventEmitter, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-modal',
@@ -24,16 +24,29 @@ export class BdsModal implements ComponentInterface {
   })
   public closeButton?: boolean = true;
 
+  
+  /**
+   * Emitted when modal status has changed.
+   */
+  @Event() bdsModalChanged!: EventEmitter;
+
   /**
    * Can be used outside to open/close the modal
    */
   @Method()
   async toggle() {
     this.open = !this.open;
+
+    if (this.open) {
+      this.bdsModalChanged.emit({ modalStatus: 'opened' });
+    } else {
+      this.bdsModalChanged.emit({ modalStatus: 'closed' });
+    }
   }
 
   private handleMouseClick = (): void => {
     this.open = false;
+    this.bdsModalChanged.emit({ modalStatus: 'closed' });
   };
 
   render() {

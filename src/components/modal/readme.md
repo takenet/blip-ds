@@ -13,6 +13,13 @@
 | `open`        | `open`         | Used to open/close the modal          | `boolean` | `false` |
 
 
+## Events
+
+| Event             | Description                            | Type               |
+| ----------------- | -------------------------------------- | ------------------ |
+| `bdsModalChanged` | Emitted when modal status has changed. | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `toggle() => Promise<void>`
