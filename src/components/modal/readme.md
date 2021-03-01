@@ -37,13 +37,12 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [bds-modal-close-button](modal-close-button)
+- [bds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-modal --> bds-modal-close-button
-  bds-modal-close-button --> bds-icon
+  bds-modal --> bds-icon
   style bds-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

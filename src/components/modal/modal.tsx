@@ -57,10 +57,10 @@ export class BdsModal implements ComponentInterface {
         }}
       >
         <div class="modal">
-          <div class="modal__container">
-            <bds-modal-close-button active={this.closeButton} onClick={this.handleMouseClick}></bds-modal-close-button>
-            <slot></slot>
-          </div>
+          {this.closeButton && (
+            <bds-icon size="medium" class="close-button" name="close" onClick={this.handleMouseClick} />
+          )}
+          <slot></slot>
         </div>
       </div>
     );
