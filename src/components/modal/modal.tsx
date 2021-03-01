@@ -24,7 +24,6 @@ export class BdsModal implements ComponentInterface {
   })
   public closeButton?: boolean = true;
 
-  
   /**
    * Emitted when modal status has changed.
    */
