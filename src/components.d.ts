@@ -629,7 +629,7 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
-    interface BdsModalButtons {
+    interface BdsModalAction {
     }
     interface BdsModalCloseButton {
         "active"?: boolean;
@@ -1063,11 +1063,11 @@ declare global {
         prototype: HTMLBdsModalElement;
         new (): HTMLBdsModalElement;
     };
-    interface HTMLBdsModalButtonsElement extends Components.BdsModalButtons, HTMLStencilElement {
+    interface HTMLBdsModalActionElement extends Components.BdsModalAction, HTMLStencilElement {
     }
-    var HTMLBdsModalButtonsElement: {
-        prototype: HTMLBdsModalButtonsElement;
-        new (): HTMLBdsModalButtonsElement;
+    var HTMLBdsModalActionElement: {
+        prototype: HTMLBdsModalActionElement;
+        new (): HTMLBdsModalActionElement;
     };
     interface HTMLBdsModalCloseButtonElement extends Components.BdsModalCloseButton, HTMLStencilElement {
     }
@@ -1172,7 +1172,7 @@ declare global {
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
         "bds-modal": HTMLBdsModalElement;
-        "bds-modal-buttons": HTMLBdsModalButtonsElement;
+        "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-radio": HTMLBdsRadioElement;
@@ -1825,7 +1825,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
     }
-    interface BdsModalButtons {
+    interface BdsModalAction {
     }
     interface BdsModalCloseButton {
         "active"?: boolean;
@@ -2142,7 +2142,7 @@ declare namespace LocalJSX {
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
         "bds-modal": BdsModal;
-        "bds-modal-buttons": BdsModalButtons;
+        "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-paper": BdsPaper;
         "bds-radio": BdsRadio;
@@ -2186,7 +2186,7 @@ declare module "@stencil/core" {
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
             "bds-modal": LocalJSX.BdsModal & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
-            "bds-modal-buttons": LocalJSX.BdsModalButtons & JSXBase.HTMLAttributes<HTMLBdsModalButtonsElement>;
+            "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;

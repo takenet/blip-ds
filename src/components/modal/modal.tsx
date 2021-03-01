@@ -15,7 +15,7 @@ export class BdsModal implements ComponentInterface {
   })
   public open?: boolean = false;
 
-    /**
+  /**
    * Used to open/close the modal
    */
   @Prop({
@@ -53,10 +53,7 @@ export class BdsModal implements ComponentInterface {
         }}
       >
         <div class="modal">
-          <bds-modal-close-button 
-            active={this.closeButton}
-            onClick={this.handleMouseClick}
-          ></bds-modal-close-button>
+          <bds-modal-close-button active={this.closeButton} onClick={this.handleMouseClick}></bds-modal-close-button>
           <slot></slot>
         </div>
       </div>

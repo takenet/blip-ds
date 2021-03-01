@@ -2,7 +2,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { BdsModalCloseButton } from './modal-close-button';
 
 describe('bds-modal-close-button', () => {
-  const variantMock = 'warning';
   let page;
   beforeEach(async () => {
     page = await newSpecPage({
@@ -27,5 +26,4 @@ describe('bds-modal-close-button', () => {
     expect(page.root.shadowRoot.querySelector('.modal__close__button-icon')).toBeTruthy();
     expect(page.root.querySelector('.modal__close__button-icon')).toBeFalsy();
   });
-
 });

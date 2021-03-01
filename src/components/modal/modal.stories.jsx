@@ -13,7 +13,7 @@ export default {
 
 export const defaultModal = () => (
   <>
-    <bds-modal open={boolean('open', true)}>
+    <bds-modal open={boolean('open', true)} closeButton={boolean('closeButton', false)}>
       <div style={{ display: 'flex', alignItems: 'center', height: '343px' }}>
         <div style={{paddingRight: '20px'}}>
           <img src="https://picsum.photos/200/210?random=2"/>
@@ -32,10 +32,10 @@ export const defaultModal = () => (
         Em caso de dúvidas acesse nosso help center.
         </bds-typo>
       </div>
-      <bds-modal-buttons>
+      <bds-modal-action>
         <bds-button icon="video" variant="secondary">Tutorial</bds-button>
         <bds-button>Ok, entendi</bds-button>
-      </bds-modal-buttons>
+      </bds-modal-action>
     </bds-modal>
   </>
 );

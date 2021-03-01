@@ -6,7 +6,6 @@ import { Component, ComponentInterface, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class BdsModalCloseButton implements ComponentInterface {
-
   @Prop({
     mutable: true,
     reflect: true,
@@ -15,12 +14,13 @@ export class BdsModalCloseButton implements ComponentInterface {
 
   render() {
     return (
-      <div 
+      <div
         class={{
           'modal__close__button-icon': true,
           'modal__close__button-icon--active': this.active,
-        }}>
-          <bds-icon size="medium" name='close'></bds-icon>
+        }}
+      >
+        <bds-icon size="medium" name="close"></bds-icon>
       </div>
     );
   }

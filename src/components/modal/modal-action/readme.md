@@ -1,4 +1,4 @@
-# bds-buttons
+# bds-modal-action
 
 
 
