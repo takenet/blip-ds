@@ -17,18 +17,21 @@
     top: 280px;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 592px;
-    height: 368px;
+    width: 656px;
+    height: 432px;
     border-radius: 8px;
     background: $color-neutral-light-snow;
     box-shadow: $shadow-box;
     overflow: hidden;
     position: relative;
-    padding: 32px;
   }
 
   &--open {
     opacity: 1;
     visibility: visible;
   }
+}
+
+.modal__container {
+  padding: 32px;
 }

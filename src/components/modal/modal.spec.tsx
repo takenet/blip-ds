@@ -16,8 +16,10 @@ describe('bds-modal', () => {
         <mock:shadow-root>
         <div class="modal__dialog">
           <div class="modal">
-            <bds-modal-close-button></bds-modal-close-button>
-            <slot />
+            <div class="modal__container">
+              <bds-modal-close-button></bds-modal-close-button>
+              <slot />
+            </div>
           </div>
         </div>
         </mock:shadow-root>
