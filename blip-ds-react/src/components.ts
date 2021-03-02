@@ -35,6 +35,7 @@ export const BdsModalAction = /*@__PURE__*/createReactComponent<JSX.BdsModalActi
 export const BdsModalCloseButton = /*@__PURE__*/createReactComponent<JSX.BdsModalCloseButton, HTMLBdsModalCloseButtonElement>('bds-modal-close-button');
 export const BdsPaper = /*@__PURE__*/createReactComponent<JSX.BdsPaper, HTMLBdsPaperElement>('bds-paper');
 export const BdsRadio = /*@__PURE__*/createReactComponent<JSX.BdsRadio, HTMLBdsRadioElement>('bds-radio');
+export const BdsRadioGroup = /*@__PURE__*/createReactComponent<JSX.BdsRadioGroup, HTMLBdsRadioGroupElement>('bds-radio-group');
 export const BdsSelect = /*@__PURE__*/createReactComponent<JSX.BdsSelect, HTMLBdsSelectElement>('bds-select');
 export const BdsSelectChips = /*@__PURE__*/createReactComponent<JSX.BdsSelectChips, HTMLBdsSelectChipsElement>('bds-select-chips');
 export const BdsSelectOption = /*@__PURE__*/createReactComponent<JSX.BdsSelectOption, HTMLBdsSelectOptionElement>('bds-select-option');
