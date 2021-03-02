@@ -11,21 +11,27 @@
   left: 0;
   transition: opacity 0.3s ease-in-out;
   z-index: $zindex-modal-overlay;
+  display: flex;
 
   .modal {
-    position: absolute;
-    top: 280px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 656px;
-    height: 432px;
+    position: relative;
+    margin: auto;
+    width: 592px;
+    height: 368px;
     border-radius: 8px;
     background: $color-neutral-light-snow;
     box-shadow: $shadow-box;
     overflow: hidden;
-    position: relative;
     padding: 32px;
-    padding: 32px;
+    display: flex;
+    flex-direction: column;
+
+    .close-button {
+      color: $color-neutral-dark-rooftop;
+      align-self: flex-end;
+      padding-bottom: 16px;
+    }
+
   }
 
   &--open {

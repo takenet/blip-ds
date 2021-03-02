@@ -16,7 +16,25 @@ describe('bds-modal', () => {
         <mock:shadow-root>
         <div class="modal__dialog">
           <div class="modal">
-            <bds-modal-close-button></bds-modal-close-button>
+            <slot />
+          </div>
+        </div>
+        </mock:shadow-root>
+      </bds-modal>
+    `);
+  });
+
+  it('should render with close button', async () => {
+    page = await newSpecPage({
+      components: [BdsModal],
+      html: `<bds-modal close-button="true"></bds-modal>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <bds-modal close-button>
+        <mock:shadow-root>
+        <div class="modal__dialog">
+          <div class="modal">
+            <bds-icon class="close-button" name="close" size="medium"></bds-icon>
             <slot />
           </div>
         </div>

@@ -14,10 +14,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-modal](..)
-
 ### Depends on
 
 - [bds-icon](../../icon)
@@ -26,7 +22,6 @@
 ```mermaid
 graph TD;
   bds-modal-close-button --> bds-icon
-  bds-modal --> bds-modal-close-button
   style bds-modal-close-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
