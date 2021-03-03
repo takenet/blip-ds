@@ -1,5 +1,7 @@
 import { Component, Prop, State, Event, EventEmitter, Element, h, Host } from '@stencil/core';
 
+export type FontSizeInputEditable = 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+export type ExpandInputEditable = 'exp-0' | 'exp-10' | 'exp-20' | 'exp-30' | 'exp-40' | 'exp-50' | 'exp-60' | 'exp-70' | 'exp-80' | 'exp-90' | 'exp-100';
 export interface InputEditableEventDetail {
   value: string;
   oldValue: string;
@@ -12,6 +14,18 @@ export interface InputEditableEventDetail {
 })
 export class InputEditable {
   @Element() el!: HTMLBdsInputEditableElement;
+
+   /**
+   * Variant. Entered as one of the font size variant. Can be one of:
+   * 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+   */
+  @Prop() variant?: FontSizeInputEditable = 'fs-24';
+
+  /**
+   * Defines whether the input will expand.
+   * 'exp-0' | 'exp-10' | 'exp-20' | 'exp-30' | 'exp-40' | 'exp-50' | 'exp-60' | 'exp-70' | 'exp-80' | 'exp-90' | 'exp-100';
+   */
+  @Prop() expand?:ExpandInputEditable = 'exp-0';
 
   /**
    * Emitted when input text confirm.
@@ -101,52 +115,53 @@ export class InputEditable {
   };
 
   render() {
+  
     return (
       <Host>
-        <div class="input__editable">
-          <div
-            class={{ 'input__editable--static': true, 'input__editable--hidden': this.isEditing }}
-            onClick={this.handleEditing}
+          <div class="input__editable">
+          <div class={{ 'input__editable--static': true, 
+                        'input__editable--hidden': this.isEditing }}
+               onClick={this.handleEditing}
           >
             <bds-typo
               tag="span"
               part="input__editable--static__typo"
               class="input__editable--static__typo"
-              variant="fs-24"
+              variant={this.variant}
             >
               {this.value}
             </bds-typo>
-            <bds-icon key="edit-icon" class="input__editable--static__icon" name="edit"></bds-icon>
+            <bds-icon key="edit-icon" 
+                      class="input__editable--static__icon" 
+                      name="edit"
+            ></bds-icon>
           </div>
-          <div class={{ 'input__editable--active': true, 'input__editable--hidden': !this.isEditing }}>
-            <bds-input
-              type="text"
-              input-name={this.inputName}
-              value={this.value}
-              minlength={this.minlength}
-              minlengthErrorMessage={this.minlengthErrorMessage}
-              maxlength={this.maxlength}
-              required={true}
-              required-error-message={this.requiredErrorMessage}
-              error-message={this.errorMessage}
-              onBdsChange={this.onInputChange}
-              danger={this.danger}
-              helperMessage={this.helperMessage}
-            ></bds-input>
+          <div class={{ 'input__editable--active':true,
+                        'input__editable--hidden': !this.isEditing }}>
+            <bds-input class={{[`${this.variant} ${this.expand}`]:true,}}
+                       type="text"
+                       input-name={this.inputName}
+                       value={this.value}
+                       minlength={this.minlength}
+                       minlengthErrorMessage={this.minlengthErrorMessage}
+                       maxlength={this.maxlength}
+                       required={true}
+                       required-error-message={this.requiredErrorMessage}
+                       error-message={this.errorMessage}
+                       onBdsChange={this.onInputChange}
+                       danger={this.danger}
+                       helperMessage={this.helperMessage}>
+            </bds-input>
             <div class="input__editable--active__icon">
-              <bds-icon
-                key="error-icon"
-                class="input__editable--active__icon--error"
-                theme="solid"
-                name="error"
-                onClick={this.handleEditing}
+              <bds-icon key="error-icon"
+                        class="input__editable--active__icon--error"
+                        theme="solid"
+                        name="error"
+                        onClick={this.handleEditing}
               ></bds-icon>
-              <bds-icon
-                key="checkball-icon"
-                class={{
-                  'input__editable--active__icon--checkball': true,
-                  'input__editable--active__icon--checkball--error': !this.isValid,
-                }}
+              <bds-icon key="checkball-icon"
+                        class={{ 'input__editable--active__icon--checkball': true,
+                                 'input__editable--active__icon--checkball--error': !this.isValid,}}
                 theme="solid"
                 name="checkball"
                 onClick={this.handleSaveText}

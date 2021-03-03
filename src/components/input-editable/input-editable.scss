@@ -1,3 +1,82 @@
+@import 'resets';
+
+$exp_0: 140px;
+$exp_10:10%;
+$exp_20:20%;
+$exp_30:30%;
+$exp_40:40%;
+$exp_50:50%;
+$exp_60:60%;
+$exp_70:70%;
+$exp_80:80%;
+$exp_90:90%;
+$exp_100:100%;
+
+@mixin part_input_font_size($value) {
+  font-size: $value; 
+  line-height: 0px;
+}
+@mixin part_input {
+  &.fs-12::part(input){
+    @include part_input_font_size($fs-12);
+  }
+  &.fs-12::part(input){
+    @include part_input_font_size($fs-12);
+  }
+  &.fs-14::part(input){
+    @include part_input_font_size($fs-14);
+  }
+  &.fs-16::part(input){
+    @include part_input_font_size($fs-16);
+  }
+  &.fs-20::part(input){
+    @include part_input_font_size($fs-20);
+  }
+  &.fs-24::part(input){
+    @include part_input_font_size($fs-24);
+  }
+  &.fs-32::part(input){
+    @include part_input_font_size($fs-32);
+  }
+  &.fs-40::part(input){
+    @include part_input_font_size($fs-40);
+  }
+}
+@mixin input_max_width() {
+  &.exp-0{
+    max-width: $exp_0;
+  }
+  &.exp-10{
+    max-width: $exp_10;
+  }
+  &.exp-20{
+    max-width: $exp_20;
+  }
+  &.exp-30{
+    max-width: $exp_30;
+  }
+  &.exp-40{
+    max-width: $exp_40;
+  }
+  &.exp-50{
+    max-width: $exp_50;
+  }
+  &.exp-60{
+    max-width: $exp_60;
+  }
+  &.exp-70{
+    max-width: $exp_70;
+  }
+  &.exp-80{
+    max-width: $exp_80;
+  }
+  &.exp-90{
+    max-width: $exp_90;
+  }
+  &.exp-100{
+    max-width: $exp_100;
+  }
+}
 .input__editable {
   display: table;
 
@@ -36,24 +115,23 @@
   &--active {
     display: flex;
     align-items: flex-start;
-
+    
     bds-input {
       min-width: 120px;
-      max-width: 140px;
       margin-right: 4px;
-
-      &::part(input) {
-        font-size: $fs-24;
-        line-height: 0px;
-      }
+     
+      @include input_max_width();
+          
+      @include part_input();
 
       &::part(input-container) {
         padding: 4px 4px 5px 12px;
       }
-
+  
       &::part(input__message) {
         min-width: 180px;
       }
+        
     }
 
     bds-icon {
