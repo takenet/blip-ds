@@ -15,7 +15,7 @@ import { CounterTextRule } from "./components/counter-text/counter-text-interfac
 import { IconSize, IconTheme, IconType } from "./components/icon/icon-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
-import { InputEditableEventDetail } from "./components/input-editable/input-editable";
+import { ExpandInputEditable, FontSizeInputEditable, InputEditableEventDetail } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
@@ -464,6 +464,10 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Defines whether the input will expand. 'exp-0' | 'exp-10' | 'exp-20' | 'exp-30' | 'exp-40' | 'exp-50' | 'exp-60' | 'exp-70' | 'exp-80' | 'exp-90' | 'exp-100';
+         */
+        "expand"?: ExpandInputEditable;
+        /**
           * Indicated to pass a help to the user in complex filling.
          */
         "helperMessage"?: string;
@@ -491,6 +495,10 @@ export namespace Components {
           * The value of the input.
          */
         "value"?: string | null;
+        /**
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+         */
+        "variant"?: FontSizeInputEditable;
     }
     interface BdsInputPassword {
         /**
@@ -1678,6 +1686,10 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
+          * Defines whether the input will expand. 'exp-0' | 'exp-10' | 'exp-20' | 'exp-30' | 'exp-40' | 'exp-50' | 'exp-60' | 'exp-70' | 'exp-80' | 'exp-90' | 'exp-100';
+         */
+        "expand"?: ExpandInputEditable;
+        /**
           * Indicated to pass a help to the user in complex filling.
          */
         "helperMessage"?: string;
@@ -1709,6 +1721,10 @@ declare namespace LocalJSX {
           * The value of the input.
          */
         "value"?: string | null;
+        /**
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+         */
+        "variant"?: FontSizeInputEditable;
     }
     interface BdsInputPassword {
         /**
