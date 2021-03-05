@@ -1,6 +1,6 @@
 import { Component, Prop, State, Event, EventEmitter, Element, h, Host } from '@stencil/core';
 
-export type FontSizeInputEditable = 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+export type FontSizeInputEditable = 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
 export type ExpandInputEditable = 'exp-0' | 'exp-10' | 'exp-20' | 'exp-30' | 'exp-40' | 'exp-50' | 'exp-60' | 'exp-70' | 'exp-80' | 'exp-90' | 'exp-100';
 export interface InputEditableEventDetail {
   value: string;
@@ -17,7 +17,7 @@ export class InputEditable {
 
    /**
    * Variant. Entered as one of the font size variant. Can be one of:
-   * 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+   * 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
    */
   @Prop() variant?: FontSizeInputEditable = 'fs-24';
 
@@ -115,7 +115,6 @@ export class InputEditable {
   };
 
   render() {
-  
     return (
       <Host>
           <div class="input__editable">

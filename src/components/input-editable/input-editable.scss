@@ -1,31 +1,11 @@
 @import 'resets';
-
-$exp_0: 140px;
-$exp_10:10%;
-$exp_20:20%;
-$exp_30:30%;
-$exp_40:40%;
-$exp_50:50%;
-$exp_60:60%;
-$exp_70:70%;
-$exp_80:80%;
-$exp_90:90%;
-$exp_100:100%;
+@import 'expands';
 
 @mixin part_input_font_size($value) {
   font-size: $value; 
   line-height: 0px;
 }
 @mixin part_input {
-  &.fs-12::part(input){
-    @include part_input_font_size($fs-12);
-  }
-  &.fs-12::part(input){
-    @include part_input_font_size($fs-12);
-  }
-  &.fs-14::part(input){
-    @include part_input_font_size($fs-14);
-  }
   &.fs-16::part(input){
     @include part_input_font_size($fs-16);
   }
@@ -77,8 +57,9 @@ $exp_100:100%;
     max-width: $exp_100;
   }
 }
+
 .input__editable {
-  display: table;
+  display: block;
 
   &--static {
     display: flex;
@@ -141,7 +122,7 @@ $exp_100:100%;
     &__icon {
       display: flex;
       align-items: center;
-      height: 40px;
+      margin: auto 0;
 
       &--error {
         color: $color-extend-reds-delete;

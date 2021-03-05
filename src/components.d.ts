@@ -496,7 +496,7 @@ export namespace Components {
          */
         "value"?: string | null;
         /**
-          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
          */
         "variant"?: FontSizeInputEditable;
     }
@@ -1722,7 +1722,7 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
         /**
-          * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' | 'fs-12' | 'fs-14' | 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+          * Variant. Entered as one of the font size variant. Can be one of: 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
          */
         "variant"?: FontSizeInputEditable;
     }
