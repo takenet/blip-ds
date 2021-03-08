@@ -113,23 +113,23 @@ export class InputEditable {
     }
   };
   getFontSizeClass(): FontSize {
-    if (this.size == 'short'){
+    if (this.size == 'short') {
       return 'fs-16';
-    }else if (this.size == 'standard'){
+    } else if (this.size == 'standard') {
       return 'fs-24';
-    }else if (this.size == 'tall') {
+    } else if (this.size == 'tall') {
       return 'fs-40';
-    }else{ 
+    } else {
       return 'fs-24';
     }
   }
   private getExpand = (): string => {
     if (this.expand) {
       return 'expanded';
-    }else{
-      return 'fixed'
+    } else {
+      return 'fixed';
     }
-  }
+  };
   render() {
     const variant = this.getFontSizeClass();
     const inputExpand = this.getExpand();
@@ -152,7 +152,7 @@ export class InputEditable {
           </div>
           <div class={{ 'input__editable--active': true, 'input__editable--hidden': !this.isEditing }}>
             <bds-input
-              class={{ [inputExpand]: true , [this.size]: true}}
+              class={{ [inputExpand]: true, [this.size]: true }}
               type="text"
               input-name={this.inputName}
               value={this.value}
