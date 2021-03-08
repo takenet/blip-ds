@@ -1,7 +1,7 @@
 import { Component, Prop, State, Event, EventEmitter, Element, h, Host } from '@stencil/core';
+import { FontSize } from '../typo/typo';
 
-export type FontSizeInputEditable = 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
-export type ExpandInputEditable = 'exp-0' | 'exp-10' | 'exp-20' | 'exp-30' | 'exp-40' | 'exp-50' | 'exp-60' | 'exp-70' | 'exp-80' | 'exp-90' | 'exp-100';
+export type SizeInputEditable = 'short' | 'standard' | 'tall';
 export interface InputEditableEventDetail {
   value: string;
   oldValue: string;
@@ -15,17 +15,16 @@ export interface InputEditableEventDetail {
 export class InputEditable {
   @Element() el!: HTMLBdsInputEditableElement;
 
-   /**
-   * Variant. Entered as one of the font size variant. Can be one of:
-   * 'fs-16' | 'fs-20' | 'fs-24' | 'fs-32' | 'fs-40';
+  /**
+   * Set the component size. Can be one of:
+   * 'short' | 'standard' | 'tall';
    */
-  @Prop() variant?: FontSizeInputEditable = 'fs-24';
+  @Prop() size?: SizeInputEditable = 'standard';
 
   /**
-   * Defines whether the input will expand.
-   * 'exp-0' | 'exp-10' | 'exp-20' | 'exp-30' | 'exp-40' | 'exp-50' | 'exp-60' | 'exp-70' | 'exp-80' | 'exp-90' | 'exp-100';
+   * Defines whether the component will be expandable
    */
-  @Prop() expand?:ExpandInputEditable = 'exp-0';
+  @Prop() expand?: boolean = false;
 
   /**
    * Emitted when input text confirm.
@@ -113,54 +112,74 @@ export class InputEditable {
       this.toggleEditing();
     }
   };
-
+  getFontSizeClass(): FontSize {
+    if (this.size == 'short'){
+      return 'fs-16';
+    }else if (this.size == 'standard'){
+      return 'fs-24';
+    }else if (this.size == 'tall') {
+      return 'fs-40';
+    }else{ 
+      return 'fs-24';
+    }
+  }
+  private getExpand = (): string => {
+    if (this.expand) {
+      return 'expanded';
+    }else{
+      return 'fixed'
+    }
+  }
   render() {
+    const variant = this.getFontSizeClass();
+    const inputExpand = this.getExpand();
     return (
       <Host>
-          <div class="input__editable">
-          <div class={{ 'input__editable--static': true, 
-                        'input__editable--hidden': this.isEditing }}
-               onClick={this.handleEditing}
+        <div class="input__editable">
+          <div
+            class={{ 'input__editable--static': true, 'input__editable--hidden': this.isEditing }}
+            onClick={this.handleEditing}
           >
             <bds-typo
               tag="span"
               part="input__editable--static__typo"
               class="input__editable--static__typo"
-              variant={this.variant}
+              variant={variant}
             >
               {this.value}
             </bds-typo>
-            <bds-icon key="edit-icon" 
-                      class="input__editable--static__icon" 
-                      name="edit"
-            ></bds-icon>
+            <bds-icon key="edit-icon" class="input__editable--static__icon" name="edit"></bds-icon>
           </div>
-          <div class={{ 'input__editable--active':true,
-                        'input__editable--hidden': !this.isEditing }}>
-            <bds-input class={{[`${this.variant} ${this.expand}`]:true,}}
-                       type="text"
-                       input-name={this.inputName}
-                       value={this.value}
-                       minlength={this.minlength}
-                       minlengthErrorMessage={this.minlengthErrorMessage}
-                       maxlength={this.maxlength}
-                       required={true}
-                       required-error-message={this.requiredErrorMessage}
-                       error-message={this.errorMessage}
-                       onBdsChange={this.onInputChange}
-                       danger={this.danger}
-                       helperMessage={this.helperMessage}>
-            </bds-input>
+          <div class={{ 'input__editable--active': true, 'input__editable--hidden': !this.isEditing }}>
+            <bds-input
+              class={{ [inputExpand]: true , [this.size]: true}}
+              type="text"
+              input-name={this.inputName}
+              value={this.value}
+              minlength={this.minlength}
+              minlengthErrorMessage={this.minlengthErrorMessage}
+              maxlength={this.maxlength}
+              required={true}
+              required-error-message={this.requiredErrorMessage}
+              error-message={this.errorMessage}
+              onBdsChange={this.onInputChange}
+              danger={this.danger}
+              helperMessage={this.helperMessage}
+            ></bds-input>
             <div class="input__editable--active__icon">
-              <bds-icon key="error-icon"
-                        class="input__editable--active__icon--error"
-                        theme="solid"
-                        name="error"
-                        onClick={this.handleEditing}
+              <bds-icon
+                key="error-icon"
+                class="input__editable--active__icon--error"
+                theme="solid"
+                name="error"
+                onClick={this.handleEditing}
               ></bds-icon>
-              <bds-icon key="checkball-icon"
-                        class={{ 'input__editable--active__icon--checkball': true,
-                                 'input__editable--active__icon--checkball--error': !this.isValid,}}
+              <bds-icon
+                key="checkball-icon"
+                class={{
+                  'input__editable--active__icon--checkball': true,
+                  'input__editable--active__icon--checkball--error': !this.isValid,
+                }}
                 theme="solid"
                 name="checkball"
                 onClick={this.handleSaveText}

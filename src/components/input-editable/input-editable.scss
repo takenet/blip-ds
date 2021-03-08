@@ -1,60 +1,34 @@
 @import 'resets';
-@import 'expands';
+
+$input_expanded: 100%;
+$input_fixed: 140px;
 
 @mixin part_input_font_size($value) {
   font-size: $value; 
   line-height: 0px;
 }
+
 @mixin part_input {
-  &.fs-16::part(input){
+  &.short::part(input){
     @include part_input_font_size($fs-16);
   }
-  &.fs-20::part(input){
-    @include part_input_font_size($fs-20);
-  }
-  &.fs-24::part(input){
+  &.standard::part(input){
     @include part_input_font_size($fs-24);
   }
-  &.fs-32::part(input){
-    @include part_input_font_size($fs-32);
-  }
-  &.fs-40::part(input){
+  &.tall::part(input){
     @include part_input_font_size($fs-40);
   }
+  
 }
+
 @mixin input_max_width() {
-  &.exp-0{
-    max-width: $exp_0;
+  
+  &.expanded{
+    max-width: $input_expanded;
   }
-  &.exp-10{
-    max-width: $exp_10;
-  }
-  &.exp-20{
-    max-width: $exp_20;
-  }
-  &.exp-30{
-    max-width: $exp_30;
-  }
-  &.exp-40{
-    max-width: $exp_40;
-  }
-  &.exp-50{
-    max-width: $exp_50;
-  }
-  &.exp-60{
-    max-width: $exp_60;
-  }
-  &.exp-70{
-    max-width: $exp_70;
-  }
-  &.exp-80{
-    max-width: $exp_80;
-  }
-  &.exp-90{
-    max-width: $exp_90;
-  }
-  &.exp-100{
-    max-width: $exp_100;
+
+  &.fixed{
+    max-width: $input_fixed;
   }
 }
 

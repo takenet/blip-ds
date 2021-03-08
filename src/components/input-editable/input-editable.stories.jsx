@@ -30,8 +30,8 @@ export const fontExpandInputEditable = () => (
     <bds-input-editable
       input-name={text('input name', '')}
       value={text('value', 'Storybook')}
-      expand={text('expand', 'exp-50')}
-      variant={text('variant', 'fs-24')}
+      expand={text('expand', false)}
+      size={text('size', 'standard')}
       minlength={number('minlength', '3')}
       minlength-error-message={text('minlength-error-message', 'tamanho menor que o mínimo')}
       required-error-message={text('required-error-message', 'campo não pode ser vazio')}
