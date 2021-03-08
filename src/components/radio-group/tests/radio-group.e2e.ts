@@ -6,11 +6,11 @@ describe('tooltip e2e tests', () => {
   beforeEach(async () => {
     page = await newE2EPage({
       html: `
-      <bds-radio-group>
-      <bds-radio value="radio1"></bds-radio>
-      <bds-radio value="radio2"></bds-radio>
-      <bds-radio value="radio3"></bds-radio>
-    </bds-radio-group>
+        <bds-radio-group>
+            <bds-radio value="radio1"></bds-radio>
+            <bds-radio value="radio2"></bds-radio>
+            <bds-radio value="radio3"></bds-radio>
+        </bds-radio-group>
         `,
     });
   });

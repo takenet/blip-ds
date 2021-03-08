@@ -8,11 +8,11 @@ describe('bds-radio-group', () => {
     return await newSpecPage({
       components: [RadioGroup, Radio],
       html: `
-      <bds-radio-group>
-      <bds-radio value="radio1"></bds-radio>
-      <bds-radio value="radio2"></bds-radio>
-      <bds-radio value="radio3"></bds-radio>
-    </bds-radio-group>`,
+        <bds-radio-group>
+            <bds-radio value="radio1"></bds-radio>
+            <bds-radio value="radio2"></bds-radio>
+            <bds-radio value="radio3"></bds-radio>
+        </bds-radio-group>`,
       supportsShadowDom: false,
       autoApplyChanges: true,
     });
