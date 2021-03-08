@@ -1,5 +1,39 @@
+@import 'resets';
+
+$input_expanded: 100%;
+$input_fixed: 140px;
+
+@mixin part_input_font_size($value) {
+  font-size: $value; 
+  line-height: 0px;
+}
+
+@mixin part_input {
+  &.short::part(input){
+    @include part_input_font_size($fs-16);
+  }
+  &.standard::part(input){
+    @include part_input_font_size($fs-24);
+  }
+  &.tall::part(input){
+    @include part_input_font_size($fs-40);
+  }
+  
+}
+
+@mixin input_max_width() {
+  
+  &.expanded{
+    max-width: $input_expanded;
+  }
+
+  &.fixed{
+    max-width: $input_fixed;
+  }
+}
+
 .input__editable {
-  display: table;
+  display: block;
 
   &--static {
     display: flex;
@@ -36,24 +70,23 @@
   &--active {
     display: flex;
     align-items: flex-start;
-
+    
     bds-input {
       min-width: 120px;
-      max-width: 140px;
       margin-right: 4px;
-
-      &::part(input) {
-        font-size: $fs-24;
-        line-height: 0px;
-      }
+     
+      @include input_max_width();
+          
+      @include part_input();
 
       &::part(input-container) {
         padding: 4px 4px 5px 12px;
       }
-
+  
       &::part(input__message) {
         min-width: 180px;
       }
+        
     }
 
     bds-icon {
@@ -63,7 +96,7 @@
     &__icon {
       display: flex;
       align-items: center;
-      height: 40px;
+      margin: auto 0;
 
       &--error {
         color: $color-extend-reds-delete;

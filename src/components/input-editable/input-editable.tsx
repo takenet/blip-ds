@@ -1,5 +1,7 @@
 import { Component, Prop, State, Event, EventEmitter, Element, h, Host } from '@stencil/core';
+import { FontSize } from '../typo/typo';
 
+export type SizeInputEditable = 'short' | 'standard' | 'tall';
 export interface InputEditableEventDetail {
   value: string;
   oldValue: string;
@@ -12,6 +14,17 @@ export interface InputEditableEventDetail {
 })
 export class InputEditable {
   @Element() el!: HTMLBdsInputEditableElement;
+
+  /**
+   * Set the component size. Can be one of:
+   * 'short' | 'standard' | 'tall';
+   */
+  @Prop() size?: SizeInputEditable = 'standard';
+
+  /**
+   * Defines whether the component will be expandable
+   */
+  @Prop() expand?: boolean = false;
 
   /**
    * Emitted when input text confirm.
@@ -99,8 +112,27 @@ export class InputEditable {
       this.toggleEditing();
     }
   };
-
+  getFontSizeClass(): FontSize {
+    if (this.size == 'short'){
+      return 'fs-16';
+    }else if (this.size == 'standard'){
+      return 'fs-24';
+    }else if (this.size == 'tall') {
+      return 'fs-40';
+    }else{ 
+      return 'fs-24';
+    }
+  }
+  private getExpand = (): string => {
+    if (this.expand) {
+      return 'expanded';
+    }else{
+      return 'fixed'
+    }
+  }
   render() {
+    const variant = this.getFontSizeClass();
+    const inputExpand = this.getExpand();
     return (
       <Host>
         <div class="input__editable">
@@ -112,7 +144,7 @@ export class InputEditable {
               tag="span"
               part="input__editable--static__typo"
               class="input__editable--static__typo"
-              variant="fs-24"
+              variant={variant}
             >
               {this.value}
             </bds-typo>
@@ -120,6 +152,7 @@ export class InputEditable {
           </div>
           <div class={{ 'input__editable--active': true, 'input__editable--hidden': !this.isEditing }}>
             <bds-input
+              class={{ [inputExpand]: true , [this.size]: true}}
               type="text"
               input-name={this.inputName}
               value={this.value}
