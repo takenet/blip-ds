@@ -105,7 +105,7 @@ describe('bds-switch', () => {
     const page = await getPage({ size: null, disabled: false, checked: false, name: null });
     const switchComponent = page.body.querySelector('bds-switch');
     const _callback = jest.fn();
-    page.doc.addEventListener('bdsRadioGroupChange', _callback);
+    page.doc.addEventListener('bdsChange', _callback);
 
     await page.waitForChanges();
 
