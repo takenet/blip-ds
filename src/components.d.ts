@@ -1920,7 +1920,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed due to a click event.
          */
-        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        "onBdsRadioGroupChange"?: (event: CustomEvent<any>) => void;
         /**
           * The value of the selected radio
          */

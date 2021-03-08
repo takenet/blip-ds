@@ -14,13 +14,13 @@ export class RadioGroup implements ComponentInterface {
   /**
    * Emitted when the value has changed due to a click event.
    */
-  @Event() bdsChange: EventEmitter;
+  @Event() bdsRadioGroupChange: EventEmitter;
 
   @Watch('value')
   valueChanged(value: string) {
     this.setSelectedRadio(value);
 
-    this.bdsChange.emit({ value });
+    this.bdsRadioGroupChange.emit({ value });
   }
 
   private handleClick = (ev) => {

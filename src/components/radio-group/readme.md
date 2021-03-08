@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event       | Description                                              | Type               |
-| ----------- | -------------------------------------------------------- | ------------------ |
-| `bdsChange` | Emitted when the value has changed due to a click event. | `CustomEvent<any>` |
+| Event                 | Description                                              | Type               |
+| --------------------- | -------------------------------------------------------- | ------------------ |
+| `bdsRadioGroupChange` | Emitted when the value has changed due to a click event. | `CustomEvent<any>` |
 
 
 ----------------------------------------------
