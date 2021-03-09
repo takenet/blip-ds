@@ -671,6 +671,12 @@ export namespace Components {
         "refer": string;
         "value": string;
     }
+    interface BdsRadioGroup {
+        /**
+          * The value of the selected radio
+         */
+        "value": string;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -1123,6 +1129,12 @@ declare global {
         prototype: HTMLBdsRadioElement;
         new (): HTMLBdsRadioElement;
     };
+    interface HTMLBdsRadioGroupElement extends Components.BdsRadioGroup, HTMLStencilElement {
+    }
+    var HTMLBdsRadioGroupElement: {
+        prototype: HTMLBdsRadioGroupElement;
+        new (): HTMLBdsRadioGroupElement;
+    };
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
     }
     var HTMLBdsSelectElement: {
@@ -1218,6 +1230,7 @@ declare global {
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-radio": HTMLBdsRadioElement;
+        "bds-radio-group": HTMLBdsRadioGroupElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
@@ -1919,6 +1932,16 @@ declare namespace LocalJSX {
         "refer": string;
         "value": string;
     }
+    interface BdsRadioGroup {
+        /**
+          * Emitted when the value has changed due to a click event.
+         */
+        "onBdsRadioGroupChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * The value of the selected radio
+         */
+        "value"?: string;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -2230,6 +2253,7 @@ declare namespace LocalJSX {
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-paper": BdsPaper;
         "bds-radio": BdsRadio;
+        "bds-radio-group": BdsRadioGroup;
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
@@ -2275,6 +2299,7 @@ declare module "@stencil/core" {
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
+            "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
