@@ -15,7 +15,7 @@ import { CounterTextRule } from "./components/counter-text/counter-text-interfac
 import { IconSize, IconTheme, IconType } from "./components/icon/icon-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
-import { InputEditableEventDetail } from "./components/input-editable/input-editable";
+import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
@@ -464,6 +464,10 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Defines whether the component will be expandable
+         */
+        "expand"?: boolean;
+        /**
           * Indicated to pass a help to the user in complex filling.
          */
         "helperMessage"?: string;
@@ -487,6 +491,10 @@ export namespace Components {
           * Error message when input is required
          */
         "requiredErrorMessage": string;
+        /**
+          * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
+         */
+        "size"?: SizeInputEditable;
         /**
           * The value of the input.
          */
@@ -1691,6 +1699,10 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
+          * Defines whether the component will be expandable
+         */
+        "expand"?: boolean;
+        /**
           * Indicated to pass a help to the user in complex filling.
          */
         "helperMessage"?: string;
@@ -1718,6 +1730,10 @@ declare namespace LocalJSX {
           * Error message when input is required
          */
         "requiredErrorMessage"?: string;
+        /**
+          * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
+         */
+        "size"?: SizeInputEditable;
         /**
           * The value of the input.
          */
