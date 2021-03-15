@@ -45,5 +45,11 @@ $select-options-max-height: 250px;
       transform: scale(1);
       opacity: 1;
     }
+
+    &--position-top {
+      top: auto;
+      bottom: 100%;
+      transform-origin: bottom left;
+    }
   }
 }

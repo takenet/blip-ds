@@ -1,5 +1,5 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
-import { Option, SelectChangeEventDetail } from '../select-interface';
+import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
 import { Keyboard } from '../../../utils/enums';
 @Component({
   tag: 'bds-select',
@@ -73,6 +73,11 @@ export class Select {
    * Placeholder for native input element.
    */
   @Prop() placeholder?: string = '';
+
+  /**
+   * Set the placement of the options menu. Can be 'bottom' or 'top'.
+   */
+  @Prop() optionsPosition?: SelectOptionsPositionType = 'bottom';
 
   @Watch('value')
   valueChanged(): void {
@@ -231,6 +236,7 @@ export class Select {
         <div
           class={{
             select__options: true,
+            'select__options--position-top': this.optionsPosition === 'top',
             'select__options--open': this.isOpen,
           }}
         >
