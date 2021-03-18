@@ -11,6 +11,7 @@ export default {
   },
 };
 
+
 export const chipDefault = () => {
   const sizeOptions = select('size', ['standard', 'tall']);
   const variantOptions = select('variant', ['default', 'primary']);
@@ -34,4 +35,26 @@ export const chipDefault = () => {
       {slot}
     </bds-chip>
   );
+};
+
+export const chips = () => {
+
+  const defaultButtonStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }
+  
+  const spaceBetween = {
+    margin: '8px'
+  }
+
+  return(
+     <div  style={defaultButtonStyle}>
+      <bds-chip style={spaceBetween} variant="default" >chips default</bds-chip>
+      <bds-chip style={spaceBetween} variant="primary" >chips primary</bds-chip>
+      <bds-chip style={spaceBetween} danger="true" >chips delete</bds-chip>
+      <bds-chip style={spaceBetween} filter="true" >chips filter</bds-chip>
+    </div>
+  )
 };
