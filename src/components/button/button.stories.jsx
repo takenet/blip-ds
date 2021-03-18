@@ -35,20 +35,20 @@ const spaceBetween = {
 export const defaultButton = () => (
   <div style={defaultButtonStyle}>
     <bds-button style={spaceBetween} variant='primary'>Button primary</bds-button>
-    <bds-button style={spaceBetween} variant='secondary'>Text secondary</bds-button>
-    <bds-button style={spaceBetween} variant='tertiary'>Text tertiary</bds-button>
-    <bds-button style={spaceBetween} variant='ghost'>Text ghost</bds-button>
-    <bds-button style={spaceBetween} variant='delete'>Text delete</bds-button>
+    <bds-button style={spaceBetween} variant='secondary'>Button secondary</bds-button>
+    <bds-button style={spaceBetween} variant='tertiary'>Button tertiary</bds-button>
+    <bds-button style={spaceBetween} variant='ghost'>Button ghost</bds-button>
+    <bds-button style={spaceBetween} variant='delete'>Button delete</bds-button>
   </div>
 );
 
 export const disabedButton = () => (
   <div style={defaultButtonStyle}>
     <bds-button style={spaceBetween} variant='primary' disabled>Button primary</bds-button>
-    <bds-button style={spaceBetween} variant='secondary' disabled>Text secondary</bds-button>
-    <bds-button style={spaceBetween} variant='tertiary' disabled>Text tertiary</bds-button>
-    <bds-button style={spaceBetween} variant='ghost' disabled>Text ghost</bds-button>
-    <bds-button style={spaceBetween} variant='delete' disabled>Text delete</bds-button>
+    <bds-button style={spaceBetween} variant='secondary' disabled>Button secondary</bds-button>
+    <bds-button style={spaceBetween} variant='tertiary' disabled>Button tertiary</bds-button>
+    <bds-button style={spaceBetween} variant='ghost' disabled>Button ghost</bds-button>
+    <bds-button style={spaceBetween} variant='delete' disabled>Button delete</bds-button>
   </div>
 );
 
