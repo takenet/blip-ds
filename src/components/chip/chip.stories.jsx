@@ -83,8 +83,6 @@ export const chipsVariant = () => {
      <div  style={defaultButtonStyle}>
       <bds-chip style={spaceBetween} variant="default" >chips default</bds-chip>
       <bds-chip style={spaceBetween} variant="primary" >chips primary</bds-chip>
-      <bds-chip style={spaceBetween} danger="true" >chips delete</bds-chip>
-      <bds-chip style={spaceBetween} filter="true" >chips filter</bds-chip>
     </div>
   )
 };
