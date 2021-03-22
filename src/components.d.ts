@@ -945,6 +945,10 @@ export namespace Components {
          */
         "lineHeight"?: FontLineHeight;
         /**
+          * If true, adds default margin values
+         */
+        "margin"?: boolean;
+        /**
           * Added style no wrap
          */
         "noWrap"?: boolean;
@@ -2213,6 +2217,10 @@ declare namespace LocalJSX {
           * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
          */
         "lineHeight"?: FontLineHeight;
+        /**
+          * If true, adds default margin values
+         */
+        "margin"?: boolean;
         /**
           * Added style no wrap
          */

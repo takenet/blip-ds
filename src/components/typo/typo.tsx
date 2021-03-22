@@ -48,6 +48,11 @@ export class Typo {
   @Prop() paragraph?: boolean = false;
 
   /**
+   * If true, adds default margin values
+   */
+  @Prop() margin?: boolean = true;
+
+  /**
    * Define element tag, must be used for acessibilty
    */
   @Prop() tag?: Tag = 'p';
@@ -60,6 +65,7 @@ export class Typo {
         class={{
           typo: true,
           [`typo__variant--${this.variant}`]: true,
+          [`typo__margin--${this.variant}`]: this.margin,
           'typo--no-wrap': this.noWrap,
           'typo--paragraph': this.paragraph,
           'typo--italic': this.italic,
