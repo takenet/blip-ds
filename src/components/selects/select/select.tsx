@@ -155,6 +155,9 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find((option) => option.value == this.value);
+    if (opt.status || opt.bulkOption) {
+      return opt.value;
+    }
     return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
   };
 
