@@ -39,10 +39,16 @@ export class SelectOption {
    *  Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
    */
   @Prop() slotAlign? = 'center';
+
   /**
    *  If set, a title will be shown under the text
    */
   @Prop() titleText: string;
+
+  /**
+   *  If set, a text will be displayed on the right side of the option label
+   */
+  @Prop() status?: string;
 
   @Event() optionSelected: EventEmitter;
 
@@ -93,16 +99,36 @@ export class SelectOption {
         <div style={{ alignSelf: this.slotAlign }}>
           <slot name="input-left"></slot>
         </div>
-        <div class="select-option__container">
-          <bds-typo class="select-option__container--value" variant="fs-14">
+
+        <div
+          class={{
+            'select-option__container': true,
+            'select-option__container__fill_space': !!this.status,
+          }}
+        >
+          <bds-typo
+            class={{
+              'select-option__container--value': true,
+              'select-option__container__overflow': !!this.status,
+            }}
+            noWrap={!!this.status}
+            variant="fs-14"
+          >
             <bds-typo class="select-option__container--value" variant="fs-16" bold="semi-bold">
               {this.titleText}
             </bds-typo>
             <slot />
           </bds-typo>
-          <bds-typo class="select-option__container--bulk" variant="fs-10">
-            {this.bulkOption}
-          </bds-typo>
+          {this.bulkOption && (
+            <bds-typo class="select-option__container--bulk" variant="fs-10">
+              {this.bulkOption}
+            </bds-typo>
+          )}
+          {this.status && (
+            <bds-typo class="select-option__container--status" noWrap={true} variant="fs-10">
+              {this.status}
+            </bds-typo>
+          )}
         </div>
       </div>
     );

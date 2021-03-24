@@ -781,6 +781,10 @@ export namespace Components {
          */
         "slotAlign"?: string;
         /**
+          * If set, a text will be displayed on the right side of the option label
+         */
+        "status"?: string;
+        /**
           * If set, a title will be shown under the text
          */
         "titleText": string;
@@ -2078,6 +2082,10 @@ declare namespace LocalJSX {
           * Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
          */
         "slotAlign"?: string;
+        /**
+          * If set, a text will be displayed on the right side of the option label
+         */
+        "status"?: string;
         /**
           * If set, a title will be shown under the text
          */
