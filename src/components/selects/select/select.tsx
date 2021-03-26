@@ -156,8 +156,13 @@ export class Select {
   private getText = (): string => {
     const opt = this.childOptions.find((option) => option.value == this.value);
     if (opt?.status || opt?.bulkOption) {
-      const internalOption = this.internalOptions.find((option) => option.value == opt.value);
-      return internalOption.label;
+      if (this.internalOptions) {
+        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
+        if (internalOption) {
+          return internalOption.label;
+        }
+      }
+      return opt.querySelector(`#bds-typo-label-${this.value}`).textContent;
     }
     return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
   };

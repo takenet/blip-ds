@@ -113,6 +113,7 @@ export class SelectOption {
             }}
             noWrap={!!this.status}
             variant="fs-14"
+            id={`bds-typo-label-${this.value}`}
           >
             <bds-typo class="select-option__container--value" variant="fs-16" bold="semi-bold">
               {this.titleText}
