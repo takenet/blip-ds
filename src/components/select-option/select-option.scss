@@ -43,17 +43,28 @@ $select-option-left: 12px;
     align-items: center;
     justify-content: space-between;
 
-    &--bulk {
+    &__fill_space {
+      width: 100%;
+    }
+
+    &--bulk, &--status {
       color: $color-neutral-medium-cloud;
     }
 
+    &__overflow {
+      overflow: hidden;
+      padding-right: 16px;
+    }
+
     &:hover > &--value,
-    &:hover > &--bulk {
+    &:hover > &--bulk,
+    &:hover > &--status {
       color: $color-primary-main;
     }
 
     &:active > &--value,
-    &:active > &--bulk {
+    &:active > &--bulk,
+    &:active > &--status {
       color: $color-primary-main;
     }
   }

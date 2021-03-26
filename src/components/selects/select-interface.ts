@@ -4,6 +4,10 @@ export interface Option {
   value: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   label: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  bulkOption?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  status?: any;
 }
 
 export interface SelectChangeEventDetail {
