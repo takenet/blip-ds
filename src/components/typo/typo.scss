@@ -1,4 +1,4 @@
-@import "fonts";
+@import 'fonts';
 
 .typo {
   margin: 0;
@@ -50,26 +50,40 @@
 
     &--fs-20 {
       font-size: $fs-20;
-      margin-bottom: $title-margin-large;
       line-height: $line-hight-simple;
     }
 
     &--fs-24 {
       font-size: $fs-24;
-      margin-bottom: $title-margin-large;
       line-height: $line-hight-simple;
     }
 
     &--fs-32 {
       font-size: $fs-32;
-      margin-bottom: $title-margin-large;
       line-height: $line-hight-simple;
     }
 
     &--fs-40 {
       font-size: $fs-40;
-      margin-bottom: $title-margin-medium;
       line-height: $line-hight-simple;
+    }
+  }
+
+  &__margin {
+    &--fs-20 {
+      margin-bottom: $title-margin-large;
+    }
+
+    &--fs-24 {
+      margin-bottom: $title-margin-large;
+    }
+
+    &--fs-32 {
+      margin-bottom: $title-margin-large;
+    }
+
+    &--fs-40 {
+      margin-bottom: $title-margin-medium;
     }
   }
 

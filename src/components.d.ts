@@ -781,6 +781,10 @@ export namespace Components {
          */
         "slotAlign"?: string;
         /**
+          * If set, a text will be displayed on the right side of the option label
+         */
+        "status"?: string;
+        /**
           * If set, a title will be shown under the text
          */
         "titleText": string;
@@ -944,6 +948,10 @@ export namespace Components {
           * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
          */
         "lineHeight"?: FontLineHeight;
+        /**
+          * If true, adds default margin values
+         */
+        "margin"?: boolean;
         /**
           * Added style no wrap
          */
@@ -2079,6 +2087,10 @@ declare namespace LocalJSX {
          */
         "slotAlign"?: string;
         /**
+          * If set, a text will be displayed on the right side of the option label
+         */
+        "status"?: string;
+        /**
           * If set, a title will be shown under the text
          */
         "titleText"?: string;
@@ -2213,6 +2225,10 @@ declare namespace LocalJSX {
           * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
          */
         "lineHeight"?: FontLineHeight;
+        /**
+          * If true, adds default margin values
+         */
+        "margin"?: boolean;
         /**
           * Added style no wrap
          */

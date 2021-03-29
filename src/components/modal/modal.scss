@@ -29,7 +29,8 @@
     .close-button {
       color: $color-neutral-dark-rooftop;
       align-self: flex-end;
-      padding-bottom: 16px;
+      margin-bottom: 16px;
+      cursor: pointer;
     }
 
   }

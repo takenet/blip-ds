@@ -37,3 +37,7 @@ export const getIconName = (name: string, theme: IconTheme) => {
 export const getEmojiName = (name: string) => {
   return `asset-emoji-${name}`;
 };
+
+export const getLogoName = (name: string) => {
+  return `asset-logo-${name}`;
+};

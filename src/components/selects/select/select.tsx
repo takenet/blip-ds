@@ -16,6 +16,7 @@ export class Select {
   @State() text? = '';
 
   @State() internalOptions: Option[];
+
   /**
    * The options of the select
    * Should be passed this way:
@@ -23,6 +24,7 @@ export class Select {
    * Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
    */
   @Prop() options?: string | Option[];
+
   /**
    * the value of the select.
    */
@@ -153,6 +155,15 @@ export class Select {
 
   private getText = (): string => {
     const opt = this.childOptions.find((option) => option.value == this.value);
+    if (opt?.status || opt?.bulkOption) {
+      if (this.internalOptions) {
+        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
+        if (internalOption) {
+          return internalOption.label;
+        }
+      }
+      return opt.querySelector(`#bds-typo-label-${this.value}`).textContent;
+    }
     return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
   };
 
@@ -242,7 +253,7 @@ export class Select {
         >
           {this.internalOptions ? (
             this.internalOptions.map((option, idx) => (
-              <bds-select-option value={option.value} key={idx}>
+              <bds-select-option value={option.value} key={idx} bulkOption={option.bulkOption} status={option.status}>
                 {option.label}
               </bds-select-option>
             ))

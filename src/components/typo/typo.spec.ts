@@ -57,4 +57,22 @@ describe('bds-typo', () => {
     expect(page.root.shadowRoot.querySelector('p')).toBeFalsy();
     expect(page.root.shadowRoot.querySelector('h1')).toBeTruthy();
   });
+
+  it('should remove margins', async () => {
+    const page = await newSpecPage({
+      html: `<bds-typo tag="h1" variant="fs-40" margin="false">Test</bds-typo>`,
+      components: [Typo],
+    });
+
+    expect(page.root.shadowRoot.querySelector('h1').classList.contains('typo__margin--fs-40')).toBe(false);
+  });
+
+  it('should not remove margins', async () => {
+    const page = await newSpecPage({
+      html: `<bds-typo tag="h1" variant="fs-40">Test</bds-typo>`,
+      components: [Typo],
+    });
+
+    expect(page.root.shadowRoot.querySelector('h1').classList.contains('typo__margin--fs-40')).toBe(true);
+  });
 });
