@@ -11,4 +11,4 @@ export type IconSize =
 
 export type IconTheme = 'outline' | 'solid';
 
-export type IconType = 'icon' | 'emoji';
+export type IconType = 'icon' | 'emoji' | 'logo';

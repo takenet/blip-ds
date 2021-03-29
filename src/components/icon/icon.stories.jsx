@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 
 import readme from './readme.md';
 
@@ -263,6 +263,10 @@ const emojiNames = [
   'winking-face-with-tongue',
 ];
 
+const logoNames = [
+  'gbm',
+];
+
 const iconStyles = {
   width: '80px',
   height: '64px',
@@ -274,6 +278,17 @@ const iconStyles = {
 };
 
 const emojiStyles = {
+  width: '120px',
+  height: '64px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  padding: '1px',
+  textAlign: 'center',
+};
+
+const logoStyles = {
   width: '120px',
   height: '64px',
   display: 'flex',
@@ -326,6 +341,21 @@ export const emojis = () => {
     story.push(
       <div style={emojiStyles}>
         <bds-icon type="emoji" size={text('size', 'x-large')} name={name}></bds-icon>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={iconWrapperStyles}>{story}</div>;
+};
+
+export const logos = () => {
+  const story = [];
+
+  logoNames.forEach((name) => {
+    story.push(
+      <div style={logoStyles}>
+        <bds-icon type="logo" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );

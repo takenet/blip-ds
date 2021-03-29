@@ -2,8 +2,9 @@
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 import icons from 'blip-tokens/build/json/assets_icons.json';
 import emojis from 'blip-tokens/build/json/assets_emojis.json';
+import logo from 'blip-tokens/build/json/assets_logos.json';
 import { IconSize, IconTheme, IconType } from './icon-interface';
-import { formatSvg, getIconName, getEmojiName } from './utils';
+import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
 
 @Component({
   tag: 'bds-icon',
@@ -132,9 +133,13 @@ export class Icon {
       const key = getIconName(this.name, this.theme);
       svg = atob(icons[key]);
       this.svgContent = formatSvg(svg, this.color);
-    } else {
+    } else if (this.type === 'emoji') {
       const key = getEmojiName(this.name);
       svg = atob(emojis[key]);
+      this.svgContent = formatSvg(svg, this.color, true);
+    } else if (this.type === 'logo') {
+      const key = getLogoName(this.name);
+      svg = atob(logo[key]);
       this.svgContent = formatSvg(svg, this.color, true);
     }
   };
@@ -150,7 +155,11 @@ export class Icon {
       >
         {this.svgContent ? (
           <div
-            class={{ 'icon-inner': this.type === 'icon', 'emoji-inner': this.type === 'emoji' }}
+            class={{
+              'icon-inner': this.type === 'icon',
+              'emoji-inner': this.type === 'emoji',
+              'logo-inner': this.type === 'logo',
+            }}
             innerHTML={this.svgContent}
           ></div>
         ) : (
