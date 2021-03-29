@@ -35,6 +35,7 @@ export const typoBase = () => (
       italic={boolean('italic', false)}
       no-wrap={boolean('noWrap', false)}
       paragraph={boolean('paragraph', false)}
+      margin={boolean('margin', true)}
     >
       {text("text", "Wearetaketeam")}
     </bds-typo>
