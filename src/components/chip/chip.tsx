@@ -1,7 +1,7 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
 
 export type ChipSize = 'standard' | 'tall';
-export type ChipVariant = 'primary' | 'default';
+export type ChipVariant = 'primary' | 'default' | 'watermelon';
 
 @Component({
   tag: 'bds-chip',
@@ -89,12 +89,23 @@ export class Chip {
       return { 'chip--primary': true };
     }
 
+    if (this.variant === 'watermelon') {
+      return { 'chip--watermelon': true };
+    }
+
     return { 'chip--default': true };
   }
 
   render() {
     return (
-      <Host class={{ chip: true, ...this.getClickClass(), ...this.getStateClass(), ...this.getSizeClass() }}>
+      <Host
+        class={{
+          chip: true,
+          ...this.getClickClass(),
+          ...this.getStateClass(),
+          ...this.getSizeClass(),
+        }}
+      >
         {this.icon && (
           <div class="chip__icon">
             <bds-icon size="x-small" name={this.icon}></bds-icon>
