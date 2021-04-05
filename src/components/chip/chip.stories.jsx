@@ -72,8 +72,8 @@ export const chipsIcon = () => {
 export const chipsSize = () => {
   return(
      <div  style={defaultButtonStyle}>
-      <bds-chip style={spaceBetween} variant="primary" size="standard" >chips default</bds-chip>
-      <bds-chip style={spaceBetween} variant="primary" size="tall" >chips primary</bds-chip>
+      <bds-chip style={spaceBetween} variant="primary" size="standard" >chips standard</bds-chip>
+      <bds-chip style={spaceBetween} variant="primary" size="tall" >chips tall</bds-chip>
     </div>
   )
 };
