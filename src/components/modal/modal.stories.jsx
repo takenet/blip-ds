@@ -13,7 +13,7 @@ export default {
 
 export const defaultModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', false)}>
+    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
       <bds-modal-action>
         <bds-button icon="video" variant="secondary">Tutorial</bds-button>
         <bds-button>Ok, entendi</bds-button>
@@ -24,7 +24,7 @@ export const defaultModal = () => (
 
 export const informativeModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', false)}>
+    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
         <div style={{ paddingRight: '20px' }}>
           <img src="https://picsum.photos/200/210?random=2" />
@@ -53,7 +53,7 @@ export const informativeModal = () => (
 
 export const newsModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', false)}>
+    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
         <div style={{ paddingRight: '20px' }}>
           <iframe width="280" height="168" src="https://www.youtube.com/embed/tDfDzUiG-oY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -85,7 +85,7 @@ export const newsModal = () => (
 
 export const warningModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', false)}>
+    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
         <div style={{ paddingRight: '20px' }}>
           <img src="https://picsum.photos/200/210?random=2" />
@@ -122,7 +122,7 @@ export const warningModal = () => (
 
 export const InviteModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', false)}>
+    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
       <div style={{ height: '204px', margin: 'auto' }}>
         <div style={{ display: 'flex', height: '76px', paddingBottom: '24px' }}>
           <div style={{ paddingRight: '20px' }}>
