@@ -22,11 +22,6 @@
   color: $color-primary-dark;
 }
 
-:host(.chip--watermelon) {
-  background: $color-primary-pinks-watermelon;
-  color: $color-neutral-light-snow;
-}
-
 :host(.chip--default) {
   background: $color-neutral-light-breeze;
   color: $color-neutral-medium-cloud;
