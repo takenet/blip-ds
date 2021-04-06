@@ -56,16 +56,16 @@ export const newsModal = () => (
     <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
         <div style={{ paddingRight: '20px' }}>
-          <iframe width="280" height="168" src="https://www.youtube.com/embed/tDfDzUiG-oY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe style={{borderRadius:'12px'}} width="280" height="168" src="https://www.youtube.com/embed/tDfDzUiG-oY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div>
           <bds-chip variant="watermelon" style={{ marginBottom: '5px' }}>Novidades!</bds-chip>
           <bds-typo variant="fs-20" bold="semi-bold">
-            Oi, Marcelo!
+            Oi, Usuário!
             conheça os BLiPspaces
           </bds-typo>
           <bds-typo variant="fs-14" bold="regular">
-            Workspaces são espaços de trabalho onde equipes podem se comunicar e trabalhar com projetos em comum. Agrupar os chatbots em workspaces também facilita a administração e governança de seus projetos e equipes.
+            Workspaces são espaços de trabalho onde equipes podem se comunicar e trabalhar com projetos em comum.
             Vamos organizar os seus BLiPspaces? 😃
           </bds-typo>
         </div>
