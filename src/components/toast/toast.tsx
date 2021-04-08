@@ -190,7 +190,7 @@ export class BdsToast implements ComponentInterface {
             </button>
           ) : (
             <button onClick={() => this._buttonClickHandler()}>
-              <bds-icon-button size="short" variant="secondary--white" icon="close" />
+              <bds-button-icon size="short" variant="secondary--white" icon="close" />
             </button>
           )}
         </div>

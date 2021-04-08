@@ -60,6 +60,7 @@ Type: `Promise<void>`
 - [bds-icon](../icon)
 - [bds-typo](../typo)
 - [bds-button](../button)
+- [bds-button-icon](../icon-button)
 
 ### Graph
 ```mermaid
@@ -68,9 +69,11 @@ graph TD;
   bds-toast --> bds-icon
   bds-toast --> bds-typo
   bds-toast --> bds-button
+  bds-toast --> bds-button-icon
   bds-button --> bds-icon
   bds-button --> bds-typo
   bds-button --> bds-loading-spinner
+  bds-button-icon --> bds-icon
   style bds-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
