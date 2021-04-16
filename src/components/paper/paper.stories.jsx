@@ -11,32 +11,64 @@ export default {
   },
 };
 
-const container = {
+const paper = {
   width: "100px",
-  height: "150px",
+  height: "150px"
+}
+
+const barPaper = {
+  width: "500px",
+  height: "60px"
+}
+
+const container = {
   margin: "16px"
 }
 
-const content = {
+const barContainer = {
+  margin: "3px"
+}
+
+const contentDefault = {
   display: "flex",
   width: "100%",
 }
 
+
 export const defaultPapers = () => (
-  <div style={content}>
-    <div>
+  <div style={contentDefault}>
+    <div style={container}>
       <bds-typo>Static</bds-typo>
-      <bds-paper style={container}></bds-paper>
+      <bds-paper style={paper}></bds-paper>
     </div>
     <br />
-    <div>
+    <div style={container}>
       <bds-typo>Primary</bds-typo>
-      <bds-paper style={container} elevation="primary"></bds-paper>
+      <bds-paper style={paper} elevation="primary"></bds-paper>
     </div>
     <br />
-    <div>
+    <div style={container}>
       <bds-typo>Secondary</bds-typo>
-      <bds-paper style={container} elevation="secondary"></bds-paper>
+      <bds-paper style={paper} elevation="secondary"></bds-paper>
+    </div>
+  </div>
+);
+
+export const barPapers = () => (
+  <div>
+    <div style={barContainer}>
+      <bds-typo>Static</bds-typo>
+      <bds-paper style={barPaper}></bds-paper>
+    </div>
+    <br />
+    <div style={barContainer}>
+      <bds-typo>Primary</bds-typo>
+      <bds-paper style={barPaper} elevation="primary"></bds-paper>
+    </div>
+    <br />
+    <div style={barContainer}>
+      <bds-typo>Secondary</bds-typo>
+      <bds-paper style={barPaper} elevation="secondary"></bds-paper>
     </div>
   </div>
 );
