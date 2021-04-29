@@ -171,6 +171,7 @@ const outlineIconsName = [
   'paint',
   'paperplane',
   'payment-card',
+  'payment-card-cvc',
   'pix',
   'plugin',
   'plus',
