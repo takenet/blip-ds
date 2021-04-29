@@ -33,6 +33,6 @@ export const inputChipsEmail = () => {
   const errorMessage = text('errorMessage', '');
 
   return (
-    <bds-input-chips type="email" danger={danger} error-message={errorMessage}></bds-input-chips>
+    <bds-input-chips type="email" danger={danger} error-message={errorMessage} chips='["chip@email.com", "chip2"]'></bds-input-chips>
   );
 };

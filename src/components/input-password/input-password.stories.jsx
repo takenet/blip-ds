@@ -21,7 +21,22 @@ export const defaultInputPassword = () => (
 			label={text('label', '')}
 			danger={boolean('danger', false)}
 			disabled={boolean('disabled', false)}
-			value={text('value', '')}
+			value={text('value', 'designsystem')}
+			error-message={text('errorMessage', '')}
+			helper-message={text('helperMessage', '')}
+			min={text('min', null)}
+			minlength={number('minlength', null)}
+			max={text('max', null)}
+			maxlength={number('maxlength', null)}
+			readonly={boolean('readonly', false)}
+		>
+		</bds-input-password>
+		<br />
+		<bds-input-password
+			label='Senha'
+			danger={boolean('danger', false)}
+			disabled={boolean('disabled', false)}
+			value={text('value', 'designsystem')}
 			error-message={text('errorMessage', '')}
 			helper-message={text('helperMessage', '')}
 			min={text('min', null)}

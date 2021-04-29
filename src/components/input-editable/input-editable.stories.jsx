@@ -29,8 +29,8 @@ export const fontExpandInputEditable = () => (
   <div>
     <bds-input-editable
       input-name={text('input name', '')}
-      value={text('value', 'Storybook')}
-      expand={text('expand', false)}
+      value={text('value', 'Teste de um frase que ocupe um maior espaço')}
+      expand={text('expand', true)}
       size={text('size', 'standard')}
       minlength={number('minlength', '3')}
       minlength-error-message={text('minlength-error-message', 'tamanho menor que o mínimo')}
