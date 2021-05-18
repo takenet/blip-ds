@@ -31,6 +31,7 @@
 
 ### Used by
 
+ - [bds-autocomplete](../autocomplete)
  - [bds-input-phone-number](../input-phone-number)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
@@ -43,6 +44,7 @@
 ```mermaid
 graph TD;
   bds-select-option --> bds-typo
+  bds-autocomplete --> bds-select-option
   bds-input-phone-number --> bds-select-option
   bds-select --> bds-select-option
   bds-select-chips --> bds-select-option
