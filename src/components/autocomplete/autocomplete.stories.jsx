@@ -11,10 +11,6 @@ export default {
   },
 };
 
-const margin = {
-  marginLeft: '8px',
-};
-
 export const defaultSelect = () => (
   <>
   <bds-autocomplete>

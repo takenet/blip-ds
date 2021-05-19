@@ -21,12 +21,12 @@
 
 ## Events
 
-| Event       | Description                              | Type                                               |
-| ----------- | ---------------------------------------- | -------------------------------------------------- |
-| `bdsBlur`   | Emitted when the select loses focus.     | `CustomEvent<void>`                                |
-| `bdsCancel` | Emitted when the selection is cancelled. | `CustomEvent<void>`                                |
-| `bdsChange` | Emitted when the value has changed.      | `CustomEvent<AutocompleteSelectChangeEventDetail>` |
-| `bdsFocus`  | Emitted when the select loses focus.     | `CustomEvent<void>`                                |
+| Event       | Description                              | Type                                         |
+| ----------- | ---------------------------------------- | -------------------------------------------- |
+| `bdsBlur`   | Emitted when the select loses focus.     | `CustomEvent<void>`                          |
+| `bdsCancel` | Emitted when the selection is cancelled. | `CustomEvent<void>`                          |
+| `bdsChange` | Emitted when the value has changed.      | `CustomEvent<AutocompleteChangeEventDetail>` |
+| `bdsFocus`  | Emitted when the select loses focus.     | `CustomEvent<void>`                          |
 
 
 ## Dependencies

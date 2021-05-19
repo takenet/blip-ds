@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
-import { AutocompleteOption, AutocompleteSelectChangeEventDetail, AutocompleteSelectOptionsPositionType } from "./components/autocomplete/autocomplete-select-interface";
+import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType } from "./components/autocomplete/autocomplete-select-interface";
 import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -73,7 +73,7 @@ export namespace Components {
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
          */
-        "optionsPosition"?: AutocompleteSelectOptionsPositionType;
+        "optionsPosition"?: AutocompleteOptionsPositionType;
         /**
           * Placeholder for native input element.
          */
@@ -1351,7 +1351,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<AutocompleteSelectChangeEventDetail>) => void;
+        "onBdsChange"?: (event: CustomEvent<AutocompleteChangeEventDetail>) => void;
         /**
           * Emitted when the select loses focus.
          */
@@ -1363,7 +1363,7 @@ declare namespace LocalJSX {
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
          */
-        "optionsPosition"?: AutocompleteSelectOptionsPositionType;
+        "optionsPosition"?: AutocompleteOptionsPositionType;
         /**
           * Placeholder for native input element.
          */
