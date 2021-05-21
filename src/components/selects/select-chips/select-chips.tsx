@@ -98,6 +98,14 @@ export class SelectChips {
     return this.nativeInput.isValid();
   }
 
+  /**
+   * Return the internal chips.
+   */
+  @Method()
+  async getChips(): Promise<string[]> {
+    return await this.nativeInput.get();
+  }
+
   async connectedCallback() {
     for (const option of this.childOptions) {
       option.addEventListener('optionSelected', this.handler);

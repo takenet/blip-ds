@@ -66,16 +66,22 @@ export class SelectOption {
         this.onClickSelectOption();
         break;
       case Keyboard.ARROW_DOWN:
-        if (element.parentElement.nextElementSibling) {
+        if (
+          element.parentElement.nextElementSibling &&
+          !element.parentElement.nextElementSibling.hasAttribute('invisible')
+        ) {
           event.preventDefault();
           event.stopPropagation();
           (element.parentElement.nextElementSibling.firstElementChild as HTMLInputElement).focus();
         }
         break;
       case Keyboard.ARROW_UP:
-        event.preventDefault();
-        event.stopPropagation();
-        if (element.parentElement.previousElementSibling) {
+        if (
+          element.parentElement.previousElementSibling &&
+          !element.parentElement.previousElementSibling.hasAttribute('invisible')
+        ) {
+          event.preventDefault();
+          event.stopPropagation();
           (element.parentElement.previousElementSibling.firstElementChild as HTMLInputElement).focus();
         }
     }

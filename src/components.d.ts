@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
+import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType } from "./components/autocomplete/autocomplete-select-interface";
 import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -47,6 +48,40 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
          */
         "variant"?: AlertHeaderVariannt;
+    }
+    interface BdsAutocomplete {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | AutocompleteOption[];
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: AutocompleteOptionsPositionType;
+        /**
+          * Placeholder for native input element.
+         */
+        "placeholder"?: string;
+        /**
+          * the value of the select.
+         */
+        "value"?: string | null;
     }
     interface BdsBanner {
         /**
@@ -730,6 +765,10 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
+          * Return the internal chips.
+         */
+        "getChips": () => Promise<string[]>;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -997,6 +1036,12 @@ declare global {
         prototype: HTMLBdsAlertHeaderElement;
         new (): HTMLBdsAlertHeaderElement;
     };
+    interface HTMLBdsAutocompleteElement extends Components.BdsAutocomplete, HTMLStencilElement {
+    }
+    var HTMLBdsAutocompleteElement: {
+        prototype: HTMLBdsAutocompleteElement;
+        new (): HTMLBdsAutocompleteElement;
+    };
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
     }
     var HTMLBdsBannerElement: {
@@ -1218,6 +1263,7 @@ declare global {
         "bds-alert-actions": HTMLBdsAlertActionsElement;
         "bds-alert-body": HTMLBdsAlertBodyElement;
         "bds-alert-header": HTMLBdsAlertHeaderElement;
+        "bds-autocomplete": HTMLBdsAutocompleteElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
@@ -1276,6 +1322,56 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
          */
         "variant"?: AlertHeaderVariannt;
+    }
+    interface BdsAutocomplete {
+        /**
+          * Add state danger on input, use for use feedback.
+         */
+        "danger"?: boolean;
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is cancelled.
+         */
+        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: CustomEvent<AutocompleteChangeEventDetail>) => void;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | AutocompleteOption[];
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: AutocompleteOptionsPositionType;
+        /**
+          * Placeholder for native input element.
+         */
+        "placeholder"?: string;
+        /**
+          * the value of the select.
+         */
+        "value"?: string | null;
     }
     interface BdsBanner {
         /**
@@ -2253,6 +2349,7 @@ declare namespace LocalJSX {
         "bds-alert-actions": BdsAlertActions;
         "bds-alert-body": BdsAlertBody;
         "bds-alert-header": BdsAlertHeader;
+        "bds-autocomplete": BdsAutocomplete;
         "bds-banner": BdsBanner;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
@@ -2299,6 +2396,7 @@ declare module "@stencil/core" {
             "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
             "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
+            "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;

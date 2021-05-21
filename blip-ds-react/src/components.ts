@@ -11,6 +11,7 @@ export const BdsAlert = /*@__PURE__*/createReactComponent<JSX.BdsAlert, HTMLBdsA
 export const BdsAlertActions = /*@__PURE__*/createReactComponent<JSX.BdsAlertActions, HTMLBdsAlertActionsElement>('bds-alert-actions');
 export const BdsAlertBody = /*@__PURE__*/createReactComponent<JSX.BdsAlertBody, HTMLBdsAlertBodyElement>('bds-alert-body');
 export const BdsAlertHeader = /*@__PURE__*/createReactComponent<JSX.BdsAlertHeader, HTMLBdsAlertHeaderElement>('bds-alert-header');
+export const BdsAutocomplete = /*@__PURE__*/createReactComponent<JSX.BdsAutocomplete, HTMLBdsAutocompleteElement>('bds-autocomplete');
 export const BdsBanner = /*@__PURE__*/createReactComponent<JSX.BdsBanner, HTMLBdsBannerElement>('bds-banner');
 export const BdsButton = /*@__PURE__*/createReactComponent<JSX.BdsButton, HTMLBdsButtonElement>('bds-button');
 export const BdsButtonIcon = /*@__PURE__*/createReactComponent<JSX.BdsButtonIcon, HTMLBdsButtonIconElement>('bds-button-icon');

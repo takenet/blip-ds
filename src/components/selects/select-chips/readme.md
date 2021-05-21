@@ -34,6 +34,16 @@
 
 ## Methods
 
+### `getChips() => Promise<string[]>`
+
+Return the internal chips.
+
+#### Returns
+
+Type: `Promise<string[]>`
+
+
+
 ### `isValid() => Promise<boolean>`
 
 Return the validity of the input chips.
