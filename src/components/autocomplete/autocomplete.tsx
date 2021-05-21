@@ -33,7 +33,7 @@ export class BdsAutocomplete {
    * the value of the select.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ mutable: true }) value?: any | null;
+  @Prop({ mutable: true }) value?: string | null;
 
   /**
    * Add state danger on input, use for use feedback.

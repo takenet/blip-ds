@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface AutocompleteOption {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  value: any;
+  value: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   label: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,7 +11,7 @@ export interface AutocompleteOption {
 }
 
 export interface AutocompleteChangeEventDetail {
-  value: any | any[] | undefined | null;
+  value: string | string[] | undefined | null;
   code?: string;
 }
 
