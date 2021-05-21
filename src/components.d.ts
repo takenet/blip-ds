@@ -931,6 +931,10 @@ export namespace Components {
     }
     interface BdsTooltip {
         /**
+          * Used to disable tooltip
+         */
+        "disabled": boolean;
+        /**
           * Used to set tooltip position
          */
         "position": TooltipPostionType;
@@ -2207,6 +2211,10 @@ declare namespace LocalJSX {
     interface BdsToastContainer {
     }
     interface BdsTooltip {
+        /**
+          * Used to disable tooltip
+         */
+        "disabled"?: boolean;
         /**
           * Used to set tooltip position
          */
