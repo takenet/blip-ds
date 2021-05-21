@@ -26,6 +26,7 @@
 ### Used by
 
  - [bds-alert-header](../alert/alert-header)
+ - [bds-autocomplete](../autocomplete)
  - [bds-banner](../banner)
  - [bds-button](../button)
  - [bds-button-icon](../icon-button)
@@ -48,6 +49,7 @@
 ```mermaid
 graph TD;
   bds-alert-header --> bds-icon
+  bds-autocomplete --> bds-icon
   bds-banner --> bds-icon
   bds-button --> bds-icon
   bds-button-icon --> bds-icon
