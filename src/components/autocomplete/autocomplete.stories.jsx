@@ -11,8 +11,12 @@ export default {
   },
 };
 
+const styles = {
+  'height': "100vh",
+}
+
 export const defaultSelect = () => (
-  <>
+  <div style={styles}>
   <bds-autocomplete>
     <bds-select-option value="1">Millie Bobby</bds-select-option>
     <bds-select-option value="2">Finn Wolfhard</bds-select-option>
@@ -30,11 +34,11 @@ export const defaultSelect = () => (
     <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
     <bds-select-option value="6">Noah Schnapp</bds-select-option>
   </bds-autocomplete>
-  </>
+  </div>
 );
 
 export const iconSelect = () => (
-  <>
+  <div style={styles}>
     <bds-autocomplete icon="favorite">
       <bds-select-option value="1">Millie Bobby</bds-select-option>
       <bds-select-option value="2">Finn Wolfhard</bds-select-option>
@@ -52,11 +56,11 @@ export const iconSelect = () => (
       <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
       <bds-select-option value="6">Noah Schnapp</bds-select-option>
     </bds-autocomplete>
-  </>
+  </div>
 );
 
 export const selectedSelect = () => (
-  <>
+  <div style={styles}>
     <bds-autocomplete value="2">
       <bds-select-option value="1">Millie Bobby</bds-select-option>
       <bds-select-option value="2">Finn Wolfhard</bds-select-option>
@@ -74,11 +78,11 @@ export const selectedSelect = () => (
       <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
       <bds-select-option value="6">Noah Schnapp</bds-select-option>
     </bds-autocomplete>
-  </>
+  </div>
 );
 
 export const disabledSelect = () => (
-  <>
+  <div style={styles}>
     <bds-autocomplete disabled>
       <bds-select-option value="1">Millie Bobby</bds-select-option>
       <bds-select-option value="2">Finn Wolfhard</bds-select-option>
@@ -96,11 +100,12 @@ export const disabledSelect = () => (
       <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
       <bds-select-option value="6">Noah Schnapp</bds-select-option>
     </bds-autocomplete>
-  </>
+  </div>
 );
 
 export const selectWithIconOnSlot = () => (
-  <bds-autocomplete placeholder="Select" label="Permission">
+  <div style={styles}>
+   <bds-autocomplete placeholder="Select" label="Permission">
     <bds-select-option value="1" slot-align="flex-start" title-text="Guest">
         <bds-icon slot="input-left" name="eye-open" size="medium" color="#F66689"></bds-icon>
         Only views contract information.
@@ -113,5 +118,7 @@ export const selectWithIconOnSlot = () => (
         <bds-icon slot="input-left" name="avatar-user" size="medium" color="#2CC3D5"></bds-icon>
         Edits all contract data, manages members, creates and edits chatbots.
     </bds-select-option>
-  </bds-autocomplete>
+  </bds-autocomplete> 
+  </div>
+  
 );
