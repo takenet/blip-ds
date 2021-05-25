@@ -30,7 +30,7 @@ export class Tooltip {
   @Prop() tooltipText = 'Tooltip';
 
   /**
-   * Used to disable tooltip
+   * Used to disable tooltip when the button are avalible
    */
   @Prop({ reflect: true }) disabled = false;
 
