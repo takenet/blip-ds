@@ -14,7 +14,7 @@ describe('tooltip e2e tests', () => {
   });
 
   it('should show the tooltip on hover', async () => {
-    let tip = await page.find('.tooltip__tip');
+    let tip = await page.find('bds-tooltip >>> .tooltip__tip');
 
     expect(tip).not.toHaveClass('tooltip__tip--visible');
 
@@ -28,7 +28,7 @@ describe('tooltip e2e tests', () => {
 
     await page.waitForChanges();
 
-    tip = await page.find('.tooltip__tip');
+    tip = await page.find('bds-tooltip >>> .tooltip__tip');
 
     expect(tip).not.toHaveClass('tooltip__tip--visible');
   });

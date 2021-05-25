@@ -17,7 +17,7 @@ export type TooltipPostionType =
 @Component({
   tag: 'bds-tooltip',
   styleUrl: 'tooltip.scss',
-  scoped: true,
+  shadow: true,
 })
 export class Tooltip {
   /**
@@ -30,18 +30,27 @@ export class Tooltip {
   @Prop() tooltipText = 'Tooltip';
 
   /**
+   * Used to disable tooltip
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
    * Used to set tooltip position
    */
   @Prop() position: TooltipPostionType = 'left-center';
 
   private setVisibility(value: boolean) {
+    if (this.disabled) {
+      this.isMouseOver = false;
+      return;
+    }
     this.isMouseOver = value;
   }
 
   render() {
     return (
       <div class="tooltip__wrapper">
-        <div onMouseOver={() => this.setVisibility(true)} onMouseLeave={() => this.setVisibility(false)}>
+        <div onMouseEnter={() => this.setVisibility(true)} onMouseLeave={() => this.setVisibility(false)}>
           <slot />
         </div>
         <div
