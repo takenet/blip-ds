@@ -966,7 +966,7 @@ export namespace Components {
     }
     interface BdsTooltip {
         /**
-          * Used to disable tooltip
+          * Used to disable tooltip when the button are avalible
          */
         "disabled": boolean;
         /**
@@ -2304,7 +2304,7 @@ declare namespace LocalJSX {
     }
     interface BdsTooltip {
         /**
-          * Used to disable tooltip
+          * Used to disable tooltip when the button are avalible
          */
         "disabled"?: boolean;
         /**
