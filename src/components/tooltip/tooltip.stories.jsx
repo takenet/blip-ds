@@ -28,15 +28,22 @@ export const Tooltip = () => {
   ];
   
   const styles = {
-      'margin-left': '80px'
+      'display': 'flex',
+      'flex-direction': 'column',
+      'align-items': 'center',
+      'justify-content': 'center'
+  }
+
+  const stylesElement = {
+    'margin-top': '15px'
   }
   return (
-    <div>
+    <div style={styles}>
       <bds-tooltip position={select('position', positions)} tooltip-text={text('Texto do tooltip')}>
         <bds-button>Hover me</bds-button>
       </bds-tooltip>
-      <bds-tooltip style={styles} position={select('position', positions)} tooltip-text={text('Texto do tooltip')}>
-        <bds-icon name="user">Hover me</bds-icon>
+      <bds-tooltip style={stylesElement} position={select('position', positions)} tooltip-text={text('Texto do tooltip')}>
+        <bds-icon name="user-default">Hover me</bds-icon>
       </bds-tooltip>
     </div>
   );
