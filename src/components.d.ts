@@ -85,7 +85,7 @@ export namespace Components {
         /**
           * the value of the select.
          */
-        "value"?: any | null;
+        "value"?: string | null;
     }
     interface BdsBanner {
         /**
@@ -1387,7 +1387,7 @@ declare namespace LocalJSX {
         /**
           * the value of the select.
          */
-        "value"?: any | null;
+        "value"?: string | null;
     }
     interface BdsBanner {
         /**
