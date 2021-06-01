@@ -16,17 +16,19 @@
 | `options`         | `options`          | The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular. | `AutocompleteOption[] \| string` | `undefined` |
 | `optionsPosition` | `options-position` | Set the placement of the options menu. Can be 'bottom' or 'top'.                                                                                                                                                                                                                              | `"bottom" \| "top"`              | `'bottom'`  |
 | `placeholder`     | `placeholder`      | Placeholder for native input element.                                                                                                                                                                                                                                                         | `string`                         | `''`        |
-| `value`           | `value`            | the value of the select.                                                                                                                                                                                                                                                                      | `string`                         | `undefined` |
+| `selected`        | `selected`         | the item selected.                                                                                                                                                                                                                                                                            | `any`                            | `undefined` |
+| `value`           | `value`            | the value of the select.                                                                                                                                                                                                                                                                      | `any`                            | `undefined` |
 
 
 ## Events
 
-| Event       | Description                              | Type                                         |
-| ----------- | ---------------------------------------- | -------------------------------------------- |
-| `bdsBlur`   | Emitted when the select loses focus.     | `CustomEvent<void>`                          |
-| `bdsCancel` | Emitted when the selection is cancelled. | `CustomEvent<void>`                          |
-| `bdsChange` | Emitted when the value has changed.      | `CustomEvent<AutocompleteChangeEventDetail>` |
-| `bdsFocus`  | Emitted when the select loses focus.     | `CustomEvent<void>`                          |
+| Event               | Description                                  | Type                                                 |
+| ------------------- | -------------------------------------------- | ---------------------------------------------------- |
+| `bdsBlur`           | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
+| `bdsCancel`         | Emitted when the selection is cancelled.     | `CustomEvent<void>`                                  |
+| `bdsChange`         | Emitted when the value has changed.          | `CustomEvent<AutocompleteChangeEventDetail>`         |
+| `bdsFocus`          | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
+| `bdsSelectedChange` | Emitted when the selected value has changed. | `CustomEvent<AutocompleteSelectedChangeEventDetail>` |
 
 
 ## Dependencies

@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
-import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType } from "./components/autocomplete/autocomplete-select-interface";
+import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
 import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -79,9 +79,13 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
+          * the item selected.
+         */
+        "selected"?: any | null;
+        /**
           * the value of the select.
          */
-        "value"?: string | null;
+        "value"?: any | null;
     }
     interface BdsBanner {
         /**
@@ -1361,6 +1365,10 @@ declare namespace LocalJSX {
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
         /**
+          * Emitted when the selected value has changed.
+         */
+        "onBdsSelectedChange"?: (event: CustomEvent<AutocompleteSelectedChangeEventDetail>) => void;
+        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | AutocompleteOption[];
@@ -1373,9 +1381,13 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * the item selected.
+         */
+        "selected"?: any | null;
+        /**
           * the value of the select.
          */
-        "value"?: string | null;
+        "value"?: any | null;
     }
     interface BdsBanner {
         /**

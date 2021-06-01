@@ -20,6 +20,10 @@ $select-options-max-height: 250px;
       margin-left: 10px;
     }
   }
+  
+  .icon-hidden {
+      visibility: hidden;
+  }
 
   &__options {
     @include custom-scroll;

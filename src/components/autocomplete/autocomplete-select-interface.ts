@@ -15,6 +15,11 @@ export interface AutocompleteChangeEventDetail {
   code?: string;
 }
 
+export interface AutocompleteSelectedChangeEventDetail {
+  value: string | string[] | undefined | null;
+  code?: string;
+}
+
 export type AutocompleteSelectType = 'text' | 'icon';
 
 export type AutocompleteOptionsPositionType = 'top' | 'bottom';
