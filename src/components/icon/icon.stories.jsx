@@ -441,6 +441,7 @@ export const iconLogo = () => (
   <>
     <div style={zeroHeightStyles}>
       <bds-icon name="gbm" size="xxx-large" type="logo" aria-label="logo da gbm"></bds-icon>
+      <bds-icon name="google" size="xxx-large" type="logo" aria-label="logo da google"></bds-icon>
     </div>
   </>
 
