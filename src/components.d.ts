@@ -81,7 +81,7 @@ export namespace Components {
         /**
           * the item selected.
          */
-        "selected"?: any | null;
+        "selected"?: HTMLBdsSelectOptionElement | null;
         /**
           * the value of the select.
          */
@@ -1383,7 +1383,7 @@ declare namespace LocalJSX {
         /**
           * the item selected.
          */
-        "selected"?: any | null;
+        "selected"?: HTMLBdsSelectOptionElement | null;
         /**
           * the value of the select.
          */

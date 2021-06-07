@@ -40,7 +40,7 @@ export class BdsAutocomplete {
    * the item selected.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ mutable: true }) selected?: any | null;
+  @Prop({ mutable: true }) selected?: HTMLBdsSelectOptionElement | null;
 
   /**
    * Add state danger on input, use for use feedback.
@@ -99,7 +99,7 @@ export class BdsAutocomplete {
 
   @Watch('selected')
   itemSelectedChanged(): void {
-    this.bdsSelectedChange.emit(this.value);
+    this.bdsSelectedChange.emit(this.selected);
   }
 
   @Watch('value')
