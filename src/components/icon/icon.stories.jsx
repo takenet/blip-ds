@@ -266,6 +266,7 @@ const emojiNames = [
 
 const logoNames = [
   'gbm',
+  'google',
 ];
 
 const iconStyles = {
