@@ -2,6 +2,7 @@ import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen 
 import {
   AutocompleteOption,
   AutocompleteChangeEventDetail,
+  AutocompleteSelectedChangeEventDetail,
   AutocompleteOptionsPositionType,
 } from './autocomplete-select-interface';
 import { Keyboard } from '../../utils/enums';
@@ -36,6 +37,12 @@ export class BdsAutocomplete {
   @Prop({ mutable: true }) value?: string | null;
 
   /**
+   * the item selected.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ mutable: true }) selected?: HTMLBdsSelectOptionElement | null;
+
+  /**
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true }) danger? = false;
@@ -49,6 +56,11 @@ export class BdsAutocomplete {
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<AutocompleteChangeEventDetail>;
+
+  /**
+   * Emitted when the selected value has changed.
+   */
+  @Event() bdsSelectedChange!: EventEmitter<AutocompleteSelectedChangeEventDetail>;
 
   /**
    * Emitted when the selection is cancelled.
@@ -85,14 +97,18 @@ export class BdsAutocomplete {
    */
   @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'bottom';
 
+  @Watch('selected')
+  itemSelectedChanged(): void {
+    this.bdsSelectedChange.emit(this.selected);
+  }
+
   @Watch('value')
   valueChanged(): void {
     this.bdsChange.emit({ value: this.value });
-
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
-
+    this.selected = this.childOptionSelected;
     this.text = this.getText();
   }
 
@@ -208,6 +224,16 @@ export class BdsAutocomplete {
       case Keyboard.ENTER:
         this.toggle();
         break;
+      case Keyboard.TAB:
+        const indexTabFocus = this.childOptions.findIndex((x) => x.firstElementChild.matches(':focus'));
+        const visibleTabChildren = this.childOptions
+          .slice(indexTabFocus + 1)
+          .filter((x) => !x.hasAttribute('invisible'));
+        const elementTabToFocus = visibleTabChildren[0];
+        if (!elementTabToFocus) {
+          this.toggle();
+        }
+        break;
       case Keyboard.ARROW_DOWN:
         const indexDownFocus = this.childOptions.findIndex((x) => x.firstElementChild.matches(':focus'));
         const visibleChildren = this.childOptions.slice(indexDownFocus + 1).filter((x) => !x.hasAttribute('invisible'));
@@ -245,7 +271,7 @@ export class BdsAutocomplete {
 
     if (this.isOpen === false) {
       this.value = this.getSelectedValue();
-      await this.resetFilterOptions();
+      this.resetFilterOptions();
     }
   };
 
@@ -270,9 +296,12 @@ export class BdsAutocomplete {
   }
 
   private async resetFilterOptions() {
-    for (const option of this.childOptions) {
-      option.removeAttribute('invisible');
-    }
+    const childOptions = this.childOptions;
+    setTimeout(function () {
+      for (const option of childOptions) {
+        option.removeAttribute('invisible');
+      }
+    }, 500);
   }
 
   private getSelectedValue() {
@@ -306,7 +335,15 @@ export class BdsAutocomplete {
           readonly={false}
         >
           <div slot="input-right" class="select__icon">
-            <bds-icon size="small" theme="solid" name="error" onClick={this.cleanInputSelection}></bds-icon>
+            <bds-icon
+              size="small"
+              name="error"
+              theme="solid"
+              onClick={this.cleanInputSelection}
+              class={{
+                'icon-hidden': this.text == '',
+              }}
+            ></bds-icon>
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
           </div>
         </bds-input>
