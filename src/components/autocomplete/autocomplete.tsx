@@ -53,6 +53,11 @@ export class BdsAutocomplete {
   @Prop({ reflect: true }) disabled? = false;
 
   /**
+   * Search only the title property
+   */
+  @Prop({ reflect: true }) searchOnlyTitle? = true;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<AutocompleteChangeEventDetail>;
@@ -182,8 +187,7 @@ export class BdsAutocomplete {
     }
   };
 
-  private getText = (): string => {
-    const opt = this.childOptions.find((option) => option.value == this.value);
+  private getTextFromOption = (opt: HTMLBdsSelectOptionElement): string => {
     if (opt?.status || opt?.bulkOption) {
       if (this.internalOptions) {
         const internalOption = this.internalOptions.find((option) => option.value == opt.value);
@@ -194,6 +198,11 @@ export class BdsAutocomplete {
       return opt.querySelector(`#bds-typo-label-${this.value}`).textContent;
     }
     return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
+  };
+
+  private getText = (): string => {
+    const opt = this.childOptions.find((option) => option.value == this.value);
+    return this.getTextFromOption(opt);
   };
 
   private handler = (event: CustomEvent): void => {
@@ -266,23 +275,35 @@ export class BdsAutocomplete {
       await this.filterOptions(this.nativeInput.value);
     } else {
       this.value = '';
-      await this.resetFilterOptions();
+      if (this.isOpen) {
+        await this.resetFilterOptions();
+      } else {
+        setTimeout(() => {
+          this.resetFilterOptions();
+        }, 500);
+      }
     }
 
     if (this.isOpen === false) {
       this.value = this.getSelectedValue();
-      this.resetFilterOptions();
+      setTimeout(() => {
+        this.resetFilterOptions();
+      }, 500);
     }
   };
 
   private async filterOptions(term: string) {
     if (!term) {
       await this.resetFilterOptions();
-      return;
     }
 
     for (const option of this.childOptions) {
-      const optionTextLower = option.textContent.toLowerCase();
+      let optionTextLower;
+      if (this.searchOnlyTitle) {
+        optionTextLower = this.getTextFromOption(option).toLowerCase();
+      } else {
+        optionTextLower = option.textContent.toLowerCase();
+      }
       const termLower = term.toLowerCase();
 
       if (optionTextLower.includes(termLower)) {
@@ -297,11 +318,9 @@ export class BdsAutocomplete {
 
   private async resetFilterOptions() {
     const childOptions = this.childOptions;
-    setTimeout(function () {
-      for (const option of childOptions) {
-        option.removeAttribute('invisible');
-      }
-    }, 500);
+    for (const option of childOptions) {
+      option.removeAttribute('invisible');
+    }
   }
 
   private getSelectedValue() {

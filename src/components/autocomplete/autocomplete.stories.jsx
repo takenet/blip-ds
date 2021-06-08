@@ -118,7 +118,21 @@ export const selectWithIconOnSlot = () => (
         <bds-icon slot="input-left" name="avatar-user" size="medium" color="#2CC3D5"></bds-icon>
         Edits all contract data, manages members, creates and edits chatbots.
     </bds-select-option>
-  </bds-autocomplete> 
+   </bds-autocomplete> 
+   <bds-autocomplete placeholder="Select" label="Permission" search-only-title="false">
+    <bds-select-option value="1" slot-align="flex-start" title-text="Guest">
+        <bds-icon slot="input-left" name="eye-open" size="medium" color="#F66689"></bds-icon>
+        Only views contract information.
+    </bds-select-option>
+    <bds-select-option value="2" slot-align="flex-start" title-text="Member">
+        <bds-icon slot="input-left" name="edit" size="medium" color="#F9B42F"></bds-icon>
+        Creates and edits chatbots, but does not manage contract members.
+    </bds-select-option>
+    <bds-select-option value="3" slot-align="flex-start" title-text="Admin">
+        <bds-icon slot="input-left" name="avatar-user" size="medium" color="#2CC3D5"></bds-icon>
+        Edits all contract data, manages members, creates and edits chatbots.
+    </bds-select-option>
+   </bds-autocomplete> 
   </div>
   
 );
