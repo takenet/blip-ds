@@ -16,6 +16,7 @@
 | `icon`              | `icon`                | used for add icon in input left. Uses the bds-icon component.                                     | `string`                                                                                                        | `null`       |
 | `size`              | `size`                | Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                                                                               | `'standard'` |
 | `type`              | `type`                | The type of the button. Can be one of: 'button', 'submit', 'reset';                               | `"button" \| "reset" \| "submit"`                                                                               | `'button'`   |
+| `typeIcon`          | `type-icon`           | The type of the icon. Can be one of: 'icon', 'logo', 'emoji';                                     | `"emoji" \| "icon" \| "logo"`                                                                                   | `'icon'`     |
 | `variant`           | `variant`             | Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed'; | `"dashed" \| "delete" \| "facebook" \| "ghost" \| "primary" \| "secondary" \| "secondary--white" \| "tertiary"` | `'primary'`  |
 
 

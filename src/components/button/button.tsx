@@ -15,6 +15,8 @@ export type ButtonVariant =
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 
+export type IconType = 'icon' | 'logo' | 'emoji';
+
 @Component({
   tag: 'bds-button',
   styleUrl: 'button.scss',
@@ -57,6 +59,12 @@ export class Button {
   @Prop() type: ButtonType = 'button';
 
   /**
+   * The type of the icon. Can be one of:
+   * 'icon', 'logo', 'emoji';
+   */
+  @Prop({ reflect: true }) typeIcon: IconType = 'icon';
+
+  /**
    * 	If true, shows the loading spinner
    */
   @Prop() bdsLoading?: boolean = false;
@@ -74,7 +82,7 @@ export class Button {
     return (
       this.icon && (
         <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
-          <bds-icon name={this.icon} color="inherit"></bds-icon>
+          <bds-icon name={this.icon} type={this.typeIcon} color="inherit"></bds-icon>
         </div>
       )
     );
