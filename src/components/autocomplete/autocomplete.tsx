@@ -131,11 +131,7 @@ export class BdsAutocomplete {
   @Watch('options')
   parseOptions() {
     if (this.options) {
-      if (typeof this.options === 'string') {
-        this.internalOptions = JSON.parse(this.options);
-      } else {
-        this.internalOptions = this.options;
-      }
+      this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
     }
   }
 
@@ -233,35 +229,43 @@ export class BdsAutocomplete {
       case Keyboard.ENTER:
         this.toggle();
         break;
+
       case Keyboard.TAB:
-        const indexTabFocus = this.childOptions.findIndex((x) => x.firstElementChild.matches(':focus'));
-        const visibleTabChildren = this.childOptions
-          .slice(indexTabFocus + 1)
-          .filter((x) => !x.hasAttribute('invisible'));
+        const indexTabFocus = this.findFocusedElementIndex();
+        const visibleTabChildren = this.sliceInvisible(indexTabFocus + 1);
         const elementTabToFocus = visibleTabChildren[0];
         if (!elementTabToFocus) {
           this.toggle();
         }
         break;
+
       case Keyboard.ARROW_DOWN:
-        const indexDownFocus = this.childOptions.findIndex((x) => x.firstElementChild.matches(':focus'));
-        const visibleChildren = this.childOptions.slice(indexDownFocus + 1).filter((x) => !x.hasAttribute('invisible'));
+        const indexDownFocus = this.findFocusedElementIndex();
+        const visibleChildren = this.sliceInvisible(indexDownFocus + 1);
         const elementToFocus = visibleChildren[0];
         (elementToFocus?.firstElementChild as HTMLInputElement)?.focus();
         break;
+
       case Keyboard.ARROW_UP:
-        let indexUpFocus = this.childOptions.findIndex((x) => x.firstElementChild.matches(':focus'));
-        if (this.childOptions[indexUpFocus] != this.childOptions.filter((x) => !x.hasAttribute('invisible'))[0]) {
+        let indexUpFocus = this.findFocusedElementIndex();
+        const firstVisibleElement = this.childOptions.find((option) => !option.hasAttribute('invisible'));
+        if (this.childOptions[indexUpFocus] != firstVisibleElement) {
           indexUpFocus = indexUpFocus > 0 ? indexUpFocus : this.childOptions.length;
-          const lastIndex =
-            this.childOptions.slice(0, indexUpFocus).filter((x) => !x.hasAttribute('invisible')).length - 1;
-          const visibleChildren = this.childOptions.slice(0, indexUpFocus).filter((x) => !x.hasAttribute('invisible'));
-          const elementToFocus = visibleChildren[lastIndex];
+          const visibleChildren = this.sliceInvisible(0, indexUpFocus);
+          const elementToFocus = visibleChildren[visibleChildren.length - 1];
           (elementToFocus?.firstElementChild as HTMLInputElement)?.focus();
         }
         break;
     }
   };
+
+  private sliceInvisible(index: number, endIndex = this.childOptions.length): HTMLBdsSelectOptionElement[] {
+    return this.childOptions.slice(index, endIndex).filter((option) => !option.hasAttribute('invisible'));
+  }
+
+  private findFocusedElementIndex(): number {
+    return this.childOptions.findIndex((option) => option.firstElementChild.matches(':focus'));
+  }
 
   private cleanInputSelection = async () => {
     this.value = '';
@@ -278,19 +282,21 @@ export class BdsAutocomplete {
       if (this.isOpen) {
         await this.resetFilterOptions();
       } else {
-        setTimeout(() => {
-          this.resetFilterOptions();
-        }, 500);
+        this.setTimeoutFilter();
       }
     }
 
     if (this.isOpen === false) {
       this.value = this.getSelectedValue();
-      setTimeout(() => {
-        this.resetFilterOptions();
-      }, 500);
+      this.setTimeoutFilter();
     }
   };
+
+  private setTimeoutFilter(): void {
+    setTimeout(() => {
+      this.resetFilterOptions();
+    }, 500);
+  }
 
   private async filterOptions(term: string) {
     if (!term) {
@@ -298,21 +304,15 @@ export class BdsAutocomplete {
     }
 
     for (const option of this.childOptions) {
-      let optionTextLower;
-      if (this.searchOnlyTitle) {
-        optionTextLower = this.getTextFromOption(option).toLowerCase();
-      } else {
-        optionTextLower = option.textContent.toLowerCase();
-      }
+      const optionTextLowercase = this.searchOnlyTitle
+        ? this.getTextFromOption(option).toLowerCase()
+        : option.textContent.toLowerCase();
+
       const termLower = term.toLowerCase();
 
-      if (optionTextLower.includes(termLower)) {
-        option.removeAttribute('invisible');
-      }
-
-      if (!optionTextLower.includes(termLower)) {
-        option.setAttribute('invisible', 'invisible');
-      }
+      optionTextLowercase.includes(termLower)
+        ? option.removeAttribute('invisible')
+        : option.setAttribute('invisible', 'invisible');
     }
   }
 
