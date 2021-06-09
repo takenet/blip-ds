@@ -336,7 +336,7 @@ export class BdsAutocomplete {
         tabindex="0"
         onFocus={this.setFocusWrapper}
         onBlur={this.removeFocusWrapper}
-        onFocusOut={this.onFocusout}
+        onFocusout={this.onFocusout}
         onKeyDown={this.keyPressWrapper}
       >
         <bds-input
