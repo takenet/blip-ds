@@ -119,6 +119,7 @@ export const selectWithIconOnSlot = () => (
         Edits all contract data, manages members, creates and edits chatbots.
     </bds-select-option>
    </bds-autocomplete> 
+   <br/>
    <bds-autocomplete placeholder="Select" label="Permission" search-only-title="false">
     <bds-select-option value="1" slot-align="flex-start" title-text="Guest">
         <bds-icon slot="input-left" name="eye-open" size="medium" color="#F66689"></bds-icon>
