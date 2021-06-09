@@ -79,6 +79,10 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
+          * Search only the title property
+         */
+        "searchOnlyTitle"?: boolean;
+        /**
           * the item selected.
          */
         "selected"?: HTMLBdsSelectOptionElement | null;
@@ -1380,6 +1384,10 @@ declare namespace LocalJSX {
           * Placeholder for native input element.
          */
         "placeholder"?: string;
+        /**
+          * Search only the title property
+         */
+        "searchOnlyTitle"?: boolean;
         /**
           * the item selected.
          */
