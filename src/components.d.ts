@@ -8,12 +8,12 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
 import { BannerAlign, BannerVariant } from "./components/banner/banner";
-import { ButtonSize, ButtonType, ButtonVariant } from "./components/button/button";
+import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
-import { IconSize, IconTheme, IconType } from "./components/icon/icon-interface";
+import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
@@ -134,6 +134,10 @@ export namespace Components {
           * The type of the button. Can be one of: 'button', 'submit', 'reset';
          */
         "type": ButtonType;
+        /**
+          * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
+         */
+        "typeIcon": IconType;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
@@ -1440,6 +1444,10 @@ declare namespace LocalJSX {
           * The type of the button. Can be one of: 'button', 'submit', 'reset';
          */
         "type"?: ButtonType;
+        /**
+          * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
+         */
+        "typeIcon"?: IconType;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
