@@ -136,9 +136,11 @@ export class BdsAutocomplete {
   }
 
   componentDidLoad() {
-    for (const option of this.childOptions) {
-      option.selected = this.value === option.value;
-      option.addEventListener('optionSelected', this.handler);
+    if (!this.options) {
+      for (const option of this.childOptions) {
+        option.selected = this.value === option.value;
+        option.addEventListener('optionSelected', this.handler);
+      }
     }
     this.text = this.getText();
   }
@@ -375,7 +377,14 @@ export class BdsAutocomplete {
         >
           {this.internalOptions ? (
             this.internalOptions.map((option, idx) => (
-              <bds-select-option value={option.value} key={idx} bulkOption={option.bulkOption} status={option.status}>
+              <bds-select-option
+                onOptionSelected={this.handler}
+                selected={this.value === option.value}
+                value={option.value}
+                key={idx}
+                bulkOption={option.bulkOption}
+                status={option.status}
+              >
                 {option.label}
               </bds-select-option>
             ))
