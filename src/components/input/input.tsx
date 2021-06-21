@@ -274,6 +274,7 @@ export class Input {
 
         if (this.isSubmit) {
           this.clearTextInput();
+          event.preventDefault();
         }
         break;
       case 'Backspace' || 'Delete':
