@@ -1,0 +1,1 @@
+import{r as o,h as t}from"./p-1c5daa0c.js";const a=class{constructor(t){o(this,t)}render(){return t("div",{class:"modal__action"},t("slot",null))}};a.style=".modal__action{display:-ms-flexbox;display:flex;padding-left:24px;padding-top:16px;position:absolute;bottom:32px;right:32px}";export{a as bds_modal_action}

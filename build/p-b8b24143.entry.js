@@ -1,0 +1,1 @@
+import{r as s,h as t,H as a}from"./p-1c5daa0c.js";const l=class{constructor(t){s(this,t)}render(){return t(a,null,t("slot",null))}};l.style="*{-webkit-transition:all 0.5s;-moz-transition:all 0.5s;transition:all 0.5s}:host{display:block}";export{l as bds_expansion_panel}

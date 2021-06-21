@@ -1,0 +1,1 @@
+const w=/^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/,r=/\S/,e=/^[0-9]*$/,n=r=>{if(r&&!w.test(r))return!0},s=w=>{if(w&&!e.test(w))return!0},t=w=>r.test(w);export{n as e,s as n,t as w}

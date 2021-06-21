@@ -1,0 +1,1 @@
+System.register([],(function(t){"use strict";return{execute:function(){var r=/^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;var e=/\S/;var n=/^[0-9]*$/;var u=t("e",(function(t){if(t&&!r.test(t)){return true}}));var i=t("n",(function(t){if(t&&!n.test(t)){return true}}));var c=t("w",(function(t){return e.test(t)}))}}}));
