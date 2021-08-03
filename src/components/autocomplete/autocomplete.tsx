@@ -109,7 +109,6 @@ export class BdsAutocomplete {
 
   @Watch('value')
   valueChanged(): void {
-    this.bdsChange.emit({ value: this.value });
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
@@ -277,6 +276,7 @@ export class BdsAutocomplete {
   };
 
   private changedInputValue = async () => {
+    this.bdsChange.emit({ value: this.nativeInput.value });
     if (this.nativeInput.value) {
       await this.filterOptions(this.nativeInput.value);
     } else {
