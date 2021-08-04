@@ -130,6 +130,7 @@ export class BdsAutocomplete {
   @Watch('options')
   parseOptions() {
     if (this.options) {
+      this.resetFilterOptions();
       this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
     }
   }
