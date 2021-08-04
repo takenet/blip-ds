@@ -13,7 +13,13 @@ export class SelectChips {
 
   @State() isOpen? = false;
 
-  @Prop({ mutable: true }) options?: Array<Option> = [];
+  /**
+   * The options of the select
+   * Should be passed this way:
+   * options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
+   * Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+   */
+  @Prop({ mutable: true }) options?: string | Option[] = [];
 
   @Prop({ mutable: true }) chips: string[] = [];
 
@@ -285,6 +291,15 @@ export class SelectChips {
     // console.log('TRACE [select-chips] render', this.childOptions);
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
+    let internalOptions: Option[] = [];
+    if (this.options) {
+      if (typeof this.options === 'string') {
+        internalOptions = JSON.parse(this.options);
+      } else {
+        internalOptions = this.options;
+      }
+    }
+
     return (
       <div
         class="select"
@@ -319,7 +334,7 @@ export class SelectChips {
             'select__options--open': this.isOpen,
           }}
         >
-          {this.options.map((option) => (
+          {internalOptions.map((option) => (
             <bds-select-option
               key={this.generateKey(option.value)}
               onOptionSelected={this.handler}

@@ -808,7 +808,10 @@ export namespace Components {
           * Specify if is possible to create a new tag that is not on the options.
          */
         "notFoundMessage"?: string;
-        "options"?: Array<Option>;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | Option[];
         /**
           * the value of the select.
          */
@@ -2198,7 +2201,10 @@ declare namespace LocalJSX {
           * Emitted when the select loses focus.
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
-        "options"?: Array<Option>;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | Option[];
         /**
           * the value of the select.
          */
