@@ -759,6 +759,10 @@ export namespace Components {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "canAddNew"?: boolean;
         "chips": string[];
         /**
           * Add state danger on input, use for use feedback.
@@ -800,6 +804,10 @@ export namespace Components {
           * Used for add prefix on new option select.
          */
         "newPrefix"?: string;
+        /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "notFoundMessage"?: string;
         "options"?: Array<Option>;
         /**
           * the value of the select.
@@ -2133,6 +2141,10 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "canAddNew"?: boolean;
         "chips"?: string[];
         /**
           * Add state danger on input, use for use feedback.
@@ -2166,6 +2178,10 @@ declare namespace LocalJSX {
           * Used for add prefix on new option select.
          */
         "newPrefix"?: string;
+        /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "notFoundMessage"?: string;
         /**
           * Emitted when the select loses focus.
          */
