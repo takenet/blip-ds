@@ -759,6 +759,10 @@ export namespace Components {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "canAddNew"?: boolean;
         "chips": string[];
         /**
           * Add state danger on input, use for use feedback.
@@ -800,7 +804,14 @@ export namespace Components {
           * Used for add prefix on new option select.
          */
         "newPrefix"?: string;
-        "options"?: Array<Option>;
+        /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "notFoundMessage"?: string;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | Option[];
         /**
           * the value of the select.
          */
@@ -2133,6 +2144,10 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "canAddNew"?: boolean;
         "chips"?: string[];
         /**
           * Add state danger on input, use for use feedback.
@@ -2167,6 +2182,10 @@ declare namespace LocalJSX {
          */
         "newPrefix"?: string;
         /**
+          * Specify if is possible to create a new tag that is not on the options.
+         */
+        "notFoundMessage"?: string;
+        /**
           * Emitted when the select loses focus.
          */
         "onBdsBlur"?: (event: CustomEvent<void>) => void;
@@ -2182,7 +2201,10 @@ declare namespace LocalJSX {
           * Emitted when the select loses focus.
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
-        "options"?: Array<Option>;
+        /**
+          * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "options"?: string | Option[];
         /**
           * the value of the select.
          */

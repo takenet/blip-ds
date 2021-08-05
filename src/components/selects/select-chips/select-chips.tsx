@@ -13,7 +13,13 @@ export class SelectChips {
 
   @State() isOpen? = false;
 
-  @Prop({ mutable: true }) options?: Array<Option> = [];
+  /**
+   * The options of the select
+   * Should be passed this way:
+   * options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
+   * Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
+   */
+  @Prop({ mutable: true }) options?: string | Option[] = [];
 
   @Prop({ mutable: true }) chips: string[] = [];
 
@@ -83,6 +89,16 @@ export class SelectChips {
    */
   @Prop() duplicated?: boolean = false;
 
+  /**
+   *  Specify if is possible to create a new tag that is not on the options.
+   */
+  @Prop() canAddNew?: boolean = true;
+
+  /**
+   *  Specify if is possible to create a new tag that is not on the options.
+   */
+  @Prop() notFoundMessage?: string = 'No results found';
+
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
     if (!this.el.contains(ev.target as HTMLInputElement)) {
@@ -117,11 +133,11 @@ export class SelectChips {
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add)'));
+    return Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'));
   }
 
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add)'));
+    return Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
   }
 
   private enableCreateOption(): boolean {
@@ -188,6 +204,9 @@ export class SelectChips {
         if (this.childOptionsEnabled.length === 1) {
           this.nativeInput.add(this.childOptionsEnabled[0].textContent);
         } else {
+          if (!this.canAddNew) {
+            return;
+          }
           this.nativeInput.add(this.nativeInput.value);
         }
 
@@ -272,6 +291,15 @@ export class SelectChips {
     // console.log('TRACE [select-chips] render', this.childOptions);
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
+    let internalOptions: Option[] = [];
+    if (this.options) {
+      if (typeof this.options === 'string') {
+        internalOptions = JSON.parse(this.options);
+      } else {
+        internalOptions = this.options;
+      }
+    }
+
     return (
       <div
         class="select"
@@ -306,7 +334,7 @@ export class SelectChips {
             'select__options--open': this.isOpen,
           }}
         >
-          {this.options.map((option) => (
+          {internalOptions.map((option) => (
             <bds-select-option
               key={this.generateKey(option.value)}
               onOptionSelected={this.handler}
@@ -316,7 +344,7 @@ export class SelectChips {
             </bds-select-option>
           ))}
           <slot />
-          {this.enableCreateOption() && (
+          {this.canAddNew && this.enableCreateOption() && (
             <bds-select-option
               id="option-add"
               value="add"
@@ -324,6 +352,11 @@ export class SelectChips {
             >
               {this.newPrefix}
               {this.nativeInput.value}
+            </bds-select-option>
+          )}
+          {!this.canAddNew && this.enableCreateOption() && (
+            <bds-select-option id="no-option" value="add">
+              {this.notFoundMessage}
             </bds-select-option>
           )}
         </div>
