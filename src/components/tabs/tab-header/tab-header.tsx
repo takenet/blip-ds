@@ -32,8 +32,6 @@ export class TabHeader implements ComponentInterface {
       'bds-tab-header': true,
       'bds-tab-header-selected': this.active,
     };
-    // eslint-disable-next-line no-console
-    console.warn(this.active);
 
     return (
       <div class={classes} onClick={this.onClick.bind(this)}>

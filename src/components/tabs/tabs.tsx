@@ -22,7 +22,6 @@ export class Tabs implements ComponentInterface {
 
   @Listen('bdsSelect')
   onSelectedTab(event: CustomEvent) {
-    console.warn({ event });
     const group = this.tabGroup.find((group) => group.header.id === event.detail.id);
     this.selectGroup(group);
   }
@@ -46,10 +45,9 @@ export class Tabs implements ComponentInterface {
 
   async selectGroup(group: TabGroup) {
     await this.resetActiveGroup();
+
     group.header.active = true;
     group.content.active = true;
-
-    console.log('enabled', group.header.active, group.content.active);
   }
 
   @Method()
@@ -57,8 +55,6 @@ export class Tabs implements ComponentInterface {
     for (const group of this.tabGroup) {
       group.content.active = false;
       group.header.active = false;
-
-      console.log('disabled', { header: group.header.active, content: group.content.active });
     }
   }
 
