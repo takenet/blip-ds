@@ -6,13 +6,13 @@ import { BdsTabHeaderData } from '../tabs-interface';
   styleUrl: 'tab-header.scss',
 })
 export class TabHeader implements ComponentInterface {
-  id: string = Math.random().toString(36).substr(2, 10);
+  @Prop() id: string = Math.random().toString(36).substr(2, 10);
 
   @Prop() name: string;
 
   @Event() bdsSelect: EventEmitter;
 
-  @State() active = false;
+  @Prop() active = false;
 
   @Method()
   async getChild(): Promise<BdsTabHeaderData> {
@@ -23,10 +23,8 @@ export class TabHeader implements ComponentInterface {
     };
   }
 
-  onClick() {
-    // eslint-disable-next-line no-console
-    console.log('aaaaaaaaaaaaaa');
-    this.bdsSelect.emit(this.getChild());
+  async onClick() {
+    this.bdsSelect.emit(await this.getChild());
   }
 
   render(): HTMLElement {
@@ -34,6 +32,8 @@ export class TabHeader implements ComponentInterface {
       'bds-tab-header': true,
       'bds-tab-header-selected': this.active,
     };
+    // eslint-disable-next-line no-console
+    console.warn(this.active);
 
     return (
       <div class={classes} onClick={this.onClick.bind(this)}>

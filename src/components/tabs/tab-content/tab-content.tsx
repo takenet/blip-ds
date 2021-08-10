@@ -8,7 +8,7 @@ import { BdsTabData } from '../tabs-interface';
 export class TabContent implements ComponentInterface {
   @Prop() name: string;
 
-  @State() active = false;
+  @Prop() active = false;
 
   @Method()
   async getChild(): Promise<BdsTabData> {

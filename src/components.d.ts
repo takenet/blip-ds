@@ -933,11 +933,14 @@ export namespace Components {
         "size"?: SwitchSize;
     }
     interface BdsTabContent {
+        "active": boolean;
         "getChild": () => Promise<BdsTabData>;
         "name": string;
     }
     interface BdsTabHeader {
+        "active": boolean;
         "getChild": () => Promise<BdsTabHeaderData>;
+        "id": string;
         "name": string;
     }
     interface BdsTabs {
@@ -2337,9 +2340,12 @@ declare namespace LocalJSX {
         "size"?: SwitchSize;
     }
     interface BdsTabContent {
+        "active"?: boolean;
         "name"?: string;
     }
     interface BdsTabHeader {
+        "active"?: boolean;
+        "id"?: string;
         "name"?: string;
         "onBdsSelect"?: (event: CustomEvent<any>) => void;
     }
