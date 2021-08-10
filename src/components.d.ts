@@ -931,6 +931,9 @@ export namespace Components {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTabs {
+     
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -1255,6 +1258,12 @@ declare global {
         prototype: HTMLBdsSwitchElement;
         new (): HTMLBdsSwitchElement;
     };
+    interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
+    }
+    var HTMLBdsTabsElement: {
+        prototype: HTMLBdsTabsElement;
+        new (): HTMLBdsTabsElement;
+    };
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
     }
     var HTMLBdsToastElement: {
@@ -1322,6 +1331,7 @@ declare global {
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
+        "bds-tabs": HTMLBdsTabsElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
@@ -2300,6 +2310,9 @@ declare namespace LocalJSX {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTabs {
+    
+    }  
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -2439,6 +2452,7 @@ declare namespace LocalJSX {
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
+        "bds-tabs": BdsTabs;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
@@ -2486,6 +2500,7 @@ declare module "@stencil/core" {
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
+            "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
