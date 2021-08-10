@@ -1,6 +1,5 @@
 export interface BdsTabData {
-  select: () => void;
-  unselect: () => void;
+  active: boolean;
   name: string;
 }
 

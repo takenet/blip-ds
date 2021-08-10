@@ -21,6 +21,7 @@ import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./co
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
+import { BdsTabData, BdsTabHeaderData, TabGroup } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -931,8 +932,19 @@ export namespace Components {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTabContent {
+        "getChild": () => Promise<BdsTabData>;
+        "name": string;
+    }
+    interface BdsTabHeader {
+        "getChild": () => Promise<BdsTabHeaderData>;
+        "name": string;
+    }
     interface BdsTabs {
-     
+        "resetActiveGroup": () => Promise<void>;
+        "tabGroup": TabGroup[];
+        "tabsContent": BdsTabData[];
+        "tabsHeader": BdsTabHeaderData[];
     }
     interface BdsToast {
         /**
@@ -1258,6 +1270,18 @@ declare global {
         prototype: HTMLBdsSwitchElement;
         new (): HTMLBdsSwitchElement;
     };
+    interface HTMLBdsTabContentElement extends Components.BdsTabContent, HTMLStencilElement {
+    }
+    var HTMLBdsTabContentElement: {
+        prototype: HTMLBdsTabContentElement;
+        new (): HTMLBdsTabContentElement;
+    };
+    interface HTMLBdsTabHeaderElement extends Components.BdsTabHeader, HTMLStencilElement {
+    }
+    var HTMLBdsTabHeaderElement: {
+        prototype: HTMLBdsTabHeaderElement;
+        new (): HTMLBdsTabHeaderElement;
+    };
     interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
     }
     var HTMLBdsTabsElement: {
@@ -1331,6 +1355,8 @@ declare global {
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
+        "bds-tab-content": HTMLBdsTabContentElement;
+        "bds-tab-header": HTMLBdsTabHeaderElement;
         "bds-tabs": HTMLBdsTabsElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
@@ -2310,9 +2336,18 @@ declare namespace LocalJSX {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTabContent {
+        "name"?: string;
+    }
+    interface BdsTabHeader {
+        "name"?: string;
+        "onBdsSelect"?: (event: CustomEvent<any>) => void;
+    }
     interface BdsTabs {
-    
-    }  
+        "tabGroup"?: TabGroup[];
+        "tabsContent"?: BdsTabData[];
+        "tabsHeader"?: BdsTabHeaderData[];
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -2452,6 +2487,8 @@ declare namespace LocalJSX {
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
+        "bds-tab-content": BdsTabContent;
+        "bds-tab-header": BdsTabHeader;
         "bds-tabs": BdsTabs;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
@@ -2500,6 +2537,8 @@ declare module "@stencil/core" {
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
+            "bds-tab-content": LocalJSX.BdsTabContent & JSXBase.HTMLAttributes<HTMLBdsTabContentElement>;
+            "bds-tab-header": LocalJSX.BdsTabHeader & JSXBase.HTMLAttributes<HTMLBdsTabHeaderElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;

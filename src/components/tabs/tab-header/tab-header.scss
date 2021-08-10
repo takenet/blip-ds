@@ -1,0 +1,22 @@
+.bds-tab-header {
+    min-height: 40px;
+    min-width: 150px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+}
+
+@media (max-width: 599px) {
+    .bds-tab-header {
+        min-width: 100px;
+    }
+}
+
+.bds-tab-header-selected {
+    border-bottom: 2px solid  $color-primary-main;
+}

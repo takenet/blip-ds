@@ -1,4 +1,5 @@
-import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
+/* eslint-disable no-console */
+import { Component, ComponentInterface, Element, h, Host, Listen, Method, Prop } from '@stencil/core';
 import { BdsTabData, BdsTabHeaderData, TabGroup } from './tabs-interface';
 
 @Component({
@@ -12,7 +13,7 @@ export class Tabs implements ComponentInterface {
 
   @Element() el!: HTMLElement;
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.createGroup();
 
     const [group] = this.tabGroup;
@@ -27,11 +28,10 @@ export class Tabs implements ComponentInterface {
 
   createGroup() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const tabsHeaderEl = Array.from(this.el.querySelectorAll('bds-tab-header')) as any[];
-    this.tabsHeader = tabsHeaderEl.map((el) => el.getChild());
+    this.tabsHeader = Array.from(this.el.querySelectorAll('bds-tab-header')) as any[];
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const tabsContentEl = Array.from(this.el.querySelectorAll('bds-tab-content')) as any[];
-    this.tabsContent = tabsContentEl.map((el) => el.getChild());
+    this.tabsContent = Array.from(this.el.querySelectorAll('bds-tab-content')) as any[];
 
     this.tabGroup = this.tabsHeader.map((header) => {
       const content = this.tabsContent.find((content) => content.name === header.name);
@@ -43,14 +43,19 @@ export class Tabs implements ComponentInterface {
     });
   }
 
-  selectGroup(group: TabGroup) {
-    this.tabGroup.forEach((tab) => {
-      tab.header.unselect();
-      tab.content.unselect();
-    });
+  async selectGroup(group: TabGroup) {
+    await this.resetActiveGroup();
+    console.log(group);
+    group.header.active = true;
+    group.content.active = true;
+  }
 
-    group.header.select();
-    group.content.select();
+  @Method()
+  public async resetActiveGroup() {
+    for (const group of this.tabGroup) {
+      group.content.active = false;
+      group.header.active = false;
+    }
   }
 
   render(): HTMLElement {
