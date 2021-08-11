@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Method, Prop, State } from '@stencil/core';
+import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
 import { BdsTabData } from '../tabs-interface';
 
 @Component({
@@ -26,7 +26,9 @@ export class TabContent implements ComponentInterface {
 
     return (
       <div class={classes}>
-        <slot />
+        <bds-typo>
+          <slot />
+        </bds-typo>
       </div>
     );
   }

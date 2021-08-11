@@ -12,18 +12,27 @@ export class Tabs implements ComponentInterface {
   @Prop() tabGroup: TabGroup[];
 
   @Element() el!: HTMLElement;
+  tabsHeaderChildElement: HTMLElement;
 
-  componentDidLoad() {
+  componentWillLoad() {
     this.createGroup();
-
     const [group] = this.tabGroup;
     this.selectGroup(group);
   }
 
+  componentDidLoad() {
+    this.tabsHeaderChildElement = this.el.querySelector('.bds-tabs-header');
+  }
+
   @Listen('bdsSelect')
   onSelectedTab(event: CustomEvent) {
-    const group = this.tabGroup.find((group) => group.header.id === event.detail.id);
+    const group = this.tabGroup.find((group) => group.header.name === event.detail.name);
     this.selectGroup(group);
+  }
+
+  @Listen('wheel')
+  onWheel(event: WheelEvent) {
+    this.tabsHeaderChildElement.scrollLeft += event.deltaY;
   }
 
   createGroup() {

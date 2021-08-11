@@ -26,6 +26,19 @@ Type: `Promise<BdsTabData>`
 
 
 
+## Dependencies
+
+### Depends on
+
+- [bds-typo](../../typo)
+
+### Graph
+```mermaid
+graph TD;
+  bds-tab-content --> bds-typo
+  style bds-tab-content fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, EventEmitter, Event, h, Prop, State, Method } from '@stencil/core';
+import { Component, ComponentInterface, EventEmitter, Event, h, Prop, Method } from '@stencil/core';
 import { BdsTabHeaderData } from '../tabs-interface';
 
 @Component({
@@ -32,10 +32,18 @@ export class TabHeader implements ComponentInterface {
       'bds-tab-header': true,
       'bds-tab-header-selected': this.active,
     };
+    const bold = this.active ? 'bold' : 'regular';
+    /*
+      $font-weight-regular: 400;
+      $font-weight-semi-bold: 600;
+      $font-weight-bold: 700;
+    */
 
     return (
       <div class={classes} onClick={this.onClick.bind(this)}>
-        <slot />
+        <bds-typo variant="fs-16" bold={bold}>
+          <slot />
+        </bds-typo>
       </div>
     );
   }
