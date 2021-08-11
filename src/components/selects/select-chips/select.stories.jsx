@@ -19,7 +19,7 @@ export const defaultSelect = () => {
   const canAddNew = boolean('Can Add New', true);
   return (
     <div style={styles}>
-      <bds-select-chips new-prefix="Create: " can-add-new={canAddNew}>
+      <bds-select-chips new-prefix="Create: " can-add-new={canAddNew} chips='["Millie Bobby"]'>
         <bds-select-option value="1">Millie Bobby</bds-select-option>
         <bds-select-option value="2">Finn Wolfhard</bds-select-option>
         <bds-select-option value="3">David Harbour</bds-select-option>
