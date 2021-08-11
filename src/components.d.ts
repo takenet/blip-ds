@@ -1384,6 +1384,10 @@ declare namespace LocalJSX {
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
         /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        /**
           * Emitted when the selected value has changed.
          */
         "onBdsSelectedChange"?: (event: CustomEvent<AutocompleteSelectedChangeEventDetail>) => void;
