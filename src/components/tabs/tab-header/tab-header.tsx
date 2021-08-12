@@ -32,12 +32,7 @@ export class TabHeader implements ComponentInterface {
       'bds-tab-header': true,
       'bds-tab-header-selected': this.active,
     };
-    const bold = this.active ? 'bold' : 'regular';
-    /*
-      $font-weight-regular: 400;
-      $font-weight-semi-bold: 600;
-      $font-weight-bold: 700;
-    */
+    const bold = this.active ? 'semi-bold' : 'regular';
 
     return (
       <div class={classes} onClick={this.onClick.bind(this)}>
