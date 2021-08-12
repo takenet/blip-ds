@@ -7,24 +7,9 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type                 | Default     |
-| ------------- | --------- | ----------- | -------------------- | ----------- |
-| `tabGroup`    | --        |             | `TabGroup[]`         | `undefined` |
-| `tabsContent` | --        |             | `BdsTabData[]`       | `undefined` |
-| `tabsHeader`  | --        |             | `BdsTabHeaderData[]` | `undefined` |
-
-
-## Methods
-
-### `resetActiveGroup() => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
+| Property   | Attribute  | Description | Type      | Default |
+| ---------- | ---------- | ----------- | --------- | ------- |
+| `overflow` | `overflow` |             | `boolean` | `false` |
 
 
 ----------------------------------------------

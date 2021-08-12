@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Component, ComponentInterface, Element, h, Host, Listen, Method, Prop } from '@stencil/core';
+import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
 import { BdsTabData, BdsTabHeaderData, TabGroup } from './tabs-interface';
 
 @Component({
@@ -7,9 +7,11 @@ import { BdsTabData, BdsTabHeaderData, TabGroup } from './tabs-interface';
   styleUrl: 'tabs.scss',
 })
 export class Tabs implements ComponentInterface {
-  @Prop() tabsHeader: BdsTabHeaderData[];
-  @Prop() tabsContent: BdsTabData[];
-  @Prop() tabGroup: TabGroup[];
+  tabsHeader: BdsTabHeaderData[];
+  tabsContent: BdsTabData[];
+  tabGroup: TabGroup[];
+
+  @Prop() overflow = false;
 
   @Element() el!: HTMLElement;
   tabsHeaderChildElement: HTMLElement;
@@ -59,8 +61,7 @@ export class Tabs implements ComponentInterface {
     group.content.active = true;
   }
 
-  @Method()
-  public async resetActiveGroup() {
+  async resetActiveGroup() {
     for (const group of this.tabGroup) {
       group.content.active = false;
       group.header.active = false;

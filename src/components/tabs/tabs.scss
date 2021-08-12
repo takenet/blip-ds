@@ -5,16 +5,11 @@
   overflow: hidden;
   height: 48px;
   padding-bottom: 2px;
-}
 
-.bds-tabs-header:hover {
-  overflow-x: auto;
+  &:hover {
+    overflow-x: auto;
+  }
 }
-
-.bds-tabs-content {
-  padding: 10px;
-}
-
 
 ::-webkit-scrollbar {
   height: 3px;

@@ -21,7 +21,7 @@ import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./co
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
-import { BdsTabData, BdsTabHeaderData, TabGroup } from "./components/tabs/tabs-interface";
+import { BdsTabData, BdsTabHeaderData } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -944,10 +944,7 @@ export namespace Components {
         "name": string;
     }
     interface BdsTabs {
-        "resetActiveGroup": () => Promise<void>;
-        "tabGroup": TabGroup[];
-        "tabsContent": BdsTabData[];
-        "tabsHeader": BdsTabHeaderData[];
+        "overflow": boolean;
     }
     interface BdsToast {
         /**
@@ -2350,9 +2347,7 @@ declare namespace LocalJSX {
         "onBdsSelect"?: (event: CustomEvent<any>) => void;
     }
     interface BdsTabs {
-        "tabGroup"?: TabGroup[];
-        "tabsContent"?: BdsTabData[];
-        "tabsHeader"?: BdsTabHeaderData[];
+        "overflow"?: boolean;
     }
     interface BdsToast {
         /**

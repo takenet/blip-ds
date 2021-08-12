@@ -1,22 +1,29 @@
-.bds-tab-header {
-  height: 45px;
-
+bds-tab-header {
   cursor: pointer;
   color: $color-neutral-medium-cloud;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-bottom: 2px solid transparent;
   white-space: nowrap;
 
-  :hover {
+  &:hover {
     color: $color-primary-main;
   }
-}
 
-bds-tab-header:not(:last-child) {
+  &:not(:last-child) {
+    .bds-tab-header {
+      margin-right: 42px;
+    }
+  }
+
+  &-selected {
+    border-bottom: 2px solid $color-primary-main;
+    color: $color-primary-main;
+  }
+
   .bds-tab-header {
-    margin-right: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
   }
 }
 
