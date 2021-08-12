@@ -29,6 +29,7 @@
 | `bdsCancel`         | Emitted when the selection is cancelled.     | `CustomEvent<void>`                                  |
 | `bdsChange`         | Emitted when the value has changed.          | `CustomEvent<AutocompleteChangeEventDetail>`         |
 | `bdsFocus`          | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
+| `bdsInput`          | Emitted when the input has changed.          | `CustomEvent<KeyboardEvent>`                         |
 | `bdsSelectedChange` | Emitted when the selected value has changed. | `CustomEvent<AutocompleteSelectedChangeEventDetail>` |
 
 

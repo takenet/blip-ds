@@ -68,6 +68,11 @@ export class BdsAutocomplete {
   @Event() bdsSelectedChange!: EventEmitter<AutocompleteSelectedChangeEventDetail>;
 
   /**
+   * Emitted when the input has changed.
+   */
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+
+  /**
    * Emitted when the selection is cancelled.
    */
   @Event() bdsCancel!: EventEmitter<void>;
@@ -144,6 +149,14 @@ export class BdsAutocomplete {
     }
     this.text = this.getText();
   }
+
+  private onInput = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    this.bdsInput.emit(ev as KeyboardEvent);
+  };
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return this.options
@@ -354,6 +367,7 @@ export class BdsAutocomplete {
           disabled={this.disabled}
           placeholder={this.placeholder}
           onBdsChange={this.changedInputValue}
+          onBdsInput={this.onInput}
           readonly={false}
         >
           <div slot="input-right" class="select__icon">
