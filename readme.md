@@ -176,40 +176,14 @@ applyPolyfills().then(() => {
 
 **Examples**
 
-React has a big problem working with web components, as properties and events are not handled correctly. The solution to these two problems is to create a web component wrapper with a React component, and thus using the Ref of the custom element. As in the example below:
+To use blip-ds components on React, you just need to import component from 'blip-ds/dist/blip-ds-react'.
 
 ```jsx
-const InputExample = ({ onInput, onChange, value }) => {
-  const elementRf = useRef(null);
 
-  useEffect(() => {
-    elementRf.current.value = value;
-    elementRf.current.addEventListener('bdsChange', (event) => {
-      onChange(event);
-    });
+import { BdsButton } from 'blip-ds/dist/blip-ds-react';
 
-    elementRf.current.addEventListener('bdsInput', (event) => {
-      console.log('bdsInput', { event })
-    });
-  }, [value, onChange, onInput]);
-
-  return <bds-input ref={elementRf} value={value}></bds-input>
-
-}
-```
-
-Here we create a functional component named InputExample to be the wrapper for the Custom Element bds-input.
-
-```jsx
-function CountBlipDS() {
-  const [count, changeCount] = useState(0);
-
-  return (
-    <div>
-      <p> {count} </p>
-      <InputExample value={count} onChange={(event) => { changeCount(event.target.value) }}></InputExample>
-    </div>
-  );
+const Example = () => {
+  return <BdsButton>Button</BdsButton>
 }
 ```
 
