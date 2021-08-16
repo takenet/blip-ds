@@ -1,13 +1,11 @@
 import { Component, ComponentInterface, EventEmitter, Event, h, Prop, Method } from '@stencil/core';
-import { BdsTabHeaderData } from '../tabs-interface';
+import { BdsTabData } from '../tabs-interface';
 
 @Component({
   tag: 'bds-tab-header',
   styleUrl: 'tab-header.scss',
 })
 export class TabHeader implements ComponentInterface {
-  @Prop() id: string = Math.random().toString(36).substr(2, 10);
-
   @Prop() name: string;
 
   @Event() bdsSelect: EventEmitter;
@@ -15,11 +13,10 @@ export class TabHeader implements ComponentInterface {
   @Prop() active = false;
 
   @Method()
-  async getChild(): Promise<BdsTabHeaderData> {
+  async getChild(): Promise<BdsTabData> {
     return {
       active: this.active,
       name: this.name,
-      id: this.id,
     };
   }
 

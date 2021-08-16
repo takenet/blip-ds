@@ -10,26 +10,27 @@
   <style>
     body {
       background: #f5f8f9;
-      /*background: #0a0f1a;*/
     }
+    .bds-tabs-header {
+      background-color: white;
+      width:fit-content;
+    }
+
   </style>
 
   <body>
-    <bds-tabs> 
-  <bds-tab-header slot="header" name="tab1">Tab 1</bds-tab-header>
-  <bds-tab-header slot="header" name="tab2">Tab 2</bds-tab-header>
+    <bds-tabs>
+      <bds-tab-header slot="header" name="tab1">Configuração básica</bds-tab-header>
+      <bds-tab-header slot="header" name="tab2"> Configuração avançada</bds-tab-header>
+      <bds-tab-header slot="header" name="tab3"> Configuração avançadíssima</bds-tab-header>
 
-  <bds-tab-content slot="content" name="tab1">
-     Content 1
-  </bds-tab-content>
+      <bds-tab-content slot="content" name="tab1"> Configuração básica </bds-tab-content>
 
-  <bds-tab-content slot="content" name="tab2">
-     Content 2
-  </bds-tab-content>
+      <bds-tab-content slot="content" name="tab2"> Configuração avançada </bds-tab-content>
 
-</bds-tabs>
+      <bds-tab-content slot="content" name="tab3"> Configuração avançadíssima </bds-tab-content>
+    </bds-tabs>
   </body>
-  
-  <script>
-  </script>
+
+  <script></script>
 </html>

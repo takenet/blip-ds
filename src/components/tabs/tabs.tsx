@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { BdsTabData, BdsTabHeaderData, TabGroup } from './tabs-interface';
+import { BdsTabData, TabGroup } from './tabs-interface';
 
 @Component({
   tag: 'bds-tabs',
   styleUrl: 'tabs.scss',
 })
 export class Tabs implements ComponentInterface {
-  tabsHeader: BdsTabHeaderData[];
+  tabsHeader: BdsTabData[];
   tabsContent: BdsTabData[];
   tabGroup: TabGroup[];
 

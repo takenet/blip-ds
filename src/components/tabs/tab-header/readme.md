@@ -7,11 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default                                    |
-| -------- | --------- | ----------- | --------- | ------------------------------------------ |
-| `active` | `active`  |             | `boolean` | `false`                                    |
-| `id`     | `id`      |             | `string`  | `Math.random().toString(36).substr(2, 10)` |
-| `name`   | `name`    |             | `string`  | `undefined`                                |
+| Property | Attribute | Description | Type      | Default     |
+| -------- | --------- | ----------- | --------- | ----------- |
+| `active` | `active`  |             | `boolean` | `false`     |
+| `name`   | `name`    |             | `string`  | `undefined` |
 
 
 ## Events
@@ -23,13 +22,13 @@
 
 ## Methods
 
-### `getChild() => Promise<BdsTabHeaderData>`
+### `getChild() => Promise<BdsTabData>`
 
 
 
 #### Returns
 
-Type: `Promise<BdsTabHeaderData>`
+Type: `Promise<BdsTabData>`
 
 
 
