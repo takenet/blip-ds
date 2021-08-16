@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { BdsTabData, TabGroup } from './tabs-interface';
+import { Component, ComponentInterface, Element, EventEmitter, Event, h, Host, Listen, Prop } from '@stencil/core';
+import { BdsTabData, ScrollDirection, TabGroup } from './tabs-interface';
 
 @Component({
   tag: 'bds-tabs',
@@ -32,10 +32,16 @@ export class Tabs implements ComponentInterface {
     this.selectGroup(group);
   }
 
-  @Listen('wheel')
-  onWheel(event: WheelEvent) {
-    this.tabsHeaderChildElement.scrollLeft += event.deltaY;
-  }
+  @Event() scrollButton: EventEmitter;
+
+  private handleScrollButtonClick = (direction: ScrollDirection) => {
+    console.log(direction);
+
+    this.tabsHeaderChildElement.scrollLeft =
+      direction == ScrollDirection.RIGHT
+        ? this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth
+        : this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.offsetWidth;
+  };
 
   createGroup() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -71,9 +77,26 @@ export class Tabs implements ComponentInterface {
   render(): HTMLElement {
     return (
       <Host>
-        <div class="bds-tabs-header">
-          <slot name="header" />
+        <div class="bds-tabs-header-container">
+          <bds-button
+            class="bds-tabs-header-button"
+            icon="arrow-left"
+            id="bds-tabs-button-left"
+            onClick={() => this.handleScrollButtonClick(ScrollDirection.LEFT)}
+            variant="secondary"
+          ></bds-button>
+          <div class="bds-tabs-header">
+            <slot name="header" />
+          </div>
+          <bds-button
+            class="bds-tabs-header-button"
+            icon="arrow-right"
+            id="bds-tabs-button-right"
+            onClick={() => this.handleScrollButtonClick(ScrollDirection.RIGHT)}
+            variant="secondary"
+          ></bds-button>
         </div>
+
         <div class="bds-tabs-content">
           <slot name="content" />
         </div>

@@ -1,8 +1,8 @@
 bds-tab-header {
   cursor: pointer;
   color: $color-neutral-medium-cloud;
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
+  max-width: 270px;
+  text-align: center;
 
   &:hover {
     color: $color-primary-main;

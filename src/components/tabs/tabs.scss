@@ -1,26 +1,58 @@
-.bds-tabs-header {
+.bds-tabs-header-container {
+  width: 100%;
   display: flex;
-  padding: 0px 40px 0px 40px;
-  margin-bottom: 3px;
-  overflow: hidden;
+  z-index: 1100;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-direction: row;
+  align-items: center;
+  
   height: 48px;
-  padding-bottom: 2px;
+  margin-bottom: 3px;
 
-  &:hover {
-    overflow-x: auto;
+  .bds-tabs-header {
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+    overflow-x: scroll;
+    padding: 0px 40px 0px 40px;
+
+    .bds-tabs-header-button {
+      color: inherit;
+      border: 0;
+      cursor: pointer;
+      margin: 0;
+      display: inline-flex;
+      outline: 0;
+      padding: 0;
+      position: relative;
+      align-items: center;
+      user-select: none;
+      border-radius: 0;
+      vertical-align: middle;
+      -moz-appearance: none;
+      justify-content: center;
+      text-decoration: none;
+      background-color: transparent;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      width: 40px;
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
   }
-}
 
-::-webkit-scrollbar {
-  height: 3px;
-}
-::-webkit-scrollbar-thumb {
-  background: #d6d6d6;
-  border-radius: 0px;
-}
+  ::-webkit-scrollbar {
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d6d6d6;
+    border-radius: 0px;
+  }
 
-::-webkit-scrollbar-track {
-  background: #f5f5f5;
-  border-radius: 0px;
-  box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+  ::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 0px;
+    box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+  }
 }

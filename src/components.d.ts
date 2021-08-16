@@ -2345,6 +2345,7 @@ declare namespace LocalJSX {
         "onBdsSelect"?: (event: CustomEvent<any>) => void;
     }
     interface BdsTabs {
+        "onScrollButton"?: (event: CustomEvent<any>) => void;
         "overflow"?: boolean;
     }
     interface BdsToast {
