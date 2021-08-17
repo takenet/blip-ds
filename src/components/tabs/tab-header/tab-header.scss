@@ -1,7 +1,6 @@
 bds-tab-header {
   cursor: pointer;
   color: $color-neutral-medium-cloud;
-  max-width: 270px;
   text-align: center;
 
   &:hover {
@@ -24,6 +23,8 @@ bds-tab-header {
     justify-content: center;
     align-items: center;
     height: 45px;
+      min-width: 90px;
+  max-width: 270px;
   }
 }
 

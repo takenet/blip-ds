@@ -943,7 +943,7 @@ export namespace Components {
         "name": string;
     }
     interface BdsTabs {
-        "overflow": boolean;
+        "overflowLeft": boolean;
     }
     interface BdsToast {
         /**
@@ -2345,8 +2345,7 @@ declare namespace LocalJSX {
         "onBdsSelect"?: (event: CustomEvent<any>) => void;
     }
     interface BdsTabs {
-        "onScrollButton"?: (event: CustomEvent<any>) => void;
-        "overflow"?: boolean;
+        "overflowLeft"?: boolean;
     }
     interface BdsToast {
         /**

@@ -7,16 +7,9 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default |
-| ---------- | ---------- | ----------- | --------- | ------- |
-| `overflow` | `overflow` |             | `boolean` | `false` |
-
-
-## Events
-
-| Event          | Description | Type               |
-| -------------- | ----------- | ------------------ |
-| `scrollButton` |             | `CustomEvent<any>` |
+| Property       | Attribute       | Description | Type      | Default |
+| -------------- | --------------- | ----------- | --------- | ------- |
+| `overflowLeft` | `overflow-left` |             | `boolean` | `false` |
 
 
 ## Dependencies
