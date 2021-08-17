@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { ScrollDirection } from '../tabs-interface';
+import { Component, ComponentInterface, Element, h, Listen } from '@stencil/core';
+import { ScrollDirection, Display } from '../tabs-interface';
 
 @Component({
   tag: 'bds-tab-bar',
@@ -17,28 +17,66 @@ export class TabBar implements ComponentInterface {
     this.tabsHeaderChildElement = this.el.querySelector('.bds-tabs-header');
     this.leftButtonChildElement = this.el.querySelector('#bds-tabs-button-left');
     this.rightButtonChildElement = this.el.querySelector('#bds-tabs-button-right');
+    window.onresize = this.handleHeaderResize;
+    this.toggleButtonVisibility(true);
 
-    this.toggleButtonVisibility();
+    console.log({
+      scrollLeft: this.tabsHeaderChildElement.scrollLeft,
+      offsetWidth: this.tabsHeaderChildElement.offsetWidth,
+      scrollWidth: this.tabsHeaderChildElement.scrollWidth,
+    });
   }
 
-  private toggleButtonVisibility = () => {
-    this.leftButtonChildElement.style.display = this.tabsHeaderChildElement.scrollLeft > 0 ? 'block' : 'none';
+  private handleHeaderResize = () => {
+    if (this.tabsHeaderChildElement.offsetWidth < this.tabsHeaderChildElement.scrollWidth) {
+      this.toggleButtonVisibility(true);
+    } else {
+      this.toggleButtonVisibility(false);
+    }
+  };
 
-    this.rightButtonChildElement.style.display =
-      this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth <
-      this.tabsHeaderChildElement.scrollWidth
-        ? 'block'
-        : 'none';
+  private toggleButtonVisibility = (isScrollable: boolean) => {
+    this.setLeftButtonVisibility(isScrollable);
+    this.setRightButtonVisibility(isScrollable);
   };
 
   private handleScrollButtonClick = (direction: ScrollDirection) => {
-    this.tabsHeaderChildElement.scrollLeft =
-      direction == ScrollDirection.RIGHT
-        ? this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth
-        : this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.offsetWidth;
+    console.log('antes', {
+      scrollLeft: this.tabsHeaderChildElement.scrollLeft,
+      offsetWidth: this.tabsHeaderChildElement.offsetWidth,
+      scrollWidth: this.tabsHeaderChildElement.scrollWidth,
+    });
 
-    this.toggleButtonVisibility();
+    if (direction == ScrollDirection.RIGHT) {
+      this.tabsHeaderChildElement.scrollLeft =
+        this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth;
+      console.log('right');
+    } else {
+      this.tabsHeaderChildElement.scrollLeft =
+        this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.offsetWidth;
+      console.log('left');
+    }
+
+    this.toggleButtonVisibility(true);
+    console.log('depois', {
+      scrollLeft: this.tabsHeaderChildElement.scrollLeft,
+      offsetWidth: this.tabsHeaderChildElement.offsetWidth,
+      scrollWidth: this.tabsHeaderChildElement.scrollWidth,
+    });
   };
+
+  private setRightButtonVisibility(isScrollable: boolean) {
+    this.rightButtonChildElement.style.display =
+      this.tabsHeaderChildElement.scrollWidth >
+        this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth && isScrollable
+        ? Display.BLOCK
+        : Display.NONE;
+  }
+
+  private setLeftButtonVisibility(isScrollable: boolean) {
+    this.leftButtonChildElement.style.display =
+      this.tabsHeaderChildElement.scrollLeft > 0 && isScrollable ? Display.BLOCK : Display.NONE;
+  }
 
   render(): HTMLElement {
     return (

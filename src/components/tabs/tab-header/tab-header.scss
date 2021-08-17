@@ -7,11 +7,11 @@ bds-tab-header {
     color: $color-primary-main;
   }
 
-  &:not(:last-child) {
-    .bds-tab-header {
-      margin-right: 42px;
-    }
-  }
+  // &:not(:last-child) {
+  //   .bds-tab-header {
+  //     margin-right: 42px;
+  //   }
+  // }
 
   &-selected {
     border-bottom: 2px solid $color-primary-main;
@@ -23,8 +23,8 @@ bds-tab-header {
     justify-content: center;
     align-items: center;
     height: 45px;
-      min-width: 90px;
-  max-width: 270px;
+    width: 140px;
+    margin-right: 42px;
   }
 }
 
