@@ -932,6 +932,8 @@ export namespace Components {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTabBar {
+    }
     interface BdsTabContent {
         "active": boolean;
         "getChild": () => Promise<BdsTabData>;
@@ -1269,6 +1271,12 @@ declare global {
         prototype: HTMLBdsSwitchElement;
         new (): HTMLBdsSwitchElement;
     };
+    interface HTMLBdsTabBarElement extends Components.BdsTabBar, HTMLStencilElement {
+    }
+    var HTMLBdsTabBarElement: {
+        prototype: HTMLBdsTabBarElement;
+        new (): HTMLBdsTabBarElement;
+    };
     interface HTMLBdsTabContentElement extends Components.BdsTabContent, HTMLStencilElement {
     }
     var HTMLBdsTabContentElement: {
@@ -1354,6 +1362,7 @@ declare global {
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
+        "bds-tab-bar": HTMLBdsTabBarElement;
         "bds-tab-content": HTMLBdsTabContentElement;
         "bds-tab-header": HTMLBdsTabHeaderElement;
         "bds-tabs": HTMLBdsTabsElement;
@@ -2335,6 +2344,8 @@ declare namespace LocalJSX {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTabBar {
+    }
     interface BdsTabContent {
         "active"?: boolean;
         "name"?: string;
@@ -2486,6 +2497,7 @@ declare namespace LocalJSX {
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
+        "bds-tab-bar": BdsTabBar;
         "bds-tab-content": BdsTabContent;
         "bds-tab-header": BdsTabHeader;
         "bds-tabs": BdsTabs;
@@ -2536,6 +2548,7 @@ declare module "@stencil/core" {
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
+            "bds-tab-bar": LocalJSX.BdsTabBar & JSXBase.HTMLAttributes<HTMLBdsTabBarElement>;
             "bds-tab-content": LocalJSX.BdsTabContent & JSXBase.HTMLAttributes<HTMLBdsTabContentElement>;
             "bds-tab-header": LocalJSX.BdsTabHeader & JSXBase.HTMLAttributes<HTMLBdsTabHeaderElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;

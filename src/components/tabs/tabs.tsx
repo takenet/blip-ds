@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { Component, ComponentInterface, Element, h, Host, Listen, Prop } from '@stencil/core';
-import { BdsTabData, ScrollDirection, TabGroup } from './tabs-interface';
+import { BdsTabData, TabGroup } from './tabs-interface';
 
 @Component({
   tag: 'bds-tabs',
@@ -14,9 +14,6 @@ export class Tabs implements ComponentInterface {
   @Prop({ mutable: true }) overflowLeft = false;
 
   @Element() el!: HTMLElement;
-  tabsHeaderChildElement: HTMLElement;
-  leftButtonChildElement: HTMLElement;
-  rightButtonChildElement: HTMLElement;
 
   componentWillLoad() {
     this.createGroup();
@@ -24,38 +21,11 @@ export class Tabs implements ComponentInterface {
     this.selectGroup(group);
   }
 
-  componentDidLoad() {
-    this.tabsHeaderChildElement = this.el.querySelector('.bds-tabs-header');
-    this.leftButtonChildElement = this.el.querySelector('#bds-tabs-button-left');
-    this.rightButtonChildElement = this.el.querySelector('#bds-tabs-button-right');
-
-    this.toggleButtonVisibility();
-  }
-
   @Listen('bdsSelect')
   onSelectedTab(event: CustomEvent) {
     const group = this.tabGroup.find((group) => group.header.name === event.detail.name);
     this.selectGroup(group);
   }
-
-  private toggleButtonVisibility = () => {
-    this.leftButtonChildElement.style.display = this.tabsHeaderChildElement.scrollLeft > 0 ? 'block' : 'none';
-
-    this.rightButtonChildElement.style.display =
-      this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth <
-      this.tabsHeaderChildElement.scrollWidth
-        ? 'block'
-        : 'none';
-  };
-
-  private handleScrollButtonClick = (direction: ScrollDirection) => {
-    this.tabsHeaderChildElement.scrollLeft =
-      direction == ScrollDirection.RIGHT
-        ? this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth
-        : this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.offsetWidth;
-
-    this.toggleButtonVisibility();
-  };
 
   createGroup() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -91,31 +61,9 @@ export class Tabs implements ComponentInterface {
   render(): HTMLElement {
     return (
       <Host>
-        <div class="bds-tabs-header-container">
-          <div class="bds-tabs-header-button-container">
-            <bds-button
-              // class={{ [`bds-tabs-header-button--visible`]: this.overflowLeft }}
-              class="bds-tabs-header-button"
-              icon="arrow-left"
-              id="bds-tabs-button-left"
-              onClick={() => this.handleScrollButtonClick(ScrollDirection.LEFT)}
-              variant="secondary"
-            ></bds-button>
-          </div>
-          <div class="bds-tabs-header">
-            <slot name="header" />
-          </div>
-          <div class="bds-tabs-header-button-container">
-            <bds-button
-              class="bds-tabs-header-button"
-              icon="arrow-right"
-              id="bds-tabs-button-right"
-              onClick={() => this.handleScrollButtonClick(ScrollDirection.RIGHT)}
-              variant="secondary"
-            ></bds-button>
-          </div>
-        </div>
-
+        <bds-tab-bar class="bds-tabs-header-container">
+          <slot name="header" />
+        </bds-tab-bar>
         <div class="bds-tabs-content">
           <slot name="content" />
         </div>

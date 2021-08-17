@@ -43,6 +43,7 @@ export const BdsSelectOption = /*@__PURE__*/createReactComponent<JSX.BdsSelectOp
 export const BdsStep = /*@__PURE__*/createReactComponent<JSX.BdsStep, HTMLBdsStepElement>('bds-step');
 export const BdsStepper = /*@__PURE__*/createReactComponent<JSX.BdsStepper, HTMLBdsStepperElement>('bds-stepper');
 export const BdsSwitch = /*@__PURE__*/createReactComponent<JSX.BdsSwitch, HTMLBdsSwitchElement>('bds-switch');
+export const BdsTabBar = /*@__PURE__*/createReactComponent<JSX.BdsTabBar, HTMLBdsTabBarElement>('bds-tab-bar');
 export const BdsTabContent = /*@__PURE__*/createReactComponent<JSX.BdsTabContent, HTMLBdsTabContentElement>('bds-tab-content');
 export const BdsTabHeader = /*@__PURE__*/createReactComponent<JSX.BdsTabHeader, HTMLBdsTabHeaderElement>('bds-tab-header');
 export const BdsTabs = /*@__PURE__*/createReactComponent<JSX.BdsTabs, HTMLBdsTabsElement>('bds-tabs');

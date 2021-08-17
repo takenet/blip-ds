@@ -31,7 +31,7 @@
 
 ### Used by
 
- - [bds-tabs](../tabs)
+ - [bds-tab-bar](../tabs/tab-bar)
  - [bds-toast](../toast)
 
 ### Depends on
@@ -46,7 +46,7 @@ graph TD;
   bds-button --> bds-icon
   bds-button --> bds-typo
   bds-button --> bds-loading-spinner
-  bds-tabs --> bds-button
+  bds-tab-bar --> bds-button
   bds-toast --> bds-button
   style bds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

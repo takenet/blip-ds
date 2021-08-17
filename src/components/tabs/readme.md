@@ -16,12 +16,13 @@
 
 ### Depends on
 
-- [bds-button](../button)
+- [bds-tab-bar](tab-bar)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-tabs --> bds-button
+  bds-tabs --> bds-tab-bar
+  bds-tab-bar --> bds-button
   bds-button --> bds-icon
   bds-button --> bds-typo
   bds-button --> bds-loading-spinner
