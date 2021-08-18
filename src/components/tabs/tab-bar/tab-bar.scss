@@ -13,7 +13,6 @@
     display: flex;
     overflow-x: hidden;
     flex-direction: row;
-    // padding: 0px 40px 0px 40px;
     align-items: stretch;
     transition: all 0.3s;
   }
@@ -24,7 +23,3 @@
   }
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 0px;
-}

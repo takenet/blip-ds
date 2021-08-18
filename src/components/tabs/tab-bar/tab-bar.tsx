@@ -13,8 +13,6 @@ export class TabBar implements ComponentInterface {
   leftButtonChildElement: HTMLElement;
   rightButtonChildElement: HTMLElement;
 
-  defaultHeaderWidth: number;
-
   readonly SCROLL_SIZE = 3;
   readonly SCROLL_BEHAVIOR = 'smooth';
 
@@ -23,8 +21,6 @@ export class TabBar implements ComponentInterface {
   componentDidLoad() {
     this.getChildElements();
     this.attachEvents();
-
-    this.setDefaultHeaderWidth();
     this.initializeButtons();
   }
 
@@ -38,8 +34,8 @@ export class TabBar implements ComponentInterface {
 
     options.left =
       event.detail == ScrollDirection.RIGHT
-        ? (options.left = this.tabsHeaderChildElement.scrollLeft + this.defaultHeaderWidth)
-        : (options.left = this.tabsHeaderChildElement.scrollLeft - this.defaultHeaderWidth);
+        ? (options.left = this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.clientWidth)
+        : (options.left = this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.clientWidth);
 
     this.tabsHeaderChildElement.scrollTo(options);
   }
@@ -53,21 +49,15 @@ export class TabBar implements ComponentInterface {
   private attachEvents() {
     window.onresize = this.handleHeaderResize;
     this.tabsHeaderChildElement.onscroll = () =>
-      this.updateButtonVisibility(this.tabsHeaderChildElement.scrollWidth > this.tabsHeaderChildElement.clientWidth);
+      this.updateButtonsVisibility(this.tabsHeaderChildElement.scrollWidth > this.tabsHeaderChildElement.clientWidth);
   }
 
   private handleHeaderResize = () => {
-    this.setDefaultHeaderWidth();
     if (this.tabsHeaderChildElement.offsetWidth < this.tabsHeaderChildElement.scrollWidth) {
-      this.updateButtonVisibility(true);
+      this.updateButtonsVisibility(true);
     } else {
-      this.updateButtonVisibility(false);
+      this.updateButtonsVisibility(false);
     }
-  };
-
-  private updateButtonVisibility = (isScrollable: boolean) => {
-    this.setLeftButtonVisibility(isScrollable);
-    this.setRightButtonVisibility(isScrollable);
   };
 
   private initializeButtons = () => {
@@ -75,24 +65,20 @@ export class TabBar implements ComponentInterface {
     this.setRightButtonVisibility(true);
   };
 
+  private updateButtonsVisibility = (isScrollable: boolean) => {
+    this.setLeftButtonVisibility(isScrollable);
+    this.setRightButtonVisibility(isScrollable);
+  };
+
   private handleScrollButtonClick = (direction: ScrollDirection) => {
     this.scrollButtonClick.emit(direction);
   };
 
-  private setDefaultHeaderWidth() {
-    const childWidth = this.tabsHeaderChildElement.scrollWidth / this.tabsHeaderChildElement.childElementCount;
-    this.defaultHeaderWidth = childWidth * this.SCROLL_SIZE;
-  }
-
   private setRightButtonVisibility(isScrollable: boolean) {
-    const lastChild = this.tabsHeaderChildElement.lastChild as HTMLElement;
-
     if (
       isScrollable &&
       this.tabsHeaderChildElement.scrollWidth >
-        Math.ceil(
-          this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.clientWidth + lastChild.clientWidth
-        )
+        Math.ceil(this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.clientWidth)
     ) {
       this.rightButtonChildElement.style.display = Display.BLOCK;
     } else {
