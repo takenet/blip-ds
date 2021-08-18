@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Component, ComponentInterface, Element, h, Listen } from '@stencil/core';
+import { Component, ComponentInterface, Element, h } from '@stencil/core';
 import { ScrollDirection, Display } from '../tabs-interface';
 
 @Component({
@@ -12,6 +12,7 @@ export class TabBar implements ComponentInterface {
   tabsHeaderChildElement: HTMLElement;
   leftButtonChildElement: HTMLElement;
   rightButtonChildElement: HTMLElement;
+  defaultHeaderWidth: number;
 
   componentDidLoad() {
     this.tabsHeaderChildElement = this.el.querySelector('.bds-tabs-header');
@@ -19,15 +20,12 @@ export class TabBar implements ComponentInterface {
     this.rightButtonChildElement = this.el.querySelector('#bds-tabs-button-right');
     window.onresize = this.handleHeaderResize;
     this.toggleButtonVisibility(true);
-
-    console.log({
-      scrollLeft: this.tabsHeaderChildElement.scrollLeft,
-      offsetWidth: this.tabsHeaderChildElement.offsetWidth,
-      scrollWidth: this.tabsHeaderChildElement.scrollWidth,
-    });
+    this.defaultHeaderWidth = this.el.offsetWidth;
   }
 
   private handleHeaderResize = () => {
+    this.defaultHeaderWidth = this.el.offsetWidth;
+
     if (this.tabsHeaderChildElement.offsetWidth < this.tabsHeaderChildElement.scrollWidth) {
       this.toggleButtonVisibility(true);
     } else {
@@ -41,34 +39,19 @@ export class TabBar implements ComponentInterface {
   };
 
   private handleScrollButtonClick = (direction: ScrollDirection) => {
-    console.log('antes', {
-      scrollLeft: this.tabsHeaderChildElement.scrollLeft,
-      offsetWidth: this.tabsHeaderChildElement.offsetWidth,
-      scrollWidth: this.tabsHeaderChildElement.scrollWidth,
-    });
-
     if (direction == ScrollDirection.RIGHT) {
-      this.tabsHeaderChildElement.scrollLeft =
-        this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth;
-      console.log('right');
+      this.tabsHeaderChildElement.scrollTo(this.tabsHeaderChildElement.scrollLeft + this.defaultHeaderWidth, 0);
     } else {
-      this.tabsHeaderChildElement.scrollLeft =
-        this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.offsetWidth;
-      console.log('left');
+      this.tabsHeaderChildElement.scrollTo(this.tabsHeaderChildElement.scrollLeft - this.defaultHeaderWidth, 0);
     }
 
     this.toggleButtonVisibility(true);
-    console.log('depois', {
-      scrollLeft: this.tabsHeaderChildElement.scrollLeft,
-      offsetWidth: this.tabsHeaderChildElement.offsetWidth,
-      scrollWidth: this.tabsHeaderChildElement.scrollWidth,
-    });
   };
 
   private setRightButtonVisibility(isScrollable: boolean) {
     this.rightButtonChildElement.style.display =
-      this.tabsHeaderChildElement.scrollWidth >
-        this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.offsetWidth && isScrollable
+      this.tabsHeaderChildElement.scrollWidth > this.tabsHeaderChildElement.scrollLeft + this.defaultHeaderWidth &&
+      isScrollable
         ? Display.BLOCK
         : Display.NONE;
   }

@@ -5,16 +5,16 @@
   box-sizing: border-box;
   flex-shrink: 0;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   height: 48px;
   margin-bottom: 3px;
 
-
   .bds-tabs-header {
     display: flex;
-    overflow: hidden;
+    overflow-x: hidden;
     flex-direction: row;
     padding: 0px 40px 0px 40px;
+    align-items: stretch;
 
     .bds-tabs-header-button-container {
       padding: 0px;
@@ -29,4 +29,9 @@
       }
     }
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
 }

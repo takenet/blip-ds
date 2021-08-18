@@ -7,24 +7,19 @@ bds-tab-header {
     color: $color-primary-main;
   }
 
-  // &:not(:last-child) {
-  //   .bds-tab-header {
-  //     margin-right: 42px;
-  //   }
-  // }
-
-  &-selected {
-    border-bottom: 2px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
   .bds-tab-header {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 45px;
     width: 140px;
-    margin-right: 42px;
+    margin-right: 32px;
+
+    
+  &-selected {
+    border-bottom: 2px solid $color-primary-main;
+    color: $color-primary-main;
+  }
   }
 }
 
@@ -32,9 +27,4 @@ bds-tab-header {
   .bds-tab-header {
     min-width: 100px;
   }
-}
-
-.bds-tab-header-selected {
-  border-bottom: 2px solid $color-primary-main;
-  color: $color-primary-main;
 }
