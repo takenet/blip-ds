@@ -21,7 +21,7 @@ import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./co
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
-import { BdsTabData } from "./components/tabs/tabs-interface";
+import { BdsTabData, ScrollDirection } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -2345,6 +2345,7 @@ declare namespace LocalJSX {
         "size"?: SwitchSize;
     }
     interface BdsTabBar {
+        "onScrollButtonClick"?: (event: CustomEvent<ScrollDirection>) => void;
     }
     interface BdsTabContent {
         "active"?: boolean;

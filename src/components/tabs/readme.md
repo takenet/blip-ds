@@ -22,10 +22,8 @@
 ```mermaid
 graph TD;
   bds-tabs --> bds-tab-bar
-  bds-tab-bar --> bds-button
-  bds-button --> bds-icon
-  bds-button --> bds-typo
-  bds-button --> bds-loading-spinner
+  bds-tab-bar --> bds-button-icon
+  bds-button-icon --> bds-icon
   style bds-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

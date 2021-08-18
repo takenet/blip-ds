@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Events
+
+| Event               | Description | Type                                                         |
+| ------------------- | ----------- | ------------------------------------------------------------ |
+| `scrollButtonClick` |             | `CustomEvent<ScrollDirection.LEFT \| ScrollDirection.RIGHT>` |
+
+
 ## Dependencies
 
 ### Used by
@@ -13,15 +20,13 @@
 
 ### Depends on
 
-- [bds-button](../../button)
+- [bds-button-icon](../../icon-button)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-tab-bar --> bds-button
-  bds-button --> bds-icon
-  bds-button --> bds-typo
-  bds-button --> bds-loading-spinner
+  bds-tab-bar --> bds-button-icon
+  bds-button-icon --> bds-icon
   bds-tabs --> bds-tab-bar
   style bds-tab-bar fill:#f9f,stroke:#333,stroke-width:4px
 ```

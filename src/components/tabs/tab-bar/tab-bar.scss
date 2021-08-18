@@ -5,7 +5,7 @@
   box-sizing: border-box;
   flex-shrink: 0;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   height: 48px;
   margin-bottom: 3px;
 
@@ -13,21 +13,14 @@
     display: flex;
     overflow-x: hidden;
     flex-direction: row;
-    padding: 0px 40px 0px 40px;
+    // padding: 0px 40px 0px 40px;
     align-items: stretch;
+    transition: all 0.3s;
+  }
 
-    .bds-tabs-header-button-container {
-      padding: 0px;
-      width: 40px;
-
-      .bds-tabs-header-button {
-        visibility: hidden;
-
-        &--visible {
-          display: block;
-        }
-      }
-    }
+  .bds-tabs-header-button-container {
+    padding: 0px;
+    min-width: 40px;
   }
 }
 
