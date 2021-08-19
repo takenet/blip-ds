@@ -16,3 +16,8 @@ export const enum Display {
   NONE = 'none',
   BLOCK = 'block',
 }
+
+export class Overflow {
+  direction: ScrollDirection;
+  distance?: number = null;
+}

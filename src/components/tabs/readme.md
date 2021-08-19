@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event               | Description | Type                                                         |
-| ------------------- | ----------- | ------------------------------------------------------------ |
-| `scrollButtonClick` |             | `CustomEvent<ScrollDirection.LEFT \| ScrollDirection.RIGHT>` |
+| Event               | Description | Type                    |
+| ------------------- | ----------- | ----------------------- |
+| `scrollButtonClick` |             | `CustomEvent<Overflow>` |
 
 
 ## Dependencies

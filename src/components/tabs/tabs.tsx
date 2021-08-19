@@ -1,4 +1,5 @@
-import { ScrollDirection, Display } from './tabs-interface';
+/* eslint-disable no-console */
+import { ScrollDirection, Display, Overflow } from './tabs-interface';
 import { Component, ComponentInterface, Element, h, Host, Event, EventEmitter, Listen, Prop } from '@stencil/core';
 import { BdsTabData, TabGroup } from './tabs-interface';
 
@@ -12,10 +13,17 @@ export class Tabs implements ComponentInterface {
   tabGroup: TabGroup[];
 
   buttonsChildElement: HTMLCollection;
+  tabsHeaderChildElement: HTMLElement;
+  leftButtonChildElement: HTMLElement;
+  rightButtonChildElement: HTMLElement;
+
+  readonly SCROLL_BEHAVIOR = 'smooth';
 
   @Prop({ mutable: true }) overflowLeft = false;
 
   @Element() el!: HTMLElement;
+
+  @Event() scrollButtonClick: EventEmitter<Overflow>;
 
   componentWillLoad() {
     this.createGroup();
@@ -23,27 +31,75 @@ export class Tabs implements ComponentInterface {
     this.selectGroup(group);
   }
 
+  componentDidLoad() {
+    this.getChildElements();
+    this.attachEvents();
+    this.setLeftButtonVisibility(false);
+    this.setRightButtonVisibility(true);
+  }
+
+  @Listen('scrollButtonClick')
+  onScrollButtonClick(event: CustomEvent<Overflow>) {
+    event.preventDefault();
+
+    const options: ScrollToOptions = {
+      behavior: this.SCROLL_BEHAVIOR,
+      top: 0,
+      left: event.detail.distance,
+    };
+    options.left ??= this.getDistance(options, event);
+    this.tabsHeaderChildElement.scrollTo(options);
+  }
+
   @Listen('bdsSelect')
   onSelectedTab(event: CustomEvent) {
     const group = this.tabGroup.find((group) => group.header.name === event.detail.name);
     this.selectGroup(group);
-    this.preventPartialTab(group);
+    this.handleButtonOverlay(group);
   }
 
-  private preventPartialTab(group: TabGroup) {
-    const tab = document.getElementsByName(group.header.name);
+  private handleButtonOverlay(group: TabGroup) {
+    const tab = Array.from(document.getElementsByName(group.header.name)).find((element) => {
+      return element.nodeName == 'BDS-TAB';
+    });
 
-    // this.buttonsChildElement[0].offsetLeft;
-    // this.buttonsChildElement.forEach((button) => {
-    //   button['offsetLeft'] > tab[0].offsetLeft && button['offsetLeft'] < tab[0].offsetLeft + tab[0].clientWidth;
-    // });
-
-    if (
-      this.buttonsChildElement[1]['offsetLeft'] > tab[0].offsetLeft &&
-      this.buttonsChildElement[1]['offsetLeft'] < tab[0].offsetLeft + tab[0].clientWidth
-    ) {
-      console.log(tab[0].offsetLeft);
+    for (let index = 0; index < this.buttonsChildElement.length; index++) {
+      if (this.isButtonOverlayingTab(index, tab)) {
+        const { direction, distance } = this.getScrollDistance(tab, index);
+        this.scrollButtonClick.emit({ direction, distance });
+      }
     }
+  }
+
+  private isButtonOverlayingTab(buttonIndex: number, tab: HTMLElement) {
+    const buttonCenter = this.getButtonOffsetCenter(buttonIndex);
+    return (
+      buttonCenter + tab.parentElement.scrollLeft > tab.offsetLeft &&
+      buttonCenter + tab.parentElement.scrollLeft < tab.offsetLeft + tab.clientWidth
+    );
+  }
+
+  private getButtonOffsetCenter(buttonIndex: number) {
+    return this.buttonsChildElement[buttonIndex]['offsetLeft'] + this.buttonsChildElement[buttonIndex].clientWidth / 2;
+  }
+
+  private getScrollDistance(tab: HTMLElement, buttonIndex: number): Overflow {
+    const direction = buttonIndex == 0 ? ScrollDirection.LEFT : ScrollDirection.RIGHT;
+    let distance = 0;
+
+    if (direction == ScrollDirection.RIGHT) {
+      distance = tab.clientWidth - (this.buttonsChildElement[buttonIndex]['offsetLeft'] - tab.offsetLeft);
+      return { direction, distance };
+    }
+
+    distance = tab.parentElement.scrollLeft - (tab.clientWidth - this.buttonsChildElement[buttonIndex]['offsetLeft']);
+    return { direction, distance };
+  }
+
+  private getDistance(options: ScrollToOptions, event: CustomEvent<Overflow>): number {
+    return event.detail.direction == ScrollDirection.RIGHT
+      ? (options.left = this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.clientWidth)
+      : (options.left = this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.clientWidth);
   }
 
   createGroup() {
@@ -75,37 +131,6 @@ export class Tabs implements ComponentInterface {
     }
   }
 
-  tabsHeaderChildElement: HTMLElement;
-  leftButtonChildElement: HTMLElement;
-  rightButtonChildElement: HTMLElement;
-
-  readonly SCROLL_SIZE = 3;
-  readonly SCROLL_BEHAVIOR = 'smooth';
-
-  @Event() scrollButtonClick: EventEmitter<ScrollDirection>;
-
-  componentDidLoad() {
-    this.getChildElements();
-    this.attachEvents();
-    this.initializeButtons();
-  }
-
-  @Listen('scrollButtonClick')
-  onScrollButtonClick(event: CustomEvent<ScrollDirection>) {
-    event.preventDefault();
-    const options: ScrollToOptions = {
-      behavior: this.SCROLL_BEHAVIOR,
-      top: 0,
-    };
-
-    options.left =
-      event.detail == ScrollDirection.RIGHT
-        ? (options.left = this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.clientWidth)
-        : (options.left = this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.clientWidth);
-
-    this.tabsHeaderChildElement.scrollTo(options);
-  }
-
   private getChildElements() {
     this.tabsHeaderChildElement = this.el.querySelector('.bds-tabs-header');
     this.leftButtonChildElement = this.el.querySelector('#bds-tabs-button-left');
@@ -126,18 +151,13 @@ export class Tabs implements ComponentInterface {
     }
   };
 
-  private initializeButtons = () => {
-    this.setLeftButtonVisibility(false);
-    this.setRightButtonVisibility(true);
-  };
-
   private updateButtonsVisibility = (isScrollable: boolean) => {
     this.setLeftButtonVisibility(isScrollable);
     this.setRightButtonVisibility(isScrollable);
   };
 
   private handleScrollButtonClick = (direction: ScrollDirection) => {
-    this.scrollButtonClick.emit(direction);
+    this.scrollButtonClick.emit({ direction });
   };
 
   private setRightButtonVisibility(isScrollable: boolean) {

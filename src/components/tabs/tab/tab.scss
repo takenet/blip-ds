@@ -12,7 +12,8 @@ bds-tab {
     justify-content: center;
     align-items: center;
     height: 45px;
-    width: 140px;
+    min-width: 140px;
+    max-width: 270px;
     margin-right: 32px;
 
     
