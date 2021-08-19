@@ -44,8 +44,8 @@
  - [bds-radio](../radio)
  - [bds-select-option](../select-option)
  - [bds-step](../stepper/step)
- - [bds-tab-content](../tabs/tab-content)
- - [bds-tab-header](../tabs/tab-header)
+ - [bds-tab](../tabs/tab)
+ - [bds-tab-panel](../tabs/tab-panel)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
  - [bds-warning](../warning)
@@ -67,8 +67,8 @@ graph TD;
   bds-radio --> bds-typo
   bds-select-option --> bds-typo
   bds-step --> bds-typo
-  bds-tab-content --> bds-typo
-  bds-tab-header --> bds-typo
+  bds-tab --> bds-typo
+  bds-tab-panel --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo
   bds-warning --> bds-typo

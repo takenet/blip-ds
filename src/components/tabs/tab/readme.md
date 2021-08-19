@@ -1,4 +1,4 @@
-# bds-tab-header
+# bds-tab
 
 
 
@@ -43,8 +43,8 @@ Type: `Promise<BdsTabData>`
 ### Graph
 ```mermaid
 graph TD;
-  bds-tab-header --> bds-typo
-  style bds-tab-header fill:#f9f,stroke:#333,stroke-width:4px
+  bds-tab --> bds-typo
+  style bds-tab fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

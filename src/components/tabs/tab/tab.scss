@@ -1,4 +1,4 @@
-bds-tab-header {
+bds-tab {
   cursor: pointer;
   color: $color-neutral-medium-cloud;
   text-align: center;
@@ -7,7 +7,7 @@ bds-tab-header {
     color: $color-primary-main;
   }
 
-  .bds-tab-header {
+  .bds-tab {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@ bds-tab-header {
 }
 
 @media (max-width: 599px) {
-  .bds-tab-header {
+  .bds-tab {
     min-width: 100px;
   }
 }

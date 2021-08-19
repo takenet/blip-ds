@@ -19,7 +19,7 @@
 
 ### Used by
 
- - [bds-tab-bar](../tabs/tab-bar)
+ - [bds-tabs](../tabs)
  - [bds-toast](../toast)
 
 ### Depends on
@@ -30,7 +30,7 @@
 ```mermaid
 graph TD;
   bds-button-icon --> bds-icon
-  bds-tab-bar --> bds-button-icon
+  bds-tabs --> bds-button-icon
   bds-toast --> bds-button-icon
   style bds-button-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

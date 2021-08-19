@@ -1,0 +1,25 @@
+.bds-tabs-header-container {
+  width: 100%;
+  display: flex;
+  z-index: 1100;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-direction: row;
+  align-items: center;
+  height: 48px;
+  margin-bottom: 3px;
+
+  .bds-tabs-header {
+    display: flex;
+    overflow-x: hidden;
+    flex-direction: row;
+    align-items: stretch;
+    transition: all 0.3s;
+  }
+
+  .bds-tabs-header-button-container {
+    padding: 0px;
+    min-width: 40px;
+  }
+}
+

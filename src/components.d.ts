@@ -932,17 +932,15 @@ export namespace Components {
          */
         "size"?: SwitchSize;
     }
-    interface BdsTabBar {
-    }
-    interface BdsTabContent {
-        "active": boolean;
-        "getChild": () => Promise<BdsTabData>;
-        "name": string;
-    }
-    interface BdsTabHeader {
+    interface BdsTab {
         "active": boolean;
         "getChild": () => Promise<BdsTabData>;
         "label": string;
+        "name": string;
+    }
+    interface BdsTabPanel {
+        "active": boolean;
+        "getChild": () => Promise<BdsTabData>;
         "name": string;
     }
     interface BdsTabs {
@@ -1272,23 +1270,17 @@ declare global {
         prototype: HTMLBdsSwitchElement;
         new (): HTMLBdsSwitchElement;
     };
-    interface HTMLBdsTabBarElement extends Components.BdsTabBar, HTMLStencilElement {
+    interface HTMLBdsTabElement extends Components.BdsTab, HTMLStencilElement {
     }
-    var HTMLBdsTabBarElement: {
-        prototype: HTMLBdsTabBarElement;
-        new (): HTMLBdsTabBarElement;
+    var HTMLBdsTabElement: {
+        prototype: HTMLBdsTabElement;
+        new (): HTMLBdsTabElement;
     };
-    interface HTMLBdsTabContentElement extends Components.BdsTabContent, HTMLStencilElement {
+    interface HTMLBdsTabPanelElement extends Components.BdsTabPanel, HTMLStencilElement {
     }
-    var HTMLBdsTabContentElement: {
-        prototype: HTMLBdsTabContentElement;
-        new (): HTMLBdsTabContentElement;
-    };
-    interface HTMLBdsTabHeaderElement extends Components.BdsTabHeader, HTMLStencilElement {
-    }
-    var HTMLBdsTabHeaderElement: {
-        prototype: HTMLBdsTabHeaderElement;
-        new (): HTMLBdsTabHeaderElement;
+    var HTMLBdsTabPanelElement: {
+        prototype: HTMLBdsTabPanelElement;
+        new (): HTMLBdsTabPanelElement;
     };
     interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
     }
@@ -1363,9 +1355,8 @@ declare global {
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
-        "bds-tab-bar": HTMLBdsTabBarElement;
-        "bds-tab-content": HTMLBdsTabContentElement;
-        "bds-tab-header": HTMLBdsTabHeaderElement;
+        "bds-tab": HTMLBdsTabElement;
+        "bds-tab-panel": HTMLBdsTabPanelElement;
         "bds-tabs": HTMLBdsTabsElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
@@ -2345,20 +2336,18 @@ declare namespace LocalJSX {
          */
         "size"?: SwitchSize;
     }
-    interface BdsTabBar {
-        "onScrollButtonClick"?: (event: CustomEvent<ScrollDirection>) => void;
-    }
-    interface BdsTabContent {
-        "active"?: boolean;
-        "name"?: string;
-    }
-    interface BdsTabHeader {
+    interface BdsTab {
         "active"?: boolean;
         "label": string;
         "name"?: string;
         "onBdsSelect"?: (event: CustomEvent<any>) => void;
     }
+    interface BdsTabPanel {
+        "active"?: boolean;
+        "name"?: string;
+    }
     interface BdsTabs {
+        "onScrollButtonClick"?: (event: CustomEvent<ScrollDirection>) => void;
         "overflowLeft"?: boolean;
     }
     interface BdsToast {
@@ -2500,9 +2489,8 @@ declare namespace LocalJSX {
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
-        "bds-tab-bar": BdsTabBar;
-        "bds-tab-content": BdsTabContent;
-        "bds-tab-header": BdsTabHeader;
+        "bds-tab": BdsTab;
+        "bds-tab-panel": BdsTabPanel;
         "bds-tabs": BdsTabs;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
@@ -2551,9 +2539,8 @@ declare module "@stencil/core" {
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
-            "bds-tab-bar": LocalJSX.BdsTabBar & JSXBase.HTMLAttributes<HTMLBdsTabBarElement>;
-            "bds-tab-content": LocalJSX.BdsTabContent & JSXBase.HTMLAttributes<HTMLBdsTabContentElement>;
-            "bds-tab-header": LocalJSX.BdsTabHeader & JSXBase.HTMLAttributes<HTMLBdsTabHeaderElement>;
+            "bds-tab": LocalJSX.BdsTab & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
+            "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;

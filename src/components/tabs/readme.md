@@ -12,17 +12,23 @@
 | `overflowLeft` | `overflow-left` |             | `boolean` | `false` |
 
 
+## Events
+
+| Event               | Description | Type                                                         |
+| ------------------- | ----------- | ------------------------------------------------------------ |
+| `scrollButtonClick` |             | `CustomEvent<ScrollDirection.LEFT \| ScrollDirection.RIGHT>` |
+
+
 ## Dependencies
 
 ### Depends on
 
-- [bds-tab-bar](tab-bar)
+- [bds-button-icon](../icon-button)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-tabs --> bds-tab-bar
-  bds-tab-bar --> bds-button-icon
+  bds-tabs --> bds-button-icon
   bds-button-icon --> bds-icon
   style bds-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```

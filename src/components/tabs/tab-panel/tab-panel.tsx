@@ -2,10 +2,10 @@ import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
 import { BdsTabData } from '../tabs-interface';
 
 @Component({
-  tag: 'bds-tab-content',
-  styleUrl: 'tab-content.scss',
+  tag: 'bds-tab-panel',
+  styleUrl: 'tab-panel.scss',
 })
-export class TabContent implements ComponentInterface {
+export class TabPanel implements ComponentInterface {
   @Prop() name: string;
 
   @Prop() active = false;
@@ -20,8 +20,8 @@ export class TabContent implements ComponentInterface {
 
   render(): HTMLElement {
     const classes = {
-      'bds-tab-content': true,
-      'bds-tab-content-selected': this.active,
+      'bds-tab-panel': true,
+      'bds-tab-panel-selected': this.active,
     };
 
     return (

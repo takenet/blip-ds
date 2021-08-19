@@ -2,10 +2,10 @@ import { Component, ComponentInterface, EventEmitter, Event, h, Prop, Method } f
 import { BdsTabData } from '../tabs-interface';
 
 @Component({
-  tag: 'bds-tab-header',
-  styleUrl: 'tab-header.scss',
+  tag: 'bds-tab',
+  styleUrl: 'tab.scss',
 })
-export class TabHeader implements ComponentInterface {
+export class Tab implements ComponentInterface {
   @Prop() name: string;
 
   @Event() bdsSelect: EventEmitter;
@@ -28,8 +28,8 @@ export class TabHeader implements ComponentInterface {
 
   render(): HTMLElement {
     const classes = {
-      'bds-tab-header': true,
-      'bds-tab-header-selected': this.active,
+      'bds-tab': true,
+      'bds-tab-selected': this.active,
     };
     const bold = this.active ? 'semi-bold' : 'regular';
 
