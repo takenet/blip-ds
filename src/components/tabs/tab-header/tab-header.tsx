@@ -12,6 +12,8 @@ export class TabHeader implements ComponentInterface {
 
   @Prop() active = false;
 
+  @Prop() label!: string;
+
   @Method()
   async getChild(): Promise<BdsTabData> {
     return {
@@ -34,7 +36,7 @@ export class TabHeader implements ComponentInterface {
     return (
       <div class={classes} onClick={this.onClick.bind(this)}>
         <bds-typo variant="fs-16" bold={bold}>
-          <slot />
+          {this.label}
         </bds-typo>
       </div>
     );

@@ -942,6 +942,7 @@ export namespace Components {
     interface BdsTabHeader {
         "active": boolean;
         "getChild": () => Promise<BdsTabData>;
+        "label": string;
         "name": string;
     }
     interface BdsTabs {
@@ -2353,6 +2354,7 @@ declare namespace LocalJSX {
     }
     interface BdsTabHeader {
         "active"?: boolean;
+        "label": string;
         "name"?: string;
         "onBdsSelect"?: (event: CustomEvent<any>) => void;
     }

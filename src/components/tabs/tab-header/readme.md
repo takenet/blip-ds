@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default     |
-| -------- | --------- | ----------- | --------- | ----------- |
-| `active` | `active`  |             | `boolean` | `false`     |
-| `name`   | `name`    |             | `string`  | `undefined` |
+| Property             | Attribute | Description | Type      | Default     |
+| -------------------- | --------- | ----------- | --------- | ----------- |
+| `active`             | `active`  |             | `boolean` | `false`     |
+| `label` _(required)_ | `label`   |             | `string`  | `undefined` |
+| `name`               | `name`    |             | `string`  | `undefined` |
 
 
 ## Events
