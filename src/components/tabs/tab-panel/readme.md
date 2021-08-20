@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default     |
-| -------- | --------- | ----------- | --------- | ----------- |
-| `active` | `active`  |             | `boolean` | `false`     |
-| `name`   | `name`    |             | `string`  | `undefined` |
+| Property             | Attribute | Description                                               | Type      | Default     |
+| -------------------- | --------- | --------------------------------------------------------- | --------- | ----------- |
+| `active`             | `active`  |                                                           | `boolean` | `false`     |
+| `group` _(required)_ | `group`   | Specifies the TabPanel group. Used to link it to the Tab. | `string`  | `undefined` |
 
 
 ## Methods

@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default |
-| -------------- | --------------- | ----------- | --------- | ------- |
-| `overflowLeft` | `overflow-left` |             | `boolean` | `false` |
+| Property | Attribute | Description | Type                            | Default    |
+| -------- | --------- | ----------- | ------------------------------- | ---------- |
+| `align`  | `align`   |             | `"center" \| "left" \| "right"` | `'center'` |
 
 
 ## Events

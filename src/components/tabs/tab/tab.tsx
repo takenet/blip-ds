@@ -6,7 +6,10 @@ import { BdsTabData } from '../tabs-interface';
   styleUrl: 'tab.scss',
 })
 export class Tab implements ComponentInterface {
-  @Prop() name: string;
+  /**
+   * Specifies the Tab group. Used to link it to the TabPanel.
+   */
+  @Prop() group!: string;
 
   @Event() bdsSelect: EventEmitter;
 
@@ -18,7 +21,7 @@ export class Tab implements ComponentInterface {
   async getChild(): Promise<BdsTabData> {
     return {
       active: this.active,
-      name: this.name,
+      group: this.group,
     };
   }
 

@@ -9,6 +9,18 @@
   height: 48px;
   margin-bottom: 3px;
 
+  &--center {
+    justify-content: center;
+  }
+
+  &--left {
+    justify-content: flex-start;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
   .bds-tabs-header {
     display: flex;
     overflow: hidden;
@@ -20,6 +32,12 @@
   .bds-tabs-header-button-container {
     padding: 0px;
     min-width: 40px;
+
+    &:last-child {
+      margin-right: 10px;
+    }
+    &:first-child {
+      margin-left: 10px;
+    }
   }
 }
-

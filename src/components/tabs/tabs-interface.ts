@@ -1,6 +1,6 @@
 export interface BdsTabData {
   active: boolean;
-  name: string;
+  group: string;
 }
 export interface TabGroup {
   header: BdsTabData;

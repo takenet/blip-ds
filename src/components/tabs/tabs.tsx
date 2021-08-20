@@ -19,11 +19,11 @@ export class Tabs implements ComponentInterface {
 
   readonly SCROLL_BEHAVIOR = 'smooth';
 
-  @Prop({ mutable: true }) overflowLeft = false;
-
   @Element() el!: HTMLElement;
 
   @Event() scrollButtonClick: EventEmitter<Overflow>;
+
+  @Prop() align: 'left' | 'center' | 'right' = 'center';
 
   componentWillLoad() {
     this.createGroup();
@@ -53,14 +53,15 @@ export class Tabs implements ComponentInterface {
 
   @Listen('bdsSelect')
   onSelectedTab(event: CustomEvent) {
-    const group = this.tabGroup.find((group) => group.header.name === event.detail.name);
+    console.log(event.detail);
+    const group = this.tabGroup.find((group) => group.header.group === event.detail.group);
     this.selectGroup(group);
     this.handleButtonOverlay(group);
   }
 
   private handleButtonOverlay(group: TabGroup) {
-    const tab = Array.from(document.getElementsByName(group.header.name)).find((element) => {
-      return element.nodeName == 'BDS-TAB';
+    const tab = Array.from(this.tabsHeaderChildElement.getElementsByTagName('bds-tab')).find((header) => {
+      return header.group == group.header.group;
     });
 
     for (let index = 0; index < this.buttonsChildElement.length; index++) {
@@ -105,11 +106,17 @@ export class Tabs implements ComponentInterface {
   createGroup() {
     this.tabsHeader = Array.from(this.el.querySelectorAll('bds-tab')) as BdsTabData[];
     this.tabsContent = Array.from(document.querySelectorAll('bds-tab-panel')) as BdsTabData[];
-    this.buttonsChildElement = document.getElementsByClassName('bds-tabs-header-button') as HTMLCollection;
+    this.buttonsChildElement = document.getElementsByTagName('bds-button-icon') as HTMLCollection;
 
     this.tabGroup = this.tabsHeader.map((header) => {
-      const content = this.tabsContent.find((content) => content.name === header.name);
-
+      console.log('group', header.group);
+      let content;
+      try {
+        content = this.tabsContent.find((content) => content.group === header.group);
+        if (!content) throw new Error(`Missing TabPanel with key: ${header.group}`);
+      } catch (error) {
+        console.warn(error);
+      }
       return {
         header: header,
         content: content,
@@ -180,7 +187,12 @@ export class Tabs implements ComponentInterface {
   render(): HTMLElement {
     return (
       <Host>
-        <div class="bds-tabs-header-container">
+        <div
+          class={{
+            'bds-tabs-header-container': true,
+            [`bds-tabs-header-container--${this.align}`]: true,
+          }}
+        >
           <div class="bds-tabs-header-button-container">
             <bds-button-icon
               class="bds-tabs-header-button"
