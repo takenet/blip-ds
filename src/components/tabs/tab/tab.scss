@@ -1,4 +1,12 @@
-bds-tab {
+.bds-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  min-width: 90px;
+  max-width: 270px;
+  margin-right: 32px;
+
   cursor: pointer;
   color: $color-neutral-medium-cloud;
   text-align: center;
@@ -6,21 +14,10 @@ bds-tab {
   &:hover {
     color: $color-primary-main;
   }
-
-  .bds-tab {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 45px;
-    min-width: 90px;
-    max-width: 270px;
-    margin-right: 32px;
-
-    
-  &-selected {
+  
+  &--selected {
     border-bottom: 2px solid $color-primary-main;
     color: $color-primary-main;
-  }
   }
 }
 

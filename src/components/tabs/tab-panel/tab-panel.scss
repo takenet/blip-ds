@@ -1,7 +1,7 @@
 .bds-tab-panel {
-    display: none;
-}
+  display: none;
 
-.bds-tab-panel-selected {
+  &--selected {
     display: block;
+  }
 }

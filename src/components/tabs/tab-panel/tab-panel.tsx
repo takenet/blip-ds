@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Method, Prop } from '@stencil/core';
 import { BdsTabData } from '../tabs-interface';
 
 @Component({
@@ -24,15 +24,15 @@ export class TabPanel implements ComponentInterface {
   render(): HTMLElement {
     const classes = {
       'bds-tab-panel': true,
-      'bds-tab-panel-selected': this.active,
+      'bds-tab-panel--selected': this.active,
     };
 
     return (
-      <div class={classes}>
+      <Host class={classes}>
         <bds-typo>
           <slot />
         </bds-typo>
-      </div>
+      </Host>
     );
   }
 }

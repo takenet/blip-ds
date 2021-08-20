@@ -139,7 +139,7 @@ export class Tabs implements ComponentInterface {
   }
 
   private getChildElements() {
-    this.tabsHeaderChildElement = this.el.querySelector('.bds-tabs-header');
+    this.tabsHeaderChildElement = this.el.querySelector('.bds-tabs__header');
     this.leftButtonChildElement = this.el.querySelector('#bds-tabs-button-left');
     this.rightButtonChildElement = this.el.querySelector('#bds-tabs-button-right');
   }
@@ -186,38 +186,36 @@ export class Tabs implements ComponentInterface {
 
   render(): HTMLElement {
     return (
-      <Host>
-        <div
-          class={{
-            'bds-tabs-header-container': true,
-            [`bds-tabs-header-container--${this.align}`]: true,
-          }}
-        >
-          <div class="bds-tabs-header-button-container">
-            <bds-button-icon
-              class="bds-tabs-header-button"
-              icon="arrow-left"
-              size="short"
-              id="bds-tabs-button-left"
-              onClick={() => this.handleScrollButtonClick(ScrollDirection.LEFT)}
-              variant="secondary"
-            ></bds-button-icon>
-          </div>
+      <Host
+        class={{
+          'bds-tabs': true,
+          [`bds-tabs--${this.align}`]: true,
+        }}
+      >
+        <div class="bds-tabs__header-button-container">
+          <bds-button-icon
+            class="bds-tabs__header-button"
+            icon="arrow-left"
+            size="short"
+            id="bds-tabs-button-left"
+            onClick={() => this.handleScrollButtonClick(ScrollDirection.LEFT)}
+            variant="secondary"
+          ></bds-button-icon>
+        </div>
 
-          <div class="bds-tabs-header">
-            <slot />
-          </div>
+        <div class="bds-tabs__header">
+          <slot />
+        </div>
 
-          <div class="bds-tabs-header-button-container">
-            <bds-button-icon
-              class="bds-tabs-header-button"
-              icon="arrow-right"
-              size="short"
-              id="bds-tabs-button-right"
-              onClick={() => this.handleScrollButtonClick(ScrollDirection.RIGHT)}
-              variant="secondary"
-            ></bds-button-icon>
-          </div>
+        <div class="bds-tabs__header-button-container">
+          <bds-button-icon
+            class="bds-tabs__header-button"
+            icon="arrow-right"
+            size="short"
+            id="bds-tabs-button-right"
+            onClick={() => this.handleScrollButtonClick(ScrollDirection.RIGHT)}
+            variant="secondary"
+          ></bds-button-icon>
         </div>
       </Host>
     );

@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, EventEmitter, Event, h, Prop, Method } from '@stencil/core';
+import { Component, ComponentInterface, EventEmitter, Event, h, Prop, Method, Host } from '@stencil/core';
 import { BdsTabData } from '../tabs-interface';
 
 @Component({
@@ -32,16 +32,16 @@ export class Tab implements ComponentInterface {
   render(): HTMLElement {
     const classes = {
       'bds-tab': true,
-      'bds-tab-selected': this.active,
+      'bds-tab--selected': this.active,
     };
     const bold = this.active ? 'semi-bold' : 'regular';
 
     return (
-      <div class={classes} onClick={this.onClick.bind(this)}>
+      <Host class={classes} onClick={this.onClick.bind(this)}>
         <bds-typo variant="fs-16" bold={bold}>
           {this.label}
         </bds-typo>
-      </div>
+      </Host>
     );
   }
 }
