@@ -2,19 +2,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   height: 45px;
   min-width: 140px;
   max-width: 270px;
-  margin-right: 32px;
 
   cursor: pointer;
   color: $color-neutral-medium-cloud;
-  
+
   text-align: center;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 
+  &:not(:last-child) {
+    margin-right: 32px;
+  }
+  
   &:hover {
     color: $color-primary-main;
   }
