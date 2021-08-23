@@ -2,19 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
   height: 45px;
-  min-width: 90px;
+  min-width: 140px;
   max-width: 270px;
   margin-right: 32px;
 
   cursor: pointer;
   color: $color-neutral-medium-cloud;
+  
   text-align: center;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 
   &:hover {
     color: $color-primary-main;
   }
-  
+
   &--selected {
     border-bottom: 2px solid $color-primary-main;
     color: $color-primary-main;
@@ -23,6 +27,7 @@
 
 @media (max-width: 599px) {
   .bds-tab {
-    min-width: 100px;
+    min-width: 110px;
+    text-overflow: ellipsis;
   }
 }

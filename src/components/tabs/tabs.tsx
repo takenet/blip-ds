@@ -53,54 +53,9 @@ export class Tabs implements ComponentInterface {
 
   @Listen('bdsSelect')
   onSelectedTab(event: CustomEvent) {
-    console.log(event.detail);
     const group = this.tabGroup.find((group) => group.header.group === event.detail.group);
     this.selectGroup(group);
     this.handleButtonOverlay(group);
-  }
-
-  private handleButtonOverlay(group: TabGroup) {
-    const tab = Array.from(this.tabsHeaderChildElement.getElementsByTagName('bds-tab')).find((header) => {
-      return header.group == group.header.group;
-    });
-
-    for (let index = 0; index < this.buttonsChildElement.length; index++) {
-      if (this.isButtonOverlayingTab(index, tab)) {
-        const { direction, distance } = this.getScrollDistance(tab, index);
-        this.scrollButtonClick.emit({ direction, distance });
-      }
-    }
-  }
-
-  private isButtonOverlayingTab(buttonIndex: number, tab: HTMLElement) {
-    const buttonCenter = this.getButtonOffsetCenter(buttonIndex);
-    return (
-      buttonCenter + tab.parentElement.scrollLeft > tab.offsetLeft &&
-      buttonCenter + tab.parentElement.scrollLeft < tab.offsetLeft + tab.clientWidth
-    );
-  }
-
-  private getButtonOffsetCenter(buttonIndex: number) {
-    return this.buttonsChildElement[buttonIndex]['offsetLeft'] + this.buttonsChildElement[buttonIndex].clientWidth / 2;
-  }
-
-  private getScrollDistance(tab: HTMLElement, buttonIndex: number): Overflow {
-    const direction = buttonIndex == 0 ? ScrollDirection.LEFT : ScrollDirection.RIGHT;
-    let distance = 0;
-
-    if (direction == ScrollDirection.RIGHT) {
-      distance = tab.clientWidth - (this.buttonsChildElement[buttonIndex]['offsetLeft'] - tab.offsetLeft);
-      return { direction, distance };
-    }
-
-    distance = tab.parentElement.scrollLeft - (tab.clientWidth - this.buttonsChildElement[buttonIndex]['offsetLeft']);
-    return { direction, distance };
-  }
-
-  private getDistance(options: ScrollToOptions, event: CustomEvent<Overflow>): number {
-    return event.detail.direction == ScrollDirection.RIGHT
-      ? (options.left = this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.clientWidth)
-      : (options.left = this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.clientWidth);
   }
 
   createGroup() {
@@ -109,7 +64,6 @@ export class Tabs implements ComponentInterface {
     this.buttonsChildElement = document.getElementsByTagName('bds-button-icon') as HTMLCollection;
 
     this.tabGroup = this.tabsHeader.map((header) => {
-      console.log('group', header.group);
       let content;
       try {
         content = this.tabsContent.find((content) => content.group === header.group);
@@ -182,6 +136,58 @@ export class Tabs implements ComponentInterface {
   private setLeftButtonVisibility(isScrollable: boolean) {
     this.leftButtonChildElement.style.display =
       this.tabsHeaderChildElement.scrollLeft > 0 && isScrollable ? Display.BLOCK : Display.NONE;
+  }
+
+  private handleButtonOverlay(group: TabGroup) {
+    const tab = Array.from(this.tabsHeaderChildElement.getElementsByTagName('bds-tab')).find((header) => {
+      return header.group == group.header.group;
+    });
+
+    const buttons = [this.leftButtonChildElement, this.rightButtonChildElement];
+    buttons.forEach((button) => {
+      if (this.isButtonOverlappingTab(button, tab)) {
+        const distance = this.getAdjutScrollDistance(button, tab);
+        this.scrollButtonClick.emit({ distance: distance });
+      }
+    });
+  }
+
+  private isButtonOverlappingTab(button: HTMLElement, tab: HTMLElement) {
+    const tabRect = tab.getBoundingClientRect();
+    const buttonRect = button.getBoundingClientRect();
+
+    return this.elementIsOverlapping(buttonRect, tabRect);
+  }
+
+  private elementIsOverlapping(element: DOMRect, overlaidElement: DOMRect): boolean {
+    const elementStart = element.x;
+    const elementEnd = element.x + element.width;
+
+    const comparatorStart = overlaidElement.x;
+    const comparatorEnd = overlaidElement.x + overlaidElement.width;
+
+    return (
+      (elementStart >= comparatorStart && elementStart <= comparatorEnd) ||
+      (elementEnd >= comparatorStart && elementEnd <= comparatorEnd)
+    );
+  }
+
+  private getAdjutScrollDistance(button: HTMLElement, tab: HTMLElement) {
+    const direction = button.id == 'bds-tabs-button-left' ? ScrollDirection.LEFT : ScrollDirection.RIGHT;
+
+    const distanceDifference = tab.clientWidth + parseInt(getComputedStyle(tab).marginRight) - button.offsetWidth;
+
+    if (direction == ScrollDirection.RIGHT) {
+      return tab.parentElement.scrollLeft + distanceDifference;
+    } else {
+      return tab.parentElement.scrollLeft - distanceDifference;
+    }
+  }
+
+  private getDistance(options: ScrollToOptions, event: CustomEvent<Overflow>): number {
+    return event.detail.direction == ScrollDirection.RIGHT
+      ? (options.left = this.tabsHeaderChildElement.scrollLeft + this.tabsHeaderChildElement.clientWidth)
+      : (options.left = this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.clientWidth);
   }
 
   render(): HTMLElement {

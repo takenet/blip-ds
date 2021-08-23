@@ -18,6 +18,6 @@ export const enum Display {
 }
 
 export class Overflow {
-  direction: ScrollDirection;
+  direction?: ScrollDirection;
   distance?: number = null;
 }

@@ -13,9 +13,9 @@ export class Tab implements ComponentInterface {
 
   @Event() bdsSelect: EventEmitter;
 
-  @Prop() active = false;
-
   @Prop() label!: string;
+
+  @Prop() active = false;
 
   @Method()
   async getChild(): Promise<BdsTabData> {
@@ -34,7 +34,7 @@ export class Tab implements ComponentInterface {
       'bds-tab': true,
       'bds-tab--selected': this.active,
     };
-    const bold = this.active ? 'semi-bold' : 'regular';
+    const bold = this.active ? 'bold' : 'regular';
 
     return (
       <Host class={classes} onClick={this.onClick.bind(this)}>
