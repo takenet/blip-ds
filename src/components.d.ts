@@ -21,7 +21,7 @@ import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./co
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
-import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
+import { BdsTabData, ScrollDirection } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -938,22 +938,16 @@ export namespace Components {
     interface BdsTab {
         "active": boolean;
         "getChild": () => Promise<BdsTabData>;
-        /**
-          * Specifies the Tab group. Used to link it to the TabPanel.
-         */
-        "group": string;
         "label": string;
+        "name": string;
     }
     interface BdsTabPanel {
         "active": boolean;
         "getChild": () => Promise<BdsTabData>;
-        /**
-          * Specifies the TabPanel group. Used to link it to the Tab.
-         */
-        "group": string;
+        "name": string;
     }
     interface BdsTabs {
-        "align": 'left' | 'center' | 'right';
+        "overflowLeft": boolean;
     }
     interface BdsToast {
         /**
@@ -2354,23 +2348,17 @@ declare namespace LocalJSX {
     }
     interface BdsTab {
         "active"?: boolean;
-        /**
-          * Specifies the Tab group. Used to link it to the TabPanel.
-         */
-        "group": string;
         "label": string;
+        "name"?: string;
         "onBdsSelect"?: (event: CustomEvent<any>) => void;
     }
     interface BdsTabPanel {
         "active"?: boolean;
-        /**
-          * Specifies the TabPanel group. Used to link it to the Tab.
-         */
-        "group": string;
+        "name"?: string;
     }
     interface BdsTabs {
-        "align"?: 'left' | 'center' | 'right';
-        "onScrollButtonClick"?: (event: CustomEvent<Overflow>) => void;
+        "onScrollButtonClick"?: (event: CustomEvent<ScrollDirection>) => void;
+        "overflowLeft"?: boolean;
     }
     interface BdsToast {
         /**
