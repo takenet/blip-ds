@@ -68,6 +68,11 @@ export class BdsAutocomplete {
   @Event() bdsSelectedChange!: EventEmitter<AutocompleteSelectedChangeEventDetail>;
 
   /**
+   * Emitted when the input has changed.
+   */
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+
+  /**
    * Emitted when the selection is cancelled.
    */
   @Event() bdsCancel!: EventEmitter<void>;
@@ -109,7 +114,6 @@ export class BdsAutocomplete {
 
   @Watch('value')
   valueChanged(): void {
-    this.bdsChange.emit({ value: this.value });
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
@@ -131,6 +135,7 @@ export class BdsAutocomplete {
   @Watch('options')
   parseOptions() {
     if (this.options) {
+      this.resetFilterOptions();
       this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
     }
   }
@@ -144,6 +149,14 @@ export class BdsAutocomplete {
     }
     this.text = this.getText();
   }
+
+  private onInput = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    this.bdsInput.emit(ev as KeyboardEvent);
+  };
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return this.options
@@ -277,6 +290,7 @@ export class BdsAutocomplete {
   };
 
   private changedInputValue = async () => {
+    this.bdsChange.emit({ value: this.nativeInput.value });
     if (this.nativeInput.value) {
       await this.filterOptions(this.nativeInput.value);
     } else {
@@ -353,6 +367,7 @@ export class BdsAutocomplete {
           disabled={this.disabled}
           placeholder={this.placeholder}
           onBdsChange={this.changedInputValue}
+          onBdsInput={this.onInput}
           readonly={false}
         >
           <div slot="input-right" class="select__icon">

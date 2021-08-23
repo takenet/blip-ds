@@ -21,7 +21,12 @@ export class SelectChips {
    */
   @Prop({ mutable: true }) options?: string | Option[] = [];
 
-  @Prop({ mutable: true }) chips: string[] = [];
+  /**
+   * The chips on the component
+   * Should be passed this way:
+   * chips='["chip1", "chip2"]'
+   */
+  @Prop({ mutable: true }) chips: string | string[] = [];
 
   /**
    * Used for add prefix on new option select.

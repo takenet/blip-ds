@@ -764,7 +764,10 @@ export namespace Components {
           * Specify if is possible to create a new tag that is not on the options.
          */
         "canAddNew"?: boolean;
-        "chips": string[];
+        /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips": string | string[];
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -1425,6 +1428,10 @@ declare namespace LocalJSX {
           * Emitted when the select loses focus.
          */
         "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when the selected value has changed.
          */
@@ -2190,7 +2197,10 @@ declare namespace LocalJSX {
           * Specify if is possible to create a new tag that is not on the options.
          */
         "canAddNew"?: boolean;
-        "chips"?: string[];
+        /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips"?: string | string[];
         /**
           * Add state danger on input, use for use feedback.
          */
