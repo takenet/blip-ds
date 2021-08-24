@@ -38,9 +38,11 @@ export class Tab implements ComponentInterface {
 
     return (
       <Host class={classes} onClick={this.onClick.bind(this)}>
-        <bds-typo variant="fs-16" bold={bold}>
-          {this.label}
-        </bds-typo>
+        <div class="bds-tab__text">
+          <bds-typo variant="fs-16" bold={bold}>
+            {this.label}
+          </bds-typo>
+        </div>
       </Host>
     );
   }

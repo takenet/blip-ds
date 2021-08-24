@@ -9,7 +9,7 @@
   height: 48px;
   margin-bottom: 3px;
   padding: 0 10px 0 10px;
-  
+
   &--center {
     justify-content: center;
   }
@@ -24,9 +24,10 @@
 
   .bds-tabs__header {
     display: flex;
-    overflow: hidden;
     flex-direction: row;
+    overflow: hidden;
     align-items: stretch;
+    width: fit-content;
   }
 
   .bds-tabs__header-button-container {
