@@ -21,6 +21,7 @@ import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./co
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
+import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -934,6 +935,26 @@ export namespace Components {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTab {
+        "active": boolean;
+        "getChild": () => Promise<BdsTabData>;
+        /**
+          * Specifies the Tab group. Used to link it to the TabPanel.
+         */
+        "group": string;
+        "label": string;
+    }
+    interface BdsTabPanel {
+        "active": boolean;
+        "getChild": () => Promise<BdsTabData>;
+        /**
+          * Specifies the TabPanel group. Used to link it to the Tab.
+         */
+        "group": string;
+    }
+    interface BdsTabs {
+        "align": 'left' | 'center' | 'right';
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -1258,6 +1279,24 @@ declare global {
         prototype: HTMLBdsSwitchElement;
         new (): HTMLBdsSwitchElement;
     };
+    interface HTMLBdsTabElement extends Components.BdsTab, HTMLStencilElement {
+    }
+    var HTMLBdsTabElement: {
+        prototype: HTMLBdsTabElement;
+        new (): HTMLBdsTabElement;
+    };
+    interface HTMLBdsTabPanelElement extends Components.BdsTabPanel, HTMLStencilElement {
+    }
+    var HTMLBdsTabPanelElement: {
+        prototype: HTMLBdsTabPanelElement;
+        new (): HTMLBdsTabPanelElement;
+    };
+    interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
+    }
+    var HTMLBdsTabsElement: {
+        prototype: HTMLBdsTabsElement;
+        new (): HTMLBdsTabsElement;
+    };
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
     }
     var HTMLBdsToastElement: {
@@ -1325,6 +1364,9 @@ declare global {
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
+        "bds-tab": HTMLBdsTabElement;
+        "bds-tab-panel": HTMLBdsTabPanelElement;
+        "bds-tabs": HTMLBdsTabsElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
@@ -2310,6 +2352,26 @@ declare namespace LocalJSX {
          */
         "size"?: SwitchSize;
     }
+    interface BdsTab {
+        "active"?: boolean;
+        /**
+          * Specifies the Tab group. Used to link it to the TabPanel.
+         */
+        "group": string;
+        "label": string;
+        "onBdsSelect"?: (event: CustomEvent<any>) => void;
+    }
+    interface BdsTabPanel {
+        "active"?: boolean;
+        /**
+          * Specifies the TabPanel group. Used to link it to the Tab.
+         */
+        "group": string;
+    }
+    interface BdsTabs {
+        "align"?: 'left' | 'center' | 'right';
+        "onScrollButtonClick"?: (event: CustomEvent<Overflow>) => void;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -2449,6 +2511,9 @@ declare namespace LocalJSX {
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
+        "bds-tab": BdsTab;
+        "bds-tab-panel": BdsTabPanel;
+        "bds-tabs": BdsTabs;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
@@ -2496,6 +2561,9 @@ declare module "@stencil/core" {
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
+            "bds-tab": LocalJSX.BdsTab & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
+            "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
+            "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
