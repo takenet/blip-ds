@@ -71,6 +71,11 @@ export class InputChips {
   @Prop() disableSubmit = false;
 
   /**
+   * Disabled input
+   */
+  @Prop({ reflect: true }) disabled?: boolean = false;
+
+  /**
    * Emitted when the chip has added.
    */
   @Event() bdsChange!: EventEmitter;
@@ -293,7 +298,7 @@ export class InputChips {
           key={id}
           variant="primary"
           danger={!this.validateChip(chip)}
-          deletable
+          deletable={!this.disabled}
           onBdsDelete={(event) => this.removeChip(event)}
         >
           {chip}
@@ -318,6 +323,7 @@ export class InputChips {
           error-message={this.errorMessage}
           danger={this.danger}
           chips={true}
+          disabled={this.disabled}
         >
           <span slot="inside-input-left">{this.renderChips()}</span>
           <div slot="input-right">

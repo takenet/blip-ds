@@ -464,6 +464,10 @@ export namespace Components {
          */
         "disableSubmit": boolean;
         /**
+          * Disabled input
+         */
+        "disabled"?: boolean;
+        /**
           * Do not accept duplicate chip elements.
          */
         "duplicated"?: boolean;
@@ -1844,6 +1848,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot modify the value.
          */
         "disableSubmit"?: boolean;
+        /**
+          * Disabled input
+         */
+        "disabled"?: boolean;
         /**
           * Do not accept duplicate chip elements.
          */
