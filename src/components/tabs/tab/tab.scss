@@ -3,15 +3,16 @@
   justify-content: center;
   align-items: center;
 
-  box-sizing: border-box;
+  box-sizing: content-box;
   min-width: fit-content;
   max-width: 270px;
   height: 46px;
   max-height: 48px;
   
   cursor: pointer;
-  color: $color-neutral-medium-cloud;
   text-align: center;
+  color: $color-neutral-medium-cloud;
+  border-bottom: 2px solid transparent;
 
   &:not(:last-child) {
     margin-right: 32px;
@@ -22,13 +23,25 @@
   }
 
   &--selected {
-    border-bottom: 2px solid $color-primary-main;
-    color: $color-primary-main;
+    animation-name: selectFade;
+  animation-duration: 0.5s;
+    animation-fill-mode: forwards;
   }
 
   &__text {
     min-width: 90px;
     max-width: 270px;
+  }
+
+  @keyframes selectFade {
+    from{
+       border-bottom: 2px solid transparent;
+       color: $color-primary-main;
+    }
+    to{
+       border-bottom: 2px solid $color-primary-main;
+      color: $color-primary-main;
+    }
   }
 }
 
