@@ -162,7 +162,6 @@ $button-padding-left-right: 16px;
     background: transparent;
     color: $color-primary-main;
     border: 1px solid $color-neutral-medium-wave;
-    @include padding-button-top-bottom($button-size-standard - 1px, $height-standard);
 
     &:hover {
       border: 1px solid $color-primary-main;

@@ -129,18 +129,23 @@ export class Icon {
 
   setSvgContent = () => {
     let svg;
-    if (this.type === 'icon') {
-      const key = getIconName(this.name, this.theme);
-      svg = atob(icons[key]);
-      this.svgContent = formatSvg(svg, this.color);
-    } else if (this.type === 'emoji') {
-      const key = getEmojiName(this.name);
-      svg = atob(emojis[key]);
-      this.svgContent = formatSvg(svg, this.color, true);
-    } else if (this.type === 'logo') {
-      const key = getLogoName(this.name);
-      svg = atob(logo[key]);
-      this.svgContent = formatSvg(svg, this.color, true);
+    try {
+      if (this.type === 'icon') {
+        const key = getIconName(this.name, this.theme);
+        svg = atob(icons[key]);
+        this.svgContent = formatSvg(svg, this.color);
+      } else if (this.type === 'emoji') {
+        const key = getEmojiName(this.name);
+        svg = atob(emojis[key]);
+        this.svgContent = formatSvg(svg, this.color, true);
+      } else if (this.type === 'logo') {
+        const key = getLogoName(this.name);
+        svg = atob(logo[key]);
+        this.svgContent = formatSvg(svg, this.color, true);
+      }
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.warn('[Warning]: Failed to setSvgContent to', this.name);
     }
   };
 
