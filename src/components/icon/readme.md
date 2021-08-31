@@ -21,6 +21,13 @@
 | `type`      | `type`       | Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.                                                             | `"emoji" \| "icon" \| "logo"`                                                                                        | `'icon'`    |
 
 
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"icon"` |             |
+
+
 ## Dependencies
 
 ### Used by

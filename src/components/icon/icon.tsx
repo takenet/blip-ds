@@ -166,6 +166,7 @@ export class Icon {
               'logo-inner': this.type === 'logo',
             }}
             innerHTML={this.svgContent}
+            part="icon"
           ></div>
         ) : (
           <div class="icon-inner"></div>
