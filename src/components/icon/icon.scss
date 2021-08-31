@@ -6,6 +6,7 @@
   min-height: $size;
 }
 
+$icon-brand: 64px;
 $icon-xxx-large: 40px;
 $icon-xx-large: 36px;
 $icon-x-large: 32px;
@@ -43,6 +44,10 @@ $icon-xx-small: 12px;
     width: 100%;
     min-width: 100%;
   }
+}
+
+:host(.bds-icon__size--brand) {
+  @include size($icon-brand);
 }
 
 :host(.bds-icon__size--xxx-large) {

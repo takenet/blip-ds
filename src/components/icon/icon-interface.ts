@@ -7,7 +7,8 @@ export type IconSize =
   | 'large'
   | 'x-large'
   | 'xx-large'
-  | 'xxx-large';
+  | 'xxx-large'
+  | 'brand';
 
 export type IconTheme = 'outline' | 'solid';
 

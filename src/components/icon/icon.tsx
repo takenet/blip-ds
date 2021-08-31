@@ -54,7 +54,7 @@ export class Icon {
 
   /**
    * Icon size. Entered as one of the icon size design tokens. Can be one of:
-   * "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+   * "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large", "brand".
    */
   @Prop() size?: IconSize = 'medium';
 
@@ -166,7 +166,6 @@ export class Icon {
               'logo-inner': this.type === 'logo',
             }}
             innerHTML={this.svgContent}
-            part="icon"
           ></div>
         ) : (
           <div class="icon-inner"></div>

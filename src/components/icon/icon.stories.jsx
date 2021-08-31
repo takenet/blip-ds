@@ -412,6 +412,7 @@ export const iconSolid = () => (
 
 export const iconSize = () => (
   <div style={zeroHeightStyles}>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="brand"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xx-large"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="x-large" ></bds-icon>

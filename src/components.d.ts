@@ -278,7 +278,7 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+          * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large", "brand".
          */
         "size"?: IconSize;
         /**
@@ -1661,7 +1661,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large".
+          * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large", "brand".
          */
         "size"?: IconSize;
         /**
