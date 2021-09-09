@@ -22,7 +22,7 @@ export class BdsAutocomplete {
 
   @State() internalOptions: AutocompleteOption[];
 
-  @State() isFocused?: boolean = true;
+  @State() isFocused?: boolean = false;
 
   /**
    * The options of the select
