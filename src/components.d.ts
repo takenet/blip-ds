@@ -52,6 +52,10 @@ export namespace Components {
     }
     interface BdsAutocomplete {
         /**
+          * If true, the X icon will appear only when component is focused.
+         */
+        "clearIconOnFocus"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -1400,6 +1404,10 @@ declare namespace LocalJSX {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsAutocomplete {
+        /**
+          * If true, the X icon will appear only when component is focused.
+         */
+        "clearIconOnFocus"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
          */

@@ -22,6 +22,8 @@ export class BdsAutocomplete {
 
   @State() internalOptions: AutocompleteOption[];
 
+  @State() isFocused?: boolean = false;
+
   /**
    * The options of the select
    * Should be passed this way:
@@ -33,13 +35,11 @@ export class BdsAutocomplete {
   /**
    * the value of the select.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop({ mutable: true }) value?: string | null;
 
   /**
    * the item selected.
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop({ mutable: true }) selected?: HTMLBdsSelectOptionElement | null;
 
   /**
@@ -56,6 +56,31 @@ export class BdsAutocomplete {
    * Search only the title property
    */
   @Prop({ reflect: true }) searchOnlyTitle? = true;
+
+  /**
+   *  label in input, with he the input size increases.
+   */
+  @Prop() label? = '';
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
+
+  /**
+   * Placeholder for native input element.
+   */
+  @Prop() placeholder?: string = '';
+
+  /**
+   * Set the placement of the options menu. Can be 'bottom' or 'top'.
+   */
+  @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'bottom';
+
+  /**
+   * If true, the X icon will appear only when component is focused.
+   */
+  @Prop() clearIconOnFocus?: boolean = false;
 
   /**
    * Emitted when the value has changed.
@@ -87,26 +112,6 @@ export class BdsAutocomplete {
    */
   @Event() bdsBlur!: EventEmitter<void>;
 
-  /**
-   *  label in input, with he the input size increases.
-   */
-  @Prop() label? = '';
-
-  /**
-   * used for add icon in input left. Uses the bds-icon component.
-   */
-  @Prop({ reflect: true }) icon?: string = '';
-
-  /**
-   * Placeholder for native input element.
-   */
-  @Prop() placeholder?: string = '';
-
-  /**
-   * Set the placement of the options menu. Can be 'bottom' or 'top'.
-   */
-  @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'bottom';
-
   @Watch('selected')
   itemSelectedChanged(): void {
     this.bdsSelectedChange.emit(this.selected);
@@ -128,16 +133,17 @@ export class BdsAutocomplete {
     }
   }
 
-  componentWillLoad() {
-    this.options && this.parseOptions();
-  }
-
   @Watch('options')
   parseOptions() {
     if (this.options) {
       this.resetFilterOptions();
       this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
     }
+  }
+
+  componentWillLoad() {
+    this.text = this.getText();
+    this.options && this.parseOptions();
   }
 
   componentDidLoad() {
@@ -147,7 +153,6 @@ export class BdsAutocomplete {
         option.addEventListener('optionSelected', this.handler);
       }
     }
-    this.text = this.getText();
   }
 
   private onInput = (ev: Event): void => {
@@ -170,12 +175,12 @@ export class BdsAutocomplete {
       : Array.from(this.el.querySelectorAll('bds-select-option')).find((option) => option.selected);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private refNativeInput = (el: any): void => {
+  private refNativeInput = (el: HTMLBdsInputElement): void => {
     this.nativeInput = el;
   };
 
   private onFocus = (): void => {
+    this.isFocused = true;
     this.bdsFocus.emit();
   };
 
@@ -188,6 +193,7 @@ export class BdsAutocomplete {
   private onBlur = (): void => {
     this.bdsBlur.emit();
     if (!this.isOpen) {
+      this.isFocused = false;
       this.nativeInput.value = this.getText();
     }
   };
@@ -225,7 +231,7 @@ export class BdsAutocomplete {
   };
 
   private setFocusWrapper = (): void => {
-    if (this.nativeInput) {
+    if (!this.disabled && this.nativeInput) {
       this.nativeInput.setFocus();
     }
   };
@@ -283,10 +289,12 @@ export class BdsAutocomplete {
   }
 
   private cleanInputSelection = async () => {
-    this.value = '';
-    this.nativeInput.value = '';
-    this.isOpen = false;
-    await this.resetFilterOptions();
+    if (!this.disabled) {
+      this.value = '';
+      this.nativeInput.value = '';
+      this.isOpen = false;
+      await this.resetFilterOptions();
+    }
   };
 
   private changedInputValue = async () => {
@@ -377,7 +385,7 @@ export class BdsAutocomplete {
               theme="solid"
               onClick={this.cleanInputSelection}
               class={{
-                'icon-hidden': this.text == '',
+                'icon-hidden': (this.clearIconOnFocus && (!this.isFocused || !this.isOpen)) || !this.value,
               }}
             ></bds-icon>
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
