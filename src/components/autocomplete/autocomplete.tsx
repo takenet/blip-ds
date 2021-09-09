@@ -80,7 +80,7 @@ export class BdsAutocomplete {
   /**
    * If true, the X icon will appear only when component is focused.
    */
-  @Prop() clearIconOnFocus?: boolean = true;
+  @Prop() clearIconOnFocus?: boolean = false;
 
   /**
    * Emitted when the value has changed.
