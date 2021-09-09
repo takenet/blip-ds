@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install
           npm run eslint
-          npm run test -u
+          npm run test
           npm run build
           npm run build:react
         env:
