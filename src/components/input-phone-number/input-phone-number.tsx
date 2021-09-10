@@ -236,16 +236,17 @@ export class InputPhoneNumber {
             'select-phone-number__options--open': this.isOpen,
           }}
         >
-          {flagsNames.map((flag) => (
-            <bds-select-option
-              key={flag}
-              onOptionSelected={this.handler}
-              selected={flag == this.selectedCountry}
-              value={{ code: countries[flag].code, flag }}
-            >
-              {countries[flag].name} {countries[flag].code}
-            </bds-select-option>
-          ))}
+          {this.isOpen &&
+            flagsNames.map((flag) => (
+              <bds-select-option
+                key={flag}
+                onOptionSelected={this.handler}
+                selected={flag == this.selectedCountry}
+                value={{ code: countries[flag].code, flag }}
+              >
+                {countries[flag].name} {countries[flag].code}
+              </bds-select-option>
+            ))}
         </div>
       </div>
     );
