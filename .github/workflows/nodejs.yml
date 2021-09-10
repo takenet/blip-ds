@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 14
 
-      - name: NPM Install, Build, Build React and Test
+      - name: NPM Install, build, build React and test
         run: |
           npm install
           npm run eslint
