@@ -142,7 +142,6 @@ export class BdsAutocomplete {
   }
 
   componentWillLoad() {
-    this.text = this.getText();
     this.options && this.parseOptions();
   }
 
@@ -153,6 +152,8 @@ export class BdsAutocomplete {
         option.addEventListener('optionSelected', this.handler);
       }
     }
+
+    this.text = this.getText();
   }
 
   private onInput = (ev: Event): void => {
