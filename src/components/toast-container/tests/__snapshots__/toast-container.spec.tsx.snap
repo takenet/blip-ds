@@ -44,6 +44,7 @@ Object {
     "hydratedAttribute": false,
     "hydratedClass": true,
     "initializeNextTick": true,
+    "invisiblePrehydration": true,
     "isDebug": false,
     "isDev": true,
     "isTesting": true,
