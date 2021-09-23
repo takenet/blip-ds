@@ -327,6 +327,7 @@ export class SelectChips {
           error-message={this.errorMessage}
           chips={this.chips}
           disable-submit={true}
+          delimiters={undefined}
           duplicated={this.duplicated}
         >
           <div slot="input-right" class="select__icon">
