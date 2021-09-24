@@ -137,7 +137,11 @@ export class BdsAutocomplete {
   parseOptions() {
     if (this.options) {
       this.resetFilterOptions();
-      this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
+      try {
+        this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
+      } catch (e) {
+        this.internalOptions = [];
+      }
     }
   }
 

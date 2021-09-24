@@ -299,7 +299,9 @@ export class SelectChips {
     let internalOptions: Option[] = [];
     if (this.options) {
       if (typeof this.options === 'string') {
-        internalOptions = JSON.parse(this.options);
+        try {
+          internalOptions = JSON.parse(this.options);
+        } catch (e) {}
       } else {
         internalOptions = this.options;
       }
