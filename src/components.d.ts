@@ -462,7 +462,7 @@ export namespace Components {
         /**
           * The delimiter is used to add multiple chips in the same string.
          */
-        "delimiters": RegExp;
+        "delimiters"?: RegExp;
         /**
           * If `true`, the user cannot modify the value.
          */

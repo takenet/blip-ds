@@ -43,7 +43,7 @@ export class InputChips {
   /**
    * The delimiter is used to add multiple chips in the same string.
    */
-  @Prop() delimiters = /,|;/;
+  @Prop() delimiters? = /,|;/;
 
   /**
    * Indicated to pass an feedback to user.
