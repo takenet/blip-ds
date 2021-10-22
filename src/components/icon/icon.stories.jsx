@@ -13,6 +13,7 @@ export default {
 
 const solidIconsName = [
   'add',
+  'agent-rule',
   'arrow-ball-down',
   'arrow-ball-left',
   'arrow-ball-right',
