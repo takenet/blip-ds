@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
+import { avatarSize } from "./components/avatar/avatar";
 import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -95,6 +96,24 @@ export namespace Components {
           * the value of the select.
          */
         "value"?: string | null;
+    }
+    interface BdsAvatar {
+        /**
+          * Button. Serve to enable button function on avatar.
+         */
+        "button"?: boolean;
+        /**
+          * Name. Inserted for highlighted osuary name. Enter the full name.
+         */
+        "name"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
+         */
+        "size"?: avatarSize;
+        /**
+          * Thumbnail. Inserted to highlight user image. Url field.
+         */
+        "thumbnail"?: string;
     }
     interface BdsBanner {
         /**
@@ -1101,6 +1120,12 @@ declare global {
         prototype: HTMLBdsAutocompleteElement;
         new (): HTMLBdsAutocompleteElement;
     };
+    interface HTMLBdsAvatarElement extends Components.BdsAvatar, HTMLStencilElement {
+    }
+    var HTMLBdsAvatarElement: {
+        prototype: HTMLBdsAvatarElement;
+        new (): HTMLBdsAvatarElement;
+    };
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
     }
     var HTMLBdsBannerElement: {
@@ -1341,6 +1366,7 @@ declare global {
         "bds-alert-body": HTMLBdsAlertBodyElement;
         "bds-alert-header": HTMLBdsAlertHeaderElement;
         "bds-autocomplete": HTMLBdsAutocompleteElement;
+        "bds-avatar": HTMLBdsAvatarElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
@@ -1472,6 +1498,24 @@ declare namespace LocalJSX {
           * the value of the select.
          */
         "value"?: string | null;
+    }
+    interface BdsAvatar {
+        /**
+          * Button. Serve to enable button function on avatar.
+         */
+        "button"?: boolean;
+        /**
+          * Name. Inserted for highlighted osuary name. Enter the full name.
+         */
+        "name"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
+         */
+        "size"?: avatarSize;
+        /**
+          * Thumbnail. Inserted to highlight user image. Url field.
+         */
+        "thumbnail"?: string;
     }
     interface BdsBanner {
         /**
@@ -2496,6 +2540,7 @@ declare namespace LocalJSX {
         "bds-alert-body": BdsAlertBody;
         "bds-alert-header": BdsAlertHeader;
         "bds-autocomplete": BdsAutocomplete;
+        "bds-avatar": BdsAvatar;
         "bds-banner": BdsBanner;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
@@ -2546,6 +2591,7 @@ declare module "@stencil/core" {
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
             "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
             "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
+            "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
