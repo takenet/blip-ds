@@ -29,6 +29,10 @@ export class BdsAvatar {
   * Button. Serve to enable button function on avatar.
   */
   @Prop() button?: boolean = false;
+  /**
+  * Ellipses, serves to indicate the user number in the listing.
+  */
+  @Prop() ellipsis?: number = null;
   private selectTypoSize = (value): void => {
     switch (value) {
       case 'extra-small':
@@ -61,7 +65,7 @@ export class BdsAvatar {
 
     const avatarColor = ["purple", "brand", "green", "brown", "pink"];
     const randColor = avatarColor[Math.floor(Math.random() * avatarColor.length)];
-    const avatarBgColor = this.name ? randColor : 'neutral';
+    const avatarBgColor = !this.name || this.ellipsis ? 'neutral' : randColor;
     const arrayName = this.name ? this.name.split(' ') : [];
     const firstName = arrayName.length ? arrayName.shift().charAt(0) : '';
     const lastName = arrayName.length ? arrayName.pop().charAt(0) : '';
@@ -76,39 +80,43 @@ export class BdsAvatar {
           button: this.button
         }}
       >
-        {this.thumbnail ? (
-          this.button ? (
-            <div class="avatar__btn">
-              <img class="avatar__btn__img" src={this.thumbnail} />
-              <div class="avatar__btn__thumb">
-                <bds-icon class="avatar__btn__thumb__icon" name="edit" theme="outline" size={this.iconSize}></bds-icon>
-              </div>
-            </div>
-          ) : (
-            <img class="avatar__img" src={this.thumbnail} />
-          )
+        {this.ellipsis ? (
+          <bds-typo class="avatar__ellipsis" variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
         ) : (
-          this.name ? (
+          this.thumbnail ? (
             this.button ? (
               <div class="avatar__btn">
-                <bds-typo class="avatar__btn__text" variant={this.typoSize} tag="span">{firstName+lastName}</bds-typo>
-                <div class="avatar__btn__name">
-                  <bds-icon class="avatar__btn__name__icon" name="upload" theme="outline" size={this.iconSize}></bds-icon>
+                <img class="avatar__btn__img" src={this.thumbnail} />
+                <div class="avatar__btn__thumb">
+                  <bds-icon class="avatar__btn__thumb__icon" name="edit" theme="outline" size={this.iconSize}></bds-icon>
                 </div>
               </div>
             ) : (
-              <bds-typo class="avatar__text" variant={this.typoSize} tag="span">{firstName+lastName}</bds-typo>
+              <img class="avatar__img" src={this.thumbnail} />
             )
           ) : (
-            this.button ? (
-              <div class="avatar__btn">
-                <bds-icon class="avatar__btn__icon" name="avatar-user" theme="outline" size={this.iconSize}></bds-icon>
-                <div class="avatar__btn__empty">
-                  <bds-icon class="avatar__btn__empty__icon" name="upload" theme="outline" size={this.iconSize}></bds-icon>
+            this.name ? (
+              this.button ? (
+                <div class="avatar__btn">
+                  <bds-typo class="avatar__btn__text" variant={this.typoSize} tag="span">{firstName+lastName}</bds-typo>
+                  <div class="avatar__btn__name">
+                    <bds-icon class="avatar__btn__name__icon" name="upload" theme="outline" size={this.iconSize}></bds-icon>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <bds-typo class="avatar__text" variant={this.typoSize} tag="span">{firstName+lastName}</bds-typo>
+              )
             ) : (
-              <bds-icon class="avatar__icon" name="avatar-user" theme="outline" size={this.iconSize}></bds-icon>
+              this.button ? (
+                <div class="avatar__btn">
+                  <bds-icon class="avatar__btn__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
+                  <div class="avatar__btn__empty">
+                    <bds-icon class="avatar__btn__empty__icon" name="upload" theme="outline" size={this.iconSize}></bds-icon>
+                  </div>
+                </div>
+              ) : (
+                <bds-icon class="avatar__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
+              )
             )
           )
         )}

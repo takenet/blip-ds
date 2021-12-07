@@ -29,12 +29,16 @@ $avatar-size-extra-large :72px;
   }
 
   &__icon {
-    color: $color-primary-main;
+    color: $color-neutral-medium-cloud;
   }
 
   &__img {
     width: 100%;
     height: auto;
+  }
+
+  &__ellipsis {
+    color: $color-neutral-dark-rooftop;
   }
 
   &__btn {
@@ -59,7 +63,7 @@ $avatar-size-extra-large :72px;
     }
 
     &__icon {
-      color: $color-primary-main;
+      color: $color-neutral-medium-cloud;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -123,7 +127,7 @@ $avatar-size-extra-large :72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-primary-main;
+        color: $color-neutral-medium-cloud;
       }
     }
   }

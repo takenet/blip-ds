@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
 import { avatarSize } from "./components/avatar/avatar";
+import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
+import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
 import { BannerAlign, BannerVariant } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -103,6 +105,10 @@ export namespace Components {
          */
         "button"?: boolean;
         /**
+          * Ellipses, serves to indicate the user number in the listing.
+         */
+        "ellipsis"?: number;
+        /**
           * Name. Inserted for highlighted osuary name. Enter the full name.
          */
         "name"?: string;
@@ -114,6 +120,16 @@ export namespace Components {
           * Thumbnail. Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
+    }
+    interface BdsAvatarGroup {
+        /**
+          * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
+         */
+        "size"?: avatarSize;
+        /**
+          * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": ""},   {"id": "2", "name": "Dwight Schrute", "thumbnail": ""},   {"id": "3", "name": "Jim Halpert", "thumbnail": ""},   {"id": "4", "name": "Pam Beesly", "thumbnail": ""},   {"id": "5", "name": "Ryan Howard", "thumbnail": ""},   {"id": "6", "name": "Andy Bernard", "thumbnail": ""} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "users"?: string | AvatarDataList[];
     }
     interface BdsBanner {
         /**
@@ -1126,6 +1142,12 @@ declare global {
         prototype: HTMLBdsAvatarElement;
         new (): HTMLBdsAvatarElement;
     };
+    interface HTMLBdsAvatarGroupElement extends Components.BdsAvatarGroup, HTMLStencilElement {
+    }
+    var HTMLBdsAvatarGroupElement: {
+        prototype: HTMLBdsAvatarGroupElement;
+        new (): HTMLBdsAvatarGroupElement;
+    };
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
     }
     var HTMLBdsBannerElement: {
@@ -1367,6 +1389,7 @@ declare global {
         "bds-alert-header": HTMLBdsAlertHeaderElement;
         "bds-autocomplete": HTMLBdsAutocompleteElement;
         "bds-avatar": HTMLBdsAvatarElement;
+        "bds-avatar-group": HTMLBdsAvatarGroupElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
@@ -1505,6 +1528,10 @@ declare namespace LocalJSX {
          */
         "button"?: boolean;
         /**
+          * Ellipses, serves to indicate the user number in the listing.
+         */
+        "ellipsis"?: number;
+        /**
           * Name. Inserted for highlighted osuary name. Enter the full name.
          */
         "name"?: string;
@@ -1516,6 +1543,16 @@ declare namespace LocalJSX {
           * Thumbnail. Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
+    }
+    interface BdsAvatarGroup {
+        /**
+          * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
+         */
+        "size"?: avatarSize;
+        /**
+          * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": ""},   {"id": "2", "name": "Dwight Schrute", "thumbnail": ""},   {"id": "3", "name": "Jim Halpert", "thumbnail": ""},   {"id": "4", "name": "Pam Beesly", "thumbnail": ""},   {"id": "5", "name": "Ryan Howard", "thumbnail": ""},   {"id": "6", "name": "Andy Bernard", "thumbnail": ""} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "users"?: string | AvatarDataList[];
     }
     interface BdsBanner {
         /**
@@ -2541,6 +2578,7 @@ declare namespace LocalJSX {
         "bds-alert-header": BdsAlertHeader;
         "bds-autocomplete": BdsAutocomplete;
         "bds-avatar": BdsAvatar;
+        "bds-avatar-group": BdsAvatarGroup;
         "bds-banner": BdsBanner;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
@@ -2592,6 +2630,7 @@ declare module "@stencil/core" {
             "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
             "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
             "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
+            "bds-avatar-group": LocalJSX.BdsAvatarGroup & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
