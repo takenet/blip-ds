@@ -10,6 +10,7 @@ export type avatarSize = 'extra-small' | 'small' | 'standard' | 'large' | 'extra
   shadow: false,
 })
 export class BdsAvatar {
+
   private typoSize?: FontSize = 'fs-20';
   private iconSize?: IconSize = 'large';
   /**
@@ -62,17 +63,17 @@ export class BdsAvatar {
   }
 
   render(): HTMLElement {
-
     const avatarColor = ["purple", "brand", "green", "brown", "pink"];
     const randColor = avatarColor[Math.floor(Math.random() * avatarColor.length)];
     const avatarBgColor = !this.name || this.ellipsis ? 'neutral' : randColor;
     const arrayName = this.name ? this.name.split(' ') : [];
     const firstName = arrayName.length ? arrayName.shift().charAt(0) : '';
     const lastName = arrayName.length ? arrayName.pop().charAt(0) : '';
+    const Element = this.button ? 'button' : 'div';
     this.selectTypoSize(this.size);
 
     return (
-      <div
+      <Element
         class={{
           avatar: true,
           [`avatar__size--${this.size}`]: true,
@@ -85,7 +86,8 @@ export class BdsAvatar {
         ) : (
           this.thumbnail ? (
             this.button ? (
-              <div class="avatar__btn">
+              <div
+                class="avatar__btn">
                 <img class="avatar__btn__img" src={this.thumbnail} />
                 <div class="avatar__btn__thumb">
                   <bds-icon class="avatar__btn__thumb__icon" name="edit" theme="outline" size={this.iconSize}></bds-icon>
@@ -97,7 +99,8 @@ export class BdsAvatar {
           ) : (
             this.name ? (
               this.button ? (
-                <div class="avatar__btn">
+                <div
+                  class="avatar__btn">
                   <bds-typo class="avatar__btn__text" variant={this.typoSize} tag="span">{firstName+lastName}</bds-typo>
                   <div class="avatar__btn__name">
                     <bds-icon class="avatar__btn__name__icon" name="upload" theme="outline" size={this.iconSize}></bds-icon>
@@ -108,7 +111,8 @@ export class BdsAvatar {
               )
             ) : (
               this.button ? (
-                <div class="avatar__btn">
+                <div
+                  class="avatar__btn">
                   <bds-icon class="avatar__btn__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
                   <div class="avatar__btn__empty">
                     <bds-icon class="avatar__btn__empty__icon" name="upload" theme="outline" size={this.iconSize}></bds-icon>
@@ -120,7 +124,7 @@ export class BdsAvatar {
             )
           )
         )}
-      </div>
+      </Element>
     );
   }
 
