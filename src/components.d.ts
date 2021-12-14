@@ -101,10 +101,6 @@ export namespace Components {
     }
     interface BdsAvatar {
         /**
-          * Button. Serve to enable button function on avatar.
-         */
-        "button"?: boolean;
-        /**
           * Ellipses, serves to indicate the user number in the listing.
          */
         "ellipsis"?: number;
@@ -120,6 +116,10 @@ export namespace Components {
           * Thumbnail. Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
+        /**
+          * upload. Serve to enable upload function on avatar.
+         */
+        "upload"?: boolean;
     }
     interface BdsAvatarGroup {
         /**
@@ -127,7 +127,7 @@ export namespace Components {
          */
         "size"?: avatarSize;
         /**
-          * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/92152d262175be2384854d0b286e84df"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/15d6d90235aabcee62fbc26c3f1a31b2"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ca23c3552d5e36d447d6f9eef5d9d5bc"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/a6adb1435e4267d983e5fd246302003a"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ae4cfce3c2e6db162d1f7f137062dcd2"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/25617c2e17f7bcbe847c7e4730ef5b03"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
+          * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
     }
@@ -1524,10 +1524,6 @@ declare namespace LocalJSX {
     }
     interface BdsAvatar {
         /**
-          * Button. Serve to enable button function on avatar.
-         */
-        "button"?: boolean;
-        /**
           * Ellipses, serves to indicate the user number in the listing.
          */
         "ellipsis"?: number;
@@ -1543,6 +1539,10 @@ declare namespace LocalJSX {
           * Thumbnail. Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
+        /**
+          * upload. Serve to enable upload function on avatar.
+         */
+        "upload"?: boolean;
     }
     interface BdsAvatarGroup {
         /**
@@ -1550,7 +1550,7 @@ declare namespace LocalJSX {
          */
         "size"?: avatarSize;
         /**
-          * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/92152d262175be2384854d0b286e84df"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/15d6d90235aabcee62fbc26c3f1a31b2"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ca23c3552d5e36d447d6f9eef5d9d5bc"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/a6adb1435e4267d983e5fd246302003a"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ae4cfce3c2e6db162d1f7f137062dcd2"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/25617c2e17f7bcbe847c7e4730ef5b03"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
+          * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
     }

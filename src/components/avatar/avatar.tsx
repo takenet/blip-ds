@@ -27,9 +27,9 @@ export class BdsAvatar {
   */
   @Prop() size?: avatarSize = 'standard';
   /**
-  * Button. Serve to enable button function on avatar.
+  * upload. Serve to enable upload function on avatar.
   */
-  @Prop() button?: boolean = false;
+  @Prop() upload?: boolean = false;
   /**
   * Ellipses, serves to indicate the user number in the listing.
   */
@@ -69,7 +69,7 @@ export class BdsAvatar {
     const arrayName = this.name ? this.name.split(' ') : [];
     const firstName = arrayName.length ? arrayName.shift().charAt(0) : '';
     const lastName = arrayName.length ? arrayName.pop().charAt(0) : '';
-    const Element = this.button ? 'button' : 'div';
+    const Element = this.upload ? 'button' : 'div';
     this.selectTypoSize(this.size);
 
     return (
@@ -78,14 +78,14 @@ export class BdsAvatar {
           avatar: true,
           [`avatar__size--${this.size}`]: true,
           [`avatar__color--${avatarBgColor}`]: true,
-          button: this.button
+          upload: this.upload
         }}
       >
         {this.ellipsis ? (
           <bds-typo class="avatar__ellipsis" variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
         ) : (
           this.thumbnail ? (
-            this.button ? (
+            this.upload ? (
               <div
                 class="avatar__btn">
                 <img class="avatar__btn__img" src={this.thumbnail} />
@@ -98,7 +98,7 @@ export class BdsAvatar {
             )
           ) : (
             this.name ? (
-              this.button ? (
+              this.upload ? (
                 <div
                   class="avatar__btn">
                   <bds-typo class="avatar__btn__text" variant={this.typoSize} tag="span">{firstName+lastName}</bds-typo>
@@ -110,7 +110,7 @@ export class BdsAvatar {
                 <bds-typo class="avatar__text" variant={this.typoSize} tag="span">{firstName+lastName}</bds-typo>
               )
             ) : (
-              this.button ? (
+              this.upload ? (
                 <div
                   class="avatar__btn">
                   <bds-icon class="avatar__btn__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>

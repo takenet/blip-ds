@@ -14,7 +14,7 @@ export class ExpansionPanelHeader implements ComponentInterface {
         <div class="header">
           <slot />
         </div>
-        <bds-typo variant="fs-12">
+        <bds-typo tag="p" variant="fs-12">
           {this.text}
         </bds-typo>
       </Host>

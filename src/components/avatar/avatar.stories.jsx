@@ -28,12 +28,12 @@ export const avatarGroup = () => {
     'standard'
   ]
   const users = [
-    {"id": "1", "name": "Michael Scott", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/92152d262175be2384854d0b286e84df"},
-    {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/15d6d90235aabcee62fbc26c3f1a31b2"},
-    {"id": "3", "name": "Jim Halpert", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ca23c3552d5e36d447d6f9eef5d9d5bc"},
-    {"id": "4", "name": "Pam Beesly", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/a6adb1435e4267d983e5fd246302003a"},
-    {"id": "5", "name": "Ryan Howard", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ae4cfce3c2e6db162d1f7f137062dcd2"},
-    {"id": "6", "name": "Andy Bernard", "thumbnail": "https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/25617c2e17f7bcbe847c7e4730ef5b03"}
+    {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},
+    {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},
+    {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},
+    {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},
+    {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},
+    {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"}
   ]
   const arrayUsers = object("users",users);
   return (
@@ -59,9 +59,9 @@ export const defaultAvatar = () => {
   <div style={content}>
     <bds-avatar
       name={text('name', 'Michael Scott')}
-      thumbnail={text('thumbnail', 'https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/92152d262175be2384854d0b286e84df')}
+      thumbnail={text('thumbnail', 'https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1')}
       size={select('sizes',sizes)}
-      button={boolean('button',false)}
+      upload={boolean('upload',false)}
       ellipsis={number('ellipsis',null)}
     >
     </bds-avatar>
@@ -73,35 +73,35 @@ export const sizeAvatar = () => (
   <div style={content}>
     <bds-avatar
       name={'Michael Scott'}
-      thumbnail={'https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/92152d262175be2384854d0b286e84df'}
+      thumbnail={'https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1'}
       size={'extra-small'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Dwight Schrute'}
-      thumbnail={'https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ca23c3552d5e36d447d6f9eef5d9d5bc'}
+      thumbnail={'https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1'}
       size={'small'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Jim Halpert'}
-      thumbnail={'https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/15d6d90235aabcee62fbc26c3f1a31b2'}
+      thumbnail={'https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1'}
       size={'standard'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Pam Beesly'}
-      thumbnail={'https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/a6adb1435e4267d983e5fd246302003a'}
+      thumbnail={'https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1'}
       size={'large'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Ryan Howard'}
-      thumbnail={'https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/ae4cfce3c2e6db162d1f7f137062dcd2'}
+      thumbnail={'https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1'}
       size={'extra-large'}
       style={avatarSize}
     >
@@ -109,13 +109,13 @@ export const sizeAvatar = () => (
   </div>
 );
 
-export const buttonAvatar = () => (
+export const uploadAvatar = () => (
   <div style={content}>
     <bds-avatar
       name="Michael Scott"
-      thumbnail="https://blip.university/wp-content/uploads/bb-platform-previews/b9014e776e469ca6dae702955bf32e95/92152d262175be2384854d0b286e84df"
+      thumbnail="https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"
       size="extra-large"
-      button="true"
+      upload="true"
       style={avatarSize}
     >
     </bds-avatar>
@@ -123,7 +123,7 @@ export const buttonAvatar = () => (
       name="Michael Scott"
       thumbnail=""
       size="extra-large"
-      button="true"
+      upload="true"
       style={avatarSize}
     >
     </bds-avatar>
