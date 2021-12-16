@@ -15,7 +15,7 @@ Returns the active step
 
 Type: `Promise<number>`
 
-
+HTMLBdsStepElement
 
 ### `resetActiveSteps() => Promise<void>`
 
@@ -25,7 +25,7 @@ Reset all active steps
 
 Type: `Promise<void>`
 
-
+void
 
 ### `resetCompletedSteps() => Promise<void>`
 
@@ -35,7 +35,7 @@ Reset all completed steps
 
 Type: `Promise<void>`
 
-
+void
 
 ### `setActiveStep(index: number) => Promise<void>`
 
@@ -45,7 +45,7 @@ Set the active step
 
 Type: `Promise<void>`
 
-
+void
 
 ### `setCompletedStep(index: number) => Promise<void>`
 
@@ -55,7 +55,7 @@ Set the completed step
 
 Type: `Promise<void>`
 
-
+void
 
 
 ----------------------------------------------

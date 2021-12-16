@@ -27,6 +27,7 @@
 
  - [bds-alert-header](../alert/alert-header)
  - [bds-autocomplete](../autocomplete)
+ - [bds-avatar](../avatar)
  - [bds-banner](../banner)
  - [bds-button](../button)
  - [bds-button-icon](../icon-button)
@@ -50,6 +51,7 @@
 graph TD;
   bds-alert-header --> bds-icon
   bds-autocomplete --> bds-icon
+  bds-avatar --> bds-icon
   bds-banner --> bds-icon
   bds-button --> bds-icon
   bds-button-icon --> bds-icon
