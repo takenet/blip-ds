@@ -1,5 +1,5 @@
 import { Component, h, Host, State, Prop } from '@stencil/core';
-import { AvatarDataList } from './avatar-group-interface'
+import { AvatarDataList } from './avatar-group-interface';
 
 export type avatarSize = 'extra-small' | 'small' | 'standard';
 
@@ -7,15 +7,14 @@ export type avatarSize = 'extra-small' | 'small' | 'standard';
   tag: 'bds-avatar-group',
   styleUrl: 'avatar-group.scss',
   shadow: false,
-}) 
+})
 export class AvatarGroup {
   @State() internalUsers: AvatarDataList[];
-
   @State() leftoversUsers: number;
   /**
-  * Size. Entered as one of the size. Can be one of:
-  * 'extra-small', 'small', 'standard', 'large', 'extra-large'.
-  */
+   * Size. Entered as one of the size. Can be one of:
+   * 'extra-small', 'small', 'standard', 'large', 'extra-large'.
+   */
   @Prop() size?: avatarSize = 'standard';
   /**
   * The users of the select
@@ -31,7 +30,6 @@ export class AvatarGroup {
   * users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
   */
   @Prop() users?: string | AvatarDataList[];
-
   parseUsers() {
     if (this.users) {
       try {
@@ -41,12 +39,10 @@ export class AvatarGroup {
       }
     }
   }
-
   componentWillLoad() {
     this.users && this.parseUsers();
     this.leftoversUsers = this.internalUsers.length - 4;
   }
-
   render() {
     return (
       <Host>
@@ -57,20 +53,15 @@ export class AvatarGroup {
           }}
         >
           {this.internalUsers ? (
-            this.internalUsers.slice(0, 5).map((user, i, row) => 
-            i + 1 === row.length && this.internalUsers.length > 5 ? (
-              <bds-avatar
-                size={this.size}
-                ellipsis={this.leftoversUsers}
-              ></bds-avatar>
-            ) : (
-              <bds-avatar
-                id={user.id}
-                name={user.name}
-                thumbnail={user.thumbnail}
-                size={this.size}
-              ></bds-avatar>
-            ))
+            this.internalUsers
+              .slice(0, 5)
+              .map((user, i, row) =>
+                i + 1 === row.length && this.internalUsers.length > 5 ? (
+                  <bds-avatar size={this.size} ellipsis={this.leftoversUsers}></bds-avatar>
+                ) : (
+                  <bds-avatar id={user.id} name={user.name} thumbnail={user.thumbnail} size={this.size}></bds-avatar>
+                )
+              )
           ) : (
             <slot />
           )}
@@ -78,5 +69,4 @@ export class AvatarGroup {
       </Host>
     );
   }
-
 }

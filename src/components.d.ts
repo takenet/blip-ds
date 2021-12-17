@@ -105,19 +105,19 @@ export namespace Components {
          */
         "ellipsis"?: number;
         /**
-          * Name. Inserted for highlighted osuary name. Enter the full name.
+          * Name, Inserted for highlighted osuary name. Enter the full name.
          */
         "name"?: string;
         /**
-          * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
+          * Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
         "size"?: avatarSize;
         /**
-          * Thumbnail. Inserted to highlight user image. Url field.
+          * Thumbnail, Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
         /**
-          * upload. Serve to enable upload function on avatar.
+          * Upload, Serve to enable upload function on avatar.
          */
         "upload"?: boolean;
     }
@@ -1528,19 +1528,19 @@ declare namespace LocalJSX {
          */
         "ellipsis"?: number;
         /**
-          * Name. Inserted for highlighted osuary name. Enter the full name.
+          * Name, Inserted for highlighted osuary name. Enter the full name.
          */
         "name"?: string;
         /**
-          * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
+          * Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
         "size"?: avatarSize;
         /**
-          * Thumbnail. Inserted to highlight user image. Url field.
+          * Thumbnail, Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
         /**
-          * upload. Serve to enable upload function on avatar.
+          * Upload, Serve to enable upload function on avatar.
          */
         "upload"?: boolean;
     }
