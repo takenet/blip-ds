@@ -21,6 +21,7 @@
 ### Used by
 
  - [bds-avatar-group](../avatar-group)
+ - [bds-menu-exibition](../menu/menu-exibition)
 
 ### Depends on
 
@@ -33,6 +34,7 @@ graph TD;
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
   bds-avatar-group --> bds-avatar
+  bds-menu-exibition --> bds-avatar
   style bds-avatar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

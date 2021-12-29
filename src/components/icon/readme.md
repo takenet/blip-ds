@@ -37,6 +37,7 @@
  - [bds-input-editable](../input-editable)
  - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
+ - [bds-menu-action](../menu/menu-action)
  - [bds-menu-list-item](../menu-list-item)
  - [bds-modal](../modal)
  - [bds-modal-close-button](../modal/modal-close-button)
@@ -61,6 +62,7 @@ graph TD;
   bds-input-editable --> bds-icon
   bds-input-password --> bds-icon
   bds-input-phone-number --> bds-icon
+  bds-menu-action --> bds-icon
   bds-menu-list-item --> bds-icon
   bds-modal --> bds-icon
   bds-modal-close-button --> bds-icon
