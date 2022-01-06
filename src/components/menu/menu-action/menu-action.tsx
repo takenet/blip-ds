@@ -24,7 +24,7 @@ export class BdsMenuAction {
   /**
    * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
    */
-  @Prop() iconleft?: string = null;
+  @Prop() iconLeft?: string = null;
   /**
    * Lipstick. Used to declare that the item will be a negative/error action.
    */
@@ -63,9 +63,9 @@ export class BdsMenuAction {
   }
 
   render() {
-    const actleft = this.iconleft && !this.subMenu;
-    const actright = this.subMenu && !this.iconleft;
-    const actleftright = this.iconleft && this.subMenu;
+    const actLeft = this.iconLeft && !this.subMenu;
+    const actRight = this.subMenu && !this.iconLeft;
+    const actLeftright = this.iconLeft && this.subMenu;
 
     const openSubmenu = () => {
       if (this.subMenu == true) {
@@ -96,13 +96,13 @@ export class BdsMenuAction {
         <button
           class={{
             menuaction__button: true,
-            [`menuaction__button__activeicleft`]: actleft,
-            [`menuaction__button__activeicright`]: actright,
-            [`menuaction__button__activeicleftright`]: actleftright,
+            [`menuaction__button__activeicleft`]: actLeft,
+            [`menuaction__button__activeicright`]: actRight,
+            [`menuaction__button__activeicleftright`]: actLeftright,
             [`menuaction__button__lipstick`]: this.lipstick,
           }}
         >
-          {this.iconleft && <bds-icon class="icon-item" name={this.iconleft} theme="outline" size="small"></bds-icon>}
+          {this.iconLeft && <bds-icon class="icon-item" name={this.iconLeft} theme="outline" size="small"></bds-icon>}
           <bds-typo class="typo-item" variant="fs-16" tag="span">
             {this.buttonText}
           </bds-typo>

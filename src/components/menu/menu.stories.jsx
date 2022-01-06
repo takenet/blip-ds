@@ -81,8 +81,8 @@ export const MenuWithSubmenu = () => {
       
       <bds-menu-action button-text="texto" sub-menu="true" iconleft="edit" lipstick="false">
         <bds-menu-action button-text="texto 1" sub-menu="false"></bds-menu-action>
-        <bds-menu-action button-text="texto 2" sub-menu="false" iconleft="edit"></bds-menu-action>
-        <bds-menu-action button-text="texto 3" sub-menu="false" iconleft="close" lipstick="true"></bds-menu-action>
+        <bds-menu-action button-text="texto 2" sub-menu="false" icon-left="edit"></bds-menu-action>
+        <bds-menu-action button-text="texto 3" sub-menu="false" icon-left="close" lipstick="true"></bds-menu-action>
       </bds-menu-action>
       <bds-menu-separation size="default" value="Divisor"> </bds-menu-separation>
       <bds-menu-exibition
@@ -117,7 +117,7 @@ export const MenuWithSubmenu = () => {
 export const MenuAction = () => {
   return (
     <div style={content}>
-      <bds-menu-action button-text={text('button text', 'Text Buttom')} sub-menu={boolean('sub menu', true)} iconleft={text('iconleft', 'edit')} lipstick={boolean('lipstick',false)}></bds-menu-action>
+      <bds-menu-action button-text={text('button text', 'Text Buttom')} sub-menu={boolean('sub menu', true)} icon-left={text('iconleft', 'edit')} lipstick={boolean('lipstick',false)}></bds-menu-action>
     </div>
   )
 }

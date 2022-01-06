@@ -731,7 +731,7 @@ export namespace Components {
         /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
-        "iconleft"?: string;
+        "iconLeft"?: string;
         /**
           * Lipstick. Used to declare that the item will be a negative/error action.
          */
@@ -2284,7 +2284,7 @@ declare namespace LocalJSX {
         /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
-        "iconleft"?: string;
+        "iconLeft"?: string;
         /**
           * Lipstick. Used to declare that the item will be a negative/error action.
          */
