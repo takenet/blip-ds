@@ -34,6 +34,7 @@
  - [bds-alert-header](../alert/alert-header)
  - [bds-avatar](../avatar)
  - [bds-button](../button)
+ - [bds-calendar](../calendar)
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
  - [bds-counter-text](../counter-text)
@@ -58,6 +59,7 @@ graph TD;
   bds-alert-header --> bds-typo
   bds-avatar --> bds-typo
   bds-button --> bds-typo
+  bds-calendar --> bds-typo
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
   bds-counter-text --> bds-typo

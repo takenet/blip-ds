@@ -1,0 +1,67 @@
+.calendar {
+  width: fit-content;
+
+  &__selectMonth {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    &__typo {
+      color: $color-primary-main;
+    }
+
+    &__icon {
+      cursor: pointer;
+    }
+  }
+
+  &__box {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    &__week {
+      text-align: center;
+      color: $color-neutral-dark-rooftop;
+    }
+
+    &__day {
+      width: 32px;
+      height: 32px;
+      padding: 4px;
+
+      &__typo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        color: $color-neutral-dark-rooftop;
+        border: 1px solid transparent;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-primary-main;
+          border-color: $color-primary-main;
+        }
+      }
+
+      &__current {
+        color: $color-primary-main;
+        border-color: $color-primary-main;
+      }
+
+      &__selected {
+        background-color: $color-primary-dark;
+        color: $color-neutral-light-snow;
+        border-color: $color-primary-dark;
+
+        &:hover {
+          color: $color-neutral-light-snow;
+          border-color: $color-primary-dark;
+        }
+      }
+    }
+  }
+}

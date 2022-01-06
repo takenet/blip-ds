@@ -201,6 +201,12 @@ export namespace Components {
          */
         "variant"?: IconButtonVariant;
     }
+    interface BdsCalendar {
+        /**
+          * Date, Inserted a date.
+         */
+        "dateSelected"?: Date;
+    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -281,6 +287,8 @@ export namespace Components {
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
+    }
+    interface BdsDatepicker {
     }
     interface BdsExpansionPanel {
     }
@@ -1166,6 +1174,12 @@ declare global {
         prototype: HTMLBdsButtonIconElement;
         new (): HTMLBdsButtonIconElement;
     };
+    interface HTMLBdsCalendarElement extends Components.BdsCalendar, HTMLStencilElement {
+    }
+    var HTMLBdsCalendarElement: {
+        prototype: HTMLBdsCalendarElement;
+        new (): HTMLBdsCalendarElement;
+    };
     interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
     }
     var HTMLBdsCardColorElement: {
@@ -1189,6 +1203,12 @@ declare global {
     var HTMLBdsCounterTextElement: {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
+    };
+    interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
+    }
+    var HTMLBdsDatepickerElement: {
+        prototype: HTMLBdsDatepickerElement;
+        new (): HTMLBdsDatepickerElement;
     };
     interface HTMLBdsExpansionPanelElement extends Components.BdsExpansionPanel, HTMLStencilElement {
     }
@@ -1393,10 +1413,12 @@ declare global {
         "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
+        "bds-calendar": HTMLBdsCalendarElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
+        "bds-datepicker": HTMLBdsDatepickerElement;
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
@@ -1624,6 +1646,12 @@ declare namespace LocalJSX {
          */
         "variant"?: IconButtonVariant;
     }
+    interface BdsCalendar {
+        /**
+          * Date, Inserted a date.
+         */
+        "dateSelected"?: Date;
+    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -1714,6 +1742,8 @@ declare namespace LocalJSX {
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
+    }
+    interface BdsDatepicker {
     }
     interface BdsExpansionPanel {
     }
@@ -2582,10 +2612,12 @@ declare namespace LocalJSX {
         "bds-banner": BdsBanner;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
+        "bds-calendar": BdsCalendar;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-counter-text": BdsCounterText;
+        "bds-datepicker": BdsDatepicker;
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
@@ -2634,10 +2666,12 @@ declare module "@stencil/core" {
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
+            "bds-calendar": LocalJSX.BdsCalendar & JSXBase.HTMLAttributes<HTMLBdsCalendarElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
+            "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
