@@ -13,15 +13,15 @@ export class BdsMenu implements ComponentInterface {
   @State() menuPositionTopToRight?: number = 0;
   @State() menuPositionLeftToRight?: number = 0;
   /**
-   * description.
+   * Menu. Used to link the minus with the action button.
    */
   @Prop() menu?: string = null;
   /**
-   * description.
+   * Position. Used to position the Menu. Either on the left or on the bottom.
    */
   @Prop() position?: menuPosition = 'right';
   /**
-   * Used to open/close the menu
+   * Open. Used to open/close the menu.
    */
   @Prop({
     mutable: true,

@@ -9,11 +9,11 @@ export type divisorSize = 'small' | 'default' | 'large';
 })
 export class BdsMenuSeparation {
   /**
-   * description
+   * Value. Used to insert a title to the divider.
    */
   @Prop() value?: string = null;
   /**
-   * description
+   * Size. Used to set the size of the divider.
    */
   @Prop() size?: string = null;
   render() {

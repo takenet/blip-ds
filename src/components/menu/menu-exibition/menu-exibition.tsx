@@ -9,23 +9,23 @@ export type avatarSize = 'extra-small' | 'small' | 'standard';
 })
 export class BdsMenuExibition {
   /**
-   * description
+   * AvatarName. Used to enter the avatar name.
    */
   @Prop() avatarName?: string = null;
   /**
-   * description
+   * AvatarThumbnail. Used to insert the avatar photo.
    */
   @Prop() avatarThumbnail?: string = null;
   /**
-   * description
+   * AvatarSize. Used to set avatar size.
    */
   @Prop() avatarSize?: avatarSize = 'standard';
   /**
-   * description
+   * Value. Used to insert a title in the display item.
    */
   @Prop() value?: string = null;
   /**
-   * description
+   * Subtitle. Used to insert a subtitle in the display item.
    */
   @Prop() subtitle?: string = null;
   render() {

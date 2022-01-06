@@ -710,56 +710,56 @@ export namespace Components {
     }
     interface BdsMenu {
         /**
-          * description.
+          * Menu. Used to link the minus with the action button.
          */
         "menu"?: string;
         /**
-          * Used to open/close the menu
+          * Open. Used to open/close the menu.
          */
         "open"?: boolean;
         /**
-          * description.
+          * Position. Used to position the Menu. Either on the left or on the bottom.
          */
         "position"?: menuPosition;
         "toggle": () => Promise<void>;
     }
     interface BdsMenuAction {
         /**
-          * description.
+          * ButtonText. Used to enter the display text for the item.
          */
         "buttonText"?: string;
         /**
-          * description.
+          * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconleft"?: string;
         /**
-          * description.
+          * Lipstick. Used to declare that the item will be a negative/error action.
          */
         "lipstick"?: boolean;
         /**
-          * description.
+          * SubMenu. Used to declare that the button will have a submenu.
          */
         "subMenu"?: boolean;
     }
     interface BdsMenuExibition {
         /**
-          * description
+          * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
         /**
-          * description
+          * AvatarSize. Used to set avatar size.
          */
         "avatarSize"?: avatarSize;
         /**
-          * description
+          * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
         /**
-          * description
+          * Subtitle. Used to insert a subtitle in the display item.
          */
         "subtitle"?: string;
         /**
-          * description
+          * Value. Used to insert a title in the display item.
          */
         "value"?: string;
     }
@@ -774,11 +774,11 @@ export namespace Components {
     }
     interface BdsMenuSeparation {
         /**
-          * description
+          * Size. Used to set the size of the divider.
          */
         "size"?: string;
         /**
-          * description
+          * Value. Used to insert a title to the divider.
          */
         "value"?: string;
     }
@@ -2264,55 +2264,55 @@ declare namespace LocalJSX {
     }
     interface BdsMenu {
         /**
-          * description.
+          * Menu. Used to link the minus with the action button.
          */
         "menu"?: string;
         /**
-          * Used to open/close the menu
+          * Open. Used to open/close the menu.
          */
         "open"?: boolean;
         /**
-          * description.
+          * Position. Used to position the Menu. Either on the left or on the bottom.
          */
         "position"?: menuPosition;
     }
     interface BdsMenuAction {
         /**
-          * description.
+          * ButtonText. Used to enter the display text for the item.
          */
         "buttonText"?: string;
         /**
-          * description.
+          * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconleft"?: string;
         /**
-          * description.
+          * Lipstick. Used to declare that the item will be a negative/error action.
          */
         "lipstick"?: boolean;
         /**
-          * description.
+          * SubMenu. Used to declare that the button will have a submenu.
          */
         "subMenu"?: boolean;
     }
     interface BdsMenuExibition {
         /**
-          * description
+          * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
         /**
-          * description
+          * AvatarSize. Used to set avatar size.
          */
         "avatarSize"?: avatarSize;
         /**
-          * description
+          * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
         /**
-          * description
+          * Subtitle. Used to insert a subtitle in the display item.
          */
         "subtitle"?: string;
         /**
-          * description
+          * Value. Used to insert a title in the display item.
          */
         "value"?: string;
     }
@@ -2327,11 +2327,11 @@ declare namespace LocalJSX {
     }
     interface BdsMenuSeparation {
         /**
-          * description
+          * Size. Used to set the size of the divider.
          */
         "size"?: string;
         /**
-          * description
+          * Value. Used to insert a title to the divider.
          */
         "value"?: string;
     }

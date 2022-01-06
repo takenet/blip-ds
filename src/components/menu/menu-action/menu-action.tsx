@@ -14,19 +14,19 @@ export class BdsMenuAction {
   @State() zIndex?: number = 0;
   @State() delay = null;
   /**
-   * description.
+   * ButtonText. Used to enter the display text for the item.
    */
   @Prop() buttonText?: string = '';
   /**
-   * description.
+   * SubMenu. Used to declare that the button will have a submenu.
    */
   @Prop() subMenu?: boolean = false;
   /**
-   * description.
+   * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
    */
   @Prop() iconleft?: string = null;
   /**
-   * description.
+   * Lipstick. Used to declare that the item will be a negative/error action.
    */
   @Prop() lipstick?: boolean = false;
 

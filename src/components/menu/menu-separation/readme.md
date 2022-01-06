@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default |
-| -------- | --------- | ----------- | -------- | ------- |
-| `size`   | `size`    | description | `string` | `null`  |
-| `value`  | `value`   | description | `string` | `null`  |
+| Property | Attribute | Description                                   | Type     | Default |
+| -------- | --------- | --------------------------------------------- | -------- | ------- |
+| `size`   | `size`    | Size. Used to set the size of the divider.    | `string` | `null`  |
+| `value`  | `value`   | Value. Used to insert a title to the divider. | `string` | `null`  |
 
 
 ## Dependencies
