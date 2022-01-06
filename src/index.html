@@ -12,10 +12,19 @@
       background: #f5f8f9;
       /*background: #0a0f1a;*/
     }
+    .fl {
+      display: flex;
+      align-items: center;
+    }
   </style>
 
   <body>
-    <bds-calendar></bds-calendar>
+    <bds-calendar message-box="Período máximo de 30 dias passados"></bds-calendar>
+    <div class="fl">
+      <bds-button-icon style="margin-right: 8px;" variant="primary" icon="file-new" size="tall"></bds-button-icon>
+      <bds-button-icon style="margin-right: 8px;" variant="primary" icon="file-new" size="standard"></bds-button-icon>
+      <bds-button-icon style="margin-right: 8px;" variant="primary" icon="file-new" size="short"></bds-button-icon>
+    </div>
   </body>
 
   <script>

@@ -203,9 +203,13 @@ export namespace Components {
     }
     interface BdsCalendar {
         /**
-          * Date, Inserted a date.
+          * DateSelected, Inserted a date to input selection.
          */
         "dateSelected"?: Date;
+        /**
+          * MessageBox, Used to insert an informational message into the calendar.
+         */
+        "messageBox"?: string;
     }
     interface BdsCardColor {
         /**
@@ -1648,9 +1652,13 @@ declare namespace LocalJSX {
     }
     interface BdsCalendar {
         /**
-          * Date, Inserted a date.
+          * DateSelected, Inserted a date to input selection.
          */
         "dateSelected"?: Date;
+        /**
+          * MessageBox, Used to insert an informational message into the calendar.
+         */
+        "messageBox"?: string;
     }
     interface BdsCardColor {
         /**

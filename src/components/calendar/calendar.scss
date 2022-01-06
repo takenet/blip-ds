@@ -1,10 +1,15 @@
 .calendar {
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__selectMonth {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
+    padding: 0 8px;
 
     &__typo {
       color: $color-primary-main;
@@ -12,56 +17,113 @@
 
     &__icon {
       cursor: pointer;
+      color: $color-neutral-dark-rooftop;
     }
   }
 
-  &__box {
+  &__message {
+    margin-bottom: 16px;
+  }
+
+  &__week {
     width: fit-content;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-
-    &__week {
-      text-align: center;
-      color: $color-neutral-dark-rooftop;
-    }
 
     &__day {
       width: 32px;
       height: 32px;
       padding: 4px;
+      text-align: center;
+      color: $color-neutral-dark-rooftop;
+    }
+  }
 
-      &__typo {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100%;
-        color: $color-neutral-dark-rooftop;
-        border: 1px solid transparent;
-        cursor: pointer;
+  &__car {
+    height: 240px;
+    width: 280px;
+    overflow: hidden;
+    position: relative;
 
-        &:hover {
-          color: $color-primary-main;
-          border-color: $color-primary-main;
-        }
-      }
+    &__slide {
+      display: flex;
+      position: absolute;
+      left: -100%;
 
-      &__current {
-        color: $color-primary-main;
-        border-color: $color-primary-main;
-      }
+      &__box {
+        width: fit-content;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
 
-      &__selected {
-        background-color: $color-primary-dark;
-        color: $color-neutral-light-snow;
-        border-color: $color-primary-dark;
+        &__day {
+          width: 32px;
+          height: 32px;
+          padding: 4px;
 
-        &:hover {
-          color: $color-neutral-light-snow;
-          border-color: $color-primary-dark;
+          &__typo {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            color: $color-neutral-dark-rooftop;
+            border: 1px solid transparent;
+            cursor: pointer;
+
+            &:hover {
+              color: $color-primary-main;
+              border-color: $color-primary-main;
+            }
+          }
+
+          &__current {
+            color: $color-primary-main;
+            border-color: $color-primary-main;
+          }
+
+          &__selected {
+            background-color: $color-primary-dark;
+            color: $color-neutral-light-snow;
+            border-color: $color-primary-dark;
+
+            &:hover {
+              color: $color-neutral-light-snow;
+              border-color: $color-primary-dark;
+            }
+          }
         }
       }
     }
+
+    .animate__prev {
+      animation-name: animationPrev;
+      animation-duration: 0.31s;
+      animation-timing-function: ease-in-out;
+    }
+    .animate__next {
+      animation-name: animationNext;
+      animation-duration: 0.31s;
+      animation-timing-function: ease-in-out;
+    }
+  }
+}
+
+@keyframes animationPrev {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes animationNext {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: -200%;
   }
 }
