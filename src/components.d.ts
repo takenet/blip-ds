@@ -22,6 +22,8 @@ import { InputChipsTypes } from "./components/input-chips/input-chips-interface"
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
+import { menuPosition } from "./components/menu/menu";
+import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
@@ -706,6 +708,61 @@ export namespace Components {
          */
         "variant": LoadingSpinnerVariant;
     }
+    interface BdsMenu {
+        /**
+          * Menu. Used to link the minus with the action button.
+         */
+        "menu"?: string;
+        /**
+          * Open. Used to open/close the menu.
+         */
+        "open"?: boolean;
+        /**
+          * Position. Used to position the Menu. Either on the left or on the bottom.
+         */
+        "position"?: menuPosition;
+        "toggle": () => Promise<void>;
+    }
+    interface BdsMenuAction {
+        /**
+          * ButtonText. Used to enter the display text for the item.
+         */
+        "buttonText"?: string;
+        /**
+          * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
+         */
+        "iconLeft"?: string;
+        /**
+          * Lipstick. Used to declare that the item will be a negative/error action.
+         */
+        "lipstick"?: boolean;
+        /**
+          * SubMenu. Used to declare that the button will have a submenu.
+         */
+        "subMenu"?: boolean;
+    }
+    interface BdsMenuExibition {
+        /**
+          * AvatarName. Used to enter the avatar name.
+         */
+        "avatarName"?: string;
+        /**
+          * AvatarSize. Used to set avatar size.
+         */
+        "avatarSize"?: avatarSize;
+        /**
+          * AvatarThumbnail. Used to insert the avatar photo.
+         */
+        "avatarThumbnail"?: string;
+        /**
+          * Subtitle. Used to insert a subtitle in the display item.
+         */
+        "subtitle"?: string;
+        /**
+          * Value. Used to insert a title in the display item.
+         */
+        "value"?: string;
+    }
     interface BdsMenuList {
     }
     interface BdsMenuListItem {
@@ -714,6 +771,16 @@ export namespace Components {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon": string;
+    }
+    interface BdsMenuSeparation {
+        /**
+          * Size. Used to set the size of the divider.
+         */
+        "size"?: string;
+        /**
+          * Value. Used to insert a title to the divider.
+         */
+        "value"?: string;
     }
     interface BdsModal {
         /**
@@ -1250,6 +1317,24 @@ declare global {
         prototype: HTMLBdsLoadingSpinnerElement;
         new (): HTMLBdsLoadingSpinnerElement;
     };
+    interface HTMLBdsMenuElement extends Components.BdsMenu, HTMLStencilElement {
+    }
+    var HTMLBdsMenuElement: {
+        prototype: HTMLBdsMenuElement;
+        new (): HTMLBdsMenuElement;
+    };
+    interface HTMLBdsMenuActionElement extends Components.BdsMenuAction, HTMLStencilElement {
+    }
+    var HTMLBdsMenuActionElement: {
+        prototype: HTMLBdsMenuActionElement;
+        new (): HTMLBdsMenuActionElement;
+    };
+    interface HTMLBdsMenuExibitionElement extends Components.BdsMenuExibition, HTMLStencilElement {
+    }
+    var HTMLBdsMenuExibitionElement: {
+        prototype: HTMLBdsMenuExibitionElement;
+        new (): HTMLBdsMenuExibitionElement;
+    };
     interface HTMLBdsMenuListElement extends Components.BdsMenuList, HTMLStencilElement {
     }
     var HTMLBdsMenuListElement: {
@@ -1261,6 +1346,12 @@ declare global {
     var HTMLBdsMenuListItemElement: {
         prototype: HTMLBdsMenuListItemElement;
         new (): HTMLBdsMenuListItemElement;
+    };
+    interface HTMLBdsMenuSeparationElement extends Components.BdsMenuSeparation, HTMLStencilElement {
+    }
+    var HTMLBdsMenuSeparationElement: {
+        prototype: HTMLBdsMenuSeparationElement;
+        new (): HTMLBdsMenuSeparationElement;
     };
     interface HTMLBdsModalElement extends Components.BdsModal, HTMLStencilElement {
     }
@@ -1407,8 +1498,12 @@ declare global {
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
+        "bds-menu": HTMLBdsMenuElement;
+        "bds-menu-action": HTMLBdsMenuActionElement;
+        "bds-menu-exibition": HTMLBdsMenuExibitionElement;
         "bds-menu-list": HTMLBdsMenuListElement;
         "bds-menu-list-item": HTMLBdsMenuListItemElement;
+        "bds-menu-separation": HTMLBdsMenuSeparationElement;
         "bds-modal": HTMLBdsModalElement;
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
@@ -2167,6 +2262,60 @@ declare namespace LocalJSX {
          */
         "variant"?: LoadingSpinnerVariant;
     }
+    interface BdsMenu {
+        /**
+          * Menu. Used to link the minus with the action button.
+         */
+        "menu"?: string;
+        /**
+          * Open. Used to open/close the menu.
+         */
+        "open"?: boolean;
+        /**
+          * Position. Used to position the Menu. Either on the left or on the bottom.
+         */
+        "position"?: menuPosition;
+    }
+    interface BdsMenuAction {
+        /**
+          * ButtonText. Used to enter the display text for the item.
+         */
+        "buttonText"?: string;
+        /**
+          * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
+         */
+        "iconLeft"?: string;
+        /**
+          * Lipstick. Used to declare that the item will be a negative/error action.
+         */
+        "lipstick"?: boolean;
+        /**
+          * SubMenu. Used to declare that the button will have a submenu.
+         */
+        "subMenu"?: boolean;
+    }
+    interface BdsMenuExibition {
+        /**
+          * AvatarName. Used to enter the avatar name.
+         */
+        "avatarName"?: string;
+        /**
+          * AvatarSize. Used to set avatar size.
+         */
+        "avatarSize"?: avatarSize;
+        /**
+          * AvatarThumbnail. Used to insert the avatar photo.
+         */
+        "avatarThumbnail"?: string;
+        /**
+          * Subtitle. Used to insert a subtitle in the display item.
+         */
+        "subtitle"?: string;
+        /**
+          * Value. Used to insert a title in the display item.
+         */
+        "value"?: string;
+    }
     interface BdsMenuList {
     }
     interface BdsMenuListItem {
@@ -2175,6 +2324,16 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon": string;
+    }
+    interface BdsMenuSeparation {
+        /**
+          * Size. Used to set the size of the divider.
+         */
+        "size"?: string;
+        /**
+          * Value. Used to insert a title to the divider.
+         */
+        "value"?: string;
     }
     interface BdsModal {
         /**
@@ -2596,8 +2755,12 @@ declare namespace LocalJSX {
         "bds-input-password": BdsInputPassword;
         "bds-input-phone-number": BdsInputPhoneNumber;
         "bds-loading-spinner": BdsLoadingSpinner;
+        "bds-menu": BdsMenu;
+        "bds-menu-action": BdsMenuAction;
+        "bds-menu-exibition": BdsMenuExibition;
         "bds-menu-list": BdsMenuList;
         "bds-menu-list-item": BdsMenuListItem;
+        "bds-menu-separation": BdsMenuSeparation;
         "bds-modal": BdsModal;
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
@@ -2648,8 +2811,12 @@ declare module "@stencil/core" {
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
+            "bds-menu": LocalJSX.BdsMenu & JSXBase.HTMLAttributes<HTMLBdsMenuElement>;
+            "bds-menu-action": LocalJSX.BdsMenuAction & JSXBase.HTMLAttributes<HTMLBdsMenuActionElement>;
+            "bds-menu-exibition": LocalJSX.BdsMenuExibition & JSXBase.HTMLAttributes<HTMLBdsMenuExibitionElement>;
             "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
+            "bds-menu-separation": LocalJSX.BdsMenuSeparation & JSXBase.HTMLAttributes<HTMLBdsMenuSeparationElement>;
             "bds-modal": LocalJSX.BdsModal & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
