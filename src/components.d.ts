@@ -201,15 +201,21 @@ export namespace Components {
          */
         "variant"?: IconButtonVariant;
     }
-    interface BdsCalendar {
+    interface BdsCalendarPeriod {
         /**
-          * DateSelected, Inserted a date to input selection.
+          * DateLimit. Insert a limiter to select the date period.
          */
-        "dateSelected"?: Date;
+        "dateLimit"?: number;
         /**
-          * MessageBox, Used to insert an informational message into the calendar.
+          * SelectBeforeCurrent. Disable selection before current day.
          */
-        "messageBox"?: string;
+        "selectBeforeCurrent"?: boolean;
+    }
+    interface BdsCalendarSingle {
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
     }
     interface BdsCardColor {
         /**
@@ -1178,11 +1184,17 @@ declare global {
         prototype: HTMLBdsButtonIconElement;
         new (): HTMLBdsButtonIconElement;
     };
-    interface HTMLBdsCalendarElement extends Components.BdsCalendar, HTMLStencilElement {
+    interface HTMLBdsCalendarPeriodElement extends Components.BdsCalendarPeriod, HTMLStencilElement {
     }
-    var HTMLBdsCalendarElement: {
-        prototype: HTMLBdsCalendarElement;
-        new (): HTMLBdsCalendarElement;
+    var HTMLBdsCalendarPeriodElement: {
+        prototype: HTMLBdsCalendarPeriodElement;
+        new (): HTMLBdsCalendarPeriodElement;
+    };
+    interface HTMLBdsCalendarSingleElement extends Components.BdsCalendarSingle, HTMLStencilElement {
+    }
+    var HTMLBdsCalendarSingleElement: {
+        prototype: HTMLBdsCalendarSingleElement;
+        new (): HTMLBdsCalendarSingleElement;
     };
     interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
     }
@@ -1417,7 +1429,8 @@ declare global {
         "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
-        "bds-calendar": HTMLBdsCalendarElement;
+        "bds-calendar-period": HTMLBdsCalendarPeriodElement;
+        "bds-calendar-single": HTMLBdsCalendarSingleElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
@@ -1650,15 +1663,24 @@ declare namespace LocalJSX {
          */
         "variant"?: IconButtonVariant;
     }
-    interface BdsCalendar {
+    interface BdsCalendarPeriod {
         /**
-          * DateSelected, Inserted a date to input selection.
+          * DateLimit. Insert a limiter to select the date period.
          */
-        "dateSelected"?: Date;
+        "dateLimit"?: number;
+        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
         /**
-          * MessageBox, Used to insert an informational message into the calendar.
+          * SelectBeforeCurrent. Disable selection before current day.
          */
-        "messageBox"?: string;
+        "selectBeforeCurrent"?: boolean;
+    }
+    interface BdsCalendarSingle {
+        "onBdsDateSelected"?: (event: CustomEvent<any>) => void;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
     }
     interface BdsCardColor {
         /**
@@ -2620,7 +2642,8 @@ declare namespace LocalJSX {
         "bds-banner": BdsBanner;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
-        "bds-calendar": BdsCalendar;
+        "bds-calendar-period": BdsCalendarPeriod;
+        "bds-calendar-single": BdsCalendarSingle;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
@@ -2674,7 +2697,8 @@ declare module "@stencil/core" {
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
-            "bds-calendar": LocalJSX.BdsCalendar & JSXBase.HTMLAttributes<HTMLBdsCalendarElement>;
+            "bds-calendar-period": LocalJSX.BdsCalendarPeriod & JSXBase.HTMLAttributes<HTMLBdsCalendarPeriodElement>;
+            "bds-calendar-single": LocalJSX.BdsCalendarSingle & JSXBase.HTMLAttributes<HTMLBdsCalendarSingleElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;

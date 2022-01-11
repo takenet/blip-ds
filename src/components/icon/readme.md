@@ -31,7 +31,8 @@
  - [bds-banner](../banner)
  - [bds-button](../button)
  - [bds-button-icon](../icon-button)
- - [bds-calendar](../calendar)
+ - [bds-calendar-period](../calendar/calendar-period)
+ - [bds-calendar-single](../calendar/calendar-single)
  - [bds-checkbox](../checkbox)
  - [bds-chip](../chip)
  - [bds-input](../input)
@@ -56,7 +57,8 @@ graph TD;
   bds-banner --> bds-icon
   bds-button --> bds-icon
   bds-button-icon --> bds-icon
-  bds-calendar --> bds-icon
+  bds-calendar-period --> bds-icon
+  bds-calendar-single --> bds-icon
   bds-checkbox --> bds-icon
   bds-chip --> bds-icon
   bds-input --> bds-icon

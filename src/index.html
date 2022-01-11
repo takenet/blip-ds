@@ -9,7 +9,7 @@
   </head>
   <style>
     body {
-      background: #f5f8f9;
+      background: #fff;
       /*background: #0a0f1a;*/
     }
     .fl {
@@ -19,12 +19,8 @@
   </style>
 
   <body>
-    <bds-calendar message-box="Período máximo de 30 dias passados"></bds-calendar>
-    <div class="fl">
-      <bds-button-icon style="margin-right: 8px;" variant="primary" icon="file-new" size="tall"></bds-button-icon>
-      <bds-button-icon style="margin-right: 8px;" variant="primary" icon="file-new" size="standard"></bds-button-icon>
-      <bds-button-icon style="margin-right: 8px;" variant="primary" icon="file-new" size="short"></bds-button-icon>
-    </div>
+    <bds-calendar-single select-before-current></bds-calendar-single>
+    <bds-calendar-period select-before-current date-limit="30"></bds-calendar-period>
   </body>
 
   <script>

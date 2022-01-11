@@ -34,7 +34,8 @@
  - [bds-alert-header](../alert/alert-header)
  - [bds-avatar](../avatar)
  - [bds-button](../button)
- - [bds-calendar](../calendar)
+ - [bds-calendar-period](../calendar/calendar-period)
+ - [bds-calendar-single](../calendar/calendar-single)
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
  - [bds-counter-text](../counter-text)
@@ -59,7 +60,8 @@ graph TD;
   bds-alert-header --> bds-typo
   bds-avatar --> bds-typo
   bds-button --> bds-typo
-  bds-calendar --> bds-typo
+  bds-calendar-period --> bds-typo
+  bds-calendar-single --> bds-typo
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
   bds-counter-text --> bds-typo

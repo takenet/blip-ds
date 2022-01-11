@@ -30,7 +30,6 @@
 
 ### Used by
 
- - [bds-calendar](../calendar)
  - [bds-input-chips](../input-chips)
 
 ### Depends on
@@ -41,7 +40,6 @@
 ```mermaid
 graph TD;
   bds-chip --> bds-icon
-  bds-calendar --> bds-chip
   bds-input-chips --> bds-chip
   style bds-chip fill:#f9f,stroke:#333,stroke-width:4px
 ```
