@@ -1,0 +1,27 @@
+.menuseparation {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  &__small {
+    margin: 8px 0;
+  }
+  &__default {
+    margin: 12px 0;
+  }
+  &__large {
+    margin: 16px 0;
+  }
+
+  & .dividor-item{
+    height: 1px;
+    width: 100%;
+    background-color: $color-neutral-medium-wave;
+  }
+
+  & .title-item{
+    margin-right: 8px;
+    margin-top: -4px;
+    color: $color-neutral-medium-elephant;
+  }
+}
