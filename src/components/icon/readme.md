@@ -31,10 +31,10 @@
  - [bds-banner](../banner)
  - [bds-button](../button)
  - [bds-button-icon](../icon-button)
- - [bds-calendar-period](../calendar/calendar-period)
- - [bds-calendar-single](../calendar/calendar-single)
  - [bds-checkbox](../checkbox)
  - [bds-chip](../chip)
+ - [bds-datepicker-period](../datepicker/datepicker-period)
+ - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-input](../input)
  - [bds-input-editable](../input-editable)
  - [bds-input-password](../input-password)
@@ -58,10 +58,10 @@ graph TD;
   bds-banner --> bds-icon
   bds-button --> bds-icon
   bds-button-icon --> bds-icon
-  bds-calendar-period --> bds-icon
-  bds-calendar-single --> bds-icon
   bds-checkbox --> bds-icon
   bds-chip --> bds-icon
+  bds-datepicker-period --> bds-icon
+  bds-datepicker-single --> bds-icon
   bds-input --> bds-icon
   bds-input-editable --> bds-icon
   bds-input-password --> bds-icon

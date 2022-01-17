@@ -1,4 +1,4 @@
-# bds-calendar
+# bds-datepicker
 
 
 
@@ -14,24 +14,33 @@
 
 ## Events
 
-| Event             | Description | Type               |
-| ----------------- | ----------- | ------------------ |
-| `bdsDateSelected` |             | `CustomEvent<any>` |
+| Event             | Description | Type                   |
+| ----------------- | ----------- | ---------------------- |
+| `bdsClearDate`    |             | `CustomEvent<boolean>` |
+| `bdsDateSelected` |             | `CustomEvent<Date>`    |
 
 
 ## Dependencies
+
+### Used by
+
+ - [bds-datepicker](..)
 
 ### Depends on
 
 - [bds-typo](../../typo)
 - [bds-icon](../../icon)
+- [bds-select-option](../../select-option)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-calendar-single --> bds-typo
-  bds-calendar-single --> bds-icon
-  style bds-calendar-single fill:#f9f,stroke:#333,stroke-width:4px
+  bds-datepicker-single --> bds-typo
+  bds-datepicker-single --> bds-icon
+  bds-datepicker-single --> bds-select-option
+  bds-select-option --> bds-typo
+  bds-datepicker --> bds-datepicker-single
+  style bds-datepicker-single fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

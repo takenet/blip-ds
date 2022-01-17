@@ -34,11 +34,11 @@
  - [bds-alert-header](../alert/alert-header)
  - [bds-avatar](../avatar)
  - [bds-button](../button)
- - [bds-calendar-period](../calendar/calendar-period)
- - [bds-calendar-single](../calendar/calendar-single)
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
  - [bds-counter-text](../counter-text)
+ - [bds-datepicker-period](../datepicker/datepicker-period)
+ - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-expansion-panel-header](../expansion-panel/expansion-panel-header)
  - [bds-input](../input)
  - [bds-input-editable](../input-editable)
@@ -63,11 +63,11 @@ graph TD;
   bds-alert-header --> bds-typo
   bds-avatar --> bds-typo
   bds-button --> bds-typo
-  bds-calendar-period --> bds-typo
-  bds-calendar-single --> bds-typo
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
   bds-counter-text --> bds-typo
+  bds-datepicker-period --> bds-typo
+  bds-datepicker-single --> bds-typo
   bds-expansion-panel-header --> bds-typo
   bds-input --> bds-typo
   bds-input-editable --> bds-typo

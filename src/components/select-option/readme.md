@@ -32,6 +32,8 @@
 ### Used by
 
  - [bds-autocomplete](../autocomplete)
+ - [bds-datepicker-period](../datepicker/datepicker-period)
+ - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-input-phone-number](../input-phone-number)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
@@ -45,6 +47,8 @@
 graph TD;
   bds-select-option --> bds-typo
   bds-autocomplete --> bds-select-option
+  bds-datepicker-period --> bds-select-option
+  bds-datepicker-single --> bds-select-option
   bds-input-phone-number --> bds-select-option
   bds-select --> bds-select-option
   bds-select-chips --> bds-select-option

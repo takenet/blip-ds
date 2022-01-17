@@ -1,10 +1,10 @@
 import React from 'react';
 import { withKnobs, boolean, number } from "@storybook/addon-knobs";
 
-import readme from './calendar-period/readme.md';
+import readme from './datepicker-period/readme.md';
 
 export default {
-  title: 'Calendar',
+  title: 'Datepicker',
   decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
@@ -20,19 +20,19 @@ const content = {
   justifyContent: "center",
 }
 
-export const calendarSingle = () => {
+export const datepickerSingle = () => {
   return (
     <div style={content}>
-      <bds-calendar-single
+      <bds-datepicker-single
         select-before-current={boolean('Select Before Current', false)}
       />
     </div>
   )
 }
-export const calendarPeriod = () => {
+export const datepickerPeriod = () => {
   return (
     <div style={content}>
-      <bds-calendar-period
+      <bds-datepicker-period
         select-before-current={boolean('Select Before Current', false)}
         date-limit={number('Date Limit', null)}
       />

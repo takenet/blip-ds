@@ -16,6 +16,7 @@ import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spin
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
+import { typeDate } from "./components/datepicker/datepicker";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
@@ -203,22 +204,6 @@ export namespace Components {
          */
         "variant"?: IconButtonVariant;
     }
-    interface BdsCalendarPeriod {
-        /**
-          * DateLimit. Insert a limiter to select the date period.
-         */
-        "dateLimit"?: number;
-        /**
-          * SelectBeforeCurrent. Disable selection before current day.
-         */
-        "selectBeforeCurrent"?: boolean;
-    }
-    interface BdsCalendarSingle {
-        /**
-          * SelectBeforeCurrent. Disable selection before current day.
-         */
-        "selectBeforeCurrent"?: boolean;
-    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -301,6 +286,34 @@ export namespace Components {
         "warning"?: CounterTextRule;
     }
     interface BdsDatepicker {
+        /**
+          * DateLimit. Insert a limiter to select the date period.
+         */
+        "dateLimit"?: number;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "typeOfDate"?: typeDate;
+    }
+    interface BdsDatepickerPeriod {
+        /**
+          * DateLimit. Insert a limiter to select the date period.
+         */
+        "dateLimit"?: number;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
+    }
+    interface BdsDatepickerSingle {
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
     }
     interface BdsExpansionPanel {
     }
@@ -1251,18 +1264,6 @@ declare global {
         prototype: HTMLBdsButtonIconElement;
         new (): HTMLBdsButtonIconElement;
     };
-    interface HTMLBdsCalendarPeriodElement extends Components.BdsCalendarPeriod, HTMLStencilElement {
-    }
-    var HTMLBdsCalendarPeriodElement: {
-        prototype: HTMLBdsCalendarPeriodElement;
-        new (): HTMLBdsCalendarPeriodElement;
-    };
-    interface HTMLBdsCalendarSingleElement extends Components.BdsCalendarSingle, HTMLStencilElement {
-    }
-    var HTMLBdsCalendarSingleElement: {
-        prototype: HTMLBdsCalendarSingleElement;
-        new (): HTMLBdsCalendarSingleElement;
-    };
     interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
     }
     var HTMLBdsCardColorElement: {
@@ -1292,6 +1293,18 @@ declare global {
     var HTMLBdsDatepickerElement: {
         prototype: HTMLBdsDatepickerElement;
         new (): HTMLBdsDatepickerElement;
+    };
+    interface HTMLBdsDatepickerPeriodElement extends Components.BdsDatepickerPeriod, HTMLStencilElement {
+    }
+    var HTMLBdsDatepickerPeriodElement: {
+        prototype: HTMLBdsDatepickerPeriodElement;
+        new (): HTMLBdsDatepickerPeriodElement;
+    };
+    interface HTMLBdsDatepickerSingleElement extends Components.BdsDatepickerSingle, HTMLStencilElement {
+    }
+    var HTMLBdsDatepickerSingleElement: {
+        prototype: HTMLBdsDatepickerSingleElement;
+        new (): HTMLBdsDatepickerSingleElement;
     };
     interface HTMLBdsExpansionPanelElement extends Components.BdsExpansionPanel, HTMLStencilElement {
     }
@@ -1520,13 +1533,13 @@ declare global {
         "bds-banner": HTMLBdsBannerElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
-        "bds-calendar-period": HTMLBdsCalendarPeriodElement;
-        "bds-calendar-single": HTMLBdsCalendarSingleElement;
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
         "bds-datepicker": HTMLBdsDatepickerElement;
+        "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
+        "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
@@ -1758,25 +1771,6 @@ declare namespace LocalJSX {
          */
         "variant"?: IconButtonVariant;
     }
-    interface BdsCalendarPeriod {
-        /**
-          * DateLimit. Insert a limiter to select the date period.
-         */
-        "dateLimit"?: number;
-        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
-        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
-        /**
-          * SelectBeforeCurrent. Disable selection before current day.
-         */
-        "selectBeforeCurrent"?: boolean;
-    }
-    interface BdsCalendarSingle {
-        "onBdsDateSelected"?: (event: CustomEvent<any>) => void;
-        /**
-          * SelectBeforeCurrent. Disable selection before current day.
-         */
-        "selectBeforeCurrent"?: boolean;
-    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -1869,6 +1863,38 @@ declare namespace LocalJSX {
         "warning"?: CounterTextRule;
     }
     interface BdsDatepicker {
+        /**
+          * DateLimit. Insert a limiter to select the date period.
+         */
+        "dateLimit"?: number;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "typeOfDate"?: typeDate;
+    }
+    interface BdsDatepickerPeriod {
+        /**
+          * DateLimit. Insert a limiter to select the date period.
+         */
+        "dateLimit"?: number;
+        "onBdsEndDate"?: (event: CustomEvent<Date>) => void;
+        "onBdsStartDate"?: (event: CustomEvent<Date>) => void;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
+    }
+    interface BdsDatepickerSingle {
+        "onBdsClearDate"?: (event: CustomEvent<boolean>) => void;
+        "onBdsDateSelected"?: (event: CustomEvent<Date>) => void;
+        /**
+          * SelectBeforeCurrent. Disable selection before current day.
+         */
+        "selectBeforeCurrent"?: boolean;
     }
     interface BdsExpansionPanel {
     }
@@ -2801,13 +2827,13 @@ declare namespace LocalJSX {
         "bds-banner": BdsBanner;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
-        "bds-calendar-period": BdsCalendarPeriod;
-        "bds-calendar-single": BdsCalendarSingle;
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-counter-text": BdsCounterText;
         "bds-datepicker": BdsDatepicker;
+        "bds-datepicker-period": BdsDatepickerPeriod;
+        "bds-datepicker-single": BdsDatepickerSingle;
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
@@ -2860,13 +2886,13 @@ declare module "@stencil/core" {
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
-            "bds-calendar-period": LocalJSX.BdsCalendarPeriod & JSXBase.HTMLAttributes<HTMLBdsCalendarPeriodElement>;
-            "bds-calendar-single": LocalJSX.BdsCalendarSingle & JSXBase.HTMLAttributes<HTMLBdsCalendarSingleElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
+            "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
+            "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
