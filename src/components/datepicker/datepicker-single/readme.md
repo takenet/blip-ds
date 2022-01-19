@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property              | Attribute               | Description                                                | Type      | Default |
-| --------------------- | ----------------------- | ---------------------------------------------------------- | --------- | ------- |
-| `selectBeforeCurrent` | `select-before-current` | SelectBeforeCurrent. Disable selection before current day. | `boolean` | `false` |
+| Property    | Attribute | Description                                            | Type       | Default |
+| ----------- | --------- | ------------------------------------------------------ | ---------- | ------- |
+| `endDate`   | --        | EndDate. Insert a limiter to select the date period.   | `DaysList` | `null`  |
+| `startDate` | --        | StartDate. Insert a limiter to select the date period. | `DaysList` | `null`  |
 
 
 ## Events

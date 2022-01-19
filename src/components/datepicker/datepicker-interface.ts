@@ -9,7 +9,7 @@ export interface DaysList {
 export interface MonthsSlide {
   year: number;
   month: number;
-  days: DaysList;
+  days: DaysList[];
 }
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Options {

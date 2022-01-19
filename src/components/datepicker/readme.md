@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property              | Attribute               | Description                                                | Type                   | Default    |
-| --------------------- | ----------------------- | ---------------------------------------------------------- | ---------------------- | ---------- |
-| `dateLimit`           | `date-limit`            | DateLimit. Insert a limiter to select the date period.     | `number`               | `null`     |
-| `selectBeforeCurrent` | `select-before-current` | SelectBeforeCurrent. Disable selection before current day. | `boolean`              | `false`    |
-| `typeOfDate`          | `type-of-date`          | SelectBeforeCurrent. Disable selection before current day. | `"period" \| "single"` | `'single'` |
+| Property              | Attribute               | Description                                                 | Type                   | Default                                                                                                                                                  |
+| --------------------- | ----------------------- | ----------------------------------------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `endDateLimit`        | `end-date-limit`        | EndDateLimit. Insert a limiter to select the date period.   | `string`               | ``${THIS_DAY.getDate().toString().padStart(2, '0')}/${(THIS_DAY.getMonth() + 1)     .toString()     .padStart(2, '0')}/${THIS_DAY.getFullYear() + 100}`` |
+| `selectBeforeCurrent` | `select-before-current` | SelectBeforeCurrent. Disable selection before current day.  | `boolean`              | `false`                                                                                                                                                  |
+| `startDateLimit`      | `start-date-limit`      | StartDateLimit. Insert a limiter to select the date period. | `string`               | ``${THIS_DAY.getDate().toString().padStart(2, '0')}/${(THIS_DAY.getMonth() + 1)     .toString()     .padStart(2, '0')}/${THIS_DAY.getFullYear() - 100}`` |
+| `typeOfDate`          | `type-of-date`          | SelectBeforeCurrent. Disable selection before current day.  | `"period" \| "single"` | `'single'`                                                                                                                                               |
 
 
 ## Dependencies

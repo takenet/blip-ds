@@ -1,5 +1,13 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
-import { THIS_DAY, WEEK_DAYS, MONTHS, getYears, getMonthsSlide } from '../../../utils/calendar';
+import {
+  THIS_DAY,
+  WEEK_DAYS,
+  getYears,
+  getMonths,
+  getMonthsSlide,
+  fillDayList,
+  fillDate,
+} from '../../../utils/calendar';
 import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
 
 @Component({
@@ -9,9 +17,10 @@ import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
 })
 export class BdsdatepickerSingle {
   @State() week: string[];
+  @State() months: Options[];
   @State() years: Options[];
-  @State() monthActivated: number = THIS_DAY.getMonth();
-  @State() yearActivated: number = THIS_DAY.getFullYear();
+  @State() monthActivated: number = this.startDate ? this.startDate.month : THIS_DAY.getMonth();
+  @State() yearActivated: number = this.startDate ? this.startDate.year : THIS_DAY.getFullYear();
   @State() animatePrev?: boolean = false;
   @State() animateNext?: boolean = false;
   @State() dateSelected?: Date = null;
@@ -20,9 +29,14 @@ export class BdsdatepickerSingle {
   @State() monthsSlide: MonthsSlide[];
 
   /**
-   * SelectBeforeCurrent. Disable selection before current day.
+   * EndDate. Insert a limiter to select the date period.
    */
-  @Prop() selectBeforeCurrent?: boolean = false;
+  @Prop() endDate?: DaysList = null;
+
+  /**
+   * StartDate. Insert a limiter to select the date period.
+   */
+  @Prop() startDate?: DaysList = null;
 
   @Event() bdsDateSelected?: EventEmitter<Date>;
 
@@ -36,7 +50,8 @@ export class BdsdatepickerSingle {
   componentWillRender() {
     this.week = Object.values(WEEK_DAYS);
     this.monthsSlide = getMonthsSlide(this.yearActivated, this.monthActivated);
-    this.years = getYears(this.yearActivated);
+    this.years = getYears(this.yearActivated, this.startDate.year, this.endDate.year);
+    this.months = getMonths(this.yearActivated, this.startDate, this.endDate);
   }
 
   private prevDays(value: number): unknown {
@@ -76,45 +91,30 @@ export class BdsdatepickerSingle {
     }, 300);
   }
 
-  private fillDayListData(value: DaysList): string {
-    const stringDate = `${value.year}${value.month.toString().padStart(2, '0')}${value.date
-      .toString()
-      .padStart(2, '0')}`;
-    return stringDate;
-  }
-
-  private fillDateData(value: Date): string {
-    const stringDate = `${value.getFullYear()}${value.getMonth().toString().padStart(2, '0')}${value
-      .getDate()
-      .toString()
-      .padStart(2, '0')}`;
-    return stringDate;
-  }
-
   private checkCurrentDay(value: DaysList): boolean {
-    const validateDate = this.fillDayListData(value);
-    const fullCurrDate = this.fillDateData(THIS_DAY);
+    const fullCurrDate = fillDate(THIS_DAY);
 
-    if (validateDate == fullCurrDate) return true;
+    if (fillDayList(value) == fullCurrDate) return true;
     else return false;
   }
 
   private checkDisableDay(value: DaysList): boolean {
-    const validateDate = this.fillDayListData(value);
-    const fullCurrDate = this.fillDateData(THIS_DAY);
+    const startDateLimit = this.startDate ? fillDayList(this.startDate) : `0`;
+    const endDateLimit = this.endDate ? fillDayList(this.endDate) : `9999999`;
 
-    if (this.selectBeforeCurrent) {
-      if (validateDate < fullCurrDate) {
-        return true;
-      }
+    if (this.startDate && fillDayList(value) < startDateLimit) {
+      return true;
+    }
+
+    if (this.endDate && fillDayList(value) > endDateLimit) {
+      return true;
     }
   }
 
   private checkSelectedDay(value: DaysList): boolean {
-    const validateDate = this.fillDayListData(value);
-    const selectedDate = this.dateSelected ? this.fillDateData(this.dateSelected) : `0`;
+    const selectedDate = this.dateSelected ? fillDate(this.dateSelected) : `0`;
 
-    if (validateDate == selectedDate) return true;
+    if (fillDayList(value) == selectedDate) return true;
     else return false;
   }
 
@@ -153,9 +153,13 @@ export class BdsdatepickerSingle {
         }}
       >
         <button
-          onFocus={() => this.openDateSelect(true, ref)}
-          onBlur={() => this.openDateSelect(false, ref)}
-          class={{ datepicker__calendar__selectDate__select__input: true, [`input--pressed`]: openSelect }}
+          onFocus={() => data.length > 2 && this.openDateSelect(true, ref)}
+          onBlur={() => data.length > 2 && this.openDateSelect(false, ref)}
+          class={{
+            datepicker__calendar__selectDate__select__input: true,
+            datepicker__calendar__selectDate__select__input__disable: data.length <= 2,
+            [`input--pressed`]: openSelect,
+          }}
         >
           <bds-typo variant="fs-14">{labelSelect[0].label}</bds-typo>
           <div class="datepicker__calendar__selectDate__select__input__icon">
@@ -219,7 +223,9 @@ export class BdsdatepickerSingle {
           <bds-icon
             class={{
               [`arrow-left`]: true,
-              [`arrow-left__disable`]: false,
+              [`arrow-left__disable`]:
+                fillDayList(this.monthsSlide[0].days[this.monthsSlide[0].days.length - 1]) <
+                fillDayList(this.startDate),
               datepicker__calendar__selectDate__icon: true,
             }}
             name="arrow-left"
@@ -228,13 +234,13 @@ export class BdsdatepickerSingle {
             onClick={() => this.prevMonth()}
           ></bds-icon>
           {[
-            this.renderSelectData(MONTHS, this.monthActivated, 'months'),
+            this.renderSelectData(this.months, this.monthActivated, 'months'),
             this.renderSelectData(this.years, this.yearActivated, 'years'),
           ]}
           <bds-icon
             class={{
               [`arrow-right`]: true,
-              [`arrow-right__disable`]: false,
+              [`arrow-right__disable`]: fillDayList(this.monthsSlide[2].days[0]) > fillDayList(this.endDate),
               datepicker__calendar__selectDate__icon: true,
             }}
             name="arrow-right"

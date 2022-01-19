@@ -1,3 +1,5 @@
+import { DaysList } from '../components/datepicker/datepicker-interface';
+
 export const THIS_DAY = new Date();
 export const THIS_YEAR = +new Date().getFullYear();
 export const THIS_MONTH = +new Date().getMonth();
@@ -11,21 +13,6 @@ export const WEEK_DAYS = {
   Friday: 'Sexta',
   Saturday: 'Sábado',
 };
-
-export const CALENDAR_MONTHS = [
-  'Janeiro',
-  'Fevereiro',
-  'Março',
-  'Abril',
-  'Maio',
-  'Junho',
-  'Julho',
-  'Agosto',
-  'Setembro',
-  'Outubro',
-  'Novembro',
-  'Dezembro',
-];
 
 export const MONTHS = [
   {
@@ -78,10 +65,10 @@ export const MONTHS = [
   },
 ];
 
-export const getYears = (year) => {
+export const getYears = (year: number, startYear: number, endYear: number) => {
   const years = [];
-  let minYear = year - 4;
-  const maxYear = year + 8;
+  let minYear = startYear < year - 4 ? year - 4 : startYear;
+  const maxYear = endYear > year + 6 ? year + 6 : endYear;
 
   while (minYear <= maxYear) {
     const newYear = {
@@ -92,6 +79,24 @@ export const getYears = (year) => {
     minYear++;
   }
   return years;
+};
+
+export const getMonths = (year: number, startDate: DaysList, endDate: DaysList) => {
+  let months = [];
+
+  if (year == startDate.year && year == endDate.year) {
+    months = MONTHS.slice(startDate.month, endDate.month + 1);
+    return months;
+  }
+  if (year == startDate.year) {
+    months = MONTHS.slice(startDate.month);
+    return months;
+  }
+  if (year == endDate.year) {
+    months = MONTHS.slice(0, endDate.month + 1);
+    return months;
+  }
+  return MONTHS;
 };
 
 export const getDaysInMonth = (year = THIS_YEAR, month = THIS_MONTH) => {
@@ -154,4 +159,29 @@ export const getMonthsSlide = (year = THIS_YEAR, month = THIS_MONTH) => {
   array.push(comingMonth);
 
   return array;
+};
+
+export const fillDayList = (value: DaysList): string => {
+  const stringDate = `${value.year}${value.month.toString().padStart(2, '0')}${value.date.toString().padStart(2, '0')}`;
+  return stringDate;
+};
+
+export const fillDate = (value: Date): string => {
+  const stringDate = `${value.getFullYear()}${value.getMonth().toString().padStart(2, '0')}${value
+    .getDate()
+    .toString()
+    .padStart(2, '0')}`;
+  return stringDate;
+};
+
+export const dateToDayList = (value: string): DaysList => {
+  const splitDate = value.split('/');
+  const date = new Date(parseFloat(splitDate[2]), parseFloat(splitDate[1]) - 1, parseFloat(splitDate[0]));
+  const result = {
+    date: date.getDate(),
+    month: date.getMonth(),
+    year: date.getFullYear(),
+    day: date.getDay(),
+  };
+  return result;
 };

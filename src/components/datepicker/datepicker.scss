@@ -45,6 +45,20 @@
             rgba($color-primary-main, 0.4)
           );
 
+          &__disable {
+            cursor: not-allowed;
+            @include input-theme(
+              'disabled',
+              $color-neutral-medium-silver,
+              $color-neutral-light-breeze,
+              $color-neutral-medium-silver,
+              $color-neutral-medium-silver,
+              $color-neutral-light-box,
+              $color-neutral-medium-silver,
+              $color-neutral-light-box
+            );
+          }
+
           &__icon {
             color: $color-neutral-medium-cloud;
             display: flex;

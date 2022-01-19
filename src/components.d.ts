@@ -17,6 +17,7 @@ import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
+import { DaysList } from "./components/datepicker/datepicker-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
@@ -287,13 +288,17 @@ export namespace Components {
     }
     interface BdsDatepicker {
         /**
-          * DateLimit. Insert a limiter to select the date period.
+          * EndDateLimit. Insert a limiter to select the date period.
          */
-        "dateLimit"?: number;
+        "endDateLimit"?: string;
         /**
           * SelectBeforeCurrent. Disable selection before current day.
          */
         "selectBeforeCurrent"?: boolean;
+        /**
+          * StartDateLimit. Insert a limiter to select the date period.
+         */
+        "startDateLimit"?: string;
         /**
           * SelectBeforeCurrent. Disable selection before current day.
          */
@@ -301,19 +306,23 @@ export namespace Components {
     }
     interface BdsDatepickerPeriod {
         /**
-          * DateLimit. Insert a limiter to select the date period.
+          * EndDate. Insert a limiter to select the date period.
          */
-        "dateLimit"?: number;
+        "endDate"?: DaysList;
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
+          * StartDate. Insert a limiter to select the date period.
          */
-        "selectBeforeCurrent"?: boolean;
+        "startDate"?: DaysList;
     }
     interface BdsDatepickerSingle {
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
+          * EndDate. Insert a limiter to select the date period.
          */
-        "selectBeforeCurrent"?: boolean;
+        "endDate"?: DaysList;
+        /**
+          * StartDate. Insert a limiter to select the date period.
+         */
+        "startDate"?: DaysList;
     }
     interface BdsExpansionPanel {
     }
@@ -1864,13 +1873,17 @@ declare namespace LocalJSX {
     }
     interface BdsDatepicker {
         /**
-          * DateLimit. Insert a limiter to select the date period.
+          * EndDateLimit. Insert a limiter to select the date period.
          */
-        "dateLimit"?: number;
+        "endDateLimit"?: string;
         /**
           * SelectBeforeCurrent. Disable selection before current day.
          */
         "selectBeforeCurrent"?: boolean;
+        /**
+          * StartDateLimit. Insert a limiter to select the date period.
+         */
+        "startDateLimit"?: string;
         /**
           * SelectBeforeCurrent. Disable selection before current day.
          */
@@ -1878,23 +1891,27 @@ declare namespace LocalJSX {
     }
     interface BdsDatepickerPeriod {
         /**
-          * DateLimit. Insert a limiter to select the date period.
+          * EndDate. Insert a limiter to select the date period.
          */
-        "dateLimit"?: number;
+        "endDate"?: DaysList;
         "onBdsEndDate"?: (event: CustomEvent<Date>) => void;
         "onBdsStartDate"?: (event: CustomEvent<Date>) => void;
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
+          * StartDate. Insert a limiter to select the date period.
          */
-        "selectBeforeCurrent"?: boolean;
+        "startDate"?: DaysList;
     }
     interface BdsDatepickerSingle {
+        /**
+          * EndDate. Insert a limiter to select the date period.
+         */
+        "endDate"?: DaysList;
         "onBdsClearDate"?: (event: CustomEvent<boolean>) => void;
         "onBdsDateSelected"?: (event: CustomEvent<Date>) => void;
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
+          * StartDate. Insert a limiter to select the date period.
          */
-        "selectBeforeCurrent"?: boolean;
+        "startDate"?: DaysList;
     }
     interface BdsExpansionPanel {
     }
