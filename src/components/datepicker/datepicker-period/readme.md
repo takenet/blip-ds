@@ -7,18 +7,33 @@
 
 ## Properties
 
-| Property    | Attribute | Description                                            | Type       | Default |
-| ----------- | --------- | ------------------------------------------------------ | ---------- | ------- |
-| `endDate`   | --        | EndDate. Insert a limiter to select the date period.   | `DaysList` | `null`  |
-| `startDate` | --        | StartDate. Insert a limiter to select the date period. | `DaysList` | `null`  |
+| Property          | Attribute | Description                                                  | Type       | Default |
+| ----------------- | --------- | ------------------------------------------------------------ | ---------- | ------- |
+| `endDate`         | --        | EndDate. Insert a limiter to select the date period.         | `DaysList` | `null`  |
+| `endDateSelect`   | --        | EndDateSelect. Insert a limiter to select the date period.   | `Date`     | `null`  |
+| `startDate`       | --        | StartDate. Insert a limiter to select the date period.       | `DaysList` | `null`  |
+| `startDateSelect` | --        | StartDateSelect. Insert a limiter to select the date period. | `Date`     | `null`  |
 
 
 ## Events
 
-| Event          | Description | Type                |
-| -------------- | ----------- | ------------------- |
-| `bdsEndDate`   |             | `CustomEvent<Date>` |
-| `bdsStartDate` |             | `CustomEvent<Date>` |
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `bdsEndDate`   |             | `CustomEvent<any>` |
+| `bdsStartDate` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `clear() => Promise<void>`
+
+Return the validity of the input.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

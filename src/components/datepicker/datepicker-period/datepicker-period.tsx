@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import {
   THIS_DAY,
   WEEK_DAYS,
@@ -41,18 +41,47 @@ export class BdsdatepickerPeriod {
    */
   @Prop() startDate?: DaysList = null;
 
-  @Event() bdsStartDate?: EventEmitter<Date>;
+  /**
+   * StartDateSelect. Insert a limiter to select the date period.
+   */
+  @Prop() startDateSelect?: Date = null;
 
-  @Event() bdsEndDate?: EventEmitter<Date>;
+  /**
+   * EndDateSelect. Insert a limiter to select the date period.
+   */
+  @Prop() endDateSelect?: Date = null;
+
+  @Event() bdsStartDate?: EventEmitter;
+
+  @Event() bdsEndDate?: EventEmitter;
+
+  /**
+   * Return the validity of the input.
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.startDateSelected = null;
+    this.endDateSelected = null;
+  }
 
   @Watch('startDateSelected')
   protected startDateChanged(): void {
-    this.bdsStartDate.emit(this.startDateSelected);
+    this.bdsStartDate.emit({ value: this.startDateSelected });
   }
 
   @Watch('endDateSelected')
   protected endDateChanged(): void {
-    this.bdsEndDate.emit(this.endDateSelected);
+    this.bdsEndDate.emit({ value: this.endDateSelected });
+  }
+
+  @Watch('startDateSelect')
+  protected dateSelect(): void {
+    this.startDateSelected = this.startDateSelect;
+  }
+
+  @Watch('endDateSelect')
+  protected endSelect(): void {
+    this.endDateSelected = this.endDateSelect;
   }
 
   componentWillRender() {
@@ -216,11 +245,11 @@ export class BdsdatepickerPeriod {
         }}
       >
         <button
-          onFocus={() => data.length > 2 && this.openDateSelect(true, ref)}
-          onBlur={() => data.length > 2 && this.openDateSelect(false, ref)}
+          onFocus={() => data.length > 1 && this.openDateSelect(true, ref)}
+          onBlur={() => data.length > 1 && this.openDateSelect(false, ref)}
           class={{
             datepicker__calendar__selectDate__select__input: true,
-            datepicker__calendar__selectDate__select__input__disable: data.length <= 2,
+            datepicker__calendar__selectDate__select__input__disable: data.length <= 1,
             [`input--pressed`]: openSelect,
           }}
         >

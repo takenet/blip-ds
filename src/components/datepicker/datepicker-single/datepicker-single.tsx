@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import {
   THIS_DAY,
   WEEK_DAYS,
@@ -38,13 +38,31 @@ export class BdsdatepickerSingle {
    */
   @Prop() startDate?: DaysList = null;
 
-  @Event() bdsDateSelected?: EventEmitter<Date>;
+  /**
+   * dateSelect. Insert a limiter to select the date period.
+   */
+  @Prop() dateSelect?: Date = null;
+
+  @Event() bdsDateSelected?: EventEmitter;
 
   @Event() bdsClearDate?: EventEmitter<boolean>;
 
+  /**
+   * Return the validity of the input.
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.dateSelected = null;
+  }
+
   @Watch('dateSelected')
   protected startDateChanged(): void {
-    this.bdsDateSelected.emit(this.dateSelected);
+    this.bdsDateSelected.emit({ value: this.dateSelected });
+  }
+
+  @Watch('dateSelect')
+  protected onDateSelected(): void {
+    this.dateSelected = this.dateSelect;
   }
 
   componentWillRender() {
@@ -125,6 +143,8 @@ export class BdsdatepickerSingle {
     if (ref == 'months') {
       this.monthActivated = value;
     } else {
+      if (value == this.endDate.year) this.monthActivated = 0;
+      if (value == this.startDate.year) this.monthActivated = this.startDate.month;
       this.yearActivated = value;
     }
   };
@@ -153,11 +173,11 @@ export class BdsdatepickerSingle {
         }}
       >
         <button
-          onFocus={() => data.length > 2 && this.openDateSelect(true, ref)}
-          onBlur={() => data.length > 2 && this.openDateSelect(false, ref)}
+          onFocus={() => data.length > 1 && this.openDateSelect(true, ref)}
+          onBlur={() => data.length > 1 && this.openDateSelect(false, ref)}
           class={{
             datepicker__calendar__selectDate__select__input: true,
-            datepicker__calendar__selectDate__select__input__disable: data.length <= 2,
+            datepicker__calendar__selectDate__select__input__disable: data.length <= 1,
             [`input--pressed`]: openSelect,
           }}
         >

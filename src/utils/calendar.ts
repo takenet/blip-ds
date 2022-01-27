@@ -65,6 +65,14 @@ export const MONTHS = [
   },
 ];
 
+export const defaultStartDate = `${THIS_DAY.getDate().toString().padStart(2, '0')}/${(THIS_DAY.getMonth() + 1)
+  .toString()
+  .padStart(2, '0')}/${THIS_DAY.getFullYear()}`;
+
+export const defaultEndDate = `${THIS_DAY.getDate().toString().padStart(2, '0')}/${(THIS_DAY.getMonth() + 1)
+  .toString()
+  .padStart(2, '0')}/${THIS_DAY.getFullYear() + 100}`;
+
 export const getYears = (year: number, startYear: number, endYear: number) => {
   const years = [];
   let minYear = startYear < year - 4 ? year - 4 : startYear;
@@ -184,4 +192,10 @@ export const dateToDayList = (value: string): DaysList => {
     day: date.getDay(),
   };
   return result;
+};
+
+export const dateToString = (value: Date): string => {
+  return `${value.getDate().toString().padStart(2, '0')}/${(value.getMonth() + 1)
+    .toString()
+    .padStart(2, '0')}/${value.getFullYear()}`;
 };

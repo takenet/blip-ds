@@ -292,29 +292,45 @@ export namespace Components {
          */
         "endDateLimit"?: string;
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
-         */
-        "selectBeforeCurrent"?: boolean;
-        /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
         "startDateLimit"?: string;
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
+          * TypeOfDate. Select type of date.
          */
         "typeOfDate"?: typeDate;
     }
     interface BdsDatepickerPeriod {
         /**
+          * Return the validity of the input.
+         */
+        "clear": () => Promise<void>;
+        /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
         /**
+          * EndDateSelect. Insert a limiter to select the date period.
+         */
+        "endDateSelect"?: Date;
+        /**
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
+        /**
+          * StartDateSelect. Insert a limiter to select the date period.
+         */
+        "startDateSelect"?: Date;
     }
     interface BdsDatepickerSingle {
+        /**
+          * Return the validity of the input.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * dateSelect. Insert a limiter to select the date period.
+         */
+        "dateSelect"?: Date;
         /**
           * EndDate. Insert a limiter to select the date period.
          */
@@ -1877,15 +1893,11 @@ declare namespace LocalJSX {
          */
         "endDateLimit"?: string;
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
-         */
-        "selectBeforeCurrent"?: boolean;
-        /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
         "startDateLimit"?: string;
         /**
-          * SelectBeforeCurrent. Disable selection before current day.
+          * TypeOfDate. Select type of date.
          */
         "typeOfDate"?: typeDate;
     }
@@ -1894,20 +1906,32 @@ declare namespace LocalJSX {
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
-        "onBdsEndDate"?: (event: CustomEvent<Date>) => void;
-        "onBdsStartDate"?: (event: CustomEvent<Date>) => void;
+        /**
+          * EndDateSelect. Insert a limiter to select the date period.
+         */
+        "endDateSelect"?: Date;
+        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
+        /**
+          * StartDateSelect. Insert a limiter to select the date period.
+         */
+        "startDateSelect"?: Date;
     }
     interface BdsDatepickerSingle {
+        /**
+          * dateSelect. Insert a limiter to select the date period.
+         */
+        "dateSelect"?: Date;
         /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
         "onBdsClearDate"?: (event: CustomEvent<boolean>) => void;
-        "onBdsDateSelected"?: (event: CustomEvent<Date>) => void;
+        "onBdsDateSelected"?: (event: CustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
          */
