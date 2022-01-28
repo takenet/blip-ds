@@ -2,11 +2,14 @@ import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@
 import {
   THIS_DAY,
   WEEK_DAYS,
+  defaultStartDate,
+  defaultEndDate,
   getYears,
   getMonths,
   getMonthsSlide,
   fillDayList,
   fillDate,
+  dateToDayList,
 } from '../../../utils/calendar';
 import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
 
@@ -23,7 +26,6 @@ export class BdsdatepickerSingle {
   @State() yearActivated: number = this.startDate ? this.startDate.year : THIS_DAY.getFullYear();
   @State() animatePrev?: boolean = false;
   @State() animateNext?: boolean = false;
-  @State() dateSelected?: Date = null;
   @State() openSelectMonth?: boolean = false;
   @State() openSelectYear?: boolean = false;
   @State() monthsSlide: MonthsSlide[];
@@ -31,17 +33,17 @@ export class BdsdatepickerSingle {
   /**
    * EndDate. Insert a limiter to select the date period.
    */
-  @Prop() endDate?: DaysList = null;
+  @Prop() endDate?: DaysList = dateToDayList(defaultEndDate);
 
   /**
    * StartDate. Insert a limiter to select the date period.
    */
-  @Prop() startDate?: DaysList = null;
+  @Prop() startDate?: DaysList = dateToDayList(defaultStartDate);
 
   /**
    * dateSelect. Insert a limiter to select the date period.
    */
-  @Prop() dateSelect?: Date = null;
+  @Prop({ mutable: true, reflect: true }) dateSelect?: Date = null;
 
   @Event() bdsDateSelected?: EventEmitter;
 
@@ -52,17 +54,14 @@ export class BdsdatepickerSingle {
    */
   @Method()
   async clear(): Promise<void> {
-    this.dateSelected = null;
-  }
-
-  @Watch('dateSelected')
-  protected startDateChanged(): void {
-    this.bdsDateSelected.emit({ value: this.dateSelected });
+    this.dateSelect = null;
   }
 
   @Watch('dateSelect')
-  protected onDateSelected(): void {
-    this.dateSelected = this.dateSelect;
+  protected startDateChanged(): void {
+    this.bdsDateSelected.emit({ value: this.dateSelect });
+    this.monthActivated = this.dateSelect ? this.dateSelect?.getMonth() : this.startDate.month;
+    this.yearActivated = this.dateSelect ? this.dateSelect.getFullYear() : this.startDate.year;
   }
 
   componentWillRender() {
@@ -82,7 +81,7 @@ export class BdsdatepickerSingle {
 
   private selectDate(value: DaysList): void {
     const changeSelected = new Date(value.year, value.month, value.date);
-    this.dateSelected = changeSelected;
+    this.dateSelect = changeSelected;
   }
 
   private prevMonth(): void {
@@ -130,7 +129,7 @@ export class BdsdatepickerSingle {
   }
 
   private checkSelectedDay(value: DaysList): boolean {
-    const selectedDate = this.dateSelected ? fillDate(this.dateSelected) : `0`;
+    const selectedDate = this.dateSelect ? fillDate(this.dateSelect) : `0`;
 
     if (fillDayList(value) == selectedDate) return true;
     else return false;

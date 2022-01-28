@@ -4,12 +4,12 @@
 
 .datepicker {
   position: relative;
-  width: fit-content;
+  max-width: 608px;
 
   &__menu {
     position: absolute;
     pointer-events: none;
-    top: 100%;
+    top: calc(100% + 16px);
     left: 0;
     background-color: $color-neutral-light-snow;
     box-shadow: $shadow-box;
@@ -26,28 +26,6 @@
       opacity: 1;
     }
 
-    &__head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid $color-neutral-medium-wave;
-
-      &__inputs {
-        width: fit-content;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 32px;
-
-        &__field {
-          color: $color-neutral-dark-skate;
-          &__active {
-            color: $color-primary-main;
-          }
-        }
-      }
-    }
     &__footer {
       display: flex;
       align-items: center;
@@ -55,18 +33,29 @@
       padding-top: 16px;
       margin-top: 16px;
       border-top: 1px solid $color-neutral-medium-wave;
+
+      bds-button {
+        margin-left: 16px;
+      }
     }
   }
 
   &__inputs {
-    max-width: 608px;
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+
+    &__single {
+      grid-template-columns: 1fr;
+    }
+
+    &__period {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
 
     bds-input {
       height: fit-content;
+      width: 100%;
 
       &::part(input-container) {
         position: relative;
@@ -80,7 +69,7 @@
       align-items: center;
       justify-content: space-evenly;
       padding-right: 16px;
-      
+
       bds-icon:first-child {
         margin-right: 8px;
       }

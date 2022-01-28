@@ -2,12 +2,15 @@ import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@
 import {
   THIS_DAY,
   WEEK_DAYS,
+  defaultStartDate,
+  defaultEndDate,
   MONTHS,
   getMonthsSlide,
   getYears,
   getMonths,
   fillDayList,
   fillDate,
+  dateToDayList,
 } from '../../../utils/calendar';
 import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
 
@@ -24,32 +27,29 @@ export class BdsdatepickerPeriod {
   @State() yearActivated: number = this.startDate ? this.startDate.year : THIS_DAY.getFullYear();
   @State() animatePrev?: boolean = false;
   @State() animateNext?: boolean = false;
-  @State() startDateSelected?: Date = null;
-  @State() endDateSelected?: Date = null;
   @State() activeSelectYear?: boolean = false;
   @State() openSelectMonth?: boolean = false;
   @State() openSelectYear?: boolean = false;
   @State() monthsSlide: MonthsSlide[];
+  /**
+   * StartDate. Insert a limiter to select the date period.
+   */
+  @Prop() startDate?: DaysList = dateToDayList(defaultStartDate);
 
   /**
    * EndDate. Insert a limiter to select the date period.
    */
-  @Prop() endDate?: DaysList = null;
-
-  /**
-   * StartDate. Insert a limiter to select the date period.
-   */
-  @Prop() startDate?: DaysList = null;
+  @Prop() endDate?: DaysList = dateToDayList(defaultEndDate);
 
   /**
    * StartDateSelect. Insert a limiter to select the date period.
    */
-  @Prop() startDateSelect?: Date = null;
+  @Prop({ mutable: true, reflect: true }) startDateSelect?: Date = null;
 
   /**
    * EndDateSelect. Insert a limiter to select the date period.
    */
-  @Prop() endDateSelect?: Date = null;
+  @Prop({ mutable: true, reflect: true }) endDateSelect?: Date = null;
 
   @Event() bdsStartDate?: EventEmitter;
 
@@ -60,28 +60,31 @@ export class BdsdatepickerPeriod {
    */
   @Method()
   async clear(): Promise<void> {
-    this.startDateSelected = null;
-    this.endDateSelected = null;
-  }
-
-  @Watch('startDateSelected')
-  protected startDateChanged(): void {
-    this.bdsStartDate.emit({ value: this.startDateSelected });
-  }
-
-  @Watch('endDateSelected')
-  protected endDateChanged(): void {
-    this.bdsEndDate.emit({ value: this.endDateSelected });
+    this.startDateSelect = null;
+    this.endDateSelect = null;
   }
 
   @Watch('startDateSelect')
-  protected dateSelect(): void {
-    this.startDateSelected = this.startDateSelect;
+  protected startDateChanged(): void {
+    this.bdsStartDate.emit({ value: this.startDateSelect });
+    this.monthActivated = this.startDateSelect ? this.startDateSelect?.getMonth() : this.startDate.month;
+    this.yearActivated = this.startDateSelect ? this.startDateSelect.getFullYear() : this.startDate.year;
   }
 
   @Watch('endDateSelect')
-  protected endSelect(): void {
-    this.endDateSelected = this.endDateSelect;
+  protected endDateChanged(): void {
+    this.bdsEndDate.emit({ value: this.endDateSelect });
+    this.monthActivated = this.endDateSelect
+      ? this.startDateSelect.getMonth() == this.endDateSelect.getMonth() &&
+        this.startDateSelect.getFullYear() == this.endDateSelect.getFullYear()
+        ? this.startDateSelect.getMonth()
+        : this.endDateSelect.getMonth() - 1
+      : this.startDate.month;
+    this.yearActivated = this.endDateSelect ? this.endDateSelect.getFullYear() : this.startDate.year;
+    if (this.monthActivated < 0) {
+      this.monthActivated = 11;
+      this.yearActivated = this.yearActivated - 1;
+    }
   }
 
   componentWillRender() {
@@ -101,10 +104,10 @@ export class BdsdatepickerPeriod {
 
   private selectDate(value: DaysList): void {
     const changeSelected = new Date(value.year, value.month, value.date);
-    if (this.startDateSelected) {
-      this.endDateSelected = changeSelected;
+    if (this.startDateSelect) {
+      this.endDateSelect = changeSelected;
     } else {
-      this.startDateSelected = changeSelected;
+      this.startDateSelect = changeSelected;
     }
   }
 
@@ -144,13 +147,13 @@ export class BdsdatepickerPeriod {
     const validateDate = fillDayList(value);
     const startDateLimit = this.startDate ? fillDayList(this.startDate) : `0`;
     const endDateLimit = this.endDate ? fillDayList(this.endDate) : `9999999`;
-    const startSelectedDate = this.startDateSelected ? fillDate(this.startDateSelected) : `0`;
+    const startSelectedDate = this.startDateSelect ? fillDate(this.startDateSelect) : `0`;
 
     if (this.startDate && validateDate < startDateLimit) {
       return true;
     }
 
-    if (this.startDateSelected) {
+    if (this.startDateSelect) {
       if (validateDate < startSelectedDate) {
         return true;
       }
@@ -163,8 +166,8 @@ export class BdsdatepickerPeriod {
 
   private checkSelectedDay(value: DaysList): boolean {
     const validateDate = fillDayList(value);
-    const startSelectedDate = this.startDateSelected ? fillDate(this.startDateSelected) : `0`;
-    const endSelectedDate = this.endDateSelected ? fillDate(this.endDateSelected) : `0`;
+    const startSelectedDate = this.startDateSelect ? fillDate(this.startDateSelect) : `0`;
+    const endSelectedDate = this.endDateSelect ? fillDate(this.endDateSelect) : `0`;
 
     if (validateDate == startSelectedDate || validateDate == endSelectedDate) return true;
     else return false;
@@ -172,8 +175,8 @@ export class BdsdatepickerPeriod {
 
   private checkPeriodDay(value: DaysList): boolean {
     const validateDate = fillDayList(value);
-    const startSelectedDate = this.startDateSelected ? fillDate(this.startDateSelected) : `0`;
-    const endSelectedDate = this.endDateSelected ? fillDate(this.endDateSelected) : `0`;
+    const startSelectedDate = this.startDateSelect ? fillDate(this.startDateSelect) : `0`;
+    const endSelectedDate = this.endDateSelect ? fillDate(this.endDateSelect) : `0`;
     if (startSelectedDate && endSelectedDate) {
       if (validateDate >= startSelectedDate && validateDate <= endSelectedDate) {
         return true;
@@ -186,7 +189,7 @@ export class BdsdatepickerPeriod {
     const validateDay = value.day == 0;
 
     const selectDate = fillDayList(value);
-    const startSelectedDate = this.startDateSelected ? fillDate(this.startDateSelected) : `0`;
+    const startSelectedDate = this.startDateSelect ? fillDate(this.startDateSelect) : `0`;
 
     const validateStartDate = selectDate == startSelectedDate;
 
@@ -199,7 +202,7 @@ export class BdsdatepickerPeriod {
     const validateDate = lastItem;
     const validateDay = value.day == 6;
     const selectDate = fillDayList(value);
-    const endSelectedDate = this.endDateSelected ? fillDate(this.endDateSelected) : `0`;
+    const endSelectedDate = this.endDateSelect ? fillDate(this.endDateSelect) : `0`;
 
     const validateStartDate = selectDate == endSelectedDate;
 

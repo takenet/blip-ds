@@ -1,4 +1,4 @@
-import { Component, h, Host, State, Prop, Watch } from '@stencil/core';
+import { Component, h, State, Prop, Watch } from '@stencil/core';
 import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToString } from '../../utils/calendar';
 import { dateValidation, maskDate } from '../../utils/validations';
 import { DaysList } from './datepicker-interface';
@@ -8,7 +8,7 @@ export type typeDate = 'single' | 'period';
 @Component({
   tag: 'bds-datepicker',
   styleUrl: 'datepicker.scss',
-  shadow: true,
+  shadow: false,
 })
 export class DatePicker {
   @State() endDateLimitDaysList: DaysList;
@@ -107,32 +107,24 @@ export class DatePicker {
   private maskDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueDateSelected = maskDate(input.value);
+    const valueSelected = this.valueDateSelected && dateToDayList(this.valueDateSelected);
+    const start = this.startDateLimit && dateToDayList(this.startDateLimit);
+    const end = this.endDateLimit && dateToDayList(this.endDateLimit);
+    if (!dateValidation(this.valueDateSelected)) {
+      this.errorMsgDate = `Formato da data esta incorreto!`;
+    } else {
+      if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
+        this.errorMsgDate = `Por favor selecione uma data entre o periodo de ${this.startDateLimit} - ${this.endDateLimit}`;
+      } else {
+        this.errorMsgDate = null;
+        this.dateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
+      }
+    }
   };
 
   private maskEndDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueEndDateSelected = maskDate(input.value);
-  };
-
-  private valideteDate = () => {
-    const valueSelected = this.valueDateSelected && dateToDayList(this.valueDateSelected);
-    const start = this.startDateLimit && dateToDayList(this.startDateLimit);
-    const end = this.endDateLimit && dateToDayList(this.endDateLimit);
-
-    if (this.valueDateSelected)
-      if (!dateValidation(this.valueDateSelected)) {
-        this.errorMsgDate = `Formato da data esta incorreto!`;
-      } else {
-        if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-          this.errorMsgDate = `Por favor selecione uma data entre o periodo de ${this.startDateLimit} - ${this.endDateLimit}`;
-        } else {
-          this.errorMsgDate = null;
-          this.dateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
-        }
-      }
-  };
-
-  private valideteEndDateSelected = () => {
     const valueSelected = dateToDayList(this.valueEndDateSelected);
     const start = dateToDayList(this.startDateLimit);
     const end = dateToDayList(this.endDateLimit);
@@ -140,7 +132,7 @@ export class DatePicker {
     if (!dateValidation(this.valueEndDateSelected)) {
       this.errorMsgEndDate = `Formato da data esta incorreto!`;
     } else {
-      if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
+      if (fillDayList(valueSelected) <= fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
         this.errorMsgEndDate = `Por favor selecione uma data entre o periodo de ${this.valueDateSelected} - ${this.endDateLimit}`;
       } else {
         this.errorMsgEndDate = null;
@@ -151,9 +143,9 @@ export class DatePicker {
 
   render() {
     return (
-      <Host class={{ datepicker: true }}>
+      <div class={{ datepicker: true }}>
         {this.typeOfDate == 'single' ? (
-          <div class={{ datepicker__inputs: true }}>
+          <div class={{ datepicker__inputs: true, [`datepicker__inputs__${this.typeOfDate}`]: true }}>
             <bds-input
               label="Definir a data"
               value={this.valueDateSelected}
@@ -162,13 +154,12 @@ export class DatePicker {
               icon="calendar"
               onClick={() => (this.open = true)}
               onBdsInput={(ev) => this.maskDateSelected(ev)}
-              onBdsOnBlur={() => this.valideteDate()}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
             ></bds-input>
           </div>
         ) : (
-          <div class={{ datepicker__inputs: true }}>
+          <div class={{ datepicker__inputs: true, [`datepicker__inputs__${this.typeOfDate}`]: true }}>
             <bds-input
               label="De"
               value={this.valueDateSelected}
@@ -177,7 +168,6 @@ export class DatePicker {
               icon="calendar"
               onClick={() => (this.open = true)}
               onBdsInput={(ev) => this.maskDateSelected(ev)}
-              onBdsOnBlur={() => this.valideteDate()}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
             ></bds-input>
@@ -190,7 +180,6 @@ export class DatePicker {
               icon="calendar"
               onClick={() => (this.open = true)}
               onBdsInput={(ev) => this.maskEndDateSelected(ev)}
-              onBdsOnBlur={() => this.valideteEndDateSelected()}
               danger={this.errorMsgEndDate ? true : false}
               errorMessage={this.errorMsgEndDate}
             ></bds-input>
@@ -229,7 +218,7 @@ export class DatePicker {
             <bds-button onClick={() => (this.open = false)}>Concluir</bds-button>
           </div>
         </div>
-      </Host>
+      </div>
     );
   }
 }
