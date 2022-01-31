@@ -1,5 +1,5 @@
 # Esses proprietários serão os proprietários padrão para tudo no
 # repositório. A menos que uma correspondência posterior tenha precedência,
-# @WillianLomeu e @vinioo serão solicitados para
+# @WillianLomeu, @LucasMurtaTakeBlip e @vinioo serão solicitados para
 # revisão quando alguém abrir uma pull request.
-*       @WillianLomeu @vinioo
+*       @WillianLomeu @vinioo @LucasMurtaTakeBlip
