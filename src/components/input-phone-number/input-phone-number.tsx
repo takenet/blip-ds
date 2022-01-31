@@ -94,7 +94,7 @@ export class InputPhoneNumber {
 
   @Watch('value')
   valueChanged(): void {
-    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value });
+    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value, country: this.selectedCountry });
 
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
@@ -140,7 +140,7 @@ export class InputPhoneNumber {
     this.text = value;
 
     event.preventDefault();
-    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value });
+    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value, country: this.selectedCountry });
   };
 
   private toggle = (): void => {
