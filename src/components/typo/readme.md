@@ -37,6 +37,7 @@
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
  - [bds-counter-text](../counter-text)
+ - [bds-datepicker](../datepicker)
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-expansion-panel-header](../expansion-panel/expansion-panel-header)
@@ -66,6 +67,7 @@ graph TD;
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
   bds-counter-text --> bds-typo
+  bds-datepicker --> bds-typo
   bds-datepicker-period --> bds-typo
   bds-datepicker-single --> bds-typo
   bds-expansion-panel-header --> bds-typo

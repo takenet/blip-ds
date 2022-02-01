@@ -26,6 +26,20 @@
       opacity: 1;
     }
 
+    &__message {
+      padding: 8px 16px;
+      border-radius: 8px;
+      background-color: $color-primary-yellows-corn;
+      color: $color-neutral-dark-suit;
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+
+      bds-icon {
+        margin-right: 8px;
+      }
+    }
+
     &__footer {
       display: flex;
       align-items: center;
@@ -277,9 +291,9 @@
             }
 
             &__current {
-              background-color: $color-disabled-bg;
-              color: $color-primary-night;
-              border-color: $color-disabled-bg;
+              background-color: $color-neutral-light-snow;
+              color: $color-primary-main;
+              border-color: $color-primary-main;
             }
 
             &__selected {

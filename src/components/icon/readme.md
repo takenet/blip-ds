@@ -33,6 +33,7 @@
  - [bds-button-icon](../icon-button)
  - [bds-checkbox](../checkbox)
  - [bds-chip](../chip)
+ - [bds-datepicker](../datepicker)
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-input](../input)
@@ -60,6 +61,7 @@ graph TD;
   bds-button-icon --> bds-icon
   bds-checkbox --> bds-icon
   bds-chip --> bds-icon
+  bds-datepicker --> bds-icon
   bds-datepicker-period --> bds-icon
   bds-datepicker-single --> bds-icon
   bds-input --> bds-icon

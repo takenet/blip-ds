@@ -292,6 +292,10 @@ export namespace Components {
          */
         "endDateLimit"?: string;
         /**
+          * Message. Select type of date.
+         */
+        "message"?: string;
+        /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
         "startDateLimit"?: string;
@@ -1892,6 +1896,12 @@ declare namespace LocalJSX {
           * EndDateLimit. Insert a limiter to select the date period.
          */
         "endDateLimit"?: string;
+        /**
+          * Message. Select type of date.
+         */
+        "message"?: string;
+        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
          */

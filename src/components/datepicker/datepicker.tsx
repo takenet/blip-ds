@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Watch } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
 import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToString } from '../../utils/calendar';
 import { dateValidation, maskDate } from '../../utils/validations';
 import { DaysList } from './datepicker-interface';
@@ -37,13 +37,19 @@ export class DatePicker {
    */
   @Prop({ mutable: true, reflect: true })
   endDateLimit?: string = defaultEndDate;
+  /**
+   * Message. Select type of date.
+   */
+  @Prop() message?: string = null;
+
+  @Event() bdsStartDate?: EventEmitter;
+
+  @Event() bdsEndDate?: EventEmitter;
 
   @Watch('startDateLimit')
   startDateLimitChanged(): void {
     if (!dateValidation(this.startDateLimit)) {
       this.startDateLimit = defaultStartDate;
-      // eslint-disable-next-line no-console
-      console.error('Date field is not formatted correctly. Please enter with the example dd/mm/yyyy.');
     }
   }
   @Watch('endDateLimit')
@@ -52,13 +58,9 @@ export class DatePicker {
     const dlEndDate = dateToDayList(this.endDateLimit);
     if (!dateValidation(this.endDateLimit)) {
       this.endDateLimit = defaultEndDate;
-      // eslint-disable-next-line no-console
-      console.error('Date field is not formatted correctly. Please enter with the example dd/mm/yyyy.');
     }
     if (fillDayList(dlEndDate) < fillDayList(dlStartDate)) {
       this.endDateLimit = defaultEndDate;
-      // eslint-disable-next-line no-console
-      console.error('The end date limit field is smaller than the start date.');
     }
   }
 
@@ -80,6 +82,7 @@ export class DatePicker {
       detail: { value },
     } = event;
     this.dateSelected = value;
+    this.bdsStartDate.emit({ value: this.dateSelected });
     this.valueDateSelected = this.dateSelected && dateToString(this.dateSelected);
     this.errorMsgDate = null;
   }
@@ -89,6 +92,7 @@ export class DatePicker {
       detail: { value },
     } = event;
     this.endDateSelected = value;
+    this.bdsEndDate.emit({ value: this.endDateSelected });
     this.valueEndDateSelected = this.endDateSelected && dateToString(this.endDateSelected);
     this.errorMsgEndDate = null;
   }
@@ -96,12 +100,15 @@ export class DatePicker {
   private clearDateSingle = () => {
     this.datepickerSingle.clear();
     this.valueDateSelected = null;
+    this.bdsStartDate.emit({ value: null });
   };
 
   private clearDatePeriod = () => {
     this.datepickerPeriod.clear();
     this.valueDateSelected = null;
     this.valueEndDateSelected = null;
+    this.bdsStartDate.emit({ value: null });
+    this.bdsEndDate.emit({ value: null });
   };
 
   private maskDateSelected = (ev: Event): void => {
@@ -186,6 +193,14 @@ export class DatePicker {
           </div>
         )}
         <div class={{ datepicker__menu: true, datepicker__menu__open: this.open }}>
+          {this.message && (
+            <div class="datepicker__menu__message">
+              <bds-icon name="warning" theme="outline" aria-label="Ícone de atenção"></bds-icon>
+              <bds-typo variant="fs-16">
+                {this.message}
+              </bds-typo>
+            </div>
+          )}
           {this.typeOfDate == 'single' ? (
             <bds-datepicker-single
               ref={this.refDatepickerSingle}
