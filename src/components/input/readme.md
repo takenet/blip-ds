@@ -121,6 +121,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [bds-autocomplete](../autocomplete)
+ - [bds-datepicker](../datepicker)
  - [bds-input-chips](../input-chips)
  - [bds-input-editable](../input-editable)
  - [bds-input-password](../input-password)
@@ -141,6 +142,7 @@ graph TD;
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
   bds-autocomplete --> bds-input
+  bds-datepicker --> bds-input
   bds-input-chips --> bds-input
   bds-input-editable --> bds-input
   bds-input-password --> bds-input

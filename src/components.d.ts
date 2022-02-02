@@ -16,6 +16,8 @@ import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spin
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
+import { typeDate } from "./components/datepicker/datepicker";
+import { DaysList } from "./components/datepicker/datepicker-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
@@ -283,6 +285,64 @@ export namespace Components {
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
+    }
+    interface BdsDatepicker {
+        /**
+          * EndDateLimit. Insert a limiter to select the date period.
+         */
+        "endDateLimit"?: string;
+        /**
+          * Message. Select type of date.
+         */
+        "message"?: string;
+        /**
+          * StartDateLimit. Insert a limiter to select the date period.
+         */
+        "startDateLimit"?: string;
+        /**
+          * TypeOfDate. Select type of date.
+         */
+        "typeOfDate"?: typeDate;
+    }
+    interface BdsDatepickerPeriod {
+        /**
+          * Return the validity of the input.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * EndDate. Insert a limiter to select the date period.
+         */
+        "endDate"?: DaysList;
+        /**
+          * EndDateSelect. Insert a limiter to select the date period.
+         */
+        "endDateSelect"?: Date;
+        /**
+          * StartDate. Insert a limiter to select the date period.
+         */
+        "startDate"?: DaysList;
+        /**
+          * StartDateSelect. Insert a limiter to select the date period.
+         */
+        "startDateSelect"?: Date;
+    }
+    interface BdsDatepickerSingle {
+        /**
+          * Return the validity of the input.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * dateSelect. Insert a limiter to select the date period.
+         */
+        "dateSelect"?: Date;
+        /**
+          * EndDate. Insert a limiter to select the date period.
+         */
+        "endDate"?: DaysList;
+        /**
+          * StartDate. Insert a limiter to select the date period.
+         */
+        "startDate"?: DaysList;
     }
     interface BdsExpansionPanel {
     }
@@ -1257,6 +1317,24 @@ declare global {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
     };
+    interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
+    }
+    var HTMLBdsDatepickerElement: {
+        prototype: HTMLBdsDatepickerElement;
+        new (): HTMLBdsDatepickerElement;
+    };
+    interface HTMLBdsDatepickerPeriodElement extends Components.BdsDatepickerPeriod, HTMLStencilElement {
+    }
+    var HTMLBdsDatepickerPeriodElement: {
+        prototype: HTMLBdsDatepickerPeriodElement;
+        new (): HTMLBdsDatepickerPeriodElement;
+    };
+    interface HTMLBdsDatepickerSingleElement extends Components.BdsDatepickerSingle, HTMLStencilElement {
+    }
+    var HTMLBdsDatepickerSingleElement: {
+        prototype: HTMLBdsDatepickerSingleElement;
+        new (): HTMLBdsDatepickerSingleElement;
+    };
     interface HTMLBdsExpansionPanelElement extends Components.BdsExpansionPanel, HTMLStencilElement {
     }
     var HTMLBdsExpansionPanelElement: {
@@ -1488,6 +1566,9 @@ declare global {
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
+        "bds-datepicker": HTMLBdsDatepickerElement;
+        "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
+        "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
@@ -1809,6 +1890,62 @@ declare namespace LocalJSX {
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
+    }
+    interface BdsDatepicker {
+        /**
+          * EndDateLimit. Insert a limiter to select the date period.
+         */
+        "endDateLimit"?: string;
+        /**
+          * Message. Select type of date.
+         */
+        "message"?: string;
+        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
+        /**
+          * StartDateLimit. Insert a limiter to select the date period.
+         */
+        "startDateLimit"?: string;
+        /**
+          * TypeOfDate. Select type of date.
+         */
+        "typeOfDate"?: typeDate;
+    }
+    interface BdsDatepickerPeriod {
+        /**
+          * EndDate. Insert a limiter to select the date period.
+         */
+        "endDate"?: DaysList;
+        /**
+          * EndDateSelect. Insert a limiter to select the date period.
+         */
+        "endDateSelect"?: Date;
+        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
+        /**
+          * StartDate. Insert a limiter to select the date period.
+         */
+        "startDate"?: DaysList;
+        /**
+          * StartDateSelect. Insert a limiter to select the date period.
+         */
+        "startDateSelect"?: Date;
+    }
+    interface BdsDatepickerSingle {
+        /**
+          * dateSelect. Insert a limiter to select the date period.
+         */
+        "dateSelect"?: Date;
+        /**
+          * EndDate. Insert a limiter to select the date period.
+         */
+        "endDate"?: DaysList;
+        "onBdsClearDate"?: (event: CustomEvent<boolean>) => void;
+        "onBdsDateSelected"?: (event: CustomEvent<any>) => void;
+        /**
+          * StartDate. Insert a limiter to select the date period.
+         */
+        "startDate"?: DaysList;
     }
     interface BdsExpansionPanel {
     }
@@ -2745,6 +2882,9 @@ declare namespace LocalJSX {
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-counter-text": BdsCounterText;
+        "bds-datepicker": BdsDatepicker;
+        "bds-datepicker-period": BdsDatepickerPeriod;
+        "bds-datepicker-single": BdsDatepickerSingle;
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
@@ -2801,6 +2941,9 @@ declare module "@stencil/core" {
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
+            "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
+            "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
+            "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
