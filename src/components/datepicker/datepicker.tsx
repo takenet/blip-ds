@@ -196,9 +196,7 @@ export class DatePicker {
           {this.message && (
             <div class="datepicker__menu__message">
               <bds-icon name="warning" theme="outline" aria-label="Ícone de atenção"></bds-icon>
-              <bds-typo variant="fs-16">
-                {this.message}
-              </bds-typo>
+              <bds-typo variant="fs-16">{this.message}</bds-typo>
             </div>
           )}
           {this.typeOfDate == 'single' ? (
