@@ -429,6 +429,10 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
+          * Id to support Cypress.
+         */
+        "dataCypress": string;
+        /**
           * Disabled input.
          */
         "disabled"?: boolean;
@@ -2027,6 +2031,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Id to support Cypress.
+         */
+        "dataCypress"?: string;
         /**
           * Disabled input.
          */

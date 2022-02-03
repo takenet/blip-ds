@@ -192,6 +192,11 @@ export class Input {
   @Prop() chips: boolean;
 
   /**
+   * Id to support Cypress.
+   */
+  @Prop() dataCypress: string = null;
+
+  /**
    * Update the native input element when the value changes
    */
   @Watch('value')
@@ -503,6 +508,7 @@ export class Input {
                 pattern={this.pattern}
                 required={this.required}
                 part="input"
+                data-test={this.dataCypress}
               ></Element>
             </div>
           </div>
