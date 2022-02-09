@@ -25,7 +25,7 @@ export const defaultSelect = () => {
         <bds-select-option value="3">David Harbour</bds-select-option>
         <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
         <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
-        <bds-select-option value="6">Noah Schnapp</bds-select-option>
+        <bds-select-option value="6" status="Offline">Noah Schnapp</bds-select-option>
       </bds-select-chips>
     </div>
   );

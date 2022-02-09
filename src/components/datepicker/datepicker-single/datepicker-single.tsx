@@ -22,8 +22,8 @@ export class BdsdatepickerSingle {
   @State() week: string[];
   @State() months: Options[];
   @State() years: Options[];
-  @State() monthActivated: number = this.startDate ? this.startDate.month : THIS_DAY.getMonth();
-  @State() yearActivated: number = this.startDate ? this.startDate.year : THIS_DAY.getFullYear();
+  @State() monthActivated: number = THIS_DAY.getMonth();
+  @State() yearActivated: number = THIS_DAY.getFullYear();
   @State() animatePrev?: boolean = false;
   @State() animateNext?: boolean = false;
   @State() openSelectMonth?: boolean = false;
@@ -62,6 +62,13 @@ export class BdsdatepickerSingle {
     this.bdsDateSelected.emit({ value: this.dateSelect });
     this.monthActivated = this.dateSelect ? this.dateSelect?.getMonth() : this.startDate.month;
     this.yearActivated = this.dateSelect ? this.dateSelect.getFullYear() : this.startDate.year;
+  }
+
+  componentWillLoad() {
+    if (this.startDate) {
+      this.monthActivated = this.startDate.month;
+      this.yearActivated = this.startDate.year;
+    }
   }
 
   componentWillRender() {
