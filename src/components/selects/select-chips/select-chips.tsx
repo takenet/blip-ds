@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Element, Listen, Method } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Element, Watch, Listen, Method } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../select-interface';
 
 @Component({
@@ -12,6 +12,8 @@ export class SelectChips {
   @Element() el!: HTMLElement;
 
   @State() isOpen? = false;
+
+  @State() internalOptions: Option[];
 
   /**
    * The options of the select
@@ -103,6 +105,17 @@ export class SelectChips {
    *  Specify if is possible to create a new tag that is not on the options.
    */
   @Prop() notFoundMessage?: string = 'No results found';
+
+  @Watch('options')
+  parseOptions() {
+    if (this.options) {
+      if (typeof this.options === 'string') {
+        this.internalOptions = JSON.parse(this.options);
+      } else {
+        this.internalOptions = this.options;
+      }
+    }
+  }
 
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
@@ -347,6 +360,7 @@ export class SelectChips {
               key={this.generateKey(option.value)}
               onOptionSelected={this.handler}
               value={option.value}
+              status={option.status}
             >
               {option.label}
             </bds-select-option>
