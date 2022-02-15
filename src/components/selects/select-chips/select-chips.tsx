@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Element, Watch, Listen, Method } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Element, Listen, Method } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../select-interface';
 
 @Component({
@@ -9,11 +9,11 @@ import { Option, SelectChangeEventDetail } from '../select-interface';
 export class SelectChips {
   private nativeInput?: HTMLBdsInputChipsElement;
 
+  @State() internalOptions: Option[];
+
   @Element() el!: HTMLElement;
 
   @State() isOpen? = false;
-
-  @State() internalOptions: Option[];
 
   /**
    * The options of the select
@@ -106,17 +106,6 @@ export class SelectChips {
    */
   @Prop() notFoundMessage?: string = 'No results found';
 
-  @Watch('options')
-  parseOptions() {
-    if (this.options) {
-      if (typeof this.options === 'string') {
-        this.internalOptions = JSON.parse(this.options);
-      } else {
-        this.internalOptions = this.options;
-      }
-    }
-  }
-
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
     if (!this.el.contains(ev.target as HTMLInputElement)) {
@@ -138,6 +127,17 @@ export class SelectChips {
   @Method()
   async getChips(): Promise<string[]> {
     return await this.nativeInput.get();
+  }
+
+  componentWillRender() {
+    if (this.options.length) {
+      this.resetFilterOptions();
+      try {
+        this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
+      } catch (e) {
+        this.internalOptions = [];
+      }
+    }
   }
 
   async connectedCallback() {
@@ -184,9 +184,22 @@ export class SelectChips {
     await this.addChip(text);
   };
 
+  private getTextFromOption = (opt: HTMLBdsSelectOptionElement): string => {
+    if (opt?.status || opt?.bulkOption) {
+      if (this.internalOptions) {
+        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
+        if (internalOption) {
+          return internalOption.label;
+        }
+      }
+      return opt.querySelector(`#bds-typo-label-${opt.value}`).textContent;
+    }
+    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
+  };
+
   private getText = (value: string) => {
     const el: HTMLBdsSelectOptionElement = this.childOptions.find((option) => option.value === value);
-    return el.textContent;
+    return this.getTextFromOption(el);
   };
 
   private handlerNewOption = async (text: string) => {
