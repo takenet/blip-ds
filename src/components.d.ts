@@ -357,7 +357,7 @@ export namespace Components {
         /**
           * Specifies the label to use for accessibility. Defaults to the icon name.
          */
-        "ariaLabel"?: string;
+        "ariaLabel": string;
         /**
           * Specifies the color to use.Specifies a color to use. The default is svg.
          */
