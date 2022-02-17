@@ -9,6 +9,8 @@ import { Option, SelectChangeEventDetail } from '../select-interface';
 export class SelectChips {
   private nativeInput?: HTMLBdsInputChipsElement;
 
+  @State() internalOptions: Option[];
+
   @Element() el!: HTMLElement;
 
   @State() isOpen? = false;
@@ -127,6 +129,17 @@ export class SelectChips {
     return await this.nativeInput.get();
   }
 
+  componentWillRender() {
+    if (this.options.length) {
+      this.resetFilterOptions();
+      try {
+        this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
+      } catch (e) {
+        this.internalOptions = [];
+      }
+    }
+  }
+
   async connectedCallback() {
     for (const option of this.childOptions) {
       option.addEventListener('optionSelected', this.handler);
@@ -171,9 +184,22 @@ export class SelectChips {
     await this.addChip(text);
   };
 
+  private getTextFromOption = (opt: HTMLBdsSelectOptionElement): string => {
+    if (opt?.status || opt?.bulkOption) {
+      if (this.internalOptions) {
+        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
+        if (internalOption) {
+          return internalOption.label;
+        }
+      }
+      return opt.querySelector(`#bds-typo-label-${opt.value}`).textContent;
+    }
+    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
+  };
+
   private getText = (value: string) => {
     const el: HTMLBdsSelectOptionElement = this.childOptions.find((option) => option.value === value);
-    return el.textContent;
+    return this.getTextFromOption(el);
   };
 
   private handlerNewOption = async (text: string) => {
@@ -347,6 +373,7 @@ export class SelectChips {
               key={this.generateKey(option.value)}
               onOptionSelected={this.handler}
               value={option.value}
+              status={option.status}
             >
               {option.label}
             </bds-select-option>
