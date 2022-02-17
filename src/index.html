@@ -8,6 +8,7 @@
     <script nomodule src="/build/blip-ds.js"></script>
   </head>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
     body {
       background: #f5f8f9;
       /*background: #0a0f1a;*/
@@ -15,6 +16,12 @@
   </style>
 
   <body>
+    <bds-paper style="width: 80%; padding: 20px; margin: 50px auto;">
+      <bds-banner variant="warning" button-close="true"context="inside">Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!<bds-banner-link onClick="{alert('deu certo!')}">Acompanhe aqui</bds-banner-link></bds-banner>
+    </bds-paper>
+    <bds-banner variant="system" button-close="true">Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!</bds-banner>
+    <bds-banner variant="info" button-close="true">Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!</bds-banner>
+    <bds-banner variant="error" button-close="true">Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!</bds-banner>
   </body>
 
   <script></script>
