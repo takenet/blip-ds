@@ -10,7 +10,7 @@ import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsP
 import { avatarSize } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
-import { BannerAlign, BannerVariant } from "./components/banner/banner";
+import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
@@ -141,13 +141,20 @@ export namespace Components {
          */
         "bannerAlign"?: BannerAlign;
         /**
-          * Pulbic method to close the banner
+          * Set if show up the close button.
          */
+        "buttonClose"?: ButtonClose;
+        /**
+          * Set if the banner is external or internal.
+         */
+        "context"?: Context;
         "toggle": () => Promise<void>;
         /**
           * Set the banner varient, it can be 'system' or 'warning'.
          */
         "variant"?: BannerVariant;
+    }
+    interface BdsBannerLink {
     }
     interface BdsButton {
         /**
@@ -1285,6 +1292,12 @@ declare global {
         prototype: HTMLBdsBannerElement;
         new (): HTMLBdsBannerElement;
     };
+    interface HTMLBdsBannerLinkElement extends Components.BdsBannerLink, HTMLStencilElement {
+    }
+    var HTMLBdsBannerLinkElement: {
+        prototype: HTMLBdsBannerLinkElement;
+        new (): HTMLBdsBannerLinkElement;
+    };
     interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
     }
     var HTMLBdsButtonElement: {
@@ -1564,6 +1577,7 @@ declare global {
         "bds-avatar": HTMLBdsAvatarElement;
         "bds-avatar-group": HTMLBdsAvatarGroupElement;
         "bds-banner": HTMLBdsBannerElement;
+        "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
         "bds-card-color": HTMLBdsCardColorElement;
@@ -1740,6 +1754,14 @@ declare namespace LocalJSX {
          */
         "bannerAlign"?: BannerAlign;
         /**
+          * Set if show up the close button.
+         */
+        "buttonClose"?: ButtonClose;
+        /**
+          * Set if the banner is external or internal.
+         */
+        "context"?: Context;
+        /**
           * Emitted when the banner is closed.
          */
         "onBdsBannerClose"?: (event: CustomEvent<any>) => void;
@@ -1747,6 +1769,12 @@ declare namespace LocalJSX {
           * Set the banner varient, it can be 'system' or 'warning'.
          */
         "variant"?: BannerVariant;
+    }
+    interface BdsBannerLink {
+        /**
+          * Emitted when the link is clicked.
+         */
+        "onBdsBannerLink"?: (event: CustomEvent<any>) => void;
     }
     interface BdsButton {
         /**
@@ -2884,6 +2912,7 @@ declare namespace LocalJSX {
         "bds-avatar": BdsAvatar;
         "bds-avatar-group": BdsAvatarGroup;
         "bds-banner": BdsBanner;
+        "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
         "bds-card-color": BdsCardColor;
@@ -2943,6 +2972,7 @@ declare module "@stencil/core" {
             "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
             "bds-avatar-group": LocalJSX.BdsAvatarGroup & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
+            "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;

@@ -15,6 +15,7 @@ export const BdsAutocomplete = /*@__PURE__*/createReactComponent<JSX.BdsAutocomp
 export const BdsAvatar = /*@__PURE__*/createReactComponent<JSX.BdsAvatar, HTMLBdsAvatarElement>('bds-avatar');
 export const BdsAvatarGroup = /*@__PURE__*/createReactComponent<JSX.BdsAvatarGroup, HTMLBdsAvatarGroupElement>('bds-avatar-group');
 export const BdsBanner = /*@__PURE__*/createReactComponent<JSX.BdsBanner, HTMLBdsBannerElement>('bds-banner');
+export const BdsBannerLink = /*@__PURE__*/createReactComponent<JSX.BdsBannerLink, HTMLBdsBannerLinkElement>('bds-banner-link');
 export const BdsButton = /*@__PURE__*/createReactComponent<JSX.BdsButton, HTMLBdsButtonElement>('bds-button');
 export const BdsButtonIcon = /*@__PURE__*/createReactComponent<JSX.BdsButtonIcon, HTMLBdsButtonIconElement>('bds-button-icon');
 export const BdsCardColor = /*@__PURE__*/createReactComponent<JSX.BdsCardColor, HTMLBdsCardColorElement>('bds-card-color');
