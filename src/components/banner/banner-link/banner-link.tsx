@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, Event, EventEmitter, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-banner-link',
@@ -8,19 +8,26 @@ import { Component, Host, h, Element, Event, EventEmitter } from '@stencil/core'
 export class BannerLink {
   @Element() el: HTMLBdsBannerElement;
   /**
+   * Set the link pass.
+   */
+  @Prop() link: string;
+  /**
    * Emitted when the link is clicked.
    */
   @Event() bdsBannerLink!: EventEmitter;
 
   private _buttonClickHandler = () => {
     this.bdsBannerLink.emit(this.el);
+    window.open(this.link);
   };
 
-  render() {
+  render(): HTMLElement {
+    const Element = 'a';
+
     return (
-      <Host class={{ banner__link: true }} onClick={() => this._buttonClickHandler()}>
+      <Element class={{ banner__link: true }} onClick={() => this._buttonClickHandler()}>
         <slot></slot>
-      </Host>
+      </Element>
     );
   }
 }

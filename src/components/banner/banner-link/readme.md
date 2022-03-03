@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description        | Type     | Default     |
+| -------- | --------- | ------------------ | -------- | ----------- |
+| `link`   | `link`    | Set the link pass. | `string` | `undefined` |
+
+
 ## Events
 
 | Event           | Description                       | Type               |
