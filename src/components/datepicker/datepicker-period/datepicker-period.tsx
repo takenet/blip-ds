@@ -65,14 +65,14 @@ export class BdsdatepickerPeriod {
   }
 
   @Watch('startDateSelect')
-  protected startDateChanged(): void {
+  protected startDateSelectChanged(): void {
     this.bdsStartDate.emit({ value: this.startDateSelect });
     this.monthActivated = this.startDateSelect ? this.startDateSelect?.getMonth() : this.startDate.month;
     this.yearActivated = this.startDateSelect ? this.startDateSelect.getFullYear() : this.startDate.year;
   }
 
   @Watch('endDateSelect')
-  protected endDateChanged(): void {
+  protected endDateSelectChanged(): void {
     this.bdsEndDate.emit({ value: this.endDateSelect });
     this.monthActivated = this.endDateSelect
       ? this.startDateSelect.getMonth() == this.endDateSelect.getMonth() &&
@@ -84,6 +84,17 @@ export class BdsdatepickerPeriod {
     if (this.monthActivated < 0) {
       this.monthActivated = 11;
       this.yearActivated = this.yearActivated - 1;
+    }
+  }
+
+  @Watch('endDate')
+  @Watch('startDate')
+  protected periodToSelectChanged(newValue: DaysList, _oldValue: DaysList): void {
+    const oldDate = fillDayList(_oldValue);
+    const newDate = fillDayList(newValue);
+    if (newDate != oldDate) {
+      this.monthActivated = this.startDate.month;
+      this.yearActivated = this.startDate.year;
     }
   }
 
