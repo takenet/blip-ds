@@ -11,14 +11,15 @@ export type typeDate = 'single' | 'period';
   shadow: false,
 })
 export class DatePicker {
+  private datepickerPeriod?: HTMLBdsDatepickerPeriodElement;
+  private datepickerSingle?: HTMLBdsDatepickerSingleElement;
+
   @State() endDateLimitDaysList: DaysList;
   @State() open?: boolean = false;
   @State() dateSelected?: Date = null;
   @State() endDateSelected?: Date = null;
   @State() valueDateSelected?: string = null;
   @State() valueEndDateSelected?: string = null;
-  @State() datepickerPeriod?: HTMLBdsDatepickerPeriodElement;
-  @State() datepickerSingle?: HTMLBdsDatepickerSingleElement;
   @State() errorMsgDate?: string = null;
   @State() errorMsgEndDate?: string = null;
   /**
@@ -60,7 +61,9 @@ export class DatePicker {
       this.endDateLimit = defaultEndDate;
     }
     if (fillDayList(dlEndDate) < fillDayList(dlStartDate)) {
-      this.endDateLimit = defaultEndDate;
+      this.endDateLimit = `${dlEndDate.date.toString().padStart(2, '0')}/${(dlEndDate.month + 1)
+        .toString()
+        .padStart(2, '0')}/${dlStartDate.year + 1}`;
     }
   }
 
@@ -132,9 +135,9 @@ export class DatePicker {
   private maskEndDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueEndDateSelected = maskDate(input.value);
-    const valueSelected = dateToDayList(this.valueEndDateSelected);
-    const start = dateToDayList(this.startDateLimit);
-    const end = dateToDayList(this.endDateLimit);
+    const valueSelected = this.valueEndDateSelected && dateToDayList(this.valueEndDateSelected);
+    const start = this.startDateLimit && dateToDayList(this.startDateLimit);
+    const end = this.endDateLimit && dateToDayList(this.endDateLimit);
 
     if (!dateValidation(this.valueEndDateSelected)) {
       this.errorMsgEndDate = `Formato da data esta incorreto!`;
@@ -202,16 +205,16 @@ export class DatePicker {
           {this.typeOfDate == 'single' ? (
             <bds-datepicker-single
               ref={this.refDatepickerSingle}
-              startDate={dateToDayList(this.startDateLimit)}
-              endDate={dateToDayList(this.endDateLimit)}
+              startDate={this.startDateLimit && dateToDayList(this.startDateLimit)}
+              endDate={this.endDateLimit && dateToDayList(this.endDateLimit)}
               dateSelect={this.dateSelected}
               onBdsDateSelected={(event) => this.selectDate(event)}
             ></bds-datepicker-single>
           ) : (
             <bds-datepicker-period
               ref={this.refDatepickerPeriod}
-              startDate={dateToDayList(this.startDateLimit)}
-              endDate={dateToDayList(this.endDateLimit)}
+              startDate={this.startDateLimit && dateToDayList(this.startDateLimit)}
+              endDate={this.endDateLimit && dateToDayList(this.endDateLimit)}
               startDateSelect={this.dateSelected}
               endDateSelect={this.endDateSelected}
               onBdsStartDate={(event) => this.selectDate(event)}

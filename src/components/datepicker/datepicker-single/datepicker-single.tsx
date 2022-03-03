@@ -58,10 +58,20 @@ export class BdsdatepickerSingle {
   }
 
   @Watch('dateSelect')
-  protected startDateChanged(): void {
-    this.bdsDateSelected.emit({ value: this.dateSelect });
+  protected dateSelectChanged(): void {
     this.monthActivated = this.dateSelect ? this.dateSelect?.getMonth() : this.startDate.month;
     this.yearActivated = this.dateSelect ? this.dateSelect.getFullYear() : this.startDate.year;
+  }
+
+  @Watch('endDate')
+  @Watch('startDate')
+  protected periodToSelectChanged(newValue: DaysList, _oldValue: DaysList): void {
+    const oldDate = fillDayList(_oldValue);
+    const newDate = fillDayList(newValue);
+    if (newDate != oldDate) {
+      this.monthActivated = this.startDate.month;
+      this.yearActivated = this.startDate.year;
+    }
   }
 
   componentWillLoad() {
@@ -88,7 +98,7 @@ export class BdsdatepickerSingle {
 
   private selectDate(value: DaysList): void {
     const changeSelected = new Date(value.year, value.month, value.date);
-    this.dateSelect = changeSelected;
+    this.bdsDateSelected.emit({ value: changeSelected });
   }
 
   private prevMonth(): void {
@@ -187,7 +197,7 @@ export class BdsdatepickerSingle {
             [`input--pressed`]: openSelect,
           }}
         >
-          <bds-typo variant="fs-14">{labelSelect[0].label}</bds-typo>
+          <bds-typo variant="fs-14">{labelSelect[0]?.label}</bds-typo>
           <div class="datepicker__calendar__selectDate__select__input__icon">
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
           </div>
