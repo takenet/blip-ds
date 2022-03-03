@@ -155,6 +155,10 @@ export namespace Components {
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
+        /**
+          * Set the link pass.
+         */
+        "link": string;
     }
     interface BdsButton {
         /**
@@ -1771,6 +1775,10 @@ declare namespace LocalJSX {
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
+        /**
+          * Set the link pass.
+         */
+        "link"?: string;
         /**
           * Emitted when the link is clicked.
          */
