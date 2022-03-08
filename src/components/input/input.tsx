@@ -194,7 +194,7 @@ export class Input {
   /**
    * Id to support Cypress.
    */
-  @Prop() dataCypress: string = null;
+  @Prop() dateTest: string = null;
 
   /**
    * Update the native input element when the value changes
@@ -508,7 +508,7 @@ export class Input {
                 pattern={this.pattern}
                 required={this.required}
                 part="input"
-                data-test={this.dataCypress}
+                data-test={this.dateTest}
               ></Element>
             </div>
           </div>
