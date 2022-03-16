@@ -442,7 +442,7 @@ export namespace Components {
         /**
           * Id to support Cypress.
          */
-        "dateTest": string;
+        "dataTest": string;
         /**
           * Disabled input.
          */
@@ -2070,7 +2070,7 @@ declare namespace LocalJSX {
         /**
           * Id to support Cypress.
          */
-        "dateTest"?: string;
+        "dataTest"?: string;
         /**
           * Disabled input.
          */
