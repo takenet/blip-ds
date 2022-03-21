@@ -10,15 +10,16 @@
       align-items: center;
 
       &--disabled {
+        color: $color-neutral-dark-skate;
+      }
+
+      &--completed {
         color: $color-neutral-medium-cloud;
       }
 
       &--active {
-        color: $color-neutral-dark-rooftop;
-      }
-
-      &--completed {
         color: $color-primary-main;
+        font-weight: bold;
       }
 
       &--pointer {
@@ -29,17 +30,17 @@
         display: inline-flex;
         justify-content: center;
         border-radius: 50%;
-        background: $color-neutral-medium-cloud;
+        background: $color-neutral-dark-skate;
         margin-right: 4px;
         min-width: 24px;
         min-height: 24px;
         color: $color-neutral-light-snow;
 
-        &--active {
-          background: $color-neutral-dark-rooftop;
+        &--completed {
+          background: $color-neutral-medium-cloud;
         }
 
-        &--completed {
+        &--active {
           background: $color-primary-main;
         }
       }
