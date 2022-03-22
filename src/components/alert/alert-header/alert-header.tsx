@@ -27,7 +27,7 @@ export class AlertHeader implements ComponentInterface {
           [`alert__header--${this.variant}`]: true,
         }}
       >
-        {this.icon && <bds-icon theme="outline" size="x-large" color="#fff" name={this.icon}></bds-icon>}
+        {this.icon && <bds-icon class="color-icon" theme="outline" size="x-large" name={this.icon}></bds-icon>}
         <bds-typo variant="fs-16" bold="bold">
           <slot />
         </bds-typo>

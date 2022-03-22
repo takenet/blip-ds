@@ -15,6 +15,18 @@
   </style>
 
   <body>
+    <bds-alert open>
+      <bds-alert-header variant='system' icon='info'>
+      Atenção!
+      </bds-alert-header>
+      <bds-alert-body>
+        {text('body text', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos error!')}
+      </bds-alert-body> 
+      <bds-alert-actions>
+        <bds-button variant='secondary'>Cancelar</bds-button>
+        <bds-button variant='secondary'>Confirmar</bds-button>
+      </bds-alert-actions>
+    </bds-alert>
   </body>
 
   <script></script>
