@@ -34,7 +34,7 @@ describe('alert-header', () => {
       <bds-alert-header icon="user">
         <mock:shadow-root>
           <div class="alert__header alert__header--system">
-            <bds-icon theme="outline" size="x-large" color="#fff" name="user"></bds-icon>
+            <bds-icon theme="outline" size="x-large" class="color-icon" name="user"></bds-icon>
               <bds-typo bold="bold" variant="fs-16">
                 <slot>
                 </slot>
