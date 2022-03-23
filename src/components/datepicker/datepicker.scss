@@ -217,7 +217,7 @@
         width: 40px;
         height: 40px;
         text-align: center;
-        color: $color-neutral-medium-silver;
+        color: $color-neutral-medium-cloud;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -279,7 +279,7 @@
               justify-content: center;
               align-items: center;
               border-radius: 100%;
-              color: $color-neutral-dark-rooftop;
+              color: $color-neutral-dark-skate;
               border: 1px solid transparent;
               cursor: pointer;
 
@@ -297,14 +297,14 @@
             }
 
             &__selected {
-              background-color: $color-primary-dark;
+              background-color: $color-primary-main;
               color: $color-neutral-light-snow;
-              border-color: $color-primary-dark;
+              border-color: $color-primary-main;
 
               &:hover {
-                background-color: $color-primary-dark;
+                background-color: $color-primary-main;
                 color: $color-neutral-light-snow;
-                border-color: $color-primary-dark;
+                border-color: $color-primary-main;
               }
             }
 
@@ -335,7 +335,7 @@
       &__futureMonth {
         padding-left: 80px;
         text-align: center;
-        color: $color-neutral-medium-silver;
+        color: $color-neutral-dark-city;
       }
     }
 

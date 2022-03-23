@@ -348,6 +348,7 @@ export class BdsdatepickerPeriod {
 
   render(): HTMLElement {
     const futureMonth = MONTHS.filter((obj) => obj.value === this.monthsSlide[2].month);
+    const futureYear = this.monthsSlide[2].year;
     return (
       <div class={{ datepicker__calendar: true, [`period`]: true }}>
         <div class={{ datepicker__calendar__selectDate: true }}>
@@ -369,7 +370,7 @@ export class BdsdatepickerPeriod {
             this.renderSelectData(this.years, this.yearActivated, 'years'),
           ]}
           <bds-typo class="datepicker__calendar__selectDate__futureMonth" variant="fs-14">
-            {futureMonth[0].label}
+            {`${futureMonth[0].label}, ${futureYear}`}
           </bds-typo>
           <bds-icon
             class={{
