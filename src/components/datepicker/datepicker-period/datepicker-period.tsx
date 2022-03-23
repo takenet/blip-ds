@@ -14,6 +14,7 @@ import {
 } from '../../../utils/calendar';
 import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
 
+export type stateSlide = 'await' | 'pendding' | 'success';
 @Component({
   tag: 'bds-datepicker-period',
   styleUrl: '../datepicker.scss',
@@ -31,6 +32,7 @@ export class BdsdatepickerPeriod {
   @State() openSelectMonth?: boolean = false;
   @State() openSelectYear?: boolean = false;
   @State() monthsSlide: MonthsSlide[];
+  @State() loadingSlide: stateSlide = 'await';
   /**
    * StartDate. Insert a limiter to select the date period.
    */
@@ -131,26 +133,38 @@ export class BdsdatepickerPeriod {
 
   private prevMonth(): void {
     this.animatePrev = true;
-    setTimeout(() => {
-      this.animatePrev = false;
-      this.monthActivated = this.monthActivated - 1;
-      if (this.monthActivated < 0) {
-        this.monthActivated = 11;
-        this.yearActivated = this.yearActivated - 1;
-      }
-    }, 300);
+    if (this.loadingSlide != 'pendding') {
+      this.loadingSlide = 'pendding';
+      setTimeout(() => {
+        this.animatePrev = false;
+        this.monthActivated = this.monthActivated - 1;
+        if (this.monthActivated < 0) {
+          this.monthActivated = 11;
+          this.yearActivated = this.yearActivated - 1;
+        }
+        this.loadingSlide = 'success';
+      }, 300);
+    } else {
+      return;
+    }
   }
 
   private nextMonth(): void {
     this.animateNext = true;
-    setTimeout(() => {
-      this.animateNext = false;
-      this.monthActivated = this.monthActivated + 1;
-      if (this.monthActivated > 11) {
-        this.monthActivated = 0;
-        this.yearActivated = this.yearActivated + 1;
-      }
-    }, 300);
+    if (this.loadingSlide != 'pendding') {
+      this.loadingSlide = 'pendding';
+      setTimeout(() => {
+        this.animateNext = false;
+        this.monthActivated = this.monthActivated + 1;
+        if (this.monthActivated > 11) {
+          this.monthActivated = 0;
+          this.yearActivated = this.yearActivated + 1;
+        }
+        this.loadingSlide = 'success';
+      }, 300);
+    } else {
+      return;
+    }
   }
 
   private checkCurrentDay(value: DaysList): boolean {
