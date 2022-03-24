@@ -212,7 +212,7 @@ export class BdsdatepickerSingle {
           }}
         >
           <bds-typo variant="fs-14">{labelSelect[0]?.label}</bds-typo>
-          <div class="datepicker__calendar__selectDate__select__input__icon">
+          <div class="icon-arrow">
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
           </div>
         </button>
