@@ -212,6 +212,7 @@
       width: fit-content;
       display: grid;
       grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 8px;
 
       &__day {
         width: 40px;
@@ -240,6 +241,7 @@
           height: fit-content;
           display: grid;
           grid-template-columns: repeat(7, 1fr);
+          gap: 8px 0;
 
           &__day {
             width: 40px;
@@ -257,7 +259,7 @@
 
             &__start {
               &:before {
-                inset: 4px 0px 4px 4px;
+                inset: 4px 0;
                 border-top-left-radius: 16px;
                 border-bottom-left-radius: 16px;
               }
@@ -265,7 +267,7 @@
 
             &__end {
               &:before {
-                inset: 4px 4px 4px 0px;
+                inset: 4px 0;
                 border-top-right-radius: 16px;
                 border-bottom-right-radius: 16px;
               }
