@@ -289,7 +289,7 @@ export class BdsdatepickerPeriod {
           }}
         >
           <bds-typo variant="fs-14">{labelSelect[0].label}</bds-typo>
-          <div slot="input-right" class="select__icon">
+          <div class="icon-arrow">
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
           </div>
         </button>
