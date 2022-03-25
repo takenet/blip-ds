@@ -136,7 +136,7 @@ export class DatePicker {
     const input = ev.target as HTMLInputElement | null;
     this.valueEndDateSelected = maskDate(input.value);
     const valueSelected = this.valueEndDateSelected && dateToDayList(this.valueEndDateSelected);
-    const start = this.startDateLimit && dateToDayList(this.startDateLimit);
+    const start = this.valueDateSelected ? dateToDayList(this.valueDateSelected) : dateToDayList(this.startDateLimit);
     const end = this.endDateLimit && dateToDayList(this.endDateLimit);
 
     if (!dateValidation(this.valueEndDateSelected)) {
