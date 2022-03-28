@@ -47,9 +47,10 @@ export class BdsdatepickerSingle {
    */
   @Prop({ mutable: true, reflect: true }) dateSelect?: Date = null;
 
+  /**
+   * bdsDateSelected. Event to return selected date value.
+   */
   @Event() bdsDateSelected?: EventEmitter;
-
-  @Event() bdsClearDate?: EventEmitter<boolean>;
 
   /**
    * Return the validity of the input.
@@ -58,7 +59,9 @@ export class BdsdatepickerSingle {
   async clear(): Promise<void> {
     this.dateSelect = null;
   }
-
+  /**
+   * dateSelect. Function to output selected date.
+   */
   @Watch('dateSelect')
   protected dateSelectChanged(): void {
     this.monthActivated = this.dateSelect ? this.dateSelect?.getMonth() : this.startDate.month;
@@ -89,7 +92,9 @@ export class BdsdatepickerSingle {
     this.years = getYears(this.yearActivated, this.startDate.year, this.endDate.year);
     this.months = getMonths(this.yearActivated, this.startDate, this.endDate);
   }
-
+  /**
+   * prevDays. Function to create a gap between the beginning of the grid and the first day of the month.
+   */
   private prevDays(value: number): unknown {
     const lenghtDays = [];
     for (let i = 0; i < value; i++) {
@@ -97,12 +102,16 @@ export class BdsdatepickerSingle {
     }
     return lenghtDays.map((item) => <span key={`id${item}`} class={`space ${item}`}></span>);
   }
-
+  /**
+   * selectDate. Function to select the desired date.
+   */
   private selectDate(value: DaysList): void {
     const changeSelected = new Date(value.year, value.month, value.date);
     this.bdsDateSelected.emit({ value: changeSelected });
   }
-
+  /**
+   * prevMonth. Function to rewind the date on the calendar slide.
+   */
   private prevMonth(): void {
     this.animatePrev = true;
     if (this.loadingSlide != 'pendding') {
@@ -120,7 +129,9 @@ export class BdsdatepickerSingle {
       return;
     }
   }
-
+  /**
+   * nextMonth. Function to advance the date on the calendar slide.
+   */
   private nextMonth(): void {
     this.animateNext = true;
     if (this.loadingSlide != 'pendding') {
@@ -138,14 +149,18 @@ export class BdsdatepickerSingle {
       return;
     }
   }
-
+  /**
+   * checkCurrentDay. Function to check the current day.
+   */
   private checkCurrentDay(value: DaysList): boolean {
     const fullCurrDate = fillDate(THIS_DAY);
 
     if (fillDayList(value) == fullCurrDate) return true;
     else return false;
   }
-
+  /**
+   * checkDisableDay. Function to check the disable day.
+   */
   private checkDisableDay(value: DaysList): boolean {
     const startDateLimit = this.startDate ? fillDayList(this.startDate) : `0`;
     const endDateLimit = this.endDate ? fillDayList(this.endDate) : `9999999`;
@@ -158,14 +173,18 @@ export class BdsdatepickerSingle {
       return true;
     }
   }
-
+  /**
+   * checkSelectedDay. Function to check the selected day.
+   */
   private checkSelectedDay(value: DaysList): boolean {
     const selectedDate = this.dateSelect ? fillDate(this.dateSelect) : `0`;
 
     if (fillDayList(value) == selectedDate) return true;
     else return false;
   }
-
+  /**
+   * handler of select months or yaer.
+   */
   private handler = (event: CustomEvent, ref: string): void => {
     const {
       detail: { value },
@@ -178,7 +197,9 @@ export class BdsdatepickerSingle {
       this.yearActivated = value;
     }
   };
-
+  /**
+   * openDateSelect. Function to open the year or month selector.
+   */
   private openDateSelect = (value: boolean, ref: string): void => {
     if (ref == 'months') {
       setTimeout(() => {

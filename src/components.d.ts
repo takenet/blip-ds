@@ -1958,7 +1958,13 @@ declare namespace LocalJSX {
           * Message. Select type of date.
          */
         "message"?: string;
+        /**
+          * bdsStartDate. Event to return selected end date value.
+         */
         "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        /**
+          * bdsStartDate. Event to return selected date value.
+         */
         "onBdsStartDate"?: (event: CustomEvent<any>) => void;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
@@ -1978,7 +1984,13 @@ declare namespace LocalJSX {
           * EndDateSelect. Insert a limiter to select the date period.
          */
         "endDateSelect"?: Date;
+        /**
+          * bdsEndDate. Event to return selected end date value.
+         */
         "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        /**
+          * bdsStartDate. Event to return selected date value.
+         */
         "onBdsStartDate"?: (event: CustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
@@ -1998,7 +2010,9 @@ declare namespace LocalJSX {
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
-        "onBdsClearDate"?: (event: CustomEvent<boolean>) => void;
+        /**
+          * bdsDateSelected. Event to return selected date value.
+         */
         "onBdsDateSelected"?: (event: CustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.

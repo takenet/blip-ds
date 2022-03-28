@@ -42,17 +42,26 @@ export class DatePicker {
    * Message. Select type of date.
    */
   @Prop() message?: string = null;
-
+  /**
+   * bdsStartDate. Event to return selected date value.
+   */
   @Event() bdsStartDate?: EventEmitter;
-
+  /**
+   * bdsStartDate. Event to return selected end date value.
+   */
   @Event() bdsEndDate?: EventEmitter;
-
+  /**
+   * startDateLimit validation.
+   */
   @Watch('startDateLimit')
   startDateLimitChanged(): void {
     if (!dateValidation(this.startDateLimit)) {
       this.startDateLimit = defaultStartDate;
     }
   }
+  /**
+   * endDateLimit validation.
+   */
   @Watch('endDateLimit')
   endDateLimitChanged(): void {
     const dlStartDate = dateToDayList(this.startDateLimit);
@@ -79,7 +88,9 @@ export class DatePicker {
   private refDatepickerSingle = (el: HTMLBdsDatepickerSingleElement): void => {
     this.datepickerSingle = el;
   };
-
+  /**
+   * selectDate. Function to output selected date.
+   */
   private selectDate(event: CustomEvent<{ value: Date }>) {
     const {
       detail: { value },
@@ -89,7 +100,9 @@ export class DatePicker {
     this.valueDateSelected = this.dateSelected && dateToString(this.dateSelected);
     this.errorMsgDate = null;
   }
-
+  /**
+   * selectEndDate. Function to issue selected end date..
+   */
   private selectEndDate(event: CustomEvent<{ value: Date }>) {
     const {
       detail: { value },
@@ -99,13 +112,17 @@ export class DatePicker {
     this.valueEndDateSelected = this.endDateSelected && dateToString(this.endDateSelected);
     this.errorMsgEndDate = null;
   }
-
+  /**
+   * clearDateSingle. Function to clear datepicker-single
+   */
   private clearDateSingle = () => {
     this.datepickerSingle.clear();
     this.valueDateSelected = null;
     this.bdsStartDate.emit({ value: null });
   };
-
+  /**
+   * clearDatePeriod. Function to clear datepicker-period
+   */
   private clearDatePeriod = () => {
     this.datepickerPeriod.clear();
     this.valueDateSelected = null;
@@ -113,7 +130,9 @@ export class DatePicker {
     this.bdsStartDate.emit({ value: null });
     this.bdsEndDate.emit({ value: null });
   };
-
+  /**
+   * maskDateSelected. Function to add mask to date field
+   */
   private maskDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueDateSelected = maskDate(input.value);
@@ -131,7 +150,9 @@ export class DatePicker {
       }
     }
   };
-
+  /**
+   * maskEndDateSelected. Function to add mask to the end date field
+   */
   private maskEndDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueEndDateSelected = maskDate(input.value);
