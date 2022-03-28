@@ -19,6 +19,7 @@ import { CounterTextRule } from "./components/counter-text/counter-text-interfac
 import { typeDate } from "./components/datepicker/datepicker";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
+import { IllustrationType } from "./components/bds-illustration/illustration-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
@@ -405,6 +406,16 @@ export namespace Components {
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
         "type": IconType;
+    }
+    interface BdsIllustration {
+        /**
+          * Specifies the name of illustration. Verify the names on illustration tokens.
+         */
+        "name": string;
+        /**
+          * Specifies the type to use. Can be: 'default'.
+         */
+        "type": IllustrationType;
     }
     interface BdsInput {
         /**
@@ -1380,6 +1391,12 @@ declare global {
         prototype: HTMLBdsIconElement;
         new (): HTMLBdsIconElement;
     };
+    interface HTMLBdsIllustrationElement extends Components.BdsIllustration, HTMLStencilElement {
+    }
+    var HTMLBdsIllustrationElement: {
+        prototype: HTMLBdsIllustrationElement;
+        new (): HTMLBdsIllustrationElement;
+    };
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
     }
     var HTMLBdsInputElement: {
@@ -1595,6 +1612,7 @@ declare global {
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
         "bds-icon": HTMLBdsIconElement;
+        "bds-illustration": HTMLBdsIllustrationElement;
         "bds-input": HTMLBdsInputElement;
         "bds-input-chips": HTMLBdsInputChipsElement;
         "bds-input-editable": HTMLBdsInputEditableElement;
@@ -2037,6 +2055,16 @@ declare namespace LocalJSX {
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
         "type"?: IconType;
+    }
+    interface BdsIllustration {
+        /**
+          * Specifies the name of illustration. Verify the names on illustration tokens.
+         */
+        "name"?: string;
+        /**
+          * Specifies the type to use. Can be: 'default'.
+         */
+        "type"?: IllustrationType;
     }
     interface BdsInput {
         /**
@@ -2934,6 +2962,7 @@ declare namespace LocalJSX {
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
         "bds-icon": BdsIcon;
+        "bds-illustration": BdsIllustration;
         "bds-input": BdsInput;
         "bds-input-chips": BdsInputChips;
         "bds-input-editable": BdsInputEditable;
@@ -2994,6 +3023,7 @@ declare module "@stencil/core" {
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+            "bds-illustration": LocalJSX.BdsIllustration & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
