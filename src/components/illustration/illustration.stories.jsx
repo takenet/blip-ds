@@ -6,7 +6,7 @@ import readme from './readme.md';
 export default {
     title: 'illustration',
     decorators: [withKnobs],
-    paramenters: { 
+    parameters: { 
         notes: { markdown: readme },
     },
 };
