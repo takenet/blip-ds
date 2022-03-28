@@ -16,10 +16,9 @@
 
 ## Events
 
-| Event             | Description | Type                   |
-| ----------------- | ----------- | ---------------------- |
-| `bdsClearDate`    |             | `CustomEvent<boolean>` |
-| `bdsDateSelected` |             | `CustomEvent<any>`     |
+| Event             | Description                                           | Type               |
+| ----------------- | ----------------------------------------------------- | ------------------ |
+| `bdsDateSelected` | bdsDateSelected. Event to return selected date value. | `CustomEvent<any>` |
 
 
 ## Methods

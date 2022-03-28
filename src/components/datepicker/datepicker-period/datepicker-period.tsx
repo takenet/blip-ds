@@ -52,9 +52,13 @@ export class BdsdatepickerPeriod {
    * EndDateSelect. Insert a limiter to select the date period.
    */
   @Prop({ mutable: true, reflect: true }) endDateSelect?: Date = null;
-
+  /**
+   * bdsStartDate. Event to return selected date value.
+   */
   @Event() bdsStartDate?: EventEmitter;
-
+  /**
+   * bdsEndDate. Event to return selected end date value.
+   */
   @Event() bdsEndDate?: EventEmitter;
 
   /**
@@ -65,14 +69,18 @@ export class BdsdatepickerPeriod {
     this.startDateSelect = null;
     this.endDateSelect = null;
   }
-
+  /**
+   * startDateSelect. Function to output selected start date.
+   */
   @Watch('startDateSelect')
   protected startDateSelectChanged(): void {
     this.bdsStartDate.emit({ value: this.startDateSelect });
     this.monthActivated = this.startDateSelect ? this.startDateSelect?.getMonth() : this.startDate.month;
     this.yearActivated = this.startDateSelect ? this.startDateSelect.getFullYear() : this.startDate.year;
   }
-
+  /**
+   * endDateSelect. Function to output selected end date.
+   */
   @Watch('endDateSelect')
   protected endDateSelectChanged(): void {
     this.bdsEndDate.emit({ value: this.endDateSelect });
@@ -113,7 +121,9 @@ export class BdsdatepickerPeriod {
     this.years = getYears(this.yearActivated, this.startDate.year, this.endDate.year);
     this.months = getMonths(this.yearActivated, this.startDate, this.endDate);
   }
-
+  /**
+   * prevDays. Function to create a gap between the beginning of the grid and the first day of the month.
+   */
   private prevDays(value: number): unknown {
     const lenghtDays = [];
     for (let i = 0; i < value; i++) {
@@ -121,7 +131,9 @@ export class BdsdatepickerPeriod {
     }
     return lenghtDays.map((item) => <span key={`id${item}`} class={`space ${item}`}></span>);
   }
-
+  /**
+   * selectDate. Function to select the desired date.
+   */
   private selectDate(value: DaysList): void {
     const changeSelected = new Date(value.year, value.month, value.date);
     if (this.startDateSelect) {
@@ -130,7 +142,9 @@ export class BdsdatepickerPeriod {
       this.startDateSelect = changeSelected;
     }
   }
-
+  /**
+   * prevMonth. Function to rewind the date on the calendar slide.
+   */
   private prevMonth(): void {
     this.animatePrev = true;
     if (this.loadingSlide != 'pendding') {
@@ -148,7 +162,9 @@ export class BdsdatepickerPeriod {
       return;
     }
   }
-
+  /**
+   * nextMonth. Function to advance the date on the calendar slide.
+   */
   private nextMonth(): void {
     this.animateNext = true;
     if (this.loadingSlide != 'pendding') {
@@ -166,7 +182,9 @@ export class BdsdatepickerPeriod {
       return;
     }
   }
-
+  /**
+   * checkCurrentDay. Function to check the current day.
+   */
   private checkCurrentDay(value: DaysList): boolean {
     const validateDate = fillDayList(value);
     const fullCurrDate = fillDate(THIS_DAY);
@@ -174,7 +192,9 @@ export class BdsdatepickerPeriod {
     if (validateDate == fullCurrDate) return true;
     else return false;
   }
-
+  /**
+   * checkDisableDay. Function to check the disable day.
+   */
   private checkDisableDay(value: DaysList): boolean {
     const validateDate = fillDayList(value);
     const startDateLimit = this.startDate ? fillDayList(this.startDate) : `0`;
@@ -195,7 +215,9 @@ export class BdsdatepickerPeriod {
       return true;
     }
   }
-
+  /**
+   * checkSelectedDay. Function to check the selected day.
+   */
   private checkSelectedDay(value: DaysList): boolean {
     const validateDate = fillDayList(value);
     const startSelectedDate = this.startDateSelect ? fillDate(this.startDateSelect) : `0`;
@@ -204,7 +226,9 @@ export class BdsdatepickerPeriod {
     if (validateDate == startSelectedDate || validateDate == endSelectedDate) return true;
     else return false;
   }
-
+  /**
+   * checkPeriodDay. Function to check the period selected day.
+   */
   private checkPeriodDay(value: DaysList): boolean {
     const validateDate = fillDayList(value);
     const startSelectedDate = this.startDateSelect ? fillDate(this.startDateSelect) : `0`;
@@ -215,7 +239,9 @@ export class BdsdatepickerPeriod {
       }
     }
   }
-
+  /**
+   * checkPeriodStart. Function to check the period selected start day.
+   */
   private checkPeriodStart(value: DaysList): boolean {
     const validateDate = value.date == 1;
     const validateDay = value.day == 0;
@@ -229,7 +255,9 @@ export class BdsdatepickerPeriod {
       return true;
     }
   }
-
+  /**
+   * checkPeriodEnd. Function to check the period selected end day.
+   */
   private checkPeriodEnd(value: DaysList, lastItem: boolean): boolean {
     const validateDate = lastItem;
     const validateDay = value.day == 6;
@@ -242,7 +270,9 @@ export class BdsdatepickerPeriod {
       return true;
     }
   }
-
+  /**
+   * handler of select months or yaer.
+   */
   private handler = (event: CustomEvent, ref: string): void => {
     const {
       detail: { value },
@@ -255,7 +285,9 @@ export class BdsdatepickerPeriod {
       this.yearActivated = value;
     }
   };
-
+  /**
+   * openDateSelect. Function to open the year or month selector.
+   */
   private openDateSelect = (value: boolean, ref: string): void => {
     if (ref == 'months') {
       setTimeout(() => {

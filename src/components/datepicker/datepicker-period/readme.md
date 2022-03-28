@@ -17,10 +17,10 @@
 
 ## Events
 
-| Event          | Description | Type               |
-| -------------- | ----------- | ------------------ |
-| `bdsEndDate`   |             | `CustomEvent<any>` |
-| `bdsStartDate` |             | `CustomEvent<any>` |
+| Event          | Description                                          | Type               |
+| -------------- | ---------------------------------------------------- | ------------------ |
+| `bdsEndDate`   | bdsEndDate. Event to return selected end date value. | `CustomEvent<any>` |
+| `bdsStartDate` | bdsStartDate. Event to return selected date value.   | `CustomEvent<any>` |
 
 
 ## Methods
