@@ -19,7 +19,7 @@ import { CounterTextRule } from "./components/counter-text/counter-text-interfac
 import { typeDate } from "./components/datepicker/datepicker";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
-import { IllustrationType } from "./components/bds-illustration/illustration-interface";
+import { IllustrationType } from "./components/illustration/illustration-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";

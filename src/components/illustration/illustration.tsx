@@ -5,7 +5,7 @@ import illustrations from 'blip-tokens/build/json/assets_illustrations.json';
 @Component({
   tag: 'bds-illustration',
   assetsDirs: ['svg'],
-  styleUrl: 'bds-illustration.scss',
+  styleUrl: 'illustration.scss',
   shadow: true,
 })
 export class BdsIllustration {
