@@ -11,6 +11,8 @@ export type typeDate = 'single' | 'period';
   shadow: false,
 })
 export class DatePicker {
+  private inputSetDate?: HTMLBdsInputElement;
+  private inputSetEndDate?: HTMLBdsInputElement;
   private datepickerPeriod?: HTMLBdsDatepickerPeriodElement;
   private datepickerSingle?: HTMLBdsDatepickerSingleElement;
 
@@ -76,10 +78,23 @@ export class DatePicker {
     }
   }
 
+  @Watch('dateSelected')
+  dateSelectedChanged(): void {
+    this.inputSetEndDate.setFocus();
+  }
+
   componentWillLoad() {
     this.endDateLimitChanged();
     this.startDateLimitChanged();
   }
+
+  private refInputSetDate = (el: HTMLBdsInputElement): void => {
+    this.inputSetDate = el;
+  };
+
+  private refInputSetEndDate = (el: HTMLBdsInputElement): void => {
+    this.inputSetEndDate = el;
+  };
 
   private refDatepickerPeriod = (el: HTMLBdsDatepickerPeriodElement): void => {
     this.datepickerPeriod = el;
@@ -129,6 +144,9 @@ export class DatePicker {
     this.valueEndDateSelected = null;
     this.bdsStartDate.emit({ value: null });
     this.bdsEndDate.emit({ value: null });
+    setTimeout(() => {
+      this.inputSetDate.setFocus();
+    }, 10);
   };
   /**
    * maskDateSelected. Function to add mask to date field
@@ -172,6 +190,21 @@ export class DatePicker {
     }
   };
 
+  private onClickSetDate = () => {
+    this.open = true;
+    setTimeout(() => {
+      this.inputSetDate.setFocus();
+      this.inputSetEndDate.removeFocus();
+    }, 50);
+    this.datepickerPeriod.clear();
+    this.valueEndDateSelected = null;
+  };
+
+  private closeDatepicker = () => {
+    this.inputSetEndDate.removeFocus();
+    this.open = false;
+  };
+
   render() {
     return (
       <div class={{ datepicker: true }}>
@@ -192,17 +225,19 @@ export class DatePicker {
         ) : (
           <div class={{ datepicker__inputs: true, [`datepicker__inputs__${this.typeOfDate}`]: true }}>
             <bds-input
+              ref={this.refInputSetDate}
               label="De"
               value={this.valueDateSelected}
               placeholder="__/__/____"
               maxlength={10}
               icon="calendar"
-              onClick={() => (this.open = true)}
+              onClick={() => this.onClickSetDate()}
               onBdsInput={(ev) => this.maskDateSelected(ev)}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
             ></bds-input>
             <bds-input
+              ref={this.refInputSetEndDate}
               label="Até"
               value={this.valueEndDateSelected}
               disabled={!this.dateSelected}
@@ -252,7 +287,7 @@ export class DatePicker {
                 Redefinir
               </bds-button>
             )}
-            <bds-button onClick={() => (this.open = false)}>Concluir</bds-button>
+            <bds-button onClick={this.closeDatepicker}>Concluir</bds-button>
           </div>
         </div>
       </div>
