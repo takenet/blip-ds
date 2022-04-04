@@ -277,18 +277,21 @@ export class DatePicker {
               onBdsEndDate={(event) => this.selectEndDate(event)}
             ></bds-datepicker-period>
           )}
-          <div class={{ datepicker__menu__footer: true }}>
-            {this.typeOfDate == 'single' ? (
+          {this.typeOfDate == 'single' ? (
+            <div class={{ datepicker__menu__footer: true }}>
               <bds-button variant="secondary" onClick={() => this.clearDateSingle()}>
                 Redefinir
               </bds-button>
-            ) : (
+              <bds-button onClick={() => (this.open = false)}>Concluir</bds-button>
+            </div>
+          ) : (
+            <div class={{ datepicker__menu__footer: true }}>
               <bds-button variant="secondary" onClick={() => this.clearDatePeriod()}>
                 Redefinir
               </bds-button>
-            )}
-            <bds-button onClick={this.closeDatepicker}>Concluir</bds-button>
-          </div>
+              <bds-button onClick={this.closeDatepicker}>Concluir</bds-button>
+            </div>
+          )}
         </div>
       </div>
     );
