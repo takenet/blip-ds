@@ -99,12 +99,21 @@ export class Select {
     }
   }
 
-  componentWillLoad() {
-    this.options && this.parseOptions();
+  componentWillRender() {
+    this.options && this.updateOptions();
+    for (const option of this.childOptions) {
+      option.selected = this.value === option.value;
+      option.addEventListener('optionSelected', this.handler);
+    }
+    this.text = this.getText();
   }
 
   @Watch('options')
-  parseOptions() {
+  optionsChanged() {
+    this.updateOptions();
+  }
+
+  private updateOptions() {
     if (this.options) {
       if (typeof this.options === 'string') {
         this.internalOptions = JSON.parse(this.options);
@@ -112,14 +121,6 @@ export class Select {
         this.internalOptions = this.options;
       }
     }
-  }
-
-  componentDidLoad() {
-    for (const option of this.childOptions) {
-      option.selected = this.value === option.value;
-      option.addEventListener('optionSelected', this.handler);
-    }
-    this.text = this.getText();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
