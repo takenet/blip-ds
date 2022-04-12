@@ -13,7 +13,7 @@ export class BdsProgressBar {
   /**
    * Text, property to enable the bar info text.
    */
-  @Prop() text?: boolean = false;
+  @Prop() text?: string = '';
 
   render() {
     const styles = { width: `${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}%` };
@@ -24,7 +24,7 @@ export class BdsProgressBar {
         </div>
         {this.text && (
           <div class={{ typo_progress: true }}>
-            <bds-typo>{`${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}% Completo`}</bds-typo>
+            <bds-typo>{this.text}</bds-typo>
           </div>
         )}
       </Host>
