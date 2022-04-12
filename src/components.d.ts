@@ -898,11 +898,11 @@ export namespace Components {
     }
     interface BdsProgressBar {
         /**
-          * Percent, description.
+          * Percent, property to enter the progress bar status percentage value.
          */
         "percent"?: number;
         /**
-          * Text, description.
+          * Text, property to enable the bar info text.
          */
         "text"?: boolean;
     }
@@ -2605,11 +2605,11 @@ declare namespace LocalJSX {
     }
     interface BdsProgressBar {
         /**
-          * Percent, description.
+          * Percent, property to enter the progress bar status percentage value.
          */
         "percent"?: number;
         /**
-          * Text, description.
+          * Text, property to enable the bar info text.
          */
         "text"?: boolean;
     }

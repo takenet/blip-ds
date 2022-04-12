@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description           | Type      | Default |
-| --------- | --------- | --------------------- | --------- | ------- |
-| `percent` | `percent` | Percent, description. | `number`  | `0`     |
-| `text`    | `text`    | Text, description.    | `boolean` | `false` |
+| Property  | Attribute | Description                                                          | Type      | Default |
+| --------- | --------- | -------------------------------------------------------------------- | --------- | ------- |
+| `percent` | `percent` | Percent, property to enter the progress bar status percentage value. | `number`  | `0`     |
+| `text`    | `text`    | Text, property to enable the bar info text.                          | `boolean` | `false` |
 
 
 ## Dependencies
