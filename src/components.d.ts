@@ -904,7 +904,7 @@ export namespace Components {
         /**
           * Text, property to enable the bar info text.
          */
-        "text"?: boolean;
+        "text"?: string;
     }
     interface BdsRadio {
         /**
@@ -2611,7 +2611,7 @@ declare namespace LocalJSX {
         /**
           * Text, property to enable the bar info text.
          */
-        "text"?: boolean;
+        "text"?: string;
     }
     interface BdsRadio {
         /**
