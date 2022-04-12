@@ -896,6 +896,16 @@ export namespace Components {
          */
         "elevation"?: PaperElevation;
     }
+    interface BdsProgressBar {
+        /**
+          * Percent, description.
+         */
+        "percent"?: number;
+        /**
+          * Text, description.
+         */
+        "text"?: boolean;
+    }
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
@@ -1493,6 +1503,12 @@ declare global {
         prototype: HTMLBdsPaperElement;
         new (): HTMLBdsPaperElement;
     };
+    interface HTMLBdsProgressBarElement extends Components.BdsProgressBar, HTMLStencilElement {
+    }
+    var HTMLBdsProgressBarElement: {
+        prototype: HTMLBdsProgressBarElement;
+        new (): HTMLBdsProgressBarElement;
+    };
     interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
     }
     var HTMLBdsRadioElement: {
@@ -1629,6 +1645,7 @@ declare global {
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-paper": HTMLBdsPaperElement;
+        "bds-progress-bar": HTMLBdsProgressBarElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-radio-group": HTMLBdsRadioGroupElement;
         "bds-select": HTMLBdsSelectElement;
@@ -2586,6 +2603,16 @@ declare namespace LocalJSX {
          */
         "elevation"?: PaperElevation;
     }
+    interface BdsProgressBar {
+        /**
+          * Percent, description.
+         */
+        "percent"?: number;
+        /**
+          * Text, description.
+         */
+        "text"?: boolean;
+    }
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
@@ -2993,6 +3020,7 @@ declare namespace LocalJSX {
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-paper": BdsPaper;
+        "bds-progress-bar": BdsProgressBar;
         "bds-radio": BdsRadio;
         "bds-radio-group": BdsRadioGroup;
         "bds-select": BdsSelect;
@@ -3054,6 +3082,7 @@ declare module "@stencil/core" {
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
+            "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
