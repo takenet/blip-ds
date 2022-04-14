@@ -4,6 +4,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'blip-ds',
+  globalStyle: 'src/globals/app.scss',
   plugins: [
     sass({
       includePaths: ['src/globals'],
