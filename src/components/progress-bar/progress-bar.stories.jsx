@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, boolean, number } from "@storybook/addon-knobs";
+import { withKnobs, text, number } from "@storybook/addon-knobs";
 
 import readme from './readme.md';
 
@@ -23,7 +23,7 @@ const alignContent = {
 export const progressBar = () => (
   <div style={content}>
     <div style={alignContent}>
-      <bds-progress-bar text={boolean('text', false)} percent={number('percent', 16)}></bds-progress-bar>
+      <bds-progress-bar text={text('text', '')} percent={number('percent', 16)}></bds-progress-bar>
     </div>
 </div>
 );
