@@ -16,13 +16,12 @@ jobs:
         with:
           node-version: 14
 
-      - name: NPM Install, build, build React and test
+      - name: NPM Install, build and test
         run: |
           npm install
           npm run eslint
           npm run test
           npm run build
-          npm run build:react
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
