@@ -1,0 +1,52 @@
+@import 'fonts';
+
+:host {
+  display: flex;
+
+  .chip_tag {
+    display: flex;
+    min-width: 32px;
+    width: fit-content;
+    height: 24px;
+    border-radius: 12px;
+    align-items: center;
+
+    &--icon {
+    display: flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    margin: 4px 0 4px 4px;
+    color: $color-neutral-dark-city;
+  }
+    &--text {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      margin: 2px 8px;
+      color: $color-neutral-dark-city;
+      font-family: $font-family;
+    }
+    &--default {
+      background-color: $color-primary-light;
+    }
+    &--info {
+      background-color: $color-illustration-blue-genie;
+    }
+    &--success {
+      background-color: $color-primary-greens-mint;
+    }
+    &--warning {
+      background-color: $color-primary-yellows-corn;
+    }
+    &--danger {
+      background-color: $color-extend-reds-flower;
+    }
+    &--outline {
+      background-color: $color-neutral-light-snow;
+      border: 1px solid $color-neutral-medium-silver;
+      box-sizing: border-box;
+    }
+  }
+  
+}
