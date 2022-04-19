@@ -106,6 +106,12 @@ export class InputPhoneNumber {
     }
   }
 
+  componentWillRender() {
+    const countries = countriesJson['default'];
+    const flagsNames = Object.keys(countries);
+    this.selectedCountry = this.selectedCountry || flagsNames[0];
+  }
+
   async connectedCallback() {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
@@ -189,10 +195,7 @@ export class InputPhoneNumber {
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
     const countries = countriesJson['default'];
-
     const flagsNames = Object.keys(countries);
-
-    this.selectedCountry = this.selectedCountry || flagsNames[0];
 
     return (
       <div
