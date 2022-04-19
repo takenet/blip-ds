@@ -1,5 +1,6 @@
 @import 'fonts';
 
+$avatar-size-micro :24px;
 $avatar-size-extra-small :32px;
 $avatar-size-small :40px;
 $avatar-size-standard :56px;
@@ -133,6 +134,10 @@ $avatar-size-extra-large :72px;
   }
   
   &__size {
+    &--micro{
+      width: $avatar-size-micro;
+      height: $avatar-size-micro;
+    }
     &--extra-small{
       width: $avatar-size-extra-small;
       height: $avatar-size-extra-small;

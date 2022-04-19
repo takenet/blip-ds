@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { FontSize } from '../typo/typo';
 import { IconSize } from '../icon/icon-interface';
 
-export type avatarSize = 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
+export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
 
 @Component({
   tag: 'bds-avatar',
@@ -35,6 +35,10 @@ export class BdsAvatar {
   @Prop() ellipsis?: number = null;
   private selectTypoSize = (value): void => {
     switch (value) {
+      case 'micro':
+        this.typoSize = 'fs-12';
+        this.iconSize = 'xx-small';
+        break;
       case 'extra-small':
         this.typoSize = 'fs-14';
         this.iconSize = 'x-small';
