@@ -9,7 +9,9 @@
     width: fit-content;
     height: 24px;
     border-radius: 12px;
+    padding: 2px 4px;
     align-items: center;
+    box-sizing: border-box;
 
     &--icon {
     display: flex;
@@ -45,7 +47,6 @@
     &--outline {
       background-color: $color-neutral-light-snow;
       border: 1px solid $color-neutral-medium-silver;
-      box-sizing: border-box;
     }
   }
   
