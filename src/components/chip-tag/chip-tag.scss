@@ -17,15 +17,14 @@
     display: flex;
     align-items: center;
     width: 16px;
-    height: 16px;
-    margin: 4px 0 4px 4px;
+    height: 20px;
     color: $color-neutral-dark-city;
   }
     &--text {
       display: flex;
       align-items: center;
       height: 20px;
-      margin: 2px 8px;
+      margin: 0 8px;
       color: $color-neutral-dark-city;
       font-family: $font-family;
     }
