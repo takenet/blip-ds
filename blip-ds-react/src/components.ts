@@ -21,6 +21,7 @@ export const BdsButtonIcon = /*@__PURE__*/createReactComponent<JSX.BdsButtonIcon
 export const BdsCardColor = /*@__PURE__*/createReactComponent<JSX.BdsCardColor, HTMLBdsCardColorElement>('bds-card-color');
 export const BdsCheckbox = /*@__PURE__*/createReactComponent<JSX.BdsCheckbox, HTMLBdsCheckboxElement>('bds-checkbox');
 export const BdsChip = /*@__PURE__*/createReactComponent<JSX.BdsChip, HTMLBdsChipElement>('bds-chip');
+export const BdsChipSelected = /*@__PURE__*/createReactComponent<JSX.BdsChipSelected, HTMLBdsChipSelectedElement>('bds-chip-selected');
 export const BdsChipTag = /*@__PURE__*/createReactComponent<JSX.BdsChipTag, HTMLBdsChipTagElement>('bds-chip-tag');
 export const BdsCounterText = /*@__PURE__*/createReactComponent<JSX.BdsCounterText, HTMLBdsCounterTextElement>('bds-counter-text');
 export const BdsDatepicker = /*@__PURE__*/createReactComponent<JSX.BdsDatepicker, HTMLBdsDatepickerElement>('bds-datepicker');

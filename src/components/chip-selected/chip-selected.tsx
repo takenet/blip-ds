@@ -27,11 +27,28 @@ export class ChipSelected {
    * used for set the initial setup for true;
    */
   @Prop() selected?: boolean = false;
+  /**
+   * When 'true', no events will be dispatched
+   */
+  @Prop() disabled = false;
 
   @Event() chipClick: EventEmitter;
 
+  @Listen('keydown')
+  handleKeyDown(ev: KeyboardEvent) {
+    if (ev.key === ' ') {
+      if (this.disabled) return;
+      ev.preventDefault();
+      if (this.isSelected) {
+        return (this.isSelected = false);
+      } else {
+        return (this.isSelected = true);
+      }
+    }
+  }
   @Listen('click', { capture: true })
   handleClick(event) {
+    if (this.disabled) return;
     event.preventDefault();
     if (this.isSelected) {
       return (this.isSelected = false);
@@ -45,14 +62,14 @@ export class ChipSelected {
     this.isSelected = this.selected;
   }
 
+  private getDisabledChip() {
+    return this.disabled ? { chip_disabled: true, [`chip_disabled--${this.size}`]: true } : {};
+  }
+
   private getStyleChip() {
-    if (this.isSelected) {
-      const chipSelected = { chip_selected: true, [`chip_selected--${this.size}`]: true };
-      return chipSelected;
-    } else {
-      const chipSelected = { [`chip--${this.color}`]: true, [`chip_selected--${this.size}`]: true };
-      return chipSelected;
-    }
+    return this.isSelected
+      ? { chip_selected: true, [`chip_selected--${this.size}`]: true }
+      : { [`chip--${this.color}`]: true, [`chip--${this.size}`]: true };
   }
 
   private getStyleText() {
@@ -69,11 +86,13 @@ export class ChipSelected {
           class={{
             chip: true,
             ...this.getStyleChip(),
+            ...this.getDisabledChip(),
           }}
           onClick={this.handleClick}
+          onKeyDown={this.handleKeyDown}
           tabindex="0"
         >
-          {!this.isSelected && <div class="chip_darker"></div>}
+          {!this.isSelected && !this.disabled && <div class="chip_darker"></div>}
           {this.icon && !this.isSelected && (
             <div class="chip--icon">
               <bds-icon size="x-small" name={this.icon}></bds-icon>
