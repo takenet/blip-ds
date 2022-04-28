@@ -15,8 +15,9 @@ import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/bu
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
-import { Color, Size } from "./components/chip-selected/chip-selected";
-import { Color as Color1 } from "./components/chip-tag/chip-tag";
+import { Color, Size } from "./components/chip-clickable/chip-clickable";
+import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-selected";
+import { Color as Color2 } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
 import { DaysList } from "./components/datepicker/datepicker-interface";
@@ -292,6 +293,36 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
          */
         "variant"?: ChipVariant;
+    }
+    interface BdsChipClickable {
+        /**
+          * used for add avatar left container. Uses the bds-avatar component.
+         */
+        "avatar"?: string;
+        /**
+          * it makes the chip clickable.
+         */
+        "clickable"?: boolean;
+        /**
+          * used for delete the chip.
+         */
+        "close"?: boolean;
+        /**
+          * used for change the color. Uses one of them.
+         */
+        "color"?: Color;
+        /**
+          * the chip gone stay disabled while this prop be true.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * used for change the size chip. Uses one of them.
+         */
+        "size"?: Size;
     }
     interface BdsChipSelected {
         /**
@@ -1387,6 +1418,12 @@ declare global {
         prototype: HTMLBdsChipElement;
         new (): HTMLBdsChipElement;
     };
+    interface HTMLBdsChipClickableElement extends Components.BdsChipClickable, HTMLStencilElement {
+    }
+    var HTMLBdsChipClickableElement: {
+        prototype: HTMLBdsChipClickableElement;
+        new (): HTMLBdsChipClickableElement;
+    };
     interface HTMLBdsChipSelectedElement extends Components.BdsChipSelected, HTMLStencilElement {
     }
     var HTMLBdsChipSelectedElement: {
@@ -1666,6 +1703,7 @@ declare global {
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
+        "bds-chip-clickable": HTMLBdsChipClickableElement;
         "bds-chip-selected": HTMLBdsChipSelectedElement;
         "bds-chip-tag": HTMLBdsChipTagElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
@@ -2006,6 +2044,41 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
          */
         "variant"?: ChipVariant;
+    }
+    interface BdsChipClickable {
+        /**
+          * used for add avatar left container. Uses the bds-avatar component.
+         */
+        "avatar"?: string;
+        /**
+          * it makes the chip clickable.
+         */
+        "clickable"?: boolean;
+        /**
+          * used for delete the chip.
+         */
+        "close"?: boolean;
+        /**
+          * used for change the color. Uses one of them.
+         */
+        "color"?: Color;
+        /**
+          * the chip gone stay disabled while this prop be true.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        "onChipClickableClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Triggered after a mouse click on close icon, return id element. Only fired when close is true.
+         */
+        "onChipClickableClose"?: (event: CustomEvent<any>) => void;
+        /**
+          * used for change the size chip. Uses one of them.
+         */
+        "size"?: Size;
     }
     interface BdsChipSelected {
         /**
@@ -3076,6 +3149,7 @@ declare namespace LocalJSX {
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
+        "bds-chip-clickable": BdsChipClickable;
         "bds-chip-selected": BdsChipSelected;
         "bds-chip-tag": BdsChipTag;
         "bds-counter-text": BdsCounterText;
@@ -3140,6 +3214,7 @@ declare module "@stencil/core" {
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
+            "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
             "bds-chip-selected": LocalJSX.BdsChipSelected & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
             "bds-chip-tag": LocalJSX.BdsChipTag & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
