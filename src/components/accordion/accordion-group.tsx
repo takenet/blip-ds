@@ -22,10 +22,7 @@ export class AccordionGroup {
   async closeAll(actNumber) {
     if (this.collapse == 'default') {
       for (let i = 0; i < this.accBodies.length; i++) {
-        if (actNumber != i) this.accBodies[i].close();
-      }
-      for (let i = 0; i < this.accheaders.length; i++) {
-        if (actNumber != i) this.accheaders[i].close();
+        if (actNumber != i) this.accBodies[i].close() && this.accheaders[i].close();
       }
     }
   }
