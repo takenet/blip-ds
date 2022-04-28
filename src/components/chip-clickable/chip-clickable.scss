@@ -1,0 +1,140 @@
+:host {
+  display: block;
+  height: max-content;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  .chip_clickable {
+    display: flex;
+    min-width: 32px;
+    width: fit-content;
+    height: 32px;
+    border-radius: 16px;
+    padding: 2px 4px;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+
+    &--hide {
+      display: none;
+      padding: 0;
+      border: none;
+    }
+
+    .chip_focus:focus {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 2px;
+      border-radius: 4px;
+      outline: $color-primary-purples-bell solid 2px;
+    }
+
+    &--click {
+      cursor: pointer;
+      .chip_darker {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        z-index: 1;
+        backdrop-filter: brightness(1);
+        box-sizing: border-box;
+      }
+    }
+    &--click:hover {
+      .chip_darker {
+        opacity: 1;
+        backdrop-filter: brightness(0.9);
+      }
+    }
+    &--click:active {
+      .chip_darker {
+        opacity: 1;
+        backdrop-filter: brightness(0.8);
+      }
+    }
+    &--disabled {
+      cursor: default;
+      background-color: $color-neutral-light-whisper;
+      .chip_clickable--icon {
+        color: $color-neutral-dark-rooftop;
+      }
+      .chip_clickable--text {
+        color: $color-neutral-dark-rooftop;
+      }
+      .chip_clickable--close {
+        cursor: default;
+      }
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      padding-left: 4px;
+      color: $color-neutral-dark-city;
+      z-index: 2;
+    }
+    &--close {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      padding-right: 4px;
+      mix-blend-mode: hard-light;
+      color: $color-neutral-dark-city;
+      opacity: 0.7;
+      z-index: 2;
+      position: relative;
+      cursor: pointer;
+
+      .close_focus:focus {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: -2px;
+        border-radius: 4px;
+        outline: $color-primary-purples-bell solid 2px;
+      }
+    }
+    &--text {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      height: 20px;
+      margin: 0 8px;
+      z-index: 2;
+      color: $color-neutral-dark-city;
+      font-family: $font-family;
+    }
+    &--tall {
+      height: 40px;
+      border-radius: 24px;
+    }
+    &--default {
+      background-color: $color-primary-light;
+    }
+    &--info {
+      background-color: $color-illustration-blue-genie;
+    }
+    &--success {
+      background-color: $color-primary-greens-mint;
+    }
+    &--warning {
+      background-color: $color-primary-yellows-corn;
+    }
+    &--danger {
+      background-color: $color-extend-reds-flower;
+    }
+    &--outline {
+      background-color: $color-neutral-light-snow;
+      border: 1px solid $color-neutral-medium-silver;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
