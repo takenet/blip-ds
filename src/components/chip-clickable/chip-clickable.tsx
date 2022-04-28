@@ -52,15 +52,15 @@ export class ChipClickable {
     }
   }
   private handleCloseChip(event) {
-    if (event.key === 'Enter' && !this.disabled) {
+    const key = 'Enter';
+    if (event.key === key && !this.disabled) {
       event.preventDefault();
       this.chipClickableClose.emit({ id: this.element.id });
-      this.visible = false;
     } else {
       event.preventDefault();
       this.chipClickableClose.emit({ id: this.element.id });
-      this.visible = false;
     }
+    this.visible = false;
   }
   private getSizeAvatarChip() {
     if (this.size === 'tall') {
