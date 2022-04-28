@@ -15,7 +15,8 @@ import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/bu
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
-import { Color } from "./components/chip-tag/chip-tag";
+import { Color, Size } from "./components/chip-selected/chip-selected";
+import { Color as Color1 } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
 import { DaysList } from "./components/datepicker/datepicker-interface";
@@ -291,6 +292,28 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
          */
         "variant"?: ChipVariant;
+    }
+    interface BdsChipSelected {
+        /**
+          * used for change the color. Uses one of them.
+         */
+        "color"?: Color;
+        /**
+          * When 'true', no events will be dispatched
+         */
+        "disabled": boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * used for set the initial setup for true;
+         */
+        "selected"?: boolean;
+        /**
+          * used for change the chip size. Use one of them;
+         */
+        "size"?: Size;
     }
     interface BdsChipTag {
         /**
@@ -1364,6 +1387,12 @@ declare global {
         prototype: HTMLBdsChipElement;
         new (): HTMLBdsChipElement;
     };
+    interface HTMLBdsChipSelectedElement extends Components.BdsChipSelected, HTMLStencilElement {
+    }
+    var HTMLBdsChipSelectedElement: {
+        prototype: HTMLBdsChipSelectedElement;
+        new (): HTMLBdsChipSelectedElement;
+    };
     interface HTMLBdsChipTagElement extends Components.BdsChipTag, HTMLStencilElement {
     }
     var HTMLBdsChipTagElement: {
@@ -1637,6 +1666,7 @@ declare global {
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
+        "bds-chip-selected": HTMLBdsChipSelectedElement;
         "bds-chip-tag": HTMLBdsChipTagElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
         "bds-datepicker": HTMLBdsDatepickerElement;
@@ -1976,6 +2006,29 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
          */
         "variant"?: ChipVariant;
+    }
+    interface BdsChipSelected {
+        /**
+          * used for change the color. Uses one of them.
+         */
+        "color"?: Color;
+        /**
+          * When 'true', no events will be dispatched
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        "onChipClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * used for set the initial setup for true;
+         */
+        "selected"?: boolean;
+        /**
+          * used for change the chip size. Use one of them;
+         */
+        "size"?: Size;
     }
     interface BdsChipTag {
         /**
@@ -3023,6 +3076,7 @@ declare namespace LocalJSX {
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
+        "bds-chip-selected": BdsChipSelected;
         "bds-chip-tag": BdsChipTag;
         "bds-counter-text": BdsCounterText;
         "bds-datepicker": BdsDatepicker;
@@ -3086,6 +3140,7 @@ declare module "@stencil/core" {
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
+            "bds-chip-selected": LocalJSX.BdsChipSelected & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
             "bds-chip-tag": LocalJSX.BdsChipTag & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
