@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
 import { avatarSize } from "./components/avatar/avatar";
@@ -15,8 +16,9 @@ import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/bu
 import { LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
-import { Color, Size } from "./components/chip-selected/chip-selected";
-import { Color as Color1 } from "./components/chip-tag/chip-tag";
+import { Color, Size } from "./components/chip-clickable/chip-clickable";
+import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-selected";
+import { Color as Color2 } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
 import { DaysList } from "./components/datepicker/datepicker-interface";
@@ -36,6 +38,38 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
+    interface BdsAccordionBody {
+        "close": () => Promise<void>;
+        "reciveNumber": (number: any) => Promise<void>;
+        "toggle": () => Promise<void>;
+    }
+    interface BdsAccordionGroup {
+        "closeAll": (actNumber: any) => Promise<void>;
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+    }
+    interface BdsAccordionHeader {
+        /**
+          * Accordion Title. Used to add title in header accordion.
+         */
+        "accordionTitle"?: string;
+        /**
+          * Avatar Name. Used to add avatar in header accordion.
+         */
+        "avatarName"?: string;
+        /**
+          * Avatar Thumb. Used to add avatar in header accordion.
+         */
+        "avatarThumb"?: string;
+        "close": () => Promise<void>;
+        /**
+          * Icon. Used to add icon in header accordion.
+         */
+        "icon"?: string;
+        "reciveNumber": (number: any) => Promise<void>;
+    }
     interface BdsAlert {
         /**
           * Used to open/close the alert
@@ -292,6 +326,36 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
          */
         "variant"?: ChipVariant;
+    }
+    interface BdsChipClickable {
+        /**
+          * used for add avatar left container. Uses the bds-avatar component.
+         */
+        "avatar"?: string;
+        /**
+          * it makes the chip clickable.
+         */
+        "clickable"?: boolean;
+        /**
+          * used for delete the chip.
+         */
+        "close"?: boolean;
+        /**
+          * used for change the color. Uses one of them.
+         */
+        "color"?: Color;
+        /**
+          * the chip gone stay disabled while this prop be true.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        /**
+          * used for change the size chip. Uses one of them.
+         */
+        "size"?: Size;
     }
     interface BdsChipSelected {
         /**
@@ -1303,6 +1367,24 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLBdsAccordionBodyElement extends Components.BdsAccordionBody, HTMLStencilElement {
+    }
+    var HTMLBdsAccordionBodyElement: {
+        prototype: HTMLBdsAccordionBodyElement;
+        new (): HTMLBdsAccordionBodyElement;
+    };
+    interface HTMLBdsAccordionGroupElement extends Components.BdsAccordionGroup, HTMLStencilElement {
+    }
+    var HTMLBdsAccordionGroupElement: {
+        prototype: HTMLBdsAccordionGroupElement;
+        new (): HTMLBdsAccordionGroupElement;
+    };
+    interface HTMLBdsAccordionHeaderElement extends Components.BdsAccordionHeader, HTMLStencilElement {
+    }
+    var HTMLBdsAccordionHeaderElement: {
+        prototype: HTMLBdsAccordionHeaderElement;
+        new (): HTMLBdsAccordionHeaderElement;
+    };
     interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
     }
     var HTMLBdsAlertElement: {
@@ -1386,6 +1468,12 @@ declare global {
     var HTMLBdsChipElement: {
         prototype: HTMLBdsChipElement;
         new (): HTMLBdsChipElement;
+    };
+    interface HTMLBdsChipClickableElement extends Components.BdsChipClickable, HTMLStencilElement {
+    }
+    var HTMLBdsChipClickableElement: {
+        prototype: HTMLBdsChipClickableElement;
+        new (): HTMLBdsChipClickableElement;
     };
     interface HTMLBdsChipSelectedElement extends Components.BdsChipSelected, HTMLStencilElement {
     }
@@ -1652,6 +1740,9 @@ declare global {
         new (): HTMLBdsWarningElement;
     };
     interface HTMLElementTagNameMap {
+        "bds-accordion-body": HTMLBdsAccordionBodyElement;
+        "bds-accordion-group": HTMLBdsAccordionGroupElement;
+        "bds-accordion-header": HTMLBdsAccordionHeaderElement;
         "bds-alert": HTMLBdsAlertElement;
         "bds-alert-actions": HTMLBdsAlertActionsElement;
         "bds-alert-body": HTMLBdsAlertBodyElement;
@@ -1666,6 +1757,7 @@ declare global {
         "bds-card-color": HTMLBdsCardColorElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
+        "bds-chip-clickable": HTMLBdsChipClickableElement;
         "bds-chip-selected": HTMLBdsChipSelectedElement;
         "bds-chip-tag": HTMLBdsChipTagElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
@@ -1713,6 +1805,32 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BdsAccordionBody {
+    }
+    interface BdsAccordionGroup {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+    }
+    interface BdsAccordionHeader {
+        /**
+          * Accordion Title. Used to add title in header accordion.
+         */
+        "accordionTitle"?: string;
+        /**
+          * Avatar Name. Used to add avatar in header accordion.
+         */
+        "avatarName"?: string;
+        /**
+          * Avatar Thumb. Used to add avatar in header accordion.
+         */
+        "avatarThumb"?: string;
+        /**
+          * Icon. Used to add icon in header accordion.
+         */
+        "icon"?: string;
+    }
     interface BdsAlert {
         /**
           * Used to open/close the alert
@@ -2006,6 +2124,41 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
          */
         "variant"?: ChipVariant;
+    }
+    interface BdsChipClickable {
+        /**
+          * used for add avatar left container. Uses the bds-avatar component.
+         */
+        "avatar"?: string;
+        /**
+          * it makes the chip clickable.
+         */
+        "clickable"?: boolean;
+        /**
+          * used for delete the chip.
+         */
+        "close"?: boolean;
+        /**
+          * used for change the color. Uses one of them.
+         */
+        "color"?: Color;
+        /**
+          * the chip gone stay disabled while this prop be true.
+         */
+        "disabled"?: boolean;
+        /**
+          * used for add icon in left container. Uses the bds-icon component.
+         */
+        "icon"?: string;
+        "onChipClickableClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * Triggered after a mouse click on close icon, return id element. Only fired when close is true.
+         */
+        "onChipClickableClose"?: (event: CustomEvent<any>) => void;
+        /**
+          * used for change the size chip. Uses one of them.
+         */
+        "size"?: Size;
     }
     interface BdsChipSelected {
         /**
@@ -3062,6 +3215,9 @@ declare namespace LocalJSX {
     interface BdsWarning {
     }
     interface IntrinsicElements {
+        "bds-accordion-body": BdsAccordionBody;
+        "bds-accordion-group": BdsAccordionGroup;
+        "bds-accordion-header": BdsAccordionHeader;
         "bds-alert": BdsAlert;
         "bds-alert-actions": BdsAlertActions;
         "bds-alert-body": BdsAlertBody;
@@ -3076,6 +3232,7 @@ declare namespace LocalJSX {
         "bds-card-color": BdsCardColor;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
+        "bds-chip-clickable": BdsChipClickable;
         "bds-chip-selected": BdsChipSelected;
         "bds-chip-tag": BdsChipTag;
         "bds-counter-text": BdsCounterText;
@@ -3126,6 +3283,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bds-accordion-body": LocalJSX.BdsAccordionBody & JSXBase.HTMLAttributes<HTMLBdsAccordionBodyElement>;
+            "bds-accordion-group": LocalJSX.BdsAccordionGroup & JSXBase.HTMLAttributes<HTMLBdsAccordionGroupElement>;
+            "bds-accordion-header": LocalJSX.BdsAccordionHeader & JSXBase.HTMLAttributes<HTMLBdsAccordionHeaderElement>;
             "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
             "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
@@ -3140,6 +3300,7 @@ declare module "@stencil/core" {
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
+            "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
             "bds-chip-selected": LocalJSX.BdsChipSelected & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
             "bds-chip-tag": LocalJSX.BdsChipTag & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;

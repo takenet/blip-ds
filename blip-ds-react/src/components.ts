@@ -7,6 +7,9 @@ import type { JSX } from '../../loader';
 
 
 
+export const BdsAccordionBody = /*@__PURE__*/createReactComponent<JSX.BdsAccordionBody, HTMLBdsAccordionBodyElement>('bds-accordion-body');
+export const BdsAccordionGroup = /*@__PURE__*/createReactComponent<JSX.BdsAccordionGroup, HTMLBdsAccordionGroupElement>('bds-accordion-group');
+export const BdsAccordionHeader = /*@__PURE__*/createReactComponent<JSX.BdsAccordionHeader, HTMLBdsAccordionHeaderElement>('bds-accordion-header');
 export const BdsAlert = /*@__PURE__*/createReactComponent<JSX.BdsAlert, HTMLBdsAlertElement>('bds-alert');
 export const BdsAlertActions = /*@__PURE__*/createReactComponent<JSX.BdsAlertActions, HTMLBdsAlertActionsElement>('bds-alert-actions');
 export const BdsAlertBody = /*@__PURE__*/createReactComponent<JSX.BdsAlertBody, HTMLBdsAlertBodyElement>('bds-alert-body');
@@ -21,6 +24,7 @@ export const BdsButtonIcon = /*@__PURE__*/createReactComponent<JSX.BdsButtonIcon
 export const BdsCardColor = /*@__PURE__*/createReactComponent<JSX.BdsCardColor, HTMLBdsCardColorElement>('bds-card-color');
 export const BdsCheckbox = /*@__PURE__*/createReactComponent<JSX.BdsCheckbox, HTMLBdsCheckboxElement>('bds-checkbox');
 export const BdsChip = /*@__PURE__*/createReactComponent<JSX.BdsChip, HTMLBdsChipElement>('bds-chip');
+export const BdsChipClickable = /*@__PURE__*/createReactComponent<JSX.BdsChipClickable, HTMLBdsChipClickableElement>('bds-chip-clickable');
 export const BdsChipSelected = /*@__PURE__*/createReactComponent<JSX.BdsChipSelected, HTMLBdsChipSelectedElement>('bds-chip-selected');
 export const BdsChipTag = /*@__PURE__*/createReactComponent<JSX.BdsChipTag, HTMLBdsChipTagElement>('bds-chip-tag');
 export const BdsCounterText = /*@__PURE__*/createReactComponent<JSX.BdsCounterText, HTMLBdsCounterTextElement>('bds-counter-text');
