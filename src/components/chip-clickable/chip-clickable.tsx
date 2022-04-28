@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Element, State, Listen } from '@stencil/core';
+import { Component, Host, h, Prop, Event, EventEmitter, Element, State } from '@stencil/core';
 
 export type Color = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline';
 export type Size = 'standard' | 'tall';
