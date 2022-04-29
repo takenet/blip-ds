@@ -37,7 +37,7 @@ export const chipDefault = () => {
   export const chipWithAvatar = () => {
     return(
        <div>
-        <bds-chip-clickable avatar="https://user-images.githubusercontent.com/62200066/113674873-54847000-96d8-11eb-81e0-cf7dddec8376.png">Chip Icon</bds-chip-clickable>
+        <bds-chip-clickable avatar="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png">Chip Icon</bds-chip-clickable>
       </div>
     )
   };
