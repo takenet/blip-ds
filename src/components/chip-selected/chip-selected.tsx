@@ -34,11 +34,9 @@ export class ChipSelected {
 
   @Event() chipClick: EventEmitter;
 
-  @Listen('keydown')
-  handleKeyDown(ev: KeyboardEvent) {
-    if (ev.key === ' ') {
-      if (this.disabled) return;
-      ev.preventDefault();
+  handleKeyDown(event) {
+    if (event.key === ' ' && !this.disabled) {
+      event.preventDefault();
       if (this.isSelected) {
         return (this.isSelected = false);
       } else {
@@ -79,6 +77,12 @@ export class ChipSelected {
     }
   }
 
+  private getSizeIconChip() {
+    if (this.size === 'tall') {
+      return 'medium';
+    } else return 'x-small';
+  }
+
   render() {
     return (
       <Host>
@@ -89,18 +93,17 @@ export class ChipSelected {
             ...this.getDisabledChip(),
           }}
           onClick={this.handleClick}
-          onKeyDown={this.handleKeyDown}
-          tabindex="0"
         >
+          {!this.disabled && <div class="chip_focus" onKeyDown={this.handleKeyDown.bind(this)} tabindex="0"></div>}
           {!this.isSelected && !this.disabled && <div class="chip_darker"></div>}
           {this.icon && !this.isSelected && (
             <div class="chip--icon">
-              <bds-icon size="x-small" name={this.icon}></bds-icon>
+              <bds-icon size={this.getSizeIconChip()} name={this.icon}></bds-icon>
             </div>
           )}
           {this.isSelected && (
             <div class="chip_selected--icon">
-              <bds-icon size="x-small" name="checkball"></bds-icon>
+              <bds-icon size={this.getSizeIconChip()} name="checkball"></bds-icon>
             </div>
           )}
           <bds-typo class={{ 'chip--text': true, ...this.getStyleText() }} variant="fs-12" no-wrap bold="bold">

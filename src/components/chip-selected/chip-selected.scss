@@ -1,14 +1,9 @@
 @import 'fonts';
 
-:host(:focus) {
-  border: 2px solid $color-primary-purples-bell;
-  padding: 2px;
-}
 :host {
   display: flex;
   height:fit-content;
   width: max-content;
-  padding: 4px;
   border-radius: 4px;
   box-sizing: border-box;
 
@@ -25,6 +20,15 @@
     position: relative;
     z-index: 0;
 
+    .chip_focus:focus {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 2px;
+      border-radius: 4px;
+      outline: $color-primary-purples-bell solid 2px;
+    }
+
     .chip_darker {
       position: absolute;
       width: 100%;
@@ -39,7 +43,6 @@
     display: flex;
     align-items: center;
     padding-left: 4px;
-    width: 16px;
     height: 20px;
     color: $color-neutral-dark-city;
     z-index: 2;
@@ -113,7 +116,6 @@
     &--icon {
     display: flex;
     align-items: center;
-    width: 16px;
     height: 20px;
     padding-left: 4px;
     color: $color-primary-dark;
