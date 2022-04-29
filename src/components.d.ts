@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
 import { avatarSize } from "./components/avatar/avatar";
@@ -37,6 +38,38 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
+    interface BdsAccordionBody {
+        "close": () => Promise<void>;
+        "reciveNumber": (number: any) => Promise<void>;
+        "toggle": () => Promise<void>;
+    }
+    interface BdsAccordionGroup {
+        "closeAll": (actNumber: any) => Promise<void>;
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+    }
+    interface BdsAccordionHeader {
+        /**
+          * Accordion Title. Used to add title in header accordion.
+         */
+        "accordionTitle"?: string;
+        /**
+          * Avatar Name. Used to add avatar in header accordion.
+         */
+        "avatarName"?: string;
+        /**
+          * Avatar Thumb. Used to add avatar in header accordion.
+         */
+        "avatarThumb"?: string;
+        "close": () => Promise<void>;
+        /**
+          * Icon. Used to add icon in header accordion.
+         */
+        "icon"?: string;
+        "reciveNumber": (number: any) => Promise<void>;
+    }
     interface BdsAlert {
         /**
           * Used to open/close the alert
@@ -1334,6 +1367,24 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLBdsAccordionBodyElement extends Components.BdsAccordionBody, HTMLStencilElement {
+    }
+    var HTMLBdsAccordionBodyElement: {
+        prototype: HTMLBdsAccordionBodyElement;
+        new (): HTMLBdsAccordionBodyElement;
+    };
+    interface HTMLBdsAccordionGroupElement extends Components.BdsAccordionGroup, HTMLStencilElement {
+    }
+    var HTMLBdsAccordionGroupElement: {
+        prototype: HTMLBdsAccordionGroupElement;
+        new (): HTMLBdsAccordionGroupElement;
+    };
+    interface HTMLBdsAccordionHeaderElement extends Components.BdsAccordionHeader, HTMLStencilElement {
+    }
+    var HTMLBdsAccordionHeaderElement: {
+        prototype: HTMLBdsAccordionHeaderElement;
+        new (): HTMLBdsAccordionHeaderElement;
+    };
     interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
     }
     var HTMLBdsAlertElement: {
@@ -1689,6 +1740,9 @@ declare global {
         new (): HTMLBdsWarningElement;
     };
     interface HTMLElementTagNameMap {
+        "bds-accordion-body": HTMLBdsAccordionBodyElement;
+        "bds-accordion-group": HTMLBdsAccordionGroupElement;
+        "bds-accordion-header": HTMLBdsAccordionHeaderElement;
         "bds-alert": HTMLBdsAlertElement;
         "bds-alert-actions": HTMLBdsAlertActionsElement;
         "bds-alert-body": HTMLBdsAlertBodyElement;
@@ -1751,6 +1805,32 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BdsAccordionBody {
+    }
+    interface BdsAccordionGroup {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+    }
+    interface BdsAccordionHeader {
+        /**
+          * Accordion Title. Used to add title in header accordion.
+         */
+        "accordionTitle"?: string;
+        /**
+          * Avatar Name. Used to add avatar in header accordion.
+         */
+        "avatarName"?: string;
+        /**
+          * Avatar Thumb. Used to add avatar in header accordion.
+         */
+        "avatarThumb"?: string;
+        /**
+          * Icon. Used to add icon in header accordion.
+         */
+        "icon"?: string;
+    }
     interface BdsAlert {
         /**
           * Used to open/close the alert
@@ -3135,6 +3215,9 @@ declare namespace LocalJSX {
     interface BdsWarning {
     }
     interface IntrinsicElements {
+        "bds-accordion-body": BdsAccordionBody;
+        "bds-accordion-group": BdsAccordionGroup;
+        "bds-accordion-header": BdsAccordionHeader;
         "bds-alert": BdsAlert;
         "bds-alert-actions": BdsAlertActions;
         "bds-alert-body": BdsAlertBody;
@@ -3200,6 +3283,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bds-accordion-body": LocalJSX.BdsAccordionBody & JSXBase.HTMLAttributes<HTMLBdsAccordionBodyElement>;
+            "bds-accordion-group": LocalJSX.BdsAccordionGroup & JSXBase.HTMLAttributes<HTMLBdsAccordionGroupElement>;
+            "bds-accordion-header": LocalJSX.BdsAccordionHeader & JSXBase.HTMLAttributes<HTMLBdsAccordionHeaderElement>;
             "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
             "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;

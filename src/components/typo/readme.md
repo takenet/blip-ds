@@ -30,6 +30,7 @@
 
 ### Used by
 
+ - [bds-accordion-header](../accordion)
  - [bds-alert-body](../alert/alert-body)
  - [bds-alert-header](../alert/alert-header)
  - [bds-avatar](../avatar)
@@ -64,6 +65,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  bds-accordion-header --> bds-typo
   bds-alert-body --> bds-typo
   bds-alert-header --> bds-typo
   bds-avatar --> bds-typo

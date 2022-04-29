@@ -25,6 +25,7 @@
 
 ### Used by
 
+ - [bds-accordion-header](../accordion)
  - [bds-alert-header](../alert/alert-header)
  - [bds-autocomplete](../autocomplete)
  - [bds-avatar](../avatar)
@@ -56,6 +57,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  bds-accordion-header --> bds-icon
   bds-alert-header --> bds-icon
   bds-autocomplete --> bds-icon
   bds-avatar --> bds-icon
