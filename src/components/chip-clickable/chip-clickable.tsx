@@ -45,22 +45,30 @@ export class ChipClickable {
   @Event() chipClickableClose: EventEmitter;
   @Event() chipClickableClick: EventEmitter;
 
-  private handleClick(event) {
-    if (event.key === 'Enter' && !this.disabled) {
+  private handleClickKey(event) {
+    if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {
       event.preventDefault();
       this.chipClickableClick.emit();
     }
   }
-  private handleCloseChip(event) {
-    const key = 'Enter';
-    if (event.key === key && !this.disabled) {
+  private handleClick(event) {
+    if (!this.disabled) {
       event.preventDefault();
-      this.chipClickableClose.emit({ id: this.element.id });
-    } else {
-      event.preventDefault();
-      this.chipClickableClose.emit({ id: this.element.id });
+      this.chipClickableClick.emit();
     }
+  }
+
+  private handleCloseChip(event) {
+    event.preventDefault();
+    this.chipClickableClose.emit({ id: this.element.id });
     this.visible = false;
+  }
+  private handleCloseKey(event) {
+    if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {
+      event.preventDefault();
+      this.chipClickableClose.emit({ id: this.element.id });
+      this.visible = false;
+    }
   }
   private getSizeAvatarChip() {
     if (this.size === 'tall') {
@@ -88,7 +96,7 @@ export class ChipClickable {
           onClick={this.handleClick.bind(this)}
         >
           {this.clickable && !this.disabled && (
-            <div class="chip_focus" onKeyDown={this.handleClick.bind(this)} tabindex="0"></div>
+            <div class="chip_focus" onKeyDown={this.handleClickKey.bind(this)} tabindex="0"></div>
           )}
           {this.clickable && !this.disabled && <div class="chip_darker"></div>}
           {this.icon && !this.avatar && (
@@ -107,7 +115,7 @@ export class ChipClickable {
           {this.close && (
             <div class="chip_clickable--close" onClick={this.handleCloseChip.bind(this)}>
               {!this.disabled && (
-                <div class="close_focus" onKeyDown={this.handleCloseChip.bind(this)} tabindex="0"></div>
+                <div class="close_focus" onKeyDown={this.handleCloseKey.bind(this)} tabindex="0"></div>
               )}
               <bds-icon size="x-small" theme="solid" name="error"></bds-icon>
             </div>
