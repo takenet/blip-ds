@@ -18,7 +18,7 @@
 | `errorMessage`  | `error-message`  | Indicated to pass an feedback to user.                                                                            | `string`             | `''`        |
 | `helperMessage` | `helper-message` | Indicated to pass a help the user in complex filling.                                                             | `string`             | `''`        |
 | `icon`          | `icon`           | used for add icon in input left. Uses the bds-icon component.                                                     | `string`             | `''`        |
-| `inputName`     | `input-name`     | Input Name                                                                                                        | `string`             | `''`        |
+| `inputName`     | `input-name`     | Prop to insert the name of the input                                                                              | `string`             | `''`        |
 | `label`         | `label`          | label in input, with he the input size increases.                                                                 | `string`             | `''`        |
 | `maxlength`     | `maxlength`      | Set maximum length value for the chip content                                                                     | `number`             | `undefined` |
 | `placeholder`   | `placeholder`    | A tip for the user who can enter no controls.                                                                     | `string`             | `''`        |
