@@ -81,7 +81,7 @@ export class InputChips {
   @Prop() helperMessage?: string = '';
 
   /**
-   * Input Name
+   * Prop to insert the name of the input
    */
   @Prop() inputName?: string = '';
 
