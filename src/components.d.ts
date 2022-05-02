@@ -705,9 +705,17 @@ export namespace Components {
          */
         "get": () => Promise<string[]>;
         /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
         /**
           * Return the validity of the input chips.
          */
@@ -720,6 +728,10 @@ export namespace Components {
           * Set maximum length value for the chip content
          */
         "maxlength"?: number;
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
         /**
@@ -2519,9 +2531,17 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Input Name
+         */
+        "inputName"?: string;
         /**
           * label in input, with he the input size increases.
          */
@@ -2546,6 +2566,10 @@ declare namespace LocalJSX {
           * Emitted when the chip has added.
          */
         "onBdsSubmit"?: (event: CustomEvent<any>) => void;
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */

@@ -76,6 +76,21 @@ export class InputChips {
   @Prop({ reflect: true }) disabled?: boolean = false;
 
   /**
+   * Indicated to pass a help the user in complex filling.
+   */
+  @Prop() helperMessage?: string = '';
+
+  /**
+   * Prop to insert the name of the input
+   */
+  @Prop() inputName?: string = '';
+
+  /**
+   * A tip for the user who can enter no controls.
+   */
+  @Prop() placeholder?: string = '';
+
+  /**
    * Emitted when the chip has added.
    */
   @Event() bdsChange!: EventEmitter;
@@ -321,6 +336,9 @@ export class InputChips {
           maxlength={this.maxlength}
           value={this.value}
           error-message={this.errorMessage}
+          helper-message={this.helperMessage}
+          input-name={this.inputName}
+          placeholder={this.placeholder}
           danger={this.danger}
           chips={true}
           disabled={this.disabled}

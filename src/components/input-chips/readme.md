@@ -16,9 +16,12 @@
 | `disabled`      | `disabled`       | Disabled input                                                                                                    | `boolean`            | `false`     |
 | `duplicated`    | `duplicated`     | Do not accept duplicate chip elements.                                                                            | `boolean`            | `false`     |
 | `errorMessage`  | `error-message`  | Indicated to pass an feedback to user.                                                                            | `string`             | `''`        |
+| `helperMessage` | `helper-message` | Indicated to pass a help the user in complex filling.                                                             | `string`             | `''`        |
 | `icon`          | `icon`           | used for add icon in input left. Uses the bds-icon component.                                                     | `string`             | `''`        |
+| `inputName`     | `input-name`     | Input Name                                                                                                        | `string`             | `''`        |
 | `label`         | `label`          | label in input, with he the input size increases.                                                                 | `string`             | `''`        |
 | `maxlength`     | `maxlength`      | Set maximum length value for the chip content                                                                     | `number`             | `undefined` |
+| `placeholder`   | `placeholder`    | A tip for the user who can enter no controls.                                                                     | `string`             | `''`        |
 | `type`          | `type`           | Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email; | `"email" \| "text"`  | `'text'`    |
 | `value`         | `value`          | The value of the input.                                                                                           | `string`             | `''`        |
 
