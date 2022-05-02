@@ -713,7 +713,7 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Input Name
+          * Prop to insert the name of the input
          */
         "inputName"?: string;
         /**
@@ -2539,7 +2539,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Input Name
+          * Prop to insert the name of the input
          */
         "inputName"?: string;
         /**
