@@ -9,7 +9,7 @@ describe('bds-input-chips', () => {
     });
     expect(page.root).toEqualHtml(`
       <bds-input-chips icon="" value="">
-        <bds-input chips="" error-message="" icon="" label="" value="">
+        <bds-input chips="" error-message="" helper-message="" icon="" input-name="" label="" placeholder="" value="">
           <span slot="inside-input-left"></span>
           <div slot="input-right"></div>
         </bds-input>
@@ -24,7 +24,7 @@ describe('bds-input-chips', () => {
     });
     expect(page.root).toEqualHtml(`
       <bds-input-chips chips='[\"chip1\", \"chip2\"]' icon="" value="">
-        <bds-input chips="" error-message="" icon="" label="" value="">
+        <bds-input chips="" error-message="" helper-message="" icon="" input-name="" label="" placeholder="" value="">
           <span slot="inside-input-left">
             <bds-chip class="input-chips__chip" deletable="" id="0" variant="primary">
               chip1
