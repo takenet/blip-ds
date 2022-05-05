@@ -194,7 +194,7 @@ export class Input {
   /**
    * Id to support Cypress.
    */
-  @Prop() dataTest: string = null;
+  @Prop() dataTest?: string = null;
 
   /**
    * Update the native input element when the value changes

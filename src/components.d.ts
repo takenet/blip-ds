@@ -551,7 +551,7 @@ export namespace Components {
         /**
           * Id to support Cypress.
          */
-        "dataTest": string;
+        "dataTest"?: string;
         /**
           * Disabled input.
          */
