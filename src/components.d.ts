@@ -104,6 +104,10 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
+          * Id to support Test QA.
+         */
+        "dataTest"?: string;
+        /**
           * Disabled input.
          */
         "disabled"?: boolean;
@@ -1872,6 +1876,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Id to support Test QA.
+         */
+        "dataTest"?: string;
         /**
           * Disabled input.
          */
