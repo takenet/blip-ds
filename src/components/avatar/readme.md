@@ -9,6 +9,7 @@
 
 | Property    | Attribute   | Description                                                                                                  | Type                                                                            | Default      |
 | ----------- | ----------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ------------ |
+| `dataTest`  | `data-test` | Id to support Test QA.                                                                                       | `string`                                                                        | `null`       |
 | `ellipsis`  | `ellipsis`  | Ellipses, serves to indicate the user number in the listing.                                                 | `number`                                                                        | `null`       |
 | `name`      | `name`      | Name, Inserted for highlighted osuary name. Enter the full name.                                             | `string`                                                                        | `null`       |
 | `size`      | `size`      | Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'. | `"extra-large" \| "extra-small" \| "large" \| "micro" \| "small" \| "standard"` | `'standard'` |

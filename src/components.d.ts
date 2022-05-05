@@ -142,6 +142,10 @@ export namespace Components {
     }
     interface BdsAvatar {
         /**
+          * Id to support Test QA.
+         */
+        "dataTest"?: string;
+        /**
           * Ellipses, serves to indicate the user number in the listing.
          */
         "ellipsis"?: number;
@@ -1934,6 +1938,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsAvatar {
+        /**
+          * Id to support Test QA.
+         */
+        "dataTest"?: string;
         /**
           * Ellipses, serves to indicate the user number in the listing.
          */
