@@ -142,6 +142,10 @@ export namespace Components {
     }
     interface BdsAvatar {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Ellipses, serves to indicate the user number in the listing.
          */
         "ellipsis"?: number;
@@ -1938,6 +1942,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsAvatar {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Ellipses, serves to indicate the user number in the listing.
          */

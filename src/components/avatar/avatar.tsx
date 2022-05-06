@@ -33,6 +33,12 @@ export class BdsAvatar {
    * Ellipses, serves to indicate the user number in the listing.
    */
   @Prop() ellipsis?: number = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   private selectTypoSize = (value): void => {
     switch (value) {
       case 'micro':
@@ -83,6 +89,7 @@ export class BdsAvatar {
           [`avatar__color--${avatarBgColor}`]: true,
           upload: this.upload,
         }}
+        data-test={this.dataTest}
       >
         {this.ellipsis ? (
           <bds-typo class="avatar__ellipsis" variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
