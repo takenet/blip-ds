@@ -104,6 +104,10 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Disabled input.
          */
         "disabled"?: boolean;
@@ -1880,6 +1884,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Disabled input.
          */

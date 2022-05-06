@@ -83,6 +83,11 @@ export class BdsAutocomplete {
   @Prop() clearIconOnFocus?: boolean = false;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<AutocompleteChangeEventDetail>;
@@ -382,6 +387,7 @@ export class BdsAutocomplete {
           onBdsChange={this.changedInputValue}
           onBdsInput={this.onInput}
           readonly={false}
+          data-test={this.dataTest}
         >
           <div slot="input-right" class="select__icon">
             <bds-icon
