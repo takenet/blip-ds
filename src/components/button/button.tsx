@@ -75,7 +75,7 @@ export class Button {
   @Prop() bdsLoadingVariant: LoadingSpinnerVariant = 'primary';
 
   /**
-   * Id to support test QA.
+   * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
 

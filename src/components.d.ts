@@ -211,7 +211,7 @@ export namespace Components {
          */
         "bdsLoadingVariant": LoadingSpinnerVariant;
         /**
-          * Id to support test QA.
+          * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
@@ -2015,7 +2015,7 @@ declare namespace LocalJSX {
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
         /**
-          * Id to support test QA.
+          * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
