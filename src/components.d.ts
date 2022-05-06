@@ -104,7 +104,7 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
-          * Id to support Test QA.
+          * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
@@ -1877,7 +1877,7 @@ declare namespace LocalJSX {
          */
         "danger"?: boolean;
         /**
-          * Id to support Test QA.
+          * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**

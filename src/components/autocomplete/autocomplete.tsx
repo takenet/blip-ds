@@ -83,7 +83,7 @@ export class BdsAutocomplete {
   @Prop() clearIconOnFocus?: boolean = false;
 
   /**
-   * Id to support Test QA.
+   * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
 
