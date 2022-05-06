@@ -211,6 +211,10 @@ export namespace Components {
          */
         "bdsLoadingVariant": LoadingSpinnerVariant;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * If true, the base button will be disabled.
          */
         "disabled"?: boolean;
@@ -2010,6 +2014,10 @@ declare namespace LocalJSX {
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * If true, the base button will be disabled.
          */

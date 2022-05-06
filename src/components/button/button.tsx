@@ -74,6 +74,11 @@ export class Button {
    */
   @Prop() bdsLoadingVariant: LoadingSpinnerVariant = 'primary';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   getSizeClass(): string {
     return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
   }
@@ -150,6 +155,7 @@ export class Button {
           'button--size-icon--right': this.arrow,
         }}
         part="button"
+        data-test={this.dataTest}
       >
         {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
       </button>
