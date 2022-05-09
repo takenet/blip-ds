@@ -30,6 +30,11 @@ export class Checkbox {
    */
   @Prop() disabled = false;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   connectedCallback(): void {
     this.checkBoxId = this.refer || `bds-checkbox-${checkBoxIds++}`;
   }
@@ -107,6 +112,7 @@ export class Checkbox {
           onClick={this.onClick}
           checked={this.checked}
           disabled={this.disabled}
+          data-test={this.dataTest}
         ></input>
         <label class="checkbox__label" htmlFor={this.checkBoxId}>
           <div class="checkbox__icon">
