@@ -357,6 +357,10 @@ export namespace Components {
          */
         "color"?: Color;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * the chip gone stay disabled while this prop be true.
          */
         "disabled"?: boolean;
@@ -374,6 +378,10 @@ export namespace Components {
           * used for change the color. Uses one of them.
          */
         "color"?: Color;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * When 'true', no events will be dispatched
          */
@@ -2179,6 +2187,10 @@ declare namespace LocalJSX {
          */
         "color"?: Color;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * the chip gone stay disabled while this prop be true.
          */
         "disabled"?: boolean;
@@ -2201,6 +2213,10 @@ declare namespace LocalJSX {
           * used for change the color. Uses one of them.
          */
         "color"?: Color;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * When 'true', no events will be dispatched
          */
