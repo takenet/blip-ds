@@ -31,10 +31,6 @@ export class ChipSelected {
    * When 'true', no events will be dispatched
    */
   @Prop() disabled = false;
-  /**
-   * Data test is the prop to specifically test the component action object.
-   */
-  @Prop() dataTest?: string = null;
 
   @Event() chipClick: EventEmitter;
 
@@ -97,7 +93,6 @@ export class ChipSelected {
             ...this.getDisabledChip(),
           }}
           onClick={this.handleClick}
-          data-test={this.dataTest}
         >
           {!this.disabled && <div class="chip_focus" onKeyDown={this.handleKeyDown.bind(this)} tabindex="0"></div>}
           {!this.isSelected && !this.disabled && <div class="chip_darker"></div>}
