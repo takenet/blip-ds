@@ -74,6 +74,11 @@ export class Icon {
    */
   @Prop() type: IconType = 'icon';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   connectedCallback(): void {
     // purposely do not return the promise here because loading
     // the svg file should not hold up loading the app
@@ -166,9 +171,10 @@ export class Icon {
               'logo-inner': this.type === 'logo',
             }}
             innerHTML={this.svgContent}
+            data-test={this.dataTest}
           ></div>
         ) : (
-          <div class="icon-inner"></div>
+          <div class="icon-inner" data-test={this.dataTest}></div>
         )}
       </Host>
     );
