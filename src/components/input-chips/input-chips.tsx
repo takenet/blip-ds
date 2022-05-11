@@ -91,6 +91,11 @@ export class InputChips {
   @Prop() placeholder?: string = '';
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Emitted when the chip has added.
    */
   @Event() bdsChange!: EventEmitter;
@@ -342,6 +347,7 @@ export class InputChips {
           danger={this.danger}
           chips={true}
           disabled={this.disabled}
+          data-test={this.dataTest}
         >
           <span slot="inside-input-left">{this.renderChips()}</span>
           <div slot="input-right">
