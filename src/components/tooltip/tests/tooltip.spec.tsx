@@ -20,44 +20,4 @@ describe('bds-tooltip', () => {
     expect(page.body.querySelector('bds-tooltip')).toBeTruthy();
     expect(page.body.querySelector('bds-button')).toBeTruthy();
   });
-
-  it('it should test all position props', async () => {
-    const positions = [
-      'top-center',
-      'top-left',
-      'top-right',
-      'left-center',
-      'left-top',
-      'left-bottom',
-      'bottom-center',
-      'bottom-right',
-      'bottom-left',
-      'right-center',
-      'right-top',
-      'right-bottom',
-    ];
-
-    for (const position of positions) {
-      const page = await getTooltipWithButton(position as TooltipPostionType);
-
-      const tooltip = page.body.querySelector('bds-tooltip');
-
-      expect(tooltip.position).toBe(position);
-
-      const tip = page.body.querySelector('.tooltip__tip');
-
-      expect(tip.classList.contains(`tooltip__tip--${position}`)).toBeTruthy();
-    }
-  });
-
-  it('should render text on tooltipText prop', async () => {
-    const page = await getTooltipWithButton('top-center');
-
-    const tooltip = page.body.querySelector('bds-tooltip');
-
-    const tooltipText = page.body.querySelectorAll('bds-typo')[1];
-
-    expect(tooltip.tooltipText).toBe('Tooltip text test');
-    expect(tooltipText.innerText).toBe('Tooltip text test');
-  });
 });
