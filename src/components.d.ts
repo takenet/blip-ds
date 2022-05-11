@@ -701,6 +701,10 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * The delimiter is used to add multiple chips in the same string.
          */
         "delimiters"?: RegExp;
@@ -2550,6 +2554,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * The delimiter is used to add multiple chips in the same string.
          */
