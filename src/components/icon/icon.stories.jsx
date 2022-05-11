@@ -182,6 +182,7 @@ const outlineIconsName = [
   'plugin',
   'plus',
   'primeiro-acesso',
+  'priorization',
   'qrcode',
   'question',
   'redo',
