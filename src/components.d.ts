@@ -523,6 +523,10 @@ export namespace Components {
     }
     interface BdsIllustration {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Specifies the name of illustration. Verify the names on illustration tokens.
          */
         "name": string;
@@ -2366,6 +2370,10 @@ declare namespace LocalJSX {
         "type"?: IconType1;
     }
     interface BdsIllustration {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Specifies the name of illustration. Verify the names on illustration tokens.
          */
