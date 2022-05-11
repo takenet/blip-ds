@@ -38,43 +38,4 @@ describe('bds-input-chips', () => {
       </bds-input-chips>
     `);
   });
-
-  it('empty get', async () => {
-    const page = await newSpecPage({
-      components: [InputChips],
-      html: `<bds-input-chips></bds-input-chips>`,
-    });
-    const input = page.doc.querySelector('bds-input-chips');
-    expect(await input.get()).toStrictEqual([]);
-  });
-
-  it('get', async () => {
-    const page = await newSpecPage({
-      components: [InputChips],
-      html: `<bds-input-chips chips='["chip1", "chip2"]'></bds-input-chips>`,
-    });
-    const input = page.doc.querySelector('bds-input-chips');
-    expect(await input.get()).toStrictEqual(['chip1', 'chip2']);
-  });
-
-  it('clear', async () => {
-    const page = await newSpecPage({
-      components: [InputChips],
-      html: `<bds-input-chips chips='["chip1", "chip2"]'></bds-input-chips>`,
-    });
-    const input = page.doc.querySelector('bds-input-chips');
-    await input.clear();
-    expect(await input.get()).toStrictEqual([]);
-  });
-
-  it('add', async () => {
-    const page = await newSpecPage({
-      components: [InputChips],
-      html: `<bds-input-chips chips='["chip1", "chip2"]'></bds-input-chips>`,
-    });
-    const input = page.doc.querySelector('bds-input-chips');
-    await input.add('chip3');
-    const chips = await input.get();
-    expect(chips).toStrictEqual(['chip1', 'chip2', 'chip3']);
-  });
 });

@@ -26,30 +26,4 @@ describe('bds-radio-group', () => {
     expect(page.body.querySelector('bds-radio-group')).toBeTruthy();
     expect(page.body.querySelector('bds-radio')).toBeTruthy();
   });
-
-  it('should build outside shadow dom', async () => {
-    expect(page.body.shadowRoot).toBeFalsy();
-  });
-
-  it('should emit bdsChange event on radio select', async () => {
-    const _callback = jest.fn();
-    page.doc.addEventListener('bdsRadioGroupChange', _callback);
-
-    page.body.querySelector('bds-radio').click();
-
-    expect(_callback).toHaveBeenCalled();
-  });
-
-  it('should set prop value on radio click', async () => {
-    (page.body.querySelector('bds-radio[value="radio1"]') as HTMLBdsRadioElement).click();
-
-    expect(page.root.value).toBe('radio1');
-  });
-
-  it('should keep last radio clicked stored on the value', async () => {
-    (page.body.querySelector('bds-radio[value="radio1"]') as HTMLBdsRadioElement).click();
-    (page.body.querySelector('bds-radio[value="radio2"]') as HTMLBdsRadioElement).click();
-
-    expect(page.root.value).toBe('radio2');
-  });
 });
