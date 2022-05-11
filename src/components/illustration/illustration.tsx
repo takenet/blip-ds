@@ -20,6 +20,11 @@ export class BdsIllustration {
    */
   @Prop() name: string;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   componentWillLoad() {
     this.setIllustrationContent();
   }
@@ -65,9 +70,10 @@ export class BdsIllustration {
               default: this.type === 'default',
             }}
             innerHTML={this.IllustrationContent}
+            data-test={this.dataTest}
           ></div>
         ) : (
-          <div class="default"></div>
+          <div class="default" data-test={this.dataTest}></div>
         )}
       </Host>
     );
