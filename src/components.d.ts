@@ -485,6 +485,10 @@ export namespace Components {
          */
         "color"?: string;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
          */
         "flipRtl"?: boolean;
@@ -515,7 +519,7 @@ export namespace Components {
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
-        "type": IconType;
+        "type": IconType1;
     }
     interface BdsIllustration {
         /**
@@ -2325,6 +2329,10 @@ declare namespace LocalJSX {
          */
         "color"?: string;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Specifies whether the icon should horizontally flip when `dir` is `"rtl"`.
          */
         "flipRtl"?: boolean;
@@ -2355,7 +2363,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
-        "type"?: IconType;
+        "type"?: IconType1;
     }
     interface BdsIllustration {
         /**
