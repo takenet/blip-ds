@@ -7,18 +7,19 @@
 
 ## Properties
 
-| Property               | Attribute                | Description                                                   | Type       | Default          |
-| ---------------------- | ------------------------ | ------------------------------------------------------------- | ---------- | ---------------- |
-| `danger`               | `danger`                 | Add state danger on input, use for use feedback.              | `boolean`  | `false`          |
-| `disabled`             | `disabled`               | Disabled input.                                               | `boolean`  | `false`          |
-| `icon`                 | `icon`                   | used for add icon in input left. Uses the bds-icon component. | `string`   | `''`             |
-| `label`                | `label`                  | label in input, with he the input size increases.             | `string`   | `'Phone number'` |
-| `numberErrorMessage`   | `number-error-message`   | Error message when input is required                          | `string`   | `undefined`      |
-| `options`              | --                       | The options of select.                                        | `Option[]` | `[]`             |
-| `required`             | `required`               | If `true`, the input value will be required.                  | `boolean`  | `undefined`      |
-| `requiredErrorMessage` | `required-error-message` | Error message when input is required                          | `string`   | `undefined`      |
-| `text`                 | `text`                   | The value of the phone number input.                          | `string`   | `''`             |
-| `value`                | `value`                  | the value of the select.                                      | `any`      | `'+55'`          |
+| Property               | Attribute                | Description                                                             | Type       | Default          |
+| ---------------------- | ------------------------ | ----------------------------------------------------------------------- | ---------- | ---------------- |
+| `danger`               | `danger`                 | Add state danger on input, use for use feedback.                        | `boolean`  | `false`          |
+| `dataTest`             | `data-test`              | Data test is the prop to specifically test the component action object. | `string`   | `null`           |
+| `disabled`             | `disabled`               | Disabled input.                                                         | `boolean`  | `false`          |
+| `icon`                 | `icon`                   | used for add icon in input left. Uses the bds-icon component.           | `string`   | `''`             |
+| `label`                | `label`                  | label in input, with he the input size increases.                       | `string`   | `'Phone number'` |
+| `numberErrorMessage`   | `number-error-message`   | Error message when input is required                                    | `string`   | `undefined`      |
+| `options`              | --                       | The options of select.                                                  | `Option[]` | `[]`             |
+| `required`             | `required`               | If `true`, the input value will be required.                            | `boolean`  | `undefined`      |
+| `requiredErrorMessage` | `required-error-message` | Error message when input is required                                    | `string`   | `undefined`      |
+| `text`                 | `text`                   | The value of the phone number input.                                    | `string`   | `''`             |
+| `value`                | `value`                  | the value of the select.                                                | `any`      | `'+55'`          |
 
 
 ## Events

@@ -63,6 +63,11 @@ export class InputPhoneNumber {
   @Prop() numberErrorMessage: string;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsPhoneNumberChange!: EventEmitter<SelectChangeEventDetail>;
@@ -222,6 +227,7 @@ export class InputPhoneNumber {
           value={this.text}
           danger={this.danger}
           disabled={this.disabled}
+          data-test={this.dataTest}
           {...{ maxlength: this.value === '+55' ? 11 : null }}
         >
           <div slot="input-left" onClick={this.toggle} class="select-phone-number__icon">
