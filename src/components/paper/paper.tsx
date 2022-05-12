@@ -13,6 +13,11 @@ export class Paper implements ComponentInterface {
    */
   @Prop() elevation?: PaperElevation = 'static';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   private mapElevation: PaperElevationMap = {
     static: 'paper__elevation--static',
     primary: 'paper__elevation--primary',
@@ -24,7 +29,9 @@ export class Paper implements ComponentInterface {
 
     return (
       <Host class={{ [elevation]: true }}>
-        <slot></slot>
+        <div data-test={this.dataTest}>
+          <slot></slot>
+        </div>
       </Host>
     );
   }
