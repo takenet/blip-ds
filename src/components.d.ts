@@ -781,6 +781,10 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Indicated to pass an feeback to user.
          */
         "errorMessage"?: string;
@@ -2648,6 +2652,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback. If true avoid save confirmation.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Indicated to pass an feeback to user.
          */
