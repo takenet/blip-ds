@@ -89,6 +89,11 @@ export class InputPassword {
    */
   @Prop() placeholder?: string = '';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   private toggleEyePassword = (): void => {
     if (!this.disabled) {
       this.openEyes = !this.openEyes;
@@ -125,6 +130,7 @@ export class InputPassword {
           auto-complete={autocomplete}
           auto-capitalize={this.autoCapitalize}
           placeholder={this.placeholder}
+          data-test={this.dataTest}
         >
           <div slot="input-right" class="input__password--icon" onClick={this.toggleEyePassword}>
             <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
