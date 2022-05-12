@@ -1207,6 +1207,10 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * If `true`, the user cannot interact with the select option.
          */
         "disabled"?: boolean;
@@ -3155,6 +3159,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the select option.
          */
