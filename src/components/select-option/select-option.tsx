@@ -50,6 +50,11 @@ export class SelectOption {
    */
   @Prop() status?: string;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   @Event() optionSelected: EventEmitter;
 
   private onClickSelectOption = (): void => {
@@ -95,6 +100,7 @@ export class SelectOption {
         onKeyDown={this.attachOptionKeyboardListeners}
         onClick={this.onClickSelectOption}
         data-value={this.value}
+        data-test={this.dataTest}
         class={{
           'select-option': true,
           'select-option--selected': this.selected,

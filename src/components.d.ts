@@ -1099,6 +1099,10 @@ export namespace Components {
          */
         "danger"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Disabled input.
          */
         "disabled"?: boolean;
@@ -1140,6 +1144,10 @@ export namespace Components {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Disabled input.
          */
@@ -1198,6 +1206,10 @@ export namespace Components {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the select option.
          */
@@ -3016,6 +3028,10 @@ declare namespace LocalJSX {
          */
         "danger"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Disabled input.
          */
         "disabled"?: boolean;
@@ -3073,6 +3089,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Disabled input.
          */
@@ -3139,6 +3159,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the select option.
          */
