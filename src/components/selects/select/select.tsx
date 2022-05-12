@@ -81,6 +81,11 @@ export class Select {
    */
   @Prop() optionsPosition?: SelectOptionsPositionType = 'bottom';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   @Watch('value')
   valueChanged(): void {
     this.bdsChange.emit({ value: this.value });
@@ -240,6 +245,7 @@ export class Select {
           disabled={this.disabled}
           placeholder={this.placeholder}
           readonly
+          dataTest={this.dataTest}
         >
           <div slot="input-right" class="select__icon">
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>

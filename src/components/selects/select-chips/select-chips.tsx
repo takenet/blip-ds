@@ -62,6 +62,11 @@ export class SelectChips {
   @Prop({ reflect: true }) disabled? = false;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<SelectChangeEventDetail>;
@@ -357,6 +362,7 @@ export class SelectChips {
           disable-submit={true}
           delimiters={null}
           duplicated={this.duplicated}
+          dataTest={this.dataTest}
         >
           <div slot="input-right" class="select__icon">
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
