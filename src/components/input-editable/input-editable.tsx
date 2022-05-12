@@ -27,6 +27,11 @@ export class InputEditable {
   @Prop() expand?: boolean = false;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Emitted when input text confirm.
    */
   @Event() bdsInputEditableSave: EventEmitter<InputEditableEventDetail>;
@@ -165,6 +170,7 @@ export class InputEditable {
               onBdsChange={this.onInputChange}
               danger={this.danger}
               helperMessage={this.helperMessage}
+              data-test={this.dataTest}
             ></bds-input>
             <div class="input__editable--active__icon">
               <bds-icon
