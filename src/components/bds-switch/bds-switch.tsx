@@ -39,6 +39,11 @@ export class Switch {
    */
   @Prop() disabled = false;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   connectedCallback(): void {
     this.switchId = this.refer || `bds-switch-${switchIds++}`;
   }
@@ -116,6 +121,7 @@ export class Switch {
           onClick={this.onClick}
           checked={this.checked}
           disabled={this.disabled}
+          data-test={this.dataTest}
         ></input>
         <span class={{ [sizeSliderClass]: true, [styleState]: true }}></span>
       </label>
