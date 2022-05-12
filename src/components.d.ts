@@ -1381,6 +1381,10 @@ export namespace Components {
     }
     interface BdsTooltip {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Used to disable tooltip when the button are avalible
          */
         "disabled": boolean;
@@ -3293,6 +3297,10 @@ declare namespace LocalJSX {
     interface BdsToastContainer {
     }
     interface BdsTooltip {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Used to disable tooltip when the button are avalible
          */
