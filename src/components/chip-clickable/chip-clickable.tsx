@@ -40,6 +40,10 @@ export class ChipClickable {
    */
   @Prop() disabled?: boolean = false;
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+  /**
    *  Triggered after a mouse click on close icon, return id element. Only fired when close is true.
    */
   @Event() chipClickableClose: EventEmitter;
@@ -94,6 +98,7 @@ export class ChipClickable {
             'chip_clickable--disabled': this.disabled,
           }}
           onClick={this.handleClick.bind(this)}
+          data-test={this.dataTest}
         >
           {this.clickable && !this.disabled && (
             <div class="chip_focus" onKeyDown={this.handleClickKey.bind(this)} tabindex="0"></div>
