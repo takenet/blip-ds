@@ -1297,6 +1297,10 @@ export namespace Components {
          */
         "checked": boolean;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * If `true`, the user cannot interact with the switch.
          */
         "disabled": boolean;
@@ -3223,6 +3227,10 @@ declare namespace LocalJSX {
           * If `true`, the switch is selected.
          */
         "checked"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the switch.
          */
