@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property             | Attribute  | Description                                                     | Type      | Default     |
-| -------------------- | ---------- | --------------------------------------------------------------- | --------- | ----------- |
-| `checked`            | `checked`  | If `true`, the checkbox is selected.                            | `boolean` | `false`     |
-| `disabled`           | `disabled` | If `true`, the user cannot interact with the checkbox.          | `boolean` | `false`     |
-| `label` _(required)_ | `label`    |                                                                 | `string`  | `undefined` |
-| `name` _(required)_  | `name`     | The name of the control, which is submitted with the form data. | `string`  | `undefined` |
-| `refer` _(required)_ | `refer`    |                                                                 | `string`  | `undefined` |
-| `value` _(required)_ | `value`    |                                                                 | `string`  | `undefined` |
+| Property             | Attribute   | Description                                                             | Type      | Default     |
+| -------------------- | ----------- | ----------------------------------------------------------------------- | --------- | ----------- |
+| `checked`            | `checked`   | If `true`, the checkbox is selected.                                    | `boolean` | `false`     |
+| `dataTest`           | `data-test` | Data test is the prop to specifically test the component action object. | `string`  | `null`      |
+| `disabled`           | `disabled`  | If `true`, the user cannot interact with the checkbox.                  | `boolean` | `false`     |
+| `label` _(required)_ | `label`     |                                                                         | `string`  | `undefined` |
+| `name` _(required)_  | `name`      | The name of the control, which is submitted with the form data.         | `string`  | `undefined` |
+| `refer` _(required)_ | `refer`     |                                                                         | `string`  | `undefined` |
+| `value` _(required)_ | `value`     |                                                                         | `string`  | `undefined` |
 
 
 ## Events

@@ -33,6 +33,11 @@ export class Radio {
   @Prop() disabled = false;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter;
@@ -84,6 +89,7 @@ export class Radio {
           checked={this.checked}
           value={this.value}
           name={this.name}
+          data-test={this.dataTest}
         />
         <div class="radio__circle">
           <div class="radio__circle__pointer"></div>
