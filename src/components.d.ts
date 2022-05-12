@@ -1046,6 +1046,10 @@ export namespace Components {
     }
     interface BdsPaper {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
@@ -2948,6 +2952,10 @@ declare namespace LocalJSX {
         "active"?: boolean;
     }
     interface BdsPaper {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
