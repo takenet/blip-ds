@@ -57,6 +57,11 @@ export class Typo {
    */
   @Prop() tag?: Tag = 'p';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   render(): HTMLElement {
     const Element = this.tag;
 
@@ -73,6 +78,7 @@ export class Typo {
           [`typo__bold--${this.bold}`]: !!this.bold,
         }}
         part="bds-typo__text"
+        data-test={this.dataTest}
       >
         <slot></slot>
       </Element>

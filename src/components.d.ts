@@ -1419,6 +1419,10 @@ export namespace Components {
          */
         "bold"?: Bold;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Added font style italic
          */
         "italic"?: boolean;
@@ -3351,6 +3355,10 @@ declare namespace LocalJSX {
           * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
          */
         "bold"?: Bold;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Added font style italic
          */
