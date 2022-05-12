@@ -39,6 +39,11 @@ export class Tooltip {
    */
   @Prop() position: TooltipPostionType = 'left-center';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   private setVisibility(value: boolean) {
     if (this.disabled) {
       this.isMouseOver = false;
@@ -50,7 +55,11 @@ export class Tooltip {
   render() {
     return (
       <div class="tooltip__wrapper">
-        <div onMouseEnter={() => this.setVisibility(true)} onMouseLeave={() => this.setVisibility(false)}>
+        <div
+          onMouseEnter={() => this.setVisibility(true)}
+          onMouseLeave={() => this.setVisibility(false)}
+          data-test={this.dataTest}
+        >
           <slot />
         </div>
         <div
