@@ -1,0 +1,14 @@
+@import 'mixins';
+
+:host {
+  display: block;
+}
+
+.fast_loading {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 4px;
+  border-color: $color-neutral-medium-wave;
+}
