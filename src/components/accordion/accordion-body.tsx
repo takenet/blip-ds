@@ -22,11 +22,6 @@ export class AccordionBody {
     this.isOpen = false;
   }
 
-  @Method()
-  async reciveNumber(number) {
-    this.numberElement = number;
-  }
-
   @Watch('isOpen')
   isOpenChanged(): void {
     this.heightContainer = this.isOpen ? this.container.offsetHeight : 0;

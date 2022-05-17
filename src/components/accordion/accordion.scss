@@ -32,7 +32,7 @@
       border-radius: 4px;
     }
 
-    &:focus {
+    &:focus-visible {
       outline: none;
 
       &::before {

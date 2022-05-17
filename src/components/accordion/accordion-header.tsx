@@ -6,12 +6,13 @@ import { Component, State, h, Prop, Element, Method } from '@stencil/core';
   shadow: true,
 })
 export class AccordionHeader {
-  private accGroup?: HTMLBdsAccordionGroupElement = null;
-  private accNextBody?: HTMLBdsAccordionBodyElement = null;
+  private accordionElement?: HTMLBdsAccordionElement = null;
 
   @Element() private element: HTMLElement;
 
   @State() isOpen?: boolean = false;
+
+  @State() btToggleIsfocus?: boolean = false;
 
   @State() numberElement?: number = null;
 
@@ -36,53 +37,55 @@ export class AccordionHeader {
   @Prop() avatarThumb?: string = null;
 
   @Method()
+  async toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
+  @Method()
   async close() {
     this.isOpen = false;
   }
 
-  @Method()
-  async reciveNumber(number) {
-    this.numberElement = number;
-  }
-
   componentWillRender() {
-    this.accGroup = this.element.parentElement as HTMLBdsAccordionGroupElement;
-    this.accNextBody = this.element.nextElementSibling as HTMLBdsAccordionBodyElement;
+    this.accordionElement = this.element.parentElement as HTMLBdsAccordionElement;
   }
 
-  private toggle = (): void => {
-    this.isOpen = !this.isOpen;
-    this.accNextBody?.toggle();
-    this.accGroup?.closeAll(this.numberElement);
+  private toggleHeader = (): void => {
+    this.accordionElement?.toggle();
   };
+
+  handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.accordionElement?.toggle();
+    }
+  }
 
   render() {
     return (
-      <div onClick={this.toggle} class={{ accordion_header: true }}>
+      <div onClick={this.toggleHeader} class={{ accordion_header: true }}>
         {this.avatarName || this.avatarThumb ? (
           <bds-avatar name={this.avatarName} thumbnail={this.avatarThumb} size="extra-small"></bds-avatar>
         ) : (
           this.icon && <bds-icon size="x-large" name="tag" color="inherit"></bds-icon>
         )}
         {this.accordionTitle && (
-          <bds-typo bold="bold" variant="fs-16">
+          <bds-typo bold="bold" variant="fs-16" line-height="double">
             {this.accordionTitle}
           </bds-typo>
         )}
         <slot></slot>
-        {this.accNextBody && (
-          <bds-icon
-            class={{
-              accButton: true,
-              accButton__isopen: this.isOpen,
-            }}
-            size="x-large"
-            name="arrow-down"
-            color="inherit"
-            tabindex="0"
-            onKeyPress={this.toggle}
-          ></bds-icon>
-        )}
+        <bds-icon
+          class={{
+            accButton: true,
+            accButton__isopen: this.isOpen,
+            accButton__isfocus: this.btToggleIsfocus,
+          }}
+          size="x-large"
+          name="arrow-down"
+          color="inherit"
+          tabindex="0"
+          onKeyDown={this.handleKeyDown.bind(this)}
+        ></bds-icon>
       </div>
     );
   }
