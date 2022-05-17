@@ -18,7 +18,7 @@ export class AccordionGroup {
 
   @Method()
   async closeAll(actNumber) {
-    if (this.collapse == 'single') {
+    if (this.collapse != 'multiple') {
       for (let i = 0; i < this.accordionElement.length; i++) {
         if (actNumber != i) this.accordionElement[i].close();
       }
