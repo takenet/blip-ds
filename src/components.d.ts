@@ -22,7 +22,6 @@ import { Color as Color2 } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
 import { DaysList } from "./components/datepicker/datepicker-interface";
-import { colorsVariants, loadingSize } from "./components/loading-indicators/fast-loading/fast-loading";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
@@ -487,16 +486,6 @@ export namespace Components {
     }
     interface BdsExpansionPanelHeader {
         "text"?: string;
-    }
-    interface BdsFastLoading {
-        /**
-          * Color, Entered as one of the color. Can be one of: 'default', 'white'.
-         */
-        "color"?: colorsVariants;
-        /**
-          * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
-         */
-        "size"?: loadingSize;
     }
     interface BdsIcon {
         /**
@@ -1251,16 +1240,6 @@ export namespace Components {
         "titleText": string;
         "value": any;
     }
-    interface BdsSlowLoading {
-        /**
-          * Percent, property to enter the loading status percentage value.
-         */
-        "percent"?: number;
-        /**
-          * Text, property to enable the bar info text.
-         */
-        "text"?: string;
-    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -1648,12 +1627,6 @@ declare global {
         prototype: HTMLBdsExpansionPanelHeaderElement;
         new (): HTMLBdsExpansionPanelHeaderElement;
     };
-    interface HTMLBdsFastLoadingElement extends Components.BdsFastLoading, HTMLStencilElement {
-    }
-    var HTMLBdsFastLoadingElement: {
-        prototype: HTMLBdsFastLoadingElement;
-        new (): HTMLBdsFastLoadingElement;
-    };
     interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
     }
     var HTMLBdsIconElement: {
@@ -1798,12 +1771,6 @@ declare global {
         prototype: HTMLBdsSelectOptionElement;
         new (): HTMLBdsSelectOptionElement;
     };
-    interface HTMLBdsSlowLoadingElement extends Components.BdsSlowLoading, HTMLStencilElement {
-    }
-    var HTMLBdsSlowLoadingElement: {
-        prototype: HTMLBdsSlowLoadingElement;
-        new (): HTMLBdsSlowLoadingElement;
-    };
     interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
     }
     var HTMLBdsStepElement: {
@@ -1899,7 +1866,6 @@ declare global {
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
-        "bds-fast-loading": HTMLBdsFastLoadingElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-illustration": HTMLBdsIllustrationElement;
         "bds-input": HTMLBdsInputElement;
@@ -1924,7 +1890,6 @@ declare global {
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
-        "bds-slow-loading": HTMLBdsSlowLoadingElement;
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
@@ -2434,16 +2399,6 @@ declare namespace LocalJSX {
     }
     interface BdsExpansionPanelHeader {
         "text"?: string;
-    }
-    interface BdsFastLoading {
-        /**
-          * Color, Entered as one of the color. Can be one of: 'default', 'white'.
-         */
-        "color"?: colorsVariants;
-        /**
-          * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
-         */
-        "size"?: loadingSize;
     }
     interface BdsIcon {
         /**
@@ -3260,16 +3215,6 @@ declare namespace LocalJSX {
         "titleText"?: string;
         "value": any;
     }
-    interface BdsSlowLoading {
-        /**
-          * Percent, property to enter the loading status percentage value.
-         */
-        "percent"?: number;
-        /**
-          * Text, property to enable the bar info text.
-         */
-        "text"?: string;
-    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -3487,7 +3432,6 @@ declare namespace LocalJSX {
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
-        "bds-fast-loading": BdsFastLoading;
         "bds-icon": BdsIcon;
         "bds-illustration": BdsIllustration;
         "bds-input": BdsInput;
@@ -3512,7 +3456,6 @@ declare namespace LocalJSX {
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
-        "bds-slow-loading": BdsSlowLoading;
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
@@ -3558,7 +3501,6 @@ declare module "@stencil/core" {
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
-            "bds-fast-loading": LocalJSX.BdsFastLoading & JSXBase.HTMLAttributes<HTMLBdsFastLoadingElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.BdsIllustration & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
@@ -3583,7 +3525,6 @@ declare module "@stencil/core" {
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
-            "bds-slow-loading": LocalJSX.BdsSlowLoading & JSXBase.HTMLAttributes<HTMLBdsSlowLoadingElement>;
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
