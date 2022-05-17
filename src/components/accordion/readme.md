@@ -27,7 +27,7 @@ Type: `Promise<void>`
 
 
 
-### `reciveNumber(number: any) => Promise<void>`
+### `toggle() => Promise<void>`
 
 
 

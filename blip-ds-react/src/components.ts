@@ -7,6 +7,7 @@ import type { JSX } from '../../loader';
 
 
 
+export const BdsAccordion = /*@__PURE__*/createReactComponent<JSX.BdsAccordion, HTMLBdsAccordionElement>('bds-accordion');
 export const BdsAccordionBody = /*@__PURE__*/createReactComponent<JSX.BdsAccordionBody, HTMLBdsAccordionBodyElement>('bds-accordion-body');
 export const BdsAccordionGroup = /*@__PURE__*/createReactComponent<JSX.BdsAccordionGroup, HTMLBdsAccordionGroupElement>('bds-accordion-group');
 export const BdsAccordionHeader = /*@__PURE__*/createReactComponent<JSX.BdsAccordionHeader, HTMLBdsAccordionHeaderElement>('bds-accordion-header');

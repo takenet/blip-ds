@@ -1,6 +1,6 @@
-import { Component, h, Prop, Element, Method } from '@stencil/core';
+import { Component, h, Element, Prop, Method } from '@stencil/core';
 
-export type collapses = 'default' | 'multiple';
+export type collapses = 'single' | 'multiple';
 
 @Component({
   tag: 'bds-accordion-group',
@@ -8,36 +8,30 @@ export type collapses = 'default' | 'multiple';
   shadow: true,
 })
 export class AccordionGroup {
-  private accheaders?: HTMLCollectionOf<HTMLBdsAccordionHeaderElement> = null;
-  private accBodies?: HTMLCollectionOf<HTMLBdsAccordionBodyElement> = null;
+  private accordionElement?: HTMLCollectionOf<HTMLBdsAccordionElement> = null;
 
   @Element() private element: HTMLElement;
-
   /**
    * Focus Selected. Used to add title in header accordion.
    */
-  @Prop() collapse?: collapses = 'default';
+  @Prop() collapse?: collapses = 'single';
 
   @Method()
   async closeAll(actNumber) {
-    if (this.collapse == 'default') {
-      for (let i = 0; i < this.accBodies.length; i++) {
-        if (actNumber != i) this.accBodies[i].close() && this.accheaders[i].close();
+    if (this.collapse != 'multiple') {
+      for (let i = 0; i < this.accordionElement.length; i++) {
+        if (actNumber != i) this.accordionElement[i].close();
       }
     }
   }
 
   componentWillRender() {
-    this.accheaders = this.element.getElementsByTagName(
-      'bds-accordion-header'
-    ) as HTMLCollectionOf<HTMLBdsAccordionHeaderElement>;
-    this.accBodies = this.element.getElementsByTagName(
-      'bds-accordion-body'
-    ) as HTMLCollectionOf<HTMLBdsAccordionBodyElement>;
+    this.accordionElement = this.element.getElementsByTagName(
+      'bds-accordion'
+    ) as HTMLCollectionOf<HTMLBdsAccordionElement>;
 
-    for (let i = 0; i < this.accheaders.length; i++) {
-      this.accheaders[i].reciveNumber(i);
-      this.accBodies[i].reciveNumber(i);
+    for (let i = 0; i < this.accordionElement.length; i++) {
+      this.accordionElement[i].reciveNumber(i);
     }
   }
 

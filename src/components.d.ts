@@ -38,9 +38,13 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export namespace Components {
-    interface BdsAccordionBody {
+    interface BdsAccordion {
         "close": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
+        "toggle": () => Promise<void>;
+    }
+    interface BdsAccordionBody {
+        "close": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
@@ -68,7 +72,7 @@ export namespace Components {
           * Icon. Used to add icon in header accordion.
          */
         "icon"?: string;
-        "reciveNumber": (number: any) => Promise<void>;
+        "toggle": () => Promise<void>;
     }
     interface BdsAlert {
         /**
@@ -1455,6 +1459,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLBdsAccordionElement extends Components.BdsAccordion, HTMLStencilElement {
+    }
+    var HTMLBdsAccordionElement: {
+        prototype: HTMLBdsAccordionElement;
+        new (): HTMLBdsAccordionElement;
+    };
     interface HTMLBdsAccordionBodyElement extends Components.BdsAccordionBody, HTMLStencilElement {
     }
     var HTMLBdsAccordionBodyElement: {
@@ -1828,6 +1838,7 @@ declare global {
         new (): HTMLBdsWarningElement;
     };
     interface HTMLElementTagNameMap {
+        "bds-accordion": HTMLBdsAccordionElement;
         "bds-accordion-body": HTMLBdsAccordionBodyElement;
         "bds-accordion-group": HTMLBdsAccordionGroupElement;
         "bds-accordion-header": HTMLBdsAccordionHeaderElement;
@@ -1893,6 +1904,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BdsAccordion {
+    }
     interface BdsAccordionBody {
     }
     interface BdsAccordionGroup {
@@ -3391,6 +3404,7 @@ declare namespace LocalJSX {
     interface BdsWarning {
     }
     interface IntrinsicElements {
+        "bds-accordion": BdsAccordion;
         "bds-accordion-body": BdsAccordionBody;
         "bds-accordion-group": BdsAccordionGroup;
         "bds-accordion-header": BdsAccordionHeader;
@@ -3459,6 +3473,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "bds-accordion": LocalJSX.BdsAccordion & JSXBase.HTMLAttributes<HTMLBdsAccordionElement>;
             "bds-accordion-body": LocalJSX.BdsAccordionBody & JSXBase.HTMLAttributes<HTMLBdsAccordionBodyElement>;
             "bds-accordion-group": LocalJSX.BdsAccordionGroup & JSXBase.HTMLAttributes<HTMLBdsAccordionGroupElement>;
             "bds-accordion-header": LocalJSX.BdsAccordionHeader & JSXBase.HTMLAttributes<HTMLBdsAccordionHeaderElement>;
