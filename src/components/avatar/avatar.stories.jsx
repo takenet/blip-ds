@@ -28,12 +28,12 @@ export const avatarGroup = () => {
     'standard'
   ]
   const users = [
-    {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},
-    {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},
-    {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},
-    {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},
-    {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},
-    {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"}
+    {"id": "1", "name": "Michael Scott"},
+    {"id": "2", "name": "Dwight Schrute"},
+    {"id": "3", "name": "Jim Halpert"},
+    {"id": "4", "name": "Pam Beesly"},
+    {"id": "5", "name": "Ryan Howard"},
+    {"id": "6", "name": "Andy Bernard"}
   ]
   const arrayUsers = object("users",users);
   return (
@@ -59,7 +59,7 @@ export const defaultAvatar = () => {
   <div style={content}>
     <bds-avatar
       name={text('name', 'Michael Scott')}
-      thumbnail={text('thumbnail', 'https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1')}
+      thumbnail={text('thumbnail', '')}
       size={select('sizes',sizes)}
       upload={boolean('upload',false)}
       ellipsis={number('ellipsis',null)}
@@ -73,35 +73,35 @@ export const sizeAvatar = () => (
   <div style={content}>
     <bds-avatar
       name={'Michael Scott'}
-      thumbnail={'https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1'}
+      thumbnail={''}
       size={'extra-small'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Dwight Schrute'}
-      thumbnail={'https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1'}
+      thumbnail={''}
       size={'small'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Jim Halpert'}
-      thumbnail={'https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1'}
+      thumbnail={''}
       size={'standard'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Pam Beesly'}
-      thumbnail={'https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1'}
+      thumbnail={''}
       size={'large'}
       style={avatarSize}
     >
     </bds-avatar>
     <bds-avatar
       name={'Ryan Howard'}
-      thumbnail={'https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1'}
+      thumbnail={''}
       size={'extra-large'}
       style={avatarSize}
     >
@@ -113,7 +113,7 @@ export const uploadAvatar = () => (
   <div style={content}>
     <bds-avatar
       name="Michael Scott"
-      thumbnail="https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"
+      thumbnail="https://zeroheight-uploads.s3-accelerate.amazonaws.com/a99f3428329d87fdaafcb6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXTVUC4XZENV3LPQ%2F20220518%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20220518T143322Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=c0e869b52ebdd546df1b0647a4c5ae8b942b9185b314cc3ccc843efe8fa2a80a"
       size="extra-large"
       upload="true"
       style={avatarSize}
