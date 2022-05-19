@@ -1,0 +1,63 @@
+@import 'mixins';
+
+:host {
+  display: block;
+}
+
+.fast_loading {
+  animation: rotate 0.5s linear infinite;
+
+  &_extra-small {
+    width: 16px;
+    height: 16px;
+  }
+  &_small {
+    width: 32px;
+    height: 32px;
+  }
+  &_default {
+    width: 64px;
+    height: 64px;
+  }
+  &_main {
+    color: $color-primary-main;
+  }
+  &_white {
+    color: $color-neutral-light-snow;
+  }
+}
+
+.paged_loading {
+  animation: growUp 0.8s ease-in-out infinite;
+  width: 116px;
+  height: 128px;
+
+  &_main {
+    color: $color-primary-main;
+  }
+  &_white {
+    color: $color-neutral-light-snow;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes growUp {
+  from {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
