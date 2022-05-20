@@ -42,6 +42,7 @@ export const BdsInputChips = /*@__PURE__*/createReactComponent<JSX.BdsInputChips
 export const BdsInputEditable = /*@__PURE__*/createReactComponent<JSX.BdsInputEditable, HTMLBdsInputEditableElement>('bds-input-editable');
 export const BdsInputPassword = /*@__PURE__*/createReactComponent<JSX.BdsInputPassword, HTMLBdsInputPasswordElement>('bds-input-password');
 export const BdsInputPhoneNumber = /*@__PURE__*/createReactComponent<JSX.BdsInputPhoneNumber, HTMLBdsInputPhoneNumberElement>('bds-input-phone-number');
+export const BdsLoading = /*@__PURE__*/createReactComponent<JSX.BdsLoading, HTMLBdsLoadingElement>('bds-loading');
 export const BdsLoadingSpinner = /*@__PURE__*/createReactComponent<JSX.BdsLoadingSpinner, HTMLBdsLoadingSpinnerElement>('bds-loading-spinner');
 export const BdsMenu = /*@__PURE__*/createReactComponent<JSX.BdsMenu, HTMLBdsMenuElement>('bds-menu');
 export const BdsMenuAction = /*@__PURE__*/createReactComponent<JSX.BdsMenuAction, HTMLBdsMenuActionElement>('bds-menu-action');

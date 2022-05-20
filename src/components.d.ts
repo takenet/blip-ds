@@ -28,6 +28,7 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
+import { colorsVariants, loadingSize, loadingType } from "./components/loading/loading";
 import { LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
@@ -946,6 +947,20 @@ export namespace Components {
          */
         "value"?: any | null;
     }
+    interface BdsLoading {
+        /**
+          * Color, Entered as one of the color. Can be one of: 'default', 'white'.
+         */
+        "color"?: colorsVariants;
+        /**
+          * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
+         */
+        "size"?: loadingSize;
+        /**
+          * Type, Entered as one of the type. Can be one of: 'page' | 'spinner'.
+         */
+        "type"?: loadingType;
+    }
     interface BdsLoadingSpinner {
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
@@ -1669,6 +1684,12 @@ declare global {
         prototype: HTMLBdsInputPhoneNumberElement;
         new (): HTMLBdsInputPhoneNumberElement;
     };
+    interface HTMLBdsLoadingElement extends Components.BdsLoading, HTMLStencilElement {
+    }
+    var HTMLBdsLoadingElement: {
+        prototype: HTMLBdsLoadingElement;
+        new (): HTMLBdsLoadingElement;
+    };
     interface HTMLBdsLoadingSpinnerElement extends Components.BdsLoadingSpinner, HTMLStencilElement {
     }
     var HTMLBdsLoadingSpinnerElement: {
@@ -1873,6 +1894,7 @@ declare global {
         "bds-input-editable": HTMLBdsInputEditableElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
+        "bds-loading": HTMLBdsLoadingElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu": HTMLBdsMenuElement;
         "bds-menu-action": HTMLBdsMenuActionElement;
@@ -2887,6 +2909,20 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface BdsLoading {
+        /**
+          * Color, Entered as one of the color. Can be one of: 'default', 'white'.
+         */
+        "color"?: colorsVariants;
+        /**
+          * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
+         */
+        "size"?: loadingSize;
+        /**
+          * Type, Entered as one of the type. Can be one of: 'page' | 'spinner'.
+         */
+        "type"?: loadingType;
+    }
     interface BdsLoadingSpinner {
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
@@ -3439,6 +3475,7 @@ declare namespace LocalJSX {
         "bds-input-editable": BdsInputEditable;
         "bds-input-password": BdsInputPassword;
         "bds-input-phone-number": BdsInputPhoneNumber;
+        "bds-loading": BdsLoading;
         "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu": BdsMenu;
         "bds-menu-action": BdsMenuAction;
@@ -3508,6 +3545,7 @@ declare module "@stencil/core" {
             "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
+            "bds-loading": LocalJSX.BdsLoading & JSXBase.HTMLAttributes<HTMLBdsLoadingElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu": LocalJSX.BdsMenu & JSXBase.HTMLAttributes<HTMLBdsMenuElement>;
             "bds-menu-action": LocalJSX.BdsMenuAction & JSXBase.HTMLAttributes<HTMLBdsMenuActionElement>;
