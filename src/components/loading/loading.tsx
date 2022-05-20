@@ -1,7 +1,11 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, State, h } from '@stencil/core';
+import loadExtraSmall from '../../assets/svg/load-extra-small.svg';
+import loadSmall from '../../assets/svg/load-small.svg';
+import loadStandard from '../../assets/svg/load-standard.svg';
+import messageBallon from '../../assets/svg/message-ballon.svg';
 
-export type loadingType = 'paged' | 'fast';
-export type loadingSize = 'extra-small' | 'small' | 'default';
+export type loadingType = 'page' | 'spinner';
+export type loadingSize = 'extra-small' | 'small' | 'standard';
 export type colorsVariants = 'main' | 'white';
 
 @Component({
@@ -9,106 +13,69 @@ export type colorsVariants = 'main' | 'white';
   styleUrl: 'loading.scss',
   shadow: true,
 })
-export class BdsFastLoading {
+export class BdsLoading {
+  @State() private svgContent?: string;
   /**
    * Type, Entered as one of the type. Can be one of:
-   * 'paged' | 'fast'.
+   * 'page' | 'spinner'.
    */
-  @Prop() type?: loadingType = 'fast';
+  @Prop() type?: loadingType = 'spinner';
   /**
    * Size, Entered as one of the size. Can be one of:
    * 'small', 'standard', 'large'.
    */
-  @Prop() size?: loadingSize = 'default';
+  @Prop() size?: loadingSize = 'standard';
   /**
    * Color, Entered as one of the color. Can be one of:
    * 'default', 'white'.
    */
   @Prop() color?: colorsVariants = 'main';
 
-  renderFastLoadXSmall(): HTMLElement {
-    return (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0ZM8 12.8C10.651 12.8 12.8 10.651 12.8 8C12.8 5.34903 10.651 3.2 8 3.2C5.34903 3.2 3.2 5.34903 3.2 8C3.2 10.651 5.34903 12.8 8 12.8Z"
-          fill-rule="evenodd"
-          fill-opacity="0.3"
-          fill="currentColor"
-        />
-        <path
-          d="M1.6 8C0.716345 8 -0.0160869 7.27668 0.159469 6.41064C0.261393 5.90784 0.411689 5.41479 0.608964 4.93853C1.011 3.96793 1.60028 3.08601 2.34315 2.34315C3.08602 1.60028 3.96793 1.011 4.93853 0.608963C5.4148 0.411689 5.90784 0.261393 6.41064 0.159469C7.27668 -0.0160866 8 0.716345 8 1.6C8 2.48365 7.26447 3.17508 6.42946 3.46421C6.33981 3.49525 6.25099 3.52898 6.16312 3.56538C5.58076 3.8066 5.05161 4.16017 4.60589 4.60589C4.16017 5.05161 3.8066 5.58076 3.56538 6.16312C3.52898 6.25099 3.49525 6.33981 3.46421 6.42946C3.17508 7.26447 2.48366 8 1.6 8Z"
-          fill-rule="evenodd"
-          fill="currentColor"
-        />
-      </svg>
-    );
+  componentWillLoad() {
+    this.setSvgContent();
   }
 
-  renderFastLoadSmall(): HTMLElement {
-    return (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0ZM16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z"
-          fill-rule="evenodd"
-          fill-opacity="0.3"
-          fill="currentColor"
-        />
-        <path
-          d="M2 16C0.895431 16 -0.0128754 15.1011 0.124839 14.0052C0.302736 12.5895 0.669597 11.2009 1.21793 9.87706C2.022 7.93585 3.20055 6.17203 4.68629 4.68629C6.17203 3.20055 7.93586 2.022 9.87707 1.21793C11.2009 0.669596 12.5895 0.302734 14.0052 0.124838C15.1011 -0.0128746 16 0.89543 16 2C16 3.10457 15.0985 3.98304 14.0092 4.16628C13.1188 4.31608 12.246 4.56627 11.4078 4.91344C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.56627 12.246 4.31608 13.1188 4.16628 14.0092C3.98304 15.0985 3.10457 16 2 16Z"
-          fill-rule="evenodd"
-          fill="currentColor"
-        />
-      </svg>
-    );
-  }
+  /**Function to transform the svg in a div element. */
+  formatSvg = (svgContent: string) => {
+    const div = document.createElement('div');
+    div.innerHTML = svgContent;
+    const svgElm = div.firstElementChild;
 
-  renderFastLoadDefault(): HTMLElement {
-    return (
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M32 0C49.6731 0 64 14.3269 64 32C64 49.6731 49.6731 64 32 64C14.3269 64 0 49.6731 0 32C0 14.3269 14.3269 0 32 0ZM32 56C45.2548 56 56 45.2548 56 32C56 18.7452 45.2548 8 32 8C18.7452 8 8 18.7452 8 32C8 45.2548 18.7452 56 32 56Z"
-          fill-rule="evenodd"
-          fill-opacity="0.3"
-          fill="currentColor"
-        />
-        <path
-          d="M4 32C1.79086 32 -0.0257507 30.2023 0.249677 28.0104C0.605472 25.1789 1.33919 22.4017 2.43586 19.7541C4.04401 15.8717 6.40111 12.3441 9.37259 9.37258C12.3441 6.40111 15.8717 4.044 19.7541 2.43585C22.4017 1.33919 25.1789 0.605469 28.0104 0.249676C30.2023 -0.0257492 32 1.79086 32 4C32 6.20914 30.197 7.96608 28.0185 8.33257C26.2376 8.63217 24.4919 9.13253 22.8156 9.82689C19.9038 11.033 17.258 12.8008 15.0294 15.0294C12.8008 17.258 11.033 19.9038 9.82689 22.8156C9.13253 24.4919 8.63217 26.2376 8.33257 28.0185C7.96608 30.197 6.20914 32 4 32Z"
-          fill-rule="evenodd"
-          fill="currentColor"
-        />
-      </svg>
-    );
-  }
+    svgElm.removeAttribute('width');
+    svgElm.removeAttribute('height');
+    return div.innerHTML;
+  };
 
-  renderPagedLoad(): HTMLElement {
-    return (
-      <svg width="116" height="128" viewBox="0 0 116 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M19.7641 7.96205C29.4515 2.08609 43.2568 0 56.1909 0C64.9661 0 73.6114 0.906179 80.7859 2.43227C98.0762 6.04915 110.71 17.6474 114.205 35.2845C114.205 35.2846 114.205 35.2845 114.205 35.2845C117.703 52.9247 116.117 74.3786 105.319 89.8806C105.322 89.8764 105.325 89.8722 105.328 89.868L103.064 88.3265L105.311 89.8926C105.314 89.8886 105.316 89.8846 105.319 89.8806C101.187 95.9459 95.3332 101.27 90 106.121C88.9159 107.108 87.8533 108.074 86.8311 109.023L86.8205 109.033L86.8098 109.043C80.2757 114.983 73.451 120.918 66.7959 126.686C66.8247 126.658 66.8526 126.631 66.8794 126.604L64.9424 124.667L66.7365 126.737C66.7563 126.72 66.7761 126.703 66.7959 126.686C66.1841 127.27 65.1126 128 63.6075 128H63.3108C60.2104 128 58.0499 125.48 58.0499 122.739V110.034C58.5749 110.046 59.0928 110.052 59.6025 110.052C59.2332 110.052 58.8641 109.919 58.5673 109.647C58.235 109.342 58.0499 108.911 58.0499 108.499V110.034C51.349 109.878 43.4663 108.724 36.0206 106.467C28.0402 104.048 20.2674 100.273 15.0588 94.8251C15.0614 94.8279 15.0641 94.8305 15.0667 94.8332L17.0315 92.9245L15.0507 94.8167C15.0534 94.8195 15.0561 94.8223 15.0588 94.8251C4.29919 83.7432 0.509836 67.8161 0.0540137 53.4132C0.0540929 53.4153 0.0541721 53.4175 0.0542514 53.4197L2.79174 53.3202L0.053807 53.4066C0.0538757 53.4088 0.0539448 53.411 0.0540137 53.4132C-0.551046 36.7377 3.80243 17.797 19.7478 7.97204L19.756 7.96702L19.7641 7.96205ZM22.6136 12.6413C9.19796 20.9131 4.94914 37.268 5.52923 53.2206L5.52947 53.2272L5.52968 53.2337C5.96467 67.0085 9.59063 81.3335 18.9964 91.0158L19.0044 91.0241L19.0123 91.0324C23.2969 95.5178 30.0567 98.9345 37.6098 101.224C45.1184 103.5 53.1199 104.573 59.6025 104.573C61.4796 104.573 63.5285 106.025 63.5285 108.499V122.268C70.0787 116.59 76.741 110.792 83.1141 104.998C84.2257 103.966 85.3483 102.944 86.4682 101.923C91.7975 97.0679 97.0658 92.2681 100.799 86.7846L100.808 86.7723L100.816 86.76C110.481 72.8935 112.156 53.118 108.831 36.3499C105.801 21.0592 95 11.0014 79.6599 7.79391L79.6505 7.79192C72.8828 6.35199 64.6201 5.4786 56.1909 5.4786C43.6161 5.4786 31.0226 7.54442 22.6136 12.6413Z"
-          fill-rule="evenodd"
-          fill="currentColor"
-        />
-      </svg>
-    );
-  }
+  setSvgContent = () => {
+    const innerHTML =
+      this.type == 'page'
+        ? messageBallon
+        : this.size == 'extra-small'
+        ? loadExtraSmall
+        : this.size == 'small'
+        ? loadSmall
+        : this.size == 'standard' && loadStandard;
+
+    const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
+    this.svgContent = this.formatSvg(svg);
+  };
 
   render() {
     return (
       <Host>
         {[
-          this.type == 'fast' && (
+          this.type == 'spinner' && (
             <div
-              class={{ fast_loading: true, [`fast_loading_${this.size}`]: true, [`fast_loading_${this.color}`]: true }}
-            >
-              {[
-                this.size == 'extra-small' && this.renderFastLoadXSmall(),
-                this.size == 'small' && this.renderFastLoadSmall(),
-                this.size == 'default' && this.renderFastLoadDefault(),
-              ]}
-            </div>
+              class={{
+                spinner_loading: true,
+                [`spinner_loading_${this.size}`]: true,
+                [`spinner_loading_${this.color}`]: true,
+              }}
+              innerHTML={this.svgContent}
+            ></div>
           ),
-          this.type == 'paged' && (
-            <div class={{ paged_loading: true, [`paged_loading_${this.color}`]: true }}>{this.renderPagedLoad()}</div>
+          this.type == 'page' && (
+            <div class={{ page_loading: true, [`page_loading_${this.color}`]: true }} innerHTML={this.svgContent}></div>
           ),
         ]}
       </Host>

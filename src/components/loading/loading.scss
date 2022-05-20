@@ -4,7 +4,7 @@
   display: block;
 }
 
-.fast_loading {
+.spinner_loading {
   animation: rotate 0.5s linear infinite;
 
   &_extra-small {
@@ -15,7 +15,7 @@
     width: 32px;
     height: 32px;
   }
-  &_default {
+  &_standard {
     width: 64px;
     height: 64px;
   }
@@ -27,7 +27,7 @@
   }
 }
 
-.paged_loading {
+.page_loading {
   animation: growUp 0.8s ease-in-out infinite;
   width: 116px;
   height: 128px;

@@ -957,7 +957,7 @@ export namespace Components {
          */
         "size"?: loadingSize;
         /**
-          * Type, Entered as one of the type. Can be one of: 'paged' | 'fast'.
+          * Type, Entered as one of the type. Can be one of: 'page' | 'spinner'.
          */
         "type"?: loadingType;
     }
@@ -2919,7 +2919,7 @@ declare namespace LocalJSX {
          */
         "size"?: loadingSize;
         /**
-          * Type, Entered as one of the type. Can be one of: 'paged' | 'fast'.
+          * Type, Entered as one of the type. Can be one of: 'page' | 'spinner'.
          */
         "type"?: loadingType;
     }
