@@ -27,7 +27,7 @@ jobs:
 
       - name: Build and Deploy to Storybook
         run: |
-          npm run storybook:build --disable-telemetry
+          npm run storybook:build
           npm run storybook:deploy
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
