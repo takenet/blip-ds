@@ -99,6 +99,7 @@ const outlineIconsName = [
   'chart-line',
   'chart-pizza',
   'checkball',
+  'chip',
   'clock',
   'close',
   'cloud-2',
