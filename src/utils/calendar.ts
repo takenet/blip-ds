@@ -1,67 +1,72 @@
 import { DaysList } from '../components/datepicker/datepicker-interface';
+import { languages, monthTranslate, dayTranslate } from '../utils/languages';
+import { MonthsList } from '../utils/calendar-interface';
 
 export const THIS_DAY = new Date();
 export const THIS_YEAR = +new Date().getFullYear();
 export const THIS_MONTH = +new Date().getMonth();
 
-export const WEEK_DAYS = {
-  Sunday: 'Domingo',
-  Monday: 'Segunda',
-  Tuesday: 'Terça',
-  Wednesday: 'Quarta',
-  Thursday: 'Quinta',
-  Friday: 'Sexta',
-  Saturday: 'Sábado',
+export const weekDays = (language: languages) => {
+  const days = {
+    Sunday: dayTranslate(language, 'sunday')[0],
+    Monday: dayTranslate(language, 'monday')[0],
+    Tuesday: dayTranslate(language, 'tuesday')[0],
+    Wednesday: dayTranslate(language, 'wednesday')[0],
+    Thursday: dayTranslate(language, 'thursday')[0],
+    Friday: dayTranslate(language, 'friday')[0],
+    Saturday: dayTranslate(language, 'saturday')[0],
+  };
+  return days;
 };
 
-export const MONTHS = [
+export const changeMonths = (language: languages) => [
   {
     value: 0,
-    label: 'Janeiro',
+    label: monthTranslate(language, 'january'),
   },
   {
     value: 1,
-    label: 'Fevereiro',
+    label: monthTranslate(language, 'february'),
   },
   {
     value: 2,
-    label: 'Março',
+    label: monthTranslate(language, 'march'),
   },
   {
     value: 3,
-    label: 'Abril',
+    label: monthTranslate(language, 'april'),
   },
   {
     value: 4,
-    label: 'Maio',
+    label: monthTranslate(language, 'may'),
   },
   {
     value: 5,
-    label: 'Junho',
+    label: monthTranslate(language, 'june'),
   },
   {
     value: 6,
-    label: 'Julho',
+    label: monthTranslate(language, 'july'),
   },
   {
     value: 7,
-    label: 'Agosto',
+    label: monthTranslate(language, 'august'),
   },
   {
     value: 8,
-    label: 'Setembro',
+    label: monthTranslate(language, 'september'),
   },
   {
     value: 9,
-    label: 'Outubro',
+    label: monthTranslate(language, 'october'),
   },
   {
     value: 10,
-    label: 'Novembro',
+    label: monthTranslate(language, 'november'),
   },
   {
     value: 11,
-    label: 'Dezembro',
+    label: monthTranslate(language, 'december'),
   },
 ];
 
@@ -89,22 +94,26 @@ export const getYears = (year: number, startYear: number, endYear: number) => {
   return years;
 };
 
-export const getMonths = (year: number, startDate: DaysList, endDate: DaysList) => {
+export const getMonths = (
+  year: number,
+  startDate: DaysList,
+  endDate: DaysList,
+  monthList?: MonthsList[]
+): MonthsList[] => {
   let months = [];
-
   if (year == startDate.year && year == endDate.year) {
-    months = MONTHS.slice(startDate.month, endDate.month + 1);
+    months = monthList.slice(startDate.month, endDate.month + 1);
     return months;
   }
   if (year == startDate.year) {
-    months = MONTHS.slice(startDate.month);
+    months = monthList.slice(startDate.month);
     return months;
   }
   if (year == endDate.year) {
-    months = MONTHS.slice(0, endDate.month + 1);
+    months = monthList.slice(0, endDate.month + 1);
     return months;
   }
-  return MONTHS;
+  return monthList;
 };
 
 export const getDaysInMonth = (year = THIS_YEAR, month = THIS_MONTH) => {

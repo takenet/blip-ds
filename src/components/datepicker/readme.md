@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property         | Attribute          | Description                                                 | Type                   | Default            |
-| ---------------- | ------------------ | ----------------------------------------------------------- | ---------------------- | ------------------ |
-| `endDateLimit`   | `end-date-limit`   | EndDateLimit. Insert a limiter to select the date period.   | `string`               | `defaultEndDate`   |
-| `message`        | `message`          | Message. Select type of date.                               | `string`               | `null`             |
-| `startDateLimit` | `start-date-limit` | StartDateLimit. Insert a limiter to select the date period. | `string`               | `defaultStartDate` |
-| `typeOfDate`     | `type-of-date`     | TypeOfDate. Select type of date.                            | `"period" \| "single"` | `'single'`         |
+| Property         | Attribute          | Description                                                                          | Type                            | Default            |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------ | ------------------------------- | ------------------ |
+| `endDateLimit`   | `end-date-limit`   | EndDateLimit. Insert a limiter to select the date period.                            | `string`                        | `defaultEndDate`   |
+| `language`       | `language`         | Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'. | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`          |
+| `message`        | `message`          | Message. Select type of date.                                                        | `string`                        | `null`             |
+| `startDateLimit` | `start-date-limit` | StartDateLimit. Insert a limiter to select the date period.                          | `string`                        | `defaultStartDate` |
+| `typeOfDate`     | `type-of-date`     | TypeOfDate. Select type of date.                                                     | `"period" \| "single"`          | `'single'`         |
 
 
 ## Events

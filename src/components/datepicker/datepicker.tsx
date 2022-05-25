@@ -1,6 +1,7 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
 import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToString } from '../../utils/calendar';
 import { dateValidation, maskDate } from '../../utils/validations';
+import { termTranslate, messageTranslate, languages } from '../../utils/languages';
 import { DaysList } from './datepicker-interface';
 
 export type typeDate = 'single' | 'period';
@@ -44,6 +45,11 @@ export class DatePicker {
    * Message. Select type of date.
    */
   @Prop() message?: string = null;
+  /**
+   * Language, Entered as one of the languages. Can be one of:
+   * 'pt_BR', 'es_ES', 'en_US'.
+   */
+  @Prop() language?: languages = 'pt_BR';
   /**
    * bdsStartDate. Event to return selected date value.
    */
@@ -158,10 +164,12 @@ export class DatePicker {
     const start = this.startDateLimit && dateToDayList(this.startDateLimit);
     const end = this.endDateLimit && dateToDayList(this.endDateLimit);
     if (!dateValidation(this.valueDateSelected)) {
-      this.errorMsgDate = `Formato da data esta incorreto!`;
+      this.errorMsgDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgDate = `Por favor selecione uma data entre o periodo de ${this.startDateLimit} - ${this.endDateLimit}`;
+        this.errorMsgDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.startDateLimit} - ${
+          this.endDateLimit
+        }`;
       } else {
         this.errorMsgDate = null;
         this.dateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
@@ -179,10 +187,12 @@ export class DatePicker {
     const end = this.endDateLimit && dateToDayList(this.endDateLimit);
 
     if (!dateValidation(this.valueEndDateSelected)) {
-      this.errorMsgEndDate = `Formato da data esta incorreto!`;
+      this.errorMsgEndDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) <= fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgEndDate = `Por favor selecione uma data entre o periodo de ${this.valueDateSelected} - ${this.endDateLimit}`;
+        this.errorMsgEndDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.valueDateSelected} - ${
+          this.endDateLimit
+        }`;
       } else {
         this.errorMsgEndDate = null;
         this.endDateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
@@ -211,7 +221,7 @@ export class DatePicker {
         {this.typeOfDate == 'single' ? (
           <div class={{ datepicker__inputs: true, [`datepicker__inputs__${this.typeOfDate}`]: true }}>
             <bds-input
-              label="Definir a data"
+              label={termTranslate(this.language, 'setTheDate')}
               value={this.valueDateSelected}
               placeholder="__/__/____"
               maxlength={10}
@@ -226,7 +236,7 @@ export class DatePicker {
           <div class={{ datepicker__inputs: true, [`datepicker__inputs__${this.typeOfDate}`]: true }}>
             <bds-input
               ref={this.refInputSetDate}
-              label="De"
+              label={termTranslate(this.language, 'in')}
               value={this.valueDateSelected}
               placeholder="__/__/____"
               maxlength={10}
@@ -238,7 +248,7 @@ export class DatePicker {
             ></bds-input>
             <bds-input
               ref={this.refInputSetEndDate}
-              label="Até"
+              label={termTranslate(this.language, 'to')}
               value={this.valueEndDateSelected}
               disabled={!this.dateSelected}
               placeholder="__/__/____"
@@ -265,6 +275,7 @@ export class DatePicker {
               endDate={this.endDateLimit && dateToDayList(this.endDateLimit)}
               dateSelect={this.dateSelected}
               onBdsDateSelected={(event) => this.selectDate(event)}
+              language={this.language}
             ></bds-datepicker-single>
           ) : (
             <bds-datepicker-period
@@ -275,21 +286,22 @@ export class DatePicker {
               endDateSelect={this.endDateSelected}
               onBdsStartDate={(event) => this.selectDate(event)}
               onBdsEndDate={(event) => this.selectEndDate(event)}
+              language={this.language}
             ></bds-datepicker-period>
           )}
           {this.typeOfDate == 'single' ? (
             <div class={{ datepicker__menu__footer: true }}>
               <bds-button variant="secondary" onClick={() => this.clearDateSingle()}>
-                Redefinir
+                {termTranslate(this.language, 'reset')}
               </bds-button>
-              <bds-button onClick={() => (this.open = false)}>Concluir</bds-button>
+              <bds-button onClick={() => (this.open = false)}>{termTranslate(this.language, 'conclude')}</bds-button>
             </div>
           ) : (
             <div class={{ datepicker__menu__footer: true }}>
               <bds-button variant="secondary" onClick={() => this.clearDatePeriod()}>
-                Redefinir
+                {termTranslate(this.language, 'reset')}
               </bds-button>
-              <bds-button onClick={this.closeDatepicker}>Concluir</bds-button>
+              <bds-button onClick={this.closeDatepicker}>{termTranslate(this.language, 'conclude')}</bds-button>
             </div>
           )}
         </div>
