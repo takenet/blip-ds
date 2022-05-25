@@ -1470,6 +1470,8 @@ export namespace Components {
          */
         "variant"?: FontSize;
     }
+    interface BdsUpload {
+    }
     interface BdsWarning {
     }
 }
@@ -1852,6 +1854,12 @@ declare global {
         prototype: HTMLBdsTypoElement;
         new (): HTMLBdsTypoElement;
     };
+    interface HTMLBdsUploadElement extends Components.BdsUpload, HTMLStencilElement {
+    }
+    var HTMLBdsUploadElement: {
+        prototype: HTMLBdsUploadElement;
+        new (): HTMLBdsUploadElement;
+    };
     interface HTMLBdsWarningElement extends Components.BdsWarning, HTMLStencilElement {
     }
     var HTMLBdsWarningElement: {
@@ -1922,6 +1930,7 @@ declare global {
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
         "bds-typo": HTMLBdsTypoElement;
+        "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
     }
 }
@@ -3437,6 +3446,8 @@ declare namespace LocalJSX {
          */
         "variant"?: FontSize;
     }
+    interface BdsUpload {
+    }
     interface BdsWarning {
     }
     interface IntrinsicElements {
@@ -3503,6 +3514,7 @@ declare namespace LocalJSX {
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
         "bds-typo": BdsTypo;
+        "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
     }
 }
@@ -3573,6 +3585,7 @@ declare module "@stencil/core" {
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
+            "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
         }
     }

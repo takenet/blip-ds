@@ -70,4 +70,5 @@ export const BdsToast = /*@__PURE__*/createReactComponent<JSX.BdsToast, HTMLBdsT
 export const BdsToastContainer = /*@__PURE__*/createReactComponent<JSX.BdsToastContainer, HTMLBdsToastContainerElement>('bds-toast-container');
 export const BdsTooltip = /*@__PURE__*/createReactComponent<JSX.BdsTooltip, HTMLBdsTooltipElement>('bds-tooltip');
 export const BdsTypo = /*@__PURE__*/createReactComponent<JSX.BdsTypo, HTMLBdsTypoElement>('bds-typo');
+export const BdsUpload = /*@__PURE__*/createReactComponent<JSX.BdsUpload, HTMLBdsUploadElement>('bds-upload');
 export const BdsWarning = /*@__PURE__*/createReactComponent<JSX.BdsWarning, HTMLBdsWarningElement>('bds-warning');

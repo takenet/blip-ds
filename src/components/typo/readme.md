@@ -61,6 +61,7 @@
  - [bds-tab-panel](../tabs/tab-panel)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
+ - [bds-upload](../upload)
  - [bds-warning](../warning)
 
 ### Graph
@@ -96,6 +97,7 @@ graph TD;
   bds-tab-panel --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo
+  bds-upload --> bds-typo
   bds-warning --> bds-typo
   style bds-typo fill:#f9f,stroke:#333,stroke-width:4px
 ```

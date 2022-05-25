@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  color: $color-neutral-dark-city;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .drop-zone--over {
+    border: 2px solid $color-primary-dark !important;
+  }
+
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $color-neutral-medium-silver;
+    border-radius: 8px;
+
+    .body-text {
+      padding: 16px;
+      width: 100%;
+      text-align: center;
+    }
+    .drop-box {
+      display: none;
+    }
+  }
+}
