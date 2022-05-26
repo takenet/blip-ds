@@ -1,7 +1,7 @@
 export const esTerms = [
   {
     conclude: 'Concluir',
-    in: 'En',
+    from: 'En',
     reset: 'Reiniciar',
     setTheDate: 'Establecer la fecha',
     to: 'Hasta',

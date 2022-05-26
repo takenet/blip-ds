@@ -236,7 +236,7 @@ export class DatePicker {
           <div class={{ datepicker__inputs: true, [`datepicker__inputs__${this.typeOfDate}`]: true }}>
             <bds-input
               ref={this.refInputSetDate}
-              label={termTranslate(this.language, 'in')}
+              label={termTranslate(this.language, 'from')}
               value={this.valueDateSelected}
               placeholder="__/__/____"
               maxlength={10}

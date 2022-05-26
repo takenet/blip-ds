@@ -1,7 +1,7 @@
 export const ptTerms = [
   {
     conclude: 'Concluir',
-    in: 'De',
+    from: 'De',
     reset: 'Redefinir',
     setTheDate: 'Definir a data',
     to: 'Até',
