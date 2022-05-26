@@ -1,7 +1,7 @@
 export const enTerms = [
   {
     conclude: 'Conclude',
-    from: 'In',
+    from: 'From',
     reset: 'Reset',
     setTheDate: 'Set the date',
     to: 'To',
