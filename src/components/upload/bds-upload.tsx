@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
+import { Component, Event, h, Element, EventEmitter, State, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-upload',
@@ -6,43 +6,38 @@ import { Component, Host, h, Element, State } from '@stencil/core';
   shadow: true,
 })
 export class BdsUpload {
-  @Element() public dropArea: HTMLElement;
-  @State() public highlighted: boolean = false;
-  @State() public uploads: boolean = false;
-  @State() public files: Object[];
-  @State() public dragHover: boolean = false;
+  @Element() private dropArea: HTMLElement;
+  @Event() uploadCompleted: EventEmitter<Blob>;
+  @State() public files: any[];
+  @State() public haveFiles = false;
+  @State() public filesReader: string | ArrayBuffer;
+  @Prop() title!: string;
+  @Prop() subtitle: string;
 
-  componentWillLoad() {
+  componentDidLoad() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
-      this.dropArea.addEventListener(eventName, this.preventDefaults, false);
-      document.body.addEventListener(eventName, this.preventDefaults, false);
+      this.dropArea.shadowRoot.addEventListener(eventName, this.preventDefaults, true);
     });
     ['dragenter', 'dragover'].forEach((eventName) => {
-      this.dropArea.addEventListener(eventName, () => this.handleHover(true), false);
+      this.dropArea.shadowRoot.addEventListener(eventName, () => this.handleDrop(true), false);
     });
     ['dragleave', 'drop'].forEach((eventName) => {
-      this.dropArea.addEventListener(eventName, () => this.handleHover(false), false);
+      this.dropArea.shadowRoot.addEventListener(eventName, () => this.handleDrop(true), false);
     });
-    this.dropArea.addEventListener('drop', this.handleDrop, false);
+    this.dropArea.shadowRoot.addEventListener('drop', this.handleDrop, false);
   }
 
-  handleHover(boolean) {
-    this.dragHover = boolean;
-    this.dragHoverFunction;
-  }
-
-  handleDrop = (e) => {
-    var dt = e.dataTransfer;
-    var files = dt.files;
-
+  handleDrop = (Event) => {
+    const dt = Event.dataTransfer;
+    const files = dt.files;
     this.handleFiles(files);
-    this.uploads = true;
   };
 
   handleFiles = (files) => {
     this.files = [{ ...files }];
-    this.previewFile;
+    this.previewFile();
   };
+
   previewFile = () => {
     const name = this.files.map(function (e) {
       return e[0].name;
@@ -55,33 +50,73 @@ export class BdsUpload {
     e.stopPropagation();
   }
 
-  dragHoverFunction() {
-    if (this.dragHover) {
-      const hover = { 'drop-zone--over': true };
-      return hover;
+  public onInputChange(files: FileList) {
+    // check if 1 image is uploaded
+    if (files.length === 1) {
+      const imageFile = files[0];
+      this.files = [{ ...files }];
+
+      // upload image
+      this.uploadImage(imageFile);
+    } else {
+      return false;
     }
+  }
+
+  private uploadImage(file) {
+    // create a new instance of HTML5 FileReader api to handle uploading
+    const reader = new FileReader();
+    if (file) {
+      this.haveFiles = true;
+    }
+
+    reader.onload = () => {
+      const previewText: HTMLElement = this.dropArea.shadowRoot.querySelector('#preview-text');
+      this.filesReader = reader.result;
+      previewText.innerText = file.name;
+      this.uploadCompleted.emit(file);
+    };
+    reader.readAsDataURL(file);
   }
 
   render() {
     return (
-      <Host>
-        <div class="header">
+      <div class="upload">
+        <div class="upload-header">
           <bds-icon size="xxx-large" name="upload"></bds-icon>
-          <div class="header-text">
-            <bds-typo variant="fs-16" bold="bold" class="title">
-              Title uploader
+          <div class="upload-header_text">
+            <bds-typo variant="fs-16" bold="bold">
+              {this.title}
             </bds-typo>
-            <bds-typo variant="fs-14" bold="regular" class="subtitle">
-              Description uploads
+            <bds-typo variant="fs-14" bold="regular">
+              {this.subtitle}
             </bds-typo>
           </div>
         </div>
-        <div class={{ body: true, ...this.dragHoverFunction() }}>
-          {this.dragHover ? <div>coloque aqui</div> : <div>clique aqui</div>}
-          <input type="file" id="drop-input" class="drop-box"></input>
-          {this.files ? this.previewFile() : ''}
+        {this.haveFiles ? (
+          <div class="upload__preview" id="drop-area">
+            <div class="preview" id="preview">
+              <bds-icon size="x-small" name="attach"></bds-icon>
+              <bds-typo variant="fs-14" bold="bold" class="preview-text" id="preview-text"></bds-typo>
+              <bds-icon size="x-small" name="trash"></bds-icon>
+            </div>
+          </div>
+        ) : (
+          ''
+        )}
+        <div class="upload__edit">
+          <label htmlFor="file">
+            <bds-typo>Drag and drop your files here or click to upload file</bds-typo>
+          </label>
+          <input
+            type="file"
+            name="files[]"
+            id="file"
+            class="upload__input"
+            onChange={($event: any) => this.onInputChange($event.target.files)}
+          />
         </div>
-      </Host>
+      </div>
     );
   }
 }

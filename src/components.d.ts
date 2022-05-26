@@ -1471,6 +1471,8 @@ export namespace Components {
         "variant"?: FontSize;
     }
     interface BdsUpload {
+        "subtitle": string;
+        "title": string;
     }
     interface BdsWarning {
     }
@@ -3447,6 +3449,9 @@ declare namespace LocalJSX {
         "variant"?: FontSize;
     }
     interface BdsUpload {
+        "onUploadCompleted"?: (event: CustomEvent<Blob>) => void;
+        "subtitle"?: string;
+        "title": string;
     }
     interface BdsWarning {
     }

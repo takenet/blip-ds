@@ -5,6 +5,21 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property             | Attribute  | Description | Type     | Default     |
+| -------------------- | ---------- | ----------- | -------- | ----------- |
+| `subtitle`           | `subtitle` |             | `string` | `undefined` |
+| `title` _(required)_ | `title`    |             | `string` | `undefined` |
+
+
+## Events
+
+| Event             | Description | Type                |
+| ----------------- | ----------- | ------------------- |
+| `uploadCompleted` |             | `CustomEvent<Blob>` |
+
+
 ## Dependencies
 
 ### Depends on
