@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property     | Attribute | Description                                             | Type       | Default                           |
-| ------------ | --------- | ------------------------------------------------------- | ---------- | --------------------------------- |
-| `dateSelect` | --        | dateSelect. Insert a limiter to select the date period. | `Date`     | `null`                            |
-| `endDate`    | --        | EndDate. Insert a limiter to select the date period.    | `DaysList` | `dateToDayList(defaultEndDate)`   |
-| `startDate`  | --        | StartDate. Insert a limiter to select the date period.  | `DaysList` | `dateToDayList(defaultStartDate)` |
+| Property     | Attribute  | Description                                                                          | Type                            | Default                           |
+| ------------ | ---------- | ------------------------------------------------------------------------------------ | ------------------------------- | --------------------------------- |
+| `dateSelect` | --         | dateSelect. Insert a limiter to select the date period.                              | `Date`                          | `null`                            |
+| `endDate`    | --         | EndDate. Insert a limiter to select the date period.                                 | `DaysList`                      | `dateToDayList(defaultEndDate)`   |
+| `language`   | `language` | Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'. | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`                         |
+| `startDate`  | --         | StartDate. Insert a limiter to select the date period.                               | `DaysList`                      | `dateToDayList(defaultStartDate)` |
 
 
 ## Events

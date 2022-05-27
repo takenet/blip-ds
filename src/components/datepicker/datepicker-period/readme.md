@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property          | Attribute | Description                                                  | Type       | Default                           |
-| ----------------- | --------- | ------------------------------------------------------------ | ---------- | --------------------------------- |
-| `endDate`         | --        | EndDate. Insert a limiter to select the date period.         | `DaysList` | `dateToDayList(defaultEndDate)`   |
-| `endDateSelect`   | --        | EndDateSelect. Insert a limiter to select the date period.   | `Date`     | `null`                            |
-| `startDate`       | --        | StartDate. Insert a limiter to select the date period.       | `DaysList` | `dateToDayList(defaultStartDate)` |
-| `startDateSelect` | --        | StartDateSelect. Insert a limiter to select the date period. | `Date`     | `null`                            |
+| Property          | Attribute  | Description                                                                          | Type                            | Default                           |
+| ----------------- | ---------- | ------------------------------------------------------------------------------------ | ------------------------------- | --------------------------------- |
+| `endDate`         | --         | EndDate. Insert a limiter to select the date period.                                 | `DaysList`                      | `dateToDayList(defaultEndDate)`   |
+| `endDateSelect`   | --         | EndDateSelect. Insert a limiter to select the date period.                           | `Date`                          | `null`                            |
+| `language`        | `language` | Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'. | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`                         |
+| `startDate`       | --         | StartDate. Insert a limiter to select the date period.                               | `DaysList`                      | `dateToDayList(defaultStartDate)` |
+| `startDateSelect` | --         | StartDateSelect. Insert a limiter to select the date period.                         | `Date`                          | `null`                            |
 
 
 ## Events
