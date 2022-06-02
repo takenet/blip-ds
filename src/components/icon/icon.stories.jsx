@@ -132,6 +132,8 @@ const outlineIconsName = [
   'file-gif',
   'file-image-broken',
   'file-image',
+  'file-image-expired',
+  'file-video-expired',
   'file-java-script',
   'file-json',
   'file-new',
