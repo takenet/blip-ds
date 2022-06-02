@@ -1,5 +1,5 @@
 import { Component, h, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
-
+import { termTranslate, languages } from './languages';
 import background from '../../assets/svg/pattern.svg';
 
 @Component({
@@ -14,6 +14,10 @@ export class BdsUpload {
   @State() hover = false;
   @State() background: string;
   @State() size: number[] = [];
+  /**
+   * Set the language for fixed texts.
+   */
+  @Prop() language?: languages = 'pt_BR';
   /**
    * Used for add a text on title.
    */
@@ -166,7 +170,7 @@ export class BdsUpload {
             </div>
             {this.multiple ? (
               <bds-typo variant="fs-14" italic class="preview-length">
-                {this.files.length} file uploaded
+                {this.files.length} {termTranslate(this.language, 'uploaded')}
               </bds-typo>
             ) : (
               ''
@@ -184,11 +188,11 @@ export class BdsUpload {
             <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
               {this.hover ? (
                 <bds-typo class="text" variant="fs-14" bold="bold">
-                  Drop here to attach file
+                  {termTranslate(this.language, 'dropHere')}
                 </bds-typo>
               ) : (
                 <bds-typo class="text" variant="fs-14" bold="bold">
-                  Drag and drop your files here or click to upload file
+                  {termTranslate(this.language, 'dropOrClick')}
                 </bds-typo>
               )}
             </div>

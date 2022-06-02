@@ -39,6 +39,7 @@ import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
+import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -1492,6 +1493,10 @@ export namespace Components {
           * Used for add a error message. In case a verify.
          */
         "error": string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
         /**
           * Used to allow upload multiple files.
          */
@@ -3500,6 +3505,10 @@ declare namespace LocalJSX {
           * Used for add a error message. In case a verify.
          */
         "error"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
         /**
           * Used to allow upload multiple files.
          */
