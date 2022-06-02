@@ -1,0 +1,130 @@
+.upload {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .upload-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+
+    &_text {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.upload__edit--label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $color-neutral-medium-silver;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: normal;
+  box-sizing: border-box;
+  padding: 23px 16px;
+  position: relative;
+
+  .upload__img--visible {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    background-color: $color-neutral-light-breeze;
+    z-index: 1;
+  }
+
+  .text-box {
+    display: flex;
+    padding: 8px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    .text {
+      width: 100%;
+      height: 24px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  .text-box--hover {
+    background-color: $color-neutral-light-breeze;
+  }
+}
+
+.upload__edit--label:hover {
+  border: 2px solid $color-primary-dark;
+  box-sizing: border-box;
+  padding: 22px 16px;
+  cursor: pointer;
+  text-decoration: underline $color-primary-dark;
+  color: $color-primary-dark;
+}
+
+.upload__edit--hover {
+  background-size: cover;
+  border: 1px dashed $color-neutral-medium-silver;
+  color: $color-primary-dark;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.upload__img--invisible {
+  display: none;
+}
+
+
+.list-preview {
+border-top: 1px solid $color-neutral-medium-silver;
+border-bottom: 1px solid $color-neutral-medium-silver;
+}
+
+.upload__preview {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  
+  padding: 16px 0;
+
+  .preview {
+    display: flex;
+      padding: 0 16px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 16px;
+
+      .preview-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+      }
+  }
+}
+
+.preview-length {
+  display: flex;
+  justify-content: end;
+  padding-top: 16px;
+  text-align: end;
+}
+
+.upload__edit input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 0;
+  height: 100%;
+}

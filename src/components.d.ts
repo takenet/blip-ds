@@ -39,6 +39,7 @@ import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
+import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -1483,6 +1484,32 @@ export namespace Components {
          */
         "variant"?: FontSize;
     }
+    interface BdsUpload {
+        /**
+          * Used to accept a especific type of file.
+         */
+        "accept": string;
+        /**
+          * Used for add a error message. In case a verify.
+         */
+        "error": string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
+        /**
+          * Used to allow upload multiple files.
+         */
+        "multiple": boolean;
+        /**
+          * Used for add a text on subtitle.
+         */
+        "subtitle": string;
+        /**
+          * Used for add a text on title.
+         */
+        "titleName": string;
+    }
     interface BdsWarning {
     }
 }
@@ -1865,6 +1892,12 @@ declare global {
         prototype: HTMLBdsTypoElement;
         new (): HTMLBdsTypoElement;
     };
+    interface HTMLBdsUploadElement extends Components.BdsUpload, HTMLStencilElement {
+    }
+    var HTMLBdsUploadElement: {
+        prototype: HTMLBdsUploadElement;
+        new (): HTMLBdsUploadElement;
+    };
     interface HTMLBdsWarningElement extends Components.BdsWarning, HTMLStencilElement {
     }
     var HTMLBdsWarningElement: {
@@ -1935,6 +1968,7 @@ declare global {
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
         "bds-typo": HTMLBdsTypoElement;
+        "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
     }
 }
@@ -3462,6 +3496,40 @@ declare namespace LocalJSX {
          */
         "variant"?: FontSize;
     }
+    interface BdsUpload {
+        /**
+          * Used to accept a especific type of file.
+         */
+        "accept"?: string;
+        /**
+          * Used for add a error message. In case a verify.
+         */
+        "error"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
+        /**
+          * Used to allow upload multiple files.
+         */
+        "multiple"?: boolean;
+        /**
+          * Event emited when change the value of Upload.
+         */
+        "onBdsUploadChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event emited when delete a item from the list.
+         */
+        "onBdsUploadDelete"?: (event: CustomEvent<any>) => void;
+        /**
+          * Used for add a text on subtitle.
+         */
+        "subtitle"?: string;
+        /**
+          * Used for add a text on title.
+         */
+        "titleName"?: string;
+    }
     interface BdsWarning {
     }
     interface IntrinsicElements {
@@ -3528,6 +3596,7 @@ declare namespace LocalJSX {
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
         "bds-typo": BdsTypo;
+        "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
     }
 }
@@ -3598,6 +3667,7 @@ declare module "@stencil/core" {
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
+            "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
         }
     }
