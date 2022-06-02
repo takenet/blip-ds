@@ -29,7 +29,7 @@ export class Paper implements ComponentInterface {
 
     return (
       <Host class={{ [elevation]: true }}>
-        <div data-test={this.dataTest}>
+        <div class="paper__display" data-test={this.dataTest}>
           <slot></slot>
         </div>
       </Host>

@@ -21,6 +21,7 @@ import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-
 import { Color as Color2 } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
+import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
@@ -427,6 +428,10 @@ export namespace Components {
          */
         "endDateLimit"?: string;
         /**
+          * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
+        /**
           * Message. Select type of date.
          */
         "message"?: string;
@@ -453,6 +458,10 @@ export namespace Components {
          */
         "endDateSelect"?: Date;
         /**
+          * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
+        /**
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
@@ -474,6 +483,10 @@ export namespace Components {
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
+        /**
+          * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
         /**
           * StartDate. Insert a limiter to select the date period.
          */
@@ -2378,6 +2391,10 @@ declare namespace LocalJSX {
          */
         "endDateLimit"?: string;
         /**
+          * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
+        /**
           * Message. Select type of date.
          */
         "message"?: string;
@@ -2408,6 +2425,10 @@ declare namespace LocalJSX {
          */
         "endDateSelect"?: Date;
         /**
+          * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
+        /**
           * bdsEndDate. Event to return selected end date value.
          */
         "onBdsEndDate"?: (event: CustomEvent<any>) => void;
@@ -2433,6 +2454,10 @@ declare namespace LocalJSX {
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
+        /**
+          * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
         /**
           * bdsDateSelected. Event to return selected date value.
          */

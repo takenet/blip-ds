@@ -1,9 +1,10 @@
 import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import {
   THIS_DAY,
-  WEEK_DAYS,
+  weekDays,
   defaultStartDate,
   defaultEndDate,
+  changeMonths,
   getYears,
   getMonths,
   getMonthsSlide,
@@ -12,6 +13,7 @@ import {
   dateToDayList,
 } from '../../../utils/calendar';
 import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
+import { languages } from '../../../utils/languages';
 
 export type stateSlide = 'await' | 'pendding' | 'success';
 @Component({
@@ -46,6 +48,12 @@ export class BdsdatepickerSingle {
    * dateSelect. Insert a limiter to select the date period.
    */
   @Prop({ mutable: true, reflect: true }) dateSelect?: Date = null;
+
+  /**
+   * Language, Entered as one of the languages. Can be one of:
+   * 'pt_BR', 'es_ES', 'en_US'.
+   */
+  @Prop() language?: languages = 'pt_BR';
 
   /**
    * bdsDateSelected. Event to return selected date value.
@@ -87,10 +95,10 @@ export class BdsdatepickerSingle {
   }
 
   componentWillRender() {
-    this.week = Object.values(WEEK_DAYS);
+    this.week = Object.values(weekDays(this.language));
     this.monthsSlide = getMonthsSlide(this.yearActivated, this.monthActivated);
     this.years = getYears(this.yearActivated, this.startDate.year, this.endDate.year);
-    this.months = getMonths(this.yearActivated, this.startDate, this.endDate);
+    this.months = getMonths(this.yearActivated, this.startDate, this.endDate, changeMonths(this.language));
   }
   /**
    * prevDays. Function to create a gap between the beginning of the grid and the first day of the month.

@@ -1,10 +1,10 @@
 import { Component, h, State, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import {
   THIS_DAY,
-  WEEK_DAYS,
+  weekDays,
   defaultStartDate,
   defaultEndDate,
-  MONTHS,
+  changeMonths,
   getMonthsSlide,
   getYears,
   getMonths,
@@ -13,6 +13,7 @@ import {
   dateToDayList,
 } from '../../../utils/calendar';
 import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
+import { languages } from '../../../utils/languages';
 
 export type stateSlide = 'await' | 'pendding' | 'success';
 @Component({
@@ -52,6 +53,11 @@ export class BdsdatepickerPeriod {
    * EndDateSelect. Insert a limiter to select the date period.
    */
   @Prop({ mutable: true, reflect: true }) endDateSelect?: Date = null;
+  /**
+   * Language, Entered as one of the languages. Can be one of:
+   * 'pt_BR', 'es_ES', 'en_US'.
+   */
+  @Prop() language?: languages = 'pt_BR';
   /**
    * bdsStartDate. Event to return selected date value.
    */
@@ -116,10 +122,10 @@ export class BdsdatepickerPeriod {
   }
 
   componentWillRender() {
-    this.week = Object.values(WEEK_DAYS);
+    this.week = Object.values(weekDays(this.language));
     this.monthsSlide = getMonthsSlide(this.yearActivated, this.monthActivated);
     this.years = getYears(this.yearActivated, this.startDate.year, this.endDate.year);
-    this.months = getMonths(this.yearActivated, this.startDate, this.endDate);
+    this.months = getMonths(this.yearActivated, this.startDate, this.endDate, changeMonths(this.language));
   }
   /**
    * prevDays. Function to create a gap between the beginning of the grid and the first day of the month.
@@ -379,7 +385,7 @@ export class BdsdatepickerPeriod {
   }
 
   render(): HTMLElement {
-    const futureMonth = MONTHS.filter((obj) => obj.value === this.monthsSlide[2].month);
+    const futureMonth = changeMonths(this.language).filter((obj) => obj.value === this.monthsSlide[2].month);
     const futureYear = this.monthsSlide[2].year;
     return (
       <div class={{ datepicker__calendar: true, [`period`]: true }}>
