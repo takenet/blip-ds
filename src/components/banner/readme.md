@@ -37,6 +37,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [bds-upload](../upload)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -48,6 +52,7 @@ graph TD;
   bds-banner --> bds-icon
   bds-banner --> bds-button-icon
   bds-button-icon --> bds-icon
+  bds-upload --> bds-banner
   style bds-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

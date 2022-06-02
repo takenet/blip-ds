@@ -1471,8 +1471,26 @@ export namespace Components {
         "variant"?: FontSize;
     }
     interface BdsUpload {
+        /**
+          * Used to accept a especific type of file.
+         */
+        "accept": string;
+        /**
+          * Used for add a error message. In case a verify.
+         */
+        "error": string;
+        /**
+          * Used to allow upload multiple files.
+         */
+        "multiple": boolean;
+        /**
+          * Used for add a text on subtitle.
+         */
         "subtitle": string;
-        "title": string;
+        /**
+          * Used for add a text on title.
+         */
+        "titleName": string;
     }
     interface BdsWarning {
     }
@@ -3449,9 +3467,34 @@ declare namespace LocalJSX {
         "variant"?: FontSize;
     }
     interface BdsUpload {
-        "onUploadCompleted"?: (event: CustomEvent<Blob>) => void;
+        /**
+          * Used to accept a especific type of file.
+         */
+        "accept"?: string;
+        /**
+          * Used for add a error message. In case a verify.
+         */
+        "error"?: string;
+        /**
+          * Used to allow upload multiple files.
+         */
+        "multiple"?: boolean;
+        /**
+          * Event emited when change the value of Upload.
+         */
+        "onBdsUploadChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Event emited when delete a item from the list.
+         */
+        "onBdsUploadDelete"?: (event: CustomEvent<any>) => void;
+        /**
+          * Used for add a text on subtitle.
+         */
         "subtitle"?: string;
-        "title": string;
+        /**
+          * Used for add a text on title.
+         */
+        "titleName"?: string;
     }
     interface BdsWarning {
     }

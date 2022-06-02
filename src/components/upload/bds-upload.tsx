@@ -1,4 +1,6 @@
-import { Component, Event, h, Element, EventEmitter, State, Prop } from '@stencil/core';
+import { Component, h, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
+
+import background from '../../assets/svg/pattern.svg';
 
 @Component({
   tag: 'bds-upload',
@@ -7,76 +9,123 @@ import { Component, Event, h, Element, EventEmitter, State, Prop } from '@stenci
 })
 export class BdsUpload {
   @Element() private dropArea: HTMLElement;
-  @Event() uploadCompleted: EventEmitter<Blob>;
-  @State() public files: any[];
-  @State() public haveFiles = false;
-  @State() public filesReader: string | ArrayBuffer;
-  @Prop() title!: string;
+  @State() files: string[] = [];
+  @State() haveFiles = false;
+  @State() hover = false;
+  @State() background: string;
+  @State() size: number[] = [];
+  /**
+   * Used for add a text on title.
+   */
+  @Prop() titleName: string;
+  /**
+   * Used for add a text on subtitle.
+   */
   @Prop() subtitle: string;
+  /**
+   * Used for add a error message. In case a verify.
+   */
+  @Prop() error: string;
+  /**
+   * Used to allow upload multiple files.
+   */
+  @Prop() multiple: boolean;
+  /**
+   * Used to accept a especific type of file.
+   */
+  @Prop() accept: string;
+  /**
+   * Event emited when delete a item from the list.
+   */
+  @Event() bdsUploadDelete: EventEmitter;
+  /**
+   * Event emited when change the value of Upload.
+   */
+  @Event() bdsUploadChange: EventEmitter;
 
   componentDidLoad() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
-      this.dropArea.shadowRoot.addEventListener(eventName, this.preventDefaults, true);
+      this.dropArea.shadowRoot.addEventListener(eventName, this.preventDefaults, false);
+      this.dropArea.shadowRoot.addEventListener(eventName, () => this.hoverFile(true), false);
     });
     ['dragenter', 'dragover'].forEach((eventName) => {
-      this.dropArea.shadowRoot.addEventListener(eventName, () => this.handleDrop(true), false);
+      this.dropArea.shadowRoot.addEventListener(eventName, () => this.preventDefaults, false);
+      this.dropArea.shadowRoot.addEventListener(eventName, () => this.hoverFile(true), false);
     });
     ['dragleave', 'drop'].forEach((eventName) => {
-      this.dropArea.shadowRoot.addEventListener(eventName, () => this.handleDrop(true), false);
+      this.dropArea.shadowRoot.addEventListener(eventName, () => this.preventDefaults, false);
+      this.dropArea.shadowRoot.addEventListener(eventName, () => this.hoverFile(false), false);
     });
     this.dropArea.shadowRoot.addEventListener('drop', this.handleDrop, false);
   }
-
+  /**
+   * Recive the file data using drag and drop.
+   */
   handleDrop = (Event) => {
+    this.haveFiles = true;
     const dt = Event.dataTransfer;
     const files = dt.files;
     this.handleFiles(files);
   };
 
+  /**
+   * Verify if allow the state recive one or more items.
+   */
   handleFiles = (files) => {
-    this.files = [{ ...files }];
-    this.previewFile();
+    if (!this.multiple) {
+      this.files = [files[0]];
+    } else {
+      this.files = [...files];
+    }
+    this.bdsUploadChange.emit();
   };
-
-  previewFile = () => {
-    const name = this.files.map(function (e) {
-      return e[0].name;
-    });
-    return <div>{name}</div>;
-  };
-
+  /**
+   * Prevent the screen to reload.
+   */
   preventDefaults(e) {
     e.preventDefault();
     e.stopPropagation();
   }
-
-  public onInputChange(files: FileList) {
-    // check if 1 image is uploaded
-    if (files.length === 1) {
-      const imageFile = files[0];
-      this.files = [{ ...files }];
-
-      // upload image
-      this.uploadImage(imageFile);
+  /**
+   * Definy if are hover to aply styles in drop area.
+   */
+  hoverFile(boolean) {
+    this.hover = boolean;
+  }
+  /**
+   * Recive the file data using click.
+   */
+  public onUploadClick(files) {
+    if (files.length > 0) {
+      this.files = [...files];
+      this.haveFiles = true;
+      this.getSize();
     } else {
       return false;
     }
+    this.bdsUploadChange.emit();
   }
-
-  private uploadImage(file) {
-    // create a new instance of HTML5 FileReader api to handle uploading
-    const reader = new FileReader();
-    if (file) {
+  /**
+   * Return the size information from the file.
+   */
+  getSize() {
+    this.files.map((size: any) => {
+      const listSize = size.size;
+      this.size.push(listSize);
+    });
+  }
+  /**
+   * Used for delete a item from the list.
+   */
+  deleteFile(index) {
+    this.files.splice(index, 1);
+    this.files = [...this.files];
+    if (this.files.length === 0) {
+      this.haveFiles = false;
+    } else {
       this.haveFiles = true;
     }
-
-    reader.onload = () => {
-      const previewText: HTMLElement = this.dropArea.shadowRoot.querySelector('#preview-text');
-      this.filesReader = reader.result;
-      previewText.innerText = file.name;
-      this.uploadCompleted.emit(file);
-    };
-    reader.readAsDataURL(file);
+    this.bdsUploadDelete.emit();
   }
 
   render() {
@@ -86,34 +135,73 @@ export class BdsUpload {
           <bds-icon size="xxx-large" name="upload"></bds-icon>
           <div class="upload-header_text">
             <bds-typo variant="fs-16" bold="bold">
-              {this.title}
+              {this.titleName}
             </bds-typo>
             <bds-typo variant="fs-14" bold="regular">
               {this.subtitle}
             </bds-typo>
           </div>
         </div>
+        {this.error ? (
+          <bds-banner context="inside" variant="error">
+            {this.error}
+          </bds-banner>
+        ) : (
+          ''
+        )}
         {this.haveFiles ? (
-          <div class="upload__preview" id="drop-area">
-            <div class="preview" id="preview">
-              <bds-icon size="x-small" name="attach"></bds-icon>
-              <bds-typo variant="fs-14" bold="bold" class="preview-text" id="preview-text"></bds-typo>
-              <bds-icon size="x-small" name="trash"></bds-icon>
+          <div>
+            <div class="list-preview">
+              {this.files.map((names: any, index) => (
+                <div class="upload__preview" key={index} id="drop-area">
+                  <div class="preview" id="preview">
+                    <bds-icon size="x-small" name="attach"></bds-icon>
+                    <bds-typo variant="fs-14" bold="bold" class="preview-text" id="preview-text">
+                      {names.name}
+                    </bds-typo>
+                    <bds-icon size="x-small" name="trash" onClick={() => this.deleteFile(index)}></bds-icon>
+                  </div>
+                </div>
+              ))}
             </div>
+            {this.multiple ? (
+              <bds-typo variant="fs-14" italic class="preview-length">
+                {this.files.length} file uploaded
+              </bds-typo>
+            ) : (
+              ''
+            )}
           </div>
         ) : (
           ''
         )}
-        <div class="upload__edit">
-          <label htmlFor="file">
-            <bds-typo>Drag and drop your files here or click to upload file</bds-typo>
+        <div class={{ upload__edit: true }}>
+          <label
+            class={{ 'upload__edit--label': true, 'upload__edit--hover': this.hover }}
+            id="file-label"
+            htmlFor="file"
+          >
+            <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
+              {this.hover ? (
+                <bds-typo class="text" variant="fs-14" bold="bold">
+                  Drop here to attach file
+                </bds-typo>
+              ) : (
+                <bds-typo class="text" variant="fs-14" bold="bold">
+                  Drag and drop your files here or click to upload file
+                </bds-typo>
+              )}
+            </div>
+            <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={background} />
           </label>
           <input
             type="file"
             name="files[]"
             id="file"
             class="upload__input"
-            onChange={($event: any) => this.onInputChange($event.target.files)}
+            multiple={this.multiple}
+            accept={this.accept}
+            onChange={($event: any) => this.onUploadClick($event.target.files)}
           />
         </div>
       </div>
