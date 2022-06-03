@@ -1,19 +1,17 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
 
 import readme from './readme.md';
 
 export default {
   title: 'Expansion Panel',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },
 };
 
 const space = {
-  paddingTop: "8px",
-}
+  paddingTop: '8px',
+};
 
 export const defaulExpansionPanel = () => (
   <>

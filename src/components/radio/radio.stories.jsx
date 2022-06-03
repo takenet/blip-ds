@@ -1,6 +1,4 @@
 import React from 'react';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-
 import readme from './readme.md';
 
 export default {
@@ -24,12 +22,7 @@ export const radioGroup = () => (
 
 export const defaultRadio = () => (
   <>
-    <bds-radio
-      label={text('label', 'Click A')}
-      name={text('name', 'rd1')}
-      disabled={boolean('disabled', false)}
-      checked={boolean('checked', false)}
-    ></bds-radio>
+    <bds-radio label="Click A" name="rd1" disabled={false} checked={false}></bds-radio>
   </>
 );
 

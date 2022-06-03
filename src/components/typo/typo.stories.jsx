@@ -1,17 +1,15 @@
 import React from 'react';
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-
 import readme from './readme.md';
 
 export default {
   title: 'Typo',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },
 };
 
-const paragraph = 'Genialidade é fruto de muito hardwork. O segredo do sucesso é começar antes de estar pronto. É você quem decide se o seu dia vai ser incrível ou não.';
+const paragraph =
+  'Genialidade é fruto de muito hardwork. O segredo do sucesso é começar antes de estar pronto. É você quem decide se o seu dia vai ser incrível ou não.';
 
 export const allTypos = () => (
   <div>
@@ -28,65 +26,89 @@ export const allTypos = () => (
 
 export const typoBase = () => (
   <div style={{ width: '250px' }}>
-    <bds-typo
-      variant={text('variant', 'fs-16')}
-      line-height={text('lineHeight', '')}
-      bold={text('bold', '')}
-      italic={boolean('italic', false)}
-      no-wrap={boolean('noWrap', false)}
-      paragraph={boolean('paragraph', false)}
-      margin={boolean('margin', true)}
-    >
-      {text("text", "Wearetaketeam")}
+    <bds-typo variant="fs-16" line-height="" bold="" italic={false} no-wrap={false} paragraph={false} margin={true}>
+      Wearetaketeam
     </bds-typo>
-  </div >
+  </div>
 );
 
 export const typoLineHeight = () => (
   <>
-    <bds-typo variant="fs-24" line-height="double">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" line-height="plus">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" line-height="simple">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" line-height="small">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" line-height="none">Wearetaketeam</bds-typo>
+    <bds-typo variant="fs-24" line-height="double">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" line-height="plus">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" line-height="simple">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" line-height="small">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" line-height="none">
+      Wearetaketeam
+    </bds-typo>
   </>
 );
 
 export const typoBold = () => (
   <>
-    <bds-typo variant="fs-24" bold="extra-bold">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" bold="bold">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" bold="semi-bold">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" bold="regular">Wearetaketeam</bds-typo>
+    <bds-typo variant="fs-24" bold="extra-bold">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" bold="bold">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" bold="semi-bold">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" bold="regular">
+      Wearetaketeam
+    </bds-typo>
   </>
 );
 
 export const typoItalic = () => (
   <>
-    <bds-typo variant="fs-24" italic bold="extra-bold">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" italic bold="bold">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" italic bold="semi-bold">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24" italic bold="regular">Wearetaketeam</bds-typo>
+    <bds-typo variant="fs-24" italic bold="extra-bold">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" italic bold="bold">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" italic bold="semi-bold">
+      Wearetaketeam
+    </bds-typo>
+    <bds-typo variant="fs-24" italic bold="regular">
+      Wearetaketeam
+    </bds-typo>
   </>
 );
 
 export const typoNoWrap = () => (
   <div style={{ width: '250px' }}>
-    <bds-typo variant={text('variant', 'fs-16')} no-wrap={boolean('noWrap', true)}>{text('text', paragraph)}</bds-typo>
+    <bds-typo variant="fs-16" no-wrap={true}>
+      {paragraph}
+    </bds-typo>
   </div>
 );
 
 export const typoParapgraph = () => (
   <>
-    <bds-typo variant={text('variant', 'fs-16')} paragraph={boolean('paragraph', true)}>{text('text', paragraph)}</bds-typo>
-    <bds-typo variant={text('variant', 'fs-16')} paragraph={boolean('paragraph', true)} >{text('text', paragraph)}</bds-typo>
+    <bds-typo variant="fs-16" paragraph={true}>
+      {paragraph}
+    </bds-typo>
+    <bds-typo variant="fs-16" paragraph={true}>
+      {paragraph}
+    </bds-typo>
   </>
 );
 
 export const typoTag = () => (
   <>
-    <bds-typo tag={text('tag', 'h1')}>{text('text', 'Wearetaketeam')}</bds-typo>
-    <bds-typo tag={text('tag', 'h2')}>{text('text', 'Wearetaketeam')}</bds-typo>
-    <bds-typo tag={text('tag', 'p')}>{text('text', 'Wearetaketeam')}</bds-typo>
+    <bds-typo tag="h1">Wearetaketeam</bds-typo>
+    <bds-typo tag="h2">Wearetaketeam</bds-typo>
+    <bds-typo tag="p">Wearetaketeam</bds-typo>
   </>
 );

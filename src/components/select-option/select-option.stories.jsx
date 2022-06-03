@@ -1,5 +1,4 @@
 import React from 'react';
-
 import readme from './readme.md';
 
 export default {
@@ -37,4 +36,3 @@ export const selectOptionWithTitleAndIcon = () => (
     Cria e edita chatbots, mas não gerencia os membros do contrato.
   </bds-select-option>
 );
-

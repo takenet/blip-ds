@@ -1,111 +1,55 @@
 import React from 'react';
-import { withKnobs, text, object, select, boolean, number } from "@storybook/addon-knobs";
-
 import readme from './readme.md';
 
 export default {
   title: 'Avatar',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },
 };
 
 const content = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-}
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+};
 
 const avatarSize = {
-  marginRight: "8px",
-}
+  marginRight: '8px',
+};
 
 export const avatarGroup = () => {
-  const sizes = [
-    'extra-small',
-    'small',
-    'standard'
-  ]
   const users = [
-    {"id": "1", "name": "Michael Scott"},
-    {"id": "2", "name": "Dwight Schrute"},
-    {"id": "3", "name": "Jim Halpert"},
-    {"id": "4", "name": "Pam Beesly"},
-    {"id": "5", "name": "Ryan Howard"},
-    {"id": "6", "name": "Andy Bernard"}
-  ]
-  const arrayUsers = object("users",users);
+    { id: '1', name: 'Michael Scott' },
+    { id: '2', name: 'Dwight Schrute' },
+    { id: '3', name: 'Jim Halpert' },
+    { id: '4', name: 'Pam Beesly' },
+    { id: '5', name: 'Ryan Howard' },
+    { id: '6', name: 'Andy Bernard' },
+  ];
   return (
-  <div style={content}>
-    <bds-avatar-group
-      size={select('sizes',sizes)}
-      users={JSON.stringify(arrayUsers)}
-    >
-    </bds-avatar-group>
-  </div>
+    <div style={content}>
+      <bds-avatar-group size="standard" users={JSON.stringify(users)}></bds-avatar-group>
+    </div>
   );
 };
 
 export const defaultAvatar = () => {
-  const sizes = [
-    'extra-small',
-    'small',
-    'standard',
-    'large',
-    'extra-large'
-  ]
+  const sizes = ['extra-small', 'small', 'standard', 'large', 'extra-large'];
   return (
-  <div style={content}>
-    <bds-avatar
-      name={text('name', 'Michael Scott')}
-      thumbnail={text('thumbnail', '')}
-      size={select('sizes',sizes)}
-      upload={boolean('upload',false)}
-      ellipsis={number('ellipsis',null)}
-    >
-    </bds-avatar>
-  </div>
+    <div style={content}>
+      <bds-avatar name="Michael Scott" thumbnail="" size="standard" upload={false} ellipsis={null}></bds-avatar>
+    </div>
   );
 };
 
 export const sizeAvatar = () => (
   <div style={content}>
-    <bds-avatar
-      name={'Michael Scott'}
-      thumbnail={''}
-      size={'extra-small'}
-      style={avatarSize}
-    >
-    </bds-avatar>
-    <bds-avatar
-      name={'Dwight Schrute'}
-      thumbnail={''}
-      size={'small'}
-      style={avatarSize}
-    >
-    </bds-avatar>
-    <bds-avatar
-      name={'Jim Halpert'}
-      thumbnail={''}
-      size={'standard'}
-      style={avatarSize}
-    >
-    </bds-avatar>
-    <bds-avatar
-      name={'Pam Beesly'}
-      thumbnail={''}
-      size={'large'}
-      style={avatarSize}
-    >
-    </bds-avatar>
-    <bds-avatar
-      name={'Ryan Howard'}
-      thumbnail={''}
-      size={'extra-large'}
-      style={avatarSize}
-    >
-    </bds-avatar>
+    <bds-avatar name={'Michael Scott'} thumbnail={''} size={'extra-small'} style={avatarSize}></bds-avatar>
+    <bds-avatar name={'Dwight Schrute'} thumbnail={''} size={'small'} style={avatarSize}></bds-avatar>
+    <bds-avatar name={'Jim Halpert'} thumbnail={''} size={'standard'} style={avatarSize}></bds-avatar>
+    <bds-avatar name={'Pam Beesly'} thumbnail={''} size={'large'} style={avatarSize}></bds-avatar>
+    <bds-avatar name={'Ryan Howard'} thumbnail={''} size={'extra-large'} style={avatarSize}></bds-avatar>
   </div>
 );
 
@@ -117,15 +61,7 @@ export const uploadAvatar = () => (
       size="extra-large"
       upload="true"
       style={avatarSize}
-    >
-    </bds-avatar>
-    <bds-avatar
-      name="Michael Scott"
-      thumbnail=""
-      size="extra-large"
-      upload="true"
-      style={avatarSize}
-    >
-    </bds-avatar>
+    ></bds-avatar>
+    <bds-avatar name="Michael Scott" thumbnail="" size="extra-large" upload="true" style={avatarSize}></bds-avatar>
   </div>
 );

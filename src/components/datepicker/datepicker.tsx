@@ -86,7 +86,7 @@ export class DatePicker {
 
   @Watch('dateSelected')
   dateSelectedChanged(): void {
-    this.inputSetEndDate.setFocus();
+    this.inputSetEndDate?.setFocus();
   }
 
   componentWillLoad() {
@@ -151,7 +151,7 @@ export class DatePicker {
     this.bdsStartDate.emit({ value: null });
     this.bdsEndDate.emit({ value: null });
     setTimeout(() => {
-      this.inputSetDate.setFocus();
+      this.inputSetDate?.setFocus();
     }, 10);
   };
   /**
@@ -203,7 +203,7 @@ export class DatePicker {
   private onClickSetDate = () => {
     this.open = true;
     setTimeout(() => {
-      this.inputSetDate.setFocus();
+      this.inputSetDate?.setFocus();
       this.inputSetEndDate.removeFocus();
     }, 50);
     this.datepickerPeriod.clear();

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import readme from './readme.md';
 
 export default {
@@ -37,7 +36,6 @@ export const tabs = () => {
     </>
   );
 };
-
 
 export const scrollableTabs = () => {
   return (

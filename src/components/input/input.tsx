@@ -134,7 +134,7 @@ export class Input {
    * Make it possible to pass the base values to the warning level and exclude,
    * using the values between min and max.
    */
-  @Prop() counterLengthRule?: InputCounterLengthRules | {} = {};
+  @Prop() counterLengthRule?: InputCounterLengthRules = null;
 
   /**
    * If `true`, the user cannot modify the value.

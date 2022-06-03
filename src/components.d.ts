@@ -590,7 +590,7 @@ export namespace Components {
         /**
           * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
          */
-        "counterLengthRule"?: InputCounterLengthRules | {};
+        "counterLengthRule"?: InputCounterLengthRules;
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -2565,7 +2565,7 @@ declare namespace LocalJSX {
         /**
           * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
          */
-        "counterLengthRule"?: InputCounterLengthRules | {};
+        "counterLengthRule"?: InputCounterLengthRules;
         /**
           * Add state danger on input, use for use feedback.
          */
