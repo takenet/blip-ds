@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                       | Type                                                                     | Default     |
-| -------- | --------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------- |
-| `color`  | `color`   | used for change the color. Uses one of them.                      | `"danger" \| "default" \| "info" \| "outline" \| "success" \| "warning"` | `'default'` |
-| `icon`   | `icon`    | used for add icon in left container. Uses the bds-icon component. | `string`                                                                 | `undefined` |
+| Property | Attribute | Description                                                       | Type                                                                                   | Default     |
+| -------- | --------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ----------- |
+| `color`  | `color`   | used for change the color. Uses one of them.                      | `"danger" \| "default" \| "disabled" \| "info" \| "outline" \| "success" \| "warning"` | `'default'` |
+| `icon`   | `icon`    | used for add icon in left container. Uses the bds-icon component. | `string`                                                                               | `undefined` |
 
 
 ## Dependencies

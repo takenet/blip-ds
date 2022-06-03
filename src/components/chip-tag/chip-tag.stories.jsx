@@ -43,6 +43,7 @@ export const chipTagDefault = () => {
         <bds-chip-tag color="warning">warning</bds-chip-tag>
         <bds-chip-tag color="danger">danger</bds-chip-tag>
         <bds-chip-tag color="outline">outline</bds-chip-tag>
+        <bds-chip-tag color="disabled">disabled</bds-chip-tag>
       </div>
     )
   };

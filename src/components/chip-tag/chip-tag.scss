@@ -47,6 +47,9 @@
       background-color: $color-neutral-light-snow;
       border: 1px solid $color-neutral-medium-silver;
     }
+    &--disabled {
+      background-color: $color-neutral-light-whisper;
+    }
   }
   
 }

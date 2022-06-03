@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop } from '@stencil/core';
 
-export type Color = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline';
+export type Color = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline' | 'disabled';
 
 @Component({
   tag: 'bds-chip-tag',
