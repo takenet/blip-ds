@@ -17,8 +17,8 @@ export const inputChipsDefault = () => {
       danger={false}
       error-message=""
       chips='["chip1", "chip2"]'
-      disable-submit={boolean('disableSubmit', false)}
-      disabled={boolean('disabled', false)}
+      disable-submit={false}
+      disabled={false}
     ></bds-input-chips>
   );
 };

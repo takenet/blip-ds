@@ -3,7 +3,6 @@ import readme from './readme.md';
 
 export default {
   title: 'Radio',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },

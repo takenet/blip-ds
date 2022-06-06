@@ -30,8 +30,8 @@ const Template = (args) => {
   );
 };
 
-export const SystenAlert = Template.bind({});
-SystenAlert.args = { variant: 'system', icon: 'info' };
+export const SystemAlert = Template.bind({});
+SystemAlert.args = { variant: 'system', icon: 'info' };
 
 export const ErrorAlert = Template.bind({});
 ErrorAlert.args = { variant: 'error', icon: 'error' };
