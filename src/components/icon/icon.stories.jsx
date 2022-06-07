@@ -1,11 +1,8 @@
 import React from 'react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
-
 import readme from './readme.md';
 
 export default {
   title: 'Icon',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },
@@ -344,7 +341,7 @@ const zeroHeightStyles = {
   alignItems: 'baseline',
   justifyContent: 'center',
   flexDirection: 'row',
-}
+};
 
 const logoStyles = {
   width: '120px',
@@ -357,9 +354,9 @@ const logoStyles = {
   textAlign: 'center',
 };
 
-const zeroHeightIconStyles ={
+const zeroHeightIconStyles = {
   padding: '5px',
-}
+};
 
 const iconWrapperStyles = {
   display: 'flex',
@@ -402,7 +399,7 @@ export const allEmojis = () => {
   emojiNames.forEach((name) => {
     story.push(
       <div style={emojiStyles}>
-        <bds-icon type="emoji" size={text('size', 'x-large')} name={name}></bds-icon>
+        <bds-icon type="emoji" size="x-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
@@ -428,32 +425,92 @@ export const allLogos = () => {
 
 export const iconColors = () => (
   <>
-    <bds-icon style={zeroHeightIconStyles} name={text('name', 'info')} size="xxx-large" color={text('color1', '#2CC3D5')}></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name={text('name', 'info')} size="xxx-large" color={text('color2', '#87DDE8')}></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name={text('name', 'info')} size="xxx-large" color={text('color3', '#2498A8')}></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name={text('name', 'info')} size="xxx-large" theme="solid" color={text('color1', '#2CC3D5')}></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name={text('name', 'info')} size="xxx-large" theme="solid" color={text('color2', '#87DDE8')}></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name={text('name', 'info')} size="xxx-large" theme="solid" color={text('color3', '#2498A8')}></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#2CC3D5"></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#87DDE8"></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#2498A8"></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" theme="solid" color="#2CC3D5"></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" theme="solid" color="#87DDE8"></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" theme="solid" color="#2498A8"></bds-icon>
   </>
 );
 
 export const iconOutline = () => (
   <div style={zeroHeightStyles}>
-    <bds-icon style={zeroHeightIconStyles} name="arrow-right" theme="outline" size="xxx-large" aria-label="seta para a direita" ></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="email" theme="outline" size="xxx-large" aria-label="Ícone de email"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" theme="outline" size="xxx-large" aria-label="Ícone de informações"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="home" theme="outline" size="xxx-large" aria-label="Voltar para página principal"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="add" theme="outline" size="xxx-large" aria-label="Ícone de mais para adicionar elemento"></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="arrow-right"
+      theme="outline"
+      size="xxx-large"
+      aria-label="seta para a direita"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="email"
+      theme="outline"
+      size="xxx-large"
+      aria-label="Ícone de email"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="info"
+      theme="outline"
+      size="xxx-large"
+      aria-label="Ícone de informações"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="home"
+      theme="outline"
+      size="xxx-large"
+      aria-label="Voltar para página principal"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="add"
+      theme="outline"
+      size="xxx-large"
+      aria-label="Ícone de mais para adicionar elemento"
+    ></bds-icon>
   </div>
 );
 
 export const iconSolid = () => (
   <div style={zeroHeightStyles}>
-    <bds-icon style={zeroHeightIconStyles} name="arrow-right" theme="solid" size="xxx-large" aria-label="seta para a direita" ></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="email" theme="solid" size="xxx-large" aria-label="Ícone de email"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" theme="solid" size="xxx-large" aria-label="Ícone de informações"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="warning" theme="solid" size="xxx-large" aria-label="Ícone de atenção"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="add" theme="solid" size="xxx-large" aria-label="Ícone de mais para adicionar elemento"></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="arrow-right"
+      theme="solid"
+      size="xxx-large"
+      aria-label="seta para a direita"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="email"
+      theme="solid"
+      size="xxx-large"
+      aria-label="Ícone de email"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="info"
+      theme="solid"
+      size="xxx-large"
+      aria-label="Ícone de informações"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="warning"
+      theme="solid"
+      size="xxx-large"
+      aria-label="Ícone de atenção"
+    ></bds-icon>
+    <bds-icon
+      style={zeroHeightIconStyles}
+      name="add"
+      theme="solid"
+      size="xxx-large"
+      aria-label="Ícone de mais para adicionar elemento"
+    ></bds-icon>
   </div>
 );
 
@@ -462,10 +519,10 @@ export const iconSize = () => (
     <bds-icon style={zeroHeightIconStyles} name="info" size="brand"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xx-large"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="x-large" ></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="large" ></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="x-large"></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="large"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="medium"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="small" ></bds-icon>
+    <bds-icon style={zeroHeightIconStyles} name="info" size="small"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="x-small"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xx-small"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-small"></bds-icon>
@@ -475,14 +532,43 @@ export const iconSize = () => (
 export const iconEmoji = () => (
   <>
     <div style={zeroHeightStyles}>
-      <bds-icon style={zeroHeightIconStyles} name="nerd-face" size="xxx-large" type="emoji" aria-label="emoji de nerd" ></bds-icon>
-      <bds-icon style={zeroHeightIconStyles} name="smiling-face" size="xxx-large" type="emoji" aria-label="emoji sorrindo"></bds-icon>
-      <bds-icon style={zeroHeightIconStyles} name="beaming-face" size="xxx-large" type="emoji" aria-label="emoji radiante"></bds-icon>
-      <bds-icon style={zeroHeightIconStyles} name="neutral-face" size="xxx-large" type="emoji" aria-label="emoji neutro"></bds-icon>
-      <bds-icon style={zeroHeightIconStyles} name="winking-face" size="xxx-large" type="emoji" aria-label="emoji piscando"></bds-icon>
+      <bds-icon
+        style={zeroHeightIconStyles}
+        name="nerd-face"
+        size="xxx-large"
+        type="emoji"
+        aria-label="emoji de nerd"
+      ></bds-icon>
+      <bds-icon
+        style={zeroHeightIconStyles}
+        name="smiling-face"
+        size="xxx-large"
+        type="emoji"
+        aria-label="emoji sorrindo"
+      ></bds-icon>
+      <bds-icon
+        style={zeroHeightIconStyles}
+        name="beaming-face"
+        size="xxx-large"
+        type="emoji"
+        aria-label="emoji radiante"
+      ></bds-icon>
+      <bds-icon
+        style={zeroHeightIconStyles}
+        name="neutral-face"
+        size="xxx-large"
+        type="emoji"
+        aria-label="emoji neutro"
+      ></bds-icon>
+      <bds-icon
+        style={zeroHeightIconStyles}
+        name="winking-face"
+        size="xxx-large"
+        type="emoji"
+        aria-label="emoji piscando"
+      ></bds-icon>
     </div>
   </>
-
 );
 
 export const iconLogo = () => (
@@ -492,5 +578,4 @@ export const iconLogo = () => (
       <bds-icon name="google" size="xxx-large" type="logo" aria-label="logo da google"></bds-icon>
     </div>
   </>
-
 );

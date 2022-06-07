@@ -1,11 +1,8 @@
 import React from 'react';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
-
 import readme from './readme.md';
 
 export default {
   title: 'Input Phone Number',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },

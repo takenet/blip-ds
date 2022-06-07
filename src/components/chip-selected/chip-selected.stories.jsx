@@ -1,11 +1,9 @@
 import React from 'react';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import readme from './readme.md';
 
 export default {
   title: 'Chip Selected',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },
@@ -64,13 +62,12 @@ export const sizeChipSelected = () => (
 );
 
 export const ChipSelected = () => (
-    <div style={chipStyle}>
-      <bds-chip-selected icon="add" color="default">
-        chip default
-      </bds-chip-selected>
-      <bds-chip-selected icon="add" color="default" selected="true">
-        chip selected
-      </bds-chip-selected>
-    </div>
-  );
-  
+  <div style={chipStyle}>
+    <bds-chip-selected icon="add" color="default">
+      chip default
+    </bds-chip-selected>
+    <bds-chip-selected icon="add" color="default" selected="true">
+      chip selected
+    </bds-chip-selected>
+  </div>
+);

@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
-
 import readme from './readme.md';
 
 export default {
   title: 'Stepper',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },

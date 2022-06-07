@@ -1,11 +1,8 @@
 import React from 'react';
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
-
 import readme from './readme.md';
 
 export default {
   title: 'Modal',
-  decorators: [withKnobs],
   parameters: {
     notes: { markdown: readme },
   },
@@ -13,9 +10,11 @@ export default {
 
 export const defaultModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
+    <bds-modal open={true} close-button={true}>
       <bds-modal-action>
-        <bds-button icon="video" variant="secondary">Tutorial</bds-button>
+        <bds-button icon="video" variant="secondary">
+          Tutorial
+        </bds-button>
         <bds-button>Ok, entendi</bds-button>
       </bds-modal-action>
     </bds-modal>
@@ -24,7 +23,7 @@ export const defaultModal = () => (
 
 export const informativeModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
+    <bds-modal open={true} close-button={true}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
         <div style={{ paddingRight: '20px' }}>
           <img src="https://picsum.photos/200/210?random=2" />
@@ -34,7 +33,9 @@ export const informativeModal = () => (
             O que é o Histórico de tickets?
           </bds-typo>
           <bds-typo variant="fs-14" bold="regular">
-            É o local onde você pode acessar todo o histórico dos tickets abertos. Além disso, é possível salvar os dados de atendimento em planilhas de acordo com os filtros escolhidos. Você também consegue exportar documentos em PDF com a transcrição completa de cada conversa.
+            É o local onde você pode acessar todo o histórico dos tickets abertos. Além disso, é possível salvar os
+            dados de atendimento em planilhas de acordo com os filtros escolhidos. Você também consegue exportar
+            documentos em PDF com a transcrição completa de cada conversa.
           </bds-typo>
         </div>
       </div>
@@ -44,7 +45,9 @@ export const informativeModal = () => (
         </bds-typo>
       </div>
       <bds-modal-action>
-        <bds-button icon="video" variant="secondary">Tutorial</bds-button>
+        <bds-button icon="video" variant="secondary">
+          Tutorial
+        </bds-button>
         <bds-button>Ok, entendi</bds-button>
       </bds-modal-action>
     </bds-modal>
@@ -53,20 +56,30 @@ export const informativeModal = () => (
 
 export const newsModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
+    <bds-modal open={true} close-button={true}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
         <div style={{ paddingRight: '20px' }}>
-          <iframe style={{borderRadius:'12px'}} width="280" height="168" src="https://www.youtube.com/embed/tDfDzUiG-oY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe
+            style={{ borderRadius: '12px' }}
+            width="280"
+            height="168"
+            src="https://www.youtube.com/embed/tDfDzUiG-oY"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
         <div>
-          <bds-chip variant="watermelon" style={{ marginBottom: '5px' }}>Novidades!</bds-chip>
+          <bds-chip variant="watermelon" style={{ marginBottom: '5px' }}>
+            Novidades!
+          </bds-chip>
           <bds-typo variant="fs-20" bold="semi-bold">
-            Oi, Usuário!
-            conheça os BLiPspaces
+            Oi, Usuário! conheça os BLiPspaces
           </bds-typo>
           <bds-typo variant="fs-14" bold="regular">
-            Workspaces são espaços de trabalho onde equipes podem se comunicar e trabalhar com projetos em comum.
-            Vamos organizar os seus BLiPspaces? 😃
+            Workspaces são espaços de trabalho onde equipes podem se comunicar e trabalhar com projetos em comum. Vamos
+            organizar os seus BLiPspaces? 😃
           </bds-typo>
         </div>
       </div>
@@ -85,7 +98,7 @@ export const newsModal = () => (
 
 export const warningModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
+    <bds-modal open={true} close-button={true}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
         <div style={{ paddingRight: '20px' }}>
           <img src="https://picsum.photos/200/210?random=2" />
@@ -95,11 +108,17 @@ export const warningModal = () => (
             Atenção!
           </bds-typo>
           <bds-typo variant="fs-14" bold="regular">
-            Você está movendo os chatbots selecionados para o workspace Unilever. Todos os membros com acesso a eles e suas permissões também serão movidos.
-            Esta ação não pode ser desfeita!
+            Você está movendo os chatbots selecionados para o workspace Unilever. Todos os membros com acesso a eles e
+            suas permissões também serão movidos. Esta ação não pode ser desfeita!
           </bds-typo>
           <div style={{ paddingTop: '20px' }}>
-            <bds-typo variant="fs-14" bold="regular">Para confirmar, digite <bds-typo style={{ color: '#21CC79' }} variant="fs-14" bold="regular" tag="span">Unilever</bds-typo> no campo abaixo.</bds-typo>
+            <bds-typo variant="fs-14" bold="regular">
+              Para confirmar, digite{' '}
+              <bds-typo style={{ color: '#21CC79' }} variant="fs-14" bold="regular" tag="span">
+                Unilever
+              </bds-typo>{' '}
+              no campo abaixo.
+            </bds-typo>
           </div>
 
           <div style={{ width: '312px', padding: '8px' }}>
@@ -122,7 +141,7 @@ export const warningModal = () => (
 
 export const InviteModal = () => (
   <>
-    <bds-modal open={boolean('open', true)} close-button={boolean('close-button', true)}>
+    <bds-modal open={true} close-button={true}>
       <div style={{ height: '204px', margin: 'auto' }}>
         <div style={{ display: 'flex', height: '76px', paddingBottom: '24px' }}>
           <div style={{ paddingRight: '20px' }}>
@@ -131,13 +150,12 @@ export const InviteModal = () => (
           <div>
             <bds-typo tag="h4" variant="fs-20" bold="semi-bold">
               Convidar pessoas
-          </bds-typo>
-          <div style={{width:'326px'}}>
-            <bds-typo variant="fs-14" bold="regular">
-              Convide os membros do seu time para participar deste workspace:
-          </bds-typo>
-          </div>
-            
+            </bds-typo>
+            <div style={{ width: '326px' }}>
+              <bds-typo variant="fs-14" bold="regular">
+                Convide os membros do seu time para participar deste workspace:
+              </bds-typo>
+            </div>
           </div>
         </div>
         <div style={{ display: 'flex' }}>
@@ -152,9 +170,19 @@ export const InviteModal = () => (
             </bds-select>
           </div>
         </div>
-        <div style={{width:'398px', display:'flex', justifyContent:'space-between', alignItems:'center', paddingTop:'8px'}}>
+        <div
+          style={{
+            width: '398px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingTop: '8px',
+          }}
+        >
           <bds-typo variant="fs-12">ou</bds-typo>
-          <bds-button icon="info" variant="secondary">Importar vários</bds-button>
+          <bds-button icon="info" variant="secondary">
+            Importar vários
+          </bds-button>
           <bds-typo variant="fs-10">Veja a formatação da tabela aqui</bds-typo>
         </div>
       </div>
