@@ -1513,6 +1513,106 @@ export namespace Components {
     interface BdsWarning {
     }
 }
+export interface BdsAutocompleteCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsAutocompleteElement;
+}
+export interface BdsBannerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsBannerElement;
+}
+export interface BdsBannerLinkCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsBannerLinkElement;
+}
+export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsCheckboxElement;
+}
+export interface BdsChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsChipElement;
+}
+export interface BdsChipClickableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsChipClickableElement;
+}
+export interface BdsChipSelectedCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsChipSelectedElement;
+}
+export interface BdsDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsDatepickerElement;
+}
+export interface BdsDatepickerPeriodCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsDatepickerPeriodElement;
+}
+export interface BdsDatepickerSingleCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsDatepickerSingleElement;
+}
+export interface BdsInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsInputElement;
+}
+export interface BdsInputChipsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsInputChipsElement;
+}
+export interface BdsInputEditableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsInputEditableElement;
+}
+export interface BdsInputPhoneNumberCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsInputPhoneNumberElement;
+}
+export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsModalElement;
+}
+export interface BdsRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsRadioElement;
+}
+export interface BdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsRadioGroupElement;
+}
+export interface BdsSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSelectElement;
+}
+export interface BdsSelectChipsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSelectChipsElement;
+}
+export interface BdsSelectOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSelectOptionElement;
+}
+export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSwitchElement;
+}
+export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTabElement;
+}
+export interface BdsTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTabsElement;
+}
+export interface BdsToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsToastElement;
+}
+export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsUploadElement;
+}
 declare global {
     interface HTMLBdsAccordionElement extends Components.BdsAccordion, HTMLStencilElement {
     }
@@ -2049,27 +2149,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        "onBdsBlur"?: (event: BdsAutocompleteCustomEvent<void>) => void;
         /**
           * Emitted when the selection is cancelled.
          */
-        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        "onBdsCancel"?: (event: BdsAutocompleteCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<AutocompleteChangeEventDetail>) => void;
+        "onBdsChange"?: (event: BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>) => void;
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        "onBdsFocus"?: (event: BdsAutocompleteCustomEvent<void>) => void;
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBdsInput"?: (event: BdsAutocompleteCustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when the selected value has changed.
          */
-        "onBdsSelectedChange"?: (event: CustomEvent<AutocompleteSelectedChangeEventDetail>) => void;
+        "onBdsSelectedChange"?: (event: BdsAutocompleteCustomEvent<AutocompleteSelectedChangeEventDetail>) => void;
         /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -2147,7 +2247,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the banner is closed.
          */
-        "onBdsBannerClose"?: (event: CustomEvent<any>) => void;
+        "onBdsBannerClose"?: (event: BdsBannerCustomEvent<any>) => void;
         /**
           * Set the banner varient, it can be 'system' or 'warning'.
          */
@@ -2161,7 +2261,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link is clicked.
          */
-        "onBdsBannerLink"?: (event: CustomEvent<any>) => void;
+        "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<any>) => void;
     }
     interface BdsButton {
         /**
@@ -2262,11 +2362,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsCheckboxCustomEvent<any>) => void;
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBdsInput"?: (event: BdsCheckboxCustomEvent<KeyboardEvent>) => void;
         "refer": string;
     }
     interface BdsChip {
@@ -2297,7 +2397,7 @@ declare namespace LocalJSX {
         /**
           * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
          */
-        "onBdsDelete"?: (event: CustomEvent<any>) => void;
+        "onBdsDelete"?: (event: BdsChipCustomEvent<any>) => void;
         /**
           * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
          */
@@ -2336,11 +2436,11 @@ declare namespace LocalJSX {
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
-        "onChipClickableClick"?: (event: CustomEvent<any>) => void;
+        "onChipClickableClick"?: (event: BdsChipClickableCustomEvent<any>) => void;
         /**
           * Triggered after a mouse click on close icon, return id element. Only fired when close is true.
          */
-        "onChipClickableClose"?: (event: CustomEvent<any>) => void;
+        "onChipClickableClose"?: (event: BdsChipClickableCustomEvent<any>) => void;
         /**
           * used for change the size chip. Uses one of them.
          */
@@ -2363,7 +2463,7 @@ declare namespace LocalJSX {
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
-        "onChipClick"?: (event: CustomEvent<any>) => void;
+        "onChipClick"?: (event: BdsChipSelectedCustomEvent<any>) => void;
         /**
           * used for set the initial setup for true;
          */
@@ -2406,11 +2506,11 @@ declare namespace LocalJSX {
         /**
           * bdsStartDate. Event to return selected end date value.
          */
-        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        "onBdsEndDate"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
           * bdsStartDate. Event to return selected date value.
          */
-        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
@@ -2436,11 +2536,11 @@ declare namespace LocalJSX {
         /**
           * bdsEndDate. Event to return selected end date value.
          */
-        "onBdsEndDate"?: (event: CustomEvent<any>) => void;
+        "onBdsEndDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
         /**
           * bdsStartDate. Event to return selected date value.
          */
-        "onBdsStartDate"?: (event: CustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
          */
@@ -2466,7 +2566,7 @@ declare namespace LocalJSX {
         /**
           * bdsDateSelected. Event to return selected date value.
          */
-        "onBdsDateSelected"?: (event: CustomEvent<any>) => void;
+        "onBdsDateSelected"?: (event: BdsDatepickerSingleCustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
          */
@@ -2645,27 +2745,27 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event input focus.
          */
-        "onBdsFocus"?: (event: CustomEvent<any>) => void;
+        "onBdsFocus"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: CustomEvent<KeyboardEvent>) => void;
+        "onBdsInput"?: (event: BdsInputCustomEvent<KeyboardEvent>) => void;
         /**
           * Event input key down backspace.
          */
-        "onBdsKeyDownBackspace"?: (event: CustomEvent<any>) => void;
+        "onBdsKeyDownBackspace"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event input onblur.
          */
-        "onBdsOnBlur"?: (event: CustomEvent<any>) => void;
+        "onBdsOnBlur"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event input enter.
          */
-        "onBdsSubmit"?: (event: CustomEvent<any>) => void;
+        "onBdsSubmit"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Indicated to pass a regex pattern to input
          */
@@ -2755,19 +2855,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsBlur"?: (event: CustomEvent<any>) => void;
+        "onBdsBlur"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChangeChips"?: (event: CustomEvent<any>) => void;
+        "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsSubmit"?: (event: CustomEvent<any>) => void;
+        "onBdsSubmit"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * A tip for the user who can enter no controls.
          */
@@ -2821,7 +2921,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when input text confirm.
          */
-        "onBdsInputEditableSave"?: (event: CustomEvent<InputEditableEventDetail>) => void;
+        "onBdsInputEditableSave"?: (event: BdsInputEditableCustomEvent<InputEditableEventDetail>) => void;
         /**
           * Error message when input is required
          */
@@ -2934,19 +3034,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        "onBdsBlur"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
           * Emitted when the selection is cancelled.
          */
-        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        "onBdsCancel"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        "onBdsFocus"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsPhoneNumberChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<SelectChangeEventDetail>) => void;
         /**
           * The options of select.
          */
@@ -3069,7 +3169,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when modal status has changed.
          */
-        "onBdsModalChanged"?: (event: CustomEvent<any>) => void;
+        "onBdsModalChanged"?: (event: BdsModalCustomEvent<any>) => void;
         /**
           * Used to open/close the modal
          */
@@ -3124,11 +3224,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsRadioCustomEvent<any>) => void;
         /**
           * Emitted when the value has changed because of a click event.
          */
-        "onBdsClickChange"?: (event: CustomEvent<any>) => void;
+        "onBdsClickChange"?: (event: BdsRadioCustomEvent<any>) => void;
         "refer": string;
         "value": string;
     }
@@ -3136,7 +3236,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed due to a click event.
          */
-        "onBdsRadioGroupChange"?: (event: CustomEvent<any>) => void;
+        "onBdsRadioGroupChange"?: (event: BdsRadioGroupCustomEvent<any>) => void;
         /**
           * The value of the selected radio
          */
@@ -3166,19 +3266,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        "onBdsBlur"?: (event: BdsSelectCustomEvent<void>) => void;
         /**
           * Emitted when the selection is cancelled.
          */
-        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        "onBdsCancel"?: (event: BdsSelectCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        "onBdsChange"?: (event: BdsSelectCustomEvent<SelectChangeEventDetail>) => void;
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        "onBdsFocus"?: (event: BdsSelectCustomEvent<void>) => void;
         /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -3248,19 +3348,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsBlur"?: (event: CustomEvent<void>) => void;
+        "onBdsBlur"?: (event: BdsSelectChipsCustomEvent<void>) => void;
         /**
           * Emitted when the selection is cancelled.
          */
-        "onBdsCancel"?: (event: CustomEvent<void>) => void;
+        "onBdsCancel"?: (event: BdsSelectChipsCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+        "onBdsChange"?: (event: BdsSelectChipsCustomEvent<SelectChangeEventDetail>) => void;
         /**
           * Emitted when the select loses focus.
          */
-        "onBdsFocus"?: (event: CustomEvent<void>) => void;
+        "onBdsFocus"?: (event: BdsSelectChipsCustomEvent<void>) => void;
         /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -3291,7 +3391,7 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "invisible"?: boolean;
-        "onOptionSelected"?: (event: CustomEvent<any>) => void;
+        "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         /**
           * The text value of the option.
          */
@@ -3358,7 +3458,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: CustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsSwitchCustomEvent<any>) => void;
         /**
           * The refer of the control.
          */
@@ -3375,7 +3475,7 @@ declare namespace LocalJSX {
          */
         "group": string;
         "label": string;
-        "onBdsSelect"?: (event: CustomEvent<any>) => void;
+        "onBdsSelect"?: (event: BdsTabCustomEvent<any>) => void;
     }
     interface BdsTabPanel {
         "active"?: boolean;
@@ -3386,7 +3486,7 @@ declare namespace LocalJSX {
     }
     interface BdsTabs {
         "align"?: 'left' | 'center' | 'right';
-        "onScrollButtonClick"?: (event: CustomEvent<Overflow>) => void;
+        "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
     }
     interface BdsToast {
         /**
@@ -3416,7 +3516,7 @@ declare namespace LocalJSX {
         /**
           * Event used to execute some action when the action button on the toast is clicked
          */
-        "onToastButtonClick"?: (event: CustomEvent<any>) => void;
+        "onToastButtonClick"?: (event: BdsToastCustomEvent<any>) => void;
         /**
           * The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
          */
@@ -3516,11 +3616,11 @@ declare namespace LocalJSX {
         /**
           * Event emited when change the value of Upload.
          */
-        "onBdsUploadChange"?: (event: CustomEvent<any>) => void;
+        "onBdsUploadChange"?: (event: BdsUploadCustomEvent<any>) => void;
         /**
           * Event emited when delete a item from the list.
          */
-        "onBdsUploadDelete"?: (event: CustomEvent<any>) => void;
+        "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<any>) => void;
         /**
           * Used for add a text on subtitle.
          */
