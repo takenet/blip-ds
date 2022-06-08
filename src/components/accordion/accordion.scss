@@ -10,6 +10,25 @@
   color: $color-neutral-dark-city;
   cursor: pointer;
 
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  & * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover {
+    &::before {
+      background-color: $color-neutral-light-whisper;
+      mix-blend-mode: multiply;
+    }
+  }
+
   & .accButton {
     position: absolute;
     right: 24px;
@@ -19,6 +38,7 @@
     -webkit-transition: height 0.5s, all 0.3s;
     -moz-transition: height 0.5s, all 0.3s;
     transition: height 0.5s, all 0.3s;
+    z-index: 1;
 
     &__isopen {
       transform: rotate(180deg);
@@ -58,7 +78,7 @@
   transition: all 0.5s;
 
   & .container {
-    padding: 0 24px 48px;
+    padding: 8px 24px 48px;
     position: relative;
     color: $color-neutral-dark-city;
   }
