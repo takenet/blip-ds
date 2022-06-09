@@ -49,9 +49,7 @@
     .text {
       width: 100%;
       height: 24px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+      flex-wrap: wrap;
     }
   }
   .text-box--hover {
