@@ -8,6 +8,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions"
   ],
+  "typescript": { "reactDocgen": false },
   "framework": "@storybook/react",
   "core": {
     "builder": "@storybook/builder-webpack5"
