@@ -18,6 +18,7 @@ log.txt
 .sass-cache/
 .versions/
 .docs/
+storybook-static
 
 node_modules/
 $RECYCLE.BIN/
