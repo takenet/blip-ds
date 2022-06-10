@@ -30,7 +30,7 @@
     "test:coverage": "stencil test --spec --e2e --coverage",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook -s www",
-    "storybook:deploy": "storybook-to-ghpages -e .docs --ci",
+    "storybook:deploy": "storybook-to-ghpages",
     "eslint": "eslint . --ext .jsx,.ts,.tsx",
     "semantic-release": "semantic-release",
     "commit": "./node_modules/.bin/git-cz",
