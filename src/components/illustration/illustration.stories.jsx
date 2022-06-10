@@ -58,6 +58,25 @@ const defaults = [
   'whatsapp',
 ];
 
+const screens = [
+  'screen-home',
+  'screen-control-panel',
+  'screen-builder',
+  'screen-desk',
+  'screen-users',
+  'screen-report',
+  'screen-blipchat',
+  'screen-whatsapp',
+  'screen-home-off',
+  'screen-control-panel-off',
+  'screen-builder-off',
+  'screen-desk-off',
+  'screen-users-off',
+  'screen-report-off',
+  'screen-blipchat-off',
+  'screen-whatsapp-off',
+];
+
 const illustrationStyles = {
   width: '200px',
   height: '150px',
@@ -70,13 +89,28 @@ const illustrationWrapperStyles = {
   flexWrap: 'wrap',
 };
 
-export const allIllustrations = () => {
+export const illustrationsDefault = () => {
   const defaultArray = [];
 
   defaults.forEach((name) => {
     defaultArray.push(
       <div style={illustrationStyles}>
         <bds-illustration type="default" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const illustrationsScreens = () => {
+  const defaultArray = [];
+
+  screens.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="screens" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );

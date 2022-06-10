@@ -1,1 +1,1 @@
-export type IllustrationType = 'default';
+export type IllustrationType = 'default' | 'screens';

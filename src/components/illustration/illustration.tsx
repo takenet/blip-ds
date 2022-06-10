@@ -32,8 +32,14 @@ export class BdsIllustration {
   /**Function to get the name e complete with the path in tokens*/
   getIllustration = () => {
     const name = this.name;
-    const fullName = `asset-illustration-${name}`;
-    return fullName;
+    const type = this.type;
+    if (type === 'default') {
+      const fullName = `asset-illustration-${name}`;
+      return fullName;
+    } else if (type === 'screens') {
+      const fullName = `asset-illustration-screens-${name}`;
+      return fullName;
+    }
   };
 
   /**Function to transform the svg in a div element. */
@@ -67,7 +73,7 @@ export class BdsIllustration {
         {this.IllustrationContent ? (
           <div
             class={{
-              default: this.type === 'default',
+              illustration: true,
             }}
             innerHTML={this.IllustrationContent}
             data-test={this.dataTest}
