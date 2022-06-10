@@ -48,6 +48,7 @@
     "@storybook/builder-webpack5": "^6.5.8",
     "@storybook/manager-webpack5": "^6.5.8",
     "@storybook/react": "^6.5.8",
+    "@storybook/storybook-deployer": "^2.8.11",
     "@storybook/testing-library": "^0.0.11",
     "@types/color": "^3.0.3",
     "@types/jest": "27.5.1",
