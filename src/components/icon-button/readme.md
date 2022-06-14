@@ -22,6 +22,7 @@
  - [bds-banner](../banner)
  - [bds-tabs](../tabs)
  - [bds-toast](../toast)
+ - [bds-upload](../upload)
 
 ### Depends on
 
@@ -34,6 +35,7 @@ graph TD;
   bds-banner --> bds-button-icon
   bds-tabs --> bds-button-icon
   bds-toast --> bds-button-icon
+  bds-upload --> bds-button-icon
   style bds-button-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

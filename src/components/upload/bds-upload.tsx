@@ -79,7 +79,7 @@ export class BdsUpload {
     if (!this.multiple) {
       this.files = [files[0]];
     } else {
-      this.files = [...files];
+      this.files = [...this.files, ...files];
     }
     this.bdsUploadChange.emit();
   };
@@ -101,7 +101,7 @@ export class BdsUpload {
    */
   public onUploadClick(files) {
     if (files.length > 0) {
-      this.files = [...files];
+      this.files = [...this.files, ...files];
       this.haveFiles = true;
       this.getSize();
     } else {
@@ -160,17 +160,23 @@ export class BdsUpload {
                 <div class="upload__preview" key={index} id="drop-area">
                   <div class="preview" id="preview">
                     <bds-icon size="x-small" name="attach"></bds-icon>
-                    <bds-typo variant="fs-14" bold="bold" class="preview-text" id="preview-text">
+                    <p class="preview-text" id="preview-text">
                       {names.name}
-                    </bds-typo>
-                    <bds-icon size="x-small" name="trash" onClick={() => this.deleteFile(index)}></bds-icon>
+                    </p>
+                    <bds-button-icon
+                      class="preview-icon"
+                      size="short"
+                      icon="trash"
+                      variant="secondary"
+                      onClick={() => this.deleteFile(index)}
+                    ></bds-button-icon>
                   </div>
                 </div>
               ))}
             </div>
             {this.multiple ? (
               <bds-typo variant="fs-14" italic class="preview-length">
-                {this.files.length} {termTranslate(this.language, 'uploaded')}
+                {this.files.length > 1 ? `${this.files.length} ${termTranslate(this.language, 'uploaded')}` : ''}
               </bds-typo>
             ) : (
               ''
@@ -187,11 +193,11 @@ export class BdsUpload {
           >
             <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
               {this.hover ? (
-                <bds-typo class="text" variant="fs-14" bold="bold">
+                <bds-typo class="text" variant="fs-14" bold="semi-bold">
                   {termTranslate(this.language, 'dropHere')}
                 </bds-typo>
               ) : (
-                <bds-typo class="text" variant="fs-14" bold="bold">
+                <bds-typo class="text" variant="fs-14" bold="semi-bold">
                   {termTranslate(this.language, 'dropOrClick')}
                 </bds-typo>
               )}

@@ -32,6 +32,7 @@
 - [bds-icon](../icon)
 - [bds-typo](../typo)
 - [bds-banner](../banner)
+- [bds-button-icon](../icon-button)
 
 ### Graph
 ```mermaid
@@ -39,6 +40,7 @@ graph TD;
   bds-upload --> bds-icon
   bds-upload --> bds-typo
   bds-upload --> bds-banner
+  bds-upload --> bds-button-icon
   bds-banner --> bds-icon
   bds-banner --> bds-button-icon
   bds-button-icon --> bds-icon
