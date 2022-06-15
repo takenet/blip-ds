@@ -1,4 +1,4 @@
-import { Component, Prop, h, Host } from '@stencil/core';
+import { Component, Prop, h, Host, Event, EventEmitter } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
@@ -94,6 +94,36 @@ export class InputPassword {
    */
   @Prop() dataTest?: string = null;
 
+  /**
+   * Emitted when the value has changed.
+   */
+  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
+
+  /**
+   * Emitted when the input has changed.
+   */
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+
+  /**
+   * Event input onblur.
+   */
+  @Event() bdsOnBlur: EventEmitter;
+
+  /**
+   * Event input focus.
+   */
+  @Event() bdsFocus: EventEmitter;
+
+  /**
+   * Event input enter.
+   */
+  @Event() bdsSubmit: EventEmitter;
+
+  /**
+   * Event input key down backspace.
+   */
+  @Event() bdsKeyDownBackspace: EventEmitter;
+
   private toggleEyePassword = (): void => {
     if (!this.disabled) {
       this.openEyes = !this.openEyes;
@@ -104,6 +134,38 @@ export class InputPassword {
     if (!this.openEyes) return 'current-password';
     return this.autoComplete;
   }
+
+  private onChange = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    this.bdsChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+  };
+
+  private onInput = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    this.bdsInput.emit(ev as KeyboardEvent);
+  };
+
+  private onBlur = (): void => {
+    this.bdsOnBlur.emit();
+  };
+
+  private onFocus = (): void => {
+    this.bdsFocus.emit();
+  };
+
+  private onSubmit = (): void => {
+    this.bdsSubmit.emit();
+  };
+
+  private keyPressWrapper = (ev: Event): void => {
+    this.bdsKeyDownBackspace.emit({ ev, value: this.value });
+  };
 
   render(): HTMLElement {
     const iconPassword = this.openEyes ? 'eye-open' : 'eye-closed';
@@ -131,6 +193,12 @@ export class InputPassword {
           auto-capitalize={this.autoCapitalize}
           placeholder={this.placeholder}
           data-test={this.dataTest}
+          onBdsChange={this.onChange}
+          onBdsInput={this.onInput}
+          onBdsOnBlur={this.onBlur}
+          onBdsFocus={this.onFocus}
+          onBdsSubmit={this.onSubmit}
+          onBdsKeyDownBackspace={this.keyPressWrapper}
         >
           <div slot="input-right" class="input__password--icon" onClick={this.toggleEyePassword}>
             <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
