@@ -101,7 +101,11 @@ export class BdsUpload {
    */
   public onUploadClick(files) {
     if (files.length > 0) {
-      this.files = [...this.files, ...files];
+      if (!this.multiple) {
+        this.files = [files[0]];
+      } else {
+        this.files = [...this.files, ...files];
+      }
       this.haveFiles = true;
       this.getSize();
     } else {
@@ -193,11 +197,11 @@ export class BdsUpload {
           >
             <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
               {this.hover ? (
-                <bds-typo class="text" variant="fs-14" bold="semi-bold">
+                <bds-typo class="text" variant="fs-14" bold="regular">
                   {termTranslate(this.language, 'dropHere')}
                 </bds-typo>
               ) : (
-                <bds-typo class="text" variant="fs-14" bold="semi-bold">
+                <bds-typo class="text" variant="fs-14" bold="regular">
                   {termTranslate(this.language, 'dropOrClick')}
                 </bds-typo>
               )}
