@@ -1565,6 +1565,10 @@ export interface BdsInputEditableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsInputEditableElement;
 }
+export interface BdsInputPasswordCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsInputPasswordElement;
+}
 export interface BdsInputPhoneNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsInputPhoneNumberElement;
@@ -2992,6 +2996,30 @@ declare namespace LocalJSX {
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
         "minlength"?: number;
+        /**
+          * Event input onblur.
+         */
+        "onBdsInputPasswordBlur"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsInputPasswordChange"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        /**
+          * Event input focus.
+         */
+        "onBdsInputPasswordFocus"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInputPasswordInput"?: (event: BdsInputPasswordCustomEvent<KeyboardEvent>) => void;
+        /**
+          * Event input enter.
+         */
+        "onBdsInputPasswordSubmit"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        /**
+          * Event input key down backspace.
+         */
+        "onBdsKeyDownBackspace"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         "openEyes"?: boolean;
         /**
           * A tip for the user who can enter no controls.

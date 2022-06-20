@@ -29,6 +29,18 @@
 | `value`          | `value`           | The value of the input.                                                                                                                                                          | `string`                                                              | `''`        |
 
 
+## Events
+
+| Event                    | Description                         | Type                         |
+| ------------------------ | ----------------------------------- | ---------------------------- |
+| `bdsInputPasswordBlur`   | Event input onblur.                 | `CustomEvent<any>`           |
+| `bdsInputPasswordChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
+| `bdsInputPasswordFocus`  | Event input focus.                  | `CustomEvent<any>`           |
+| `bdsInputPasswordInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
+| `bdsInputPasswordSubmit` | Event input enter.                  | `CustomEvent<any>`           |
+| `bdsKeyDownBackspace`    | Event input key down backspace.     | `CustomEvent<any>`           |
+
+
 ## Dependencies
 
 ### Depends on
