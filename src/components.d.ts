@@ -3009,6 +3009,10 @@ declare namespace LocalJSX {
          */
         "onBdsInput"?: (event: BdsInputPasswordCustomEvent<KeyboardEvent>) => void;
         /**
+          * Event input enter.
+         */
+        "onBdsInputPasswordSubmit"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        /**
           * Event input key down backspace.
          */
         "onBdsKeyDownBackspace"?: (event: BdsInputPasswordCustomEvent<any>) => void;
@@ -3016,10 +3020,6 @@ declare namespace LocalJSX {
           * Event input onblur.
          */
         "onBdsOnBlur"?: (event: BdsInputPasswordCustomEvent<any>) => void;
-        /**
-          * Event input enter.
-         */
-        "onBdsSubmit"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         "openEyes"?: boolean;
         /**
           * A tip for the user who can enter no controls.

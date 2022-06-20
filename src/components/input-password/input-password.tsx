@@ -117,7 +117,7 @@ export class InputPassword {
   /**
    * Event input enter.
    */
-  @Event() bdsSubmit: EventEmitter;
+  @Event() bdsInputPasswordSubmit: EventEmitter;
 
   /**
    * Event input key down backspace.
@@ -160,7 +160,7 @@ export class InputPassword {
   };
 
   private onSubmit = (): void => {
-    this.bdsSubmit.emit();
+    this.bdsInputPasswordSubmit.emit();
   };
 
   private keyPressWrapper = (ev: Event): void => {
