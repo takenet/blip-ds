@@ -23,8 +23,8 @@ $button-padding-left-right: 16px;
 }
 
 @mixin disable-button($background, $color: null, $border: null) {
-  cursor: not-allowed;
   background: $background;
+  pointer-events: none;
 
   @if ($color) {
     color: $color;
