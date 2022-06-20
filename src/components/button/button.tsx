@@ -125,16 +125,18 @@ export class Button {
   }
 
   private handleClick = (ev: Event) => {
-    const form = this.el.closest('form');
-    if (form) {
-      ev.preventDefault();
+    if (!this.disabled) {
+      const form = this.el.closest('form');
+      if (form) {
+        ev.preventDefault();
 
-      const fakeButton = document.createElement('button');
-      fakeButton.type = this.type;
-      fakeButton.style.display = 'none';
-      form.appendChild(fakeButton);
-      fakeButton.click();
-      fakeButton.remove();
+        const fakeButton = document.createElement('button');
+        fakeButton.type = this.type;
+        fakeButton.style.display = 'none';
+        form.appendChild(fakeButton);
+        fakeButton.click();
+        fakeButton.remove();
+      }
     }
   };
 
