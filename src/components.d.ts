@@ -2997,17 +2997,21 @@ declare namespace LocalJSX {
          */
         "minlength"?: number;
         /**
+          * Event input onblur.
+         */
+        "onBdsInputPasswordBlur"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        "onBdsInputPasswordChange"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         /**
           * Event input focus.
          */
-        "onBdsFocus"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        "onBdsInputPasswordFocus"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: BdsInputPasswordCustomEvent<KeyboardEvent>) => void;
+        "onBdsInputPasswordInput"?: (event: BdsInputPasswordCustomEvent<KeyboardEvent>) => void;
         /**
           * Event input enter.
          */
@@ -3016,10 +3020,6 @@ declare namespace LocalJSX {
           * Event input key down backspace.
          */
         "onBdsKeyDownBackspace"?: (event: BdsInputPasswordCustomEvent<any>) => void;
-        /**
-          * Event input onblur.
-         */
-        "onBdsOnBlur"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         "openEyes"?: boolean;
         /**
           * A tip for the user who can enter no controls.

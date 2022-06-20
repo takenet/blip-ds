@@ -97,22 +97,22 @@ export class InputPassword {
   /**
    * Emitted when the value has changed.
    */
-  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
+  @Event({ bubbles: true, composed: true }) bdsInputPasswordChange!: EventEmitter;
 
   /**
    * Emitted when the input has changed.
    */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInputPasswordInput!: EventEmitter<KeyboardEvent>;
 
   /**
    * Event input onblur.
    */
-  @Event() bdsOnBlur: EventEmitter;
+  @Event() bdsInputPasswordBlur: EventEmitter;
 
   /**
    * Event input focus.
    */
-  @Event() bdsFocus: EventEmitter;
+  @Event() bdsInputPasswordFocus: EventEmitter;
 
   /**
    * Event input enter.
@@ -140,7 +140,7 @@ export class InputPassword {
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsChange.emit({ value: this.value == null ? this.value : this.value.toString() });
+    this.bdsInputPasswordChange.emit({ value: this.value == null ? this.value : this.value.toString() });
   };
 
   private onInput = (ev: Event): void => {
@@ -148,15 +148,15 @@ export class InputPassword {
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsInputPasswordInput.emit(ev as KeyboardEvent);
   };
 
   private onBlur = (): void => {
-    this.bdsOnBlur.emit();
+    this.bdsInputPasswordBlur.emit();
   };
 
   private onFocus = (): void => {
-    this.bdsFocus.emit();
+    this.bdsInputPasswordFocus.emit();
   };
 
   private onSubmit = (): void => {
