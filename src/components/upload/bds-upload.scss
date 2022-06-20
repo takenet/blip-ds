@@ -48,7 +48,6 @@
     z-index: 2;
     .text {
       width: 100%;
-      height: 24px;
       flex-wrap: wrap;
     }
   }
@@ -58,7 +57,7 @@
 }
 
 .upload__edit--label:hover {
-  border: 2px solid $color-primary-dark;
+  border: 2px solid $color-primary-main;
   box-sizing: border-box;
   padding: 22px 16px;
   cursor: pointer;
@@ -81,7 +80,7 @@
 .list-preview {
   border-top: 1px solid $color-neutral-medium-silver;
   border-bottom: 1px solid $color-neutral-medium-silver;
-  max-height: 206px;
+  max-height: 200px;
   overflow-y: auto;
 }
 
