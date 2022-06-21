@@ -6,7 +6,7 @@ import messageBallon from '../../assets/svg/message-ballon.svg';
 
 export type loadingType = 'page' | 'spinner';
 export type loadingSize = 'extra-small' | 'small' | 'standard';
-export type colorsVariants = 'main' | 'white';
+export type colorsVariants = 'main' | 'light';
 
 @Component({
   tag: 'bds-loading',
