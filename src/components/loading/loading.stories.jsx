@@ -51,6 +51,11 @@ const alignPage = {
   background: '#0a0f1a',
   alignItems: 'center',
 }
+export const loadingDefault = () => (
+  <div style={alignSize}>
+    <bds-loading type="spinner" size="standard" color="main"></bds-loading>
+  </div>
+);
 
 export const loadingSize = () => (
     <div style={alignSize}>
