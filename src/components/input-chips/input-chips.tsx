@@ -310,19 +310,16 @@ export class InputChips {
 
     return this.internalChips.map((chip, index) => {
       const id = index.toString();
-
       return (
-        <bds-chip
-          class="input-chips__chip"
+        <bds-chip-clickable
           id={id}
           key={id}
-          variant="primary"
-          danger={!this.validateChip(chip)}
-          deletable={!this.disabled}
-          onBdsDelete={(event) => this.removeChip(event)}
+          color="default"
+          close={!this.disabled}
+          onChipClickableClose={(event) => this.removeChip(event)}
         >
           {chip}
-        </bds-chip>
+        </bds-chip-clickable>
       );
     });
   }
@@ -349,7 +346,9 @@ export class InputChips {
           disabled={this.disabled}
           data-test={this.dataTest}
         >
-          <span slot="inside-input-left">{this.renderChips()}</span>
+          <span class="inside-input-left" slot="inside-input-left">
+            {this.renderChips()}
+          </span>
           <div slot="input-right">
             <slot name="input-right"></slot>
           </div>
