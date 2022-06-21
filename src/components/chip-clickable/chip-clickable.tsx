@@ -65,13 +65,11 @@ export class ChipClickable {
   private handleCloseChip(event) {
     event.preventDefault();
     this.chipClickableClose.emit({ id: this.element.id });
-    this.visible = false;
   }
   private handleCloseKey(event) {
     if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {
       event.preventDefault();
       this.chipClickableClose.emit({ id: this.element.id });
-      this.visible = false;
     }
   }
   private getSizeAvatarChip() {

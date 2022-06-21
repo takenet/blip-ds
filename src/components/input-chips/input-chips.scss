@@ -1,7 +1,12 @@
 :host {
-  display: block;
+  display: display;
 }
 
+.inside-input-left {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .input-chips__chip {
   margin: 2px 4px 2px 0px;
 }

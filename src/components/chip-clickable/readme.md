@@ -29,6 +29,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-input-chips](../input-chips)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -43,6 +47,7 @@ graph TD;
   bds-chip-clickable --> bds-typo
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
+  bds-input-chips --> bds-chip-clickable
   style bds-chip-clickable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

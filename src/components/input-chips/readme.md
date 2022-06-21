@@ -108,15 +108,19 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [bds-chip](../chip)
+- [bds-chip-clickable](../chip-clickable)
 - [bds-input](../input)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-input-chips --> bds-chip
+  bds-input-chips --> bds-chip-clickable
   bds-input-chips --> bds-input
-  bds-chip --> bds-icon
+  bds-chip-clickable --> bds-icon
+  bds-chip-clickable --> bds-avatar
+  bds-chip-clickable --> bds-typo
+  bds-avatar --> bds-typo
+  bds-avatar --> bds-icon
   bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input --> bds-counter-text

@@ -72,9 +72,13 @@ graph TD;
   bds-select-chips --> bds-input-chips
   bds-select-chips --> bds-icon
   bds-select-chips --> bds-select-option
-  bds-input-chips --> bds-chip
+  bds-input-chips --> bds-chip-clickable
   bds-input-chips --> bds-input
-  bds-chip --> bds-icon
+  bds-chip-clickable --> bds-icon
+  bds-chip-clickable --> bds-avatar
+  bds-chip-clickable --> bds-typo
+  bds-avatar --> bds-typo
+  bds-avatar --> bds-icon
   bds-input --> bds-icon
   bds-input --> bds-typo
   bds-input --> bds-counter-text
