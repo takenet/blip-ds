@@ -1,6 +1,11 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop, State } from '@stencil/core';
+import loadExtraSmall from '../../assets/svg/load-extra-small.svg';
+import loadSmall from '../../assets/svg/load-small.svg';
+import loadStandard from '../../assets/svg/load-standard.svg';
 
 export type LoadingSpinnerVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'delete';
+export type loadingSize = 'extra-small' | 'small' | 'standard';
+export type colorsVariants = 'main' | 'light';
 
 export type LoadingSpinnerColorMap = { [key in LoadingSpinnerVariant]: string };
 
@@ -9,27 +14,68 @@ export type LoadingSpinnerColorMap = { [key in LoadingSpinnerVariant]: string };
   styleUrl: 'loading-spinner.scss',
 })
 export class BdsLoadingSpinner {
+  @State() private svgContent?: string;
   /**
    * 	Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
    */
   @Prop() variant: LoadingSpinnerVariant = 'primary';
+  /**
+   * Size, Entered as one of the size. Can be one of:
+   * 'small', 'standard', 'large'.
+   */
+  @Prop() size?: loadingSize = 'standard';
+  /**
+   * Color, Entered as one of the color. Can be one of:
+   * 'default', 'white'.
+   */
+  @Prop() color?: colorsVariants = 'main';
+  componentWillLoad() {
+    this.setSvgContent();
+  }
+
+  /**Function to transform the svg in a div element. */
+  formatSvg = (svgContent: string) => {
+    const div = document.createElement('div');
+    div.innerHTML = svgContent;
+    const svgElm = div.firstElementChild;
+
+    svgElm.removeAttribute('width');
+    svgElm.removeAttribute('height');
+    return div.innerHTML;
+  };
+
+  setSvgContent = () => {
+    const innerHTML =
+      this.size == 'extra-small'
+        ? loadExtraSmall
+        : this.size == 'small'
+        ? loadSmall
+        : this.size == 'standard' && loadStandard;
+
+    const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
+    this.svgContent = this.formatSvg(svg);
+  };
 
   render() {
     return (
-      <div class="sk-circle">
-        <div class={`sk-circle1 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle2 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle3 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle4 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle5 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle6 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle7 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle8 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle9 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle10 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle11 sk-child sk-child--${this.variant}`}></div>
-        <div class={`sk-circle12 sk-child sk-child--${this.variant}`}></div>
-      </div>
+      <Host>
+        <div
+          class={{
+            spinner_container: true,
+            [`spinner_loading_${this.size}`]: true,
+            [`spinner_container_${this.size}`]: true,
+          }}
+        >
+          <div
+            class={{
+              spinner_loading: true,
+              [`spinner_loading_${this.size}`]: true,
+              [`spinner_loading_${this.color}`]: true,
+            }}
+            innerHTML={this.svgContent}
+          ></div>
+        </div>
+      </Host>
     );
   }
 }

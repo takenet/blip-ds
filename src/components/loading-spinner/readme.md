@@ -7,9 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                             | Type                                                            | Default     |
-| --------- | --------- | ----------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
-| `variant` | `variant` | Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost' | `"delete" \| "ghost" \| "primary" \| "secondary" \| "tertiary"` | `'primary'` |
+| Property  | Attribute | Description                                                                    | Type                                                            | Default      |
+| --------- | --------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------ |
+| `color`   | `color`   | Color, Entered as one of the color. Can be one of: 'default', 'white'.         | `"light" \| "main"`                                             | `'main'`     |
+| `size`    | `size`    | Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'. | `"extra-small" \| "small" \| "standard"`                        | `'standard'` |
+| `variant` | `variant` | Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'        | `"delete" \| "ghost" \| "primary" \| "secondary" \| "tertiary"` | `'primary'`  |
 
 
 ## Dependencies

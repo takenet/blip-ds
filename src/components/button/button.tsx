@@ -1,5 +1,6 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
+import { colorsVariants } from '../loading-spinner/loading-spinner';
 
 export type ButtonSize = 'tall' | 'standard' | 'short';
 
@@ -72,7 +73,12 @@ export class Button {
   /**
    * 	If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
    */
-  @Prop() bdsLoadingVariant: LoadingSpinnerVariant = 'primary';
+  @Prop() bdsLoadingVariant?: LoadingSpinnerVariant = 'primary';
+
+  /**
+   * 	If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
+   */
+  @Prop() bdsLoadingColor?: colorsVariants = 'light';
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -121,7 +127,11 @@ export class Button {
   }
 
   renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
-    return <bds-loading-spinner variant={this.bdsLoadingVariant}></bds-loading-spinner>;
+    if (this.size === 'short') {
+      return <bds-loading-spinner size="extra-small" color={this.bdsLoadingColor}></bds-loading-spinner>;
+    } else {
+      return <bds-loading-spinner size="small" color={this.bdsLoadingColor}></bds-loading-spinner>;
+    }
   }
 
   private handleClick = (ev: Event) => {
