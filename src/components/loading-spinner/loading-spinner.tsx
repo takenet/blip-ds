@@ -62,10 +62,16 @@ export class BdsLoadingSpinner {
         <div
           class={{
             spinner_container: true,
-            [`spinner_loading_${this.size}`]: true,
-            [`spinner_container_${this.size}`]: true,
+            [`spinner_background_${this.size}`]: true,
           }}
         >
+          <div
+            class={{
+              spinner_background: true,
+              [`spinner_background_${this.size}`]: true,
+              [`spinner_background_${this.color}`]: true,
+            }}
+          ></div>
           <div
             class={{
               spinner_loading: true,
