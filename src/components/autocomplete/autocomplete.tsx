@@ -171,14 +171,6 @@ export class BdsAutocomplete {
     this.text = this.getText();
   }
 
-  // private onInput = (ev: Event): void => {
-  //   const input = ev.target as HTMLInputElement | null;
-  //   if (input) {
-  //     this.value = input.value || '';
-  //   }
-  //   this.bdsInput.emit(ev as KeyboardEvent);
-  // };
-
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return this.options
       ? Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option'))
