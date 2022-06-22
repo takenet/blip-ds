@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, Host, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import {
   AutocompleteOption,
   AutocompleteChangeEventDetail,
@@ -12,9 +12,14 @@ import { Keyboard } from '../../utils/enums';
   shadow: true,
 })
 export class BdsAutocomplete {
-  private nativeInput?: HTMLBdsInputElement;
+  private nativeInput?: HTMLInputElement;
 
   @Element() el!: HTMLBdsSelectElement;
+
+  /**
+   * Conditions the element to say whether it is pressed or not, to add styles.
+   */
+  @State() isPressed? = false;
 
   @State() isOpen? = false;
 
@@ -123,7 +128,8 @@ export class BdsAutocomplete {
   }
 
   @Watch('value')
-  valueChanged(): void {
+  protected valueChanged(): void {
+    this.bdsChange.emit({ value: this.value == null ? this.value : this.value.toString() });
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
     }
@@ -165,14 +171,6 @@ export class BdsAutocomplete {
     this.text = this.getText();
   }
 
-  private onInput = (ev: Event): void => {
-    const input = ev.target as HTMLInputElement | null;
-    if (input) {
-      this.value = input.value || '';
-    }
-    this.bdsInput.emit(ev as KeyboardEvent);
-  };
-
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return this.options
       ? Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option'))
@@ -185,12 +183,9 @@ export class BdsAutocomplete {
       : Array.from(this.el.querySelectorAll('bds-select-option')).find((option) => option.selected);
   }
 
-  private refNativeInput = (el: HTMLBdsInputElement): void => {
-    this.nativeInput = el;
-  };
-
   private onFocus = (): void => {
     this.isFocused = true;
+    this.isPressed = true;
     this.bdsFocus.emit();
   };
 
@@ -202,9 +197,18 @@ export class BdsAutocomplete {
 
   private onBlur = (): void => {
     this.bdsBlur.emit();
+    this.isPressed = false;
     if (!this.isOpen) {
       this.isFocused = false;
       this.nativeInput.value = this.getText();
+    }
+  };
+
+  private onClickWrapper = (): void => {
+    this.onFocus();
+    this.toggle();
+    if (this.nativeInput) {
+      this.nativeInput.focus();
     }
   };
 
@@ -238,20 +242,6 @@ export class BdsAutocomplete {
     } = event;
     this.value = value;
     this.toggle();
-  };
-
-  private setFocusWrapper = (): void => {
-    if (!this.disabled && this.nativeInput) {
-      this.nativeInput.setFocus();
-    }
-  };
-
-  private removeFocusWrapper = (event: FocusEvent): void => {
-    const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
-
-    if (this.nativeInput && !isInputElement) {
-      this.nativeInput.removeFocus();
-    }
   };
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
@@ -307,7 +297,12 @@ export class BdsAutocomplete {
     }
   };
 
-  private changedInputValue = async () => {
+  private changedInputValue = async (ev: Event) => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    this.bdsInput.emit(ev as KeyboardEvent);
     this.bdsChange.emit({ value: this.nativeInput.value });
     if (this.nativeInput.value) {
       await this.filterOptions(this.nativeInput.value);
@@ -361,35 +356,55 @@ export class BdsAutocomplete {
     return this.childOptionSelected?.value;
   }
 
+  private renderIcon(): HTMLElement {
+    return (
+      this.icon && (
+        <div
+          class={{
+            input__icon: true,
+            'input__icon--large': !!this.label,
+          }}
+        >
+          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
+        </div>
+      )
+    );
+  }
+
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
     return (
-      <div
-        class="select"
-        tabindex="0"
-        onFocus={this.setFocusWrapper}
-        onBlur={this.removeFocusWrapper}
-        onFocusout={this.onFocusout}
-        onKeyDown={this.keyPressWrapper}
-      >
-        <bds-input
-          icon={this.icon}
-          label={this.label}
-          ref={this.refNativeInput}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onClick={this.toggle}
-          value={this.text}
-          danger={this.danger}
-          disabled={this.disabled}
-          placeholder={this.placeholder}
-          onBdsChange={this.changedInputValue}
-          onBdsInput={this.onInput}
-          readonly={false}
-          data-test={this.dataTest}
+      <Host aria-disabled={this.disabled ? 'true' : null}>
+        <div
+          class={{
+            input: true,
+            select: true,
+            'input--state-primary': !this.danger,
+            'input--state-danger': this.danger,
+            'input--state-disabled': this.disabled,
+            'input--label': !!this.label,
+            'input--pressed': this.isPressed,
+          }}
+          onClick={this.onClickWrapper}
+          onKeyDown={this.keyPressWrapper}
         >
-          <div slot="input-right" class="select__icon">
+          {this.renderIcon()}
+          <div class="input__container" tabindex="0" onFocusout={this.onFocusout} onKeyDown={this.keyPressWrapper}>
+            <input
+              class={{ input__container__text: true }}
+              ref={(input) => (this.nativeInput = input)}
+              disabled={this.disabled}
+              onBlur={this.onBlur}
+              onFocus={this.onFocus}
+              onInput={this.changedInputValue}
+              placeholder={this.placeholder}
+              type="text"
+              value={this.text}
+              data-test={this.dataTest}
+            />
+          </div>
+          <div class="select__icon">
             <bds-icon
               size="small"
               name="error"
@@ -401,7 +416,7 @@ export class BdsAutocomplete {
             ></bds-icon>
             <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
           </div>
-        </bds-input>
+        </div>
         <div
           class={{
             select__options: true,
@@ -426,7 +441,7 @@ export class BdsAutocomplete {
             <slot />
           )}
         </div>
-      </div>
+      </Host>
     );
   }
 }
