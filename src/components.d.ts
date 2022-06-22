@@ -123,10 +123,6 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Input Name
-         */
-        "inputName"?: string;
-        /**
           * label in input, with he the input size increases.
          */
         "label"?: string;
@@ -2150,10 +2146,6 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
-        /**
-          * Input Name
-         */
-        "inputName"?: string;
         /**
           * label in input, with he the input size increases.
          */

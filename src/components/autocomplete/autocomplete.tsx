@@ -30,11 +30,6 @@ export class BdsAutocomplete {
   @State() isFocused?: boolean = false;
 
   /**
-   * Input Name
-   */
-  @Prop() inputName? = '';
-
-  /**
    * The options of the select
    * Should be passed this way:
    * options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
@@ -401,7 +396,6 @@ export class BdsAutocomplete {
           }}
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}
-          part="input-container"
         >
           {this.renderIcon()}
           <div class="input__container" tabindex="0" onFocusout={this.onFocusout} onKeyDown={this.keyPressWrapper}>
@@ -409,14 +403,12 @@ export class BdsAutocomplete {
               class={{ input__container__text: true }}
               ref={(input) => (this.nativeInput = input)}
               disabled={this.disabled}
-              name={this.inputName}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
               onInput={this.changedInputValue}
               placeholder={this.placeholder}
               type="text"
               value={this.text}
-              part="input"
               data-test={this.dataTest}
             />
           </div>
