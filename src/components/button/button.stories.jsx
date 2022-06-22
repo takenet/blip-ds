@@ -95,19 +95,19 @@ export const buttonWithLogo = () => (
 
 export const buttonLoading = () => (
   <div style={defaultButtonStyle}>
-    <bds-button style={spaceBetween} bds-loading bds-loading-variant="primary" variant="primary">
+    <bds-button style={spaceBetween} bds-loading bds-loading-color="light" variant="primary">
       Button primary
     </bds-button>
-    <bds-button style={spaceBetween} bds-loading bds-loading-variant="secondary" variant="secondary">
+    <bds-button style={spaceBetween} bds-loading bds-loading-color="main" variant="secondary">
       Button primary
     </bds-button>
-    <bds-button style={spaceBetween} bds-loading bds-loading-variant="tertiary" variant="tertiary">
+    <bds-button style={spaceBetween} bds-loading bds-loading-color="main" variant="tertiary">
       Button primary
     </bds-button>
-    <bds-button style={spaceBetween} bds-loading bds-loading-variant="ghost" variant="ghost">
+    <bds-button style={spaceBetween} bds-loading bds-loading-color="main" variant="ghost">
       Button primary
     </bds-button>
-    <bds-button style={spaceBetween} bds-loading bds-loading-variant="delete" variant="delete">
+    <bds-button style={spaceBetween} bds-loading bds-loading-color="light" variant="delete">
       Button primary
     </bds-button>
   </div>
