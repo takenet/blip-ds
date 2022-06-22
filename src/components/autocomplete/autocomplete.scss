@@ -1,4 +1,5 @@
 @import 'mixins';
+@import '../input/input.scss';
 
 $select-options-box-shadow: 0px 2px 8px rgba(96, 123, 153, 0.3);
 $select-options-radius: 8px;
@@ -20,9 +21,9 @@ $select-options-max-height: 250px;
       margin-left: 10px;
     }
   }
-  
+
   .icon-hidden {
-      visibility: hidden;
+    visibility: hidden;
   }
 
   &__options {

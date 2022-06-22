@@ -14,6 +14,7 @@
 | `dataTest`         | `data-test`           | Data test is the prop to specifically test the component action object.                                                                                                                                                                                                                       | `string`                         | `null`      |
 | `disabled`         | `disabled`            | Disabled input.                                                                                                                                                                                                                                                                               | `boolean`                        | `false`     |
 | `icon`             | `icon`                | used for add icon in input left. Uses the bds-icon component.                                                                                                                                                                                                                                 | `string`                         | `''`        |
+| `inputName`        | `input-name`          | Input Name                                                                                                                                                                                                                                                                                    | `string`                         | `''`        |
 | `label`            | `label`               | label in input, with he the input size increases.                                                                                                                                                                                                                                             | `string`                         | `''`        |
 | `options`          | `options`             | The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular. | `AutocompleteOption[] \| string` | `undefined` |
 | `optionsPosition`  | `options-position`    | Set the placement of the options menu. Can be 'bottom' or 'top'.                                                                                                                                                                                                                              | `"bottom" \| "top"`              | `'bottom'`  |
@@ -35,24 +36,26 @@
 | `bdsSelectedChange` | Emitted when the selected value has changed. | `CustomEvent<AutocompleteSelectedChangeEventDetail>` |
 
 
+## Shadow Parts
+
+| Part                | Description |
+| ------------------- | ----------- |
+| `"input"`           |             |
+| `"input-container"` |             |
+
+
 ## Dependencies
 
 ### Depends on
 
-- [bds-input](../input)
 - [bds-icon](../icon)
 - [bds-select-option](../select-option)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-autocomplete --> bds-input
   bds-autocomplete --> bds-icon
   bds-autocomplete --> bds-select-option
-  bds-input --> bds-icon
-  bds-input --> bds-typo
-  bds-input --> bds-counter-text
-  bds-counter-text --> bds-typo
   bds-select-option --> bds-typo
   style bds-autocomplete fill:#f9f,stroke:#333,stroke-width:4px
 ```
