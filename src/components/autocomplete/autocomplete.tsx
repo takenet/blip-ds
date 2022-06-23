@@ -371,6 +371,23 @@ export class BdsAutocomplete {
     );
   }
 
+  private renderLabel(): HTMLElement {
+    return (
+      this.label && (
+        <label
+          class={{
+            input__container__label: true,
+            'input__container__label--pressed': this.isPressed && !this.disabled,
+          }}
+        >
+          <bds-typo variant="fs-12" bold="bold">
+            {this.label}
+          </bds-typo>
+        </label>
+      )
+    );
+  }
+
   render(): HTMLElement {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
@@ -391,6 +408,7 @@ export class BdsAutocomplete {
         >
           {this.renderIcon()}
           <div class="input__container" tabindex="0" onFocusout={this.onFocusout} onKeyDown={this.keyPressWrapper}>
+            {this.renderLabel()}
             <input
               class={{ input__container__text: true }}
               ref={(input) => (this.nativeInput = input)}
