@@ -8,20 +8,34 @@ export default {
   },
 };
 
-export const callToast = () => {
+const Template = (args) => {
+  return (
+    <bds-toast
+      button-action={args.buttonAction}
+      icon={args.icon}
+      action-type={args.actionType}
+      toast-title={args.toastTitle}
+      toast-text={args.toastText}
+      variant={args.variant}
+      show={args.show}
+    ></bds-toast>
+  );
+};
+
+const ExampleToast = (args) => {
   const showToast = async () => {
     const newtoast = document.createElement('bds-toast');
     document.body.appendChild(newtoast);
 
-    const icon = undefined;
-    const variant = 'warning';
-    const actionType = { Button: 'button' };
-    const toastTitle = 'Toast Title';
-    const toastText = 'Lorem ipsum';
-    const buttonText = 'Cancelar';
-    const duration = 0;
-    const buttonAction = { Close: 'close' };
-    const position = { BottomLeft: 'bottom-left' };
+    const icon = args.icon;
+    const variant = args.variant;
+    const actionType = args.actionType;
+    const toastTitle = args.toastTitle;
+    const toastText = args.toastText;
+    const buttonText = args.buttonText;
+    const duration = args.duration;
+    const buttonAction = args.buttonAction;
+    const position = args.position;
 
     await newtoast.create({
       variant,
@@ -44,66 +58,59 @@ export const callToast = () => {
   );
 };
 
-export const toastSystem = () => {
-  return (
-    <>
-      <bds-toast
-        button-action="close"
-        icon="bell"
-        action-type="icon"
-        toast-title="toast system"
-        toast-text="Este é um toast de sistema"
-        variant="system"
-        show="true"
-      ></bds-toast>
-    </>
-  );
+export const ToastSystem = Template.bind({});
+ToastSystem.args = {
+  buttonAction: 'close',
+  icon: 'bell',
+  actionType: 'icon',
+  toastTitle: 'toast system',
+  toastText: 'Este é um toast de sistema',
+  variant: 'system',
+  show: 'true',
 };
 
-export const toastError = () => {
-  return (
-    <>
-      <bds-toast
-        button-action="close"
-        icon="error"
-        action-type="icon"
-        toast-title="toast error"
-        toast-text="Este é um toast de erro"
-        variant="error"
-        show="true"
-      ></bds-toast>
-    </>
-  );
+export const ToastError = Template.bind({});
+ToastError.args = {
+  buttonAction: 'close',
+  icon: 'error',
+  actionType: 'icon',
+  toastTitle: 'toast error',
+  toastText: 'Este é um toast de erro',
+  variant: 'error',
+  show: 'true',
 };
 
-export const toastSuccess = () => {
-  return (
-    <>
-      <bds-toast
-        button-action="close"
-        icon="like"
-        action-type="icon"
-        toast-title="toast success"
-        toast-text="Este é um toast de sucesso"
-        variant="success"
-        show="true"
-      ></bds-toast>
-    </>
-  );
+export const ToastSuccess = Template.bind({});
+ToastSuccess.args = {
+  buttonAction: 'close',
+  icon: 'like',
+  actionType: 'icon',
+  toastTitle: 'toast success',
+  toastText: 'Este é um toast de successo',
+  variant: 'success',
+  show: 'true',
 };
 
-export const toastWarning = () => {
-  return (
-    <>
-      <bds-toast
-        button-action="close"
-        icon="info"
-        action-type="icon"
-        toast-title="toast warning"
-        toast-text="Este é um toast de aviso"
-        variant="warning"
-        show="true"
-      ></bds-toast>
-    </>
-  );
+export const ToastWarning = Template.bind({});
+ToastWarning.args = {
+  buttonAction: 'close',
+  icon: 'info',
+  actionType: 'icon',
+  toastTitle: 'toast warning',
+  toastText: 'Este é um toast de aviso',
+  variant: 'warning',
+  show: 'true',
+};
+
+export const CallToast = ExampleToast.bind({});
+CallToast.args = {
+  icon: 'info',
+  variant: 'warning',
+  actionType: 'button',
+  toastTitle: 'Toast Title',
+  toastText: 'Lorem ipsum',
+  buttonText: 'Cancelar',
+  duration: 0,
+  buttonAction: 'close',
+  position: 'bottom-left',
 };
