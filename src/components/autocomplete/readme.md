@@ -40,12 +40,14 @@
 ### Depends on
 
 - [bds-icon](../icon)
+- [bds-typo](../typo)
 - [bds-select-option](../select-option)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-autocomplete --> bds-icon
+  bds-autocomplete --> bds-typo
   bds-autocomplete --> bds-select-option
   bds-select-option --> bds-typo
   style bds-autocomplete fill:#f9f,stroke:#333,stroke-width:4px
