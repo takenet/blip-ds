@@ -33,6 +33,7 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { PaperElevation } from "./components/paper/paper-interface";
+import { sidebarPosition } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
@@ -1268,6 +1269,41 @@ export namespace Components {
         "titleText": string;
         "value": any;
     }
+    interface BdsSidebar {
+        /**
+          * footer Button Apply. Used to add title in button apply.
+         */
+        "footerButtonApply"?: string;
+        /**
+          * footer Button Cancel. Used to add title in button cancel.
+         */
+        "footerButtonCancel"?: string;
+        /**
+          * header Avatar Name. Used to add avatar in header sidebar.
+         */
+        "headerAvatarName"?: string;
+        /**
+          * header Avatar Thumb. Used to add avatar in header sidebar.
+         */
+        "headerAvatarThumb"?: string;
+        /**
+          * header Icon. Used to add icon in header sidebar.
+         */
+        "headerIcon"?: string;
+        /**
+          * header Title. Used to add title in header sidebar.
+         */
+        "headerTitle"?: string;
+        /**
+          * isOpen. Used to open sidebar.
+         */
+        "isOpen"?: boolean;
+        /**
+          * sidebar position. Used to position the sidebar. Either on the left or on the right.
+         */
+        "sidebarPosition"?: sidebarPosition;
+        "toggle": () => Promise<void>;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -1595,6 +1631,10 @@ export interface BdsSelectChipsCustomEvent<T> extends CustomEvent<T> {
 export interface BdsSelectOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSelectOptionElement;
+}
+export interface BdsSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSidebarElement;
 }
 export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1935,6 +1975,12 @@ declare global {
         prototype: HTMLBdsSelectOptionElement;
         new (): HTMLBdsSelectOptionElement;
     };
+    interface HTMLBdsSidebarElement extends Components.BdsSidebar, HTMLStencilElement {
+    }
+    var HTMLBdsSidebarElement: {
+        prototype: HTMLBdsSidebarElement;
+        new (): HTMLBdsSidebarElement;
+    };
     interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
     }
     var HTMLBdsStepElement: {
@@ -2061,6 +2107,7 @@ declare global {
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
+        "bds-sidebar": HTMLBdsSidebarElement;
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
@@ -3437,6 +3484,48 @@ declare namespace LocalJSX {
         "titleText"?: string;
         "value": any;
     }
+    interface BdsSidebar {
+        /**
+          * footer Button Apply. Used to add title in button apply.
+         */
+        "footerButtonApply"?: string;
+        /**
+          * footer Button Cancel. Used to add title in button cancel.
+         */
+        "footerButtonCancel"?: string;
+        /**
+          * header Avatar Name. Used to add avatar in header sidebar.
+         */
+        "headerAvatarName"?: string;
+        /**
+          * header Avatar Thumb. Used to add avatar in header sidebar.
+         */
+        "headerAvatarThumb"?: string;
+        /**
+          * header Icon. Used to add icon in header sidebar.
+         */
+        "headerIcon"?: string;
+        /**
+          * header Title. Used to add title in header sidebar.
+         */
+        "headerTitle"?: string;
+        /**
+          * isOpen. Used to open sidebar.
+         */
+        "isOpen"?: boolean;
+        /**
+          * bdsClickApplyButtom. Event to return click apply buttom.
+         */
+        "onBdsClickApplyButtom"?: (event: BdsSidebarCustomEvent<any>) => void;
+        /**
+          * bdsClickCancelButtom. Event to return click cancel buttom.
+         */
+        "onBdsClickCancelButtom"?: (event: BdsSidebarCustomEvent<any>) => void;
+        /**
+          * sidebar position. Used to position the sidebar. Either on the left or on the right.
+         */
+        "sidebarPosition"?: sidebarPosition;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -3713,6 +3802,7 @@ declare namespace LocalJSX {
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
+        "bds-sidebar": BdsSidebar;
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
@@ -3784,6 +3874,7 @@ declare module "@stencil/core" {
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
+            "bds-sidebar": LocalJSX.BdsSidebar & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
