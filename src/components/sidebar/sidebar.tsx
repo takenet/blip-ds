@@ -1,0 +1,86 @@
+import { Component, h, State, Prop, Method, Watch } from '@stencil/core';
+
+export type sidebarPosition = 'left' | 'right';
+
+@Component({
+  tag: 'bds-sidebar',
+  styleUrl: 'sidebar.scss',
+  shadow: true,
+})
+export class Sidebar {
+  @State() InnerSpacing?: number = 0;
+
+  /**;
+   * isOpen. Used to open sidebar.
+   */
+  @Prop({ mutable: true, reflect: true }) isOpen?: boolean = false;
+
+  /**
+   * sidebar position. Used to position the sidebar. Either on the left or on the right.
+   */
+  @Prop() sidebarPosition?: sidebarPosition = 'left';
+
+  @Method()
+  async toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
+  @Watch('isOpen')
+  isOpenChanged(newValue: boolean): void {
+    if (newValue === true) {
+      document.addEventListener('keyup', this.listiner, false);
+    } else {
+      document.removeEventListener('keyup', this.listiner, false);
+    }
+  }
+
+  private listiner = (event) => {
+    if (event.key == 'Escape') {
+      this.isOpen = false;
+    }
+  };
+
+  private onClickCloseButtom = () => {
+    this.isOpen = false;
+  };
+
+  render() {
+    return (
+      <div
+        class={{
+          sidebar_dialog: true,
+          is_open: this.isOpen,
+        }}
+      >
+        <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
+        <div class={{ sidebar: true, is_open: this.isOpen, [`position_${this.sidebarPosition}`]: true }}>
+          <div class={{ header: true }}>
+            <div class={{ content: true }}>
+              <slot name="header" />
+              <bds-icon
+                class={{
+                  closeButton: true,
+                }}
+                size="medium"
+                name="close"
+                color="inherit"
+                tabindex="0"
+                onClick={() => this.onClickCloseButtom()}
+              ></bds-icon>
+            </div>
+          </div>
+          <div class={{ body: true }}>
+            <div class={{ content: true }}>
+              <slot name="body" />
+            </div>
+          </div>
+          <div class={{ footer: true }}>
+            <div class={{ content: true }}>
+              <slot name="footer" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
