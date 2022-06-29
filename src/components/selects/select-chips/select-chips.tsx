@@ -136,7 +136,6 @@ export class SelectChips {
 
   componentWillRender() {
     if (this.options.length) {
-      this.resetFilterOptions();
       try {
         this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
       } catch (e) {
