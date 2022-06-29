@@ -1271,31 +1271,7 @@ export namespace Components {
     }
     interface BdsSidebar {
         /**
-          * footer Button Apply. Used to add title in button apply.
-         */
-        "footerButtonApply"?: string;
-        /**
-          * footer Button Cancel. Used to add title in button cancel.
-         */
-        "footerButtonCancel"?: string;
-        /**
-          * header Avatar Name. Used to add avatar in header sidebar.
-         */
-        "headerAvatarName"?: string;
-        /**
-          * header Avatar Thumb. Used to add avatar in header sidebar.
-         */
-        "headerAvatarThumb"?: string;
-        /**
-          * header Icon. Used to add icon in header sidebar.
-         */
-        "headerIcon"?: string;
-        /**
-          * header Title. Used to add title in header sidebar.
-         */
-        "headerTitle"?: string;
-        /**
-          * isOpen. Used to open sidebar.
+          * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
         /**
@@ -1631,10 +1607,6 @@ export interface BdsSelectChipsCustomEvent<T> extends CustomEvent<T> {
 export interface BdsSelectOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSelectOptionElement;
-}
-export interface BdsSidebarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBdsSidebarElement;
 }
 export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3486,41 +3458,9 @@ declare namespace LocalJSX {
     }
     interface BdsSidebar {
         /**
-          * footer Button Apply. Used to add title in button apply.
-         */
-        "footerButtonApply"?: string;
-        /**
-          * footer Button Cancel. Used to add title in button cancel.
-         */
-        "footerButtonCancel"?: string;
-        /**
-          * header Avatar Name. Used to add avatar in header sidebar.
-         */
-        "headerAvatarName"?: string;
-        /**
-          * header Avatar Thumb. Used to add avatar in header sidebar.
-         */
-        "headerAvatarThumb"?: string;
-        /**
-          * header Icon. Used to add icon in header sidebar.
-         */
-        "headerIcon"?: string;
-        /**
-          * header Title. Used to add title in header sidebar.
-         */
-        "headerTitle"?: string;
-        /**
-          * isOpen. Used to open sidebar.
+          * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
-        /**
-          * bdsClickApplyButtom. Event to return click apply buttom.
-         */
-        "onBdsClickApplyButtom"?: (event: BdsSidebarCustomEvent<any>) => void;
-        /**
-          * bdsClickCancelButtom. Event to return click cancel buttom.
-         */
-        "onBdsClickCancelButtom"?: (event: BdsSidebarCustomEvent<any>) => void;
         /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
          */

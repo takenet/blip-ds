@@ -57,7 +57,6 @@
  - [bds-progress-bar](../progress-bar)
  - [bds-radio](../radio)
  - [bds-select-option](../select-option)
- - [bds-sidebar](../sidebar)
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab)
  - [bds-tab-panel](../tabs/tab-panel)
@@ -95,7 +94,6 @@ graph TD;
   bds-progress-bar --> bds-typo
   bds-radio --> bds-typo
   bds-select-option --> bds-typo
-  bds-sidebar --> bds-typo
   bds-step --> bds-typo
   bds-tab --> bds-typo
   bds-tab-panel --> bds-typo

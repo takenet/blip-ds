@@ -29,8 +29,8 @@
   position: absolute;
   top: 0;
   transition: all 0.5s ease-in-out;
-  display: grid;
-  grid-template-rows: 1fr 10fr 1fr;
+  display: flex;
+  flex-direction: column;
   background-color: $color-neutral-light-whisper;
   box-shadow: $shadow-box;
   z-index: $zindex-modal;
@@ -45,15 +45,18 @@
 
   & .header {
     & .content {
-      display: grid;
-      grid-auto-flow: column;
-      gap: 24px;
-      justify-content: start;
-      align-items: center;
       padding: 24px;
       padding-right: 56px;
       position: relative;
       color: $color-neutral-dark-city;
+
+      ::slotted(*) {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 16px;
+        justify-content: start;
+        align-items: center;
+      }
 
       & .closeButton {
         position: absolute;
@@ -73,6 +76,7 @@
 
   & .body {
     position: relative;
+    flex: 1 1 auto;
     & .content {
       position: absolute;
       inset: 0;
@@ -84,9 +88,12 @@
 
   & .footer {
     & .content {
-      display: flex;
-      justify-content: space-between;
       padding: 24px;
+
+      ::slotted(*) {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
   &.is_open {

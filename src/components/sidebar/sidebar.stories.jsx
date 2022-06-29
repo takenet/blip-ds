@@ -10,63 +10,97 @@ export default {
 
 const spacing = {
   marginBottom: '16px',
+  display: 'block',
 };
 
 const Template = (args) => {
   return (
-    <bds-sidebar
-      is-open={args.isOpen}
-      sidebar-position={args.sidebarPosition}
-      header-title={args.headerTitle}
-      header-icon={args.headerIcon}
-      header-avatar-name={args.headerAvatarName}
-      footer-button-apply={args.footerButtonApply}
-      footer-button-cancel={args.footerButtonCancel}
-    >
-      <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-      <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-      <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-      <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-      <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-      <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-    </bds-sidebar>
+    <>
+      <bds-sidebar is-open={args.isOpen} sidebar-position={args.SidebarPosition}>
+        <div slot="header">
+          <bds-avatar name="Take Blip" size="large"></bds-avatar>
+          <bds-typo bold="bold" variant="fs-20" line-height="double" margin="false">
+            Take Blip
+          </bds-typo>
+        </div>
+        <div slot="body">
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+        </div>
+        <div slot="footer">
+          <bds-button variant="secondary"> Clear Filter </bds-button>
+          <bds-button variant="primary"> Filter </bds-button>
+        </div>
+      </bds-sidebar>
+    </>
   );
 };
 
-export const SidebarRight = Template.bind({});
-SidebarRight.args = {
-  isOpen: true,
-  sidebarPosition: 'right',
-  headerTitle: 'Title',
-  footerButtonApply: 'Filter',
-  footerButtonCancel: 'Clean Filter',
+const TemplatePosition = () => {
+  const openSidebar = async (id) => {
+    const acc = document.getElementById(id);
+    acc.isOpen = true;
+  };
+  return (
+    <>
+      <bds-button style={spacing} onClick={() => openSidebar('sb-right')}>
+        Right Sidebar
+      </bds-button>
+      <bds-button style={spacing} onClick={() => openSidebar('sb-left')}>
+        Left Sidebar
+      </bds-button>
+      <bds-sidebar id="sb-right" sidebar-position="right">
+        <div slot="header">
+          <bds-avatar name="Take Blip" size="large"></bds-avatar>
+          <bds-typo bold="bold" variant="fs-20" line-height="double" margin="false">
+            Take Blip
+          </bds-typo>
+        </div>
+        <div slot="body">
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+        </div>
+        <div slot="footer">
+          <bds-button variant="secondary"> Clear Filter </bds-button>
+          <bds-button variant="primary"> Filter </bds-button>
+        </div>
+      </bds-sidebar>
+      <bds-sidebar id="sb-left" sidebar-position="left">
+        <div slot="header">
+          <bds-avatar name="Take Blip" size="large"></bds-avatar>
+          <bds-typo bold="bold" variant="fs-20" line-height="double" margin="false">
+            Take Blip
+          </bds-typo>
+        </div>
+        <div slot="body">
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+        </div>
+        <div slot="footer">
+          <bds-button variant="secondary"> Clear Filter </bds-button>
+          <bds-button variant="primary"> Filter </bds-button>
+        </div>
+      </bds-sidebar>
+    </>
+  );
 };
 
-export const SidebarLeft = Template.bind({});
-SidebarLeft.args = {
+export const Sidebar = Template.bind({});
+Sidebar.args = {
   isOpen: true,
   sidebarPosition: 'left',
-  headerTitle: 'Title',
-  footerButtonApply: 'Filter',
-  footerButtonCancel: 'Clean Filter',
 };
 
-export const SidebarIconTitle = Template.bind({});
-SidebarIconTitle.args = {
-  isOpen: true,
-  sidebarPosition: 'left',
-  headerTitle: 'Title',
-  headerIcon: 'filter',
-  footerButtonApply: 'Filter',
-  footerButtonCancel: 'Clean Filter',
-};
-
-export const SidebarAvatarTitle = Template.bind({});
-SidebarAvatarTitle.args = {
-  isOpen: true,
-  sidebarPosition: 'left',
-  headerTitle: 'Title',
-  headerAvatarName: 'Take Blip',
-  footerButtonApply: 'Filter',
-  footerButtonCancel: 'Clean Filter',
-};
+export const SidebarPosition = TemplatePosition.bind({});
