@@ -53,6 +53,7 @@
  - [bds-select-chips](../selects/select-chips)
  - [bds-sidebar](../sidebar)
  - [bds-step](../stepper/step)
+ - [bds-table](../table)
  - [bds-toast](../toast)
  - [bds-upload](../upload)
  - [bds-warning](../warning)
@@ -87,6 +88,7 @@ graph TD;
   bds-select-chips --> bds-icon
   bds-sidebar --> bds-icon
   bds-step --> bds-icon
+  bds-table --> bds-icon
   bds-toast --> bds-icon
   bds-upload --> bds-icon
   bds-warning --> bds-icon
