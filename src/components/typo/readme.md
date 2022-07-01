@@ -59,6 +59,7 @@
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab)
  - [bds-tab-panel](../tabs/tab-panel)
+ - [bds-table](../table)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
  - [bds-upload](../upload)
@@ -95,6 +96,7 @@ graph TD;
   bds-step --> bds-typo
   bds-tab --> bds-typo
   bds-tab-panel --> bds-typo
+  bds-table --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo
   bds-upload --> bds-typo

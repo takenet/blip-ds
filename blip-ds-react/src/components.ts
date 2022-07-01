@@ -65,6 +65,7 @@ export const BdsStepper = /*@__PURE__*/createReactComponent<JSX.BdsStepper, HTML
 export const BdsSwitch = /*@__PURE__*/createReactComponent<JSX.BdsSwitch, HTMLBdsSwitchElement>('bds-switch');
 export const BdsTab = /*@__PURE__*/createReactComponent<JSX.BdsTab, HTMLBdsTabElement>('bds-tab');
 export const BdsTabPanel = /*@__PURE__*/createReactComponent<JSX.BdsTabPanel, HTMLBdsTabPanelElement>('bds-tab-panel');
+export const BdsTable = /*@__PURE__*/createReactComponent<JSX.BdsTable, HTMLBdsTableElement>('bds-table');
 export const BdsTabs = /*@__PURE__*/createReactComponent<JSX.BdsTabs, HTMLBdsTabsElement>('bds-tabs');
 export const BdsToast = /*@__PURE__*/createReactComponent<JSX.BdsToast, HTMLBdsToastElement>('bds-toast');
 export const BdsToastContainer = /*@__PURE__*/createReactComponent<JSX.BdsToastContainer, HTMLBdsToastContainerElement>('bds-toast-container');
