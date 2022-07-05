@@ -66,7 +66,7 @@ export class AccordionHeader {
         {this.avatarName || this.avatarThumb ? (
           <bds-avatar name={this.avatarName} thumbnail={this.avatarThumb} size="extra-small"></bds-avatar>
         ) : (
-          this.icon && <bds-icon size="x-large" name="tag" color="inherit"></bds-icon>
+          this.icon && <bds-icon size="x-large" name={this.icon} color="inherit"></bds-icon>
         )}
         {this.accordionTitle && (
           <bds-typo bold="bold" variant="fs-16" line-height="double">
