@@ -5,12 +5,14 @@ import { Component, h, Host, Element, Prop, Watch, Event, EventEmitter, Componen
   scoped: true,
 })
 export class RadioGroup implements ComponentInterface {
-  @Element() el: HTMLBdsRadioGroupElement;
+  private radioGroupElement?: HTMLCollectionOf<HTMLBdsRadioElement> = null;
+
+  @Element() private element: HTMLElement;
 
   /**
    * The value of the selected radio
    */
-  @Prop() value: string;
+  @Prop({ mutable: true, reflect: true }) value: string;
   /**
    * Emitted when the value has changed due to a click event.
    */
@@ -23,43 +25,35 @@ export class RadioGroup implements ComponentInterface {
     this.bdsRadioGroupChange.emit({ value });
   }
 
-  private handleClick = (ev) => {
-    const selectedRadio = ev.target && (ev.target as HTMLElement).closest('bds-radio');
+  componentWillRender() {
+    this.radioGroupElement = this.element.getElementsByTagName('bds-radio') as HTMLCollectionOf<HTMLBdsRadioElement>;
+    for (let i = 0; i < this.radioGroupElement.length; i++) {
+      this.radioGroupElement[i].addEventListener('bdsChange', (event: CustomEvent) =>
+        this.chagedOptions(this.radioGroupElement[i].value, event)
+      );
+    }
+  }
 
-    if (selectedRadio) {
-      const currentValue = this.value;
-      const newValue = selectedRadio.value;
-
-      if (newValue !== currentValue) {
-        this.value = newValue;
-      }
+  private chagedOptions = (value: string, event: CustomEvent): void => {
+    if (event.detail.checked == true) {
+      this.value = value;
     }
   };
 
-  private getRadios(): HTMLBdsRadioElement[] {
-    return Array.from(this.el.querySelectorAll('bds-radio'));
-  }
-
   private setSelectedRadio(value: string) {
-    const radios = this.getRadios();
-
-    const first = radios.find((radio) => !radio.disabled);
-    const checked = radios.find((radio) => radio.value === value && !radio.disabled);
-
-    if (!first && !checked) {
-      return;
-    }
-
-    for (const radio of radios) {
-      if (radio.value !== checked.value) {
-        radio.checked = false;
+    const radios = this.radioGroupElement;
+    for (let i = 0; i < radios.length; i++) {
+      const getValue = radios[i].value;
+      radios[i].checked = false;
+      if (radios[i].checked == false && value == getValue) {
+        radios[i].checked = true;
       }
     }
   }
 
   render(): HTMLElement {
     return (
-      <Host onClick={this.handleClick}>
+      <Host>
         <slot></slot>
       </Host>
     );
