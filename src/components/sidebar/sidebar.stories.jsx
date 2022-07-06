@@ -11,7 +11,10 @@ export default {
 const spacing = {
   marginBottom: '16px',
   display: 'block',
+  textAlign: 'center',
 };
+
+const textContent = '"Insira o seu conteúdo aqui"';
 
 const Template = (args) => {
   return (
@@ -24,12 +27,7 @@ const Template = (args) => {
           </bds-typo>
         </div>
         <div slot="body">
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-typo style={spacing}>{textContent}</bds-typo>
         </div>
         <div slot="footer">
           <bds-button variant="secondary"> Clear Filter </bds-button>
@@ -61,12 +59,7 @@ const TemplatePosition = () => {
           </bds-typo>
         </div>
         <div slot="body">
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-typo style={spacing}>{textContent}</bds-typo>
         </div>
         <div slot="footer">
           <bds-button variant="secondary"> Clear Filter </bds-button>
@@ -81,12 +74,7 @@ const TemplatePosition = () => {
           </bds-typo>
         </div>
         <div slot="body">
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
-          <bds-input style={spacing} maxlength="30" counter-length icon="email" label="Name"></bds-input>
+          <bds-typo style={spacing}>{textContent}</bds-typo>
         </div>
         <div slot="footer">
           <bds-button variant="secondary"> Clear Filter </bds-button>

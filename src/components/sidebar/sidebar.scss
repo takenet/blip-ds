@@ -45,12 +45,14 @@
 
   & .header {
     & .content {
+      display: flex;
+      align-content: flex-start;
       padding: 24px;
-      padding-right: 56px;
       position: relative;
       color: $color-neutral-dark-city;
 
       ::slotted(*) {
+        width: 100%;
         display: grid;
         grid-auto-flow: column;
         gap: 16px;
@@ -59,9 +61,6 @@
       }
 
       & .closeButton {
-        position: absolute;
-        right: 24px;
-        top: calc(50% - 16px);
         border-radius: 8px;
         contain: inherit;
         -webkit-transition: height 0.5s, all 0.3s;
