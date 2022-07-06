@@ -11,7 +11,14 @@
   left: 0;
   transition: opacity 0.3s ease-in-out;
   z-index: $zindex-modal-overlay;
-  display: flex;
+  display: none;
+
+  &--dynamic {
+    overflow-y: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    height: -webkit-fill-available;
+  }
 
   .modal {
     position: relative;
@@ -24,7 +31,13 @@
     padding: 32px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
+    &--dynamic {
+      height:auto;
+      width: auto;
+      max-width: 1000px;
+    }
     .close-button {
       color: $color-neutral-dark-rooftop;
       align-self: flex-end;
@@ -32,10 +45,17 @@
       cursor: pointer;
     }
 
+    .slot {
+      &--dynamic {
+        flex: 1 1 auto;
+      }
+    }
+
   }
 
   &--open {
     opacity: 1;
     visibility: visible;
+    display: flex;
   }
 }

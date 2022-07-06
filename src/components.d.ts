@@ -32,6 +32,7 @@ import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./co
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
+import { sizes } from "./components/modal/modal";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { sidebarPosition } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
@@ -1064,6 +1065,10 @@ export namespace Components {
           * Used to open/close the modal
          */
         "open"?: boolean;
+        /**
+          * Used to change the modal heights.
+         */
+        "size"?: sizes;
         /**
           * Can be used outside to open/close the modal
          */
@@ -3233,6 +3238,10 @@ declare namespace LocalJSX {
           * Used to open/close the modal
          */
         "open"?: boolean;
+        /**
+          * Used to change the modal heights.
+         */
+        "size"?: sizes;
     }
     interface BdsModalAction {
     }
