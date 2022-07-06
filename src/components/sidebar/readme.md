@@ -30,12 +30,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [bds-icon](../icon)
+- [bds-button-icon](../icon-button)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-sidebar --> bds-icon
+  bds-sidebar --> bds-button-icon
+  bds-button-icon --> bds-icon
   style bds-sidebar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

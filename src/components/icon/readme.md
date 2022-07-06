@@ -51,7 +51,6 @@
  - [bds-modal-close-button](../modal/modal-close-button)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
- - [bds-sidebar](../sidebar)
  - [bds-step](../stepper/step)
  - [bds-table](../table)
  - [bds-toast](../toast)
@@ -86,7 +85,6 @@ graph TD;
   bds-modal-close-button --> bds-icon
   bds-select --> bds-icon
   bds-select-chips --> bds-icon
-  bds-sidebar --> bds-icon
   bds-step --> bds-icon
   bds-table --> bds-icon
   bds-toast --> bds-icon

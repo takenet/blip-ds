@@ -57,16 +57,15 @@ export class Sidebar {
           <div class={{ header: true }}>
             <div class={{ content: true }}>
               <slot name="header" />
-              <bds-icon
+              <bds-button-icon
                 class={{
                   closeButton: true,
                 }}
-                size="medium"
-                name="close"
-                color="inherit"
-                tabindex="0"
+                icon="close"
+                size="short"
+                variant="secondary"
                 onClick={() => this.onClickCloseButtom()}
-              ></bds-icon>
+              ></bds-button-icon>
             </div>
           </div>
           <div class={{ body: true }}>
