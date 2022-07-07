@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                           | Type      | Default |
-| ------------- | -------------- | ------------------------------------- | --------- | ------- |
-| `closeButton` | `close-button` | Used to hide or show the close button | `boolean` | `true`  |
-| `open`        | `open`         | Used to open/close the modal          | `boolean` | `false` |
+| Property      | Attribute      | Description                           | Type                   | Default   |
+| ------------- | -------------- | ------------------------------------- | ---------------------- | --------- |
+| `closeButton` | `close-button` | Used to hide or show the close button | `boolean`              | `true`    |
+| `open`        | `open`         | Used to open/close the modal          | `boolean`              | `false`   |
+| `size`        | `size`         | Used to change the modal heights.     | `"dynamic" \| "fixed"` | `'fixed'` |
 
 
 ## Events

@@ -8,20 +8,70 @@ export default {
   },
 };
 
-export const defaultModal = () => (
+export const DefaultModal = () => (
   <>
     <bds-modal open={true} close-button={true}>
       <bds-modal-action>
-        <bds-button icon="video" variant="secondary">
-          Tutorial
-        </bds-button>
-        <bds-button>Ok, entendi</bds-button>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+          <bds-button icon="video" variant="secondary">
+            Tutorial
+          </bds-button>
+          <bds-button>Ok, entendi</bds-button>
+        </div>
       </bds-modal-action>
     </bds-modal>
   </>
 );
 
-export const informativeModal = () => (
+export const DynamicModal = () => (
+  <>
+    <bds-modal open={true} close-button={true} size="dynamic">
+      <div style={{ display: 'flex', alignItems: 'center', width: '600px' }}>
+        <div>
+          <bds-typo variant="fs-20" bold="semi-bold">
+          Leia atentamente todo o termo de uso:
+          </bds-typo>
+          <bds-typo variant="fs-14" bold="regular">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+            qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+            est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+          </bds-typo>
+        </div>
+      </div>
+      <bds-modal-action>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+          <bds-button variant="secondary">Recuso</bds-button>
+          <bds-button>Aceito</bds-button>
+        </div>
+      </bds-modal-action>
+    </bds-modal>
+  </>
+);
+
+export const InformativeModal = () => (
   <>
     <bds-modal open={true} close-button={true}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
@@ -39,22 +89,19 @@ export const informativeModal = () => (
           </bds-typo>
         </div>
       </div>
-      <div style={{ display: 'flex', position: 'absolute', left: '32px', bottom: '32px' }}>
-        <bds-typo variant="fs-10" bold="regular">
-          Em caso de dúvidas acesse nosso help center.
-        </bds-typo>
-      </div>
       <bds-modal-action>
-        <bds-button icon="video" variant="secondary">
-          Tutorial
-        </bds-button>
-        <bds-button>Ok, entendi</bds-button>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+          <bds-button icon="video" variant="secondary">
+            Tutorial
+          </bds-button>
+          <bds-button>Ok, entendi</bds-button>
+        </div>
       </bds-modal-action>
     </bds-modal>
   </>
 );
 
-export const newsModal = () => (
+export const NewsModal = () => (
   <>
     <bds-modal open={true} close-button={true}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
@@ -71,9 +118,9 @@ export const newsModal = () => (
           ></iframe>
         </div>
         <div>
-          <bds-chip variant="watermelon" style={{ marginBottom: '5px' }}>
+          <bds-chip-tag color="info" style={{ marginBottom: '5px' }}>
             Novidades!
-          </bds-chip>
+          </bds-chip-tag>
           <bds-typo variant="fs-20" bold="semi-bold">
             Oi, Usuário! conheça os BLiPspaces
           </bds-typo>
@@ -83,20 +130,17 @@ export const newsModal = () => (
           </bds-typo>
         </div>
       </div>
-      <div style={{ display: 'flex', position: 'absolute', left: '32px', bottom: '32px' }}>
-        <bds-typo variant="fs-10" bold="regular">
-          Conheça mais sobre os BLiPspaces aqui
-        </bds-typo>
-      </div>
       <bds-modal-action>
-        <bds-button variant="secondary">Button label</bds-button>
-        <bds-button>Ok, entendi</bds-button>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+          <bds-button variant="secondary">Button label</bds-button>
+          <bds-button>Ok, entendi</bds-button>
+        </div>
       </bds-modal-action>
     </bds-modal>
   </>
 );
 
-export const warningModal = () => (
+export const WarningModal = () => (
   <>
     <bds-modal open={true} close-button={true}>
       <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
@@ -132,8 +176,10 @@ export const warningModal = () => (
         </bds-typo>
       </div>
       <bds-modal-action>
-        <bds-button variant="secondary">Button label</bds-button>
-        <bds-button>Ok, entendi</bds-button>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+          <bds-button variant="secondary">Button label</bds-button>
+          <bds-button>Ok, entendi</bds-button>
+        </div>
       </bds-modal-action>
     </bds-modal>
   </>
@@ -187,8 +233,10 @@ export const InviteModal = () => (
         </div>
       </div>
       <bds-modal-action>
-        <bds-button variant="secondary">Button label</bds-button>
-        <bds-button>Ok, entendi</bds-button>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+          <bds-button variant="secondary">Button label</bds-button>
+          <bds-button>Ok, entendi</bds-button>
+        </div>
       </bds-modal-action>
     </bds-modal>
   </>
