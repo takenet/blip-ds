@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Method, Watch } from '@stencil/core';
+import { Component, h, State, Prop, Method, Watch, Element } from '@stencil/core';
 
 export type sidebarPosition = 'left' | 'right';
 
@@ -8,6 +8,10 @@ export type sidebarPosition = 'left' | 'right';
   shadow: true,
 })
 export class Sidebar {
+  private hasFooterSlot: boolean;
+
+  @Element() hostElement: HTMLElement;
+
   @State() InnerSpacing?: number = 0;
 
   /**;
@@ -32,6 +36,10 @@ export class Sidebar {
     } else {
       document.removeEventListener('keyup', this.listiner, false);
     }
+  }
+
+  componentWillLoad() {
+    this.hasFooterSlot = !!this.hostElement.querySelector('[slot="footer"]');
   }
 
   private listiner = (event) => {
@@ -73,11 +81,13 @@ export class Sidebar {
               <slot name="body" />
             </div>
           </div>
-          <div class={{ footer: true }}>
-            <div class={{ content: true }}>
-              <slot name="footer" />
+          {this.hasFooterSlot && (
+            <div class={{ footer: true }}>
+              <div class={{ content: true }}>
+                <slot name="footer" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
