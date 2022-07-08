@@ -47,17 +47,13 @@
     & .content {
       display: flex;
       align-content: flex-start;
+      justify-content: flex-end;
       padding: 24px;
       position: relative;
       color: $color-neutral-dark-city;
 
       ::slotted(*) {
         width: 100%;
-        display: grid;
-        grid-auto-flow: column;
-        gap: 16px;
-        justify-content: start;
-        align-items: center;
       }
 
       & .closeButton {
@@ -81,6 +77,7 @@
       inset: 0;
       padding: 8px 24px;
       overflow-y: scroll;
+      overflow-x: clip;
       @include custom-scroll;
     }
   }
@@ -90,8 +87,8 @@
       padding: 24px;
 
       ::slotted(*) {
-        display: flex;
-        justify-content: space-between;
+        height: 40px;
+        overflow: hidden;
       }
     }
   }
