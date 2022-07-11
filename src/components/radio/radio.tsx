@@ -11,26 +11,35 @@ export class Radio {
 
   @State() radioId?: string;
 
-  @Prop() refer!: string;
+  /**
+   * Refer. Field to add refer in radio buttom.
+   */
+  @Prop() refer?: string;
 
-  @Prop() label!: string;
+  /**
+   * label in radio, with he the input size increases.
+   */
+  @Prop() label?: string;
 
+  /**
+   * The value of the input.
+   */
   @Prop() value!: string;
 
   /**
    * The name of the control, which is submitted with the form data.
    */
-  @Prop() name!: string;
+  @Prop() name?: string;
 
   /**
    * If `true`, the checkbox is selected.
    */
-  @Prop({ mutable: true, reflect: true }) checked = false;
+  @Prop({ mutable: true, reflect: true }) checked?: boolean = false;
 
   /**
    * If `true`, the user cannot interact with the checkbox.
    */
-  @Prop() disabled = false;
+  @Prop() disabled?: boolean = false;
 
   /**
    * Data test is the prop to specifically test the component action object.

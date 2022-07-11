@@ -8,7 +8,7 @@ export default {
   },
 };
 
-export const radioGroup = () => (
+export const RadioGroup = () => (
   <bds-radio-group>
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <bds-typo bold="bold">Radio group</bds-typo>
@@ -19,20 +19,20 @@ export const radioGroup = () => (
   </bds-radio-group>
 );
 
-export const defaultRadio = () => (
+export const DefaultRadio = () => (
   <>
     <bds-radio label="Click A" name="rd1" disabled={false} checked={false}></bds-radio>
   </>
 );
 
-export const disabledRadio = () => (
+export const DisabledRadio = () => (
   <>
     <bds-radio id="radio1" label="Selected" checked disabled></bds-radio>
     <bds-radio id="radio2" label="Deselected" disabled></bds-radio>
   </>
 );
 
-export const withoutLabelRadio = () => (
+export const WithoutLabelRadio = () => (
   <>
     <bds-radio id="radio1" checked></bds-radio>
     <bds-radio id="radio2"></bds-radio>
