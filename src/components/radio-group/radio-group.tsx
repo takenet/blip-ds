@@ -12,7 +12,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * The value of the selected radio
    */
-  @Prop({ mutable: true, reflect: true }) value: string;
+  @Prop({ mutable: true, reflect: true }) value?: string;
   /**
    * Emitted when the value has changed due to a click event.
    */

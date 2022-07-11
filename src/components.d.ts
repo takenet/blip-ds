@@ -1106,7 +1106,7 @@ export namespace Components {
         /**
           * If `true`, the checkbox is selected.
          */
-        "checked": boolean;
+        "checked"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -1114,22 +1114,31 @@ export namespace Components {
         /**
           * If `true`, the user cannot interact with the checkbox.
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         "getInputElement": () => Promise<HTMLInputElement>;
         "getValue": () => Promise<boolean>;
-        "label": string;
+        /**
+          * label in radio, with he the input size increases.
+         */
+        "label"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
-        "name": string;
-        "refer": string;
+        "name"?: string;
+        /**
+          * Refer. Field to add refer in radio buttom.
+         */
+        "refer"?: string;
+        /**
+          * The value of the input.
+         */
         "value": string;
     }
     interface BdsRadioGroup {
         /**
           * The value of the selected radio
          */
-        "value": string;
+        "value"?: string;
     }
     interface BdsSelect {
         /**
@@ -3284,11 +3293,14 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
-        "label": string;
+        /**
+          * label in radio, with he the input size increases.
+         */
+        "label"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
-        "name": string;
+        "name"?: string;
         /**
           * Emitted when the value has changed.
          */
@@ -3297,7 +3309,13 @@ declare namespace LocalJSX {
           * Emitted when the value has changed because of a click event.
          */
         "onBdsClickChange"?: (event: BdsRadioCustomEvent<any>) => void;
-        "refer": string;
+        /**
+          * Refer. Field to add refer in radio buttom.
+         */
+        "refer"?: string;
+        /**
+          * The value of the input.
+         */
         "value": string;
     }
     interface BdsRadioGroup {
