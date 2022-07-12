@@ -3,7 +3,7 @@
 
   .table {
     display: grid;
-    font-family: 'Nunito Sans';
+    font-family: $font-family;
     color: $color-neutral-dark-city;
     width: 100%;
     border: 1px solid $color-neutral-medium-wave;
