@@ -1082,6 +1082,16 @@ export namespace Components {
          */
         "active"?: boolean;
     }
+    interface BdsPagination {
+        /**
+          * Prop to recive the number of pages.
+         */
+        "pages"?: number;
+        /**
+          * When the component are render this page are set.
+         */
+        "startedPage"?: number;
+    }
     interface BdsPaper {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -1599,6 +1609,10 @@ export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsModalElement;
 }
+export interface BdsPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsPaginationElement;
+}
 export interface BdsRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsRadioElement;
@@ -1916,6 +1930,12 @@ declare global {
         prototype: HTMLBdsModalCloseButtonElement;
         new (): HTMLBdsModalCloseButtonElement;
     };
+    interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
+    }
+    var HTMLBdsPaginationElement: {
+        prototype: HTMLBdsPaginationElement;
+        new (): HTMLBdsPaginationElement;
+    };
     interface HTMLBdsPaperElement extends Components.BdsPaper, HTMLStencilElement {
     }
     var HTMLBdsPaperElement: {
@@ -2089,6 +2109,7 @@ declare global {
         "bds-modal": HTMLBdsModalElement;
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
+        "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
         "bds-radio": HTMLBdsRadioElement;
@@ -3251,6 +3272,20 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
     }
+    interface BdsPagination {
+        /**
+          * When de value of component change, the event are dispache.
+         */
+        "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        /**
+          * Prop to recive the number of pages.
+         */
+        "pages"?: number;
+        /**
+          * When the component are render this page are set.
+         */
+        "startedPage"?: number;
+    }
     interface BdsPaper {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -3763,6 +3798,7 @@ declare namespace LocalJSX {
         "bds-modal": BdsModal;
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
+        "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
         "bds-progress-bar": BdsProgressBar;
         "bds-radio": BdsRadio;
@@ -3836,6 +3872,7 @@ declare module "@stencil/core" {
             "bds-modal": LocalJSX.BdsModal & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
+            "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;

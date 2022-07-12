@@ -20,6 +20,7 @@
 ### Used by
 
  - [bds-banner](../banner)
+ - [bds-pagination](../pagination)
  - [bds-sidebar](../sidebar)
  - [bds-tabs](../tabs)
  - [bds-toast](../toast)
@@ -34,6 +35,7 @@
 graph TD;
   bds-button-icon --> bds-icon
   bds-banner --> bds-button-icon
+  bds-pagination --> bds-button-icon
   bds-sidebar --> bds-button-icon
   bds-tabs --> bds-button-icon
   bds-toast --> bds-button-icon
