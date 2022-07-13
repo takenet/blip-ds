@@ -103,9 +103,20 @@ export class Select {
       this.isOpen = false;
     }
   }
+  componentWillLoad() {
+    this.options && this.optionsChanged();
+  }
 
   componentWillRender() {
     this.options && this.updateOptions();
+    for (const option of this.childOptions) {
+      option.selected = this.value === option.value;
+      option.addEventListener('optionSelected', this.handler);
+    }
+    this.text = this.getText();
+  }
+
+  componentDidLoad() {
     for (const option of this.childOptions) {
       option.selected = this.value === option.value;
       option.addEventListener('optionSelected', this.handler);
