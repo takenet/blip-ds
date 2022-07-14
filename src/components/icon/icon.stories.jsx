@@ -64,6 +64,8 @@ const outlineIconsName = [
   'arrow-ball-right',
   'arrow-ball-up',
   'arrow-down',
+  'arrow-first',
+  'arrow-last',
   'arrow-left',
   'arrow-right',
   'arrow-up',
