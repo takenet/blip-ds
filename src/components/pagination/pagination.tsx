@@ -101,7 +101,7 @@ export class Pagination {
             onClick={this.firstPage}
             size="short"
             variant="secondary"
-            icon="arrow-left"
+            icon="arrow-first"
           ></bds-button-icon>
           <bds-button-icon
             onClick={this.previewPage}
@@ -137,12 +137,7 @@ export class Pagination {
             variant="secondary"
             icon="arrow-right"
           ></bds-button-icon>
-          <bds-button-icon
-            onClick={this.lastPage}
-            size="short"
-            variant="secondary"
-            icon="arrow-right"
-          ></bds-button-icon>
+          <bds-button-icon onClick={this.lastPage} size="short" variant="secondary" icon="arrow-last"></bds-button-icon>
         </div>
       </Host>
     );
