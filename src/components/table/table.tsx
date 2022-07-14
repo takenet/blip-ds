@@ -1,5 +1,8 @@
 import { Component, Host, h, Prop, State, Element } from '@stencil/core';
 
+type Data = {
+  [key: string]: any;
+};
 @Component({
   tag: 'bds-table',
   styleUrl: 'table.scss',
@@ -7,16 +10,34 @@ import { Component, Host, h, Prop, State, Element } from '@stencil/core';
 })
 export class Table {
   @Element() el!: HTMLElement;
-  @State() headerData?: any = [];
-  @State() tableData?: any = [];
-  @State() sortedData?: any = [];
-  @State() order?: boolean = false;
+  /**
+   * For keep the Object of header;
+   */
+  @State() headerData?: Data = [];
+  /**
+   * For keep the Object of table content.
+   */
+  @State() tableData?: Data = [];
+  /**
+   * For keep the state of the prop sort.
+   */
   @State() sortAscending: boolean;
-  @State() bold?: any = 'regular';
-  @Prop() options?: any;
-  @Prop() column?: any;
-  @Prop() check?: boolean = true;
+  /**
+   * Prop to recive the content of the table.
+   */
+  @Prop() options?: string;
+  /**
+   * Prop to recive the header and configuration of table.
+   */
+  @Prop() column?: string;
+  /**
+   * Prop to activate the possibility of use avatar in any column.
+   */
   @Prop() avatar?: boolean = false;
+  /**
+   * Prop to activate the sorting.
+   */
+  @Prop() sorting?: boolean = false;
 
   componentWillLoad() {
     this.getDataFromProprety();
@@ -27,8 +48,8 @@ export class Table {
       this.headerData = JSON.parse(this.column);
       this.tableData = JSON.parse(this.options);
     } else {
-      this.headerData = this.column;
-      this.tableData = this.options;
+      this.headerData = JSON.parse(this.column);
+      this.tableData = JSON.parse(this.options);
     }
   }
   toggleSorting() {
@@ -60,14 +81,28 @@ export class Table {
           <thead class="thead">
             <tr class="header">
               {this.headerData.map((item, index) => (
-                <th class="header-title" key={index} onClick={() => this.orderColumn(item.value)}>
-                  <bds-typo variant="fs-14" bold={this.bold}>
-                    {item.heading}
-                  </bds-typo>
-                  {this.sortAscending ? (
-                    <bds-icon name="arrow-up" size="small"></bds-icon>
+                <th class="header-title" key={index}>
+                  {this.sorting ? (
+                    <bds-typo
+                      class="title-click"
+                      onClick={() => this.orderColumn(item.value)}
+                      variant="fs-14"
+                      bold="regular"
+                    >
+                      {item.heading}
+                    </bds-typo>
                   ) : (
+                    <bds-typo variant="fs-14" bold="regular">
+                      {item.heading}
+                    </bds-typo>
+                  )}
+
+                  {this.sortAscending === true && this.sorting ? (
+                    <bds-icon name="arrow-up" size="small"></bds-icon>
+                  ) : this.sortAscending === false && this.sorting ? (
                     <bds-icon name="arrow-down" size="small"></bds-icon>
+                  ) : (
+                    ''
                   )}
                 </th>
               ))}
@@ -89,7 +124,7 @@ export class Table {
                             name={item[itemSplit[0]][itemSplit[1]]}
                           ></bds-avatar>
                         )}
-                        <bds-typo variant="fs-14" bold={this.bold}>
+                        <bds-typo variant="fs-14" bold="regular">
                           {item[itemSplit[0]][itemSplit[1]]}
                         </bds-typo>
                       </td>
@@ -97,7 +132,7 @@ export class Table {
                   }
                   return (
                     <td class="body-item" key={idx}>
-                      <bds-typo variant="fs-14" bold={this.bold}>
+                      <bds-typo variant="fs-14" bold="regular">
                         {item[`${columnItem.value}`]}
                       </bds-typo>
                     </td>

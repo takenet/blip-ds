@@ -1405,10 +1405,22 @@ export namespace Components {
         "group": string;
     }
     interface BdsTable {
+        /**
+          * Prop to activate the possibility of use avatar in any column.
+         */
         "avatar"?: boolean;
-        "check"?: boolean;
-        "column"?: any;
-        "options"?: any;
+        /**
+          * Prop to recive the header and configuration of table.
+         */
+        "column"?: string;
+        /**
+          * Prop to recive the content of the table.
+         */
+        "options"?: string;
+        /**
+          * Prop to activate the sorting.
+         */
+        "sorting"?: boolean;
     }
     interface BdsTabs {
         "align": 'left' | 'center' | 'right';
@@ -3616,10 +3628,22 @@ declare namespace LocalJSX {
         "group": string;
     }
     interface BdsTable {
+        /**
+          * Prop to activate the possibility of use avatar in any column.
+         */
         "avatar"?: boolean;
-        "check"?: boolean;
-        "column"?: any;
-        "options"?: any;
+        /**
+          * Prop to recive the header and configuration of table.
+         */
+        "column"?: string;
+        /**
+          * Prop to recive the content of the table.
+         */
+        "options"?: string;
+        /**
+          * Prop to activate the sorting.
+         */
+        "sorting"?: boolean;
     }
     interface BdsTabs {
         "align"?: 'left' | 'center' | 'right';

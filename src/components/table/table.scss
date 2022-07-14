@@ -30,7 +30,10 @@
           align-items: center;
           justify-content: flex-start;
           gap: 8px;
-          cursor: pointer;
+          
+          .title-click {
+            cursor: pointer;
+          }
         }
       }
     }
