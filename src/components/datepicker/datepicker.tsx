@@ -93,6 +93,28 @@ export class DatePicker {
     this.inputSetEndDate?.setFocus();
   }
 
+  @Watch('menupositionTop')
+  menupositionTopChanged(): void {
+    const menuElement: HTMLElement = this.element.getElementsByClassName('datepicker__menu')[0] as HTMLElement;
+    const limitedHeightScreen = window.innerHeight - menuElement.offsetHeight;
+    if (this.menupositionTop < 8) {
+      this.menupositionTop = 8;
+    } else if (this.menupositionTop > limitedHeightScreen) {
+      this.menupositionTop = limitedHeightScreen - 8;
+    }
+  }
+
+  @Watch('menupositionLeft')
+  menupositionLeftChanged(): void {
+    const menuElement: HTMLElement = this.element.getElementsByClassName('datepicker__menu')[0] as HTMLElement;
+    const limitedWidthScreen = window.innerWidth - menuElement.offsetWidth;
+    if (this.menupositionLeft < 0) {
+      this.menupositionLeft = 0;
+    } else if (this.menupositionLeft > limitedWidthScreen) {
+      this.menupositionLeft = limitedWidthScreen;
+    }
+  }
+
   componentWillLoad() {
     this.endDateLimitChanged();
     this.startDateLimitChanged();

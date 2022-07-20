@@ -140,6 +140,16 @@ export const SidebarPosition = () => {
           <bds-typo style={spInputText} variant="fs-14" margin="false">
             Filtre por percentual de confiança:
           </bds-typo>
+          <bds-typo style={spInputText} variant="fs-14" margin="false">
+            Filtre por período:
+          </bds-typo>
+          <bds-datepicker
+            style={spInput}
+            end-date-limit="31/12/2022"
+            start-date-limit="01/01/2022"
+            type-of-date="period"
+          />
+          <div style={divisor}></div>
           <div style={spInputPercent}>
             <bds-select placeholder="Selecione uma ou mais intenções" label="Intenção">
               <bds-select-option value="1">Millie Bobby</bds-select-option>
@@ -152,15 +162,6 @@ export const SidebarPosition = () => {
             <bds-input placeholder="0 a 100" label="Percentual"></bds-input>
           </div>
           <div style={divisor}></div>
-          <bds-typo style={spInputText} variant="fs-14" margin="false">
-            Filtre por período:
-          </bds-typo>
-          <bds-datepicker
-            style={spInput}
-            end-date-limit="31/12/2022"
-            start-date-limit="01/01/2022"
-            type-of-date="period"
-          />
           <div style={alignbt}>
             <bds-button variant="ghost">Selecionar hora início e fim</bds-button>
           </div>
