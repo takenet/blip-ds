@@ -1,8 +1,7 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, h, Element, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
 import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToString } from '../../utils/calendar';
 import { dateValidation, maskDate } from '../../utils/validations';
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
-import { DaysList } from './datepicker-interface';
 
 export type typeDate = 'single' | 'period';
 
@@ -17,7 +16,8 @@ export class DatePicker {
   private datepickerPeriod?: HTMLBdsDatepickerPeriodElement;
   private datepickerSingle?: HTMLBdsDatepickerSingleElement;
 
-  @State() endDateLimitDaysList: DaysList;
+  @Element() private element: HTMLElement;
+
   @State() open?: boolean = false;
   @State() dateSelected?: Date = null;
   @State() endDateSelected?: Date = null;
@@ -25,6 +25,10 @@ export class DatePicker {
   @State() valueEndDateSelected?: string = null;
   @State() errorMsgDate?: string = null;
   @State() errorMsgEndDate?: string = null;
+  @State() intoView?: HTMLElement = null;
+  @State() scrollingTop?: number = 0;
+  @State() menupositionTop?: number = 0;
+  @State() menupositionLeft?: number = 0;
   /**
    * TypeOfDate. Select type of date.
    */
@@ -89,10 +93,67 @@ export class DatePicker {
     this.inputSetEndDate?.setFocus();
   }
 
+  @Watch('menupositionTop')
+  menupositionTopChanged(): void {
+    const menuElement: HTMLElement = this.element.getElementsByClassName('datepicker__menu')[0] as HTMLElement;
+    const limitedHeightScreen = window.innerHeight - menuElement.offsetHeight;
+    if (this.menupositionTop < 8) {
+      this.menupositionTop = 8;
+    } else if (this.menupositionTop > limitedHeightScreen) {
+      this.menupositionTop = limitedHeightScreen - 8;
+    }
+  }
+
+  @Watch('menupositionLeft')
+  menupositionLeftChanged(): void {
+    const menuElement: HTMLElement = this.element.getElementsByClassName('datepicker__menu')[0] as HTMLElement;
+    const limitedWidthScreen = window.innerWidth - menuElement.offsetWidth;
+    if (this.menupositionLeft < 0) {
+      this.menupositionLeft = 0;
+    } else if (this.menupositionLeft > limitedWidthScreen) {
+      this.menupositionLeft = limitedWidthScreen;
+    }
+  }
+
   componentWillLoad() {
     this.endDateLimitChanged();
     this.startDateLimitChanged();
+    this.intoView = this.getScrollParent(this.element);
   }
+
+  private getScrollParent = (node: HTMLElement) => {
+    if (node === null) {
+      return null;
+    }
+
+    if (node.style.overflowY || node?.tagName == 'BODY') {
+      return node;
+    } else {
+      return this.getScrollParent(node.offsetParent as HTMLElement);
+    }
+  };
+
+  private isScrolledIntoView = (): void => {
+    const inputElement: HTMLElement = this.element.getElementsByClassName('datepicker')[0] as HTMLElement;
+    const menuElement: HTMLElement = this.element.getElementsByClassName('datepicker__menu')[0] as HTMLElement;
+    const parentElement: HTMLElement = this.intoView.offsetParent as HTMLElement;
+    const contentScrolled = !!this.intoView.style.overflowY;
+
+    const positionTop = contentScrolled
+      ? inputElement.offsetTop - this.intoView.scrollTop + parentElement.offsetTop
+      : inputElement.offsetTop - window.scrollY;
+
+    const positionLeft = contentScrolled ? inputElement.offsetLeft + parentElement.offsetLeft : inputElement.offsetLeft;
+
+    this.menupositionTop =
+      menuElement?.offsetHeight > window.innerHeight - positionTop
+        ? positionTop - menuElement?.offsetHeight - 16
+        : positionTop + inputElement.offsetHeight + 16;
+    this.menupositionLeft =
+      menuElement?.offsetWidth > window.innerWidth - positionLeft
+        ? positionLeft + inputElement.offsetWidth - menuElement?.offsetWidth
+        : positionLeft;
+  };
 
   private refInputSetDate = (el: HTMLBdsInputElement): void => {
     this.inputSetDate = el;
@@ -202,12 +263,18 @@ export class DatePicker {
 
   private onClickSetDate = () => {
     this.open = true;
+    this.isScrolledIntoView();
     setTimeout(() => {
       this.inputSetDate?.setFocus();
-      this.inputSetEndDate.removeFocus();
+      this.inputSetEndDate?.removeFocus();
     }, 50);
-    this.datepickerPeriod.clear();
+    this.datepickerPeriod?.clear();
     this.valueEndDateSelected = null;
+  };
+
+  private openDatepicker = () => {
+    this.open = true;
+    this.isScrolledIntoView();
   };
 
   private closeDatepicker = () => {
@@ -216,8 +283,12 @@ export class DatePicker {
   };
 
   render() {
+    const menuPosition = {
+      top: `${this.menupositionTop}px`,
+      left: `${this.menupositionLeft}px`,
+    };
     return (
-      <div class={{ datepicker: true }}>
+      <div class={{ datepicker: true }} onBlur={() => (this.open = false)} tabindex="0">
         {this.typeOfDate == 'single' ? (
           <div class={{ datepicker__inputs: true, [`datepicker__inputs__${this.typeOfDate}`]: true }}>
             <bds-input
@@ -226,7 +297,7 @@ export class DatePicker {
               placeholder="__/__/____"
               maxlength={10}
               icon="calendar"
-              onClick={() => (this.open = true)}
+              onClick={() => this.openDatepicker()}
               onBdsInput={(ev) => this.maskDateSelected(ev)}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
@@ -254,14 +325,14 @@ export class DatePicker {
               placeholder="__/__/____"
               maxlength={10}
               icon="calendar"
-              onClick={() => (this.open = true)}
+              onClick={() => this.openDatepicker}
               onBdsInput={(ev) => this.maskEndDateSelected(ev)}
               danger={this.errorMsgEndDate ? true : false}
               errorMessage={this.errorMsgEndDate}
             ></bds-input>
           </div>
         )}
-        <div class={{ datepicker__menu: true, datepicker__menu__open: this.open }}>
+        <div class={{ datepicker__menu: true, datepicker__menu__open: this.open }} style={menuPosition}>
           {this.message && (
             <div class="datepicker__menu__message">
               <bds-icon name="warning" theme="outline" aria-label="Ícone de atenção"></bds-icon>
