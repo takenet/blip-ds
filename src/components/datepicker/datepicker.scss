@@ -7,18 +7,18 @@
   max-width: 608px;
 
   &__menu {
-    position: absolute;
+    position: fixed;
     pointer-events: none;
-    top: calc(100% + 16px);
+    top: 0;
     left: 0;
     background-color: $color-neutral-light-snow;
     box-shadow: $shadow-box;
     border-radius: 8px;
     padding: 16px;
     opacity: 0;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    transition: opacity 0.5s;
     z-index: $zindex-modal-overlay;
 
     &__open {

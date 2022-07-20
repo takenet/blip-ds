@@ -53,15 +53,23 @@ export class Sidebar {
   };
 
   render() {
+    const contentBody = {
+      position: 'absolute',
+      inset: '0',
+      padding: '8px 24px',
+      overflowY: 'scroll',
+      overflowX: 'clip',
+    };
     return (
       <div
         class={{
           sidebar_dialog: true,
           is_open: this.isOpen,
+          [`position_${this.sidebarPosition}`]: true,
         }}
       >
         <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
-        <div class={{ sidebar: true, is_open: this.isOpen, [`position_${this.sidebarPosition}`]: true }}>
+        <div class={{ sidebar: true, is_open: this.isOpen }}>
           <div class={{ header: true }}>
             <div class={{ content: true }}>
               <slot name="header" />
@@ -77,7 +85,7 @@ export class Sidebar {
             </div>
           </div>
           <div class={{ body: true }}>
-            <div class={{ content: true }}>
+            <div class={{ content: true }} style={contentBody}>
               <slot name="body" />
             </div>
           </div>

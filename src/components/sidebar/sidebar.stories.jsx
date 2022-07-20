@@ -155,7 +155,12 @@ export const SidebarPosition = () => {
           <bds-typo style={spInputText} variant="fs-14" margin="false">
             Filtre por período:
           </bds-typo>
-          <bds-input style={spInput} placeholder="Selecione a data" label="Data"></bds-input>
+          <bds-datepicker
+            style={spInput}
+            end-date-limit="31/12/2022"
+            start-date-limit="01/01/2022"
+            type-of-date="period"
+          />
           <div style={alignbt}>
             <bds-button variant="ghost">Selecionar hora início e fim</bds-button>
           </div>
