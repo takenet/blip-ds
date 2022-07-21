@@ -18,6 +18,7 @@
 | `maxlength`             | `maxlength`               | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter. | `number`                          | `undefined`  |
 | `minlength`             | `minlength`               | If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter. | `number`                          | `0`          |
 | `minlengthErrorMessage` | `minlength-error-message` | Error message when the value is lower than the minlength                                                                                                                         | `string`                          | `undefined`  |
+| `placeholder`           | `placeholder`             | Placeholder for native input element.                                                                                                                                            | `string`                          | `''`         |
 | `requiredErrorMessage`  | `required-error-message`  | Error message when input is required                                                                                                                                             | `string`                          | `undefined`  |
 | `size`                  | `size`                    | Set the component size. Can be one of: 'short' \| 'standard' \| 'tall';                                                                                                          | `"short" \| "standard" \| "tall"` | `'standard'` |
 | `value`                 | `value`                   | The value of the input.                                                                                                                                                          | `string`                          | `''`         |
@@ -25,36 +26,37 @@
 
 ## Events
 
-| Event                  | Description                      | Type                                    |
-| ---------------------- | -------------------------------- | --------------------------------------- |
-| `bdsInputEditableSave` | Emitted when input text confirm. | `CustomEvent<InputEditableEventDetail>` |
+| Event                    | Description                              | Type                                    |
+| ------------------------ | ---------------------------------------- | --------------------------------------- |
+| `bdsBlur`                | Emitted when the select loses focus.     | `CustomEvent<void>`                     |
+| `bdsCancel`              | Emitted when the selection is cancelled. | `CustomEvent<void>`                     |
+| `bdsChange`              | Emitted when the value has changed.      | `CustomEvent<InputEditableEventDetail>` |
+| `bdsFocus`               | Emitted when the select loses focus.     | `CustomEvent<void>`                     |
+| `bdsInput`               | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>`            |
+| `bdsInputEditableV2Save` | Emitted when input text confirm.         | `CustomEvent<InputEditableEventDetail>` |
 
 
 ## Shadow Parts
 
 | Part                              | Description |
 | --------------------------------- | ----------- |
+| `"input"`                         |             |
 | `"input__editable--static__typo"` |             |
+| `"input__message"`                |             |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [bds-typo](../typo)
 - [bds-icon](../icon)
-- [bds-input](../input)
+- [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-input-editable --> bds-typo
   bds-input-editable --> bds-icon
-  bds-input-editable --> bds-input
-  bds-input --> bds-icon
-  bds-input --> bds-typo
-  bds-input --> bds-counter-text
-  bds-counter-text --> bds-typo
+  bds-input-editable --> bds-typo
   style bds-input-editable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

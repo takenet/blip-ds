@@ -837,6 +837,10 @@ export namespace Components {
          */
         "minlengthErrorMessage": string;
         /**
+          * Placeholder for native input element.
+         */
+        "placeholder"?: string;
+        /**
           * Error message when input is required
          */
         "requiredErrorMessage": string;
@@ -3005,9 +3009,33 @@ declare namespace LocalJSX {
          */
         "minlengthErrorMessage"?: string;
         /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsBlur"?: (event: BdsInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is cancelled.
+         */
+        "onBdsCancel"?: (event: BdsInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: BdsInputEditableCustomEvent<InputEditableEventDetail>) => void;
+        /**
+          * Emitted when the select loses focus.
+         */
+        "onBdsFocus"?: (event: BdsInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: BdsInputEditableCustomEvent<KeyboardEvent>) => void;
+        /**
           * Emitted when input text confirm.
          */
-        "onBdsInputEditableSave"?: (event: BdsInputEditableCustomEvent<InputEditableEventDetail>) => void;
+        "onBdsInputEditableV2Save"?: (event: BdsInputEditableCustomEvent<InputEditableEventDetail>) => void;
+        /**
+          * Placeholder for native input element.
+         */
+        "placeholder"?: string;
         /**
           * Error message when input is required
          */
