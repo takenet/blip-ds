@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Watch, State, Method } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Watch, State, Method, Host } from '@stencil/core';
 
 let radioButtonIds = 0;
 @Component({
@@ -85,33 +85,45 @@ export class Radio {
     this.radioId = this.refer || `bds-radio-${radioButtonIds++}`;
   }
 
+  private handleClickKey(event) {
+    if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {
+      this.onClick(event);
+      event.preventDefault();
+      this.bdsClickChange.emit({ checked: this.checked });
+    }
+  }
+
   render(): HTMLElement {
     return (
-      <label class="radio" htmlFor={this.radioId}>
-        <input
-          class="radio__input"
-          type="radio"
-          ref={this.refNativeInput}
-          id={this.radioId}
-          onClick={this.onClick}
-          disabled={this.disabled}
-          checked={this.checked}
-          value={this.value}
-          name={this.name}
-          data-test={this.dataTest}
-        />
-        <div class="radio__circle">
-          <div class="radio__circle__pointer"></div>
-        </div>
+      <Host>
+        <label class="radio" htmlFor={this.radioId}>
+          <input
+            class="radio__input"
+            type="radio"
+            ref={this.refNativeInput}
+            id={this.radioId}
+            onClick={this.onClick}
+            disabled={this.disabled}
+            checked={this.checked}
+            value={this.value}
+            name={this.name}
+            data-test={this.dataTest}
+          />
+          <div class="radio__circle">
+            {!this.disabled ? <div class="focus" tabindex="0" onKeyDown={this.handleClickKey.bind(this)}></div> : ''}
+            {!this.disabled ? <div class="hover"></div> : ''}
+            <div class="radio__circle__pointer"></div>
+          </div>
 
-        {this.label && (
-          <bds-typo class="radio__text" variant="fs-14" tag="span">
-            {this.label}
-          </bds-typo>
-        )}
+          {this.label && (
+            <bds-typo class="radio__text" variant="fs-14" bold={this.checked ? 'bold' : 'regular'} tag="span">
+              {this.label}
+            </bds-typo>
+          )}
 
-        <slot />
-      </label>
+          <slot />
+        </label>
+      </Host>
     );
   }
 }

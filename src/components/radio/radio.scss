@@ -1,13 +1,17 @@
 @import 'mixins';
 
 $radio-spacing-text: 8px;
-$radio-circle-width: 16px;
-$radio-circle-height: 16px;
-$radio-boder-radius: 100%;
+$radio-circle-width: 24px;
+$radio-circle-height: 24px;
+$radio-boder-radius: 16px;
 $radio-circle-pointer-width: 10px;
 $radio-circle-pointer-height: 10px;
 
+:host {
+  display: flex;
+}
 .radio {
+  display: flex;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -26,32 +30,54 @@ $radio-circle-pointer-height: 10px;
     width: $radio-circle-width;
     height: $radio-circle-height;
     flex-shrink: 0;
-    border: 1px solid $color-primary-main;
+    border: 2px solid $color-neutral-dark-rooftop;
+    padding: 4px;
     border-radius: 100%;
-    background: $color-neutral-light-snow;
+    box-sizing: border-box;
+    background: transparent;
+    position: relative;
 
     &__pointer {
       @include animation();
       border-radius: 100%;
-      background: $color-neutral-light-snow;
+      background: transparent;
       height: $radio-circle-pointer-height;
       width: $radio-circle-pointer-width;
     }
 
     &:hover {
-      border-color: $color-primary-dark;
+      border-color: $color-neutral-medium-elephant;
+      .hover {
+        display: flex;
+        background-color: $color-neutral-dark-city;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        opacity: 0.1;
+        border-radius: 24px;
+      }
+    }
+    .focus:focus-visible {
+      display: flex;
+      position: absolute;
+      border: 2px solid $color-primary-purples-bell;
+      border-radius: 4px;
+      padding: 4px;
+      width: 100%;
+      height: 100%;
+      outline: none;
     }
   }
 
   &__text {
     @include no-select();
     padding-left: $radio-spacing-text;
-    color: $color-neutral-dark-rooftop;
+    color: $color-neutral-dark-city;
   }
 
   /** State Checked */
   &__input[type='radio']:checked ~ &__circle {
-    background: $color-neutral-light-snow;
+    background: transparent;
 
     .radio__circle__pointer {
       background-color: $color-primary-main;
@@ -68,15 +94,42 @@ $radio-circle-pointer-height: 10px;
 
   /** State Disabled */
   &__input[type='radio']:disabled ~ &__circle {
-    border-color: $color-disabled-text;
-    background-color: $color-disabled-bg;
+    border-color: $color-neutral-medium-elephant;
+    background-color: $color-neutral-medium-wave;
 
-    .radio__circle__pointer--checked {
-      background-color: $color-disabled-text;
+    .radio__circle__pointer {
+      background-color: transparent;
+    }
+  }
+  &__input[type='radio']:disabled:hover ~ &__circle {
+    border-color: $color-neutral-medium-elephant;
+    background-color: $color-neutral-medium-wave;
+
+    .radio__circle__pointer {
+      background-color: transparent;
+    }
+  }
+  &__input[type='radio']:disabled:checked ~ &__circle {
+    border-color: $color-neutral-medium-elephant;
+    background-color: $color-neutral-medium-wave;
+
+    .radio__circle__pointer {
+      background-color: $color-neutral-dark-rooftop;
+    }
+  }
+  &__input[type='radio']:disabled:checked:hover ~ &__circle {
+    border-color: $color-neutral-medium-elephant;
+    background-color: $color-neutral-medium-wave;
+
+    .radio__circle__pointer {
+      background-color: $color-neutral-dark-rooftop;
     }
   }
 
-  &__input[type='radio']:disabled ~ &__text,
+  &__input[type='radio']:disabled ~ &__text {
+    color: $color-neutral-dark-rooftop;
+    cursor: not-allowed;
+  }
   &__input[type='radio']:disabled ~ &__circle {
     cursor: not-allowed;
   }
