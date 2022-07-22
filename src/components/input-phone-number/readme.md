@@ -12,6 +12,8 @@
 | `danger`               | `danger`                 | Add state danger on input, use for use feedback.                        | `boolean`  | `false`          |
 | `dataTest`             | `data-test`              | Data test is the prop to specifically test the component action object. | `string`   | `null`           |
 | `disabled`             | `disabled`               | Disabled input.                                                         | `boolean`  | `false`          |
+| `errorMessage`         | `error-message`          | Indicated to pass an feeback to user.                                   | `string`   | `''`             |
+| `helperMessage`        | `helper-message`         | Indicated to pass a help the user in complex filling.                   | `string`   | `''`             |
 | `icon`                 | `icon`                   | used for add icon in input left. Uses the bds-icon component.           | `string`   | `''`             |
 | `label`                | `label`                  | label in input, with he the input size increases.                       | `string`   | `'Phone number'` |
 | `numberErrorMessage`   | `number-error-message`   | Error message when input is required                                    | `string`   | `undefined`      |
@@ -29,14 +31,35 @@
 | `bdsBlur`              | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
 | `bdsCancel`            | Emitted when the selection is cancelled. | `CustomEvent<void>`                    |
 | `bdsFocus`             | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
+| `bdsInput`             | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>`           |
 | `bdsPhoneNumberChange` | Emitted when the value has changed.      | `CustomEvent<SelectChangeEventDetail>` |
+
+
+## Methods
+
+### `removeFocus() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Shadow Parts
+
+| Part                | Description |
+| ------------------- | ----------- |
+| `"input-container"` |             |
+| `"input__message"`  |             |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [bds-input](../input)
 - [bds-icon](../icon)
 - [bds-typo](../typo)
 - [bds-select-option](../select-option)
@@ -44,14 +67,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  bds-input-phone-number --> bds-input
   bds-input-phone-number --> bds-icon
   bds-input-phone-number --> bds-typo
   bds-input-phone-number --> bds-select-option
-  bds-input --> bds-icon
-  bds-input --> bds-typo
-  bds-input --> bds-counter-text
-  bds-counter-text --> bds-typo
   bds-select-option --> bds-typo
   style bds-input-phone-number fill:#f9f,stroke:#333,stroke-width:4px
 ```

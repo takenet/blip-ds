@@ -1,5 +1,6 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../selects/select-interface';
+import { numberValidation } from '../../utils/validations';
 import * as countriesJson from './countries.json';
 
 @Component({
@@ -8,7 +9,7 @@ import * as countriesJson from './countries.json';
   scoped: true,
 })
 export class InputPhoneNumber {
-  private nativeInput?: HTMLBdsInputElement;
+  private nativeInput?: HTMLInputElement;
 
   @Element() el!: HTMLBdsSelectElement;
 
@@ -20,6 +21,15 @@ export class InputPhoneNumber {
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
   @State() isPressed? = false;
+  /**
+   * Used to set the danger behavior by the internal validators
+   */
+  @State() validationDanger? = false;
+
+  /**
+   * Used to set the error message setted by the internal validators
+   */
+  @State() validationMesage? = '';
 
   /**
    * The options of select.
@@ -40,7 +50,7 @@ export class InputPhoneNumber {
   /**
    * Add state danger on input, use for use feedback.
    */
-  @Prop({ reflect: true }) danger? = false;
+  @Prop({ mutable: true, reflect: true }) danger? = false;
 
   /**
    * Disabled input.
@@ -51,6 +61,15 @@ export class InputPhoneNumber {
    * If `true`, the input value will be required.
    */
   @Prop() required: boolean;
+
+  /**
+   * Indicated to pass a help the user in complex filling.
+   */
+  @Prop() helperMessage?: string = '';
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) errorMessage?: string = '';
 
   /**
    * Error message when input is required
@@ -72,6 +91,10 @@ export class InputPhoneNumber {
    */
   @Event() bdsPhoneNumberChange!: EventEmitter<SelectChangeEventDetail>;
 
+  /**
+   * Emitted when the input has changed.
+   */
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
   /**
    * Emitted when the selection is cancelled.
    */
@@ -96,6 +119,11 @@ export class InputPhoneNumber {
    * used for add icon in input left. Uses the bds-icon component.
    */
   @Prop({ reflect: true }) icon?: string = '';
+
+  @Method()
+  async removeFocus(): Promise<void> {
+    this.onBlur();
+  }
 
   @Watch('value')
   valueChanged(): void {
@@ -127,8 +155,15 @@ export class InputPhoneNumber {
     return Array.from(this.el.querySelectorAll('bds-select-option'));
   }
 
-  private refNativeInput = (el: HTMLBdsInputElement): void => {
+  private refNativeInput = (el: HTMLInputElement): void => {
     this.nativeInput = el;
+  };
+
+  private onClickWrapper = (): void => {
+    this.onFocus();
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
   };
 
   private onFocus = (): void => {
@@ -141,6 +176,16 @@ export class InputPhoneNumber {
     this.isPressed = false;
   };
 
+  private changedInputValue = async (ev: Event) => {
+    const input = ev.target as HTMLInputElement | null;
+    this.checkValidity();
+    if (input) {
+      this.text = input.value || '';
+      this.numberValidation();
+    }
+    this.bdsInput.emit(ev as KeyboardEvent);
+  };
+
   private handleInputChange = (event: CustomEvent): void => {
     const {
       detail: { value },
@@ -151,6 +196,13 @@ export class InputPhoneNumber {
     event.preventDefault();
     this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value, country: this.selectedCountry });
   };
+
+  private numberValidation() {
+    if (numberValidation(this.nativeInput.value)) {
+      this.validationMesage = this.numberErrorMessage;
+      this.validationDanger = true;
+    }
+  }
 
   private toggle = (): void => {
     if (!this.disabled) {
@@ -171,8 +223,8 @@ export class InputPhoneNumber {
 
   private setFocusWrapper = (): void => {
     if (this.nativeInput) {
-      this.nativeInput.setFocus();
-      this.nativeInput.removeFocus();
+      this.nativeInput.focus();
+      this.onBlur();
     }
   };
 
@@ -180,13 +232,13 @@ export class InputPhoneNumber {
     const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
 
     if (this.nativeInput && !isInputElement) {
-      this.nativeInput.removeFocus();
+      this.onBlur();
     }
   };
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
     const isSelectElement = (event.target as Element).localName === 'bds-select';
-    const isInputElement = (event.target as Element).localName === 'bds-input';
+    const isInputElement = (event.target as Element).localName === 'input';
 
     switch (event.key) {
       case 'Enter':
@@ -197,7 +249,68 @@ export class InputPhoneNumber {
     }
   };
 
+  private checkValidity() {
+    if (this.nativeInput.validity.valid) {
+      this.validationDanger = false;
+    }
+  }
+
+  private renderIcon(): HTMLElement {
+    return (
+      this.icon && (
+        <div
+          class={{
+            input__icon: true,
+            'input__icon--large': !!this.label,
+          }}
+        >
+          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
+        </div>
+      )
+    );
+  }
+
+  private renderLabel(): HTMLElement {
+    return (
+      this.label && (
+        <label
+          class={{
+            input__container__label: true,
+            'input__container__label--pressed': this.isPressed && !this.disabled,
+          }}
+        >
+          <bds-typo variant="fs-12" bold="bold">
+            {this.label}
+          </bds-typo>
+        </label>
+      )
+    );
+  }
+
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : 'info';
+    let message = this.danger ? this.errorMessage : this.helperMessage;
+
+    if (!message && this.validationDanger) message = this.validationMesage;
+
+    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+
+    if (message) {
+      return (
+        <div class={styles} part="input__message">
+          <div class="input__message__icon">
+            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+          </div>
+          <bds-typo variant="fs-12">{message}</bds-typo>
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
   render(): HTMLElement {
+    const isPressed = this.isPressed && !this.disabled;
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
     const countries = countriesJson['default'];
     const flagsNames = Object.keys(countries);
@@ -213,31 +326,52 @@ export class InputPhoneNumber {
         onBlur={this.removeFocusWrapper}
         onKeyPress={this.keyPressWrapper}
       >
-        <bds-input
-          type="phonenumber"
-          required={this.required}
-          requiredErrorMessage={this.requiredErrorMessage}
-          pattern="[0-9]*"
-          numberErrorMessage={this.numberErrorMessage}
-          label={this.label}
-          ref={this.refNativeInput}
-          onBdsChange={this.handleInputChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          value={this.text}
-          danger={this.danger}
-          disabled={this.disabled}
-          data-test={this.dataTest}
-          {...{ maxlength: this.value === '+55' ? 11 : null }}
-        >
-          <div slot="input-left" onClick={this.toggle} class="select-phone-number__icon">
-            <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
-            <bds-icon size="x-small" name={iconArrow}></bds-icon>
+        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
+          <div
+            class={{
+              input: true,
+              'input--state-primary': !this.danger && !this.validationDanger,
+              'input--state-danger': this.danger || this.validationDanger,
+              'input--state-disabled': this.disabled,
+              'input--label': !!this.label,
+              'input--pressed': isPressed,
+            }}
+            onClick={this.onClickWrapper}
+            onKeyDown={this.keyPressWrapper}
+            part="input-container"
+          >
+            {this.renderIcon()}
+            <div onClick={this.toggle} class="select-phone-number__icon">
+              <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
+              <bds-icon size="x-small" name={iconArrow}></bds-icon>
+            </div>
+            <div class="input__container">
+              {this.renderLabel()}
+              <div class={{ input__container__wrapper: true }}>
+                <div class="select-phone-number__country-code">
+                  <bds-typo variant="fs-14">{this.value}</bds-typo>
+                </div>
+                <input
+                  class={{ input__container__text: true }}
+                  type="phonenumber"
+                  required={this.required}
+                  pattern="[0-9]*"
+                  ref={this.refNativeInput}
+                  onChange={this.handleInputChange}
+                  onInput={this.changedInputValue}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
+                  value={this.text}
+                  disabled={this.disabled}
+                  data-test={this.dataTest}
+                  {...{ maxlength: this.value === '+55' ? 11 : null }}
+                ></input>
+              </div>
+            </div>
+            <slot name="input-right" />
           </div>
-          <div slot="inside-input-left" class="select-phone-number__country-code">
-            <bds-typo variant="fs-14">{this.value}</bds-typo>
-          </div>
-        </bds-input>
+          {this.renderMessage()}
+        </div>
         <div
           class={{
             'select-phone-number__options': true,
