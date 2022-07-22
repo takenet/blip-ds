@@ -1,41 +1,66 @@
 $avatar-size-extra-small :32px;
 $avatar-size-small :40px;
 $avatar-size-standard :56px;
+$avatar-size-large :64px;
+$avatar-size-extra-large :72px;
 
+.host {
+  position: relative;
+  height: fit-content;
+}
 .avatar__group {
   display: flex;
 
   & > *{
     &:nth-child(1) {
-      z-index: 5;
+      z-index: 1;
     }
     &:nth-child(2) {
-      z-index: 4;
+      z-index: 2;
     }
     &:nth-child(3) {
       z-index: 3;
     }
     &:nth-child(4) {
-      z-index: 2;
+      z-index: 4;
     }
     &:nth-child(5) {
-      z-index: 1;
+      z-index: 5;
+    }
+    &:nth-child(6) {
+      z-index: 6;
+      width: auto;
+      div {
+        background-color: $color-neutral-dark-onix;
+        padding: 0 16px;
+        width: auto;
+      }
+    }
+  }
+
+  &__click {
+    &--true {
+      cursor: pointer;
     }
   }
 
   .avatar {
-    border: 2px solid $color-neutral-light-snow;
     position: relative;
   }
   &__size {
     &--extra-small{
-      margin-left: 4px ;
+      margin-left: 8px ;
       & > *{
-        margin-left: -4px ;
+        &:nth-child(6) {
+          div {
+            padding: 0 8px;
+          }
+        }
+        margin-left: -8px ;
       }
       .avatar {
-        width: $avatar-size-extra-small;
         height: $avatar-size-extra-small;
+        padding: 0 8px;
       }
     }
     &--small{
@@ -44,20 +69,54 @@ $avatar-size-standard :56px;
         margin-left: -8px ;
       }
       .avatar {
-        width: $avatar-size-small;
         height: $avatar-size-small;
+        padding: 0 8px;
         
       }
     }
     &--standard{
-      margin-left: 12px ;
+      margin-left: 16px ;
       & > *{
-        margin-left: -12px ;
+        margin-left: -16px ;
       }
       .avatar {
-        width: $avatar-size-standard;
         height: $avatar-size-standard;
+        padding: 0 8px;
+      }
+    }
+    &--large{
+      margin-left: 16px ;
+      & > *{
+        margin-left: -16px ;
+      }
+      .avatar {
+        height: $avatar-size-large;
+        padding: 0 8px;
+      }
+    }
+    &--extra-large{
+      margin-left: 16px ;
+      & > *{
+        margin-left: -16px ;
+      }
+      .avatar {
+        height: $avatar-size-extra-large;
+        padding: 0 8px;
       }
     }
   }
+}
+
+.focus:focus-visible {
+  display: flex;
+  position: absolute;
+  border: 2px solid $color-primary-purples-bell;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  top: -4px;
+  left: -4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  outline: none;
 }

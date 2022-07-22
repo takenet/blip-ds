@@ -11,7 +11,8 @@ export default {
 const content = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  gap: '32px',
+  flexWrap: 'wrap'
 };
 
 const avatarSize = {
@@ -30,6 +31,7 @@ export const avatarGroup = () => {
   return (
     <div style={content}>
       <bds-avatar-group size="standard" users={JSON.stringify(users)}></bds-avatar-group>
+      <bds-avatar-group can-click size="standard" users={JSON.stringify(users)}></bds-avatar-group>
     </div>
   );
 };
@@ -57,7 +59,7 @@ export const uploadAvatar = () => (
   <div style={content}>
     <bds-avatar
       name="Michael Scott"
-      thumbnail="https://zeroheight-uploads.s3-accelerate.amazonaws.com/a99f3428329d87fdaafcb6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXTVUC4XZENV3LPQ%2F20220518%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20220518T143322Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=c0e869b52ebdd546df1b0647a4c5ae8b942b9185b314cc3ccc843efe8fa2a80a"
+      thumbnail="https://www.w3schools.com/howto/img_avatar.png"
       size="extra-large"
       upload="true"
       style={avatarSize}

@@ -17,6 +17,13 @@
 | `upload`    | `upload`    | Upload, Serve to enable upload function on avatar.                                                           | `boolean`                                                                       | `false`      |
 
 
+## Events
+
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `bdsClickAvatar` |             | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Used by
