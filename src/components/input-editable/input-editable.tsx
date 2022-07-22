@@ -115,7 +115,7 @@ export class InputEditable {
   /**
    * Emitted when input text confirm.
    */
-  @Event() bdsInputEditableV2Save: EventEmitter<InputEditableEventDetail>;
+  @Event() bdsInputEditableSave: EventEmitter<InputEditableEventDetail>;
 
   /**
    * Emitted when the value has changed.
@@ -153,7 +153,7 @@ export class InputEditable {
   private handleSaveText = (): void => {
     const newValue = this.nativeInput.value;
     if (newValue.length > 0 && newValue.length >= this.minlength && !this.danger) {
-      this.bdsInputEditableV2Save.emit({ value: newValue, oldValue: this.value });
+      this.bdsInputEditableSave.emit({ value: newValue, oldValue: this.value });
       this.value = newValue;
       this.toggleEditing();
     }

@@ -26,14 +26,14 @@
 
 ## Events
 
-| Event                    | Description                              | Type                                    |
-| ------------------------ | ---------------------------------------- | --------------------------------------- |
-| `bdsBlur`                | Emitted when the select loses focus.     | `CustomEvent<void>`                     |
-| `bdsCancel`              | Emitted when the selection is cancelled. | `CustomEvent<void>`                     |
-| `bdsChange`              | Emitted when the value has changed.      | `CustomEvent<InputEditableEventDetail>` |
-| `bdsFocus`               | Emitted when the select loses focus.     | `CustomEvent<void>`                     |
-| `bdsInput`               | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>`            |
-| `bdsInputEditableV2Save` | Emitted when input text confirm.         | `CustomEvent<InputEditableEventDetail>` |
+| Event                  | Description                              | Type                                    |
+| ---------------------- | ---------------------------------------- | --------------------------------------- |
+| `bdsBlur`              | Emitted when the select loses focus.     | `CustomEvent<void>`                     |
+| `bdsCancel`            | Emitted when the selection is cancelled. | `CustomEvent<void>`                     |
+| `bdsChange`            | Emitted when the value has changed.      | `CustomEvent<InputEditableEventDetail>` |
+| `bdsFocus`             | Emitted when the select loses focus.     | `CustomEvent<void>`                     |
+| `bdsInput`             | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>`            |
+| `bdsInputEditableSave` | Emitted when input text confirm.         | `CustomEvent<InputEditableEventDetail>` |
 
 
 ## Shadow Parts

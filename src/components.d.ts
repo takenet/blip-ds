@@ -3031,7 +3031,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when input text confirm.
          */
-        "onBdsInputEditableV2Save"?: (event: BdsInputEditableCustomEvent<InputEditableEventDetail>) => void;
+        "onBdsInputEditableSave"?: (event: BdsInputEditableCustomEvent<InputEditableEventDetail>) => void;
         /**
           * Placeholder for native input element.
          */
