@@ -13,7 +13,39 @@ export interface InputEditableEventDetail {
   shadow: true,
 })
 export class InputEditable {
+  private nativeInput?: HTMLInputElement;
+
   @Element() el!: HTMLBdsInputEditableElement;
+
+  /**
+   * Conditions the element to say whether it is pressed or not, to add styles.
+   */
+  @State() isEditing = false;
+
+  /**
+   * Used to block the confirm icon.
+   */
+  @State() isValid = true;
+
+  /**
+   * Used to validate it is pressed.
+   */
+  @State() isPressed? = false;
+
+  /**
+   * Used to validate it is focused.
+   */
+  @State() isFocused?: boolean = false;
+
+  /**
+   * Used to set the error message setted by the internal validators
+   */
+  @State() validationMesage? = '';
+
+  /**
+   * Used to set the danger behavior by the internal validators
+   */
+  @State() validationDanger? = false;
 
   /**
    * Set the component size. Can be one of:
@@ -30,22 +62,6 @@ export class InputEditable {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
-
-  /**
-   * Emitted when input text confirm.
-   */
-  @Event() bdsInputEditableSave: EventEmitter<InputEditableEventDetail>;
-
-  /**
-   * Conditions the element to say whether it is pressed or not, to add styles.
-   */
-  @State() isEditing = false;
-
-  /**
-   * Used to block the confirm icon.
-   */
-  @State() isValid = true;
-
   /**
    * Input Name
    */
@@ -87,19 +103,44 @@ export class InputEditable {
   @Prop() helperMessage?: string = '';
 
   /**
+   * Placeholder for native input element.
+   */
+  @Prop() placeholder?: string = '';
+
+  /**
    * Add state danger on input, use for use feedback. If true avoid save confirmation.
    */
   @Prop({ mutable: true, reflect: true }) danger?: boolean = false;
 
-  private onInputChange = (event) => {
-    if (event.detail) {
-      if (event.detail.value.length < Number(this.minlength)) {
-        this.isValid = false;
-      } else {
-        this.isValid = true;
-      }
-    }
-  };
+  /**
+   * Emitted when input text confirm.
+   */
+  @Event() bdsInputEditableSave: EventEmitter<InputEditableEventDetail>;
+
+  /**
+   * Emitted when the value has changed.
+   */
+  @Event() bdsChange!: EventEmitter<InputEditableEventDetail>;
+
+  /**
+   * Emitted when the input has changed.
+   */
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+
+  /**
+   * Emitted when the selection is cancelled.
+   */
+  @Event() bdsCancel!: EventEmitter<void>;
+
+  /**
+   * Emitted when the select loses focus.
+   */
+  @Event() bdsFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the select loses focus.
+   */
+  @Event() bdsBlur!: EventEmitter<void>;
 
   private handleEditing = (): void => {
     this.toggleEditing();
@@ -110,13 +151,80 @@ export class InputEditable {
   };
 
   private handleSaveText = (): void => {
-    const newValue = this.el.shadowRoot.querySelector('bds-input').value;
+    const newValue = this.nativeInput.value;
     if (newValue.length > 0 && newValue.length >= this.minlength && !this.danger) {
       this.bdsInputEditableSave.emit({ value: newValue, oldValue: this.value });
       this.value = newValue;
       this.toggleEditing();
     }
   };
+
+  private changedInputValue = async (ev: Event) => {
+    const input = ev.target as HTMLInputElement | null;
+    this.checkValidity();
+    if (input) {
+      this.value = input.value || '';
+      if (input.value.length < Number(this.minlength)) {
+        this.isValid = false;
+      } else {
+        this.isValid = true;
+      }
+    }
+    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsChange.emit({ value: this.nativeInput.value, oldValue: this.value });
+  };
+
+  private onFocus = (): void => {
+    this.isFocused = true;
+    this.isPressed = true;
+    this.bdsFocus.emit();
+  };
+
+  private onBlur = (): void => {
+    this.onBlurValidations();
+    this.bdsBlur.emit();
+    this.isPressed = false;
+  };
+
+  private onClickWrapper = (): void => {
+    this.onFocus();
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  };
+
+  private onBlurValidations() {
+    this.requiredValidation();
+    (this.minlength || this.maxlength) && this.lengthValidation();
+    this.checkValidity();
+  }
+
+  private requiredValidation() {
+    if (this.nativeInput.validity.valueMissing) {
+      this.validationMesage = this.requiredErrorMessage;
+      this.validationDanger = true;
+    }
+  }
+
+  private lengthValidation() {
+    if (this.nativeInput.validity.tooShort) {
+      this.validationMesage = this.minlengthErrorMessage;
+      this.validationDanger = true;
+      return;
+    }
+
+    if (this.nativeInput.validity.tooLong) {
+      this.validationDanger = true;
+      return;
+    }
+  }
+
+  private checkValidity() {
+    if (this.nativeInput.validity.valid) {
+      this.validationDanger = false;
+    }
+  }
+
   getFontSizeClass(): FontSize {
     if (this.size == 'short') {
       return 'fs-16';
@@ -135,6 +243,27 @@ export class InputEditable {
       return 'fixed';
     }
   };
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : 'info';
+    let message = this.danger ? this.errorMessage : this.helperMessage;
+
+    if (!message && this.validationDanger) message = this.validationMesage;
+
+    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+
+    if (message) {
+      return (
+        <div class={styles} part="input__message">
+          <div class="input__message__icon">
+            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+          </div>
+          <bds-typo variant="fs-12">{message}</bds-typo>
+        </div>
+      );
+    }
+
+    return undefined;
+  }
   render() {
     const variant = this.getFontSizeClass();
     const inputExpand = this.getExpand();
@@ -156,22 +285,37 @@ export class InputEditable {
             <bds-icon key="edit-icon" class="input__editable--static__icon" name="edit"></bds-icon>
           </div>
           <div class={{ 'input__editable--active': true, 'input__editable--hidden': !this.isEditing }}>
-            <bds-input
-              class={{ [inputExpand]: true, [this.size]: true }}
-              type="text"
-              input-name={this.inputName}
-              value={this.value}
-              minlength={this.minlength}
-              minlengthErrorMessage={this.minlengthErrorMessage}
-              maxlength={this.maxlength}
-              required={true}
-              required-error-message={this.requiredErrorMessage}
-              error-message={this.errorMessage}
-              onBdsChange={this.onInputChange}
-              danger={this.danger}
-              helperMessage={this.helperMessage}
-              data-test={this.dataTest}
-            ></bds-input>
+            <div class={{ element_input: true, [inputExpand]: true, [this.size]: true }}>
+              <div
+                class={{
+                  input: true,
+                  select: true,
+                  'input--state-primary': !this.danger && !this.validationDanger,
+                  'input--state-danger': this.danger || this.validationDanger,
+                  'input--pressed': this.isPressed,
+                }}
+                onClick={this.onClickWrapper}
+              >
+                <div class="input__container" tabindex="0">
+                  <input
+                    class={{ input__container__text: true }}
+                    ref={(input) => (this.nativeInput = input)}
+                    minLength={this.minlength}
+                    maxLength={this.maxlength}
+                    name={this.inputName}
+                    onBlur={this.onBlur}
+                    onFocus={this.onFocus}
+                    onInput={this.changedInputValue}
+                    placeholder={this.placeholder}
+                    value={this.value}
+                    required={true}
+                    part="input"
+                    data-test={this.dataTest}
+                  ></input>
+                </div>
+              </div>
+              {this.renderMessage()}
+            </div>
             <div class="input__editable--active__icon">
               <bds-icon
                 key="error-icon"
