@@ -1,4 +1,4 @@
-import { Component, h, Host, State, Prop } from '@stencil/core';
+import { Component, h, Host, State, Prop, EventEmitter, Event } from '@stencil/core';
 import { AvatarDataList } from './avatar-group-interface';
 
 export type avatarSize = 'extra-small' | 'small' | 'standard';
@@ -30,6 +30,21 @@ export class AvatarGroup {
   * users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
   */
   @Prop() users?: string | AvatarDataList[];
+  @Prop() canClick?: boolean;
+  @Event() bdsClickAvatarGroup: EventEmitter;
+
+  handleClickGroup(e) {
+    e.preventDefault();
+    this.bdsClickAvatarGroup.emit(e);
+  }
+
+  private handleClickKey(event) {
+    if ((event.key === 'Enter' || event.key === ' ') && this.canClick) {
+      event.preventDefault();
+      this.bdsClickAvatarGroup.emit();
+    }
+  }
+
   parseUsers() {
     if (this.users) {
       try {
@@ -41,20 +56,22 @@ export class AvatarGroup {
   }
   componentWillLoad() {
     this.users && this.parseUsers();
-    this.leftoversUsers = this.internalUsers.length - 4;
+    this.leftoversUsers = this.internalUsers.length - 5;
   }
   render() {
     return (
-      <Host>
+      <Host class="host">
         <div
           class={{
             avatar__group: true,
             [`avatar__group__size--${this.size}`]: true,
+            [`avatar__group__click--${this.canClick}`]: true,
           }}
+          onClick={() => this.handleClickGroup}
         >
           {this.internalUsers ? (
             this.internalUsers
-              .slice(0, 5)
+              .slice(0, 6)
               .map((user, i, row) =>
                 i + 1 === row.length && this.internalUsers.length > 5 ? (
                   <bds-avatar size={this.size} ellipsis={this.leftoversUsers}></bds-avatar>
@@ -66,6 +83,7 @@ export class AvatarGroup {
             <slot />
           )}
         </div>
+        {this.canClick ? <div class="focus" tabindex="0" onClick={() => this.handleClickKey}></div> : ''}
       </Host>
     );
   }

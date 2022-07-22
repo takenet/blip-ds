@@ -179,6 +179,7 @@ export namespace Components {
         "upload"?: boolean;
     }
     interface BdsAvatarGroup {
+        "canClick"?: boolean;
         /**
           * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
@@ -1570,6 +1571,14 @@ export interface BdsAutocompleteCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsAutocompleteElement;
 }
+export interface BdsAvatarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsAvatarElement;
+}
+export interface BdsAvatarGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsAvatarGroupElement;
+}
 export interface BdsBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsBannerElement;
@@ -2290,6 +2299,7 @@ declare namespace LocalJSX {
           * Name, Inserted for highlighted osuary name. Enter the full name.
          */
         "name"?: string;
+        "onBdsClickAvatar"?: (event: BdsAvatarCustomEvent<any>) => void;
         /**
           * Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
@@ -2304,6 +2314,8 @@ declare namespace LocalJSX {
         "upload"?: boolean;
     }
     interface BdsAvatarGroup {
+        "canClick"?: boolean;
+        "onBdsClickAvatarGroup"?: (event: BdsAvatarGroupCustomEvent<any>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
