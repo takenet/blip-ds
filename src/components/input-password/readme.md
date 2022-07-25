@@ -41,22 +41,26 @@
 | `bdsKeyDownBackspace`    | Event input key down backspace.     | `CustomEvent<any>`           |
 
 
+## Shadow Parts
+
+| Part                | Description |
+| ------------------- | ----------- |
+| `"input-container"` |             |
+| `"input__message"`  |             |
+
+
 ## Dependencies
 
 ### Depends on
 
-- [bds-input](../input)
 - [bds-icon](../icon)
+- [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-input-password --> bds-input
   bds-input-password --> bds-icon
-  bds-input --> bds-icon
-  bds-input --> bds-typo
-  bds-input --> bds-counter-text
-  bds-counter-text --> bds-typo
+  bds-input-password --> bds-typo
   style bds-input-password fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

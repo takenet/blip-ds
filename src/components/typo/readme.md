@@ -49,6 +49,7 @@
  - [bds-expansion-panel-header](../expansion-panel/expansion-panel-header)
  - [bds-input](../input)
  - [bds-input-editable](../input-editable)
+ - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
  - [bds-menu-action](../menu/menu-action)
  - [bds-menu-exibition](../menu/menu-exibition)
@@ -88,6 +89,7 @@ graph TD;
   bds-expansion-panel-header --> bds-typo
   bds-input --> bds-typo
   bds-input-editable --> bds-typo
+  bds-input-password --> bds-typo
   bds-input-phone-number --> bds-typo
   bds-menu-action --> bds-typo
   bds-menu-exibition --> bds-typo
