@@ -7,13 +7,27 @@ import { Keyboard } from '../../../utils/enums';
   shadow: true,
 })
 export class Select {
-  private nativeInput?: HTMLBdsInputElement;
+  private nativeInput?: HTMLInputElement;
 
   @Element() el!: HTMLBdsSelectElement;
 
   @State() isOpen? = false;
 
   @State() text? = '';
+
+  /**
+   * Used to set the danger behavior by the internal validators
+   */
+  @State() validationDanger?: boolean = false;
+  /**
+   * Conditions the element to say whether it is pressed or not, to add styles.
+   */
+  @State() isPressed? = false;
+
+  /**
+   * Used to set the error message setted by the internal validators
+   */
+  @State() validationMesage? = '';
 
   @State() internalOptions: Option[];
 
@@ -75,6 +89,16 @@ export class Select {
    * Placeholder for native input element.
    */
   @Prop() placeholder?: string = '';
+
+  /**
+   * Indicated to pass a help the user in complex filling.
+   */
+  @Prop() helperMessage?: string = '';
+
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop() errorMessage?: string = '';
 
   /**
    * Set the placement of the options menu. Can be 'bottom' or 'top'.
@@ -156,12 +180,22 @@ export class Select {
     this.nativeInput = el;
   };
 
+  private onClickWrapper = (): void => {
+    this.onFocus();
+    this.toggle();
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  };
+
   private onFocus = (): void => {
     this.bdsFocus.emit();
+    this.isPressed = true;
   };
 
   private onBlur = (): void => {
     this.bdsBlur.emit();
+    this.isPressed = false;
   };
 
   private toggle = (): void => {
@@ -192,20 +226,6 @@ export class Select {
     this.toggle();
   };
 
-  private setFocusWrapper = (): void => {
-    if (this.nativeInput) {
-      this.nativeInput.setFocus();
-    }
-  };
-
-  private removeFocusWrapper = (event: FocusEvent): void => {
-    const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
-
-    if (this.nativeInput && !isInputElement) {
-      this.nativeInput.removeFocus();
-    }
-  };
-
   private keyPressWrapper = (event: KeyboardEvent): void => {
     const isSelectElement = (event.target as Element).localName === 'bds-select';
     const isInputElement = (event.target as Element).localName === 'bds-input';
@@ -233,35 +253,103 @@ export class Select {
     }
   };
 
+  private renderIcon(): HTMLElement {
+    return (
+      this.icon && (
+        <div
+          class={{
+            input__icon: true,
+            'input__icon--large': !!this.label,
+          }}
+        >
+          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
+        </div>
+      )
+    );
+  }
+
+  private renderLabel(): HTMLElement {
+    return (
+      this.label && (
+        <label
+          class={{
+            input__container__label: true,
+            'input__container__label--pressed': this.isPressed && !this.disabled,
+          }}
+        >
+          <bds-typo variant="fs-12" bold="bold">
+            {this.label}
+          </bds-typo>
+        </label>
+      )
+    );
+  }
+
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : 'info';
+    let message = this.danger ? this.errorMessage : this.helperMessage;
+
+    if (!message && this.validationDanger) message = this.validationMesage;
+
+    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+
+    if (message) {
+      return (
+        <div class={styles} part="input__message">
+          <div class="input__message__icon">
+            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+          </div>
+          <bds-typo variant="fs-12">{message}</bds-typo>
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
   render(): HTMLElement {
+    const isPressed = this.isPressed && !this.disabled;
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
     return (
-      <div
-        class="select"
-        tabindex="0"
-        onFocus={this.setFocusWrapper}
-        onBlur={this.removeFocusWrapper}
-        onKeyDown={this.keyPressWrapper}
-      >
-        <bds-input
-          icon={this.icon}
-          label={this.label}
-          ref={this.refNativeInput}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onClick={this.toggle}
-          value={this.text}
-          danger={this.danger}
-          disabled={this.disabled}
-          placeholder={this.placeholder}
-          readonly
-          dataTest={this.dataTest}
-        >
-          <div slot="input-right" class="select__icon">
-            <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
+      <div class="select" tabindex="0">
+        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
+          <div
+            class={{
+              input: true,
+              'input--state-primary': !this.danger && !this.validationDanger,
+              'input--state-danger': this.danger || this.validationDanger,
+              'input--state-disabled': this.disabled,
+              'input--label': !!this.label,
+              'input--pressed': isPressed,
+            }}
+            onClick={this.onClickWrapper}
+            onKeyDown={this.keyPressWrapper}
+            part="input-container"
+          >
+            {this.renderIcon()}
+            <div class="input__container">
+              {this.renderLabel()}
+              <div class={{ input__container__wrapper: true }}>
+                <input
+                  ref={this.refNativeInput}
+                  class={{ input__container__text: true }}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
+                  value={this.text}
+                  disabled={this.disabled}
+                  placeholder={this.placeholder}
+                  readonly
+                  data-test={this.dataTest}
+                ></input>
+              </div>
+            </div>
+            <div class="select__icon">
+              <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
+            </div>
           </div>
-        </bds-input>
+          {this.renderMessage()}
+        </div>
         <div
           class={{
             select__options: true,
