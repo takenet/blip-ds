@@ -226,20 +226,6 @@ export class Select {
     this.toggle();
   };
 
-  // private setFocusWrapper = (): void => {
-  //   if (this.nativeInput) {
-  //     this.nativeInput.focus();
-  //   }
-  // };
-
-  // private removeFocusWrapper = (event: FocusEvent): void => {
-  //   const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
-
-  //   if (this.nativeInput && !isInputElement) {
-  //     this.nativeInput.blur();
-  //   }
-  // };
-
   private keyPressWrapper = (event: KeyboardEvent): void => {
     const isSelectElement = (event.target as Element).localName === 'bds-select';
     const isInputElement = (event.target as Element).localName === 'bds-input';
@@ -326,31 +312,7 @@ export class Select {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
     return (
-      <div
-        class="select"
-        tabindex="0"
-        // onFocus={this.setFocusWrapper}
-        // onBlur={this.removeFocusWrapper}
-        // onKeyDown={this.keyPressWrapper}
-      >
-        {/* <bds-input
-          icon={this.icon}
-          label={this.label}
-          ref={this.refNativeInput}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onClick={this.toggle}
-          value={this.text}
-          danger={this.danger}
-          disabled={this.disabled}
-          placeholder={this.placeholder}
-          readonly
-          dataTest={this.dataTest}
-        >
-          <div slot="input-right" class="select__icon">
-            <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
-          </div>
-        </bds-input> */}
+      <div class="select" tabindex="0">
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
           <div
             class={{
