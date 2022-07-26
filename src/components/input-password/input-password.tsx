@@ -1,4 +1,4 @@
-import { Component, Prop, h, Host, Event, EventEmitter } from '@stencil/core';
+import { Component, State, Prop, h, Host, Event, EventEmitter } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
@@ -7,6 +7,21 @@ import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface
   scoped: true,
 })
 export class InputPassword {
+  private nativeInput?: HTMLInputElement;
+  /**
+   * Used to set the danger behavior by the internal validators
+   */
+  @State() validationDanger?: boolean = false;
+  /**
+   * Conditions the element to say whether it is pressed or not, to add styles.
+   */
+  @State() isPressed? = false;
+
+  /**
+   * Used to set the error message setted by the internal validators
+   */
+  @State() validationMesage? = '';
+
   @Prop() openEyes? = false;
 
   /**
@@ -124,6 +139,10 @@ export class InputPassword {
    */
   @Event() bdsKeyDownBackspace: EventEmitter;
 
+  private refNativeInput = (el: HTMLInputElement): void => {
+    this.nativeInput = el;
+  };
+
   private toggleEyePassword = (): void => {
     if (!this.disabled) {
       this.openEyes = !this.openEyes;
@@ -134,6 +153,13 @@ export class InputPassword {
     if (!this.openEyes) return 'current-password';
     return this.autoComplete;
   }
+
+  private onClickWrapper = (): void => {
+    this.onFocus();
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  };
 
   private onChange = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
@@ -153,10 +179,12 @@ export class InputPassword {
 
   private onBlur = (): void => {
     this.bdsInputPasswordBlur.emit();
+    this.isPressed = false;
   };
 
   private onFocus = (): void => {
     this.bdsInputPasswordFocus.emit();
+    this.isPressed = true;
   };
 
   private onSubmit = (): void => {
@@ -167,43 +195,116 @@ export class InputPassword {
     this.bdsKeyDownBackspace.emit({ ev, value: this.value });
   };
 
+  private renderIcon(): HTMLElement {
+    return (
+      this.icon && (
+        <div
+          class={{
+            input__icon: true,
+            'input__icon--large': !!this.label,
+          }}
+        >
+          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
+        </div>
+      )
+    );
+  }
+
+  private renderLabel(): HTMLElement {
+    return (
+      this.label && (
+        <label
+          class={{
+            input__container__label: true,
+            'input__container__label--pressed': this.isPressed && !this.disabled,
+          }}
+        >
+          <bds-typo variant="fs-12" bold="bold">
+            {this.label}
+          </bds-typo>
+        </label>
+      )
+    );
+  }
+
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : 'info';
+    let message = this.danger ? this.errorMessage : this.helperMessage;
+
+    if (!message && this.validationDanger) message = this.validationMesage;
+
+    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+
+    if (message) {
+      return (
+        <div class={styles} part="input__message">
+          <div class="input__message__icon">
+            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+          </div>
+          <bds-typo variant="fs-12">{message}</bds-typo>
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
   render(): HTMLElement {
+    const isPressed = this.isPressed && !this.disabled;
     const iconPassword = this.openEyes ? 'eye-open' : 'eye-closed';
     const type = this.openEyes ? 'text' : 'password';
     const autocomplete = this.getAutoComplete();
 
     return (
       <Host>
-        <bds-input
-          type={type}
-          input-name={this.inputName}
-          value={this.value}
-          label={this.label}
-          min={this.min}
-          max={this.max}
-          minlength={this.minlength}
-          maxlength={this.maxlength}
-          helper-message={this.helperMessage}
-          error-message={this.errorMessage}
-          danger={this.danger}
-          icon={this.icon}
-          disabled={this.disabled}
-          readonly={this.readonly}
-          auto-complete={autocomplete}
-          auto-capitalize={this.autoCapitalize}
-          placeholder={this.placeholder}
-          data-test={this.dataTest}
-          onBdsChange={this.onChange}
-          onBdsInput={this.onInput}
-          onBdsOnBlur={this.onBlur}
-          onBdsFocus={this.onFocus}
-          onBdsSubmit={this.onSubmit}
-          onBdsKeyDownBackspace={this.keyPressWrapper}
-        >
-          <div slot="input-right" class="input__password--icon" onClick={this.toggleEyePassword}>
-            <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
+        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
+          <div
+            class={{
+              input: true,
+              'input--state-primary': !this.danger && !this.validationDanger,
+              'input--state-danger': this.danger || this.validationDanger,
+              'input--state-disabled': this.disabled,
+              'input--label': !!this.label,
+              'input--pressed': isPressed,
+            }}
+            onClick={this.onClickWrapper}
+            onKeyDown={this.keyPressWrapper}
+            part="input-container"
+          >
+            {this.renderIcon()}
+            <div class="input__container">
+              {this.renderLabel()}
+              <div class={{ input__container__wrapper: true }}>
+                <input
+                  ref={this.refNativeInput}
+                  class={{ input__container__text: true }}
+                  type={type}
+                  name={this.inputName}
+                  min={this.min}
+                  max={this.max}
+                  minLength={this.minlength}
+                  maxLength={this.maxlength}
+                  readOnly={this.readonly}
+                  autocomplete={autocomplete}
+                  autocapitalize={this.autoCapitalize}
+                  placeholder={this.placeholder}
+                  onChange={this.onChange}
+                  onInput={this.onInput}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
+                  onSubmit={this.onSubmit}
+                  value={this.value}
+                  disabled={this.disabled}
+                  data-test={this.dataTest}
+                ></input>
+              </div>
+            </div>
+            <div class="input__password--icon" onClick={this.toggleEyePassword}>
+              <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
+            </div>
           </div>
-        </bds-input>
+          {this.renderMessage()}
+        </div>
       </Host>
     );
   }
