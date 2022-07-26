@@ -58,6 +58,7 @@
  - [bds-pagination](../pagination)
  - [bds-progress-bar](../progress-bar)
  - [bds-radio](../radio)
+ - [bds-select](../selects/select)
  - [bds-select-option](../select-option)
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab)
@@ -98,6 +99,7 @@ graph TD;
   bds-pagination --> bds-typo
   bds-progress-bar --> bds-typo
   bds-radio --> bds-typo
+  bds-select --> bds-typo
   bds-select-option --> bds-typo
   bds-step --> bds-typo
   bds-tab --> bds-typo
