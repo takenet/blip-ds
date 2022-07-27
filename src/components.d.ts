@@ -2986,6 +2986,14 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
+        "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsInputChipsInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
         "onBdsSubmit"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * A tip for the user who can enter no controls.
