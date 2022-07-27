@@ -7,6 +7,7 @@ import {
   IconVariantMap,
   PositionType,
 } from './toast-interface';
+import ballon from '../../assets/svg/notification-ballon.svg';
 @Component({
   tag: 'bds-toast',
   styleUrl: 'toast.scss',
@@ -79,6 +80,17 @@ export class BdsToast implements ComponentInterface {
       this.close();
     }
   };
+
+  private _keyPressHandler(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (this.buttonAction === 'close') this.close();
+      else {
+        this.toastButtonClick.emit(this.el);
+        this.close();
+      }
+    }
+  }
 
   /**
    * Can be used outside to open the toast
@@ -154,6 +166,7 @@ export class BdsToast implements ComponentInterface {
     warning: 'attention',
     undo: 'undo',
     redo: 'redo',
+    notification: 'notification',
   };
 
   render() {
@@ -167,7 +180,8 @@ export class BdsToast implements ComponentInterface {
           hide: this.hide,
         }}
       >
-        {this.icon && <bds-icon theme="outline" size="x-large" color="#fff" name={this.icon} />}
+        {this.variant === 'notification' && <img class="toast__ballon" src={ballon} />}
+        {this.icon && <bds-icon theme="outline" size="medium" name={this.icon} />}
         <div class="toast__content">
           {this.toastTitle && (
             <bds-typo variant="fs-14" bold="bold">
@@ -183,15 +197,24 @@ export class BdsToast implements ComponentInterface {
           }}
         >
           {this.actionType === 'button' ? (
-            <button onClick={() => this._buttonClickHandler()}>
-              <bds-button variant="secondary--white" size="short">
-                {this.buttonText}
-              </bds-button>
-            </button>
+            <bds-button
+              onKeyDown={this._keyPressHandler.bind(this)}
+              tabindex="0"
+              onClick={() => this._buttonClickHandler()}
+              variant="secondary"
+              size="short"
+            >
+              {this.buttonText}
+            </bds-button>
           ) : (
-            <button onClick={() => this._buttonClickHandler()}>
-              <bds-button-icon size="short" variant="secondary--white" icon="close" />
-            </button>
+            <bds-button-icon
+              onClick={() => this._buttonClickHandler()}
+              size="short"
+              onKeyDown={this._keyPressHandler.bind(this)}
+              tabindex="0"
+              variant="secondary"
+              icon="close"
+            />
           )}
         </div>
       </div>

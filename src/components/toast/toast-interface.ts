@@ -1,6 +1,6 @@
 export type ActionType = 'button' | 'icon';
 
-export type VariantType = 'system' | 'error' | 'success' | 'warning' | 'undo' | 'redo';
+export type VariantType = 'system' | 'error' | 'success' | 'warning' | 'undo' | 'redo' | 'notification';
 
 export type ButtonActionType = 'close' | 'custom';
 

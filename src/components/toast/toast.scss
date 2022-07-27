@@ -29,11 +29,10 @@
 .toast {
   display: none;
   position: relative;
-  align-items: center;
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: $shadow-toast;
-  color: $color-neutral-light-snow;
+  color: $color-neutral-dark-city;
   opacity: 0;
   margin-top: 16px;
 
@@ -66,19 +65,19 @@
   }
 
   &--system {
-    background: $color-illustration-blue-brand;
+    background: $color-illustration-blue-genie;
   }
 
   &--error {
-    background: $color-extend-reds-delete;
+    background: $color-extend-reds-flower;
   }
 
   &--success {
-    background: $color-primary-greens-true;
+    background: $color-primary-greens-mint;
   }
 
   &--warning {
-    background: $color-extend-browns-cheetos;
+    background: $color-primary-yellows-corn;
   }
 
   &--undo {
@@ -88,11 +87,22 @@
   &--redo {
     background-color: $color-secondary-redo;
   }
+  &--notification {
+    background-color: $color-neutral-light-snow;
+  }
 
   bds-icon {
     margin-right: 8px;
     display: flex;
     align-items: center;
+    padding-top: 8px;
+  }
+
+  &__ballon {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   &__content {
@@ -103,17 +113,30 @@
     flex-direction: column;
     justify-content: center;
     margin-right: 8px;
+    padding: 8px;
   }
 
   &__action {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
-    button {
-      background: transparent;
-      border: none;
-      outline: none;
-      padding: 0;
+    bds-button-icon, bds-button {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border: 2px solid transparent;
+        border-radius: 4px;
+      }
+  
+      &:focus-visible {
+        outline: none;
+  
+        &::before {
+          border-color: $color-primary-purples-bell;
+        }
+      }
     }
 
     &__button {
@@ -122,10 +145,10 @@
 
     &__icon {
       display: flex !important;
-      align-items: center;
+      align-items: flex-start;
 
       bds-icon {
-        color: $color-neutral-light-snow;
+        color: $color-neutral-dark-city;
         border-radius: 4px;
         cursor: pointer;
       }
