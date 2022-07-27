@@ -102,6 +102,17 @@ ToastWarning.args = {
   show: 'true',
 };
 
+export const ToastNotification = Template.bind({});
+ToastNotification.args = {
+  buttonAction: 'close',
+  icon: 'bell',
+  actionType: 'icon',
+  toastTitle: 'toast notification',
+  toastText: 'Este é um toast de notificação',
+  variant: 'notification',
+  show: 'true',
+};
+
 export const CallToast = ExampleToast.bind({});
 CallToast.args = {
   icon: 'info',
