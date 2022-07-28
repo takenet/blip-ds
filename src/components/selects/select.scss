@@ -302,3 +302,17 @@ $select-options-max-height: 250px;
     }
   }
 }
+
+.inside-input-left {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-right: 8px;
+}
+.input-chips__chip {
+  margin: 2px 4px 2px 0px;
+}
+
+.input-chips__chips {
+  flex: 1;
+}
