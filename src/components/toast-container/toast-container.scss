@@ -1,5 +1,5 @@
-$vertical-margin: 40px;
-$horizontal-margin: 32px;
+$vertical-margin: 48px;
+$horizontal-margin: 48px;
 
 :host {
   position: fixed;
@@ -15,17 +15,17 @@ $horizontal-margin: 32px;
   
   &.bottom-left {
     bottom: $vertical-margin;
-    left: $horizontal-margin
+    left: $horizontal-margin;
   }
 
   &.top-right {
-    top: $vertical-margin;
-    right: $horizontal-margin
+    top: 24px;
+    right: 24px;
   }
   
   &.top-left {
     top: $vertical-margin;
-    left: $horizontal-margin
+    left: $horizontal-margin;
   }
 
   @media (max-width: $sm-screen) {
