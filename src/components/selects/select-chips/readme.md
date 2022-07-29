@@ -109,10 +109,9 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part                | Description |
-| ------------------- | ----------- |
-| `"input-container"` |             |
-| `"input__message"`  |             |
+| Part               | Description |
+| ------------------ | ----------- |
+| `"input__message"` |             |
 
 
 ## Dependencies

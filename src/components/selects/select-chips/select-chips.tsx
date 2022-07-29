@@ -8,7 +8,7 @@ import { InputChipsTypes } from '../../input-chips/input-chips-interface';
   styleUrl: '../select.scss',
   scoped: true,
 })
-export class InputChips {
+export class SelectChips {
   private nativeInput?: HTMLInputElement;
 
   @State() internalOptions: Option[];
@@ -630,7 +630,6 @@ export class InputChips {
             }}
             onClick={this.onClickWrapper}
             onKeyDown={this.keyPressWrapper}
-            part="input-container"
           >
             {this.renderIcon()}
             <div class="input__container">
