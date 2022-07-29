@@ -12,12 +12,27 @@
       background: #f5f8f9;
       /*background: #0a0f1a; */
       margin: 0;
-      padding: 32px;
+      height: 100vh;
     }
   </style>
 
   <body>
+    <bds-button onClick="showToast()">Show toast</bds-button>
   </body>
 
-  <script></script>
+  <script>
+    function showToast() {
+      const newtoast = document.createElement('bds-toast');
+      document.body.appendChild(newtoast);
+      newtoast.create({
+        buttonAction: 'close',
+        icon: 'bell',
+        actionType: 'icon',
+        toastTitle: 'toast system',
+        toastText: 'Este é um toast de sistema',
+        variant: 'notification',
+        show: 'true',
+      });
+    }
+  </script>
 </html>

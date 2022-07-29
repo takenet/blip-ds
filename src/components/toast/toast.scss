@@ -35,11 +35,13 @@
   color: $color-neutral-dark-city;
   opacity: 0;
   margin-top: 16px;
+  overflow: hidden;
+  gap: 16px;
 
   &--action--icon {
     min-width: 440px;
     max-width: 440px;
-    padding: 8px 20px;
+    padding: 8px 16px;
 
     bds-icon-button {
       height: 32px;
@@ -55,7 +57,7 @@
   &--action--button {
     min-width: 440px;
     max-width: 456px;
-    padding: 10px 20px;
+    padding: 8px 16px;
 
     @media (max-width: $sm-screen) {
       min-width: 220px;
@@ -92,10 +94,9 @@
   }
 
   bds-icon {
-    margin-right: 8px;
     display: flex;
     align-items: center;
-    padding-top: 8px;
+    padding: 8px 0;
   }
 
   &__ballon {
@@ -112,8 +113,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 8px;
-    padding: 8px;
+    padding: 8px 0;
   }
 
   &__action {
@@ -143,16 +143,6 @@
       white-space: nowrap;
     }
 
-    &__icon {
-      display: flex !important;
-      align-items: flex-start;
-
-      bds-icon {
-        color: $color-neutral-dark-city;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-    }
   }
 }
 

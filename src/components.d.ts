@@ -1467,7 +1467,7 @@ export namespace Components {
         /**
           * Can be used outside to open the toast
          */
-        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, position, }: CreateToastType) => Promise<void>;
+        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
