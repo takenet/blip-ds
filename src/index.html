@@ -17,22 +17,8 @@
   </style>
 
   <body>
-    <bds-button onClick="showToast()">Show toast</bds-button>
   </body>
 
   <script>
-    function showToast() {
-      const newtoast = document.createElement('bds-toast');
-      document.body.appendChild(newtoast);
-      newtoast.create({
-        buttonAction: 'close',
-        icon: 'bell',
-        actionType: 'icon',
-        toastTitle: 'toast system',
-        toastText: 'Este é um toast de sistema',
-        variant: 'notification',
-        show: 'true',
-      });
-    }
   </script>
 </html>
