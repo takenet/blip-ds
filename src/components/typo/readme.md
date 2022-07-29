@@ -60,6 +60,7 @@
  - [bds-progress-bar](../progress-bar)
  - [bds-radio](../radio)
  - [bds-select](../selects/select)
+ - [bds-select-chips](../selects/select-chips)
  - [bds-select-option](../select-option)
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab)
@@ -102,6 +103,7 @@ graph TD;
   bds-progress-bar --> bds-typo
   bds-radio --> bds-typo
   bds-select --> bds-typo
+  bds-select-chips --> bds-typo
   bds-select-option --> bds-typo
   bds-step --> bds-typo
   bds-tab --> bds-typo

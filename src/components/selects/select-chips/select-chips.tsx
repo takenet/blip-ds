@@ -1,5 +1,7 @@
-import { Component, h, State, Prop, EventEmitter, Event, Element, Listen, Method } from '@stencil/core';
+import { Component, Element, h, Prop, Method, Event, EventEmitter, Listen, Watch, State } from '@stencil/core';
 import { Option, SelectChangeEventDetail } from '../select-interface';
+import { emailValidation, whitespaceValidation } from '../../../utils/validations';
+import { InputChipsTypes } from '../../input-chips/input-chips-interface';
 
 @Component({
   tag: 'bds-select-chips',
@@ -7,13 +9,29 @@ import { Option, SelectChangeEventDetail } from '../select-interface';
   scoped: true,
 })
 export class SelectChips {
-  private nativeInput?: HTMLBdsInputChipsElement;
+  private nativeInput?: HTMLInputElement;
 
   @State() internalOptions: Option[];
 
   @Element() el!: HTMLElement;
 
   @State() isOpen? = false;
+
+  /**
+   * Used to set the danger behavior by the internal validators
+   */
+  @State() validationDanger?: boolean = false;
+  /**
+   * Conditions the element to say whether it is pressed or not, to add styles.
+   */
+  @State() isPressed? = false;
+
+  /**
+   * Used to set the error message setted by the internal validators
+   */
+  @State() validationMesage? = '';
+
+  @State() internalChips: string[] = [];
 
   /**
    * The options of the select
@@ -62,6 +80,61 @@ export class SelectChips {
   @Prop({ reflect: true }) disabled? = false;
 
   /**
+   *  label in input, with he the input size increases.
+   */
+  @Prop() label? = '';
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
+
+  /**
+   * Do not accept duplicate chip elements.
+   */
+  @Prop() duplicated?: boolean = false;
+
+  /**
+   *  Specify if is possible to create a new tag that is not on the options.
+   */
+  @Prop() canAddNew?: boolean = true;
+
+  /**
+   *  Specify if is possible to create a new tag that is not on the options.
+   */
+  @Prop() notFoundMessage?: string = 'No results found';
+
+  /**
+   * Defining the type is important so that it is possible to carry out validations. Can be one of:
+   * 'text' and 'email;
+   */
+  @Prop() type: InputChipsTypes = 'text';
+
+  /**
+   * The delimiter is used to add multiple chips in the same string.
+   */
+  @Prop() delimiters? = /,|;/;
+
+  /**
+   * If `true`, the user cannot modify the value.
+   */
+  @Prop() disableSubmit = false;
+  /**
+   * Indicated to pass a help the user in complex filling.
+   */
+  @Prop() helperMessage?: string = '';
+
+  /**
+   * Prop to insert the name of the input
+   */
+  @Prop() inputName?: string = '';
+
+  /**
+   * A tip for the user who can enter no controls.
+   */
+  @Prop() placeholder?: string = '';
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -87,29 +160,19 @@ export class SelectChips {
   @Event() bdsBlur!: EventEmitter<void>;
 
   /**
-   *  label in input, with he the input size increases.
+   * Emitted when the chip has added.
    */
-  @Prop() label? = '';
+  @Event() bdsChangeChips!: EventEmitter;
 
   /**
-   * used for add icon in input left. Uses the bds-icon component.
+   * Emitted when the chip has added.
    */
-  @Prop({ reflect: true }) icon?: string = '';
+  @Event() bdsSelectChipsInput!: EventEmitter;
 
   /**
-   * Do not accept duplicate chip elements.
+   * Emitted when the chip has added.
    */
-  @Prop() duplicated?: boolean = false;
-
-  /**
-   *  Specify if is possible to create a new tag that is not on the options.
-   */
-  @Prop() canAddNew?: boolean = true;
-
-  /**
-   *  Specify if is possible to create a new tag that is not on the options.
-   */
-  @Prop() notFoundMessage?: string = 'No results found';
+  @Event() bdsSubmit!: EventEmitter;
 
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
@@ -119,29 +182,77 @@ export class SelectChips {
   }
 
   /**
+   * Call change event before alter chips values.
+   */
+  @Watch('chips')
+  protected valueChanged(): void {
+    if (this.chips) {
+      if (typeof this.chips === 'string') {
+        try {
+          this.internalChips = JSON.parse(this.chips);
+        } catch {
+          this.internalChips = [];
+        }
+      } else {
+        this.internalChips = this.chips;
+      }
+    } else {
+      this.internalChips = [];
+    }
+  }
+
+  @Watch('internalChips')
+  protected internalValueChanged(): void {
+    this.handleChangeChipsValue();
+    this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
+  }
+
+  /**
    * Return the validity of the input chips.
    */
   @Method()
   async isValid(): Promise<boolean> {
-    return this.nativeInput.isValid();
+    return this.validateChips();
   }
 
   /**
-   * Return the internal chips.
+   * Return the chips
    */
   @Method()
   async getChips(): Promise<string[]> {
-    return await this.nativeInput.get();
+    return this.internalChips;
   }
 
-  componentWillRender() {
-    if (this.options.length) {
-      try {
-        this.internalOptions = typeof this.options === 'string' ? JSON.parse(this.options) : this.options;
-      } catch (e) {
-        this.internalOptions = [];
-      }
-    }
+  /**
+   * Clear all chips
+   */
+  @Method()
+  async clear(): Promise<void> {
+    this.internalChips = [];
+    this.value = '';
+  }
+
+  @Method()
+  async add(value: string): Promise<void> {
+    this.setChip(value);
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    this.nativeInput.focus();
+  }
+
+  @Method()
+  async removeFocus(): Promise<void> {
+    this.nativeInput.blur();
+  }
+
+  componentWillLoad() {
+    this.valueChanged();
+  }
+
+  async componentDidLoad() {
+    await this.resetFilterOptions();
   }
 
   async connectedCallback() {
@@ -150,142 +261,26 @@ export class SelectChips {
     }
   }
 
-  async componentDidLoad() {
-    await this.resetFilterOptions();
+  private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
+    return Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'));
   }
 
-  private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
-  }
-
-  private enableCreateOption(): boolean {
-    return !!(this.childOptionsEnabled.length === 0 && this.nativeInput && this.nativeInput.value);
-  }
-
-  private onFocus = (): void => {
-    this.bdsFocus.emit();
-  };
-
-  private onBlur = (): void => {
-    this.bdsBlur.emit();
-  };
-
-  private toggle = (): void => {
-    if (!this.disabled) {
-      this.isOpen = !this.isOpen;
-    }
-  };
-
-  private handler = async (event: CustomEvent) => {
-    const {
-      detail: { value },
-    } = event;
-    const text = this.getText(value);
-    await this.addChip(text);
-  };
-
-  private getTextFromOption = (opt: HTMLBdsSelectOptionElement): string => {
-    if (opt?.status || opt?.bulkOption) {
-      if (this.internalOptions) {
-        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
-        if (internalOption) {
-          return internalOption.label;
-        }
-      }
-      return opt.querySelector(`#bds-typo-label-${opt.value}`).textContent;
-    }
-    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
-  };
-
-  private getText = (value: string) => {
-    const el: HTMLBdsSelectOptionElement = this.childOptions.find((option) => option.value === value);
-    return this.getTextFromOption(el);
-  };
-
-  private handlerNewOption = async (text: string) => {
-    await this.addChip(text);
-  };
-
-  private async addChip(chip: string) {
-    await this.nativeInput.add(chip);
-    this.nativeInput.value = '';
-    this.toggle();
-  }
-
-  private setFocusWrapper = (): void => {
-    if (this.nativeInput) {
-      this.nativeInput.setFocus();
-    }
-  };
-
-  private removeFocusWrapper = (event: FocusEvent): void => {
-    const isInputElement = (event.relatedTarget as Element).localName === 'bds-input-chips';
-
-    if (this.nativeInput && !isInputElement) {
-      this.nativeInput.removeFocus();
-    }
-  };
-
-  private keyPressWrapper = (event: KeyboardEvent): void => {
-    const isSelectElement = (event.target as Element).localName === 'bds-select';
-    const isInputElement = (event.target as Element).localName === 'bds-input-chips';
-
-    switch (event.key) {
-      case 'Enter':
-        if (this.childOptionsEnabled.length === 1) {
-          this.nativeInput.add(this.childOptionsEnabled[0].textContent);
-        } else {
-          if (!this.canAddNew) {
-            return;
-          }
-          this.nativeInput.add(this.nativeInput.value);
-        }
-
-        this.nativeInput.value = '';
-
-        if (!this.isOpen && (isSelectElement || isInputElement)) {
-          this.toggle();
-        }
-        break;
-    }
-  };
-
-  private changedInputValue = async () => {
-    // console.log('TRACE [select-chips] changedInputValue:', { nativeInput: this.nativeInput.value, value: this.value });
-    // Update this.value for trigger render componente, same two-way binding
-    this.value = this.nativeInput.value;
-
-    if (this.nativeInput.value) {
-      await this.filterOptions(this.nativeInput.value);
-    } else {
-      await this.resetFilterOptions();
-    }
-
-    if (this.value && this.isOpen === false) {
-      this.isOpen = true;
-    }
-  };
-
   private handleChangeChipsValue = async () => {
-    // console.log('TRACE [select-chips] handleChangeChipsValue 1:', { chips: this.nativeInput.chips });
-    this.nativeInput.value = '';
     await this.resetFilterOptions();
   };
 
   private async filterOptions(term: string) {
-    // console.log('TRACE [select-chips] filterOptions 1:', { term, childOptions: this.childOptions });
     if (!term) {
       await this.resetFilterOptions();
       return;
     }
 
     for (const option of this.childOptions) {
-      // console.log('TRACE [select-chips] filterOptions 2:', { option });
-      const isExistsChip = this.existsChip(option.textContent, await this.nativeInput.get());
+      const isExistsChip = this.existsChip(option.textContent, await this.getChips());
       const optionTextLower = option.textContent.toLowerCase();
       const termLower = term.toLowerCase();
 
@@ -305,8 +300,8 @@ export class SelectChips {
 
   private async resetFilterOptions() {
     for (const option of this.childOptions) {
-      const optionText = option.querySelector('bds-typo').textContent;
-      if (this.existsChip(optionText, await this.nativeInput.get())) {
+      const optionText = option.querySelector('bds-typo')?.textContent;
+      if (this.existsChip(optionText, await this.getChips())) {
         option.setAttribute('invisible', 'invisible');
       } else {
         option.removeAttribute('invisible');
@@ -318,13 +313,291 @@ export class SelectChips {
     return chips.some((chip) => optionChip === chip);
   }
 
+  private toggle = (): void => {
+    if (!this.disabled) {
+      this.isOpen = !this.isOpen;
+    }
+  };
+
+  private handler = async (event: CustomEvent) => {
+    const {
+      detail: { value },
+    } = event;
+    const text = this.getText(value);
+    await this.addChip(text);
+    this.toggle();
+  };
+
+  private handlerNewOption = async (text: string) => {
+    await this.addChip(text);
+    this.toggle();
+  };
+
+  private enableCreateOption(): boolean {
+    return !!(this.childOptionsEnabled.length === 0 && this.nativeInput && this.nativeInput.value);
+  }
+
+  private async addChip(chip: string) {
+    await this.setChip(chip);
+    this.nativeInput.value = '';
+  }
+
+  private getText = (value: string) => {
+    const el: HTMLBdsSelectOptionElement = this.childOptions.find((option) => option.value === value);
+    return this.getTextFromOption(el);
+  };
+
+  private getTextFromOption = (opt: HTMLBdsSelectOptionElement): string => {
+    if (opt?.status || opt?.bulkOption) {
+      if (this.internalOptions) {
+        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
+        if (internalOption) {
+          return internalOption.label;
+        }
+      }
+      return opt.querySelector(`#bds-typo-label-${opt.value}`).textContent;
+    }
+    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
+  };
+
+  private setFocusWrapper = (): void => {
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  };
+
+  private removeFocusWrapper = (): void => {
+    this.nativeInput.blur();
+  };
+
+  private validateChips() {
+    if (this.type === 'email') {
+      return !this.internalChips.some((chip) => !this.validateChip(chip));
+    } else {
+      return true;
+    }
+  }
+
+  private onClickWrapper = (): void => {
+    this.onFocus();
+    if (this.nativeInput) {
+      this.nativeInput.focus();
+    }
+  };
+
+  private onFocus = (): void => {
+    this.bdsFocus.emit();
+    this.isPressed = true;
+  };
+
+  private handleOnBlur(): void {
+    this.bdsBlur.emit();
+    this.isPressed = false;
+  }
+
+  private onInput = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    if (input) {
+      this.value = input.value || '';
+    }
+    this.bdsSelectChipsInput.emit(ev as KeyboardEvent);
+  };
+
+  private getLastChip(): string {
+    return this.internalChips[this.internalChips.length - 1];
+  }
+
+  private keyPressWrapper = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case 'Enter':
+        this.setChip(this.value);
+        this.value = '';
+        break;
+      case 'Backspace' || 'Delete':
+        if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
+          this.removeLastChip();
+          this.handleChangeChipsValue;
+          this.bdsChangeChips.emit({ data: this.internalChips });
+        }
+        break;
+    }
+  };
+
+  private verifyAndSubstituteDelimiters(value: string) {
+    if (value.length === 1 && value[0].match(this.delimiters)) {
+      return '';
+    }
+
+    let newValue = value.replace(/;/g, ',').replace(/\,+|;+/g, ',');
+
+    if (newValue[0].match(this.delimiters)) {
+      newValue = newValue.substring(1);
+    }
+
+    return newValue;
+  }
+
+  private async handleChange(event: CustomEvent<{ value: string }>) {
+    this.changedInputValue;
+    const {
+      detail: { value },
+    } = event;
+
+    this.value = value ? value.trim() : '';
+
+    if (value.length === 0) return;
+
+    const existTerm = value.match(this.delimiters);
+    if (!existTerm) return;
+
+    const newValue = this.verifyAndSubstituteDelimiters(value);
+    if (!newValue) {
+      this.clearInputValues();
+      return;
+    }
+
+    const words = newValue.split(this.delimiters);
+    words.forEach((word) => {
+      this.setChip(word);
+    });
+
+    this.clearInputValues();
+  }
+
+  private changedInputValue = async () => {
+    this.value = this.nativeInput.value;
+
+    if (this.nativeInput.value) {
+      await this.filterOptions(this.nativeInput.value);
+    } else {
+      await this.resetFilterOptions();
+    }
+
+    if (this.value && this.isOpen === false) {
+      this.isOpen = true;
+    }
+  };
+
+  private clearInputValues(value = '') {
+    this.nativeInput.value = value;
+    this.value = value;
+  }
+
+  private setChip(name: string) {
+    if (!this.duplicated) {
+      const exists = this.internalChips.some((chip) => chip.toLowerCase() === name.toLowerCase());
+      if (exists) return;
+    }
+
+    if (!whitespaceValidation(name)) {
+      return;
+    }
+
+    this.internalChips = [...this.internalChips, name];
+  }
+
+  private validateChip(name: string) {
+    const trimmedName = name.trim();
+    if (this.type === 'email' && emailValidation(trimmedName)) {
+      return false;
+    }
+    return true;
+  }
+
+  private removeLastChip() {
+    this.internalChips = this.internalChips.slice(0, this.internalChips.length - 1);
+  }
+
+  private removeChip(event: CustomEvent<{ id: string }>) {
+    const {
+      detail: { id },
+    } = event;
+
+    this.internalChips = this.internalChips.filter((_chip, index) => index.toString() !== id);
+  }
+
+  private renderChips() {
+    if (!this.internalChips.length) {
+      return [];
+    }
+
+    return this.internalChips.map((chip, index) => {
+      const id = index.toString();
+      return (
+        <bds-chip-clickable
+          id={id}
+          key={id}
+          color="default"
+          close={!this.disabled}
+          onChipClickableClose={(event) => this.removeChip(event)}
+        >
+          {chip}
+        </bds-chip-clickable>
+      );
+    });
+  }
+
+  private renderIcon(): HTMLElement {
+    return (
+      this.icon && (
+        <div
+          class={{
+            input__icon: true,
+            'input__icon--large': !!this.label,
+          }}
+        >
+          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
+        </div>
+      )
+    );
+  }
+
+  private renderLabel(): HTMLElement {
+    return (
+      this.label && (
+        <label
+          class={{
+            input__container__label: true,
+            'input__container__label--pressed': this.isPressed && !this.disabled,
+          }}
+        >
+          <bds-typo variant="fs-12" bold="bold">
+            {this.label}
+          </bds-typo>
+        </label>
+      )
+    );
+  }
+
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : 'info';
+    let message = this.danger ? this.errorMessage : this.helperMessage;
+
+    if (!message && this.validationDanger) message = this.validationMesage;
+
+    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+
+    if (message) {
+      return (
+        <div class={styles} part="input__message">
+          <div class="input__message__icon">
+            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+          </div>
+          <bds-typo variant="fs-12">{message}</bds-typo>
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
   private generateKey(value: string) {
     return value.toLowerCase().replace(/ /g, '-');
   }
 
-  render(): HTMLElement {
-    // console.log('TRACE [select-chips] render', this.childOptions);
+  render() {
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
+    const isPressed = this.isPressed && !this.disabled;
 
     let internalOptions: Option[] = [];
     if (this.options) {
@@ -345,28 +618,46 @@ export class SelectChips {
         onBlur={this.removeFocusWrapper}
         onKeyPress={this.keyPressWrapper}
       >
-        <bds-input-chips
-          ref={(el) => (this.nativeInput = el as HTMLBdsInputChipsElement)}
-          onBdsChangeChips={this.handleChangeChipsValue}
-          onBdsChange={this.changedInputValue}
-          icon={this.icon}
-          label={this.label}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          maxlength={this.maxlength}
-          onClick={this.toggle}
-          danger={this.danger}
-          error-message={this.errorMessage}
-          chips={this.chips}
-          disable-submit={true}
-          delimiters={null}
-          duplicated={this.duplicated}
-          dataTest={this.dataTest}
-        >
-          <div slot="input-right" class="select__icon">
-            <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
+        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.toggle}>
+          <div
+            class={{
+              input: true,
+              'input--state-primary': !this.danger && !this.validationDanger,
+              'input--state-danger': this.danger || this.validationDanger,
+              'input--state-disabled': this.disabled,
+              'input--label': !!this.label,
+              'input--pressed': isPressed,
+            }}
+            onClick={this.onClickWrapper}
+            onKeyDown={this.keyPressWrapper}
+          >
+            {this.renderIcon()}
+            <div class="input__container">
+              {this.renderLabel()}
+              <div class={{ input__container__wrapper: true }}>
+                {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
+                <input
+                  ref={(input) => (this.nativeInput = input)}
+                  class={{ input__container__text: true }}
+                  name={this.inputName}
+                  maxlength={this.maxlength}
+                  placeholder={this.placeholder}
+                  onInput={this.onInput}
+                  onFocus={this.onFocus}
+                  onBlur={() => this.handleOnBlur()}
+                  onChange={() => this.handleChange}
+                  value={this.value}
+                  disabled={this.disabled}
+                  data-test={this.dataTest}
+                ></input>
+              </div>
+            </div>
+            <div class="select__icon">
+              <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
+            </div>
           </div>
-        </bds-input-chips>
+          {this.renderMessage()}
+        </div>
         <div
           class={{
             select__options: true,
