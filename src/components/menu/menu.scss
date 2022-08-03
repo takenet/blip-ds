@@ -1,6 +1,8 @@
 .menu {
-  position: absolute;
+  position: fixed;
   pointer-events: none;
+  top: 0;
+  left: 0;
   padding: 16px 2px;
   background-color: $color-neutral-light-snow;
   border-radius: 8px;
@@ -10,6 +12,7 @@
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   transition: opacity 0.5s;
+  z-index: $zindex-modal-overlay;
 
   &__open {
     pointer-events: auto;
