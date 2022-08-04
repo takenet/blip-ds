@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, State, Method, Prop, Watch } from '@stencil/core';
-import { getScrollParent, menuFixed } from '../../utils/menu-fixed';
+import { getScrollParent, positionElement } from '../../utils/position-element';
 
 export type menuPosition = 'bottom' | 'right';
 
@@ -44,9 +44,9 @@ export class BdsMenu implements ComponentInterface {
 
   @Watch('open')
   protected openMenu() {
-    const positionValue = menuFixed({
+    const positionValue = positionElement({
       actionElement: this.refElement,
-      menuElement: this.menuElement,
+      changedElement: this.menuElement,
       intoView: this.intoView,
     });
     this.menupositionTop = positionValue.top;

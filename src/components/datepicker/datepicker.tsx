@@ -1,7 +1,7 @@
 import { Component, h, Element, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
 import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToString } from '../../utils/calendar';
 import { dateValidation, maskDate } from '../../utils/validations';
-import { getScrollParent, menuFixed } from '../../utils/menu-fixed';
+import { getScrollParent, positionElement } from '../../utils/position-element';
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
 
 export type typeDate = 'single' | 'period';
@@ -209,9 +209,9 @@ export class DatePicker {
   };
 
   private onClickSetDate = () => {
-    const positionValue = menuFixed({
+    const positionValue = positionElement({
       actionElement: this.actionElement,
-      menuElement: this.menuElement,
+      changedElement: this.menuElement,
       intoView: this.intoView,
     });
     this.menupositionTop = positionValue.top;
@@ -226,9 +226,9 @@ export class DatePicker {
   };
 
   private openDatepicker = () => {
-    const positionValue = menuFixed({
+    const positionValue = positionElement({
       actionElement: this.actionElement,
-      menuElement: this.menuElement,
+      changedElement: this.menuElement,
       intoView: this.intoView,
     });
     this.menupositionTop = positionValue.top;

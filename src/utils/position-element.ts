@@ -1,4 +1,4 @@
-export interface MenuPosition {
+export interface Position {
   top: number;
   left: number;
 }
@@ -15,15 +15,15 @@ export const getScrollParent = (node: HTMLElement) => {
   }
 };
 
-export function menuFixed({
+export function positionElement({
   actionElement,
-  menuElement,
+  changedElement,
   intoView,
 }: {
   actionElement: HTMLElement;
-  menuElement: HTMLElement;
+  changedElement: HTMLElement;
   intoView: HTMLElement;
-}): MenuPosition {
+}): Position {
   const parentElement: HTMLElement = intoView.offsetParent as HTMLElement;
   const contentScrolled = !!intoView.classList.contains('element_scrolled');
 
@@ -33,21 +33,27 @@ export function menuFixed({
 
   const positionLeft = contentScrolled ? actionElement.offsetLeft + parentElement.offsetLeft : actionElement.offsetLeft;
 
-  const menupositionTop =
-    menuElement?.offsetHeight > window.innerHeight - positionTop
-      ? positionTop - menuElement?.offsetHeight - 16
+  const changedpositionTop =
+    changedElement?.offsetHeight > window.innerHeight - positionTop
+      ? positionTop - changedElement?.offsetHeight - 16
       : positionTop + actionElement.offsetHeight + 16;
-  const menupositionLeft =
-    menuElement?.offsetWidth > window.innerWidth - positionLeft
-      ? positionLeft + actionElement.offsetWidth - menuElement?.offsetWidth
+  const changedpositionLeft =
+    changedElement?.offsetWidth > window.innerWidth - positionLeft
+      ? positionLeft + actionElement.offsetWidth - changedElement?.offsetWidth
       : positionLeft;
 
-  const limitedHeightScreen = window.innerHeight - menuElement.offsetHeight;
-  const limitedWidthScreen = window.innerWidth - menuElement.offsetWidth;
+  const limitedHeightScreen = window.innerHeight - changedElement.offsetHeight;
+  const limitedWidthScreen = window.innerWidth - changedElement.offsetWidth;
 
   const result = {
-    top: menupositionTop < 8 ? 8 : menupositionTop > limitedHeightScreen ? limitedHeightScreen - 8 : menupositionTop,
-    left: menupositionLeft < 0 ? 0 : menupositionLeft > limitedWidthScreen ? limitedWidthScreen : menupositionLeft,
+    top:
+      changedpositionTop < 8
+        ? 8
+        : changedpositionTop > limitedHeightScreen
+        ? limitedHeightScreen - 8
+        : changedpositionTop,
+    left:
+      changedpositionLeft < 0 ? 0 : changedpositionLeft > limitedWidthScreen ? limitedWidthScreen : changedpositionLeft,
   };
 
   return result;
