@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Blip DS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script type="module" src="/build/blip-ds.esm.js"></script>
     <script nomodule src="/build/blip-ds.js"></script>
   </head>
@@ -11,12 +14,29 @@
     body {
       background: #f5f8f9;
       /*background: #0a0f1a; */
-      margin: 0;
+      margin: 24px;
       height: 100vh;
     }
   </style>
 
   <body>
+    <bds-table avatar="true" sorting="true"
+      column='[
+      {"heading": "ID", "value": "id"},
+      {"heading": "Name", "value": "name", "img" : "thumb"},
+      {"heading": "Default", "value": "default"},
+      {"heading": "Status", "value": "status"}
+      ]'
+      options='[
+        { "id": "1", "name": "Michael Scott", "thumb":"https://www.w3schools.com/howto/img_avatar.png", "default": "default 3", "status": "ativo" },
+        { "id": "2", "name" : "Dwight Schrute", "default": "default 2", "status": "ativo" },
+        { "id": "3", "name" : "Jim Halpert", "thumb":"", "default": "default 6", "status": "ativo" },
+        { "id": "4", "name" : "Pam Beesly", "thumb":"", "default": "default 5", "status": "desativado" },
+        { "id": "5", "name" : "Ryan Howard", "thumb":"", "default": "default 1", "status": "desativado" },
+        { "id": "6", "name" : "Andy Bernard", "thumb":"", "default": "default 9", "status": "ativo" }
+      ]'
+    >
+    </bds-table>
   </body>
 
   <script>
