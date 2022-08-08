@@ -102,9 +102,9 @@ export class Table {
                       {item.heading}
                     </bds-typo>
                   )}
-                  {this.sortAscending === true && this.sorting && this.headerActive === `${item.value}` ? (
+                  {this.sortAscending === true && this.sorting === true && this.headerActive === `${item.value}` ? (
                     <bds-icon class="header-icon" name="arrow-up" size="small"></bds-icon>
-                  ) : this.sortAscending === false && this.sorting && this.headerActive === `${item.value}` ? (
+                  ) : this.sortAscending === false && this.sorting === true && this.headerActive === `${item.value}` ? (
                     <bds-icon name="arrow-down" size="small"></bds-icon>
                   ) : (
                     ''
