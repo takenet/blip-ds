@@ -23,6 +23,10 @@ export class Table {
    */
   @State() sortAscending: boolean;
   /**
+   * For keep the state of the prop sort.
+   */
+  @State() headerActive: string;
+  /**
    * Prop to recive the content of the table.
    */
   @Prop() options?: string;
@@ -52,15 +56,17 @@ export class Table {
       this.tableData = JSON.parse(this.options);
     }
   }
-  toggleSorting() {
-    this.sortAscending = this.sortAscending ? false : true;
-  }
 
-  resetSorting() {
-    this.sortAscending = undefined;
+  renderArrow(value) {
+    if (value) {
+      return <bds-icon name="arrow-up" size="small"></bds-icon>;
+    } else {
+      return null;
+    }
   }
 
   orderColumn(idx) {
+    this.headerActive = idx;
     this.sortAscending = this.sortAscending ? false : true;
 
     if (this.sortAscending === false) {
@@ -87,7 +93,7 @@ export class Table {
                       class="title-click"
                       onClick={() => this.orderColumn(item.value)}
                       variant="fs-14"
-                      bold="regular"
+                      bold={this.headerActive === `${item.value}` ? 'bold' : 'regular'}
                     >
                       {item.heading}
                     </bds-typo>
@@ -96,10 +102,9 @@ export class Table {
                       {item.heading}
                     </bds-typo>
                   )}
-
-                  {this.sortAscending === true && this.sorting ? (
-                    <bds-icon name="arrow-up" size="small"></bds-icon>
-                  ) : this.sortAscending === false && this.sorting ? (
+                  {this.sortAscending === true && this.sorting === true && this.headerActive === `${item.value}` ? (
+                    <bds-icon class="header-icon" name="arrow-up" size="small"></bds-icon>
+                  ) : this.sortAscending === false && this.sorting === true && this.headerActive === `${item.value}` ? (
                     <bds-icon name="arrow-down" size="small"></bds-icon>
                   ) : (
                     ''
@@ -112,27 +117,18 @@ export class Table {
             {this.tableData.map((item, index) => (
               <tr class="body-row" key={index}>
                 {this.headerData.map((columnItem, idx) => {
-                  if (columnItem.value.includes('.') && columnItem.value[0]) {
-                    const itemSplit = columnItem.value.split('.');
-                    const imgSplit = columnItem.img.split('.');
-                    return (
-                      <td class="body-item">
-                        {this.avatar && (
-                          <bds-avatar
-                            size="extra-small"
-                            thumbnail={item[itemSplit[0]][imgSplit[0]]}
-                            name={item[itemSplit[0]][itemSplit[1]]}
-                          ></bds-avatar>
-                        )}
-                        <bds-typo variant="fs-14" bold="regular">
-                          {item[itemSplit[0]][itemSplit[1]]}
-                        </bds-typo>
-                      </td>
-                    );
-                  }
                   return (
                     <td class="body-item" key={idx}>
-                      <bds-typo variant="fs-14" bold="regular">
+                      {this.avatar && columnItem.img ? (
+                        <bds-avatar
+                          size="extra-small"
+                          thumbnail={item[`${columnItem.thumb}`]}
+                          name={item[`${columnItem.value}`]}
+                        ></bds-avatar>
+                      ) : (
+                        ''
+                      )}
+                      <bds-typo variant="fs-14" bold={this.headerActive === `${columnItem.value}` ? 'bold' : 'regular'}>
                         {item[`${columnItem.value}`]}
                       </bds-typo>
                     </td>
