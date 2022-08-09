@@ -1,7 +1,7 @@
-import { Component, h, Element, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
 import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToString } from '../../utils/calendar';
 import { dateValidation, maskDate } from '../../utils/validations';
-import { getScrollParent, positionElement } from '../../utils/position-element';
+// import { getScrollParent, positionElement } from '../../utils/position-element';
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
 
 export type typeDate = 'single' | 'period';
@@ -12,14 +12,14 @@ export type typeDate = 'single' | 'period';
   shadow: false,
 })
 export class DatePicker {
-  private actionElement?: HTMLElement;
-  private menuElement?: HTMLElement;
+  // private actionElement?: HTMLElement;
+  // private menuElement?: HTMLElement;
   private inputSetDate?: HTMLBdsInputElement;
   private inputSetEndDate?: HTMLBdsInputElement;
   private datepickerPeriod?: HTMLBdsDatepickerPeriodElement;
   private datepickerSingle?: HTMLBdsDatepickerSingleElement;
 
-  @Element() private element: HTMLElement;
+  // @Element() private element: HTMLElement;
 
   @State() open?: boolean = false;
   @State() dateSelected?: Date = null;
@@ -99,7 +99,7 @@ export class DatePicker {
   componentWillLoad() {
     this.endDateLimitChanged();
     this.startDateLimitChanged();
-    this.intoView = getScrollParent(this.element);
+    // this.intoView = getScrollParent(this.element);
   }
 
   private refInputSetDate = (el: HTMLBdsInputElement): void => {
@@ -209,13 +209,13 @@ export class DatePicker {
   };
 
   private onClickSetDate = () => {
-    const positionValue = positionElement({
-      actionElement: this.actionElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
+    // const positionValue = positionElement({
+    //   actionElement: this.actionElement,
+    //   changedElement: this.menuElement,
+    //   intoView: this.intoView,
+    // });
+    // this.menupositionTop = positionValue.top;
+    // this.menupositionLeft = positionValue.left;
     this.open = true;
     setTimeout(() => {
       this.inputSetDate?.setFocus();
@@ -226,13 +226,13 @@ export class DatePicker {
   };
 
   private openDatepicker = () => {
-    const positionValue = positionElement({
-      actionElement: this.actionElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
+    // const positionValue = positionElement({
+    //   actionElement: this.actionElement,
+    //   changedElement: this.menuElement,
+    //   intoView: this.intoView,
+    // });
+    // this.menupositionTop = positionValue.top;
+    // this.menupositionLeft = positionValue.left;
     this.open = true;
   };
 
@@ -248,7 +248,7 @@ export class DatePicker {
     };
     return (
       <div
-        ref={(el) => (this.actionElement = el as HTMLElement)}
+        // ref={(el) => (this.actionElement = el as HTMLElement)}
         class={{ datepicker: true }}
         onBlur={() => (this.open = false)}
         tabindex="0"
@@ -297,7 +297,7 @@ export class DatePicker {
           </div>
         )}
         <div
-          ref={(el) => (this.menuElement = el as HTMLElement)}
+          // ref={(el) => (this.menuElement = el as HTMLElement)}
           class={{ datepicker__menu: true, datepicker__menu__open: this.open }}
           style={menuPosition}
         >
