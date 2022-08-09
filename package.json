@@ -83,7 +83,6 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.17.12",
-    "@mdx-js/loader": "^2.1.1",
     "autoprefixer": "^10.4.7",
     "blip-tokens": "^1.36.0",
     "react": "^18.1.0",
