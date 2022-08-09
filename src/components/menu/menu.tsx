@@ -1,5 +1,4 @@
 import { Component, ComponentInterface, h, State, Method, Prop, Watch } from '@stencil/core';
-import { getScrollParent, positionElement } from '../../utils/position-element';
 
 export type menuPosition = 'bottom' | 'right';
 
@@ -9,12 +8,10 @@ export type menuPosition = 'bottom' | 'right';
   shadow: true,
 })
 export class BdsMenu implements ComponentInterface {
-  private menuElement?: HTMLElement;
-
-  @State() refElement?: HTMLElement = null;
-  @State() intoView?: HTMLElement = null;
-  @State() menupositionTop?: number = 0;
-  @State() menupositionLeft?: number = 0;
+  @State() menuPositionTopToBottom?: number = 0;
+  @State() menuPositionLeftToBottom?: number = 0;
+  @State() menuPositionTopToRight?: number = 0;
+  @State() menuPositionLeftToRight?: number = 0;
   /**
    * Menu. Used to link the minus with the action button.
    */
@@ -32,11 +29,6 @@ export class BdsMenu implements ComponentInterface {
   })
   public open?: boolean = false;
 
-  componentWillLoad() {
-    this.refElement = document.getElementById(this.menu);
-    this.intoView = getScrollParent(this.refElement);
-  }
-
   @Method()
   async toggle() {
     this.open = !this.open;
@@ -44,30 +36,38 @@ export class BdsMenu implements ComponentInterface {
 
   @Watch('open')
   protected openMenu() {
-    const positionValue = positionElement({
-      actionElement: this.refElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
+    if (this.open == true) {
+      const element = document.getElementById(this.menu);
+      this.menuPositionTopToBottom = element.offsetTop + element.offsetHeight;
+      this.menuPositionLeftToBottom = element.offsetLeft;
+      this.menuPositionTopToRight = element.offsetTop;
+      this.menuPositionLeftToRight = element.offsetLeft + element.offsetWidth;
+    }
   }
 
   render() {
-    const menuPosition = {
-      top: `${this.menupositionTop}px`,
-      left: `${this.menupositionLeft}px`,
+    const menuPosition = (position: menuPosition) => {
+      if (position == 'right') {
+        return {
+          top: `${this.menuPositionTopToRight}px`,
+          left: `${this.menuPositionLeftToRight}px`,
+        };
+      } else {
+        return {
+          top: `${this.menuPositionTopToBottom}px`,
+          left: `${this.menuPositionLeftToBottom}px`,
+        };
+      }
     };
 
     return (
       <div
-        ref={(el) => (this.menuElement = el as HTMLElement)}
         class={{
           menu: true,
           [`menu__${this.position}`]: true,
           [`menu__open`]: this.open,
         }}
-        style={menuPosition}
+        style={menuPosition(this.position)}
       >
         <slot></slot>
       </div>
