@@ -105,17 +105,16 @@ export class BdsToast implements ComponentInterface {
     toastTitle,
     variant,
     duration,
+    position,
   }: CreateToastType) {
-    let toastContainer = document.querySelector(
-      `bds-toast-container.${variant === 'notification' ? 'top-right' : 'bottom-left'}`
-    );
+    let toastContainer = document.querySelector(`bds-toast-container.${position}`);
 
     if (toastContainer) {
       toastContainer.appendChild(this.el);
-      toastContainer.classList.add(variant === 'notification' ? 'top-right' : 'bottom-left');
+      toastContainer.classList.add(position);
     } else {
       toastContainer = document.createElement('bds-toast-container');
-      toastContainer.classList.add(variant === 'notification' ? 'top-right' : 'bottom-left');
+      toastContainer.classList.add(position);
       document.body.appendChild(toastContainer);
       toastContainer.appendChild(this.el);
     }
@@ -126,7 +125,7 @@ export class BdsToast implements ComponentInterface {
     this.el.toastTitle = toastTitle;
     this.el.variant = variant || 'system';
     this.el.duration = duration * 1000 || 0;
-    this.el.position = variant === 'notification' ? 'top-right' : 'bottom-left';
+    this.el.position = position || 'bottom-left';
 
     this.el.icon = icon ?? this.mapIconName[this.variant];
 
@@ -203,7 +202,7 @@ export class BdsToast implements ComponentInterface {
               tabindex="0"
               onClick={() => this._buttonClickHandler()}
               variant="secondary"
-              size="standard"
+              size="short"
             >
               {this.buttonText}
             </bds-button>

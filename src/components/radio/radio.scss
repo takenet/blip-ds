@@ -44,13 +44,6 @@ $radio-circle-pointer-height: 10px;
       height: $radio-circle-pointer-height;
       width: $radio-circle-pointer-width;
     }
-    
-    .hover {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      
-    }
 
     &:hover {
       border-color: $color-neutral-medium-elephant;
@@ -62,7 +55,6 @@ $radio-circle-pointer-height: 10px;
         height: 40px;
         opacity: 0.1;
         border-radius: 24px;
-        transition: width 0.65s, height 0.65s;
       }
     }
     .focus:focus-visible {
@@ -86,14 +78,13 @@ $radio-circle-pointer-height: 10px;
   /** State Checked */
   &__input[type='radio']:checked ~ &__circle {
     background: transparent;
-    border-color: $color-neutral-dark-city;
 
     .radio__circle__pointer {
       background-color: $color-primary-main;
     }
 
     &:hover {
-      border-color: $color-neutral-dark-city;
+      border-color: $color-primary-dark;
 
       .radio__circle__pointer {
         background-color: $color-primary-dark;

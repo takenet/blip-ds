@@ -41,7 +41,7 @@ Type: `Promise<void>`
 
 
 
-### `create({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>`
+### `create({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, position, }: CreateToastType) => Promise<void>`
 
 Can be used outside to open the toast
 
