@@ -29,12 +29,14 @@
 
 ## Events
 
-| Event            | Description                      | Type               |
-| ---------------- | -------------------------------- | ------------------ |
-| `bdsBlur`        | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsChange`      | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsChangeChips` | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsSubmit`      | Emitted when the chip has added. | `CustomEvent<any>` |
+| Event                | Description                      | Type               |
+| -------------------- | -------------------------------- | ------------------ |
+| `bdsBlur`            | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsChange`          | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsChangeChips`     | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsInputChipsFocus` | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsInputChipsInput` | Emitted when the chip has added. | `CustomEvent<any>` |
+| `bdsSubmit`          | Emitted when the chip has added. | `CustomEvent<any>` |
 
 
 ## Methods
@@ -100,32 +102,33 @@ Type: `Promise<void>`
 
 
 
+## Shadow Parts
+
+| Part                | Description |
+| ------------------- | ----------- |
+| `"input-container"` |             |
+| `"input__message"`  |             |
+
+
 ## Dependencies
-
-### Used by
-
- - [bds-select-chips](../selects/select-chips)
 
 ### Depends on
 
 - [bds-chip-clickable](../chip-clickable)
-- [bds-input](../input)
+- [bds-icon](../icon)
+- [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-input-chips --> bds-chip-clickable
-  bds-input-chips --> bds-input
+  bds-input-chips --> bds-icon
+  bds-input-chips --> bds-typo
   bds-chip-clickable --> bds-icon
   bds-chip-clickable --> bds-avatar
   bds-chip-clickable --> bds-typo
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
-  bds-input --> bds-icon
-  bds-input --> bds-typo
-  bds-input --> bds-counter-text
-  bds-counter-text --> bds-typo
-  bds-select-chips --> bds-input-chips
   style bds-input-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

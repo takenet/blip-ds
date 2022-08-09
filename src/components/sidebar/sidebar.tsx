@@ -53,13 +53,6 @@ export class Sidebar {
   };
 
   render() {
-    const contentBody = {
-      position: 'absolute',
-      inset: '0',
-      padding: '8px 24px',
-      overflowY: 'scroll',
-      overflowX: 'clip',
-    };
     return (
       <div
         class={{
@@ -85,7 +78,7 @@ export class Sidebar {
             </div>
           </div>
           <div class={{ body: true }}>
-            <div class={{ content: true }} style={contentBody}>
+            <div class={{ content: true, element_scrolled: true }}>
               <slot name="body" />
             </div>
           </div>

@@ -1211,6 +1211,7 @@ export namespace Components {
         "value"?: any | null;
     }
     interface BdsSelectChips {
+        "add": (value: string) => Promise<void>;
         /**
           * Specify if is possible to create a new tag that is not on the options.
          */
@@ -1220,6 +1221,10 @@ export namespace Components {
          */
         "chips": string | string[];
         /**
+          * Clear all chips
+         */
+        "clear": () => Promise<void>;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -1227,6 +1232,14 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiters"?: RegExp;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "disableSubmit": boolean;
         /**
           * Disabled input.
          */
@@ -1240,13 +1253,21 @@ export namespace Components {
          */
         "errorMessage"?: string;
         /**
-          * Return the internal chips.
+          * Return the chips
          */
         "getChips": () => Promise<string[]>;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Prop to insert the name of the input
+         */
+        "inputName"?: string;
         /**
           * Return the validity of the input chips.
          */
@@ -1271,6 +1292,16 @@ export namespace Components {
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | Option[];
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
+        "removeFocus": () => Promise<void>;
+        "setFocus": () => Promise<void>;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
+        "type": InputChipsTypes;
         /**
           * the value of the select.
          */
@@ -1467,7 +1498,7 @@ export namespace Components {
         /**
           * Can be used outside to open the toast
          */
-        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, position, }: CreateToastType) => Promise<void>;
+        "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
@@ -2986,6 +3017,14 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
+        "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsInputChipsInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
         "onBdsSubmit"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * A tip for the user who can enter no controls.
@@ -3524,6 +3563,14 @@ declare namespace LocalJSX {
          */
         "dataTest"?: string;
         /**
+          * The delimiter is used to add multiple chips in the same string.
+         */
+        "delimiters"?: RegExp;
+        /**
+          * If `true`, the user cannot modify the value.
+         */
+        "disableSubmit"?: boolean;
+        /**
           * Disabled input.
          */
         "disabled"?: boolean;
@@ -3536,9 +3583,17 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Prop to insert the name of the input
+         */
+        "inputName"?: string;
         /**
           * label in input, with he the input size increases.
          */
@@ -3568,13 +3623,33 @@ declare namespace LocalJSX {
          */
         "onBdsChange"?: (event: BdsSelectChipsCustomEvent<SelectChangeEventDetail>) => void;
         /**
+          * Emitted when the chip has added.
+         */
+        "onBdsChangeChips"?: (event: BdsSelectChipsCustomEvent<any>) => void;
+        /**
           * Emitted when the select loses focus.
          */
         "onBdsFocus"?: (event: BdsSelectChipsCustomEvent<void>) => void;
         /**
+          * Emitted when the chip has added.
+         */
+        "onBdsSelectChipsInput"?: (event: BdsSelectChipsCustomEvent<any>) => void;
+        /**
+          * Emitted when the chip has added.
+         */
+        "onBdsSubmit"?: (event: BdsSelectChipsCustomEvent<any>) => void;
+        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | Option[];
+        /**
+          * A tip for the user who can enter no controls.
+         */
+        "placeholder"?: string;
+        /**
+          * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
+         */
+        "type"?: InputChipsTypes;
         /**
           * the value of the select.
          */

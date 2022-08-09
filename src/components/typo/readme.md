@@ -48,6 +48,7 @@
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-expansion-panel-header](../expansion-panel/expansion-panel-header)
  - [bds-input](../input)
+ - [bds-input-chips](../input-chips)
  - [bds-input-editable](../input-editable)
  - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
@@ -59,6 +60,7 @@
  - [bds-progress-bar](../progress-bar)
  - [bds-radio](../radio)
  - [bds-select](../selects/select)
+ - [bds-select-chips](../selects/select-chips)
  - [bds-select-option](../select-option)
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab)
@@ -89,6 +91,7 @@ graph TD;
   bds-datepicker-single --> bds-typo
   bds-expansion-panel-header --> bds-typo
   bds-input --> bds-typo
+  bds-input-chips --> bds-typo
   bds-input-editable --> bds-typo
   bds-input-password --> bds-typo
   bds-input-phone-number --> bds-typo
@@ -100,6 +103,7 @@ graph TD;
   bds-progress-bar --> bds-typo
   bds-radio --> bds-typo
   bds-select --> bds-typo
+  bds-select-chips --> bds-typo
   bds-select-option --> bds-typo
   bds-step --> bds-typo
   bds-tab --> bds-typo

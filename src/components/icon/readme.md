@@ -42,6 +42,7 @@
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-input](../input)
+ - [bds-input-chips](../input-chips)
  - [bds-input-editable](../input-editable)
  - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
@@ -77,6 +78,7 @@ graph TD;
   bds-datepicker-period --> bds-icon
   bds-datepicker-single --> bds-icon
   bds-input --> bds-icon
+  bds-input-chips --> bds-icon
   bds-input-editable --> bds-icon
   bds-input-password --> bds-icon
   bds-input-phone-number --> bds-icon
