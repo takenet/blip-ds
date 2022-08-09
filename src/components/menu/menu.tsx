@@ -1,5 +1,5 @@
-import { Component, ComponentInterface, h, State, Method, Prop, Watch } from '@stencil/core';
-import { getScrollParent, positionElement } from '../../utils/position-element';
+import { Component, ComponentInterface, h, State, Method, Prop } from '@stencil/core';
+// import { getScrollParent, positionElement } from '../../utils/position-element';
 
 export type menuPosition = 'bottom' | 'right';
 
@@ -9,7 +9,7 @@ export type menuPosition = 'bottom' | 'right';
   shadow: true,
 })
 export class BdsMenu implements ComponentInterface {
-  private menuElement?: HTMLElement;
+  // private menuElement?: HTMLElement;
 
   @State() refElement?: HTMLElement = null;
   @State() intoView?: HTMLElement = null;
@@ -34,7 +34,7 @@ export class BdsMenu implements ComponentInterface {
 
   componentWillLoad() {
     this.refElement = document.getElementById(this.menu);
-    this.intoView = getScrollParent(this.refElement);
+    // this.intoView = getScrollParent(this.refElement);
   }
 
   @Method()
@@ -42,16 +42,16 @@ export class BdsMenu implements ComponentInterface {
     this.open = !this.open;
   }
 
-  @Watch('open')
-  protected openMenu() {
-    const positionValue = positionElement({
-      actionElement: this.refElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
-  }
+  // @Watch('open')
+  // protected openMenu() {
+  //   const positionValue = positionElement({
+  //     actionElement: this.refElement,
+  //     changedElement: this.menuElement,
+  //     intoView: this.intoView,
+  //   });
+  //   this.menupositionTop = positionValue.top;
+  //   this.menupositionLeft = positionValue.left;
+  // }
 
   render() {
     const menuPosition = {
@@ -61,7 +61,7 @@ export class BdsMenu implements ComponentInterface {
 
     return (
       <div
-        ref={(el) => (this.menuElement = el as HTMLElement)}
+        // ref={(el) => (this.menuElement = el as HTMLElement)}
         class={{
           menu: true,
           [`menu__${this.position}`]: true,
