@@ -19,15 +19,15 @@
 
 ### Depends on
 
-- [bds-icon](../icon)
 - [bds-typo](../typo)
+- [bds-icon](../icon)
 - [bds-avatar](../avatar)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-table --> bds-icon
   bds-table --> bds-typo
+  bds-table --> bds-icon
   bds-table --> bds-avatar
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon

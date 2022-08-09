@@ -8,21 +8,7 @@ import { InputChipsTypes } from './input-chips-interface';
   scoped: true,
 })
 export class InputChips {
-  private nativeInput?: HTMLInputElement;
-
-  /**
-   * Used to set the danger behavior by the internal validators
-   */
-  @State() validationDanger?: boolean = false;
-  /**
-   * Conditions the element to say whether it is pressed or not, to add styles.
-   */
-  @State() isPressed? = false;
-
-  /**
-   * Used to set the error message setted by the internal validators
-   */
-  @State() validationMesage? = '';
+  private nativeInput?: HTMLBdsInputElement;
 
   @State() internalChips: string[] = [];
 
@@ -122,17 +108,7 @@ export class InputChips {
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsInputChipsFocus!: EventEmitter;
-
-  /**
-   * Emitted when the chip has added.
-   */
   @Event() bdsBlur!: EventEmitter;
-
-  /**
-   * Emitted when the chip has added.
-   */
-  @Event() bdsInputChipsInput!: EventEmitter;
 
   /**
    * Emitted when the chip has added.
@@ -196,12 +172,12 @@ export class InputChips {
 
   @Method()
   async setFocus(): Promise<void> {
-    this.nativeInput.focus();
+    this.nativeInput.setFocus();
   }
 
   @Method()
   async removeFocus(): Promise<void> {
-    this.nativeInput.blur();
+    this.nativeInput.removeFocus();
   }
 
   componentWillLoad() {
@@ -216,49 +192,36 @@ export class InputChips {
     }
   }
 
-  private onClickWrapper = (): void => {
-    this.onFocus();
-    if (this.nativeInput) {
-      this.nativeInput.focus();
-    }
-  };
-
-  private onFocus = (): void => {
-    this.bdsInputChipsFocus.emit();
-    this.isPressed = true;
-  };
-
   private handleOnBlur(): void {
     this.bdsBlur.emit(this.internalChips);
-    this.isPressed = false;
   }
 
-  private onInput = (ev: Event): void => {
-    const input = ev.target as HTMLInputElement | null;
-    if (input) {
-      this.value = input.value || '';
+  private handleAddChip(event: CustomEvent<{ value: string }>): void {
+    if (this.disableSubmit) {
+      return;
     }
-    this.bdsInputChipsInput.emit(ev as KeyboardEvent);
-  };
+
+    const {
+      detail: { value },
+    } = event;
+    this.setChip(value);
+    this.value = '';
+  }
 
   private getLastChip(): string {
     return this.internalChips[this.internalChips.length - 1];
   }
 
-  private keyPressWrapper = (event: KeyboardEvent): void => {
-    switch (event.key) {
-      case 'Enter':
-        this.setChip(this.value);
-        this.value = '';
-        break;
-      case 'Backspace' || 'Delete':
-        if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
-          this.removeLastChip();
-          this.bdsChangeChips.emit({ data: this.internalChips });
-        }
-        break;
+  private handleBackRemove(event: CustomEvent<{ value: string }>): void {
+    const {
+      detail: { value },
+    } = event;
+
+    if ((value === null || value.length <= 0) && this.internalChips.length) {
+      this.removeLastChip();
+      this.bdsChangeChips.emit({ data: this.internalChips, value });
     }
-  };
+  }
 
   private verifyAndSubstituteDelimiters(value: string) {
     if (value.length === 1 && value[0].match(this.delimiters)) {
@@ -361,103 +324,35 @@ export class InputChips {
     });
   }
 
-  private renderIcon(): HTMLElement {
-    return (
-      this.icon && (
-        <div
-          class={{
-            input__icon: true,
-            'input__icon--large': !!this.label,
-          }}
-        >
-          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
-        </div>
-      )
-    );
-  }
-
-  private renderLabel(): HTMLElement {
-    return (
-      this.label && (
-        <label
-          class={{
-            input__container__label: true,
-            'input__container__label--pressed': this.isPressed && !this.disabled,
-          }}
-        >
-          <bds-typo variant="fs-12" bold="bold">
-            {this.label}
-          </bds-typo>
-        </label>
-      )
-    );
-  }
-
-  private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
-
-    if (!message && this.validationDanger) message = this.validationMesage;
-
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
-
-    if (message) {
-      return (
-        <div class={styles} part="input__message">
-          <div class="input__message__icon">
-            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
-          </div>
-          <bds-typo variant="fs-12">{message}</bds-typo>
-        </div>
-      );
-    }
-
-    return undefined;
-  }
-
   render() {
-    const isPressed = this.isPressed && !this.disabled;
     return (
       <Host>
-        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
-          <div
-            class={{
-              input: true,
-              'input--state-primary': !this.danger && !this.validationDanger,
-              'input--state-danger': this.danger || this.validationDanger,
-              'input--state-disabled': this.disabled,
-              'input--label': !!this.label,
-              'input--pressed': isPressed,
-            }}
-            onClick={this.onClickWrapper}
-            onKeyDown={this.keyPressWrapper}
-            part="input-container"
-          >
-            {this.renderIcon()}
-            <div class="input__container">
-              {this.renderLabel()}
-              <div class={{ input__container__wrapper: true }}>
-                {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
-                <input
-                  ref={(input) => (this.nativeInput = input)}
-                  class={{ input__container__text: true }}
-                  name={this.inputName}
-                  maxlength={this.maxlength}
-                  placeholder={this.placeholder}
-                  onInput={this.onInput}
-                  onFocus={this.onFocus}
-                  onBlur={() => this.handleOnBlur()}
-                  onChange={() => this.handleChange}
-                  value={this.value}
-                  disabled={this.disabled}
-                  data-test={this.dataTest}
-                ></input>
-              </div>
-            </div>
+        <bds-input
+          ref={(input) => (this.nativeInput = input)}
+          icon={this.icon}
+          label={this.label}
+          onBdsKeyDownBackspace={(event) => this.handleBackRemove(event)}
+          onBdsSubmit={(event) => this.handleAddChip(event)}
+          onBdsOnBlur={() => this.handleOnBlur()}
+          onBdsChange={(event) => this.handleChange(event)}
+          maxlength={this.maxlength}
+          value={this.value}
+          error-message={this.errorMessage}
+          helper-message={this.helperMessage}
+          input-name={this.inputName}
+          placeholder={this.placeholder}
+          danger={this.danger}
+          chips={true}
+          disabled={this.disabled}
+          data-test={this.dataTest}
+        >
+          <span class="inside-input-left" slot="inside-input-left">
+            {this.renderChips()}
+          </span>
+          <div slot="input-right">
             <slot name="input-right"></slot>
           </div>
-          {this.renderMessage()}
-        </div>
+        </bds-input>
       </Host>
     );
   }
