@@ -2913,6 +2913,10 @@ declare namespace LocalJSX {
          */
         "onBdsOnBlur"?: (event: BdsInputCustomEvent<any>) => void;
         /**
+          * Event pattern validation.
+         */
+        "onBdsPatternValidation"?: (event: BdsInputCustomEvent<any>) => void;
+        /**
           * Event input enter.
          */
         "onBdsSubmit"?: (event: BdsInputCustomEvent<any>) => void;
