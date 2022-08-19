@@ -230,6 +230,11 @@ export class Input {
   @Event() bdsSubmit: EventEmitter;
 
   /**
+   * Event pattern validation.
+   */
+  @Event() bdsPatternValidation: EventEmitter;
+
+  /**
    * Event input key down backspace.
    */
   @Event() bdsKeyDownBackspace: EventEmitter;
@@ -389,6 +394,7 @@ export class Input {
 
   private onBlurValidations() {
     this.required && this.requiredValidation();
+    this.pattern && this.patternValidation();
     (this.minlength || this.maxlength) && this.lengthValidation();
     (this.min || this.max) && this.minMaxValidation();
     this.checkValidity();
@@ -398,6 +404,11 @@ export class Input {
     this.type === 'email' && this.emailValidation();
     this.type === 'phonenumber' && this.numberValidation();
     this.checkValidity();
+  }
+
+  private patternValidation() {
+    const regex = new RegExp(this.pattern);
+    this.bdsPatternValidation.emit(regex.test(this.nativeInput.value));
   }
 
   private requiredValidation() {

@@ -44,14 +44,15 @@
 
 ## Events
 
-| Event                 | Description                         | Type                         |
-| --------------------- | ----------------------------------- | ---------------------------- |
-| `bdsChange`           | Emitted when the value has changed. | `CustomEvent<any>`           |
-| `bdsFocus`            | Event input focus.                  | `CustomEvent<any>`           |
-| `bdsInput`            | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
-| `bdsKeyDownBackspace` | Event input key down backspace.     | `CustomEvent<any>`           |
-| `bdsOnBlur`           | Event input onblur.                 | `CustomEvent<any>`           |
-| `bdsSubmit`           | Event input enter.                  | `CustomEvent<any>`           |
+| Event                  | Description                         | Type                         |
+| ---------------------- | ----------------------------------- | ---------------------------- |
+| `bdsChange`            | Emitted when the value has changed. | `CustomEvent<any>`           |
+| `bdsFocus`             | Event input focus.                  | `CustomEvent<any>`           |
+| `bdsInput`             | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
+| `bdsKeyDownBackspace`  | Event input key down backspace.     | `CustomEvent<any>`           |
+| `bdsOnBlur`            | Event input onblur.                 | `CustomEvent<any>`           |
+| `bdsPatternValidation` | Event pattern validation.           | `CustomEvent<any>`           |
+| `bdsSubmit`            | Event input enter.                  | `CustomEvent<any>`           |
 
 
 ## Methods
