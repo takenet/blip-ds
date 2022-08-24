@@ -9,9 +9,9 @@
   position: relative;
   border-radius: 32px;
   border: 1px solid $color-neutral-medium-elephant;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 
-  &.size_short {
+  &.size_small {
     height: 8px;
     .bar_behind {
       & .progress {
@@ -20,7 +20,7 @@
     }
   }
 
-  &.size_tall {
+  &.size_default {
     height: 16px;
     .bar_behind {
       & .progress {
@@ -41,7 +41,7 @@
       @include animation();
       overflow: hidden;
 
-      &.status {
+      &.color {
         &_default {
           background-color: $color-primary-main;
         }
@@ -80,8 +80,6 @@
 }
 
 .typo_progress {
-  padding-left: 8px;
-  padding-right: 8px;
   color: $color-neutral-dark-suit;
 }
 

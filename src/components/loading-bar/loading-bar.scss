@@ -11,7 +11,7 @@
   border: 1px solid $color-neutral-medium-elephant;
   margin-bottom: 8px;
 
-  &.size_short {
+  &.size_small {
     height: 8px;
     .bar_behind {
       & .loading {
@@ -20,7 +20,7 @@
     }
   }
 
-  &.size_tall {
+  &.size_default {
     height: 16px;
     .bar_behind {
       & .loading {

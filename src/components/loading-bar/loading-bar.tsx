@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 
-export type loadingBarSize = 'short' | 'tall';
+export type loadingBarSize = 'small' | 'default';
 
 @Component({
   tag: 'bds-loading-bar',
@@ -15,7 +15,7 @@ export class BdsloadingBar {
   /**
    * Size, property to define size of component.
    */
-  @Prop() size?: loadingBarSize = 'short';
+  @Prop() size?: loadingBarSize = 'default';
   /**
    * Text, property to enable the bar info text.
    */

@@ -9,9 +9,9 @@
 
 | Property  | Attribute | Description                                                          | Type                                                    | Default     |
 | --------- | --------- | -------------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| `color`   | `color`   | Text, property to define status of component.                        | `"default" \| "information" \| "positive" \| "warning"` | `'default'` |
 | `percent` | `percent` | Percent, property to enter the progress bar status percentage value. | `number`                                                | `0`         |
-| `size`    | `size`    | Size, property to define size of component.                          | `"short" \| "tall"`                                     | `'short'`   |
-| `status`  | `status`  | Text, property to define status of component.                        | `"default" \| "information" \| "positive" \| "warning"` | `'default'` |
+| `size`    | `size`    | Size, property to define size of component.                          | `"default" \| "small"`                                  | `'default'` |
 | `text`    | `text`    | Text, property to enable the bar info text.                          | `string`                                                | `''`        |
 
 

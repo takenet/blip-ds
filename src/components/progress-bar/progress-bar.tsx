@@ -1,8 +1,8 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 
-export type progressBarSize = 'short' | 'tall';
+export type progressBarSize = 'small' | 'default';
 
-export type progressBarStatus = 'default' | 'positive' | 'information' | 'warning';
+export type progressBarColor = 'default' | 'positive' | 'information' | 'warning';
 
 @Component({
   tag: 'bds-progress-bar',
@@ -17,11 +17,11 @@ export class BdsProgressBar {
   /**
    * Size, property to define size of component.
    */
-  @Prop() size?: progressBarSize = 'short';
+  @Prop() size?: progressBarSize = 'default';
   /**
    * Text, property to define status of component.
    */
-  @Prop() status?: progressBarStatus = 'default';
+  @Prop() color?: progressBarColor = 'default';
   /**
    * Text, property to enable the bar info text.
    */
@@ -33,12 +33,12 @@ export class BdsProgressBar {
       <Host>
         <div class={{ progress_bar: true, [`size_${this.size}`]: true }}>
           <div class={{ bar_behind: true }}>
-            <div class={{ progress: true, [`status_${this.status}`]: true }} style={styles}></div>
+            <div class={{ progress: true, [`color_${this.color}`]: true }} style={styles}></div>
           </div>
         </div>
         {this.text && (
           <div class={{ typo_progress: true }}>
-            <bds-typo>{this.text}</bds-typo>
+            <bds-typo variant="fs-14">{this.text}</bds-typo>
           </div>
         )}
       </Host>

@@ -35,7 +35,7 @@ import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
 import { PaperElevation } from "./components/paper/paper-interface";
-import { progressBarSize, progressBarStatus } from "./components/progress-bar/progress-bar";
+import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { sidebarPosition } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
@@ -1134,6 +1134,10 @@ export namespace Components {
     }
     interface BdsProgressBar {
         /**
+          * Text, property to define status of component.
+         */
+        "color"?: progressBarColor;
+        /**
           * Percent, property to enter the progress bar status percentage value.
          */
         "percent"?: number;
@@ -1141,10 +1145,6 @@ export namespace Components {
           * Size, property to define size of component.
          */
         "size"?: progressBarSize;
-        /**
-          * Text, property to define status of component.
-         */
-        "status"?: progressBarStatus;
         /**
           * Text, property to enable the bar info text.
          */
@@ -3476,6 +3476,10 @@ declare namespace LocalJSX {
     }
     interface BdsProgressBar {
         /**
+          * Text, property to define status of component.
+         */
+        "color"?: progressBarColor;
+        /**
           * Percent, property to enter the progress bar status percentage value.
          */
         "percent"?: number;
@@ -3483,10 +3487,6 @@ declare namespace LocalJSX {
           * Size, property to define size of component.
          */
         "size"?: progressBarSize;
-        /**
-          * Text, property to define status of component.
-         */
-        "status"?: progressBarStatus;
         /**
           * Text, property to enable the bar info text.
          */

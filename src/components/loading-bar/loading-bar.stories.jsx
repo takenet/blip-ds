@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Progress Bar',
+  title: 'Loading Bar',
   parameters: {
     notes: { markdown: readme },
   },
@@ -17,10 +17,22 @@ const alignContent = {
   margin: 'auto',
 };
 
-export const progressBar = () => (
-  <div style={content}>
-    <div style={alignContent}>
-      <bds-progress-bar text="" percent={16}></bds-progress-bar>
+const Template = (args) => {
+  return (
+    <div style={content}>
+      <div style={alignContent}>
+        <bds-loading-bar
+          size={args.size}
+          text="Área de texto para aplicar no componente"
+          percent="16"
+        ></bds-loading-bar>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
+export const LoadingBarDefault = Template.bind({});
+LoadingBarDefault.args = { size: 'default' };
+
+export const LoadingBarSmall = Template.bind({});
+LoadingBarSmall.args = { size: 'small' };
