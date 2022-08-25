@@ -17,22 +17,23 @@ const alignContent = {
   margin: 'auto',
 };
 
-const Template = (args) => {
+export const LoadingBar = () => {
   return (
     <div style={content}>
       <div style={alignContent}>
-        <bds-loading-bar
-          size={args.size}
-          text="Área de texto para aplicar no componente"
-          percent="16"
-        ></bds-loading-bar>
+        <bds-loading-bar size="default" text="Texto para aplicar no componente" percent={48}></bds-loading-bar>
       </div>
     </div>
   );
 };
 
-export const LoadingBarDefault = Template.bind({});
-LoadingBarDefault.args = { size: 'default' };
-
-export const LoadingBarSmall = Template.bind({});
-LoadingBarSmall.args = { size: 'small' };
+export const LoadingBarSize = () => {
+  return (
+    <div style={content}>
+      <div style={alignContent}>
+        <bds-loading-bar size="small" text="Texto para aplicar no componente" percent={48}></bds-loading-bar>
+        <bds-loading-bar size="default" text="Texto para aplicar no componente" percent={48}></bds-loading-bar>
+      </div>
+    </div>
+  );
+};
