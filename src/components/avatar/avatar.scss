@@ -6,6 +6,7 @@ $avatar-size-large: 64px;
 $avatar-size-extra-large: 72px;
 .host {
   position: relative;
+  display: block;
 }
 .avatar {
   border-radius: 40px;
@@ -131,26 +132,31 @@ $avatar-size-extra-large: 72px;
       width: $avatar-size-extra-small;
       height: $avatar-size-extra-small;
       min-width: $avatar-size-extra-small;
+      min-height: $avatar-size-extra-small;
     }
     &--small {
       width: $avatar-size-small;
       height: $avatar-size-small;
       min-width: $avatar-size-small;
+      min-height: $avatar-size-small;
     }
     &--standard {
       width: $avatar-size-standard;
       height: $avatar-size-standard;
       min-width: $avatar-size-standard;
+      min-height: $avatar-size-standard;
     }
     &--large {
       width: $avatar-size-large;
       height: $avatar-size-large;
       min-width: $avatar-size-large;
+      min-height: $avatar-size-large;
     }
     &--extra-large {
       width: $avatar-size-extra-large;
       height: $avatar-size-extra-large;
       min-width: $avatar-size-extra-large;
+      min-height: $avatar-size-extra-large;
     }
   }
 

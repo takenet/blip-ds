@@ -60,7 +60,6 @@ $avatar-size-extra-large :72px;
       }
       .avatar {
         height: $avatar-size-extra-small;
-        padding: 0 8px;
       }
     }
     &--small{
@@ -70,7 +69,6 @@ $avatar-size-extra-large :72px;
       }
       .avatar {
         height: $avatar-size-small;
-        padding: 0 8px;
         
       }
     }
@@ -81,7 +79,6 @@ $avatar-size-extra-large :72px;
       }
       .avatar {
         height: $avatar-size-standard;
-        padding: 0 8px;
       }
     }
     &--large{
@@ -91,7 +88,6 @@ $avatar-size-extra-large :72px;
       }
       .avatar {
         height: $avatar-size-large;
-        padding: 0 8px;
       }
     }
     &--extra-large{
@@ -101,7 +97,6 @@ $avatar-size-extra-large :72px;
       }
       .avatar {
         height: $avatar-size-extra-large;
-        padding: 0 8px;
       }
     }
   }
