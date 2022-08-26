@@ -13,14 +13,40 @@ const content = {
 };
 
 const alignContent = {
-  maxWidth: '240px',
+  maxWidth: '320px',
   margin: 'auto',
 };
 
-export const progressBar = () => (
-  <div style={content}>
-    <div style={alignContent}>
-      <bds-progress-bar text="" percent={16}></bds-progress-bar>
+export const ProgressBar = () => {
+  return (
+    <div style={content}>
+      <div style={alignContent}>
+        <bds-progress-bar size="default" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
+export const ProgressBarSize = () => {
+  return (
+    <div style={content}>
+      <div style={alignContent}>
+        <bds-progress-bar size="small" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
+        <bds-progress-bar size="default" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
+      </div>
+    </div>
+  );
+};
+
+export const ProgressBarColor = () => {
+  return (
+    <div style={content}>
+      <div style={alignContent}>
+        <bds-progress-bar color="default" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
+        <bds-progress-bar color="information" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
+        <bds-progress-bar color="warning" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
+        <bds-progress-bar color="positive " text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
+      </div>
+    </div>
+  );
+};

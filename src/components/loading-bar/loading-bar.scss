@@ -4,17 +4,17 @@
   display: block;
 }
 
-.progress_bar {
+.loading_bar {
   box-sizing: border-box;
   position: relative;
   border-radius: 32px;
   border: 1px solid $color-neutral-medium-elephant;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 
   &.size_small {
     height: 8px;
     .bar_behind {
-      & .progress {
+      & .loading {
         border-radius: 1px;
       }
     }
@@ -23,7 +23,7 @@
   &.size_default {
     height: 16px;
     .bar_behind {
-      & .progress {
+      & .loading {
         border-radius: 2px;
       }
     }
@@ -35,28 +35,14 @@
     border-radius: 16px;
     overflow: hidden;
 
-    & .progress {
+    & .loading {
       position: absolute;
       height: 100%;
+      background-color: $color-primary-main;
       @include animation();
       overflow: hidden;
 
-      &.color {
-        &_default {
-          background-color: $color-primary-main;
-        }
-        &_positive {
-          background-color: $color-primary-greens-aligator;
-        }
-        &_information {
-          background-color: $color-primary-oranges-carrot;
-        }
-        &_warning {
-          background-color: $color-extend-reds-delete;
-        }
-      }
-
-      & .loading {
+      & .loader {
         position: absolute;
         left: -16px;
         width: calc(100% + 16px);
@@ -79,7 +65,9 @@
   }
 }
 
-.typo_progress {
+.typo_loading {
+  padding-left: 8px;
+  padding-right: 8px;
   color: $color-neutral-dark-suit;
 }
 

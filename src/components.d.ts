@@ -29,11 +29,13 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
+import { loadingBarSize } from "./components/loading-bar/loading-bar";
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
 import { PaperElevation } from "./components/paper/paper-interface";
+import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { sidebarPosition } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
@@ -980,6 +982,20 @@ export namespace Components {
          */
         "value"?: any | null;
     }
+    interface BdsLoadingBar {
+        /**
+          * Percent, property to enter the loading bar status percentage value.
+         */
+        "percent"?: number;
+        /**
+          * Size, property to define size of component.
+         */
+        "size"?: loadingBarSize;
+        /**
+          * Text, property to enable the bar info text.
+         */
+        "text"?: string;
+    }
     interface BdsLoadingPage {
     }
     interface BdsLoadingSpinner {
@@ -1118,9 +1134,17 @@ export namespace Components {
     }
     interface BdsProgressBar {
         /**
+          * Text, property to define status of component.
+         */
+        "color"?: progressBarColor;
+        /**
           * Percent, property to enter the progress bar status percentage value.
          */
         "percent"?: number;
+        /**
+          * Size, property to define size of component.
+         */
+        "size"?: progressBarSize;
         /**
           * Text, property to enable the bar info text.
          */
@@ -1946,6 +1970,12 @@ declare global {
         prototype: HTMLBdsInputPhoneNumberElement;
         new (): HTMLBdsInputPhoneNumberElement;
     };
+    interface HTMLBdsLoadingBarElement extends Components.BdsLoadingBar, HTMLStencilElement {
+    }
+    var HTMLBdsLoadingBarElement: {
+        prototype: HTMLBdsLoadingBarElement;
+        new (): HTMLBdsLoadingBarElement;
+    };
     interface HTMLBdsLoadingPageElement extends Components.BdsLoadingPage, HTMLStencilElement {
     }
     var HTMLBdsLoadingPageElement: {
@@ -2180,6 +2210,7 @@ declare global {
         "bds-input-editable": HTMLBdsInputEditableElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
+        "bds-loading-bar": HTMLBdsLoadingBarElement;
         "bds-loading-page": HTMLBdsLoadingPageElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
         "bds-menu": HTMLBdsMenuElement;
@@ -3290,6 +3321,20 @@ declare namespace LocalJSX {
          */
         "value"?: any | null;
     }
+    interface BdsLoadingBar {
+        /**
+          * Percent, property to enter the loading bar status percentage value.
+         */
+        "percent"?: number;
+        /**
+          * Size, property to define size of component.
+         */
+        "size"?: loadingBarSize;
+        /**
+          * Text, property to enable the bar info text.
+         */
+        "text"?: string;
+    }
     interface BdsLoadingPage {
     }
     interface BdsLoadingSpinner {
@@ -3431,9 +3476,17 @@ declare namespace LocalJSX {
     }
     interface BdsProgressBar {
         /**
+          * Text, property to define status of component.
+         */
+        "color"?: progressBarColor;
+        /**
           * Percent, property to enter the progress bar status percentage value.
          */
         "percent"?: number;
+        /**
+          * Size, property to define size of component.
+         */
+        "size"?: progressBarSize;
         /**
           * Text, property to enable the bar info text.
          */
@@ -3985,6 +4038,7 @@ declare namespace LocalJSX {
         "bds-input-editable": BdsInputEditable;
         "bds-input-password": BdsInputPassword;
         "bds-input-phone-number": BdsInputPhoneNumber;
+        "bds-loading-bar": BdsLoadingBar;
         "bds-loading-page": BdsLoadingPage;
         "bds-loading-spinner": BdsLoadingSpinner;
         "bds-menu": BdsMenu;
@@ -4059,6 +4113,7 @@ declare module "@stencil/core" {
             "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
+            "bds-loading-bar": LocalJSX.BdsLoadingBar & JSXBase.HTMLAttributes<HTMLBdsLoadingBarElement>;
             "bds-loading-page": LocalJSX.BdsLoadingPage & JSXBase.HTMLAttributes<HTMLBdsLoadingPageElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
             "bds-menu": LocalJSX.BdsMenu & JSXBase.HTMLAttributes<HTMLBdsMenuElement>;
