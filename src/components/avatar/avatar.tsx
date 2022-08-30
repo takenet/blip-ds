@@ -7,7 +7,7 @@ export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large
 @Component({
   tag: 'bds-avatar',
   styleUrl: 'avatar.scss',
-  shadow: false,
+  shadow: true,
 })
 export class BdsAvatar {
   private typoSize?: FontSize = 'fs-20';
@@ -94,11 +94,12 @@ export class BdsAvatar {
     this.selectTypoSize(this.size);
 
     return (
-      <Host class={{ host: true, [`avatar__size--${this.size}`]: true }}>
+      <Host>
         <div
           class={{
             avatar: true,
             [`avatar__color--${avatarBgColor}`]: true,
+            [`avatar__size--${this.size}`]: true,
             upload: this.upload,
           }}
           data-test={this.dataTest}
