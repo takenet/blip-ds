@@ -4,7 +4,8 @@ $avatar-size-small: 40px;
 $avatar-size-standard: 56px;
 $avatar-size-large: 64px;
 $avatar-size-extra-large: 72px;
-.host {
+
+:host {
   position: relative;
   display: block;
 }
@@ -28,10 +29,6 @@ $avatar-size-extra-large: 72px;
   &__img {
     width: 100%;
     height: auto;
-  }
-
-  &__ellipsis {
-    color: $color-neutral-light-snow;
   }
 
   &__btn {
