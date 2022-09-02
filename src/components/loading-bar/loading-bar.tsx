@@ -21,11 +21,16 @@ export class BdsloadingBar {
    */
   @Prop() text?: string = '';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   render() {
     const styles = { width: `${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}%` };
     return (
       <Host>
-        <div class={{ loading_bar: true, [`size_${this.size}`]: true }}>
+        <div class={{ loading_bar: true, [`size_${this.size}`]: true }} data-test={this.dataTest}>
           <div class={{ bar_behind: true }}>
             <div class={{ loading: true }} style={styles}>
               <div class="loader"></div>

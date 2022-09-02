@@ -984,6 +984,10 @@ export namespace Components {
     }
     interface BdsLoadingBar {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Percent, property to enter the loading bar status percentage value.
          */
         "percent"?: number;
@@ -1003,6 +1007,10 @@ export namespace Components {
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
          */
         "color"?: colorsVariants;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
          */
@@ -3323,6 +3331,10 @@ declare namespace LocalJSX {
     }
     interface BdsLoadingBar {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Percent, property to enter the loading bar status percentage value.
          */
         "percent"?: number;
@@ -3342,6 +3354,10 @@ declare namespace LocalJSX {
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
          */
         "color"?: colorsVariants;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
          */
