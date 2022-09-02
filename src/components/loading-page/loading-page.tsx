@@ -1,4 +1,4 @@
-import { Component, Host, State, h } from '@stencil/core';
+import { Component, Host, Prop, State, h } from '@stencil/core';
 import messageBallon from '../../assets/svg/message-ballon.svg';
 
 @Component({
@@ -8,6 +8,11 @@ import messageBallon from '../../assets/svg/message-ballon.svg';
 })
 export class BdsLoading {
   @State() private svgContent?: string;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
 
   componentWillLoad() {
     this.setSvgContent();
@@ -34,7 +39,7 @@ export class BdsLoading {
   render() {
     return (
       <Host>
-        <div class="loading-container">
+        <div class="loading-container" data-test={this.dataTest}>
           <div class={{ page_loading: true }} innerHTML={this.svgContent}></div>
         </div>
       </Host>
