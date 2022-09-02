@@ -16,6 +16,11 @@ export class BdsAlert implements ComponentInterface {
   public open?: boolean = false;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Can be used outside to open/close the alert
    */
   @Method()
@@ -31,7 +36,7 @@ export class BdsAlert implements ComponentInterface {
           'alert__dialog--open': this.open,
         }}
       >
-        <div class="alert">
+        <div class="alert" data-test={this.dataTest}>
           <slot></slot>
         </div>
       </div>

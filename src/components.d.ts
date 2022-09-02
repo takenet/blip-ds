@@ -82,6 +82,10 @@ export namespace Components {
     }
     interface BdsAlert {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Used to open/close the alert
          */
         "open"?: boolean;
@@ -1003,6 +1007,10 @@ export namespace Components {
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
          */
         "color"?: colorsVariants;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
          */
@@ -2277,6 +2285,10 @@ declare namespace LocalJSX {
     }
     interface BdsAlert {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Used to open/close the alert
          */
         "open"?: boolean;
@@ -3342,6 +3354,10 @@ declare namespace LocalJSX {
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
          */
         "color"?: colorsVariants;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
          */
