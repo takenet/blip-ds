@@ -984,6 +984,10 @@ export namespace Components {
     }
     interface BdsLoadingBar {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Percent, property to enter the loading bar status percentage value.
          */
         "percent"?: number;
@@ -3330,6 +3334,10 @@ declare namespace LocalJSX {
         "value"?: any | null;
     }
     interface BdsLoadingBar {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Percent, property to enter the loading bar status percentage value.
          */
