@@ -82,6 +82,10 @@ export namespace Components {
     }
     interface BdsAlert {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Used to open/close the alert
          */
         "open"?: boolean;
@@ -2292,6 +2296,10 @@ declare namespace LocalJSX {
         "icon"?: string;
     }
     interface BdsAlert {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Used to open/close the alert
          */
