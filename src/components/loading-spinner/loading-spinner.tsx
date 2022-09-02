@@ -12,6 +12,7 @@ export type LoadingSpinnerColorMap = { [key in LoadingSpinnerVariant]: string };
 @Component({
   tag: 'bds-loading-spinner',
   styleUrl: 'loading-spinner.scss',
+  shadow: true,
 })
 export class BdsLoadingSpinner {
   @State() private svgContent?: string;
