@@ -264,6 +264,10 @@ export namespace Components {
     }
     interface BdsButtonIcon {
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * If true, the base button will be disabled.
          */
         "disabled"?: boolean;
@@ -2499,6 +2503,10 @@ declare namespace LocalJSX {
         "variant"?: ButtonVariant;
     }
     interface BdsButtonIcon {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * If true, the base button will be disabled.
          */

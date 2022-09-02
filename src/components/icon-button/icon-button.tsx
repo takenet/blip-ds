@@ -34,6 +34,11 @@ export class IconButton {
    */
   @Prop({ reflect: true }) icon?: string = null;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   private mapSize: IconSizeMap = {
     tall: 'xxx-large',
     standard: 'x-large',
@@ -63,6 +68,7 @@ export class IconButton {
           [state]: true,
           [`${state}--disabled`]: this.disabled,
         }}
+        data-test={this.dataTest}
       >
         <bds-icon name={this.icon} size={size} color="inherit"></bds-icon>
       </button>
