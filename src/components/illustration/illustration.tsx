@@ -39,6 +39,12 @@ export class BdsIllustration {
     } else if (type === 'screens') {
       const fullName = `asset-illustration-screens-${name}`;
       return fullName;
+    } else if (type === 'blip-outline') {
+      const fullName = `asset-illustration-blip-outline-${name}`;
+      return fullName;
+    } else if (type === 'blip-solid') {
+      const fullName = `asset-illustration-blip-solid-${name}`;
+      return fullName;
     }
   };
 

@@ -1,1 +1,1 @@
-export type IllustrationType = 'default' | 'screens';
+export type IllustrationType = 'default' | 'screens' | 'blip-solid' | 'blip-outline';

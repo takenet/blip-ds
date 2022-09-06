@@ -77,6 +77,74 @@ const screens = [
   'screen-whatsapp-off',
 ];
 
+const blipSolid = [
+  'agent',
+  'baby',
+  'bored',
+  'bunny',
+  'cry',
+  'curious',
+  'developer',
+  'embaresed',
+  'fortune-teller',
+  'friendly',
+  'happy',
+  'laughing',
+  'lol',
+  'lovely',
+  'naughty',
+  'party',
+  'playful-1',
+  'playful-2',
+  'playful-3',
+  'poker-face',
+  'rised-eyebrow',
+  'sad',
+  'satisfact',
+  'serene',
+  'sherlock',
+  'shy',
+  'sleepy',
+  'smart',
+  'smiley',
+  'thug-life',
+  'wink',
+  'worker',
+  'wow'
+];
+
+const blipOutline = [
+  'agent',
+  'bored',
+  'cry',
+  'curious',
+  'embaresed',
+  'friendly',
+  'happy',
+  'laughing',
+  'lol',
+  'lovely',
+  'naughty',
+  'party',
+  'playful-1',
+  'playful-2',
+  'playful-3',
+  'poker-face',
+  'rised-eyebrow',
+  'sad',
+  'satisfact',
+  'search',
+  'sherlock',
+  'shy',
+  'sleepy',
+  'smart',
+  'smiley',
+  'thug-life',
+  'wink',
+  'worker',
+  'wow'
+]
+
 const illustrationStyles = {
   width: '200px',
   height: '150px',
@@ -111,6 +179,36 @@ export const illustrationsScreens = () => {
     defaultArray.push(
       <div style={illustrationStyles}>
         <bds-illustration type="screens" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const illustrationsBlipSolid = () => {
+  const defaultArray = [];
+
+  blipSolid.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="blip-solid" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const illustrationsBlipOutline = () => {
+  const defaultArray = [];
+
+  blipOutline.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="blip-outline" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
