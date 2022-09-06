@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, State, Method, Prop, Watch } from '@stencil/core';
+import { Component, Host, ComponentInterface, h, State, Method, Prop, Watch } from '@stencil/core';
 import { getScrollParent, positionElement } from '../../utils/position-element';
 
 export type menuPosition = 'bottom' | 'right';
@@ -53,6 +53,10 @@ export class BdsMenu implements ComponentInterface {
     this.menupositionLeft = positionValue.left;
   }
 
+  private onClickCloseButtom = () => {
+    this.open = false;
+  };
+
   render() {
     const menuPosition = {
       top: `${this.menupositionTop}px`,
@@ -60,17 +64,20 @@ export class BdsMenu implements ComponentInterface {
     };
 
     return (
-      <div
-        ref={(el) => (this.menuElement = el as HTMLElement)}
-        class={{
-          menu: true,
-          [`menu__${this.position}`]: true,
-          [`menu__open`]: this.open,
-        }}
-        style={menuPosition}
-      >
-        <slot></slot>
-      </div>
+      <Host>
+        {this.open && <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>}
+        <div
+          ref={(el) => (this.menuElement = el as HTMLElement)}
+          class={{
+            menu: true,
+            [`menu__${this.position}`]: true,
+            [`menu__open`]: this.open,
+          }}
+          style={menuPosition}
+        >
+          <slot></slot>
+        </div>
+      </Host>
     );
   }
 }
