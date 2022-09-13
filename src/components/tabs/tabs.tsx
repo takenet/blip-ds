@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
-import { ScrollDirection, Display, Overflow } from './tabs-interface';
+import { ScrollDirection, Display, Overflow, BdsTabData, TabGroup } from './tabs-interface';
 import { Component, ComponentInterface, Element, h, Host, Event, EventEmitter, Listen, Prop } from '@stencil/core';
-import { BdsTabData, TabGroup } from './tabs-interface';
 
 @Component({
   tag: 'bds-tabs',
@@ -10,9 +9,8 @@ import { BdsTabData, TabGroup } from './tabs-interface';
 export class Tabs implements ComponentInterface {
   tabsHeader: BdsTabData[];
   tabsContent: BdsTabData[];
-  tabGroup: TabGroup[];
+  tabGroups: TabGroup[];
 
-  buttonsChildElement: HTMLCollection;
   tabsHeaderChildElement: HTMLElement;
   leftButtonChildElement: HTMLElement;
   rightButtonChildElement: HTMLElement;
@@ -27,8 +25,7 @@ export class Tabs implements ComponentInterface {
 
   componentWillLoad() {
     this.createGroup();
-    const [group] = this.tabGroup;
-    this.selectGroup(group);
+    this.handleActiveTab();
   }
 
   componentDidLoad() {
@@ -36,6 +33,15 @@ export class Tabs implements ComponentInterface {
     this.attachEvents();
     this.setLeftButtonVisibility(false);
     this.setRightButtonVisibility(true);
+  }
+
+  private async handleActiveTab() {
+    let groupToBeActive = this.tabGroups.find((x) => x.header.active == true);
+    if (!groupToBeActive) {
+      const [firstGroup] = this.tabGroups;
+      groupToBeActive = firstGroup;
+    }
+    this.selectGroup(groupToBeActive);
   }
 
   @Listen('scrollButtonClick')
@@ -53,7 +59,7 @@ export class Tabs implements ComponentInterface {
 
   @Listen('bdsSelect')
   onSelectedTab(event: CustomEvent) {
-    const group = this.tabGroup.find((group) => group.header.group === event.detail.group);
+    const group = this.tabGroups.find((group) => group.header.group === event.detail.group);
     this.selectGroup(group);
     this.handleButtonOverlay(group);
   }
@@ -61,9 +67,8 @@ export class Tabs implements ComponentInterface {
   createGroup() {
     this.tabsHeader = Array.from(this.el.querySelectorAll('bds-tab')) as BdsTabData[];
     this.tabsContent = Array.from(document.querySelectorAll('bds-tab-panel')) as BdsTabData[];
-    this.buttonsChildElement = document.getElementsByTagName('bds-button-icon') as HTMLCollection;
 
-    this.tabGroup = this.tabsHeader.map((header) => {
+    this.tabGroups = this.tabsHeader.map((header) => {
       let content;
       try {
         content = this.tabsContent.find((content) => content.group === header.group);
@@ -80,15 +85,14 @@ export class Tabs implements ComponentInterface {
 
   async selectGroup(group: TabGroup) {
     await this.resetActiveGroup();
-
     group.header.active = true;
     group.content.active = true;
   }
 
   async resetActiveGroup() {
-    for (const group of this.tabGroup) {
-      group.content.active = false;
+    for (const group of this.tabGroups) {
       group.header.active = false;
+      group.content.active = false;
     }
   }
 

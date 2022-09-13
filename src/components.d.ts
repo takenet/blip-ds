@@ -1495,7 +1495,6 @@ export namespace Components {
     }
     interface BdsTabPanel {
         "active": boolean;
-        "getChild": () => Promise<BdsTabData>;
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
          */

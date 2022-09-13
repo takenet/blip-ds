@@ -1,5 +1,4 @@
-import { Component, ComponentInterface, h, Host, Method, Prop } from '@stencil/core';
-import { BdsTabData } from '../tabs-interface';
+import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-tab-panel',
@@ -13,22 +12,14 @@ export class TabPanel implements ComponentInterface {
 
   @Prop() active = false;
 
-  @Method()
-  async getChild(): Promise<BdsTabData> {
-    return {
-      active: this.active,
-      group: this.group,
-    };
-  }
-
   render(): HTMLElement {
-    const classes = {
-      'bds-tab-panel': true,
-      'bds-tab-panel--selected': this.active,
-    };
-
     return (
-      <Host class={classes}>
+      <Host
+        class={{
+          'bds-tab-panel': true,
+          ['bds-tab-panel--selected']: this.active,
+        }}
+      >
         <bds-typo>
           <slot />
         </bds-typo>

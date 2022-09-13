@@ -13,19 +13,6 @@
 | `group` _(required)_ | `group`   | Specifies the TabPanel group. Used to link it to the Tab. | `string`  | `undefined` |
 
 
-## Methods
-
-### `getChild() => Promise<BdsTabData>`
-
-
-
-#### Returns
-
-Type: `Promise<BdsTabData>`
-
-
-
-
 ## Dependencies
 
 ### Depends on

@@ -35,7 +35,6 @@ export class Tab implements ComponentInterface {
       'bds-tab--selected': this.active,
     };
     const bold = this.active ? 'bold' : 'regular';
-
     return (
       <Host class={classes} onClick={this.onClick.bind(this)}>
         <div class="bds-tab__text">
