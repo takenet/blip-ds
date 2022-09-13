@@ -23,6 +23,7 @@ import { CounterTextRule } from "./components/counter-text/counter-text-interfac
 import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
+import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
@@ -509,6 +510,28 @@ export namespace Components {
     }
     interface BdsExpansionPanelHeader {
         "text"?: string;
+    }
+    interface BdsGrid {
+        "alignItems"?: alignItems;
+        "container"?: boolean;
+        "direction"?: direction;
+        "flexWrap"?: flexWrap;
+        "gap"?: gap;
+        "justifyContent"?: justifyContent;
+        "lg"?: breakpoint;
+        "lgOffset"?: breakpoint;
+        "margin"?: margin;
+        "md"?: breakpoint;
+        "mdOffset"?: breakpoint;
+        "padding"?: padding;
+        "sm"?: breakpoint;
+        "smOffset"?: breakpoint;
+        "xg"?: breakpoint;
+        "xgOffset"?: breakpoint;
+        "xs"?: breakpoint;
+        "xsOffset"?: breakpoint;
+        "xxs"?: breakpoint;
+        "xxsOffset"?: breakpoint;
     }
     interface BdsIcon {
         /**
@@ -1928,6 +1951,12 @@ declare global {
         prototype: HTMLBdsExpansionPanelHeaderElement;
         new (): HTMLBdsExpansionPanelHeaderElement;
     };
+    interface HTMLBdsGridElement extends Components.BdsGrid, HTMLStencilElement {
+    }
+    var HTMLBdsGridElement: {
+        prototype: HTMLBdsGridElement;
+        new (): HTMLBdsGridElement;
+    };
     interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
     }
     var HTMLBdsIconElement: {
@@ -2203,6 +2232,7 @@ declare global {
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
+        "bds-grid": HTMLBdsGridElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-illustration": HTMLBdsIllustrationElement;
         "bds-input": HTMLBdsInputElement;
@@ -2761,6 +2791,28 @@ declare namespace LocalJSX {
     }
     interface BdsExpansionPanelHeader {
         "text"?: string;
+    }
+    interface BdsGrid {
+        "alignItems"?: alignItems;
+        "container"?: boolean;
+        "direction"?: direction;
+        "flexWrap"?: flexWrap;
+        "gap"?: gap;
+        "justifyContent"?: justifyContent;
+        "lg"?: breakpoint;
+        "lgOffset"?: breakpoint;
+        "margin"?: margin;
+        "md"?: breakpoint;
+        "mdOffset"?: breakpoint;
+        "padding"?: padding;
+        "sm"?: breakpoint;
+        "smOffset"?: breakpoint;
+        "xg"?: breakpoint;
+        "xgOffset"?: breakpoint;
+        "xs"?: breakpoint;
+        "xsOffset"?: breakpoint;
+        "xxs"?: breakpoint;
+        "xxsOffset"?: breakpoint;
     }
     interface BdsIcon {
         /**
@@ -4031,6 +4083,7 @@ declare namespace LocalJSX {
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
+        "bds-grid": BdsGrid;
         "bds-icon": BdsIcon;
         "bds-illustration": BdsIllustration;
         "bds-input": BdsInput;
@@ -4106,6 +4159,7 @@ declare module "@stencil/core" {
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
+            "bds-grid": LocalJSX.BdsGrid & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.BdsIllustration & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
