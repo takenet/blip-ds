@@ -1,4 +1,4 @@
-:host {
+:host{
   display: flex;
   min-width: fit-content;
 }
@@ -52,6 +52,14 @@
     width: 100%;
     box-sizing: border-box;
   }
+  :host[container] {
+
+  :host-context(.container) {
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+}
   :host(.xxsoffset--auto) {
     margin-left: auto;
   }
@@ -97,6 +105,15 @@
     width: 100%;
     box-sizing: border-box;
   }
+  :host[container] {
+
+  :host-context(.container) {
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+
+}
   :host(.xxsoffset--auto) {
     margin-left: auto;
   }
@@ -143,6 +160,14 @@
     margin-left: auto;
     margin-right: auto;
   }
+  :host[container] {
+
+  :host-context(.container) {
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+}
   :host(.smoffset--auto) {
     margin-left: auto;
   }
@@ -189,6 +214,16 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  :host[container] {
+
+    :host-context(.container) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+
+    }
   :host(.mdoffset--auto) {
     margin-left: auto;
   }
@@ -235,6 +270,15 @@
     margin-left: auto;
     margin-right: auto;
   }
+  :host[container] {
+
+  :host-context(.container) {
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+
+  }
   :host(.lgoffset--auto) {
     margin-left: auto;
   }
@@ -280,6 +324,15 @@
     max-width: 1520px;
     margin-left: auto;
     margin-right: auto;
+  }
+  :host[container] {
+
+  :host-context(.container) {
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+
   }
   :host(.xgoffset--auto) {
     margin-left: auto;
