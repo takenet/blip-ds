@@ -1,6 +1,5 @@
-:host{
+:host {
   display: flex;
-  min-width: fit-content;
 }
 
 //Container and offset
@@ -53,13 +52,12 @@
     box-sizing: border-box;
   }
   :host[container] {
-
-  :host-context(.container) {
-    padding-left: 8px;
-    padding-right: 8px;
-    box-sizing: border-box;
+    :host-context(.container) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
   }
-}
   :host(.xxsoffset--auto) {
     margin-left: auto;
   }
@@ -106,14 +104,12 @@
     box-sizing: border-box;
   }
   :host[container] {
-
-  :host-context(.container) {
-    padding-left: 8px;
-    padding-right: 8px;
-    box-sizing: border-box;
+    :host-context(.container) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
   }
-
-}
   :host(.xxsoffset--auto) {
     margin-left: auto;
   }
@@ -161,13 +157,12 @@
     margin-right: auto;
   }
   :host[container] {
-
-  :host-context(.container) {
-    padding-left: 8px;
-    padding-right: 8px;
-    box-sizing: border-box;
+    :host-context(.container) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
   }
-}
   :host(.smoffset--auto) {
     margin-left: auto;
   }
@@ -216,14 +211,12 @@
   }
 
   :host[container] {
-
     :host-context(.container) {
       padding-left: 8px;
       padding-right: 8px;
       box-sizing: border-box;
     }
-
-    }
+  }
   :host(.mdoffset--auto) {
     margin-left: auto;
   }
@@ -271,13 +264,11 @@
     margin-right: auto;
   }
   :host[container] {
-
-  :host-context(.container) {
-    padding-left: 8px;
-    padding-right: 8px;
-    box-sizing: border-box;
-  }
-
+    :host-context(.container) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
   }
   :host(.lgoffset--auto) {
     margin-left: auto;
@@ -326,13 +317,11 @@
     margin-right: auto;
   }
   :host[container] {
-
-  :host-context(.container) {
-    padding-left: 8px;
-    padding-right: 8px;
-    box-sizing: border-box;
-  }
-
+    :host-context(.container) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
   }
   :host(.xgoffset--auto) {
     margin-left: auto;
@@ -800,193 +789,249 @@
 // Padding
 :host(.padding--none) {
   padding: 0;
+  box-sizing: border-box;
 }
 :host(.padding--l-none) {
   padding-left: 0;
+  box-sizing: border-box;
 }
 :host(.padding--r-none) {
   padding-right: 0;
+  box-sizing: border-box;
 }
 :host(.padding--t-none) {
   padding-top: 0;
+  box-sizing: border-box;
 }
 :host(.padding--b-none) {
   padding-bottom: 0;
+  box-sizing: border-box;
 }
 :host(.padding--x-none) {
   padding-left: 0;
   padding-right: 0;
+  box-sizing: border-box;
 }
 :host(.padding--y-none) {
   padding-top: 0;
   padding-bottom: 0;
+  box-sizing: border-box;
 }
 
 :host(.padding--half) {
   padding: 4px;
+  box-sizing: border-box;
 }
 :host(.padding--l-half) {
   padding-left: 4px;
+  box-sizing: border-box;
 }
 :host(.padding--r-half) {
   padding-right: 4px;
+  box-sizing: border-box;
 }
 :host(.padding--t-half) {
   padding-top: 4px;
+  box-sizing: border-box;
 }
 :host(.padding--b-half) {
   padding-bottom: 4px;
+  box-sizing: border-box;
 }
 :host(.padding--x-half) {
   padding-left: 4px;
   padding-right: 4px;
+  box-sizing: border-box;
 }
 :host(.padding--y-half) {
   padding-top: 4px;
   padding-bottom: 4px;
+  box-sizing: border-box;
 }
 
 :host(.padding--1) {
   padding: 8px;
+  box-sizing: border-box;
 }
 :host(.padding--l-1) {
   padding-left: 8px;
+  box-sizing: border-box;
 }
 :host(.padding--r-1) {
   padding-right: 8px;
+  box-sizing: border-box;
 }
 :host(.padding--t-1) {
   padding-top: 8px;
+  box-sizing: border-box;
 }
 :host(.padding--b-1) {
   padding-bottom: 8px;
+  box-sizing: border-box;
 }
 :host(.padding--x-1) {
   padding-left: 8px;
   padding-right: 8px;
+  box-sizing: border-box;
 }
 :host(.padding--y-1) {
   padding-top: 8px;
   padding-bottom: 8px;
+  box-sizing: border-box;
 }
 
 :host(.padding--2) {
   padding: 16px;
+  box-sizing: border-box;
 }
 :host(.padding--l-2) {
   padding-left: 16px;
+  box-sizing: border-box;
 }
 :host(.padding--r-2) {
   padding-right: 16px;
+  box-sizing: border-box;
 }
 :host(.padding--t-2) {
   padding-top: 16px;
+  box-sizing: border-box;
 }
 :host(.padding--b-2) {
   padding-bottom: 16px;
+  box-sizing: border-box;
 }
 :host(.padding--x-2) {
   padding-left: 16px;
   padding-right: 16px;
+  box-sizing: border-box;
 }
 :host(.padding--y-2) {
   padding-top: 16px;
   padding-bottom: 16px;
+  box-sizing: border-box;
 }
 
 :host(.padding--3) {
   padding: 24px;
+  box-sizing: border-box;
 }
 :host(.padding--l-3) {
   padding-left: 24px;
+  box-sizing: border-box;
 }
 :host(.padding--r-3) {
   padding-right: 24px;
+  box-sizing: border-box;
 }
 :host(.padding--t-3) {
   padding-top: 24px;
+  box-sizing: border-box;
 }
 :host(.padding--b-3) {
   padding-bottom: 24px;
+  box-sizing: border-box;
 }
 :host(.padding--x-3) {
   padding-left: 24px;
   padding-right: 24px;
+  box-sizing: border-box;
 }
 :host(.padding--y-3) {
   padding-top: 24px;
   padding-bottom: 24px;
+  box-sizing: border-box;
 }
 
 :host(.padding--4) {
   padding: 32px;
+  box-sizing: border-box;
 }
 :host(.padding--l-4) {
   padding-left: 32px;
+  box-sizing: border-box;
 }
 :host(.padding--r-4) {
   padding-right: 32px;
+  box-sizing: border-box;
 }
 :host(.padding--t-4) {
   padding-top: 32px;
+  box-sizing: border-box;
 }
 :host(.padding--b-4) {
   padding-bottom: 32px;
+  box-sizing: border-box;
 }
 :host(.padding--x-4) {
   padding-left: 32px;
   padding-right: 32px;
+  box-sizing: border-box;
 }
 :host(.padding--y-4) {
   padding-top: 32px;
   padding-bottom: 32px;
+  box-sizing: border-box;
 }
 :host(.padding--8) {
   padding: 64px;
+  box-sizing: border-box;
 }
 :host(.padding--l-8) {
   padding-left: 64px;
+  box-sizing: border-box;
 }
 :host(.padding--r-8) {
   padding-right: 64px;
+  box-sizing: border-box;
 }
 :host(.padding--t-8) {
   padding-top: 64px;
+  box-sizing: border-box;
 }
 :host(.padding--b-8) {
   padding-bottom: 64px;
+  box-sizing: border-box;
 }
 :host(.padding--x-8) {
   padding-left: 64px;
   padding-right: 64px;
+  box-sizing: border-box;
 }
 :host(.padding--y-8) {
   padding-top: 64px;
   padding-bottom: 64px;
+  box-sizing: border-box;
 }
 
 :host(.padding--12) {
   padding: 96px;
+  box-sizing: border-box;
 }
 :host(.padding--l-12) {
   padding-left: 96px;
+  box-sizing: border-box;
 }
 :host(.padding--r-12) {
   padding-right: 96px;
+  box-sizing: border-box;
 }
 :host(.padding--t-12) {
   padding-top: 96px;
+  box-sizing: border-box;
 }
 :host(.padding--b-12) {
   padding-bottom: 96px;
+  box-sizing: border-box;
 }
 :host(.padding--x-12) {
   padding-left: 96px;
   padding-right: 96px;
+  box-sizing: border-box;
 }
 :host(.padding--y-12) {
   padding-top: 96px;
   padding-bottom: 96px;
+  box-sizing: border-box;
 }
 
 // Margin

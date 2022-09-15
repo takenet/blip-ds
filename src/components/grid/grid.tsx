@@ -8,7 +8,7 @@ import { direction, justifyContent, flexWrap, alignItems, breakpoint, gap, paddi
 export class Grid {
   @Prop() direction?: direction;
   @Prop() justifyContent?: justifyContent;
-  @Prop() flexWrap?: flexWrap = 'wrap';
+  @Prop() flexWrap?: flexWrap;
   @Prop() alignItems?: alignItems;
   @Prop() container?: boolean;
   @Prop() xxs?: breakpoint;
