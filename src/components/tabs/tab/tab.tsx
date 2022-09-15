@@ -1,5 +1,4 @@
-import { Component, ComponentInterface, EventEmitter, Event, h, Prop, Method, Host } from '@stencil/core';
-import { BdsTabData } from '../tabs-interface';
+import { Component, ComponentInterface, EventEmitter, Event, h, Prop, Host, Listen, State } from '@stencil/core';
 
 @Component({
   tag: 'bds-tab',
@@ -11,32 +10,33 @@ export class Tab implements ComponentInterface {
    */
   @Prop() group!: string;
 
-  @Event() bdsSelect: EventEmitter;
+  @Event() bdsSelectTab: EventEmitter;
 
   @Prop() label!: string;
 
   @Prop() active = false;
 
-  @Method()
-  async getChild(): Promise<BdsTabData> {
-    return {
-      active: this.active,
-      group: this.group,
-    };
+  @State() isActive = this.active;
+
+  @Listen('bdsSelectTab', { target: 'body' })
+  onSelectedTab(event: CustomEvent) {
+    this.isActive = event.detail == this.group;
   }
 
   async onClick() {
-    this.bdsSelect.emit(await this.getChild());
+    this.bdsSelectTab.emit(await this.group);
   }
 
   render(): HTMLElement {
-    const classes = {
-      'bds-tab': true,
-      'bds-tab--selected': this.active,
-    };
-    const bold = this.active ? 'bold' : 'regular';
+    const bold = this.isActive ? 'bold' : 'regular';
     return (
-      <Host class={classes} onClick={this.onClick.bind(this)}>
+      <Host
+        class={{
+          'bds-tab': true,
+          ['bds-tab--selected']: this.isActive,
+        }}
+        onClick={this.onClick.bind(this)}
+      >
         <div class="bds-tab__text">
           <bds-typo variant="fs-16" bold={bold}>
             {this.label}

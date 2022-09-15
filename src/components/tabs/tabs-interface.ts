@@ -1,12 +1,3 @@
-export interface BdsTabData {
-  active: boolean;
-  group: string;
-}
-export interface TabGroup {
-  header: BdsTabData;
-  content: BdsTabData;
-}
-
 export const enum ScrollDirection {
   LEFT = 'left',
   RIGHT = 'right',

@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Host, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Host, Listen, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'bds-tab-panel',
@@ -12,12 +12,19 @@ export class TabPanel implements ComponentInterface {
 
   @Prop() active = false;
 
+  @State() isActive = this.active;
+
+  @Listen('bdsSelectTab', { target: 'body' })
+  onSelectedTab(event: CustomEvent) {
+    this.isActive = event.detail == this.group;
+  }
+
   render(): HTMLElement {
     return (
       <Host
         class={{
           'bds-tab-panel': true,
-          ['bds-tab-panel--selected']: this.active,
+          ['bds-tab-panel--selected']: this.isActive,
         }}
       >
         <bds-typo>

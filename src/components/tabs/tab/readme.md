@@ -16,22 +16,9 @@
 
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `bdsSelect` |             | `CustomEvent<any>` |
-
-
-## Methods
-
-### `getChild() => Promise<BdsTabData>`
-
-
-
-#### Returns
-
-Type: `Promise<BdsTabData>`
-
-
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `bdsSelectTab` |             | `CustomEvent<any>` |
 
 
 ## Dependencies

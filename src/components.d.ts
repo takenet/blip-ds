@@ -38,7 +38,7 @@ import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { sidebarPosition } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
-import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
+import { Overflow } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -1486,7 +1486,6 @@ export namespace Components {
     }
     interface BdsTab {
         "active": boolean;
-        "getChild": () => Promise<BdsTabData>;
         /**
           * Specifies the Tab group. Used to link it to the TabPanel.
          */
@@ -3866,7 +3865,7 @@ declare namespace LocalJSX {
          */
         "group": string;
         "label": string;
-        "onBdsSelect"?: (event: BdsTabCustomEvent<any>) => void;
+        "onBdsSelectTab"?: (event: BdsTabCustomEvent<any>) => void;
     }
     interface BdsTabPanel {
         "active"?: boolean;
