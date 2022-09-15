@@ -58,6 +58,10 @@ export class DatePicker {
    */
   @Prop() language?: languages = 'pt_BR';
   /**
+   * Disabled input.
+   */
+  @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
+  /**
    * bdsStartDate. Event to return selected date value.
    */
   @Event() bdsStartDate?: EventEmitter;
@@ -229,7 +233,7 @@ export class DatePicker {
     const positionValue = positionElement({
       actionElement: this.actionElement,
       changedElement: this.menuElement,
-      intoView: this.intoView,
+      intoView: this.intoView ? this.intoView : document.body,
     });
     this.menupositionTop = positionValue.top;
     this.menupositionLeft = positionValue.left;
@@ -258,6 +262,7 @@ export class DatePicker {
             <bds-input
               label={termTranslate(this.language, 'setTheDate')}
               value={this.valueDateSelected}
+              disabled={this.disabled}
               placeholder="__/__/____"
               maxlength={10}
               icon="calendar"
@@ -273,6 +278,7 @@ export class DatePicker {
               ref={this.refInputSetDate}
               label={termTranslate(this.language, 'from')}
               value={this.valueDateSelected}
+              disabled={this.disabled}
               placeholder="__/__/____"
               maxlength={10}
               icon="calendar"
@@ -285,7 +291,7 @@ export class DatePicker {
               ref={this.refInputSetEndDate}
               label={termTranslate(this.language, 'to')}
               value={this.valueEndDateSelected}
-              disabled={!this.dateSelected}
+              disabled={this.disabled || !this.dateSelected}
               placeholder="__/__/____"
               maxlength={10}
               icon="calendar"
