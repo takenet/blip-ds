@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property             | Attribute | Description                                               | Type      | Default     |
-| -------------------- | --------- | --------------------------------------------------------- | --------- | ----------- |
-| `active`             | `active`  |                                                           | `boolean` | `false`     |
-| `group` _(required)_ | `group`   | Specifies the Tab group. Used to link it to the TabPanel. | `string`  | `undefined` |
-| `label` _(required)_ | `label`   |                                                           | `string`  | `undefined` |
+| Property             | Attribute | Description                                                   | Type      | Default     |
+| -------------------- | --------- | ------------------------------------------------------------- | --------- | ----------- |
+| `active`             | `active`  | Prop to control externally if a tab will be active by default | `boolean` | `false`     |
+| `group` _(required)_ | `group`   | Specifies the Tab group. Used to link it to the TabPanel.     | `string`  | `undefined` |
+| `label` _(required)_ | `label`   | The text to be shown at the Tab                               | `string`  | `undefined` |
 
 
 ## Events
 
-| Event          | Description | Type               |
-| -------------- | ----------- | ------------------ |
-| `bdsSelectTab` |             | `CustomEvent<any>` |
+| Event          | Description                                          | Type               |
+| -------------- | ---------------------------------------------------- | ------------------ |
+| `bdsTabChange` | Event to emmit when the active tab should be updated | `CustomEvent<any>` |
 
 
 ## Dependencies

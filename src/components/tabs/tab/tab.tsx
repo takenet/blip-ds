@@ -10,21 +10,34 @@ export class Tab implements ComponentInterface {
    */
   @Prop() group!: string;
 
-  @Event() bdsSelectTab: EventEmitter;
-
+  /**
+   * The text to be shown at the Tab
+   */
   @Prop() label!: string;
 
+  /**
+   * Prop to control externally if a tab will be active by default
+   */
   @Prop() active = false;
 
-  @State() isActive = this.active;
+  /**
+   * State to control if a tab is current active
+   */
+  @State() isActive = false;
 
-  @Listen('bdsSelectTab', { target: 'body' })
-  onSelectedTab(event: CustomEvent) {
+  /**
+   * Event to emmit when the active tab should be updated
+   */
+  @Event() bdsTabChange: EventEmitter;
+
+  @Listen('bdsTabChange', { target: 'body' })
+  @Listen('bdsTabInit', { target: 'body' })
+  handleTabChange(event: CustomEvent) {
     this.isActive = event.detail == this.group;
   }
 
   async onClick() {
-    this.bdsSelectTab.emit(await this.group);
+    this.bdsTabChange.emit(this.group);
   }
 
   render(): HTMLElement {

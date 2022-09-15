@@ -17,6 +17,8 @@ export class Tabs implements ComponentInterface {
 
   @Event() scrollButtonClick: EventEmitter<Overflow>;
 
+  @Event() bdsTabInit: EventEmitter;
+
   @Prop() align: 'left' | 'center' | 'right' = 'center';
 
   @Listen('scrollButtonClick')
@@ -32,7 +34,7 @@ export class Tabs implements ComponentInterface {
     this.tabsHeaderChildElement.scrollTo(options);
   }
 
-  @Listen('bdsSelectTab', { target: 'body' })
+  @Listen('bdsTabChange', { target: 'body' })
   onSelectedTab(event: CustomEvent) {
     this.handleButtonOverlay(event.detail);
   }
@@ -42,6 +44,18 @@ export class Tabs implements ComponentInterface {
     this.attachEvents();
     this.setLeftButtonVisibility(false);
     this.setRightButtonVisibility(true);
+    this.handleActiveTab();
+  }
+
+  private handleActiveTab() {
+    const tabs = Array.from(this.tabsHeaderChildElement.getElementsByTagName('bds-tab'));
+    const activeTab = tabs.find((tab) => tab.active);
+    if (activeTab) {
+      this.bdsTabInit.emit(activeTab.group);
+    } else {
+      const [firstTab] = tabs;
+      this.bdsTabInit.emit(firstTab.group);
+    }
   }
 
   private getChildElements() {

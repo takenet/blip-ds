@@ -1485,15 +1485,20 @@ export namespace Components {
         "size"?: SwitchSize;
     }
     interface BdsTab {
+        /**
+          * Prop to control externally if a tab will be active by default
+         */
         "active": boolean;
         /**
           * Specifies the Tab group. Used to link it to the TabPanel.
          */
         "group": string;
+        /**
+          * The text to be shown at the Tab
+         */
         "label": string;
     }
     interface BdsTabPanel {
-        "active": boolean;
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
          */
@@ -3859,16 +3864,24 @@ declare namespace LocalJSX {
         "size"?: SwitchSize;
     }
     interface BdsTab {
+        /**
+          * Prop to control externally if a tab will be active by default
+         */
         "active"?: boolean;
         /**
           * Specifies the Tab group. Used to link it to the TabPanel.
          */
         "group": string;
+        /**
+          * The text to be shown at the Tab
+         */
         "label": string;
-        "onBdsSelectTab"?: (event: BdsTabCustomEvent<any>) => void;
+        /**
+          * Event to emmit when the active tab should be updated
+         */
+        "onBdsTabChange"?: (event: BdsTabCustomEvent<any>) => void;
     }
     interface BdsTabPanel {
-        "active"?: boolean;
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
          */
@@ -3894,6 +3907,7 @@ declare namespace LocalJSX {
     }
     interface BdsTabs {
         "align"?: 'left' | 'center' | 'right';
+        "onBdsTabInit"?: (event: BdsTabsCustomEvent<any>) => void;
         "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
     }
     interface BdsToast {

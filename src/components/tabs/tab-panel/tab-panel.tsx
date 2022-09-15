@@ -10,12 +10,14 @@ export class TabPanel implements ComponentInterface {
    */
   @Prop() group!: string;
 
-  @Prop() active = false;
+  /**
+   * State to control if a tab panel is current active
+   */
+  @State() isActive = false;
 
-  @State() isActive = this.active;
-
-  @Listen('bdsSelectTab', { target: 'body' })
-  onSelectedTab(event: CustomEvent) {
+  @Listen('bdsTabChange', { target: 'body' })
+  @Listen('bdsTabInit', { target: 'body' })
+  handleTabChange(event: CustomEvent) {
     this.isActive = event.detail == this.group;
   }
 
