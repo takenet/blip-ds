@@ -45,6 +45,9 @@ export class BdsIllustration {
     } else if (type === 'blip-solid') {
       const fullName = `asset-illustration-blip-solid-${name}`;
       return fullName;
+    } else if (type === 'logo-integration') {
+      const fullName = `asset-illustration-logo-integration-${name}`;
+      return fullName;
     }
   };
 

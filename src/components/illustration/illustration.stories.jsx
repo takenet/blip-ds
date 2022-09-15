@@ -145,6 +145,11 @@ const blipOutline = [
   'wow'
 ]
 
+const logoIntegration = [
+  'blip-instagram',
+  'blip-whatsapp',
+]
+
 const illustrationStyles = {
   width: '200px',
   height: '150px',
@@ -209,6 +214,21 @@ export const illustrationsBlipOutline = () => {
     defaultArray.push(
       <div style={illustrationStyles}>
         <bds-illustration type="blip-outline" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const illustrationsLogoIntegration = () => {
+  const defaultArray = [];
+
+  logoIntegration.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="logo-integration" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
