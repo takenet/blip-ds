@@ -446,6 +446,10 @@ export namespace Components {
     }
     interface BdsDatepicker {
         /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
+        /**
           * EndDateLimit. Insert a limiter to select the date period.
          */
         "endDateLimit"?: string;
@@ -2738,6 +2742,10 @@ declare namespace LocalJSX {
         "warning"?: CounterTextRule;
     }
     interface BdsDatepicker {
+        /**
+          * Disabled input.
+         */
+        "disabled"?: boolean;
         /**
           * EndDateLimit. Insert a limiter to select the date period.
          */
