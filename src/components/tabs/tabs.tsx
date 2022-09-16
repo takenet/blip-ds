@@ -1,18 +1,12 @@
 /* eslint-disable no-console */
 import { ScrollDirection, Display, Overflow } from './tabs-interface';
 import { Component, ComponentInterface, Element, h, Host, Event, EventEmitter, Listen, Prop } from '@stencil/core';
-import { BdsTabData, TabGroup } from './tabs-interface';
 
 @Component({
   tag: 'bds-tabs',
   styleUrl: 'tabs.scss',
 })
 export class Tabs implements ComponentInterface {
-  tabsHeader: BdsTabData[];
-  tabsContent: BdsTabData[];
-  tabGroup: TabGroup[];
-
-  buttonsChildElement: HTMLCollection;
   tabsHeaderChildElement: HTMLElement;
   leftButtonChildElement: HTMLElement;
   rightButtonChildElement: HTMLElement;
@@ -23,20 +17,9 @@ export class Tabs implements ComponentInterface {
 
   @Event() scrollButtonClick: EventEmitter<Overflow>;
 
+  @Event() bdsTabInit: EventEmitter;
+
   @Prop() align: 'left' | 'center' | 'right' = 'center';
-
-  componentWillLoad() {
-    this.createGroup();
-    const [group] = this.tabGroup;
-    this.selectGroup(group);
-  }
-
-  componentDidLoad() {
-    this.getChildElements();
-    this.attachEvents();
-    this.setLeftButtonVisibility(false);
-    this.setRightButtonVisibility(true);
-  }
 
   @Listen('scrollButtonClick')
   onScrollButtonClick(event: CustomEvent<Overflow>) {
@@ -51,44 +34,27 @@ export class Tabs implements ComponentInterface {
     this.tabsHeaderChildElement.scrollTo(options);
   }
 
-  @Listen('bdsSelect')
+  @Listen('bdsTabChange', { target: 'body' })
   onSelectedTab(event: CustomEvent) {
-    const group = this.tabGroup.find((group) => group.header.group === event.detail.group);
-    this.selectGroup(group);
-    this.handleButtonOverlay(group);
+    this.handleButtonOverlay(event.detail);
   }
 
-  createGroup() {
-    this.tabsHeader = Array.from(this.el.querySelectorAll('bds-tab')) as BdsTabData[];
-    this.tabsContent = Array.from(document.querySelectorAll('bds-tab-panel')) as BdsTabData[];
-    this.buttonsChildElement = document.getElementsByTagName('bds-button-icon') as HTMLCollection;
-
-    this.tabGroup = this.tabsHeader.map((header) => {
-      let content;
-      try {
-        content = this.tabsContent.find((content) => content.group === header.group);
-        if (!content) throw new Error(`Missing TabPanel with key: ${header.group}`);
-      } catch (error) {
-        console.warn(error);
-      }
-      return {
-        header: header,
-        content: content,
-      };
-    });
+  componentDidLoad() {
+    this.getChildElements();
+    this.attachEvents();
+    this.setLeftButtonVisibility(false);
+    this.setRightButtonVisibility(true);
+    this.handleActiveTab();
   }
 
-  async selectGroup(group: TabGroup) {
-    await this.resetActiveGroup();
-
-    group.header.active = true;
-    group.content.active = true;
-  }
-
-  async resetActiveGroup() {
-    for (const group of this.tabGroup) {
-      group.content.active = false;
-      group.header.active = false;
+  private handleActiveTab() {
+    const tabs = Array.from(this.tabsHeaderChildElement.getElementsByTagName('bds-tab'));
+    const activeTab = tabs.find((tab) => tab.active);
+    if (activeTab) {
+      this.bdsTabInit.emit(activeTab.group);
+    } else {
+      const [firstTab] = tabs;
+      this.bdsTabInit.emit(firstTab.group);
     }
   }
 
@@ -138,9 +104,9 @@ export class Tabs implements ComponentInterface {
       this.tabsHeaderChildElement.scrollLeft > 0 && isScrollable ? Display.BLOCK : Display.NONE;
   }
 
-  private handleButtonOverlay(group: TabGroup) {
+  private handleButtonOverlay(group: string) {
     const tab = Array.from(this.tabsHeaderChildElement.getElementsByTagName('bds-tab')).find((header) => {
-      return header.group == group.header.group;
+      return header.group == group;
     });
 
     const buttons = [this.leftButtonChildElement, this.rightButtonChildElement];

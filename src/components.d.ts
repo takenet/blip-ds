@@ -39,7 +39,7 @@ import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { sidebarPosition } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
-import { BdsTabData, Overflow } from "./components/tabs/tabs-interface";
+import { Overflow } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -1516,17 +1516,20 @@ export namespace Components {
         "size"?: SwitchSize;
     }
     interface BdsTab {
+        /**
+          * Prop to control externally if a tab will be active by default
+         */
         "active": boolean;
-        "getChild": () => Promise<BdsTabData>;
         /**
           * Specifies the Tab group. Used to link it to the TabPanel.
          */
         "group": string;
+        /**
+          * The text to be shown at the Tab
+         */
         "label": string;
     }
     interface BdsTabPanel {
-        "active": boolean;
-        "getChild": () => Promise<BdsTabData>;
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
          */
@@ -3929,16 +3932,24 @@ declare namespace LocalJSX {
         "size"?: SwitchSize;
     }
     interface BdsTab {
+        /**
+          * Prop to control externally if a tab will be active by default
+         */
         "active"?: boolean;
         /**
           * Specifies the Tab group. Used to link it to the TabPanel.
          */
         "group": string;
+        /**
+          * The text to be shown at the Tab
+         */
         "label": string;
-        "onBdsSelect"?: (event: BdsTabCustomEvent<any>) => void;
+        /**
+          * Event to emmit when the active tab should be updated
+         */
+        "onBdsTabChange"?: (event: BdsTabCustomEvent<any>) => void;
     }
     interface BdsTabPanel {
-        "active"?: boolean;
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
          */
@@ -3964,6 +3975,7 @@ declare namespace LocalJSX {
     }
     interface BdsTabs {
         "align"?: 'left' | 'center' | 'right';
+        "onBdsTabInit"?: (event: BdsTabsCustomEvent<any>) => void;
         "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
     }
     interface BdsToast {

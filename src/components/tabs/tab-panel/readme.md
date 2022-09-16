@@ -7,23 +7,9 @@
 
 ## Properties
 
-| Property             | Attribute | Description                                               | Type      | Default     |
-| -------------------- | --------- | --------------------------------------------------------- | --------- | ----------- |
-| `active`             | `active`  |                                                           | `boolean` | `false`     |
-| `group` _(required)_ | `group`   | Specifies the TabPanel group. Used to link it to the Tab. | `string`  | `undefined` |
-
-
-## Methods
-
-### `getChild() => Promise<BdsTabData>`
-
-
-
-#### Returns
-
-Type: `Promise<BdsTabData>`
-
-
+| Property             | Attribute | Description                                               | Type     | Default     |
+| -------------------- | --------- | --------------------------------------------------------- | -------- | ----------- |
+| `group` _(required)_ | `group`   | Specifies the TabPanel group. Used to link it to the Tab. | `string` | `undefined` |
 
 
 ## Dependencies

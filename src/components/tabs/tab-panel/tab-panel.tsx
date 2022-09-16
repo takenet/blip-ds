@@ -1,5 +1,4 @@
-import { Component, ComponentInterface, h, Host, Method, Prop } from '@stencil/core';
-import { BdsTabData } from '../tabs-interface';
+import { Component, ComponentInterface, h, Host, Listen, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'bds-tab-panel',
@@ -11,24 +10,25 @@ export class TabPanel implements ComponentInterface {
    */
   @Prop() group!: string;
 
-  @Prop() active = false;
+  /**
+   * State to control if a tab panel is current active
+   */
+  @State() isActive = false;
 
-  @Method()
-  async getChild(): Promise<BdsTabData> {
-    return {
-      active: this.active,
-      group: this.group,
-    };
+  @Listen('bdsTabChange', { target: 'body' })
+  @Listen('bdsTabInit', { target: 'body' })
+  handleTabChange(event: CustomEvent) {
+    this.isActive = event.detail == this.group;
   }
 
   render(): HTMLElement {
-    const classes = {
-      'bds-tab-panel': true,
-      'bds-tab-panel--selected': this.active,
-    };
-
     return (
-      <Host class={classes}>
+      <Host
+        class={{
+          'bds-tab-panel': true,
+          ['bds-tab-panel--selected']: this.isActive,
+        }}
+      >
         <bds-typo>
           <slot />
         </bds-typo>
