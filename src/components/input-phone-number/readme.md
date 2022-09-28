@@ -26,13 +26,13 @@
 
 ## Events
 
-| Event                  | Description                              | Type                                   |
-| ---------------------- | ---------------------------------------- | -------------------------------------- |
-| `bdsBlur`              | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
-| `bdsCancel`            | Emitted when the selection is cancelled. | `CustomEvent<void>`                    |
-| `bdsFocus`             | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
-| `bdsInput`             | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>`           |
-| `bdsPhoneNumberChange` | Emitted when the value has changed.      | `CustomEvent<SelectChangeEventDetail>` |
+| Event                  | Description                              | Type                         |
+| ---------------------- | ---------------------------------------- | ---------------------------- |
+| `bdsBlur`              | Emitted when the select loses focus.     | `CustomEvent<void>`          |
+| `bdsCancel`            | Emitted when the selection is cancelled. | `CustomEvent<void>`          |
+| `bdsFocus`             | Emitted when the select loses focus.     | `CustomEvent<void>`          |
+| `bdsInput`             | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>` |
+| `bdsPhoneNumberChange` | Emitted when the value has changed.      | `CustomEvent<any>`           |
 
 
 ## Methods

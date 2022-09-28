@@ -3398,7 +3398,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<SelectChangeEventDetail>) => void;
+        "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<any>) => void;
         /**
           * The options of select.
          */

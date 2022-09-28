@@ -1,5 +1,5 @@
 import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen } from '@stencil/core';
-import { Option, SelectChangeEventDetail } from '../selects/select-interface';
+import { Option } from '../selects/select-interface';
 import { numberValidation } from '../../utils/validations';
 import * as countriesJson from './countries.json';
 
@@ -89,7 +89,7 @@ export class InputPhoneNumber {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsPhoneNumberChange!: EventEmitter<SelectChangeEventDetail>;
+  @Event() bdsPhoneNumberChange!: EventEmitter;
 
   /**
    * Emitted when the input has changed.
@@ -186,13 +186,7 @@ export class InputPhoneNumber {
     this.bdsInput.emit(ev as KeyboardEvent);
   };
 
-  private handleInputChange = (event: CustomEvent): void => {
-    const {
-      detail: { value },
-    } = event;
-
-    this.text = value;
-
+  private handleInputChange = (event): void => {
     event.preventDefault();
     this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value, country: this.selectedCountry });
   };
