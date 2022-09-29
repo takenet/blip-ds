@@ -45,7 +45,7 @@ export class InputPhoneNumber {
    * the value of the select.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ mutable: true }) value?: any | null = '+55';
+  @Prop({ mutable: true }) value?: string | null = '+55';
 
   /**
    * Add state danger on input, use for use feedback.
@@ -89,7 +89,7 @@ export class InputPhoneNumber {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsPhoneNumberChange!: EventEmitter;
+  @Event({ bubbles: true, composed: true }) bdsPhoneNumberChange!: EventEmitter;
 
   /**
    * Emitted when the input has changed.
@@ -186,10 +186,10 @@ export class InputPhoneNumber {
     this.bdsInput.emit(ev as KeyboardEvent);
   };
 
-  private handleInputChange = (event): void => {
-    event.preventDefault();
+  @Watch('text')
+  protected handleInputChange(): void {
     this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value, country: this.selectedCountry });
-  };
+  }
 
   private numberValidation() {
     if (numberValidation(this.nativeInput.value)) {
@@ -351,7 +351,6 @@ export class InputPhoneNumber {
                   required={this.required}
                   pattern="[0-9]*"
                   ref={this.refNativeInput}
-                  onChange={this.handleInputChange}
                   onInput={this.changedInputValue}
                   onFocus={this.onFocus}
                   onBlur={this.onBlur}
