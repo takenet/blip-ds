@@ -21,7 +21,7 @@
 | `required`             | `required`               | If `true`, the input value will be required.                            | `boolean`  | `undefined`      |
 | `requiredErrorMessage` | `required-error-message` | Error message when input is required                                    | `string`   | `undefined`      |
 | `text`                 | `text`                   | The value of the phone number input.                                    | `string`   | `''`             |
-| `value`                | `value`                  | the value of the select.                                                | `any`      | `'+55'`          |
+| `value`                | `value`                  | the value of the select.                                                | `string`   | `'+55'`          |
 
 
 ## Events
