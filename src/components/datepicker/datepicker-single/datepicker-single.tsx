@@ -67,14 +67,6 @@ export class BdsdatepickerSingle {
   async clear(): Promise<void> {
     this.dateSelect = null;
   }
-  /**
-   * dateSelect. Function to output selected date.
-   */
-  @Watch('dateSelect')
-  protected dateSelectChanged(): void {
-    this.monthActivated = this.dateSelect ? this.dateSelect?.getMonth() : this.startDate.month;
-    this.yearActivated = this.dateSelect ? this.dateSelect.getFullYear() : this.startDate.year;
-  }
 
   @Watch('endDate')
   @Watch('startDate')
@@ -82,13 +74,6 @@ export class BdsdatepickerSingle {
     const oldDate = fillDayList(_oldValue);
     const newDate = fillDayList(newValue);
     if (newDate != oldDate) {
-      this.monthActivated = this.startDate.month;
-      this.yearActivated = this.startDate.year;
-    }
-  }
-
-  componentWillLoad() {
-    if (this.startDate) {
       this.monthActivated = this.startDate.month;
       this.yearActivated = this.startDate.year;
     }
@@ -200,8 +185,8 @@ export class BdsdatepickerSingle {
     if (ref == 'months') {
       this.monthActivated = value;
     } else {
-      if (value == this.endDate.year) this.monthActivated = 0;
-      if (value == this.startDate.year) this.monthActivated = this.startDate.month;
+      if (this.monthActivated <= this.startDate.month) this.monthActivated = this.startDate.month;
+      if (this.monthActivated >= this.endDate.month) this.monthActivated = this.endDate.month;
       this.yearActivated = value;
     }
   };

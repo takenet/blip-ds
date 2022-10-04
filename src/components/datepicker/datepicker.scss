@@ -6,57 +6,14 @@
   position: relative;
   max-width: 608px;
 
-  &__menu {
-    position: fixed;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    background-color: $color-neutral-light-snow;
-    box-shadow: $shadow-box;
-    border-radius: 8px;
-    padding: 16px;
-    opacity: 0;
-    -webkit-transition: opacity 0.5s;
-    -moz-transition: opacity 0.5s;
-    transition: opacity 0.5s;
-    z-index: $zindex-modal-overlay;
-
-    &__open {
-      pointer-events: auto;
-      opacity: 1;
-    }
-
-    &__message {
-      padding: 8px 16px;
-      border-radius: 8px;
-      background-color: $color-primary-yellows-corn;
-      color: $color-neutral-dark-suit;
-      display: flex;
-      align-items: center;
-      margin-bottom: 24px;
-
-      bds-icon {
-        margin-right: 8px;
-      }
-    }
-
-    &__footer {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-top: 16px;
-      margin-top: 16px;
-      border-top: 1px solid $color-neutral-medium-wave;
-
-      bds-button {
-        margin-left: 16px;
-      }
-    }
-  }
-
   &__inputs {
+    position: relative;
     width: 100%;
     display: grid;
+
+    &__open {
+      z-index: $zindex-modal;
+    }
 
     &__single {
       grid-template-columns: 1fr;
@@ -92,6 +49,54 @@
         bds-icon:first-child {
           color: $color-primary-main;
         }
+      }
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    background-color: $color-neutral-light-snow;
+    box-shadow: $shadow-box;
+    border-radius: 8px;
+    padding: 16px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+
+    &__open {
+      z-index: $zindex-loading;
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    &__message {
+      padding: 8px 16px;
+      border-radius: 8px;
+      background-color: $color-primary-yellows-corn;
+      color: $color-neutral-dark-suit;
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+
+      bds-icon {
+        margin-right: 8px;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-top: 16px;
+      margin-top: 16px;
+      border-top: 1px solid $color-neutral-medium-wave;
+
+      bds-button {
+        margin-left: 16px;
       }
     }
   }
@@ -374,6 +379,15 @@
       }
     }
   }
+}
+
+.outzone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: $zindex-modal-overlay;
 }
 
 @keyframes animationPrev {

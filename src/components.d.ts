@@ -23,6 +23,7 @@ import { CounterTextRule } from "./components/counter-text/counter-text-interfac
 import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
+import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
@@ -469,6 +470,14 @@ export namespace Components {
           * TypeOfDate. Select type of date.
          */
         "typeOfDate"?: typeDate;
+        /**
+          * Default value input.
+         */
+        "valueDateSelected"?: string;
+        /**
+          * Default value input.
+         */
+        "valueEndDateSelected"?: string;
     }
     interface BdsDatepickerPeriod {
         /**
@@ -495,6 +504,10 @@ export namespace Components {
           * StartDateSelect. Insert a limiter to select the date period.
          */
         "startDateSelect"?: Date;
+        /**
+          * EndDateSelect. Insert a limiter to select the date period.
+         */
+        "stateSelect"?: stateSelect;
     }
     interface BdsDatepickerSingle {
         /**
@@ -2770,6 +2783,10 @@ declare namespace LocalJSX {
          */
         "onBdsStartDate"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
+          * bdsStartDate. Event to return selected end date value.
+         */
+        "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
         "startDateLimit"?: string;
@@ -2777,6 +2794,14 @@ declare namespace LocalJSX {
           * TypeOfDate. Select type of date.
          */
         "typeOfDate"?: typeDate;
+        /**
+          * Default value input.
+         */
+        "valueDateSelected"?: string;
+        /**
+          * Default value input.
+         */
+        "valueEndDateSelected"?: string;
     }
     interface BdsDatepickerPeriod {
         /**
@@ -2807,6 +2832,10 @@ declare namespace LocalJSX {
           * StartDateSelect. Insert a limiter to select the date period.
          */
         "startDateSelect"?: Date;
+        /**
+          * EndDateSelect. Insert a limiter to select the date period.
+         */
+        "stateSelect"?: stateSelect;
     }
     interface BdsDatepickerSingle {
         /**

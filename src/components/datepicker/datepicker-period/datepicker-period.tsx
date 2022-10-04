@@ -16,6 +16,7 @@ import { DaysList, MonthsSlide, Options } from '../datepicker-interface';
 import { languages } from '../../../utils/languages';
 
 export type stateSlide = 'await' | 'pendding' | 'success';
+export type stateSelect = 'start' | 'end';
 @Component({
   tag: 'bds-datepicker-period',
   styleUrl: '../datepicker.scss',
@@ -58,6 +59,11 @@ export class BdsdatepickerPeriod {
    * 'pt_BR', 'es_ES', 'en_US'.
    */
   @Prop() language?: languages = 'pt_BR';
+
+  /**
+   * EndDateSelect. Insert a limiter to select the date period.
+   */
+  @Prop({ mutable: true, reflect: true }) stateSelect?: stateSelect = 'start';
   /**
    * bdsStartDate. Event to return selected date value.
    */
@@ -81,8 +87,6 @@ export class BdsdatepickerPeriod {
   @Watch('startDateSelect')
   protected startDateSelectChanged(): void {
     this.bdsStartDate.emit({ value: this.startDateSelect });
-    this.monthActivated = this.startDateSelect ? this.startDateSelect?.getMonth() : this.startDate.month;
-    this.yearActivated = this.startDateSelect ? this.startDateSelect.getFullYear() : this.startDate.year;
   }
   /**
    * endDateSelect. Function to output selected end date.
@@ -90,17 +94,6 @@ export class BdsdatepickerPeriod {
   @Watch('endDateSelect')
   protected endDateSelectChanged(): void {
     this.bdsEndDate.emit({ value: this.endDateSelect });
-    this.monthActivated = this.endDateSelect
-      ? this.startDateSelect.getMonth() == this.endDateSelect.getMonth() &&
-        this.startDateSelect.getFullYear() == this.endDateSelect.getFullYear()
-        ? this.startDateSelect.getMonth()
-        : this.endDateSelect.getMonth() - 1
-      : this.startDate.month;
-    this.yearActivated = this.endDateSelect ? this.endDateSelect.getFullYear() : this.startDate.year;
-    if (this.monthActivated < 0) {
-      this.monthActivated = 11;
-      this.yearActivated = this.yearActivated - 1;
-    }
   }
 
   @Watch('endDate')
@@ -109,13 +102,6 @@ export class BdsdatepickerPeriod {
     const oldDate = fillDayList(_oldValue);
     const newDate = fillDayList(newValue);
     if (newDate != oldDate) {
-      this.monthActivated = this.startDate.month;
-      this.yearActivated = this.startDate.year;
-    }
-  }
-
-  componentWillLoad() {
-    if (this.startDate) {
       this.monthActivated = this.startDate.month;
       this.yearActivated = this.startDate.year;
     }
@@ -142,11 +128,11 @@ export class BdsdatepickerPeriod {
    */
   private selectDate(value: DaysList): void {
     const changeSelected = new Date(value.year, value.month, value.date);
-    if (this.startDateSelect) {
-      this.endDateSelect = changeSelected;
-    } else {
+    if (this.stateSelect == 'start') {
       this.startDateSelect = changeSelected;
+      this.endDateSelect = null;
     }
+    if (this.stateSelect == 'end') this.endDateSelect = changeSelected;
   }
   /**
    * prevMonth. Function to rewind the date on the calendar slide.
@@ -211,7 +197,7 @@ export class BdsdatepickerPeriod {
       return true;
     }
 
-    if (this.startDateSelect) {
+    if (this.startDateSelect && this.stateSelect == 'end') {
       if (validateDate < startSelectedDate) {
         return true;
       }
@@ -286,8 +272,8 @@ export class BdsdatepickerPeriod {
     if (ref == 'months') {
       this.monthActivated = value;
     } else {
-      if (value == this.endDate.year) this.monthActivated = 0;
-      if (value == this.startDate.year) this.monthActivated = this.startDate.month;
+      if (this.monthActivated <= this.startDate.month) this.monthActivated = this.startDate.month;
+      if (this.monthActivated >= this.endDate.month) this.monthActivated = this.endDate.month;
       this.yearActivated = value;
     }
   };
