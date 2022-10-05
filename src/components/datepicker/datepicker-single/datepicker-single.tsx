@@ -79,6 +79,16 @@ export class BdsdatepickerSingle {
     }
   }
 
+  componentWillLoad() {
+    const fillStartDate = fillDayList(this.startDate);
+    const fillEndDate = fillDayList(this.endDate);
+    const fillActDate = fillDate(THIS_DAY);
+    if (fillStartDate > fillActDate || fillEndDate < fillActDate) {
+      this.monthActivated = this.startDate.month;
+      this.yearActivated = this.startDate.year;
+    }
+  }
+
   componentWillRender() {
     this.week = Object.values(weekDays(this.language));
     this.monthsSlide = getMonthsSlide(this.yearActivated, this.monthActivated);
