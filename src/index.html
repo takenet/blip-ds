@@ -16,8 +16,15 @@
   </style>
 
   <body>
+    <bds-input-password
+      label=""
+    ></bds-input-password>
   </body>
 
   <script>
+    const value = document.querySelector('bds-input-password');
+    value.addEventListener("bdsInputPasswordChange", (event) => {
+      console.log(event.detail)
+    })
   </script>
 </html>

@@ -1,4 +1,4 @@
-import { Component, State, Prop, h, Host, Event, EventEmitter } from '@stencil/core';
+import { Component, State, Prop, h, Host, Event, EventEmitter, Watch } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
 @Component({
@@ -161,13 +161,10 @@ export class InputPassword {
     }
   };
 
-  private onChange = (ev: Event): void => {
-    const input = ev.target as HTMLInputElement | null;
-    if (input) {
-      this.value = input.value || '';
-    }
+  @Watch('value')
+  protected onChange(): void {
     this.bdsInputPasswordChange.emit({ value: this.value == null ? this.value : this.value.toString() });
-  };
+  }
 
   private onInput = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
@@ -288,7 +285,6 @@ export class InputPassword {
                   autocomplete={autocomplete}
                   autocapitalize={this.autoCapitalize}
                   placeholder={this.placeholder}
-                  onChange={this.onChange}
                   onInput={this.onInput}
                   onFocus={this.onFocus}
                   onBlur={this.onBlur}
