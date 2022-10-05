@@ -195,8 +195,12 @@ export class BdsdatepickerSingle {
     if (ref == 'months') {
       this.monthActivated = value;
     } else {
-      if (this.monthActivated <= this.startDate.month) this.monthActivated = this.startDate.month;
-      if (this.monthActivated >= this.endDate.month) this.monthActivated = this.endDate.month;
+      if (value == this.startDate.year && this.monthActivated <= this.startDate.month) {
+        this.monthActivated = this.startDate.month;
+      }
+      if (value == this.endDate.year && this.monthActivated >= this.endDate.month) {
+        this.monthActivated = this.endDate.month;
+      }
       this.yearActivated = value;
     }
   };
