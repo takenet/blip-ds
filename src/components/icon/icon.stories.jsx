@@ -196,6 +196,7 @@ const outlineIconsName = [
   'question',
   'redo',
   'refresh',
+  'refresh-all',
   'resources',
   'restore',
   'robot',
