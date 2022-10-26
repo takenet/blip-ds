@@ -16,7 +16,10 @@ export class InputEditable {
   private nativeInput?: HTMLInputElement;
 
   @Element() el!: HTMLBdsInputEditableElement;
-
+  /**
+   * Value to keep the old value of the input.
+   */
+  @State() oldValue: string;
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
@@ -150,10 +153,15 @@ export class InputEditable {
     this.isEditing = !this.isEditing;
   };
 
+  componentWillLoad() {
+    this.oldValue = this.value;
+  }
+
   private handleSaveText = (): void => {
     const newValue = this.nativeInput.value;
     if (newValue.length > 0 && newValue.length >= this.minlength && !this.danger) {
-      this.bdsInputEditableSave.emit({ value: newValue, oldValue: this.value });
+      this.bdsInputEditableSave.emit({ value: newValue, oldValue: this.oldValue });
+      this.oldValue = newValue;
       this.value = newValue;
       this.toggleEditing();
     }
@@ -163,7 +171,6 @@ export class InputEditable {
     const input = ev.target as HTMLInputElement | null;
     this.checkValidity();
     if (input) {
-      this.value = input.value || '';
       if (input.value.length < Number(this.minlength)) {
         this.isValid = false;
       } else {
@@ -171,7 +178,7 @@ export class InputEditable {
       }
     }
     this.bdsInput.emit(ev as KeyboardEvent);
-    this.bdsChange.emit({ value: this.nativeInput.value, oldValue: this.value });
+    this.bdsChange.emit({ value: this.nativeInput.value, oldValue: this.oldValue });
   };
 
   private onFocus = (): void => {
