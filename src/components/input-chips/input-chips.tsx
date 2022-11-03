@@ -248,6 +248,7 @@ export class InputChips {
   private keyPressWrapper = (event: KeyboardEvent): void => {
     switch (event.key) {
       case 'Enter':
+        this.handleDelimiters();
         this.setChip(this.value);
         this.value = '';
         break;
@@ -259,6 +260,29 @@ export class InputChips {
         break;
     }
   };
+
+  private handleDelimiters() {
+    const value = this.nativeInput.value;
+    this.value = value ? value.trim() : '';
+
+    if (value.length === 0) return;
+
+    const existTerm = value.match(this.delimiters);
+    if (!existTerm) return;
+
+    const newValue = this.verifyAndSubstituteDelimiters(value);
+    if (!newValue) {
+      this.clearInputValues();
+      return;
+    }
+
+    const words = newValue.split(this.delimiters);
+    words.forEach((word) => {
+      this.setChip(word);
+    });
+
+    this.clearInputValues();
+  }
 
   private verifyAndSubstituteDelimiters(value: string) {
     if (value.length === 1 && value[0].match(this.delimiters)) {
