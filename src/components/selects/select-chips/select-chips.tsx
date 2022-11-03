@@ -401,6 +401,7 @@ export class SelectChips {
       this.value = input.value || '';
     }
     this.bdsSelectChipsInput.emit(ev as KeyboardEvent);
+    this.changedInputValue();
   };
 
   private getLastChip(): string {
@@ -410,8 +411,11 @@ export class SelectChips {
   private keyPressWrapper = (event: KeyboardEvent): void => {
     switch (event.key) {
       case 'Enter':
-        this.setChip(this.value);
-        this.value = '';
+        if (this.canAddNew !== false) {
+          this.handleDelimiters();
+          this.setChip(this.value);
+          this.value = '';
+        }
         break;
       case 'Backspace' || 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
@@ -435,6 +439,29 @@ export class SelectChips {
     }
 
     return newValue;
+  }
+
+  private handleDelimiters() {
+    const value = this.nativeInput.value;
+    this.value = value ? value.trim() : '';
+
+    if (value.length === 0) return;
+
+    const existTerm = value.match(this.delimiters);
+    if (!existTerm) return;
+
+    const newValue = this.verifyAndSubstituteDelimiters(value);
+    if (!newValue) {
+      this.clearInputValues();
+      return;
+    }
+
+    const words = newValue.split(this.delimiters);
+    words.forEach((word) => {
+      this.setChip(word);
+    });
+
+    this.clearInputValues();
   }
 
   private async handleChange(event: CustomEvent<{ value: string }>) {
@@ -675,7 +702,7 @@ export class SelectChips {
             </bds-select-option>
           ))}
           <slot />
-          {this.canAddNew && this.enableCreateOption() && (
+          {this.canAddNew === true && this.enableCreateOption() && (
             <bds-select-option
               id="option-add"
               value="add"
