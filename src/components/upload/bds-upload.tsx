@@ -81,7 +81,7 @@ export class BdsUpload {
     } else {
       this.files = [...this.files, ...files];
     }
-    this.bdsUploadChange.emit();
+    this.bdsUploadChange.emit({ value: this.files });
   };
   /**
    * Prevent the screen to reload.
@@ -111,7 +111,7 @@ export class BdsUpload {
     } else {
       return false;
     }
-    this.bdsUploadChange.emit();
+    this.bdsUploadChange.emit({ value: this.files });
   }
   /**
    * Return the size information from the file.
@@ -133,7 +133,7 @@ export class BdsUpload {
     } else {
       this.haveFiles = true;
     }
-    this.bdsUploadDelete.emit();
+    this.bdsUploadDelete.emit({ value: this.files });
   }
 
   render() {
