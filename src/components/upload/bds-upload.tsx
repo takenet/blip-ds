@@ -81,7 +81,7 @@ export class BdsUpload {
     } else {
       this.files = [...this.files, ...files];
     }
-    this.bdsUploadChange.emit();
+    this.bdsUploadChange.emit({ value: this.files });
   };
   /**
    * Prevent the screen to reload.
@@ -111,7 +111,7 @@ export class BdsUpload {
     } else {
       return false;
     }
-    this.bdsUploadChange.emit();
+    this.bdsUploadChange.emit({ value: this.files });
   }
   /**
    * Return the size information from the file.
@@ -126,6 +126,8 @@ export class BdsUpload {
    * Used for delete a item from the list.
    */
   deleteFile(index) {
+    const fileToDelete = this.files.filter((item, i) => i == index && item);
+    this.bdsUploadDelete.emit({ value: fileToDelete });
     this.files.splice(index, 1);
     this.files = [...this.files];
     if (this.files.length === 0) {
@@ -133,7 +135,7 @@ export class BdsUpload {
     } else {
       this.haveFiles = true;
     }
-    this.bdsUploadDelete.emit();
+    this.bdsUploadChange.emit({ value: this.files });
   }
 
   render() {
