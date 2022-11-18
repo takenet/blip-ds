@@ -15,6 +15,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-table](../table)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -25,6 +29,7 @@
 graph TD;
   bds-chip-tag --> bds-icon
   bds-chip-tag --> bds-typo
+  bds-table --> bds-chip-tag
   style bds-chip-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

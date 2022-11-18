@@ -11,6 +11,7 @@ export const BdsAccordion = /*@__PURE__*/createReactComponent<JSX.BdsAccordion, 
 export const BdsAccordionBody = /*@__PURE__*/createReactComponent<JSX.BdsAccordionBody, HTMLBdsAccordionBodyElement>('bds-accordion-body');
 export const BdsAccordionGroup = /*@__PURE__*/createReactComponent<JSX.BdsAccordionGroup, HTMLBdsAccordionGroupElement>('bds-accordion-group');
 export const BdsAccordionHeader = /*@__PURE__*/createReactComponent<JSX.BdsAccordionHeader, HTMLBdsAccordionHeaderElement>('bds-accordion-header');
+export const BdsActionColumn = /*@__PURE__*/createReactComponent<JSX.BdsActionColumn, HTMLBdsActionColumnElement>('bds-action-column');
 export const BdsAlert = /*@__PURE__*/createReactComponent<JSX.BdsAlert, HTMLBdsAlertElement>('bds-alert');
 export const BdsAlertActions = /*@__PURE__*/createReactComponent<JSX.BdsAlertActions, HTMLBdsAlertActionsElement>('bds-alert-actions');
 export const BdsAlertBody = /*@__PURE__*/createReactComponent<JSX.BdsAlertBody, HTMLBdsAlertBodyElement>('bds-alert-body');

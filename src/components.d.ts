@@ -82,6 +82,12 @@ export namespace Components {
         "icon"?: string;
         "toggle": () => Promise<void>;
     }
+    interface BdsActionColumn {
+        /**
+          * Prop to recive the header and configuration of table.
+         */
+        "icon"?: string;
+    }
     interface BdsAlert {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -1550,13 +1556,22 @@ export namespace Components {
     }
     interface BdsTable {
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
           * Prop to activate the possibility of use avatar in any column.
          */
         "avatar"?: boolean;
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
           * Prop to recive the header and configuration of table.
          */
         "column"?: string;
+        "deleteItem": (index: number) => Promise<void>;
         /**
           * Prop to recive the content of the table.
          */
@@ -1814,6 +1829,10 @@ export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabElement;
 }
+export interface BdsTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTableElement;
+}
 export interface BdsTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabsElement;
@@ -1850,6 +1869,12 @@ declare global {
     var HTMLBdsAccordionHeaderElement: {
         prototype: HTMLBdsAccordionHeaderElement;
         new (): HTMLBdsAccordionHeaderElement;
+    };
+    interface HTMLBdsActionColumnElement extends Components.BdsActionColumn, HTMLStencilElement {
+    }
+    var HTMLBdsActionColumnElement: {
+        prototype: HTMLBdsActionColumnElement;
+        new (): HTMLBdsActionColumnElement;
     };
     interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
     }
@@ -2252,6 +2277,7 @@ declare global {
         "bds-accordion-body": HTMLBdsAccordionBodyElement;
         "bds-accordion-group": HTMLBdsAccordionGroupElement;
         "bds-accordion-header": HTMLBdsAccordionHeaderElement;
+        "bds-action-column": HTMLBdsActionColumnElement;
         "bds-alert": HTMLBdsAlertElement;
         "bds-alert-actions": HTMLBdsAlertActionsElement;
         "bds-alert-body": HTMLBdsAlertBodyElement;
@@ -2346,6 +2372,12 @@ declare namespace LocalJSX {
         "avatarThumb"?: string;
         /**
           * Icon. Used to add icon in header accordion.
+         */
+        "icon"?: string;
+    }
+    interface BdsActionColumn {
+        /**
+          * Prop to recive the header and configuration of table.
          */
         "icon"?: string;
     }
@@ -3986,13 +4018,24 @@ declare namespace LocalJSX {
     }
     interface BdsTable {
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
           * Prop to activate the possibility of use avatar in any column.
          */
         "avatar"?: boolean;
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
           * Prop to recive the header and configuration of table.
          */
         "column"?: string;
+        "onBdsTableChange"?: (event: BdsTableCustomEvent<any>) => void;
+        "onBdsTableClick"?: (event: BdsTableCustomEvent<any>) => void;
+        "onBdsTableDelete"?: (event: BdsTableCustomEvent<any>) => void;
         /**
           * Prop to recive the content of the table.
          */
@@ -4156,6 +4199,7 @@ declare namespace LocalJSX {
         "bds-accordion-body": BdsAccordionBody;
         "bds-accordion-group": BdsAccordionGroup;
         "bds-accordion-header": BdsAccordionHeader;
+        "bds-action-column": BdsActionColumn;
         "bds-alert": BdsAlert;
         "bds-alert-actions": BdsAlertActions;
         "bds-alert-body": BdsAlertBody;
@@ -4232,6 +4276,7 @@ declare module "@stencil/core" {
             "bds-accordion-body": LocalJSX.BdsAccordionBody & JSXBase.HTMLAttributes<HTMLBdsAccordionBodyElement>;
             "bds-accordion-group": LocalJSX.BdsAccordionGroup & JSXBase.HTMLAttributes<HTMLBdsAccordionGroupElement>;
             "bds-accordion-header": LocalJSX.BdsAccordionHeader & JSXBase.HTMLAttributes<HTMLBdsAccordionHeaderElement>;
+            "bds-action-column": LocalJSX.BdsActionColumn & JSXBase.HTMLAttributes<HTMLBdsActionColumnElement>;
             "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
             "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
