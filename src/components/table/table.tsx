@@ -10,7 +10,7 @@ type Data = {
 })
 export class Table {
   @Element() el!: HTMLElement;
-  @State() newTable: string[] = [];
+  @State() newTable: Data = [];
   /**
    * For keep the Object of header;
    */
@@ -18,11 +18,11 @@ export class Table {
   /**
    * For keep the Object of table content.
    */
-  @State() tableData?: string[] = [];
+  @State() tableData?: Data[] = [];
   /**
    * For keep the state of the prop sort.
    */
-  @State() sortAscending: boolean;
+  @State() sortAscending?: boolean;
   /**
    * For keep the state of the prop sort.
    */
@@ -59,10 +59,6 @@ export class Table {
     this.getDataFromProprety();
   }
 
-  componentWillUpdate() {
-    this.tableData = this.newTable;
-  }
-
   private getDataFromProprety() {
     this.headerData = JSON.parse(this.column);
     this.tableData = JSON.parse(this.options);
@@ -81,12 +77,12 @@ export class Table {
     const itemDelete = this.tableData.filter((item, i) => i === index && item);
     this.bdsTableDelete.emit(itemDelete[0]);
     this.tableData.splice(index, 1);
-    this.newTable = [...this.tableData];
+    this.tableData = [...this.tableData];
     this.bdsTableChange.emit(this.tableData);
   }
 
-  clickButton(item, btn) {
-    this.bdsTableClick.emit({ item: item, nameButton: btn });
+  clickButton(item, index, btn) {
+    this.bdsTableClick.emit({ item: item, index: index, nameButton: btn });
   }
 
   orderColumn(idx) {
@@ -145,7 +141,7 @@ export class Table {
                     <td class="body-item" key={idx}>
                       {this.actionArea && columnItem.editAction ? (
                         <bds-button-icon
-                          onClick={() => this.clickButton(item, columnItem.editAction)}
+                          onClick={() => this.clickButton(item, index, columnItem.editAction)}
                           variant="secondary"
                           icon={item[`${columnItem.editAction}`]}
                           size="short"
@@ -155,7 +151,7 @@ export class Table {
                       )}
                       {this.actionArea && columnItem.deleteAction ? (
                         <bds-button-icon
-                          onClick={() => this.clickButton(item, columnItem.deleteAction)}
+                          onClick={() => this.clickButton(item, index, columnItem.deleteAction)}
                           variant="secondary"
                           icon={item[`${columnItem.deleteAction}`]}
                           size="short"
@@ -165,7 +161,7 @@ export class Table {
                       )}
                       {this.actionArea && columnItem.customAction ? (
                         <bds-button-icon
-                          onClick={() => this.clickButton(item, columnItem.customAction)}
+                          onClick={() => this.clickButton(item, index, columnItem.customAction)}
                           variant="secondary"
                           icon={item[`${columnItem.customAction}`]}
                           size="short"
