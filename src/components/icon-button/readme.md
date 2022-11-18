@@ -23,6 +23,7 @@
  - [bds-banner](../banner)
  - [bds-pagination](../pagination)
  - [bds-sidebar](../sidebar)
+ - [bds-table](../table)
  - [bds-tabs](../tabs)
  - [bds-toast](../toast)
  - [bds-upload](../upload)
@@ -38,6 +39,7 @@ graph TD;
   bds-banner --> bds-button-icon
   bds-pagination --> bds-button-icon
   bds-sidebar --> bds-button-icon
+  bds-table --> bds-button-icon
   bds-tabs --> bds-button-icon
   bds-toast --> bds-button-icon
   bds-upload --> bds-button-icon
