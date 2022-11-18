@@ -546,6 +546,7 @@ export namespace Components {
         "direction"?: direction;
         "flexWrap"?: flexWrap;
         "gap"?: gap;
+        "height"?: string;
         "justifyContent"?: justifyContent;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
@@ -2887,6 +2888,7 @@ declare namespace LocalJSX {
         "direction"?: direction;
         "flexWrap"?: flexWrap;
         "gap"?: gap;
+        "height"?: string;
         "justifyContent"?: justifyContent;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
