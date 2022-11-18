@@ -82,12 +82,6 @@ export namespace Components {
         "icon"?: string;
         "toggle": () => Promise<void>;
     }
-    interface BdsActionColumn {
-        /**
-          * Prop to recive the header and configuration of table.
-         */
-        "icon"?: string;
-    }
     interface BdsAlert {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -1870,12 +1864,6 @@ declare global {
         prototype: HTMLBdsAccordionHeaderElement;
         new (): HTMLBdsAccordionHeaderElement;
     };
-    interface HTMLBdsActionColumnElement extends Components.BdsActionColumn, HTMLStencilElement {
-    }
-    var HTMLBdsActionColumnElement: {
-        prototype: HTMLBdsActionColumnElement;
-        new (): HTMLBdsActionColumnElement;
-    };
     interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
     }
     var HTMLBdsAlertElement: {
@@ -2277,7 +2265,6 @@ declare global {
         "bds-accordion-body": HTMLBdsAccordionBodyElement;
         "bds-accordion-group": HTMLBdsAccordionGroupElement;
         "bds-accordion-header": HTMLBdsAccordionHeaderElement;
-        "bds-action-column": HTMLBdsActionColumnElement;
         "bds-alert": HTMLBdsAlertElement;
         "bds-alert-actions": HTMLBdsAlertActionsElement;
         "bds-alert-body": HTMLBdsAlertBodyElement;
@@ -2372,12 +2359,6 @@ declare namespace LocalJSX {
         "avatarThumb"?: string;
         /**
           * Icon. Used to add icon in header accordion.
-         */
-        "icon"?: string;
-    }
-    interface BdsActionColumn {
-        /**
-          * Prop to recive the header and configuration of table.
          */
         "icon"?: string;
     }
@@ -4199,7 +4180,6 @@ declare namespace LocalJSX {
         "bds-accordion-body": BdsAccordionBody;
         "bds-accordion-group": BdsAccordionGroup;
         "bds-accordion-header": BdsAccordionHeader;
-        "bds-action-column": BdsActionColumn;
         "bds-alert": BdsAlert;
         "bds-alert-actions": BdsAlertActions;
         "bds-alert-body": BdsAlertBody;
@@ -4276,7 +4256,6 @@ declare module "@stencil/core" {
             "bds-accordion-body": LocalJSX.BdsAccordionBody & JSXBase.HTMLAttributes<HTMLBdsAccordionBodyElement>;
             "bds-accordion-group": LocalJSX.BdsAccordionGroup & JSXBase.HTMLAttributes<HTMLBdsAccordionGroupElement>;
             "bds-accordion-header": LocalJSX.BdsAccordionHeader & JSXBase.HTMLAttributes<HTMLBdsAccordionHeaderElement>;
-            "bds-action-column": LocalJSX.BdsActionColumn & JSXBase.HTMLAttributes<HTMLBdsActionColumnElement>;
             "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
             "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
