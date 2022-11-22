@@ -6,6 +6,7 @@ import { direction, justifyContent, flexWrap, alignItems, breakpoint, gap, paddi
   scoped: true,
 })
 export class Grid {
+  @Prop() height?: string;
   @Prop() direction?: direction;
   @Prop() justifyContent?: justifyContent;
   @Prop() flexWrap?: flexWrap;
@@ -52,6 +53,7 @@ export class Grid {
           [`padding--${this.padding}`]: true,
           [`margin--${this.margin}`]: true,
         }}
+        style={{ height: this.height }}
       >
         <slot></slot>
       </Host>

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, State, Element } from '@stencil/core';
+import { Component, Host, h, Prop, State, Element, Event, EventEmitter, Method } from '@stencil/core';
 
 type Data = {
   [key: string]: any;
@@ -10,6 +10,7 @@ type Data = {
 })
 export class Table {
   @Element() el!: HTMLElement;
+  @State() newTable: Data = [];
   /**
    * For keep the Object of header;
    */
@@ -17,11 +18,11 @@ export class Table {
   /**
    * For keep the Object of table content.
    */
-  @State() tableData?: Data = [];
+  @State() tableData?: Data[] = [];
   /**
    * For keep the state of the prop sort.
    */
-  @State() sortAscending: boolean;
+  @State() sortAscending?: boolean;
   /**
    * For keep the state of the prop sort.
    */
@@ -39,22 +40,28 @@ export class Table {
    */
   @Prop() avatar?: boolean = false;
   /**
+   * Prop to activate the possibility of use chip in any column.
+   */
+  @Prop() chips?: boolean = false;
+  /**
+   * Prop to activate the possibility of use chip in any column.
+   */
+  @Prop() actionArea?: boolean;
+  /**
    * Prop to activate the sorting.
    */
   @Prop() sorting?: boolean = false;
+  @Event() bdsTableClick: EventEmitter;
+  @Event() bdsTableDelete: EventEmitter;
+  @Event() bdsTableChange: EventEmitter;
 
   componentWillLoad() {
     this.getDataFromProprety();
   }
 
   private getDataFromProprety() {
-    if (typeof (this.options == 'string')) {
-      this.headerData = JSON.parse(this.column);
-      this.tableData = JSON.parse(this.options);
-    } else {
-      this.headerData = JSON.parse(this.column);
-      this.tableData = JSON.parse(this.options);
-    }
+    this.headerData = JSON.parse(this.column);
+    this.tableData = JSON.parse(this.options);
   }
 
   renderArrow(value) {
@@ -63,6 +70,19 @@ export class Table {
     } else {
       return null;
     }
+  }
+
+  @Method()
+  async deleteItem(index: number) {
+    const itemDelete = this.tableData.filter((item, i) => i === index && item);
+    this.bdsTableDelete.emit(itemDelete[0]);
+    this.tableData.splice(index, 1);
+    this.tableData = [...this.tableData];
+    this.bdsTableChange.emit(this.tableData);
+  }
+
+  clickButton(item, index, btn) {
+    this.bdsTableClick.emit({ item: item, index: index, nameButton: btn });
   }
 
   orderColumn(idx) {
@@ -119,18 +139,62 @@ export class Table {
                 {this.headerData.map((columnItem, idx) => {
                   return (
                     <td class="body-item" key={idx}>
+                      {this.actionArea && columnItem.editAction ? (
+                        <bds-button-icon
+                          onClick={() => this.clickButton(item, index, columnItem.editAction)}
+                          variant="secondary"
+                          icon={item[`${columnItem.editAction}`]}
+                          size="short"
+                        ></bds-button-icon>
+                      ) : (
+                        ''
+                      )}
+                      {this.actionArea && columnItem.deleteAction ? (
+                        <bds-button-icon
+                          onClick={() => this.clickButton(item, index, columnItem.deleteAction)}
+                          variant="secondary"
+                          icon={item[`${columnItem.deleteAction}`]}
+                          size="short"
+                        ></bds-button-icon>
+                      ) : (
+                        ''
+                      )}
+                      {this.actionArea && columnItem.customAction ? (
+                        <bds-button-icon
+                          onClick={() => this.clickButton(item, index, columnItem.customAction)}
+                          variant="secondary"
+                          icon={item[`${columnItem.customAction}`]}
+                          size="short"
+                        ></bds-button-icon>
+                      ) : (
+                        ''
+                      )}
+                      {this.chips && columnItem.chips ? (
+                        <bds-chip-tag color={item[`${columnItem.chips}`] ? item[`${columnItem.chips}`] : 'default'}>
+                          {item[`${columnItem.value}`]}
+                        </bds-chip-tag>
+                      ) : (
+                        ''
+                      )}
                       {this.avatar && columnItem.img ? (
                         <bds-avatar
                           size="extra-small"
-                          thumbnail={item[`${columnItem.thumb}`]}
+                          thumbnail={item[`${columnItem.img}`]}
                           name={item[`${columnItem.value}`]}
                         ></bds-avatar>
                       ) : (
                         ''
                       )}
-                      <bds-typo variant="fs-14" bold={this.headerActive === `${columnItem.value}` ? 'bold' : 'regular'}>
-                        {item[`${columnItem.value}`]}
-                      </bds-typo>
+                      {columnItem.chips ? (
+                        ''
+                      ) : (
+                        <bds-typo
+                          variant="fs-14"
+                          bold={this.headerActive === `${columnItem.value}` ? 'bold' : 'regular'}
+                        >
+                          {item[`${columnItem.value}`]}
+                        </bds-typo>
+                      )}
                     </td>
                   );
                 })}

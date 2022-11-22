@@ -546,6 +546,7 @@ export namespace Components {
         "direction"?: direction;
         "flexWrap"?: flexWrap;
         "gap"?: gap;
+        "height"?: string;
         "justifyContent"?: justifyContent;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
@@ -1550,13 +1551,22 @@ export namespace Components {
     }
     interface BdsTable {
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
           * Prop to activate the possibility of use avatar in any column.
          */
         "avatar"?: boolean;
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
           * Prop to recive the header and configuration of table.
          */
         "column"?: string;
+        "deleteItem": (index: number) => Promise<void>;
         /**
           * Prop to recive the content of the table.
          */
@@ -1813,6 +1823,10 @@ export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
 export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabElement;
+}
+export interface BdsTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTableElement;
 }
 export interface BdsTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2874,6 +2888,7 @@ declare namespace LocalJSX {
         "direction"?: direction;
         "flexWrap"?: flexWrap;
         "gap"?: gap;
+        "height"?: string;
         "justifyContent"?: justifyContent;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
@@ -3986,13 +4001,24 @@ declare namespace LocalJSX {
     }
     interface BdsTable {
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
           * Prop to activate the possibility of use avatar in any column.
          */
         "avatar"?: boolean;
         /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
           * Prop to recive the header and configuration of table.
          */
         "column"?: string;
+        "onBdsTableChange"?: (event: BdsTableCustomEvent<any>) => void;
+        "onBdsTableClick"?: (event: BdsTableCustomEvent<any>) => void;
+        "onBdsTableDelete"?: (event: BdsTableCustomEvent<any>) => void;
         /**
           * Prop to recive the content of the table.
          */

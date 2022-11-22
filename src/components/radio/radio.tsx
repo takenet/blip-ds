@@ -72,7 +72,7 @@ export class Radio {
   }
 
   private onClick = (event: Event): void => {
-    this.checked = !this.checked;
+    this.checked = true;
     this.bdsClickChange.emit({ checked: this.checked });
     event.stopPropagation();
   };
