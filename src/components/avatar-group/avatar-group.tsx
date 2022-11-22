@@ -74,9 +74,15 @@ export class AvatarGroup {
               .slice(0, 6)
               .map((user, i, row) =>
                 i + 1 === row.length && this.internalUsers.length > 5 ? (
-                  <bds-avatar size={this.size} ellipsis={this.leftoversUsers}></bds-avatar>
+                  <bds-avatar key={i} size={this.size} ellipsis={this.leftoversUsers}></bds-avatar>
                 ) : (
-                  <bds-avatar id={user.id} name={user.name} thumbnail={user.thumbnail} size={this.size}></bds-avatar>
+                  <bds-avatar
+                    key={i}
+                    id={user.id}
+                    name={user.name}
+                    thumbnail={user.thumbnail}
+                    size={this.size}
+                  ></bds-avatar>
                 )
               )
           ) : (
