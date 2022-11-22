@@ -118,6 +118,11 @@ export class SelectOption {
             'select-option__container__fill_space': !!this.status,
           }}
         >
+          {this.titleText && (
+            <bds-typo class="select-option__container--value" variant="fs-16" bold="semi-bold">
+              {this.titleText}
+            </bds-typo>
+          )}
           <bds-typo
             class={{
               'select-option__container--value': true,
@@ -127,22 +132,19 @@ export class SelectOption {
             variant="fs-14"
             id={`bds-typo-label-${this.value}`}
           >
-            <bds-typo class="select-option__container--value" variant="fs-16" bold="semi-bold">
-              {this.titleText}
-            </bds-typo>
             <slot />
           </bds-typo>
-          {this.bulkOption && (
-            <bds-typo class="select-option__container--bulk" variant="fs-10">
-              {this.bulkOption}
-            </bds-typo>
-          )}
-          {this.status && (
-            <bds-typo class="select-option__container--status" noWrap={true} variant="fs-10">
-              {this.status}
-            </bds-typo>
-          )}
         </div>
+        {this.bulkOption && (
+          <bds-typo class="select-option__container--bulk" variant="fs-10">
+            {this.bulkOption}
+          </bds-typo>
+        )}
+        {this.status && (
+          <bds-typo class="select-option__container--status" noWrap={true} variant="fs-10">
+            {this.status}
+          </bds-typo>
+        )}
       </div>
     );
   }

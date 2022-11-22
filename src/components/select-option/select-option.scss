@@ -40,15 +40,18 @@ $select-option-left: 12px;
   &__container {
     color: $color-neutral-dark-city;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 
     &__fill_space {
       width: 100%;
     }
 
-    &--bulk, &--status {
+    &--bulk,
+    &--status {
       color: $color-neutral-medium-cloud;
+    }
+    &--status {
+      margin-left: 4px;
     }
 
     &__overflow {
