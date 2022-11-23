@@ -2,8 +2,8 @@
   position: relative;
 
   &__button {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
     gap: 12px;
     align-items: center;
     background-color: $color-neutral-light-snow;
@@ -27,16 +27,16 @@
     }
 
     & .icon-item {
-      justify-self: start;
       color: $color-neutral-dark-rooftop;
     }
-    & .typo-item {
-      justify-self: start;
+    & .content-item {
       width: 100%;
       color: $color-neutral-dark-eclipse;
+      display: flex;
+      flex-direction: column;
     }
-    & .arrow-right {
-      justify-self: end;
+
+    & .arrow {
       color: $color-neutral-dark-eclipse;
     }
 
@@ -44,10 +44,10 @@
       & .icon-item {
         color: $color-extend-reds-lipstick;
       }
-      & .typo-item {
+      & .content-item {
         color: $color-extend-reds-lipstick;
       }
-      & .arrow-right {
+      & .arrow {
         color: $color-extend-reds-lipstick;
       }
     }
@@ -59,15 +59,13 @@
 
   &__submenu {
     position: absolute;
-    top: -16px;
-    left: 100%;
     pointer-events: none;
     display: block;
     padding: 16px 2px;
     background-color: $color-neutral-light-snow;
     border-radius: 8px;
     box-shadow: 0px 4px 16px rgba(7, 71, 166, 0.12);
-    min-width: 128px;
+    min-width: 196px;
     opacity: 0;
     -webkit-transition: opacity 0.5s;
     -moz-transition: opacity 0.5s;
@@ -76,6 +74,42 @@
     &__open {
       pointer-events: auto;
       opacity: 1;
+    }
+  }
+
+  &.position-right {
+    & .menuaction__button {
+      & .icon-item {
+        order: 0;
+      }
+      & .content-item {
+        order: 1;
+      }
+      & .arrow {
+        order: 2;
+      }
+    }
+    & .menuaction__submenu {
+      top: -16px;
+      left: 100%;
+    }
+  }
+
+  &.position-left {
+    & .menuaction__button {
+      & .icon-item {
+        order: 1;
+      }
+      & .content-item {
+        order: 2;
+      }
+      & .arrow {
+        order: 0;
+      }
+    }
+    & .menuaction__submenu {
+      top: -16px;
+      right: 100%;
     }
   }
 }

@@ -36,14 +36,14 @@ export function positionElement({
   const changedpositionTop =
     changedElement?.offsetHeight > window.innerHeight - positionTop
       ? positionTop - changedElement?.offsetHeight - 16
-      : positionTop + actionElement.offsetHeight + 16;
+      : positionTop + actionElement?.offsetHeight + 16;
   const changedpositionLeft =
     changedElement?.offsetWidth > window.innerWidth - positionLeft
-      ? positionLeft + actionElement.offsetWidth - changedElement?.offsetWidth
+      ? positionLeft + actionElement?.offsetWidth - changedElement?.offsetWidth
       : positionLeft;
 
-  const limitedHeightScreen = window.innerHeight - changedElement.offsetHeight;
-  const limitedWidthScreen = window.innerWidth - changedElement.offsetWidth;
+  const limitedHeightScreen = window.innerHeight - changedElement?.offsetHeight;
+  const limitedWidthScreen = window.innerWidth - changedElement?.offsetWidth;
 
   const result = {
     top:

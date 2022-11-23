@@ -1,4 +1,4 @@
-import { Component, Host, ComponentInterface, h, State, Method, Prop, Watch } from '@stencil/core';
+import { Component, Host, ComponentInterface, h, State, Method, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 import { getScrollParent, positionElement } from '../../utils/position-element';
 
 export type menuPosition = 'bottom' | 'right';
@@ -32,9 +32,24 @@ export class BdsMenu implements ComponentInterface {
   })
   public open?: boolean = false;
 
+  /**
+   * bdsOpenMenu. Event to return selected date value.
+   */
+  @Event() bdsOpenMenu?: EventEmitter;
+
   componentWillLoad() {
     this.refElement = document.getElementById(this.menu);
     this.intoView = getScrollParent(this.refElement);
+  }
+
+  componentDidLoad() {
+    const positionValue = positionElement({
+      actionElement: this.refElement,
+      changedElement: this.menuElement,
+      intoView: this.intoView,
+    });
+    this.menupositionTop = positionValue.top;
+    this.menupositionLeft = positionValue.left;
   }
 
   @Method()
@@ -44,14 +59,12 @@ export class BdsMenu implements ComponentInterface {
 
   @Watch('open')
   protected openMenu() {
-    const positionValue = positionElement({
-      actionElement: this.refElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
+    this.bdsOpenMenu.emit({ value: this.open });
   }
+
+  private refMenuElement = (el: HTMLElement): void => {
+    this.menuElement = el;
+  };
 
   private onClickCloseButtom = () => {
     this.open = false;
@@ -67,7 +80,7 @@ export class BdsMenu implements ComponentInterface {
       <Host>
         {this.open && <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>}
         <div
-          ref={(el) => (this.menuElement = el as HTMLElement)}
+          ref={this.refMenuElement}
           class={{
             menu: true,
             [`menu__${this.position}`]: true,

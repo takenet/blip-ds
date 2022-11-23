@@ -1,6 +1,7 @@
-import { Component, h, State, Prop, Watch } from '@stencil/core';
+import { Component, h, Element, State, Prop, Watch } from '@stencil/core';
 
 export type closeSubMenuState = 'close' | 'pending' | 'open';
+export type positionSubMenuState = 'right' | 'left';
 
 @Component({
   tag: 'bds-menu-action',
@@ -8,7 +9,13 @@ export type closeSubMenuState = 'close' | 'pending' | 'open';
   shadow: true,
 })
 export class BdsMenuAction {
+  private menuElement?: HTMLBdsMenuElement;
+
+  @Element() private element: HTMLElement;
+
+  @State() openParentMenu?: boolean = false;
   @State() openSubMenu?: boolean = false;
+  @State() positionSubMenu?: positionSubMenuState = 'right';
   @State() stateSubMenu?: closeSubMenuState = 'close';
   @State() delaySubMenu?: boolean = false;
   @State() zIndex?: number = 0;
@@ -26,6 +33,10 @@ export class BdsMenuAction {
    */
   @Prop() iconLeft?: string = null;
   /**
+   * Subtitle. Used to insert a subtitle in the display item.
+   */
+  @Prop() subtitle?: string = null;
+  /**
    * Lipstick. Used to declare that the item will be a negative/error action.
    */
   @Prop() lipstick?: boolean = false;
@@ -33,6 +44,23 @@ export class BdsMenuAction {
   private onCloseSubMenu = (): void => {
     this.stateSubMenu = 'close';
   };
+
+  componentWillLoad() {
+    if (this.subMenu) {
+      this.menuElement = this.element.parentElement as HTMLBdsMenuElement;
+      this.menuElement.addEventListener('bdsOpenMenu', (event) => {
+        this.onChangeOpenParent(event);
+      });
+    }
+  }
+
+  @Watch('openParentMenu')
+  protected openParentMenuChanged(active: boolean): void {
+    if (active) {
+      const divMenu = this.menuElement.shadowRoot.querySelectorAll('div')[0];
+      this.positionSubMenu = divMenu.offsetLeft + divMenu.offsetWidth + 196 >= window.innerWidth ? 'left' : 'right';
+    }
+  }
 
   @Watch('openSubMenu')
   protected openSubMenuChanged(active: boolean): void {
@@ -62,6 +90,10 @@ export class BdsMenuAction {
     }
   }
 
+  private onChangeOpenParent = (event) => {
+    this.openParentMenu = event.detail.value;
+  };
+
   render() {
     const actLeft = this.iconLeft && !this.subMenu;
     const actRight = this.subMenu && !this.iconLeft;
@@ -89,6 +121,7 @@ export class BdsMenuAction {
       <div
         class={{
           menuaction: true,
+          [`position-${this.positionSubMenu}`]: true,
         }}
         onMouseOver={openSubmenu}
         onMouseOut={closeSubmenu}
@@ -103,10 +136,26 @@ export class BdsMenuAction {
           }}
         >
           {this.iconLeft && <bds-icon class="icon-item" name={this.iconLeft} theme="outline" size="small"></bds-icon>}
-          <bds-typo class="typo-item" variant="fs-16" tag="span">
-            {this.buttonText}
-          </bds-typo>
-          {this.subMenu && <bds-icon class="arrow-right" name="arrow-right" theme="outline" size="small"></bds-icon>}
+          <div class="content-item">
+            {this.buttonText && (
+              <bds-typo class="title-item" variant="fs-16" tag="span">
+                {this.buttonText}
+              </bds-typo>
+            )}
+            {this.subtitle && (
+              <bds-typo class="subtitle-item" variant="fs-10" tag="span">
+                {this.subtitle}
+              </bds-typo>
+            )}
+          </div>
+          {this.subMenu && (
+            <bds-icon
+              class={{ arrow: true }}
+              name={`arrow-${this.positionSubMenu}`}
+              theme="outline"
+              size="small"
+            ></bds-icon>
+          )}
         </button>
         {this.subMenu && (
           <div

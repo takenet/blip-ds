@@ -14,6 +14,13 @@
 | `position` | `position` | Position. Used to position the Menu. Either on the left or on the bottom. | `"bottom" \| "right"` | `'right'` |
 
 
+## Events
+
+| Event         | Description                                       | Type               |
+| ------------- | ------------------------------------------------- | ------------------ |
+| `bdsOpenMenu` | bdsOpenMenu. Event to return selected date value. | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `toggle() => Promise<void>`

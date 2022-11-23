@@ -1109,6 +1109,10 @@ export namespace Components {
           * SubMenu. Used to declare that the button will have a submenu.
          */
         "subMenu"?: boolean;
+        /**
+          * Subtitle. Used to insert a subtitle in the display item.
+         */
+        "subtitle"?: string;
     }
     interface BdsMenuExibition {
         /**
@@ -1787,6 +1791,10 @@ export interface BdsInputPasswordCustomEvent<T> extends CustomEvent<T> {
 export interface BdsInputPhoneNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsInputPhoneNumberElement;
+}
+export interface BdsMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsMenuElement;
 }
 export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3512,6 +3520,10 @@ declare namespace LocalJSX {
          */
         "menu"?: string;
         /**
+          * bdsOpenMenu. Event to return selected date value.
+         */
+        "onBdsOpenMenu"?: (event: BdsMenuCustomEvent<any>) => void;
+        /**
           * Open. Used to open/close the menu.
          */
         "open"?: boolean;
@@ -3537,6 +3549,10 @@ declare namespace LocalJSX {
           * SubMenu. Used to declare that the button will have a submenu.
          */
         "subMenu"?: boolean;
+        /**
+          * Subtitle. Used to insert a subtitle in the display item.
+         */
+        "subtitle"?: string;
     }
     interface BdsMenuExibition {
         /**
