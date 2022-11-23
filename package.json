@@ -70,7 +70,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-storybook": "^0.5.12",
+    "eslint-plugin-storybook": "^0.6.7",
     "ghooks": "^2.0.4",
     "jest": "27.4.5",
     "jest-cli": "27.4.5",
