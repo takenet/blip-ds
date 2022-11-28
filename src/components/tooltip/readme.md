@@ -17,6 +17,11 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-input-chips](../input-chips)
+ - [bds-select-chips](../selects/select-chips)
+
 ### Depends on
 
 - [bds-typo](../typo)
@@ -25,6 +30,8 @@
 ```mermaid
 graph TD;
   bds-tooltip --> bds-typo
+  bds-input-chips --> bds-tooltip
+  bds-select-chips --> bds-tooltip
   style bds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -69,7 +69,9 @@ export class Tooltip {
             'tooltip__tip--visible': this.isMouseOver,
           }}
         >
-          <bds-typo variant="fs-12">{this.tooltipText}</bds-typo>
+          <div class={{ tooltip__tip__text: true }}>
+            <bds-typo variant="fs-12">{this.tooltipText}</bds-typo>
+          </div>
         </div>
       </div>
     );

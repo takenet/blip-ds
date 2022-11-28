@@ -255,6 +255,7 @@ $input_fixed: 140px;
 }
 
 .inside-input-left {
+  position: relative;
   display: inline-flex;
   gap: 8px;
   flex-wrap: wrap;

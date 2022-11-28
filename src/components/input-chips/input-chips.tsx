@@ -10,6 +10,8 @@ import { InputChipsTypes } from './input-chips-interface';
 export class InputChips {
   private nativeInput?: HTMLInputElement;
 
+  @State() InputSize?: number = null;
+
   /**
    * Used to set the danger behavior by the internal validators
    */
@@ -371,17 +373,34 @@ export class InputChips {
 
     return this.internalChips.map((chip, index) => {
       const id = index.toString();
-      return (
-        <bds-chip-clickable
-          id={id}
-          key={id}
-          color="default"
-          close={!this.disabled}
-          onChipClickableClose={(event) => this.removeChip(event)}
-        >
-          {chip}
-        </bds-chip-clickable>
-      );
+      const limit = 30;
+      if (chip.length <= limit) {
+        return (
+          <bds-chip-clickable
+            id={id}
+            key={id}
+            color="default"
+            close={!this.disabled}
+            onChipClickableClose={(event) => this.removeChip(event)}
+          >
+            {chip}
+          </bds-chip-clickable>
+        );
+      } else {
+        return (
+          <bds-tooltip key={id} position="top-center" tooltip-text={chip}>
+            <bds-chip-clickable
+              id={id}
+              key={id}
+              color="default"
+              close={!this.disabled}
+              onChipClickableClose={(event) => this.removeChip(event)}
+            >
+              {`${chip.slice(0, limit)} ...`}
+            </bds-chip-clickable>
+          </bds-tooltip>
+        );
+      }
     });
   }
 

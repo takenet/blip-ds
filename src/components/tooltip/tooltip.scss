@@ -157,5 +157,8 @@ $tooltip-border-width: 6px;
         top: 60%;
       }
     }
+    &__text {
+      overflow: hidden;
+    }
   }
 }

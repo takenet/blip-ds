@@ -115,6 +115,7 @@ Type: `Promise<void>`
 ### Depends on
 
 - [bds-chip-clickable](../chip-clickable)
+- [bds-tooltip](../tooltip)
 - [bds-icon](../icon)
 - [bds-typo](../typo)
 
@@ -122,6 +123,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   bds-input-chips --> bds-chip-clickable
+  bds-input-chips --> bds-tooltip
   bds-input-chips --> bds-icon
   bds-input-chips --> bds-typo
   bds-chip-clickable --> bds-icon
@@ -129,6 +131,7 @@ graph TD;
   bds-chip-clickable --> bds-typo
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
+  bds-tooltip --> bds-typo
   style bds-input-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
