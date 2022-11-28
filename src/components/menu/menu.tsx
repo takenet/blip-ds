@@ -42,16 +42,6 @@ export class BdsMenu implements ComponentInterface {
     this.intoView = getScrollParent(this.refElement);
   }
 
-  componentDidLoad() {
-    const positionValue = positionElement({
-      actionElement: this.refElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
-  }
-
   @Method()
   async toggle() {
     this.open = !this.open;
@@ -60,6 +50,15 @@ export class BdsMenu implements ComponentInterface {
   @Watch('open')
   protected openMenu() {
     this.bdsOpenMenu.emit({ value: this.open });
+    if (this.open) {
+      const positionValue = positionElement({
+        actionElement: this.refElement,
+        changedElement: this.menuElement,
+        intoView: this.intoView,
+      });
+      this.menupositionTop = positionValue.top;
+      this.menupositionLeft = positionValue.left;
+    }
   }
 
   private refMenuElement = (el: HTMLElement): void => {
@@ -78,7 +77,6 @@ export class BdsMenu implements ComponentInterface {
 
     return (
       <Host>
-        {this.open && <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>}
         <div
           ref={this.refMenuElement}
           class={{
@@ -90,6 +88,7 @@ export class BdsMenu implements ComponentInterface {
         >
           <slot></slot>
         </div>
+        {this.open && <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>}
       </Host>
     );
   }
