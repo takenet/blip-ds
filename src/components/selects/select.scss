@@ -221,6 +221,7 @@ $select-options-max-height: 250px;
 
     &__text {
       @include reset-input();
+      width: 100%;
       @include input-text();
       @include custom-scroll();
 
