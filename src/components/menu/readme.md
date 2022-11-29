@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event         | Description                                       | Type               |
-| ------------- | ------------------------------------------------- | ------------------ |
-| `bdsOpenMenu` | bdsOpenMenu. Event to return selected date value. | `CustomEvent<any>` |
+| Event       | Description                                     | Type               |
+| ----------- | ----------------------------------------------- | ------------------ |
+| `bdsToggle` | bdsToggle. Event to return selected date value. | `CustomEvent<any>` |
 
 
 ## Methods

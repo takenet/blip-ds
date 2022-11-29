@@ -33,9 +33,9 @@ export class BdsMenu implements ComponentInterface {
   public open?: boolean = false;
 
   /**
-   * bdsOpenMenu. Event to return selected date value.
+   * bdsToggle. Event to return selected date value.
    */
-  @Event() bdsOpenMenu?: EventEmitter;
+  @Event() bdsToggle?: EventEmitter;
 
   componentWillLoad() {
     this.refElement = document.getElementById(this.menu);
@@ -49,7 +49,7 @@ export class BdsMenu implements ComponentInterface {
 
   @Watch('open')
   protected openMenu() {
-    this.bdsOpenMenu.emit({ value: this.open });
+    this.bdsToggle.emit({ value: this.open });
     if (this.open) {
       const positionValue = positionElement({
         actionElement: this.refElement,

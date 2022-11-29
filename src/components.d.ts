@@ -3520,9 +3520,9 @@ declare namespace LocalJSX {
          */
         "menu"?: string;
         /**
-          * bdsOpenMenu. Event to return selected date value.
+          * bdsToggle. Event to return selected date value.
          */
-        "onBdsOpenMenu"?: (event: BdsMenuCustomEvent<any>) => void;
+        "onBdsToggle"?: (event: BdsMenuCustomEvent<any>) => void;
         /**
           * Open. Used to open/close the menu.
          */
