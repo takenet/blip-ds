@@ -38,14 +38,17 @@ const solidIconsName = [
   'folder',
   'info',
   'level-up',
+  'mark',
   'organize-blocks',
   'organize-list',
+  'pin',
   'pix',
   'qrcode',
   'question',
   'save',
   'send',
   'sms',
+  'unpin',
   'video',
   'voip',
   'warning',
@@ -124,6 +127,7 @@ const outlineIconsName = [
   'external-file',
   'eye-closed',
   'eye-open',
+  'exit',
   'false',
   'faq',
   'favorite',
@@ -167,6 +171,7 @@ const outlineIconsName = [
   'lock',
   'logout',
   'mail',
+  'mark',
   'megaphone',
   'menu-dot',
   'menu-hamburger',
@@ -189,6 +194,7 @@ const outlineIconsName = [
   'paperplane',
   'payment-card',
   'payment-card-cvc',
+  'pin',
   'pix',
   'plugin',
   'plus',
@@ -235,6 +241,7 @@ const outlineIconsName = [
   'true',
   'undo',
   'unlock',
+  'unpin',
   'upload',
   'user-active',
   'user-default',
@@ -379,7 +386,7 @@ const iconWrapperStyles = {
   flexWrap: 'wrap',
 };
 
-export const allOutlineIcons = () => {
+export const AllOutlineIcons = () => {
   const story = [];
 
   outlineIconsName.forEach((name) => {
@@ -394,7 +401,7 @@ export const allOutlineIcons = () => {
   return <div style={iconWrapperStyles}>{story}</div>;
 };
 
-export const allSolidIcons = () => {
+export const AllSolidIcons = () => {
   const story = [];
 
   solidIconsName.forEach((name) => {
@@ -409,7 +416,7 @@ export const allSolidIcons = () => {
   return <div style={iconWrapperStyles}>{story}</div>;
 };
 
-export const allEmojis = () => {
+export const AllEmojis = () => {
   const story = [];
 
   emojiNames.forEach((name) => {
@@ -424,7 +431,7 @@ export const allEmojis = () => {
   return <div style={iconWrapperStyles}>{story}</div>;
 };
 
-export const allLogos = () => {
+export const AllLogos = () => {
   const story = [];
 
   logoNames.forEach((name) => {
@@ -439,7 +446,7 @@ export const allLogos = () => {
   return <div style={iconWrapperStyles}>{story}</div>;
 };
 
-export const iconColors = () => (
+export const IconColors = () => (
   <>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#2CC3D5"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#87DDE8"></bds-icon>
@@ -450,7 +457,7 @@ export const iconColors = () => (
   </>
 );
 
-export const iconOutline = () => (
+export const IconOutline = () => (
   <div style={zeroHeightStyles}>
     <bds-icon
       style={zeroHeightIconStyles}
@@ -490,7 +497,7 @@ export const iconOutline = () => (
   </div>
 );
 
-export const iconSolid = () => (
+export const IconSolid = () => (
   <div style={zeroHeightStyles}>
     <bds-icon
       style={zeroHeightIconStyles}
@@ -530,7 +537,7 @@ export const iconSolid = () => (
   </div>
 );
 
-export const iconSize = () => (
+export const IconSize = () => (
   <div style={zeroHeightStyles}>
     <bds-icon style={zeroHeightIconStyles} name="info" size="brand"></bds-icon>
     <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large"></bds-icon>
@@ -545,7 +552,7 @@ export const iconSize = () => (
   </div>
 );
 
-export const iconEmoji = () => (
+export const IconEmoji = () => (
   <>
     <div style={zeroHeightStyles}>
       <bds-icon
@@ -587,7 +594,7 @@ export const iconEmoji = () => (
   </>
 );
 
-export const iconLogo = () => (
+export const IconLogo = () => (
   <>
     <div style={zeroHeightStyles}>
       <bds-icon name="gbm" size="xxx-large" type="logo" aria-label="logo da gbm"></bds-icon>
