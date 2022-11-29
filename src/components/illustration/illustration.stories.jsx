@@ -59,6 +59,7 @@ const defaults = [
 ];
 
 const screens = [
+  'dashboard',
   'screen-home',
   'screen-control-panel',
   'screen-builder',
@@ -110,7 +111,7 @@ const blipSolid = [
   'thug-life',
   'wink',
   'worker',
-  'wow'
+  'wow',
 ];
 
 const blipOutline = [
@@ -142,13 +143,10 @@ const blipOutline = [
   'thug-life',
   'wink',
   'worker',
-  'wow'
-]
+  'wow',
+];
 
-const logoIntegration = [
-  'blip-instagram',
-  'blip-whatsapp',
-]
+const logoIntegration = ['blip-instagram', 'blip-whatsapp'];
 
 const illustrationStyles = {
   width: '200px',
@@ -162,7 +160,7 @@ const illustrationWrapperStyles = {
   flexWrap: 'wrap',
 };
 
-export const illustrationsDefault = () => {
+export const IllustrationsDefault = () => {
   const defaultArray = [];
 
   defaults.forEach((name) => {
@@ -177,7 +175,7 @@ export const illustrationsDefault = () => {
   return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
 };
 
-export const illustrationsScreens = () => {
+export const IllustrationsScreens = () => {
   const defaultArray = [];
 
   screens.forEach((name) => {
@@ -192,7 +190,7 @@ export const illustrationsScreens = () => {
   return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
 };
 
-export const illustrationsBlipSolid = () => {
+export const IllustrationsBlipSolid = () => {
   const defaultArray = [];
 
   blipSolid.forEach((name) => {
@@ -207,7 +205,7 @@ export const illustrationsBlipSolid = () => {
   return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
 };
 
-export const illustrationsBlipOutline = () => {
+export const IllustrationsBlipOutline = () => {
   const defaultArray = [];
 
   blipOutline.forEach((name) => {
@@ -222,7 +220,7 @@ export const illustrationsBlipOutline = () => {
   return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
 };
 
-export const illustrationsLogoIntegration = () => {
+export const IllustrationsLogoIntegration = () => {
   const defaultArray = [];
 
   logoIntegration.forEach((name) => {
