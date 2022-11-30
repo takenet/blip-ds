@@ -65,8 +65,9 @@ export class BdsMenu implements ComponentInterface {
     this.menuElement = el;
   };
 
-  private onClickCloseButtom = () => {
+  private onClickCloseButtom = (event) => {
     this.open = false;
+    event.stopPropagation();
   };
 
   render() {
@@ -88,7 +89,7 @@ export class BdsMenu implements ComponentInterface {
         >
           <slot></slot>
         </div>
-        {this.open && <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>}
+        {this.open && <div class={{ outzone: true }} onClick={(ev) => this.onClickCloseButtom(ev)}></div>}
       </Host>
     );
   }
