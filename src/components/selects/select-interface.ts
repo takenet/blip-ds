@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Option {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  value: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  label: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  bulkOption?: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  status?: any;
+  value: string;
+  label: string;
+  icon?: string;
+  iconColor?: string;
+  titleText?: string;
+  slotAlign?: string;
+  bulkOption?: string;
+  status?: string;
 }
 
 export interface SelectChangeEventDetail {

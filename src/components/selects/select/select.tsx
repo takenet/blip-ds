@@ -210,7 +210,7 @@ export class Select {
       if (this.internalOptions) {
         const internalOption = this.internalOptions.find((option) => option.value == opt.value);
         if (internalOption) {
-          return internalOption.label;
+          return internalOption.titleText ? internalOption.titleText : internalOption.label;
         }
       }
       return opt.querySelector(`#bds-typo-label-${this.value}`).textContent;
@@ -358,11 +358,27 @@ export class Select {
           }}
         >
           {this.internalOptions ? (
-            this.internalOptions.map((option, idx) => (
-              <bds-select-option value={option.value} key={idx} bulkOption={option.bulkOption} status={option.status}>
-                {option.label}
-              </bds-select-option>
-            ))
+            this.internalOptions.map((option, idx) =>
+              option.icon || option.titleText ? (
+                <bds-select-option
+                  key={idx}
+                  value={option.value}
+                  title-text={option.titleText}
+                  slot-align={option.slotAlign}
+                  bulkOption={option.bulkOption}
+                  status={option.status}
+                >
+                  {option.icon && (
+                    <bds-icon slot="input-left" name={option.icon} size="medium" color={option.iconColor}></bds-icon>
+                  )}
+                  {option.label}
+                </bds-select-option>
+              ) : (
+                <bds-select-option key={idx} value={option.value} bulkOption={option.bulkOption} status={option.status}>
+                  {option.label}
+                </bds-select-option>
+              )
+            )
           ) : (
             <slot />
           )}
