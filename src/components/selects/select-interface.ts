@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Option {
-  value: string;
-  label: string;
-  icon?: string;
-  iconColor?: string;
-  titleText?: string;
-  slotAlign?: string;
-  bulkOption?: string;
-  status?: string;
+  value: any;
+  label: any;
+  icon?: any;
+  iconColor?: any;
+  titleText?: any;
+  slotAlign?: any;
+  bulkOption?: any;
+  status?: any;
 }
 
 export interface SelectChangeEventDetail {
