@@ -29,9 +29,7 @@ export class TabPanel implements ComponentInterface {
           ['bds-tab-panel--selected']: this.isActive,
         }}
       >
-        <bds-typo>
-          <slot />
-        </bds-typo>
+        <slot />
       </Host>
     );
   }

@@ -1,5 +1,11 @@
+@import 'fonts';
+
 .bds-tab-panel {
   display: none;
+  font-family: $font-family;
+  font-size: $fs-16;
+  font-style: normal;
+  font-weight: normal;
 
   &--selected {
     display: block;
