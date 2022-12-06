@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Method } from '@stencil/core';
+import { Component, h, Element, Prop, EventEmitter, Event, Method } from '@stencil/core';
 
 export type collapses = 'single' | 'multiple';
 
@@ -8,7 +8,7 @@ export type collapses = 'single' | 'multiple';
   shadow: true,
 })
 export class AccordionGroup {
-  private accordionElement?: HTMLCollectionOf<HTMLBdsAccordionElement> = null;
+  private accordionsElement?: HTMLCollectionOf<HTMLBdsAccordionElement> = null;
 
   @Element() private element: HTMLElement;
   /**
@@ -16,22 +16,30 @@ export class AccordionGroup {
    */
   @Prop() collapse?: collapses = 'single';
 
+  /**
+   * bdsAccordionCloseAll. Event to return value when accordion is closed.
+   */
+  @Event() bdsAccordionCloseAll?: EventEmitter;
+
   @Method()
   async closeAll(actNumber) {
-    if (this.collapse != 'multiple') {
-      for (let i = 0; i < this.accordionElement.length; i++) {
-        if (actNumber != i) this.accordionElement[i].close();
+    this.bdsAccordionCloseAll.emit();
+    for (let i = 0; i < this.accordionsElement.length; i++) {
+      if (this.collapse != 'multiple') {
+        if (actNumber != i) this.accordionsElement[i].close();
+      } else {
+        this.accordionsElement[i].close();
       }
     }
   }
 
   componentWillRender() {
-    this.accordionElement = this.element.getElementsByTagName(
+    this.accordionsElement = this.element.getElementsByTagName(
       'bds-accordion'
     ) as HTMLCollectionOf<HTMLBdsAccordionElement>;
 
-    for (let i = 0; i < this.accordionElement.length; i++) {
-      this.accordionElement[i].reciveNumber(i);
+    for (let i = 0; i < this.accordionsElement.length; i++) {
+      this.accordionsElement[i].reciveNumber(i);
     }
   }
 

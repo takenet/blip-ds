@@ -1,4 +1,4 @@
-import { Component, h, State, Element, Method, Watch } from '@stencil/core';
+import { Component, h, State, Element, Method, EventEmitter, Event, Watch } from '@stencil/core';
 
 @Component({
   tag: 'bds-accordion',
@@ -15,9 +15,29 @@ export class AccordionGroup {
   @State() isOpen?: boolean = false;
   @State() numberElement?: number = null;
 
+  /**
+   * bdsToggle. Event to return value of toggle.
+   */
+  @Event() bdsToggle?: EventEmitter;
+
+  /**
+   * bdsAccordionOpen. Event to return value when accordion is open.
+   */
+  @Event() bdsAccordionOpen?: EventEmitter;
+
+  /**
+   * bdsAccordionOpen. Event to return value when accordion is closed.
+   */
+  @Event() bdsAccordionClose?: EventEmitter;
+
   @Method()
   async toggle() {
     this.isOpen = !this.isOpen;
+  }
+
+  @Method()
+  async open() {
+    this.isOpen = true;
   }
 
   @Method()
@@ -32,10 +52,16 @@ export class AccordionGroup {
   }
 
   @Watch('isOpen')
-  isOpenChanged(): void {
+  isOpenChanged(value): void {
     this.accheaders?.toggle();
     this.accBodies?.toggle();
-    if (this.accGroup) this.accGroup?.closeAll(this.numberElement);
+    this.bdsToggle.emit({ value: value });
+    if (value) {
+      this.bdsAccordionOpen.emit();
+    } else {
+      this.bdsAccordionClose.emit();
+    }
+    if (this.accGroup.collapse == 'single') this.accGroup?.closeAll(this.numberElement);
   }
 
   componentWillRender() {

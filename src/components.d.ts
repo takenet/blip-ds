@@ -48,6 +48,7 @@ import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
+        "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
         "toggle": () => Promise<void>;
     }
@@ -1724,6 +1725,14 @@ export namespace Components {
     interface BdsWarning {
     }
 }
+export interface BdsAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsAccordionElement;
+}
+export interface BdsAccordionGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsAccordionGroupElement;
+}
 export interface BdsAutocompleteCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsAutocompleteElement;
@@ -2344,6 +2353,18 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BdsAccordion {
+        /**
+          * bdsAccordionOpen. Event to return value when accordion is closed.
+         */
+        "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<any>) => void;
+        /**
+          * bdsAccordionOpen. Event to return value when accordion is open.
+         */
+        "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<any>) => void;
+        /**
+          * bdsToggle. Event to return value of toggle.
+         */
+        "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
     }
     interface BdsAccordionBody {
     }
@@ -2352,6 +2373,10 @@ declare namespace LocalJSX {
           * Focus Selected. Used to add title in header accordion.
          */
         "collapse"?: collapses;
+        /**
+          * bdsAccordionCloseAll. Event to return value when accordion is closed.
+         */
+        "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
     }
     interface BdsAccordionHeader {
         /**
