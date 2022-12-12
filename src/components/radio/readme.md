@@ -51,6 +51,10 @@ Type: `Promise<boolean>`
 
 ## Dependencies
 
+### Used by
+
+ - [bds-list-item](../list)
+
 ### Depends on
 
 - [bds-typo](../typo)
@@ -59,6 +63,7 @@ Type: `Promise<boolean>`
 ```mermaid
 graph TD;
   bds-radio --> bds-typo
+  bds-list-item --> bds-radio
   style bds-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

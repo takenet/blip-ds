@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.list {
+  &_item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 10px 16px;
+
+    & .avatar-item {
+      display: block;
+    }
+
+    & .icon-item {
+      color: $color-neutral-dark-rooftop;
+    }
+
+    & .grow-up {
+      flex-grow: 2;
+    }
+
+    & .content-item {
+      display: flex;
+      gap: 2px;
+      flex-direction: column;
+
+      & .title-item {
+        color: $color-neutral-dark-eclipse;
+      }
+
+      & .subtitle-item {
+        color: $color-neutral-medium-elephant;
+      }
+    }
+
+    .content-list {
+      flex-grow: 2;
+      ::slotted(*) {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+      }
+    }
+
+    .action-area {
+      ::slotted(*) {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}

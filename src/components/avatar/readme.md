@@ -31,6 +31,7 @@
  - [bds-accordion-header](../accordion)
  - [bds-avatar-group](../avatar-group)
  - [bds-chip-clickable](../chip-clickable)
+ - [bds-list-item](../list)
  - [bds-menu-exibition](../menu/menu-exibition)
  - [bds-table](../table)
 
@@ -47,6 +48,7 @@ graph TD;
   bds-accordion-header --> bds-avatar
   bds-avatar-group --> bds-avatar
   bds-chip-clickable --> bds-avatar
+  bds-list-item --> bds-avatar
   bds-menu-exibition --> bds-avatar
   bds-table --> bds-avatar
   style bds-avatar fill:#f9f,stroke:#333,stroke-width:4px
