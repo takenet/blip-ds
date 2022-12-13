@@ -1,7 +1,7 @@
 import { Element, Component, Host, h, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import { TypeList } from './list';
 
 export type avatarSize = 'extra-small' | 'small' | 'standard';
-export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
 
 @Component({
   tag: 'bds-list-item',

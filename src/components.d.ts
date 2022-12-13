@@ -32,7 +32,8 @@ import { InputChipsTypes } from "./components/input-chips/input-chips-interface"
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
 import { TypeList } from "./components/list/list";
-import { avatarSize as avatarSize2, TypeList as TypeList1 } from "./components/list/list-item";
+import { TypeList as TypeList1 } from "./components/list/list";
+import { avatarSize as avatarSize2 } from "./components/list/list-item";
 import { loadingBarSize } from "./components/loading-bar/loading-bar";
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
@@ -1070,7 +1071,7 @@ export namespace Components {
         /**
           * AvatarName. Used to enter the avatar name.
          */
-        "typeList"?: TypeList;
+        "typeList"?: TypeList1;
         /**
           * Value. Used to insert a title in the display item.
          */
@@ -3599,7 +3600,7 @@ declare namespace LocalJSX {
         /**
           * AvatarName. Used to enter the avatar name.
          */
-        "typeList"?: TypeList;
+        "typeList"?: TypeList1;
         /**
           * Value. Used to insert a title in the display item.
          */
