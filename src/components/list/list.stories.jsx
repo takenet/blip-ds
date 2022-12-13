@@ -11,24 +11,14 @@ export default {
 export const List = () => (
   <>
     <bds-list type-list="default">
-      <bds-list-item value="List Item Title" subtitle="Secondary Text"></bds-list-item>
-      <bds-list-item value="List Item Title" subtitle="Secondary Text">
-        <div slot="content-list">
+      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="1" text="List Item Title" secondary-text="Secondary Text">
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
       </bds-list-item>
-      <bds-list-item value="List Item Title" subtitle="Secondary Text">
-        <div slot="content-list">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
-        </div>
-        <div slot="action-area">
-          <bds-button-icon variant="secondary" icon="copy" size="short"></bds-button-icon>
-          <bds-button-icon variant="secondary" icon="settings-general" size="short"></bds-button-icon>
-          <bds-button-icon variant="secondary" icon="more-options-horizontal" size="short"></bds-button-icon>
-        </div>
-      </bds-list-item>
-      <bds-list-item value="Settings" subtitle="Secondary Text" icon="settings-builder">
-        <div slot="content-list">
+      <bds-list-item value="2" text="List Item Title" secondary-text="Secondary Text">
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
         <div slot="action-area">
@@ -37,8 +27,24 @@ export const List = () => (
           <bds-button-icon variant="secondary" icon="more-options-horizontal" size="short"></bds-button-icon>
         </div>
       </bds-list-item>
-      <bds-list-item avatar-name="Michael Scott" avatar-size="extra-small" value="Michael Scott" subtitle="Manager">
-        <div slot="content-list">
+      <bds-list-item value="3" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+        <div slot="content-area">
+          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+        </div>
+        <div slot="action-area">
+          <bds-button-icon variant="secondary" icon="copy" size="short"></bds-button-icon>
+          <bds-button-icon variant="secondary" icon="settings-general" size="short"></bds-button-icon>
+          <bds-button-icon variant="secondary" icon="more-options-horizontal" size="short"></bds-button-icon>
+        </div>
+      </bds-list-item>
+      <bds-list-item
+        value="4"
+        avatar-name="Michael Scott"
+        avatar-size="extra-small"
+        text="Michael Scott"
+        secondary-text="Manager"
+      >
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
         <div slot="action-area">
@@ -54,14 +60,20 @@ export const List = () => (
 export const ListRadio = () => (
   <>
     <bds-list type-list="radio">
-      <bds-list-item value="List Item Title" subtitle="Secondary Text"></bds-list-item>
-      <bds-list-item value="Settings" subtitle="Secondary Text" icon="settings-builder">
-        <div slot="content-list">
+      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="1" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
       </bds-list-item>
-      <bds-list-item avatar-name="Michael Scott" avatar-size="extra-small" value="Michael Scott" subtitle="Manager">
-        <div slot="content-list">
+      <bds-list-item
+        value="2"
+        avatar-name="Michael Scott"
+        avatar-size="extra-small"
+        text="Michael Scott"
+        secondary-text="Manager"
+      >
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
       </bds-list-item>
@@ -72,14 +84,20 @@ export const ListRadio = () => (
 export const ListChecbox = () => (
   <>
     <bds-list type-list="checkbox">
-      <bds-list-item value="List Item Title" subtitle="Secondary Text"></bds-list-item>
-      <bds-list-item value="Settings" subtitle="Secondary Text" icon="settings-builder">
-        <div slot="content-list">
+      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="1" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
       </bds-list-item>
-      <bds-list-item avatar-name="Michael Scott" avatar-size="extra-small" value="Michael Scott" subtitle="Manager">
-        <div slot="content-list">
+      <bds-list-item
+        value="2"
+        avatar-name="Michael Scott"
+        avatar-size="extra-small"
+        text="Michael Scott"
+        secondary-text="Manager"
+      >
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
       </bds-list-item>
@@ -90,14 +108,20 @@ export const ListChecbox = () => (
 export const ListSwitch = () => (
   <>
     <bds-list type-list="switch">
-      <bds-list-item value="List Item Title" subtitle="Secondary Text"></bds-list-item>
-      <bds-list-item value="Settings" subtitle="Secondary Text" icon="settings-builder">
-        <div slot="content-list">
+      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="1" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
       </bds-list-item>
-      <bds-list-item avatar-name="Michael Scott" avatar-size="extra-small" value="Michael Scott" subtitle="Manager">
-        <div slot="content-list">
+      <bds-list-item
+        value="2"
+        avatar-name="Michael Scott"
+        avatar-size="extra-small"
+        text="Michael Scott"
+        secondary-text="Manager"
+      >
+        <div slot="content-area">
           <bds-chip-clickable>Label Chip</bds-chip-clickable>
         </div>
       </bds-list-item>

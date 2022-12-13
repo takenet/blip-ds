@@ -55,4 +55,8 @@
 
 .clickable {
   cursor: pointer;
+  &:hover {
+    background-color: $color-neutral-light-whisper;
+    mix-blend-mode: multiply;
+  }
 }

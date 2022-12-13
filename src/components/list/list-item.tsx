@@ -9,7 +9,8 @@ export type avatarSize = 'extra-small' | 'small' | 'standard';
   shadow: true,
 })
 export class ListItem {
-  private hasContentSlot: boolean;
+  private hasActionAreaSlot: boolean;
+  private hasContentAreaSlot: boolean;
 
   @Element() hostElement: HTMLElement;
 
@@ -27,10 +28,6 @@ export class ListItem {
    */
   @Prop() avatarThumbnail?: string = null;
   /**
-   * AvatarSize. Used to set avatar size.
-   */
-  @Prop() avatarSize?: avatarSize = 'extra-small';
-  /**
    * Icon. Used to add icon in header accordion.
    */
   @Prop() icon?: string = null;
@@ -39,9 +36,13 @@ export class ListItem {
    */
   @Prop() value: string = null;
   /**
-   * Subtitle. Used to insert a subtitle in the display item.
+   * Text. Used to insert a secondaryText in the display item.
    */
-  @Prop() subtitle?: string = null;
+  @Prop() text?: string = null;
+  /**
+   * SecondaryText. Used to insert a secondaryText in the display item.
+   */
+  @Prop() secondaryText?: string = null;
 
   /**
    * Emitted when the value has changed because of a click event.
@@ -49,7 +50,8 @@ export class ListItem {
   @Event() bdsChange!: EventEmitter;
 
   componentWillLoad() {
-    this.hasContentSlot = !!this.hostElement.querySelector('[slot="footer"]');
+    this.hasActionAreaSlot = !!this.hostElement.querySelector('[slot="action-area"]');
+    this.hasContentAreaSlot = !!this.hostElement.querySelector('[slot="content-area"]');
   }
 
   @Watch('checked')
@@ -87,27 +89,27 @@ export class ListItem {
               class="avatar-item"
               name={this.avatarName}
               thumbnail={this.avatarThumbnail}
-              size={this.avatarSize}
+              size="extra-small"
             ></bds-avatar>
           ) : (
             this.icon && <bds-icon class="icon-item" size="medium" name={this.icon} color="inherit"></bds-icon>
           )}
-          <div class={{ [`content-item`]: true, [`grow-up`]: this.hasContentSlot }}>
-            {this.value && (
+          <div class={{ [`content-item`]: true, [`grow-up`]: !this.hasActionAreaSlot && !this.hasContentAreaSlot }}>
+            {this.text && (
               <bds-typo class="title-item" variant="fs-16" tag="span">
-                {this.value}
+                {this.text}
               </bds-typo>
             )}
-            {this.subtitle && (
+            {this.secondaryText && (
               <bds-typo class="subtitle-item" variant="fs-12" line-height="small" tag="span">
-                {this.subtitle}
+                {this.secondaryText}
               </bds-typo>
             )}
           </div>
-          <div class="content-list">
-            <slot name="content-list"></slot>
+          <div class={{ [`content-area`]: true, [`grow-up`]: true }}>
+            <slot name="content-area"></slot>
           </div>
-          <div class="action-area">
+          <div class={{ [`action-area`]: true }}>
             <slot name="action-area"></slot>
           </div>
           {this.typeList == 'switch' && <bds-switch refer="" name="" checked={this.checked}></bds-switch>}

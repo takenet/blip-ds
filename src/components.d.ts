@@ -33,11 +33,10 @@ import { InputEditableEventDetail, SizeInputEditable } from "./components/input-
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
 import { TypeList } from "./components/list/list";
 import { TypeList as TypeList1 } from "./components/list/list";
-import { avatarSize as avatarSize2 } from "./components/list/list-item";
 import { loadingBarSize } from "./components/loading-bar/loading-bar";
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
-import { avatarSize as avatarSize3 } from "./components/menu/menu-exibition/menu-exibition";
+import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
@@ -1052,10 +1051,6 @@ export namespace Components {
          */
         "avatarName"?: string;
         /**
-          * AvatarSize. Used to set avatar size.
-         */
-        "avatarSize"?: avatarSize;
-        /**
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
@@ -1065,9 +1060,13 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Subtitle. Used to insert a subtitle in the display item.
+          * SecondaryText. Used to insert a secondaryText in the display item.
          */
-        "subtitle"?: string;
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a secondaryText in the display item.
+         */
+        "text"?: string;
         /**
           * AvatarName. Used to enter the avatar name.
          */
@@ -3577,10 +3576,6 @@ declare namespace LocalJSX {
          */
         "avatarName"?: string;
         /**
-          * AvatarSize. Used to set avatar size.
-         */
-        "avatarSize"?: avatarSize;
-        /**
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
@@ -3594,9 +3589,13 @@ declare namespace LocalJSX {
          */
         "onBdsChange"?: (event: BdsListItemCustomEvent<any>) => void;
         /**
-          * Subtitle. Used to insert a subtitle in the display item.
+          * SecondaryText. Used to insert a secondaryText in the display item.
          */
-        "subtitle"?: string;
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a secondaryText in the display item.
+         */
+        "text"?: string;
         /**
           * AvatarName. Used to enter the avatar name.
          */

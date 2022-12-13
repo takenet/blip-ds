@@ -45,7 +45,6 @@ export class List {
   valueChanged(value: string) {
     if (this.typeList == 'radio') {
       this.setSelectedRadio(value);
-      this.bdsListChange.emit({ value: value });
     }
   }
 
@@ -62,6 +61,15 @@ export class List {
       radios[i].checked = false;
       if (radios[i].checked == false && value == getValue) {
         radios[i].checked = true;
+        const construct = {
+          value: radios[i].value,
+          text: radios[i]?.text,
+          secondaryText: radios[i]?.secondaryText,
+          avatarName: radios[i]?.avatarName,
+          avatarThumbnail: radios[i]?.avatarThumbnail,
+          typeList: radios[i]?.typeList,
+        };
+        this.bdsListChange.emit(construct);
       }
     }
   }
@@ -69,8 +77,17 @@ export class List {
   private setSelectedCheckbox() {
     const checkboxs = this.itemListElement;
     const itens = Array.from(checkboxs);
-    const result = itens.filter((item) => item.checked).map((term) => term?.value);
-    this.bdsListChange.emit({ value: result });
+    const result = itens
+      .filter((item) => item.checked)
+      .map((term) => ({
+        value: term.value,
+        text: term?.text,
+        secondaryText: term?.secondaryText,
+        avatarName: term?.avatarName,
+        avatarThumbnail: term?.avatarThumbnail,
+        typeList: term?.typeList,
+      }));
+    this.bdsListChange.emit(result);
   }
 
   render() {
