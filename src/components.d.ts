@@ -31,8 +31,8 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
-import { TypeList } from "./components/list/list";
-import { TypeList as TypeList1 } from "./components/list/list";
+import { Data } from "./components/list/list-interface";
+import { TypeList } from "./components/list/list-item";
 import { loadingBarSize } from "./components/loading-bar/loading-bar";
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
@@ -1039,13 +1039,20 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsList {
-        "typeList"?: TypeList;
+        /**
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "data"?: string | Data[];
         /**
           * The value of the selected radio
          */
         "value"?: string;
     }
     interface BdsListItem {
+        /**
+          * The chips on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
+         */
+        "actionsButtons": string | string[];
         /**
           * AvatarName. Used to enter the avatar name.
          */
@@ -1055,6 +1062,10 @@ export namespace Components {
          */
         "avatarThumbnail"?: string;
         "checked"?: boolean;
+        /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips": string | string[];
         /**
           * Icon. Used to add icon in header accordion.
          */
@@ -1070,7 +1081,7 @@ export namespace Components {
         /**
           * AvatarName. Used to enter the avatar name.
          */
-        "typeList"?: TypeList1;
+        "typeList"?: TypeList;
         /**
           * Value. Used to insert a title in the display item.
          */
@@ -3561,16 +3572,39 @@ declare namespace LocalJSX {
     }
     interface BdsList {
         /**
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "data"?: string | Data[];
+        /**
+          * Emitted when the value has changed because of a click event.
+         */
+        "onBdsClickActionsButtons"?: (event: BdsListCustomEvent<any>) => void;
+        /**
           * Emitted when the value has changed because of a click event.
          */
         "onBdsListChange"?: (event: BdsListCustomEvent<any>) => void;
-        "typeList"?: TypeList;
+        /**
+          * Emitted when the value has changed because of a click event.
+         */
+        "onBdsListCheckboxChange"?: (event: BdsListCustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed because of a click event.
+         */
+        "onBdsListRadioChange"?: (event: BdsListCustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed because of a click event.
+         */
+        "onBdsListSwitchChange"?: (event: BdsListCustomEvent<any>) => void;
         /**
           * The value of the selected radio
          */
         "value"?: string;
     }
     interface BdsListItem {
+        /**
+          * The chips on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
+         */
+        "actionsButtons"?: string | string[];
         /**
           * AvatarName. Used to enter the avatar name.
          */
@@ -3581,13 +3615,21 @@ declare namespace LocalJSX {
         "avatarThumbnail"?: string;
         "checked"?: boolean;
         /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips"?: string | string[];
+        /**
           * Icon. Used to add icon in header accordion.
          */
         "icon"?: string;
         /**
           * Emitted when the value has changed because of a click event.
          */
-        "onBdsChange"?: (event: BdsListItemCustomEvent<any>) => void;
+        "onBdsChecked"?: (event: BdsListItemCustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed because of a click event.
+         */
+        "onBdsClickActionButtom"?: (event: BdsListItemCustomEvent<any>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -3599,7 +3641,7 @@ declare namespace LocalJSX {
         /**
           * AvatarName. Used to enter the avatar name.
          */
-        "typeList"?: TypeList1;
+        "typeList"?: TypeList;
         /**
           * Value. Used to insert a title in the display item.
          */

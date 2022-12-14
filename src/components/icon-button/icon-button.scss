@@ -49,7 +49,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button($color-disabled-bg, $color-disabled-text)
+    @include disable-button($color-disabled-bg, $color-disabled-text);
   }
 }
 
@@ -73,7 +73,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(transparent, $color-disabled-text )
+    @include disable-button(transparent, $color-disabled-text);
   }
 }
 
@@ -83,12 +83,12 @@ $icon-button-padding: 8px;
 
   &:hover,
   &:focus {
-    background: rgba($color-neutral-light-snow, .3);
+    background: rgba($color-neutral-light-snow, 0.3);
     color: $color-neutral-light-snow;
   }
 
   &:active {
-    background: rgba($color-neutral-light-snow, .4);
+    background: rgba($color-neutral-light-snow, 0.4);
     color: $color-neutral-light-snow;
   }
 
@@ -134,7 +134,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button($color-disabled-delete, $color-disabled-wrong )
+    @include disable-button($color-disabled-delete, $color-disabled-wrong);
   }
 }
 
@@ -160,7 +160,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text)
+    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
@@ -188,7 +188,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(transparent, $color-disabled-text ,1px solid $color-disabled-text )
+    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
@@ -206,6 +206,10 @@ $icon-button-padding: 8px;
 
   border-radius: $icon-button-border-radius;
   padding: $icon-button-padding;
+
+  & * {
+    pointer-events: none;
+  }
 
   &--primary {
     @include icon-button-primary();

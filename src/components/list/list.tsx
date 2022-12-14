@@ -1,6 +1,5 @@
-import { Element, Component, Host, h, Prop, Event, EventEmitter, Watch } from '@stencil/core';
-
-export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
+import { Element, Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import { Data } from './list-interface';
 
 @Component({
   tag: 'bds-list',
@@ -8,11 +7,11 @@ export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
   shadow: true,
 })
 export class List {
-  private itemListElement?: HTMLCollectionOf<HTMLBdsListItemElement> = null;
+  private itemListElement?: HTMLCollectionOf<HTMLBdsListItemElement> | NodeListOf<HTMLBdsListItemElement> = null;
 
   @Element() private element: HTMLElement;
 
-  @Prop() typeList?: TypeList = 'default';
+  @State() internalData: Data[];
 
   /**
    * The value of the selected radio
@@ -20,47 +19,103 @@ export class List {
   @Prop({ mutable: true, reflect: true }) value?: string;
 
   /**
-   * Emitted when the value has changed because of a click event.
+   * The Data of the list
+   * Should be passed this way:
+   * data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]'
+   * Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
    */
-  @Event() bdsListChange!: EventEmitter;
+  @Prop({ mutable: true, reflect: true }) data?: string | Data[];
+
+  /**
+   * Emitted when the value checkboxes has changed because of a click event.
+   */
+  @Event() bdsListCheckboxChange!: EventEmitter;
+  /**
+   * Emitted when the value radios has changed because of a click event.
+   */
+  @Event() bdsListRadioChange!: EventEmitter;
+  /**
+   * Emitted when the value switches has changed because of a click event.
+   */
+  @Event() bdsListSwitchChange!: EventEmitter;
+  /**
+   * Emitted when click in someone actions buttom insert in data.
+   */
+  @Event() bdsClickActionsButtons!: EventEmitter;
+
+  componentWillLoad() {
+    this.data && this.dataChanged();
+  }
 
   componentWillRender() {
+    this.data && this.updateData();
+    if (!this.data) {
+      this.setitemListElement();
+    }
+  }
+  componentDidRender() {
+    if (this.data) {
+      this.internalDataChanged();
+    }
+  }
+
+  @Watch('data')
+  dataChanged() {
+    this.updateData();
+  }
+
+  @Watch('value')
+  valueChanged(value: string) {
+    this.setSelectedRadio(value);
+  }
+
+  @Watch('internalData')
+  internalDataChanged() {
+    this.itemListElement = this.element.shadowRoot.querySelectorAll('bds-list-item');
+  }
+
+  private setitemListElement() {
     this.itemListElement = this.element.getElementsByTagName(
       'bds-list-item'
     ) as HTMLCollectionOf<HTMLBdsListItemElement>;
 
     for (let i = 0; i < this.itemListElement.length; i++) {
-      this.itemListElement[i].typeList = this.typeList;
-      if (this.typeList == 'radio') {
-        this.itemListElement[i].addEventListener('bdsChange', (event: CustomEvent) =>
-          this.chagedOptions(this.itemListElement[i].value, event)
-        );
-      } else if (this.typeList == 'checkbox' || this.typeList == 'switch') {
-        this.itemListElement[i].addEventListener('bdsChange', () => this.setSelectedCheckbox());
+      this.itemListElement[i].addEventListener('bdsChecked', (event: CustomEvent) => this.chagedOptions(event));
+    }
+  }
+
+  private updateData() {
+    if (this.data) {
+      if (typeof this.data === 'string') {
+        this.internalData = JSON.parse(this.data);
+      } else {
+        this.internalData = this.data;
       }
     }
   }
 
-  @Watch('value')
-  valueChanged(value: string) {
-    if (this.typeList == 'radio') {
-      this.setSelectedRadio(value);
+  private chagedOptions = (event: CustomEvent): void => {
+    const { detail } = event;
+    if (detail.typeList == 'radio') {
+      if (detail.checked == true) {
+        this.value = detail;
+      }
     }
-  }
-
-  private chagedOptions = (value: string, event: CustomEvent): void => {
-    if (event.detail.checked == true) {
-      this.value = value;
+    if (detail.typeList == 'checkbox') {
+      this.setSelectedCheckbox();
+    }
+    if (detail.typeList == 'switch') {
+      this.setSelectedSwitch();
     }
   };
 
-  private setSelectedRadio(value: string) {
-    const radios = this.itemListElement;
+  private setSelectedRadio(itemList) {
+    const itens = Array.from(this.itemListElement);
+    const radios = itens.filter((item) => item.typeList == 'radio');
     for (let i = 0; i < radios.length; i++) {
-      const getValue = radios[i].value;
-      radios[i].checked = false;
-      if (radios[i].checked == false && value == getValue) {
-        radios[i].checked = true;
+      if (radios[i].value != itemList.value) {
+        radios[i].checked = false;
+      } else {
         const construct = {
           value: radios[i].value,
           text: radios[i]?.text,
@@ -69,14 +124,14 @@ export class List {
           avatarThumbnail: radios[i]?.avatarThumbnail,
           typeList: radios[i]?.typeList,
         };
-        this.bdsListChange.emit(construct);
+        this.bdsListRadioChange.emit(construct);
       }
     }
   }
 
   private setSelectedCheckbox() {
     const checkboxs = this.itemListElement;
-    const itens = Array.from(checkboxs);
+    const itens = Array.from(checkboxs).filter((item) => item.typeList == 'checkbox');
     const result = itens
       .filter((item) => item.checked)
       .map((term) => ({
@@ -87,8 +142,29 @@ export class List {
         avatarThumbnail: term?.avatarThumbnail,
         typeList: term?.typeList,
       }));
-    this.bdsListChange.emit(result);
+    this.bdsListCheckboxChange.emit(result);
   }
+
+  private setSelectedSwitch() {
+    const Switch = this.itemListElement;
+    const itens = Array.from(Switch).filter((item) => item.typeList == 'switch');
+    const result = itens
+      .filter((item) => item.checked)
+      .map((term) => ({
+        value: term.value,
+        text: term?.text,
+        secondaryText: term?.secondaryText,
+        avatarName: term?.avatarName,
+        avatarThumbnail: term?.avatarThumbnail,
+        typeList: term?.typeList,
+      }));
+    this.bdsListSwitchChange.emit(result);
+  }
+
+  private onClickActionsButtons = (event: CustomEvent): void => {
+    const { detail } = event;
+    this.bdsClickActionsButtons.emit(detail);
+  };
 
   render() {
     return (
@@ -98,7 +174,26 @@ export class List {
             list: true,
           }}
         >
-          <slot></slot>
+          {this.internalData ? (
+            this.internalData.map((item, idx) => (
+              <bds-list-item
+                key={idx}
+                value={item.value}
+                text={item.text}
+                type-list={item.typeList}
+                secondary-text={item.secondaryText}
+                avatar-name={item.avatarName}
+                avatar-thumbnail={item.avatarThumbnail}
+                icon={item.icon}
+                chips={item.chips}
+                actionsButtons={item.actionsButtons}
+                onBdsChecked={(ev) => this.chagedOptions(ev)}
+                onBdsClickActionButtom={(ev) => this.onClickActionsButtons(ev)}
+              ></bds-list-item>
+            ))
+          ) : (
+            <slot></slot>
+          )}
         </div>
       </Host>
     );

@@ -1,5 +1,6 @@
 :host {
   display: block;
+  width: 100%;
 }
 
 .list {
@@ -35,8 +36,9 @@
       }
     }
 
-    .content-list {
+    .content-area {
       flex-grow: 2;
+      .internal-chips,
       ::slotted(*) {
         display: flex;
         flex-direction: row;
@@ -45,9 +47,11 @@
     }
 
     .action-area {
+      .internal-actions-buttons,
       ::slotted(*) {
         display: flex;
         flex-direction: row;
+        color: $color-neutral-dark-rooftop;
       }
     }
   }

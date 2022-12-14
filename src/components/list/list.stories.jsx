@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import readme from './readme.md';
 
 export default {
@@ -10,16 +10,19 @@ export default {
 
 export const List = () => (
   <>
-    <bds-list type-list="default">
-      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
-      <bds-list-item value="1" text="List Item Title" secondary-text="Secondary Text">
+    <bds-list>
+      <bds-list-item value="01" text="Text" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="02" text="Text" secondary-text="Secondary Text">
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
+        </div>
+        <div slot="action-area">
+          <bds-typo variant="fs-12">text</bds-typo>
         </div>
       </bds-list-item>
-      <bds-list-item value="2" text="List Item Title" secondary-text="Secondary Text">
+      <bds-list-item value="03" text="Text" secondary-text="Secondary Text">
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
         <div slot="action-area">
           <bds-button-icon variant="secondary" icon="copy" size="short"></bds-button-icon>
@@ -27,9 +30,17 @@ export const List = () => (
           <bds-button-icon variant="secondary" icon="more-options-horizontal" size="short"></bds-button-icon>
         </div>
       </bds-list-item>
-      <bds-list-item value="3" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+      <bds-list-item value="05" text="Text" secondary-text="Secondary Text" icon="blip-ideas">
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
+        </div>
+        <div slot="action-area">
+          <bds-typo variant="fs-12">text</bds-typo>
+        </div>
+      </bds-list-item>
+      <bds-list-item value="06" text="Text" secondary-text="Secondary Text" icon="blip-ideas">
+        <div slot="content-area">
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
         <div slot="action-area">
           <bds-button-icon variant="secondary" icon="copy" size="short"></bds-button-icon>
@@ -37,15 +48,17 @@ export const List = () => (
           <bds-button-icon variant="secondary" icon="more-options-horizontal" size="short"></bds-button-icon>
         </div>
       </bds-list-item>
-      <bds-list-item
-        value="4"
-        avatar-name="Michael Scott"
-        avatar-size="extra-small"
-        text="Michael Scott"
-        secondary-text="Manager"
-      >
+      <bds-list-item value="08" text="Text" secondary-text="Secondary Text" avatar-name="Alvare Horta">
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
+        </div>
+        <div slot="action-area">
+          <bds-typo variant="fs-12">text</bds-typo>
+        </div>
+      </bds-list-item>
+      <bds-list-item value="09" text="Text" secondary-text="Secondary Text" avatar-name="Alvare Horta">
+        <div slot="content-area">
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
         <div slot="action-area">
           <bds-button-icon variant="secondary" icon="copy" size="short"></bds-button-icon>
@@ -59,22 +72,41 @@ export const List = () => (
 
 export const ListRadio = () => (
   <>
-    <bds-list type-list="radio">
-      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
-      <bds-list-item value="1" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+    <bds-list>
+      <bds-list-item value="01" type-list="radio" text="Text" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="02" type-list="radio" text="Text" secondary-text="Secondary Text">
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
       </bds-list-item>
       <bds-list-item
-        value="2"
-        avatar-name="Michael Scott"
-        avatar-size="extra-small"
-        text="Michael Scott"
-        secondary-text="Manager"
+        value="03"
+        type-list="radio"
+        text="Text"
+        secondary-text="Secondary Text"
+        icon="blip-ideas"
+      ></bds-list-item>
+      <bds-list-item value="04" type-list="radio" text="Text" secondary-text="Secondary Text" icon="blip-ideas">
+        <div slot="content-area">
+          <bds-chip-clickable>Label</bds-chip-clickable>
+        </div>
+      </bds-list-item>
+      <bds-list-item
+        value="05"
+        type-list="radio"
+        text="Text"
+        secondary-text="Secondary Text"
+        avatar-name="Alvare Horta"
+      ></bds-list-item>
+      <bds-list-item
+        value="06"
+        type-list="radio"
+        text="Text"
+        secondary-text="Secondary Text"
+        avatar-name="Alvare Horta"
       >
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
       </bds-list-item>
     </bds-list>
@@ -83,22 +115,41 @@ export const ListRadio = () => (
 
 export const ListChecbox = () => (
   <>
-    <bds-list type-list="checkbox">
-      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
-      <bds-list-item value="1" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+    <bds-list>
+      <bds-list-item value="01" type-list="checkbox" text="Text" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="02" type-list="checkbox" text="Text" secondary-text="Secondary Text">
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
       </bds-list-item>
       <bds-list-item
-        value="2"
-        avatar-name="Michael Scott"
-        avatar-size="extra-small"
-        text="Michael Scott"
-        secondary-text="Manager"
+        value="03"
+        type-list="checkbox"
+        text="Text"
+        secondary-text="Secondary Text"
+        icon="blip-ideas"
+      ></bds-list-item>
+      <bds-list-item value="04" type-list="checkbox" text="Text" secondary-text="Secondary Text" icon="blip-ideas">
+        <div slot="content-area">
+          <bds-chip-clickable>Label</bds-chip-clickable>
+        </div>
+      </bds-list-item>
+      <bds-list-item
+        value="05"
+        type-list="checkbox"
+        text="Text"
+        secondary-text="Secondary Text"
+        avatar-name="Alvare Horta"
+      ></bds-list-item>
+      <bds-list-item
+        value="06"
+        type-list="checkbox"
+        text="Text"
+        secondary-text="Secondary Text"
+        avatar-name="Alvare Horta"
       >
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
       </bds-list-item>
     </bds-list>
@@ -107,24 +158,120 @@ export const ListChecbox = () => (
 
 export const ListSwitch = () => (
   <>
-    <bds-list type-list="switch">
-      <bds-list-item value="0" text="List Item Title" secondary-text="Secondary Text"></bds-list-item>
-      <bds-list-item value="1" text="Settings" secondary-text="Secondary Text" icon="settings-builder">
+    <bds-list>
+      <bds-list-item value="01" type-list="switch" text="Text" secondary-text="Secondary Text"></bds-list-item>
+      <bds-list-item value="02" type-list="switch" text="Text" secondary-text="Secondary Text">
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
       </bds-list-item>
       <bds-list-item
-        value="2"
-        avatar-name="Michael Scott"
-        avatar-size="extra-small"
-        text="Michael Scott"
-        secondary-text="Manager"
+        value="03"
+        type-list="switch"
+        text="Text"
+        secondary-text="Secondary Text"
+        icon="blip-ideas"
+      ></bds-list-item>
+      <bds-list-item value="04" type-list="switch" text="Text" secondary-text="Secondary Text" icon="blip-ideas">
+        <div slot="content-area">
+          <bds-chip-clickable>Label</bds-chip-clickable>
+        </div>
+      </bds-list-item>
+      <bds-list-item
+        value="05"
+        type-list="switch"
+        text="Text"
+        secondary-text="Secondary Text"
+        avatar-name="Alvare Horta"
+      ></bds-list-item>
+      <bds-list-item
+        value="06"
+        type-list="switch"
+        text="Text"
+        secondary-text="Secondary Text"
+        avatar-name="Alvare Horta"
       >
         <div slot="content-area">
-          <bds-chip-clickable>Label Chip</bds-chip-clickable>
+          <bds-chip-clickable>Label</bds-chip-clickable>
         </div>
       </bds-list-item>
     </bds-list>
   </>
 );
+
+export const ListData = () => {
+  const elementRf = useRef(null);
+  const listData = [
+    {
+      value: '01',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'default',
+      chips: ['Label'],
+      actionsButtons: ['copy', 'settings-general', 'more-options-horizontal'],
+    },
+    {
+      value: '02',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'radio',
+    },
+    {
+      value: '03',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'radio',
+    },
+    {
+      value: '04',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'radio',
+    },
+    {
+      value: '05',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'checkbox',
+    },
+    {
+      value: '06',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'checkbox',
+    },
+    {
+      value: '07',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'checkbox',
+    },
+    {
+      value: '08',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'switch',
+    },
+    {
+      value: '09',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'switch',
+    },
+    {
+      value: '10',
+      text: 'Text',
+      secondaryText: 'Secondary Text',
+      typeList: 'switch',
+    },
+  ];
+
+  useEffect(() => {
+    elementRf.current.data = listData;
+  });
+  return (
+    <>
+      <bds-list ref={elementRf}></bds-list>
+    </>
+  );
+};

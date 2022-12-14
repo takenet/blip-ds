@@ -21,6 +21,7 @@
 ### Used by
 
  - [bds-banner](../banner)
+ - [bds-list-item](../list)
  - [bds-pagination](../pagination)
  - [bds-sidebar](../sidebar)
  - [bds-table](../table)
@@ -37,6 +38,7 @@
 graph TD;
   bds-button-icon --> bds-icon
   bds-banner --> bds-button-icon
+  bds-list-item --> bds-button-icon
   bds-pagination --> bds-button-icon
   bds-sidebar --> bds-button-icon
   bds-table --> bds-button-icon
