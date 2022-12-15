@@ -50,6 +50,10 @@ Type: `Promise<boolean>`
 
 ## Dependencies
 
+### Used by
+
+ - [bds-list-item](../list)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -60,6 +64,7 @@ Type: `Promise<boolean>`
 graph TD;
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
+  bds-list-item --> bds-checkbox
   style bds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

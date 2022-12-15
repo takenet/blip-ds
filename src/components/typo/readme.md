@@ -52,6 +52,7 @@
  - [bds-input-editable](../input-editable)
  - [bds-input-password](../input-password)
  - [bds-input-phone-number](../input-phone-number)
+ - [bds-list-item](../list)
  - [bds-menu-action](../menu/menu-action)
  - [bds-menu-exibition](../menu/menu-exibition)
  - [bds-menu-list-item](../menu-list-item)
@@ -94,6 +95,7 @@ graph TD;
   bds-input-editable --> bds-typo
   bds-input-password --> bds-typo
   bds-input-phone-number --> bds-typo
+  bds-list-item --> bds-typo
   bds-menu-action --> bds-typo
   bds-menu-exibition --> bds-typo
   bds-menu-list-item --> bds-typo

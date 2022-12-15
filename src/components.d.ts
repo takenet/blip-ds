@@ -31,6 +31,9 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
+import { TypeList } from "./components/list/list";
+import { Data } from "./components/list/list-interface";
+import { TypeList as TypeList1 } from "./components/list/list";
 import { loadingBarSize } from "./components/loading-bar/loading-bar";
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
@@ -1036,6 +1039,59 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    interface BdsList {
+        /**
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "data"?: string | Data[];
+        /**
+          * Typelist. Used to .
+         */
+        "typeList"?: TypeList;
+        /**
+          * The value of the selected radio
+         */
+        "value"?: string;
+    }
+    interface BdsListItem {
+        /**
+          * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
+         */
+        "actionsButtons": string | string[];
+        /**
+          * AvatarName. Used to enter the avatar name.
+         */
+        "avatarName"?: string;
+        /**
+          * AvatarThumbnail. Used to insert the avatar photo.
+         */
+        "avatarThumbnail"?: string;
+        "checked"?: boolean;
+        /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips": string | string[];
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text"?: string;
+        /**
+          * Typelis. Used toselect type of item list.
+         */
+        "typeList"?: TypeList1;
+        /**
+          * Value. Used to insert a value in list item.
+         */
+        "value": string;
+    }
     interface BdsLoadingBar {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -1801,6 +1857,14 @@ export interface BdsInputPhoneNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsInputPhoneNumberElement;
 }
+export interface BdsListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsListElement;
+}
+export interface BdsListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsListItemElement;
+}
 export interface BdsMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsMenuElement;
@@ -2074,6 +2138,18 @@ declare global {
         prototype: HTMLBdsInputPhoneNumberElement;
         new (): HTMLBdsInputPhoneNumberElement;
     };
+    interface HTMLBdsListElement extends Components.BdsList, HTMLStencilElement {
+    }
+    var HTMLBdsListElement: {
+        prototype: HTMLBdsListElement;
+        new (): HTMLBdsListElement;
+    };
+    interface HTMLBdsListItemElement extends Components.BdsListItem, HTMLStencilElement {
+    }
+    var HTMLBdsListItemElement: {
+        prototype: HTMLBdsListItemElement;
+        new (): HTMLBdsListItemElement;
+    };
     interface HTMLBdsLoadingBarElement extends Components.BdsLoadingBar, HTMLStencilElement {
     }
     var HTMLBdsLoadingBarElement: {
@@ -2315,6 +2391,8 @@ declare global {
         "bds-input-editable": HTMLBdsInputEditableElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
+        "bds-list": HTMLBdsListElement;
+        "bds-list-item": HTMLBdsListItemElement;
         "bds-loading-bar": HTMLBdsLoadingBarElement;
         "bds-loading-page": HTMLBdsLoadingPageElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
@@ -3497,6 +3575,83 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    interface BdsList {
+        /**
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+         */
+        "data"?: string | Data[];
+        /**
+          * Emitted when click in someone actions buttom insert in data.
+         */
+        "onBdsClickActionsButtons"?: (event: BdsListCustomEvent<any>) => void;
+        /**
+          * Emitted when the value checkboxes has changed because of a click event.
+         */
+        "onBdsListCheckboxChange"?: (event: BdsListCustomEvent<any>) => void;
+        /**
+          * Emitted when the value radios has changed because of a click event.
+         */
+        "onBdsListRadioChange"?: (event: BdsListCustomEvent<any>) => void;
+        /**
+          * Emitted when the value switches has changed because of a click event.
+         */
+        "onBdsListSwitchChange"?: (event: BdsListCustomEvent<any>) => void;
+        /**
+          * Typelist. Used to .
+         */
+        "typeList"?: TypeList;
+        /**
+          * The value of the selected radio
+         */
+        "value"?: string;
+    }
+    interface BdsListItem {
+        /**
+          * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
+         */
+        "actionsButtons"?: string | string[];
+        /**
+          * AvatarName. Used to enter the avatar name.
+         */
+        "avatarName"?: string;
+        /**
+          * AvatarThumbnail. Used to insert the avatar photo.
+         */
+        "avatarThumbnail"?: string;
+        "checked"?: boolean;
+        /**
+          * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
+         */
+        "chips"?: string | string[];
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * Emitted when the value has changed because of a click event.
+         */
+        "onBdsChecked"?: (event: BdsListItemCustomEvent<any>) => void;
+        /**
+          * Emitted when click in someone actions buttom insert in data.
+         */
+        "onBdsClickActionButtom"?: (event: BdsListItemCustomEvent<any>) => void;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text"?: string;
+        /**
+          * Typelis. Used toselect type of item list.
+         */
+        "typeList"?: TypeList1;
+        /**
+          * Value. Used to insert a value in list item.
+         */
+        "value"?: string;
+    }
     interface BdsLoadingBar {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -4255,6 +4410,8 @@ declare namespace LocalJSX {
         "bds-input-editable": BdsInputEditable;
         "bds-input-password": BdsInputPassword;
         "bds-input-phone-number": BdsInputPhoneNumber;
+        "bds-list": BdsList;
+        "bds-list-item": BdsListItem;
         "bds-loading-bar": BdsLoadingBar;
         "bds-loading-page": BdsLoadingPage;
         "bds-loading-spinner": BdsLoadingSpinner;
@@ -4331,6 +4488,8 @@ declare module "@stencil/core" {
             "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
+            "bds-list": LocalJSX.BdsList & JSXBase.HTMLAttributes<HTMLBdsListElement>;
+            "bds-list-item": LocalJSX.BdsListItem & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
             "bds-loading-bar": LocalJSX.BdsLoadingBar & JSXBase.HTMLAttributes<HTMLBdsLoadingBarElement>;
             "bds-loading-page": LocalJSX.BdsLoadingPage & JSXBase.HTMLAttributes<HTMLBdsLoadingPageElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
