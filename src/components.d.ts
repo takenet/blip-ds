@@ -31,8 +31,9 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
+import { TypeList } from "./components/list/list";
 import { Data } from "./components/list/list-interface";
-import { TypeList } from "./components/list/list-item";
+import { TypeList as TypeList1 } from "./components/list/list";
 import { loadingBarSize } from "./components/loading-bar/loading-bar";
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
@@ -1044,13 +1045,17 @@ export namespace Components {
          */
         "data"?: string | Data[];
         /**
+          * Typelist. Used to .
+         */
+        "typeList"?: TypeList;
+        /**
           * The value of the selected radio
          */
         "value"?: string;
     }
     interface BdsListItem {
         /**
-          * The chips on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
+          * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
          */
         "actionsButtons": string | string[];
         /**
@@ -1067,7 +1072,7 @@ export namespace Components {
          */
         "chips": string | string[];
         /**
-          * Icon. Used to add icon in header accordion.
+          * Icon. Used to add icon in list item.
          */
         "icon"?: string;
         /**
@@ -1075,15 +1080,15 @@ export namespace Components {
          */
         "secondaryText"?: string;
         /**
-          * Text. Used to insert a secondaryText in the display item.
+          * Text. Used to insert a text in the display item.
          */
         "text"?: string;
         /**
-          * AvatarName. Used to enter the avatar name.
+          * Typelis. Used toselect type of item list.
          */
-        "typeList"?: TypeList;
+        "typeList"?: TypeList1;
         /**
-          * Value. Used to insert a title in the display item.
+          * Value. Used to insert a value in list item.
          */
         "value": string;
     }
@@ -3576,25 +3581,25 @@ declare namespace LocalJSX {
          */
         "data"?: string | Data[];
         /**
-          * Emitted when the value has changed because of a click event.
+          * Emitted when click in someone actions buttom insert in data.
          */
         "onBdsClickActionsButtons"?: (event: BdsListCustomEvent<any>) => void;
         /**
-          * Emitted when the value has changed because of a click event.
-         */
-        "onBdsListChange"?: (event: BdsListCustomEvent<any>) => void;
-        /**
-          * Emitted when the value has changed because of a click event.
+          * Emitted when the value checkboxes has changed because of a click event.
          */
         "onBdsListCheckboxChange"?: (event: BdsListCustomEvent<any>) => void;
         /**
-          * Emitted when the value has changed because of a click event.
+          * Emitted when the value radios has changed because of a click event.
          */
         "onBdsListRadioChange"?: (event: BdsListCustomEvent<any>) => void;
         /**
-          * Emitted when the value has changed because of a click event.
+          * Emitted when the value switches has changed because of a click event.
          */
         "onBdsListSwitchChange"?: (event: BdsListCustomEvent<any>) => void;
+        /**
+          * Typelist. Used to .
+         */
+        "typeList"?: TypeList;
         /**
           * The value of the selected radio
          */
@@ -3602,7 +3607,7 @@ declare namespace LocalJSX {
     }
     interface BdsListItem {
         /**
-          * The chips on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
+          * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
          */
         "actionsButtons"?: string | string[];
         /**
@@ -3619,7 +3624,7 @@ declare namespace LocalJSX {
          */
         "chips"?: string | string[];
         /**
-          * Icon. Used to add icon in header accordion.
+          * Icon. Used to add icon in list item.
          */
         "icon"?: string;
         /**
@@ -3627,7 +3632,7 @@ declare namespace LocalJSX {
          */
         "onBdsChecked"?: (event: BdsListItemCustomEvent<any>) => void;
         /**
-          * Emitted when the value has changed because of a click event.
+          * Emitted when click in someone actions buttom insert in data.
          */
         "onBdsClickActionButtom"?: (event: BdsListItemCustomEvent<any>) => void;
         /**
@@ -3635,15 +3640,15 @@ declare namespace LocalJSX {
          */
         "secondaryText"?: string;
         /**
-          * Text. Used to insert a secondaryText in the display item.
+          * Text. Used to insert a text in the display item.
          */
         "text"?: string;
         /**
-          * AvatarName. Used to enter the avatar name.
+          * Typelis. Used toselect type of item list.
          */
-        "typeList"?: TypeList;
+        "typeList"?: TypeList1;
         /**
-          * Value. Used to insert a title in the display item.
+          * Value. Used to insert a value in list item.
          */
         "value"?: string;
     }

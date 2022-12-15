@@ -1,4 +1,4 @@
-import { TypeList } from './list-item';
+import { TypeList } from './list';
 
 export interface Data {
   value: string;

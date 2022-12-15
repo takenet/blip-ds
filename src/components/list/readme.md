@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property          | Attribute          | Description                                                                                                                     | Type                                             | Default     |
-| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ----------- |
-| `actionsButtons`  | `actions-buttons`  | The chips on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]' | `string \| string[]`                             | `[]`        |
-| `avatarName`      | `avatar-name`      | AvatarName. Used to enter the avatar name.                                                                                      | `string`                                         | `null`      |
-| `avatarThumbnail` | `avatar-thumbnail` | AvatarThumbnail. Used to insert the avatar photo.                                                                               | `string`                                         | `null`      |
-| `checked`         | `checked`          |                                                                                                                                 | `boolean`                                        | `false`     |
-| `chips`           | `chips`            | The chips on the component Should be passed this way: chips='["chip1", "chip2"]'                                                | `string \| string[]`                             | `[]`        |
-| `icon`            | `icon`             | Icon. Used to add icon in header accordion.                                                                                     | `string`                                         | `null`      |
-| `secondaryText`   | `secondary-text`   | SecondaryText. Used to insert a secondaryText in the display item.                                                              | `string`                                         | `null`      |
-| `text`            | `text`             | Text. Used to insert a secondaryText in the display item.                                                                       | `string`                                         | `null`      |
-| `typeList`        | `type-list`        | AvatarName. Used to enter the avatar name.                                                                                      | `"checkbox" \| "default" \| "radio" \| "switch"` | `'default'` |
-| `value`           | `value`            | Value. Used to insert a title in the display item.                                                                              | `string`                                         | `null`      |
+| Property          | Attribute          | Description                                                                                                                               | Type                                             | Default |
+| ----------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------- |
+| `actionsButtons`  | `actions-buttons`  | The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]' | `string \| string[]`                             | `[]`    |
+| `avatarName`      | `avatar-name`      | AvatarName. Used to enter the avatar name.                                                                                                | `string`                                         | `null`  |
+| `avatarThumbnail` | `avatar-thumbnail` | AvatarThumbnail. Used to insert the avatar photo.                                                                                         | `string`                                         | `null`  |
+| `checked`         | `checked`          |                                                                                                                                           | `boolean`                                        | `false` |
+| `chips`           | `chips`            | The chips on the component Should be passed this way: chips='["chip1", "chip2"]'                                                          | `string \| string[]`                             | `[]`    |
+| `icon`            | `icon`             | Icon. Used to add icon in list item.                                                                                                      | `string`                                         | `null`  |
+| `secondaryText`   | `secondary-text`   | SecondaryText. Used to insert a secondaryText in the display item.                                                                        | `string`                                         | `null`  |
+| `text`            | `text`             | Text. Used to insert a text in the display item.                                                                                          | `string`                                         | `null`  |
+| `typeList`        | `type-list`        | Typelis. Used toselect type of item list.                                                                                                 | `"checkbox" \| "default" \| "radio" \| "switch"` | `null`  |
+| `value`           | `value`            | Value. Used to insert a value in list item.                                                                                               | `string`                                         | `null`  |
 
 
 ## Events
@@ -26,7 +26,7 @@
 | Event                  | Description                                                  | Type               |
 | ---------------------- | ------------------------------------------------------------ | ------------------ |
 | `bdsChecked`           | Emitted when the value has changed because of a click event. | `CustomEvent<any>` |
-| `bdsClickActionButtom` | Emitted when the value has changed because of a click event. | `CustomEvent<any>` |
+| `bdsClickActionButtom` | Emitted when click in someone actions buttom insert in data. | `CustomEvent<any>` |
 
 
 ## Dependencies

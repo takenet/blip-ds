@@ -1,8 +1,5 @@
 import { Element, Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
-
-export type avatarSize = 'extra-small' | 'small' | 'standard';
-export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
-
+import { TypeList } from './list';
 @Component({
   tag: 'bds-list-item',
   styleUrl: 'list.scss',
@@ -20,9 +17,9 @@ export class ListItem {
 
   @Prop({ mutable: true, reflect: true }) checked?: boolean = false;
   /**
-   * AvatarName. Used to enter the avatar name.
+   * Typelis. Used toselect type of item list.
    */
-  @Prop() typeList?: TypeList = 'default';
+  @Prop() typeList?: TypeList = null;
   /**
    * AvatarName. Used to enter the avatar name.
    */
@@ -227,7 +224,7 @@ export class ListItem {
             {this.internalChips.length > 0 && <div class="internal-chips">{this.renderChips()}</div>}
             <slot name="content-area"></slot>
           </div>
-          {this.typeList == 'default' && (
+          {(!this.typeList || this.typeList == 'default') && (
             <div class={{ [`action-area`]: true }}>
               {this.internalActionsButtons.length > 0 && (
                 <div class="internal-actions-buttons">{this.renderActionsButtons()}</div>

@@ -1,6 +1,8 @@
 import { Element, Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 import { Data } from './list-interface';
 
+export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
+
 @Component({
   tag: 'bds-list',
   styleUrl: 'list.scss',
@@ -12,7 +14,10 @@ export class List {
   @Element() private element: HTMLElement;
 
   @State() internalData: Data[];
-
+  /**
+   * Typelist. Used to .
+   */
+  @Prop() typeList?: TypeList = null;
   /**
    * The value of the selected radio
    */
@@ -80,6 +85,7 @@ export class List {
     ) as HTMLCollectionOf<HTMLBdsListItemElement>;
 
     for (let i = 0; i < this.itemListElement.length; i++) {
+      this.itemListElement[i].typeList = this.typeList;
       this.itemListElement[i].addEventListener('bdsChecked', (event: CustomEvent) => this.chagedOptions(event));
     }
   }
@@ -180,7 +186,7 @@ export class List {
                 key={idx}
                 value={item.value}
                 text={item.text}
-                type-list={item.typeList}
+                type-list={this.typeList ? this.typeList : item.typeList}
                 secondary-text={item.secondaryText}
                 avatar-name={item.avatarName}
                 avatar-thumbnail={item.avatarThumbnail}
