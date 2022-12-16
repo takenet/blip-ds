@@ -2,12 +2,12 @@ import { TypeList } from './list';
 
 export interface Data {
   value: string;
-  text: string;
-  secondaryText: string;
-  typeList: TypeList;
-  avatarName: string;
-  avatarThumbnail: string;
-  icon: string;
-  chips: string[];
-  actionsButtons: string[];
+  text?: string;
+  secondaryText?: string;
+  typeList?: TypeList;
+  avatarName?: string;
+  avatarThumbnail?: string;
+  icon?: string;
+  chips?: string[];
+  actionsButtons?: string[];
 }
