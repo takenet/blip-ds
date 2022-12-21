@@ -1,0 +1,26 @@
+.bds-hover:hover {
+  mix-blend-mode: multiply;
+}
+
+.focus {
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::before {
+      border-color: $color-primary-purples-bell;
+    }
+  }
+}
+
+.disabled {
+    pointer-events: none;
+}
