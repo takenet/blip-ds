@@ -1809,6 +1809,10 @@ export interface BdsBannerLinkCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsBannerLinkElement;
 }
+export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsButtonElement;
+}
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCheckboxElement;
@@ -2672,6 +2676,10 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * Event buttom onClick.
+         */
+        "onBdsClick"?: (event: BdsButtonCustomEvent<any>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */

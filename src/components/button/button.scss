@@ -71,6 +71,10 @@ $button-padding-left-right: 16px;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 
+  & * {
+    pointer-events: none;
+  }
+
   &--size-tall {
     @include padding-button-top-bottom($button-size-tall, $height-standard);
 
