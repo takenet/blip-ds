@@ -41,7 +41,7 @@ import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu
 import { sizes } from "./components/modal/modal";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { sidebarPosition } from "./components/sidebar/sidebar";
+import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { Overflow } from "./components/tabs/tabs-interface";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
@@ -1502,10 +1502,18 @@ export namespace Components {
          */
         "isOpen"?: boolean;
         /**
+          * If true, a lateral margin will apear in the content.
+         */
+        "margin"?: boolean;
+        /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
          */
         "sidebarPosition"?: sidebarPosition;
         "toggle": () => Promise<void>;
+        /**
+          * sidebar type. Used to define how open.
+         */
+        "type"?: sidebarType;
     }
     interface BdsStep {
         /**
@@ -4109,9 +4117,17 @@ declare namespace LocalJSX {
          */
         "isOpen"?: boolean;
         /**
+          * If true, a lateral margin will apear in the content.
+         */
+        "margin"?: boolean;
+        /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
          */
         "sidebarPosition"?: sidebarPosition;
+        /**
+          * sidebar type. Used to define how open.
+         */
+        "type"?: sidebarType;
     }
     interface BdsStep {
         /**
