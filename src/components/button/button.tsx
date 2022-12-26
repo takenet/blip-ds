@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -85,6 +85,11 @@ export class Button {
    */
   @Prop() dataTest?: string = null;
 
+  /**
+   * Event buttom onClick.
+   */
+  @Event() bdsClick: EventEmitter;
+
   getSizeClass(): string {
     return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
   }
@@ -134,12 +139,13 @@ export class Button {
     }
   }
 
-  private handleClick = (ev: Event) => {
+  private handleClick = (ev: MouseEvent) => {
     if (!this.disabled) {
+      this.bdsClick.emit();
+
       const form = this.el.closest('form');
       if (form) {
         ev.preventDefault();
-
         const fakeButton = document.createElement('button');
         fakeButton.type = this.type;
         fakeButton.style.display = 'none';
@@ -155,7 +161,7 @@ export class Button {
 
     return (
       <button
-        onClick={this.handleClick}
+        onClick={(ev) => this.handleClick(ev)}
         disabled={this.disabled}
         type={this.type}
         class={{
