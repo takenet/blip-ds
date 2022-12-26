@@ -10,7 +10,9 @@
 | Property          | Attribute          | Description                                                                         | Type                | Default  |
 | ----------------- | ------------------ | ----------------------------------------------------------------------------------- | ------------------- | -------- |
 | `isOpen`          | `is-open`          | ; isOpen. Used to open sidebar.                                                     | `boolean`           | `false`  |
+| `margin`          | `margin`           | If true, a lateral margin will apear in the content.                                | `boolean`           | `true`   |
 | `sidebarPosition` | `sidebar-position` | sidebar position. Used to position the sidebar. Either on the left or on the right. | `"left" \| "right"` | `'left'` |
+| `type`            | `type`             | sidebar type. Used to define how open.                                              | `"fixed" \| "over"` | `'over'` |
 
 
 ## Methods
