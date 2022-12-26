@@ -141,18 +141,7 @@ export class Button {
 
   private handleClick = (ev: MouseEvent) => {
     if (!this.disabled) {
-      this.bdsClick.emit({
-        disabled: this.disabled,
-        size: this.size,
-        variant: this.variant,
-        icon: this.icon,
-        arrow: this.arrow,
-        type: this.type,
-        typeIcon: this.typeIcon,
-        bdsLoading: this.bdsLoading,
-        dataTest: this.dataTest,
-        elementButton: ev.target,
-      });
+      this.bdsClick.emit();
 
       const form = this.el.closest('form');
       if (form) {
