@@ -1,121 +1,125 @@
 @import 'mixins';
 
-.sidebar {
-  width: 360px;
-  transition: all 0.5s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  background-color: $color-neutral-light-whisper;
-  z-index: $zindex-modal;
-  flex-shrink: 0;
+.sidebar_dialog {
+  width: 100%;
+  height: 100vh;
+  box-shadow: $shadow-box;
+  background-color: rgba($color-neutral-dark-city, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+  display: none;
 
-  &_dialog {
+  &.type_over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zindex-modal-overlay;
+  }
+
+  &.type_fixed {
+    width: 288px;
+    position: relative;
+    height: 100%;
+    box-shadow: none;
+  }
+
+  &.is_open {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  & .outzone {
+    order: 2;
     width: 100%;
     height: 100vh;
-    box-shadow: $shadow-box;
-    background-color: rgba($color-neutral-dark-city, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out;
-    display: none;
-
-    &.type_over {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: $zindex-modal-overlay;
-    }
-
-    &.type_fixed {
-      position: relative;
-      height: 100%;
-      box-shadow: none;
-    }
+  }
+  .sidebar {
+    width: 360px;
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    background-color: $color-neutral-light-whisper;
+    z-index: $zindex-modal;
+    flex-shrink: 0;
 
     &.position_left {
       order: 1;
-      flex-direction: row;
     }
-
+  
     &.position_right {
       order: 3;
-      flex-direction: row-reverse;
     }
 
-    &.is_open {
+    &.type_fixed {
+      width: 288px;
+    }
+  
+    & .header {
       display: flex;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    & .outzone {
-      order: 2;
-      width: 100%;
-      height: 100vh;
-    }
-  }
-
-
-  & .header {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    padding: 24px;
-
-    & .content {
-      display: flex;
-      align-items: center;
-      position: relative;
-      color: $color-neutral-dark-city;
-
-      ::slotted(*) {
-        width: 100%;
-      }
-    }
-    & .closeButton {
-      border-radius: 8px;
-      contain: inherit;
-      -webkit-transition: height 0.5s, all 0.3s;
-      -moz-transition: height 0.5s, all 0.3s;
-      transition: height 0.5s, all 0.3s;
-      z-index: 1;
-      cursor: pointer;
-      color: $color-neutral-dark-rooftop;
-    }
-  }
-
-  & .body {
-    position: relative;
-    flex: 1 1 auto;
-    & .content {
-      position: absolute;
-      inset: 0;
-      z-index: 999999;
-      overflow-y: overlay;
-      overflow-x: clip;
-      @include custom-scroll;
-    }
-    & .margin {
-      padding: 8px 24px;
-    }
-  }
-
-  & .footer {
-    & .content {
+      align-content: center;
+      justify-content: space-between;
       padding: 24px;
-
-      ::slotted(*) {
-        height: 40px;
-        overflow: hidden;
+  
+      & .content {
+        display: flex;
+        align-items: center;
+        position: relative;
+        color: $color-neutral-dark-city;
+  
+        ::slotted(*) {
+          width: 100%;
+        }
+      }
+      & .closeButton {
+        border-radius: 8px;
+        contain: inherit;
+        -webkit-transition: height 0.5s, all 0.3s;
+        -moz-transition: height 0.5s, all 0.3s;
+        transition: height 0.5s, all 0.3s;
+        z-index: 1;
+        cursor: pointer;
+        color: $color-neutral-dark-rooftop;
+      }
+    }
+  
+    & .body {
+      position: relative;
+      flex: 1 1 auto;
+      & .content {
+        position: absolute;
+        inset: 0;
+        z-index: 999999;
+        overflow-y: overlay;
+        overflow-x: clip;
+        @include custom-scroll;
+      }
+      & .margin {
+        padding: 8px 24px;
+      }
+    }
+  
+    & .footer {
+      & .content {
+        padding: 24px;
+  
+        ::slotted(*) {
+          height: 40px;
+          overflow: hidden;
+        }
+      }
+    }
+    &.is_open {
+      &.position_left {
+        right: calc(100% - 360px);
+      }
+      &.position_right {
+        left: calc(100% - 360px);
       }
     }
   }
-  &.is_open {
-    &.position_left {
-      right: calc(100% - 360px);
-    }
-    &.position_right {
-      left: calc(100% - 360px);
-    }
-  }
+
 }
+
+

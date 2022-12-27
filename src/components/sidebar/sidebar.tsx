@@ -72,12 +72,18 @@ export class Sidebar {
         class={{
           sidebar_dialog: true,
           is_open: this.isOpen,
-          [`position_${this.sidebarPosition}`]: true,
           [`type_${this.type}`]: true,
         }}
       >
         {this.type === 'over' ? <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div> : ''}
-        <div class={{ sidebar: true, is_open: this.isOpen }}>
+        <div
+          class={{
+            sidebar: true,
+            is_open: this.isOpen,
+            [`type_${this.type}`]: true,
+            [`position_${this.sidebarPosition}`]: true,
+          }}
+        >
           {this.hasHeaderSlot && (
             <div class={{ header: true }}>
               <div class={{ content: true }}>
