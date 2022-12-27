@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import readme from './readme.md';
 
 export default {
@@ -19,12 +19,31 @@ const content = {
 
 export const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const elementRf = useRef(null);
+  const onToggleMenu = (event) => {
+    setOpenMenu(event);
+  };
+  useEffect(() => {
+    const elementRef = elementRf.current;
+    elementRef.addEventListener(
+      'bdsToggle',
+      (event) => {
+        onToggleMenu(event.detail.value);
+      },
+      { once: false }
+    );
+    return () => {
+      elementRef.removeEventListener('bdsToggle', (event) => {
+        onToggleMenu(event.detail.value);
+      });
+    };
+  }, [elementRf]);
   return (
     <div style={content}>
       <bds-button id="menuList" onClick={() => setOpenMenu(!openMenu)}>
         Menu
       </bds-button>
-      <bds-menu id="menu01" menu="menuList" open={openMenu} position="right">
+      <bds-menu ref={elementRf} id="menu01" menu="menuList" open={openMenu} position="right">
         <bds-menu-action button-text="texto" iconleft="edit" lipstick="false"></bds-menu-action>
         <bds-menu-separation size="default" value="Divisor"></bds-menu-separation>
         <bds-menu-exibition
@@ -55,13 +74,32 @@ export const Menu = () => {
 
 export const MenuWithSubmenu = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const elementRf = useRef(null);
+  const onToggleMenu = (event) => {
+    setOpenMenu(event);
+  };
+  useEffect(() => {
+    const elementRef = elementRf.current;
+    elementRef.addEventListener(
+      'bdsToggle',
+      (event) => {
+        onToggleMenu(event.detail.value);
+      },
+      { once: false }
+    );
+    return () => {
+      elementRef.removeEventListener('bdsToggle', (event) => {
+        onToggleMenu(event.detail.value);
+      });
+    };
+  }, [elementRf]);
   return (
     <div style={content}>
       <bds-button id="menuList" onClick={() => setOpenMenu(!openMenu)}>
         {' '}
         Menu{' '}
       </bds-button>
-      <bds-menu id="menu01" menu="menuList" open={openMenu} position="right">
+      <bds-menu ref={elementRf} id="menu01" menu="menuList" open={openMenu} position="right">
         <bds-menu-action button-text="texto" sub-menu="true" iconleft="edit" lipstick="false">
           <bds-menu-action button-text="texto 1" sub-menu="false"></bds-menu-action>
           <bds-menu-action button-text="texto 2" sub-menu="false" icon-left="edit"></bds-menu-action>
