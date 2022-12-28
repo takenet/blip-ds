@@ -67,6 +67,7 @@ export class IconButton {
           ['icon__button']: true,
           [state]: true,
           [`${state}--disabled`]: this.disabled,
+          [`size-${this.size}`]: true,
         }}
         data-test={this.dataTest}
       >
