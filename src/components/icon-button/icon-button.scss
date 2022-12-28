@@ -3,6 +3,11 @@
 $icon-button-border-radius: 8px;
 $icon-button-padding: 8px;
 
+@mixin size-buttom($size) {
+  width: $size;
+  height: $size;
+}
+
 @mixin disable-button($background, $color: null, $border: null) {
   cursor: not-allowed;
   background: $background;
@@ -233,5 +238,15 @@ $icon-button-padding: 8px;
 
   &--delete {
     @include icon-button-delete();
+  }
+
+  &.size-tall {
+    @include size-buttom(56px);
+  }
+  &.size-standard {
+    @include size-buttom(48px);
+  }
+  &.size-short {
+    @include size-buttom(40px);
   }
 }
