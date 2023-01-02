@@ -51,7 +51,7 @@ $tooltip-border-width: 6px;
     }
 
     &--top-left {
-      left: 0;
+      left: -40px;
       &::before {
         left: calc(15% + #{$tooltip-border-width});
       }
@@ -59,7 +59,7 @@ $tooltip-border-width: 6px;
 
     &--top-right {
       left: initial;
-      right: 0;
+      right: -40px;
       &::before {
         left: calc(85% - #{$tooltip-border-width});
       }
@@ -115,14 +115,14 @@ $tooltip-border-width: 6px;
 
     &--bottom-right {
       left: initial;
-      right: 0;
+      right: -40px;
       &::before {
         left: calc(85% - #{$tooltip-border-width});
       }
     }
 
     &--bottom-left {
-      left: 0;
+      left: -40px;
       &::before {
         left: calc(15% + #{$tooltip-border-width});
       }
