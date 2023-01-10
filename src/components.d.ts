@@ -1721,6 +1721,7 @@ export namespace Components {
           * Used to set tooltip text
          */
         "tooltipText": string;
+        "visible": () => Promise<void>;
     }
     interface BdsTypo {
         /**
