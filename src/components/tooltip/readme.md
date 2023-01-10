@@ -15,6 +15,19 @@
 | `tooltipText` | `tooltip-text` | Used to set tooltip text                                                | `string`                                                                                                                                                                                             | `'Tooltip'`     |
 
 
+## Methods
+
+### `visible() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by

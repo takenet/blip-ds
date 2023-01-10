@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Method, Prop, State } from '@stencil/core';
 
 export type TooltipPostionType =
   | 'top-center'
@@ -43,6 +43,11 @@ export class Tooltip {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
+
+  @Method()
+  async visible() {
+    this.isMouseOver = !this.isMouseOver;
+  }
 
   private setVisibility(value: boolean) {
     if (this.disabled) {
