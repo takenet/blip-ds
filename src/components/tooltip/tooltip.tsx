@@ -44,6 +44,9 @@ export class Tooltip {
    */
   @Prop() dataTest?: string = null;
 
+  /**
+   * Method for change the visibility of tooltip.
+   */
   @Method()
   async visible() {
     this.isMouseOver = !this.isMouseOver;
