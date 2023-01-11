@@ -19,7 +19,7 @@
 
 ### `visible() => Promise<void>`
 
-
+Method for change the visibility of tooltip.
 
 #### Returns
 
