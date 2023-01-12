@@ -36,7 +36,9 @@ jobs:
         uses: cycjimmy/semantic-release-action@v3
         id: semantic
         with:
-          branch: master
+          branch: ['master', 
+          {name: 'pre/rc', prerelease: '${name.replace(/^pre\\//g, "")}'}, 
+          {name: 'beta', prerelease: true}],
           extra_plugins: |
             @semantic-release/commit-analyzer
             @semantic-release/git
