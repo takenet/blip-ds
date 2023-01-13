@@ -36,7 +36,20 @@ jobs:
         uses: cycjimmy/semantic-release-action@v3
         id: semantic
         with:
-          branch: ['master', 'feature/branch-release'],
+          branch: 'master'
+          extra_plugins: |
+            @semantic-release/commit-analyzer
+            @semantic-release/git
+            @semantic-release/changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v3
+        id: release
+        with:
+          branch: 'feature/branch-release'
           extra_plugins: |
             @semantic-release/commit-analyzer
             @semantic-release/git
