@@ -48,6 +48,9 @@ export class BdsIllustration {
     } else if (type === 'logo-integration') {
       const fullName = `asset-illustration-logo-integration-${name}`;
       return fullName;
+    } else if (type === 'brand') {
+      const fullName = `asset-illustration-brand-${name}`;
+      return fullName;
     }
   };
 

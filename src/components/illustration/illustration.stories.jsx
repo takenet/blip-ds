@@ -148,6 +148,49 @@ const blipOutline = [
   'wow',
 ];
 
+const brand = [
+  'take-blip-black-horizontal',
+  'take-blip-black-vertical',
+  'take-blip-blue-black-horizontal',
+  'take-blip-blue-black-vertical',
+  'take-blip-blue-white-horizontal',
+  'take-blip-blue-white-vertical',
+  'take-blip-white-horizontal',
+  'take-blip-white-vertical',
+  'blip-ballon-blue',
+  'blip-ballon-blue-black-horizontal',
+  'blip-ballon-blue-black-vertical',
+  'blip-ballon-white',
+  'blip-ballon-blue-white-horizontal',
+  'blip-ballon-blue-white-vertical',
+  'blip-ballon-white-horizontal',
+  'blip-ballon-white-vertical',
+  'blip-desk-black-horizontal',
+  'blip-desk-blue-black-horizontal',
+  'blip-desk-white-horizontal',
+  'blip-desk-blue-white-horizontal',
+  'blip-community-black-horizontal',
+  'blip-community-blue-black-horizontal',
+  'blip-community-white-horizontal',
+  'blip-community-blue-white-horizontal',
+  'blip-ideas-black-horizontal',
+  'blip-ideas-blue-black-horizontal',
+  'blip-ideas-white-horizontal',
+  'blip-ideas-blue-white-horizontal',
+  'blip-chat-black-horizontal',
+  'blip-chat-blue-black-horizontal',
+  'blip-chat-white-horizontal',
+  'blip-chat-blue-white-horizontal',
+  'blip-support-black-horizontal',
+  'blip-support-blue-black-horizontal',
+  'blip-support-white-horizontal',
+  'blip-support-blue-white-horizontal',
+  'blip-help-center-black-horizontal',
+  'blip-help-center-blue-black-horizontal',
+  'blip-help-center-white-horizontal',
+  'blip-help-center-blue-white-horizontal',
+];
+
 const logoIntegration = ['blip-instagram', 'blip-whatsapp'];
 
 const illustrationStyles = {
@@ -214,6 +257,21 @@ export const IllustrationsBlipOutline = () => {
     defaultArray.push(
       <div style={illustrationStyles}>
         <bds-illustration type="blip-outline" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const IllustrationsBrand = () => {
+  const defaultArray = [];
+
+  brand.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="brand" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
