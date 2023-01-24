@@ -3,10 +3,10 @@
 $color-brand: var(--color-brand, $color-illustration-blue-brand);
 $color-primary: var(--color-primary, $color-primary-main);
 $color-secondary: var(--color-secondary, $color-primary-main);
-$color-background-1: var(--color-background-1, $color-neutral-light-box);
-$color-background-2: var(--color-background-2, $color-neutral-dark-city);
-$color-surface-1: var(--color-surface-1, $color-neutral-light-whisper);
-$color-surface-2: var(--color-surface-2, $color-neutral-light-snow);
+$color-surface-1: var(--color-surface-1, $color-neutral-light-snow);
+$color-surface-2: var(--color-surface-2, $color-neutral-light-whisper);
+$color-surface-3: var(--color-surface-3, $color-neutral-light-box);
+$color-surface-4: var(--color-surface-4, $color-neutral-dark-city);
 $color-content-default: var(--color-content-default, $color-neutral-dark-city);
 $color-content-disable: var(--color-content-disable, $color-neutral-dark-rooftop);
 $color-content-ghost: var(--color-content-ghost, $color-neutral-medium-elephant);
