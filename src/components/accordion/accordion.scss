@@ -7,7 +7,7 @@
   padding: 24px;
   padding-right: 56px;
   position: relative;
-  color: $color-neutral-dark-city;
+  color: $color-content-default;
   cursor: pointer;
 
   &::before {
@@ -24,7 +24,8 @@
 
   &:hover {
     &::before {
-      background-color: $color-neutral-light-whisper;
+      background-color: $color-surface-2;
+      opacity: 0.5;
       mix-blend-mode: multiply;
     }
   }
@@ -56,15 +57,15 @@
       outline: none;
 
       &::before {
-        border-color: $color-primary-purples-bell;
+        border-color: $color-focus;
       }
     }
 
     &:hover {
-      background-color: darken($color-neutral-light-snow, 5%);
+      background-color: $color-surface-1;
     }
     &:active {
-      background-color: darken($color-neutral-light-snow, 10%);
+      background-color: $color-surface-1;
     }
   }
 }
@@ -72,7 +73,7 @@
 .accordion_body {
   height: 0;
   overflow: hidden;
-  border-bottom: 1px solid $color-neutral-medium-silver;
+  border-bottom: 1px solid $color-surface-3;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
@@ -80,6 +81,6 @@
   & .container {
     padding: 8px 24px 48px;
     position: relative;
-    color: $color-neutral-dark-city;
+    color: $color-content-default;
   }
 }
