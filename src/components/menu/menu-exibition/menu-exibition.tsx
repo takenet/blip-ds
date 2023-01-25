@@ -28,6 +28,10 @@ export class BdsMenuExibition {
    * Subtitle. Used to insert a subtitle in the display item.
    */
   @Prop() subtitle?: string = null;
+  /**
+   * Description. Used to insert a subtitle in the display item.
+   */
+  @Prop() description?: string = null;
   render() {
     const hasAvatar = this.avatarName || this.avatarThumbnail;
     return (
@@ -53,6 +57,11 @@ export class BdsMenuExibition {
           {this.subtitle && (
             <bds-typo class="subtitle-item" variant="fs-10" tag="span">
               {this.subtitle}
+            </bds-typo>
+          )}
+          {this.description && (
+            <bds-typo class="description-item" variant="fs-10" tag="span">
+              {this.description}
             </bds-typo>
           )}
         </div>

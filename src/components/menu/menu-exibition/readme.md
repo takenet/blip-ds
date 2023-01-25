@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property          | Attribute          | Description                                              | Type                                     | Default      |
-| ----------------- | ------------------ | -------------------------------------------------------- | ---------------------------------------- | ------------ |
-| `avatarName`      | `avatar-name`      | AvatarName. Used to enter the avatar name.               | `string`                                 | `null`       |
-| `avatarSize`      | `avatar-size`      | AvatarSize. Used to set avatar size.                     | `"extra-small" \| "small" \| "standard"` | `'standard'` |
-| `avatarThumbnail` | `avatar-thumbnail` | AvatarThumbnail. Used to insert the avatar photo.        | `string`                                 | `null`       |
-| `subtitle`        | `subtitle`         | Subtitle. Used to insert a subtitle in the display item. | `string`                                 | `null`       |
-| `value`           | `value`            | Value. Used to insert a title in the display item.       | `string`                                 | `null`       |
+| Property          | Attribute          | Description                                                 | Type                                     | Default      |
+| ----------------- | ------------------ | ----------------------------------------------------------- | ---------------------------------------- | ------------ |
+| `avatarName`      | `avatar-name`      | AvatarName. Used to enter the avatar name.                  | `string`                                 | `null`       |
+| `avatarSize`      | `avatar-size`      | AvatarSize. Used to set avatar size.                        | `"extra-small" \| "small" \| "standard"` | `'standard'` |
+| `avatarThumbnail` | `avatar-thumbnail` | AvatarThumbnail. Used to insert the avatar photo.           | `string`                                 | `null`       |
+| `description`     | `description`      | Description. Used to insert a subtitle in the display item. | `string`                                 | `null`       |
+| `subtitle`        | `subtitle`         | Subtitle. Used to insert a subtitle in the display item.    | `string`                                 | `null`       |
+| `value`           | `value`            | Value. Used to insert a title in the display item.          | `string`                                 | `null`       |
 
 
 ## Dependencies

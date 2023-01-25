@@ -1155,6 +1155,10 @@ export namespace Components {
          */
         "buttonText"?: string;
         /**
+          * Description. Used to insert a subtitle in the display item.
+         */
+        "description"?: string;
+        /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconLeft"?: string;
@@ -1184,6 +1188,10 @@ export namespace Components {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Description. Used to insert a subtitle in the display item.
+         */
+        "description"?: string;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
          */
@@ -3738,6 +3746,10 @@ declare namespace LocalJSX {
          */
         "buttonText"?: string;
         /**
+          * Description. Used to insert a subtitle in the display item.
+         */
+        "description"?: string;
+        /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconLeft"?: string;
@@ -3767,6 +3779,10 @@ declare namespace LocalJSX {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Description. Used to insert a subtitle in the display item.
+         */
+        "description"?: string;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
          */
