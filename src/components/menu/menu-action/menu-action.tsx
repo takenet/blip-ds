@@ -37,6 +37,10 @@ export class BdsMenuAction {
    */
   @Prop() subtitle?: string = null;
   /**
+   * Description. Used to insert a subtitle in the display item.
+   */
+  @Prop() description?: string = null;
+  /**
    * Lipstick. Used to declare that the item will be a negative/error action.
    */
   @Prop() lipstick?: boolean = false;
@@ -145,6 +149,11 @@ export class BdsMenuAction {
             {this.subtitle && (
               <bds-typo class="subtitle-item" variant="fs-10" tag="span">
                 {this.subtitle}
+              </bds-typo>
+            )}
+            {this.description && (
+              <bds-typo class="description-item" variant="fs-10" tag="span">
+                {this.description}
               </bds-typo>
             )}
           </div>

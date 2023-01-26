@@ -134,6 +134,53 @@ export const MenuWithSubmenu = () => {
   );
 };
 
+export const MenuDescription = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+  const elementRf = useRef(null);
+  const onToggleMenu = (event) => {
+    setOpenMenu(event);
+  };
+  useEffect(() => {
+    const elementRef = elementRf.current;
+    elementRef.addEventListener(
+      'bdsToggle',
+      (event) => {
+        onToggleMenu(event.detail.value);
+      },
+      { once: false }
+    );
+    return () => {
+      elementRef.removeEventListener('bdsToggle', (event) => {
+        onToggleMenu(event.detail.value);
+      });
+    };
+  }, [elementRf]);
+  return (
+    <div style={content}>
+      <bds-button id="menuList" onClick={() => setOpenMenu(!openMenu)}>
+        Menu
+      </bds-button>
+      <bds-menu ref={elementRf} id="menu01" menu="menuList" open={openMenu} position="right">
+        <bds-menu-exibition
+          value="Michael Scott"
+          subtitle="Manager"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempus."
+        ></bds-menu-exibition>
+        <bds-menu-exibition
+          value="Dwight Schrute"
+          subtitle="co-Manager"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempus."
+        ></bds-menu-exibition>
+        <bds-menu-exibition
+          value="Jim Halpert"
+          subtitle="Seller"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tempus."
+        ></bds-menu-exibition>
+      </bds-menu>
+    </div>
+  );
+};
+
 export const MenuAction = () => {
   return (
     <div style={content}>

@@ -6,7 +6,7 @@
     flex-direction: row;
     gap: 8px;
     align-items: center;
-    background-color: $color-neutral-light-snow;
+    background-color: $color-surface-1;
     border: 0;
     border-radius: 8px;
     padding: 16px;
@@ -27,17 +27,17 @@
     }
 
     & .icon-item {
-      color: $color-neutral-dark-rooftop;
+      color: $color-content-default;
     }
     & .content-item {
       width: 100%;
-      color: $color-neutral-dark-eclipse;
+      color: $color-content-default;
       display: flex;
       flex-direction: column;
     }
 
     & .arrow {
-      color: $color-neutral-dark-eclipse;
+      color: $color-content-default;
     }
 
     &__lipstick {
@@ -53,7 +53,7 @@
     }
 
     &:hover {
-      background-color: $color-neutral-light-whisper;
+      background-color: $color-surface-2;
     }
   }
 
@@ -62,7 +62,7 @@
     pointer-events: none;
     display: block;
     padding: 2px;
-    background-color: $color-neutral-light-snow;
+    background-color: $color-surface-1;
     border-radius: 8px;
     box-shadow: 0px 4px 16px rgba(7, 71, 166, 0.12);
     min-width: 196px;

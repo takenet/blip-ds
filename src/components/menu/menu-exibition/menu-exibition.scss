@@ -14,11 +14,15 @@
     flex-direction: column;
 
     & .title-item {
-      color: $color-neutral-dark-eclipse;
+      color: $color-content-default;
     }
 
     & .subtitle-item {
-      color: $color-neutral-medium-elephant;
+      color: $color-content-disable;
+    }
+
+    & .description-item {
+      color: $color-content-default;
     }
   }
 }
