@@ -547,6 +547,7 @@ export namespace Components {
     interface BdsGrid {
         "alignItems"?: alignItems;
         "container"?: boolean;
+        "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
         "gap"?: gap;
@@ -3016,6 +3017,7 @@ declare namespace LocalJSX {
     interface BdsGrid {
         "alignItems"?: alignItems;
         "container"?: boolean;
+        "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
         "gap"?: gap;

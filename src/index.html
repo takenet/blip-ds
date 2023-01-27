@@ -17,8 +17,16 @@
       /* background: var(--color-background-2, #0a0f1a);  */
       margin: 0;
     }
+    .all {
+      background-color: var(--color-surface-3);
+    }
+    .col {
+      background-color: var(--color-info);
+      box-sizing: border-box;
+      border-right: 1px solid #1968f0;
+    }
 
-    /* :root {
+    :root {
       --color-brand: #0096fa;
       --color-primary: #1968f0;
       --color-secondary: #1f1f1f;
@@ -36,10 +44,39 @@
       --color-warning: #fde99b;
       --color-error: #f67979;
       --color-delete: #e60f0f;
-    } */
+    }
   </style>
 
-  <body></body>
+  <body>
+    <bds-grid lg="12" container height="50vh" class="all">
+      <bds-grid xxs="1" class="col">1</bds-grid>
+      <bds-grid xxs="1" class="col">2</bds-grid>
+      <bds-grid xxs="1" class="col">3</bds-grid>
+      <bds-grid xxs="1" class="col">4</bds-grid>
+      <bds-grid xxs="1" class="col">5</bds-grid>
+      <bds-grid xxs="1" class="col">6</bds-grid>
+      <bds-grid xxs="1" class="col">7</bds-grid>
+      <bds-grid xxs="1" class="col">8</bds-grid>
+      <bds-grid xxs="1" class="col">9</bds-grid>
+      <bds-grid xxs="1" class="col">10</bds-grid>
+      <bds-grid xxs="1" class="col">11</bds-grid>
+      <bds-grid xxs="1" class="col">12</bds-grid>
+    </bds-grid>
+    <bds-grid lg="12" container-fluid height="50vh" class="all">
+      <bds-grid xxs="1" class="col">1</bds-grid>
+      <bds-grid xxs="1" class="col">2</bds-grid>
+      <bds-grid xxs="1" class="col">3</bds-grid>
+      <bds-grid xxs="1" class="col">4</bds-grid>
+      <bds-grid xxs="1" class="col">5</bds-grid>
+      <bds-grid xxs="1" class="col">6</bds-grid>
+      <bds-grid xxs="1" class="col">7</bds-grid>
+      <bds-grid xxs="1" class="col">8</bds-grid>
+      <bds-grid xxs="1" class="col">9</bds-grid>
+      <bds-grid xxs="1" class="col">10</bds-grid>
+      <bds-grid xxs="1" class="col">11</bds-grid>
+      <bds-grid xxs="1" class="col">12</bds-grid>
+    </bds-grid>
+  </body>
 
   <script></script>
 </html>

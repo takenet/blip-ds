@@ -12,6 +12,7 @@ export class Grid {
   @Prop() flexWrap?: flexWrap;
   @Prop() alignItems?: alignItems;
   @Prop() container?: boolean;
+  @Prop() containerFluid?: boolean;
   @Prop() xxs?: breakpoint;
   @Prop() xs?: breakpoint;
   @Prop() sm?: breakpoint;
@@ -35,6 +36,7 @@ export class Grid {
           [`direction--${this.direction}`]: true,
           [`justify_content--${this.justifyContent}`]: true,
           [`${this.container === true ? 'container' : ''}`]: true,
+          [`${this.containerFluid === true ? 'container-fluid' : ''}`]: true,
           [`flex_wrap--${this.flexWrap}`]: true,
           [`align_items--${this.alignItems}`]: true,
           [`xxs--${this.xxs}`]: true,
