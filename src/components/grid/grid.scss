@@ -312,7 +312,7 @@
 }
 @media (min-width: 1921px) {
   :host(.container) {
-    max-width: 1520px;
+    max-width: 1424px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -361,6 +361,102 @@
   }
   :host(.xgoffset--12) {
     margin-left: 100%;
+  }
+}
+
+@media (min-width: 600px) {
+  :host(.container-fluid) {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :host[container-fluid] {
+    :host-context(.container-fluid) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media (min-width: 905px) {
+  :host(.container-fluid) {
+    max-width: 848px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :host[container-fluid] {
+    :host-context(.container-fluid) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media (min-width: 993px) {
+  :host(.container-fluid) {
+    max-width: 944px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :host[container-fluid] {
+    :host-context(.container-fluid) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  :host(.container-fluid) {
+    max-width: 1232px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :host[container-fluid] {
+    :host-context(.container-fluid) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  :host(.container-fluid) {
+    max-width: 1328px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :host[container-fluid] {
+    :host-context(.container-fluid) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  :host(.container-fluid) {
+    max-width: 1424px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :host[container-fluid] {
+    :host-context(.container-fluid) {
+      padding-left: 8px;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
   }
 }
 
@@ -781,6 +877,174 @@
     width: 91.65%;
   }
   :host(.xg--12) {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+// Breakpoint lg in fluid
+@media (min-width: 1280px) {
+  :host(.lg--auto .container-fluid) {
+    flex: 1 0 auto;
+    width: auto;
+  }
+  :host(.lg--1.container-fluid) {
+    flex: 0 0 auto;
+    width: 8.33%;
+  }
+  :host(.lg--2.container-fluid) {
+    flex: 0 0 auto;
+    width: 16.66%;
+  }
+  :host(.lg--3.container-fluid) {
+    flex: 0 0 auto;
+    width: 24.99%;
+  }
+  :host(.lg--4.container-fluid) {
+    flex: 0 0 auto;
+    width: 33.32%;
+  }
+  :host(.lg--5.container-fluid) {
+    flex: 0 0 auto;
+    width: 41.65%;
+  }
+  :host(.lg--6.container-fluid) {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  :host(.lg--7.container-fluid) {
+    flex: 0 0 auto;
+    width: 58.33%;
+  }
+  :host(.lg--8.container-fluid) {
+    flex: 0 0 auto;
+    width: 66.66%;
+  }
+  :host(.lg--9.container-fluid) {
+    flex: 0 0 auto;
+    width: 74.99%;
+  }
+  :host(.lg--10.container-fluid) {
+    flex: 0 0 auto;
+    width: 83.32%;
+  }
+  :host(.lg--11.container-fluid) {
+    flex: 0 0 auto;
+    width: 91.65%;
+  }
+  :host(.lg--12.container-fluid) {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+// Breakpoint xg in fluid
+@media (min-width: 1440px) {
+  :host(.xg--auto .container-fluid) {
+    flex: 1 0 auto;
+    width: auto;
+  }
+  :host(.xg--1.container-fluid) {
+    flex: 0 0 auto;
+    width: 8.33%;
+  }
+  :host(.xg--2.container-fluid) {
+    flex: 0 0 auto;
+    width: 16.66%;
+  }
+  :host(.xg--3.container-fluid) {
+    flex: 0 0 auto;
+    width: 24.99%;
+  }
+  :host(.xg--4.container-fluid) {
+    flex: 0 0 auto;
+    width: 33.32%;
+  }
+  :host(.xg--5.container-fluid) {
+    flex: 0 0 auto;
+    width: 41.65%;
+  }
+  :host(.xg--6.container-fluid) {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  :host(.xg--7.container-fluid) {
+    flex: 0 0 auto;
+    width: 58.33%;
+  }
+  :host(.xg--8.container-fluid) {
+    flex: 0 0 auto;
+    width: 66.66%;
+  }
+  :host(.xg--9.container-fluid) {
+    flex: 0 0 auto;
+    width: 74.99%;
+  }
+  :host(.xg--10.container-fluid) {
+    flex: 0 0 auto;
+    width: 83.32%;
+  }
+  :host(.xg--11.container-fluid) {
+    flex: 0 0 auto;
+    width: 91.65%;
+  }
+  :host(.xg--12.container-fluid) {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+// Breakpoint xxg in fluid
+@media (min-width: 1920px) {
+  :host(.xxg--auto .container-fluid) {
+    flex: 1 0 auto;
+    width: auto;
+  }
+  :host(.xxg--1.container-fluid) {
+    flex: 0 0 auto;
+    width: 8.33%;
+  }
+  :host(.xxg--2.container-fluid) {
+    flex: 0 0 auto;
+    width: 16.66%;
+  }
+  :host(.xxg--3.container-fluid) {
+    flex: 0 0 auto;
+    width: 24.99%;
+  }
+  :host(.xxg--4.container-fluid) {
+    flex: 0 0 auto;
+    width: 33.32%;
+  }
+  :host(.xxg--5.container-fluid) {
+    flex: 0 0 auto;
+    width: 41.65%;
+  }
+  :host(.xxg--6.container-fluid) {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  :host(.xxg--7.container-fluid) {
+    flex: 0 0 auto;
+    width: 58.33%;
+  }
+  :host(.xxg--8.container-fluid) {
+    flex: 0 0 auto;
+    width: 66.66%;
+  }
+  :host(.xxg--9.container-fluid) {
+    flex: 0 0 auto;
+    width: 74.99%;
+  }
+  :host(.xxg--10.container-fluid) {
+    flex: 0 0 auto;
+    width: 83.32%;
+  }
+  :host(.xxg--11.container-fluid) {
+    flex: 0 0 auto;
+    width: 91.65%;
+  }
+  :host(.xxg--12.container-fluid) {
     flex: 0 0 auto;
     width: 100%;
   }
