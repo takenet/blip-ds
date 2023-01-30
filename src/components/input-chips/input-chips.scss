@@ -42,12 +42,11 @@ $input_fixed: 140px;
   $color-input-border: $border;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
-  $color-input-disable-background: $color-neutral-light-whisper;
 
   @include input-border($color-input-border);
 
   @if ($name == 'disabled') {
-    background: $color-input-disable-background;
+    background: $color-surface-3;
   }
 
   // States
@@ -82,22 +81,7 @@ $input_fixed: 140px;
   }
 }
 
-@mixin part_input_font_size($value) {
-  font-size: $value;
-  line-height: 0px;
-}
-
-@mixin input_max_width() {
-  &.expanded {
-    max-width: $input_expanded;
-  }
-
-  &.fixed {
-    max-width: $input_fixed;
-  }
-}
-
-.element_input {
+:host {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -106,15 +90,16 @@ $input_fixed: 140px;
   max-width: 100%;
   max-height: 100%;
 
-  input {
+  input,
+  textarea {
     box-shadow: inherit;
     &::placeholder {
-      color: $color-neutral-medium-silver;
+      color: $color-content-ghost;
       opacity: 1;
     }
 
     &::-webkit-input-placeholder {
-      color: $color-neutral-medium-silver;
+      color: $color-content-ghost;
       opacity: 1;
     }
   }
@@ -131,32 +116,32 @@ $input_fixed: 140px;
   max-width: 100%;
   max-height: 100%;
 
-  background: $color-neutral-light-snow;
+  background: $color-surface-1;
 
   &--state {
     &-primary {
       @include input-theme(
         'primary',
-        $color-primary-main,
-        $color-disabled-bg,
-        $color-neutral-medium-cloud,
-        $color-neutral-dark-city,
-        $color-neutral-medium-wave,
-        $color-primary-main,
-        rgba($color-primary-main, 0.4)
+        $color-primary,
+        $color-surface-3,
+        $color-content-default,
+        $color-content-default,
+        $color-surface-3,
+        $color-primary,
+        $color-info
       );
     }
 
     &-danger {
       @include input-theme(
         'danger',
-        $color-extend-reds-delete,
-        $color-extend-reds-flower,
-        $color-neutral-medium-cloud,
-        $color-neutral-dark-city,
-        $color-extend-reds-delete,
-        $color-extend-reds-delete,
-        $color-extend-reds-flower
+        $color-delete,
+        $color-error,
+        $color-delete,
+        $color-delete,
+        $color-delete,
+        $color-delete,
+        $color-error
       );
     }
 
@@ -164,13 +149,13 @@ $input_fixed: 140px;
       cursor: not-allowed;
       @include input-theme(
         'disabled',
-        $color-neutral-medium-silver,
-        $color-neutral-light-breeze,
-        $color-neutral-medium-silver,
-        $color-neutral-medium-silver,
-        $color-neutral-light-box,
-        $color-neutral-medium-silver,
-        $color-neutral-light-box
+        $color-content-disable,
+        $color-surface-3,
+        $color-content-disable,
+        $color-content-disable,
+        $color-surface-3,
+        $color-surface-3,
+        $color-surface-3
       );
     }
   }
@@ -232,7 +217,7 @@ $input_fixed: 140px;
     height: 20px;
     margin: 3.7px 2.5px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: $color-neutral-medium-cloud;
+    color: $color-content-disable;
     word-break: break-word;
     height: auto;
     min-height: 20px;
@@ -249,7 +234,7 @@ $input_fixed: 140px;
     }
 
     &--danger {
-      color: $color-extend-reds-delete;
+      color: $color-delete;
     }
   }
 }
