@@ -81,7 +81,22 @@ $input_fixed: 140px;
   }
 }
 
-:host {
+@mixin part_input_font_size($value) {
+  font-size: $value;
+  line-height: 0px;
+}
+
+@mixin input_max_width() {
+  &.expanded {
+    max-width: $input_expanded;
+  }
+
+  &.fixed {
+    max-width: $input_fixed;
+  }
+}
+
+.element_input {
   display: flex;
   flex-direction: column;
   position: relative;
