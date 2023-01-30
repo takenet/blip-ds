@@ -18,7 +18,7 @@
       width: 100%;
       padding: 8px 16px;
       min-height: 40px;
-      color: $color-neutral-dark-suit;
+      color: $color-content-default;
 
       &--context--inside {
         border-radius: 8px;
@@ -33,19 +33,19 @@
       }
 
       &--warning {
-        background-color: $color-primary-yellows-corn;
+        background-color: $color-warning;
       }
 
       &--system {
-        background-color: $color-primary-light;
+        background-color: $color-system;
       }
 
       &--info {
-        background-color: $color-illustration-blue-genie;
+        background-color: $color-info;
       }
 
       &--error {
-        background-color: $color-extend-reds-flower;
+        background-color: $color-error;
       }
     }
 
@@ -71,7 +71,7 @@
       justify-content: space-between;
       margin-left: 8px;
       width: 100%;
-      color: $color-neutral-dark-suit;
+      color: $color-content-default;
     }
     }
 
