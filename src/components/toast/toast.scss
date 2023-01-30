@@ -32,7 +32,7 @@
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: $shadow-toast;
-  color: $color-neutral-dark-city;
+  color: $color-content-default;
   opacity: 0;
   margin-top: 16px;
   overflow: hidden;
@@ -67,30 +67,30 @@
   }
 
   &--system {
-    background: $color-illustration-blue-genie;
+    background: $color-system;
   }
 
   &--error {
-    background: $color-extend-reds-flower;
+    background: $color-error;
   }
 
   &--success {
-    background: $color-primary-greens-mint;
+    background: $color-success;
   }
 
   &--warning {
-    background: $color-primary-yellows-corn;
+    background: $color-warning;
   }
 
   &--undo {
-    background-color: $color-illustration-blue-brand;
+    background-color: $color-system;
   }
 
   &--redo {
-    background-color: $color-secondary-redo;
+    background-color: $color-system;
   }
   &--notification {
-    background-color: $color-neutral-light-snow;
+    background-color: $color-surface-1;
   }
 
   bds-icon {
@@ -134,7 +134,7 @@
         outline: none;
   
         &::before {
-          border-color: $color-primary-purples-bell;
+          border-color: $color-focus;
         }
       }
     }
