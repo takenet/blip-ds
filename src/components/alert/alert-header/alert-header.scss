@@ -12,52 +12,52 @@
 
   bds-typo {
     margin-left: 8px;
-    color:$color-neutral-dark-city;
+    color:$color-content-default;
   }
 
   &--system {
-    background: $color-primary-light;
+    background: $color-system;
 
     bds-typo {
-      color:$color-neutral-dark-city;
+      color:$color-content-default;
     }
 
     .color-icon {
-      color:$color-neutral-dark-city;
+      color:$color-content-default;
     }
   }
 
   &--error {
-    background: $color-extend-reds-flower;
+    background: $color-error;
     bds-typo {
-      color:$color-neutral-dark-city;
+      color:$color-content-default;
     }
     
     .color-icon {
-      color:$color-neutral-dark-city;
+      color:$color-content-default;
     }
   }
 
   &--warning {
-    background: $color-primary-yellows-corn;
+    background: $color-warning;
     bds-typo {
-      color:$color-neutral-dark-city;
+      color:$color-content-default;
     }
     
     .color-icon {
-      color:$color-neutral-dark-city;
+      color:$color-content-default;
     }
   }
 
   &--delete {
-    background: $color-extend-reds-delete;
+    background: $color-delete;
 
     bds-typo {
-      color: $color-neutral-light-snow;
+      color: $color-surface-1;
     }
 
     .color-icon {
-      color: $color-neutral-light-snow;
+      color: $color-surface-1;
     }
   }
 }
