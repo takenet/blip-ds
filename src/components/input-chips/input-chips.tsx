@@ -193,7 +193,13 @@ export class InputChips {
 
   @Method()
   async add(value: string): Promise<void> {
-    this.setChip(value);
+    this.handleDelimiters();
+    if (value) {
+      this.setChip(value);
+    } else {
+      this.setChip(this.value);
+    }
+    this.value = '';
   }
 
   @Method()
