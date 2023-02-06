@@ -40,31 +40,8 @@
   </style>
 
   <body>
-    <bds-input-chips id="input"></bds-input-chips>
-    <bds-select-chips id="select"></bds-select-chips>
   </body>
 
   <script>
-    const input = document.getElementById('input');
-    const select = document.getElementById('select');
-    let valueInput;
-
-    input.addEventListener('bdsInputChipsInput', (obj) => {
-      valueInput = obj.target.value;
-    } )
-
-    input.addEventListener('bdsBlur', (obj) => {
-      console.log('deu certo!', valueInput)
-    } )
-
-    let valueSelect;
-
-    select.addEventListener('bdsInputChipsInput', (obj) => {
-      valueSelect = obj.target.value;
-    } )
-
-    select.addEventListener('bdsBlur', (obj) => {
-      select.add();
-    } )
   </script>
 </html>
