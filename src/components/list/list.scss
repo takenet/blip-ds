@@ -15,7 +15,7 @@
     }
 
     & .icon-item {
-      color: $color-neutral-dark-rooftop;
+      color: $color-content-default;
     }
 
     & .grow-up {
@@ -28,11 +28,11 @@
       flex-direction: column;
 
       & .title-item {
-        color: $color-neutral-dark-eclipse;
+        color: $color-content-default;
       }
 
       & .subtitle-item {
-        color: $color-neutral-medium-elephant;
+        color: $color-content-disable;
       }
     }
 
@@ -51,7 +51,7 @@
       ::slotted(*) {
         display: flex;
         flex-direction: row;
-        color: $color-neutral-dark-rooftop;
+        color: $color-content-default;
       }
     }
   }
