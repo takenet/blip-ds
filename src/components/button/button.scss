@@ -155,14 +155,14 @@ $button-padding-left-right: 16px;
 
   &__primary {
     background: $color-primary;
-    color: $color-surface-1;
+    color: $color-content-bright;
 
     @include hover-color();
   }
 
   &__secondary {
     background: $color-secondary;
-    color: $color-surface-1;
+    color: $color-content-bright;
 
     @include hover-color();
   }
@@ -177,7 +177,7 @@ $button-padding-left-right: 16px;
 
   &__secondary--white {
     background: transparent;
-    color: $color-surface-1;
+    color: $color-content-bright;
 
     @include hover-neutral();
   }
@@ -191,7 +191,7 @@ $button-padding-left-right: 16px;
 
   &__delete {
     background: $color-delete;
-    color: $color-surface-1;
+    color: $color-content-bright;
 
     @include hover-color();
   }
