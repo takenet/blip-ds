@@ -11,7 +11,7 @@
   
   cursor: pointer;
   text-align: center;
-  color: $color-neutral-medium-cloud;
+  color: $color-content-disable;
   border-bottom: 2px solid transparent;
 
   &:not(:last-child) {
@@ -19,7 +19,7 @@
   }
 
   &:hover {
-    color: $color-primary-main;
+    color: $color-content-default;
   }
 
   &--selected {
@@ -36,11 +36,11 @@
   @keyframes selectFade {
     from{
        border-bottom: 2px solid transparent;
-       color: $color-primary-main;
+       color: $color-content-default;
     }
     to{
-       border-bottom: 2px solid $color-primary-main;
-      color: $color-primary-main;
+       border-bottom: 2px solid $color-brand;
+      color: $color-content-default;
     }
   }
 }
