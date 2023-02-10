@@ -16,37 +16,37 @@
     align-items: center;
     width: 16px;
     height: 20px;
-    color: $color-neutral-dark-city;
+    color: $color-content-default;
   }
     &--text {
       display: flex;
       align-items: center;
       height: 20px;
       margin: 0 8px;
-      color: $color-neutral-dark-city;
+      color: $color-content-default;
       font-family: $font-family;
     }
     &--default {
-      background-color: $color-primary-light;
+      background-color: $color-system;
     }
     &--info {
-      background-color: $color-illustration-blue-genie;
+      background-color: $color-info;
     }
     &--success {
-      background-color: $color-primary-greens-mint;
+      background-color: $color-success;
     }
     &--warning {
-      background-color: $color-primary-yellows-corn;
+      background-color: $color-warning;
     }
     &--danger {
-      background-color: $color-extend-reds-flower;
+      background-color: $color-error;
     }
     &--outline {
-      background-color: $color-neutral-light-snow;
-      border: 1px solid $color-neutral-medium-silver;
+      background-color: $color-surface-1;
+      border: 1px solid $color-surface-3;
     }
     &--disabled {
-      background-color: $color-neutral-light-whisper;
+      background-color: $color-surface-3;
     }
   }
   

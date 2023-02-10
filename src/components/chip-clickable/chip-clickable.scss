@@ -29,7 +29,7 @@
       height: 100%;
       padding: 2px;
       border-radius: 4px;
-      outline: $color-primary-purples-bell solid 2px;
+      outline: $color-focus solid 2px;
     }
 
     &--click {
@@ -59,12 +59,12 @@
     }
     &--disabled {
       cursor: default;
-      background-color: $color-neutral-light-whisper;
+      background-color: $color-surface-3;
       .chip_clickable--icon {
-        color: $color-neutral-dark-rooftop;
+        color: $color-content-default;
       }
       .chip_clickable--text {
-        color: $color-neutral-dark-rooftop;
+        color: $color-content-default;
       }
       .chip_clickable--close {
         cursor: default;
@@ -76,7 +76,7 @@
       align-items: center;
       height: 20px;
       padding-left: 4px;
-      color: $color-neutral-dark-city;
+      color: $color-content-default;
       z-index: 2;
     }
     &--close {
@@ -85,7 +85,7 @@
       height: 20px;
       padding-right: 4px;
       mix-blend-mode: hard-light;
-      color: $color-neutral-dark-city;
+      color: $color-content-default;
       opacity: 0.7;
       z-index: 2;
       position: relative;
@@ -97,7 +97,7 @@
         height: 100%;
         left: -2px;
         border-radius: 4px;
-        outline: $color-primary-purples-bell solid 2px;
+        outline: $color-focus solid 2px;
       }
     }
     &--text {
@@ -107,7 +107,7 @@
       height: 20px;
       margin: 0 8px;
       z-index: 2;
-      color: $color-neutral-dark-city;
+      color: $color-content-default;
       font-family: $font-family;
     }
     &--tall {
@@ -115,23 +115,23 @@
       border-radius: 24px;
     }
     &--default {
-      background-color: $color-primary-light;
+      background-color: $color-system;
     }
     &--info {
-      background-color: $color-illustration-blue-genie;
+      background-color: $color-info;
     }
     &--success {
-      background-color: $color-primary-greens-mint;
+      background-color: $color-success;
     }
     &--warning {
-      background-color: $color-primary-yellows-corn;
+      background-color: $color-warning;
     }
     &--danger {
-      background-color: $color-extend-reds-flower;
+      background-color: $color-error;
     }
     &--outline {
-      background-color: $color-neutral-light-snow;
-      border: 1px solid $color-neutral-medium-silver;
+      background-color: $color-surface-1;
+      border: 1px solid $color-surface-3;
     }
     &:focus-visible {
       outline: none;
