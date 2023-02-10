@@ -110,7 +110,6 @@ export class Button {
         class={{
           button__content: true,
           [`button__content__${this.variant}`]: true,
-          [`button__content__${this.variant}--disabled`]: this.disabled,
           hide: this.bdsLoading && true,
         }}
       >
@@ -167,7 +166,7 @@ export class Button {
         class={{
           button: true,
           [`button__${this.variant}`]: true,
-          [`button__${this.variant}--disabled`]: this.disabled,
+          [`button__disabled`]: this.disabled,
           [sizeClass]: true,
           'button--size-icon--left': !!this.icon,
           'button--size-icon--right': this.arrow,

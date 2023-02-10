@@ -18,12 +18,15 @@ $avatar-size-extra-large: 72px;
   appearance: none;
   height: 100%;
 
+  &__ellipsis {
+    color: $color-surface-1;
+  }
   &__text {
-    color: $color-neutral-dark-city;
+    color: $color-content-default;
   }
 
   &__icon {
-    color: $color-neutral-dark-city;
+    color: $color-surface-1;
   }
 
   &__img {
@@ -45,7 +48,7 @@ $avatar-size-extra-large: 72px;
     }
 
     &__text {
-      color: $color-neutral-dark-city;
+      color: $color-content-default;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -53,7 +56,7 @@ $avatar-size-extra-large: 72px;
     }
 
     &__icon {
-      color: $color-neutral-dark-city;
+      color: $color-content-default;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -69,13 +72,13 @@ $avatar-size-extra-large: 72px;
       align-items: center;
       top: 0;
       left: 0;
-      background-color: $color-neutral-light-snow;
+      background-color: $color-content-default;
       cursor: pointer;
       opacity: 0;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-neutral-dark-city;
+        color: $color-surface-1;
       }
     }
 
@@ -95,7 +98,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-neutral-dark-city;
+        color: $color-surface-1;
       }
     }
 
@@ -115,7 +118,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-neutral-dark-city;
+        color: $color-surface-1;
       }
     }
   }
@@ -159,22 +162,22 @@ $avatar-size-extra-large: 72px;
 
   &__color {
     &--neutral {
-      background-color: $color-neutral-light-box;
+      background-color: $color-content-default;
     }
     &--yellow {
-      background-color: $color-primary-yellows-corn;
+      background-color: $color-warning;
     }
     &--blue {
-      background-color: $color-illustration-blue-genie;
+      background-color: $color-system;
     }
     &--green {
-      background-color: $color-primary-greens-mint;
+      background-color: $color-success;
     }
     &--brown {
-      background-color: $color-extend-browns-sand;
+      background-color: $color-info;
     }
     &--pink {
-      background-color: $color-primary-pinks-yogurt;
+      background-color: $color-error;
     }
   }
 
@@ -204,7 +207,7 @@ $avatar-size-extra-large: 72px;
 .focus:focus-visible {
   display: flex;
   position: absolute;
-  border: 2px solid $color-primary-purples-bell;
+  border: 2px solid $color-focus;
   border-radius: 4px;
   width: 100%;
   height: 100%;

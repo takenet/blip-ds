@@ -10,33 +10,42 @@
     align-items: center;
     padding: 10px 16px;
 
+    & .input_list {
+      position: relative;
+    }
+
     & .avatar-item {
+      position: relative;
       display: block;
     }
 
     & .icon-item {
-      color: $color-neutral-dark-rooftop;
+      position: relative;
+      color: $color-content-default;
     }
 
     & .grow-up {
+      position: relative;
       flex-grow: 2;
     }
 
     & .content-item {
+      position: relative;
       display: flex;
       gap: 2px;
       flex-direction: column;
 
       & .title-item {
-        color: $color-neutral-dark-eclipse;
+        color: $color-content-default;
       }
 
       & .subtitle-item {
-        color: $color-neutral-medium-elephant;
+        color: $color-content-default;
       }
     }
 
     .content-area {
+      position: relative;
       flex-grow: 2;
       .internal-chips,
       ::slotted(*) {
@@ -47,20 +56,29 @@
     }
 
     .action-area {
+      position: relative;
       .internal-actions-buttons,
       ::slotted(*) {
         display: flex;
         flex-direction: row;
-        color: $color-neutral-dark-rooftop;
+        color: $color-content-default;
       }
     }
   }
 }
 
 .clickable {
+  position: relative;
   cursor: pointer;
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
   &:hover {
-    background-color: $color-neutral-light-whisper;
-    mix-blend-mode: multiply;
+    &:before {
+      background-color: $color-surface-2;
+      mix-blend-mode: multiply;
+    }
   }
 }

@@ -12,8 +12,8 @@ $tooltip-border-width: 6px;
     left: 50%;
     border-radius: 8px;
     padding: 8px;
-    color: $color-neutral-light-snow;
-    background: $color-neutral-dark-eclipse;
+    color: $color-surface-1;
+    background: $color-content-default;
     z-index: $zindex-dropdown;
     white-space: normal;
     width: max-content;
@@ -46,7 +46,7 @@ $tooltip-border-width: 6px;
       bottom: calc(100% + 10px);
       &::before {
         top: 100%;
-        border-top-color: $color-neutral-dark-eclipse;
+        border-top-color: $color-content-default;
       }
     }
 
@@ -86,7 +86,7 @@ $tooltip-border-width: 6px;
         left: -6px;
         top: 50%;
         transform: translateX(0) translateY(-50%);
-        border-right-color: $color-neutral-dark-eclipse;
+        border-right-color: $color-content-default;
       }
     }
 
@@ -111,7 +111,7 @@ $tooltip-border-width: 6px;
       top: calc(100% + 10px);
       &::before {
         bottom: 100%;
-        border-bottom-color: $color-neutral-dark-eclipse;
+        border-bottom-color: $color-content-default;
       }
     }
 
@@ -143,7 +143,7 @@ $tooltip-border-width: 6px;
         right: -12px;
         top: 50%;
         transform: translateX(0) translateY(-50%);
-        border-left-color: $color-neutral-dark-eclipse;
+        border-left-color: $color-content-default;
       }
     }
 

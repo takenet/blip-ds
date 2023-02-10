@@ -14,12 +14,12 @@
     flex: 1 1 auto;
     align-self: center;
     height: 1.5px;
-    background: $color-neutral-medium-wave;
+    background: $color-content-disable;
     margin: 0px 8px;
     min-width: 24px;
 
     &--completed {
-      border-top: 2px solid $color-primary-main;
+      border-top: 2px solid $color-primary;
     }
 
     @media (max-width: $sm-screen) {
