@@ -8,7 +8,7 @@
   box-sizing: border-box;
   position: relative;
   border-radius: 32px;
-  border: 1px solid $color-neutral-medium-elephant;
+  border: 1px solid $color-content-disable;
   margin-bottom: 8px;
 
   &.size_small {
@@ -38,7 +38,7 @@
     & .loading {
       position: absolute;
       height: 100%;
-      background-color: $color-primary-main;
+      background-color: $color-brand;
       @include animation();
       overflow: hidden;
 
@@ -68,7 +68,7 @@
 .typo_loading {
   padding-left: 8px;
   padding-right: 8px;
-  color: $color-neutral-dark-suit;
+  color: $color-content-default;
 }
 
 @keyframes load {
