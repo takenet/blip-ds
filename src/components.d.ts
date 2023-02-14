@@ -1042,7 +1042,7 @@ export namespace Components {
     }
     interface BdsList {
         /**
-          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
          */
         "data"?: string | Data[];
         /**
@@ -1266,6 +1266,14 @@ export namespace Components {
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "width"?: string;
     }
     interface BdsProgressBar {
         /**
@@ -3607,7 +3615,7 @@ declare namespace LocalJSX {
     }
     interface BdsList {
         /**
-          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
          */
         "data"?: string | Data[];
         /**
@@ -3862,6 +3870,14 @@ declare namespace LocalJSX {
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "width"?: string;
     }
     interface BdsProgressBar {
         /**
