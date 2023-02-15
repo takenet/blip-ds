@@ -14,7 +14,7 @@ import { AvatarDataList } from "./components/avatar-group/avatar-group-interface
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
-import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
+import { IconButtonSize, IconButtonVariant, IconType as IconType1 } from "./components/icon-button/icon-button";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { Color, Size } from "./components/chip-clickable/chip-clickable";
 import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -25,7 +25,7 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
-import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
+import { IconSize, IconTheme, IconType as IconType2 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
@@ -289,6 +289,10 @@ export namespace Components {
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: IconButtonSize;
+        /**
+          * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
+         */
+        "typeIcon": IconType;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
@@ -612,7 +616,7 @@ export namespace Components {
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
-        "type": IconType1;
+        "type": IconType2;
     }
     interface BdsIllustration {
         /**
@@ -1267,11 +1271,11 @@ export namespace Components {
          */
         "elevation"?: PaperElevation;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the height of the component.
          */
         "height"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the width of the component.
          */
         "width"?: string;
     }
@@ -2744,6 +2748,10 @@ declare namespace LocalJSX {
          */
         "size"?: IconButtonSize;
         /**
+          * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
+         */
+        "typeIcon"?: IconType;
+        /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: IconButtonVariant;
@@ -3098,7 +3106,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
-        "type"?: IconType1;
+        "type"?: IconType2;
     }
     interface BdsIllustration {
         /**
@@ -3871,11 +3879,11 @@ declare namespace LocalJSX {
          */
         "elevation"?: PaperElevation;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the height of the component.
          */
         "height"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the width of the component.
          */
         "width"?: string;
     }

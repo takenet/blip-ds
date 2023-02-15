@@ -3,6 +3,7 @@ import { IconSize } from '../icon/icon-interface';
 
 export type IconButtonSize = 'tall' | 'standard' | 'short';
 export type IconButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'secondary--white' | 'delete';
+export type IconType = 'icon' | 'logo' | 'emoji';
 export type IconSizeMap = { [key in string]: IconSize };
 export type IconButtonVariantMap = { [key in IconButtonVariant]: string };
 
@@ -35,43 +36,34 @@ export class IconButton {
   @Prop({ reflect: true }) icon?: string = null;
 
   /**
+   * The type of the icon. Can be one of:
+   * 'icon', 'logo', 'emoji';
+   */
+  @Prop({ reflect: true }) typeIcon: IconType = 'icon';
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
 
-  private mapSize: IconSizeMap = {
-    tall: 'xxx-large',
-    standard: 'x-large',
-    short: 'medium',
-  };
-
-  private mapVariantStyle: IconButtonVariantMap = {
-    primary: 'icon__button--primary',
-    secondary: 'icon__button--secondary',
-    tertiary: 'icon__button--tertiary',
-    delete: 'icon__button--delete',
-    ghost: 'icon__button--ghost',
-    'secondary--white': 'icon__button--secondary-white',
-  };
-
   render(): HTMLElement {
     if (!this.icon) return null;
-
-    const size: IconSize = this.mapSize[this.size];
-    const state: string = this.mapVariantStyle[this.variant];
 
     return (
       <button
         disabled={this.disabled}
         class={{
-          ['icon__button']: true,
-          [state]: true,
-          [`${state}--disabled`]: this.disabled,
-          [`size-${this.size}`]: true,
+          button: true,
+          [`button__${this.variant}`]: true,
+          [`button__disabled`]: this.disabled,
+          [`button--size-${this.size}`]: true,
         }}
+        part="button"
         data-test={this.dataTest}
       >
-        <bds-icon name={this.icon} size={size} color="inherit"></bds-icon>
+        <div class={{ button__icon: true }}>
+          <bds-icon name={this.icon} type={this.typeIcon} color="inherit"></bds-icon>
+        </div>
       </button>
     );
   }

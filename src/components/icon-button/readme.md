@@ -13,7 +13,15 @@
 | `disabled` | `disabled`  | If true, the base button will be disabled.                                                        | `boolean`                                                                             | `false`      |
 | `icon`     | `icon`      | used for add icon in input left. Uses the bds-icon component.                                     | `string`                                                                              | `null`       |
 | `size`     | `size`      | Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                                                     | `'standard'` |
+| `typeIcon` | `type-icon` | The type of the icon. Can be one of: 'icon', 'logo', 'emoji';                                     | `"emoji" \| "icon" \| "logo"`                                                         | `'icon'`     |
 | `variant`  | `variant`   | Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed'; | `"delete" \| "ghost" \| "primary" \| "secondary" \| "secondary--white" \| "tertiary"` | `'primary'`  |
+
+
+## Shadow Parts
+
+| Part       | Description |
+| ---------- | ----------- |
+| `"button"` |             |
 
 
 ## Dependencies

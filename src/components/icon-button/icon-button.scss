@@ -1,252 +1,187 @@
 @import 'resets';
 
-$icon-button-border-radius: 8px;
-$icon-button-padding: 8px;
+$hover-neutral: $color-neutral-light-box;
+$active-neutral: $color-neutral-medium-wave;
 
-@mixin size-buttom($size) {
-  width: $size;
-  height: $size;
+$hover-color: $color-neutral-medium-wave;
+$active-color: $color-neutral-medium-silver;
+
+$button-border-radius: 8px;
+
+$height-tall: 56px;
+$height-standard: 40px;
+$height-short: 32px;
+
+$button-size-tall: 14px;
+$button-size-standard: 9px;
+$button-size-short: 5px;
+
+$button-padding-left-right: 16px;
+
+@mixin padding-button-top-bottom($height) {
+  height: $height;
+  width: $height;
 }
 
-@mixin disable-button($background, $color: null, $border: null) {
-  cursor: not-allowed;
-  background: $background;
-
-  @if ($color) {
-    color: $color;
-  }
-
-  @if ($border) {
-    border: $border;
-  }
-
-  &:hover,
-  &:active {
-    background: $background;
-
-    @if ($color) {
-      color: $color;
-    }
-
-    @if ($border) {
-      border: $border;
-    }
-  }
+@mixin disable-button() {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-@mixin icon-button-primary {
-  color: $color-neutral-light-snow;
-  background: $color-primary-main;
+@mixin inherit-color() {
+  color: inherit;
+  background-color: inherit;
+}
 
+@mixin hover-color() {
   &:hover {
-    color: $color-neutral-light-snow;
-    background: $color-primary-dark;
-  }
-
-  &:focus {
-    color: $color-neutral-light-snow;
-    background: $color-primary-dark;
-  }
-
-  &:active {
-    color: $color-neutral-light-snow;
-    background: $color-primary-night;
-  }
-
-  &--disabled {
-    @include disable-button($color-disabled-bg, $color-disabled-text);
-  }
-}
-
-@mixin icon-button-secondary {
-  color: $color-neutral-dark-rooftop;
-  background: transparent;
-
-  &:hover {
-    color: $color-primary-main;
-    background: $color-disabled-bg;
-  }
-
-  &:focus {
-    color: $color-primary-main;
-    background: $color-disabled-bg;
-  }
-
-  &:active {
-    color: $color-primary-main;
-    background: $color-hover-light;
-  }
-
-  &--disabled {
-    @include disable-button(transparent, $color-disabled-text);
-  }
-}
-
-@mixin icon-button-secondary-white {
-  background: transparent;
-  color: $color-neutral-light-snow;
-
-  &:hover,
-  &:focus {
-    background: rgba($color-neutral-light-snow, 0.3);
-    color: $color-neutral-light-snow;
-  }
-
-  &:active {
-    background: rgba($color-neutral-light-snow, 0.4);
-    color: $color-neutral-light-snow;
-  }
-
-  &--disabled {
-    cursor: not-allowed;
-    color: $color-disabled-text;
-    background: $color-disabled-bg;
-
-    &:hover {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
+    &:before {
+      background: $hover-color;
     }
+  }
 
-    &:focus {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
-    }
-
-    &:active {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
+  &:active {
+    &:before {
+      background: $active-color;
     }
   }
 }
 
-@mixin icon-button-delete {
-  color: $color-neutral-light-snow;
-  background: $color-extend-reds-delete;
-
+@mixin hover-neutral() {
   &:hover {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-lipstick;
-  }
-
-  &:focus {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-lipstick;
+    &:before {
+      background: $hover-neutral;
+    }
   }
 
   &:active {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-dragon;
-  }
-
-  &--disabled {
-    @include disable-button($color-disabled-delete, $color-disabled-wrong);
+    &:before {
+      background: $active-neutral;
+    }
   }
 }
 
-@mixin icon-button-tertiary {
-  color: $color-primary-main;
-  background: transparent;
-  border: 1px solid $color-neutral-medium-wave;
-
-  &:hover {
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &:focus {
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &:active {
-    background: $color-hover-light;
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
-  }
-}
-
-@mixin icon-button-ghost {
-  color: $color-primary-main;
-  background: transparent;
-  border: 1px solid $color-primary-main;
-
-  &:hover {
-    background: $color-disabled-bg;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &:focus {
-    background: $color-disabled-bg;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &:active {
-    background: $color-hover-light;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
-  }
-}
-
-.icon__button {
+.button {
   @include reset-button();
   cursor: pointer;
-
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  border-radius: $button-border-radius;
+  position: relative;
+  box-sizing: border-box;
 
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 
-  border-radius: $icon-button-border-radius;
-  padding: $icon-button-padding;
-
   & * {
     pointer-events: none;
   }
 
-  &--primary {
-    @include icon-button-primary();
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    mix-blend-mode: multiply;
   }
 
-  &--secondary {
-    @include icon-button-secondary();
+  &--size-tall {
+    @include padding-button-top-bottom($height-tall);
   }
 
-  &--tertiary {
-    @include icon-button-tertiary();
+  &--size-standard {
+    @include padding-button-top-bottom($height-standard);
   }
 
-  &--ghost {
-    @include icon-button-ghost();
+  &--size-short {
+    @include padding-button-top-bottom($height-short);
   }
 
-  &--secondary-white {
-    @include icon-button-secondary-white();
+  &__content {
+    height: 20px;
+    display: flex;
+    align-items: center;
   }
 
-  &--delete {
-    @include icon-button-delete();
+  &__disabled {
+    @include disable-button();
   }
 
-  &.size-tall {
-    @include size-buttom(56px);
+  &__primary {
+    background: $color-primary;
+    color: $color-content-bright;
+
+    @include hover-color();
   }
-  &.size-standard {
-    @include size-buttom(48px);
+
+  &__secondary {
+    background: $color-secondary;
+    color: $color-content-bright;
+
+    @include hover-color();
   }
-  &.size-short {
-    @include size-buttom(40px);
+
+  &__tertiary {
+    background: transparent;
+    color: $color-primary;
+    border: 2px solid $color-primary;
+
+    @include hover-neutral();
+  }
+
+  &__secondary--white {
+    background: transparent;
+    color: $color-content-bright;
+
+    @include hover-neutral();
+  }
+
+  &__ghost {
+    background: transparent;
+    color: $color-primary;
+
+    @include hover-neutral();
+  }
+
+  &__delete {
+    background: $color-delete;
+    color: $color-content-bright;
+
+    @include hover-color();
+  }
+
+  &__dashed {
+    background: transparent;
+    color: $color-primary;
+    border: 1px dashed $color-primary;
+
+    @include hover-neutral();
+  }
+
+  &__facebook {
+    background: $color-facebook-main;
+    color: $color-neutral-light-breeze;
+
+    @include hover-color();
+  }
+
+  bds-typo {
+    position: relative;
+  }
+
+  bds-loading-spinner {
+    width: auto;
+    max-height: 100%;
+    position: absolute;
+  }
+
+  .hide {
+    cursor: not-allowed;
+    opacity: 0;
   }
 }
