@@ -1266,6 +1266,14 @@ export namespace Components {
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "width"?: string;
     }
     interface BdsProgressBar {
         /**
@@ -3862,6 +3870,14 @@ declare namespace LocalJSX {
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "width"?: string;
     }
     interface BdsProgressBar {
         /**
