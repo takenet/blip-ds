@@ -1267,11 +1267,11 @@ export namespace Components {
          */
         "elevation"?: PaperElevation;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the height of the component.
          */
         "height"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the width of the component.
          */
         "width"?: string;
     }
@@ -3871,11 +3871,11 @@ declare namespace LocalJSX {
          */
         "elevation"?: PaperElevation;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the height of the component.
          */
         "height"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the width of the component.
          */
         "width"?: string;
     }
