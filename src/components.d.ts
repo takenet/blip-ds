@@ -1160,6 +1160,10 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconLeft"?: string;
@@ -1193,6 +1197,10 @@ export namespace Components {
           * Description. Used to insert a subtitle in the display item.
          */
         "description"?: string;
+        /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
          */
@@ -1267,11 +1275,11 @@ export namespace Components {
          */
         "elevation"?: PaperElevation;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the height of the component.
          */
         "height"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the width of the component.
          */
         "width"?: string;
     }
@@ -3760,6 +3768,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconLeft"?: string;
@@ -3793,6 +3805,10 @@ declare namespace LocalJSX {
           * Description. Used to insert a subtitle in the display item.
          */
         "description"?: string;
+        /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
          */
@@ -3871,11 +3887,11 @@ declare namespace LocalJSX {
          */
         "elevation"?: PaperElevation;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the height of the component.
          */
         "height"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Prop for set the width of the component.
          */
         "width"?: string;
     }
