@@ -59,6 +59,10 @@ $select-options-max-height: 250px;
     background-color: $color-input-secondary;
   }
 
+  .input__container {
+    padding: 4px 8px 9px;
+  }
+
   .input__container__label {
     color: $color-input-label;
 
@@ -119,7 +123,6 @@ $select-options-max-height: 250px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: $input-padding;
 
   flex: 1;
   width: 100%;
@@ -171,7 +174,7 @@ $select-options-max-height: 250px;
   }
 
   &--label {
-    padding: $input-padding-label;
+    padding: 0;
   }
 
   &__icon {
@@ -272,6 +275,7 @@ $select-options-max-height: 250px;
     align-items: center;
     justify-content: space-evenly;
     padding-right: 16px;
+    padding-left: 12px;
   }
 
   &__country-code {
@@ -308,10 +312,13 @@ $select-options-max-height: 250px;
   &:hover,
   &--pressed {
     .select-phone-number__icon {
+      position: relative;
+      height: 100%;
       &::before {
         content: '';
         background: $color-surface-3;
         height: calc(100% - 2px);
+        max-height: 54px;
         width: 70px;
         position: absolute;
         left: 1px;
