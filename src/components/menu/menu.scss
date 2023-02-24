@@ -12,7 +12,7 @@
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   transition: opacity 0.5s;
-  z-index: $zindex-modal-overlay;
+  z-index: $zindex-modal;
 
   &__open {
     pointer-events: auto;
@@ -26,4 +26,5 @@
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: $zindex-modal-overlay;
 }

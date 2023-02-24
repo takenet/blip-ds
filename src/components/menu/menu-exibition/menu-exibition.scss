@@ -3,6 +3,11 @@
   align-items: center;
   padding: 16px;
 
+  &__disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+  }
+
   & .avatar-item {
     display: block;
     margin-right: 8px;

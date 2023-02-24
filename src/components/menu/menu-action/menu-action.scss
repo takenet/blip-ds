@@ -52,6 +52,11 @@
       }
     }
 
+    &__disabled {
+      opacity: 0.5;
+      cursor: no-drop;
+    }
+
     &:hover {
       background-color: $color-surface-2;
     }

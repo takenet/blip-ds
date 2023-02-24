@@ -44,6 +44,10 @@ export class BdsMenuAction {
    * Lipstick. Used to declare that the item will be a negative/error action.
    */
   @Prop() lipstick?: boolean = false;
+  /**
+   * Disabled. Used to declare that the item will be disabled.
+   */
+  @Prop() disabled?: boolean = false;
 
   private onCloseSubMenu = (): void => {
     this.stateSubMenu = 'close';
@@ -137,6 +141,7 @@ export class BdsMenuAction {
             [`menuaction__button__activeicright`]: actRight,
             [`menuaction__button__activeicleftright`]: actLeftright,
             [`menuaction__button__lipstick`]: this.lipstick,
+            [`menuaction__button__disabled`]: this.disabled,
           }}
         >
           {this.iconLeft && <bds-icon class="icon-item" name={this.iconLeft} theme="outline" size="small"></bds-icon>}

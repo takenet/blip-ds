@@ -18,6 +18,16 @@ export class Paper implements ComponentInterface {
    */
   @Prop() dataTest?: string = null;
 
+  /**
+   * Prop for set the height of the component.
+   */
+  @Prop() height?: string = null;
+
+  /**
+   * Prop for set the width of the component.
+   */
+  @Prop() width?: string = null;
+
   private mapElevation: PaperElevationMap = {
     static: 'paper__elevation--static',
     primary: 'paper__elevation--primary',
@@ -28,7 +38,7 @@ export class Paper implements ComponentInterface {
     const elevation = this.mapElevation[this.elevation];
 
     return (
-      <Host class={{ [elevation]: true }}>
+      <Host class={{ [elevation]: true }} style={{ height: `${this.height}`, width: `${this.width}` }}>
         <div class="paper__display" data-test={this.dataTest}>
           <slot></slot>
         </div>

@@ -11,6 +11,7 @@
 | ------------- | ------------- | --------------------------------------------------------------------------------------------- | --------- | ------- |
 | `buttonText`  | `button-text` | ButtonText. Used to enter the display text for the item.                                      | `string`  | `''`    |
 | `description` | `description` | Description. Used to insert a subtitle in the display item.                                   | `string`  | `null`  |
+| `disabled`    | `disabled`    | Disabled. Used to declare that the item will be disabled.                                     | `boolean` | `false` |
 | `iconLeft`    | `icon-left`   | Iconleft. Used to insert the string icon and make the icon available to the left of the item. | `string`  | `null`  |
 | `lipstick`    | `lipstick`    | Lipstick. Used to declare that the item will be a negative/error action.                      | `boolean` | `false` |
 | `subMenu`     | `sub-menu`    | SubMenu. Used to declare that the button will have a submenu.                                 | `boolean` | `false` |
