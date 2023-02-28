@@ -12,40 +12,40 @@
 
   bds-typo {
     margin-left: 8px;
-    color:$color-content-default;
+    color: $color-content-din;
   }
 
   &--system {
     background: $color-system;
 
     bds-typo {
-      color:$color-content-default;
+      color: $color-content-din;
     }
 
     .color-icon {
-      color:$color-content-default;
+      color: $color-content-din;
     }
   }
 
   &--error {
     background: $color-error;
     bds-typo {
-      color:$color-content-default;
+      color: $color-content-din;
     }
-    
+
     .color-icon {
-      color:$color-content-default;
+      color: $color-content-din;
     }
   }
 
   &--warning {
     background: $color-warning;
     bds-typo {
-      color:$color-content-default;
+      color: $color-content-din;
     }
-    
+
     .color-icon {
-      color:$color-content-default;
+      color: $color-content-din;
     }
   }
 
@@ -53,11 +53,11 @@
     background: $color-delete;
 
     bds-typo {
-      color: $color-surface-1;
+      color: $color-content-bright;
     }
 
     .color-icon {
-      color: $color-surface-1;
+      color: $color-content-bright;
     }
   }
 }
