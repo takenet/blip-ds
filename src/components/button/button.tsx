@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Element, Event, EventEmitter, Host } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -160,23 +160,25 @@ export class Button {
     const sizeClass = this.getSizeClass();
 
     return (
-      <button
-        onClick={(ev) => this.handleClick(ev)}
-        disabled={this.disabled}
-        type={this.type}
-        class={{
-          button: true,
-          [`button__${this.variant}`]: true,
-          [`button__${this.variant}--disabled`]: this.disabled,
-          [sizeClass]: true,
-          'button--size-icon--left': !!this.icon,
-          'button--size-icon--right': this.arrow,
-        }}
-        part="button"
-        data-test={this.dataTest}
-      >
-        {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
-      </button>
+      <Host>
+        <button
+          onClick={(ev) => this.handleClick(ev)}
+          disabled={this.disabled}
+          type={this.type}
+          class={{
+            button: true,
+            [`button__${this.variant}`]: true,
+            [`button--disabled`]: this.disabled,
+            [sizeClass]: true,
+            'button--size-icon--left': !!this.icon,
+            'button--size-icon--right': this.arrow,
+          }}
+          part="button"
+          data-test={this.dataTest}
+        >
+          {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
+        </button>
+      </Host>
     );
   }
 }
