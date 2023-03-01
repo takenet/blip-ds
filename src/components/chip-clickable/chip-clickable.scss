@@ -76,7 +76,6 @@
       align-items: center;
       height: 20px;
       padding-left: 4px;
-      color: $color-content-default;
       z-index: 2;
     }
     &--close {
@@ -85,8 +84,7 @@
       height: 20px;
       padding-right: 4px;
       mix-blend-mode: hard-light;
-      color: $color-content-default;
-      opacity: 0.7;
+      opacity: 0.5;
       z-index: 2;
       position: relative;
       cursor: pointer;
@@ -107,7 +105,6 @@
       height: 20px;
       margin: 0 8px;
       z-index: 2;
-      color: $color-content-default;
       font-family: $font-family;
     }
     &--tall {
@@ -116,21 +113,27 @@
     }
     &--default {
       background-color: $color-system;
+      color: $color-content-din;
     }
     &--info {
       background-color: $color-info;
+      color: $color-content-din;
     }
     &--success {
       background-color: $color-success;
+      color: $color-content-din;
     }
     &--warning {
       background-color: $color-warning;
+      color: $color-content-din;
     }
     &--danger {
       background-color: $color-error;
+      color: $color-content-din;
     }
     &--outline {
       background-color: $color-surface-1;
+      color: $color-content-default;
       border: 1px solid $color-surface-3;
     }
     &:focus-visible {

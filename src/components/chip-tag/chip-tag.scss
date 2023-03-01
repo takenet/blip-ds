@@ -12,42 +12,46 @@
     box-sizing: border-box;
 
     &--icon {
-    display: flex;
-    align-items: center;
-    width: 16px;
-    height: 20px;
-    color: $color-content-default;
-  }
+      display: flex;
+      align-items: center;
+      width: 16px;
+      height: 20px;
+    }
     &--text {
       display: flex;
       align-items: center;
       height: 20px;
       margin: 0 8px;
-      color: $color-content-default;
       font-family: $font-family;
     }
     &--default {
       background-color: $color-system;
+      color: $color-content-din;
     }
     &--info {
       background-color: $color-info;
+      color: $color-content-din;
     }
     &--success {
       background-color: $color-success;
+      color: $color-content-din;
     }
     &--warning {
       background-color: $color-warning;
+      color: $color-content-din;
     }
     &--danger {
       background-color: $color-error;
+      color: $color-content-din;
     }
     &--outline {
       background-color: $color-surface-1;
+      color: $color-content-default;
       border: 1px solid $color-surface-3;
     }
     &--disabled {
       background-color: $color-surface-3;
+      color: $color-content-default;
     }
   }
-  
 }
