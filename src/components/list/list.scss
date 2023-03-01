@@ -77,8 +77,8 @@
   }
   &:hover {
     &:before {
-      background-color: $color-surface-2;
-      mix-blend-mode: multiply;
+      background-color: $color-content-default;
+      opacity: 0.08;
     }
   }
 }
