@@ -1,26 +1,26 @@
 @import 'mixins';
 
 .counter-text {
-  background: $color-neutral-light-breeze;
-  color: $color-neutral-medium-cloud;
+  background: $color-surface-2;
+  color: $color-content-disable;
   box-sizing: content-box;
   width: fit-content;
   border-radius: 11px;
   padding: 0 8px;
 
   &--active {
-    background: $color-primary-main;
-    color: $color-neutral-light-whisper;
+    background: $color-system;
+    color: $color-content-din;
   }
 
   &--warning {
-    background: $color-extend-browns-cheetos;
-    color: $color-neutral-light-whisper;
+    background: $color-warning;
+    color: $color-content-din;
   }
 
   &--delete {
-    background: $color-extend-reds-delete;
-    color: $color-neutral-light-whisper;
+    background: $color-delete;
+    color: $color-content-bright;
   }
 
   @include no-select;
