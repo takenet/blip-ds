@@ -1,252 +1,153 @@
 @import 'resets';
 
-$icon-button-border-radius: 8px;
-$icon-button-padding: 8px;
+$button-border-radius: 8px;
 
-@mixin size-buttom($size) {
-  width: $size;
-  height: $size;
+$button-size-tall: 56px;
+$button-size-standard: 48px;
+$button-size-short: 40px;
+
+@mixin padding-button-top-bottom($padding, $height) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+  height: $height;
 }
 
-@mixin disable-button($background, $color: null, $border: null) {
-  cursor: not-allowed;
-  background: $background;
-
-  @if ($color) {
-    color: $color;
-  }
-
-  @if ($border) {
-    border: $border;
-  }
-
-  &:hover,
-  &:active {
-    background: $background;
-
-    @if ($color) {
-      color: $color;
-    }
-
-    @if ($border) {
-      border: $border;
-    }
-  }
+@mixin inherit-color() {
+  color: inherit;
+  background-color: inherit;
 }
 
-@mixin icon-button-primary {
-  color: $color-neutral-light-snow;
-  background: $color-primary-main;
-
-  &:hover {
-    color: $color-neutral-light-snow;
-    background: $color-primary-dark;
-  }
-
-  &:focus {
-    color: $color-neutral-light-snow;
-    background: $color-primary-dark;
-  }
-
-  &:active {
-    color: $color-neutral-light-snow;
-    background: $color-primary-night;
-  }
-
-  &--disabled {
-    @include disable-button($color-disabled-bg, $color-disabled-text);
-  }
+:host {
+  cursor: no-drop;
+  border-radius: $button-border-radius;
+  overflow: hidden;
 }
 
-@mixin icon-button-secondary {
-  color: $color-neutral-dark-rooftop;
-  background: transparent;
-
-  &:hover {
-    color: $color-primary-main;
-    background: $color-disabled-bg;
-  }
-
-  &:focus {
-    color: $color-primary-main;
-    background: $color-disabled-bg;
-  }
-
-  &:active {
-    color: $color-primary-main;
-    background: $color-hover-light;
-  }
-
-  &--disabled {
-    @include disable-button(transparent, $color-disabled-text);
-  }
-}
-
-@mixin icon-button-secondary-white {
-  background: transparent;
-  color: $color-neutral-light-snow;
-
-  &:hover,
-  &:focus {
-    background: rgba($color-neutral-light-snow, 0.3);
-    color: $color-neutral-light-snow;
-  }
-
-  &:active {
-    background: rgba($color-neutral-light-snow, 0.4);
-    color: $color-neutral-light-snow;
-  }
-
-  &--disabled {
-    cursor: not-allowed;
-    color: $color-disabled-text;
-    background: $color-disabled-bg;
-
-    &:hover {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
-    }
-
-    &:focus {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
-    }
-
-    &:active {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
-    }
-  }
-}
-
-@mixin icon-button-delete {
-  color: $color-neutral-light-snow;
-  background: $color-extend-reds-delete;
-
-  &:hover {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-lipstick;
-  }
-
-  &:focus {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-lipstick;
-  }
-
-  &:active {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-dragon;
-  }
-
-  &--disabled {
-    @include disable-button($color-disabled-delete, $color-disabled-wrong);
-  }
-}
-
-@mixin icon-button-tertiary {
-  color: $color-primary-main;
-  background: transparent;
-  border: 1px solid $color-neutral-medium-wave;
-
-  &:hover {
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &:focus {
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &:active {
-    background: $color-hover-light;
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
-  }
-}
-
-@mixin icon-button-ghost {
-  color: $color-primary-main;
-  background: transparent;
-  border: 1px solid $color-primary-main;
-
-  &:hover {
-    background: $color-disabled-bg;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &:focus {
-    background: $color-disabled-bg;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &:active {
-    background: $color-hover-light;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
-  }
-}
-
-.icon__button {
+.button {
   @include reset-button();
+  position: relative;
   cursor: pointer;
-
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  border-radius: $button-border-radius;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
 
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 
-  border-radius: $icon-button-border-radius;
-  padding: $icon-button-padding;
-
   & * {
     pointer-events: none;
   }
 
-  &--primary {
-    @include icon-button-primary();
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background-color: $color-content-default;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
   }
 
-  &--secondary {
-    @include icon-button-secondary();
+  &:hover {
+    &:before {
+      opacity: 0.08;
+    }
   }
 
-  &--tertiary {
-    @include icon-button-tertiary();
+  &:active {
+    &:before {
+      -webkit-transition: none;
+      -moz-transition: none;
+      transition: none;
+      opacity: 0.16;
+    }
   }
 
-  &--ghost {
-    @include icon-button-ghost();
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 
-  &--secondary-white {
-    @include icon-button-secondary-white();
+  &--size-tall {
+    width: $button-size-tall;
+    height: $button-size-tall;
   }
 
-  &--delete {
-    @include icon-button-delete();
+  &--size-standard {
+    width: $button-size-standard;
+    height: $button-size-standard;
   }
 
-  &.size-tall {
-    @include size-buttom(56px);
+  &--size-short {
+    width: $button-size-short;
+    height: $button-size-short;
   }
-  &.size-standard {
-    @include size-buttom(48px);
+
+  &__icon {
+    position: relative;
+    @include inherit-color();
+    height: 24px;
+    margin-right: 4px;
   }
-  &.size-short {
-    @include size-buttom(40px);
+
+  &__primary {
+    background: $color-primary;
+    color: $color-content-bright;
+  }
+
+  &__secondary {
+    background: transparent;
+    color: $color-content-default;
+  }
+
+  &__tertiary {
+    background: transparent;
+    color: $color-primary;
+    border: 1px solid $color-surface-3;
+  }
+
+  &__secondary--white {
+    background: transparent;
+    color: $color-content-bright;
+  }
+
+  &__ghost {
+    background: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+  }
+
+  &__delete {
+    background: $color-delete;
+    color: $color-content-bright;
+  }
+
+  &__dashed {
+    background: transparent;
+    color: $color-primary-main;
+    border: 1px dashed $color-primary-main;
+  }
+
+  &__facebook {
+    background: $color-facebook-main;
+    color: $color-neutral-light-breeze;
+  }
+
+  bds-loading-spinner {
+    width: auto;
+    max-height: 100%;
+    position: absolute;
+  }
+
+  .hide {
+    cursor: not-allowed;
+    opacity: 0;
   }
 }

@@ -37,6 +37,7 @@ graph TD;
   bds-pagination --> bds-icon
   bds-pagination --> bds-paper
   bds-button-icon --> bds-icon
+  bds-button-icon --> bds-loading-spinner
   style bds-pagination fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

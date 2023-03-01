@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Host } from '@stencil/core';
 import { IconSize } from '../icon/icon-interface';
 
 export type IconButtonSize = 'tall' | 'standard' | 'short';
@@ -35,6 +35,11 @@ export class IconButton {
   @Prop({ reflect: true }) icon?: string = null;
 
   /**
+   * 	If true, shows the loading spinner
+   */
+  @Prop() bdsLoading?: boolean = false;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -45,34 +50,35 @@ export class IconButton {
     short: 'medium',
   };
 
-  private mapVariantStyle: IconButtonVariantMap = {
-    primary: 'icon__button--primary',
-    secondary: 'icon__button--secondary',
-    tertiary: 'icon__button--tertiary',
-    delete: 'icon__button--delete',
-    ghost: 'icon__button--ghost',
-    'secondary--white': 'icon__button--secondary-white',
-  };
+  renderIcon(): HTMLElement {
+    const size: IconSize = this.mapSize[this.size];
+    return <bds-icon name={this.icon} size={size} color="inherit"></bds-icon>;
+  }
+
+  renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
+    const sizeValue = this.size == 'short' || this.size === 'standard' ? 'extra-small' : 'small';
+    const colorValue = this.variant == 'delete' ? 'light' : 'main';
+    return <bds-loading-spinner size={sizeValue} color={colorValue}></bds-loading-spinner>;
+  }
 
   render(): HTMLElement {
     if (!this.icon) return null;
-
-    const size: IconSize = this.mapSize[this.size];
-    const state: string = this.mapVariantStyle[this.variant];
-
     return (
-      <button
-        disabled={this.disabled}
-        class={{
-          ['icon__button']: true,
-          [state]: true,
-          [`${state}--disabled`]: this.disabled,
-          [`size-${this.size}`]: true,
-        }}
-        data-test={this.dataTest}
-      >
-        <bds-icon name={this.icon} size={size} color="inherit"></bds-icon>
-      </button>
+      <Host>
+        <button
+          disabled={this.disabled}
+          class={{
+            button: true,
+            [`button__${this.variant}`]: true,
+            [`button--disabled`]: this.disabled,
+            [`button--size-${this.size}`]: true,
+            'button--size-icon--left': !!this.icon,
+          }}
+          data-test={this.dataTest}
+        >
+          {[this.bdsLoading ? this.renderLoadingSpinner() : this.renderIcon()]}
+        </button>
+      </Host>
     );
   }
 }

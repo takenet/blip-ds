@@ -39,6 +39,7 @@ Type: `Promise<void>`
 graph TD;
   bds-sidebar --> bds-button-icon
   bds-button-icon --> bds-icon
+  bds-button-icon --> bds-loading-spinner
   style bds-sidebar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

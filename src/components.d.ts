@@ -274,6 +274,10 @@ export namespace Components {
     }
     interface BdsButtonIcon {
         /**
+          * If true, shows the loading spinner
+         */
+        "bdsLoading"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -2735,6 +2739,10 @@ declare namespace LocalJSX {
         "variant"?: ButtonVariant;
     }
     interface BdsButtonIcon {
+        /**
+          * If true, shows the loading spinner
+         */
+        "bdsLoading"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */

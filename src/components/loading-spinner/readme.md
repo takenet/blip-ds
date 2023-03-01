@@ -20,11 +20,13 @@
 ### Used by
 
  - [bds-button](../button)
+ - [bds-button-icon](../icon-button)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-button --> bds-loading-spinner
+  bds-button-icon --> bds-loading-spinner
   style bds-loading-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

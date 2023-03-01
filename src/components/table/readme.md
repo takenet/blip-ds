@@ -58,6 +58,7 @@ graph TD;
   bds-table --> bds-chip-tag
   bds-table --> bds-avatar
   bds-button-icon --> bds-icon
+  bds-button-icon --> bds-loading-spinner
   bds-chip-tag --> bds-icon
   bds-chip-tag --> bds-typo
   bds-avatar --> bds-typo

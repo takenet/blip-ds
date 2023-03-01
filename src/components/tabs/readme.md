@@ -31,6 +31,7 @@
 graph TD;
   bds-tabs --> bds-button-icon
   bds-button-icon --> bds-icon
+  bds-button-icon --> bds-loading-spinner
   style bds-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

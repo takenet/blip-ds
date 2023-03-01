@@ -66,6 +66,7 @@ graph TD;
   bds-avatar --> bds-icon
   bds-tooltip --> bds-typo
   bds-button-icon --> bds-icon
+  bds-button-icon --> bds-loading-spinner
   bds-radio --> bds-typo
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
