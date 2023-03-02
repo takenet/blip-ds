@@ -1,0 +1,21 @@
+@import 'node_modules/blip-tokens/build/scss/theme-dark.scss';
+
+$color-brand: var(--color-brand, $color-primary-main);
+$color-primary: var(--color-primary, $color-primary-main);
+$color-secondary: var(--color-secondary, $color-primary-main);
+$color-surface-1: var(--color-surface-1, $color-neutral-light-snow);
+$color-surface-2: var(--color-surface-2, $color-neutral-light-whisper);
+$color-surface-3: var(--color-surface-3, $color-neutral-light-box);
+$color-surface-4: var(--color-surface-4, $color-neutral-dark-city);
+$color-content-default: var(--color-content-default, $color-neutral-dark-city);
+$color-content-disable: var(--color-content-disable, $color-neutral-dark-rooftop);
+$color-content-ghost: var(--color-content-ghost, $color-neutral-medium-elephant);
+$color-content-bright: var(--color-content-bright, #fff);
+$color-content-din: var(--color-content-din, #000);
+$color-info: var(--color-info, $color-illustration-blue-genie);
+$color-system: var(--color-system, $color-primary-light);
+$color-focus: var(--color-focus, $color-primary-purples-bell);
+$color-success: var(--color-success, $color-primary-greens-mint);
+$color-warning: var(--color-warning, $color-primary-yellows-corn);
+$color-error: var(--color-error, $color-extend-reds-flower);
+$color-delete: var(--color-delete, $color-extend-reds-delete);
