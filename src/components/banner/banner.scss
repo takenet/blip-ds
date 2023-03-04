@@ -18,7 +18,7 @@
       width: 100%;
       padding: 8px 16px;
       min-height: 40px;
-      color: $color-content-default;
+      color: $color-content-din;
 
       &--context--inside {
         border-radius: 8px;
@@ -53,7 +53,6 @@
       display: flex;
       align-items: center;
       width: 100%;
-      
 
       &--left {
         justify-content: flex-start;
@@ -67,12 +66,11 @@
         justify-content: flex-start;
       }
       .slot {
-      display: flex;
-      justify-content: space-between;
-      margin-left: 8px;
-      width: 100%;
-      color: $color-content-default;
-    }
+        display: flex;
+        justify-content: space-between;
+        margin-left: 8px;
+        width: 100%;
+      }
     }
 
     &__action {
@@ -84,7 +82,6 @@
         display: flex;
         margin-left: 8px;
       }
-      
     }
   }
 }
