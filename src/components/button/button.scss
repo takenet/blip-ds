@@ -1,14 +1,7 @@
 @import 'resets';
 
-$hover-neutral: $color-neutral-light-box;
-$active-neutral: $color-neutral-medium-wave;
-
-$hover-color: $color-neutral-medium-wave;
-$active-color: $color-neutral-medium-silver;
-
 $button-border-radius: 8px;
 
-$height-tall: 56px;
 $height-standard: 40px;
 $height-short: 32px;
 
@@ -29,42 +22,35 @@ $button-padding-left-right: 16px;
   height: $height;
 }
 
-@mixin disable-button() {
+@mixin disable-button($background, $color: null, $border: null) {
+  background: $background;
   pointer-events: none;
-  opacity: 0.5;
+
+  @if ($color) {
+    color: $color;
+  }
+
+  @if ($border) {
+    border: $border;
+  }
+
+  &:hover,
+  &:active {
+    background: $background;
+
+    @if ($color) {
+      color: $color;
+    }
+
+    @if ($border) {
+      border: $border;
+    }
+  }
 }
 
 @mixin inherit-color() {
   color: inherit;
   background-color: inherit;
-}
-
-@mixin hover-color() {
-  &:hover {
-    &:before {
-      background: $hover-color;
-    }
-  }
-
-  &:active {
-    &:before {
-      background: $active-color;
-    }
-  }
-}
-
-@mixin hover-neutral() {
-  &:hover {
-    &:before {
-      background: $hover-neutral;
-    }
-  }
-
-  &:active {
-    &:before {
-      background: $active-neutral;
-    }
-  }
 }
 
 .button {
@@ -75,7 +61,6 @@ $button-padding-left-right: 16px;
   align-items: center;
   justify-content: center;
   height: 100%;
-  overflow: hidden;
   border-radius: $button-border-radius;
   padding-left: $button-padding-left-right;
   padding-right: $button-padding-left-right;
@@ -90,19 +75,11 @@ $button-padding-left-right: 16px;
     pointer-events: none;
   }
 
-  &:before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: transparent;
-    mix-blend-mode: multiply;
-  }
-
   &--size-tall {
-    @include padding-button-top-bottom($button-size-tall, $height-tall);
+    @include padding-button-top-bottom($button-size-tall, $height-standard);
 
     &--icon {
-      @include padding-button-top-bottom($button-size-tall-icon, $height-tall);
+      @include padding-button-top-bottom($button-size-tall-icon, $height-standard);
     }
   }
 
@@ -149,70 +126,162 @@ $button-padding-left-right: 16px;
     align-items: center;
   }
 
-  &__disabled {
-    @include disable-button();
-  }
-
   &__primary {
-    background: $color-primary;
-    color: $color-content-bright;
+    background: $color-primary-main;
+    color: $color-neutral-light-snow;
 
-    @include hover-color();
+    &:hover {
+      background: $color-primary-dark;
+    }
+
+    &:active {
+      background: $color-primary-night;
+      color: $color-neutral-light-snow;
+    }
+
+    &--disabled {
+      @include disable-button($color-disabled-bg, $color-disabled-text);
+    }
   }
 
   &__secondary {
-    background: $color-secondary;
-    color: $color-content-bright;
+    background: transparent;
+    color: $color-neutral-dark-rooftop;
 
-    @include hover-color();
+    &:hover {
+      background: $color-disabled-bg;
+      color: $color-primary-main;
+    }
+
+    &:active {
+      background: $color-hover-light;
+      color: $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button(transparent, $color-disabled-text);
+    }
   }
 
   &__tertiary {
     background: transparent;
-    color: $color-primary;
-    border: 2px solid $color-primary;
+    color: $color-primary-main;
+    border: 1px solid $color-neutral-medium-wave;
 
-    @include hover-neutral();
+    &:hover {
+      border: 1px solid $color-primary-main;
+      color: $color-primary-main;
+    }
+
+    &:active {
+      background: $color-hover-light;
+      border: 1px solid $color-primary-main;
+      color: $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+    }
   }
 
   &__secondary--white {
     background: transparent;
-    color: $color-content-bright;
+    color: $color-neutral-light-snow;
 
-    @include hover-neutral();
+    &:hover {
+      background: rgba($color-neutral-light-snow, 0.3);
+      color: $color-neutral-light-snow;
+    }
+
+    &:active {
+      background: rgba($color-neutral-light-snow, 0.4);
+      color: $color-neutral-light-snow;
+    }
+
+    &--disabled {
+      @include disable-button($color-disabled-bg, $color-neutral-medium-cloud);
+    }
   }
 
   &__ghost {
     background: transparent;
-    color: $color-primary;
+    color: $color-primary-main;
+    border: 1px solid $color-primary-main;
 
-    @include hover-neutral();
+    &:hover {
+      background: $color-disabled-bg;
+      color: $color-primary-main;
+      border: 1px solid $color-primary-main;
+    }
+
+    &:active {
+      background: $color-hover-light;
+      color: $color-primary-main;
+      border: 1px solid $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+    }
   }
 
   &__delete {
-    background: $color-delete;
-    color: $color-content-bright;
+    background: $color-extend-reds-delete;
+    color: $color-neutral-light-snow;
 
-    @include hover-color();
+    &:hover {
+      background: $color-extend-reds-lipstick;
+      color: $color-neutral-light-snow;
+    }
+
+    &:active {
+      background: $color-extend-reds-dragon;
+      color: $color-neutral-light-snow;
+    }
+
+    &--disabled {
+      @include disable-button($color-disabled-delete, $color-disabled-wrong);
+    }
   }
 
   &__dashed {
     background: transparent;
-    color: $color-primary;
-    border: 1px dashed $color-primary;
+    color: $color-primary-main;
+    border: 1px dashed $color-primary-main;
 
-    @include hover-neutral();
+    &:hover {
+      background: transparent;
+      color: $color-primary-dark;
+      border: 1px dashed $color-primary-dark;
+    }
+
+    &:active {
+      background: transparent;
+      color: $color-primary-main;
+      border: 1px dashed $color-primary-main;
+    }
+
+    &--disabled {
+      @include disable-button(transparent, $color-neutral-medium-cloud, 1px dashed $color-neutral-medium-cloud);
+    }
   }
 
   &__facebook {
     background: $color-facebook-main;
     color: $color-neutral-light-breeze;
 
-    @include hover-color();
-  }
+    &:hover {
+      background: $color-facebook-dark;
+    }
 
-  bds-typo {
-    position: relative;
+    &:active {
+      background: $color-primary-main;
+      color: $color-neutral-light-breeze;
+    }
+
+    &--disabled {
+      @include disable-button($color-disabled-bg, $color-neutral-medium-cloud);
+    }
   }
 
   bds-loading-spinner {
