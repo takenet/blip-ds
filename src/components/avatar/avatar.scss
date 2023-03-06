@@ -22,7 +22,7 @@ $avatar-size-extra-large: 72px;
     color: $color-surface-1;
   }
   &__text {
-    color: $color-content-default;
+    color: $color-content-din;
   }
 
   &__icon {
@@ -48,7 +48,7 @@ $avatar-size-extra-large: 72px;
     }
 
     &__text {
-      color: $color-content-default;
+      color: $color-content-din;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -56,7 +56,7 @@ $avatar-size-extra-large: 72px;
     }
 
     &__icon {
-      color: $color-content-default;
+      color: $color-content-din;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -72,13 +72,21 @@ $avatar-size-extra-large: 72px;
       align-items: center;
       top: 0;
       left: 0;
-      background-color: $color-content-default;
       cursor: pointer;
-      opacity: 0;
-      transition: all 0.5s;
+
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $color-content-default;
+        opacity: 0;
+        transition: all 0.5s;
+      }
 
       &__icon {
         color: $color-surface-1;
+        opacity: 0;
+        transition: all 0.5s;
       }
     }
 
@@ -98,7 +106,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-surface-1;
+        color: $color-content-din;
       }
     }
 
@@ -118,7 +126,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-surface-1;
+        color: $color-content-din;
       }
     }
   }
@@ -162,7 +170,7 @@ $avatar-size-extra-large: 72px;
 
   &__color {
     &--neutral {
-      background-color: $color-content-default;
+      background-color: $color-system;
     }
     &--yellow {
       background-color: $color-warning;
@@ -185,7 +193,12 @@ $avatar-size-extra-large: 72px;
     .avatar {
       &__btn {
         &__thumb {
-          opacity: 0.65;
+          &:before {
+            opacity: 0.5;
+          }
+          &__icon {
+            opacity: 1;
+          }
         }
         &__text {
           opacity: 0;
