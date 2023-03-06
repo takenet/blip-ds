@@ -7,7 +7,7 @@ $select-option-left: 12px;
   width: 100%;
   @include no-select();
   cursor: pointer;
-  background-color: $color-neutral-light-snow;
+  background-color: $color-surface-1;
   padding: $select-option-padding;
   padding-left: $select-option-left;
   box-sizing: border-box;
@@ -17,7 +17,7 @@ $select-option-left: 12px;
 
   &--selected {
     .select-option__container--value {
-      color: $color-primary-main;
+      color: $color-primary;
     }
   }
 
@@ -25,11 +25,11 @@ $select-option-left: 12px;
     .select-option__container--value,
     .select-option__container--bulk {
       &:hover {
-        background-color: $color-neutral-light-snow;
+        background-color: $color-surface-1;
       }
 
       cursor: not-allowed;
-      color: $color-neutral-medium-silver;
+      color: $color-content-disable;
     }
   }
 
@@ -38,7 +38,7 @@ $select-option-left: 12px;
   }
 
   &__container {
-    color: $color-neutral-dark-city;
+    color: $color-content-default;
     display: flex;
     flex-direction: column;
 
@@ -48,7 +48,7 @@ $select-option-left: 12px;
 
     &--bulk,
     &--status {
-      color: $color-neutral-medium-cloud;
+      color: $color-content-ghost;
     }
     &--status {
       margin-left: 4px;
@@ -62,27 +62,27 @@ $select-option-left: 12px;
     &:hover > &--value,
     &:hover > &--bulk,
     &:hover > &--status {
-      color: $color-primary-main;
+      color: $color-primary;
     }
 
     &:active > &--value,
     &:active > &--bulk,
     &:active > &--status {
-      color: $color-primary-main;
+      color: $color-primary;
     }
   }
 
   &:hover {
-    background-color: $color-neutral-light-whisper;
+    background-color: $color-surface-2;
   }
 
   &:focus {
-    background-color: $color-hover-light;
+    background-color: $color-surface-2;
     color: $color-primary-main;
   }
 
   &--selected {
-    background-color: $color-hover-light;
+    background-color: $color-surface-2;
   }
 
   &--invisible {
