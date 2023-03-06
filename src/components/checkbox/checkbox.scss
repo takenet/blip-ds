@@ -21,7 +21,7 @@ $checkbox-spacing-text: 8px;
   }
 
   &__icon {
-    background: $color-content-bright;
+    background: $color-surface-1;
 
     &:hover {
       border-color: $color-brand;
@@ -31,6 +31,7 @@ $checkbox-spacing-text: 8px;
   &--selected {
     .checkbox__icon {
       background-color: $color-brand;
+      color: $color-content-bright;
 
       &:hover {
         background-color: $color-brand;
