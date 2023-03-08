@@ -1,0 +1,192 @@
+@keyframes pulse {
+  from {
+    scale: 100%;
+    opacity: 1;
+  }
+  to {
+    scale: 140%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-status {
+  from {
+    scale: 100%;
+    opacity: 1;
+  }
+  to {
+    scale: 200%;
+    opacity: 0;
+  }
+}
+
+.color {
+  &--system {
+    background-color: $color-system;
+    color: $color-system;
+  }
+
+  &--danger {
+    background-color: $color-error;
+    color: $color-error;
+  }
+
+  &--warning {
+    background-color: $color-warning;
+    color: $color-warning;
+  }
+
+  &--success {
+    background-color: $color-success;
+    color: $color-success;
+  }
+
+  &--neutral {
+    background-color: $color-surface-3;
+    color: $color-surface-3;
+  }
+}
+
+:host {
+  display: inline-flex;
+}
+
+.chip_badge {
+  .status {
+    width: 8px;
+    height: 8px;
+
+    &--circle {
+      width: 0;
+      height: 0;
+      border: 4px solid;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--circle::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      border: 0.5px solid;
+      border-radius: 8px;
+      animation: pulse-status 500ms ease-out 2;
+    }
+    &--circle::before {
+      animation-iteration-count: infinite;
+    }
+
+    &--triangle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+
+      border-bottom: 8px solid;
+    }
+    &--triangle-reverse {
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+
+      border-top: 8px solid;
+    }
+    &--polygon {
+      width: 0;
+      height: 0;
+      border: 4px solid;
+      rotate: 45deg;
+    }
+    &--square {
+      width: 0;
+      height: 0;
+      border: 4px solid;
+    }
+  }
+
+  .icon {
+    bds-icon {
+      color: $color-content-din;
+    }
+
+    &--circle {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      border-radius: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    &--circle::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      border: 0.5px solid;
+      border-radius: 16px;
+      animation: pulse 500ms ease-out infinite;
+    }
+    &--circle::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      border: 0.5px solid;
+      border-radius: 16px;
+      animation-delay: 500ms;
+      animation: pulse 500ms ease-out infinite;
+    }
+
+    &--triangle {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      justify-content: center;
+      align-items: end;
+    }
+
+    &--triangle-reverse {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+      justify-content: center;
+      align-items: start;
+    }
+    &--polygon {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      justify-content: center;
+      align-items: center;
+    }
+    &--square {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .text {
+    display: flex;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+
+    bds-typo {
+      color: $color-content-din;
+    }
+  }
+}
