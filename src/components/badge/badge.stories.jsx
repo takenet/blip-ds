@@ -62,7 +62,7 @@ export const exampleBadge = () => (
     <bds-grid style={mixBadge}>
       <bds-icon name="bell" size="large"></bds-icon>
       <div style={badge}>
-        <bds-badge shape="square" color="system" animation text={1}></bds-badge>
+        <bds-badge shape="circle" color="system" animation text={1}></bds-badge>
       </div>
     </bds-grid>
     <bds-grid style={mixBadge}>
