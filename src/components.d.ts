@@ -216,13 +216,13 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "number"?: number;
+        /**
           * Set the shape of the component.
          */
         "shape"?: Shape;
-        /**
-          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
-         */
-        "text"?: number;
     }
     interface BdsBanner {
         /**
@@ -2696,13 +2696,13 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "number"?: number;
+        /**
           * Set the shape of the component.
          */
         "shape"?: Shape;
-        /**
-          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
-         */
-        "text"?: number;
     }
     interface BdsBanner {
         /**
