@@ -65,17 +65,14 @@
       justify-content: center;
       align-items: center;
     }
-    &--circle::before {
+    &--circle-true::before {
       content: '';
       width: 8px;
       height: 8px;
       position: absolute;
-      border: 0.5px solid;
+      border: 1px solid;
       border-radius: 8px;
-      animation: pulse-status 500ms ease-out 2;
-    }
-    &--circle::before {
-      animation-iteration-count: infinite;
+      animation: pulse-status 500ms ease-out infinite;
     }
 
     &--triangle {
@@ -111,79 +108,101 @@
   }
 
   .icon {
+    position: relative;
     bds-icon {
+      position: absolute;
       color: $color-content-din;
     }
 
     &--circle {
       display: flex;
-      width: 24px;
-      height: 24px;
-      border-radius: 16px;
       justify-content: center;
       align-items: center;
-    }
-    &--circle::before {
-      content: '';
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      border: 0.5px solid;
-      border-radius: 16px;
-      animation: pulse 500ms ease-out infinite;
-    }
-    &--circle::before {
-      content: '';
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      border: 0.5px solid;
-      border-radius: 16px;
-      animation-delay: 500ms;
-      animation: pulse 500ms ease-out infinite;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        border-radius: 16px;
+      }
+      .trim-true::before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        left: -2px;
+        top: -2px;
+        position: absolute;
+        border: 2px solid;
+        border-radius: 16px;
+        animation: pulse 500ms ease-out infinite;
+      }
     }
 
     &--triangle {
       display: flex;
-      width: 24px;
-      height: 24px;
-      clip-path: polygon(50% 0, 100% 100%, 0 100%);
       justify-content: center;
       align-items: end;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      }
     }
 
     &--triangle-reverse {
       display: flex;
-      width: 24px;
-      height: 24px;
-      clip-path: polygon(50% 100%, 0 0, 100% 0);
       justify-content: center;
       align-items: start;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 100%, 0 0, 100% 0);
+      }
     }
     &--polygon {
       display: flex;
-      width: 24px;
-      height: 24px;
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
       justify-content: center;
       align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      }
     }
     &--square {
       display: flex;
-      width: 24px;
-      height: 24px;
       justify-content: center;
       align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
-  .text {
+  .number {
     display: flex;
     height: 24px;
     padding: 0 8px;
     border-radius: 16px;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    &--true::before {
+      content: '';
+      width: 100%;
+      height: 24px;
+      left: -2px;
+      top: -2px;
+      position: absolute;
+      border: 2px solid;
+      border-radius: 16px;
+      animation: pulse 500ms ease-out infinite;
+    }
 
     bds-typo {
       color: $color-content-din;

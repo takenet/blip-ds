@@ -11,7 +11,7 @@ import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsP
 import { avatarSize } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
-import { Shape, Type } from "./components/badge/badge";
+import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -203,11 +203,26 @@ export namespace Components {
         "users"?: string | AvatarDataList[];
     }
     interface BdsBadge {
+        /**
+          * If true, actived the pulse animation.
+         */
+        "animation"?: boolean;
+        /**
+          * Set the color of the component.
+         */
         "color"?: string;
+        /**
+          * Set witch icon will be render inside the component.
+         */
         "icon"?: string;
+        /**
+          * Set the shape of the component.
+         */
         "shape"?: Shape;
-        "text"?: string;
-        "type"?: Type;
+        /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "text"?: number;
     }
     interface BdsBanner {
         /**
@@ -2668,11 +2683,26 @@ declare namespace LocalJSX {
         "users"?: string | AvatarDataList[];
     }
     interface BdsBadge {
+        /**
+          * If true, actived the pulse animation.
+         */
+        "animation"?: boolean;
+        /**
+          * Set the color of the component.
+         */
         "color"?: string;
+        /**
+          * Set witch icon will be render inside the component.
+         */
         "icon"?: string;
+        /**
+          * Set the shape of the component.
+         */
         "shape"?: Shape;
-        "text"?: string;
-        "type"?: Type;
+        /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "text"?: number;
     }
     interface BdsBanner {
         /**
