@@ -11,6 +11,7 @@ import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsP
 import { avatarSize } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
+import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -200,6 +201,28 @@ export namespace Components {
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
+    }
+    interface BdsBadge {
+        /**
+          * If true, actived the pulse animation.
+         */
+        "animation"?: boolean;
+        /**
+          * Set the color of the component.
+         */
+        "color"?: string;
+        /**
+          * Set witch icon will be render inside the component.
+         */
+        "icon"?: string;
+        /**
+          * Set the shape of the component.
+         */
+        "shape"?: Shape;
+        /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "text"?: number;
     }
     interface BdsBanner {
         /**
@@ -2029,6 +2052,12 @@ declare global {
         prototype: HTMLBdsAvatarGroupElement;
         new (): HTMLBdsAvatarGroupElement;
     };
+    interface HTMLBdsBadgeElement extends Components.BdsBadge, HTMLStencilElement {
+    }
+    var HTMLBdsBadgeElement: {
+        prototype: HTMLBdsBadgeElement;
+        new (): HTMLBdsBadgeElement;
+    };
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
     }
     var HTMLBdsBannerElement: {
@@ -2407,6 +2436,7 @@ declare global {
         "bds-autocomplete": HTMLBdsAutocompleteElement;
         "bds-avatar": HTMLBdsAvatarElement;
         "bds-avatar-group": HTMLBdsAvatarGroupElement;
+        "bds-badge": HTMLBdsBadgeElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
@@ -2651,6 +2681,28 @@ declare namespace LocalJSX {
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
+    }
+    interface BdsBadge {
+        /**
+          * If true, actived the pulse animation.
+         */
+        "animation"?: boolean;
+        /**
+          * Set the color of the component.
+         */
+        "color"?: string;
+        /**
+          * Set witch icon will be render inside the component.
+         */
+        "icon"?: string;
+        /**
+          * Set the shape of the component.
+         */
+        "shape"?: Shape;
+        /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "text"?: number;
     }
     interface BdsBanner {
         /**
@@ -4463,6 +4515,7 @@ declare namespace LocalJSX {
         "bds-autocomplete": BdsAutocomplete;
         "bds-avatar": BdsAvatar;
         "bds-avatar-group": BdsAvatarGroup;
+        "bds-badge": BdsBadge;
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
@@ -4541,6 +4594,7 @@ declare module "@stencil/core" {
             "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
             "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
             "bds-avatar-group": LocalJSX.BdsAvatarGroup & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
+            "bds-badge": LocalJSX.BdsBadge & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;

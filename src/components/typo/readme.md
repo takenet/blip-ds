@@ -36,6 +36,7 @@
  - [bds-alert-header](../alert/alert-header)
  - [bds-autocomplete](../autocomplete)
  - [bds-avatar](../avatar)
+ - [bds-badge](../badge)
  - [bds-button](../button)
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
@@ -79,6 +80,7 @@ graph TD;
   bds-alert-header --> bds-typo
   bds-autocomplete --> bds-typo
   bds-avatar --> bds-typo
+  bds-badge --> bds-typo
   bds-button --> bds-typo
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
