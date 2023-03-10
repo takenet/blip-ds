@@ -2,7 +2,7 @@
 
 :host {
   display: flex;
-  height:fit-content;
+  height: fit-content;
   width: max-content;
   border-radius: 4px;
   box-sizing: border-box;
@@ -10,7 +10,7 @@
   .chip {
     display: flex;
     min-width: 32px;
-    width:max-content;
+    width: max-content;
     height: 32px;
     border-radius: 16px;
     padding: 2px 4px;
@@ -40,13 +40,12 @@
     }
 
     &--icon {
-    display: flex;
-    align-items: center;
-    padding-left: 4px;
-    height: 20px;
-    color: $color-content-default;
-    z-index: 2;
-  }
+      display: flex;
+      align-items: center;
+      padding-left: 4px;
+      height: 20px;
+      z-index: 2;
+    }
     &--text {
       display: flex;
       align-items: center;
@@ -54,7 +53,6 @@
       z-index: 2;
       margin: 0 8px;
       flex-wrap: nowrap;
-      color: $color-content-default;
       font-family: $font-family;
     }
     &--tall {
@@ -63,22 +61,28 @@
     }
     &--default {
       background-color: $color-system;
+      color: $color-content-din;
     }
     &--info {
       background-color: $color-info;
+      color: $color-content-din;
     }
     &--success {
       background-color: $color-success;
+      color: $color-content-din;
     }
     &--warning {
       background-color: $color-warning;
+      color: $color-content-din;
     }
     &--danger {
       background-color: $color-error;
+      color: $color-content-din;
     }
     &--outline {
       background-color: $color-surface-1;
       border: 1px solid $color-surface-3;
+      color: $color-content-default;
       padding: 2px 3px;
       .chip_darker {
         height: calc(100% + 2px);
@@ -114,12 +118,12 @@
     border: 2px solid $color-brand;
 
     &--icon {
-    display: flex;
-    align-items: center;
-    height: 20px;
-    padding-left: 4px;
-    color: $color-brand;
-  }
+      display: flex;
+      align-items: center;
+      height: 20px;
+      padding-left: 4px;
+      color: $color-brand;
+    }
     &--text {
       display: flex;
       align-items: center;
@@ -165,23 +169,22 @@
       color: $color-content-default;
       z-index: 2;
     }
-      &--text {
-        display: flex;
-        align-items: center;
-        height: 20px;
-        z-index: 2;
-        margin: 0 8px;
-        flex-wrap: nowrap;
-        color: $color-content-default;
-        font-family: $font-family;
-      }
-      &--tall {
-        height: 40px;
-        border-radius: 24px;
-      }
+    &--text {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      z-index: 2;
+      margin: 0 8px;
+      flex-wrap: nowrap;
+      color: $color-content-default;
+      font-family: $font-family;
+    }
+    &--tall {
+      height: 40px;
+      border-radius: 24px;
+    }
   }
   .chip_disabled:hover {
-    cursor:default;
+    cursor: default;
   }
-  
 }

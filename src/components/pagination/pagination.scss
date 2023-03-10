@@ -1,3 +1,6 @@
+@import 'resets';
+@import 'mixins';
+
 :host {
   display: block;
 
@@ -35,6 +38,10 @@
         min-width: 28px;
         color: $color-content-default;
       }
+
+      bds-icon {
+        color: $color-content-default;
+      }
     }
 
     .select_input:hover {
@@ -58,6 +65,8 @@
       visibility: hidden;
       opacity: 0;
 
+      @include custom-scroll;
+
       &--open {
         visibility: visible;
         transform: scale(1);
@@ -74,6 +83,7 @@
         padding: 8px;
         padding-left: 12px;
         box-sizing: border-box;
+        color: $color-content-default;
       }
 
       li:hover {
