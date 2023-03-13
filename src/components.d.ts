@@ -794,6 +794,14 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * Input type. Can be one of: "text", "password", "number" or "email".
          */
         "type"?: InputType;
@@ -3327,6 +3335,14 @@ declare namespace LocalJSX {
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
         "rows"?: number;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * Input type. Can be one of: "text", "password", "number" or "email".
          */
