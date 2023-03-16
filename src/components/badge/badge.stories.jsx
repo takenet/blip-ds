@@ -49,7 +49,7 @@ export const typeBadge = () => (
            <bds-typo bold="bold">Icon</bds-typo>
         </bds-grid>
         <bds-grid direction="column" align-items="center" gap="2">
-           <bds-badge shape="circle" color="system" text={1234}></bds-badge> 
+           <bds-badge shape="circle" color="system" number={1234}></bds-badge> 
            <bds-typo bold="bold">Number</bds-typo>
         </bds-grid>
         
@@ -62,7 +62,7 @@ export const exampleBadge = () => (
     <bds-grid style={mixBadge}>
       <bds-icon name="bell" size="large"></bds-icon>
       <div style={badge}>
-        <bds-badge shape="circle" color="system" animation text={1}></bds-badge>
+        <bds-badge shape="circle" color="system" animation number={1}></bds-badge>
       </div>
     </bds-grid>
     <bds-grid style={mixBadge}>
