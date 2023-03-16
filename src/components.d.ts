@@ -1660,6 +1660,24 @@ export namespace Components {
          */
         "label": string;
     }
+    interface BdsTabGroup {
+        "scrollable"?: boolean;
+    }
+    interface BdsTabItem {
+        /**
+          * The text to be shown at the Tab item.
+         */
+        "label"?: string;
+        /**
+          * Use to set number of tabItem.
+         */
+        "numberElement"?: number;
+        /**
+          * Used to open/close the Tab item.
+         */
+        "open"?: boolean;
+        "reciveNumber": (number: any) => Promise<void>;
+    }
     interface BdsTabPanel {
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
@@ -1968,6 +1986,10 @@ export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
 export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabElement;
+}
+export interface BdsTabGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTabGroupElement;
 }
 export interface BdsTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2370,6 +2392,18 @@ declare global {
         prototype: HTMLBdsTabElement;
         new (): HTMLBdsTabElement;
     };
+    interface HTMLBdsTabGroupElement extends Components.BdsTabGroup, HTMLStencilElement {
+    }
+    var HTMLBdsTabGroupElement: {
+        prototype: HTMLBdsTabGroupElement;
+        new (): HTMLBdsTabGroupElement;
+    };
+    interface HTMLBdsTabItemElement extends Components.BdsTabItem, HTMLStencilElement {
+    }
+    var HTMLBdsTabItemElement: {
+        prototype: HTMLBdsTabItemElement;
+        new (): HTMLBdsTabItemElement;
+    };
     interface HTMLBdsTabPanelElement extends Components.BdsTabPanel, HTMLStencilElement {
     }
     var HTMLBdsTabPanelElement: {
@@ -2489,6 +2523,8 @@ declare global {
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
         "bds-tab": HTMLBdsTabElement;
+        "bds-tab-group": HTMLBdsTabGroupElement;
+        "bds-tab-item": HTMLBdsTabItemElement;
         "bds-tab-panel": HTMLBdsTabPanelElement;
         "bds-table": HTMLBdsTableElement;
         "bds-tabs": HTMLBdsTabsElement;
@@ -4319,6 +4355,27 @@ declare namespace LocalJSX {
          */
         "onBdsTabChange"?: (event: BdsTabCustomEvent<any>) => void;
     }
+    interface BdsTabGroup {
+        /**
+          * bdsTabChange. Event to return value when accordion is change.
+         */
+        "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
+        "scrollable"?: boolean;
+    }
+    interface BdsTabItem {
+        /**
+          * The text to be shown at the Tab item.
+         */
+        "label"?: string;
+        /**
+          * Use to set number of tabItem.
+         */
+        "numberElement"?: number;
+        /**
+          * Used to open/close the Tab item.
+         */
+        "open"?: boolean;
+    }
     interface BdsTabPanel {
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
@@ -4568,6 +4625,8 @@ declare namespace LocalJSX {
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
         "bds-tab": BdsTab;
+        "bds-tab-group": BdsTabGroup;
+        "bds-tab-item": BdsTabItem;
         "bds-tab-panel": BdsTabPanel;
         "bds-table": BdsTable;
         "bds-tabs": BdsTabs;
@@ -4647,6 +4706,8 @@ declare module "@stencil/core" {
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
             "bds-tab": LocalJSX.BdsTab & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
+            "bds-tab-group": LocalJSX.BdsTabGroup & JSXBase.HTMLAttributes<HTMLBdsTabGroupElement>;
+            "bds-tab-item": LocalJSX.BdsTabItem & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
             "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-table": LocalJSX.BdsTable & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
