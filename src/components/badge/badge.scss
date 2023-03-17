@@ -1,21 +1,26 @@
 @keyframes pulse {
-  from {
+  0% {
     scale: 100%;
     opacity: 1;
   }
-  to {
+  20% {
     scale: 140%;
     opacity: 0;
   }
-}
-
-@keyframes pulse-status {
-  from {
+  21% {
     scale: 100%;
     opacity: 1;
   }
-  to {
-    scale: 200%;
+  40% {
+    scale: 140%;
+    opacity: 0;
+  }
+  41% {
+    scale: 140%;
+    opacity: 0;
+  }
+  100% {
+    scale: 140%;
     opacity: 0;
   }
 }
@@ -72,7 +77,7 @@
       position: absolute;
       border: 1px solid;
       border-radius: 8px;
-      animation: pulse-status 500ms ease-out infinite;
+      animation: pulse 2s ease-out infinite;
     }
 
     &--triangle {
@@ -133,7 +138,7 @@
         position: absolute;
         border: 2px solid;
         border-radius: 16px;
-        animation: pulse 500ms ease-out infinite;
+        animation: pulse 2s ease-out infinite;
       }
     }
 
@@ -201,7 +206,7 @@
       position: absolute;
       border: 2px solid;
       border-radius: 16px;
-      animation: pulse 500ms ease-out infinite;
+      animation: pulse 2s ease-out infinite;
     }
 
     bds-typo {
