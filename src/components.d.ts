@@ -52,8 +52,13 @@ import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
+        "notStart": () => Promise<void>;
         "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
+        /**
+          * A prop for make the accordion open when is render.
+         */
+        "startOpen"?: boolean;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionBody {
@@ -2558,6 +2563,10 @@ declare namespace LocalJSX {
           * bdsToggle. Event to return value of toggle.
          */
         "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
+        /**
+          * A prop for make the accordion open when is render.
+         */
+        "startOpen"?: boolean;
     }
     interface BdsAccordionBody {
     }
