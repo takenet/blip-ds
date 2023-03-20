@@ -51,6 +51,9 @@ export class BdsIllustration {
     } else if (type === 'brand') {
       const fullName = `asset-illustration-brand-${name}`;
       return fullName;
+    } else if (type === 'spots') {
+      const fullName = `asset-illustration-spots-${name}`;
+      return fullName;
     }
   };
 

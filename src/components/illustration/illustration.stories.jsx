@@ -56,6 +56,7 @@ const defaults = [
   'user-4',
   'user-plataform',
   'webhook',
+  'welcome-blip',
   'whatsapp-web',
   'whatsapp',
 ];
@@ -191,7 +192,57 @@ const brand = [
   'blip-help-center-blue-white-horizontal',
 ];
 
-const logoIntegration = ['blip-instagram', 'blip-whatsapp'];
+const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];
+
+const spots = [
+  'air-ballon',
+  'analytics-satisfaction',
+  'avatar',
+  'binoculars',
+  'bot-list',
+  'clock-1',
+  'clock-2',
+  'column-chart',
+  'connectivity',
+  'empty',
+  'folder-1',
+  'folder-2',
+  'folder-3',
+  'folder-4',
+  'folder-5',
+  'folder-6',
+  'folder-7',
+  'glad',
+  'hand-1',
+  'hand-2',
+  'hand-3',
+  'hand-4',
+  'hand-5',
+  'hand-6',
+  'idea',
+  'information-security',
+  'letter-cancel-error',
+  'letter-check-okay',
+  'letter-close',
+  'letter-empty',
+  'letter-error-empty',
+  'letter-invite-blip',
+  'letter-search-avatars',
+  'letter-search-question',
+  'lock-1',
+  'lock-2',
+  'map',
+  'message-notification',
+  'new-feature',
+  'paper-plane',
+  'password',
+  'pie-chart',
+  'pizza',
+  'rocket',
+  'send-ticket',
+  'speak-bubble',
+  'ticket',
+];
 
 const illustrationStyles = {
   width: '200px',
@@ -287,6 +338,21 @@ export const IllustrationsLogoIntegration = () => {
     defaultArray.push(
       <div style={illustrationStyles}>
         <bds-illustration type="logo-integration" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const IllustrationsSpots = () => {
+  const defaultArray = [];
+
+  spots.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="spots" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
