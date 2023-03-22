@@ -60,6 +60,11 @@ export class ListItem {
   @Prop({ mutable: true }) actionsButtons: string | string[] = [];
 
   /**
+   * Clickable. Used to define if the item is clickable or not.
+   */
+  @Prop() clickable?: boolean = false;
+
+  /**
    * Emitted when the value has changed because of a click event.
    */
   @Event() bdsChecked!: EventEmitter;
@@ -172,7 +177,8 @@ export class ListItem {
   }
 
   render() {
-    const hasInput = this.typeList == 'checkbox' || this.typeList == 'radio' || this.typeList == 'switch';
+    const hasInput =
+      this.clickable == true || this.typeList == 'checkbox' || this.typeList == 'radio' || this.typeList == 'switch';
     const hasLeftInput = this.typeList == 'checkbox' || this.typeList == 'radio';
     const hasAvatar = this.avatarName || this.avatarThumbnail;
     return (
