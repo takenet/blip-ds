@@ -133,6 +133,19 @@ $input-width: 100%;
       );
     }
 
+    &-success {
+      @include input-theme(
+        'success',
+        $color-content-default,
+        $color-success,
+        $color-content-default,
+        $color-content-default,
+        $color-surface-3,
+        $color-content-default,
+        $color-success
+      );
+    }
+
     &-disabled {
       cursor: not-allowed;
       @include input-theme(

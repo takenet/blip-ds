@@ -1,4 +1,4 @@
-import { Component, h, State, Element, Method, EventEmitter, Event, Watch } from '@stencil/core';
+import { Component, h, State, Element, Method, EventEmitter, Event, Watch, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-accordion',
@@ -14,6 +14,7 @@ export class AccordionGroup {
 
   @State() isOpen?: boolean = false;
   @State() numberElement?: number = null;
+  @State() condition?: boolean = false;
 
   /**
    * bdsToggle. Event to return value of toggle.
@@ -29,6 +30,10 @@ export class AccordionGroup {
    * bdsAccordionOpen. Event to return value when accordion is closed.
    */
   @Event() bdsAccordionClose?: EventEmitter;
+  /**
+   * A prop for make the accordion open when is render.
+   */
+  @Prop() startOpen?: boolean = false;
 
   @Method()
   async toggle() {
@@ -47,6 +52,11 @@ export class AccordionGroup {
   }
 
   @Method()
+  async notStart() {
+    this.startOpen = false;
+  }
+
+  @Method()
   async reciveNumber(number) {
     this.numberElement = number;
   }
@@ -61,15 +71,22 @@ export class AccordionGroup {
     } else {
       this.bdsAccordionClose.emit();
     }
-    if (this.accGroup.collapse == 'single') this.accGroup?.closeAll(this.numberElement);
+    if (this.accGroup.collapse == 'single' && this.condition === false) {
+      this.accGroup?.closeAll(this.numberElement);
+    }
+    this.condition = false;
   }
 
-  componentWillRender() {
+  componentWillLoad() {
     this.accGroup =
       this.element.parentElement.tagName == 'BDS-ACCORDION-GROUP' &&
       (this.element.parentElement as HTMLBdsAccordionGroupElement);
     this.accheaders = this.element.children[0] as HTMLBdsAccordionHeaderElement;
     this.accBodies = this.element.children[1] as HTMLBdsAccordionBodyElement;
+    if (this.startOpen === true) {
+      this.condition = true;
+      this.isOpen = true;
+    }
   }
 
   render() {

@@ -66,6 +66,7 @@
  - [bds-select-option](../select-option)
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab)
+ - [bds-tab-group](../tabs/tab-group)
  - [bds-table](../table)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
@@ -110,6 +111,7 @@ graph TD;
   bds-select-option --> bds-typo
   bds-step --> bds-typo
   bds-tab --> bds-typo
+  bds-tab-group --> bds-typo
   bds-table --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo
