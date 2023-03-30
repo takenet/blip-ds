@@ -1,8 +1,10 @@
 import { Component, EventEmitter, h, Prop, Event, Host } from '@stencil/core';
 import { FontSize } from '../typo/typo';
 import { IconSize } from '../icon/icon-interface';
+import { colorLetter } from '../../utils/enums';
 
 export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
+export type colors = 'system' | 'success' | 'warning' | 'error' | 'info';
 
 @Component({
   tag: 'bds-avatar',
@@ -12,6 +14,7 @@ export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large
 export class BdsAvatar {
   private typoSize?: FontSize = 'fs-20';
   private iconSize?: IconSize = 'large';
+  private thumbSize?: number = 56;
   /**
    * Name, Inserted for highlighted osuary name. Enter the full name.
    */
@@ -25,6 +28,11 @@ export class BdsAvatar {
    * 'extra-small', 'small', 'standard', 'large', 'extra-large'.
    */
   @Prop() size?: avatarSize = 'standard';
+  /**
+   * Color, Entered as one of the color. Can be one of:
+   * 'system', 'success', 'warning', 'error', 'info'.
+   */
+  @Prop() color?: colors = null;
   /**
    * Upload, Serve to enable upload function on avatar.
    */
@@ -57,48 +65,66 @@ export class BdsAvatar {
       case 'micro':
         this.typoSize = 'fs-12';
         this.iconSize = 'xx-small';
+        this.thumbSize = 24;
         break;
       case 'extra-small':
         this.typoSize = 'fs-14';
         this.iconSize = 'x-small';
+        this.thumbSize = 32;
         break;
       case 'small':
         this.typoSize = 'fs-16';
         this.iconSize = 'x-small';
+        this.thumbSize = 40;
         break;
       case 'standard':
         this.typoSize = 'fs-20';
         this.iconSize = 'medium';
+        this.thumbSize = 56;
         break;
       case 'large':
         this.typoSize = 'fs-24';
         this.iconSize = 'xxx-large';
+        this.thumbSize = 64;
         break;
       case 'extra-large':
         this.typoSize = 'fs-32';
         this.iconSize = 'xxx-large';
+        this.thumbSize = 72;
         break;
       default:
         this.typoSize = 'fs-20';
         this.iconSize = 'medium';
+        this.thumbSize = 56;
+    }
+  };
+
+  private avatarBgColor = (letter: string): string => {
+    if (this.color) {
+      return this.color;
+    } else {
+      const currentColor = colorLetter.find((item) => item.value === letter);
+      return currentColor.color;
     }
   };
 
   render(): HTMLElement {
-    const avatarColor = ['yellow', 'blue', 'green', 'brown', 'pink'];
-    const randColor = avatarColor[Math.floor(Math.random() * avatarColor.length)];
-    const avatarBgColor = !this.name || this.ellipsis ? 'neutral' : randColor;
     const arrayName = this.name ? this.name.split(' ') : [];
     const firstName = arrayName.length ? arrayName.shift().charAt(0) : '';
     const lastName = arrayName.length ? arrayName.pop().charAt(0) : '';
     this.selectTypoSize(this.size);
+    const thumbnailStyle = {
+      width: this.thumbSize + 'px',
+      height: this.thumbSize + 'px',
+      backgroundImage: `url(${this.thumbnail})`,
+    };
 
     return (
       <Host>
         <div
           class={{
             avatar: true,
-            [`avatar__color--${avatarBgColor}`]: true,
+            [`avatar__color--${this.avatarBgColor(firstName)}`]: true,
             [`avatar__size--${this.size}`]: true,
             upload: this.upload,
           }}
@@ -114,7 +140,7 @@ export class BdsAvatar {
           ) : this.thumbnail ? (
             this.upload && this.size !== 'micro' ? (
               <div class="avatar__btn" onClick={() => this.onUploadClick}>
-                <img class="avatar__btn__img" src={this.thumbnail} />
+                <div class="avatar__btn__img" style={thumbnailStyle}></div>
                 <div class="avatar__btn__thumb">
                   <bds-icon
                     class="avatar__btn__thumb__icon"
@@ -125,7 +151,7 @@ export class BdsAvatar {
                 </div>
               </div>
             ) : (
-              <img class="avatar__img" src={this.thumbnail} />
+              <div class="avatar__btn__img" style={thumbnailStyle}></div>
             )
           ) : this.name ? (
             this.upload && this.size !== 'micro' ? (
