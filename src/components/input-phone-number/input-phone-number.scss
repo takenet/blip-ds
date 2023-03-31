@@ -74,6 +74,7 @@ $select-options-max-height: 250px;
   .input__container__text {
     caret-color: $color-input-primary;
     color: $color-input-text;
+    flex-grow: 1;
   }
 }
 
