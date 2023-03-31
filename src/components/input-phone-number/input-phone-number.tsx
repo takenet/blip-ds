@@ -195,6 +195,8 @@ export class InputPhoneNumber {
     if (numberValidation(this.nativeInput.value)) {
       this.validationMesage = this.numberErrorMessage;
       this.validationDanger = true;
+    } else {
+      this.validationDanger = false;
     }
   }
 
@@ -349,7 +351,7 @@ export class InputPhoneNumber {
                   class={{ input__container__text: true }}
                   type="phonenumber"
                   required={this.required}
-                  pattern="[0-9]*"
+                  pattern="/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/"
                   ref={this.refNativeInput}
                   onInput={this.changedInputValue}
                   onFocus={this.onFocus}
@@ -357,7 +359,7 @@ export class InputPhoneNumber {
                   value={this.text}
                   disabled={this.disabled}
                   data-test={this.dataTest}
-                  {...{ maxlength: this.value === '+55' ? 11 : null }}
+                  {...{ maxlength: this.value === '+55' ? 25 : null }}
                 ></input>
               </div>
             </div>
