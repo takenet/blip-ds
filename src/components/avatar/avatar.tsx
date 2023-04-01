@@ -4,7 +4,7 @@ import { IconSize } from '../icon/icon-interface';
 import { colorLetter } from '../../utils/enums';
 
 export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
-export type colors = 'system' | 'success' | 'warning' | 'error' | 'info';
+export type colors = 'system' | 'success' | 'warning' | 'error' | 'info' | 'surface';
 
 @Component({
   tag: 'bds-avatar',
@@ -131,12 +131,7 @@ export class BdsAvatar {
           data-test={this.dataTest}
         >
           {this.ellipsis ? (
-            <bds-typo
-              margin={false}
-              class="avatar__ellipsis"
-              variant={this.typoSize}
-              tag="span"
-            >{`+${this.ellipsis}`}</bds-typo>
+            <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
           ) : this.thumbnail ? (
             this.upload && this.size !== 'micro' ? (
               <div class="avatar__btn" onClick={() => this.onUploadClick}>

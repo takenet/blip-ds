@@ -37,11 +37,94 @@
       --color-error: #f67979;
       --color-delete: #e60f0f;
     } */
+    .bt-theme {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+    }
   </style>
 
   <body>
-    Versão do blip-ds 1.247.0
+    <bds-button class="bt-theme" onClick="changeColor()"> Change theme </bds-button>
+    <bds-grid container direction="column" style="background-color: var(--color-surface-1, #fff)">
+      <bds-grid justify-content="center" xxs="12" padding="3" gap="2" flex-wrap="no-wrap">
+        <bds-avatar name="A B" size="standard" upload="false"> </bds-avatar>
+        <bds-avatar name="B C" size="standard" upload="false"> </bds-avatar>
+        <bds-avatar name="C D" size="standard" upload="false"> </bds-avatar>
+        <bds-avatar name="D E" size="standard" upload="true"> </bds-avatar>
+        <bds-avatar name="E F" size="standard" upload="true"> </bds-avatar>
+        <bds-avatar name="F G" size="standard" upload="true"> </bds-avatar>
+      </bds-grid>
+      <bds-grid justify-content="center" xxs="12" padding="3" gap="2" flex-wrap="no-wrap">
+        <bds-avatar-group></bds-avatar-group>
+      </bds-grid>
+    </bds-grid>
   </body>
 
-  <script></script>
+  <script>
+    const users = [
+      { id: '1', name: 'Michael Scott' },
+      { id: '2', name: 'Dwight Schrute' },
+      { id: '3', name: 'Jim Halpert' },
+      { id: '4', name: 'Pam Beesly' },
+      { id: '5', name: 'Ryan Howard' },
+      { id: '6', name: 'Andy Bernard' },
+    ];
+    const avatarGroup = document.querySelector('bds-avatar-group');
+    avatarGroup.users = users;
+    var themeSelected = 'white';
+    const r = document.querySelector(':root');
+
+    function toggleComponent(id) {
+      const elementToClose = document.getElementById(id);
+      elementToClose.open = !elementToClose.open;
+    }
+
+    function toggleSidebar(id) {
+      const elementToClose = document.getElementById(id);
+      elementToClose.isOpen = !elementToClose.isOpen;
+    }
+
+    function changeColor() {
+      if (themeSelected == 'white') {
+        r.style.setProperty('--color-brand', '#0096FA');
+        r.style.setProperty('--color-primary', '#1E6BF1');
+        r.style.setProperty('--color-secondary', '#0096FA');
+        r.style.setProperty('--color-surface-1', '#292929');
+        r.style.setProperty('--color-surface-2', '#1f1f1f');
+        r.style.setProperty('--color-surface-3', '#141414');
+        r.style.setProperty('--color-surface-4', '#0A0A0A');
+        r.style.setProperty('--color-content-default', '#ffffff');
+        r.style.setProperty('--color-content-disable', '#a3a3a3');
+        r.style.setProperty('--color-content-ghost', '#666666');
+        r.style.setProperty('--color-info', '#FFFFFF');
+        r.style.setProperty('--color-system', '#99d5fd');
+        r.style.setProperty('--color-focus', '#c525ff');
+        r.style.setProperty('--color-success', '#84EBBC');
+        r.style.setProperty('--color-warning', '#FDE99B');
+        r.style.setProperty('--color-error', '#F67979');
+        r.style.setProperty('--color-delete', '#E60F0F');
+        themeSelected = 'dark';
+      } else if (themeSelected == 'dark') {
+        r.style.setProperty('--color-brand', '#0096fa');
+        r.style.setProperty('--color-primary', '#1968f0');
+        r.style.setProperty('--color-secondary', '#1f1f1f');
+        r.style.setProperty('--color-surface-1', '#ffffff');
+        r.style.setProperty('--color-surface-2', '#f3f6fa');
+        r.style.setProperty('--color-surface-3', '#e7edf4');
+        r.style.setProperty('--color-surface-4', '#202c44');
+        r.style.setProperty('--color-content-default', '#292929');
+        r.style.setProperty('--color-content-disable', '#666666');
+        r.style.setProperty('--color-content-ghost', '#a3a3a3');
+        r.style.setProperty('--color-info', '#c5d9fb');
+        r.style.setProperty('--color-system', '#99d5fd');
+        r.style.setProperty('--color-focus', '#c226fb');
+        r.style.setProperty('--color-success', '#84ebbc');
+        r.style.setProperty('--color-warning', '#fde99b');
+        r.style.setProperty('--color-error', '#f67979');
+        r.style.setProperty('--color-delete', '#e60f0f');
+        themeSelected = 'white';
+      }
+    }
+  </script>
 </html>
