@@ -10,7 +10,8 @@
   background-color: $color-surface-1;
   border-radius: 8px;
   box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.12);
-  width: 240px;
+  min-width: 240px;
+  width: max-content;
   opacity: 0;
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;

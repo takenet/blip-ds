@@ -26,6 +26,7 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { reference } from "./utils/position-element";
+import { activeMode } from "./components/dropdown/dropdown";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
@@ -565,12 +566,12 @@ export namespace Components {
         "startDate"?: DaysList;
     }
     interface BdsDropdown {
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "activeMode"?: activeMode;
         "axleX"?: reference | string;
         "axleY"?: reference | string;
-        /**
-          * isSubMenu. Used toselect type of item list.
-         */
-        "isSubMenu"?: boolean;
         /**
           * Open. Used to open/close the dropdown.
          */
@@ -3164,12 +3165,12 @@ declare namespace LocalJSX {
         "startDate"?: DaysList;
     }
     interface BdsDropdown {
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "activeMode"?: activeMode;
         "axleX"?: reference | string;
         "axleY"?: reference | string;
-        /**
-          * isSubMenu. Used toselect type of item list.
-         */
-        "isSubMenu"?: boolean;
         /**
           * bdsToggle. Event to return selected date value.
          */
