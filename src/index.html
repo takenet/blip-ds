@@ -17,6 +17,11 @@
       /* background: var(--color-background-2, #0a0f1a);  */
       margin: 0;
     }
+    bds-paper {
+      height: 300px;
+      width: 300px;
+      padding: 20px;
+    }
     /* 
     :root {
       --color-brand: #0096fa;
@@ -41,6 +46,24 @@
 
   <body>
     Versão do blip-ds 1.247.0
+    <bds-grid xxs="12" padding="12">
+      <bds-grid xxs="6" justify-content="center">
+        <bds-theme-provider theme="dark">
+          <bds-paper>
+            <bds-typo>Tema dark</bds-typo>
+          <bds-input></bds-input>
+          
+          </bds-paper>
+        </bds-theme-provider>
+      </bds-grid>
+      <bds-grid xxs="6" justify-content="center">
+        <bds-theme-provider theme="light">
+          <bds-paper>
+            <bds-typo>Tema Light</bds-typo>
+            <bds-input></bds-input>
+          </bds-paper> </bds-theme-provider
+      ></bds-grid>
+    </bds-grid>
   </body>
 
   <script></script>
