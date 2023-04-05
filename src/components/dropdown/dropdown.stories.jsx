@@ -46,10 +46,10 @@ export const DropdownWithSubmenu = () => {
             icon="blip-ideas"
           ></bds-list-item>
           <bds-dropdown is-sub-menu>
-            <div slot="activator">
+            <div slot="dropdown-activator">
               <bds-list-item value="01" text="Text" secondary-text="Secondary text" clickable></bds-list-item>
             </div>
-            <div slot="content">
+            <div slot="dropdown-content">
               <bds-list type-list="default">
                 <bds-list-item value="01" text="Text" secondary-text="Secondary text" clickable></bds-list-item>
                 <bds-list-item value="01" text="Text" secondary-text="Secondary text" clickable></bds-list-item>

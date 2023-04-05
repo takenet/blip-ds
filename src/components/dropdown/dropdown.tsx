@@ -30,7 +30,6 @@ export class BdsDropdown implements ComponentInterface {
 
   @State() intoView?: HTMLElement = null;
 
-  @State() openParentMenu?: boolean = false;
   @State() openSubMenu?: boolean = false;
   @State() stateSubMenu?: subMenuState = 'close';
   @State() zIndex?: number = 0;
@@ -56,7 +55,7 @@ export class BdsDropdown implements ComponentInterface {
   @Event() bdsToggle?: EventEmitter;
 
   componentWillLoad() {
-    this.activatorElement = this.hostElement.querySelector('[slot="activator"]').children[0];
+    this.activatorElement = this.hostElement.querySelector('[slot="dropdown-activator"]').children[0];
     this.isChildDrop = !!this.getDropParent(this.hostElement);
     this.intoView = getScrollParent(this.hostElement);
     if (this.isChildDrop || this.activeMode == 'hover') {
@@ -186,8 +185,8 @@ export class BdsDropdown implements ComponentInterface {
           onMouseOver={() => this.openSubmenu()}
           onMouseOut={() => this.closeSubmenu()}
         >
-          <div class="dropdown-content" style={zIndexSubmenu}>
-            <slot name="content"></slot>
+          <div class="content" style={zIndexSubmenu}>
+            <slot name="dropdown-content"></slot>
           </div>
         </div>
       </Host>
