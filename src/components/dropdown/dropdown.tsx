@@ -171,7 +171,7 @@ export class BdsDropdown implements ComponentInterface {
     };
     return (
       <Host>
-        <slot name="activator"></slot>
+        <slot name="dropdown-activator"></slot>
         {!this.isChildDrop && this.open && (
           <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
         )}
@@ -186,7 +186,7 @@ export class BdsDropdown implements ComponentInterface {
           onMouseOver={() => this.openSubmenu()}
           onMouseOut={() => this.closeSubmenu()}
         >
-          <div class="content" style={zIndexSubmenu}>
+          <div class="dropdown-content" style={zIndexSubmenu}>
             <slot name="content"></slot>
           </div>
         </div>
