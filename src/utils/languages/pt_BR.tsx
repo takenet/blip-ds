@@ -40,6 +40,6 @@ export const ptDays = [
 export const ptMessages = [
   {
     dateFormatIsIncorrect: 'Formato da data esta incorreto',
-    betweenPeriodOf: 'Por favor selecione uma data entre o periodo de',
+    betweenPeriodOf: 'Por favor selecione uma data entre o período de',
   },
 ];
