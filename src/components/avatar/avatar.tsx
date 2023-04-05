@@ -1,7 +1,7 @@
 import { Component, EventEmitter, h, Prop, Event, Host } from '@stencil/core';
 import { FontSize } from '../typo/typo';
 import { IconSize } from '../icon/icon-interface';
-import { colorLetter } from '../../utils/enums';
+import { colorLetter } from './color-letter';
 
 export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
 export type colors = 'system' | 'success' | 'warning' | 'error' | 'info' | 'surface';
