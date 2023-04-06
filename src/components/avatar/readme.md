@@ -9,6 +9,7 @@
 
 | Property    | Attribute   | Description                                                                                                  | Type                                                                            | Default      |
 | ----------- | ----------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ------------ |
+| `color`     | `color`     | Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.          | `"error" \| "info" \| "success" \| "surface" \| "system" \| "warning"`          | `null`       |
 | `dataTest`  | `data-test` | Data test is the prop to specifically test the component action object.                                      | `string`                                                                        | `null`       |
 | `ellipsis`  | `ellipsis`  | Ellipses, serves to indicate the user number in the listing.                                                 | `number`                                                                        | `null`       |
 | `name`      | `name`      | Name, Inserted for highlighted osuary name. Enter the full name.                                             | `string`                                                                        | `null`       |

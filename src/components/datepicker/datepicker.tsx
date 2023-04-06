@@ -232,7 +232,7 @@ export class DatePicker {
     if (!dateValidation(value)) {
       this.errorMsgEndDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
-      if (fillDayList(valueSelected) <= fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
+      if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
         this.errorMsgEndDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.valueDateSelected} - ${
           this.endDateLimit
         }`;

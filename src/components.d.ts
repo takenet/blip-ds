@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
-import { avatarSize } from "./components/avatar/avatar";
+import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
 import { Shape } from "./components/badge/badge";
@@ -47,6 +47,7 @@ import { progressBarColor, progressBarSize } from "./components/progress-bar/pro
 import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { Overflow } from "./components/tabs/tabs-interface";
+import { Themes } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -173,6 +174,10 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsAvatar {
+        /**
+          * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
+         */
+        "color"?: colors;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -1746,6 +1751,12 @@ export namespace Components {
     interface BdsTabs {
         "align": 'left' | 'center' | 'right';
     }
+    interface BdsThemeProvider {
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -2464,6 +2475,12 @@ declare global {
         prototype: HTMLBdsTabsElement;
         new (): HTMLBdsTabsElement;
     };
+    interface HTMLBdsThemeProviderElement extends Components.BdsThemeProvider, HTMLStencilElement {
+    }
+    var HTMLBdsThemeProviderElement: {
+        prototype: HTMLBdsThemeProviderElement;
+        new (): HTMLBdsThemeProviderElement;
+    };
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
     }
     var HTMLBdsToastElement: {
@@ -2571,6 +2588,7 @@ declare global {
         "bds-tab-panel": HTMLBdsTabPanelElement;
         "bds-table": HTMLBdsTableElement;
         "bds-tabs": HTMLBdsTabsElement;
+        "bds-theme-provider": HTMLBdsThemeProviderElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
@@ -2727,6 +2745,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsAvatar {
+        /**
+          * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
+         */
+        "color"?: colors;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -4491,6 +4513,12 @@ declare namespace LocalJSX {
         "onBdsTabInit"?: (event: BdsTabsCustomEvent<any>) => void;
         "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
     }
+    interface BdsThemeProvider {
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -4706,6 +4734,7 @@ declare namespace LocalJSX {
         "bds-tab-panel": BdsTabPanel;
         "bds-table": BdsTable;
         "bds-tabs": BdsTabs;
+        "bds-theme-provider": BdsThemeProvider;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
@@ -4788,6 +4817,7 @@ declare module "@stencil/core" {
             "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-table": LocalJSX.BdsTable & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
+            "bds-theme-provider": LocalJSX.BdsThemeProvider & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;

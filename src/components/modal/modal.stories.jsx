@@ -29,7 +29,7 @@ export const DynamicModal = () => (
       <div style={{ display: 'flex', alignItems: 'center', width: '600px' }}>
         <div>
           <bds-typo variant="fs-20" bold="semi-bold">
-          Leia atentamente todo o termo de uso:
+            Leia atentamente todo o termo de uso:
           </bds-typo>
           <bds-typo variant="fs-14" bold="regular">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -74,19 +74,25 @@ export const DynamicModal = () => (
 export const InformativeModal = () => (
   <>
     <bds-modal open={true} close-button={true}>
-      <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
-        <div style={{ paddingRight: '20px' }}>
-          <img src="https://picsum.photos/200/210?random=2" />
-        </div>
-        <div>
-          <bds-typo variant="fs-20" bold="semi-bold">
-            O que é o Histórico de tickets?
-          </bds-typo>
-          <bds-typo variant="fs-14" bold="regular">
-            É o local onde você pode acessar todo o histórico dos tickets abertos. Além disso, é possível salvar os
-            dados de atendimento em planilhas de acordo com os filtros escolhidos. Você também consegue exportar
-            documentos em PDF com a transcrição completa de cada conversa.
-          </bds-typo>
+      <div style={{ margin: 'auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', paddingBottom: '24px' }}>
+          <div style={{ paddingRight: '20px', width: '200px', height: '200px' }}>
+            <bds-illustration type="spots" name="ticket"></bds-illustration>
+          </div>
+          <div style={{ width: 'calc(100% - 200px)' }}>
+            <div style={{ display: 'flex', width: 'auto', marginBottom: '16px' }}>
+              <bds-typo variant="fs-20" bold="semi-bold">
+                O que é o Histórico de tickets?
+              </bds-typo>
+            </div>
+            <div style={{ display: 'flex', width: '100%', marginBottom: '16px' }}>
+              <bds-typo variant="fs-14" bold="regular">
+                É o local onde você pode acessar todo o histórico dos tickets abertos. Além disso, é possível salvar os
+                dados de atendimento em planilhas de acordo com os filtros escolhidos. Você também consegue exportar
+                documentos em PDF com a transcrição completa de cada conversa.
+              </bds-typo>
+            </div>
+          </div>
         </div>
       </div>
       <bds-modal-action>
@@ -143,30 +149,20 @@ export const NewsModal = () => (
 export const WarningModal = () => (
   <>
     <bds-modal open={true} close-button={true}>
-      <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
-        <div style={{ paddingRight: '20px' }}>
-          <img src="https://picsum.photos/200/210?random=2" />
-        </div>
-        <div>
-          <bds-typo style={{ color: 'rgba(246, 167, 33, 1)' }} variant="fs-20" bold="semi-bold">
-            Atenção!
-          </bds-typo>
-          <bds-typo variant="fs-14" bold="regular">
-            Você está movendo os chatbots selecionados para o workspace Unilever. Todos os membros com acesso a eles e
-            suas permissões também serão movidos. Esta ação não pode ser desfeita!
-          </bds-typo>
-          <div style={{ paddingTop: '20px' }}>
-            <bds-typo variant="fs-14" bold="regular">
-              Para confirmar, digite{' '}
-              <bds-typo style={{ color: '#21CC79' }} variant="fs-14" bold="regular" tag="span">
-                Unilever
-              </bds-typo>{' '}
-              no campo abaixo.
-            </bds-typo>
+      <div style={{ margin: 'auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', paddingBottom: '24px' }}>
+          <div style={{ paddingRight: '20px', width: '200px', height: '200px' }}>
+            <bds-illustration type="spots" name="letter-invite-blip"></bds-illustration>
           </div>
-
-          <div style={{ width: '312px', padding: '8px' }}>
-            <bds-input></bds-input>
+          <div style={{ width: 'calc(100% - 200px)' }}>
+            <bds-typo variant="fs-14" bold="regular" style={{ marginBottom: '16px', display: 'block' }}>
+              Você está movendo os chatbots selecionados para o workspace Unilever. Para confirmar, digite Unilever no
+              campo abaixo.
+            </bds-typo>
+            <bds-banner variant="warning" button-close="true" style={{ marginBottom: '16px' }}>
+              Todos as informações aqui são sigilosas. Tenha cuidado, não divulgue está tela!
+            </bds-banner>
+            <bds-input placeholder="Digite Unilever para confirmar"></bds-input>
           </div>
         </div>
       </div>
@@ -175,6 +171,7 @@ export const WarningModal = () => (
           Conheça mais sobre os BLiPspaces aqui
         </bds-typo>
       </div>
+
       <bds-modal-action>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
           <bds-button variant="secondary">Button label</bds-button>
@@ -188,48 +185,35 @@ export const WarningModal = () => (
 export const InviteModal = () => (
   <>
     <bds-modal open={true} close-button={true}>
-      <div style={{ height: '204px', margin: 'auto' }}>
-        <div style={{ display: 'flex', height: '76px', paddingBottom: '24px' }}>
-          <div style={{ paddingRight: '20px' }}>
-            <img width="89px" height="76px" src="https://picsum.photos/200/210?random=2" />
+      <div style={{ margin: 'auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', paddingBottom: '24px' }}>
+          <div style={{ paddingRight: '20px', width: '200px', height: '200px' }}>
+            <bds-illustration type="spots" name="letter-invite-blip"></bds-illustration>
           </div>
-          <div>
+          <div style={{ width: 'calc(100% - 200px)' }}>
             <bds-typo tag="h4" variant="fs-20" bold="semi-bold">
               Convidar pessoas
             </bds-typo>
-            <div style={{ width: '326px' }}>
+            <div style={{ width: 'auto', marginBottom: '16px' }}>
               <bds-typo variant="fs-14" bold="regular">
                 Convide os membros do seu time para participar deste workspace:
               </bds-typo>
             </div>
+            <div style={{ display: 'flex', gap: '8px', width: 'auto', marginBottom: '16px' }}>
+              <bds-input placeholder="E-mail dos convidados" icon="user-default"></bds-input>
+              <bds-select placeholder="Tipo de permissão">
+                <bds-select-option value="1">Visualização</bds-select-option>
+                <bds-select-option value="2">Edição</bds-select-option>
+                <bds-select-option value="3">Administrador</bds-select-option>
+              </bds-select>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', width: 'auto', alignItems: 'center' }}>
+              <bds-typo variant="fs-12">ou</bds-typo>
+              <bds-button icon="info" variant="secondary">
+                Importar vários
+              </bds-button>
+            </div>
           </div>
-        </div>
-        <div style={{ display: 'flex' }}>
-          <div style={{ width: '398px', paddingRight: '8px' }}>
-            <bds-input placeholder="E-mail dos convidados" icon="user-default"></bds-input>
-          </div>
-          <div style={{ width: '186px' }}>
-            <bds-select placeholder="Tipo de permissão">
-              <bds-select-option value="1">Visualização</bds-select-option>
-              <bds-select-option value="2">Edição</bds-select-option>
-              <bds-select-option value="3">Administrador</bds-select-option>
-            </bds-select>
-          </div>
-        </div>
-        <div
-          style={{
-            width: '398px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingTop: '8px',
-          }}
-        >
-          <bds-typo variant="fs-12">ou</bds-typo>
-          <bds-button icon="info" variant="secondary">
-            Importar vários
-          </bds-button>
-          <bds-typo variant="fs-10">Veja a formatação da tabela aqui</bds-typo>
         </div>
       </div>
       <bds-modal-action>
