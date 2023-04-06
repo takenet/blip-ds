@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
-import { avatarSize } from "./components/avatar/avatar";
+import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
 import { Shape } from "./components/badge/badge";
@@ -172,6 +172,10 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsAvatar {
+        /**
+          * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
+         */
+        "color"?: colors;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -2711,6 +2715,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsAvatar {
+        /**
+          * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
+         */
+        "color"?: colors;
         /**
           * Data test is the prop to specifically test the component action object.
          */

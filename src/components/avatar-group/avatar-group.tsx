@@ -1,5 +1,6 @@
 import { Component, h, Host, State, Prop, EventEmitter, Event } from '@stencil/core';
 import { AvatarDataList } from './avatar-group-interface';
+import { colors } from '../avatar/avatar';
 
 export type avatarSize = 'extra-small' | 'small' | 'standard';
 
@@ -54,6 +55,10 @@ export class AvatarGroup {
       }
     }
   }
+  private avatarBgColor = (number: number): colors => {
+    const colors = ['system', 'success', 'warning', 'error', 'info'];
+    return colors[number] as colors;
+  };
   componentWillLoad() {
     this.users && this.parseUsers();
     this.leftoversUsers = this.internalUsers.length - 5;
@@ -74,13 +79,20 @@ export class AvatarGroup {
               .slice(0, 6)
               .map((user, i, row) =>
                 i + 1 === row.length && this.internalUsers.length > 5 ? (
-                  <bds-avatar key={i} size={this.size} ellipsis={this.leftoversUsers}></bds-avatar>
+                  <bds-avatar
+                    key={i}
+                    name={user.name}
+                    color="surface"
+                    size={this.size}
+                    ellipsis={this.leftoversUsers}
+                  ></bds-avatar>
                 ) : (
                   <bds-avatar
                     key={i}
                     id={user.id}
                     name={user.name}
                     thumbnail={user.thumbnail}
+                    color={this.avatarBgColor(i)}
                     size={this.size}
                   ></bds-avatar>
                 )

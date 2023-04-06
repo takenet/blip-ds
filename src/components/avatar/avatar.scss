@@ -29,11 +29,6 @@ $avatar-size-extra-large: 72px;
     color: $color-surface-1;
   }
 
-  &__img {
-    width: 100%;
-    height: auto;
-  }
-
   &__btn {
     position: relative;
     width: 100%;
@@ -43,8 +38,8 @@ $avatar-size-extra-large: 72px;
     align-items: center;
 
     &__img {
-      width: 100%;
-      height: auto;
+      background-position: center;
+      background-size: cover;
     }
 
     &__text {
@@ -169,23 +164,24 @@ $avatar-size-extra-large: 72px;
   }
 
   &__color {
-    &--neutral {
+    &--system {
       background-color: $color-system;
     }
-    &--yellow {
+    &--warning {
       background-color: $color-warning;
     }
-    &--blue {
-      background-color: $color-system;
-    }
-    &--green {
+    &--success {
       background-color: $color-success;
     }
-    &--brown {
+    &--info {
       background-color: $color-info;
     }
-    &--pink {
+    &--error {
       background-color: $color-error;
+    }
+    &--surface {
+      background-color: $color-surface-3;
+      color: $color-content-disable;
     }
   }
 
