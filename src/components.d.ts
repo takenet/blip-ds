@@ -45,6 +45,7 @@ import { progressBarColor, progressBarSize } from "./components/progress-bar/pro
 import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { Overflow } from "./components/tabs/tabs-interface";
+import { Themes } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -1727,6 +1728,12 @@ export namespace Components {
     interface BdsTabs {
         "align": 'left' | 'center' | 'right';
     }
+    interface BdsThemeProvider {
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -2435,6 +2442,12 @@ declare global {
         prototype: HTMLBdsTabsElement;
         new (): HTMLBdsTabsElement;
     };
+    interface HTMLBdsThemeProviderElement extends Components.BdsThemeProvider, HTMLStencilElement {
+    }
+    var HTMLBdsThemeProviderElement: {
+        prototype: HTMLBdsThemeProviderElement;
+        new (): HTMLBdsThemeProviderElement;
+    };
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
     }
     var HTMLBdsToastElement: {
@@ -2541,6 +2554,7 @@ declare global {
         "bds-tab-panel": HTMLBdsTabPanelElement;
         "bds-table": HTMLBdsTableElement;
         "bds-tabs": HTMLBdsTabsElement;
+        "bds-theme-provider": HTMLBdsThemeProviderElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
@@ -4441,6 +4455,12 @@ declare namespace LocalJSX {
         "onBdsTabInit"?: (event: BdsTabsCustomEvent<any>) => void;
         "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
     }
+    interface BdsThemeProvider {
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
+    }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -4655,6 +4675,7 @@ declare namespace LocalJSX {
         "bds-tab-panel": BdsTabPanel;
         "bds-table": BdsTable;
         "bds-tabs": BdsTabs;
+        "bds-theme-provider": BdsThemeProvider;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
@@ -4736,6 +4757,7 @@ declare module "@stencil/core" {
             "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-table": LocalJSX.BdsTable & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
+            "bds-theme-provider": LocalJSX.BdsThemeProvider & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
