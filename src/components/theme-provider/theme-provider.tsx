@@ -9,17 +9,15 @@ export type Themes = 'light' | 'dark';
 })
 export class ThemeProvider {
   /**
-   * Size. Entered as one of the size. Can be one of:
-   * 'static', 'primary', 'secondary';
+   * Set what theme will be aplyed inside the component.
+   * 'light', 'dark';
    */
   @Prop() theme?: Themes = 'light';
 
   render() {
     return (
-      <Host>
-        <div class={{ theme: true, [`theme--${this.theme}`]: true }}>
-          <slot></slot>
-        </div>
+      <Host class={{ theme: true, [`theme--${this.theme}`]: true }}>
+        <slot></slot>
       </Host>
     );
   }

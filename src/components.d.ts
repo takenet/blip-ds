@@ -1730,7 +1730,7 @@ export namespace Components {
     }
     interface BdsThemeProvider {
         /**
-          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
          */
         "theme"?: Themes;
     }
@@ -4457,7 +4457,7 @@ declare namespace LocalJSX {
     }
     interface BdsThemeProvider {
         /**
-          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
          */
         "theme"?: Themes;
     }

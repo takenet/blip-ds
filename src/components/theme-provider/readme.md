@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                        | Type                | Default   |
-| -------- | --------- | ---------------------------------------------------------------------------------- | ------------------- | --------- |
-| `theme`  | `theme`   | Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary'; | `"dark" \| "light"` | `'light'` |
+| Property | Attribute | Description                                                          | Type                | Default   |
+| -------- | --------- | -------------------------------------------------------------------- | ------------------- | --------- |
+| `theme`  | `theme`   | Set what theme will be aplyed inside the component. 'light', 'dark'; | `"dark" \| "light"` | `'light'` |
 
 
 ----------------------------------------------

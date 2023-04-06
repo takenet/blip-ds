@@ -1,8 +1,8 @@
-.theme {
-  display: inherit;
+:host(.theme--light) {
+  width: 100%;
+  height: 100%;
 
-  &--light {
-    @import "../../globals/theme/theme-light.scss";
+  @import '../../globals/theme/theme-light.scss';
     --color-brand: #0096fa;
     --color-primary: #1968f0;
     --color-secondary: #1f1f1f;
@@ -22,10 +22,12 @@
     --color-warning: #fde99b;
     --color-error: #f67979;
     --color-delete: #e60f0f;
-  }
-  
-  &--dark {
-    @import "../../globals/theme/theme-light.scss";
+}
+:host(.theme--dark) {
+  width: 100%;
+    height: 100%;
+
+  @import '../../globals/theme/theme-dark.scss';
     --color-brand: #0096fa;
     --color-primary: #1968f0;
     --color-secondary: #0096fa;
@@ -45,5 +47,4 @@
     --color-warning: #fde99b;
     --color-error: #f67979;
     --color-delete: #e60f0f;
-  }
 }
