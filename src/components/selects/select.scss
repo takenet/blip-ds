@@ -1,8 +1,8 @@
 @import 'resets';
 @import 'mixins';
 
-$input-padding: 8px 4px 9px 12px;
-$input-padding-label: 7px 4px 8px 12px;
+$input-padding: 10px 4px 10px 12px;
+$input-padding-label: 7px 4px 7px 12px;
 $input-width: 100%;
 $input_expanded: 100%;
 $input_fixed: 140px;
@@ -220,7 +220,6 @@ $select-options-max-height: 250px;
 
     &__text {
       @include reset-input();
-      width: 100%;
       @include input-text();
       @include custom-scroll();
 
