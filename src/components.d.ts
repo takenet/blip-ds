@@ -25,6 +25,8 @@ import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
+import { reference } from "./utils/position-element";
+import { activeMode } from "./components/dropdown/dropdown";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
@@ -567,6 +569,19 @@ export namespace Components {
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
+    }
+    interface BdsDropdown {
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "activeMode"?: activeMode;
+        "axleX"?: reference | string;
+        "axleY"?: reference | string;
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "open"?: boolean;
+        "toggle": () => Promise<void>;
     }
     interface BdsExpansionPanel {
     }
@@ -1113,6 +1128,10 @@ export namespace Components {
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips": string | string[];
+        /**
+          * Clickable. Used to define if the item is clickable or not.
+         */
+        "clickable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -1943,6 +1962,10 @@ export interface BdsDatepickerSingleCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsDatepickerSingleElement;
 }
+export interface BdsDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsDropdownElement;
+}
 export interface BdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsInputElement;
@@ -2187,6 +2210,12 @@ declare global {
     var HTMLBdsDatepickerSingleElement: {
         prototype: HTMLBdsDatepickerSingleElement;
         new (): HTMLBdsDatepickerSingleElement;
+    };
+    interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
+    }
+    var HTMLBdsDropdownElement: {
+        prototype: HTMLBdsDropdownElement;
+        new (): HTMLBdsDropdownElement;
     };
     interface HTMLBdsExpansionPanelElement extends Components.BdsExpansionPanel, HTMLStencilElement {
     }
@@ -2515,6 +2544,7 @@ declare global {
         "bds-datepicker": HTMLBdsDatepickerElement;
         "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
         "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
+        "bds-dropdown": HTMLBdsDropdownElement;
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
@@ -3155,6 +3185,22 @@ declare namespace LocalJSX {
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
+    }
+    interface BdsDropdown {
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "activeMode"?: activeMode;
+        "axleX"?: reference | string;
+        "axleY"?: reference | string;
+        /**
+          * bdsToggle. Event to return selected date value.
+         */
+        "onBdsToggle"?: (event: BdsDropdownCustomEvent<any>) => void;
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "open"?: boolean;
     }
     interface BdsExpansionPanel {
     }
@@ -3804,6 +3850,10 @@ declare namespace LocalJSX {
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips"?: string | string[];
+        /**
+          * Clickable. Used to define if the item is clickable or not.
+         */
+        "clickable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -4640,6 +4690,7 @@ declare namespace LocalJSX {
         "bds-datepicker": BdsDatepicker;
         "bds-datepicker-period": BdsDatepickerPeriod;
         "bds-datepicker-single": BdsDatepickerSingle;
+        "bds-dropdown": BdsDropdown;
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
@@ -4722,6 +4773,7 @@ declare module "@stencil/core" {
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
+            "bds-dropdown": LocalJSX.BdsDropdown & JSXBase.HTMLAttributes<HTMLBdsDropdownElement>;
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
