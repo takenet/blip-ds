@@ -1,4 +1,4 @@
-import { Component, EventEmitter, h, Prop, Event, Host } from '@stencil/core';
+import { Component, EventEmitter, h, Prop, Event, Host, State } from '@stencil/core';
 import { FontSize } from '../typo/typo';
 import { IconSize } from '../icon/icon-interface';
 import { colorLetter } from './color-letter';
@@ -15,6 +15,7 @@ export class BdsAvatar {
   private typoSize?: FontSize = 'fs-20';
   private iconSize?: IconSize = 'large';
   private thumbSize?: number = 56;
+  @State() hasThumb: boolean;
   /**
    * Name, Inserted for highlighted osuary name. Enter the full name.
    */
@@ -22,7 +23,7 @@ export class BdsAvatar {
   /**
    * Thumbnail, Inserted to highlight user image. Url field.
    */
-  @Prop() thumbnail?: string = null;
+  @Prop({ mutable: true }) thumbnail?: string = null;
   /**
    * Size, Entered as one of the size. Can be one of:
    * 'extra-small', 'small', 'standard', 'large', 'extra-large'.
@@ -99,24 +100,28 @@ export class BdsAvatar {
     }
   };
 
-  private avatarBgColor = (letter: string): string => {
+  private avatarBgColor = (letter: string) => {
     if (this.color) {
       return this.color;
-    } else {
+    } else if (letter) {
       const currentColor = colorLetter.find((item) => item.value === letter);
       return currentColor.color;
     }
   };
 
+  componentWillRender() {
+    this.hasThumb = this.thumbnail ? (this.thumbnail.length !== 0 ? true : false) : false;
+  }
+
   render(): HTMLElement {
     const arrayName = this.name ? this.name.split(' ') : [];
-    const firstName = arrayName.length ? arrayName.shift().charAt(0) : '';
-    const lastName = arrayName.length ? arrayName.pop().charAt(0) : '';
+    const firstName = arrayName.length ? arrayName.shift().charAt(0).toUpperCase() : '';
+    const lastName = arrayName.length ? arrayName.pop().charAt(0).toUpperCase() : '';
     this.selectTypoSize(this.size);
     const thumbnailStyle = {
       width: this.thumbSize + 'px',
       height: this.thumbSize + 'px',
-      backgroundImage: `url(${this.thumbnail})`,
+      backgroundImage: `url(${this.hasThumb ? this.thumbnail : null})`,
     };
 
     return (
@@ -124,7 +129,17 @@ export class BdsAvatar {
         <div
           class={{
             avatar: true,
-            [`avatar__color--${this.avatarBgColor(firstName)}`]: true,
+            [`avatar__color--${
+              this.name && !this.hasThumb
+                ? this.avatarBgColor(firstName)
+                : this.hasThumb && !this.name
+                ? 'surface'
+                : !this.name && !this.hasThumb
+                ? 'surface'
+                : this.name && this.hasThumb
+                ? this.avatarBgColor(firstName)
+                : null
+            }`]: true,
             [`avatar__size--${this.size}`]: true,
             upload: this.upload,
           }}
@@ -180,8 +195,10 @@ export class BdsAvatar {
                 ></bds-icon>
               </div>
             </div>
-          ) : (
+          ) : this.name === null && !this.hasThumb ? (
             <bds-icon class="avatar__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
+          ) : (
+            ''
           )}
         </div>
         {this.upload && this.size !== 'micro' ? (
