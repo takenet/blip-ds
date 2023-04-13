@@ -1,5 +1,9 @@
 @import 'fonts';
 
+:host {
+  color: $color-content-default;
+}
+
 .typo {
   margin: 0;
   font-family: $font-family;
@@ -12,7 +16,6 @@
   margin-inline-end: 0;
   padding: 0;
   border: 0;
-  color: inherit, $color-content-default;
 
   &--italic {
     font-style: italic;
