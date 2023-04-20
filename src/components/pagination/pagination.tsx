@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 
 @Component({
   tag: 'bds-pagination',
@@ -34,7 +34,16 @@ export class Pagination {
   componentWillLoad() {
     this.countPage();
   }
+
+  @Watch('pages')
+  pagesChanged(): void {
+    this.countPage();
+  }
+
   countPage() {
+    if (this.paginationNumbers.length !== 0) {
+      this.paginationNumbers = [];
+    }
     if (this.paginationNumbers.length === 0) {
       for (let i = 1; i <= this.pages; i++) {
         this.paginationNumbers.push(i);
