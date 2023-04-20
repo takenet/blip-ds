@@ -5,4 +5,6 @@ export type IllustrationType =
   | 'blip-outline'
   | 'logo-integration'
   | 'brand'
+  | 'segmented'
+  | 'smartphone'
   | 'spots';

@@ -16,6 +16,8 @@ const defaults = [
   'agent-flat-2',
   'agent-flat-3',
   'agent-flat-4',
+  'atention',
+  'blip-chat',
   'blip-chat-health',
   'blip-chat-logistic',
   'blip-chat-marketing',
@@ -26,6 +28,7 @@ const defaults = [
   'boy-computer',
   'chat-bank',
   'chat-sales',
+  'cookie',
   'delivery-chat',
   'exchange-person',
   'faq',
@@ -41,6 +44,10 @@ const defaults = [
   'ringtones',
   'robot-flat',
   'robot',
+  'robot-2',
+  'robot-3',
+  'robot-4',
+  'robot-5',
   'robots',
   'search',
   'segmentos',
@@ -190,9 +197,19 @@ const brand = [
   'blip-help-center-blue-black-horizontal',
   'blip-help-center-white-horizontal',
   'blip-help-center-blue-white-horizontal',
+  'sti-blue-horizontal',
+  'sti-blue-symbol',
+  'sti-blue-vertical',
+  'sti-white-horizontal',
+  'sti-white-vertical',
+  'sti-white-vertical-symbol',
 ];
 
 const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];
+
+const segmented = ['cart-selected', 'catalog-option', 'item-overview', 'send-catalog'];
+
+const smartphone = ['blip-chat-1', 'blip-chat-2', 'blip-chat-3', 'digital-scanning-1', 'digital-scanning-2'];
 
 const spots = [
   'air-ballon',
@@ -338,6 +355,36 @@ export const IllustrationsLogoIntegration = () => {
     defaultArray.push(
       <div style={illustrationStyles}>
         <bds-illustration type="logo-integration" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const IllustrationsSegmented = () => {
+  const defaultArray = [];
+
+  segmented.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="segmented" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const IllustrationsSmartphone = () => {
+  const defaultArray = [];
+
+  smartphone.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="smartphone" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
