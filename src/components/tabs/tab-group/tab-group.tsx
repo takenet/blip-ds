@@ -177,7 +177,9 @@ export class BdsTabGroup {
               variant="secondary"
             ></bds-button-icon>
           )}
-          <slot></slot>
+          <div class="tab_group__content">
+            <slot></slot>
+          </div>
         </div>
       </Host>
     );
