@@ -1,6 +1,8 @@
 .tab_item {
   &_content {
     display: none;
+    overflow: auto;
+    height: fit-content;
     &--open {
       display: block;
     }

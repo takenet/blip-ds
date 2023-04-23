@@ -51,6 +51,12 @@ export class BdsIllustration {
     } else if (type === 'brand') {
       const fullName = `asset-illustration-brand-${name}`;
       return fullName;
+    } else if (type === 'segmented') {
+      const fullName = `asset-illustration-segmented-${name}`;
+      return fullName;
+    } else if (type === 'smartphone') {
+      const fullName = `asset-illustration-smartphone-${name}`;
+      return fullName;
     } else if (type === 'spots') {
       const fullName = `asset-illustration-spots-${name}`;
       return fullName;

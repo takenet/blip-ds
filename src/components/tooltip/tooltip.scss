@@ -12,9 +12,8 @@ $tooltip-border-width: 6px;
     left: 50%;
     border-radius: 8px;
     padding: 8px;
-    color: $color-surface-1;
     background: $color-content-default;
-    z-index: $zindex-dropdown;
+    z-index: $zindex-modal;
     white-space: normal;
     width: max-content;
     min-width: 32px;
@@ -162,7 +161,17 @@ $tooltip-border-width: 6px;
       }
     }
     &__text {
-      overflow: hidden;
+
+      pre {
+        margin: 0;
+        display: flex;
+        font-family: inherit;
+        white-space: break-spaces;
+      }
+
+      .text {
+        color: $color-surface-1;
+      }
     }
   }
 }
