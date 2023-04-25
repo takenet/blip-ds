@@ -3,9 +3,9 @@
 :host {
   display: flex;
   height: fit-content;
-  width: max-content;
   border-radius: 4px;
   box-sizing: border-box;
+  max-width: 100%;
 
   .chip {
     display: flex;
@@ -116,6 +116,15 @@
     box-sizing: border-box;
     background-color: $color-surface-1;
     border: 2px solid $color-brand;
+
+    &--container-text {
+      &--full {
+        width: 100%;
+      }
+      &--half {
+        width: calc(100% - 20px);
+      }
+    }
 
     &--icon {
       display: flex;
