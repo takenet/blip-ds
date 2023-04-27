@@ -111,9 +111,11 @@ export class ChipSelected {
               <bds-icon size={this.getSizeIconChip()} name="checkball"></bds-icon>
             </div>
           )}
-          <bds-typo class={{ 'chip--text': true, ...this.getStyleText() }} variant="fs-12" no-wrap bold="bold">
-            <slot></slot>
-          </bds-typo>
+          <div class={this.isSelected ? `chip_selected--container-text--half` : `chip_selected--container-text--full`}>
+            <bds-typo class={{ 'chip--text': true, ...this.getStyleText() }} variant="fs-12" no-wrap bold="bold">
+              <slot></slot>
+            </bds-typo>
+          </div>
         </div>
       </Host>
     );

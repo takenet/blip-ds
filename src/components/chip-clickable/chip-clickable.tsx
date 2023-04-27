@@ -55,6 +55,7 @@ export class ChipClickable {
       this.chipClickableClick.emit();
     }
   }
+
   private handleClick(event) {
     if (!this.disabled) {
       event.preventDefault();
@@ -66,17 +67,20 @@ export class ChipClickable {
     event.preventDefault();
     this.chipClickableClose.emit({ id: this.element.id });
   }
+
   private handleCloseKey(event) {
     if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {
       event.preventDefault();
       this.chipClickableClose.emit({ id: this.element.id });
     }
   }
+
   private getSizeAvatarChip() {
     if (this.size === 'tall') {
       return 'extra-small';
     } else return 'micro';
   }
+
   private getSizeIconChip() {
     if (this.size === 'tall') {
       return 'medium';
@@ -112,9 +116,19 @@ export class ChipClickable {
               <bds-avatar size={this.getSizeAvatarChip()} thumbnail={this.avatar}></bds-avatar>
             </div>
           )}
-          <bds-typo class="chip_clickable--text" variant="fs-12" bold="bold">
-            <slot></slot>
-          </bds-typo>
+          <div
+            class={
+              this.close && (this.icon || this.avatar)
+                ? `chip_clickable--container-text--min`
+                : !this.close && !this.icon && !this.avatar
+                ? `chip_clickable--container-text--full`
+                : `chip_clickable--container-text--half`
+            }
+          >
+            <bds-typo no-wrap="true" class="chip_clickable--text" variant="fs-12" bold="bold">
+              <slot></slot>
+            </bds-typo>
+          </div>
           {this.close && (
             <div class="chip_clickable--close" onClick={this.handleCloseChip.bind(this)}>
               {!this.disabled && (
