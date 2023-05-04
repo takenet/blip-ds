@@ -82,8 +82,8 @@ export function positionAbsoluteElement({
   const widthLeft = numberWidth - actionElement.offsetLeft;
 
   const result = {
-    y: changedElement.offsetHeight + 16 > heightTop ? 'bottom' : 'top',
-    x: changedElement.offsetWidth + 16 > widthLeft ? 'right' : 'left',
+    y: heightTop < changedElement.offsetHeight + actionElement.offsetHeight ? 'top' : 'bottom',
+    x: widthLeft < changedElement.offsetWidth ? 'left' : 'right',
   };
 
   return result;
