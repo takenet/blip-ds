@@ -289,32 +289,27 @@ $select-options-max-height: 250px;
     width: 100%;
     max-height: 250px;
     position: absolute;
-    top: 99%;
     left: 0;
     border-radius: $select-options-radius;
     box-shadow: $select-options-box-shadow;
     overflow-y: auto;
     z-index: 2;
-    margin-top: 4px;
-
-    transition: transform 0.25s, opacity 0.75s, visibility 0.75s;
-    transform-origin: top left;
-    transform: scaleY(0);
-    visibility: hidden;
+    pointer-events: none;
     opacity: 0;
 
     box-shadow: 0px 2px 12px $shadow-drop;
 
     &--open {
-      visibility: visible;
-      transform: scale(1);
       opacity: 1;
+      pointer-events: auto;
     }
 
     &--position-top {
-      top: auto;
-      bottom: 100%;
-      transform-origin: bottom left;
+      bottom: calc(100% + 4px);
+    }
+
+    &--position-bottom {
+      top: calc(100% + 4px);
     }
   }
 }

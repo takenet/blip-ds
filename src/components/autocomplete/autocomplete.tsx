@@ -5,6 +5,8 @@ import {
   AutocompleteSelectedChangeEventDetail,
   AutocompleteOptionsPositionType,
 } from './autocomplete-select-interface';
+import { SelectOptionsPositionType } from '../selects/select-interface';
+import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
 import { Keyboard } from '../../utils/enums';
 @Component({
   tag: 'bds-autocomplete',
@@ -13,12 +15,17 @@ import { Keyboard } from '../../utils/enums';
 })
 export class BdsAutocomplete {
   private nativeInput?: HTMLInputElement;
+  private dropElement?: HTMLElement;
+  private iconDropElement?: HTMLBdsIconElement;
+  private positionHeightDrop?: SelectOptionsPositionType;
 
   @Element() el!: HTMLBdsSelectElement;
 
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
+  @State() intoView?: HTMLElement = null;
+
   @State() isPressed? = false;
 
   @State() isOpen? = false;
@@ -122,6 +129,15 @@ export class BdsAutocomplete {
    */
   @Event() bdsBlur!: EventEmitter<void>;
 
+  @Watch('isOpen')
+  protected isOpenChanged(): void {
+    if (this.positionHeightDrop == 'bottom') {
+      this.iconDropElement.name = this.isOpen ? 'arrow-up' : 'arrow-down';
+    } else {
+      this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
+    }
+  }
+
   @Watch('selected')
   itemSelectedChanged(): void {
     this.bdsSelectedChange.emit(this.selected);
@@ -157,6 +173,7 @@ export class BdsAutocomplete {
   }
 
   componentWillLoad() {
+    this.intoView = getScrollParent(this.el);
     this.options && this.parseOptions();
   }
 
@@ -169,7 +186,29 @@ export class BdsAutocomplete {
     }
 
     this.text = this.getText();
+
+    const positionValue = positionAbsoluteElement({
+      actionElement: this.el,
+      changedElement: this.dropElement,
+      intoView: this.intoView,
+    });
+    this.positionHeightDrop = positionValue.y as SelectOptionsPositionType;
+    if (positionValue.y == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
+
+  private refDropdown = (el: HTMLElement) => {
+    this.dropElement = el;
+  };
+
+  private refIconDrop = (el: HTMLBdsIconElement) => {
+    this.iconDropElement = el;
+  };
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return this.options
@@ -389,8 +428,6 @@ export class BdsAutocomplete {
   }
 
   render(): HTMLElement {
-    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
-
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
         <div
@@ -432,13 +469,13 @@ export class BdsAutocomplete {
                 'icon-hidden': (this.clearIconOnFocus && (!this.isFocused || !this.isOpen)) || !this.value,
               }}
             ></bds-icon>
-            <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
+            <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
           </div>
         </div>
         <div
+          ref={(el) => this.refDropdown(el)}
           class={{
             select__options: true,
-            'select__options--position-top': this.optionsPosition === 'top',
             'select__options--open': this.isOpen,
           }}
         >
