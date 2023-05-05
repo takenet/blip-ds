@@ -11,7 +11,7 @@ import {
   EventEmitter,
   Watch,
 } from '@stencil/core';
-import { getScrollParent, positionAbsoluteElement, reference } from '../../utils/position-element';
+import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
 
 export type activeMode = 'hover' | 'click';
 export type dropdownPosition = 'bottom' | 'right';
@@ -36,9 +36,6 @@ export class BdsDropdown implements ComponentInterface {
   @State() delay = null;
   @State() isChildDrop?: boolean = false;
 
-  @Prop({ mutable: true, reflect: true }) axleY?: reference | string = 'bottom';
-  @Prop({ mutable: true, reflect: true }) axleX?: reference | string = 'right';
-
   /**
    * Open. Used to open/close the dropdown.
    */
@@ -62,40 +59,30 @@ export class BdsDropdown implements ComponentInterface {
       this.activatorElement.addEventListener('mouseover', () => this.openSubmenu());
       this.activatorElement.addEventListener('click', () => this.openSubmenu());
       this.activatorElement.addEventListener('mouseout', () => this.closeSubmenu());
-
-      return (
-        this.activatorElement.removeEventListener('mouseover', () => this.openSubmenu()),
-        this.activatorElement.removeEventListener('click', () => this.openSubmenu()),
-        this.activatorElement.removeEventListener('mouseout', () => this.closeSubmenu())
-      );
     } else {
       this.activatorElement.addEventListener('click', () => this.toggle());
-      return this.activatorElement.removeEventListener('click', () => this.toggle());
+    }
+  }
+
+  componentDidLoad() {
+    const positionValue = positionAbsoluteElement({
+      actionElement: this.hostElement,
+      changedElement: this.dropElement,
+      intoView: this.intoView,
+    });
+    const parent = this.getDropParent(this.hostElement);
+    if (this.isChildDrop) {
+      this.dropElement.classList.add(`dropdown__sub-menu__${parent.y}`);
+      this.dropElement.classList.add(`dropdown__sub-menu__${parent.x}`);
+    } else {
+      this.dropElement.classList.add(`dropdown__basic__${positionValue.y}`);
+      this.dropElement.classList.add(`dropdown__basic__${positionValue.x}`);
     }
   }
 
   @Method()
   async toggle() {
     this.open = !this.open;
-  }
-
-  @Watch('open')
-  protected openMenu() {
-    if (this.open) {
-      const positionValue = positionAbsoluteElement({
-        actionElement: this.hostElement,
-        changedElement: this.dropElement,
-        intoView: this.intoView,
-      });
-      const parent = this.getDropParent(this.hostElement);
-      if (this.isChildDrop) {
-        this.axleX = parent.axleX;
-        this.axleY = parent.axleY;
-      } else {
-        this.axleX = positionValue.x;
-        this.axleY = positionValue.y;
-      }
-    }
   }
 
   @Watch('openSubMenu')
@@ -130,9 +117,9 @@ export class BdsDropdown implements ComponentInterface {
     this.stateSubMenu = 'close';
   };
 
-  // private refDropElement = (el: HTMLElement): void => {
-  //   this.dropElement = el;
-  // };
+  private refDropElement = (el: HTMLElement): void => {
+    this.dropElement = el;
+  };
 
   private onClickCloseButtom = () => {
     this.open = false;
@@ -171,16 +158,11 @@ export class BdsDropdown implements ComponentInterface {
     return (
       <Host>
         <slot name="dropdown-activator"></slot>
-        {!this.isChildDrop && this.open && (
-          <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
-        )}
         <div
-          ref={(el) => (this.dropElement = el)}
+          ref={(el) => this.refDropElement(el)}
           class={{
             dropdown: true,
-            [`dropdown__open`]: this.open,
-            [`dropdown__${this.isChildDrop ? 'sub-menu' : 'basic'}__${this.axleY}`]: true,
-            [`dropdown__${this.isChildDrop ? 'sub-menu' : 'basic'}__${this.axleX}`]: true,
+            dropdown__open: this.open,
           }}
           onMouseOver={() => this.openSubmenu()}
           onMouseOut={() => this.closeSubmenu()}
@@ -189,6 +171,9 @@ export class BdsDropdown implements ComponentInterface {
             <slot name="dropdown-content"></slot>
           </div>
         </div>
+        {!this.isChildDrop && this.open && (
+          <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
+        )}
       </Host>
     );
   }

@@ -177,7 +177,7 @@ export class BdsTabGroup {
               variant="secondary"
             ></bds-button-icon>
           )}
-          <div class="tab_group__content">
+          <div class="tab_group__content element_scrolled">
             <slot></slot>
           </div>
         </div>

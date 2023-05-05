@@ -25,11 +25,11 @@
 
   &__basic {
     &__top {
-      top: calc(100% + 16px);
+      bottom: calc(100% + 16px);
     }
 
     &__bottom {
-      bottom: calc(100% + 16px);
+      top: calc(100% + 16px);
     }
 
     &__left {
