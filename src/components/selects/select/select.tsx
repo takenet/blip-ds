@@ -1,5 +1,6 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
+import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
 import { Keyboard } from '../../../utils/enums';
 @Component({
   tag: 'bds-select',
@@ -8,8 +9,13 @@ import { Keyboard } from '../../../utils/enums';
 })
 export class Select {
   private nativeInput?: HTMLInputElement;
+  private dropElement?: HTMLElement;
+  private iconDropElement?: HTMLBdsIconElement;
+  private positionHeightDrop?: SelectOptionsPositionType;
 
   @Element() el!: HTMLBdsSelectElement;
+
+  @State() intoView?: HTMLElement = null;
 
   @State() isOpen? = false;
 
@@ -103,12 +109,21 @@ export class Select {
   /**
    * Set the placement of the options menu. Can be 'bottom' or 'top'.
    */
-  @Prop() optionsPosition?: SelectOptionsPositionType = 'bottom';
+  @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'bottom';
 
   /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
+
+  @Watch('isOpen')
+  protected isOpenChanged(): void {
+    if (this.positionHeightDrop == 'bottom') {
+      this.iconDropElement.name = this.isOpen ? 'arrow-up' : 'arrow-down';
+    } else {
+      this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
+    }
+  }
 
   @Watch('value')
   valueChanged(): void {
@@ -129,28 +144,42 @@ export class Select {
   }
   componentWillLoad() {
     this.options && this.optionsChanged();
+    this.intoView = getScrollParent(this.el);
   }
 
   componentWillRender() {
     this.options && this.updateOptions();
-    for (const option of this.childOptions) {
-      option.selected = this.value === option.value;
-      option.addEventListener('optionSelected', this.handler);
-    }
-    this.text = this.getText();
+    this.getValueSelected();
   }
 
   componentDidLoad() {
-    for (const option of this.childOptions) {
-      option.selected = this.value === option.value;
-      option.addEventListener('optionSelected', this.handler);
+    this.getValueSelected();
+    const positionValue = positionAbsoluteElement({
+      actionElement: this.el,
+      changedElement: this.dropElement,
+      intoView: this.intoView,
+    });
+    this.positionHeightDrop = positionValue.y as SelectOptionsPositionType;
+    if (positionValue.y == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
     }
-    this.text = this.getText();
   }
 
   @Watch('options')
   optionsChanged() {
     this.updateOptions();
+  }
+
+  private getValueSelected() {
+    for (const option of this.childOptions) {
+      option.selected = this.value === option.value;
+      option.addEventListener('optionSelected', this.handler);
+    }
+    this.text = this.getText();
   }
 
   private updateOptions() {
@@ -178,6 +207,14 @@ export class Select {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private refNativeInput = (el: any): void => {
     this.nativeInput = el;
+  };
+
+  private refDropdown = (el: HTMLElement) => {
+    this.dropElement = el;
+  };
+
+  private refIconDrop = (el: HTMLBdsIconElement) => {
+    this.iconDropElement = el;
   };
 
   private onClickWrapper = (): void => {
@@ -309,7 +346,6 @@ export class Select {
 
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
-    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
 
     return (
       <div class="select" tabindex="0">
@@ -345,15 +381,15 @@ export class Select {
               </div>
             </div>
             <div class="select__icon">
-              <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
+              <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
             </div>
           </div>
           {this.renderMessage()}
         </div>
         <div
+          ref={(el) => this.refDropdown(el)}
           class={{
             select__options: true,
-            'select__options--position-top': this.optionsPosition === 'top',
             'select__options--open': this.isOpen,
           }}
         >

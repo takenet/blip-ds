@@ -25,7 +25,7 @@ export class BdsTabItem {
   }
   render(): HTMLElement {
     return (
-      <Host>
+      <Host class={{ [`is-open`]: this.open }}>
         <div class={{ tab_item: true }}>
           <div class={{ tab_item_content: true, [`tab_item_content--open`]: this.open }}>
             <slot></slot>

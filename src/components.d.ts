@@ -25,7 +25,6 @@ import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-import { reference } from "./utils/position-element";
 import { activeMode } from "./components/dropdown/dropdown";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
@@ -575,8 +574,6 @@ export namespace Components {
           * Open. Used to open/close the dropdown.
          */
         "activeMode"?: activeMode;
-        "axleX"?: reference | string;
-        "axleY"?: reference | string;
         /**
           * Open. Used to open/close the dropdown.
          */
@@ -1527,6 +1524,10 @@ export namespace Components {
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | Option[];
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: SelectOptionsPositionType;
         /**
           * A tip for the user who can enter no controls.
          */
@@ -3191,8 +3192,6 @@ declare namespace LocalJSX {
           * Open. Used to open/close the dropdown.
          */
         "activeMode"?: activeMode;
-        "axleX"?: reference | string;
-        "axleY"?: reference | string;
         /**
           * bdsToggle. Event to return selected date value.
          */
@@ -4305,6 +4304,10 @@ declare namespace LocalJSX {
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | Option[];
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: SelectOptionsPositionType;
         /**
           * A tip for the user who can enter no controls.
          */
