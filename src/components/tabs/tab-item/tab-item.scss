@@ -1,8 +1,17 @@
+:host {
+  display: none;
+}
+
+:host(.is-open) {
+  display: block;
+  height: 100%;
+}
+
 .tab_item {
+  height: 100%;
   &_content {
     display: none;
-    overflow: auto;
-    height: fit-content;
+    height: 100%;
     &--open {
       display: block;
     }

@@ -7,12 +7,10 @@
 
 ## Properties
 
-| Property     | Attribute     | Description                            | Type                 | Default    |
-| ------------ | ------------- | -------------------------------------- | -------------------- | ---------- |
-| `activeMode` | `active-mode` | Open. Used to open/close the dropdown. | `"click" \| "hover"` | `'click'`  |
-| `axleX`      | `axle-x`      |                                        | `string`             | `'right'`  |
-| `axleY`      | `axle-y`      |                                        | `string`             | `'bottom'` |
-| `open`       | `open`        | Open. Used to open/close the dropdown. | `boolean`            | `false`    |
+| Property     | Attribute     | Description                            | Type                 | Default   |
+| ------------ | ------------- | -------------------------------------- | -------------------- | --------- |
+| `activeMode` | `active-mode` | Open. Used to open/close the dropdown. | `"click" \| "hover"` | `'click'` |
+| `open`       | `open`        | Open. Used to open/close the dropdown. | `boolean`            | `false`   |
 
 
 ## Events
