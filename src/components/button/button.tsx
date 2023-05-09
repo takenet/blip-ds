@@ -114,7 +114,7 @@ export class Button {
           hide: this.bdsLoading && true,
         }}
       >
-        <bds-typo variant="fs-14" lineHeight="simple" bold="bold">
+        <bds-typo class={{ typo_buttom: true }} variant="fs-14" lineHeight="simple" bold="bold">
           <slot></slot>
         </bds-typo>
       </div>
