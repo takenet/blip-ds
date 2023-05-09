@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  max-width: 100%;
 
   .chip_tag {
     display: flex;
@@ -8,15 +9,23 @@
     height: 24px;
     border-radius: 12px;
     padding: 2px 4px;
-    align-items: center;
     box-sizing: border-box;
 
+    &--container-text {
+      &--full {
+        width: 100%;
+      }
+      &--half {
+        width: calc(100% - 16px);
+      }
+    }
+
     &--icon {
-    display: flex;
-    align-items: center;
-    width: 16px;
-    height: 20px;
-  }
+      display: flex;
+      align-items: center;
+      width: 16px;
+      height: 20px;
+    }
     &--text {
       display: flex;
       align-items: center;
@@ -54,5 +63,4 @@
       color: $color-content-default;
     }
   }
-  
 }

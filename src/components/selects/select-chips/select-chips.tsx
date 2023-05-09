@@ -603,7 +603,7 @@ export class SelectChips {
           <bds-chip-clickable
             id={id}
             key={id}
-            color="default"
+            color="outline"
             close={!this.disabled}
             onChipClickableClose={(event) => this.removeChip(event)}
           >
@@ -616,7 +616,7 @@ export class SelectChips {
             <bds-chip-clickable
               id={id}
               key={id}
-              color="default"
+              color="outline"
               close={!this.disabled}
               onChipClickableClose={(event) => this.removeChip(event)}
             >
