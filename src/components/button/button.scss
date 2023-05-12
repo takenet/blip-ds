@@ -129,7 +129,9 @@ $button-padding-left-right: 16px;
   &__primary {
     background: $color-primary-main;
 
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-neutral-light-snow;
     }
 
@@ -149,7 +151,9 @@ $button-padding-left-right: 16px;
 
   &__secondary {
     background: transparent;
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-neutral-dark-rooftop;
     }
 
@@ -171,7 +175,9 @@ $button-padding-left-right: 16px;
   &__tertiary {
     background: transparent;
     border: 1px solid $color-neutral-medium-wave;
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-primary-main;
     }
 
@@ -193,7 +199,9 @@ $button-padding-left-right: 16px;
 
   &__secondary--white {
     background: transparent;
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-neutral-light-snow;
     }
 
@@ -215,7 +223,9 @@ $button-padding-left-right: 16px;
   &__ghost {
     background: transparent;
     border: 1px solid $color-primary-main;
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-primary-main;
     }
     &:hover {
@@ -237,7 +247,9 @@ $button-padding-left-right: 16px;
 
   &__delete {
     background: $color-extend-reds-delete;
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-neutral-light-snow;
     }
 
@@ -259,7 +271,9 @@ $button-padding-left-right: 16px;
   &__dashed {
     background: transparent;
     border: 1px dashed $color-primary-main;
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-primary-main;
     }
 
@@ -282,7 +296,9 @@ $button-padding-left-right: 16px;
 
   &__facebook {
     background: $color-facebook-main;
-    .typo_buttom {
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
       color: $color-neutral-light-breeze;
     }
 
