@@ -37,6 +37,16 @@
 
 ## Methods
 
+### `changeCountry(code: any, isoCode: any, flag: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 
