@@ -1039,6 +1039,7 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsInputPhoneNumber {
+        "changeCountry": (code: any, isoCode: any, flag: any) => Promise<void>;
         /**
           * Add state danger on input, use for use feedback.
          */
