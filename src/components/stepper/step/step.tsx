@@ -57,9 +57,16 @@ export class BdsStep implements ComponentInterface {
             }}
           >
             {this.completed && <bds-icon name="true" color="#fff"></bds-icon>}
-            {!this.completed && <bds-typo>{this.index + 1}</bds-typo>}
+            {!this.completed && <bds-typo class="step__content__ellipse--icon-completed">{this.index + 1}</bds-typo>}
           </div>
-          <bds-typo variant="fs-16" bold={this.active ? 'bold' : 'regular'}>
+          <bds-typo
+            variant="fs-16"
+            class={{
+              'step__content__ellipse--text-completed': this.completed && !this.active,
+              'step__content__ellipse--text-active': this.active,
+            }}
+            bold={this.active ? 'bold' : 'regular'}
+          >
             <slot />
           </bds-typo>
         </div>

@@ -34,7 +34,18 @@
         margin-right: 4px;
         min-width: 24px;
         min-height: 24px;
-        color: $color-content-bright;
+
+        &--icon-completed {
+          color: $color-content-bright;
+        }
+
+        &--text-active {
+          color: $color-primary;
+        }
+
+        &--text-completed {
+          color: $color-content-disable;
+        }
 
         &--completed {
           background: $color-content-disable;
