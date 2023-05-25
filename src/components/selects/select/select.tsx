@@ -117,12 +117,13 @@ export class Select {
   @Prop() dataTest?: string = null;
 
   @Watch('isOpen')
-  protected isOpenChanged(): void {
+  protected isOpenChanged(isOpen: boolean): void {
     if (this.positionHeightDrop == 'bottom') {
       this.iconDropElement.name = this.isOpen ? 'arrow-up' : 'arrow-down';
     } else {
       this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
     }
+    if (isOpen) this.validatePositionDrop();
   }
 
   @Watch('value')
@@ -154,6 +155,10 @@ export class Select {
 
   componentDidLoad() {
     this.getValueSelected();
+    this.validatePositionDrop();
+  }
+
+  private validatePositionDrop() {
     const positionValue = positionAbsoluteElement({
       actionElement: this.el,
       changedElement: this.dropElement,
