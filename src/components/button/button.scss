@@ -128,7 +128,12 @@ $button-padding-left-right: 16px;
 
   &__primary {
     background: $color-primary-main;
-    color: $color-neutral-light-snow;
+
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-neutral-light-snow;
+    }
 
     &:hover {
       background: $color-primary-dark;
@@ -146,7 +151,11 @@ $button-padding-left-right: 16px;
 
   &__secondary {
     background: transparent;
-    color: $color-neutral-dark-rooftop;
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-neutral-dark-rooftop;
+    }
 
     &:hover {
       background: $color-disabled-bg;
@@ -165,8 +174,12 @@ $button-padding-left-right: 16px;
 
   &__tertiary {
     background: transparent;
-    color: $color-primary-main;
     border: 1px solid $color-neutral-medium-wave;
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-primary-main;
+    }
 
     &:hover {
       border: 1px solid $color-primary-main;
@@ -186,7 +199,11 @@ $button-padding-left-right: 16px;
 
   &__secondary--white {
     background: transparent;
-    color: $color-neutral-light-snow;
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-neutral-light-snow;
+    }
 
     &:hover {
       background: rgba($color-neutral-light-snow, 0.3);
@@ -205,9 +222,12 @@ $button-padding-left-right: 16px;
 
   &__ghost {
     background: transparent;
-    color: $color-primary-main;
     border: 1px solid $color-primary-main;
-
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-primary-main;
+    }
     &:hover {
       background: $color-disabled-bg;
       color: $color-primary-main;
@@ -227,7 +247,11 @@ $button-padding-left-right: 16px;
 
   &__delete {
     background: $color-extend-reds-delete;
-    color: $color-neutral-light-snow;
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-neutral-light-snow;
+    }
 
     &:hover {
       background: $color-extend-reds-lipstick;
@@ -246,8 +270,12 @@ $button-padding-left-right: 16px;
 
   &__dashed {
     background: transparent;
-    color: $color-primary-main;
     border: 1px dashed $color-primary-main;
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-primary-main;
+    }
 
     &:hover {
       background: transparent;
@@ -268,7 +296,11 @@ $button-padding-left-right: 16px;
 
   &__facebook {
     background: $color-facebook-main;
-    color: $color-neutral-light-breeze;
+    .typo_buttom,
+    .icon_buttom,
+    .arrow_buttom {
+      color: $color-neutral-light-breeze;
+    }
 
     &:hover {
       background: $color-facebook-dark;

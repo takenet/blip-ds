@@ -9,6 +9,7 @@ export class AccordionBody {
   private container?: HTMLElement = null;
 
   @State() isOpen?: boolean = false;
+  @State() isOpenAftAnimation?: boolean = false;
   @State() heightContainer?: number;
   @State() numberElement?: number = null;
 
@@ -25,6 +26,13 @@ export class AccordionBody {
   @Watch('isOpen')
   isOpenChanged(): void {
     this.heightContainer = this.isOpen ? this.container.offsetHeight : 0;
+    if (this.isOpen) {
+      setTimeout(() => {
+        this.isOpenAftAnimation = !this.isOpenAftAnimation;
+      }, 500);
+    } else {
+      this.isOpenAftAnimation = !this.isOpenAftAnimation;
+    }
   }
 
   private refContainer = (el: HTMLElement): void => {
@@ -33,7 +41,10 @@ export class AccordionBody {
 
   render() {
     return (
-      <div class="accordion_body" style={{ height: `${this.heightContainer}px` }}>
+      <div
+        class={{ accordion_body: true, accordion_body_isOpen: this.isOpenAftAnimation }}
+        style={{ height: `${this.heightContainer}px` }}
+      >
         <div class="container" ref={(el) => this.refContainer(el)}>
           <slot></slot>
         </div>
