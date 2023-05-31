@@ -78,6 +78,13 @@ export class BdsdatepickerSingle {
       this.yearActivated = this.startDate.year;
     }
   }
+  /**
+   * DateSelect. Function to output selected start date.
+   */
+  @Watch('dateSelect')
+  protected startDateSelectChanged(): void {
+    this.bdsDateSelected.emit({ value: this.dateSelect });
+  }
 
   componentWillLoad() {
     const fillStartDate = fillDayList(this.startDate);
