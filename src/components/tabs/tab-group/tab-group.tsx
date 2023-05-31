@@ -26,6 +26,8 @@ export class BdsTabGroup {
 
   @Prop() scrollable?: boolean = false;
 
+  @Prop() align: 'left' | 'center' | 'right' = 'center';
+
   /**
    * bdsTabChange. Event to return value when accordion is change.
    */
@@ -145,7 +147,11 @@ export class BdsTabGroup {
           )}
           <div class={{ tab_group__header: true, tab_group__slide: this.isSlideTabs }} ref={this.refHeaderElement}>
             <div
-              class={{ tab_group__header__itens: true, tab_group__slide__itens: this.isSlideTabs }}
+              class={{
+                tab_group__header__itens: true,
+                tab_group__slide__itens: this.isSlideTabs,
+                [`tab_group__header__itens__${this.align}`]: !this.isSlideTabs,
+              }}
               ref={this.refHeaderSlideElement}
               style={slidePosition}
             >

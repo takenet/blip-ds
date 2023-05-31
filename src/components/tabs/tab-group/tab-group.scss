@@ -13,13 +13,29 @@
   position: relative;
 
   &__header {
+    padding: 0 16px;
+
     &__itens {
       display: flex;
       flex-direction: row;
-      justify-content: center;
       width: max-content;
       gap: 32px;
       margin: auto;
+
+      &__center {
+        justify-content: center;
+        margin: auto;
+      }
+
+      &__right {
+        justify-content: right;
+        margin: 0 0 0 auto;
+      }
+
+      &__left {
+        justify-content: left;
+        margin: 0 auto 0 0;
+      }
 
       &__item {
         cursor: pointer;
