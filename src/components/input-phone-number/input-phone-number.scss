@@ -249,6 +249,9 @@ $select-options-max-height: 250px;
 
     &--danger {
       color: $color-delete;
+      .message {
+        color: $color-delete;
+      }
     }
   }
 }

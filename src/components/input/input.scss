@@ -235,6 +235,10 @@ $input-width: 100%;
 
     &--danger {
       color: $color-delete;
+
+      .message {
+        color: $color-delete;
+      }
     }
   }
 }
