@@ -46,6 +46,10 @@ export class Pagination {
   }
 
   componentDidLoad() {
+    this.validatePositionDrop();
+  }
+
+  private validatePositionDrop() {
     const positionValue = positionAbsoluteElement({
       actionElement: this.el,
       changedElement: this.dropElement,
@@ -62,12 +66,13 @@ export class Pagination {
   }
 
   @Watch('openSelect')
-  protected isOpenChanged(): void {
+  protected isOpenChanged(isOpen: boolean): void {
     if (this.positionHeightDrop == 'bottom') {
       this.iconDropElement.name = this.openSelect ? 'arrow-up' : 'arrow-down';
     } else {
       this.iconDropElement.name = this.openSelect ? 'arrow-down' : 'arrow-up';
     }
+    if (isOpen) this.validatePositionDrop();
   }
 
   @Watch('pages')
