@@ -1699,6 +1699,7 @@ export namespace Components {
         "label": string;
     }
     interface BdsTabGroup {
+        "align": 'left' | 'center' | 'right';
         "scrollable"?: boolean;
     }
     interface BdsTabItem {
@@ -4465,6 +4466,7 @@ declare namespace LocalJSX {
         "onBdsTabChange"?: (event: BdsTabCustomEvent<any>) => void;
     }
     interface BdsTabGroup {
+        "align"?: 'left' | 'center' | 'right';
         /**
           * bdsTabChange. Event to return value when accordion is change.
          */

@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property     | Attribute    | Description | Type      | Default |
-| ------------ | ------------ | ----------- | --------- | ------- |
-| `scrollable` | `scrollable` |             | `boolean` | `false` |
+| Property     | Attribute    | Description | Type                            | Default    |
+| ------------ | ------------ | ----------- | ------------------------------- | ---------- |
+| `align`      | `align`      |             | `"center" \| "left" \| "right"` | `'center'` |
+| `scrollable` | `scrollable` |             | `boolean`                       | `false`    |
 
 
 ## Events
