@@ -65,19 +65,27 @@ export class BdsDropdown implements ComponentInterface {
   }
 
   componentDidLoad() {
+    this.validatePositionDrop();
+  }
+
+  private validatePositionDrop() {
     const positionValue = positionAbsoluteElement({
       actionElement: this.hostElement,
       changedElement: this.dropElement,
       intoView: this.intoView,
     });
-    const parent = this.getDropParent(this.hostElement);
     if (this.isChildDrop) {
-      this.dropElement.classList.add(`dropdown__sub-menu__${parent.y}`);
-      this.dropElement.classList.add(`dropdown__sub-menu__${parent.x}`);
+      const parent = this.getDropParent(this.hostElement);
+      setTimeout(() => this.checkValeuChildDrop(parent), 400);
     } else {
       this.dropElement.classList.add(`dropdown__basic__${positionValue.y}`);
       this.dropElement.classList.add(`dropdown__basic__${positionValue.x}`);
     }
+  }
+
+  @Watch('open')
+  protected isOpenChanged(open: boolean): void {
+    if (open) this.validatePositionDrop();
   }
 
   @Method()
@@ -112,6 +120,15 @@ export class BdsDropdown implements ComponentInterface {
         break;
     }
   }
+
+  private checkValeuChildDrop = (parent): void => {
+    const parentShadown = parent.shadowRoot;
+    const getDropdown = parentShadown.querySelector('.dropdown');
+    const dropY = getDropdown.classList.contains('dropdown__basic__bottom') ? 'bottom' : 'top';
+    const dropX = getDropdown.classList.contains('dropdown__basic__right') ? 'right' : 'left';
+    this.dropElement.classList.add(`dropdown__sub-menu__${dropY}`);
+    this.dropElement.classList.add(`dropdown__sub-menu__${dropX}`);
+  };
 
   private onCloseSubMenu = (): void => {
     this.stateSubMenu = 'close';
@@ -156,7 +173,7 @@ export class BdsDropdown implements ComponentInterface {
       zIndex: `${this.zIndex}`,
     };
     return (
-      <Host>
+      <Host class={{ is_child_drop: this.isChildDrop }}>
         <slot name="dropdown-activator"></slot>
         <div
           ref={(el) => this.refDropElement(el)}
