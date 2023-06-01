@@ -19,3 +19,7 @@ $color-success: var(--color-success, $color-dark-success);
 $color-warning: var(--color-warning, $color-dark-warning);
 $color-error: var(--color-error, $color-dark-error);
 $color-delete: var(--color-delete, $color-dark-delete);
+
+//Actions
+$color-hover: var(--color-hover, rgba(255, 255, 255, 0.16));
+$color-pressed: var(--color-pressed, rgba(255, 255, 255, 0.08)) ;

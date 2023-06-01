@@ -15,6 +15,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../../test-component)
+
 ### Depends on
 
 - [bds-icon](../../icon)
@@ -25,6 +29,7 @@
 graph TD;
   bds-alert-header --> bds-icon
   bds-alert-header --> bds-typo
+  bds-test-component --> bds-alert-header
   style bds-alert-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -70,6 +70,9 @@ $select-options-max-height: 250px;
     caret-color: $color-input-primary;
     color: $color-input-text;
   }
+  .input__container__text:placeholder-shown {
+    color: $color-content-ghost;
+  }
 }
 
 :host {
@@ -116,8 +119,8 @@ $select-options-max-height: 250px;
         $color-primary,
         $color-surface-3,
         $color-content-default,
-        $color-content-default,
-        $color-surface-3,
+        $color-content-disable,
+        $color-border-1,
         $color-primary,
         $color-info
       );
@@ -144,7 +147,7 @@ $select-options-max-height: 250px;
         $color-surface-3,
         $color-content-disable,
         $color-content-disable,
-        $color-surface-3,
+        $color-border-1,
         $color-surface-3,
         $color-surface-3
       );
@@ -200,6 +203,9 @@ $select-options-max-height: 250px;
       resize: none;
       cursor: inherit;
     }
+    &__text::placeholder {
+      color: $color-content-ghost;
+    }
   }
 
   &__message {
@@ -239,6 +245,9 @@ $select-options-max-height: 250px;
   &__label {
     display: flex;
     align-items: center;
+  }
+  &__text::placeholder {
+    color: $color-content-ghost;
   }
 }
 

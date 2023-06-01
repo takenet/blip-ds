@@ -10,6 +10,7 @@
     flex-wrap: nowrap;
     align-items: center;
     gap: 8px;
+    color: $color-content-default;
 
     &_text {
       color: $color-content-default;
@@ -55,22 +56,30 @@
   }
   .text-box--hover {
     background-color: $color-surface-2;
+    
+    .text {
+      color: $color-primary;
+    }
   }
 }
 
 .upload__edit--label:hover {
-  border: 2px solid $color-brand;
+  border: 2px solid $color-primary;
   box-sizing: border-box;
   padding: 22px 16px;
   cursor: pointer;
-  text-decoration: underline $color-brand;
+  text-decoration: underline $color-primary;
   color: $color-brand;
+
+  .text {
+    color: $color-primary;
+  }
 }
 
 .upload__edit--hover {
   background-size: cover;
   border: 1px dashed $color-surface-4;
-  color: $color-brand;
+  color: $color-primary;
   font-weight: bold;
   border-radius: 8px;
 }
@@ -111,6 +120,10 @@
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
+      color: $color-content-default;
+    }
+    &-icon {
+      color: $color-content-default;
     }
     &-icon:hover {
       cursor: pointer;

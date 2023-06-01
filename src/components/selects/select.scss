@@ -251,7 +251,12 @@ $select-options-max-height: 250px;
     }
 
     &--danger {
-      color: $color-delete;
+      .bds-icon {
+        color: $color-delete;
+      }
+      .input__message__text {
+        color: $color-delete;
+      }
     }
   }
 }
