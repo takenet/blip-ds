@@ -1,6 +1,12 @@
 :host {
   position: relative;
   width: fit-content;
+  display: inline-block;
+}
+
+:host(.is_child_drop) {
+  display: block;
+  width: 100%;
 }
 
 .dropdown {
@@ -43,7 +49,7 @@
 
   &__sub-menu {
     &__top {
-      top: -2px;
+      bottom: 0;
     }
 
     &__bottom {
