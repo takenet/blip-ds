@@ -61,27 +61,27 @@
     }
     &--default {
       background-color: $color-system;
-      color: $color-content-din;
+      color: $color-content-default;
     }
     &--info {
       background-color: $color-info;
-      color: $color-content-din;
+      color: $color-content-default;
     }
     &--success {
       background-color: $color-success;
-      color: $color-content-din;
+      color: $color-content-default;
     }
     &--warning {
       background-color: $color-warning;
-      color: $color-content-din;
+      color: $color-content-default;
     }
     &--danger {
       background-color: $color-error;
-      color: $color-content-din;
+      color: $color-content-default;
     }
     &--outline {
       background-color: $color-surface-1;
-      border: 1px solid $color-surface-3;
+      border: 1px solid $color-border-1;
       color: $color-content-default;
       padding: 2px 3px;
       .chip_darker {
@@ -115,7 +115,7 @@
     align-items: center;
     box-sizing: border-box;
     background-color: $color-surface-1;
-    border: 2px solid $color-brand;
+    border: 2px solid $color-content-default;
 
     &--container-text {
       &--full {
@@ -131,7 +131,7 @@
       align-items: center;
       height: 20px;
       padding-left: 4px;
-      color: $color-brand;
+      color: $color-content-default;
     }
     &--text {
       display: flex;
@@ -139,7 +139,7 @@
       height: 20px;
       margin: 0 8px;
       flex-wrap: nowrap;
-      color: $color-brand;
+      color: $color-content-default;
       font-family: $font-family;
     }
     &--tall {

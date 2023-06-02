@@ -68,6 +68,7 @@
  - [bds-tab](../tabs/tab)
  - [bds-tab-group](../tabs/tab-group)
  - [bds-table](../table)
+ - [bds-test-component](../test-component)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
  - [bds-upload](../upload)
@@ -113,6 +114,7 @@ graph TD;
   bds-tab --> bds-typo
   bds-tab-group --> bds-typo
   bds-table --> bds-typo
+  bds-test-component --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo
   bds-upload --> bds-typo

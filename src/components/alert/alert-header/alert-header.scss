@@ -19,33 +19,33 @@
     background: $color-system;
 
     bds-typo {
-      color: $color-content-din;
+      color: $color-content-default;
     }
 
     .color-icon {
-      color: $color-content-din;
+      color: $color-content-default;
     }
   }
 
   &--error {
     background: $color-error;
     bds-typo {
-      color: $color-content-din;
+      color: $color-content-default;
     }
     
     .color-icon {
-      color: $color-content-din;
+      color: $color-content-default;
     }
   }
 
   &--warning {
     background: $color-warning;
     bds-typo {
-      color: $color-content-din;
+      color: $color-content-default;
     }
     
     .color-icon {
-      color: $color-content-din;
+      color: $color-content-default;
     }
   }
 

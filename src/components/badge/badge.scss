@@ -116,7 +116,9 @@
     position: relative;
     bds-icon {
       position: absolute;
-      color: $color-content-din;
+    }
+    .bds-icon {
+      color: $color-content-default;
     }
 
     &--circle {
@@ -209,8 +211,8 @@
       animation: pulse 2s ease-out infinite;
     }
 
-    bds-typo {
-      color: $color-content-din;
+    .number_text {
+      color: $color-content-default;
     }
   }
 }

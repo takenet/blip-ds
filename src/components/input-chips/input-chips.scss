@@ -140,7 +140,7 @@ $input_fixed: 140px;
         $color-surface-3,
         $color-content-default,
         $color-content-default,
-        $color-surface-3,
+        $color-border-1,
         $color-primary,
         $color-info
       );
@@ -167,7 +167,7 @@ $input_fixed: 140px;
         $color-surface-3,
         $color-content-disable,
         $color-content-disable,
-        $color-surface-3,
+        $color-border-1,
         $color-surface-3,
         $color-surface-3
       );
@@ -248,7 +248,12 @@ $input_fixed: 140px;
     }
 
     &--danger {
-      color: $color-delete;
+      .bds-icon {
+        color: $color-delete;
+      }
+      .input__message__text {
+        color: $color-delete;
+      }
     }
   }
 }

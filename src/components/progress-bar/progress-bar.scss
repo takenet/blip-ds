@@ -43,16 +43,16 @@
 
       &.color {
         &_default {
-          background-color: $color-brand;
+          background-color: $color-extended-blue;
         }
         &_positive {
-          background-color: $color-success;
+          background-color: $color-extended-green;
         }
         &_information {
-          background-color: $color-warning;
+          background-color: $color-extended-yellow;
         }
         &_warning {
-          background-color: $color-error;
+          background-color: $color-extended-red;
         }
       }
 
