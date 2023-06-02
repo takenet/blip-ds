@@ -75,7 +75,7 @@ export class Badge {
           )}
           {this.type === 'number' && (
             <div class={{ number: true, [`color--${this.color}`]: true, [`number--${this.animation}`]: true }}>
-              <bds-typo variant="fs-12" bold="bold" margin={false}>
+              <bds-typo class="number_text" variant="fs-12" bold="bold" margin={false}>
                 {this.number >= 999 ? '999+' : this.number}
               </bds-typo>
             </div>

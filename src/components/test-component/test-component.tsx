@@ -67,6 +67,35 @@ export class TestComponent {
                   <bds-select-option value="6">Noah Schnapp</bds-select-option>
                 </bds-autocomplete>
 
+                <bds-stepper>
+                  <bds-step active={true}>Step one 1</bds-step>
+                  <bds-step>Step two 2</bds-step>
+                  <bds-step>Step three 3</bds-step>
+                </bds-stepper>
+
+                <bds-grid gap="4" margin="3" align-items="center">
+                  <bds-grid direction="column" align-items="center" gap="4">
+                    <bds-badge shape="circle" color="system"></bds-badge>
+                    <bds-typo bold="bold">Status</bds-typo>
+                  </bds-grid>
+                  <bds-grid direction="column" align-items="center" gap="2">
+                    <bds-badge shape="circle" color="system" icon="info"></bds-badge>
+                    <bds-typo bold="bold">Icon</bds-typo>
+                  </bds-grid>
+                  <bds-grid direction="column" align-items="center" gap="2">
+                    <bds-badge shape="circle" color="system" number={1234}></bds-badge>
+                    <bds-typo bold="bold">Number</bds-typo>
+                  </bds-grid>
+                </bds-grid>
+
+                <bds-grid gap="4" margin="3" align-items="center">
+                  <bds-badge shape="circle" color="system" icon="info"></bds-badge>
+                  <bds-badge shape="triangle" color="danger" icon="info"></bds-badge>
+                  <bds-badge shape="triangle-reverse" icon="info" color="warning"></bds-badge>
+                  <bds-badge shape="polygon" color="success" icon="info"></bds-badge>
+                  <bds-badge shape="square" color="neutral" icon="info"></bds-badge>
+                </bds-grid>
+
                 <bds-grid>
                   <bds-switch name="" refer="string"></bds-switch>
                 </bds-grid>
@@ -298,6 +327,35 @@ export class TestComponent {
                   <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
                   <bds-select-option value="6">Noah Schnapp</bds-select-option>
                 </bds-autocomplete>
+
+                <bds-stepper>
+                  <bds-step>Step one 1</bds-step>
+                  <bds-step active={true}>Step two 2</bds-step>
+                  <bds-step>Step three 3</bds-step>
+                </bds-stepper>
+
+                <bds-grid gap="4" margin="3" align-items="center">
+                  <bds-grid direction="column" align-items="center" gap="4">
+                    <bds-badge shape="circle" color="system"></bds-badge>
+                    <bds-typo bold="bold">Status</bds-typo>
+                  </bds-grid>
+                  <bds-grid direction="column" align-items="center" gap="2">
+                    <bds-badge shape="circle" color="system" icon="info"></bds-badge>
+                    <bds-typo bold="bold">Icon</bds-typo>
+                  </bds-grid>
+                  <bds-grid direction="column" align-items="center" gap="2">
+                    <bds-badge shape="circle" color="system" number={1234}></bds-badge>
+                    <bds-typo bold="bold">Number</bds-typo>
+                  </bds-grid>
+                </bds-grid>
+
+                <bds-grid gap="4" margin="3" align-items="center">
+                  <bds-badge shape="circle" color="system" icon="info"></bds-badge>
+                  <bds-badge shape="triangle" color="danger" icon="info"></bds-badge>
+                  <bds-badge shape="triangle-reverse" icon="info" color="warning"></bds-badge>
+                  <bds-badge shape="polygon" color="success" icon="info"></bds-badge>
+                  <bds-badge shape="square" color="neutral" icon="info"></bds-badge>
+                </bds-grid>
 
                 <bds-grid gap="1">
                   <bds-button size="standard" variant="primary">

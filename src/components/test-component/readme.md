@@ -18,6 +18,9 @@
 - [bds-chip-clickable](../chip-clickable)
 - [bds-autocomplete](../autocomplete)
 - [bds-select-option](../select-option)
+- [bds-stepper](../stepper)
+- [bds-step](../stepper/step)
+- [bds-badge](../badge)
 - [bds-switch](../bds-switch)
 - [bds-button](../button)
 - [bds-button-icon](../icon-button)
@@ -60,6 +63,9 @@ graph TD;
   bds-test-component --> bds-chip-clickable
   bds-test-component --> bds-autocomplete
   bds-test-component --> bds-select-option
+  bds-test-component --> bds-stepper
+  bds-test-component --> bds-step
+  bds-test-component --> bds-badge
   bds-test-component --> bds-switch
   bds-test-component --> bds-button
   bds-test-component --> bds-button-icon
@@ -102,6 +108,10 @@ graph TD;
   bds-autocomplete --> bds-typo
   bds-autocomplete --> bds-select-option
   bds-select-option --> bds-typo
+  bds-step --> bds-icon
+  bds-step --> bds-typo
+  bds-badge --> bds-icon
+  bds-badge --> bds-typo
   bds-button --> bds-icon
   bds-button --> bds-typo
   bds-button --> bds-loading-spinner
