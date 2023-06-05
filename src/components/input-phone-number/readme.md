@@ -37,6 +37,16 @@
 
 ## Methods
 
+### `changeCountry(code: any, isoCode: any, flag: any) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `removeFocus() => Promise<void>`
 
 
@@ -58,6 +68,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../test-component)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -71,6 +85,7 @@ graph TD;
   bds-input-phone-number --> bds-typo
   bds-input-phone-number --> bds-select-option
   bds-select-option --> bds-typo
+  bds-test-component --> bds-input-phone-number
   style bds-input-phone-number fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

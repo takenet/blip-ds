@@ -142,7 +142,7 @@ export class BdsUpload {
     return (
       <div class="upload">
         <div class="upload-header">
-          <bds-icon size="xxx-large" name="upload"></bds-icon>
+          <bds-icon class="upload-header_icon" size="xxx-large" name="upload"></bds-icon>
           <div class="upload-header_text">
             <bds-typo variant="fs-16" bold="bold">
               {this.titleName}

@@ -456,7 +456,9 @@ export class InputChips {
           <div class="input__message__icon">
             <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
           </div>
-          <bds-typo variant="fs-12">{message}</bds-typo>
+          <bds-typo class="input__message__text" variant="fs-12">
+            {message}
+          </bds-typo>
         </div>
       );
     }

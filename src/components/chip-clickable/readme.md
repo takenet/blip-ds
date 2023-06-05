@@ -34,6 +34,7 @@
  - [bds-input-chips](../input-chips)
  - [bds-list-item](../list)
  - [bds-select-chips](../selects/select-chips)
+ - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -52,6 +53,7 @@ graph TD;
   bds-input-chips --> bds-chip-clickable
   bds-list-item --> bds-chip-clickable
   bds-select-chips --> bds-chip-clickable
+  bds-test-component --> bds-chip-clickable
   style bds-chip-clickable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -125,6 +125,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [bds-datepicker](../datepicker)
+ - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -140,6 +141,7 @@ graph TD;
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
   bds-datepicker --> bds-input
+  bds-test-component --> bds-input
   style bds-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -33,6 +33,19 @@
 | `xxsOffset`      | `xxs-offset`      |             | `"1" \| "10" \| "11" \| "12" \| "2" \| "3" \| "4" \| "5" \| "6" \| "7" \| "8" \| "9" \| "auto"`                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [bds-test-component](../test-component)
+
+### Graph
+```mermaid
+graph TD;
+  bds-test-component --> bds-grid
+  style bds-grid fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

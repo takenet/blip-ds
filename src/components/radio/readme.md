@@ -54,6 +54,7 @@ Type: `Promise<boolean>`
 ### Used by
 
  - [bds-list-item](../list)
+ - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -64,6 +65,7 @@ Type: `Promise<boolean>`
 graph TD;
   bds-radio --> bds-typo
   bds-list-item --> bds-radio
+  bds-test-component --> bds-radio
   style bds-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

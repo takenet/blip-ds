@@ -113,7 +113,7 @@ $input-width: 100%;
         $color-surface-3,
         $color-content-default,
         $color-content-default,
-        $color-surface-3,
+        $color-border-1,
         $color-primary,
         $color-info
       );
@@ -139,7 +139,7 @@ $input-width: 100%;
         $color-success,
         $color-content-default,
         $color-content-default,
-        $color-surface-3,
+        $color-border-1,
         $color-content-default,
         $color-success
       );
@@ -234,7 +234,14 @@ $input-width: 100%;
     }
 
     &--danger {
-      color: $color-delete;
+      .input__message__icon {
+        .bds-icon {
+          color: $color-delete;
+        }
+      }
+      .input__message__text {
+        color: $color-delete;
+      }
     }
   }
 }
