@@ -37,7 +37,7 @@ export class Badge {
    */
   @Prop() animation?: boolean = false;
 
-  componentDidLoad() {
+  componentWillLoad() {
     if (this.icon === null && this.number) {
       this.type = 'number';
     } else if (this.number === null && this.icon) {

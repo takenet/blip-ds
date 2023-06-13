@@ -17,7 +17,7 @@
       border-radius: 8px;
     }
     .border-select:hover {
-      box-shadow: rgb(63 125 232 / 40%) 0px 0px 0px 2px;
+      box-shadow: $color-hover;
     }
     .select_input {
       display: flex;
@@ -31,7 +31,7 @@
       max-height: 100%;
       background: $color-surface-1;
       border-radius: 8px;
-      border: 1px solid $color-surface-3;
+      border: 1px solid $color-border-1;
       box-sizing: border-box;
 
       bds-typo {

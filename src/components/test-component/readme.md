@@ -49,6 +49,7 @@
 - [bds-alert-body](../alert/alert-body)
 - [bds-alert-actions](../alert/alert-actions)
 - [bds-avatar-group](../avatar-group)
+- [bds-tooltip](../tooltip)
 - [bds-avatar](../avatar)
 
 ### Graph
@@ -94,6 +95,7 @@ graph TD;
   bds-test-component --> bds-alert-body
   bds-test-component --> bds-alert-actions
   bds-test-component --> bds-avatar-group
+  bds-test-component --> bds-tooltip
   bds-test-component --> bds-avatar
   bds-chip-tag --> bds-icon
   bds-chip-tag --> bds-typo

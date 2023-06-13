@@ -275,12 +275,14 @@ export class TestComponent {
                   </bds-alert-actions>
                 </bds-alert>
                 <bds-avatar-group size="standard" users={JSON.stringify(users)}></bds-avatar-group>
-                <bds-avatar
-                  name="Michael Scott"
-                  thumbnail="https://www.w3schools.com/howto/img_avatar.png"
-                  size="extra-large"
-                  upload={true}
-                ></bds-avatar>
+                <bds-tooltip tooltip-text="teste de texto para tooltip" position="right-center">
+                  <bds-avatar
+                    name="Michael Scott"
+                    thumbnail="https://www.w3schools.com/howto/img_avatar.png"
+                    size="extra-large"
+                    upload={true}
+                  ></bds-avatar>
+                </bds-tooltip>
               </bds-grid>
             </bds-paper>
           </bds-theme-provider>
@@ -422,7 +424,7 @@ export class TestComponent {
                   number-error-message="Only numbers are allowed."
                 ></bds-input-phone-number>
 
-                <bds-select danger error-message="teste" value="2">
+                <bds-select error-message="teste" value="2">
                   <bds-select-option value="1">Millie Bobby</bds-select-option>
                   <bds-select-option value="2">Finn Wolfhard</bds-select-option>
                   <bds-select-option value="3">David Harbour</bds-select-option>
@@ -536,12 +538,14 @@ export class TestComponent {
                   </bds-alert-actions>
                 </bds-alert>
                 <bds-avatar-group size="standard" users={JSON.stringify(users)}></bds-avatar-group>
-                <bds-avatar
-                  name="Michael Scott"
-                  thumbnail="https://www.w3schools.com/howto/img_avatar.png"
-                  size="extra-large"
-                  upload={true}
-                ></bds-avatar>
+                <bds-tooltip tooltip-text="teste de texto para tooltip" position="right-center">
+                  <bds-avatar
+                    name="Michael Scott"
+                    thumbnail="https://www.w3schools.com/howto/img_avatar.png"
+                    size="extra-large"
+                    upload={true}
+                  ></bds-avatar>
+                </bds-tooltip>
               </bds-grid>
             </bds-paper>
           </bds-theme-provider>
