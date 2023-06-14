@@ -22,8 +22,8 @@ $button-padding-left-right: 16px;
   height: $height;
 }
 
-@mixin disable-button($background, $color: null, $border: null) {
-  background: $background;
+@mixin disable-button($color: null, $border: null) {
+  opacity: 50%;
   pointer-events: none;
 
   @if ($color) {
@@ -36,7 +36,6 @@ $button-padding-left-right: 16px;
 
   &:hover,
   &:active {
-    background: $background;
 
     @if ($color) {
       color: $color;
@@ -160,7 +159,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-disabled-bg, $color-disabled-text);
+      @include disable-button($color-content-bright);
     }
   }
 
@@ -173,7 +172,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-disabled-text);
+      @include disable-button($color-disabled-text);
     }
   }
 
@@ -187,7 +186,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+      @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
     }
   }
 
@@ -210,7 +209,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-disabled-bg, $color-neutral-medium-cloud);
+      @include disable-button($color-neutral-medium-cloud);
     }
   }
 
@@ -224,7 +223,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+      @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
     }
   }
 
@@ -237,7 +236,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-disabled-delete, $color-disabled-wrong);
+      @include disable-button( $color-disabled-wrong);
     }
   }
 
@@ -263,7 +262,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button(transparent, $color-neutral-medium-cloud, 1px dashed $color-neutral-medium-cloud);
+      @include disable-button( $color-neutral-medium-cloud, 1px dashed $color-neutral-medium-cloud);
     }
   }
 
@@ -285,7 +284,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-disabled-bg, $color-neutral-medium-cloud);
+      @include disable-button( $color-neutral-medium-cloud);
     }
   }
 

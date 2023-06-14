@@ -58,7 +58,7 @@ export class TestComponent {
                   <bds-chip-clickable color="outline">outline</bds-chip-clickable>
                 </bds-grid>
 
-                <bds-autocomplete label="Label" icon="warning" value={null} disabled={false} placeholder="Select">
+                <bds-autocomplete label="Label" icon="warning" value={null} disabled={true} placeholder="Select">
                   <bds-select-option value="1">Millie Bobby</bds-select-option>
                   <bds-select-option value="2">Finn Wolfhard</bds-select-option>
                   <bds-select-option value="3">David Harbour</bds-select-option>
@@ -101,27 +101,29 @@ export class TestComponent {
                 </bds-grid>
 
                 <bds-grid gap="1">
-                  <bds-button size="standard" variant="primary">
+                  <bds-button disabled size="standard" variant="primary">
                     Button primary
                   </bds-button>
-                  <bds-button size="short" variant="secondary">
+                  <bds-button disabled size="short" variant="secondary">
                     Button secondary
                   </bds-button>
-                  <bds-button arrow icon="file-new" variant="tertiary">
+                  <bds-button disabled arrow icon="file-new" variant="tertiary">
                     Button tertiary
                   </bds-button>
-                  <bds-button arrow variant="ghost">
+                  <bds-button disabled arrow variant="ghost">
                     Button ghost
                   </bds-button>
-                  <bds-button variant="delete">Button delete</bds-button>
+                  <bds-button disabled variant="delete">
+                    Button delete
+                  </bds-button>
                 </bds-grid>
 
                 <bds-grid gap="1">
-                  <bds-button-icon variant="primary" icon="file-new" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="secondary" icon="notes" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="tertiary" icon="warning" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="ghost" icon="info" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="delete" icon="attention" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="primary" icon="file-new" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="secondary" icon="notes" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="tertiary" icon="warning" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="ghost" icon="info" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="delete" icon="attention" size="standard"></bds-button-icon>
                 </bds-grid>
 
                 <bds-grid direction="column">
@@ -147,21 +149,22 @@ export class TestComponent {
                   ></bds-progress-bar>
                 </bds-grid>
 
-                <bds-input maxlength={30} counter-length icon="email" label="Name"></bds-input>
-                <bds-input is-textarea helper-message="mensagem de ajuda" rows={2}></bds-input>
-                <bds-input danger error-message="esta errado" label="Name"></bds-input>
+                <bds-input disabled maxlength={30} counter-length icon="email" label="Name"></bds-input>
+                <bds-input disabled is-textarea helper-message="mensagem de ajuda" rows={2}></bds-input>
+                <bds-input disabled error-message="esta errado" label="Name"></bds-input>
                 <bds-input disabled value="Action descripition"></bds-input>
                 <bds-input value="Action descripition"></bds-input>
 
-                <bds-input-password value="password" danger error-message="Oops"></bds-input-password>
+                <bds-input-password disabled value="password" error-message="Oops"></bds-input-password>
 
                 <bds-input-phone-number
+                  disabled
                   required
                   required-error-message="This input is required."
                   number-error-message="Only numbers are allowed."
                 ></bds-input-phone-number>
 
-                <bds-select danger error-message="teste" value="2">
+                <bds-select disabled error-message="teste" value="2">
                   <bds-select-option value="1">Millie Bobby</bds-select-option>
                   <bds-select-option value="2">Finn Wolfhard</bds-select-option>
                   <bds-select-option value="3">David Harbour</bds-select-option>
@@ -171,6 +174,7 @@ export class TestComponent {
                 </bds-select>
 
                 <bds-input-chips
+                  disabled
                   type="email"
                   danger={true}
                   error-message="teste"
@@ -321,7 +325,7 @@ export class TestComponent {
                   <bds-chip-clickable color="outline">outline</bds-chip-clickable>
                 </bds-grid>
 
-                <bds-autocomplete label="Label" icon="warning" value={null} disabled={false} placeholder="Select">
+                <bds-autocomplete label="Label" icon="warning" value={null} disabled={true} placeholder="Select">
                   <bds-select-option value="1">Millie Bobby</bds-select-option>
                   <bds-select-option value="2">Finn Wolfhard</bds-select-option>
                   <bds-select-option value="3">David Harbour</bds-select-option>
@@ -360,27 +364,29 @@ export class TestComponent {
                 </bds-grid>
 
                 <bds-grid gap="1">
-                  <bds-button size="standard" variant="primary">
+                  <bds-button disabled size="standard" variant="primary">
                     Button primary
                   </bds-button>
-                  <bds-button size="short" variant="secondary">
+                  <bds-button disabled size="short" variant="secondary">
                     Button secondary
                   </bds-button>
-                  <bds-button icon="file-new" variant="tertiary">
+                  <bds-button disabled icon="file-new" variant="tertiary">
                     Button tertiary
                   </bds-button>
-                  <bds-button arrow variant="ghost">
+                  <bds-button disabled arrow variant="ghost">
                     Button ghost
                   </bds-button>
-                  <bds-button variant="delete">Button delete</bds-button>
+                  <bds-button disabled variant="delete">
+                    Button delete
+                  </bds-button>
                 </bds-grid>
 
                 <bds-grid gap="1">
-                  <bds-button-icon variant="primary" icon="file-new" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="secondary" icon="notes" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="tertiary" icon="warning" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="ghost" icon="info" size="standard"></bds-button-icon>
-                  <bds-button-icon variant="delete" icon="attention" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="primary" icon="file-new" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="secondary" icon="notes" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="tertiary" icon="warning" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="ghost" icon="info" size="standard"></bds-button-icon>
+                  <bds-button-icon disabled variant="delete" icon="attention" size="standard"></bds-button-icon>
                 </bds-grid>
 
                 <bds-grid>

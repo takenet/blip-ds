@@ -160,16 +160,18 @@ $select-options-max-height: 250px;
     }
 
     &-disabled {
+      opacity: 50%;
+      pointer-events: none;
       cursor: not-allowed;
       @include input-theme(
         'disabled',
-        $color-content-disable,
+        $color-primary,
         $color-surface-3,
-        $color-content-disable,
-        $color-content-disable,
-        $color-content-ghost,
-        $color-surface-3,
-        $color-surface-3
+        $color-content-default,
+        $color-content-default,
+        $color-border-1,
+        $color-primary,
+        $color-info
       );
     }
   }
@@ -262,7 +264,6 @@ $select-options-max-height: 250px;
   display: flex;
   border-radius: 8px;
   position: relative;
-  cursor: pointer;
   outline: none;
   min-width: 200px;
 
@@ -282,6 +283,7 @@ $select-options-max-height: 250px;
     justify-content: space-evenly;
     padding-right: 16px;
     padding-left: 12px;
+    cursor: pointer;
   }
 
   &__country-code {
