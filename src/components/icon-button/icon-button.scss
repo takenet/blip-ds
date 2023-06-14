@@ -9,8 +9,9 @@ $icon-button-padding: 8px;
 }
 
 @mixin disable-button($background, $color: null, $border: null) {
+  opacity: 50%;
+  pointer-events: none;
   cursor: not-allowed;
-  background: $background;
 
   @if ($color) {
     color: $color;

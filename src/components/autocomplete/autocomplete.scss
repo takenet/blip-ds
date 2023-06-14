@@ -117,7 +117,7 @@ $select-options-max-height: 250px;
       @include input-theme(
         'primary',
         $color-primary,
-        $color-surface-3,
+        $color-surface-1,
         $color-content-default,
         $color-content-default,
         $color-border-1,
@@ -140,16 +140,18 @@ $select-options-max-height: 250px;
     }
 
     &-disabled {
+      opacity: 50%;
+      pointer-events: none;
       cursor: not-allowed;
       @include input-theme(
         'disabled',
-        $color-content-disable,
-        $color-surface-3,
-        $color-content-disable,
-        $color-content-disable,
-        $color-content-ghost,
-        $color-surface-3,
-        $color-surface-3
+        $color-primary,
+        $color-surface-1,
+        $color-content-default,
+        $color-content-default,
+        $color-border-1,
+        $color-primary,
+        $color-info
       );
     }
   }

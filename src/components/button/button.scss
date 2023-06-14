@@ -23,7 +23,7 @@ $button-padding-left-right: 16px;
 }
 
 @mixin disable-button($background, $color: null, $border: null) {
-  background: $background;
+  opacity: 50%;
   pointer-events: none;
 
   @if ($color) {
@@ -160,7 +160,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button($color-disabled-bg, $color-disabled-text);
+      @include disable-button($color-primary, $color-content-bright);
     }
   }
 
