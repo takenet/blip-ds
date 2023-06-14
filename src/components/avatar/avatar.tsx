@@ -4,7 +4,7 @@ import { IconSize } from '../icon/icon-interface';
 import { colorLetter } from './color-letter';
 
 export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
-export type colors = 'system' | 'success' | 'warning' | 'error' | 'info' | 'surface';
+export type colors = 'colorLetter' | 'system' | 'success' | 'warning' | 'error' | 'info' | 'surface';
 
 @Component({
   tag: 'bds-avatar',
@@ -33,7 +33,7 @@ export class BdsAvatar {
    * Color, Entered as one of the color. Can be one of:
    * 'system', 'success', 'warning', 'error', 'info'.
    */
-  @Prop() color?: colors = null;
+  @Prop() color?: colors = 'colorLetter';
   /**
    * Upload, Serve to enable upload function on avatar.
    */
@@ -101,7 +101,7 @@ export class BdsAvatar {
   };
 
   private avatarBgColor = (letter: string) => {
-    if (this.color) {
+    if (this.color != 'colorLetter') {
       return this.color;
     } else if (letter) {
       const currentColor = colorLetter.find((item) => item.value === letter);
