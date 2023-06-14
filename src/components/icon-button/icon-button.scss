@@ -8,7 +8,7 @@ $icon-button-padding: 8px;
   height: $size;
 }
 
-@mixin disable-button($background, $color: null, $border: null) {
+@mixin disable-button( $color: null, $border: null) {
   opacity: 50%;
   pointer-events: none;
   cursor: not-allowed;
@@ -23,7 +23,6 @@ $icon-button-padding: 8px;
 
   &:hover,
   &:active {
-    background: $background;
 
     @if ($color) {
       color: $color;
@@ -90,7 +89,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button($color-disabled-delete, $color-disabled-wrong);
+    @include disable-button( $color-disabled-wrong);
   }
 }
 
@@ -103,7 +102,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+    @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
@@ -116,7 +115,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+    @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
