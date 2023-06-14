@@ -34,11 +34,12 @@ $input_fixed: 140px;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
 
+  @if ($name == 'disabled') {
+    background: $color-surface-2;
+  }
+  
   @include input-border($color-input-border);
 
-  @if ($name == 'disabled') {
-    background: $color-surface-3;
-  }
 
   // States
   &:hover {

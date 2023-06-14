@@ -46,11 +46,11 @@ $select-options-max-height: 250px;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
 
-  @include input-border($color-input-border);
-
   @if ($name == 'disabled') {
-    background: $color-surface-3;
+    background: $color-surface-2;
   }
+
+  @include input-border($color-input-border);
 
   // States
   &:hover {
