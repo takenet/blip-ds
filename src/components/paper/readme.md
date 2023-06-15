@@ -9,6 +9,7 @@
 
 | Property    | Attribute   | Description                                                                        | Type                                   | Default    |
 | ----------- | ----------- | ---------------------------------------------------------------------------------- | -------------------------------------- | ---------- |
+| `border`    | `border`    | Prop for set the border of the component.                                          | `boolean`                              | `false`    |
 | `dataTest`  | `data-test` | Data test is the prop to specifically test the component action object.            | `string`                               | `null`     |
 | `elevation` | `elevation` | Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary'; | `"primary" \| "secondary" \| "static"` | `'static'` |
 | `height`    | `height`    | Prop for set the height of the component.                                          | `string`                               | `null`     |

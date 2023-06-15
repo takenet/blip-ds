@@ -25,7 +25,7 @@ export class TestComponent {
         </bds-grid>
         <bds-grid xxs="6" padding="r-1">
           <bds-theme-provider theme="light">
-            <bds-paper>
+            <bds-paper border>
               <bds-grid padding="2" gap="3" direction="column">
                 <bds-typo variant="fs-40" bold="bold" class="titulo">
                   Titulo de teste light
@@ -58,7 +58,7 @@ export class TestComponent {
                   <bds-chip-clickable color="outline">outline</bds-chip-clickable>
                 </bds-grid>
 
-                <bds-autocomplete label="Label" icon="warning" value={null} disabled={true} placeholder="Select">
+                <bds-autocomplete label="Label" icon="warning" value={null} disabled={false} placeholder="Select">
                   <bds-select-option value="1">Millie Bobby</bds-select-option>
                   <bds-select-option value="2">Finn Wolfhard</bds-select-option>
                   <bds-select-option value="3">David Harbour</bds-select-option>
@@ -149,11 +149,18 @@ export class TestComponent {
                   ></bds-progress-bar>
                 </bds-grid>
 
-                <bds-input disabled maxlength={30} counter-length icon="email" label="Name"></bds-input>
-                <bds-input disabled is-textarea helper-message="mensagem de ajuda" rows={2}></bds-input>
-                <bds-input disabled error-message="esta errado" label="Name"></bds-input>
-                <bds-input disabled value="Action descripition"></bds-input>
-                <bds-input value="Action descripition"></bds-input>
+                <bds-input label="teste de label" disabled maxlength={30} counter-length icon="email"></bds-input>
+                <bds-input
+                  label="teste de label"
+                  icon="warning"
+                  disabled
+                  is-textarea
+                  helper-message="mensagem de ajuda"
+                  rows={2}
+                ></bds-input>
+                <bds-input label="teste de label" icon="warning" disabled error-message="esta errado"></bds-input>
+                <bds-input label="teste de label" icon="warning" disabled value="Action descripition"></bds-input>
+                <bds-input success label="teste de label" icon="warning" value="Action descripition"></bds-input>
 
                 <bds-input-password disabled value="password" error-message="Oops"></bds-input-password>
 
@@ -164,7 +171,7 @@ export class TestComponent {
                   number-error-message="Only numbers are allowed."
                 ></bds-input-phone-number>
 
-                <bds-select disabled error-message="teste" value="2">
+                <bds-select danger icon="warning" error-message="teste" value="2">
                   <bds-select-option value="1">Millie Bobby</bds-select-option>
                   <bds-select-option value="2">Finn Wolfhard</bds-select-option>
                   <bds-select-option value="3">David Harbour</bds-select-option>
@@ -373,7 +380,7 @@ export class TestComponent {
                   <bds-button disabled icon="file-new" variant="tertiary">
                     Button tertiary
                   </bds-button>
-                  <bds-button disabled arrow variant="ghost">
+                  <bds-button arrow variant="ghost">
                     Button ghost
                   </bds-button>
                   <bds-button disabled variant="delete">
@@ -416,11 +423,18 @@ export class TestComponent {
                   ></bds-progress-bar>
                 </bds-grid>
 
-                <bds-input maxlength={30} counter-length icon="email" label="Name"></bds-input>
-                <bds-input is-textarea helper-message="mensagem de ajuda" rows={2}></bds-input>
-                <bds-input danger error-message="esta errado" label="Name"></bds-input>
-                <bds-input disabled value="Action descripition"></bds-input>
-                <bds-input value="Action descripition"></bds-input>
+                <bds-input label="teste de label" disabled maxlength={30} counter-length icon="email"></bds-input>
+                <bds-input
+                  label="teste de label"
+                  icon="warning"
+                  disabled
+                  is-textarea
+                  helper-message="mensagem de ajuda"
+                  rows={2}
+                ></bds-input>
+                <bds-input label="teste de label" icon="warning" disabled error-message="esta errado"></bds-input>
+                <bds-input label="teste de label" icon="warning" disabled value="Action descripition"></bds-input>
+                <bds-input label="teste de label" icon="warning" value="Action descripition"></bds-input>
 
                 <bds-input-password value="password" danger error-message="Oops"></bds-input-password>
 
@@ -430,7 +444,7 @@ export class TestComponent {
                   number-error-message="Only numbers are allowed."
                 ></bds-input-phone-number>
 
-                <bds-select error-message="teste" value="2">
+                <bds-select danger icon="warning" error-message="teste" value="2">
                   <bds-select-option value="1">Millie Bobby</bds-select-option>
                   <bds-select-option value="2">Finn Wolfhard</bds-select-option>
                   <bds-select-option value="3">David Harbour</bds-select-option>
@@ -441,7 +455,7 @@ export class TestComponent {
 
                 <bds-input-chips
                   type="email"
-                  danger={true}
+                  danger={false}
                   error-message="teste"
                   chips='["chip@email.com", "chip2"]'
                 ></bds-input-chips>

@@ -1325,6 +1325,10 @@ export namespace Components {
     }
     interface BdsPaper {
         /**
+          * Prop for set the border of the component.
+         */
+        "border"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -4073,6 +4077,10 @@ declare namespace LocalJSX {
         "startedPage"?: number;
     }
     interface BdsPaper {
+        /**
+          * Prop for set the border of the component.
+         */
+        "border"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */
