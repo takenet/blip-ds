@@ -54,11 +54,6 @@ $select-options-max-height: 250px;
     @include input-border($color-input-primary, $color-input-focus);
   }
 
-  .input__icon {
-    color: $color-input-primary;
-    background-color: $color-input-secondary;
-  }
-
   .input__container {
     padding: 4px 8px 9px;
   }
@@ -134,10 +129,26 @@ $select-options-max-height: 250px;
 
   &--state {
     &-primary {
+
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-primary;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'primary',
         $color-primary,
-        $color-surface-3,
+        $color-surface-1,
         $color-content-default,
         $color-content-default,
         $color-border-1,
@@ -147,12 +158,27 @@ $select-options-max-height: 250px;
     }
 
     &-danger {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-delete;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'danger',
         $color-delete,
         $color-error,
         $color-delete,
-        $color-delete,
+        $color-content-default,
         $color-delete,
         $color-delete,
         $color-error
@@ -163,16 +189,7 @@ $select-options-max-height: 250px;
       opacity: 50%;
       pointer-events: none;
       cursor: not-allowed;
-      @include input-theme(
-        'disabled',
-        $color-primary,
-        $color-surface-3,
-        $color-content-default,
-        $color-content-default,
-        $color-border-1,
-        $color-primary,
-        $color-info
-      );
+      background: $color-surface-2;
     }
   }
 

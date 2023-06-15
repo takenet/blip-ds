@@ -357,7 +357,12 @@ export class Input {
             'input__icon--large': !!this.label,
           }}
         >
-          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
+          <bds-icon
+            class="input__icon--color"
+            size={this.label ? 'medium' : 'small'}
+            name={this.icon}
+            color="inherit"
+          ></bds-icon>
         </div>
       )
     );
