@@ -279,6 +279,7 @@ $select-options-max-height: 250px;
 .select {
   position: relative;
   outline: none;
+  overflow: hidden;
 
   &__icon {
     color: $color-content-ghost;

@@ -20,12 +20,6 @@ $select-options-max-height: 250px;
   line-height: $line-hight-plus;
 }
 
-@mixin input-text {
-  font-family: $font-family;
-  font-size: $fs-14;
-  line-height: $line-hight-plus;
-}
-
 @mixin input-border($color, $boxShadow: false) {
   border: 1px solid $color;
   box-sizing: border-box;
@@ -224,6 +218,7 @@ $select-options-max-height: 250px;
       @include reset-input();
       @include input-text();
       @include custom-scroll();
+      width: 100%;
 
       resize: none;
       cursor: inherit;
@@ -266,6 +261,10 @@ $select-options-max-height: 250px;
 .select {
   position: relative;
   outline: none;
+
+  & .element_input {
+    overflow: hidden;
+  }
 
   &__icon {
     color: $color-content-ghost;
