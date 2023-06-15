@@ -62,7 +62,7 @@ export class Tooltip {
   }
 
   componentWillLoad() {
-    this.textVerify = this.tooltipText.replace(/<br>/gi, '\r\n');
+    this.textVerify = this.tooltipText ? this.tooltipText.replace(/<br>/gi, '\r\n') : '';
   }
 
   render() {
