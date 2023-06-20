@@ -60,6 +60,7 @@ export class BdsModal implements ComponentInterface {
 
   private onClickCloseButtom = () => {
     this.open = false;
+    this.bdsModalChanged.emit({ modalStatus: 'closed' });
   };
 
   handleKeyDown(event) {

@@ -219,7 +219,6 @@ $select-options-max-height: 250px;
 
     &__wrapper {
       display: flex;
-      flex-wrap: wrap;
     }
 
     &__wrapper__chips {
@@ -313,7 +312,7 @@ $select-options-max-height: 250px;
 
     background: $color-surface-2;
     width: 100%;
-    max-height: 250px;
+    max-height: 200px;
     position: absolute;
     top: 99%;
     left: 0;
