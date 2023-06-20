@@ -8,7 +8,7 @@ $input_expanded: 100%;
 $input_fixed: 140px;
 $select-options-box-shadow: 0px 2px 8px rgba(96, 123, 153, 0.3);
 $select-options-radius: 8px;
-$select-options-max-height: 250px;
+$select-options-max-height: 200px;
 
 :host {
   display: block;
@@ -308,7 +308,7 @@ $select-options-max-height: 250px;
 
     background: $color-surface-2;
     width: 100%;
-    max-height: 250px;
+    max-height: 200px;
     position: absolute;
     left: 0;
     border-radius: $select-options-radius;

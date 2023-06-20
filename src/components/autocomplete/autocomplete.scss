@@ -331,7 +331,8 @@ $select-options-max-height: 250px;
 
     background: $color-surface-2;
     width: 100%;
-    max-height: 250px;
+    max-height: 200px;
+    height: fit-content;
     position: absolute;
     left: 0;
     border-radius: $select-options-radius;
