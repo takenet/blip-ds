@@ -16,6 +16,44 @@ export class TestComponent {
   render() {
     return (
       <bds-grid xxs="12" direction="row" padding="3" flex-wrap="wrap">
+        <bds-modal open={true} close-button={true}>
+          <div style={{ margin: 'auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', paddingBottom: '24px' }}>
+              <div style={{ paddingRight: '20px', width: '200px', height: '200px' }}>
+                <bds-illustration type="spots" name="ticket"></bds-illustration>
+              </div>
+              <div style={{ width: 'calc(100% - 200px)' }}>
+                <div style={{ display: 'flex', width: 'auto', marginBottom: '16px' }}>
+                  <bds-typo variant="fs-20" bold="semi-bold">
+                    O que é o Histórico de tickets?
+                  </bds-typo>
+                </div>
+                <div style={{ display: 'flex', width: '100%', marginBottom: '16px' }}>
+                  <bds-autocomplete label="teste" placeholder="Select">
+                    <bds-select-option value="1">Millie Bobby</bds-select-option>
+                    <bds-select-option value="2">Finn Wolfhard</bds-select-option>
+                    <bds-select-option value="3">David Harbour</bds-select-option>
+                    <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
+                    <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
+                    <bds-select-option value="6">Noah Schnapp</bds-select-option>
+                    <bds-select-option value="36">David Harbour</bds-select-option>
+                    <bds-select-option value="47">Gaten Matarazzo</bds-select-option>
+                    <bds-select-option value="57">Caleb McLaughlin</bds-select-option>
+                    <bds-select-option value="66">Noah Schnapp</bds-select-option>
+                  </bds-autocomplete>
+                </div>
+              </div>
+            </div>
+          </div>
+          <bds-modal-action>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+              <bds-button icon="video" variant="secondary">
+                Tutorial
+              </bds-button>
+              <bds-button>Ok, entendi</bds-button>
+            </div>
+          </bds-modal-action>
+        </bds-modal>
         <bds-grid xxs="12">
           <div class="titulo">
             <bds-typo variant="fs-40" bold="bold">

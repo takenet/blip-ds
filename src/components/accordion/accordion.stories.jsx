@@ -6,25 +6,46 @@ export default {
   parameters: {
     notes: { markdown: readme },
   },
+  argTypes: {
+    theme: {
+      options: ['light', 'dark'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 const paragraph =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur leo ligula, ac auctor tortor scelerisque sit amet. Mauris aliquam, nunc et ornare tincidunt, dui risus lobortis tortor, ut dapibus ex est at erat. Vestibulum at lacinia enim, non auctor leo. Vestibulum quis felis quam. Morbi ornare, odio ac egestas tempor, tellus odio imperdiet nunc, eget efficitur lorem ligula eget dolor.';
+  'Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo associados.';
 
-const accTemplate = (args) => {
+
+export const accordionDefault = (args) => {
   return (
-    <bds-accordion>
-      <bds-accordion-header
-        accordion-title={args.title}
-        icon={args.icon}
-        avatar-name={args.avatarName}
-        avatar-thumb={args.avatarThumb}
-      ></bds-accordion-header>
-      <bds-accordion-body>
-        <bds-typo variant="fs-16">{args.content}</bds-typo>
-      </bds-accordion-body>
-    </bds-accordion>
+    <bds-theme-provider theme={args.theme}>
+        <bds-paper height="500px">
+          <bds-grid padding="2" justify-content="center">
+            <bds-accordion>
+            <bds-accordion-header
+              accordion-title={args.title}
+              icon={args.icon}
+              avatar-name={args.avatarName}
+              avatar-thumb={args.avatarThumb}
+            ></bds-accordion-header>
+            <bds-accordion-body>
+              <bds-typo variant="fs-16">{args.content}</bds-typo>
+            </bds-accordion-body>
+          </bds-accordion>
+          </bds-grid>
+        </bds-paper>
+    </bds-theme-provider>
   );
+};
+accordionDefault.args = {
+  title: 'Título do accordion',
+  icon: '',
+  avatarName: '',
+  avatarThumb: '',
+  content: paragraph,
+  theme: 'light'
 };
 
 const groupTemplate = (args) => {
@@ -93,8 +114,7 @@ const groupTemplate = (args) => {
   );
 };
 
-export const Accordion = accTemplate.bind({});
-Accordion.args = { title: 'Title accordion', icon: '', avatarName: '', avatarThumb: '', content: paragraph };
+
 
 export const AccordionSingle = groupTemplate.bind({});
 AccordionSingle.args = {

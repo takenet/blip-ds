@@ -10,19 +10,22 @@
 ### Depends on
 
 - [bds-grid](../grid)
+- [bds-modal](../modal)
+- [bds-illustration](../illustration)
 - [bds-typo](../typo)
+- [bds-autocomplete](../autocomplete)
+- [bds-select-option](../select-option)
+- [bds-modal-action](../modal/modal-action)
+- [bds-button](../button)
 - [bds-theme-provider](../theme-provider)
 - [bds-paper](../paper)
 - [bds-chip-tag](../chip-tag)
 - [bds-chip-selected](../chip-selected)
 - [bds-chip-clickable](../chip-clickable)
-- [bds-autocomplete](../autocomplete)
-- [bds-select-option](../select-option)
 - [bds-stepper](../stepper)
 - [bds-step](../stepper/step)
 - [bds-badge](../badge)
 - [bds-switch](../bds-switch)
-- [bds-button](../button)
 - [bds-button-icon](../icon-button)
 - [bds-progress-bar](../progress-bar)
 - [bds-input](../input)
@@ -36,8 +39,6 @@
 - [bds-loading-spinner](../loading-spinner)
 - [bds-radio-group](../radio-group)
 - [bds-radio](../radio)
-- [bds-modal](../modal)
-- [bds-modal-action](../modal/modal-action)
 - [bds-dropdown](../dropdown)
 - [bds-list](../list)
 - [bds-list-item](../list)
@@ -56,19 +57,22 @@
 ```mermaid
 graph TD;
   bds-test-component --> bds-grid
+  bds-test-component --> bds-modal
+  bds-test-component --> bds-illustration
   bds-test-component --> bds-typo
+  bds-test-component --> bds-autocomplete
+  bds-test-component --> bds-select-option
+  bds-test-component --> bds-modal-action
+  bds-test-component --> bds-button
   bds-test-component --> bds-theme-provider
   bds-test-component --> bds-paper
   bds-test-component --> bds-chip-tag
   bds-test-component --> bds-chip-selected
   bds-test-component --> bds-chip-clickable
-  bds-test-component --> bds-autocomplete
-  bds-test-component --> bds-select-option
   bds-test-component --> bds-stepper
   bds-test-component --> bds-step
   bds-test-component --> bds-badge
   bds-test-component --> bds-switch
-  bds-test-component --> bds-button
   bds-test-component --> bds-button-icon
   bds-test-component --> bds-progress-bar
   bds-test-component --> bds-input
@@ -82,8 +86,6 @@ graph TD;
   bds-test-component --> bds-loading-spinner
   bds-test-component --> bds-radio-group
   bds-test-component --> bds-radio
-  bds-test-component --> bds-modal
-  bds-test-component --> bds-modal-action
   bds-test-component --> bds-dropdown
   bds-test-component --> bds-list
   bds-test-component --> bds-list-item
@@ -97,6 +99,14 @@ graph TD;
   bds-test-component --> bds-avatar-group
   bds-test-component --> bds-tooltip
   bds-test-component --> bds-avatar
+  bds-modal --> bds-icon
+  bds-autocomplete --> bds-icon
+  bds-autocomplete --> bds-typo
+  bds-autocomplete --> bds-select-option
+  bds-select-option --> bds-typo
+  bds-button --> bds-icon
+  bds-button --> bds-typo
+  bds-button --> bds-loading-spinner
   bds-chip-tag --> bds-icon
   bds-chip-tag --> bds-typo
   bds-chip-selected --> bds-icon
@@ -106,17 +116,10 @@ graph TD;
   bds-chip-clickable --> bds-typo
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
-  bds-autocomplete --> bds-icon
-  bds-autocomplete --> bds-typo
-  bds-autocomplete --> bds-select-option
-  bds-select-option --> bds-typo
   bds-step --> bds-icon
   bds-step --> bds-typo
   bds-badge --> bds-icon
   bds-badge --> bds-typo
-  bds-button --> bds-icon
-  bds-button --> bds-typo
-  bds-button --> bds-loading-spinner
   bds-button-icon --> bds-icon
   bds-progress-bar --> bds-typo
   bds-input --> bds-icon
@@ -151,7 +154,6 @@ graph TD;
   bds-datepicker-period --> bds-icon
   bds-datepicker-period --> bds-select-option
   bds-radio --> bds-typo
-  bds-modal --> bds-icon
   bds-list --> bds-list-item
   bds-list-item --> bds-chip-clickable
   bds-list-item --> bds-tooltip
