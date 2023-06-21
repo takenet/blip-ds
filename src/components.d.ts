@@ -148,6 +148,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Number to set the minimum width of the menu.
+         */
+        "minWidthMenu"?: number;
+        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | AutocompleteOption[];
@@ -1431,6 +1435,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Number to set the minimum width of the menu.
+         */
+        "minWidthMenu"?: number;
+        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | Option[];
@@ -1517,6 +1525,10 @@ export namespace Components {
           * Set maximum length value for the chip content
          */
         "maxlength"?: number;
+        /**
+          * Number to set the minimum width of the menu.
+         */
+        "minWidthMenu"?: number;
         /**
           * Used for add prefix on new option select.
          */
@@ -2711,6 +2723,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Number to set the minimum width of the menu.
+         */
+        "minWidthMenu"?: number;
         /**
           * Emitted when the select loses focus.
          */
@@ -4194,6 +4210,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Number to set the minimum width of the menu.
+         */
+        "minWidthMenu"?: number;
+        /**
           * Emitted when the select loses focus.
          */
         "onBdsBlur"?: (event: BdsSelectCustomEvent<void>) => void;
@@ -4283,6 +4303,10 @@ declare namespace LocalJSX {
           * Set maximum length value for the chip content
          */
         "maxlength"?: number;
+        /**
+          * Number to set the minimum width of the menu.
+         */
+        "minWidthMenu"?: number;
         /**
           * Used for add prefix on new option select.
          */

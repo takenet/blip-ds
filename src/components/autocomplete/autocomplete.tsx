@@ -95,6 +95,11 @@ export class BdsAutocomplete {
   @Prop() clearIconOnFocus?: boolean = false;
 
   /**
+   * Number to set the minimum width of the menu.
+   */
+  @Prop() minWidthMenu?: number = null;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -433,6 +438,8 @@ export class BdsAutocomplete {
   }
 
   render(): HTMLElement {
+    const minWidth = this.minWidthMenu > 360 ? 360 : this.minWidthMenu;
+
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
         <div
@@ -479,6 +486,7 @@ export class BdsAutocomplete {
         </div>
         <div
           ref={(el) => this.refDropdown(el)}
+          style={{ minWidth: `${minWidth}px` }}
           class={{
             select__options: true,
             'select__options--open': this.isOpen,
