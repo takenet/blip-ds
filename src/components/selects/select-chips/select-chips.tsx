@@ -141,14 +141,10 @@ export class SelectChips {
   @Prop() placeholder?: string = '';
 
   /**
-   * Set the placement of the options menu. Can be 'bottom' or 'top'.
+   * Set the placement of the options. Can be 'bottom' or 'top'.
    */
   @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'bottom';
 
-  /**
-   * Number to set the minimum width of the menu.
-   */
-  @Prop() minWidthMenu?: number = null;
   /**
    * Data test is the prop to specifically test the component action object.
    */
@@ -698,7 +694,6 @@ export class SelectChips {
 
   render() {
     const isPressed = this.isPressed && !this.disabled;
-    const minWidth = this.minWidthMenu > 360 ? 360 : this.minWidthMenu;
 
     let internalOptions: Option[] = [];
     if (this.options) {
@@ -761,7 +756,6 @@ export class SelectChips {
         </div>
         <div
           ref={(el) => this.refDropdown(el)}
-          style={{ minWidth: `${minWidth}px` }}
           class={{
             select__options: true,
             'select__options--open': this.isOpen,

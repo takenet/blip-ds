@@ -85,7 +85,7 @@ export class BdsAutocomplete {
   @Prop() placeholder?: string = '';
 
   /**
-   * Set the placement of the options menu. Can be 'bottom' or 'top'.
+   * Set the placement of the options. Can be 'bottom' or 'top'.
    */
   @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'bottom';
 
@@ -93,11 +93,6 @@ export class BdsAutocomplete {
    * If true, the X icon will appear only when component is focused.
    */
   @Prop() clearIconOnFocus?: boolean = false;
-
-  /**
-   * Number to set the minimum width of the menu.
-   */
-  @Prop() minWidthMenu?: number = null;
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -438,8 +433,6 @@ export class BdsAutocomplete {
   }
 
   render(): HTMLElement {
-    const minWidth = this.minWidthMenu > 360 ? 360 : this.minWidthMenu;
-
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
         <div
@@ -486,7 +479,6 @@ export class BdsAutocomplete {
         </div>
         <div
           ref={(el) => this.refDropdown(el)}
-          style={{ minWidth: `${minWidth}px` }}
           class={{
             select__options: true,
             'select__options--open': this.isOpen,

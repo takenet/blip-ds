@@ -148,15 +148,11 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Number to set the minimum width of the menu.
-         */
-        "minWidthMenu"?: number;
-        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | AutocompleteOption[];
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Set the placement of the options. Can be 'bottom' or 'top'.
          */
         "optionsPosition"?: AutocompleteOptionsPositionType;
         /**
@@ -1435,15 +1431,11 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Number to set the minimum width of the menu.
-         */
-        "minWidthMenu"?: number;
-        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | Option[];
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Set the placement of the options. Can be 'bottom' or 'top'.
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
@@ -1526,10 +1518,6 @@ export namespace Components {
          */
         "maxlength"?: number;
         /**
-          * Number to set the minimum width of the menu.
-         */
-        "minWidthMenu"?: number;
-        /**
           * Used for add prefix on new option select.
          */
         "newPrefix"?: string;
@@ -1542,7 +1530,7 @@ export namespace Components {
          */
         "options"?: string | Option[];
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Set the placement of the options. Can be 'bottom' or 'top'.
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
@@ -2724,10 +2712,6 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Number to set the minimum width of the menu.
-         */
-        "minWidthMenu"?: number;
-        /**
           * Emitted when the select loses focus.
          */
         "onBdsBlur"?: (event: BdsAutocompleteCustomEvent<void>) => void;
@@ -2756,7 +2740,7 @@ declare namespace LocalJSX {
          */
         "options"?: string | AutocompleteOption[];
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Set the placement of the options. Can be 'bottom' or 'top'.
          */
         "optionsPosition"?: AutocompleteOptionsPositionType;
         /**
@@ -4210,10 +4194,6 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Number to set the minimum width of the menu.
-         */
-        "minWidthMenu"?: number;
-        /**
           * Emitted when the select loses focus.
          */
         "onBdsBlur"?: (event: BdsSelectCustomEvent<void>) => void;
@@ -4234,7 +4214,7 @@ declare namespace LocalJSX {
          */
         "options"?: string | Option[];
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Set the placement of the options. Can be 'bottom' or 'top'.
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
@@ -4304,10 +4284,6 @@ declare namespace LocalJSX {
          */
         "maxlength"?: number;
         /**
-          * Number to set the minimum width of the menu.
-         */
-        "minWidthMenu"?: number;
-        /**
           * Used for add prefix on new option select.
          */
         "newPrefix"?: string;
@@ -4348,7 +4324,7 @@ declare namespace LocalJSX {
          */
         "options"?: string | Option[];
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Set the placement of the options. Can be 'bottom' or 'top'.
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
