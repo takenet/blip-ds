@@ -17,7 +17,6 @@ export default {
 const paragraph =
   'Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo associados.';
 
-
 export const accordionDefault = (args) => {
   return (
     <bds-theme-provider theme={args.theme}>
@@ -39,6 +38,7 @@ export const accordionDefault = (args) => {
     </bds-theme-provider>
   );
 };
+
 accordionDefault.args = {
   title: 'Título do accordion',
   icon: '',

@@ -139,7 +139,7 @@ export class TestComponent {
                 </bds-grid>
 
                 <bds-grid gap="1">
-                  <bds-button disabled size="standard" variant="primary">
+                  <bds-button size="standard" variant="primary">
                     Button primary
                   </bds-button>
                   <bds-button disabled size="short" variant="secondary">

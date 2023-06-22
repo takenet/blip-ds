@@ -1,18 +1,99 @@
-import React from 'react';
-
+import { useEffect } from 'react';
 import readme from './readme.md';
 
 export default {
   title: 'Button',
+  tags: ['autodocs'],
   parameters: {
     notes: { markdown: readme },
   },
+  argTypes: {
+    variant: {
+      table: {
+        defaultValue: { summary: 'primary'}
+      },
+      description: 'Escolha o estilo do botão',
+      options: ['primary', 'secondary', 'tertiary', 'delete'],
+      control: { type: 'select' },
+    },
+    text: { control: 'text' },
+    disabled: {
+      control: 'boolean',
+    },
+    size: {
+      options: ['standard', 'short'],
+      control: { type: 'select' },
+    },
+    arrow: {
+      control: { type: 'boolean' },
+    },
+    type: {
+      options: ['button', 'submit', 'reset'],
+      control: { type: 'select' },
+    },
+    typeIcon: {
+      options: ['icon', 'logo', 'emoji'],
+      control: { type: 'select' },
+    },
+    loading: {
+      control: { type: 'boolean' },
+    },
+    loadingColor: {
+      options: ['light', 'main'],
+      control: { type: 'select' },
+    },
+  },
+};
+
+
+
+
+export const button = (args) => {
+  useEffect(() => {
+  const botao = document.getElementById('btn');
+  botao.addEventListener('bdsClick', (event) => {
+    console.log(event);
+  })
+})
+
+  return (
+      <bds-button
+      id="btn"
+      variant={args.variant}
+      size={args.size}
+      disabled={args.disabled}
+      icon={args.icon}
+      arrow={args.arrow}
+      type={args.type}
+      type-icon={args.typeIcon}
+      bds-loading={args.loading}
+      bds-loading-color={args.loadingColor}
+      dataTest={args.dataTest}
+    >
+      {args.text}
+    </bds-button>
+    
+  );
+};
+button.args = {
+  variant: 'primary',
+  text: 'button text',
+  disabled: 'false',
+  size: 'standard',
+  typeIcon: 'icon',
+  icon: '',
+  arrow: 'false',
+  type: 'button',
+  loading: 'false',
+  loadingColor: 'light',
+  dataTest: '',
 };
 
 const defaultButtonStyle = {
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   alignItems: 'center',
+  gap: '16px',
 };
 
 const spaceBetween = {
