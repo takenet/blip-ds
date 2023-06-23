@@ -229,6 +229,16 @@
     "name": "China",
     "isoCode": "CN / CHN"
   },
+  "chile-flag": {
+    "code": "+56",
+    "name": "Chile",
+    "isoCode": "CL / CHL"
+  },
+  "chipre-flag": {
+    "code": "+357",
+    "name": "Chipre",
+    "isoCode": "CY / CYP"
+  },
   "singapore-flag": {
     "code": "+65",
     "name": "Cingapura",
@@ -433,6 +443,11 @@
     "code": "+592",
     "name": "Guiana",
     "isoCode": "GY / GUY"
+  },
+  "french-guyana-flag": {
+    "code": "+594",
+    "name": "Guiana Francesa",
+    "isoCode": "GQ / GNQ"
   },
   "haiti-flag": {
     "code": "+509",
@@ -893,6 +908,11 @@
     "code": "+242",
     "name": "República do congo",
     "isoCode": "CG / COG"
+  },
+  "democratic-republic-of-congo-flag": {
+    "code": "+242",
+    "name": "República Democratica do congo",
+    "isoCode": "CD / COD"
   },
   "reunion-flag": {
     "code": "+262",
