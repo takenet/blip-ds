@@ -6,12 +6,6 @@ export default {
   parameters: {
     notes: { markdown: readme },
   },
-  argTypes: {
-    theme: {
-      options: ['light', 'dark'],
-      control: { type: 'radio' },
-    },
-  },
 };
 
 const paragraph =
@@ -19,8 +13,6 @@ const paragraph =
 
 export const accordionDefault = (args) => {
   return (
-    <bds-theme-provider theme={args.theme}>
-        <bds-paper height="500px">
           <bds-grid padding="2" justify-content="center">
             <bds-accordion>
             <bds-accordion-header
@@ -34,8 +26,6 @@ export const accordionDefault = (args) => {
             </bds-accordion-body>
           </bds-accordion>
           </bds-grid>
-        </bds-paper>
-    </bds-theme-provider>
   );
 };
 
@@ -45,7 +35,6 @@ accordionDefault.args = {
   avatarName: '',
   avatarThumb: '',
   content: paragraph,
-  theme: 'light'
 };
 
 const groupTemplate = (args) => {
