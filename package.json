@@ -84,7 +84,7 @@
   "dependencies": {
     "@babel/preset-react": "^7.17.12",
     "autoprefixer": "^10.4.7",
-    "blip-tokens": "^1.60.0",
+    "blip-tokens": "^1.63.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
