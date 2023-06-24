@@ -46,9 +46,8 @@ $input_fixed: 140px;
   @if ($name == 'disabled') {
     background: $color-surface-2;
   }
-  
-  @include input-border($color-input-border);
 
+  @include input-border($color-input-border);
 
   // States
   &:hover {
@@ -131,7 +130,6 @@ $input_fixed: 140px;
 
   &--state {
     &-primary {
-
       .input__icon {
         position: relative;
         &::before {
@@ -282,7 +280,7 @@ $input_fixed: 140px;
       @include reset-input();
       @include input-text();
       @include custom-scroll();
-
+      width: 100%;
       resize: none;
       cursor: inherit;
     }
