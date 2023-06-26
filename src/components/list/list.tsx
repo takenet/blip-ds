@@ -26,7 +26,7 @@ export class List {
   /**
    * The Data of the list
    * Should be passed this way:
-   * data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]'
+   * data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]'
    * Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
    */
   @Prop({ mutable: true, reflect: true }) data?: string | Data[];
@@ -190,6 +190,7 @@ export class List {
                 secondary-text={item.secondaryText}
                 avatar-name={item.avatarName}
                 avatar-thumbnail={item.avatarThumbnail}
+                checked={item.checked}
                 icon={item.icon}
                 chips={item.chips}
                 actionsButtons={item.actionsButtons}

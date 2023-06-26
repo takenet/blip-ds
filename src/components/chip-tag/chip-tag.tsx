@@ -31,9 +31,11 @@ export class ChipTag {
               <bds-icon size="x-small" name={this.icon}></bds-icon>
             </div>
           )}
-          <bds-typo class="chip_tag--text" variant="fs-12" bold="bold">
-            <slot></slot>
-          </bds-typo>
+          <div class={this.icon ? `chip_tag--container-text--half` : `chip_tag--container-text--full`}>
+            <bds-typo no-wrap="true" class="chip_tag--text" variant="fs-12" bold="bold">
+              <slot></slot>
+            </bds-typo>
+          </div>
         </div>
       </Host>
     );

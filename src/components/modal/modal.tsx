@@ -58,6 +58,17 @@ export class BdsModal implements ComponentInterface {
     this.bdsModalChanged.emit({ modalStatus: 'closed' });
   };
 
+  private onClickCloseButtom = () => {
+    this.open = false;
+    this.bdsModalChanged.emit({ modalStatus: 'closed' });
+  };
+
+  handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.open = false;
+    }
+  }
+
   render() {
     return (
       <div
@@ -67,9 +78,17 @@ export class BdsModal implements ComponentInterface {
           [`modal__dialog--${this.size}`]: true,
         }}
       >
+        <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
         <div class={{ modal: true, [`modal--${this.size}`]: true }}>
           {this.closeButton && (
-            <bds-icon size="medium" class="close-button" name="close" onClick={this.handleMouseClick} />
+            <bds-icon
+              size="medium"
+              class="close-button"
+              name="close"
+              tabindex="0"
+              onKeyDown={this.handleKeyDown.bind(this)}
+              onClick={this.handleMouseClick}
+            />
           )}
           {this.size == 'fixed' && <slot></slot>}
           {this.size !== 'fixed' && (

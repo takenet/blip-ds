@@ -53,7 +53,6 @@
       display: flex;
       align-items: center;
       width: 100%;
-      
 
       &--left {
         justify-content: flex-start;
@@ -67,12 +66,12 @@
         justify-content: flex-start;
       }
       .slot {
-      display: flex;
-      justify-content: space-between;
-      margin-left: 8px;
-      width: 100%;
-      color: $color-content-default;
-    }
+        display: flex;
+        justify-content: space-between;
+        margin-left: 8px;
+        width: 100%;
+        color: $color-content-default;
+      }
     }
 
     &__action {
@@ -84,7 +83,6 @@
         display: flex;
         margin-left: 8px;
       }
-      
     }
   }
 }

@@ -8,9 +8,10 @@ $icon-button-padding: 8px;
   height: $size;
 }
 
-@mixin disable-button($background, $color: null, $border: null) {
+@mixin disable-button( $color: null, $border: null) {
+  opacity: 50%;
+  pointer-events: none;
   cursor: not-allowed;
-  background: $background;
 
   @if ($color) {
     color: $color;
@@ -22,7 +23,6 @@ $icon-button-padding: 8px;
 
   &:hover,
   &:active {
-    background: $background;
 
     @if ($color) {
       color: $color;
@@ -35,22 +35,10 @@ $icon-button-padding: 8px;
 }
 
 @mixin icon-button-primary {
-  color: $color-neutral-light-snow;
-  background: $color-primary-main;
+  background: $color-primary;
 
-  &:hover {
-    color: $color-neutral-light-snow;
-    background: $color-primary-dark;
-  }
-
-  &:focus {
-    color: $color-neutral-light-snow;
-    background: $color-primary-dark;
-  }
-
-  &:active {
-    color: $color-neutral-light-snow;
-    background: $color-primary-night;
+  .bds-icon {
+    color: $color-content-bright;
   }
 
   &--disabled {
@@ -59,22 +47,11 @@ $icon-button-padding: 8px;
 }
 
 @mixin icon-button-secondary {
-  color: $color-neutral-dark-rooftop;
+  color: $color-content-default;
   background: transparent;
 
-  &:hover {
-    color: $color-primary-main;
-    background: $color-disabled-bg;
-  }
-
-  &:focus {
-    color: $color-primary-main;
-    background: $color-disabled-bg;
-  }
-
-  &:active {
-    color: $color-primary-main;
-    background: $color-hover-light;
+  .bds-icon {
+    color: $color-content-default;
   }
 
   &--disabled {
@@ -101,99 +78,44 @@ $icon-button-padding: 8px;
     cursor: not-allowed;
     color: $color-disabled-text;
     background: $color-disabled-bg;
-
-    &:hover {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
-    }
-
-    &:focus {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
-    }
-
-    &:active {
-      color: $color-disabled-text;
-      background: $color-disabled-bg;
-    }
   }
 }
 
 @mixin icon-button-delete {
-  color: $color-neutral-light-snow;
-  background: $color-extend-reds-delete;
+  background: $color-delete;
 
-  &:hover {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-lipstick;
-  }
-
-  &:focus {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-lipstick;
-  }
-
-  &:active {
-    color: $color-neutral-light-snow;
-    background: $color-extend-reds-dragon;
+  .bds-icon {
+    color: $color-content-bright;
   }
 
   &--disabled {
-    @include disable-button($color-disabled-delete, $color-disabled-wrong);
+    @include disable-button( $color-disabled-wrong);
   }
 }
 
 @mixin icon-button-tertiary {
-  color: $color-primary-main;
   background: transparent;
-  border: 1px solid $color-neutral-medium-wave;
+  border: 1px solid $color-border-1;
 
-  &:hover {
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &:focus {
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
-  }
-
-  &:active {
-    background: $color-hover-light;
-    border: 1px solid $color-primary-main;
-    color: $color-primary-main;
+  .bds-icon {
+    color: $color-content-default;
   }
 
   &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+    @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
 @mixin icon-button-ghost {
-  color: $color-primary-main;
   background: transparent;
-  border: 1px solid $color-primary-main;
+  border: 1px solid $color-border-1;
 
-  &:hover {
-    background: $color-disabled-bg;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &:focus {
-    background: $color-disabled-bg;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
-  }
-
-  &:active {
-    background: $color-hover-light;
-    color: $color-primary-main;
-    border: 1px solid $color-primary-main;
+  .bds-icon {
+    color: $color-content-default;
   }
 
   &--disabled {
-    @include disable-button(transparent, $color-disabled-text, 1px solid $color-disabled-text);
+    @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
@@ -204,6 +126,7 @@ $icon-button-padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -211,6 +134,29 @@ $icon-button-padding: 8px;
 
   border-radius: $icon-button-border-radius;
   padding: $icon-button-padding;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 0;
+    border-radius: $icon-button-border-radius;
+  }
+  &:hover {
+    &::before {
+      background-color: $color-hover;
+    }
+  }
+
+  &:active {
+    &::before {
+      background-color: $color-pressed;
+    }
+  }
 
   & * {
     pointer-events: none;

@@ -1,0 +1,25 @@
+@import 'node_modules/blip-tokens/build/scss/theme-dark.scss';
+
+$color-brand: var(--color-brand, $color-dark-brand);
+$color-primary: var(--color-primary, $color-dark-primary);
+$color-secondary: var(--color-secondary, $color-dark-secondary);
+$color-surface-1: var(--color-surface-1, $color-dark-surface-1);
+$color-surface-2: var(--color-surface-2, $color-dark-surface-2);
+$color-surface-3: var(--color-surface-3, $color-dark-surface-3);
+$color-surface-4: var(--color-surface-4, $color-dark-surface-4);
+$color-content-default: var(--color-content-default, $color-dark-content-default);
+$color-content-disable: var(--color-content-disable, $color-dark-content-disable);
+$color-content-ghost: var(--color-content-ghost, $color-dark-content-ghost);
+$color-content-bright: var(--color-content-bright, $color-dark-content-bright);
+$color-content-din: var(--color-content-din, $color-dark-content-din);
+$color-info: var(--color-info, $color-dark-info);
+$color-system: var(--color-system, $color-dark-system);
+$color-focus: var(--color-focus, $color-dark-focus);
+$color-success: var(--color-success, $color-dark-success);
+$color-warning: var(--color-warning, $color-dark-warning);
+$color-error: var(--color-error, $color-dark-error);
+$color-delete: var(--color-delete, $color-dark-delete);
+
+//Actions
+$color-hover: var(--color-hover, rgba(255, 255, 255, 0.16));
+$color-pressed: var(--color-pressed, rgba(255, 255, 255, 0.08));

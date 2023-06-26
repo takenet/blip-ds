@@ -7,6 +7,7 @@ export interface Data {
   typeList?: TypeList;
   avatarName?: string;
   avatarThumbnail?: string;
+  checked?: boolean;
   icon?: string;
   chips?: string[];
   actionsButtons?: string[];

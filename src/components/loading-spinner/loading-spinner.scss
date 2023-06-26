@@ -15,7 +15,7 @@
 
 .spinner_background {
   border-radius: 50%;
-  border: 2px solid $color-neutral-medium-wave;
+  border: 2px solid $color-surface-3;
   &_extra-small {
     border-width: 2px;
     width: 16px;
@@ -35,10 +35,10 @@
     box-sizing: border-box;
   }
   &_main {
-    border-color: $color-neutral-medium-wave;
+    border-color: $color-surface-3;
   }
   &_light {
-    border-color: $color-neutral-dark-eclipse;
+    border-color: $color-content-default;
     mix-blend-mode: multiply;
     opacity: 0.32;
   }
@@ -61,10 +61,10 @@
     height: 64px;
   }
   &_main {
-    color: $color-primary-main;
+    color: $color-primary;
   }
   &_light {
-    color: $color-neutral-light-snow;
+    color: $color-surface-3;
   }
 }
 @keyframes rotate {

@@ -193,7 +193,13 @@ export class InputChips {
 
   @Method()
   async add(value: string): Promise<void> {
-    this.setChip(value);
+    this.handleDelimiters();
+    if (value) {
+      this.setChip(value);
+    } else {
+      this.setChip(this.value);
+    }
+    this.value = '';
   }
 
   @Method()
@@ -379,7 +385,7 @@ export class InputChips {
           <bds-chip-clickable
             id={id}
             key={id}
-            color="default"
+            color="outline"
             close={!this.disabled}
             onChipClickableClose={(event) => this.removeChip(event)}
           >
@@ -392,7 +398,7 @@ export class InputChips {
             <bds-chip-clickable
               id={id}
               key={id}
-              color="default"
+              color="outline"
               close={!this.disabled}
               onChipClickableClose={(event) => this.removeChip(event)}
             >
@@ -450,7 +456,9 @@ export class InputChips {
           <div class="input__message__icon">
             <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
           </div>
-          <bds-typo variant="fs-12">{message}</bds-typo>
+          <bds-typo class="input__message__text" variant="fs-12">
+            {message}
+          </bds-typo>
         </div>
       );
     }

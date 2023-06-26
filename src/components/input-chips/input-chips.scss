@@ -43,11 +43,11 @@ $input_fixed: 140px;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
 
-  @include input-border($color-input-border);
-
   @if ($name == 'disabled') {
-    background: $color-surface-3;
+    background: $color-surface-2;
   }
+
+  @include input-border($color-input-border);
 
   // States
   &:hover {
@@ -60,11 +60,6 @@ $input_fixed: 140px;
 
   &.input--pressed {
     @include input-border($color-input-primary, $color-input-focus);
-  }
-
-  .input__icon {
-    color: $color-input-primary;
-    background-color: $color-input-secondary;
   }
 
   .input__container__label {
@@ -135,43 +130,108 @@ $input_fixed: 140px;
 
   &--state {
     &-primary {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-primary;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'primary',
         $color-primary,
-        $color-surface-3,
+        $color-surface-1,
         $color-content-default,
         $color-content-default,
-        $color-surface-3,
+        $color-border-1,
         $color-primary,
         $color-info
       );
     }
 
     &-danger {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-delete;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'danger',
         $color-delete,
         $color-error,
         $color-delete,
-        $color-delete,
+        $color-content-default,
         $color-delete,
         $color-delete,
         $color-error
       );
     }
 
-    &-disabled {
-      cursor: not-allowed;
+    &-success {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-success;
+          z-index: 0;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
-        'disabled',
-        $color-content-disable,
-        $color-surface-3,
-        $color-content-disable,
-        $color-content-disable,
-        $color-surface-3,
-        $color-surface-3,
-        $color-surface-3
+        'success',
+        $color-content-default,
+        $color-success,
+        $color-content-default,
+        $color-content-default,
+        $color-border-1,
+        $color-content-default,
+        $color-success
       );
+    }
+
+    &-disabled {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-primary;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
+      opacity: 50%;
+      pointer-events: none;
+      cursor: not-allowed;
+      background: $color-surface-2;
     }
   }
 
@@ -220,7 +280,7 @@ $input_fixed: 140px;
       @include reset-input();
       @include input-text();
       @include custom-scroll();
-
+      width: 100%;
       resize: none;
       cursor: inherit;
     }
@@ -249,7 +309,12 @@ $input_fixed: 140px;
     }
 
     &--danger {
-      color: $color-delete;
+      .bds-icon {
+        color: $color-delete;
+      }
+      .input__message__text {
+        color: $color-delete;
+      }
     }
   }
 }

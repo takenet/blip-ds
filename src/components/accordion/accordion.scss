@@ -24,9 +24,8 @@
 
   &:hover {
     &::before {
-      background-color: $color-surface-2;
-      opacity: 0.5;
-      mix-blend-mode: multiply;
+      background-color: $color-content-default;
+      opacity: 0.08;
     }
   }
 
@@ -74,9 +73,13 @@
   height: 0;
   overflow: hidden;
   border-bottom: 1px solid $color-surface-3;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: height 0.5s;
+  -moz-transition: height 0.5s;
+  transition: height 0.5s;
+
+  &_isOpen {
+    overflow: visible;
+  }
 
   & .container {
     padding: 8px 24px 48px;

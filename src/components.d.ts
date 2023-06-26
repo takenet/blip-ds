@@ -8,9 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
-import { avatarSize } from "./components/avatar/avatar";
+import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
+import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
@@ -24,6 +25,7 @@ import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
+import { activeMode } from "./components/dropdown/dropdown";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
@@ -44,6 +46,7 @@ import { progressBarColor, progressBarSize } from "./components/progress-bar/pro
 import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { Overflow } from "./components/tabs/tabs-interface";
+import { Themes } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -51,8 +54,13 @@ import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
+        "notStart": () => Promise<void>;
         "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
+        /**
+          * A prop for make the accordion open when is render.
+         */
+        "startOpen"?: boolean;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionBody {
@@ -166,6 +174,10 @@ export namespace Components {
     }
     interface BdsAvatar {
         /**
+          * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
+         */
+        "color"?: colors;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -200,6 +212,28 @@ export namespace Components {
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
+    }
+    interface BdsBadge {
+        /**
+          * If true, actived the pulse animation.
+         */
+        "animation"?: boolean;
+        /**
+          * Set the color of the component.
+         */
+        "color"?: string;
+        /**
+          * Set witch icon will be render inside the component.
+         */
+        "icon"?: string;
+        /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "number"?: number;
+        /**
+          * Set the shape of the component.
+         */
+        "shape"?: Shape;
     }
     interface BdsBanner {
         /**
@@ -535,6 +569,17 @@ export namespace Components {
          */
         "startDate"?: DaysList;
     }
+    interface BdsDropdown {
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "activeMode"?: activeMode;
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "open"?: boolean;
+        "toggle": () => Promise<void>;
+    }
     interface BdsExpansionPanel {
     }
     interface BdsExpansionPanelBody {
@@ -771,6 +816,14 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * Input type. Can be one of: "text", "password", "number" or "email".
          */
         "type"?: InputType;
@@ -986,6 +1039,7 @@ export namespace Components {
         "value"?: string | null;
     }
     interface BdsInputPhoneNumber {
+        "changeCountry": (code: any, isoCode: any, flag: any) => Promise<void>;
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -1042,7 +1096,7 @@ export namespace Components {
     }
     interface BdsList {
         /**
-          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
          */
         "data"?: string | Data[];
         /**
@@ -1072,6 +1126,10 @@ export namespace Components {
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips": string | string[];
+        /**
+          * Clickable. Used to define if the item is clickable or not.
+         */
+        "clickable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -1160,6 +1218,10 @@ export namespace Components {
          */
         "description"?: string;
         /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconLeft"?: string;
@@ -1193,6 +1255,10 @@ export namespace Components {
           * Description. Used to insert a subtitle in the display item.
          */
         "description"?: string;
+        /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
          */
@@ -1259,6 +1325,10 @@ export namespace Components {
     }
     interface BdsPaper {
         /**
+          * Prop for set the border of the component.
+         */
+        "border"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -1266,6 +1336,14 @@ export namespace Components {
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
+        /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
+          * Prop for set the width of the component.
+         */
+        "width"?: string;
     }
     interface BdsProgressBar {
         /**
@@ -1452,6 +1530,10 @@ export namespace Components {
          */
         "options"?: string | Option[];
         /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: SelectOptionsPositionType;
+        /**
           * A tip for the user who can enter no controls.
          */
         "placeholder"?: string;
@@ -1621,6 +1703,25 @@ export namespace Components {
          */
         "label": string;
     }
+    interface BdsTabGroup {
+        "align": 'left' | 'center' | 'right';
+        "scrollable"?: boolean;
+    }
+    interface BdsTabItem {
+        /**
+          * The text to be shown at the Tab item.
+         */
+        "label"?: string;
+        /**
+          * Use to set number of tabItem.
+         */
+        "numberElement"?: number;
+        /**
+          * Used to open/close the Tab item.
+         */
+        "open"?: boolean;
+        "reciveNumber": (number: any) => Promise<void>;
+    }
     interface BdsTabPanel {
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
@@ -1656,6 +1757,14 @@ export namespace Components {
     }
     interface BdsTabs {
         "align": 'left' | 'center' | 'right';
+    }
+    interface BdsTestComponent {
+    }
+    interface BdsThemeProvider {
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsToast {
         /**
@@ -1862,6 +1971,10 @@ export interface BdsDatepickerSingleCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsDatepickerSingleElement;
 }
+export interface BdsDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsDropdownElement;
+}
 export interface BdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsInputElement;
@@ -1929,6 +2042,10 @@ export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
 export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabElement;
+}
+export interface BdsTabGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTabGroupElement;
 }
 export interface BdsTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2013,6 +2130,12 @@ declare global {
         prototype: HTMLBdsAvatarGroupElement;
         new (): HTMLBdsAvatarGroupElement;
     };
+    interface HTMLBdsBadgeElement extends Components.BdsBadge, HTMLStencilElement {
+    }
+    var HTMLBdsBadgeElement: {
+        prototype: HTMLBdsBadgeElement;
+        new (): HTMLBdsBadgeElement;
+    };
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
     }
     var HTMLBdsBannerElement: {
@@ -2096,6 +2219,12 @@ declare global {
     var HTMLBdsDatepickerSingleElement: {
         prototype: HTMLBdsDatepickerSingleElement;
         new (): HTMLBdsDatepickerSingleElement;
+    };
+    interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
+    }
+    var HTMLBdsDropdownElement: {
+        prototype: HTMLBdsDropdownElement;
+        new (): HTMLBdsDropdownElement;
     };
     interface HTMLBdsExpansionPanelElement extends Components.BdsExpansionPanel, HTMLStencilElement {
     }
@@ -2325,6 +2454,18 @@ declare global {
         prototype: HTMLBdsTabElement;
         new (): HTMLBdsTabElement;
     };
+    interface HTMLBdsTabGroupElement extends Components.BdsTabGroup, HTMLStencilElement {
+    }
+    var HTMLBdsTabGroupElement: {
+        prototype: HTMLBdsTabGroupElement;
+        new (): HTMLBdsTabGroupElement;
+    };
+    interface HTMLBdsTabItemElement extends Components.BdsTabItem, HTMLStencilElement {
+    }
+    var HTMLBdsTabItemElement: {
+        prototype: HTMLBdsTabItemElement;
+        new (): HTMLBdsTabItemElement;
+    };
     interface HTMLBdsTabPanelElement extends Components.BdsTabPanel, HTMLStencilElement {
     }
     var HTMLBdsTabPanelElement: {
@@ -2342,6 +2483,18 @@ declare global {
     var HTMLBdsTabsElement: {
         prototype: HTMLBdsTabsElement;
         new (): HTMLBdsTabsElement;
+    };
+    interface HTMLBdsTestComponentElement extends Components.BdsTestComponent, HTMLStencilElement {
+    }
+    var HTMLBdsTestComponentElement: {
+        prototype: HTMLBdsTestComponentElement;
+        new (): HTMLBdsTestComponentElement;
+    };
+    interface HTMLBdsThemeProviderElement extends Components.BdsThemeProvider, HTMLStencilElement {
+    }
+    var HTMLBdsThemeProviderElement: {
+        prototype: HTMLBdsThemeProviderElement;
+        new (): HTMLBdsThemeProviderElement;
     };
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
     }
@@ -2391,6 +2544,7 @@ declare global {
         "bds-autocomplete": HTMLBdsAutocompleteElement;
         "bds-avatar": HTMLBdsAvatarElement;
         "bds-avatar-group": HTMLBdsAvatarGroupElement;
+        "bds-badge": HTMLBdsBadgeElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
@@ -2405,6 +2559,7 @@ declare global {
         "bds-datepicker": HTMLBdsDatepickerElement;
         "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
         "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
+        "bds-dropdown": HTMLBdsDropdownElement;
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
@@ -2443,9 +2598,13 @@ declare global {
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
         "bds-tab": HTMLBdsTabElement;
+        "bds-tab-group": HTMLBdsTabGroupElement;
+        "bds-tab-item": HTMLBdsTabItemElement;
         "bds-tab-panel": HTMLBdsTabPanelElement;
         "bds-table": HTMLBdsTableElement;
         "bds-tabs": HTMLBdsTabsElement;
+        "bds-test-component": HTMLBdsTestComponentElement;
+        "bds-theme-provider": HTMLBdsThemeProviderElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
         "bds-tooltip": HTMLBdsTooltipElement;
@@ -2468,6 +2627,10 @@ declare namespace LocalJSX {
           * bdsToggle. Event to return value of toggle.
          */
         "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
+        /**
+          * A prop for make the accordion open when is render.
+         */
+        "startOpen"?: boolean;
     }
     interface BdsAccordionBody {
     }
@@ -2599,6 +2762,10 @@ declare namespace LocalJSX {
     }
     interface BdsAvatar {
         /**
+          * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
+         */
+        "color"?: colors;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -2635,6 +2802,28 @@ declare namespace LocalJSX {
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
+    }
+    interface BdsBadge {
+        /**
+          * If true, actived the pulse animation.
+         */
+        "animation"?: boolean;
+        /**
+          * Set the color of the component.
+         */
+        "color"?: string;
+        /**
+          * Set witch icon will be render inside the component.
+         */
+        "icon"?: string;
+        /**
+          * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
+         */
+        "number"?: number;
+        /**
+          * Set the shape of the component.
+         */
+        "shape"?: Shape;
     }
     interface BdsBanner {
         /**
@@ -3013,6 +3202,20 @@ declare namespace LocalJSX {
          */
         "startDate"?: DaysList;
     }
+    interface BdsDropdown {
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "activeMode"?: activeMode;
+        /**
+          * bdsToggle. Event to return selected date value.
+         */
+        "onBdsToggle"?: (event: BdsDropdownCustomEvent<any>) => void;
+        /**
+          * Open. Used to open/close the dropdown.
+         */
+        "open"?: boolean;
+    }
     interface BdsExpansionPanel {
     }
     interface BdsExpansionPanelBody {
@@ -3259,6 +3462,14 @@ declare namespace LocalJSX {
           * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
          */
         "rows"?: number;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * Input type. Can be one of: "text", "password", "number" or "email".
          */
@@ -3607,7 +3818,7 @@ declare namespace LocalJSX {
     }
     interface BdsList {
         /**
-          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
+          * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
          */
         "data"?: string | Data[];
         /**
@@ -3653,6 +3864,10 @@ declare namespace LocalJSX {
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips"?: string | string[];
+        /**
+          * Clickable. Used to define if the item is clickable or not.
+         */
+        "clickable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -3752,6 +3967,10 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
+        /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
          */
         "iconLeft"?: string;
@@ -3785,6 +4004,10 @@ declare namespace LocalJSX {
           * Description. Used to insert a subtitle in the display item.
          */
         "description"?: string;
+        /**
+          * Disabled. Used to declare that the item will be disabled.
+         */
+        "disabled"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
          */
@@ -3855,6 +4078,10 @@ declare namespace LocalJSX {
     }
     interface BdsPaper {
         /**
+          * Prop for set the border of the component.
+         */
+        "border"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -3862,6 +4089,14 @@ declare namespace LocalJSX {
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
          */
         "elevation"?: PaperElevation;
+        /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
+          * Prop for set the width of the component.
+         */
+        "width"?: string;
     }
     interface BdsProgressBar {
         /**
@@ -4089,6 +4324,10 @@ declare namespace LocalJSX {
          */
         "options"?: string | Option[];
         /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: SelectOptionsPositionType;
+        /**
           * A tip for the user who can enter no controls.
          */
         "placeholder"?: string;
@@ -4235,6 +4474,28 @@ declare namespace LocalJSX {
          */
         "onBdsTabChange"?: (event: BdsTabCustomEvent<any>) => void;
     }
+    interface BdsTabGroup {
+        "align"?: 'left' | 'center' | 'right';
+        /**
+          * bdsTabChange. Event to return value when accordion is change.
+         */
+        "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
+        "scrollable"?: boolean;
+    }
+    interface BdsTabItem {
+        /**
+          * The text to be shown at the Tab item.
+         */
+        "label"?: string;
+        /**
+          * Use to set number of tabItem.
+         */
+        "numberElement"?: number;
+        /**
+          * Used to open/close the Tab item.
+         */
+        "open"?: boolean;
+    }
     interface BdsTabPanel {
         /**
           * Specifies the TabPanel group. Used to link it to the Tab.
@@ -4274,6 +4535,14 @@ declare namespace LocalJSX {
         "align"?: 'left' | 'center' | 'right';
         "onBdsTabInit"?: (event: BdsTabsCustomEvent<any>) => void;
         "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
+    }
+    interface BdsTestComponent {
+    }
+    interface BdsThemeProvider {
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsToast {
         /**
@@ -4431,6 +4700,7 @@ declare namespace LocalJSX {
         "bds-autocomplete": BdsAutocomplete;
         "bds-avatar": BdsAvatar;
         "bds-avatar-group": BdsAvatarGroup;
+        "bds-badge": BdsBadge;
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
@@ -4445,6 +4715,7 @@ declare namespace LocalJSX {
         "bds-datepicker": BdsDatepicker;
         "bds-datepicker-period": BdsDatepickerPeriod;
         "bds-datepicker-single": BdsDatepickerSingle;
+        "bds-dropdown": BdsDropdown;
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
@@ -4483,9 +4754,13 @@ declare namespace LocalJSX {
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
         "bds-tab": BdsTab;
+        "bds-tab-group": BdsTabGroup;
+        "bds-tab-item": BdsTabItem;
         "bds-tab-panel": BdsTabPanel;
         "bds-table": BdsTable;
         "bds-tabs": BdsTabs;
+        "bds-test-component": BdsTestComponent;
+        "bds-theme-provider": BdsThemeProvider;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
         "bds-tooltip": BdsTooltip;
@@ -4509,6 +4784,7 @@ declare module "@stencil/core" {
             "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
             "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
             "bds-avatar-group": LocalJSX.BdsAvatarGroup & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
+            "bds-badge": LocalJSX.BdsBadge & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
@@ -4523,6 +4799,7 @@ declare module "@stencil/core" {
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
+            "bds-dropdown": LocalJSX.BdsDropdown & JSXBase.HTMLAttributes<HTMLBdsDropdownElement>;
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
@@ -4561,9 +4838,13 @@ declare module "@stencil/core" {
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
             "bds-tab": LocalJSX.BdsTab & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
+            "bds-tab-group": LocalJSX.BdsTabGroup & JSXBase.HTMLAttributes<HTMLBdsTabGroupElement>;
+            "bds-tab-item": LocalJSX.BdsTabItem & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
             "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-table": LocalJSX.BdsTable & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
+            "bds-test-component": LocalJSX.BdsTestComponent & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
+            "bds-theme-provider": LocalJSX.BdsThemeProvider & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;

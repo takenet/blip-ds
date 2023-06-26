@@ -2,15 +2,15 @@
 
 :host {
   display: flex;
-  height:fit-content;
-  width: max-content;
+  height: fit-content;
   border-radius: 4px;
   box-sizing: border-box;
+  max-width: 100%;
 
   .chip {
     display: flex;
     min-width: 32px;
-    width:max-content;
+    width: max-content;
     height: 32px;
     border-radius: 16px;
     padding: 2px 4px;
@@ -26,7 +26,7 @@
       height: 100%;
       padding: 2px;
       border-radius: 4px;
-      outline: $color-primary-purples-bell solid 2px;
+      outline: $color-focus solid 2px;
     }
 
     .chip_darker {
@@ -40,13 +40,12 @@
     }
 
     &--icon {
-    display: flex;
-    align-items: center;
-    padding-left: 4px;
-    height: 20px;
-    color: $color-neutral-dark-city;
-    z-index: 2;
-  }
+      display: flex;
+      align-items: center;
+      padding-left: 4px;
+      height: 20px;
+      z-index: 2;
+    }
     &--text {
       display: flex;
       align-items: center;
@@ -54,7 +53,6 @@
       z-index: 2;
       margin: 0 8px;
       flex-wrap: nowrap;
-      color: $color-neutral-dark-city;
       font-family: $font-family;
     }
     &--tall {
@@ -62,23 +60,29 @@
       border-radius: 24px;
     }
     &--default {
-      background-color: $color-primary-light;
+      background-color: $color-system;
+      color: $color-content-default;
     }
     &--info {
-      background-color: $color-illustration-blue-genie;
+      background-color: $color-info;
+      color: $color-content-default;
     }
     &--success {
-      background-color: $color-primary-greens-mint;
+      background-color: $color-success;
+      color: $color-content-default;
     }
     &--warning {
-      background-color: $color-primary-yellows-corn;
+      background-color: $color-warning;
+      color: $color-content-default;
     }
     &--danger {
-      background-color: $color-extend-reds-flower;
+      background-color: $color-error;
+      color: $color-content-default;
     }
     &--outline {
-      background-color: $color-neutral-light-snow;
-      border: 1px solid $color-neutral-medium-silver;
+      background-color: $color-surface-1;
+      border: 1px solid $color-border-1;
+      color: $color-content-default;
       padding: 2px 3px;
       .chip_darker {
         height: calc(100% + 2px);
@@ -110,23 +114,32 @@
     padding: 2px;
     align-items: center;
     box-sizing: border-box;
-    background-color: $color-neutral-light-snow;
-    border: 2px solid $color-primary-main;
+    background-color: $color-surface-1;
+    border: 2px solid $color-content-default;
+
+    &--container-text {
+      &--full {
+        width: 100%;
+      }
+      &--half {
+        width: calc(100% - 20px);
+      }
+    }
 
     &--icon {
-    display: flex;
-    align-items: center;
-    height: 20px;
-    padding-left: 4px;
-    color: $color-primary-dark;
-  }
+      display: flex;
+      align-items: center;
+      height: 20px;
+      padding-left: 4px;
+      color: $color-content-default;
+    }
     &--text {
       display: flex;
       align-items: center;
       height: 20px;
       margin: 0 8px;
       flex-wrap: nowrap;
-      color: $color-primary-dark;
+      color: $color-content-default;
       font-family: $font-family;
     }
     &--tall {
@@ -134,11 +147,11 @@
       border-radius: 24px;
     }
     &:hover {
-      background-color: $color-disabled-bg;
+      opacity: 38%;
       cursor: pointer;
     }
     &:active {
-      background-color: $color-hover-light;
+      opacity: 38%;
     }
   }
 
@@ -154,7 +167,7 @@
     justify-content: center;
     position: relative;
     z-index: 0;
-    background-color: $color-neutral-light-whisper;
+    background-color: $color-surface-3;
 
     &--icon {
       display: flex;
@@ -162,26 +175,25 @@
       padding-left: 4px;
       width: 16px;
       height: 20px;
-      color: $color-neutral-dark-rooftop;
+      color: $color-content-default;
       z-index: 2;
     }
-      &--text {
-        display: flex;
-        align-items: center;
-        height: 20px;
-        z-index: 2;
-        margin: 0 8px;
-        flex-wrap: nowrap;
-        color: $color-neutral-dark-rooftop;
-        font-family: $font-family;
-      }
-      &--tall {
-        height: 40px;
-        border-radius: 24px;
-      }
+    &--text {
+      display: flex;
+      align-items: center;
+      height: 20px;
+      z-index: 2;
+      margin: 0 8px;
+      flex-wrap: nowrap;
+      color: $color-content-default;
+      font-family: $font-family;
+    }
+    &--tall {
+      height: 40px;
+      border-radius: 24px;
+    }
   }
   .chip_disabled:hover {
-    cursor:default;
+    cursor: default;
   }
-  
 }

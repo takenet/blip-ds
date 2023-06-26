@@ -12,13 +12,13 @@ $switch-size-slider-tall: 24px;
 $switch-size-slider-standard: 18px;
 $switch-size-slider-short: 13.5px;
 
-$switch-size-translateX-tall:24px;
-$switch-size-translateX-standard:18px;
-$switch-size-translateX-short:13.75px;
+$switch-size-translateX-tall: 24px;
+$switch-size-translateX-standard: 18px;
+$switch-size-translateX-short: 13.75px;
 
-$slider-size-content-tall:4px;
-$slider-size-content-standard:3px;
-$slider-size-content-short:2.25px;
+$slider-size-content-tall: 4px;
+$slider-size-content-standard: 3px;
+$slider-size-content-short: 2.25px;
 
 @mixin translateX_values($value) {
   -webkit-transform: translateX($value);
@@ -33,13 +33,13 @@ $slider-size-content-short:2.25px;
 
 @mixin slider_width_height($value, $margin) {
   position: absolute;
-  content: " ";
+  content: ' ';
   left: $margin;
   bottom: $margin;
-  top:$margin;
-  background-color: $color-neutral-light-snow;
-  -webkit-transition: .4s;
-  transition: .4s;
+  top: $margin;
+  background-color: $color-surface-1;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   border-radius: 50%;
   width: $value;
   height: $value;
@@ -48,24 +48,22 @@ $slider-size-content-short:2.25px;
 .switch {
   position: relative;
   display: inline-block;
-  
+
   &--size-tall {
-    @include switch_width_height($switch-size-width-tall,$switch-size-height-tall);
+    @include switch_width_height($switch-size-width-tall, $switch-size-height-tall);
   }
   &--size-standard {
-    @include switch_width_height($switch-size-width-standard,$switch-size-height-standard);
+    @include switch_width_height($switch-size-width-standard, $switch-size-height-standard);
   }
   &--size-short {
-    @include switch_width_height($switch-size-width-short,$switch-size-height-short);
+    @include switch_width_height($switch-size-width-short, $switch-size-height-short);
   }
-
 }
 
-.switch input { 
+.switch input {
   opacity: 100;
   width: 0;
   height: 0;
-  
 }
 
 .slider {
@@ -75,37 +73,37 @@ $slider-size-content-short:2.25px;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color:$color-neutral-medium-silver;   
-  -webkit-transition: .4s;
-  transition: .4s;
+  background-color: $color-content-disable;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   border-radius: 34px;
-  
+
   &--size-tall::before {
     @include slider_width_height($switch-size-slider-tall, $slider-size-content-tall);
   }
 
   &--size-standard::before {
-    @include slider_width_height($switch-size-slider-standard,$slider-size-content-standard);
+    @include slider_width_height($switch-size-slider-standard, $slider-size-content-standard);
   }
 
   &--size-short::before {
-    @include slider_width_height($switch-size-slider-short,$slider-size-content-short);
+    @include slider_width_height($switch-size-slider-short, $slider-size-content-short);
   }
-  
+
   &--deselected-disabled {
     cursor: not-allowed;
-    background-color: $color-neutral-medium-wave;
+    background-color: $color-content-disable;
+    opacity: 0.5;
   }
 }
 
 input:checked + .slider {
-  background-color: $color-primary-main;
+  background-color: $color-primary;
 
   &--selected-disabled {
     cursor: not-allowed;
-    background-color:$color-primary-light;
+    opacity: 0.5;
   }
-  
 }
 
 input:focus + .slider {
@@ -121,7 +119,6 @@ input:focus + .slider {
 }
 
 input:checked + .slider {
-
   &--size-tall::before {
     @include translateX_values($switch-size-translateX-tall);
   }
@@ -133,6 +130,4 @@ input:checked + .slider {
   &--size-short::before {
     @include translateX_values($switch-size-translateX-short);
   }
-
 }
-

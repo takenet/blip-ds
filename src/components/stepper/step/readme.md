@@ -19,6 +19,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../../test-component)
+
 ### Depends on
 
 - [bds-icon](../../icon)
@@ -29,6 +33,7 @@
 graph TD;
   bds-step --> bds-icon
   bds-step --> bds-typo
+  bds-test-component --> bds-step
   style bds-step fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

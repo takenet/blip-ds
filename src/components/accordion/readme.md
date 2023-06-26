@@ -1,4 +1,4 @@
-# bds-accordion
+# bds-accordion-header
 
 
 

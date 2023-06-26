@@ -27,6 +27,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../test-component)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -44,6 +48,7 @@ graph TD;
   bds-banner --> bds-icon
   bds-banner --> bds-button-icon
   bds-button-icon --> bds-icon
+  bds-test-component --> bds-upload
   style bds-upload fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

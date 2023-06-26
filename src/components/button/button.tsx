@@ -98,7 +98,7 @@ export class Button {
     return (
       this.icon && (
         <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
-          <bds-icon name={this.icon} type={this.typeIcon} color="inherit"></bds-icon>
+          <bds-icon class={{ icon_buttom: true }} name={this.icon} type={this.typeIcon} color="inherit"></bds-icon>
         </div>
       )
     );
@@ -114,7 +114,7 @@ export class Button {
           hide: this.bdsLoading && true,
         }}
       >
-        <bds-typo variant="fs-14" lineHeight="simple" bold="bold">
+        <bds-typo class={{ typo_buttom: true }} variant="fs-14" lineHeight="simple" bold="bold">
           <slot></slot>
         </bds-typo>
       </div>
@@ -125,7 +125,7 @@ export class Button {
     return (
       this.arrow && (
         <div class={{ button__arrow: true, hide: this.bdsLoading && true }}>
-          <bds-icon name="arrow-right" color="inherit"></bds-icon>
+          <bds-icon class={{ arrow_buttom: true }} name="arrow-right" color="inherit"></bds-icon>
         </div>
       )
     );

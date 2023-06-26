@@ -3,6 +3,13 @@ export interface Position {
   left: number;
 }
 
+export type reference = 'top' | 'bottom' | 'left' | 'right';
+
+export interface BreakPostion {
+  x: reference | string;
+  y: reference | string;
+}
+
 export const getScrollParent = (node: HTMLElement) => {
   if (node === null) {
     return null;
@@ -54,6 +61,29 @@ export function positionElement({
         : changedpositionTop,
     left:
       changedpositionLeft < 0 ? 0 : changedpositionLeft > limitedWidthScreen ? limitedWidthScreen : changedpositionLeft,
+  };
+
+  return result;
+}
+
+export function positionAbsoluteElement({
+  actionElement,
+  changedElement,
+  intoView,
+}: {
+  actionElement: HTMLElement;
+  changedElement: HTMLElement;
+  intoView: HTMLElement;
+}): BreakPostion {
+  const body = intoView ? intoView : document.body;
+  const numberHeignt = body.offsetHeight < changedElement.offsetHeight ? window.screen.height : body.offsetHeight;
+  const numberWidth = body.offsetWidth < changedElement.offsetWidth ? window.screen.width : body.offsetWidth;
+  const heightTop = numberHeignt - actionElement.offsetTop;
+  const widthLeft = numberWidth - actionElement.offsetLeft;
+
+  const result = {
+    y: heightTop < changedElement.offsetHeight + actionElement.offsetHeight ? 'top' : 'bottom',
+    x: widthLeft < changedElement.offsetWidth ? 'right' : 'left',
   };
 
   return result;

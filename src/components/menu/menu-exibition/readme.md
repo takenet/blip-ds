@@ -13,6 +13,7 @@
 | `avatarSize`      | `avatar-size`      | AvatarSize. Used to set avatar size.                        | `"extra-small" \| "small" \| "standard"` | `'standard'` |
 | `avatarThumbnail` | `avatar-thumbnail` | AvatarThumbnail. Used to insert the avatar photo.           | `string`                                 | `null`       |
 | `description`     | `description`      | Description. Used to insert a subtitle in the display item. | `string`                                 | `null`       |
+| `disabled`        | `disabled`         | Disabled. Used to declare that the item will be disabled.   | `boolean`                                | `false`      |
 | `subtitle`        | `subtitle`         | Subtitle. Used to insert a subtitle in the display item.    | `string`                                 | `null`       |
 | `value`           | `value`            | Value. Used to insert a title in the display item.          | `string`                                 | `null`       |
 

@@ -24,6 +24,7 @@ export class Tooltip {
    * Used to set tooltip visibility
    */
   @State() isMouseOver = false;
+  @State() textVerify: string;
   /**
    * Used to set tooltip text
    */
@@ -60,6 +61,10 @@ export class Tooltip {
     this.isMouseOver = value;
   }
 
+  componentWillLoad() {
+    this.textVerify = this.tooltipText ? this.tooltipText.replace(/<br>/gi, '\r\n') : '';
+  }
+
   render() {
     return (
       <div class="tooltip__wrapper">
@@ -78,7 +83,11 @@ export class Tooltip {
           }}
         >
           <div class={{ tooltip__tip__text: true }}>
-            <bds-typo variant="fs-12">{this.tooltipText}</bds-typo>
+            <pre>
+              <bds-typo class="text" no-wrap="false" variant="fs-12">
+                {this.textVerify}
+              </bds-typo>
+            </pre>
           </div>
         </div>
       </div>

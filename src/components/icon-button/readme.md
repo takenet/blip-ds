@@ -24,8 +24,10 @@
  - [bds-list-item](../list)
  - [bds-pagination](../pagination)
  - [bds-sidebar](../sidebar)
+ - [bds-tab-group](../tabs/tab-group)
  - [bds-table](../table)
  - [bds-tabs](../tabs)
+ - [bds-test-component](../test-component)
  - [bds-toast](../toast)
  - [bds-upload](../upload)
 
@@ -41,8 +43,10 @@ graph TD;
   bds-list-item --> bds-button-icon
   bds-pagination --> bds-button-icon
   bds-sidebar --> bds-button-icon
+  bds-tab-group --> bds-button-icon
   bds-table --> bds-button-icon
   bds-tabs --> bds-button-icon
+  bds-test-component --> bds-button-icon
   bds-toast --> bds-button-icon
   bds-upload --> bds-button-icon
   style bds-button-icon fill:#f9f,stroke:#333,stroke-width:4px

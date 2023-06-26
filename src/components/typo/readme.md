@@ -36,6 +36,7 @@
  - [bds-alert-header](../alert/alert-header)
  - [bds-autocomplete](../autocomplete)
  - [bds-avatar](../avatar)
+ - [bds-badge](../badge)
  - [bds-button](../button)
  - [bds-card-color](../card-color)
  - [bds-checkbox](../checkbox)
@@ -65,7 +66,9 @@
  - [bds-select-option](../select-option)
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab)
+ - [bds-tab-group](../tabs/tab-group)
  - [bds-table](../table)
+ - [bds-test-component](../test-component)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
  - [bds-upload](../upload)
@@ -79,6 +82,7 @@ graph TD;
   bds-alert-header --> bds-typo
   bds-autocomplete --> bds-typo
   bds-avatar --> bds-typo
+  bds-badge --> bds-typo
   bds-button --> bds-typo
   bds-card-color --> bds-typo
   bds-checkbox --> bds-typo
@@ -108,7 +112,9 @@ graph TD;
   bds-select-option --> bds-typo
   bds-step --> bds-typo
   bds-tab --> bds-typo
+  bds-tab-group --> bds-typo
   bds-table --> bds-typo
+  bds-test-component --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo
   bds-upload --> bds-typo

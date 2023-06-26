@@ -18,17 +18,15 @@ $avatar-size-extra-large: 72px;
   appearance: none;
   height: 100%;
 
+  &__ellipsis {
+    color: $color-surface-1;
+  }
   &__text {
-    color: $color-neutral-dark-city;
+    color: $color-content-default;
   }
 
   &__icon {
-    color: $color-neutral-dark-city;
-  }
-
-  &__img {
-    width: 100%;
-    height: auto;
+    color: $color-surface-1;
   }
 
   &__btn {
@@ -40,12 +38,12 @@ $avatar-size-extra-large: 72px;
     align-items: center;
 
     &__img {
-      width: 100%;
-      height: auto;
+      background-position: center;
+      background-size: cover;
     }
 
     &__text {
-      color: $color-neutral-dark-city;
+      color: $color-content-din;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -53,7 +51,7 @@ $avatar-size-extra-large: 72px;
     }
 
     &__icon {
-      color: $color-neutral-dark-city;
+      color: $color-content-din;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -69,13 +67,21 @@ $avatar-size-extra-large: 72px;
       align-items: center;
       top: 0;
       left: 0;
-      background-color: $color-neutral-light-snow;
       cursor: pointer;
-      opacity: 0;
-      transition: all 0.5s;
+
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $color-content-default;
+        opacity: 0;
+        transition: all 0.5s;
+      }
 
       &__icon {
-        color: $color-neutral-dark-city;
+        color: $color-surface-1;
+        opacity: 0;
+        transition: all 0.5s;
       }
     }
 
@@ -95,7 +101,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-neutral-dark-city;
+        color: $color-content-din;
       }
     }
 
@@ -115,7 +121,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-neutral-dark-city;
+        color: $color-content-din;
       }
     }
   }
@@ -158,23 +164,24 @@ $avatar-size-extra-large: 72px;
   }
 
   &__color {
-    &--neutral {
-      background-color: $color-neutral-light-box;
+    &--system {
+      background-color: $color-system;
     }
-    &--yellow {
-      background-color: $color-primary-yellows-corn;
+    &--warning {
+      background-color: $color-warning;
     }
-    &--blue {
-      background-color: $color-illustration-blue-genie;
+    &--success {
+      background-color: $color-success;
     }
-    &--green {
-      background-color: $color-primary-greens-mint;
+    &--info {
+      background-color: $color-info;
     }
-    &--brown {
-      background-color: $color-extend-browns-sand;
+    &--error {
+      background-color: $color-error;
     }
-    &--pink {
-      background-color: $color-primary-pinks-yogurt;
+    &--surface {
+      background-color: $color-surface-3;
+      color: $color-content-disable;
     }
   }
 
@@ -182,7 +189,12 @@ $avatar-size-extra-large: 72px;
     .avatar {
       &__btn {
         &__thumb {
-          opacity: 0.65;
+          &:before {
+            opacity: 0.5;
+          }
+          &__icon {
+            opacity: 1;
+          }
         }
         &__text {
           opacity: 0;
@@ -204,7 +216,7 @@ $avatar-size-extra-large: 72px;
 .focus:focus-visible {
   display: flex;
   position: absolute;
-  border: 2px solid $color-primary-purples-bell;
+  border: 2px solid $color-focus;
   border-radius: 4px;
   width: 100%;
   height: 100%;

@@ -35,11 +35,11 @@ $select-options-max-height: 250px;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
 
-  @include input-border($color-input-border);
-
   @if ($name == 'disabled') {
-    background: $color-surface-3;
+    background: $color-surface-2;
   }
+
+  @include input-border($color-input-border);
 
   // States
   &:hover {
@@ -54,9 +54,8 @@ $select-options-max-height: 250px;
     @include input-border($color-input-primary, $color-input-focus);
   }
 
-  .input__icon {
-    color: $color-input-primary;
-    background-color: $color-input-secondary;
+  .input__container {
+    padding: 4px 8px 9px;
   }
 
   .input__container__label {
@@ -70,6 +69,7 @@ $select-options-max-height: 250px;
   .input__container__text {
     caret-color: $color-input-primary;
     color: $color-input-text;
+    flex-grow: 1;
   }
 }
 
@@ -119,7 +119,6 @@ $select-options-max-height: 250px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: $input-padding;
 
   flex: 1;
   width: 100%;
@@ -130,25 +129,56 @@ $select-options-max-height: 250px;
 
   &--state {
     &-primary {
+
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-primary;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'primary',
         $color-primary,
-        $color-surface-3,
+        $color-surface-1,
         $color-content-default,
         $color-content-default,
-        $color-surface-3,
+        $color-border-1,
         $color-primary,
         $color-info
       );
     }
 
     &-danger {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-delete;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'danger',
         $color-delete,
         $color-error,
         $color-delete,
-        $color-delete,
+        $color-content-default,
         $color-delete,
         $color-delete,
         $color-error
@@ -156,22 +186,15 @@ $select-options-max-height: 250px;
     }
 
     &-disabled {
+      opacity: 50%;
+      pointer-events: none;
       cursor: not-allowed;
-      @include input-theme(
-        'disabled',
-        $color-content-disable,
-        $color-surface-3,
-        $color-content-disable,
-        $color-content-disable,
-        $color-surface-3,
-        $color-surface-3,
-        $color-surface-3
-      );
+      background: $color-surface-2;
     }
   }
 
   &--label {
-    padding: $input-padding-label;
+    padding: 0;
   }
 
   &__icon {
@@ -196,7 +219,6 @@ $select-options-max-height: 250px;
 
     &__wrapper {
       display: flex;
-      flex-wrap: wrap;
     }
 
     &__wrapper__chips {
@@ -244,7 +266,12 @@ $select-options-max-height: 250px;
     }
 
     &--danger {
-      color: $color-delete;
+      .bds-icon {
+        color: $color-delete;
+      }
+      .input__message__text {
+        color: $color-delete;
+      }
     }
   }
 }
@@ -253,7 +280,6 @@ $select-options-max-height: 250px;
   display: flex;
   border-radius: 8px;
   position: relative;
-  cursor: pointer;
   outline: none;
   min-width: 200px;
 
@@ -272,6 +298,8 @@ $select-options-max-height: 250px;
     align-items: center;
     justify-content: space-evenly;
     padding-right: 16px;
+    padding-left: 12px;
+    cursor: pointer;
   }
 
   &__country-code {
@@ -284,7 +312,7 @@ $select-options-max-height: 250px;
 
     background: $color-surface-2;
     width: 100%;
-    max-height: 250px;
+    max-height: 200px;
     position: absolute;
     top: 99%;
     left: 0;
@@ -308,10 +336,13 @@ $select-options-max-height: 250px;
   &:hover,
   &--pressed {
     .select-phone-number__icon {
+      position: relative;
+      height: 100%;
       &::before {
         content: '';
         background: $color-surface-3;
         height: calc(100% - 2px);
+        max-height: 54px;
         width: 70px;
         position: absolute;
         left: 1px;

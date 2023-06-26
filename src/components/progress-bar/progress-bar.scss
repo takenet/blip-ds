@@ -8,7 +8,7 @@
   box-sizing: border-box;
   position: relative;
   border-radius: 32px;
-  border: 1px solid $color-neutral-medium-elephant;
+  border: 1px solid $color-content-disable;
   margin-bottom: 4px;
 
   &.size_small {
@@ -43,16 +43,16 @@
 
       &.color {
         &_default {
-          background-color: $color-primary-main;
+          background-color: $color-extended-blue;
         }
         &_positive {
-          background-color: $color-primary-greens-aligator;
+          background-color: $color-extended-green;
         }
         &_information {
-          background-color: $color-primary-oranges-carrot;
+          background-color: $color-extended-yellow;
         }
         &_warning {
-          background-color: $color-extend-reds-delete;
+          background-color: $color-extended-red;
         }
       }
 
@@ -80,7 +80,7 @@
 }
 
 .typo_progress {
-  color: $color-neutral-dark-suit;
+  color: $color-content-default;
 }
 
 @keyframes load {

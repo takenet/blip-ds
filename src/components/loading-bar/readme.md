@@ -15,6 +15,19 @@
 | `text`     | `text`      | Text, property to enable the bar info text.                             | `string`               | `''`        |
 
 
+## Dependencies
+
+### Used by
+
+ - [bds-test-component](../test-component)
+
+### Graph
+```mermaid
+graph TD;
+  bds-test-component --> bds-loading-bar
+  style bds-loading-bar fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

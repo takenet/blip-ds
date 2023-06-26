@@ -1,8 +1,9 @@
 :host {
-  display: block;
+  display: flex;
   height: max-content;
   border-radius: 4px;
   box-sizing: border-box;
+  max-width: 100%;
 
   .chip_clickable {
     display: flex;
@@ -17,6 +18,19 @@
     position: relative;
     z-index: 0;
 
+    &--container-text {
+      
+      &--full {
+        width: 100%;
+      }
+      &--min {
+        width: calc(100% - 36px);
+      }
+      &--half {
+        width: calc(100% - 16px);
+      }
+    }
+
     &--hide {
       display: none;
       padding: 0;
@@ -29,7 +43,7 @@
       height: 100%;
       padding: 2px;
       border-radius: 4px;
-      outline: $color-primary-purples-bell solid 2px;
+      outline: $color-focus solid 2px;
     }
 
     &--click {
@@ -59,12 +73,12 @@
     }
     &--disabled {
       cursor: default;
-      background-color: $color-neutral-light-whisper;
+      background-color: $color-surface-3;
       .chip_clickable--icon {
-        color: $color-neutral-dark-rooftop;
+        color: $color-content-default;
       }
       .chip_clickable--text {
-        color: $color-neutral-dark-rooftop;
+        color: $color-content-default;
       }
       .chip_clickable--close {
         cursor: default;
@@ -76,7 +90,6 @@
       align-items: center;
       height: 20px;
       padding-left: 4px;
-      color: $color-neutral-dark-city;
       z-index: 2;
     }
     &--close {
@@ -85,8 +98,7 @@
       height: 20px;
       padding-right: 4px;
       mix-blend-mode: hard-light;
-      color: $color-neutral-dark-city;
-      opacity: 0.7;
+      opacity: 0.5;
       z-index: 2;
       position: relative;
       cursor: pointer;
@@ -97,17 +109,15 @@
         height: 100%;
         left: -2px;
         border-radius: 4px;
-        outline: $color-primary-purples-bell solid 2px;
+        outline: $color-focus solid 2px;
       }
     }
     &--text {
       display: flex;
       align-items: center;
-      width: max-content;
       height: 20px;
       margin: 0 8px;
       z-index: 2;
-      color: $color-neutral-dark-city;
       font-family: $font-family;
     }
     &--tall {
@@ -115,23 +125,29 @@
       border-radius: 24px;
     }
     &--default {
-      background-color: $color-primary-light;
+      background-color: $color-system;
+      color: $color-content-din;
     }
     &--info {
-      background-color: $color-illustration-blue-genie;
+      background-color: $color-info;
+      color: $color-content-din;
     }
     &--success {
-      background-color: $color-primary-greens-mint;
+      background-color: $color-success;
+      color: $color-content-din;
     }
     &--warning {
-      background-color: $color-primary-yellows-corn;
+      background-color: $color-warning;
+      color: $color-content-din;
     }
     &--danger {
-      background-color: $color-extend-reds-flower;
+      background-color: $color-error;
+      color: $color-content-din;
     }
     &--outline {
-      background-color: $color-neutral-light-snow;
-      border: 1px solid $color-neutral-medium-silver;
+      background-color: $color-surface-1;
+      border: 1px solid $color-border-1;
+      color: $color-content-default;
     }
     &:focus-visible {
       outline: none;

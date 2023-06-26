@@ -1,0 +1,218 @@
+@keyframes pulse {
+  0% {
+    scale: 100%;
+    opacity: 1;
+  }
+  20% {
+    scale: 140%;
+    opacity: 0;
+  }
+  21% {
+    scale: 100%;
+    opacity: 1;
+  }
+  40% {
+    scale: 140%;
+    opacity: 0;
+  }
+  41% {
+    scale: 140%;
+    opacity: 0;
+  }
+  100% {
+    scale: 140%;
+    opacity: 0;
+  }
+}
+
+.color {
+  &--system {
+    background-color: $color-system;
+    color: $color-system;
+  }
+
+  &--danger {
+    background-color: $color-error;
+    color: $color-error;
+  }
+
+  &--warning {
+    background-color: $color-warning;
+    color: $color-warning;
+  }
+
+  &--success {
+    background-color: $color-success;
+    color: $color-success;
+  }
+
+  &--neutral {
+    background-color: $color-surface-3;
+    color: $color-surface-3;
+  }
+}
+
+:host {
+  display: inline-flex;
+}
+
+.chip_badge {
+  .status {
+    width: 8px;
+    height: 8px;
+
+    &--circle {
+      width: 0;
+      height: 0;
+      border: 4px solid;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--circle-true::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      border: 1px solid;
+      border-radius: 8px;
+      animation: pulse 2s ease-out infinite;
+    }
+
+    &--triangle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+
+      border-bottom: 8px solid;
+    }
+    &--triangle-reverse {
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+
+      border-top: 8px solid;
+    }
+    &--polygon {
+      width: 0;
+      height: 0;
+      border: 4px solid;
+      rotate: 45deg;
+    }
+    &--square {
+      width: 0;
+      height: 0;
+      border: 4px solid;
+    }
+  }
+
+  .icon {
+    position: relative;
+    bds-icon {
+      position: absolute;
+    }
+    .bds-icon {
+      color: $color-content-default;
+    }
+
+    &--circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        border-radius: 16px;
+      }
+      .trim-true::before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        left: -2px;
+        top: -2px;
+        position: absolute;
+        border: 2px solid;
+        border-radius: 16px;
+        animation: pulse 2s ease-out infinite;
+      }
+    }
+
+    &--triangle {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &--triangle-reverse {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 100%, 0 0, 100% 0);
+      }
+    }
+    &--polygon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      }
+    }
+    &--square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  .number {
+    display: flex;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &--true::before {
+      content: '';
+      width: 100%;
+      height: 24px;
+      left: -2px;
+      top: -2px;
+      position: absolute;
+      border: 2px solid;
+      border-radius: 16px;
+      animation: pulse 2s ease-out infinite;
+    }
+
+    .number_text {
+      color: $color-content-default;
+    }
+  }
+}

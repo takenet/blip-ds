@@ -221,6 +221,49 @@ const gradientColors = [
     hex: 'linear-gradient(213.69deg, #202c44 25.43%, #000000 147.21%)',
   },
 ];
+// export const uiVariableColors = () => (
+//   <bds-grid direction="column" gap="3">
+//     <bds-theme-provider theme="dark">
+//       <bds-paper>
+//       <bds-grid padding="4" direction="column" gap="2">
+//         <bds-typo>Ui Extended Colors</bds-typo>
+//         <bds-grid direction="row" justify-content="space-between">
+//           <bds-icon style={{color: uiColors.color_extended_blue}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_ocean}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_green}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_yellow}} name="favorite" theme="solid"></bds-icon>
+//         </bds-grid>
+//         <bds-grid direction="row" justify-content="space-between">
+//           <bds-icon style={{color: uiColors.color_extended_orange}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_red}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_pink}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_gray}} name="favorite" theme="solid"></bds-icon>
+//         </bds-grid>
+//       </bds-grid>
+//     </bds-paper>
+//     </bds-theme-provider>
+//     <bds-theme-provider theme="light">
+//       <bds-paper>
+//       <bds-grid padding="4" direction="column" gap="2">
+//         <bds-typo>Ui Extended Colors</bds-typo>
+//         <bds-grid direction="row" justify-content="space-between">
+//           <bds-icon style={{color: uiColors.color_extended_blue}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_ocean}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_green}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_yellow}} name="favorite" theme="solid"></bds-icon>
+//         </bds-grid>
+//         <bds-grid direction="row" justify-content="space-between">
+//           <bds-icon style={{color: uiColors.color_extended_orange}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_red}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_pink}} name="favorite" theme="solid"></bds-icon>
+//           <bds-icon style={{color: uiColors.color_extended_gray}} name="favorite" theme="solid"></bds-icon>
+//         </bds-grid>
+//       </bds-grid>
+//     </bds-paper>
+//     </bds-theme-provider>
+    
+//   </bds-grid>
+// );
 
 const getSectionColor = (title, content) => (
   <>

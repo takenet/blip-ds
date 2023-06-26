@@ -21,19 +21,20 @@ $checkbox-spacing-text: 8px;
   }
 
   &__icon {
-    background: $color-neutral-light-snow;
+    background: $color-surface-1;
 
     &:hover {
-      border-color: $color-primary-dark;
+      border-color: $color-brand;
     }
   }
 
   &--selected {
     .checkbox__icon {
-      background-color: $color-primary-main;
+      background-color: $color-brand;
+      color: $color-content-bright;
 
       &:hover {
-        background-color: $color-primary-dark;
+        background-color: $color-brand;
       }
     }
   }
@@ -44,9 +45,10 @@ $checkbox-spacing-text: 8px;
     }
 
     .checkbox__icon {
-      color: $color-disabled-text;
-      border: 1px solid $color-disabled-text;
-      background-color: $color-disabled-bg;
+      color: $color-content-bright;
+      border: 1px solid $color-brand;
+      background-color: $color-brand;
+      opacity: 50%;
     }
   }
 
@@ -62,8 +64,9 @@ $checkbox-spacing-text: 8px;
     }
 
     .checkbox__icon {
-      background-color: $color-disabled-bg;
-      border: 1px solid $color-disabled-text;
+      opacity: 50%;
+      background-color: $color-surface-1;
+      border: 1px solid $color-brand;
     }
 
     .checkbox__icon__svg {
@@ -86,8 +89,8 @@ $checkbox-spacing-text: 8px;
     height: $checkbox-size;
     width: $checkbox-size;
     border-radius: $checkbox-icon-radius;
-    color: $color-neutral-light-breeze;
-    border: 1px solid $color-primary-main;
+    color: $color-surface-1;
+    border: 1px solid $color-brand;
     box-sizing: border-box;
     border-radius: 4px;
     @include animation();
@@ -95,6 +98,6 @@ $checkbox-spacing-text: 8px;
 
   &__text {
     margin-left: $checkbox-spacing-text;
-    color: $color-neutral-dark-rooftop;
+    color: $color-content-default;
   }
 }

@@ -1,3 +1,6 @@
+@import 'resets';
+@import 'mixins';
+
 :host {
   display: block;
 
@@ -14,7 +17,7 @@
       border-radius: 8px;
     }
     .border-select:hover {
-      box-shadow: rgb(63 125 232 / 40%) 0px 0px 0px 2px;
+      box-shadow: $color-hover;
     }
     .select_input {
       display: flex;
@@ -26,41 +29,50 @@
       width: 100%;
       max-width: 100%;
       max-height: 100%;
-      background: $color-neutral-light-snow;
+      background: $color-surface-1;
       border-radius: 8px;
-      border: 1px solid $color-neutral-medium-wave;
+      border: 1px solid $color-border-1;
       box-sizing: border-box;
 
       bds-typo {
         min-width: 28px;
+        color: $color-content-default;
+      }
+
+      bds-icon {
+        color: $color-content-default;
       }
     }
 
     .select_input:hover {
-      border-color: $color-primary-main;
+      border-color: $color-brand;
     }
 
-    .select_options {
+    .select__options {
       position: absolute;
       width: 100%;
-      background-color: $color-neutral-light-snow;
+      background-color: $color-surface-1;
       border-radius: 8px;
       z-index: 2;
       margin-top: 4px;
       overflow-y: auto;
       overflow-x: hidden;
-      max-height: 250px;
-      transition: transform 0.25s ease 0s, opacity 0.75s ease 0s, visibility 0.75s ease 0s,
-        -webkit-transform 0.25s ease 0s;
-      transform-origin: left top;
-      transform: scaleY(0);
+      max-height: 200px;
       visibility: hidden;
       opacity: 0;
 
+      @include custom-scroll;
+
       &--open {
         visibility: visible;
-        transform: scale(1);
         opacity: 1;
+      }
+      &--position-top {
+        bottom: calc(100% + 4px);
+      }
+
+      &--position-bottom {
+        top: calc(100% + 4px);
       }
 
       ul {
@@ -73,11 +85,11 @@
         padding: 8px;
         padding-left: 12px;
         box-sizing: border-box;
+        color: $color-content-default;
       }
 
       li:hover {
-        color: $color-primary-main;
-        background-color: $color-neutral-light-whisper;
+        background-color: $color-surface-2;
       }
     }
   }

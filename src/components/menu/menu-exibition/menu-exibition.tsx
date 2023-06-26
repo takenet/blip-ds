@@ -32,12 +32,18 @@ export class BdsMenuExibition {
    * Description. Used to insert a subtitle in the display item.
    */
   @Prop() description?: string = null;
+  /**
+   * Disabled. Used to declare that the item will be disabled.
+   */
+  @Prop() disabled?: boolean = false;
+
   render() {
     const hasAvatar = this.avatarName || this.avatarThumbnail;
     return (
       <div
         class={{
           menuexibition: true,
+          [`menuexibition__disabled`]: this.disabled,
         }}
       >
         {hasAvatar && (

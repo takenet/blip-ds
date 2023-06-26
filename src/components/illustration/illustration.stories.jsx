@@ -16,6 +16,8 @@ const defaults = [
   'agent-flat-2',
   'agent-flat-3',
   'agent-flat-4',
+  'atention',
+  'blip-chat',
   'blip-chat-health',
   'blip-chat-logistic',
   'blip-chat-marketing',
@@ -26,6 +28,7 @@ const defaults = [
   'boy-computer',
   'chat-bank',
   'chat-sales',
+  'cookie',
   'delivery-chat',
   'exchange-person',
   'faq',
@@ -41,6 +44,10 @@ const defaults = [
   'ringtones',
   'robot-flat',
   'robot',
+  'robot-2',
+  'robot-3',
+  'robot-4',
+  'robot-5',
   'robots',
   'search',
   'segmentos',
@@ -56,6 +63,7 @@ const defaults = [
   'user-4',
   'user-plataform',
   'webhook',
+  'welcome-blip',
   'whatsapp-web',
   'whatsapp',
 ];
@@ -81,6 +89,19 @@ const screens = [
 ];
 
 const blipSolid = [
+  'bag',
+  'bone',
+  'cap',
+  'coffee',
+  'gift',
+  'headphones',
+  'heart',
+  'hi',
+  'message',
+  'phone',
+  'raised-eyebrow',
+  'skate',
+  'sport',
   'agent',
   'baby',
   'bored',
@@ -149,6 +170,80 @@ const blipOutline = [
 ];
 
 const brand = [
+  'blip-academy-black',
+  'blip-academy-blue-black',
+  'blip-academy-blue-white',
+  'blip-academy-white',
+  'blip-blog-blue-black',
+  'blip-blog-blue-white',
+  'blip-builder-black',
+  'blip-builder-blue-black',
+  'blip-builder-blue-white',
+  'blip-builder-white',
+  'blip-docs-black',
+  'blip-docs-blue-black',
+  'blip-docs-blue-white',
+  'blip-docs-white',
+  'blip-foods-black',
+  'blip-foods-blue-black',
+  'blip-foods-blue-white',
+  'blip-foods-white',
+  'blip-go-black',
+  'blip-go-blue-black',
+  'blip-go-blue-white',
+  'blip-go-white',
+  'blip-news-black',
+  'blip-news-blue-black',
+  'blip-news-blue-white',
+  'blip-news-white',
+  'blip-packs-black',
+  'blip-packs-blue-black',
+  'blip-packs-blue-white',
+  'blip-packs-white',
+  'blip-packspace-black',
+  'blip-packspace-blue-black',
+  'blip-packspace-blue-white',
+  'blip-packspace-white',
+  'blip-partner-black',
+  'blip-partner-blue-black',
+  'blip-partner-blue-white',
+  'blip-partner-white',
+  'blip-payments-black',
+  'blip-payments-blue-black',
+  'blip-payments-blue-white',
+  'blip-payments-white',
+  'blip-purpose-black',
+  'blip-purpose-blue-black',
+  'blip-purpose-blue-white',
+  'blip-purpose-white',
+  'blip-shop-black',
+  'blip-shop-blue-black',
+  'blip-shop-blue-white',
+  'blip-shop-white',
+  'blip-status-black',
+  'blip-status-blue-black',
+  'blip-status-blue-white',
+  'blip-status-white',
+  'blip-store-black',
+  'blip-store-blue-black',
+  'blip-store-blue-white',
+  'blip-store-white',
+  'blip-think-black',
+  'blip-think-blue-black',
+  'blip-think-blue-white',
+  'blip-think-white',
+  'blip-time-black',
+  'blip-time-blue-black',
+  'blip-time-blue-white',
+  'blip-time-white',
+  'blip-tools-black',
+  'blip-tools-blue-black',
+  'blip-tools-blue-white',
+  'blip-tools-white',
+  'blip-trust-black',
+  'blip-trust-blue-black',
+  'blip-trust-blue-white',
+  'blip-trust-white',
   'take-blip-black-horizontal',
   'take-blip-black-vertical',
   'take-blip-blue-black-horizontal',
@@ -189,9 +284,69 @@ const brand = [
   'blip-help-center-blue-black-horizontal',
   'blip-help-center-white-horizontal',
   'blip-help-center-blue-white-horizontal',
+  'sti-blue-horizontal',
+  'sti-blue-symbol',
+  'sti-blue-vertical',
+  'sti-white-horizontal',
+  'sti-white-vertical',
+  'sti-white-vertical-symbol',
 ];
 
-const logoIntegration = ['blip-instagram', 'blip-whatsapp'];
+const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];
+
+const segmented = ['cart-selected', 'catalog-option', 'item-overview', 'send-catalog'];
+
+const smartphone = ['blip-chat-1', 'blip-chat-2', 'blip-chat-3', 'digital-scanning-1', 'digital-scanning-2'];
+
+const spots = [
+  'air-ballon',
+  'analytics-satisfaction',
+  'avatar',
+  'binoculars',
+  'bot-list',
+  'clock-1',
+  'clock-2',
+  'column-chart',
+  'connectivity',
+  'empty',
+  'folder-1',
+  'folder-2',
+  'folder-3',
+  'folder-4',
+  'folder-5',
+  'folder-6',
+  'folder-7',
+  'glad',
+  'hand-1',
+  'hand-2',
+  'hand-3',
+  'hand-4',
+  'hand-5',
+  'hand-6',
+  'idea',
+  'information-security',
+  'letter-cancel-error',
+  'letter-check-okay',
+  'letter-close',
+  'letter-empty',
+  'letter-error-empty',
+  'letter-invite-blip',
+  'letter-search-avatars',
+  'letter-search-question',
+  'lock-1',
+  'lock-2',
+  'map',
+  'message-notification',
+  'new-feature',
+  'paper-plane',
+  'password',
+  'pie-chart',
+  'pizza',
+  'rocket',
+  'send-ticket',
+  'speak-bubble',
+  'ticket',
+];
 
 const illustrationStyles = {
   width: '200px',
@@ -287,6 +442,51 @@ export const IllustrationsLogoIntegration = () => {
     defaultArray.push(
       <div style={illustrationStyles}>
         <bds-illustration type="logo-integration" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const IllustrationsSegmented = () => {
+  const defaultArray = [];
+
+  segmented.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="segmented" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const IllustrationsSmartphone = () => {
+  const defaultArray = [];
+
+  smartphone.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="smartphone" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+};
+
+export const IllustrationsSpots = () => {
+  const defaultArray = [];
+
+  spots.forEach((name) => {
+    defaultArray.push(
+      <div style={illustrationStyles}>
+        <bds-illustration type="spots" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );

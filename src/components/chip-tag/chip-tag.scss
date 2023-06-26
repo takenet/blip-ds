@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  max-width: 100%;
 
   .chip_tag {
     display: flex;
@@ -8,46 +9,58 @@
     height: 24px;
     border-radius: 12px;
     padding: 2px 4px;
-    align-items: center;
     box-sizing: border-box;
 
+    &--container-text {
+      &--full {
+        width: 100%;
+      }
+      &--half {
+        width: calc(100% - 16px);
+      }
+    }
+
     &--icon {
-    display: flex;
-    align-items: center;
-    width: 16px;
-    height: 20px;
-    color: $color-neutral-dark-city;
-  }
+      display: flex;
+      align-items: center;
+      width: 16px;
+      height: 20px;
+    }
     &--text {
       display: flex;
       align-items: center;
       height: 20px;
       margin: 0 8px;
-      color: $color-neutral-dark-city;
       font-family: $font-family;
     }
     &--default {
-      background-color: $color-primary-light;
+      background-color: $color-system;
+      color: $color-content-din;
     }
     &--info {
-      background-color: $color-illustration-blue-genie;
+      background-color: $color-info;
+      color: $color-content-din;
     }
     &--success {
-      background-color: $color-primary-greens-mint;
+      background-color: $color-success;
+      color: $color-content-din;
     }
     &--warning {
-      background-color: $color-primary-yellows-corn;
+      background-color: $color-warning;
+      color: $color-content-din;
     }
     &--danger {
-      background-color: $color-extend-reds-flower;
+      background-color: $color-error;
+      color: $color-content-din;
     }
     &--outline {
-      background-color: $color-neutral-light-snow;
-      border: 1px solid $color-neutral-medium-silver;
+      background-color: $color-surface-1;
+      border: 1px solid $color-border-1;
+      color: $color-content-default;
     }
     &--disabled {
-      background-color: $color-neutral-light-whisper;
+      background-color: $color-surface-3;
+      color: $color-content-default;
     }
   }
-  
 }

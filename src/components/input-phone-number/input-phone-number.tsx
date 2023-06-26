@@ -17,6 +17,8 @@ export class InputPhoneNumber {
 
   @State() selectedCountry: string;
 
+  @State() isoCode: string;
+
   /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
@@ -143,6 +145,7 @@ export class InputPhoneNumber {
     const countries = countriesJson['default'];
     const flagsNames = Object.keys(countries);
     this.selectedCountry = this.selectedCountry || flagsNames[0];
+    this.isoCode = this.isoCode || flagsNames[0];
   }
 
   async connectedCallback() {
@@ -188,13 +191,20 @@ export class InputPhoneNumber {
 
   @Watch('text')
   protected handleInputChange(): void {
-    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value, country: this.selectedCountry });
+    this.bdsPhoneNumberChange.emit({
+      value: this.text,
+      code: this.value,
+      isoCode: this.isoCode,
+      country: this.selectedCountry,
+    });
   }
 
   private numberValidation() {
     if (numberValidation(this.nativeInput.value)) {
       this.validationMesage = this.numberErrorMessage;
       this.validationDanger = true;
+    } else {
+      this.validationDanger = false;
     }
   }
 
@@ -211,9 +221,28 @@ export class InputPhoneNumber {
 
     this.value = value.code;
     this.selectedCountry = value.flag;
-    this.bdsPhoneNumberChange.emit({ value: this.text, code: this.value, country: this.selectedCountry });
+    this.isoCode = value.isoCode;
+    this.bdsPhoneNumberChange.emit({
+      value: this.text,
+      code: this.value,
+      isoCode: this.isoCode,
+      country: this.selectedCountry,
+    });
     this.toggle();
   };
+
+  @Method()
+  async changeCountry(code, isoCode, flag) {
+    this.value = code;
+    this.selectedCountry = flag;
+    this.isoCode = isoCode;
+    this.bdsPhoneNumberChange.emit({
+      value: this.text,
+      code: this.value,
+      isoCode: this.isoCode,
+      country: this.selectedCountry,
+    });
+  }
 
   private setFocusWrapper = (): void => {
     if (this.nativeInput) {
@@ -295,7 +324,9 @@ export class InputPhoneNumber {
           <div class="input__message__icon">
             <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
           </div>
-          <bds-typo variant="fs-12">{message}</bds-typo>
+          <bds-typo class="input__message__text" variant="fs-12">
+            {message}
+          </bds-typo>
         </div>
       );
     }
@@ -349,7 +380,7 @@ export class InputPhoneNumber {
                   class={{ input__container__text: true }}
                   type="phonenumber"
                   required={this.required}
-                  pattern="[0-9]*"
+                  pattern="/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/"
                   ref={this.refNativeInput}
                   onInput={this.changedInputValue}
                   onFocus={this.onFocus}
@@ -357,7 +388,7 @@ export class InputPhoneNumber {
                   value={this.text}
                   disabled={this.disabled}
                   data-test={this.dataTest}
-                  {...{ maxlength: this.value === '+55' ? 11 : null }}
+                  {...{ maxlength: this.value === '+55' ? 25 : null }}
                 ></input>
               </div>
             </div>
@@ -377,7 +408,8 @@ export class InputPhoneNumber {
                 key={flag}
                 onOptionSelected={this.handler}
                 selected={flag == this.selectedCountry}
-                value={{ code: countries[flag].code, flag }}
+                value={{ code: countries[flag].code, isoCode: countries[flag].isoCode, flag }}
+                status={countries[flag].isoCode}
               >
                 {countries[flag].name} {countries[flag].code}
               </bds-select-option>

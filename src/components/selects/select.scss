@@ -1,23 +1,17 @@
 @import 'resets';
 @import 'mixins';
 
-$input-padding: 8px 4px 9px 12px;
-$input-padding-label: 7px 4px 8px 12px;
+$input-padding: 10px 4px 10px 12px;
+$input-padding-label: 7px 4px 7px 12px;
 $input-width: 100%;
 $input_expanded: 100%;
 $input_fixed: 140px;
 $select-options-box-shadow: 0px 2px 8px rgba(96, 123, 153, 0.3);
 $select-options-radius: 8px;
-$select-options-max-height: 250px;
+$select-options-max-height: 200px;
 
 :host {
   display: block;
-}
-
-@mixin input-text {
-  font-family: $font-family;
-  font-size: $fs-14;
-  line-height: $line-hight-plus;
 }
 
 @mixin input-text {
@@ -45,13 +39,12 @@ $select-options-max-height: 250px;
   $color-input-border: $border;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
-  $color-input-disable-background: $color-neutral-light-whisper;
-
-  @include input-border($color-input-border);
 
   @if ($name == 'disabled') {
-    background: $color-input-disable-background;
+    background: $color-surface-2;
   }
+
+  @include input-border($color-input-border);
 
   // States
   &:hover {
@@ -64,11 +57,6 @@ $select-options-max-height: 250px;
 
   &.input--pressed {
     @include input-border($color-input-primary, $color-input-focus);
-  }
-
-  .input__icon {
-    color: $color-input-primary;
-    background-color: $color-input-secondary;
   }
 
   .input__container__label {
@@ -112,12 +100,12 @@ $select-options-max-height: 250px;
   input {
     box-shadow: inherit;
     &::placeholder {
-      color: $color-neutral-medium-silver;
+      color: $color-content-ghost;
       opacity: 1;
     }
 
     &::-webkit-input-placeholder {
-      color: $color-neutral-medium-silver;
+      color: $color-content-ghost;
       opacity: 1;
     }
   }
@@ -134,47 +122,86 @@ $select-options-max-height: 250px;
   max-width: 100%;
   max-height: 100%;
 
-  background: $color-neutral-light-snow;
+  background: $color-surface-1;
 
   &--state {
     &-primary {
+
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-primary;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'primary',
-        $color-primary-main,
-        $color-disabled-bg,
-        $color-neutral-medium-cloud,
-        $color-neutral-dark-city,
-        $color-neutral-medium-wave,
-        $color-primary-main,
-        rgba($color-primary-main, 0.4)
+        $color-primary,
+        $color-surface-1,
+        $color-content-default,
+        $color-content-default,
+        $color-border-1,
+        $color-primary,
+        $color-info
       );
     }
 
     &-danger {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-delete;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
       @include input-theme(
         'danger',
-        $color-extend-reds-delete,
-        $color-extend-reds-flower,
-        $color-neutral-medium-cloud,
-        $color-neutral-dark-city,
-        $color-extend-reds-delete,
-        $color-extend-reds-delete,
-        $color-extend-reds-flower
+        $color-delete,
+        $color-error,
+        $color-delete,
+        $color-content-default,
+        $color-delete,
+        $color-delete,
+        $color-error
       );
     }
 
     &-disabled {
+      .input__icon {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $color-primary;
+          z-index: 0;
+          opacity: 50%;
+          border-radius: 8px;
+        }
+      }
+      opacity: 50%;
+      pointer-events: none;
       cursor: not-allowed;
-      @include input-theme(
-        'disabled',
-        $color-neutral-medium-silver,
-        $color-neutral-light-breeze,
-        $color-neutral-medium-silver,
-        $color-neutral-medium-silver,
-        $color-neutral-light-box,
-        $color-neutral-medium-silver,
-        $color-neutral-light-box
-      );
+      background: $color-surface-2;
     }
   }
 
@@ -221,9 +248,9 @@ $select-options-max-height: 250px;
 
     &__text {
       @include reset-input();
-      width: 100%;
       @include input-text();
       @include custom-scroll();
+      width: 100%;
 
       resize: none;
       cursor: inherit;
@@ -236,7 +263,7 @@ $select-options-max-height: 250px;
     height: 20px;
     margin: 3.7px 2.5px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: $color-neutral-medium-cloud;
+    color: $color-content-ghost;
     word-break: break-word;
     height: auto;
     min-height: 20px;
@@ -253,7 +280,12 @@ $select-options-max-height: 250px;
     }
 
     &--danger {
-      color: $color-extend-reds-delete;
+      .bds-icon {
+        color: $color-delete;
+      }
+      .input__message__text {
+        color: $color-delete;
+      }
     }
   }
 }
@@ -262,44 +294,44 @@ $select-options-max-height: 250px;
   position: relative;
   outline: none;
 
+  & .element_input {
+    overflow: hidden;
+  }
+
   &__icon {
-    color: $color-neutral-medium-cloud;
+    color: $color-content-ghost;
     display: flex;
   }
 
   &__options {
     @include custom-scroll;
 
-    background: $color-neutral-light-breeze;
+    background: $color-surface-2;
     width: 100%;
-    max-height: 250px;
+    max-height: 200px;
+    height: fit-content;
     position: absolute;
-    top: 99%;
     left: 0;
     border-radius: $select-options-radius;
     box-shadow: $select-options-box-shadow;
     overflow-y: auto;
     z-index: 2;
-    margin-top: 4px;
-
-    transition: transform 0.25s, opacity 0.75s, visibility 0.75s;
-    transform-origin: top left;
-    transform: scaleY(0);
-    visibility: hidden;
+    pointer-events: none;
     opacity: 0;
 
     box-shadow: 0px 2px 12px $shadow-drop;
 
     &--open {
-      visibility: visible;
-      transform: scale(1);
       opacity: 1;
+      pointer-events: auto;
     }
 
     &--position-top {
-      top: auto;
-      bottom: 100%;
-      transform-origin: bottom left;
+      bottom: calc(100% + 4px);
+    }
+
+    &--position-bottom {
+      top: calc(100% + 4px);
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Element, h, Prop, Method, Event, EventEmitter, Listen, Watch, State } from '@stencil/core';
-import { Option, SelectChangeEventDetail } from '../select-interface';
+import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
+import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
 import { emailValidation, whitespaceValidation } from '../../../utils/validations';
 import { InputChipsTypes } from '../../input-chips/input-chips-interface';
 
@@ -10,12 +11,17 @@ import { InputChipsTypes } from '../../input-chips/input-chips-interface';
 })
 export class SelectChips {
   private nativeInput?: HTMLInputElement;
+  private dropElement?: HTMLElement;
+  private iconDropElement?: HTMLBdsIconElement;
+  private positionHeightDrop?: SelectOptionsPositionType;
 
   @State() internalOptions: Option[];
 
   @Element() el!: HTMLElement;
 
   @State() isOpen? = false;
+
+  @State() intoView?: HTMLElement = null;
 
   /**
    * Used to set the danger behavior by the internal validators
@@ -135,6 +141,10 @@ export class SelectChips {
   @Prop() placeholder?: string = '';
 
   /**
+   * Set the placement of the options menu. Can be 'bottom' or 'top'.
+   */
+  @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'bottom';
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -173,6 +183,16 @@ export class SelectChips {
    * Emitted when the chip has added.
    */
   @Event() bdsSubmit!: EventEmitter;
+
+  @Watch('isOpen')
+  protected isOpenChanged(isOpen: boolean): void {
+    if (this.positionHeightDrop == 'bottom') {
+      this.iconDropElement.name = this.isOpen ? 'arrow-up' : 'arrow-down';
+    } else {
+      this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
+    }
+    if (isOpen) this.validatePositionDrop();
+  }
 
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
@@ -234,7 +254,13 @@ export class SelectChips {
 
   @Method()
   async add(value: string): Promise<void> {
-    this.setChip(value);
+    this.handleDelimiters();
+    if (value) {
+      this.setChip(value);
+    } else {
+      this.setChip(this.value);
+    }
+    this.value = '';
   }
 
   @Method()
@@ -249,10 +275,28 @@ export class SelectChips {
 
   componentWillLoad() {
     this.valueChanged();
+    this.intoView = getScrollParent(this.el);
   }
 
   async componentDidLoad() {
     await this.resetFilterOptions();
+    this.validatePositionDrop();
+  }
+
+  private validatePositionDrop() {
+    const positionValue = positionAbsoluteElement({
+      actionElement: this.el,
+      changedElement: this.dropElement,
+      intoView: this.intoView,
+    });
+    this.positionHeightDrop = positionValue.y as SelectOptionsPositionType;
+    if (positionValue.y == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
 
   async connectedCallback() {
@@ -308,6 +352,14 @@ export class SelectChips {
       }
     }
   }
+
+  private refDropdown = (el: HTMLElement): void => {
+    this.dropElement = el;
+  };
+
+  private refIconDrop = (el: HTMLBdsIconElement) => {
+    this.iconDropElement = el;
+  };
 
   private existsChip(optionChip: string, chips: string[]) {
     return chips.some((chip) => optionChip === chip);
@@ -556,7 +608,7 @@ export class SelectChips {
           <bds-chip-clickable
             id={id}
             key={id}
-            color="default"
+            color="outline"
             close={!this.disabled}
             onChipClickableClose={(event) => this.removeChip(event)}
           >
@@ -569,7 +621,7 @@ export class SelectChips {
             <bds-chip-clickable
               id={id}
               key={id}
-              color="default"
+              color="outline"
               close={!this.disabled}
               onChipClickableClose={(event) => this.removeChip(event)}
             >
@@ -640,7 +692,6 @@ export class SelectChips {
   }
 
   render() {
-    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
     const isPressed = this.isPressed && !this.disabled;
 
     let internalOptions: Option[] = [];
@@ -697,12 +748,13 @@ export class SelectChips {
               </div>
             </div>
             <div class="select__icon">
-              <bds-icon size="small" name={iconArrow} color="inherit"></bds-icon>
+              <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
             </div>
           </div>
           {this.renderMessage()}
         </div>
         <div
+          ref={(el) => this.refDropdown(el)}
           class={{
             select__options: true,
             'select__options--open': this.isOpen,

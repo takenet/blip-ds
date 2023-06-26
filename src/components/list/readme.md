@@ -1,4 +1,4 @@
-# bds-list
+# bds-list-item
 
 
 
@@ -14,6 +14,7 @@
 | `avatarThumbnail` | `avatar-thumbnail` | AvatarThumbnail. Used to insert the avatar photo.                                                                                         | `string`                                         | `null`  |
 | `checked`         | `checked`          |                                                                                                                                           | `boolean`                                        | `false` |
 | `chips`           | `chips`            | The chips on the component Should be passed this way: chips='["chip1", "chip2"]'                                                          | `string \| string[]`                             | `[]`    |
+| `clickable`       | `clickable`        | Clickable. Used to define if the item is clickable or not.                                                                                | `boolean`                                        | `false` |
 | `icon`            | `icon`             | Icon. Used to add icon in list item.                                                                                                      | `string`                                         | `null`  |
 | `secondaryText`   | `secondary-text`   | SecondaryText. Used to insert a secondaryText in the display item.                                                                        | `string`                                         | `null`  |
 | `text`            | `text`             | Text. Used to insert a text in the display item.                                                                                          | `string`                                         | `null`  |
@@ -34,6 +35,7 @@
 ### Used by
 
  - [bds-list](.)
+ - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -70,6 +72,7 @@ graph TD;
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
   bds-list --> bds-list-item
+  bds-test-component --> bds-list-item
   style bds-list-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

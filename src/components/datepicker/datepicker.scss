@@ -35,7 +35,7 @@
 
     &__icon {
       cursor: pointer;
-      color: $color-neutral-medium-cloud;
+      color: $color-content-ghost;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -47,7 +47,7 @@
 
       &:hover {
         bds-icon:first-child {
-          color: $color-primary-main;
+          color: $color-primary;
         }
       }
     }
@@ -58,7 +58,7 @@
     pointer-events: none;
     top: 0;
     left: 0;
-    background-color: $color-neutral-light-snow;
+    background-color: $color-surface-1;
     box-shadow: $shadow-box;
     border-radius: 8px;
     padding: 16px;
@@ -76,8 +76,8 @@
     &__message {
       padding: 8px 16px;
       border-radius: 8px;
-      background-color: $color-primary-yellows-corn;
-      color: $color-neutral-dark-suit;
+      background-color: $color-warning;
+      color: $color-content-din;
       display: flex;
       align-items: center;
       margin-bottom: 24px;
@@ -93,7 +93,7 @@
       justify-content: flex-end;
       padding-top: 16px;
       margin-top: 16px;
-      border-top: 1px solid $color-neutral-medium-wave;
+      border-top: 1px solid $color-content-ghost;
 
       bds-button {
         margin-left: 16px;
@@ -130,35 +130,36 @@
           width: 100%;
           max-width: 100%;
           max-height: 100%;
-          background: $color-neutral-light-snow;
+          background: $color-surface-1;
+          color: $color-content-default;
 
           @include input-theme(
             'primary',
-            $color-primary-main,
-            $color-disabled-bg,
-            $color-neutral-medium-cloud,
-            $color-neutral-dark-city,
-            $color-neutral-medium-wave,
-            $color-primary-main,
-            rgba($color-primary-main, 0.4)
+            $color-primary,
+            $color-surface-3,
+            $color-content-default,
+            $color-content-default,
+            $color-border-1,
+            $color-primary,
+            $color-info
           );
 
           &__disable {
             cursor: not-allowed;
             @include input-theme(
               'disabled',
-              $color-neutral-medium-silver,
-              $color-neutral-light-breeze,
-              $color-neutral-medium-silver,
-              $color-neutral-medium-silver,
-              $color-neutral-light-box,
-              $color-neutral-medium-silver,
-              $color-neutral-light-box
+              $color-content-disable,
+              $color-surface-3,
+              $color-content-disable,
+              $color-content-disable,
+              $color-border-1,
+              $color-surface-3,
+              $color-surface-3
             );
           }
 
           & .icon-arrow {
-            color: $color-neutral-medium-cloud;
+            color: $color-content-ghost;
             display: flex;
           }
         }
@@ -166,7 +167,7 @@
         &__options {
           @include custom-scroll;
 
-          background: $color-neutral-light-breeze;
+          background: $color-surface-1;
           width: 100%;
           max-height: 250px;
           position: absolute;
@@ -193,7 +194,7 @@
 
       &__icon {
         cursor: pointer;
-        color: $color-neutral-dark-rooftop;
+        color: $color-content-disable;
       }
 
       & .arrow-left {
@@ -223,7 +224,7 @@
         width: 40px;
         height: 40px;
         text-align: center;
-        color: $color-neutral-medium-cloud;
+        color: $color-content-ghost;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -258,7 +259,8 @@
                 content: '';
                 position: absolute;
                 inset: 4px 0px;
-                background-color: $color-disabled-bg;
+                background-color: $color-primary;
+                opacity: 0.25;
               }
             }
 
@@ -286,39 +288,37 @@
               justify-content: center;
               align-items: center;
               border-radius: 100%;
-              color: $color-neutral-dark-skate;
+              color: $color-content-default;
               border: 1px solid transparent;
               cursor: pointer;
 
               &:hover {
-                background-color: $color-neutral-light-snow;
-                color: $color-primary-main;
-                border-color: $color-primary-main;
+                background-color: $color-surface-1;
+                color: $color-primary;
+                border-color: $color-primary;
               }
             }
 
             &__current {
-              background-color: $color-neutral-light-snow;
-              color: $color-primary-main;
-              border-color: $color-primary-main;
+              background-color: $color-surface-1;
+              color: $color-primary;
+              border-color: $color-primary;
             }
 
             &__selected {
-              background-color: $color-primary-main;
-              color: $color-neutral-light-snow;
-              border-color: $color-primary-main;
+              background-color: $color-primary;
+              color: $color-content-bright;
 
               &:hover {
-                background-color: $color-primary-main;
-                color: $color-neutral-light-snow;
-                border-color: $color-primary-main;
+                background-color: $color-primary;
+                color: $color-content-bright;
               }
             }
 
             &__disable {
               pointer-events: none;
               background-color: transparent;
-              color: $color-neutral-medium-cloud;
+              color: $color-content-ghost;
             }
           }
         }
@@ -342,7 +342,7 @@
       &__futureMonth {
         padding-left: 80px;
         text-align: center;
-        color: $color-neutral-dark-city;
+        color: $color-content-default;
       }
     }
 
