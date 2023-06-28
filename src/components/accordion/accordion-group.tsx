@@ -20,6 +20,10 @@ export class AccordionGroup {
    * bdsAccordionCloseAll. Event to return value when accordion is closed.
    */
   @Event() bdsAccordionCloseAll?: EventEmitter;
+  /**
+   * bdsAccordionOpenAll. Event to return value when accordion is opend.
+   */
+  @Event() bdsAccordionOpenAll?: EventEmitter;
 
   @Method()
   async closeAll(actNumber) {
@@ -29,6 +33,18 @@ export class AccordionGroup {
         if (actNumber != i) this.accordionsElement[i].close();
       } else {
         this.accordionsElement[i].close();
+      }
+    }
+  }
+
+  @Method()
+  async openAll(actNumber) {
+    this.bdsAccordionOpenAll.emit();
+    for (let i = 0; i < this.accordionsElement.length; i++) {
+      if (this.collapse != 'multiple') {
+        if (actNumber != i) this.accordionsElement[i].open();
+      } else {
+        this.accordionsElement[i].open();
       }
     }
   }
