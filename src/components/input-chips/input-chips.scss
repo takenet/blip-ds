@@ -235,6 +235,11 @@ $input_fixed: 140px;
     }
   }
 
+  & .icon-success {
+    color: $color-success;
+    margin-left: 4px;
+  }
+
   &--label {
     padding: $input-padding-label;
   }

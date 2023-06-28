@@ -21,6 +21,8 @@
 | `placeholder`           | `placeholder`             | Placeholder for native input element.                                                                                                                                            | `string`                          | `''`         |
 | `requiredErrorMessage`  | `required-error-message`  | Error message when input is required                                                                                                                                             | `string`                          | `undefined`  |
 | `size`                  | `size`                    | Set the component size. Can be one of: 'short' \| 'standard' \| 'tall';                                                                                                          | `"short" \| "standard" \| "tall"` | `'standard'` |
+| `success`               | `success`                 | Add state success on input, use for use feedback.                                                                                                                                | `boolean`                         | `false`      |
+| `successMessage`        | `success-message`         | Indicated to pass an feeback to user.                                                                                                                                            | `string`                          | `''`         |
 | `value`                 | `value`                   | The value of the input.                                                                                                                                                          | `string`                          | `''`         |
 
 

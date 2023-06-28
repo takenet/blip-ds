@@ -34,7 +34,7 @@ $input-width: 100%;
   @if ($name == 'disabled') {
     background: $color-surface-2;
   }
-  
+
   @include input-border($color-input-border);
 
   // States
@@ -103,7 +103,6 @@ $input-width: 100%;
 
   &--state {
     &-primary {
-
       .input__icon {
         position: relative;
         &::before {
@@ -207,6 +206,11 @@ $input-width: 100%;
       cursor: not-allowed;
       background: $color-surface-2;
     }
+  }
+
+  & .icon-success {
+    color: $color-success;
+    margin-left: 4px;
   }
 
   &--label {
