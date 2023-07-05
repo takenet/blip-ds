@@ -1,0 +1,34 @@
+.open-functions {
+  background-color: #0096fa;
+  width: 56px;
+  height: 56px;
+  margin: 16px;
+  align-items: center;
+  border-radius: 8px;
+  position: absolute;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+#themes {
+  visibility: hidden;
+  display: none;
+  padding-right: 16px;
+  transition: visibility 1.6s ease 1s;
+}
+
+.open-functions:hover {
+  width: 268px;
+  padding-right: 0;
+  overflow: visible;
+}
+
+.open-functions:hover #themes {
+  visibility: visible;
+  display: block;
+}
+
+bds-icon {
+  padding: 0 16px;
+  color: #ffffff;
+}

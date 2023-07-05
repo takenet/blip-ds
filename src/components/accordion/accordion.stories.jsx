@@ -1,12 +1,17 @@
 import React from 'react';
 import { useEffect } from 'react';
 import readme from './readme.md';
+import { BdsAccordion, BdsAccordionBody, BdsAccordionHeader, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Accordion',
   tags: ['autodocs'],
   parameters: {
     notes: { markdown: readme },
+    docs: {
+      canvas: { sourceState: 'shown'},
+      source: { type: 'code'}
+    }
   },
 };
 
@@ -15,7 +20,7 @@ const paragraph =
 
 export const accordionProps = (args) => {
   return (
-    <bds-accordion start-open={args.startOpen}>
+    <BdsAccordion start-open={args.startOpen}>
       <bds-accordion-header
         accordion-title={args.accordionTitle}
         icon={args.icon}
@@ -25,7 +30,7 @@ export const accordionProps = (args) => {
       <bds-accordion-body>
         <bds-typo variant="fs-16">{paragraph}</bds-typo>
       </bds-accordion-body>
-    </bds-accordion>
+    </BdsAccordion>
   );
 };
 
@@ -132,12 +137,12 @@ export const accordionEvent = () => {
     });
   });
   return (
-    <bds-accordion id="accEvent">
-      <bds-accordion-header accordion-title="Título do accordion"></bds-accordion-header>
-      <bds-accordion-body>
-        <bds-typo variant="fs-16">{paragraph}</bds-typo>
-      </bds-accordion-body>
-    </bds-accordion>
+    <BdsAccordion id="accEvent">
+      <BdsAccordionHeader accordion-title="Título do accordion"></BdsAccordionHeader>
+      <BdsAccordionBody>
+        <BdsTypo variant="fs-16">{paragraph}</BdsTypo>
+      </BdsAccordionBody>
+    </BdsAccordion>
   );
 };
 
