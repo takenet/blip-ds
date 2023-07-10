@@ -36,7 +36,6 @@ $button-padding-left-right: 16px;
 
   &:hover,
   &:active {
-
     @if ($color) {
       color: $color;
     }
@@ -94,7 +93,7 @@ $button-padding-left-right: 16px;
     @include padding-button-top-bottom($button-size-short, $height-short);
 
     &--icon {
-      @include padding-button-top-bottom($button-size-short-icon, $height-standard);
+      @include padding-button-top-bottom($button-size-short-icon, $height-short);
     }
   }
 
@@ -186,7 +185,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
+      @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
     }
   }
 
@@ -223,7 +222,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
+      @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
     }
   }
 
@@ -236,7 +235,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button( $color-disabled-wrong);
+      @include disable-button($color-disabled-wrong);
     }
   }
 
@@ -262,7 +261,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button( $color-neutral-medium-cloud, 1px dashed $color-neutral-medium-cloud);
+      @include disable-button($color-neutral-medium-cloud, 1px dashed $color-neutral-medium-cloud);
     }
   }
 
@@ -284,7 +283,7 @@ $button-padding-left-right: 16px;
     }
 
     &--disabled {
-      @include disable-button( $color-neutral-medium-cloud);
+      @include disable-button($color-neutral-medium-cloud);
     }
   }
 
