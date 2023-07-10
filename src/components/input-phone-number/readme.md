@@ -20,6 +20,8 @@
 | `options`              | --                       | The options of select.                                                  | `Option[]` | `[]`             |
 | `required`             | `required`               | If `true`, the input value will be required.                            | `boolean`  | `undefined`      |
 | `requiredErrorMessage` | `required-error-message` | Error message when input is required                                    | `string`   | `undefined`      |
+| `success`              | `success`                | Add state success on input, use for use feedback.                       | `boolean`  | `false`          |
+| `successMessage`       | `success-message`        | Indicated to pass an feeback to user.                                   | `string`   | `''`             |
 | `text`                 | `text`                   | The value of the phone number input.                                    | `string`   | `''`             |
 | `value`                | `value`                  | the value of the select.                                                | `string`   | `'+55'`          |
 

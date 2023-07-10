@@ -99,7 +99,10 @@ export class InputEditable {
    * Indicated to pass an feeback to user.
    */
   @Prop() errorMessage?: string = '';
-
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Indicated to pass a help to the user in complex filling.
    */
@@ -114,7 +117,10 @@ export class InputEditable {
    * Add state danger on input, use for use feedback. If true avoid save confirmation.
    */
   @Prop({ mutable: true, reflect: true }) danger?: boolean = false;
-
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * Emitted when input text confirm.
    */
@@ -251,12 +257,17 @@ export class InputEditable {
     }
   };
   private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
 
     if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -301,6 +312,7 @@ export class InputEditable {
                   select: true,
                   'input--state-primary': !this.danger && !this.validationDanger,
                   'input--state-danger': this.danger || this.validationDanger,
+                  'input--state-success': this.success,
                   'input--pressed': this.isPressed,
                 }}
                 onClick={this.onClickWrapper}
@@ -322,6 +334,7 @@ export class InputEditable {
                     data-test={this.dataTest}
                   ></input>
                 </div>
+                {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
               </div>
               {this.renderMessage()}
             </div>

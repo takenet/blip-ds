@@ -70,7 +70,10 @@ export class InputChips {
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true, mutable: true }) danger? = false;
-
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * The value of the input.
    */
@@ -95,7 +98,10 @@ export class InputChips {
    * Indicated to pass a help the user in complex filling.
    */
   @Prop() helperMessage?: string = '';
-
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Prop to insert the name of the input
    */
@@ -443,12 +449,17 @@ export class InputChips {
   }
 
   private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
 
     if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -476,6 +487,7 @@ export class InputChips {
               input: true,
               'input--state-primary': !this.danger && !this.validationDanger,
               'input--state-danger': this.danger || this.validationDanger,
+              'input--state-success': this.success,
               'input--state-disabled': this.disabled,
               'input--label': !!this.label,
               'input--pressed': isPressed,
@@ -505,6 +517,7 @@ export class InputChips {
                 ></input>
               </div>
             </div>
+            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
             <slot name="input-right"></slot>
           </div>
           {this.renderMessage()}
