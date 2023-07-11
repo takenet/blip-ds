@@ -2,7 +2,7 @@
   background-color: #0096fa;
   width: 56px;
   height: 56px;
-  margin: 16px;
+  margin: 4px;
   align-items: center;
   border-radius: 8px;
   position: absolute;
@@ -28,7 +28,7 @@
   display: block;
 }
 
-bds-icon {
+.open-config {
   padding: 0 16px;
   color: #ffffff;
 }

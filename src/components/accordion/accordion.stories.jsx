@@ -137,12 +137,14 @@ export const accordionEvent = () => {
     });
   });
   return (
-    <BdsAccordion id="accEvent">
+    <bds-grid style={{minHeight: "200px"}}>
+      <BdsAccordion id="accEvent">
       <BdsAccordionHeader accordion-title="Título do accordion"></BdsAccordionHeader>
       <BdsAccordionBody>
         <BdsTypo variant="fs-16">{paragraph}</BdsTypo>
       </BdsAccordionBody>
     </BdsAccordion>
+    </bds-grid>
   );
 };
 
@@ -247,7 +249,7 @@ export const accordionGroupEvent = () => {
     close.closeAll();
   };
   return (
-    <bds-grid direction="column" gap="2">
+    <bds-grid direction="column" gap="2" style={{minHeight: "420px"}}>
       <bds-button onClick={() => handleCloseAll('accGroupEvent')} variant="primary" size="short">
         Close All
       </bds-button>
@@ -268,6 +270,17 @@ export const accordionGroupEvent = () => {
     </bds-grid>
   );
 };
+
+
+
+
+
+
+// discontinued examples
+
+
+
+
 
 export const accordionDefault = (args) => {
   return (
