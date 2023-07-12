@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop } from '@stencil/core';
 
-export type Themes = 'light' | 'dark';
+export type Themes = 'light' | 'dark' | 'high-contrast';
 
 @Component({
   tag: 'bds-theme-provider',
