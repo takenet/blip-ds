@@ -385,7 +385,9 @@ export class InputPhoneNumber {
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
                 <div class="select-phone-number__country-code">
-                  <bds-typo variant="fs-14">{this.value}</bds-typo>
+                  <bds-typo no-wrap="true" variant="fs-14">
+                    {this.value}
+                  </bds-typo>
                 </div>
                 <input
                   class={{ input__container__text: true }}
