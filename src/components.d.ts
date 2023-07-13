@@ -25,7 +25,7 @@ import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-import { activeMode } from "./components/dropdown/dropdown";
+import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
@@ -578,6 +578,10 @@ export namespace Components {
           * Open. Used to open/close the dropdown.
          */
         "open"?: boolean;
+        /**
+          * Used to set tooltip position
+         */
+        "position"?: DropdownPostionType;
         "toggle": () => Promise<void>;
     }
     interface BdsExpansionPanel {
@@ -3263,6 +3267,10 @@ declare namespace LocalJSX {
           * Open. Used to open/close the dropdown.
          */
         "open"?: boolean;
+        /**
+          * Used to set tooltip position
+         */
+        "position"?: DropdownPostionType;
     }
     interface BdsExpansionPanel {
     }
