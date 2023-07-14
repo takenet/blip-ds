@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                      | Type     | Default     |
-| ------------- | -------------- | ------------------------------------------------ | -------- | ----------- |
-| `pages`       | `pages`        | Prop to recive the number of pages.              | `number` | `undefined` |
-| `startedPage` | `started-page` | When the component are render this page are set. | `number` | `undefined` |
+| Property          | Attribute          | Description                                                      | Type                          | Default     |
+| ----------------- | ------------------ | ---------------------------------------------------------------- | ----------------------------- | ----------- |
+| `optionsPosition` | `options-position` | Set the placement of the options menu. Can be 'bottom' or 'top'. | `"auto" \| "bottom" \| "top"` | `'auto'`    |
+| `pages`           | `pages`            | Prop to recive the number of pages.                              | `number`                      | `undefined` |
+| `startedPage`     | `started-page`     | When the component are render this page are set.                 | `number`                      | `undefined` |
 
 
 ## Events
