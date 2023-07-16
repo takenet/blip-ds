@@ -73,12 +73,18 @@ export class InputPassword {
    * Indicated to pass an feeback to user.
    */
   @Prop() errorMessage?: string = '';
-
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true }) danger?: boolean = false;
-
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * used for add icon in input left. Uses the bds-icon component.
    */
@@ -225,12 +231,17 @@ export class InputPassword {
   }
 
   private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
 
     if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -262,6 +273,7 @@ export class InputPassword {
               input: true,
               'input--state-primary': !this.danger && !this.validationDanger,
               'input--state-danger': this.danger || this.validationDanger,
+              'input--state-success': this.success,
               'input--state-disabled': this.disabled,
               'input--label': !!this.label,
               'input--pressed': isPressed,
@@ -300,6 +312,7 @@ export class InputPassword {
             <div class="input__password--icon" onClick={this.toggleEyePassword}>
               <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
             </div>
+            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
           </div>
           {this.renderMessage()}
         </div>

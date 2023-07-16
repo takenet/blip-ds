@@ -906,6 +906,14 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
         "type": InputChipsTypes;
@@ -963,6 +971,14 @@ export namespace Components {
           * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
          */
         "size"?: SizeInputEditable;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * The value of the input.
          */
@@ -1035,6 +1051,14 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -1086,6 +1110,14 @@ export namespace Components {
           * Error message when input is required
          */
         "requiredErrorMessage": string;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * The value of the phone number input.
          */
@@ -1444,6 +1476,14 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * the value of the select.
          */
         "value"?: any | null;
@@ -1540,6 +1580,14 @@ export namespace Components {
         "placeholder"?: string;
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
@@ -3566,6 +3614,14 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
         "type"?: InputChipsTypes;
@@ -3647,6 +3703,14 @@ declare namespace LocalJSX {
           * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
          */
         "size"?: SizeInputEditable;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * The value of the input.
          */
@@ -3743,6 +3807,14 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -3812,6 +3884,14 @@ declare namespace LocalJSX {
           * Error message when input is required
          */
         "requiredErrorMessage"?: string;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * The value of the phone number input.
          */
@@ -4227,6 +4307,14 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * the value of the select.
          */
         "value"?: any | null;
@@ -4336,6 +4424,14 @@ declare namespace LocalJSX {
           * A tip for the user who can enter no controls.
          */
         "placeholder"?: string;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */

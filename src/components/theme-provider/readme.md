@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                          | Type                | Default   |
-| -------- | --------- | -------------------------------------------------------------------- | ------------------- | --------- |
-| `theme`  | `theme`   | Set what theme will be aplyed inside the component. 'light', 'dark'; | `"dark" \| "light"` | `'light'` |
+| Property | Attribute | Description                                                          | Type                                   | Default   |
+| -------- | --------- | -------------------------------------------------------------------- | -------------------------------------- | --------- |
+| `theme`  | `theme`   | Set what theme will be aplyed inside the component. 'light', 'dark'; | `"dark" \| "high-contrast" \| "light"` | `'light'` |
 
 
 ## Dependencies
