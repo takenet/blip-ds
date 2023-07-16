@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 import { ScrollDirection, Display, Overflow } from './tabs-interface';
-import { Component, ComponentInterface, Element, h, Host, Event, EventEmitter, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Event, EventEmitter, Listen, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-tabs',
   styleUrl: 'tabs.scss',
 })
-export class Tabs implements ComponentInterface {
+export class Tabs {
   tabsHeaderChildElement: HTMLElement;
   leftButtonChildElement: HTMLElement;
   rightButtonChildElement: HTMLElement;

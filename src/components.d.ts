@@ -73,6 +73,7 @@ export namespace Components {
           * Focus Selected. Used to add title in header accordion.
          */
         "collapse"?: collapses;
+        "openAll": (actNumber: any) => Promise<void>;
     }
     interface BdsAccordionHeader {
         /**
@@ -2691,6 +2692,10 @@ declare namespace LocalJSX {
           * bdsAccordionCloseAll. Event to return value when accordion is closed.
          */
         "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
+        /**
+          * bdsAccordionOpenAll. Event to return value when accordion is opend.
+         */
+        "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
     }
     interface BdsAccordionHeader {
         /**

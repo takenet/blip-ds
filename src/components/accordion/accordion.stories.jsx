@@ -1,31 +1,302 @@
 import React from 'react';
+import { useEffect } from 'react';
 import readme from './readme.md';
+import { BdsAccordion, BdsAccordionBody, BdsAccordionHeader, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Accordion',
+  tags: ['autodocs'],
   parameters: {
     notes: { markdown: readme },
+    docs: {
+      canvas: { sourceState: 'shown'},
+      source: { type: 'code'}
+    }
   },
 };
 
 const paragraph =
   'Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo associados.';
 
-export const accordionDefault = (args) => {
+export const accordionProps = (args) => {
   return (
-          <bds-grid padding="2" justify-content="center">
-            <bds-accordion>
-            <bds-accordion-header
-              accordion-title={args.title}
-              icon={args.icon}
-              avatar-name={args.avatarName}
-              avatar-thumb={args.avatarThumb}
-            ></bds-accordion-header>
+    <BdsAccordion start-open={args.startOpen}>
+      <bds-accordion-header
+        accordion-title={args.accordionTitle}
+        icon={args.icon}
+        avatar-name={args.avatarName}
+        avatar-thumb={args.avatarThumb}
+      ></bds-accordion-header>
+      <bds-accordion-body>
+        <bds-typo variant="fs-16">{paragraph}</bds-typo>
+      </bds-accordion-body>
+    </BdsAccordion>
+  );
+};
+
+accordionProps.argTypes = {
+  accordionTitle: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Coloque o titulo do cabeçalho.',
+    control: 'text',
+  },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina o ícone que será utilizado no botão (Apenas outline).',
+    control: 'text',
+  },
+  avatarName: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina o nome aplicado no avatar.',
+    control: 'text',
+  },
+  avatarThumb: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Insira o link da imagem.',
+    control: 'text',
+  },
+  startOpen: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Escolha se o accordion será iniciado aberto.',
+    control: 'boolean',
+  },
+};
+
+accordionProps.args = {
+  accordionTitle: 'Título do accordion',
+  avatarName: '',
+  avatarThumb: '',
+  icon: '',
+  startOpen: false,
+};
+
+export const accordionMethod = () => {
+  const btToggle = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.toggle();
+  };
+  const btOpen = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.open();
+  };
+  const btClose = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.close();
+  };
+  return (
+    <bds-grid direction="column" gap="2">
+      <bds-grid gap="2">
+        <bds-button onClick={() => btToggle('accordion')} variant="primary" size="short">
+          Toggle
+        </bds-button>
+        <bds-button onClick={() => btOpen('accordion')} variant="primary" size="short">
+          Open
+        </bds-button>
+        <bds-button onClick={() => btClose('accordion')} variant="primary" size="short">
+          Close
+        </bds-button>
+      </bds-grid>
+      <bds-accordion id="accordion">
+        <bds-accordion-header
+          accordion-title="Título do accordion"
+          icon=""
+          avatar-name=""
+          avatar-thumb=""
+        ></bds-accordion-header>
+        <bds-accordion-body>
+          <bds-typo variant="fs-16">{paragraph}</bds-typo>
+        </bds-accordion-body>
+      </bds-accordion>
+    </bds-grid>
+  );
+};
+
+export const accordionEvent = () => {
+  useEffect(() => {
+    const accToggle = document.getElementById('accEvent');
+    accToggle.addEventListener('bdsToggle', () => {
+      console.log('Evento toggle funcionando');
+    });
+    const accOpen = document.getElementById('accEvent');
+    accOpen.addEventListener('bdsAccordionOpen', () => {
+      console.log('Evento Open funcionando');
+    });
+    const accClose = document.getElementById('accEvent');
+    accClose.addEventListener('bdsAccordionClose', () => {
+      console.log('Evento Close funcionando');
+    });
+  });
+  return (
+    <bds-grid style={{minHeight: "200px"}}>
+      <BdsAccordion id="accEvent">
+      <BdsAccordionHeader accordion-title="Título do accordion"></BdsAccordionHeader>
+      <BdsAccordionBody>
+        <BdsTypo variant="fs-16">{paragraph}</BdsTypo>
+      </BdsAccordionBody>
+    </BdsAccordion>
+    </bds-grid>
+  );
+};
+
+export const accordionGroupProps = (args) => {
+  return (
+    <bds-accordion-group collapse={args.collapse}>
+      <bds-accordion start-open={args.startOpen}>
+        <bds-accordion-header
+          accordion-title={args.accordionTitle}
+          icon={args.icon}
+          avatar-name={args.avatarName}
+          avatar-thumb={args.avatarThumb}
+        ></bds-accordion-header>
+        <bds-accordion-body>
+          <bds-typo variant="fs-16">{paragraph}</bds-typo>
+        </bds-accordion-body>
+      </bds-accordion>
+      <bds-accordion start-open={args.startOpen}>
+        <bds-accordion-header
+          accordion-title={args.accordionTitle}
+          icon={args.icon}
+          avatar-name={args.avatarName}
+          avatar-thumb={args.avatarThumb}
+        ></bds-accordion-header>
+        <bds-accordion-body>
+          <bds-typo variant="fs-16">{paragraph}</bds-typo>
+        </bds-accordion-body>
+      </bds-accordion>
+    </bds-accordion-group>
+  );
+};
+accordionGroupProps.argTypes = {
+  ...accordionProps.argTypes,
+  collapse: {
+    table: {
+      defaultValue: { summary: 'single' },
+    },
+    description: 'Escolha o comportamento de abertura do accordion.',
+    options: ['single', 'multiple'],
+    control: 'select',
+  },
+};
+accordionGroupProps.args = {
+  accordionTitle: 'Título do accordion',
+  avatarName: '',
+  avatarThumb: '',
+  collapse: 'single',
+  icon: '',
+  startOpen: false,
+};
+
+export const accordionGroupMethod = () => {
+  const handleOpen = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.openAll();
+  };
+
+  const handleClose = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.closeAll();
+  };
+
+  return (
+    <bds-grid>
+      <bds-grid direction="column" gap="2">
+        <bds-grid gap="2">
+          <bds-button onClick={() => handleOpen('gp')} variant="primary" size="short">
+            OpenAll
+          </bds-button>
+          <bds-button onClick={() => handleClose('gp')} variant="primary" size="short">
+            CloseAll
+          </bds-button>
+        </bds-grid>
+        <bds-accordion-group id="gp" collapse="multiple">
+          <bds-accordion id="primeiro-accordion">
+            <bds-accordion-header accordion-title="Título do accordion"></bds-accordion-header>
             <bds-accordion-body>
-              <bds-typo variant="fs-16">{args.content}</bds-typo>
+              <bds-typo variant="fs-16">{paragraph}</bds-typo>
             </bds-accordion-body>
           </bds-accordion>
-          </bds-grid>
+          <bds-accordion id="segundo-accordion">
+            <bds-accordion-header accordion-title="Título do accordion"></bds-accordion-header>
+            <bds-accordion-body>
+              <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            </bds-accordion-body>
+          </bds-accordion>
+        </bds-accordion-group>
+      </bds-grid>
+    </bds-grid>
+  );
+};
+
+export const accordionGroupEvent = () => {
+  useEffect(() => {
+    const accGroupEvent = document.getElementById('accGroupEvent');
+    accGroupEvent.addEventListener('bdsAccordionCloseAll', () => {
+      console.log('Evento do accordion group funcionando');
+    });
+  });
+  const handleCloseAll = (id) => {
+    const close = document.getElementById(id);
+    close.closeAll();
+  };
+  return (
+    <bds-grid direction="column" gap="2" style={{minHeight: "420px"}}>
+      <bds-button onClick={() => handleCloseAll('accGroupEvent')} variant="primary" size="short">
+        Close All
+      </bds-button>
+      <bds-accordion-group id="accGroupEvent" collapse="multiple">
+        <bds-accordion>
+          <bds-accordion-header accordion-title="Título do accordion"></bds-accordion-header>
+          <bds-accordion-body>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+          </bds-accordion-body>
+        </bds-accordion>
+        <bds-accordion>
+          <bds-accordion-header accordion-title="Título do accordion"></bds-accordion-header>
+          <bds-accordion-body>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+          </bds-accordion-body>
+        </bds-accordion>
+      </bds-accordion-group>
+    </bds-grid>
+  );
+};
+
+
+
+
+
+
+// discontinued examples
+
+
+
+
+
+export const accordionDefault = (args) => {
+  return (
+    <bds-grid padding="2" justify-content="center">
+      <bds-accordion>
+        <bds-accordion-header
+          accordion-title={args.title}
+          icon={args.icon}
+          avatar-name={args.avatarName}
+          avatar-thumb={args.avatarThumb}
+        ></bds-accordion-header>
+        <bds-accordion-body>
+          <bds-typo variant="fs-16">{args.content}</bds-typo>
+        </bds-accordion-body>
+      </bds-accordion>
+    </bds-grid>
   );
 };
 
@@ -102,8 +373,6 @@ const groupTemplate = (args) => {
     </bds-accordion-group>
   );
 };
-
-
 
 export const AccordionSingle = groupTemplate.bind({});
 AccordionSingle.args = {

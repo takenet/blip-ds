@@ -2,14 +2,14 @@ import { addons } from '@storybook/manager-api';
 
 addons.setConfig({
   isFullscreen: false,
-  showNav: true,
+  showNav: false,
   showPanel: true,
   panelPosition: 'bottom',
   enableShortcuts: true,
   showToolbar: false,
   theme: undefined,
-  selectedPanel: undefined,
-  initialActive: 'sidebar',
+  selectedPanel: 'actions',
+  initialActive: 'canvas',
   sidebar: {
     showRoots: false,
     collapsedRoots: ['other'],
