@@ -41,6 +41,7 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
+import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
@@ -1347,6 +1348,10 @@ export namespace Components {
         "active"?: boolean;
     }
     interface BdsPagination {
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: PaginationOptionsPositionType;
         /**
           * Prop to recive the number of pages.
          */
@@ -4152,6 +4157,10 @@ declare namespace LocalJSX {
           * When de value of component change, the event are dispache.
          */
         "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: PaginationOptionsPositionType;
         /**
           * Prop to recive the number of pages.
          */
