@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property     | Attribute     | Description                            | Type                 | Default   |
-| ------------ | ------------- | -------------------------------------- | -------------------- | --------- |
-| `activeMode` | `active-mode` | Open. Used to open/close the dropdown. | `"click" \| "hover"` | `'click'` |
-| `open`       | `open`        | Open. Used to open/close the dropdown. | `boolean`            | `false`   |
+| Property     | Attribute     | Description                            | Type                                                                                                        | Default   |
+| ------------ | ------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------- | --------- |
+| `activeMode` | `active-mode` | Open. Used to open/close the dropdown. | `"click" \| "hover"`                                                                                        | `'click'` |
+| `open`       | `open`        | Open. Used to open/close the dropdown. | `boolean`                                                                                                   | `false`   |
+| `position`   | `position`    | Used to set tooltip position           | `"auto" \| "bottom-center" \| "bottom-left" \| "bottom-right" \| "top-center" \| "top-left" \| "top-right"` | `'auto'`  |
 
 
 ## Events
