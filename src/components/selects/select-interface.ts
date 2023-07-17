@@ -18,4 +18,4 @@ export interface SelectChangeEventDetail {
 
 export type SelectType = 'text' | 'icon';
 
-export type SelectOptionsPositionType = 'top' | 'bottom';
+export type SelectOptionsPositionType = 'auto' | 'top' | 'bottom';
