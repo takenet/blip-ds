@@ -52,6 +52,10 @@ export class InputChips {
   @Prop() maxlength?: number;
 
   /**
+   *  Set maximum length value for chips
+   */
+  @Prop() maxChipsLength?: number;
+  /**
    * used for add icon in input left. Uses the bds-icon component.
    */
   @Prop({ reflect: true }) icon?: string = '';
@@ -112,6 +116,11 @@ export class InputChips {
    */
   @Prop() placeholder?: string = '';
 
+  /**
+   * Passing true to display a counter of available size, it is necessary to
+   * pass another maxlength property.
+   */
+  @Prop() counterLength? = false;
   /**
    * Data test is the prop to specifically test the component action object.
    */
@@ -501,22 +510,27 @@ export class InputChips {
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
                 {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
-                <input
-                  ref={(input) => (this.nativeInput = input)}
-                  class={{ input__container__text: true }}
-                  name={this.inputName}
-                  maxlength={this.maxlength}
-                  placeholder={this.placeholder}
-                  onInput={this.onInput}
-                  onFocus={this.onFocus}
-                  onBlur={() => this.handleOnBlur()}
-                  onChange={() => this.handleChange}
-                  value={this.value}
-                  disabled={this.disabled}
-                  data-test={this.dataTest}
-                ></input>
+                {this.internalChips.length < this.maxChipsLength && (
+                  <input
+                    ref={(input) => (this.nativeInput = input)}
+                    class={{ input__container__text: true }}
+                    name={this.inputName}
+                    maxlength={this.maxlength}
+                    placeholder={this.placeholder}
+                    onInput={this.onInput}
+                    onFocus={this.onFocus}
+                    onBlur={() => this.handleOnBlur()}
+                    onChange={() => this.handleChange}
+                    value={this.value}
+                    disabled={this.disabled}
+                    data-test={this.dataTest}
+                  ></input>
+                )}
               </div>
             </div>
+            {this.counterLength && (
+              <bds-counter-text length={this.internalChips.length} max={this.maxChipsLength} active={isPressed} />
+            )}
             {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
             <slot name="input-right"></slot>
           </div>

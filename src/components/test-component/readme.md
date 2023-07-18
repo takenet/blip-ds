@@ -138,6 +138,7 @@ graph TD;
   bds-input-chips --> bds-tooltip
   bds-input-chips --> bds-icon
   bds-input-chips --> bds-typo
+  bds-input-chips --> bds-counter-text
   bds-tooltip --> bds-typo
   bds-input-editable --> bds-icon
   bds-input-editable --> bds-typo
