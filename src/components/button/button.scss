@@ -69,6 +69,12 @@ $button-padding-left-right: 16px;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 
+
+  bds-loading-spinner {
+    max-height: 100%;
+    position: absolute;
+  }
+
   & * {
     pointer-events: none;
   }
@@ -84,6 +90,12 @@ $button-padding-left-right: 16px;
   &--size-standard {
     @include padding-button-top-bottom($button-size-standard, $height-standard);
 
+    bds-loading-spinner {
+      width: 32px;
+      height: 32px;
+      top: calc(50% - 16px);
+    }
+
     &--icon {
       @include padding-button-top-bottom($button-size-standard-icon, $height-standard);
     }
@@ -92,6 +104,11 @@ $button-padding-left-right: 16px;
   &--size-short {
     @include padding-button-top-bottom($button-size-short, $height-short);
 
+    bds-loading-spinner {
+      width: 16px;
+      height: 16px;
+      top: calc(50% - 8px);
+    }
     &--icon {
       @include padding-button-top-bottom($button-size-short-icon, $height-short);
     }
@@ -285,12 +302,6 @@ $button-padding-left-right: 16px;
     &--disabled {
       @include disable-button($color-neutral-medium-cloud);
     }
-  }
-
-  bds-loading-spinner {
-    width: auto;
-    max-height: 100%;
-    position: absolute;
   }
 
   .hide {
