@@ -1,3 +1,5 @@
+@import 'mixins';
+
 :host {
   display: block;
   width: 100%;
@@ -8,7 +10,7 @@
     display: flex;
     gap: 16px;
     align-items: center;
-    padding: 10px 16px;
+    padding: 8px 16px;
 
     & .input_list {
       position: relative;
@@ -67,18 +69,27 @@
   }
 }
 
+.border_radius {
+  border-radius: 8px;
+  &:before, &:after, .active {
+    border-radius: 8px;
+  }
+}
+.active {
+  position: absolute;
+  background-color: $color-content-default;
+  opacity: 0.08;
+  inset: 0;
+}
+
 .clickable {
   position: relative;
   cursor: pointer;
+  gap: 8px;
   &:before {
     content: '';
     position: absolute;
     inset: 0;
   }
-  &:hover {
-    &:before {
-      background-color: $color-content-default;
-      opacity: 0.08;
-    }
-  }
+  @include hover-and-pressed();
 }

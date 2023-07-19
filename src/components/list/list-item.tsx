@@ -65,6 +65,14 @@ export class ListItem {
   @Prop() clickable?: boolean = false;
 
   /**
+   * Active. Used to define when the item is highlighted.
+   */
+  @Prop() active?: boolean = false;
+  /**
+   * Enable rounded border on item
+   */
+  @Prop() borderRadius?: boolean = false;
+  /**
    * Emitted when the value has changed because of a click event.
    */
   @Event() bdsChecked!: EventEmitter;
@@ -189,8 +197,10 @@ export class ListItem {
           class={{
             list_item: true,
             clickable: hasInput,
+            border_radius: this.borderRadius,
           }}
         >
+          {this.active && <div class="active"></div>}
           {hasLeftInput && (
             <div class={{ input_list: true }}>
               {this.typeList == 'radio' && <bds-radio value={this.value} checked={this.checked}></bds-radio>}
@@ -216,7 +226,7 @@ export class ListItem {
             }}
           >
             {this.text && (
-              <bds-typo class="title-item" variant="fs-16" tag="span">
+              <bds-typo class="title-item" variant="fs-16" tag="span" bold={this.active ? 'bold' : 'regular'}>
                 {this.text}
               </bds-typo>
             )}

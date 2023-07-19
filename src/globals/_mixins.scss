@@ -44,3 +44,21 @@
     background-color: $color-neutral-medium-silver;
   }
 }
+
+
+/** Hover & Pressed */
+
+@mixin hover-and-pressed() {
+  &:hover {
+    &:before {
+      background-color: $color-content-default;
+      opacity: 0.08;
+    }
+  }
+  &:active {
+    &:before {
+      background-color: $color-content-default;
+      opacity: 0.16;
+    }
+  }
+}

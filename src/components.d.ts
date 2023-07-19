@@ -1147,6 +1147,10 @@ export namespace Components {
          */
         "actionsButtons": string | string[];
         /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "active"?: boolean;
+        /**
           * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
@@ -1154,6 +1158,10 @@ export namespace Components {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Enable rounded border on item
+         */
+        "borderRadius"?: boolean;
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
@@ -3937,6 +3945,10 @@ declare namespace LocalJSX {
          */
         "actionsButtons"?: string | string[];
         /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "active"?: boolean;
+        /**
           * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
@@ -3944,6 +3956,10 @@ declare namespace LocalJSX {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Enable rounded border on item
+         */
+        "borderRadius"?: boolean;
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
