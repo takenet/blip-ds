@@ -94,7 +94,6 @@ export class Sidebar {
             [`position_${this.sidebarPosition}`]: true,
             [`background_${this.background}`]: true,
           }}
-          style={{ width: `${this.width > 144 ? this.width : 144}px` }}
         >
           {this.hasHeaderSlot && (
             <div class={{ header: true }}>
