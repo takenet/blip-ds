@@ -43,7 +43,7 @@ import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu
 import { sizes } from "./components/modal/modal";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
+import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { Overflow } from "./components/tabs/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -1646,6 +1646,10 @@ export namespace Components {
     }
     interface BdsSidebar {
         /**
+          * Width, number to define sidebar width.
+         */
+        "backgournd"?: sidebarBackground;
+        /**
           * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
@@ -1662,6 +1666,10 @@ export namespace Components {
           * sidebar type. Used to define how open.
          */
         "type"?: sidebarType;
+        /**
+          * Width, number to define sidebar width.
+         */
+        "width"?: number;
     }
     interface BdsStep {
         /**
@@ -4499,6 +4507,10 @@ declare namespace LocalJSX {
     }
     interface BdsSidebar {
         /**
+          * Width, number to define sidebar width.
+         */
+        "backgournd"?: sidebarBackground;
+        /**
           * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
@@ -4514,6 +4526,10 @@ declare namespace LocalJSX {
           * sidebar type. Used to define how open.
          */
         "type"?: sidebarType;
+        /**
+          * Width, number to define sidebar width.
+         */
+        "width"?: number;
     }
     interface BdsStep {
         /**
