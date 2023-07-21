@@ -49,6 +49,7 @@ export class AccordionGroup {
   async close() {
     this.accheaders?.close();
     this.accBodies?.close();
+    this.isOpen = false;
   }
 
   // Método interno

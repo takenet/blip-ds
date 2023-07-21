@@ -1,3 +1,6 @@
+@import 'resets';
+@import 'mixins';
+
 .accordion_header {
   display: grid;
   grid-auto-flow: column;
@@ -76,9 +79,10 @@
   -webkit-transition: height 0.5s;
   -moz-transition: height 0.5s;
   transition: height 0.5s;
+  @include custom-scroll;
 
   &_isOpen {
-    overflow: visible;
+    overflow: overlay;
   }
 
   & .container {
