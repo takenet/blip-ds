@@ -849,6 +849,10 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -900,6 +904,10 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Set maximum length value for chips
+         */
+        "maxChipsLength"?: number;
         /**
           * Set maximum length value for the chip content
          */
@@ -3551,6 +3559,10 @@ declare namespace LocalJSX {
          */
         "chips"?: string[] | string;
         /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -3594,6 +3606,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Set maximum length value for chips
+         */
+        "maxChipsLength"?: number;
         /**
           * Set maximum length value for the chip content
          */
