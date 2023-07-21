@@ -2,6 +2,7 @@ import { Component, h, State, Prop, Method, Watch, Element } from '@stencil/core
 
 export type sidebarPosition = 'left' | 'right';
 export type sidebarType = 'over' | 'fixed';
+export type sidebarBackground = 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
 
 @Component({
   tag: 'bds-sidebar',
@@ -35,6 +36,15 @@ export class Sidebar {
    * If true, a lateral margin will apear in the content.
    */
   @Prop() margin?: boolean = true;
+  /**
+   * Width, number to define sidebar width.
+   */
+  @Prop() width?: number;
+
+  /**
+   * Width, number to define sidebar width.
+   */
+  @Prop() backgournd?: sidebarBackground = 'surface-2';
 
   @Method()
   async toggle() {
@@ -51,9 +61,9 @@ export class Sidebar {
   }
 
   componentWillLoad() {
+    this.type === 'fixed' ? (this.isOpen = true) : '';
     this.hasFooterSlot = !!this.hostElement.querySelector('[slot="footer"]');
     this.hasHeaderSlot = !!this.hostElement.querySelector('[slot="header"]');
-    this.type === 'fixed' ? (this.isOpen = true) : '';
   }
 
   private listiner = (event) => {
@@ -82,7 +92,9 @@ export class Sidebar {
             is_open: this.isOpen,
             [`type_${this.type}`]: true,
             [`position_${this.sidebarPosition}`]: true,
+            [`background_${this.backgournd}`]: true,
           }}
+          style={{ width: `${this.width > 144 ? this.width : 144}px` }}
         >
           {this.hasHeaderSlot && (
             <div class={{ header: true }}>
