@@ -31,7 +31,10 @@ $checkbox-spacing-text: 8px;
   &--selected {
     .checkbox__icon {
       background-color: $color-brand;
-      color: $color-content-bright;
+      
+      &__svg {
+        color: $color-content-bright;
+      }
 
       &:hover {
         background-color: $color-brand;

@@ -118,9 +118,11 @@ export class Checkbox {
           <div class="checkbox__icon">
             <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit"></bds-icon>
           </div>
-          <bds-typo class="checkbox__text" variant="fs-14" tag="span">
-            {this.label}
-          </bds-typo>
+          {this.label && (
+            <bds-typo class="checkbox__text" variant="fs-14" tag="span">
+              {this.label}
+            </bds-typo>
+          )}
         </label>
       </div>
     );
