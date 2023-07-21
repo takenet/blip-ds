@@ -510,22 +510,20 @@ export class InputChips {
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
                 {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
-                {this.internalChips.length < this.maxChipsLength && (
-                  <input
-                    ref={(input) => (this.nativeInput = input)}
-                    class={{ input__container__text: true }}
-                    name={this.inputName}
-                    maxlength={this.maxlength}
-                    placeholder={this.placeholder}
-                    onInput={this.onInput}
-                    onFocus={this.onFocus}
-                    onBlur={() => this.handleOnBlur()}
-                    onChange={() => this.handleChange}
-                    value={this.value}
-                    disabled={this.disabled}
-                    data-test={this.dataTest}
-                  ></input>
-                )}
+                <input
+                  ref={(input) => (this.nativeInput = input)}
+                  class={{ input__container__text: true }}
+                  name={this.inputName}
+                  maxlength={this.maxlength}
+                  placeholder={this.placeholder}
+                  onInput={this.onInput}
+                  onFocus={this.onFocus}
+                  onBlur={() => this.handleOnBlur()}
+                  onChange={() => this.handleChange}
+                  value={this.value}
+                  disabled={this.disabled}
+                  data-test={this.dataTest}
+                ></input>
               </div>
             </div>
             {this.counterLength && (
