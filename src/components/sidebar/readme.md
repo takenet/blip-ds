@@ -9,7 +9,7 @@
 
 | Property          | Attribute          | Description                                                                         | Type                                                       | Default       |
 | ----------------- | ------------------ | ----------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------- |
-| `backgournd`      | `backgournd`       | Width, number to define sidebar width.                                              | `"surface-1" \| "surface-2" \| "surface-3" \| "surface-4"` | `'surface-2'` |
+| `background`      | `background`       | Width, number to define sidebar width.                                              | `"surface-1" \| "surface-2" \| "surface-3" \| "surface-4"` | `'surface-2'` |
 | `isOpen`          | `is-open`          | ; isOpen. Used to open sidebar.                                                     | `boolean`                                                  | `false`       |
 | `margin`          | `margin`           | If true, a lateral margin will apear in the content.                                | `boolean`                                                  | `true`        |
 | `sidebarPosition` | `sidebar-position` | sidebar position. Used to position the sidebar. Either on the left or on the right. | `"left" \| "right"`                                        | `'left'`      |

@@ -44,7 +44,7 @@ export class Sidebar {
   /**
    * Width, number to define sidebar width.
    */
-  @Prop() backgournd?: sidebarBackground = 'surface-2';
+  @Prop() background?: sidebarBackground = 'surface-2';
 
   @Method()
   async toggle() {
@@ -92,7 +92,7 @@ export class Sidebar {
             is_open: this.isOpen,
             [`type_${this.type}`]: true,
             [`position_${this.sidebarPosition}`]: true,
-            [`background_${this.backgournd}`]: true,
+            [`background_${this.background}`]: true,
           }}
           style={{ width: `${this.width > 144 ? this.width : 144}px` }}
         >
