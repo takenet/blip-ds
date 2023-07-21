@@ -1665,7 +1665,7 @@ export namespace Components {
         /**
           * Width, number to define sidebar width.
          */
-        "backgournd"?: sidebarBackground;
+        "background"?: sidebarBackground;
         /**
           * ; isOpen. Used to open sidebar.
          */
@@ -4542,7 +4542,7 @@ declare namespace LocalJSX {
         /**
           * Width, number to define sidebar width.
          */
-        "backgournd"?: sidebarBackground;
+        "background"?: sidebarBackground;
         /**
           * ; isOpen. Used to open sidebar.
          */
