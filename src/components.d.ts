@@ -44,7 +44,7 @@ import { sizes } from "./components/modal/modal";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
+import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/bds-switch/bds-switch";
 import { Overflow } from "./components/tabs/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -1160,6 +1160,10 @@ export namespace Components {
          */
         "actionsButtons": string | string[];
         /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "active"?: boolean;
+        /**
           * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
@@ -1167,6 +1171,10 @@ export namespace Components {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Enable rounded border on item
+         */
+        "borderRadius"?: boolean;
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
@@ -1655,6 +1663,10 @@ export namespace Components {
     }
     interface BdsSidebar {
         /**
+          * Width, number to define sidebar width.
+         */
+        "backgournd"?: sidebarBackground;
+        /**
           * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
@@ -1671,6 +1683,10 @@ export namespace Components {
           * sidebar type. Used to define how open.
          */
         "type"?: sidebarType;
+        /**
+          * Width, number to define sidebar width.
+         */
+        "width"?: number;
     }
     interface BdsStep {
         /**
@@ -3966,6 +3982,10 @@ declare namespace LocalJSX {
          */
         "actionsButtons"?: string | string[];
         /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "active"?: boolean;
+        /**
           * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
@@ -3973,6 +3993,10 @@ declare namespace LocalJSX {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Enable rounded border on item
+         */
+        "borderRadius"?: boolean;
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
@@ -4516,6 +4540,10 @@ declare namespace LocalJSX {
     }
     interface BdsSidebar {
         /**
+          * Width, number to define sidebar width.
+         */
+        "backgournd"?: sidebarBackground;
+        /**
           * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
@@ -4531,6 +4559,10 @@ declare namespace LocalJSX {
           * sidebar type. Used to define how open.
          */
         "type"?: sidebarType;
+        /**
+          * Width, number to define sidebar width.
+         */
+        "width"?: number;
     }
     interface BdsStep {
         /**
