@@ -87,7 +87,7 @@ export class BdsAutocomplete {
   /**
    * Set the placement of the options menu. Can be 'bottom' or 'top'.
    */
-  @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'bottom';
+  @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'auto';
 
   /**
    * If true, the X icon will appear only when component is focused.
@@ -136,7 +136,12 @@ export class BdsAutocomplete {
     } else {
       this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
     }
-    if (isOpen) this.validatePositionDrop();
+    if (isOpen)
+      if (this.optionsPosition != 'auto') {
+        this.setDefaultPlacement(this.optionsPosition);
+      } else {
+        this.validatePositionDrop();
+      }
   }
 
   @Watch('selected')
@@ -187,7 +192,21 @@ export class BdsAutocomplete {
     }
 
     this.text = this.getText();
-    this.validatePositionDrop();
+    if (this.optionsPosition != 'auto') {
+      this.setDefaultPlacement(this.optionsPosition);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
+  private setDefaultPlacement(value: AutocompleteOptionsPositionType) {
+    if (value == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
 
   private validatePositionDrop() {

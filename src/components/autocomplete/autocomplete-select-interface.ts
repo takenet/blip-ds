@@ -22,4 +22,4 @@ export interface AutocompleteSelectedChangeEventDetail {
 
 export type AutocompleteSelectType = 'text' | 'icon';
 
-export type AutocompleteOptionsPositionType = 'top' | 'bottom';
+export type AutocompleteOptionsPositionType = 'auto' | 'top' | 'bottom';

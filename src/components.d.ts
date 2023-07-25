@@ -25,7 +25,7 @@ import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-import { activeMode } from "./components/dropdown/dropdown";
+import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
@@ -41,6 +41,7 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
+import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
@@ -579,6 +580,10 @@ export namespace Components {
           * Open. Used to open/close the dropdown.
          */
         "open"?: boolean;
+        /**
+          * Used to set tooltip position
+         */
+        "position"?: DropdownPostionType;
         "toggle": () => Promise<void>;
     }
     interface BdsExpansionPanel {
@@ -844,6 +849,10 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -895,6 +904,10 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Set maximum length value for chips
+         */
+        "maxChipsLength"?: number;
         /**
           * Set maximum length value for the chip content
          */
@@ -1356,6 +1369,10 @@ export namespace Components {
     }
     interface BdsPagination {
         /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: PaginationOptionsPositionType;
+        /**
           * Prop to recive the number of pages.
          */
         "pages"?: number;
@@ -1648,7 +1665,7 @@ export namespace Components {
         /**
           * Width, number to define sidebar width.
          */
-        "backgournd"?: sidebarBackground;
+        "background"?: sidebarBackground;
         /**
           * ; isOpen. Used to open sidebar.
          */
@@ -3284,6 +3301,10 @@ declare namespace LocalJSX {
           * Open. Used to open/close the dropdown.
          */
         "open"?: boolean;
+        /**
+          * Used to set tooltip position
+         */
+        "position"?: DropdownPostionType;
     }
     interface BdsExpansionPanel {
     }
@@ -3554,6 +3575,10 @@ declare namespace LocalJSX {
          */
         "chips"?: string[] | string;
         /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -3597,6 +3622,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Set maximum length value for chips
+         */
+        "maxChipsLength"?: number;
         /**
           * Set maximum length value for the chip content
          */
@@ -4177,6 +4206,10 @@ declare namespace LocalJSX {
          */
         "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
         /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: PaginationOptionsPositionType;
+        /**
           * Prop to recive the number of pages.
          */
         "pages"?: number;
@@ -4509,7 +4542,7 @@ declare namespace LocalJSX {
         /**
           * Width, number to define sidebar width.
          */
-        "backgournd"?: sidebarBackground;
+        "background"?: sidebarBackground;
         /**
           * ; isOpen. Used to open sidebar.
          */

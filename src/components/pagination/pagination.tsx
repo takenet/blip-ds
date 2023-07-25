@@ -1,6 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { SelectOptionsPositionType } from '../selects/select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
+export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
 @Component({
   tag: 'bds-pagination',
   styleUrl: 'pagination.scss',
@@ -36,6 +37,10 @@ export class Pagination {
    */
   @Prop() startedPage?: number;
   /**
+   * Set the placement of the options menu. Can be 'bottom' or 'top'.
+   */
+  @Prop() optionsPosition?: PaginationOptionsPositionType = 'auto';
+  /**
    * When de value of component change, the event are dispache.
    */
   @Event() bdsPaginationChange: EventEmitter;
@@ -46,7 +51,21 @@ export class Pagination {
   }
 
   componentDidLoad() {
-    this.validatePositionDrop();
+    if (this.optionsPosition != 'auto') {
+      this.setDefaultPlacement(this.optionsPosition);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
+  private setDefaultPlacement(value: PaginationOptionsPositionType) {
+    if (value == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
 
   private validatePositionDrop() {
@@ -72,7 +91,12 @@ export class Pagination {
     } else {
       this.iconDropElement.name = this.openSelect ? 'arrow-down' : 'arrow-up';
     }
-    if (isOpen) this.validatePositionDrop();
+    if (isOpen)
+      if (this.optionsPosition != 'auto') {
+        this.setDefaultPlacement(this.optionsPosition);
+      } else {
+        this.validatePositionDrop();
+      }
   }
 
   @Watch('pages')

@@ -14,8 +14,18 @@ import {
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
 
 export type activeMode = 'hover' | 'click';
-export type dropdownPosition = 'bottom' | 'right';
+export type dropVerticalPosition = 'bottom' | 'top';
+export type dropHorizontalPosition = 'left' | 'center' | 'right';
 export type subMenuState = 'close' | 'pending' | 'open';
+
+export type DropdownPostionType =
+  | 'auto'
+  | 'top-center'
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-center'
+  | 'bottom-right'
+  | 'bottom-left';
 
 @Component({
   tag: 'bds-dropdown',
@@ -47,6 +57,11 @@ export class BdsDropdown implements ComponentInterface {
   @Prop({ mutable: true, reflect: true }) public open?: boolean = false;
 
   /**
+   * Used to set tooltip position
+   */
+  @Prop() position?: DropdownPostionType = 'auto';
+
+  /**
    * bdsToggle. Event to return selected date value.
    */
   @Event() bdsToggle?: EventEmitter;
@@ -65,7 +80,17 @@ export class BdsDropdown implements ComponentInterface {
   }
 
   componentDidLoad() {
-    this.validatePositionDrop();
+    if (this.position != 'auto') {
+      this.setDefaultPlacement(this.position);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
+  private setDefaultPlacement(value: DropdownPostionType) {
+    const arrayPosition = value.split('-');
+    this.dropElement.classList.add(`dropdown__basic__${arrayPosition[0]}`);
+    this.dropElement.classList.add(`dropdown__basic__${arrayPosition[1]}`);
   }
 
   private validatePositionDrop() {
@@ -85,7 +110,12 @@ export class BdsDropdown implements ComponentInterface {
 
   @Watch('open')
   protected isOpenChanged(open: boolean): void {
-    if (open) this.validatePositionDrop();
+    if (open)
+      if (this.position != 'auto') {
+        this.setDefaultPlacement(this.position);
+      } else {
+        this.validatePositionDrop();
+      }
   }
 
   @Method()
