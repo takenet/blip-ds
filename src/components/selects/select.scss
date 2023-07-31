@@ -325,10 +325,6 @@ $select-options-max-height: 200px;
   position: relative;
   outline: none;
 
-  & .element_input {
-    overflow: hidden;
-  }
-
   &__icon {
     color: $color-content-ghost;
     display: flex;
