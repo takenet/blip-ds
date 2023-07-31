@@ -100,8 +100,14 @@ export class Pagination {
   }
 
   @Watch('pages')
+  @Watch('startedPage')
   pagesChanged(): void {
     this.countPage();
+  }
+
+  @Watch('value')
+  valueChanged(): void {
+    this.bdsPaginationChange.emit(this.value);
   }
 
   private refDropdown = (el: HTMLElement): void => {
@@ -133,7 +139,6 @@ export class Pagination {
     if (el > 1) {
       event.preventDefault();
       this.value = this.value - 1;
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -142,7 +147,6 @@ export class Pagination {
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.value + 1;
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -151,7 +155,6 @@ export class Pagination {
     if (el > 1) {
       event.preventDefault();
       this.value = this.paginationNumbers[0];
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -160,7 +163,6 @@ export class Pagination {
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.pages;
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -175,7 +177,6 @@ export class Pagination {
   optionSelected(index) {
     this.value = index;
     this.openOptions();
-    this.bdsPaginationChange.emit(this.value);
   }
 
   render() {
