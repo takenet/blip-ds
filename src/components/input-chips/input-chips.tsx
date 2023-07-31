@@ -17,6 +17,10 @@ export class InputChips {
    */
   @State() validationDanger?: boolean = false;
   /**
+   * Used to enable or disable input
+   */
+  @State() inputAvalible?: boolean = true;
+  /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
   @State() isPressed? = false;
@@ -152,6 +156,10 @@ export class InputChips {
   @Event() bdsInputChipsInput!: EventEmitter;
 
   /**
+   * Emitted when a maximum value defined by the "max-chips-length" prop is entered
+   */
+  @Event() bdsExtendedQuantityInput!: EventEmitter;
+  /**
    * Emitted when the chip has added.
    */
   @Event() bdsSubmit!: EventEmitter;
@@ -178,6 +186,7 @@ export class InputChips {
 
   @Watch('internalChips')
   protected internalValueChanged(): void {
+    this.minMaxValidation();
     this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
@@ -227,6 +236,10 @@ export class InputChips {
     this.nativeInput.blur();
   }
 
+  componentDidLoad() {
+    this.minMaxValidation();
+  }
+
   componentWillLoad() {
     this.valueChanged();
   }
@@ -263,6 +276,17 @@ export class InputChips {
     }
     this.bdsInputChipsInput.emit(ev as KeyboardEvent);
   };
+
+  private minMaxValidation() {
+    if (!this.maxChipsLength == undefined) {
+      this.inputAvalible = true;
+    } else if (this.internalChips.length >= this.maxChipsLength) {
+      this.inputAvalible = false;
+      this.bdsExtendedQuantityInput.emit({ value: !this.inputAvalible });
+    } else {
+      this.inputAvalible = true;
+    }
+  }
 
   private getLastChip(): string {
     return this.internalChips[this.internalChips.length - 1];
@@ -510,20 +534,22 @@ export class InputChips {
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
                 {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
-                <input
-                  ref={(input) => (this.nativeInput = input)}
-                  class={{ input__container__text: true }}
-                  name={this.inputName}
-                  maxlength={this.maxlength}
-                  placeholder={this.placeholder}
-                  onInput={this.onInput}
-                  onFocus={this.onFocus}
-                  onBlur={() => this.handleOnBlur()}
-                  onChange={() => this.handleChange}
-                  value={this.value}
-                  disabled={this.disabled}
-                  data-test={this.dataTest}
-                ></input>
+                {this.inputAvalible && (
+                  <input
+                    ref={(input) => (this.nativeInput = input)}
+                    class={{ input__container__text: true }}
+                    name={this.inputName}
+                    maxlength={this.maxlength}
+                    placeholder={this.placeholder}
+                    onInput={this.onInput}
+                    onFocus={this.onFocus}
+                    onBlur={() => this.handleOnBlur()}
+                    onChange={() => this.handleChange}
+                    value={this.value}
+                    disabled={this.disabled}
+                    data-test={this.dataTest}
+                  ></input>
+                )}
               </div>
             </div>
             {this.counterLength && (

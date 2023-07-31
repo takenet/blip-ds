@@ -3647,6 +3647,10 @@ declare namespace LocalJSX {
          */
         "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
+          * Emitted when a maximum value defined by the "max-chips-length" prop is entered
+         */
+        "onBdsExtendedQuantityInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        /**
           * Emitted when the chip has added.
          */
         "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<any>) => void;

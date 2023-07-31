@@ -33,14 +33,15 @@
 
 ## Events
 
-| Event                | Description                      | Type               |
-| -------------------- | -------------------------------- | ------------------ |
-| `bdsBlur`            | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsChange`          | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsChangeChips`     | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsInputChipsFocus` | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsInputChipsInput` | Emitted when the chip has added. | `CustomEvent<any>` |
-| `bdsSubmit`          | Emitted when the chip has added. | `CustomEvent<any>` |
+| Event                      | Description                                                                    | Type               |
+| -------------------------- | ------------------------------------------------------------------------------ | ------------------ |
+| `bdsBlur`                  | Emitted when the chip has added.                                               | `CustomEvent<any>` |
+| `bdsChange`                | Emitted when the chip has added.                                               | `CustomEvent<any>` |
+| `bdsChangeChips`           | Emitted when the chip has added.                                               | `CustomEvent<any>` |
+| `bdsExtendedQuantityInput` | Emitted when a maximum value defined by the "max-chips-length" prop is entered | `CustomEvent<any>` |
+| `bdsInputChipsFocus`       | Emitted when the chip has added.                                               | `CustomEvent<any>` |
+| `bdsInputChipsInput`       | Emitted when the chip has added.                                               | `CustomEvent<any>` |
+| `bdsSubmit`                | Emitted when the chip has added.                                               | `CustomEvent<any>` |
 
 
 ## Methods
