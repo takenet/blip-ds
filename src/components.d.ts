@@ -2117,6 +2117,10 @@ export interface BdsSelectOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSelectOptionElement;
 }
+export interface BdsSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSidebarElement;
+}
 export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSwitchElement;
@@ -3643,6 +3647,10 @@ declare namespace LocalJSX {
          */
         "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
+          * Emitted when a maximum value defined by the "max-chips-length" prop is entered
+         */
+        "onBdsExtendedQuantityInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        /**
           * Emitted when the chip has added.
          */
         "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<any>) => void;
@@ -4551,6 +4559,10 @@ declare namespace LocalJSX {
           * If true, a lateral margin will apear in the content.
          */
         "margin"?: boolean;
+        /**
+          * Emitted when the isOpen has changed.
+         */
+        "onBdsToggle"?: (event: BdsSidebarCustomEvent<any>) => void;
         /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
          */
