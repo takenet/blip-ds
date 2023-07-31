@@ -49,10 +49,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../test-component)
-
 ### Depends on
 
 - [bds-icon](../icon)
@@ -63,7 +59,6 @@
 graph TD;
   bds-input-editable --> bds-icon
   bds-input-editable --> bds-typo
-  bds-test-component --> bds-input-editable
   style bds-input-editable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

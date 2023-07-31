@@ -53,10 +53,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../test-component)
-
 ### Depends on
 
 - [bds-icon](../icon)
@@ -67,7 +63,6 @@
 graph TD;
   bds-input-password --> bds-icon
   bds-input-password --> bds-typo
-  bds-test-component --> bds-input-password
   style bds-input-password fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
