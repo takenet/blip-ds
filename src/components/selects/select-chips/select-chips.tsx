@@ -7,7 +7,7 @@ import { InputChipsTypes } from '../../input-chips/input-chips-interface';
 @Component({
   tag: 'bds-select-chips',
   styleUrl: '../select.scss',
-  scoped: true,
+  shadow: true,
 })
 export class SelectChips {
   private nativeInput?: HTMLInputElement;
