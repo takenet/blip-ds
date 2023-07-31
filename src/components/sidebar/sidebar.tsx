@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Method, Watch, Element } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element } from '@stencil/core';
 
 export type sidebarPosition = 'left' | 'right';
 export type sidebarType = 'over' | 'fixed';
@@ -39,12 +39,17 @@ export class Sidebar {
   /**
    * Width, number to define sidebar width.
    */
-  @Prop() width?: number;
+  @Prop() width?: number = 360;
 
   /**
    * Width, number to define sidebar width.
    */
   @Prop() background?: sidebarBackground = 'surface-2';
+
+  /**
+   * Emitted when the isOpen has changed.
+   */
+  @Event() bdsToggle!: EventEmitter;
 
   @Method()
   async toggle() {
@@ -53,6 +58,7 @@ export class Sidebar {
 
   @Watch('isOpen')
   isOpenChanged(newValue: boolean): void {
+    this.bdsToggle.emit({ value: newValue });
     if (newValue === true) {
       document.addEventListener('keyup', this.listiner, false);
     } else {
@@ -94,6 +100,7 @@ export class Sidebar {
             [`position_${this.sidebarPosition}`]: true,
             [`background_${this.background}`]: true,
           }}
+          style={{ width: `${this.width < 144 ? 144 : this.width}px` }}
         >
           {this.hasHeaderSlot && (
             <div class={{ header: true }}>

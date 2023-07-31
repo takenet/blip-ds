@@ -76,9 +76,10 @@
       align-content: center;
       justify-content: space-between;
       padding: 24px;
-
+      
       & .content {
         display: flex;
+        width: 100%;
         align-items: center;
         position: relative;
         color: $color-content-default;
