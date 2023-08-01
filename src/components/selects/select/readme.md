@@ -44,10 +44,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../../test-component)
-
 ### Depends on
 
 - [bds-icon](../../icon)
@@ -61,7 +57,6 @@ graph TD;
   bds-select --> bds-typo
   bds-select --> bds-select-option
   bds-select-option --> bds-typo
-  bds-test-component --> bds-select
   style bds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -39,7 +39,6 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [bds-test-component](../test-component)
  - [bds-upload](../upload)
 
 ### Depends on
@@ -53,7 +52,6 @@ graph TD;
   bds-banner --> bds-icon
   bds-banner --> bds-button-icon
   bds-button-icon --> bds-icon
-  bds-test-component --> bds-banner
   bds-upload --> bds-banner
   style bds-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -37,7 +37,6 @@
 ### Used by
 
  - [bds-list](.)
- - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -74,7 +73,6 @@ graph TD;
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
   bds-list --> bds-list-item
-  bds-test-component --> bds-list-item
   style bds-list-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

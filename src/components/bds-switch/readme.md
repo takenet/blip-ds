@@ -52,13 +52,11 @@ Type: `Promise<boolean>`
 ### Used by
 
  - [bds-list-item](../list)
- - [bds-test-component](../test-component)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-list-item --> bds-switch
-  bds-test-component --> bds-switch
   style bds-switch fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

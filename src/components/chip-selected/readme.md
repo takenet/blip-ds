@@ -26,10 +26,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../test-component)
-
 ### Depends on
 
 - [bds-icon](../icon)
@@ -40,7 +36,6 @@
 graph TD;
   bds-chip-selected --> bds-icon
   bds-chip-selected --> bds-typo
-  bds-test-component --> bds-chip-selected
   style bds-chip-selected fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
