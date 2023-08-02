@@ -7,11 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                           | Type                   | Default   |
-| ------------- | -------------- | ------------------------------------- | ---------------------- | --------- |
-| `closeButton` | `close-button` | Used to hide or show the close button | `boolean`              | `true`    |
-| `open`        | `open`         | Used to open/close the modal          | `boolean`              | `false`   |
-| `size`        | `size`         | Used to change the modal heights.     | `"dynamic" \| "fixed"` | `'fixed'` |
+| Property        | Attribute         | Description                                                                                                             | Type                   | Default   |
+| --------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------- |
+| `closeButton`   | `close-button`    | Used to hide or show the close button                                                                                   | `boolean`              | `true`    |
+| `dtButtonClose` | `dt-button-close` | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close. | `string`               | `null`    |
+| `dtOutzone`     | `dt-outzone`      | Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.     | `string`               | `null`    |
+| `open`          | `open`            | Used to open/close the modal                                                                                            | `boolean`              | `false`   |
+| `size`          | `size`            | Used to change the modal heights.                                                                                       | `"dynamic" \| "fixed"` | `'fixed'` |
 
 
 ## Events

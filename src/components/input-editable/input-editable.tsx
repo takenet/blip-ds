@@ -122,6 +122,21 @@ export class InputEditable {
    */
   @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonEdit is the data-test to button edit.
+   */
+  @Prop() dtButtonEdit?: string = null;
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonConfirm is the data-test to button confirm.
+   */
+  @Prop() dtButtonConfirm?: string = null;
+  /**
    * Emitted when input text confirm.
    */
   @Event() bdsInputEditableSave: EventEmitter<InputEditableEventDetail>;
@@ -293,6 +308,7 @@ export class InputEditable {
           <div
             class={{ 'input__editable--static': true, 'input__editable--hidden': this.isEditing }}
             onClick={this.handleEditing}
+            data-test={this.dtButtonEdit}
           >
             <bds-typo
               tag="span"
@@ -345,6 +361,7 @@ export class InputEditable {
                 theme="solid"
                 name="error"
                 onClick={this.handleEditing}
+                dataTest={this.dtButtonClose}
               ></bds-icon>
               <bds-icon
                 key="checkball-icon"
@@ -355,6 +372,7 @@ export class InputEditable {
                 theme="solid"
                 name="checkball"
                 onClick={this.handleSaveText}
+                dataTest={this.dtButtonConfirm}
               ></bds-icon>
             </div>
           </div>

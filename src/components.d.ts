@@ -250,6 +250,10 @@ export namespace Components {
           * Set if the banner is external or internal.
          */
         "context"?: Context;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         "toggle": () => Promise<void>;
         /**
           * Set the banner varient, it can be 'system' or 'warning'.
@@ -257,6 +261,10 @@ export namespace Components {
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Set the link pass.
          */
@@ -434,6 +442,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -474,6 +486,10 @@ export namespace Components {
          */
         "color"?: Color;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -490,6 +506,42 @@ export namespace Components {
           * Disabled input.
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClear is the data-test to button clear.
+         */
+        "dtButtonClear"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputEnd is the data-test to input end.
+         */
+        "dtInputEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputStart is the data-test to input start.
+         */
+        "dtInputStart"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to outzone.
+         */
+        "dtOutzone"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
         /**
           * EndDateLimit. Insert a limiter to select the date period.
          */
@@ -525,6 +577,22 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
+        /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
@@ -558,6 +626,22 @@ export namespace Components {
           * dateSelect. Insert a limiter to select the date period.
          */
         "dateSelect"?: Date;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
         /**
           * EndDate. Insert a limiter to select the date period.
          */
@@ -873,6 +957,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * Do not accept duplicate chip elements.
          */
         "duplicated"?: boolean;
@@ -944,6 +1032,18 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEdit is the data-test to button edit.
+         */
+        "dtButtonEdit"?: string;
         /**
           * Indicated to pass an feeback to user.
          */
@@ -1091,6 +1191,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+         */
+        "dtSelectFlag"?: string;
+        /**
           * Indicated to pass an feeback to user.
          */
         "errorMessage"?: string;
@@ -1184,6 +1288,10 @@ export namespace Components {
           * Clickable. Used to define if the item is clickable or not.
          */
         "clickable"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -1347,6 +1455,14 @@ export namespace Components {
          */
         "closeButton"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
+        /**
           * Used to open/close the modal
          */
         "open"?: boolean;
@@ -1368,6 +1484,26 @@ export namespace Components {
         "active"?: boolean;
     }
     interface BdsPagination {
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+         */
+        "dtSelectNumber"?: string;
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
          */
@@ -1408,6 +1544,10 @@ export namespace Components {
           * Text, property to define status of component.
          */
         "color"?: progressBarColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Percent, property to enter the progress bar status percentage value.
          */
@@ -1667,6 +1807,14 @@ export namespace Components {
          */
         "background"?: sidebarBackground;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
+        /**
           * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
@@ -1697,6 +1845,10 @@ export namespace Components {
           * Used to complete the step
          */
         "completed"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Used to set the step as disabled
          */
@@ -1787,9 +1939,21 @@ export namespace Components {
     }
     interface BdsTabGroup {
         "align": 'left' | 'center' | 'right';
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
         "scrollable"?: boolean;
     }
     interface BdsTabItem {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * The text to be shown at the Tab item.
          */
@@ -1869,6 +2033,14 @@ export namespace Components {
           * Can be used outside to open the toast
          */
         "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonAction is the data-test to button action.
+         */
+        "dtButtonAction"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
@@ -2929,6 +3101,10 @@ declare namespace LocalJSX {
          */
         "context"?: Context;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * Emitted when the banner is closed.
          */
         "onBdsBannerClose"?: (event: BdsBannerCustomEvent<any>) => void;
@@ -2938,6 +3114,10 @@ declare namespace LocalJSX {
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Set the link pass.
          */
@@ -3133,6 +3313,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -3179,6 +3363,10 @@ declare namespace LocalJSX {
          */
         "color"?: Color;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -3195,6 +3383,42 @@ declare namespace LocalJSX {
           * Disabled input.
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClear is the data-test to button clear.
+         */
+        "dtButtonClear"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputEnd is the data-test to input end.
+         */
+        "dtInputEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputStart is the data-test to input start.
+         */
+        "dtInputStart"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to outzone.
+         */
+        "dtOutzone"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
         /**
           * EndDateLimit. Insert a limiter to select the date period.
          */
@@ -3238,6 +3462,22 @@ declare namespace LocalJSX {
     }
     interface BdsDatepickerPeriod {
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
+        /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
@@ -3275,6 +3515,22 @@ declare namespace LocalJSX {
           * dateSelect. Insert a limiter to select the date period.
          */
         "dateSelect"?: Date;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
         /**
           * EndDate. Insert a limiter to select the date period.
          */
@@ -3603,6 +3859,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * Do not accept duplicate chip elements.
          */
         "duplicated"?: boolean;
@@ -3692,6 +3952,18 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEdit is the data-test to button edit.
+         */
+        "dtButtonEdit"?: string;
         /**
           * Indicated to pass an feeback to user.
          */
@@ -3886,6 +4158,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+         */
+        "dtSelectFlag"?: string;
+        /**
           * Indicated to pass an feeback to user.
          */
         "errorMessage"?: string;
@@ -4014,6 +4290,10 @@ declare namespace LocalJSX {
           * Clickable. Used to define if the item is clickable or not.
          */
         "clickable"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -4188,6 +4468,14 @@ declare namespace LocalJSX {
          */
         "closeButton"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
+        /**
           * Emitted when modal status has changed.
          */
         "onBdsModalChanged"?: (event: BdsModalCustomEvent<any>) => void;
@@ -4209,6 +4497,26 @@ declare namespace LocalJSX {
         "active"?: boolean;
     }
     interface BdsPagination {
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+         */
+        "dtSelectNumber"?: string;
         /**
           * When de value of component change, the event are dispache.
          */
@@ -4253,6 +4561,10 @@ declare namespace LocalJSX {
           * Text, property to define status of component.
          */
         "color"?: progressBarColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Percent, property to enter the progress bar status percentage value.
          */
@@ -4552,6 +4864,14 @@ declare namespace LocalJSX {
          */
         "background"?: sidebarBackground;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
+        /**
           * ; isOpen. Used to open sidebar.
          */
         "isOpen"?: boolean;
@@ -4585,6 +4905,10 @@ declare namespace LocalJSX {
           * Used to complete the step
          */
         "completed"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Used to set the step as disabled
          */
@@ -4655,12 +4979,24 @@ declare namespace LocalJSX {
     interface BdsTabGroup {
         "align"?: 'left' | 'center' | 'right';
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
           * bdsTabChange. Event to return value when accordion is change.
          */
         "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
         "scrollable"?: boolean;
     }
     interface BdsTabItem {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * The text to be shown at the Tab item.
          */
@@ -4735,6 +5071,14 @@ declare namespace LocalJSX {
           * If the action type is button, this will be the text of the button:
          */
         "buttonText"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonAction is the data-test to button action.
+         */
+        "dtButtonAction"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
