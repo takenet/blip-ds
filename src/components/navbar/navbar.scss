@@ -1,0 +1,74 @@
+@import 'mixins';
+
+:host {
+  display: inline-block;
+}
+
+:host(.horizontal) {
+  width: 100%;
+  height: fit-content;
+}
+
+@import 'resets';
+
+:host(.vertical) {
+  width: fit-content;
+  height: 100%;
+}
+
+.navbar {
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  ::slotted(*) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  &__position {
+    &__horizontal {
+      flex-direction: row;
+      width: 100%;
+      ::slotted(*) {
+        flex-direction: row;
+      }
+      ::slotted([slot=content-area]) {
+        padding: 8px 0 8px 16px;
+      }
+      ::slotted([slot=action-area]) {
+        padding: 8px 16px 8px 0;
+      }
+    }
+    &__vertical {
+      flex-direction: column;
+      height: 100%;
+      ::slotted(*) {
+        flex-direction: column;
+      }
+      ::slotted([slot=content-area]) {
+        padding: 16px 8px 0 8px;
+      }
+      ::slotted([slot=action-area]) {
+        padding: 0 8px 16px 8px;
+      }
+    }
+  }
+  
+  &__background {
+    &__surface-1 {
+      background-color: $color-surface-1;
+    }
+    &__surface-2 {
+      background-color: $color-surface-2;
+    }
+    &__surface-3 {
+      background-color: $color-surface-3;
+    }
+    &__surface-4 {
+      background-color: $color-surface-4;
+    }
+  }
+}
