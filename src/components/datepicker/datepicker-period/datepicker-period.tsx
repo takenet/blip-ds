@@ -64,6 +64,31 @@ export class BdsdatepickerPeriod {
    * EndDateSelect. Insert a limiter to select the date period.
    */
   @Prop({ mutable: true, reflect: true }) stateSelect?: stateSelect = 'start';
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonPrev is the data-test to button prev.
+   */
+  @Prop() dtButtonPrev?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonNext is the data-test to button next.
+   */
+  @Prop() dtButtonNext?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectMonth is the data-test to select month.
+   */
+  @Prop() dtSelectMonth?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectYear is the data-test to select year.
+   */
+  @Prop() dtSelectYear?: string = null;
+
   /**
    * bdsStartDate. Event to return selected date value.
    */
@@ -325,6 +350,7 @@ export class BdsdatepickerPeriod {
             datepicker__calendar__selectDate__select__input__disable: data.length <= 1,
             [`input--pressed`]: openSelect,
           }}
+          data-test={ref == 'months' ? this.dtSelectMonth : this.dtSelectYear}
         >
           <bds-typo variant="fs-14">{labelSelect[0].label}</bds-typo>
           <div class="icon-arrow">
@@ -402,6 +428,7 @@ export class BdsdatepickerPeriod {
             theme="outline"
             size="small"
             onClick={() => this.prevMonth()}
+            dataTest={this.dtButtonPrev}
           ></bds-icon>
           {[
             this.renderSelectData(this.months, this.monthActivated, 'months'),
@@ -420,6 +447,7 @@ export class BdsdatepickerPeriod {
             theme="outline"
             size="small"
             onClick={() => this.nextMonth()}
+            dataTest={this.dtButtonNext}
           ></bds-icon>
         </div>
         <div>

@@ -42,6 +42,17 @@ export class Sidebar {
   @Prop() width?: number = 360;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   * dtOutzone is the data-test to button close.
+   */
+  @Prop() dtOutzone?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
+  /**
    * Width, number to define sidebar width.
    */
   @Prop() background?: sidebarBackground = 'surface-2';
@@ -91,7 +102,11 @@ export class Sidebar {
           [`type_${this.type}`]: true,
         }}
       >
-        {this.type === 'over' ? <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div> : ''}
+        {this.type === 'over' ? (
+          <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
+        ) : (
+          ''
+        )}
         <div
           class={{
             sidebar: true,
@@ -118,6 +133,7 @@ export class Sidebar {
                   size="short"
                   variant="secondary"
                   onClick={() => this.onClickCloseButtom()}
+                  dataTest={this.dtButtonClose}
                 ></bds-button-icon>
               )}
             </div>

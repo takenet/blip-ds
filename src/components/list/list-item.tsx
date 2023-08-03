@@ -73,6 +73,10 @@ export class ListItem {
    */
   @Prop() borderRadius?: boolean = false;
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+  /**
    * Emitted when the value has changed because of a click event.
    */
   @Event() bdsChecked!: EventEmitter;
@@ -199,6 +203,7 @@ export class ListItem {
             clickable: hasInput,
             border_radius: this.borderRadius,
           }}
+          data-test={this.dataTest}
         >
           {this.active && <div class="active"></div>}
           {hasLeftInput && (

@@ -69,6 +69,59 @@ export class DatePicker {
    * Default value input.
    */
   @Prop({ reflect: true, mutable: true }) valueEndDateSelected?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtInputStart is the data-test to input start.
+   */
+  @Prop() dtInputStart?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtInputEnd is the data-test to input end.
+   */
+  @Prop() dtInputEnd?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtOutzone is the data-test to outzone.
+   */
+  @Prop() dtOutzone?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonPrev is the data-test to button prev.
+   */
+  @Prop() dtButtonPrev?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonNext is the data-test to button next.
+   */
+  @Prop() dtButtonNext?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectMonth is the data-test to select month.
+   */
+  @Prop() dtSelectMonth?: string = null;
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectYear is the data-test to select year.
+   */
+  @Prop() dtSelectYear?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClear is the data-test to button clear.
+   */
+  @Prop() dtButtonClear?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonConfirm is the data-test to button confirm.
+   */
+  @Prop() dtButtonConfirm?: string = null;
   /**
    * bdsStartDate. Event to return selected date value.
    */
@@ -301,6 +354,7 @@ export class DatePicker {
                 onBdsInput={(ev) => this.onInputDateSelected(ev)}
                 danger={this.errorMsgDate ? true : false}
                 errorMessage={this.errorMsgDate}
+                dataTest={this.dtInputStart}
               ></bds-input>
             </div>
           ) : (
@@ -324,6 +378,7 @@ export class DatePicker {
                 onBdsInput={(ev) => this.onInputDateSelected(ev)}
                 danger={this.errorMsgDate ? true : false}
                 errorMessage={this.errorMsgDate}
+                dataTest={this.dtInputStart}
               ></bds-input>
               <bds-input
                 ref={this.refInputSetEndDate}
@@ -338,6 +393,7 @@ export class DatePicker {
                 onBdsInput={(ev) => this.onInputEndDateSelected(ev)}
                 danger={this.errorMsgEndDate ? true : false}
                 errorMessage={this.errorMsgEndDate}
+                dataTest={this.dtInputEnd}
               ></bds-input>
             </div>
           )}
@@ -360,6 +416,10 @@ export class DatePicker {
                 dateSelect={this.dateSelected}
                 onBdsDateSelected={(event) => this.selectDate(event)}
                 language={this.language}
+                dtButtonPrev={this.dtButtonPrev}
+                dtButtonNext={this.dtButtonNext}
+                dtSelectMonth={this.dtSelectMonth}
+                dtSelectYear={this.dtSelectYear}
               ></bds-datepicker-single>
             ) : (
               <bds-datepicker-period
@@ -372,17 +432,25 @@ export class DatePicker {
                 onBdsStartDate={(event) => this.selectDate(event)}
                 onBdsEndDate={(event) => this.selectEndDate(event)}
                 language={this.language}
+                dtButtonPrev={this.dtButtonPrev}
+                dtButtonNext={this.dtButtonNext}
+                dtSelectMonth={this.dtSelectMonth}
+                dtSelectYear={this.dtSelectYear}
               ></bds-datepicker-period>
             )}
             <div class={{ datepicker__menu__footer: true }}>
-              <bds-button variant="secondary" onClick={() => this.clearDate()}>
+              <bds-button variant="secondary" onClick={() => this.clearDate()} dataTest={this.dtButtonClear}>
                 {termTranslate(this.language, 'reset')}
               </bds-button>
-              <bds-button onClick={this.clickConcludeDatepicker}>{termTranslate(this.language, 'conclude')}</bds-button>
+              <bds-button onClick={this.clickConcludeDatepicker} dataTest={this.dtButtonConfirm}>
+                {termTranslate(this.language, 'conclude')}
+              </bds-button>
             </div>
           </div>
         </div>
-        {this.open && <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>}
+        {this.open && (
+          <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
+        )}
       </Host>
     );
   }

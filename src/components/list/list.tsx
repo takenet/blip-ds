@@ -196,6 +196,7 @@ export class List {
                 actionsButtons={item.actionsButtons}
                 onBdsChecked={(ev) => this.chagedOptions(ev)}
                 onBdsClickActionButtom={(ev) => this.onClickActionsButtons(ev)}
+                dataTest={item.dataTest}
               ></bds-list-item>
             ))
           ) : (

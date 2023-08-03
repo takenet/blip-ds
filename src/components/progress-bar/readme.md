@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                          | Type                                                    | Default     |
-| --------- | --------- | -------------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
-| `color`   | `color`   | Text, property to define status of component.                        | `"default" \| "information" \| "positive" \| "warning"` | `'default'` |
-| `percent` | `percent` | Percent, property to enter the progress bar status percentage value. | `number`                                                | `0`         |
-| `size`    | `size`    | Size, property to define size of component.                          | `"default" \| "small"`                                  | `'default'` |
-| `text`    | `text`    | Text, property to enable the bar info text.                          | `string`                                                | `''`        |
+| Property   | Attribute   | Description                                                             | Type                                                    | Default     |
+| ---------- | ----------- | ----------------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| `color`    | `color`     | Text, property to define status of component.                           | `"default" \| "information" \| "positive" \| "warning"` | `'default'` |
+| `dataTest` | `data-test` | Data test is the prop to specifically test the component action object. | `string`                                                | `null`      |
+| `percent`  | `percent`   | Percent, property to enter the progress bar status percentage value.    | `number`                                                | `0`         |
+| `size`     | `size`      | Size, property to define size of component.                             | `"default" \| "small"`                                  | `'default'` |
+| `text`     | `text`      | Text, property to enable the bar info text.                             | `string`                                                | `''`        |
 
 
 ## Dependencies

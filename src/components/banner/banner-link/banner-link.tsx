@@ -11,6 +11,11 @@ export class BannerLink {
    * Set the link pass.
    */
   @Prop() link: string;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
   /**
    * Emitted when the link is clicked.
    */
@@ -25,7 +30,7 @@ export class BannerLink {
     const Element = 'a';
 
     return (
-      <Element class={{ banner__link: true }} onClick={() => this._buttonClickHandler()}>
+      <Element class={{ banner__link: true }} onClick={() => this._buttonClickHandler()} data-test={this.dataTest}>
         <slot></slot>
       </Element>
     );

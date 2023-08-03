@@ -35,6 +35,18 @@ export class BdsModal implements ComponentInterface {
   public size?: sizes = 'fixed';
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   * dtOutzone is the data-test to button close.
+   */
+  @Prop() dtOutzone?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
+
+  /**
    * Emitted when modal status has changed.
    */
   @Event() bdsModalChanged!: EventEmitter;
@@ -78,7 +90,7 @@ export class BdsModal implements ComponentInterface {
           [`modal__dialog--${this.size}`]: true,
         }}
       >
-        <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
+        <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
         <div class={{ modal: true, [`modal--${this.size}`]: true }}>
           {this.closeButton && (
             <bds-icon
@@ -88,6 +100,7 @@ export class BdsModal implements ComponentInterface {
               tabindex="0"
               onKeyDown={this.handleKeyDown.bind(this)}
               onClick={this.handleMouseClick}
+              dataTest={this.dtButtonClose}
             />
           )}
           {this.size == 'fixed' && <slot></slot>}

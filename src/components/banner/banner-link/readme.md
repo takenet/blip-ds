@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description        | Type     | Default     |
-| -------- | --------- | ------------------ | -------- | ----------- |
-| `link`   | `link`    | Set the link pass. | `string` | `undefined` |
+| Property   | Attribute   | Description                                                             | Type     | Default     |
+| ---------- | ----------- | ----------------------------------------------------------------------- | -------- | ----------- |
+| `dataTest` | `data-test` | Data test is the prop to specifically test the component action object. | `string` | `null`      |
+| `link`     | `link`      | Set the link pass.                                                      | `string` | `undefined` |
 
 
 ## Events

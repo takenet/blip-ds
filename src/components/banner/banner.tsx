@@ -40,6 +40,12 @@ export class Banner implements ComponentInterface {
    * Set the banner varient, it can be 'system' or 'warning'.
    */
   @Prop() variant?: BannerVariant = 'system';
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
   /**
    * Emitted when the banner is closed.
    */
@@ -93,7 +99,12 @@ export class Banner implements ComponentInterface {
           >
             {this.buttonClose === 'true' && (
               <div class="close" onClick={() => this._buttonClickHandler()}>
-                <bds-button-icon icon="close" size="short" variant="secondary"></bds-button-icon>
+                <bds-button-icon
+                  dataTest={this.dtButtonClose}
+                  icon="close"
+                  size="short"
+                  variant="secondary"
+                ></bds-button-icon>
               </div>
             )}
           </div>

@@ -43,6 +43,12 @@ export class ChipClickable {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
   /**
    *  Triggered after a mouse click on close icon, return id element. Only fired when close is true.
    */
@@ -130,7 +136,7 @@ export class ChipClickable {
             </bds-typo>
           </div>
           {this.close && (
-            <div class="chip_clickable--close" onClick={this.handleCloseChip.bind(this)}>
+            <div class="chip_clickable--close" data-test={this.dtButtonClose} onClick={this.handleCloseChip.bind(this)}>
               {!this.disabled && (
                 <div class="close_focus" onKeyDown={this.handleCloseKey.bind(this)} tabindex="0"></div>
               )}

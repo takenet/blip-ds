@@ -56,6 +56,30 @@ export class BdsdatepickerSingle {
   @Prop() language?: languages = 'pt_BR';
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonPrev is the data-test to button prev.
+   */
+  @Prop() dtButtonPrev?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonNext is the data-test to button next.
+   */
+  @Prop() dtButtonNext?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectMonth is the data-test to select month.
+   */
+  @Prop() dtSelectMonth?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectYear is the data-test to select year.
+   */
+  @Prop() dtSelectYear?: string = null;
+
+  /**
    * bdsDateSelected. Event to return selected date value.
    */
   @Event() bdsDateSelected?: EventEmitter;
@@ -245,6 +269,7 @@ export class BdsdatepickerSingle {
             datepicker__calendar__selectDate__select__input__disable: data.length <= 1,
             [`input--pressed`]: openSelect,
           }}
+          data-test={ref == 'months' ? this.dtSelectMonth : this.dtSelectYear}
         >
           <bds-typo variant="fs-14">{labelSelect[0]?.label}</bds-typo>
           <div class="icon-arrow">
@@ -317,6 +342,7 @@ export class BdsdatepickerSingle {
             theme="outline"
             size="small"
             onClick={() => this.prevMonth()}
+            dataTest={this.dtButtonPrev}
           ></bds-icon>
           {[
             this.renderSelectData(this.months, this.monthActivated, 'months'),
@@ -332,6 +358,7 @@ export class BdsdatepickerSingle {
             theme="outline"
             size="small"
             onClick={() => this.nextMonth()}
+            dataTest={this.dtButtonNext}
           ></bds-icon>
         </div>
 
