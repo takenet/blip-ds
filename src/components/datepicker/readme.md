@@ -7,16 +7,25 @@
 
 ## Properties
 
-| Property               | Attribute                 | Description                                                                          | Type                            | Default            |
-| ---------------------- | ------------------------- | ------------------------------------------------------------------------------------ | ------------------------------- | ------------------ |
-| `disabled`             | `disabled`                | Disabled input.                                                                      | `boolean`                       | `false`            |
-| `endDateLimit`         | `end-date-limit`          | EndDateLimit. Insert a limiter to select the date period.                            | `string`                        | `defaultEndDate`   |
-| `language`             | `language`                | Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'. | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`          |
-| `message`              | `message`                 | Message. Select type of date.                                                        | `string`                        | `null`             |
-| `startDateLimit`       | `start-date-limit`        | StartDateLimit. Insert a limiter to select the date period.                          | `string`                        | `defaultStartDate` |
-| `typeOfDate`           | `type-of-date`            | TypeOfDate. Select type of date.                                                     | `"period" \| "single"`          | `'single'`         |
-| `valueDateSelected`    | `value-date-selected`     | Default value input.                                                                 | `string`                        | `null`             |
-| `valueEndDateSelected` | `value-end-date-selected` | Default value input.                                                                 | `string`                        | `null`             |
+| Property               | Attribute                 | Description                                                                                                                 | Type                            | Default            |
+| ---------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------ |
+| `disabled`             | `disabled`                | Disabled input.                                                                                                             | `boolean`                       | `false`            |
+| `dtButtonClear`        | `dt-button-clear`         | Data test is the prop to specifically test the component action object. dtButtonClear is the data-test to button clear.     | `string`                        | `null`             |
+| `dtButtonConfirm`      | `dt-button-confirm`       | Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm. | `string`                        | `null`             |
+| `dtButtonNext`         | `dt-button-next`          | Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.       | `string`                        | `null`             |
+| `dtButtonPrev`         | `dt-button-prev`          | Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.       | `string`                        | `null`             |
+| `dtInputEnd`           | `dt-input-end`            | Data test is the prop to specifically test the component action object. dtInputEnd is the data-test to input end.           | `string`                        | `null`             |
+| `dtInputStart`         | `dt-input-start`          | Data test is the prop to specifically test the component action object. dtInputStart is the data-test to input start.       | `string`                        | `null`             |
+| `dtOutzone`            | `dt-outzone`              | Data test is the prop to specifically test the component action object. dtOutzone is the data-test to outzone.              | `string`                        | `null`             |
+| `dtSelectMonth`        | `dt-select-month`         | Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.     | `string`                        | `null`             |
+| `dtSelectYear`         | `dt-select-year`          | Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.       | `string`                        | `null`             |
+| `endDateLimit`         | `end-date-limit`          | EndDateLimit. Insert a limiter to select the date period.                                                                   | `string`                        | `defaultEndDate`   |
+| `language`             | `language`                | Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.                                        | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`          |
+| `message`              | `message`                 | Message. Select type of date.                                                                                               | `string`                        | `null`             |
+| `startDateLimit`       | `start-date-limit`        | StartDateLimit. Insert a limiter to select the date period.                                                                 | `string`                        | `defaultStartDate` |
+| `typeOfDate`           | `type-of-date`            | TypeOfDate. Select type of date.                                                                                            | `"period" \| "single"`          | `'single'`         |
+| `valueDateSelected`    | `value-date-selected`     | Default value input.                                                                                                        | `string`                        | `null`             |
+| `valueEndDateSelected` | `value-end-date-selected` | Default value input.                                                                                                        | `string`                        | `null`             |
 
 
 ## Events
@@ -29,10 +38,6 @@
 
 
 ## Dependencies
-
-### Used by
-
- - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -66,7 +71,6 @@ graph TD;
   bds-button --> bds-icon
   bds-button --> bds-typo
   bds-button --> bds-loading-spinner
-  bds-test-component --> bds-datepicker
   style bds-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

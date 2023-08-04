@@ -35,7 +35,6 @@ Type: `Promise<void>`
  - [bds-input-chips](../input-chips)
  - [bds-list-item](../list)
  - [bds-select-chips](../selects/select-chips)
- - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -48,7 +47,6 @@ graph TD;
   bds-input-chips --> bds-tooltip
   bds-list-item --> bds-tooltip
   bds-select-chips --> bds-tooltip
-  bds-test-component --> bds-tooltip
   style bds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -18,6 +18,10 @@ export class BdsTabItem {
    * Used to open/close the Tab item.
    */
   @Prop({ mutable: true, reflect: true }) public open?: boolean = false;
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
 
   @Method()
   async reciveNumber(number) {
@@ -26,7 +30,7 @@ export class BdsTabItem {
   render(): HTMLElement {
     return (
       <Host class={{ [`is-open`]: this.open }}>
-        <div class={{ tab_item: true }}>
+        <div class={{ tab_item: true }} data-test={this.dataTest}>
           <div class={{ tab_item_content: true, [`tab_item_content--open`]: this.open }}>
             <slot></slot>
           </div>

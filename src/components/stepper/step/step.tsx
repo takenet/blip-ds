@@ -35,7 +35,10 @@ export class BdsStep implements ComponentInterface {
    * Used to set cursor pointer on the step (useful to allow clicks on the steps)
    */
   @Prop() pointer?: boolean = false;
-
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
   render() {
     return (
       <div class="step">
@@ -48,6 +51,7 @@ export class BdsStep implements ComponentInterface {
             'step__content--pointer': this.pointer,
             'step--last': this.last,
           }}
+          data-test={this.dataTest}
         >
           <div
             class={{

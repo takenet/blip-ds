@@ -59,6 +59,7 @@ export const BdsMenuSeparation = /*@__PURE__*/createReactComponent<JSX.BdsMenuSe
 export const BdsModal = /*@__PURE__*/createReactComponent<JSX.BdsModal, HTMLBdsModalElement>('bds-modal');
 export const BdsModalAction = /*@__PURE__*/createReactComponent<JSX.BdsModalAction, HTMLBdsModalActionElement>('bds-modal-action');
 export const BdsModalCloseButton = /*@__PURE__*/createReactComponent<JSX.BdsModalCloseButton, HTMLBdsModalCloseButtonElement>('bds-modal-close-button');
+export const BdsNavbar = /*@__PURE__*/createReactComponent<JSX.BdsNavbar, HTMLBdsNavbarElement>('bds-navbar');
 export const BdsPagination = /*@__PURE__*/createReactComponent<JSX.BdsPagination, HTMLBdsPaginationElement>('bds-pagination');
 export const BdsPaper = /*@__PURE__*/createReactComponent<JSX.BdsPaper, HTMLBdsPaperElement>('bds-paper');
 export const BdsProgressBar = /*@__PURE__*/createReactComponent<JSX.BdsProgressBar, HTMLBdsProgressBarElement>('bds-progress-bar');

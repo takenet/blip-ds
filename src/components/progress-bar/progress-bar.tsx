@@ -26,12 +26,16 @@ export class BdsProgressBar {
    * Text, property to enable the bar info text.
    */
   @Prop() text?: string = '';
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
 
   render() {
     const styles = { width: `${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}%` };
     return (
       <Host>
-        <div class={{ progress_bar: true, [`size_${this.size}`]: true }}>
+        <div class={{ progress_bar: true, [`size_${this.size}`]: true }} data-test={this.dataTest}>
           <div class={{ bar_behind: true }}>
             <div class={{ progress: true, [`color_${this.color}`]: true }} style={styles}></div>
           </div>

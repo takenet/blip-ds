@@ -29,6 +29,18 @@ export class BdsTabGroup {
   @Prop() align: 'left' | 'center' | 'right' = 'center';
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonPrev is the data-test to button prev.
+   */
+  @Prop() dtButtonPrev?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonNext is the data-test to button next.
+   */
+  @Prop() dtButtonNext?: string = null;
+
+  /**
    * bdsTabChange. Event to return value when accordion is change.
    */
   @Event() bdsTabChange?: EventEmitter;
@@ -142,6 +154,7 @@ export class BdsTabGroup {
               size="short"
               id="bds-tabs-button-left"
               onClick={() => this.prevSlide()}
+              dataTest={this.dtButtonPrev}
               variant="secondary"
             ></bds-button-icon>
           )}
@@ -180,6 +193,7 @@ export class BdsTabGroup {
               size="short"
               id="bds-tabs-button-right"
               onClick={() => this.nextSlide()}
+              dataTest={this.dtButtonNext}
               variant="secondary"
             ></bds-button-icon>
           )}

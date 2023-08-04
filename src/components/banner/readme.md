@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                             | Type                                         | Default     |
-| ------------- | -------------- | ----------------------------------------------------------------------- | -------------------------------------------- | ----------- |
-| `bannerAlign` | `banner-align` | Set the banner aligment, it can be one of: 'center', 'right' or 'left'. | `"center" \| "left" \| "right"`              | `'center'`  |
-| `buttonClose` | `button-close` | Set if show up the close button.                                        | `"false" \| "true"`                          | `'false'`   |
-| `context`     | `context`      | Set if the banner is external or internal.                              | `"inside" \| "outside"`                      | `'outside'` |
-| `variant`     | `variant`      | Set the banner varient, it can be 'system' or 'warning'.                | `"error" \| "info" \| "system" \| "warning"` | `'system'`  |
+| Property        | Attribute         | Description                                                                                                             | Type                                         | Default     |
+| --------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ----------- |
+| `bannerAlign`   | `banner-align`    | Set the banner aligment, it can be one of: 'center', 'right' or 'left'.                                                 | `"center" \| "left" \| "right"`              | `'center'`  |
+| `buttonClose`   | `button-close`    | Set if show up the close button.                                                                                        | `"false" \| "true"`                          | `'false'`   |
+| `context`       | `context`         | Set if the banner is external or internal.                                                                              | `"inside" \| "outside"`                      | `'outside'` |
+| `dtButtonClose` | `dt-button-close` | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close. | `string`                                     | `null`      |
+| `variant`       | `variant`         | Set the banner varient, it can be 'system' or 'warning'.                                                                | `"error" \| "info" \| "system" \| "warning"` | `'system'`  |
 
 
 ## Events
@@ -39,7 +40,6 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [bds-test-component](../test-component)
  - [bds-upload](../upload)
 
 ### Depends on
@@ -53,7 +53,6 @@ graph TD;
   bds-banner --> bds-icon
   bds-banner --> bds-button-icon
   bds-button-icon --> bds-icon
-  bds-test-component --> bds-banner
   bds-upload --> bds-banner
   style bds-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```

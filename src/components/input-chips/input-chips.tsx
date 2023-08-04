@@ -129,7 +129,11 @@ export class InputChips {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
-
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
   /**
    * Emitted when the chip has added.
    */
@@ -427,6 +431,7 @@ export class InputChips {
             color="outline"
             close={!this.disabled}
             onChipClickableClose={(event) => this.removeChip(event)}
+            dtButtonClose={this.dtButtonClose}
           >
             {chip}
           </bds-chip-clickable>
@@ -440,6 +445,7 @@ export class InputChips {
               color="outline"
               close={!this.disabled}
               onChipClickableClose={(event) => this.removeChip(event)}
+              dtButtonClose={this.dtButtonClose}
             >
               {`${chip.slice(0, limit)} ...`}
             </bds-chip-clickable>

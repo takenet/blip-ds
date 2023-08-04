@@ -66,6 +66,17 @@ export class BdsToast implements ComponentInterface {
    * 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
    */
   @Prop() position: PositionType = 'bottom-left';
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonAction is the data-test to button action.
+   */
+  @Prop() dtButtonAction?: string = null;
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
   /**
    * Event used to execute some action when the action button on the toast is clicked
    */
@@ -204,6 +215,7 @@ export class BdsToast implements ComponentInterface {
               onClick={() => this._buttonClickHandler()}
               variant="secondary"
               size="standard"
+              dataTest={this.dtButtonAction}
             >
               {this.buttonText}
             </bds-button>
@@ -215,6 +227,7 @@ export class BdsToast implements ComponentInterface {
               tabindex="0"
               variant="secondary"
               icon="close"
+              dataTest={this.dtButtonClose}
             />
           )}
         </div>

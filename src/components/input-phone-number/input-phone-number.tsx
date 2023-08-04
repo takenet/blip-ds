@@ -95,6 +95,11 @@ export class InputPhoneNumber {
   @Prop() dataTest?: string = null;
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectFlag is the data-test to button close.
+   */
+  @Prop() dtSelectFlag?: string = null;
+  /**
    * Emitted when the value has changed.
    */
   @Event({ bubbles: true, composed: true }) bdsPhoneNumberChange!: EventEmitter;
@@ -377,7 +382,7 @@ export class InputPhoneNumber {
             part="input-container"
           >
             {this.renderIcon()}
-            <div onClick={this.toggle} class="select-phone-number__icon">
+            <div onClick={this.toggle} data-test={this.dtSelectFlag} class="select-phone-number__icon">
               <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
               <bds-icon size="x-small" name={iconArrow}></bds-icon>
             </div>
