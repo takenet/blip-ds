@@ -84,7 +84,7 @@
     "@storybook/addon-console": "^2.0.0",
     "@storybook/manager-api": "^7.0.23",
     "autoprefixer": "^10.4.7",
-    "blip-tokens": "^1.66.0",
+    "blip-tokens": "^1.67.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
