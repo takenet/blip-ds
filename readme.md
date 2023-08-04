@@ -2,15 +2,16 @@
 
 # BliP DS
 
-This project was born based on the need to create a Design System to be used within Take. The components are written in Web Components using the StencilJS library created by the Ionic team.
+This project was born based out of the need to create a Design System for Blip. Components are written in Web Components using the StencilJS library created by the Ionic team.
 
-Components. Guides. Brands. It's all here, no riddles. The Blip-DS is all yours. [Blip-DS](https://design.take.net/240287753/p/9953dc-take-blip-ds-elementar).
+
+Components. Guides. Brands. It's all here, no riddles. [UAI is all yours](https://design.take.net/240287753/p/9953dc-take-blip-ds-elementar).
 
 ![thumbnail-components](./src/assets/svg/thumbnail-github.svg).
 
 ## Installation
 
-Blip-DS installation is available in [Blip-DS](https://design.take.net/240287753/p/216ef2-instalao/b/8176c4).
+The UAI installation is available through the [Design Portal](https://design.take.net/240287753/p/216ef2-instalao/b/8176c4).
 
 
 ## License
