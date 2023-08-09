@@ -33,4 +33,30 @@ const Template = (args) => {
 };
 
 export const NavBarProps = Template.bind({});
-NavBarProps.args = { orientation: 'vertical', backgroundColor: 'surface-1' };
+NavBarProps.argTypes = {
+  orientation: {
+    table: {
+      defaultValue: { summary: 'horizontal' },
+    },
+    description: 'Coloque a disposição da navegação.',
+    control: 'select',
+    options: ['horizontal', 'vertical'],
+  },
+  justifyContent: {
+    table: {
+      defaultValue: { summary: 'space-between' },
+    },
+    description: 'Coloque a cor de fundo da navegação.',
+    control: 'select',
+    options: ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'stretch'],
+  },
+  backgroundColor: {
+    table: {
+      defaultValue: { summary: 'surface-1' },
+    },
+    description: 'Coloque a cor de fundo da navegação.',
+    control: 'select',
+    options: ['surface-1', 'surface-2', 'surface-3'],
+  },
+};
+NavBarProps.args = { orientation: 'vertical', justifyContent: 'space-between', backgroundColor: 'surface-1' };
