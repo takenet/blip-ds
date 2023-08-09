@@ -41,7 +41,7 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
-import { navbarBackground, navbarPosition } from "./components/navbar/navbar";
+import { justifyContent as justifyContent1, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
@@ -1488,11 +1488,15 @@ export namespace Components {
         /**
           * Width, number to define navbar width.
          */
-        "background"?: navbarBackground;
+        "backgroundColor"?: navbarBackground;
         /**
-          * navbar position. Used to position the navbar. Either on the left or on the right.
+          * Justify Content. Used to align itens in navbar.
          */
-        "navbarPosition"?: navbarPosition;
+        "justifyContent"?: justifyContent;
+        /**
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
+         */
+        "orientation"?: orientation;
     }
     interface BdsPagination {
         /**
@@ -2275,10 +2279,6 @@ export interface BdsMenuCustomEvent<T> extends CustomEvent<T> {
 export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsModalElement;
-}
-export interface BdsNavbarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBdsNavbarElement;
 }
 export interface BdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4522,15 +4522,15 @@ declare namespace LocalJSX {
         /**
           * Width, number to define navbar width.
          */
-        "background"?: navbarBackground;
+        "backgroundColor"?: navbarBackground;
         /**
-          * navbar position. Used to position the navbar. Either on the left or on the right.
+          * Justify Content. Used to align itens in navbar.
          */
-        "navbarPosition"?: navbarPosition;
+        "justifyContent"?: justifyContent;
         /**
-          * Emitted when the isOpen has changed.
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
          */
-        "onBdsToggle"?: (event: BdsNavbarCustomEvent<any>) => void;
+        "orientation"?: orientation;
     }
     interface BdsPagination {
         /**

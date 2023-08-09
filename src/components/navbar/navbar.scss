@@ -1,7 +1,7 @@
 @import 'mixins';
 
 :host {
-  display: inline-block;
+  display: flex;
 }
 
 :host(.horizontal) {
@@ -19,7 +19,6 @@
 .navbar {
   width: fit-content;
   display: flex;
-  justify-content: space-between;
   gap: 8px;
 
   ::slotted(*) {
@@ -27,8 +26,32 @@
     gap: 8px;
     align-items: center;
   }
-  
-  &__position {
+
+  &__justify-content {
+    &__flex-start {
+      justify-content: flex-start;
+    }
+    &__center {
+      justify-content: center;
+    }
+    &__flex-end {
+      justify-content: flex-end;
+    }
+    &__space-between {
+      justify-content: space-between;
+    }
+    &__space-around {
+      justify-content: space-around;
+    }
+    &__space-evenly {
+      justify-content: space-evenly;
+    }
+    &__stretch {
+      justify-content: stretch;
+    }
+  }
+
+  &__orientation {
     &__horizontal {
       flex-direction: row;
       width: 100%;
@@ -57,7 +80,7 @@
     }
   }
   
-  &__background {
+  &__background-color {
     &__surface-1 {
       background-color: $color-surface-1;
     }

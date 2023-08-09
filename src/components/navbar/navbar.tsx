@@ -1,8 +1,15 @@
-import { Component, h, Host, Prop, EventEmitter, Event, Element } from '@stencil/core';
+import { Component, h, Host, Prop, Element } from '@stencil/core';
 
-export type navbarPosition = 'horizontal' | 'vertical';
-export type navbarBackground = 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
-
+export type orientation = 'horizontal' | 'vertical';
+export type navbarBackground = 'surface-1' | 'surface-2' | 'surface-3';
+export type justifyContent =
+  | 'flex-start'
+  | 'center'
+  | 'flex-end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'stretch';
 @Component({
   tag: 'bds-navbar',
   styleUrl: 'navbar.scss',
@@ -12,28 +19,29 @@ export class Navbar {
   @Element() hostElement: HTMLElement;
 
   /**
-   * navbar position. Used to position the navbar. Either on the left or on the right.
+   * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
    */
-  @Prop() navbarPosition?: navbarPosition = 'vertical';
+  @Prop() orientation?: orientation = 'vertical';
 
   /**
    * Width, number to define navbar width.
    */
-  @Prop() background?: navbarBackground = 'surface-1';
+  @Prop() backgroundColor?: navbarBackground = 'surface-1';
 
   /**
-   * Emitted when the isOpen has changed.
+   * Justify Content. Used to align itens in navbar.
    */
-  @Event() bdsToggle!: EventEmitter;
+  @Prop() justifyContent?: justifyContent = 'space-between';
 
   render() {
     return (
-      <Host class={{ [`${this.navbarPosition}`]: true }}>
+      <Host class={{ [`${this.orientation}`]: true }}>
         <div
           class={{
             navbar: true,
-            [`navbar__position__${this.navbarPosition}`]: true,
-            [`navbar__background__${this.background}`]: true,
+            [`navbar__justify-content__${this.justifyContent}`]: true,
+            [`navbar__orientation__${this.orientation}`]: true,
+            [`navbar__background-color__${this.backgroundColor}`]: true,
           }}
         >
           <slot name="content-area" />

@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'NavBar',
+  title: 'NavBar Live Code',
   parameters: {
     notes: { markdown: readme },
   },
@@ -10,7 +10,11 @@ export default {
 
 export const NavbarDocs = (args) => {
   return (
-    <bds-navbar class="nav" navbar-position={args.navbarPosition} background={args.navbarBackground}>
+    <bds-navbar
+      orientation={args.orientation}
+      justify-content={args.justifyContent}
+      background-color={args.backgroundColor}
+    >
       <div slot="content-area">
         <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
@@ -29,23 +33,34 @@ export const NavbarDocs = (args) => {
 };
 
 NavbarDocs.argTypes = {
-  navbarPosition: {
+  orientation: {
     table: {
-      defaultValue: { summary: 'horizontal | vertical' },
+      defaultValue: { summary: 'horizontal' },
     },
     description: 'Coloque a disposição da navegação.',
-    control: 'text',
+    control: 'select',
+    options: ['horizontal', 'vertical'],
   },
-  navbarBackground: {
+  justifyContent: {
     table: {
-      defaultValue: { summary: 'surface-1 | surface-2 | surface-3 | surface-4' },
+      defaultValue: { summary: 'space-between' },
     },
     description: 'Coloque a cor de fundo da navegação.',
-    control: 'text',
+    control: 'select',
+    options: ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'stretch'],
+  },
+  backgroundColor: {
+    table: {
+      defaultValue: { summary: 'surface-1' },
+    },
+    description: 'Coloque a cor de fundo da navegação.',
+    control: 'select',
+    options: ['surface-1', 'surface-2', 'surface-3'],
   },
 };
 
 NavbarDocs.args = {
-  navbarPosition: 'horizontal',
-  navbarBackground: 'surface-1',
+  orientation: 'horizontal',
+  justifyContent: 'space-between',
+  backgroundColor: 'surface-1',
 };
