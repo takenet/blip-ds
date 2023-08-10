@@ -10,6 +10,7 @@
 | Property   | Attribute   | Description                                                             | Type      | Default |
 | ---------- | ----------- | ----------------------------------------------------------------------- | --------- | ------- |
 | `dataTest` | `data-test` | Data test is the prop to specifically test the component action object. | `string`  | `null`  |
+| `notDoc`   | `not-doc`   | Prop used only for doc. Change the css. DO NOT USE!                     | `boolean` | `true`  |
 | `open`     | `open`      | Used to open/close the alert                                            | `boolean` | `false` |
 
 
