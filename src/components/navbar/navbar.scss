@@ -20,6 +20,7 @@
   width: fit-content;
   display: flex;
   gap: 8px;
+  box-sizing: border-box;
 
   ::slotted(*) {
     display: flex;
@@ -55,27 +56,17 @@
     &__horizontal {
       flex-direction: row;
       width: 100%;
+      padding: 8px 16px;
       ::slotted(*) {
         flex-direction: row;
-      }
-      ::slotted([slot=content-area]) {
-        padding: 8px 0 8px 16px;
-      }
-      ::slotted([slot=action-area]) {
-        padding: 8px 16px 8px 0;
       }
     }
     &__vertical {
       flex-direction: column;
       height: 100%;
+      padding: 16px 8px;
       ::slotted(*) {
         flex-direction: column;
-      }
-      ::slotted([slot=content-area]) {
-        padding: 16px 8px 0 8px;
-      }
-      ::slotted([slot=action-area]) {
-        padding: 0 8px 16px 8px;
       }
     }
   }

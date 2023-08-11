@@ -15,19 +15,19 @@ export const NavbarDocs = (args) => {
       justify-content={args.justifyContent}
       background-color={args.backgroundColor}
     >
-      <div slot="content-area">
+      <bds-navbar-slot>
         <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-      </div>
-      <div slot="action-area">
+      </bds-navbar-slot>
+      <bds-navbar-slot>
         <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
         <bds-avatar name="Dwight Schrute" size="small"></bds-avatar>
-      </div>
+      </bds-navbar-slot>
     </bds-navbar>
   );
 };

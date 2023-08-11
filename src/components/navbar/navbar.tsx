@@ -44,8 +44,7 @@ export class Navbar {
             [`navbar__background-color__${this.backgroundColor}`]: true,
           }}
         >
-          <slot name="content-area" />
-          <slot name="action-area" />
+          <slot />
         </div>
       </Host>
     );

@@ -1498,6 +1498,8 @@ export namespace Components {
          */
         "orientation"?: orientation;
     }
+    interface BdsNavbarSlot {
+    }
     interface BdsPagination {
         /**
           * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
@@ -2655,6 +2657,12 @@ declare global {
         prototype: HTMLBdsNavbarElement;
         new (): HTMLBdsNavbarElement;
     };
+    interface HTMLBdsNavbarSlotElement extends Components.BdsNavbarSlot, HTMLStencilElement {
+    }
+    var HTMLBdsNavbarSlotElement: {
+        prototype: HTMLBdsNavbarSlotElement;
+        new (): HTMLBdsNavbarSlotElement;
+    };
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
     }
     var HTMLBdsPaginationElement: {
@@ -2865,6 +2873,7 @@ declare global {
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-navbar": HTMLBdsNavbarElement;
+        "bds-navbar-slot": HTMLBdsNavbarSlotElement;
         "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
@@ -4532,6 +4541,8 @@ declare namespace LocalJSX {
          */
         "orientation"?: orientation;
     }
+    interface BdsNavbarSlot {
+    }
     interface BdsPagination {
         /**
           * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
@@ -5300,6 +5311,7 @@ declare namespace LocalJSX {
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-navbar": BdsNavbar;
+        "bds-navbar-slot": BdsNavbarSlot;
         "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
         "bds-progress-bar": BdsProgressBar;
@@ -5385,6 +5397,7 @@ declare module "@stencil/core" {
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
+            "bds-navbar-slot": LocalJSX.BdsNavbarSlot & JSXBase.HTMLAttributes<HTMLBdsNavbarSlotElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
