@@ -45,7 +45,7 @@ export class SelectChips {
    * options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
    * Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
    */
-  @Prop({ mutable: true }) options?: string | Option[] = [];
+  @Prop({ mutable: true }) options?: string | Option[];
 
   /**
    * The chips on the component
@@ -331,11 +331,17 @@ export class SelectChips {
   }
 
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
+    return this.options
+      ? Array.from(
+          this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)')
+        )
+      : Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'));
+    return this.options
+      ? Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'))
+      : Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'));
   }
 
   private handleChangeChipsValue = async () => {
