@@ -9,12 +9,11 @@ export default {
 };
 
 export const NavbarDocs = (args) => {
-
   const el = document.getElementsByClassName('sb-story');
-  if(el.length !== 0) {
-    el[0].style.width = '720px'
+  if (el.length !== 0) {
+    el[0].style.width = '720px';
   }
-  
+
   return (
     <bds-navbar
       orientation={args.orientation}
@@ -22,11 +21,11 @@ export const NavbarDocs = (args) => {
       background-color={args.backgroundColor}
     >
       <bds-navbar-content>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="home"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="store"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="team"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="cloud"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="integration"></bds-button-icon>
       </bds-navbar-content>
       <bds-navbar-content>
         <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>

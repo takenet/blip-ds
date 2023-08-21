@@ -16,11 +16,11 @@ export const NavBarProps = (args) => {
       background-color={args.backgroundColor}
     >
       <bds-navbar-content>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="home"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="store"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="team"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="cloud"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="integration"></bds-button-icon>
       </bds-navbar-content>
       <bds-navbar-content>
         <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
