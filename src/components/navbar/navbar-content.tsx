@@ -1,16 +1,16 @@
 import { Component, h, Host, Element } from '@stencil/core';
 
 @Component({
-  tag: 'bds-navbar-slot',
+  tag: 'bds-navbar-content',
   styleUrl: 'navbar.scss',
   shadow: true,
 })
-export class NavbarSlot {
+export class NavbarContent {
   @Element() hostElement: HTMLElement;
 
   render() {
     return (
-      <Host class={{ NavbarSlot: true }}>
+      <Host class={{ NavbarContent: true }}>
         <slot />
       </Host>
     );

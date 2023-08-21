@@ -1498,7 +1498,7 @@ export namespace Components {
          */
         "orientation"?: orientation;
     }
-    interface BdsNavbarSlot {
+    interface BdsNavbarContent {
     }
     interface BdsPagination {
         /**
@@ -2657,11 +2657,11 @@ declare global {
         prototype: HTMLBdsNavbarElement;
         new (): HTMLBdsNavbarElement;
     };
-    interface HTMLBdsNavbarSlotElement extends Components.BdsNavbarSlot, HTMLStencilElement {
+    interface HTMLBdsNavbarContentElement extends Components.BdsNavbarContent, HTMLStencilElement {
     }
-    var HTMLBdsNavbarSlotElement: {
-        prototype: HTMLBdsNavbarSlotElement;
-        new (): HTMLBdsNavbarSlotElement;
+    var HTMLBdsNavbarContentElement: {
+        prototype: HTMLBdsNavbarContentElement;
+        new (): HTMLBdsNavbarContentElement;
     };
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
     }
@@ -2873,7 +2873,7 @@ declare global {
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-navbar": HTMLBdsNavbarElement;
-        "bds-navbar-slot": HTMLBdsNavbarSlotElement;
+        "bds-navbar-content": HTMLBdsNavbarContentElement;
         "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
@@ -4541,7 +4541,7 @@ declare namespace LocalJSX {
          */
         "orientation"?: orientation;
     }
-    interface BdsNavbarSlot {
+    interface BdsNavbarContent {
     }
     interface BdsPagination {
         /**
@@ -5311,7 +5311,7 @@ declare namespace LocalJSX {
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-navbar": BdsNavbar;
-        "bds-navbar-slot": BdsNavbarSlot;
+        "bds-navbar-content": BdsNavbarContent;
         "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
         "bds-progress-bar": BdsProgressBar;
@@ -5397,7 +5397,7 @@ declare module "@stencil/core" {
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
-            "bds-navbar-slot": LocalJSX.BdsNavbarSlot & JSXBase.HTMLAttributes<HTMLBdsNavbarSlotElement>;
+            "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;

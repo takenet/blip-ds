@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'resets';
 
 :host {
   display: flex;
@@ -8,8 +9,6 @@
   width: 100%;
   height: fit-content;
 }
-
-@import 'resets';
 
 :host(.vertical) {
   width: fit-content;
@@ -46,9 +45,6 @@
     }
     &__space-evenly {
       justify-content: space-evenly;
-    }
-    &__stretch {
-      justify-content: stretch;
     }
   }
 
