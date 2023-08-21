@@ -1,0 +1,25 @@
+:host {
+  display: table-cell;
+  border-bottom: 2px solid $color-border-1;
+  padding: 0px 8px;
+}
+.th_cell {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  gap: 8px;
+  font-family: $font-family;
+  box-sizing: border-box;
+
+  &--sortable-true:hover, &--sortable-false:hover  {
+    cursor: pointer;
+  }
+}
+
+:host:first-child {
+  padding-left: 16px;
+}
+
+:host:last-child {
+  padding-right: 16px;
+}

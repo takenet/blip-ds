@@ -4,11 +4,11 @@ type Data = {
   [key: string]: any;
 };
 @Component({
-  tag: 'bds-table',
-  styleUrl: 'table.scss',
+  tag: 'bds-data-table',
+  styleUrl: 'data-table.scss',
   shadow: true,
 })
-export class Table {
+export class DataTable {
   @Element() el!: HTMLElement;
   @State() newTable: Data = [];
   /**
