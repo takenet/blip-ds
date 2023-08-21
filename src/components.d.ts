@@ -41,7 +41,7 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
-import { navbarBackground, navbarPosition } from "./components/navbar/navbar";
+import { justifyContent as justifyContent1, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
@@ -1519,11 +1519,17 @@ export namespace Components {
         /**
           * Width, number to define navbar width.
          */
-        "background"?: navbarBackground;
+        "backgroundColor"?: navbarBackground;
         /**
-          * navbar position. Used to position the navbar. Either on the left or on the right.
+          * Justify Content. Used to align itens in navbar.
          */
-        "navbarPosition"?: navbarPosition;
+        "justifyContent"?: justifyContent;
+        /**
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
+         */
+        "orientation"?: orientation;
+    }
+    interface BdsNavbarContent {
     }
     interface BdsPagination {
         /**
@@ -2300,10 +2306,6 @@ export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsModalElement;
 }
-export interface BdsNavbarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBdsNavbarElement;
-}
 export interface BdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsPaginationElement;
@@ -2681,6 +2683,12 @@ declare global {
         prototype: HTMLBdsNavbarElement;
         new (): HTMLBdsNavbarElement;
     };
+    interface HTMLBdsNavbarContentElement extends Components.BdsNavbarContent, HTMLStencilElement {
+    }
+    var HTMLBdsNavbarContentElement: {
+        prototype: HTMLBdsNavbarContentElement;
+        new (): HTMLBdsNavbarContentElement;
+    };
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
     }
     var HTMLBdsPaginationElement: {
@@ -2922,6 +2930,7 @@ declare global {
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-navbar": HTMLBdsNavbarElement;
+        "bds-navbar-content": HTMLBdsNavbarContentElement;
         "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
@@ -4617,15 +4626,17 @@ declare namespace LocalJSX {
         /**
           * Width, number to define navbar width.
          */
-        "background"?: navbarBackground;
+        "backgroundColor"?: navbarBackground;
         /**
-          * navbar position. Used to position the navbar. Either on the left or on the right.
+          * Justify Content. Used to align itens in navbar.
          */
-        "navbarPosition"?: navbarPosition;
+        "justifyContent"?: justifyContent;
         /**
-          * Emitted when the isOpen has changed.
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
          */
-        "onBdsToggle"?: (event: BdsNavbarCustomEvent<any>) => void;
+        "orientation"?: orientation;
+    }
+    interface BdsNavbarContent {
     }
     interface BdsPagination {
         /**
@@ -5383,6 +5394,7 @@ declare namespace LocalJSX {
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-navbar": BdsNavbar;
+        "bds-navbar-content": BdsNavbarContent;
         "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
         "bds-progress-bar": BdsProgressBar;
@@ -5474,6 +5486,7 @@ declare module "@stencil/core" {
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
+            "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;

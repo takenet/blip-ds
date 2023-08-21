@@ -1,15 +1,14 @@
 @import 'mixins';
+@import 'resets';
 
 :host {
-  display: inline-block;
+  display: flex;
 }
 
 :host(.horizontal) {
   width: 100%;
   height: fit-content;
 }
-
-@import 'resets';
 
 :host(.vertical) {
   width: fit-content;
@@ -19,45 +18,56 @@
 .navbar {
   width: fit-content;
   display: flex;
-  justify-content: space-between;
   gap: 8px;
+  box-sizing: border-box;
 
   ::slotted(*) {
     display: flex;
     gap: 8px;
     align-items: center;
   }
-  
-  &__position {
+
+  &__justify-content {
+    &__flex-start {
+      justify-content: flex-start;
+    }
+    &__center {
+      justify-content: center;
+    }
+    &__flex-end {
+      justify-content: flex-end;
+    }
+    &__space-between {
+      justify-content: space-between;
+    }
+    &__space-around {
+      justify-content: space-around;
+    }
+    &__space-evenly {
+      justify-content: space-evenly;
+    }
+  }
+
+  &__orientation {
     &__horizontal {
       flex-direction: row;
       width: 100%;
+      padding: 8px 16px;
       ::slotted(*) {
         flex-direction: row;
-      }
-      ::slotted([slot=content-area]) {
-        padding: 8px 0 8px 16px;
-      }
-      ::slotted([slot=action-area]) {
-        padding: 8px 16px 8px 0;
       }
     }
     &__vertical {
       flex-direction: column;
       height: 100%;
+      padding: 16px 8px;
       ::slotted(*) {
         flex-direction: column;
-      }
-      ::slotted([slot=content-area]) {
-        padding: 16px 8px 0 8px;
-      }
-      ::slotted([slot=action-area]) {
-        padding: 0 8px 16px 8px;
       }
     }
   }
   
-  &__background {
+  &__background-color {
     &__surface-1 {
       background-color: $color-surface-1;
     }
