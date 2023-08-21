@@ -1,5 +1,13 @@
 import React from 'react';
 import readme from './readme.md';
+import {
+  BdsAlert,
+  BdsAlertActions,
+  BdsAlertHeader,
+  BdsAlertBody,
+  BdsButton,
+  BdsGrid
+} from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Alert',
@@ -41,3 +49,96 @@ WarningAlert.args = { variant: 'warning', icon: 'warning' };
 
 export const DeleteAlert = Template.bind({});
 DeleteAlert.args = { variant: 'delete', icon: 'trash' };
+
+export const alertProps = (args) => {
+  return (
+    <bds-alert open={args.open}>
+      <bds-alert-header variant={args.variant} icon={args.icon}>
+        Atenção!
+      </bds-alert-header>
+      <bds-alert-body>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos
+        error!
+      </bds-alert-body>
+      <bds-alert-actions>
+        <bds-button variant="secondary" bold={true}>
+          Cancelar
+        </bds-button>
+        <bds-button variant="secondary" bold={true}>
+          Confirmar
+        </bds-button>
+      </bds-alert-actions>
+    </bds-alert>
+  );
+};
+
+alertProps.argTypes = {
+  ...alertProps.args,
+  variant: {
+    table: {
+      defaultValue: { summary: 'system' },
+    },
+    description: 'Escolha o estado do componente.',
+    options: ['system' , 'error' , 'warning' , 'delete'],
+    control: 'select',
+  },
+  icon: {
+      table: {
+        defaultValue: { summary: 'vazio' },
+      },
+      description: 'Escolha o ícone do cabeçalho.',
+      control: 'text',
+    },
+};
+
+alertProps.args = {
+  variant:'system',
+  icon: 'info',
+  open: true
+}
+
+export const alertReact = () => {
+  return (
+    <BdsAlert open={true} not-doc={false} id="alert">
+      <BdsAlertHeader variant="system" icon="info">
+        Atenção!
+      </BdsAlertHeader>
+      <BdsAlertBody>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos
+        error!
+      </BdsAlertBody>
+      <BdsAlertActions>
+        <BdsButton variant="tertiary">Cancelar</BdsButton>
+        <bds-button variant="primary">Confirmar</bds-button>
+      </BdsAlertActions>
+    </BdsAlert>
+  );
+};
+
+export const alertMethod = () => {
+
+  const btToggle = async id => {
+    const alert = document.getElementById(id);
+    alert.toggle();
+  }
+  return (
+    <BdsGrid>
+      <BdsButton onClick={() => btToggle('alert')}>
+        Abrir Alert
+      </BdsButton>
+      <BdsAlert id="alert">
+      <BdsAlertHeader variant="system" icon="info">
+        Atenção!
+      </BdsAlertHeader>
+      <BdsAlertBody>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos
+        error!
+      </BdsAlertBody>
+      <BdsAlertActions>
+        <BdsButton variant="tertiary" onClick={() => btToggle('alert')}>Cancelar</BdsButton>
+        <bds-button variant="primary" onClick={() => btToggle('alert')}>Confirmar</bds-button>
+      </BdsAlertActions>
+    </BdsAlert>
+    </BdsGrid>
+  );
+};

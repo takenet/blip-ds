@@ -21,6 +21,11 @@ export class BdsAlert implements ComponentInterface {
   @Prop() dataTest?: string = null;
 
   /**
+   * Prop used only for doc. Change the css. DO NOT USE!
+   */
+  @Prop() notDoc?: boolean = true;
+
+  /**
    * Can be used outside to open/close the alert
    */
   @Method()
@@ -34,6 +39,7 @@ export class BdsAlert implements ComponentInterface {
         class={{
           alert__dialog: true,
           'alert__dialog--open': this.open,
+          [`alert__dialog--for-doc--${this.notDoc}`]: true,
         }}
       >
         <div class="alert" data-test={this.dataTest}>

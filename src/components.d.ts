@@ -103,6 +103,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * Prop used only for doc. Change the css. DO NOT USE!
+         */
+        "notDoc"?: boolean;
+        /**
           * Used to open/close the alert
          */
         "open"?: boolean;
@@ -3009,6 +3013,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * Prop used only for doc. Change the css. DO NOT USE!
+         */
+        "notDoc"?: boolean;
         /**
           * Used to open/close the alert
          */
