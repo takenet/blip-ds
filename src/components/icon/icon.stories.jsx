@@ -388,6 +388,13 @@ const logoNames = [
   'webhook',
   'whatsapp',
   'workplace',
+  'youtube',
+  'linkedin',
+  'tiktok',
+  'google-play',
+  'google-meu-negocio',
+  'cielo'
+
 ];
 
 const iconStyles = {

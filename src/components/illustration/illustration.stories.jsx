@@ -66,6 +66,11 @@ const defaults = [
   'welcome-blip',
   'whatsapp-web',
   'whatsapp',
+  'error',
+  'search-2',
+  'time-2',
+  'time',
+  'robot-6'
 ];
 
 const screens = [
@@ -184,6 +189,10 @@ const brand = [
   'blip-docs-blue-black',
   'blip-docs-blue-white',
   'blip-docs-white',
+  'blip-ecosystem-black',
+  'blip-ecosystem-blue-black',
+  'blip-ecosystem-blue-white',
+  'blip-ecosystem-white',
   'blip-foods-black',
   'blip-foods-blue-black',
   'blip-foods-blue-white',
