@@ -269,6 +269,7 @@ $input-width: 100%;
     align-items: baseline;
     height: 20px;
     margin: 3.7px 2.5px;
+    gap: 4px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: $color-content-disable;
     word-break: break-word;
@@ -281,9 +282,7 @@ $input-width: 100%;
 
     &__icon {
       display: flex;
-      padding-right: 4px;
       margin-top: 0px;
-      padding-top: 2px;
     }
 
     &--danger {
