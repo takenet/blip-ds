@@ -1,5 +1,4 @@
 import { defineCustomElements } from '../dist/esm/loader';
-import { Canvas } from '@storybook/blocks'
 import { withConsole } from '@storybook/addon-console';
 import { useEffect, useState } from 'react';
 import './preview.css';
