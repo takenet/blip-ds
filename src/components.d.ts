@@ -103,13 +103,13 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
-          * Prop used only for doc. Change the css. DO NOT USE!
-         */
-        "notDoc"?: boolean;
-        /**
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Define whether the component will occupy the entire screen or just the parent.
+         */
+        "position"?: string;
         /**
           * Can be used outside to open/close the alert
          */
@@ -3023,13 +3023,13 @@ declare namespace LocalJSX {
          */
         "dataTest"?: string;
         /**
-          * Prop used only for doc. Change the css. DO NOT USE!
-         */
-        "notDoc"?: boolean;
-        /**
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Define whether the component will occupy the entire screen or just the parent.
+         */
+        "position"?: string;
     }
     interface BdsAlertActions {
     }

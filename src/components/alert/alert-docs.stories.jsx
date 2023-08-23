@@ -9,8 +9,18 @@ export default {
 };
 
 export const alertDocs = (args) => {
+
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '720px';
+    el[0].style.height = '400px';
+    el[0].style.position = 'relative';
+    el[0].style.background = 'none';
+  }
+
   return (
-    <bds-alert open={args.open} not-doc={false} id="alert">
+    <bds-grid>
+       <bds-alert open={args.open} position="contain" id="alert">
       <bds-alert-header variant={args.variant} icon={args.icon}>
         Atenção!
       </bds-alert-header>
@@ -23,6 +33,8 @@ export const alertDocs = (args) => {
         <bds-button variant="primary">Confirmar</bds-button>
       </bds-alert-actions>
     </bds-alert>
+    </bds-grid>
+   
   );
 };
 

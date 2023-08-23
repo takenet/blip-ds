@@ -17,8 +17,15 @@ export default {
 };
 
 const Template = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+if (el.length !== 0) {
+  el[0].style.width = '720px';
+  el[0].style.height = '400px';
+  el[0].style.position = 'relative';
+  el[0].style.background = 'none';
+}
   return (
-    <bds-alert open={true}>
+    <bds-alert position="contain" open={true}>
       <bds-alert-header variant={args.variant} icon={args.icon}>
         Atenção!
       </bds-alert-header>
@@ -51,8 +58,15 @@ export const DeleteAlert = Template.bind({});
 DeleteAlert.args = { variant: 'delete', icon: 'trash' };
 
 export const alertProps = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+if (el.length !== 0) {
+  el[0].style.width = '720px';
+  el[0].style.height = '400px';
+  el[0].style.position = 'relative';
+  el[0].style.background = 'none';
+}
   return (
-    <bds-alert open={args.open}>
+    <bds-alert position="contain" open={args.open}>
       <bds-alert-header variant={args.variant} icon={args.icon}>
         Atenção!
       </bds-alert-header>
@@ -98,8 +112,15 @@ alertProps.args = {
 }
 
 export const alertReact = () => {
+  const el = document.getElementsByClassName('sb-story');
+if (el.length !== 0) {
+  el[0].style.width = '720px';
+  el[0].style.height = '400px';
+  el[0].style.position = 'relative';
+  el[0].style.background = 'none';
+}
   return (
-    <BdsAlert open={true} not-doc={false} id="alert">
+    <BdsAlert position="contain" open={true} not-doc={false} id="alert">
       <BdsAlertHeader variant="system" icon="info">
         Atenção!
       </BdsAlertHeader>
@@ -117,6 +138,14 @@ export const alertReact = () => {
 
 export const alertMethod = () => {
 
+  const el = document.getElementsByClassName('sb-story');
+if (el.length !== 0) {
+  el[0].style.width = '720px';
+  el[0].style.height = '400px';
+  el[0].style.position = 'relative';
+  el[0].style.background = 'none';
+}
+
   const btToggle = async id => {
     const alert = document.getElementById(id);
     alert.toggle();
@@ -126,7 +155,7 @@ export const alertMethod = () => {
       <BdsButton onClick={() => btToggle('alert')}>
         Abrir Alert
       </BdsButton>
-      <BdsAlert id="alert">
+      <BdsAlert position="contain" id="alert">
       <BdsAlertHeader variant="system" icon="info">
         Atenção!
       </BdsAlertHeader>

@@ -29,11 +29,10 @@
     opacity: 1;
     visibility: visible;
   }
-
-  &--for-doc--false {
-    position: relative;
-    height: 400px;
-    width: 700px;
-    background-color: none;
+  &--fixed {
+    position: fixed;
+  }
+  &--contain {
+    position: absolute;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
 
+export type collapses = 'fixed' | 'contain';
 @Component({
   tag: 'bds-alert',
   styleUrl: 'alert.scss',
@@ -21,9 +22,9 @@ export class BdsAlert implements ComponentInterface {
   @Prop() dataTest?: string = null;
 
   /**
-   * Prop used only for doc. Change the css. DO NOT USE!
+   * Define whether the component will occupy the entire screen or just the parent.
    */
-  @Prop() notDoc?: boolean = true;
+  @Prop() position?: string = 'fixed';
 
   /**
    * Can be used outside to open/close the alert
@@ -39,7 +40,7 @@ export class BdsAlert implements ComponentInterface {
         class={{
           alert__dialog: true,
           'alert__dialog--open': this.open,
-          [`alert__dialog--for-doc--${this.notDoc}`]: true,
+          [`alert__dialog--${this.position}`]: true,
         }}
       >
         <div class="alert" data-test={this.dataTest}>
