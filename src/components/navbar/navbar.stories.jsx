@@ -8,40 +8,54 @@ export default {
   },
 };
 
-const Template = (args) => {
+export const NavBarProps = (args) => {
   return (
-    <bds-navbar class="nav" navbar-position={args.navbarPosition} background={args.background}>
-      <div slot="content-area">
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-        <bds-button-icon size="short" variant="secondary" icon="attention"></bds-button-icon>
-      </div>
-      <div slot="action-area">
+    <bds-navbar
+      orientation={args.orientation}
+      justify-content={args.justifyContent}
+      background-color={args.backgroundColor}
+    >
+      <bds-navbar-content>
+        <bds-button-icon size="short" variant="secondary" icon="home"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="store"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="team"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="cloud"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="integration"></bds-button-icon>
+      </bds-navbar-content>
+      <bds-navbar-content>
         <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
         <bds-avatar name="Dwight Schrute" size="small"></bds-avatar>
-      </div>
+      </bds-navbar-content>
     </bds-navbar>
   );
 };
 
-export const NavBarVertical = Template.bind({});
-NavBarVertical.args = { navbarPosition: 'vertical', background: 'surface-1' };
-
-export const NavBarHorizontal = Template.bind({});
-NavBarHorizontal.args = { navbarPosition: 'horizontal', background: 'surface-1' };
-
-export const NavBarSuface1 = Template.bind({});
-NavBarSuface1.args = { navbarPosition: 'horizontal', background: 'surface-1' };
-
-export const NavBarSuface2 = Template.bind({});
-NavBarSuface2.args = { navbarPosition: 'horizontal', background: 'surface-2' };
-
-export const NavBarSuface3 = Template.bind({});
-NavBarSuface3.args = { navbarPosition: 'horizontal', background: 'surface-3' };
-
-export const NavBarSuface4 = Template.bind({});
-NavBarSuface4.args = { navbarPosition: 'horizontal', background: 'surface-4' };
+NavBarProps.argTypes = {
+  orientation: {
+    table: {
+      defaultValue: { summary: 'horizontal' },
+    },
+    description: 'Coloque a disposição da navegação.',
+    control: 'select',
+    options: ['horizontal', 'vertical'],
+  },
+  justifyContent: {
+    table: {
+      defaultValue: { summary: 'space-between' },
+    },
+    description: 'Coloque a cor de fundo da navegação.',
+    control: 'select',
+    options: ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly', 'stretch'],
+  },
+  backgroundColor: {
+    table: {
+      defaultValue: { summary: 'surface-1' },
+    },
+    description: 'Coloque a cor de fundo da navegação.',
+    control: 'select',
+    options: ['surface-1', 'surface-2', 'surface-3'],
+  },
+};
+NavBarProps.args = { orientation: 'vertical', justifyContent: 'space-between', backgroundColor: 'surface-1' };

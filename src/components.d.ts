@@ -41,7 +41,7 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
-import { navbarBackground, navbarPosition } from "./components/navbar/navbar";
+import { justifyContent as justifyContent1, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
@@ -106,6 +106,10 @@ export namespace Components {
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Define whether the component will occupy the entire screen or just the parent.
+         */
+        "position"?: string;
         /**
           * Can be used outside to open/close the alert
          */
@@ -501,6 +505,33 @@ export namespace Components {
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
+    }
+    interface BdsDataTable {
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
+          * Prop to activate the possibility of use avatar in any column.
+         */
+        "avatar"?: boolean;
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
+          * Prop to recive the header and configuration of table.
+         */
+        "column"?: string;
+        "deleteItem": (index: number) => Promise<void>;
+        /**
+          * Prop to recive the content of the table.
+         */
+        "options"?: string;
+        /**
+          * Prop to activate the sorting.
+         */
+        "sorting"?: boolean;
     }
     interface BdsDatepicker {
         /**
@@ -1488,11 +1519,17 @@ export namespace Components {
         /**
           * Width, number to define navbar width.
          */
-        "background"?: navbarBackground;
+        "backgroundColor"?: navbarBackground;
         /**
-          * navbar position. Used to position the navbar. Either on the left or on the right.
+          * Justify Content. Used to align itens in navbar.
          */
-        "navbarPosition"?: navbarPosition;
+        "justifyContent"?: justifyContent;
+        /**
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
+         */
+        "orientation"?: orientation;
+    }
+    interface BdsNavbarContent {
     }
     interface BdsPagination {
         /**
@@ -1986,31 +2023,20 @@ export namespace Components {
         "group": string;
     }
     interface BdsTable {
-        /**
-          * Prop to activate the possibility of use chip in any column.
-         */
-        "actionArea"?: boolean;
-        /**
-          * Prop to activate the possibility of use avatar in any column.
-         */
-        "avatar"?: boolean;
-        /**
-          * Prop to activate the possibility of use chip in any column.
-         */
-        "chips"?: boolean;
-        /**
-          * Prop to recive the header and configuration of table.
-         */
-        "column"?: string;
-        "deleteItem": (index: number) => Promise<void>;
-        /**
-          * Prop to recive the content of the table.
-         */
-        "options"?: string;
-        /**
-          * Prop to activate the sorting.
-         */
-        "sorting"?: boolean;
+    }
+    interface BdsTableBody {
+    }
+    interface BdsTableCell {
+        "sortable": boolean;
+        "type"?: string;
+    }
+    interface BdsTableHeader {
+    }
+    interface BdsTableRow {
+    }
+    interface BdsTableTh {
+        "arrow": string;
+        "sortable": boolean;
     }
     interface BdsTabs {
         "align": 'left' | 'center' | 'right';
@@ -2224,6 +2250,10 @@ export interface BdsChipSelectedCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsChipSelectedElement;
 }
+export interface BdsDataTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsDataTableElement;
+}
 export interface BdsDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsDatepickerElement;
@@ -2276,10 +2306,6 @@ export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsModalElement;
 }
-export interface BdsNavbarCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBdsNavbarElement;
-}
 export interface BdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsPaginationElement;
@@ -2319,10 +2345,6 @@ export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
 export interface BdsTabGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabGroupElement;
-}
-export interface BdsTableCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLBdsTableElement;
 }
 export interface BdsTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2474,6 +2496,12 @@ declare global {
     var HTMLBdsCounterTextElement: {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
+    };
+    interface HTMLBdsDataTableElement extends Components.BdsDataTable, HTMLStencilElement {
+    }
+    var HTMLBdsDataTableElement: {
+        prototype: HTMLBdsDataTableElement;
+        new (): HTMLBdsDataTableElement;
     };
     interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
     }
@@ -2655,6 +2683,12 @@ declare global {
         prototype: HTMLBdsNavbarElement;
         new (): HTMLBdsNavbarElement;
     };
+    interface HTMLBdsNavbarContentElement extends Components.BdsNavbarContent, HTMLStencilElement {
+    }
+    var HTMLBdsNavbarContentElement: {
+        prototype: HTMLBdsNavbarContentElement;
+        new (): HTMLBdsNavbarContentElement;
+    };
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
     }
     var HTMLBdsPaginationElement: {
@@ -2757,6 +2791,36 @@ declare global {
         prototype: HTMLBdsTableElement;
         new (): HTMLBdsTableElement;
     };
+    interface HTMLBdsTableBodyElement extends Components.BdsTableBody, HTMLStencilElement {
+    }
+    var HTMLBdsTableBodyElement: {
+        prototype: HTMLBdsTableBodyElement;
+        new (): HTMLBdsTableBodyElement;
+    };
+    interface HTMLBdsTableCellElement extends Components.BdsTableCell, HTMLStencilElement {
+    }
+    var HTMLBdsTableCellElement: {
+        prototype: HTMLBdsTableCellElement;
+        new (): HTMLBdsTableCellElement;
+    };
+    interface HTMLBdsTableHeaderElement extends Components.BdsTableHeader, HTMLStencilElement {
+    }
+    var HTMLBdsTableHeaderElement: {
+        prototype: HTMLBdsTableHeaderElement;
+        new (): HTMLBdsTableHeaderElement;
+    };
+    interface HTMLBdsTableRowElement extends Components.BdsTableRow, HTMLStencilElement {
+    }
+    var HTMLBdsTableRowElement: {
+        prototype: HTMLBdsTableRowElement;
+        new (): HTMLBdsTableRowElement;
+    };
+    interface HTMLBdsTableThElement extends Components.BdsTableTh, HTMLStencilElement {
+    }
+    var HTMLBdsTableThElement: {
+        prototype: HTMLBdsTableThElement;
+        new (): HTMLBdsTableThElement;
+    };
     interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
     }
     var HTMLBdsTabsElement: {
@@ -2835,6 +2899,7 @@ declare global {
         "bds-chip-selected": HTMLBdsChipSelectedElement;
         "bds-chip-tag": HTMLBdsChipTagElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
+        "bds-data-table": HTMLBdsDataTableElement;
         "bds-datepicker": HTMLBdsDatepickerElement;
         "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
         "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
@@ -2865,6 +2930,7 @@ declare global {
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-navbar": HTMLBdsNavbarElement;
+        "bds-navbar-content": HTMLBdsNavbarContentElement;
         "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
@@ -2882,6 +2948,11 @@ declare global {
         "bds-tab-item": HTMLBdsTabItemElement;
         "bds-tab-panel": HTMLBdsTabPanelElement;
         "bds-table": HTMLBdsTableElement;
+        "bds-table-body": HTMLBdsTableBodyElement;
+        "bds-table-cell": HTMLBdsTableCellElement;
+        "bds-table-header": HTMLBdsTableHeaderElement;
+        "bds-table-row": HTMLBdsTableRowElement;
+        "bds-table-th": HTMLBdsTableThElement;
         "bds-tabs": HTMLBdsTabsElement;
         "bds-test-component": HTMLBdsTestComponentElement;
         "bds-theme-provider": HTMLBdsThemeProviderElement;
@@ -2955,6 +3026,10 @@ declare namespace LocalJSX {
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Define whether the component will occupy the entire screen or just the parent.
+         */
+        "position"?: string;
     }
     interface BdsAlertActions {
     }
@@ -3399,6 +3474,35 @@ declare namespace LocalJSX {
         "length": number;
         "max"?: number;
         "warning"?: CounterTextRule;
+    }
+    interface BdsDataTable {
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
+          * Prop to activate the possibility of use avatar in any column.
+         */
+        "avatar"?: boolean;
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
+          * Prop to recive the header and configuration of table.
+         */
+        "column"?: string;
+        "onBdsTableChange"?: (event: BdsDataTableCustomEvent<any>) => void;
+        "onBdsTableClick"?: (event: BdsDataTableCustomEvent<any>) => void;
+        "onBdsTableDelete"?: (event: BdsDataTableCustomEvent<any>) => void;
+        /**
+          * Prop to recive the content of the table.
+         */
+        "options"?: string;
+        /**
+          * Prop to activate the sorting.
+         */
+        "sorting"?: boolean;
     }
     interface BdsDatepicker {
         /**
@@ -4522,15 +4626,17 @@ declare namespace LocalJSX {
         /**
           * Width, number to define navbar width.
          */
-        "background"?: navbarBackground;
+        "backgroundColor"?: navbarBackground;
         /**
-          * navbar position. Used to position the navbar. Either on the left or on the right.
+          * Justify Content. Used to align itens in navbar.
          */
-        "navbarPosition"?: navbarPosition;
+        "justifyContent"?: justifyContent;
         /**
-          * Emitted when the isOpen has changed.
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
          */
-        "onBdsToggle"?: (event: BdsNavbarCustomEvent<any>) => void;
+        "orientation"?: orientation;
+    }
+    interface BdsNavbarContent {
     }
     interface BdsPagination {
         /**
@@ -5053,33 +5159,20 @@ declare namespace LocalJSX {
         "group": string;
     }
     interface BdsTable {
-        /**
-          * Prop to activate the possibility of use chip in any column.
-         */
-        "actionArea"?: boolean;
-        /**
-          * Prop to activate the possibility of use avatar in any column.
-         */
-        "avatar"?: boolean;
-        /**
-          * Prop to activate the possibility of use chip in any column.
-         */
-        "chips"?: boolean;
-        /**
-          * Prop to recive the header and configuration of table.
-         */
-        "column"?: string;
-        "onBdsTableChange"?: (event: BdsTableCustomEvent<any>) => void;
-        "onBdsTableClick"?: (event: BdsTableCustomEvent<any>) => void;
-        "onBdsTableDelete"?: (event: BdsTableCustomEvent<any>) => void;
-        /**
-          * Prop to recive the content of the table.
-         */
-        "options"?: string;
-        /**
-          * Prop to activate the sorting.
-         */
-        "sorting"?: boolean;
+    }
+    interface BdsTableBody {
+    }
+    interface BdsTableCell {
+        "sortable"?: boolean;
+        "type"?: string;
+    }
+    interface BdsTableHeader {
+    }
+    interface BdsTableRow {
+    }
+    interface BdsTableTh {
+        "arrow"?: string;
+        "sortable"?: boolean;
     }
     interface BdsTabs {
         "align"?: 'left' | 'center' | 'right';
@@ -5270,6 +5363,7 @@ declare namespace LocalJSX {
         "bds-chip-selected": BdsChipSelected;
         "bds-chip-tag": BdsChipTag;
         "bds-counter-text": BdsCounterText;
+        "bds-data-table": BdsDataTable;
         "bds-datepicker": BdsDatepicker;
         "bds-datepicker-period": BdsDatepickerPeriod;
         "bds-datepicker-single": BdsDatepickerSingle;
@@ -5300,6 +5394,7 @@ declare namespace LocalJSX {
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-navbar": BdsNavbar;
+        "bds-navbar-content": BdsNavbarContent;
         "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
         "bds-progress-bar": BdsProgressBar;
@@ -5317,6 +5412,11 @@ declare namespace LocalJSX {
         "bds-tab-item": BdsTabItem;
         "bds-tab-panel": BdsTabPanel;
         "bds-table": BdsTable;
+        "bds-table-body": BdsTableBody;
+        "bds-table-cell": BdsTableCell;
+        "bds-table-header": BdsTableHeader;
+        "bds-table-row": BdsTableRow;
+        "bds-table-th": BdsTableTh;
         "bds-tabs": BdsTabs;
         "bds-test-component": BdsTestComponent;
         "bds-theme-provider": BdsThemeProvider;
@@ -5355,6 +5455,7 @@ declare module "@stencil/core" {
             "bds-chip-selected": LocalJSX.BdsChipSelected & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
             "bds-chip-tag": LocalJSX.BdsChipTag & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
+            "bds-data-table": LocalJSX.BdsDataTable & JSXBase.HTMLAttributes<HTMLBdsDataTableElement>;
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
@@ -5385,6 +5486,7 @@ declare module "@stencil/core" {
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
+            "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
@@ -5402,6 +5504,11 @@ declare module "@stencil/core" {
             "bds-tab-item": LocalJSX.BdsTabItem & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
             "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-table": LocalJSX.BdsTable & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
+            "bds-table-body": LocalJSX.BdsTableBody & JSXBase.HTMLAttributes<HTMLBdsTableBodyElement>;
+            "bds-table-cell": LocalJSX.BdsTableCell & JSXBase.HTMLAttributes<HTMLBdsTableCellElement>;
+            "bds-table-header": LocalJSX.BdsTableHeader & JSXBase.HTMLAttributes<HTMLBdsTableHeaderElement>;
+            "bds-table-row": LocalJSX.BdsTableRow & JSXBase.HTMLAttributes<HTMLBdsTableRowElement>;
+            "bds-table-th": LocalJSX.BdsTableTh & JSXBase.HTMLAttributes<HTMLBdsTableThElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-test-component": LocalJSX.BdsTestComponent & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
             "bds-theme-provider": LocalJSX.BdsThemeProvider & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;

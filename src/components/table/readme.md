@@ -52,17 +52,17 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  bds-table --> bds-icon
-  bds-table --> bds-typo
-  bds-table --> bds-button-icon
-  bds-table --> bds-chip-tag
-  bds-table --> bds-avatar
+  bds-data-table --> bds-icon
+  bds-data-table --> bds-typo
+  bds-data-table --> bds-button-icon
+  bds-data-table --> bds-chip-tag
+  bds-data-table --> bds-avatar
   bds-button-icon --> bds-icon
   bds-chip-tag --> bds-icon
   bds-chip-tag --> bds-typo
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
-  style bds-table fill:#f9f,stroke:#333,stroke-width:4px
+  style bds-data-table fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

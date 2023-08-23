@@ -29,4 +29,10 @@
     opacity: 1;
     visibility: visible;
   }
+  &--fixed {
+    position: fixed;
+  }
+  &--contain {
+    position: absolute;
+  }
 }
