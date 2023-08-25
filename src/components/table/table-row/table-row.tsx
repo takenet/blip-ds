@@ -1,4 +1,4 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({
   tag: 'bds-table-row',
@@ -6,9 +6,24 @@ import { Component, h, Host } from '@stencil/core';
   scoped: true,
 })
 export class TableRow {
+  /**
+   * Prop to make hover animation.
+   */
+  @Prop() clickable?: boolean = false;
+  /**
+   * Prop to highlight the row selected.
+   */
+  @Prop() selected?: boolean = false;
+
   render(): HTMLElement {
     return (
-      <Host>
+      <Host
+        class={{
+          host: true,
+          [`clickable--${this.clickable}`]: true,
+          [`selected--${this.selected}`]: true,
+        }}
+      >
         <slot />
       </Host>
     );

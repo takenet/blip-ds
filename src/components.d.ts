@@ -2033,6 +2033,14 @@ export namespace Components {
     interface BdsTableHeader {
     }
     interface BdsTableRow {
+        /**
+          * Prop to make hover animation.
+         */
+        "clickable"?: boolean;
+        /**
+          * Prop to highlight the row selected.
+         */
+        "selected"?: boolean;
     }
     interface BdsTableTh {
         "arrow": string;
@@ -5169,6 +5177,14 @@ declare namespace LocalJSX {
     interface BdsTableHeader {
     }
     interface BdsTableRow {
+        /**
+          * Prop to make hover animation.
+         */
+        "clickable"?: boolean;
+        /**
+          * Prop to highlight the row selected.
+         */
+        "selected"?: boolean;
     }
     interface BdsTableTh {
         "arrow"?: string;

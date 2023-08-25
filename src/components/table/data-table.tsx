@@ -113,12 +113,12 @@ export class DataTable {
                       class="title-click"
                       onClick={() => this.orderColumn(item.value)}
                       variant="fs-14"
-                      bold={this.headerActive === `${item.value}` ? 'bold' : 'regular'}
+                      bold={this.headerActive === `${item.value}` ? 'bold' : 'semi-bold'}
                     >
                       {item.heading}
                     </bds-typo>
                   ) : (
-                    <bds-typo variant="fs-14" bold="regular">
+                    <bds-typo variant="fs-14" bold="semi-bold">
                       {item.heading}
                     </bds-typo>
                   )}

@@ -9,7 +9,9 @@ export class Table {
   render(): HTMLElement {
     return (
       <Host>
-        <slot />
+        <div class="bds-table">
+          <slot />
+        </div>
       </Host>
     );
   }
