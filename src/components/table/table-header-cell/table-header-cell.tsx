@@ -17,7 +17,7 @@ export class TableHeaderCell {
             [`th_cell--sortable-${this.sortable}`]: true,
           }}
         >
-          <bds-typo bold={this.sortable ? 'bold' : 'regular'} variant="fs-14">
+          <bds-typo bold={this.sortable ? 'bold' : 'semi-bold'} variant="fs-14">
             <slot />
           </bds-typo>
           {this.sortable ? (
