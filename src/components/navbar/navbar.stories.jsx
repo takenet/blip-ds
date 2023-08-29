@@ -1,5 +1,6 @@
 import React from 'react';
 import readme from './readme.md';
+import { BdsNavbar, BdsNavbarContent, BdsAvatar, BdsButtonIcon } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'NavBar',
@@ -59,3 +60,23 @@ NavBarProps.argTypes = {
   },
 };
 NavBarProps.args = { orientation: 'vertical', justifyContent: 'space-between', backgroundColor: 'surface-1' };
+
+export const NavBarReact = () => {
+  return (
+    <BdsNavbar orientation="horizontal" justifyContent="space-between" backgroundColor="surface-1">
+      <BdsNavbarContent>
+        <BdsButtonIcon size="short" variant="secondary" icon="attention"></BdsButtonIcon>
+        <BdsButtonIcon size="short" variant="secondary" icon="attention"></BdsButtonIcon>
+        <BdsButtonIcon size="short" variant="secondary" icon="attention"></BdsButtonIcon>
+        <BdsButtonIcon size="short" variant="secondary" icon="attention"></BdsButtonIcon>
+        <BdsButtonIcon size="short" variant="secondary" icon="attention"></BdsButtonIcon>
+      </BdsNavbarContent>
+      <BdsNavbarContent>
+        <BdsButtonIcon size="short" variant="secondary" icon="settings-general"></BdsButtonIcon>
+        <BdsButtonIcon size="short" variant="secondary" icon="question"></BdsButtonIcon>
+        <BdsButtonIcon size="short" variant="secondary" icon="bell"></BdsButtonIcon>
+        <BdsAvatar name="Dwight Schrute" size="small"></BdsAvatar>
+      </BdsNavbarContent>
+    </BdsNavbar>
+  );
+};
