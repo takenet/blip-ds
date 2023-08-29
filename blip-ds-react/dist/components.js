@@ -79,6 +79,7 @@ export const BdsTableCell = /*@__PURE__*/ createReactComponent('bds-table-cell')
 export const BdsTableHeader = /*@__PURE__*/ createReactComponent('bds-table-header');
 export const BdsTableRow = /*@__PURE__*/ createReactComponent('bds-table-row');
 export const BdsTableTh = /*@__PURE__*/ createReactComponent('bds-table-th');
+export const BdsTabs = /*@__PURE__*/ createReactComponent('bds-tabs');
 export const BdsTestComponent = /*@__PURE__*/ createReactComponent('bds-test-component');
 export const BdsThemeProvider = /*@__PURE__*/ createReactComponent('bds-theme-provider');
 export const BdsToast = /*@__PURE__*/ createReactComponent('bds-toast');
