@@ -13,6 +13,7 @@
 | `dtButtonClose` | `dt-button-close` | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close. | `string`               | `null`    |
 | `dtOutzone`     | `dt-outzone`      | Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.     | `string`               | `null`    |
 | `open`          | `open`            | Used to open/close the modal                                                                                            | `boolean`              | `false`   |
+| `outzoneClose`  | `outzone-close`   | If true, the modal will close clicking outside the component.                                                           | `boolean`              | `true`    |
 | `size`          | `size`            | Used to change the modal heights.                                                                                       | `"dynamic" \| "fixed"` | `'fixed'` |
 
 
@@ -38,6 +39,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../test-component)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -46,6 +51,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   bds-modal --> bds-icon
+  bds-test-component --> bds-modal
   style bds-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
