@@ -1499,6 +1499,10 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
+          * If true, the modal will close clicking outside the component.
+         */
+        "outzoneClose"?: boolean;
+        /**
           * Used to change the modal heights.
          */
         "size"?: sizes;
@@ -4609,6 +4613,10 @@ declare namespace LocalJSX {
           * Used to open/close the modal
          */
         "open"?: boolean;
+        /**
+          * If true, the modal will close clicking outside the component.
+         */
+        "outzoneClose"?: boolean;
         /**
           * Used to change the modal heights.
          */
