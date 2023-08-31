@@ -2129,7 +2129,7 @@ export namespace Components {
         /**
           * Used to disable tooltip when the button are avalible
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * Used to set tooltip position
          */

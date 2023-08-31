@@ -84,7 +84,7 @@ export class Sidebar {
   }
 
   private listiner = (event) => {
-    if (event.key == 'Escape') {
+    if (event.key == 'Escape' && this.type !== 'fixed') {
       this.isOpen = false;
     }
   };
