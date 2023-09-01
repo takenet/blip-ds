@@ -17,9 +17,10 @@
 
 ## Events
 
-| Event          | Description                                                   | Type               |
-| -------------- | ------------------------------------------------------------- | ------------------ |
-| `bdsTabChange` | bdsTabChange. Event to return value when accordion is change. | `CustomEvent<any>` |
+| Event            | Description                                                        | Type               |
+| ---------------- | ------------------------------------------------------------------ | ------------------ |
+| `bdsTabChange`   | bdsTabChange. Event to return value when Tabs is change.           | `CustomEvent<any>` |
+| `bdsTabDisabled` | bdsTabDisabled. Event to return value when Tabs disable is change. | `CustomEvent<any>` |
 
 
 ## Dependencies
