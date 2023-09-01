@@ -1499,6 +1499,10 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
+          * If true, the modal will close clicking outside the component.
+         */
+        "outzoneClose"?: boolean;
+        /**
           * Used to change the modal heights.
          */
         "size"?: sizes;
@@ -2003,6 +2007,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * Prop for disable the especific tab.
+         */
+        "disable"?: boolean;
+        /**
           * The text to be shown at the Tab item.
          */
         "label"?: string;
@@ -2353,6 +2361,10 @@ export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
 export interface BdsTabGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabGroupElement;
+}
+export interface BdsTabItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTabItemElement;
 }
 export interface BdsTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4618,6 +4630,10 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
+          * If true, the modal will close clicking outside the component.
+         */
+        "outzoneClose"?: boolean;
+        /**
           * Used to change the modal heights.
          */
         "size"?: sizes;
@@ -5138,15 +5154,24 @@ declare namespace LocalJSX {
          */
         "dtButtonPrev"?: string;
         /**
-          * bdsTabChange. Event to return value when accordion is change.
+          * bdsTabChange. Event to return value when Tabs is change.
          */
         "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
+        /**
+          * bdsTabDisabled. Event to return value when Tabs disable is change.
+         */
+        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
+        "scrollable"?: boolean;
     }
     interface BdsTabItem {
         /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * Prop for disable the especific tab.
+         */
+        "disable"?: boolean;
         /**
           * The text to be shown at the Tab item.
          */
@@ -5155,6 +5180,7 @@ declare namespace LocalJSX {
           * Use to set number of tabItem.
          */
         "numberElement"?: number;
+        "onTabDisabled"?: (event: BdsTabItemCustomEvent<any>) => void;
         /**
           * Used to open/close the Tab item.
          */

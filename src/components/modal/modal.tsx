@@ -35,6 +35,11 @@ export class BdsModal implements ComponentInterface {
   public size?: sizes = 'fixed';
 
   /**
+   * If true, the modal will close clicking outside the component.
+   */
+  @Prop() outzoneClose?: boolean = true;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    * dtOutzone is the data-test to button close.
    */
@@ -71,8 +76,10 @@ export class BdsModal implements ComponentInterface {
   };
 
   private onClickCloseButtom = () => {
-    this.open = false;
-    this.bdsModalChanged.emit({ modalStatus: 'closed' });
+    if (this.outzoneClose === true) {
+      this.open = false;
+      this.bdsModalChanged.emit({ modalStatus: 'closed' });
+    }
   };
 
   handleKeyDown(event) {
