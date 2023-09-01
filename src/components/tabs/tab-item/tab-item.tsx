@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Method } from '@stencil/core';
+import { Component, h, Host, Prop, Method, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'bds-tab-item',
@@ -15,6 +15,10 @@ export class BdsTabItem {
    */
   @Prop() label?: string = null;
   /**
+   * Prop for disable the especific tab.
+   */
+  @Prop({ mutable: true, reflect: true }) disable?: boolean = false;
+  /**
    * Used to open/close the Tab item.
    */
   @Prop({ mutable: true, reflect: true }) public open?: boolean = false;
@@ -27,9 +31,11 @@ export class BdsTabItem {
   async reciveNumber(number) {
     this.numberElement = number;
   }
+  @Event() tabDisabled: EventEmitter;
+
   render(): HTMLElement {
     return (
-      <Host class={{ [`is-open`]: this.open }}>
+      <Host class={{ [`is-open`]: this.disable === true ? false : this.open }}>
         <div class={{ tab_item: true }} data-test={this.dataTest}>
           <div class={{ tab_item_content: true, [`tab_item_content--open`]: this.open }}>
             <slot></slot>

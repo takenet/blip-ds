@@ -41,9 +41,13 @@ export class BdsTabGroup {
   @Prop() dtButtonNext?: string = null;
 
   /**
-   * bdsTabChange. Event to return value when accordion is change.
+   * bdsTabChange. Event to return value when Tabs is change.
    */
   @Event() bdsTabChange?: EventEmitter;
+  /**
+   * bdsTabDisabled. Event to return value when Tabs disable is change.
+   */
+  @Event() bdsTabDisabled?: EventEmitter;
 
   componentWillRender() {
     this.tabItensElement = this.element.getElementsByTagName('bds-tab-item') as HTMLCollectionOf<HTMLBdsTabItemElement>;
@@ -87,6 +91,7 @@ export class BdsTabGroup {
         label: item.label,
         open: item.open,
         numberElement: index,
+        disable: item.disable,
       };
     });
     return (this.internalItens = arrayItens);
@@ -117,6 +122,10 @@ export class BdsTabGroup {
 
   private refHeaderSlideElement = (el: HTMLElement): void => {
     this.headerSlideElement = el;
+  };
+
+  private handleDisabled = (id) => {
+    this.bdsTabDisabled.emit(this.tabItensElement[id]);
   };
 
   private nextSlide = () => {
@@ -176,7 +185,9 @@ export class BdsTabGroup {
                       class={{ tab_group__header__itens__item: true, tab_group__header__itens__item__open: item.open }}
                       key={index}
                       tabindex="0"
-                      onClick={() => this.handleClick(item.numberElement)}
+                      onClick={() =>
+                        item.disable ? this.handleDisabled(item.numberElement) : this.handleClick(item.numberElement)
+                      }
                     >
                       <bds-typo variant="fs-16" bold={bold}>
                         {item.label}

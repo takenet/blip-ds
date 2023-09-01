@@ -3,4 +3,5 @@ export interface Itens {
   open: boolean;
   numberElement: number;
   dataTest?: string;
+  disable?: boolean;
 }

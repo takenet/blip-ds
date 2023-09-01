@@ -2009,6 +2009,10 @@ export namespace Components {
         /**
           * The text to be shown at the Tab item.
          */
+        "disable"?: boolean;
+        /**
+          * The text to be shown at the Tab item.
+         */
         "label"?: string;
         /**
           * Use to set number of tabItem.
@@ -2357,6 +2361,10 @@ export interface BdsTabCustomEvent<T> extends CustomEvent<T> {
 export interface BdsTabGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabGroupElement;
+}
+export interface BdsTabItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsTabItemElement;
 }
 export interface BdsTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5145,9 +5153,13 @@ declare namespace LocalJSX {
          */
         "dtButtonPrev"?: string;
         /**
-          * bdsTabChange. Event to return value when accordion is change.
+          * bdsTabChange. Event to return value when Tabs is change.
          */
         "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
+        /**
+          * bdsTabDisabled. Event to return value when Tabs disable is change.
+         */
+        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
         "scrollable"?: boolean;
     }
     interface BdsTabItem {
@@ -5158,11 +5170,16 @@ declare namespace LocalJSX {
         /**
           * The text to be shown at the Tab item.
          */
+        "disable"?: boolean;
+        /**
+          * The text to be shown at the Tab item.
+         */
         "label"?: string;
         /**
           * Use to set number of tabItem.
          */
         "numberElement"?: number;
+        "onTabDisabled"?: (event: BdsTabItemCustomEvent<any>) => void;
         /**
           * Used to open/close the Tab item.
          */
