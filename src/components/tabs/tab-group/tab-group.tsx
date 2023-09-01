@@ -24,7 +24,7 @@ export class BdsTabGroup {
 
   @State() positionLeft?: number = 0;
 
-  @Prop() scrollable?: boolean = false;
+  @Prop() contentScrollable?: boolean = true;
 
   @Prop() align: 'left' | 'center' | 'right' = 'center';
 
@@ -197,7 +197,7 @@ export class BdsTabGroup {
               variant="secondary"
             ></bds-button-icon>
           )}
-          <div class="tab_group__content element_scrolled">
+          <div class={{ tab_group__content: true, tab_group__scrolled: this.contentScrollable }}>
             <slot></slot>
           </div>
         </div>

@@ -14,6 +14,7 @@
 
   &__header {
     padding: 0 16px;
+    overflow: hidden;
 
     &__itens {
       display: flex;
@@ -89,7 +90,11 @@
   }
   &__content {
     height: 100%;
+  }
+
+  &__scrolled {
     flex-shrink: 999;
+    overflow: auto;
 
     @include custom-scroll;
   }
