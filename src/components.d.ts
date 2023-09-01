@@ -1987,6 +1987,7 @@ export namespace Components {
     }
     interface BdsTabGroup {
         "align": 'left' | 'center' | 'right';
+        "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
          */
@@ -1995,7 +1996,6 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
          */
         "dtButtonPrev"?: string;
-        "scrollable"?: boolean;
     }
     interface BdsTabItem {
         /**
@@ -5128,6 +5128,7 @@ declare namespace LocalJSX {
     }
     interface BdsTabGroup {
         "align"?: 'left' | 'center' | 'right';
+        "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
          */
@@ -5140,7 +5141,6 @@ declare namespace LocalJSX {
           * bdsTabChange. Event to return value when accordion is change.
          */
         "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
-        "scrollable"?: boolean;
     }
     interface BdsTabItem {
         /**
