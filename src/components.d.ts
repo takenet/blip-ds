@@ -2007,7 +2007,7 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
-          * The text to be shown at the Tab item.
+          * Prop for disable the especific tab.
          */
         "disable"?: boolean;
         /**
@@ -5168,7 +5168,7 @@ declare namespace LocalJSX {
          */
         "dataTest"?: string;
         /**
-          * The text to be shown at the Tab item.
+          * Prop for disable the especific tab.
          */
         "disable"?: boolean;
         /**
