@@ -28,12 +28,12 @@ export class Tooltip {
   /**
    * Used to set tooltip text
    */
-  @Prop() tooltipText = 'Tooltip';
+  @Prop({ mutable: true }) tooltipText = 'Tooltip';
 
   /**
    * Used to disable tooltip when the button are avalible
    */
-  @Prop({ reflect: true }) disabled = false;
+  @Prop({ reflect: true }) disabled? = false;
 
   /**
    * Used to set tooltip position

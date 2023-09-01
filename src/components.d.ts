@@ -1991,6 +1991,7 @@ export namespace Components {
     }
     interface BdsTabGroup {
         "align": 'left' | 'center' | 'right';
+        "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
          */
@@ -1999,7 +2000,6 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
          */
         "dtButtonPrev"?: string;
-        "scrollable"?: boolean;
     }
     interface BdsTabItem {
         /**
@@ -2137,7 +2137,7 @@ export namespace Components {
         /**
           * Used to disable tooltip when the button are avalible
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * Used to set tooltip position
          */
@@ -5144,6 +5144,7 @@ declare namespace LocalJSX {
     }
     interface BdsTabGroup {
         "align"?: 'left' | 'center' | 'right';
+        "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
          */
