@@ -15,7 +15,7 @@ export class BdsTabItem {
    */
   @Prop() label?: string = null;
   /**
-   * The text to be shown at the Tab item.
+   * Prop for disable the especific tab.
    */
   @Prop({ mutable: true, reflect: true }) disable?: boolean = false;
   /**
