@@ -1,19 +1,50 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './datepicker.mdx';
 
 export default {
-  title: 'Datepicker',
+  title: 'Components/Datepicker',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const Template = (args) => {
-  return <bds-datepicker type-of-date={args.type} start-date-limit={args.start} end-date-limit={args.end} />;
+export const Properties = (args) => (
+  <bds-datepicker
+    type-of-date={args.typeOfDate}
+    start-date-limit={args.startDateLimit}
+    end-date-limit={args.endDateLimit}
+  />
+);
+
+Properties.args = {
+  typeOfDate: 'single',
+  startDateLimit: '31/12/2022',
+  endDateLimit: '01/01/2027',
 };
 
-export const DatepickerSingle = Template.bind({});
-DatepickerSingle.args = { type: 'single', start: '01/01/2022', end: '31/12/2022' };
-
-export const DatepickerPeriod = Template.bind({});
-DatepickerPeriod.args = { type: 'period', start: '01/01/2022', end: '31/12/2022' };
+Properties.argTypes = {
+  typeOfDate: {
+    table: {
+      defaultValue: { summary: 'single' },
+    },
+    description: 'Coloque o titulo do cabeçalho.',
+    options: ['single', 'period'],
+    control: 'select',
+  },
+  startDateLimit: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Coloque o titulo do cabeçalho.',
+    control: 'text',
+  },
+  endDateLimit: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Coloque o titulo do cabeçalho.',
+    control: 'text',
+  },
+};

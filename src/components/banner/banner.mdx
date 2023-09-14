@@ -1,0 +1,39 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import * as BannerStories from './banner.stories';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+
+# Banner
+
+[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/banner/visao-geral-banner)
+&nbsp;|&nbsp;
+[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/banner/resumo-banner)
+&nbsp;|&nbsp;
+[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/banner/acessibilidade-banner)
+
+## Overview
+
+Notification that demonstrates a problem or warning.
+
+<Canvas of={BannerStories.Properties}></Canvas>
+
+<Meta isTemplate />
+
+The following properties that are shared by Banner.
+
+<Controls />
+
+## Examples of use
+
+Some examples of banner usage.
+
+### Context
+
+Example of using Banner in the inside context.
+
+<Canvas of={BannerStories.contextBanner}></Canvas>
+
+### Context
+
+Example of using a Banner with a link.
+
+<Canvas of={BannerStories.linkBanner}></Canvas>

@@ -3,7 +3,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Input Editable',
+  title: 'Components/Input Editable',
   parameters: {
     notes: { markdown: readme },
   },

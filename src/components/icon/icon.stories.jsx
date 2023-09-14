@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Icon',
+  title: 'Components/Icon',
   parameters: {
     notes: { markdown: readme },
   },

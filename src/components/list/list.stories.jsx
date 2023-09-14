@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'List',
+  title: 'Components/List',
   parameters: {
     notes: { markdown: readme },
   },

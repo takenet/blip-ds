@@ -3,7 +3,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Input Chips',
+  title: 'Components/Input Chips',
   parameters: {
     notes: { markdown: readme },
   },

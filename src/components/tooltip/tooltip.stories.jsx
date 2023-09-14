@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Tooltip',
+  title: 'Components/Tooltip',
   parameters: {
     notes: { markdown: readme },
   },

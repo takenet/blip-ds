@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Input Password',
+  title: 'Components/Input Password',
   parameters: {
     notes: { markdown: readme },
   },

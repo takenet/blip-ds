@@ -3,7 +3,7 @@ import { BdsChipTag, BdsDataTable, BdsTable, BdsTableBody, BdsTableCell, BdsTabl
 import readme from './readme.md';
 
 export default {
-  title: 'Table',
+  title: 'Components/Table',
   parameters: {
     notes: { markdown: readme },
   },

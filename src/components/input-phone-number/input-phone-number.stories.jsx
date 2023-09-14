@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Input Phone Number',
+  title: 'Components/Input Phone Number',
   parameters: {
     notes: { markdown: readme },
   },

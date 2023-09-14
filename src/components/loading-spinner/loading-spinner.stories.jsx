@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Loading spinner',
+  title: 'Components/Loading spinner',
   parameters: {
     notes: { markdown: readme },
   },

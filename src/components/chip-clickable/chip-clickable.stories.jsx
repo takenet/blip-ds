@@ -1,86 +1,81 @@
 import React from 'react';
-
-import readme from './readme.md';
+import DocumentationTemplate from './chip-clickable.mdx';
 
 export default {
-  title: 'Chip Clickable',
+  title: 'Components/Chip Clickable',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const chipClickableGroup = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  gap: '16px',
+export const Properties = (args) => (
+  <bds-chip-clickable color={args.color} icon={args.icon} avatar={args.avatar} clickable={args.clickable} close={args.close} disabled={args.disabled} size={args.size}>
+    Chip-clickable Default
+  </bds-chip-clickable>
+);
+
+Properties.argTypes = {
+  color: {
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+    description: 'Escolha a cor do chip clickable.',
+    options: ['default', 'danger', 'info', 'outline', 'success', 'warning'],
+    control: 'select',
+  },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Escolha o ícone no componente.',
+    control: 'text',
+  },
+  avatar: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina a url ou caminho para o avatar.',
+    control: 'text',
+  },
+  clickable: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o componente pode ser clicado.',
+    control: 'boolean',
+  },
+  close: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o componente pode ser fechado.',
+    control: 'boolean',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o componente está desabilitado.',
+    control: 'boolean',
+  },
+  size: {
+    table: {
+      defaultValue: { summary: 'standard' },
+    },
+    description: 'Escolha a cor do chip tag.',
+    options: ['standard', 'tall'],
+    control: 'select',
+  },
 };
 
-export const chipDefault = () => {
-  return (
-    <div>
-      <bds-chip-clickable>Chip Default</bds-chip-clickable>
-    </div>
-  );
-};
-
-export const chipWithIcon = () => {
-  return (
-    <div>
-      <bds-chip-clickable icon="add">Chip Icon</bds-chip-clickable>
-    </div>
-  );
-};
-
-export const chipWithAvatar = () => {
-  return (
-    <div>
-      <bds-chip-clickable avatar="https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png">
-        Chip Icon
-      </bds-chip-clickable>
-    </div>
-  );
-};
-
-export const chipWithClose = () => {
-  return (
-    <div>
-      <bds-chip-clickable icon="add" close>
-        Chip Close
-      </bds-chip-clickable>
-    </div>
-  );
-};
-
-export const chipSize = () => {
-  return (
-    <div>
-      <bds-chip-clickable icon="add" close size="tall">
-        Chip Close
-      </bds-chip-clickable>
-    </div>
-  );
-};
-
-export const chipClickable = () => {
-  return (
-    <div>
-      <bds-chip-clickable color="info" icon="add" close clickable>
-        Chip Clickable
-      </bds-chip-clickable>
-    </div>
-  );
-};
-
-export const chipColors = () => {
-  return (
-    <div style={chipClickableGroup}>
-      <bds-chip-clickable color="default">default</bds-chip-clickable>
-      <bds-chip-clickable color="info">info</bds-chip-clickable>
-      <bds-chip-clickable color="success">success</bds-chip-clickable>
-      <bds-chip-clickable color="warning">warning</bds-chip-clickable>
-      <bds-chip-clickable color="danger">danger</bds-chip-clickable>
-      <bds-chip-clickable color="outline">outline</bds-chip-clickable>
-    </div>
-  );
+Properties.args = {
+  color: 'default',
+  icon: '',
+  avatar: '',
+  clickable: false,
+  close: false,
+  disabled: false,
+  size:'tall'
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Select',
+  title: 'Components/Select',
   parameters: {
     notes: { markdown: readme },
   },

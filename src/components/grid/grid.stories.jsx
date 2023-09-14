@@ -3,7 +3,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Grid',
+  title: 'Components/Grid',
   parameters: {
     notes: { markdown: readme },
   },

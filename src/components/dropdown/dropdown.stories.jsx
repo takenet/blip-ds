@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Dropdown',
+  title: 'Components/Dropdown',
   parameters: {
     notes: { markdown: readme },
   },

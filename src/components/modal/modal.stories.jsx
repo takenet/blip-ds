@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Modal',
+  title: 'Components/Modal',
   parameters: {
     notes: { markdown: readme },
   },
@@ -10,7 +10,7 @@ export default {
 
 export const DefaultModal = () => (
   <>
-    <bds-modal open={true} close-button={true}>
+    <bds-modal open={true} outzone-close={false} close-button={true}>
       <bds-modal-action>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
           <bds-button icon="video" variant="secondary">

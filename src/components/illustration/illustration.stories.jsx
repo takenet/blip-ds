@@ -3,7 +3,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'illustration',
+  title: 'Components/illustration',
   parameters: {
     notes: { markdown: readme },
   },

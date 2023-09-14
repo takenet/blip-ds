@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { BdsNavbar, BdsNavbarContent, BdsAvatar, BdsButtonIcon } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'NavBar',
+  title: 'Components/NavBar',
   parameters: {
     notes: { markdown: readme },
   },

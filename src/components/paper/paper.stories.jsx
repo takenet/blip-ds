@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Paper',
+  title: 'Components/Paper',
   parameters: {
     notes: { markdown: readme },
   },

@@ -5,7 +5,7 @@ import { Component, h, State, Element, Method, EventEmitter, Event, Watch, Prop 
   styleUrl: 'accordion.scss',
   shadow: true,
 })
-export class AccordionGroup {
+export class Accordion {
   private accGroup?: HTMLBdsAccordionGroupElement = null;
   private accheaders?: HTMLBdsAccordionHeaderElement = null;
   private accBodies?: HTMLBdsAccordionBodyElement = null;

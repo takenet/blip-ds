@@ -1,0 +1,37 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import * as AvatarStories from './avatar.stories';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+
+# Avatar
+
+[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/avatar/visao-geral-avatar)
+&nbsp;|&nbsp;
+[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/avatar/resumo-avatar)
+&nbsp;|&nbsp;
+[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/avatar/acessibilidade-avatar)
+
+## Avatar Single
+
+These are circular images to represent the user.
+
+<Canvas of={AvatarStories.SingleProperties} >
+</Canvas>
+
+<Meta isTemplate />
+
+The following properties that are shared by Avatar.
+
+<Controls />
+
+## Avatar Group
+
+These are circular images to represent the user.
+
+<Canvas of={AvatarStories.GroupProperties} >
+</Canvas>
+
+<Meta isTemplate />
+
+The following properties that are shared by Avatar Group.
+
+<Controls />

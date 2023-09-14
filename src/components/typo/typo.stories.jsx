@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Typo',
+  title: 'Components/Typo',
   parameters: {
     notes: { markdown: readme },
   },

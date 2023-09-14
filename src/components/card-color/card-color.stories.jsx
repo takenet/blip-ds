@@ -3,7 +3,7 @@ import readme from './readme.md';
 import * as Color from 'color';
 
 export default {
-  title: 'Colors',
+  title: 'Tokens/Colors',
   parameters: {
     notes: { markdown: readme },
   },

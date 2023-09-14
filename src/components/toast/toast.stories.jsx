@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Toast',
+  title: 'Components/Toast',
   parameters: {
     notes: { markdown: readme },
   },

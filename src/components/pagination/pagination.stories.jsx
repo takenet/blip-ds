@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Pagination',
+  title: 'Components/Pagination',
   parameters: {
     notes: { markdown: readme },
   },

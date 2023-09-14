@@ -2,7 +2,7 @@ import React from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Loading page',
+  title: 'Components/Loading page',
   parameters: {
     notes: { markdown: readme },
   },

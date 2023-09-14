@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import readme from './readme.md';
 
 export default {
-  title: 'Stepper',
+  title: 'Components/Stepper',
   parameters: {
     notes: { markdown: readme },
   },

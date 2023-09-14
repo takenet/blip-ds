@@ -1,73 +1,65 @@
 import React from 'react';
-
-import readme from './readme.md';
+import DocumentationTemplate from './chip-selected.mdx';
 
 export default {
-  title: 'Chip Selected',
+  title: 'Components/Chip Selected',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const chipStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  gap: '16px',
+export const Properties = (args) => (
+  <bds-chip-selected color={args.color} icon={args.icon} selected={args.selected} disabled={args.disabled} size={args.size}>
+    Chip-selected Default
+  </bds-chip-selected>
+);
+
+Properties.argTypes = {
+  color: {
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+    description: 'Escolha a cor do chip clickable.',
+    options: ['default', 'danger', 'info', 'outline', 'success', 'warning'],
+    control: 'select',
+  },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Escolha o ícone no componente.',
+    control: 'text',
+  },
+  selected: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o componente será iniciado selecionado.',
+    control: 'boolean',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o componente está desabilitado.',
+    control: 'boolean',
+  },
+  size: {
+    table: {
+      defaultValue: { summary: 'standard' },
+    },
+    description: 'Escolha a cor do chip tag.',
+    options: ['standard', 'tall'],
+    control: 'select',
+  },
 };
 
-export const defaultChipSelected = () => (
-  <div style={chipStyle}>
-    <bds-chip-selected color="default">chip default</bds-chip-selected>
-    <bds-chip-selected color="info">chip info</bds-chip-selected>
-    <bds-chip-selected color="success">chip success</bds-chip-selected>
-    <bds-chip-selected color="warning">chip warning</bds-chip-selected>
-    <bds-chip-selected color="danger">chip danger</bds-chip-selected>
-    <bds-chip-selected color="outline">chip outline</bds-chip-selected>
-  </div>
-);
-
-export const iconChipSelected = () => (
-  <div style={chipStyle}>
-    <bds-chip-selected icon="add" color="default">
-      chip default
-    </bds-chip-selected>
-    <bds-chip-selected icon="info" color="info">
-      chip info
-    </bds-chip-selected>
-    <bds-chip-selected icon="link" color="success">
-      chip success
-    </bds-chip-selected>
-    <bds-chip-selected icon="attention" color="warning">
-      chip warning
-    </bds-chip-selected>
-    <bds-chip-selected icon="error" color="danger">
-      chip danger
-    </bds-chip-selected>
-    <bds-chip-selected icon="faq" color="outline">
-      chip outline
-    </bds-chip-selected>
-  </div>
-);
-
-export const sizeChipSelected = () => (
-  <div style={chipStyle}>
-    <bds-chip-selected icon="add" color="default">
-      size standard
-    </bds-chip-selected>
-    <bds-chip-selected icon="add" color="default" size="tall">
-      size tall
-    </bds-chip-selected>
-  </div>
-);
-
-export const ChipSelected = () => (
-  <div style={chipStyle}>
-    <bds-chip-selected icon="add" color="default">
-      chip default
-    </bds-chip-selected>
-    <bds-chip-selected icon="add" color="default" selected="true">
-      chip selected
-    </bds-chip-selected>
-  </div>
-);
+Properties.args = {
+  color: 'default',
+  icon: '',
+  selected: false,
+  disabled: false,
+  size:'tall'
+};
