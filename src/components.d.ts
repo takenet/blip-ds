@@ -1838,7 +1838,7 @@ export namespace Components {
         /**
           * Is Loading, is the prop to enable that the component is loading.
          */
-        "isLoading"?: boolean;
+        "loading"?: boolean;
         /**
           * The text value of the option.
          */
@@ -5012,7 +5012,7 @@ declare namespace LocalJSX {
         /**
           * Is Loading, is the prop to enable that the component is loading.
          */
-        "isLoading"?: boolean;
+        "loading"?: boolean;
         "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         /**
           * The text value of the option.

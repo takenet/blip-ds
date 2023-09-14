@@ -14,7 +14,7 @@
 | `dataTest`           | `data-test`   | Data test is the prop to specifically test the component action object.                                   | `string`  | `null`      |
 | `disabled`           | `disabled`    | If `true`, the user cannot interact with the select option.                                               | `boolean` | `false`     |
 | `invisible`          | `invisible`   | Add state danger on input, use for use feedback.                                                          | `boolean` | `false`     |
-| `isLoading`          | `is-loading`  | Is Loading, is the prop to enable that the component is loading.                                          | `boolean` | `false`     |
+| `loading`            | `loading`     | Is Loading, is the prop to enable that the component is loading.                                          | `boolean` | `false`     |
 | `selected`           | `selected`    | The text value of the option.                                                                             | `boolean` | `false`     |
 | `slotAlign`          | `slot-align`  | Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property. | `string`  | `'center'`  |
 | `status`             | `status`      | If set, a text will be displayed on the right side of the option label                                    | `string`  | `undefined` |

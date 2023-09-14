@@ -53,7 +53,7 @@ export class SelectOption {
   /**
    * Is Loading, is the prop to enable that the component is loading.
    */
-  @Prop() isLoading?: boolean = false;
+  @Prop() loading?: boolean = false;
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -98,7 +98,7 @@ export class SelectOption {
   };
 
   render(): HTMLElement {
-    return this.isLoading ? (
+    return this.loading ? (
       <bds-grid justifyContent="center" alignItems="center" class="load-spinner">
         <bds-loading-spinner size="small"></bds-loading-spinner>
       </bds-grid>
