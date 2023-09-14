@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, Method, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Host, Prop, Method, Watch, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'bds-tab-item',
@@ -32,6 +32,11 @@ export class BdsTabItem {
     this.numberElement = number;
   }
   @Event() tabDisabled: EventEmitter;
+
+  @Watch('disable')
+  disableChanged(): void {
+    this.tabDisabled.emit();
+  }
 
   render(): HTMLElement {
     return (
