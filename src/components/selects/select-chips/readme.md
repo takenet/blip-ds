@@ -141,6 +141,8 @@ graph TD;
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
   bds-tooltip --> bds-typo
+  bds-select-option --> bds-grid
+  bds-select-option --> bds-loading-spinner
   bds-select-option --> bds-typo
   style bds-select-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
