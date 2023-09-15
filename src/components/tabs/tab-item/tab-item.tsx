@@ -35,7 +35,7 @@ export class BdsTabItem {
 
   @Watch('disable')
   disableChanged(): void {
-    this.tabDisabled.emit();
+    this.tabDisabled.emit({ item: this.numberElement, disable: this.disable });
   }
 
   render(): HTMLElement {
