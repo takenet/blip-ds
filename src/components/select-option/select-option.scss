@@ -3,6 +3,11 @@
 $select-option-padding: 8px;
 $select-option-left: 12px;
 
+.load-spinner {
+  background-color: $color-surface-1;
+  height: 200px;
+}
+
 .select-option {
   width: 100%;
   @include no-select();
