@@ -1836,6 +1836,10 @@ export namespace Components {
          */
         "invisible"?: boolean;
         /**
+          * Is Loading, is the prop to enable that the component is loading.
+         */
+        "loading"?: boolean;
+        /**
           * The text value of the option.
          */
         "selected"?: boolean;
@@ -5005,6 +5009,10 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "invisible"?: boolean;
+        /**
+          * Is Loading, is the prop to enable that the component is loading.
+         */
+        "loading"?: boolean;
         "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         /**
           * The text value of the option.
@@ -5160,8 +5168,8 @@ declare namespace LocalJSX {
         /**
           * bdsTabDisabled. Event to return value when Tabs disable is change.
          */
-        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
-        "scrollable"?: boolean;
+      "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
+      "scrollable"?: boolean;
     }
     interface BdsTabItem {
         /**
