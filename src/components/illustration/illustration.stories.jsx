@@ -70,7 +70,7 @@ const defaults = [
   'search-2',
   'time-2',
   'time',
-  'robot-6'
+  'robot-6',
 ];
 
 const screens = [
@@ -179,6 +179,10 @@ const brand = [
   'blip-academy-blue-black',
   'blip-academy-blue-white',
   'blip-academy-white',
+  'blip-assist-white-horizontal',
+  'blip-assist-blue-white-horizontal',
+  'blip-assist-black-horizontal',
+  'blip-assist-blue-black-horizontal',
   'blip-blog-blue-black',
   'blip-blog-blue-white',
   'blip-builder-black',

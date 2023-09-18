@@ -5168,7 +5168,8 @@ declare namespace LocalJSX {
         /**
           * bdsTabDisabled. Event to return value when Tabs disable is change.
          */
-        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
+      "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
+      "scrollable"?: boolean;
     }
     interface BdsTabItem {
         /**
