@@ -1,6 +1,6 @@
 import { Story, ArgsTable, Canvas } from '@storybook/blocks';
 import * as BannerStories from './banner.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Banner
 
@@ -22,18 +22,12 @@ The following properties that are shared by Banner.
 
 <Controls />
 
-## Examples of use
+## Events
 
-Some examples of banner usage.
+Some examples of Banner Events.
 
-### Context
+<Source of={BannerStories.Events} />
 
-Example of using Banner in the inside context.
+## Build on React
 
-<Canvas of={BannerStories.contextBanner}></Canvas>
-
-### Context
-
-Example of using a Banner with a link.
-
-<Canvas of={BannerStories.linkBanner}></Canvas>
+<Source of={BannerStories.FrameworkReact} />

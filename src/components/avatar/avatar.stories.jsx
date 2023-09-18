@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import DocumentationTemplate from './avatar.mdx';
+import { BdsAvatar } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Avatar',
+  title: 'Components/Avatar Single',
   parameters: {
     docs: {
       page: DocumentationTemplate
@@ -10,22 +11,14 @@ export default {
   },
 };
 
-const users = [
-  { id: '1', name: 'Michael Scott' },
-  { id: '2', name: 'Dwight Schrute' },
-  { id: '3', name: 'Jim Halpert' },
-  { id: '4', name: 'Pam Beesly' },
-  { id: '5', name: 'Ryan Howard' },
-  { id: '6', name: 'Andy Bernard' },
-];
 
-export const SingleProperties = (args) => {
+export const Properties = (args) => {
   return (
     <bds-avatar name={args.name} thumbnail={args.thumbnail} size={args.size} upload={args.upload}></bds-avatar>
   );
 };
 
-SingleProperties.argTypes = {
+Properties.argTypes = {
   name: {
     table: {
       defaultValue: { summary: 'vazio' },
@@ -57,46 +50,25 @@ SingleProperties.argTypes = {
   },
 }
 
-SingleProperties.args = {
+Properties.args = {
   name: "Michael Scott",
   size: "standard",
   thumbnail:"",
   upload: false,
 }
 
-export const GroupProperties = (args) => {
+export const Events = () => {
+  useEffect(() => {
+    const avatar = document.getElementById('avatar');
+    avatar.addEventListener('bdsClickAvatar', () => {
+      console.log('Evento Click funcionando');
+    });
+  });
   return (
-      <bds-avatar-group can-click={args.canClick} size={args.size} users={JSON.stringify(users)}></bds-avatar-group>
+    <bds-avatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload="true"></bds-avatar>
   );
 };
 
-GroupProperties.argTypes = {
-  canClick: {
-    table: {
-      defaultValue: { summary: 'false' },
-    },
-    description: 'Defina se o grupo de avatares são clicáveis.',
-    control: 'boolean',
-  },
-  size: {
-    table: {
-      defaultValue: { summary: 'standard' },
-    },
-    description: 'Defina o tamanho dos avatares.',
-    options: ['micro' ,'extra-small' , 'small' , 'standard' , 'large', 'extra-large' ],
-    control: 'select',
-  },
-  users: {
-    table: {
-      defaultValue: { summary: 'vazio' },
-    },
-    description: 'Array de objetos para definir os valores do grupo de avatares.',
-    control: 'text',
-  },
-}
-
-GroupProperties.args = {
-  canClick: false,
-  size: 'standard',
-  users: `${JSON.stringify(users)}`
-}
+export const FrameworkReact = () => (
+    <BdsAvatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload="true"></BdsAvatar>
+  )

@@ -1,6 +1,6 @@
 import { Story, ArgsTable, Canvas } from '@storybook/blocks';
 import * as AutocompleteStories from './autocomplete.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Autocomplete
 
@@ -14,12 +14,20 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '
 
 It's normal text input enhanced by a panel of suggested options.
 
-<Canvas of={AutocompleteStories.Properties} >
-</Canvas>
-
+<Canvas of={AutocompleteStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
 The following properties that are shared by Autocomplete.
 
 <Controls />
+
+## Events
+
+Some examples of Autocomplete Events.
+
+<Source of={AutocompleteStories.Events} />
+
+## Build on React
+
+<Source of={AutocompleteStories.FrameworkReact} />

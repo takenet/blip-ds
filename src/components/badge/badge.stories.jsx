@@ -1,5 +1,6 @@
 import React from 'react';
 import DocumentationTemplate from './badge.mdx';
+import { BdsBadge } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Badge',
@@ -27,7 +28,7 @@ const badgeStatus = {
 };
 
 export const Properties = (args) => (
-  <bds-badge shape={args.shape} color={args.color} icon={args.icon}></bds-badge>
+  <bds-badge shape={args.shape} color={args.color} icon={args.icon} number={args.number ? args.number : null} animation={args.animation}></bds-badge>
 );
 Properties.argTypes = {
   shape: {
@@ -53,12 +54,28 @@ Properties.argTypes = {
     options: ['system' , 'danger' , 'warning' , 'success', 'neutral'],
     control: 'select',
   },
+  animation: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o componente terá animação.',
+    control: 'boolean',
+  },
+  number: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina o nome aplicado no avatar.',
+    control: 'number',
+  },
 };
 
 Properties.args = {
   shape: 'circle',
   color: 'system',
   icon: 'info',
+  animation: false,
+  number: null
 };
 
 export const typeBadge = () => (
@@ -101,4 +118,8 @@ export const exampleBadge = () => (
       </div>
     </bds-grid>
   </bds-grid>
+);
+
+export const FrameworkReact = () => (
+  <BdsBadge animation={true} shape="circle" color="system" icon="info"></BdsBadge>
 );

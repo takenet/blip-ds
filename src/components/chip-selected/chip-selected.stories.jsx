@@ -1,5 +1,6 @@
 import React from 'react';
 import DocumentationTemplate from './chip-selected.mdx';
+import { BdsChipSelected } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Chip Selected',
@@ -63,3 +64,15 @@ Properties.args = {
   disabled: false,
   size:'tall'
 };
+
+export const Events = () => (
+  <bds-chip-selected color="default" icon="" avatar="" selected={false} close={false} disabled={false} size="tall">
+    Chip-selected Default
+  </bds-chip-selected>
+);
+
+export const FrameworkReact = () => (
+  <BdsChipSelected color="default" icon="" avatar="" selected={false} close={false} disabled={false} size="tall">
+    Chip-selected Default
+  </BdsChipSelected>
+);

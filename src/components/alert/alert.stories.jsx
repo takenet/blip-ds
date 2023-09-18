@@ -74,14 +74,6 @@ Properties.args = {
 
 export const Methods = () => {
 
-  const el = document.getElementsByClassName('sb-story');
-if (el.length !== 0) {
-  el[0].style.width = '720px';
-  el[0].style.height = '400px';
-  el[0].style.position = 'relative';
-  el[0].style.background = 'none';
-}
-
   const btToggle = async id => {
     const alert = document.getElementById(id);
     alert.toggle();
@@ -91,7 +83,7 @@ if (el.length !== 0) {
       <BdsButton onClick={() => btToggle('alert')}>
         Abrir Alert
       </BdsButton>
-      <BdsAlert position="contain" id="alert">
+      <BdsAlert id="alert">
       <BdsAlertHeader variant="system" icon="info">
         Atenção!
       </BdsAlertHeader>
@@ -109,15 +101,8 @@ if (el.length !== 0) {
 };
 
 export const FrameworkReact = () => {
-  const el = document.getElementsByClassName('sb-story');
-if (el.length !== 0) {
-  el[0].style.width = '720px';
-  el[0].style.height = '400px';
-  el[0].style.position = 'relative';
-  el[0].style.background = 'none';
-}
   return (
-    <BdsAlert position="contain" open={true} not-doc={false} id="alert">
+    <BdsAlert open={true} id="alert">
       <BdsAlertHeader variant="system" icon="info">
         Atenção!
       </BdsAlertHeader>

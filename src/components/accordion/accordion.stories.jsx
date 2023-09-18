@@ -16,7 +16,7 @@ export default {
 const paragraph =
   'Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo associados.';
 
-export const SingleProperties = (args) => {
+export const Properties = (args) => {
   return (
     <bds-accordion start-open={args.startOpen}>
       <bds-accordion-header
@@ -32,7 +32,7 @@ export const SingleProperties = (args) => {
   );
 };
 
-SingleProperties.argTypes = {
+Properties.argTypes = {
   accordionTitle: {
     table: {
       defaultValue: { summary: 'vazio' },
@@ -70,7 +70,7 @@ SingleProperties.argTypes = {
   },
 };
 
-SingleProperties.args = {
+Properties.args = {
   accordionTitle: 'Título do accordion',
   avatarName: '',
   avatarThumb: '',
@@ -78,7 +78,7 @@ SingleProperties.args = {
   startOpen: false,
 };
 
-export const SingleMethods = () => {
+export const Methods = () => {
   const btToggle = async (id) => {
     const acc = document.getElementById(id);
     await acc.toggle();
@@ -119,7 +119,7 @@ export const SingleMethods = () => {
   );
 };
 
-export const SingleEvents = () => {
+export const Events = () => {
   useEffect(() => {
     const accToggle = document.getElementById('accEvent');
     accToggle.addEventListener('bdsToggle', () => {
@@ -144,7 +144,7 @@ export const SingleEvents = () => {
   );
 };
 
-export const SingleFrameworkReact = () => {
+export const FrameworkReact = () => {
   return (
     <BdsAccordion>
       <BdsAccordionHeader accordion-title="Título do accordion"></BdsAccordionHeader>

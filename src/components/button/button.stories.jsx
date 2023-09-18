@@ -10,91 +10,6 @@ export default {
       page: DocumentationTemplate,
     },
   },
-  argTypes: {
-    variant: {
-      table: {
-        defaultValue: { summary: 'primary' },
-      },
-      description: 'Escolha o estilo do botão.',
-      options: ['primary', 'secondary', 'tertiary', 'delete'],
-      control: { type: 'select' },
-    },
-    text: {
-      table: {
-        defaultValue: { summary: 'vazio' },
-      },
-      description: 'Coloque o texto do botão. (Não é uma propriedade)',
-      control: 'text',
-    },
-    disabled: {
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-      description: 'Defina se o botão será desabilitado.',
-      control: 'boolean',
-    },
-    size: {
-      table: {
-        defaultValue: { summary: 'standard' },
-      },
-      description: 'Defina a altura do botão.',
-      options: ['standard', 'short'],
-      control: { type: 'select' },
-    },
-    arrow: {
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-      description: 'Defina se uma seta aparecerá do lado direito do texto.',
-      control: { type: 'boolean' },
-    },
-    type: {
-      table: {
-        defaultValue: { summary: 'button' },
-      },
-      description: 'Defina o tipo do botão. (Sem alteração visual)',
-      options: ['button', 'submit', 'reset'],
-      control: { type: 'select' },
-    },
-    typeIcon: {
-      table: {
-        defaultValue: { summary: 'icon' },
-      },
-      description: 'Defina o tipo do elemento visual ao lado direito do texto.',
-      options: ['icon', 'logo', 'emoji'],
-      control: { type: 'select' },
-    },
-    loading: {
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-      description:
-        'Ativa o loading do botão. (Outros elementos visuais não apareceram enquanto essa prop estiver ativa)',
-      control: { type: 'boolean' },
-    },
-    loadingColor: {
-      table: {
-        defaultValue: { summary: 'light' },
-      },
-      description: 'Defina a cor do loading.',
-      options: ['light', 'main'],
-      control: { type: 'select' },
-    },
-    icon: {
-      table: {
-        defaultValue: { summary: 'vazio' },
-      },
-      description: 'Defina o ícone que será utilizado no botão (Apenas outline).',
-      control: 'text',
-    },
-    dataTest: {
-      table: {
-        defaultValue: { summary: 'vazio' },
-      },
-      description: 'Defina o id para testes externos. (Sem alteração visual).',
-      control: 'text',
-    },
-  },
 };
 
 export const Properties = (args) => {
@@ -117,7 +32,7 @@ export const Properties = (args) => {
   );
 };
 
-(Properties.argTypes = {
+Properties.argTypes = {
   variant: {
     table: {
       defaultValue: { summary: 'primary' },
@@ -200,20 +115,21 @@ export const Properties = (args) => {
     description: 'Defina o id para testes externos. (Sem alteração visual).',
     control: 'text',
   },
-}),
-  (Properties.args = {
-    variant: 'primary',
-    text: 'Button',
-    disabled: 'false',
-    size: 'standard',
-    typeIcon: 'icon',
-    icon: '',
-    arrow: 'false',
-    type: 'button',
-    loading: 'false',
-    loadingColor: 'light',
-    dataTest: '',
-  });
+};
+
+Properties.args = {
+  variant: 'primary',
+  text: 'Button',
+  disabled: 'false',
+  size: 'standard',
+  typeIcon: 'icon',
+  icon: '',
+  arrow: 'false',
+  type: 'button',
+  loading: 'false',
+  loadingColor: 'light',
+  dataTest: '',
+};
 
 export const Events = () => {
   const [btnText, setBtnText] = useState('Clique aqui');
@@ -227,7 +143,7 @@ export const Events = () => {
 
   return (
     <bds-grid align-items="center" gap="2">
-      <BdsButton onBdsClick={() => handleCount()}>{btnText}</BdsButton>
+      <bds-button onClick={() => handleCount()}>{btnText}</bds-button>
       <bds-typo>Você clicou no botão {valor} vezes</bds-typo>
     </bds-grid>
   );
@@ -236,3 +152,10 @@ export const Events = () => {
 export const buttonWithoutText = () => (
   <bds-button-icon variant="primary" icon="file-new" size="standard"></bds-button-icon>
 );
+
+export const FrameworkReact = () => {
+
+  return (
+      <BdsButton variant="primary" icon="file-new" size="standard">Button</BdsButton>
+  );
+};

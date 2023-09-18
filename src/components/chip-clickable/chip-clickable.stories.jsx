@@ -1,5 +1,6 @@
 import React from 'react';
 import DocumentationTemplate from './chip-clickable.mdx';
+import { BdsChipClickable } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Chip Clickable',
@@ -79,3 +80,15 @@ Properties.args = {
   disabled: false,
   size:'tall'
 };
+
+export const Events = () => (
+  <bds-chip-clickable color="default" icon="" avatar="" clickable={false} close={false} disabled={false} size="tall">
+    Chip-clickable Default
+  </bds-chip-clickable>
+);
+
+export const FrameworkReact = () => (
+  <BdsChipClickable color="default" icon="" avatar="" clickable={false} close={false} disabled={false} size="tall">
+    Chip-clickable Default
+  </BdsChipClickable>
+);

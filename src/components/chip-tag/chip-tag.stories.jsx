@@ -1,4 +1,5 @@
 import React from 'react';
+import { BdsChipTag } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './chip-tag.mdx';
 
 export default {
@@ -38,3 +39,9 @@ Properties.args = {
   color: 'default',
   icon: '',
 };
+
+export const FrameworkReact = () => (
+  <BdsChipTag color="default" icon="">
+    Chip-tag Default
+  </BdsChipTag>
+);

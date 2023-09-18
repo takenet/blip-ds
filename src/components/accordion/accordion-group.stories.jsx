@@ -22,7 +22,7 @@ export default {
 const paragraph =
   'Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo associados.';
 
-export const GroupProperties = (args) => {
+export const Properties = (args) => {
   return (
     <bds-accordion-group collapse={args.collapse}>
       <bds-accordion start-open={args.startOpen}>
@@ -50,7 +50,7 @@ export const GroupProperties = (args) => {
     </bds-accordion-group>
   );
 };
-GroupProperties.argTypes = {
+Properties.argTypes = {
   accordionTitle: {
     table: {
       defaultValue: { summary: 'vazio' },
@@ -95,7 +95,7 @@ GroupProperties.argTypes = {
   },
 };
 
-GroupProperties.args = {
+Properties.args = {
   accordionTitle: 'Título do accordion',
   accordionText: `Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam 
   seções de conteúdo associados.`,
@@ -105,7 +105,7 @@ GroupProperties.args = {
   startOpen: false,
 };
 
-export const GroupMethods = () => {
+export const Methods = () => {
   const handleOpen = async (id) => {
     const acc = document.getElementById(id);
     await acc.openAll();
@@ -146,7 +146,7 @@ export const GroupMethods = () => {
   );
 };
 
-export const GroupEvents = () => {
+export const Events = () => {
   useEffect(() => {
     const accGroupEvent = document.getElementById('accGroupEvent');
     accGroupEvent.addEventListener('bdsAccordionCloseAll', () => {
@@ -180,7 +180,7 @@ export const GroupEvents = () => {
   );
 };
 
-export const GroupFrameworkReact = () => {
+export const FrameworkReact = () => {
   return (
     <BdsAccordionGroup collapse="multiple">
       <BdsAccordion>

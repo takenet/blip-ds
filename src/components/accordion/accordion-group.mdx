@@ -1,6 +1,6 @@
 import { Story, ArgsTable, Canvas } from '@storybook/blocks';
 import * as AccordionGroupStories from './accordion-group.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Accordion Group
 
@@ -14,7 +14,7 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '
 
 An accordion Group is a list of vertically stacked titles that reveal or hide associated content.
 
-<Canvas of={AccordionGroupStories.GroupProperties} >
+<Canvas of={AccordionGroupStories.Properties} >
 </Canvas>
 
 <Meta isTemplate />
@@ -23,16 +23,18 @@ The following properties that are shared by Accordion Group.
 
 <Controls />
 
-## Method
+## Methods
 
-An accordion Group is a list of vertically stacked titles that reveal or hide associated content.
+Some examples of Autocomplete Events.
 
-<Canvas of={AccordionGroupStories.GroupMethods} >
-</Canvas>
+<Source of={AccordionGroupStories.Methods} />
 
 ## Events
 
-An accordion Group is a list of vertically stacked titles that reveal or hide associated content.
+Some examples of Autocomplete Events.
 
-<Canvas of={AccordionGroupStories.GroupEvents} >
-</Canvas>
+<Source of={AccordionGroupStories.Events} />
+
+## Build on React
+
+<Source of={AccordionGroupStories.FrameworkReact} />

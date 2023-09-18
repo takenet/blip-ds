@@ -1,5 +1,5 @@
-import React from 'react';
-import { BdsTabGroup, BdsTabItem, BdsTypo } from '../../../blip-ds-react/dist/components';
+import React, { useState } from 'react';
+import { BdsButton, BdsTabGroup, BdsTabItem, BdsTypo } from '../../../blip-ds-react/dist/components';
 import readme from './readme.md';
 
 export default {
@@ -98,16 +98,19 @@ export const ScrollableTabs = () => {
 };
 
 export const TabsReact = () => {
+  const [disable, setDisable] = useState(true)
   return (
     <>
-          <BdsTabGroup onBdsTabDisabled={ev => console.log(ev.number)}>
+          <BdsTabGroup onBdsTabDisabled={ev => console.log(ev)}>
             <BdsTabItem label="Basic settings">
               <BdsTypo variant="fs-16">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies consectetur quam ut feugiat.
                 Integer arcu enim, placerat eget mauris sed, pretium congue augue.
+                <BdsButton onClick={() => setDisable(false)}>mudar status</BdsButton>
               </BdsTypo>
             </BdsTabItem>
-            <BdsTabItem disable={true} onTabDisabled={ev => console.log(ev)} label="Advanced settings">
+            {console.log(disable)}
+            <BdsTabItem disable={disable} label="Advanced settings">
               <BdsTypo variant="fs-16">
                 Donec ut lacus sit amet tellus egestas placerat non sed lacus. Curabitur varius commodo sagittis. In hac
                 habitasse platea dictumst. Morbi non suscipit nisi.

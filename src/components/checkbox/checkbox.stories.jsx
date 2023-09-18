@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import DocumentationTemplate from './checkbox.mdx';
+import { BdsCheckbox } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Checkbox',
@@ -62,5 +63,11 @@ export const Events = () => {
   });
   return (
     <bds-checkbox id="check1" label="Selected" checked></bds-checkbox>
+  )
+}
+
+export const FrameworkReact = () => {
+  return (
+    <BdsCheckbox id="check1" label="Selected" checked></BdsCheckbox>
   )
 }

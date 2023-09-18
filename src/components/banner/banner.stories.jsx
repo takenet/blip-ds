@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import DocumentationTemplate from './banner.mdx';
+import { BdsBanner, BdsBannerLink } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Banner',
@@ -8,40 +9,6 @@ export default {
       page: DocumentationTemplate,
     },
   },
-};
-
-const content = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '90vw',
-};
-
-const bannerStyle = {
-  margin: '20px auto',
-};
-
-const container = {
-  width: '543px',
-  height: '230px',
-  padding: '20px',
-};
-
-const bottonContext = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'top',
-  marginTop: '16px',
-};
-
-const leftIcon = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '52px',
-  height: '52px',
-  borderRadius: '8px',
-  backgroundColor: '#E9F7F8',
 };
 
 const rightText = {
@@ -126,4 +93,11 @@ export const contextBanner = () => (
       </bds-grid>
     </bds-grid>
   </bds-paper>
+);
+
+export const FrameworkReact = () => (
+  <BdsBanner variant="system" button-close="true">
+    Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!
+    <BdsBannerLink>Acompanhe aqui</BdsBannerLink>
+  </BdsBanner>
 );
