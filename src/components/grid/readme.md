@@ -37,13 +37,11 @@
 
 ### Used by
 
- - [bds-select-option](../select-option)
  - [bds-test-component](../test-component)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-select-option --> bds-grid
   bds-test-component --> bds-grid
   style bds-grid fill:#f9f,stroke:#333,stroke-width:4px
 ```

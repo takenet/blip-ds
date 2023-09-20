@@ -155,6 +155,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Is Loading, is the prop to enable that the component is loading.
+         */
+        "loading"?: boolean;
+        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | AutocompleteOption[];
@@ -1836,10 +1840,6 @@ export namespace Components {
          */
         "invisible"?: boolean;
         /**
-          * Is Loading, is the prop to enable that the component is loading.
-         */
-        "loading"?: boolean;
-        /**
           * The text value of the option.
          */
         "selected"?: boolean;
@@ -3094,6 +3094,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Is Loading, is the prop to enable that the component is loading.
+         */
+        "loading"?: boolean;
         /**
           * Emitted when the select loses focus.
          */
@@ -5009,10 +5013,6 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "invisible"?: boolean;
-        /**
-          * Is Loading, is the prop to enable that the component is loading.
-         */
-        "loading"?: boolean;
         "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         /**
           * The text value of the option.
@@ -5168,8 +5168,7 @@ declare namespace LocalJSX {
         /**
           * bdsTabDisabled. Event to return value when Tabs disable is change.
          */
-      "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
-      "scrollable"?: boolean;
+        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
     }
     interface BdsTabItem {
         /**

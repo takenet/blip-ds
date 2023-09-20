@@ -100,6 +100,11 @@ export class BdsAutocomplete {
   @Prop() dataTest?: string = null;
 
   /**
+   * Is Loading, is the prop to enable that the component is loading.
+   */
+  @Prop() loading?: boolean = false;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<AutocompleteChangeEventDetail>;
@@ -503,7 +508,9 @@ export class BdsAutocomplete {
             'select__options--open': this.isOpen,
           }}
         >
-          {this.internalOptions ? (
+          {this.loading ? (
+            <bds-loading-spinner class="load-spinner" size="small"></bds-loading-spinner>
+          ) : this.internalOptions ? (
             this.internalOptions.map((option, idx) => (
               <bds-select-option
                 onOptionSelected={this.handler}
