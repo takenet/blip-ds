@@ -14,11 +14,12 @@ export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
   if (el.length !== 0) {
     el[0].style.height = '400px';
+    el[0].style.position = 'relative';
   }
   return (
     <bds-dropdown active-mode={args.activeMode} open={args.open} position={args.position}>
       <div slot="dropdown-activator">
-        <bds-button variant="primary">Open Menu</bds-button>
+        <bds-button variant="primary">Open Dropdown</bds-button>
       </div>
       <div slot="dropdown-content">
         <bds-list type-list="default">

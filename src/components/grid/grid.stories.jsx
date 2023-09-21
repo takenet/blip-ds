@@ -100,8 +100,7 @@ Properties.argTypes = {
       defaultValue: { summary: 'vazio' },
     },
     description: 'Defina qual a interação para abrir o componente.',
-    options: ['vazio', 'hover'],
-    control: 'select',
+    control: 'text',
   },
   justifyContent: {
     table: {

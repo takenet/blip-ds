@@ -18,6 +18,7 @@ const rightText = {
 export const Properties = (args) => (
   <bds-banner variant={args.variant} button-close={args.buttonClose} context={args.context}>
     Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!
+    <bds-banner-link>Acompanhe aqui</bds-banner-link>
   </bds-banner>
 );
 

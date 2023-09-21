@@ -55,7 +55,7 @@ export const decorators = [
     return (
       <bds-grid height="100%" direction="column">
         <bds-theme-provider theme={themeValue()}>
-          <bds-grid style={(themeValue() === 'dark' ? {backgroundColor: '#292929', height: '100%', width:'100%'} : {backgroundColor: '#ffffff', height: '100%', width:'100%'})} justify-content="center">
+          <bds-grid style={(themeValue() === 'dark' ? {backgroundColor: '#292929', minHeight: '100%', width:'100%'} : {backgroundColor: '#f6f6f6', minHeight: '100%', width:'100%'})} justify-content="center">
             <bds-grid xxs="12" direction="column" padding="2">
               <Story {...context} />
             </bds-grid>
