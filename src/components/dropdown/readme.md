@@ -23,6 +23,26 @@
 
 ## Methods
 
+### `setClose() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setOpen() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `toggle() => Promise<void>`
 
 

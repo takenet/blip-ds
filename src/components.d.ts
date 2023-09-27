@@ -700,6 +700,8 @@ export namespace Components {
           * Used to set tooltip position
          */
         "position"?: DropdownPostionType;
+        "setClose": () => Promise<void>;
+        "setOpen": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsExpansionPanel {
