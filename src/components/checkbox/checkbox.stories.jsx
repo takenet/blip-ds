@@ -21,28 +21,24 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina o texto que acompanhará o checkbox.',
     control: 'text',
   },
   name: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina o nome do elemento para controles externos.',
     control: 'text',
   },
   disabled: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Defina se o componente ficará desabilitado.',
     control: 'boolean',
   },
   checked: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Escolha se o accordion será iniciado aberto.',
     control: 'boolean',
   },
 };

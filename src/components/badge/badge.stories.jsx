@@ -35,7 +35,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'circle' },
     },
-    description: 'Coloque o titulo do cabeçalho.',
+    
     options: ['circle' , 'triangle' , 'triangle-reverse' , 'polygon', 'square'],
     control: 'select',
   },
@@ -43,14 +43,12 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina o ícone que será utilizado no botão (Apenas outline).',
     control: 'text',
   },
   color: {
     table: {
       defaultValue: { summary: 'system' },
     },
-    description: 'Defina o nome aplicado no avatar.',
     options: ['system' , 'danger' , 'warning' , 'success', 'neutral'],
     control: 'select',
   },
@@ -58,14 +56,12 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Defina se o componente terá animação.',
     control: 'boolean',
   },
   number: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina o nome aplicado no avatar.',
     control: 'number',
   },
 };

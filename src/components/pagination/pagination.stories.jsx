@@ -1,22 +1,49 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './pagination.mdx';
+import { BdsPagination } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Pagination',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-export const PaginationDefault = () => {
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '250px';
+  }
   return (
-    <bds-pagination pages="30"></bds-pagination>
+    <bds-pagination pages={args.pages} started-Page={args.startedPage}></bds-pagination>
   );
 };
 
-export const PaginationStartedPage = () => {
+Properties.args = {
+  pages: 10,
+  startedPage: 1,
+};
+
+Properties.argTypes = {
+  pages: {
+    table: {
+      defaultValue: { summary: '10' },
+    },
+    control: 'number',
+  },
+  startedPage: {
+    table: {
+      defaultValue: { summary: '1' },
+    },
+    control: 'number',
+  },
+}
+
+export const FrameworkReact = () => {
     return (
-      <bds-pagination started-page="20" pages="30"></bds-pagination>
+      <BdsPagination started-page="20" pages="30"></BdsPagination>
     );
   };
 

@@ -39,7 +39,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'single' },
     },
-    description: 'Coloque o titulo do cabeçalho.',
     options: ['single', 'period'],
     control: 'select',
   },
@@ -47,14 +46,12 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Coloque o titulo do cabeçalho.',
     control: 'text',
   },
   endDateLimit: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Coloque o titulo do cabeçalho.',
     control: 'text',
   },
 };

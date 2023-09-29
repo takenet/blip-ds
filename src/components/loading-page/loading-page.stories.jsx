@@ -1,23 +1,27 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './loading-page.mdx';
+import { BdsLoadingPage } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Loading page',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const alignSize = {
-  display: 'flex',
-  gap: '16px',
-  height: '94vh',
-  alignItems: 'center',
-  justifyContent: 'center'
-}
-export const loadingDefault = () => (
-  <div style={alignSize}>
-    <bds-loading-page></bds-loading-page>
-  </div>
-);
+const loadingPage = {
+  width: '100%',
+  height: '100%'
+};
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '700px';
+    el[0].style.height = '500px';
+  }
+  return <bds-loading-page style={loadingPage}></bds-loading-page>;
+};
 
+export const FrameworkReact = () => <BdsLoadingPage></BdsLoadingPage>;

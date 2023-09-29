@@ -1,41 +1,78 @@
-import React from 'react';
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './switch.mdx';
+import { BdsSwitch } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Switch',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-export const defaultSwitch = () => (
-  <>
-    <bds-switch name="cb1" disabled={false} checked={true}></bds-switch>
-  </>
+export const Properties = (args) => {
+  return (
+    <bds-switch name={args.name} disabled={args.disabled} checked={args.checked} refer={args.refer} size={args.size}></bds-switch>
 );
+} 
 
-export const withoutLabelSwitch = () => (
-  <>
-    <bds-switch id="check1" checked></bds-switch>
-    <bds-switch id="check2"></bds-switch>
-    <bds-switch id="check1" checked disabled></bds-switch>
-    <bds-switch id="check2" disabled></bds-switch>
-  </>
-);
+Properties.args = {
+  checked: false,
+  disabled: false,
+  name: 'cb1',
+  refer: '',
+  size: 'standard',
+};
 
-export const disabledSwitch = () => (
-  <>
-    <bds-switch size="standard" disabled></bds-switch>
-    <bds-switch size="standard" checked={true} disabled></bds-switch>
-  </>
-);
+Properties.argTypes = {
+  checked: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  name: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  refer: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  size: {
+    table: {
+      defaultValue: { summary: 'standard' },
+    },
+    options: ["short", "standard", "tall"],
+    control: 'select',
+  },
+}
 
-export const sizeSwitch = () => (
-  <>
-    <bds-switch id="check1" size="short"></bds-switch>
-    <p></p>
-    <bds-switch id="check2" size="standard"></bds-switch>
-    <p></p>
-    <bds-switch id="check3" size="tall"></bds-switch>
-  </>
+export const Events = () => {
+  useEffect(() => {
+    const switchEl = document.getElementById('switch');
+    switchEl.addEventListener('bdsChange', () => {
+      console.log('Evento Blur funcionando');
+    });
+  });
+  return (
+    <bds-switch id="switch" name="cb1" disabled={false} checked={true}></bds-switch>
 );
+} 
+
+export const FrameworkReact = () => {
+  return (
+    <BdsSwitch id="switch" name="cb1" disabled={false} checked={true}></BdsSwitch>
+);
+} 

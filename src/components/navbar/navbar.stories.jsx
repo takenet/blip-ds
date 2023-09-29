@@ -1,15 +1,17 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './navbar.mdx';
 import { BdsNavbar, BdsNavbarContent, BdsAvatar, BdsButtonIcon } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/NavBar',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-export const NavBarProps = (args) => {
+export const Properties = (args) => {
   return (
     <bds-navbar
       orientation={args.orientation}
@@ -32,8 +34,9 @@ export const NavBarProps = (args) => {
     </bds-navbar>
   );
 };
+Properties.args = { orientation: 'horizontal', justifyContent: 'space-between', backgroundColor: 'surface-2' };
 
-NavBarProps.argTypes = {
+Properties.argTypes = {
   orientation: {
     table: {
       defaultValue: { summary: 'horizontal' },
@@ -59,11 +62,11 @@ NavBarProps.argTypes = {
     options: ['surface-1', 'surface-2', 'surface-3'],
   },
 };
-NavBarProps.args = { orientation: 'vertical', justifyContent: 'space-between', backgroundColor: 'surface-1' };
 
-export const NavBarReact = () => {
+
+export const FrameworkReact = () => {
   return (
-    <BdsNavbar orientation="horizontal" justifyContent="space-between" backgroundColor="surface-1">
+    <BdsNavbar orientation="horizontal" justifyContent="space-between" backgroundColor="surface-2">
       <BdsNavbarContent>
         <BdsButtonIcon size="short" variant="secondary" icon="attention"></BdsButtonIcon>
         <BdsButtonIcon size="short" variant="secondary" icon="attention"></BdsButtonIcon>

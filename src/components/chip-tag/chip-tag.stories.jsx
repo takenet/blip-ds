@@ -22,7 +22,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'default' },
     },
-    description: 'Escolha a cor do chip tag.',
     options: ['default', 'danger', 'info', 'outline', 'success', 'warning', 'disabled'],
     control: 'select',
   },
@@ -30,7 +29,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Escolha o ícone no componente.',
     control: 'text',
   },
 };

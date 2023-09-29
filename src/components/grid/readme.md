@@ -37,11 +37,13 @@
 
 ### Used by
 
+ - [bds-card-color](../card-color)
  - [bds-test-component](../test-component)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-card-color --> bds-grid
   bds-test-component --> bds-grid
   style bds-grid fill:#f9f,stroke:#333,stroke-width:4px
 ```

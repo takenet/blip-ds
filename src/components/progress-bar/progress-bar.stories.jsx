@@ -1,52 +1,60 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './progress-bar.mdx';
+import { BdsProgressBar } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Progress Bar',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const content = {
-  width: '100vW',
-};
-
-const alignContent = {
-  maxWidth: '320px',
-  margin: 'auto',
-};
-
-export const ProgressBar = () => {
+export const Properties = (args) => {
   return (
-    <div style={content}>
-      <div style={alignContent}>
-        <bds-progress-bar size="default" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
-      </div>
-    </div>
+        <bds-progress-bar size={args.size} text={args.text} percent={args.percent} color={args.color}></bds-progress-bar>
   );
 };
 
-export const ProgressBarSize = () => {
-  return (
-    <div style={content}>
-      <div style={alignContent}>
-        <bds-progress-bar size="small" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
-        <bds-progress-bar size="default" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
-      </div>
-    </div>
-  );
+Properties.args = {
+  color: 'default',
+  percent: 16,
+  size: 'default',
+  text: 'Texto para aplicar no componente',
 };
 
-export const ProgressBarColor = () => {
+Properties.argTypes = {
+  color: {
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+    options: ["default", "information", "positive", "warning"],
+    control: 'select',
+  },
+  percent: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'number',
+  },
+  size: {
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+    options: ["default", "small"],
+    control: 'select',
+  },
+  text: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+}
+
+export const FrameworkReact = () => {
   return (
-    <div style={content}>
-      <div style={alignContent}>
-        <bds-progress-bar color="default" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
-        <bds-progress-bar color="information" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
-        <bds-progress-bar color="warning" text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
-        <bds-progress-bar color="positive " text="Texto para aplicar no componente" percent={16}></bds-progress-bar>
-      </div>
-    </div>
+        <BdsProgressBar size="default" text="Texto para aplicar no componente" percent={16}></BdsProgressBar>
   );
 };

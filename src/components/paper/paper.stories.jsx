@@ -1,70 +1,59 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './paper.mdx';
+import { BdsPaper } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Paper',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const paper = {
-  width: '100px',
-  height: '150px',
-};
-
-const barPaper = {
-  width: '500px',
-  height: '60px',
-};
-
-const container = {
-  margin: '16px',
-};
-
-const barContainer = {
-  margin: '3px',
-};
-
-const contentDefault = {
-  display: 'flex',
-  width: '100%',
-};
-
-export const defaultPapers = () => (
-  <div style={contentDefault}>
-    <div style={container}>
-      <bds-typo>Static</bds-typo>
-      <bds-paper style={paper}></bds-paper>
-    </div>
-    <br />
-    <div style={container}>
-      <bds-typo>Primary</bds-typo>
-      <bds-paper style={paper} elevation="primary"></bds-paper>
-    </div>
-    <br />
-    <div style={container}>
-      <bds-typo>Secondary</bds-typo>
-      <bds-paper style={paper} elevation="secondary"></bds-paper>
-    </div>
-  </div>
+export const Properties = (args) => {
+  return (
+      <bds-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}></bds-paper>
 );
+} 
 
-export const barPapers = () => (
-  <div>
-    <div style={barContainer}>
-      <bds-typo>Static</bds-typo>
-      <bds-paper style={barPaper}></bds-paper>
-    </div>
-    <br />
-    <div style={barContainer}>
-      <bds-typo>Primary</bds-typo>
-      <bds-paper style={barPaper} elevation="primary"></bds-paper>
-    </div>
-    <br />
-    <div style={barContainer}>
-      <bds-typo>Secondary</bds-typo>
-      <bds-paper style={barPaper} elevation="secondary"></bds-paper>
-    </div>
-  </div>
+Properties.args = {
+  border: false,
+  elevation: 'primary',
+  height: '100px',
+  width: '150px',
+};
+
+Properties.argTypes = {
+  border: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  elevation: {
+    table: {
+      defaultValue: { summary: 'primary' },
+    },
+    options: ["primary", "secondary", "static"],
+    control: 'select',
+  },
+  height: {
+    table: {
+      defaultValue: { summary: '100px' },
+    },
+    control: 'text',
+  },
+  width: {
+    table: {
+      defaultValue: { summary: '150px' },
+    },
+    control: 'text',
+  },
+}
+
+export const FrameworkReact = () => {
+  return (
+      <BdsPaper border={false} elevation="primary" height="100px" width="150px"></BdsPaper>
 );
+} 

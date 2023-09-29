@@ -1,35 +1,33 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './theme-provider.mdx';
+import { BdsAvatar, BdsBanner, BdsGrid, BdsInputChips, BdsPaper, BdsThemeProvider, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Theme provider',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const paper = {
-    height: '200px',
-    padding: '20px',
-    width: '100%',
-}
-
-const contextPaper = {
-    height: '350px',
-    width: 'auto',
-}
-
-export const darkTheme = () => {
+export const Properties = (args) => {
   return (
     <>
-      <bds-theme-provider theme="dark">
+      <bds-theme-provider theme={args.theme}>
         <bds-grid xxs="12">
-          <bds-paper style={paper}>
-            <bds-grid direction="column" gap="2">
-              <bds-typo variant="fs-32" bold="bold">Dark theme</bds-typo>
+          <bds-paper width="500px">
+            <bds-grid direction="column" padding="2" gap="2">
+              <bds-typo variant="fs-32" bold="bold">
+                Exemplo de uso do tema
+              </bds-typo>
               <bds-input-chips chips='["chip1", "chip2"]'></bds-input-chips>
               <bds-avatar name="Michael Scott" size="standard" upload="false">
               </bds-avatar>
+              <bds-banner variant="system" context="inside">
+                  Este é um banner do tipo inside. Ele pode conter várias linhas, mas a sugestão é que possua textos
+                  curtos e objetivos.
+                </bds-banner>
             </bds-grid>
           </bds-paper>
         </bds-grid>
@@ -38,61 +36,41 @@ export const darkTheme = () => {
   );
 };
 
-export const lightTheme = () => {
-    return (
-      <>
-        <bds-theme-provider theme="light">
-          <bds-grid xxs="12">
-            <bds-paper style={paper}>
-              <bds-grid direction="column" gap="2">
-                <bds-typo variant="fs-32" bold="bold">Light theme</bds-typo>
-                <bds-input-chips chips='["chip1", "chip2"]'></bds-input-chips>
-                <bds-avatar name="Michael Scott" size="standard" upload="false">
-                </bds-avatar>
-              </bds-grid>
-            </bds-paper>
-          </bds-grid>
-        </bds-theme-provider>
-      </>
-    );
-  };
+Properties.args = {
+  theme: 'light',
+};
 
-  export const insideContextTheme = () => {
-    return (
-      <>
-       <bds-grid container xxs="12" justify-content="center">
-      <bds-theme-provider theme="dark">
-        <bds-paper style={contextPaper}>
-          <bds-grid direction="column" gap="2" padding="2">
-            <bds-typo variant="fs-32" bold="bold">Outside dark theme</bds-typo>
-            
-            <bds-grid xxs="12" gap="2" justify-content="center">
-              <bds-radio-group>
-              <bds-typo bold="bold">Radio group</bds-typo>
-              <bds-radio value="radio1" label="Radio 1"></bds-radio>
-              <bds-radio value="radio2" label="Radio 2"></bds-radio>
-              <bds-radio value="radio3" label="Radio 3"></bds-radio>
-            </bds-radio-group>
-            <bds-grid xxs="9">
-              <bds-theme-provider theme="light">
-                <bds-paper class="light">
-                  <bds-grid direction="column" gap="2" padding="2">
-                    <bds-typo variant="fs-32" bold="bold">Inside light theme</bds-typo>
-                    <bds-input-phone-number label="Phone number"></bds-input-phone-number>
-                    <bds-loading-bar size="default" text="Texto para aplicar no componente" percent="48">
-                    </bds-loading-bar>
-                  </bds-grid>
-                </bds-paper>
-              </bds-theme-provider>
-            </bds-grid>
-              
-            </bds-grid>
-          </bds-grid>
+Properties.argTypes = {
+  theme: {
+    table: {
+      defaultValue: { summary: 'light' },
+    },
+    options: ['dark', 'high-contrast', 'light'],
+    control: 'select',
+  },
+};
 
-        </bds-paper>
-      </bds-theme-provider>
-
-    </bds-grid>
-      </>
-    );
-  };
+export const FrameworkReact = () => {
+  return (
+    <>
+      <BdsThemeProvider theme="light">
+        <BdsGrid xxs="12">
+          <BdsPaper width="500px">
+            <BdsGrid direction="column" padding="2" gap="2">
+              <BdsTypo variant="fs-32" bold="bold">
+                Exemplo de uso do tema
+              </BdsTypo>
+              <BdsInputChips chips='["chip1", "chip2"]'></BdsInputChips>
+              <BdsAvatar name="Michael Scott" size="standard" upload="false">
+              </BdsAvatar>
+              <BdsBanner variant="system" context="inside">
+                  Este é um banner do tipo inside. Ele pode conter várias linhas, mas a sugestão é que possua textos
+                  curtos e objetivos.
+                </BdsBanner>
+            </BdsGrid>
+          </BdsPaper>
+        </BdsGrid>
+      </BdsThemeProvider>
+    </>
+  );
+};

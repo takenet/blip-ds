@@ -65,7 +65,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'click' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['click', 'hover'],
     control: 'select',
   },
@@ -73,14 +72,12 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Defina se o componente irá iniciar aberto.',
     control: 'boolean',
   },
   position: {
     table: {
       defaultValue: { summary: 'auto' },
     },
-    description: 'Defina uma posição fixa para onde o componente irá abrir.',
     options: ["auto", "bottom-center", "bottom-left", "bottom-right", "top-center", "top-left", "top-right"],
     control: 'select',
   },

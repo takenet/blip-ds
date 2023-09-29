@@ -27,7 +27,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'system' },
     },
-    description: 'Escolha o estado do componente.',
+    
     options: ['system', 'error', 'warning', 'info'],
     control: 'select',
   },
@@ -35,7 +35,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'outside' },
     },
-    description: 'Defina o contexto do local que será usando o componente.',
+    
     options: ['outside', 'inside'],
     control: 'select',
   },
@@ -43,7 +43,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Escolha se o accordion será iniciado aberto.',
+    
     control: 'boolean',
   },
 };

@@ -1,42 +1,77 @@
-import React from 'react';
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './radio-button.mdx';
+import { BdsRadioGroup, BdsRadio, BdsTypo, BdsGrid } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Radio Button',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-export const RadioGroup = () => (
+export const Properties = (args) => (
   <bds-radio-group>
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <bds-grid direction="column" gap="2">
       <bds-typo bold="bold">Radio group</bds-typo>
-      <bds-radio value="radio1" label="Radio 1"></bds-radio>
+      <bds-radio value="radio1" label={args.label} checked={args.checked} disabled={args.disabled}></bds-radio>
       <bds-radio value="radio2" label="Radio 2"></bds-radio>
-      <bds-radio value="radio3" label="Radio 3"></bds-radio>
-    </div>
+    </bds-grid>
   </bds-radio-group>
 );
 
-export const DefaultRadio = () => (
-  <>
-    <bds-radio label="Click A" name="rd1" disabled={false} checked={false}></bds-radio>
-  </>
-);
+Properties.args = {
+  checked: false,
+  disabled: false,
+  label: 'Radio 1',
+};
 
-export const DisabledRadio = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-    <bds-radio id="radio1" label="Selected" checked disabled></bds-radio>
-    <bds-radio id="radio2" label="Deselected" disabled></bds-radio>
-  </div>
-);
+Properties.argTypes = {
+  checked: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  label: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+}
 
-export const WithoutLabelRadio = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-    <bds-radio id="radio1" checked></bds-radio>
-    <bds-radio id="radio2"></bds-radio>
-    <bds-radio id="radio1" checked disabled></bds-radio>
-    <bds-radio id="radio2" disabled></bds-radio>
-  </div>
+export const Events = () => {
+  useEffect(() => {
+    const radio = document.getElementById('radio-group');
+    radio.addEventListener('bdsRadioGroupChange', () => {
+      console.log('Evento bdsRadioGroupChange funcionando');
+    });
+  });
+  return  (
+  <bds-radio-group id="radio-group">
+    <bds-grid direction="column" gap="2">
+      <bds-typo bold="bold">Radio group</bds-typo>
+      <bds-radio value="radio1" label="Radio 1"></bds-radio>
+      <bds-radio value="radio2" label="Radio 2"></bds-radio>
+    </bds-grid>
+  </bds-radio-group>
+);
+}
+
+export const FrameworkReact = () => (
+  <BdsRadioGroup>
+    <BdsGrid direction="column" gap="16px">
+      <BdsTypo bold="bold">Radio group</BdsTypo>
+      <BdsRadio value="radio1" label="Radio 1"></BdsRadio>
+      <BdsRadio value="radio2" label="Radio 2"></BdsRadio>
+    </BdsGrid>
+  </BdsRadioGroup>
 );

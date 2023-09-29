@@ -22,7 +22,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'default' },
     },
-    description: 'Escolha a cor do chip clickable.',
     options: ['default', 'danger', 'info', 'outline', 'success', 'warning'],
     control: 'select',
   },
@@ -30,42 +29,36 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Escolha o ícone no componente.',
     control: 'text',
   },
   avatar: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina a url ou caminho para o avatar.',
     control: 'text',
   },
   clickable: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Defina se o componente pode ser clicado.',
     control: 'boolean',
   },
   close: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Defina se o componente pode ser fechado.',
     control: 'boolean',
   },
   disabled: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'Defina se o componente está desabilitado.',
     control: 'boolean',
   },
   size: {
     table: {
       defaultValue: { summary: 'standard' },
     },
-    description: 'Escolha a cor do chip tag.',
     options: ['standard', 'tall'],
     control: 'select',
   },

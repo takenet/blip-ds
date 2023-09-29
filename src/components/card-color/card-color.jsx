@@ -9,6 +9,12 @@ export default {
   },
 };
 
+export const ColorTest = () => {
+  return (
+    <bds-card-color name="brand"></bds-card-color>
+  )
+}
+
 const blipBlues = [
   { name: 'Main', variable: 'color-primary-main', hex: '#3F7DE8' },
   { name: 'Light', variable: 'color-primary-light', hex: '#B3D4FF' },

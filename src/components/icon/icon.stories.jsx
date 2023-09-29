@@ -408,37 +408,6 @@ const iconStyles = {
   padding: '1px',
 };
 
-const emojiStyles = {
-  width: '120px',
-  height: '64px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  padding: '1px',
-  textAlign: 'center',
-};
-
-const zeroHeightStyles = {
-  width: '120px',
-  height: '64px',
-  display: 'flex',
-  alignItems: 'baseline',
-  justifyContent: 'center',
-  flexDirection: 'row',
-};
-
-const logoStyles = {
-  width: '120px',
-  height: '64px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  padding: '1px',
-  textAlign: 'center',
-};
-
 const iconWrapperStyles = {
   display: 'flex',
   flexWrap: 'wrap',
@@ -478,7 +447,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina uma posição fixa para onde o componente irá abrir.',
     control: 'text',
   },
 };

@@ -53,7 +53,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ["baseline", "center", "flex-end", "flex-start", "stretch"],
     control: 'select',
   },
@@ -61,21 +60,18 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     control: 'boolean',
   },
   containerFluid: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     control: 'boolean',
   },
   direction: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ["column", "column-reverse", "row", "row-reverse"],
     control: 'select',
   },
@@ -83,7 +79,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ["wrap", "wrap-reverse"],
     control: 'select',
   },
@@ -91,7 +86,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ["1", "12", "2", "3", "4", "8", "half", "none"],
     control: 'select',
   },
@@ -99,14 +93,12 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     control: 'text',
   },
   justifyContent: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ["center", "flex-end", "flex-start", "space-around", "space-between", "space-evenly", "stretch"],
     control: 'select',
   },
@@ -114,7 +106,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ["none", "1", "2", "3", "4", "5", "6", "half", "l-none", "l-half", "l-1", "l-2", "l-3", "l-4", "l-5", "l-6", "b-none", "b-half", "b-1", "b-2", "b-3", "b-4", "b-5", "b-6", "r-none", "r-half", "r-1", "r-2", "r-3", "r-4", "r-5", "r-6", "t-none", "t-half", "t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "y-none", "y-half", "y-1", "y-2", "y-3", "y-4", "y-5", "y-6", "x-none", "x-half", "x-1", "x-2", "x-3", "x-4", "x-5", "x-6"],
     control: 'select',
   },
@@ -122,7 +113,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -130,7 +120,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -138,7 +127,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -146,7 +134,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -154,7 +141,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -162,7 +148,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -170,7 +155,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -178,7 +162,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -186,7 +169,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -194,7 +176,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -202,7 +183,6 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -210,7 +190,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
+    
     options: ['vazio', 'hover'],
     control: 'select',
   },
@@ -218,7 +198,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina qual a interação para abrir o componente.',
+    
     options: ['vazio', 'hover'],
     control: 'select',
   },

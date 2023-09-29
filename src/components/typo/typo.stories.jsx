@@ -8,107 +8,52 @@ export default {
   },
 };
 
-const paragraph =
-  'Genialidade é fruto de muito hardwork. O segredo do sucesso é começar antes de estar pronto. É você quem decide se o seu dia vai ser incrível ou não.';
+export const Properties = (args) => {
+  return (
+    <bds-typo variant={args.variant} line-height={args.lineHeight} bold={args.bold} italic={args.italic} no-wrap={args.noWrap} paragraph={args.paragraph} margin={args.margin}>
+      Texto para teste do typo.
+    </bds-typo>
+  );
+};
 
-export const allTypos = () => (
-  <div>
-    <bds-typo variant="fs-40">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-32">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-24">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-20">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-16">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-14">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-12">Wearetaketeam</bds-typo>
-    <bds-typo variant="fs-10">Wearetaketeam</bds-typo>
-  </div>
-);
+Properties.args = {
+  bold: 'regular',
+  italic: false,
+  lineHeight: '',
+  margin: false,
+  noWrap: false,
+  paragraph: false,
+  tag: 'p',
+  variant: 'fs-16',
+};
 
-export const typoBase = () => (
-  <div style={{ width: '250px' }}>
-    <bds-typo variant="fs-16" line-height="" bold="" italic={false} no-wrap={false} paragraph={false} margin={true}>
-      Wearetaketeam
-    </bds-typo>
-  </div>
-);
-
-export const typoLineHeight = () => (
-  <>
-    <bds-typo variant="fs-24" line-height="double">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" line-height="plus">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" line-height="simple">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" line-height="small">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" line-height="none">
-      Wearetaketeam
-    </bds-typo>
-  </>
-);
-
-export const typoBold = () => (
-  <>
-    <bds-typo variant="fs-24" bold="extra-bold">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" bold="bold">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" bold="semi-bold">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" bold="regular">
-      Wearetaketeam
-    </bds-typo>
-  </>
-);
-
-export const typoItalic = () => (
-  <>
-    <bds-typo variant="fs-24" italic bold="extra-bold">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" italic bold="bold">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" italic bold="semi-bold">
-      Wearetaketeam
-    </bds-typo>
-    <bds-typo variant="fs-24" italic bold="regular">
-      Wearetaketeam
-    </bds-typo>
-  </>
-);
-
-export const typoNoWrap = () => (
-  <div style={{ width: '250px' }}>
-    <bds-typo variant="fs-16" no-wrap={true}>
-      {paragraph}
-    </bds-typo>
-  </div>
-);
-
-export const typoParapgraph = () => (
-  <>
-    <bds-typo variant="fs-16" paragraph={true}>
-      {paragraph}
-    </bds-typo>
-    <bds-typo variant="fs-16" paragraph={true}>
-      {paragraph}
-    </bds-typo>
-  </>
-);
-
-export const typoTag = () => (
-  <>
-    <bds-typo tag="h1">Wearetaketeam</bds-typo>
-    <bds-typo tag="h2">Wearetaketeam</bds-typo>
-    <bds-typo tag="p">Wearetaketeam</bds-typo>
-  </>
-);
+Properties.argTypes = {
+  bold: {
+    table: {
+      defaultValue: { summary: 'regular' },
+    },
+    options: ["bold", "extra-bold", "regular", "semi-bold"],
+    control: 'select',
+  },
+  lineHeight: {
+    table: {
+      defaultValue: { summary: 'none' },
+    },
+    options: ["double", "none", "plus", "simple", "small"],
+    control: 'select',
+  },
+  tag: {
+    table: {
+      defaultValue: { summary: 'p' },
+    },
+    options: ["h1", "h2", "h3", "h4", "p", "span"],
+    control: 'select',
+  },
+  variant: {
+    table: {
+      defaultValue: { summary: 'fs-16' },
+    },
+    options: ["fs-10", "fs-12", "fs-14", "fs-16", "fs-20", "fs-24", "fs-32", "fs-40"],
+    control: 'select',
+  },
+}
