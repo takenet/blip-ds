@@ -12,7 +12,7 @@ export class Paper implements ComponentInterface {
    * Size. Entered as one of the size. Can be one of:
    * 'static', 'primary', 'secondary';
    */
-  @Prop() elevation?: PaperElevation = 'static';
+  @Prop({ mutable: true, reflect: true }) elevation?: PaperElevation = 'static';
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -40,9 +40,7 @@ export class Paper implements ComponentInterface {
   };
 
   componentWillRender() {
-    if (this.border == true) {
-      this.hasBorder = false;
-    }
+    this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
   }
 
   render() {

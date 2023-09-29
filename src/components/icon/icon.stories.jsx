@@ -1,10 +1,13 @@
-import React from 'react';
-import readme from './readme.md';
+import React, { useEffect, useState } from 'react';
+import DocumentationTemplate from './icon.mdx';
+import { BdsIcon } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Icon',
+  title: 'Components/Icon',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
@@ -393,273 +396,213 @@ const logoNames = [
   'tiktok',
   'google-play',
   'google-meu-negocio',
-  'cielo'
-
+  'cielo',
 ];
 
 const iconStyles = {
-  width: '80px',
+  width: '70px',
   height: '64px',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
   flexDirection: 'column',
   padding: '1px',
-};
-
-const emojiStyles = {
-  width: '120px',
-  height: '64px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  padding: '1px',
-  textAlign: 'center',
-};
-
-const zeroHeightStyles = {
-  width: '120px',
-  height: '64px',
-  display: 'flex',
-  alignItems: 'baseline',
-  justifyContent: 'center',
-  flexDirection: 'row',
-};
-
-const logoStyles = {
-  width: '120px',
-  height: '64px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  padding: '1px',
-  textAlign: 'center',
-};
-
-const zeroHeightIconStyles = {
-  padding: '5px',
 };
 
 const iconWrapperStyles = {
   display: 'flex',
   flexWrap: 'wrap',
+  gap: '24px',
+};
+
+export const Properties = (args) => {
+  return <bds-icon theme="outline" size={args.size} name={args.name}></bds-icon>;
+};
+
+Properties.args = {
+  size: 'medium',
+  name: 'info',
+};
+
+Properties.argTypes = {
+  size: {
+    table: {
+      defaultValue: { summary: 'medium' },
+    },
+    description: 'Defina qual a interação para abrir o componente.',
+    options: [
+      'brand',
+      'xxx-large',
+      'xx-large',
+      'x-large',
+      'large',
+      'medium',
+      'small',
+      'x-small',
+      'xx-small',
+      'xxx-small',
+    ],
+    control: 'select',
+  },
+  name: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+};
+
+export const FrameworkReact = () => {
+  return <BdsIcon theme="outline" size="brand" name="info"></BdsIcon>;
 };
 
 export const AllOutlineIcons = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIcons, setFilteredIcons] = useState([]);
   const story = [];
 
-  outlineIconsName.forEach((name) => {
+  useEffect(() => {
+    const iconOutline = document.getElementById('icon-outline');
+    iconOutline.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = outlineIconsName.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIcons(filtered);
+  }, [searchValue]);
+
+  filteredIcons.forEach((name) => {
     story.push(
-      <div style={iconStyles}>
+      <div key={name} style={iconStyles}>
         <bds-icon theme="outline" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={iconWrapperStyles}>{story}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="icon-outline" placeholder="search icon"></bds-input>
+      </bds-grid>
+
+      <div style={iconWrapperStyles}>{story}</div>
+    </bds-grid>
+  );
 };
 
 export const AllSolidIcons = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIcons, setFilteredIcons] = useState([]);
   const story = [];
 
-  solidIconsName.forEach((name) => {
+  useEffect(() => {
+    const iconOutline = document.getElementById('icon-solid');
+    iconOutline.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = solidIconsName.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIcons(filtered);
+  }, [searchValue]);
+
+  filteredIcons.forEach((name) => {
     story.push(
-      <div style={iconStyles}>
+      <div key={name} style={iconStyles}>
         <bds-icon theme="solid" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={iconWrapperStyles}>{story}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="icon-solid" placeholder="search icon"></bds-input>
+      </bds-grid>
+
+      <div style={iconWrapperStyles}>{story}</div>
+    </bds-grid>
+  );
 };
 
 export const AllEmojis = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIcons, setFilteredIcons] = useState([]);
   const story = [];
 
-  emojiNames.forEach((name) => {
+  useEffect(() => {
+    const emoji = document.getElementById('emoji');
+    emoji.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = emojiNames.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIcons(filtered);
+  }, [searchValue]);
+
+  filteredIcons.forEach((name) => {
     story.push(
-      <div style={emojiStyles}>
-        <bds-icon type="emoji" size="x-large" name={name}></bds-icon>
+      <bds-grid height="80px" gap="1" key={name} style={iconStyles}>
+        <bds-icon type="emoji" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </bds-grid>
     );
   });
 
-  return <div style={iconWrapperStyles}>{story}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="emoji" placeholder="search icon"></bds-input>
+      </bds-grid>
+
+      <div style={iconWrapperStyles}>{story}</div>
+    </bds-grid>
+  );
 };
 
 export const AllLogos = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIcons, setFilteredIcons] = useState([]);
   const story = [];
 
-  logoNames.forEach((name) => {
+  useEffect(() => {
+    const logos = document.getElementById('logos');
+    logos.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = logoNames.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIcons(filtered);
+  }, [searchValue]);
+
+  filteredIcons.forEach((name) => {
     story.push(
-      <div style={logoStyles}>
-        <bds-icon type="logo" name={name}></bds-icon>
+      <bds-grid height="80px" gap="1" key={name} style={iconStyles}>
+        <bds-icon type="logo" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </bds-grid>
     );
   });
 
-  return <div style={iconWrapperStyles}>{story}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="logos" placeholder="search icon"></bds-input>
+      </bds-grid>
+
+      <div style={iconWrapperStyles}>{story}</div>
+    </bds-grid>
+  );
 };
-
-export const IconColors = () => (
-  <>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#2CC3D5"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#87DDE8"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" color="#2498A8"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" theme="solid" color="#2CC3D5"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" theme="solid" color="#87DDE8"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large" theme="solid" color="#2498A8"></bds-icon>
-  </>
-);
-
-export const IconOutline = () => (
-  <div style={zeroHeightStyles}>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="arrow-right"
-      theme="outline"
-      size="xxx-large"
-      aria-label="seta para a direita"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="email"
-      theme="outline"
-      size="xxx-large"
-      aria-label="Ícone de email"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="info"
-      theme="outline"
-      size="xxx-large"
-      aria-label="Ícone de informações"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="home"
-      theme="outline"
-      size="xxx-large"
-      aria-label="Voltar para página principal"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="add"
-      theme="outline"
-      size="xxx-large"
-      aria-label="Ícone de mais para adicionar elemento"
-    ></bds-icon>
-  </div>
-);
-
-export const IconSolid = () => (
-  <div style={zeroHeightStyles}>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="arrow-right"
-      theme="solid"
-      size="xxx-large"
-      aria-label="seta para a direita"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="email"
-      theme="solid"
-      size="xxx-large"
-      aria-label="Ícone de email"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="info"
-      theme="solid"
-      size="xxx-large"
-      aria-label="Ícone de informações"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="warning"
-      theme="solid"
-      size="xxx-large"
-      aria-label="Ícone de atenção"
-    ></bds-icon>
-    <bds-icon
-      style={zeroHeightIconStyles}
-      name="add"
-      theme="solid"
-      size="xxx-large"
-      aria-label="Ícone de mais para adicionar elemento"
-    ></bds-icon>
-  </div>
-);
-
-export const IconSize = () => (
-  <div style={zeroHeightStyles}>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="brand"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-large"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xx-large"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="x-large"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="large"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="medium"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="small"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="x-small"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xx-small"></bds-icon>
-    <bds-icon style={zeroHeightIconStyles} name="info" size="xxx-small"></bds-icon>
-  </div>
-);
-
-export const IconEmoji = () => (
-  <>
-    <div style={zeroHeightStyles}>
-      <bds-icon
-        style={zeroHeightIconStyles}
-        name="nerd-face"
-        size="xxx-large"
-        type="emoji"
-        aria-label="emoji de nerd"
-      ></bds-icon>
-      <bds-icon
-        style={zeroHeightIconStyles}
-        name="smiling-face"
-        size="xxx-large"
-        type="emoji"
-        aria-label="emoji sorrindo"
-      ></bds-icon>
-      <bds-icon
-        style={zeroHeightIconStyles}
-        name="beaming-face"
-        size="xxx-large"
-        type="emoji"
-        aria-label="emoji radiante"
-      ></bds-icon>
-      <bds-icon
-        style={zeroHeightIconStyles}
-        name="neutral-face"
-        size="xxx-large"
-        type="emoji"
-        aria-label="emoji neutro"
-      ></bds-icon>
-      <bds-icon
-        style={zeroHeightIconStyles}
-        name="winking-face"
-        size="xxx-large"
-        type="emoji"
-        aria-label="emoji piscando"
-      ></bds-icon>
-    </div>
-  </>
-);
-
-export const IconLogo = () => (
-  <>
-    <div style={zeroHeightStyles}>
-      <bds-icon name="gbm" size="xxx-large" type="logo" aria-label="logo da gbm"></bds-icon>
-      <bds-icon name="google" size="xxx-large" type="logo" aria-label="logo da google"></bds-icon>
-    </div>
-  </>
-);

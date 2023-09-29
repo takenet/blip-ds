@@ -46,8 +46,8 @@ import { PaginationOptionsPositionType } from "./components/pagination/paginatio
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
-import { SwitchSize } from "./components/bds-switch/bds-switch";
-import { Overflow } from "./components/tabs/tabs-interface";
+import { SwitchSize } from "./components/switch/switch";
+import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
@@ -5168,6 +5168,7 @@ declare namespace LocalJSX {
         /**
           * bdsTabDisabled. Event to return value when Tabs disable is change.
          */
+      
       "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
       "scrollable"?: boolean;
     }
