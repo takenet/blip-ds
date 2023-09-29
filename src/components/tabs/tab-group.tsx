@@ -54,6 +54,7 @@ export class BdsTabGroup {
     this.setnumberElement();
     this.setFirstActive();
     this.setInternalItens(Array.from(this.tabItensElement));
+    this.getEventsDisable(Array.from(this.tabItensElement));
   }
 
   connectedCallback() {
@@ -61,6 +62,18 @@ export class BdsTabGroup {
       this.isSlideTabs = this.checkSlideTabs();
     }, 100);
   }
+
+  private getEventsDisable = (ItensElement): void => {
+    ItensElement.forEach((element) => {
+      element.addEventListener(
+        'tabDisabled',
+        () => {
+          this.setInternalItens(Array.from(this.tabItensElement));
+        },
+        false
+      );
+    });
+  };
 
   disconnectedCallback() {
     window.clearInterval(this.isSlide);
@@ -182,7 +195,11 @@ export class BdsTabGroup {
                   const bold = item.open == true ? 'bold' : 'regular';
                   return (
                     <div
-                      class={{ tab_group__header__itens__item: true, tab_group__header__itens__item__open: item.open }}
+                      class={{
+                        tab_group__header__itens__item: true,
+                        tab_group__header__itens__item__open: item.open,
+                        tab_group__header__itens__item__disable: item.disable,
+                      }}
                       key={index}
                       tabindex="0"
                       onClick={() =>
