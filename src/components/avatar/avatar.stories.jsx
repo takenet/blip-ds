@@ -1,69 +1,74 @@
-import React from 'react';
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './avatar.mdx';
+import { BdsAvatar } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Avatar',
+  title: 'Components/Avatar Single',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate
+    }
   },
 };
 
-const content = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '32px',
-  flexWrap: 'wrap'
-};
 
-const avatarSize = {
-  marginRight: '8px',
-};
-
-export const avatarGroup = () => {
-  const users = [
-    { id: '1', name: 'Michael Scott' },
-    { id: '2', name: 'Dwight Schrute' },
-    { id: '3', name: 'Jim Halpert' },
-    { id: '4', name: 'Pam Beesly' },
-    { id: '5', name: 'Ryan Howard' },
-    { id: '6', name: 'Andy Bernard' },
-  ];
+export const Properties = (args) => {
   return (
-    <div style={content}>
-      <bds-avatar-group size="standard" users={JSON.stringify(users)}></bds-avatar-group>
-      <bds-avatar-group can-click size="standard" users={JSON.stringify(users)}></bds-avatar-group>
-    </div>
+    <bds-avatar name={args.name} thumbnail={args.thumbnail} size={args.size} upload={args.upload}></bds-avatar>
   );
 };
 
-export const defaultAvatar = () => {
-  const sizes = ['extra-small', 'small', 'standard', 'large', 'extra-large'];
+Properties.argTypes = {
+  name: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina o nome do usuário.',
+    control: 'text',
+  },
+  thumbnail: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina o link ou caminho da imagem.',
+    control: 'text',
+  },
+  size: {
+    table: {
+      defaultValue: { summary: 'standard' },
+    },
+    description: 'Defina o tamanho dos avatares.',
+    options: ['micro' ,'extra-small' , 'small' , 'standard' , 'large', 'extra-large' ],
+    control: 'select',
+  },
+  upload: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o avatar será clicável.',
+    control: 'boolean',
+  },
+}
+
+Properties.args = {
+  name: "Michael Scott",
+  size: "standard",
+  thumbnail:"",
+  upload: false,
+}
+
+export const Events = () => {
+  useEffect(() => {
+    const avatar = document.getElementById('avatar');
+    avatar.addEventListener('bdsClickAvatar', () => {
+      console.log('Evento Click funcionando');
+    });
+  });
   return (
-    <div style={content}>
-      <bds-avatar name="Michael Scott" thumbnail="" size="standard" upload={false} ellipsis={null}></bds-avatar>
-    </div>
+    <bds-avatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload="true"></bds-avatar>
   );
 };
 
-export const sizeAvatar = () => (
-  <div style={content}>
-    <bds-avatar name={'Michael Scott'} thumbnail={''} size={'extra-small'} style={avatarSize}></bds-avatar>
-    <bds-avatar name={'Dwight Schrute'} thumbnail={''} size={'small'} style={avatarSize}></bds-avatar>
-    <bds-avatar name={'Jim Halpert'} thumbnail={''} size={'standard'} style={avatarSize}></bds-avatar>
-    <bds-avatar name={'Pam Beesly'} thumbnail={''} size={'large'} style={avatarSize}></bds-avatar>
-    <bds-avatar name={'Ryan Howard'} thumbnail={''} size={'extra-large'} style={avatarSize}></bds-avatar>
-  </div>
-);
-
-export const uploadAvatar = () => (
-  <div style={content}>
-    <bds-avatar
-      name="Michael Scott"
-      thumbnail="https://www.w3schools.com/howto/img_avatar.png"
-      size="extra-large"
-      upload="true"
-      style={avatarSize}
-    ></bds-avatar>
-    <bds-avatar name="Michael Scott" thumbnail="" size="extra-large" upload="true" style={avatarSize}></bds-avatar>
-  </div>
-);
+export const FrameworkReact = () => (
+    <BdsAvatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload="true"></BdsAvatar>
+  )

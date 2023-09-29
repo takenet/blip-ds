@@ -25,8 +25,8 @@
  - [bds-list-item](../list)
  - [bds-pagination](../pagination)
  - [bds-sidebar](../sidebar)
- - [bds-tab-group](../tabs/tab-group)
- - [bds-tabs](../tabs)
+ - [bds-tab-group](../tabs)
+ - [bds-tabs](../tabs/tab (depreciated))
  - [bds-toast](../toast)
  - [bds-upload](../upload)
 

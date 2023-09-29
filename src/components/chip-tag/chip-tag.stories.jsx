@@ -1,46 +1,45 @@
 import React from 'react';
-import readme from './readme.md';
+import { BdsChipTag } from '../../../blip-ds-react/dist/components';
+import DocumentationTemplate from './chip-tag.mdx';
 
 export default {
-  title: 'Chip Tag',
+  title: 'Components/Chip Tag',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const chipTagGroup = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  gap: '16px',
+export const Properties = (args) => (
+  <bds-chip-tag color={args.color} icon={args.icon}>
+    Chip-tag Default
+  </bds-chip-tag>
+);
+
+Properties.argTypes = {
+  color: {
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+    options: ['default', 'danger', 'info', 'outline', 'success', 'warning', 'disabled'],
+    control: 'select',
+  },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
 };
 
-export const chipTagDefault = () => {
-  return (
-    <div>
-      <bds-chip-tag>Chip-tag Default</bds-chip-tag>
-    </div>
-  );
+Properties.args = {
+  color: 'default',
+  icon: '',
 };
 
-export const chipTagWithIcon = () => {
-  return (
-    <div>
-      <bds-chip-tag icon="add">Chip-tag Icon</bds-chip-tag>
-    </div>
-  );
-};
-
-export const chipTagColors = () => {
-  return (
-    <div style={chipTagGroup}>
-      <bds-chip-tag color="default">default</bds-chip-tag>
-      <bds-chip-tag color="info">info</bds-chip-tag>
-      <bds-chip-tag color="success">success</bds-chip-tag>
-      <bds-chip-tag color="warning">warning</bds-chip-tag>
-      <bds-chip-tag color="danger">danger</bds-chip-tag>
-      <bds-chip-tag color="outline">outline</bds-chip-tag>
-      <bds-chip-tag color="disabled">disabled</bds-chip-tag>
-    </div>
-  );
-};
+export const FrameworkReact = () => (
+  <BdsChipTag color="default" icon="">
+    Chip-tag Default
+  </BdsChipTag>
+);

@@ -49,7 +49,7 @@
 - [bds-avatar](../avatar)
 - [bds-icon](../icon)
 - [bds-typo](../typo)
-- [bds-switch](../bds-switch)
+- [bds-switch](../switch)
 
 ### Graph
 ```mermaid

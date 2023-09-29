@@ -1,16 +1,30 @@
-import React from 'react';
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './modal.mdx';
+import { BdsButton, BdsModal, BdsModalAction, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Modal',
+  title: 'Components/Modal',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-export const DefaultModal = () => (
-  <>
-    <bds-modal open={true} close-button={true}>
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '720px';
+    el[0].style.height = '500px';
+  }
+  return (
+    <bds-modal open={args.open} outzone-close={args.outzoneClose} close-button={args.CloseButton} size={args.size}>
+      <bds-typo variant="fs-14" bold="regular">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+      </bds-typo>
       <bds-modal-action>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
           <bds-button icon="video" variant="secondary">
@@ -20,81 +34,62 @@ export const DefaultModal = () => (
         </div>
       </bds-modal-action>
     </bds-modal>
-  </>
-);
+  );
+};
 
-export const DynamicModal = () => (
-  <>
-    <bds-modal open={true} close-button={true} size="dynamic">
-      <div style={{ display: 'flex', alignItems: 'center', width: '600px' }}>
-        <div>
-          <bds-typo variant="fs-20" bold="semi-bold">
-            Leia atentamente todo o termo de uso:
-          </bds-typo>
-          <bds-typo variant="fs-14" bold="regular">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-            est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
-          </bds-typo>
-        </div>
-      </div>
-      <bds-modal-action>
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
-          <bds-button variant="secondary">Recuso</bds-button>
-          <bds-button>Aceito</bds-button>
-        </div>
-      </bds-modal-action>
-    </bds-modal>
-  </>
-);
+Properties.args = {
+  closeButton: true,
+  open: true,
+  outzoneClose: true,
+  size: 'fixed',
+};
+Properties.argTypes = {
+  closeButton: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    
+    control: 'boolean',
+  },
+  open: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    
+    control: 'boolean',
+  },
+  outzoneClose: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    
+    control: 'boolean',
+  },
+  size: {
+    table: {
+      defaultValue: { summary: 'fixed' },
+    },
+    
+    options: ['dynamic', 'fixed'],
+    control: 'select',
+  },
+};
 
-export const InformativeModal = () => (
-  <>
-    <bds-modal open={true} close-button={true}>
-      <div style={{ margin: 'auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', paddingBottom: '24px' }}>
-          <div style={{ paddingRight: '20px', width: '200px', height: '200px' }}>
-            <bds-illustration type="spots" name="ticket"></bds-illustration>
-          </div>
-          <div style={{ width: 'calc(100% - 200px)' }}>
-            <div style={{ display: 'flex', width: 'auto', marginBottom: '16px' }}>
-              <bds-typo variant="fs-20" bold="semi-bold">
-                O que é o Histórico de tickets?
-              </bds-typo>
-            </div>
-            <div style={{ display: 'flex', width: '100%', marginBottom: '16px' }}>
-              <bds-typo variant="fs-14" bold="regular">
-                É o local onde você pode acessar todo o histórico dos tickets abertos. Além disso, é possível salvar os
-                dados de atendimento em planilhas de acordo com os filtros escolhidos. Você também consegue exportar
-                documentos em PDF com a transcrição completa de cada conversa.
-              </bds-typo>
-            </div>
-          </div>
-        </div>
-      </div>
+export const Events = () => {
+  useEffect(() => {
+    const modal = document.getElementById('modal');
+    modal.addEventListener('bdsModalChanged', () => {
+      console.log('Evento bdsModalChanged funcionando');
+    });
+  });
+  return (
+    <bds-modal open={true} outzone-close={true} close-button={true} id="modal">
+      <bds-typo variant="fs-14" bold="regular">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+      </bds-typo>
       <bds-modal-action>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
           <bds-button icon="video" variant="secondary">
@@ -104,124 +99,54 @@ export const InformativeModal = () => (
         </div>
       </bds-modal-action>
     </bds-modal>
-  </>
-);
+  );
+};
 
-export const NewsModal = () => (
-  <>
-    <bds-modal open={true} close-button={true}>
-      <div style={{ display: 'flex', alignItems: 'center', height: '288px' }}>
-        <div style={{ paddingRight: '20px' }}>
-          <iframe
-            style={{ borderRadius: '12px' }}
-            width="280"
-            height="168"
-            src="https://www.youtube.com/embed/tDfDzUiG-oY"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div>
-          <bds-chip-tag color="info" style={{ marginBottom: '5px' }}>
-            Novidades!
-          </bds-chip-tag>
-          <bds-typo variant="fs-20" bold="semi-bold">
-            Oi, Usuário! conheça os BLiPspaces
-          </bds-typo>
-          <bds-typo variant="fs-14" bold="regular">
-            Workspaces são espaços de trabalho onde equipes podem se comunicar e trabalhar com projetos em comum. Vamos
-            organizar os seus BLiPspaces? 😃
-          </bds-typo>
-        </div>
-      </div>
-      <bds-modal-action>
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
-          <bds-button variant="secondary">Button label</bds-button>
-          <bds-button>Ok, entendi</bds-button>
-        </div>
-      </bds-modal-action>
-    </bds-modal>
-  </>
-);
-
-export const WarningModal = () => (
-  <>
-    <bds-modal open={true} close-button={true}>
-      <div style={{ margin: 'auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', paddingBottom: '24px' }}>
-          <div style={{ paddingRight: '20px', width: '200px', height: '200px' }}>
-            <bds-illustration type="spots" name="letter-invite-blip"></bds-illustration>
-          </div>
-          <div style={{ width: 'calc(100% - 200px)' }}>
-            <bds-typo variant="fs-14" bold="regular" style={{ marginBottom: '16px', display: 'block' }}>
-              Você está movendo os chatbots selecionados para o workspace Unilever. Para confirmar, digite Unilever no
-              campo abaixo.
-            </bds-typo>
-            <bds-banner variant="warning" button-close="true" style={{ marginBottom: '16px' }}>
-              Todos as informações aqui são sigilosas. Tenha cuidado, não divulgue está tela!
-            </bds-banner>
-            <bds-input placeholder="Digite Unilever para confirmar"></bds-input>
-          </div>
-        </div>
-      </div>
-      <div style={{ display: 'flex', position: 'absolute', left: '32px', bottom: '32px' }}>
-        <bds-typo variant="fs-10" bold="regular">
-          Conheça mais sobre os BLiPspaces aqui
+export const Methods = () => {
+  const btToggle = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.toggle();
+  };
+  return (
+    <>
+      <bds-button onClick={() => btToggle('modal')} variant="primary" size="short">Abrir Modal</bds-button>
+      <bds-modal open={true} outzone-close={true} close-button={true} id="modal">
+        <bds-typo variant="fs-14" bold="regular">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
         </bds-typo>
-      </div>
-
-      <bds-modal-action>
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
-          <bds-button variant="secondary">Button label</bds-button>
-          <bds-button>Ok, entendi</bds-button>
-        </div>
-      </bds-modal-action>
-    </bds-modal>
-  </>
-);
-
-export const InviteModal = () => (
-  <>
-    <bds-modal open={true} close-button={true}>
-      <div style={{ margin: 'auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', paddingBottom: '24px' }}>
-          <div style={{ paddingRight: '20px', width: '200px', height: '200px' }}>
-            <bds-illustration type="spots" name="letter-invite-blip"></bds-illustration>
+        <bds-modal-action>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
+            <bds-button icon="video" variant="secondary">
+              Tutorial
+            </bds-button>
+            <bds-button>Ok, entendi</bds-button>
           </div>
-          <div style={{ width: 'calc(100% - 200px)' }}>
-            <bds-typo tag="h4" variant="fs-20" bold="semi-bold">
-              Convidar pessoas
-            </bds-typo>
-            <div style={{ width: 'auto', marginBottom: '16px' }}>
-              <bds-typo variant="fs-14" bold="regular">
-                Convide os membros do seu time para participar deste workspace:
-              </bds-typo>
-            </div>
-            <div style={{ display: 'flex', gap: '8px', width: 'auto', marginBottom: '16px' }}>
-              <bds-input placeholder="E-mail dos convidados" icon="user-default"></bds-input>
-              <bds-select placeholder="Tipo de permissão">
-                <bds-select-option value="1">Visualização</bds-select-option>
-                <bds-select-option value="2">Edição</bds-select-option>
-                <bds-select-option value="3">Administrador</bds-select-option>
-              </bds-select>
-            </div>
-            <div style={{ display: 'flex', gap: '8px', width: 'auto', alignItems: 'center' }}>
-              <bds-typo variant="fs-12">ou</bds-typo>
-              <bds-button icon="info" variant="secondary">
-                Importar vários
-              </bds-button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <bds-modal-action>
+        </bds-modal-action>
+      </bds-modal>
+    </>
+  );
+};
+
+export const FrameworkReact = (args) => {
+  return (
+    <BdsModal open={args.open} outzone-close={args.outzoneClose} close-button={args.CloseButton} size={args.size}>
+      <BdsTypo variant="fs-14" bold="regular">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+      </BdsTypo>
+      <BdsModalAction>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'flex-end', width: '100%' }}>
-          <bds-button variant="secondary">Button label</bds-button>
-          <bds-button>Ok, entendi</bds-button>
+          <BdsButton icon="video" variant="secondary">
+            Tutorial
+          </BdsButton>
+          <BdsButton>Ok, entendi</BdsButton>
         </div>
-      </bds-modal-action>
-    </bds-modal>
-  </>
-);
+      </BdsModalAction>
+    </BdsModal>
+  );
+};
