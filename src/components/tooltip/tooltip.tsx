@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 
 export type TooltipPostionType =
   | 'top-center'
@@ -62,6 +62,11 @@ export class Tooltip {
   }
 
   componentWillLoad() {
+    this.textVerify = this.tooltipText ? this.tooltipText.replace(/<br>/gi, '\r\n') : '';
+  }
+
+  @Watch('tooltipText')
+  tooltipTextChanged(): void {
     this.textVerify = this.tooltipText ? this.tooltipText.replace(/<br>/gi, '\r\n') : '';
   }
 
