@@ -20,11 +20,15 @@
 
 ### Depends on
 
+- [bds-paper](../paper)
+- [bds-grid](../grid)
 - [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-card-color --> bds-paper
+  bds-card-color --> bds-grid
   bds-card-color --> bds-typo
   style bds-card-color fill:#f9f,stroke:#333,stroke-width:4px
 ```

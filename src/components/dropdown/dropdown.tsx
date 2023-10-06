@@ -123,6 +123,16 @@ export class BdsDropdown implements ComponentInterface {
     this.open = !this.open;
   }
 
+  @Method()
+  async setOpen() {
+    this.open = true;
+  }
+
+  @Method()
+  async setClose() {
+    this.open = false;
+  }
+
   @Watch('openSubMenu')
   protected openSubMenuChanged(active: boolean): void {
     if (active == false) {

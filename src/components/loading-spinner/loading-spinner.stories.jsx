@@ -1,46 +1,52 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './loading-spinner.mdx';
+import { BdsLoadingSpinner } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Loading spinner',
+  title: 'Components/Loading spinner',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const contentDark = {
-  background: '#0747a6',
-  padding: '16px'
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '200px';
+    el[0].style.textAlign = 'center';
+  }
+  return (
+    <bds-loading-spinner size={args.size} color={args.color}></bds-loading-spinner>
+  )
+}
+
+Properties.args = {
+  color: 'main',
+  size: 'standard',
 };
 
-const alignSize = {
-  display: 'flex',
-  gap: '16px',
-  height: '94vh',
-  alignItems: 'center',
-  justifyContent: 'center'
+Properties.argTypes = {
+  color: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    options: ['light', 'main'],
+    control: 'select',
+  },
+  size: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+   
+    options: ["extra-small", "small", "standard"],
+    control: 'select',
+  },
 }
-export const loadingDefault = () => (
-  <div style={alignSize}>
-    <bds-loading-spinner size="standard" color="main"></bds-loading-spinner>
-  </div>
+    
+export const FrameworkReact = () => (
+    <BdsLoadingSpinner size="standard" color="main"></BdsLoadingSpinner>
 );
 
-export const loadingSize = () => (
-    <div style={alignSize}>
-      <bds-loading-spinner size="extra-small" color="main"></bds-loading-spinner>
-      <bds-loading-spinner size="small" color="main"></bds-loading-spinner>
-      <bds-loading-spinner size="standard" color="main"></bds-loading-spinner>
-    </div>
-);
-
-export const loadingColor = () => (
-    <div style={alignSize}>
-        <bds-loading-spinner size="small" color="main"></bds-loading-spinner>
-      <bds-paper style={contentDark}>
-        <bds-loading-spinner size="small" color="light"></bds-loading-spinner>
-      </bds-paper>
-      
-    </div>
-);
 

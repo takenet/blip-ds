@@ -1,32 +1,69 @@
-import React from 'react';
-
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './checkbox.mdx';
+import { BdsCheckbox } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Checkbox',
+  title: 'Components/Checkbox',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate
+    }
   },
 };
 
-export const defaultCheckBox = () => (
-  <>
-    <bds-checkbox label="Select" name="cb1" disabled={false} checked={false}></bds-checkbox>
-  </>
+export const Properties = (args) => (
+    <bds-checkbox label={args.label} name={args.name} disabled={args.disabled} checked={args.checked}></bds-checkbox>
 );
 
-export const disabledCheckBox = () => (
-  <>
-    <bds-checkbox id="check1" label="Selected" checked disabled></bds-checkbox>
-    <bds-checkbox id="check2" label="Deselected" disabled></bds-checkbox>
-  </>
-);
 
-export const withoutLabelCheckBox = () => (
-  <>
-    <bds-checkbox id="check1" checked></bds-checkbox>
-    <bds-checkbox id="check2"></bds-checkbox>
-    <bds-checkbox id="check1" checked disabled></bds-checkbox>
-    <bds-checkbox id="check2" disabled></bds-checkbox>
-  </>
-);
+Properties.argTypes = {
+  label: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  name: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  checked: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+};
+
+Properties.args = {
+  label: 'Opção do checkbox',
+  name: 'check',
+  disabled: false,
+  checked: true
+};
+
+export const Events = () => {
+  useEffect(() => {
+    const checkbox = document.getElementById('check1');
+    checkbox.addEventListener('bdsChange', (e) => {
+      console.log('Checked: ', e.detail.checked);
+    });
+  });
+  return (
+    <bds-checkbox id="check1" label="Selected" checked></bds-checkbox>
+  )
+}
+
+export const FrameworkReact = () => {
+  return (
+    <BdsCheckbox id="check1" label="Selected" checked></BdsCheckbox>
+  )
+}

@@ -1,17 +1,21 @@
-import React from 'react';
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './toast.mdx';
+import { BdsToast } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Toast',
+  title: 'Components/Toast',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const Template = (args) => {
+export const Properties = (args) => {
   return (
     <bds-toast
       button-action={args.buttonAction}
+      button-text={args.buttonText}
       icon={args.icon}
       action-type={args.actionType}
       toast-title={args.toastTitle}
@@ -22,32 +26,126 @@ const Template = (args) => {
   );
 };
 
-const ExampleToast = (args) => {
+Properties.args = {
+  buttonAction: 'close',
+  buttonText: '',
+  icon: '',
+  actionType: 'icon',
+  toastTitle: 'Toast de teste',
+  toastText: 'Esse é um toast para testes, podendo ser modificado na tabela.',
+  variant: 'system',
+  show: true,
+};
+
+Properties.argTypes = {
+  buttonAction: {
+    table: {
+      defaultValue: { summary: 'close' },
+    },
+    options: ["close", "custom"],
+    control: 'select',
+  },
+  actionType: {
+    table: {
+      defaultValue: { summary: 'close' },
+    },
+    options: ["button", "icon"],
+    control: 'select',
+  },
+  variant: {
+    table: {
+      defaultValue: { summary: 'close' },
+    },
+    options: ["error", "notification", "redo", "success", "system", "undo", "warning"],
+    control: 'select',
+  },
+  buttonText: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  toastTitle: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  toastText: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  show: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+}
+
+export const Events = () => {
+  useEffect(() => {
+    const toast = document.getElementById('toast');
+    toast.addEventListener('toastButtonClick', () => {
+      console.log('Evento toastButtonClick funcionando');
+    });
+  });
+  return (
+    <bds-toast
+    id="toast"
+    button-action= 'close'
+    icon= 'bell'
+    action-type= 'icon'
+    toast-title= 'toast system'
+    toast-text= 'Este é um toast de sistema'
+    variant= 'system'
+    show= 'true'
+    ></bds-toast>
+  );
+};
+
+export const FrameworkReact = () => {
+  return (
+    <BdsToast
+    id="toast"
+    buttonAction= 'close'
+    icon= 'bell'
+    actionType= 'icon'
+    toastTitle= 'toast system'
+    toastText= 'Este é um toast de sistema'
+    variant= 'system'
+    show= 'true'
+    ></BdsToast>
+  );
+};
+
+export const Methods = () => {
   const showToast = async () => {
     const newtoast = document.createElement('bds-toast');
     document.body.appendChild(newtoast);
 
-    const icon = args.icon;
-    const variant = args.variant;
-    const actionType = args.actionType;
-    const toastTitle = args.toastTitle;
-    const toastText = args.toastText;
-    const buttonText = args.buttonText;
-    const duration = args.duration;
-    const buttonAction = args.buttonAction;
-    const position = args.position;
+    const icon = 'bell';
+    const variant = 'system';
+    const actionType = 'icon';
+    const toastTitle = 'Toast de teste';
+    const toastText = 'Esse é um toast para testes, podendo ser modificado na tabela.';
+    const buttonAction = 'close';
 
     await newtoast.create({
       variant,
       actionType,
       toastTitle,
-      buttonText,
       buttonAction,
       toastText,
-      variant,
-      duration,
       icon,
-      position,
     });
   };
 
@@ -56,72 +154,4 @@ const ExampleToast = (args) => {
       <bds-button onClick={() => showToast()}>Show toast</bds-button>
     </>
   );
-};
-
-export const ToastSystem = Template.bind({});
-ToastSystem.args = {
-  buttonAction: 'close',
-  icon: 'bell',
-  actionType: 'icon',
-  toastTitle: 'toast system',
-  toastText: 'Este é um toast de sistema',
-  variant: 'system',
-  show: 'true',
-};
-
-export const ToastError = Template.bind({});
-ToastError.args = {
-  buttonAction: 'close',
-  icon: 'error',
-  actionType: 'icon',
-  toastTitle: 'toast error',
-  toastText: 'Este é um toast de erro',
-  variant: 'error',
-  show: 'true',
-};
-
-export const ToastSuccess = Template.bind({});
-ToastSuccess.args = {
-  buttonAction: 'close',
-  icon: 'like',
-  actionType: 'icon',
-  toastTitle: 'toast success',
-  toastText: 'Este é um toast de successo',
-  variant: 'success',
-  show: 'true',
-};
-
-export const ToastWarning = Template.bind({});
-ToastWarning.args = {
-  buttonAction: 'close',
-  icon: 'info',
-  actionType: 'icon',
-  toastTitle: 'toast warning',
-  toastText: 'Este é um toast de aviso',
-  variant: 'warning',
-  show: 'true',
-};
-
-export const ToastNotification = Template.bind({});
-ToastNotification.args = {
-  buttonAction: 'close',
-  icon: 'bell',
-  actionType: 'icon',
-  toastTitle: 'toast notification',
-  toastText: 'Este é um toast de notificação',
-  variant: 'notification',
-  show: 'true',
-};
-
-export const CallToast = ExampleToast.bind({});
-CallToast.args = {
-  icon: 'info',
-  variant: 'warning',
-  actionType: 'button',
-  toastTitle: 'Toast Title',
-  toastText: 'Lorem ipsum',
-  buttonText: 'Cancelar',
-  duration: 0,
-  buttonAction: 'close',
-  position: 'bottom-left',
 };

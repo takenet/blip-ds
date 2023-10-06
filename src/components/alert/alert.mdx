@@ -1,0 +1,34 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import * as AlertStories from './alert.stories';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
+
+# Alert
+
+[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/alert/visao-geral-alert)
+&nbsp;|&nbsp;
+[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/alert/resumo-alert)
+&nbsp;|&nbsp;
+[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/alert/acessibilidade-alert)
+
+## Overview
+
+These are little boxes that appear to the user when they need to perform an action that has some level of criticality.
+
+<Canvas of={AlertStories.Properties} >
+</Canvas>
+
+<Meta isTemplate />
+
+The following properties that are shared by `bds-alert` and `bds-alert-header`.
+
+<Controls />
+
+## Methods
+
+Some examples of Autocomplete Events.
+
+<Source of={AlertStories.Methods} />
+
+## Build on React
+
+<Source of={AlertStories.FrameworkReact} />

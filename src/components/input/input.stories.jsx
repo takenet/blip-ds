@@ -1,87 +1,221 @@
-import React from 'react';
-
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './input.mdx';
+import { BdsInput } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Input',
+  title: 'Components/Input',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const inputStyle = {
-  width: '312px',
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '500px';
+  }
+  return (
+    <bds-input
+      placeholder={args.placeholder}
+      label={args.label}
+      disabled={args.disabled}
+      danger={args.danger}
+      icon={args.icon}
+      value={args.value}
+      type={args.type}
+      error-message={args.errorMessage}
+      helper-message={args.helperMessage}
+      min={args.min}
+      minlength={args.minlength}
+      max={args.max}
+      maxlength={args.maxlength}
+      readonly={args.readonly}
+      is-textarea={args.istextarea}
+      rows={args.rows}
+      counter-length={args.counterlength}
+    ></bds-input>
+  );
 };
 
-export const defaultInput = () => (
-  <div style={inputStyle}>
-    <bds-input
-      placeholder="nome completo"
-      label=""
-      disabled={false}
-      danger={false}
-      icon=""
-      value=""
-      type=""
-      error-message=""
-      helper-message=""
-      min={null}
-      minlength={null}
-      max={null}
-      maxlength={null}
-      readonly={false}
-    ></bds-input>
-  </div>
-);
+Properties.args = {
+  placeholder: 'nome completo',
+  label: '',
+  disabled: false,
+  danger: false,
+  icon: '',
+  value: '',
+  type: '',
+  errorMessage: '',
+  helperMessage: '',
+  min: '',
+  minlength: 0,
+  max: '',
+  maxlength: 30,
+  readonly: false,
+  istextarea: false,
+  rows: '',
+  counterlength: false,
+};
 
-export const dangerInput = () => (
-  <div style={inputStyle}>
-    <bds-input danger></bds-input>
-    <br />
-    <bds-input danger icon="email"></bds-input>
-    <br />
-    <bds-input danger label="Name"></bds-input>
-    <br />
-    <bds-input danger icon="email" label="Name"></bds-input>
-  </div>
-);
+Properties.argTypes = {
+  placeholder: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  label: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
+  },
+  danger: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'boolean',
+  },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  value: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  type: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    options: ['text', 'password', 'email', 'number', 'phonenumber'],
+    control: 'select',
+  },
+  errorMessage: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  helperMessage: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  min: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  maxlength: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'number',
+  },
+  max: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  maxlength: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'number',
+  },
+  readonly: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
+  },
+  istextarea: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
+  },
+  rows: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  counterlength: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
+  },
+};
 
-export const disabledInput = () => (
-  <div style={inputStyle}>
-    <bds-input disabled></bds-input>
-    <br />
-    <bds-input disabled value="Action descripition"></bds-input>
-    <br />
-    <bds-input disabled icon="email" value="Action descripition"></bds-input>
-    <br />
-    <bds-input disabled label="Action" value="Action descripition"></bds-input>
-    <br />
-    <bds-input disabled icon="email" label="Action" value="Action descripition"></bds-input>
-  </div>
-);
+export const Events = () => {
+  useEffect(() => {
+    const input = document.getElementById('input');
+    input.addEventListener('bdsOnBlur', () => {
+      console.log('Evento Blur funcionando');
+    });
+    input.addEventListener('bdsKeyDownBackspace', () => {
+      console.log('Evento Cancel funcionando');
+    });
+    input.addEventListener('bdsChange', () => {
+      console.log('Evento Change funcionando');
+    });
+    input.addEventListener('bdsFocus', () => {
+      console.log('Evento Focus funcionando');
+    });
+    input.addEventListener('bdsInput', () => {
+      console.log('Evento Input funcionando');
+    });
+    input.addEventListener('bdsPatternValidation', () => {
+      console.log('Evento Selected Change funcionando');
+    });
+    input.addEventListener('bdsSubmit', () => {
+      console.log('Evento Selected Change funcionando');
+    });
+  });
+  return (
+    <bds-input id="input" label="label" icon="email" value="" disabled={false} placeholder="texto aqui">
+    </bds-input>
+  );
+};
 
-export const counterInput = () => (
-  <div style={inputStyle}>
-    <bds-input maxlength={30} counter-length></bds-input>
-    <br />
-    <bds-input maxlength={30} counter-length icon="email"></bds-input>
-    <br />
-    <bds-input maxlength={30} counter-length label="Name"></bds-input>
-    <br />
-    <bds-input maxlength={30} counter-length icon="email" label="Name"></bds-input>
-  </div>
-);
-
-export const inputTextarea = () => (
-  <div style={inputStyle}>
-    <bds-input is-textarea rows="2"></bds-input>
-    <br />
-    <bds-input is-textarea rows="2" icon="email"></bds-input>
-    <br />
-    <bds-input is-textarea rows="2" danger></bds-input>
-    <br />
-    <bds-input is-textarea rows="2" disabled></bds-input>
-    <br />
-    <bds-input is-textarea rows="4"></bds-input>
-  </div>
+export const FrameworkReact = () => (
+  <BdsInput
+    placeholder="placeholder"
+    label="label do input"
+  ></BdsInput>
 );

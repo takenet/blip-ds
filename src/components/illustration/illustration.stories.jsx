@@ -1,11 +1,13 @@
 import React from 'react';
-
-import readme from './readme.md';
+import { BdsIllustration } from '../../../blip-ds-react/dist/components';
+import DocumentationTemplate from './illustration.mdx';
 
 export default {
-  title: 'illustration',
+  title: 'Components/illustration',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
@@ -368,9 +370,53 @@ const illustrationStyles = {
   textAlign: 'center',
 };
 
+const illustrationProps = {
+  width: '250px',
+  margin: 'auto',
+};
+
 const illustrationWrapperStyles = {
   display: 'flex',
   flexWrap: 'wrap',
+};
+
+export const Properties = (args) => {
+  return <bds-illustration style={illustrationProps} type={args.type} name={args.name}></bds-illustration>;
+};
+
+Properties.args = {
+  type: 'default',
+  name: 'agent-1',
+};
+
+Properties.argTypes = {
+  type: {
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+    options: [
+      'default',
+      'screens',
+      'blip-solid',
+      'blip-outline',
+      'logo-integration',
+      'brand',
+      'segmented',
+      'smartphone',
+      'spots',
+    ],
+    control: 'select',
+  },
+  name: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+};
+
+export const FrameworkReact = (args) => {
+  return <BdsIllustration style={illustrationProps} type="default" name="agent-1"></BdsIllustration>;
 };
 
 export const IllustrationsDefault = () => {
