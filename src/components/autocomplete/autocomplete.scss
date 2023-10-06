@@ -343,6 +343,15 @@ $select-options-max-height: 250px;
 
     box-shadow: 0px 2px 12px $shadow-drop;
 
+    
+    .load-spinner {
+      background-color: $color-surface-1;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     &--open {
       opacity: 1;
       pointer-events: auto;

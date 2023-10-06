@@ -56,8 +56,6 @@ graph TD;
   bds-select --> bds-icon
   bds-select --> bds-typo
   bds-select --> bds-select-option
-  bds-select-option --> bds-grid
-  bds-select-option --> bds-loading-spinner
   bds-select-option --> bds-typo
   style bds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

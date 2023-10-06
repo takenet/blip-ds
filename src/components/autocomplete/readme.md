@@ -15,6 +15,7 @@
 | `disabled`         | `disabled`            | Disabled input.                                                                                                                                                                                                                                                                               | `boolean`                        | `false`     |
 | `icon`             | `icon`                | used for add icon in input left. Uses the bds-icon component.                                                                                                                                                                                                                                 | `string`                         | `''`        |
 | `label`            | `label`               | label in input, with he the input size increases.                                                                                                                                                                                                                                             | `string`                         | `''`        |
+| `loading`          | `loading`             | Is Loading, is the prop to enable that the component is loading.                                                                                                                                                                                                                              | `boolean`                        | `false`     |
 | `options`          | `options`             | The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular. | `AutocompleteOption[] \| string` | `undefined` |
 | `optionsPosition`  | `options-position`    | Set the placement of the options menu. Can be 'bottom' or 'top'.                                                                                                                                                                                                                              | `"auto" \| "bottom" \| "top"`    | `'auto'`    |
 | `placeholder`      | `placeholder`         | Placeholder for native input element.                                                                                                                                                                                                                                                         | `string`                         | `''`        |
@@ -41,6 +42,7 @@
 
 - [bds-icon](../icon)
 - [bds-typo](../typo)
+- [bds-loading-spinner](../loading-spinner)
 - [bds-select-option](../select-option)
 
 ### Graph
@@ -48,9 +50,8 @@
 graph TD;
   bds-autocomplete --> bds-icon
   bds-autocomplete --> bds-typo
+  bds-autocomplete --> bds-loading-spinner
   bds-autocomplete --> bds-select-option
-  bds-select-option --> bds-grid
-  bds-select-option --> bds-loading-spinner
   bds-select-option --> bds-typo
   style bds-autocomplete fill:#f9f,stroke:#333,stroke-width:4px
 ```

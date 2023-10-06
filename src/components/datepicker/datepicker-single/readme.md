@@ -57,8 +57,6 @@ graph TD;
   bds-datepicker-single --> bds-typo
   bds-datepicker-single --> bds-icon
   bds-datepicker-single --> bds-select-option
-  bds-select-option --> bds-grid
-  bds-select-option --> bds-loading-spinner
   bds-select-option --> bds-typo
   bds-datepicker --> bds-datepicker-single
   style bds-datepicker-single fill:#f9f,stroke:#333,stroke-width:4px
