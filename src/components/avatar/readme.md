@@ -35,6 +35,7 @@
  - [bds-data-table](../table)
  - [bds-list-item](../list)
  - [bds-menu-exibition](../menu/menu-exibition)
+ - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -52,6 +53,7 @@ graph TD;
   bds-data-table --> bds-avatar
   bds-list-item --> bds-avatar
   bds-menu-exibition --> bds-avatar
+  bds-test-component --> bds-avatar
   style bds-avatar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

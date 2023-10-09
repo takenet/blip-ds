@@ -34,6 +34,7 @@
   --color-extended-gray: #666666;
   --color-hover: rgba(0, 0, 0, 0.08);
   --color-pressed: rgba(0, 0, 0, 0.16);
+  --color-shadow-1: rgba(0, 0, 0, 0.16);
 }
 
 :host(.theme--dark) {
@@ -73,6 +74,7 @@
   --color-extended-gray: #666666;
   --color-hover: rgba(255, 255, 255, 0.16);
   --color-pressed: rgba(255, 255, 255, 0.08);
+  --color-shadow-1: rgba(0, 0, 0, 0.24);
 }
 
 :host(.theme--high-contrast) {
@@ -110,4 +112,5 @@
   --color-extended-gray: #666666;
   --color-hover: rgba(0, 0, 0, 0.08);
   --color-pressed: rgba(0, 0, 0, 0.16);
+  --color-shadow-1: rgba(0, 0, 0, 0.16);
 }

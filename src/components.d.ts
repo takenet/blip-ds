@@ -16,6 +16,8 @@ import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/b
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
+import { justifyContent } from "./components/card/card-footer/card-footer";
+import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { Color, Size } from "./components/chip-clickable/chip-clickable";
 import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -26,7 +28,7 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
-import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
+import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
@@ -41,7 +43,7 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
-import { justifyContent as justifyContent1, navbarBackground, orientation } from "./components/navbar/navbar";
+import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
@@ -343,6 +345,22 @@ export namespace Components {
          */
         "variant"?: IconButtonVariant;
     }
+    interface BdsCard {
+        /**
+          * Prop for set the width of the component.
+         */
+        "clickable"?: boolean;
+        /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
+          * Prop for set the width of the component.
+         */
+        "width"?: string;
+    }
+    interface BdsCardBody {
+    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -364,6 +382,27 @@ export namespace Components {
           * Specifies variabel sass color, _variables.scss.
          */
         "variable": string;
+    }
+    interface BdsCardFooter {
+        "align"?: justifyContent;
+    }
+    interface BdsCardHeader {
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
+         */
+        "align"?: justifyContent;
+    }
+    interface BdsCardSubtitle {
+        /**
+          * Set the card title.
+         */
+        "text"?: string;
+    }
+    interface BdsCardTitle {
+        /**
+          * Set the card title.
+         */
+        "text"?: string;
     }
     interface BdsCheckbox {
         /**
@@ -721,7 +760,7 @@ export namespace Components {
         "flexWrap"?: flexWrap;
         "gap"?: gap;
         "height"?: string;
-        "justifyContent"?: justifyContent;
+        "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
         "margin"?: margin;
@@ -2481,11 +2520,47 @@ declare global {
         prototype: HTMLBdsButtonIconElement;
         new (): HTMLBdsButtonIconElement;
     };
+    interface HTMLBdsCardElement extends Components.BdsCard, HTMLStencilElement {
+    }
+    var HTMLBdsCardElement: {
+        prototype: HTMLBdsCardElement;
+        new (): HTMLBdsCardElement;
+    };
+    interface HTMLBdsCardBodyElement extends Components.BdsCardBody, HTMLStencilElement {
+    }
+    var HTMLBdsCardBodyElement: {
+        prototype: HTMLBdsCardBodyElement;
+        new (): HTMLBdsCardBodyElement;
+    };
     interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
     }
     var HTMLBdsCardColorElement: {
         prototype: HTMLBdsCardColorElement;
         new (): HTMLBdsCardColorElement;
+    };
+    interface HTMLBdsCardFooterElement extends Components.BdsCardFooter, HTMLStencilElement {
+    }
+    var HTMLBdsCardFooterElement: {
+        prototype: HTMLBdsCardFooterElement;
+        new (): HTMLBdsCardFooterElement;
+    };
+    interface HTMLBdsCardHeaderElement extends Components.BdsCardHeader, HTMLStencilElement {
+    }
+    var HTMLBdsCardHeaderElement: {
+        prototype: HTMLBdsCardHeaderElement;
+        new (): HTMLBdsCardHeaderElement;
+    };
+    interface HTMLBdsCardSubtitleElement extends Components.BdsCardSubtitle, HTMLStencilElement {
+    }
+    var HTMLBdsCardSubtitleElement: {
+        prototype: HTMLBdsCardSubtitleElement;
+        new (): HTMLBdsCardSubtitleElement;
+    };
+    interface HTMLBdsCardTitleElement extends Components.BdsCardTitle, HTMLStencilElement {
+    }
+    var HTMLBdsCardTitleElement: {
+        prototype: HTMLBdsCardTitleElement;
+        new (): HTMLBdsCardTitleElement;
     };
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
     }
@@ -2918,7 +2993,13 @@ declare global {
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
+        "bds-card": HTMLBdsCardElement;
+        "bds-card-body": HTMLBdsCardBodyElement;
         "bds-card-color": HTMLBdsCardColorElement;
+        "bds-card-footer": HTMLBdsCardFooterElement;
+        "bds-card-header": HTMLBdsCardHeaderElement;
+        "bds-card-subtitle": HTMLBdsCardSubtitleElement;
+        "bds-card-title": HTMLBdsCardTitleElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-chip-clickable": HTMLBdsChipClickableElement;
@@ -3322,6 +3403,22 @@ declare namespace LocalJSX {
          */
         "variant"?: IconButtonVariant;
     }
+    interface BdsCard {
+        /**
+          * Prop for set the width of the component.
+         */
+        "clickable"?: boolean;
+        /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
+          * Prop for set the width of the component.
+         */
+        "width"?: string;
+    }
+    interface BdsCardBody {
+    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -3343,6 +3440,27 @@ declare namespace LocalJSX {
           * Specifies variabel sass color, _variables.scss.
          */
         "variable": string;
+    }
+    interface BdsCardFooter {
+        "align"?: justifyContent;
+    }
+    interface BdsCardHeader {
+        /**
+          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
+         */
+        "align"?: justifyContent;
+    }
+    interface BdsCardSubtitle {
+        /**
+          * Set the card title.
+         */
+        "text"?: string;
+    }
+    interface BdsCardTitle {
+        /**
+          * Set the card title.
+         */
+        "text"?: string;
     }
     interface BdsCheckbox {
         /**
@@ -3735,7 +3853,7 @@ declare namespace LocalJSX {
         "flexWrap"?: flexWrap;
         "gap"?: gap;
         "height"?: string;
-        "justifyContent"?: justifyContent;
+        "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
         "margin"?: margin;
@@ -5407,7 +5525,13 @@ declare namespace LocalJSX {
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
+        "bds-card": BdsCard;
+        "bds-card-body": BdsCardBody;
         "bds-card-color": BdsCardColor;
+        "bds-card-footer": BdsCardFooter;
+        "bds-card-header": BdsCardHeader;
+        "bds-card-subtitle": BdsCardSubtitle;
+        "bds-card-title": BdsCardTitle;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-chip-clickable": BdsChipClickable;
@@ -5499,7 +5623,13 @@ declare module "@stencil/core" {
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
+            "bds-card": LocalJSX.BdsCard & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
+            "bds-card-body": LocalJSX.BdsCardBody & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
+            "bds-card-footer": LocalJSX.BdsCardFooter & JSXBase.HTMLAttributes<HTMLBdsCardFooterElement>;
+            "bds-card-header": LocalJSX.BdsCardHeader & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
+            "bds-card-subtitle": LocalJSX.BdsCardSubtitle & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
+            "bds-card-title": LocalJSX.BdsCardTitle & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;

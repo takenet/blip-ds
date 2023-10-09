@@ -4,6 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Blip DS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;1,200;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
     <script type="module" src="/build/blip-ds.esm.js"></script>
     <script nomodule src="/build/blip-ds.js"></script>
   </head>
@@ -13,12 +19,60 @@
       /* background: var(--color-background-2, #0a0f1a);  */
       margin: 0;
     }
+    .illustration {
+      width: 150px;
+    }
   </style>
 
   <body>
     Versão blip-ds 1.270.0
     <bds-test-component></bds-test-component>
+
+    <bds-grid padding="8" height="100vh" gap="4">
+      <bds-card width="350px">
+        <bds-card-header>
+          <bds-avatar name="Willian Lomeu" size="small"></bds-avatar>
+          <bds-grid direction="column">
+            <bds-card-title text="@TakeBlip"></bds-card-title>
+            <bds-card-subtitle text="10/10/21 11:20 | atualizado há 10 min"></bds-card-subtitle>
+          </bds-grid>
+          <bds-button-icon size="small" variant="secondary" icon="more-options-vertical"></bds-button-icon>
+        </bds-card-header>
+        <bds-card-body>
+          <bds-grid direction="column" align-items="center" gap="2">
+            <bds-illustration class="illustration" name="agent-1" type="default"></bds-illustration>
+            <bds-typo variant="fs-14"
+              >Saiba quem são os contatos mais vezes interagiram com seu chatbot no período escolhido. Saiba quem são os
+              contatos mais vezes interagiram com seu chatbot no período escolhido</bds-typo
+            >
+          </bds-grid>
+        </bds-card-body>
+        <bds-card-footer>
+          <bds-button size="standard" type="button" type-icon="icon" variant="tertiary"> Botão secundário </bds-button>
+          <bds-button size="standard" type="button" type-icon="icon" variant="primary"> Botão Primário </bds-button>
+        </bds-card-footer>
+      </bds-card>
+
+      <bds-card clickable="true">
+        <bds-card-body>
+          <bds-grid direction="column" xxs="12" gap="1" justify-content="center" align-items="center">
+            <bds-icon type="logo" size="brand" name="blip-chat"></bds-icon>
+            <bds-typo bold="bold">Blip Chat</bds-typo>
+          </bds-grid>
+        </bds-card-body>
+        <bds-card-footer>
+          <bds-button size="standard" type="button" type-icon="icon" variant="tertiary"> Botão Primário </bds-button>
+        </bds-card-footer>
+      </bds-card>
+    </bds-grid>
+
+    
   </body>
 
-  <script></script>
+  <script>
+    // const openSidebar = async (id) => {
+    //   const sb = document.getElementById(id);
+    //   sb.isOpen = true;
+    // };
+  </script>
 </html>
