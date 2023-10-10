@@ -7,6 +7,9 @@ export type justifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-betwe
   shadow: true,
 })
 export class CardFooter implements ComponentInterface {
+  /**
+   * Prop for internal elements alignment. Will follow the same values of css.
+   */
   @Prop() align?: justifyContent = 'flex-end';
   render() {
     return (

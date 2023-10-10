@@ -2295,6 +2295,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsCardElement;
+}
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCheckboxElement;
@@ -3412,6 +3416,7 @@ declare namespace LocalJSX {
           * Prop for set the height of the component.
          */
         "height"?: string;
+        "onCardClick"?: (event: BdsCardCustomEvent<any>) => void;
         /**
           * Prop for set the width of the component.
          */

@@ -6,7 +6,7 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class CardSubtitle {
   /**
-   *Set the card title.
+   *Set the card subtitle.
    */
   @Prop() text?: string;
   render() {

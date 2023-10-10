@@ -18,14 +18,16 @@ export class Card implements ComponentInterface {
    */
   @Prop() width?: string = 'fit-content';
   /**
-   * Prop for set the width of the component.
+   * If the prop is true, the component will be clickable.
    */
   @Prop() clickable?: boolean = false;
 
   @State() isHovered = false;
   @State() isPressed = false;
   @State() elevation: elevationType = 'primary';
-
+  /**
+   * This event will be dispatch when click on the component.
+   */
   @Event() cardClick: EventEmitter;
 
   @Element() element: HTMLElement;

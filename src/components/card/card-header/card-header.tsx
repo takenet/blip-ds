@@ -9,8 +9,7 @@ export type justifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-betwe
 })
 export class CardHeader implements ComponentInterface {
   /**
-   * Variant. Entered as one of the variant. Can be one of:
-   * 'system', 'error', 'warning', 'delete';
+   * Prop for internal elements alignment. Will follow the same values of css.
    */
   @Prop() align?: justifyContent = 'space-between';
 
