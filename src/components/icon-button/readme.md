@@ -27,7 +27,6 @@
  - [bds-sidebar](../sidebar)
  - [bds-tab-group](../tabs)
  - [bds-tabs](../tabs/tab (depreciated))
- - [bds-test-component](../test-component)
  - [bds-toast](../toast)
  - [bds-upload](../upload)
 
@@ -46,7 +45,6 @@ graph TD;
   bds-sidebar --> bds-button-icon
   bds-tab-group --> bds-button-icon
   bds-tabs --> bds-button-icon
-  bds-test-component --> bds-button-icon
   bds-toast --> bds-button-icon
   bds-upload --> bds-button-icon
   style bds-button-icon fill:#f9f,stroke:#333,stroke-width:4px

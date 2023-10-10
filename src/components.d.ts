@@ -347,7 +347,7 @@ export namespace Components {
     }
     interface BdsCard {
         /**
-          * Prop for set the width of the component.
+          * If the prop is true, the component will be clickable.
          */
         "clickable"?: boolean;
         /**
@@ -384,17 +384,20 @@ export namespace Components {
         "variable": string;
     }
     interface BdsCardFooter {
+        /**
+          * Prop for internal elements alignment. Will follow the same values of css.
+         */
         "align"?: justifyContent;
     }
     interface BdsCardHeader {
         /**
-          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
+          * Prop for internal elements alignment. Will follow the same values of css.
          */
         "align"?: justifyContent;
     }
     interface BdsCardSubtitle {
         /**
-          * Set the card title.
+          * Set the card subtitle.
          */
         "text"?: string;
     }
@@ -3409,14 +3412,17 @@ declare namespace LocalJSX {
     }
     interface BdsCard {
         /**
-          * Prop for set the width of the component.
+          * If the prop is true, the component will be clickable.
          */
         "clickable"?: boolean;
         /**
           * Prop for set the height of the component.
          */
         "height"?: string;
-        "onCardClick"?: (event: BdsCardCustomEvent<any>) => void;
+        /**
+          * This event will be dispatch when click on the component.
+         */
+        "onBdsClick"?: (event: BdsCardCustomEvent<any>) => void;
         /**
           * Prop for set the width of the component.
          */
@@ -3447,17 +3453,20 @@ declare namespace LocalJSX {
         "variable": string;
     }
     interface BdsCardFooter {
+        /**
+          * Prop for internal elements alignment. Will follow the same values of css.
+         */
         "align"?: justifyContent;
     }
     interface BdsCardHeader {
         /**
-          * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
+          * Prop for internal elements alignment. Will follow the same values of css.
          */
         "align"?: justifyContent;
     }
     interface BdsCardSubtitle {
         /**
-          * Set the card title.
+          * Set the card subtitle.
          */
         "text"?: string;
     }

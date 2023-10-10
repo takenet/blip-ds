@@ -7,18 +7,21 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                               | Type      | Default         |
-| ----------- | ----------- | ----------------------------------------- | --------- | --------------- |
-| `clickable` | `clickable` | Prop for set the width of the component.  | `boolean` | `false`         |
-| `height`    | `height`    | Prop for set the height of the component. | `string`  | `null`          |
-| `width`     | `width`     | Prop for set the width of the component.  | `string`  | `'fit-content'` |
+| Property    | Attribute   | Description                                           | Type      | Default         |
+| ----------- | ----------- | ----------------------------------------------------- | --------- | --------------- |
+| `clickable` | `clickable` | If the prop is true, the component will be clickable. | `boolean` | `false`         |
+| `height`    | `height`    | Prop for set the height of the component.             | `string`  | `null`          |
+| `width`     | `width`     | Prop for set the width of the component.              | `string`  | `'fit-content'` |
+
+
+## Events
+
+| Event      | Description                                              | Type               |
+| ---------- | -------------------------------------------------------- | ------------------ |
+| `bdsClick` | This event will be dispatch when click on the component. | `CustomEvent<any>` |
 
 
 ## Dependencies
-
-### Used by
-
- - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -30,7 +33,6 @@
 graph TD;
   bds-card --> bds-paper
   bds-card --> bds-grid
-  bds-test-component --> bds-card
   style bds-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -7,10 +7,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../../test-component)
-
 ### Depends on
 
 - [bds-grid](../../grid)
@@ -19,7 +15,6 @@
 ```mermaid
 graph TD;
   bds-card-body --> bds-grid
-  bds-test-component --> bds-card-body
   style bds-card-body fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

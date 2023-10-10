@@ -28,7 +28,7 @@ export class Card implements ComponentInterface {
   /**
    * This event will be dispatch when click on the component.
    */
-  @Event() cardClick: EventEmitter;
+  @Event() bdsClick: EventEmitter;
 
   @Element() element: HTMLElement;
 
@@ -48,7 +48,7 @@ export class Card implements ComponentInterface {
 
       this.cardElement.addEventListener('mousedown', () => {
         this.isPressed = true;
-        this.cardClick.emit();
+        this.bdsClick.emit();
       });
 
       document.addEventListener('mouseup', () => {
