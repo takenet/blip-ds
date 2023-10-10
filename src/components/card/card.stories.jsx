@@ -21,7 +21,7 @@ export const Properties = (args) => {
   return (
   <bds-card clickable={args.clickable} width={args.width} height={args.height}>
     <bds-card-header align={args.alignHeader}>
-      <bds-avatar name="Willian Lomeu" size="small"></bds-avatar>
+      <bds-avatar name="Blip" size="small"></bds-avatar>
       <bds-grid direction="column">
         <bds-card-title text="@TakeBlip"></bds-card-title>
         <bds-card-subtitle text="10/10/21 11:20 | atualizado há 10 min"></bds-card-subtitle>
