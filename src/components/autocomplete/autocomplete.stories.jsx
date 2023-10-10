@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './autocomplete.mdx';
 import { BdsAutocomplete, BdsSelectOption } from '../../../blip-ds-react/dist/components';
 
@@ -26,6 +26,8 @@ export const Properties = (args) => {
       value={args.value}
       disabled={args.disabled}
       placeholder={args.placeholder}
+      selection-type={args.selectionType}
+      selection-title={args.selectionTitle}
       options-position="bottom"
     >
       <bds-select-option value="1">Millie Bobby</bds-select-option>
@@ -59,6 +61,21 @@ Properties.argTypes = {
     description: 'Defina se o componente vai estar desabilitado.',
     control: 'boolean',
   },
+  selectionType: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o tipo de seleção dos itens no componente.',
+    options: ['single', 'multiple'],
+    control: 'select',
+  },
+  selectionTitle: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o titulo para a multi-seleção.',
+    control: 'string',
+  },
 };
 
 Properties.args = {
@@ -66,11 +83,17 @@ Properties.args = {
   icon: '',
   disabled: false,
   placeholder: 'Selecione uma opção',
+  selectionType: 'single',
+  selectionTitle: 'Selection Title',
 };
 
 export const Events = () => {
   useEffect(() => {
     const autocomplete = document.getElementById('autocomplete');
+    const autocompleteMultiple = document.getElementById('autocomplete-multiple');
+    autocompleteMultiple.addEventListener('bdsMultiselectedChange', () => {
+      console.log('Evento Multiselected Change funcionando');
+    });
     autocomplete.addEventListener('bdsBlur', () => {
       console.log('Evento Blur funcionando');
     });
@@ -91,14 +114,33 @@ export const Events = () => {
     });
   });
   return (
-    <bds-autocomplete id="autocomplete" label="label" icon="email" value="" disabled={false} placeholder="Select">
-      <bds-select-option value="1">Millie Bobby</bds-select-option>
-      <bds-select-option value="2">Finn Wolfhard</bds-select-option>
-      <bds-select-option value="3">David Harbour</bds-select-option>
-      <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
-      <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
-      <bds-select-option value="6">Noah Schnapp</bds-select-option>
-    </bds-autocomplete>
+    <>
+      <bds-autocomplete id="autocomplete" label="label" icon="email" value="" disabled={false} placeholder="Select">
+        <bds-select-option value="1">Millie Bobby</bds-select-option>
+        <bds-select-option value="2">Finn Wolfhard</bds-select-option>
+        <bds-select-option value="3">David Harbour</bds-select-option>
+        <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
+        <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
+        <bds-select-option value="6">Noah Schnapp</bds-select-option>
+      </bds-autocomplete>
+      <bds-autocomplete
+        id="autocomplete-multiple"
+        selection-type="multiple"
+        selection-title="Selection Title"
+        label="label"
+        icon="email"
+        value=""
+        disabled={false}
+        placeholder="Select"
+      >
+        <bds-select-option value="1">Millie Bobby</bds-select-option>
+        <bds-select-option value="2">Finn Wolfhard</bds-select-option>
+        <bds-select-option value="3">David Harbour</bds-select-option>
+        <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
+        <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
+        <bds-select-option value="6">Noah Schnapp</bds-select-option>
+      </bds-autocomplete>
+    </>
   );
 };
 

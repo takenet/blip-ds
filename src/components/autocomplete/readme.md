@@ -21,19 +21,22 @@
 | `placeholder`      | `placeholder`         | Placeholder for native input element.                                                                                                                                                                                                                                                         | `string`                         | `''`        |
 | `searchOnlyTitle`  | `search-only-title`   | Search only the title property                                                                                                                                                                                                                                                                | `boolean`                        | `true`      |
 | `selected`         | --                    | the item selected.                                                                                                                                                                                                                                                                            | `HTMLBdsSelectOptionElement`     | `undefined` |
+| `selectionTitle`   | `selection-title`     | Selection Title, Prop to enable title to select.                                                                                                                                                                                                                                              | `string`                         | `''`        |
+| `selectionType`    | `selection-type`      | Multiselect, Prop to enable multi selections.                                                                                                                                                                                                                                                 | `"multiple" \| "single"`         | `'single'`  |
 | `value`            | `value`               | the value of the select.                                                                                                                                                                                                                                                                      | `string`                         | `undefined` |
 
 
 ## Events
 
-| Event               | Description                                  | Type                                                 |
-| ------------------- | -------------------------------------------- | ---------------------------------------------------- |
-| `bdsBlur`           | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
-| `bdsCancel`         | Emitted when the selection is cancelled.     | `CustomEvent<void>`                                  |
-| `bdsChange`         | Emitted when the value has changed.          | `CustomEvent<AutocompleteChangeEventDetail>`         |
-| `bdsFocus`          | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
-| `bdsInput`          | Emitted when the input has changed.          | `CustomEvent<KeyboardEvent>`                         |
-| `bdsSelectedChange` | Emitted when the selected value has changed. | `CustomEvent<AutocompleteSelectedChangeEventDetail>` |
+| Event                    | Description                                  | Type                                                 |
+| ------------------------ | -------------------------------------------- | ---------------------------------------------------- |
+| `bdsBlur`                | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
+| `bdsCancel`              | Emitted when the selection is cancelled.     | `CustomEvent<void>`                                  |
+| `bdsChange`              | Emitted when the value has changed.          | `CustomEvent<AutocompleteChangeEventDetail>`         |
+| `bdsFocus`               | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
+| `bdsInput`               | Emitted when the input has changed.          | `CustomEvent<KeyboardEvent>`                         |
+| `bdsMultiselectedChange` | Emitted when the selected value has changed. | `CustomEvent<any>`                                   |
+| `bdsSelectedChange`      | Emitted when the selected value has changed. | `CustomEvent<AutocompleteSelectedChangeEventDetail>` |
 
 
 ## Dependencies
@@ -43,6 +46,7 @@
 - [bds-icon](../icon)
 - [bds-typo](../typo)
 - [bds-loading-spinner](../loading-spinner)
+- [bds-checkbox](../checkbox)
 - [bds-select-option](../select-option)
 
 ### Graph
@@ -51,8 +55,12 @@ graph TD;
   bds-autocomplete --> bds-icon
   bds-autocomplete --> bds-typo
   bds-autocomplete --> bds-loading-spinner
+  bds-autocomplete --> bds-checkbox
   bds-autocomplete --> bds-select-option
+  bds-checkbox --> bds-icon
+  bds-checkbox --> bds-typo
   bds-select-option --> bds-typo
+  bds-select-option --> bds-checkbox
   style bds-autocomplete fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

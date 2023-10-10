@@ -58,6 +58,9 @@ graph TD;
   bds-datepicker-single --> bds-icon
   bds-datepicker-single --> bds-select-option
   bds-select-option --> bds-typo
+  bds-select-option --> bds-checkbox
+  bds-checkbox --> bds-icon
+  bds-checkbox --> bds-typo
   bds-datepicker --> bds-datepicker-single
   style bds-datepicker-single fill:#f9f,stroke:#333,stroke-width:4px
 ```

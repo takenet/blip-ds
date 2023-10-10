@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
+import { SelectionType } from "./components/autocomplete/autocomplete";
 import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
@@ -45,6 +46,7 @@ import { justifyContent as justifyContent1, navbarBackground, orientation } from
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
+import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { SwitchSize } from "./components/switch/switch";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
@@ -178,6 +180,14 @@ export namespace Components {
           * the item selected.
          */
         "selected"?: HTMLBdsSelectOptionElement | null;
+        /**
+          * Selection Title, Prop to enable title to select.
+         */
+        "selectionTitle"?: string;
+        /**
+          * Multiselect, Prop to enable multi selections.
+         */
+        "selectionType"?: SelectionType;
         /**
           * the value of the select.
          */
@@ -390,6 +400,7 @@ export namespace Components {
          */
         "name": string;
         "refer": string;
+        "toggle": () => Promise<void>;
     }
     interface BdsChip {
         /**
@@ -1826,6 +1837,10 @@ export namespace Components {
          */
         "bulkOption"?: string;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -1841,6 +1856,7 @@ export namespace Components {
           * Add state danger on input, use for use feedback.
          */
         "invisible"?: boolean;
+        "markOff": () => Promise<void>;
         /**
           * The text value of the option.
          */
@@ -1857,6 +1873,12 @@ export namespace Components {
           * If set, a title will be shown under the text
          */
         "titleText": string;
+        "toMark": () => Promise<void>;
+        "toggle": () => Promise<void>;
+        /**
+          * Type Option. Used toselect type of item list.
+         */
+        "typeOption"?: TypeOption;
         "value": any;
     }
     interface BdsSidebar {
@@ -3123,6 +3145,10 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selected value has changed.
          */
+        "onBdsMultiselectedChange"?: (event: BdsAutocompleteCustomEvent<any>) => void;
+        /**
+          * Emitted when the selected value has changed.
+         */
         "onBdsSelectedChange"?: (event: BdsAutocompleteCustomEvent<AutocompleteSelectedChangeEventDetail>) => void;
         /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
@@ -3144,6 +3170,14 @@ declare namespace LocalJSX {
           * the item selected.
          */
         "selected"?: HTMLBdsSelectOptionElement | null;
+        /**
+          * Selection Title, Prop to enable title to select.
+         */
+        "selectionTitle"?: string;
+        /**
+          * Multiselect, Prop to enable multi selections.
+         */
+        "selectionType"?: SelectionType;
         /**
           * the value of the select.
          */
@@ -5000,6 +5034,10 @@ declare namespace LocalJSX {
          */
         "bulkOption"?: string;
         /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -5015,6 +5053,7 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "invisible"?: boolean;
+        "onOptionChecked"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         /**
           * The text value of the option.
@@ -5032,6 +5071,10 @@ declare namespace LocalJSX {
           * If set, a title will be shown under the text
          */
         "titleText"?: string;
+        /**
+          * Type Option. Used toselect type of item list.
+         */
+        "typeOption"?: TypeOption;
         "value": any;
     }
     interface BdsSidebar {

@@ -142,6 +142,9 @@ graph TD;
   bds-avatar --> bds-icon
   bds-tooltip --> bds-typo
   bds-select-option --> bds-typo
+  bds-select-option --> bds-checkbox
+  bds-checkbox --> bds-icon
+  bds-checkbox --> bds-typo
   style bds-select-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

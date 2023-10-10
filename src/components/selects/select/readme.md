@@ -57,6 +57,9 @@ graph TD;
   bds-select --> bds-typo
   bds-select --> bds-select-option
   bds-select-option --> bds-typo
+  bds-select-option --> bds-checkbox
+  bds-checkbox --> bds-icon
+  bds-checkbox --> bds-typo
   style bds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

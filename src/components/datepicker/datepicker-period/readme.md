@@ -61,6 +61,9 @@ graph TD;
   bds-datepicker-period --> bds-icon
   bds-datepicker-period --> bds-select-option
   bds-select-option --> bds-typo
+  bds-select-option --> bds-checkbox
+  bds-checkbox --> bds-icon
+  bds-checkbox --> bds-typo
   bds-datepicker --> bds-datepicker-period
   style bds-datepicker-period fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -1,12 +1,18 @@
-import { Component, h, Prop, EventEmitter, Event } from '@stencil/core';
+import { Component, h, Element, Prop, EventEmitter, Event, Method } from '@stencil/core';
 import { Keyboard } from '../../utils/enums';
+
+export type TypeOption = 'checkbox' | 'default';
 
 @Component({
   tag: 'bds-select-option',
   styleUrl: 'select-option.scss',
-  scoped: true,
+  shadow: true,
 })
 export class SelectOption {
+  private nativeInput?: HTMLBdsCheckboxElement;
+
+  @Element() private element: HTMLElement;
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop() value!: any;
 
@@ -51,16 +57,60 @@ export class SelectOption {
   @Prop() status?: string;
 
   /**
+   * Type Option. Used toselect type of item list.
+   */
+  @Prop() typeOption?: TypeOption = 'default';
+
+  /**
+   * If `true`, the checkbox is selected.
+   */
+  @Prop({ mutable: true, reflect: true }) checked = false;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
 
   @Event() optionSelected: EventEmitter;
 
+  @Event() optionChecked: EventEmitter;
+
+  @Method()
+  async toggle() {
+    this.checked = !this.checked;
+  }
+
+  @Method()
+  async toMark() {
+    this.checked = true;
+  }
+
+  @Method()
+  async markOff() {
+    this.checked = false;
+  }
+
+  private refNativeInput = (input: HTMLBdsCheckboxElement): void => {
+    this.nativeInput = input;
+  };
+
+  private checkedCurrent = () => {
+    if (this.typeOption !== 'checkbox') return;
+    this.nativeInput.toggle();
+  };
+
   private onClickSelectOption = (): void => {
+    if (this.typeOption == 'checkbox') return;
     if (!this.disabled) {
       this.optionSelected.emit({ value: this.value });
     }
+  };
+
+  private optionHandle = (ev: CustomEvent): void => {
+    const elementChecked = ev.target as HTMLBdsCheckboxElement;
+    const data = { value: elementChecked.name, label: this.element.innerHTML, checked: elementChecked.checked };
+    this.checked = !this.checked;
+    this.optionChecked.emit(data);
   };
 
   private attachOptionKeyboardListeners = (event: KeyboardEvent): void => {
@@ -102,7 +152,7 @@ export class SelectOption {
         data-value={this.value}
         data-test={this.dataTest}
         class={{
-          'select-option': true,
+          'select-option': this.typeOption != 'checkbox',
           'select-option--selected': this.selected,
           'select-option--disabled': this.disabled,
           'select-option--invisible': this.invisible,
@@ -116,24 +166,37 @@ export class SelectOption {
           class={{
             'select-option__container': true,
             'select-option__container__fill_space': !!this.status,
+            'select-option__container__checkbox': this.typeOption == 'checkbox',
           }}
+          onClick={() => this.checkedCurrent()}
         >
           {this.titleText && (
             <bds-typo class="select-option__container--value" variant="fs-16" bold="semi-bold">
               {this.titleText}
             </bds-typo>
           )}
-          <bds-typo
-            class={{
-              'select-option__container--value': true,
-              'select-option__container__overflow': !!this.status,
-            }}
-            noWrap={!!this.status}
-            variant="fs-14"
-            id={`bds-typo-label-${this.value}`}
-          >
-            <slot />
-          </bds-typo>
+
+          {this.typeOption === 'checkbox' ? (
+            <bds-checkbox
+              ref={this.refNativeInput}
+              refer={`html-for-${this.value}`}
+              label={this.element.innerHTML}
+              name={this.value}
+              checked={this.checked}
+              onBdsChange={(ev) => this.optionHandle(ev)}
+            ></bds-checkbox>
+          ) : (
+            <bds-typo
+              class={{
+                'select-option__container--value': true,
+                'select-option__container__overflow': !!this.status,
+              }}
+              noWrap={!!this.status}
+              variant="fs-14"
+            >
+              <slot />
+            </bds-typo>
+          )}
         </div>
         {this.bulkOption && (
           <bds-typo class="select-option__container--bulk" variant="fs-10">
