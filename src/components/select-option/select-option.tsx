@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, EventEmitter, Event, Method } from '@stencil/core';
+import { Component, h, Element, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import { Keyboard } from '../../utils/enums';
 
 export type TypeOption = 'checkbox' | 'default';
@@ -59,7 +59,7 @@ export class SelectOption {
   /**
    * Type Option. Used toselect type of item list.
    */
-  @Prop() typeOption?: TypeOption = 'default';
+  @Prop({ mutable: true, reflect: true }) typeOption?: TypeOption = 'default';
 
   /**
    * If `true`, the checkbox is selected.
@@ -74,6 +74,11 @@ export class SelectOption {
   @Event() optionSelected: EventEmitter;
 
   @Event() optionChecked: EventEmitter;
+
+  @Watch('typeOption')
+  protected changeSelectionType() {
+    this.typeOption = this.typeOption;
+  }
 
   @Method()
   async toggle() {

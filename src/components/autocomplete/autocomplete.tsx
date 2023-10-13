@@ -38,6 +38,8 @@ export class BdsAutocomplete {
 
   @State() textMultiselect? = '';
 
+  @State() placeholderState?: string = this.placeholder;
+
   @State() internalOptions: AutocompleteOption[];
 
   @State() cloneOptions: AutocompleteOption[];
@@ -198,6 +200,12 @@ export class BdsAutocomplete {
 
   @Watch('checkedOptions')
   protected changeCheckedOptions() {
+    this.placeholderState =
+      this.selectionType === 'multiple'
+        ? this.checkedOptions?.length === 0 || this.checkedOptions === null
+          ? this.placeholder
+          : ''
+        : this.placeholder;
     this.getTextMultiselect(this.checkedOptions);
     this.bdsMultiselectedChange.emit({ value: this.checkedOptions });
   }
@@ -213,6 +221,23 @@ export class BdsAutocomplete {
       }
     }
   }
+
+  @Watch('selectionType')
+  protected changeSelectionType() {
+    if (!this.options) {
+      for (const option of this.childOptions) {
+        if (this.selectionType === 'multiple') {
+          option.typeOption = 'checkbox';
+          option.addEventListener('optionChecked', this.handlerMultiselect);
+        } else {
+          option.typeOption = 'default';
+          option.selected = this.value === option.value;
+          option.addEventListener('optionSelected', this.handler);
+        }
+      }
+    }
+  }
+
   componentWillLoad() {
     this.intoView = getScrollParent(this.el);
     this.options && this.parseOptions();
@@ -225,6 +250,7 @@ export class BdsAutocomplete {
           option.typeOption = 'checkbox';
           option.addEventListener('optionChecked', this.handlerMultiselect);
         } else {
+          option.typeOption = 'default';
           option.selected = this.value === option.value;
           option.addEventListener('optionSelected', this.handler);
         }
@@ -569,7 +595,7 @@ export class BdsAutocomplete {
                 onBlur={this.onBlur}
                 onFocus={this.onFocus}
                 onInput={this.changedInputValue}
-                placeholder={this.placeholder}
+                placeholder={this.placeholderState}
                 type="text"
                 value={this.text}
                 data-test={this.dataTest}
@@ -607,7 +633,7 @@ export class BdsAutocomplete {
               'select__options--open': this.isOpen,
             }}
           >
-            {this.selectionTitle && (
+            {this.selectionTitle && this.selectionType == 'multiple' && (
               <bds-typo class="selection-title" variant="fs-10" bold="bold">
                 {this.selectionTitle}
               </bds-typo>

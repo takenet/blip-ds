@@ -62,6 +62,9 @@ export class Checkbox {
   @Method()
   async toggle() {
     this.checked = !this.checked;
+    this.bdsChange.emit({
+      checked: this.checked,
+    });
   }
 
   private onClick = (): void => {

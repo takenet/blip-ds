@@ -63,7 +63,7 @@ Properties.argTypes = {
   },
   selectionType: {
     table: {
-      defaultValue: { summary: 'false' },
+      defaultValue: { summary: 'single' },
     },
     description: 'Defina se o tipo de seleção dos itens no componente.',
     options: ['single', 'multiple'],
@@ -71,7 +71,7 @@ Properties.argTypes = {
   },
   selectionTitle: {
     table: {
-      defaultValue: { summary: 'false' },
+      defaultValue: { summary: '' },
     },
     description: 'Defina se o titulo para a multi-seleção.',
     control: 'string',
@@ -90,8 +90,7 @@ Properties.args = {
 export const Events = () => {
   useEffect(() => {
     const autocomplete = document.getElementById('autocomplete');
-    const autocompleteMultiple = document.getElementById('autocomplete-multiple');
-    autocompleteMultiple.addEventListener('bdsMultiselectedChange', () => {
+    autocomplete.addEventListener('bdsMultiselectedChange', () => {
       console.log('Evento Multiselected Change funcionando');
     });
     autocomplete.addEventListener('bdsBlur', () => {
@@ -116,23 +115,6 @@ export const Events = () => {
   return (
     <>
       <bds-autocomplete id="autocomplete" label="label" icon="email" value="" disabled={false} placeholder="Select">
-        <bds-select-option value="1">Millie Bobby</bds-select-option>
-        <bds-select-option value="2">Finn Wolfhard</bds-select-option>
-        <bds-select-option value="3">David Harbour</bds-select-option>
-        <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
-        <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
-        <bds-select-option value="6">Noah Schnapp</bds-select-option>
-      </bds-autocomplete>
-      <bds-autocomplete
-        id="autocomplete-multiple"
-        selection-type="multiple"
-        selection-title="Selection Title"
-        label="label"
-        icon="email"
-        value=""
-        disabled={false}
-        placeholder="Select"
-      >
         <bds-select-option value="1">Millie Bobby</bds-select-option>
         <bds-select-option value="2">Finn Wolfhard</bds-select-option>
         <bds-select-option value="3">David Harbour</bds-select-option>
