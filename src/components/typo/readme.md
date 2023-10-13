@@ -39,6 +39,8 @@
  - [bds-badge](../badge)
  - [bds-button](../button)
  - [bds-card-color](../card-color)
+ - [bds-card-subtitle](../card/card-subtitle)
+ - [bds-card-title](../card/card-title)
  - [bds-checkbox](../checkbox)
  - [bds-chip-clickable](../chip-clickable)
  - [bds-chip-selected](../chip-selected)
@@ -87,6 +89,8 @@ graph TD;
   bds-badge --> bds-typo
   bds-button --> bds-typo
   bds-card-color --> bds-typo
+  bds-card-subtitle --> bds-typo
+  bds-card-title --> bds-typo
   bds-checkbox --> bds-typo
   bds-chip-clickable --> bds-typo
   bds-chip-selected --> bds-typo
