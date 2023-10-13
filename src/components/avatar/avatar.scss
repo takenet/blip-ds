@@ -10,6 +10,7 @@ $avatar-size-extra-large: 72px;
   display: block;
 }
 .avatar {
+  border: 1px solid $color-border-2;
   border-radius: 40px;
   display: flex;
   justify-content: center;
