@@ -1,75 +1,82 @@
 import React, { useState, useEffect } from 'react';
-import bg from './thumbnail.png';
 
-export const Welcome = () => {
-  const [data, setData] = useState('');
+export const Releases = () => {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch('https://api.github.com/repos/takenet/blip-ds/releases')
       .then((response) => response.json())
       .then((data) => {
-        const firstReleaseName = data[0].name;
-        setData(firstReleaseName);
+        const releaseEntries = data.map((release) => {
+          // Use expressões regulares para remover [ ], ( ), bem como os símbolos #, * e )
+          const cleanedText = release.body.replace(/\[.*?\]|\(.*?\)|[#*)]/g, '');
+
+          // Identifica e move as ocorrências de "Bug Fixes" ou "Features" para o título
+          const lines = cleanedText.split('\n');
+          const groupedData = { 'Bug Fixes': [], Features: [] };
+          let currentGroup = null;
+
+          for (const line of lines) {
+            if (line.includes('Bug Fixes')) {
+              currentGroup = 'Bug Fixes';
+            } else if (line.includes('Features')) {
+              currentGroup = 'Features';
+            } else if (currentGroup) {
+              groupedData[currentGroup].push(line);
+            }
+          }
+
+          const dataISO8601 = release.created_at;
+          const dataBrasileira = new Date(dataISO8601).toLocaleDateString('pt-BR');
+
+          return {
+            name: release.name,
+            created_at: dataBrasileira,
+            data: groupedData,
+          };
+        });
+
+        setData(releaseEntries);
       });
   }, []);
 
-  console.log(data[0]);
-  // console.log(data[0]['name'])
   return (
-    <div
-      className="welcome__container"
-      style={{
-        background: `url(${bg}) no-repeat center center fixed`,
-        backgroundSize: 'cover',
-        height: '100vh',
-        width: '100vw',
-        position: 'absolute',
-        top: '0',
-        left: '0',
-      }}
-    >
-      <bds-grid height="100%">
-        <bds-grid align-items="flex-start" margin="t-6">
-          <bds-grid direction="column" height="200px" padding="l-6">
-            <h2 style={{ color: '#fff', fontSize: '54px', fontFamily: 'Nunito Sans', fontWeight: '300', margin: 0 }}>
-              @blip-ds/components
-            </h2>
-            <h4
-              variant="fs-40"
-              tag="h4"
-              bold="bold"
-              style={{
-                color: '#fff',
-                paddingLeft: '8px',
-                fontWeight: '600',
-                fontSize: '54px',
-                fontFamily: 'Nunito Sans',
-                margin: 0,
-              }}
-            >
-              {data}
-            </h4>
-            <bds-grid padding="t-3" gap="1">
-              <a
-                style={{ color: '#B2DFFD', textDecoration: 'none', fontFamily: 'Nunito Sans', alignItems: 'center' }}
-                href="https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/visao-geral/todos-os-componentes"
-              >
-                Uai Design System
-              </a>
-              <bds-icon style={{ color: '#B2DFFD' }} name="arrow-right"></bds-icon>
-            </bds-grid>
-            <bds-grid padding="t-3" gap="1">
-              <a
-                style={{ color: '#B2DFFD', textDecoration: 'none', fontFamily: 'Nunito Sans', alignItems: 'center' }}
-                href="https://github.com/takenet/blip-ds"
-              >
-                Github repo
-              </a>
-              <bds-icon style={{ color: '#B2DFFD' }} name="arrow-right"></bds-icon>
+    <bds-grid xxs="12" height="100%" margin="auto" direction="column" gap="4">
+      <bds-grid>
+        <bds-typo bold="bold" variant="fs-32">
+          Releases
+        </bds-typo>
+      </bds-grid>
+      {data.map((entry, index) => (
+        <bds-paper border="true" key={index}>
+          <bds-grid padding="3" direction="column">
+            <bds-typo bold="bold">{entry.name}</bds-typo>
+            <bds-typo variant="fs-12">{entry.created_at}</bds-typo>
+            <bds-grid padding="y-3" direction="column">
+              {entry.data['Bug Fixes'].length > 0 && (
+                <bds-grid direction="column" padding="y-2">
+                  <bds-typo bold="bold" tag="h2">
+                    Bug Fixes
+                  </bds-typo>
+                  {entry.data['Bug Fixes'].map((bugFix, bugFixIndex) => (
+                    <bds-typo key={bugFixIndex}>{bugFix}</bds-typo>
+                  ))}
+                </bds-grid>
+              )}
+              {entry.data['Features'].length > 0 && (
+                <>
+                  <bds-typo bold="bold" tag="h2">
+                    Features
+                  </bds-typo>
+                  {entry.data['Features'].map((feature, featureIndex) => (
+                    <bds-typo key={featureIndex}>{feature}</bds-typo>
+                  ))}
+                </>
+              )}
             </bds-grid>
           </bds-grid>
-        </bds-grid>
-      </bds-grid>
-    </div>
+        </bds-paper>
+      ))}
+    </bds-grid>
   );
 };

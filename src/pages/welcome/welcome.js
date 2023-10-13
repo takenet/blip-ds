@@ -12,9 +12,6 @@ export const Welcome = () => {
         setData(firstReleaseName);
       });
   }, []);
-
-  console.log(data[0]);
-  // console.log(data[0]['name'])
   return (
     <div
       className="welcome__container"
