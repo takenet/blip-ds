@@ -4,7 +4,7 @@ export type Shape = 'circle' | 'triangle' | 'triangle-reverse' | 'polygon' | 'sq
 
 export type Color = 'system' | 'danger' | 'warning' | 'success' | 'neutral';
 
-export type Type = 'status' | 'icon' | 'number';
+export type Type = 'status' | 'icon' | 'number' | 'empty';
 
 @Component({
   tag: 'bds-badge',
@@ -15,7 +15,7 @@ export class Badge {
   /**
    * State for keep the value of the type.
    */
-  @State() type?: Type = 'status';
+  @State() type?: Type = 'empty';
   /**
    * Set the color of the component.
    */
@@ -53,6 +53,7 @@ export class Badge {
         <div
           class={{
             chip_badge: true,
+            chip_size: this.number !== null ? true : false,
             [`chip_badge--${this.shape}`]: true,
             [`chip_badge--${this.color}`]: true,
           }}
@@ -74,11 +75,27 @@ export class Badge {
             </div>
           )}
           {this.type === 'number' && (
-            <div class={{ number: true, [`color--${this.color}`]: true, [`number--${this.animation}`]: true }}>
+            <div
+              class={{
+                number: true,
+                [`color--${this.color}`]: true,
+                [`number--${this.animation}`]: true,
+              }}
+            >
               <bds-typo class="number_text" variant="fs-12" bold="bold" margin={false}>
                 {this.number >= 999 ? '999+' : this.number}
               </bds-typo>
             </div>
+          )}
+          {this.type === 'empty' && (
+            <div
+              class={{
+                empty: true,
+                [`color--${this.color}`]: true,
+                [`empty--${this.shape}`]: true,
+                [`empty--${this.animation}`]: true,
+              }}
+            ></div>
           )}
         </div>
       </Host>
