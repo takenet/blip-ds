@@ -26,21 +26,37 @@ export const Properties = (args) => (
       secondary-text={args.secondaryText2}
       icon={args.icon2}
       avatar-name={args.avatarName2}
-    ></bds-list-item>
+    >
+      <div slot="action-area">
+        <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
+      </div>
+    </bds-list-item>
     <bds-list-item
       value="03"
       text={args.text3}
       secondary-text={args.secondaryText3}
       icon={args.icon3}
       avatar-name={args.avatarName3}
-    ></bds-list-item>
-    <bds-list-item
-      value="04"
-      text={args.text4}
-      secondary-text={args.secondaryText4}
-      icon={args.icon4}
-      avatar-name={args.avatarName4}
-    ></bds-list-item>
+    >
+      <div slot="content-area">
+        <bds-chip-tag color="info" icon="">
+          Category
+        </bds-chip-tag>
+        <bds-chip-tag color="success" icon="">
+          Category
+        </bds-chip-tag>
+        <bds-chip-tag color="warning" icon="">
+          Category
+        </bds-chip-tag>
+      </div>
+      <div slot="action-area">
+        <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
+        <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
+      </div>
+    </bds-list-item>
   </bds-list>
 );
 
@@ -58,10 +74,6 @@ Properties.args = {
   secondaryText3: 'Here you put the secondary text of the item',
   icon3: '',
   avatarName3: '',
-  text4: 'Here you put the text of the item',
-  secondaryText4: 'Here you put the secondary text of the item',
-  icon4: '',
-  avatarName4: '',
 };
 
 Properties.argTypes = {
