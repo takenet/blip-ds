@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import bg from './thumbnail.png';
-import bg2 from './thumbnail2.png';
-import ballon from './ballonChat.png';
 
 export const Welcome = () => {
   const [data, setData] = useState('');
@@ -14,9 +12,6 @@ export const Welcome = () => {
         setData(firstReleaseName);
       });
   }, []);
-
-  console.log(data[0]);
-  // console.log(data[0]['name'])
   return (
     <div
       className="welcome__container"
