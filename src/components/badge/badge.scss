@@ -56,6 +56,10 @@
   display: inline-flex;
 }
 
+.chip_size {
+  min-width: 24px;
+}
+
 .chip_badge {
   .status {
     width: 8px;
@@ -213,6 +217,94 @@
 
     .number_text {
       color: $color-content-default;
+    }
+  }
+
+  .empty {
+    display: flex;
+    min-height: 24px;
+    min-width: 24px;
+    position: relative;
+
+    &--true::before {
+      content: '';
+      width: 100%;
+      height: 24px;
+      left: -2px;
+      top: -2px;
+      position: absolute;
+      border: 2px solid;
+      border-radius: 16px;
+      animation: pulse 2s ease-out infinite;
+    }
+
+    &--circle {
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        border-radius: 16px;
+      }
+      .trim-true::before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        left: -2px;
+        top: -2px;
+        position: absolute;
+        border: 2px solid;
+        border-radius: 16px;
+        animation: pulse 2s ease-out infinite;
+      }
+    }
+
+    &--triangle {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &--triangle-reverse {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 100%, 0 0, 100% 0);
+      }
+    }
+    &--polygon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      }
+    }
+    &--square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .trim {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 }
