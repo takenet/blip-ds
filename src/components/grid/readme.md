@@ -42,7 +42,6 @@
  - [bds-card-color](../card-color)
  - [bds-card-footer](../card/card-footer)
  - [bds-card-header](../card/card-header)
- - [bds-select-option](../select-option)
  - [bds-test-component](../test-component)
 
 ### Graph
@@ -53,7 +52,6 @@ graph TD;
   bds-card-color --> bds-grid
   bds-card-footer --> bds-grid
   bds-card-header --> bds-grid
-  bds-select-option --> bds-grid
   bds-test-component --> bds-grid
   style bds-grid fill:#f9f,stroke:#333,stroke-width:4px
 ```
