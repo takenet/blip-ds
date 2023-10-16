@@ -47,12 +47,24 @@ Type: `Promise<boolean>`
 
 
 
+### `toggle() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 
 ### Used by
 
+ - [bds-autocomplete](../autocomplete)
  - [bds-list-item](../list)
+ - [bds-select-option](../select-option)
 
 ### Depends on
 
@@ -64,7 +76,9 @@ Type: `Promise<boolean>`
 graph TD;
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
+  bds-autocomplete --> bds-checkbox
   bds-list-item --> bds-checkbox
+  bds-select-option --> bds-checkbox
   style bds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

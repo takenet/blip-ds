@@ -3,12 +3,17 @@
 $select-option-padding: 8px;
 $select-option-left: 12px;
 
+:host(.option-checked) {
+  order: -1;
+}
+
 .load-spinner {
   background-color: $color-surface-1;
   height: 200px;
 }
 
 .select-option {
+  display: grid;
   width: 100%;
   @include no-select();
   cursor: pointer;
@@ -19,6 +24,7 @@ $select-option-left: 12px;
   display: flex;
   align-items: center;
   outline: none;
+  order: 1;
 
   &--selected {
     .select-option__container--value {
@@ -46,6 +52,19 @@ $select-option-left: 12px;
     color: $color-content-default;
     display: flex;
     flex-direction: column;
+
+    &__checkbox {
+      cursor: pointer;
+      background-color: $color-surface-1;
+      padding: $select-option-padding;
+      padding-left: $select-option-left;
+      box-sizing: border-box;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      outline: none;
+      flex-direction: row;
+    }
 
     &__fill_space {
       width: 100%;

@@ -31,6 +31,7 @@ $checkbox-spacing-text: 8px;
   &--selected {
     .checkbox__icon {
       background-color: $color-brand;
+      border-color: $color-brand;
       
       &__svg {
         color: $color-content-bright;
@@ -48,9 +49,12 @@ $checkbox-spacing-text: 8px;
     }
 
     .checkbox__icon {
-      color: $color-content-bright;
-      border: 1px solid $color-brand;
-      background-color: $color-brand;
+      color: $color-content-default;
+      border-color: $color-content-default;
+      background-color: $color-surface-3;
+      opacity: 50%;
+    }
+    .checkbox__text {
       opacity: 50%;
     }
   }
@@ -93,7 +97,7 @@ $checkbox-spacing-text: 8px;
     width: $checkbox-size;
     border-radius: $checkbox-icon-radius;
     color: $color-surface-1;
-    border: 1px solid $color-brand;
+    border: 1px solid $color-content-default;
     box-sizing: border-box;
     border-radius: 4px;
     @include animation();
