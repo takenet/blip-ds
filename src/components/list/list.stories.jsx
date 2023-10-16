@@ -86,31 +86,6 @@ Properties.argTypes = {
   },
 };
 
-export const List = () => (
-  <>
-    <bds-list>
-      <bds-list-item value="01" text="Here you put the text of the item"></bds-list-item>
-      <bds-list-item
-        value="02"
-        text="Here you put the text of the item"
-        secondary-text="Here you put the secondary text of the item"
-      ></bds-list-item>
-      <bds-list-item
-        value="03"
-        text="Here you put the text of the item"
-        secondary-text="Here you put the secondary text of the item"
-        icon="blip-ideas"
-      ></bds-list-item>
-      <bds-list-item
-        value="04"
-        text="Here you put the text of the item"
-        secondary-text="Here you put the secondary text of the item"
-        avatar-name="Alvare Horta"
-      ></bds-list-item>
-    </bds-list>
-  </>
-);
-
 export const Events = () => {
   useEffect(() => {
     const list1 = document.getElementById('list-1');
