@@ -743,7 +743,7 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * Used to set tooltip position
+          * Used to set drop position
          */
         "position"?: DropdownPostionType;
         "setClose": () => Promise<void>;
@@ -3850,7 +3850,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * Used to set tooltip position
+          * Used to set drop position
          */
         "position"?: DropdownPostionType;
     }
