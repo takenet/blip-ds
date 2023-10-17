@@ -13,7 +13,6 @@ export default {
 
 export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
-  console.log(card)
   if (el.length !== 0) {
     el[0].style.width = '820px';
     el[0].style.width = 'auto';
