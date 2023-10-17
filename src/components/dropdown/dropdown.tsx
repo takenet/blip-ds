@@ -14,8 +14,9 @@ import {
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
 
 export type activeMode = 'hover' | 'click';
-export type dropVerticalPosition = 'bottom' | 'top';
-export type dropHorizontalPosition = 'left' | 'center' | 'right';
+export type dropVerticalPosition = 'bottom' | 'top' | 'left' | 'right';
+export type dropHorizontalPosition = 'left' | 'center' | 'right' | 'bottom' | 'top';
+//^^ dropHorizontalPosition: For version 2.0 change to values: "start", "center", "end". ^^//
 export type subMenuState = 'close' | 'pending' | 'open';
 
 export type DropdownPostionType =
@@ -25,7 +26,13 @@ export type DropdownPostionType =
   | 'top-right'
   | 'bottom-center'
   | 'bottom-right'
-  | 'bottom-left';
+  | 'bottom-left'
+  | 'right-center'
+  | 'right-top'
+  | 'right-bottom'
+  | 'left-center'
+  | 'left-top'
+  | 'left-bottom';
 
 @Component({
   tag: 'bds-dropdown',
@@ -44,7 +51,6 @@ export class BdsDropdown implements ComponentInterface {
   @State() stateSubMenu?: subMenuState = 'close';
   @State() zIndex?: number = 0;
   @State() delay = null;
-  @State() isChildDrop?: boolean = false;
 
   /**
    * Open. Used to open/close the dropdown.
@@ -57,7 +63,7 @@ export class BdsDropdown implements ComponentInterface {
   @Prop({ mutable: true, reflect: true }) public open?: boolean = false;
 
   /**
-   * Used to set tooltip position
+   * Used to set drop position
    */
   @Prop() position?: DropdownPostionType = 'auto';
 
@@ -68,9 +74,9 @@ export class BdsDropdown implements ComponentInterface {
 
   componentWillLoad() {
     this.activatorElement = this.hostElement.querySelector('[slot="dropdown-activator"]').children[0];
-    this.isChildDrop = !!this.getDropParent(this.hostElement);
     this.intoView = getScrollParent(this.hostElement);
-    if (this.isChildDrop || this.activeMode == 'hover') {
+    this.isPositionChanged;
+    if (this.activeMode == 'hover') {
       this.activatorElement.addEventListener('mouseover', () => this.openSubmenu());
       this.activatorElement.addEventListener('click', () => this.openSubmenu());
       this.activatorElement.addEventListener('mouseout', () => this.closeSubmenu());
@@ -81,6 +87,7 @@ export class BdsDropdown implements ComponentInterface {
 
   componentDidLoad() {
     if (this.position != 'auto') {
+      this.centerDropElement(this.position);
       this.setDefaultPlacement(this.position);
     } else {
       this.validatePositionDrop();
@@ -88,9 +95,7 @@ export class BdsDropdown implements ComponentInterface {
   }
 
   private setDefaultPlacement(value: DropdownPostionType) {
-    const arrayPosition = value.split('-');
-    this.dropElement.classList.add(`dropdown__basic__${arrayPosition[0]}`);
-    this.dropElement.classList.add(`dropdown__basic__${arrayPosition[1]}`);
+    this.dropElement.classList.add(`dropdown__basic__${value}`);
   }
 
   private validatePositionDrop() {
@@ -99,23 +104,23 @@ export class BdsDropdown implements ComponentInterface {
       changedElement: this.dropElement,
       intoView: this.intoView,
     });
-    if (this.isChildDrop) {
-      const parent = this.getDropParent(this.hostElement);
-      setTimeout(() => this.checkValeuChildDrop(parent), 400);
-    } else {
-      this.dropElement.classList.add(`dropdown__basic__${positionValue.y}`);
-      this.dropElement.classList.add(`dropdown__basic__${positionValue.x}`);
-    }
+    this.dropElement.classList.add(`dropdown__basic__${positionValue.y}-${positionValue.x}`);
   }
 
   @Watch('open')
   protected isOpenChanged(open: boolean): void {
+    this.bdsToggle.emit({ value: open });
     if (open)
       if (this.position != 'auto') {
         this.setDefaultPlacement(this.position);
       } else {
         this.validatePositionDrop();
       }
+  }
+
+  @Watch('position')
+  protected isPositionChanged(): void {
+    this.setDefaultPlacement(this.position);
   }
 
   @Method()
@@ -161,15 +166,6 @@ export class BdsDropdown implements ComponentInterface {
     }
   }
 
-  private checkValeuChildDrop = (parent): void => {
-    const parentShadown = parent.shadowRoot;
-    const getDropdown = parentShadown.querySelector('.dropdown');
-    const dropY = getDropdown.classList.contains('dropdown__basic__bottom') ? 'bottom' : 'top';
-    const dropX = getDropdown.classList.contains('dropdown__basic__right') ? 'right' : 'left';
-    this.dropElement.classList.add(`dropdown__sub-menu__${dropY}`);
-    this.dropElement.classList.add(`dropdown__sub-menu__${dropX}`);
-  };
-
   private onCloseSubMenu = (): void => {
     this.stateSubMenu = 'close';
   };
@@ -183,28 +179,23 @@ export class BdsDropdown implements ComponentInterface {
   };
 
   private openSubmenu = () => {
-    if (this.isChildDrop) {
+    if (this.activeMode === 'hover') {
       this.zIndex = 1;
     }
     this.openSubMenu = true;
   };
 
   private closeSubmenu = () => {
-    if (this.isChildDrop) {
+    if (this.activeMode === 'hover') {
       this.zIndex = 0;
     }
     this.openSubMenu = false;
   };
 
-  getDropParent = (node: HTMLElement) => {
-    if (node === null) {
-      return null;
-    }
-    const parentElement = node.offsetParent as HTMLElement;
-    if (parentElement?.tagName == 'BDS-DROPDOWN') {
-      return parentElement;
-    } else {
-      return this.getDropParent(parentElement.offsetParent as HTMLElement);
+  private centerDropElement = (value: DropdownPostionType) => {
+    const arrayPosition = value.split('-');
+    if ((arrayPosition[0] == 'left' || arrayPosition[0] == 'right') && arrayPosition[1] == 'center') {
+      this.dropElement.style.top = `calc(50% - ${this.dropElement.offsetHeight / 2}px)`;
     }
   };
 
@@ -213,7 +204,7 @@ export class BdsDropdown implements ComponentInterface {
       zIndex: `${this.zIndex}`,
     };
     return (
-      <Host class={{ is_child_drop: this.isChildDrop }}>
+      <Host>
         <slot name="dropdown-activator"></slot>
         <div
           ref={(el) => this.refDropElement(el)}
@@ -228,7 +219,7 @@ export class BdsDropdown implements ComponentInterface {
             <slot name="dropdown-content"></slot>
           </div>
         </div>
-        {!this.isChildDrop && this.open && (
+        {this.activeMode !== 'hover' && this.open && (
           <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div>
         )}
       </Host>

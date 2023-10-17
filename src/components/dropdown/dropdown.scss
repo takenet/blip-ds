@@ -1,7 +1,6 @@
 :host {
   position: relative;
   width: fit-content;
-  display: inline-block;
 }
 
 :host(.is_child_drop) {
@@ -30,45 +29,53 @@
   }
 
   &__basic {
-    &__top {
+    &__top-center {
       bottom: calc(100% + 16px);
-    }
-
-    &__bottom {
-      top: calc(100% + 16px);
-    }
-
-    &__left {
-      left: 0;
-    }
-
-    &__center {
       left: calc(50% - 122px);
     }
-
-    &__right {
+    &__top-left {
+      bottom: calc(100% + 16px);
+      left: 0;
+    }
+    &__top-right {
+      bottom: calc(100% + 16px);
       right: 0;
     }
-  }
-
-  &__sub-menu {
-    &__top {
-      bottom: 0;
+    &__bottom-center {
+      top: calc(100% + 16px);
+      left: calc(50% - 122px);
     }
-
-    &__bottom {
-      top: -2px;
+    &__bottom-right {
+      top: calc(100% + 16px);
+      right: 0;
     }
-
-    &__left {
-      left: calc(100% + 8px);
+    &__bottom-left {
+      top: calc(100% + 16px);
+      left: 0;
     }
-
-    &__right {
+    &__right-center {
       right: calc(100% + 8px);
     }
+    &__right-top {
+      right: calc(100% + 8px);
+      top: 0;
+    }
+    &__right-bottom {
+      right: calc(100% + 8px);
+      bottom: 0;
+    }
+    &__left-center {
+      left: calc(100% + 8px);
+    }
+    &__left-top {
+      left: calc(100% + 8px);
+      top: 0;
+    }
+    &__left-bottom {
+      left: calc(100% + 8px);
+      bottom: 0;
+    }
   }
-
   &:after {
     content: '';
     position: absolute;
