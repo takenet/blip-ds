@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Host, h, Prop, State } from '@stencil/core';
-import { PaperElevation, PaperElevationMap } from './paper-interface';
+import { PaperElevation } from './paper-interface';
 
 @Component({
   tag: 'bds-paper',
@@ -8,6 +8,7 @@ import { PaperElevation, PaperElevationMap } from './paper-interface';
 })
 export class Paper implements ComponentInterface {
   @State() hasBorder = true;
+  @State() constElevation: string;
   /**
    * Size. Entered as one of the size. Can be one of:
    * 'static', 'primary', 'secondary';
@@ -33,22 +34,14 @@ export class Paper implements ComponentInterface {
    */
   @Prop() width?: string = null;
 
-  private mapElevation: PaperElevationMap = {
-    static: 'paper__elevation--static',
-    primary: 'paper__elevation--primary',
-    secondary: 'paper__elevation--secondary',
-  };
-
-  componentWillRender() {
+  componentWillLoad() {
     this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
   }
 
   render() {
-    const elevation = this.mapElevation[this.elevation];
-
     return (
       <Host
-        class={{ [elevation]: this.hasBorder, border: this.border }}
+        class={{ [`paper__elevation--${this.elevation}`]: this.hasBorder, border: this.border }}
         style={{ height: `${this.height}`, width: `${this.width}` }}
       >
         <div class="paper__display" data-test={this.dataTest}>
