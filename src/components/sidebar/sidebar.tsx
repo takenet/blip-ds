@@ -20,7 +20,7 @@ export class Sidebar {
   /**;
    * isOpen. Used to open sidebar.
    */
-  @Prop({ mutable: true, reflect: true }) isOpen?: boolean = false;
+  @Prop({ mutable: true, reflect: true }) isOpen?: boolean = this.type === 'fixed' ? true : false;
 
   /**
    * sidebar position. Used to position the sidebar. Either on the left or on the right.
@@ -78,7 +78,6 @@ export class Sidebar {
   }
 
   componentWillLoad() {
-    this.type === 'fixed' ? (this.isOpen = true) : '';
     this.hasFooterSlot = !!this.hostElement.querySelector('[slot="footer"]');
     this.hasHeaderSlot = !!this.hostElement.querySelector('[slot="header"]');
   }
