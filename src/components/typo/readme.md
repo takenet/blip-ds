@@ -39,11 +39,14 @@
  - [bds-badge](../badge)
  - [bds-button](../button)
  - [bds-card-color](../card-color)
+ - [bds-card-subtitle](../card/card-subtitle)
+ - [bds-card-title](../card/card-title)
  - [bds-checkbox](../checkbox)
  - [bds-chip-clickable](../chip-clickable)
  - [bds-chip-selected](../chip-selected)
  - [bds-chip-tag](../chip-tag)
  - [bds-counter-text](../counter-text)
+ - [bds-data-table](../table)
  - [bds-datepicker](../datepicker)
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
@@ -65,9 +68,10 @@
  - [bds-select-chips](../selects/select-chips)
  - [bds-select-option](../select-option)
  - [bds-step](../stepper/step)
- - [bds-tab](../tabs/tab)
- - [bds-tab-group](../tabs/tab-group)
- - [bds-table](../table)
+ - [bds-tab](../tabs/tab (depreciated)/tab)
+ - [bds-tab-group](../tabs)
+ - [bds-table-cell](../table/table-cell)
+ - [bds-table-th](../table/table-header-cell)
  - [bds-test-component](../test-component)
  - [bds-toast](../toast)
  - [bds-tooltip](../tooltip)
@@ -85,11 +89,14 @@ graph TD;
   bds-badge --> bds-typo
   bds-button --> bds-typo
   bds-card-color --> bds-typo
+  bds-card-subtitle --> bds-typo
+  bds-card-title --> bds-typo
   bds-checkbox --> bds-typo
   bds-chip-clickable --> bds-typo
   bds-chip-selected --> bds-typo
   bds-chip-tag --> bds-typo
   bds-counter-text --> bds-typo
+  bds-data-table --> bds-typo
   bds-datepicker --> bds-typo
   bds-datepicker-period --> bds-typo
   bds-datepicker-single --> bds-typo
@@ -113,7 +120,8 @@ graph TD;
   bds-step --> bds-typo
   bds-tab --> bds-typo
   bds-tab-group --> bds-typo
-  bds-table --> bds-typo
+  bds-table-cell --> bds-typo
+  bds-table-th --> bds-typo
   bds-test-component --> bds-typo
   bds-toast --> bds-typo
   bds-tooltip --> bds-typo

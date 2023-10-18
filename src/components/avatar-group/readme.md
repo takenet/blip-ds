@@ -23,10 +23,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../test-component)
-
 ### Depends on
 
 - [bds-avatar](../avatar)
@@ -37,7 +33,6 @@ graph TD;
   bds-avatar-group --> bds-avatar
   bds-avatar --> bds-typo
   bds-avatar --> bds-icon
-  bds-test-component --> bds-avatar-group
   style bds-avatar-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

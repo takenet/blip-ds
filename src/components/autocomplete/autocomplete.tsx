@@ -8,12 +8,16 @@ import {
 import { SelectOptionsPositionType } from '../selects/select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
 import { Keyboard } from '../../utils/enums';
+
+export type SelectionType = 'single' | 'multiple';
+
 @Component({
   tag: 'bds-autocomplete',
   styleUrl: 'autocomplete.scss',
   shadow: true,
 })
 export class BdsAutocomplete {
+  private checkAllInput?: HTMLBdsCheckboxElement;
   private nativeInput?: HTMLInputElement;
   private dropElement?: HTMLElement;
   private iconDropElement?: HTMLBdsIconElement;
@@ -32,7 +36,15 @@ export class BdsAutocomplete {
 
   @State() text? = '';
 
+  @State() textMultiselect? = '';
+
+  @State() placeholderState?: string = this.placeholder;
+
   @State() internalOptions: AutocompleteOption[];
+
+  @State() cloneOptions: AutocompleteOption[];
+
+  @State() checkedOptions: AutocompleteOption[];
 
   @State() isFocused?: boolean = false;
 
@@ -87,7 +99,7 @@ export class BdsAutocomplete {
   /**
    * Set the placement of the options menu. Can be 'bottom' or 'top'.
    */
-  @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'bottom';
+  @Prop() optionsPosition?: AutocompleteOptionsPositionType = 'auto';
 
   /**
    * If true, the X icon will appear only when component is focused.
@@ -100,6 +112,21 @@ export class BdsAutocomplete {
   @Prop() dataTest?: string = null;
 
   /**
+   * Is Loading, is the prop to enable that the component is loading.
+   */
+  @Prop() loading?: boolean = false;
+
+  /**
+   * Multiselect, Prop to enable multi selections.
+   */
+  @Prop() selectionType?: SelectionType = 'single';
+
+  /**
+   * Selection Title, Prop to enable title to select.
+   */
+  @Prop() selectionTitle?: string = '';
+
+  /**
    * Emitted when the value has changed.
    */
   @Event() bdsChange!: EventEmitter<AutocompleteChangeEventDetail>;
@@ -108,6 +135,11 @@ export class BdsAutocomplete {
    * Emitted when the selected value has changed.
    */
   @Event() bdsSelectedChange!: EventEmitter<AutocompleteSelectedChangeEventDetail>;
+
+  /**
+   * Emitted when the selected value has changed.
+   */
+  @Event() bdsMultiselectedChange!: EventEmitter;
 
   /**
    * Emitted when the input has changed.
@@ -136,7 +168,12 @@ export class BdsAutocomplete {
     } else {
       this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
     }
-    if (isOpen) this.validatePositionDrop();
+    if (isOpen)
+      if (this.optionsPosition != 'auto') {
+        this.setDefaultPlacement(this.optionsPosition);
+      } else {
+        this.validatePositionDrop();
+      }
   }
 
   @Watch('selected')
@@ -161,6 +198,18 @@ export class BdsAutocomplete {
     }
   }
 
+  @Watch('checkedOptions')
+  protected changeCheckedOptions() {
+    this.placeholderState =
+      this.selectionType === 'multiple'
+        ? this.checkedOptions?.length === 0 || this.checkedOptions === null
+          ? this.placeholder
+          : ''
+        : this.placeholder;
+    this.getTextMultiselect(this.checkedOptions);
+    this.bdsMultiselectedChange.emit({ value: this.checkedOptions });
+  }
+
   @Watch('options')
   parseOptions() {
     if (this.options) {
@@ -173,6 +222,22 @@ export class BdsAutocomplete {
     }
   }
 
+  @Watch('selectionType')
+  protected changeSelectionType() {
+    if (!this.options) {
+      for (const option of this.childOptions) {
+        if (this.selectionType === 'multiple') {
+          option.typeOption = 'checkbox';
+          option.addEventListener('optionChecked', this.handlerMultiselect);
+        } else {
+          option.typeOption = 'default';
+          option.selected = this.value === option.value;
+          option.addEventListener('optionSelected', this.handler);
+        }
+      }
+    }
+  }
+
   componentWillLoad() {
     this.intoView = getScrollParent(this.el);
     this.options && this.parseOptions();
@@ -181,13 +246,33 @@ export class BdsAutocomplete {
   componentDidLoad() {
     if (!this.options) {
       for (const option of this.childOptions) {
-        option.selected = this.value === option.value;
-        option.addEventListener('optionSelected', this.handler);
+        if (this.selectionType === 'multiple') {
+          option.typeOption = 'checkbox';
+          option.addEventListener('optionChecked', this.handlerMultiselect);
+        } else {
+          option.typeOption = 'default';
+          option.selected = this.value === option.value;
+          option.addEventListener('optionSelected', this.handler);
+        }
       }
     }
 
     this.text = this.getText();
-    this.validatePositionDrop();
+    if (this.optionsPosition != 'auto') {
+      this.setDefaultPlacement(this.optionsPosition);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
+  private setDefaultPlacement(value: AutocompleteOptionsPositionType) {
+    if (value == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
 
   private validatePositionDrop() {
@@ -214,6 +299,10 @@ export class BdsAutocomplete {
     this.iconDropElement = el;
   };
 
+  private refCheckAllInput = (input: HTMLBdsCheckboxElement): void => {
+    this.checkAllInput = input;
+  };
+
   private get childOptions(): HTMLBdsSelectOptionElement[] {
     return this.options
       ? Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option'))
@@ -230,6 +319,7 @@ export class BdsAutocomplete {
     this.isFocused = true;
     this.isPressed = true;
     this.bdsFocus.emit();
+    if (this.selectionType == 'multiple') this.textMultiselect = '';
   };
 
   private onFocusout = (): void => {
@@ -241,6 +331,8 @@ export class BdsAutocomplete {
   private onBlur = (): void => {
     this.bdsBlur.emit();
     this.isPressed = false;
+    if (this.selectionType == 'multiple' && this.checkedOptions?.length > 0)
+      this.getTextMultiselect(this.checkedOptions);
     if (!this.isOpen) {
       this.isFocused = false;
       this.nativeInput.value = this.getText();
@@ -278,6 +370,45 @@ export class BdsAutocomplete {
   private getText = (): string => {
     const opt = this.childOptions.find((option) => option.value == this.value);
     return this.getTextFromOption(opt);
+  };
+
+  private getTextMultiselect = (data): void => {
+    const valueInput = data?.length > 0 && `${data?.length} selecionados`;
+    this.textMultiselect = valueInput;
+  };
+
+  private handlerMultiselect = (): void => {
+    this.updateListChecked(this.childOptions);
+    this.checkAllInput.checked = false;
+  };
+
+  private handleCheckAll = (event: CustomEvent): void => {
+    const {
+      detail: { checked },
+    } = event;
+    for (const option of this.childOptions) {
+      if (checked) {
+        option.toMark();
+      } else {
+        option.markOff();
+      }
+    }
+    setTimeout(() => {
+      this.updateListChecked(this.childOptions);
+    }, 10);
+  };
+
+  private updateListChecked = (data: HTMLBdsSelectOptionElement[]): void => {
+    for (const option of data) {
+      option.checked ? option.classList.add('option-checked') : option.classList.remove('option-checked');
+    }
+    const defaultCheckedOptions = Array.from(data).filter((item) => item.checked == true);
+    const value = defaultCheckedOptions.map((term) => ({
+      value: term.value,
+      label: term.textContent,
+      checked: term.checked,
+    }));
+    this.checkedOptions = value;
   };
 
   private handler = (event: CustomEvent): void => {
@@ -451,18 +582,25 @@ export class BdsAutocomplete {
           {this.renderIcon()}
           <div class="input__container" tabindex="0" onFocusout={this.onFocusout} onKeyDown={this.keyPressWrapper}>
             {this.renderLabel()}
-            <input
-              class={{ input__container__text: true }}
-              ref={(input) => (this.nativeInput = input)}
-              disabled={this.disabled}
-              onBlur={this.onBlur}
-              onFocus={this.onFocus}
-              onInput={this.changedInputValue}
-              placeholder={this.placeholder}
-              type="text"
-              value={this.text}
-              data-test={this.dataTest}
-            />
+            <div class={{ input__container__wrapper: true }}>
+              {this.textMultiselect?.length > 0 && (
+                <bds-typo variant="fs-14" class="inside-input-left">
+                  {this.textMultiselect}
+                </bds-typo>
+              )}
+              <input
+                class={{ input__container__text: true }}
+                ref={(input) => (this.nativeInput = input)}
+                disabled={this.disabled}
+                onBlur={this.onBlur}
+                onFocus={this.onFocus}
+                onInput={this.changedInputValue}
+                placeholder={this.placeholderState}
+                type="text"
+                value={this.text}
+                data-test={this.dataTest}
+              />
+            </div>
           </div>
           <div class="select__icon">
             <bds-icon
@@ -477,30 +615,64 @@ export class BdsAutocomplete {
             <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
           </div>
         </div>
-        <div
-          ref={(el) => this.refDropdown(el)}
-          class={{
-            select__options: true,
-            'select__options--open': this.isOpen,
-          }}
-        >
-          {this.internalOptions ? (
-            this.internalOptions.map((option, idx) => (
-              <bds-select-option
-                onOptionSelected={this.handler}
-                selected={this.value === option.value}
-                value={option.value}
-                key={idx}
-                bulkOption={option.bulkOption}
-                status={option.status}
-              >
-                {option.label}
-              </bds-select-option>
-            ))
-          ) : (
-            <slot />
-          )}
-        </div>
+        {this.loading ? (
+          <div
+            ref={(el) => this.refDropdown(el)}
+            class={{
+              select__options: true,
+              'select__options--open': this.isOpen,
+            }}
+          >
+            <bds-loading-spinner class="load-spinner" size="small"></bds-loading-spinner>
+          </div>
+        ) : (
+          <div
+            ref={(el) => this.refDropdown(el)}
+            class={{
+              select__options: true,
+              'select__options--open': this.isOpen,
+            }}
+          >
+            {this.selectionTitle && this.selectionType == 'multiple' && (
+              <bds-typo class="selection-title" variant="fs-10" bold="bold">
+                {this.selectionTitle}
+              </bds-typo>
+            )}
+            {this.selectionType == 'multiple' && (this.value == null || this.value.length <= 0) && (
+              <bds-checkbox
+                ref={this.refCheckAllInput}
+                refer={`refer-multiselect`}
+                label={`Selecionar Todos`}
+                name="chack-all"
+                class="select-all"
+                onBdsChange={(ev) => this.handleCheckAll(ev)}
+              ></bds-checkbox>
+            )}
+            {this.checkedOptions?.length > 0 && (
+              <span class="content-divisor">
+                <span class="divisor"></span>
+              </span>
+            )}
+            {this.internalOptions ? (
+              this.internalOptions.map((option, idx) => (
+                <bds-select-option
+                  onOptionSelected={this.handler}
+                  onOptionChecked={this.handlerMultiselect}
+                  selected={this.value === option.value}
+                  value={option.value}
+                  key={idx}
+                  bulkOption={option.bulkOption}
+                  status={option.status}
+                  type-option={this.selectionType == 'multiple' ? 'checkbox' : 'default'}
+                >
+                  {option.label}
+                </bds-select-option>
+              ))
+            ) : (
+              <slot />
+            )}
+          </div>
+        )}
       </Host>
     );
   }

@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property     | Attribute     | Description                            | Type                 | Default   |
-| ------------ | ------------- | -------------------------------------- | -------------------- | --------- |
-| `activeMode` | `active-mode` | Open. Used to open/close the dropdown. | `"click" \| "hover"` | `'click'` |
-| `open`       | `open`        | Open. Used to open/close the dropdown. | `boolean`            | `false`   |
+| Property     | Attribute     | Description                            | Type                                                                                                                                                                                                           | Default   |
+| ------------ | ------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `activeMode` | `active-mode` | Open. Used to open/close the dropdown. | `"click" \| "hover"`                                                                                                                                                                                           | `'click'` |
+| `open`       | `open`        | Open. Used to open/close the dropdown. | `boolean`                                                                                                                                                                                                      | `false`   |
+| `position`   | `position`    | Used to set drop position              | `"auto" \| "bottom-center" \| "bottom-left" \| "bottom-right" \| "left-bottom" \| "left-center" \| "left-top" \| "right-bottom" \| "right-center" \| "right-top" \| "top-center" \| "top-left" \| "top-right"` | `'auto'`  |
 
 
 ## Events
@@ -22,6 +23,26 @@
 
 ## Methods
 
+### `setClose() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setOpen() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `toggle() => Promise<void>`
 
 
@@ -32,19 +53,6 @@ Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Used by
-
- - [bds-test-component](../test-component)
-
-### Graph
-```mermaid
-graph TD;
-  bds-test-component --> bds-dropdown
-  style bds-dropdown fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

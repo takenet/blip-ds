@@ -34,7 +34,7 @@ $input-width: 100%;
   @if ($name == 'disabled') {
     background: $color-surface-2;
   }
-  
+
   @include input-border($color-input-border);
 
   // States
@@ -68,7 +68,6 @@ $input-width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  flex: 1;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
@@ -103,7 +102,6 @@ $input-width: 100%;
 
   &--state {
     &-primary {
-
       .input__icon {
         position: relative;
         &::before {
@@ -209,6 +207,11 @@ $input-width: 100%;
     }
   }
 
+  & .icon-success {
+    color: $color-success;
+    margin-left: 4px;
+  }
+
   &--label {
     padding: $input-padding-label;
   }
@@ -265,6 +268,7 @@ $input-width: 100%;
     align-items: baseline;
     height: 20px;
     margin: 3.7px 2.5px;
+    gap: 4px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: $color-content-disable;
     word-break: break-word;
@@ -277,9 +281,7 @@ $input-width: 100%;
 
     &__icon {
       display: flex;
-      padding-right: 4px;
       margin-top: 0px;
-      padding-top: 2px;
     }
 
     &--danger {

@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Method, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
 
 let checkBoxIds = 0;
 @Component({
@@ -39,13 +39,6 @@ export class Checkbox {
     this.checkBoxId = this.refer || `bds-checkbox-${checkBoxIds++}`;
   }
 
-  @Watch('checked')
-  protected checkedChanged(isChecked: boolean): void {
-    this.bdsChange.emit({
-      checked: isChecked,
-    });
-  }
-
   /**
    * Emitted when the value has changed.
    */
@@ -66,8 +59,19 @@ export class Checkbox {
     return Promise.resolve(this.nativeInput.checked);
   }
 
+  @Method()
+  async toggle() {
+    this.checked = !this.checked;
+    this.bdsChange.emit({
+      checked: this.checked,
+    });
+  }
+
   private onClick = (): void => {
     this.checked = !this.checked;
+    this.bdsChange.emit({
+      checked: this.checked,
+    });
   };
 
   private refNativeInput = (input: HTMLInputElement): void => {
@@ -118,9 +122,11 @@ export class Checkbox {
           <div class="checkbox__icon">
             <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit"></bds-icon>
           </div>
-          <bds-typo class="checkbox__text" variant="fs-14" tag="span">
-            {this.label}
-          </bds-typo>
+          {this.label && (
+            <bds-typo class="checkbox__text" variant="fs-14" tag="span">
+              {this.label}
+            </bds-typo>
+          )}
         </label>
       </div>
     );

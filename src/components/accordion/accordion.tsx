@@ -5,7 +5,7 @@ import { Component, h, State, Element, Method, EventEmitter, Event, Watch, Prop 
   styleUrl: 'accordion.scss',
   shadow: true,
 })
-export class AccordionGroup {
+export class Accordion {
   private accGroup?: HTMLBdsAccordionGroupElement = null;
   private accheaders?: HTMLBdsAccordionHeaderElement = null;
   private accBodies?: HTMLBdsAccordionBodyElement = null;
@@ -49,13 +49,16 @@ export class AccordionGroup {
   async close() {
     this.accheaders?.close();
     this.accBodies?.close();
+    this.isOpen = false;
   }
 
+  // Método interno
   @Method()
   async notStart() {
     this.startOpen = false;
   }
 
+  // Método interno
   @Method()
   async reciveNumber(number) {
     this.numberElement = number;

@@ -1,0 +1,33 @@
+:host {
+  display: table-cell;
+  padding: 0 8px;
+  font-family: $font-family;
+  font-size: 14px;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  margin: 8px 0;
+  color: $color-content-default;
+  font-family: $font-family;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cell-custom {
+  gap: 8px;
+}
+
+.cell-action {
+  flex-direction: row;
+  gap: 8px;
+}
+
+:host:first-child {
+  padding-left: 16px;
+}
+
+:host:last-child {
+  padding-right: 16px;
+}

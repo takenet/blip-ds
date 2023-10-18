@@ -1,21 +1,34 @@
-import React from 'react';
-import readme from './readme.md';
+import React, { useEffect } from 'react';
+import DocumentationTemplate from './autocomplete.mdx';
+import { BdsAutocomplete, BdsSelectOption } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Autocomplete',
+  title: 'Components/Autocomplete',
+  tags: ['autodocs'],
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const Template = (args) => {
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '300px';
+    el[0].style.position = 'relative';
+    el[0].style.background = 'none';
+  }
   return (
     <bds-autocomplete
       label={args.label}
       icon={args.icon}
       value={args.value}
       disabled={args.disabled}
-      placeholder="Select"
+      placeholder={args.placeholder}
+      selection-type={args.selectionType}
+      selection-title={args.selectionTitle}
+      options-position="bottom"
     >
       <bds-select-option value="1">Millie Bobby</bds-select-option>
       <bds-select-option value="2">Finn Wolfhard</bds-select-option>
@@ -26,44 +39,102 @@ const Template = (args) => {
     </bds-autocomplete>
   );
 };
+Properties.argTypes = {
+  label: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Coloque o texto de label.',
+    control: 'text',
+  },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina o ícone que será utilizado no botão (Apenas outline).',
+    control: 'text',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o componente vai estar desabilitado.',
+    control: 'boolean',
+  },
+  selectionType: {
+    table: {
+      defaultValue: { summary: 'single' },
+    },
+    description: 'Defina se o tipo de seleção dos itens no componente.',
+    options: ['single', 'multiple'],
+    control: 'select',
+  },
+  selectionTitle: {
+    table: {
+      defaultValue: { summary: '' },
+    },
+    description: 'Defina se o titulo para a multi-seleção.',
+    control: 'string',
+  },
+};
 
-const TemplateIconSlot = (args) => {
+Properties.args = {
+  label: 'Label',
+  icon: '',
+  disabled: false,
+  placeholder: 'Selecione uma opção',
+  selectionType: 'single',
+  selectionTitle: 'Selection Title',
+};
+
+export const Events = () => {
+  useEffect(() => {
+    const autocomplete = document.getElementById('autocomplete');
+    autocomplete.addEventListener('bdsMultiselectedChange', () => {
+      console.log('Evento Multiselected Change funcionando');
+    });
+    autocomplete.addEventListener('bdsBlur', () => {
+      console.log('Evento Blur funcionando');
+    });
+    autocomplete.addEventListener('bdsCancel', () => {
+      console.log('Evento Cancel funcionando');
+    });
+    autocomplete.addEventListener('bdsChange', () => {
+      console.log('Evento Change funcionando');
+    });
+    autocomplete.addEventListener('bdsFocus', () => {
+      console.log('Evento Focus funcionando');
+    });
+    autocomplete.addEventListener('bdsInput', () => {
+      console.log('Evento Input funcionando');
+    });
+    autocomplete.addEventListener('bdsSelectedChange', () => {
+      console.log('Evento Selected Change funcionando');
+    });
+  });
   return (
-    <bds-autocomplete
-      label={args.label}
-      icon={args.icon}
-      value={args.value}
-      disabled={args.disabled}
-      placeholder="Select"
-      search-only-title="false"
-    >
-      <bds-select-option value="1" slot-align="flex-start" title-text="Guest">
-        <bds-icon slot="input-left" name="eye-open" size="medium" color="#F66689"></bds-icon>
-        Only views contract information.
-      </bds-select-option>
-      <bds-select-option value="2" slot-align="flex-start" title-text="Member">
-        <bds-icon slot="input-left" name="edit" size="medium" color="#F9B42F"></bds-icon>
-        Creates and edits chatbots, but does not manage contract members.
-      </bds-select-option>
-      <bds-select-option value="3" slot-align="flex-start" title-text="Admin">
-        <bds-icon slot="input-left" name="avatar-user" size="medium" color="#2CC3D5"></bds-icon>
-        Edits all contract data, manages members, creates and edits chatbots.
-      </bds-select-option>
-    </bds-autocomplete>
+    <>
+      <bds-autocomplete id="autocomplete" label="label" icon="email" value="" disabled={false} placeholder="Select">
+        <bds-select-option value="1">Millie Bobby</bds-select-option>
+        <bds-select-option value="2">Finn Wolfhard</bds-select-option>
+        <bds-select-option value="3">David Harbour</bds-select-option>
+        <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
+        <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
+        <bds-select-option value="6">Noah Schnapp</bds-select-option>
+      </bds-autocomplete>
+    </>
   );
 };
 
-export const defaultSelect = Template.bind({});
-defaultSelect.args = { label: '', icon: '', value: null, disabled: false };
-
-export const iconSelect = Template.bind({});
-iconSelect.args = { label: '', icon: 'favorite', value: null, disabled: false };
-
-export const selectedSelect = Template.bind({});
-selectedSelect.args = { label: '', icon: '', value: 2, disabled: false };
-
-export const disabledSelect = Template.bind({});
-disabledSelect.args = { label: '', icon: '', value: 2, disabled: true };
-
-export const selectWithIconOnSlot = TemplateIconSlot.bind({});
-selectWithIconOnSlot.args = { label: '', icon: '', value: null, disabled: false };
+export const FrameworkReact = () => {
+  return (
+    <BdsAutocomplete label="label" icon="email" value="" disabled={false} placeholder="Select">
+      <BdsSelectOption value="1">Millie Bobby</BdsSelectOption>
+      <BdsSelectOption value="2">Finn Wolfhard</BdsSelectOption>
+      <BdsSelectOption value="3">David Harbour</BdsSelectOption>
+      <BdsSelectOption value="4">Gaten Matarazzo</BdsSelectOption>
+      <BdsSelectOption value="5">Caleb McLaughlin</BdsSelectOption>
+      <BdsSelectOption value="6">Noah Schnapp</BdsSelectOption>
+    </BdsAutocomplete>
+  );
+};

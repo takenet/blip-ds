@@ -26,6 +26,8 @@
 | `openEyes`       | `open-eyes`       |                                                                                                                                                                                  | `boolean`                                                             | `false`     |
 | `placeholder`    | `placeholder`     | A tip for the user who can enter no controls.                                                                                                                                    | `string`                                                              | `''`        |
 | `readonly`       | `readonly`        | If `true`, the user cannot modify the value.                                                                                                                                     | `boolean`                                                             | `false`     |
+| `success`        | `success`         | Add state success on input, use for use feedback.                                                                                                                                | `boolean`                                                             | `false`     |
+| `successMessage` | `success-message` | Indicated to pass an feeback to user.                                                                                                                                            | `string`                                                              | `''`        |
 | `value`          | `value`           | The value of the input.                                                                                                                                                          | `string`                                                              | `''`        |
 
 
@@ -51,10 +53,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../test-component)
-
 ### Depends on
 
 - [bds-icon](../icon)
@@ -65,7 +63,6 @@
 graph TD;
   bds-input-password --> bds-icon
   bds-input-password --> bds-typo
-  bds-test-component --> bds-input-password
   style bds-input-password fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

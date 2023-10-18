@@ -1,7 +1,8 @@
-import { Component, h, State, Prop, Method, Watch, Element } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element } from '@stencil/core';
 
 export type sidebarPosition = 'left' | 'right';
 export type sidebarType = 'over' | 'fixed';
+export type sidebarBackground = 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
 
 @Component({
   tag: 'bds-sidebar',
@@ -19,7 +20,7 @@ export class Sidebar {
   /**;
    * isOpen. Used to open sidebar.
    */
-  @Prop({ mutable: true, reflect: true }) isOpen?: boolean = false;
+  @Prop({ mutable: true, reflect: true }) isOpen?: boolean = this.type === 'fixed' ? true : false;
 
   /**
    * sidebar position. Used to position the sidebar. Either on the left or on the right.
@@ -35,6 +36,31 @@ export class Sidebar {
    * If true, a lateral margin will apear in the content.
    */
   @Prop() margin?: boolean = true;
+  /**
+   * Width, number to define sidebar width.
+   */
+  @Prop() width?: number = 360;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtOutzone is the data-test to button close.
+   */
+  @Prop() dtOutzone?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
+  /**
+   * Width, number to define sidebar width.
+   */
+  @Prop() background?: sidebarBackground = 'surface-2';
+
+  /**
+   * Emitted when the isOpen has changed.
+   */
+  @Event() bdsToggle!: EventEmitter;
 
   @Method()
   async toggle() {
@@ -43,6 +69,7 @@ export class Sidebar {
 
   @Watch('isOpen')
   isOpenChanged(newValue: boolean): void {
+    this.bdsToggle.emit({ value: newValue });
     if (newValue === true) {
       document.addEventListener('keyup', this.listiner, false);
     } else {
@@ -53,11 +80,10 @@ export class Sidebar {
   componentWillLoad() {
     this.hasFooterSlot = !!this.hostElement.querySelector('[slot="footer"]');
     this.hasHeaderSlot = !!this.hostElement.querySelector('[slot="header"]');
-    this.type === 'fixed' ? (this.isOpen = true) : '';
   }
 
   private listiner = (event) => {
-    if (event.key == 'Escape') {
+    if (event.key == 'Escape' && this.type !== 'fixed') {
       this.isOpen = false;
     }
   };
@@ -75,14 +101,20 @@ export class Sidebar {
           [`type_${this.type}`]: true,
         }}
       >
-        {this.type === 'over' ? <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()}></div> : ''}
+        {this.type === 'over' ? (
+          <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
+        ) : (
+          ''
+        )}
         <div
           class={{
             sidebar: true,
             is_open: this.isOpen,
             [`type_${this.type}`]: true,
             [`position_${this.sidebarPosition}`]: true,
+            [`background_${this.background}`]: true,
           }}
+          style={{ width: `${this.width < 144 ? 144 : this.width}px` }}
         >
           {this.hasHeaderSlot && (
             <div class={{ header: true }}>
@@ -100,6 +132,7 @@ export class Sidebar {
                   size="short"
                   variant="secondary"
                   onClick={() => this.onClickCloseButtom()}
+                  dataTest={this.dtButtonClose}
                 ></bds-button-icon>
               )}
             </div>

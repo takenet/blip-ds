@@ -11,4 +11,5 @@ export interface Data {
   icon?: string;
   chips?: string[];
   actionsButtons?: string[];
+  dataTest?: string;
 }

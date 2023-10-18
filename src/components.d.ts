@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
+import { SelectionType } from "./components/autocomplete/autocomplete";
 import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
@@ -16,6 +17,8 @@ import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/b
 import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
+import { justifyContent } from "./components/card/card-footer/card-footer";
+import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { Color, Size } from "./components/chip-clickable/chip-clickable";
 import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -25,8 +28,8 @@ import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-import { activeMode } from "./components/dropdown/dropdown";
-import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from "./components/grid/grid-interface";
+import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
+import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
@@ -41,11 +44,14 @@ import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant a
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
+import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
+import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
-import { SwitchSize } from "./components/bds-switch/bds-switch";
-import { Overflow } from "./components/tabs/tabs-interface";
+import { TypeOption } from "./components/select-option/select-option";
+import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
+import { SwitchSize } from "./components/switch/switch";
+import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
@@ -73,6 +79,7 @@ export namespace Components {
           * Focus Selected. Used to add title in header accordion.
          */
         "collapse"?: collapses;
+        "openAll": (actNumber: any) => Promise<void>;
     }
     interface BdsAccordionHeader {
         /**
@@ -103,6 +110,10 @@ export namespace Components {
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Define whether the component will occupy the entire screen or just the parent.
+         */
+        "position"?: string;
         /**
           * Can be used outside to open/close the alert
          */
@@ -148,6 +159,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Is Loading, is the prop to enable that the component is loading.
+         */
+        "loading"?: boolean;
+        /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | AutocompleteOption[];
@@ -167,6 +182,14 @@ export namespace Components {
           * the item selected.
          */
         "selected"?: HTMLBdsSelectOptionElement | null;
+        /**
+          * Selection Title, Prop to enable title to select.
+         */
+        "selectionTitle"?: string;
+        /**
+          * Multiselect, Prop to enable multi selections.
+         */
+        "selectionType"?: SelectionType;
         /**
           * the value of the select.
          */
@@ -248,6 +271,10 @@ export namespace Components {
           * Set if the banner is external or internal.
          */
         "context"?: Context;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         "toggle": () => Promise<void>;
         /**
           * Set the banner varient, it can be 'system' or 'warning'.
@@ -255,6 +282,10 @@ export namespace Components {
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Set the link pass.
          */
@@ -328,6 +359,22 @@ export namespace Components {
          */
         "variant"?: IconButtonVariant;
     }
+    interface BdsCard {
+        /**
+          * If the prop is true, the component will be clickable.
+         */
+        "clickable"?: boolean;
+        /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
+          * Prop for set the width of the component.
+         */
+        "width"?: string;
+    }
+    interface BdsCardBody {
+    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -350,6 +397,30 @@ export namespace Components {
          */
         "variable": string;
     }
+    interface BdsCardFooter {
+        /**
+          * Prop for internal elements alignment. Will follow the same values of css.
+         */
+        "align"?: justifyContent;
+    }
+    interface BdsCardHeader {
+        /**
+          * Prop for internal elements alignment. Will follow the same values of css.
+         */
+        "align"?: justifyContent;
+    }
+    interface BdsCardSubtitle {
+        /**
+          * Set the card subtitle.
+         */
+        "text"?: string;
+    }
+    interface BdsCardTitle {
+        /**
+          * Set the card title.
+         */
+        "text"?: string;
+    }
     interface BdsCheckbox {
         /**
           * If `true`, the checkbox is selected.
@@ -371,6 +442,7 @@ export namespace Components {
          */
         "name": string;
         "refer": string;
+        "toggle": () => Promise<void>;
     }
     interface BdsChip {
         /**
@@ -432,6 +504,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -472,6 +548,10 @@ export namespace Components {
          */
         "color"?: Color;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -483,11 +563,74 @@ export namespace Components {
         "max"?: number;
         "warning"?: CounterTextRule;
     }
+    interface BdsDataTable {
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
+          * Prop to activate the possibility of use avatar in any column.
+         */
+        "avatar"?: boolean;
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
+          * Prop to recive the header and configuration of table.
+         */
+        "column"?: string;
+        "deleteItem": (index: number) => Promise<void>;
+        /**
+          * Prop to recive the content of the table.
+         */
+        "options"?: string;
+        /**
+          * Prop to activate the sorting.
+         */
+        "sorting"?: boolean;
+    }
     interface BdsDatepicker {
         /**
           * Disabled input.
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClear is the data-test to button clear.
+         */
+        "dtButtonClear"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputEnd is the data-test to input end.
+         */
+        "dtInputEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputStart is the data-test to input start.
+         */
+        "dtInputStart"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to outzone.
+         */
+        "dtOutzone"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
         /**
           * EndDateLimit. Insert a limiter to select the date period.
          */
@@ -523,6 +666,22 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
+        /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
@@ -557,6 +716,22 @@ export namespace Components {
          */
         "dateSelect"?: Date;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
+        /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
@@ -578,6 +753,12 @@ export namespace Components {
           * Open. Used to open/close the dropdown.
          */
         "open"?: boolean;
+        /**
+          * Used to set drop position
+         */
+        "position"?: DropdownPostionType;
+        "setClose": () => Promise<void>;
+        "setOpen": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsExpansionPanel {
@@ -597,7 +778,7 @@ export namespace Components {
         "flexWrap"?: flexWrap;
         "gap"?: gap;
         "height"?: string;
-        "justifyContent"?: justifyContent;
+        "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
         "margin"?: margin;
@@ -843,6 +1024,10 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -862,6 +1047,10 @@ export namespace Components {
           * Disabled input
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         /**
           * Do not accept duplicate chip elements.
          */
@@ -895,6 +1084,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Set maximum length value for chips
+         */
+        "maxChipsLength"?: number;
+        /**
           * Set maximum length value for the chip content
          */
         "maxlength"?: number;
@@ -904,6 +1097,14 @@ export namespace Components {
         "placeholder"?: string;
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
@@ -922,6 +1123,18 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEdit is the data-test to button edit.
+         */
+        "dtButtonEdit"?: string;
         /**
           * Indicated to pass an feeback to user.
          */
@@ -962,6 +1175,14 @@ export namespace Components {
           * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
          */
         "size"?: SizeInputEditable;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * The value of the input.
          */
@@ -1034,6 +1255,14 @@ export namespace Components {
          */
         "readonly": boolean;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -1052,6 +1281,10 @@ export namespace Components {
           * Disabled input.
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+         */
+        "dtSelectFlag"?: string;
         /**
           * Indicated to pass an feeback to user.
          */
@@ -1086,6 +1319,14 @@ export namespace Components {
          */
         "requiredErrorMessage": string;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * The value of the phone number input.
          */
         "text"?: string;
@@ -1114,6 +1355,10 @@ export namespace Components {
          */
         "actionsButtons": string | string[];
         /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "active"?: boolean;
+        /**
           * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
@@ -1121,6 +1366,10 @@ export namespace Components {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Enable rounded border on item
+         */
+        "borderRadius"?: boolean;
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
@@ -1130,6 +1379,10 @@ export namespace Components {
           * Clickable. Used to define if the item is clickable or not.
          */
         "clickable"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -1293,9 +1546,21 @@ export namespace Components {
          */
         "closeButton"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
+        /**
           * Used to open/close the modal
          */
         "open"?: boolean;
+        /**
+          * If true, the modal will close clicking outside the component.
+         */
+        "outzoneClose"?: boolean;
         /**
           * Used to change the modal heights.
          */
@@ -1313,7 +1578,47 @@ export namespace Components {
          */
         "active"?: boolean;
     }
+    interface BdsNavbar {
+        /**
+          * Width, number to define navbar width.
+         */
+        "backgroundColor"?: navbarBackground;
+        /**
+          * Justify Content. Used to align itens in navbar.
+         */
+        "justifyContent"?: justifyContent;
+        /**
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
+         */
+        "orientation"?: orientation;
+    }
+    interface BdsNavbarContent {
+    }
     interface BdsPagination {
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+         */
+        "dtSelectNumber"?: string;
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: PaginationOptionsPositionType;
         /**
           * Prop to recive the number of pages.
          */
@@ -1350,6 +1655,10 @@ export namespace Components {
           * Text, property to define status of component.
          */
         "color"?: progressBarColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Percent, property to enter the progress bar status percentage value.
          */
@@ -1442,6 +1751,14 @@ export namespace Components {
           * Placeholder for native input element.
          */
         "placeholder"?: string;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * the value of the select.
          */
@@ -1540,6 +1857,14 @@ export namespace Components {
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
         "type": InputChipsTypes;
@@ -1553,6 +1878,10 @@ export namespace Components {
           * Quantity Description on option value, this item is locate to rigth in component.
          */
         "bulkOption"?: string;
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked": boolean;
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -1569,6 +1898,7 @@ export namespace Components {
           * Add state danger on input, use for use feedback.
          */
         "invisible"?: boolean;
+        "markOff": () => Promise<void>;
         /**
           * The text value of the option.
          */
@@ -1585,9 +1915,27 @@ export namespace Components {
           * If set, a title will be shown under the text
          */
         "titleText": string;
+        "toMark": () => Promise<void>;
+        "toggle": () => Promise<void>;
+        /**
+          * Type Option. Used toselect type of item list.
+         */
+        "typeOption"?: TypeOption;
         "value": any;
     }
     interface BdsSidebar {
+        /**
+          * Width, number to define sidebar width.
+         */
+        "background"?: sidebarBackground;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
         /**
           * ; isOpen. Used to open sidebar.
          */
@@ -1605,6 +1953,10 @@ export namespace Components {
           * sidebar type. Used to define how open.
          */
         "type"?: sidebarType;
+        /**
+          * Width, number to define sidebar width.
+         */
+        "width"?: number;
     }
     interface BdsStep {
         /**
@@ -1615,6 +1967,10 @@ export namespace Components {
           * Used to complete the step
          */
         "completed"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Used to set the step as disabled
          */
@@ -1705,9 +2061,25 @@ export namespace Components {
     }
     interface BdsTabGroup {
         "align": 'left' | 'center' | 'right';
-        "scrollable"?: boolean;
+        "contentScrollable"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
     }
     interface BdsTabItem {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Prop for disable the especific tab.
+         */
+        "disable"?: boolean;
         /**
           * The text to be shown at the Tab item.
          */
@@ -1729,31 +2101,28 @@ export namespace Components {
         "group": string;
     }
     interface BdsTable {
+    }
+    interface BdsTableBody {
+    }
+    interface BdsTableCell {
+        "sortable": boolean;
+        "type"?: string;
+    }
+    interface BdsTableHeader {
+    }
+    interface BdsTableRow {
         /**
-          * Prop to activate the possibility of use chip in any column.
+          * Prop to make hover animation.
          */
-        "actionArea"?: boolean;
+        "clickable"?: boolean;
         /**
-          * Prop to activate the possibility of use avatar in any column.
+          * Prop to highlight the row selected.
          */
-        "avatar"?: boolean;
-        /**
-          * Prop to activate the possibility of use chip in any column.
-         */
-        "chips"?: boolean;
-        /**
-          * Prop to recive the header and configuration of table.
-         */
-        "column"?: string;
-        "deleteItem": (index: number) => Promise<void>;
-        /**
-          * Prop to recive the content of the table.
-         */
-        "options"?: string;
-        /**
-          * Prop to activate the sorting.
-         */
-        "sorting"?: boolean;
+        "selected"?: boolean;
+    }
+    interface BdsTableTh {
+        "arrow": string;
+        "sortable": boolean;
     }
     interface BdsTabs {
         "align": 'left' | 'center' | 'right';
@@ -1787,6 +2156,14 @@ export namespace Components {
           * Can be used outside to open the toast
          */
         "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonAction is the data-test to button action.
+         */
+        "dtButtonAction"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
@@ -1830,7 +2207,7 @@ export namespace Components {
         /**
           * Used to disable tooltip when the button are avalible
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * Used to set tooltip position
          */
@@ -1943,6 +2320,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsCardElement;
+}
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCheckboxElement;
@@ -1958,6 +2339,10 @@ export interface BdsChipClickableCustomEvent<T> extends CustomEvent<T> {
 export interface BdsChipSelectedCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsChipSelectedElement;
+}
+export interface BdsDataTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsDataTableElement;
 }
 export interface BdsDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2035,6 +2420,10 @@ export interface BdsSelectOptionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSelectOptionElement;
 }
+export interface BdsSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSidebarElement;
+}
 export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSwitchElement;
@@ -2047,9 +2436,9 @@ export interface BdsTabGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsTabGroupElement;
 }
-export interface BdsTableCustomEvent<T> extends CustomEvent<T> {
+export interface BdsTabItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLBdsTableElement;
+    target: HTMLBdsTabItemElement;
 }
 export interface BdsTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2160,11 +2549,47 @@ declare global {
         prototype: HTMLBdsButtonIconElement;
         new (): HTMLBdsButtonIconElement;
     };
+    interface HTMLBdsCardElement extends Components.BdsCard, HTMLStencilElement {
+    }
+    var HTMLBdsCardElement: {
+        prototype: HTMLBdsCardElement;
+        new (): HTMLBdsCardElement;
+    };
+    interface HTMLBdsCardBodyElement extends Components.BdsCardBody, HTMLStencilElement {
+    }
+    var HTMLBdsCardBodyElement: {
+        prototype: HTMLBdsCardBodyElement;
+        new (): HTMLBdsCardBodyElement;
+    };
     interface HTMLBdsCardColorElement extends Components.BdsCardColor, HTMLStencilElement {
     }
     var HTMLBdsCardColorElement: {
         prototype: HTMLBdsCardColorElement;
         new (): HTMLBdsCardColorElement;
+    };
+    interface HTMLBdsCardFooterElement extends Components.BdsCardFooter, HTMLStencilElement {
+    }
+    var HTMLBdsCardFooterElement: {
+        prototype: HTMLBdsCardFooterElement;
+        new (): HTMLBdsCardFooterElement;
+    };
+    interface HTMLBdsCardHeaderElement extends Components.BdsCardHeader, HTMLStencilElement {
+    }
+    var HTMLBdsCardHeaderElement: {
+        prototype: HTMLBdsCardHeaderElement;
+        new (): HTMLBdsCardHeaderElement;
+    };
+    interface HTMLBdsCardSubtitleElement extends Components.BdsCardSubtitle, HTMLStencilElement {
+    }
+    var HTMLBdsCardSubtitleElement: {
+        prototype: HTMLBdsCardSubtitleElement;
+        new (): HTMLBdsCardSubtitleElement;
+    };
+    interface HTMLBdsCardTitleElement extends Components.BdsCardTitle, HTMLStencilElement {
+    }
+    var HTMLBdsCardTitleElement: {
+        prototype: HTMLBdsCardTitleElement;
+        new (): HTMLBdsCardTitleElement;
     };
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
     }
@@ -2201,6 +2626,12 @@ declare global {
     var HTMLBdsCounterTextElement: {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
+    };
+    interface HTMLBdsDataTableElement extends Components.BdsDataTable, HTMLStencilElement {
+    }
+    var HTMLBdsDataTableElement: {
+        prototype: HTMLBdsDataTableElement;
+        new (): HTMLBdsDataTableElement;
     };
     interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
     }
@@ -2376,6 +2807,18 @@ declare global {
         prototype: HTMLBdsModalCloseButtonElement;
         new (): HTMLBdsModalCloseButtonElement;
     };
+    interface HTMLBdsNavbarElement extends Components.BdsNavbar, HTMLStencilElement {
+    }
+    var HTMLBdsNavbarElement: {
+        prototype: HTMLBdsNavbarElement;
+        new (): HTMLBdsNavbarElement;
+    };
+    interface HTMLBdsNavbarContentElement extends Components.BdsNavbarContent, HTMLStencilElement {
+    }
+    var HTMLBdsNavbarContentElement: {
+        prototype: HTMLBdsNavbarContentElement;
+        new (): HTMLBdsNavbarContentElement;
+    };
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
     }
     var HTMLBdsPaginationElement: {
@@ -2478,6 +2921,36 @@ declare global {
         prototype: HTMLBdsTableElement;
         new (): HTMLBdsTableElement;
     };
+    interface HTMLBdsTableBodyElement extends Components.BdsTableBody, HTMLStencilElement {
+    }
+    var HTMLBdsTableBodyElement: {
+        prototype: HTMLBdsTableBodyElement;
+        new (): HTMLBdsTableBodyElement;
+    };
+    interface HTMLBdsTableCellElement extends Components.BdsTableCell, HTMLStencilElement {
+    }
+    var HTMLBdsTableCellElement: {
+        prototype: HTMLBdsTableCellElement;
+        new (): HTMLBdsTableCellElement;
+    };
+    interface HTMLBdsTableHeaderElement extends Components.BdsTableHeader, HTMLStencilElement {
+    }
+    var HTMLBdsTableHeaderElement: {
+        prototype: HTMLBdsTableHeaderElement;
+        new (): HTMLBdsTableHeaderElement;
+    };
+    interface HTMLBdsTableRowElement extends Components.BdsTableRow, HTMLStencilElement {
+    }
+    var HTMLBdsTableRowElement: {
+        prototype: HTMLBdsTableRowElement;
+        new (): HTMLBdsTableRowElement;
+    };
+    interface HTMLBdsTableThElement extends Components.BdsTableTh, HTMLStencilElement {
+    }
+    var HTMLBdsTableThElement: {
+        prototype: HTMLBdsTableThElement;
+        new (): HTMLBdsTableThElement;
+    };
     interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
     }
     var HTMLBdsTabsElement: {
@@ -2549,13 +3022,20 @@ declare global {
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
+        "bds-card": HTMLBdsCardElement;
+        "bds-card-body": HTMLBdsCardBodyElement;
         "bds-card-color": HTMLBdsCardColorElement;
+        "bds-card-footer": HTMLBdsCardFooterElement;
+        "bds-card-header": HTMLBdsCardHeaderElement;
+        "bds-card-subtitle": HTMLBdsCardSubtitleElement;
+        "bds-card-title": HTMLBdsCardTitleElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-chip-clickable": HTMLBdsChipClickableElement;
         "bds-chip-selected": HTMLBdsChipSelectedElement;
         "bds-chip-tag": HTMLBdsChipTagElement;
         "bds-counter-text": HTMLBdsCounterTextElement;
+        "bds-data-table": HTMLBdsDataTableElement;
         "bds-datepicker": HTMLBdsDatepickerElement;
         "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
         "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
@@ -2585,6 +3065,8 @@ declare global {
         "bds-modal": HTMLBdsModalElement;
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
+        "bds-navbar": HTMLBdsNavbarElement;
+        "bds-navbar-content": HTMLBdsNavbarContentElement;
         "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
@@ -2602,6 +3084,11 @@ declare global {
         "bds-tab-item": HTMLBdsTabItemElement;
         "bds-tab-panel": HTMLBdsTabPanelElement;
         "bds-table": HTMLBdsTableElement;
+        "bds-table-body": HTMLBdsTableBodyElement;
+        "bds-table-cell": HTMLBdsTableCellElement;
+        "bds-table-header": HTMLBdsTableHeaderElement;
+        "bds-table-row": HTMLBdsTableRowElement;
+        "bds-table-th": HTMLBdsTableThElement;
         "bds-tabs": HTMLBdsTabsElement;
         "bds-test-component": HTMLBdsTestComponentElement;
         "bds-theme-provider": HTMLBdsThemeProviderElement;
@@ -2643,6 +3130,10 @@ declare namespace LocalJSX {
           * bdsAccordionCloseAll. Event to return value when accordion is closed.
          */
         "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
+        /**
+          * bdsAccordionOpenAll. Event to return value when accordion is opend.
+         */
+        "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
     }
     interface BdsAccordionHeader {
         /**
@@ -2671,6 +3162,10 @@ declare namespace LocalJSX {
           * Used to open/close the alert
          */
         "open"?: boolean;
+        /**
+          * Define whether the component will occupy the entire screen or just the parent.
+         */
+        "position"?: string;
     }
     interface BdsAlertActions {
     }
@@ -2712,6 +3207,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Is Loading, is the prop to enable that the component is loading.
+         */
+        "loading"?: boolean;
+        /**
           * Emitted when the select loses focus.
          */
         "onBdsBlur"?: (event: BdsAutocompleteCustomEvent<void>) => void;
@@ -2731,6 +3230,10 @@ declare namespace LocalJSX {
           * Emitted when the input has changed.
          */
         "onBdsInput"?: (event: BdsAutocompleteCustomEvent<KeyboardEvent>) => void;
+        /**
+          * Emitted when the selected value has changed.
+         */
+        "onBdsMultiselectedChange"?: (event: BdsAutocompleteCustomEvent<any>) => void;
         /**
           * Emitted when the selected value has changed.
          */
@@ -2755,6 +3258,14 @@ declare namespace LocalJSX {
           * the item selected.
          */
         "selected"?: HTMLBdsSelectOptionElement | null;
+        /**
+          * Selection Title, Prop to enable title to select.
+         */
+        "selectionTitle"?: string;
+        /**
+          * Multiselect, Prop to enable multi selections.
+         */
+        "selectionType"?: SelectionType;
         /**
           * the value of the select.
          */
@@ -2839,6 +3350,10 @@ declare namespace LocalJSX {
          */
         "context"?: Context;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * Emitted when the banner is closed.
          */
         "onBdsBannerClose"?: (event: BdsBannerCustomEvent<any>) => void;
@@ -2848,6 +3363,10 @@ declare namespace LocalJSX {
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Set the link pass.
          */
@@ -2929,6 +3448,26 @@ declare namespace LocalJSX {
          */
         "variant"?: IconButtonVariant;
     }
+    interface BdsCard {
+        /**
+          * If the prop is true, the component will be clickable.
+         */
+        "clickable"?: boolean;
+        /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
+          * This event will be dispatch when click on the component.
+         */
+        "onBdsClick"?: (event: BdsCardCustomEvent<any>) => void;
+        /**
+          * Prop for set the width of the component.
+         */
+        "width"?: string;
+    }
+    interface BdsCardBody {
+    }
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
@@ -2950,6 +3489,30 @@ declare namespace LocalJSX {
           * Specifies variabel sass color, _variables.scss.
          */
         "variable": string;
+    }
+    interface BdsCardFooter {
+        /**
+          * Prop for internal elements alignment. Will follow the same values of css.
+         */
+        "align"?: justifyContent;
+    }
+    interface BdsCardHeader {
+        /**
+          * Prop for internal elements alignment. Will follow the same values of css.
+         */
+        "align"?: justifyContent;
+    }
+    interface BdsCardSubtitle {
+        /**
+          * Set the card subtitle.
+         */
+        "text"?: string;
+    }
+    interface BdsCardTitle {
+        /**
+          * Set the card title.
+         */
+        "text"?: string;
     }
     interface BdsCheckbox {
         /**
@@ -3043,6 +3606,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -3089,6 +3656,10 @@ declare namespace LocalJSX {
          */
         "color"?: Color;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -3100,11 +3671,76 @@ declare namespace LocalJSX {
         "max"?: number;
         "warning"?: CounterTextRule;
     }
+    interface BdsDataTable {
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "actionArea"?: boolean;
+        /**
+          * Prop to activate the possibility of use avatar in any column.
+         */
+        "avatar"?: boolean;
+        /**
+          * Prop to activate the possibility of use chip in any column.
+         */
+        "chips"?: boolean;
+        /**
+          * Prop to recive the header and configuration of table.
+         */
+        "column"?: string;
+        "onBdsTableChange"?: (event: BdsDataTableCustomEvent<any>) => void;
+        "onBdsTableClick"?: (event: BdsDataTableCustomEvent<any>) => void;
+        "onBdsTableDelete"?: (event: BdsDataTableCustomEvent<any>) => void;
+        /**
+          * Prop to recive the content of the table.
+         */
+        "options"?: string;
+        /**
+          * Prop to activate the sorting.
+         */
+        "sorting"?: boolean;
+    }
     interface BdsDatepicker {
         /**
           * Disabled input.
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClear is the data-test to button clear.
+         */
+        "dtButtonClear"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputEnd is the data-test to input end.
+         */
+        "dtInputEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputStart is the data-test to input start.
+         */
+        "dtInputStart"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to outzone.
+         */
+        "dtOutzone"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
         /**
           * EndDateLimit. Insert a limiter to select the date period.
          */
@@ -3148,6 +3784,22 @@ declare namespace LocalJSX {
     }
     interface BdsDatepickerPeriod {
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
+        /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
@@ -3186,6 +3838,22 @@ declare namespace LocalJSX {
          */
         "dateSelect"?: Date;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
+         */
+        "dtSelectYear"?: string;
+        /**
           * EndDate. Insert a limiter to select the date period.
          */
         "endDate"?: DaysList;
@@ -3215,6 +3883,10 @@ declare namespace LocalJSX {
           * Open. Used to open/close the dropdown.
          */
         "open"?: boolean;
+        /**
+          * Used to set drop position
+         */
+        "position"?: DropdownPostionType;
     }
     interface BdsExpansionPanel {
     }
@@ -3233,7 +3905,7 @@ declare namespace LocalJSX {
         "flexWrap"?: flexWrap;
         "gap"?: gap;
         "height"?: string;
-        "justifyContent"?: justifyContent;
+        "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
         "lgOffset"?: breakpoint;
         "margin"?: margin;
@@ -3485,6 +4157,10 @@ declare namespace LocalJSX {
          */
         "chips"?: string[] | string;
         /**
+          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+         */
+        "counterLength"?: boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -3504,6 +4180,10 @@ declare namespace LocalJSX {
           * Disabled input
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         /**
           * Do not accept duplicate chip elements.
          */
@@ -3529,6 +4209,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Set maximum length value for chips
+         */
+        "maxChipsLength"?: number;
+        /**
           * Set maximum length value for the chip content
          */
         "maxlength"?: number;
@@ -3545,6 +4229,10 @@ declare namespace LocalJSX {
          */
         "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
+          * Emitted when a maximum value defined by the "max-chips-length" prop is entered
+         */
+        "onBdsExtendedQuantityInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        /**
           * Emitted when the chip has added.
          */
         "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<any>) => void;
@@ -3560,6 +4248,14 @@ declare namespace LocalJSX {
           * A tip for the user who can enter no controls.
          */
         "placeholder"?: string;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
@@ -3578,6 +4274,18 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEdit is the data-test to button edit.
+         */
+        "dtButtonEdit"?: string;
         /**
           * Indicated to pass an feeback to user.
          */
@@ -3642,6 +4350,14 @@ declare namespace LocalJSX {
           * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
          */
         "size"?: SizeInputEditable;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * The value of the input.
          */
@@ -3738,6 +4454,14 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * The value of the input.
          */
         "value"?: string | null;
@@ -3755,6 +4479,10 @@ declare namespace LocalJSX {
           * Disabled input.
          */
         "disabled"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+         */
+        "dtSelectFlag"?: string;
         /**
           * Indicated to pass an feeback to user.
          */
@@ -3808,6 +4536,14 @@ declare namespace LocalJSX {
          */
         "requiredErrorMessage"?: string;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * The value of the phone number input.
          */
         "text"?: string;
@@ -3852,6 +4588,10 @@ declare namespace LocalJSX {
          */
         "actionsButtons"?: string | string[];
         /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "active"?: boolean;
+        /**
           * AvatarName. Used to enter the avatar name.
          */
         "avatarName"?: string;
@@ -3859,6 +4599,10 @@ declare namespace LocalJSX {
           * AvatarThumbnail. Used to insert the avatar photo.
          */
         "avatarThumbnail"?: string;
+        /**
+          * Enable rounded border on item
+         */
+        "borderRadius"?: boolean;
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
@@ -3868,6 +4612,10 @@ declare namespace LocalJSX {
           * Clickable. Used to define if the item is clickable or not.
          */
         "clickable"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -4042,6 +4790,14 @@ declare namespace LocalJSX {
          */
         "closeButton"?: boolean;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
+        /**
           * Emitted when modal status has changed.
          */
         "onBdsModalChanged"?: (event: BdsModalCustomEvent<any>) => void;
@@ -4049,6 +4805,10 @@ declare namespace LocalJSX {
           * Used to open/close the modal
          */
         "open"?: boolean;
+        /**
+          * If true, the modal will close clicking outside the component.
+         */
+        "outzoneClose"?: boolean;
         /**
           * Used to change the modal heights.
          */
@@ -4062,11 +4822,51 @@ declare namespace LocalJSX {
          */
         "active"?: boolean;
     }
+    interface BdsNavbar {
+        /**
+          * Width, number to define navbar width.
+         */
+        "backgroundColor"?: navbarBackground;
+        /**
+          * Justify Content. Used to align itens in navbar.
+         */
+        "justifyContent"?: justifyContent;
+        /**
+          * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
+         */
+        "orientation"?: orientation;
+    }
+    interface BdsNavbarContent {
+    }
     interface BdsPagination {
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+         */
+        "dtSelectNumber"?: string;
         /**
           * When de value of component change, the event are dispache.
          */
         "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        /**
+          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+         */
+        "optionsPosition"?: PaginationOptionsPositionType;
         /**
           * Prop to recive the number of pages.
          */
@@ -4103,6 +4903,10 @@ declare namespace LocalJSX {
           * Text, property to define status of component.
          */
         "color"?: progressBarColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Percent, property to enter the progress bar status percentage value.
          */
@@ -4222,6 +5026,14 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * the value of the select.
          */
         "value"?: any | null;
@@ -4332,6 +5144,14 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
+        /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
          */
         "type"?: InputChipsTypes;
@@ -4345,6 +5165,10 @@ declare namespace LocalJSX {
           * Quantity Description on option value, this item is locate to rigth in component.
          */
         "bulkOption"?: string;
+        /**
+          * If `true`, the checkbox is selected.
+         */
+        "checked"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
          */
@@ -4361,6 +5185,7 @@ declare namespace LocalJSX {
           * Add state danger on input, use for use feedback.
          */
         "invisible"?: boolean;
+        "onOptionChecked"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         /**
           * The text value of the option.
@@ -4378,9 +5203,25 @@ declare namespace LocalJSX {
           * If set, a title will be shown under the text
          */
         "titleText"?: string;
+        /**
+          * Type Option. Used toselect type of item list.
+         */
+        "typeOption"?: TypeOption;
         "value": any;
     }
     interface BdsSidebar {
+        /**
+          * Width, number to define sidebar width.
+         */
+        "background"?: sidebarBackground;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
+         */
+        "dtOutzone"?: string;
         /**
           * ; isOpen. Used to open sidebar.
          */
@@ -4390,6 +5231,10 @@ declare namespace LocalJSX {
          */
         "margin"?: boolean;
         /**
+          * Emitted when the isOpen has changed.
+         */
+        "onBdsToggle"?: (event: BdsSidebarCustomEvent<any>) => void;
+        /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
          */
         "sidebarPosition"?: sidebarPosition;
@@ -4397,6 +5242,10 @@ declare namespace LocalJSX {
           * sidebar type. Used to define how open.
          */
         "type"?: sidebarType;
+        /**
+          * Width, number to define sidebar width.
+         */
+        "width"?: number;
     }
     interface BdsStep {
         /**
@@ -4407,6 +5256,10 @@ declare namespace LocalJSX {
           * Used to complete the step
          */
         "completed"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Used to set the step as disabled
          */
@@ -4476,13 +5329,33 @@ declare namespace LocalJSX {
     }
     interface BdsTabGroup {
         "align"?: 'left' | 'center' | 'right';
+        "contentScrollable"?: boolean;
         /**
-          * bdsTabChange. Event to return value when accordion is change.
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * bdsTabChange. Event to return value when Tabs is change.
          */
         "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
-        "scrollable"?: boolean;
+        /**
+          * bdsTabDisabled. Event to return value when Tabs disable is change.
+         */
+        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
     }
     interface BdsTabItem {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Prop for disable the especific tab.
+         */
+        "disable"?: boolean;
         /**
           * The text to be shown at the Tab item.
          */
@@ -4491,6 +5364,7 @@ declare namespace LocalJSX {
           * Use to set number of tabItem.
          */
         "numberElement"?: number;
+        "onTabDisabled"?: (event: BdsTabItemCustomEvent<any>) => void;
         /**
           * Used to open/close the Tab item.
          */
@@ -4503,33 +5377,28 @@ declare namespace LocalJSX {
         "group": string;
     }
     interface BdsTable {
+    }
+    interface BdsTableBody {
+    }
+    interface BdsTableCell {
+        "sortable"?: boolean;
+        "type"?: string;
+    }
+    interface BdsTableHeader {
+    }
+    interface BdsTableRow {
         /**
-          * Prop to activate the possibility of use chip in any column.
+          * Prop to make hover animation.
          */
-        "actionArea"?: boolean;
+        "clickable"?: boolean;
         /**
-          * Prop to activate the possibility of use avatar in any column.
+          * Prop to highlight the row selected.
          */
-        "avatar"?: boolean;
-        /**
-          * Prop to activate the possibility of use chip in any column.
-         */
-        "chips"?: boolean;
-        /**
-          * Prop to recive the header and configuration of table.
-         */
-        "column"?: string;
-        "onBdsTableChange"?: (event: BdsTableCustomEvent<any>) => void;
-        "onBdsTableClick"?: (event: BdsTableCustomEvent<any>) => void;
-        "onBdsTableDelete"?: (event: BdsTableCustomEvent<any>) => void;
-        /**
-          * Prop to recive the content of the table.
-         */
-        "options"?: string;
-        /**
-          * Prop to activate the sorting.
-         */
-        "sorting"?: boolean;
+        "selected"?: boolean;
+    }
+    interface BdsTableTh {
+        "arrow"?: string;
+        "sortable"?: boolean;
     }
     interface BdsTabs {
         "align"?: 'left' | 'center' | 'right';
@@ -4557,6 +5426,14 @@ declare namespace LocalJSX {
           * If the action type is button, this will be the text of the button:
          */
         "buttonText"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonAction is the data-test to button action.
+         */
+        "dtButtonAction"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
+         */
+        "dtButtonClose"?: string;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
          */
@@ -4705,13 +5582,20 @@ declare namespace LocalJSX {
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
         "bds-button-icon": BdsButtonIcon;
+        "bds-card": BdsCard;
+        "bds-card-body": BdsCardBody;
         "bds-card-color": BdsCardColor;
+        "bds-card-footer": BdsCardFooter;
+        "bds-card-header": BdsCardHeader;
+        "bds-card-subtitle": BdsCardSubtitle;
+        "bds-card-title": BdsCardTitle;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-chip-clickable": BdsChipClickable;
         "bds-chip-selected": BdsChipSelected;
         "bds-chip-tag": BdsChipTag;
         "bds-counter-text": BdsCounterText;
+        "bds-data-table": BdsDataTable;
         "bds-datepicker": BdsDatepicker;
         "bds-datepicker-period": BdsDatepickerPeriod;
         "bds-datepicker-single": BdsDatepickerSingle;
@@ -4741,6 +5625,8 @@ declare namespace LocalJSX {
         "bds-modal": BdsModal;
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
+        "bds-navbar": BdsNavbar;
+        "bds-navbar-content": BdsNavbarContent;
         "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
         "bds-progress-bar": BdsProgressBar;
@@ -4758,6 +5644,11 @@ declare namespace LocalJSX {
         "bds-tab-item": BdsTabItem;
         "bds-tab-panel": BdsTabPanel;
         "bds-table": BdsTable;
+        "bds-table-body": BdsTableBody;
+        "bds-table-cell": BdsTableCell;
+        "bds-table-header": BdsTableHeader;
+        "bds-table-row": BdsTableRow;
+        "bds-table-th": BdsTableTh;
         "bds-tabs": BdsTabs;
         "bds-test-component": BdsTestComponent;
         "bds-theme-provider": BdsThemeProvider;
@@ -4789,13 +5680,20 @@ declare module "@stencil/core" {
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
+            "bds-card": LocalJSX.BdsCard & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
+            "bds-card-body": LocalJSX.BdsCardBody & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;
             "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
+            "bds-card-footer": LocalJSX.BdsCardFooter & JSXBase.HTMLAttributes<HTMLBdsCardFooterElement>;
+            "bds-card-header": LocalJSX.BdsCardHeader & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
+            "bds-card-subtitle": LocalJSX.BdsCardSubtitle & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
+            "bds-card-title": LocalJSX.BdsCardTitle & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
             "bds-chip-selected": LocalJSX.BdsChipSelected & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
             "bds-chip-tag": LocalJSX.BdsChipTag & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
             "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
+            "bds-data-table": LocalJSX.BdsDataTable & JSXBase.HTMLAttributes<HTMLBdsDataTableElement>;
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
@@ -4825,6 +5723,8 @@ declare module "@stencil/core" {
             "bds-modal": LocalJSX.BdsModal & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
+            "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
+            "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
@@ -4842,6 +5742,11 @@ declare module "@stencil/core" {
             "bds-tab-item": LocalJSX.BdsTabItem & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
             "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-table": LocalJSX.BdsTable & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
+            "bds-table-body": LocalJSX.BdsTableBody & JSXBase.HTMLAttributes<HTMLBdsTableBodyElement>;
+            "bds-table-cell": LocalJSX.BdsTableCell & JSXBase.HTMLAttributes<HTMLBdsTableCellElement>;
+            "bds-table-header": LocalJSX.BdsTableHeader & JSXBase.HTMLAttributes<HTMLBdsTableHeaderElement>;
+            "bds-table-row": LocalJSX.BdsTableRow & JSXBase.HTMLAttributes<HTMLBdsTableRowElement>;
+            "bds-table-th": LocalJSX.BdsTableTh & JSXBase.HTMLAttributes<HTMLBdsTableThElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-test-component": LocalJSX.BdsTestComponent & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
             "bds-theme-provider": LocalJSX.BdsThemeProvider & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;

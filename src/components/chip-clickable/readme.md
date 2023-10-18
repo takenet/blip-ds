@@ -7,16 +7,17 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                                             | Type                                                                     | Default      |
-| ----------- | ----------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------ |
-| `avatar`    | `avatar`    | used for add avatar left container. Uses the bds-avatar component.      | `string`                                                                 | `undefined`  |
-| `clickable` | `clickable` | it makes the chip clickable.                                            | `boolean`                                                                | `false`      |
-| `close`     | `close`     | used for delete the chip.                                               | `boolean`                                                                | `false`      |
-| `color`     | `color`     | used for change the color. Uses one of them.                            | `"danger" \| "default" \| "info" \| "outline" \| "success" \| "warning"` | `'default'`  |
-| `dataTest`  | `data-test` | Data test is the prop to specifically test the component action object. | `string`                                                                 | `null`       |
-| `disabled`  | `disabled`  | the chip gone stay disabled while this prop be true.                    | `boolean`                                                                | `false`      |
-| `icon`      | `icon`      | used for add icon in left container. Uses the bds-icon component.       | `string`                                                                 | `undefined`  |
-| `size`      | `size`      | used for change the size chip. Uses one of them.                        | `"standard" \| "tall"`                                                   | `'standard'` |
+| Property        | Attribute         | Description                                                                                                             | Type                                                                     | Default      |
+| --------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------ |
+| `avatar`        | `avatar`          | used for add avatar left container. Uses the bds-avatar component.                                                      | `string`                                                                 | `undefined`  |
+| `clickable`     | `clickable`       | it makes the chip clickable.                                                                                            | `boolean`                                                                | `false`      |
+| `close`         | `close`           | used for delete the chip.                                                                                               | `boolean`                                                                | `false`      |
+| `color`         | `color`           | used for change the color. Uses one of them.                                                                            | `"danger" \| "default" \| "info" \| "outline" \| "success" \| "warning"` | `'default'`  |
+| `dataTest`      | `data-test`       | Data test is the prop to specifically test the component action object.                                                 | `string`                                                                 | `null`       |
+| `disabled`      | `disabled`        | the chip gone stay disabled while this prop be true.                                                                    | `boolean`                                                                | `false`      |
+| `dtButtonClose` | `dt-button-close` | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close. | `string`                                                                 | `null`       |
+| `icon`          | `icon`            | used for add icon in left container. Uses the bds-icon component.                                                       | `string`                                                                 | `undefined`  |
+| `size`          | `size`            | used for change the size chip. Uses one of them.                                                                        | `"standard" \| "tall"`                                                   | `'standard'` |
 
 
 ## Events
@@ -34,7 +35,6 @@
  - [bds-input-chips](../input-chips)
  - [bds-list-item](../list)
  - [bds-select-chips](../selects/select-chips)
- - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -53,7 +53,6 @@ graph TD;
   bds-input-chips --> bds-chip-clickable
   bds-list-item --> bds-chip-clickable
   bds-select-chips --> bds-chip-clickable
-  bds-test-component --> bds-chip-clickable
   style bds-chip-clickable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

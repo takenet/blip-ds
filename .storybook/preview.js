@@ -1,23 +1,34 @@
 import { defineCustomElements } from '../dist/esm/loader';
 import { withConsole } from '@storybook/addon-console';
+import './preview.css';
+
 defineCustomElements();
 
 export const globalTypes = {
-  theme: {
+  hasTheme: {
     name: 'Theme',
     description: 'Defina o tema que o componente será aplicado',
     defaultValue: 'light',
+    values: [
+      { name: 'light', value: '#ffffff' },
+      { name: 'dark', value: '#292929' },
+    ],
     toolbar: {
       icon: 'paintbrush',
       items: ['light', 'dark'],
-    }
-  }
-}
+    },
+  },
+};
 export const parameters = {
   decorators: [(storyFn, context) => withConsole()(storyFn)(context)],
   actions: { argTypesRegex: '^on[A-Z].*' },
+  options: {
+    storySort: {
+      order: ["Welcome", "Getting Started", "Tokens", "Components"]
+    }
+  },
   controls: {
-    expanded: true,
+    expanded: false,
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
@@ -25,31 +36,32 @@ export const parameters = {
   },
   layout: 'centered',
   backgrounds: {
-    disable: true
+    disable: true,
   },
 };
 
 export const decorators = [
   (Story, context) => {
-    const {theme} = context.globals;
-    const colors = {
-      light: {backgroundColor: '#ffffff', height: '100%', width: '100%'},
-      dark: {backgroundColor: '#292929', height: '100%', width: '100%'},
+    const { hasTheme } = context.globals;
+
+    const themeValue = () => {
+      if (hasTheme == 'light') {
+        return 'light';
+      } else if (hasTheme == 'dark') {
+        return 'dark';
+      }
     }
-    const handleBg = () => {
-      if(theme == 'light') {
-      return colors.light
-    } else if(theme== 'dark') {
-      return colors.dark;
-    }
-    }
-      
+
     return (
-      <bds-theme-provider theme={theme}>
-        <bds-grid padding="2" style={handleBg()} >
-          <Story {...context} />
-        </bds-grid>
-      </bds-theme-provider>
-    )
-  }
-]
+      <bds-grid height="100%" direction="column">
+        <bds-theme-provider theme={themeValue()}>
+          <bds-grid style={(themeValue() === 'dark' ? {backgroundColor: '#292929', minHeight: '100%', width:'100%'} : {backgroundColor: '#f6f6f6', minHeight: '100%', width:'100%'})} justify-content="center">
+            <bds-grid xxs="12" direction="column" padding="2">
+              <Story {...context} />
+            </bds-grid>
+          </bds-grid>
+        </bds-theme-provider>
+      </bds-grid>
+    );
+  },
+];

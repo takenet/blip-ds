@@ -39,6 +39,7 @@
  - [bds-chip-clickable](../chip-clickable)
  - [bds-chip-selected](../chip-selected)
  - [bds-chip-tag](../chip-tag)
+ - [bds-data-table](../table)
  - [bds-datepicker](../datepicker)
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
@@ -56,7 +57,7 @@
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
  - [bds-step](../stepper/step)
- - [bds-table](../table)
+ - [bds-table-th](../table/table-header-cell)
  - [bds-toast](../toast)
  - [bds-upload](../upload)
  - [bds-warning](../warning)
@@ -77,6 +78,7 @@ graph TD;
   bds-chip-clickable --> bds-icon
   bds-chip-selected --> bds-icon
   bds-chip-tag --> bds-icon
+  bds-data-table --> bds-icon
   bds-datepicker --> bds-icon
   bds-datepicker-period --> bds-icon
   bds-datepicker-single --> bds-icon
@@ -94,7 +96,7 @@ graph TD;
   bds-select --> bds-icon
   bds-select-chips --> bds-icon
   bds-step --> bds-icon
-  bds-table --> bds-icon
+  bds-table-th --> bds-icon
   bds-toast --> bds-icon
   bds-upload --> bds-icon
   bds-warning --> bds-icon

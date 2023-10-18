@@ -17,6 +17,10 @@ export class InputChips {
    */
   @State() validationDanger?: boolean = false;
   /**
+   * Used to enable or disable input
+   */
+  @State() inputAvalible?: boolean = true;
+  /**
    * Conditions the element to say whether it is pressed or not, to add styles.
    */
   @State() isPressed? = false;
@@ -52,6 +56,10 @@ export class InputChips {
   @Prop() maxlength?: number;
 
   /**
+   *  Set maximum length value for chips
+   */
+  @Prop() maxChipsLength?: number;
+  /**
    * used for add icon in input left. Uses the bds-icon component.
    */
   @Prop({ reflect: true }) icon?: string = '';
@@ -70,7 +78,10 @@ export class InputChips {
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true, mutable: true }) danger? = false;
-
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * The value of the input.
    */
@@ -95,7 +106,10 @@ export class InputChips {
    * Indicated to pass a help the user in complex filling.
    */
   @Prop() helperMessage?: string = '';
-
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Prop to insert the name of the input
    */
@@ -107,10 +121,19 @@ export class InputChips {
   @Prop() placeholder?: string = '';
 
   /**
+   * Passing true to display a counter of available size, it is necessary to
+   * pass another maxlength property.
+   */
+  @Prop() counterLength? = false;
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
-
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonClose is the data-test to button close.
+   */
+  @Prop() dtButtonClose?: string = null;
   /**
    * Emitted when the chip has added.
    */
@@ -136,6 +159,10 @@ export class InputChips {
    */
   @Event() bdsInputChipsInput!: EventEmitter;
 
+  /**
+   * Emitted when a maximum value defined by the "max-chips-length" prop is entered
+   */
+  @Event() bdsExtendedQuantityInput!: EventEmitter;
   /**
    * Emitted when the chip has added.
    */
@@ -163,6 +190,7 @@ export class InputChips {
 
   @Watch('internalChips')
   protected internalValueChanged(): void {
+    this.minMaxValidation();
     this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
@@ -212,6 +240,10 @@ export class InputChips {
     this.nativeInput.blur();
   }
 
+  componentDidLoad() {
+    this.minMaxValidation();
+  }
+
   componentWillLoad() {
     this.valueChanged();
   }
@@ -248,6 +280,17 @@ export class InputChips {
     }
     this.bdsInputChipsInput.emit(ev as KeyboardEvent);
   };
+
+  private minMaxValidation() {
+    if (!this.maxChipsLength == undefined) {
+      this.inputAvalible = true;
+    } else if (this.internalChips.length >= this.maxChipsLength) {
+      this.inputAvalible = false;
+      this.bdsExtendedQuantityInput.emit({ value: !this.inputAvalible });
+    } else {
+      this.inputAvalible = true;
+    }
+  }
 
   private getLastChip(): string {
     return this.internalChips[this.internalChips.length - 1];
@@ -388,6 +431,7 @@ export class InputChips {
             color="outline"
             close={!this.disabled}
             onChipClickableClose={(event) => this.removeChip(event)}
+            dtButtonClose={this.dtButtonClose}
           >
             {chip}
           </bds-chip-clickable>
@@ -401,6 +445,7 @@ export class InputChips {
               color="outline"
               close={!this.disabled}
               onChipClickableClose={(event) => this.removeChip(event)}
+              dtButtonClose={this.dtButtonClose}
             >
               {`${chip.slice(0, limit)} ...`}
             </bds-chip-clickable>
@@ -443,12 +488,17 @@ export class InputChips {
   }
 
   private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
 
     if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -476,6 +526,7 @@ export class InputChips {
               input: true,
               'input--state-primary': !this.danger && !this.validationDanger,
               'input--state-danger': this.danger || this.validationDanger,
+              'input--state-success': this.success,
               'input--state-disabled': this.disabled,
               'input--label': !!this.label,
               'input--pressed': isPressed,
@@ -489,22 +540,28 @@ export class InputChips {
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
                 {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
-                <input
-                  ref={(input) => (this.nativeInput = input)}
-                  class={{ input__container__text: true }}
-                  name={this.inputName}
-                  maxlength={this.maxlength}
-                  placeholder={this.placeholder}
-                  onInput={this.onInput}
-                  onFocus={this.onFocus}
-                  onBlur={() => this.handleOnBlur()}
-                  onChange={() => this.handleChange}
-                  value={this.value}
-                  disabled={this.disabled}
-                  data-test={this.dataTest}
-                ></input>
+                {this.inputAvalible && (
+                  <input
+                    ref={(input) => (this.nativeInput = input)}
+                    class={{ input__container__text: true }}
+                    name={this.inputName}
+                    maxlength={this.maxlength}
+                    placeholder={this.placeholder}
+                    onInput={this.onInput}
+                    onFocus={this.onFocus}
+                    onBlur={() => this.handleOnBlur()}
+                    onChange={() => this.handleChange}
+                    value={this.value}
+                    disabled={this.disabled}
+                    data-test={this.dataTest}
+                  ></input>
+                )}
               </div>
             </div>
+            {this.counterLength && (
+              <bds-counter-text length={this.internalChips.length} max={this.maxChipsLength} active={isPressed} />
+            )}
+            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
             <slot name="input-right"></slot>
           </div>
           {this.renderMessage()}

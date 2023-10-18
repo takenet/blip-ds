@@ -1,6 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { SelectOptionsPositionType } from '../selects/select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
+export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
 @Component({
   tag: 'bds-pagination',
   styleUrl: 'pagination.scss',
@@ -36,6 +37,40 @@ export class Pagination {
    */
   @Prop() startedPage?: number;
   /**
+   * Set the placement of the options menu. Can be 'bottom' or 'top'.
+   */
+  @Prop() optionsPosition?: PaginationOptionsPositionType = 'auto';
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonInitial is the data-test to button initial.
+   */
+  @Prop() dtButtonInitial?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonPrev is the data-test to button prev.
+   */
+  @Prop() dtButtonPrev?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectNumber is the data-test to select number.
+   */
+  @Prop() dtSelectNumber?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonNext is the data-test to button next.
+   */
+  @Prop() dtButtonNext?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonEnd is the data-test to button end
+   */
+  @Prop() dtButtonEnd?: string = null;
+  /**
    * When de value of component change, the event are dispache.
    */
   @Event() bdsPaginationChange: EventEmitter;
@@ -46,7 +81,21 @@ export class Pagination {
   }
 
   componentDidLoad() {
-    this.validatePositionDrop();
+    if (this.optionsPosition != 'auto') {
+      this.setDefaultPlacement(this.optionsPosition);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
+  private setDefaultPlacement(value: PaginationOptionsPositionType) {
+    if (value == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
 
   private validatePositionDrop() {
@@ -72,12 +121,23 @@ export class Pagination {
     } else {
       this.iconDropElement.name = this.openSelect ? 'arrow-down' : 'arrow-up';
     }
-    if (isOpen) this.validatePositionDrop();
+    if (isOpen)
+      if (this.optionsPosition != 'auto') {
+        this.setDefaultPlacement(this.optionsPosition);
+      } else {
+        this.validatePositionDrop();
+      }
   }
 
   @Watch('pages')
+  @Watch('startedPage')
   pagesChanged(): void {
     this.countPage();
+  }
+
+  @Watch('value')
+  valueChanged(): void {
+    this.bdsPaginationChange.emit(this.value);
   }
 
   private refDropdown = (el: HTMLElement): void => {
@@ -109,7 +169,6 @@ export class Pagination {
     if (el > 1) {
       event.preventDefault();
       this.value = this.value - 1;
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -118,7 +177,6 @@ export class Pagination {
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.value + 1;
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -127,7 +185,6 @@ export class Pagination {
     if (el > 1) {
       event.preventDefault();
       this.value = this.paginationNumbers[0];
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -136,7 +193,6 @@ export class Pagination {
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.pages;
-      this.bdsPaginationChange.emit(this.value);
     }
   };
 
@@ -151,7 +207,6 @@ export class Pagination {
   optionSelected(index) {
     this.value = index;
     this.openOptions();
-    this.bdsPaginationChange.emit(this.value);
   }
 
   render() {
@@ -163,16 +218,24 @@ export class Pagination {
             size="short"
             variant="secondary"
             icon="arrow-first"
+            dataTest={this.dtButtonInitial}
           ></bds-button-icon>
           <bds-button-icon
             onClick={this.previewPage}
             size="short"
             variant="secondary"
             icon="arrow-left"
+            dataTest={this.dtButtonPrev}
           ></bds-button-icon>
           <div class="select">
             <div class="border-select">
-              <div class={{ select_input: true }} id="select" onClick={this.openOptions} onBlur={this.onBlur}>
+              <div
+                class={{ select_input: true }}
+                id="select"
+                onClick={this.openOptions}
+                onBlur={this.onBlur}
+                data-test={this.dtSelectNumber}
+              >
                 <bds-typo variant="fs-14">{this.value}</bds-typo>
                 <bds-icon ref={(el) => this.refIconDrop(el)} size="small"></bds-icon>
               </div>
@@ -199,8 +262,15 @@ export class Pagination {
             size="short"
             variant="secondary"
             icon="arrow-right"
+            dataTest={this.dtButtonNext}
           ></bds-button-icon>
-          <bds-button-icon onClick={this.lastPage} size="short" variant="secondary" icon="arrow-last"></bds-button-icon>
+          <bds-button-icon
+            onClick={this.lastPage}
+            size="short"
+            variant="secondary"
+            icon="arrow-last"
+            dataTest={this.dtButtonEnd}
+          ></bds-button-icon>
         </div>
       </Host>
     );

@@ -7,7 +7,7 @@ import { InputChipsTypes } from '../../input-chips/input-chips-interface';
 @Component({
   tag: 'bds-select-chips',
   styleUrl: '../select.scss',
-  scoped: true,
+  shadow: true,
 })
 export class SelectChips {
   private nativeInput?: HTMLInputElement;
@@ -45,7 +45,7 @@ export class SelectChips {
    * options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
    * Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
    */
-  @Prop({ mutable: true }) options?: string | Option[] = [];
+  @Prop({ mutable: true }) options?: string | Option[];
 
   /**
    * The chips on the component
@@ -68,7 +68,10 @@ export class SelectChips {
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true, mutable: true }) danger? = false;
-
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * Set maximum length value for the chip content
    */
@@ -129,7 +132,10 @@ export class SelectChips {
    * Indicated to pass a help the user in complex filling.
    */
   @Prop() helperMessage?: string = '';
-
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Prop to insert the name of the input
    */
@@ -143,7 +149,7 @@ export class SelectChips {
   /**
    * Set the placement of the options menu. Can be 'bottom' or 'top'.
    */
-  @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'bottom';
+  @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'auto';
   /**
    * Data test is the prop to specifically test the component action object.
    */
@@ -191,7 +197,12 @@ export class SelectChips {
     } else {
       this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
     }
-    if (isOpen) this.validatePositionDrop();
+    if (isOpen)
+      if (this.optionsPosition != 'auto') {
+        this.setDefaultPlacement(this.optionsPosition);
+      } else {
+        this.validatePositionDrop();
+      }
   }
 
   @Listen('mousedown', { target: 'window', passive: true })
@@ -280,7 +291,21 @@ export class SelectChips {
 
   async componentDidLoad() {
     await this.resetFilterOptions();
-    this.validatePositionDrop();
+    if (this.optionsPosition != 'auto') {
+      this.setDefaultPlacement(this.optionsPosition);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
+  private setDefaultPlacement(value: SelectOptionsPositionType) {
+    if (value == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
 
   private validatePositionDrop() {
@@ -306,11 +331,17 @@ export class SelectChips {
   }
 
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
+    return this.options
+      ? Array.from(
+          this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)')
+        )
+      : Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
-    return Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'));
+    return this.options
+      ? Array.from(this.el.shadowRoot.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'))
+      : Array.from(this.el.querySelectorAll('bds-select-option:not(#option-add):not(#no-option)'));
   }
 
   private handleChangeChipsValue = async () => {
@@ -666,12 +697,17 @@ export class SelectChips {
   }
 
   private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
 
     if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -679,7 +715,9 @@ export class SelectChips {
           <div class="input__message__icon">
             <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
           </div>
-          <bds-typo variant="fs-12">{message}</bds-typo>
+          <bds-typo class="input__message__text" variant="fs-12">
+            {message}
+          </bds-typo>
         </div>
       );
     }
@@ -719,6 +757,7 @@ export class SelectChips {
               input: true,
               'input--state-primary': !this.danger && !this.validationDanger,
               'input--state-danger': this.danger || this.validationDanger,
+              'input--state-success': this.success,
               'input--state-disabled': this.disabled,
               'input--label': !!this.label,
               'input--pressed': isPressed,
@@ -750,6 +789,7 @@ export class SelectChips {
             <div class="select__icon">
               <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
             </div>
+            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
           </div>
           {this.renderMessage()}
         </div>

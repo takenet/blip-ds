@@ -55,7 +55,10 @@ export class Select {
    * Add state danger on input, use for use feedback.
    */
   @Prop({ reflect: true }) danger? = false;
-
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * Disabled input.
    */
@@ -105,11 +108,14 @@ export class Select {
    * Indicated to pass an feeback to user.
    */
   @Prop() errorMessage?: string = '';
-
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Set the placement of the options menu. Can be 'bottom' or 'top'.
    */
-  @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'bottom';
+  @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'auto';
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -123,7 +129,12 @@ export class Select {
     } else {
       this.iconDropElement.name = this.isOpen ? 'arrow-down' : 'arrow-up';
     }
-    if (isOpen) this.validatePositionDrop();
+    if (isOpen)
+      if (this.optionsPosition != 'auto') {
+        this.setDefaultPlacement(this.optionsPosition);
+      } else {
+        this.validatePositionDrop();
+      }
   }
 
   @Watch('value')
@@ -155,7 +166,21 @@ export class Select {
 
   componentDidLoad() {
     this.getValueSelected();
-    this.validatePositionDrop();
+    if (this.optionsPosition != 'auto') {
+      this.setDefaultPlacement(this.optionsPosition);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
+  private setDefaultPlacement(value: SelectOptionsPositionType) {
+    if (value == 'bottom') {
+      this.dropElement.classList.add('select__options--position-bottom');
+      this.iconDropElement.name = 'arrow-down';
+    } else {
+      this.dropElement.classList.add('select__options--position-top');
+      this.iconDropElement.name = 'arrow-up';
+    }
   }
 
   private validatePositionDrop() {
@@ -328,12 +353,17 @@ export class Select {
   }
 
   private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
 
     if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -362,6 +392,7 @@ export class Select {
               input: true,
               'input--state-primary': !this.danger && !this.validationDanger,
               'input--state-danger': this.danger || this.validationDanger,
+              'input--state-success': this.success,
               'input--state-disabled': this.disabled,
               'input--label': !!this.label,
               'input--pressed': isPressed,
@@ -390,6 +421,7 @@ export class Select {
             <div class="select__icon">
               <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
             </div>
+            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
           </div>
           {this.renderMessage()}
         </div>

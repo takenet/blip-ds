@@ -15,7 +15,7 @@
 
 .spinner_background {
   border-radius: 50%;
-  border: 2px solid $color-surface-3;
+  border: 2px solid;
   &_extra-small {
     border-width: 2px;
     width: 16px;
@@ -35,12 +35,12 @@
     box-sizing: border-box;
   }
   &_main {
-    border-color: $color-surface-3;
+    border-color: $color-content-default;
+    opacity: 0.16;
   }
   &_light {
-    border-color: $color-content-default;
-    mix-blend-mode: multiply;
-    opacity: 0.32;
+    border-color: $color-content-bright;
+    opacity: 0.16;
   }
 }
 
@@ -64,7 +64,7 @@
     color: $color-primary;
   }
   &_light {
-    color: $color-surface-3;
+    color: $color-content-bright;
   }
 }
 @keyframes rotate {

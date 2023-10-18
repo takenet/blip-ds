@@ -1,0 +1,84 @@
+@import 'mixins';
+@import 'resets';
+
+:host {
+  display: flex;
+}
+
+:host(.horizontal) {
+  width: 100%;
+  height: fit-content;
+}
+
+:host(.vertical) {
+  width: fit-content;
+  height: 100%;
+}
+
+.navbar {
+  width: fit-content;
+  display: flex;
+  gap: 8px;
+  box-sizing: border-box;
+
+  ::slotted(*) {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__justify-content {
+    &__flex-start {
+      justify-content: flex-start;
+    }
+    &__center {
+      justify-content: center;
+    }
+    &__flex-end {
+      justify-content: flex-end;
+    }
+    &__space-between {
+      justify-content: space-between;
+    }
+    &__space-around {
+      justify-content: space-around;
+    }
+    &__space-evenly {
+      justify-content: space-evenly;
+    }
+  }
+
+  &__orientation {
+    &__horizontal {
+      flex-direction: row;
+      width: 100%;
+      padding: 8px 16px;
+      ::slotted(*) {
+        flex-direction: row;
+      }
+    }
+    &__vertical {
+      flex-direction: column;
+      height: 100%;
+      padding: 16px 8px;
+      ::slotted(*) {
+        flex-direction: column;
+      }
+    }
+  }
+  
+  &__background-color {
+    &__surface-1 {
+      background-color: $color-surface-1;
+    }
+    &__surface-2 {
+      background-color: $color-surface-2;
+    }
+    &__surface-3 {
+      background-color: $color-surface-3;
+    }
+    &__surface-4 {
+      background-color: $color-surface-4;
+    }
+  }
+}

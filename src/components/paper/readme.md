@@ -20,12 +20,16 @@
 
 ### Used by
 
+ - [bds-card](../card)
+ - [bds-card-color](../card-color)
  - [bds-pagination](../pagination)
  - [bds-test-component](../test-component)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-card --> bds-paper
+  bds-card-color --> bds-paper
   bds-pagination --> bds-paper
   bds-test-component --> bds-paper
   style bds-paper fill:#f9f,stroke:#333,stroke-width:4px

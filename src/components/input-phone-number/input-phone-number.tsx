@@ -53,7 +53,10 @@ export class InputPhoneNumber {
    * Add state danger on input, use for use feedback.
    */
   @Prop({ mutable: true, reflect: true }) danger? = false;
-
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * Disabled input.
    */
@@ -72,7 +75,10 @@ export class InputPhoneNumber {
    * Indicated to pass an feeback to user.
    */
   @Prop({ mutable: true }) errorMessage?: string = '';
-
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Error message when input is required
    */
@@ -88,6 +94,11 @@ export class InputPhoneNumber {
    */
   @Prop() dataTest?: string = null;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSelectFlag is the data-test to button close.
+   */
+  @Prop() dtSelectFlag?: string = null;
   /**
    * Emitted when the value has changed.
    */
@@ -309,14 +320,18 @@ export class InputPhoneNumber {
       )
     );
   }
-
   private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : 'info';
-    let message = this.danger ? this.errorMessage : this.helperMessage;
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
 
     if (!message && this.validationDanger) message = this.validationMesage;
 
-    const styles = this.danger || this.validationDanger ? 'input__message input__message--danger' : 'input__message';
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -357,6 +372,7 @@ export class InputPhoneNumber {
               input: true,
               'input--state-primary': !this.danger && !this.validationDanger,
               'input--state-danger': this.danger || this.validationDanger,
+              'input--state-success': this.success,
               'input--state-disabled': this.disabled,
               'input--label': !!this.label,
               'input--pressed': isPressed,
@@ -366,7 +382,7 @@ export class InputPhoneNumber {
             part="input-container"
           >
             {this.renderIcon()}
-            <div onClick={this.toggle} class="select-phone-number__icon">
+            <div onClick={this.toggle} data-test={this.dtSelectFlag} class="select-phone-number__icon">
               <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
               <bds-icon size="x-small" name={iconArrow}></bds-icon>
             </div>
@@ -374,7 +390,9 @@ export class InputPhoneNumber {
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
                 <div class="select-phone-number__country-code">
-                  <bds-typo variant="fs-14">{this.value}</bds-typo>
+                  <bds-typo no-wrap="true" variant="fs-14">
+                    {this.value}
+                  </bds-typo>
                 </div>
                 <input
                   class={{ input__container__text: true }}
@@ -392,6 +410,7 @@ export class InputPhoneNumber {
                 ></input>
               </div>
             </div>
+            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
             <slot name="input-right" />
           </div>
           {this.renderMessage()}

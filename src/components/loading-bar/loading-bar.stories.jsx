@@ -1,39 +1,51 @@
 import React from 'react';
-import readme from './readme.md';
+import DocumentationTemplate from './loading-bar.mdx';
+import { BdsLoadingBar } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Loading Bar',
+  title: 'Components/Loading Bar',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const content = {
-  width: '100vW',
-};
-
-const alignContent = {
-  maxWidth: '240px',
-  margin: 'auto',
-};
-
-export const LoadingBar = () => {
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '500px';
+  }
   return (
-    <div style={content}>
-      <div style={alignContent}>
-        <bds-loading-bar size="default" text="Texto para aplicar no componente" percent={48}></bds-loading-bar>
-      </div>
-    </div>
+        <bds-loading-bar size={args.size} percent={args.percent}></bds-loading-bar>
   );
 };
 
-export const LoadingBarSize = () => {
+Properties.args = {
+  size: 'default',
+  percent: 48,
+};
+
+Properties.argTypes = {
+  size: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    options: ['small', 'default'],
+    control: 'select',
+  },
+  percent: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'number',
+  },
+}
+
+export const FrameworkReact = () => {
   return (
-    <div style={content}>
-      <div style={alignContent}>
-        <bds-loading-bar size="small" text="Texto para aplicar no componente" percent={48}></bds-loading-bar>
-        <bds-loading-bar size="default" text="Texto para aplicar no componente" percent={48}></bds-loading-bar>
-      </div>
-    </div>
+        <BdsLoadingBar size="default" percent={48}></BdsLoadingBar>
   );
 };

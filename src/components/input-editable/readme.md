@@ -11,6 +11,9 @@
 | ----------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ------------ |
 | `danger`                | `danger`                  | Add state danger on input, use for use feedback. If true avoid save confirmation.                                                                                                | `boolean`                         | `false`      |
 | `dataTest`              | `data-test`               | Data test is the prop to specifically test the component action object.                                                                                                          | `string`                          | `null`       |
+| `dtButtonClose`         | `dt-button-close`         | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.                                                          | `string`                          | `null`       |
+| `dtButtonConfirm`       | `dt-button-confirm`       | Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.                                                      | `string`                          | `null`       |
+| `dtButtonEdit`          | `dt-button-edit`          | Data test is the prop to specifically test the component action object. dtButtonEdit is the data-test to button edit.                                                            | `string`                          | `null`       |
 | `errorMessage`          | `error-message`           | Indicated to pass an feeback to user.                                                                                                                                            | `string`                          | `''`         |
 | `expand`                | `expand`                  | Defines whether the component will be expandable                                                                                                                                 | `boolean`                         | `false`      |
 | `helperMessage`         | `helper-message`          | Indicated to pass a help to the user in complex filling.                                                                                                                         | `string`                          | `''`         |
@@ -21,6 +24,8 @@
 | `placeholder`           | `placeholder`             | Placeholder for native input element.                                                                                                                                            | `string`                          | `''`         |
 | `requiredErrorMessage`  | `required-error-message`  | Error message when input is required                                                                                                                                             | `string`                          | `undefined`  |
 | `size`                  | `size`                    | Set the component size. Can be one of: 'short' \| 'standard' \| 'tall';                                                                                                          | `"short" \| "standard" \| "tall"` | `'standard'` |
+| `success`               | `success`                 | Add state success on input, use for use feedback.                                                                                                                                | `boolean`                         | `false`      |
+| `successMessage`        | `success-message`         | Indicated to pass an feeback to user.                                                                                                                                            | `string`                          | `''`         |
 | `value`                 | `value`                   | The value of the input.                                                                                                                                                          | `string`                          | `''`         |
 
 
@@ -47,10 +52,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../test-component)
-
 ### Depends on
 
 - [bds-icon](../icon)
@@ -61,7 +62,6 @@
 graph TD;
   bds-input-editable --> bds-icon
   bds-input-editable --> bds-typo
-  bds-test-component --> bds-input-editable
   style bds-input-editable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

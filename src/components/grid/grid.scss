@@ -1236,6 +1236,67 @@
   padding-bottom: 32px;
   box-sizing: border-box;
 }
+:host(.padding--5) {
+  padding: 40px;
+  box-sizing: border-box;
+}
+:host(.padding--l-5) {
+  padding-left: 40px;
+  box-sizing: border-box;
+}
+:host(.padding--r-5) {
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+:host(.padding--t-5) {
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+:host(.padding--b-5) {
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+:host(.padding--x-5) {
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+:host(.padding--y-5) {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+
+:host(.padding--6) {
+  padding: 48px;
+  box-sizing: border-box;
+}
+:host(.padding--l-6) {
+  padding-left: 48px;
+  box-sizing: border-box;
+}
+:host(.padding--r-6) {
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+:host(.padding--t-6) {
+  padding-top: 48px;
+  box-sizing: border-box;
+}
+:host(.padding--b-6) {
+  padding-bottom: 48px;
+  box-sizing: border-box;
+}
+:host(.padding--x-6) {
+  padding-left: 48px;
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+:host(.padding--y-6) {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+}
 :host(.padding--8) {
   padding: 64px;
   box-sizing: border-box;
@@ -1465,6 +1526,54 @@
 :host(.margin--y-4) {
   margin-top: 32px;
   margin-bottom: 32px;
+}
+
+:host(.margin--5) {
+  margin: 40px;
+}
+:host(.margin--l-5) {
+  margin-left: 40px;
+}
+:host(.margin--r-5) {
+  margin-right: 40px;
+}
+:host(.margin--t-5) {
+  margin-top: 40px;
+}
+:host(.margin--b-5) {
+  margin-bottom: 40px;
+}
+:host(.margin--x-5) {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+:host(.margin--y-5) {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+:host(.margin--6) {
+  margin: 48px;
+}
+:host(.margin--l-6) {
+  margin-left: 48px;
+}
+:host(.margin--r-6) {
+  margin-right: 48px;
+}
+:host(.margin--t-6) {
+  margin-top: 48px;
+}
+:host(.margin--b-6) {
+  margin-bottom: 48px;
+}
+:host(.margin--x-6) {
+  margin-left: 48px;
+  margin-right: 48px;
+}
+:host(.margin--y-6) {
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 
 :host(.margin--8) {

@@ -8,6 +8,8 @@ export interface AutocompleteOption {
   bulkOption?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   status?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  checked?: boolean;
 }
 
 export interface AutocompleteChangeEventDetail {
@@ -22,4 +24,4 @@ export interface AutocompleteSelectedChangeEventDetail {
 
 export type AutocompleteSelectType = 'text' | 'icon';
 
-export type AutocompleteOptionsPositionType = 'top' | 'bottom';
+export type AutocompleteOptionsPositionType = 'auto' | 'top' | 'bottom';

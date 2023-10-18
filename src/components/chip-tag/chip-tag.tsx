@@ -16,6 +16,10 @@ export class ChipTag {
    * used for change the color. Uses one of them.
    */
   @Prop() color?: Color = 'default';
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
 
   render() {
     return (
@@ -25,6 +29,7 @@ export class ChipTag {
             chip_tag: true,
             [`chip_tag--${this.color}`]: true,
           }}
+          data-test={this.dataTest}
         >
           {this.icon && (
             <div class="chip_tag--icon">

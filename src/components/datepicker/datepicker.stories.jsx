@@ -1,19 +1,91 @@
-import React from 'react';
-import readme from './readme.md';
+import React, {useEffect} from 'react';
+import DocumentationTemplate from './datepicker.mdx';
+import { BdsDatepicker } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Datepicker',
+  title: 'Components/Datepicker',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
-const Template = (args) => {
-  return <bds-datepicker type-of-date={args.type} start-date-limit={args.start} end-date-limit={args.end} />;
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '600px';
+    el[0].style.position = 'relative';
+    el[0].style.background = 'none';
+  }
+
+  return (
+    <bds-datepicker
+      type-of-date={args.typeOfDate}
+      start-date-limit={args.startDateLimit}
+      end-date-limit={args.endDateLimit}
+    />
+  );
 };
 
-export const DatepickerSingle = Template.bind({});
-DatepickerSingle.args = { type: 'single', start: '01/01/2022', end: '31/12/2022' };
+Properties.args = {
+  typeOfDate: 'single',
+  startDateLimit: '31/12/2022',
+  endDateLimit: '01/01/2027',
+};
 
-export const DatepickerPeriod = Template.bind({});
-DatepickerPeriod.args = { type: 'period', start: '01/01/2022', end: '31/12/2022' };
+Properties.argTypes = {
+  typeOfDate: {
+    table: {
+      defaultValue: { summary: 'single' },
+    },
+    options: ['single', 'period'],
+    control: 'select',
+  },
+  startDateLimit: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  endDateLimit: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+};
+
+export const Events = () => {
+  useEffect(() => {
+    const datepicker = document.getElementById('datepicker');
+    datepicker.addEventListener('bdsEndDate', () => {
+      console.log('Evento End Date funcionando');
+    });
+    datepicker.addEventListener('bdsStartDate', () => {
+      console.log('Evento Start Date funcionando');
+    });
+    datepicker.addEventListener('concludeDatepicker', () => {
+      console.log('Evento Conclude funcionando');
+    });
+  });
+
+  return (
+    <bds-datepicker
+    id="datepicker"
+      type-of-date='period'
+      start-date-limit='31/12/2022'
+      end-date-limit='01/01/2027'
+    />
+  );
+};
+
+export const FrameworkReact = () => {
+  return (
+    <BdsDatepicker
+      type-of-date='single'
+      start-date-limit='31/12/2022'
+      end-date-limit='01/01/2027'
+    />
+  );
+};

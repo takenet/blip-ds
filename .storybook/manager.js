@@ -1,17 +1,18 @@
 import { addons } from '@storybook/manager-api';
+import YourTheme from './YourTheme';
 
 addons.setConfig({
+  theme: YourTheme,
   isFullscreen: false,
-  showNav: true,
+  showNav: false,
   showPanel: true,
   panelPosition: 'bottom',
   enableShortcuts: true,
   showToolbar: false,
-  theme: undefined,
-  selectedPanel: undefined,
-  initialActive: 'sidebar',
+  selectedPanel: 'panel',
+  initialActive: 'canvas',
   sidebar: {
-    showRoots: false,
+    showRoots: true,
     collapsedRoots: ['other'],
   },
   toolbar: {

@@ -554,6 +554,7 @@ export class Input {
               {...this.counterLengthRule}
             />
           )}
+          {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
           <slot name="input-right" />
         </div>
         {this.renderMessage()}

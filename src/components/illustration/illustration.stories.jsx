@@ -1,15 +1,27 @@
 import React from 'react';
-
-import readme from './readme.md';
+import { BdsIllustration } from '../../../blip-ds-react/dist/components';
+import DocumentationTemplate from './illustration.mdx';
 
 export default {
-  title: 'illustration',
+  title: 'Components/illustration',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 
 const defaults = [
+  'accessibility-1',
+  'accessibility-2',
+  'accessibility-3',
+  'accessibility-4',
+  'accessibility-5',
+  'accessibility-6',
+  'attendance-1',
+  'attendance-2',
+  'attendance-3',
+  'attendance-4',
   'agent-1',
   'agent-2',
   'agent-flat-1',
@@ -29,8 +41,12 @@ const defaults = [
   'chat-bank',
   'chat-sales',
   'cookie',
+  'collaboration-1',
+  'collaboration-2',
+  'collaboration-3',
   'delivery-chat',
   'exchange-person',
+  'ecossytem-1',
   'faq',
   'girl-email',
   'girl-tablet',
@@ -40,6 +56,16 @@ const defaults = [
   'message-template-2',
   'newsletter',
   'organizations',
+  'plataform-1',
+  'professional-1',
+  'professional-2',
+  'professional-3',
+  'professional-4',
+  'professional-5',
+  'professional-6',
+  'professional-7',
+  'professional-8',
+  'rating-1',
   'rh-hunting',
   'ringtones',
   'robot-flat',
@@ -50,13 +76,21 @@ const defaults = [
   'robot-5',
   'robots',
   'search',
+  'search-1',
+  'search-2',
   'segmentos',
+  'settings-1',
+  'stilingue-1',
+  'stilingue-2',
+  'stilingue-3',
+  'stilingue-4',
   'solicition',
   'solutions-agent',
   'suprise',
   'talking',
   'tangram',
   'team-work',
+  'time-1',
   'user-1',
   'user-2',
   'user-3',
@@ -66,6 +100,11 @@ const defaults = [
   'welcome-blip',
   'whatsapp-web',
   'whatsapp',
+  'error',
+  'search-2',
+  'time-2',
+  'time',
+  'robot-6',
 ];
 
 const screens = [
@@ -174,6 +213,10 @@ const brand = [
   'blip-academy-blue-black',
   'blip-academy-blue-white',
   'blip-academy-white',
+  'blip-assist-white-horizontal',
+  'blip-assist-blue-white-horizontal',
+  'blip-assist-black-horizontal',
+  'blip-assist-blue-black-horizontal',
   'blip-blog-blue-black',
   'blip-blog-blue-white',
   'blip-builder-black',
@@ -184,6 +227,10 @@ const brand = [
   'blip-docs-blue-black',
   'blip-docs-blue-white',
   'blip-docs-white',
+  'blip-ecosystem-black',
+  'blip-ecosystem-blue-black',
+  'blip-ecosystem-blue-white',
+  'blip-ecosystem-white',
   'blip-foods-black',
   'blip-foods-blue-black',
   'blip-foods-blue-white',
@@ -304,6 +351,7 @@ const spots = [
   'avatar',
   'binoculars',
   'bot-list',
+  'bill-1',
   'clock-1',
   'clock-2',
   'column-chart',
@@ -317,6 +365,8 @@ const spots = [
   'folder-6',
   'folder-7',
   'glad',
+  'greeting-1',
+  'greeting-2',
   'hand-1',
   'hand-2',
   'hand-3',
@@ -325,6 +375,7 @@ const spots = [
   'hand-6',
   'idea',
   'information-security',
+  'letter-1',
   'letter-cancel-error',
   'letter-check-okay',
   'letter-close',
@@ -338,10 +389,12 @@ const spots = [
   'map',
   'message-notification',
   'new-feature',
+  'notification-1',
   'paper-plane',
   'password',
   'pie-chart',
   'pizza',
+  'profile-1',
   'rocket',
   'send-ticket',
   'speak-bubble',
@@ -355,9 +408,53 @@ const illustrationStyles = {
   textAlign: 'center',
 };
 
+const illustrationProps = {
+  width: '250px',
+  margin: 'auto',
+};
+
 const illustrationWrapperStyles = {
   display: 'flex',
   flexWrap: 'wrap',
+};
+
+export const Properties = (args) => {
+  return <bds-illustration style={illustrationProps} type={args.type} name={args.name}></bds-illustration>;
+};
+
+Properties.args = {
+  type: 'default',
+  name: 'agent-1',
+};
+
+Properties.argTypes = {
+  type: {
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+    options: [
+      'default',
+      'screens',
+      'blip-solid',
+      'blip-outline',
+      'logo-integration',
+      'brand',
+      'segmented',
+      'smartphone',
+      'spots',
+    ],
+    control: 'select',
+  },
+  name: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+};
+
+export const FrameworkReact = (args) => {
+  return <BdsIllustration style={illustrationProps} type="default" name="agent-1"></BdsIllustration>;
 };
 
 export const IllustrationsDefault = () => {
