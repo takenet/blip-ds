@@ -15,7 +15,7 @@ export class Badge {
   /**
    * State for keep the value of the type.
    */
-  @State() type?: Type = 'empty';
+  @State() type?: Type = 'status';
   /**
    * Set the color of the component.
    */
