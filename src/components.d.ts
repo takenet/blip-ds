@@ -1028,6 +1028,10 @@ export namespace Components {
          */
         "counterLength"?: boolean;
         /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "createBlur": boolean;
+        /**
           * Add state danger on input, use for use feedback.
          */
         "danger"?: boolean;
@@ -4160,6 +4164,10 @@ declare namespace LocalJSX {
           * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
          */
         "counterLength"?: boolean;
+        /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "createBlur"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
          */
