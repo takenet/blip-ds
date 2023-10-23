@@ -7,75 +7,14 @@
 
 ## Properties
 
-| Property          | Attribute          | Description                                                                                                                               | Type                                             | Default |
-| ----------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------- |
-| `actionsButtons`  | `actions-buttons`  | The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]' | `string \| string[]`                             | `[]`    |
-| `active`          | `active`           | Active. Used to define when the item is highlighted.                                                                                      | `boolean`                                        | `false` |
-| `avatarName`      | `avatar-name`      | AvatarName. Used to enter the avatar name.                                                                                                | `string`                                         | `null`  |
-| `avatarThumbnail` | `avatar-thumbnail` | AvatarThumbnail. Used to insert the avatar photo.                                                                                         | `string`                                         | `null`  |
-| `borderRadius`    | `border-radius`    | Enable rounded border on item                                                                                                             | `boolean`                                        | `false` |
-| `checked`         | `checked`          |                                                                                                                                           | `boolean`                                        | `false` |
-| `chips`           | `chips`            | The chips on the component Should be passed this way: chips='["chip1", "chip2"]'                                                          | `string \| string[]`                             | `[]`    |
-| `clickable`       | `clickable`        | Clickable. Used to define if the item is clickable or not.                                                                                | `boolean`                                        | `false` |
-| `dataTest`        | `data-test`        | Data test is the prop to specifically test the component action object.                                                                   | `string`                                         | `null`  |
-| `icon`            | `icon`             | Icon. Used to add icon in list item.                                                                                                      | `string`                                         | `null`  |
-| `secondaryText`   | `secondary-text`   | SecondaryText. Used to insert a secondaryText in the display item.                                                                        | `string`                                         | `null`  |
-| `text`            | `text`             | Text. Used to insert a text in the display item.                                                                                          | `string`                                         | `null`  |
-| `typeList`        | `type-list`        | Typelis. Used toselect type of item list.                                                                                                 | `"checkbox" \| "default" \| "radio" \| "switch"` | `null`  |
-| `value`           | `value`            | Value. Used to insert a value in list item.                                                                                               | `string`                                         | `null`  |
+| Property         | Attribute         | Description | Type                                                                                                         | Default        |
+| ---------------- | ----------------- | ----------- | ------------------------------------------------------------------------------------------------------------ | -------------- |
+| `alignItems`     | `align-items`     |             | `"baseline" \| "center" \| "flex-end" \| "flex-start" \| "stretch"`                                          | `'flex-start'` |
+| `direction`      | `direction`       |             | `"column" \| "column-reverse" \| "row" \| "row-reverse"`                                                     | `'column'`     |
+| `flexWrap`       | `flex-wrap`       |             | `"wrap" \| "wrap-reverse"`                                                                                   | `'wrap'`       |
+| `gap`            | `gap`             |             | `"1" \| "12" \| "2" \| "3" \| "4" \| "8" \| "half" \| "none"`                                                | `undefined`    |
+| `justifyContent` | `justify-content` |             | `"center" \| "flex-end" \| "flex-start" \| "space-around" \| "space-between" \| "space-evenly" \| "stretch"` | `'flex-start'` |
 
-
-## Events
-
-| Event                  | Description                                                  | Type               |
-| ---------------------- | ------------------------------------------------------------ | ------------------ |
-| `bdsChecked`           | Emitted when the value has changed because of a click event. | `CustomEvent<any>` |
-| `bdsClickActionButtom` | Emitted when click in someone actions buttom insert in data. | `CustomEvent<any>` |
-
-
-## Dependencies
-
-### Used by
-
- - [bds-list](.)
-
-### Depends on
-
-- [bds-chip-clickable](../chip-clickable)
-- [bds-tooltip](../tooltip)
-- [bds-button-icon](../icon-button)
-- [bds-radio](../radio)
-- [bds-checkbox](../checkbox)
-- [bds-avatar](../avatar)
-- [bds-icon](../icon)
-- [bds-typo](../typo)
-- [bds-switch](../switch)
-
-### Graph
-```mermaid
-graph TD;
-  bds-list-item --> bds-chip-clickable
-  bds-list-item --> bds-tooltip
-  bds-list-item --> bds-button-icon
-  bds-list-item --> bds-radio
-  bds-list-item --> bds-checkbox
-  bds-list-item --> bds-avatar
-  bds-list-item --> bds-icon
-  bds-list-item --> bds-typo
-  bds-list-item --> bds-switch
-  bds-chip-clickable --> bds-icon
-  bds-chip-clickable --> bds-avatar
-  bds-chip-clickable --> bds-typo
-  bds-avatar --> bds-typo
-  bds-avatar --> bds-icon
-  bds-tooltip --> bds-typo
-  bds-button-icon --> bds-icon
-  bds-radio --> bds-typo
-  bds-checkbox --> bds-icon
-  bds-checkbox --> bds-typo
-  bds-list --> bds-list-item
-  style bds-list-item fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

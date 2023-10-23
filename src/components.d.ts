@@ -1404,6 +1404,13 @@ export namespace Components {
          */
         "value": string;
     }
+    interface BdsListItemContent {
+        "alignItems"?: alignItems;
+        "direction"?: direction;
+        "flexWrap"?: flexWrap;
+        "gap"?: gap;
+        "justifyContent"?: justifyContent2;
+    }
     interface BdsLoadingBar {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -2735,6 +2742,12 @@ declare global {
         prototype: HTMLBdsListItemElement;
         new (): HTMLBdsListItemElement;
     };
+    interface HTMLBdsListItemContentElement extends Components.BdsListItemContent, HTMLStencilElement {
+    }
+    var HTMLBdsListItemContentElement: {
+        prototype: HTMLBdsListItemContentElement;
+        new (): HTMLBdsListItemContentElement;
+    };
     interface HTMLBdsLoadingBarElement extends Components.BdsLoadingBar, HTMLStencilElement {
     }
     var HTMLBdsLoadingBarElement: {
@@ -3053,6 +3066,7 @@ declare global {
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
         "bds-list": HTMLBdsListElement;
         "bds-list-item": HTMLBdsListItemElement;
+        "bds-list-item-content": HTMLBdsListItemContentElement;
         "bds-loading-bar": HTMLBdsLoadingBarElement;
         "bds-loading-page": HTMLBdsLoadingPageElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
@@ -4645,6 +4659,13 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BdsListItemContent {
+        "alignItems"?: alignItems;
+        "direction"?: direction;
+        "flexWrap"?: flexWrap;
+        "gap"?: gap;
+        "justifyContent"?: justifyContent2;
+    }
     interface BdsLoadingBar {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -5613,6 +5634,7 @@ declare namespace LocalJSX {
         "bds-input-phone-number": BdsInputPhoneNumber;
         "bds-list": BdsList;
         "bds-list-item": BdsListItem;
+        "bds-list-item-content": BdsListItemContent;
         "bds-loading-bar": BdsLoadingBar;
         "bds-loading-page": BdsLoadingPage;
         "bds-loading-spinner": BdsLoadingSpinner;
@@ -5711,6 +5733,7 @@ declare module "@stencil/core" {
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-list": LocalJSX.BdsList & JSXBase.HTMLAttributes<HTMLBdsListElement>;
             "bds-list-item": LocalJSX.BdsListItem & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
+            "bds-list-item-content": LocalJSX.BdsListItemContent & JSXBase.HTMLAttributes<HTMLBdsListItemContentElement>;
             "bds-loading-bar": LocalJSX.BdsLoadingBar & JSXBase.HTMLAttributes<HTMLBdsLoadingBarElement>;
             "bds-loading-page": LocalJSX.BdsLoadingPage & JSXBase.HTMLAttributes<HTMLBdsLoadingPageElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
