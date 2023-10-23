@@ -24,7 +24,18 @@ export class Skeleton {
         }}
       >
         <bds-grid xxs="12" class={{ skeleton: true, [`skeleton_shape--${this.shape}`]: true }}></bds-grid>
-        <div class="animation"></div>
+        <div
+          style={{
+            display: 'flex',
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            borderRadius: this.shape === 'circle' ? '50%' : '8px',
+            overflow: 'hidden',
+          }}
+        >
+          <div class="animation"></div>
+        </div>
       </Host>
     );
   }

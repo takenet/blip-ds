@@ -22,10 +22,6 @@ export class TestComponent {
                 <bds-typo variant="fs-32" bold="bold">
                   Insira o componente aqui
                 </bds-typo>
-                <bds-skeleton shape="circle" width="50px" height="50px"></bds-skeleton>
-                <bds-skeleton shape="square" width="30%" height="20px"></bds-skeleton>
-                <bds-skeleton shape="square" width="100%" height="10px"></bds-skeleton>
-                <bds-skeleton shape="square" width="100%" height="10px"></bds-skeleton>
               </bds-grid>
             </bds-paper>
           </bds-theme-provider>
@@ -37,10 +33,6 @@ export class TestComponent {
                 <bds-typo variant="fs-32" bold="bold">
                   Insira o componente aqui
                 </bds-typo>
-                <bds-skeleton shape="circle" width="50px" height="50px"></bds-skeleton>
-                <bds-skeleton shape="square" width="30%" height="20px"></bds-skeleton>
-                <bds-skeleton shape="square" width="100%" height="10px"></bds-skeleton>
-                <bds-skeleton shape="square" width="100%" height="10px"></bds-skeleton>
               </bds-grid>
             </bds-paper>
           </bds-theme-provider>
