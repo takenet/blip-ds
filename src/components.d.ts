@@ -1016,6 +1016,10 @@ export namespace Components {
     interface BdsInputChips {
         "add": (value: string) => Promise<void>;
         /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "blurCreation": boolean;
+        /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips": string[] | string;
@@ -4152,6 +4156,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsInputChips {
+        /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "blurCreation"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */

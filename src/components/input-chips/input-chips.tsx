@@ -40,6 +40,11 @@ export class InputChips {
   @Prop({ mutable: true }) chips: string[] | string = [];
 
   /**
+   * When true, the press enter will be simulated on blur event.
+   */
+  @Prop() blurCreation = false;
+
+  /**
    * Defining the type is important so that it is possible to carry out validations. Can be one of:
    * 'text' and 'email;
    */
@@ -270,7 +275,12 @@ export class InputChips {
 
   private handleOnBlur(): void {
     this.bdsBlur.emit(this.internalChips);
-    this.isPressed = false;
+    this.handleDelimiters();
+    if (this.blurCreation) {
+      this.setChip(this.value);
+      this.value = '';
+      this.isPressed = false;
+    }
   }
 
   private onInput = (ev: Event): void => {
