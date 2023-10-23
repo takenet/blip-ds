@@ -42,7 +42,7 @@ export class InputChips {
   /**
    * When true, the press enter will be simulated on blur event.
    */
-  @Prop() createBlur = false;
+  @Prop() blurCreation = false;
 
   /**
    * Defining the type is important so that it is possible to carry out validations. Can be one of:
@@ -276,7 +276,7 @@ export class InputChips {
   private handleOnBlur(): void {
     this.bdsBlur.emit(this.internalChips);
     this.handleDelimiters();
-    if (this.createBlur) {
+    if (this.blurCreation) {
       this.setChip(this.value);
       this.value = '';
       this.isPressed = false;
