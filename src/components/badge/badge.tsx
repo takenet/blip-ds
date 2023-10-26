@@ -31,7 +31,7 @@ export class Badge {
   /**
    * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
    */
-  @Prop() number?: number = null;
+  @Prop() number?: number;
   /**
    * If true, actived the pulse animation.
    */
@@ -40,10 +40,12 @@ export class Badge {
   componentWillLoad() {
     if (this.icon === null && this.number) {
       this.type = 'number';
-    } else if (this.number === null && this.icon) {
+    } else if (!this.number && this.icon) {
       this.type = 'icon';
     } else if (this.number && this.icon) {
       this.type = 'number';
+    } else if (this.number === null) {
+      this.type = 'empty';
     }
   }
 

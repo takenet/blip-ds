@@ -31,14 +31,6 @@ export const Properties = (args) => (
   <bds-badge shape={args.shape} type={args.type} color={args.color} icon={args.icon} number={args.number ? args.number : null} animation={args.animation}></bds-badge>
 );
 Properties.argTypes = {
-  type: {
-    table: {
-      defaultValue: { summary: 'icon' },
-    },
-    
-    options: ['status', 'icon', 'number', 'empty'],
-    control: 'select',
-  },
   shape: {
     table: {
       defaultValue: { summary: 'circle' },
@@ -98,6 +90,10 @@ export const typeBadge = () => (
         <bds-badge shape="circle" color="system" number={1234}></bds-badge>
         <bds-typo bold="bold">Number</bds-typo>
       </bds-grid>
+      <bds-grid direction="column" align-items="center" gap="2">
+        <bds-badge shape="circle" color="system" number={null}></bds-badge>
+        <bds-typo bold="bold">Empty</bds-typo>
+      </bds-grid>
     </bds-grid>
   </bds-grid>
 );
@@ -120,6 +116,12 @@ export const exampleBadge = () => (
       <bds-icon name="bell" size="large"></bds-icon>
       <div style={badgeStatus}>
         <bds-badge shape="circle" color="system" animation></bds-badge>
+      </div>
+    </bds-grid>
+    <bds-grid style={mixBadge}>
+      <bds-icon name="bell" size="large"></bds-icon>
+      <div style={badgeStatus}>
+        <bds-badge shape="circle" color="system" number={null} animation></bds-badge>
       </div>
     </bds-grid>
   </bds-grid>
