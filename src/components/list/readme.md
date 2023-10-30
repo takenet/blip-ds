@@ -16,6 +16,19 @@
 | `justifyContent` | `justify-content` |             | `"center" \| "flex-end" \| "flex-start" \| "space-around" \| "space-between" \| "space-evenly" \| "stretch"` | `'flex-start'` |
 
 
+## Dependencies
+
+### Depends on
+
+- [bds-grid](../grid)
+
+### Graph
+```mermaid
+graph TD;
+  bds-list-item-content --> bds-grid
+  style bds-list-item-content fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

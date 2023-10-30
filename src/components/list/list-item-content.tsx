@@ -4,7 +4,7 @@ import { direction, justifyContent, flexWrap, alignItems, gap } from '../grid/gr
 @Component({
   tag: 'bds-list-item-content',
   styleUrl: 'list.scss',
-  shadow: true,
+  scoped: true,
 })
 export class ListItemContent {
   @Element() hostElement: HTMLElement;
@@ -20,14 +20,17 @@ export class ListItemContent {
       <Host
         class={{
           list_item_content: true,
-          [`direction--${this.direction}`]: true,
-          [`justify_content--${this.justifyContent}`]: true,
-          [`flex_wrap--${this.flexWrap}`]: true,
-          [`align_items--${this.alignItems}`]: true,
-          [`gap--${this.gap}`]: true,
         }}
       >
-        <slot />
+        <bds-grid
+          direction={this.direction}
+          flexWrap={this.flexWrap}
+          justifyContent={this.justifyContent}
+          alignItems={this.alignItems}
+          gap={this.gap}
+        >
+          <slot />
+        </bds-grid>
       </Host>
     );
   }
