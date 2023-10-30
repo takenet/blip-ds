@@ -18,6 +18,7 @@ export const Properties = (args) => {
       danger={args.danger}
       error-message={args.errorMessage}
       chips={args.chips}
+      blur-creation={args.blurCreation}
       disable-submit={args.disableSubmit}
       disabled={args.disabled}
     ></bds-input-chips>
@@ -30,6 +31,7 @@ Properties.args = {
   danger: false,
   errorMessage: '',
   chips: '["chip1", "chip2"]',
+  blurCreation: false,
   disableSubmit: false,
   disabled: false,
 };
@@ -70,6 +72,13 @@ Properties.argTypes = {
     },
     
     control: 'text',
+  },
+  blurCreation: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
   },
   disableSubmit: {
     table: {

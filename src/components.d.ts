@@ -50,6 +50,7 @@ import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
+import { Shape as Shape1 } from "./components/skeleton/skeleton";
 import { SwitchSize } from "./components/switch/switch";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -1016,6 +1017,10 @@ export namespace Components {
     interface BdsInputChips {
         "add": (value: string) => Promise<void>;
         /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "blurCreation": boolean;
+        /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips": string[] | string;
@@ -1958,6 +1963,11 @@ export namespace Components {
          */
         "width"?: number;
     }
+    interface BdsSkeleton {
+        "height"?: string;
+        "shape"?: Shape;
+        "width"?: string;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -2873,6 +2883,12 @@ declare global {
         prototype: HTMLBdsSidebarElement;
         new (): HTMLBdsSidebarElement;
     };
+    interface HTMLBdsSkeletonElement extends Components.BdsSkeleton, HTMLStencilElement {
+    }
+    var HTMLBdsSkeletonElement: {
+        prototype: HTMLBdsSkeletonElement;
+        new (): HTMLBdsSkeletonElement;
+    };
     interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
     }
     var HTMLBdsStepElement: {
@@ -3076,6 +3092,7 @@ declare global {
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-sidebar": HTMLBdsSidebarElement;
+        "bds-skeleton": HTMLBdsSkeletonElement;
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
@@ -4152,6 +4169,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface BdsInputChips {
+        /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "blurCreation"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
@@ -5247,6 +5268,11 @@ declare namespace LocalJSX {
          */
         "width"?: number;
     }
+    interface BdsSkeleton {
+        "height"?: string;
+        "shape"?: Shape;
+        "width"?: string;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -5636,6 +5662,7 @@ declare namespace LocalJSX {
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
         "bds-sidebar": BdsSidebar;
+        "bds-skeleton": BdsSkeleton;
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
@@ -5734,6 +5761,7 @@ declare module "@stencil/core" {
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-sidebar": LocalJSX.BdsSidebar & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
+            "bds-skeleton": LocalJSX.BdsSkeleton & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
