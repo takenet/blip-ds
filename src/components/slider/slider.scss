@@ -1,0 +1,112 @@
+:host {
+  position: relative;
+  display: flex;
+  height: 32px;
+}
+
+.track-bg {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  inset: 0 8px;
+
+  .progress-bar {
+    position: absolute;
+    height: 4px;
+    border-radius: 1rem;
+    background-color: $color-primary;
+    z-index: 2;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    height: 4px;
+    background-color: $color-content-default;
+    opacity: .16;
+    border-radius: 1rem;
+  }
+
+  & .step {
+    position: relative;
+    width: 2px;
+    height: 8px;
+    display: flex;
+    justify-content: center;
+    background-color: $color-content-disable;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    & .label-step {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.element-min {
+  position: relative;
+  height: 4px;
+  background-color: $color-primary;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.element-max {
+  position: relative;
+  height: 4px;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.input_slide {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  height: 4px;
+  position: relative;
+  border-radius: 1rem;
+  background: transparent;
+  z-index: 3;
+
+  &.has_min {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+  }
+  
+  &.has_max {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+}
+
+/* Thumb: webkit */
+.input_slide::-webkit-slider-thumb,
+.input_slide::-moz-range-thumb {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  background-color: $color-primary;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+
+
+.group_slide {
+  position: absolute;
+  display: flex;
+  inset: 0;
+
+  & .input_slide {
+    width: 50%;
+  }
+  & .input_slide::-webkit-slider-thumb,
+  .input_slide::-moz-range-thumb  {
+    -webkit-appearance: none;
+  }
+}

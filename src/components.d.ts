@@ -50,6 +50,7 @@ import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
+import { StepOption, typeMarkers, typeProgress, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -1958,6 +1959,40 @@ export namespace Components {
          */
         "width"?: number;
     }
+    interface BdsSlider {
+        /**
+          * Data Markers, prop to select ype of markers.
+         */
+        "dataMarkers"?: StepOption[];
+        /**
+          * Markers, prop to select ype of markers.
+         */
+        "markers"?: typeMarkers;
+        /**
+          * Max, property to set the maximum value of the range.
+         */
+        "max"?: number;
+        /**
+          * Min, property to set the minimum value of the range.
+         */
+        "min"?: number;
+        /**
+          * Progress, prop to select ype of Progress.
+         */
+        "progress"?: typeProgress;
+        /**
+          * Step, property to insert steps into the input range.
+         */
+        "step"?: number;
+        /**
+          * Type, prop to select type.
+         */
+        "type"?: typeRange;
+        /**
+          * Value, prop to define value of input.
+         */
+        "value"?: number | number[];
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -2424,6 +2459,10 @@ export interface BdsSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSidebarElement;
 }
+export interface BdsSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSliderElement;
+}
 export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSwitchElement;
@@ -2873,6 +2912,12 @@ declare global {
         prototype: HTMLBdsSidebarElement;
         new (): HTMLBdsSidebarElement;
     };
+    interface HTMLBdsSliderElement extends Components.BdsSlider, HTMLStencilElement {
+    }
+    var HTMLBdsSliderElement: {
+        prototype: HTMLBdsSliderElement;
+        new (): HTMLBdsSliderElement;
+    };
     interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
     }
     var HTMLBdsStepElement: {
@@ -3076,6 +3121,7 @@ declare global {
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-sidebar": HTMLBdsSidebarElement;
+        "bds-slider": HTMLBdsSliderElement;
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
@@ -5247,6 +5293,44 @@ declare namespace LocalJSX {
          */
         "width"?: number;
     }
+    interface BdsSlider {
+        /**
+          * Data Markers, prop to select ype of markers.
+         */
+        "dataMarkers"?: StepOption[];
+        /**
+          * Markers, prop to select ype of markers.
+         */
+        "markers"?: typeMarkers;
+        /**
+          * Max, property to set the maximum value of the range.
+         */
+        "max"?: number;
+        /**
+          * Min, property to set the minimum value of the range.
+         */
+        "min"?: number;
+        /**
+          * bdsChange. Event to return selected date value.
+         */
+        "onBdsChange"?: (event: BdsSliderCustomEvent<any>) => void;
+        /**
+          * Progress, prop to select ype of Progress.
+         */
+        "progress"?: typeProgress;
+        /**
+          * Step, property to insert steps into the input range.
+         */
+        "step"?: number;
+        /**
+          * Type, prop to select type.
+         */
+        "type"?: typeRange;
+        /**
+          * Value, prop to define value of input.
+         */
+        "value"?: number | number[];
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -5636,6 +5720,7 @@ declare namespace LocalJSX {
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
         "bds-sidebar": BdsSidebar;
+        "bds-slider": BdsSlider;
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
@@ -5734,6 +5819,7 @@ declare module "@stencil/core" {
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-sidebar": LocalJSX.BdsSidebar & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
+            "bds-slider": LocalJSX.BdsSlider & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
