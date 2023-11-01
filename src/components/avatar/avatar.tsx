@@ -14,7 +14,6 @@ export type colors = 'colorLetter' | 'system' | 'success' | 'warning' | 'error' 
 export class BdsAvatar {
   private typoSize?: FontSize = 'fs-20';
   private iconSize?: IconSize = 'large';
-  private thumbSize?: number = 56;
   @State() hasThumb: boolean;
   /**
    * Name, Inserted for highlighted osuary name. Enter the full name.
@@ -66,37 +65,30 @@ export class BdsAvatar {
       case 'micro':
         this.typoSize = 'fs-12';
         this.iconSize = 'xx-small';
-        this.thumbSize = 24;
         break;
       case 'extra-small':
         this.typoSize = 'fs-14';
         this.iconSize = 'x-small';
-        this.thumbSize = 32;
         break;
       case 'small':
         this.typoSize = 'fs-16';
-        this.iconSize = 'x-small';
-        this.thumbSize = 40;
+        this.iconSize = 'medium';
         break;
       case 'standard':
         this.typoSize = 'fs-20';
-        this.iconSize = 'medium';
-        this.thumbSize = 56;
+        this.iconSize = 'x-large';
         break;
       case 'large':
         this.typoSize = 'fs-24';
         this.iconSize = 'xxx-large';
-        this.thumbSize = 64;
         break;
       case 'extra-large':
         this.typoSize = 'fs-32';
         this.iconSize = 'xxx-large';
-        this.thumbSize = 72;
         break;
       default:
         this.typoSize = 'fs-20';
         this.iconSize = 'medium';
-        this.thumbSize = 56;
     }
   };
 
@@ -119,8 +111,6 @@ export class BdsAvatar {
     const lastName = arrayName.length ? arrayName.pop().charAt(0).toUpperCase() : '';
     this.selectTypoSize(this.size);
     const thumbnailStyle = {
-      width: this.thumbSize + 'px',
-      height: this.thumbSize + 'px',
       backgroundImage: `url(${this.hasThumb ? this.thumbnail : null})`,
     };
 
@@ -150,7 +140,7 @@ export class BdsAvatar {
           ) : this.thumbnail ? (
             this.upload && this.size !== 'micro' ? (
               <div class="avatar__btn" onClick={() => this.onUploadClick}>
-                <div class="avatar__btn__img" style={thumbnailStyle}></div>
+                <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
                 <div class="avatar__btn__thumb">
                   <bds-icon
                     class="avatar__btn__thumb__icon"
@@ -161,7 +151,7 @@ export class BdsAvatar {
                 </div>
               </div>
             ) : (
-              <div class="avatar__btn__img" style={thumbnailStyle}></div>
+              <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
             )
           ) : this.name ? (
             this.upload && this.size !== 'micro' ? (
