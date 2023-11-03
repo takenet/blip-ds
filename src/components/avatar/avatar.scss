@@ -29,7 +29,7 @@ $avatar-size-extra-large: 72px;
   }
 
   &__icon {
-    color: $color-surface-1;
+    color: $color-content-default;
   }
 
   &__btn {
@@ -133,6 +133,8 @@ $avatar-size-extra-large: 72px;
     &--micro {
       width: $avatar-size-micro;
       height: $avatar-size-micro;
+      min-width: $avatar-size-micro;
+      min-height: $avatar-size-micro;
     }
     &--extra-small {
       width: $avatar-size-extra-small;
