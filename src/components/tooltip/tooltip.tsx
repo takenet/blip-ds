@@ -50,7 +50,15 @@ export class Tooltip {
    */
   @Method()
   async visible() {
-    this.isMouseOver = !this.isMouseOver;
+    this.isMouseOver = true;
+  }
+
+  /**
+   * Method for change the visibility of tooltip.
+   */
+  @Method()
+  async invisible() {
+    this.isMouseOver = false;
   }
 
   private setVisibility(value: boolean) {

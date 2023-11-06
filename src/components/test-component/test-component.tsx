@@ -1,20 +1,10 @@
 import { Component, h } from '@stencil/core';
 
-const data = [
-  { value: 0, name: 'standard' },
-  { value: 1, name: 'plus' },
-  { value: 2, name: 'gold' },
-  { value: 3, name: 'platinum' },
-];
-
 @Component({
   tag: 'bds-test-component',
   styleUrl: 'test-component.scss',
 })
 export class TestComponent {
-  private onChange = (ev: CustomEvent): void => {
-    // console.log('ev', ev.detail.value);
-  };
   render() {
     return (
       <bds-grid xxs="12" direction="row" padding="3" flex-wrap="wrap">
@@ -32,12 +22,6 @@ export class TestComponent {
                 <bds-typo variant="fs-32" bold="bold">
                   Insira o componente aqui
                 </bds-typo>
-                <bds-slider value={50} min={0} max={100}></bds-slider>
-                <bds-slider value={50} min={0} max={100} step={10}></bds-slider>
-                <bds-slider value={50} min={0} max={100} step={10} markers="markers"></bds-slider>
-                <bds-slider value={50} min={0} max={100} step={10} markers="without-subtitle"></bds-slider>
-                <bds-slider value={2} markers="markers" dataMarkers={data}></bds-slider>
-                <bds-slider value={[25, 75]} min={0} max={100} type="range"></bds-slider>
               </bds-grid>
             </bds-paper>
           </bds-theme-provider>
@@ -49,12 +33,6 @@ export class TestComponent {
                 <bds-typo variant="fs-32" bold="bold">
                   Insira o componente aqui
                 </bds-typo>
-                <bds-slider value={50} min={0} max={100}></bds-slider>
-                <bds-slider value={50} min={0} max={100} step={10}></bds-slider>
-                <bds-slider value={50} min={0} max={100} step={10} markers="markers"></bds-slider>
-                <bds-slider value={50} min={0} max={100} step={10} markers="without-subtitle"></bds-slider>
-                <bds-slider value={2} markers="markers" dataMarkers={data}></bds-slider>
-                <bds-slider value={50} min={0} max={100} type="range"></bds-slider>
               </bds-grid>
             </bds-paper>
           </bds-theme-provider>

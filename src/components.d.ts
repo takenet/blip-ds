@@ -50,7 +50,7 @@ import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
-import { StepOption, typeMarkers, typeProgress, typeRange } from "./components/slider/slider-interface";
+import { StepOption, typeMarkers, typeProgress } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -1963,7 +1963,7 @@ export namespace Components {
         /**
           * Data Markers, prop to select ype of markers.
          */
-        "dataMarkers"?: StepOption[];
+        "dataMarkers"?: string | StepOption[];
         /**
           * Markers, prop to select ype of markers.
          */
@@ -1985,13 +1985,9 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * Type, prop to select type.
-         */
-        "type"?: typeRange;
-        /**
           * Value, prop to define value of input.
          */
-        "value"?: number | number[];
+        "value"?: number;
     }
     interface BdsStep {
         /**
@@ -2243,6 +2239,10 @@ export namespace Components {
           * Used to disable tooltip when the button are avalible
          */
         "disabled"?: boolean;
+        /**
+          * Method for change the visibility of tooltip.
+         */
+        "invisible": () => Promise<void>;
         /**
           * Used to set tooltip position
          */
@@ -5297,7 +5297,7 @@ declare namespace LocalJSX {
         /**
           * Data Markers, prop to select ype of markers.
          */
-        "dataMarkers"?: StepOption[];
+        "dataMarkers"?: string | StepOption[];
         /**
           * Markers, prop to select ype of markers.
          */
@@ -5323,13 +5323,9 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Type, prop to select type.
-         */
-        "type"?: typeRange;
-        /**
           * Value, prop to define value of input.
          */
-        "value"?: number | number[];
+        "value"?: number;
     }
     interface BdsStep {
         /**

@@ -14,8 +14,30 @@
     position: absolute;
     height: 4px;
     border-radius: 1rem;
-    background-color: $color-primary;
     z-index: 2;
+    &-liner {
+      background-color: $color-primary;
+    }
+    &-tooltip {
+      position: absolute;
+      top: -6px;
+      right: -.5rem;
+    }
+    &-thumb {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 1rem;
+      background-color: $color-hover;
+      transition: all .3s ease-in-out;
+    }
+
+    &-hover {
+      .progress-bar{
+        &-thumb {
+          transform: scale(2);
+        }
+      }
+    }
   }
 
   &::before {
@@ -69,6 +91,7 @@
   border-radius: 1rem;
   background: transparent;
   z-index: 3;
+  color: -internal-light-dark(rgb(16, 16, 16), rgb(255, 255, 255));
 
   &.has_min {
     border-top-left-radius: 0;
@@ -81,11 +104,19 @@
     border-bottom-right-radius: 0;
   }
 
+  &:hover{ 
+    .input_slide::-webkit-slider-thumb,
+    .input_slide::-moz-range-thumb {
+      -webkit-appearance: none;
+    }
+  }
+
 }
 
 /* Thumb: webkit */
 .input_slide::-webkit-slider-thumb,
 .input_slide::-moz-range-thumb {
+  -webkit-appearance: none;
   position: relative;
   height: 16px;
   width: 16px;
@@ -98,12 +129,19 @@
 
 
 .group_slide {
-  position: absolute;
-  display: flex;
-  inset: 0;
+  position: relative;
+  width: 100%;
 
   & .input_slide {
-    width: 50%;
+    width: inherit;
+    position: absolute;
+  }
+  
+  & .input_slide_start {
+    left: 0;
+  }
+  & .input_slide_end {
+    right: 0;
   }
   & .input_slide::-webkit-slider-thumb,
   .input_slide::-moz-range-thumb  {
