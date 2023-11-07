@@ -152,6 +152,14 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -191,6 +199,14 @@ export namespace Components {
           * Multiselect, Prop to enable multi selections.
          */
         "selectionType"?: SelectionType;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * the value of the select.
          */
@@ -3216,6 +3232,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -3234,7 +3258,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selection is cancelled.
          */
-        "onBdsCancel"?: (event: BdsAutocompleteCustomEvent<void>) => void;
+        "onBdsCancel"?: (event: BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
@@ -3283,6 +3307,14 @@ declare namespace LocalJSX {
           * Multiselect, Prop to enable multi selections.
          */
         "selectionType"?: SelectionType;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * the value of the select.
          */

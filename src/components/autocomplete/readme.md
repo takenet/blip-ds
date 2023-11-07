@@ -13,6 +13,8 @@
 | `danger`           | `danger`              | Add state danger on input, use for use feedback.                                                                                                                                                                                                                                              | `boolean`                        | `false`     |
 | `dataTest`         | `data-test`           | Data test is the prop to specifically test the component action object.                                                                                                                                                                                                                       | `string`                         | `null`      |
 | `disabled`         | `disabled`            | Disabled input.                                                                                                                                                                                                                                                                               | `boolean`                        | `false`     |
+| `errorMessage`     | `error-message`       | Indicated to pass an feeback to user.                                                                                                                                                                                                                                                         | `string`                         | `''`        |
+| `helperMessage`    | `helper-message`      | Indicated to pass a help the user in complex filling.                                                                                                                                                                                                                                         | `string`                         | `''`        |
 | `icon`             | `icon`                | used for add icon in input left. Uses the bds-icon component.                                                                                                                                                                                                                                 | `string`                         | `''`        |
 | `label`            | `label`               | label in input, with he the input size increases.                                                                                                                                                                                                                                             | `string`                         | `''`        |
 | `loading`          | `loading`             | Is Loading, is the prop to enable that the component is loading.                                                                                                                                                                                                                              | `boolean`                        | `false`     |
@@ -23,6 +25,8 @@
 | `selected`         | --                    | the item selected.                                                                                                                                                                                                                                                                            | `HTMLBdsSelectOptionElement`     | `undefined` |
 | `selectionTitle`   | `selection-title`     | Selection Title, Prop to enable title to select.                                                                                                                                                                                                                                              | `string`                         | `''`        |
 | `selectionType`    | `selection-type`      | Multiselect, Prop to enable multi selections.                                                                                                                                                                                                                                                 | `"multiple" \| "single"`         | `'single'`  |
+| `success`          | `success`             | Add state success on input, use for use feedback.                                                                                                                                                                                                                                             | `boolean`                        | `false`     |
+| `successMessage`   | `success-message`     | Indicated to pass an feeback to user.                                                                                                                                                                                                                                                         | `string`                         | `''`        |
 | `value`            | `value`               | the value of the select.                                                                                                                                                                                                                                                                      | `string`                         | `undefined` |
 
 
@@ -31,12 +35,19 @@
 | Event                    | Description                                  | Type                                                 |
 | ------------------------ | -------------------------------------------- | ---------------------------------------------------- |
 | `bdsBlur`                | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
-| `bdsCancel`              | Emitted when the selection is cancelled.     | `CustomEvent<void>`                                  |
+| `bdsCancel`              | Emitted when the selection is cancelled.     | `CustomEvent<AutocompleteChangeEventDetail>`         |
 | `bdsChange`              | Emitted when the value has changed.          | `CustomEvent<AutocompleteChangeEventDetail>`         |
 | `bdsFocus`               | Emitted when the select loses focus.         | `CustomEvent<void>`                                  |
 | `bdsInput`               | Emitted when the input has changed.          | `CustomEvent<KeyboardEvent>`                         |
 | `bdsMultiselectedChange` | Emitted when the selected value has changed. | `CustomEvent<any>`                                   |
 | `bdsSelectedChange`      | Emitted when the selected value has changed. | `CustomEvent<AutocompleteSelectedChangeEventDetail>` |
+
+
+## Shadow Parts
+
+| Part               | Description |
+| ------------------ | ----------- |
+| `"input__message"` |             |
 
 
 ## Dependencies
