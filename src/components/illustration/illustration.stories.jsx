@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BdsIllustration } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './illustration.mdx';
 
@@ -458,136 +458,334 @@ export const FrameworkReact = (args) => {
 };
 
 export const IllustrationsDefault = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  defaults.forEach((name) => {
+  useEffect(() => {
+    const illustrationDefault = document.getElementById('illustration-default');
+    illustrationDefault.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = defaults.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="default" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-default" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsScreens = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  screens.forEach((name) => {
+  useEffect(() => {
+    const illustrationScreens = document.getElementById('illustration-screens');
+    illustrationScreens.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = screens.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="screens" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-screens" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsBlipSolid = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  blipSolid.forEach((name) => {
+  useEffect(() => {
+    const illustrationBlipSolid = document.getElementById('illustration-blip-solid');
+    illustrationBlipSolid.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = blipSolid.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="blip-solid" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-blip-solid" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsBlipOutline = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  blipOutline.forEach((name) => {
+  useEffect(() => {
+    const illustrationBlipOutline = document.getElementById('illustration-blip-outline');
+    illustrationBlipOutline.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = blipOutline.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="blip-outline" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-blip-outline" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsBrand = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  brand.forEach((name) => {
+  useEffect(() => {
+    const illustrationBrand = document.getElementById('illustration-brand');
+    illustrationBrand.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = brand.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="brand" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-brand" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsLogoIntegration = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  logoIntegration.forEach((name) => {
+  useEffect(() => {
+    const illustrationLogoIntegration = document.getElementById('illustration-logo-integration');
+    illustrationLogoIntegration.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = logoIntegration.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="logo-integration" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-logo-integration" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsSegmented = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  segmented.forEach((name) => {
+  useEffect(() => {
+    const illustrationLogoIntegration = document.getElementById('illustration-segmented');
+    illustrationLogoIntegration.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = segmented.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="segmented" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-segmented" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsSmartphone = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  smartphone.forEach((name) => {
+  useEffect(() => {
+    const illustrationLogoIntegration = document.getElementById('illustration-smartphone');
+    illustrationLogoIntegration.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = smartphone.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="smartphone" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-smartphone" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
 
 export const IllustrationsSpots = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
   const defaultArray = [];
 
-  spots.forEach((name) => {
+  useEffect(() => {
+    const illustrationLogoIntegration = document.getElementById('illustration-spots');
+    illustrationLogoIntegration.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = spots.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
     defaultArray.push(
-      <div style={illustrationStyles}>
+      <div key={name} style={illustrationStyles}>
         <bds-illustration type="spots" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
       </div>
     );
   });
 
-  return <div style={illustrationWrapperStyles}>{defaultArray}</div>;
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-spots" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
 };
