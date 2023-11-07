@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import DocumentationTemplate from './slider.mdx';
+import { BdsGrid, BdsSlider } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Slider',
@@ -17,15 +18,17 @@ export const Properties = (args) => {
     el[0].style.position = 'relative';
   }
   return (
-    <bds-slider
-      value={args.value}
-      min={args.min}
-      max={args.max}
-      step={args.step}
-      markers={args.markers}
-      progress={args.progress}
-      dataMarkers={args.dataMarkers}
-    ></bds-slider>
+    <bds-grid padding="t-6" containerFluid>
+      <bds-slider
+        value={args.value}
+        min={args.min}
+        max={args.max}
+        step={args.step}
+        markers={args.markers}
+        progress={args.progress}
+        dataMarkers={args.dataMarkers}
+      ></bds-slider>
+    </bds-grid>
   );
 };
 
@@ -94,5 +97,15 @@ export const Events = () => {
       console.log('Evento Toggle funcionando');
     });
   });
-  return <bds-slider id="slider" value={50} min={0} max={100} step={10} markers="markers"></bds-slider>;
+  return (
+    <bds-grid padding="t-6" containerFluid>
+      <bds-slider id="slider" value={50} min={0} max={100} step={10} markers="markers"></bds-slider>;
+    </bds-grid>
+  );
 };
+
+export const FrameworkReact = () => (
+  <BdsGrid padding="t-6">
+    <BdsSlider value={50} min={0} max={100} step={10} markers="markers"></BdsSlider>
+  </BdsGrid>
+);
