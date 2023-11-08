@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 export type Shape = 'circle' | 'triangle' | 'triangle-reverse' | 'polygon' | 'square';
 
@@ -44,8 +44,17 @@ export class Badge {
       this.type = 'icon';
     } else if (this.number && this.icon) {
       this.type = 'number';
-    } else if (this.number === null) {
+    } else if (this.number === 0) {
       this.type = 'empty';
+    }
+  }
+
+  @Watch('number')
+  numberChanged(newNumber: number) {
+    if (newNumber === 0) {
+      this.type = 'empty';
+    } else if (this.icon === null && newNumber !== null) {
+      this.type = 'number';
     }
   }
 
@@ -55,7 +64,7 @@ export class Badge {
         <div
           class={{
             chip_badge: true,
-            chip_size: this.number !== null ? true : false,
+            chip_size: this.number !== 0 ? true : false,
             [`chip_badge--${this.shape}`]: true,
             [`chip_badge--${this.color}`]: true,
           }}
