@@ -24,11 +24,11 @@ export const Properties = (args) => (
         <bds-typo>{args.text2}</bds-typo>
         <bds-typo variant="fs-14">{args.secondaryText2}</bds-typo>
       </bds-list-item-content>
-      <div slot="action-area">
+      <bds-grid slot="action-area">
         <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
-      </div>
+      </bds-grid>
     </bds-list-item>
     <bds-list-item value="03" icon={args.icon3} avatar-name={args.avatarName3}>
       <bds-list-item-content>
@@ -46,11 +46,11 @@ export const Properties = (args) => (
           Category
         </bds-chip-tag>
       </bds-list-item-content>
-      <div slot="action-area">
+      <bds-grid slot="action-area">
         <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
-      </div>
+      </bds-grid>
     </bds-list-item>
     <bds-list-item icon={args.icon4} avatar-name={args.avatarName4}>
       <bds-list-item-content>
@@ -71,11 +71,11 @@ export const Properties = (args) => (
           Category
         </bds-chip-tag>
       </bds-list-item-content>
-      <div slot="action-area">
+      <bds-grid slot="action-area">
         <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
         <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
-      </div>
+      </bds-grid>
     </bds-list-item>
   </bds-list>
 );
