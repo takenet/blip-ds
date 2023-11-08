@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+:host(.list_item_content) {
+    display: flex;
+    width: fit-content;
+}
+
 .list {
   &_item {
     display: flex;
@@ -29,6 +34,12 @@
     & .grow-up {
       position: relative;
       flex-grow: 2;
+    }
+
+    & .content-slot {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     & .content-item {
