@@ -56,7 +56,6 @@ export class Badge {
     } else if (this.icon === null && newNumber !== null) {
       this.type = 'number';
     }
-    // Adicione outras condições conforme necessário para atualizar o tipo.
   }
 
   render() {
