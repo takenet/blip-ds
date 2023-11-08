@@ -78,6 +78,7 @@ export const BdsSelect = /*@__PURE__*/createReactComponent<JSX.BdsSelect, HTMLBd
 export const BdsSelectChips = /*@__PURE__*/createReactComponent<JSX.BdsSelectChips, HTMLBdsSelectChipsElement>('bds-select-chips');
 export const BdsSelectOption = /*@__PURE__*/createReactComponent<JSX.BdsSelectOption, HTMLBdsSelectOptionElement>('bds-select-option');
 export const BdsSidebar = /*@__PURE__*/createReactComponent<JSX.BdsSidebar, HTMLBdsSidebarElement>('bds-sidebar');
+export const BdsSkeleton = /*@__PURE__*/createReactComponent<JSX.BdsSkeleton, HTMLBdsSkeletonElement>('bds-skeleton');
 export const BdsStep = /*@__PURE__*/createReactComponent<JSX.BdsStep, HTMLBdsStepElement>('bds-step');
 export const BdsStepper = /*@__PURE__*/createReactComponent<JSX.BdsStepper, HTMLBdsStepperElement>('bds-stepper');
 export const BdsSwitch = /*@__PURE__*/createReactComponent<JSX.BdsSwitch, HTMLBdsSwitchElement>('bds-switch');

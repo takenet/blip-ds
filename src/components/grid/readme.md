@@ -43,6 +43,7 @@
  - [bds-card-footer](../card/card-footer)
  - [bds-card-header](../card/card-header)
  - [bds-list-item-content](../list)
+ - [bds-skeleton](../skeleton)
  - [bds-test-component](../test-component)
 
 ### Graph
@@ -54,6 +55,7 @@ graph TD;
   bds-card-footer --> bds-grid
   bds-card-header --> bds-grid
   bds-list-item-content --> bds-grid
+  bds-skeleton --> bds-grid
   bds-test-component --> bds-grid
   style bds-grid fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -29,6 +29,11 @@ export const Properties = (args) => {
       selection-type={args.selectionType}
       selection-title={args.selectionTitle}
       options-position="bottom"
+      danger={args.danger}
+      error-message={args.errorMessage}
+      helper-message={args.helperMessage}
+      success-message={args.successMessage}
+      success={args.success}
     >
       <bds-select-option value="1">Millie Bobby</bds-select-option>
       <bds-select-option value="2">Finn Wolfhard</bds-select-option>
@@ -76,6 +81,36 @@ Properties.argTypes = {
     description: 'Defina se o titulo para a multi-seleção.',
     control: 'string',
   },
+  errorMessage: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  helperMessage: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  successMessage: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  success: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  danger: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -85,6 +120,11 @@ Properties.args = {
   placeholder: 'Selecione uma opção',
   selectionType: 'single',
   selectionTitle: 'Selection Title',
+  errorMessage: '',
+  helperMessage: '',
+  successMessage: '',
+  success: false,
+  danger: false,
 };
 
 export const Events = () => {
