@@ -14,19 +14,19 @@ export default {
 export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
   if (el.length !== 0) {
-    el[0].style.height = '400px';
-    el[0].style.position = 'relative';
+    el[0].style.width = '700px';
   }
   return (
-    <bds-grid padding="t-6" containerFluid>
+    <bds-grid padding="t-6" xxs={12}>
       <bds-slider
         value={args.value}
         min={args.min}
         max={args.max}
         step={args.step}
         markers={args.markers}
-        progress={args.progress}
-        dataMarkers={args.dataMarkers}
+        label={args.label}
+        type={args.type}
+        data-markers={args.dataMarkers}
       ></bds-slider>
     </bds-grid>
   );
@@ -37,10 +37,10 @@ Properties.args = {
   min: 0,
   max: 100,
   step: 10,
-  markers: 'default',
-  progress: 'default',
-  dataMarkers:
-    '[{ value: 0, name: "standard" },{ value: 1, name: "plus" },{ value: 2, name: "gold" },{ value: 3, name: "platinum" },]',
+  markers: false,
+  label: false,
+  type: 'fill',
+  dataMarkers: '',
 };
 
 Properties.argTypes = {
@@ -70,21 +70,29 @@ Properties.argTypes = {
   },
   markers: {
     table: {
-      defaultValue: { summary: 'default' },
+      defaultValue: { summary: 'vazio' },
     },
-    options: ['default', 'markers', 'without-subtitle'],
-    control: 'select',
+    control: 'boolean',
   },
-  progress: {
+  label: {
     table: {
-      defaultValue: { summary: 'default' },
+      defaultValue: { summary: 'vazio' },
     },
-    options: ['default', 'no-linear'],
+    control: 'boolean',
+  },
+  type: {
+    table: {
+      defaultValue: { summary: 'fill' },
+    },
+    options: ['fill', 'no-linear'],
     control: 'select',
   },
   dataMarkers: {
     table: {
-      defaultValue: { summary: 'false' },
+      defaultValue: {
+        summary:
+          '[{"value": 0, "name": "standard"}, {"value": 1, "name": "plus"}, {"value": 2, "name": "gold"}, {"value": 3, "name": "platinum"}]',
+      },
     },
     control: 'text',
   },
@@ -93,19 +101,19 @@ Properties.argTypes = {
 export const Events = () => {
   useEffect(() => {
     const slider = document.getElementById('slider');
-    slider.addEventListener('bdsChange', () => {
-      console.log('Evento Toggle funcionando');
+    slider.addEventListener('bdsChange', (obj) => {
+      console.log('Evento Change funcionando: ', obj);
     });
   });
   return (
-    <bds-grid padding="t-6" containerFluid>
-      <bds-slider id="slider" value={50} min={0} max={100} step={10} markers="markers"></bds-slider>;
+    <bds-grid padding="t-6" xxs={12}>
+      <bds-slider id="slider" value={50} min={0} max={100} step={10} markers label type="fill"></bds-slider>;
     </bds-grid>
   );
 };
 
 export const FrameworkReact = () => (
   <BdsGrid padding="t-6">
-    <BdsSlider value={50} min={0} max={100} step={10} markers="markers"></BdsSlider>
+    <BdsSlider value={50} min={0} max={100} step={10} markers label type="fill"></BdsSlider>
   </BdsGrid>
 );

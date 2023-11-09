@@ -51,7 +51,7 @@ import { progressBarColor, progressBarSize } from "./components/progress-bar/pro
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
-import { StepOption, typeMarkers, typeProgress } from "./components/slider/slider-interface";
+import { StepOption, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -1975,9 +1975,13 @@ export namespace Components {
          */
         "dataMarkers"?: string | StepOption[];
         /**
-          * Markers, prop to select ype of markers.
+          * Label, Prop to enable Label.
          */
-        "markers"?: typeMarkers;
+        "label"?: boolean;
+        /**
+          * Markers, Prop to enable markers.
+         */
+        "markers"?: boolean;
         /**
           * Max, property to set the maximum value of the range.
          */
@@ -1987,13 +1991,13 @@ export namespace Components {
          */
         "min"?: number;
         /**
-          * Progress, prop to select ype of Progress.
-         */
-        "progress"?: typeProgress;
-        /**
           * Step, property to insert steps into the input range.
          */
         "step"?: number;
+        /**
+          * Type, prop to select type of slider.
+         */
+        "type"?: typeRange;
         /**
           * Value, prop to define value of input.
          */
@@ -5325,9 +5329,13 @@ declare namespace LocalJSX {
          */
         "dataMarkers"?: string | StepOption[];
         /**
-          * Markers, prop to select ype of markers.
+          * Label, Prop to enable Label.
          */
-        "markers"?: typeMarkers;
+        "label"?: boolean;
+        /**
+          * Markers, Prop to enable markers.
+         */
+        "markers"?: boolean;
         /**
           * Max, property to set the maximum value of the range.
          */
@@ -5341,13 +5349,13 @@ declare namespace LocalJSX {
          */
         "onBdsChange"?: (event: BdsSliderCustomEvent<any>) => void;
         /**
-          * Progress, prop to select ype of Progress.
-         */
-        "progress"?: typeProgress;
-        /**
           * Step, property to insert steps into the input range.
          */
         "step"?: number;
+        /**
+          * Type, prop to select type of slider.
+         */
+        "type"?: typeRange;
         /**
           * Value, prop to define value of input.
          */

@@ -1,5 +1,5 @@
 import { Component, Host, h, State, Prop, EventEmitter, Event } from '@stencil/core';
-import { typeMarkers, typeProgress, StepOption } from './slider-interface';
+import { typeRange, StepOption } from './slider-interface';
 
 @Component({
   tag: 'bds-slider',
@@ -12,6 +12,7 @@ export class Slider {
   private progressBar?: HTMLElement;
 
   @State() stepArray?: StepOption[];
+  @State() internalOptions?: StepOption[];
   @State() inputValue?: string;
 
   /**
@@ -35,14 +36,18 @@ export class Slider {
   @Prop() value?: number = this.min ? this.min : 0;
 
   /**
-   * Markers, prop to select ype of markers.
+   * Markers, Prop to enable markers.
    */
-  @Prop() markers?: typeMarkers = 'default';
+  @Prop() markers?: boolean = false;
 
   /**
-   * Progress, prop to select ype of Progress.
+   * Label, Prop to enable Label.
    */
-  @Prop() progress?: typeProgress = 'default';
+  @Prop() label?: boolean = false;
+  /**
+   * Type, prop to select type of slider.
+   */
+  @Prop() type?: typeRange = 'fill';
 
   /**
    * Data Markers, prop to select ype of markers.
@@ -55,29 +60,41 @@ export class Slider {
   @Event() bdsChange?: EventEmitter;
 
   componentWillLoad() {
-    this.stepArray = this.dataMarkers
-      ? typeof this.dataMarkers === 'string'
-        ? JSON.parse(this.dataMarkers)
-        : this.dataMarkers
-      : (this.arraytoSteps(
-          (this.max - this.min) / this.step,
-          Number.isInteger((this.max - this.min) / this.step)
-        ) as StepOption[]);
+    if (this.dataMarkers) {
+      if (typeof this.dataMarkers === 'string') {
+        this.internalOptions = JSON.parse(this.dataMarkers);
+        this.stepArray = this.internalOptions;
+      } else {
+        this.internalOptions = this.dataMarkers;
+        this.stepArray = this.internalOptions;
+      }
+    } else {
+      this.stepArray = this.arrayToSteps(
+        (this.max - this.min) / this.step,
+        Number.isInteger((this.max - this.min) / this.step)
+      ) as StepOption[];
+    }
   }
 
   componentDidLoad() {
     this.progressBar.style.width = `${this.valuePercent(this.inputSlide)}%`;
   }
   componentDidRender() {
-    if (this.dataMarkers) {
+    if (this.internalOptions) {
       this.inputSlide.min = '0';
-      this.inputSlide.max = `${this.dataMarkers.length - 1}`;
+      this.inputSlide.max = `${this.internalOptions.length - 1}`;
       this.inputSlide.step = '1';
     } else {
       this.inputSlide.min = this.min ? `${this.min}` : '';
       this.inputSlide.max = this.max ? `${this.max}` : '';
       this.inputSlide.step = this.step ? `${this.step}` : '';
     }
+  }
+
+  componentDidUpdate() {
+    this.progressBar.style.width = `${this.valuePercent(this.inputSlide)}%`;
+    const valueName = this.emiterChange(parseInt(this.inputSlide.value));
+    this.inputValue = this.stepArray.length > 0 ? valueName.name : this.inputSlide.value;
   }
 
   private refInputSlide = (el: HTMLInputElement): void => {
@@ -120,14 +137,14 @@ export class Slider {
   };
 
   private emiterChange = (value: number): StepOption => {
-    if (this.dataMarkers) {
+    if (this.internalOptions) {
       return this.stepArray[value];
     } else {
       return this.stepArray.find((item) => parseInt(item.name) === value);
     }
   };
 
-  private arraytoSteps(value: number, int: boolean): unknown {
+  private arrayToSteps(value: number, int: boolean): unknown {
     const numberToCalc = int ? value + 1 : value;
     const valueSteps = [];
     for (let i = 0; i < numberToCalc; i++) {
@@ -141,7 +158,7 @@ export class Slider {
       <Host>
         <div class="track-bg">
           <div
-            class={{ [`progress-bar`]: true, [`progress-bar-liner`]: this.progress !== 'no-linear' }}
+            class={{ [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }}
             ref={this.refProgressBar}
           >
             <bds-tooltip
@@ -153,12 +170,10 @@ export class Slider {
               <div class={{ [`progress-bar-thumb`]: true }}></div>
             </bds-tooltip>
           </div>
-          {this.markers !== 'default' &&
+          {this.markers &&
             this.stepArray.map((item, index) => (
               <div key={index} class={`step`}>
-                {this.markers !== 'without-subtitle' && (
-                  <bds-typo class="label-step" variant="fs-10">{`${item.name}`}</bds-typo>
-                )}
+                {this.label && <bds-typo class="label-step" variant="fs-10">{`${item.name}`}</bds-typo>}
               </div>
             ))}
         </div>
