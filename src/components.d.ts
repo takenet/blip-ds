@@ -51,6 +51,7 @@ import { progressBarColor, progressBarSize } from "./components/progress-bar/pro
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
+import { StepOption, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -1968,6 +1969,40 @@ export namespace Components {
         "shape"?: Shape;
         "width"?: string;
     }
+    interface BdsSlider {
+        /**
+          * Data Markers, prop to select ype of markers.
+         */
+        "dataMarkers"?: string | StepOption[];
+        /**
+          * Label, Prop to enable Label.
+         */
+        "label"?: boolean;
+        /**
+          * Markers, Prop to enable markers.
+         */
+        "markers"?: boolean;
+        /**
+          * Max, property to set the maximum value of the range.
+         */
+        "max"?: number;
+        /**
+          * Min, property to set the minimum value of the range.
+         */
+        "min"?: number;
+        /**
+          * Step, property to insert steps into the input range.
+         */
+        "step"?: number;
+        /**
+          * Type, prop to select type of slider.
+         */
+        "type"?: typeRange;
+        /**
+          * Value, prop to define value of input.
+         */
+        "value"?: number;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -2219,6 +2254,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Method for change the visibility of tooltip.
+         */
+        "invisible": () => Promise<void>;
+        /**
           * Used to set tooltip position
          */
         "position": TooltipPostionType;
@@ -2433,6 +2472,10 @@ export interface BdsSelectOptionCustomEvent<T> extends CustomEvent<T> {
 export interface BdsSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSidebarElement;
+}
+export interface BdsSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSliderElement;
 }
 export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2889,6 +2932,12 @@ declare global {
         prototype: HTMLBdsSkeletonElement;
         new (): HTMLBdsSkeletonElement;
     };
+    interface HTMLBdsSliderElement extends Components.BdsSlider, HTMLStencilElement {
+    }
+    var HTMLBdsSliderElement: {
+        prototype: HTMLBdsSliderElement;
+        new (): HTMLBdsSliderElement;
+    };
     interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
     }
     var HTMLBdsStepElement: {
@@ -3093,6 +3142,7 @@ declare global {
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-sidebar": HTMLBdsSidebarElement;
         "bds-skeleton": HTMLBdsSkeletonElement;
+        "bds-slider": HTMLBdsSliderElement;
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
@@ -5273,6 +5323,44 @@ declare namespace LocalJSX {
         "shape"?: Shape;
         "width"?: string;
     }
+    interface BdsSlider {
+        /**
+          * Data Markers, prop to select ype of markers.
+         */
+        "dataMarkers"?: string | StepOption[];
+        /**
+          * Label, Prop to enable Label.
+         */
+        "label"?: boolean;
+        /**
+          * Markers, Prop to enable markers.
+         */
+        "markers"?: boolean;
+        /**
+          * Max, property to set the maximum value of the range.
+         */
+        "max"?: number;
+        /**
+          * Min, property to set the minimum value of the range.
+         */
+        "min"?: number;
+        /**
+          * bdsChange. Event to return selected date value.
+         */
+        "onBdsChange"?: (event: BdsSliderCustomEvent<any>) => void;
+        /**
+          * Step, property to insert steps into the input range.
+         */
+        "step"?: number;
+        /**
+          * Type, prop to select type of slider.
+         */
+        "type"?: typeRange;
+        /**
+          * Value, prop to define value of input.
+         */
+        "value"?: number;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -5663,6 +5751,7 @@ declare namespace LocalJSX {
         "bds-select-option": BdsSelectOption;
         "bds-sidebar": BdsSidebar;
         "bds-skeleton": BdsSkeleton;
+        "bds-slider": BdsSlider;
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
@@ -5762,6 +5851,7 @@ declare module "@stencil/core" {
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-sidebar": LocalJSX.BdsSidebar & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
             "bds-skeleton": LocalJSX.BdsSkeleton & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
+            "bds-slider": LocalJSX.BdsSlider & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;

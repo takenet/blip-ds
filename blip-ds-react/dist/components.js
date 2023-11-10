@@ -73,6 +73,7 @@ export const BdsSelectChips = /*@__PURE__*/ createReactComponent('bds-select-chi
 export const BdsSelectOption = /*@__PURE__*/ createReactComponent('bds-select-option');
 export const BdsSidebar = /*@__PURE__*/ createReactComponent('bds-sidebar');
 export const BdsSkeleton = /*@__PURE__*/ createReactComponent('bds-skeleton');
+export const BdsSlider = /*@__PURE__*/ createReactComponent('bds-slider');
 export const BdsStep = /*@__PURE__*/ createReactComponent('bds-step');
 export const BdsStepper = /*@__PURE__*/ createReactComponent('bds-stepper');
 export const BdsSwitch = /*@__PURE__*/ createReactComponent('bds-switch');
