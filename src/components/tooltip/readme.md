@@ -17,6 +17,16 @@
 
 ## Methods
 
+### `invisible() => Promise<void>`
+
+Method for change the visibility of tooltip.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `visible() => Promise<void>`
 
 Method for change the visibility of tooltip.
@@ -35,6 +45,7 @@ Type: `Promise<void>`
  - [bds-input-chips](../input-chips)
  - [bds-list-item](../list)
  - [bds-select-chips](../selects/select-chips)
+ - [bds-slider](../slider)
 
 ### Depends on
 
@@ -47,6 +58,7 @@ graph TD;
   bds-input-chips --> bds-tooltip
   bds-list-item --> bds-tooltip
   bds-select-chips --> bds-tooltip
+  bds-slider --> bds-tooltip
   style bds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
