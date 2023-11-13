@@ -443,16 +443,6 @@ export class SelectChips {
     return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
   };
 
-  private setFocusWrapper = (): void => {
-    if (this.nativeInput) {
-      this.nativeInput.focus();
-    }
-  };
-
-  private removeFocusWrapper = (): void => {
-    this.nativeInput.blur();
-  };
-
   private validateChips() {
     if (this.type === 'email') {
       return !this.internalChips.some((chip) => !this.validateChip(chip));
@@ -744,13 +734,7 @@ export class SelectChips {
     }
 
     return (
-      <div
-        class="select"
-        tabindex="0"
-        onFocus={this.setFocusWrapper}
-        onBlur={this.removeFocusWrapper}
-        onKeyPress={this.keyPressWrapper}
-      >
+      <div class="select" tabindex="0">
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.toggle}>
           <div
             class={{
@@ -762,7 +746,6 @@ export class SelectChips {
               'input--label': !!this.label,
               'input--pressed': isPressed,
             }}
-            onClick={this.onClickWrapper}
             onKeyDown={this.keyPressWrapper}
           >
             {this.renderIcon()}
@@ -783,6 +766,7 @@ export class SelectChips {
                   value={this.value}
                   disabled={this.disabled}
                   data-test={this.dataTest}
+                  onClick={this.onClickWrapper}
                 ></input>
               </div>
             </div>
