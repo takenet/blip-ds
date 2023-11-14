@@ -396,9 +396,15 @@ export class SelectChips {
     return chips.some((chip) => optionChip === chip);
   }
 
-  private toggle = (): void => {
+  private open = (): void => {
     if (!this.disabled) {
-      this.isOpen = !this.isOpen;
+      this.isOpen = true;
+    }
+  };
+
+  private close = (): void => {
+    if (!this.disabled) {
+      this.isOpen = false;
     }
   };
 
@@ -408,12 +414,12 @@ export class SelectChips {
     } = event;
     const text = this.getText(value);
     await this.addChip(text);
-    this.toggle();
+    this.close();
   };
 
   private handlerNewOption = async (text: string) => {
     await this.addChip(text);
-    this.toggle();
+    this.close();
   };
 
   private enableCreateOption(): boolean {
@@ -735,7 +741,7 @@ export class SelectChips {
 
     return (
       <div class="select" tabindex="0">
-        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.toggle}>
+        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.open}>
           <div
             class={{
               input: true,
