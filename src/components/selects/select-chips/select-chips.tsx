@@ -402,24 +402,18 @@ export class SelectChips {
     }
   };
 
-  private close = (): void => {
-    if (!this.disabled) {
-      this.isOpen = false;
-    }
-  };
-
   private handler = async (event: CustomEvent) => {
     const {
       detail: { value },
     } = event;
     const text = this.getText(value);
-    await this.addChip(text);
-    this.close();
+    this.handlerNewOption(text);
   };
 
   private handlerNewOption = async (text: string) => {
     await this.addChip(text);
-    this.close();
+    this.clearInputValues();
+    this.resetFilterOptions();
   };
 
   private enableCreateOption(): boolean {
@@ -492,8 +486,7 @@ export class SelectChips {
       case 'Enter':
         if (this.canAddNew !== false) {
           this.handleDelimiters();
-          this.setChip(this.value);
-          this.value = '';
+          this.handlerNewOption(this.value);
         }
         break;
       case 'Backspace' || 'Delete':
