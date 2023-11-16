@@ -4,6 +4,7 @@ export type IllustrationType =
   | 'blip-solid'
   | 'blip-outline'
   | 'logo-integration'
+  | 'empty-states'
   | 'brand'
   | 'segmented'
   | 'smartphone'

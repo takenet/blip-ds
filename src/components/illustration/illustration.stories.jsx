@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BdsIllustration } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './illustration.mdx';
 
@@ -339,6 +339,18 @@ const brand = [
   'sti-white-vertical-symbol',
 ];
 
+const emptyStates = [
+  'agent-1',
+  'agent-2',
+  'box',
+  'clock',
+  'column-chart',
+  'glad',
+  'letter-search-question',
+  'robot',
+  'robot-1',
+];
+
 const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];
 
 const segmented = ['cart-selected', 'catalog-option', 'item-overview', 'send-catalog'];
@@ -439,6 +451,7 @@ Properties.argTypes = {
       'blip-outline',
       'logo-integration',
       'brand',
+      'empty-states',
       'segmented',
       'smartphone',
       'spots',
@@ -453,7 +466,7 @@ Properties.argTypes = {
   },
 };
 
-export const FrameworkReact = (args) => {
+export const FrameworkReact = () => {
   return <BdsIllustration style={illustrationProps} type="default" name="agent-1"></BdsIllustration>;
 };
 
@@ -673,6 +686,43 @@ export const IllustrationsLogoIntegration = () => {
     <bds-grid direction="column" gap="3">
       <bds-grid md="6" align-items="center" gap="3">
         <bds-input id="illustration-logo-integration" placeholder="search illustration"></bds-input>
+      </bds-grid>
+      <div style={illustrationWrapperStyles}>{defaultArray}</div>
+    </bds-grid>
+  );
+};
+
+export const IllustrationsEmptyStates = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredIllustation, setFilteredIllustration] = useState([]);
+  const defaultArray = [];
+
+  useEffect(() => {
+    const illustrationEmptyStates = document.getElementById('illustration-empty-states');
+    illustrationEmptyStates.addEventListener('bdsInput', (event) => {
+      setSearchValue(event.target.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    // Aqui você pode filtrar os ícones com base no valor de pesquisa.
+    const filtered = emptyStates.filter((name) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredIllustration(filtered);
+  }, [searchValue]);
+
+  filteredIllustation.forEach((name) => {
+    defaultArray.push(
+      <div key={name} style={illustrationStyles}>
+        <bds-illustration type="empty-states" name={name}></bds-illustration>
+        <bds-typo variant="fs-10">{name}</bds-typo>
+      </div>
+    );
+  });
+
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid md="6" align-items="center" gap="3">
+        <bds-input id="illustration-empty-states" placeholder="search illustration"></bds-input>
       </bds-grid>
       <div style={illustrationWrapperStyles}>{defaultArray}</div>
     </bds-grid>
