@@ -67,6 +67,7 @@
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
  - [bds-select-option](../select-option)
+ - [bds-slider](../slider)
  - [bds-step](../stepper/step)
  - [bds-tab](../tabs/tab (depreciated)/tab)
  - [bds-tab-group](../tabs)
@@ -117,6 +118,7 @@ graph TD;
   bds-select --> bds-typo
   bds-select-chips --> bds-typo
   bds-select-option --> bds-typo
+  bds-slider --> bds-typo
   bds-step --> bds-typo
   bds-tab --> bds-typo
   bds-tab-group --> bds-typo

@@ -28,17 +28,9 @@ const badgeStatus = {
 };
 
 export const Properties = (args) => (
-  <bds-badge shape={args.shape} type={args.type} color={args.color} icon={args.icon} number={args.number ? args.number : null} animation={args.animation}></bds-badge>
+  <bds-badge shape={args.shape} color={args.color} icon={args.icon} number={args.number ? args.number : null} animation={args.animation}></bds-badge>
 );
 Properties.argTypes = {
-  type: {
-    table: {
-      defaultValue: { summary: 'icon' },
-    },
-    
-    options: ['status', 'icon', 'number', 'empty'],
-    control: 'select',
-  },
   shape: {
     table: {
       defaultValue: { summary: 'circle' },
@@ -75,7 +67,6 @@ Properties.argTypes = {
 };
 
 Properties.args = {
-  type: 'icon',
   shape: 'circle',
   color: 'system',
   icon: 'info',

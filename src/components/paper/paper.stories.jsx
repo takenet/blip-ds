@@ -35,7 +35,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'primary' },
     },
-    options: ["primary", "secondary", "static"],
+    options: ["primary", "secondary", "static", "none"],
     control: 'select',
   },
   height: {
