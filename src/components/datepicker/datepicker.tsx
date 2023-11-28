@@ -297,14 +297,16 @@ export class DatePicker {
   };
 
   private openDatepicker = () => {
-    const positionValue = positionElement({
-      actionElement: this.actionElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
-    this.open = true;
+    if (!this.disabled) {
+      const positionValue = positionElement({
+        actionElement: this.actionElement,
+        changedElement: this.menuElement,
+        intoView: this.intoView,
+      });
+      this.menupositionTop = positionValue.top;
+      this.menupositionLeft = positionValue.left;
+      this.open = true;
+    }
   };
 
   private clickConcludeDatepicker = () => {

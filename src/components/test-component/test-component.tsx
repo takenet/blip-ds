@@ -22,6 +22,12 @@ export class TestComponent {
                 <bds-typo variant="fs-32" bold="bold">
                   Insira o componente aqui
                 </bds-typo>
+                <bds-datepicker
+                  id="datepicker"
+                  type-of-date="period"
+                  start-date-limit="31/12/2022"
+                  end-date-limit="01/01/2027"
+                />
               </bds-grid>
             </bds-paper>
           </bds-theme-provider>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './datepicker.mdx';
 import { BdsDatepicker } from '../../../blip-ds-react/dist/components';
 
@@ -24,6 +24,11 @@ export const Properties = (args) => {
       type-of-date={args.typeOfDate}
       start-date-limit={args.startDateLimit}
       end-date-limit={args.endDateLimit}
+      message={args.message}
+      language={args.language}
+      disabled={args.disabled}
+      value-date-selected={args.valueDateSelected}
+      value-end-date-selected={args.valueEndDateSelected}
     />
   );
 };
@@ -32,6 +37,11 @@ Properties.args = {
   typeOfDate: 'single',
   startDateLimit: '31/12/2022',
   endDateLimit: '01/01/2027',
+  message: '',
+  language: '',
+  disabled: false,
+  valueDateSelected: '',
+  valueEndDateSelected: '',
 };
 
 Properties.argTypes = {
@@ -54,6 +64,38 @@ Properties.argTypes = {
     },
     control: 'text',
   },
+  message: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  language: {
+    table: {
+      defaultValue: { summary: 'pt_BR' },
+    },
+    options: ['pt_BR', 'es_ES', 'en_US'],
+    control: 'select',
+  },
+  disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+
+    control: 'boolean',
+  },
+  valueDateSelected: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  valueEndDateSelected: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
 };
 
 export const Events = () => {
@@ -71,21 +113,10 @@ export const Events = () => {
   });
 
   return (
-    <bds-datepicker
-    id="datepicker"
-      type-of-date='period'
-      start-date-limit='31/12/2022'
-      end-date-limit='01/01/2027'
-    />
+    <bds-datepicker id="datepicker" type-of-date="period" start-date-limit="31/12/2022" end-date-limit="01/01/2027" />
   );
 };
 
 export const FrameworkReact = () => {
-  return (
-    <BdsDatepicker
-      type-of-date='single'
-      start-date-limit='31/12/2022'
-      end-date-limit='01/01/2027'
-    />
-  );
+  return <BdsDatepicker type-of-date="single" start-date-limit="31/12/2022" end-date-limit="01/01/2027" />;
 };

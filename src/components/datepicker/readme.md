@@ -39,6 +39,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../test-component)
+
 ### Depends on
 
 - [bds-input](../input)
@@ -74,6 +78,7 @@ graph TD;
   bds-button --> bds-icon
   bds-button --> bds-typo
   bds-button --> bds-loading-spinner
+  bds-test-component --> bds-datepicker
   style bds-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
