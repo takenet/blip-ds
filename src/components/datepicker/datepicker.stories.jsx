@@ -38,7 +38,7 @@ Properties.args = {
   startDateLimit: '31/12/2022',
   endDateLimit: '01/01/2027',
   message: '',
-  language: '',
+  language: 'pt_BR',
   disabled: false,
   valueDateSelected: '',
   valueEndDateSelected: '',
