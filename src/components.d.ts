@@ -20,9 +20,9 @@ import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
-import { Color, Size } from "./components/chip-clickable/chip-clickable";
-import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-selected";
-import { Color as Color2 } from "./components/chip-tag/chip-tag";
+import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
+import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
+import { ColorChipTag } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
@@ -512,7 +512,7 @@ export namespace Components {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipClickable;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -538,7 +538,7 @@ export namespace Components {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipSelected;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -564,7 +564,7 @@ export namespace Components {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipTag;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3709,7 +3709,7 @@ declare namespace LocalJSX {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipClickable;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3740,7 +3740,7 @@ declare namespace LocalJSX {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipSelected;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3767,7 +3767,7 @@ declare namespace LocalJSX {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipTag;
         /**
           * Data test is the prop to specifically test the component action object.
          */
