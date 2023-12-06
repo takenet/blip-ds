@@ -49,6 +49,7 @@ export const BdsInputPassword = /*@__PURE__*/ createReactComponent('bds-input-pa
 export const BdsInputPhoneNumber = /*@__PURE__*/ createReactComponent('bds-input-phone-number');
 export const BdsList = /*@__PURE__*/ createReactComponent('bds-list');
 export const BdsListItem = /*@__PURE__*/ createReactComponent('bds-list-item');
+export const BdsListItemContent = /*@__PURE__*/ createReactComponent('bds-list-item-content');
 export const BdsLoadingBar = /*@__PURE__*/ createReactComponent('bds-loading-bar');
 export const BdsLoadingPage = /*@__PURE__*/ createReactComponent('bds-loading-page');
 export const BdsLoadingSpinner = /*@__PURE__*/ createReactComponent('bds-loading-spinner');

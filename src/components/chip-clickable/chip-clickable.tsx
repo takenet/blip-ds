@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Element, State } from '@stencil/core';
 
-export type Color = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline';
+export type ColorChipClickable = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline';
 export type Size = 'standard' | 'tall';
 
 @Component({
@@ -22,7 +22,7 @@ export class ChipClickable {
   /**
    * used for change the color. Uses one of them.
    */
-  @Prop() color?: Color = 'default';
+  @Prop() color?: ColorChipClickable = 'default';
   /**
    * used for change the size chip. Uses one of them.
    */
