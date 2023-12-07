@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   inset: 0 8px;
+  pointer-events: none;
 
   .progress-bar {
     position: absolute;
@@ -25,17 +26,29 @@
       right: -.5rem;
     }
     &-thumb {
+      position: relative;
       width: 1rem;
       height: 1rem;
       border-radius: 1rem;
-      background-color: $color-hover;
-      transition: all .3s ease-in-out;
+      background-color: $color-primary;
+      z-index: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $color-hover;
+        border-radius: 1rem;
+        transition: all .3s ease-in-out;
+      }
     }
 
     &-hover {
       .progress-bar{
         &-thumb {
-          transform: scale(2);
+          &::before {
+            transform: scale(2);
+          }
         }
       }
     }
@@ -91,8 +104,7 @@
   position: relative;
   border-radius: 1rem;
   background: transparent;
-  z-index: 3;
-  color: -internal-light-dark(rgb(16, 16, 16), rgb(255, 255, 255));
+  color: -internal-light-dark(transparent, transparent);
 
   &.has_min {
     border-top-left-radius: 0;
@@ -121,10 +133,8 @@
   position: relative;
   height: 16px;
   width: 16px;
-  background-color: $color-primary;
   border-radius: 50%;
   border: none;
-  transition: .2s ease-in-out;
 }
 
 

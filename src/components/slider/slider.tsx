@@ -13,7 +13,7 @@ export class Slider {
 
   @State() stepArray?: StepOption[];
   @State() internalOptions?: StepOption[];
-  @State() inputValue?: string;
+  @State() inputValue?: string = this.value.toString();
 
   /**
    * Step, property to insert steps into the input range.
@@ -123,11 +123,11 @@ export class Slider {
     this.progressBar.style.width = `${this.valuePercent(input)}%`;
     const valueName = this.emiterChange(parseInt(input.value));
     this.inputValue = this.stepArray.length > 0 ? valueName.name : input.value;
-    this.bdsTooltip.visible();
     this.bdsChange.emit(valueName);
   };
 
   private onInputMouseEnter = (): void => {
+    this.bdsTooltip.visible();
     this.progressBar.classList.add(`progress-bar-hover`);
   };
 
@@ -156,6 +156,17 @@ export class Slider {
   render() {
     return (
       <Host>
+        <input
+          ref={this.refInputSlide}
+          type="range"
+          class={{
+            input_slide: true,
+          }}
+          value={this.value as number}
+          onInput={this.onInputSlide}
+          onMouseEnter={this.onInputMouseEnter}
+          onMouseLeave={this.onInputMouseLeave}
+        />
         <div class="track-bg">
           <div
             class={{ [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }}
@@ -177,17 +188,6 @@ export class Slider {
               </div>
             ))}
         </div>
-        <input
-          ref={this.refInputSlide}
-          type="range"
-          class={{
-            input_slide: true,
-          }}
-          value={this.value as number}
-          onInput={this.onInputSlide}
-          onMouseEnter={this.onInputMouseEnter}
-          onMouseLeave={this.onInputMouseLeave}
-        />
       </Host>
     );
   }
