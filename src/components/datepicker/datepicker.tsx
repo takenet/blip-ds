@@ -310,7 +310,11 @@ export class DatePicker {
   };
 
   private clickConcludeDatepicker = () => {
-    this.concludeDatepicker.emit();
+    const data =
+      this.typeOfDate === 'single'
+        ? { startDate: this.valueDateSelected }
+        : { startDate: this.valueDateSelected, endDate: this.valueEndDateSelected };
+    this.concludeDatepicker.emit(data);
     this.open = false;
     if (this.typeOfDate == 'period') {
       this.inputSetEndDate.removeFocus();
