@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
 import { IllustrationType } from './illustration-interface';
-import illustrations from 'blip-tokens/build/json/assets_illustrations.json';
+import packageJson from '../../../package.json';
 
 @Component({
   tag: 'bds-illustration',
@@ -66,24 +66,16 @@ export class BdsIllustration {
     }
   };
 
-  /**Function to transform the svg in a div element. */
-  formatSvg = (svgContent: string) => {
-    const div = document.createElement('div');
-    div.innerHTML = svgContent;
-    const svgElm = div.firstElementChild;
-
-    svgElm.removeAttribute('width');
-    svgElm.removeAttribute('height');
-    return div.innerHTML;
-  };
-
   /**Function to map the svg and call the "formatSvg" function */
   setIllustrationContent = () => {
-    let svg;
     const key = this.getIllustration();
-    // eslint-disable-next-line prefer-const
-    svg = atob(illustrations[key]);
-    this.IllustrationContent = this.formatSvg(svg);
+    const tokensVersion = packageJson.dependencies['blip-tokens'].replace('^', '');
+    const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/assets_illustrations.json`;
+    fetch(apiUrl).then((response) =>
+      response.json().then((data) => {
+        this.IllustrationContent = data[key];
+      })
+    );
   };
 
   render(): HTMLElement {
@@ -95,13 +87,7 @@ export class BdsIllustration {
         }}
       >
         {this.IllustrationContent ? (
-          <div
-            class={{
-              illustration: true,
-            }}
-            innerHTML={this.IllustrationContent}
-            data-test={this.dataTest}
-          ></div>
+          <img src={`data:image/svg+xml;base64,${this.IllustrationContent}`} />
         ) : (
           <div class="default" data-test={this.dataTest}></div>
         )}
