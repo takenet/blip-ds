@@ -12,6 +12,15 @@ export default {
 };
 
 const solidIconsName = [
+  'audio-closed',
+  'phone-keyboard',
+  'video-calling',
+  'video-closed',
+  'video-ended',
+  'voip-call',
+  'voip-calling',
+  'voip-ended',
+  'voip-finish',
   'ai',
   'add',
   'agent-rule',
@@ -98,6 +107,15 @@ const solidIconsName = [
 ];
 
 const outlineIconsName = [
+  'audio-closed',
+  'phone-keyboard',
+  'video-calling',
+  'video-closed',
+  'video-ended',
+  'voip-call',
+  'voip-calling',
+  'voip-ended',
+  'voip-finish',
   '123',
   'ab',
   'add-persistent-menu',
