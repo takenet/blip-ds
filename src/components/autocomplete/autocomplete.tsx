@@ -362,7 +362,6 @@ export class BdsAutocomplete {
     if (!this.isOpen) {
       this.isFocused = false;
       this.nativeInput.value = this.getText();
-      this.cleanInputSelection();
     }
   };
 
