@@ -4,6 +4,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'blip-ds',
+  sourceMap: false,
   plugins: [
     sass({
       includePaths: ['src/globals'],
@@ -34,14 +35,10 @@ export const config: Config = {
   buildEs5: 'prod',
   extras: {
     appendChildSlotFix: true,
-    cssVarsShim: true,
-    dynamicImportShim: true,
-    shadowDomShim: true,
-    safari10: true,
     scriptDataOpts: true,
     cloneNodeFix: false,
     slotChildNodesFix: true,
-    experimentalImportInjection: true,
+    enableImportInjection: true,
   },
   testing: {
     timers: 'fake',
