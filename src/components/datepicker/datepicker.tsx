@@ -297,18 +297,24 @@ export class DatePicker {
   };
 
   private openDatepicker = () => {
-    const positionValue = positionElement({
-      actionElement: this.actionElement,
-      changedElement: this.menuElement,
-      intoView: this.intoView,
-    });
-    this.menupositionTop = positionValue.top;
-    this.menupositionLeft = positionValue.left;
-    this.open = true;
+    if (!this.disabled) {
+      const positionValue = positionElement({
+        actionElement: this.actionElement,
+        changedElement: this.menuElement,
+        intoView: this.intoView,
+      });
+      this.menupositionTop = positionValue.top;
+      this.menupositionLeft = positionValue.left;
+      this.open = true;
+    }
   };
 
   private clickConcludeDatepicker = () => {
-    this.concludeDatepicker.emit();
+    const data =
+      this.typeOfDate === 'single'
+        ? { startDate: this.valueDateSelected }
+        : { startDate: this.valueDateSelected, endDate: this.valueEndDateSelected };
+    this.concludeDatepicker.emit(data);
     this.open = false;
     if (this.typeOfDate == 'period') {
       this.inputSetEndDate.removeFocus();

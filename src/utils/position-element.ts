@@ -15,7 +15,7 @@ export const getScrollParent = (node: HTMLElement) => {
     return null;
   }
 
-  if (node.classList.contains('element_scrolled') || node?.tagName == 'BODY') {
+  if (node.classList.contains('element_scrolled') || node?.tagName === 'BODY') {
     return node;
   } else {
     return getScrollParent(node.offsetParent as HTMLElement);
@@ -31,11 +31,12 @@ export function positionElement({
   changedElement: HTMLElement;
   intoView: HTMLElement;
 }): Position {
-  const parentElement: HTMLElement = intoView.offsetParent as HTMLElement;
-  const contentScrolled = !!intoView.classList.contains('element_scrolled');
+  const body = intoView ? intoView : document.body;
+  const parentElement: HTMLElement = body.offsetParent as HTMLElement;
+  const contentScrolled = !!body.classList.contains('element_scrolled');
 
   const positionTop = contentScrolled
-    ? actionElement.offsetTop - intoView.scrollTop + parentElement.offsetTop
+    ? actionElement.offsetTop - body.scrollTop + parentElement.offsetTop
     : actionElement.offsetTop - window.scrollY;
 
   const positionLeft = contentScrolled ? actionElement.offsetLeft + parentElement.offsetLeft : actionElement.offsetLeft;

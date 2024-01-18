@@ -9,6 +9,10 @@
   margin: -1px;
 }
 
+:host(.paper__elevation--none) {
+  box-shadow: none;
+}
+
 :host(.paper__elevation--static) {
   box-shadow: 0px 4px 8px $color-shadow-1;
 }

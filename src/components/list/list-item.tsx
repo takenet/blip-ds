@@ -224,6 +224,9 @@ export class ListItem {
           ) : (
             this.icon && <bds-icon class="icon-item" size="medium" name={this.icon} color="inherit"></bds-icon>
           )}
+          <div class={{ [`content-slot`]: true }}>
+            <slot></slot>
+          </div>
           <div
             class={{
               [`content-item`]: true,

@@ -20,9 +20,9 @@ import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
-import { Color, Size } from "./components/chip-clickable/chip-clickable";
-import { Color as Color1, Size as Size1 } from "./components/chip-selected/chip-selected";
-import { Color as Color2 } from "./components/chip-tag/chip-tag";
+import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
+import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
+import { ColorChipTag } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
 import { languages } from "./utils/languages";
@@ -50,6 +50,8 @@ import { PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
+import { Shape as Shape1 } from "./components/skeleton/skeleton";
+import { StepOption, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
@@ -151,6 +153,14 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -190,6 +200,14 @@ export namespace Components {
           * Multiselect, Prop to enable multi selections.
          */
         "selectionType"?: SelectionType;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * the value of the select.
          */
@@ -494,7 +512,7 @@ export namespace Components {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipClickable;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -520,7 +538,7 @@ export namespace Components {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipSelected;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -546,7 +564,7 @@ export namespace Components {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipTag;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -1016,6 +1034,10 @@ export namespace Components {
     interface BdsInputChips {
         "add": (value: string) => Promise<void>;
         /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "blurCreation": boolean;
+        /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips": string[] | string;
@@ -1403,6 +1425,13 @@ export namespace Components {
           * Value. Used to insert a value in list item.
          */
         "value": string;
+    }
+    interface BdsListItemContent {
+        "alignItems"?: alignItems;
+        "direction"?: direction;
+        "flexWrap"?: flexWrap;
+        "gap"?: gap;
+        "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
         /**
@@ -1958,6 +1987,45 @@ export namespace Components {
          */
         "width"?: number;
     }
+    interface BdsSkeleton {
+        "height"?: string;
+        "shape"?: Shape;
+        "width"?: string;
+    }
+    interface BdsSlider {
+        /**
+          * Data Markers, prop to select ype of markers.
+         */
+        "dataMarkers"?: string | StepOption[];
+        /**
+          * Label, Prop to enable Label.
+         */
+        "label"?: boolean;
+        /**
+          * Markers, Prop to enable markers.
+         */
+        "markers"?: boolean;
+        /**
+          * Max, property to set the maximum value of the range.
+         */
+        "max"?: number;
+        /**
+          * Min, property to set the minimum value of the range.
+         */
+        "min"?: number;
+        /**
+          * Step, property to insert steps into the input range.
+         */
+        "step"?: number;
+        /**
+          * Type, prop to select type of slider.
+         */
+        "type"?: typeRange;
+        /**
+          * Value, prop to define value of input.
+         */
+        "value"?: number;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -2209,6 +2277,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Method for change the visibility of tooltip.
+         */
+        "invisible": () => Promise<void>;
+        /**
           * Used to set tooltip position
          */
         "position": TooltipPostionType;
@@ -2423,6 +2495,10 @@ export interface BdsSelectOptionCustomEvent<T> extends CustomEvent<T> {
 export interface BdsSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSidebarElement;
+}
+export interface BdsSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSliderElement;
 }
 export interface BdsSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2735,6 +2811,12 @@ declare global {
         prototype: HTMLBdsListItemElement;
         new (): HTMLBdsListItemElement;
     };
+    interface HTMLBdsListItemContentElement extends Components.BdsListItemContent, HTMLStencilElement {
+    }
+    var HTMLBdsListItemContentElement: {
+        prototype: HTMLBdsListItemContentElement;
+        new (): HTMLBdsListItemContentElement;
+    };
     interface HTMLBdsLoadingBarElement extends Components.BdsLoadingBar, HTMLStencilElement {
     }
     var HTMLBdsLoadingBarElement: {
@@ -2872,6 +2954,18 @@ declare global {
     var HTMLBdsSidebarElement: {
         prototype: HTMLBdsSidebarElement;
         new (): HTMLBdsSidebarElement;
+    };
+    interface HTMLBdsSkeletonElement extends Components.BdsSkeleton, HTMLStencilElement {
+    }
+    var HTMLBdsSkeletonElement: {
+        prototype: HTMLBdsSkeletonElement;
+        new (): HTMLBdsSkeletonElement;
+    };
+    interface HTMLBdsSliderElement extends Components.BdsSlider, HTMLStencilElement {
+    }
+    var HTMLBdsSliderElement: {
+        prototype: HTMLBdsSliderElement;
+        new (): HTMLBdsSliderElement;
     };
     interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
     }
@@ -3053,6 +3147,7 @@ declare global {
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
         "bds-list": HTMLBdsListElement;
         "bds-list-item": HTMLBdsListItemElement;
+        "bds-list-item-content": HTMLBdsListItemContentElement;
         "bds-loading-bar": HTMLBdsLoadingBarElement;
         "bds-loading-page": HTMLBdsLoadingPageElement;
         "bds-loading-spinner": HTMLBdsLoadingSpinnerElement;
@@ -3076,6 +3171,8 @@ declare global {
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
         "bds-sidebar": HTMLBdsSidebarElement;
+        "bds-skeleton": HTMLBdsSkeletonElement;
+        "bds-slider": HTMLBdsSliderElement;
         "bds-step": HTMLBdsStepElement;
         "bds-stepper": HTMLBdsStepperElement;
         "bds-switch": HTMLBdsSwitchElement;
@@ -3199,6 +3296,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Indicated to pass an feeback to user.
+         */
+        "errorMessage"?: string;
+        /**
+          * Indicated to pass a help the user in complex filling.
+         */
+        "helperMessage"?: string;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -3217,7 +3322,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selection is cancelled.
          */
-        "onBdsCancel"?: (event: BdsAutocompleteCustomEvent<void>) => void;
+        "onBdsCancel"?: (event: BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>) => void;
         /**
           * Emitted when the value has changed.
          */
@@ -3266,6 +3371,14 @@ declare namespace LocalJSX {
           * Multiselect, Prop to enable multi selections.
          */
         "selectionType"?: SelectionType;
+        /**
+          * Add state success on input, use for use feedback.
+         */
+        "success"?: boolean;
+        /**
+          * Indicated to pass an feeback to user.
+         */
+        "successMessage"?: string;
         /**
           * the value of the select.
          */
@@ -3596,7 +3709,7 @@ declare namespace LocalJSX {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipClickable;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3627,7 +3740,7 @@ declare namespace LocalJSX {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipSelected;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3654,7 +3767,7 @@ declare namespace LocalJSX {
         /**
           * used for change the color. Uses one of them.
          */
-        "color"?: Color;
+        "color"?: ColorChipTag;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -4153,6 +4266,10 @@ declare namespace LocalJSX {
     }
     interface BdsInputChips {
         /**
+          * When true, the press enter will be simulated on blur event.
+         */
+        "blurCreation"?: boolean;
+        /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips"?: string[] | string;
@@ -4644,6 +4761,13 @@ declare namespace LocalJSX {
           * Value. Used to insert a value in list item.
          */
         "value"?: string;
+    }
+    interface BdsListItemContent {
+        "alignItems"?: alignItems;
+        "direction"?: direction;
+        "flexWrap"?: flexWrap;
+        "gap"?: gap;
+        "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
         /**
@@ -5247,6 +5371,49 @@ declare namespace LocalJSX {
          */
         "width"?: number;
     }
+    interface BdsSkeleton {
+        "height"?: string;
+        "shape"?: Shape;
+        "width"?: string;
+    }
+    interface BdsSlider {
+        /**
+          * Data Markers, prop to select ype of markers.
+         */
+        "dataMarkers"?: string | StepOption[];
+        /**
+          * Label, Prop to enable Label.
+         */
+        "label"?: boolean;
+        /**
+          * Markers, Prop to enable markers.
+         */
+        "markers"?: boolean;
+        /**
+          * Max, property to set the maximum value of the range.
+         */
+        "max"?: number;
+        /**
+          * Min, property to set the minimum value of the range.
+         */
+        "min"?: number;
+        /**
+          * bdsChange. Event to return selected date value.
+         */
+        "onBdsChange"?: (event: BdsSliderCustomEvent<any>) => void;
+        /**
+          * Step, property to insert steps into the input range.
+         */
+        "step"?: number;
+        /**
+          * Type, prop to select type of slider.
+         */
+        "type"?: typeRange;
+        /**
+          * Value, prop to define value of input.
+         */
+        "value"?: number;
+    }
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -5613,6 +5780,7 @@ declare namespace LocalJSX {
         "bds-input-phone-number": BdsInputPhoneNumber;
         "bds-list": BdsList;
         "bds-list-item": BdsListItem;
+        "bds-list-item-content": BdsListItemContent;
         "bds-loading-bar": BdsLoadingBar;
         "bds-loading-page": BdsLoadingPage;
         "bds-loading-spinner": BdsLoadingSpinner;
@@ -5636,6 +5804,8 @@ declare namespace LocalJSX {
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
         "bds-sidebar": BdsSidebar;
+        "bds-skeleton": BdsSkeleton;
+        "bds-slider": BdsSlider;
         "bds-step": BdsStep;
         "bds-stepper": BdsStepper;
         "bds-switch": BdsSwitch;
@@ -5711,6 +5881,7 @@ declare module "@stencil/core" {
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-list": LocalJSX.BdsList & JSXBase.HTMLAttributes<HTMLBdsListElement>;
             "bds-list-item": LocalJSX.BdsListItem & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
+            "bds-list-item-content": LocalJSX.BdsListItemContent & JSXBase.HTMLAttributes<HTMLBdsListItemContentElement>;
             "bds-loading-bar": LocalJSX.BdsLoadingBar & JSXBase.HTMLAttributes<HTMLBdsLoadingBarElement>;
             "bds-loading-page": LocalJSX.BdsLoadingPage & JSXBase.HTMLAttributes<HTMLBdsLoadingPageElement>;
             "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
@@ -5734,6 +5905,8 @@ declare module "@stencil/core" {
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-sidebar": LocalJSX.BdsSidebar & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
+            "bds-skeleton": LocalJSX.BdsSkeleton & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
+            "bds-slider": LocalJSX.BdsSlider & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
             "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;

@@ -112,7 +112,7 @@ export const Events = () => {
       console.log('Evento inputPhoneNumber funcionando');
     });
   });
-  return <bds-input id="input-phone-number" label="Phone Number"></bds-input>;
+  return <bds-input-phone-number id="input-phone-number" label="Phone Number"></bds-input-phone-number>;
 };
 
 export const FrameworkReact = () => (

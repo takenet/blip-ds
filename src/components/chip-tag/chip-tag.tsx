@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop } from '@stencil/core';
 
-export type Color = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline' | 'disabled';
+export type ColorChipTag = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline' | 'disabled';
 
 @Component({
   tag: 'bds-chip-tag',
@@ -15,7 +15,7 @@ export class ChipTag {
   /**
    * used for change the color. Uses one of them.
    */
-  @Prop() color?: Color = 'default';
+  @Prop() color?: ColorChipTag = 'default';
   /**
    * Data test is the prop to specifically test the component action object.
    */

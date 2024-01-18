@@ -49,6 +49,16 @@ export class BdsAutocomplete {
   @State() isFocused?: boolean = false;
 
   /**
+   * Used to set the danger behavior by the internal validators
+   */
+  @State() validationDanger?: boolean = false;
+
+  /**
+   * Used to set the error message setted by the internal validators
+   */
+  @State() validationMesage? = '';
+
+  /**
    * The options of the select
    * Should be passed this way:
    * options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
@@ -71,6 +81,10 @@ export class BdsAutocomplete {
    */
   @Prop({ reflect: true }) danger? = false;
 
+  /**
+   * Add state success on input, use for use feedback.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
    * Disabled input.
    */
@@ -96,6 +110,18 @@ export class BdsAutocomplete {
    */
   @Prop() placeholder?: string = '';
 
+  /**
+   * Indicated to pass a help the user in complex filling.
+   */
+  @Prop() helperMessage?: string = '';
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop() errorMessage?: string = '';
+  /**
+   * Indicated to pass an feeback to user.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
   /**
    * Set the placement of the options menu. Can be 'bottom' or 'top'.
    */
@@ -149,7 +175,7 @@ export class BdsAutocomplete {
   /**
    * Emitted when the selection is cancelled.
    */
-  @Event() bdsCancel!: EventEmitter<void>;
+  @Event() bdsCancel!: EventEmitter<AutocompleteChangeEventDetail>;
 
   /**
    * Emitted when the select loses focus.
@@ -336,7 +362,6 @@ export class BdsAutocomplete {
     if (!this.isOpen) {
       this.isFocused = false;
       this.nativeInput.value = this.getText();
-      this.cleanInputSelection();
     }
   };
 
@@ -468,6 +493,7 @@ export class BdsAutocomplete {
       this.value = '';
       this.nativeInput.value = '';
       this.isOpen = false;
+      this.bdsCancel.emit({ value: '' });
       await this.resetFilterOptions();
     }
   };
@@ -478,7 +504,6 @@ export class BdsAutocomplete {
       this.value = input.value || '';
     }
     this.bdsInput.emit(ev as KeyboardEvent);
-    this.bdsChange.emit({ value: this.nativeInput.value });
     if (this.nativeInput.value) {
       await this.filterOptions(this.nativeInput.value);
     } else {
@@ -563,6 +588,35 @@ export class BdsAutocomplete {
     );
   }
 
+  private renderMessage(): HTMLElement {
+    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
+    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
+
+    if (!message && this.validationDanger) message = this.validationMesage;
+
+    const styles =
+      this.danger || this.validationDanger
+        ? 'input__message input__message--danger'
+        : this.success
+        ? 'input__message input__message--success'
+        : 'input__message';
+
+    if (message) {
+      return (
+        <div class={styles} part="input__message">
+          <div class="input__message__icon">
+            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+          </div>
+          <bds-typo class="input__message__text" variant="fs-12">
+            {message}
+          </bds-typo>
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
   render(): HTMLElement {
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
@@ -571,7 +625,8 @@ export class BdsAutocomplete {
             input: true,
             select: true,
             'input--state-primary': !this.danger,
-            'input--state-danger': this.danger,
+            'input--state-danger': this.danger || this.validationDanger,
+            'input--state-success': this.success,
             'input--state-disabled': this.disabled,
             'input--label': !!this.label,
             'input--pressed': this.isPressed,
@@ -615,6 +670,7 @@ export class BdsAutocomplete {
             <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
           </div>
         </div>
+        {this.renderMessage()}
         {this.loading ? (
           <div
             ref={(el) => this.refDropdown(el)}
