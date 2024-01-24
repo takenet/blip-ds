@@ -47,7 +47,6 @@
  - [bds-chip-tag](../chip-tag)
  - [bds-counter-text](../counter-text)
  - [bds-data-table](../table)
- - [bds-datepicker](../datepicker)
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-expansion-panel-header](../expansion-panel/expansion-panel-header)
@@ -98,7 +97,6 @@ graph TD;
   bds-chip-tag --> bds-typo
   bds-counter-text --> bds-typo
   bds-data-table --> bds-typo
-  bds-datepicker --> bds-typo
   bds-datepicker-period --> bds-typo
   bds-datepicker-single --> bds-typo
   bds-expansion-panel-header --> bds-typo

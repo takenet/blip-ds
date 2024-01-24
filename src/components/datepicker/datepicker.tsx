@@ -3,6 +3,7 @@ import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToStr
 import { dateValidation, maskDate } from '../../utils/validations';
 import { getScrollParent, positionElement } from '../../utils/position-element';
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
+import { BannerVariant } from '../banner/banner';
 
 export type typeDate = 'single' | 'period';
 export type stateSelect = 'start' | 'end';
@@ -52,6 +53,10 @@ export class DatePicker {
    * Message. Select type of date.
    */
   @Prop() message?: string = null;
+  /**
+   * Message. Select type of date.
+   */
+  @Prop({ reflect: true, mutable: true }) variantBanner?: BannerVariant = 'warning';
   /**
    * Language, Entered as one of the languages. Can be one of:
    * 'pt_BR', 'es_ES', 'en_US'.
@@ -409,10 +414,11 @@ export class DatePicker {
             style={menuPosition}
           >
             {this.message && (
-              <div class="datepicker__menu__message">
-                <bds-icon name="warning" theme="outline" aria-label="Ícone de atenção"></bds-icon>
-                <bds-typo variant="fs-16">{this.message}</bds-typo>
-              </div>
+              <bds-grid margin="b-2">
+                <bds-banner variant={this.variantBanner} context="inside">
+                  {this.message}
+                </bds-banner>
+              </bds-grid>
             )}
             {this.typeOfDate == 'single' ? (
               <bds-datepicker-single
