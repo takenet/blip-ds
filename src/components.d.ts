@@ -25,6 +25,7 @@ import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chi
 import { ColorChipTag } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { typeDate } from "./components/datepicker/datepicker";
+import { BannerVariant as BannerVariant1 } from "./components/banner/banner";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
@@ -79,6 +80,7 @@ export { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chi
 export { ColorChipTag } from "./components/chip-tag/chip-tag";
 export { CounterTextRule } from "./components/counter-text/counter-text-interface";
 export { typeDate } from "./components/datepicker/datepicker";
+export { BannerVariant as BannerVariant1 } from "./components/banner/banner";
 export { languages } from "./utils/languages";
 export { DaysList } from "./components/datepicker/datepicker-interface";
 export { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
@@ -731,6 +733,10 @@ export namespace Components {
           * Default value input.
          */
         "valueEndDateSelected"?: string;
+        /**
+          * Message. Select type of date.
+         */
+        "variantBanner"?: BannerVariant1;
     }
     interface BdsDatepickerPeriod {
         /**
@@ -4470,6 +4476,10 @@ declare namespace LocalJSX {
           * Default value input.
          */
         "valueEndDateSelected"?: string;
+        /**
+          * Message. Select type of date.
+         */
+        "variantBanner"?: BannerVariant1;
     }
     interface BdsDatepickerPeriod {
         /**

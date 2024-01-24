@@ -40,7 +40,6 @@
  - [bds-chip-selected](../chip-selected)
  - [bds-chip-tag](../chip-tag)
  - [bds-data-table](../table)
- - [bds-datepicker](../datepicker)
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-input](../input)
@@ -79,7 +78,6 @@ graph TD;
   bds-chip-selected --> bds-icon
   bds-chip-tag --> bds-icon
   bds-data-table --> bds-icon
-  bds-datepicker --> bds-icon
   bds-datepicker-period --> bds-icon
   bds-datepicker-single --> bds-icon
   bds-input --> bds-icon
