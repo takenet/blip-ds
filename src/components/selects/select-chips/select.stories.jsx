@@ -137,8 +137,8 @@ export const Events = () => {
     selectChips.addEventListener('bdsChange', () => {
       console.log('Evento Change funcionando');
     });
-    selectChips.addEventListener('bdsChangeChips', () => {
-      console.log('Evento Focus funcionando');
+    selectChips.addEventListener('bdsChangeChips', (obj) => {
+      console.log('Evento Focus funcionando', obj);
     });
     selectChips.addEventListener('bdsFocus', () => {
       console.log('Evento Input funcionando');
