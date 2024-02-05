@@ -21,6 +21,11 @@ export class BdsIllustration {
   @Prop() name: string;
 
   /**
+   * Alternative text for the image.
+   */
+  @Prop() alt?: string;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -49,7 +54,7 @@ export class BdsIllustration {
         }}
       >
         {this.IllustrationContent ? (
-          <img src={`data:image/svg+xml;base64,${this.IllustrationContent}`} data-test={this.dataTest} />
+          <img src={`data:image/svg+xml;base64,${this.IllustrationContent}`} alt={this.alt} data-test={this.dataTest} />
         ) : (
           <div class="default" data-test={this.dataTest}></div>
         )}

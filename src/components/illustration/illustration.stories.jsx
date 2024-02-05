@@ -350,6 +350,8 @@ const emptyStates = [
   'letter-search-question',
   'robot',
   'robot-1',
+  'broken-image',
+  'image-not-found'
 ];
 
 const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];

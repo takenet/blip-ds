@@ -47,6 +47,7 @@ export const BdsExpansionPanelHeader = /*@__PURE__*/createReactComponent<JSX.Bds
 export const BdsGrid = /*@__PURE__*/createReactComponent<JSX.BdsGrid, HTMLBdsGridElement>('bds-grid');
 export const BdsIcon = /*@__PURE__*/createReactComponent<JSX.BdsIcon, HTMLBdsIconElement>('bds-icon');
 export const BdsIllustration = /*@__PURE__*/createReactComponent<JSX.BdsIllustration, HTMLBdsIllustrationElement>('bds-illustration');
+export const BdsImage = /*@__PURE__*/createReactComponent<JSX.BdsImage, HTMLBdsImageElement>('bds-image');
 export const BdsInput = /*@__PURE__*/createReactComponent<JSX.BdsInput, HTMLBdsInputElement>('bds-input');
 export const BdsInputChips = /*@__PURE__*/createReactComponent<JSX.BdsInputChips, HTMLBdsInputChipsElement>('bds-input-chips');
 export const BdsInputEditable = /*@__PURE__*/createReactComponent<JSX.BdsInputEditable, HTMLBdsInputEditableElement>('bds-input-editable');

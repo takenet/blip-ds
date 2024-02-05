@@ -33,6 +33,7 @@ import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown"
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
+import { ObjectFitValue } from "./components/image/image";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
@@ -60,61 +61,6 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages1 } from "./components/upload/languages";
-export { collapses } from "./components/accordion/accordion-group";
-export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
-export { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
-export { SelectionType } from "./components/autocomplete/autocomplete";
-export { avatarSize, colors } from "./components/avatar/avatar";
-export { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
-export { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
-export { Shape } from "./components/badge/badge";
-export { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
-export { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
-export { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
-export { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
-export { justifyContent } from "./components/card/card-footer/card-footer";
-export { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
-export { ChipSize, ChipVariant } from "./components/chip/chip";
-export { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
-export { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
-export { ColorChipTag } from "./components/chip-tag/chip-tag";
-export { CounterTextRule } from "./components/counter-text/counter-text-interface";
-export { typeDate } from "./components/datepicker/datepicker";
-export { BannerVariant as BannerVariant1 } from "./components/banner/banner";
-export { languages } from "./utils/languages";
-export { DaysList } from "./components/datepicker/datepicker-interface";
-export { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-export { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
-export { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
-export { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
-export { IllustrationType } from "./components/illustration/illustration-interface";
-export { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
-export { InputChipsTypes } from "./components/input-chips/input-chips-interface";
-export { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
-export { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
-export { TypeList } from "./components/list/list";
-export { Data } from "./components/list/list-interface";
-export { TypeList as TypeList1 } from "./components/list/list";
-export { loadingBarSize } from "./components/loading-bar/loading-bar";
-export { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
-export { menuPosition } from "./components/menu/menu";
-export { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
-export { sizes } from "./components/modal/modal";
-export { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
-export { PaginationOptionsPositionType } from "./components/pagination/pagination";
-export { PaperElevation } from "./components/paper/paper-interface";
-export { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-export { TypeOption } from "./components/select-option/select-option";
-export { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
-export { Shape as Shape1 } from "./components/skeleton/skeleton";
-export { StepOption, typeRange } from "./components/slider/slider-interface";
-export { SwitchSize } from "./components/switch/switch";
-export { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
-export { Themes } from "./components/theme-provider/theme-provider";
-export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
-export { TooltipPostionType } from "./components/tooltip/tooltip";
-export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-export { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -304,7 +250,7 @@ export namespace Components {
         /**
           * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
-        "size"?: avatarSize1;
+        "size"?: avatarSize;
         /**
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -481,7 +427,7 @@ export namespace Components {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
          */
-        "align"?: justifyContent1;
+        "align"?: justifyContent;
     }
     interface BdsCardSubtitle {
         /**
@@ -614,7 +560,7 @@ export namespace Components {
         /**
           * used for change the chip size. Use one of them;
          */
-        "size"?: Size1;
+        "size"?: Size;
     }
     interface BdsChipTag {
         /**
@@ -920,6 +866,10 @@ export namespace Components {
     }
     interface BdsIllustration {
         /**
+          * Alternative text for the image.
+         */
+        "alt"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -931,6 +881,29 @@ export namespace Components {
           * Specifies the type to use. Can be: 'default'.
          */
         "type": IllustrationType;
+    }
+    interface BdsImage {
+        /**
+          * Alternative text for the image.
+         */
+        "alt"?: string;
+        /**
+          * Height of the image.
+         */
+        "height"?: string;
+        "loadImage": () => Promise<void>;
+        /**
+          * Specifies the object-fit style for the image. Can be: 'fill', 'contain', 'cover', 'none', 'scale-down'.
+         */
+        "objectFit"?: ObjectFitValue;
+        /**
+          * URL of the main image.
+         */
+        "src"?: string;
+        /**
+          * Width of the image.
+         */
+        "width"?: string;
     }
     interface BdsInput {
         /**
@@ -1521,7 +1494,7 @@ export namespace Components {
         /**
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
          */
-        "color"?: colorsVariants1;
+        "color"?: colorsVariants;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -1533,7 +1506,7 @@ export namespace Components {
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
          */
-        "variant": LoadingSpinnerVariant1;
+        "variant": LoadingSpinnerVariant;
     }
     interface BdsMenu {
         /**
@@ -1588,7 +1561,7 @@ export namespace Components {
         /**
           * AvatarSize. Used to set avatar size.
          */
-        "avatarSize"?: avatarSize2;
+        "avatarSize"?: avatarSize;
         /**
           * AvatarThumbnail. Used to insert the avatar photo.
          */
@@ -1675,7 +1648,7 @@ export namespace Components {
         /**
           * Justify Content. Used to align itens in navbar.
          */
-        "justifyContent"?: justifyContent3;
+        "justifyContent"?: justifyContent;
         /**
           * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
          */
@@ -2049,7 +2022,7 @@ export namespace Components {
     }
     interface BdsSkeleton {
         "height"?: string;
-        "shape"?: Shape1;
+        "shape"?: Shape;
         "width"?: string;
     }
     interface BdsSlider {
@@ -2589,20 +2562,7 @@ export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
     target: HTMLBdsUploadElement;
 }
 declare global {
-    interface HTMLBdsAccordionElementEventMap {
-        "bdsToggle": any;
-        "bdsAccordionOpen": any;
-        "bdsAccordionClose": any;
-    }
     interface HTMLBdsAccordionElement extends Components.BdsAccordion, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAccordionElementEventMap>(type: K, listener: (this: HTMLBdsAccordionElement, ev: BdsAccordionCustomEvent<HTMLBdsAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAccordionElementEventMap>(type: K, listener: (this: HTMLBdsAccordionElement, ev: BdsAccordionCustomEvent<HTMLBdsAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAccordionElement: {
         prototype: HTMLBdsAccordionElement;
@@ -2614,19 +2574,7 @@ declare global {
         prototype: HTMLBdsAccordionBodyElement;
         new (): HTMLBdsAccordionBodyElement;
     };
-    interface HTMLBdsAccordionGroupElementEventMap {
-        "bdsAccordionCloseAll": any;
-        "bdsAccordionOpenAll": any;
-    }
     interface HTMLBdsAccordionGroupElement extends Components.BdsAccordionGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAccordionGroupElementEventMap>(type: K, listener: (this: HTMLBdsAccordionGroupElement, ev: BdsAccordionGroupCustomEvent<HTMLBdsAccordionGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAccordionGroupElementEventMap>(type: K, listener: (this: HTMLBdsAccordionGroupElement, ev: BdsAccordionGroupCustomEvent<HTMLBdsAccordionGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAccordionGroupElement: {
         prototype: HTMLBdsAccordionGroupElement;
@@ -2662,58 +2610,19 @@ declare global {
         prototype: HTMLBdsAlertHeaderElement;
         new (): HTMLBdsAlertHeaderElement;
     };
-    interface HTMLBdsAutocompleteElementEventMap {
-        "bdsChange": AutocompleteChangeEventDetail;
-        "bdsSelectedChange": AutocompleteSelectedChangeEventDetail;
-        "bdsMultiselectedChange": any;
-        "bdsInput": KeyboardEvent;
-        "bdsCancel": AutocompleteChangeEventDetail;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsAutocompleteElement extends Components.BdsAutocomplete, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAutocompleteElementEventMap>(type: K, listener: (this: HTMLBdsAutocompleteElement, ev: BdsAutocompleteCustomEvent<HTMLBdsAutocompleteElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAutocompleteElementEventMap>(type: K, listener: (this: HTMLBdsAutocompleteElement, ev: BdsAutocompleteCustomEvent<HTMLBdsAutocompleteElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAutocompleteElement: {
         prototype: HTMLBdsAutocompleteElement;
         new (): HTMLBdsAutocompleteElement;
     };
-    interface HTMLBdsAvatarElementEventMap {
-        "bdsClickAvatar": any;
-    }
     interface HTMLBdsAvatarElement extends Components.BdsAvatar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAvatarElementEventMap>(type: K, listener: (this: HTMLBdsAvatarElement, ev: BdsAvatarCustomEvent<HTMLBdsAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAvatarElementEventMap>(type: K, listener: (this: HTMLBdsAvatarElement, ev: BdsAvatarCustomEvent<HTMLBdsAvatarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAvatarElement: {
         prototype: HTMLBdsAvatarElement;
         new (): HTMLBdsAvatarElement;
     };
-    interface HTMLBdsAvatarGroupElementEventMap {
-        "bdsClickAvatarGroup": any;
-    }
     interface HTMLBdsAvatarGroupElement extends Components.BdsAvatarGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAvatarGroupElementEventMap>(type: K, listener: (this: HTMLBdsAvatarGroupElement, ev: BdsAvatarGroupCustomEvent<HTMLBdsAvatarGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAvatarGroupElementEventMap>(type: K, listener: (this: HTMLBdsAvatarGroupElement, ev: BdsAvatarGroupCustomEvent<HTMLBdsAvatarGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAvatarGroupElement: {
         prototype: HTMLBdsAvatarGroupElement;
@@ -2725,52 +2634,19 @@ declare global {
         prototype: HTMLBdsBadgeElement;
         new (): HTMLBdsBadgeElement;
     };
-    interface HTMLBdsBannerElementEventMap {
-        "bdsBannerClose": any;
-    }
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsBannerElementEventMap>(type: K, listener: (this: HTMLBdsBannerElement, ev: BdsBannerCustomEvent<HTMLBdsBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsBannerElementEventMap>(type: K, listener: (this: HTMLBdsBannerElement, ev: BdsBannerCustomEvent<HTMLBdsBannerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsBannerElement: {
         prototype: HTMLBdsBannerElement;
         new (): HTMLBdsBannerElement;
     };
-    interface HTMLBdsBannerLinkElementEventMap {
-        "bdsBannerLink": any;
-    }
     interface HTMLBdsBannerLinkElement extends Components.BdsBannerLink, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsBannerLinkElementEventMap>(type: K, listener: (this: HTMLBdsBannerLinkElement, ev: BdsBannerLinkCustomEvent<HTMLBdsBannerLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsBannerLinkElementEventMap>(type: K, listener: (this: HTMLBdsBannerLinkElement, ev: BdsBannerLinkCustomEvent<HTMLBdsBannerLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsBannerLinkElement: {
         prototype: HTMLBdsBannerLinkElement;
         new (): HTMLBdsBannerLinkElement;
     };
-    interface HTMLBdsButtonElementEventMap {
-        "bdsClick": any;
-    }
     interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsButtonElementEventMap>(type: K, listener: (this: HTMLBdsButtonElement, ev: BdsButtonCustomEvent<HTMLBdsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsButtonElementEventMap>(type: K, listener: (this: HTMLBdsButtonElement, ev: BdsButtonCustomEvent<HTMLBdsButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsButtonElement: {
         prototype: HTMLBdsButtonElement;
@@ -2782,18 +2658,7 @@ declare global {
         prototype: HTMLBdsButtonIconElement;
         new (): HTMLBdsButtonIconElement;
     };
-    interface HTMLBdsCardElementEventMap {
-        "bdsClick": any;
-    }
     interface HTMLBdsCardElement extends Components.BdsCard, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsCardElementEventMap>(type: K, listener: (this: HTMLBdsCardElement, ev: BdsCardCustomEvent<HTMLBdsCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsCardElementEventMap>(type: K, listener: (this: HTMLBdsCardElement, ev: BdsCardCustomEvent<HTMLBdsCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsCardElement: {
         prototype: HTMLBdsCardElement;
@@ -2835,71 +2700,25 @@ declare global {
         prototype: HTMLBdsCardTitleElement;
         new (): HTMLBdsCardTitleElement;
     };
-    interface HTMLBdsCheckboxElementEventMap {
-        "bdsChange": any;
-        "bdsInput": KeyboardEvent;
-    }
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsCheckboxElementEventMap>(type: K, listener: (this: HTMLBdsCheckboxElement, ev: BdsCheckboxCustomEvent<HTMLBdsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsCheckboxElementEventMap>(type: K, listener: (this: HTMLBdsCheckboxElement, ev: BdsCheckboxCustomEvent<HTMLBdsCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsCheckboxElement: {
         prototype: HTMLBdsCheckboxElement;
         new (): HTMLBdsCheckboxElement;
     };
-    interface HTMLBdsChipElementEventMap {
-        "bdsDelete": any;
-    }
     interface HTMLBdsChipElement extends Components.BdsChip, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsChipElementEventMap>(type: K, listener: (this: HTMLBdsChipElement, ev: BdsChipCustomEvent<HTMLBdsChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsChipElementEventMap>(type: K, listener: (this: HTMLBdsChipElement, ev: BdsChipCustomEvent<HTMLBdsChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsChipElement: {
         prototype: HTMLBdsChipElement;
         new (): HTMLBdsChipElement;
     };
-    interface HTMLBdsChipClickableElementEventMap {
-        "chipClickableClose": any;
-        "chipClickableClick": any;
-    }
     interface HTMLBdsChipClickableElement extends Components.BdsChipClickable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsChipClickableElementEventMap>(type: K, listener: (this: HTMLBdsChipClickableElement, ev: BdsChipClickableCustomEvent<HTMLBdsChipClickableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsChipClickableElementEventMap>(type: K, listener: (this: HTMLBdsChipClickableElement, ev: BdsChipClickableCustomEvent<HTMLBdsChipClickableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsChipClickableElement: {
         prototype: HTMLBdsChipClickableElement;
         new (): HTMLBdsChipClickableElement;
     };
-    interface HTMLBdsChipSelectedElementEventMap {
-        "chipClick": any;
-    }
     interface HTMLBdsChipSelectedElement extends Components.BdsChipSelected, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsChipSelectedElementEventMap>(type: K, listener: (this: HTMLBdsChipSelectedElement, ev: BdsChipSelectedCustomEvent<HTMLBdsChipSelectedElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsChipSelectedElementEventMap>(type: K, listener: (this: HTMLBdsChipSelectedElement, ev: BdsChipSelectedCustomEvent<HTMLBdsChipSelectedElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsChipSelectedElement: {
         prototype: HTMLBdsChipSelectedElement;
@@ -2917,91 +2736,31 @@ declare global {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
     };
-    interface HTMLBdsDataTableElementEventMap {
-        "bdsTableClick": any;
-        "bdsTableDelete": any;
-        "bdsTableChange": any;
-    }
     interface HTMLBdsDataTableElement extends Components.BdsDataTable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDataTableElementEventMap>(type: K, listener: (this: HTMLBdsDataTableElement, ev: BdsDataTableCustomEvent<HTMLBdsDataTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDataTableElementEventMap>(type: K, listener: (this: HTMLBdsDataTableElement, ev: BdsDataTableCustomEvent<HTMLBdsDataTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDataTableElement: {
         prototype: HTMLBdsDataTableElement;
         new (): HTMLBdsDataTableElement;
     };
-    interface HTMLBdsDatepickerElementEventMap {
-        "bdsStartDate": any;
-        "bdsEndDate": any;
-        "concludeDatepicker": any;
-    }
     interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDatepickerElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerElement, ev: BdsDatepickerCustomEvent<HTMLBdsDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDatepickerElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerElement, ev: BdsDatepickerCustomEvent<HTMLBdsDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDatepickerElement: {
         prototype: HTMLBdsDatepickerElement;
         new (): HTMLBdsDatepickerElement;
     };
-    interface HTMLBdsDatepickerPeriodElementEventMap {
-        "bdsStartDate": any;
-        "bdsEndDate": any;
-    }
     interface HTMLBdsDatepickerPeriodElement extends Components.BdsDatepickerPeriod, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDatepickerPeriodElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerPeriodElement, ev: BdsDatepickerPeriodCustomEvent<HTMLBdsDatepickerPeriodElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDatepickerPeriodElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerPeriodElement, ev: BdsDatepickerPeriodCustomEvent<HTMLBdsDatepickerPeriodElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDatepickerPeriodElement: {
         prototype: HTMLBdsDatepickerPeriodElement;
         new (): HTMLBdsDatepickerPeriodElement;
     };
-    interface HTMLBdsDatepickerSingleElementEventMap {
-        "bdsDateSelected": any;
-    }
     interface HTMLBdsDatepickerSingleElement extends Components.BdsDatepickerSingle, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDatepickerSingleElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerSingleElement, ev: BdsDatepickerSingleCustomEvent<HTMLBdsDatepickerSingleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDatepickerSingleElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerSingleElement, ev: BdsDatepickerSingleCustomEvent<HTMLBdsDatepickerSingleElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDatepickerSingleElement: {
         prototype: HTMLBdsDatepickerSingleElement;
         new (): HTMLBdsDatepickerSingleElement;
     };
-    interface HTMLBdsDropdownElementEventMap {
-        "bdsToggle": any;
-    }
     interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDropdownElementEventMap>(type: K, listener: (this: HTMLBdsDropdownElement, ev: BdsDropdownCustomEvent<HTMLBdsDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDropdownElementEventMap>(type: K, listener: (this: HTMLBdsDropdownElement, ev: BdsDropdownCustomEvent<HTMLBdsDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDropdownElement: {
         prototype: HTMLBdsDropdownElement;
@@ -3043,150 +2802,49 @@ declare global {
         prototype: HTMLBdsIllustrationElement;
         new (): HTMLBdsIllustrationElement;
     };
-    interface HTMLBdsInputElementEventMap {
-        "bdsChange": any;
-        "bdsInput": KeyboardEvent;
-        "bdsOnBlur": any;
-        "bdsFocus": any;
-        "bdsSubmit": any;
-        "bdsPatternValidation": any;
-        "bdsKeyDownBackspace": any;
+    interface HTMLBdsImageElement extends Components.BdsImage, HTMLStencilElement {
     }
+    var HTMLBdsImageElement: {
+        prototype: HTMLBdsImageElement;
+        new (): HTMLBdsImageElement;
+    };
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputElementEventMap>(type: K, listener: (this: HTMLBdsInputElement, ev: BdsInputCustomEvent<HTMLBdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputElementEventMap>(type: K, listener: (this: HTMLBdsInputElement, ev: BdsInputCustomEvent<HTMLBdsInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputElement: {
         prototype: HTMLBdsInputElement;
         new (): HTMLBdsInputElement;
     };
-    interface HTMLBdsInputChipsElementEventMap {
-        "bdsChange": any;
-        "bdsChangeChips": any;
-        "bdsInputChipsFocus": any;
-        "bdsBlur": any;
-        "bdsInputChipsInput": any;
-        "bdsExtendedQuantityInput": any;
-        "bdsSubmit": any;
-    }
     interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputChipsElementEventMap>(type: K, listener: (this: HTMLBdsInputChipsElement, ev: BdsInputChipsCustomEvent<HTMLBdsInputChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputChipsElementEventMap>(type: K, listener: (this: HTMLBdsInputChipsElement, ev: BdsInputChipsCustomEvent<HTMLBdsInputChipsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputChipsElement: {
         prototype: HTMLBdsInputChipsElement;
         new (): HTMLBdsInputChipsElement;
     };
-    interface HTMLBdsInputEditableElementEventMap {
-        "bdsInputEditableSave": InputEditableEventDetail;
-        "bdsChange": InputEditableEventDetail;
-        "bdsInput": KeyboardEvent;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsInputEditableElement extends Components.BdsInputEditable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputEditableElementEventMap>(type: K, listener: (this: HTMLBdsInputEditableElement, ev: BdsInputEditableCustomEvent<HTMLBdsInputEditableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputEditableElementEventMap>(type: K, listener: (this: HTMLBdsInputEditableElement, ev: BdsInputEditableCustomEvent<HTMLBdsInputEditableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputEditableElement: {
         prototype: HTMLBdsInputEditableElement;
         new (): HTMLBdsInputEditableElement;
     };
-    interface HTMLBdsInputPasswordElementEventMap {
-        "bdsInputPasswordChange": any;
-        "bdsInputPasswordInput": KeyboardEvent;
-        "bdsInputPasswordBlur": any;
-        "bdsInputPasswordFocus": any;
-        "bdsInputPasswordSubmit": any;
-        "bdsKeyDownBackspace": any;
-    }
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputPasswordElementEventMap>(type: K, listener: (this: HTMLBdsInputPasswordElement, ev: BdsInputPasswordCustomEvent<HTMLBdsInputPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputPasswordElementEventMap>(type: K, listener: (this: HTMLBdsInputPasswordElement, ev: BdsInputPasswordCustomEvent<HTMLBdsInputPasswordElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputPasswordElement: {
         prototype: HTMLBdsInputPasswordElement;
         new (): HTMLBdsInputPasswordElement;
     };
-    interface HTMLBdsInputPhoneNumberElementEventMap {
-        "bdsPhoneNumberChange": any;
-        "bdsInput": KeyboardEvent;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsInputPhoneNumberElement extends Components.BdsInputPhoneNumber, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputPhoneNumberElementEventMap>(type: K, listener: (this: HTMLBdsInputPhoneNumberElement, ev: BdsInputPhoneNumberCustomEvent<HTMLBdsInputPhoneNumberElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputPhoneNumberElementEventMap>(type: K, listener: (this: HTMLBdsInputPhoneNumberElement, ev: BdsInputPhoneNumberCustomEvent<HTMLBdsInputPhoneNumberElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputPhoneNumberElement: {
         prototype: HTMLBdsInputPhoneNumberElement;
         new (): HTMLBdsInputPhoneNumberElement;
     };
-    interface HTMLBdsListElementEventMap {
-        "bdsListCheckboxChange": any;
-        "bdsListRadioChange": any;
-        "bdsListSwitchChange": any;
-        "bdsClickActionsButtons": any;
-    }
     interface HTMLBdsListElement extends Components.BdsList, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsListElementEventMap>(type: K, listener: (this: HTMLBdsListElement, ev: BdsListCustomEvent<HTMLBdsListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsListElementEventMap>(type: K, listener: (this: HTMLBdsListElement, ev: BdsListCustomEvent<HTMLBdsListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsListElement: {
         prototype: HTMLBdsListElement;
         new (): HTMLBdsListElement;
     };
-    interface HTMLBdsListItemElementEventMap {
-        "bdsChecked": any;
-        "bdsClickActionButtom": any;
-    }
     interface HTMLBdsListItemElement extends Components.BdsListItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsListItemElementEventMap>(type: K, listener: (this: HTMLBdsListItemElement, ev: BdsListItemCustomEvent<HTMLBdsListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsListItemElementEventMap>(type: K, listener: (this: HTMLBdsListItemElement, ev: BdsListItemCustomEvent<HTMLBdsListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsListItemElement: {
         prototype: HTMLBdsListItemElement;
@@ -3216,18 +2874,7 @@ declare global {
         prototype: HTMLBdsLoadingSpinnerElement;
         new (): HTMLBdsLoadingSpinnerElement;
     };
-    interface HTMLBdsMenuElementEventMap {
-        "bdsToggle": any;
-    }
     interface HTMLBdsMenuElement extends Components.BdsMenu, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsMenuElementEventMap>(type: K, listener: (this: HTMLBdsMenuElement, ev: BdsMenuCustomEvent<HTMLBdsMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsMenuElementEventMap>(type: K, listener: (this: HTMLBdsMenuElement, ev: BdsMenuCustomEvent<HTMLBdsMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsMenuElement: {
         prototype: HTMLBdsMenuElement;
@@ -3263,18 +2910,7 @@ declare global {
         prototype: HTMLBdsMenuSeparationElement;
         new (): HTMLBdsMenuSeparationElement;
     };
-    interface HTMLBdsModalElementEventMap {
-        "bdsModalChanged": any;
-    }
     interface HTMLBdsModalElement extends Components.BdsModal, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsModalElementEventMap>(type: K, listener: (this: HTMLBdsModalElement, ev: BdsModalCustomEvent<HTMLBdsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsModalElementEventMap>(type: K, listener: (this: HTMLBdsModalElement, ev: BdsModalCustomEvent<HTMLBdsModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsModalElement: {
         prototype: HTMLBdsModalElement;
@@ -3304,18 +2940,7 @@ declare global {
         prototype: HTMLBdsNavbarContentElement;
         new (): HTMLBdsNavbarContentElement;
     };
-    interface HTMLBdsPaginationElementEventMap {
-        "bdsPaginationChange": any;
-    }
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsPaginationElementEventMap>(type: K, listener: (this: HTMLBdsPaginationElement, ev: BdsPaginationCustomEvent<HTMLBdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsPaginationElementEventMap>(type: K, listener: (this: HTMLBdsPaginationElement, ev: BdsPaginationCustomEvent<HTMLBdsPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsPaginationElement: {
         prototype: HTMLBdsPaginationElement;
@@ -3333,114 +2958,37 @@ declare global {
         prototype: HTMLBdsProgressBarElement;
         new (): HTMLBdsProgressBarElement;
     };
-    interface HTMLBdsRadioElementEventMap {
-        "bdsChange": any;
-        "bdsClickChange": any;
-    }
     interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsRadioElementEventMap>(type: K, listener: (this: HTMLBdsRadioElement, ev: BdsRadioCustomEvent<HTMLBdsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsRadioElementEventMap>(type: K, listener: (this: HTMLBdsRadioElement, ev: BdsRadioCustomEvent<HTMLBdsRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsRadioElement: {
         prototype: HTMLBdsRadioElement;
         new (): HTMLBdsRadioElement;
     };
-    interface HTMLBdsRadioGroupElementEventMap {
-        "bdsRadioGroupChange": any;
-    }
     interface HTMLBdsRadioGroupElement extends Components.BdsRadioGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLBdsRadioGroupElement, ev: BdsRadioGroupCustomEvent<HTMLBdsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLBdsRadioGroupElement, ev: BdsRadioGroupCustomEvent<HTMLBdsRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsRadioGroupElement: {
         prototype: HTMLBdsRadioGroupElement;
         new (): HTMLBdsRadioGroupElement;
     };
-    interface HTMLBdsSelectElementEventMap {
-        "bdsChange": SelectChangeEventDetail;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSelectElementEventMap>(type: K, listener: (this: HTMLBdsSelectElement, ev: BdsSelectCustomEvent<HTMLBdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSelectElementEventMap>(type: K, listener: (this: HTMLBdsSelectElement, ev: BdsSelectCustomEvent<HTMLBdsSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSelectElement: {
         prototype: HTMLBdsSelectElement;
         new (): HTMLBdsSelectElement;
     };
-    interface HTMLBdsSelectChipsElementEventMap {
-        "bdsChange": SelectChangeEvent;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-        "bdsChangeChips": any;
-        "bdsSelectChipsInput": any;
-        "bdsSubmit": any;
-    }
     interface HTMLBdsSelectChipsElement extends Components.BdsSelectChips, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSelectChipsElementEventMap>(type: K, listener: (this: HTMLBdsSelectChipsElement, ev: BdsSelectChipsCustomEvent<HTMLBdsSelectChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSelectChipsElementEventMap>(type: K, listener: (this: HTMLBdsSelectChipsElement, ev: BdsSelectChipsCustomEvent<HTMLBdsSelectChipsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSelectChipsElement: {
         prototype: HTMLBdsSelectChipsElement;
         new (): HTMLBdsSelectChipsElement;
     };
-    interface HTMLBdsSelectOptionElementEventMap {
-        "optionSelected": any;
-        "optionChecked": any;
-    }
     interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSelectOptionElementEventMap>(type: K, listener: (this: HTMLBdsSelectOptionElement, ev: BdsSelectOptionCustomEvent<HTMLBdsSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSelectOptionElementEventMap>(type: K, listener: (this: HTMLBdsSelectOptionElement, ev: BdsSelectOptionCustomEvent<HTMLBdsSelectOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSelectOptionElement: {
         prototype: HTMLBdsSelectOptionElement;
         new (): HTMLBdsSelectOptionElement;
     };
-    interface HTMLBdsSidebarElementEventMap {
-        "bdsToggle": any;
-    }
     interface HTMLBdsSidebarElement extends Components.BdsSidebar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSidebarElementEventMap>(type: K, listener: (this: HTMLBdsSidebarElement, ev: BdsSidebarCustomEvent<HTMLBdsSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSidebarElementEventMap>(type: K, listener: (this: HTMLBdsSidebarElement, ev: BdsSidebarCustomEvent<HTMLBdsSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSidebarElement: {
         prototype: HTMLBdsSidebarElement;
@@ -3452,18 +3000,7 @@ declare global {
         prototype: HTMLBdsSkeletonElement;
         new (): HTMLBdsSkeletonElement;
     };
-    interface HTMLBdsSliderElementEventMap {
-        "bdsChange": any;
-    }
     interface HTMLBdsSliderElement extends Components.BdsSlider, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSliderElementEventMap>(type: K, listener: (this: HTMLBdsSliderElement, ev: BdsSliderCustomEvent<HTMLBdsSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSliderElementEventMap>(type: K, listener: (this: HTMLBdsSliderElement, ev: BdsSliderCustomEvent<HTMLBdsSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSliderElement: {
         prototype: HTMLBdsSliderElement;
@@ -3481,70 +3018,25 @@ declare global {
         prototype: HTMLBdsStepperElement;
         new (): HTMLBdsStepperElement;
     };
-    interface HTMLBdsSwitchElementEventMap {
-        "bdsChange": any;
-    }
     interface HTMLBdsSwitchElement extends Components.BdsSwitch, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSwitchElementEventMap>(type: K, listener: (this: HTMLBdsSwitchElement, ev: BdsSwitchCustomEvent<HTMLBdsSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSwitchElementEventMap>(type: K, listener: (this: HTMLBdsSwitchElement, ev: BdsSwitchCustomEvent<HTMLBdsSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSwitchElement: {
         prototype: HTMLBdsSwitchElement;
         new (): HTMLBdsSwitchElement;
     };
-    interface HTMLBdsTabElementEventMap {
-        "bdsTabChange": any;
-    }
     interface HTMLBdsTabElement extends Components.BdsTab, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabElementEventMap>(type: K, listener: (this: HTMLBdsTabElement, ev: BdsTabCustomEvent<HTMLBdsTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabElementEventMap>(type: K, listener: (this: HTMLBdsTabElement, ev: BdsTabCustomEvent<HTMLBdsTabElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabElement: {
         prototype: HTMLBdsTabElement;
         new (): HTMLBdsTabElement;
     };
-    interface HTMLBdsTabGroupElementEventMap {
-        "bdsTabChange": any;
-        "bdsTabDisabled": any;
-    }
     interface HTMLBdsTabGroupElement extends Components.BdsTabGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabGroupElementEventMap>(type: K, listener: (this: HTMLBdsTabGroupElement, ev: BdsTabGroupCustomEvent<HTMLBdsTabGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabGroupElementEventMap>(type: K, listener: (this: HTMLBdsTabGroupElement, ev: BdsTabGroupCustomEvent<HTMLBdsTabGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabGroupElement: {
         prototype: HTMLBdsTabGroupElement;
         new (): HTMLBdsTabGroupElement;
     };
-    interface HTMLBdsTabItemElementEventMap {
-        "tabDisabled": any;
-    }
     interface HTMLBdsTabItemElement extends Components.BdsTabItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabItemElementEventMap>(type: K, listener: (this: HTMLBdsTabItemElement, ev: BdsTabItemCustomEvent<HTMLBdsTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabItemElementEventMap>(type: K, listener: (this: HTMLBdsTabItemElement, ev: BdsTabItemCustomEvent<HTMLBdsTabItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabItemElement: {
         prototype: HTMLBdsTabItemElement;
@@ -3592,19 +3084,7 @@ declare global {
         prototype: HTMLBdsTableThElement;
         new (): HTMLBdsTableThElement;
     };
-    interface HTMLBdsTabsElementEventMap {
-        "scrollButtonClick": Overflow;
-        "bdsTabInit": any;
-    }
     interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabsElementEventMap>(type: K, listener: (this: HTMLBdsTabsElement, ev: BdsTabsCustomEvent<HTMLBdsTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabsElementEventMap>(type: K, listener: (this: HTMLBdsTabsElement, ev: BdsTabsCustomEvent<HTMLBdsTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabsElement: {
         prototype: HTMLBdsTabsElement;
@@ -3622,18 +3102,7 @@ declare global {
         prototype: HTMLBdsThemeProviderElement;
         new (): HTMLBdsThemeProviderElement;
     };
-    interface HTMLBdsToastElementEventMap {
-        "toastButtonClick": any;
-    }
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsToastElementEventMap>(type: K, listener: (this: HTMLBdsToastElement, ev: BdsToastCustomEvent<HTMLBdsToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsToastElementEventMap>(type: K, listener: (this: HTMLBdsToastElement, ev: BdsToastCustomEvent<HTMLBdsToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsToastElement: {
         prototype: HTMLBdsToastElement;
@@ -3657,19 +3126,7 @@ declare global {
         prototype: HTMLBdsTypoElement;
         new (): HTMLBdsTypoElement;
     };
-    interface HTMLBdsUploadElementEventMap {
-        "bdsUploadDelete": any;
-        "bdsUploadChange": any;
-    }
     interface HTMLBdsUploadElement extends Components.BdsUpload, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsUploadElementEventMap>(type: K, listener: (this: HTMLBdsUploadElement, ev: BdsUploadCustomEvent<HTMLBdsUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsUploadElementEventMap>(type: K, listener: (this: HTMLBdsUploadElement, ev: BdsUploadCustomEvent<HTMLBdsUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsUploadElement: {
         prototype: HTMLBdsUploadElement;
@@ -3722,6 +3179,7 @@ declare global {
         "bds-grid": HTMLBdsGridElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-illustration": HTMLBdsIllustrationElement;
+        "bds-image": HTMLBdsImageElement;
         "bds-input": HTMLBdsInputElement;
         "bds-input-chips": HTMLBdsInputChipsElement;
         "bds-input-editable": HTMLBdsInputEditableElement;
@@ -4003,7 +3461,7 @@ declare namespace LocalJSX {
         /**
           * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
-        "size"?: avatarSize1;
+        "size"?: avatarSize;
         /**
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -4195,7 +3653,7 @@ declare namespace LocalJSX {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
          */
-        "align"?: justifyContent1;
+        "align"?: justifyContent;
     }
     interface BdsCardSubtitle {
         /**
@@ -4343,7 +3801,7 @@ declare namespace LocalJSX {
         /**
           * used for change the chip size. Use one of them;
          */
-        "size"?: Size1;
+        "size"?: Size;
     }
     interface BdsChipTag {
         /**
@@ -4668,6 +4126,10 @@ declare namespace LocalJSX {
     }
     interface BdsIllustration {
         /**
+          * Alternative text for the image.
+         */
+        "alt"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -4679,6 +4141,28 @@ declare namespace LocalJSX {
           * Specifies the type to use. Can be: 'default'.
          */
         "type"?: IllustrationType;
+    }
+    interface BdsImage {
+        /**
+          * Alternative text for the image.
+         */
+        "alt"?: string;
+        /**
+          * Height of the image.
+         */
+        "height"?: string;
+        /**
+          * Specifies the object-fit style for the image. Can be: 'fill', 'contain', 'cover', 'none', 'scale-down'.
+         */
+        "objectFit"?: ObjectFitValue;
+        /**
+          * URL of the main image.
+         */
+        "src"?: string;
+        /**
+          * Width of the image.
+         */
+        "width"?: string;
     }
     interface BdsInput {
         /**
@@ -5383,7 +4867,7 @@ declare namespace LocalJSX {
         /**
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
          */
-        "color"?: colorsVariants1;
+        "color"?: colorsVariants;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -5395,7 +4879,7 @@ declare namespace LocalJSX {
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
          */
-        "variant"?: LoadingSpinnerVariant1;
+        "variant"?: LoadingSpinnerVariant;
     }
     interface BdsMenu {
         /**
@@ -5453,7 +4937,7 @@ declare namespace LocalJSX {
         /**
           * AvatarSize. Used to set avatar size.
          */
-        "avatarSize"?: avatarSize2;
+        "avatarSize"?: avatarSize;
         /**
           * AvatarThumbnail. Used to insert the avatar photo.
          */
@@ -5540,7 +5024,7 @@ declare namespace LocalJSX {
         /**
           * Justify Content. Used to align itens in navbar.
          */
-        "justifyContent"?: justifyContent3;
+        "justifyContent"?: justifyContent;
         /**
           * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
          */
@@ -5959,7 +5443,7 @@ declare namespace LocalJSX {
     }
     interface BdsSkeleton {
         "height"?: string;
-        "shape"?: Shape1;
+        "shape"?: Shape;
         "width"?: string;
     }
     interface BdsSlider {
@@ -6359,6 +5843,7 @@ declare namespace LocalJSX {
         "bds-grid": BdsGrid;
         "bds-icon": BdsIcon;
         "bds-illustration": BdsIllustration;
+        "bds-image": BdsImage;
         "bds-input": BdsInput;
         "bds-input-chips": BdsInputChips;
         "bds-input-editable": BdsInputEditable;
@@ -6460,6 +5945,7 @@ declare module "@stencil/core" {
             "bds-grid": LocalJSX.BdsGrid & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.BdsIllustration & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
+            "bds-image": LocalJSX.BdsImage & JSXBase.HTMLAttributes<HTMLBdsImageElement>;
             "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;

@@ -25,7 +25,7 @@ export const Properties = (args) => {
       start-date-limit={args.startDateLimit}
       end-date-limit={args.endDateLimit}
       message={args.message}
-      variantBanner={args.variantBanner}
+      variant-banner={args.variantBanner}
       language={args.language}
       disabled={args.disabled}
       value-date-selected={args.valueDateSelected}
