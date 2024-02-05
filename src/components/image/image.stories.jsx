@@ -81,6 +81,6 @@ export const FrameworkReact = () => (
     alt='Example of a image'
     width='300px'
     height='200px'
-    object-fit='cover'
+    objectFit='cover'
   ></BdsImage>
 );
