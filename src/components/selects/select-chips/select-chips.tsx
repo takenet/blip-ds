@@ -404,9 +404,9 @@ export class SelectChips {
     return chips.some((chip) => optionChip === chip);
   }
 
-  private toggle = (): void => {
+  private open = (): void => {
     if (!this.disabled) {
-      this.isOpen = !this.isOpen;
+      this.isOpen = true;
     }
   };
 
@@ -416,13 +416,13 @@ export class SelectChips {
     } = event;
     this.selectedOption = value;
     const text = this.getText(value);
-    await this.addChip(text);
-    this.toggle();
+    this.handlerNewOption(text);
   };
 
   private handlerNewOption = async (text: string) => {
     await this.addChip(text);
-    this.toggle();
+    this.clearInputValues();
+    this.resetFilterOptions();
   };
 
   private enableCreateOption(): boolean {
@@ -450,16 +450,6 @@ export class SelectChips {
       return opt.querySelector(`#bds-typo-label-${opt.value}`).textContent;
     }
     return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
-  };
-
-  private setFocusWrapper = (): void => {
-    if (this.nativeInput) {
-      this.nativeInput.focus();
-    }
-  };
-
-  private removeFocusWrapper = (): void => {
-    this.nativeInput.blur();
   };
 
   private validateChips() {
@@ -505,8 +495,7 @@ export class SelectChips {
       case 'Enter':
         if (this.canAddNew !== false) {
           this.handleDelimiters();
-          this.setChip(this.value);
-          this.value = '';
+          this.handlerNewOption(this.value);
         }
         break;
       case 'Backspace' || 'Delete':
@@ -753,14 +742,8 @@ export class SelectChips {
     }
 
     return (
-      <div
-        class="select"
-        tabindex="0"
-        onFocus={this.setFocusWrapper}
-        onBlur={this.removeFocusWrapper}
-        onKeyPress={this.keyPressWrapper}
-      >
-        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.toggle}>
+      <div class="select" tabindex="0">
+        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.open}>
           <div
             class={{
               input: true,
@@ -771,7 +754,6 @@ export class SelectChips {
               'input--label': !!this.label,
               'input--pressed': isPressed,
             }}
-            onClick={this.onClickWrapper}
             onKeyDown={this.keyPressWrapper}
           >
             {this.renderIcon()}
@@ -792,6 +774,7 @@ export class SelectChips {
                   value={this.value}
                   disabled={this.disabled}
                   data-test={this.dataTest}
+                  onClick={this.onClickWrapper}
                 ></input>
               </div>
             </div>
