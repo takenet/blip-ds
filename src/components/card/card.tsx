@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Prop, Event, Element, State, EventEmitter } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, Prop, Event, Element, State, EventEmitter } from '@stencil/core';
 
 export type elevationType = 'primary' | 'secondary' | 'static';
 
@@ -64,17 +64,18 @@ export class Card implements ComponentInterface {
       this.elevation = 'secondary';
     }
 
+    const styleHost = {
+      width: this.width,
+    };
+
     return (
-      <bds-paper
-        elevation={this.elevation}
-        class={{ card: true, card_hover: this.clickable }}
-        height={this.height}
-        width={this.width}
-      >
-        <bds-grid xxs="12" direction="column" gap="2">
-          <slot></slot>
-        </bds-grid>
-      </bds-paper>
+      <Host style={styleHost}>
+        <bds-paper elevation={this.elevation} class={{ card: true, card_hover: this.clickable }} height={this.height}>
+          <bds-grid xxs="12" direction="column" gap="2">
+            <slot></slot>
+          </bds-grid>
+        </bds-paper>
+      </Host>
     );
   }
 }
