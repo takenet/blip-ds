@@ -129,6 +129,7 @@ const screens = [
 ];
 
 const blipSolid = [
+  'ai-blipinho',
   'bag',
   'bone',
   'cap',
@@ -351,7 +352,7 @@ const emptyStates = [
   'robot',
   'robot-1',
   'broken-image',
-  'image-not-found'
+  'image-not-found',
 ];
 
 const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];
