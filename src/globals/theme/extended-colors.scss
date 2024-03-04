@@ -1,10 +1,8 @@
-@import 'node_modules/blip-tokens/build/scss/extended-color.scss';
-
-$color-extended-blue: var(--color-extended-blue, $color-extended-blue);
-$color-extended-ocean: var(--color-extended-ocean, $color-extended-ocean);
-$color-extended-green: var(--color-extended-green, $color-extended-green);
-$color-extended-yellow: var(--color-extended-yellow, $color-extended-yellow);
-$color-extended-orange: var(--color-extended-orange, $color-extended-orange);
-$color-extended-red: var(--color-extended-red, $color-extended-red);
-$color-extended-pink: var(--color-extended-pink, $color-extended-pink);
-$color-extended-gray: var(--color-extended-gray, $color-extended-gray);
+$color-extended-blue: #1968F0;
+$color-extended-ocean: #00D3E4;
+$color-extended-green: #35DE90;
+$color-extended-yellow: #FBCF23;
+$color-extended-orange: #F06305;
+$color-extended-red: #E60F0F;
+$color-extended-pink: #FB4BC1;
+$color-extended-gray: #666666;

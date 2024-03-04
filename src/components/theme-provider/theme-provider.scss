@@ -2,8 +2,6 @@
   width: 100%;
   height: 100%;
 
-  @import '../../globals/theme/theme-light.scss';
-  @import '../../globals/theme/extended-colors.scss';
   --color-brand: #0096fa;
   --color-primary: #1e6bf1;
   --color-secondary: #292929;
@@ -40,9 +38,6 @@
 :host(.theme--dark) {
   width: 100%;
   height: 100%;
-
-  @import '../../globals/theme/theme-dark.scss';
-  @import '../../globals/theme/extended-colors.scss';
 
   --color-brand: #0096fa;
   --color-primary: #1e6bf1;
@@ -81,7 +76,6 @@
   width: 100%;
   height: 100%;
   
-  @import '../../globals/theme/extended-colors.scss';
   --color-brand: #0096fa;
   --color-primary: #1e6bf1;
   --color-secondary: #292929;
