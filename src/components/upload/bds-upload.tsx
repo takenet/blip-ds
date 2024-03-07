@@ -144,6 +144,7 @@ export class BdsUpload {
    */
   @Method()
   async deleteAllFiles() {
+    this.bdsUploadDelete.emit({ value: this.files });
     this.files = [];
     if (this.files.length === 0) {
       this.haveFiles = false;
