@@ -2370,6 +2370,14 @@ export namespace Components {
          */
         "accept": string;
         /**
+          * Used for delete a item from the list.
+         */
+        "deleteAllFiles": () => Promise<void>;
+        /**
+          * Used for delete a item from the list.
+         */
+        "deleteFile": (index: any) => Promise<void>;
+        /**
           * Used for add a error message. In case a verify.
          */
         "error": string;

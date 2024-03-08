@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, State, Prop, Method, Event, EventEmitter } from '@stencil/core';
 import { termTranslate, languages } from './languages';
 import background from '../../assets/svg/pattern.svg';
 
@@ -125,11 +125,27 @@ export class BdsUpload {
   /**
    * Used for delete a item from the list.
    */
-  deleteFile(index) {
+  @Method()
+  async deleteFile(index) {
     const fileToDelete = this.files.filter((item, i) => i == index && item);
     this.bdsUploadDelete.emit({ value: fileToDelete });
     this.files.splice(index, 1);
     this.files = [...this.files];
+    if (this.files.length === 0) {
+      this.haveFiles = false;
+    } else {
+      this.haveFiles = true;
+    }
+    this.bdsUploadChange.emit({ value: this.files });
+  }
+
+  /**
+   * Used for delete a item from the list.
+   */
+  @Method()
+  async deleteAllFiles() {
+    this.bdsUploadDelete.emit({ value: this.files });
+    this.files = [];
     if (this.files.length === 0) {
       this.haveFiles = false;
     } else {

@@ -25,6 +25,29 @@
 | `bdsUploadDelete` | Event emited when delete a item from the list. | `CustomEvent<any>` |
 
 
+## Methods
+
+### `deleteAllFiles() => Promise<void>`
+
+Used for delete a item from the list.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `deleteFile(index: any) => Promise<void>`
+
+Used for delete a item from the list.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on
