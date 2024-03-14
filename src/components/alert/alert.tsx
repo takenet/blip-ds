@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Method, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Method, Prop, Watch } from '@stencil/core';
 
 export type collapses = 'fixed' | 'contain';
 @Component({
@@ -33,6 +33,19 @@ export class BdsAlert implements ComponentInterface {
   async toggle() {
     this.open = !this.open;
   }
+
+  @Watch('open')
+  protected isOpenChanged(): void {
+    if (this.open) {
+      document.addEventListener('keydown', this.listiner, false);
+    } else document.removeEventListener('keydown', this.listiner, false);
+  }
+
+  private listiner = (event) => {
+    if (event.key == 'Entar' || event.key == 'Escape') {
+      this.toggle();
+    }
+  };
 
   render() {
     return (
