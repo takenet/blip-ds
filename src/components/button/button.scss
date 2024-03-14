@@ -51,6 +51,11 @@ $button-padding-left-right: 16px;
   background-color: inherit;
 }
 
+:host(.block) {
+  width: 100%;
+  display: flex;
+}
+
 .button {
   @include reset-button();
   cursor: pointer;
@@ -69,6 +74,9 @@ $button-padding-left-right: 16px;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 
+  &--block {
+    width: 100%;
+  }
 
   bds-loading-spinner {
     max-height: 100%;
@@ -308,4 +316,29 @@ $button-padding-left-right: 16px;
     cursor: not-allowed;
     opacity: 0;
   }
+}
+
+.focus {
+  &::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::before {
+      border-color: $color-primary-purples-bell;
+    }
+  }
+}
+
+.disabled {
+  pointer-events: none;
 }

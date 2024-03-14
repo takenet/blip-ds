@@ -1,24 +1,60 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Blip DS</title>
-    <script type="module" src="/build/blip-ds.esm.js"></script>
-    <script nomodule src="/build/blip-ds.js"></script>
-  </head>
-  <style>
-    body {
-      background: var(--color-surface-3, #f5f8f9);
-      /* background: var(--color-background-2, #0a0f1a);  */
-      margin: 0;
-    }
-  </style>
 
-  <body>
-    Versão blip-ds 1.276.1
-    <bds-test-component></bds-test-component>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Blip DS</title>
+  <script type="module" src="/build/blip-ds.esm.js"></script>
+  <script nomodule src="/build/blip-ds.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet">
+</head>
+<style>
+  body {
+    background: var(--color-surface-3, #f5f8f9);
+    /* background: var(--color-background-2, #0a0f1a);  */
+    margin: 0;
+  }
+</style>
 
-  <script></script>
+<body>
+  Versão blip-ds 1.276.1
+  <!-- <bds-test-component></bds-test-component> -->
+  <bds-grid flex-wrap="wrap">
+    <bds-grid margin="auto" xxs="6" direction="column" gap="2" justify-content="center" padding="4">
+      <bds-typo variant="fs-32" bold="bold">Default Button</bds-typo>
+      <bds-button bds-loading>Texto de teste do botão</bds-button>
+      <bds-button arrow>Texto de teste do botão</bds-button>
+      <bds-button icon="warning">Texto de teste do botão</bds-button>
+    </bds-grid>
+    <bds-grid margin="auto" xxs="6" direction="column" gap="2" justify-content="center" padding="4">
+      <bds-typo variant="fs-32" bold="bold">Block Button</bds-typo>
+      <bds-button block="true">Texto de teste do botão</bds-button>
+      <bds-button arrow block="true">Texto de teste do botão</bds-button>
+      <bds-button icon="warning" block="true">Texto de teste do botão</bds-button>
+    </bds-grid>
+    <bds-grid margin="auto" xxs="6" direction="column" gap="2" justify-content="center" padding="4">
+      <bds-typo variant="fs-32" bold="bold">Variant Button</bds-typo>
+      <bds-button variant="solid">Botão solid</bds-button>
+      <bds-button variant="outline">Botão outline</bds-button>
+      <bds-button variant="text">Botão text</bds-button>
+      <bds-button variant="dashed">Botão dashed</bds-button>
+    </bds-grid>
+    <bds-grid margin="auto" xxs="6" direction="column" gap="2" justify-content="center" padding="4">
+      <bds-typo variant="fs-32" bold="bold">Background Color Button</bds-typo>
+      <bds-button variant="solid" bg-color="primary1">Botão solid</bds-button>
+      <bds-button variant="solid" bg-color="delete1">Botão solid</bds-button>
+      <bds-button variant="solid" bg-color="success1">Botão solid</bds-button>
+    </bds-grid>
+  </bds-grid>
+
+
+</body>
+
+<script></script>
+
 </html>
