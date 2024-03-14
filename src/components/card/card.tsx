@@ -22,6 +22,11 @@ export class Card implements ComponentInterface {
    */
   @Prop() clickable?: boolean = false;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   @State() isHovered = false;
   @State() isPressed = false;
   @State() elevation: elevationType = 'primary';
@@ -70,7 +75,12 @@ export class Card implements ComponentInterface {
 
     return (
       <Host style={styleHost}>
-        <bds-paper elevation={this.elevation} class={{ card: true, card_hover: this.clickable }} height={this.height}>
+        <bds-paper
+          elevation={this.elevation}
+          class={{ card: true, card_hover: this.clickable }}
+          height={this.height}
+          data-test={this.dataTest}
+        >
           <bds-grid xxs="12" direction="column" gap="2">
             <slot></slot>
           </bds-grid>
