@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Method, Prop, Watch } from '@stencil/core';
+import { Component, ComponentInterface, h, Method, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 
 export type collapses = 'fixed' | 'contain';
 @Component({
@@ -27,11 +27,22 @@ export class BdsAlert implements ComponentInterface {
   @Prop() position?: string = 'fixed';
 
   /**
+   * Emitted when modal status has changed.
+   */
+  @Event() bdsAlertChanged!: EventEmitter;
+
+  /**
    * Can be used outside to open/close the alert
    */
   @Method()
   async toggle() {
     this.open = !this.open;
+
+    if (this.open) {
+      this.bdsAlertChanged.emit({ alertStatus: 'opened' });
+    } else {
+      this.bdsAlertChanged.emit({ alertStatus: 'closed' });
+    }
   }
 
   @Watch('open')

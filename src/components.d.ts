@@ -2401,6 +2401,10 @@ export interface BdsAccordionGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsAccordionGroupElement;
 }
+export interface BdsAlertCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsAlertElement;
+}
 export interface BdsAutocompleteCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsAutocompleteElement;
@@ -3295,6 +3299,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * Emitted when modal status has changed.
+         */
+        "onBdsAlertChanged"?: (event: BdsAlertCustomEvent<any>) => void;
         /**
           * Used to open/close the alert
          */
