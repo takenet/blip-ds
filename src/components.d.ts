@@ -75,6 +75,10 @@ export namespace Components {
     }
     interface BdsAccordionBody {
         "close": () => Promise<void>;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
@@ -99,6 +103,10 @@ export namespace Components {
          */
         "avatarThumb"?: string;
         "close": () => Promise<void>;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Icon. Used to add icon in header accordion.
          */
@@ -266,6 +274,10 @@ export namespace Components {
          */
         "color"?: string;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Set witch icon will be render inside the component.
          */
         "icon"?: string;
@@ -384,6 +396,10 @@ export namespace Components {
           * If the prop is true, the component will be clickable.
          */
         "clickable"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Prop for set the height of the component.
          */
@@ -774,6 +790,10 @@ export namespace Components {
          */
         "activeMode"?: activeMode;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Open. Used to open/close the dropdown.
          */
         "open"?: boolean;
@@ -887,6 +907,10 @@ export namespace Components {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Height of the image.
          */
@@ -1646,6 +1670,10 @@ export namespace Components {
          */
         "backgroundColor"?: navbarBackground;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Justify Content. Used to align itens in navbar.
          */
         "justifyContent"?: justifyContent;
@@ -2021,6 +2049,10 @@ export namespace Components {
         "width"?: number;
     }
     interface BdsSkeleton {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         "height"?: string;
         "shape"?: Shape;
         "width"?: string;
@@ -2030,6 +2062,10 @@ export namespace Components {
           * Data Markers, prop to select ype of markers.
          */
         "dataMarkers"?: string | StepOption[];
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Label, Prop to enable Label.
          */
@@ -2369,6 +2405,18 @@ export namespace Components {
           * Used to accept a especific type of file.
          */
         "accept": string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
+         */
+        "dtButtonDelete"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputFiles is the data-test to button clear.
+         */
+        "dtInputFiles"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtLabelAddFile is the data-test to button clear.
+         */
+        "dtLabelAddFile"?: string;
         /**
           * Used for add a error message. In case a verify.
          */
@@ -3257,6 +3305,10 @@ declare namespace LocalJSX {
         "startOpen"?: boolean;
     }
     interface BdsAccordionBody {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
     }
     interface BdsAccordionGroup {
         /**
@@ -3285,6 +3337,10 @@ declare namespace LocalJSX {
           * Avatar Thumb. Used to add avatar in header accordion.
          */
         "avatarThumb"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Icon. Used to add icon in header accordion.
          */
@@ -3477,6 +3533,10 @@ declare namespace LocalJSX {
          */
         "color"?: string;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Set witch icon will be render inside the component.
          */
         "icon"?: string;
@@ -3606,6 +3666,10 @@ declare namespace LocalJSX {
           * If the prop is true, the component will be clickable.
          */
         "clickable"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Prop for set the height of the component.
          */
@@ -4033,6 +4097,10 @@ declare namespace LocalJSX {
          */
         "activeMode"?: activeMode;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * bdsToggle. Event to return selected date value.
          */
         "onBdsToggle"?: (event: BdsDropdownCustomEvent<any>) => void;
@@ -4147,6 +4215,10 @@ declare namespace LocalJSX {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Height of the image.
          */
@@ -5022,6 +5094,10 @@ declare namespace LocalJSX {
          */
         "backgroundColor"?: navbarBackground;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
           * Justify Content. Used to align itens in navbar.
          */
         "justifyContent"?: justifyContent;
@@ -5442,6 +5518,10 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface BdsSkeleton {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         "height"?: string;
         "shape"?: Shape;
         "width"?: string;
@@ -5451,6 +5531,10 @@ declare namespace LocalJSX {
           * Data Markers, prop to select ype of markers.
          */
         "dataMarkers"?: string | StepOption[];
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
         /**
           * Label, Prop to enable Label.
          */
@@ -5771,6 +5855,18 @@ declare namespace LocalJSX {
           * Used to accept a especific type of file.
          */
         "accept"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
+         */
+        "dtButtonDelete"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtInputFiles is the data-test to button clear.
+         */
+        "dtInputFiles"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtLabelAddFile is the data-test to button clear.
+         */
+        "dtLabelAddFile"?: string;
         /**
           * Used for add a error message. In case a verify.
          */

@@ -38,6 +38,24 @@ export class BdsUpload {
    * Used to accept a especific type of file.
    */
   @Prop() accept: string;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtInputFiles is the data-test to button clear.
+   */
+  @Prop() dtInputFiles?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtLabelAddFile is the data-test to button clear.
+   */
+  @Prop() dtLabelAddFile?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonDelete is the data-test to button clear.
+   */
+  @Prop() dtButtonDelete?: string = null;
   /**
    * Event emited when delete a item from the list.
    */
@@ -175,6 +193,7 @@ export class BdsUpload {
                       icon="trash"
                       variant="secondary"
                       onClick={() => this.deleteFile(index)}
+                      data-test={`${this.dtButtonDelete}-${index}`}
                     ></bds-button-icon>
                   </div>
                 </div>
@@ -196,6 +215,7 @@ export class BdsUpload {
             class={{ 'upload__edit--label': true, 'upload__edit--hover': this.hover }}
             id="file-label"
             htmlFor="file"
+            data-test={this.dtLabelAddFile}
           >
             <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
               {this.hover ? (
@@ -218,6 +238,7 @@ export class BdsUpload {
             multiple={this.multiple}
             accept={this.accept}
             onChange={($event: any) => this.onUploadClick($event.target.files)}
+            data-test={this.dtInputFiles}
           />
         </div>
       </div>
