@@ -1,5 +1,10 @@
 :host {
     display: flex;
+    position: relative;
+
+    &:focus-visible {
+        outline: none;
+    }
 }
 
 .card {
@@ -12,3 +17,17 @@
     transition: all .3s;
     cursor: pointer;
 }
+
+.focus:focus-visible {
+    display: flex;
+    position: absolute;
+    border: 2px solid $color-focus;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    top: -4px;
+    left: -4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    outline: none;
+  }

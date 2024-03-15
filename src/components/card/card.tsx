@@ -59,16 +59,30 @@ export class Card implements ComponentInterface {
       document.addEventListener('mouseup', () => {
         this.isPressed = false;
       });
+
+      this.cardElement.addEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          this.isPressed = true;
+          this.bdsClick.emit();
+        }
+      });
+      this.cardElement.addEventListener('keyup', (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          this.isPressed = false;
+        }
+      });
     }
   }
 
-  render() {
+  componentDidUpdate() {
     if (this.isPressed) {
       this.elevation = 'static';
     } else if (this.isHovered) {
       this.elevation = 'secondary';
     }
+  }
 
+  render() {
     const styleHost = {
       width: this.width,
     };
@@ -81,6 +95,7 @@ export class Card implements ComponentInterface {
           height={this.height}
           data-test={this.dataTest}
         >
+          <div tabindex="0" class="focus"></div>
           <bds-grid xxs="12" direction="column" gap="2" padding="2">
             <slot></slot>
           </bds-grid>
