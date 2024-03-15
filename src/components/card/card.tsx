@@ -81,7 +81,7 @@ export class Card implements ComponentInterface {
           height={this.height}
           data-test={this.dataTest}
         >
-          <bds-grid xxs="12" direction="column" gap="2">
+          <bds-grid xxs="12" direction="column" gap="2" padding="2">
             <slot></slot>
           </bds-grid>
         </bds-paper>

@@ -4,6 +4,7 @@ export type justifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-betwe
 
 @Component({
   tag: 'bds-card-footer',
+  styleUrl: 'card-footer.scss',
   shadow: true,
 })
 export class CardFooter implements ComponentInterface {
@@ -13,7 +14,7 @@ export class CardFooter implements ComponentInterface {
   @Prop() align?: justifyContent = 'flex-end';
   render() {
     return (
-      <bds-grid direction="row" gap="2" justifyContent={this.align}>
+      <bds-grid xxs="12" direction="row" gap="2" justifyContent={this.align}>
         <slot />
       </bds-grid>
     );
