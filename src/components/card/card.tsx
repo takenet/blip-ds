@@ -22,6 +22,11 @@ export class Card implements ComponentInterface {
    */
   @Prop() clickable?: boolean = false;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   @State() isHovered = false;
   @State() isPressed = false;
   @State() elevation: elevationType = 'primary';

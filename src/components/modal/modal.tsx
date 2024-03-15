@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Method, Event, EventEmitter, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Method, Event, EventEmitter, Prop, Watch } from '@stencil/core';
 
 export type sizes = 'fixed' | 'dynamic';
 @Component({
@@ -69,6 +69,19 @@ export class BdsModal implements ComponentInterface {
       this.bdsModalChanged.emit({ modalStatus: 'closed' });
     }
   }
+
+  @Watch('open')
+  protected isOpenChanged(): void {
+    if (this.open) {
+      document.addEventListener('keydown', this.listener, false);
+    } else document.removeEventListener('keydown', this.listener, false);
+  }
+
+  private listener = (event) => {
+    if (event.key == 'Enter' || event.key == 'Escape') {
+      this.toggle();
+    }
+  };
 
   private handleMouseClick = (): void => {
     this.open = false;

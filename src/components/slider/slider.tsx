@@ -55,6 +55,11 @@ export class Slider {
   @Prop() dataMarkers?: string | StepOption[];
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * bdsChange. Event to return selected date value.
    */
   @Event() bdsChange?: EventEmitter;
@@ -166,6 +171,7 @@ export class Slider {
           onInput={this.onInputSlide}
           onMouseEnter={this.onInputMouseEnter}
           onMouseLeave={this.onInputMouseLeave}
+          data-test={this.dataTest}
         />
         <div class="track-bg">
           <div
