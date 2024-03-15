@@ -75,7 +75,12 @@ export class Card implements ComponentInterface {
 
     return (
       <Host style={styleHost}>
-        <bds-paper elevation={this.elevation} class={{ card: true, card_hover: this.clickable }} height={this.height}>
+        <bds-paper
+          elevation={this.elevation}
+          class={{ card: true, card_hover: this.clickable }}
+          height={this.height}
+          data-test={this.dataTest}
+        >
           <bds-grid xxs="12" direction="column" gap="2" padding="2">
             <slot></slot>
           </bds-grid>
