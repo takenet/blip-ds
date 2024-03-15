@@ -14,6 +14,13 @@
 | `position` | `position`  | Define whether the component will occupy the entire screen or just the parent. | `string`  | `'fixed'` |
 
 
+## Events
+
+| Event             | Description                            | Type               |
+| ----------------- | -------------------------------------- | ------------------ |
+| `bdsAlertChanged` | Emitted when modal status has changed. | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `toggle() => Promise<void>`

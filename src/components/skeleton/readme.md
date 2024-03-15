@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                   | Default    |
-| -------- | --------- | ----------- | ---------------------- | ---------- |
-| `height` | `height`  |             | `string`               | `'50px'`   |
-| `shape`  | `shape`   |             | `"circle" \| "square"` | `'square'` |
-| `width`  | `width`   |             | `string`               | `'100%'`   |
+| Property   | Attribute   | Description                                                             | Type                   | Default    |
+| ---------- | ----------- | ----------------------------------------------------------------------- | ---------------------- | ---------- |
+| `dataTest` | `data-test` | Data test is the prop to specifically test the component action object. | `string`               | `null`     |
+| `height`   | `height`    |                                                                         | `string`               | `'50px'`   |
+| `shape`    | `shape`     |                                                                         | `"circle" \| "square"` | `'square'` |
+| `width`    | `width`     |                                                                         | `string`               | `'100%'`   |
 
 
 ## Dependencies
