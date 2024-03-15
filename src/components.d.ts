@@ -341,6 +341,10 @@ export namespace Components {
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
         /**
+          * If true, the base button will be disabled.
+         */
+        "block"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -2406,6 +2410,14 @@ export namespace Components {
          */
         "accept": string;
         /**
+          * Used for delete a item from the list.
+         */
+        "deleteAllFiles": () => Promise<void>;
+        /**
+          * Used for delete a item from the list.
+         */
+        "deleteFile": (index: any) => Promise<void>;
+        /**
           * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
          */
         "dtButtonDelete"?: string;
@@ -3614,6 +3626,10 @@ declare namespace LocalJSX {
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
+        /**
+          * If true, the base button will be disabled.
+         */
+        "block"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */

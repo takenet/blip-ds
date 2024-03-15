@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -25,6 +25,11 @@ export type IconType = 'icon' | 'logo' | 'emoji';
 })
 export class Button {
   @Element() el!: HTMLElement;
+
+  /**
+   * 	If true, the base button will be disabled.
+   */
+  @Prop() block?: boolean = false;
 
   /**
    * 	If true, the base button will be disabled.
@@ -161,23 +166,30 @@ export class Button {
     const sizeClass = this.getSizeClass();
 
     return (
-      <button
-        onClick={(ev) => this.handleClick(ev)}
-        disabled={this.disabled}
-        type={this.type}
-        class={{
-          button: true,
-          [`button__${this.variant}`]: true,
-          [`button__${this.variant}--disabled`]: this.disabled,
-          [sizeClass]: true,
-          'button--size-icon--left': !!this.icon,
-          'button--size-icon--right': this.arrow,
-        }}
-        part="button"
-        data-test={this.dataTest}
-      >
-        {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
-      </button>
+      <Host class={{ host: true, block: this.block }}>
+        <button
+          onClick={(ev) => this.handleClick(ev)}
+          disabled={this.disabled}
+          aria-disabled={this.disabled ? 'true' : 'false'}
+          aria-live="assertive"
+          type={this.type}
+          class={{
+            button: true,
+            focus: true,
+            'button--block': this.block,
+            [`button__${this.variant}`]: true,
+            [`button__${this.variant}--disabled`]: this.disabled,
+            [sizeClass]: true,
+            'button--size-icon--left': !!this.icon,
+            'button--size-icon--right': this.arrow,
+          }}
+          part="button"
+          data-test={this.dataTest}
+          tabindex="0"
+        >
+          {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
+        </button>
+      </Host>
     );
   }
 }
