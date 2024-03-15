@@ -73,12 +73,12 @@ export class BdsModal implements ComponentInterface {
   @Watch('open')
   protected isOpenChanged(): void {
     if (this.open) {
-      document.addEventListener('keydown', this.listiner, false);
-    } else document.removeEventListener('keydown', this.listiner, false);
+      document.addEventListener('keydown', this.listener, false);
+    } else document.removeEventListener('keydown', this.listener, false);
   }
 
-  private listiner = (event) => {
-    if (event.key == 'Entar' || event.key == 'Escape') {
+  private listener = (event) => {
+    if (event.key == 'Enter' || event.key == 'Escape') {
       this.toggle();
     }
   };
