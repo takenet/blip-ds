@@ -37,6 +37,11 @@ export class Badge {
    */
   @Prop() animation?: boolean = false;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   componentWillLoad() {
     if (this.icon === null && this.number) {
       this.type = 'number';
@@ -68,6 +73,7 @@ export class Badge {
             [`chip_badge--${this.shape}`]: true,
             [`chip_badge--${this.color}`]: true,
           }}
+          data-test={this.dataTest}
         >
           {this.type === 'status' && (
             <div

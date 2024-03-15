@@ -34,6 +34,11 @@ export class Image {
   @Prop() objectFit?: ObjectFitValue = 'cover';
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * Indicates whether the main image has been successfully loaded.
    */
   @State() imageLoaded = false;
@@ -79,20 +84,31 @@ export class Image {
           src={this.currentSrc}
           alt={this.alt}
           style={{ objectFit: this.objectFit, width: this.width, height: this.height }}
+          data-test={this.dataTest}
         />
       );
     } else if (!this.src) {
       // Se imageLoaded for falso e src estiver vazia, renderize a ilustração "image-not-found"
       return (
         <div style={{ width: this.width || this.height ? this.width : '100%' }}>
-          <bds-illustration type="empty-states" name="image-not-found" alt={this.alt}></bds-illustration>
+          <bds-illustration
+            type="empty-states"
+            name="image-not-found"
+            alt={this.alt}
+            data-test={this.dataTest}
+          ></bds-illustration>
         </div>
       );
     } else {
       // Se imageLoaded for falso e src não estiver vazia, renderize a ilustração "broken-image"
       return (
         <div style={{ width: this.width || this.height ? this.width : '100%' }}>
-          <bds-illustration type="empty-states" name="broken-image" alt={this.alt}></bds-illustration>
+          <bds-illustration
+            type="empty-states"
+            name="broken-image"
+            alt={this.alt}
+            data-test={this.dataTest}
+          ></bds-illustration>
         </div>
       );
     }

@@ -26,6 +26,11 @@ export class Navbar {
    */
   @Prop() justifyContent?: justifyContent = 'space-between';
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   render() {
     return (
       <Host class={{ [`${this.orientation}`]: true }}>
@@ -36,6 +41,7 @@ export class Navbar {
             [`navbar__orientation__${this.orientation}`]: true,
             [`navbar__background-color__${this.backgroundColor}`]: true,
           }}
+          data-test={this.dataTest}
         >
           <slot />
         </div>

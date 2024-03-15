@@ -4,43 +4,38 @@ export default {
   title: 'Snippets/Tables',
 };
 
-const DATA = [
-  {
-    id: 1,
-    produto: 'Celular',
-    valor: '1500,00',
-    disponibilidade: 'disponivel',
-    marca: 'Samsung',
-    modelo: 'Galaxy S20',
-    cor: 'Preto',
-  },
-  {
-    id: 2,
-    produto: 'Notebook',
-    valor: '4000,00',
-    disponibilidade: 'indisponivel',
-    marca: 'Apple',
-    modelo: 'MacBook Pro',
-    cor: 'Cinza Espacial',
-  },
-  {
-    id: 3,
-    produto: 'Câmera',
-    valor: '800,00',
-    disponibilidade: 'disponivel',
-    marca: 'Canon',
-    modelo: 'EOS Rebel T7',
-    cor: 'Preto',
-  },
-];
-
-const heading = ['Id', 'Produtos', 'Valor', 'Marca', 'Modelo', 'Cor', 'Disponibilidade'];
-
 export const TableDefault = () => {
-  const el = document.getElementsByClassName('sb-story');
-  if (el.length !== 0) {
-    el[0].style.width = '600px';
-  }
+  const DATA = [
+    {
+      id: 1,
+      produto: 'Celular',
+      valor: '1500,00',
+      disponibilidade: 'disponivel',
+      marca: 'Samsung',
+      modelo: 'Galaxy S20',
+      cor: 'Preto',
+    },
+    {
+      id: 2,
+      produto: 'Notebook',
+      valor: '4000,00',
+      disponibilidade: 'indisponivel',
+      marca: 'Apple',
+      modelo: 'MacBook Pro',
+      cor: 'Cinza Espacial',
+    },
+    {
+      id: 3,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+  ];
+  
+  const heading = ['Id', 'Produtos', 'Valor', 'Marca', 'Modelo', 'Cor', 'Disponibilidade'];
   return (
     <bds-table>
       <bds-table-header>
@@ -88,10 +83,6 @@ export const TableDefault = () => {
 };
 
 export const TableWithComponents = () => {
-  const el = document.getElementsByClassName('sb-story');
-  if (el.length !== 0) {
-    el[0].style.width = '600px';
-  }
 
   const DATA = [
     { usuario: 'Marco Antônio', idade: '20', estadoCivil: 'Solteiro', profissao: 'Professor', status: 'Ativo' },
@@ -144,7 +135,7 @@ export const TableWithComponents = () => {
   );
 };
 
-export const TableSorting = () => {
+export const TableSorting = (props) => {
   const el = document.getElementsByClassName('sb-story');
   if (el.length !== 0) {
     el[0].style.width = '800px';

@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                           | Type      | Default         |
-| ----------- | ----------- | ----------------------------------------------------- | --------- | --------------- |
-| `clickable` | `clickable` | If the prop is true, the component will be clickable. | `boolean` | `false`         |
-| `height`    | `height`    | Prop for set the height of the component.             | `string`  | `null`          |
-| `width`     | `width`     | Prop for set the width of the component.              | `string`  | `'fit-content'` |
+| Property    | Attribute   | Description                                                             | Type      | Default         |
+| ----------- | ----------- | ----------------------------------------------------------------------- | --------- | --------------- |
+| `clickable` | `clickable` | If the prop is true, the component will be clickable.                   | `boolean` | `false`         |
+| `dataTest`  | `data-test` | Data test is the prop to specifically test the component action object. | `string`  | `null`          |
+| `height`    | `height`    | Prop for set the height of the component.                               | `string`  | `null`          |
+| `width`     | `width`     | Prop for set the width of the component.                                | `string`  | `'fit-content'` |
 
 
 ## Events

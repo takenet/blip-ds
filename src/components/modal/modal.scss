@@ -45,10 +45,26 @@
       max-width: 1000px;
     }
     .close-button {
+      position: relative;
       color: $color-content-default;
       align-self: flex-end;
       margin-bottom: 16px;
       cursor: pointer;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border: 2px solid transparent;
+        border-radius: 4px;
+      }
+      &:focus-visible {
+        outline: none;
+
+        &::before {
+          border-color: $color-focus;
+        }
+      }
     }
 
     .slot {
