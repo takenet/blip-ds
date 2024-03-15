@@ -68,6 +68,11 @@ export class BdsDropdown implements ComponentInterface {
   @Prop() position?: DropdownPostionType = 'auto';
 
   /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
+  /**
    * bdsToggle. Event to return selected date value.
    */
   @Event() bdsToggle?: EventEmitter;
@@ -212,6 +217,7 @@ export class BdsDropdown implements ComponentInterface {
             dropdown: true,
             dropdown__open: this.open,
           }}
+          data-test={this.dataTest}
           onMouseOver={() => this.openSubmenu()}
           onMouseOut={() => this.closeSubmenu()}
         >
