@@ -155,6 +155,12 @@ export class InputPassword {
     }
   };
 
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.toggleEyePassword();
+    }
+  }
+
   private getAutoComplete(): string {
     if (!this.openEyes) return 'current-password';
     return this.autoComplete;
@@ -309,7 +315,12 @@ export class InputPassword {
                 ></input>
               </div>
             </div>
-            <div class="input__password--icon" onClick={this.toggleEyePassword}>
+            <div
+              class="input__password--icon"
+              onClick={this.toggleEyePassword}
+              onKeyDown={this.handleKeyDown.bind(this)}
+              tabindex="0"
+            >
               <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
             </div>
             {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
