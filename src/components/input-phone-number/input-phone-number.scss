@@ -321,9 +321,39 @@ $select-options-max-height: 250px;
   }
 
   &__icon {
+    bds-icon {
+      position: relative;
+    }
     bds-icon:first-child {
       margin-right: 8px;
     }
+    &::before {
+      content: '';
+      background: transparent;
+      height: calc(100% - 2px);
+      max-height: 54px;
+      width: 70px;
+      position: absolute;
+      left: 1px;
+      top: 1px;
+      border-radius: 8px 0px 0px 8px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    &:focus-visible {
+      outline: none;
+      &::after {
+        border-color: $color-focus;
+      }
+    }
+    position: relative;
+    height: 100%;
     color: $color-content-disable;
     display: flex;
     align-items: center;
@@ -367,18 +397,8 @@ $select-options-max-height: 250px;
   &:hover,
   &--pressed {
     .select-phone-number__icon {
-      position: relative;
-      height: 100%;
       &::before {
-        content: '';
-        background: $color-surface-3;
-        height: calc(100% - 2px);
-        max-height: 54px;
-        width: 70px;
-        position: absolute;
-        left: 1px;
-        top: 1px;
-        border-radius: 8px 0px 0px 8px;
+        background: $color-surface-2;
       }
     }
   }

@@ -225,6 +225,12 @@ export class InputPhoneNumber {
     }
   };
 
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.toggle();
+    }
+  }
+
   private handler = (event: CustomEvent): void => {
     const {
       detail: { value },
@@ -361,7 +367,6 @@ export class InputPhoneNumber {
           'select-phone-number': true,
           'select-phone-number--pressed': this.isPressed,
         }}
-        tabindex="0"
         onFocus={this.setFocusWrapper}
         onBlur={this.removeFocusWrapper}
         onKeyPress={this.keyPressWrapper}
@@ -382,7 +387,13 @@ export class InputPhoneNumber {
             part="input-container"
           >
             {this.renderIcon()}
-            <div onClick={this.toggle} data-test={this.dtSelectFlag} class="select-phone-number__icon">
+            <div
+              onClick={this.toggle}
+              onKeyDown={this.handleKeyDown.bind(this)}
+              data-test={this.dtSelectFlag}
+              class="select-phone-number__icon"
+              tabindex="0"
+            >
               <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
               <bds-icon size="x-small" name={iconArrow}></bds-icon>
             </div>
