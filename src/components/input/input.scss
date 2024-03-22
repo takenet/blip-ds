@@ -208,7 +208,7 @@ $input-width: 100%;
   }
 
   & .icon-success {
-    color: $color-success;
+    color: $color-positive;
     margin-left: 4px;
   }
 
@@ -292,6 +292,16 @@ $input-width: 100%;
       }
       .input__message__text {
         color: $color-delete;
+      }
+    }
+    &--success {
+      .input__message__icon {
+        .bds-icon {
+          color: $color-positive;
+        }
+      }
+      .input__message__text {
+        color: $color-positive;
       }
     }
   }
