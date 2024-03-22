@@ -21,9 +21,5 @@
     &--completed {
       border-top: 2px solid $color-primary;
     }
-
-    @media (max-width: $sm-screen) {
-      display: none;
-    }
   }
 }
