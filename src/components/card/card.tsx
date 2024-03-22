@@ -93,6 +93,7 @@ export class Card implements ComponentInterface {
           elevation={this.elevation}
           class={{ card: true, card_hover: this.clickable }}
           height={this.height}
+          width={this.width}
           data-test={this.dataTest}
         >
           <div tabindex="0" class="focus"></div>

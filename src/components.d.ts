@@ -48,7 +48,7 @@ import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu
 import { sizes } from "./components/modal/modal";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
-import { PaperElevation } from "./components/paper/paper-interface";
+import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
@@ -1723,6 +1723,10 @@ export namespace Components {
         "startedPage"?: number;
     }
     interface BdsPaper {
+        /**
+          * Prop for set the background color.
+         */
+        "bgColor"?: PaperBackground;
         /**
           * Prop for set the border of the component.
          */
@@ -5171,6 +5175,10 @@ declare namespace LocalJSX {
         "startedPage"?: number;
     }
     interface BdsPaper {
+        /**
+          * Prop for set the background color.
+         */
+        "bgColor"?: PaperBackground;
         /**
           * Prop for set the border of the component.
          */
