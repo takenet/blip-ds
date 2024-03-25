@@ -56,6 +56,14 @@ $button-padding-left-right: 16px;
   display: flex;
 }
 
+:host {
+  position: relative;
+}
+
+:host:focus-visible {
+  outline: none;
+}
+
 .button {
   @include reset-button();
   cursor: pointer;
@@ -318,25 +326,18 @@ $button-padding-left-right: 16px;
   }
 }
 
-.focus {
-  &::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    border: 2px solid transparent;
-    border-radius: 4px;
-  }
-
-  &:focus-visible {
-    outline: none;
-
-    &::before {
-      border-color: $color-primary-purples-bell;
-    }
-  }
+.focus:focus-visible {
+  display: flex;
+  position: absolute;
+  border: 2px solid $color-focus;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  top: -4px;
+  left: -4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  outline: none;
 }
 
 .disabled {
