@@ -145,9 +145,13 @@ export class Button {
     }
   }
 
-  private handleClick = (ev: MouseEvent) => {
+  private handleClick = (ev) => {
     if (!this.disabled) {
-      this.bdsClick.emit();
+      this.bdsClick.emit(ev);
+
+      if (ev.key === 'Enter') {
+        this.bdsClick.emit(ev);
+      }
 
       const form = this.el.closest('form');
       if (form) {
@@ -167,6 +171,7 @@ export class Button {
 
     return (
       <Host class={{ host: true, block: this.block }}>
+        <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
         <button
           onClick={(ev) => this.handleClick(ev)}
           disabled={this.disabled}
@@ -175,7 +180,6 @@ export class Button {
           type={this.type}
           class={{
             button: true,
-            focus: true,
             'button--block': this.block,
             [`button__${this.variant}`]: true,
             [`button__${this.variant}--disabled`]: this.disabled,
@@ -185,7 +189,6 @@ export class Button {
           }}
           part="button"
           data-test={this.dataTest}
-          tabindex="0"
         >
           {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
         </button>
