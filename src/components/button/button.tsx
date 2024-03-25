@@ -147,11 +147,9 @@ export class Button {
 
   private handleClick = (ev) => {
     if (!this.disabled) {
-      console.log('Entrou no clique')
       this.bdsClick.emit(ev);
 
-      if(ev.key === 'Enter') {
-        console.log('Entrou na key')
+      if (ev.key === 'Enter') {
         this.bdsClick.emit(ev);
       }
 
@@ -194,7 +192,6 @@ export class Button {
         >
           {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
         </button>
-        
       </Host>
     );
   }
