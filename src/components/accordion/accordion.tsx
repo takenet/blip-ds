@@ -66,12 +66,14 @@ export class Accordion {
 
   @Watch('isOpen')
   isOpenChanged(value): void {
-    this.accheaders?.toggle();
-    this.accBodies?.toggle();
     this.bdsToggle.emit({ value: value });
     if (value) {
+      this.accheaders?.open();
+      this.accBodies?.open();
       this.bdsAccordionOpen.emit();
     } else {
+      this.accheaders?.close();
+      this.accBodies?.close();
       this.bdsAccordionClose.emit();
     }
     if (this.accGroup.collapse == 'single' && this.condition === false) {

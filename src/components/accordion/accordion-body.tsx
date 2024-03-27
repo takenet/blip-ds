@@ -24,6 +24,11 @@ export class AccordionBody {
   }
 
   @Method()
+  async open() {
+    this.isOpen = true;
+  }
+
+  @Method()
   async close() {
     this.isOpen = false;
   }
