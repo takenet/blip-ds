@@ -508,6 +508,19 @@ export class SelectChips {
           this.setChip(this.value);
           this.value = '';
         }
+        if (!this.disabled) {
+          this.isOpen = true;
+        }
+        break;
+      case 'ArrowDown':
+        if (!this.disabled) {
+          this.isOpen = true;
+        }
+        break;
+      case 'ArrowUp':
+        if (!this.disabled) {
+          this.isOpen = false;
+        }
         break;
       case 'Backspace' || 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
@@ -753,13 +766,7 @@ export class SelectChips {
     }
 
     return (
-      <div
-        class="select"
-        tabindex="0"
-        onFocus={this.setFocusWrapper}
-        onBlur={this.removeFocusWrapper}
-        onKeyPress={this.keyPressWrapper}
-      >
+      <div class="select" tabindex="0" onFocus={this.setFocusWrapper} onBlur={this.removeFocusWrapper}>
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.toggle}>
           <div
             class={{
@@ -772,7 +779,6 @@ export class SelectChips {
               'input--pressed': isPressed,
             }}
             onClick={this.onClickWrapper}
-            onKeyDown={this.keyPressWrapper}
           >
             {this.renderIcon()}
             <div class="input__container">
@@ -792,6 +798,7 @@ export class SelectChips {
                   value={this.value}
                   disabled={this.disabled}
                   data-test={this.dataTest}
+                  onKeyDown={this.keyPressWrapper}
                 ></input>
               </div>
             </div>
