@@ -1,7 +1,6 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
-import { Keyboard } from '../../../utils/enums';
 @Component({
   tag: 'bds-select',
   styleUrl: '../select.scss',
@@ -293,32 +292,30 @@ export class Select {
     this.toggle();
   };
 
-  private keyPressWrapper = (event: KeyboardEvent): void => {
-    const isSelectElement = (event.target as Element).localName === 'bds-select';
-    const isInputElement = (event.target as Element).localName === 'bds-input';
-
+  private keyPressWrapper(event) {
     switch (event.key) {
-      case Keyboard.ENTER:
-        if (!this.isOpen && (isSelectElement || isInputElement)) {
-          this.toggle();
-        }
+      case 'Enter':
+        this.toggle();
         break;
-      case Keyboard.ARROW_DOWN:
+      case 'ArrowDown':
+        if (!this.disabled) {
+          this.isOpen = true;
+        }
         if (this.childOptionSelected) {
-          (this.childOptionSelected.nextElementSibling?.firstElementChild as HTMLInputElement)?.focus();
+          this.value = (this.childOptionSelected.nextSibling as HTMLBdsSelectOptionElement)?.value;
           return;
         }
-        (this.el.firstElementChild?.firstElementChild as HTMLInputElement)?.focus();
+        this.value = (this.el.firstElementChild as HTMLBdsSelectOptionElement)?.value;
         break;
-      case Keyboard.ARROW_UP:
+      case 'ArrowUp':
         if (this.childOptionSelected) {
-          (this.childOptionSelected.previousElementSibling?.firstElementChild as HTMLInputElement)?.focus();
+          this.value = (this.childOptionSelected.previousSibling as HTMLBdsSelectOptionElement)?.value;
           return;
         }
-        (this.el.previousElementSibling?.firstElementChild as HTMLInputElement)?.focus();
+        this.value = (this.el.lastElementChild as HTMLBdsSelectOptionElement)?.value;
         break;
     }
-  };
+  }
 
   private renderIcon(): HTMLElement {
     return (
@@ -398,7 +395,6 @@ export class Select {
               'input--pressed': isPressed,
             }}
             onClick={this.onClickWrapper}
-            onKeyDown={this.keyPressWrapper}
             part="input-container"
           >
             {this.renderIcon()}
@@ -415,6 +411,7 @@ export class Select {
                   placeholder={this.placeholder}
                   readonly
                   data-test={this.dataTest}
+                  onKeyDown={this.keyPressWrapper.bind(this)}
                 ></input>
               </div>
             </div>
