@@ -79,6 +79,7 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
@@ -111,6 +112,7 @@ export namespace Components {
           * Icon. Used to add icon in header accordion.
          */
         "icon"?: string;
+        "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsAlert {
