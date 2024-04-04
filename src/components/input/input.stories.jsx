@@ -22,11 +22,13 @@ export const Properties = (args) => {
       label={args.label}
       disabled={args.disabled}
       danger={args.danger}
+      success={args.success}
       icon={args.icon}
       value={args.value}
       type={args.type}
       error-message={args.errorMessage}
       helper-message={args.helperMessage}
+      success-message={args.successMessage}
       min={args.min}
       minlength={args.minlength}
       max={args.max}
@@ -44,11 +46,13 @@ Properties.args = {
   label: '',
   disabled: false,
   danger: false,
+  success: false,
   icon: '',
   value: '',
   type: '',
   errorMessage: '',
   helperMessage: '',
+  successMessage: '',
   min: '',
   minlength: 0,
   max: '',
@@ -88,6 +92,13 @@ Properties.argTypes = {
     
     control: 'boolean',
   },
+  success: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'boolean',
+  },
   icon: {
     table: {
       defaultValue: { summary: 'vazio' },
@@ -118,6 +129,13 @@ Properties.argTypes = {
     control: 'text',
   },
   helperMessage: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  successMessage: {
     table: {
       defaultValue: { summary: 'vazio' },
     },

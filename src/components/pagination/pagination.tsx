@@ -246,6 +246,7 @@ export class Pagination {
                 select__options: true,
                 'select__options--open': this.openSelect,
               }}
+              elevation="static"
             >
               <ul>
                 {this.paginationNumbers.map((el, index) => (
