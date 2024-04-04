@@ -22,7 +22,24 @@ $checkbox-spacing-text: 8px;
 
   &__icon {
     background: $color-surface-1;
+    position: relative;
 
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::before {
+        border-color: $color-focus;
+      }
+    }
+  
     &:hover {
       border-color: $color-brand;
     }

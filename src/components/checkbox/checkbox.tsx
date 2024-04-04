@@ -98,6 +98,15 @@ export class Checkbox {
     return '';
   };
 
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.checked = !this.checked;
+      this.bdsChange.emit({
+        checked: this.checked,
+      });
+    }
+  }
+
   render(): HTMLElement {
     const styleState = this.getStyleState();
 
@@ -119,7 +128,7 @@ export class Checkbox {
           data-test={this.dataTest}
         ></input>
         <label class="checkbox__label" htmlFor={this.checkBoxId}>
-          <div class="checkbox__icon">
+          <div class="checkbox__icon" tabindex="0" onKeyDown={this.handleKeyDown.bind(this)}>
             <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit"></bds-icon>
           </div>
           {this.label && (
