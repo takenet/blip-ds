@@ -53,6 +53,12 @@ export class BdsAvatar {
     this.bdsClickAvatar.emit(e);
   }
 
+  handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.bdsClickAvatar.emit(event);
+    }
+  }
+
   private handleClickKey(event) {
     if ((event.key === 'Enter' || event.key === ' ') && this.upload) {
       event.preventDefault();
@@ -155,7 +161,12 @@ export class BdsAvatar {
             )
           ) : this.name ? (
             this.upload && this.size !== 'micro' ? (
-              <div class="avatar__btn" onClick={() => this.onUploadClick}>
+              <div
+                class="avatar__btn"
+                onClick={() => this.onUploadClick}
+                tabindex="0"
+                onKeyDown={this.handleKeyDown.bind(this)}
+              >
                 <bds-typo margin={false} class="avatar__btn__text" variant={this.typoSize} tag="span">
                   {firstName + lastName}
                 </bds-typo>
