@@ -8,6 +8,8 @@ import background from '../../assets/svg/pattern.svg';
   shadow: true,
 })
 export class BdsUpload {
+  private inputElement?: HTMLInputElement;
+
   @Element() private dropArea: HTMLElement;
   @State() files: string[] = [];
   @State() haveFiles = false;
@@ -172,6 +174,16 @@ export class BdsUpload {
     this.bdsUploadChange.emit({ value: this.files });
   }
 
+  private refInputElement = (el: HTMLInputElement): void => {
+    this.inputElement = el as HTMLInputElement;
+  };
+
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.inputElement.click();
+    }
+  }
+
   render() {
     return (
       <div class="upload">
@@ -232,6 +244,8 @@ export class BdsUpload {
             id="file-label"
             htmlFor="file"
             data-test={this.dtLabelAddFile}
+            tabindex="0"
+            onKeyDown={this.handleKeyDown.bind(this)}
           >
             <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
               {this.hover ? (
@@ -247,6 +261,7 @@ export class BdsUpload {
             <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={background} />
           </label>
           <input
+            ref={this.refInputElement}
             type="file"
             name="files[]"
             id="file"
