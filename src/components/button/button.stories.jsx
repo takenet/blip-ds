@@ -20,6 +20,7 @@ export const Properties = (args) => {
       size={args.size}
       disabled={args.disabled}
       icon={args.icon}
+      icon-theme={args.iconTheme}
       arrow={args.arrow}
       type={args.type}
       type-icon={args.typeIcon}
@@ -86,6 +87,14 @@ Properties.argTypes = {
     options: ['icon', 'logo', 'emoji'],
     control: { type: 'select' },
   },
+  iconTheme: {
+    table: {
+      defaultValue: { summary: 'outline' },
+    },
+    description: 'Defina o tema do icone.',
+    options: ['outline', 'solid'],
+    control: { type: 'select' },
+  },
   loading: {
     table: {
       defaultValue: { summary: 'false' },
@@ -124,6 +133,7 @@ Properties.args = {
   size: 'standard',
   typeIcon: 'icon',
   icon: '',
+  iconTheme: 'outline',
   arrow: 'false',
   type: 'button',
   loading: 'false',
