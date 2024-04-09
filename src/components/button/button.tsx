@@ -18,6 +18,8 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type IconType = 'icon' | 'logo' | 'emoji';
 
+export type IconTheme = 'outline' | 'solid';
+
 @Component({
   tag: 'bds-button',
   styleUrl: 'button.scss',
@@ -64,6 +66,12 @@ export class Button {
    */
   @Prop() type: ButtonType = 'button';
 
+    /**
+   * The type of the icon. Can be one of:
+   * 'icon', 'logo', 'emoji';
+   */
+     @Prop({ reflect: true }) iconTheme: IconTheme = 'outline';
+
   /**
    * The type of the icon. Can be one of:
    * 'icon', 'logo', 'emoji';
@@ -103,7 +111,7 @@ export class Button {
     return (
       this.icon && (
         <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
-          <bds-icon class={{ icon_buttom: true }} name={this.icon} type={this.typeIcon} color="inherit"></bds-icon>
+          <bds-icon class={{ icon_buttom: true }} name={this.icon} theme={this.iconTheme} type={this.typeIcon} color="inherit"></bds-icon>
         </div>
       )
     );
