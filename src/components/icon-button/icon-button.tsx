@@ -30,11 +30,11 @@ export class IconButton {
    */
   @Prop() variant?: IconButtonVariant = 'primary';
 
-    /**
+  /**
    * The theme of the icon. Can be one of:
    * 'outline', 'solid';
    */
-     @Prop({ reflect: true }) iconTheme: ButtonIconTheme = 'outline';
+  @Prop({ reflect: true }) iconTheme: ButtonIconTheme = 'outline';
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
