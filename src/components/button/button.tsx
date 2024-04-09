@@ -66,11 +66,11 @@ export class Button {
    */
   @Prop() type: ButtonType = 'button';
 
-    /**
-   * The type of the icon. Can be one of:
-   * 'icon', 'logo', 'emoji';
+  /**
+   * The theme of the icon. Can be one of:
+   * 'outline', 'solid';
    */
-     @Prop({ reflect: true }) iconTheme: IconTheme = 'outline';
+  @Prop({ reflect: true }) iconTheme: IconTheme = 'outline';
 
   /**
    * The type of the icon. Can be one of:
@@ -111,7 +111,13 @@ export class Button {
     return (
       this.icon && (
         <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
-          <bds-icon class={{ icon_buttom: true }} name={this.icon} theme={this.iconTheme} type={this.typeIcon} color="inherit"></bds-icon>
+          <bds-icon
+            class={{ icon_buttom: true }}
+            name={this.icon}
+            theme={this.iconTheme}
+            type={this.typeIcon}
+            color="inherit"
+          ></bds-icon>
         </div>
       )
     );

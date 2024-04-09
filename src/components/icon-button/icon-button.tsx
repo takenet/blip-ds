@@ -5,6 +5,7 @@ export type IconButtonSize = 'tall' | 'standard' | 'short';
 export type IconButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'secondary--white' | 'delete';
 export type IconSizeMap = { [key in string]: IconSize };
 export type IconButtonVariantMap = { [key in IconButtonVariant]: string };
+export type ButtonIconTheme = 'outline' | 'solid';
 
 @Component({
   tag: 'bds-button-icon',
@@ -28,6 +29,12 @@ export class IconButton {
    * 'primary', 'secondary', 'ghost', 'dashed';
    */
   @Prop() variant?: IconButtonVariant = 'primary';
+
+    /**
+   * The theme of the icon. Can be one of:
+   * 'outline', 'solid';
+   */
+     @Prop({ reflect: true }) iconTheme: ButtonIconTheme = 'outline';
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
@@ -71,7 +78,7 @@ export class IconButton {
         }}
         data-test={this.dataTest}
       >
-        <bds-icon name={this.icon} size={size} color="inherit"></bds-icon>
+        <bds-icon name={this.icon} size={size} theme={this.iconTheme} color="inherit"></bds-icon>
       </button>
     );
   }

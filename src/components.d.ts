@@ -16,7 +16,7 @@ import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
-import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
+import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
@@ -359,7 +359,7 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
+          * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme": IconTheme;
         /**
@@ -392,6 +392,10 @@ export namespace Components {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * The theme of the icon. Can be one of: 'outline', 'solid';
+         */
+        "iconTheme": ButtonIconTheme;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
@@ -3653,7 +3657,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
+          * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme"?: IconTheme;
         /**
@@ -3690,6 +3694,10 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * The theme of the icon. Can be one of: 'outline', 'solid';
+         */
+        "iconTheme"?: ButtonIconTheme;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
