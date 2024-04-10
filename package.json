@@ -33,7 +33,7 @@
     "storybook:deploy": "storybook-to-ghpages",
     "eslint": "eslint . --ext .jsx,.ts,.tsx",
     "semantic-release": "semantic-release",
-    "commit": "./node_modules/.bin/git-cz",
+    "commit": "git-cz",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
@@ -95,7 +95,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/takenet/blip-ds.git"
+    "url": "git+https://github.com/takenet/blip-ds.git"
   },
   "bugs": {
     "url": "https://github.com/takenet/blip-ds/issues"
