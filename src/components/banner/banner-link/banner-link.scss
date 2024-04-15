@@ -1,9 +1,29 @@
 :Host {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: underline;
-    white-space: nowrap;
-    margin-left: 16px;
-    order: 2;
-  }
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: underline;
+  white-space: nowrap;
+  margin-left: 16px;
+  order: 2;
+}
+
+.banner__link{
+  position: relative;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+    }
+  
+    &:focus-visible {
+      outline: none;
+  
+      &::before {
+        border-color: $color-focus;
+      }
+    }
+}
