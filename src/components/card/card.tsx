@@ -85,7 +85,7 @@ export class Card implements ComponentInterface {
   private handleKeyDown(event) {
     if (event.key == 'Enter') {
       this.isPressed = true;
-      this.bdsClick.emit();
+      this.bdsClick.emit(event);
     }
   }
 
