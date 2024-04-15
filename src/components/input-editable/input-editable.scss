@@ -322,7 +322,23 @@ $input_fixed: 140px;
     display: flex;
     align-items: center;
     cursor: pointer;
+    position: relative;
 
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::before {
+        border-color: $color-focus;
+      }
+    }
     &:hover {
       .input__editable--static__typo {
         border: 1px solid $color-primary;
@@ -382,6 +398,23 @@ $input_fixed: 140px;
 
     bds-icon {
       cursor: pointer;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border: 2px solid transparent;
+        border-radius: 4px;
+      }
+
+      &:focus-visible {
+        outline: none;
+
+        &::before {
+          border-color: $color-focus;
+        }
+      }
     }
     &__icon {
       display: flex;
