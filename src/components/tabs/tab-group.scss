@@ -46,6 +46,24 @@
         align-items: center;
         color: $color-content-disable;
         border-bottom: 2px solid transparent;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          inset: -4px;
+          border: 2px solid transparent;
+          border-radius: 4px;
+        }
+
+        &:focus-visible {
+          outline: none;
+
+          &::before {
+            border-color: $color-focus;
+          }
+        }
+
         &__open {
           color: $color-content-default;
           border-color: $color-primary;
@@ -61,7 +79,7 @@
   &__slide {
     position: relative;
     overflow: hidden;
-    height: 48px;
+    height: 54px;
     margin-left: 56px;
     margin-right: 56px;
 
@@ -86,6 +104,7 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
+      padding: 4px;
       gap: 32px;
       -webkit-transition: left 0.5s;
       -moz-transition: left 0.5s;
