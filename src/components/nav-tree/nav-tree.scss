@@ -1,0 +1,114 @@
+@import 'mixins';
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: height 0.5s;
+  -moz-transition: height 0.5s;
+  transition: height 0.5s;
+}
+
+.nav_tree {
+  display: grid;
+  grid-template-rows: 0fr;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+
+  &_open {
+    grid-template-rows: 1fr;
+    padding: 8px 0;
+  }
+
+  & .container {
+    overflow: hidden;
+    position: relative;
+    padding-left: 19px;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      inset: 0;
+      left: 19px;
+      top: 8px;
+      bottom: 8px;
+      border-radius: 8px;
+      background-color: $color-hover;
+      opacity: .8;
+    }
+  }
+
+  &_item {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 8px;
+    padding-left: 22px;
+
+    &_content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_slot {
+      width: 100%;
+      flex-shrink: 99999;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      inset: 0;
+      top: 8px;
+      bottom: 8px;
+      border-radius: 8px;
+      background-color: transparent;
+      -webkit-transition: background-color ease 0.8s;
+      -moz-transition: background-color ease 0.8s;
+      transition: background-color ease 0.8s;
+    }
+
+
+    &:hover {
+      &:before {
+        background-color: $color-pressed;
+        -webkit-transition: background-color ease 0.3s;
+        -moz-transition: background-color ease 0.3s;
+        transition: background-color ease 0.3s;
+      }
+    }
+
+    &_active {
+      &:before {
+        background-color: $color-primary;
+        -webkit-transition: background-color ease 0.3s;
+        -moz-transition: background-color ease 0.3s;
+        transition: background-color ease 0.3s;
+      }
+      &:hover {
+        &:before {
+          background-color: $color-primary;
+          -webkit-transition: background-color ease 0.3s;
+          -moz-transition: background-color ease 0.3s;
+          transition: background-color ease 0.3s;
+        }
+      }
+    }
+    
+    & .icon-arrow {
+      -webkit-transition: all ease 0.3s;
+      -moz-transition: all ease 0.3s;
+      transition: all ease 0.3s;
+      transform: rotate(0deg);
+
+      &-active {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

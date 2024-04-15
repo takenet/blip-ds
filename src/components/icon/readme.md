@@ -52,6 +52,7 @@
  - [bds-menu-list-item](../menu-list-item)
  - [bds-modal](../modal)
  - [bds-modal-close-button](../modal/modal-close-button)
+ - [bds-nav-tree-item](../nav-tree)
  - [bds-pagination](../pagination)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
@@ -90,6 +91,7 @@ graph TD;
   bds-menu-list-item --> bds-icon
   bds-modal --> bds-icon
   bds-modal-close-button --> bds-icon
+  bds-nav-tree-item --> bds-icon
   bds-pagination --> bds-icon
   bds-select --> bds-icon
   bds-select-chips --> bds-icon

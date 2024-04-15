@@ -1,5 +1,6 @@
 import { Element, Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 import { TypeList } from './list';
+export type ItemSize = 'tall' | 'standard' | 'short';
 @Component({
   tag: 'bds-list-item',
   styleUrl: 'list.scss',
@@ -72,6 +73,12 @@ export class ListItem {
    * Enable rounded border on item
    */
   @Prop() borderRadius?: boolean = false;
+
+  /**
+   * Size. Entered as one of the size. Can be one of:
+   * 'tall', 'standard', 'short';
+   */
+  @Prop() size?: ItemSize = 'standard';
   /**
    * Data test is the prop to specifically test the component action object.
    */
@@ -202,6 +209,7 @@ export class ListItem {
             list_item: true,
             clickable: hasInput,
             border_radius: this.borderRadius,
+            [`list_item_${this.size}`]: true,
           }}
           data-test={this.dataTest}
         >
@@ -222,7 +230,18 @@ export class ListItem {
               size="extra-small"
             ></bds-avatar>
           ) : (
-            this.icon && <bds-icon class="icon-item" size="medium" name={this.icon} color="inherit"></bds-icon>
+            this.icon && (
+              <bds-icon
+                class={{
+                  [`icon-item`]: true,
+                  [`icon-item-active`]: this.active,
+                }}
+                size="medium"
+                name={this.icon}
+                color="inherit"
+                theme={this.active ? 'solid' : 'outline'}
+              ></bds-icon>
+            )
           )}
           <div class={{ [`content-slot`]: true }}>
             <slot></slot>
@@ -257,6 +276,9 @@ export class ListItem {
             </div>
           )}
           {this.typeList == 'switch' && <bds-switch refer="" name="" checked={this.checked}></bds-switch>}
+          {this.typeList == 'nav' && (
+            <bds-icon name="arrow-down" class={{ [`icon-arrow`]: true, [`icon-arrow-active`]: this.active }}></bds-icon>
+          )}
         </div>
       </Host>
     );

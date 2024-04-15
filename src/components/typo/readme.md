@@ -60,6 +60,7 @@
  - [bds-menu-exibition](../menu/menu-exibition)
  - [bds-menu-list-item](../menu-list-item)
  - [bds-menu-separation](../menu/menu-separation)
+ - [bds-nav-tree-item](../nav-tree)
  - [bds-pagination](../pagination)
  - [bds-progress-bar](../progress-bar)
  - [bds-radio](../radio)
@@ -110,6 +111,7 @@ graph TD;
   bds-menu-exibition --> bds-typo
   bds-menu-list-item --> bds-typo
   bds-menu-separation --> bds-typo
+  bds-nav-tree-item --> bds-typo
   bds-pagination --> bds-typo
   bds-progress-bar --> bds-typo
   bds-radio --> bds-typo
