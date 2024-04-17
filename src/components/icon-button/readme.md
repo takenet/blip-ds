@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                                                                                       | Type                                                                                  | Default      |
-| ---------- | ----------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------ |
-| `dataTest` | `data-test` | Data test is the prop to specifically test the component action object.                           | `string`                                                                              | `null`       |
-| `disabled` | `disabled`  | If true, the base button will be disabled.                                                        | `boolean`                                                                             | `false`      |
-| `icon`     | `icon`      | used for add icon in input left. Uses the bds-icon component.                                     | `string`                                                                              | `null`       |
-| `size`     | `size`      | Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                                                     | `'standard'` |
-| `variant`  | `variant`   | Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed'; | `"delete" \| "ghost" \| "primary" \| "secondary" \| "secondary--white" \| "tertiary"` | `'primary'`  |
+| Property    | Attribute    | Description                                                                                       | Type                                                                                  | Default      |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------ |
+| `dataTest`  | `data-test`  | Data test is the prop to specifically test the component action object.                           | `string`                                                                              | `null`       |
+| `disabled`  | `disabled`   | If true, the base button will be disabled.                                                        | `boolean`                                                                             | `false`      |
+| `icon`      | `icon`       | used for add icon in input left. Uses the bds-icon component.                                     | `string`                                                                              | `null`       |
+| `iconTheme` | `icon-theme` | The theme of the icon. Can be one of: 'outline', 'solid';                                         | `"outline" \| "solid"`                                                                | `'outline'`  |
+| `size`      | `size`       | Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                                                     | `'standard'` |
+| `variant`   | `variant`    | Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed'; | `"delete" \| "ghost" \| "primary" \| "secondary" \| "secondary--white" \| "tertiary"` | `'primary'`  |
 
 
 ## Events
