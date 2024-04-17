@@ -82,6 +82,13 @@ export class Card implements ComponentInterface {
     }
   }
 
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.isPressed = true;
+      this.bdsClick.emit(event);
+    }
+  }
+
   render() {
     const styleHost = {
       width: this.width,
@@ -96,7 +103,7 @@ export class Card implements ComponentInterface {
           width={this.width}
           data-test={this.dataTest}
         >
-          <div tabindex="0" class="focus"></div>
+          <div tabindex="0" class="focus" onKeyDown={this.handleKeyDown.bind(this)}></div>
           <bds-grid xxs="12" direction="column" gap="2" padding="2">
             <slot></slot>
           </bds-grid>

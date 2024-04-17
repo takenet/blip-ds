@@ -209,19 +209,25 @@ export class Pagination {
     this.openOptions();
   }
 
+  private handleKeyDown = (ev) => {
+    if (ev.key === 'Enter') {
+      this.openOptions();
+    }
+  };
+
   render() {
     return (
       <Host>
         <div class="actions">
           <bds-button-icon
-            onClick={this.firstPage}
+            onBdsClick={this.firstPage}
             size="short"
             variant="secondary"
             icon="arrow-first"
             dataTest={this.dtButtonInitial}
           ></bds-button-icon>
           <bds-button-icon
-            onClick={this.previewPage}
+            onBdsClick={this.previewPage}
             size="short"
             variant="secondary"
             icon="arrow-left"
@@ -235,6 +241,8 @@ export class Pagination {
                 onClick={this.openOptions}
                 onBlur={this.onBlur}
                 data-test={this.dtSelectNumber}
+                tabindex="0"
+                onKeyDown={this.handleKeyDown.bind(this)}
               >
                 <bds-typo variant="fs-14">{this.value}</bds-typo>
                 <bds-icon ref={(el) => this.refIconDrop(el)} size="small"></bds-icon>
@@ -259,14 +267,14 @@ export class Pagination {
           </div>
 
           <bds-button-icon
-            onClick={this.nextPage}
+            onBdsClick={this.nextPage}
             size="short"
             variant="secondary"
             icon="arrow-right"
             dataTest={this.dtButtonNext}
           ></bds-button-icon>
           <bds-button-icon
-            onClick={this.lastPage}
+            onBdsClick={this.lastPage}
             size="short"
             variant="secondary"
             icon="arrow-last"

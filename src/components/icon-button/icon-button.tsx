@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { IconSize } from '../icon/icon-interface';
 
 export type IconButtonSize = 'tall' | 'standard' | 'short';
@@ -46,6 +46,11 @@ export class IconButton {
    */
   @Prop() dataTest?: string = null;
 
+  /**
+   * Event buttom onClick.
+   */
+  @Event() bdsClick: EventEmitter;
+
   private mapSize: IconSizeMap = {
     tall: 'xxx-large',
     standard: 'x-large',
@@ -61,6 +66,20 @@ export class IconButton {
     'secondary--white': 'icon__button--secondary-white',
   };
 
+  private handleClick = (ev) => {
+    if (!this.disabled) {
+      this.bdsClick.emit(ev);
+    }
+  };
+
+  private handleKeyDown = (ev) => {
+    if (!this.disabled) {
+      if (ev.key === 'Enter') {
+        this.bdsClick.emit(ev);
+      }
+    }
+  };
+
   render(): HTMLElement {
     if (!this.icon) return null;
 
@@ -69,6 +88,7 @@ export class IconButton {
 
     return (
       <button
+        onClick={(ev) => this.handleClick(ev)}
         disabled={this.disabled}
         class={{
           ['icon__button']: true,
@@ -77,6 +97,8 @@ export class IconButton {
           [`size-${this.size}`]: true,
         }}
         data-test={this.dataTest}
+        tabindex="0"
+        onKeyDown={this.handleKeyDown.bind(this)}
       >
         <bds-icon name={this.icon} size={size} theme={this.iconTheme} color="inherit"></bds-icon>
       </button>

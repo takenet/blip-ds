@@ -58,8 +58,8 @@ export function positionElement({
       changedpositionTop < 8
         ? 8
         : changedpositionTop > limitedHeightScreen
-        ? limitedHeightScreen - 8
-        : changedpositionTop,
+          ? limitedHeightScreen - 8
+          : changedpositionTop,
     left:
       changedpositionLeft < 0 ? 0 : changedpositionLeft > limitedWidthScreen ? limitedWidthScreen : changedpositionLeft,
   };

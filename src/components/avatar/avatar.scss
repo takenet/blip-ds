@@ -40,6 +40,23 @@ $avatar-size-extra-large: 72px;
     justify-content: center;
     align-items: center;
 
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::before {
+        border-color: $color-focus;
+      }
+    }
+
     &__img {
       background-position: center;
       background-size: cover;

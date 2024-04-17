@@ -76,7 +76,7 @@ export class Slider {
     } else {
       this.stepArray = this.arrayToSteps(
         (this.max - this.min) / this.step,
-        Number.isInteger((this.max - this.min) / this.step)
+        Number.isInteger((this.max - this.min) / this.step),
       ) as StepOption[];
     }
   }

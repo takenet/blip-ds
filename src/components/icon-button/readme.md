@@ -17,6 +17,13 @@
 | `variant`   | `variant`    | Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed'; | `"delete" \| "ghost" \| "primary" \| "secondary" \| "secondary--white" \| "tertiary"` | `'primary'`  |
 
 
+## Events
+
+| Event      | Description           | Type               |
+| ---------- | --------------------- | ------------------ |
+| `bdsClick` | Event buttom onClick. | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Used by

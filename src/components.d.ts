@@ -2503,6 +2503,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsButtonIconElement;
+}
 export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCardElement;
@@ -3695,6 +3699,10 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * Event buttom onClick.
+         */
+        "onBdsClick"?: (event: BdsButtonIconCustomEvent<any>) => void;
+        /**  
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme"?: ButtonIconTheme;

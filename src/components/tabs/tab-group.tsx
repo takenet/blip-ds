@@ -70,7 +70,7 @@ export class BdsTabGroup {
         () => {
           this.setInternalItens(Array.from(this.tabItensElement));
         },
-        false
+        false,
       );
     });
   };
@@ -164,6 +164,12 @@ export class BdsTabGroup {
     this.tabRefSlide = numberClicks <= this.tabRefSlide ? this.tabRefSlide - 1 : numberClicks;
   };
 
+  private handleKeyDown(event, item) {
+    if (event.key == 'Enter') {
+      item.disable ? this.handleDisabled(item.numberElement) : this.handleClick(item.numberElement);
+    }
+  }
+
   render(): HTMLElement {
     const slidePosition = { left: `${this.positionLeft}px` };
     return (
@@ -205,6 +211,7 @@ export class BdsTabGroup {
                       onClick={() =>
                         item.disable ? this.handleDisabled(item.numberElement) : this.handleClick(item.numberElement)
                       }
+                      onKeyDown={(ev) => this.handleKeyDown(ev, item)}
                     >
                       <bds-typo variant="fs-16" bold={bold}>
                         {item.label}

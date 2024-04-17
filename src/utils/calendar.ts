@@ -98,7 +98,7 @@ export const getMonths = (
   year: number,
   startDate: DaysList,
   endDate: DaysList,
-  monthList?: MonthsList[]
+  monthList?: MonthsList[],
 ): MonthsList[] => {
   let months = [];
   if (year == startDate.year && year == endDate.year) {

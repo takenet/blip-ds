@@ -507,8 +507,8 @@ export class InputChips {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
+          ? 'input__message input__message--success'
+          : 'input__message';
 
     if (message) {
       return (
