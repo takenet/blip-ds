@@ -51,9 +51,8 @@ export class AccordionGroup {
 
   componentWillRender() {
     this.accordionsElement = this.element.getElementsByTagName(
-      'bds-accordion'
+      'bds-accordion',
     ) as HTMLCollectionOf<HTMLBdsAccordionElement>;
-
     for (let i = 0; i < this.accordionsElement.length; i++) {
       this.accordionsElement[i].reciveNumber(i);
     }

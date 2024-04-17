@@ -29,7 +29,7 @@ export class RadioGroup implements ComponentInterface {
     this.radioGroupElement = this.element.getElementsByTagName('bds-radio') as HTMLCollectionOf<HTMLBdsRadioElement>;
     for (let i = 0; i < this.radioGroupElement.length; i++) {
       this.radioGroupElement[i].addEventListener('bdsChange', (event: CustomEvent) =>
-        this.chagedOptions(this.radioGroupElement[i].value, event)
+        this.chagedOptions(this.radioGroupElement[i].value, event),
       );
     }
   }

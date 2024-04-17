@@ -81,7 +81,7 @@ export class List {
 
   private setitemListElement() {
     this.itemListElement = this.element.getElementsByTagName(
-      'bds-list-item'
+      'bds-list-item',
     ) as HTMLCollectionOf<HTMLBdsListItemElement>;
 
     for (let i = 0; i < this.itemListElement.length; i++) {

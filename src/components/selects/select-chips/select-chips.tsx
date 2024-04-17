@@ -341,7 +341,7 @@ export class SelectChips {
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
     return this.options
       ? Array.from(
-          this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)')
+          this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'),
         )
       : Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
   }
@@ -728,8 +728,8 @@ export class SelectChips {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
+          ? 'input__message input__message--success'
+          : 'input__message';
 
     if (message) {
       return (

@@ -118,7 +118,7 @@ export class BdsToast implements ComponentInterface {
     duration,
   }: CreateToastType) {
     let toastContainer = document.querySelector(
-      `bds-toast-container.${variant === 'notification' ? 'top-right' : 'bottom-left'}`
+      `bds-toast-container.${variant === 'notification' ? 'top-right' : 'bottom-left'}`,
     );
 
     if (toastContainer) {
