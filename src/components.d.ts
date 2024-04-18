@@ -3699,13 +3699,13 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Event buttom onClick.
-         */
-        "onBdsClick"?: (event: BdsButtonIconCustomEvent<any>) => void;
-        /**  
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme"?: ButtonIconTheme;
+        /**
+          * Event buttom onClick.
+         */
+        "onBdsClick"?: (event: BdsButtonIconCustomEvent<any>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
