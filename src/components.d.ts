@@ -48,6 +48,7 @@ import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
 import { collapses as collapses1 } from "./components/nav-tree/nav-tree";
+import { collapses as collapses2 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
@@ -1682,15 +1683,17 @@ export namespace Components {
          */
         "collapse"?: collapses;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
           * A prop for make the nav open.
          */
         "isOpen"?: boolean;
-    }
-    interface BdsNavTreeItem {
-        /**
-          * Active. Used to define when the item is highlighted.
-         */
-        "active"?: boolean;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -1698,7 +1701,34 @@ export namespace Components {
         /**
           * Text. Used to insert a text in the display item.
          */
-        "text"?: string;
+        "text": string;
+        "toggle": () => Promise<void>;
+    }
+    interface BdsNavTreeItem {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "isOpen"?: boolean;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text": string;
         "toggle": () => Promise<void>;
     }
     interface BdsNavbar {
@@ -5181,6 +5211,14 @@ declare namespace LocalJSX {
          */
         "collapse"?: collapses;
         /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
           * A prop for make the nav open.
          */
         "isOpen"?: boolean;
@@ -5188,16 +5226,6 @@ declare namespace LocalJSX {
           * When de open or close of component change, the event are dispache.
          */
         "onBdsToogleChange"?: (event: BdsNavTreeCustomEvent<any>) => void;
-    }
-    interface BdsNavTreeItem {
-        /**
-          * Active. Used to define when the item is highlighted.
-         */
-        "active"?: boolean;
-        /**
-          * When de activation of component change, the event are dispache.
-         */
-        "onBdsActiveChange"?: (event: BdsNavTreeItemCustomEvent<any>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -5205,7 +5233,37 @@ declare namespace LocalJSX {
         /**
           * Text. Used to insert a text in the display item.
          */
-        "text"?: string;
+        "text": string;
+    }
+    interface BdsNavTreeItem {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "isOpen"?: boolean;
+        /**
+          * When de activation of component change, the event are dispache.
+         */
+        "onBdsToogleChange"?: (event: BdsNavTreeItemCustomEvent<any>) => void;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text": string;
     }
     interface BdsNavbar {
         /**

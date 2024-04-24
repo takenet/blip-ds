@@ -1,21 +1,30 @@
 import { Component, Host, h, Element, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 
+export type collapses = 'single' | 'multiple';
+
 @Component({
   tag: 'bds-nav-tree-item',
   styleUrl: 'nav-tree.scss',
   shadow: true,
 })
-export class NavTree {
-  private navTreeParent?: HTMLBdsNavTreeElement = null;
-  private navTreeChild?: HTMLBdsNavTreeElement = null;
+export class NavTreeItem {
+  private navTreeParent?: HTMLBdsNavTreeElement | HTMLBdsNavTreeItemElement = null;
+  private navTreeChild?: HTMLBdsNavTreeItemElement = null;
   private itensElement?: HTMLCollectionOf<HTMLBdsNavTreeItemElement> = null;
 
   @Element() private element: HTMLElement;
-
+  /**
+   * Focus Selected. Used to add title in header accordion.
+   */
+  @Prop() collapse?: collapses = 'single';
+  /**
+   * Icon. Used to add icon in list item.
+   */
+  @Prop() icon?: string = null;
   /**
    * Text. Used to insert a text in the display item.
    */
-  @Prop() text?: string = null;
+  @Prop() text!: string;
   /**
    * SecondaryText. Used to insert a secondaryText in the display item.
    */
@@ -23,28 +32,32 @@ export class NavTree {
   /**
    * Active. Used to define when the item is highlighted.
    */
-  @Prop({ mutable: true, reflect: true }) active?: boolean = false;
-
+  @Prop({ mutable: true, reflect: true }) isOpen?: boolean = false;
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
   /**
    * When de activation of component change, the event are dispache.
    */
-  @Event() bdsActiveChange: EventEmitter;
+  @Event() bdsToogleChange: EventEmitter;
 
   @Method()
   async toggle() {
-    this.active = !this.active;
+    this.isOpen = !this.isOpen;
   }
 
-  @Watch('active')
-  protected activeChanged(value): void {
-    this.bdsActiveChange.emit({ value: value, element: this.element });
-    if (this.navTreeChild) this.navTreeChild.isOpen = value;
+  @Watch('isOpen')
+  protected isOpenChanged(value): void {
+    this.bdsToogleChange.emit({ value: value, element: this.element });
+    // if (this.navTreeChild) this.navTreeChild.isOpen = value;
   }
 
   componentWillLoad() {
     this.navTreeParent =
-      this.element.parentElement.tagName == 'BDS-NAV-TREE' && (this.element.parentElement as HTMLBdsNavTreeElement);
-    this.navTreeChild = this.element.querySelector('bds-nav-tree');
+      (this.element.parentElement.tagName == 'BDS-NAV-TREE' && (this.element.parentElement as HTMLBdsNavTreeElement)) ||
+      ('BDS-NAV-TREE-ITEM' && (this.element.parentElement as HTMLBdsNavTreeItemElement));
+    this.navTreeChild = this.element.querySelector('bds-nav-tree-item');
   }
   componentWillRender() {
     this.itensElement = this.navTreeParent.getElementsByTagName(
@@ -55,48 +68,86 @@ export class NavTree {
   private handler = () => {
     if (this.navTreeParent.collapse == 'single') {
       for (let i = 0; i < this.itensElement.length; i++) {
-        if (this.itensElement[i] != this.element) this.itensElement[i].active = false;
+        if (this.itensElement[i] != this.element) this.itensElement[i].isOpen = false;
       }
     }
     this.toggle();
   };
 
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.handler();
+    }
+  }
+
   render() {
     return (
       <Host>
-        <div
-          class={{
-            nav_tree_item: true,
-            nav_tree_item_active: this.active,
-          }}
-          onClick={() => this.handler()}
-        >
-          <div class="nav_tree_item_content">
-            {this.text && (
-              <bds-typo
-                class="title-item"
-                variant="fs-14"
-                tag="span"
-                line-height="small"
-                bold={this.active ? 'bold' : 'regular'}
-              >
-                {this.text}
-              </bds-typo>
+        <div tabindex="0" onKeyDown={this.handleKeyDown.bind(this)} class="focus">
+          <div
+            class={{
+              nav_tree_item: true,
+              nav_tree_item_active: this.isOpen,
+              nav_tree_item_button: !this.navTreeChild,
+              nav_tree_item_button_active: !this.navTreeChild && this.isOpen,
+            }}
+            onClick={() => this.handler()}
+            data-test={this.dataTest}
+            aria-label={this.text + (this.secondaryText && `: ${this.secondaryText}`)}
+          >
+            {this.icon && (
+              <bds-icon
+                class={{
+                  [`icon-item`]: true,
+                  [`icon-item-active`]: this.isOpen,
+                }}
+                size="medium"
+                name={this.icon}
+                color="inherit"
+                theme={this.isOpen ? 'solid' : 'outline'}
+              ></bds-icon>
             )}
-            {this.secondaryText && (
-              <bds-typo class="subtitle-item" variant="fs-12" line-height="small" tag="span" margin={false}>
-                {this.secondaryText}
-              </bds-typo>
+            <div class="nav_tree_item_content">
+              {this.text && (
+                <bds-typo
+                  class="title-item"
+                  variant="fs-14"
+                  tag="span"
+                  line-height="small"
+                  bold={this.isOpen ? 'bold' : 'regular'}
+                >
+                  {this.text}
+                </bds-typo>
+              )}
+              {this.secondaryText && (
+                <bds-typo class="subtitle-item" variant="fs-12" line-height="small" tag="span" margin={false}>
+                  {this.secondaryText}
+                </bds-typo>
+              )}
+            </div>
+            <div class="nav_tree_item_slot">
+              <slot name="header-content"></slot>
+            </div>
+            {this.navTreeChild && (
+              <bds-icon
+                class={{ [`icon-arrow`]: true, [`icon-arrow-active`]: this.isOpen }}
+                name="arrow-down"
+              ></bds-icon>
             )}
           </div>
-          <div class="nav_tree_item_slot">
-            <slot name="content"></slot>
-          </div>
-          {this.navTreeChild && (
-            <bds-icon class={{ [`icon-arrow`]: true, [`icon-arrow-active`]: this.active }} name="arrow-down"></bds-icon>
-          )}
         </div>
-        <slot name="nav-tree"></slot>
+        {this.navTreeChild && (
+          <div
+            class={{
+              accordion: true,
+              accordion_open: this.isOpen,
+            }}
+          >
+            <div class="container">
+              <slot></slot>
+            </div>
+          </div>
+        )}
       </Host>
     );
   }

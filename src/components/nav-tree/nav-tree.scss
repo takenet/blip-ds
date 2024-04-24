@@ -2,6 +2,8 @@
 
 :host {
   display: block;
+  margin: -4px;
+  padding: 4px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -10,28 +12,102 @@
   transition: height 0.5s;
 }
 
-.nav_tree {
+.nav_main {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  @include hover-and-pressed();
+
+  &:hover,&_active {
+    border-color: $color-pressed;
+  }
+
+  &_active {
+    &:before {
+      background-color: $color-content-default;
+      border-color: $color-hover;
+      opacity: 0.08;
+    }
+  }
+  
+  & .icon-item {
+    position: relative;
+    color: $color-content-default;
+    
+    &-active {
+      color: $color-primary;
+    }
+  }
+
+  &_text {
+    position: relative;
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+
+    & .title-item {
+      color: $color-content-default;
+    }
+
+    & .subtitle-item {
+      color: $color-content-default;
+    }
+  }
+
+  &_content {
+    width: 100%;
+    flex-shrink: 99999;
+  }
+
+  &_arrow {
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    transform: rotate(0deg);
+
+    &_active {
+      transform: rotate(180deg);
+    }
+  }
+}
+.accordion {
   display: grid;
   grid-template-rows: 0fr;
   -webkit-transition: all ease 0.5s;
   -moz-transition: all ease 0.5s;
   transition: all ease 0.5s;
-
+  
   &_open {
     grid-template-rows: 1fr;
     padding: 8px 0;
   }
-
+  
   & .container {
     overflow: hidden;
     position: relative;
-    padding-left: 19px;
+    margin: -4px;
+    padding: 4px;
+    padding-left: 23px;
+
     &:before {
       content: '';
       position: absolute;
       width: 2px;
       inset: 0;
-      left: 19px;
+      left: 23px;
       top: 8px;
       bottom: 8px;
       border-radius: 8px;
@@ -39,17 +115,30 @@
       opacity: .8;
     }
   }
+}
 
+.nav_tree {
   &_item {
     position: relative;
     display: flex;
     gap: 8px;
     justify-content: space-between;
+    align-items: center;
     cursor: pointer;
     padding: 8px;
     padding-left: 22px;
+  
+    & .icon-item {
+      position: relative;
+      color: $color-content-default;
+      
+      &-active {
+        color: $color-primary;
+      }
+    }
 
     &_content {
+      position: relative;
       display: flex;
       flex-direction: column;
     }
@@ -101,6 +190,7 @@
     }
     
     & .icon-arrow {
+      position: relative;
       -webkit-transition: all ease 0.3s;
       -moz-transition: all ease 0.3s;
       transition: all ease 0.3s;
@@ -109,6 +199,60 @@
       &-active {
         transform: rotate(180deg);
       }
+    }
+
+    &_button {
+      padding: 8px;
+      margin-left: 14px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      
+      &:before {
+        left: -15px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 8px;
+        background-color: transparent;
+      }
+
+      &:hover ,&_active {
+        border-color: $color-pressed;
+        &:after {
+          background-color: $color-content-default;
+          opacity: 0.08;
+        }
+      }
+      &:active {
+        border-color: $color-pressed;
+        &:after {
+          background-color: $color-content-default;
+          opacity: 0.16;
+        }
+      }
+    }
+  }
+}
+
+.focus {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &:before {
+      border-color: $color-focus;
     }
   }
 }
