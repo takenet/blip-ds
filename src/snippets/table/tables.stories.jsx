@@ -34,7 +34,7 @@ export const TableDefault = () => {
       cor: 'Preto',
     },
   ];
-  
+
   const heading = ['Id', 'Produtos', 'Valor', 'Marca', 'Modelo', 'Cor', 'Disponibilidade'];
   return (
     <bds-table>
@@ -83,7 +83,6 @@ export const TableDefault = () => {
 };
 
 export const TableWithComponents = () => {
-
   const DATA = [
     { usuario: 'Marco Antônio', idade: '20', estadoCivil: 'Solteiro', profissao: 'Professor', status: 'Ativo' },
     { usuario: 'Julia Alves', idade: '34', estadoCivil: 'Casado', profissao: 'Médico', status: 'Ativo' },
@@ -125,7 +124,7 @@ export const TableWithComponents = () => {
               </bds-table-cell>
               <bds-table-cell type="action">
                 <bds-button-icon variant="tertiary" size="short" icon="edit"></bds-button-icon>
-                <bds-button-icon variant="delete" size="short" icon="trash"></bds-button-icon>
+                <bds-button-icon variant="tertiary" size="short" icon="trash"></bds-button-icon>
               </bds-table-cell>
             </bds-table-row>
           );
@@ -212,8 +211,8 @@ export const TableWithFilter = () => {
 
   const filteredData = DATA.filter((row) =>
     Object.values(row).some(
-      (value) => typeof value === 'string' && value.toLowerCase().includes(filterText.toLowerCase())
-    )
+      (value) => typeof value === 'string' && value.toLowerCase().includes(filterText.toLowerCase()),
+    ),
   );
 
   return (
@@ -296,10 +295,49 @@ export const TableComplete = () => {
       modelo: 'EOS Rebel T7',
       cor: 'Preto',
     },
+    {
+      id: 4,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+    {
+      id: 5,
+      produto: 'Notebook',
+      valor: '4000,00',
+      disponibilidade: 'indisponivel',
+      marca: 'Apple',
+      modelo: 'MacBook Pro',
+      cor: 'Cinza Espacial',
+    },
+    {
+      id: 6,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+    {
+      id: 7,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
   ];
 
   const heading = ['id', 'Produtos', 'Valor', 'Marca', 'Modelo', 'Cor', 'Disponibilidade'];
 
+  const itemsPerPage = 2;
+
+  const [currentPage, setCurrentPage] = useState(1);
   const [filterText, setFilterText] = useState('');
 
   useEffect(() => {
@@ -314,11 +352,27 @@ export const TableComplete = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handlePaginationChange = (event) => {
+      setCurrentPage(event.detail);
+    };
+    const paginationElement = document.getElementById('pagination');
+    paginationElement.addEventListener('bdsPaginationChange', handlePaginationChange);
+
+    return () => {
+      paginationElement.removeEventListener('bdsPaginationChange', handlePaginationChange);
+    };
+  }, []);
+
   const filteredData = DATA.filter((row) =>
     Object.values(row).some(
-      (value) => typeof value === 'string' && value.toLowerCase().includes(filterText.toLowerCase())
-    )
+      (value) => typeof value === 'string' && value.toLowerCase().includes(filterText.toLowerCase()),
+    ),
   );
+
+  const startIndex = (currentPageAdjusted - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+  const currentItems = filteredData.slice(startIndex, endIndex);
 
   return (
     <bds-paper>
@@ -333,7 +387,7 @@ export const TableComplete = () => {
             </bds-table-row>
           </bds-table-header>
           <bds-table-body>
-            {filteredData.map((row, index) => {
+            {currentItems.map((row, index) => {
               return (
                 <bds-table-row key={index}>
                   <bds-table-cell>
@@ -366,6 +420,11 @@ export const TableComplete = () => {
             })}
           </bds-table-body>
         </bds-table>
+        <bds-pagination
+          id="pagination"
+          pages={Math.ceil(filteredData.length / itemsPerPage)}
+          started-page={currentPage}
+        ></bds-pagination>
       </bds-grid>
     </bds-paper>
   );
