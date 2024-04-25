@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch, Element } from '@stencil/core';
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
 @Component({
@@ -147,12 +147,6 @@ export class Select {
     this.text = this.getText();
   }
 
-  @Listen('mousedown', { target: 'window', passive: true })
-  handleWindow(ev: Event) {
-    if (!this.el.contains(ev.target as HTMLInputElement)) {
-      this.isOpen = false;
-    }
-  }
   componentWillLoad() {
     this.options && this.optionsChanged();
     this.intoView = getScrollParent(this.el);
@@ -248,7 +242,7 @@ export class Select {
 
   private onClickWrapper = (): void => {
     this.onFocus();
-    this.toggle();
+    this.isOpen = true;
     if (this.nativeInput) {
       this.nativeInput.focus();
     }
@@ -359,8 +353,8 @@ export class Select {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-          ? 'input__message input__message--success'
-          : 'input__message';
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -382,7 +376,7 @@ export class Select {
     const isPressed = this.isPressed && !this.disabled;
 
     return (
-      <div class="select" tabindex="0">
+      <div class="select">
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
           <div
             class={{
@@ -428,6 +422,7 @@ export class Select {
             select__options: true,
             'select__options--open': this.isOpen,
           }}
+          role="application"
         >
           {this.internalOptions ? (
             this.internalOptions.map((option, idx) =>
@@ -449,7 +444,7 @@ export class Select {
                 <bds-select-option key={idx} value={option.value} bulkOption={option.bulkOption} status={option.status}>
                   {option.label}
                 </bds-select-option>
-              ),
+              )
             )
           ) : (
             <slot />

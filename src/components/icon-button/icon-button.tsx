@@ -72,14 +72,6 @@ export class IconButton {
     }
   };
 
-  private handleKeyDown = (ev) => {
-    if (!this.disabled) {
-      if (ev.key === 'Enter') {
-        this.bdsClick.emit(ev);
-      }
-    }
-  };
-
   render(): HTMLElement {
     if (!this.icon) return null;
 
@@ -98,7 +90,6 @@ export class IconButton {
         }}
         data-test={this.dataTest}
         tabindex="0"
-        onKeyDown={this.handleKeyDown.bind(this)}
       >
         <bds-icon name={this.icon} size={size} theme={this.iconTheme} color="inherit"></bds-icon>
       </button>
