@@ -276,9 +276,6 @@ export class ListItem {
             </div>
           )}
           {this.typeList == 'switch' && <bds-switch refer="" name="" checked={this.checked}></bds-switch>}
-          {this.typeList == 'nav' && (
-            <bds-icon name="arrow-down" class={{ [`icon-arrow`]: true, [`icon-arrow-active`]: this.active }}></bds-icon>
-          )}
         </div>
       </Host>
     );

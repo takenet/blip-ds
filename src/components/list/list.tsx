@@ -1,7 +1,7 @@
 import { Element, Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 import { Data } from './list-interface';
 
-export type TypeList = 'nav' | 'checkbox' | 'radio' | 'switch' | 'default';
+export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
 
 @Component({
   tag: 'bds-list',
