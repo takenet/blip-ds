@@ -256,6 +256,7 @@ export class Select {
   private onBlur = (): void => {
     this.bdsBlur.emit();
     this.isPressed = false;
+    setTimeout(() => (this.isOpen = false), 100);
   };
 
   private toggle = (): void => {
@@ -283,7 +284,7 @@ export class Select {
       detail: { value },
     } = event;
     this.value = value;
-    this.toggle();
+    this.onBlur();
   };
 
   private keyPressWrapper(event) {
