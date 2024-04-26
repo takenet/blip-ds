@@ -72,6 +72,7 @@ Type: `Promise<void>`
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-input-phone-number](../input-phone-number)
+ - [bds-pagination](../pagination)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
 
@@ -91,6 +92,7 @@ graph TD;
   bds-datepicker-period --> bds-select-option
   bds-datepicker-single --> bds-select-option
   bds-input-phone-number --> bds-select-option
+  bds-pagination --> bds-select-option
   bds-select --> bds-select-option
   bds-select-chips --> bds-select-option
   style bds-select-option fill:#f9f,stroke:#333,stroke-width:4px
