@@ -190,16 +190,16 @@ export class BdsUpload {
         <div class="upload-header">
           <bds-icon class="upload-header_icon" size="xxx-large" name="upload"></bds-icon>
           <div class="upload-header_text">
-            <bds-typo variant="fs-16" bold="bold">
+            <bds-typo variant="fs-16" bold="bold" aria-label={this.titleName}>
               {this.titleName}
             </bds-typo>
-            <bds-typo variant="fs-14" bold="regular">
+            <bds-typo variant="fs-14" bold="regular" aria-label={this.subtitle}>
               {this.subtitle}
             </bds-typo>
           </div>
         </div>
         {this.error ? (
-          <bds-banner context="inside" variant="error">
+          <bds-banner context="inside" variant="error" aria-label={this.error}>
             {this.error}
           </bds-banner>
         ) : (
@@ -212,7 +212,7 @@ export class BdsUpload {
                 <div class="upload__preview" key={index} id="drop-area">
                   <div class="preview" id="preview">
                     <bds-icon size="x-small" name="attach"></bds-icon>
-                    <p class="preview-text" id="preview-text">
+                    <p class="preview-text" id="preview-text" aria-label={names.name}>
                       {names.name}
                     </p>
                     <bds-button-icon
@@ -221,6 +221,7 @@ export class BdsUpload {
                       icon="trash"
                       variant="secondary"
                       onClick={() => this.deleteFile(index)}
+                      aria-label={`delete ${names.name}`}
                       data-test={`${this.dtButtonDelete}-${index}`}
                     ></bds-button-icon>
                   </div>
@@ -228,7 +229,12 @@ export class BdsUpload {
               ))}
             </div>
             {this.multiple ? (
-              <bds-typo variant="fs-14" italic class="preview-length">
+              <bds-typo
+                variant="fs-14"
+                italic
+                class="preview-length"
+                aria-label={termTranslate(this.language, 'uploaded')}
+              >
                 {this.files.length > 1 ? `${this.files.length} ${termTranslate(this.language, 'uploaded')}` : ''}
               </bds-typo>
             ) : (
@@ -249,11 +255,21 @@ export class BdsUpload {
           >
             <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
               {this.hover ? (
-                <bds-typo class="text" variant="fs-14" bold="regular">
+                <bds-typo
+                  class="text"
+                  variant="fs-14"
+                  bold="regular"
+                  aria-label={termTranslate(this.language, 'dropHere')}
+                >
                   {termTranslate(this.language, 'dropHere')}
                 </bds-typo>
               ) : (
-                <bds-typo class="text" variant="fs-14" bold="regular">
+                <bds-typo
+                  class="text"
+                  variant="fs-14"
+                  bold="regular"
+                  aria-label={termTranslate(this.language, 'dropOrClick')}
+                >
                   {termTranslate(this.language, 'dropOrClick')}
                 </bds-typo>
               )}
