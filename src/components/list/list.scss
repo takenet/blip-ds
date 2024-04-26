@@ -15,7 +15,15 @@
     display: flex;
     gap: 16px;
     align-items: center;
-    padding: 8px 16px;
+    &_tall {
+      padding: 16px;
+    }
+    &_standard {
+      padding: 8px 16px;
+    }
+    &_short {
+      padding: 8px;
+    }
 
     & .input_list {
       position: relative;
@@ -29,6 +37,10 @@
     & .icon-item {
       position: relative;
       color: $color-content-default;
+
+      &-active {
+        color: $color-primary;
+      }
     }
 
     & .grow-up {
@@ -75,6 +87,17 @@
         display: flex;
         flex-direction: row;
         color: $color-content-default;
+      }
+    }
+
+    & .icon-arrow {
+      -webkit-transition: all ease 0.3s;
+      -moz-transition: all ease 0.3s;
+      transition: all ease 0.3s;
+      transform: rotate(0deg);
+
+      &-active {
+        transform: rotate(180deg);
       }
     }
   }

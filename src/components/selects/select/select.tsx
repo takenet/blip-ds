@@ -354,8 +354,8 @@ export class Select {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
+          ? 'input__message input__message--success'
+          : 'input__message';
 
     if (message) {
       return (
@@ -445,7 +445,7 @@ export class Select {
                 <bds-select-option key={idx} value={option.value} bulkOption={option.bulkOption} status={option.status}>
                   {option.label}
                 </bds-select-option>
-              )
+              ),
             )
           ) : (
             <slot />

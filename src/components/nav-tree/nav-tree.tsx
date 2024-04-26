@@ -1,0 +1,128 @@
+import { Component, Host, h, Element, State, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
+
+export type collapses = 'single' | 'multiple';
+
+@Component({
+  tag: 'bds-nav-tree',
+  styleUrl: 'nav-tree.scss',
+  shadow: true,
+})
+export class NavTree {
+  @Element() private element: HTMLElement;
+
+  @State() isOpenAftAnimation?: boolean = false;
+  /**
+   * Focus Selected. Used to add title in header accordion.
+   */
+  @Prop() collapse?: collapses = 'single';
+  /**
+   * A prop for make the nav open.
+   */
+  @Prop({ mutable: true, reflect: true }) isOpen?: boolean = false;
+  /**
+   * Icon. Used to add icon in list item.
+   */
+  @Prop() icon?: string = null;
+  /**
+   * Text. Used to insert a text in the display item.
+   */
+  @Prop() text!: string;
+  /**
+   * SecondaryText. Used to insert a secondaryText in the display item.
+   */
+  @Prop() secondaryText?: string = null;
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+  /**
+   * When de open or close of component change, the event are dispache.
+   */
+  @Event() bdsToogleChange: EventEmitter;
+
+  @Method()
+  async toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
+  @Watch('isOpen')
+  protected isOpenChanged(value): void {
+    this.bdsToogleChange.emit({ value: value, element: this.element });
+  }
+
+  private handler = (): void => {
+    this.isOpen = !this.isOpen;
+  };
+
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.isOpen = !this.isOpen;
+    }
+  }
+
+  render() {
+    return (
+      <Host>
+        <div tabindex="0" onKeyDown={this.handleKeyDown.bind(this)} class="focus">
+          <div
+            onClick={this.handler}
+            class={{
+              nav_main: true,
+              nav_main_active: this.isOpen,
+            }}
+            data-test={this.dataTest}
+            aria-label={this.text + (this.secondaryText && `: ${this.secondaryText}`)}
+          >
+            {this.icon && (
+              <bds-icon
+                class={{
+                  [`icon-item`]: true,
+                  [`icon-item-active`]: this.isOpen,
+                }}
+                size="medium"
+                name={this.icon}
+                color="inherit"
+                theme={this.isOpen ? 'solid' : 'outline'}
+              ></bds-icon>
+            )}
+            <div class="nav_main_text">
+              {this.text && (
+                <bds-typo
+                  class="title-item"
+                  variant="fs-14"
+                  tag="span"
+                  line-height="small"
+                  bold={this.isOpen ? 'bold' : 'regular'}
+                >
+                  {this.text}
+                </bds-typo>
+              )}
+              {this.secondaryText && (
+                <bds-typo class="subtitle-item" variant="fs-12" line-height="small" tag="span" margin={false}>
+                  {this.secondaryText}
+                </bds-typo>
+              )}
+            </div>
+            <div class="nav_main_content">
+              <slot name="header-content"></slot>
+            </div>
+            <bds-icon
+              name="arrow-down"
+              class={{ [`nav_main_arrow`]: true, [`nav_main_arrow_active`]: this.isOpen }}
+            ></bds-icon>
+          </div>
+        </div>
+        <div
+          class={{
+            accordion: true,
+            accordion_open: this.isOpen,
+          }}
+        >
+          <div class="container">
+            <slot></slot>
+          </div>
+        </div>
+      </Host>
+    );
+  }
+}
