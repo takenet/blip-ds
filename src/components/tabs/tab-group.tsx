@@ -70,7 +70,7 @@ export class BdsTabGroup {
         () => {
           this.setInternalItens(Array.from(this.tabItensElement));
         },
-        false
+        false,
       );
     });
   };

@@ -41,7 +41,7 @@ export class BdsIllustration {
     fetch(apiUrl).then((response) =>
       response.json().then((data) => {
         this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
-      })
+      }),
     );
   };
 

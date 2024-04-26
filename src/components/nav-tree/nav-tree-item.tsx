@@ -61,7 +61,7 @@ export class NavTreeItem {
   }
   componentWillRender() {
     this.itensElement = this.navTreeParent.getElementsByTagName(
-      'bds-nav-tree-item'
+      'bds-nav-tree-item',
     ) as HTMLCollectionOf<HTMLBdsNavTreeItemElement>;
   }
 

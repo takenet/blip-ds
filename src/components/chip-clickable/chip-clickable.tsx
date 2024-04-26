@@ -127,8 +127,8 @@ export class ChipClickable {
               this.close && (this.icon || this.avatar)
                 ? `chip_clickable--container-text--min`
                 : !this.close && !this.icon && !this.avatar
-                ? `chip_clickable--container-text--full`
-                : `chip_clickable--container-text--half`
+                  ? `chip_clickable--container-text--full`
+                  : `chip_clickable--container-text--half`
             }
           >
             <bds-typo no-wrap="true" class="chip_clickable--text" variant="fs-12" bold="bold">
