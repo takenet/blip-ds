@@ -14,9 +14,9 @@ import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-grou
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
-import { ButtonSize, ButtonType, ButtonVariant, IconType } from "./components/button/button";
+import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
-import { IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
+import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
@@ -31,7 +31,7 @@ import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
 import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
-import { IconSize, IconTheme, IconType as IconType1 } from "./components/icon/icon-interface";
+import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
@@ -362,6 +362,10 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * The theme of the icon. Can be one of: 'outline', 'solid';
+         */
+        "iconTheme": IconTheme;
+        /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
         "size"?: ButtonSize;
@@ -391,6 +395,10 @@ export namespace Components {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * The theme of the icon. Can be one of: 'outline', 'solid';
+         */
+        "iconTheme": ButtonIconTheme;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
@@ -887,7 +895,7 @@ export namespace Components {
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
-        "theme": IconTheme;
+        "theme": IconTheme1;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
@@ -2556,6 +2564,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsButtonIconElement;
+}
 export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCardElement;
@@ -3732,6 +3744,10 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * The theme of the icon. Can be one of: 'outline', 'solid';
+         */
+        "iconTheme"?: IconTheme;
+        /**
           * Event buttom onClick.
          */
         "onBdsClick"?: (event: BdsButtonCustomEvent<any>) => void;
@@ -3765,6 +3781,14 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * The theme of the icon. Can be one of: 'outline', 'solid';
+         */
+        "iconTheme"?: ButtonIconTheme;
+        /**
+          * Event buttom onClick.
+         */
+        "onBdsClick"?: (event: BdsButtonIconCustomEvent<any>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
@@ -4299,7 +4323,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
-        "theme"?: IconTheme;
+        "theme"?: IconTheme1;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */

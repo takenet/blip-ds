@@ -44,6 +44,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-pagination](../../pagination)
+
 ### Depends on
 
 - [bds-icon](../../icon)
@@ -60,6 +64,7 @@ graph TD;
   bds-select-option --> bds-checkbox
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
+  bds-pagination --> bds-select
   style bds-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

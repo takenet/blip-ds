@@ -253,6 +253,18 @@ export class InputEditable {
     }
   }
 
+  private handleKeyDownToggle(event) {
+    if (event.key == 'Enter') {
+      this.toggleEditing();
+    }
+  }
+
+  private handleKeyDownSave(event) {
+    if (event.key == 'Enter') {
+      this.handleSaveText();
+    }
+  }
+
   getFontSizeClass(): FontSize {
     if (this.size == 'short') {
       return 'fs-16';
@@ -309,6 +321,8 @@ export class InputEditable {
             class={{ 'input__editable--static': true, 'input__editable--hidden': this.isEditing }}
             onClick={this.handleEditing}
             data-test={this.dtButtonEdit}
+            tabindex="0"
+            onKeyDown={this.handleKeyDownToggle.bind(this)}
           >
             <bds-typo
               tag="span"
@@ -333,7 +347,7 @@ export class InputEditable {
                 }}
                 onClick={this.onClickWrapper}
               >
-                <div class="input__container" tabindex="0">
+                <div class="input__container">
                   <input
                     class={{ input__container__text: true }}
                     ref={(input) => (this.nativeInput = input)}
@@ -361,6 +375,8 @@ export class InputEditable {
                 theme="solid"
                 name="error"
                 onClick={this.handleEditing}
+                tabindex="0"
+                onKeyDown={this.handleKeyDownToggle.bind(this)}
                 dataTest={this.dtButtonClose}
               ></bds-icon>
               <bds-icon
@@ -372,6 +388,8 @@ export class InputEditable {
                 theme="solid"
                 name="checkball"
                 onClick={this.handleSaveText}
+                tabindex="0"
+                onKeyDown={this.handleKeyDownSave.bind(this)}
                 dataTest={this.dtButtonConfirm}
               ></bds-icon>
             </div>

@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch, Element } from '@stencil/core';
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
 @Component({
@@ -147,12 +147,6 @@ export class Select {
     this.text = this.getText();
   }
 
-  @Listen('mousedown', { target: 'window', passive: true })
-  handleWindow(ev: Event) {
-    if (!this.el.contains(ev.target as HTMLInputElement)) {
-      this.isOpen = false;
-    }
-  }
   componentWillLoad() {
     this.options && this.optionsChanged();
     this.intoView = getScrollParent(this.el);
@@ -248,7 +242,7 @@ export class Select {
 
   private onClickWrapper = (): void => {
     this.onFocus();
-    this.toggle();
+    this.isOpen = true;
     if (this.nativeInput) {
       this.nativeInput.focus();
     }
@@ -262,6 +256,7 @@ export class Select {
   private onBlur = (): void => {
     this.bdsBlur.emit();
     this.isPressed = false;
+    setTimeout(() => (this.isOpen = false), 100);
   };
 
   private toggle = (): void => {
@@ -289,7 +284,7 @@ export class Select {
       detail: { value },
     } = event;
     this.value = value;
-    this.toggle();
+    this.onBlur();
   };
 
   private keyPressWrapper(event) {
@@ -382,7 +377,7 @@ export class Select {
     const isPressed = this.isPressed && !this.disabled;
 
     return (
-      <div class="select" tabindex="0">
+      <div class="select">
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
           <div
             class={{
@@ -428,6 +423,7 @@ export class Select {
             select__options: true,
             'select__options--open': this.isOpen,
           }}
+          role="application"
         >
           {this.internalOptions ? (
             this.internalOptions.map((option, idx) =>

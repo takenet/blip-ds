@@ -53,7 +53,6 @@ export class AccordionGroup {
     this.accordionsElement = this.element.getElementsByTagName(
       'bds-accordion',
     ) as HTMLCollectionOf<HTMLBdsAccordionElement>;
-
     for (let i = 0; i < this.accordionsElement.length; i++) {
       this.accordionsElement[i].reciveNumber(i);
     }

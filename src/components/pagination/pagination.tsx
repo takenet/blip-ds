@@ -1,6 +1,5 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
-import { SelectOptionsPositionType } from '../selects/select-interface';
-import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
+import { getScrollParent } from '../../utils/position-element';
 export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
 @Component({
   tag: 'bds-pagination',
@@ -8,15 +7,11 @@ export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
   shadow: true,
 })
 export class Pagination {
-  private dropElement?: HTMLElement;
-  private iconDropElement?: HTMLBdsIconElement;
-  private positionHeightDrop?: SelectOptionsPositionType;
-
   @Element() private el!: HTMLElement;
   /**
    * State for keep the value selected on select:
    */
-  @State() value: number;
+  @State() value: number = this.startedPage;
   /**
    * State for keep if the select are open or close;
    */
@@ -80,55 +75,6 @@ export class Pagination {
     this.intoView = getScrollParent(this.el);
   }
 
-  componentDidLoad() {
-    if (this.optionsPosition != 'auto') {
-      this.setDefaultPlacement(this.optionsPosition);
-    } else {
-      this.validatePositionDrop();
-    }
-  }
-
-  private setDefaultPlacement(value: PaginationOptionsPositionType) {
-    if (value == 'bottom') {
-      this.dropElement.classList.add('select__options--position-bottom');
-      this.iconDropElement.name = 'arrow-down';
-    } else {
-      this.dropElement.classList.add('select__options--position-top');
-      this.iconDropElement.name = 'arrow-up';
-    }
-  }
-
-  private validatePositionDrop() {
-    const positionValue = positionAbsoluteElement({
-      actionElement: this.el,
-      changedElement: this.dropElement,
-      intoView: this.intoView,
-    });
-    this.positionHeightDrop = positionValue.y as SelectOptionsPositionType;
-    if (positionValue.y == 'bottom') {
-      this.dropElement.classList.add('select__options--position-bottom');
-      this.iconDropElement.name = 'arrow-down';
-    } else {
-      this.dropElement.classList.add('select__options--position-top');
-      this.iconDropElement.name = 'arrow-up';
-    }
-  }
-
-  @Watch('openSelect')
-  protected isOpenChanged(isOpen: boolean): void {
-    if (this.positionHeightDrop == 'bottom') {
-      this.iconDropElement.name = this.openSelect ? 'arrow-up' : 'arrow-down';
-    } else {
-      this.iconDropElement.name = this.openSelect ? 'arrow-down' : 'arrow-up';
-    }
-    if (isOpen)
-      if (this.optionsPosition != 'auto') {
-        this.setDefaultPlacement(this.optionsPosition);
-      } else {
-        this.validatePositionDrop();
-      }
-  }
-
   @Watch('pages')
   @Watch('startedPage')
   pagesChanged(): void {
@@ -139,14 +85,6 @@ export class Pagination {
   valueChanged(): void {
     this.bdsPaginationChange.emit(this.value);
   }
-
-  private refDropdown = (el: HTMLElement): void => {
-    this.dropElement = el;
-  };
-
-  private refIconDrop = (el: HTMLBdsIconElement) => {
-    this.iconDropElement = el;
-  };
 
   countPage() {
     if (this.paginationNumbers.length !== 0) {
@@ -214,59 +152,37 @@ export class Pagination {
       <Host>
         <div class="actions">
           <bds-button-icon
-            onClick={this.firstPage}
+            onBdsClick={(ev) => this.firstPage(ev)}
             size="short"
             variant="secondary"
             icon="arrow-first"
             dataTest={this.dtButtonInitial}
           ></bds-button-icon>
           <bds-button-icon
-            onClick={this.previewPage}
+            onBdsClick={(ev) => this.previewPage(ev)}
             size="short"
             variant="secondary"
             icon="arrow-left"
             dataTest={this.dtButtonPrev}
           ></bds-button-icon>
-          <div class="select">
-            <div class="border-select">
-              <div
-                class={{ select_input: true }}
-                id="select"
-                onClick={this.openOptions}
-                onBlur={this.onBlur}
-                data-test={this.dtSelectNumber}
-              >
-                <bds-typo variant="fs-14">{this.value}</bds-typo>
-                <bds-icon ref={(el) => this.refIconDrop(el)} size="small"></bds-icon>
-              </div>
-            </div>
-            <bds-paper
-              ref={(el) => this.refDropdown(el)}
-              class={{
-                select__options: true,
-                'select__options--open': this.openSelect,
-              }}
-              elevation="static"
-            >
-              <ul>
-                {this.paginationNumbers.map((el, index) => (
-                  <li onClick={() => this.optionSelected(el)} key={index} value={el}>
-                    <bds-typo variant="fs-14">{el}</bds-typo>
-                  </li>
-                ))}
-              </ul>
-            </bds-paper>
-          </div>
+
+          <bds-select class="actions_select" value={this.value} options-position={this.optionsPosition}>
+            {this.paginationNumbers.map((el, index) => (
+              <bds-select-option key={index} value={el} onClick={() => this.optionSelected(el)}>
+                {el}
+              </bds-select-option>
+            ))}
+          </bds-select>
 
           <bds-button-icon
-            onClick={this.nextPage}
+            onBdsClick={(ev) => this.nextPage(ev)}
             size="short"
             variant="secondary"
             icon="arrow-right"
             dataTest={this.dtButtonNext}
           ></bds-button-icon>
           <bds-button-icon
-            onClick={this.lastPage}
+            onBdsClick={(ev) => this.lastPage(ev)}
             size="short"
             variant="secondary"
             icon="arrow-last"
