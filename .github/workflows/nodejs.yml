@@ -40,11 +40,10 @@ jobs:
         uses: cycjimmy/semantic-release-action@v3
         id: semantic
         plugins:
-        - "@semantic-release/github", {
-          githubUrl: "https://github.com/takenet/blip-ds",
-          githubApiPathPrefix: /api/v3/,
-          failComment: false
-        }
+        - "@semantic-release/github":
+            githubUrl: "https://github.com/takenet/blip-ds"
+            githubApiPathPrefix: /api/v3/
+            failComment: false
             
         with:
           branch: master
