@@ -60,7 +60,7 @@ export class BdsTabGroup {
 
   componentDidLoad() {
     this.tabItensSlideElement = this.element.shadowRoot.querySelectorAll(
-      '.tab_group__header__itens__item'
+      '.tab_group__header__itens__item',
     ) as NodeListOf<HTMLElement>;
   }
 
