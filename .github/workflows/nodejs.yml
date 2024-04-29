@@ -10,7 +10,12 @@ permissions:
 
 jobs:
   build:
+      permissions:
+        contents: write
+        issues: write
+        pull-requests: write
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,13 +44,13 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v3
         id: semantic
-        plugins:
+        with:
+          branch: master
+          extra-plugins:
           - - "@semantic-release/github"
             - githubUrl: "https://github.com/takenet/blip-ds"
               githubApiPathPrefix: /api/v3/
-              failComment: false    
-        with:
-          branch: master
+              failComment: false   
           
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
