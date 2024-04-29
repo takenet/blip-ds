@@ -12,6 +12,9 @@ export default {
 };
 
 const solidIconsName = [
+  'bottom-sheet',
+  'text-variable',
+  'user-favorite',
   'audio-closed',
   'phone-keyboard',
   'video-calling',
@@ -110,6 +113,9 @@ const solidIconsName = [
 ];
 
 const outlineIconsName = [
+  'bottom-sheet',
+  'text-variable',
+  'user-favorite',
   'audio-closed',
   'phone-keyboard',
   'video-calling',
