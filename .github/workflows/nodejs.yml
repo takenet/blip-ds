@@ -42,11 +42,6 @@ jobs:
         id: semantic
         with:
           branch: master
-          extra-plugins:
-            - "@semantic-release/github":
-                githubUrl: "https://github.com/takenet/blip-ds"
-                githubApiPathPrefix: /api/v3/
-                failComment: false   
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
