@@ -41,11 +41,14 @@ import { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositi
 import { TypeList } from "./components/list/list";
 import { Data } from "./components/list/list-interface";
 import { TypeList as TypeList1 } from "./components/list/list";
+import { ItemSize } from "./components/list/list-item";
 import { loadingBarSize } from "./components/loading-bar/loading-bar";
 import { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
 import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
+import { collapses as collapses1 } from "./components/nav-tree/nav-tree";
+import { collapses as collapses2 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
@@ -1485,6 +1488,10 @@ export namespace Components {
          */
         "secondaryText"?: string;
         /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: ItemSize;
+        /**
           * Text. Used to insert a text in the display item.
          */
         "text"?: string;
@@ -1677,6 +1684,60 @@ export namespace Components {
           * Used to hide or show the close button
          */
         "active"?: boolean;
+    }
+    interface BdsNavTree {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * A prop for make the nav open.
+         */
+        "isOpen"?: boolean;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text": string;
+        "toggle": () => Promise<void>;
+    }
+    interface BdsNavTreeItem {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "isOpen"?: boolean;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text": string;
+        "toggle": () => Promise<void>;
     }
     interface BdsNavbar {
         /**
@@ -2583,6 +2644,14 @@ export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsModalElement;
 }
+export interface BdsNavTreeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsNavTreeElement;
+}
+export interface BdsNavTreeItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsNavTreeItemElement;
+}
 export interface BdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsPaginationElement;
@@ -3010,6 +3079,18 @@ declare global {
         prototype: HTMLBdsModalCloseButtonElement;
         new (): HTMLBdsModalCloseButtonElement;
     };
+    interface HTMLBdsNavTreeElement extends Components.BdsNavTree, HTMLStencilElement {
+    }
+    var HTMLBdsNavTreeElement: {
+        prototype: HTMLBdsNavTreeElement;
+        new (): HTMLBdsNavTreeElement;
+    };
+    interface HTMLBdsNavTreeItemElement extends Components.BdsNavTreeItem, HTMLStencilElement {
+    }
+    var HTMLBdsNavTreeItemElement: {
+        prototype: HTMLBdsNavTreeItemElement;
+        new (): HTMLBdsNavTreeItemElement;
+    };
     interface HTMLBdsNavbarElement extends Components.BdsNavbar, HTMLStencilElement {
     }
     var HTMLBdsNavbarElement: {
@@ -3282,6 +3363,8 @@ declare global {
         "bds-modal": HTMLBdsModalElement;
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
+        "bds-nav-tree": HTMLBdsNavTreeElement;
+        "bds-nav-tree-item": HTMLBdsNavTreeItemElement;
         "bds-navbar": HTMLBdsNavbarElement;
         "bds-navbar-content": HTMLBdsNavbarContentElement;
         "bds-pagination": HTMLBdsPaginationElement;
@@ -4946,6 +5029,10 @@ declare namespace LocalJSX {
          */
         "secondaryText"?: string;
         /**
+          * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
+         */
+        "size"?: ItemSize;
+        /**
           * Text. Used to insert a text in the display item.
          */
         "text"?: string;
@@ -5141,6 +5228,66 @@ declare namespace LocalJSX {
           * Used to hide or show the close button
          */
         "active"?: boolean;
+    }
+    interface BdsNavTree {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * A prop for make the nav open.
+         */
+        "isOpen"?: boolean;
+        /**
+          * When de open or close of component change, the event are dispache.
+         */
+        "onBdsToogleChange"?: (event: BdsNavTreeCustomEvent<any>) => void;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text": string;
+    }
+    interface BdsNavTreeItem {
+        /**
+          * Focus Selected. Used to add title in header accordion.
+         */
+        "collapse"?: collapses;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Icon. Used to add icon in list item.
+         */
+        "icon"?: string;
+        /**
+          * Active. Used to define when the item is highlighted.
+         */
+        "isOpen"?: boolean;
+        /**
+          * When de activation of component change, the event are dispache.
+         */
+        "onBdsToogleChange"?: (event: BdsNavTreeItemCustomEvent<any>) => void;
+        /**
+          * SecondaryText. Used to insert a secondaryText in the display item.
+         */
+        "secondaryText"?: string;
+        /**
+          * Text. Used to insert a text in the display item.
+         */
+        "text": string;
     }
     interface BdsNavbar {
         /**
@@ -6018,6 +6165,8 @@ declare namespace LocalJSX {
         "bds-modal": BdsModal;
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
+        "bds-nav-tree": BdsNavTree;
+        "bds-nav-tree-item": BdsNavTreeItem;
         "bds-navbar": BdsNavbar;
         "bds-navbar-content": BdsNavbarContent;
         "bds-pagination": BdsPagination;
@@ -6120,6 +6269,8 @@ declare module "@stencil/core" {
             "bds-modal": LocalJSX.BdsModal & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
+            "bds-nav-tree": LocalJSX.BdsNavTree & JSXBase.HTMLAttributes<HTMLBdsNavTreeElement>;
+            "bds-nav-tree-item": LocalJSX.BdsNavTreeItem & JSXBase.HTMLAttributes<HTMLBdsNavTreeItemElement>;
             "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
             "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;

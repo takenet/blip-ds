@@ -60,7 +60,8 @@
  - [bds-menu-exibition](../menu/menu-exibition)
  - [bds-menu-list-item](../menu-list-item)
  - [bds-menu-separation](../menu/menu-separation)
- - [bds-pagination](../pagination)
+ - [bds-nav-tree](../nav-tree)
+ - [bds-nav-tree-item](../nav-tree)
  - [bds-progress-bar](../progress-bar)
  - [bds-radio](../radio)
  - [bds-select](../selects/select)
@@ -110,7 +111,8 @@ graph TD;
   bds-menu-exibition --> bds-typo
   bds-menu-list-item --> bds-typo
   bds-menu-separation --> bds-typo
-  bds-pagination --> bds-typo
+  bds-nav-tree --> bds-typo
+  bds-nav-tree-item --> bds-typo
   bds-progress-bar --> bds-typo
   bds-radio --> bds-typo
   bds-select --> bds-typo

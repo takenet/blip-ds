@@ -33,11 +33,12 @@ Properties.args = {
 };
 
 export const Methods = () => {
-  const inputUpload = document.getElementById('upload');
-  const deleteItem = async () => {
+  const deleteItem = async (id) => {
+    const inputUpload = document.getElementById(id);
     await inputUpload.deleteFile(0);
   };
-  const deleteAllItens = async () => {
+  const deleteAllItens = async (id) => {
+    const inputUpload = document.getElementById(id);
     await inputUpload.deleteAllFiles();
   };
   return (
@@ -49,8 +50,8 @@ export const Methods = () => {
           title-name="Title uploader"
           subtitle="Description uploades, e.g.: can upload multiples files"
         ></bds-upload>
-        <bds-button onClick={() => deleteItem()}> Excluir Item </bds-button>
-        <bds-button onClick={() => deleteAllItens()}> Excluir todos os Itens </bds-button>
+        <bds-button onClick={() => deleteItem('upload')}> Excluir Item </bds-button>
+        <bds-button onClick={() => deleteAllItens('upload')}> Excluir todos os Itens </bds-button>
       </bds-grid>
     </bds-grid>
   );

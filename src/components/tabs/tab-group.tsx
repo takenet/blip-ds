@@ -8,6 +8,7 @@ import { Itens } from './tab-group-interface';
 })
 export class BdsTabGroup {
   private tabItensElement?: HTMLCollectionOf<HTMLBdsTabItemElement> = null;
+  private tabItensSlideElement?: NodeListOf<HTMLElement> = null;
   private headerElement?: HTMLElement;
   private headerSlideElement?: HTMLElement;
   private isSlide?: number;
@@ -55,6 +56,12 @@ export class BdsTabGroup {
     this.setFirstActive();
     this.setInternalItens(Array.from(this.tabItensElement));
     this.getEventsDisable(Array.from(this.tabItensElement));
+  }
+
+  componentDidLoad() {
+    this.tabItensSlideElement = this.element.shadowRoot.querySelectorAll(
+      '.tab_group__header__itens__item',
+    ) as NodeListOf<HTMLElement>;
   }
 
   connectedCallback() {
@@ -168,6 +175,12 @@ export class BdsTabGroup {
     if (event.key == 'Enter') {
       item.disable ? this.handleDisabled(item.numberElement) : this.handleClick(item.numberElement);
     }
+    if (event.key == 'ArrowRight') {
+      this.tabItensSlideElement[item.numberElement + 1].focus();
+    }
+    if (event.key == 'ArrowLeft') {
+      this.tabItensSlideElement[item.numberElement - 1].focus();
+    }
   }
 
   render(): HTMLElement {
@@ -213,7 +226,11 @@ export class BdsTabGroup {
                       }
                       onKeyDown={(ev) => this.handleKeyDown(ev, item)}
                     >
-                      <bds-typo variant="fs-16" bold={bold}>
+                      <bds-typo
+                        class={{ tab_group__header__itens__item__typo__disable: item.disable }}
+                        variant="fs-16"
+                        bold={bold}
+                      >
                         {item.label}
                       </bds-typo>
                     </div>

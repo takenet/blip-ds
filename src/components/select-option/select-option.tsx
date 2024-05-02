@@ -151,7 +151,8 @@ export class SelectOption {
     return (
       <div
         id={`bds-select-option-${this.value}`}
-        tabindex="0"
+        data-event="click"
+        role="button"
         onKeyDown={this.attachOptionKeyboardListeners}
         onClick={this.onClickSelectOption}
         data-value={this.value}
