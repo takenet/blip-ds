@@ -118,7 +118,8 @@ export class BdsAvatar {
         <div
           class={{
             avatar: true,
-            [`avatar__color--${this.name && !this.hasThumb
+            [`avatar__color--${
+              this.name && !this.hasThumb
                 ? this.avatarBgColor(firstName)
                 : this.hasThumb && !this.name
                   ? 'surface'
@@ -126,7 +127,7 @@ export class BdsAvatar {
                     ? 'surface'
                     : this.name && this.hasThumb
                       ? this.avatarBgColor(firstName)
-                      : null
+                    : null
               }`]: true,
             [`avatar__size--${this.size}`]: true,
             upload: this.upload,
