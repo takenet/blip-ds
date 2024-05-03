@@ -138,7 +138,9 @@ export class BdsAvatar {
           data-test={this.dataTest}
         >
           {this.ellipsis ? (
-            <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
+            <div class="avatar__btn">
+              <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
+            </div>
           ) : this.thumbnail ? (
             this.upload ? (
               <div class="avatar__btn">
