@@ -127,8 +127,8 @@ export class BdsAvatar {
                     ? 'surface'
                     : this.name && this.hasThumb
                       ? this.avatarBgColor(firstName)
-                    : null
-              }`]: true,
+                      : null
+            }`]: true,
             [`avatar__size--${this.size}`]: true,
             upload: this.upload,
           }}
