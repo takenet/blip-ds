@@ -123,8 +123,8 @@ export const TableWithComponents = () => {
                 )}
               </bds-table-cell>
               <bds-table-cell type="action">
-                <bds-button-icon variant="tertiary" size="short" icon="edit"></bds-button-icon>
-                <bds-button-icon variant="tertiary" size="short" icon="trash"></bds-button-icon>
+                <bds-button-icon variant="secondary" size="short" icon="edit"></bds-button-icon>
+                <bds-button-icon variant="secondary" size="short" icon="trash"></bds-button-icon>
               </bds-table-cell>
             </bds-table-row>
           );
@@ -266,7 +266,185 @@ export const TableWithFilter = () => {
   );
 };
 
-export const TableComplete = () => {
+export const TablePagination = () => {
+  const DATA = [
+    {
+      id: 1,
+      produto: 'Celular',
+      valor: '1500,00',
+      disponibilidade: 'disponivel',
+      marca: 'Samsung',
+      modelo: 'Galaxy S20',
+      cor: 'Preto',
+    },
+    {
+      id: 2,
+      produto: 'Notebook',
+      valor: '4000,00',
+      disponibilidade: 'indisponivel',
+      marca: 'Apple',
+      modelo: 'MacBook Pro',
+      cor: 'Cinza Espacial',
+    },
+    {
+      id: 3,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+    {
+      id: 4,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+    {
+      id: 5,
+      produto: 'Notebook',
+      valor: '4000,00',
+      disponibilidade: 'indisponivel',
+      marca: 'Apple',
+      modelo: 'MacBook Pro',
+      cor: 'Cinza Espacial',
+    },
+    {
+      id: 6,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+    {
+      id: 7,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+    {
+      id: 8,
+      produto: 'Smartwatch',
+      valor: '600,00',
+      disponibilidade: 'disponivel',
+      marca: 'Xiaomi',
+      modelo: 'Mi Band 6',
+      cor: 'Preto',
+    },
+    {
+      id: 9,
+      produto: 'Smart TV',
+      valor: '2500,00',
+      disponibilidade: 'disponivel',
+      marca: 'LG',
+      modelo: 'OLED C1',
+      cor: 'Preto',
+    },
+    {
+      id: 10,
+      produto: 'Fones de Ouvido',
+      valor: '200,00',
+      disponibilidade: 'disponivel',
+      marca: 'Sony',
+      modelo: 'WH-1000XM4',
+      cor: 'Preto',
+    },
+  ];
+
+  const heading = ['id', 'Produtos', 'Valor', 'Marca', 'Modelo', 'Cor', 'Disponibilidade'];
+
+  const itemsPerPage = 4;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState(DATA);
+
+  useEffect(() => {
+    setFilteredData(DATA);
+  }, []);
+
+  useEffect(() => {
+    document.getElementById('pagination').addEventListener('bdsPaginationChange', handlePageChange);
+  });
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+  const currentItems = filteredData.slice(startIndex, endIndex);
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage.detail);
+  };
+
+  return (
+    <bds-paper>
+      <bds-grid padding="1" direction="column" gap="2">
+        <bds-table>
+          <bds-table-header>
+            <bds-table-row>
+              {heading.map((item, index) => {
+                return <bds-table-th key={index}>{item}</bds-table-th>;
+              })}
+            </bds-table-row>
+          </bds-table-header>
+          <bds-table-body>
+            {currentItems.map((row, index) => {
+              return (
+                <bds-table-row key={index}>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.id}</bds-typo>
+                  </bds-table-cell>
+                  
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.produto}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.valor}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.marca}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.modelo}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.cor}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    {row.disponibilidade === 'disponivel' ? (
+                      <bds-chip-tag color="success">{row.disponibilidade}</bds-chip-tag>
+                    ) : (
+                      <bds-chip-tag color="danger">{row.disponibilidade}</bds-chip-tag>
+                    )}
+                  </bds-table-cell>
+                </bds-table-row>
+              );
+            })}
+            <bds-table-row>
+              <bds-table-cell>
+                <bds-grid>
+                  <bds-typo>teste 123</bds-typo>
+                </bds-grid>
+              </bds-table-cell>
+            </bds-table-row>
+          </bds-table-body>
+        </bds-table>
+        <bds-grid xxs="12" justify-content="flex-end">
+          <bds-pagination id="pagination" pages={Math.ceil(filteredData.length / itemsPerPage)}></bds-pagination>
+        </bds-grid>
+      </bds-grid>
+    </bds-paper>
+  );
+};
+
+export const TableDense = () => {
   const DATA = [
     {
       id: 1,
@@ -335,50 +513,10 @@ export const TableComplete = () => {
 
   const heading = ['id', 'Produtos', 'Valor', 'Marca', 'Modelo', 'Cor', 'Disponibilidade'];
 
-  const itemsPerPage = 2;
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filterText, setFilterText] = useState('');
-
-  useEffect(() => {
-    const handleInputChange = (event) => {
-      setFilterText(event.detail.value);
-    };
-
-    document.getElementById('input').addEventListener('bdsChange', handleInputChange);
-
-    return () => {
-      document.getElementById('input').removeEventListener('bdsChange', handleInputChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handlePaginationChange = (event) => {
-      setCurrentPage(event.detail);
-    };
-    const paginationElement = document.getElementById('pagination');
-    paginationElement.addEventListener('bdsPaginationChange', handlePaginationChange);
-
-    return () => {
-      paginationElement.removeEventListener('bdsPaginationChange', handlePaginationChange);
-    };
-  }, []);
-
-  const filteredData = DATA.filter((row) =>
-    Object.values(row).some(
-      (value) => typeof value === 'string' && value.toLowerCase().includes(filterText.toLowerCase()),
-    ),
-  );
-
-  const startIndex = (currentPageAdjusted - 1) * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
-  const currentItems = filteredData.slice(startIndex, endIndex);
-
   return (
     <bds-paper>
       <bds-grid padding="1" direction="column" gap="2">
-        <bds-input id="input" placeholder="Filtrar..."></bds-input>
-        <bds-table>
+        <bds-table dense-table="true">
           <bds-table-header>
             <bds-table-row>
               {heading.map((item, index) => {
@@ -387,7 +525,7 @@ export const TableComplete = () => {
             </bds-table-row>
           </bds-table-header>
           <bds-table-body>
-            {currentItems.map((row, index) => {
+            {DATA.map((row, index) => {
               return (
                 <bds-table-row key={index}>
                   <bds-table-cell>
@@ -420,11 +558,130 @@ export const TableComplete = () => {
             })}
           </bds-table-body>
         </bds-table>
-        <bds-pagination
-          id="pagination"
-          pages={Math.ceil(filteredData.length / itemsPerPage)}
-          started-page={currentPage}
-        ></bds-pagination>
+      </bds-grid>
+    </bds-paper>
+  );
+};
+
+export const TableScrollable = () => {
+  const DATA = [
+    {
+      id: 1,
+      produto: 'Celular',
+      valor: '1500,00',
+      disponibilidade: 'disponivel',
+      marca: 'Samsung',
+      modelo: 'Galaxy S20',
+      cor: 'Preto',
+      anoLancamento: 2020,
+      peso: '150g',
+      memoriaRAM: '8GB',
+    },
+    {
+      id: 2,
+      produto: 'Notebook',
+      valor: '4000,00',
+      disponibilidade: 'indisponivel',
+      marca: 'Apple',
+      modelo: 'MacBook Pro',
+      cor: 'Cinza Espacial',
+      anoLancamento: 2021,
+      peso: '1.4kg',
+      memoriaRAM: '16GB',
+    },
+    {
+      id: 3,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+      anoLancamento: 2019,
+      peso: '500g',
+      memoriaRAM: '-',
+    },
+    {
+      id: 4,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+      anoLancamento: 2020,
+      peso: '500g',
+      memoriaRAM: '-',
+    },
+  ];
+
+  const heading = [
+    'id',
+    'Produtos',
+    'Valor',
+    'Marca',
+    'Modelo',
+    'Cor',
+    'Disponibilidade',
+    'Ano de Lançamento',
+    'Peso',
+    'Memoria RAM',
+  ];
+
+  return (
+    <bds-paper width="600px">
+      <bds-grid xxs="12" padding="1" direction="column" gap="2">
+        <bds-table scrollable="true">
+          <bds-table-header>
+            <bds-table-row>
+              {heading.map((item, index) => {
+                return <bds-table-th key={index}>{item}</bds-table-th>;
+              })}
+            </bds-table-row>
+          </bds-table-header>
+          <bds-table-body>
+            {DATA.map((row, index) => {
+              return (
+                <bds-table-row key={index}>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.id}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.produto}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.valor}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.marca}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.modelo}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.cor}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.anoLancamento}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.peso}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.memoriaRAM}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    {row.disponibilidade === 'disponivel' ? (
+                      <bds-chip-tag color="success">{row.disponibilidade}</bds-chip-tag>
+                    ) : (
+                      <bds-chip-tag color="danger">{row.disponibilidade}</bds-chip-tag>
+                    )}
+                  </bds-table-cell>
+                </bds-table-row>
+              );
+            })}
+          </bds-table-body>
+        </bds-table>
       </bds-grid>
     </bds-paper>
   );

@@ -27,3 +27,12 @@
   outline-offset: -1px;
   border-bottom: none;
 }
+
+:host(.dense-row) {
+  height: auto;
+}
+
+.detail {
+  width: 100%;
+  position: absolute;
+}
