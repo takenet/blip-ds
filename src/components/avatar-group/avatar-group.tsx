@@ -95,7 +95,7 @@ export class AvatarGroup {
                     color={this.avatarBgColor(i)}
                     size={this.size}
                   ></bds-avatar>
-                ),
+                )
               )
           ) : (
             <slot />

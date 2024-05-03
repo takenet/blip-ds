@@ -59,13 +59,6 @@ export class BdsAvatar {
     }
   }
 
-  private handleClickKey(event) {
-    if ((event.key === 'Enter' || event.key === ' ') && this.upload) {
-      event.preventDefault();
-      this.bdsClickAvatar.emit();
-    }
-  }
-
   private selectTypoSize = (value): void => {
     switch (value) {
       case 'micro':
@@ -129,23 +122,28 @@ export class BdsAvatar {
               this.name && !this.hasThumb
                 ? this.avatarBgColor(firstName)
                 : this.hasThumb && !this.name
-                  ? 'surface'
-                  : !this.name && !this.hasThumb
-                    ? 'surface'
-                    : this.name && this.hasThumb
-                      ? this.avatarBgColor(firstName)
-                      : null
+                ? 'surface'
+                : !this.name && !this.hasThumb
+                ? 'surface'
+                : this.name && this.hasThumb
+                ? this.avatarBgColor(firstName)
+                : null
             }`]: true,
             [`avatar__size--${this.size}`]: true,
             upload: this.upload,
           }}
+          onClick={(ev) => this.onUploadClick(ev)}
+          tabindex="0"
+          onKeyDown={this.handleKeyDown.bind(this)}
           data-test={this.dataTest}
         >
           {this.ellipsis ? (
-            <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
+            <div class="avatar__btn">
+              <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
+            </div>
           ) : this.thumbnail ? (
-            this.upload && this.size !== 'micro' ? (
-              <div class="avatar__btn" onClick={() => this.onUploadClick}>
+            this.upload ? (
+              <div class="avatar__btn">
                 <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
                 <div class="avatar__btn__thumb">
                   <bds-icon
@@ -157,16 +155,13 @@ export class BdsAvatar {
                 </div>
               </div>
             ) : (
-              <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
+              <div class="avatar__btn">
+                <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
+              </div>
             )
           ) : this.name ? (
-            this.upload && this.size !== 'micro' ? (
-              <div
-                class="avatar__btn"
-                onClick={() => this.onUploadClick}
-                tabindex="0"
-                onKeyDown={this.handleKeyDown.bind(this)}
-              >
+            this.upload ? (
+              <div class="avatar__btn">
                 <bds-typo margin={false} class="avatar__btn__text" variant={this.typoSize} tag="span">
                   {firstName + lastName}
                 </bds-typo>
@@ -180,12 +175,14 @@ export class BdsAvatar {
                 </div>
               </div>
             ) : (
-              <bds-typo margin={false} class="avatar__text" variant={this.typoSize} tag="span">
-                {firstName + lastName}
-              </bds-typo>
+              <div class="avatar__btn">
+                <bds-typo margin={false} class="avatar__text" variant={this.typoSize} tag="span">
+                  {firstName + lastName}
+                </bds-typo>
+              </div>
             )
-          ) : this.upload && this.size !== 'micro' ? (
-            <div class="avatar__btn" onClick={() => this.onUploadClick}>
+          ) : this.upload ? (
+            <div class="avatar__btn">
               <bds-icon class="avatar__btn__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
               <div class="avatar__btn__empty">
                 <bds-icon
@@ -197,16 +194,13 @@ export class BdsAvatar {
               </div>
             </div>
           ) : this.name === null && !this.hasThumb ? (
-            <bds-icon class="avatar__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
+            <div class="avatar__btn">
+              <bds-icon class="avatar__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
+            </div>
           ) : (
             ''
           )}
         </div>
-        {this.upload && this.size !== 'micro' ? (
-          <div tabindex="0" onClick={() => this.handleClickKey} class="focus"></div>
-        ) : (
-          ''
-        )}
       </Host>
     );
   }
