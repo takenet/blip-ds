@@ -162,7 +162,6 @@ export class Select {
 
   componentWillRender() {
     this.options && this.updateOptions();
-    this.getValueSelected();
   }
 
   componentDidLoad() {
