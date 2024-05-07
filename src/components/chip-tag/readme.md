@@ -19,6 +19,7 @@
 ### Used by
 
  - [bds-data-table](../table)
+ - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -31,6 +32,7 @@ graph TD;
   bds-chip-tag --> bds-icon
   bds-chip-tag --> bds-typo
   bds-data-table --> bds-chip-tag
+  bds-test-component --> bds-chip-tag
   style bds-chip-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

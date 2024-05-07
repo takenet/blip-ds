@@ -2318,6 +2318,10 @@ export namespace Components {
     }
     interface BdsTable {
         /**
+          * Specifies whether the table is scrollable or not.
+         */
+        "collapse"?: boolean;
+        /**
           * Determines if the table has a higher content density, typically resulting in more compact rows and cells.
          */
         "denseTable"?: boolean;
@@ -2335,12 +2339,12 @@ export namespace Components {
     interface BdsTableHeader {
     }
     interface BdsTableRow {
-        "bodyCollapse"?: boolean;
+        "bodyCollapse"?: string;
         /**
           * Prop to make hover animation.
          */
         "clickable"?: boolean;
-        "collapse"?: boolean;
+        "dataTarget"?: string;
         /**
           * Prop to highlight the row selected.
          */
@@ -5914,6 +5918,10 @@ declare namespace LocalJSX {
     }
     interface BdsTable {
         /**
+          * Specifies whether the table is scrollable or not.
+         */
+        "collapse"?: boolean;
+        /**
           * Determines if the table has a higher content density, typically resulting in more compact rows and cells.
          */
         "denseTable"?: boolean;
@@ -5931,12 +5939,12 @@ declare namespace LocalJSX {
     interface BdsTableHeader {
     }
     interface BdsTableRow {
-        "bodyCollapse"?: boolean;
+        "bodyCollapse"?: string;
         /**
           * Prop to make hover animation.
          */
         "clickable"?: boolean;
-        "collapse"?: boolean;
+        "dataTarget"?: string;
         /**
           * Prop to highlight the row selected.
          */

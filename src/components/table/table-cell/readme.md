@@ -17,6 +17,7 @@
 
 ### Used by
 
+ - [bds-table-row](../table-row)
  - [bds-test-component](../../test-component)
 
 ### Depends on
@@ -27,6 +28,7 @@
 ```mermaid
 graph TD;
   bds-table-cell --> bds-typo
+  bds-table-row --> bds-table-cell
   bds-test-component --> bds-table-cell
   style bds-table-cell fill:#f9f,stroke:#333,stroke-width:4px
 ```
