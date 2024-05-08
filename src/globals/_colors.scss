@@ -33,11 +33,11 @@ $color-positive:var(--color-positive, #10603B);
 $color-negative:var(--color-negative, #E60F0F);
 
 // Shadows
-$shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.4);
-$shadow-box: 0px 4px 10px rgba(51, 51, 51, 0.3);
-$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
-$light-drop: 0px 2px 8px rgba(7, 71, 166, 0.15);
-$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
+$shadow-drop: 0 2px 8px $color-shadow-1;
+$shadow-box: 0px 4px 10px $color-shadow-1;
+$shadow-toast: 0px 8px 12px $color-shadow-1, 0px 0px 4px $color-shadow-1;
+$light-drop: 0px 2px 8px $color-shadow-1;
+$shadow-toast: 0px 8px 12px $color-shadow-1, 0px 0px 4px $color-shadow-1;
 
 //Custom Colors
 $color-secondary-undo: #485c73;
