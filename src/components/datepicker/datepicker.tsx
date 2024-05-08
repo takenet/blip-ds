@@ -1,5 +1,12 @@
 import { Component, Host, h, Element, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
-import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToTypeDate, typeDateToStringDate } from '../../utils/calendar';
+import {
+  defaultStartDate,
+  defaultEndDate,
+  fillDayList,
+  dateToDayList,
+  dateToTypeDate,
+  typeDateToStringDate,
+} from '../../utils/calendar';
 import { dateValidation } from '../../utils/validations';
 import { getScrollParent, positionElement } from '../../utils/position-element';
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
