@@ -43,6 +43,6 @@ jobs:
         with:
           branch: master
         env:
-          GITHUB_PREFIX: enterprises/take-blip
+          GITHUB_PREFIX: orgs/takenet
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
