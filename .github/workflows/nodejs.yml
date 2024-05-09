@@ -43,7 +43,6 @@ jobs:
         with:
           branch: master
         env:
-          GITHUB_URL: https://api.github.com/enterprises/take-blip
-          GITHUB_PREFIX: https://api.github.com/enterprises/take-blip/api/v3
+          GITHUB_PREFIX: enterprises/take-blip
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
