@@ -11,10 +11,12 @@ export class TableRow {
   @State() collapse: boolean;
   @State() isCollapsed = true;
   @State() colspanNumber: number = null;
+  @State() bdsTable: HTMLBdsTableElement;
+  @State() collapseRow: HTMLBdsTableRowElement;
   /**
    * Prop to make hover animation.
    */
-  @Prop() clickable?: boolean = false;
+  @Prop({ mutable: true, reflect: true }) clickable?: boolean = false;
   /**
    * Prop to highlight the row selected.
    */
@@ -25,26 +27,28 @@ export class TableRow {
   toggleCollapse = (target) => {
     if (this.collapse) {
       const body = document.querySelector(`[body-collapse="${target}"]`);
-      const header = document.querySelector(`[data-target="${target}"]`);
       body.classList.toggle('collapse');
       this.isCollapsed = !this.isCollapsed;
     }
   };
 
   componentWillLoad() {
-    const bdsTable = this.element.closest('bds-table');
-    const collapseRow = document.querySelector(`[body-collapse="${this.dataTarget}"]`);
-    const colspan = document.querySelector(`bds-table-row`).children.length;
-    this.colspanNumber = colspan;
-    if (bdsTable && (bdsTable.getAttribute('dense-table') === 'true' || bdsTable.denseTable === true)) {
+    this.bdsTable = this.element.closest('bds-table');
+    this.collapseRow = document.querySelector(`[body-collapse="${this.dataTarget}"]`);
+    this.colspanNumber = document.querySelector(`bds-table-row`).children.length;
+
+    if (this.bdsTable && (this.bdsTable.getAttribute('dense-table') === 'true' || this.bdsTable.denseTable === true)) {
       this.isDense = true;
     }
-    if (bdsTable && (bdsTable.getAttribute('collapse') === 'true' || bdsTable.collapse === true)) {
+    if (this.bdsTable && (this.bdsTable.getAttribute('collapse') === 'true' || this.bdsTable.collapse === true)) {
       this.collapse = true;
+      this.clickable = true;
     }
 
-    collapseRow.classList.add('collapse');
-    collapseRow.classList.add('collapse-body');
+    if (this.collapseRow) {
+      this.collapseRow.classList.add('collapse');
+      this.collapseRow.classList.add('collapse-body');
+    }
   }
 
   componentWillUpdate() {
@@ -69,7 +73,7 @@ export class TableRow {
         <Host
           class={{
             host: true,
-            [`clickable--${this.clickable}`]: true,
+            [`clickable--${this.clickable}`]: !isFirstRow && this.clickable === true ? true : false,
             [`selected--${this.selected}`]: true,
             'dense-row': this.isDense,
           }}

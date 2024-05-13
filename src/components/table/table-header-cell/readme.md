@@ -15,10 +15,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../../test-component)
-
 ### Depends on
 
 - [bds-typo](../../typo)
@@ -29,7 +25,6 @@
 graph TD;
   bds-table-th --> bds-typo
   bds-table-th --> bds-icon
-  bds-test-component --> bds-table-th
   style bds-table-th fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
