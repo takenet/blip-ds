@@ -1,6 +1,13 @@
 import { Component, Host, h, Element, State, Prop, EventEmitter, Event, Watch } from '@stencil/core';
-import { defaultStartDate, defaultEndDate, fillDayList, dateToDayList, dateToString } from '../../utils/calendar';
-import { dateValidation, maskDate } from '../../utils/validations';
+import {
+  defaultStartDate,
+  defaultEndDate,
+  fillDayList,
+  dateToDayList,
+  dateToTypeDate,
+  typeDateToStringDate,
+} from '../../utils/calendar';
+import { dateValidation } from '../../utils/validations';
 import { getScrollParent, positionElement } from '../../utils/position-element';
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
 import { BannerVariant } from '../banner/banner';
@@ -211,7 +218,7 @@ export class DatePicker {
     } = event;
     this.dateSelected = value;
     this.bdsStartDate.emit({ value: this.dateSelected });
-    this.valueDateSelected = this.dateSelected && dateToString(this.dateSelected);
+    this.valueDateSelected = this.dateSelected && dateToTypeDate(this.dateSelected);
     this.errorMsgDate = null;
   }
   /**
@@ -223,7 +230,7 @@ export class DatePicker {
     } = event;
     this.endDateSelected = value;
     this.bdsEndDate.emit({ value: this.endDateSelected });
-    this.valueEndDateSelected = this.endDateSelected && dateToString(this.endDateSelected);
+    this.valueEndDateSelected = this.endDateSelected && dateToTypeDate(this.endDateSelected);
     this.inputSetEndDate?.setFocus();
     this.errorMsgEndDate = null;
   }
@@ -248,7 +255,7 @@ export class DatePicker {
 
   private onInputDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
-    this.valueDateSelected = maskDate(input.value);
+    this.valueDateSelected = input.value;
     this.validationDateSelected(this.valueDateSelected);
   };
 
@@ -256,16 +263,16 @@ export class DatePicker {
    * validationDateSelected. Function to validate date field
    */
   private validationDateSelected = (value: string): void => {
-    const valueSelected = value && dateToDayList(value);
+    const formatData = typeDateToStringDate(value);
+    const valueSelected = formatData && dateToDayList(formatData);
     const start = this.startDateLimit && dateToDayList(this.startDateLimit);
     const end = this.endDateLimit && dateToDayList(this.endDateLimit);
-    if (!dateValidation(value)) {
+    if (!dateValidation(formatData)) {
       this.errorMsgDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.startDateLimit} - ${
-          this.endDateLimit
-        }`;
+        this.errorMsgDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.startDateLimit} - ${this.endDateLimit
+          }`;
       } else {
         this.errorMsgDate = null;
         this.dateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
@@ -275,7 +282,7 @@ export class DatePicker {
 
   private onInputEndDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
-    this.valueEndDateSelected = maskDate(input.value);
+    this.valueEndDateSelected = input.value;
     this.validationEndDateSelected(this.valueEndDateSelected);
   };
 
@@ -283,17 +290,18 @@ export class DatePicker {
    * maskEndDateSelected. Function to add mask to the end date field
    */
   private validationEndDateSelected = (value: string): void => {
-    const valueSelected = value && dateToDayList(value);
-    const start = this.valueDateSelected ? dateToDayList(this.valueDateSelected) : dateToDayList(this.startDateLimit);
+    const formatData = typeDateToStringDate(value);
+    const formatValueDateSelected = typeDateToStringDate(this.valueDateSelected);
+    const valueSelected = formatData && dateToDayList(formatData);
+    const start = formatValueDateSelected ? dateToDayList(formatValueDateSelected) : dateToDayList(this.startDateLimit);
     const end = this.endDateLimit && dateToDayList(this.endDateLimit);
 
-    if (!dateValidation(value)) {
+    if (!dateValidation(formatData)) {
       this.errorMsgEndDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgEndDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.valueDateSelected} - ${
-          this.endDateLimit
-        }`;
+        this.errorMsgEndDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${formatValueDateSelected} - ${this.endDateLimit
+          }`;
       } else {
         this.errorMsgEndDate = null;
         this.endDateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
@@ -345,7 +353,7 @@ export class DatePicker {
     };
     return (
       <Host>
-        <div ref={this.refActionElement} class={{ datepicker: true }} tabindex="0">
+        <div ref={this.refActionElement} class={{ datepicker: true }}>
           {this.typeOfDate == 'single' ? (
             <div
               class={{
@@ -358,7 +366,7 @@ export class DatePicker {
                 label={termTranslate(this.language, 'setTheDate')}
                 value={this.valueDateSelected}
                 disabled={this.disabled}
-                placeholder="__/__/____"
+                type="date"
                 maxlength={10}
                 icon="calendar"
                 onClick={() => this.openDatepicker()}
@@ -381,7 +389,7 @@ export class DatePicker {
                 label={termTranslate(this.language, 'from')}
                 value={this.valueDateSelected}
                 disabled={this.disabled}
-                placeholder="__/__/____"
+                type="date"
                 maxlength={10}
                 icon="calendar"
                 onClick={() => this.openDatepicker()}
@@ -396,7 +404,7 @@ export class DatePicker {
                 label={termTranslate(this.language, 'to')}
                 value={this.valueEndDateSelected}
                 disabled={this.disabled || !this.dateSelected}
-                placeholder="__/__/____"
+                type="date"
                 maxlength={10}
                 icon="calendar"
                 onClick={() => this.openDatepicker()}

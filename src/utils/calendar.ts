@@ -208,3 +208,14 @@ export const dateToString = (value: Date): string => {
     .toString()
     .padStart(2, '0')}/${value.getFullYear()}`;
 };
+
+export const typeDateToStringDate = (value: string): string => {
+  const splitDate = value.split('-');
+  return `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
+};
+
+export const dateToTypeDate = (value: Date): string => {
+  return `${value.getFullYear()}-${(value.getMonth() + 1)
+    .toString()
+    .padStart(2, '0')}-${value.getDate().toString().padStart(2, '0')}`;
+};
