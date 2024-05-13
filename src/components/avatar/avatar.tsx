@@ -1,4 +1,4 @@
-import { Component, EventEmitter, h, Prop, Event, Host, State } from '@stencil/core';
+import { Component, EventEmitter, h, Prop, Event, Host, State, Element } from '@stencil/core';
 import { FontSize } from '../typo/typo';
 import { IconSize } from '../icon/icon-interface';
 import { colorLetter } from './color-letter';
@@ -12,6 +12,7 @@ export type colors = 'colorLetter' | 'system' | 'success' | 'warning' | 'error' 
   shadow: true,
 })
 export class BdsAvatar {
+  @Element() el: HTMLElement;
   private typoSize?: FontSize = 'fs-20';
   private iconSize?: IconSize = 'large';
   @State() hasThumb: boolean;
@@ -38,6 +39,10 @@ export class BdsAvatar {
    */
   @Prop() upload?: boolean = false;
   /**
+   * When set to true, allows the avatar to be clicked to select and upload an image.
+   */
+  @Prop() openUpload?: boolean = false;
+  /**
    * Ellipses, serves to indicate the user number in the listing.
    */
   @Prop() ellipsis?: number = null;
@@ -47,15 +52,38 @@ export class BdsAvatar {
    */
   @Prop() dataTest?: string = null;
   @Event() bdsClickAvatar: EventEmitter;
+  @Event() bdsImageUpload: EventEmitter;
 
   private onUploadClick(e) {
     e.preventDefault();
     this.bdsClickAvatar.emit(e);
+    if (this.openUpload) {
+      this.handleOpenUpload(e);
+    }
   }
 
-  handleKeyDown(event) {
-    if (event.key == 'Enter') {
-      this.bdsClickAvatar.emit(event);
+  handleOpenUpload = (e) => {
+    const file = this.el.shadowRoot.getElementById('file-input');
+    if (e.type === 'click' || (e.type === 'keydown' && (e.key === 'Enter' || e.key === ' '))) {
+      file.click();
+    }
+  };
+
+  private onFileInputChange(event) {
+    const fileInput = event.target as HTMLInputElement;
+    const files = fileInput.files;
+
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const imageUrl = e.target.result as string;
+        this.thumbnail = imageUrl;
+        this.bdsImageUpload.emit(imageUrl);
+      };
+
+      reader.readAsDataURL(selectedFile);
     }
   }
 
@@ -115,6 +143,13 @@ export class BdsAvatar {
 
     return (
       <Host>
+        <input
+          type="file"
+          id="file-input"
+          accept="image/*"
+          onChange={(event) => this.onFileInputChange(event)}
+          style={{ display: 'none' }}
+        ></input>
         <div
           class={{
             avatar: true,
@@ -130,11 +165,11 @@ export class BdsAvatar {
                       : null
             }`]: true,
             [`avatar__size--${this.size}`]: true,
-            upload: this.upload,
+            upload: this.upload || this.openUpload,
           }}
           onClick={(ev) => this.onUploadClick(ev)}
           tabindex="0"
-          onKeyDown={this.handleKeyDown.bind(this)}
+          onKeyDown={(ev) => this.onUploadClick(ev)}
           data-test={this.dataTest}
         >
           {this.ellipsis ? (
@@ -142,7 +177,7 @@ export class BdsAvatar {
               <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
             </div>
           ) : this.thumbnail ? (
-            this.upload ? (
+            this.upload || this.openUpload ? (
               <div class="avatar__btn">
                 <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
                 <div class="avatar__btn__thumb">
@@ -160,7 +195,7 @@ export class BdsAvatar {
               </div>
             )
           ) : this.name ? (
-            this.upload ? (
+            this.upload || this.openUpload ? (
               <div class="avatar__btn">
                 <bds-typo margin={false} class="avatar__btn__text" variant={this.typoSize} tag="span">
                   {firstName + lastName}
@@ -181,7 +216,7 @@ export class BdsAvatar {
                 </bds-typo>
               </div>
             )
-          ) : this.upload ? (
+          ) : this.upload || this.openUpload ? (
             <div class="avatar__btn">
               <bds-icon class="avatar__btn__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
               <div class="avatar__btn__empty">

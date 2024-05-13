@@ -260,6 +260,13 @@ $input-width: 100%;
 
       resize: none;
       cursor: inherit;
+
+      &[type="date"] {
+        &::-webkit-calendar-picker-indicator {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
     }
   }
 
