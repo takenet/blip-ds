@@ -271,8 +271,9 @@ export class DatePicker {
       this.errorMsgDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.startDateLimit} - ${this.endDateLimit
-          }`;
+        this.errorMsgDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.startDateLimit} - ${
+          this.endDateLimit
+        }`;
       } else {
         this.errorMsgDate = null;
         this.dateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
@@ -300,8 +301,9 @@ export class DatePicker {
       this.errorMsgEndDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgEndDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${formatValueDateSelected} - ${this.endDateLimit
-          }`;
+        this.errorMsgEndDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${formatValueDateSelected} - ${
+          this.endDateLimit
+        }`;
       } else {
         this.errorMsgEndDate = null;
         this.endDateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
