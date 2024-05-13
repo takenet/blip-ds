@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Watch, Element } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
 @Component({
@@ -147,6 +147,14 @@ export class Select {
     this.text = this.getText();
   }
 
+  @Listen('mousedown', { target: 'window', passive: true, capture: true })
+  handleWindow(ev: Event) {
+    const path = ev.composedPath();
+    if (!path.find((element: HTMLElement) => element == this.el)) {
+      this.isOpen = false;
+    }
+  }
+
   componentWillLoad() {
     this.options && this.optionsChanged();
     this.intoView = getScrollParent(this.el);
@@ -154,7 +162,6 @@ export class Select {
 
   componentWillRender() {
     this.options && this.updateOptions();
-    this.getValueSelected();
   }
 
   componentDidLoad() {
@@ -256,7 +263,6 @@ export class Select {
   private onBlur = (): void => {
     this.bdsBlur.emit();
     this.isPressed = false;
-    setTimeout(() => (this.isOpen = false), 100);
   };
 
   private toggle = (): void => {
@@ -284,7 +290,7 @@ export class Select {
       detail: { value },
     } = event;
     this.value = value;
-    this.onBlur();
+    this.toggle();
   };
 
   private keyPressWrapper(event) {
