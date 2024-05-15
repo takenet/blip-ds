@@ -11,18 +11,43 @@ export const Releases = () => {
           // Use expressões regulares para remover [ ], ( ), bem como os símbolos #, * e )
           const cleanedText = release.body.replace(/\[.*?\]|\(.*?\)|[#*)]/g, '');
 
-          // Identifica e move as ocorrências de "Bug Fixes" ou "Features" para o título
-          const lines = cleanedText.split('\n');
-          const groupedData = { 'Bug Fixes': [], Features: [] };
+          // Remove o "in" que vem antes de um link
+          const cleanedTextNoIn = cleanedText.replace(/in\s(http[s]?:\/\/\S+)/g, '$1');
+
+          // Remove o "by" que vem antes do "@" seguido pelo usuário
+          const cleanedTextNoBy = cleanedTextNoIn.replace(/by\s@([^\s]+)/g, '');
+
+          // Remove links
+          const cleanedTextNoLinks = cleanedTextNoBy.replace(/http[s]?:\/\/\S+/g, '');
+
+          // Remove o usuário com @ e o link que vem depois do usuário
+          const cleanedTextNoUser = cleanedTextNoLinks.replace(/@([^\s]+)\s?\S+/g, '');
+
+          // Identifica e move as ocorrências de "Bug Fixes", "Features" ou "What's Changed" para o título
+          const lines = cleanedTextNoUser.split('\n');
+          const groupedData = { 'Bug Fixes': [], Features: [], "What's Changed": [] };
           let currentGroup = null;
 
           for (const line of lines) {
+            // Ignora a linha que contém "Full Changelog"
+            if (line.includes('Full Changelog')) {
+              continue;
+            }
+
             if (line.includes('Bug Fixes')) {
               currentGroup = 'Bug Fixes';
             } else if (line.includes('Features')) {
               currentGroup = 'Features';
+            } else if (line.includes("What's Changed")) {
+              if (release.name.endsWith('.0')) {
+                currentGroup = 'Features';
+              } else {
+                currentGroup = 'Bug Fixes';
+              }
             } else if (currentGroup) {
-              groupedData[currentGroup].push(line);
+              if (!groupedData[currentGroup].includes(line)) {
+                groupedData[currentGroup].push(line);
+              }
             }
           }
 
