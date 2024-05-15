@@ -11,3 +11,11 @@
   box-sizing: border-box;
   border-collapse: collapse;
 }
+
+:host(.scrollable) {
+  overflow-x: auto;
+}
+
+:host(.dense-table) {
+  height: fit-content;
+}

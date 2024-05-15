@@ -7,7 +7,7 @@ import { Component, h } from '@stencil/core';
 export class TestComponent {
   render() {
     return (
-      <bds-grid xxs="12" direction="row" padding="3" flex-wrap="wrap">
+      <bds-grid xxs="12" direction="row" padding="3" flex-wrap="wrap" gap="2">
         <bds-grid xxs="12">
           <div class="titulo">
             <bds-typo variant="fs-40" bold="bold">

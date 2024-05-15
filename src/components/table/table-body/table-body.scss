@@ -2,3 +2,11 @@
     display: table-row-group;
     height: 64px;
   }
+
+  :host(.multiple) {
+    border-bottom: 1px solid $color-border-2;
+  }
+  
+  :host:last-child {
+    border-bottom: none;
+  }
