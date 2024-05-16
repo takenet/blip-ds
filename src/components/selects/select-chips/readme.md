@@ -53,6 +53,12 @@
 
 
 
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `value` | `string` |             |
+
 #### Returns
 
 Type: `Promise<void>`

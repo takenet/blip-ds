@@ -44,6 +44,14 @@
 
 
 
+#### Parameters
+
+| Name      | Type  | Description |
+| --------- | ----- | ----------- |
+| `code`    | `any` |             |
+| `isoCode` | `any` |             |
+| `flag`    | `any` |             |
+
 #### Returns
 
 Type: `Promise<void>`
