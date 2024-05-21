@@ -44,12 +44,6 @@ Type: `Promise<void>`
 
 Used for delete a item from the list.
 
-#### Parameters
-
-| Name    | Type  | Description |
-| ------- | ----- | ----------- |
-| `index` | `any` |             |
-
 #### Returns
 
 Type: `Promise<void>`
