@@ -24,7 +24,7 @@ export class BdsStep implements ComponentInterface {
   /**
    * Used to set the step as disabled
    */
-  @Prop() disabled?: boolean = true;
+  @Prop() disabled?: boolean = false;
 
   /**
    * Used to set the index of the steps
@@ -58,16 +58,19 @@ export class BdsStep implements ComponentInterface {
               step__content__ellipse: true,
               'step__content__ellipse--active': this.active,
               'step__content__ellipse--completed': this.completed,
+              'step__content__ellipse--disabled': this.disabled,
             }}
           >
-            {this.completed && <bds-icon name="true" color="#fff"></bds-icon>}
-            {!this.completed && <bds-typo class="step__content__ellipse--icon-completed">{this.index + 1}</bds-typo>}
+            {this.completed && <bds-icon name="true"></bds-icon>}
+            {!this.completed && <bds-typo>{this.index + 1}</bds-typo>}
           </div>
           <bds-typo
             variant="fs-16"
             class={{
-              'step__content__ellipse--text-completed': this.completed && !this.active,
-              'step__content__ellipse--text-active': this.active,
+              'step__content__text': true,
+              'step__content__text--completed': this.completed && !this.active,
+              'step__content__text--active': this.active,
+              'step__content__text--disabled': this.disabled,
             }}
             bold={this.active ? 'bold' : 'regular'}
           >

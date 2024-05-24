@@ -1,4 +1,3 @@
-
 $border-radius: 8px;
 .card {
   cursor: pointer;
@@ -9,7 +8,7 @@ $border-radius: 8px;
   display: flex;
   flex-direction: column;
   border-radius: $border-radius;
-  box-shadow: $shadow-drop;
+  box-shadow: $shadow-1;
   margin-left: 8px;
   margin-top: 8px;
 
@@ -24,87 +23,87 @@ $border-radius: 8px;
     &-brand {
       background-color: $color-brand;
     }
-    
+
     &-primary {
       background-color: $color-primary;
     }
-    
+
     &-secondary {
       background-color: $color-secondary;
     }
-    
+
     &-surface-1 {
       background-color: $color-surface-1;
     }
-    
+
     &-surface-2 {
       background-color: $color-surface-2;
     }
-    
+
     &-surface-3 {
       background-color: $color-surface-3;
     }
-    
+
     &-surface-4 {
       background-color: $color-surface-4;
     }
-    
+
     &-content-default {
       background-color: $color-content-default;
     }
-    
+
     &-content-disable {
       background-color: $color-content-disable;
     }
-    
+
     &-content-ghost {
       background-color: $color-content-ghost;
     }
-    
+
     &-content-bright {
       background-color: $color-content-bright;
     }
-    
+
     &-content-din {
       background-color: $color-content-din;
     }
-    
+
     &-border-1 {
       background-color: $color-border-1;
     }
-    
+
     &-border-2 {
       background-color: $color-border-2;
     }
-    
+
     &-border-3 {
       background-color: $color-border-3;
     }
-    
+
     &-info {
       background-color: $color-info;
     }
-    
+
     &-system {
       background-color: $color-system;
     }
-    
+
     &-focus {
       background-color: $color-focus;
     }
-    
+
     &-success {
       background-color: $color-success;
     }
-    
+
     &-warning {
       background-color: $color-warning;
     }
-    
+
     &-error {
       background-color: $color-error;
     }
-    
+
     &-delete {
       background-color: $color-delete;
     }
@@ -112,31 +111,31 @@ $border-radius: 8px;
     &-extended-blue {
       background-color: $color-extended-blue;
     }
-    
+
     &-extended-ocean {
       background-color: $color-extended-ocean;
     }
-    
+
     &-extended-green {
       background-color: $color-extended-green;
     }
-    
+
     &-extended-yellow {
       background-color: $color-extended-yellow;
     }
-    
+
     &-extended-orange {
       background-color: $color-extended-orange;
     }
-    
+
     &-extended-red {
       background-color: $color-extended-red;
     }
-    
+
     &-extended-pink {
       background-color: $color-extended-pink;
     }
-    
+
     &-extended-gray {
       background-color: $color-extended-gray;
     }
@@ -151,26 +150,26 @@ $border-radius: 8px;
   animation: motion 3s 1;
 }
 
-@keyframes motion{
-  0%{
-      height: 0;
+@keyframes motion {
+  0% {
+    height: 0;
   }
-  30%{
-      height: 50%;
-      }
-  85%{
-      letter-spacing: 0;
+  30% {
+    height: 50%;
+  }
+  85% {
+    letter-spacing: 0;
   }
 }
 
-@keyframes invert-motion{
-  0%{
-      height: 100%;
+@keyframes invert-motion {
+  0% {
+    height: 100%;
   }
-  30%{
-      height: 50%;
-      }
-  85%{
-      letter-spacing: 0;
+  30% {
+    height: 50%;
+  }
+  85% {
+    letter-spacing: 0;
   }
 }

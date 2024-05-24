@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid $color-surface-4;
+  border: 1px solid $color-border-1;
   border-radius: 8px;
   cursor: pointer;
   font-weight: normal;
@@ -72,7 +72,7 @@
   }
   .text-box--hover {
     background-color: $color-surface-2;
-    
+
     .text {
       color: $color-primary;
     }
@@ -105,8 +105,8 @@
 }
 
 .list-preview {
-  border-top: 1px solid $color-surface-3;
-  border-bottom: 1px solid $color-surface-3;
+  border-top: 1px solid $color-border-1;
+  border-bottom: 1px solid $color-border-1;
   max-height: 200px;
   overflow-y: auto;
 }

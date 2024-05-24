@@ -59,7 +59,7 @@
     top: 0;
     left: 0;
     background-color: $color-surface-1;
-    box-shadow: $shadow-box;
+    box-shadow: $shadow-2;
     border-radius: 8px;
     padding: 16px;
     opacity: 0;
@@ -167,19 +167,22 @@
         &__options {
           @include custom-scroll;
 
-          background: $color-surface-1;
+          background: $color-surface-0;
           width: 100%;
           max-height: 250px;
           position: absolute;
           top: 99%;
           left: 0;
           border-radius: 8px;
-          box-shadow: $shadow-drop;
+          box-shadow: $shadow-3;
           overflow-y: auto;
           z-index: 2;
           margin-top: 4px;
 
-          transition: transform 0.25s, opacity 0.75s, visibility 0.75s;
+          transition:
+            transform 0.25s,
+            opacity 0.75s,
+            visibility 0.75s;
           transform-origin: top left;
           transform: scaleY(0);
           opacity: 0;

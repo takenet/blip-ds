@@ -1,4 +1,5 @@
 import { Component, ComponentInterface, Host, h, Prop, Event, Element, State, EventEmitter } from '@stencil/core';
+import { PaperBackground } from '../paper/paper-interface';
 
 export type elevationType = 'primary' | 'secondary' | 'static';
 
@@ -21,7 +22,10 @@ export class Card implements ComponentInterface {
    * If the prop is true, the component will be clickable.
    */
   @Prop() clickable?: boolean = false;
-
+  /**
+   * Prop for set the background color.
+   */
+  @Prop() bgColor?: PaperBackground = 'surface-1';
   /**
    * Data test is the prop to specifically test the component action object.
    */
@@ -101,6 +105,7 @@ export class Card implements ComponentInterface {
           class={{ card: true, card_hover: this.clickable }}
           height={this.height}
           width={this.width}
+          bgColor={this.bgColor}
           data-test={this.dataTest}
         >
           <div tabindex="0" class="focus" onKeyDown={this.handleKeyDown.bind(this)}></div>

@@ -19,7 +19,6 @@
     z-index: 0;
 
     &--container-text {
-      
       &--full {
         width: 100%;
       }
@@ -145,7 +144,6 @@
       color: $color-content-din;
     }
     &--outline {
-      background-color: $color-surface-1;
       border: 1px solid $color-border-1;
       color: $color-content-default;
     }

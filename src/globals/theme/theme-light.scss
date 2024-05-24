@@ -1,26 +1,42 @@
 $color-light-brand: #0096fa;
 $color-light-primary: #1e6bf1;
 $color-light-secondary: #292929;
-$color-light-surface-1: #F6F6F6;
-$color-light-surface-2: #E0E0E0;
-$color-light-surface-3: #CFCFCF;
+$color-light-surface-0: #ffffff;
+$color-light-surface-1: #f6f6f6;
+$color-light-surface-2: #e0e0e0;
+$color-light-surface-3: #cfcfcf;
 $color-light-surface-4: #141414;
+$color-light-surface-positive: #d3f4e5;
+$color-light-surface-negative: #ffd6d6;
+$color-light-surface-primary: #1e6bf1;
 $color-light-content-default: #454545;
 $color-light-content-disable: #636363;
-$color-light-content-ghost: #8C8C8C;
+$color-light-content-ghost: #8c8c8c;
 $color-light-content-bright: #ffffff;
 $color-light-content-din: #000000;
-$color-light-border-1: #B1B1B1;
-$color-light-border-2: #CFCFCF;
-$color-light-border-3: #E1E1E1;
+$color-light-border-1: #c9c9c9;
+$color-light-border-2: #e0e0e0;
+$color-light-border-3: #ededed;
+$color-light-positive: #007a42;
+$color-light-negative: #a80b0b;
 $color-light-info: #80e3eb;
-$color-light-system: #B2DFFD;
+$color-light-system: #b2dffd;
 $color-light-focus: #c226fb;
 $color-light-success: #84ebbc;
 $color-light-warning: #fde99b;
 $color-light-error: #f99f9f;
 $color-light-delete: #e60f0f;
 
+//Extended
+$color-light-extended-blue: #1968f0;
+$color-light-extended-ocean: #00d3e4;
+$color-light-extended-green: #35de90;
+$color-light-extended-yellow: #fbcf23;
+$color-light-extended-orange: #f06305;
+$color-light-extended-red: #e60f0f;
+$color-light-extended-pink: #fb4bc1;
+$color-light-extended-gray: #666666;
+
 //Actions
-$color-hover: var(--color-hover, rgba(0, 0, 0, 0.08));
-$color-pressed: var(--color-pressed, rgba(0, 0, 0, 0.16));
+$color-light-hover: rgba(0, 0, 0, 0.08);
+$color-light-pressed: rgba(0, 0, 0, 0.16);

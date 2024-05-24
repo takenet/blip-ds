@@ -18,7 +18,7 @@ $tooltip-border-width: 6px;
     width: max-content;
     min-width: 32px;
     max-width: 320px;
-    filter: drop-shadow($shadow-drop);
+    box-shadow: $shadow-2;
     visibility: hidden;
     transition: all 0.2s ease-in-out;
     box-sizing: border-box;
@@ -82,7 +82,7 @@ $tooltip-border-width: 6px;
       left: calc(100% + #{$tooltip-horizontal-margin});
       top: 50%;
       &::before {
-        left: -6px;
+        left: -5px;
         top: 50%;
         transform: translateX(0) translateY(-50%);
         border-right-color: $color-content-default;
@@ -139,7 +139,7 @@ $tooltip-border-width: 6px;
       top: 50%;
       &::before {
         left: auto;
-        right: -12px;
+        right: -11px;
         top: 50%;
         transform: translateX(0) translateY(-50%);
         border-left-color: $color-content-default;
@@ -161,7 +161,6 @@ $tooltip-border-width: 6px;
       }
     }
     &__text {
-
       pre {
         margin: 0;
         display: flex;

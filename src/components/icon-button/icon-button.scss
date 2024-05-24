@@ -8,7 +8,7 @@ $icon-button-padding: 8px;
   height: $size;
 }
 
-@mixin disable-button( $color: null, $border: null) {
+@mixin disable-button($color: null, $border: null) {
   opacity: 50%;
   pointer-events: none;
   cursor: not-allowed;
@@ -23,7 +23,6 @@ $icon-button-padding: 8px;
 
   &:hover,
   &:active {
-
     @if ($color) {
       color: $color;
     }
@@ -35,7 +34,7 @@ $icon-button-padding: 8px;
 }
 
 @mixin icon-button-primary {
-  background: $color-primary;
+  background: $color-surface-primary;
 
   .bds-icon {
     color: $color-content-bright;
@@ -89,7 +88,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button( $color-disabled-wrong);
+    @include disable-button($color-disabled-wrong);
   }
 }
 
@@ -102,7 +101,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
+    @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
@@ -115,7 +114,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button( $color-disabled-text, 1px solid $color-disabled-text);
+    @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
@@ -151,7 +150,7 @@ $icon-button-padding: 8px;
   border-radius: $icon-button-border-radius;
   padding: $icon-button-padding;
 
-  &::before {
+  &::after {
     content: '';
     position: absolute;
     top: 0;
@@ -163,15 +162,20 @@ $icon-button-padding: 8px;
     border-radius: $icon-button-border-radius;
   }
   &:hover {
-    &::before {
+    &::after {
       background-color: $color-hover;
     }
   }
 
   &:active {
-    &::before {
+    &::after {
       background-color: $color-pressed;
     }
+  }
+
+  & .icon__button {
+    position: relative;
+    z-index: 1;
   }
 
   & * {

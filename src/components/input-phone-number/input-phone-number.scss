@@ -35,10 +35,6 @@ $select-options-max-height: 250px;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
 
-  @if ($name == 'disabled') {
-    background: $color-surface-2;
-  }
-
   @include input-border($color-input-border);
 
   // States
@@ -52,6 +48,11 @@ $select-options-max-height: 250px;
 
   &.input--pressed {
     @include input-border($color-input-primary, $color-input-focus);
+    .input__icon {
+      .bds-icon {
+        color: $color-input-primary;
+      }
+    }
   }
 
   .input__container {
@@ -62,7 +63,9 @@ $select-options-max-height: 250px;
     color: $color-input-label;
 
     &--pressed {
-      color: $color-input-primary;
+      bds-typo {
+        color: $color-input-primary;
+      }
     }
   }
 
@@ -119,13 +122,15 @@ $select-options-max-height: 250px;
   display: flex;
   flex-direction: row;
   align-items: center;
-
   flex: 1;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
 
-  background: $color-surface-1;
+  .bds-icon {
+    position: relative;
+    z-index: 1;
+  }
 
   &--state {
     &-primary {
@@ -138,7 +143,7 @@ $select-options-max-height: 250px;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-primary;
+          background-color: $color-hover;
           z-index: 0;
           opacity: 50%;
           border-radius: 8px;
@@ -166,7 +171,7 @@ $select-options-max-height: 250px;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-delete;
+          background-color: $color-surface-negative;
           z-index: 0;
           opacity: 50%;
           border-radius: 8px;
@@ -174,7 +179,7 @@ $select-options-max-height: 250px;
       }
       @include input-theme(
         'danger',
-        $color-delete,
+        $color-negative,
         $color-error,
         $color-delete,
         $color-content-default,
@@ -194,14 +199,14 @@ $select-options-max-height: 250px;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-success;
+          background-color: $color-surface-positive;
           z-index: 0;
           border-radius: 8px;
         }
       }
       @include input-theme(
         'success',
-        $color-content-default,
+        $color-positive,
         $color-success,
         $color-content-default,
         $color-content-default,
@@ -215,12 +220,11 @@ $select-options-max-height: 250px;
       opacity: 50%;
       pointer-events: none;
       cursor: not-allowed;
-      background: $color-surface-2;
     }
   }
 
   & .icon-success {
-    color: $color-success;
+    color: $color-positive;
     margin-left: 4px;
   }
 
@@ -298,10 +302,20 @@ $select-options-max-height: 250px;
 
     &--danger {
       .bds-icon {
-        color: $color-delete;
+        color: $color-negative;
       }
       .input__message__text {
-        color: $color-delete;
+        color: $color-negative;
+      }
+    }
+    &--success {
+      .input__message__icon {
+        .bds-icon {
+          color: $color-positive;
+        }
+      }
+      .input__message__text {
+        color: $color-content-default;
       }
     }
   }
@@ -378,12 +392,15 @@ $select-options-max-height: 250px;
     top: 99%;
     left: 0;
     border-radius: $select-options-radius;
-    box-shadow: $select-options-box-shadow;
+    box-shadow: $shadow-2;
     overflow-y: auto;
     z-index: 2;
     margin-top: 4px;
 
-    transition: transform 0.25s, opacity 0.75s, visibility 0.75s;
+    transition:
+      transform 0.25s,
+      opacity 0.75s,
+      visibility 0.75s;
     transform-origin: top left;
     transform: scaleY(0);
     opacity: 0;

@@ -43,10 +43,6 @@ $input_fixed: 140px;
   $color-input-hover: $hover;
   $color-input-focus: $focus;
 
-  @if ($name == 'disabled') {
-    background: $color-surface-2;
-  }
-
   @include input-border($color-input-border);
 
   // States
@@ -60,13 +56,20 @@ $input_fixed: 140px;
 
   &.input--pressed {
     @include input-border($color-input-primary, $color-input-focus);
+    .input__icon {
+      .bds-icon {
+        color: $color-input-primary;
+      }
+    }
   }
 
   .input__container__label {
     color: $color-input-label;
 
     &--pressed {
-      color: $color-input-primary;
+      bds-typo {
+        color: $color-input-primary;
+      }
     }
   }
 
@@ -120,13 +123,15 @@ $input_fixed: 140px;
   flex-direction: row;
   align-items: center;
   padding: $input-padding;
-
   flex: 1;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
 
-  background: $color-surface-1;
+  .bds-icon {
+    position: relative;
+    z-index: 1;
+  }
 
   &--state {
     &-primary {
@@ -139,7 +144,7 @@ $input_fixed: 140px;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-primary;
+          background-color: $color-hover;
           z-index: 0;
           opacity: 50%;
           border-radius: 8px;
@@ -167,7 +172,7 @@ $input_fixed: 140px;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-delete;
+          background-color: $color-surface-negative;
           z-index: 0;
           opacity: 50%;
           border-radius: 8px;
@@ -175,7 +180,7 @@ $input_fixed: 140px;
       }
       @include input-theme(
         'danger',
-        $color-delete,
+        $color-negative,
         $color-error,
         $color-delete,
         $color-content-default,
@@ -195,14 +200,14 @@ $input_fixed: 140px;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-success;
+          background-color: $color-surface-positive;
           z-index: 0;
           border-radius: 8px;
         }
       }
       @include input-theme(
         'success',
-        $color-content-default,
+        $color-positive,
         $color-success,
         $color-content-default,
         $color-content-default,
@@ -222,7 +227,7 @@ $input_fixed: 140px;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-primary;
+          background-color: $color-hover;
           z-index: 0;
           opacity: 50%;
           border-radius: 8px;
@@ -231,12 +236,11 @@ $input_fixed: 140px;
       opacity: 50%;
       pointer-events: none;
       cursor: not-allowed;
-      background: $color-surface-2;
     }
   }
 
   & .icon-success {
-    color: $color-success;
+    color: $color-positive;
     margin-left: 4px;
   }
 
@@ -315,10 +319,20 @@ $input_fixed: 140px;
 
     &--danger {
       .bds-icon {
-        color: $color-delete;
+        color: $color-negative;
       }
       .input__message__text {
-        color: $color-delete;
+        color: $color-negative;
+      }
+    }
+    &--success {
+      .input__message__icon {
+        .bds-icon {
+          color: $color-positive;
+        }
+      }
+      .input__message__text {
+        color: $color-content-default;
       }
     }
   }
