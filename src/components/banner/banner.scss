@@ -47,6 +47,10 @@
       &--error {
         background-color: $color-error;
       }
+
+      &--success {
+        background-color: $color-success;
+      }
     }
 
     &__content {

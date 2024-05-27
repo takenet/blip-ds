@@ -27,15 +27,15 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'system' },
     },
-    
-    options: ['system', 'error', 'warning', 'info'],
+
+    options: ['system', 'error', 'warning', 'info', 'success'],
     control: 'select',
   },
   context: {
     table: {
       defaultValue: { summary: 'outside' },
     },
-    
+
     options: ['outside', 'inside'],
     control: 'select',
   },
@@ -43,7 +43,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'false' },
     },
-    
+
     control: 'boolean',
   },
 };

@@ -31,7 +31,7 @@
   position: relative;
   box-sizing: border-box;
   border-radius: 8px;
-  box-shadow: $shadow-toast;
+  box-shadow: $shadow-3;
   color: $color-content-default;
   opacity: 0;
   margin-top: 16px;
@@ -93,7 +93,8 @@
     background-color: $color-surface-1;
   }
 
-  bds-icon {
+  &__icon {
+    position: relative;
     display: flex;
     align-items: center;
     padding: 8px 0;
@@ -102,11 +103,14 @@
   &__ballon {
     display: flex;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -8px;
+    left: -12px;
+    color: $color-system;
+    width: 72px;
   }
 
   &__content {
+    position: relative;
     height: 100%;
     width: 100%;
     align-items: flex-start;
@@ -120,7 +124,8 @@
     display: flex;
     align-items: flex-start;
 
-    bds-button-icon, bds-button {
+    bds-button-icon,
+    bds-button {
       position: relative;
       &::before {
         content: '';
@@ -129,10 +134,10 @@
         border: 2px solid transparent;
         border-radius: 4px;
       }
-  
+
       &:focus-visible {
         outline: none;
-  
+
         &::before {
           border-color: $color-focus;
         }
@@ -142,7 +147,6 @@
     &__button {
       white-space: nowrap;
     }
-
   }
 }
 

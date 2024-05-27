@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './toast.mdx';
 import { BdsToast } from '../../../blip-ds-react/dist/components';
 
@@ -16,7 +16,6 @@ export const Properties = (args) => {
     <bds-toast
       button-action={args.buttonAction}
       button-text={args.buttonText}
-      icon={args.icon}
       action-type={args.actionType}
       toast-title={args.toastTitle}
       toast-text={args.toastText}
@@ -29,7 +28,6 @@ export const Properties = (args) => {
 Properties.args = {
   buttonAction: 'close',
   buttonText: '',
-  icon: '',
   actionType: 'icon',
   toastTitle: 'Toast de teste',
   toastText: 'Esse é um toast para testes, podendo ser modificado na tabela.',
@@ -42,30 +40,24 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'close' },
     },
-    options: ["close", "custom"],
+    options: ['close', 'custom'],
     control: 'select',
   },
   actionType: {
     table: {
       defaultValue: { summary: 'close' },
     },
-    options: ["button", "icon"],
+    options: ['button', 'icon'],
     control: 'select',
   },
   variant: {
     table: {
       defaultValue: { summary: 'close' },
     },
-    options: ["error", "notification", "redo", "success", "system", "undo", "warning"],
+    options: ['error', 'notification', 'redo', 'success', 'system', 'undo', 'warning'],
     control: 'select',
   },
   buttonText: {
-    table: {
-      defaultValue: { summary: 'vazio' },
-    },
-    control: 'text',
-  },
-  icon: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
@@ -89,7 +81,7 @@ Properties.argTypes = {
     },
     control: 'boolean',
   },
-}
+};
 
 export const Events = () => {
   useEffect(() => {
@@ -100,14 +92,13 @@ export const Events = () => {
   });
   return (
     <bds-toast
-    id="toast"
-    button-action= 'close'
-    icon= 'bell'
-    action-type= 'icon'
-    toast-title= 'toast system'
-    toast-text= 'Este é um toast de sistema'
-    variant= 'system'
-    show= 'true'
+      id="toast"
+      button-action="close"
+      action-type="icon"
+      toast-title="toast system"
+      toast-text="Este é um toast de sistema"
+      variant="system"
+      show="true"
     ></bds-toast>
   );
 };
@@ -115,14 +106,13 @@ export const Events = () => {
 export const FrameworkReact = () => {
   return (
     <BdsToast
-    id="toast"
-    buttonAction= 'close'
-    icon= 'bell'
-    actionType= 'icon'
-    toastTitle= 'toast system'
-    toastText= 'Este é um toast de sistema'
-    variant= 'system'
-    show= 'true'
+      id="toast"
+      buttonAction="close"
+      actionType="icon"
+      toastTitle="toast system"
+      toastText="Este é um toast de sistema"
+      variant="system"
+      show="true"
     ></BdsToast>
   );
 };

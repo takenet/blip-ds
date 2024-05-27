@@ -11,7 +11,7 @@ import {
   Element,
 } from '@stencil/core';
 
-export type BannerVariant = 'system' | 'warning' | 'info' | 'error';
+export type BannerVariant = 'system' | 'warning' | 'info' | 'error' | 'success';
 export type BannerAlign = 'left' | 'right' | 'center';
 export type ButtonClose = 'true' | 'false';
 export type Link = 'true' | 'false';
@@ -87,6 +87,9 @@ export class Banner implements ComponentInterface {
             )}
             {this.variant === 'error' && (
               <bds-icon class="icon_left" theme="outline" size="medium" name="error"></bds-icon>
+            )}
+            {this.variant === 'success' && (
+              <bds-icon class="icon_left" theme="outline" size="medium" name="checkball"></bds-icon>
             )}
             <div class="slot">
               <slot></slot>

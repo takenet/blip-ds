@@ -17,6 +17,7 @@ import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/b
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
+import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
@@ -51,7 +52,6 @@ import { collapses as collapses1 } from "./components/nav-tree/nav-tree";
 import { collapses as collapses2 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
-import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
@@ -413,6 +413,10 @@ export namespace Components {
         "variant"?: IconButtonVariant;
     }
     interface BdsCard {
+        /**
+          * Prop for set the background color.
+         */
+        "bgColor"?: PaperBackground;
         /**
           * If the prop is true, the component will be clickable.
          */
@@ -3822,6 +3826,10 @@ declare namespace LocalJSX {
         "variant"?: IconButtonVariant;
     }
     interface BdsCard {
+        /**
+          * Prop for set the background color.
+         */
+        "bgColor"?: PaperBackground;
         /**
           * If the prop is true, the component will be clickable.
          */

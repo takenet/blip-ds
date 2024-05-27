@@ -87,7 +87,7 @@ $slider-size-content-short: 2.25px;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $color-content-disable;
+  background-color: $color-content-ghost;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 34px;
@@ -106,14 +106,13 @@ $slider-size-content-short: 2.25px;
 
   &--deselected-disabled {
     cursor: not-allowed;
-    background-color: $color-content-disable;
+    background-color: $color-content-ghost;
     opacity: 0.5;
   }
-
 }
 
 input:checked + .slider {
-  background-color: $color-primary;
+  background-color: $color-surface-primary;
 
   &--selected-disabled {
     cursor: not-allowed;
