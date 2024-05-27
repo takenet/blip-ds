@@ -67,7 +67,7 @@ export class BdsStep implements ComponentInterface {
           <bds-typo
             variant="fs-16"
             class={{
-              'step__content__text': true,
+              step__content__text: true,
               'step__content__text--completed': this.completed && !this.active,
               'step__content__text--active': this.active,
               'step__content__text--disabled': this.disabled,
