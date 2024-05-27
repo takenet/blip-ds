@@ -13,7 +13,7 @@
   position: relative;
 
   &__header {
-    padding: 0 16px;
+    padding: 4px 16px;
     overflow: hidden;
 
     &__itens {
@@ -44,15 +44,38 @@
         width: auto;
         display: flex;
         align-items: center;
-        color: $color-content-disable;
         border-bottom: 2px solid transparent;
+        position: relative;
+
+        &__typo{
+          color: $color-content-disable;
+          &__disable {
+            color: $color-content-ghost;
+          }
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          inset: -4px;
+          border: 2px solid transparent;
+          border-radius: 4px;
+        }
+
+        &:focus-visible {
+          outline: none;
+
+          &::before {
+            border-color: $color-focus;
+          }
+        }
+
         &__open {
           color: $color-content-default;
           border-color: $color-primary;
         }
         &__disable {
-          cursor: default;
-          color: $color-content-ghost;
+          cursor: no-drop;
         }
       }
     }
@@ -61,7 +84,8 @@
   &__slide {
     position: relative;
     overflow: hidden;
-    height: 48px;
+    padding: 0 16px;
+    height: 54px;
     margin-left: 56px;
     margin-right: 56px;
 
@@ -86,6 +110,7 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
+      padding: 4px;
       gap: 32px;
       -webkit-transition: left 0.5s;
       -moz-transition: left 0.5s;

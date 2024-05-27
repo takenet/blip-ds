@@ -15,6 +15,11 @@
   }
 }
 
+.dense-th {
+  min-height: 48px;
+  height: auto;
+}
+
 :host:first-child {
   padding-left: 16px;
 }

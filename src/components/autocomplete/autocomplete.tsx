@@ -7,7 +7,6 @@ import {
 } from './autocomplete-select-interface';
 import { SelectOptionsPositionType } from '../selects/select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
-import { Keyboard } from '../../utils/enums';
 
 export type SelectionType = 'single' | 'multiple';
 
@@ -444,48 +443,29 @@ export class BdsAutocomplete {
     this.toggle();
   };
 
-  private keyPressWrapper = (event: KeyboardEvent): void => {
-    this.isOpen = true;
+  private keyPressWrapper(event) {
     switch (event.key) {
-      case Keyboard.ENTER:
+      case 'Enter':
         this.toggle();
         break;
-
-      case Keyboard.TAB:
-        const indexTabFocus = this.findFocusedElementIndex();
-        const visibleTabChildren = this.sliceInvisible(indexTabFocus + 1);
-        const elementTabToFocus = visibleTabChildren[0];
-        if (!elementTabToFocus) {
-          this.toggle();
+      case 'ArrowDown':
+        if (!this.disabled) {
+          this.isOpen = true;
         }
-        break;
-
-      case Keyboard.ARROW_DOWN:
-        const indexDownFocus = this.findFocusedElementIndex();
-        const visibleChildren = this.sliceInvisible(indexDownFocus + 1);
-        const elementToFocus = visibleChildren[0];
-        (elementToFocus?.firstElementChild as HTMLInputElement)?.focus();
-        break;
-
-      case Keyboard.ARROW_UP:
-        let indexUpFocus = this.findFocusedElementIndex();
-        const firstVisibleElement = this.childOptions.find((option) => !option.hasAttribute('invisible'));
-        if (this.childOptions[indexUpFocus] != firstVisibleElement) {
-          indexUpFocus = indexUpFocus > 0 ? indexUpFocus : this.childOptions.length;
-          const visibleChildren = this.sliceInvisible(0, indexUpFocus);
-          const elementToFocus = visibleChildren[visibleChildren.length - 1];
-          (elementToFocus?.firstElementChild as HTMLInputElement)?.focus();
+        if (this.childOptionSelected) {
+          this.value = (this.childOptionSelected.nextSibling as HTMLBdsSelectOptionElement)?.value;
+          return;
         }
+        this.value = (this.el.firstElementChild as HTMLBdsSelectOptionElement)?.value;
+        break;
+      case 'ArrowUp':
+        if (this.childOptionSelected) {
+          this.value = (this.childOptionSelected.previousSibling as HTMLBdsSelectOptionElement)?.value;
+          return;
+        }
+        this.value = (this.el.lastElementChild as HTMLBdsSelectOptionElement)?.value;
         break;
     }
-  };
-
-  private sliceInvisible(index: number, endIndex = this.childOptions.length): HTMLBdsSelectOptionElement[] {
-    return this.childOptions.slice(index, endIndex).filter((option) => !option.hasAttribute('invisible'));
-  }
-
-  private findFocusedElementIndex(): number {
-    return this.childOptions.findIndex((option) => option.firstElementChild.matches(':focus'));
   }
 
   private cleanInputSelection = async () => {
@@ -598,8 +578,8 @@ export class BdsAutocomplete {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
+          ? 'input__message input__message--success'
+          : 'input__message';
 
     if (message) {
       return (
@@ -632,10 +612,9 @@ export class BdsAutocomplete {
             'input--pressed': this.isPressed,
           }}
           onClick={this.onClickWrapper}
-          onKeyDown={this.keyPressWrapper}
         >
           {this.renderIcon()}
-          <div class="input__container" tabindex="0" onFocusout={this.onFocusout} onKeyDown={this.keyPressWrapper}>
+          <div class="input__container" tabindex="0" onFocusout={this.onFocusout}>
             {this.renderLabel()}
             <div class={{ input__container__wrapper: true }}>
               {this.textMultiselect?.length > 0 && (
@@ -654,6 +633,7 @@ export class BdsAutocomplete {
                 type="text"
                 value={this.text}
                 data-test={this.dataTest}
+                onKeyDown={this.keyPressWrapper.bind(this)}
               />
             </div>
           </div>

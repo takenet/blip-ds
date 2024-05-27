@@ -1,6 +1,6 @@
 @import 'node_modules/blip-tokens/build/scss/variables.scss';
-@import 'node_modules/blip-tokens/build/scss/theme-light.scss';
-@import 'node_modules/blip-tokens/build/scss/extended-color.scss';
+@import './theme/theme-light.scss';
+@import './theme/extended-colors.scss';
 
 $color-brand: var(--color-brand, $color-light-brand);
 $color-primary: var(--color-primary, $color-light-primary);
@@ -29,13 +29,15 @@ $color-delete: var(--color-delete, $color-light-delete);
 $color-hover: var(--color-hover, rgba(0, 0, 0, 0.08));
 $color-pressed: var(--color-pressed, rgba(0, 0, 0, 0.16));
 $color-shadow-1: var(--color-shadow-1, rgba(0, 0, 0, 0.16));
+$color-positive:var(--color-positive, #10603B);
+$color-negative:var(--color-negative, #E60F0F);
 
 // Shadows
-$shadow-drop: 0 2px 8px rgba(96, 123, 153, 0.4);
-$shadow-box: 0px 4px 10px rgba(51, 51, 51, 0.3);
-$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
-$light-drop: 0px 2px 8px rgba(7, 71, 166, 0.15);
-$shadow-toast: 0px 8px 12px rgba(96, 123, 153, 0.4), 0px 0px 4px rgba(96, 123, 153, 0.3);
+$shadow-drop: 0 2px 8px $color-shadow-1;
+$shadow-box: 0px 4px 10px $color-shadow-1;
+$shadow-toast: 0px 8px 12px $color-shadow-1, 0px 0px 4px $color-shadow-1;
+$light-drop: 0px 2px 8px $color-shadow-1;
+$shadow-toast: 0px 8px 12px $color-shadow-1, 0px 0px 4px $color-shadow-1;
 
 //Custom Colors
 $color-secondary-undo: #485c73;

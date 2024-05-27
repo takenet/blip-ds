@@ -129,6 +129,7 @@ const screens = [
 ];
 
 const blipSolid = [
+  'ai-blipinho',
   'bag',
   'bone',
   'cap',
@@ -350,6 +351,8 @@ const emptyStates = [
   'letter-search-question',
   'robot',
   'robot-1',
+  'broken-image',
+  'image-not-found',
 ];
 
 const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];
@@ -359,6 +362,8 @@ const segmented = ['cart-selected', 'catalog-option', 'item-overview', 'send-cat
 const smartphone = ['blip-chat-1', 'blip-chat-2', 'blip-chat-3', 'digital-scanning-1', 'digital-scanning-2'];
 
 const spots = [
+  'star',
+  'check',
   'air-ballon',
   'analytics-satisfaction',
   'avatar',

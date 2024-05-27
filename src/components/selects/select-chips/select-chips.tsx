@@ -341,7 +341,7 @@ export class SelectChips {
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
     return this.options
       ? Array.from(
-          this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)')
+          this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'),
         )
       : Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
   }
@@ -507,6 +507,19 @@ export class SelectChips {
           this.handleDelimiters();
           this.setChip(this.value);
           this.value = '';
+        }
+        if (!this.disabled) {
+          this.isOpen = true;
+        }
+        break;
+      case 'ArrowDown':
+        if (!this.disabled) {
+          this.isOpen = true;
+        }
+        break;
+      case 'ArrowUp':
+        if (!this.disabled) {
+          this.isOpen = false;
         }
         break;
       case 'Backspace' || 'Delete':
@@ -715,8 +728,8 @@ export class SelectChips {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
+          ? 'input__message input__message--success'
+          : 'input__message';
 
     if (message) {
       return (
@@ -753,13 +766,7 @@ export class SelectChips {
     }
 
     return (
-      <div
-        class="select"
-        tabindex="0"
-        onFocus={this.setFocusWrapper}
-        onBlur={this.removeFocusWrapper}
-        onKeyPress={this.keyPressWrapper}
-      >
+      <div class="select" tabindex="0" onFocus={this.setFocusWrapper} onBlur={this.removeFocusWrapper}>
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null} onClick={this.toggle}>
           <div
             class={{
@@ -772,7 +779,6 @@ export class SelectChips {
               'input--pressed': isPressed,
             }}
             onClick={this.onClickWrapper}
-            onKeyDown={this.keyPressWrapper}
           >
             {this.renderIcon()}
             <div class="input__container">
@@ -792,6 +798,7 @@ export class SelectChips {
                   value={this.value}
                   disabled={this.disabled}
                   data-test={this.dataTest}
+                  onKeyDown={this.keyPressWrapper}
                 ></input>
               </div>
             </div>

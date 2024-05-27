@@ -11,15 +11,28 @@ $avatar-size-extra-large: 72px;
   width: fit-content;
 }
 .avatar {
-  border-radius: 40px;
-  border: 1px solid $color-border-2;
-  box-sizing: border-box;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   appearance: none;
   height: 100%;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    &::before {
+      border-color: $color-focus;
+    }
+  }
 
   &__ellipsis {
     color: $color-surface-1;
@@ -33,9 +46,13 @@ $avatar-size-extra-large: 72px;
   }
 
   &__btn {
+    border-radius: 40px;
+    border: 1px solid $color-border-2;
+    box-sizing: border-box;
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,6 +99,7 @@ $avatar-size-extra-large: 72px;
       }
 
       &__icon {
+        position: relative;
         color: $color-surface-1;
         opacity: 0;
         transition: all 0.5s;
@@ -170,23 +188,35 @@ $avatar-size-extra-large: 72px;
 
   &__color {
     &--system {
-      background-color: $color-system;
+      & .avatar__btn {
+        background-color: $color-system;
+      }
     }
     &--warning {
-      background-color: $color-warning;
+      & .avatar__btn {
+        background-color: $color-warning;
+      }
     }
     &--success {
-      background-color: $color-success;
+      & .avatar__btn {
+        background-color: $color-success;
+      }
     }
     &--info {
-      background-color: $color-info;
+      & .avatar__btn {
+        background-color: $color-info;
+      }
     }
     &--error {
-      background-color: $color-error;
+      & .avatar__btn {
+        background-color: $color-error;
+      }
     }
     &--surface {
-      background-color: $color-surface-3;
-      color: $color-content-disable;
+      & .avatar__btn {
+        background-color: $color-surface-2;
+        color: $color-content-disable;
+      }
     }
   }
 

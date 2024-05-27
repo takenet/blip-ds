@@ -1,4 +1,4 @@
-import { Component, State, h, Method, Watch } from '@stencil/core';
+import { Component, State, h, Method, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'bds-accordion-body',
@@ -13,9 +13,19 @@ export class AccordionBody {
   @State() heightContainer?: number;
   @State() numberElement?: number = null;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   @Method()
   async toggle() {
     this.isOpen = !this.isOpen;
+  }
+
+  @Method()
+  async open() {
+    this.isOpen = true;
   }
 
   @Method()
@@ -44,6 +54,7 @@ export class AccordionBody {
       <div
         class={{ accordion_body: true, accordion_body_isOpen: this.isOpenAftAnimation }}
         style={{ height: `${this.heightContainer}px` }}
+        data-test={this.dataTest}
       >
         <div class="container" ref={(el) => this.refContainer(el)}>
           <slot></slot>

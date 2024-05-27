@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, State, Prop, Method, Event, EventEmitter } from '@stencil/core';
 import { termTranslate, languages } from './languages';
 import background from '../../assets/svg/pattern.svg';
 
@@ -8,6 +8,8 @@ import background from '../../assets/svg/pattern.svg';
   shadow: true,
 })
 export class BdsUpload {
+  private inputElement?: HTMLInputElement;
+
   @Element() private dropArea: HTMLElement;
   @State() files: string[] = [];
   @State() haveFiles = false;
@@ -38,6 +40,24 @@ export class BdsUpload {
    * Used to accept a especific type of file.
    */
   @Prop() accept: string;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtInputFiles is the data-test to button clear.
+   */
+  @Prop() dtInputFiles?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtLabelAddFile is the data-test to button clear.
+   */
+  @Prop() dtLabelAddFile?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonDelete is the data-test to button clear.
+   */
+  @Prop() dtButtonDelete?: string = null;
   /**
    * Event emited when delete a item from the list.
    */
@@ -125,7 +145,8 @@ export class BdsUpload {
   /**
    * Used for delete a item from the list.
    */
-  deleteFile(index) {
+  @Method()
+  async deleteFile(index) {
     const fileToDelete = this.files.filter((item, i) => i == index && item);
     this.bdsUploadDelete.emit({ value: fileToDelete });
     this.files.splice(index, 1);
@@ -138,22 +159,47 @@ export class BdsUpload {
     this.bdsUploadChange.emit({ value: this.files });
   }
 
+  /**
+   * Used for delete a item from the list.
+   */
+  @Method()
+  async deleteAllFiles() {
+    this.bdsUploadDelete.emit({ value: this.files });
+    this.files = [];
+    if (this.files.length === 0) {
+      this.haveFiles = false;
+    } else {
+      this.haveFiles = true;
+    }
+    this.bdsUploadChange.emit({ value: this.files });
+  }
+
+  private refInputElement = (el: HTMLInputElement): void => {
+    this.inputElement = el as HTMLInputElement;
+  };
+
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.inputElement.click();
+    }
+  }
+
   render() {
     return (
       <div class="upload">
         <div class="upload-header">
           <bds-icon class="upload-header_icon" size="xxx-large" name="upload"></bds-icon>
           <div class="upload-header_text">
-            <bds-typo variant="fs-16" bold="bold">
+            <bds-typo variant="fs-16" bold="bold" aria-label={this.titleName}>
               {this.titleName}
             </bds-typo>
-            <bds-typo variant="fs-14" bold="regular">
+            <bds-typo variant="fs-14" bold="regular" aria-label={this.subtitle}>
               {this.subtitle}
             </bds-typo>
           </div>
         </div>
         {this.error ? (
-          <bds-banner context="inside" variant="error">
+          <bds-banner context="inside" variant="error" aria-label={this.error}>
             {this.error}
           </bds-banner>
         ) : (
@@ -166,7 +212,7 @@ export class BdsUpload {
                 <div class="upload__preview" key={index} id="drop-area">
                   <div class="preview" id="preview">
                     <bds-icon size="x-small" name="attach"></bds-icon>
-                    <p class="preview-text" id="preview-text">
+                    <p class="preview-text" id="preview-text" aria-label={names.name}>
                       {names.name}
                     </p>
                     <bds-button-icon
@@ -175,13 +221,20 @@ export class BdsUpload {
                       icon="trash"
                       variant="secondary"
                       onClick={() => this.deleteFile(index)}
+                      aria-label={`delete ${names.name}`}
+                      data-test={`${this.dtButtonDelete}-${index}`}
                     ></bds-button-icon>
                   </div>
                 </div>
               ))}
             </div>
             {this.multiple ? (
-              <bds-typo variant="fs-14" italic class="preview-length">
+              <bds-typo
+                variant="fs-14"
+                italic
+                class="preview-length"
+                aria-label={termTranslate(this.language, 'uploaded')}
+              >
                 {this.files.length > 1 ? `${this.files.length} ${termTranslate(this.language, 'uploaded')}` : ''}
               </bds-typo>
             ) : (
@@ -196,14 +249,27 @@ export class BdsUpload {
             class={{ 'upload__edit--label': true, 'upload__edit--hover': this.hover }}
             id="file-label"
             htmlFor="file"
+            data-test={this.dtLabelAddFile}
+            tabindex="0"
+            onKeyDown={this.handleKeyDown.bind(this)}
           >
             <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
               {this.hover ? (
-                <bds-typo class="text" variant="fs-14" bold="regular">
+                <bds-typo
+                  class="text"
+                  variant="fs-14"
+                  bold="regular"
+                  aria-label={termTranslate(this.language, 'dropHere')}
+                >
                   {termTranslate(this.language, 'dropHere')}
                 </bds-typo>
               ) : (
-                <bds-typo class="text" variant="fs-14" bold="regular">
+                <bds-typo
+                  class="text"
+                  variant="fs-14"
+                  bold="regular"
+                  aria-label={termTranslate(this.language, 'dropOrClick')}
+                >
                   {termTranslate(this.language, 'dropOrClick')}
                 </bds-typo>
               )}
@@ -211,6 +277,7 @@ export class BdsUpload {
             <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={background} />
           </label>
           <input
+            ref={this.refInputElement}
             type="file"
             name="files[]"
             id="file"
@@ -218,6 +285,7 @@ export class BdsUpload {
             multiple={this.multiple}
             accept={this.accept}
             onChange={($event: any) => this.onUploadClick($event.target.files)}
+            data-test={this.dtInputFiles}
           />
         </div>
       </div>

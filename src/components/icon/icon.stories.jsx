@@ -12,6 +12,9 @@ export default {
 };
 
 const solidIconsName = [
+  'bottom-sheet',
+  'text-variable',
+  'user-favorite',
   'audio-closed',
   'phone-keyboard',
   'video-calling',
@@ -21,6 +24,8 @@ const solidIconsName = [
   'voip-calling',
   'voip-ended',
   'voip-finish',
+  'voip-new',
+  'voip-receiving',
   'ai',
   'add',
   'agent-rule',
@@ -91,6 +96,7 @@ const solidIconsName = [
   'save',
   'send',
   'sms',
+  'sparkle-ai',
   'store',
   'openfinance',
   'target',
@@ -107,6 +113,9 @@ const solidIconsName = [
 ];
 
 const outlineIconsName = [
+  'bottom-sheet',
+  'text-variable',
+  'user-favorite',
   'audio-closed',
   'phone-keyboard',
   'video-calling',
@@ -116,6 +125,8 @@ const outlineIconsName = [
   'voip-calling',
   'voip-ended',
   'voip-finish',
+  'voip-new',
+  'voip-receiving',
   '123',
   'ab',
   'add-persistent-menu',
@@ -268,6 +279,9 @@ const outlineIconsName = [
   'notebook',
   'notes',
   'order-elements',
+  'ordering-aleatory',
+  'ordering-ascending',
+  'ordering-descending',
   'openfinance',
   'paint',
   'paperplane',
@@ -311,6 +325,7 @@ const outlineIconsName = [
   'skills',
   'smartphone',
   'sms',
+  'sparkle-ai',
   'speaker',
   'sso',
   'status',

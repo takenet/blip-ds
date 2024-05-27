@@ -1,10 +1,11 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { IconSize } from '../icon/icon-interface';
 
 export type IconButtonSize = 'tall' | 'standard' | 'short';
 export type IconButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'secondary--white' | 'delete';
 export type IconSizeMap = { [key in string]: IconSize };
 export type IconButtonVariantMap = { [key in IconButtonVariant]: string };
+export type ButtonIconTheme = 'outline' | 'solid';
 
 @Component({
   tag: 'bds-button-icon',
@@ -30,6 +31,12 @@ export class IconButton {
   @Prop() variant?: IconButtonVariant = 'primary';
 
   /**
+   * The theme of the icon. Can be one of:
+   * 'outline', 'solid';
+   */
+  @Prop({ reflect: true }) iconTheme: ButtonIconTheme = 'outline';
+
+  /**
    * used for add icon in input left. Uses the bds-icon component.
    */
   @Prop({ reflect: true }) icon?: string = null;
@@ -38,6 +45,11 @@ export class IconButton {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
+
+  /**
+   * Event buttom onClick.
+   */
+  @Event() bdsClick: EventEmitter;
 
   private mapSize: IconSizeMap = {
     tall: 'xxx-large',
@@ -54,6 +66,12 @@ export class IconButton {
     'secondary--white': 'icon__button--secondary-white',
   };
 
+  private handleClick = (ev) => {
+    if (!this.disabled) {
+      this.bdsClick.emit(ev);
+    }
+  };
+
   render(): HTMLElement {
     if (!this.icon) return null;
 
@@ -62,6 +80,7 @@ export class IconButton {
 
     return (
       <button
+        onClick={(ev) => this.handleClick(ev)}
         disabled={this.disabled}
         class={{
           ['icon__button']: true,
@@ -70,8 +89,9 @@ export class IconButton {
           [`size-${this.size}`]: true,
         }}
         data-test={this.dataTest}
+        tabindex="0"
       >
-        <bds-icon name={this.icon} size={size} color="inherit"></bds-icon>
+        <bds-icon name={this.icon} size={size} theme={this.iconTheme} color="inherit"></bds-icon>
       </button>
     );
   }

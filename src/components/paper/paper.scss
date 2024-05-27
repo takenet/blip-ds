@@ -1,12 +1,29 @@
+@import '../../global-style';
+
 :host {
   display: block;
-  background: $color-surface-1;
   border-radius: 7px;
 }
 
 :host(.border) {
   border: 1px solid $color-surface-3;
   margin: -1px;
+}
+
+:host(.bg-surface-1) {
+  background-color: $color-surface-1;
+}
+
+:host(.bg-surface-2) {
+  background-color: $color-surface-2;
+}
+
+:host(.bg-surface-3) {
+  background-color: $color-surface-3;
+}
+
+:host(.bg-surface-4) {
+  background-color: $color-surface-4;
 }
 
 :host(.paper__elevation--none) {

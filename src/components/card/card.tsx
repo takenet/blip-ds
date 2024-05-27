@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Prop, Event, Element, State, EventEmitter } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, Prop, Event, Element, State, EventEmitter } from '@stencil/core';
 
 export type elevationType = 'primary' | 'secondary' | 'static';
 
@@ -21,6 +21,11 @@ export class Card implements ComponentInterface {
    * If the prop is true, the component will be clickable.
    */
   @Prop() clickable?: boolean = false;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
 
   @State() isHovered = false;
   @State() isPressed = false;
@@ -54,27 +59,56 @@ export class Card implements ComponentInterface {
       document.addEventListener('mouseup', () => {
         this.isPressed = false;
       });
+
+      this.cardElement.addEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          this.isPressed = true;
+          this.bdsClick.emit();
+        }
+      });
+      this.cardElement.addEventListener('keyup', (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+          this.isPressed = false;
+        }
+      });
     }
   }
 
-  render() {
+  componentDidUpdate() {
     if (this.isPressed) {
       this.elevation = 'static';
     } else if (this.isHovered) {
       this.elevation = 'secondary';
     }
+  }
+
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.isPressed = true;
+      this.bdsClick.emit(event);
+    }
+  }
+
+  render() {
+    const styleHost = {
+      width: this.width,
+    };
 
     return (
-      <bds-paper
-        elevation={this.elevation}
-        class={{ card: true, card_hover: this.clickable }}
-        height={this.height}
-        width={this.width}
-      >
-        <bds-grid xxs="12" direction="column" gap="2">
-          <slot></slot>
-        </bds-grid>
-      </bds-paper>
+      <Host style={styleHost}>
+        <bds-paper
+          elevation={this.elevation}
+          class={{ card: true, card_hover: this.clickable }}
+          height={this.height}
+          width={this.width}
+          data-test={this.dataTest}
+        >
+          <div tabindex="0" class="focus" onKeyDown={this.handleKeyDown.bind(this)}></div>
+          <bds-grid xxs="12" direction="column" gap="2" padding="2">
+            <slot></slot>
+          </bds-grid>
+        </bds-paper>
+      </Host>
     );
   }
 }

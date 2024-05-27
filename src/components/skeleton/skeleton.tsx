@@ -11,6 +11,12 @@ export class Skeleton {
   @Prop() shape?: Shape = 'square';
   @Prop() height?: string = '50px';
   @Prop() width?: string = '100%';
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   render() {
     return (
       <Host
@@ -33,6 +39,7 @@ export class Skeleton {
             borderRadius: this.shape === 'circle' ? '50%' : '8px',
             overflow: 'hidden',
           }}
+          data-test={this.dataTest}
         >
           <div class="animation"></div>
         </div>

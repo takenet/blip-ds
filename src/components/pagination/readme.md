@@ -31,18 +31,23 @@
 ### Depends on
 
 - [bds-button-icon](../icon-button)
-- [bds-typo](../typo)
-- [bds-icon](../icon)
-- [bds-paper](../paper)
+- [bds-select](../selects/select)
+- [bds-select-option](../select-option)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-pagination --> bds-button-icon
-  bds-pagination --> bds-typo
-  bds-pagination --> bds-icon
-  bds-pagination --> bds-paper
+  bds-pagination --> bds-select
+  bds-pagination --> bds-select-option
   bds-button-icon --> bds-icon
+  bds-select --> bds-icon
+  bds-select --> bds-typo
+  bds-select --> bds-select-option
+  bds-select-option --> bds-typo
+  bds-select-option --> bds-checkbox
+  bds-checkbox --> bds-icon
+  bds-checkbox --> bds-typo
   style bds-pagination fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

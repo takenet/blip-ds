@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'bds-card-color',
@@ -6,6 +6,7 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class CardColor {
+  @State() showMessage = false;
   /**
    * Specifies name color, use Figma docs in Blip DS.
    */
@@ -31,13 +32,40 @@ export class CardColor {
    */
   @Prop() lightText = false;
 
+  handleCopyVariable = (variable) => {
+    const value = `$${variable}`;
+    navigator.clipboard.writeText(value);
+
+    this.showMessage = true;
+
+    // Ocultar a mensagem após 3 segundos
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
+  };
+
   render(): HTMLDivElement {
     return (
-      <bds-paper width="240px" height="140px">
-        <bds-grid>
-          <bds-grid height="48px">
-            <bds-typo>Variable</bds-typo>
-            <bds-typo>$-color-{this.name}</bds-typo>
+      <bds-paper class="card" width="240px" height="140px" onClick={() => this.handleCopyVariable(this.variable)}>
+        <bds-grid direction="column" height="100%">
+          <bds-grid
+            height="70%"
+            xxs="12"
+            class={{
+              'card-color--color': true,
+              [`card-color--${this.variable}`]: true,
+            }}
+          ></bds-grid>
+          <bds-grid justify-content="center" align-items="center" height="30%">
+            {!this.showMessage ? (
+              <bds-typo class="card-text" variant="fs-14" bold="bold">
+                ${this.variable}
+              </bds-typo>
+            ) : (
+              <bds-typo class="card-text-copie" variant="fs-14" bold="bold">
+                Cor copiada!
+              </bds-typo>
+            )}
           </bds-grid>
         </bds-grid>
       </bds-paper>

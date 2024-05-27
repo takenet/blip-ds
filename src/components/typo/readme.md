@@ -47,7 +47,6 @@
  - [bds-chip-tag](../chip-tag)
  - [bds-counter-text](../counter-text)
  - [bds-data-table](../table)
- - [bds-datepicker](../datepicker)
  - [bds-datepicker-period](../datepicker/datepicker-period)
  - [bds-datepicker-single](../datepicker/datepicker-single)
  - [bds-expansion-panel-header](../expansion-panel/expansion-panel-header)
@@ -61,7 +60,8 @@
  - [bds-menu-exibition](../menu/menu-exibition)
  - [bds-menu-list-item](../menu-list-item)
  - [bds-menu-separation](../menu/menu-separation)
- - [bds-pagination](../pagination)
+ - [bds-nav-tree](../nav-tree)
+ - [bds-nav-tree-item](../nav-tree)
  - [bds-progress-bar](../progress-bar)
  - [bds-radio](../radio)
  - [bds-select](../selects/select)
@@ -98,7 +98,6 @@ graph TD;
   bds-chip-tag --> bds-typo
   bds-counter-text --> bds-typo
   bds-data-table --> bds-typo
-  bds-datepicker --> bds-typo
   bds-datepicker-period --> bds-typo
   bds-datepicker-single --> bds-typo
   bds-expansion-panel-header --> bds-typo
@@ -112,7 +111,8 @@ graph TD;
   bds-menu-exibition --> bds-typo
   bds-menu-list-item --> bds-typo
   bds-menu-separation --> bds-typo
-  bds-pagination --> bds-typo
+  bds-nav-tree --> bds-typo
+  bds-nav-tree-item --> bds-typo
   bds-progress-bar --> bds-typo
   bds-radio --> bds-typo
   bds-select --> bds-typo

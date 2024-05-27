@@ -5,6 +5,14 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border-bottom: 1px solid $color-border-2;
+
+  .collapse-body {
+    padding: 16px;
+    max-height: 100px;
+    text-align: left;
+    opacity: 1;
+    transition: all ease 0.5s;
+  }
 }
 
 :host:last-child {
@@ -12,13 +20,13 @@
 }
 
 :host(.clickable--true):hover {
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  border-top: 2px solid $color-surface-1;
-  border-right: 3px solid $color-surface-1;
-  border-bottom: 2px solid $color-surface-1;
-  border-left: 3px solid $color-surface-1;
-  outline: 4px solid $color-surface-1;
+  background-color: $color-hover;
+  border-bottom: 1px solid $color-border-2;
+  cursor: pointer;
+}
+
+:host(.clickable--true) {
+  border-bottom: none;
 }
 
 :host(.selected--true) {
@@ -26,4 +34,37 @@
   outline: 2px solid $color-primary;
   outline-offset: -1px;
   border-bottom: none;
+}
+
+:host(.dense-row) {
+  height: auto;
+}
+
+:host(.collapse-body) {
+  height: fit-content;
+}  
+.arrow {
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    transform: rotate(180deg);
+  }
+  .active {
+      transform: rotate(0deg);
+    }
+
+:host(.collapse) {
+  height: 0;
+
+  .collapse-body {
+    padding: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all ease-in-out 0.5s;
+  }
+
+  th {
+      padding: 0;
+    }
 }

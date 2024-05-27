@@ -36,9 +36,19 @@ export class AccordionHeader {
    */
   @Prop() avatarThumb?: string = null;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   */
+  @Prop() dataTest?: string = null;
+
   @Method()
   async toggle() {
     this.isOpen = !this.isOpen;
+  }
+
+  @Method()
+  async open() {
+    this.isOpen = true;
   }
 
   @Method()
@@ -62,7 +72,7 @@ export class AccordionHeader {
 
   render() {
     return (
-      <div onClick={this.toggleHeader} class={{ accordion_header: true }}>
+      <div onClick={this.toggleHeader} class={{ accordion_header: true }} data-test={this.dataTest}>
         {this.avatarName || this.avatarThumb ? (
           <bds-avatar name={this.avatarName} thumbnail={this.avatarThumb} size="extra-small"></bds-avatar>
         ) : (

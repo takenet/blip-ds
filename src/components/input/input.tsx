@@ -395,8 +395,8 @@ export class Input {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
+          ? 'input__message input__message--success'
+          : 'input__message';
 
     if (message) {
       return (
@@ -554,7 +554,7 @@ export class Input {
               {...this.counterLengthRule}
             />
           )}
-          {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
+          {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="small" />}
           <slot name="input-right" />
         </div>
         {this.renderMessage()}

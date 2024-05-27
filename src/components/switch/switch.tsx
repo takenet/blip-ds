@@ -106,6 +106,14 @@ export class Switch {
     return '';
   };
 
+  private handleClick = (ev) => {
+    if (!this.disabled) {
+      if (ev.key === 'Enter') {
+        this.checked = !this.checked;
+      }
+    }
+  };
+
   render(): HTMLElement {
     const sizeClass = this.getSizeClass();
     const sizeSliderClass = this.getSizeSliderClass();
@@ -113,6 +121,7 @@ export class Switch {
 
     return (
       <label class={{ [sizeClass]: true }}>
+        <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
         <input
           type="checkbox"
           ref={this.refNativeInput}

@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -18,6 +18,8 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type IconType = 'icon' | 'logo' | 'emoji';
 
+export type IconTheme = 'outline' | 'solid';
+
 @Component({
   tag: 'bds-button',
   styleUrl: 'button.scss',
@@ -25,6 +27,11 @@ export type IconType = 'icon' | 'logo' | 'emoji';
 })
 export class Button {
   @Element() el!: HTMLElement;
+
+  /**
+   * 	If true, the base button will be disabled.
+   */
+  @Prop() block?: boolean = false;
 
   /**
    * 	If true, the base button will be disabled.
@@ -58,6 +65,12 @@ export class Button {
    * 'button', 'submit', 'reset';
    */
   @Prop() type: ButtonType = 'button';
+
+  /**
+   * The theme of the icon. Can be one of:
+   * 'outline', 'solid';
+   */
+  @Prop({ reflect: true }) iconTheme: IconTheme = 'outline';
 
   /**
    * The type of the icon. Can be one of:
@@ -98,7 +111,13 @@ export class Button {
     return (
       this.icon && (
         <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
-          <bds-icon class={{ icon_buttom: true }} name={this.icon} type={this.typeIcon} color="inherit"></bds-icon>
+          <bds-icon
+            class={{ icon_buttom: true }}
+            name={this.icon}
+            theme={this.iconTheme}
+            type={this.typeIcon}
+            color="inherit"
+          ></bds-icon>
         </div>
       )
     );
@@ -140,9 +159,13 @@ export class Button {
     }
   }
 
-  private handleClick = (ev: MouseEvent) => {
+  private handleClick = (ev) => {
     if (!this.disabled) {
-      this.bdsClick.emit();
+      this.bdsClick.emit(ev);
+
+      if (ev.key === 'Enter') {
+        this.bdsClick.emit(ev);
+      }
 
       const form = this.el.closest('form');
       if (form) {
@@ -161,23 +184,29 @@ export class Button {
     const sizeClass = this.getSizeClass();
 
     return (
-      <button
-        onClick={(ev) => this.handleClick(ev)}
-        disabled={this.disabled}
-        type={this.type}
-        class={{
-          button: true,
-          [`button__${this.variant}`]: true,
-          [`button__${this.variant}--disabled`]: this.disabled,
-          [sizeClass]: true,
-          'button--size-icon--left': !!this.icon,
-          'button--size-icon--right': this.arrow,
-        }}
-        part="button"
-        data-test={this.dataTest}
-      >
-        {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
-      </button>
+      <Host class={{ host: true, block: this.block }}>
+        <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
+        <button
+          onClick={(ev) => this.handleClick(ev)}
+          disabled={this.disabled}
+          aria-disabled={this.disabled ? 'true' : 'false'}
+          aria-live="assertive"
+          type={this.type}
+          class={{
+            button: true,
+            'button--block': this.block,
+            [`button__${this.variant}`]: true,
+            [`button__${this.variant}--disabled`]: this.disabled,
+            [sizeClass]: true,
+            'button--size-icon--left': !!this.icon,
+            'button--size-icon--right': this.arrow,
+          }}
+          part="button"
+          data-test={this.dataTest}
+        >
+          {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
+        </button>
+      </Host>
     );
   }
 }

@@ -56,8 +56,8 @@ export class BdsLoadingSpinner {
       this.size == 'extra-small'
         ? loadExtraSmall
         : this.size == 'small'
-        ? loadSmall
-        : this.size == 'standard' && loadStandard;
+          ? loadSmall
+          : this.size == 'standard' && loadStandard;
 
     const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
     this.svgContent = this.formatSvg(svg);

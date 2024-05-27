@@ -32,6 +32,31 @@ Properties.args = {
   titleName: 'Title uploader',
 };
 
+export const Methods = () => {
+  const deleteItem = async (id) => {
+    const inputUpload = document.getElementById(id);
+    await inputUpload.deleteFile(0);
+  };
+  const deleteAllItens = async (id) => {
+    const inputUpload = document.getElementById(id);
+    await inputUpload.deleteAllFiles();
+  };
+  return (
+    <bds-grid direction="column" gap="2">
+      <bds-grid gap="2">
+        <bds-upload
+          id="upload"
+          multiple
+          title-name="Title uploader"
+          subtitle="Description uploades, e.g.: can upload multiples files"
+        ></bds-upload>
+        <bds-button onClick={() => deleteItem('upload')}> Excluir Item </bds-button>
+        <bds-button onClick={() => deleteAllItens('upload')}> Excluir todos os Itens </bds-button>
+      </bds-grid>
+    </bds-grid>
+  );
+};
+
 export const Events = () => {
   useEffect(() => {
     const upload = document.getElementById('upload');
