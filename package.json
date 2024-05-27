@@ -1,6 +1,6 @@
 {
   "name": "@whitewall/blip-ds",
-  "version": "1.272.2",
+  "version": "1.283.4",
   "description": "Blip Design System",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
@@ -40,9 +40,8 @@
     "@babel/core": "^7.23.7",
     "@stencil/core": "^4.10.0",
     "@stencil/react-output-target": "0.5.3",
-    "@stencil/sass": "1.5.2",
-    "@storybook/addon-actions": "7.0.22",
     "@stencil/sass": "3.0.0",
+    "@storybook/addon-actions": "7.0.22",
     "@storybook/addon-essentials": "^7.0.22",
     "@storybook/addon-interactions": "^7.0.22",
     "@storybook/addon-links": "^7.0.22",
