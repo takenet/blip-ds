@@ -107,7 +107,7 @@ export class SelectOption {
   private onClickSelectOption = (): void => {
     if (this.typeOption == 'checkbox') return;
     if (!this.disabled) {
-      this.optionSelected.emit({ value: this.value });
+      this.optionSelected.emit({ value: this.value, label: this.element.innerHTML });
     }
   };
 

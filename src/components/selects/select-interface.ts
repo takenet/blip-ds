@@ -12,8 +12,13 @@ export interface Option {
 
 export interface SelectChangeEventDetail {
   value: any | any[] | undefined | null;
+  label?: string[];
   code?: string;
   country?: string;
+}
+
+export interface SelectChangeEvent {
+  data: { value: any | any[] | undefined | null; label?: string }[];
 }
 
 export type SelectType = 'text' | 'icon';

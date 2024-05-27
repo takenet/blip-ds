@@ -36,15 +36,15 @@
 
 ## Events
 
-| Event                 | Description                              | Type                                   |
-| --------------------- | ---------------------------------------- | -------------------------------------- |
-| `bdsBlur`             | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
-| `bdsCancel`           | Emitted when the selection is cancelled. | `CustomEvent<void>`                    |
-| `bdsChange`           | Emitted when the value has changed.      | `CustomEvent<SelectChangeEventDetail>` |
-| `bdsChangeChips`      | Emitted when the chip has added.         | `CustomEvent<any>`                     |
-| `bdsFocus`            | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
-| `bdsSelectChipsInput` | Emitted when the chip has added.         | `CustomEvent<any>`                     |
-| `bdsSubmit`           | Emitted when the chip has added.         | `CustomEvent<any>`                     |
+| Event                 | Description                              | Type                             |
+| --------------------- | ---------------------------------------- | -------------------------------- |
+| `bdsBlur`             | Emitted when the select loses focus.     | `CustomEvent<void>`              |
+| `bdsCancel`           | Emitted when the selection is cancelled. | `CustomEvent<void>`              |
+| `bdsChange`           | Emitted when the value has changed.      | `CustomEvent<SelectChangeEvent>` |
+| `bdsChangeChips`      | Emitted when the chip has added.         | `CustomEvent<any>`               |
+| `bdsFocus`            | Emitted when the select loses focus.     | `CustomEvent<void>`              |
+| `bdsSelectChipsInput` | Emitted when the chip has added.         | `CustomEvent<any>`               |
+| `bdsSubmit`           | Emitted when the chip has added.         | `CustomEvent<any>`               |
 
 
 ## Methods
@@ -52,6 +52,12 @@
 ### `add(value: string) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `value` | `string` |             |
 
 #### Returns
 

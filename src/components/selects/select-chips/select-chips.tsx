@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop, Method, Event, EventEmitter, Listen, Watch, State } from '@stencil/core';
-import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
+import { Option, SelectChangeEvent, SelectOptionsPositionType } from '../select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
 import { emailValidation, whitespaceValidation } from '../../../utils/validations';
 import { InputChipsTypes } from '../../input-chips/input-chips-interface';
@@ -23,6 +23,7 @@ export class SelectChips {
 
   @State() intoView?: HTMLElement = null;
 
+  @State() selectedOptions: { label: string; value: any }[] = [];
   /**
    * Used to set the danger behavior by the internal validators
    */
@@ -38,6 +39,8 @@ export class SelectChips {
   @State() validationMesage? = '';
 
   @State() internalChips: string[] = [];
+
+  @State() selectedOption: number;
 
   /**
    * The options of the select
@@ -158,7 +161,7 @@ export class SelectChips {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsChange!: EventEmitter<SelectChangeEventDetail>;
+  @Event() bdsChange!: EventEmitter<SelectChangeEvent>;
 
   /**
    * Emitted when the selection is cancelled.
@@ -235,7 +238,12 @@ export class SelectChips {
   @Watch('internalChips')
   protected internalValueChanged(): void {
     this.handleChangeChipsValue();
-    this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
+    this.bdsChangeChips.emit({ data: this.internalChips, value: this.selectedOption });
+    if (this.internalChips.length > 0) {
+      const latestOption = { label: this.getLastChip(), value: this.selectedOption };
+      this.selectedOptions = [...this.selectedOptions, latestOption];
+      this.bdsChange.emit({ data: this.selectedOptions });
+    }
   }
 
   /**
@@ -406,6 +414,7 @@ export class SelectChips {
     const {
       detail: { value },
     } = event;
+    this.selectedOption = value;
     const text = this.getText(value);
     await this.addChip(text);
     this.toggle();
