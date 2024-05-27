@@ -276,10 +276,10 @@ export class InputChips {
   private handleOnBlur(): void {
     this.bdsBlur.emit(this.internalChips);
     this.handleDelimiters();
+    this.isPressed = false;
     if (this.blurCreation) {
       this.setChip(this.value);
       this.value = '';
-      this.isPressed = false;
     }
   }
 
@@ -514,7 +514,7 @@ export class InputChips {
       return (
         <div class={styles} part="input__message">
           <div class="input__message__icon">
-            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+            <bds-icon size="x-small" name={icon} theme="outline" color="inherit"></bds-icon>
           </div>
           <bds-typo class="input__message__text" variant="fs-12">
             {message}
@@ -571,7 +571,7 @@ export class InputChips {
             {this.counterLength && (
               <bds-counter-text length={this.internalChips.length} max={this.maxChipsLength} active={isPressed} />
             )}
-            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
+            {this.success && <bds-icon class="icon-success" name="checkb" theme="outline" size="xxx-small" />}
             <slot name="input-right"></slot>
           </div>
           {this.renderMessage()}

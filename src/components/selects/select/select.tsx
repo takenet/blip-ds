@@ -367,7 +367,7 @@ export class Select {
       return (
         <div class={styles} part="input__message">
           <div class="input__message__icon">
-            <bds-icon size="x-small" name={icon} theme="solid" color="inherit"></bds-icon>
+            <bds-icon size="x-small" name={icon} theme="outline" color="inherit"></bds-icon>
           </div>
           <bds-typo class="input__message__text" variant="fs-12">
             {message}
@@ -419,7 +419,7 @@ export class Select {
             <div class="select__icon">
               <bds-icon ref={(el) => this.refIconDrop(el)} size="small" color="inherit"></bds-icon>
             </div>
-            {this.success && <bds-icon class="icon-success" name="checkball" theme="solid" size="xxx-small" />}
+            {this.success && <bds-icon class="icon-success" name="check" theme="outline" size="xxx-small" />}
           </div>
           {this.renderMessage()}
         </div>

@@ -4,4 +4,4 @@ export type PaperElevationMap = {
   [key in PaperElevation]: string;
 };
 
-export type PaperBackground = 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
+export type PaperBackground = 'surface-0' |'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';

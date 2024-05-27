@@ -39,7 +39,7 @@ $checkbox-spacing-text: 8px;
         border-color: $color-focus;
       }
     }
-  
+
     &:hover {
       border-color: $color-brand;
     }
@@ -47,9 +47,9 @@ $checkbox-spacing-text: 8px;
 
   &--selected {
     .checkbox__icon {
-      background-color: $color-brand;
-      border-color: $color-brand;
-      
+      background-color: $color-surface-primary;
+      border-color: $color-surface-primary;
+
       &__svg {
         color: $color-content-bright;
       }

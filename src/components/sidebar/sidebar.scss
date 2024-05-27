@@ -3,7 +3,7 @@
 .sidebar_dialog {
   width: 100%;
   height: 100vh;
-  box-shadow: $shadow-box;
+  box-shadow: $shadow-2;
   background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
   visibility: hidden;
@@ -76,7 +76,7 @@
       align-content: center;
       justify-content: space-between;
       padding: 24px;
-      
+
       & .content {
         display: flex;
         width: 100%;
@@ -91,9 +91,15 @@
       & .closeButton {
         border-radius: 8px;
         contain: inherit;
-        -webkit-transition: height 0.5s, all 0.3s;
-        -moz-transition: height 0.5s, all 0.3s;
-        transition: height 0.5s, all 0.3s;
+        -webkit-transition:
+          height 0.5s,
+          all 0.3s;
+        -moz-transition:
+          height 0.5s,
+          all 0.3s;
+        transition:
+          height 0.5s,
+          all 0.3s;
         z-index: 1;
         cursor: pointer;
         color: $color-content-default;
