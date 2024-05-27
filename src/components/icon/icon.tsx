@@ -10,7 +10,7 @@ import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
   tag: 'bds-icon',
   assetsDirs: ['svg'],
   styleUrl: 'icon.scss',
-  shadow: true,
+  scoped: true,
 })
 export class Icon {
   private io?: IntersectionObserver;
@@ -164,6 +164,7 @@ export class Icon {
           [`bds-icon__size--${this.size}`]: true,
         }}
       >
+        <i class="icon-add"></i>
         {this.svgContent ? (
           <div
             class={{

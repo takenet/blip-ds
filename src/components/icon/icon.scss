@@ -1,3 +1,9 @@
+@import url(fonts/css/animation.css);
+@import url(fonts/css/solid-icon-test-codes.css);
+@import url(fonts/css/solid-icon-test-embedded.css);
+@import url(fonts/css/solid-icon-test-ie7-codes.css);
+@import url(fonts/css/solid-icon-test-ie7.css);
+@import url(fonts/css/solid-icon-test.css);
 @mixin size($size) {
   width: $size;
   min-width: $size;
