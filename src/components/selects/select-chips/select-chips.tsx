@@ -341,8 +341,8 @@ export class SelectChips {
   private get childOptionsEnabled(): HTMLBdsSelectOptionElement[] {
     return this.options
       ? Array.from(
-          this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'),
-        )
+        this.el.shadowRoot.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'),
+      )
       : Array.from(this.el.querySelectorAll('bds-select-option:not([invisible]):not(#option-add):not(#no-option)'));
   }
 
@@ -383,8 +383,7 @@ export class SelectChips {
 
   private async resetFilterOptions() {
     for (const option of this.childOptions) {
-      const optionText = option.querySelector('bds-typo')?.textContent;
-      if (this.existsChip(optionText, await this.getChips())) {
+      if (this.existsChip(option.textContent, await this.getChips())) {
         option.setAttribute('invisible', 'invisible');
       } else {
         option.removeAttribute('invisible');
@@ -759,7 +758,7 @@ export class SelectChips {
       if (typeof this.options === 'string') {
         try {
           internalOptions = JSON.parse(this.options);
-        } catch (e) {}
+        } catch (e) { }
       } else {
         internalOptions = this.options;
       }
