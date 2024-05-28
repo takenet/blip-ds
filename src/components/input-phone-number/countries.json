@@ -694,6 +694,11 @@
     "name": "Malta",
     "isoCode": "MT / MLT"
   },
+  "martinique-flag": {
+    "code": "+596",
+    "name": "Martinica",
+    "isoCode": "MQ / MTQ"
+  },
   "mauritania-flag": {
     "code": "+222",
     "name": "Mauritânia",
