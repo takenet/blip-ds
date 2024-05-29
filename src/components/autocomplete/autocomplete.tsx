@@ -681,7 +681,7 @@ export class BdsAutocomplete {
                 {this.selectionTitle}
               </bds-typo>
             )}
-            {this.selectionType == 'multiple' && (this.value == null) && (
+            {this.selectionType == 'multiple' && this.value == null && (
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}
