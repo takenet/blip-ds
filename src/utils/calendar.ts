@@ -205,7 +205,7 @@ export const dateToDayList = (value: string): DaysList => {
 
 export const dateToInputDate = (value: string): string => {
   const splitDate = value.split('/');
-  return `${parseFloat(splitDate[2])}-${parseFloat(splitDate[1]).toString().padStart(2, "0")}-${parseFloat(splitDate[0]).toString().padStart(2, "0")}`;
+  return `${parseFloat(splitDate[2])}-${parseFloat(splitDate[1]).toString().padStart(2, '0')}-${parseFloat(splitDate[0]).toString().padStart(2, '0')}`;
 };
 
 export const dateToString = (value: Date): string => {
