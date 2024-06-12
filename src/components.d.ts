@@ -2451,6 +2451,10 @@ export namespace Components {
          */
         "invisible": () => Promise<void>;
         /**
+          * Used to set tooltip max width
+         */
+        "maxWidth": string;
+        /**
           * Used to set tooltip position
          */
         "position": TooltipPostionType;
@@ -6053,6 +6057,10 @@ declare namespace LocalJSX {
           * Used to disable tooltip when the button are avalible
          */
         "disabled"?: boolean;
+        /**
+          * Used to set tooltip max width
+         */
+        "maxWidth"?: string;
         /**
           * Used to set tooltip position
          */
