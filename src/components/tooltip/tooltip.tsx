@@ -45,7 +45,7 @@ export class Tooltip {
   /**
    * Used to set tooltip max width
    */
-  @Prop() maxWidth: string = '320px';
+  @Prop() maxWidth?: string = '320px';
 
   /**
    * Data test is the prop to specifically test the component action object.
