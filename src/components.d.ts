@@ -2453,7 +2453,7 @@ export namespace Components {
         /**
           * Used to set tooltip max width
          */
-        "maxWidth": string;
+        "maxWidth"?: string;
         /**
           * Used to set tooltip position
          */
