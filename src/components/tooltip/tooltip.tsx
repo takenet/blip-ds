@@ -25,6 +25,8 @@ export class Tooltip {
    */
   @State() isMouseOver = false;
   @State() textVerify: string;
+  @State() maxWidtTooltip: string;
+
   /**
    * Used to set tooltip text
    */
@@ -39,6 +41,11 @@ export class Tooltip {
    * Used to set tooltip position
    */
   @Prop() position: TooltipPostionType = 'left-center';
+
+  /**
+   * Used to set tooltip max width
+   */
+  @Prop() maxWidth: string = '320px';
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -71,6 +78,7 @@ export class Tooltip {
 
   componentWillLoad() {
     this.textVerify = this.tooltipText ? this.tooltipText.replace(/<br>/gi, '\r\n') : '';
+    this.maxWidtTooltip = this.maxWidth;
   }
 
   @Watch('tooltipText')
@@ -78,7 +86,15 @@ export class Tooltip {
     this.textVerify = this.tooltipText ? this.tooltipText.replace(/<br>/gi, '\r\n') : '';
   }
 
+  @Watch('maxWidth')
+  maxWidthChanged(): void {
+    this.maxWidtTooltip = this.maxWidth;
+  }
+
   render() {
+    const styleTooltip = {
+      maxWidth: this.maxWidtTooltip,
+    };
     return (
       <div class="tooltip__wrapper">
         <div
@@ -94,6 +110,7 @@ export class Tooltip {
             [`tooltip__tip--${this.position}`]: true,
             'tooltip__tip--visible': this.isMouseOver,
           }}
+          style={styleTooltip}
         >
           <div class={{ tooltip__tip__text: true }}>
             <pre>
