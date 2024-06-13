@@ -45,6 +45,7 @@
  - [bds-datepicker](../datepicker)
  - [bds-list-item-content](../list)
  - [bds-skeleton](../skeleton)
+ - [bds-tab-group](../tabs)
  - [bds-test-component](../test-component)
 
 ### Graph
@@ -58,6 +59,7 @@ graph TD;
   bds-datepicker --> bds-grid
   bds-list-item-content --> bds-grid
   bds-skeleton --> bds-grid
+  bds-tab-group --> bds-grid
   bds-test-component --> bds-grid
   style bds-grid fill:#f9f,stroke:#333,stroke-width:4px
 ```
