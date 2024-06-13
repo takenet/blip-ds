@@ -345,8 +345,11 @@ export class DatePicker {
   private clickConcludeDatepicker = () => {
     const data =
       this.typeOfDate === 'single'
-        ? { startDate: this.valueDate }
-        : { startDate: this.valueDate, endDate: this.valueEndDate };
+        ? { startDate: typeDateToStringDate(this.valueDate) }
+        : {
+            startDate: typeDateToStringDate(this.valueDate),
+            endDate: typeDateToStringDate(this.valueEndDate),
+          };
     this.concludeDatepicker.emit(data);
     this.open = false;
     if (this.typeOfDate == 'period') {
