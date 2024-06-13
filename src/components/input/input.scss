@@ -48,13 +48,20 @@ $input-width: 100%;
 
   &.input--pressed {
     @include input-border($color-input-primary, $color-input-focus);
+    .input__icon {
+      .bds-icon {
+        color: $color-input-primary;
+      }
+    }
   }
 
   .input__container__label {
     color: $color-input-label;
 
     &--pressed {
-      color: $color-input-primary;
+      bds-typo {
+        color: $color-input-primary;
+      }
     }
   }
 
@@ -92,13 +99,15 @@ $input-width: 100%;
   flex-direction: row;
   align-items: center;
   padding: $input-padding;
-
   flex: 1;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
 
-  background: $color-surface-1;
+  .bds-icon {
+    position: relative;
+    z-index: 1;
+  }
 
   &--state {
     &-primary {
@@ -111,9 +120,8 @@ $input-width: 100%;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-primary;
+          background-color: $color-hover;
           z-index: 0;
-          opacity: 50%;
           border-radius: 8px;
         }
       }
@@ -139,7 +147,7 @@ $input-width: 100%;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-delete;
+          background-color: $color-surface-negative;
           z-index: 0;
           opacity: 50%;
           border-radius: 8px;
@@ -147,7 +155,7 @@ $input-width: 100%;
       }
       @include input-theme(
         'danger',
-        $color-delete,
+        $color-negative,
         $color-error,
         $color-delete,
         $color-content-default,
@@ -167,14 +175,14 @@ $input-width: 100%;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-success;
+          background-color: $color-surface-positive;
           z-index: 0;
           border-radius: 8px;
         }
       }
       @include input-theme(
         'success',
-        $color-content-default,
+        $color-positive,
         $color-success,
         $color-content-default,
         $color-content-default,
@@ -194,7 +202,7 @@ $input-width: 100%;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: $color-primary;
+          background-color: $color-hover;
           z-index: 0;
           opacity: 50%;
           border-radius: 8px;
@@ -203,7 +211,6 @@ $input-width: 100%;
       opacity: 50%;
       pointer-events: none;
       cursor: not-allowed;
-      background: $color-surface-2;
     }
   }
 
@@ -261,7 +268,7 @@ $input-width: 100%;
       resize: none;
       cursor: inherit;
 
-      &[type="date"] {
+      &[type='date'] {
         &::-webkit-calendar-picker-indicator {
           opacity: 0;
           pointer-events: none;
@@ -294,11 +301,11 @@ $input-width: 100%;
     &--danger {
       .input__message__icon {
         .bds-icon {
-          color: $color-delete;
+          color: $color-negative;
         }
       }
       .input__message__text {
-        color: $color-delete;
+        color: $color-negative;
       }
     }
     &--success {
@@ -308,7 +315,7 @@ $input-width: 100%;
         }
       }
       .input__message__text {
-        color: $color-positive;
+        color: $color-content-default;
       }
     }
   }

@@ -7,7 +7,6 @@ import {
   IconVariantMap,
   PositionType,
 } from './toast-interface';
-import ballon from '../../assets/svg/notification-ballon.svg';
 @Component({
   tag: 'bds-toast',
   styleUrl: 'toast.scss',
@@ -192,8 +191,10 @@ export class BdsToast implements ComponentInterface {
           hide: this.hide,
         }}
       >
-        {this.variant === 'notification' && <img class="toast__ballon" src={ballon} />}
-        {this.icon && <bds-icon theme="outline" size="medium" name={this.icon} />}
+        {this.variant === 'notification' && (
+          <bds-icon class="toast__ballon" theme="solid" name="blip-chat" size="brand" />
+        )}
+        {this.icon && <bds-icon class="toast__icon" theme="outline" size="medium" name={this.icon} />}
         <div class="toast__content">
           {this.toastTitle && (
             <bds-typo variant="fs-14" bold="bold">

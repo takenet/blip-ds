@@ -17,7 +17,7 @@ $avatar-size-extra-large: 72px;
   align-items: center;
   appearance: none;
   height: 100%;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -63,7 +63,7 @@ $avatar-size-extra-large: 72px;
     }
 
     &__text {
-      color: $color-content-din;
+      color: $color-content-default;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -71,7 +71,7 @@ $avatar-size-extra-large: 72px;
     }
 
     &__icon {
-      color: $color-content-din;
+      color: $color-content-default;
       opacity: 1;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
@@ -122,7 +122,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-content-din;
+        color: $color-content-default;
       }
     }
 
@@ -142,7 +142,7 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
 
       &__icon {
-        color: $color-content-din;
+        color: $color-content-default;
       }
     }
   }

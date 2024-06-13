@@ -161,9 +161,10 @@ export class Button {
 
   private handleClick = (ev) => {
     if (!this.disabled) {
-      this.bdsClick.emit(ev);
-
-      if (ev.key === 'Enter') {
+      if (ev.key == 'Enter') {
+        this.bdsClick.emit(ev);
+      }
+      if (ev.type == 'click') {
         this.bdsClick.emit(ev);
       }
 
@@ -189,6 +190,7 @@ export class Button {
         <button
           onClick={(ev) => this.handleClick(ev)}
           disabled={this.disabled}
+          tabindex="-1"
           aria-disabled={this.disabled ? 'true' : 'false'}
           aria-live="assertive"
           type={this.type}

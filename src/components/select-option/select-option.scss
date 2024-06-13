@@ -8,7 +8,7 @@ $select-option-left: 12px;
 }
 
 .load-spinner {
-  background-color: $color-surface-1;
+  background-color: $color-surface-0;
   height: 200px;
 }
 
@@ -17,7 +17,7 @@ $select-option-left: 12px;
   width: 100%;
   @include no-select();
   cursor: pointer;
-  background-color: $color-surface-1;
+  background-color: $color-surface-0;
   padding: $select-option-padding;
   padding-left: $select-option-left;
   box-sizing: border-box;
@@ -55,7 +55,6 @@ $select-option-left: 12px;
 
     &__checkbox {
       cursor: pointer;
-      background-color: $color-surface-1;
       padding: $select-option-padding;
       padding-left: $select-option-left;
       box-sizing: border-box;
@@ -97,16 +96,16 @@ $select-option-left: 12px;
   }
 
   &:hover {
-    background-color: $color-surface-2;
+    background-color: $color-surface-1;
   }
 
   &:focus {
-    background-color: $color-surface-2;
+    background-color: $color-surface-1;
     color: $color-primary-main;
   }
 
   &--selected {
-    background-color: $color-surface-2;
+    background-color: $color-surface-1;
   }
 
   &--invisible {

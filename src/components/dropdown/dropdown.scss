@@ -12,9 +12,9 @@
   position: absolute;
   pointer-events: none;
   padding: 2px;
-  background-color: $color-surface-1;
+  background-color: $color-surface-0;
   border-radius: 8px;
-  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: $shadow-2;
   min-width: 240px;
   width: max-content;
   opacity: 0;
@@ -81,7 +81,7 @@
     position: absolute;
     inset: 0;
     border-radius: 8px;
-    box-shadow: $color-surface-1 0px 0px 0px 2px inset;
+    box-shadow: $color-surface-0 0px 0px 0px 2px inset;
     pointer-events: none;
   }
 }

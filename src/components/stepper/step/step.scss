@@ -9,10 +9,6 @@
       display: flex;
       align-items: center;
 
-      &--disabled {
-        color: $color-content-default;
-      }
-
       &--completed {
         color: $color-content-disable;
       }
@@ -26,6 +22,10 @@
         cursor: pointer;
       }
 
+      &--disabled {
+        cursor: no-drop;
+      }
+
       &__ellipse {
         display: inline-flex;
         justify-content: center;
@@ -35,25 +35,47 @@
         min-width: 24px;
         min-height: 24px;
 
-        &--icon-completed {
-          color: $color-surface-1;
-        }
-
-        &--text-active {
-          color: $color-primary;
-        }
-
-        &--text-completed {
-          color: $color-content-disable;
+        & bds-typo,
+        bds-icon {
+          color: $color-surface-0;
         }
 
         &--completed {
-          background: $color-content-disable;
+          background: $color-content-ghost;
+          & bds-typo,
+          bds-icon {
+            color: $color-surface-0;
+          }
         }
 
         &--active {
-          background: $color-primary;
-          color: $color-content-bright;
+          background: $color-surface-primary;
+          & bds-typo,
+          bds-icon {
+            color: $color-content-bright;
+          }
+        }
+
+        &--disabled {
+          background: $color-content-ghost;
+          & bds-typo,
+          bds-icon {
+            color: $color-surface-0;
+          }
+        }
+      }
+
+      &__text {
+        &--completed {
+          color: $color-content-ghost;
+        }
+
+        &--active {
+          color: $color-content-default;
+        }
+
+        &--disabled {
+          color: $color-content-ghost;
         }
       }
     }
