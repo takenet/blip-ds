@@ -1,5 +1,4 @@
 import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen } from '@stencil/core';
-import { Option } from '../selects/select-interface';
 import { numberValidation } from '../../utils/validations';
 import * as countriesJson from './countries.json';
 
@@ -32,11 +31,6 @@ export class InputPhoneNumber {
    * Used to set the error message setted by the internal validators
    */
   @State() validationMesage? = '';
-
-  /**
-   * The options of select.
-   */
-  @Prop() options?: Array<Option> = [];
 
   /**
    * The value of the phone number input.
@@ -336,8 +330,8 @@ export class InputPhoneNumber {
       this.danger || this.validationDanger
         ? 'input__message input__message--danger'
         : this.success
-          ? 'input__message input__message--success'
-          : 'input__message';
+        ? 'input__message input__message--success'
+        : 'input__message';
 
     if (message) {
       return (
@@ -409,7 +403,7 @@ export class InputPhoneNumber {
                   class={{ input__container__text: true }}
                   type="phonenumber"
                   required={this.required}
-                  pattern="/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/"
+                  pattern="^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$"
                   ref={this.refNativeInput}
                   onInput={this.changedInputValue}
                   onFocus={this.onFocus}
