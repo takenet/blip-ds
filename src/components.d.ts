@@ -20,6 +20,7 @@ import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
+import { gap, positionElements } from "./components/carousel/carousel-interface";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -31,7 +32,7 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
-import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
+import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -482,6 +483,43 @@ export namespace Components {
          */
         "text"?: string;
     }
+    interface BdsCarousel {
+        /**
+          * Autoplay. Prop to Enable component autoplay.
+         */
+        "autoplay"?: boolean;
+        /**
+          * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
+         */
+        "autoplayHoverPause"?: boolean;
+        /**
+          * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
+         */
+        "autoplayTimeout"?: number;
+        /**
+          * Columns. Prop to Choose the number of columns you will have available in the carousel.
+         */
+        "columns"?: number;
+        /**
+          * Gap. Prop to Select the gap distance between items.
+         */
+        "gap"?: gap;
+        /**
+          * InfiniteLoop. Prop to Enable if the component will have infinite loop.
+         */
+        "infiniteLoop"?: boolean;
+        "nextSlide": () => Promise<void>;
+        "pauseAutoplay": () => Promise<void>;
+        /**
+          * PositioningElements. Prop to Choose the positioning (default, full-width or mini) of the Carousel.
+         */
+        "positioningElements"?: positionElements;
+        "prevSlide": () => Promise<void>;
+        "runAutoplay": () => Promise<void>;
+        "setActivated": (item: number) => Promise<void>;
+    }
+    interface BdsCarouselItem {
+    }
     interface BdsCheckbox {
         /**
           * If `true`, the checkbox is selected.
@@ -845,7 +883,7 @@ export namespace Components {
         "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "height"?: string;
         "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
@@ -1516,7 +1554,7 @@ export namespace Components {
         "alignItems"?: alignItems;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
@@ -2594,6 +2632,10 @@ export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCardElement;
 }
+export interface BdsCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsCarouselElement;
+}
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCheckboxElement;
@@ -2872,6 +2914,18 @@ declare global {
     var HTMLBdsCardTitleElement: {
         prototype: HTMLBdsCardTitleElement;
         new (): HTMLBdsCardTitleElement;
+    };
+    interface HTMLBdsCarouselElement extends Components.BdsCarousel, HTMLStencilElement {
+    }
+    var HTMLBdsCarouselElement: {
+        prototype: HTMLBdsCarouselElement;
+        new (): HTMLBdsCarouselElement;
+    };
+    interface HTMLBdsCarouselItemElement extends Components.BdsCarouselItem, HTMLStencilElement {
+    }
+    var HTMLBdsCarouselItemElement: {
+        prototype: HTMLBdsCarouselItemElement;
+        new (): HTMLBdsCarouselItemElement;
     };
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
     }
@@ -3347,6 +3401,8 @@ declare global {
         "bds-card-header": HTMLBdsCardHeaderElement;
         "bds-card-subtitle": HTMLBdsCardSubtitleElement;
         "bds-card-title": HTMLBdsCardTitleElement;
+        "bds-carousel": HTMLBdsCarouselElement;
+        "bds-carousel-item": HTMLBdsCarouselItemElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-chip-clickable": HTMLBdsChipClickableElement;
@@ -3899,6 +3955,42 @@ declare namespace LocalJSX {
          */
         "text"?: string;
     }
+    interface BdsCarousel {
+        /**
+          * Autoplay. Prop to Enable component autoplay.
+         */
+        "autoplay"?: boolean;
+        /**
+          * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
+         */
+        "autoplayHoverPause"?: boolean;
+        /**
+          * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
+         */
+        "autoplayTimeout"?: number;
+        /**
+          * Columns. Prop to Choose the number of columns you will have available in the carousel.
+         */
+        "columns"?: number;
+        /**
+          * Gap. Prop to Select the gap distance between items.
+         */
+        "gap"?: gap;
+        /**
+          * InfiniteLoop. Prop to Enable if the component will have infinite loop.
+         */
+        "infiniteLoop"?: boolean;
+        /**
+          * Emitted when active frame value.
+         */
+        "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<any>) => void;
+        /**
+          * PositioningElements. Prop to Choose the positioning (default, full-width or mini) of the Carousel.
+         */
+        "positioningElements"?: positionElements;
+    }
+    interface BdsCarouselItem {
+    }
     interface BdsCheckbox {
         /**
           * If `true`, the checkbox is selected.
@@ -4296,7 +4388,7 @@ declare namespace LocalJSX {
         "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "height"?: string;
         "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
@@ -5080,7 +5172,7 @@ declare namespace LocalJSX {
         "alignItems"?: alignItems;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
@@ -6172,6 +6264,8 @@ declare namespace LocalJSX {
         "bds-card-header": BdsCardHeader;
         "bds-card-subtitle": BdsCardSubtitle;
         "bds-card-title": BdsCardTitle;
+        "bds-carousel": BdsCarousel;
+        "bds-carousel-item": BdsCarouselItem;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-chip-clickable": BdsChipClickable;
@@ -6276,6 +6370,8 @@ declare module "@stencil/core" {
             "bds-card-header": LocalJSX.BdsCardHeader & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
             "bds-card-subtitle": LocalJSX.BdsCardSubtitle & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
             "bds-card-title": LocalJSX.BdsCardTitle & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
+            "bds-carousel": LocalJSX.BdsCarousel & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
+            "bds-carousel-item": LocalJSX.BdsCarouselItem & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;

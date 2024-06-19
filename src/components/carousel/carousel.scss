@@ -1,0 +1,63 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1920px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+:host(.carousel) {
+  padding: 0 56px;
+}
+
+:host(.carousel_fullwidth) {
+  padding: 0;
+}
+
+.carousel {
+  &_slide {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &_frame {
+      width: 100%;
+      display: flex;
+      overflow: hidden;
+
+      &_repeater {
+        display: flex;
+        align-items: center;
+        position: relative;
+        right: 0;
+        -webkit-transition: right ease-in-out 0.75s;
+        -moz-transition: right ease-in-out 0.75s;
+        transition: right ease-in-out 0.75s;
+      }
+    }
+  }
+  &_loading {
+    margin: 8px 4px 0;
+  }
+
+  &_buttons {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    top: calc(50% - 48px);
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &_fullwidth {
+      padding: 0 16px;
+    }
+  }
+
+  &_bullets {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}

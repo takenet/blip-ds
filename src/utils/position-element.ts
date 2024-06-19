@@ -89,3 +89,69 @@ export function positionAbsoluteElement({
 
   return result;
 }
+
+export const getItems = (itenslenght: number) => {
+  const items = [];
+  let item = 1;
+
+  while (item <= itenslenght) {
+    const newItem = {
+      id: item,
+      label: `Frame - ${item}`,
+    };
+    items.push(newItem);
+    item++;
+  }
+  return items;
+};
+
+export const gapChanged = (gap: string) => {
+  let spaceGap;
+  switch (gap) {
+    case 'none':
+      spaceGap = 0;
+      break;
+    case 'half':
+      spaceGap = 4;
+      break;
+    case '1':
+      spaceGap = 8;
+      break;
+    case '2':
+      spaceGap = 16;
+      break;
+    case '3':
+      spaceGap = 24;
+      break;
+    case '4':
+      spaceGap = 32;
+      break;
+    case '5':
+      spaceGap = 40;
+      break;
+    case '6':
+      spaceGap = 48;
+      break;
+    case '7':
+      spaceGap = 56;
+      break;
+    case '8':
+      spaceGap = 64;
+      break;
+    case '9':
+      spaceGap = 72;
+      break;
+    case '10':
+      spaceGap = 80;
+      break;
+    case '11':
+      spaceGap = 88;
+      break;
+    case '12':
+      spaceGap = 96;
+      break;
+    default:
+      spaceGap = 0;
+  }
+  return spaceGap;
+};
