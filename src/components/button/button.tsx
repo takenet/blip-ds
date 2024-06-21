@@ -1,8 +1,8 @@
-import { Component, Prop, Element, Event, EventEmitter, h, Host } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host, State } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
-export type ButtonSize = 'tall' | 'standard' | 'short';
+export type ButtonSize = 'tall' | 'standard' | 'short' | 'medium' | 'small' | 'large';
 
 export type ButtonVariant =
   | 'primary'
@@ -28,6 +28,7 @@ export type IconTheme = 'outline' | 'solid';
 export class Button {
   @Element() el!: HTMLElement;
 
+  @State() slotText: string;
   /**
    * 	If true, the base button will be disabled.
    */
@@ -42,7 +43,7 @@ export class Button {
    * Size. Entered as one of the size. Can be one of:
    * 'tall', 'standard', 'short';
    */
-  @Prop() size?: ButtonSize = 'standard';
+  @Prop() size?: ButtonSize = 'medium';
 
   /**
    * Variant. Entered as one of the variant. Can be one of:
@@ -110,22 +111,51 @@ export class Button {
   renderIcon(): HTMLElement {
     return (
       this.icon && (
-        <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
+        <div
+          id="render-icon"
+          class={{ button__icon: true, [`button__icon--${this.size}`]: true, hide: this.bdsLoading && true }}
+        >
           <bds-icon
             class={{ icon_buttom: true }}
             name={this.icon}
             theme={this.iconTheme}
             type={this.typeIcon}
             color="inherit"
+            size={this.size === 'small' && 'medium' ? 'medium' : this.size === 'large' ? 'large' : 'medium'}
           ></bds-icon>
         </div>
       )
     );
   }
 
+  componentDidLoad() {
+    this.logSlotText();
+  }
+
+  logSlotText() {
+    const slot = this.el.shadowRoot.querySelector('slot');
+    const textElement = this.el.shadowRoot.querySelector('#render-text') as HTMLElement;
+    const iconElement = this.el.shadowRoot.querySelector('button') as HTMLElement;
+
+    if (slot) {
+      const assignedNodes = slot.assignedNodes();
+
+      let slotText = '';
+      assignedNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          slotText += node.textContent;
+        }
+      });
+      if (slotText === '') {
+        (textElement.style.display = 'none'), iconElement.classList.add('button__only-icon');
+      }
+    }
+  }
+
   renderText(): HTMLElement {
     return (
       <div
+        id="render-text"
         class={{
           button__content: true,
           [`button__content__${this.variant}`]: true,
@@ -182,8 +212,6 @@ export class Button {
   };
 
   render(): HTMLElement {
-    const sizeClass = this.getSizeClass();
-
     return (
       <Host class={{ host: true, block: this.block }}>
         <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
@@ -199,7 +227,7 @@ export class Button {
             'button--block': this.block,
             [`button__${this.variant}`]: true,
             [`button__${this.variant}--disabled`]: this.disabled,
-            [sizeClass]: true,
+            [`button__size--${this.size}`]: true,
             'button--size-icon--left': !!this.icon,
             'button--size-icon--right': this.arrow,
           }}

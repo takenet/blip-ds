@@ -57,6 +57,7 @@ $button-padding-left-right: 16px;
 }
 
 :host {
+  height: fit-content;
   position: relative;
 }
 
@@ -73,14 +74,40 @@ $button-padding-left-right: 16px;
   justify-content: center;
   height: 100%;
   border-radius: $button-border-radius;
-  padding-left: $button-padding-left-right;
-  padding-right: $button-padding-left-right;
   position: relative;
   box-sizing: border-box;
-
+  gap: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
+
+  &__size {
+    &--small {
+      height: 32px
+    }
+    &--medium {
+      height: 40px;
+    }
+    &--large {
+      height: 48px;
+    }
+  }
+
+  &__icon--small {
+    padding: 0 4px;
+  }
+  &__icon--medium {
+    padding: 0 8px;
+  }
+  &__icon--large {
+    padding: 0 16px;
+  }
+
+  &__only-icon {
+    padding: 0px;
+  }
 
   &--block {
     width: 100%;
@@ -130,20 +157,20 @@ $button-padding-left-right: 16px;
     }
   }
 
-  &--size-icon {
-    &--left {
-      padding-left: $button-padding-left-right-icon;
-    }
-    &--right {
-      padding-right: $button-padding-left-right-icon;
-    }
-  }
+  // &--size-icon {
+  //   &--left {
+  //     padding-left: $button-padding-left-right-icon;
+  //   }
+  //   &--right {
+  //     padding-right: $button-padding-left-right-icon;
+  //   }
+  // }
 
-  &__icon {
-    @include inherit-color();
-    height: 24px;
-    margin-right: 4px;
-  }
+  // &__icon {
+  //   @include inherit-color();
+  //   height: 24px;
+  //   margin-right: 4px;
+  // }
 
   &__arrow {
     @include inherit-color();

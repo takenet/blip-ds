@@ -17,12 +17,27 @@
   body {
     background: var(--color-surface-3, #f5f8f9);
     /* background: var(--color-background-2, #0a0f1a);  */
-    margin: 0;
+    margin: auto;
+    padding: 50px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
   }
 </style>
 
 <body>
   Versão blip-ds 1.284.0
+  <bds-grid gap="2" >
+    <bds-button variant="primary" icon="file-new" size="small">Botão small</bds-button>
+    <bds-button variant="primary" icon="file-new" size="medium">Botão medium</bds-button>
+    <bds-button variant="primary" icon="file-new" size="large">Botão large</bds-button>
+  </bds-grid>
+  <bds-grid gap="2" >
+    <bds-button variant="primary" icon="file-new" size="small"></bds-button>
+    <bds-button variant="primary" icon="file-new" size="medium"></bds-button>
+    <bds-button variant="primary" icon="file-new" size="large"></bds-button>
+    <bds-button variant="primary" icon="file-new" size="large" bds-loading></bds-button>
+  </bds-grid>
   <bds-test-component></bds-test-component>
 </body>
 
