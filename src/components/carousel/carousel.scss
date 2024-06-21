@@ -4,15 +4,6 @@
   width: 100%;
   max-width: 1920px;
   position: relative;
-  box-sizing: border-box;
-}
-
-:host(.carousel) {
-  padding: 0 56px;
-}
-
-:host(.carousel_fullwidth) {
-  padding: 0;
 }
 
 .carousel {
@@ -20,6 +11,12 @@
     width: 100%;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 56px;
+
+    &_fullwidth {
+      padding: 0;
+    }
 
     &_frame {
       width: 100%;
@@ -38,14 +35,20 @@
     }
   }
   &_loading {
-    margin: 8px 4px 0;
+    box-sizing: border-box;
+    padding: 0 60px;
+    margin-top: 8px;
+
+    &_fullwidth {
+      padding: 0 4px;
+    }
   }
 
   &_buttons {
     position: absolute;
     width: 100%;
     height: 0px;
-    top: calc(50% - 48px);
+    top: calc(50% - 20px);
     left: 0;
     display: flex;
     justify-content: space-between;

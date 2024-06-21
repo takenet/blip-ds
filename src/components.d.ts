@@ -20,7 +20,7 @@ import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
-import { gap, positionElements } from "./components/carousel/carousel-interface";
+import { arrows, gap } from "./components/carousel/carousel-interface";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -485,6 +485,10 @@ export namespace Components {
     }
     interface BdsCarousel {
         /**
+          * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
+         */
+        "arrows"?: arrows;
+        /**
           * Autoplay. Prop to Enable component autoplay.
          */
         "autoplay"?: boolean;
@@ -497,9 +501,9 @@ export namespace Components {
          */
         "autoplayTimeout"?: number;
         /**
-          * Columns. Prop to Choose the number of columns you will have available in the carousel.
+          * Bullet. Prop to Enable component bullets navigation.
          */
-        "columns"?: number;
+        "bullets"?: boolean;
         /**
           * Gap. Prop to Select the gap distance between items.
          */
@@ -510,13 +514,13 @@ export namespace Components {
         "infiniteLoop"?: boolean;
         "nextSlide": () => Promise<void>;
         "pauseAutoplay": () => Promise<void>;
-        /**
-          * PositioningElements. Prop to Choose the positioning (default, full-width or mini) of the Carousel.
-         */
-        "positioningElements"?: positionElements;
         "prevSlide": () => Promise<void>;
         "runAutoplay": () => Promise<void>;
         "setActivated": (item: number) => Promise<void>;
+        /**
+          * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
+         */
+        "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
     }
@@ -3957,6 +3961,10 @@ declare namespace LocalJSX {
     }
     interface BdsCarousel {
         /**
+          * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
+         */
+        "arrows"?: arrows;
+        /**
           * Autoplay. Prop to Enable component autoplay.
          */
         "autoplay"?: boolean;
@@ -3969,9 +3977,9 @@ declare namespace LocalJSX {
          */
         "autoplayTimeout"?: number;
         /**
-          * Columns. Prop to Choose the number of columns you will have available in the carousel.
+          * Bullet. Prop to Enable component bullets navigation.
          */
-        "columns"?: number;
+        "bullets"?: boolean;
         /**
           * Gap. Prop to Select the gap distance between items.
          */
@@ -3985,9 +3993,9 @@ declare namespace LocalJSX {
          */
         "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<any>) => void;
         /**
-          * PositioningElements. Prop to Choose the positioning (default, full-width or mini) of the Carousel.
+          * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
          */
-        "positioningElements"?: positionElements;
+        "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
     }

@@ -31,8 +31,9 @@ export const Properties = (args) => {
       autoplay-timeout={args.autoplayTimeout}
       autoplay-hover-pause={args.autoplayHoverPause}
       infinite-loop={args.infiniteLoop}
-      positioning-elements={args.positioningElements}
-      columns={args.columns}
+      arrows={args.arrows}
+      bullets={args.bullets}
+      slide-per-page={args.slidePerPage}
       gap={args.gap}
     >
       <bds-carousel-item>
@@ -170,7 +171,7 @@ export const Properties = (args) => {
 Properties.argTypes = {
   autoplay: {
     table: {
-      defaultValue: { summary: 'true' },
+      defaultValue: { summary: 'false' },
     },
     description: 'Habilite o autoplay do componente.',
     control: 'boolean',
@@ -196,15 +197,22 @@ Properties.argTypes = {
     description: 'Habilite se o componente terá Loop infinito.',
     control: 'boolean',
   },
-  positioningElements: {
+  bullets: {
     table: {
-      defaultValue: { summary: 'default' },
+      defaultValue: { summary: 'true' },
     },
-    description: 'Escolha o posicionamento do Carousel.',
-    options: ['default', 'full-width', 'mini'],
+    description: 'Habilite se o componente terá Loop infinito.',
+    control: 'boolean',
+  },
+  arrows: {
+    table: {
+      defaultValue: { summary: 'outside' },
+    },
+    description: 'Escolha o tipo de navegação por seta do componente.',
+    options: ['outside', 'inside', 'none'],
     control: 'select',
   },
-  columns: {
+  slidePerPage: {
     table: {
       defaultValue: { summary: 1 },
     },
@@ -222,12 +230,13 @@ Properties.argTypes = {
 };
 
 Properties.args = {
-  autoplay: true,
+  autoplay: false,
   autoplayTimeout: '5000',
   autoplayHoverPause: false,
   infiniteLoop: false,
-  positioningElements: 'default',
-  columns: 1,
+  bullets: true,
+  arrows: 'outside',
+  slidePerPage: 1,
   gap: 'none',
 };
 
@@ -276,8 +285,10 @@ export const Methods = () => {
         autoplay={true}
         autoplay-timeout="10000"
         autoplay-hover-pause={true}
+        arrows="none"
+        bullets={true}
         infinite-loop={true}
-        columns={2}
+        slide-per-page={2}
         gap="2"
       >
         <bds-carousel-item>
@@ -426,8 +437,10 @@ export const Events = () => {
       autoplay={true}
       autoplay-timeout="10000"
       autoplay-hover-pause={true}
+      arrows="none"
+      bullets={true}
       infinite-loop={true}
-      columns={2}
+      slide-per-page={2}
       gap="2"
     >
       <bds-carousel-item>

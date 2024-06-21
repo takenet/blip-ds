@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Watch, Prop, Method, Event, EventEmitter } from '@stencil/core';
-import { Itens, positionElements, gap } from './carousel-interface';
+import { Itens, arrows, gap } from './carousel-interface';
 import { gapChanged, getItems } from '../../utils/position-element';
 
 @Component({
@@ -23,7 +23,7 @@ export class BdsCarousel {
   /**
    * Autoplay. Prop to Enable component autoplay.
    */
-  @Prop() autoplay?: boolean = true;
+  @Prop() autoplay?: boolean = false;
 
   /**
    * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
@@ -36,19 +36,24 @@ export class BdsCarousel {
   @Prop() autoplayHoverPause?: boolean = false;
 
   /**
+   * Bullet. Prop to Enable component bullets navigation.
+   */
+  @Prop() bullets?: boolean = true;
+
+  /**
    * InfiniteLoop. Prop to Enable if the component will have infinite loop.
    */
   @Prop() infiniteLoop?: boolean = false;
 
   /**
-   * PositioningElements. Prop to Choose the positioning (default, full-width or mini) of the Carousel.
+   * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
    */
-  @Prop() positioningElements?: positionElements = 'default';
+  @Prop() arrows?: arrows = 'outside';
 
   /**
-   * Columns. Prop to Choose the number of columns you will have available in the carousel.
+   * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
    */
-  @Prop() columns?: number = 1;
+  @Prop() slidePerPage?: number = 1;
 
   /**
    * Gap. Prop to Select the gap distance between items.
@@ -76,7 +81,7 @@ export class BdsCarousel {
     }
     for (let i = 0; i < this.itemsElement.length; i++) {
       const widthFrame = this.frame.offsetWidth >= 1920 ? 1920 : this.frame.offsetWidth;
-      this.itemsElement[i].style.width = `${widthFrame / this.columns}px`;
+      this.itemsElement[i].style.width = `${widthFrame / this.slidePerPage}px`;
       this.itemsElement[i].style.padding = `0 ${gapChanged(this.gap) / 2}px`;
     }
   }
@@ -90,7 +95,7 @@ export class BdsCarousel {
     const currentItemSelected: Itens = this.internalItens.find((item) => item.id === this.itemActivated);
     const slideFrame = this.frame.offsetWidth * (this.itemActivated - 1);
     if (currentItemSelected.isWhole) {
-      const isWholeWidth = this.itemsElement[1].offsetWidth * (this.columns - this.isWhole);
+      const isWholeWidth = this.itemsElement[1].offsetWidth * (this.slidePerPage - this.isWhole);
       this.frameRepeater.style.right = `${slideFrame - isWholeWidth}px`;
     } else {
       this.frameRepeater.style.right = `${slideFrame}px`;
@@ -126,11 +131,11 @@ export class BdsCarousel {
   }
 
   private setInternalItens = (ItensElement) => {
-    const floor = Math.floor(ItensElement.length / this.columns);
-    const numberOfColumns = ItensElement.length / this.columns;
+    const floor = Math.floor(ItensElement.length / this.slidePerPage);
+    const numberOfColumns = ItensElement.length / this.slidePerPage;
     const newItens = getItems(numberOfColumns);
     this.internalItens = newItens;
-    this.isWhole = ItensElement.length - this.columns * floor;
+    this.isWhole = ItensElement.length - this.slidePerPage * floor;
   };
 
   private startCountSeconds = () => {
@@ -201,8 +206,8 @@ export class BdsCarousel {
 
   render() {
     return (
-      <Host class={{ carousel: true, carousel_fullwidth: this.positioningElements != 'default' }}>
-        <div class={{ carousel_slide: true }}>
+      <Host class={{ carousel: true }}>
+        <div class={{ carousel_slide: true, carousel_slide_fullwidth: this.arrows != 'outside' }}>
           <div
             ref={(el) => this.refFrame(el)}
             class={{ carousel_slide_frame: true }}
@@ -214,49 +219,50 @@ export class BdsCarousel {
               <slot></slot>
             </div>
           </div>
+          {this.arrows != 'none' && (
+            <div class={{ carousel_buttons: true, carousel_buttons_fullwidth: this.arrows == 'inside' }}>
+              <bds-button-icon
+                variant="tertiary"
+                icon="arrow-left"
+                size="short"
+                onBdsClick={() => this.prevSlide()}
+                disabled={!this.infiniteLoop && this.itemActivated <= 1}
+              ></bds-button-icon>
+              <bds-button-icon
+                variant="tertiary"
+                icon="arrow-right"
+                size="short"
+                onBdsClick={() => this.nextSlide()}
+                disabled={!this.infiniteLoop && this.itemActivated >= this.internalItens.length}
+              ></bds-button-icon>
+            </div>
+          )}
         </div>
-        {this.positioningElements != 'mini' && (
-          <div class={{ carousel_buttons: true, carousel_buttons_fullwidth: this.positioningElements == 'full-width' }}>
-            <bds-button-icon
-              variant="tertiary"
-              icon="arrow-left"
-              size="short"
-              onBdsClick={() => this.prevSlide()}
-              disabled={!this.infiniteLoop && this.itemActivated <= 1}
-            ></bds-button-icon>
-            <bds-button-icon
-              variant="tertiary"
-              icon="arrow-right"
-              size="short"
-              onBdsClick={() => this.nextSlide()}
-              disabled={!this.infiniteLoop && this.itemActivated >= this.itemsElement.length}
-            ></bds-button-icon>
-          </div>
-        )}
         {this.autoplay && (
           <bds-loading-bar
-            class={{ carousel_loading: true }}
+            class={{ carousel_loading: true, carousel_loading_fullwidth: this.arrows != 'outside' }}
             percent={(this.seconds * 100) / this.secondsLimit}
             size="small"
           />
         )}
-
-        <div class={{ carousel_bullets: true }}>
-          {this.internalItens && (
-            <bds-radio-group>
-              <bds-grid gap="2" justify-content="center">
-                {this.internalItens.map((item, index) => (
-                  <bds-radio
-                    key={index}
-                    checked={item.id == this.itemActivated}
-                    value={item.id.toString()}
-                    onBdsClickChange={() => this.setActivated(item.id)}
-                  />
-                ))}
-              </bds-grid>
-            </bds-radio-group>
-          )}
-        </div>
+        {this.bullets && (
+          <div class={{ carousel_bullets: true }}>
+            {this.internalItens && (
+              <bds-radio-group>
+                <bds-grid gap="2" justify-content="center">
+                  {this.internalItens.map((item, index) => (
+                    <bds-radio
+                      key={index}
+                      checked={item.id == this.itemActivated}
+                      value={item.id.toString()}
+                      onBdsClickChange={() => this.setActivated(item.id)}
+                    />
+                  ))}
+                </bds-grid>
+              </bds-radio-group>
+            )}
+          </div>
+        )}
       </Host>
     );
   }
