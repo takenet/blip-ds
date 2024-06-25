@@ -4205,6 +4205,10 @@ declare namespace LocalJSX {
          */
         "language"?: languages;
         /**
+          * bdsClickDayButton. Event to return when click on day button.
+         */
+        "onBdsClickDayButton"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
+        /**
           * bdsEndDate. Event to return selected end date value.
          */
         "onBdsEndDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
