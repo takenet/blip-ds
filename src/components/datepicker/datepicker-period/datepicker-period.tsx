@@ -172,7 +172,7 @@ export class BdsdatepickerPeriod {
       this.endDateSelect = null;
     }
     if (this.stateSelect == 'end') this.endDateSelect = changeSelected;
-    this.bdsClickDayButton.emit({ value: this.stateSelect });
+    this.bdsClickDayButton.emit({ state: this.stateSelect });
   }
   /**
    * prevMonth. Function to rewind the date on the calendar slide.
