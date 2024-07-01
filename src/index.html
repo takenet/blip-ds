@@ -27,16 +27,101 @@
 
 <body>
   Versão blip-ds 1.284.0
-  <bds-grid gap="2" >
-    <bds-button variant="primary" icon="file-new" size="small">Botão small</bds-button>
-    <bds-button variant="primary" icon="file-new" size="medium">Botão medium</bds-button>
-    <bds-button variant="primary" icon="file-new" size="large">Botão large</bds-button>
+  <bds-button-group>
+    <bds-button variant="outline">Button 1</bds-button>
+    <bds-button variant="outline">Button 2</bds-button>
+    <bds-button variant="outline">Button 3</bds-button>
+  </bds-button-group>
+  <bds-button-group>
+    <bds-button variant="outline" icon-left="info"></bds-button>
+    <bds-button variant="outline" icon-left="warning"></bds-button>
+    <bds-button variant="outline" icon-left="copy"></bds-button>
+  </bds-button-group>
+  <bds-grid>
+    <bds-typo variant="fs-40" bold="bold">Color and Variant</bds-typo>
   </bds-grid>
-  <bds-grid gap="2" >
-    <bds-button variant="primary" icon="file-new" size="small"></bds-button>
-    <bds-button variant="primary" icon="file-new" size="medium"></bds-button>
-    <bds-button variant="primary" icon="file-new" size="large"></bds-button>
-    <bds-button variant="primary" icon="file-new" size="large" bds-loading></bds-button>
+  <bds-grid gap="2">
+    <bds-button color="primary" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão primary
+    </bds-button>
+    <bds-button color="content" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão content
+    </bds-button>
+    <bds-button color="negative" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão positive
+    </bds-button>
+    <bds-button color="positive" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão negative
+    </bds-button>
+  </bds-grid>
+  <bds-grid gap="2">
+    <bds-button color="primary" block icon-left="info" icon-right="arrow-right" size="medium">
+      Botão primary
+    </bds-button>
+  </bds-grid>
+  <bds-grid gap="2">
+    <bds-button color="primary" variant="outline" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+    <bds-button color="content" variant="outline" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+    <bds-button color="negative" variant="outline" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+    <bds-button color="positive" variant="outline" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+  </bds-grid>
+  <bds-grid gap="2">
+    <bds-button color="primary" variant="text" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+    <bds-button color="content" variant="text" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+    <bds-button color="negative" variant="text" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+    <bds-button color="positive" variant="text" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão outline
+    </bds-button>
+  </bds-grid>
+
+  <bds-grid>
+    <bds-typo variant="fs-40" bold="bold">Size</bds-typo>
+  </bds-grid>
+  <bds-grid gap="2">
+    <bds-button color="primary" icon-left="info" icon-right="arrow-right" size="medium">
+      Botão medium
+    </bds-button>
+    <bds-button color="content" icon-left="info" icon-right="arrow-right" size="large">
+      Botão large
+    </bds-button>
+  </bds-grid>
+  <bds-grid gap="2">
+    <bds-button color="primary" icon-left="info" size="medium">
+    </bds-button>
+    <bds-button color="content" icon-right="arrow-right" size="large">
+    </bds-button>
+  </bds-grid>
+
+  <bds-grid>
+    <bds-typo variant="fs-40" bold="bold">Loading</bds-typo>
+  </bds-grid>
+  <bds-grid gap="2">
+    <bds-button color="primary" icon-left="info" icon-right="arrow-right" size="medium" bds-loading>
+      Botão medium
+    </bds-button>
+    <bds-button color="content" icon-left="info" icon-right="arrow-right" size="large" bds-loading>
+      Botão large
+    </bds-button>
+  </bds-grid>
+  <bds-grid gap="2">
+    <bds-button color="primary" icon-left="info" size="medium" bds-loading>
+    </bds-button>
+    <bds-button color="content" icon-right="arrow-right" size="large" bds-loading>
+    </bds-button>
   </bds-grid>
   <bds-test-component></bds-test-component>
 </body>

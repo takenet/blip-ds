@@ -353,6 +353,7 @@ export namespace Components {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -364,11 +365,17 @@ export namespace Components {
         /**
           * used for add icon in input left. Uses the bds-icon component.
          */
-        "icon"?: string;
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme": IconTheme;
+        "isActive": (value: any) => Promise<void>;
+        "setPosition": (position: 'first' | 'last' | 'middle') => Promise<void>;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
@@ -385,6 +392,8 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
     }
     interface BdsButtonIcon {
         /**
@@ -2586,6 +2595,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsButtonGroupElement;
+}
 export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonIconElement;
@@ -2824,6 +2837,12 @@ declare global {
     var HTMLBdsButtonElement: {
         prototype: HTMLBdsButtonElement;
         new (): HTMLBdsButtonElement;
+    };
+    interface HTMLBdsButtonGroupElement extends Components.BdsButtonGroup, HTMLStencilElement {
+    }
+    var HTMLBdsButtonGroupElement: {
+        prototype: HTMLBdsButtonGroupElement;
+        new (): HTMLBdsButtonGroupElement;
     };
     interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
     }
@@ -3339,6 +3358,7 @@ declare global {
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
+        "bds-button-group": HTMLBdsButtonGroupElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
         "bds-card": HTMLBdsCardElement;
         "bds-card-body": HTMLBdsCardBodyElement;
@@ -3758,6 +3778,7 @@ declare namespace LocalJSX {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3769,7 +3790,11 @@ declare namespace LocalJSX {
         /**
           * used for add icon in input left. Uses the bds-icon component.
          */
-        "icon"?: string;
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
@@ -3794,6 +3819,9 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
+        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<number>) => void;
     }
     interface BdsButtonIcon {
         /**
@@ -6164,6 +6192,7 @@ declare namespace LocalJSX {
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
+        "bds-button-group": BdsButtonGroup;
         "bds-button-icon": BdsButtonIcon;
         "bds-card": BdsCard;
         "bds-card-body": BdsCardBody;
@@ -6268,6 +6297,7 @@ declare module "@stencil/core" {
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            "bds-button-group": LocalJSX.BdsButtonGroup & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
             "bds-card": LocalJSX.BdsCard & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
             "bds-card-body": LocalJSX.BdsCardBody & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;

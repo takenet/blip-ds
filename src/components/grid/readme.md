@@ -37,6 +37,7 @@
 
 ### Used by
 
+ - [bds-button-group](../button)
  - [bds-card](../card)
  - [bds-card-body](../card/card-body)
  - [bds-card-color](../card-color)
@@ -50,6 +51,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  bds-button-group --> bds-grid
   bds-card --> bds-grid
   bds-card-body --> bds-grid
   bds-card-color --> bds-grid
