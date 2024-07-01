@@ -53,6 +53,7 @@ Type: `Promise<boolean>`
 
 ### Used by
 
+ - [bds-carousel](../carousel)
  - [bds-list-item](../list)
 
 ### Depends on
@@ -63,6 +64,7 @@ Type: `Promise<boolean>`
 ```mermaid
 graph TD;
   bds-radio --> bds-typo
+  bds-carousel --> bds-radio
   bds-list-item --> bds-radio
   style bds-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
