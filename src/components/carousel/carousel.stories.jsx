@@ -25,6 +25,10 @@ const title = 'Slide Title';
 const paragraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
 export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '800px';
+  }
   return (
     <bds-carousel
       autoplay={args.autoplay}
@@ -38,7 +42,7 @@ export const Properties = (args) => {
     >
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="star"></bds-illustration>
             </bds-grid>
@@ -54,7 +58,7 @@ export const Properties = (args) => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="check"></bds-illustration>
             </bds-grid>
@@ -70,7 +74,7 @@ export const Properties = (args) => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="air-ballon"></bds-illustration>
             </bds-grid>
@@ -86,7 +90,7 @@ export const Properties = (args) => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="analytics-satisfaction"></bds-illustration>
             </bds-grid>
@@ -102,7 +106,7 @@ export const Properties = (args) => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="avatar"></bds-illustration>
             </bds-grid>
@@ -118,7 +122,7 @@ export const Properties = (args) => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="binoculars"></bds-illustration>
             </bds-grid>
@@ -134,7 +138,7 @@ export const Properties = (args) => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="bot-list"></bds-illustration>
             </bds-grid>
@@ -150,7 +154,7 @@ export const Properties = (args) => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="bill-1"></bds-illustration>
             </bds-grid>
@@ -293,7 +297,7 @@ export const Methods = () => {
       >
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="star"></bds-illustration>
               </bds-grid>
@@ -309,7 +313,7 @@ export const Methods = () => {
         </bds-carousel-item>
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="check"></bds-illustration>
               </bds-grid>
@@ -325,7 +329,7 @@ export const Methods = () => {
         </bds-carousel-item>
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="air-ballon"></bds-illustration>
               </bds-grid>
@@ -341,7 +345,7 @@ export const Methods = () => {
         </bds-carousel-item>
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="analytics-satisfaction"></bds-illustration>
               </bds-grid>
@@ -357,7 +361,7 @@ export const Methods = () => {
         </bds-carousel-item>
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="avatar"></bds-illustration>
               </bds-grid>
@@ -373,7 +377,7 @@ export const Methods = () => {
         </bds-carousel-item>
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="binoculars"></bds-illustration>
               </bds-grid>
@@ -389,7 +393,7 @@ export const Methods = () => {
         </bds-carousel-item>
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="bot-list"></bds-illustration>
               </bds-grid>
@@ -405,7 +409,7 @@ export const Methods = () => {
         </bds-carousel-item>
         <bds-carousel-item>
           <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid containerFluid align-items="center">
+            <bds-grid align-items="center">
               <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
                 <bds-illustration type="spots" name="bill-1"></bds-illustration>
               </bds-grid>
@@ -445,7 +449,7 @@ export const Events = () => {
     >
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="star"></bds-illustration>
             </bds-grid>
@@ -461,7 +465,7 @@ export const Events = () => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="check"></bds-illustration>
             </bds-grid>
@@ -477,7 +481,7 @@ export const Events = () => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="air-ballon"></bds-illustration>
             </bds-grid>
@@ -493,7 +497,7 @@ export const Events = () => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="analytics-satisfaction"></bds-illustration>
             </bds-grid>
@@ -509,7 +513,7 @@ export const Events = () => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="avatar"></bds-illustration>
             </bds-grid>
@@ -525,7 +529,7 @@ export const Events = () => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="binoculars"></bds-illustration>
             </bds-grid>
@@ -541,7 +545,7 @@ export const Events = () => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="bot-list"></bds-illustration>
             </bds-grid>
@@ -557,7 +561,7 @@ export const Events = () => {
       </bds-carousel-item>
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid containerFluid align-items="center">
+          <bds-grid align-items="center">
             <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
               <bds-illustration type="spots" name="bill-1"></bds-illustration>
             </bds-grid>
@@ -580,7 +584,7 @@ export const FrameworkReact = () => {
     <BdsCarousel>
       <BdsCarouselItem>
         <BdsPaper bgColor="surface-0">
-          <BdsGrid containerFluid align-items="center">
+          <BdsGrid align-items="center">
             <BdsGrid xxs="3" padding="3" direction="column" margin="y-2">
               <BdsIllustration type="spots" name="star"></BdsIllustration>
             </BdsGrid>
@@ -596,7 +600,7 @@ export const FrameworkReact = () => {
       </BdsCarouselItem>
       <BdsCarouselItem>
         <BdsPaper bgColor="surface-0">
-          <BdsGrid containerFluid align-items="center">
+          <BdsGrid align-items="center">
             <BdsGrid xxs="3" padding="3" direction="column" margin="y-2">
               <BdsIllustration type="spots" name="check"></BdsIllustration>
             </BdsGrid>
@@ -612,7 +616,7 @@ export const FrameworkReact = () => {
       </BdsCarouselItem>
       <BdsCarouselItem>
         <BdsPaper bgColor="surface-0">
-          <BdsGrid containerFluid align-items="center">
+          <BdsGrid align-items="center">
             <BdsGrid xxs="3" padding="3" direction="column" margin="y-2">
               <BdsIllustration type="spots" name="air-ballon"></BdsIllustration>
             </BdsGrid>
@@ -628,7 +632,7 @@ export const FrameworkReact = () => {
       </BdsCarouselItem>
       <BdsCarouselItem>
         <BdsPaper bgColor="surface-0">
-          <BdsGrid containerFluid align-items="center">
+          <BdsGrid align-items="center">
             <BdsGrid xxs="3" padding="3" direction="column" margin="y-2">
               <BdsIllustration type="spots" name="analytics-satisfaction"></BdsIllustration>
             </BdsGrid>
