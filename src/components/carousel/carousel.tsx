@@ -15,10 +15,10 @@ export class BdsCarousel {
 
   @Element() private element: HTMLElement;
 
-  @State() itemActivated: number = 1;
-  @State() seconds: number = 0;
+  @State() itemActivated = 1;
+  @State() seconds = 0;
   @State() internalItens: Itens[];
-  @State() isWhole: number = 0;
+  @State() isWhole = 0;
 
   /**
    * Autoplay. Prop to Enable component autoplay.
