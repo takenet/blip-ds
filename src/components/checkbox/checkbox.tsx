@@ -67,7 +67,8 @@ export class Checkbox {
     });
   }
 
-  private onClick = (): void => {
+  private onClick = (ev: Event): void => {
+    ev.stopPropagation();
     this.checked = !this.checked;
     this.bdsChange.emit({
       checked: this.checked,
@@ -122,7 +123,7 @@ export class Checkbox {
           ref={this.refNativeInput}
           id={this.checkBoxId}
           name={this.name}
-          onClick={this.onClick}
+          onClick={(ev) => this.onClick(ev)}
           checked={this.checked}
           disabled={this.disabled}
           data-test={this.dataTest}
