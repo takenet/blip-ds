@@ -17,7 +17,7 @@ import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/b
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
-import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
+import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
@@ -34,7 +34,6 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
-import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -413,15 +412,15 @@ export namespace Components {
         /**
           * Direction of the button group layout. Can be one of: 'row', 'column'.
          */
-        "direction": direction;
+        "direction"?: direction;
         /**
           * Allows multiple buttons to be selected simultaneously if true.
          */
-        "multiple": boolean;
+        "multiple"?: boolean;
         /**
           * Size of the buttons. Can be one of: 'medium', 'large'.
          */
-        "size": ButtonSize1;
+        "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**

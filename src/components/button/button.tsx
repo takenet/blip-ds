@@ -35,7 +35,7 @@ export class Button {
   @State() active: boolean;
   @State() position: string;
   @State() direction: string;
-  @State() group = true;
+  @State() group = false;
   /**
    * 	If true, the base button will be disabled.
    */
@@ -130,6 +130,7 @@ export class Button {
   @Method()
   async setPosition(position: 'first' | 'last' | 'middle') {
     this.position = position;
+    this.position ? (this.group = true) : false;
   }
 
   @Method()
@@ -179,7 +180,7 @@ export class Button {
   }
 
   renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
-    const loadingColor = this.color === 'primary' ? 'light' : this.color === 'content' ? 'content' : 'main';
+    const loadingColor = this.color === 'content' ? 'content' : 'light';
     return <bds-loading-spinner size="small" color={loadingColor}></bds-loading-spinner>;
   }
 
