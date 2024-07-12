@@ -34,6 +34,8 @@ export class Button {
   @State() slotText: string;
   @State() active: boolean;
   @State() position: string;
+  @State() direction: string;
+  @State() group = true;
   /**
    * 	If true, the base button will be disabled.
    */
@@ -44,18 +46,23 @@ export class Button {
    */
   @Prop() disabled?: boolean = false;
 
-  @Prop() color?: string = 'primary';
+  @Prop({ mutable: true }) color?: string = 'primary';
   /**
    * Size. Entered as one of the size. Can be one of:
    * 'tall', 'standard', 'short';
    */
-  @Prop() size?: ButtonSize = 'medium';
+  @Prop({ mutable: true }) size?: ButtonSize = 'medium';
 
   /**
    * Variant. Entered as one of the variant. Can be one of:
    * 'primary', 'secondary', 'ghost', 'dashed';
    */
-  @Prop() variant?: ButtonVariant = 'solid';
+  @Prop({ mutable: true }) variant?: ButtonVariant = 'solid';
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) icon?: string = null;
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
@@ -125,7 +132,27 @@ export class Button {
     this.position = position;
   }
 
-  componentDidLoad() {
+  @Method()
+  async setDirection(direction: 'row' | 'column') {
+    this.direction = direction;
+  }
+
+  @Method()
+  async setSize(size: ButtonSize) {
+    this.size = size;
+  }
+
+  @Method()
+  async setColor(color: 'primary' | 'content' | 'negative' | 'positive') {
+    this.color = color;
+  }
+
+  @Method()
+  async setVariant(variant: ButtonVariant) {
+    this.variant = variant;
+  }
+
+  componentDidRender() {
     this.logSlotText();
   }
 
@@ -152,7 +179,7 @@ export class Button {
   }
 
   renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
-    const loadingColor = this.color === 'primary' ? 'light' : this.color === 'content' ? 'light' : 'main';
+    const loadingColor = this.color === 'primary' ? 'light' : this.color === 'content' ? 'content' : 'main';
     return <bds-loading-spinner size="small" color={loadingColor}></bds-loading-spinner>;
   }
 
@@ -180,7 +207,7 @@ export class Button {
 
   render(): HTMLElement {
     return (
-      <Host class={{ host: true, block: this.block }}>
+      <Host class={{ host: true, block: this.block, group: this.group }}>
         <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
         <button
           onClick={(ev) => this.handleClick(ev)}
@@ -192,22 +219,23 @@ export class Button {
           class={{
             button: true,
             'button--block': this.block,
-            [`button__position--${this.position}`]: true,
+            'button--group': this.group,
+            [`button__position--${this.direction}--${this.position}`]: true,
             'button--active': this.active,
-            [`button__variant--${this.variant}`]: true,
-            [`button__${this.variant}`]: true,
-            [`button__color--${this.color}`]: true,
-            [`button__${this.variant}--disabled`]: this.disabled,
+            [`button__variant--${this.variant === 'delete' ? 'solid' : this.variant}`]: true,
+            [`button__${this.variant === 'delete' ? 'solid' : this.variant}`]: true,
+            [`button__color--${this.variant === 'delete' ? 'negative' : this.color}`]: true,
+            [`button__variant--${this.variant}--disabled`]: this.disabled,
             [`button__size--${this.size}`]: true,
           }}
           part="button"
           data-test={this.dataTest}
         >
           {this.bdsLoading ? this.renderLoadingSpinner() : ''}
-          {this.iconLeft ? (
+          {this.iconLeft || this.icon ? (
             <bds-icon
               class={{ icon_buttom: true, hide: this.bdsLoading }}
-              name={this.iconLeft}
+              name={this.icon ? this.icon : this.iconLeft}
               theme={this.iconTheme}
               type={this.typeIcon}
               color="inherit"
@@ -224,17 +252,15 @@ export class Button {
           >
             <slot></slot>
           </bds-typo>
-          {this.iconRight ? (
+          {this.iconRight || this.arrow ? (
             <bds-icon
               class={{ icon_buttom: true, hide: this.bdsLoading }}
-              name={this.iconRight}
+              name={this.arrow ? 'arrow-right' : this.iconRight}
               color="inherit"
             ></bds-icon>
           ) : (
             ''
           )}
-
-          {/* {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]} */}
         </button>
       </Host>
     );

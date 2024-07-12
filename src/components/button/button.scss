@@ -2,26 +2,6 @@
 
 $button-border-radius: 8px;
 
-$height-standard: 40px;
-$height-short: 32px;
-
-$button-size-tall: 14px;
-$button-size-standard: 9px;
-$button-size-short: 5px;
-
-$button-size-tall-icon: 12px;
-$button-size-standard-icon: 8px;
-$button-size-short-icon: 4px;
-
-$button-padding-left-right-icon: 16px;
-$button-padding-left-right: 16px;
-
-@mixin padding-button-top-bottom($padding, $height) {
-  padding-top: $padding;
-  padding-bottom: $padding;
-  height: $height;
-}
-
 @mixin disable-button($color: null, $border: null) {
   opacity: 50%;
   pointer-events: none;
@@ -51,14 +31,50 @@ $button-padding-left-right: 16px;
   background-color: inherit;
 }
 
-:host(.block) {
-  width: 100%;
-  display: flex;
+@mixin button-variant($bg-color, $border-color, $text-color, $disabled-opacity: 50%) {
+  background-color: $bg-color;
+  border-color: $border-color;
+  .typo_buttom,
+  .icon_buttom {
+    color: $text-color;
+  }
+  &--disabled {
+    opacity: $disabled-opacity;
+    pointer-events: none;
+  }
+}
+
+@mixin button-size($height) {
+  height: $height;
+}
+
+@mixin button-position($radius-top-left, $radius-top-right, $radius-bottom-left, $radius-bottom-right) {
+  border-top-left-radius: $radius-top-left;
+  border-top-right-radius: $radius-top-right;
+  border-bottom-left-radius: $radius-bottom-left;
+  border-bottom-right-radius: $radius-bottom-right;
+}
+
+@mixin button-border-radius($radius-top-left, $radius-top-right, $radius-bottom-left, $radius-bottom-right) {
+  border-top-left-radius: $radius-top-left;
+  border-top-right-radius: $radius-top-right;
+  border-bottom-left-radius: $radius-bottom-left;
+  border-bottom-right-radius: $radius-bottom-right;
 }
 
 :host {
   height: fit-content;
   position: relative;
+  width: fit-content;
+}
+
+:host(.block) {
+  width: 100%;
+  display: flex;
+}
+
+:host(.group) {
+  width: auto;
 }
 
 :host:focus-visible {
@@ -74,49 +90,43 @@ $button-padding-left-right: 16px;
   justify-content: center;
   height: 100%;
   border-radius: $button-border-radius;
+  border-style: solid;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
   position: relative;
   box-sizing: border-box;
   gap: 4px;
   padding: 0 16px;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
   transition: all 0.5s;
 
   &__size {
+    &--short {
+      @include button-size(32px);
+    }
+    &--standard {
+      @include button-size(40px);
+    }
     &--medium {
-      height: 40px;
+      @include button-size(40px);
     }
     &--large {
-      height: 56px;
+      @include button-size(56px);
     }
   }
 
   &__only-icon--medium {
     padding: 8px;
+    gap: 0;
   }
   &__only-icon--large {
-    padding: 16px;
+    padding: 8px 16px;
+    gap: 0;
   }
 
-  &__position {
-    &--first {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
-    &--middle {
-      border-radius: 0px;
-    }
-    &--last {
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-    }
-  }
-
-  &--block {
+  &--block,
+  &--group {
     width: 100%;
   }
 
@@ -130,146 +140,111 @@ $button-padding-left-right: 16px;
   }
 
   &__color {
-    &--primary.button__variant--solid {
-      background-color: $color-primary;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-content-bright;
-      }
+    &--primary.button__variant--solid,
+    &--primary.button__variant--primary {
+      @include button-variant($color-primary, transparent, $color-content-bright);
     }
-    &--primary.button__variant--outline {
-      background-color: transparent;
-      border: 1px solid $color-primary;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-primary;
-      }
+    &--primary.button__variant--outline,
+    &--primary.button__variant--tertiary {
+      @include button-variant(transparent, $color-primary, $color-primary);
     }
-    &--primary.button__variant--text {
-      background-color: transparent;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-primary;
-      }
+    &--primary.button__variant--text,
+    &--primary.button__variant--secondary {
+      @include button-variant(transparent, transparent, $color-primary);
     }
-    &--content.button__variant--solid {
-      background-color: $color-content-default;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-surface-0;
-      }
+    &--content.button__variant--solid,
+    &--content.button__variant--primary {
+      @include button-variant($color-content-default, transparent, $color-surface-0);
     }
-    &--content.button__variant--outline {
-      background-color: transparent;
-      border: 1px solid $color-content-default;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-content-default;
-      }
+    &--content.button__variant--outline,
+    &--content.button__variant--tertiary {
+      @include button-variant(transparent, $color-content-default, $color-content-default);
     }
-    &--content.button__variant--text {
-      background-color: transparent;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-content-default;
-      }
+    &--content.button__variant--text,
+    &--content.button__variant--secondary {
+      @include button-variant(transparent, transparent, $color-content-default);
     }
-    &--negative.button__variant--solid {
-      background-color: $color-delete;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-surface-0;
-      }
+    &--negative.button__variant--solid,
+    &--negative.button__variant--primary,
+    &--negative.button__variant--delete {
+      @include button-variant($color-delete, transparent, $color-surface-0);
     }
-    &--negative.button__variant--outline {
-      background-color: transparent;
-      border: 1px solid $color-delete;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-delete;
-      }
+    &--negative.button__variant--outline,
+    &--negative.button__variant--tertiary,
+    &--negative.button__variant--delete {
+      @include button-variant(transparent, $color-delete, $color-delete);
     }
-    &--negative.button__variant--text {
-      background-color: transparent;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-delete;
-      }
+    &--negative.button__variant--text,
+    &--negative.button__variant--secondary,
+    &--negative.button__variant--delete {
+      @include button-variant(transparent, transparent, $color-delete);
     }
-    &--positive.button__variant--solid {
-      background-color: $color-positive;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-surface-0;
-      }
+    &--positive.button__variant--solid,
+    &--positive.button__variant--primary {
+      @include button-variant($color-positive, transparent, $color-surface-0);
     }
-    &--positive.button__variant--outline {
-      background-color: transparent;
-      border: 1px solid $color-positive;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-positive;
-      }
+    &--positive.button__variant--outline,
+    &--positive.button__variant--tertiary {
+      @include button-variant(transparent, $color-positive, $color-positive);
     }
-    &--positive.button__variant--text {
-      background-color: transparent;
-      .typo_buttom,
-      .icon_buttom {
-        color: $color-positive;
-      }
+    &--positive.button__variant--text,
+    &--positive.button__variant--secondary {
+      @include button-variant(transparent, transparent, $color-positive);
     }
   }
 
+  &__group {
+    width: 100%;
+  }
 
-  // &--size-tall {
-  //   @include padding-button-top-bottom($button-size-tall, $height-standard);
-
-  //   &--icon {
-  //     @include padding-button-top-bottom($button-size-tall-icon, $height-standard);
-  //   }
-  // }
-
-  // &--size-standard {
-  //   @include padding-button-top-bottom($button-size-standard, $height-standard);
-
-  //   bds-loading-spinner {
-  //     width: 32px;
-  //     height: 32px;
-  //     top: calc(50% - 16px);
-  //   }
-
-  //   &--icon {
-  //     @include padding-button-top-bottom($button-size-standard-icon, $height-standard);
-  //   }
-  // }
-
-  // &--size-short {
-  //   @include padding-button-top-bottom($button-size-short, $height-short);
-
-  //   bds-loading-spinner {
-  //     width: 16px;
-  //     height: 16px;
-  //     top: calc(50% - 8px);
-  //   }
-  //   &--icon {
-  //     @include padding-button-top-bottom($button-size-short-icon, $height-short);
-  //   }
-  // }
-
-  // &--size-icon {
-  //   &--left {
-  //     padding-left: $button-padding-left-right-icon;
-  //   }
-  //   &--right {
-  //     padding-right: $button-padding-left-right-icon;
-  //   }
-  // }
-
-  // &__icon {
-  //   @include inherit-color();
-  //   height: 24px;
-  //   margin-right: 4px;
-  // }
+  &__position {
+    &--row {
+      &--first {
+        @include button-position(10px, 0, 10px, 0);
+        border-left-width: 1px;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-right-width: 1px;
+      }
+      &--middle {
+        @include button-position(0, 0, 0, 0);
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 0;
+        border-right-width: 1px;
+      }
+      &--last {
+        @include button-position(0, 10px, 0, 10px);
+        border-right-width: 1px;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 0px;
+      }
+    }
+    &--column {
+      &--first {
+        @include button-position(10px, 10px, 0, 0);
+        border-left-width: 1px;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-right-width: 1px;
+      }
+      &--middle {
+        @include button-position(0, 0, 0, 0);
+        border-top-width: 0px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-right-width: 1px;
+      }
+      &--last {
+        @include button-position(0, 0, 10px, 10px);
+        border-right-width: 1px;
+        border-top-width: 0px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+      }
+    }
+  }
 
   &__arrow {
     @include inherit-color();
@@ -294,182 +269,45 @@ $button-padding-left-right: 16px;
     background-color: transparent;
     z-index: 0;
     border-radius: $button-border-radius;
-  }
-  &:hover {
-    &::before {
-      background-color: $color-hover;
-    }
+    transition: all 0.3s;
   }
 
-  &:active {
-    &::before {
-      background-color: $color-pressed;
+  &__position {
+    &--row {
+      &--first::before {
+        @include button-border-radius(10px, 0, 10px, 0);
+      }
+      &--middle::before {
+        @include button-border-radius(0, 0, 0, 0);
+      }
+      &--last::before {
+        @include button-border-radius(0, 10px, 0, 10px);
+      }
     }
-  }
-
-  &--active {
-    &::before {
-      background-color: $color-pressed;
-    }
-  }
-
-  &::before {
-    &--first {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-    }
-    &--middle {
-      border-radius: 0px;
-    }
-    &--last {
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+    &--column {
+      &--first::before {
+        @include button-border-radius(10px, 10px, 0, 0);
+      }
+      &--middle::before {
+        @include button-border-radius(0, 0, 0, 0);
+      }
+      &--last::before {
+        @include button-border-radius(0, 0, 10px, 10px);
+      }
     }
   }
 
+  &:hover::before {
+    background-color: $color-hover;
+  }
 
-  // &__primary {
-  //   background: $color-surface-primary;
+  &:active::before {
+    background-color: $color-pressed;
+  }
 
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-content-bright;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-content-bright);
-  //   }
-  // }
-
-  // &__secondary {
-  //   background: transparent;
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-content-default;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-disabled-text);
-  //   }
-  // }
-
-  // &__tertiary {
-  //   background: transparent;
-  //   border: 1px solid $color-border-1;
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-content-default;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
-  //   }
-  // }
-
-  // &__secondary--white {
-  //   background: transparent;
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-neutral-light-snow;
-  //   }
-
-  //   &:hover {
-  //     background: rgba($color-neutral-light-snow, 0.3);
-  //     color: $color-neutral-light-snow;
-  //   }
-
-  //   &:active {
-  //     background: rgba($color-neutral-light-snow, 0.4);
-  //     color: $color-neutral-light-snow;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-neutral-medium-cloud);
-  //   }
-  // }
-
-  // &__ghost {
-  //   background: transparent;
-  //   border: 1px solid $color-border-1;
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-content-default;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
-  //   }
-  // }
-
-  // &__delete {
-  //   background: $color-delete;
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-content-bright;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-disabled-wrong);
-  //   }
-  // }
-
-  // &__dashed {
-  //   background: transparent;
-  //   border: 1px dashed $color-primary-main;
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-primary-main;
-  //   }
-
-  //   &:hover {
-  //     background: transparent;
-  //     color: $color-primary-dark;
-  //     border: 1px dashed $color-primary-dark;
-  //   }
-
-  //   &:active {
-  //     background: transparent;
-  //     color: $color-primary-main;
-  //     border: 1px dashed $color-primary-main;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-neutral-medium-cloud, 1px dashed $color-neutral-medium-cloud);
-  //   }
-  // }
-
-  // &__facebook {
-  //   background: $color-facebook-main;
-  //   .typo_buttom,
-  //   .icon_buttom,
-  //   .arrow_buttom {
-  //     color: $color-neutral-light-breeze;
-  //   }
-
-  //   &:hover {
-  //     background: $color-facebook-dark;
-  //   }
-
-  //   &:active {
-  //     background: $color-primary-main;
-  //     color: $color-neutral-light-breeze;
-  //   }
-
-  //   &--disabled {
-  //     @include disable-button($color-neutral-medium-cloud);
-  //   }
-  // }
+  &--active::before {
+    background-color: $color-pressed;
+  }
 
   .hide {
     cursor: not-allowed;
