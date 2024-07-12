@@ -29,6 +29,7 @@
 ### Used by
 
  - [bds-banner](../banner)
+ - [bds-carousel](../carousel)
  - [bds-data-table](../table)
  - [bds-list-item](../list)
  - [bds-pagination](../pagination)
@@ -47,6 +48,7 @@
 graph TD;
   bds-button-icon --> bds-icon
   bds-banner --> bds-button-icon
+  bds-carousel --> bds-button-icon
   bds-data-table --> bds-button-icon
   bds-list-item --> bds-button-icon
   bds-pagination --> bds-button-icon
