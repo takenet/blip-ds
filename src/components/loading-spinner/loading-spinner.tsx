@@ -5,7 +5,7 @@ import loadStandard from '../../assets/svg/load-standard.svg';
 
 export type LoadingSpinnerVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'delete';
 export type loadingSize = 'extra-small' | 'small' | 'standard';
-export type colorsVariants = 'main' | 'light' | 'content';
+export type colorsVariants = 'main' | 'light' | 'content' | 'positive' | 'negative';
 
 export type LoadingSpinnerColorMap = { [key in LoadingSpinnerVariant]: string };
 

@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -36,6 +36,7 @@ export class Button {
   @State() position: string;
   @State() direction: string;
   @State() group = false;
+  @State() loadingColor: colorsVariants;
   /**
    * 	If true, the base button will be disabled.
    */
@@ -179,9 +180,18 @@ export class Button {
     }
   }
 
+  @Watch('bdsLoading')
   renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
-    const loadingColor = this.color === 'content' ? 'content' : 'light';
-    return <bds-loading-spinner size="small" color={loadingColor}></bds-loading-spinner>;
+    if (this.variant === 'solid') {
+      if (['primary', 'positive', 'negative'].includes(this.color)) {
+        this.loadingColor = 'light';
+      } else if (this.color === 'content') {
+        this.loadingColor = 'content';
+      }
+    } else if (this.variant === 'outline' || this.variant === 'text') {
+      this.loadingColor = this.color === 'positive' ? 'positive' : this.color === 'negative' ? 'negative' : 'main';
+    }
+    return <bds-loading-spinner size="small" color={this.loadingColor}></bds-loading-spinner>;
   }
 
   private handleClick = (ev) => {
@@ -258,6 +268,8 @@ export class Button {
               class={{ icon_buttom: true, hide: this.bdsLoading }}
               name={this.arrow ? 'arrow-right' : this.iconRight}
               color="inherit"
+              theme={this.iconTheme}
+              type={this.typeIcon}
             ></bds-icon>
           ) : (
             ''
