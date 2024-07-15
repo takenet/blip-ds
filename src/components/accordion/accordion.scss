@@ -81,7 +81,7 @@
 .accordion_body {
   height: 0;
   overflow: hidden;
-  border-bottom: 1px solid $color-border-1;
+  border-bottom: none;
   -webkit-transition: height 0.5s;
   -moz-transition: height 0.5s;
   transition: height 0.5s;
@@ -89,6 +89,10 @@
 
   &_isOpen {
     overflow: overlay;
+  }
+
+  &_divisor {
+    border-bottom: 1px solid $color-border-1;
   }
 
   & .container {

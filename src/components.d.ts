@@ -68,12 +68,10 @@ import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
+        "divisor"?: boolean;
         "notStart": () => Promise<void>;
         "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
-        /**
-          * A prop for make the accordion open when is render.
-         */
         "startOpen"?: boolean;
         "toggle": () => Promise<void>;
     }
@@ -83,15 +81,14 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        "divisor": (valor: any) => Promise<void>;
         "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
         "closeAll": (actNumber: any) => Promise<void>;
-        /**
-          * Focus Selected. Used to add title in header accordion.
-         */
         "collapse"?: collapses;
+        "divisor"?: boolean;
         "openAll": (actNumber: any) => Promise<void>;
     }
     interface BdsAccordionHeader {
@@ -3490,21 +3487,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BdsAccordion {
-        /**
-          * bdsAccordionOpen. Event to return value when accordion is closed.
-         */
+        "divisor"?: boolean;
         "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * bdsAccordionOpen. Event to return value when accordion is open.
-         */
         "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * bdsToggle. Event to return value of toggle.
-         */
         "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * A prop for make the accordion open when is render.
-         */
         "startOpen"?: boolean;
     }
     interface BdsAccordionBody {
@@ -3514,17 +3500,9 @@ declare namespace LocalJSX {
         "dataTest"?: string;
     }
     interface BdsAccordionGroup {
-        /**
-          * Focus Selected. Used to add title in header accordion.
-         */
         "collapse"?: collapses;
-        /**
-          * bdsAccordionCloseAll. Event to return value when accordion is closed.
-         */
+        "divisor"?: boolean;
         "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
-        /**
-          * bdsAccordionOpenAll. Event to return value when accordion is opend.
-         */
         "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
     }
     interface BdsAccordionHeader {
