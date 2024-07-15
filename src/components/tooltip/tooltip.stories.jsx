@@ -14,7 +14,12 @@ export default {
 export const Properties = (args) => {
   return (
     <bds-grid margin="auto">
-      <bds-tooltip position={args.position} tooltip-text={args.tooltipText} disabled={args.disabled}>
+      <bds-tooltip
+        position={args.position}
+        tooltip-text={args.tooltipText}
+        disabled={args.disabled}
+        max-width={args.maxWidth}
+      >
         <bds-button>Hover me</bds-button>
       </bds-tooltip>
     </bds-grid>
@@ -25,6 +30,7 @@ Properties.args = {
   disabled: false,
   position: 'right-center',
   tooltipText: 'Tooltip',
+  maxWidth: '',
 };
 
 Properties.argTypes = {
@@ -55,6 +61,12 @@ Properties.argTypes = {
     control: 'select',
   },
   tooltipText: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  maxWidth: {
     table: {
       defaultValue: { summary: 'vazio' },
     },

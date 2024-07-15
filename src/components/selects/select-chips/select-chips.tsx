@@ -383,8 +383,7 @@ export class SelectChips {
 
   private async resetFilterOptions() {
     for (const option of this.childOptions) {
-      const optionText = option.querySelector('bds-typo')?.textContent;
-      if (this.existsChip(optionText, await this.getChips())) {
+      if (this.existsChip(option.textContent, await this.getChips())) {
         option.setAttribute('invisible', 'invisible');
       } else {
         option.removeAttribute('invisible');

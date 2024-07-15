@@ -23,10 +23,11 @@
 
 ## Events
 
-| Event          | Description                                          | Type               |
-| -------------- | ---------------------------------------------------- | ------------------ |
-| `bdsEndDate`   | bdsEndDate. Event to return selected end date value. | `CustomEvent<any>` |
-| `bdsStartDate` | bdsStartDate. Event to return selected date value.   | `CustomEvent<any>` |
+| Event               | Description                                                  | Type               |
+| ------------------- | ------------------------------------------------------------ | ------------------ |
+| `bdsClickDayButton` | bdsClickDayButton. Event to return when click on day button. | `CustomEvent<any>` |
+| `bdsEndDate`        | bdsEndDate. Event to return selected end date value.         | `CustomEvent<any>` |
+| `bdsStartDate`      | bdsStartDate. Event to return selected date value.           | `CustomEvent<any>` |
 
 
 ## Methods
