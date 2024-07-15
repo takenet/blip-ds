@@ -17,6 +17,7 @@ export const BdsBadge = /*@__PURE__*/ createReactComponent('bds-badge');
 export const BdsBanner = /*@__PURE__*/ createReactComponent('bds-banner');
 export const BdsBannerLink = /*@__PURE__*/ createReactComponent('bds-banner-link');
 export const BdsButton = /*@__PURE__*/ createReactComponent('bds-button');
+export const BdsButtonGroup = /*@__PURE__*/ createReactComponent('bds-button-group');
 export const BdsButtonIcon = /*@__PURE__*/ createReactComponent('bds-button-icon');
 export const BdsCard = /*@__PURE__*/ createReactComponent('bds-card');
 export const BdsCardBody = /*@__PURE__*/ createReactComponent('bds-card-body');

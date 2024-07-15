@@ -55,14 +55,10 @@ const heading = ['id', 'Produtos', 'Valor', 'Disponibilidade', 'Marca', 'Estoque
 
 export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '300px';
+  }
 
-  useEffect(() => {
-    const table = document.getElementById('table-default');
-    const scro = table.getAttribute('scrollable');
-    const scrDense = table.getAttribute('dense-table');
-    console.log(scrDense)
-    scro == 'false' ? (el[0].style.width = '800px') : (el[0].style.width = '600px');
-  });
   return (
     <bds-table id="table-default" scrollable={args.scrollable} dense-table={args.denseTable}>
       <bds-table-header>

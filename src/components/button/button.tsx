@@ -1,8 +1,8 @@
-import { Component, Prop, Element, Event, EventEmitter, h, Host } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
-export type ButtonSize = 'tall' | 'standard' | 'short';
+export type ButtonSize = 'tall' | 'standard' | 'short' | 'medium' | 'large';
 
 export type ButtonVariant =
   | 'primary'
@@ -12,7 +12,10 @@ export type ButtonVariant =
   | 'secondary--white'
   | 'ghost'
   | 'dashed'
-  | 'facebook';
+  | 'facebook'
+  | 'solid'
+  | 'outline'
+  | 'text';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 
@@ -28,6 +31,12 @@ export type IconTheme = 'outline' | 'solid';
 export class Button {
   @Element() el!: HTMLElement;
 
+  @State() slotText: string;
+  @State() active: boolean;
+  @State() position: string;
+  @State() direction: string;
+  @State() group = false;
+  @State() loadingColor: colorsVariants;
   /**
    * 	If true, the base button will be disabled.
    */
@@ -38,22 +47,33 @@ export class Button {
    */
   @Prop() disabled?: boolean = false;
 
+  @Prop({ mutable: true }) color?: string = 'primary';
   /**
    * Size. Entered as one of the size. Can be one of:
    * 'tall', 'standard', 'short';
    */
-  @Prop() size?: ButtonSize = 'standard';
+  @Prop({ mutable: true }) size?: ButtonSize = 'medium';
 
   /**
    * Variant. Entered as one of the variant. Can be one of:
    * 'primary', 'secondary', 'ghost', 'dashed';
    */
-  @Prop() variant?: ButtonVariant = 'primary';
+  @Prop({ mutable: true }) variant?: ButtonVariant = 'solid';
 
   /**
    * used for add icon in input left. Uses the bds-icon component.
    */
   @Prop({ reflect: true }) icon?: string = null;
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) iconLeft?: string = null;
+
+  /**
+   * used for add icon in input left. Uses the bds-icon component.
+   */
+  @Prop({ reflect: true }) iconRight?: string = null;
 
   /**
    * The arrow button
@@ -103,60 +123,75 @@ export class Button {
    */
   @Event() bdsClick: EventEmitter;
 
-  getSizeClass(): string {
-    return this.arrow || !!this.icon ? `button--size-${this.size}--icon` : `button--size-${this.size}`;
+  @Method()
+  async isActive(value) {
+    this.active = value;
   }
 
-  renderIcon(): HTMLElement {
-    return (
-      this.icon && (
-        <div class={{ button__icon: true, hide: this.bdsLoading && true }}>
-          <bds-icon
-            class={{ icon_buttom: true }}
-            name={this.icon}
-            theme={this.iconTheme}
-            type={this.typeIcon}
-            color="inherit"
-          ></bds-icon>
-        </div>
-      )
-    );
+  @Method()
+  async setPosition(position: 'first' | 'last' | 'middle') {
+    this.position = position;
+    this.position ? (this.group = true) : false;
   }
 
-  renderText(): HTMLElement {
-    return (
-      <div
-        class={{
-          button__content: true,
-          [`button__content__${this.variant}`]: true,
-          [`button__content__${this.variant}--disabled`]: this.disabled,
-          hide: this.bdsLoading && true,
-        }}
-      >
-        <bds-typo class={{ typo_buttom: true }} variant="fs-14" lineHeight="simple" bold="bold">
-          <slot></slot>
-        </bds-typo>
-      </div>
-    );
+  @Method()
+  async setDirection(direction: 'row' | 'column') {
+    this.direction = direction;
   }
 
-  renderArrow(): HTMLElement {
-    return (
-      this.arrow && (
-        <div class={{ button__arrow: true, hide: this.bdsLoading && true }}>
-          <bds-icon class={{ arrow_buttom: true }} name="arrow-right" color="inherit"></bds-icon>
-        </div>
-      )
-    );
+  @Method()
+  async setSize(size: ButtonSize) {
+    this.size = size;
   }
 
-  renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
-    const loadingColor = this.variant == 'primary' || this.variant == 'delete' ? 'light' : 'main';
-    if (this.size === 'short') {
-      return <bds-loading-spinner size="extra-small" color={loadingColor}></bds-loading-spinner>;
-    } else {
-      return <bds-loading-spinner size="small" color={loadingColor}></bds-loading-spinner>;
+  @Method()
+  async setColor(color: 'primary' | 'content' | 'negative' | 'positive') {
+    this.color = color;
+  }
+
+  @Method()
+  async setVariant(variant: ButtonVariant) {
+    this.variant = variant;
+  }
+
+  componentDidRender() {
+    this.logSlotText();
+  }
+
+  logSlotText() {
+    const slot = this.el.shadowRoot.querySelector('slot');
+    const onlyIconElement = this.el.shadowRoot.querySelector('button') as HTMLElement;
+
+    if (slot) {
+      const assignedNodes = slot.assignedNodes();
+
+      let slotText = '';
+      assignedNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          slotText += node.textContent;
+        }
+      });
+      if (slotText === '' && this.size === 'medium') {
+        onlyIconElement.classList.add('button__only-icon--medium');
+      }
+      if (slotText === '' && this.size === 'large') {
+        onlyIconElement.classList.add('button__only-icon--large');
+      }
     }
+  }
+
+  @Watch('bdsLoading')
+  renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement {
+    if (this.variant === 'solid') {
+      if (['primary', 'positive', 'negative'].includes(this.color)) {
+        this.loadingColor = 'light';
+      } else if (this.color === 'content') {
+        this.loadingColor = 'content';
+      }
+    } else if (this.variant === 'outline' || this.variant === 'text') {
+      this.loadingColor = this.color === 'positive' ? 'positive' : this.color === 'negative' ? 'negative' : 'main';
+    }
+    return <bds-loading-spinner size="small" color={this.loadingColor}></bds-loading-spinner>;
   }
 
   private handleClick = (ev) => {
@@ -182,10 +217,8 @@ export class Button {
   };
 
   render(): HTMLElement {
-    const sizeClass = this.getSizeClass();
-
     return (
-      <Host class={{ host: true, block: this.block }}>
+      <Host class={{ host: true, block: this.block, group: this.group }}>
         <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
         <button
           onClick={(ev) => this.handleClick(ev)}
@@ -197,16 +230,50 @@ export class Button {
           class={{
             button: true,
             'button--block': this.block,
-            [`button__${this.variant}`]: true,
-            [`button__${this.variant}--disabled`]: this.disabled,
-            [sizeClass]: true,
-            'button--size-icon--left': !!this.icon,
-            'button--size-icon--right': this.arrow,
+            'button--group': this.group,
+            [`button__position--${this.direction}--${this.position}`]: true,
+            'button--active': this.active,
+            [`button__variant--${this.variant === 'delete' ? 'solid' : this.variant}`]: true,
+            [`button__${this.variant === 'delete' ? 'solid' : this.variant}`]: true,
+            [`button__color--${this.variant === 'delete' ? 'negative' : this.color}`]: true,
+            [`button__variant--${this.variant}--disabled`]: this.disabled,
+            [`button__size--${this.size}`]: true,
           }}
           part="button"
           data-test={this.dataTest}
         >
-          {[this.bdsLoading && this.renderLoadingSpinner(), this.renderIcon(), this.renderText(), this.renderArrow()]}
+          {this.bdsLoading ? this.renderLoadingSpinner() : ''}
+          {this.iconLeft || this.icon ? (
+            <bds-icon
+              class={{ icon_buttom: true, hide: this.bdsLoading }}
+              name={this.icon ? this.icon : this.iconLeft}
+              theme={this.iconTheme}
+              type={this.typeIcon}
+              color="inherit"
+              size={'medium'}
+            ></bds-icon>
+          ) : (
+            ''
+          )}
+          <bds-typo
+            class={{ typo_buttom: true, hide: this.bdsLoading }}
+            variant="fs-14"
+            lineHeight="simple"
+            bold="bold"
+          >
+            <slot></slot>
+          </bds-typo>
+          {this.iconRight || this.arrow ? (
+            <bds-icon
+              class={{ icon_buttom: true, hide: this.bdsLoading }}
+              name={this.arrow ? 'arrow-right' : this.iconRight}
+              color="inherit"
+              theme={this.iconTheme}
+              type={this.typeIcon}
+            ></bds-icon>
+          ) : (
+            ''
+          )}
         </button>
       </Host>
     );
