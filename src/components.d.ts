@@ -2371,6 +2371,34 @@ export namespace Components {
     }
     interface BdsTabItem {
         /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badge"?: boolean;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgeAnimation"?: boolean;
+        /**
+          * The color of the badge to be shown at the Tab item.
+         */
+        "badgeColor"?: string;
+        /**
+          * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
+         */
+        "badgeIcon"?: string;
+        /**
+          * The number to be shown inside the badge at the Tab item.
+         */
+        "badgeNumber"?: number;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgePosition"?: string;
+        /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badgeShape"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -2378,6 +2406,18 @@ export namespace Components {
           * Prop for disable the especific tab.
          */
         "disable"?: boolean;
+        /**
+          * The icon to be shown at the Tab item.
+         */
+        "icon"?: string;
+        /**
+          * The position of the icon at the Tab item ('left', 'right').
+         */
+        "iconPosition"?: string;
+        /**
+          * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
+         */
+        "iconTheme"?: string;
         /**
           * The text to be shown at the Tab item.
          */
@@ -6066,6 +6106,34 @@ declare namespace LocalJSX {
     }
     interface BdsTabItem {
         /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badge"?: boolean;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgeAnimation"?: boolean;
+        /**
+          * The color of the badge to be shown at the Tab item.
+         */
+        "badgeColor"?: string;
+        /**
+          * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
+         */
+        "badgeIcon"?: string;
+        /**
+          * The number to be shown inside the badge at the Tab item.
+         */
+        "badgeNumber"?: number;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgePosition"?: string;
+        /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badgeShape"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -6073,6 +6141,18 @@ declare namespace LocalJSX {
           * Prop for disable the especific tab.
          */
         "disable"?: boolean;
+        /**
+          * The icon to be shown at the Tab item.
+         */
+        "icon"?: string;
+        /**
+          * The position of the icon at the Tab item ('left', 'right').
+         */
+        "iconPosition"?: string;
+        /**
+          * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
+         */
+        "iconTheme"?: string;
         /**
           * The text to be shown at the Tab item.
          */

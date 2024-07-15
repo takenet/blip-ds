@@ -19,6 +19,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-tab-group](../tabs)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -29,6 +33,7 @@
 graph TD;
   bds-badge --> bds-icon
   bds-badge --> bds-typo
+  bds-tab-group --> bds-badge
   style bds-badge fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

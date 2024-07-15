@@ -111,7 +111,18 @@ export class BdsTabGroup {
         label: item.label,
         open: item.open,
         numberElement: index,
-        disable: item.disable,
+        badge: item.badge,
+        ...(item.disable !== undefined && { disable: item.disable }),
+        ...(item.icon !== undefined && { icon: item.icon }),
+        ...(item.iconPosition !== undefined && { iconPosition: item.iconPosition }),
+        ...(item.iconTheme !== undefined && { iconTheme: item.iconTheme }),
+        ...(item.badgeShape !== undefined && { badgeShape: item.badgeShape }),
+        ...(item.badgeColor !== undefined && { badgeColor: item.badgeColor }),
+        ...(item.badgeIcon !== undefined && { badgeIcon: item.badgeIcon }),
+        ...(item.badgeAnimation !== undefined && { badgeAnimation: item.badgeAnimation }),
+        ...(item.badgeNumber !== undefined && { badgeNumber: item.badgeNumber }),
+        ...(item.badgePosition !== undefined && { badgePosition: item.badgePosition }),
+        ...(item.dataTest !== undefined && { dataTest: item.dataTest }),
       };
     });
     return (this.internalItens = arrayItens);
@@ -183,6 +194,25 @@ export class BdsTabGroup {
     }
   }
 
+  private renderIcon = (Icon, Theme, disable) => {
+    return (
+      <bds-icon
+        class={{ tab_group__header__itens__item__typo__disable: disable }}
+        size="x-small"
+        name={Icon}
+        theme={Theme}
+      ></bds-icon>
+    );
+  };
+
+  private renderBadge = (Shape, Color, Icon, Animation, Number) => {
+    return (
+      <bds-grid justify-content="center">
+        <bds-badge color={Color} icon={Icon} number={Number} shape={Shape} animation={Animation}></bds-badge>
+      </bds-grid>
+    );
+  };
+
   render(): HTMLElement {
     const slidePosition = { left: `${this.positionLeft}px` };
     return (
@@ -226,6 +256,18 @@ export class BdsTabGroup {
                       }
                       onKeyDown={(ev) => this.handleKeyDown(ev, item)}
                     >
+                      {item.iconPosition === 'left' && item.icon
+                        ? this.renderIcon(item.icon, item.iconTheme, item.disable)
+                        : ''}
+                      {item.badgePosition === 'left' && item.badge
+                        ? this.renderBadge(
+                            item.badgeShape,
+                            item.badgeColor,
+                            item.badgeIcon,
+                            item.badgeAnimation,
+                            item.badgeNumber,
+                          )
+                        : ''}
                       <bds-typo
                         class={{ tab_group__header__itens__item__typo__disable: item.disable }}
                         variant="fs-16"
@@ -233,6 +275,18 @@ export class BdsTabGroup {
                       >
                         {item.label}
                       </bds-typo>
+                      {item.iconPosition === 'right' && item.icon
+                        ? this.renderIcon(item.icon, item.iconTheme, item.disable)
+                        : ''}
+                      {item.badgePosition === 'right' && item.badge
+                        ? this.renderBadge(
+                            item.badgeShape,
+                            item.badgeColor,
+                            item.badgeIcon,
+                            item.badgeAnimation,
+                            item.badgeNumber,
+                          )
+                        : ''}
                     </div>
                   );
                 })}

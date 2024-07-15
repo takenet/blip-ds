@@ -27,14 +27,22 @@
 
 ### Depends on
 
+- [bds-icon](../icon)
+- [bds-grid](../grid)
+- [bds-badge](../badge)
 - [bds-button-icon](../icon-button)
 - [bds-typo](../typo)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-tab-group --> bds-icon
+  bds-tab-group --> bds-grid
+  bds-tab-group --> bds-badge
   bds-tab-group --> bds-button-icon
   bds-tab-group --> bds-typo
+  bds-badge --> bds-icon
+  bds-badge --> bds-typo
   bds-button-icon --> bds-icon
   style bds-tab-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
