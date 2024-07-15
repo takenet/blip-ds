@@ -47,7 +47,7 @@ export class BdsDropdown implements ComponentInterface {
 
   @State() intoView?: HTMLElement = null;
 
-  @State() openSubMenu?: boolean = false;
+  @State() stateOpenSubMenu?: boolean = false;
   @State() stateSubMenu?: subMenuState = 'close';
   @State() zIndex?: number = 0;
   @State() delay = null;
@@ -82,9 +82,9 @@ export class BdsDropdown implements ComponentInterface {
     this.intoView = getScrollParent(this.hostElement);
     this.isPositionChanged;
     if (this.activeMode == 'hover') {
-      this.activatorElement.addEventListener('mouseover', () => this.openSubmenu());
-      this.activatorElement.addEventListener('click', () => this.openSubmenu());
-      this.activatorElement.addEventListener('mouseout', () => this.closeSubmenu());
+      this.activatorElement.addEventListener('mouseover', () => this.onMouseOver());
+      this.activatorElement.addEventListener('click', () => this.onMouseOver());
+      this.activatorElement.addEventListener('mouseout', () => this.onMouseOut());
     } else {
       this.activatorElement.addEventListener('click', () => this.toggle());
     }
@@ -140,10 +140,12 @@ export class BdsDropdown implements ComponentInterface {
 
   @Method()
   async setClose() {
+    this.stateOpenSubMenu = false;
+    clearTimeout(this.delay);
     this.open = false;
   }
 
-  @Watch('openSubMenu')
+  @Watch('stateOpenSubMenu')
   protected openSubMenuChanged(active: boolean): void {
     if (active == false) {
       this.stateSubMenu = 'pending';
@@ -154,6 +156,7 @@ export class BdsDropdown implements ComponentInterface {
       this.delay = null;
       this.stateSubMenu = 'open';
     }
+    return;
   }
 
   @Watch('stateSubMenu')
@@ -183,18 +186,18 @@ export class BdsDropdown implements ComponentInterface {
     this.open = false;
   };
 
-  private openSubmenu = () => {
+  private onMouseOver = () => {
     if (this.activeMode === 'hover') {
       this.zIndex = 1;
     }
-    this.openSubMenu = true;
+    this.stateOpenSubMenu = true;
   };
 
-  private closeSubmenu = () => {
+  private onMouseOut = () => {
     if (this.activeMode === 'hover') {
       this.zIndex = 0;
     }
-    this.openSubMenu = false;
+    this.stateOpenSubMenu = false;
   };
 
   private centerDropElement = (value: DropdownPostionType) => {
@@ -218,8 +221,8 @@ export class BdsDropdown implements ComponentInterface {
             dropdown__open: this.open,
           }}
           data-test={this.dataTest}
-          onMouseOver={() => this.openSubmenu()}
-          onMouseOut={() => this.closeSubmenu()}
+          onMouseOver={() => this.onMouseOver()}
+          onMouseOut={() => this.onMouseOut()}
         >
           <div class="content" style={zIndexSubmenu}>
             <slot name="dropdown-content"></slot>

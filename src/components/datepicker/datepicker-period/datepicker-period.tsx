@@ -97,6 +97,10 @@ export class BdsdatepickerPeriod {
    * bdsEndDate. Event to return selected end date value.
    */
   @Event() bdsEndDate?: EventEmitter;
+  /**
+   * bdsClickDayButton. Event to return when click on day button.
+   */
+  @Event() bdsClickDayButton?: EventEmitter;
 
   /**
    * Return the validity of the input.
@@ -168,6 +172,7 @@ export class BdsdatepickerPeriod {
       this.endDateSelect = null;
     }
     if (this.stateSelect == 'end') this.endDateSelect = changeSelected;
+    this.bdsClickDayButton.emit({ state: this.stateSelect });
   }
   /**
    * prevMonth. Function to rewind the date on the calendar slide.

@@ -246,23 +246,25 @@ export class ListItem {
           <div class={{ [`content-slot`]: true }}>
             <slot></slot>
           </div>
-          <div
-            class={{
-              [`content-item`]: true,
-              [`grow-up`]: !this.hasActionAreaSlot && !this.hasContentAreaSlot && this.internalChips.length < 0,
-            }}
-          >
-            {this.text && (
-              <bds-typo class="title-item" variant="fs-16" tag="span" bold={this.active ? 'bold' : 'regular'}>
-                {this.text}
-              </bds-typo>
-            )}
-            {this.secondaryText && (
-              <bds-typo class="subtitle-item" variant="fs-12" line-height="small" tag="span">
-                {this.secondaryText}
-              </bds-typo>
-            )}
-          </div>
+          {(this.text || this.secondaryText) && (
+            <div
+              class={{
+                [`content-item`]: true,
+                [`grow-up`]: !this.hasActionAreaSlot && !this.hasContentAreaSlot && this.internalChips.length < 0,
+              }}
+            >
+              {this.text && (
+                <bds-typo class="title-item" variant="fs-16" tag="span" bold={this.active ? 'bold' : 'regular'}>
+                  {this.text}
+                </bds-typo>
+              )}
+              {this.secondaryText && (
+                <bds-typo class="subtitle-item" variant="fs-12" line-height="small" tag="span">
+                  {this.secondaryText}
+                </bds-typo>
+              )}
+            </div>
+          )}
           <div class={{ [`content-area`]: true, [`grow-up`]: true }}>
             {this.internalChips.length > 0 && <div class="internal-chips">{this.renderChips()}</div>}
             <slot name="content-area"></slot>

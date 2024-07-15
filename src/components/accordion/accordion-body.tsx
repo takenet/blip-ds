@@ -12,6 +12,7 @@ export class AccordionBody {
   @State() isOpenAftAnimation?: boolean = false;
   @State() heightContainer?: number;
   @State() numberElement?: number = null;
+  @State() hasDivisor?: boolean = true;
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -33,6 +34,11 @@ export class AccordionBody {
     this.isOpen = false;
   }
 
+  @Method()
+  async divisor(valor) {
+    this.hasDivisor = valor;
+  }
+
   @Watch('isOpen')
   isOpenChanged(): void {
     this.heightContainer = this.isOpen ? this.container.offsetHeight : 0;
@@ -52,7 +58,11 @@ export class AccordionBody {
   render() {
     return (
       <div
-        class={{ accordion_body: true, accordion_body_isOpen: this.isOpenAftAnimation }}
+        class={{
+          accordion_body: true,
+          accordion_body_divisor: this.hasDivisor,
+          accordion_body_isOpen: this.isOpenAftAnimation,
+        }}
         style={{ height: `${this.heightContainer}px` }}
         data-test={this.dataTest}
       >

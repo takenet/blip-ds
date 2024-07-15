@@ -344,7 +344,6 @@ export class BdsAutocomplete {
     this.isFocused = true;
     this.isPressed = true;
     this.bdsFocus.emit();
-    if (this.selectionType == 'multiple') this.textMultiselect = '';
   };
 
   private onFocusout = (): void => {
@@ -356,12 +355,13 @@ export class BdsAutocomplete {
   private onBlur = (): void => {
     this.bdsBlur.emit();
     this.isPressed = false;
-    if (this.selectionType == 'multiple' && this.checkedOptions?.length > 0)
-      this.getTextMultiselect(this.checkedOptions);
     if (!this.isOpen) {
       this.isFocused = false;
       this.nativeInput.value = this.getText();
+      this.cleanInputSelection();
     }
+    if (this.selectionType == 'multiple' && this.checkedOptions?.length > 0)
+      this.getTextMultiselect(this.checkedOptions);
   };
 
   private onClickWrapper = (): void => {
@@ -403,7 +403,14 @@ export class BdsAutocomplete {
 
   private handlerMultiselect = (): void => {
     this.updateListChecked(this.childOptions);
-    this.checkAllInput.checked = false;
+    this.nativeInput.value = '';
+    this.value = undefined;
+    this.resetFilterOptions();
+    if (this.childOptions.length != this.checkedOptions.length) {
+      setTimeout(() => {
+        this.checkAllInput.checked = false;
+      }, 10);
+    }
   };
 
   private handleCheckAll = (event: CustomEvent): void => {
@@ -674,7 +681,7 @@ export class BdsAutocomplete {
                 {this.selectionTitle}
               </bds-typo>
             )}
-            {this.selectionType == 'multiple' && (this.value == null || this.value.length <= 0) && (
+            {this.selectionType == 'multiple' && this.value == null && (
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}

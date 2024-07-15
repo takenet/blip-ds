@@ -16,10 +16,13 @@ import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
+import { ButtonSize as ButtonSize1 } from "./components/button/button";
+import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
+import { arrows, gap } from "./components/carousel/carousel-interface";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -31,7 +34,6 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
-import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -67,12 +69,10 @@ import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
+        "divisor"?: boolean;
         "notStart": () => Promise<void>;
         "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
-        /**
-          * A prop for make the accordion open when is render.
-         */
         "startOpen"?: boolean;
         "toggle": () => Promise<void>;
     }
@@ -82,15 +82,14 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        "divisor": (valor: any) => Promise<void>;
         "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
         "closeAll": (actNumber: any) => Promise<void>;
-        /**
-          * Focus Selected. Used to add title in header accordion.
-         */
         "collapse"?: collapses;
+        "divisor"?: boolean;
         "openAll": (actNumber: any) => Promise<void>;
     }
     interface BdsAccordionHeader {
@@ -353,6 +352,7 @@ export namespace Components {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -366,9 +366,23 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
+        /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme": IconTheme;
+        "isActive": (value: any) => Promise<void>;
+        "setColor": (color: 'primary' | 'content' | 'negative' | 'positive') => Promise<void>;
+        "setDirection": (direction: 'row' | 'column') => Promise<void>;
+        "setPosition": (position: 'first' | 'last' | 'middle') => Promise<void>;
+        "setSize": (size: ButtonSize) => Promise<void>;
+        "setVariant": (variant: ButtonVariant) => Promise<void>;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
@@ -385,6 +399,25 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
+        "activateButton": (index: number) => Promise<void>;
+        /**
+          * Color scheme for the buttons. Default is 'primary'.
+         */
+        "color"?: string;
+        /**
+          * Direction of the button group layout. Can be one of: 'row', 'column'.
+         */
+        "direction"?: direction;
+        /**
+          * Allows multiple buttons to be selected simultaneously if true.
+         */
+        "multiple"?: boolean;
+        /**
+          * Size of the buttons. Can be one of: 'medium', 'large'.
+         */
+        "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
@@ -481,6 +514,47 @@ export namespace Components {
           * Set the card title.
          */
         "text"?: string;
+    }
+    interface BdsCarousel {
+        /**
+          * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
+         */
+        "arrows"?: arrows;
+        /**
+          * Autoplay. Prop to Enable component autoplay.
+         */
+        "autoplay"?: boolean;
+        /**
+          * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
+         */
+        "autoplayHoverPause"?: boolean;
+        /**
+          * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
+         */
+        "autoplayTimeout"?: number;
+        /**
+          * Bullet. Prop to Enable component bullets navigation.
+         */
+        "bullets"?: boolean;
+        /**
+          * Gap. Prop to Select the gap distance between items.
+         */
+        "gap"?: gap;
+        /**
+          * InfiniteLoop. Prop to Enable if the component will have infinite loop.
+         */
+        "infiniteLoop"?: boolean;
+        "nextSlide": () => Promise<void>;
+        "pauseAutoplay": () => Promise<void>;
+        "prevSlide": () => Promise<void>;
+        "runAutoplay": () => Promise<void>;
+        "setActivated": (item: number) => Promise<void>;
+        /**
+          * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
+         */
+        "slidePerPage"?: number;
+    }
+    interface BdsCarouselItem {
     }
     interface BdsCheckbox {
         /**
@@ -845,7 +919,7 @@ export namespace Components {
         "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "height"?: string;
         "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
@@ -1516,7 +1590,7 @@ export namespace Components {
         "alignItems"?: alignItems;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
@@ -2491,6 +2565,10 @@ export namespace Components {
          */
         "invisible": () => Promise<void>;
         /**
+          * Used to set tooltip max width
+         */
+        "maxWidth"?: string;
+        /**
           * Used to set tooltip position
          */
         "position": TooltipPostionType;
@@ -2626,6 +2704,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsButtonGroupElement;
+}
 export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonIconElement;
@@ -2633,6 +2715,10 @@ export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
 export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCardElement;
+}
+export interface BdsCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsCarouselElement;
 }
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2865,6 +2951,12 @@ declare global {
         prototype: HTMLBdsButtonElement;
         new (): HTMLBdsButtonElement;
     };
+    interface HTMLBdsButtonGroupElement extends Components.BdsButtonGroup, HTMLStencilElement {
+    }
+    var HTMLBdsButtonGroupElement: {
+        prototype: HTMLBdsButtonGroupElement;
+        new (): HTMLBdsButtonGroupElement;
+    };
     interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
     }
     var HTMLBdsButtonIconElement: {
@@ -2912,6 +3004,18 @@ declare global {
     var HTMLBdsCardTitleElement: {
         prototype: HTMLBdsCardTitleElement;
         new (): HTMLBdsCardTitleElement;
+    };
+    interface HTMLBdsCarouselElement extends Components.BdsCarousel, HTMLStencilElement {
+    }
+    var HTMLBdsCarouselElement: {
+        prototype: HTMLBdsCarouselElement;
+        new (): HTMLBdsCarouselElement;
+    };
+    interface HTMLBdsCarouselItemElement extends Components.BdsCarouselItem, HTMLStencilElement {
+    }
+    var HTMLBdsCarouselItemElement: {
+        prototype: HTMLBdsCarouselItemElement;
+        new (): HTMLBdsCarouselItemElement;
     };
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
     }
@@ -3379,6 +3483,7 @@ declare global {
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
+        "bds-button-group": HTMLBdsButtonGroupElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
         "bds-card": HTMLBdsCardElement;
         "bds-card-body": HTMLBdsCardBodyElement;
@@ -3387,6 +3492,8 @@ declare global {
         "bds-card-header": HTMLBdsCardHeaderElement;
         "bds-card-subtitle": HTMLBdsCardSubtitleElement;
         "bds-card-title": HTMLBdsCardTitleElement;
+        "bds-carousel": HTMLBdsCarouselElement;
+        "bds-carousel-item": HTMLBdsCarouselItemElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-chip-clickable": HTMLBdsChipClickableElement;
@@ -3466,21 +3573,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BdsAccordion {
-        /**
-          * bdsAccordionOpen. Event to return value when accordion is closed.
-         */
+        "divisor"?: boolean;
         "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * bdsAccordionOpen. Event to return value when accordion is open.
-         */
         "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * bdsToggle. Event to return value of toggle.
-         */
         "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * A prop for make the accordion open when is render.
-         */
         "startOpen"?: boolean;
     }
     interface BdsAccordionBody {
@@ -3490,17 +3586,9 @@ declare namespace LocalJSX {
         "dataTest"?: string;
     }
     interface BdsAccordionGroup {
-        /**
-          * Focus Selected. Used to add title in header accordion.
-         */
         "collapse"?: collapses;
-        /**
-          * bdsAccordionCloseAll. Event to return value when accordion is closed.
-         */
+        "divisor"?: boolean;
         "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
-        /**
-          * bdsAccordionOpenAll. Event to return value when accordion is opend.
-         */
         "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
     }
     interface BdsAccordionHeader {
@@ -3798,6 +3886,7 @@ declare namespace LocalJSX {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3810,6 +3899,14 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
@@ -3834,6 +3931,25 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
+        /**
+          * Color scheme for the buttons. Default is 'primary'.
+         */
+        "color"?: string;
+        /**
+          * Direction of the button group layout. Can be one of: 'row', 'column'.
+         */
+        "direction"?: direction;
+        /**
+          * Allows multiple buttons to be selected simultaneously if true.
+         */
+        "multiple"?: boolean;
+        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<any>) => void;
+        /**
+          * Size of the buttons. Can be one of: 'medium', 'large'.
+         */
+        "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
@@ -3938,6 +4054,46 @@ declare namespace LocalJSX {
           * Set the card title.
          */
         "text"?: string;
+    }
+    interface BdsCarousel {
+        /**
+          * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
+         */
+        "arrows"?: arrows;
+        /**
+          * Autoplay. Prop to Enable component autoplay.
+         */
+        "autoplay"?: boolean;
+        /**
+          * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
+         */
+        "autoplayHoverPause"?: boolean;
+        /**
+          * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
+         */
+        "autoplayTimeout"?: number;
+        /**
+          * Bullet. Prop to Enable component bullets navigation.
+         */
+        "bullets"?: boolean;
+        /**
+          * Gap. Prop to Select the gap distance between items.
+         */
+        "gap"?: gap;
+        /**
+          * InfiniteLoop. Prop to Enable if the component will have infinite loop.
+         */
+        "infiniteLoop"?: boolean;
+        /**
+          * Emitted when active frame value.
+         */
+        "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<any>) => void;
+        /**
+          * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
+         */
+        "slidePerPage"?: number;
+    }
+    interface BdsCarouselItem {
     }
     interface BdsCheckbox {
         /**
@@ -4241,6 +4397,10 @@ declare namespace LocalJSX {
          */
         "language"?: languages;
         /**
+          * bdsClickDayButton. Event to return when click on day button.
+         */
+        "onBdsClickDayButton"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
+        /**
           * bdsEndDate. Event to return selected end date value.
          */
         "onBdsEndDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
@@ -4336,7 +4496,7 @@ declare namespace LocalJSX {
         "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "height"?: string;
         "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
@@ -5120,7 +5280,7 @@ declare namespace LocalJSX {
         "alignItems"?: alignItems;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
@@ -6134,6 +6294,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Used to set tooltip max width
+         */
+        "maxWidth"?: string;
+        /**
           * Used to set tooltip position
          */
         "position"?: TooltipPostionType;
@@ -6244,6 +6408,7 @@ declare namespace LocalJSX {
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
+        "bds-button-group": BdsButtonGroup;
         "bds-button-icon": BdsButtonIcon;
         "bds-card": BdsCard;
         "bds-card-body": BdsCardBody;
@@ -6252,6 +6417,8 @@ declare namespace LocalJSX {
         "bds-card-header": BdsCardHeader;
         "bds-card-subtitle": BdsCardSubtitle;
         "bds-card-title": BdsCardTitle;
+        "bds-carousel": BdsCarousel;
+        "bds-carousel-item": BdsCarouselItem;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-chip-clickable": BdsChipClickable;
@@ -6348,6 +6515,7 @@ declare module "@stencil/core" {
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            "bds-button-group": LocalJSX.BdsButtonGroup & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
             "bds-card": LocalJSX.BdsCard & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
             "bds-card-body": LocalJSX.BdsCardBody & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;
@@ -6356,6 +6524,8 @@ declare module "@stencil/core" {
             "bds-card-header": LocalJSX.BdsCardHeader & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
             "bds-card-subtitle": LocalJSX.BdsCardSubtitle & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
             "bds-card-title": LocalJSX.BdsCardTitle & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
+            "bds-carousel": LocalJSX.BdsCarousel & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
+            "bds-carousel-item": LocalJSX.BdsCarouselItem & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;

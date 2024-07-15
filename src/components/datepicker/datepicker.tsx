@@ -4,6 +4,7 @@ import {
   defaultEndDate,
   fillDayList,
   dateToDayList,
+  dateToInputDate,
   dateToTypeDate,
   typeDateToStringDate,
 } from '../../utils/calendar';
@@ -40,6 +41,8 @@ export class DatePicker {
   @State() scrollingTop?: number = 0;
   @State() menupositionTop?: number = 0;
   @State() menupositionLeft?: number = 0;
+  @State() valueDate?: string;
+  @State() valueEndDate?: string;
   /**
    * TypeOfDate. Select type of date.
    */
@@ -146,6 +149,19 @@ export class DatePicker {
    * bdsStartDate. Event to return selected end date value.
    */
   @Event() concludeDatepicker?: EventEmitter;
+
+  @Watch('valueDateSelected')
+  valueDateSelectedChanged(): void {
+    this.valueDate = this.valueDateSelected && dateToInputDate(this.valueDateSelected);
+    if (this.valueDate) this.validationDateSelected(this.valueDate);
+  }
+
+  @Watch('valueEndDateSelected')
+  valueEndDateSelectedChanged(): void {
+    this.valueEndDate = this.valueEndDateSelected && dateToInputDate(this.valueEndDateSelected);
+    if (this.valueEndDate) this.validationEndDateSelected(this.valueEndDate);
+  }
+
   /**
    * startDateLimit validation.
    */
@@ -174,16 +190,17 @@ export class DatePicker {
 
   @Watch('dateSelected')
   dateSelectedChanged(): void {
-    this.inputSetEndDate?.setFocus();
     this.stateSelect = 'end';
   }
 
   componentWillLoad() {
     this.endDateLimitChanged();
     this.startDateLimitChanged();
+    this.valueDateSelectedChanged();
+    this.valueEndDateSelectedChanged();
     this.intoView = getScrollParent(this.element);
-    if (this.valueDateSelected) this.validationDateSelected(this.valueDateSelected);
-    if (this.valueEndDateSelected) this.validationEndDateSelected(this.valueEndDateSelected);
+    if (this.valueDate) this.validationDateSelected(this.valueDate);
+    if (this.valueEndDate) this.validationEndDateSelected(this.valueEndDate);
   }
 
   private refActionElement = (el: HTMLElement): void => {
@@ -210,6 +227,17 @@ export class DatePicker {
     this.datepickerSingle = el;
   };
   /**
+   * whenClickCalendar. Function to output selected date.
+   */
+  private whenClickCalendar(event: CustomEvent) {
+    const {
+      detail: { value },
+    } = event;
+    if (value == 'start') {
+      this.inputSetEndDate?.setFocus();
+    }
+  }
+  /**
    * selectDate. Function to output selected date.
    */
   private selectDate(event: CustomEvent<{ value: Date }>) {
@@ -218,7 +246,7 @@ export class DatePicker {
     } = event;
     this.dateSelected = value;
     this.bdsStartDate.emit({ value: this.dateSelected });
-    this.valueDateSelected = this.dateSelected && dateToTypeDate(this.dateSelected);
+    this.valueDate = this.dateSelected && dateToTypeDate(this.dateSelected);
     this.errorMsgDate = null;
   }
   /**
@@ -230,8 +258,7 @@ export class DatePicker {
     } = event;
     this.endDateSelected = value;
     this.bdsEndDate.emit({ value: this.endDateSelected });
-    this.valueEndDateSelected = this.endDateSelected && dateToTypeDate(this.endDateSelected);
-    this.inputSetEndDate?.setFocus();
+    this.valueEndDate = this.endDateSelected && dateToTypeDate(this.endDateSelected);
     this.errorMsgEndDate = null;
   }
 
@@ -239,13 +266,13 @@ export class DatePicker {
    * clearDatepicker. Function to clear datepicker
    */
   private clearDate = () => {
-    this.valueDateSelected = null;
+    this.valueDate = null;
     this.bdsStartDate.emit({ value: null });
     if (this.typeOfDate == 'single') {
       this.datepickerSingle.clear();
     } else {
       this.datepickerPeriod.clear();
-      this.valueEndDateSelected = null;
+      this.valueEndDate = null;
       this.bdsEndDate.emit({ value: null });
       setTimeout(() => {
         this.inputSetDate?.setFocus();
@@ -255,8 +282,8 @@ export class DatePicker {
 
   private onInputDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
-    this.valueDateSelected = input.value;
-    this.validationDateSelected(this.valueDateSelected);
+    this.valueDate = input.value;
+    this.validationDateSelected(this.valueDate);
   };
 
   /**
@@ -271,9 +298,10 @@ export class DatePicker {
       this.errorMsgDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${this.startDateLimit} - ${
-          this.endDateLimit
-        }`;
+        this.errorMsgDate = `${messageTranslate(
+          this.language,
+          'betweenPeriodOf',
+        )} ${this.startDateLimit} - ${this.endDateLimit}`;
       } else {
         this.errorMsgDate = null;
         this.dateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
@@ -283,8 +311,8 @@ export class DatePicker {
 
   private onInputEndDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
-    this.valueEndDateSelected = input.value;
-    this.validationEndDateSelected(this.valueEndDateSelected);
+    this.valueEndDate = input.value;
+    this.validationEndDateSelected(this.valueEndDate);
   };
 
   /**
@@ -292,7 +320,7 @@ export class DatePicker {
    */
   private validationEndDateSelected = (value: string): void => {
     const formatData = typeDateToStringDate(value);
-    const formatValueDateSelected = typeDateToStringDate(this.valueDateSelected);
+    const formatValueDateSelected = typeDateToStringDate(this.valueDate);
     const valueSelected = formatData && dateToDayList(formatData);
     const start = formatValueDateSelected ? dateToDayList(formatValueDateSelected) : dateToDayList(this.startDateLimit);
     const end = this.endDateLimit && dateToDayList(this.endDateLimit);
@@ -301,9 +329,10 @@ export class DatePicker {
       this.errorMsgEndDate = `${messageTranslate(this.language, 'dateFormatIsIncorrect')}!`;
     } else {
       if (fillDayList(valueSelected) < fillDayList(start) || fillDayList(valueSelected) > fillDayList(end)) {
-        this.errorMsgEndDate = `${messageTranslate(this.language, 'betweenPeriodOf')} ${formatValueDateSelected} - ${
-          this.endDateLimit
-        }`;
+        this.errorMsgEndDate = `${messageTranslate(
+          this.language,
+          'betweenPeriodOf',
+        )} ${formatValueDateSelected} - ${this.endDateLimit}`;
       } else {
         this.errorMsgEndDate = null;
         this.endDateSelected = new Date(valueSelected.year, valueSelected.month, valueSelected.date);
@@ -327,8 +356,11 @@ export class DatePicker {
   private clickConcludeDatepicker = () => {
     const data =
       this.typeOfDate === 'single'
-        ? { startDate: this.valueDateSelected }
-        : { startDate: this.valueDateSelected, endDate: this.valueEndDateSelected };
+        ? { startDate: typeDateToStringDate(this.valueDate) }
+        : {
+            startDate: typeDateToStringDate(this.valueDate),
+            endDate: typeDateToStringDate(this.valueEndDate),
+          };
     this.concludeDatepicker.emit(data);
     this.open = false;
     if (this.typeOfDate == 'period') {
@@ -366,7 +398,7 @@ export class DatePicker {
             >
               <bds-input
                 label={termTranslate(this.language, 'setTheDate')}
-                value={this.valueDateSelected}
+                value={this.valueDate}
                 disabled={this.disabled}
                 type="date"
                 maxlength={10}
@@ -389,7 +421,7 @@ export class DatePicker {
               <bds-input
                 ref={this.refInputSetDate}
                 label={termTranslate(this.language, 'from')}
-                value={this.valueDateSelected}
+                value={this.valueDate}
                 disabled={this.disabled}
                 type="date"
                 maxlength={10}
@@ -404,7 +436,7 @@ export class DatePicker {
               <bds-input
                 ref={this.refInputSetEndDate}
                 label={termTranslate(this.language, 'to')}
-                value={this.valueEndDateSelected}
+                value={this.valueEndDate}
                 disabled={this.disabled || !this.dateSelected}
                 type="date"
                 maxlength={10}
@@ -420,7 +452,10 @@ export class DatePicker {
           )}
           <div
             ref={this.refMenuElement}
-            class={{ datepicker__menu: true, datepicker__menu__open: this.open }}
+            class={{
+              datepicker__menu: true,
+              datepicker__menu__open: this.open,
+            }}
             style={menuPosition}
           >
             {this.message && (
@@ -453,6 +488,7 @@ export class DatePicker {
                 endDateSelect={this.endDateSelected}
                 onBdsStartDate={(event) => this.selectDate(event)}
                 onBdsEndDate={(event) => this.selectEndDate(event)}
+                onBdsClickDayButton={(event) => this.whenClickCalendar(event)}
                 language={this.language}
                 dtButtonPrev={this.dtButtonPrev}
                 dtButtonNext={this.dtButtonNext}
