@@ -18,11 +18,28 @@
     background: var(--color-surface-3, #f5f8f9);
     /* background: var(--color-background-2, #0a0f1a);  */
     margin: 0;
+    padding: 24px;
   }
 </style>
 
 <body>
   Versão blip-ds 1.285.0
+  <bds-grid xxs="12">
+    <bds-button arrow="false" bds-loading="false" bds-loading-color="light" dataTest="" disabled="false" icon=""
+      icon-theme="outline" id="btn" size="standard" type="button" type-icon="icon" variant="primary">
+      Button
+    </bds-button>
+  </bds-grid>
+  <bds-grid xxs="12">
+    <bds-button-group color="negative" direction="column" multiple size="medium">
+      <bds-button icon-left="builder-publish-bot">aoshdasoiudhasudh</bds-button>
+      <bds-button icon-left="search"></bds-button>
+      <bds-button icon-left="email"></bds-button>
+      <bds-button icon-left="bell"></bds-button>
+      <bds-button icon-left="settings-general"></bds-button>
+    </bds-button-group>
+  </bds-grid>
+
   <bds-test-component></bds-test-component>
 </body>
 

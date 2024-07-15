@@ -16,6 +16,8 @@ import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
+import { ButtonSize as ButtonSize1 } from "./components/button/button";
+import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
@@ -32,7 +34,6 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
-import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -354,6 +355,7 @@ export namespace Components {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -367,9 +369,23 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
+        /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme": IconTheme;
+        "isActive": (value: any) => Promise<void>;
+        "setColor": (color: 'primary' | 'content' | 'negative' | 'positive') => Promise<void>;
+        "setDirection": (direction: 'row' | 'column') => Promise<void>;
+        "setPosition": (position: 'first' | 'last' | 'middle') => Promise<void>;
+        "setSize": (size: ButtonSize) => Promise<void>;
+        "setVariant": (variant: ButtonVariant) => Promise<void>;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
@@ -386,6 +402,25 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
+        "activateButton": (index: number) => Promise<void>;
+        /**
+          * Color scheme for the buttons. Default is 'primary'.
+         */
+        "color"?: string;
+        /**
+          * Direction of the button group layout. Can be one of: 'row', 'column'.
+         */
+        "direction"?: direction;
+        /**
+          * Allows multiple buttons to be selected simultaneously if true.
+         */
+        "multiple"?: boolean;
+        /**
+          * Size of the buttons. Can be one of: 'medium', 'large'.
+         */
+        "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
@@ -2628,6 +2663,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsButtonGroupElement;
+}
 export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonIconElement;
@@ -2870,6 +2909,12 @@ declare global {
     var HTMLBdsButtonElement: {
         prototype: HTMLBdsButtonElement;
         new (): HTMLBdsButtonElement;
+    };
+    interface HTMLBdsButtonGroupElement extends Components.BdsButtonGroup, HTMLStencilElement {
+    }
+    var HTMLBdsButtonGroupElement: {
+        prototype: HTMLBdsButtonGroupElement;
+        new (): HTMLBdsButtonGroupElement;
     };
     interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
     }
@@ -3397,6 +3442,7 @@ declare global {
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
+        "bds-button-group": HTMLBdsButtonGroupElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
         "bds-card": HTMLBdsCardElement;
         "bds-card-body": HTMLBdsCardBodyElement;
@@ -3818,6 +3864,7 @@ declare namespace LocalJSX {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3830,6 +3877,14 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
@@ -3854,6 +3909,25 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
+        /**
+          * Color scheme for the buttons. Default is 'primary'.
+         */
+        "color"?: string;
+        /**
+          * Direction of the button group layout. Can be one of: 'row', 'column'.
+         */
+        "direction"?: direction;
+        /**
+          * Allows multiple buttons to be selected simultaneously if true.
+         */
+        "multiple"?: boolean;
+        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<any>) => void;
+        /**
+          * Size of the buttons. Can be one of: 'medium', 'large'.
+         */
+        "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
@@ -6264,6 +6338,7 @@ declare namespace LocalJSX {
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
+        "bds-button-group": BdsButtonGroup;
         "bds-button-icon": BdsButtonIcon;
         "bds-card": BdsCard;
         "bds-card-body": BdsCardBody;
@@ -6370,6 +6445,7 @@ declare module "@stencil/core" {
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            "bds-button-group": LocalJSX.BdsButtonGroup & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
             "bds-card": LocalJSX.BdsCard & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
             "bds-card-body": LocalJSX.BdsCardBody & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;

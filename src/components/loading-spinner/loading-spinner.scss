@@ -42,6 +42,18 @@
     border-color: $color-content-bright;
     opacity: 0.16;
   }
+  &_content {
+    border-color: $color-surface-0;
+    opacity: 0.16;
+  }
+  &_positive {
+    border-color: $color-positive;
+    opacity: 0.16;
+  }
+  &_negative {
+    border-color: $color-negative;
+    opacity: 0.16;
+  }
 }
 
 .spinner_loading {
@@ -65,6 +77,15 @@
   }
   &_light {
     color: $color-content-bright;
+  }
+  &_content {
+    color: $color-surface-0;
+  }
+  &_positive {
+    color: $color-positive;
+  }
+  &_negative {
+    color: $color-negative;
   }
 }
 @keyframes rotate {

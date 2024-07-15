@@ -75,9 +75,9 @@ graph TD;
   bds-datepicker-period --> bds-typo
   bds-datepicker-period --> bds-icon
   bds-datepicker-period --> bds-select-option
+  bds-button --> bds-loading-spinner
   bds-button --> bds-icon
   bds-button --> bds-typo
-  bds-button --> bds-loading-spinner
   style bds-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -11,6 +11,6 @@ export declare const transformReactEventName: (eventNameSuffix: string) => strin
 export declare const isCoveredByReact: (eventNameSuffix: string) => boolean;
 export declare const syncEvent: (node: Element & {
     __events?: {
-        [key: string]: ((e: Event) => any) | undefined;
+        [key: string]: (e: Event) => any;
     };
 }, eventName: string, newEventHandler?: (e: Event) => any) => void;
