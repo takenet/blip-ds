@@ -11,18 +11,10 @@ export class AccordionGroup {
   private accordionsElement?: HTMLCollectionOf<HTMLBdsAccordionElement> = null;
 
   @Element() private element: HTMLElement;
-  /**
-   * Focus Selected. Used to add title in header accordion.
-   */
   @Prop() collapse?: collapses = 'single';
+  @Prop() divisor?: boolean = true;
 
-  /**
-   * bdsAccordionCloseAll. Event to return value when accordion is closed.
-   */
   @Event() bdsAccordionCloseAll?: EventEmitter;
-  /**
-   * bdsAccordionOpenAll. Event to return value when accordion is opend.
-   */
   @Event() bdsAccordionOpenAll?: EventEmitter;
 
   @Method()
@@ -55,6 +47,7 @@ export class AccordionGroup {
     ) as HTMLCollectionOf<HTMLBdsAccordionElement>;
     for (let i = 0; i < this.accordionsElement.length; i++) {
       this.accordionsElement[i].reciveNumber(i);
+      this.accordionsElement[i].divisor = this.divisor;
     }
   }
 

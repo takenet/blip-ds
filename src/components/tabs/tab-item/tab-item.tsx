@@ -15,6 +15,46 @@ export class BdsTabItem {
    */
   @Prop() label?: string = null;
   /**
+   * The icon to be shown at the Tab item.
+   */
+  @Prop() icon?: string = null;
+  /**
+   * The position of the icon at the Tab item ('left', 'right').
+   */
+  @Prop() iconPosition?: string = 'left';
+  /**
+   * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
+   */
+  @Prop() iconTheme?: string = 'outline';
+  /**
+   * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+   */
+  @Prop() badge?: boolean = false;
+  /**
+   * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+   */
+  @Prop() badgeShape?: string = 'circle';
+  /**
+   * The color of the badge to be shown at the Tab item.
+   */
+  @Prop() badgeColor?: string = 'system';
+  /**
+   * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
+   */
+  @Prop() badgeIcon?: string = null;
+  /**
+   * The animation of the badge to be shown at the Tab item.
+   */
+  @Prop() badgeAnimation?: boolean = false;
+  /**
+   * The animation of the badge to be shown at the Tab item.
+   */
+  @Prop() badgePosition?: string = 'left';
+  /**
+   * The number to be shown inside the badge at the Tab item.
+   */
+  @Prop() badgeNumber?: number = null;
+  /**
    * Prop for disable the especific tab.
    */
   @Prop({ mutable: true, reflect: true }) disable?: boolean = false;
