@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, Host, Element, State, Prop, Method, Event, EventEmitter, Watch, h } from '@stencil/core';
 
 export type collapses = 'single' | 'multiple';
 
@@ -11,6 +11,7 @@ export class NavTree {
   @Element() private element: HTMLElement;
 
   @State() isOpenAftAnimation?: boolean = false;
+  @State() navTreeChild? = null;
   /**
    * Focus Selected. Used to add title in header accordion.
    */
@@ -50,6 +51,10 @@ export class NavTree {
     this.bdsToogleChange.emit({ value: value, element: this.element });
   }
 
+  componentWillLoad() {
+    this.navTreeChild = this.element.querySelector('bds-nav-tree-item') === null ? false : true;
+  }
+
   private handler = (): void => {
     this.isOpen = !this.isOpen;
   };
@@ -82,7 +87,7 @@ export class NavTree {
                 size="medium"
                 name={this.icon}
                 color="inherit"
-                theme={this.isOpen ? 'solid' : 'outline'}
+                theme='outline'
               ></bds-icon>
             )}
             <div class="nav_main_text">
@@ -106,16 +111,19 @@ export class NavTree {
             <div class="nav_main_content">
               <slot name="header-content"></slot>
             </div>
-            <bds-icon
+            {this.navTreeChild && (
+              <bds-icon
               name="arrow-down"
               class={{ [`nav_main_arrow`]: true, [`nav_main_arrow_active`]: this.isOpen }}
             ></bds-icon>
+            )}
+            
           </div>
         </div>
         <div
           class={{
             accordion: true,
-            accordion_open: this.isOpen,
+            accordion_open: this.isOpen && this.navTreeChild,
           }}
         >
           <div class="container">
