@@ -1776,6 +1776,7 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        "disable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -1784,6 +1785,7 @@ export namespace Components {
           * A prop for make the nav open.
          */
         "isOpen"?: boolean;
+        "loading"?: boolean;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -5469,6 +5471,7 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        "disable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
          */
@@ -5477,6 +5480,7 @@ declare namespace LocalJSX {
           * A prop for make the nav open.
          */
         "isOpen"?: boolean;
+        "loading"?: boolean;
         /**
           * When de open or close of component change, the event are dispache.
          */

@@ -23,6 +23,15 @@
   border: 1px solid transparent;
   overflow: hidden;
 
+  &--loading {
+    cursor: wait;
+  }
+
+  &--disable {
+    opacity: 0.5;
+    cursor:not-allowed;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -40,6 +49,13 @@
       background-color: $color-content-default;
       border-color: $color-hover;
       opacity: 0.08;
+    }
+  }
+
+  &--disable {
+    &:before, &:hover {
+      border-color: transparent;
+      background-color: transparent;
     }
   }
   
@@ -60,10 +76,16 @@
 
     & .title-item {
       color: $color-content-default;
+      &--loading {
+        color: $color-content-disable;
+      }
     }
 
     & .subtitle-item {
       color: $color-content-default;
+      &--loading {
+        color: $color-content-disable;
+      }
     }
   }
 
@@ -77,6 +99,10 @@
     -moz-transition: all ease 0.3s;
     transition: all ease 0.3s;
     transform: rotate(0deg);
+
+    &--disable {
+      color: $color-content-disable;
+    }
 
     &_active {
       transform: rotate(180deg);
@@ -112,7 +138,14 @@
       background-color: $color-hover;
       opacity: .8;
     }
+
+    &--disable {
+      &:before {
+        background-color: transparent;
+      }
+    }
   }
+  
 }
 
 .nav_tree {
