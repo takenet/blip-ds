@@ -193,6 +193,14 @@ $button-border-radius: 8px;
     }
   }
 
+  &.button__variant--secondary {
+    @include button-variant(transparent, transparent, $color-content-default);
+  }
+
+  &.button__variant--tertiary {
+    @include button-variant(transparent, $color-border-1, $color-content-default);
+  }
+
   &__group {
     width: 100%;
   }
