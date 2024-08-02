@@ -7,72 +7,111 @@ export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
   shadow: true,
 })
 export class Pagination {
-  @Element() private el!: HTMLElement;
-  /**
-   * State for keep the value selected on select:
-   */
-  @State() value: number = this.startedPage;
-  /**
-   * State for keep if the select are open or close;
-   */
-  @State() openSelect: boolean;
-  /**
-   * State for recive and save the number of pages.
-   */
-  @State() paginationNumbers = [];
+// Elemento HTML nativo onde o componente será renderizado
+@Element() private el!: HTMLElement;
 
-  @State() intoView?: HTMLElement = null;
+/**
+ * Estado que armazena o valor selecionado no seletor de página.
+ * Inicialmente, é configurado com a página inicial (startedPage).
+ */
+@State() value: number = this.startedPage;
 
-  /**
-   * Prop to recive the number of pages.
-   */
-  @Prop() pages?: number;
-  /**
-   * When the component are render this page are set.
-   */
-  @Prop() startedPage?: number;
-  /**
-   * Set the placement of the options menu. Can be 'bottom' or 'top'.
-   */
-  @Prop() optionsPosition?: PaginationOptionsPositionType = 'auto';
+// Estado que armazena o valor selecionado no seletor de itens por página
+@State() itemValue: number;
 
-  /**
-   * Data test is the prop to specifically test the component action object.
-   * dtButtonInitial is the data-test to button initial.
-   */
-  @Prop() dtButtonInitial?: string = null;
+/**
+ * Estado que controla se o seletor de opções de página está aberto ou fechado.
+ */
+@State() openSelect: boolean;
 
-  /**
-   * Data test is the prop to specifically test the component action object.
-   * dtButtonPrev is the data-test to button prev.
-   */
-  @Prop() dtButtonPrev?: string = null;
+/**
+ * Estado que armazena o número de páginas, gerado com base no total de itens e itens por página.
+ */
+@State() paginationNumbers = [];
 
-  /**
-   * Data test is the prop to specifically test the component action object.
-   * dtSelectNumber is the data-test to select number.
-   */
-  @Prop() dtSelectNumber?: string = null;
+// Estado que armazena o número de itens por página selecionado
+@State() itemsPerPage: number;
 
-  /**
-   * Data test is the prop to specifically test the component action object.
-   * dtButtonNext is the data-test to button next.
-   */
-  @Prop() dtButtonNext?: string = null;
+// Estado que guarda o elemento pai com rolagem (se houver)
+@State() intoView?: HTMLElement = null;
 
-  /**
-   * Data test is the prop to specifically test the component action object.
-   * dtButtonEnd is the data-test to button end
-   */
-  @Prop() dtButtonEnd?: string = null;
-  /**
-   * When de value of component change, the event are dispache.
-   */
-  @Event() bdsPaginationChange: EventEmitter;
+/**
+ * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
+ */
+@Prop() pages?: number;
+
+/**
+ * Propriedade que define a página inicial ao renderizar o componente.
+ */
+@Prop() startedPage?: number;
+
+/**
+ * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'.
+ * Padrão é 'auto', que ajusta automaticamente a posição.
+ */
+@Prop() optionsPosition?: PaginationOptionsPositionType = 'auto';
+
+// Propriedade que controla se o contador de páginas será exibido
+@Prop() pageCounter?: boolean = false;
+
+// Propriedade para receber as opções de itens por página (por exemplo, [10, 20, 30])
+@Prop() itemsPage?: any;
+
+// Propriedade que define o número total de itens que serão paginados
+@Prop() numberItems?: number;
+
+// Propriedade para definir o idioma do componente (opcional)
+@Prop() language?: string;
+
+/**
+ * Propriedade de teste para especificamente testar a ação do botão inicial.
+ * dtButtonInitial é o data-test para o botão inicial.
+ */
+@Prop() dtButtonInitial?: string = null;
+
+/**
+ * Propriedade de teste para especificamente testar a ação do botão de página anterior.
+ * dtButtonPrev é o data-test para o botão anterior.
+ */
+@Prop() dtButtonPrev?: string = null;
+
+/**
+ * Propriedade de teste para especificamente testar o seletor de número de páginas.
+ * dtSelectNumber é o data-test para o seletor de número de páginas.
+ */
+@Prop() dtSelectNumber?: string = null;
+
+/**
+ * Propriedade de teste para especificamente testar a ação do botão de próxima página.
+ * dtButtonNext é o data-test para o botão próximo.
+ */
+@Prop() dtButtonNext?: string = null;
+
+/**
+ * Propriedade de teste para especificamente testar a ação do botão final.
+ * dtButtonEnd é o data-test para o botão final.
+ */
+@Prop() dtButtonEnd?: string = null;
+
+/**
+ * Evento emitido quando o valor da página atual é alterado.
+ * Pode ser escutado para realizar ações específicas ao mudar de página.
+ */
+@Event() bdsPaginationChange: EventEmitter;
+
+// Variável que armazena o número do primeiro item sendo exibido na página atual
+startItem: number;
+
+// Variável que armazena o número do último item sendo exibido na página atual
+endItem: number;
 
   componentWillLoad() {
     this.countPage();
     this.intoView = getScrollParent(this.el);
+    this.processItemsPage();
+    this.itemValue = this.itemsPage[0];
+    this.itemSelected(this.itemValue);
+    this.countItem();
   }
 
   @Watch('pages')
@@ -84,6 +123,22 @@ export class Pagination {
   @Watch('value')
   valueChanged(): void {
     this.bdsPaginationChange.emit(this.value);
+  }
+
+  processItemsPage() {
+    if (typeof this.itemsPage === 'string') {
+      try {
+        this.itemsPage = JSON.parse(this.itemsPage.replace(/'/g, '"'));
+      } catch (error) {
+        console.error('Failed to parse itemsPage:', error);
+        this.itemsPage = [];
+      }
+    }
+  }
+
+  countItem() {
+    this.pages = this.numberItems / this.itemValue;
+    console.log(this.numberItems, this.itemValue, this.pages);
   }
 
   countPage() {
@@ -102,19 +157,21 @@ export class Pagination {
     }
   }
 
-  previewPage = (event: Event) => {
-    const el = this.value;
-    if (el > 1) {
-      event.preventDefault();
-      this.value = this.value - 1;
-    }
-  };
-
   nextPage = (event: Event) => {
     const el = this.value;
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.value + 1;
+      this.updateItemRange();
+    }
+  };
+
+  previewPage = (event: Event) => {
+    const el = this.value;
+    if (el > 1) {
+      event.preventDefault();
+      this.value = this.value - 1;
+      this.updateItemRange();
     }
   };
 
@@ -123,6 +180,7 @@ export class Pagination {
     if (el > 1) {
       event.preventDefault();
       this.value = this.paginationNumbers[0];
+      this.updateItemRange();
     }
   };
 
@@ -131,6 +189,7 @@ export class Pagination {
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.pages;
+      this.updateItemRange();
     }
   };
 
@@ -145,50 +204,82 @@ export class Pagination {
   optionSelected(index) {
     this.value = index;
     this.openOptions();
+    this.updateItemRange();
+  }
+
+  itemSelected(index) {
+    this.itemValue = index;
+    this.itemsPerPage = index;
+    this.openOptions();
+    this.countItem();
+    this.updateItemRange();
+  }
+
+  updateItemRange() {
+    console.log(this.value, this.itemsPerPage);
+    this.startItem = (this.value - 1) * this.itemsPerPage + 1;
+    this.endItem = Math.min(this.value * this.itemsPerPage, this.numberItems);
+    console.log(this.startItem, this.endItem);
   }
 
   render() {
     return (
       <Host>
-        <div class="actions">
-          <bds-button-icon
-            onBdsClick={(ev) => this.firstPage(ev)}
-            size="short"
-            variant="secondary"
-            icon="arrow-first"
-            dataTest={this.dtButtonInitial}
-          ></bds-button-icon>
-          <bds-button-icon
-            onBdsClick={(ev) => this.previewPage(ev)}
-            size="short"
-            variant="secondary"
-            icon="arrow-left"
-            dataTest={this.dtButtonPrev}
-          ></bds-button-icon>
+        <bds-grid justify-content="space-between">
+          <bds-grid gap="1" align-items="center">
+            <bds-typo variant="fs-14">Itens por página:</bds-typo>
+            <bds-select class="actions_select" value={this.itemValue} options-position={this.optionsPosition}>
+              {this.itemsPage.map((el, index) => (
+                <bds-select-option key={index} value={el} onClick={() => this.itemSelected(el)}>
+                  {el}
+                </bds-select-option>
+              ))}
+            </bds-select>
+            <bds-typo variant="fs-14">
+              {' '}
+              {this.startItem}-{this.endItem} de {this.numberItems}
+            </bds-typo>
+          </bds-grid>
+          <bds-grid gap="1" align-items="center" class="actions">
+            <bds-button-icon
+              onBdsClick={(ev) => this.firstPage(ev)}
+              size="short"
+              variant="secondary"
+              icon="arrow-first"
+              dataTest={this.dtButtonInitial}
+            ></bds-button-icon>
+            <bds-button-icon
+              onBdsClick={(ev) => this.previewPage(ev)}
+              size="short"
+              variant="secondary"
+              icon="arrow-left"
+              dataTest={this.dtButtonPrev}
+            ></bds-button-icon>
 
-          <bds-select class="actions_select" value={this.value} options-position={this.optionsPosition}>
-            {this.paginationNumbers.map((el, index) => (
-              <bds-select-option key={index} value={el} onClick={() => this.optionSelected(el)}>
-                {el}
-              </bds-select-option>
-            ))}
-          </bds-select>
-
-          <bds-button-icon
-            onBdsClick={(ev) => this.nextPage(ev)}
-            size="short"
-            variant="secondary"
-            icon="arrow-right"
-            dataTest={this.dtButtonNext}
-          ></bds-button-icon>
-          <bds-button-icon
-            onBdsClick={(ev) => this.lastPage(ev)}
-            size="short"
-            variant="secondary"
-            icon="arrow-last"
-            dataTest={this.dtButtonEnd}
-          ></bds-button-icon>
-        </div>
+            <bds-select class="actions_select" value={this.value} options-position={this.optionsPosition}>
+              {this.paginationNumbers.map((el, index) => (
+                <bds-select-option key={index} value={el} onClick={() => this.optionSelected(el)}>
+                  {el}
+                </bds-select-option>
+              ))}
+            </bds-select>
+            {this.pageCounter && <bds-typo variant="fs-14">de {this.pages} páginas</bds-typo>}
+            <bds-button-icon
+              onBdsClick={(ev) => this.nextPage(ev)}
+              size="short"
+              variant="secondary"
+              icon="arrow-right"
+              dataTest={this.dtButtonNext}
+            ></bds-button-icon>
+            <bds-button-icon
+              onBdsClick={(ev) => this.lastPage(ev)}
+              size="short"
+              variant="secondary"
+              icon="arrow-last"
+              dataTest={this.dtButtonEnd}
+            ></bds-button-icon>
+          </bds-grid>
+        </bds-grid>
       </Host>
     );
   }
