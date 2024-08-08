@@ -34,6 +34,15 @@ export class NavTreeItem {
    */
   @Prop({ mutable: true, reflect: true }) isOpen?: boolean = false;
   /**
+   * Loading state. Indicates if the component is in a loading state.
+   */
+  @Prop() loading?: boolean = false;
+
+  /**
+   * Disable state. Indicates if the component is disabled.
+   */
+  @Prop() disable?: boolean = false;
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -66,12 +75,14 @@ export class NavTreeItem {
   }
 
   private handler = () => {
-    if (this.navTreeParent.collapse == 'single') {
-      for (let i = 0; i < this.itensElement.length; i++) {
-        if (this.itensElement[i] != this.element) this.itensElement[i].isOpen = false;
+    if (!this.loading && !this.disable) {
+      if (this.navTreeParent.collapse == 'single') {
+        for (let i = 0; i < this.itensElement.length; i++) {
+          if (this.itensElement[i] != this.element) this.itensElement[i].isOpen = false;
+        }
       }
+      this.toggle();
     }
-    this.toggle();
   };
 
   private handleKeyDown(event) {
@@ -90,12 +101,16 @@ export class NavTreeItem {
               nav_tree_item_active: this.isOpen,
               nav_tree_item_button: !this.navTreeChild,
               nav_tree_item_button_active: !this.navTreeChild && this.isOpen,
+              [`nav_tree_item--loading`]: this.loading,
+              [`nav_tree_item--disable`]: this.disable,
             }}
             onClick={() => this.handler()}
             data-test={this.dataTest}
             aria-label={this.text + (this.secondaryText && `: ${this.secondaryText}`)}
           >
-            {this.icon && (
+            {this.loading ? (
+              <bds-loading-spinner size="extra-small"></bds-loading-spinner>
+            ) : this.icon ? (
               <bds-icon
                 class={{
                   [`icon-item`]: true,
@@ -106,11 +121,13 @@ export class NavTreeItem {
                 color="inherit"
                 theme={this.isOpen ? 'solid' : 'outline'}
               ></bds-icon>
+            ) : (
+              ''
             )}
             <div class="nav_tree_item_content">
               {this.text && (
                 <bds-typo
-                  class="title-item"
+                  class={{ ['title-item']: true, [`title-item--loading`]: this.loading }}
                   variant="fs-14"
                   tag="span"
                   line-height="small"
@@ -120,7 +137,13 @@ export class NavTreeItem {
                 </bds-typo>
               )}
               {this.secondaryText && (
-                <bds-typo class="subtitle-item" variant="fs-12" line-height="small" tag="span" margin={false}>
+                <bds-typo
+                  class={{ ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }}
+                  variant="fs-12"
+                  line-height="small"
+                  tag="span"
+                  margin={false}
+                >
                   {this.secondaryText}
                 </bds-typo>
               )}
@@ -130,7 +153,11 @@ export class NavTreeItem {
             </div>
             {this.navTreeChild && (
               <bds-icon
-                class={{ [`icon-arrow`]: true, [`icon-arrow-active`]: this.isOpen }}
+                class={{
+                  [`nav_main_arrow`]: true,
+                  [`nav_main_arrow_active`]: this.isOpen,
+                  [`nav_main_arrow--loading`]: this.loading,
+                }}
                 name="arrow-down"
               ></bds-icon>
             )}
