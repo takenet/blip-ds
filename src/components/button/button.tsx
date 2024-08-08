@@ -160,7 +160,12 @@ export class Button {
   }
 
   buttonLegacy() {
-    this.variant === 'facebook' ? this.setVariant('outline') : this.setVariant(this.variant)
+    this.variant === 'facebook' ? this.setVariant('outline') : this.setVariant(this.variant);
+    this.size === 'tall'
+      ? this.setSize('large')
+      : this.size === 'standard'
+        ? this.setSize('medium')
+        : this.setSize(this.size);
   }
 
   logSlotText() {
