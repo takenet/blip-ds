@@ -109,7 +109,7 @@ export class NavTree {
                   size="medium"
                   name={this.icon}
                   color="inherit"
-                  theme={this.isOpen ? 'solid' : 'outline'}
+                  theme="outline"
                 ></bds-icon>
               ) : (
                 ''
