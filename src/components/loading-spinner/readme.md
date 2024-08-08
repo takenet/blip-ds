@@ -22,6 +22,7 @@
  - [bds-autocomplete](../autocomplete)
  - [bds-button](../button)
  - [bds-nav-tree](../nav-tree)
+ - [bds-nav-tree-item](../nav-tree)
 
 ### Graph
 ```mermaid
@@ -29,6 +30,7 @@ graph TD;
   bds-autocomplete --> bds-loading-spinner
   bds-button --> bds-loading-spinner
   bds-nav-tree --> bds-loading-spinner
+  bds-nav-tree-item --> bds-loading-spinner
   style bds-loading-spinner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

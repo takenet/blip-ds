@@ -1812,6 +1812,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * Disable state. Indicates if the component is disabled.
+         */
+        "disable"?: boolean;
+        /**
           * Icon. Used to add icon in list item.
          */
         "icon"?: string;
@@ -1819,6 +1823,10 @@ export namespace Components {
           * Active. Used to define when the item is highlighted.
          */
         "isOpen"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -5516,6 +5524,10 @@ declare namespace LocalJSX {
          */
         "dataTest"?: string;
         /**
+          * Disable state. Indicates if the component is disabled.
+         */
+        "disable"?: boolean;
+        /**
           * Icon. Used to add icon in list item.
          */
         "icon"?: string;
@@ -5523,6 +5535,10 @@ declare namespace LocalJSX {
           * Active. Used to define when the item is highlighted.
          */
         "isOpen"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * When de activation of component change, the event are dispache.
          */
