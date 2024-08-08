@@ -156,6 +156,11 @@ export class Button {
 
   componentDidRender() {
     this.logSlotText();
+    this.buttonLegacy();
+  }
+
+  buttonLegacy() {
+    this.variant === 'facebook' ? this.setVariant('outline') : this.setVariant(this.variant)
   }
 
   logSlotText() {
