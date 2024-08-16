@@ -36,15 +36,15 @@ export class NavTree {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
-/**
- * Loading state. Indicates if the component is in a loading state.
- */
- @Prop() loading?: boolean = false;
+  /**
+   * Loading state. Indicates if the component is in a loading state.
+   */
+  @Prop() loading?: boolean = false;
 
- /**
-  * Disable state. Indicates if the component is disabled.
-  */
- @Prop() disable?: boolean = false;
+  /**
+   * Disable state. Indicates if the component is disabled.
+   */
+  @Prop() disable?: boolean = false;
   /**
    * When de open or close of component change, the event are dispache.
    */
@@ -160,7 +160,7 @@ export class NavTree {
             accordion_open: this.isOpen && this.navTreeChild,
           }}
         >
-          <div class={{["container"]:true, [`container--disable`]: this.disable}}>
+          <div class={{ ['container']: true, [`container--disable`]: this.disable }}>
             <slot></slot>
           </div>
         </div>

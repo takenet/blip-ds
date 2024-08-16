@@ -5,9 +5,30 @@
   display: block;
 
   .actions {
-
     &_select {
       width: 74px;
+    }
+  }
+}
+
+:host(.full_width) {
+  width: 100%;
+}
+
+@media screen and (max-width: 905px) {
+  .items_per_page {
+    display: none;
+  }
+  .actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .actions {
+    &--text {
+      display: none;
     }
   }
 }
