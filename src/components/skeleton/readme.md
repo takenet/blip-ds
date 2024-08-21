@@ -17,6 +17,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-carousel](../carousel)
+
 ### Depends on
 
 - [bds-grid](../grid)
@@ -25,6 +29,7 @@
 ```mermaid
 graph TD;
   bds-skeleton --> bds-grid
+  bds-carousel --> bds-skeleton
   style bds-skeleton fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

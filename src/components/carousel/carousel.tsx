@@ -1,11 +1,11 @@
 import { Component, Host, h, Element, State, Watch, Prop, Method, Event, EventEmitter } from '@stencil/core';
 import { Itens, arrows, gap } from './carousel-interface';
-import { gapChanged, getItems } from '../../utils/position-element';
+import { gapChanged, getHighestItem, getItems } from '../../utils/position-element';
 
 @Component({
   tag: 'bds-carousel',
   styleUrl: 'carousel.scss',
-  shadow: true,
+  scoped: true,
 })
 export class BdsCarousel {
   private itemsElement?: HTMLCollectionOf<HTMLBdsCarouselItemElement> = null;
@@ -60,6 +60,11 @@ export class BdsCarousel {
    */
   @Prop() gap?: gap = 'none';
 
+  /**
+   * Loading state. Indicates if the component is in a loading state.
+   */
+  @Prop({ mutable: true, reflect: true }) loading?: boolean = false;
+
   @State() secondsLimit: number = this.autoplayTimeout / 1000;
 
   /**
@@ -75,14 +80,17 @@ export class BdsCarousel {
   }
 
   componentDidRender() {
-    if (this.gap != 'none') {
-      this.frame.style.width = `calc(100% + ${gapChanged(this.gap)}px)`;
-      this.frame.style.marginLeft = `-${gapChanged(this.gap) / 2}px`;
-    }
-    for (let i = 0; i < this.itemsElement.length; i++) {
-      const widthFrame = this.frame.offsetWidth >= 1920 ? 1920 : this.frame.offsetWidth;
-      this.itemsElement[i].style.width = `${widthFrame / this.slidePerPage}px`;
-      this.itemsElement[i].style.padding = `0 ${gapChanged(this.gap) / 2}px`;
+    if (!this.loading) {
+      if (this.gap != 'none') {
+        this.frame.style.width = `calc(100% + ${gapChanged(this.gap)}px)`;
+        this.frame.style.marginLeft = `-${gapChanged(this.gap) / 2}px`;
+      }
+      for (let i = 0; i < this.itemsElement.length; i++) {
+        const widthFrame = this.frame.offsetWidth >= 1920 ? 1920 : this.frame.offsetWidth;
+        this.itemsElement[i].style.width = `${widthFrame / this.slidePerPage}px`;
+        this.itemsElement[i].style.padding = `0 ${gapChanged(this.gap) / 2}px`;
+      }
+      this.updateHeight(Array.from(this.itemsElement));
     }
   }
 
@@ -93,12 +101,16 @@ export class BdsCarousel {
   @Watch('itemActivated')
   protected itemActivatedChanged(): void {
     const currentItemSelected: Itens = this.internalItens.find((item) => item.id === this.itemActivated);
-    const slideFrame = this.frame.offsetWidth * (this.itemActivated - 1);
+    const slideFrame = !this.frame ? 0 : this.frame.offsetWidth * (this.itemActivated - 1);
     if (currentItemSelected.isWhole) {
       const isWholeWidth = this.itemsElement[1].offsetWidth * (this.slidePerPage - this.isWhole);
-      this.frameRepeater.style.right = `${slideFrame - isWholeWidth}px`;
+      if (this.frameRepeater) {
+        this.frameRepeater.style.right = `${slideFrame - isWholeWidth}px`;
+      }
     } else {
-      this.frameRepeater.style.right = `${slideFrame}px`;
+      if (this.frameRepeater) {
+        this.frameRepeater.style.right = `${slideFrame}px`;
+      }
     }
     this.bdsChangeCarousel.emit({ value: currentItemSelected });
   }
@@ -145,6 +157,40 @@ export class BdsCarousel {
       }, 100);
     }
   };
+
+  private updateHeight = (itemsElement) => {
+    const elementActive = itemsElement[this.itemActivated * this.slidePerPage - this.slidePerPage];
+    let heightFrame = 240;
+    if (this.slidePerPage > 1) {
+      const getVisibleItens =
+        this.isWhole > 0 && this.itemActivated == this.internalItens.length
+          ? itemsElement.slice(
+              this.internalItens.length - this.internalItens.length - this.slidePerPage,
+              this.itemActivated * this.slidePerPage,
+            )
+          : itemsElement.slice(
+              this.itemActivated * this.slidePerPage - this.slidePerPage,
+              this.itemActivated * this.slidePerPage,
+            );
+
+      heightFrame = getHighestItem(getVisibleItens)[0];
+    } else {
+      heightFrame = elementActive.offsetHeight;
+    }
+    this.frame.style.height = `${heightFrame}px`;
+  };
+
+  @Method()
+  async buildCarousel(): Promise<void> {
+    this.itemsElement = this.element.getElementsByTagName(
+      'bds-carousel-item',
+    ) as HTMLCollectionOf<HTMLBdsCarouselItemElement>;
+    this.loading = true;
+    setTimeout(
+      () => (this.setInternalItens(Array.from(this.itemsElement)), (this.loading = false), this.setActivated(1)),
+      1000,
+    );
+  }
 
   @Method()
   async nextSlide(): Promise<void> {
@@ -210,7 +256,7 @@ export class BdsCarousel {
         <div class={{ carousel_slide: true, carousel_slide_fullwidth: this.arrows != 'outside' }}>
           <div
             ref={(el) => this.refFrame(el)}
-            class={{ carousel_slide_frame: true }}
+            class={{ carousel_slide_frame: true, carousel_slide_frame_loading: this.loading }}
             onMouseOver={() => this.onMouseOver()}
             onMouseOut={() => this.onMouseOut()}
             tabindex="0"
@@ -219,6 +265,12 @@ export class BdsCarousel {
               <slot></slot>
             </div>
           </div>
+          {this.loading && (
+            <bds-grid class={{ carousel_slide_loading: true }}>
+              <bds-skeleton height="240px" shape="square" width="100%" />
+              <bds-loading-spinner size="small" class={{ carousel_slide_loading_spinner: true }} />
+            </bds-grid>
+          )}
           {this.arrows != 'none' && (
             <div class={{ carousel_buttons: true, carousel_buttons_fullwidth: this.arrows == 'inside' }}>
               <bds-button-icon
@@ -238,14 +290,14 @@ export class BdsCarousel {
             </div>
           )}
         </div>
-        {this.autoplay && (
+        {this.autoplay && !this.loading && (
           <bds-loading-bar
-            class={{ carousel_loading: true, carousel_loading_fullwidth: this.arrows != 'outside' }}
+            class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
             percent={(this.seconds * 100) / this.secondsLimit}
             size="small"
           />
         )}
-        {this.bullets && (
+        {this.bullets && !this.loading && (
           <div class={{ carousel_bullets: true }}>
             {this.internalItens && (
               <bds-radio-group>

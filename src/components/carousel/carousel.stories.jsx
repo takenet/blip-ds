@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DocumentationTemplate from './carousel.mdx';
 import {
   BdsButton,
@@ -23,6 +22,80 @@ export default {
 
 const title = 'Slide Title';
 const paragraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+const DATACAROUSEL = [
+  {
+    title: '1 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'star',
+    },
+  },
+  {
+    title: '2 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'check',
+    },
+  },
+  {
+    title: '3 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+  },
+  {
+    title: '4 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+  },
+  {
+    title: '5 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+  },
+  {
+    title: '6 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+  },
+  {
+    title: '7 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+  },
+  {
+    title: '8 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+  },
+];
 
 export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
@@ -245,6 +318,8 @@ Properties.args = {
 };
 
 export const Methods = () => {
+  const [DATAITEMS, SETDATAITEMS] = useState(DATACAROUSEL);
+
   const nextSlide = async (id) => {
     const acc = document.getElementById(id);
     await acc.nextSlide();
@@ -265,26 +340,43 @@ export const Methods = () => {
     const acc = document.getElementById(id);
     await acc.runAutoplay();
   };
+  const buildCarousel = async (id) => {
+    const acc = document.getElementById(id);
+    const NEWITEM = {
+      title: `${DATAITEMS.length + 1} - Título do Slide`,
+      subTitle:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+      illustration: {
+        type: 'spots',
+        name: 'analytics-satisfaction',
+      },
+    };
+    SETDATAITEMS([...DATAITEMS, NEWITEM]);
+    await acc.buildCarousel();
+  };
   return (
-    <bds-grid direction="column" gap="2">
-      <bds-grid gap="2">
-        <bds-button onClick={() => nextSlide('carousel')} variant="primary" size="short">
+    <BdsGrid direction="column" gap="2">
+      <BdsGrid gap="2">
+        <BdsButton onClick={() => nextSlide('carousel')} variant="primary" size="short">
           nextSlide
-        </bds-button>
-        <bds-button onClick={() => prevSlide('carousel')} variant="primary" size="short">
+        </BdsButton>
+        <BdsButton onClick={() => prevSlide('carousel')} variant="primary" size="short">
           prevSlide
-        </bds-button>
-        <bds-button onClick={() => setActivated('carousel')} variant="primary" size="short">
+        </BdsButton>
+        <BdsButton onClick={() => setActivated('carousel')} variant="primary" size="short">
           setActivated 2
-        </bds-button>
-        <bds-button onClick={() => pauseAutoplay('carousel')} variant="primary" size="short">
+        </BdsButton>
+        <BdsButton onClick={() => pauseAutoplay('carousel')} variant="primary" size="short">
           pauseAutoplay
-        </bds-button>
-        <bds-button onClick={() => runAutoplay('carousel')} variant="primary" size="short">
+        </BdsButton>
+        <BdsButton onClick={() => runAutoplay('carousel')} variant="primary" size="short">
           runAutoplay
-        </bds-button>
-      </bds-grid>
-      <bds-carousel
+        </BdsButton>
+        <BdsButton onClick={() => buildCarousel('carousel')} variant="primary" size="short">
+          buildCarousel
+        </BdsButton>
+      </BdsGrid>
+      <BdsCarousel
         id="carousel"
         autoplay={true}
         autoplay-timeout="10000"
@@ -295,136 +387,28 @@ export const Methods = () => {
         slide-per-page={2}
         gap="2"
       >
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="star"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  1 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="check"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  2 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="air-ballon"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  3 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="analytics-satisfaction"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  4 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="avatar"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  5 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="binoculars"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  6 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="bot-list"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  7 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-paper width="100%" bg-color="surface-0" elevation="none">
-            <bds-grid align-items="center">
-              <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-                <bds-illustration type="spots" name="bill-1"></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
-                  8 - {title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-paper>
-        </bds-carousel-item>
-      </bds-carousel>
-    </bds-grid>
+        {DATAITEMS.map((item, index) => {
+          return (
+            <BdsCarouselItem key={index}>
+              <BdsPaper width="100%" bg-color="surface-0" elevation="none">
+                <BdsGrid align-items="center" flex-wrap="wrap">
+                  <BdsGrid xxs="3" padding="2" direction="column">
+                    <BdsIllustration type={item.illustration.type} name={item.illustration.name}></BdsIllustration>
+                  </BdsGrid>
+                  <BdsGrid xxs="9" direction="column" padding="2" gap="1">
+                    <BdsTypo variant="fs-20" bold="bold" margin={false}>
+                      {item.title}
+                    </BdsTypo>
+                    <BdsTypo variant="fs-16">{item.subTitle}</BdsTypo>
+                    <BdsButton>Saiba mais</BdsButton>
+                  </BdsGrid>
+                </BdsGrid>
+              </BdsPaper>
+            </BdsCarouselItem>
+          );
+        })}
+      </BdsCarousel>
+    </BdsGrid>
   );
 };
 

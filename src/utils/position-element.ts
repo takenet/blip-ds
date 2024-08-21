@@ -105,6 +105,15 @@ export const getItems = (itenslenght: number) => {
   return items;
 };
 
+export const getHighestItem = (items) => {
+  var maxoffsetHeight = Math.max.apply(
+    null,
+    items.map((a) => a.offsetHeight),
+  );
+  var output = items.filter((a) => a.offsetHeight == maxoffsetHeight).map((a) => a.offsetHeight);
+  return output;
+};
+
 export const gapChanged = (gap: string) => {
   let spaceGap;
   switch (gap) {
