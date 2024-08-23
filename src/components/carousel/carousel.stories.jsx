@@ -107,6 +107,7 @@ export const Properties = (args) => {
       autoplay={args.autoplay}
       autoplay-timeout={args.autoplayTimeout}
       autoplay-hover-pause={args.autoplayHoverPause}
+      auto-height={args.autoHeight}
       infinite-loop={args.infiniteLoop}
       arrows={args.arrows}
       bullets={args.bullets}
@@ -267,6 +268,13 @@ Properties.argTypes = {
     description: 'Habilite se tera a função de pausar o autoplay quando estiver com hover.',
     control: 'boolean',
   },
+  autoHeight: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Habilite-o caso você queira que o componente se ajuste a altura em relação aos items ativos.',
+    control: 'boolean',
+  },
   infiniteLoop: {
     table: {
       defaultValue: { summary: 'false' },
@@ -310,6 +318,7 @@ Properties.args = {
   autoplay: false,
   autoplayTimeout: '5000',
   autoplayHoverPause: false,
+  autoHeight: false,
   infiniteLoop: false,
   bullets: true,
   arrows: 'outside',

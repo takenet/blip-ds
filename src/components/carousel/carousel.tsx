@@ -19,6 +19,7 @@ export class BdsCarousel {
   @State() seconds = 0;
   @State() internalItens: Itens[];
   @State() isWhole = 0;
+  @State() heightCarousel?: number = 240;
 
   /**
    * Autoplay. Prop to Enable component autoplay.
@@ -35,6 +36,10 @@ export class BdsCarousel {
    */
   @Prop() autoplayHoverPause?: boolean = false;
 
+  /**
+   * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
+   */
+  @Prop() autoHeight?: boolean = false;
   /**
    * Bullet. Prop to Enable component bullets navigation.
    */
@@ -90,12 +95,13 @@ export class BdsCarousel {
         this.itemsElement[i].style.width = `${widthFrame / this.slidePerPage}px`;
         this.itemsElement[i].style.padding = `0 ${gapChanged(this.gap) / 2}px`;
       }
-      this.updateHeight(Array.from(this.itemsElement));
+      if (this.autoHeight) this.updateHeight(Array.from(this.itemsElement));
     }
   }
 
   componentDidLoad() {
     this.startCountSeconds();
+    this.heightCarousel = this.frame.offsetHeight;
   }
 
   @Watch('itemActivated')
@@ -178,6 +184,7 @@ export class BdsCarousel {
       heightFrame = elementActive.offsetHeight;
     }
     this.frame.style.height = `${heightFrame}px`;
+    this.heightCarousel = this.frame.offsetHeight;
   };
 
   @Method()
@@ -267,8 +274,7 @@ export class BdsCarousel {
           </div>
           {this.loading && (
             <bds-grid class={{ carousel_slide_loading: true }}>
-              <bds-skeleton height="240px" shape="square" width="100%" />
-              <bds-loading-spinner size="small" class={{ carousel_slide_loading_spinner: true }} />
+              <bds-skeleton height={`${this.heightCarousel}px`} shape="square" width="100%" />
             </bds-grid>
           )}
           {this.arrows != 'none' && (
@@ -290,28 +296,43 @@ export class BdsCarousel {
             </div>
           )}
         </div>
-        {this.autoplay && !this.loading && (
+        {this.autoplay && this.loading ? (
+          <bds-skeleton
+            class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
+            height="8px"
+            width="100%"
+            shape="square"
+          />
+        ) : (
           <bds-loading-bar
             class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
             percent={(this.seconds * 100) / this.secondsLimit}
             size="small"
           />
         )}
-        {this.bullets && !this.loading && (
+        {this.bullets && (
           <div class={{ carousel_bullets: true }}>
-            {this.internalItens && (
-              <bds-radio-group>
-                <bds-grid gap="2" justify-content="center">
-                  {this.internalItens.map((item, index) => (
-                    <bds-radio
-                      key={index}
-                      checked={item.id == this.itemActivated}
-                      value={item.id.toString()}
-                      onBdsClickChange={() => this.setActivated(item.id)}
-                    />
-                  ))}
-                </bds-grid>
-              </bds-radio-group>
+            {this.loading ? (
+              <bds-grid gap="2" justify-content="center">
+                <bds-skeleton height="24px" width="24px" shape="circle" />
+                <bds-skeleton height="24px" width="24px" shape="circle" />
+                <bds-skeleton height="24px" width="24px" shape="circle" />
+              </bds-grid>
+            ) : (
+              this.internalItens && (
+                <bds-radio-group>
+                  <bds-grid gap="2" justify-content="center">
+                    {this.internalItens.map((item, index) => (
+                      <bds-radio
+                        key={index}
+                        checked={item.id == this.itemActivated}
+                        value={item.id.toString()}
+                        onBdsClickChange={() => this.setActivated(item.id)}
+                      />
+                    ))}
+                  </bds-grid>
+                </bds-radio-group>
+              )
             )}
           </div>
         )}

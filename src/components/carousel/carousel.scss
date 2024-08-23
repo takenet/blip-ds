@@ -42,13 +42,6 @@
     }
     &_loading {
       position: relative;
-
-      &_spinner {
-        position: absolute;
-        left: calc(50% - 16px);
-        top: calc(50% - 16px);
-        z-index: 1;
-      }
     }
   }
   &_loading_bar {

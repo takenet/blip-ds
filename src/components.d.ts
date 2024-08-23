@@ -521,6 +521,10 @@ export namespace Components {
          */
         "arrows"?: arrows;
         /**
+          * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
+         */
+        "autoHeight"?: boolean;
+        /**
           * Autoplay. Prop to Enable component autoplay.
          */
         "autoplay"?: boolean;
@@ -4081,6 +4085,10 @@ declare namespace LocalJSX {
           * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
          */
         "arrows"?: arrows;
+        /**
+          * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
+         */
+        "autoHeight"?: boolean;
         /**
           * Autoplay. Prop to Enable component autoplay.
          */
