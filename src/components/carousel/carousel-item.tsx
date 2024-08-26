@@ -3,7 +3,7 @@ import { Component, Host, h } from '@stencil/core';
 @Component({
   tag: 'bds-carousel-item',
   styleUrl: 'carousel.scss',
-  shadow: true,
+  scoped: true,
 })
 export class BdsCarouselItem {
   render() {

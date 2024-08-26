@@ -521,6 +521,10 @@ export namespace Components {
          */
         "arrows"?: arrows;
         /**
+          * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
+         */
+        "autoHeight"?: boolean;
+        /**
           * Autoplay. Prop to Enable component autoplay.
          */
         "autoplay"?: boolean;
@@ -532,6 +536,7 @@ export namespace Components {
           * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
          */
         "autoplayTimeout"?: number;
+        "buildCarousel": () => Promise<void>;
         /**
           * Bullet. Prop to Enable component bullets navigation.
          */
@@ -544,6 +549,10 @@ export namespace Components {
           * InfiniteLoop. Prop to Enable if the component will have infinite loop.
          */
         "infiniteLoop"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         "nextSlide": () => Promise<void>;
         "pauseAutoplay": () => Promise<void>;
         "prevSlide": () => Promise<void>;
@@ -4077,6 +4086,10 @@ declare namespace LocalJSX {
          */
         "arrows"?: arrows;
         /**
+          * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
+         */
+        "autoHeight"?: boolean;
+        /**
           * Autoplay. Prop to Enable component autoplay.
          */
         "autoplay"?: boolean;
@@ -4100,6 +4113,10 @@ declare namespace LocalJSX {
           * InfiniteLoop. Prop to Enable if the component will have infinite loop.
          */
         "infiniteLoop"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * Emitted when active frame value.
          */
