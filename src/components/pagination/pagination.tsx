@@ -100,6 +100,11 @@ export class Pagination {
    * Pode ser escutado para realizar ações específicas ao mudar de página.
    */
   @Event() bdsPaginationChange: EventEmitter;
+    /**
+   * Evento emitido quando o valor da página atual é alterado.
+   * Pode ser escutado para realizar ações específicas ao mudar de página.
+   */
+     @Event() bdsItemsPerPageChange: EventEmitter;
 
   // Variável que armazena o número do primeiro item sendo exibido na página atual
   startItem: number;
@@ -132,15 +137,14 @@ export class Pagination {
       try {
         this.itemsPage = JSON.parse(this.itemsPage.replace(/'/g, '"'));
       } catch (error) {
-        console.error('Failed to parse itemsPage:', error);
         this.itemsPage = [];
       }
     }
   }
 
   countItem() {
-    this.pages = this.numberItems / this.itemValue;
-    console.log(this.numberItems, this.itemValue, this.pages);
+    const pages = this.numberItems / this.itemValue;
+    this.pages = Math.ceil(pages);
   }
 
   countPage() {
@@ -209,19 +213,19 @@ export class Pagination {
     this.updateItemRange();
   }
 
+  @Watch('itemValue')
   itemSelected(index) {
     this.itemValue = index;
     this.itemsPerPage = index;
     this.openOptions();
     this.countItem();
     this.updateItemRange();
+    this.bdsItemsPerPageChange.emit(this.itemsPerPage);
   }
 
   updateItemRange() {
-    console.log(this.value, this.itemsPerPage);
     this.startItem = (this.value - 1) * this.itemsPerPage + 1;
     this.endItem = Math.min(this.value * this.itemsPerPage, this.numberItems);
-    console.log(this.startItem, this.endItem);
   }
 
   get currentLanguage() {

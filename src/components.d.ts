@@ -5603,6 +5603,10 @@ declare namespace LocalJSX {
         /**
           * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
          */
+        "onBdsItemsPerPageChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        /**
+          * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
+         */
         "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
         /**
           * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
