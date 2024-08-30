@@ -46,6 +46,7 @@
  - [bds-carousel](../carousel)
  - [bds-datepicker](../datepicker)
  - [bds-list-item-content](../list)
+ - [bds-pagination](../pagination)
  - [bds-skeleton](../skeleton)
  - [bds-tab-group](../tabs)
  - [bds-test-component](../test-component)
@@ -62,6 +63,7 @@ graph TD;
   bds-carousel --> bds-grid
   bds-datepicker --> bds-grid
   bds-list-item-content --> bds-grid
+  bds-pagination --> bds-grid
   bds-skeleton --> bds-grid
   bds-tab-group --> bds-grid
   bds-test-component --> bds-grid
