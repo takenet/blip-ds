@@ -31,6 +31,8 @@ export class Accordion {
 
   @Method()
   async open() {
+    this.accheaders?.open();
+    this.accBodies?.open();
     this.isOpen = true;
   }
 
@@ -53,20 +55,17 @@ export class Accordion {
 
   @Watch('isOpen')
   isOpenChanged(value): void {
-    if (this.accGroup.collapse == 'single' && this.condition === false) {
-      this.accheaders?.toggle();
-      this.accBodies?.toggle();
-      this.accGroup?.closeAll(this.numberElement);
-    } else {
-      if (value) {
-        this.accheaders?.open();
-        this.accBodies?.open();
-        this.bdsAccordionOpen.emit();
-      } else {
-        this.accheaders?.close();
-        this.accBodies?.close();
-        this.bdsAccordionClose.emit();
+    if (value) {
+      if (this.accGroup.collapse == 'single' && this.condition === false) {
+        this.accGroup?.closeAll(this.numberElement);
       }
+      this.accheaders?.open();
+      this.accBodies?.open();
+      this.bdsAccordionOpen.emit();
+    } else {
+      this.accheaders?.close();
+      this.accBodies?.close();
+      this.bdsAccordionClose.emit();
     }
     this.condition = false;
   }

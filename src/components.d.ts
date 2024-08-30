@@ -87,10 +87,10 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
-        "closeAll": (actNumber: any) => Promise<void>;
+        "closeAll": (actNumber?: any) => Promise<void>;
         "collapse"?: collapses;
         "divisor"?: boolean;
-        "openAll": (actNumber: any) => Promise<void>;
+        "openAll": (actNumber?: any) => Promise<void>;
     }
     interface BdsAccordionHeader {
         /**

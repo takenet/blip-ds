@@ -18,7 +18,7 @@ export class AccordionGroup {
   @Event() bdsAccordionOpenAll?: EventEmitter;
 
   @Method()
-  async closeAll(actNumber) {
+  async closeAll(actNumber?) {
     this.bdsAccordionCloseAll.emit();
     for (let i = 0; i < this.accordionsElement.length; i++) {
       if (this.collapse != 'multiple') {
@@ -30,7 +30,7 @@ export class AccordionGroup {
   }
 
   @Method()
-  async openAll(actNumber) {
+  async openAll(actNumber?) {
     this.bdsAccordionOpenAll.emit();
     for (let i = 0; i < this.accordionsElement.length; i++) {
       if (this.collapse != 'multiple') {
