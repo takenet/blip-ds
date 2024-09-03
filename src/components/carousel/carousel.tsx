@@ -296,20 +296,21 @@ export class BdsCarousel {
             </div>
           )}
         </div>
-        {this.autoplay && this.loading ? (
-          <bds-skeleton
-            class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
-            height="8px"
-            width="100%"
-            shape="square"
-          />
-        ) : (
-          <bds-loading-bar
-            class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
-            percent={(this.seconds * 100) / this.secondsLimit}
-            size="small"
-          />
-        )}
+        {this.autoplay &&
+          (this.loading ? (
+            <bds-skeleton
+              class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
+              height="8px"
+              width="100%"
+              shape="square"
+            />
+          ) : (
+            <bds-loading-bar
+              class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
+              percent={(this.seconds * 100) / this.secondsLimit}
+              size="small"
+            />
+          ))}
         {this.bullets && (
           <div class={{ carousel_bullets: true }}>
             {this.loading ? (
