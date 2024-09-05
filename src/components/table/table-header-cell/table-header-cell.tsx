@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop, Element, State } from '@stencil/core';
 
+export type JustifyContent = 'left' | 'center' | 'right';
 @Component({
   tag: 'bds-table-th',
   styleUrl: 'table-header-cell.scss',
@@ -10,6 +11,7 @@ export class TableHeaderCell {
   @State() isDense = false;
   @Prop() sortable = false;
   @Prop() arrow = '';
+  @Prop() justifyContent: JustifyContent = 'left';
 
   componentWillLoad() {
     const bdsTable = this.element.closest('bds-table');
@@ -25,6 +27,7 @@ export class TableHeaderCell {
             th_cell: true,
             [`th_cell--sortable-${this.sortable}`]: true,
             'dense-th': this.isDense,
+            [`justify--${this.justifyContent}`]:true
           }}
         >
           <bds-typo bold={this.sortable ? 'bold' : 'semi-bold'} variant="fs-14">
@@ -35,9 +38,9 @@ export class TableHeaderCell {
               size="small"
               name={this.arrow === 'asc' ? 'arrow-down' : this.arrow === 'dsc' ? 'arrow-up' : ''}
             ></bds-icon>
-          ) : (
-            <div style={{ width: '20px' }}></div>
-          )}
+          ) : ''
+            // <div style={{ width: '20px' }}></div>
+          }
         </div>
       </Host>
     );
