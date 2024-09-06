@@ -1868,35 +1868,39 @@ export namespace Components {
     }
     interface BdsPagination {
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+          * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
          */
         "dtButtonEnd"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+          * Propriedade de teste para especificamente testar a ação do botão inicial. dtButtonInitial é o data-test para o botão inicial.
          */
         "dtButtonInitial"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+          * Propriedade de teste para especificamente testar a ação do botão de próxima página. dtButtonNext é o data-test para o botão próximo.
          */
         "dtButtonNext"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+          * Propriedade de teste para especificamente testar a ação do botão de página anterior. dtButtonPrev é o data-test para o botão anterior.
          */
         "dtButtonPrev"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+          * Propriedade de teste para especificamente testar o seletor de número de páginas. dtSelectNumber é o data-test para o seletor de número de páginas.
          */
         "dtSelectNumber"?: string;
+        "itemsPage"?: any;
+        "language"?: string;
+        "numberItems"?: number;
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
          */
         "optionsPosition"?: PaginationOptionsPositionType;
+        "pageCounter"?: boolean;
         /**
-          * Prop to recive the number of pages.
+          * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
          */
         "pages"?: number;
         /**
-          * When the component are render this page are set.
+          * Propriedade que define a página inicial ao renderizar o componente.
          */
         "startedPage"?: number;
     }
@@ -5591,39 +5595,47 @@ declare namespace LocalJSX {
     }
     interface BdsPagination {
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+          * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
          */
         "dtButtonEnd"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+          * Propriedade de teste para especificamente testar a ação do botão inicial. dtButtonInitial é o data-test para o botão inicial.
          */
         "dtButtonInitial"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+          * Propriedade de teste para especificamente testar a ação do botão de próxima página. dtButtonNext é o data-test para o botão próximo.
          */
         "dtButtonNext"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+          * Propriedade de teste para especificamente testar a ação do botão de página anterior. dtButtonPrev é o data-test para o botão anterior.
          */
         "dtButtonPrev"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+          * Propriedade de teste para especificamente testar o seletor de número de páginas. dtSelectNumber é o data-test para o seletor de número de páginas.
          */
         "dtSelectNumber"?: string;
+        "itemsPage"?: any;
+        "language"?: string;
+        "numberItems"?: number;
         /**
-          * When de value of component change, the event are dispache.
+          * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
+         */
+        "onBdsItemsPerPageChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        /**
+          * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
          */
         "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
          */
         "optionsPosition"?: PaginationOptionsPositionType;
+        "pageCounter"?: boolean;
         /**
-          * Prop to recive the number of pages.
+          * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
          */
         "pages"?: number;
         /**
-          * When the component are render this page are set.
+          * Propriedade que define a página inicial ao renderizar o componente.
          */
         "startedPage"?: number;
     }
