@@ -1,6 +1,8 @@
 export interface Itens {
   id: number;
   label: string;
+  offsetHeight?: number;
+  offsetLeft?: number;
   isWhole?: boolean;
 }
 

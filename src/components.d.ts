@@ -546,6 +546,10 @@ export namespace Components {
          */
         "gap"?: gap;
         /**
+          * Grab. Prop to enable function of grab in carousel.
+         */
+        "grab"?: boolean;
+        /**
           * InfiniteLoop. Prop to Enable if the component will have infinite loop.
          */
         "infiniteLoop"?: boolean;
@@ -4113,6 +4117,10 @@ declare namespace LocalJSX {
           * Gap. Prop to Select the gap distance between items.
          */
         "gap"?: gap;
+        /**
+          * Grab. Prop to enable function of grab in carousel.
+         */
+        "grab"?: boolean;
         /**
           * InfiniteLoop. Prop to Enable if the component will have infinite loop.
          */
