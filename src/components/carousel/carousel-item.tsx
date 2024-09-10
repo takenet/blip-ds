@@ -1,16 +1,12 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'bds-carousel-item',
   styleUrl: 'carousel.scss',
-  scoped: true,
+  shadow: true,
 })
 export class BdsCarouselItem {
-  render() {
-    return (
-      <Host class={{ item: true }}>
-        <slot></slot>
-      </Host>
-    );
+  render(): HTMLElement {
+    return <slot />;
   }
 }

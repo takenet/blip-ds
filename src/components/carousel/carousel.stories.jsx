@@ -113,6 +113,7 @@ export const Properties = (args) => {
       bullets={args.bullets}
       slide-per-page={args.slidePerPage}
       gap={args.gap}
+      grab={args.grab}
     >
       <bds-carousel-item>
         <bds-paper width="100%" bg-color="surface-0" elevation="none">
@@ -312,6 +313,13 @@ Properties.argTypes = {
     options: ['none', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'half'],
     control: 'select',
   },
+  grab: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    description: 'Habilite se o componente terá função de Grab',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -324,6 +332,7 @@ Properties.args = {
   arrows: 'outside',
   slidePerPage: 1,
   gap: 'none',
+  grab: true,
 };
 
 export const Methods = () => {

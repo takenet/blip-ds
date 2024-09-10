@@ -85,6 +85,7 @@ export class Image {
           alt={this.alt}
           style={{ objectFit: this.objectFit, width: this.width, height: this.height }}
           data-test={this.dataTest}
+          draggable={false}
         />
       );
     } else if (!this.src) {

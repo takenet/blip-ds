@@ -54,7 +54,12 @@ export class BdsIllustration {
         }}
       >
         {this.IllustrationContent ? (
-          <img src={`data:image/svg+xml;base64,${this.IllustrationContent}`} alt={this.alt} data-test={this.dataTest} />
+          <img
+            draggable={false}
+            src={`data:image/svg+xml;base64,${this.IllustrationContent}`}
+            alt={this.alt}
+            data-test={this.dataTest}
+          />
         ) : (
           <div class="default" data-test={this.dataTest}></div>
         )}
