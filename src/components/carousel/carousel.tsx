@@ -328,7 +328,6 @@ export class BdsCarousel {
           <div
             ref={(el) => this.refFrame(el)}
             class={{ carousel_slide_frame: true, carousel_slide_frame_loading: this.loading }}
-            onMouseOverCapture={() => console.log('onMouseOverCapture')}
             onMouseOver={() => this.onMouseOver()}
             onMouseOut={() => this.onMouseOut()}
             onMouseDown={(ev) => this.onMouseDown(ev)}
