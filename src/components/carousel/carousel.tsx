@@ -1,11 +1,11 @@
-import { Component, Host, h, Element, State, Watch, Prop, Method, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, State, Watch, Prop, Method, Event, EventEmitter } from '@stencil/core';
 import { Itens, arrows, gap } from './carousel-interface';
 import { gapChanged, getHighestItem, getItems } from '../../utils/position-element';
 
 @Component({
   tag: 'bds-carousel',
   styleUrl: 'carousel.scss',
-  scoped: true,
+  shadow: true,
 })
 export class BdsCarousel {
   private itemsElement?: HTMLCollectionOf<HTMLBdsCarouselItemElement> = null;
@@ -13,13 +13,16 @@ export class BdsCarousel {
   private frameRepeater?: HTMLElement;
   private incrementSeconds?: any;
 
-  @Element() private element: HTMLElement;
+  @Element() element: HTMLElement;
 
   @State() itemActivated = 1;
   @State() seconds = 0;
   @State() internalItens: Itens[];
   @State() isWhole = 0;
   @State() heightCarousel?: number = 240;
+  @State() framePressed?: boolean = false;
+  @State() startX?: number;
+  @State() endX?: number;
 
   /**
    * Autoplay. Prop to Enable component autoplay.
@@ -66,6 +69,11 @@ export class BdsCarousel {
   @Prop() gap?: gap = 'none';
 
   /**
+   * Grab. Prop to enable function of grab in carousel.
+   */
+  @Prop() grab?: boolean = true;
+
+  /**
    * Loading state. Indicates if the component is in a loading state.
    */
   @Prop({ mutable: true, reflect: true }) loading?: boolean = false;
@@ -101,20 +109,17 @@ export class BdsCarousel {
 
   componentDidLoad() {
     this.startCountSeconds();
-    this.heightCarousel = this.frame.offsetHeight;
   }
 
   @Watch('itemActivated')
   protected itemActivatedChanged(): void {
     const currentItemSelected: Itens = this.internalItens.find((item) => item.id === this.itemActivated);
     const slideFrame = !this.frame ? 0 : this.frame.offsetWidth * (this.itemActivated - 1);
-    if (currentItemSelected.isWhole) {
-      const isWholeWidth = this.itemsElement[1].offsetWidth * (this.slidePerPage - this.isWhole);
-      if (this.frameRepeater) {
+    if (this.frameRepeater) {
+      if (currentItemSelected.isWhole) {
+        const isWholeWidth = this.itemsElement[1].offsetWidth * (this.slidePerPage - this.isWhole);
         this.frameRepeater.style.right = `${slideFrame - isWholeWidth}px`;
-      }
-    } else {
-      if (this.frameRepeater) {
+      } else {
         this.frameRepeater.style.right = `${slideFrame}px`;
       }
     }
@@ -184,7 +189,6 @@ export class BdsCarousel {
       heightFrame = elementActive.offsetHeight;
     }
     this.frame.style.height = `${heightFrame}px`;
-    this.heightCarousel = this.frame.offsetHeight;
   };
 
   @Method()
@@ -202,7 +206,11 @@ export class BdsCarousel {
   @Method()
   async nextSlide(): Promise<void> {
     if (this.itemActivated == this.internalItens.length) {
-      this.itemActivated = 1;
+      if (this.infiniteLoop || this.autoplay) {
+        this.itemActivated = 1;
+      } else {
+        this.itemActivated = this.itemActivated;
+      }
     } else {
       this.itemActivated = this.itemActivated + 1;
     }
@@ -214,7 +222,11 @@ export class BdsCarousel {
   @Method()
   async prevSlide(): Promise<void> {
     if (this.itemActivated == 1) {
-      this.itemActivated = this.internalItens.length;
+      if (this.infiniteLoop || this.autoplay) {
+        this.itemActivated = this.internalItens.length;
+      } else {
+        this.itemActivated = this.itemActivated;
+      }
     } else {
       this.itemActivated = this.itemActivated - 1;
     }
@@ -250,34 +262,93 @@ export class BdsCarousel {
   };
 
   private onMouseOver = () => {
-    if (this.autoplayHoverPause) this.pauseAutoplay();
+    if (this.autoplayHoverPause) {
+      this.pauseAutoplay();
+    }
   };
 
   private onMouseOut = () => {
-    if (this.autoplayHoverPause) this.runAutoplay();
+    if (this.autoplayHoverPause) {
+      this.runAutoplay();
+    }
+  };
+
+  private onMouseDown = (ev: MouseEvent) => {
+    if (this.grab) {
+      this.framePressed = true;
+      const offsetFrame = this.frame.offsetLeft + this.element.offsetLeft;
+      this.startX = ev.pageX - offsetFrame;
+      this.endX = ev.pageX - offsetFrame;
+      this.frame.style.cursor = 'grabbing';
+    }
+  };
+
+  private onMouseEnter = () => {
+    if (this.grab) {
+      this.frame.style.cursor = 'grab';
+    }
+  };
+
+  private onMouseUp = () => {
+    if (this.grab) {
+      this.framePressed = false;
+      this.frame.style.cursor = 'grab';
+      this.boundItems();
+      if (this.autoplayHoverPause) {
+        this.pauseAutoplay();
+      }
+    }
+  };
+
+  private onMouseMove = (ev: MouseEvent) => {
+    if (this.grab) {
+      if (!this.framePressed) return;
+      ev.preventDefault();
+
+      const offsetFrame = this.frame.offsetLeft + this.element.offsetLeft;
+
+      this.endX = ev.pageX - offsetFrame;
+    }
+  };
+
+  private boundItems = () => {
+    if (this.endX < this.startX) {
+      this.nextSlide();
+      this.seconds = 0;
+    } else if (this.endX > this.startX) {
+      this.prevSlide();
+      this.seconds = 0;
+    }
   };
 
   render() {
     return (
-      <Host class={{ carousel: true }}>
+      <div class={{ carousel: true }}>
         <div class={{ carousel_slide: true, carousel_slide_fullwidth: this.arrows != 'outside' }}>
           <div
             ref={(el) => this.refFrame(el)}
             class={{ carousel_slide_frame: true, carousel_slide_frame_loading: this.loading }}
             onMouseOver={() => this.onMouseOver()}
             onMouseOut={() => this.onMouseOut()}
+            onMouseDown={(ev) => this.onMouseDown(ev)}
+            onMouseEnter={() => this.onMouseEnter()}
+            onMouseUp={() => this.onMouseUp()}
+            onMouseMove={(ev) => this.onMouseMove(ev)}
             tabindex="0"
           >
-            <div ref={(el) => this.refFrameRepeater(el)} class={{ carousel_slide_frame_repeater: true }}>
-              <slot></slot>
+            <div
+              ref={(el) => this.refFrameRepeater(el)}
+              class={{ carousel_slide_frame_repeater: true }}
+              tabindex="0"
+              role="tabpanel"
+            >
+              <slot />
             </div>
           </div>
-          {this.loading && (
-            <bds-grid class={{ carousel_slide_loading: true }}>
-              <bds-skeleton height={`${this.heightCarousel}px`} shape="square" width="100%" />
-            </bds-grid>
-          )}
-          {this.arrows != 'none' && (
+          <bds-grid class={{ carousel_slide_loading: true, carousel_slide_loading_visible: this.loading }}>
+            <bds-skeleton height="100%" shape="square" width="100%" />
+          </bds-grid>
+          {this.arrows != 'none' && !this.loading && (
             <div class={{ carousel_buttons: true, carousel_buttons_fullwidth: this.arrows == 'inside' }}>
               <bds-button-icon
                 variant="tertiary"
@@ -296,20 +367,21 @@ export class BdsCarousel {
             </div>
           )}
         </div>
-        {this.autoplay && this.loading ? (
-          <bds-skeleton
-            class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
-            height="8px"
-            width="100%"
-            shape="square"
-          />
-        ) : (
-          <bds-loading-bar
-            class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
-            percent={(this.seconds * 100) / this.secondsLimit}
-            size="small"
-          />
-        )}
+        {this.autoplay &&
+          (this.loading ? (
+            <bds-skeleton
+              class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
+              height="8px"
+              width="100%"
+              shape="square"
+            />
+          ) : (
+            <bds-loading-bar
+              class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
+              percent={(this.seconds * 100) / this.secondsLimit}
+              size="small"
+            />
+          ))}
         {this.bullets && (
           <div class={{ carousel_bullets: true }}>
             {this.loading ? (
@@ -336,7 +408,8 @@ export class BdsCarousel {
             )}
           </div>
         )}
-      </Host>
+        <slot name="after"></slot>
+      </div>
     );
   }
 }
