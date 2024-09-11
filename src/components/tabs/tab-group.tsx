@@ -87,8 +87,10 @@ export class BdsTabGroup {
   }
 
   private checkSlideTabs = (): boolean => {
-    if (this.headerSlideElement.offsetWidth > this.headerElement.offsetWidth) {
-      return true;
+    if (this.headerElement || this.headerSlideElement) {
+      if (this.headerSlideElement?.offsetWidth > this.headerElement?.offsetWidth) {
+        return true;
+      }
     }
   };
 
@@ -160,10 +162,10 @@ export class BdsTabGroup {
   };
 
   private nextSlide = () => {
-    const minLeft = this.headerElement.offsetWidth - this.headerSlideElement.offsetWidth;
-    const calcNumber = this.headerSlideElement.offsetWidth / this.headerElement.offsetWidth;
+    const minLeft = this.headerElement?.offsetWidth - this.headerSlideElement?.offsetWidth;
+    const calcNumber = this.headerSlideElement?.offsetWidth / this.headerElement?.offsetWidth;
     const numberClicks = parseInt(calcNumber.toString());
-    const newPosition = this.positionLeft - this.headerElement.offsetWidth;
+    const newPosition = this.positionLeft - this.headerElement?.offsetWidth;
 
     this.positionLeft = newPosition < minLeft ? minLeft : newPosition;
     this.alignTab = newPosition < minLeft ? 'right' : 'scrolling';
@@ -172,9 +174,9 @@ export class BdsTabGroup {
   };
 
   private prevSlide = () => {
-    const calcNumber = this.headerSlideElement.offsetWidth / this.headerElement.offsetWidth;
+    const calcNumber = this.headerSlideElement?.offsetWidth / this.headerElement?.offsetWidth;
     const numberClicks = parseInt(calcNumber.toString());
-    const newPosition = this.positionLeft + this.headerElement.offsetWidth;
+    const newPosition = this.positionLeft + this.headerElement?.offsetWidth;
 
     this.positionLeft = newPosition > 0 ? 0 : newPosition;
     this.alignTab = newPosition > 0 ? 'left' : 'scrolling';
