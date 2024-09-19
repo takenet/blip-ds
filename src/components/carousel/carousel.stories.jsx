@@ -335,6 +335,30 @@ Properties.args = {
   grab: true,
 };
 
+const containerCarousel = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItens: 'center',
+};
+
+const col1 = {
+  display: 'flex',
+  padding: '16px',
+  flex: '0 0 auto',
+  width: '24.99%',
+  boxSizing: 'border-box',
+};
+
+const col2 = {
+  display: 'flex',
+  padding: '16px',
+  flex: '0 0 auto',
+  width: '74.99%',
+  boxSizing: 'border-box',
+  flexDirection: 'column',
+  gap: '8px',
+};
+
 export const Methods = () => {
   const [DATAITEMS, SETDATAITEMS] = useState(DATACAROUSEL);
 
@@ -408,19 +432,17 @@ export const Methods = () => {
         {DATAITEMS.map((item, index) => {
           return (
             <BdsCarouselItem key={index}>
-              <BdsPaper width="100%" bg-color="surface-0" elevation="none">
-                <BdsGrid align-items="center" flex-wrap="wrap">
-                  <BdsGrid xxs="3" padding="2" direction="column">
-                    <BdsIllustration type={item.illustration.type} name={item.illustration.name}></BdsIllustration>
-                  </BdsGrid>
-                  <BdsGrid xxs="9" direction="column" padding="2" gap="1">
-                    <BdsTypo variant="fs-20" bold="bold" margin={false}>
-                      {item.title}
-                    </BdsTypo>
-                    <BdsTypo variant="fs-16">{item.subTitle}</BdsTypo>
-                    <BdsButton>Saiba mais</BdsButton>
-                  </BdsGrid>
-                </BdsGrid>
+              <BdsPaper width="100%" bg-color="surface-0" elevation="none" style={containerCarousel}>
+                <div style={col1}>
+                  <BdsIllustration type={item.illustration.type} name={item.illustration.name}></BdsIllustration>
+                </div>
+                <div style={col2}>
+                  <BdsTypo variant="fs-20" bold="bold" margin={false}>
+                    {item.title}
+                  </BdsTypo>
+                  <BdsTypo variant="fs-16">{item.subTitle}</BdsTypo>
+                  <BdsButton>Saiba mais</BdsButton>
+                </div>
               </BdsPaper>
             </BdsCarouselItem>
           );
