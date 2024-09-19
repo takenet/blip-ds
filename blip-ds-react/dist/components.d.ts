@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import type { JSX } from '../../loader';
 export declare const BdsAccordion: import("react").ForwardRefExoticComponent<JSX.BdsAccordion & Omit<import("react").HTMLAttributes<HTMLBdsAccordionElement>, "style"> & import("./react-component-lib/interfaces").StyleReactProps & import("react").RefAttributes<HTMLBdsAccordionElement>>;
 export declare const BdsAccordionBody: import("react").ForwardRefExoticComponent<JSX.BdsAccordionBody & Omit<import("react").HTMLAttributes<HTMLBdsAccordionBodyElement>, "style"> & import("./react-component-lib/interfaces").StyleReactProps & import("react").RefAttributes<HTMLBdsAccordionBodyElement>>;

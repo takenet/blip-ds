@@ -6,11 +6,6 @@
 //Container and offset
 :host(.container) {
   width: 100%;
-
-  ::slotted(bds-grid) {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
 }
 :host(.xxsoffset--auto) {
   margin-left: auto;
@@ -55,11 +50,6 @@
 @media (max-width: 599px) {
   :host(.container) {
     width: 100%;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
   :host(.xxsoffset--auto) {
     margin-left: auto;
@@ -104,11 +94,6 @@
 @media (min-width: 600px) {
   :host(.container) {
     width: 100%;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
   :host(.xxsoffset--auto) {
     margin-left: auto;
@@ -155,11 +140,6 @@
     max-width: 848px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
   :host(.smoffset--auto) {
     margin-left: auto;
@@ -206,11 +186,6 @@
     max-width: 944px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
   :host(.mdoffset--auto) {
     margin-left: auto;
@@ -257,11 +232,6 @@
     max-width: 1328px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
   :host(.lgoffset--auto) {
     margin-left: auto;
@@ -308,11 +278,6 @@
     max-width: 1424px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
   :host(.xgoffset--auto) {
     margin-left: auto;
@@ -360,11 +325,6 @@
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
 }
 
@@ -373,11 +333,6 @@
     max-width: 848px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
 }
 
@@ -386,11 +341,6 @@
     max-width: 944px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
 }
 
@@ -399,11 +349,6 @@
     max-width: 1232px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
 }
 
@@ -412,11 +357,6 @@
     max-width: 1328px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
 }
 
@@ -425,11 +365,6 @@
     max-width: 1424px;
     margin-left: auto;
     margin-right: auto;
-
-    ::slotted(bds-grid) {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
   }
 }
 
@@ -543,54 +478,80 @@
 :host(.xxs--auto) {
   flex: 1 0 auto;
   width: auto;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--1) {
   flex: 0 0 auto;
   width: 8.33%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--2) {
   flex: 0 0 auto;
   width: 16.66%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--3) {
   flex: 0 0 auto;
   width: 24.99%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--4) {
   flex: 0 0 auto;
   width: 33.32%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--5) {
   flex: 0 0 auto;
   width: 41.65%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--6) {
   flex: 0 0 auto;
   width: 50%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--7) {
   flex: 0 0 auto;
   width: 58.33%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--8) {
   flex: 0 0 auto;
   width: 66.66%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--9) {
   flex: 0 0 auto;
   width: 74.99%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--10) {
   flex: 0 0 auto;
   width: 83.32%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--11) {
   flex: 0 0 auto;
   width: 91.65%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 :host(.xxs--12) {
   flex: 0 0 auto;
   width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 // Breakpoint xs
@@ -598,54 +559,80 @@
   :host(.xs--auto) {
     flex: 1 0 auto;
     width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--1) {
     flex: 0 0 auto;
     width: 8.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--2) {
     flex: 0 0 auto;
     width: 16.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--3) {
     flex: 0 0 auto;
     width: 24.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--4) {
     flex: 0 0 auto;
     width: 33.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--5) {
     flex: 0 0 auto;
     width: 41.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--6) {
     flex: 0 0 auto;
     width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--7) {
     flex: 0 0 auto;
     width: 58.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--8) {
     flex: 0 0 auto;
     width: 66.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--9) {
     flex: 0 0 auto;
     width: 74.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--10) {
     flex: 0 0 auto;
     width: 83.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--11) {
     flex: 0 0 auto;
     width: 91.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xs--12) {
     flex: 0 0 auto;
     width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -654,54 +641,80 @@
   :host(.sm--auto) {
     flex: 1 0 auto;
     width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--1) {
     flex: 0 0 auto;
     width: 8.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--2) {
     flex: 0 0 auto;
     width: 16.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--3) {
     flex: 0 0 auto;
     width: 24.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--4) {
     flex: 0 0 auto;
     width: 33.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--5) {
     flex: 0 0 auto;
     width: 41.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--6) {
     flex: 0 0 auto;
     width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--7) {
     flex: 0 0 auto;
     width: 58.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--8) {
     flex: 0 0 auto;
     width: 66.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--9) {
     flex: 0 0 auto;
     width: 74.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--10) {
     flex: 0 0 auto;
     width: 83.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--11) {
     flex: 0 0 auto;
     width: 91.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.sm--12) {
     flex: 0 0 auto;
     width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -710,54 +723,80 @@
   :host(.md--auto) {
     flex: 1 0 auto;
     width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--1) {
     flex: 0 0 auto;
     width: 8.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--2) {
     flex: 0 0 auto;
     width: 16.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--3) {
     flex: 0 0 auto;
     width: 24.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--4) {
     flex: 0 0 auto;
     width: 33.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--5) {
     flex: 0 0 auto;
     width: 41.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--6) {
     flex: 0 0 auto;
     width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--7) {
     flex: 0 0 auto;
     width: 58.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--8) {
     flex: 0 0 auto;
     width: 66.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--9) {
     flex: 0 0 auto;
     width: 74.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--10) {
     flex: 0 0 auto;
     width: 83.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--11) {
     flex: 0 0 auto;
     width: 91.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.md--12) {
     flex: 0 0 auto;
     width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -766,54 +805,80 @@
   :host(.lg--auto) {
     flex: 1 0 auto;
     width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--1) {
     flex: 0 0 auto;
     width: 8.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--2) {
     flex: 0 0 auto;
     width: 16.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--3) {
     flex: 0 0 auto;
     width: 24.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--4) {
     flex: 0 0 auto;
     width: 33.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--5) {
     flex: 0 0 auto;
     width: 41.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--6) {
     flex: 0 0 auto;
     width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--7) {
     flex: 0 0 auto;
     width: 58.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--8) {
     flex: 0 0 auto;
     width: 66.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--9) {
     flex: 0 0 auto;
     width: 74.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--10) {
     flex: 0 0 auto;
     width: 83.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--11) {
     flex: 0 0 auto;
     width: 91.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.lg--12) {
     flex: 0 0 auto;
     width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -822,54 +887,80 @@
   :host(.xg--auto) {
     flex: 1 0 auto;
     width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--1) {
     flex: 0 0 auto;
     width: 8.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--2) {
     flex: 0 0 auto;
     width: 16.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--3) {
     flex: 0 0 auto;
     width: 24.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--4) {
     flex: 0 0 auto;
     width: 33.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--5) {
     flex: 0 0 auto;
     width: 41.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--6) {
     flex: 0 0 auto;
     width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--7) {
     flex: 0 0 auto;
     width: 58.33%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--8) {
     flex: 0 0 auto;
     width: 66.66%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--9) {
     flex: 0 0 auto;
     width: 74.99%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--10) {
     flex: 0 0 auto;
     width: 83.32%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--11) {
     flex: 0 0 auto;
     width: 91.65%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
   :host(.xg--12) {
     flex: 0 0 auto;
     width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
