@@ -15,6 +15,18 @@
   }
 }
 
+.justify {
+  &--left {
+    justify-content: flex-start;
+  }
+  &--center {
+    justify-content: center;
+  }
+  &--right {
+    justify-content: flex-end;
+  }
+}
+
 .dense-th {
   min-height: 48px;
   height: auto;

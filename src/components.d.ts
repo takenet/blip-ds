@@ -60,6 +60,8 @@ import { sidebarBackground, sidebarPosition, sidebarType } from "./components/si
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
 import { StepOption, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
+import { JustifyContent } from "./components/table/table-cell/table-cell";
+import { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
@@ -2488,6 +2490,7 @@ export namespace Components {
     interface BdsTableBody {
     }
     interface BdsTableCell {
+        "justifyContent": JustifyContent;
         "sortable": boolean;
         "type"?: string;
     }
@@ -2507,6 +2510,7 @@ export namespace Components {
     }
     interface BdsTableTh {
         "arrow": string;
+        "justifyContent": JustifyContent;
         "sortable": boolean;
     }
     interface BdsTabs {
@@ -6259,6 +6263,7 @@ declare namespace LocalJSX {
     interface BdsTableBody {
     }
     interface BdsTableCell {
+        "justifyContent"?: JustifyContent;
         "sortable"?: boolean;
         "type"?: string;
     }
@@ -6278,6 +6283,7 @@ declare namespace LocalJSX {
     }
     interface BdsTableTh {
         "arrow"?: string;
+        "justifyContent"?: JustifyContent;
         "sortable"?: boolean;
     }
     interface BdsTabs {

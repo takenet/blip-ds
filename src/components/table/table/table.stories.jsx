@@ -63,16 +63,20 @@ export const Properties = (args) => {
     <bds-table id="table-default" scrollable={args.scrollable} dense-table={args.denseTable}>
       <bds-table-header>
         <bds-table-row>
-          {heading.map((item, index) => {
-            return <bds-table-th key={index}>{item}</bds-table-th>;
-          })}
+          <bds-table-th justify-content="center">Identificador</bds-table-th>
+          <bds-table-th>Produtos</bds-table-th>
+          <bds-table-th>Valor</bds-table-th>
+          <bds-table-th>Disponibilidade</bds-table-th>
+          <bds-table-th>Marca</bds-table-th>
+          <bds-table-th justify-content="right">Estoque</bds-table-th>
+          <bds-table-th>Categoria</bds-table-th>
         </bds-table-row>
       </bds-table-header>
       <bds-table-body>
         {DATA.map((row, index) => {
           return (
             <bds-table-row key={index}>
-              <bds-table-cell>
+              <bds-table-cell justify-content="center">
                 <bds-typo variant="fs-14">{row.id}</bds-typo>
               </bds-table-cell>
               <bds-table-cell>
@@ -91,7 +95,7 @@ export const Properties = (args) => {
               <bds-table-cell>
                 <bds-typo variant="fs-14">{row.marca}</bds-typo>
               </bds-table-cell>
-              <bds-table-cell>
+              <bds-table-cell justify-content="right">
                 <bds-typo variant="fs-14">{row.estoque}</bds-typo>
               </bds-table-cell>
               <bds-table-cell>

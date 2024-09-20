@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default |
-| ---------- | ---------- | ----------- | --------- | ------- |
-| `arrow`    | `arrow`    |             | `string`  | `''`    |
-| `sortable` | `sortable` |             | `boolean` | `false` |
+| Property         | Attribute         | Description | Type                            | Default  |
+| ---------------- | ----------------- | ----------- | ------------------------------- | -------- |
+| `arrow`          | `arrow`           |             | `string`                        | `''`     |
+| `justifyContent` | `justify-content` |             | `"center" \| "left" \| "right"` | `'left'` |
+| `sortable`       | `sortable`        |             | `boolean`                       | `false`  |
 
 
 ## Dependencies
