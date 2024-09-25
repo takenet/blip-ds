@@ -3,7 +3,7 @@ import { direction, justifyContent, flexWrap, alignItems, breakpoint, gap, paddi
 @Component({
   tag: 'bds-grid',
   styleUrl: 'grid.scss',
-  shadow: true,
+  scoped: true,
 })
 export class Grid {
   @Prop() height?: string;
