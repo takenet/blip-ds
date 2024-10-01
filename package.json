@@ -114,7 +114,7 @@
     },
     "ghooks": {
       "pre-commit": "npm run eslint",
-      "pre-push": "npm run eslint && npm run test:coverage",
+      "pre-push": "npm run eslint && npm run cypress:test",
       "commit-msg": "cz-customizable-ghooks $2"
     }
   },
