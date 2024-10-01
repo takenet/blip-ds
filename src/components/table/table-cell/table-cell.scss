@@ -16,17 +16,29 @@
   flex-wrap: wrap;
 }
 
-.dense-cell {
+.dense_cell {
   margin: 0;
 }
 
-.cell-custom {
+.cell_custom {
   gap: 8px;
 }
 
-.cell-action {
+.cell_action {
   flex-direction: row;
   gap: 8px;
+}
+
+.justify {
+  &--left {
+    justify-content: flex-start;
+  }
+  &--center {
+    justify-content: center;
+  }
+  &--right {
+    justify-content: flex-end;
+  }
 }
 
 :host:first-child {
