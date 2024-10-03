@@ -60,6 +60,10 @@ export class DatePicker {
   @Prop({ mutable: true, reflect: true })
   endDateLimit?: string = defaultEndDate;
   /**
+   *  label in input, with he the input size increases.
+   */
+  @Prop() label? = '';
+  /**
    * Message. Select type of date.
    */
   @Prop() message?: string = null;
@@ -397,7 +401,7 @@ export class DatePicker {
               }}
             >
               <bds-input
-                label={termTranslate(this.language, 'setTheDate')}
+                label={this.label ? this.label : termTranslate(this.language, 'setTheDate')}
                 value={this.valueDate}
                 disabled={this.disabled}
                 type="date"
