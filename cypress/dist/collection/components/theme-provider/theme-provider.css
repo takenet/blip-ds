@@ -1,0 +1,161 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+:host(.theme--light) {
+  width: 100%;
+  height: 100%;
+  --color-brand: #0096fa;
+  --color-primary: #1e6bf1;
+  --color-secondary: #292929;
+  --color-surface-0: #ffffff;
+  --color-surface-1: #f6f6f6;
+  --color-surface-2: #e0e0e0;
+  --color-surface-3: #cfcfcf;
+  --color-surface-4: #141414;
+  --color-surface-positive: #d3f4e5;
+  --color-surface-negative: #ffd6d6;
+  --color-surface-primary: #1e6bf1;
+  --color-content-default: #454545;
+  --color-content-disable: #636363;
+  --color-content-ghost: #8c8c8c;
+  --color-content-bright: #ffffff;
+  --color-content-din: #000000;
+  --color-border-1: #c9c9c9;
+  --color-border-2: #e0e0e0;
+  --color-border-3: #ededed;
+  --color-positive: #007a42;
+  --color-negative: #a80b0b;
+  --color-info: #80e3eb;
+  --color-system: #b2dffd;
+  --color-focus: #c226fb;
+  --color-success: #84ebbc;
+  --color-warning: #fde99b;
+  --color-error: #f99f9f;
+  --color-delete: #e60f0f;
+  --color-extended-blue: #1968f0;
+  --color-extended-blue-bright: #b2dffd;
+  --color-extended-ocean: #00d3e4;
+  --color-extended-ocean-bright: #80e3eb;
+  --color-extended-green: #35de90;
+  --color-extended-green-bright: #84ebbc;
+  --color-extended-yellow: #fbcf23;
+  --color-extended-yellow-bright: #fde99b;
+  --color-extended-orange: #f06305;
+  --color-extended-orange-bright: #fcaa73;
+  --color-extended-red: #e60f0f;
+  --color-extended-red-bright: #f99f9f;
+  --color-extended-pink: #fb4bc1;
+  --color-extended-pink-bright: #fd9bdc;
+  --color-extended-gray: #666666;
+  --color-extended-gray-bright: #c7c7c7;
+  --color-hover: rgba(0, 0, 0, 0.08);
+  --color-pressed: rgba(0, 0, 0, 0.16);
+  --color-shadow-0: rgba(0, 0, 0, 0.04);
+  --color-shadow-1: rgba(0, 0, 0, 0.16);
+}
+
+:host(.theme--dark) {
+  width: 100%;
+  height: 100%;
+  --color-brand: #0096fa;
+  --color-primary: #498bff;
+  --color-secondary: #ffffff;
+  --color-surface-0: #424242;
+  --color-surface-1: #393939;
+  --color-surface-2: #1f1f1f;
+  --color-surface-3: #141414;
+  --color-surface-4: #0a0a0a;
+  --color-surface-positive: #01562f;
+  --color-surface-negative: #570000;
+  --color-surface-primary: #0c50c5;
+  --color-content-default: #ffffff;
+  --color-content-disable: #949494;
+  --color-content-ghost: #666666;
+  --color-content-bright: #ffffff;
+  --color-content-din: #000000;
+  --color-border-1: #707070;
+  --color-border-2: #4f4f4f;
+  --color-border-3: #454545;
+  --color-positive: #6bffbc;
+  --color-negative: #ffb8b8;
+  --color-info: #004f56;
+  --color-system: #003c64;
+  --color-focus: #c226fb;
+  --color-success: #355e4b;
+  --color-warning: #60593b;
+  --color-error: #7b3d3d;
+  --color-delete: #b60c0c;
+  --color-extended-blue: #1968f0;
+  --color-extended-blue-bright: #b2dffd;
+  --color-extended-ocean: #00d3e4;
+  --color-extended-ocean-bright: #80e3eb;
+  --color-extended-green: #35de90;
+  --color-extended-green-bright: #84ebbc;
+  --color-extended-yellow: #fbcf23;
+  --color-extended-yellow-bright: #fde99b;
+  --color-extended-orange: #f06305;
+  --color-extended-orange-bright: #fcaa73;
+  --color-extended-red: #e60f0f;
+  --color-extended-red-bright: #f99f9f;
+  --color-extended-pink: #fb4bc1;
+  --color-extended-pink-bright: #fd9bdc;
+  --color-extended-gray: #666666;
+  --color-extended-gray-bright: #c7c7c7;
+  --color-hover: rgba(255, 255, 255, 0.16);
+  --color-pressed: rgba(255, 255, 255, 0.08);
+  --color-shadow-0: var(--color-shadow-0, rgba(0, 0, 0, 0.04));
+  --color-shadow-1: var(--color-shadow-1, rgba(0, 0, 0, 0.16));
+}
+
+:host(.theme--high-contrast) {
+  width: 100%;
+  height: 100%;
+  --color-brand: #0096fa;
+  --color-primary: #1e6bf1;
+  --color-secondary: #292929;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f5f5f5;
+  --color-surface-3: #e0e0e0;
+  --color-surface-4: #141414;
+  --color-content-default: #292929;
+  --color-content-disable: #666666;
+  --color-content-ghost: #949494;
+  --color-content-bright: #ffffff;
+  --color-content-din: #000000;
+  --color-border-1: #616161;
+  --color-info: #80e3eb;
+  --color-system: #99d5fd;
+  --color-focus: #c226fb;
+  --color-success: #84ebbc;
+  --color-warning: #fde99b;
+  --color-error: #f99f9f;
+  --color-delete: #e60f0f;
+  --color-extended-blue: #1968f0;
+  --color-extended-ocean: #00d3e4;
+  --color-extended-green: #35de90;
+  --color-extended-yellow: #fbcf23;
+  --color-extended-orange: #f06305;
+  --color-extended-red: #e60f0f;
+  --color-extended-pink: #fb4bc1;
+  --color-extended-gray: #666666;
+  --color-hover: rgba(0, 0, 0, 0.08);
+  --color-pressed: rgba(0, 0, 0, 0.16);
+  --color-shadow-1: rgba(0, 0, 0, 0.16);
+  --color-positive: #10603b;
+  --color-negative: #e60f0f;
+}

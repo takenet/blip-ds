@@ -1,0 +1,1 @@
+import{r,h as e,H as o}from"./p-93b809e8.js";const s=class{constructor(e){r(this,e)}render(){return e(o,null,e("slot",null))}};s.style=".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, #c9c9c9)}";export{s as bds_table_header}

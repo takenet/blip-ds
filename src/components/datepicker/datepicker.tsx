@@ -401,7 +401,7 @@ export class DatePicker {
               }}
             >
               <bds-input
-                label={this.label ? this.label : termTranslate(this.language, 'setTheDate')}
+                label={this.label.length > 0 ? this.label : termTranslate(this.language, 'setTheDate')}
                 value={this.valueDate}
                 disabled={this.disabled}
                 type="date"
