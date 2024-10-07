@@ -1,0 +1,113 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+:host(.option-checked) {
+  order: -1;
+}
+
+.load-spinner {
+  background-color: var(--color-surface-0, #ffffff);
+  height: 200px;
+}
+
+.select-option {
+  display: grid;
+  width: 100%;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  background-color: var(--color-surface-0, #ffffff);
+  padding: 8px;
+  padding-left: 12px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  outline: none;
+  order: 1;
+}
+.select-option--selected .select-option__container--value {
+  color: var(--color-primary, #1e6bf1);
+}
+.select-option--disabled .select-option__container--value,
+.select-option--disabled .select-option__container--bulk {
+  cursor: not-allowed;
+  color: var(--color-content-disable, #636363);
+}
+.select-option--disabled .select-option__container--value:hover,
+.select-option--disabled .select-option__container--bulk:hover {
+  background-color: var(--color-surface-1, #f6f6f6);
+}
+.select-option ::slotted(bds-icon) {
+  margin-right: 10px;
+}
+.select-option__container {
+  color: var(--color-content-default, #454545);
+  display: flex;
+  flex-direction: column;
+}
+.select-option__container__checkbox {
+  cursor: pointer;
+  padding: 8px;
+  padding-left: 12px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  outline: none;
+  flex-direction: row;
+}
+.select-option__container__fill_space {
+  width: 100%;
+}
+.select-option__container--bulk, .select-option__container--status {
+  color: var(--color-content-ghost, #8c8c8c);
+}
+.select-option__container--status {
+  margin-left: 4px;
+}
+.select-option__container__overflow {
+  overflow: hidden;
+  padding-right: 16px;
+}
+.select-option__container:hover > .select-option__container--value, .select-option__container:hover > .select-option__container--bulk, .select-option__container:hover > .select-option__container--status {
+  color: var(--color-primary, #1e6bf1);
+}
+.select-option__container:active > .select-option__container--value, .select-option__container:active > .select-option__container--bulk, .select-option__container:active > .select-option__container--status {
+  color: var(--color-primary, #1e6bf1);
+}
+.select-option:hover {
+  background-color: var(--color-surface-1, #f6f6f6);
+}
+.select-option:focus {
+  background-color: var(--color-surface-1, #f6f6f6);
+  color: #3f7de8;
+}
+.select-option--selected {
+  background-color: var(--color-surface-1, #f6f6f6);
+}
+.select-option--invisible {
+  display: none;
+}

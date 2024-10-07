@@ -1,0 +1,232 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+:host {
+  position: relative;
+  display: block;
+  width: fit-content;
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  height: 100%;
+}
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+.avatar:focus-visible {
+  outline: none;
+}
+.avatar:focus-visible::before {
+  border-color: var(--color-focus, #c226fb);
+}
+.avatar__ellipsis {
+  color: var(--color-surface-1, #f6f6f6);
+}
+.avatar__text {
+  color: var(--color-content-default, #454545);
+}
+.avatar__icon {
+  color: var(--color-content-default, #454545);
+}
+.avatar__btn {
+  border-radius: 40px;
+  border: 1px solid var(--color-border-2, #e0e0e0);
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar__btn__img {
+  background-position: center;
+  background-size: cover;
+}
+.avatar__btn__text {
+  color: var(--color-content-default, #454545);
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.avatar__btn__icon {
+  color: var(--color-content-default, #454545);
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.avatar__btn__thumb {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.avatar__btn__thumb:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-content-default, #454545);
+  opacity: 0;
+  transition: all 0.5s;
+}
+.avatar__btn__thumb__icon {
+  position: relative;
+  color: var(--color-surface-1, #f6f6f6);
+  opacity: 0;
+  transition: all 0.5s;
+}
+.avatar__btn__name {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.avatar__btn__name__icon {
+  color: var(--color-content-default, #454545);
+}
+.avatar__btn__empty {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.avatar__btn__empty__icon {
+  color: var(--color-content-default, #454545);
+}
+.avatar__size--micro {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+}
+.avatar__size--extra-small {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+}
+.avatar__size--small {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+.avatar__size--standard {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+}
+.avatar__size--large {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+}
+.avatar__size--extra-large {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  min-height: 72px;
+}
+.avatar__color--system .avatar__btn {
+  background-color: var(--color-system, #b2dffd);
+}
+.avatar__color--warning .avatar__btn {
+  background-color: var(--color-warning, #fde99b);
+}
+.avatar__color--success .avatar__btn {
+  background-color: var(--color-success, #84ebbc);
+}
+.avatar__color--info .avatar__btn {
+  background-color: var(--color-info, #80e3eb);
+}
+.avatar__color--error .avatar__btn {
+  background-color: var(--color-error, #f99f9f);
+}
+.avatar__color--surface .avatar__btn {
+  background-color: var(--color-surface-2, #e0e0e0);
+  color: var(--color-content-disable, #636363);
+}
+.avatar:hover .avatar__btn__thumb:before {
+  opacity: 0.5;
+}
+.avatar:hover .avatar__btn__thumb__icon {
+  opacity: 1;
+}
+.avatar:hover .avatar__btn__text {
+  opacity: 0;
+}
+.avatar:hover .avatar__btn__icon {
+  opacity: 0;
+}
+.avatar:hover .avatar__btn__name {
+  opacity: 1;
+}
+.avatar:hover .avatar__btn__empty {
+  opacity: 1;
+}
+
+.focus:focus-visible {
+  display: flex;
+  position: absolute;
+  border: 2px solid var(--color-focus, #c226fb);
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  top: -4px;
+  left: -4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  outline: none;
+}

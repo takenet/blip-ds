@@ -786,6 +786,10 @@ export namespace Components {
          */
         "endDateLimit"?: string;
         /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
         "language"?: languages;
@@ -4375,6 +4379,10 @@ declare namespace LocalJSX {
           * EndDateLimit. Insert a limiter to select the date period.
          */
         "endDateLimit"?: string;
+        /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */

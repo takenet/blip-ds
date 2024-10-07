@@ -24,6 +24,7 @@ export const Properties = (args) => {
       type-of-date={args.typeOfDate}
       start-date-limit={args.startDateLimit}
       end-date-limit={args.endDateLimit}
+      label={args.label}
       message={args.message}
       variant-banner={args.variantBanner}
       language={args.language}
@@ -38,6 +39,7 @@ Properties.args = {
   typeOfDate: 'single',
   startDateLimit: '31/12/2022',
   endDateLimit: '01/01/2027',
+  label: '',
   message: '',
   variantBanner: 'warning',
   language: 'pt_BR',
@@ -61,6 +63,12 @@ Properties.argTypes = {
     control: 'text',
   },
   endDateLimit: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  label: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
