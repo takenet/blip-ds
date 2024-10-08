@@ -302,6 +302,7 @@ export const CarouselImage = () => {
           style={imageContent}
           alt="Example of a image"
           width="100%"
+          height="420px"
           object-fit="cover"
           src="https://picsum.photos/1920/1080"
         />
@@ -311,6 +312,7 @@ export const CarouselImage = () => {
           style={imageContent}
           alt="Example of a image"
           width="100%"
+          height="420px"
           object-fit="cover"
           src="https://picsum.photos/1920/1080"
         />
@@ -320,6 +322,7 @@ export const CarouselImage = () => {
           style={imageContent}
           alt="Example of a image"
           width="100%"
+          height="420px"
           object-fit="cover"
           src="https://picsum.photos/1920/1080"
         />
@@ -346,6 +349,17 @@ export const CarouselImageMobile = () => {
             style={imageContent}
             alt="Example of a image"
             width="100%"
+            height="210px"
+            object-fit="cover"
+            src="https://picasum.photos/1920/1080"
+          />
+        </bds-carousel-item>
+        <bds-carousel-item>
+          <bds-image
+            style={imageContent}
+            alt="Example of a image"
+            width="100%"
+            height="210px"
             object-fit="cover"
             src="https://picsum.photos/1920/1080"
           />
@@ -355,15 +369,7 @@ export const CarouselImageMobile = () => {
             style={imageContent}
             alt="Example of a image"
             width="100%"
-            object-fit="cover"
-            src="https://picsum.photos/1920/1080"
-          />
-        </bds-carousel-item>
-        <bds-carousel-item>
-          <bds-image
-            style={imageContent}
-            alt="Example of a image"
-            width="100%"
+            height="210px"
             object-fit="cover"
             src="https://picsum.photos/1920/1080"
           />
