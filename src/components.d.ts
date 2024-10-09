@@ -14,6 +14,7 @@ import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-grou
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
+import { targets } from "./components/banner/banner-link/banner-link";
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
@@ -332,6 +333,10 @@ export namespace Components {
           * Set the link pass.
          */
         "link": string;
+        /**
+          * Set the link pass.
+         */
+        "target": targets;
     }
     interface BdsButton {
         /**
@@ -3905,6 +3910,10 @@ declare namespace LocalJSX {
           * Emitted when the link is clicked.
          */
         "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<any>) => void;
+        /**
+          * Set the link pass.
+         */
+        "target"?: targets;
     }
     interface BdsButton {
         /**
