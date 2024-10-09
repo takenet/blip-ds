@@ -103,6 +103,7 @@ export class Image {
           <bds-skeleton shape="square" width="100%" height="100%"></bds-skeleton>
         ) : (
           <bds-illustration
+            class="img-feedback"
             type="empty-states"
             name={this.loadError ? 'broken-image' : 'image-not-found'}
             alt={this.alt}
