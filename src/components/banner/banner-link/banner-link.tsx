@@ -1,5 +1,7 @@
 import { Component, h, Element, Event, EventEmitter, Prop } from '@stencil/core';
 
+export type targets = 'blank' | 'self' | 'parent' | 'top' | 'framename';
+
 @Component({
   tag: 'bds-banner-link',
   styleUrl: 'banner-link.scss',
@@ -13,6 +15,11 @@ export class BannerLink {
   @Prop() link: string;
 
   /**
+   * Set the link pass.
+   */
+  @Prop() target: targets = 'blank';
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -23,13 +30,13 @@ export class BannerLink {
 
   private _buttonClickHandler = () => {
     this.bdsBannerLink.emit(this.el);
-    window.open(this.link);
+    window.open(this.link, `_${this.target}`);
   };
 
   private handleKeyDown(event) {
     if (event.key == 'Enter') {
       this.bdsBannerLink.emit(this.el);
-      window.open(this.link);
+      window.open(this.link, `_${this.target}`);
     }
   }
 
