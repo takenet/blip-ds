@@ -28,6 +28,8 @@
     "test:snapshot": "stencil test --e2e --screenshot",
     "test:watch": "stencil test --spec --watch",
     "test:coverage": "stencil test --spec --e2e --coverage",
+    "cypress:open": "cypress open",
+    "cypress:test": "cypress run --component",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build -s www",
     "storybook:deploy": "storybook-to-ghpages",
@@ -52,17 +54,19 @@
     "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/testing-library": "^0.2.0",
     "@storybook/theming": "^7.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
-    "@typescript-eslint/parser": "^5.23.0",
     "@types/color": "^3.0.3",
     "@types/jest": "27.5.1",
     "@types/puppeteer": "5.4.6",
     "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.23.0",
     "babel-loader": "^8.2.5",
     "babel-preset-react-app": "^10.0.1",
     "color": "^4.2.3",
     "commitizen": "^4.2.4",
     "copy-webpack-plugin": "^11.0.0",
+    "cypress": "^13.15.0",
+    "cypress-real-events": "^1.13.0",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
     "cz-customizable-ghooks": "^2.0.0",
@@ -79,6 +83,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "puppeteer": "^14.0.0",
+    "react-scripts": "^5.0.1",
     "semantic-release": "^23.0.8",
     "storybook": "^7.0.22",
     "ts-node": "^10.7.0",
@@ -109,10 +114,22 @@
       "config": "./.cz-config.js"
     },
     "ghooks": {
-      "pre-commit": "npm run eslint",
-      "pre-push": "npm run eslint && npm run test:coverage",
+      "pre-commit": "npm run eslint && npm run cypress:test",
+      "pre-push": "npm run eslint",
       "commit-msg": "cz-customizable-ghooks $2"
     }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "license": "MIT",
   "optionalDependencies": {
