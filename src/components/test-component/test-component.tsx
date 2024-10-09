@@ -8,7 +8,7 @@ export class TestComponent {
   render() {
     return (
       <bds-grid xxs="12" padding="x-2" flex-wrap="wrap">
-        <bds-grid xxs="12">
+        <bds-grid xxs="12" margin="t-2">
           <div class="titulo">
             <bds-typo variant="fs-40" bold="bold">
               Titulo de teste fora de temas
