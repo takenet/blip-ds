@@ -20,6 +20,7 @@
 ### Used by
 
  - [bds-carousel](../carousel)
+ - [bds-image](../image)
 
 ### Depends on
 
@@ -30,6 +31,7 @@
 graph TD;
   bds-skeleton --> bds-grid
   bds-carousel --> bds-skeleton
+  bds-image --> bds-skeleton
   style bds-skeleton fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
