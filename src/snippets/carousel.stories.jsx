@@ -537,7 +537,7 @@ export const CarouselImageDesciptionMobile = () => {
   );
 };
 
-export const CarouselBlip = () => {
+export const CarouselProduct = () => {
   return (
     <bds-grid container>
       <bds-carousel arrows="none" slide-per-page={1} gap="2">
@@ -751,7 +751,7 @@ export const CarouselBlip = () => {
   );
 };
 
-export const CarouselBlipMobile = () => {
+export const CarouselProductMobile = () => {
   return (
     <bds-grid style={{ maxWidth: `320px` }}>
       <bds-carousel arrows="none" slide-per-page={1} gap="2">
