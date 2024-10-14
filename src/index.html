@@ -20,26 +20,14 @@
     margin: 0;
     height: 100vh;
   }
-  #chip-version-blip-ds {
-    position: absolute;
-    left: 8px;
-    bottom: 8px;
-  }
 </style>
 
 <body>
-  <bds-chip-tag id="chip-version-blip-ds" class="chip-version"></bds-chip-tag>
-  <bds-test-component id="theme-blip-ds"></bds-test-component>
+  <bds-test-component></bds-test-component>
 </body>
 
 <script>
-  const chipVersion = document.getElementById('chip-version-blip-ds');
-  fetch('https://api.github.com/repos/takenet/blip-ds/releases')
-    .then(response => response.json())
-    .then(data => {
-      const firstReleaseName = data[0].name;
-      chipVersion.innerHTML = `Versão blip-ds ${firstReleaseName}`;
-  });
+
 </script>
 
 </html>

@@ -154,7 +154,6 @@ const DatePicker = class {
     this.typeOfDate = 'single';
     this.startDateLimit = calendar.defaultStartDate;
     this.endDateLimit = calendar.defaultEndDate;
-    this.label = '';
     this.message = null;
     this.variantBanner = 'warning';
     this.language = 'pt_BR';
@@ -257,7 +256,7 @@ const DatePicker = class {
         datepicker__inputs: true,
         [`datepicker__inputs__${this.typeOfDate}`]: true,
         datepicker__inputs__open: this.open,
-      } }, index.h("bds-input", { label: this.label ? this.label : calendar.termTranslate(this.language, 'setTheDate'), value: this.valueDate, disabled: this.disabled, type: "date", maxlength: 10, icon: "calendar", onClick: () => this.openDatepicker(), onBdsInput: (ev) => this.onInputDateSelected(ev), danger: this.errorMsgDate ? true : false, errorMessage: this.errorMsgDate, dataTest: this.dtInputStart }))) : (index.h("div", { class: {
+      } }, index.h("bds-input", { label: calendar.termTranslate(this.language, 'setTheDate'), value: this.valueDate, disabled: this.disabled, type: "date", maxlength: 10, icon: "calendar", onClick: () => this.openDatepicker(), onBdsInput: (ev) => this.onInputDateSelected(ev), danger: this.errorMsgDate ? true : false, errorMessage: this.errorMsgDate, dataTest: this.dtInputStart }))) : (index.h("div", { class: {
         datepicker__inputs: true,
         [`datepicker__inputs__${this.typeOfDate}`]: true,
         datepicker__inputs__open: this.open,
