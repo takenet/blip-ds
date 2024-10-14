@@ -144,6 +144,7 @@ export class DatePicker {
     this.typeOfDate = 'single';
     this.startDateLimit = defaultStartDate;
     this.endDateLimit = defaultEndDate;
+    this.label = '';
     this.message = null;
     this.variantBanner = 'warning';
     this.language = 'pt_BR';
@@ -246,7 +247,7 @@ export class DatePicker {
         datepicker__inputs: true,
         [`datepicker__inputs__${this.typeOfDate}`]: true,
         datepicker__inputs__open: this.open,
-      } }, h("bds-input", { label: termTranslate(this.language, 'setTheDate'), value: this.valueDate, disabled: this.disabled, type: "date", maxlength: 10, icon: "calendar", onClick: () => this.openDatepicker(), onBdsInput: (ev) => this.onInputDateSelected(ev), danger: this.errorMsgDate ? true : false, errorMessage: this.errorMsgDate, dataTest: this.dtInputStart }))) : (h("div", { class: {
+      } }, h("bds-input", { label: this.label.length > 0 ? this.label : termTranslate(this.language, 'setTheDate'), value: this.valueDate, disabled: this.disabled, type: "date", maxlength: 10, icon: "calendar", onClick: () => this.openDatepicker(), onBdsInput: (ev) => this.onInputDateSelected(ev), danger: this.errorMsgDate ? true : false, errorMessage: this.errorMsgDate, dataTest: this.dtInputStart }))) : (h("div", { class: {
         datepicker__inputs: true,
         [`datepicker__inputs__${this.typeOfDate}`]: true,
         datepicker__inputs__open: this.open,
@@ -325,6 +326,24 @@ export class DatePicker {
         "attribute": "end-date-limit",
         "reflect": true,
         "defaultValue": "defaultEndDate"
+      },
+      "label": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "label in input, with he the input size increases."
+        },
+        "attribute": "label",
+        "reflect": false,
+        "defaultValue": "''"
       },
       "message": {
         "type": "string",
