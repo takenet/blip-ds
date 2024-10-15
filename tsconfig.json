@@ -22,6 +22,7 @@
     "resolveJsonModule": true,
   },
   "include": [
+    "./src/**/*",
     "src",
     "types/jsx.d.ts"
   ],

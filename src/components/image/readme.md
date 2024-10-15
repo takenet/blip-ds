@@ -34,12 +34,15 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [bds-skeleton](../skeleton)
 - [bds-illustration](../illustration)
 
 ### Graph
 ```mermaid
 graph TD;
+  bds-image --> bds-skeleton
   bds-image --> bds-illustration
+  bds-skeleton --> bds-grid
   style bds-image fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
