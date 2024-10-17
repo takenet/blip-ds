@@ -541,210 +541,148 @@ export const CarouselProduct = () => {
   return (
     <bds-grid container>
       <bds-carousel arrows="none" slide-per-page={1} gap="2">
-        <bds-carousel-item>
-          <bds-theme-provider theme="dark">
-            <bds-paper
-              width="100%"
-              height="310px"
-              bg-color="surface-4"
-              style={{ position: 'relative', overflow: 'hidden' }}
-            >
-              <bds-image
-                style={imageBlipDark}
-                alt="Example of a image"
-                width="100%"
-                height="100%"
-                object-fit="cover"
-                src="https://blipmediastore.blip.ai/public-medias/Media_bdcb8c47-a74f-47d8-8b55-9a91a367fead?56983082-a993-4c40-9d78-d7a90416db97"
-              />
-              <bds-grid
-                align-items="center"
-                flex-wrap="wrap"
-                height="100%"
-                padding="x-2"
-                style={{ position: 'relative' }}
-              >
-                <bds-grid xxs="8" direction="column" padding="2" gap="3">
-                  <bds-grid justify-content="space-between">
-                    <bds-illustration
-                      type="brand"
-                      name="blip-store-blue-white"
-                      style={{ width: '100px' }}
-                    ></bds-illustration>
-                    <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                  </bds-grid>
-                  <bds-grid direction="column" gap="2">
-                    <bds-typo variant="fs-32" bold="bold" margin={false}>
-                      {title}
-                    </bds-typo>
-                    <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                    <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                  </bds-grid>
-                  <bds-grid gap="2">
-                    <bds-button color="content" variant="solid">
-                      Ação principal
-                    </bds-button>
-                    <bds-button color="content" variant="outline">
-                      Ação secundária
-                    </bds-button>
-                  </bds-grid>
-                </bds-grid>
-                <bds-grid xxs="4" padding="3" direction="column"></bds-grid>
+        <bds-carousel-item
+          bg-image="https://blipmediastore.blip.ai/public-medias/Media_bdcb8c47-a74f-47d8-8b55-9a91a367fead?56983082-a993-4c40-9d78-d7a90416db97"
+          bg-image-brightness={0.4}
+          theme="dark"
+        >
+          <bds-grid align-items="center" flex-wrap="wrap" padding="x-2" style={{ position: 'relative' }}>
+            <bds-grid xxs="8" direction="column" padding="2" gap="3">
+              <bds-grid justify-content="space-between">
+                <bds-illustration
+                  type="brand"
+                  name="blip-store-blue-white"
+                  style={{ width: '100px' }}
+                ></bds-illustration>
+                <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
               </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+              <bds-grid direction="column" gap="2">
+                <bds-typo variant="fs-32" bold="bold" margin={false}>
+                  Título com até uma linha
+                </bds-typo>
+                <bds-typo variant="fs-16">
+                  Descrição com até duas linhas sobre o item destacado no carrosel respeitando as orientações de uso de
+                  content design.
+                </bds-typo>
+                <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+              </bds-grid>
+              <bds-grid gap="2">
+                <bds-button color="content" variant="solid">
+                  Ação principal
+                </bds-button>
+                <bds-button color="content" variant="outline">
+                  Ação secundária
+                </bds-button>
+              </bds-grid>
+            </bds-grid>
+            <bds-grid xxs="4" padding="3" direction="column"></bds-grid>
+          </bds-grid>
         </bds-carousel-item>
 
-        <bds-carousel-item>
-          <bds-theme-provider theme="light">
-            <bds-paper
-              width="100%"
-              height="310px"
-              bg-color="surface-0"
-              style={{ position: 'relative', overflow: 'hidden' }}
-            >
-              <bds-image
-                style={imageBlipLight}
-                alt="Example of a image"
-                width="100%"
-                height="100%"
-                object-fit="cover"
-                src="https://blipmediastore.blip.ai/public-medias/Media_ccaf8af6-eb96-4372-a4db-91f1180329be?26b68de3-5e74-4724-bc5b-edc3c640ce66"
-              />
-              <bds-grid
-                align-items="center"
-                flex-wrap="wrap"
-                height="100%"
-                padding="x-2"
-                style={{ position: 'relative' }}
-              >
-                <bds-grid xxs="8" direction="column" padding="2" gap="3">
-                  <bds-grid justify-content="space-between">
-                    <bds-illustration
-                      type="brand"
-                      name="blip-store-blue-black"
-                      style={{ width: '100px' }}
-                    ></bds-illustration>
-                    <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                  </bds-grid>
-                  <bds-grid direction="column" gap="2">
-                    <bds-typo variant="fs-32" bold="bold" margin={false}>
-                      {title}
-                    </bds-typo>
-                    <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                    <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                  </bds-grid>
-                  <bds-grid gap="2">
-                    <bds-button color="content" variant="solid">
-                      Ação principal
-                    </bds-button>
-                    <bds-button color="content" variant="outline">
-                      Ação secundária
-                    </bds-button>
-                  </bds-grid>
-                </bds-grid>
-                <bds-grid xxs="4" padding="3" direction="column"></bds-grid>
+        <bds-carousel-item bg-image="https://blipmediastore.blip.ai/public-medias/Media_ccaf8af6-eb96-4372-a4db-91f1180329be?26b68de3-5e74-4724-bc5b-edc3c640ce66">
+          <bds-grid align-items="center" flex-wrap="wrap" padding="x-2" style={{ position: 'relative' }}>
+            <bds-grid xxs="8" direction="column" padding="2" gap="3">
+              <bds-grid justify-content="space-between">
+                <bds-illustration
+                  type="brand"
+                  name="blip-store-blue-black"
+                  style={{ width: '100px' }}
+                ></bds-illustration>
+                <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
               </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+              <bds-grid direction="column" gap="2">
+                <bds-typo variant="fs-32" bold="bold" margin={false}>
+                  Título com até uma linha
+                </bds-typo>
+                <bds-typo variant="fs-16">
+                  Descrição com até duas linhas sobre o item destacado no carrosel respeitando as orientações de uso de
+                  content design.
+                </bds-typo>
+                <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+              </bds-grid>
+              <bds-grid gap="2">
+                <bds-button color="content" variant="solid">
+                  Ação principal
+                </bds-button>
+                <bds-button color="content" variant="outline">
+                  Ação secundária
+                </bds-button>
+              </bds-grid>
+            </bds-grid>
+            <bds-grid xxs="4" padding="3" direction="column"></bds-grid>
+          </bds-grid>
         </bds-carousel-item>
 
-        <bds-carousel-item>
-          <bds-theme-provider theme="dark">
-            <bds-paper
-              width="100%"
-              height="310px"
-              style={{
-                backgroundImage: 'linear-gradient(45deg, #590ABF, #05378E)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              <bds-grid
-                align-items="center"
-                flex-wrap="wrap"
-                height="100%"
-                padding="x-2"
-                style={{ position: 'relative' }}
-              >
-                <bds-grid xxs="4" padding="3" justify-content="center">
-                  <bds-illustration name="agent-1" type="default" style={{ width: '200px' }} />
-                </bds-grid>
-                <bds-grid xxs="8" direction="column" padding="2" gap="3">
-                  <bds-grid justify-content="space-between">
-                    <bds-illustration
-                      type="brand"
-                      name="blip-store-blue-white"
-                      style={{ width: '100px' }}
-                    ></bds-illustration>
-                    <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                  </bds-grid>
-                  <bds-grid direction="column" gap="2">
-                    <bds-typo variant="fs-32" bold="bold" margin={false}>
-                      {title}
-                    </bds-typo>
-                    <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                    <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                  </bds-grid>
-                  <bds-grid gap="2">
-                    <bds-button color="content" variant="solid">
-                      Ação principal
-                    </bds-button>
-                    <bds-button color="content" variant="outline">
-                      Ação secundária
-                    </bds-button>
-                  </bds-grid>
-                </bds-grid>
+        <bds-carousel-item bg-color="linear-gradient(45deg, #590ABF, #05378E)" theme="dark">
+          <bds-grid align-items="center" flex-wrap="wrap" padding="x-2" style={{ position: 'relative' }}>
+            <bds-grid xxs="4" padding="3" justify-content="center">
+              <bds-illustration name="agent-1" type="default" style={{ width: '200px' }} />
+            </bds-grid>
+            <bds-grid xxs="8" direction="column" padding="2" gap="3">
+              <bds-grid justify-content="space-between">
+                <bds-illustration
+                  type="brand"
+                  name="blip-store-blue-white"
+                  style={{ width: '100px' }}
+                ></bds-illustration>
+                <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
               </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+              <bds-grid direction="column" gap="2">
+                <bds-typo variant="fs-32" bold="bold" margin={false}>
+                  Título com até uma linha
+                </bds-typo>
+                <bds-typo variant="fs-16">
+                  Descrição com até duas linhas sobre o item destacado no carrosel respeitando as orientações de uso de
+                  content design.
+                </bds-typo>
+                <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+              </bds-grid>
+              <bds-grid gap="2">
+                <bds-button color="content" variant="solid">
+                  Ação principal
+                </bds-button>
+                <bds-button color="content" variant="outline">
+                  Ação secundária
+                </bds-button>
+              </bds-grid>
+            </bds-grid>
+          </bds-grid>
         </bds-carousel-item>
 
-        <bds-carousel-item>
-          <bds-theme-provider theme="light">
-            <bds-paper
-              width="100%"
-              height="310px"
-              style={{ backgroundColor: '#B2DFFD', position: 'relative', overflow: 'hidden' }}
-            >
-              <bds-grid
-                align-items="center"
-                flex-wrap="wrap"
-                height="100%"
-                padding="x-2"
-                style={{ position: 'relative' }}
-              >
-                <bds-grid xxs="4" padding="3" justify-content="center">
-                  <bds-illustration name="agent-1" type="default" style={{ width: '200px' }} />
-                </bds-grid>
-                <bds-grid xxs="8" direction="column" padding="2" gap="3">
-                  <bds-grid justify-content="space-between">
-                    <bds-illustration
-                      type="brand"
-                      name="blip-store-blue-black"
-                      style={{ width: '100px' }}
-                    ></bds-illustration>
-                    <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                  </bds-grid>
-                  <bds-grid direction="column" gap="2">
-                    <bds-typo variant="fs-32" bold="bold" margin={false}>
-                      {title}
-                    </bds-typo>
-                    <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                    <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                  </bds-grid>
-                  <bds-grid gap="2">
-                    <bds-button color="content" variant="solid">
-                      Ação principal
-                    </bds-button>
-                    <bds-button color="content" variant="outline">
-                      Ação secundária
-                    </bds-button>
-                  </bds-grid>
-                </bds-grid>
+        <bds-carousel-item bg-color="#B2DFFD">
+          <bds-grid align-items="center" flex-wrap="wrap" height="100%" padding="x-2" style={{ position: 'relative' }}>
+            <bds-grid xxs="4" padding="3" justify-content="center">
+              <bds-illustration name="agent-1" type="default" style={{ width: '200px' }} />
+            </bds-grid>
+            <bds-grid xxs="8" direction="column" padding="2" gap="3">
+              <bds-grid justify-content="space-between">
+                <bds-illustration
+                  type="brand"
+                  name="blip-store-blue-black"
+                  style={{ width: '100px' }}
+                ></bds-illustration>
+                <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
               </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+              <bds-grid direction="column" gap="2">
+                <bds-typo variant="fs-32" bold="bold" margin={false}>
+                  Título com até uma linha
+                </bds-typo>
+                <bds-typo variant="fs-16">
+                  Descrição com até duas linhas sobre o item destacado no carrosel respeitando as orientações de uso de
+                  content design.
+                </bds-typo>
+                <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+              </bds-grid>
+              <bds-grid gap="2">
+                <bds-button color="content" variant="solid">
+                  Ação principal
+                </bds-button>
+                <bds-button color="content" variant="outline">
+                  Ação secundária
+                </bds-button>
+              </bds-grid>
+            </bds-grid>
+          </bds-grid>
         </bds-carousel-item>
       </bds-carousel>
     </bds-grid>
@@ -755,208 +693,142 @@ export const CarouselProductMobile = () => {
   return (
     <bds-grid style={{ maxWidth: `320px` }}>
       <bds-carousel arrows="none" slide-per-page={1} gap="2">
-        <bds-carousel-item>
-          <bds-theme-provider theme="dark">
-            <bds-paper
-              width="100%"
-              height="420px"
-              bg-color="surface-4"
-              style={{ position: 'relative', overflow: 'hidden' }}
-            >
-              <bds-image
-                style={imageBlipDark}
-                alt="Example of a image"
-                width="100%"
-                height="100%"
-                object-fit="cover"
-                src="https://blipmediastore.blip.ai/public-medias/Media_bdcb8c47-a74f-47d8-8b55-9a91a367fead?56983082-a993-4c40-9d78-d7a90416db97"
-              />
-              <bds-grid
-                justify-content="center"
-                flex-wrap="wrap"
-                height="100%"
-                style={{ position: 'relative' }}
-                direction="column"
-                gap="3"
-                padding="x-4"
-              >
-                <bds-grid justify-content="space-between">
-                  <bds-illustration
-                    type="brand"
-                    name="blip-store-blue-white"
-                    style={{ width: '100px' }}
-                  ></bds-illustration>
-                  <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                </bds-grid>
-                <bds-grid direction="column" gap="2">
-                  <bds-typo variant="fs-20" bold="bold" margin={false}>
-                    {title}
-                  </bds-typo>
-                  <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                  <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                </bds-grid>
-                <bds-grid gap="2">
-                  <bds-button color="content" variant="solid">
-                    Ação principal
-                  </bds-button>
-                  <bds-button color="content" variant="outline">
-                    Ação secundária
-                  </bds-button>
-                </bds-grid>
-              </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+        <bds-carousel-item
+          bg-image="https://blipmediastore.blip.ai/public-medias/Media_bdcb8c47-a74f-47d8-8b55-9a91a367fead?56983082-a993-4c40-9d78-d7a90416db97"
+          bg-image-brightness={0.4}
+          theme="dark"
+        >
+          <bds-grid
+            justify-content="center"
+            flex-wrap="wrap"
+            height="100%"
+            style={{ position: 'relative' }}
+            direction="column"
+            gap="3"
+            padding="x-4"
+          >
+            <bds-grid justify-content="space-between">
+              <bds-illustration type="brand" name="blip-store-blue-white" style={{ width: '100px' }}></bds-illustration>
+              <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
+            </bds-grid>
+            <bds-grid direction="column" gap="2">
+              <bds-typo variant="fs-20" bold="bold" margin={false}>
+                {title}
+              </bds-typo>
+              <bds-typo variant="fs-16">{paragraph}</bds-typo>
+              <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+            </bds-grid>
+            <bds-grid gap="2">
+              <bds-button color="content" variant="solid">
+                Ação principal
+              </bds-button>
+              <bds-button color="content" variant="outline">
+                Ação secundária
+              </bds-button>
+            </bds-grid>
+          </bds-grid>
         </bds-carousel-item>
 
-        <bds-carousel-item>
-          <bds-theme-provider theme="light">
-            <bds-paper
-              width="100%"
-              height="420px"
-              bg-color="surface-0"
-              style={{ position: 'relative', overflow: 'hidden' }}
-            >
-              <bds-image
-                style={imageBlipLight}
-                alt="Example of a image"
-                width="100%"
-                height="100%"
-                object-fit="cover"
-                src="https://blipmediastore.blip.ai/public-medias/Media_ccaf8af6-eb96-4372-a4db-91f1180329be?26b68de3-5e74-4724-bc5b-edc3c640ce66"
-              />
-              <bds-grid
-                justify-content="center"
-                flex-wrap="wrap"
-                height="100%"
-                style={{ position: 'relative' }}
-                direction="column"
-                gap="3"
-                padding="x-4"
-              >
-                <bds-grid justify-content="space-between">
-                  <bds-illustration
-                    type="brand"
-                    name="blip-store-blue-black"
-                    style={{ width: '100px' }}
-                  ></bds-illustration>
-                  <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                </bds-grid>
-                <bds-grid direction="column" gap="2">
-                  <bds-typo variant="fs-20" bold="bold" margin={false}>
-                    {title}
-                  </bds-typo>
-                  <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                  <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                </bds-grid>
-                <bds-grid gap="2">
-                  <bds-button color="content" variant="solid">
-                    Ação principal
-                  </bds-button>
-                  <bds-button color="content" variant="outline">
-                    Ação secundária
-                  </bds-button>
-                </bds-grid>
-              </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+        <bds-carousel-item bg-image="https://blipmediastore.blip.ai/public-medias/Media_ccaf8af6-eb96-4372-a4db-91f1180329be?26b68de3-5e74-4724-bc5b-edc3c640ce66">
+          <bds-grid
+            justify-content="center"
+            flex-wrap="wrap"
+            height="100%"
+            style={{ position: 'relative' }}
+            direction="column"
+            gap="3"
+            padding="x-4"
+          >
+            <bds-grid justify-content="space-between">
+              <bds-illustration type="brand" name="blip-store-blue-black" style={{ width: '100px' }}></bds-illustration>
+              <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
+            </bds-grid>
+            <bds-grid direction="column" gap="2">
+              <bds-typo variant="fs-20" bold="bold" margin={false}>
+                {title}
+              </bds-typo>
+              <bds-typo variant="fs-16">{paragraph}</bds-typo>
+              <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+            </bds-grid>
+            <bds-grid gap="2">
+              <bds-button color="content" variant="solid">
+                Ação principal
+              </bds-button>
+              <bds-button color="content" variant="outline">
+                Ação secundária
+              </bds-button>
+            </bds-grid>
+          </bds-grid>
         </bds-carousel-item>
 
-        <bds-carousel-item>
-          <bds-theme-provider theme="dark">
-            <bds-paper
-              width="100%"
-              height="420px"
-              style={{
-                backgroundImage: 'linear-gradient(45deg, #590ABF, #05378E)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              <bds-grid
-                justify-content="center"
-                flex-wrap="wrap"
-                height="100%"
-                style={{ position: 'relative' }}
-                direction="column"
-                gap="3"
-                padding="x-4"
-              >
-                <bds-grid justify-content="space-between">
-                  <bds-illustration
-                    type="brand"
-                    name="blip-store-blue-white"
-                    style={{ width: '100px' }}
-                  ></bds-illustration>
-                  <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                </bds-grid>
-                <bds-grid direction="column" gap="2">
-                  <bds-grid gap="3">
-                    <bds-illustration name="agent-1" type="default" style={{ width: '50px' }} />
-                    <bds-typo variant="fs-20" bold="bold" margin={false}>
-                      {title}
-                    </bds-typo>
-                  </bds-grid>
-                  <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                  <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                </bds-grid>
-                <bds-grid gap="2">
-                  <bds-button color="content" variant="solid">
-                    Ação principal
-                  </bds-button>
-                  <bds-button color="content" variant="outline">
-                    Ação secundária
-                  </bds-button>
-                </bds-grid>
+        <bds-carousel-item bg-color="linear-gradient(45deg, #590ABF, #05378E)" theme="dark">
+          <bds-grid
+            justify-content="center"
+            flex-wrap="wrap"
+            height="100%"
+            style={{ position: 'relative' }}
+            direction="column"
+            gap="3"
+            padding="x-4"
+          >
+            <bds-grid justify-content="space-between">
+              <bds-illustration type="brand" name="blip-store-blue-white" style={{ width: '100px' }}></bds-illustration>
+              <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
+            </bds-grid>
+            <bds-grid direction="column" gap="2">
+              <bds-grid gap="3">
+                <bds-illustration name="agent-1" type="default" style={{ width: '50px' }} />
+                <bds-typo variant="fs-20" bold="bold" margin={false}>
+                  {title}
+                </bds-typo>
               </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+              <bds-typo variant="fs-16">{paragraph}</bds-typo>
+              <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+            </bds-grid>
+            <bds-grid gap="2">
+              <bds-button color="content" variant="solid">
+                Ação principal
+              </bds-button>
+              <bds-button color="content" variant="outline">
+                Ação secundária
+              </bds-button>
+            </bds-grid>
+          </bds-grid>
         </bds-carousel-item>
 
-        <bds-carousel-item>
-          <bds-theme-provider theme="light">
-            <bds-paper
-              width="100%"
-              height="420px"
-              style={{ backgroundColor: '#B2DFFD', position: 'relative', overflow: 'hidden' }}
-            >
-              <bds-grid
-                justify-content="center"
-                flex-wrap="wrap"
-                height="100%"
-                style={{ position: 'relative' }}
-                direction="column"
-                gap="3"
-                padding="x-4"
-              >
-                <bds-grid justify-content="space-between">
-                  <bds-illustration
-                    type="brand"
-                    name="blip-store-blue-black"
-                    style={{ width: '100px' }}
-                  ></bds-illustration>
-                  <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
-                </bds-grid>
-                <bds-grid direction="column" gap="2">
-                  <bds-grid gap="3">
-                    <bds-illustration name="agent-1" type="default" style={{ width: '50px' }} />
-                    <bds-typo variant="fs-20" bold="bold" margin={false}>
-                      {title}
-                    </bds-typo>
-                  </bds-grid>
-                  <bds-typo variant="fs-16">{paragraph}</bds-typo>
-                  <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
-                </bds-grid>
-                <bds-grid gap="2">
-                  <bds-button color="content" variant="solid">
-                    Ação principal
-                  </bds-button>
-                  <bds-button color="content" variant="outline">
-                    Ação secundária
-                  </bds-button>
-                </bds-grid>
+        <bds-carousel-item bg-color="#B2DFFD">
+          <bds-grid
+            justify-content="center"
+            flex-wrap="wrap"
+            height="100%"
+            style={{ position: 'relative' }}
+            direction="column"
+            gap="3"
+            padding="x-4"
+          >
+            <bds-grid justify-content="space-between">
+              <bds-illustration type="brand" name="blip-store-blue-black" style={{ width: '100px' }}></bds-illustration>
+              <bds-chip-tag color="outline">Inteligência Artificial</bds-chip-tag>
+            </bds-grid>
+            <bds-grid direction="column" gap="2">
+              <bds-grid gap="3">
+                <bds-illustration name="agent-1" type="default" style={{ width: '50px' }} />
+                <bds-typo variant="fs-20" bold="bold" margin={false}>
+                  {title}
+                </bds-typo>
               </bds-grid>
-            </bds-paper>
-          </bds-theme-provider>
+              <bds-typo variant="fs-16">{paragraph}</bds-typo>
+              <bds-typo variant="fs-16">Observações com até uma linha</bds-typo>
+            </bds-grid>
+            <bds-grid gap="2">
+              <bds-button color="content" variant="solid">
+                Ação principal
+              </bds-button>
+              <bds-button color="content" variant="outline">
+                Ação secundária
+              </bds-button>
+            </bds-grid>
+          </bds-grid>
         </bds-carousel-item>
       </bds-carousel>
     </bds-grid>
