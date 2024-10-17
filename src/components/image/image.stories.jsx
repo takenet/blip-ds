@@ -25,6 +25,7 @@ export const Properties = (args) => {
       width={args.width}
       height={args.height}
       object-fit={args.objectFit}
+      brightness={args.brightness}
     ></bds-image>
   );
 };
@@ -35,6 +36,7 @@ Properties.args = {
   width: '300px',
   height: '200px',
   objectFit: 'cover',
+  brightness: 1,
 };
 
 Properties.argTypes = {
@@ -73,14 +75,20 @@ Properties.argTypes = {
     options: ['fill', 'contain', 'cover', 'none', 'scale-down'],
     control: 'select',
   },
+  brightness: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'number',
+  },
 };
 
 export const FrameworkReact = () => (
   <BdsImage
-    src='https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D'
-    alt='Example of a image'
-    width='300px'
-    height='200px'
-    objectFit='cover'
+    src="https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D"
+    alt="Example of a image"
+    width="300px"
+    height="200px"
+    objectFit="cover"
   ></BdsImage>
 );

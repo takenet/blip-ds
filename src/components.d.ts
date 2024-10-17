@@ -24,6 +24,7 @@ import { PaperBackground, PaperElevation } from "./components/paper/paper-interf
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { arrows, gap } from "./components/carousel/carousel-interface";
+import { Themes } from "./components/theme-provider/theme-provider";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -64,7 +65,7 @@ import { SwitchSize } from "./components/switch/switch";
 import { JustifyContent } from "./components/table/table-cell/table-cell";
 import { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
-import { Themes } from "./components/theme-provider/theme-provider";
+import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -575,6 +576,13 @@ export namespace Components {
         "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
+        "bgColor"?: string;
+        "bgImage"?: string;
+        "bgImageBrightness"?: number;
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
@@ -1030,6 +1038,10 @@ export namespace Components {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -4156,6 +4168,13 @@ declare namespace LocalJSX {
         "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
+        "bgColor"?: string;
+        "bgImage"?: string;
+        "bgImageBrightness"?: number;
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
@@ -4649,6 +4668,10 @@ declare namespace LocalJSX {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
          */
