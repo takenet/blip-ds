@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+}
+
+.carrosel-item-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  ::slotted(*) {
+    position: relative;
+  }
+}
+
+.image-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
