@@ -94,7 +94,7 @@ $input_fixed: 140px;
   }
 }
 
-.element_input {
+:host {
   display: flex;
   flex-direction: column;
   position: relative;
