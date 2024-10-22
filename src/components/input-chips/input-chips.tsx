@@ -5,7 +5,7 @@ import { InputChipsTypes } from './input-chips-interface';
 @Component({
   tag: 'bds-input-chips',
   styleUrl: 'input-chips.scss',
-  scoped: true,
+  shadow: true,
 })
 export class InputChips {
   private nativeInput?: HTMLInputElement;
@@ -196,6 +196,7 @@ export class InputChips {
   @Watch('internalChips')
   protected internalValueChanged(): void {
     this.minMaxValidation();
+    this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
     this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
@@ -275,6 +276,9 @@ export class InputChips {
 
   private handleOnBlur(): void {
     this.bdsBlur.emit(this.internalChips);
+    if (this.internalChips.length > 0) {
+      this.bdsSubmit.emit({ value: this.internalChips });
+    }
     this.handleDelimiters();
     this.isPressed = false;
     if (this.blurCreation) {
@@ -316,6 +320,7 @@ export class InputChips {
       case 'Backspace' || 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
           this.removeLastChip();
+          this.bdsChange.emit({ data: this.internalChips });
           this.bdsChangeChips.emit({ data: this.internalChips });
         }
         break;
@@ -529,53 +534,51 @@ export class InputChips {
   render() {
     const isPressed = this.isPressed && !this.disabled;
     return (
-      <Host>
-        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
-          <div
-            class={{
-              input: true,
-              'input--state-primary': !this.danger && !this.validationDanger,
-              'input--state-danger': this.danger || this.validationDanger,
-              'input--state-success': this.success,
-              'input--state-disabled': this.disabled,
-              'input--label': !!this.label,
-              'input--pressed': isPressed,
-            }}
-            onClick={this.onClickWrapper}
-            onKeyDown={this.keyPressWrapper}
-            part="input-container"
-          >
-            {this.renderIcon()}
-            <div class="input__container">
-              {this.renderLabel()}
-              <div class={{ input__container__wrapper: true }}>
-                {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
-                {this.inputAvalible && (
-                  <input
-                    ref={(input) => (this.nativeInput = input)}
-                    class={{ input__container__text: true }}
-                    name={this.inputName}
-                    maxlength={this.maxlength}
-                    placeholder={this.placeholder}
-                    onInput={this.onInput}
-                    onFocus={this.onFocus}
-                    onBlur={() => this.handleOnBlur()}
-                    onChange={() => this.handleChange}
-                    value={this.value}
-                    disabled={this.disabled}
-                    data-test={this.dataTest}
-                  ></input>
-                )}
-              </div>
+      <Host aria-disabled={this.disabled ? 'true' : null}>
+        <div
+          class={{
+            input: true,
+            'input--state-primary': !this.danger && !this.validationDanger,
+            'input--state-danger': this.danger || this.validationDanger,
+            'input--state-success': this.success,
+            'input--state-disabled': this.disabled,
+            'input--label': !!this.label,
+            'input--pressed': isPressed,
+          }}
+          onClick={this.onClickWrapper}
+          onKeyDown={this.keyPressWrapper}
+          part="input-container"
+        >
+          {this.renderIcon()}
+          <div class="input__container">
+            {this.renderLabel()}
+            <div class={{ input__container__wrapper: true }}>
+              {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
+              {this.inputAvalible && (
+                <input
+                  ref={(input) => (this.nativeInput = input)}
+                  class={{ input__container__text: true }}
+                  name={this.inputName}
+                  maxlength={this.maxlength}
+                  placeholder={this.placeholder}
+                  onInput={this.onInput}
+                  onFocus={this.onFocus}
+                  onBlur={() => this.handleOnBlur()}
+                  onChange={() => this.handleChange}
+                  value={this.value}
+                  disabled={this.disabled}
+                  data-test={this.dataTest}
+                ></input>
+              )}
             </div>
-            {this.counterLength && (
-              <bds-counter-text length={this.internalChips.length} max={this.maxChipsLength} active={isPressed} />
-            )}
-            {this.success && <bds-icon class="icon-success" name="checkb" theme="outline" size="xxx-small" />}
-            <slot name="input-right"></slot>
           </div>
-          {this.renderMessage()}
+          {this.counterLength && (
+            <bds-counter-text length={this.internalChips.length} max={this.maxChipsLength} active={isPressed} />
+          )}
+          {this.success && <bds-icon class="icon-success" name="checkb" theme="outline" size="xxx-small" />}
+          <slot name="input-right"></slot>
         </div>
+        {this.renderMessage()}
       </Host>
     );
   }
