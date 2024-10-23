@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen, Host } from '@stencil/core';
 import { Option } from '../selects/select-interface';
 import { numberValidation } from '../../utils/validations';
 import * as countriesJson from './countries.json';
@@ -6,7 +6,7 @@ import * as countriesJson from './countries.json';
 @Component({
   tag: 'bds-input-phone-number',
   styleUrl: 'input-phone-number.scss',
-  scoped: true,
+  shadow: true,
 })
 export class InputPhoneNumber {
   private nativeInput?: HTMLInputElement;
@@ -261,21 +261,6 @@ export class InputPhoneNumber {
     });
   }
 
-  private setFocusWrapper = (): void => {
-    if (this.nativeInput) {
-      this.nativeInput.focus();
-      this.onBlur();
-    }
-  };
-
-  private removeFocusWrapper = (event: FocusEvent): void => {
-    const isInputElement = (event.relatedTarget as Element).localName === 'bds-input';
-
-    if (this.nativeInput && !isInputElement) {
-      this.onBlur();
-    }
-  };
-
   private keyPressWrapper = (event: KeyboardEvent): void => {
     const isSelectElement = (event.target as Element).localName === 'bds-select';
     const isInputElement = (event.target as Element).localName === 'input';
@@ -362,15 +347,7 @@ export class InputPhoneNumber {
     const flagsNames = Object.keys(countries);
 
     return (
-      <div
-        class={{
-          'select-phone-number': true,
-          'select-phone-number--pressed': this.isPressed,
-        }}
-        onFocus={this.setFocusWrapper}
-        onBlur={this.removeFocusWrapper}
-        onKeyPress={this.keyPressWrapper}
-      >
+      <Host aria-disabled={this.disabled ? 'true' : null}>
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
           <div
             class={{
@@ -391,7 +368,7 @@ export class InputPhoneNumber {
               onClick={this.toggle}
               onKeyDown={this.handleKeyDown.bind(this)}
               data-test={this.dtSelectFlag}
-              class="select-phone-number__icon"
+              class="input__icon"
               tabindex="0"
             >
               <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
@@ -400,7 +377,7 @@ export class InputPhoneNumber {
             <div class="input__container">
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
-                <div class="select-phone-number__country-code">
+                <div class="input__container__country-code">
                   <bds-typo no-wrap="true" variant="fs-14">
                     {this.value}
                   </bds-typo>
@@ -445,7 +422,7 @@ export class InputPhoneNumber {
               </bds-select-option>
             ))}
         </div>
-      </div>
+      </Host>
     );
   }
 }
