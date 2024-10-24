@@ -10,6 +10,7 @@
 | Property         | Attribute           | Description                                                                                                              | Type                            | Default     |
 | ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ----------- |
 | `accept`         | `accept`            | Used to accept a especific type of file.                                                                                 | `string`                        | `undefined` |
+| `dataAccept`     | `data-accept`       | Used to accept a especific type of file.                                                                                 | `string \| string[]`            | `[]`        |
 | `dtButtonDelete` | `dt-button-delete`  | Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear. | `string`                        | `null`      |
 | `dtInputFiles`   | `dt-input-files`    | Data test is the prop to specifically test the component action object. dtInputFiles is the data-test to button clear.   | `string`                        | `null`      |
 | `dtLabelAddFile` | `dt-label-add-file` | Data test is the prop to specifically test the component action object. dtLabelAddFile is the data-test to button clear. | `string`                        | `null`      |
