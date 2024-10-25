@@ -378,7 +378,8 @@ export class BdsCarousel {
             </bds-theme-provider>
           )}
         </div>
-        {this.autoplay &&
+        {this.internalItens.length > 1 &&
+          this.autoplay &&
           (this.loading ? (
             <bds-skeleton
               class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
@@ -393,7 +394,7 @@ export class BdsCarousel {
               size="small"
             />
           ))}
-        {this.bullets && (
+        {this.internalItens.length > 1 && this.bullets && (
           <div class={{ carousel_bullets: true }}>
             {this.loading ? (
               <bds-grid gap="2" justify-content="center">

@@ -546,7 +546,7 @@ export const CarouselProduct = () => {
           bg-image-brightness={0.4}
           theme="dark"
         >
-          <bds-grid align-items="center" flex-wrap="wrap" padding="x-2" style={{ position: 'relative' }}>
+          <bds-grid align-items="center" flex-wrap="wrap" padding="2" style={{ position: 'relative' }}>
             <bds-grid xxs="8" direction="column" padding="2" gap="3">
               <bds-grid justify-content="space-between">
                 <bds-illustration
@@ -580,7 +580,7 @@ export const CarouselProduct = () => {
         </bds-carousel-item>
 
         <bds-carousel-item bg-image="https://blipmediastore.blip.ai/public-medias/Media_ccaf8af6-eb96-4372-a4db-91f1180329be?26b68de3-5e74-4724-bc5b-edc3c640ce66">
-          <bds-grid align-items="center" flex-wrap="wrap" padding="x-2" style={{ position: 'relative' }}>
+          <bds-grid align-items="center" flex-wrap="wrap" padding="2" style={{ position: 'relative' }}>
             <bds-grid xxs="8" direction="column" padding="2" gap="3">
               <bds-grid justify-content="space-between">
                 <bds-illustration
@@ -614,7 +614,7 @@ export const CarouselProduct = () => {
         </bds-carousel-item>
 
         <bds-carousel-item bg-color="linear-gradient(45deg, #590ABF, #05378E)" theme="dark">
-          <bds-grid align-items="center" flex-wrap="wrap" padding="x-2" style={{ position: 'relative' }}>
+          <bds-grid align-items="center" flex-wrap="wrap" padding="2" style={{ position: 'relative' }}>
             <bds-grid xxs="4" padding="3" justify-content="center">
               <bds-illustration name="agent-1" type="default" style={{ width: '200px' }} />
             </bds-grid>
@@ -650,7 +650,7 @@ export const CarouselProduct = () => {
         </bds-carousel-item>
 
         <bds-carousel-item bg-color="#B2DFFD">
-          <bds-grid align-items="center" flex-wrap="wrap" height="100%" padding="x-2" style={{ position: 'relative' }}>
+          <bds-grid align-items="center" flex-wrap="wrap" height="100%" padding="2" style={{ position: 'relative' }}>
             <bds-grid xxs="4" padding="3" justify-content="center">
               <bds-illustration name="agent-1" type="default" style={{ width: '200px' }} />
             </bds-grid>
@@ -705,7 +705,7 @@ export const CarouselProductMobile = () => {
             style={{ position: 'relative' }}
             direction="column"
             gap="3"
-            padding="x-4"
+            padding="4"
           >
             <bds-grid justify-content="space-between">
               <bds-illustration type="brand" name="blip-store-blue-white" style={{ width: '100px' }}></bds-illustration>
@@ -737,7 +737,7 @@ export const CarouselProductMobile = () => {
             style={{ position: 'relative' }}
             direction="column"
             gap="3"
-            padding="x-4"
+            padding="4"
           >
             <bds-grid justify-content="space-between">
               <bds-illustration type="brand" name="blip-store-blue-black" style={{ width: '100px' }}></bds-illustration>
@@ -769,7 +769,7 @@ export const CarouselProductMobile = () => {
             style={{ position: 'relative' }}
             direction="column"
             gap="3"
-            padding="x-4"
+            padding="4"
           >
             <bds-grid justify-content="space-between">
               <bds-illustration type="brand" name="blip-store-blue-white" style={{ width: '100px' }}></bds-illustration>
@@ -804,7 +804,7 @@ export const CarouselProductMobile = () => {
             style={{ position: 'relative' }}
             direction="column"
             gap="3"
-            padding="x-4"
+            padding="4"
           >
             <bds-grid justify-content="space-between">
               <bds-illustration type="brand" name="blip-store-blue-black" style={{ width: '100px' }}></bds-illustration>

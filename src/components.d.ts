@@ -2683,6 +2683,10 @@ export namespace Components {
          */
         "accept": string;
         /**
+          * Used to accept a especific type of file.
+         */
+        "dataAccept": string[] | string;
+        /**
           * Used for delete a item from the list.
          */
         "deleteAllFiles": () => Promise<void>;
@@ -6464,6 +6468,10 @@ declare namespace LocalJSX {
           * Used to accept a especific type of file.
          */
         "accept"?: string;
+        /**
+          * Used to accept a especific type of file.
+         */
+        "dataAccept"?: string[] | string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
          */

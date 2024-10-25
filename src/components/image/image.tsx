@@ -62,9 +62,8 @@ export class Image {
   @State() currentSrc: string;
 
   componentDidLoad() {
-    this.element.style.width = this.width ? this.width : '100%';
-    const defaultHeight = this.element.offsetWidth / 1.8;
-    this.element.style.height = this.height?.length > 0 ? this.height : `${defaultHeight}px`;
+    this.element.style.width = this.width ? this.width : 'auto';
+    this.element.style.height = this.height?.length > 0 ? this.height : 'auto';
   }
 
   @Method()

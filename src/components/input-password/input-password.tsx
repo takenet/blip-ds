@@ -4,7 +4,7 @@ import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface
 @Component({
   tag: 'bds-input-password',
   styleUrl: 'input-password.scss',
-  scoped: true,
+  shadow: true,
 })
 export class InputPassword {
   private nativeInput?: HTMLInputElement;
@@ -200,8 +200,16 @@ export class InputPassword {
     this.bdsInputPasswordSubmit.emit();
   };
 
-  private keyPressWrapper = (ev: Event): void => {
-    this.bdsKeyDownBackspace.emit({ ev, value: this.value });
+  private keyPressWrapper = (event: KeyboardEvent): void => {
+    switch (event.key) {
+      case 'Enter':
+        this.bdsInputPasswordSubmit.emit({ event, value: this.value });
+
+        break;
+      case 'Backspace' || 'Delete':
+        this.bdsKeyDownBackspace.emit({ event, value: this.value });
+        break;
+    }
   };
 
   private renderIcon(): HTMLElement {
@@ -272,61 +280,59 @@ export class InputPassword {
     const autocomplete = this.getAutoComplete();
 
     return (
-      <Host>
-        <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
-          <div
-            class={{
-              input: true,
-              'input--state-primary': !this.danger && !this.validationDanger,
-              'input--state-danger': this.danger || this.validationDanger,
-              'input--state-success': this.success,
-              'input--state-disabled': this.disabled,
-              'input--label': !!this.label,
-              'input--pressed': isPressed,
-            }}
-            onClick={this.onClickWrapper}
-            onKeyDown={this.keyPressWrapper}
-            part="input-container"
-          >
-            {this.renderIcon()}
-            <div class="input__container">
-              {this.renderLabel()}
-              <div class={{ input__container__wrapper: true }}>
-                <input
-                  ref={this.refNativeInput}
-                  class={{ input__container__text: true }}
-                  type={type}
-                  name={this.inputName}
-                  min={this.min}
-                  max={this.max}
-                  minLength={this.minlength}
-                  maxLength={this.maxlength}
-                  readOnly={this.readonly}
-                  autocomplete={autocomplete}
-                  autocapitalize={this.autoCapitalize}
-                  placeholder={this.placeholder}
-                  onInput={this.onInput}
-                  onFocus={this.onFocus}
-                  onBlur={this.onBlur}
-                  onSubmit={this.onSubmit}
-                  value={this.value}
-                  disabled={this.disabled}
-                  data-test={this.dataTest}
-                ></input>
-              </div>
+      <Host aria-disabled={this.disabled ? 'true' : null}>
+        <div
+          class={{
+            input: true,
+            'input--state-primary': !this.danger && !this.validationDanger,
+            'input--state-danger': this.danger || this.validationDanger,
+            'input--state-success': this.success,
+            'input--state-disabled': this.disabled,
+            'input--label': !!this.label,
+            'input--pressed': isPressed,
+          }}
+          onClick={this.onClickWrapper}
+          onKeyDown={this.keyPressWrapper}
+          part="input-container"
+        >
+          {this.renderIcon()}
+          <div class="input__container">
+            {this.renderLabel()}
+            <div class={{ input__container__wrapper: true }}>
+              <input
+                ref={this.refNativeInput}
+                class={{ input__container__text: true }}
+                type={type}
+                name={this.inputName}
+                min={this.min}
+                max={this.max}
+                minLength={this.minlength}
+                maxLength={this.maxlength}
+                readOnly={this.readonly}
+                autocomplete={autocomplete}
+                autocapitalize={this.autoCapitalize}
+                placeholder={this.placeholder}
+                onInput={this.onInput}
+                onFocus={this.onFocus}
+                onBlur={this.onBlur}
+                onSubmit={this.onSubmit}
+                value={this.value}
+                disabled={this.disabled}
+                data-test={this.dataTest}
+              ></input>
             </div>
-            <div
-              class="input__password--icon"
-              onClick={this.toggleEyePassword}
-              onKeyDown={this.handleKeyDown.bind(this)}
-              tabindex="0"
-            >
-              <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
-            </div>
-            {this.success && <bds-icon class="icon-success" name="check" theme="outline" size="xxx-small" />}
           </div>
-          {this.renderMessage()}
+          <div
+            class="input__password--icon"
+            onClick={this.toggleEyePassword}
+            onKeyDown={this.handleKeyDown.bind(this)}
+            tabindex="0"
+          >
+            <bds-icon size="small" name={iconPassword} color="inherit"></bds-icon>
+          </div>
+          {this.success && <bds-icon class="icon-success" name="check" theme="outline" size="xxx-small" />}
         </div>
+        {this.renderMessage()}
       </Host>
     );
   }
