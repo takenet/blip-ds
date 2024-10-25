@@ -115,133 +115,122 @@ export const Properties = (args) => {
       gap={args.gap}
       grab={args.grab}
     >
-      <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="star"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                1 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+      <bds-carousel-item
+        bg-color={args.bgColor}
+        bg-image={args.bgImage}
+        bg-image-brightness={args.bgImageBrightness}
+        theme={args.theme}
+      >
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="star"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              1 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
       <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="check"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                2 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="check"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              2 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
       <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="air-ballon"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                3 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="air-ballon"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              3 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
       <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="analytics-satisfaction"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                4 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="analytics-satisfaction"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              4 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
       <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="avatar"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                5 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="avatar"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              5 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
       <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="binoculars"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                6 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="binoculars"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              6 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
       <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="bot-list"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                7 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="bot-list"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              7 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
       <bds-carousel-item>
-        <bds-paper width="100%" bg-color="surface-0" elevation="none">
-          <bds-grid align-items="center">
-            <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
-              <bds-illustration type="spots" name="bill-1"></bds-illustration>
-            </bds-grid>
-            <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
-              <bds-typo variant="fs-20" bold="bold" margin={false}>
-                8 - {title}
-              </bds-typo>
-              <bds-typo variant="fs-16">{paragraph}</bds-typo>
-              <bds-button>Saiba mais</bds-button>
-            </bds-grid>
+        <bds-grid align-items="center">
+          <bds-grid xxs="3" padding="3" direction="column" margin="y-2">
+            <bds-illustration type="spots" name="bill-1"></bds-illustration>
           </bds-grid>
-        </bds-paper>
+          <bds-grid xxs="9" direction="column" padding="2" margin="y-2" gap="1">
+            <bds-typo variant="fs-20" bold="bold" margin={false}>
+              8 - {title}
+            </bds-typo>
+            <bds-typo variant="fs-16">{paragraph}</bds-typo>
+            <bds-button>Saiba mais</bds-button>
+          </bds-grid>
+        </bds-grid>
       </bds-carousel-item>
     </bds-carousel>
   );
@@ -320,6 +309,35 @@ Properties.argTypes = {
     description: 'Habilite se o componente terá função de Grab',
     control: 'boolean',
   },
+  bgColor: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Selecione a cor de fundo para o item.',
+    control: 'text',
+  },
+  bgImage: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Selecione a imagem de fundo para o item.',
+    control: 'text',
+  },
+  bgImageBrightness: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Selecione o brilho na imagem de fundo disponibilizada para o item.',
+    control: 'number',
+  },
+  theme: {
+    table: {
+      defaultValue: { summary: 'light' },
+    },
+    description: 'Selecione o tema especifico para o item.',
+    options: ['light', 'dark', 'high-contrast'],
+    control: 'select',
+  },
 };
 
 Properties.args = {
@@ -333,6 +351,11 @@ Properties.args = {
   slidePerPage: 1,
   gap: 'none',
   grab: true,
+  bgColor: '#000',
+  bgImage:
+    'https://blipmediastore.blip.ai/public-medias/Media_bdcb8c47-a74f-47d8-8b55-9a91a367fead?56983082-a993-4c40-9d78-d7a90416db97',
+  bgImageBrightness: 0.5,
+  theme: 'dark',
 };
 
 const containerCarousel = {
