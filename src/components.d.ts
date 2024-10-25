@@ -1031,6 +1031,10 @@ export namespace Components {
          */
         "alt"?: string;
         /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -4653,6 +4657,10 @@ declare namespace LocalJSX {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
          */

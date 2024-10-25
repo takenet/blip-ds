@@ -37,6 +37,11 @@ export class Image {
   @Prop() objectFit?: ObjectFitValue = 'cover';
 
   /**
+   * Brightness of the image.
+   */
+  @Prop() brightness?: number;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -57,9 +62,8 @@ export class Image {
   @State() currentSrc: string;
 
   componentDidLoad() {
-    this.element.style.width = this.width ? this.width : '100%';
-    const defaultHeight = this.element.offsetWidth / 1.8;
-    this.element.style.height = this.height?.length > 0 ? this.height : `${defaultHeight}px`;
+    this.element.style.width = this.width ? this.width : 'auto';
+    this.element.style.height = this.height?.length > 0 ? this.height : 'auto';
   }
 
   @Method()
@@ -95,7 +99,12 @@ export class Image {
           <img
             src={this.currentSrc}
             alt={this.alt}
-            style={{ objectFit: this.objectFit, width: '100%', height: '100%' }}
+            style={{
+              objectFit: this.objectFit,
+              width: '100%',
+              height: '100%',
+              filter: `brightness(${this.brightness})`,
+            }}
             data-test={this.dataTest}
             draggable={false}
           />
