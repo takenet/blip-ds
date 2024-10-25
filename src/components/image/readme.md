@@ -33,6 +33,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [bds-carousel-item](../carousel)
+
 ### Depends on
 
 - [bds-skeleton](../skeleton)
@@ -44,6 +48,7 @@ graph TD;
   bds-image --> bds-skeleton
   bds-image --> bds-illustration
   bds-skeleton --> bds-grid
+  bds-carousel-item --> bds-image
   style bds-image fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
