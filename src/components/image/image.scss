@@ -2,9 +2,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: $color-surface-3;
 
   .img-feedback {
     height: 76%;
   }
+}
+
+:host(.empty_img) {
+  background-color: $color-surface-3;
 }

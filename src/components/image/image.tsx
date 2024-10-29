@@ -94,7 +94,7 @@ export class Image {
       this.loadImage();
     }
     return (
-      <Host>
+      <Host class={{ empty_img: !this.imageLoaded }}>
         {this.imageLoaded ? (
           <img
             src={this.currentSrc}
