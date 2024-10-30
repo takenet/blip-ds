@@ -16,24 +16,12 @@ export class Accordion {
   @State() numberElement?: number = null;
   @State() condition?: boolean = false;
 
-  /**
-   * bdsToggle. Event to return value of toggle.
-   */
   @Event() bdsToggle?: EventEmitter;
-
-  /**
-   * bdsAccordionOpen. Event to return value when accordion is open.
-   */
   @Event() bdsAccordionOpen?: EventEmitter;
-
-  /**
-   * bdsAccordionOpen. Event to return value when accordion is closed.
-   */
   @Event() bdsAccordionClose?: EventEmitter;
-  /**
-   * A prop for make the accordion open when is render.
-   */
+
   @Prop() startOpen?: boolean = false;
+  @Prop() divisor?: boolean = true;
 
   @Method()
   async toggle() {
@@ -43,6 +31,8 @@ export class Accordion {
 
   @Method()
   async open() {
+    this.accheaders?.open();
+    this.accBodies?.open();
     this.isOpen = true;
   }
 
@@ -53,13 +43,11 @@ export class Accordion {
     this.isOpen = false;
   }
 
-  // Método interno
   @Method()
   async notStart() {
     this.startOpen = false;
   }
 
-  // Método interno
   @Method()
   async reciveNumber(number) {
     this.numberElement = number;
@@ -67,20 +55,17 @@ export class Accordion {
 
   @Watch('isOpen')
   isOpenChanged(value): void {
-    if (this.accGroup.collapse == 'single' && this.condition === false) {
-      this.accheaders?.toggle();
-      this.accBodies?.toggle();
-      this.accGroup?.closeAll(this.numberElement);
-    } else {
-      if (value) {
-        this.accheaders?.open();
-        this.accBodies?.open();
-        this.bdsAccordionOpen.emit();
-      } else {
-        this.accheaders?.close();
-        this.accBodies?.close();
-        this.bdsAccordionClose.emit();
+    if (value) {
+      if (this.accGroup.collapse == 'single' && this.condition === false) {
+        this.accGroup?.closeAll(this.numberElement);
       }
+      this.accheaders?.open();
+      this.accBodies?.open();
+      this.bdsAccordionOpen.emit();
+    } else {
+      this.accheaders?.close();
+      this.accBodies?.close();
+      this.bdsAccordionClose.emit();
     }
     this.condition = false;
   }
@@ -91,6 +76,13 @@ export class Accordion {
       (this.element.parentElement as HTMLBdsAccordionGroupElement);
     this.accheaders = this.element.children[0] as HTMLBdsAccordionHeaderElement;
     this.accBodies = this.element.children[1] as HTMLBdsAccordionBodyElement;
+
+    // Passar a prop divisor para o AccordionBody
+    const accordionBody = this.element.querySelector('bds-accordion-body') as HTMLBdsAccordionBodyElement;
+    if (accordionBody) {
+      (accordionBody as any).divisor(this.divisor);
+    }
+
     if (this.startOpen === true) {
       this.condition = true;
       this.isOpen = true;

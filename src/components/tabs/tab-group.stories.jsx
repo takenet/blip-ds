@@ -11,42 +11,47 @@ export default {
   },
 };
 
-const styles = {
-  width: '720px',
-};
-
-const paperStyles = {
-  marginTop: '2px',
-  marginBottom: '10px',
-  padding: '5px',
-};
-
 const contentDefault = {
   color: 'var(--color-content-default, #000)',
 };
 
 export const Properties = (args) => {
   return (
-          <bds-tab-group align={args.align} content-scrollable={args.contentScrollable}>
-            <bds-tab-item label={args.label}>
-              <bds-typo variant="fs-16">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies consectetur quam ut feugiat.
-                Integer arcu enim, placerat eget mauris sed, pretium congue augue.
-              </bds-typo>
-            </bds-tab-item>
-            <bds-tab-item disable={args.disable} label="Advanced settings">
-              <bds-typo variant="fs-16">
-                Donec ut lacus sit amet tellus egestas placerat non sed lacus. Curabitur varius commodo sagittis. In hac
-                habitasse platea dictumst. Morbi non suscipit nisi.
-              </bds-typo>
-            </bds-tab-item>
-            <bds-tab-item open={args.open} label="Very advanced settings">
-              <bds-typo variant="fs-16">
-                Suspendisse pellentesque quam porttitor enim rhoncus vehicula. Pellentesque habitant morbi tristique
-                senectus et netus et malesuada fames ac turpis egestas.
-              </bds-typo>
-            </bds-tab-item>
-          </bds-tab-group>
+    <bds-tab-group align={args.align} content-scrollable={args.contentScrollable}>
+      <bds-tab-item 
+        label={args.label} 
+        icon={args.icon} 
+        icon-position={args.iconPosition} 
+        icon-theme={args.iconTheme} 
+        badge={args.badge} 
+        badge-shape={args.badgeShape} 
+        badge-color={args.badgeColor} 
+        badge-icon={args.badgeIcon} 
+        badge-animation={args.badgeAnimation} 
+        badge-number={args.badgeNumber}
+        badge-position={args.badgePosition}
+      >
+        <bds-grid padding="2">
+          <bds-typo variant="fs-16">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies consectetur quam ut feugiat. Integer arcu enim, placerat eget mauris sed, pretium congue augue.
+          </bds-typo>
+        </bds-grid>
+      </bds-tab-item>
+      <bds-tab-item disable={args.disable} label="Advanced settings">
+        <bds-grid padding="2">
+          <bds-typo variant="fs-16">
+            Donec ut lacus sit amet tellus egestas placerat non sed lacus. Curabitur varius commodo sagittis. In hac habitasse platea dictumst. Morbi non suscipit nisi.
+          </bds-typo>
+        </bds-grid>
+      </bds-tab-item>
+      <bds-tab-item open={args.open} label="Very advanced settings">
+        <bds-grid padding="2">
+          <bds-typo variant="fs-16">
+            Suspendisse pellentesque quam porttitor enim rhoncus vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          </bds-typo>
+        </bds-grid>
+      </bds-tab-item>
+    </bds-tab-group>
   );
 };
 
@@ -55,7 +60,18 @@ Properties.args = {
   contentScrollable: true,
   disable: false,
   label: 'Basic settings',
-  open: false
+  icon: 'builder-publish-bot',
+  iconPosition: 'left',
+  iconTheme: 'outline',
+  badge: true,
+  badgeShape: 'circle',
+  badgeColor: 'warning',
+  badgeIcon: 'warning',
+  badgeAnimation: false,
+  badgeNumber: null,
+  badgePosition: 'right',
+  open: false,
+  dataTest: ''
 };
 
 Properties.argTypes = {
@@ -63,7 +79,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'center' },
     },
-    options: ["center", "left", "right"],
+    options: ['center', 'left', 'right'],
     control: 'select',
   },
   contentScrollable: {
@@ -84,13 +100,85 @@ Properties.argTypes = {
     },
     control: 'text',
   },
+  icon: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  iconPosition: {
+    table: {
+      defaultValue: { summary: 'left' },
+    },
+    options: ['left', 'right'],
+    control: 'select',
+  },
+  iconTheme: {
+    table: {
+      defaultValue: { summary: 'solid' },
+    },
+    options: ['solid', 'outline', 'emoji', 'logos'],
+    control: 'select',
+  },
+  badge: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  badgeShape: {
+    table: {
+      defaultValue: { summary: 'circle' },
+    },
+    options: ['circle', 'square', 'triangle', 'triangle-reverse', 'polygon'],
+    control: 'select',
+  },
+  badgeColor: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  badgeIcon: {
+    table: {
+      defaultValue: { summary: 'system' },
+    },
+    options: ['system', 'danger', 'warning', 'success', 'neutral'],
+    control: 'select',
+  },
+  badgeAnimation: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
+  badgeNumber: {
+    table: {
+      defaultValue: { summary: 'null' },
+    },
+    control: 'number',
+  },
+  badgePosition: {
+    table: {
+      defaultValue: { summary: 'right' },
+    },
+    options: ['left', 'right'],
+    control: 'select',
+  },
   open: {
     table: {
       defaultValue: { summary: 'false' },
     },
     control: 'boolean',
   },
-}
+  dataTest: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+};
+
 
 export const Events = () => {
   useEffect(() => {

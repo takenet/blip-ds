@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BdsButton } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './button.mdx';
 
@@ -17,15 +17,15 @@ export const Properties = (args) => {
     <bds-button
       id="btn"
       variant={args.variant}
+      color={args.color}
       size={args.size}
       disabled={args.disabled}
-      icon={args.icon}
+      icon-left={args.iconLeft}
+      icon-right={args.iconRight}
       icon-theme={args.iconTheme}
-      arrow={args.arrow}
       type={args.type}
       type-icon={args.typeIcon}
       bds-loading={args.loading}
-      bds-loading-color={args.loadingColor}
       dataTest={args.dataTest}
     >
       {args.text}
@@ -36,10 +36,18 @@ export const Properties = (args) => {
 Properties.argTypes = {
   variant: {
     table: {
+      defaultValue: { summary: 'solid' },
+    },
+    description: 'Escolha o estilo do botão.',
+    options: ['solid', 'outline', 'text'],
+    control: { type: 'select' },
+  },
+  color: {
+    table: {
       defaultValue: { summary: 'primary' },
     },
     description: 'Escolha o estilo do botão.',
-    options: ['primary', 'secondary', 'tertiary', 'delete'],
+    options: ['primary', 'content', 'positive', 'negative'],
     control: { type: 'select' },
   },
   text: {
@@ -58,18 +66,11 @@ Properties.argTypes = {
   },
   size: {
     table: {
-      defaultValue: { summary: 'standard' },
+      defaultValue: { summary: 'medium' },
     },
     description: 'Defina a altura do botão.',
-    options: ['standard', 'short'],
+    options: ['medium', 'large'],
     control: { type: 'select' },
-  },
-  arrow: {
-    table: {
-      defaultValue: { summary: 'false' },
-    },
-    description: 'Defina se uma seta aparecerá do lado direito do texto.',
-    control: { type: 'boolean' },
   },
   type: {
     table: {
@@ -102,15 +103,14 @@ Properties.argTypes = {
     description: 'Ativa o loading do botão. (Outros elementos visuais não apareceram enquanto essa prop estiver ativa)',
     control: { type: 'boolean' },
   },
-  loadingColor: {
+  iconLeft: {
     table: {
-      defaultValue: { summary: 'light' },
+      defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina a cor do loading.',
-    options: ['light', 'main'],
-    control: { type: 'select' },
+    description: 'Defina o ícone que será utilizado no botão (Apenas outline).',
+    control: 'text',
   },
-  icon: {
+  iconRight: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
@@ -127,17 +127,17 @@ Properties.argTypes = {
 };
 
 Properties.args = {
-  variant: 'primary',
+  variant: 'solid',
   text: 'Button',
+  color: 'primary',
   disabled: 'false',
-  size: 'standard',
+  size: 'medium',
   typeIcon: 'icon',
-  icon: '',
+  iconLeft: '',
+  iconRight: '',
   iconTheme: 'outline',
-  arrow: 'false',
   type: 'button',
   loading: 'false',
-  loadingColor: 'light',
   dataTest: '',
 };
 
@@ -159,13 +159,10 @@ export const Events = () => {
   );
 };
 
-export const buttonWithoutText = () => (
-  <bds-button-icon variant="primary" icon="file-new" size="standard"></bds-button-icon>
-);
-
 export const FrameworkReact = () => {
-
   return (
-      <BdsButton variant="primary" icon="file-new" size="standard">Button</BdsButton>
+    <BdsButton variant="primary" icon="file-new" size="standard">
+      Button
+    </BdsButton>
   );
 };

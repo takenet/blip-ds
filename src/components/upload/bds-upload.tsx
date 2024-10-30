@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Prop, Method, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, State, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { termTranslate, languages } from './languages';
 import background from '../../assets/svg/pattern.svg';
 
@@ -11,11 +11,13 @@ export class BdsUpload {
   private inputElement?: HTMLInputElement;
 
   @Element() private dropArea: HTMLElement;
-  @State() files: string[] = [];
+  @State() files: File[] = [];
   @State() haveFiles = false;
   @State() hover = false;
   @State() background: string;
   @State() size: number[] = [];
+  @State() internalAccepts: string[] = [];
+  @State() formatError = false;
   /**
    * Set the language for fixed texts.
    */
@@ -31,7 +33,7 @@ export class BdsUpload {
   /**
    * Used for add a error message. In case a verify.
    */
-  @Prop() error: string;
+  @Prop({ reflect: true, mutable: true }) error: string;
   /**
    * Used to allow upload multiple files.
    */
@@ -40,6 +42,11 @@ export class BdsUpload {
    * Used to accept a especific type of file.
    */
   @Prop() accept: string;
+
+  /**
+   * Used to accept a especific type of file.
+   */
+  @Prop() dataAccept: string[] | string = [];
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -67,6 +74,46 @@ export class BdsUpload {
    */
   @Event() bdsUploadChange: EventEmitter;
 
+  @Watch('dataAccept')
+  protected dataAcceptChanged(): void {
+    if (this.dataAccept) {
+      if (typeof this.dataAccept === 'string') {
+        try {
+          this.internalAccepts = JSON.parse(this.dataAccept);
+        } catch {
+          this.internalAccepts = [];
+        }
+      } else {
+        this.internalAccepts = this.dataAccept;
+      }
+    } else {
+      this.internalAccepts = [];
+    }
+  }
+
+  @Watch('files')
+  protected filesChanged(): void {
+    if (this.files.length > 0) {
+      for (let i = 0; i < this.files.length; i++) {
+        if (this.internalAccepts.length > 0) {
+          this.validationFiles(this.files[i], i);
+        }
+      }
+    }
+  }
+
+  @Watch('formatError')
+  protected formatErrorChanged(value): void {
+    if (value) {
+      this.error = termTranslate(this.language, 'formatError');
+      setTimeout(() => (this.error = null), 5000);
+    }
+  }
+
+  componentWillLoad() {
+    this.dataAcceptChanged();
+  }
+
   componentDidLoad() {
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
       this.dropArea.shadowRoot.addEventListener(eventName, this.preventDefaults, false);
@@ -82,6 +129,20 @@ export class BdsUpload {
     });
     this.dropArea.shadowRoot.addEventListener('drop', this.handleDrop, false);
   }
+
+  validationFiles = (File: File, index: number) => {
+    const filetype = `.${File.name.split('.').pop()}`;
+    const validate = this.internalAccepts.includes(filetype);
+    if (validate) {
+      this.formatError = false;
+      return;
+    } else {
+      this.formatError = true;
+      this.deleteFile(index);
+      return;
+    }
+  };
+
   /**
    * Recive the file data using drag and drop.
    */
@@ -283,7 +344,7 @@ export class BdsUpload {
             id="file"
             class="upload__input"
             multiple={this.multiple}
-            accept={this.accept}
+            accept={this.internalAccepts.length > 0 ? this.internalAccepts.toString() : this.accept}
             onChange={($event: any) => this.onUploadClick($event.target.files)}
             data-test={this.dtInputFiles}
           />

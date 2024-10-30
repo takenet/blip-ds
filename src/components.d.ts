@@ -14,12 +14,17 @@ import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-grou
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
+import { targets } from "./components/banner/banner-link/banner-link";
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
+import { ButtonSize as ButtonSize1 } from "./components/button/button";
+import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
+import { arrows, gap } from "./components/carousel/carousel-interface";
+import { Themes } from "./components/theme-provider/theme-provider";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -31,7 +36,6 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
-import { alignItems, breakpoint, direction, flexWrap, gap, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -58,8 +62,10 @@ import { sidebarBackground, sidebarPosition, sidebarType } from "./components/si
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
 import { StepOption, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
+import { JustifyContent } from "./components/table/table-cell/table-cell";
+import { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
-import { Themes } from "./components/theme-provider/theme-provider";
+import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -67,12 +73,10 @@ import { languages as languages1 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
+        "divisor"?: boolean;
         "notStart": () => Promise<void>;
         "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
-        /**
-          * A prop for make the accordion open when is render.
-         */
         "startOpen"?: boolean;
         "toggle": () => Promise<void>;
     }
@@ -82,16 +86,15 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        "divisor": (valor: any) => Promise<void>;
         "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
-        "closeAll": (actNumber: any) => Promise<void>;
-        /**
-          * Focus Selected. Used to add title in header accordion.
-         */
+        "closeAll": (actNumber?: any) => Promise<void>;
         "collapse"?: collapses;
-        "openAll": (actNumber: any) => Promise<void>;
+        "divisor"?: boolean;
+        "openAll": (actNumber?: any) => Promise<void>;
     }
     interface BdsAccordionHeader {
         /**
@@ -331,6 +334,10 @@ export namespace Components {
           * Set the link pass.
          */
         "link": string;
+        /**
+          * Set the link pass.
+         */
+        "target": targets;
     }
     interface BdsButton {
         /**
@@ -353,6 +360,7 @@ export namespace Components {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -366,9 +374,23 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
+        /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme": IconTheme;
+        "isActive": (value: any) => Promise<void>;
+        "setColor": (color: 'primary' | 'content' | 'negative' | 'positive') => Promise<void>;
+        "setDirection": (direction: 'row' | 'column') => Promise<void>;
+        "setPosition": (position: 'first' | 'last' | 'middle') => Promise<void>;
+        "setSize": (size: ButtonSize) => Promise<void>;
+        "setVariant": (variant: ButtonVariant) => Promise<void>;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
          */
@@ -385,6 +407,25 @@ export namespace Components {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
+        "activateButton": (index: number) => Promise<void>;
+        /**
+          * Color scheme for the buttons. Default is 'primary'.
+         */
+        "color"?: string;
+        /**
+          * Direction of the button group layout. Can be one of: 'row', 'column'.
+         */
+        "direction"?: direction;
+        /**
+          * Allows multiple buttons to be selected simultaneously if true.
+         */
+        "multiple"?: boolean;
+        /**
+          * Size of the buttons. Can be one of: 'medium', 'large'.
+         */
+        "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
@@ -481,6 +522,67 @@ export namespace Components {
           * Set the card title.
          */
         "text"?: string;
+    }
+    interface BdsCarousel {
+        /**
+          * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
+         */
+        "arrows"?: arrows;
+        /**
+          * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
+         */
+        "autoHeight"?: boolean;
+        /**
+          * Autoplay. Prop to Enable component autoplay.
+         */
+        "autoplay"?: boolean;
+        /**
+          * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
+         */
+        "autoplayHoverPause"?: boolean;
+        /**
+          * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
+         */
+        "autoplayTimeout"?: number;
+        "buildCarousel": () => Promise<void>;
+        /**
+          * Bullet. Prop to Enable component bullets navigation.
+         */
+        "bullets"?: boolean;
+        /**
+          * Gap. Prop to Select the gap distance between items.
+         */
+        "gap"?: gap;
+        /**
+          * Grab. Prop to enable function of grab in carousel.
+         */
+        "grab"?: boolean;
+        /**
+          * InfiniteLoop. Prop to Enable if the component will have infinite loop.
+         */
+        "infiniteLoop"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
+        "nextSlide": () => Promise<void>;
+        "pauseAutoplay": () => Promise<void>;
+        "prevSlide": () => Promise<void>;
+        "runAutoplay": () => Promise<void>;
+        "setActivated": (item: number) => Promise<void>;
+        /**
+          * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
+         */
+        "slidePerPage"?: number;
+    }
+    interface BdsCarouselItem {
+        "bgColor"?: string;
+        "bgImage"?: string;
+        "bgImageBrightness"?: number;
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
@@ -697,6 +799,10 @@ export namespace Components {
          */
         "endDateLimit"?: string;
         /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
         "language"?: languages;
@@ -845,7 +951,7 @@ export namespace Components {
         "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "height"?: string;
         "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
@@ -932,6 +1038,10 @@ export namespace Components {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -1516,7 +1626,7 @@ export namespace Components {
         "alignItems"?: alignItems;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
@@ -1703,6 +1813,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * Disable state. Indicates if the component is disabled.
+         */
+        "disable"?: boolean;
+        /**
           * Icon. Used to add icon in list item.
          */
         "icon"?: string;
@@ -1710,6 +1824,10 @@ export namespace Components {
           * A prop for make the nav open.
          */
         "isOpen"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -1730,6 +1848,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * Disable state. Indicates if the component is disabled.
+         */
+        "disable"?: boolean;
+        /**
           * Icon. Used to add icon in list item.
          */
         "icon"?: string;
@@ -1737,6 +1859,10 @@ export namespace Components {
           * Active. Used to define when the item is highlighted.
          */
         "isOpen"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -1769,35 +1895,39 @@ export namespace Components {
     }
     interface BdsPagination {
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+          * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
          */
         "dtButtonEnd"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+          * Propriedade de teste para especificamente testar a ação do botão inicial. dtButtonInitial é o data-test para o botão inicial.
          */
         "dtButtonInitial"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+          * Propriedade de teste para especificamente testar a ação do botão de próxima página. dtButtonNext é o data-test para o botão próximo.
          */
         "dtButtonNext"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+          * Propriedade de teste para especificamente testar a ação do botão de página anterior. dtButtonPrev é o data-test para o botão anterior.
          */
         "dtButtonPrev"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+          * Propriedade de teste para especificamente testar o seletor de número de páginas. dtSelectNumber é o data-test para o seletor de número de páginas.
          */
         "dtSelectNumber"?: string;
+        "itemsPage"?: any;
+        "language"?: string;
+        "numberItems"?: number;
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
          */
         "optionsPosition"?: PaginationOptionsPositionType;
+        "pageCounter"?: boolean;
         /**
-          * Prop to recive the number of pages.
+          * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
          */
         "pages"?: number;
         /**
-          * When the component are render this page are set.
+          * Propriedade que define a página inicial ao renderizar o componente.
          */
         "startedPage"?: number;
     }
@@ -2297,6 +2427,34 @@ export namespace Components {
     }
     interface BdsTabItem {
         /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badge"?: boolean;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgeAnimation"?: boolean;
+        /**
+          * The color of the badge to be shown at the Tab item.
+         */
+        "badgeColor"?: string;
+        /**
+          * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
+         */
+        "badgeIcon"?: string;
+        /**
+          * The number to be shown inside the badge at the Tab item.
+         */
+        "badgeNumber"?: number;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgePosition"?: string;
+        /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badgeShape"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -2304,6 +2462,18 @@ export namespace Components {
           * Prop for disable the especific tab.
          */
         "disable"?: boolean;
+        /**
+          * The icon to be shown at the Tab item.
+         */
+        "icon"?: string;
+        /**
+          * The position of the icon at the Tab item ('left', 'right').
+         */
+        "iconPosition"?: string;
+        /**
+          * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
+         */
+        "iconTheme"?: string;
         /**
           * The text to be shown at the Tab item.
          */
@@ -2341,6 +2511,7 @@ export namespace Components {
     interface BdsTableBody {
     }
     interface BdsTableCell {
+        "justifyContent": JustifyContent;
         "sortable": boolean;
         "type"?: string;
     }
@@ -2360,6 +2531,7 @@ export namespace Components {
     }
     interface BdsTableTh {
         "arrow": string;
+        "justifyContent": JustifyContent;
         "sortable": boolean;
     }
     interface BdsTabs {
@@ -2511,6 +2683,10 @@ export namespace Components {
          */
         "accept": string;
         /**
+          * Used to accept a especific type of file.
+         */
+        "dataAccept": string[] | string;
+        /**
           * Used for delete a item from the list.
          */
         "deleteAllFiles": () => Promise<void>;
@@ -2590,6 +2766,10 @@ export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
 }
+export interface BdsButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsButtonGroupElement;
+}
 export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonIconElement;
@@ -2597,6 +2777,10 @@ export interface BdsButtonIconCustomEvent<T> extends CustomEvent<T> {
 export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCardElement;
+}
+export interface BdsCarouselCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsCarouselElement;
 }
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2829,6 +3013,12 @@ declare global {
         prototype: HTMLBdsButtonElement;
         new (): HTMLBdsButtonElement;
     };
+    interface HTMLBdsButtonGroupElement extends Components.BdsButtonGroup, HTMLStencilElement {
+    }
+    var HTMLBdsButtonGroupElement: {
+        prototype: HTMLBdsButtonGroupElement;
+        new (): HTMLBdsButtonGroupElement;
+    };
     interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
     }
     var HTMLBdsButtonIconElement: {
@@ -2876,6 +3066,18 @@ declare global {
     var HTMLBdsCardTitleElement: {
         prototype: HTMLBdsCardTitleElement;
         new (): HTMLBdsCardTitleElement;
+    };
+    interface HTMLBdsCarouselElement extends Components.BdsCarousel, HTMLStencilElement {
+    }
+    var HTMLBdsCarouselElement: {
+        prototype: HTMLBdsCarouselElement;
+        new (): HTMLBdsCarouselElement;
+    };
+    interface HTMLBdsCarouselItemElement extends Components.BdsCarouselItem, HTMLStencilElement {
+    }
+    var HTMLBdsCarouselItemElement: {
+        prototype: HTMLBdsCarouselItemElement;
+        new (): HTMLBdsCarouselItemElement;
     };
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
     }
@@ -3343,6 +3545,7 @@ declare global {
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
         "bds-button": HTMLBdsButtonElement;
+        "bds-button-group": HTMLBdsButtonGroupElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
         "bds-card": HTMLBdsCardElement;
         "bds-card-body": HTMLBdsCardBodyElement;
@@ -3351,6 +3554,8 @@ declare global {
         "bds-card-header": HTMLBdsCardHeaderElement;
         "bds-card-subtitle": HTMLBdsCardSubtitleElement;
         "bds-card-title": HTMLBdsCardTitleElement;
+        "bds-carousel": HTMLBdsCarouselElement;
+        "bds-carousel-item": HTMLBdsCarouselItemElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-chip-clickable": HTMLBdsChipClickableElement;
@@ -3430,21 +3635,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BdsAccordion {
-        /**
-          * bdsAccordionOpen. Event to return value when accordion is closed.
-         */
+        "divisor"?: boolean;
         "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * bdsAccordionOpen. Event to return value when accordion is open.
-         */
         "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * bdsToggle. Event to return value of toggle.
-         */
         "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
-        /**
-          * A prop for make the accordion open when is render.
-         */
         "startOpen"?: boolean;
     }
     interface BdsAccordionBody {
@@ -3454,17 +3648,9 @@ declare namespace LocalJSX {
         "dataTest"?: string;
     }
     interface BdsAccordionGroup {
-        /**
-          * Focus Selected. Used to add title in header accordion.
-         */
         "collapse"?: collapses;
-        /**
-          * bdsAccordionCloseAll. Event to return value when accordion is closed.
-         */
+        "divisor"?: boolean;
         "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
-        /**
-          * bdsAccordionOpenAll. Event to return value when accordion is opend.
-         */
         "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
     }
     interface BdsAccordionHeader {
@@ -3740,6 +3926,10 @@ declare namespace LocalJSX {
           * Emitted when the link is clicked.
          */
         "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<any>) => void;
+        /**
+          * Set the link pass.
+         */
+        "target"?: targets;
     }
     interface BdsButton {
         /**
@@ -3762,6 +3952,7 @@ declare namespace LocalJSX {
           * If true, the base button will be disabled.
          */
         "block"?: boolean;
+        "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -3774,6 +3965,14 @@ declare namespace LocalJSX {
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconLeft"?: string;
+        /**
+          * used for add icon in input left. Uses the bds-icon component.
+         */
+        "iconRight"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
@@ -3798,6 +3997,25 @@ declare namespace LocalJSX {
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
          */
         "variant"?: ButtonVariant;
+    }
+    interface BdsButtonGroup {
+        /**
+          * Color scheme for the buttons. Default is 'primary'.
+         */
+        "color"?: string;
+        /**
+          * Direction of the button group layout. Can be one of: 'row', 'column'.
+         */
+        "direction"?: direction;
+        /**
+          * Allows multiple buttons to be selected simultaneously if true.
+         */
+        "multiple"?: boolean;
+        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<any>) => void;
+        /**
+          * Size of the buttons. Can be one of: 'medium', 'large'.
+         */
+        "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
@@ -3902,6 +4120,65 @@ declare namespace LocalJSX {
           * Set the card title.
          */
         "text"?: string;
+    }
+    interface BdsCarousel {
+        /**
+          * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
+         */
+        "arrows"?: arrows;
+        /**
+          * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
+         */
+        "autoHeight"?: boolean;
+        /**
+          * Autoplay. Prop to Enable component autoplay.
+         */
+        "autoplay"?: boolean;
+        /**
+          * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
+         */
+        "autoplayHoverPause"?: boolean;
+        /**
+          * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
+         */
+        "autoplayTimeout"?: number;
+        /**
+          * Bullet. Prop to Enable component bullets navigation.
+         */
+        "bullets"?: boolean;
+        /**
+          * Gap. Prop to Select the gap distance between items.
+         */
+        "gap"?: gap;
+        /**
+          * Grab. Prop to enable function of grab in carousel.
+         */
+        "grab"?: boolean;
+        /**
+          * InfiniteLoop. Prop to Enable if the component will have infinite loop.
+         */
+        "infiniteLoop"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
+        /**
+          * Emitted when active frame value.
+         */
+        "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<any>) => void;
+        /**
+          * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
+         */
+        "slidePerPage"?: number;
+    }
+    interface BdsCarouselItem {
+        "bgColor"?: string;
+        "bgImage"?: string;
+        "bgImageBrightness"?: number;
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
@@ -4135,6 +4412,10 @@ declare namespace LocalJSX {
          */
         "endDateLimit"?: string;
         /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
         "language"?: languages;
@@ -4204,6 +4485,10 @@ declare namespace LocalJSX {
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
         "language"?: languages;
+        /**
+          * bdsClickDayButton. Event to return when click on day button.
+         */
+        "onBdsClickDayButton"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
         /**
           * bdsEndDate. Event to return selected end date value.
          */
@@ -4300,7 +4585,7 @@ declare namespace LocalJSX {
         "containerFluid"?: boolean;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "height"?: string;
         "justifyContent"?: justifyContent2;
         "lg"?: breakpoint;
@@ -4387,6 +4672,10 @@ declare namespace LocalJSX {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -5084,7 +5373,7 @@ declare namespace LocalJSX {
         "alignItems"?: alignItems;
         "direction"?: direction;
         "flexWrap"?: flexWrap;
-        "gap"?: gap;
+        "gap"?: gap1;
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
@@ -5274,6 +5563,10 @@ declare namespace LocalJSX {
          */
         "dataTest"?: string;
         /**
+          * Disable state. Indicates if the component is disabled.
+         */
+        "disable"?: boolean;
+        /**
           * Icon. Used to add icon in list item.
          */
         "icon"?: string;
@@ -5281,6 +5574,10 @@ declare namespace LocalJSX {
           * A prop for make the nav open.
          */
         "isOpen"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * When de open or close of component change, the event are dispache.
          */
@@ -5304,6 +5601,10 @@ declare namespace LocalJSX {
          */
         "dataTest"?: string;
         /**
+          * Disable state. Indicates if the component is disabled.
+         */
+        "disable"?: boolean;
+        /**
           * Icon. Used to add icon in list item.
          */
         "icon"?: string;
@@ -5311,6 +5612,10 @@ declare namespace LocalJSX {
           * Active. Used to define when the item is highlighted.
          */
         "isOpen"?: boolean;
+        /**
+          * Loading state. Indicates if the component is in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * When de activation of component change, the event are dispache.
          */
@@ -5346,39 +5651,47 @@ declare namespace LocalJSX {
     }
     interface BdsPagination {
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonEnd is the data-test to button end
+          * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
          */
         "dtButtonEnd"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonInitial is the data-test to button initial.
+          * Propriedade de teste para especificamente testar a ação do botão inicial. dtButtonInitial é o data-test para o botão inicial.
          */
         "dtButtonInitial"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+          * Propriedade de teste para especificamente testar a ação do botão de próxima página. dtButtonNext é o data-test para o botão próximo.
          */
         "dtButtonNext"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+          * Propriedade de teste para especificamente testar a ação do botão de página anterior. dtButtonPrev é o data-test para o botão anterior.
          */
         "dtButtonPrev"?: string;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectNumber is the data-test to select number.
+          * Propriedade de teste para especificamente testar o seletor de número de páginas. dtSelectNumber é o data-test para o seletor de número de páginas.
          */
         "dtSelectNumber"?: string;
+        "itemsPage"?: any;
+        "language"?: string;
+        "numberItems"?: number;
         /**
-          * When de value of component change, the event are dispache.
+          * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
+         */
+        "onBdsItemsPerPageChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        /**
+          * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
          */
         "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
         /**
-          * Set the placement of the options menu. Can be 'bottom' or 'top'.
+          * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
          */
         "optionsPosition"?: PaginationOptionsPositionType;
+        "pageCounter"?: boolean;
         /**
-          * Prop to recive the number of pages.
+          * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
          */
         "pages"?: number;
         /**
-          * When the component are render this page are set.
+          * Propriedade que define a página inicial ao renderizar o componente.
          */
         "startedPage"?: number;
     }
@@ -5910,6 +6223,34 @@ declare namespace LocalJSX {
     }
     interface BdsTabItem {
         /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badge"?: boolean;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgeAnimation"?: boolean;
+        /**
+          * The color of the badge to be shown at the Tab item.
+         */
+        "badgeColor"?: string;
+        /**
+          * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
+         */
+        "badgeIcon"?: string;
+        /**
+          * The number to be shown inside the badge at the Tab item.
+         */
+        "badgeNumber"?: number;
+        /**
+          * The animation of the badge to be shown at the Tab item.
+         */
+        "badgePosition"?: string;
+        /**
+          * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */
+        "badgeShape"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -5917,6 +6258,18 @@ declare namespace LocalJSX {
           * Prop for disable the especific tab.
          */
         "disable"?: boolean;
+        /**
+          * The icon to be shown at the Tab item.
+         */
+        "icon"?: string;
+        /**
+          * The position of the icon at the Tab item ('left', 'right').
+         */
+        "iconPosition"?: string;
+        /**
+          * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
+         */
+        "iconTheme"?: string;
         /**
           * The text to be shown at the Tab item.
          */
@@ -5954,6 +6307,7 @@ declare namespace LocalJSX {
     interface BdsTableBody {
     }
     interface BdsTableCell {
+        "justifyContent"?: JustifyContent;
         "sortable"?: boolean;
         "type"?: string;
     }
@@ -5973,6 +6327,7 @@ declare namespace LocalJSX {
     }
     interface BdsTableTh {
         "arrow"?: string;
+        "justifyContent"?: JustifyContent;
         "sortable"?: boolean;
     }
     interface BdsTabs {
@@ -6114,6 +6469,10 @@ declare namespace LocalJSX {
          */
         "accept"?: string;
         /**
+          * Used to accept a especific type of file.
+         */
+        "dataAccept"?: string[] | string;
+        /**
           * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
          */
         "dtButtonDelete"?: string;
@@ -6172,6 +6531,7 @@ declare namespace LocalJSX {
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
         "bds-button": BdsButton;
+        "bds-button-group": BdsButtonGroup;
         "bds-button-icon": BdsButtonIcon;
         "bds-card": BdsCard;
         "bds-card-body": BdsCardBody;
@@ -6180,6 +6540,8 @@ declare namespace LocalJSX {
         "bds-card-header": BdsCardHeader;
         "bds-card-subtitle": BdsCardSubtitle;
         "bds-card-title": BdsCardTitle;
+        "bds-carousel": BdsCarousel;
+        "bds-carousel-item": BdsCarouselItem;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-chip-clickable": BdsChipClickable;
@@ -6276,6 +6638,7 @@ declare module "@stencil/core" {
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            "bds-button-group": LocalJSX.BdsButtonGroup & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
             "bds-card": LocalJSX.BdsCard & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
             "bds-card-body": LocalJSX.BdsCardBody & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;
@@ -6284,6 +6647,8 @@ declare module "@stencil/core" {
             "bds-card-header": LocalJSX.BdsCardHeader & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
             "bds-card-subtitle": LocalJSX.BdsCardSubtitle & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
             "bds-card-title": LocalJSX.BdsCardTitle & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
+            "bds-carousel": LocalJSX.BdsCarousel & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
+            "bds-carousel-item": LocalJSX.BdsCarouselItem & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;

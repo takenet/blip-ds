@@ -421,6 +421,7 @@ const logoNames = [
   'google',
   'google-plus',
   'hangouts',
+  'hubspot',
   'infopib',
   'instagram',
   'instagram-2',
@@ -433,6 +434,7 @@ const logoNames = [
   'microsoft-luis',
   'microsoft-teams',
   'pag-seguro',
+  'pipedrive',
   'pix',
   'open-finance',
   'rd',
@@ -542,7 +544,7 @@ export const AllOutlineIcons = () => {
       <div key={name} style={iconStyles}>
         <bds-icon theme="outline" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -580,7 +582,7 @@ export const AllSolidIcons = () => {
       <div key={name} style={iconStyles}>
         <bds-icon theme="solid" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -618,7 +620,7 @@ export const AllEmojis = () => {
       <bds-grid height="80px" gap="1" key={name} style={iconStyles}>
         <bds-icon type="emoji" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </bds-grid>
+      </bds-grid>,
     );
   });
 
@@ -656,7 +658,7 @@ export const AllLogos = () => {
       <bds-grid height="80px" gap="1" key={name} style={iconStyles}>
         <bds-icon type="logo" size="xxx-large" name={name}></bds-icon>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </bds-grid>
+      </bds-grid>,
     );
   });
 

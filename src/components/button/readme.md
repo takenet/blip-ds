@@ -7,59 +7,45 @@
 
 ## Properties
 
-| Property            | Attribute             | Description                                                                                       | Type                                                                                                            | Default      |
-| ------------------- | --------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------ |
-| `arrow`             | `arrow`               | The arrow button                                                                                  | `boolean`                                                                                                       | `false`      |
-| `bdsLoading`        | `bds-loading`         | If true, shows the loading spinner                                                                | `boolean`                                                                                                       | `false`      |
-| `bdsLoadingColor`   | `bds-loading-color`   | If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'              | `"light" \| "main"`                                                                                             | `'main'`     |
-| `bdsLoadingVariant` | `bds-loading-variant` | If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'              | `"delete" \| "ghost" \| "primary" \| "secondary" \| "tertiary"`                                                 | `'primary'`  |
-| `block`             | `block`               | If true, the base button will be disabled.                                                        | `boolean`                                                                                                       | `false`      |
-| `dataTest`          | `data-test`           | Data test is the prop to specifically test the component action object.                           | `string`                                                                                                        | `null`       |
-| `disabled`          | `disabled`            | If true, the base button will be disabled.                                                        | `boolean`                                                                                                       | `false`      |
-| `icon`              | `icon`                | used for add icon in input left. Uses the bds-icon component.                                     | `string`                                                                                                        | `null`       |
-| `iconTheme`         | `icon-theme`          | The theme of the icon. Can be one of: 'outline', 'solid';                                         | `"outline" \| "solid"`                                                                                          | `'outline'`  |
-| `size`              | `size`                | Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';                     | `"short" \| "standard" \| "tall"`                                                                               | `'standard'` |
-| `type`              | `type`                | The type of the button. Can be one of: 'button', 'submit', 'reset';                               | `"button" \| "reset" \| "submit"`                                                                               | `'button'`   |
-| `typeIcon`          | `type-icon`           | The type of the icon. Can be one of: 'icon', 'logo', 'emoji';                                     | `"emoji" \| "icon" \| "logo"`                                                                                   | `'icon'`     |
-| `variant`           | `variant`             | Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed'; | `"dashed" \| "delete" \| "facebook" \| "ghost" \| "primary" \| "secondary" \| "secondary--white" \| "tertiary"` | `'primary'`  |
+| Property    | Attribute   | Description                                                           | Type                                                     | Default     |
+| ----------- | ----------- | --------------------------------------------------------------------- | -------------------------------------------------------- | ----------- |
+| `color`     | `color`     | Color scheme for the buttons. Default is 'primary'.                   | `string`                                                 | `'primary'` |
+| `direction` | `direction` | Direction of the button group layout. Can be one of: 'row', 'column'. | `"column" \| "column-reverse" \| "row" \| "row-reverse"` | `'row'`     |
+| `multiple`  | `multiple`  | Allows multiple buttons to be selected simultaneously if true.        | `boolean`                                                | `false`     |
+| `size`      | `size`      | Size of the buttons. Can be one of: 'medium', 'large'.                | `"large" \| "medium" \| "short" \| "standard" \| "tall"` | `'medium'`  |
 
 
 ## Events
 
-| Event      | Description           | Type               |
-| ---------- | --------------------- | ------------------ |
-| `bdsClick` | Event buttom onClick. | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `buttonSelected` |             | `CustomEvent<any>` |
 
 
-## Shadow Parts
+## Methods
 
-| Part       | Description |
-| ---------- | ----------- |
-| `"button"` |             |
+### `activateButton(index: number) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies
 
-### Used by
-
- - [bds-datepicker](../datepicker)
- - [bds-toast](../toast)
-
 ### Depends on
 
-- [bds-icon](../icon)
-- [bds-typo](../typo)
-- [bds-loading-spinner](../loading-spinner)
+- [bds-grid](../grid)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-button --> bds-icon
-  bds-button --> bds-typo
-  bds-button --> bds-loading-spinner
-  bds-datepicker --> bds-button
-  bds-toast --> bds-button
-  style bds-button fill:#f9f,stroke:#333,stroke-width:4px
+  bds-button-group --> bds-grid
+  style bds-button-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -61,12 +61,20 @@ export class AccordionHeader {
   }
 
   private toggleHeader = (): void => {
-    this.accordionElement?.toggle();
+    if (this.isOpen) {
+      this.accordionElement?.close();
+    } else {
+      this.accordionElement?.open();
+    }
   };
 
   handleKeyDown(event) {
     if (event.key == 'Enter') {
-      this.accordionElement?.toggle();
+      if (this.isOpen) {
+        this.accordionElement?.close();
+      } else {
+        this.accordionElement?.open();
+      }
     }
   }
 

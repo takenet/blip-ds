@@ -41,7 +41,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'text' },
     },
-    
+
     options: ['email', 'text'],
     control: 'select',
   },
@@ -49,49 +49,49 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    
+
     control: 'text',
   },
   danger: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    
+
     control: 'boolean',
   },
   errorMessage: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    
+
     control: 'text',
   },
   chips: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    
+
     control: 'text',
   },
   blurCreation: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    
+
     control: 'boolean',
   },
   disableSubmit: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    
+
     control: 'boolean',
   },
   disabled: {
     table: {
       defaultValue: { summary: 'false' },
     },
-    
+
     control: 'boolean',
   },
 };
@@ -103,7 +103,7 @@ export const Events = () => {
       console.log('Evento Blur funcionando');
     });
     inputChips.addEventListener('bdsChangeChips', () => {
-      console.log('Evento Cancel funcionando');
+      console.log('Evento ChangeChips funcionando');
     });
     inputChips.addEventListener('bdsChange', () => {
       console.log('Evento Change funcionando');
