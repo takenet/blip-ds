@@ -41,5 +41,6 @@ export const esMessages = [
   {
     dateFormatIsIncorrect: 'El formato de fecha es incorrecto',
     betweenPeriodOf: 'Seleccione una fecha entre el período de',
+    endDateIsEmpty: 'Seleccione la fecha de finalización',
   },
 ];

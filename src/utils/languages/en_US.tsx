@@ -42,5 +42,6 @@ export const enMessages = [
   {
     dateFormatIsIncorrect: 'Date format is incorrect',
     betweenPeriodOf: 'Please select a date between the period of',
+    endDateIsEmpty: 'Select end date',
   },
 ];
