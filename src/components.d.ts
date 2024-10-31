@@ -1779,6 +1779,10 @@ export namespace Components {
          */
         "dtOutzone"?: string;
         /**
+          * If true, the modal will close keydown Enter.
+         */
+        "enterClose"?: boolean;
+        /**
           * Used to open/close the modal
          */
         "open"?: boolean;
@@ -5528,6 +5532,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
          */
         "dtOutzone"?: string;
+        /**
+          * If true, the modal will close keydown Enter.
+         */
+        "enterClose"?: boolean;
         /**
           * Emitted when modal status has changed.
          */
