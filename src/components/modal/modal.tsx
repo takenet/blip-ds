@@ -40,6 +40,11 @@ export class BdsModal implements ComponentInterface {
   @Prop() outzoneClose?: boolean = true;
 
   /**
+   * If true, the modal will close keydown Enter.
+   */
+  @Prop() enterClose?: boolean = true;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    * dtOutzone is the data-test to button close.
    */
@@ -78,7 +83,7 @@ export class BdsModal implements ComponentInterface {
   }
 
   private listener = (event) => {
-    if (event.key == 'Enter' || event.key == 'Escape') {
+    if (this.enterClose && (event.key == 'Enter' || event.key == 'Escape')) {
       this.toggle();
     }
   };
@@ -94,12 +99,6 @@ export class BdsModal implements ComponentInterface {
       this.bdsModalChanged.emit({ modalStatus: 'closed' });
     }
   };
-
-  handleKeyDown(event) {
-    if (event.key == 'Enter') {
-      this.open = false;
-    }
-  }
 
   render() {
     return (
@@ -118,7 +117,6 @@ export class BdsModal implements ComponentInterface {
               class="close-button"
               name="close"
               tabindex="0"
-              onKeyDown={this.handleKeyDown.bind(this)}
               onClick={this.handleMouseClick}
               dataTest={this.dtButtonClose}
             />
