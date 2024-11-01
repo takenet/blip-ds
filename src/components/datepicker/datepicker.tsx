@@ -287,6 +287,9 @@ export class DatePicker {
   private onInputDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueDate = input.value;
+    if (!this.valueDate) {
+      this.valueEndDate = null;
+    }
     this.validationDateSelected(this.valueDate);
   };
 
@@ -450,7 +453,7 @@ export class DatePicker {
                 ref={this.refInputSetEndDate}
                 label={termTranslate(this.language, 'to')}
                 value={this.valueEndDate}
-                disabled={this.disabled || !this.dateSelected}
+                disabled={this.disabled || this.errorMsgDate ? true : false || !this.dateSelected}
                 type="date"
                 maxlength={10}
                 icon="calendar"
