@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './modal.mdx';
 import { BdsButton, BdsModal, BdsModalAction, BdsTypo } from '../../../blip-ds-react/dist/components';
 
@@ -18,7 +18,13 @@ export const Properties = (args) => {
     el[0].style.height = '500px';
   }
   return (
-    <bds-modal open={args.open} outzone-close={args.outzoneClose} close-button={args.CloseButton} size={args.size}>
+    <bds-modal
+      open={args.open}
+      enter-close={args.enterClose}
+      outzone-close={args.outzoneClose}
+      close-button={args.CloseButton}
+      size={args.size}
+    >
       <bds-typo variant="fs-14" bold="regular">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -41,6 +47,7 @@ Properties.args = {
   closeButton: true,
   open: true,
   outzoneClose: true,
+  enterClose: true,
   size: 'fixed',
 };
 Properties.argTypes = {
@@ -48,28 +55,35 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'true' },
     },
-    
+
     control: 'boolean',
   },
   open: {
     table: {
       defaultValue: { summary: 'true' },
     },
-    
+
     control: 'boolean',
   },
   outzoneClose: {
     table: {
       defaultValue: { summary: 'true' },
     },
-    
+
+    control: 'boolean',
+  },
+  enterClose: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+
     control: 'boolean',
   },
   size: {
     table: {
       defaultValue: { summary: 'fixed' },
     },
-    
+
     options: ['dynamic', 'fixed'],
     control: 'select',
   },
@@ -109,7 +123,9 @@ export const Methods = () => {
   };
   return (
     <>
-      <bds-button onClick={() => btToggle('modal')} variant="primary" size="short">Abrir Modal</bds-button>
+      <bds-button onClick={() => btToggle('modal')} variant="primary" size="short">
+        Abrir Modal
+      </bds-button>
       <bds-modal open={true} outzone-close={true} close-button={true} id="modal">
         <bds-typo variant="fs-14" bold="regular">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
