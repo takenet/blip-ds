@@ -287,6 +287,9 @@ export class DatePicker {
   private onInputDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueDate = input.value;
+    if (!this.valueDate) {
+      this.valueEndDate = null;
+    }
     this.validationDateSelected(this.valueDate);
   };
 
@@ -358,22 +361,31 @@ export class DatePicker {
   };
 
   private clickConcludeDatepicker = () => {
-    const data =
-      this.typeOfDate === 'single'
-        ? { startDate: typeDateToStringDate(this.valueDate) }
-        : {
-            startDate: typeDateToStringDate(this.valueDate),
-            endDate: typeDateToStringDate(this.valueEndDate),
-          };
-    this.concludeDatepicker.emit(data);
-    this.open = false;
     if (this.typeOfDate == 'period') {
-      this.inputSetEndDate.removeFocus();
+      if (this.valueEndDate) {
+        const data = {
+          startDate: typeDateToStringDate(this.valueDate),
+          endDate: typeDateToStringDate(this.valueEndDate),
+        };
+        this.open = false;
+        this.concludeDatepicker.emit(data);
+        this.inputSetEndDate.removeFocus();
+        this.errorMsgEndDate = null;
+      } else {
+        if (!this.valueDate && !this.valueEndDate) {
+          this.open = false;
+        } else {
+          this.open = true;
+          this.errorMsgEndDate = messageTranslate(this.language, 'endDateIsEmpty');
+        }
+      }
+    } else {
+      const data = {
+        startDate: typeDateToStringDate(this.valueDate),
+      };
+      this.open = false;
+      this.concludeDatepicker.emit(data);
     }
-  };
-
-  private onClickCloseButtom = () => {
-    this.open = false;
   };
 
   private onFocusDateSelect = () => {
@@ -441,7 +453,7 @@ export class DatePicker {
                 ref={this.refInputSetEndDate}
                 label={termTranslate(this.language, 'to')}
                 value={this.valueEndDate}
-                disabled={this.disabled || !this.dateSelected}
+                disabled={this.disabled || this.errorMsgDate ? true : false || !this.dateSelected}
                 type="date"
                 maxlength={10}
                 icon="calendar"
@@ -511,7 +523,11 @@ export class DatePicker {
           </div>
         </div>
         {this.open && (
-          <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
+          <div
+            class={{ outzone: true }}
+            onClick={() => this.clickConcludeDatepicker()}
+            data-test={this.dtOutzone}
+          ></div>
         )}
       </Host>
     );

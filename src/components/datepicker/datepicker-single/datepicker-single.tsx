@@ -25,8 +25,8 @@ export class BdsdatepickerSingle {
   @State() week: string[];
   @State() months: Options[];
   @State() years: Options[];
-  @State() monthActivated: number = THIS_DAY.getMonth();
-  @State() yearActivated: number = THIS_DAY.getFullYear();
+  @State() monthActivated: number = this.dateSelect ? this.dateSelect.getMonth() : THIS_DAY.getMonth();
+  @State() yearActivated: number = this.dateSelect ? this.dateSelect.getFullYear() : THIS_DAY.getFullYear();
   @State() animatePrev?: boolean = false;
   @State() animateNext?: boolean = false;
   @State() openSelectMonth?: boolean = false;
