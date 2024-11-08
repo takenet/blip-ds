@@ -30,12 +30,12 @@ import { ColorChipClickable, Size } from "./components/chip-clickable/chip-click
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
 import { ColorChipTag } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
-import { typeDate } from "./components/datepicker/datepicker";
+import { DropdownPostionType, typeDate } from "./components/datepicker/datepicker";
 import { BannerVariant as BannerVariant1 } from "./components/banner/banner";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
+import { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -810,6 +810,10 @@ export namespace Components {
           * Message. Select type of date.
          */
         "message"?: string;
+        /**
+          * Used to set drop position
+         */
+        "positionOptions"?: DropdownPostionType;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
@@ -4435,6 +4439,10 @@ declare namespace LocalJSX {
           * bdsStartDate. Event to return selected end date value.
          */
         "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        /**
+          * Used to set drop position
+         */
+        "positionOptions"?: DropdownPostionType;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
