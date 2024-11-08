@@ -317,6 +317,7 @@ export class BdsdatepickerSingle {
                 datepicker__calendar__car__slide__box__day__disable: this.checkDisableDay(item),
               }}
               onClick={() => this.selectDate(item)}
+              variant="fs-14"
             >
               {item.date}
             </bds-typo>
@@ -365,7 +366,7 @@ export class BdsdatepickerSingle {
         <div>
           <div class={{ datepicker__calendar__week: true }}>
             {this.week.map((item, idx) => (
-              <bds-typo key={idx} class={`datepicker__calendar__week__day`}>
+              <bds-typo variant="fs-14" key={idx} class={`datepicker__calendar__week__day`}>
                 {item.charAt(0)}
               </bds-typo>
             ))}
