@@ -9,27 +9,40 @@ import {
   typeDateToStringDate,
 } from '../../utils/calendar';
 import { dateValidation } from '../../utils/validations';
-import { getScrollParent, positionElement } from '../../utils/position-element';
+import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
 import { BannerVariant } from '../banner/banner';
 
 export type typeDate = 'single' | 'period';
 export type stateSelect = 'start' | 'end';
+export type DropdownPostionType =
+  | 'auto'
+  | 'top-center'
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-center'
+  | 'bottom-right'
+  | 'bottom-left'
+  | 'right-center'
+  | 'right-top'
+  | 'right-bottom'
+  | 'left-center'
+  | 'left-top'
+  | 'left-bottom';
 
 @Component({
   tag: 'bds-datepicker',
   styleUrl: 'datepicker.scss',
-  shadow: false,
+  shadow: true,
 })
 export class DatePicker {
-  private actionElement?: HTMLElement;
   private menuElement?: HTMLElement;
   private inputSetDate?: HTMLBdsInputElement;
   private inputSetEndDate?: HTMLBdsInputElement;
   private datepickerPeriod?: HTMLBdsDatepickerPeriodElement;
   private datepickerSingle?: HTMLBdsDatepickerSingleElement;
 
-  @Element() private element: HTMLElement;
+  @Element() element: HTMLElement;
 
   @State() open?: boolean = false;
   @State() stateSelect?: stateSelect = 'start';
@@ -39,8 +52,6 @@ export class DatePicker {
   @State() errorMsgEndDate?: string = null;
   @State() intoView?: HTMLElement = null;
   @State() scrollingTop?: number = 0;
-  @State() menupositionTop?: number = 0;
-  @State() menupositionLeft?: number = 0;
   @State() valueDate?: string;
   @State() valueEndDate?: string;
   /**
@@ -89,6 +100,10 @@ export class DatePicker {
    */
   @Prop({ reflect: true, mutable: true }) valueEndDateSelected?: string = null;
 
+  /**
+   * Used to set drop position
+   */
+  @Prop() positionOptions?: DropdownPostionType = 'auto';
   /**
    * Data test is the prop to specifically test the component action object.
    * dtInputStart is the data-test to input start.
@@ -154,6 +169,25 @@ export class DatePicker {
    */
   @Event() concludeDatepicker?: EventEmitter;
 
+  componentWillLoad() {
+    this.endDateLimitChanged();
+    this.startDateLimitChanged();
+    this.valueDateSelectedChanged();
+    this.valueEndDateSelectedChanged();
+    this.intoView = getScrollParent(this.element);
+    if (this.valueDate) this.validationDateSelected(this.valueDate);
+    if (this.valueEndDate) this.validationEndDateSelected(this.valueEndDate);
+  }
+
+  componentDidLoad() {
+    if (this.positionOptions != 'auto') {
+      this.centerDropElement(this.positionOptions);
+      this.setDefaultPlacement(this.positionOptions);
+    } else {
+      this.validatePositionDrop();
+    }
+  }
+
   @Watch('valueDateSelected')
   valueDateSelectedChanged(): void {
     this.valueDate = this.valueDateSelected && dateToInputDate(this.valueDateSelected);
@@ -197,18 +231,32 @@ export class DatePicker {
     this.stateSelect = 'end';
   }
 
-  componentWillLoad() {
-    this.endDateLimitChanged();
-    this.startDateLimitChanged();
-    this.valueDateSelectedChanged();
-    this.valueEndDateSelectedChanged();
-    this.intoView = getScrollParent(this.element);
-    if (this.valueDate) this.validationDateSelected(this.valueDate);
-    if (this.valueEndDate) this.validationEndDateSelected(this.valueEndDate);
+  private setDefaultPlacement(value: DropdownPostionType) {
+    if (this.typeOfDate == 'single') {
+      this.menuElement.classList.add(`datepicker__menu__single__${value}`);
+    } else {
+      this.menuElement.classList.add(`datepicker__menu__period__${value}`);
+    }
   }
 
-  private refActionElement = (el: HTMLElement): void => {
-    this.actionElement = el as HTMLElement;
+  private validatePositionDrop() {
+    const positionValue = positionAbsoluteElement({
+      actionElement: this.element,
+      changedElement: this.menuElement,
+      intoView: this.intoView,
+    });
+    if (this.typeOfDate == 'single') {
+      this.menuElement.classList.add(`datepicker__menu__single__${positionValue.y}-${positionValue.x}`);
+    } else {
+      this.menuElement.classList.add(`datepicker__menu__period__${positionValue.y}-${positionValue.x}`);
+    }
+  }
+
+  private centerDropElement = (value: DropdownPostionType) => {
+    const arrayPosition = value.split('-');
+    if ((arrayPosition[0] == 'left' || arrayPosition[0] == 'right') && arrayPosition[1] == 'center') {
+      this.menuElement.style.top = `calc(50% - ${this.menuElement.offsetHeight / 2}px)`;
+    }
   };
 
   private refMenuElement = (el: HTMLElement): void => {
@@ -287,6 +335,9 @@ export class DatePicker {
   private onInputDateSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueDate = input.value;
+    if (!this.valueDate) {
+      this.valueEndDate = null;
+    }
     this.validationDateSelected(this.valueDate);
   };
 
@@ -346,34 +397,38 @@ export class DatePicker {
 
   private openDatepicker = () => {
     if (!this.disabled) {
-      const positionValue = positionElement({
-        actionElement: this.actionElement,
-        changedElement: this.menuElement,
-        intoView: this.intoView,
-      });
-      this.menupositionTop = positionValue.top;
-      this.menupositionLeft = positionValue.left;
       this.open = true;
     }
   };
 
   private clickConcludeDatepicker = () => {
-    const data =
-      this.typeOfDate === 'single'
-        ? { startDate: typeDateToStringDate(this.valueDate) }
-        : {
-            startDate: typeDateToStringDate(this.valueDate),
-            endDate: typeDateToStringDate(this.valueEndDate),
-          };
-    this.concludeDatepicker.emit(data);
-    this.open = false;
     if (this.typeOfDate == 'period') {
-      this.inputSetEndDate.removeFocus();
+      if (this.valueEndDate) {
+        const data = {
+          startDate: typeDateToStringDate(this.valueDate),
+          endDate: typeDateToStringDate(this.valueEndDate),
+        };
+        this.open = false;
+        this.concludeDatepicker.emit(data);
+        this.inputSetEndDate.removeFocus();
+        this.errorMsgEndDate = null;
+      } else {
+        if (!this.valueDate && !this.valueEndDate) {
+          this.open = false;
+        } else {
+          this.open = true;
+          this.errorMsgEndDate = messageTranslate(this.language, 'endDateIsEmpty');
+        }
+      }
+    } else {
+      if (this.valueDate != null) {
+        const data = {
+          startDate: typeDateToStringDate(this.valueDate),
+        };
+        this.concludeDatepicker.emit(data);
+      }
+      this.open = false;
     }
-  };
-
-  private onClickCloseButtom = () => {
-    this.open = false;
   };
 
   private onFocusDateSelect = () => {
@@ -385,133 +440,130 @@ export class DatePicker {
   };
 
   render() {
-    const menuPosition = {
-      top: `${this.menupositionTop}px`,
-      left: `${this.menupositionLeft}px`,
-    };
     return (
-      <Host>
-        <div ref={this.refActionElement} class={{ datepicker: true }}>
-          {this.typeOfDate == 'single' ? (
-            <div
-              class={{
-                datepicker__inputs: true,
-                [`datepicker__inputs__${this.typeOfDate}`]: true,
-                datepicker__inputs__open: this.open,
-              }}
-            >
-              <bds-input
-                label={this.label.length > 0 ? this.label : termTranslate(this.language, 'setTheDate')}
-                value={this.valueDate}
-                disabled={this.disabled}
-                type="date"
-                maxlength={10}
-                icon="calendar"
-                onClick={() => this.openDatepicker()}
-                onBdsInput={(ev) => this.onInputDateSelected(ev)}
-                danger={this.errorMsgDate ? true : false}
-                errorMessage={this.errorMsgDate}
-                dataTest={this.dtInputStart}
-              ></bds-input>
-            </div>
-          ) : (
-            <div
-              class={{
-                datepicker__inputs: true,
-                [`datepicker__inputs__${this.typeOfDate}`]: true,
-                datepicker__inputs__open: this.open,
-              }}
-            >
-              <bds-input
-                ref={this.refInputSetDate}
-                label={termTranslate(this.language, 'from')}
-                value={this.valueDate}
-                disabled={this.disabled}
-                type="date"
-                maxlength={10}
-                icon="calendar"
-                onClick={() => this.openDatepicker()}
-                onFocus={() => this.onFocusDateSelect()}
-                onBdsInput={(ev) => this.onInputDateSelected(ev)}
-                danger={this.errorMsgDate ? true : false}
-                errorMessage={this.errorMsgDate}
-                dataTest={this.dtInputStart}
-              ></bds-input>
-              <bds-input
-                ref={this.refInputSetEndDate}
-                label={termTranslate(this.language, 'to')}
-                value={this.valueEndDate}
-                disabled={this.disabled || !this.dateSelected}
-                type="date"
-                maxlength={10}
-                icon="calendar"
-                onClick={() => this.openDatepicker()}
-                onFocus={() => this.onFocusEndDateSelect()}
-                onBdsInput={(ev) => this.onInputEndDateSelected(ev)}
-                danger={this.errorMsgEndDate ? true : false}
-                errorMessage={this.errorMsgEndDate}
-                dataTest={this.dtInputEnd}
-              ></bds-input>
-            </div>
-          )}
+      <Host class={{ datepicker: true }}>
+        {this.typeOfDate == 'single' ? (
           <div
-            ref={this.refMenuElement}
             class={{
-              datepicker__menu: true,
-              datepicker__menu__open: this.open,
+              datepicker__inputs: true,
+              [`datepicker__inputs__${this.typeOfDate}`]: true,
+              datepicker__inputs__open: this.open,
             }}
-            style={menuPosition}
           >
-            {this.message && (
-              <bds-grid margin="b-2">
-                <bds-banner variant={this.variantBanner} context="inside">
-                  {this.message}
-                </bds-banner>
-              </bds-grid>
-            )}
-            {this.typeOfDate == 'single' ? (
-              <bds-datepicker-single
-                ref={this.refDatepickerSingle}
-                startDate={this.startDateLimit && dateToDayList(this.startDateLimit)}
-                endDate={this.endDateLimit && dateToDayList(this.endDateLimit)}
-                dateSelect={this.dateSelected}
-                onBdsDateSelected={(event) => this.selectDate(event)}
-                language={this.language}
-                dtButtonPrev={this.dtButtonPrev}
-                dtButtonNext={this.dtButtonNext}
-                dtSelectMonth={this.dtSelectMonth}
-                dtSelectYear={this.dtSelectYear}
-              ></bds-datepicker-single>
-            ) : (
-              <bds-datepicker-period
-                ref={this.refDatepickerPeriod}
-                startDate={this.startDateLimit && dateToDayList(this.startDateLimit)}
-                endDate={this.endDateLimit && dateToDayList(this.endDateLimit)}
-                startDateSelect={this.dateSelected}
-                stateSelect={this.stateSelect}
-                endDateSelect={this.endDateSelected}
-                onBdsStartDate={(event) => this.selectDate(event)}
-                onBdsEndDate={(event) => this.selectEndDate(event)}
-                onBdsClickDayButton={(event) => this.whenClickCalendar(event)}
-                language={this.language}
-                dtButtonPrev={this.dtButtonPrev}
-                dtButtonNext={this.dtButtonNext}
-                dtSelectMonth={this.dtSelectMonth}
-                dtSelectYear={this.dtSelectYear}
-              ></bds-datepicker-period>
-            )}
-            <div class={{ datepicker__menu__footer: true }}>
-              <bds-button variant="secondary" onClick={() => this.clearDate()} dataTest={this.dtButtonClear}>
-                {termTranslate(this.language, 'reset')}
-              </bds-button>
-              <bds-button onClick={this.clickConcludeDatepicker} dataTest={this.dtButtonConfirm}>
-                {termTranslate(this.language, 'conclude')}
-              </bds-button>
-            </div>
+            <bds-input
+              label={this.label.length > 0 ? this.label : termTranslate(this.language, 'setTheDate')}
+              value={this.valueDate}
+              disabled={this.disabled}
+              type="date"
+              maxlength={10}
+              icon="calendar"
+              onClick={() => this.openDatepicker()}
+              onBdsInput={(ev) => this.onInputDateSelected(ev)}
+              danger={this.errorMsgDate ? true : false}
+              errorMessage={this.errorMsgDate}
+              dataTest={this.dtInputStart}
+            ></bds-input>
+          </div>
+        ) : (
+          <div
+            class={{
+              datepicker__inputs: true,
+              [`datepicker__inputs__${this.typeOfDate}`]: true,
+              datepicker__inputs__open: this.open,
+            }}
+          >
+            <bds-input
+              ref={this.refInputSetDate}
+              label={termTranslate(this.language, 'from')}
+              value={this.valueDate}
+              disabled={this.disabled}
+              type="date"
+              maxlength={10}
+              icon="calendar"
+              onClick={() => this.openDatepicker()}
+              onFocus={() => this.onFocusDateSelect()}
+              onBdsInput={(ev) => this.onInputDateSelected(ev)}
+              danger={this.errorMsgDate ? true : false}
+              errorMessage={this.errorMsgDate}
+              dataTest={this.dtInputStart}
+            ></bds-input>
+            <bds-input
+              ref={this.refInputSetEndDate}
+              label={termTranslate(this.language, 'to')}
+              value={this.valueEndDate}
+              disabled={this.disabled || this.errorMsgDate ? true : false || !this.dateSelected}
+              type="date"
+              maxlength={10}
+              icon="calendar"
+              onClick={() => this.openDatepicker()}
+              onFocus={() => this.onFocusEndDateSelect()}
+              onBdsInput={(ev) => this.onInputEndDateSelected(ev)}
+              danger={this.errorMsgEndDate ? true : false}
+              errorMessage={this.errorMsgEndDate}
+              dataTest={this.dtInputEnd}
+            ></bds-input>
+          </div>
+        )}
+        <div
+          ref={this.refMenuElement}
+          class={{
+            datepicker__menu: true,
+            datepicker__menu__open: this.open,
+          }}
+        >
+          {this.message && (
+            <bds-grid margin="b-2">
+              <bds-banner variant={this.variantBanner} context="inside">
+                {this.message}
+              </bds-banner>
+            </bds-grid>
+          )}
+          {this.typeOfDate == 'single' ? (
+            <bds-datepicker-single
+              ref={this.refDatepickerSingle}
+              startDate={this.startDateLimit && dateToDayList(this.startDateLimit)}
+              endDate={this.endDateLimit && dateToDayList(this.endDateLimit)}
+              dateSelect={this.dateSelected}
+              onBdsDateSelected={(event) => this.selectDate(event)}
+              language={this.language}
+              dtButtonPrev={this.dtButtonPrev}
+              dtButtonNext={this.dtButtonNext}
+              dtSelectMonth={this.dtSelectMonth}
+              dtSelectYear={this.dtSelectYear}
+            ></bds-datepicker-single>
+          ) : (
+            <bds-datepicker-period
+              ref={this.refDatepickerPeriod}
+              startDate={this.startDateLimit && dateToDayList(this.startDateLimit)}
+              endDate={this.endDateLimit && dateToDayList(this.endDateLimit)}
+              startDateSelect={this.dateSelected}
+              stateSelect={this.stateSelect}
+              endDateSelect={this.endDateSelected}
+              onBdsStartDate={(event) => this.selectDate(event)}
+              onBdsEndDate={(event) => this.selectEndDate(event)}
+              onBdsClickDayButton={(event) => this.whenClickCalendar(event)}
+              language={this.language}
+              dtButtonPrev={this.dtButtonPrev}
+              dtButtonNext={this.dtButtonNext}
+              dtSelectMonth={this.dtSelectMonth}
+              dtSelectYear={this.dtSelectYear}
+            ></bds-datepicker-period>
+          )}
+          <div class={{ datepicker__menu__footer: true }}>
+            <bds-button size="short" variant="secondary" onClick={() => this.clearDate()} dataTest={this.dtButtonClear}>
+              {termTranslate(this.language, 'reset')}
+            </bds-button>
+            <bds-button size="short" onClick={this.clickConcludeDatepicker} dataTest={this.dtButtonConfirm}>
+              {termTranslate(this.language, 'conclude')}
+            </bds-button>
           </div>
         </div>
         {this.open && (
-          <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
+          <div
+            class={{ outzone: true }}
+            onClick={() => this.clickConcludeDatepicker()}
+            data-test={this.dtOutzone}
+          ></div>
         )}
       </Host>
     );

@@ -2,10 +2,12 @@
 @import 'mixins';
 @import '../input/input.scss';
 
-.datepicker {
+:host {
   position: relative;
   max-width: 608px;
+}
 
+.datepicker {
   &__inputs {
     position: relative;
     width: 100%;
@@ -54,11 +56,9 @@
   }
 
   &__menu {
-    position: fixed;
+    position: absolute;
     pointer-events: none;
-    top: 0;
-    left: 0;
-    background-color: $color-surface-1;
+    background-color: $color-surface-0;
     box-shadow: $shadow-2;
     border-radius: 8px;
     padding: 16px;
@@ -73,8 +73,106 @@
       opacity: 1;
     }
 
+    &__single {
+      &__top-center {
+        bottom: calc(100% + 8px);
+        left: calc(50% - 146px);
+      }
+      &__top-left {
+        bottom: calc(100% + 8px);
+        left: 0;
+      }
+      &__top-right {
+        bottom: calc(100% + 8px);
+        right: 0;
+      }
+      &__bottom-center {
+        top: calc(100% + 8px);
+        left: calc(50% - 146px);
+      }
+      &__bottom-right {
+        top: calc(100% + 8px);
+        right: 0;
+      }
+      &__bottom-left {
+        top: calc(100% + 8px);
+        left: 0;
+      }
+      &__right-center {
+        right: calc(100% + 8px);
+      }
+      &__right-top {
+        right: calc(100% + 8px);
+        top: 0;
+      }
+      &__right-bottom {
+        right: calc(100% + 8px);
+        bottom: 0;
+      }
+      &__left-center {
+        left: calc(100% + 8px);
+      }
+      &__left-top {
+        left: calc(100% + 8px);
+        top: 0;
+      }
+      &__left-bottom {
+        left: calc(100% + 8px);
+        bottom: 0;
+      }
+    }
+
+    &__period {
+      &__top-center {
+        bottom: calc(100% + 8px);
+        left: calc(50% - 240px);
+      }
+      &__top-left {
+        bottom: calc(100% + 8px);
+        left: 0;
+      }
+      &__top-right {
+        bottom: calc(100% + 8px);
+        right: 0;
+      }
+      &__bottom-center {
+        top: calc(100% + 8px);
+        left: calc(50% - 240px);
+      }
+      &__bottom-right {
+        top: calc(100% + 8px);
+        right: 0;
+      }
+      &__bottom-left {
+        top: calc(100% + 8px);
+        left: 0;
+      }
+      &__right-center {
+        right: calc(100% + 8px);
+      }
+      &__right-top {
+        right: calc(100% + 8px);
+        top: 0;
+      }
+      &__right-bottom {
+        right: calc(100% + 8px);
+        bottom: 0;
+      }
+      &__left-center {
+        left: calc(100% + 8px);
+      }
+      &__left-top {
+        left: calc(100% + 8px);
+        top: 0;
+      }
+      &__left-bottom {
+        left: calc(100% + 8px);
+        bottom: 0;
+      }
+    }
+
     &__message {
-      padding: 8px 16px;
+      padding: 8px;
       border-radius: 8px;
       background-color: $color-warning;
       color: $color-content-din;
@@ -83,7 +181,7 @@
       margin-bottom: 24px;
 
       bds-icon {
-        margin-right: 8px;
+        margin-right: 4px;
       }
     }
 
@@ -91,12 +189,12 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding-top: 16px;
-      margin-top: 16px;
-      border-top: 1px solid $color-content-ghost;
+      padding-top: 8px;
+      margin-top: 8px;
+      border-top: 1px solid $color-border-2;
 
       bds-button {
-        margin-left: 16px;
+        margin-left: 8px;
       }
     }
   }
@@ -110,11 +208,11 @@
     &__selectDate {
       width: 100%;
       display: grid;
-      grid-template-columns: 28px 1fr 80px 28px;
+      grid-template-columns: 32px 104px auto 32px;
       grid-gap: 8px;
       align-items: center;
-      margin-bottom: 16px;
-      padding: 0 8px;
+      margin-bottom: 8px;
+      justify-items: center;
 
       &__select {
         position: relative;
@@ -201,7 +299,6 @@
       }
 
       & .arrow-left {
-        padding-left: 8px;
         &__disable {
           opacity: 0;
           pointer-events: none;
@@ -209,7 +306,6 @@
       }
 
       & .arrow-right {
-        padding-right: 8px;
         &__disable {
           opacity: 0;
           pointer-events: none;
@@ -224,8 +320,8 @@
       margin-bottom: 8px;
 
       &__day {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         text-align: center;
         color: $color-content-ghost;
         display: flex;
@@ -235,8 +331,8 @@
     }
 
     &__car {
-      height: 280px;
-      width: 280px;
+      height: 192px;
+      width: 224px;
       overflow: hidden;
       position: relative;
 
@@ -250,11 +346,10 @@
           height: fit-content;
           display: grid;
           grid-template-columns: repeat(7, 1fr);
-          gap: 8px 0;
 
           &__day {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             position: relative;
 
             &__period {
@@ -329,21 +424,21 @@
 
       .animate__prev {
         animation-name: animationPrev;
-        animation-duration: 0.31s;
+        animation-duration: 0.33s;
         animation-timing-function: ease-in-out;
       }
       .animate__next {
         animation-name: animationNext;
-        animation-duration: 0.31s;
+        animation-duration: 0.33s;
         animation-timing-function: ease-in-out;
       }
     }
 
     .period &__selectDate {
-      grid-template-columns: 28px 120px 80px 1fr 28px;
+      grid-template-columns: 32px 120px 80px auto 32px;
 
       &__futureMonth {
-        padding-left: 80px;
+        padding: 0 8px;
         text-align: center;
         color: $color-content-default;
       }
@@ -363,13 +458,13 @@
     }
 
     .period &__car {
-      width: 600px;
+      width: 464px;
 
       &__slide {
-        left: calc(-50% - 60px);
+        left: calc(-50% - 24px);
 
         &__box {
-          margin-left: 40px;
+          margin-left: 16px;
         }
       }
 
@@ -411,18 +506,18 @@
 }
 @keyframes animationPeriodPrev {
   0% {
-    left: calc(-50% - 60px);
+    left: calc(-50% - 24px);
   }
   100% {
-    left: -40px;
+    left: -16px;
   }
 }
 
 @keyframes animationPeriodNext {
   0% {
-    left: calc(-50% - 60px);
+    left: calc(-50% - 24px);
   }
   100% {
-    left: calc(-100% - 80px);
+    left: calc(-100% - 24px);
   }
 }

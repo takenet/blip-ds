@@ -201,7 +201,7 @@ export class Button {
     } else if (this.variant === 'outline' || this.variant === 'text') {
       this.loadingColor = this.color === 'positive' ? 'positive' : this.color === 'negative' ? 'negative' : 'main';
     }
-    return <bds-loading-spinner size="small" color={this.loadingColor}></bds-loading-spinner>;
+    return <bds-loading-spinner size="extra-small" color={this.loadingColor}></bds-loading-spinner>;
   }
 
   private handleClick = (ev) => {
@@ -266,7 +266,7 @@ export class Button {
             ''
           )}
           <bds-typo
-            class={{ typo_buttom: true, hide: this.bdsLoading }}
+            class={{ typo_buttom: true, button__content:true, hide: this.bdsLoading }}
             variant="fs-14"
             lineHeight="simple"
             bold="bold"

@@ -14,11 +14,9 @@ export default {
 export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
   if (el.length !== 0) {
-    el[0].style.height = '600px';
+    el[0].style.height = '800px';
     el[0].style.position = 'relative';
-    el[0].style.background = 'none';
   }
-
   return (
     <bds-datepicker
       type-of-date={args.typeOfDate}
@@ -31,6 +29,7 @@ export const Properties = (args) => {
       disabled={args.disabled}
       value-date-selected={args.valueDateSelected}
       value-end-date-selected={args.valueEndDateSelected}
+      position-options={args.positionOptions}
     />
   );
 };
@@ -46,6 +45,7 @@ Properties.args = {
   disabled: false,
   valueDateSelected: '',
   valueEndDateSelected: '',
+  positionOptions: 'auto',
 };
 
 Properties.argTypes = {
@@ -112,6 +112,27 @@ Properties.argTypes = {
       defaultValue: { summary: 'vazio' },
     },
     control: 'text',
+  },
+  positionOptions: {
+    table: {
+      defaultValue: { summary: 'auto' },
+    },
+    options: [
+      'auto',
+      'top-center',
+      'top-left',
+      'top-right',
+      'bottom-center',
+      'bottom-right',
+      'bottom-left',
+      'right-center',
+      'right-top',
+      'right-bottom',
+      'left-center',
+      'left-top',
+      'left-bottom',
+    ],
+    control: 'select',
   },
 };
 
