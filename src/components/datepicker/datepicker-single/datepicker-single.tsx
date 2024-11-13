@@ -25,8 +25,8 @@ export class BdsdatepickerSingle {
   @State() week: string[];
   @State() months: Options[];
   @State() years: Options[];
-  @State() monthActivated: number = THIS_DAY.getMonth();
-  @State() yearActivated: number = THIS_DAY.getFullYear();
+  @State() monthActivated: number = this.dateSelect ? this.dateSelect.getMonth() : THIS_DAY.getMonth();
+  @State() yearActivated: number = this.dateSelect ? this.dateSelect.getFullYear() : THIS_DAY.getFullYear();
   @State() animatePrev?: boolean = false;
   @State() animateNext?: boolean = false;
   @State() openSelectMonth?: boolean = false;
@@ -317,6 +317,7 @@ export class BdsdatepickerSingle {
                 datepicker__calendar__car__slide__box__day__disable: this.checkDisableDay(item),
               }}
               onClick={() => this.selectDate(item)}
+              variant="fs-14"
             >
               {item.date}
             </bds-typo>
@@ -365,7 +366,7 @@ export class BdsdatepickerSingle {
         <div>
           <div class={{ datepicker__calendar__week: true }}>
             {this.week.map((item, idx) => (
-              <bds-typo key={idx} class={`datepicker__calendar__week__day`}>
+              <bds-typo variant="fs-14" key={idx} class={`datepicker__calendar__week__day`}>
                 {item.charAt(0)}
               </bds-typo>
             ))}

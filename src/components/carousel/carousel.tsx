@@ -10,6 +10,7 @@ import { gapChanged, getHighestItem, getItems } from '../../utils/position-eleme
 export class BdsCarousel {
   private itemsElement?: HTMLCollectionOf<HTMLBdsCarouselItemElement> = null;
   private frame?: HTMLElement;
+  private themeProvider?: HTMLBdsThemeProviderElement;
   private frameRepeater?: HTMLElement;
   private incrementSeconds?: any;
 
@@ -104,6 +105,9 @@ export class BdsCarousel {
         this.itemsElement[i].style.padding = `0 ${gapChanged(this.gap) / 2}px`;
       }
       if (this.autoHeight) this.updateHeight(Array.from(this.itemsElement));
+    }
+    if (this.slidePerPage <= 1 && this.arrows == 'inside') {
+      this.themeProvider.theme = this.itemsElement[this.itemActivated - 1].theme;
     }
   }
 
@@ -257,6 +261,10 @@ export class BdsCarousel {
     this.frame = el;
   };
 
+  private refThemeProvider = (el: HTMLBdsThemeProviderElement): void => {
+    this.themeProvider = el;
+  };
+
   private refFrameRepeater = (el: HTMLElement): void => {
     this.frameRepeater = el;
   };
@@ -349,7 +357,10 @@ export class BdsCarousel {
             <bds-skeleton height="100%" shape="square" width="100%" />
           </bds-grid>
           {this.arrows != 'none' && !this.loading && (
-            <div class={{ carousel_buttons: true, carousel_buttons_fullwidth: this.arrows == 'inside' }}>
+            <bds-theme-provider
+              ref={(el) => this.refThemeProvider(el)}
+              class={{ carousel_buttons: true, carousel_buttons_fullwidth: this.arrows == 'inside' }}
+            >
               <bds-button-icon
                 variant="tertiary"
                 icon="arrow-left"
@@ -364,10 +375,11 @@ export class BdsCarousel {
                 onBdsClick={() => this.nextSlide()}
                 disabled={!this.infiniteLoop && this.itemActivated >= this.internalItens.length}
               ></bds-button-icon>
-            </div>
+            </bds-theme-provider>
           )}
         </div>
-        {this.autoplay &&
+        {this.internalItens.length > 1 &&
+          this.autoplay &&
           (this.loading ? (
             <bds-skeleton
               class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
@@ -382,7 +394,7 @@ export class BdsCarousel {
               size="small"
             />
           ))}
-        {this.bullets && (
+        {this.internalItens.length > 1 && this.bullets && (
           <div class={{ carousel_bullets: true }}>
             {this.loading ? (
               <bds-grid gap="2" justify-content="center">

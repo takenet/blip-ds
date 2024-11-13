@@ -85,9 +85,9 @@ const defaults = [
   'stilingue-2',
   'stilingue-3',
   'stilingue-4',
-  'solicition',
+  'solicitation',
   'solutions-agent',
-  'suprise',
+  'surprise',
   'talking',
   'tangram',
   'team-work',
@@ -400,6 +400,7 @@ const spots = [
   'letter-empty',
   'letter-error-empty',
   'letter-invite-blip',
+  'letter-search-attention',
   'letter-search-avatars',
   'letter-search-question',
   'lock-1',
@@ -499,7 +500,7 @@ export const IllustrationsDefault = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="default" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -536,7 +537,7 @@ export const IllustrationsScreens = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="screens" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -573,7 +574,7 @@ export const IllustrationsBlipSolid = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="blip-solid" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -610,7 +611,7 @@ export const IllustrationsBlipOutline = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="blip-outline" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -647,7 +648,7 @@ export const IllustrationsBrand = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="brand" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -684,7 +685,7 @@ export const IllustrationsLogoIntegration = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="logo-integration" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -721,7 +722,7 @@ export const IllustrationsEmptyStates = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="empty-states" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -758,7 +759,7 @@ export const IllustrationsSegmented = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="segmented" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -795,7 +796,7 @@ export const IllustrationsSmartphone = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="smartphone" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 
@@ -832,7 +833,7 @@ export const IllustrationsSpots = () => {
       <div key={name} style={illustrationStyles}>
         <bds-illustration type="spots" name={name}></bds-illustration>
         <bds-typo variant="fs-10">{name}</bds-typo>
-      </div>
+      </div>,
     );
   });
 

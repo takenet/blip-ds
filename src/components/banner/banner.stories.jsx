@@ -18,7 +18,9 @@ const rightText = {
 export const Properties = (args) => (
   <bds-banner variant={args.variant} button-close={args.buttonClose} context={args.context}>
     Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!
-    <bds-banner-link>Acompanhe aqui</bds-banner-link>
+    <bds-banner-link link={args.buttonLink} target={args.buttonTarget}>
+      Acompanhe aqui
+    </bds-banner-link>
   </bds-banner>
 );
 
@@ -46,12 +48,28 @@ Properties.argTypes = {
 
     control: 'boolean',
   },
+  buttonLink: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Defina o link a ser aberto',
+    control: 'text',
+  },
+  buttonTarget: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    options: ['blank', 'self', 'parent', 'top', 'framename'],
+    control: 'select',
+  },
 };
 
 Properties.args = {
   variant: 'system',
   context: 'outside',
   buttonClose: false,
+  buttonLink: 'https://www.blip.ai/',
+  buttonTarget: 'blank',
 };
 export const Events = () => {
   useEffect(() => {

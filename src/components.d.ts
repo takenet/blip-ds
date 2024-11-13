@@ -14,6 +14,7 @@ import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-grou
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
+import { targets } from "./components/banner/banner-link/banner-link";
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
@@ -23,17 +24,18 @@ import { PaperBackground, PaperElevation } from "./components/paper/paper-interf
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { arrows, gap } from "./components/carousel/carousel-interface";
+import { Themes } from "./components/theme-provider/theme-provider";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
 import { ColorChipTag } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
-import { typeDate } from "./components/datepicker/datepicker";
+import { DropdownPostionType, typeDate } from "./components/datepicker/datepicker";
 import { BannerVariant as BannerVariant1 } from "./components/banner/banner";
 import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-import { activeMode, DropdownPostionType } from "./components/dropdown/dropdown";
+import { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -63,7 +65,7 @@ import { SwitchSize } from "./components/switch/switch";
 import { JustifyContent } from "./components/table/table-cell/table-cell";
 import { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
-import { Themes } from "./components/theme-provider/theme-provider";
+import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
@@ -332,6 +334,10 @@ export namespace Components {
           * Set the link pass.
          */
         "link": string;
+        /**
+          * Set the link pass.
+         */
+        "target": targets;
     }
     interface BdsButton {
         /**
@@ -570,6 +576,13 @@ export namespace Components {
         "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
+        "bgColor"?: string;
+        "bgImage"?: string;
+        "bgImageBrightness"?: number;
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
@@ -786,6 +799,10 @@ export namespace Components {
          */
         "endDateLimit"?: string;
         /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
         "language"?: languages;
@@ -793,6 +810,10 @@ export namespace Components {
           * Message. Select type of date.
          */
         "message"?: string;
+        /**
+          * Used to set drop position
+         */
+        "positionOptions"?: DropdownPostionType;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
@@ -1035,6 +1056,10 @@ export namespace Components {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -1771,6 +1796,10 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
          */
         "dtOutzone"?: string;
+        /**
+          * If true, the modal will close keydown Enter.
+         */
+        "enterClose"?: boolean;
         /**
           * Used to open/close the modal
          */
@@ -2675,6 +2704,10 @@ export namespace Components {
           * Used to accept a especific type of file.
          */
         "accept": string;
+        /**
+          * Used to accept a especific type of file.
+         */
+        "dataAccept": string[] | string;
         /**
           * Used for delete a item from the list.
          */
@@ -3922,6 +3955,10 @@ declare namespace LocalJSX {
           * Emitted when the link is clicked.
          */
         "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<any>) => void;
+        /**
+          * Set the link pass.
+         */
+        "target"?: targets;
     }
     interface BdsButton {
         /**
@@ -4164,6 +4201,13 @@ declare namespace LocalJSX {
         "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
+        "bgColor"?: string;
+        "bgImage"?: string;
+        "bgImageBrightness"?: number;
+        /**
+          * Set what theme will be aplyed inside the component. 'light', 'dark';
+         */
+        "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
@@ -4397,6 +4441,10 @@ declare namespace LocalJSX {
          */
         "endDateLimit"?: string;
         /**
+          * label in input, with he the input size increases.
+         */
+        "label"?: string;
+        /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
         "language"?: languages;
@@ -4416,6 +4464,10 @@ declare namespace LocalJSX {
           * bdsStartDate. Event to return selected end date value.
          */
         "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        /**
+          * Used to set drop position
+         */
+        "positionOptions"?: DropdownPostionType;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
          */
@@ -4667,6 +4719,10 @@ declare namespace LocalJSX {
           * Alternative text for the image.
          */
         "alt"?: string;
+        /**
+          * Brightness of the image.
+         */
+        "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -5519,6 +5575,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
          */
         "dtOutzone"?: string;
+        /**
+          * If true, the modal will close keydown Enter.
+         */
+        "enterClose"?: boolean;
         /**
           * Emitted when modal status has changed.
          */
@@ -6459,6 +6519,10 @@ declare namespace LocalJSX {
           * Used to accept a especific type of file.
          */
         "accept"?: string;
+        /**
+          * Used to accept a especific type of file.
+         */
+        "dataAccept"?: string[] | string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
          */

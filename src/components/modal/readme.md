@@ -12,6 +12,7 @@
 | `closeButton`   | `close-button`    | Used to hide or show the close button                                                                                   | `boolean`              | `true`    |
 | `dtButtonClose` | `dt-button-close` | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close. | `string`               | `null`    |
 | `dtOutzone`     | `dt-outzone`      | Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.     | `string`               | `null`    |
+| `enterClose`    | `enter-close`     | If true, the modal will close keydown Enter.                                                                            | `boolean`              | `true`    |
 | `open`          | `open`            | Used to open/close the modal                                                                                            | `boolean`              | `false`   |
 | `outzoneClose`  | `outzone-close`   | If true, the modal will close clicking outside the component.                                                           | `boolean`              | `true`    |
 | `size`          | `size`            | Used to change the modal heights.                                                                                       | `"dynamic" \| "fixed"` | `'fixed'` |

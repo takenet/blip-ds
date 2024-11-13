@@ -1,4 +1,4 @@
-import { Component, Prop, Method, State, h } from '@stencil/core';
+import { Element, Component, Prop, Method, State, h, Host } from '@stencil/core';
 
 export type ObjectFitValue = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
 
@@ -8,6 +8,9 @@ export type ObjectFitValue = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down
   shadow: true,
 })
 export class Image {
+  private imageHasLoading: boolean = false;
+
+  @Element() element: HTMLElement;
   /**
    * URL of the main image.
    */
@@ -34,6 +37,11 @@ export class Image {
   @Prop() objectFit?: ObjectFitValue = 'cover';
 
   /**
+   * Brightness of the image.
+   */
+  @Prop() brightness?: number;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -53,9 +61,15 @@ export class Image {
    */
   @State() currentSrc: string;
 
+  componentDidLoad() {
+    this.element.style.width = this.width ? this.width : 'auto';
+    this.element.style.height = this.height?.length > 0 ? this.height : 'auto';
+  }
+
   @Method()
   async loadImage(): Promise<void> {
     if (this.src) {
+      this.imageHasLoading = true;
       try {
         const response = await fetch(this.src);
         if (response.ok) {
@@ -63,10 +77,12 @@ export class Image {
           const objectURL = URL.createObjectURL(blob);
           this.currentSrc = objectURL;
           this.imageLoaded = true;
+          this.imageHasLoading = false;
         } else {
           this.loadError = true;
         }
       } catch {
+        this.imageHasLoading = false;
         this.loadError = true;
       }
     }
@@ -77,41 +93,33 @@ export class Image {
       // Se a imagem ainda não foi carregada, chame o método loadImage
       this.loadImage();
     }
-
-    if (this.imageLoaded) {
-      return (
-        <img
-          src={this.currentSrc}
-          alt={this.alt}
-          style={{ objectFit: this.objectFit, width: this.width, height: this.height }}
-          data-test={this.dataTest}
-          draggable={false}
-        />
-      );
-    } else if (!this.src) {
-      // Se imageLoaded for falso e src estiver vazia, renderize a ilustração "image-not-found"
-      return (
-        <div style={{ width: this.width || this.height ? this.width : '100%' }}>
+    return (
+      <Host class={{ empty_img: !this.imageLoaded }}>
+        {this.imageLoaded ? (
+          <img
+            src={this.currentSrc}
+            alt={this.alt}
+            style={{
+              objectFit: this.objectFit,
+              width: '100%',
+              height: '100%',
+              filter: `brightness(${this.brightness})`,
+            }}
+            data-test={this.dataTest}
+            draggable={false}
+          />
+        ) : this.imageHasLoading ? (
+          <bds-skeleton shape="square" width="100%" height="100%"></bds-skeleton>
+        ) : (
           <bds-illustration
+            class="img-feedback"
             type="empty-states"
-            name="image-not-found"
+            name={this.loadError ? 'broken-image' : 'image-not-found'}
             alt={this.alt}
             data-test={this.dataTest}
           ></bds-illustration>
-        </div>
-      );
-    } else {
-      // Se imageLoaded for falso e src não estiver vazia, renderize a ilustração "broken-image"
-      return (
-        <div style={{ width: this.width || this.height ? this.width : '100%' }}>
-          <bds-illustration
-            type="empty-states"
-            name="broken-image"
-            alt={this.alt}
-            data-test={this.dataTest}
-          ></bds-illustration>
-        </div>
-      );
-    }
+        )}
+      </Host>
+    );
   }
 }

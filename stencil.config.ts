@@ -26,6 +26,13 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
+    {
+      type: 'www',
+      serviceWorker: null, // disable service workers
+      dir: 'cypress',
+      empty: false,
+      copy: [{ src: '../dist', dest: 'dist', warn: false }],
+    },
     reactOutputTarget({
       componentCorePackage: '../../loader',
       proxiesFile: './blip-ds-react/src/components.ts',
@@ -41,6 +48,7 @@ export const config: Config = {
     scriptDataOpts: true,
     cloneNodeFix: false,
     slotChildNodesFix: true,
+    experimentalImportInjection: true,
   },
   testing: {
     timers: 'fake',

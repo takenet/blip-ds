@@ -1,7 +1,7 @@
 @import 'resets';
 @import 'mixins';
 
-$input-padding: 10px 4px 10px 12px;
+$input-padding: 8px 4px 8px 12px;
 $input-padding-label: 7px 4px 7px 12px;
 $input-width: 100%;
 $input_expanded: 100%;
@@ -123,6 +123,7 @@ $select-options-max-height: 200px;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
+  gap: 8px;
 
   .bds-icon {
     position: relative;
@@ -250,12 +251,7 @@ $select-options-max-height: 200px;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    margin-right: 8px;
-    padding: 2.5px;
-
-    &--large {
-      padding: 4px;
-    }
+    padding: 2px;
   }
 
   &__container {
@@ -286,6 +282,7 @@ $select-options-max-height: 200px;
       @include input-text();
       @include custom-scroll();
       width: 100%;
+      line-height: 22px;
 
       resize: none;
       cursor: inherit;
