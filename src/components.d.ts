@@ -36,6 +36,7 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
+import { Color } from "./components/grid/color-grid-interface";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
@@ -951,6 +952,7 @@ export namespace Components {
     }
     interface BdsGrid {
         "alignItems"?: alignItems;
+        "bgColor"?: Color;
         "container"?: boolean;
         "containerFluid"?: boolean;
         "direction"?: direction;
@@ -4593,6 +4595,7 @@ declare namespace LocalJSX {
     }
     interface BdsGrid {
         "alignItems"?: alignItems;
+        "bgColor"?: Color;
         "container"?: boolean;
         "containerFluid"?: boolean;
         "direction"?: direction;

@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 import { direction, justifyContent, flexWrap, alignItems, breakpoint, gap, padding, margin } from './grid-interface';
+import { Color } from './color-grid-interface';
 @Component({
   tag: 'bds-grid',
   styleUrl: 'grid.scss',
@@ -28,6 +29,7 @@ export class Grid {
   @Prop() gap?: gap;
   @Prop() padding?: padding;
   @Prop() margin?: margin;
+  @Prop() bgColor?: Color;
   render() {
     return (
       <Host
@@ -54,8 +56,9 @@ export class Grid {
           [`xgoffset--${this.xgOffset}`]: true,
           [`padding--${this.padding}`]: true,
           [`margin--${this.margin}`]: true,
+          [this.bgColor || '']: true,
         }}
-        style={{ height: this.height }}
+        style={{ height: this.height  }}
       >
         <slot></slot>
       </Host>

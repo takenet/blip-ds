@@ -1,3 +1,45 @@
+$colors: (
+  "color-brand": $color-brand,
+  "color-primary": $color-primary,
+  "color-secondary": $color-secondary,
+  "color-surface-0": $color-surface-0,
+  "color-surface-1": $color-surface-1,
+  "color-surface-2": $color-surface-2,
+  "color-surface-3": $color-surface-3,
+  "color-surface-4": $color-surface-4,
+  "color-surface-positive": $color-surface-positive,
+  "color-surface-negative": $color-surface-negative,
+  "color-surface-primary": $color-surface-primary,
+  "color-content-default": $color-content-default,
+  "color-content-disable": $color-content-disable,
+  "color-content-ghost": $color-content-ghost,
+  "color-content-bright": $color-content-bright,
+  "color-content-din": $color-content-din,
+  "color-border-1": $color-border-1,
+  "color-border-2": $color-border-2,
+  "color-border-3": $color-border-3,
+  "color-info": $color-info,
+  "color-system": $color-system,
+  "color-focus": $color-focus,
+  "color-success": $color-success,
+  "color-warning": $color-warning,
+  "color-error": $color-error,
+  "color-delete": $color-delete,
+  "color-shadow-0": $color-shadow-0,
+  "color-shadow-1": $color-shadow-1,
+  "color-hover": $color-hover,
+  "color-pressed": $color-pressed,
+  "color-positive": $color-positive,
+  "color-negative": $color-negative
+);
+
+// Gera as classes de fundo para cada cor
+@each $name, $value in $colors {
+  :host(.#{$name}) {
+    background-color: #{$value};
+  }
+}
+
 :host {
   display: flex;
   box-sizing: border-box;
