@@ -301,6 +301,7 @@ const outlineIconsName = [
   'redo',
   'refresh',
   'refresh-all',
+  'reply',
   'resources',
   'restore',
   'real',
