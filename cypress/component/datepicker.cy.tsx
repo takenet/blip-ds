@@ -9,6 +9,14 @@ const dateEndToValidValue = `${END_DAY.getFullYear()}-${(END_DAY.getMonth() + 1)
   .toString()
   .padStart(2, '0')}-${END_DAY.getDate().toString().padStart(2, '0')}`;
 
+const hasAtLeastOneClass = (expectedClasses) => {
+  return ($el) => {
+    const classList = Array.from($el[0].classList);
+    console.log('classList', classList);
+    return expectedClasses.some((expectedClass) => classList.includes(expectedClass));
+  };
+};
+
 describe('Teste de Renderização datepicker', () => {
   // Teste de Renderização
   it('deve renderizar o datepicker com o label correto', () => {
@@ -64,7 +72,7 @@ describe('Teste de Eventos datepicker', () => {
     cy.get('@bdsStartDate').should('have.been.called');
   });
   // Teste de Evento onBdsEndDate
-  it('deve chamar o evento onBdsStartDate ao digitar', () => {
+  it('deve chamar o evento onBdsEndDate ao digitar', () => {
     cy.mount(
       <BdsDatepicker
         typeOfDate="Period"
@@ -88,6 +96,40 @@ describe('Teste de Eventos datepicker', () => {
       .type(dateEndToValidValue);
     cy.get('@bdsEndDate').should('have.been.called');
   });
+  // Teste de Evento onConcludeDatepicker
+  it('deve chamar o evento onConcludeDatepicker ao digitar', () => {
+    cy.mount(
+      <BdsDatepicker
+        typeOfDate="Period"
+        onConcludeDatepicker={cy.stub().as('concludeDatepicker')}
+        dtInputStart="should-input-start"
+        dtInputEnd="should-input-end"
+        dtButtonConfirm="should-button-confirm"
+      />,
+    );
+    cy.get('bds-datepicker')
+      .shadow()
+      .find('bds-input.input-start')
+      .shadow()
+      .find('[data-test="should-input-start"]')
+      .type(dateToValidValue);
+
+    cy.get('bds-datepicker')
+      .shadow()
+      .find('bds-input.input-end')
+      .shadow()
+      .find('[data-test="should-input-end"]')
+      .type(dateEndToValidValue);
+
+    cy.get('bds-datepicker')
+      .shadow()
+      .find('bds-button.bt-conclude')
+      .shadow()
+      .find('[data-test="should-button-confirm"]')
+      .click();
+
+    cy.get('@concludeDatepicker').should('have.been.called');
+  });
 });
 
 describe('Teste de Acessibilidade datepicker', () => {
@@ -104,5 +146,30 @@ describe('Teste de Acessibilidade datepicker', () => {
     cy.realPress('Tab');
     cy.wait(50);
     cy.get('bds-datepicker').should('have.focus');
+  });
+  // Teste de Acessibilidade Abrir o menu de seleção
+  it('Verificar se ao clicar o calendario de seleção é habilitado', () => {
+    cy.mount(<BdsDatepicker dataTest="bds-datepicker" />);
+    cy.get('bds-datepicker').click();
+    cy.get('bds-datepicker').shadow().find('.datepicker__menu').should('have.class', 'datepicker__menu__open');
+  });
+  // Teste de Acessibilidade Fechar o menu de seleção ao clicar em "concluir"
+  it('Verificar se ao clicar em "concluir" o calendario de seleção é desabilitado', () => {
+    cy.mount(<BdsDatepicker dtButtonConfirm="should-button-confirm" />);
+    cy.get('bds-datepicker').click();
+    cy.get('bds-datepicker')
+      .shadow()
+      .find('bds-button.bt-conclude')
+      .shadow()
+      .find('[data-test="should-button-confirm"]')
+      .click();
+    cy.get('bds-datepicker').shadow().find('.datepicker__menu').should('not.have.class', 'datepicker__menu__open');
+  });
+  // Teste de Acessibilidade Fechar o menu de seleção ao clicar fora do componente
+  it('Verificar se ao clicar fora do componente o calendario de seleção é desabilitado', () => {
+    cy.mount(<BdsDatepicker dtButtonConfirm="should-button-confirm" />);
+    cy.get('bds-datepicker').click();
+    cy.get('bds-datepicker').shadow().find('.outzone').click({ force: true });
+    cy.get('bds-datepicker').shadow().find('.datepicker__menu').should('not.have.class', 'datepicker__menu__open');
   });
 });

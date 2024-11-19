@@ -553,10 +553,21 @@ export class DatePicker {
             ></bds-datepicker-period>
           )}
           <div class={{ datepicker__menu__footer: true }}>
-            <bds-button size="short" variant="secondary" onClick={() => this.clearDate()} dataTest={this.dtButtonClear}>
+            <bds-button
+              class="bt-reset"
+              size="short"
+              variant="secondary"
+              onClick={() => this.clearDate()}
+              dataTest={this.dtButtonClear}
+            >
               {termTranslate(this.language, 'reset')}
             </bds-button>
-            <bds-button size="short" onClick={this.clickConcludeDatepicker} dataTest={this.dtButtonConfirm}>
+            <bds-button
+              class="bt-conclude"
+              size="short"
+              onClick={this.clickConcludeDatepicker}
+              dataTest={this.dtButtonConfirm}
+            >
               {termTranslate(this.language, 'conclude')}
             </bds-button>
           </div>
