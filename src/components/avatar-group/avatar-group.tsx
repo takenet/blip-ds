@@ -7,7 +7,7 @@ export type avatarSize = 'extra-small' | 'small' | 'standard';
 @Component({
   tag: 'bds-avatar-group',
   styleUrl: 'avatar-group.scss',
-  shadow: false,
+  shadow: true,
 })
 export class AvatarGroup {
   @State() internalUsers: AvatarDataList[];
@@ -72,7 +72,8 @@ export class AvatarGroup {
             [`avatar__group__size--${this.size}`]: true,
             [`avatar__group__click--${this.canClick}`]: true,
           }}
-          onClick={() => this.handleClickGroup}
+          tabindex="0"
+          onClick={(e) => this.handleClickGroup(e)}
         >
           {this.internalUsers ? (
             this.internalUsers
