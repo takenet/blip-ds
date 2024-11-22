@@ -1853,7 +1853,7 @@ export namespace Components {
     interface BdsNavTreeGroup {
         "closeAll": (actNumber?: any) => Promise<void>;
         /**
-          * Focus Selected. Used to add title in header accordion.
+          * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
          */
         "collapse"?: collapses;
         "openAll": (actNumber?: any) => Promise<void>;
@@ -2877,6 +2877,10 @@ export interface BdsModalCustomEvent<T> extends CustomEvent<T> {
 export interface BdsNavTreeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsNavTreeElement;
+}
+export interface BdsNavTreeGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsNavTreeGroupElement;
 }
 export interface BdsNavTreeItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5628,9 +5632,11 @@ declare namespace LocalJSX {
     }
     interface BdsNavTreeGroup {
         /**
-          * Focus Selected. Used to add title in header accordion.
+          * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
          */
         "collapse"?: collapses;
+        "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
+        "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
     }
     interface BdsNavTreeItem {
         /**

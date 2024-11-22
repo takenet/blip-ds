@@ -1,4 +1,4 @@
-import { Component, Host, Element, State, Prop, h, Method } from '@stencil/core';
+import { Component, Host, Element, State, Prop, h, EventEmitter, Event, Method } from '@stencil/core';
 
 export type collapses = 'single' | 'multiple';
 
@@ -14,9 +14,12 @@ export class NavTreeGroup {
   @State() isOpenAftAnimation?: boolean = false;
   @State() navTreeChild? = null;
   /**
-   * Focus Selected. Used to add title in header accordion.
+   * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
    */
   @Prop() collapse?: collapses = 'single';
+
+  @Event() bdsNavTreeGroupCloseAll?: EventEmitter;
+  @Event() bdsNavTreeGroupOpenAll?: EventEmitter;
 
   componentWillRender() {
     this.itemsElement = this.element.getElementsByTagName('bds-nav-tree') as HTMLCollectionOf<HTMLBdsNavTreeElement>;
@@ -27,6 +30,7 @@ export class NavTreeGroup {
 
   @Method()
   async closeAll(actNumber?) {
+    this.bdsNavTreeGroupCloseAll.emit();
     for (let i = 0; i < this.itemsElement.length; i++) {
       if (this.collapse != 'multiple') {
         if (actNumber != i) this.itemsElement[i].close();
@@ -38,6 +42,7 @@ export class NavTreeGroup {
 
   @Method()
   async openAll(actNumber?) {
+    this.bdsNavTreeGroupOpenAll.emit();
     for (let i = 0; i < this.itemsElement.length; i++) {
       if (this.collapse != 'multiple') {
         if (actNumber != i) this.itemsElement[i].open();

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './nav-tree-group.mdx';
 import { BdsNavTree, BdsNavTreeGroup, BdsNavTreeItem } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/NavTreeGroup',
+  title: 'Components/NavTree Group',
   parameters: {
     docs: {
       page: DocumentationTemplate,
@@ -93,13 +93,66 @@ export const Methods = () => {
   };
   return (
     <bds-grid direction="column" gap="2">
-      <bds-button onClick={() => btOpenAll('nav-tree')} variant="primary" size="short">
+      <bds-button onClick={() => btOpenAll('nav-tree-group')} variant="primary" size="short">
         openAll
       </bds-button>
-      <bds-button onClick={() => btCloseAll('nav-tree')} variant="primary" size="short">
+      <bds-button onClick={() => btCloseAll('nav-tree-group')} variant="primary" size="short">
+        closeAll
+      </bds-button>
+      <bds-nav-tree-group id="nav-tree-group" collapse="multiple">
+        <bds-nav-tree id="nav-tree" icon="heart" text="Título" secondary-text="Breve Descrição">
+          <bds-nav-tree-item icon="heart" text="Título"></bds-nav-tree-item>
+          <bds-nav-tree-item text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+          <bds-nav-tree-item icon="heart" text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+        </bds-nav-tree>
+        <bds-nav-tree id="nav-tree" icon="heart" text="Título" secondary-text="Breve Descrição">
+          <bds-nav-tree-item icon="heart" text="Título"></bds-nav-tree-item>
+          <bds-nav-tree-item text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+          <bds-nav-tree-item icon="heart" text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+        </bds-nav-tree>
+        <bds-nav-tree id="nav-tree" icon="heart" text="Título" secondary-text="Breve Descrição">
+          <bds-nav-tree-item icon="heart" text="Título"></bds-nav-tree-item>
+          <bds-nav-tree-item text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+          <bds-nav-tree-item icon="heart" text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+        </bds-nav-tree>
+        <bds-nav-tree id="nav-tree" icon="heart" text="Título" secondary-text="Breve Descrição">
+          <bds-nav-tree-item icon="heart" text="Título"></bds-nav-tree-item>
+          <bds-nav-tree-item text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+          <bds-nav-tree-item icon="heart" text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
+        </bds-nav-tree>
+      </bds-nav-tree-group>
+    </bds-grid>
+  );
+};
+
+export const Events = () => {
+  const btOpenAll = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.openAll();
+  };
+  const btCloseAll = async (id) => {
+    const acc = document.getElementById(id);
+    await acc.closeAll();
+  };
+  useEffect(() => {
+    const bdsNavTreeGroupCloseAll = document.getElementById('nav-tree-group');
+    bdsNavTreeGroupCloseAll.addEventListener('bdsNavTreeGroupCloseAll', () => {
+      console.log('Evento bdsNavTreeGroupCloseAll funcionando');
+    });
+    const bdsNavTreeGroupOpenAll = document.getElementById('nav-tree-group');
+    bdsNavTreeGroupOpenAll.addEventListener('bdsNavTreeGroupOpenAll', () => {
+      console.log('Evento bdsNavTreeGroupOpenAll funcionando');
+    });
+  });
+  return (
+    <bds-grid direction="column" gap="2">
+      <bds-button onClick={() => btOpenAll('nav-tree-group')} variant="primary" size="short">
         openAll
       </bds-button>
-      <bds-nav-tree-group>
+      <bds-button onClick={() => btCloseAll('nav-tree-group')} variant="primary" size="short">
+        closeAll
+      </bds-button>
+      <bds-nav-tree-group id="nav-tree-group" collapse="multiple">
         <bds-nav-tree id="nav-tree" icon="heart" text="Título" secondary-text="Breve Descrição">
           <bds-nav-tree-item icon="heart" text="Título"></bds-nav-tree-item>
           <bds-nav-tree-item text="Título" secondary-text="Breve Descrição"></bds-nav-tree-item>
