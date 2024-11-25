@@ -53,7 +53,8 @@ import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
 import { collapses as collapses1 } from "./components/nav-tree/nav-tree";
-import { collapses as collapses2 } from "./components/nav-tree/nav-tree-item";
+import { collapses as collapses2 } from "./components/nav-tree/nav-tree-group";
+import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
@@ -1826,6 +1827,7 @@ export namespace Components {
         "active"?: boolean;
     }
     interface BdsNavTree {
+        "close": () => Promise<void>;
         /**
           * Focus Selected. Used to add title in header accordion.
          */
@@ -1850,6 +1852,8 @@ export namespace Components {
           * Loading state. Indicates if the component is in a loading state.
          */
         "loading"?: boolean;
+        "open": () => Promise<void>;
+        "reciveNumber": (number: any) => Promise<void>;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -1859,6 +1863,14 @@ export namespace Components {
          */
         "text": string;
         "toggle": () => Promise<void>;
+    }
+    interface BdsNavTreeGroup {
+        "closeAll": (actNumber?: any) => Promise<void>;
+        /**
+          * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
+         */
+        "collapse"?: collapses;
+        "openAll": (actNumber?: any) => Promise<void>;
     }
     interface BdsNavTreeItem {
         /**
@@ -2880,6 +2892,10 @@ export interface BdsNavTreeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsNavTreeElement;
 }
+export interface BdsNavTreeGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsNavTreeGroupElement;
+}
 export interface BdsNavTreeItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsNavTreeItemElement;
@@ -3341,6 +3357,12 @@ declare global {
         prototype: HTMLBdsNavTreeElement;
         new (): HTMLBdsNavTreeElement;
     };
+    interface HTMLBdsNavTreeGroupElement extends Components.BdsNavTreeGroup, HTMLStencilElement {
+    }
+    var HTMLBdsNavTreeGroupElement: {
+        prototype: HTMLBdsNavTreeGroupElement;
+        new (): HTMLBdsNavTreeGroupElement;
+    };
     interface HTMLBdsNavTreeItemElement extends Components.BdsNavTreeItem, HTMLStencilElement {
     }
     var HTMLBdsNavTreeItemElement: {
@@ -3624,6 +3646,7 @@ declare global {
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-nav-tree": HTMLBdsNavTreeElement;
+        "bds-nav-tree-group": HTMLBdsNavTreeGroupElement;
         "bds-nav-tree-item": HTMLBdsNavTreeItemElement;
         "bds-navbar": HTMLBdsNavbarElement;
         "bds-navbar-content": HTMLBdsNavbarContentElement;
@@ -5642,6 +5665,14 @@ declare namespace LocalJSX {
          */
         "text": string;
     }
+    interface BdsNavTreeGroup {
+        /**
+          * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
+         */
+        "collapse"?: collapses;
+        "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
+        "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
+    }
     interface BdsNavTreeItem {
         /**
           * Focus Selected. Used to add title in header accordion.
@@ -6633,6 +6664,7 @@ declare namespace LocalJSX {
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-nav-tree": BdsNavTree;
+        "bds-nav-tree-group": BdsNavTreeGroup;
         "bds-nav-tree-item": BdsNavTreeItem;
         "bds-navbar": BdsNavbar;
         "bds-navbar-content": BdsNavbarContent;
@@ -6741,6 +6773,7 @@ declare module "@stencil/core" {
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-nav-tree": LocalJSX.BdsNavTree & JSXBase.HTMLAttributes<HTMLBdsNavTreeElement>;
+            "bds-nav-tree-group": LocalJSX.BdsNavTreeGroup & JSXBase.HTMLAttributes<HTMLBdsNavTreeGroupElement>;
             "bds-nav-tree-item": LocalJSX.BdsNavTreeItem & JSXBase.HTMLAttributes<HTMLBdsNavTreeItemElement>;
             "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
             "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
