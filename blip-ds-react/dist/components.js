@@ -38,6 +38,7 @@ export const BdsDataTable = /*@__PURE__*/ createReactComponent('bds-data-table')
 export const BdsDatepicker = /*@__PURE__*/ createReactComponent('bds-datepicker');
 export const BdsDatepickerPeriod = /*@__PURE__*/ createReactComponent('bds-datepicker-period');
 export const BdsDatepickerSingle = /*@__PURE__*/ createReactComponent('bds-datepicker-single');
+export const BdsDivider = /*@__PURE__*/ createReactComponent('bds-divider');
 export const BdsDropdown = /*@__PURE__*/ createReactComponent('bds-dropdown');
 export const BdsExpansionPanel = /*@__PURE__*/ createReactComponent('bds-expansion-panel');
 export const BdsExpansionPanelBody = /*@__PURE__*/ createReactComponent('bds-expansion-panel-body');

@@ -43,6 +43,7 @@ export const BdsDataTable = /*@__PURE__*/createReactComponent<JSX.BdsDataTable, 
 export const BdsDatepicker = /*@__PURE__*/createReactComponent<JSX.BdsDatepicker, HTMLBdsDatepickerElement>('bds-datepicker');
 export const BdsDatepickerPeriod = /*@__PURE__*/createReactComponent<JSX.BdsDatepickerPeriod, HTMLBdsDatepickerPeriodElement>('bds-datepicker-period');
 export const BdsDatepickerSingle = /*@__PURE__*/createReactComponent<JSX.BdsDatepickerSingle, HTMLBdsDatepickerSingleElement>('bds-datepicker-single');
+export const BdsDivider = /*@__PURE__*/createReactComponent<JSX.BdsDivider, HTMLBdsDividerElement>('bds-divider');
 export const BdsDropdown = /*@__PURE__*/createReactComponent<JSX.BdsDropdown, HTMLBdsDropdownElement>('bds-dropdown');
 export const BdsExpansionPanel = /*@__PURE__*/createReactComponent<JSX.BdsExpansionPanel, HTMLBdsExpansionPanelElement>('bds-expansion-panel');
 export const BdsExpansionPanelBody = /*@__PURE__*/createReactComponent<JSX.BdsExpansionPanelBody, HTMLBdsExpansionPanelBodyElement>('bds-expansion-panel-body');

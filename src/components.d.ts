@@ -920,6 +920,20 @@ export namespace Components {
          */
         "startDate"?: DaysList;
     }
+    interface BdsDivider {
+        /**
+          * Cor da linha, aceitando qualquer valor válido em CSS (hex, rgb, nome da cor)
+         */
+        "color": 'divider-1' | 'divider-2' | 'divider-3';
+        /**
+          * Define se o divider deve ser exibido horizontalmente ou verticalmente
+         */
+        "orientation": 'horizontal' | 'vertical';
+        /**
+          * O tipo de estilo da linha: sólida, pontilhada, tracejada
+         */
+        "styleType": 'solid' | 'dotted' | 'dashed';
+    }
     interface BdsDropdown {
         /**
           * Open. Used to open/close the dropdown.
@@ -3163,6 +3177,12 @@ declare global {
         prototype: HTMLBdsDatepickerSingleElement;
         new (): HTMLBdsDatepickerSingleElement;
     };
+    interface HTMLBdsDividerElement extends Components.BdsDivider, HTMLStencilElement {
+    }
+    var HTMLBdsDividerElement: {
+        prototype: HTMLBdsDividerElement;
+        new (): HTMLBdsDividerElement;
+    };
     interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
     }
     var HTMLBdsDropdownElement: {
@@ -3596,6 +3616,7 @@ declare global {
         "bds-datepicker": HTMLBdsDatepickerElement;
         "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
         "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
+        "bds-divider": HTMLBdsDividerElement;
         "bds-dropdown": HTMLBdsDropdownElement;
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
@@ -4582,6 +4603,20 @@ declare namespace LocalJSX {
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
+    }
+    interface BdsDivider {
+        /**
+          * Cor da linha, aceitando qualquer valor válido em CSS (hex, rgb, nome da cor)
+         */
+        "color"?: 'divider-1' | 'divider-2' | 'divider-3';
+        /**
+          * Define se o divider deve ser exibido horizontalmente ou verticalmente
+         */
+        "orientation"?: 'horizontal' | 'vertical';
+        /**
+          * O tipo de estilo da linha: sólida, pontilhada, tracejada
+         */
+        "styleType"?: 'solid' | 'dotted' | 'dashed';
     }
     interface BdsDropdown {
         /**
@@ -6599,6 +6634,7 @@ declare namespace LocalJSX {
         "bds-datepicker": BdsDatepicker;
         "bds-datepicker-period": BdsDatepickerPeriod;
         "bds-datepicker-single": BdsDatepickerSingle;
+        "bds-divider": BdsDivider;
         "bds-dropdown": BdsDropdown;
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
@@ -6707,6 +6743,7 @@ declare module "@stencil/core" {
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
+            "bds-divider": LocalJSX.BdsDivider & JSXBase.HTMLAttributes<HTMLBdsDividerElement>;
             "bds-dropdown": LocalJSX.BdsDropdown & JSXBase.HTMLAttributes<HTMLBdsDropdownElement>;
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
