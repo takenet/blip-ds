@@ -67,6 +67,7 @@ export const BdsModal = /*@__PURE__*/ createReactComponent('bds-modal');
 export const BdsModalAction = /*@__PURE__*/ createReactComponent('bds-modal-action');
 export const BdsModalCloseButton = /*@__PURE__*/ createReactComponent('bds-modal-close-button');
 export const BdsNavTree = /*@__PURE__*/ createReactComponent('bds-nav-tree');
+export const BdsNavTreeGroup = /*@__PURE__*/ createReactComponent('bds-nav-tree-group');
 export const BdsNavTreeItem = /*@__PURE__*/ createReactComponent('bds-nav-tree-item');
 export const BdsNavbar = /*@__PURE__*/ createReactComponent('bds-navbar');
 export const BdsNavbarContent = /*@__PURE__*/ createReactComponent('bds-navbar-content');
