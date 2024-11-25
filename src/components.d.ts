@@ -54,7 +54,8 @@ import { menuPosition } from "./components/menu/menu";
 import { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
 import { sizes } from "./components/modal/modal";
 import { collapses as collapses1 } from "./components/nav-tree/nav-tree";
-import { collapses as collapses2 } from "./components/nav-tree/nav-tree-item";
+import { collapses as collapses2 } from "./components/nav-tree/nav-tree-group";
+import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
@@ -919,6 +920,20 @@ export namespace Components {
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
+    }
+    interface BdsDivider {
+        /**
+          * Cor da linha, aceitando qualquer valor válido em CSS (hex, rgb, nome da cor)
+         */
+        "color": 'divider-1' | 'divider-2' | 'divider-3';
+        /**
+          * Define se o divider deve ser exibido horizontalmente ou verticalmente
+         */
+        "orientation": 'horizontal' | 'vertical';
+        /**
+          * O tipo de estilo da linha: sólida, pontilhada, tracejada
+         */
+        "styleType": 'solid' | 'dotted' | 'dashed';
     }
     interface BdsDropdown {
         /**
@@ -1814,6 +1829,7 @@ export namespace Components {
         "active"?: boolean;
     }
     interface BdsNavTree {
+        "close": () => Promise<void>;
         /**
           * Focus Selected. Used to add title in header accordion.
          */
@@ -1838,6 +1854,8 @@ export namespace Components {
           * Loading state. Indicates if the component is in a loading state.
          */
         "loading"?: boolean;
+        "open": () => Promise<void>;
+        "reciveNumber": (number: any) => Promise<void>;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
          */
@@ -1847,6 +1865,14 @@ export namespace Components {
          */
         "text": string;
         "toggle": () => Promise<void>;
+    }
+    interface BdsNavTreeGroup {
+        "closeAll": (actNumber?: any) => Promise<void>;
+        /**
+          * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
+         */
+        "collapse"?: collapses;
+        "openAll": (actNumber?: any) => Promise<void>;
     }
     interface BdsNavTreeItem {
         /**
@@ -2868,6 +2894,10 @@ export interface BdsNavTreeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsNavTreeElement;
 }
+export interface BdsNavTreeGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsNavTreeGroupElement;
+}
 export interface BdsNavTreeItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsNavTreeItemElement;
@@ -3149,6 +3179,12 @@ declare global {
         prototype: HTMLBdsDatepickerSingleElement;
         new (): HTMLBdsDatepickerSingleElement;
     };
+    interface HTMLBdsDividerElement extends Components.BdsDivider, HTMLStencilElement {
+    }
+    var HTMLBdsDividerElement: {
+        prototype: HTMLBdsDividerElement;
+        new (): HTMLBdsDividerElement;
+    };
     interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
     }
     var HTMLBdsDropdownElement: {
@@ -3322,6 +3358,12 @@ declare global {
     var HTMLBdsNavTreeElement: {
         prototype: HTMLBdsNavTreeElement;
         new (): HTMLBdsNavTreeElement;
+    };
+    interface HTMLBdsNavTreeGroupElement extends Components.BdsNavTreeGroup, HTMLStencilElement {
+    }
+    var HTMLBdsNavTreeGroupElement: {
+        prototype: HTMLBdsNavTreeGroupElement;
+        new (): HTMLBdsNavTreeGroupElement;
     };
     interface HTMLBdsNavTreeItemElement extends Components.BdsNavTreeItem, HTMLStencilElement {
     }
@@ -3576,6 +3618,7 @@ declare global {
         "bds-datepicker": HTMLBdsDatepickerElement;
         "bds-datepicker-period": HTMLBdsDatepickerPeriodElement;
         "bds-datepicker-single": HTMLBdsDatepickerSingleElement;
+        "bds-divider": HTMLBdsDividerElement;
         "bds-dropdown": HTMLBdsDropdownElement;
         "bds-expansion-panel": HTMLBdsExpansionPanelElement;
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
@@ -3605,6 +3648,7 @@ declare global {
         "bds-modal-action": HTMLBdsModalActionElement;
         "bds-modal-close-button": HTMLBdsModalCloseButtonElement;
         "bds-nav-tree": HTMLBdsNavTreeElement;
+        "bds-nav-tree-group": HTMLBdsNavTreeGroupElement;
         "bds-nav-tree-item": HTMLBdsNavTreeItemElement;
         "bds-navbar": HTMLBdsNavbarElement;
         "bds-navbar-content": HTMLBdsNavbarContentElement;
@@ -4561,6 +4605,20 @@ declare namespace LocalJSX {
           * StartDate. Insert a limiter to select the date period.
          */
         "startDate"?: DaysList;
+    }
+    interface BdsDivider {
+        /**
+          * Cor da linha, aceitando qualquer valor válido em CSS (hex, rgb, nome da cor)
+         */
+        "color"?: 'divider-1' | 'divider-2' | 'divider-3';
+        /**
+          * Define se o divider deve ser exibido horizontalmente ou verticalmente
+         */
+        "orientation"?: 'horizontal' | 'vertical';
+        /**
+          * O tipo de estilo da linha: sólida, pontilhada, tracejada
+         */
+        "styleType"?: 'solid' | 'dotted' | 'dashed';
     }
     interface BdsDropdown {
         /**
@@ -5610,6 +5668,14 @@ declare namespace LocalJSX {
          */
         "text": string;
     }
+    interface BdsNavTreeGroup {
+        /**
+          * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
+         */
+        "collapse"?: collapses;
+        "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
+        "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
+    }
     interface BdsNavTreeItem {
         /**
           * Focus Selected. Used to add title in header accordion.
@@ -6571,6 +6637,7 @@ declare namespace LocalJSX {
         "bds-datepicker": BdsDatepicker;
         "bds-datepicker-period": BdsDatepickerPeriod;
         "bds-datepicker-single": BdsDatepickerSingle;
+        "bds-divider": BdsDivider;
         "bds-dropdown": BdsDropdown;
         "bds-expansion-panel": BdsExpansionPanel;
         "bds-expansion-panel-body": BdsExpansionPanelBody;
@@ -6600,6 +6667,7 @@ declare namespace LocalJSX {
         "bds-modal-action": BdsModalAction;
         "bds-modal-close-button": BdsModalCloseButton;
         "bds-nav-tree": BdsNavTree;
+        "bds-nav-tree-group": BdsNavTreeGroup;
         "bds-nav-tree-item": BdsNavTreeItem;
         "bds-navbar": BdsNavbar;
         "bds-navbar-content": BdsNavbarContent;
@@ -6678,6 +6746,7 @@ declare module "@stencil/core" {
             "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
+            "bds-divider": LocalJSX.BdsDivider & JSXBase.HTMLAttributes<HTMLBdsDividerElement>;
             "bds-dropdown": LocalJSX.BdsDropdown & JSXBase.HTMLAttributes<HTMLBdsDropdownElement>;
             "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
@@ -6707,6 +6776,7 @@ declare module "@stencil/core" {
             "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
             "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-nav-tree": LocalJSX.BdsNavTree & JSXBase.HTMLAttributes<HTMLBdsNavTreeElement>;
+            "bds-nav-tree-group": LocalJSX.BdsNavTreeGroup & JSXBase.HTMLAttributes<HTMLBdsNavTreeGroupElement>;
             "bds-nav-tree-item": LocalJSX.BdsNavTreeItem & JSXBase.HTMLAttributes<HTMLBdsNavTreeItemElement>;
             "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
             "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;

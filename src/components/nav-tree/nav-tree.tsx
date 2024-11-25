@@ -8,10 +8,13 @@ export type collapses = 'single' | 'multiple';
   shadow: true,
 })
 export class NavTree {
+  private itemsGroup?: HTMLBdsNavTreeGroupElement = null;
+
   @Element() private element: HTMLElement;
 
   @State() isOpenAftAnimation?: boolean = false;
   @State() navTreeChild? = null;
+  @State() numberElement?: number = null;
   /**
    * Focus Selected. Used to add title in header accordion.
    */
@@ -57,12 +60,34 @@ export class NavTree {
     }
   }
 
+  @Method()
+  async reciveNumber(number) {
+    this.numberElement = number;
+  }
+
+  @Method()
+  async open() {
+    this.isOpen = true;
+  }
+
+  @Method()
+  async close() {
+    this.isOpen = false;
+  }
   @Watch('isOpen')
   protected isOpenChanged(value): void {
     this.bdsToogleChange.emit({ value: value, element: this.element });
+    if (value) {
+      if (this.itemsGroup.collapse == 'single') {
+        this.itemsGroup?.closeAll(this.numberElement);
+      }
+    }
   }
 
   componentWillLoad() {
+    this.itemsGroup =
+      this.element.parentElement.tagName == 'BDS-NAV-TREE-GROUP' &&
+      (this.element.parentElement as HTMLBdsNavTreeGroupElement);
     this.navTreeChild = this.element.querySelector('bds-nav-tree-item') === null ? false : true;
   }
 

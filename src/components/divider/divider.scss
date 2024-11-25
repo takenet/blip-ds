@@ -1,0 +1,65 @@
+:host(.horizontal) { 
+  width: 100%;
+}
+:host(.vertical) { 
+  height: 100%;
+}
+hr {
+  border: none;
+
+  &.horizontal {
+    width: 100%;
+    border-top-width: 1px;
+    margin: 16px 0;
+
+    &.solid {
+      border-top-style: solid;
+    }
+
+    &.dotted {
+      border-top-style: dotted;
+    }
+
+    &.dashed {
+      border-top-style: dashed;
+    }
+  }
+
+  &.vertical {
+    height: 100%;
+    border-left-width: 1px;
+    margin: 0 16px;
+
+    &.solid {
+      border-left-style: solid;
+    }
+
+    &.dotted {
+      border-left-style: dotted;
+    }
+
+    &.dashed {
+      border-left-style: dashed;
+    }
+  }
+
+  /* Cores */
+  &.color-divider-1 {
+    border-color: $color-border-1;
+  }
+
+  &.color-divider-2 {
+    border-color: $color-border-2;
+  }
+
+  &.color-divider-3 {
+    border-color: $color-border-3;
+  }
+
+  /* Margens */
+  @for $i from 4 through 64 {
+    &.margin-#{$i} {
+      margin: #{$i}px;
+    }
+  }
+}

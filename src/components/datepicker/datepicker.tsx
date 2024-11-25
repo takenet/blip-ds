@@ -451,6 +451,7 @@ export class DatePicker {
             }}
           >
             <bds-input
+              class="input-start"
               label={this.label.length > 0 ? this.label : termTranslate(this.language, 'setTheDate')}
               value={this.valueDate}
               disabled={this.disabled}
@@ -473,6 +474,7 @@ export class DatePicker {
             }}
           >
             <bds-input
+              class="input-start"
               ref={this.refInputSetDate}
               label={termTranslate(this.language, 'from')}
               value={this.valueDate}
@@ -488,6 +490,7 @@ export class DatePicker {
               dataTest={this.dtInputStart}
             ></bds-input>
             <bds-input
+              class="input-end"
               ref={this.refInputSetEndDate}
               label={termTranslate(this.language, 'to')}
               value={this.valueEndDate}
@@ -550,10 +553,21 @@ export class DatePicker {
             ></bds-datepicker-period>
           )}
           <div class={{ datepicker__menu__footer: true }}>
-            <bds-button size="short" variant="secondary" onClick={() => this.clearDate()} dataTest={this.dtButtonClear}>
+            <bds-button
+              class="bt-reset"
+              size="short"
+              variant="secondary"
+              onClick={() => this.clearDate()}
+              dataTest={this.dtButtonClear}
+            >
               {termTranslate(this.language, 'reset')}
             </bds-button>
-            <bds-button size="short" onClick={this.clickConcludeDatepicker} dataTest={this.dtButtonConfirm}>
+            <bds-button
+              class="bt-conclude"
+              size="short"
+              onClick={this.clickConcludeDatepicker}
+              dataTest={this.dtButtonConfirm}
+            >
               {termTranslate(this.language, 'conclude')}
             </bds-button>
           </div>
