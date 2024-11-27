@@ -45,7 +45,7 @@ export const config: Config = {
     scriptDataOpts: true,
     cloneNodeFix: false,
     slotChildNodesFix: true,
-    enableImportInjection: true,
+    experimentalImportInjection: true,
   },
   testing: {
     timers: 'fake',

@@ -90,7 +90,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
-    "blip-tokens": "^1.85.0",
+    "blip-tokens": "^1.87.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },

@@ -41,5 +41,6 @@ export const ptMessages = [
   {
     dateFormatIsIncorrect: 'Formato da data esta incorreto',
     betweenPeriodOf: 'Por favor selecione uma data entre o período de',
+    endDateIsEmpty: 'Selecione a data final',
   },
 ];

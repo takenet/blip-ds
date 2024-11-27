@@ -40,7 +40,7 @@ export class Pagination {
   /**
    * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
    */
-  @Prop() pages?: number;
+  @Prop({ mutable: true, reflect: true }) pages?: number;
 
   /**
    * Propriedade que define a página inicial ao renderizar o componente.
@@ -57,7 +57,7 @@ export class Pagination {
   @Prop() pageCounter?: boolean = false;
 
   // Propriedade para receber as opções de itens por página (por exemplo, [10, 20, 30])
-  @Prop() itemsPage?: any;
+  @Prop({ mutable: true, reflect: true }) itemsPage?: any;
 
   // Propriedade que define o número total de itens que serão paginados
   @Prop() numberItems?: number;
@@ -100,11 +100,11 @@ export class Pagination {
    * Pode ser escutado para realizar ações específicas ao mudar de página.
    */
   @Event() bdsPaginationChange: EventEmitter;
-    /**
+  /**
    * Evento emitido quando o valor da página atual é alterado.
    * Pode ser escutado para realizar ações específicas ao mudar de página.
    */
-     @Event() bdsItemsPerPageChange: EventEmitter;
+  @Event() bdsItemsPerPageChange: EventEmitter;
 
   // Variável que armazena o número do primeiro item sendo exibido na página atual
   startItem: number;
@@ -116,7 +116,9 @@ export class Pagination {
     this.countPage();
     this.intoView = getScrollParent(this.el);
     this.processItemsPage();
-    this.itemValue = this.itemsPage[0];
+    if (this.pageCounter) {
+      this.itemValue = this.itemsPage[0];
+    }
     this.itemSelected(this.itemValue);
     this.countItem();
   }
@@ -143,8 +145,10 @@ export class Pagination {
   }
 
   countItem() {
-    const pages = this.numberItems / this.itemValue;
-    this.pages = Math.ceil(pages);
+    if (this.pageCounter) {
+      const pages = this.numberItems / this.itemValue;
+      this.pages = Math.ceil(pages);
+    }
   }
 
   countPage() {
@@ -241,7 +245,6 @@ export class Pagination {
 
   render() {
     const { currentLanguage } = this;
-
     return (
       <Host class={{ full_width: this.pageCounter }}>
         <bds-grid justify-content="space-between">
