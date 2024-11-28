@@ -37,6 +37,7 @@
  - [bds-autocomplete](../autocomplete)
  - [bds-avatar](../avatar)
  - [bds-badge](../badge)
+ - [bds-breadcrumb](../breadcrumb)
  - [bds-button](../button)
  - [bds-card-color](../card-color)
  - [bds-card-subtitle](../card/card-subtitle)
@@ -89,6 +90,7 @@ graph TD;
   bds-autocomplete --> bds-typo
   bds-avatar --> bds-typo
   bds-badge --> bds-typo
+  bds-breadcrumb --> bds-typo
   bds-button --> bds-typo
   bds-card-color --> bds-typo
   bds-card-subtitle --> bds-typo

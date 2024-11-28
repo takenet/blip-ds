@@ -24,69 +24,18 @@
 
 <body>
   <bds-test-component></bds-test-component>
-  <h2>Exemplos do BdsDivider</h2>
-<bds-grid direction="column" gap="2">
-  <bds-grid xxs="12" direction="column">
-    <!-- Horizontal Divider, Solid, Divider-1 -->
-  <bds-divider style-type="solid" orientation="horizontal" color="divider-1"></bds-divider>
-
-  <!-- Horizontal Divider, Solid, Divider-2 -->
-  <bds-divider style-type="solid" orientation="horizontal" color="divider-2"></bds-divider>
-
-  <!-- Horizontal Divider, Solid, Divider-3 -->
-  <bds-divider style-type="solid" orientation="horizontal" color="divider-3"></bds-divider>
-
-  <!-- Horizontal Divider, Dotted, Divider-1 -->
-  <bds-divider style-type="dotted" orientation="horizontal" color="divider-1"></bds-divider>
-
-  <!-- Horizontal Divider, Dotted, Divider-2 -->
-  <bds-divider style-type="dotted" orientation="horizontal" color="divider-2"></bds-divider>
-
-  <!-- Horizontal Divider, Dotted, Divider-3 -->
-  <bds-divider style-type="dotted" orientation="horizontal" color="divider-3"></bds-divider>
-
-  <!-- Horizontal Divider, Dashed, Divider-1 -->
-  <bds-divider style-type="dashed" orientation="horizontal" color="divider-1"></bds-divider>
-
-  <!-- Horizontal Divider, Dashed, Divider-2 -->
-  <bds-divider style-type="dashed" orientation="horizontal" color="divider-2"></bds-divider>
-
-  <!-- Horizontal Divider, Dashed, Divider-3 -->
-  <bds-divider style-type="dashed" orientation="horizontal" color="divider-3"></bds-divider>
-
+  <bds-grid xxs="12" margin="auto" justify-content="center" height="500px" align-items="center">
+    <bds-breadcrumb
+    items='[
+      {"label": "Página 1", "href": "/pagina-1"},
+      {"label": "Página 2", "href": "/pagina-2"},
+      {"label": "Página 3", "href": "/pagina-3"},
+      {"label": "Página 4", "href": "/pagina-4"},
+      {"label": "Página atual"}
+    ]'
+  ></bds-breadcrumb>
   </bds-grid>
-  <bds-grid direction="row" gap="2" height="600px">
-    <!-- Vertical Divider, Solid, Divider-1 -->
-  <bds-divider style-type="solid" orientation="vertical" color="divider-1"></bds-divider>
 
-  <!-- Vertical Divider, Solid, Divider-2 -->
-  <bds-divider style-type="solid" orientation="vertical" color="divider-2"></bds-divider>
-
-  <!-- Vertical Divider, Solid, Divider-3 -->
-  <bds-divider style-type="solid" orientation="vertical" color="divider-3"></bds-divider>
-
-  <!-- Vertical Divider, Dotted, Divider-1 -->
-  <bds-divider style-type="dotted" orientation="vertical" color="divider-1"></bds-divider>
-
-  <!-- Vertical Divider, Dotted, Divider-2 -->
-  <bds-divider style-type="dotted" orientation="vertical" color="divider-2"></bds-divider>
-
-  <!-- Vertical Divider, Dotted, Divider-3 -->
-  <bds-divider style-type="dotted" orientation="vertical" color="divider-3"></bds-divider>
-
-  <!-- Vertical Divider, Dashed, Divider-1 -->
-  <bds-divider style-type="dashed" orientation="vertical" color="divider-1"></bds-divider>
-
-  <!-- Vertical Divider, Dashed, Divider-2 -->
-  <bds-divider style-type="dashed" orientation="vertical" color="divider-2"></bds-divider>
-
-  <!-- Vertical Divider, Dashed, Divider-3 -->
-  <bds-divider style-type="dashed" orientation="vertical" color="divider-3"></bds-divider>
-
-  </bds-grid>
-  
-</bds-grid>
-  
 </body>
 
 <script>

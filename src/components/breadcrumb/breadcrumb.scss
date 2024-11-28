@@ -1,0 +1,33 @@
+:host {
+  display: block;
+
+  * {
+    color: $color-content-default;
+  }
+}
+
+.breadcrumb__button {
+  &--0 {
+    margin-left: 0;
+    .button--icon {
+      display: none;
+    }
+  }
+  &--1 {
+    margin-left: 30px;
+    padding-left: 8px;
+    .button--icon {
+      transform: rotate(180deg);
+    }
+  }
+  &--2 {
+    margin-left: 60px;
+    .button--icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.breadcrumb__link {
+  text-decoration: none;
+}
