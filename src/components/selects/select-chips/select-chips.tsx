@@ -238,11 +238,14 @@ export class SelectChips {
   @Watch('internalChips')
   protected internalValueChanged(): void {
     this.handleChangeChipsValue();
-    this.bdsChangeChips.emit({ data: this.internalChips, value: this.selectedOption });
+
     if (this.internalChips.length > 0) {
-      const latestOption = { label: this.getLastChip(), value: this.selectedOption };
-      this.selectedOptions = [...this.selectedOptions, latestOption];
-      this.bdsChange.emit({ data: this.selectedOptions });
+      this.selectedOptions = this.internalChips.map((item, i) => {
+        return {
+          label: item,
+          value: `${i}`,
+        };
+      });
     }
   }
 
@@ -416,6 +419,9 @@ export class SelectChips {
     this.selectedOption = value;
     const text = this.getText(value);
     await this.addChip(text);
+
+    this.bdsChangeChips.emit({ data: this.internalChips, value: this.selectedOption });
+    this.bdsChange.emit({ data: this.selectedOptions });
     this.toggle();
   };
 
@@ -439,16 +445,13 @@ export class SelectChips {
   };
 
   private getTextFromOption = (opt: HTMLBdsSelectOptionElement): string => {
-    if (opt?.status || opt?.bulkOption) {
-      if (this.internalOptions) {
-        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
-        if (internalOption) {
-          return internalOption.label;
-        }
+    if (this.internalOptions) {
+      const internalOption = this.internalOptions.find((option) => option.value == opt?.value);
+      if (internalOption) {
+        return internalOption.label;
       }
-      return opt.querySelector(`#bds-typo-label-${opt.value}`).textContent;
     }
-    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
+    return opt?.titleText ? opt.titleText : (opt?.textContent?.trim() ?? '');
   };
 
   private setFocusWrapper = (): void => {
@@ -506,6 +509,8 @@ export class SelectChips {
           this.handleDelimiters();
           this.setChip(this.value);
           this.value = '';
+          this.bdsChangeChips.emit({ data: this.internalChips, value: this.selectedOption });
+          this.bdsChange.emit({ data: this.selectedOptions });
         }
         if (!this.disabled) {
           this.isOpen = true;

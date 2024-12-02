@@ -119,6 +119,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../../test-component)
+
 ### Depends on
 
 - [bds-chip-clickable](../../chip-clickable)
@@ -145,6 +149,7 @@ graph TD;
   bds-select-option --> bds-checkbox
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
+  bds-test-component --> bds-select-chips
   style bds-select-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

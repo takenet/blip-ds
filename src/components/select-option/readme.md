@@ -75,6 +75,7 @@ Type: `Promise<void>`
  - [bds-pagination](../pagination)
  - [bds-select](../selects/select)
  - [bds-select-chips](../selects/select-chips)
+ - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -95,6 +96,7 @@ graph TD;
   bds-pagination --> bds-select-option
   bds-select --> bds-select-option
   bds-select-chips --> bds-select-option
+  bds-test-component --> bds-select-option
   style bds-select-option fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
