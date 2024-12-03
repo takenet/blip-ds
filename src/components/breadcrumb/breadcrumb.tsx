@@ -16,7 +16,6 @@ export class Breadcrumb {
       try {
         this.parsedItems = JSON.parse(newValue);
       } catch (error) {
-        console.error('Falha ao analisar items: Certifique-se de que é um JSON válido.', error);
         this.parsedItems = [];
       }
     } else {
@@ -37,8 +36,6 @@ export class Breadcrumb {
   }
 
   render() {
-    console.log('Itens processados:', this.parsedItems);
-
     if (!this.parsedItems || this.parsedItems.length === 0) {
       return <p>Sem itens para exibir no Breadcrumb.</p>;
     }
