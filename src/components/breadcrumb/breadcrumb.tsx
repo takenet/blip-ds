@@ -65,15 +65,15 @@ export class Breadcrumb {
             >
               {item.label === '...' ? (
                 <bds-dropdown active-mode="click" position="auto">
-                  <div slot="dropdown-content">
+                  <bds-grid slot="dropdown-content">
                     <bds-grid direction='column' padding='1' gap="half">
                       {this.parsedItems.slice(1, -1).map((subItem, index) => (
                         <bds-grid>
                           {subItem.href ? (
                             <a href={subItem.href} class={`breadcrumb__button--${index} breadcrumb__link`}>
-                              <bds-grid align-items='center'>
-                                <bds-icon name="reply" theme='outline' class="button--icon"></bds-icon>
-                                <bds-button variant="text" color='content'>
+                              <bds-grid align-items='center' gap='half'>
+                                <bds-icon name="reply" theme='outline' class="button--icon" size='x-small'></bds-icon>
+                                <bds-button variant="text" color='content' size='short'>
                                   {subItem.label}
                                 </bds-button>
                               </bds-grid>
@@ -85,7 +85,7 @@ export class Breadcrumb {
                         </bds-grid>
                       ))}
                     </bds-grid>
-                  </div>
+                  </bds-grid>
                   <bds-grid slot="dropdown-activator">
                     <bds-button
                       variant="text"
@@ -98,7 +98,7 @@ export class Breadcrumb {
                 </bds-dropdown>
               ) : item.href ? (
                 <bds-grid direction="row">
-                  <bds-typo variant="fs-12" margin={false}>
+                  <bds-typo variant="fs-12" margin={false} class="breadcrumb__link--text">
                     <a href={item.href} class="breadcrumb__link">
                       {item.label}
                     </a>
@@ -108,7 +108,7 @@ export class Breadcrumb {
               ) : (
                 <bds-grid direction="row">
                   <bds-icon name="arrow-right" size="x-small"></bds-icon>
-                  <bds-typo variant="fs-12" bold="bold" margin={false}>
+                  <bds-typo variant="fs-12" bold="semi-bold" margin={false}>
                     {item.label}
                   </bds-typo>
                 </bds-grid>
