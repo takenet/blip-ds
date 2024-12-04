@@ -1,22 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  BdsTable,
-  BdsTableHeader,
-  BdsTableRow,
-  BdsTableTh,
-  BdsTableBody,
-  BdsTableCell,
   BdsTypo,
-  BdsPagination,
-  BdsChipTag,
-  BdsCard,
-  BdsCardHeader,
-  BdsCardTitle,
   BdsGrid,
-  BdsCardSubtitle,
-  BdsCardBody,
-  BdsList,
-  BdsListItem,
   BdsSidebar,
   BdsNavTree,
   BdsNavTreeGroup,
