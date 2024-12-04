@@ -18,10 +18,12 @@
 | `disabled`        | `disabled`          | Disabled input.                                                                                                                                                                                                                                                                               | `boolean`                     | `false`              |
 | `duplicated`      | `duplicated`        | Do not accept duplicate chip elements.                                                                                                                                                                                                                                                        | `boolean`                     | `false`              |
 | `errorMessage`    | `error-message`     | Indicated to pass an feedback to user.                                                                                                                                                                                                                                                        | `string`                      | `''`                 |
+| `height`          | `height`            | Prop for set the height of the component.                                                                                                                                                                                                                                                     | `string`                      | `undefined`          |
 | `helperMessage`   | `helper-message`    | Indicated to pass a help the user in complex filling.                                                                                                                                                                                                                                         | `string`                      | `''`                 |
 | `icon`            | `icon`              | used for add icon in input left. Uses the bds-icon component.                                                                                                                                                                                                                                 | `string`                      | `''`                 |
 | `inputName`       | `input-name`        | Prop to insert the name of the input                                                                                                                                                                                                                                                          | `string`                      | `''`                 |
 | `label`           | `label`             | label in input, with he the input size increases.                                                                                                                                                                                                                                             | `string`                      | `''`                 |
+| `maxHeight`       | `max-height`        | Prop for set the max height of the component.                                                                                                                                                                                                                                                 | `string`                      | `undefined`          |
 | `maxlength`       | `maxlength`         | Set maximum length value for the chip content                                                                                                                                                                                                                                                 | `number`                      | `undefined`          |
 | `newPrefix`       | `new-prefix`        | Used for add prefix on new option select.                                                                                                                                                                                                                                                     | `string`                      | `''`                 |
 | `notFoundMessage` | `not-found-message` | Specify if is possible to create a new tag that is not on the options.                                                                                                                                                                                                                        | `string`                      | `'No results found'` |
@@ -119,10 +121,6 @@ Type: `Promise<void>`
 
 ## Dependencies
 
-### Used by
-
- - [bds-test-component](../../test-component)
-
 ### Depends on
 
 - [bds-chip-clickable](../../chip-clickable)
@@ -149,7 +147,6 @@ graph TD;
   bds-select-option --> bds-checkbox
   bds-checkbox --> bds-icon
   bds-checkbox --> bds-typo
-  bds-test-component --> bds-select-chips
   style bds-select-chips fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -154,6 +154,14 @@ export class SelectChips {
    */
   @Prop({ mutable: true, reflect: true }) optionsPosition?: SelectOptionsPositionType = 'auto';
   /**
+   * Prop for set the height of the component.
+   */
+  @Prop() height?: string;
+  /**
+   * Prop for set the max height of the component.
+   */
+  @Prop() maxHeight?: string;
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -215,6 +223,17 @@ export class SelectChips {
     }
   }
 
+  @Watch('options')
+  protected optionsChanged(): void {
+    if (typeof this.options === 'string') {
+      try {
+        this.internalOptions = JSON.parse(this.options);
+      } catch (e) {}
+    } else {
+      this.internalOptions = this.options;
+    }
+  }
+
   /**
    * Call change event before alter chips values.
    */
@@ -240,13 +259,18 @@ export class SelectChips {
     this.handleChangeChipsValue();
 
     if (this.internalChips.length > 0) {
-      this.selectedOptions = this.internalChips.map((item, i) => {
+      this.selectedOptions = this.internalChips.map((item) => {
         return {
           label: item,
-          value: `${i}`,
+          value: `${this.validValueChip(item, this.childOptions)}`,
         };
       });
     }
+  }
+
+  private validValueChip(value, internalOptions: HTMLBdsSelectOptionElement[]): string {
+    const selectOption = internalOptions?.find((option) => option.textContent == value);
+    return `${selectOption ? selectOption.value : value}`;
   }
 
   /**
@@ -297,6 +321,7 @@ export class SelectChips {
 
   componentWillLoad() {
     this.valueChanged();
+    this.optionsChanged();
     this.intoView = getScrollParent(this.el);
   }
 
@@ -498,10 +523,6 @@ export class SelectChips {
     this.changedInputValue();
   };
 
-  private getLastChip(): string {
-    return this.internalChips[this.internalChips.length - 1];
-  }
-
   private keyPressWrapper = (event: KeyboardEvent): void => {
     switch (event.key) {
       case 'Enter':
@@ -530,7 +551,8 @@ export class SelectChips {
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
           this.removeLastChip();
           this.handleChangeChipsValue;
-          this.bdsChangeChips.emit({ data: this.internalChips });
+          this.bdsChangeChips.emit({ data: this.internalChips, value: this.selectedOption });
+          this.bdsChange.emit({ data: this.selectedOptions });
         }
         break;
     }
@@ -567,7 +589,7 @@ export class SelectChips {
 
     const words = newValue.split(this.delimiters);
     words.forEach((word) => {
-      this.setChip(word);
+      this.setChip(word.trimStart());
     });
 
     this.clearInputValues();
@@ -650,6 +672,8 @@ export class SelectChips {
     } = event;
 
     this.internalChips = this.internalChips.filter((_chip, index) => index.toString() !== id);
+    this.bdsChangeChips.emit({ data: this.internalChips, value: this.selectedOption });
+    this.bdsChange.emit({ data: this.selectedOptions });
   }
 
   private renderChips() {
@@ -788,7 +812,11 @@ export class SelectChips {
             <div class="input__container">
               {this.renderLabel()}
               <div class={{ input__container__wrapper: true }}>
-                {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
+                {this.internalChips.length > 0 && (
+                  <span style={{ height: this.height, maxHeight: this.maxHeight }} class="inside-input-left">
+                    {this.renderChips()}
+                  </span>
+                )}
                 <input
                   ref={(input) => (this.nativeInput = input)}
                   class={{ input__container__text: true }}

@@ -344,6 +344,8 @@ $input_fixed: 140px;
   gap: 8px;
   flex-wrap: wrap;
   margin-right: 8px;
+  overflow-y: auto;
+  @include custom-scroll;
 }
 .input-chips__chip {
   margin: 2px 4px 2px 0px;
