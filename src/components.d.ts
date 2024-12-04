@@ -1299,6 +1299,10 @@ export namespace Components {
          */
         "get": () => Promise<string[]>;
         /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
           * Indicated to pass a help the user in complex filling.
          */
         "helperMessage"?: string;
@@ -1322,6 +1326,10 @@ export namespace Components {
           * Set maximum length value for chips
          */
         "maxChipsLength"?: number;
+        /**
+          * Prop for set the max height of the component.
+         */
+        "maxHeight"?: string;
         /**
           * Set maximum length value for the chip content
          */
@@ -2154,6 +2162,10 @@ export namespace Components {
          */
         "getChips": () => Promise<string[]>;
         /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
           * Indicated to pass a help the user in complex filling.
          */
         "helperMessage"?: string;
@@ -2173,6 +2185,10 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Prop for set the max height of the component.
+         */
+        "maxHeight"?: string;
         /**
           * Set maximum length value for the chip content
          */
@@ -4986,6 +5002,10 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
           * Indicated to pass a help the user in complex filling.
          */
         "helperMessage"?: string;
@@ -5005,6 +5025,10 @@ declare namespace LocalJSX {
           * Set maximum length value for chips
          */
         "maxChipsLength"?: number;
+        /**
+          * Prop for set the max height of the component.
+         */
+        "maxHeight"?: string;
         /**
           * Set maximum length value for the chip content
          */
@@ -5984,6 +6008,10 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
+          * Prop for set the height of the component.
+         */
+        "height"?: string;
+        /**
           * Indicated to pass a help the user in complex filling.
          */
         "helperMessage"?: string;
@@ -5999,6 +6027,10 @@ declare namespace LocalJSX {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Prop for set the max height of the component.
+         */
+        "maxHeight"?: string;
         /**
           * Set maximum length value for the chip content
          */

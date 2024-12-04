@@ -131,6 +131,14 @@ export class InputChips {
    */
   @Prop() counterLength? = false;
   /**
+   * Prop for set the height of the component.
+   */
+  @Prop() height?: string;
+  /**
+   * Prop for set the max height of the component.
+   */
+  @Prop() maxHeight?: string;
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -196,8 +204,6 @@ export class InputChips {
   @Watch('internalChips')
   protected internalValueChanged(): void {
     this.minMaxValidation();
-    this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
-    this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
   /**
@@ -316,12 +322,14 @@ export class InputChips {
         this.handleDelimiters();
         this.setChip(this.value);
         this.value = '';
+        this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
+        this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
         break;
       case 'Backspace' || 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
           this.removeLastChip();
-          this.bdsChange.emit({ data: this.internalChips });
-          this.bdsChangeChips.emit({ data: this.internalChips });
+          this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
+          this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
         }
         break;
     }
@@ -386,10 +394,12 @@ export class InputChips {
 
     const words = newValue.split(this.delimiters);
     words.forEach((word) => {
-      this.setChip(word);
+      this.setChip(word.trimStart());
     });
 
     this.clearInputValues();
+    this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
+    this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
   private clearInputValues(value = '') {
@@ -428,6 +438,8 @@ export class InputChips {
     } = event;
 
     this.internalChips = this.internalChips.filter((_chip, index) => index.toString() !== id);
+    this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
+    this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
   }
 
   private renderChips() {
@@ -553,7 +565,11 @@ export class InputChips {
           <div class="input__container">
             {this.renderLabel()}
             <div class={{ input__container__wrapper: true }}>
-              {this.internalChips.length > 0 && <span class="inside-input-left">{this.renderChips()}</span>}
+              {this.internalChips.length > 0 && (
+                <span style={{ height: this.height, maxHeight: this.maxHeight }} class="inside-input-left">
+                  {this.renderChips()}
+                </span>
+              )}
               {this.inputAvalible && (
                 <input
                   ref={(input) => (this.nativeInput = input)}

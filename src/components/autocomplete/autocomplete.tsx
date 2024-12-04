@@ -379,16 +379,13 @@ export class BdsAutocomplete {
   };
 
   private getTextFromOption = (opt: HTMLBdsSelectOptionElement): string => {
-    if (opt?.status || opt?.bulkOption) {
-      if (this.internalOptions) {
-        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
-        if (internalOption) {
-          return internalOption.label;
-        }
+    if (this.internalOptions) {
+      const internalOption = this.internalOptions.find((option) => option.value == opt?.value);
+      if (internalOption) {
+        return internalOption.label;
       }
-      return opt.querySelector(`#bds-typo-label-${this.value}`).textContent;
     }
-    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
+    return opt?.titleText ? opt.titleText : (opt?.textContent?.trim() ?? '');
   };
 
   private getText = (): string => {

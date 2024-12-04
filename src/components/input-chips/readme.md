@@ -20,11 +20,13 @@
 | `dtButtonClose`  | `dt-button-close`  | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close. | `string`             | `null`      |
 | `duplicated`     | `duplicated`       | Do not accept duplicate chip elements.                                                                                  | `boolean`            | `false`     |
 | `errorMessage`   | `error-message`    | Indicated to pass an feedback to user.                                                                                  | `string`             | `''`        |
+| `height`         | `height`           | Prop for set the height of the component.                                                                               | `string`             | `undefined` |
 | `helperMessage`  | `helper-message`   | Indicated to pass a help the user in complex filling.                                                                   | `string`             | `''`        |
 | `icon`           | `icon`             | used for add icon in input left. Uses the bds-icon component.                                                           | `string`             | `''`        |
 | `inputName`      | `input-name`       | Prop to insert the name of the input                                                                                    | `string`             | `''`        |
 | `label`          | `label`            | label in input, with he the input size increases.                                                                       | `string`             | `''`        |
 | `maxChipsLength` | `max-chips-length` | Set maximum length value for chips                                                                                      | `number`             | `undefined` |
+| `maxHeight`      | `max-height`       | Prop for set the max height of the component.                                                                           | `string`             | `undefined` |
 | `maxlength`      | `maxlength`        | Set maximum length value for the chip content                                                                           | `number`             | `undefined` |
 | `placeholder`    | `placeholder`      | A tip for the user who can enter no controls.                                                                           | `string`             | `''`        |
 | `success`        | `success`          | Add state success on input, use for use feedback.                                                                       | `boolean`            | `false`     |
