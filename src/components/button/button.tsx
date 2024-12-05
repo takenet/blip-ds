@@ -187,6 +187,9 @@ export class Button {
       if (slotText === '' && this.size === 'large') {
         onlyIconElement.classList.add('button__only-icon--large');
       }
+      if (slotText === '' && this.size === 'short') {
+        onlyIconElement.classList.add('button__only-icon--short');
+      }
     }
   }
 
