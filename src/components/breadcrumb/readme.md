@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type                                            | Default |
-| ------------ | ------------- | ----------- | ----------------------------------------------- | ------- |
-| `items`      | `items`       |             | `string \| { label: string; href?: string; }[]` | `[]`    |
-| `maxVisible` | `max-visible` |             | `number`                                        | `3`     |
+| Property | Attribute | Description | Type                                            | Default |
+| -------- | --------- | ----------- | ----------------------------------------------- | ------- |
+| `items`  | `items`   |             | `string \| { label: string; href?: string; }[]` | `[]`    |
 
 
 ## Dependencies
