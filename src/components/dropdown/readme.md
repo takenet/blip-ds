@@ -55,6 +55,19 @@ Type: `Promise<void>`
 
 
 
+## Dependencies
+
+### Used by
+
+ - [bds-breadcrumb](../breadcrumb)
+
+### Graph
+```mermaid
+graph TD;
+  bds-breadcrumb --> bds-dropdown
+  style bds-dropdown fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

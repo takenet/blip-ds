@@ -21,6 +21,7 @@ export const BdsAvatarGroup = /*@__PURE__*/createReactComponent<JSX.BdsAvatarGro
 export const BdsBadge = /*@__PURE__*/createReactComponent<JSX.BdsBadge, HTMLBdsBadgeElement>('bds-badge');
 export const BdsBanner = /*@__PURE__*/createReactComponent<JSX.BdsBanner, HTMLBdsBannerElement>('bds-banner');
 export const BdsBannerLink = /*@__PURE__*/createReactComponent<JSX.BdsBannerLink, HTMLBdsBannerLinkElement>('bds-banner-link');
+export const BdsBreadcrumb = /*@__PURE__*/createReactComponent<JSX.BdsBreadcrumb, HTMLBdsBreadcrumbElement>('bds-breadcrumb');
 export const BdsButton = /*@__PURE__*/createReactComponent<JSX.BdsButton, HTMLBdsButtonElement>('bds-button');
 export const BdsButtonGroup = /*@__PURE__*/createReactComponent<JSX.BdsButtonGroup, HTMLBdsButtonGroupElement>('bds-button-group');
 export const BdsButtonIcon = /*@__PURE__*/createReactComponent<JSX.BdsButtonIcon, HTMLBdsButtonIconElement>('bds-button-icon');

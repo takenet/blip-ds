@@ -32,6 +32,7 @@
  - [bds-avatar](../avatar)
  - [bds-badge](../badge)
  - [bds-banner](../banner)
+ - [bds-breadcrumb](../breadcrumb)
  - [bds-button](../button)
  - [bds-button-icon](../icon-button)
  - [bds-checkbox](../checkbox)
@@ -73,6 +74,7 @@ graph TD;
   bds-avatar --> bds-icon
   bds-badge --> bds-icon
   bds-banner --> bds-icon
+  bds-breadcrumb --> bds-icon
   bds-button --> bds-icon
   bds-button-icon --> bds-icon
   bds-checkbox --> bds-icon
