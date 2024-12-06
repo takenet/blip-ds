@@ -341,6 +341,10 @@ export namespace Components {
          */
         "target": targets;
     }
+    interface BdsBreadcrumb {
+        "items": string | Array<{ label: string; href?: string }>;
+        "maxVisible": number;
+    }
     interface BdsButton {
         /**
           * The arrow button
@@ -3063,6 +3067,12 @@ declare global {
         prototype: HTMLBdsBannerLinkElement;
         new (): HTMLBdsBannerLinkElement;
     };
+    interface HTMLBdsBreadcrumbElement extends Components.BdsBreadcrumb, HTMLStencilElement {
+    }
+    var HTMLBdsBreadcrumbElement: {
+        prototype: HTMLBdsBreadcrumbElement;
+        new (): HTMLBdsBreadcrumbElement;
+    };
     interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
     }
     var HTMLBdsButtonElement: {
@@ -3612,6 +3622,7 @@ declare global {
         "bds-badge": HTMLBdsBadgeElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
+        "bds-breadcrumb": HTMLBdsBreadcrumbElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-group": HTMLBdsButtonGroupElement;
         "bds-button-icon": HTMLBdsButtonIconElement;
@@ -4000,6 +4011,10 @@ declare namespace LocalJSX {
           * Set the link pass.
          */
         "target"?: targets;
+    }
+    interface BdsBreadcrumb {
+        "items"?: string | Array<{ label: string; href?: string }>;
+        "maxVisible"?: number;
     }
     interface BdsButton {
         /**
@@ -6647,6 +6662,7 @@ declare namespace LocalJSX {
         "bds-badge": BdsBadge;
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
+        "bds-breadcrumb": BdsBreadcrumb;
         "bds-button": BdsButton;
         "bds-button-group": BdsButtonGroup;
         "bds-button-icon": BdsButtonIcon;
@@ -6756,6 +6772,7 @@ declare module "@stencil/core" {
             "bds-badge": LocalJSX.BdsBadge & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
+            "bds-breadcrumb": LocalJSX.BdsBreadcrumb & JSXBase.HTMLAttributes<HTMLBdsBreadcrumbElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-group": LocalJSX.BdsButtonGroup & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
             "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;

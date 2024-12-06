@@ -38,6 +38,7 @@
 
 ### Used by
 
+ - [bds-breadcrumb](../breadcrumb)
  - [bds-button-group](../button)
  - [bds-card](../card)
  - [bds-card-body](../card/card-body)
@@ -55,6 +56,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  bds-breadcrumb --> bds-grid
   bds-button-group --> bds-grid
   bds-card --> bds-grid
   bds-card-body --> bds-grid
