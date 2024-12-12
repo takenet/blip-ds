@@ -2,20 +2,116 @@ import { Story, ArgsTable, Canvas } from '@storybook/blocks';
 import * as CardColor from './card-color.stories';
 import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source, Unstyled } from '@storybook/blocks';
 
+<br></br>
 # Cores
 
 O Uai Design System recentemente atualizou as paletas de cores padrão para os componentes blip-ds para seguir a nova paleta de cores da Blip. Isso significa mais acessibilidade e usabilidade em termos das variantes de cores fornecidas pela biblioteca.
 
+<br></br>
 ## Usando a paleta de cores padrão Blip
 
 Para utilizar as cores padrões do Uai Design System, basta importar as variáveis de cores em um arquivo SASS e utilizá-las diretamente em seus estilos. Essa abordagem simplifica significativamente o processo de implementação, garantindo consistência visual e facilitando a manutenção do design em toda a aplicação. 
 
-[Veja como implementar cores aqui.](https://design.blip.ai/d/UbKsV1JhXTK4/instalacao#/comece-a-usar/configurar-estilo)
+<br></br>
+## Estilizar um Componente via Sass
 
+Os tokens de cores foram definidos no Design System através de variáveis utilizando Sass.
 
+Para disponibilizar essas variáveis é necessário importar pelo destino indicado a seguir.
+
+<br></br>
+### Criar um SCSS para a Página
+
+Verifique se o projeto possui a biblioteca Sass instalada. Caso não possua, instale rodando o seguinte comando:
+
+```bash
+npm install sass
+```
+
+Na pasta onde se encontra o arquivo HTML do que será alterado, adicione um arquivo SCSS, caso não exista.
+
+<br></br>
+### Importar as Variáveis de Cores no SCSS
+
+No arquivo SCSS, realize a importação das variáveis:
+
+```css
+@import "~blip-ds/dist/collection/styles/_colors.scss";
+```
+
+<br></br>
+### Referenciar as Classes dos Elementos no SCSS
+
+Através da propriedade `class` ou `className` (em projetos React), referencie com um valor que será usado para estilizar o elemento:
+
+```html
+<bds-grid>
+  <bds-typo class="text1">Brand</bds-typo>
+  <bds-typo class="text2">Secondary</bds-typo>
+  <bds-typo class="text3">Success</bds-typo>
+</bds-grid>
+```
+
+<br></br>
+### Aplicar a Variável na Propriedade
+
+No arquivo SCSS, com a importação das variáveis realizadas, utilize a propriedade de cor desejada e aplique a variável referente à cor definida:
+
+```css
+@import "~blip-ds/dist/collection/styles/_colors.scss";
+
+.text1 {
+  color: $color-brand;
+}
+
+.text2 {
+  color: $color-primary;
+}
+
+.text3 {
+  color: $color-success;
+}
+```
+
+<br></br>
+## Customizando Cores do Design System
+
+É possível customizar ou substituir localmente as cores. Aplicando em um CSS global, trocamos os valores das variáveis ou importamos um novo arquivo ao CSS.
+
+<br></br>
+### Arquivo Global CSS/SCSS no Projeto
+
+<br></br>
+#### Cores
+
+```css
+:root {
+  --color-brand: indique a cor escolhida;
+  --color-primary: indique a cor escolhida;
+  --color-secondary: indique a cor escolhida;
+}
+```
+
+<br></br>
+#### Fontes
+
+Indique a fonte no CSS global do projeto para substituir a fonte do Design System (`Nunito Sans`).
+
+<br></br>
+### Atenção!
+
+É preciso tomar cuidado com a aplicação de classes globais como `*`. Essas definições conseguem aplicar estilos nas tags dos componentes. Não é recomendado a aplicação do exemplo abaixo:
+
+```css
+* {
+  padding: 0;
+  margin: 0;
+}
+```
+
+<br></br>
 ## Usando o componente de tema para aplicar cores
 
 O componente Theme Provider simplifica a gestão de temas em projetos, permitindo aos desenvolvedores definir e controlar facilmente o tema global da aplicação. Ao encapsular o tema em um único componente, facilita a manutenção do código e oferece suporte a temas dinâmicos, como claros, escuros e de alto contraste. Isso resulta em interfaces consistentes, flexíveis e acessíveis, proporcionando uma experiência de usuário excepcional.
 
 [Veja como implementar o componente de tema aqui.](https://design.blip.ai/d/UbKsV1JhXTK4/instalacao#/comece-a-usar/utilizar-temas-do-uai-design-system)
-
