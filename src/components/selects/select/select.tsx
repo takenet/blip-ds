@@ -144,7 +144,7 @@ export class Select {
       option.selected = this.value === option.value;
     }
 
-    this.text = this.getText();
+    this.text = this.getText(this.value);
   }
 
   @Listen('mousedown', { target: 'window', passive: true, capture: true })
@@ -210,7 +210,7 @@ export class Select {
       option.selected = this.value === option.value;
       option.addEventListener('optionSelected', this.handler);
     }
-    this.text = this.getText();
+    this.text = this.getText(this.value);
   }
 
   private updateOptions() {
@@ -272,18 +272,15 @@ export class Select {
     }
   };
 
-  private getText = (): string => {
-    const opt = this.childOptions.find((option) => option.value == this.value);
-    if (opt?.status || opt?.bulkOption) {
-      if (this.internalOptions) {
-        const internalOption = this.internalOptions.find((option) => option.value == opt.value);
-        if (internalOption) {
-          return internalOption.titleText ? internalOption.titleText : internalOption.label;
-        }
+  private getText = (value): string => {
+    const opt = this.childOptions.find((option) => option.value == value);
+    if (this.internalOptions) {
+      const internalOption = this.internalOptions.find((option) => option.value == opt?.value);
+      if (internalOption) {
+        return internalOption.titleText ? internalOption.titleText : internalOption.label;
       }
-      return opt.querySelector(`#bds-typo-label-${this.value}`).textContent;
     }
-    return opt?.titleText ? opt.titleText : opt?.textContent?.trim() ?? '';
+    return opt?.titleText ? opt?.titleText : (opt?.innerHTML?.trim() ?? '');
   };
 
   private handler = (event: CustomEvent): void => {
