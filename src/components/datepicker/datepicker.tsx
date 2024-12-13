@@ -403,7 +403,7 @@ export class DatePicker {
 
   private clickConcludeDatepicker = () => {
     if (this.typeOfDate == 'period') {
-      if (this.valueEndDate) {
+      if (this.valueEndDate && this.valueDate) {
         const data = {
           startDate: typeDateToStringDate(this.valueDate),
           endDate: typeDateToStringDate(this.valueEndDate),
