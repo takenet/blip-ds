@@ -83,7 +83,7 @@ export class BdsModal implements ComponentInterface {
   }
 
   private listener = (event) => {
-    if (this.enterClose && event.key == 'Escape') {
+    if (this.enterClose && (event.key == 'Enter' || event.key == 'Escape')) {
       this.toggle();
     }
   };
