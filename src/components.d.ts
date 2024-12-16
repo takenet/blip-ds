@@ -696,7 +696,7 @@ export namespace Components {
         /**
           * When 'true', no events will be dispatched
          */
-        "disabled": boolean;
+        "disabled"?: boolean;
         /**
           * used for add icon in left container. Uses the bds-icon component.
          */
