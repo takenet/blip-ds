@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, EventEmitter, Event, State, Listen, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Event, EventEmitter, State, Element } from '@stencil/core';
 
 export type ColorChipSelected = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline';
 export type Size = 'standard' | 'tall';
@@ -30,7 +30,7 @@ export class ChipSelected {
   /**
    * When 'true', no events will be dispatched
    */
-  @Prop() disabled = false;
+  @Prop() disabled?: boolean = false;
   /**
    * Data test is the prop to specifically test the component action object.
    */
@@ -38,24 +38,27 @@ export class ChipSelected {
 
   @Event() chipClick: EventEmitter;
 
-  handleKeyDown(event) {
-    if (event.key === ' ' && !this.disabled) {
+  private handleKeyDown(event) {
+    if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {
       event.preventDefault();
       if (this.isSelected) {
-        return (this.isSelected = false);
+        this.isSelected = false;
       } else {
-        return (this.isSelected = true);
+        this.isSelected = true;
       }
+      this.chipClick.emit({ selected: this.isSelected });
     }
   }
-  @Listen('click', { capture: true })
-  handleClick(event) {
-    if (this.disabled) return;
-    event.preventDefault();
-    if (this.isSelected) {
-      return (this.isSelected = false);
-    } else {
-      return (this.isSelected = true);
+
+  private handleClick(event) {
+    if (!this.disabled) {
+      event.preventDefault();
+      if (this.isSelected) {
+        this.isSelected = false;
+      } else {
+        this.isSelected = true;
+      }
+      this.chipClick.emit({ selected: this.isSelected });
     }
   }
 
@@ -96,7 +99,7 @@ export class ChipSelected {
             ...this.getStyleChip(),
             ...this.getDisabledChip(),
           }}
-          onClick={this.handleClick}
+          onClick={(ev) => this.handleClick(ev)}
           data-test={this.dataTest}
         >
           {!this.disabled && <div class="chip_focus" onKeyDown={this.handleKeyDown.bind(this)} tabindex="0"></div>}

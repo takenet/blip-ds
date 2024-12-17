@@ -24,6 +24,7 @@ import { mount } from 'cypress/react18';
 import { defineCustomElements } from '../dist/esm/loader';
 
 import 'cypress-real-events';
+import 'cypress-wait-until';
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
