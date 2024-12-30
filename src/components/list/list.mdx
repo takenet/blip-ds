@@ -1,28 +1,32 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as ListStories from './list.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # List
 
+<br></br>
 
-## Overview
+## Estrutura
 
-List allows users to select a date or a range of dates.
+As listas são índices verticais contínuos de texto e outros elementos.
 
 <Canvas of={ListStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by List.
+As seguintes propriedades são compartilhadas pela Lista.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de Eventos da Lista.
 
 <Source of={ListStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={ListStories.FrameworkReact} />

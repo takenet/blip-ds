@@ -16,6 +16,7 @@ export const Properties = (args) => {
   if (el.length !== 0) {
     el[0].style.width = '720px';
     el[0].style.height = '500px';
+    el[0].style.position = 'relative';
   }
   return (
     <bds-modal
@@ -48,7 +49,7 @@ Properties.args = {
   open: true,
   outzoneClose: true,
   enterClose: true,
-  size: 'fixed',
+  size: 'dynamic',
 };
 Properties.argTypes = {
   closeButton: {
@@ -81,7 +82,7 @@ Properties.argTypes = {
   },
   size: {
     table: {
-      defaultValue: { summary: 'fixed' },
+      defaultValue: { summary: 'dynamic' },
     },
 
     options: ['dynamic', 'fixed'],

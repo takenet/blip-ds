@@ -1,27 +1,32 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as InputStories from './input.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Input
 
-## Overview
+<br></br>
 
-Input allows users to select a date or a range of dates.
+## Estrutura
+
+Os inputs são usados para que os usuários insiram e editem textos.
 
 <Canvas of={InputStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Input.
+As seguintes propriedades são compartilhadas pelo Input.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de Eventos do Input.
 
 <Source of={InputStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={InputStories.FrameworkReact} />

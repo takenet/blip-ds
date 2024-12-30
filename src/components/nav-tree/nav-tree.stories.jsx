@@ -34,7 +34,7 @@ export const Properties = (args) => {
     </bds-nav-tree>
   );
 };
-Properties.args = { isOpen: true, colapse: 'single', text: 'Título', secondaryText: 'Breve Descrição', active: false };
+Properties.args = { isOpen: true, colapse: 'single', text: 'Título',icon:"heart", secondaryText: 'Breve Descrição', active: false };
 
 Properties.argTypes = {
   isOpen: {

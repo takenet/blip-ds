@@ -1,22 +1,70 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Controls, Meta, Source } from '@storybook/blocks';
 import * as NavTreeStories from './nav-tree.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
-# Navbar
+# Nav Tree
 
+[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/nav-tree/visao-geral-nav-tree)
+&nbsp;|&nbsp;
+[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/nav-tree/resumo-nav-tree)
+&nbsp;|&nbsp;
+[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/nav-tree/acessibilidade-nav-tree)
 
-## Overview
+<br></br>
+## Estrutura
 
-Nav Tree allows users to select a date or a range of dates.
+O componente NavTree é utilizado para um agrupamento de sub-opções de navegação. 
 
 <Canvas of={NavTreeStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Nav Tree.
+<br></br>
+## Propriedades
+
+As propriedades a seguir são compartilhadas pelo Nav Tree.
 
 <Controls />
 
-## Build on React
+## Métodos
+
+Os seguintes métodos que são compartilhados por **BdsNavTree** e **BdsNavTreeItem**.
+
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>toggle()</td>
+      <td>Usado para alterar o estado do accordion, aberto ou fechado.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br></br>
+## Eventos
+
+Os seguintes eventos que são compartilhados por **BdsNavTree** e **BdsNavTreeItem**. 
+<table>
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsToogleChange</td>
+      <td>Dispara quando o accordion altera o estado de abertura.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br></br>
+## Usando em React
 
 <Source of={NavTreeStories.FrameworkReact} />

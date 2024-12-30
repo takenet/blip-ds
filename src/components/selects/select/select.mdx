@@ -4,24 +4,135 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Select
 
-## Overview
+<br></br>
 
-Select allows users to select a date or a range of dates.
+## Visão Geral
+
+O componente Select permite que os usuários façam seleções em um conjunto de opções.
 
 <Canvas of={SelectStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Select.
+<br></br>
+
+As propriedades a seguir são compartilhadas pelo componente Select.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Propriedades do bds-select-option
+
+As seguintes as propriedades que são compartilhadas por bds-select-option.
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+      <th>Predefinição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bulk-option</td>
+      <td>Adiciona uma descrição quantitativa do valor de um option. Localizado do lado direito do componente.</td>
+      <td>string</td>
+      <td>vazio</td>
+    </tr>
+    <tr>
+      <td>selected</td>
+      <td>O valor do texto do option.</td>
+      <td>"true" | "false"</td>
+      <td>"false"</td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>Se verdadeiro, o usuário não poderá interagir com o option.</td>
+      <td>"true" | "false"</td>
+      <td>"false"</td>
+    </tr>
+    <tr>
+      <td>slot-align</td>
+      <td>Alinhamento dos conteúdos do options.</td>
+      <td>"baseline" | "center" | "flex-end" | "flex-start" | "end" | "start"</td>
+      <td>"center"</td>
+    </tr>
+    <tr>
+      <td>invisible</td>
+      <td>Usado para não mostrar o option.</td>
+      <td>"true" | "false"</td>
+      <td>"false"</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>Um texto será mostrado alinhado a direita no options.</td>
+      <td>string</td>
+      <td>vazio</td>
+    </tr>
+    <tr>
+      <td>title-text</td>
+      <td>Um titulo no input será mostrado.</td>
+      <td>string</td>
+      <td>vazio</td>
+    </tr>
+    <tr>
+      <td>value</td>
+      <td>Prop para passar o valor do select.</td>
+      <td>string</td>
+      <td>vazio</td>
+    </tr>
+  </tbody>
+</table>
+
+<br></br>
+## Eventos
+
+Alguns exemplos de eventos do Select.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>optionSelected</td>
+      <td>Emite o evento que seleciona inicialmente um options.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsBlur</td>
+      <td>Emite um evento quando o select perde foco.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsCancel</td>
+      <td>Emite um evento quando a seleção é cancelada.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsChange</td>
+      <td>Emite um evento quando o valor mudar.</td>
+      <td>CustomEvent&lt;SelectChangeEventDetail&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsFocus</td>
+      <td>Emite um evento quando o select perde foco.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={SelectStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando no React
 
 <Source of={SelectStories.FrameworkReact} />

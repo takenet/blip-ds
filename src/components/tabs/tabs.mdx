@@ -4,25 +4,54 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Tabs
 
+<br></br>
 
-## Overview
+## Visão Geral
 
-Tabs allows users to select a date or a range of dates.
+O componente Tabs permite organizar conteúdo em diferentes abas de navegação.
 
 <Canvas of={TabsStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Tabs.
+<br></br>
+
+As propriedades a seguir são compartilhadas pelo componente Tabs.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de eventos do componente Tabs.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsTabChange</td>
+      <td>Evento retorna o valor do tab que alterou.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsTabDisabled</td>
+      <td>Evento retorna o valor do tab que foi desabilitado.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={TabsStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando no React
 
 <Source of={TabsStories.FrameworkReact} />

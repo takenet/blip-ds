@@ -4,13 +4,12 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Avatar Group
 
-[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/avatar/visao-geral-avatar)
-&nbsp;|&nbsp;
 [Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/avatar/resumo-avatar)
 &nbsp;|&nbsp;
 [Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/avatar/acessibilidade-avatar)
 
-## Overview
+<br></br>
+## Estrutura
 
 These are circular images to represent the user.
 
@@ -18,16 +17,37 @@ These are circular images to represent the user.
 
 <Meta isTemplate />
 
-The following properties that are shared by Avatar Group.
+<br></br>
+## Propriedades
+
+The following properties are shared by Avatar Group.
 
 <Controls />
 
-## Events
+<br></br>
+## Eventos
 
 Some examples of Avatar Group Events.
+<table>
+    <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>bdsClickAvatarGroup</td>
+            <td>Emite um evento quando o grupo de avatares é clicado.</td>
+            <td>CustomEvent&lt;void&gt;</td>
+        </tr>
+    </tbody>
+</table>
 
 <Source of={AvatarGroupStories.Events} />
 
-## Build on React
+<br></br>
+## Usando em React
 
 <Source of={AvatarGroupStories.FrameworkReact} />

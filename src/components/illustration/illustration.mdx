@@ -1,23 +1,24 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as IllustrationStories from './illustration.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Illustration
 
+<br></br>
 
-## Overview
+## Estrutura
 
-Illustration allows users to select a date or a range of dates.
+Componente disponível para uso de ilustrações em código, sem exportação ou upload de imagens.
 
 <Canvas of={IllustrationStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Illustration.
+As seguintes propriedades são compartilhadas pelo Illustration.
 
 <Controls />
 
+<br></br>
 
-## Build on React
+## Usando em React
 
 <Source of={IllustrationStories.FrameworkReact} />

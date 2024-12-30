@@ -1,28 +1,78 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as InputPhoneNumberStories from './input-phone-number.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # InputPhoneNumber
 
+<br></br>
 
-## Overview
+## Estrutura
 
-InputPhoneNumber allows users to select a date or a range of dates.
+Os inputs são usados para que os usuários insiram e editem números de telefones.
 
 <Canvas of={InputPhoneNumberStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by InputPhoneNumber.
+As seguintes propriedades são compartilhadas pelo InputPhoneNumber.
 
 <Controls />
+Inputs com código de região
+Utilizamos esse estilo de input para facilitar a seleção de número de telefone dentro da plataforma, em áreas que podem receber esse tipo de conteúdo como nossa área de account ou nos templates de mensagem do WhatsApp.
 
-## Events
+## Especificações do componente:
 
-Some examples of Autocomplete Events.
+• Ao selecionar o país o código com o "+" é inserido no input.
+
+• Aceitar somente caracteres de números.
+
+• Possibilitar definir o componente como required.
+
+• Bandeira do Brasil Default.
+
+• Depois de selecionado o país o código não será editável.
+
+<br></br>
+
+## Eventos
+
+Alguns exemplos de Eventos do InputPhoneNumber.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsBlur</td>
+      <td>Emite quando o select perde foco.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsCancel</td>
+      <td>Emite quando a seleção é cancelada.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsFocus</td>
+      <td>Emite quando o select perde foco.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsPhoneNumberChange</td>
+      <td>Emite quando o valor muda.</td>
+      <td>CustomEvent&lt;SelectChangeEventDetail&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={InputPhoneNumberStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={InputPhoneNumberStories.FrameworkReact} />

@@ -1,28 +1,59 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as DatepickerStories from './datepicker.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Datepicker
 
+<br></br>
 
-## Overview
+## Estrutura
 
-Datepicker allows users to select a date or a range of dates.
+O Datepicker permite que os usuários selecionem uma data ou um intervalo de datas.
 
 <Canvas of={DatepickerStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Datepicker.
+As seguintes propriedades são compartilhadas pelo Datepicker.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Chip Datepicker Events.
+## Eventos
+
+Alguns exemplos de Eventos do Datepicker.
+<table>
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsEndDate</td>
+      <td>Evento para retornar o valor da data de término selecionada.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsStartDate</td>
+      <td>Evento para retornar o valor de data selecionado.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>concludeDatepicker</td>
+      <td>Evento para retornar o valor de data de início e final quando concluir seleção no componente.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={DatepickerStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={DatepickerStories.FrameworkReact} />

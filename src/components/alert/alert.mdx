@@ -4,31 +4,49 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Alert
 
-[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/alert/visao-geral-alert)
-&nbsp;|&nbsp;
 [Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/alert/resumo-alert)
 &nbsp;|&nbsp;
 [Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/alert/acessibilidade-alert)
 
-## Overview
+<br></br>
+## Estrutura
 
-These are little boxes that appear to the user when they need to perform an action that has some level of criticality.
+São caixinhas que aparecem para o usuário quando ele precisa realizar uma ação que possui algum nível de criticidade.
 
 <Canvas of={AlertStories.Properties} >
 </Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by `bds-alert` and `bds-alert-header`.
+<br></br>
+## Propriedades
+
+As seguintes propriedades que são compartilhadas por **Alert** e **alert-header**.
 
 <Controls />
 
-## Methods
+<br></br>
+## Métodos
 
-Some examples of Autocomplete Events.
+Os seguintes métodos que são compartilhados por **Alert**.
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>toggle()</code></td>
+      <td>Pode ser usado para abrir/fechar o componente Alert.</td>
+    </tr>
+  </tbody>
+</table>
 
 <Source of={AlertStories.Methods} />
 
-## Build on React
+<br></br>
+## Usando em React
 
 <Source of={AlertStories.FrameworkReact} />

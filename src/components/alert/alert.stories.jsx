@@ -19,7 +19,7 @@ export default {
 };
 
 export const Properties = (args) => {
-  const el = document.getElementsByClassName('sb-story');
+ const el = document.getElementsByClassName('sb-story');
 if (el.length !== 0) {
   el[0].style.width = '720px';
   el[0].style.height = '400px';
@@ -27,7 +27,7 @@ if (el.length !== 0) {
   el[0].style.background = 'none';
 }
   return (
-    <bds-alert open={args.open}>
+    <bds-alert open={args.open} position="contain">
       <bds-alert-header variant={args.variant} icon={args.icon}>
         Atenção!
       </bds-alert-header>

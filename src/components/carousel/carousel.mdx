@@ -1,32 +1,92 @@
-import { Story, Canvas, Controls, Meta, Source } from '@storybook/blocks';
-import * as CarouselStories from './carousel.stories';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
+import * as CarouselStories from './carousel.stories.jsx';
 
-## Carousel Single
+# Carousel Single
 
-An carousel Single is a list of vertically stacked titles that reveal or hide associated content.
+[Design do Componente](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/carousel/resumo-carousel)
+&nbsp;|&nbsp;
+[Acessibilidade](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/carousel/acessibilidade-carousel)
 
-<Canvas of={CarouselStories.Properties} >
-</Canvas>
+<br></br>
+
+## Estrutura
+
+Um Carousel Single é uma lista de títulos empilhados verticalmente que revelam ou ocultam o conteúdo associado.
+
+<Canvas of={CarouselStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Carousel Single.
+<br></br>
+
+## Propriedades
+
+As seguintes propriedades são compartilhadas pelo Carousel Single.
 
 <Controls />
 
+<br></br>
 
-## Methods
+## Eventos
 
-Some examples of Carousel Methods.
-
-<Source of={CarouselStories.Methods} />
-
-## Events
-
-Some examples of Carousel Events.
+Alguns exemplos de Eventos do **Carousel**.
+<table>
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsChangeCarousel</td>
+      <td>Emite um evento quando o valor do item selecionado muda.</td>
+      <td>CustomEvent</td>
+    </tr>
+  </tbody>
+</table>
 
 <Source of={CarouselStories.Events} />
 
-## Build on React
+## Métodos
+
+Os seguintes métodos que são compartilhados por **Carousel**.
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>nextSlide</td>
+      <td>Função para avançar um item no slide.</td>
+    </tr>
+    <tr>
+      <td>prevSlide</td>
+      <td>Função para retroceder um item no slide.</td>
+    </tr>
+    <tr>
+      <td>setActivated</td>
+      <td>Função para selecionar um item específico no slide. Passar o valor(number) para selecionar.</td>
+    </tr>
+    <tr>
+      <td>pauseAutoplay</td>
+      <td>Função para pausar o autoplay caso propriedade de autoplay estiver verdadeira.</td>
+    </tr>
+    <tr>
+      <td>runAutoplay</td>
+      <td>Função para rodar o autoplay caso propriedade de autoplay estiver verdadeira.</td>
+    </tr>
+  </tbody>
+</table>
+
+<Source of={CarouselStories.Methods} />
+
+<br></br>
+
+## Usando em React
 
 <Source of={CarouselStories.FrameworkReact} />

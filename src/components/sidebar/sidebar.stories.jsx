@@ -44,7 +44,7 @@ export const Properties = (args) => {
 Properties.args = {
   isOpen: true,
   sidebarPosition: 'right',
-  type: 'over',
+  type: 'fixed',
   background: 'surface-2',
   margin: 'true',
   width: '360'
