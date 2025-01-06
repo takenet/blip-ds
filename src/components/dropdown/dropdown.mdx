@@ -1,28 +1,77 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as DropdownStories from './dropdown.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Dropdown
 
+<br></br>
 
-## Overview
+## Estrutura
 
-Dropdown allows users to select a date or a range of dates.
+Dropdown são espaços que se abrem abaixo de um componente para habilitar seleções ou listagens de itens
 
 <Canvas of={DropdownStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Dropdown.
+As seguintes propriedades são compartilhadas pelo **Dropdown**.
 
 <Controls />
 
-## Events
+<br></br>
+## Métodos
 
-Some examples of Chip Dropdown Events.
+Alguns exemplos de Métodos do **Dropdown**.
+
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>toogle() =&gt; Promise&lt;void&gt;</td>
+      <td>Usado para alterar o estado do componente, aberto ou fechado.</td>
+    </tr>
+    <tr>
+      <td>setOpen() =&gt; Promise&lt;void&gt;</td>
+      <td>Usado para alterar o estado do componente para aberto.</td>
+    </tr>
+    <tr>
+      <td>setClose() =&gt; Promise&lt;void&gt;</td>
+      <td>Usado para alterar o estado do componente para fechado.</td>
+    </tr>
+  </tbody>
+</table>
+<Source of={DropdownStories.Events} />
+
+<br></br>
+## Eventos
+
+Alguns exemplos de Eventos do **Dropdown**.
+<table>
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsToggle</td>
+      <td>Evento emitido quando troca o estado 'Open' do componente</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={DropdownStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={DropdownStories.FrameworkReact} />

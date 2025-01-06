@@ -14,7 +14,7 @@ export default {
 export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
   if (el.length !== 0) {
-    el[0].style.height = '250px';
+    el[0].style.height = '280px';
   }
   return (
     <bds-pagination pages={args.pages} started-Page={args.startedPage}></bds-pagination>

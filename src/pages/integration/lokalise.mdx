@@ -1,0 +1,145 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+<Meta title="Integrações/Lokalise" />
+
+
+# Lokalise
+
+<br></br>
+## Introdução
+
+Aprenda como utilizar a Lokalise no seu projeto com o UAI Design System. 
+
+## Instalação
+
+Este pacote deve ser utilizado com o comando npx, que por padrão, solicitará que você o instale no seu contexto de usuário na primeira execução. 
+
+Se preferir ter o pacote dentro da pasta node_modules do seu projeto, execute o seguinte comando: 
+
+```
+npm i -D blip-lokalise-import
+```
+
+## Uso
+
+### Variável de Ambiente 
+Antes de invocar o método de sincronização, você precisa definir a variável de ambiente LOKALISE_API_KEY com a sua chave. As chaves são criadas por Design Ops e disponibilizadas para o time de engenharia via formulário de solicitação de demandas. 
+
+### Arquivo de Configuração Base 
+Crie um arquivo chamado lokalise-import-conf.json na raiz do seu projeto com a seguinte estrutura básica: 
+
+```json
+
+{
+    "projects": []
+}
+```
+### Configurações do Projeto 
+Para cada projeto do Lokalise que você deseja sincronizar, adicione uma entrada dentro do array projects como esta: 
+
+```json
+
+{
+    "projects": [
+        {
+            "id": "6317d22cedb4909dd689f39f.87865697",
+            "name": "a-lokalise-project",
+            "destination": "output/dictionary.ts"
+        }
+    ]
+}
+```
+
+### Propriedades
+<ol>
+  <li><strong>'id':</strong> Este ID pode ser encontrado na URL dos seus projetos (ex.: https://app.lokalise.com/project/6317d22cedb4909dd689f39f.87865697/?view=multi).</li>
+  <li><strong>'name':</strong> Um identificador legível. É usado para nomear o arquivo de saída se não definido no campo destination e para sincronizar um projeto específico através das opções de comando.</li>
+  <li><strong>'destination':</strong> O caminho de saída para o(s) arquivo(s) gerado(s).</li>
+</ol>
+
+Você pode usar o substituidor __variant para dividir a saída em subpastas ou múltiplos arquivos. 
+
+```json
+
+{
+    "id": "6317d22cedb4909dd689f39f.87865697",
+    "name": "a-lokalise-project",
+    "destination": "output/__variant/i18n.ts"
+}
+```
+## Arquivos de Saída 
+### Formatos 
+
+Você pode escolher entre arquivos .json e .ts.
+
+Se você escolher arquivos .ts, o script realizará uma transpilaçãp TypeScript e notificará se a saída não for válida.
+
+### Termos Aninhados e Quebra de Convenção 
+Se você quiser dividir seu termo em uma estrutura aninhada, basta identificar o termo com pontos. Exemplo: 
+
+Uma chave (definida no Lokalise) "main.header.title" será gerada como: 
+
+```tsx
+
+export const translations = {
+    main: {
+        header: {
+            title: "Meu texto em inglês americano"
+        }
+    }
+};
+```
+### Execução
+Para realizar uma sincronização, você pode executar o seguinte comando: 
+
+```
+npx blip-lokalise-import
+```
+O script gerará arquivos para todos os projetos no seu arquivo de configuração. Se você quiser sincronizar um único projeto, pode especificar o nome do projeto como um argumento assim: 
+
+```
+npx blip-lokalise-import project=a-lokalise-project
+```
+
+## Atalho de Scripts NPM
+Se preferir, você pode adicionar um script npm no seu arquivo package.json para criar um alias para o comando de execução: 
+
+```json
+"scripts": {
+    "lokalise:pull": "npx blip-lokalise-import"
+}
+```
+Então você pode executá-lo assim: 
+```
+npm run lokalise:pull
+```
+
+## Problema de TLS com o Lokalise
+
+Alguns usuários podem enfrentar um problema de certificado ao executar este script contra a API do Lokalise. Para corrigir isso, você deve definir a variável de ambiente NODE_TLS_REJECT_UNAUTHORIZED como 0. 
+
+Como isso não é recomendado, você pode configurá-la apenas para esta execução específica do comando. 
+
+Uma solução cross OS é: 
+
+1 - Adicione o pacote cross-env ao seu projeto: 
+```
+npm i -D cross-env
+```
+
+2 - Crie um script npm no seu arquivo package.json: 
+
+```json
+"scripts": {
+    "lokalise:pull": "npx blip-lokalise-import",
+    "lokalise:pull-no-tls": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 npx blip-lokalise-import"
+}
+```
+
+Então, execute seu novo script: 
+
+```
+npm run lokalise:pull-no-tls
+```
+Com estas etapas, você poderá configurar e usar o Blip Lokalise Import em seu projeto de maneira eficaz. 

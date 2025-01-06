@@ -14,7 +14,7 @@ export default {
 export const Properties = (args) => {
   const el = document.getElementsByClassName('sb-story');
   if (el.length !== 0) {
-    el[0].style.height = '800px';
+    el[0].style.height = '450px';
     el[0].style.position = 'relative';
   }
   return (

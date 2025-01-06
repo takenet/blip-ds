@@ -14,7 +14,7 @@ import {
 } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Template/Portal/Sidebar + Content',
+  title: 'Templates/Portal/Sidebar + Content',
 };
 
 export const SidebarContent = (args) => (

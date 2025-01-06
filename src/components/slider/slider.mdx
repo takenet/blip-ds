@@ -4,24 +4,49 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Slider
 
-## Overview
+<br></br>
 
-Slider allows users to select a date or a range of dates.
+## Visão Geral
+
+O componente Slider permite que os usuários ajustem valores dentro de um intervalo específico.
 
 <Canvas of={SliderStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Slider.
+<br></br>
+
+As propriedades a seguir são compartilhadas pelo componente Slider.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Chip Slider Events.
+## Eventos
+
+Alguns exemplos de eventos do componente Slider.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsChange</td>
+      <td>Emite um evento quando o valor mudar.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={SliderStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando no React
 
 <Source of={SliderStories.FrameworkReact} />

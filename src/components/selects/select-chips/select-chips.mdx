@@ -4,25 +4,112 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # SelectChips
 
+<br></br>
 
-## Overview
+## Visão Geral
 
-SelectChips allows users to selectChips a date or a range of dates.
+O componente SelectChips permite que os usuários façam seleções em um conjunto de opções.
 
 <Canvas of={SelectChipsStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by SelectChips.
+<br></br>
+
+As propriedades a seguir são compartilhadas pelo componente SelectChips.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de eventos do SelectChips.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsBlur</td>
+      <td>Emite um evento quando o select perde foco.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsCancel</td>
+      <td>Emite um evento quando a seleção é cancelada.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsChange</td>
+      <td>Emite um evento quando o valor mudar.</td>
+      <td>CustomEvent&lt;SelectChangeEventDetail&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsFocus</td>
+      <td>Emite um evento quando o select perde foco.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsChangeChips</td>
+      <td>Emite um evento quando altera o chips selecionado.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsSelectChipsInput</td>
+      <td>Emite um evento quando seleciona um chip.</td>
+      <td>CustomEvent&lt;void&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={SelectChipsStories.Events} />
 
-## Build on React
+<br></br>
+## Métodos
+
+Alguns exemplos de métodos do SelectChips.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>isValid()</td>
+      <td>Usado para validar campo do select chips</td>
+    </tr>
+    <tr>
+      <td>getChips()</td>
+      <td>Usado para selecionar um chips</td>
+    </tr>
+    <tr>
+      <td>clear()</td>
+      <td>Usado para limpar campo</td>
+    </tr>
+    <tr>
+      <td>add(value: string)</td>
+      <td>Usado para adicionar um chips</td>
+    </tr>
+    <tr>
+      <td>setFocus()</td>
+      <td>Usado para aplicar foco no componente</td>
+    </tr>
+    <tr>
+      <td>removeFocus()</td>
+      <td>Usado para remover foco do componente</td>
+    </tr>
+  </tbody>
+</table>
+
+<br></br>
+## Usando no React
 
 <Source of={SelectChipsStories.FrameworkReact} />

@@ -1,28 +1,47 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as ChipClickableStories from './chip-clickable.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Chip Clickable
+<br></br>
+## Estrutura
 
-
-## Overview
-
-Chips are used for items that need to be labeled, categorized, or organized using keywords that describe them.
+Os chips são usados para itens que precisam ser rotulados, categorizados ou organizados utilizando palavras-chave que os descrevem.
 
 <Canvas of={ChipClickableStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Chip Clickable.
+As seguintes propriedades são compartilhadas pelo Chip Clickable.
 
 <Controls />
+<br></br>
+## Eventos
 
-## Events
-
-Some examples of Chip Clickable Events.
+Alguns exemplos de Eventos do Chip Clickable.
+<table>
+    <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>chipClickableClick</code></td>
+            <td>Emite um evento quando o chip clickable é clicado.</td>
+            <td><code>CustomEvent&lt;void&gt;</code></td>
+        </tr>
+        <tr>
+            <td><code>chipClickableClose</code></td>
+            <td>Emite um evento quando o chip clickable é fechado.</td>
+            <td><code>CustomEvent&lt;void&gt;</code></td>
+        </tr>
+    </tbody>
+</table>
 
 <Source of={ChipClickableStories.Events} />
-
-## Build on React
+<br></br>
+## Usando em React
 
 <Source of={ChipClickableStories.FrameworkReact} />

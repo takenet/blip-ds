@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './chip-selected.mdx';
 import { BdsChipSelected } from '../../../blip-ds-react/dist/components';
 
@@ -12,7 +12,13 @@ export default {
 };
 
 export const Properties = (args) => (
-  <bds-chip-selected color={args.color} icon={args.icon} selected={args.selected} disabled={args.disabled} size={args.size}>
+  <bds-chip-selected
+    color={args.color}
+    icon={args.icon}
+    selected={args.selected}
+    disabled={args.disabled}
+    size={args.size}
+  >
     Chip-selected Default
   </bds-chip-selected>
 );
@@ -62,14 +68,22 @@ Properties.args = {
   icon: '',
   selected: false,
   disabled: false,
-  size:'tall'
+  size: 'tall',
 };
 
-export const Events = () => (
-  <bds-chip-selected color="default" icon="" avatar="" selected={false} close={false} disabled={false} size="tall">
-    Chip-selected Default
-  </bds-chip-selected>
-);
+export const Events = () => {
+  useEffect(() => {
+    const chip = document.getElementById('chip-selected');
+    chip.addEventListener('chipClick', () => {
+      console.log('Evento chipClick funcionando');
+    });
+  });
+  return (
+    <bds-chip-selected id="chip-selected" color="default" icon="" selected={false} disabled={false} size="tall">
+      Chip-selected Default
+    </bds-chip-selected>
+  );
+};
 
 export const FrameworkReact = () => (
   <BdsChipSelected color="default" icon="" avatar="" selected={false} close={false} disabled={false} size="tall">

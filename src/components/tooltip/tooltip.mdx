@@ -4,30 +4,51 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Tooltip
 
-[Component Detail](https://design.blip.ai/document/13#/button/visao-geral-button)
-&nbsp;|&nbsp;
-[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/resumo-button)
-&nbsp;|&nbsp;
-[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/acessibilidade-button)
+<br></br>
 
-## Overview
+## Visão Geral
 
-Tooltip allows users to select a date or a range of dates.
+O componente Tooltip permite exibir informações adicionais quando o usuário passa o cursor sobre um elemento.
 
 <Canvas of={TooltipStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Tooltip.
+<br></br>
+
+As propriedades a seguir são compartilhadas pelo componente Tooltip.
 
 <Controls />
 
-## Methods
+<br></br>
 
-Some examples of Autocomplete Methods.
+## Métodos
+
+Alguns exemplos de métodos disponíveis no componente Tooltip.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+      <th>Retorno</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>visible()</td>
+      <td>Pode ser usado para deixar o tooltip visível ou não.</td>
+      <td>Retorna</td>
+      <td>Promise&lt;void&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={TooltipStories.Methods} />
 
-## Build on React
+<br></br>
+
+## Usando no React
 
 <Source of={TooltipStories.FrameworkReact} />

@@ -68,7 +68,7 @@ export const Releases = () => {
   return (
     <bds-grid xxs="12" height="100%" margin="auto" direction="column" gap="4">
       <bds-grid>
-        <bds-typo bold="bold" variant="fs-32">
+        <bds-typo bold="extra-bold" variant="fs-32">
           Releases
         </bds-typo>
       </bds-grid>

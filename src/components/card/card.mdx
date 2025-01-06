@@ -1,34 +1,142 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as cardStories from './card.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Card
 
-[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/card/visao-geral-card)
+[Design do Componente](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/card/resumo-card)
 &nbsp;|&nbsp;
-[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/card/resumo-card)
-&nbsp;|&nbsp;
-[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/card/acessibilidade-card)
+[Acessibilidade](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/card/acessibilidade-card)
 
-## Overview
+<br></br>
 
-The card is a component used to provide information about new updates and notifications.
+## Estrutura
 
-<Canvas of={cardStories.Properties} >
-</Canvas>
+O card é um componente usado para fornecer informações sobre atualizações e notificações.
+
+Para a construção do componente Card você terá tags obrigatórias e outras opcionais para compor o layout. São elas:
+
+<ul>
+  <li>bds-card-header</li>
+  <li>bds-card-body</li>
+  <li>bds-card-footer</li>
+  <li>bds-card-title</li>
+  <li>bds-card-subtitle</li>
+</ul>
+
+<Canvas of={cardStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by card.
+<br></br>
+
+## Propriedades
+
+As propriedades abaixo estão disponíveis para o componente Card.
 
 <Controls />
 
-## Events
+<br></br>
+As seguintes propriedades que são compartilhadas por **bds-card**.
+<table>
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+      <th>Predefinição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>clickable</td>
+      <td>Se verdadeiro, o componente poderá ser clicável.</td>
+      <td>"true" | "false"</td>
+      <td>"false"</td>
+    </tr>
+    <tr>
+      <td>width</td>
+      <td>Defina a largura do componente.</td>
+      <td>"string"</td>
+      <td>vazio</td>
+    </tr>
+    <tr>
+      <td>height</td>
+      <td>Defina a altura do componente.</td>
+      <td>"string"</td>
+      <td>vazio</td>
+    </tr>
+  </tbody>
+</table>
 
-Some examples of Card Events.
+<br></br>
+As seguintes propriedades que são compartilhadas por **bds-card-header**.
+<table>
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+      <th>Predefinição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>align</td>
+      <td>Defina o alinhamento dos elementos dentro do header.</td>
+      <td>'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly'</td>
+      <td>"space-between"</td>
+    </tr>
+  </tbody>
+</table>
+
+<br></br>
+As seguintes propriedades que são compartilhadas por **bds-card-footer**.
+<table>
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+      <th>Predefinição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>align</td>
+      <td>Defina o alinhamento dos elementos dentro do header.</td>
+      <td>'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly'</td>
+      <td>"space-between"</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br></br>
+
+## Eventos
+
+Exemplos de eventos disponíveis no Card.
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsClick</td>
+      <td>Evento disparado quando o componente é clicado.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
 
 <Source of={cardStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={cardStories.FrameworkReact} />

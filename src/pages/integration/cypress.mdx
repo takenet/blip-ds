@@ -1,0 +1,80 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+<Meta title="Integrações/Cypress" />
+
+
+# Cypress
+
+<br></br>
+## Integrando Cypress ao UAI Design System para Testes Eficientes.
+
+À medida que a complexidade das aplicações web cresce, a necessidade de garantir a qualidade do software se torna cada vez mais crucial. Uma abordagem eficaz para esse desafio é a integração do Cypress, uma poderosa ferramenta de teste end-to-end.
+
+<br></br>
+## Integrando Cypress e UAI Design System
+Ao integrar o Cypress ao UAI Design System, podemos criar testes que garantem não apenas a funcionalidade correta, mas também a aderência estrita aos padrões de design. Este documento fornece exemplos práticos de como estruturar e executar testes usando Cypress, abrangendo testes básicos de funcionalidade.
+
+<br></br>
+## Exemplo de aplicação
+Nesse exemplo vamos simular o fluxo de uma página de Login. Segue abaixo as etapas de verificação que vamos pontuar no nosso fluxo de teste:
+
+<ol>
+  <li>Aviso para acessar a página de login</li>
+  <li>Procuramos por um elemento e digitamos</li>
+  <li>Clicar para submeter login</li>
+  <li>Verificamos se a URL é de fato o que esperamos</li>
+</ol>
+
+Exemplo do arquivo singIn.cy.ts:
+
+```tsx
+describe('Sing In', () => {
+  it('should fill form to sing the user and ridurect to home', () => {
+    // Aviso para acessar a página de login
+    cy.visit('http://localhost:3000/login')
+
+
+    // Procuramos por um elemento e digitamos
+    cy.get('#4328-mail').shadow().find('[data-test="input-email"]').should("be.enabled").type("teste@mail.com", { force: true })
+    cy.get('#4328-password').shadow().find('[data-test="input-password"]').should("be.enabled").type("teste123", { force: true })
+
+
+    // Clicar para submeter login
+    cy.get('#4328-submit').shadow().find('[data-test="send-log"]').click()
+
+
+    // verificamos se a url é de fato o que esperamos
+    cy.url().should('eq', 'http://localhost:3000/')
+  })
+})
+```
+Exemplo do arquivo login.tsx:
+
+```jsx
+<bds-input
+  id="4328-mail"
+  data-test="input-email"
+  placeholder="Insira aqui seu e-mail"
+  label="E-mail"
+></bds-input>
+<bds-input
+  id="4328-password"
+  data-test="input-password"
+  placeholder="Insira aqui sua senha"
+  label="Senha"
+></bds-input>
+<bds-button id="4328-submit" data-test="send-log">
+  Entrar
+</bds-button>
+```
+
+Reparamos que utilizamos duas propriedades no componente para q o código de exemplo aplicado no cypress seja possível a leitura dos componente, elas são um id, que é um identificador comum em HTML e a propriedade data-test, que é uma propriedade de controle interno pra dizer qual o retorno crucial de um elemento nativo dentro do componente.
+
+<br></br>
+
+Ao seguir este guia, os desenvolvedores e equipes de qualidade podem otimizar suas práticas de teste, garantindo não apenas a funcionalidade, mas também a integridade do UAI Design System em todas as iterações do desenvolvimento.
+
+<br></br>
+
+Temos um projeto Open Source para demosntrar todos os componentes aplicados utilizando React + Cypress de todos os componente. Você encontra no link: https://github.com/takenet/ds-integration-test

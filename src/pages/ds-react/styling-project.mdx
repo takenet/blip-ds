@@ -1,0 +1,133 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+import image from '../../assets/doc/styles-react-1.jpg';
+import image2 from '../../assets/doc/styles-react-2.jpg';
+
+<Meta title="Vamos Começar/DS no React/Estilização do projeto" />
+
+
+# Estilização no projeto
+
+<br></br>
+No framework React, recomendamos duas formas de estilizar seus elementos em tela.
+
+## Estilizar via css-in-js
+De forma bem similar ao uso do styled component, existe a possibilidade de passar uma prop para o style do componente ou elementos superiores e definir o CSS-in-JS, como uma prática bem comum no framework react.
+
+<img src={image} alt="Imagem de exemplo" />
+
+```jsx
+import React from "react";
+
+const teste = {
+  width: '500px',
+  margin: 'auto',
+  marginTop: '36px',
+  padding: '32px',
+}
+
+export default class Test extends React.Component {
+  render() {
+    return (
+        <bds-paper style={teste}>
+          <bds-typo>Teste de uma prop para estilizar esse componente css-in-js</bds-typo>
+        </bds-paper>
+    );
+  }
+}
+```
+
+## Estilizar via className no scss
+A forma mais apropriada para estilizar qualquer elemento em tela seria via className.
+
+<img src={image2} alt="Imagem de exemplo" />
+
+### Arquivo .jsx
+
+```jsx
+import React from "react";
+
+export default class Test extends React.Component {
+  render() {
+    return (
+        <bds-paper class="teste">
+          <bds-typo>teste de estilização via SCSS</bds-typo>
+        </bds-paper>
+    );
+  }
+}
+```
+### Arquivo .scss
+
+```jsx
+.teste {
+  width: 500px;
+  margin: 36px auto;
+  padding: 32px;
+}
+```
+
+## Estilizar via styled component (descontinuada)
+
+Estilização via styled component não é recomendada e não será mais exportada as tags no formato CamelCase,.
+
+Por necessitar de compatibilidade e não causar impacto em produção dos projetos, os componentes antigos ainda podem ser importados para se trabalhar com styled component.
+
+<table border="1">
+  <tr>
+    <td>
+      <ul>
+        <li>BdsAlert</li>
+        <li>BdsAlertActions</li>
+        <li>BdsAlertBody</li>
+        <li>BdsAlertHeader</li>
+        <li>BdsAutocomplete</li>
+        <li>BdsBanner</li>
+        <li>BdsButton</li>
+        <li>BdsButtonIcon</li>
+        <li>BdsCheckbox</li>
+        <li>BdsChip*</li>
+        <li>BdsCounterText</li>
+        <li>BdsExpansionPanel*</li>
+        <li>BdsExpansionPanelBody*</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>BdsExpansionPanelHeader*</li>
+        <li>BdsIcon</li>
+        <li>BdsInput</li>
+        <li>BdsInputChips</li>
+        <li>BdsInputEditable</li>
+        <li>BdsInputPassword</li>
+        <li>BdsInputPhoneNumber</li>
+        <li>BdsLoadingSpinner*</li>
+        <li>BdsMenuList</li>
+        <li>BdsMenuListItem</li>
+        <li>BdsModal</li>
+        <li>BdsModalAction</li>
+        <li>BdsModalCloseButton</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>BdsPaper</li>
+        <li>BdsRadio</li>
+        <li>BdsRadioGroup</li>
+        <li>BdsSelect</li>
+        <li>BdsSelectChips</li>
+        <li>BdsSelectOption</li>
+        <li>BdsStep</li>
+        <li>BdsStepper</li>
+        <li>BdsSwitch</li>
+        <li>BdsToast</li>
+        <li>BdsToastContainer</li>
+        <li>BdsTooltip</li>
+        <li>BdsTypo</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+**_Para todos aqueles com *, são componentes que já não possuem esse nome ou foram descontinuados. Verificar a disponibilidade dos componentes na lista do lado esquerdo do site._**

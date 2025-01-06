@@ -4,25 +4,67 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Upload
 
+<br></br>
 
-## Overview
+## Visão Geral
 
-Upload allows users to select a date or a range of dates.
+O componente Upload permite que os usuários selecionem um arquivo ou vários arquivos para upload.
 
 <Canvas of={UploadStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Upload.
+<br></br>
+
+As propriedades a seguir são compartilhadas pelo componente Upload.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de eventos disponíveis no componente Upload.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsUploadChange</td>
+      <td>Evento emitido quando o valor é alterado.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsUploadDelete</td>
+      <td>Evento emitido quando um item da lista é removido.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={UploadStories.Events} />
 
-## Build on React
+<br></br>
+
+Tipos de arquivo
+Você pode especificar tipos de arquivo usando os MIME types (Multipurpose Internet Mail Extensions). Aqui estão alguns exemplos:
+
+<ul>
+  <li>Apenas arquivos PNG e JPEG: <code>data-accept=['.png', '.jpg', 'jpeg']</code></li>
+  <li>Arquivos de vídeo MP4 e WebM: <code>data-accept=['.mp4', '.webm']</code></li>
+  <li>Arquivos de áudio MP3 e WAV: <code>data-accept=['.mp3', '.wav']</code></li>
+  <li>Arquivos PDF, documentos do Word e documentos do Word Open XML: <code>data-accept=['.pdf', '.doc', '.docx']</code></li>
+  <li>Arquivos CSV: <code>data-accept=['.csv']</code></li>
+</ul>
+
+
+<br></br>
+## Usando no React
 
 <Source of={UploadStories.FrameworkReact} />

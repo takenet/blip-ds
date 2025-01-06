@@ -4,25 +4,49 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Toast
 
+<br></br>
 
-## Overview
+## Visão Geral
 
-Toast allows users to select a date or a range of dates.
+O componente Toast exibe notificações temporárias para os usuários.
 
 <Canvas of={ToastStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Toast.
+<br></br>
+
+As propriedades a seguir são compartilhadas pelo componente Toast.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de eventos disponíveis no componente Toast.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>toastButtonClick</td>
+      <td>Evento usado para executar algumas ações quando o botão de ação no toast for clicado.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={ToastStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando no React
 
 <Source of={ToastStories.FrameworkReact} />

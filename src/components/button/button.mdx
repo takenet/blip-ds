@@ -1,33 +1,57 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as ButtonStories from './button.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Button
 
-[Component Detail](https://design.blip.ai/document/13#/button/visao-geral-button)
+[Design do Componente](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/resumo-button)
 &nbsp;|&nbsp;
-[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/resumo-button)
-&nbsp;|&nbsp;
-[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/acessibilidade-button)
+[Acessibilidade](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/acessibilidade-button)
 
-## Overview
+<br></br>
 
-Buttons allow users to take actions, and make choices, with a single tap.
+## Estrutura
+
+Os botões permitem que os usuários realizem ações e façam escolhas com um único clique.
 
 <Canvas of={ButtonStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Button.
+<br></br>
+
+## Propriedades
+
+As propriedades abaixo estão disponíveis para o componente Button.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Button Events.
+## Eventos
+
+Exemplos de eventos disponíveis no Button.
+
+<table>
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsClick</td>
+      <td>Evento emitido quando é executado um click no componente.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
 
 <Source of={ButtonStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={ButtonStories.FrameworkReact} />

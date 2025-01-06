@@ -1,0 +1,69 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+<Meta title="Vamos Começar/DS no Vue/Aplicação" />
+
+
+# Vue
+
+Para configurar a tecnologia veja os exemplos abaixo.
+
+Arquivo: main.js
+
+```jsx
+import Vue from 'vue'
+import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+
+import App from './App.vue'
+
+
+Vue.config.productionTip = false
+
+Vue.config.ignoredElements = [/bds-\w*/];
+
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+```
+Os componentes devem estar disponíveis em qualquer Vue components.
+
+## Exemplo
+
+```jsx
+export default {
+  name: "app",
+  components: {},
+  data: function() {
+    return {
+      count: 0
+    };
+  },
+  methods: {
+    change(event) {
+      this.count = event.target.value;
+    }
+  }
+};
+
+<template>
+  <div id="app">
+    {{ count }}
+    <bds-button v-on:click="count++">+</bds-button>
+    <bds-button v-on:click="count--">-</bds-button>
+    <bds-input v-bind:value="count" v-on:bdsChange="change"></bds-input>
+  </div>
+</template>
+<style>
+#app {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+</style>
+```
+
+<br></br>

@@ -1,0 +1,102 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import * as ThemeProviderStories from '../../components/theme-provider/theme-provider.stories';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+<Meta title="Vamos Começar/Usar temas do Uai Design System" />
+
+
+# Utilizar temas do Uai Design System
+
+O componente Theme Provider simplifica a gestão de temas em projetos, permitindo aos desenvolvedores definir e controlar facilmente o tema global da aplicação. Ao encapsular o tema em um único componente, facilita a manutenção do código e oferece suporte a temas dinâmicos, como claros, escuros e de alto contraste. Isso resulta em interfaces consistentes, flexíveis e acessíveis, proporcionando uma experiência de usuário excepcional.
+
+Vamos dividir o tutorial em duas partes: a primeira parte será sobre a importação e utilização do componente de tema em um arquivo de tela externo, e a segunda parte será sobre a utilização dos demais componentes dentro de outras telas, englobados pelo componente de tema.
+
+
+<br></br>
+
+## Parte 1: Importar e Utilizar o Componente de Tema em um Arquivo de Tela Externo
+
+### Importação do Componente de Tema:
+No arquivo de tela externo, importe o componente de tema da biblioteca "blip-ds".
+
+```jsx
+
+import React from 'react';
+import { BdsThemeProvider } from 'blip-ds';
+```
+### Definição do Componente de Tela:
+Crie o componente de tela externo e envolva o conteúdo desejado com o componente de tema.
+
+```jsx
+
+const TelaExterna = () => {
+  return (
+    <BdsThemeProvider theme="light">
+      {/* Conteúdo da tela externa */}
+    </BdsThemeProvider>
+  );
+};
+
+export default TelaExterna;
+```
+Os temas hoje disponíveis são:
+<ol>
+  <li>Light</li>
+  <li>Dark</li>
+  <li>High-contrast</li>
+</ol>
+
+## Parte 2: Utilizar os Demais Componentes Dentro de Outras Telas, Englobados pelo Componente de Tema
+### Importação dos Demais Componentes:
+Em outras telas onde você deseja utilizar os componentes da biblioteca "blip-ds", importe-os normalmente.
+```jsx
+
+import React from 'react';
+import { BdsGrid, BdsPaper, BdsTypo, BdsInputChips, BdsAvatar, BdsBanner } from 'blip-ds';
+```
+
+## Criação do Componente de Tela:
+Em cada tela onde você deseja utilizar os componentes, crie o componente de tela e utilize os componentes da biblioteca "blip-ds" dentro do componente de tema.
+
+```jsx
+
+const MinhaTela = () => {
+  return (
+    <BdsThemeProvider>
+      <BdsGrid xxs="12">
+        <BdsPaper width="500px">
+          <BdsGrid
+            direction="column"
+            gap="2"
+            padding="2"
+          >
+            <BdsTypo
+              bold="bold"
+              variant="fs-32"
+            >
+              Exemplo de uso do tema
+            </BdsTypo>
+            <BdsInputChips chips={['chip1', 'chip2']} />
+            <BdsAvatar
+              name="Michael Scott"
+              size="standard"
+              upload={false}
+            />
+            <BdsBanner
+              context="inside"
+              variant="system"
+            >
+              Este é um banner do tipo inside. Ele pode conter várias linhas, mas a sugestão é que possua textos curtos e objetivos.
+            </BdsBanner>
+          </BdsGrid>
+        </BdsPaper>
+      </BdsGrid>
+    </BdsThemeProvider>
+  );
+};
+
+export default MinhaTela;
+```
+<Canvas of={ThemeProviderStories.Properties}></Canvas>
+
+Com esses passos, você importou e utilizou o componente de tema em um arquivo de tela externo, e utilizou os demais componentes da biblioteca "blip-ds" em outras telas, englobados pelo componente de tema. Isso garante consistência visual e facilita a manutenção do código em todo o projeto.
