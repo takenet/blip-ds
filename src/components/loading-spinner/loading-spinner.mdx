@@ -1,22 +1,24 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as LoadingSpinnerStories from './loading-spinner.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
-# LoadingSpinner
+# Loading Spinner
 
+<br></br>
 
-## Overview
+## Estrutura
 
-LoadingSpinner allows users to select a date or a range of dates.
+O componente de loading ajuda a notificar o usuário que o carregamento está em andamento.
 
 <Canvas of={LoadingSpinnerStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by LoadingSpinner.
+As seguintes propriedades são compartilhadas pelo Spinner de Carregamento.
 
 <Controls />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={LoadingSpinnerStories.FrameworkReact} />

@@ -1,28 +1,117 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as InputChipsStories from './input-chips.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # InputChips
 
+<br></br>
 
-## Overview
+## Estrutura
 
-InputChips allows users to select a date or a range of dates.
+O componente que permite o usuário inserir uma informação de texto que se transforma em um chip.
 
 <Canvas of={InputChipsStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by InputChips.
+As seguintes propriedades são compartilhadas pelo **InputChips**.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de Eventos do **InputChips**.
+<table>
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsBlur</td>
+      <td>Evento emitido quando o input estiver em blur.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsChange</td>
+      <td>Evento emitido para quando o valor mudar.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsChangeChips</td>
+      <td>Evento emitido para quando mudar o chip selecionado.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsSubmit</td>
+      <td>Evento emitido quando o botão Enter for pressionado.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
 
 <Source of={InputChipsStories.Events} />
 
-## Build on React
+
+## Métodos
+
+Alguns exemplos de Métodos do **InputChips**.
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+      <th>Retorna</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>add(value: string) =&gt; Promise&lt;void&gt;</td>
+      <td>Adiciona um valor ao componente.</td>
+      <td>Retorna</td>
+      <td>Promise&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>clear() =&gt; Promise&lt;void&gt;</td>
+      <td>Limpa todos os chips.</td>
+      <td>Retorna</td>
+      <td>Promise&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>get() =&gt; Promise&lt;string[]&gt;</td>
+      <td>Retorna os chips.</td>
+      <td>Retorna</td>
+      <td>Promise&lt;string[]&gt;</td>
+    </tr>
+    <tr>
+      <td>isValid() =&gt; Promise&lt;boolean&gt;</td>
+      <td>Retorna a validação dos chips no input.</td>
+      <td>Retorna</td>
+      <td>Promise&lt;boolean&gt;</td>
+    </tr>
+    <tr>
+      <td>removeFocus() =&gt; Promise&lt;void&gt;</td>
+      <td>Remove o foco do componente.</td>
+      <td>Retorna</td>
+      <td>Promise&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>setFocus() =&gt; Promise&lt;void&gt;</td>
+      <td>Define o foco no componente.</td>
+      <td>Retorna</td>
+      <td>Promise&lt;void&gt;</td>
+    </tr>
+  </tbody>
+</table>
+<Source of={InputChipsStories.Methods} />
+
+<br></br>
+
+## Usando em React
 
 <Source of={InputChipsStories.FrameworkReact} />

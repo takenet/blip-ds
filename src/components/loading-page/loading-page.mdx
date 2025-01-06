@@ -1,18 +1,20 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as loadingPageStories from './loading-page.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
-# loadingPage
+# Loading Page
 
+<br></br>
 
-## Overview
+## Estrutura
 
-loadingPage allows users to select a date or a range of dates.
+O componente de loading ajuda a notificar o usuário que o carregamento está em andamento.
 
 <Canvas of={loadingPageStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={loadingPageStories.FrameworkReact} />

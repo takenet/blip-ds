@@ -2,21 +2,52 @@ import { Story, ArgsTable, Canvas } from '@storybook/blocks';
 import * as PaginationStories from './pagination.stories';
 import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
-# Pagination
+# Paginação
 
+<br></br>
 
-## Overview
+## Visão geral
 
-Pagination allows users to select a date or a range of dates.
+A componente de paginação permite que os usuários naveguem entre conjuntos de dados divididos em páginas.
 
 <Canvas of={PaginationStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Pagination.
+<br></br>
+
+As seguintes propriedades são compartilhadas pela componente de paginação:
 
 <Controls />
 
-## Build on React
+<br></br>
+
+## Eventos
+Os seguintes eventos exportados do componente Pagination.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsPaginationChange</td>
+      <td>Emite o evento quando a seleção muda seu valor.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+    <tr>
+      <td>bdsItemsPerPageChange</td>
+      <td>Emite o evento quando a quantidade de páginas muda seu valor.</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br></br>
+## Usando no React
 
 <Source of={PaginationStories.FrameworkReact} />

@@ -1,28 +1,49 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Canvas, Meta, Controls, Source } from '@storybook/blocks';
 import * as InputEditableStories from './input-editable.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # InputEditable
 
+<br></br>
 
-## Overview
+## Estrutura
 
-InputEditable allows users to select a date or a range of dates.
+Os inputs são usados para que os usuários insiram e editem textos.
 
 <Canvas of={InputEditableStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by InputEditable.
+As seguintes propriedades são compartilhadas pelo InputEditable.
 
 <Controls />
 
-## Events
+<br></br>
 
-Some examples of Autocomplete Events.
+## Eventos
+
+Alguns exemplos de Eventos do InputEditable.
+<table border="1">
+  <thead>
+    <tr>
+      <th>Propriedade</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bdsInputEditableSave</td>
+      <td>Emite quando o texto do input for confirmado.</td>
+      <td>CustomEvent&lt;InputEditableDetail&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={InputEditableStories.Events} />
 
-## Build on React
+<br></br>
+
+## Usando em React
 
 <Source of={InputEditableStories.FrameworkReact} />

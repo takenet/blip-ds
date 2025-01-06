@@ -1,11 +1,13 @@
 import React from 'react';
+import DocumentationTemplate from './typo.mdx';
 import { BdsTypo } from '../../../blip-ds-react/dist/components';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Typo',
   parameters: {
-    notes: { markdown: readme },
+    docs: {
+      page: DocumentationTemplate,
+    },
   },
 };
 

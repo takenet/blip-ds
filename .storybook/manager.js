@@ -3,14 +3,12 @@ import YourTheme from './YourTheme';
 
 addons.setConfig({
   theme: YourTheme,
-  isFullscreen: false,
-  showNav: false,
-  showPanel: true,
   panelPosition: 'bottom',
+  bottomPanelHeight: 600,
   enableShortcuts: true,
-  showToolbar: false,
-  selectedPanel: 'panel',
-  initialActive: 'canvas',
+  showToolbar: true,
+  selectedPanel: 'undefined',
+  initialActive: 'sidebar',
   sidebar: {
     showRoots: true,
     collapsedRoots: ['other'],

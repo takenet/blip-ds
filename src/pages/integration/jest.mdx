@@ -1,0 +1,60 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+<Meta title="Integrações/Jest" />
+
+
+# Jest
+
+<br></br>
+O Jest é um framework de teste de JavaScript amplamente utilizado, desenvolvido pelo Facebook. Ele é projetado para ser rápido, fácil de configurar e fornece uma experiência de teste completa para aplicativos JavaScript, seja no ambiente do navegador ou em ambientes Node.js.
+
+Algumas características-chave do Jest incluem:
+
+<ol>
+  <li><strong>Sintaxe Simples:</strong> O Jest fornece uma sintaxe de teste simples e intuitiva, facilitando a escrita e leitura dos testes.</li>
+  <li><strong>Test Runner Integrado:</strong> Ele possui um test runner integrado que executa os testes de forma eficiente, fornecendo feedback instantâneo sobre o sucesso ou falha dos testes.</li>
+  <li><strong>Asserções Integradas:</strong> O Jest inclui uma biblioteca de asserções integrada que simplifica a verificação do comportamento do código em relação ao esperado.</li>
+  <li><strong>Mocking Automático:</strong> Facilita o uso de mocks (simulações) para isolar partes específicas do código durante os testes, o que ajuda a garantir a consistência e confiabilidade dos testes.</li>
+  <li><strong>Configuração Automática:</strong> O Jest é configurado automaticamente para muitos casos de uso comuns, reduzindo a necessidade de configuração manual.</li>
+  <li><strong>Suporte para Snapshots:</strong> Ele oferece suporte para snapshots, que são capturas do estado de um componente ou saída de uma função em um determinado momento. Isso ajuda a detectar regressões no código ao longo do tempo.</li>
+  <li><strong>Extensibilidade:</strong> É possível estender o Jest com plugins e personalizações para atender às necessidades específicas de um projeto.</li>
+</ol>
+
+No geral, o Jest é uma ferramenta poderosa e amigável para testar código JavaScript, e é amplamente adotado pela comunidade de desenvolvedores devido à sua facilidade de uso e recursos abrangentes.
+
+Pensando em todos o funcionamento do Jest pela comunidade montamos uma Doc para servir de auxilio para ultilizar os Eventos dos componentes do nosso UAI Design System para auxiliar na aplicação dos teste em Jest.
+
+<br></br>
+
+Sendo assim criamos uma função chamada CustomEventMock para auxiliar na aplicação dos eventos quando forem necessários, segue abaixo o exemplo:
+
+```jsx
+export const CustomEventMock = (type: string, expect: any) => {
+  const customEvent = new CustomEvent(type);
+
+  Object.defineProperty(customEvent, 'target', {
+    writable: true,
+    value: { ...customEvent.target, value: expect }
+  });
+
+  return customEvent;
+}
+```
+Essa função você pode inserir ela dentro do um arquivo util, no nosso exemplo colocamos em um arquivo com o nome scripts mas você pode inserir em qualquer arquivo javasccript para exportação. Abaixo segue um exemplo de como ficaria aplicada essa função para monitorar um evento de change como no componente BdsInput:
+
+```jsx
+import { render, fireEvent, screen } from '@testing-library/react';
+import { CustomEventMock } from '../../../utils/scripts';
+import Input from '.';
+
+describe('Input', () => {
+  it('should render correctly', async () => {
+    render(<Input />);
+    const emptyValue = '';
+    const input = screen.getByTestId<HTMLBdsInputElement>('5498-input');
+    const ev = CustomEventMock('bdsInput', emptyValue);
+    fireEvent(input, ev);      
+  });
+});
+```

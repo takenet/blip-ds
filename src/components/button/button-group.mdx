@@ -1,33 +1,67 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { 
+  Story, 
+  ArgsTable, 
+  Canvas, 
+  Meta, 
+  Title, 
+  Subtitle, 
+  Description, 
+  Primary, 
+  Controls, 
+  Stories, 
+  Source 
+} from '@storybook/blocks';
 import * as ButtonGroupStories from './button-group.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source } from '@storybook/blocks';
 
 # Button Group
 
-[Component Detail](https://design.blip.ai/document/13#/button/visao-geral-button)
+[Detalhes do Componente](https://design.blip.ai/document/13#/button/visao-geral-button)
 &nbsp;|&nbsp;
-[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/resumo-button)
+[Design do Componente](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/resumo-button)
 &nbsp;|&nbsp;
-[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/acessibilidade-button)
+[Acessibilidade](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/button/acessibilidade-button)
 
-## Overview
+<br></br>
+## Estrutura
 
-Button Group allow users to take actions, and make choices, with a single tap.
+O Button Group permite que os usuários realizem ações e façam escolhas com um único toque.
 
-<Canvas of={ButtonGroupStories.Properties}></Canvas>
+<Canvas of={ButtonGroupStories.Properties} />
 
 <Meta isTemplate />
 
-The following properties that are shared by Button Group.
+<br></br>
+## Propriedades
+
+As seguintes propriedades são compartilhadas pelo Button Group.
 
 <Controls />
 
-## Events
+<br></br>
+## Eventos
 
-Some examples of Button Group Events.
+Alguns exemplos de eventos do Button Group.
+<table>
+  <thead>
+    <tr>
+      <th>Evento</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>buttonSelected</td>
+      <td>Evento emitido quando é executado um click no componente</td>
+      <td>CustomEvent&lt;any&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <Source of={ButtonGroupStories.Events} />
 
-## Build on React
+<br></br>
+## Usando em React
 
 <Source of={ButtonGroupStories.FrameworkReact} />

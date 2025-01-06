@@ -16,6 +16,6 @@ module.exports = {
   },
   docs: {
     autodocs: true,
-    defaultName: 'Overview'
+    defaultName: 'Visão Geral'
   },
 };

@@ -1,0 +1,83 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+import image from '../../assets/doc/config-styles-1.jpg';
+
+<Meta title="Vamos Começar/Configuração de Estilo" />
+
+
+# Configurar estilo no projeto
+
+Os tokens de cores foram definidas no Design System atráves de variáveis utilizando sass.
+
+Para disponibilizar essas variáveis é necessário importar pelo destino indicado a seguir.
+
+<br></br>
+## Estilizar um componente via sass
+
+### Criar um scss para a página
+Verifique se o projeto possuí a biblioteca sass instalada. Caso não possua, instale rodando o seguinte comando:
+
+```
+npm install sass
+```
+
+Na pasta onde se encontra o arquivo html do que será alterado, adicionar um arquivo scss, caso não exista.
+
+<img src={image} alt="Imagem de exemplo" />
+
+### Importar as variáveis de cores no scss
+No arquivo scss, realizar a importação das variáveis:
+```
+@import "~blip-ds/dist/collection/styles/_colors.scss"
+```
+
+### Referenciar as classes dos elementos no scss
+Atraves da propiedade class ou className (em projetos React), referenciar com um valor que será usado para estilizar o elemento.
+
+```html
+<bds-grid>
+  <bds-typo class="text1">Brand</bds-typo>
+  <bds-typo class="text2">Secondary</bds-typo>
+  <bds-typo class="text3">Success</bds-typo>
+</bds-grid>
+```
+### Aplicar a variável na propriedade
+No arquivo SCSS, com a importação das variáveis realizadas, utilizar a propriedade de cor desejada e aplicar a variável referente a cor definida. 
+
+```sass
+@import "~blip-ds/dist/collection/styles/_colors.scss"
+
+.text1 {
+  color: $color-brand;
+}
+.text2 {
+  color: $color-primary;
+}
+.text3 {
+  color: $color-success;
+}
+```
+## Customizando cores do Design System
+É possível customizar remos substituir localmente as cores. Aplicando em um css global, trocamos os valores das variáveis ou importando um novo arquivo ao css.
+
+### Arquivo global css/scss no projeto
+**Cores**
+
+```sass
+:root {
+    --color-brand: indique a cor escolhida;
+    --color-primary: indique a cor escolhida;
+    --color-secondary: indique a cor escolhida;
+}
+```
+**Fontes**
+Indique a fonte no css global do pack para substituir a fonte do Design System (Nunito Sans).
+
+Atenção! É preciso tomar cuidado com a aplicação de classes globais como "*", essas definições conseguem aplicar estilos nas tags dos componentes. Não é recomendado a aplicação do exemplo abaixo:
+```css
+* {
+  padding: 0;
+  margin: 0;
+}
+```

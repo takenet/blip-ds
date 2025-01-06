@@ -124,6 +124,61 @@ export const Events = () => {
   return <bds-input-chips id="input-chips" label="input chips" chips='["chip1", "chip2"]'></bds-input-chips>;
 };
 
+export const Methods = () => {
+  const btIsValid = async (id) => {
+    const inputChips = document.getElementById(id);
+    const valid = await inputChips.isValid();
+    console.log('Is valid:', valid);
+  };
+
+  const btGet = async (id) => {
+    const inputChips = document.getElementById(id);
+    const chips = await inputChips.get();
+    console.log('Current chips:', chips);
+  };
+
+  const btClear = async (id) => {
+    const inputChips = document.getElementById(id);
+    await inputChips.clear();
+    console.log('Chips cleared');
+  };
+
+  const btAdd = async (id, value) => {
+    const inputChips = document.getElementById(id);
+    await inputChips.add(value);
+    console.log(`Added chip: ${value}`);
+  };
+
+  const btSetFocus = async (id) => {
+    const inputChips = document.getElementById(id);
+    await inputChips.setFocus();
+    console.log('Input chips focused');
+  };
+
+  const btRemoveFocus = async (id) => {
+    const inputChips = document.getElementById(id);
+    await inputChips.removeFocus();
+    console.log('Input chips focus removed');
+  };
+
+  return (
+    <bds-grid direction="column" gap="2">
+      <bds-grid>
+        <bds-input-chips id="input-chips-example"></bds-input-chips>
+      </bds-grid>
+      <bds-grid direction="row" gap="2">
+        <bds-button onClick={() => btIsValid('input-chips-example')}>Is Valid</bds-button>
+      <bds-button onClick={() => btGet('input-chips-example')}>Get Chips</bds-button>
+      <bds-button onClick={() => btClear('input-chips-example')}>Clear Chips</bds-button>
+      <bds-button onClick={() => btAdd('input-chips-example', 'New Chip')}>Add Chip</bds-button>
+      <bds-button onClick={() => btSetFocus('input-chips-example')}>Set Focus</bds-button>
+      <bds-button onClick={() => btRemoveFocus('input-chips-example')}>Remove Focus</bds-button>
+      </bds-grid>
+      
+    </bds-grid>
+  );
+};
+
 export const FrameworkReact = () => {
   return <BdsInputChips id="input-chips" label="input chips" chips='["chip1", "chip2"]'></BdsInputChips>;
 };

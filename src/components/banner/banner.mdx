@@ -4,30 +4,50 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Banner
 
-[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/banner/visao-geral-banner)
+[Design do Componente](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/banner/resumo-banner)
 &nbsp;|&nbsp;
-[Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/banner/resumo-banner)
-&nbsp;|&nbsp;
-[Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/banner/acessibilidade-banner)
+[Acessibilidade](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/banner/acessibilidade-banner)
 
-## Overview
+<br></br>
+## Estrutura
 
-Notification that demonstrates a problem or warning.
+Notificação que demonstra um problema ou aviso.
 
-<Canvas of={BannerStories.Properties}></Canvas>
+<Canvas of={BannerStories.Properties} />
 
 <Meta isTemplate />
 
-The following properties that are shared by Banner.
+<br></br>
+## Propriedades
+
+As seguintes propriedades são compartilhadas pelo **Banner**.
 
 <Controls />
 
-## Events
+<br></br>
+## Eventos
 
-Some examples of Banner Events.
+Alguns exemplos de eventos do **Banner**.
+<table>
+    <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>bdsBannerClose</code></td>
+            <td>Emite um evento quando o nanner é fechado.</td>
+            <td><code>CustomEvent&lt;void&gt;</code></td>
+        </tr>
+    </tbody>
+</table>
 
 <Source of={BannerStories.Events} />
 
-## Build on React
+<br></br>
+## Usando em React
 
 <Source of={BannerStories.FrameworkReact} />

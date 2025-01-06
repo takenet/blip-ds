@@ -4,30 +4,80 @@ import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source 
 
 # Autocomplete
 
-[Component Detail](https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/autocomplete/visao-geral-autocomplete)
-&nbsp;|&nbsp;
 [Component Design](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/autocomplete/resumo-autocomplete)
 &nbsp;|&nbsp;
 [Accessibility](https://design.blip.ai/d/UbKsV1JhXTK4/design-1#/autocomplete/acessibilidade-autocomplete)
 
-## Overview
+<br></br>
+## Estrutura
 
-It's normal text input enhanced by a panel of suggested options.
+É uma entrada de texto normal aprimorada por um painel de opções sugeridas.
 
 <Canvas of={AutocompleteStories.Properties}></Canvas>
 
 <Meta isTemplate />
 
-The following properties that are shared by Autocomplete.
+<br></br>
+## Propriedades
+
+As seguintes propriedades que são compartilhadas por **Autocomplete**.
 
 <Controls />
 
-## Events
+<br></br>
+## Eventos
 
-Some examples of Autocomplete Events.
+Os seguintes eventos exportados do componente **Autocomplete**.
+<table>
+    <thead>
+        <tr>
+            <th>Evento</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>bdsBlur</td>
+            <td>Emite um evento quando o select perde foco.</td>
+            <td>CustomEvent&lt;void&gt;</td>
+        </tr>
+        <tr>
+            <td>bdsCancel</td>
+            <td>Emite um evento quando a seleção é cancelada.</td>
+            <td>CustomEvent&lt;void&gt;</td>
+        </tr>
+        <tr>
+            <td>bdsChange</td>
+            <td>Emite um evento quando o valor mudar.</td>
+            <td>CustomEvent&lt;AutocompleteChangeEventDetail&gt;</td>
+        </tr>
+        <tr>
+            <td>bdsFocus</td>
+            <td>Emite um evento quando o select perde foco.</td>
+            <td>CustomEvent&lt;void&gt;</td>
+        </tr>
+        <tr>
+            <td>bdsInput</td>
+            <td>Emite um evento quando o valor do input muda. Retorna cada entrada de texto.</td>
+            <td>CustomEvent&lt;KeyboardEvent&gt;</td>
+        </tr>
+        <tr>
+            <td>bdsSelectedChange</td>
+            <td>Emite um evento quando o valor selecionado é alterado.</td>
+            <td>CustomEvent&lt;AutocompleteSelectedChangeEventDetail&gt;</td>
+        </tr>
+        <tr>
+            <td>bdsMultiselectedChange</td>
+            <td>Emite um evento quando altera os valores dos itens selecionados no multiselect.</td>
+            <td>CustomEvent&lt;void&gt;</td>
+        </tr>
+    </tbody>
+</table>
 
 <Source of={AutocompleteStories.Events} />
 
-## Build on React
+<br></br>
+## Usando em React
 
 <Source of={AutocompleteStories.FrameworkReact} />

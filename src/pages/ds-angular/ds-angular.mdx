@@ -1,0 +1,128 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+<Meta title="Vamos Começar/DS no Angular/Aplicação" />
+
+
+# AngularJS 1.5.x
+
+Versões anteriores a 1.8.3 do AngularJS não têm suporte para Framerwork nativo para usar eventos personalizados, apesar da versão mais recente do AngularJs estar disponível com suporte nativo com a diretiva ngOn.
+
+
+
+Para resolver este problema, criamos a diretiva custom-events! Como funciona?
+
+
+
+A diretiva espera uma matriz do objeto `[{event: string, cb: function}]` para adicionar o evento ao elemento, no qual a diretiva está sendo usada.
+
+<br></br>
+
+## Exemplo
+
+Arquivo: app.js (ou você aponta o arquivo)
+
+```jsx
+import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+
+// applying blip-ds custom elements
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+```
+Usando o componente:
+
+```jsx
+<bds-input
+  value="{{ $ctrl.typedTenantName }}"
+  custom-events="[{ event:'bdsChange', cb: $ctrl.onInputChangeCustom }]">
+</bds-input>
+```
+## Eventos
+Para resolver o problema com eventos, criamos a diretiva custom-events! Como funciona?
+
+A diretiva espera uma matriz do objeto `[{ event: string, cb: function }]` para adicionar o evento ao elemento, no qual a diretiva está sendo usada, como no exemplo acima.
+
+<br></br>
+# Angular ^2.x
+Arquivo: main.ts
+ ```jsx
+ import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+// Note: loader import location set using "esmLoaderPath" within the output target confg
+import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+applyPolyfills().then(() => {
+  defineCustomElements(window)
+})
+```
+Arquivo: app.module.ts
+
+```jsx
+import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule { }
+```
+## Exemplos
+Arquivo: app.component.html
+
+```jsx
+<div>
+  <div class="container-count">
+    <bds-typo variant="fs-16">{{ count }}</bds-typo>
+    <bds-button (click)="addCount()">+</bds-button>
+    <bds-button (click)="subCount()">-</bds-button>
+    <bds-input value={{count}} (bdsChange)="onChange($event)"></bds-input>
+  </div>
+</div>
+```
+Arquivo: app.component.ts
+
+```jsx
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  count = 0;
+
+  addCount() {
+    this.count++;
+  }
+
+  subCount() {
+    this.count--;
+  }
+
+  onChange(event) {
+    this.count = event.target.value;
+  }
+}
+```

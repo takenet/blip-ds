@@ -1,0 +1,149 @@
+import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+
+<Meta title="Vamos Começar/DS no React/Aplicação" />
+
+
+# React JS
+
+Esse guia explica como instalar e configurar seu projeto front-end para começar a usar o blip-ds. Ele inclui informações sobre pré-requisitos e instalações no frameworks react.
+
+<br></br>
+## Configurando o arquivo: index.js
+
+Recomendamos usar npm para instalar a biblioteca de componentes do blip-ds.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.scss';
+import App from './App';
+
+import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+
+// Renderizando o componente App no root
+ReactDOM.render(<App />, document.getElementById('root'));
+
+// Aplicando os polyfills e definindo os elementos personalizados do Blip DS
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+``` 
+
+Para utilizar o componente temos que realizar a importação pelo caminho ‘blip-ds/dist/blip-ds-react/components’, são wrappers gerados pela lib stencil/react-output-target, dessa maneira não será mais necessário a criação de wrappers na aplicação dos componentes em React.
+
+<br></br>
+
+## Arquivo: App.js
+
+```jsx
+import React from 'react';
+import './App.scss';
+import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+ 
+const App = () => {
+  const options = '[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
+  return (
+    <>
+    <BdsSelect options={options}> </BdsSelect>
+    </>
+  );
+}
+export default App;
+``` 
+Para aplicar Eventos no componente é necessário inserir sufixo “on” antes de aplicar o evento selecionado como no exemplo abaixo:
+
+```jsx
+import React from 'react';
+import './App.scss';
+import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+ 
+const App = () => {
+  const handle = (event) => {
+    console.log("evento", event)
+  }
+  const options = '[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
+  return (
+    <>
+    <BdsSelect options={options} onBdsChange={(event) => handle(event)}> </BdsSelect>
+    </>
+  );
+}
+export default App;
+```
+
+# React TS
+Para configurar o React utilizando Typescript devemos inserir algumas configurações no arquivo index.tsx, configurando de forma correta as atribuições de tagueamento para conseguir dar suporte ao stencil.js.
+
+## Configure o arquivo: index.tsx
+```jsx
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { defineCustomElements, JSX as LocalJSX } from 'blip-ds/loader';
+type StencilToReactElements<T = LocalJSX.IntrinsicElements> = {
+  [P in keyof T]?: T[P] &
+    Omit<DetailedHTMLProps<HTMLAttributes<T[P]>, T[P]>, 'className'> & {
+      class?: string;
+    };
+};
+type StencilToReactRef<T = HTMLElementTagNameMap> = {
+  [P in keyof T]: {
+    ref?: DetailedHTMLProps<HTMLAttributes<T[P]>, T[P]>['ref'];
+  };
+};
+type StencilToReact<T = LocalJSX.IntrinsicElements, U = HTMLElementTagNameMap> = StencilToReactElements<T> &
+  StencilToReactRef<U>;
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  export namespace JSX {
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface IntrinsicElements extends StencilToReact {}
+  }
+}
+defineCustomElements(window);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+## Utilizando componentes no arquivo: App.tsx
+```jsx
+import React from 'react';
+import './App.css';
+import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+ 
+const App = () => {
+  const options = '[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
+  return (
+    <>
+    <BdsSelect options={options}> </BdsSelect>
+    </>
+  );
+}
+export default App;
+```
+
+## Eventos
+Para utilizar os eventos no React.ts também temos problemas para trabalhar com algumas importações de web componentes. Segue abaixo um exemplo prático para aplicar os eventos:
+```jsx
+import React from 'react';
+import './App.scss';
+import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+ 
+const App = () => {
+  const handle = (event: CustomEvent) => {
+    console.log("evento", event);
+  };
+  const options = '[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
+  return (
+    <>
+      <BdsSelect options={options} onBdsChange={(event) => handle(event)}> </BdsSelect>
+    </>
+  );
+}
+export default App;
+```
