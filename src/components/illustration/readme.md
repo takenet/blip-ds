@@ -20,11 +20,13 @@
 ### Used by
 
  - [bds-image](../image)
+ - [bds-test-component](../test-component)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-image --> bds-illustration
+  bds-test-component --> bds-illustration
   style bds-illustration fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

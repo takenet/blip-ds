@@ -16,14 +16,12 @@
 
 ### Used by
 
- - [bds-carousel](../carousel)
  - [bds-carousel-item](../carousel)
  - [bds-test-component](../test-component)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-carousel --> bds-theme-provider
   bds-carousel-item --> bds-theme-provider
   bds-test-component --> bds-theme-provider
   style bds-theme-provider fill:#f9f,stroke:#333,stroke-width:4px

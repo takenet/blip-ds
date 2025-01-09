@@ -17,6 +17,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-test-component](../test-component)
+
 ### Depends on
 
 - [bds-theme-provider](../theme-provider)
@@ -30,6 +34,7 @@ graph TD;
   bds-image --> bds-skeleton
   bds-image --> bds-illustration
   bds-skeleton --> bds-grid
+  bds-test-component --> bds-carousel-item
   style bds-carousel-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -31,7 +31,15 @@ $button-border-radius: 8px;
   background-color: inherit;
 }
 
-@mixin button-variant($bg-color, $border-color, $text-color, $hover: null, $active: null, $dark: null, $disabled-opacity: 50%) {
+@mixin button-variant(
+  $bg-color,
+  $border-color,
+  $text-color,
+  $hover: null,
+  $active: null,
+  $dark: null,
+  $disabled-opacity: 50%
+) {
   background-color: $bg-color;
   border-color: $border-color;
 
@@ -52,22 +60,17 @@ $button-border-radius: 8px;
 
     @if $dark {
       filter: brightness(0.88);
-    }
-
-    @else {
+    } @else {
       opacity: 0.08;
     }
   }
 
   @if $active {
-
     &:active::before,
     &--active::before {
       @if $dark {
         filter: brightness(0.76);
-      }
-
-      @else {
+      } @else {
         opacity: 0.24;
       }
     }
@@ -159,7 +162,8 @@ $button-border-radius: 8px;
   }
 
   &__only-icon--short {
-    padding: 8px;
+    padding: 0px;
+    width: 32px;
     gap: 0;
   }
 
@@ -178,15 +182,27 @@ $button-border-radius: 8px;
   }
 
   &__color {
-
     &--primary.button__variant--solid,
     &--primary.button__variant--primary {
-      @include button-variant($color-surface-primary, transparent, $color-content-bright, $color-surface-primary, $color-surface-primary, true);
+      @include button-variant(
+        $color-surface-primary,
+        transparent,
+        $color-content-bright,
+        $color-surface-primary,
+        $color-surface-primary,
+        true
+      );
     }
 
     &--primary.button__variant--outline,
     &--primary.button__variant--tertiary {
-      @include button-variant(transparent, $color-primary, $color-primary, $color-surface-primary, $color-surface-primary);
+      @include button-variant(
+        transparent,
+        $color-primary,
+        $color-primary,
+        $color-surface-primary,
+        $color-surface-primary
+      );
     }
 
     &--primary.button__variant--text,
@@ -196,29 +212,61 @@ $button-border-radius: 8px;
 
     &--content.button__variant--solid,
     &--content.button__variant--primary {
-      @include button-variant($color-content-default, transparent, $color-surface-0, $color-content-default, $color-content-default, true);
+      @include button-variant(
+        $color-content-default,
+        transparent,
+        $color-surface-0,
+        $color-content-default,
+        $color-content-default,
+        true
+      );
     }
 
     &--content.button__variant--outline,
     &--content.button__variant--tertiary {
-      @include button-variant(transparent, $color-content-default, $color-content-default, $color-content-default, $color-content-default);
+      @include button-variant(
+        transparent,
+        $color-content-default,
+        $color-content-default,
+        $color-content-default,
+        $color-content-default
+      );
     }
 
     &--content.button__variant--text,
     &--content.button__variant--secondary {
-      @include button-variant(transparent, transparent, $color-content-default, $color-content-default, $color-content-default);
+      @include button-variant(
+        transparent,
+        transparent,
+        $color-content-default,
+        $color-content-default,
+        $color-content-default
+      );
     }
 
     &--negative.button__variant--solid,
     &--negative.button__variant--primary,
     &--negative.button__variant--delete {
-      @include button-variant($color-surface-negative, transparent, $color-content-bright, $color-surface-negative, $color-surface-negative, true);
+      @include button-variant(
+        $color-surface-negative,
+        transparent,
+        $color-content-bright,
+        $color-surface-negative,
+        $color-surface-negative,
+        true
+      );
     }
 
     &--negative.button__variant--outline,
     &--negative.button__variant--tertiary,
     &--negative.button__variant--delete {
-      @include button-variant(transparent, $color-negative, $color-negative, $color-surface-negative, $color-surface-negative);
+      @include button-variant(
+        transparent,
+        $color-negative,
+        $color-negative,
+        $color-surface-negative,
+        $color-surface-negative
+      );
     }
 
     &--negative.button__variant--text,
@@ -229,12 +277,25 @@ $button-border-radius: 8px;
 
     &--positive.button__variant--solid,
     &--positive.button__variant--primary {
-      @include button-variant($color-surface-positive, transparent, $color-content-bright, $color-surface-positive, $color-surface-positive, true);
+      @include button-variant(
+        $color-surface-positive,
+        transparent,
+        $color-content-bright,
+        $color-surface-positive,
+        $color-surface-positive,
+        true
+      );
     }
 
     &--positive.button__variant--outline,
     &--positive.button__variant--tertiary {
-      @include button-variant(transparent, $color-positive, $color-positive, $color-surface-positive, $color-surface-positive);
+      @include button-variant(
+        transparent,
+        $color-positive,
+        $color-positive,
+        $color-surface-positive,
+        $color-surface-positive
+      );
     }
 
     &--positive.button__variant--text,
@@ -244,11 +305,23 @@ $button-border-radius: 8px;
   }
 
   &.button__variant--secondary {
-    @include button-variant(transparent, transparent, $color-content-default, $color-content-default, $color-content-default);
+    @include button-variant(
+      transparent,
+      transparent,
+      $color-content-default,
+      $color-content-default,
+      $color-content-default
+    );
   }
 
   &.button__variant--tertiary {
-    @include button-variant(transparent, $color-content-default, $color-content-default, $color-content-default, $color-content-default);
+    @include button-variant(
+      transparent,
+      $color-content-default,
+      $color-content-default,
+      $color-content-default,
+      $color-content-default
+    );
   }
 
   &__group {
