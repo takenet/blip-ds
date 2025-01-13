@@ -9,6 +9,7 @@ import { gapChanged, getHighestItem, getItems } from '../../utils/position-eleme
 })
 export class BdsCarousel {
   private itemsElement?: HTMLCollectionOf<HTMLBdsCarouselItemElement> = null;
+  private bulletElement?: HTMLElement = null;
   private frame?: HTMLElement;
   private themeProviderArrows?: any;
   private frameRepeater?: HTMLElement;
@@ -118,8 +119,12 @@ export class BdsCarousel {
       }
       if (this.autoHeight) this.updateHeight(Array.from(this.itemsElement));
     }
-    if (this.slidePerPage <= 1 && this.arrows == 'inside') {
-      this.themeProviderArrows.theme = this.itemsElement[this.itemActivated - 1].theme;
+    if (this.arrows == 'inside') {
+      const firstItemActived = (this.itemActivated - 1) * (this.itemsElement.length / this.internalItens.length) + 1;
+      this.themeProviderArrows.theme =
+        this.slidePerPage <= 1
+          ? this.itemsElement[this.itemActivated - 1].theme
+          : this.itemsElement[Math.round(firstItemActived)].theme;
     }
   }
 
@@ -284,6 +289,10 @@ export class BdsCarousel {
     this.frameRepeater = el;
   };
 
+  private refBulletElement = (el: HTMLElement): void => {
+    this.bulletElement = el;
+  };
+
   private onMouseOver = () => {
     if (this.autoplayHoverPause) {
       this.pauseAutoplay();
@@ -344,8 +353,21 @@ export class BdsCarousel {
     }
   };
 
+  private setKeydownNavigation = (ev) => {
+    console.log(ev.key);
+    if (ev.key == 'Tab') {
+      this.bulletElement.focus();
+    }
+    if (ev.key == 'ArrowRight') {
+      this.nextSlide();
+    }
+    if (ev.key == 'ArrowLeft') {
+      this.prevSlide();
+    }
+  };
+
   render() {
-    const ThemeOrDivArrows = this.slidePerPage <= 1 && this.arrows == 'inside' ? 'bds-theme-provider' : 'div';
+    const ThemeOrDivArrows = this.arrows == 'inside' ? 'bds-theme-provider' : 'div';
     const justifybulletsPosition =
       this.bulletsPosition == 'center'
         ? 'center'
@@ -355,7 +377,9 @@ export class BdsCarousel {
     return (
       <div class={{ carousel: true }}>
         <div
-          class={{ carousel_slide: true, carousel_slide_fullwidth: this.slidePerPage <= 1 && this.arrows != 'outside' }}
+          class={{ carousel_slide: true, carousel_slide_fullwidth: this.arrows != 'outside' }}
+          tabindex="0"
+          onKeyDown={(ev) => this.setKeydownNavigation(ev)}
         >
           <div
             ref={(el) => this.refFrame(el)}
@@ -366,14 +390,8 @@ export class BdsCarousel {
             onMouseEnter={() => this.onMouseEnter()}
             onMouseUp={() => this.onMouseUp()}
             onMouseMove={(ev) => this.onMouseMove(ev)}
-            tabindex="0"
           >
-            <div
-              ref={(el) => this.refFrameRepeater(el)}
-              class={{ carousel_slide_frame_repeater: true }}
-              tabindex="0"
-              role="tabpanel"
-            >
+            <div ref={(el) => this.refFrameRepeater(el)} class={{ carousel_slide_frame_repeater: true }}>
               <slot />
             </div>
           </div>
@@ -385,7 +403,7 @@ export class BdsCarousel {
               ref={(el) => this.refThemeProviderArrows(el)}
               class={{
                 carousel_buttons: true,
-                carousel_buttons_fullwidth: this.slidePerPage <= 1 && this.arrows == 'inside',
+                carousel_buttons_fullwidth: this.arrows != 'outside',
               }}
             >
               <bds-button
@@ -409,15 +427,15 @@ export class BdsCarousel {
           <div
             class={{
               carousel_bullets: true,
-              carousel_bullets_inside: this.slidePerPage <= 1 && this.bullets == 'inside',
+              carousel_bullets_inside: this.bullets == 'inside',
             }}
           >
-            {this.loading ? (
+            {this.loading && this.bullets != 'inside' ? (
               <bds-grid
                 xxs="12"
                 gap="1"
                 justify-content={justifybulletsPosition}
-                padding={this.slidePerPage <= 1 && this.arrows == 'outside' ? 'x-7' : 'none'}
+                padding={this.arrows === 'outside' ? 'x-7' : 'none'}
               >
                 <bds-skeleton height="16px" width="16px" shape="circle" />
                 <bds-skeleton height="16px" width="16px" shape="circle" />
@@ -428,17 +446,18 @@ export class BdsCarousel {
                 <bds-grid
                   xxs="12"
                   justify-content={justifybulletsPosition}
-                  padding={this.slidePerPage <= 1 && this.arrows == 'outside' ? 'x-7' : 'none'}
+                  padding={this.arrows === 'outside' ? 'x-7' : 'none'}
                 >
                   <div
                     class={{
                       carousel_bullets_card: true,
-                      carousel_bullets_card_inside: this.slidePerPage <= 1 && this.bullets == 'inside',
+                      carousel_bullets_card_inside: this.bullets == 'inside',
                     }}
                   >
                     {this.internalItens.map((item, index) => (
                       <div
                         key={index}
+                        ref={(el) => this.refBulletElement(el)}
                         class={{
                           carousel_bullets_item: true,
                           carousel_bullets_item_active: item.id == this.itemActivated,

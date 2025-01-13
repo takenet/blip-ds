@@ -6,7 +6,6 @@ import {
   BdsCarouselItem,
   BdsGrid,
   BdsIllustration,
-  BdsPaper,
   BdsTypo,
 } from '../../../blip-ds-react/dist/components';
 
@@ -32,7 +31,7 @@ const DATACAROUSEL = [
       type: 'spots',
       name: 'star',
     },
-    bgColor: '#fff',
+    bgColor: '#e7f0ff',
     theme: 'light',
   },
   {
@@ -43,7 +42,7 @@ const DATACAROUSEL = [
       type: 'spots',
       name: 'check',
     },
-    bgColor: '#222',
+    bgColor: '#202d44',
     theme: 'dark',
   },
   {
@@ -54,7 +53,7 @@ const DATACAROUSEL = [
       type: 'spots',
       name: 'air-ballon',
     },
-    bgColor: '#fff',
+    bgColor: '#e7f0ff',
     theme: 'light',
   },
   {
@@ -65,7 +64,7 @@ const DATACAROUSEL = [
       type: 'spots',
       name: 'air-ballon',
     },
-    bgColor: '#222',
+    bgColor: '#202d44',
     theme: 'dark',
   },
 ];
@@ -350,27 +349,27 @@ export const Methods = () => {
   return (
     <BdsGrid direction="column" gap="2">
       <BdsGrid gap="2">
-        <BdsButton onClick={() => nextSlide('carousel')} variant="primary" size="short">
+        <BdsButton onClick={() => nextSlide('carousel-method')} variant="primary" size="short">
           nextSlide
         </BdsButton>
-        <BdsButton onClick={() => prevSlide('carousel')} variant="primary" size="short">
+        <BdsButton onClick={() => prevSlide('carousel-method')} variant="primary" size="short">
           prevSlide
         </BdsButton>
-        <BdsButton onClick={() => setActivated('carousel')} variant="primary" size="short">
+        <BdsButton onClick={() => setActivated('carousel-method')} variant="primary" size="short">
           setActivated 2
         </BdsButton>
-        <BdsButton onClick={() => pauseAutoplay('carousel')} variant="primary" size="short">
+        <BdsButton onClick={() => pauseAutoplay('carousel-method')} variant="primary" size="short">
           pauseAutoplay
         </BdsButton>
-        <BdsButton onClick={() => runAutoplay('carousel')} variant="primary" size="short">
+        <BdsButton onClick={() => runAutoplay('carousel-method')} variant="primary" size="short">
           runAutoplay
         </BdsButton>
-        <BdsButton onClick={() => buildCarousel('carousel')} variant="primary" size="short">
+        <BdsButton onClick={() => buildCarousel('carousel-method')} variant="primary" size="short">
           buildCarousel
         </BdsButton>
       </BdsGrid>
-      <BdsCarousel
-        id="carousel"
+      <bds-carousel
+        id="carousel-method"
         autoplay={true}
         autoplay-timeout="10000"
         autoplay-hover-pause={true}
@@ -398,23 +397,30 @@ export const Methods = () => {
             </bds-carousel-item>
           );
         })}
-      </BdsCarousel>
+      </bds-carousel>
     </BdsGrid>
   );
 };
 
 export const Events = () => {
   useEffect(() => {
-    const carousel = document.getElementById('carousel');
+    const carousel = document.getElementById('carousel-event');
     carousel.addEventListener('bdsChangeCarousel', () => {
       console.log('Evento bdsChangeCarousel funcionando');
     });
   });
   return (
-    <BdsCarousel id="carousel" arrows="outside" bullets="outside" infinite-loop={true} slide-per-page={1} gap="2">
-      {DATAITEMS.map((item, index) => {
+    <bds-carousel
+      id="carousel-event"
+      arrows="outside"
+      bullets="outside"
+      infinite-loop={true}
+      slide-per-page={1}
+      gap="2"
+    >
+      {DATACAROUSEL.map((item, index) => {
         return (
-          <bds-carousel-item key={index} bgColor={item.bgColor} theme={item.theme}>
+          <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
             <bds-grid padding="x-7" margin="y-6" align-items="center">
               <bds-grid xxs="3" direction="column">
                 <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
@@ -430,7 +436,7 @@ export const Events = () => {
           </bds-carousel-item>
         );
       })}
-    </BdsCarousel>
+    </bds-carousel>
   );
 };
 
@@ -441,26 +447,26 @@ export const FrameworkReact = () => {
       arrows="inside"
       bullets="inside"
       bulletsPosition="center"
-      infinite-loop={true}
-      slide-per-page={1}
+      infiniteLoop={true}
+      slidePerPage={1}
       gap="2"
     >
-      {DATAITEMS.map((item, index) => {
+      {DATACAROUSEL.map((item, index) => {
         return (
-          <bds-carousel-item key={index} bgColor={item.bgColor} theme={item.theme}>
-            <bds-grid padding="x-7" margin="y-6" align-items="center">
-              <bds-grid xxs="3" direction="column">
-                <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
-              </bds-grid>
-              <bds-grid xxs="10" direction="column" gap="1">
-                <bds-typo variant="fs-20" bold="bold" margin={false}>
+          <BdsCarouselItem key={index} bgColor={item.bgColor} theme={item.theme}>
+            <BdsGrid padding="x-7" margin="y-6" alignItems="center">
+              <BdsGrid xxs="3" direction="column">
+                <BdsIllustration type={item.illustration.type} name={item.illustration.name}></BdsIllustration>
+              </BdsGrid>
+              <BdsGrid xxs="10" direction="column" gap="1">
+                <BdsTypo variant="fs-20" bold="bold" margin={false}>
                   {item.title}
-                </bds-typo>
-                <bds-typo variant="fs-16">{item.subTitle}</bds-typo>
-                <bds-button>Saiba mais</bds-button>
-              </bds-grid>
-            </bds-grid>
-          </bds-carousel-item>
+                </BdsTypo>
+                <BdsTypo variant="fs-16">{item.subTitle}</BdsTypo>
+                <BdsButton>Saiba mais</BdsButton>
+              </BdsGrid>
+            </BdsGrid>
+          </BdsCarouselItem>
         );
       })}
     </BdsCarousel>

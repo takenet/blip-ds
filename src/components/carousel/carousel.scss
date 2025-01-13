@@ -15,9 +15,24 @@
   &_slide {
     width: 100%;
     position: relative;
-    overflow: hidden;
     box-sizing: border-box;
     padding: 0 48px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    &:focus-visible {
+      outline: none;
+      &::after {
+        border-color: $color-focus;
+      }
+    }
 
     &_fullwidth {
       padding: 0;
@@ -105,7 +120,7 @@
 
   &_bullets {
     position: relative;
-    margin-top: 16px;
+    margin-top: 8px;
 
     &_inside {
       position: absolute;
@@ -145,6 +160,22 @@
         border-radius: 50%;
       }
 
+      &::after {
+        content: '';
+        position: absolute;
+        inset: -8px;
+        transform: rotate(-45deg);
+        border: 2px solid transparent;
+        border-radius: 4px;
+      }
+
+      &:focus-visible {
+        outline: none;
+        &::after {
+          border-color: $color-focus;
+        }
+      }
+
       &_active {
         &::before {
           background-color: $color-primary;
@@ -155,7 +186,7 @@
         position: absolute;
         inset: -2px;
         border-radius: 50%;
-        border: 2px solid $color-primary;
+        border: 2px solid $color-content-disable;
       }
 
       &_loader {
