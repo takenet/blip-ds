@@ -23,7 +23,7 @@ import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components
 import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
-import { arrows, gap } from "./components/carousel/carousel-interface";
+import { arrows, bullets, bulletsPositions, gap } from "./components/carousel/carousel-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
@@ -553,7 +553,11 @@ export namespace Components {
         /**
           * Bullet. Prop to Enable component bullets navigation.
          */
-        "bullets"?: boolean;
+        "bullets"?: boolean | bullets;
+        /**
+          * Bullet. Prop to Enable component bullets navigation.
+         */
+        "bulletsPosition"?: bulletsPositions;
         /**
           * Gap. Prop to Select the gap distance between items.
          */
@@ -4228,7 +4232,11 @@ declare namespace LocalJSX {
         /**
           * Bullet. Prop to Enable component bullets navigation.
          */
-        "bullets"?: boolean;
+        "bullets"?: boolean | bullets;
+        /**
+          * Bullet. Prop to Enable component bullets navigation.
+         */
+        "bulletsPosition"?: bulletsPositions;
         /**
           * Gap. Prop to Select the gap distance between items.
          */

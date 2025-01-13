@@ -15,9 +15,24 @@
   &_slide {
     width: 100%;
     position: relative;
-    overflow: hidden;
     box-sizing: border-box;
-    padding: 0 56px;
+    padding: 0 48px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    &:focus-visible {
+      outline: none;
+      &::after {
+        border-color: $color-focus;
+      }
+    }
 
     &_fullwidth {
       padding: 0;
@@ -99,12 +114,106 @@
     box-sizing: border-box;
 
     &_fullwidth {
-      padding: 0 16px;
+      padding: 0 8px;
     }
   }
 
   &_bullets {
-    margin-top: 16px;
-    margin-bottom: 16px;
+    position: relative;
+    margin-top: 8px;
+
+    &_inside {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      margin: 0;
+      padding: 0px 16px;
+      box-sizing: border-box;
+    }
+
+    &_card {
+      width: fit-content;
+      display: inline-flex;
+      gap: 8px;
+
+      &_inside {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding: 8px;
+        background-color: $color-surface-0;
+      }
+    }
+
+    &_item {
+      width: 16px;
+      height: 16px;
+      border: 2px solid $color-border-1;
+      border-radius: 50%;
+      position: relative;
+      transform: rotate(45deg);
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: -8px;
+        transform: rotate(-45deg);
+        border: 2px solid transparent;
+        border-radius: 4px;
+      }
+
+      &:focus-visible {
+        outline: none;
+        &::after {
+          border-color: $color-focus;
+        }
+      }
+
+      &_active {
+        &::before {
+          background-color: $color-primary;
+        }
+      }
+
+      &_conclude {
+        position: absolute;
+        inset: -2px;
+        border-radius: 50%;
+        border: 2px solid $color-content-disable;
+      }
+
+      &_loader {
+        position: absolute;
+        inset: -2px;
+        border-radius: 50%;
+        border: 2px solid $color-primary;
+        animation: l18 linear;
+      }
+    }
+  }
+}
+
+@keyframes l18 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
 }

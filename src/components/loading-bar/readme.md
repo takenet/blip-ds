@@ -15,19 +15,6 @@
 | `text`     | `text`      | Text, property to enable the bar info text.                             | `string`               | `''`        |
 
 
-## Dependencies
-
-### Used by
-
- - [bds-carousel](../carousel)
-
-### Graph
-```mermaid
-graph TD;
-  bds-carousel --> bds-loading-bar
-  style bds-loading-bar fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
