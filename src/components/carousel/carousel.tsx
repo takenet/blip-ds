@@ -86,6 +86,24 @@ export class BdsCarousel {
    */
   @Prop({ mutable: true, reflect: true }) loading?: boolean = false;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSlideContent is the data-test to slide action.
+   */
+  @Prop() dtSlideContent?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonPrev is the data-test to button prev.
+   */
+  @Prop() dtButtonPrev?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonNext is the data-test to button next.
+   */
+  @Prop() dtButtonNext?: string = null;
+
   @State() secondsLimit: number = this.autoplayTimeout / 1000;
 
   /**
@@ -377,9 +395,14 @@ export class BdsCarousel {
     return (
       <div class={{ carousel: true }}>
         <div
-          class={{ carousel_slide: true, carousel_slide_fullwidth: this.arrows != 'outside' }}
+          class={{
+            carousel_slide: true,
+            carousel_slide_fullwidth: this.arrows != 'outside',
+            [`carousel_slide_state_${this.autoplayState}`]: this.autoplay,
+          }}
           tabindex="0"
           onKeyDown={(ev) => this.setKeydownNavigation(ev)}
+          data-test={this.dtSlideContent}
         >
           <div
             ref={(el) => this.refFrame(el)}
@@ -412,6 +435,7 @@ export class BdsCarousel {
                 color="content"
                 onBdsClick={() => this.prevSlide()}
                 disabled={!this.infiniteLoop && this.itemActivated <= 1}
+                dataTest={this.dtButtonPrev}
               ></bds-button>
               <bds-button
                 variant="text"
@@ -419,6 +443,7 @@ export class BdsCarousel {
                 color="content"
                 onBdsClick={() => this.nextSlide()}
                 disabled={!this.infiniteLoop && this.itemActivated >= this.internalItens.length}
+                dataTest={this.dtButtonNext}
               ></bds-button>
             </ThemeOrDivArrows>
           )}

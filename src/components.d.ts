@@ -559,6 +559,18 @@ export namespace Components {
          */
         "bulletsPosition"?: bulletsPositions;
         /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSlideContent is the data-test to slide action.
+         */
+        "dtSlideContent"?: string;
+        /**
           * Gap. Prop to Select the gap distance between items.
          */
         "gap"?: gap;
@@ -4237,6 +4249,18 @@ declare namespace LocalJSX {
           * Bullet. Prop to Enable component bullets navigation.
          */
         "bulletsPosition"?: bulletsPositions;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object. dtSlideContent is the data-test to slide action.
+         */
+        "dtSlideContent"?: string;
         /**
           * Gap. Prop to Select the gap distance between items.
          */

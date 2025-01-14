@@ -60,17 +60,6 @@ const imageContent = {
   borderRadius: '8px',
   overflow: 'hidden',
 };
-const imageBlipDark = {
-  position: 'absolute',
-  borderRadius: '8px',
-  overflow: 'hidden',
-  opacity: 0.4,
-};
-const imageBlipLight = {
-  position: 'absolute',
-  borderRadius: '8px',
-  overflow: 'hidden',
-};
 
 export const BasicCarousel = () => {
   const el = document.getElementsByClassName('sb-story');
