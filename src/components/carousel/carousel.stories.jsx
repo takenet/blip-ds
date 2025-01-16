@@ -381,7 +381,7 @@ export const Methods = () => {
       >
         {DATAITEMS.map((item, index) => {
           return (
-            <bds-carousel-item key={index} bgColor={item.bgColor} theme={item.theme}>
+            <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
               <bds-grid padding="x-7" margin="y-6" align-items="center">
                 <bds-grid xxs="3" direction="column">
                   <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
