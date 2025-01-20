@@ -4,7 +4,52 @@ import React from 'react';
 export default {
   title: 'Snippets/Carousel',
 };
-
+const DATACAROUSEL = [
+  {
+    title: '1 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'star',
+    },
+    bgColor: '#e7f0ff',
+    theme: 'light',
+  },
+  {
+    title: '2 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'check',
+    },
+    bgColor: '#202d44',
+    theme: 'dark',
+  },
+  {
+    title: '3 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+    bgColor: '#e7f0ff',
+    theme: 'light',
+  },
+  {
+    title: '4 - Título do Slide',
+    subTitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ipsum augue, pulvinar sit amet tincidunt non.',
+    illustration: {
+      type: 'spots',
+      name: 'air-ballon',
+    },
+    bgColor: '#202d44',
+    theme: 'dark',
+  },
+];
 const title = 'Título com até uma linha';
 const paragraph =
   'Descrição com até duas linhas sobre o item destacado no carrosel respeitando as orientações de uso de content design.';
@@ -12,17 +57,6 @@ const longParagraph =
   'Descrição com até duas linhas sobre o item destacado no carrosel respeitando as orientações de uso de content design.';
 
 const imageContent = {
-  borderRadius: '8px',
-  overflow: 'hidden',
-};
-const imageBlipDark = {
-  position: 'absolute',
-  borderRadius: '8px',
-  overflow: 'hidden',
-  opacity: 0.4,
-};
-const imageBlipLight = {
-  position: 'absolute',
   borderRadius: '8px',
   overflow: 'hidden',
 };
@@ -177,7 +211,7 @@ export const BasicCarouselMobile = () => {
 
 export const CarouselWithCard = () => {
   return (
-    <bds-carousel bullets slide-per-page={3} gap="2">
+    <bds-carousel bullets="outside" slide-per-page={3} gap="2">
       <bds-carousel-item>
         <bds-grid direction="column" padding="1">
           <bds-card width="100%" bg-color="surface-0" clickable>
@@ -306,6 +340,7 @@ export const CarouselImage = () => {
       infinite-loop
       slide-per-page={1}
       gap="2"
+      bullets="inside"
     >
       <bds-carousel-item>
         <bds-image
@@ -353,6 +388,7 @@ export const CarouselImageMobile = () => {
         infinite-loop
         slide-per-page={1}
         gap="2"
+        bullets="inside"
       >
         <bds-carousel-item>
           <bds-image
@@ -391,7 +427,7 @@ export const CarouselImageMobile = () => {
 
 export const CarouselImageDesciption = () => {
   return (
-    <bds-carousel auto-height bullets slide-per-page={2} gap="2">
+    <bds-carousel auto-height bullets="inside" bullets-position="right" slide-per-page={2} gap="2">
       <bds-carousel-item>
         <bds-paper width="100%" height="290px" clickable style={{ backgroundColor: 'var(--color-extended-pink)' }}>
           <bds-theme-provider theme="dark" style={{ height: '100%', display: 'block' }}>
@@ -465,7 +501,7 @@ export const CarouselImageDesciption = () => {
 export const CarouselImageDesciptionMobile = () => {
   return (
     <bds-grid style={{ maxWidth: `320px` }}>
-      <bds-carousel arrows="none" gap="2">
+      <bds-carousel arrows="none" bullets="inside" gap="2">
         <bds-carousel-item>
           <bds-grid direction="column" gap="2">
             <bds-paper width="100%" clickable style={{ backgroundColor: 'var(--color-extended-pink)' }}>
@@ -831,6 +867,172 @@ export const CarouselProductMobile = () => {
           </bds-grid>
         </bds-carousel-item>
       </bds-carousel>
+    </bds-grid>
+  );
+};
+
+export const CarouselBulletsExamples = () => {
+  return (
+    <bds-grid xxs="12" padding="x-2" flex-wrap="wrap">
+      <bds-grid xxs="6" padding="6" direction="column" gap="6">
+        <bds-carousel arrows="inside" bullets="inside" bullets-position="left" infinite-loop={false} slide-per-page={1}>
+          {DATACAROUSEL.map((item, index) => {
+            return (
+              <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
+                <bds-grid padding="x-7" margin="y-6" align-items="center">
+                  <bds-grid xxs="3" direction="column">
+                    <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
+                  </bds-grid>
+                  <bds-grid xxs="9" direction="column" gap="1">
+                    <bds-typo variant="fs-20" bold="bold" margin={false}>
+                      {item.title}
+                    </bds-typo>
+                    <bds-typo variant="fs-16">{item.subTitle}</bds-typo>
+                    <bds-button>Saiba mais</bds-button>
+                  </bds-grid>
+                </bds-grid>
+              </bds-carousel-item>
+            );
+          })}
+        </bds-carousel>
+        <bds-carousel
+          arrows="inside"
+          bullets="inside"
+          bullets-position="center"
+          infinite-loop={false}
+          slide-per-page={1}
+          gap="2"
+        >
+          {DATACAROUSEL.map((item, index) => {
+            return (
+              <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
+                <bds-grid padding="x-7" margin="y-6" align-items="center">
+                  <bds-grid xxs="3" direction="column">
+                    <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
+                  </bds-grid>
+                  <bds-grid xxs="9" direction="column" gap="1">
+                    <bds-typo variant="fs-20" bold="bold" margin={false}>
+                      {item.title}
+                    </bds-typo>
+                    <bds-typo variant="fs-16">{item.subTitle}</bds-typo>
+                    <bds-button>Saiba mais</bds-button>
+                  </bds-grid>
+                </bds-grid>
+              </bds-carousel-item>
+            );
+          })}
+        </bds-carousel>
+        <bds-carousel
+          arrows="inside"
+          bullets="inside"
+          bullets-position="right"
+          infinite-loop={false}
+          slide-per-page={1}
+          gap="2"
+        >
+          {DATACAROUSEL.map((item, index) => {
+            return (
+              <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
+                <bds-grid padding="x-7" margin="y-6" align-items="center">
+                  <bds-grid xxs="3" direction="column">
+                    <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
+                  </bds-grid>
+                  <bds-grid xxs="9" direction="column" gap="1">
+                    <bds-typo variant="fs-20" bold="bold" margin={false}>
+                      {item.title}
+                    </bds-typo>
+                    <bds-typo variant="fs-16">{item.subTitle}</bds-typo>
+                    <bds-button>Saiba mais</bds-button>
+                  </bds-grid>
+                </bds-grid>
+              </bds-carousel-item>
+            );
+          })}
+        </bds-carousel>
+      </bds-grid>
+      <bds-grid xxs="6" padding="6" direction="column" gap="6">
+        <bds-carousel
+          arrows="inside"
+          bullets="outside"
+          bullets-position="left"
+          infinite-loop={false}
+          slide-per-page={1}
+          gap="2"
+        >
+          {DATACAROUSEL.map((item, index) => {
+            return (
+              <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
+                <bds-grid padding="x-7" margin="y-5" align-items="center">
+                  <bds-grid xxs="3" direction="column">
+                    <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
+                  </bds-grid>
+                  <bds-grid xxs="9" direction="column" gap="1">
+                    <bds-typo variant="fs-20" bold="bold" margin={false}>
+                      {item.title}
+                    </bds-typo>
+                    <bds-typo variant="fs-16">{item.subTitle}</bds-typo>
+                    <bds-button>Saiba mais</bds-button>
+                  </bds-grid>
+                </bds-grid>
+              </bds-carousel-item>
+            );
+          })}
+        </bds-carousel>
+        <bds-carousel
+          arrows="inside"
+          bullets="outside"
+          bullets-position="center"
+          infinite-loop={false}
+          slide-per-page={1}
+          gap="2"
+        >
+          {DATACAROUSEL.map((item, index) => {
+            return (
+              <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
+                <bds-grid padding="x-7" margin="y-5" align-items="center">
+                  <bds-grid xxs="3" direction="column">
+                    <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
+                  </bds-grid>
+                  <bds-grid xxs="9" direction="column" gap="1">
+                    <bds-typo variant="fs-20" bold="bold" margin={false}>
+                      {item.title}
+                    </bds-typo>
+                    <bds-typo variant="fs-16">{item.subTitle}</bds-typo>
+                    <bds-button>Saiba mais</bds-button>
+                  </bds-grid>
+                </bds-grid>
+              </bds-carousel-item>
+            );
+          })}
+        </bds-carousel>
+        <bds-carousel
+          arrows="inside"
+          bullets="outside"
+          bullets-position="right"
+          infinite-loop={false}
+          slide-per-page={1}
+          gap="2"
+        >
+          {DATACAROUSEL.map((item, index) => {
+            return (
+              <bds-carousel-item key={index} bg-color={item.bgColor} theme={item.theme}>
+                <bds-grid padding="x-7" margin="y-5" align-items="center">
+                  <bds-grid xxs="3" direction="column">
+                    <bds-illustration type={item.illustration.type} name={item.illustration.name}></bds-illustration>
+                  </bds-grid>
+                  <bds-grid xxs="9" direction="column" gap="1">
+                    <bds-typo variant="fs-20" bold="bold" margin={false}>
+                      {item.title}
+                    </bds-typo>
+                    <bds-typo variant="fs-16">{item.subTitle}</bds-typo>
+                    <bds-button>Saiba mais</bds-button>
+                  </bds-grid>
+                </bds-grid>
+              </bds-carousel-item>
+            );
+          })}
+        </bds-carousel>
+      </bds-grid>
     </bds-grid>
   );
 };

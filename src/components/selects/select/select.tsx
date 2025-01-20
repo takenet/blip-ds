@@ -280,7 +280,7 @@ export class Select {
         return internalOption.titleText ? internalOption.titleText : internalOption.label;
       }
     }
-    return opt?.titleText ? opt?.titleText : (opt?.innerHTML?.trim() ?? '');
+    return opt?.titleText ? opt?.titleText : (opt?.innerText ?? '');
   };
 
   private handler = (event: CustomEvent): void => {

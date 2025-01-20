@@ -2,6 +2,7 @@ import { Component, ComponentInterface, h, Element, Method } from '@stencil/core
 @Component({
   tag: 'bds-stepper',
   styleUrl: 'stepper.scss',
+  shadow: true,
 })
 export class BdsStepper implements ComponentInterface {
   @Element() el: HTMLBdsStepperElement;

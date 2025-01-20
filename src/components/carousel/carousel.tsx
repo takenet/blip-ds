@@ -1,5 +1,5 @@
 import { Component, h, Element, State, Watch, Prop, Method, Event, EventEmitter } from '@stencil/core';
-import { Itens, arrows, gap } from './carousel-interface';
+import { Itens, arrows, bullets, bulletsPositions, gap } from './carousel-interface';
 import { gapChanged, getHighestItem, getItems } from '../../utils/position-element';
 
 @Component({
@@ -9,8 +9,9 @@ import { gapChanged, getHighestItem, getItems } from '../../utils/position-eleme
 })
 export class BdsCarousel {
   private itemsElement?: HTMLCollectionOf<HTMLBdsCarouselItemElement> = null;
+  private bulletElement?: HTMLElement = null;
   private frame?: HTMLElement;
-  private themeProvider?: HTMLBdsThemeProviderElement;
+  private themeProviderArrows?: any;
   private frameRepeater?: HTMLElement;
   private incrementSeconds?: any;
 
@@ -24,6 +25,7 @@ export class BdsCarousel {
   @State() framePressed?: boolean = false;
   @State() startX?: number;
   @State() endX?: number;
+  @State() autoplayState: 'paused' | 'running' = 'running';
 
   /**
    * Autoplay. Prop to Enable component autoplay.
@@ -44,10 +46,15 @@ export class BdsCarousel {
    * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
    */
   @Prop() autoHeight?: boolean = false;
+
   /**
    * Bullet. Prop to Enable component bullets navigation.
    */
-  @Prop() bullets?: boolean = true;
+  @Prop() bullets?: boolean | bullets = 'outside';
+  /**
+   * Bullet. Prop to Enable component bullets navigation.
+   */
+  @Prop() bulletsPosition?: bulletsPositions = 'center';
 
   /**
    * InfiniteLoop. Prop to Enable if the component will have infinite loop.
@@ -79,6 +86,24 @@ export class BdsCarousel {
    */
   @Prop({ mutable: true, reflect: true }) loading?: boolean = false;
 
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtSlideContent is the data-test to slide action.
+   */
+  @Prop() dtSlideContent?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonPrev is the data-test to button prev.
+   */
+  @Prop() dtButtonPrev?: string = null;
+
+  /**
+   * Data test is the prop to specifically test the component action object.
+   * dtButtonNext is the data-test to button next.
+   */
+  @Prop() dtButtonNext?: string = null;
+
   @State() secondsLimit: number = this.autoplayTimeout / 1000;
 
   /**
@@ -91,6 +116,12 @@ export class BdsCarousel {
       'bds-carousel-item',
     ) as HTMLCollectionOf<HTMLBdsCarouselItemElement>;
     this.setInternalItens(Array.from(this.itemsElement));
+    if (this.bullets == true) {
+      this.bullets = 'outside';
+    }
+    if (this.bullets == false) {
+      this.bullets = 'none';
+    }
   }
 
   componentDidRender() {
@@ -106,8 +137,12 @@ export class BdsCarousel {
       }
       if (this.autoHeight) this.updateHeight(Array.from(this.itemsElement));
     }
-    if (this.slidePerPage <= 1 && this.arrows == 'inside') {
-      this.themeProvider.theme = this.itemsElement[this.itemActivated - 1].theme;
+    if (this.arrows == 'inside') {
+      const firstItemActived = (this.itemActivated - 1) * (this.itemsElement.length / this.internalItens.length) + 1;
+      this.themeProviderArrows.theme =
+        this.slidePerPage <= 1
+          ? this.itemsElement[this.itemActivated - 1].theme
+          : this.itemsElement[Math.round(firstItemActived)].theme;
     }
   }
 
@@ -245,28 +280,35 @@ export class BdsCarousel {
     clearInterval(this.incrementSeconds);
     this.seconds = 0;
     this.startCountSeconds();
+    this.autoplayState = 'running';
   }
 
   @Method()
   async pauseAutoplay(): Promise<void> {
     clearInterval(this.incrementSeconds);
+    this.autoplayState = 'paused';
   }
 
   @Method()
   async runAutoplay(): Promise<void> {
     this.startCountSeconds();
+    this.autoplayState = 'running';
   }
 
   private refFrame = (el: HTMLElement): void => {
     this.frame = el;
   };
 
-  private refThemeProvider = (el: HTMLBdsThemeProviderElement): void => {
-    this.themeProvider = el;
+  private refThemeProviderArrows = (el: HTMLBdsThemeProviderElement | HTMLElement): void => {
+    this.themeProviderArrows = el;
   };
 
   private refFrameRepeater = (el: HTMLElement): void => {
     this.frameRepeater = el;
+  };
+
+  private refBulletElement = (el: HTMLElement): void => {
+    this.bulletElement = el;
   };
 
   private onMouseOver = () => {
@@ -329,10 +371,39 @@ export class BdsCarousel {
     }
   };
 
+  private setKeydownNavigation = (ev) => {
+    console.log(ev.key);
+    if (ev.key == 'Tab') {
+      this.bulletElement.focus();
+    }
+    if (ev.key == 'ArrowRight') {
+      this.nextSlide();
+    }
+    if (ev.key == 'ArrowLeft') {
+      this.prevSlide();
+    }
+  };
+
   render() {
+    const ThemeOrDivArrows = this.arrows == 'inside' ? 'bds-theme-provider' : 'div';
+    const justifybulletsPosition =
+      this.bulletsPosition == 'center'
+        ? 'center'
+        : this.bulletsPosition == 'right'
+          ? 'flex-end'
+          : this.bulletsPosition == 'left' && 'flex-start';
     return (
       <div class={{ carousel: true }}>
-        <div class={{ carousel_slide: true, carousel_slide_fullwidth: this.arrows != 'outside' }}>
+        <div
+          class={{
+            carousel_slide: true,
+            carousel_slide_fullwidth: this.arrows != 'outside',
+            [`carousel_slide_state_${this.autoplayState}`]: this.autoplay,
+          }}
+          tabindex="0"
+          onKeyDown={(ev) => this.setKeydownNavigation(ev)}
+          data-test={this.dtSlideContent}
+        >
           <div
             ref={(el) => this.refFrame(el)}
             class={{ carousel_slide_frame: true, carousel_slide_frame_loading: this.loading }}
@@ -342,14 +413,8 @@ export class BdsCarousel {
             onMouseEnter={() => this.onMouseEnter()}
             onMouseUp={() => this.onMouseUp()}
             onMouseMove={(ev) => this.onMouseMove(ev)}
-            tabindex="0"
           >
-            <div
-              ref={(el) => this.refFrameRepeater(el)}
-              class={{ carousel_slide_frame_repeater: true }}
-              tabindex="0"
-              role="tabpanel"
-            >
+            <div ref={(el) => this.refFrameRepeater(el)} class={{ carousel_slide_frame_repeater: true }}>
               <slot />
             </div>
           </div>
@@ -357,65 +422,90 @@ export class BdsCarousel {
             <bds-skeleton height="100%" shape="square" width="100%" />
           </bds-grid>
           {this.arrows != 'none' && !this.loading && (
-            <bds-theme-provider
-              ref={(el) => this.refThemeProvider(el)}
-              class={{ carousel_buttons: true, carousel_buttons_fullwidth: this.arrows == 'inside' }}
+            <ThemeOrDivArrows
+              ref={(el) => this.refThemeProviderArrows(el)}
+              class={{
+                carousel_buttons: true,
+                carousel_buttons_fullwidth: this.arrows != 'outside',
+              }}
             >
-              <bds-button-icon
-                variant="tertiary"
-                icon="arrow-left"
-                size="short"
+              <bds-button
+                variant="text"
+                iconLeft="arrow-left"
+                color="content"
                 onBdsClick={() => this.prevSlide()}
                 disabled={!this.infiniteLoop && this.itemActivated <= 1}
-              ></bds-button-icon>
-              <bds-button-icon
-                variant="tertiary"
-                icon="arrow-right"
-                size="short"
+                dataTest={this.dtButtonPrev}
+              ></bds-button>
+              <bds-button
+                variant="text"
+                iconLeft="arrow-right"
+                color="content"
                 onBdsClick={() => this.nextSlide()}
                 disabled={!this.infiniteLoop && this.itemActivated >= this.internalItens.length}
-              ></bds-button-icon>
-            </bds-theme-provider>
+                dataTest={this.dtButtonNext}
+              ></bds-button>
+            </ThemeOrDivArrows>
           )}
         </div>
-        {this.internalItens.length > 1 &&
-          this.autoplay &&
-          (this.loading ? (
-            <bds-skeleton
-              class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
-              height="8px"
-              width="100%"
-              shape="square"
-            />
-          ) : (
-            <bds-loading-bar
-              class={{ carousel_loading_bar: true, carousel_loading_bar_fullwidth: this.arrows != 'outside' }}
-              percent={(this.seconds * 100) / this.secondsLimit}
-              size="small"
-            />
-          ))}
-        {this.internalItens.length > 1 && this.bullets && (
-          <div class={{ carousel_bullets: true }}>
-            {this.loading ? (
-              <bds-grid gap="2" justify-content="center">
-                <bds-skeleton height="24px" width="24px" shape="circle" />
-                <bds-skeleton height="24px" width="24px" shape="circle" />
-                <bds-skeleton height="24px" width="24px" shape="circle" />
+        {this.internalItens.length > 1 && this.bullets != 'none' && (
+          <div
+            class={{
+              carousel_bullets: true,
+              carousel_bullets_inside: this.bullets == 'inside',
+            }}
+          >
+            {this.loading && this.bullets != 'inside' ? (
+              <bds-grid
+                xxs="12"
+                gap="1"
+                justify-content={justifybulletsPosition}
+                padding={this.arrows === 'outside' ? 'x-7' : 'none'}
+              >
+                <bds-skeleton height="16px" width="16px" shape="circle" />
+                <bds-skeleton height="16px" width="16px" shape="circle" />
+                <bds-skeleton height="16px" width="16px" shape="circle" />
               </bds-grid>
             ) : (
               this.internalItens && (
-                <bds-radio-group>
-                  <bds-grid gap="2" justify-content="center">
+                <bds-grid
+                  xxs="12"
+                  justify-content={justifybulletsPosition}
+                  padding={this.arrows === 'outside' ? 'x-7' : 'none'}
+                >
+                  <div
+                    class={{
+                      carousel_bullets_card: true,
+                      carousel_bullets_card_inside: this.bullets == 'inside',
+                    }}
+                  >
                     {this.internalItens.map((item, index) => (
-                      <bds-radio
+                      <div
                         key={index}
-                        checked={item.id == this.itemActivated}
-                        value={item.id.toString()}
-                        onBdsClickChange={() => this.setActivated(item.id)}
-                      />
+                        ref={(el) => this.refBulletElement(el)}
+                        class={{
+                          carousel_bullets_item: true,
+                          carousel_bullets_item_active: item.id == this.itemActivated,
+                        }}
+                        tabindex="0"
+                        onClick={() => this.setActivated(item.id)}
+                      >
+                        {item.id < this.itemActivated && this.autoplay && (
+                          <div class={{ carousel_bullets_item_conclude: true }}></div>
+                        )}
+                        {item.id == this.itemActivated && this.autoplay && (
+                          <div
+                            class={{ carousel_bullets_item_loader: true }}
+                            style={{
+                              animationDuration: `${this.autoplayTimeout / 1000 - 0.1}s`,
+                              animationPlayState: this.autoplayState,
+                            }}
+                          ></div>
+                        )}
+                      </div>
                     ))}
-                  </bds-grid>
-                </bds-radio-group>
+                  </div>
+                </bds-grid>
               )
             )}
           </div>
