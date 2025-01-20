@@ -1,4 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import {
+  BdsChipTag,
+  BdsTable,
+  BdsTableBody,
+  BdsTableCell,
+  BdsTableHeader,
+  BdsTableRow,
+  BdsTypo,
+  BdsTableTh,
+  BdsCheckbox,
+  BdsGrid,
+} from '../../blip-ds-react/dist/components';
 
 export default {
   title: 'Snippets/Tables',
@@ -401,7 +413,7 @@ export const TablePagination = () => {
                   <bds-table-cell>
                     <bds-typo variant="fs-14">{row.id}</bds-typo>
                   </bds-table-cell>
-                  
+
                   <bds-table-cell>
                     <bds-typo variant="fs-14">{row.produto}</bds-typo>
                   </bds-table-cell>
@@ -681,59 +693,184 @@ export const TableScrollable = () => {
 };
 
 export const TableCollapse = () => {
-   const DATA = [
-      { id: 1, produto: 'Celular', valor: '1500,00', disponibilidade: 'disponivel', descricao: 'Descrição do celular, incluindo modelo, marca e especificações técnicas. Este celular possui uma variedade de recursos avançados, como uma câmera de alta resolução, processador rápido e tela de alta qualidade. Ele está disponível em várias cores e tamanhos, e oferece opções flexíveis de pagamento. Com garantia e política de devolução, este celular é uma escolha popular entre os consumidores que buscam qualidade e desempenho.' },
-      { id: 2, produto: 'Notebook', valor: '4000,00', disponibilidade: 'indisponivel', descricao: 'Descrição do notebook, incluindo marca, modelo e configurações detalhadas. Este notebook oferece um desempenho excepcional, com um processador potente, grande capacidade de armazenamento e uma tela de alta resolução. Embora a garantia estendida esteja disponível, este produto é atualmente indisponível devido à alta demanda. Fique atento às próximas promoções e descontos especiais para este notebook.' },
-      { id: 3, produto: 'Livros', valor: '60,00', disponibilidade: 'disponivel', descricao: 'Descrição dos livros disponíveis, incluindo autor, título e gênero literário. Com uma variedade de títulos emocionantes e informativos, estes livros oferecem uma experiência de leitura envolvente para todos os gostos. Desde romances cativantes até obras acadêmicas, há algo para todos. Além disso, aproveite as promoções especiais, como descontos em compras de múltiplos livros, para expandir sua biblioteca pessoal.' },
-    ];
+  const DATA = [
+    { id: 1, produto: 'Celular', valor: '1500,00', disponibilidade: 'disponivel', descricao: 'Descrição do celular, incluindo modelo, marca e especificações técnicas. Este celular possui uma variedade de recursos avançados, como uma câmera de alta resolução, processador rápido e tela de alta qualidade. Ele está disponível em várias cores e tamanhos, e oferece opções flexíveis de pagamento. Com garantia e política de devolução, este celular é uma escolha popular entre os consumidores que buscam qualidade e desempenho.' },
+    { id: 2, produto: 'Notebook', valor: '4000,00', disponibilidade: 'indisponivel', descricao: 'Descrição do notebook, incluindo marca, modelo e configurações detalhadas. Este notebook oferece um desempenho excepcional, com um processador potente, grande capacidade de armazenamento e uma tela de alta resolução. Embora a garantia estendida esteja disponível, este produto é atualmente indisponível devido à alta demanda. Fique atento às próximas promoções e descontos especiais para este notebook.' },
+    { id: 3, produto: 'Livros', valor: '60,00', disponibilidade: 'disponivel', descricao: 'Descrição dos livros disponíveis, incluindo autor, título e gênero literário. Com uma variedade de títulos emocionantes e informativos, estes livros oferecem uma experiência de leitura envolvente para todos os gostos. Desde romances cativantes até obras acadêmicas, há algo para todos. Além disso, aproveite as promoções especiais, como descontos em compras de múltiplos livros, para expandir sua biblioteca pessoal.' },
+  ];
 
-    const heading = ['id', 'Produtos', 'Valor', 'Disponibilidade'];
-    
-    return (
-      <bds-grid xxs="12" direction="row" padding="3" flex-wrap="wrap" gap="2">
+  const heading = ['id', 'Produtos', 'Valor', 'Disponibilidade'];
+
+  return (
+    <bds-grid xxs="12" direction="row" padding="3" flex-wrap="wrap" gap="2">
 
 
-        <bds-grid xxs="12">
-          <bds-table collapse={true}>
-            <bds-table-header>
-              <bds-table-row>
-                {heading.map((item, index) => {
-                  return <bds-table-th key={index}>{item}</bds-table-th>;
-                })}
-              </bds-table-row>
-            </bds-table-header>
+      <bds-grid xxs="12">
+        <bds-table collapse={true}>
+          <bds-table-header>
+            <bds-table-row>
+              {heading.map((item, index) => {
+                return <bds-table-th key={index}>{item}</bds-table-th>;
+              })}
+            </bds-table-row>
+          </bds-table-header>
 
-            {DATA.map((row, index) => {
-              return (
-                <bds-table-body key={index}>
-                  <bds-table-row data-target={index}>
-                    <bds-table-cell>
-                      <bds-typo variant="fs-14">{row.id}</bds-typo>
-                    </bds-table-cell>
-                    <bds-table-cell>
-                      <bds-typo variant="fs-14">{row.produto}</bds-typo>
-                    </bds-table-cell>
-                    <bds-table-cell>
-                      <bds-typo variant="fs-14">{row.valor}</bds-typo>
-                    </bds-table-cell>
-                    <bds-table-cell type="custom">
-                      {row.disponibilidade === 'disponivel' ? (
-                        <bds-chip-tag color="success">{row.disponibilidade}</bds-chip-tag>
-                      ) : (
-                        <bds-chip-tag color="danger">{row.disponibilidade}</bds-chip-tag>
-                      )}
-                    </bds-table-cell>
-                  </bds-table-row>
+          {DATA.map((row, index) => {
+            return (
+              <bds-table-body key={index}>
+                <bds-table-row data-target={index}>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.id}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.produto}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell>
+                    <bds-typo variant="fs-14">{row.valor}</bds-typo>
+                  </bds-table-cell>
+                  <bds-table-cell type="custom">
+                    {row.disponibilidade === 'disponivel' ? (
+                      <bds-chip-tag color="success">{row.disponibilidade}</bds-chip-tag>
+                    ) : (
+                      <bds-chip-tag color="danger">{row.disponibilidade}</bds-chip-tag>
+                    )}
+                  </bds-table-cell>
+                </bds-table-row>
 
-                  <bds-table-row body-collapse={index}>
-                    <bds-typo>{row.descricao}</bds-typo>
-                  </bds-table-row>
-                </bds-table-body>
-              );
-            })}
-          </bds-table>
-        </bds-grid>
-
+                <bds-table-row body-collapse={index}>
+                  <bds-typo>{row.descricao}</bds-typo>
+                </bds-table-row>
+              </bds-table-body>
+            );
+          })}
+        </bds-table>
       </bds-grid>
-    );
+
+    </bds-grid>
+  );
 }
+
+export const TableSelected = () => {
+  const DATA = [
+    {
+      id: 1,
+      produto: 'Celular',
+      valor: '1500,00',
+      disponibilidade: 'disponivel',
+      marca: 'Samsung',
+      modelo: 'Galaxy S20',
+      cor: 'Preto',
+    },
+    {
+      id: 2,
+      produto: 'Notebook',
+      valor: '4000,00',
+      disponibilidade: 'indisponivel',
+      marca: 'Apple',
+      modelo: 'MacBook Pro',
+      cor: 'Cinza Espacial',
+    },
+    {
+      id: 3,
+      produto: 'Câmera',
+      valor: '800,00',
+      disponibilidade: 'disponivel',
+      marca: 'Canon',
+      modelo: 'EOS Rebel T7',
+      cor: 'Preto',
+    },
+  ];
+
+  const heading = ['Id', 'Produtos', 'Valor', 'Marca', 'Modelo', 'Cor', 'Disponibilidade'];
+
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectAll, setSelectAll] = useState(false);
+
+  const handleCheckboxChange = (id) => {
+    setSelectedItems((prevSelectedItems) => {
+      if (prevSelectedItems.includes(id)) {
+        return prevSelectedItems.filter((item) => item !== id);
+      } else {
+        return [...prevSelectedItems, id];
+      }
+    });
+  };
+
+  const handleSelectAllChange = (event) => {
+    const isChecked = event.detail.checked;
+    setSelectAll(isChecked);
+
+    if (isChecked) {
+      setSelectedItems(DATA.map((row) => row.id));
+    } else {
+      setSelectedItems([]);
+    }
+  };
+
+  return (
+    <BdsGrid direction='column' gap='2'>
+      <BdsGrid justifyContent='space-between'>
+        <BdsTypo>{selectedItems.length === 0 ? "Nenhum" : selectedItems.length === DATA.length ? "Todos" : selectedItems.length} Selecionados</BdsTypo>
+      <bds-button-group color="content">
+        <bds-button>Selecionar Todos</bds-button>
+        <bds-button icon-left="share">Compartilhar</bds-button>
+        <bds-button icon-left="edit">Editar</bds-button>
+        <bds-button icon-left="trash">Deletar</bds-button>
+      </bds-button-group>
+      </BdsGrid>
+      <BdsTable>
+        <BdsTableHeader>
+          <BdsTableRow>
+            <BdsTableTh>
+              <BdsCheckbox
+                checked={selectAll}
+                onBdsChange={handleSelectAllChange}
+              />
+            </BdsTableTh>
+            {heading.map((item, index) => (
+              <BdsTableTh key={index}>{item}</BdsTableTh>
+            ))}
+          </BdsTableRow>
+        </BdsTableHeader>
+
+        <BdsTableBody>
+          {DATA.map((row, index) => (
+            <BdsTableRow key={index}>
+              <BdsTableCell>
+                <BdsCheckbox
+                  checked={selectedItems.includes(row.id)}
+                  onBdsChange={() => handleCheckboxChange(row.id)}
+                />
+              </BdsTableCell>
+              <BdsTableCell>
+                <BdsTypo variant="fs-14">{row.id}</BdsTypo>
+              </BdsTableCell>
+              <BdsTableCell>
+                <BdsTypo variant="fs-14">{row.produto}</BdsTypo>
+              </BdsTableCell>
+              <BdsTableCell>
+                <BdsTypo variant="fs-14">{row.valor}</BdsTypo>
+              </BdsTableCell>
+              <BdsTableCell>
+                <BdsTypo variant="fs-14">{row.marca}</BdsTypo>
+              </BdsTableCell>
+              <BdsTableCell>
+                <BdsTypo variant="fs-14">{row.modelo}</BdsTypo>
+              </BdsTableCell>
+              <BdsTableCell>
+                <BdsTypo variant="fs-14">{row.cor}</BdsTypo>
+              </BdsTableCell>
+              <BdsTableCell>
+                {row.disponibilidade === 'disponivel' ? (
+                  <BdsChipTag color="success">{row.disponibilidade}</BdsChipTag>
+                ) : (
+                  <BdsChipTag color="danger">{row.disponibilidade}</BdsChipTag>
+                )}
+              </BdsTableCell>
+            </BdsTableRow>
+          ))}
+        </BdsTableBody>
+      </BdsTable>
+    </BdsGrid>
+  );
+};
