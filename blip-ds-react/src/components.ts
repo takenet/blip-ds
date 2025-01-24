@@ -104,6 +104,7 @@ export const BdsTableRow = /*@__PURE__*/createReactComponent<JSX.BdsTableRow, HT
 export const BdsTableTh = /*@__PURE__*/createReactComponent<JSX.BdsTableTh, HTMLBdsTableThElement>('bds-table-th');
 export const BdsTabs = /*@__PURE__*/createReactComponent<JSX.BdsTabs, HTMLBdsTabsElement>('bds-tabs');
 export const BdsTestComponent = /*@__PURE__*/createReactComponent<JSX.BdsTestComponent, HTMLBdsTestComponentElement>('bds-test-component');
+export const BdsText = /*@__PURE__*/createReactComponent<JSX.BdsText, HTMLBdsTextElement>('bds-text');
 export const BdsThemeProvider = /*@__PURE__*/createReactComponent<JSX.BdsThemeProvider, HTMLBdsThemeProviderElement>('bds-theme-provider');
 export const BdsToast = /*@__PURE__*/createReactComponent<JSX.BdsToast, HTMLBdsToastElement>('bds-toast');
 export const BdsToastContainer = /*@__PURE__*/createReactComponent<JSX.BdsToastContainer, HTMLBdsToastContainerElement>('bds-toast-container');

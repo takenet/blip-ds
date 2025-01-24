@@ -1,0 +1,82 @@
+/* src/components/bds-text/text.scss */
+:host {
+  display: contents;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Bebas Neue", serif;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.text__color {
+  &--default {
+    color: $color-content-default;
+  }
+  &--disable {
+    color: $color-content-disable;
+  }
+  &--ghost {
+    color: $color-content-ghost;
+  }
+  &--link {
+    color: $color-primary;
+  }
+  &--negative {
+    color: $color-negative;
+  }
+  &--positive {
+    color: $color-positive;
+  }
+}
+
+.text__weight {
+  &--regular {
+    font-weight: $font-weight-regular;
+  }
+  &--semi-bold {
+    font-weight: $font-weight-semi-bold;
+  }
+  &--bold {
+    font-weight: $font-weight-bold;
+  }
+  &--extra-bold {
+    font-weight: $font-weight-extra-bold;
+  }
+}
+
+.text__overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text__style {
+  &--italic {
+    font-style: italic;
+  }
+  &--normal {
+    font-style: normal;
+  }
+}
+
+span-large {
+  font-size: $fs-40;
+}
+span-medium {
+  font-size: $fs-20;
+}
+span-small {
+  font-size: $fs-14;
+}
+span-micro {
+  font-size: $fs-12;
+}

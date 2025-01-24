@@ -67,6 +67,7 @@ import { SwitchSize } from "./components/switch/switch";
 import { JustifyContent } from "./components/table/table-cell/table-cell";
 import { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
+import { Align, Decoration, Style, Weight } from "./components/text/text";
 import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
@@ -2610,6 +2611,40 @@ export namespace Components {
     }
     interface BdsTestComponent {
     }
+    interface BdsText {
+        /**
+          * Escolha a cor do texto.
+         */
+        "color": string;
+        /**
+          * Added font style italic
+         */
+        "fontStyle"?: Style;
+        /**
+          * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
+         */
+        "fontWeight"?: Weight;
+        /**
+          * URL para quando a tag for 'a', se houver.
+         */
+        "href": string;
+        /**
+          * Define a tag HTML que será usada (ex: 'p', 'span', 'h1', 'a', etc).
+         */
+        "tag": string;
+        /**
+          * Adiciona text align do css para textos.
+         */
+        "textAlign"?: Align;
+        /**
+          * Adiciona text decoration do css para textos.
+         */
+        "textDecoration"?: Decoration;
+        /**
+          * Adiciona text align do css para textos.
+         */
+        "textOverflow"?: boolean;
+    }
     interface BdsThemeProvider {
         /**
           * Set what theme will be aplyed inside the component. 'light', 'dark';
@@ -3580,6 +3615,12 @@ declare global {
         prototype: HTMLBdsTestComponentElement;
         new (): HTMLBdsTestComponentElement;
     };
+    interface HTMLBdsTextElement extends Components.BdsText, HTMLStencilElement {
+    }
+    var HTMLBdsTextElement: {
+        prototype: HTMLBdsTextElement;
+        new (): HTMLBdsTextElement;
+    };
     interface HTMLBdsThemeProviderElement extends Components.BdsThemeProvider, HTMLStencilElement {
     }
     var HTMLBdsThemeProviderElement: {
@@ -3720,6 +3761,7 @@ declare global {
         "bds-table-th": HTMLBdsTableThElement;
         "bds-tabs": HTMLBdsTabsElement;
         "bds-test-component": HTMLBdsTestComponentElement;
+        "bds-text": HTMLBdsTextElement;
         "bds-theme-provider": HTMLBdsThemeProviderElement;
         "bds-toast": HTMLBdsToastElement;
         "bds-toast-container": HTMLBdsToastContainerElement;
@@ -6499,6 +6541,40 @@ declare namespace LocalJSX {
     }
     interface BdsTestComponent {
     }
+    interface BdsText {
+        /**
+          * Escolha a cor do texto.
+         */
+        "color"?: string;
+        /**
+          * Added font style italic
+         */
+        "fontStyle"?: Style;
+        /**
+          * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
+         */
+        "fontWeight"?: Weight;
+        /**
+          * URL para quando a tag for 'a', se houver.
+         */
+        "href"?: string;
+        /**
+          * Define a tag HTML que será usada (ex: 'p', 'span', 'h1', 'a', etc).
+         */
+        "tag"?: string;
+        /**
+          * Adiciona text align do css para textos.
+         */
+        "textAlign"?: Align;
+        /**
+          * Adiciona text decoration do css para textos.
+         */
+        "textDecoration"?: Decoration;
+        /**
+          * Adiciona text align do css para textos.
+         */
+        "textOverflow"?: boolean;
+    }
     interface BdsThemeProvider {
         /**
           * Set what theme will be aplyed inside the component. 'light', 'dark';
@@ -6775,6 +6851,7 @@ declare namespace LocalJSX {
         "bds-table-th": BdsTableTh;
         "bds-tabs": BdsTabs;
         "bds-test-component": BdsTestComponent;
+        "bds-text": BdsText;
         "bds-theme-provider": BdsThemeProvider;
         "bds-toast": BdsToast;
         "bds-toast-container": BdsToastContainer;
@@ -6885,6 +6962,7 @@ declare module "@stencil/core" {
             "bds-table-th": LocalJSX.BdsTableTh & JSXBase.HTMLAttributes<HTMLBdsTableThElement>;
             "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-test-component": LocalJSX.BdsTestComponent & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
+            "bds-text": LocalJSX.BdsText & JSXBase.HTMLAttributes<HTMLBdsTextElement>;
             "bds-theme-provider": LocalJSX.BdsThemeProvider & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
             "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
