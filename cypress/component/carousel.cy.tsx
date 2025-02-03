@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { BdsButton, BdsCarousel, BdsCarouselItem, BdsGrid, BdsIllustration, BdsTypo } from '../dist/blip-ds-react';
 
 export interface Props {
+  autoplay: boolean;
+  idComponent?: string;
   event?: boolean;
 }
 
@@ -53,7 +55,9 @@ const DATACAROUSEL = [
 ];
 
 const Carousel = (props: Props) => {
+  const autoplay = props.autoplay;
   const eventAvalible = props.event;
+  const componentId = props.idComponent;
   const [DATAITEMS, SETDATAITEMS] = useState(DATACAROUSEL);
   const eventChangeCarousel = (event) => {
     if (eventAvalible) {
@@ -61,28 +65,28 @@ const Carousel = (props: Props) => {
       input.value = event.detail.value.id;
     }
   };
-  const nextSlide = async () => {
-    const carouselElement = document.querySelector('bds-carousel');
+  const nextSlide = async (id: string) => {
+    const carouselElement = document.getElementById(id) as HTMLBdsCarouselElement;
     await carouselElement.nextSlide();
   };
-  const prevSlide = async () => {
-    const carouselElement = document.querySelector('bds-carousel');
+  const prevSlide = async (id: string) => {
+    const carouselElement = document.getElementById(id) as HTMLBdsCarouselElement;
     await carouselElement.prevSlide();
   };
-  const setActivated = async (value: number) => {
-    const carouselElement = document.querySelector('bds-carousel');
+  const setActivated = async (id: string, value: number) => {
+    const carouselElement = document.getElementById(id) as HTMLBdsCarouselElement;
     await carouselElement.setActivated(value);
   };
-  const pauseAutoplay = async () => {
-    const carouselElement = document.querySelector('bds-carousel');
+  const pauseAutoplay = async (id: string) => {
+    const carouselElement = document.getElementById(id) as HTMLBdsCarouselElement;
     await carouselElement.pauseAutoplay();
   };
-  const runAutoplay = async () => {
-    const carouselElement = document.querySelector('bds-carousel');
+  const runAutoplay = async (id: string) => {
+    const carouselElement = document.getElementById(id) as HTMLBdsCarouselElement;
     await carouselElement.runAutoplay();
   };
-  const buildCarousel = async () => {
-    const carouselElement = document.querySelector('bds-carousel');
+  const buildCarousel = async (id: string) => {
+    const carouselElement = document.getElementById(id) as HTMLBdsCarouselElement;
     const NEWITEM = {
       title: `${DATAITEMS.length + 1} - Título do Slide`,
       subTitle:
@@ -99,26 +103,27 @@ const Carousel = (props: Props) => {
   };
   return (
     <>
-      <button id="nextSlide" onClick={() => nextSlide()}>
+      <button id="nextSlide" onClick={() => nextSlide(componentId)}>
         nextSlide
       </button>
-      <button id="prevSlide" onClick={() => prevSlide()}>
+      <button id="prevSlide" onClick={() => prevSlide(componentId)}>
         prevSlide
       </button>
-      <button id="setActivated" onClick={() => setActivated(2)}>
+      <button id="setActivated" onClick={() => setActivated(componentId, 2)}>
         setActivated 2
       </button>
-      <button id="pauseAutoplay" onClick={() => pauseAutoplay()}>
+      <button id="pauseAutoplay" onClick={() => pauseAutoplay(componentId)}>
         pauseAutoplay
       </button>
-      <button id="runAutoplay" onClick={() => runAutoplay()}>
+      <button id="runAutoplay" onClick={() => runAutoplay(componentId)}>
         runAutoplay
       </button>
-      <button id="buildCarousel" onClick={() => buildCarousel()}>
+      <button id="buildCarousel" onClick={() => buildCarousel(componentId)}>
         buildCarousel
       </button>
       <BdsCarousel
-        autoplay={true}
+        id={componentId}
+        autoplay={autoplay}
         arrows="inside"
         bullets="inside"
         bulletsPosition="center"
@@ -155,17 +160,17 @@ const Carousel = (props: Props) => {
 describe('Teste de Renderização Carousel', () => {
   // Teste de Renderização
   it('deve renderizar o Carousel com o bullets correto', () => {
-    cy.mount(<Carousel event={false} />);
+    cy.mount(<Carousel autoplay={false} event={false} />);
     cy.get('bds-carousel').should('have.attr', 'bullets', 'inside');
   });
   // Teste de Renderização
   it('deve renderizar o Carousel com o bullets-position correto', () => {
-    cy.mount(<Carousel event={false} />);
+    cy.mount(<Carousel autoplay={false} event={false} />);
     cy.get('bds-carousel').should('have.attr', 'bullets-position', 'center');
   });
   // Teste de Renderização
   it('deve renderizar o Carousel com o arrows correto', () => {
-    cy.mount(<Carousel event={false} />);
+    cy.mount(<Carousel autoplay={false} event={false} />);
     cy.get('bds-carousel').should('have.attr', 'arrows', 'inside');
   });
 });
@@ -173,7 +178,7 @@ describe('Teste de Renderização Carousel', () => {
 describe('Teste de Eventos Carousel', () => {
   // Teste de Evento bdsClick
   it('deve chamar o evento onBdsChangeCarousel ao clicar', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={false} event={true} />);
     cy.get('button[id="nextSlide"]').click();
     cy.get('input#event-test').should('have.value', '2');
   });
@@ -182,54 +187,54 @@ describe('Teste de Eventos Carousel', () => {
 describe('Teste de Acessibilidade Carousel', () => {
   // Teste de Acessibilidade com Tab
   it('deve ser possível navegar para o carousel usando a tecla Tab', () => {
-    cy.mount(<Carousel event={false} />);
+    cy.mount(<Carousel autoplay={false} event={false} idComponent="tab" />);
     cy.get('button[id=buildCarousel]').first().focus();
-    cy.wait(50);
+    cy.wait(100);
     cy.realPress('Tab');
-    cy.wait(50);
+    cy.wait(100);
     cy.get('bds-carousel').should('have.focus');
   });
   // Teste de Acessibilidade com ArrowRight
   it('deve ser possível navegar para o carousel usando a tecla ArrowRight', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={false} event={true} idComponent="arrowright" />);
     cy.get('button[id=buildCarousel]').first().focus();
-    cy.wait(50);
+    cy.wait(100);
     cy.realPress('Tab');
-    cy.wait(50);
+    cy.wait(100);
     cy.realPress('ArrowRight');
     cy.get('input#event-test').should('have.value', '2');
   });
   // Teste de Acessibilidade com ArrowLeft
   it('deve ser possível navegar para o carousel usando a tecla ArrowLeft', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={false} event={true} idComponent="arrowleft" />);
     cy.get('button[id=buildCarousel]').first().focus();
-    cy.wait(50);
+    cy.wait(100);
     cy.realPress('Tab');
-    cy.wait(50);
+    cy.wait(100);
     cy.realPress('ArrowLeft');
     cy.get('input#event-test').should('have.value', '4');
   });
   // Teste de Acessibilidade método nextSlide
   it('Verificar se o método nextSlide esta sendo correspondido', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={false} event={true} idComponent="nextslide" />);
     cy.get('button[id="nextSlide"]').click();
     cy.get('input#event-test').should('have.value', '2');
   });
   // Teste de Acessibilidade método prevSlide
   it('Verificar se o método prevSlide esta sendo correspondido', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={false} event={true} idComponent="prevslide" />);
     cy.get('button[id="prevSlide"]').click();
     cy.get('input#event-test').should('have.value', '4');
   });
   // Teste de Acessibilidade método setActivated
   it('Verificar se o método setActivated esta sendo correspondido', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={false} event={true} idComponent="setactivated" />);
     cy.get('button[id="setActivated"]').click();
     cy.get('input#event-test').should('have.value', '2');
   });
   // Teste de Acessibilidade método pauseAutoplay
   it('Verificar se o método pauseAutoplay esta sendo correspondido', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={true} event={true} idComponent="pauseautoplay" />);
     cy.get('button[id="pauseAutoplay"]').click();
     cy.get('bds-carousel')
       .shadow()
@@ -238,7 +243,7 @@ describe('Teste de Acessibilidade Carousel', () => {
   });
   // Teste de Acessibilidade método runAutoplay
   it('Verificar se o método runAutoplay esta sendo correspondido', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={true} event={true} idComponent="runautoplay" />);
     cy.get('button[id="runAutoplay"]').click();
     cy.get('bds-carousel')
       .shadow()
@@ -247,7 +252,7 @@ describe('Teste de Acessibilidade Carousel', () => {
   });
   // Teste de Acessibilidade método buildCarousel
   it('Verificar se o método buildCarousel esta sendo correspondido', () => {
-    cy.mount(<Carousel event={true} />);
+    cy.mount(<Carousel autoplay={false} event={true} idComponent="buildcarousel" />);
     cy.get('button[id="buildCarousel"]').click();
     cy.wait(1100);
     cy.get('button[id="prevSlide"]').click();
