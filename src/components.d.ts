@@ -20,7 +20,7 @@ import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spin
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
 import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
 import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
-import { PaperBackground, PaperElevation } from "./components/paper/paper-interface";
+import { BorderColor, PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { arrows, bullets, bulletsPositions, gap } from "./components/carousel/carousel-interface";
@@ -464,6 +464,10 @@ export namespace Components {
          */
         "bgColor"?: PaperBackground;
         /**
+          * Prop for set the border color.
+         */
+        "borderColor"?: BorderColor;
+        /**
           * If the prop is true, the component will be clickable.
          */
         "clickable"?: boolean;
@@ -475,6 +479,10 @@ export namespace Components {
           * Prop for set the height of the component.
          */
         "height"?: string;
+        /**
+          * Prop for set the background color.
+         */
+        "selectable"?: boolean;
         /**
           * Prop for set the width of the component.
          */
@@ -2003,6 +2011,10 @@ export namespace Components {
           * Prop for set the border of the component.
          */
         "border"?: boolean;
+        /**
+          * Prop for set the border color.
+         */
+        "borderColor"?: BorderColor;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -4152,6 +4164,10 @@ declare namespace LocalJSX {
          */
         "bgColor"?: PaperBackground;
         /**
+          * Prop for set the border color.
+         */
+        "borderColor"?: BorderColor;
+        /**
           * If the prop is true, the component will be clickable.
          */
         "clickable"?: boolean;
@@ -4167,6 +4183,10 @@ declare namespace LocalJSX {
           * This event will be dispatch when click on the component.
          */
         "onBdsClick"?: (event: BdsCardCustomEvent<any>) => void;
+        /**
+          * Prop for set the background color.
+         */
+        "selectable"?: boolean;
         /**
           * Prop for set the width of the component.
          */
@@ -5858,6 +5878,10 @@ declare namespace LocalJSX {
           * Prop for set the border of the component.
          */
         "border"?: boolean;
+        /**
+          * Prop for set the border color.
+         */
+        "borderColor"?: BorderColor;
         /**
           * Data test is the prop to specifically test the component action object.
          */

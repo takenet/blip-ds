@@ -2,7 +2,7 @@
 
 :host {
   display: block;
-  border-radius: 7px;
+  border-radius: 16px;
 }
 
 :host(.border) {
@@ -28,6 +28,44 @@
 
 :host(.bg-surface-4) {
   background-color: $color-surface-4;
+}
+
+:host(.border-1) {
+  border-color: $color-border-1;
+}
+
+:host(.border-2) {
+  border-color: $color-border-2;
+}
+
+:host(.border-3) {
+  border-color: $color-border-3;
+}
+
+:host(.border-primary) {
+  border-color: $color-primary;
+}
+
+:host(.border-secondary) {
+  border-color: $color-secondary;
+}
+:host(.border-positive) {
+  border-color: $color-positive;
+}
+:host(.border-negative) {
+  border-color: $color-negative;
+}
+:host(.border-warning) {
+  border-color: $color-warning;
+}
+:host(.border-error) {
+  border-color: $color-error;
+}
+:host(.border-success) {
+  border-color: $color-success;
+}
+:host(.border-delete) {
+  border-color: $color-delete;
 }
 
 :host(.paper__elevation--none) {
