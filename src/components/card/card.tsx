@@ -1,7 +1,7 @@
 import { Component, ComponentInterface, Host, h, Prop, Event, Element, State, EventEmitter } from '@stencil/core';
-import { PaperBackground } from '../paper/paper-interface';
+import { PaperBackground, BorderColor } from '../paper/paper-interface';
 
-export type elevationType = 'primary' | 'secondary' | 'static';
+export type elevationType = 'primary' | 'secondary' | 'static' | 'none';
 
 @Component({
   tag: 'bds-card',
@@ -26,6 +26,15 @@ export class Card implements ComponentInterface {
    * Prop for set the background color.
    */
   @Prop() bgColor?: PaperBackground = 'surface-1';
+  
+  /**
+   * Prop for set the background color.
+   */
+   @Prop() selectable?: boolean = false;
+  /**
+   * Prop for set the border color.
+   */
+  @Prop({ mutable: true }) borderColor?: BorderColor = null;
   /**
    * Data test is the prop to specifically test the component action object.
    */
@@ -34,6 +43,7 @@ export class Card implements ComponentInterface {
   @State() isHovered = false;
   @State() isPressed = false;
   @State() elevation: elevationType = 'primary';
+
   /**
    * This event will be dispatch when click on the component.
    */
@@ -46,7 +56,7 @@ export class Card implements ComponentInterface {
   componentDidLoad() {
     this.cardElement = this.element.shadowRoot.querySelector('.card');
 
-    if (this.cardElement && this.clickable === true) {
+    if (this.cardElement && (this.clickable === true || this.selectable === true)) {
       this.cardElement.addEventListener('mouseenter', () => {
         this.isHovered = true;
       });
@@ -70,6 +80,7 @@ export class Card implements ComponentInterface {
           this.bdsClick.emit();
         }
       });
+
       this.cardElement.addEventListener('keyup', (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
           this.isPressed = false;
@@ -101,12 +112,19 @@ export class Card implements ComponentInterface {
     return (
       <Host style={styleHost}>
         <bds-paper
+          border={this.clickable ? false : true}
           elevation={this.elevation}
-          class={{ card: true, card_hover: this.clickable }}
+          class={{
+            card: true,
+            card_hover: this.clickable,
+            card_hover_selectable: this.isHovered && this.selectable ? true : false,
+            card_hover_pressed: this.isHovered && this.selectable ? true : false
+          }}
           height={this.height}
           width={this.width}
           bgColor={this.bgColor}
           data-test={this.dataTest}
+          border-color={this.borderColor ? this.borderColor : 'border-1'}
         >
           <div tabindex="0" class="focus" onKeyDown={this.handleKeyDown.bind(this)}></div>
           <bds-grid xxs="12" direction="column" gap="2" padding="2">
