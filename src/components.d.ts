@@ -1114,160 +1114,164 @@ export namespace Components {
     }
     interface BdsInput {
         /**
-          * Capitalizes every word's second character.
+          * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
-          * Hint for form autofill feature
+          * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
          */
         "autoComplete"?: InputAutoComplete;
         /**
-          * Internal prop to identify input chips
+          * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips": boolean;
         /**
-          * Return the validity of the input.
+          * Limpa o valor do campo de entrada.
          */
         "clear": () => Promise<void>;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de colunas da área de texto (se for `textarea`).
          */
         "cols"?: number;
         /**
-          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+          * Define se será exibido um contador de comprimento de caracteres.
          */
         "counterLength"?: boolean;
         /**
-          * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
+          * Define a regra do contador de comprimento de caracteres (min, max, etc).
          */
         "counterLengthRule"?: InputCounterLengthRules;
         /**
-          * Add state danger on input, use for use feedback.
+          * Define se o input está em estado de erro.
          */
         "danger"?: boolean;
         /**
-          * Id to support Cypress.
+          * Data test é a prop para testar especificamente a ação do componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Define se o input está desabilitado.
          */
         "disabled"?: boolean;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um email válido.
          */
         "emailErrorMessage": string;
+        "encode"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro exibida quando o valor do input é inválido.
          */
         "errorMessage"?: string;
         /**
-          * Returns the native `<input>` element used under the hood.
+          * Retorna o elemento de input do componente.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda exibida abaixo do input.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Nome do ícone a ser exibido dentro do input.
          */
         "icon"?: string;
         /**
-          * Input Name
+          * Nome do input, usado para identificação no formulário.
          */
         "inputName"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Define se o input será submetido ao pressionar Enter.
          */
         "isSubmit": boolean;
         /**
-          * if `true` input switched to textarea
+          * Define se o input é uma área de texto (textarea).
          */
         "isTextarea": boolean;
         /**
-          * Return the validity of the input.
+          * Verifica se o campo de entrada é válido.
          */
         "isValid": () => Promise<boolean>;
         /**
-          * label in input, with he the input size increases.
+          * Rótulo que será exibido acima do input.
          */
         "label"?: string;
         /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
+          * Define o valor máximo permitido para o input.
          */
         "max"?: string;
         /**
-          * Error message when the value is higher than the max value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
          */
         "maxErrorMessage": string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+          * Define o número máximo de caracteres permitidos no input.
          */
         "maxlength"?: number;
         /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
+          * Define o valor mínimo permitido para o input.
          */
         "min"?: string;
         /**
-          * Error message when the value is lower than the min value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
          */
         "minErrorMessage": string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+          * Define o número mínimo de caracteres permitidos no input.
          */
         "minlength"?: number;
         /**
-          * Error message when the value is lower than the minlength
+          * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
          */
         "minlengthErrorMessage": string;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um número válido.
          */
         "numberErrorMessage": string;
         /**
-          * Indicated to pass a regex pattern to input
+          * Define um padrão regex que o valor do input deve seguir.
          */
         "pattern"?: string;
         /**
-          * A tip for the user who can enter no controls.
+          * Texto que será exibido como sugestão ou dica no input.
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Torna o input somente leitura.
          */
         "readonly": boolean;
+        /**
+          * Remove o foco do campo de entrada.
+         */
         "removeFocus": () => Promise<void>;
         /**
-          * If `true`, the input value will be required.
+          * Define se o input é obrigatório.
          */
         "required": boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
          */
         "requiredErrorMessage": string;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
         "rows"?: number;
         /**
-          * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
+          * Define o foco no campo de entrada.
          */
         "setFocus": () => Promise<void>;
         /**
-          * Add state success on input, use for use feedback.
+          * Define se o input está em estado de sucesso.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem exibida quando o valor do input é válido.
          */
         "successMessage"?: string;
         /**
-          * Input type. Can be one of: "text", "password", "number" or "email".
+          * Define o tipo do input (por exemplo, `text`, `password`, etc).
          */
         "type"?: InputType;
         /**
-          * The value of the input.
+          * O valor atual do input.
          */
         "value"?: string | null;
     }
@@ -4853,171 +4857,172 @@ declare namespace LocalJSX {
     }
     interface BdsInput {
         /**
-          * Capitalizes every word's second character.
+          * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
-          * Hint for form autofill feature
+          * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
          */
         "autoComplete"?: InputAutoComplete;
         /**
-          * Internal prop to identify input chips
+          * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips"?: boolean;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de colunas da área de texto (se for `textarea`).
          */
         "cols"?: number;
         /**
-          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+          * Define se será exibido um contador de comprimento de caracteres.
          */
         "counterLength"?: boolean;
         /**
-          * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
+          * Define a regra do contador de comprimento de caracteres (min, max, etc).
          */
         "counterLengthRule"?: InputCounterLengthRules;
         /**
-          * Add state danger on input, use for use feedback.
+          * Define se o input está em estado de erro.
          */
         "danger"?: boolean;
         /**
-          * Id to support Cypress.
+          * Data test é a prop para testar especificamente a ação do componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Define se o input está desabilitado.
          */
         "disabled"?: boolean;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um email válido.
          */
         "emailErrorMessage"?: string;
+        "encode"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro exibida quando o valor do input é inválido.
          */
         "errorMessage"?: string;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda exibida abaixo do input.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Nome do ícone a ser exibido dentro do input.
          */
         "icon"?: string;
         /**
-          * Input Name
+          * Nome do input, usado para identificação no formulário.
          */
         "inputName"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Define se o input será submetido ao pressionar Enter.
          */
         "isSubmit"?: boolean;
         /**
-          * if `true` input switched to textarea
+          * Define se o input é uma área de texto (textarea).
          */
         "isTextarea"?: boolean;
         /**
-          * label in input, with he the input size increases.
+          * Rótulo que será exibido acima do input.
          */
         "label"?: string;
         /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
+          * Define o valor máximo permitido para o input.
          */
         "max"?: string;
         /**
-          * Error message when the value is higher than the max value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
          */
         "maxErrorMessage"?: string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+          * Define o número máximo de caracteres permitidos no input.
          */
         "maxlength"?: number;
         /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
+          * Define o valor mínimo permitido para o input.
          */
         "min"?: string;
         /**
-          * Error message when the value is lower than the min value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
          */
         "minErrorMessage"?: string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+          * Define o número mínimo de caracteres permitidos no input.
          */
         "minlength"?: number;
         /**
-          * Error message when the value is lower than the minlength
+          * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
          */
         "minlengthErrorMessage"?: string;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um número válido.
          */
         "numberErrorMessage"?: string;
         /**
-          * Emitted when the value has changed.
+          * Evento disparado quando o valor do input muda.
          */
         "onBdsChange"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event input focus.
+          * Evento disparado quando o input ganha o foco.
          */
         "onBdsFocus"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Emitted when the input has changed.
+          * Evento disparado quando o input recebe um input (digitação).
          */
         "onBdsInput"?: (event: BdsInputCustomEvent<KeyboardEvent>) => void;
         /**
-          * Event input key down backspace.
+          * Evento disparado quando a tecla "Backspace" é pressionada.
          */
         "onBdsKeyDownBackspace"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event input onblur.
+          * Evento disparado quando o input perde o foco.
          */
         "onBdsOnBlur"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event pattern validation.
+          * Evento disparado para validação de padrão regex.
          */
         "onBdsPatternValidation"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event input enter.
+          * Evento disparado quando o formulário é submetido.
          */
         "onBdsSubmit"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Indicated to pass a regex pattern to input
+          * Define um padrão regex que o valor do input deve seguir.
          */
         "pattern"?: string;
         /**
-          * A tip for the user who can enter no controls.
+          * Texto que será exibido como sugestão ou dica no input.
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Torna o input somente leitura.
          */
         "readonly"?: boolean;
         /**
-          * If `true`, the input value will be required.
+          * Define se o input é obrigatório.
          */
         "required"?: boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
          */
         "requiredErrorMessage"?: string;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
         "rows"?: number;
         /**
-          * Add state success on input, use for use feedback.
+          * Define se o input está em estado de sucesso.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem exibida quando o valor do input é válido.
          */
         "successMessage"?: string;
         /**
-          * Input type. Can be one of: "text", "password", "number" or "email".
+          * Define o tipo do input (por exemplo, `text`, `password`, etc).
          */
         "type"?: InputType;
         /**
-          * The value of the input.
+          * O valor atual do input.
          */
         "value"?: string | null;
     }
