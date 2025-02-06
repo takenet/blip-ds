@@ -44,6 +44,7 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
+import { languages as languages1 } from "./components/input-phone-number/input-phone-number";
 import { TypeList } from "./components/list/list";
 import { Data } from "./components/list/list-interface";
 import { TypeList as TypeList1 } from "./components/list/list";
@@ -71,7 +72,7 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages1 } from "./components/upload/languages";
+import { languages as languages2 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -1540,68 +1541,72 @@ export namespace Components {
     interface BdsInputPhoneNumber {
         "changeCountry": (code: any, isoCode: any, flag: any) => Promise<void>;
         /**
-          * Add state danger on input, use for use feedback.
+          * Habilita o estado "danger" no input.
          */
         "danger"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Data-test para identificar o componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Desabilita o input.
          */
         "disabled"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+          * Data-test para o botão de seleção de bandeira.
          */
         "dtSelectFlag"?: string;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro a ser exibida.
          */
         "errorMessage"?: string;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda para o usuário.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Ícone à esquerda do input.
          */
         "icon"?: string;
         /**
-          * label in input, with he the input size increases.
+          * Label do input.
          */
         "label"?: string;
         /**
-          * Error message when input is required
+          * **Nova prop:** Define a linguagem do componente. Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
+         */
+        "language"?: languages;
+        /**
+          * Mensagem de erro para validação numérica.
          */
         "numberErrorMessage": string;
         /**
-          * The options of select.
+          * Lista de opções do select.
          */
         "options"?: Array<Option>;
         "removeFocus": () => Promise<void>;
         /**
-          * If `true`, the input value will be required.
+          * Se `true`, o valor do input será obrigatório.
          */
         "required": boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro para campo obrigatório.
          */
         "requiredErrorMessage": string;
         /**
-          * Add state success on input, use for use feedback.
+          * Habilita o estado "success" no input.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de sucesso a ser exibida.
          */
         "successMessage"?: string;
         /**
-          * The value of the phone number input.
+          * Valor do input de telefone.
          */
         "text"?: string;
         /**
-          * the value of the select.
+          * Valor do select.
          */
         "value"?: string | null;
     }
@@ -2796,7 +2801,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Used to allow upload multiple files.
          */
@@ -5350,87 +5355,91 @@ declare namespace LocalJSX {
     }
     interface BdsInputPhoneNumber {
         /**
-          * Add state danger on input, use for use feedback.
+          * Habilita o estado "danger" no input.
          */
         "danger"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Data-test para identificar o componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Desabilita o input.
          */
         "disabled"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+          * Data-test para o botão de seleção de bandeira.
          */
         "dtSelectFlag"?: string;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro a ser exibida.
          */
         "errorMessage"?: string;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda para o usuário.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Ícone à esquerda do input.
          */
         "icon"?: string;
         /**
-          * label in input, with he the input size increases.
+          * Label do input.
          */
         "label"?: string;
         /**
-          * Error message when input is required
+          * **Nova prop:** Define a linguagem do componente. Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
+         */
+        "language"?: languages;
+        /**
+          * Mensagem de erro para validação numérica.
          */
         "numberErrorMessage"?: string;
         /**
-          * Emitted when the select loses focus.
+          * Evento disparado quando o select perde o foco.
          */
         "onBdsBlur"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
-          * Emitted when the selection is cancelled.
+          * Evento disparado quando a seleção é cancelada.
          */
         "onBdsCancel"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
-          * Emitted when the select loses focus.
+          * Evento disparado quando o select ganha foco.
          */
         "onBdsFocus"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
-          * Emitted when the input has changed.
+          * Evento disparado quando o input sofre alteração.
          */
         "onBdsInput"?: (event: BdsInputPhoneNumberCustomEvent<KeyboardEvent>) => void;
         /**
-          * Emitted when the value has changed.
+          * Evento disparado quando o valor é alterado.
          */
         "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<any>) => void;
         /**
-          * The options of select.
+          * Lista de opções do select.
          */
         "options"?: Array<Option>;
         /**
-          * If `true`, the input value will be required.
+          * Se `true`, o valor do input será obrigatório.
          */
         "required"?: boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro para campo obrigatório.
          */
         "requiredErrorMessage"?: string;
         /**
-          * Add state success on input, use for use feedback.
+          * Habilita o estado "success" no input.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de sucesso a ser exibida.
          */
         "successMessage"?: string;
         /**
-          * The value of the phone number input.
+          * Valor do input de telefone.
          */
         "text"?: string;
         /**
-          * the value of the select.
+          * Valor do select.
          */
         "value"?: string | null;
     }
@@ -6677,7 +6686,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Used to allow upload multiple files.
          */

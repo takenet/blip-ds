@@ -11,22 +11,22 @@
   },
   "afghanistan-flag": {
     "code": "+93",
-    "name": "Afeganistão",
+    "name": "Afganistán",
     "isoCode": "AF / AFG"
   },
   "south-africa-flag": {
     "code": "+27",
-    "name": "África do Sul",
+    "name": "Sudáfrica",
     "isoCode": "ZA / ZAF"
   },
   "albania-flag": {
     "code": "+355",
-    "name": "Albânia",
+    "name": "Albania",
     "isoCode": "AL / ALB"
   },
   "germany-flag": {
     "code": "+49",
-    "name": "Alemanha",
+    "name": "Alemania",
     "isoCode": "DE / DEU"
   },
   "andorra-flag": {
@@ -41,27 +41,27 @@
   },
   "anguilla-flag": {
     "code": "+1-264",
-    "name": "Anguila",
+    "name": "Anguilla",
     "isoCode": "AI / AIA"
   },
   "antigua-and-barbuda-flag": {
     "code": "+1-268",
-    "name": "Antígua e Barbuda",
+    "name": "Antigua y Barbuda",
     "isoCode": "AG / ATG"
   },
   "netherlands-antilles-flag": {
     "code": "+599",
-    "name": "Antilhas Holandesas",
+    "name": "Antillas Holandesas",
     "isoCode": "AN / ANT"
   },
   "saudi-arabia-flag": {
     "code": "+966",
-    "name": "Arábia Saudita",
+    "name": "Arabia Saudita",
     "isoCode": "SA / SAU"
   },
   "algeria-flag": {
     "code": "+213",
-    "name": "Argélia",
+    "name": "Argelia",
     "isoCode": "DZ / DZA"
   },
   "argentina-flag": {
@@ -71,7 +71,7 @@
   },
   "armenia-flag": {
     "code": "+374",
-    "name": "Armênia",
+    "name": "Armenia",
     "isoCode": "AM / ARM"
   },
   "aruba-flag": {
@@ -81,17 +81,17 @@
   },
   "australia-flag": {
     "code": "+61",
-    "name": "Austrália",
+    "name": "Australia",
     "isoCode": "AU / AUS"
   },
   "austria-flag": {
     "code": "+43",
-    "name": "Áustria",
+    "name": "Austria",
     "isoCode": "AT / AUT"
   },
   "azerbaijan-flag": {
     "code": "+994",
-    "name": "Azerbaijão",
+    "name": "Azerbaiyán",
     "isoCode": "AZ / AZE"
   },
   "bahamas-flag": {
@@ -101,7 +101,7 @@
   },
   "bahrain-flag": {
     "code": "+973",
-    "name": "Bahrein",
+    "name": "Baréin",
     "isoCode": "BH / BHR"
   },
   "bangladesh-flag": {
@@ -121,32 +121,32 @@
   },
   "belize-flag": {
     "code": "+501",
-    "name": "Belize",
+    "name": "Belice",
     "isoCode": "BZ / BLZ"
   },
   "benin-flag": {
     "code": "+229",
-    "name": "Benim",
+    "name": "Benín",
     "isoCode": "BJ / BEN"
   },
   "bermuda-flag": {
     "code": "+1-441",
-    "name": "Bermuda",
+    "name": "Bermudas",
     "isoCode": "BM / BMU"
   },
   "belarus-flag": {
     "code": "+375",
-    "name": "Bielorrússia",
+    "name": "Bielorrusia",
     "isoCode": "BY / BLR"
   },
   "bolivia-flag": {
     "code": "+591",
-    "name": "Bolívia",
+    "name": "Bolivia",
     "isoCode": "BO / BOL"
   },
   "bosnia-and-herzegovina-flag": {
     "code": "+387",
-    "name": "Bósnia e Herzegovina",
+    "name": "Bosnia y Herzegovina",
     "isoCode": "BA / BIH"
   },
   "botswana-flag": {
@@ -156,22 +156,22 @@
   },
   "british-indian-ocean-territory-flag": {
     "code": "+246",
-    "name": "Território Britânico do Oceano Índico",
+    "name": "Territorio Británico del Océano Índico",
     "isoCode": "IO / IOT"
   },
   "british-virgin-islands-flag": {
     "code": "+1-284",
-    "name": "Ilhas Virgens Britânicas",
+    "name": "Islas Vírgenes Británicas",
     "isoCode": "VG / VGB"
   },
   "brunei-flag": {
     "code": "+673",
-    "name": "Brunei",
+    "name": "Brunéi",
     "isoCode": "BN / BRN"
   },
   "bulgaria-flag": {
     "code": "+359",
-    "name": "Bulgária",
+    "name": "Bulgaria",
     "isoCode": "BG / BGR"
   },
   "burkina-faso-flag": {
@@ -186,7 +186,7 @@
   },
   "bhutan-flag": {
     "code": "+975",
-    "name": "Butão",
+    "name": "Bután",
     "isoCode": "BT / BTN"
   },
   "cape-verde-flag": {
@@ -196,12 +196,12 @@
   },
   "cameroon-flag": {
     "code": "+237",
-    "name": "Camarões",
+    "name": "Camerún",
     "isoCode": "CM / CMR"
   },
   "cambodia-flag": {
     "code": "+855",
-    "name": "Camboja",
+    "name": "Camboya",
     "isoCode": "KH / KHM"
   },
   "canada-flag": {
@@ -216,12 +216,12 @@
   },
   "kazakhstan-flag": {
     "code": "+7",
-    "name": "Cazaquistão",
+    "name": "Kazajistán",
     "isoCode": "KZ / KAZ"
   },
   "chad-flag": {
     "code": "+235",
-    "name": "Chade",
+    "name": "Chad",
     "isoCode": "TD / TCD"
   },
   "china-flag": {
@@ -241,27 +241,27 @@
   },
   "singapore-flag": {
     "code": "+65",
-    "name": "Cingapura",
+    "name": "Singapur",
     "isoCode": "SG / SGP"
   },
   "colombia-flag": {
     "code": "+57",
-    "name": "Colômbia",
+    "name": "Colombia",
     "isoCode": "CO / COL"
   },
   "comoros-flag": {
     "code": "+269",
-    "name": "Comores",
+    "name": "Comoras",
     "isoCode": "KM / COM"
   },
   "north-korea-flag": {
     "code": "+850",
-    "name": "Coréia do Norte",
+    "name": "Corea del Norte",
     "isoCode": "KP / PRK"
   },
   "ivory-coast-flag": {
     "code": "+225",
-    "name": "Costa do Marfim",
+    "name": "Costa de Marfil",
     "isoCode": "CI / CIV"
   },
   "costa-rica-flag": {
@@ -271,7 +271,7 @@
   },
   "croatia-flag": {
     "code": "+385",
-    "name": "Croácia",
+    "name": "Croacia",
     "isoCode": "HR / HRV"
   },
   "cuba-flag": {
@@ -281,7 +281,7 @@
   },
   "curacao-flag": {
     "code": "+599",
-    "name": "Curaçao",
+    "name": "Curazao",
     "isoCode": "CW / CUW"
   },
   "denmark-flag": {
@@ -291,7 +291,7 @@
   },
   "djibouti-flag": {
     "code": "+253",
-    "name": "Djibuti",
+    "name": "Yibuti",
     "isoCode": "DJ / DJI"
   },
   "dominica-flag": {
@@ -301,12 +301,12 @@
   },
   "ecuador-flag": {
     "code": "+593",
-    "name": "Equador",
+    "name": "Ecuador",
     "isoCode": "EC / ECU"
   },
   "egypt-flag": {
     "code": "+20",
-    "name": "Egito",
+    "name": "Egipto",
     "isoCode": "EG / EGY"
   },
   "el-salvador-flag": {
@@ -316,42 +316,42 @@
   },
   "united-arab-emirates-flag": {
     "code": "+971",
-    "name": "Emirados Árabes Unidos",
+    "name": "Emiratos Árabes Unidos",
     "isoCode": "AE / ARE"
   },
   "eritrea-flag": {
     "code": "+291",
-    "name": "Eritreia",
+    "name": "Eritrea",
     "isoCode": "ER / ERI"
   },
   "spain-flag": {
     "code": "+34",
-    "name": "Espanha",
+    "name": "España",
     "isoCode": "ES / ESP"
   },
   "slovakia-flag": {
     "code": "+421",
-    "name": "Eslováquia",
+    "name": "Eslovaquia",
     "isoCode": "SK / SVK"
   },
   "slovenia-flag": {
     "code": "+386",
-    "name": "Eslovênia",
+    "name": "Eslovenia",
     "isoCode": "SI / SVN"
   },
   "estonia-flag": {
     "code": "+372",
-    "name": "Estônia",
+    "name": "Estonia",
     "isoCode": "EE / EST"
   },
   "ethiopia-flag": {
     "code": "+251",
-    "name": "Etiópia",
+    "name": "Etiopía",
     "isoCode": "ET / ETH"
   },
   "fiji-flag": {
     "code": "+679",
-    "name": "Fiji",
+    "name": "Fiyi",
     "isoCode": "FJ / FJI"
   },
   "philippines-flag": {
@@ -361,32 +361,32 @@
   },
   "finland-flag": {
     "code": "+358",
-    "name": "Finlândia",
+    "name": "Finlandia",
     "isoCode": "FI / FIN"
   },
   "france-flag": {
     "code": "+33",
-    "name": "França",
+    "name": "Francia",
     "isoCode": "FR / FRA"
   },
   "gabon-flag": {
     "code": "+241",
-    "name": "Gabão",
+    "name": "Gabón",
     "isoCode": "GA / GAB"
   },
   "gambia-flag": {
     "code": "+220",
-    "name": "Gâmbia",
+    "name": "Gambia",
     "isoCode": "GM / GMB"
   },
   "georgia-flag": {
     "code": "+995",
-    "name": "Geórgia",
+    "name": "Georgia",
     "isoCode": "GE / GEO"
   },
   "ghana-flag": {
     "code": "+233",
-    "name": "Gana",
+    "name": "Ghana",
     "isoCode": "GH / GHA"
   },
   "gibraltar-flag": {
@@ -401,12 +401,12 @@
   },
   "greece-flag": {
     "code": "+30",
-    "name": "Grécia",
+    "name": "Grecia",
     "isoCode": "GR / GRC"
   },
   "greenland-flag": {
     "code": "+299",
-    "name": "Groenlândia",
+    "name": "Groenlandia",
     "isoCode": "GL / GRL"
   },
   "guam-flag": {
@@ -421,42 +421,42 @@
   },
   "guernsey-flag": {
     "code": "+44-1481",
-    "name": "Guernsey",
+    "name": "Guernesey",
     "isoCode": "GG / GGY"
   },
   "guinea-flag": {
     "code": "+224",
-    "name": "Guiné",
+    "name": "Guinea",
     "isoCode": "GN / GIN"
   },
   "guinea-bissau-flag": {
     "code": "+245",
-    "name": "Guiné Bissau",
+    "name": "Guinea-Bisáu",
     "isoCode": "GW / GNB"
   },
   "equatorial-guinea-flag": {
     "code": "+240",
-    "name": "Guiné Equatorial",
+    "name": "Guinea Ecuatorial",
     "isoCode": "GQ / GNQ"
   },
   "guyana-flag": {
     "code": "+592",
-    "name": "Guiana",
+    "name": "Guyana",
     "isoCode": "GY / GUY"
   },
   "french-guyana-flag": {
     "code": "+594",
-    "name": "Guiana Francesa",
+    "name": "Guayana Francesa",
     "isoCode": "GQ / GNQ"
   },
   "haiti-flag": {
     "code": "+509",
-    "name": "Haiti",
+    "name": "Haití",
     "isoCode": "HT / HTI"
   },
   "netherlands-flag": {
     "code": "+31",
-    "name": "Holanda",
+    "name": "Países Bajos",
     "isoCode": "NL / NLD"
   },
   "honduras-flag": {
@@ -471,92 +471,92 @@
   },
   "hungary-flag": {
     "code": "+36",
-    "name": "Hungria",
+    "name": "Hungría",
     "isoCode": "HU / HUN"
   },
   "iceland-flag": {
     "code": "+354",
-    "name": "Islândia",
+    "name": "Islandia",
     "isoCode": "IS / ISL"
   },
   "yemen-flag": {
     "code": "+967",
-    "name": "Iémen",
+    "name": "Yemen",
     "isoCode": "YE / YEM"
   },
   "cayman-islands-flag": {
     "code": "+1-345",
-    "name": "Ilhas Cayman",
+    "name": "Islas Caimán",
     "isoCode": "KY / CYM"
   },
   "isle-of-man-flag": {
     "code": "+44-1624",
-    "name": "Ilha de Man",
+    "name": "Isla de Man",
     "isoCode": "IM / IMN"
   },
   "christmas-island-flag": {
     "code": "+61",
-    "name": "Ilha do Natal",
+    "name": "Isla de Navidad",
     "isoCode": "CX / CXR"
   },
   "cook-islands-flag": {
     "code": "+682",
-    "name": "Ilhas Cook",
+    "name": "Islas Cook",
     "isoCode": "CK / COK"
   },
   "falkland-islands-flag": {
     "code": "+500",
-    "name": "Ilhas Malvinas",
+    "name": "Islas Malvinas",
     "isoCode": "FK / FLK"
   },
   "faroe-islands-flag": {
     "code": "+298",
-    "name": "ilhas Faroe",
+    "name": "Islas Feroe",
     "isoCode": "FO / FRO"
   },
   "marshall-islands-flag": {
     "code": "+692",
-    "name": "Ilhas Marshall",
+    "name": "Islas Marshall",
     "isoCode": "MH / MHL"
   },
   "northern-mariana-islands-flag": {
     "code": "+1-670",
-    "name": "Ilhas Marianas do Norte",
+    "name": "Islas Marianas del Norte",
     "isoCode": "MP / MNP"
   },
   "solomon-islands-flag": {
     "code": "+677",
-    "name": "Ilhas Salomão",
+    "name": "Islas Salomón",
     "isoCode": "SB / SLB"
   },
   "turks-and-caicos-islands-flag": {
     "code": "+1-649",
-    "name": "Ilhas Turcas e Caicos",
+    "name": "Islas Turcas y Caicos",
     "isoCode": "TC / TCA"
   },
   "u.s.-virgin-islands-flag": {
     "code": "+1-340",
-    "name": "Ilhas Virgens Americanas",
+    "name": "Islas Vírgenes de EE. UU.",
     "isoCode": "VI / VIR"
   },
   "india-flag": {
     "code": "+91",
-    "name": "Índia",
+    "name": "India",
     "isoCode": "IN / IND"
   },
   "indonesia-flag": {
     "code": "+62",
-    "name": "Indonésia",
+    "name": "Indonesia",
     "isoCode": "ID / IDN"
   },
   "iran-flag": {
     "code": "+98",
-    "name": "Irã",
+    "name": "Irán",
     "isoCode": "IR / IRN"
   },
   "iraq-flag": {
     "code": "+964",
-    "name": "Iraque",
+    "name": "Irak",
     "isoCode": "IQ / IRQ"
   },
   "ireland-flag": {
@@ -571,7 +571,7 @@
   },
   "italy-flag": {
     "code": "+39",
-    "name": "Itália",
+    "name": "Italia",
     "isoCode": "IT / ITA"
   },
   "jamaica-flag": {
@@ -581,17 +581,17 @@
   },
   "japan-flag": {
     "code": "+81",
-    "name": "Japão",
+    "name": "Japón",
     "isoCode": "JP / JPN"
   },
   "jersey-flag": {
     "code": "+44-1534",
-    "name": "Camisa",
+    "name": "Jersey",
     "isoCode": "JE / JEY"
   },
   "jordan-flag": {
     "code": "+962",
-    "name": "Jordânia",
+    "name": "Jordania",
     "isoCode": "JO / JOR"
   },
   "kiribati-flag": {
@@ -616,7 +616,7 @@
   },
   "latvia-flag": {
     "code": "+371",
-    "name": "Letônia",
+    "name": "Letonia",
     "isoCode": "LV / LVA"
   },
   "lebanon-flag": {
@@ -631,12 +631,12 @@
   },
   "liberia-flag": {
     "code": "+231",
-    "name": "Libéria",
+    "name": "Liberia",
     "isoCode": "LR / LBR"
   },
   "libya-flag": {
     "code": "+218",
-    "name": "Líbia",
+    "name": "Libia",
     "isoCode": "LY / LBY"
   },
   "liechtenstein-flag": {
@@ -646,7 +646,7 @@
   },
   "lithuania-flag": {
     "code": "+370",
-    "name": "Lituânia",
+    "name": "Lituania",
     "isoCode": "LT / LTU"
   },
   "luxembourg-flag": {
@@ -656,27 +656,27 @@
   },
   "macau-flag": {
     "code": "+853",
-    "name": "Macau",
+    "name": "Macao",
     "isoCode": "MO / MAC"
   },
   "macedonia-flag": {
     "code": "+389",
-    "name": "Macedônia",
+    "name": "Macedonia",
     "isoCode": "MK / MKD"
   },
   "madagascar-flag": {
     "code": "+261",
-    "name": "Madagáscar",
+    "name": "Madagascar",
     "isoCode": "MG / MDG"
   },
   "malawi-flag": {
     "code": "+265",
-    "name": "Malawi",
+    "name": "Malaui",
     "isoCode": "MW / MWI"
   },
   "malaysia-flag": {
     "code": "+60",
-    "name": "Malásia",
+    "name": "Malasia",
     "isoCode": "MY / MYS"
   },
   "maldives-flag": {
@@ -701,17 +701,17 @@
   },
   "mauritania-flag": {
     "code": "+222",
-    "name": "Mauritânia",
+    "name": "Mauritania",
     "isoCode": "MR / MRT"
   },
   "mauritius-flag": {
     "code": "+230",
-    "name": "Maurício",
+    "name": "Mauricio",
     "isoCode": "MU / MUS"
   },
   "mayotte-flag": {
     "code": "+262",
-    "name": "Maiote",
+    "name": "Mayotte",
     "isoCode": "YT / MYT"
   },
   "mexico-flag": {
@@ -721,22 +721,22 @@
   },
   "micronesia-flag": {
     "code": "+691",
-    "name": "Micronésia",
+    "name": "Micronesia",
     "isoCode": "FM / FSM"
   },
   "moldova-flag": {
     "code": "+373",
-    "name": "Moldávia",
+    "name": "Moldavia",
     "isoCode": "MD / MDA"
   },
   "monaco-flag": {
     "code": "+377",
-    "name": "Mônaco",
+    "name": "Mónaco",
     "isoCode": "MC / MCO"
   },
   "mongolia-flag": {
     "code": "+976",
-    "name": "Mongólia",
+    "name": "Mongolia",
     "isoCode": "MN / MNG"
   },
   "montenegro-flag": {
@@ -751,22 +751,22 @@
   },
   "morocco-flag": {
     "code": "+212",
-    "name": "Marrocos",
+    "name": "Marruecos",
     "isoCode": "MA / MAR"
   },
   "mozambique-flag": {
     "code": "+258",
-    "name": "Moçambique",
+    "name": "Mozambique",
     "isoCode": "MZ / MOZ"
   },
   "myanmar-flag": {
     "code": "+95",
-    "name": "Mianmar",
+    "name": "Myanmar",
     "isoCode": "MM / MMR"
   },
   "namibia-flag": {
     "code": "+264",
-    "name": "Namíbia",
+    "name": "Namibia",
     "isoCode": "NA / NAM"
   },
   "nauru-flag": {
@@ -781,7 +781,7 @@
   },
   "nicaragua-flag": {
     "code": "+505",
-    "name": "Nicarágua",
+    "name": "Nicaragua",
     "isoCode": "NI / NIC"
   },
   "niger-flag": {
@@ -791,7 +791,7 @@
   },
   "nigeria-flag": {
     "code": "+234",
-    "name": "Nigéria",
+    "name": "Nigeria",
     "isoCode": "NG / NGA"
   },
   "niue-flag": {
@@ -806,22 +806,22 @@
   },
   "new-caledonia-flag": {
     "code": "+687",
-    "name": "Nova Caledônia",
+    "name": "Nueva Caledonia",
     "isoCode": "NC / NCL"
   },
   "new-zealand-flag": {
     "code": "+64",
-    "name": "Nova Zelândia",
+    "name": "Nueva Zelanda",
     "isoCode": "NZ / NZL"
   },
   "oman-flag": {
     "code": "+968",
-    "name": "Omã",
+    "name": "Omán",
     "isoCode": "OM / OMN"
   },
   "pakistan-flag": {
     "code": "+92",
-    "name": "Paquistão",
+    "name": "Pakistán",
     "isoCode": "PK / PAK"
   },
   "palau-flag": {
@@ -841,17 +841,17 @@
   },
   "papua-new-guinea-flag": {
     "code": "+675",
-    "name": "Papua Nova Guiné",
+    "name": "Papúa Nueva Guinea",
     "isoCode": "PG / PNG"
   },
   "paraguay-flag": {
     "code": "+595",
-    "name": "Paraguai",
+    "name": "Paraguay",
     "isoCode": "PY / PRY"
   },
   "peru-flag": {
     "code": "+51",
-    "name": "Peru",
+    "name": "Perú",
     "isoCode": "PE / PER"
   },
   "pitcairn-flag": {
@@ -861,12 +861,12 @@
   },
   "poland-flag": {
     "code": "+48",
-    "name": "Polônia",
+    "name": "Polonia",
     "isoCode": "PL / POL"
   },
   "french-polynesia-flag": {
     "code": "+689",
-    "name": "Polinésia Francesa",
+    "name": "Polinesia Francesa",
     "isoCode": "PF / PYF"
   },
   "portugal-flag": {
@@ -876,22 +876,22 @@
   },
   "puerto-rico-flag": {
     "code": "+1-787",
-    "name": "Porto Rico",
+    "name": "Puerto Rico",
     "isoCode": "PR / PRI"
   },
   "kenya-flag": {
     "code": "+254",
-    "name": "Quênia",
+    "name": "Kenia",
     "isoCode": "KE / KEN"
   },
   "kyrgyzstan-flag": {
     "code": "+996",
-    "name": "Quirguistão",
+    "name": "Kirguistán",
     "isoCode": "KG / KGZ"
   },
   "central-african-republic-flag": {
     "code": "+236",
-    "name": "República Centro-Africana",
+    "name": "República Centroafricana",
     "isoCode": "CF / CAF"
   },
   "czech-republic-flag": {
@@ -911,27 +911,27 @@
   },
   "republic-of-the-congo-flag": {
     "code": "+242",
-    "name": "República do congo",
+    "name": "República del Congo",
     "isoCode": "CG / COG"
   },
   "democratic-republic-of-congo-flag": {
     "code": "+243",
-    "name": "República Democratica do congo",
+    "name": "República Democrática del Congo",
     "isoCode": "CD / COD"
   },
   "reunion-flag": {
     "code": "+262",
-    "name": "Reunião",
+    "name": "Reunión",
     "isoCode": "RE / REU"
   },
   "romania-flag": {
     "code": "+40",
-    "name": "Romênia",
+    "name": "Rumania",
     "isoCode": "RO / ROU"
   },
   "russia-flag": {
     "code": "+7",
-    "name": "Rússia",
+    "name": "Rusia",
     "isoCode": "RU / RUS"
   },
   "rwanda-flag": {
@@ -941,12 +941,12 @@
   },
   "western-sahara-flag": {
     "code": "+212",
-    "name": "Saara Ocidental",
+    "name": "Sahara Occidental",
     "isoCode": "EH / ESH"
   },
   "saint-barthelemy-flag": {
     "code": "+590",
-    "name": "São Bartolomeu",
+    "name": "San Bartolomé",
     "isoCode": "BL / BLM"
   },
   "saint-helena-flag": {
@@ -956,27 +956,27 @@
   },
   "saint-kitts-and-nevis-flag": {
     "code": "+1-869",
-    "name": "São Cristóvão e Nevis",
+    "name": "San Cristóbal y Nieves",
     "isoCode": "KN / KNA"
   },
   "saint-lucia-flag": {
     "code": "+1-758",
-    "name": "Santa Lúcia",
+    "name": "Santa Lucía",
     "isoCode": "LC / LCA"
   },
   "saint-martin-flag": {
     "code": "+590",
-    "name": "são Martinho",
+    "name": "San Martín",
     "isoCode": "MF / MAF"
   },
   "saint-pierre-and-miquelon-flag": {
     "code": "+508",
-    "name": "São Pedro e Miquelon",
+    "name": "San Pedro y Miquelón",
     "isoCode": "PM / SPM"
   },
   "saint-vincent-and-the-grenadines-flag": {
     "code": "+1-784",
-    "name": "São Vicente e Granadinas",
+    "name": "San Vicente y las Granadinas",
     "isoCode": "VC / VCT"
   },
   "samoa-flag": {
@@ -996,7 +996,7 @@
   },
   "sao-tome-and-principe-flag": {
     "code": "+239",
-    "name": "São Tomé e Príncipe",
+    "name": "Santo Tomé y Príncipe",
     "isoCode": "ST / STP"
   },
   "senegal-flag": {
@@ -1006,7 +1006,7 @@
   },
   "serbia-flag": {
     "code": "+381",
-    "name": "Sérvia",
+    "name": "Serbia",
     "isoCode": "RS / SRB"
   },
   "seychelles-flag": {
@@ -1016,7 +1016,7 @@
   },
   "sierra-leone-flag": {
     "code": "+232",
-    "name": "Serra Leoa",
+    "name": "Sierra Leona",
     "isoCode": "SL / SLE"
   },
   "sint-maarten-flag": {
@@ -1026,17 +1026,17 @@
   },
   "somalia-flag": {
     "code": "+252",
-    "name": "Somália",
+    "name": "Somalia",
     "isoCode": "SO / SOM"
   },
   "south-korea-flag": {
     "code": "+82",
-    "name": "Coreia do Sul",
+    "name": "Corea del Sur",
     "isoCode": "KR / KOR"
   },
   "south-sudan-flag": {
     "code": "+211",
-    "name": "Sudão do Sul",
+    "name": "Sudán del Sur",
     "isoCode": "SS / SSD"
   },
   "sri-lanka-flag": {
@@ -1046,62 +1046,62 @@
   },
   "sudan-flag": {
     "code": "+249",
-    "name": "Sudão",
+    "name": "Sudán",
     "isoCode": "SD / SDN"
   },
   "suriname-flag": {
     "code": "+597",
-    "name": "Suriname",
+    "name": "Surinam",
     "isoCode": "SR / SUR"
   },
   "svalbard-and-jan-mayen-flag": {
     "code": "+47",
-    "name": "Svalbard e Jan Mayen",
+    "name": "Svalbard y Jan Mayen",
     "isoCode": "SJ / SJM"
   },
   "swaziland-flag": {
     "code": "+268",
-    "name": "Suazilândia",
+    "name": "Suazilandia",
     "isoCode": "SZ / SWZ"
   },
   "sweden-flag": {
     "code": "+46",
-    "name": "Suécia",
+    "name": "Suecia",
     "isoCode": "SE / SWE"
   },
   "switzerland-flag": {
     "code": "+41",
-    "name": "Suíça",
+    "name": "Suiza",
     "isoCode": "CH / CHE"
   },
   "syria-flag": {
     "code": "+963",
-    "name": "Síria",
+    "name": "Siria",
     "isoCode": "SY / SYR"
   },
   "taiwan-flag": {
     "code": "+886",
-    "name": "Taiwan",
+    "name": "Taiwán",
     "isoCode": "TW / TWN"
   },
   "tajikistan-flag": {
     "code": "+992",
-    "name": "Tadjiquistão",
+    "name": "Tayikistán",
     "isoCode": "TJ / TJK"
   },
   "tanzania-flag": {
     "code": "+255",
-    "name": "Tanzânia",
+    "name": "Tanzania",
     "isoCode": "TZ / TZA"
   },
   "thailand-flag": {
     "code": "+66",
-    "name": "Tailândia",
+    "name": "Tailandia",
     "isoCode": "TH / THA"
   },
   "east-timor-flag": {
     "code": "+670",
-    "name": "Timor Leste",
+    "name": "Timor Oriental",
     "isoCode": "TL / TLS"
   },
   "togo-flag": {
@@ -1111,7 +1111,7 @@
   },
   "tokelau-flag": {
     "code": "+690",
-    "name": "Toquelau",
+    "name": "Tokelau",
     "isoCode": "TK / TKL"
   },
   "tonga-flag": {
@@ -1121,22 +1121,22 @@
   },
   "trinidad-and-tobago-flag": {
     "code": "+1-868",
-    "name": "Trindade e Tobago",
+    "name": "Trinidad y Tobago",
     "isoCode": "TT / TTO"
   },
   "tunisia-flag": {
     "code": "+216",
-    "name": "Tunísia",
+    "name": "Túnez",
     "isoCode": "TN / TUN"
   },
   "turkey-flag": {
     "code": "+90",
-    "name": "Turquia",
+    "name": "Turquía",
     "isoCode": "TR / TUR"
   },
   "turkmenistan-flag": {
     "code": "+993",
-    "name": "Turquemenistão",
+    "name": "Turkmenistán",
     "isoCode": "TM / TKM"
   },
   "tuvalu-flag": {
@@ -1151,17 +1151,17 @@
   },
   "ukraine-flag": {
     "code": "+380",
-    "name": "Ucrânia",
+    "name": "Ucrania",
     "isoCode": "UA / UKR"
   },
   "uruguay-flag": {
     "code": "+598",
-    "name": "Uruguai",
+    "name": "Uruguay",
     "isoCode": "UY / URY"
   },
   "uzbekistan-flag": {
     "code": "+998",
-    "name": "Uzbequistão",
+    "name": "Uzbekistán",
     "isoCode": "UZ / UZB"
   },
   "vanuatu-flag": {
@@ -1181,22 +1181,22 @@
   },
   "vietnam-flag": {
     "code": "+84",
-    "name": "Vietnã",
+    "name": "Vietnam",
     "isoCode": "VN / VNM"
   },
   "wallis-and-futuna-flag": {
     "code": "+681",
-    "name": "Wallis e Futuna",
+    "name": "Wallis y Futuna",
     "isoCode": "WF / WLF"
   },
   "zambia-flag": {
     "code": "+260",
-    "name": "Zâmbia",
+    "name": "Zambia",
     "isoCode": "ZM / ZMB"
   },
   "zimbabwe-flag": {
     "code": "+263",
-    "name": "Zimbábue",
+    "name": "Zimbabue",
     "isoCode": "ZW / ZWE"
   }
 }
