@@ -15,7 +15,7 @@ export type languages = 'pt_BR' | 'es_ES' | 'en_US';
 export class InputPhoneNumber {
   private nativeInput?: HTMLInputElement;
 
-  @Element() el!: HTMLElement;
+  @Element() el!: HTMLBdsSelectElement;
 
   @State() isOpen? = false;
   @State() selectedCountry: string;
@@ -117,9 +117,7 @@ export class InputPhoneNumber {
    * Ícone à esquerda do input.
    */
   @Prop({ reflect: true }) icon?: string = '';
-
   /**
-   * **Nova prop:** Define a linguagem do componente.
    * Valores possíveis: "pt_BR", "en_US", "es_ES".
    * Se nenhum for informado, utiliza o arquivo padrão (countries.json).
    */
@@ -141,7 +139,7 @@ export class InputPhoneNumber {
 
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
-    if (!this.el.contains(ev.target as HTMLElement)) {
+    if (!this.el.contains(ev.target as HTMLInputElement)) {
       this.isOpen = false;
     }
   }

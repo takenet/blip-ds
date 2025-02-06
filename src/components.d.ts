@@ -1573,7 +1573,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * **Nova prop:** Define a linguagem do componente. Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
+          * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
          */
         "language"?: languages;
         /**
@@ -5387,7 +5387,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * **Nova prop:** Define a linguagem do componente. Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
+          * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
          */
         "language"?: languages;
         /**
