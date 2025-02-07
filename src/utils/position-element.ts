@@ -22,6 +22,17 @@ export const getScrollParent = (node: HTMLElement) => {
   }
 };
 
+export function getParentsUntil(element: HTMLElement, stopSelector: string): HTMLElement[] {
+  const parents: HTMLElement[] = [element];
+
+  while (element && !element.matches(stopSelector)) {
+    element = element.parentElement;
+    parents.push(element);
+  }
+
+  return parents;
+}
+
 export function positionElement({
   actionElement,
   changedElement,

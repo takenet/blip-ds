@@ -59,6 +59,7 @@ import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
+import { languages as languages1 } from "./components/rict-text/rich-text-interface";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -71,7 +72,7 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages1 } from "./components/upload/languages";
+import { languages as languages2 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -2080,6 +2081,20 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BdsRichText {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -2784,7 +2799,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Used to allow upload multiple files.
          */
@@ -2948,6 +2963,10 @@ export interface BdsRadioCustomEvent<T> extends CustomEvent<T> {
 export interface BdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsRadioGroupElement;
+}
+export interface BdsRichTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsRichTextElement;
 }
 export interface BdsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3454,6 +3473,12 @@ declare global {
         prototype: HTMLBdsRadioGroupElement;
         new (): HTMLBdsRadioGroupElement;
     };
+    interface HTMLBdsRichTextElement extends Components.BdsRichText, HTMLStencilElement {
+    }
+    var HTMLBdsRichTextElement: {
+        prototype: HTMLBdsRichTextElement;
+        new (): HTMLBdsRichTextElement;
+    };
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
     }
     var HTMLBdsSelectElement: {
@@ -3699,6 +3724,7 @@ declare global {
         "bds-progress-bar": HTMLBdsProgressBarElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-radio-group": HTMLBdsRadioGroupElement;
+        "bds-rich-text": HTMLBdsRichTextElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
@@ -5945,6 +5971,36 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BdsRichText {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
+        /**
+          * Event input onblur.
+         */
+        "onBdsBlur"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsChange"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Event input focus.
+         */
+        "onBdsFocus"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -6653,7 +6709,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Used to allow upload multiple files.
          */
@@ -6754,6 +6810,7 @@ declare namespace LocalJSX {
         "bds-progress-bar": BdsProgressBar;
         "bds-radio": BdsRadio;
         "bds-radio-group": BdsRadioGroup;
+        "bds-rich-text": BdsRichText;
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
@@ -6864,6 +6921,7 @@ declare module "@stencil/core" {
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
+            "bds-rich-text": LocalJSX.BdsRichText & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
