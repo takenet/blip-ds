@@ -24,13 +24,10 @@ const paragraph =
 
 export const Properties = (args) => {
   return (
-    <bds-accordion-group collapse={args.collapse}>
+    <bds-accordion-group collapse={args.collapse} divisor={args.divisor}>
       <bds-accordion start-open={args.startOpen}>
         <bds-accordion-header
-          accordion-title={args.accordionTitle}
-          icon={args.icon}
-          avatar-name={args.avatarName}
-          avatar-thumb={args.avatarThumb}
+          accordion-title="Titulo do accordion"
         ></bds-accordion-header>
         <bds-accordion-body>
           <bds-typo variant="fs-16">{paragraph}</bds-typo>
@@ -38,10 +35,7 @@ export const Properties = (args) => {
       </bds-accordion>
       <bds-accordion start-open={args.startOpen}>
         <bds-accordion-header
-          accordion-title={args.accordionTitle}
-          icon={args.icon}
-          avatar-name={args.avatarName}
-          avatar-thumb={args.avatarThumb}
+          accordion-title="Titulo do accordion"
         ></bds-accordion-header>
         <bds-accordion-body>
           <bds-typo variant="fs-16">{paragraph}</bds-typo>
@@ -51,58 +45,26 @@ export const Properties = (args) => {
   );
 };
 Properties.argTypes = {
-  accordionTitle: {
+  collapse: {
     table: {
-      defaultValue: { summary: 'vazio' },
+      defaultValue: { summary: 'single' },
     },
-    description: 'Coloque o titulo do cabeçalho.',
-    control: 'text',
+    description: 'Escolha o estado do componente.',
+    options: ['single' , 'multiple'],
+    control: 'select',
   },
-  accordionText: {
+  divisor: {
     table: {
-      defaultValue: { summary: 'vazio' },
+      defaultValue: { summary: 'true' },
     },
-    description: 'Coloque o texto de exemplo aqui.',
-    control: 'text',
-  },
-  icon: {
-    table: {
-      defaultValue: { summary: 'vazio' },
-    },
-    description: 'Defina o ícone que será utilizado no botão (Apenas outline).',
-    control: 'text',
-  },
-  avatarName: {
-    table: {
-      defaultValue: { summary: 'vazio' },
-    },
-    description: 'Defina o nome aplicado no avatar.',
-    control: 'text',
-  },
-  avatarThumb: {
-    table: {
-      defaultValue: { summary: 'vazio' },
-    },
-    description: 'Insira o link da imagem.',
-    control: 'text',
-  },
-  startOpen: {
-    table: {
-      defaultValue: { summary: 'false' },
-    },
-    description: 'Escolha se o accordion será iniciado aberto.',
+    description: 'Escolha se o accordion terá um linha dividindo os accordions.',
     control: 'boolean',
   },
 };
 
 Properties.args = {
-  accordionTitle: 'Título do accordion',
-  accordionText: `Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam 
-  seções de conteúdo associados.`,
-  avatarName: '',
-  avatarThumb: '',
-  icon: '',
-  startOpen: false,
+  collapse: 'single',
+  divisor: true,
 };
 
 export const Methods = () => {
