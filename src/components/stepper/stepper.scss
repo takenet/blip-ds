@@ -1,4 +1,4 @@
-.stepper__container {
+:host {
   width: 100%;
   border-radius: 8px;
   box-sizing: border-box;
@@ -9,17 +9,17 @@
   ::slotted(bds-step:last-child) {
     flex: inherit;
   }
+}
 
-  &__divisor {
-    flex: 1 1 auto;
-    align-self: center;
-    height: 1.5px;
-    background: $color-content-disable;
-    margin: 0px 8px;
-    min-width: 24px;
+::slotted(.stepper__container__divisor) {
+  flex: 1 1 auto;
+  align-self: center;
+  height: 1.5px;
+  background: $color-content-disable;
+  margin: 0px 8px;
+  min-width: 24px;
+}
 
-    &--completed {
-      border-top: 2px solid $color-primary;
-    }
-  }
+::slotted(.stepper__container__divisor--completed) {
+  border-top: 2px solid $color-primary;
 }
