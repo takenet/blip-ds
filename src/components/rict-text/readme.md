@@ -16,19 +16,15 @@
 
 ## Events
 
-| Event       | Description                         | Type                         |
-| ----------- | ----------------------------------- | ---------------------------- |
-| `bdsBlur`   | Event input onblur.                 | `CustomEvent<any>`           |
-| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
-| `bdsFocus`  | Event input focus.                  | `CustomEvent<any>`           |
-| `bdsInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
+| Event               | Description                         | Type                         |
+| ------------------- | ----------------------------------- | ---------------------------- |
+| `bdsBlur`           | Event input onblur.                 | `CustomEvent<any>`           |
+| `bdsChangeRichText` | Emitted when the value has changed. | `CustomEvent<any>`           |
+| `bdsFocus`          | Event input focus.                  | `CustomEvent<any>`           |
+| `bdsInputRichText`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
 
 
 ## Dependencies
-
-### Used by
-
- - [bds-test-component](../test-component)
 
 ### Depends on
 
@@ -54,7 +50,6 @@ graph TD;
   bds-input --> bds-typo
   bds-input --> bds-counter-text
   bds-counter-text --> bds-typo
-  bds-test-component --> bds-rich-text
   style bds-rich-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

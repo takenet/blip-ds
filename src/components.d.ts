@@ -5991,7 +5991,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsRichTextCustomEvent<any>) => void;
+        "onBdsChangeRichText"?: (event: BdsRichTextCustomEvent<any>) => void;
         /**
           * Event input focus.
          */
@@ -5999,7 +5999,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
+        "onBdsInputRichText"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
     }
     interface BdsSelect {
         /**
