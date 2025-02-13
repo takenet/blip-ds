@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './rich-text.mdx';
 
 export default {
@@ -42,7 +42,7 @@ Properties.args = {
 export const Events = () => {
   useEffect(() => {
     const richText = document.getElementById('rich-text');
-    richText.addEventListener('bdsOnBlur', () => {
+    richText.addEventListener('bdsBlur', () => {
       console.log('Evento Blur funcionando');
     });
     richText.addEventListener('bdsFocus', () => {
