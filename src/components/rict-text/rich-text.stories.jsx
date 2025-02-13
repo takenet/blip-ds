@@ -1,6 +1,5 @@
 import React from 'react';
 import DocumentationTemplate from './rich-text.mdx';
-import { BdsBadge } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/RichText',
@@ -11,57 +10,50 @@ export default {
   },
 };
 
-export const Properties = (args) => (
-  <bds-badge
-    shape={args.shape}
-    color={args.color}
-    icon={args.icon}
-    number={args.number ? args.number : null}
-    animation={args.animation}
-  ></bds-badge>
-);
-Properties.argTypes = {
-  shape: {
-    table: {
-      defaultValue: { summary: 'circle' },
-    },
+export const Properties = (args) => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '560px';
+  }
+  return <bds-rich-text height={args.height} language={args.language}></bds-rich-text>;
+};
 
-    options: ['circle', 'triangle', 'triangle-reverse', 'polygon', 'square'],
-    control: 'select',
-  },
-  icon: {
+Properties.argTypes = {
+  height: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
     control: 'text',
   },
-  color: {
+  language: {
     table: {
-      defaultValue: { summary: 'system' },
+      defaultValue: { summary: 'pt_BR' },
     },
-    options: ['system', 'danger', 'warning', 'success', 'neutral'],
+    options: ['pt_BR', 'es_ES', 'en_US'],
     control: 'select',
-  },
-  animation: {
-    table: {
-      defaultValue: { summary: 'false' },
-    },
-    control: 'boolean',
-  },
-  number: {
-    table: {
-      defaultValue: { summary: 'vazio' },
-    },
-    control: 'number',
   },
 };
 
 Properties.args = {
-  shape: 'circle',
-  color: 'system',
-  icon: 'info',
-  animation: false,
-  number: null,
+  height: '280px',
+  language: 'pt_BR',
 };
 
-export const FrameworkReact = () => <BdsBadge animation={true} shape="circle" color="system" icon="info"></BdsBadge>;
+export const Events = () => {
+  useEffect(() => {
+    const richText = document.getElementById('rich-text');
+    richText.addEventListener('bdsOnBlur', () => {
+      console.log('Evento Blur funcionando');
+    });
+    richText.addEventListener('bdsFocus', () => {
+      console.log('Evento Focus funcionando');
+    });
+    richText.addEventListener('bdsChangeRichText', () => {
+      console.log('Evento Change funcionando');
+    });
+    richText.addEventListener('bdsInputRichText', () => {
+      console.log('Evento Input funcionando');
+    });
+  });
+  return <bds-rich-text id="rich-text" height="280px" language="pt_BR"></bds-rich-text>;
+};
