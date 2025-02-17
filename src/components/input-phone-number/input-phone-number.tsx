@@ -211,7 +211,6 @@ export class InputPhoneNumber {
 
   @Watch('text')
   protected handleInputChange(): void {
-    console.log(this.text)
     this.bdsPhoneNumberChange.emit({
       value: this.text,
       code: this.value,
