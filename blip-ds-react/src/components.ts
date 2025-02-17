@@ -83,6 +83,7 @@ export const BdsPaper = /*@__PURE__*/createReactComponent<JSX.BdsPaper, HTMLBdsP
 export const BdsProgressBar = /*@__PURE__*/createReactComponent<JSX.BdsProgressBar, HTMLBdsProgressBarElement>('bds-progress-bar');
 export const BdsRadio = /*@__PURE__*/createReactComponent<JSX.BdsRadio, HTMLBdsRadioElement>('bds-radio');
 export const BdsRadioGroup = /*@__PURE__*/createReactComponent<JSX.BdsRadioGroup, HTMLBdsRadioGroupElement>('bds-radio-group');
+export const BdsRichText = /*@__PURE__*/createReactComponent<JSX.BdsRichText, HTMLBdsRichTextElement>('bds-rich-text');
 export const BdsSelect = /*@__PURE__*/createReactComponent<JSX.BdsSelect, HTMLBdsSelectElement>('bds-select');
 export const BdsSelectChips = /*@__PURE__*/createReactComponent<JSX.BdsSelectChips, HTMLBdsSelectChipsElement>('bds-select-chips');
 export const BdsSelectOption = /*@__PURE__*/createReactComponent<JSX.BdsSelectOption, HTMLBdsSelectOptionElement>('bds-select-option');

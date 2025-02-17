@@ -45,6 +45,7 @@ Type: `Promise<void>`
 
  - [bds-input-chips](../input-chips)
  - [bds-list-item](../list)
+ - [bds-rich-text](../rict-text)
  - [bds-select-chips](../selects/select-chips)
  - [bds-slider](../slider)
 
@@ -58,6 +59,7 @@ graph TD;
   bds-tooltip --> bds-typo
   bds-input-chips --> bds-tooltip
   bds-list-item --> bds-tooltip
+  bds-rich-text --> bds-tooltip
   bds-select-chips --> bds-tooltip
   bds-slider --> bds-tooltip
   style bds-tooltip fill:#f9f,stroke:#333,stroke-width:4px

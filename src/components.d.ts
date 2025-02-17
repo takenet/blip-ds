@@ -60,6 +60,7 @@ import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
+import { languages as languages1 } from "./components/rict-text/rich-text-interface";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -2101,6 +2102,20 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BdsRichText {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -2970,6 +2985,10 @@ export interface BdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsRadioGroupElement;
 }
+export interface BdsRichTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsRichTextElement;
+}
 export interface BdsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSelectElement;
@@ -3475,6 +3494,12 @@ declare global {
         prototype: HTMLBdsRadioGroupElement;
         new (): HTMLBdsRadioGroupElement;
     };
+    interface HTMLBdsRichTextElement extends Components.BdsRichText, HTMLStencilElement {
+    }
+    var HTMLBdsRichTextElement: {
+        prototype: HTMLBdsRichTextElement;
+        new (): HTMLBdsRichTextElement;
+    };
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
     }
     var HTMLBdsSelectElement: {
@@ -3720,6 +3745,7 @@ declare global {
         "bds-progress-bar": HTMLBdsProgressBarElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-radio-group": HTMLBdsRadioGroupElement;
+        "bds-rich-text": HTMLBdsRichTextElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
@@ -5983,6 +6009,36 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BdsRichText {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
+        /**
+          * Event input onblur.
+         */
+        "onBdsBlur"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Event input focus.
+         */
+        "onBdsFocus"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsRichTextChange"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -6792,6 +6848,7 @@ declare namespace LocalJSX {
         "bds-progress-bar": BdsProgressBar;
         "bds-radio": BdsRadio;
         "bds-radio-group": BdsRadioGroup;
+        "bds-rich-text": BdsRichText;
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
@@ -6902,6 +6959,7 @@ declare module "@stencil/core" {
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
+            "bds-rich-text": LocalJSX.BdsRichText & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;

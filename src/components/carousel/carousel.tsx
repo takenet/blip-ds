@@ -372,7 +372,6 @@ export class BdsCarousel {
   };
 
   private setKeydownNavigation = (ev) => {
-    console.log(ev.key);
     if (ev.key == 'Tab') {
       this.bulletElement.focus();
     }
