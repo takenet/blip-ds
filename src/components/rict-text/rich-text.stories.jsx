@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import DocumentationTemplate from './rich-text.mdx';
+import { BdsRichText } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/RichText',
@@ -48,12 +49,16 @@ export const Events = () => {
     richText.addEventListener('bdsFocus', () => {
       console.log('Evento Focus funcionando');
     });
-    richText.addEventListener('bdsChangeRichText', () => {
+    richText.addEventListener('bdsRichTextChange', () => {
       console.log('Evento Change funcionando');
     });
-    richText.addEventListener('bdsInputRichText', () => {
+    richText.addEventListener('bdsRichTextInput', () => {
       console.log('Evento Input funcionando');
     });
   });
   return <bds-rich-text id="rich-text" height="280px" language="pt_BR"></bds-rich-text>;
+};
+
+export const FrameworkReact = () => {
+  return <BdsRichText id="rich-text" height="280px" language="pt_BR"></BdsRichText>;
 };

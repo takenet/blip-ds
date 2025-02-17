@@ -19,9 +19,9 @@
 | Event               | Description                         | Type                         |
 | ------------------- | ----------------------------------- | ---------------------------- |
 | `bdsBlur`           | Event input onblur.                 | `CustomEvent<any>`           |
-| `bdsChangeRichText` | Emitted when the value has changed. | `CustomEvent<any>`           |
 | `bdsFocus`          | Event input focus.                  | `CustomEvent<any>`           |
-| `bdsInputRichText`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
+| `bdsRichTextChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
+| `bdsRichTextInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
 
 
 ## Dependencies

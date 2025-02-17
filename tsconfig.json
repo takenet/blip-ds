@@ -6,20 +6,21 @@
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2017"
+      "es2020"
     ],
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "es2017",
+    "target": "es2020",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
     "typeRoots": [
       "node_modules/@types",
-      "types",
+      "types"
     ],
     "resolveJsonModule": true,
+    "skipLibCheck": true
   },
   "include": [
     "./src/**/*",
@@ -28,5 +29,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
+  ]
 }

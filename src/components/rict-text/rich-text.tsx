@@ -79,12 +79,12 @@ export class RichText {
   /**
    * Emitted when the value has changed.
    */
-  @Event({ bubbles: true, composed: true }) bdsChangeRichText!: EventEmitter;
+  @Event({ bubbles: true, composed: true }) bdsRichTextChange!: EventEmitter;
 
   /**
    * Emitted when the input has changed.
    */
-  @Event() bdsInputRichText!: EventEmitter<KeyboardEvent>;
+  @Event() bdsRichTextInput!: EventEmitter<KeyboardEvent>;
 
   /**
    * Event input onblur.
@@ -264,9 +264,9 @@ export class RichText {
   // Função para ajustar parágrafos durante a edição
   private onInput(ev: Event) {
     ev.preventDefault();
-    this.bdsInputRichText.emit(ev as KeyboardEvent);
+    this.bdsRichTextInput.emit(ev as KeyboardEvent);
 
-    this.bdsChangeRichText.emit({ value: this.editor.innerHTML });
+    this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
 
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
@@ -400,7 +400,7 @@ export class RichText {
     // Restaura a seleção
     selection.removeAllRanges();
 
-    this.bdsChangeRichText.emit({ value: this.editor.innerHTML });
+    this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
   }
 
   private wrapSelectionLine(tag: string, enableLinesReturn: boolean = false) {
@@ -451,7 +451,7 @@ export class RichText {
     // Limpa a seleção para evitar comportamento inesperado
     selection.removeAllRanges();
 
-    this.bdsChangeRichText.emit({ value: this.editor.innerHTML });
+    this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
   }
 
   // Função para aplicar alinhamento ao texto selecionado
@@ -485,7 +485,7 @@ export class RichText {
     // Limpa a seleção para evitar comportamento inesperado
     selection.removeAllRanges();
 
-    this.bdsChangeRichText.emit({ value: this.editor.innerHTML });
+    this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
   }
 
   // Função para criar/remover lista (ordenada ou não ordenada)
