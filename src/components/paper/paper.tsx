@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Host, h, Prop, State } from '@stencil/core';
-import { PaperElevation, PaperBackground } from './paper-interface';
+import { PaperElevation, PaperBackground, BorderColor } from './paper-interface';
 
 @Component({
   tag: 'bds-paper',
@@ -39,6 +39,11 @@ export class Paper implements ComponentInterface {
    */
   @Prop() bgColor?: PaperBackground = 'surface-1';
 
+  /**
+   * Prop for set the border color.
+   */
+  @Prop() borderColor?: BorderColor = null;
+
   componentWillLoad() {
     this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
   }
@@ -50,6 +55,7 @@ export class Paper implements ComponentInterface {
           [`paper__elevation--${this.elevation}`]: this.hasBorder,
           border: this.border,
           [`bg-${this.bgColor}`]: true,
+          [`border-${this.borderColor}`]: true,
         }}
         style={{ height: `${this.height}`, width: `${this.width}` }}
       >

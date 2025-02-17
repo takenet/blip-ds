@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, EventEmitter, Event, Method } from '@stencil/core';
+import { Component, h, Element, Prop, EventEmitter, Event, Method, Watch } from '@stencil/core';
 
 export type collapses = 'single' | 'multiple';
 
@@ -37,6 +37,15 @@ export class AccordionGroup {
         if (actNumber != i) this.accordionsElement[i].open();
       } else {
         this.accordionsElement[i].open();
+      }
+    }
+  }
+
+  @Watch('divisor')
+  divisorChanged(newValue: boolean): void {
+    if (this.accordionsElement) {
+      for (let i = 0; i < this.accordionsElement.length; i++) {
+        this.accordionsElement[i].divisor = newValue;  // Atualiza divisor nos filhos
       }
     }
   }

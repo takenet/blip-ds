@@ -37,6 +37,7 @@ export const Properties = (args) => {
       is-textarea={args.istextarea}
       rows={args.rows}
       counter-length={args.counterlength}
+      encode={args.encode}
     ></bds-input>
   );
 };
@@ -61,6 +62,7 @@ Properties.args = {
   istextarea: false,
   rows: '',
   counterlength: false,
+  encode: false,
 };
 
 Properties.argTypes = {
@@ -192,6 +194,13 @@ Properties.argTypes = {
     control: 'text',
   },
   counterlength: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
+  },
+  encode: {
     table: {
       defaultValue: { summary: 'false' },
     },

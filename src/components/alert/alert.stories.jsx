@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   BdsAlert,
   BdsAlertActions,
@@ -71,6 +71,41 @@ Properties.args = {
   icon: 'info',
   open: true
 }
+
+export const Events = () => {
+
+  useEffect(() => {
+    const avatar = document.getElementById('alert');
+    avatar.addEventListener('bdsAlertChanged', () => {
+      console.log('Evento Click funcionando');
+    });
+  });
+
+  const btToggle = async id => {
+    const alert = document.getElementById(id);
+    alert.toggle();
+  }
+  return (
+    <BdsGrid>
+      <BdsButton onClick={() => btToggle('alert')}>
+        Abrir Alert
+      </BdsButton>
+      <BdsAlert id="alert">
+      <BdsAlertHeader variant="system" icon="info">
+        Atenção!
+      </BdsAlertHeader>
+      <BdsAlertBody>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corporis eligendi cumque ratione nulla a quos
+        error!
+      </BdsAlertBody>
+      <BdsAlertActions>
+        <BdsButton variant="tertiary" onClick={() => btToggle('alert')}>Cancelar</BdsButton>
+        <bds-button variant="primary" onClick={() => btToggle('alert')}>Confirmar</bds-button>
+      </BdsAlertActions>
+    </BdsAlert>
+    </BdsGrid>
+  );
+};
 
 export const Methods = () => {
 
