@@ -25,6 +25,7 @@ export const Properties = (args) => {
       danger={args.danger}
       icon={args.icon}
       value={args.value}
+      language={args.language}
       error-message={args.errorMessage}
       helper-message={args.helperMessage}
     ></bds-input-phone-number>
@@ -37,6 +38,7 @@ Properties.args = {
   danger: false,
   icon: '',
   value: '',
+  language:'pt_BR',
   errorMessage: '',
   helperMessage: '',
 };
@@ -76,6 +78,13 @@ Properties.argTypes = {
     },
     
     control: 'text',
+  },
+  language: {
+    table: {
+      defaultValue: { summary: 'pt_BR' },
+    },
+    options: ['pt_BR', 'en_US', 'es_ES'],
+    control: 'select',
   },
   errorMessage: {
     table: {
