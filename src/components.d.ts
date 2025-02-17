@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
-import { AutocompleteChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
+import { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
 import { SelectionType } from "./components/autocomplete/autocomplete";
 import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
@@ -3875,7 +3875,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selected value has changed.
          */
-        "onBdsMultiselectedChange"?: (event: BdsAutocompleteCustomEvent<any>) => void;
+        "onBdsMultiselectedChange"?: (event: BdsAutocompleteCustomEvent<AutocompleteMultiSelectedChangeEventDetail>) => void;
         /**
           * Emitted when the selected value has changed.
          */

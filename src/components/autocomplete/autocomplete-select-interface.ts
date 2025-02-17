@@ -22,6 +22,10 @@ export interface AutocompleteSelectedChangeEventDetail {
   code?: string;
 }
 
+export interface AutocompleteMultiSelectedChangeEventDetail {
+  value: AutocompleteOption[] | undefined | null;
+}
+
 export type AutocompleteSelectType = 'text' | 'icon';
 
 export type AutocompleteOptionsPositionType = 'auto' | 'top' | 'bottom';

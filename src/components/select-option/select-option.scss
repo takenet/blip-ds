@@ -63,6 +63,10 @@ $select-option-left: 12px;
       align-items: center;
       outline: none;
       flex-direction: row;
+
+      & bds-checkbox {
+        pointer-events: none;
+      }
     }
 
     &__fill_space {
