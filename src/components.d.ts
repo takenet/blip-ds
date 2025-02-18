@@ -44,6 +44,7 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
+import { languages as languages1 } from "./components/input-phone-number/input-phone-number";
 import { TypeList } from "./components/list/list";
 import { Data } from "./components/list/list-interface";
 import { TypeList as TypeList1 } from "./components/list/list";
@@ -59,6 +60,7 @@ import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
+import { languages as languages1 } from "./components/rict-text/rich-text-interface";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -71,7 +73,7 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages1 } from "./components/upload/languages";
+import { languages as languages2 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -1114,160 +1116,164 @@ export namespace Components {
     }
     interface BdsInput {
         /**
-          * Capitalizes every word's second character.
+          * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
-          * Hint for form autofill feature
+          * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
          */
         "autoComplete"?: InputAutoComplete;
         /**
-          * Internal prop to identify input chips
+          * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips": boolean;
         /**
-          * Return the validity of the input.
+          * Limpa o valor do campo de entrada.
          */
         "clear": () => Promise<void>;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de colunas da área de texto (se for `textarea`).
          */
         "cols"?: number;
         /**
-          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+          * Define se será exibido um contador de comprimento de caracteres.
          */
         "counterLength"?: boolean;
         /**
-          * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
+          * Define a regra do contador de comprimento de caracteres (min, max, etc).
          */
         "counterLengthRule"?: InputCounterLengthRules;
         /**
-          * Add state danger on input, use for use feedback.
+          * Define se o input está em estado de erro.
          */
         "danger"?: boolean;
         /**
-          * Id to support Cypress.
+          * Data test é a prop para testar especificamente a ação do componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Define se o input está desabilitado.
          */
         "disabled"?: boolean;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um email válido.
          */
         "emailErrorMessage": string;
+        "encode"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro exibida quando o valor do input é inválido.
          */
         "errorMessage"?: string;
         /**
-          * Returns the native `<input>` element used under the hood.
+          * Retorna o elemento de input do componente.
          */
         "getInputElement": () => Promise<HTMLInputElement>;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda exibida abaixo do input.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Nome do ícone a ser exibido dentro do input.
          */
         "icon"?: string;
         /**
-          * Input Name
+          * Nome do input, usado para identificação no formulário.
          */
         "inputName"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Define se o input será submetido ao pressionar Enter.
          */
         "isSubmit": boolean;
         /**
-          * if `true` input switched to textarea
+          * Define se o input é uma área de texto (textarea).
          */
         "isTextarea": boolean;
         /**
-          * Return the validity of the input.
+          * Verifica se o campo de entrada é válido.
          */
         "isValid": () => Promise<boolean>;
         /**
-          * label in input, with he the input size increases.
+          * Rótulo que será exibido acima do input.
          */
         "label"?: string;
         /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
+          * Define o valor máximo permitido para o input.
          */
         "max"?: string;
         /**
-          * Error message when the value is higher than the max value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
          */
         "maxErrorMessage": string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+          * Define o número máximo de caracteres permitidos no input.
          */
         "maxlength"?: number;
         /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
+          * Define o valor mínimo permitido para o input.
          */
         "min"?: string;
         /**
-          * Error message when the value is lower than the min value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
          */
         "minErrorMessage": string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+          * Define o número mínimo de caracteres permitidos no input.
          */
         "minlength"?: number;
         /**
-          * Error message when the value is lower than the minlength
+          * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
          */
         "minlengthErrorMessage": string;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um número válido.
          */
         "numberErrorMessage": string;
         /**
-          * Indicated to pass a regex pattern to input
+          * Define um padrão regex que o valor do input deve seguir.
          */
         "pattern"?: string;
         /**
-          * A tip for the user who can enter no controls.
+          * Texto que será exibido como sugestão ou dica no input.
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Torna o input somente leitura.
          */
         "readonly": boolean;
+        /**
+          * Remove o foco do campo de entrada.
+         */
         "removeFocus": () => Promise<void>;
         /**
-          * If `true`, the input value will be required.
+          * Define se o input é obrigatório.
          */
         "required": boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
          */
         "requiredErrorMessage": string;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
         "rows"?: number;
         /**
-          * Sets focus on the specified `ion-input`. Use this method instead of the global `input.focus()`.
+          * Define o foco no campo de entrada.
          */
         "setFocus": () => Promise<void>;
         /**
-          * Add state success on input, use for use feedback.
+          * Define se o input está em estado de sucesso.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem exibida quando o valor do input é válido.
          */
         "successMessage"?: string;
         /**
-          * Input type. Can be one of: "text", "password", "number" or "email".
+          * Define o tipo do input (por exemplo, `text`, `password`, etc).
          */
         "type"?: InputType;
         /**
-          * The value of the input.
+          * O valor atual do input.
          */
         "value"?: string | null;
     }
@@ -1540,68 +1546,72 @@ export namespace Components {
     interface BdsInputPhoneNumber {
         "changeCountry": (code: any, isoCode: any, flag: any) => Promise<void>;
         /**
-          * Add state danger on input, use for use feedback.
+          * Habilita o estado "danger" no input.
          */
         "danger"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Data-test para identificar o componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Desabilita o input.
          */
         "disabled"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+          * Data-test para o botão de seleção de bandeira.
          */
         "dtSelectFlag"?: string;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro a ser exibida.
          */
         "errorMessage"?: string;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda para o usuário.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Ícone à esquerda do input.
          */
         "icon"?: string;
         /**
-          * label in input, with he the input size increases.
+          * Label do input.
          */
         "label"?: string;
         /**
-          * Error message when input is required
+          * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
+         */
+        "language"?: languages;
+        /**
+          * Mensagem de erro para validação numérica.
          */
         "numberErrorMessage": string;
         /**
-          * The options of select.
+          * Lista de opções do select.
          */
         "options"?: Array<Option>;
         "removeFocus": () => Promise<void>;
         /**
-          * If `true`, the input value will be required.
+          * Se `true`, o valor do input será obrigatório.
          */
         "required": boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro para campo obrigatório.
          */
         "requiredErrorMessage": string;
         /**
-          * Add state success on input, use for use feedback.
+          * Habilita o estado "success" no input.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de sucesso a ser exibida.
          */
         "successMessage"?: string;
         /**
-          * The value of the phone number input.
+          * Valor do input de telefone.
          */
         "text"?: string;
         /**
-          * the value of the select.
+          * Valor do select.
          */
         "value"?: string | null;
     }
@@ -2091,6 +2101,20 @@ export namespace Components {
           * The value of the selected radio
          */
         "value"?: string;
+    }
+    interface BdsRichText {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
     }
     interface BdsSelect {
         /**
@@ -2796,7 +2820,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Used to allow upload multiple files.
          */
@@ -2960,6 +2984,10 @@ export interface BdsRadioCustomEvent<T> extends CustomEvent<T> {
 export interface BdsRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsRadioGroupElement;
+}
+export interface BdsRichTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsRichTextElement;
 }
 export interface BdsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3466,6 +3494,12 @@ declare global {
         prototype: HTMLBdsRadioGroupElement;
         new (): HTMLBdsRadioGroupElement;
     };
+    interface HTMLBdsRichTextElement extends Components.BdsRichText, HTMLStencilElement {
+    }
+    var HTMLBdsRichTextElement: {
+        prototype: HTMLBdsRichTextElement;
+        new (): HTMLBdsRichTextElement;
+    };
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
     }
     var HTMLBdsSelectElement: {
@@ -3711,6 +3745,7 @@ declare global {
         "bds-progress-bar": HTMLBdsProgressBarElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-radio-group": HTMLBdsRadioGroupElement;
+        "bds-rich-text": HTMLBdsRichTextElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
@@ -4853,171 +4888,172 @@ declare namespace LocalJSX {
     }
     interface BdsInput {
         /**
-          * Capitalizes every word's second character.
+          * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
-          * Hint for form autofill feature
+          * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
          */
         "autoComplete"?: InputAutoComplete;
         /**
-          * Internal prop to identify input chips
+          * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips"?: boolean;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de colunas da área de texto (se for `textarea`).
          */
         "cols"?: number;
         /**
-          * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
+          * Define se será exibido um contador de comprimento de caracteres.
          */
         "counterLength"?: boolean;
         /**
-          * Make it possible to pass the base values to the warning level and exclude, using the values between min and max.
+          * Define a regra do contador de comprimento de caracteres (min, max, etc).
          */
         "counterLengthRule"?: InputCounterLengthRules;
         /**
-          * Add state danger on input, use for use feedback.
+          * Define se o input está em estado de erro.
          */
         "danger"?: boolean;
         /**
-          * Id to support Cypress.
+          * Data test é a prop para testar especificamente a ação do componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Define se o input está desabilitado.
          */
         "disabled"?: boolean;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um email válido.
          */
         "emailErrorMessage"?: string;
+        "encode"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro exibida quando o valor do input é inválido.
          */
         "errorMessage"?: string;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda exibida abaixo do input.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Nome do ícone a ser exibido dentro do input.
          */
         "icon"?: string;
         /**
-          * Input Name
+          * Nome do input, usado para identificação no formulário.
          */
         "inputName"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Define se o input será submetido ao pressionar Enter.
          */
         "isSubmit"?: boolean;
         /**
-          * if `true` input switched to textarea
+          * Define se o input é uma área de texto (textarea).
          */
         "isTextarea"?: boolean;
         /**
-          * label in input, with he the input size increases.
+          * Rótulo que será exibido acima do input.
          */
         "label"?: string;
         /**
-          * The maximum value, which must not be less than its minimum (min attribute) value.
+          * Define o valor máximo permitido para o input.
          */
         "max"?: string;
         /**
-          * Error message when the value is higher than the max value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
          */
         "maxErrorMessage"?: string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
+          * Define o número máximo de caracteres permitidos no input.
          */
         "maxlength"?: number;
         /**
-          * The minimum value, which must not be greater than its maximum (max attribute) value.
+          * Define o valor mínimo permitido para o input.
          */
         "min"?: string;
         /**
-          * Error message when the value is lower than the min value
+          * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
          */
         "minErrorMessage"?: string;
         /**
-          * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
+          * Define o número mínimo de caracteres permitidos no input.
          */
         "minlength"?: number;
         /**
-          * Error message when the value is lower than the minlength
+          * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
          */
         "minlengthErrorMessage"?: string;
         /**
-          * Error message when the value isn't an email
+          * Mensagem de erro exibida quando o valor do input não é um número válido.
          */
         "numberErrorMessage"?: string;
         /**
-          * Emitted when the value has changed.
+          * Evento disparado quando o valor do input muda.
          */
         "onBdsChange"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event input focus.
+          * Evento disparado quando o input ganha o foco.
          */
         "onBdsFocus"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Emitted when the input has changed.
+          * Evento disparado quando o input recebe um input (digitação).
          */
         "onBdsInput"?: (event: BdsInputCustomEvent<KeyboardEvent>) => void;
         /**
-          * Event input key down backspace.
+          * Evento disparado quando a tecla "Backspace" é pressionada.
          */
         "onBdsKeyDownBackspace"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event input onblur.
+          * Evento disparado quando o input perde o foco.
          */
         "onBdsOnBlur"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event pattern validation.
+          * Evento disparado para validação de padrão regex.
          */
         "onBdsPatternValidation"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Event input enter.
+          * Evento disparado quando o formulário é submetido.
          */
         "onBdsSubmit"?: (event: BdsInputCustomEvent<any>) => void;
         /**
-          * Indicated to pass a regex pattern to input
+          * Define um padrão regex que o valor do input deve seguir.
          */
         "pattern"?: string;
         /**
-          * A tip for the user who can enter no controls.
+          * Texto que será exibido como sugestão ou dica no input.
          */
         "placeholder"?: string;
         /**
-          * If `true`, the user cannot modify the value.
+          * Torna o input somente leitura.
          */
         "readonly"?: boolean;
         /**
-          * If `true`, the input value will be required.
+          * Define se o input é obrigatório.
          */
         "required"?: boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
          */
         "requiredErrorMessage"?: string;
         /**
-          * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
+          * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
         "rows"?: number;
         /**
-          * Add state success on input, use for use feedback.
+          * Define se o input está em estado de sucesso.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem exibida quando o valor do input é válido.
          */
         "successMessage"?: string;
         /**
-          * Input type. Can be one of: "text", "password", "number" or "email".
+          * Define o tipo do input (por exemplo, `text`, `password`, etc).
          */
         "type"?: InputType;
         /**
-          * The value of the input.
+          * O valor atual do input.
          */
         "value"?: string | null;
     }
@@ -5350,87 +5386,91 @@ declare namespace LocalJSX {
     }
     interface BdsInputPhoneNumber {
         /**
-          * Add state danger on input, use for use feedback.
+          * Habilita o estado "danger" no input.
          */
         "danger"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * Data-test para identificar o componente.
          */
         "dataTest"?: string;
         /**
-          * Disabled input.
+          * Desabilita o input.
          */
         "disabled"?: boolean;
         /**
-          * Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close.
+          * Data-test para o botão de seleção de bandeira.
          */
         "dtSelectFlag"?: string;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de erro a ser exibida.
          */
         "errorMessage"?: string;
         /**
-          * Indicated to pass a help the user in complex filling.
+          * Mensagem de ajuda para o usuário.
          */
         "helperMessage"?: string;
         /**
-          * used for add icon in input left. Uses the bds-icon component.
+          * Ícone à esquerda do input.
          */
         "icon"?: string;
         /**
-          * label in input, with he the input size increases.
+          * Label do input.
          */
         "label"?: string;
         /**
-          * Error message when input is required
+          * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
+         */
+        "language"?: languages;
+        /**
+          * Mensagem de erro para validação numérica.
          */
         "numberErrorMessage"?: string;
         /**
-          * Emitted when the select loses focus.
+          * Evento disparado quando o select perde o foco.
          */
         "onBdsBlur"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
-          * Emitted when the selection is cancelled.
+          * Evento disparado quando a seleção é cancelada.
          */
         "onBdsCancel"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
-          * Emitted when the select loses focus.
+          * Evento disparado quando o select ganha foco.
          */
         "onBdsFocus"?: (event: BdsInputPhoneNumberCustomEvent<void>) => void;
         /**
-          * Emitted when the input has changed.
+          * Evento disparado quando o input sofre alteração.
          */
         "onBdsInput"?: (event: BdsInputPhoneNumberCustomEvent<KeyboardEvent>) => void;
         /**
-          * Emitted when the value has changed.
+          * Evento disparado quando o valor é alterado.
          */
         "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<any>) => void;
         /**
-          * The options of select.
+          * Lista de opções do select.
          */
         "options"?: Array<Option>;
         /**
-          * If `true`, the input value will be required.
+          * Se `true`, o valor do input será obrigatório.
          */
         "required"?: boolean;
         /**
-          * Error message when input is required
+          * Mensagem de erro para campo obrigatório.
          */
         "requiredErrorMessage"?: string;
         /**
-          * Add state success on input, use for use feedback.
+          * Habilita o estado "success" no input.
          */
         "success"?: boolean;
         /**
-          * Indicated to pass an feeback to user.
+          * Mensagem de sucesso a ser exibida.
          */
         "successMessage"?: string;
         /**
-          * The value of the phone number input.
+          * Valor do input de telefone.
          */
         "text"?: string;
         /**
-          * the value of the select.
+          * Valor do select.
          */
         "value"?: string | null;
     }
@@ -5968,6 +6008,36 @@ declare namespace LocalJSX {
           * The value of the selected radio
          */
         "value"?: string;
+    }
+    interface BdsRichText {
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "dataTest"?: string;
+        /**
+          * Data test is the prop to specifically test the component action object.
+         */
+        "height"?: string;
+        /**
+          * Set the language for fixed texts.
+         */
+        "language"?: languages1;
+        /**
+          * Event input onblur.
+         */
+        "onBdsBlur"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Event input focus.
+         */
+        "onBdsFocus"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onBdsRichTextChange"?: (event: BdsRichTextCustomEvent<any>) => void;
+        /**
+          * Emitted when the input has changed.
+         */
+        "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
     }
     interface BdsSelect {
         /**
@@ -6677,7 +6747,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Used to allow upload multiple files.
          */
@@ -6778,6 +6848,7 @@ declare namespace LocalJSX {
         "bds-progress-bar": BdsProgressBar;
         "bds-radio": BdsRadio;
         "bds-radio-group": BdsRadioGroup;
+        "bds-rich-text": BdsRichText;
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
@@ -6888,6 +6959,7 @@ declare module "@stencil/core" {
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
+            "bds-rich-text": LocalJSX.BdsRichText & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;

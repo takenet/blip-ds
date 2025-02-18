@@ -1,8 +1,12 @@
 import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen, Host } from '@stencil/core';
 import { Option } from '../selects/select-interface';
 import { numberValidation } from '../../utils/validations';
-import * as countriesJson from './countries.json';
+import * as countriesDefault from './countries.json';
+import * as countriesPtBR from './countries-pt_BR.json';
+import * as countriesEnUS from './countries-en_US.json';
+import * as countriesEsES from './countries-es_ES.json';
 
+export type languages = 'pt_BR' | 'es_ES' | 'en_US';
 @Component({
   tag: 'bds-input-phone-number',
   styleUrl: 'input-phone-number.scss',
@@ -14,124 +18,112 @@ export class InputPhoneNumber {
   @Element() el!: HTMLBdsSelectElement;
 
   @State() isOpen? = false;
-
   @State() selectedCountry: string;
-
   @State() isoCode: string;
-
-  /**
-   * Conditions the element to say whether it is pressed or not, to add styles.
-   */
-  @State() isPressed? = false;
-  /**
-   * Used to set the danger behavior by the internal validators
-   */
   @State() validationDanger? = false;
-
-  /**
-   * Used to set the error message setted by the internal validators
-   */
   @State() validationMesage? = '';
+  @State() isPressed? = false;
 
   /**
-   * The options of select.
+   * Lista de opções do select.
    */
   @Prop() options?: Array<Option> = [];
 
   /**
-   * The value of the phone number input.
+   * Valor do input de telefone.
    */
   @Prop() text? = '';
 
   /**
-   * the value of the select.
+   * Valor do select.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Prop({ mutable: true }) value?: string | null = '+55';
 
   /**
-   * Add state danger on input, use for use feedback.
+   * Habilita o estado "danger" no input.
    */
   @Prop({ mutable: true, reflect: true }) danger? = false;
   /**
-   * Add state success on input, use for use feedback.
+   * Habilita o estado "success" no input.
    */
   @Prop({ reflect: true, mutable: true }) success?: boolean = false;
   /**
-   * Disabled input.
+   * Desabilita o input.
    */
   @Prop({ reflect: true }) disabled? = false;
 
   /**
-   * If `true`, the input value will be required.
+   * Se `true`, o valor do input será obrigatório.
    */
   @Prop() required: boolean;
 
   /**
-   * Indicated to pass a help the user in complex filling.
+   * Mensagem de ajuda para o usuário.
    */
   @Prop() helperMessage?: string = '';
   /**
-   * Indicated to pass an feeback to user.
+   * Mensagem de erro a ser exibida.
    */
   @Prop({ mutable: true }) errorMessage?: string = '';
   /**
-   * Indicated to pass an feeback to user.
+   * Mensagem de sucesso a ser exibida.
    */
   @Prop({ mutable: true }) successMessage?: string = '';
   /**
-   * Error message when input is required
+   * Mensagem de erro para campo obrigatório.
    */
   @Prop() requiredErrorMessage: string;
-
   /**
-   * Error message when input is required
+   * Mensagem de erro para validação numérica.
    */
   @Prop() numberErrorMessage: string;
 
   /**
-   * Data test is the prop to specifically test the component action object.
+   * Data-test para identificar o componente.
    */
   @Prop() dataTest?: string = null;
-
   /**
-   * Data test is the prop to specifically test the component action object.
-   * dtSelectFlag is the data-test to button close.
+   * Data-test para o botão de seleção de bandeira.
    */
   @Prop() dtSelectFlag?: string = null;
-  /**
-   * Emitted when the value has changed.
-   */
-  @Event({ bubbles: true, composed: true }) bdsPhoneNumberChange!: EventEmitter;
 
   /**
-   * Emitted when the input has changed.
+   * Evento disparado quando o valor é alterado.
+   */
+  @Event({ bubbles: true, composed: true }) bdsPhoneNumberChange!: EventEmitter;
+  /**
+   * Evento disparado quando o input sofre alteração.
    */
   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
   /**
-   * Emitted when the selection is cancelled.
+   * Evento disparado quando a seleção é cancelada.
    */
   @Event() bdsCancel!: EventEmitter<void>;
-
   /**
-   * Emitted when the select loses focus.
+   * Evento disparado quando o select ganha foco.
    */
   @Event() bdsFocus!: EventEmitter<void>;
-
   /**
-   * Emitted when the select loses focus.
+   * Evento disparado quando o select perde o foco.
    */
   @Event() bdsBlur!: EventEmitter<void>;
 
   /**
-   *  label in input, with he the input size increases.
+   * Label do input.
    */
   @Prop() label? = 'Phone number';
-
   /**
-   * used for add icon in input left. Uses the bds-icon component.
+   * Ícone à esquerda do input.
    */
   @Prop({ reflect: true }) icon?: string = '';
+  /**
+   * Valores possíveis: "pt_BR", "en_US", "es_ES".
+   * Se nenhum for informado, utiliza o arquivo padrão (countries.json).
+   */
+  @Prop({ mutable: true }) language?: languages = 'pt_BR';
+
+  private countries: any = {};
 
   @Method()
   async removeFocus(): Promise<void> {
@@ -152,17 +144,34 @@ export class InputPhoneNumber {
     }
   }
 
-  componentWillRender() {
-    const countries = countriesJson['default'];
-    const flagsNames = Object.keys(countries);
+  @Watch('language')
+  languageChanged() {
+    this.updateCountries();
+  }
+
+  private updateCountries() {
+    switch (this.language) {
+      case 'pt_BR':
+        this.countries = countriesPtBR['default'];
+        break;
+      case 'en_US':
+        this.countries = countriesEnUS['default'];
+        break;
+      case 'es_ES':
+        this.countries = countriesEsES['default'];
+        break;
+      default:
+        this.countries = countriesDefault['default'];
+        break;
+    }
+
+    const flagsNames = Object.keys(this.countries);
     this.selectedCountry = this.selectedCountry || flagsNames[0];
     this.isoCode = this.isoCode || flagsNames[0];
   }
 
-  async connectedCallback() {
-    for (const option of this.childOptions) {
-      option.selected = this.value === option.value;
-    }
+  componentWillRender() {
+    this.updateCountries();
   }
 
   private get childOptions(): HTMLBdsSelectOptionElement[] {
@@ -232,10 +241,7 @@ export class InputPhoneNumber {
   }
 
   private handler = (event: CustomEvent): void => {
-    const {
-      detail: { value },
-    } = event;
-
+    const { value } = event.detail;
     this.value = value.code;
     this.selectedCountry = value.flag;
     this.isoCode = value.isoCode;
@@ -265,12 +271,8 @@ export class InputPhoneNumber {
     const isSelectElement = (event.target as Element).localName === 'bds-select';
     const isInputElement = (event.target as Element).localName === 'input';
 
-    switch (event.key) {
-      case 'Enter':
-        if (!this.isOpen && (isSelectElement || isInputElement)) {
-          this.toggle();
-        }
-        break;
+    if (event.key === 'Enter' && !this.isOpen && (isSelectElement || isInputElement)) {
+      this.toggle();
     }
   };
 
@@ -311,6 +313,7 @@ export class InputPhoneNumber {
       )
     );
   }
+
   private renderMessage(): HTMLElement {
     const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
     let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
@@ -324,27 +327,22 @@ export class InputPhoneNumber {
           ? 'input__message input__message--success'
           : 'input__message';
 
-    if (message) {
-      return (
-        <div class={styles} part="input__message">
-          <div class="input__message__icon">
-            <bds-icon size="x-small" name={icon} theme="outline" color="inherit"></bds-icon>
-          </div>
-          <bds-typo class="input__message__text" variant="fs-12">
-            {message}
-          </bds-typo>
+    return message ? (
+      <div class={styles} part="input__message">
+        <div class="input__message__icon">
+          <bds-icon size="x-small" name={icon} theme="outline" color="inherit"></bds-icon>
         </div>
-      );
-    }
-
-    return undefined;
+        <bds-typo class="input__message__text" variant="fs-12">
+          {message}
+        </bds-typo>
+      </div>
+    ) : null;
   }
 
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
-    const countries = countriesJson['default'];
-    const flagsNames = Object.keys(countries);
+    const flagsNames = Object.keys(this.countries);
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
@@ -414,11 +412,11 @@ export class InputPhoneNumber {
               <bds-select-option
                 key={flag}
                 onOptionSelected={this.handler}
-                selected={flag == this.selectedCountry}
-                value={{ code: countries[flag].code, isoCode: countries[flag].isoCode, flag }}
-                status={countries[flag].isoCode}
+                selected={flag === this.selectedCountry}
+                value={{ code: this.countries[flag].code, isoCode: this.countries[flag].isoCode, flag }}
+                status={this.countries[flag].isoCode}
               >
-                {countries[flag].name} {countries[flag].code}
+                {this.countries[flag].name} {this.countries[flag].code}
               </bds-select-option>
             ))}
         </div>

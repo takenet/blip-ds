@@ -10,261 +10,242 @@ import { emailValidation, numberValidation } from '../../utils/validations';
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
-  /**
-   * Conditions the element to say whether it is pressed or not, to add styles.
-   */
-  @State() isPressed? = false;
 
-  /**
-   * Indicates if the input is password, adding the eye icon.
-   */
-  @State() isPassword? = false;
-
-  /**
-   * Used to set the error message setted by the internal validators
-   */
-  @State() validationMesage? = '';
-  /**
-   * Used to set the danger behavior by the internal validators
-   */
+  @State() isPressed? = false; 
+  @State() isPassword? = false; 
+  @State() validationMesage? = ''; 
   @State() validationDanger? = false;
-
   /**
-   * Input Name
+   * Nome do input, usado para identificação no formulário.
    */
-  @Prop() inputName? = '';
+   @Prop() inputName? = '';
+
+   /**
+    * Define o tipo do input (por exemplo, `text`, `password`, etc).
+    */
+   @Prop({ reflect: true }) type?: InputType = 'text';
+ 
+   /**
+    * Rótulo que será exibido acima do input.
+    */
+   @Prop() label? = '';
+ 
+   /**
+    * Texto que será exibido como sugestão ou dica no input.
+    */
+   @Prop() placeholder?: string = '';
+ 
+   /**
+    * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
+    */
+   @Prop() autoCapitalize?: InputAutocapitalize = 'off';
+ 
+   /**
+    * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
+    */
+   @Prop() autoComplete?: InputAutoComplete = 'off';
+ 
+   /**
+    * Define o valor máximo permitido para o input.
+    */
+   @Prop() max?: string;
+ 
+   /**
+    * Define o número máximo de caracteres permitidos no input.
+    */
+   @Prop() maxlength?: number;
+ 
+   /**
+    * Define o valor mínimo permitido para o input.
+    */
+   @Prop() min?: string;
+ 
+   /**
+    * Define o número mínimo de caracteres permitidos no input.
+    */
+   @Prop() minlength?: number;
+ 
+   /**
+    * Torna o input somente leitura.
+    */
+   @Prop() readonly = false;
+ 
+   /**
+    * Define se o input é obrigatório.
+    */
+   @Prop() required: boolean;
+ 
+   /**
+    * Define um padrão regex que o valor do input deve seguir.
+    */
+   @Prop() pattern?: string;
+ 
+   /**
+    * Mensagem de ajuda exibida abaixo do input.
+    */
+   @Prop() helperMessage?: string = '';
+ 
+   /**
+    * Mensagem de erro exibida quando o valor do input é inválido.
+    */
+   @Prop({ mutable: true }) errorMessage?: string = '';
+ 
+   /**
+    * Mensagem exibida quando o valor do input é válido.
+    */
+   @Prop({ mutable: true }) successMessage?: string = '';
+ 
+   /**
+    * Nome do ícone a ser exibido dentro do input.
+    */
+   @Prop({ reflect: true }) icon?: string = '';
+ 
+   /**
+    * Define se o input está desabilitado.
+    */
+   @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
+ 
+   /**
+    * Define se o input está em estado de erro.
+    */
+   @Prop({ reflect: true, mutable: true }) danger?: boolean = false;
+ 
+   /**
+    * Define se o input está em estado de sucesso.
+    */
+   @Prop({ reflect: true, mutable: true }) success?: boolean = false;
+ 
+   /**
+    * O valor atual do input.
+    */
+   @Prop({ mutable: true }) value?: string | null = '';
+ 
+   /**
+    * Define se será exibido um contador de comprimento de caracteres.
+    */
+   @Prop() counterLength? = false;
+ 
+   /**
+    * Define a regra do contador de comprimento de caracteres (min, max, etc).
+    */
+   @Prop() counterLengthRule?: InputCounterLengthRules = null;
+ 
+   /**
+    * Define se o input será submetido ao pressionar Enter.
+    */
+   @Prop() isSubmit = false;
+ 
+   /**
+    * Define se o input é uma área de texto (textarea).
+    */
+   @Prop() isTextarea = false;
+ 
+   /**
+    * Define a quantidade de linhas da área de texto (se for `textarea`).
+    */
+   @Prop() rows?: number = 1;
+ 
+   /**
+    * Define a quantidade de colunas da área de texto (se for `textarea`).
+    */
+   @Prop() cols?: number = 0;
+ 
+   /**
+    * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
+    */
+   @Prop() requiredErrorMessage: string;
+ 
+   /**
+    * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
+    */
+   @Prop() minlengthErrorMessage: string;
+ 
+   /**
+    * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
+    */
+   @Prop() minErrorMessage: string;
+ 
+   /**
+    * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
+    */
+   @Prop() maxErrorMessage: string;
+ 
+   /**
+    * Mensagem de erro exibida quando o valor do input não é um email válido.
+    */
+   @Prop() emailErrorMessage: string;
+ 
+   /**
+    * Mensagem de erro exibida quando o valor do input não é um número válido.
+    */
+   @Prop() numberErrorMessage: string;
+ 
+   /**
+    * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
+    */
+   @Prop() chips: boolean;
+ 
+   /**
+    * Data test é a prop para testar especificamente a ação do componente.
+    */
+   @Prop() dataTest?: string = null;
+
+   @Prop() encode?: boolean = false;
+ 
+   /**
+    * Evento disparado quando o valor do input muda.
+    */
+   @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
+ 
+   /**
+    * Evento disparado quando o input recebe um input (digitação).
+    */
+   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+ 
+   /**
+    * Evento disparado quando o input perde o foco.
+    */
+   @Event() bdsOnBlur: EventEmitter;
+ 
+   /**
+    * Evento disparado quando o input ganha o foco.
+    */
+   @Event() bdsFocus: EventEmitter;
+ 
+   /**
+    * Evento disparado quando o formulário é submetido.
+    */
+   @Event() bdsSubmit: EventEmitter;
+ 
+   /**
+    * Evento disparado para validação de padrão regex.
+    */
+   @Event() bdsPatternValidation: EventEmitter;
+ 
+   /**
+    * Evento disparado quando a tecla "Backspace" é pressionada.
+    */
+   @Event() bdsKeyDownBackspace: EventEmitter;
+ 
 
   /**
-   * Input type. Can be one of: "text", "password", "number" or "email".
-   */
-  @Prop({ reflect: true }) type?: InputType = 'text';
-
-  /**
-   *  label in input, with he the input size increases.
-   */
-  @Prop() label? = '';
-
-  /**
-   * A tip for the user who can enter no controls.
-   */
-  @Prop() placeholder?: string = '';
-
-  /**
-   * Capitalizes every word's second character.
-   */
-  @Prop() autoCapitalize?: InputAutocapitalize = 'off';
-
-  /**
-   * Hint for form autofill feature
-   */
-  @Prop() autoComplete?: InputAutoComplete = 'off';
-
-  /**
-   * The maximum value, which must not be less than its minimum (min attribute) value.
-   */
-  @Prop() max?: string;
-
-  /**
-   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.
-   */
-  @Prop() maxlength?: number;
-
-  /**
-   * The minimum value, which must not be greater than its maximum (max attribute) value.
-   */
-  @Prop() min?: string;
-
-  /**
-   * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-   */
-  @Prop() minlength?: number;
-
-  /**
-   * If `true`, the user cannot modify the value.
-   */
-  @Prop() readonly = false;
-
-  /**
-   * If `true`, the input value will be required.
-   */
-  @Prop() required: boolean;
-
-  /**
-   * Indicated to pass a regex pattern to input
-   */
-  @Prop() pattern?: string;
-
-  /**
-   * Indicated to pass a help the user in complex filling.
-   */
-  @Prop() helperMessage?: string = '';
-
-  /**
-   * Indicated to pass an feeback to user.
-   */
-  @Prop({ mutable: true }) errorMessage?: string = '';
-
-  /**
-   * Indicated to pass an feeback to user.
-   */
-  @Prop({ mutable: true }) successMessage?: string = '';
-
-  /**
-   * used for add icon in input left. Uses the bds-icon component.
-   */
-  @Prop({ reflect: true }) icon?: string = '';
-
-  /**
-   * Disabled input.
-   */
-  @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
-
-  /**
-   * Add state danger on input, use for use feedback.
-   */
-  @Prop({ reflect: true, mutable: true }) danger?: boolean = false;
-
-  /**
-   * Add state success on input, use for use feedback.
-   */
-  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
-
-  /**
-   * The value of the input.
-   */
-  @Prop({ mutable: true }) value?: string | null = '';
-
-  /**
-   * Passing true to display a counter of available size, it is necessary to
-   * pass another maxlength property.
-   */
-  @Prop() counterLength? = false;
-
-  /**
-   * Make it possible to pass the base values to the warning level and exclude,
-   * using the values between min and max.
-   */
-  @Prop() counterLengthRule?: InputCounterLengthRules = null;
-
-  /**
-   * If `true`, the user cannot modify the value.
-   */
-  @Prop() isSubmit = false;
-
-  /**
-   * if `true` input switched to textarea
-   */
-  @Prop() isTextarea = false;
-
-  /**
-   * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
-   */
-  @Prop() rows?: number = 1;
-
-  /**
-   * The rows and cols attributes allow you to specify an exact size for the <textarea> to get. Setting this is a good idea for consistency, as the browser defaults may differ.
-   */
-  @Prop() cols?: number = 0;
-
-  /**
-   * Error message when input is required
-   */
-  @Prop() requiredErrorMessage: string;
-
-  /**
-   * Error message when the value is lower than the minlength
-   */
-  @Prop() minlengthErrorMessage: string;
-
-  /**
-   * Error message when the value is lower than the min value
-   */
-  @Prop() minErrorMessage: string;
-
-  /**
-   * Error message when the value is higher than the max value
-   */
-  @Prop() maxErrorMessage: string;
-
-  /**
-   * Error message when the value isn't an email
-   */
-  @Prop() emailErrorMessage: string;
-
-  /**
-   * Error message when the value isn't an email
-   */
-  @Prop() numberErrorMessage: string;
-
-  /**
-   * Internal prop to identify input chips
-   */
-  @Prop() chips: boolean;
-
-  /**
-   * Id to support Cypress.
-   */
-  @Prop() dataTest?: string = null;
-
-  /**
-   * Update the native input element when the value changes
-   */
-  @Watch('value')
-  protected valueChanged(): void {
-    this.bdsChange.emit({ value: this.value == null ? this.value : this.value.toString() });
-  }
-
-  /**
-   * Emitted when the value has changed.
-   */
-  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
-
-  /**
-   * Emitted when the input has changed.
-   */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
-
-  /**
-   * Event input onblur.
-   */
-  @Event() bdsOnBlur: EventEmitter;
-
-  /**
-   * Event input focus.
-   */
-  @Event() bdsFocus: EventEmitter;
-
-  /**
-   * Event input enter.
-   */
-  @Event() bdsSubmit: EventEmitter;
-
-  /**
-   * Event pattern validation.
-   */
-  @Event() bdsPatternValidation: EventEmitter;
-
-  /**
-   * Event input key down backspace.
-   */
-  @Event() bdsKeyDownBackspace: EventEmitter;
-
-  /**
-   * Sets focus on the specified `ion-input`. Use this method instead of the global
-   * `input.focus()`.
+   * Define o foco no campo de entrada.
    */
   @Method()
   async setFocus(): Promise<void> {
     this.onClickWrapper();
   }
 
+  /**
+   * Remove o foco do campo de entrada.
+   */
   @Method()
   async removeFocus(): Promise<void> {
     this.onBlur();
   }
 
   /**
-   * Returns the native `<input>` element used under the hood.
+   * Retorna o elemento de input do componente.
    */
   @Method()
   async getInputElement(): Promise<HTMLInputElement> {
@@ -272,7 +253,7 @@ export class Input {
   }
 
   /**
-   * Return the validity of the input.
+   * Verifica se o campo de entrada é válido.
    */
   @Method()
   async isValid(): Promise<boolean> {
@@ -280,13 +261,46 @@ export class Input {
   }
 
   /**
-   * Return the validity of the input.
+   * Limpa o valor do campo de entrada.
    */
   @Method()
   async clear(): Promise<void> {
     this.value = '';
   }
 
+  /**
+   * Codifica os caracteres especiais para exibição segura (evita injeção de código HTML).
+   */
+   private encodeValue(value: string): string {
+    const lt = /</g, 
+          gt = />/g, 
+          ap = /'/g, 
+          ic = /"/g, 
+          amp = /&/g, 
+          slash = /\//g;
+    
+    return value
+      .toString()
+      .replace(lt, "&lt;")
+      .replace(gt, "&gt;")
+      .replace(ap, "&#39;")
+      .replace(ic, "&#34;")
+      .replace(amp, "&amp;")
+      .replace(slash, "&#47;");
+  }
+
+  /**
+   * Avisa sobre a mudança do valor do campo de entrada.
+   */
+  @Watch('value')
+  protected valueChanged(newValue: string | null): void {
+      const changeValue = this.encode ? this.encodeValue(newValue || '') : (newValue || '');
+    this.bdsChange.emit({ value: changeValue });
+  }
+
+  /**
+   * Tratamento de eventos de pressionamento de tecla (Enter, Backspace, etc).
+   */
   private keyPressWrapper = (event: KeyboardEvent): void => {
     switch (event.key) {
       case 'Enter':
@@ -303,6 +317,9 @@ export class Input {
     }
   };
 
+  /**
+   * Função chamada ao digitar no campo de entrada.
+   */
   private onInput = (ev: Event): void => {
     this.onBdsInputValidations();
     const input = ev.target as HTMLInputElement | null;
@@ -312,17 +329,26 @@ export class Input {
     this.bdsInput.emit(ev as KeyboardEvent);
   };
 
+  /**
+   * Função chamada ao perder o foco do campo de entrada.
+   */
   private onBlur = (): void => {
     this.onBlurValidations();
     this.isPressed = false;
     this.bdsOnBlur.emit();
   };
 
+  /**
+   * Função chamada ao ganhar o foco do campo de entrada.
+   */
   private onFocus = (): void => {
     this.isPressed = true;
     this.bdsFocus.emit();
   };
 
+  /**
+   * Função chamada ao clicar no campo de entrada.
+   */
   private onClickWrapper = (): void => {
     this.onFocus();
     if (this.nativeInput) {
@@ -330,6 +356,9 @@ export class Input {
     }
   };
 
+  /**
+   * Limpa o valor do campo de entrada.
+   */
   private clearTextInput = (ev?: Event) => {
     if (!this.readonly && !this.disabled && ev) {
       ev.preventDefault();
@@ -338,16 +367,14 @@ export class Input {
 
     this.value = '';
 
-    /**
-     * This is needed for clearOnEdit
-     * Otherwise the value will not be cleared
-     * if user is inside the input
-     */
     if (this.nativeInput) {
       this.nativeInput.value = '';
     }
   };
 
+  /**
+   * Função que renderiza o ícone dentro do campo de entrada.
+   */
   private renderIcon(): HTMLElement {
     return (
       this.icon && (
@@ -368,6 +395,9 @@ export class Input {
     );
   }
 
+  /**
+   * Função que renderiza a label do campo de entrada.
+   */
   private renderLabel(): HTMLElement {
     return (
       this.label && (
@@ -385,6 +415,9 @@ export class Input {
     );
   }
 
+  /**
+   * Função que renderiza as mensagens de erro ou sucesso abaixo do campo de entrada.
+   */
   private renderMessage(): HTMLElement {
     const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
     let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
@@ -414,6 +447,9 @@ export class Input {
     return undefined;
   }
 
+  /**
+   * Valida o campo de entrada ao perder o foco.
+   */
   private onBlurValidations() {
     this.required && this.requiredValidation();
     this.pattern && this.patternValidation();
@@ -422,17 +458,26 @@ export class Input {
     this.checkValidity();
   }
 
+  /**
+   * Realiza as validações do campo enquanto o usuário digita.
+   */
   private onBdsInputValidations() {
     this.type === 'email' && this.emailValidation();
     this.type === 'phonenumber' && this.numberValidation();
     this.checkValidity();
   }
 
+  /**
+   * Valida o padrão regex do campo.
+   */
   private patternValidation() {
     const regex = new RegExp(this.pattern);
     this.bdsPatternValidation.emit(regex.test(this.nativeInput.value));
   }
 
+  /**
+   * Valida se o campo é obrigatório.
+   */
   private requiredValidation() {
     if (this.nativeInput.validity.valueMissing) {
       this.validationMesage = this.requiredErrorMessage;
@@ -440,6 +485,9 @@ export class Input {
     }
   }
 
+  /**
+   * Valida o comprimento do texto no campo de entrada.
+   */
   private lengthValidation() {
     if (this.nativeInput.validity.tooShort) {
       this.validationMesage = this.minlengthErrorMessage;
@@ -453,6 +501,9 @@ export class Input {
     }
   }
 
+  /**
+   * Valida os valores mínimos e máximos do campo de entrada.
+   */
   private minMaxValidation() {
     if (this.nativeInput.validity.rangeUnderflow) {
       this.validationMesage = this.minErrorMessage;
@@ -467,6 +518,9 @@ export class Input {
     }
   }
 
+  /**
+   * Valida se o campo contém um email válido.
+   */
   private emailValidation() {
     if (emailValidation(this.nativeInput.value)) {
       this.validationMesage = this.emailErrorMessage;
@@ -474,6 +528,9 @@ export class Input {
     }
   }
 
+  /**
+   * Valida se o campo contém um número válido.
+   */
   private numberValidation() {
     if (numberValidation(this.nativeInput.value)) {
       this.validationMesage = this.numberErrorMessage;
@@ -481,12 +538,18 @@ export class Input {
     }
   }
 
+  /**
+   * Verifica se o campo de entrada é válido.
+   */
   private checkValidity() {
     if (this.nativeInput.validity.valid) {
       this.validationDanger = false;
     }
   }
 
+  /**
+   * Atualiza o valor do campo de entrada após as mudanças.
+   */
   componentDidUpdate() {
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
@@ -538,26 +601,16 @@ export class Input {
                 placeholder={this.placeholder}
                 readOnly={this.readonly}
                 type={this.type}
-                value={this.value}
+                value={this.encodeValue(this.value)} 
                 pattern={this.pattern}
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
-              ></Element>
+              />
             </div>
           </div>
-          {this.counterLength && (
-            <bds-counter-text
-              length={this.value.length}
-              max={this.maxlength}
-              active={isPressed}
-              {...this.counterLengthRule}
-            />
-          )}
-          {this.success && <bds-icon class="icon-success" name="check" theme="outline" size="small" />}
-          <slot name="input-right" />
+          {this.renderMessage()}
         </div>
-        {this.renderMessage()}
       </Host>
     );
   }

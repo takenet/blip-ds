@@ -14,7 +14,7 @@ export default {
 
 export const Properties = (args) => {
   return (
-    <bds-avatar name={args.name} thumbnail={args.thumbnail} size={args.size} upload={args.upload}></bds-avatar>
+    <bds-avatar name={args.name} thumbnail={args.thumbnail} open-upload={args.openUpload} size={args.size} color={args.color} upload={args.upload}></bds-avatar>
   );
 };
 
@@ -41,6 +41,14 @@ Properties.argTypes = {
     options: ['micro' ,'extra-small' , 'small' , 'standard' , 'large', 'extra-large' ],
     control: 'select',
   },
+  color: {
+    table: {
+      defaultValue: { summary: 'colorLetter' },
+    },
+    description: 'Defina a cor de fundo do avatar.',
+    options: ['colorLetter', 'system', 'success', 'warning', 'error', 'info', 'surface' ],
+    control: 'select',
+  },
   upload: {
     table: {
       defaultValue: { summary: 'false' },
@@ -48,13 +56,22 @@ Properties.argTypes = {
     description: 'Defina se o avatar será clicável.',
     control: 'boolean',
   },
+  openUpload: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Defina se o clique de upload abrirá o seletor de arquivos.',
+    control: 'boolean',
+  },
 }
 
 Properties.args = {
   name: "Michael Scott",
   size: "standard",
+  color: "colorLetter",
   thumbnail:"",
   upload: false,
+  openUpload: false,
 }
 
 export const Events = () => {

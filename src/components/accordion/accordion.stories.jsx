@@ -18,7 +18,7 @@ const paragraph =
 
 export const Properties = (args) => {
   return (
-    <bds-accordion start-open={args.startOpen}>
+    <bds-accordion start-open={args.startOpen} divisor={args.divisor}>
       <bds-accordion-header
         accordion-title={args.accordionTitle}
         icon={args.icon}
@@ -68,6 +68,13 @@ Properties.argTypes = {
     description: 'Escolha se o accordion será iniciado aberto.',
     control: 'boolean',
   },
+  divisor: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    description: 'Escolha se o accordion terá a linha inferior.',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -76,6 +83,7 @@ Properties.args = {
   avatarThumb: '',
   icon: '',
   startOpen: false,
+  divisor: true,
 };
 
 export const Methods = () => {

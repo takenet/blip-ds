@@ -7,35 +7,36 @@
 
 ## Properties
 
-| Property               | Attribute                | Description                                                                                                            | Type       | Default          |
-| ---------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------- |
-| `danger`               | `danger`                 | Add state danger on input, use for use feedback.                                                                       | `boolean`  | `false`          |
-| `dataTest`             | `data-test`              | Data test is the prop to specifically test the component action object.                                                | `string`   | `null`           |
-| `disabled`             | `disabled`               | Disabled input.                                                                                                        | `boolean`  | `false`          |
-| `dtSelectFlag`         | `dt-select-flag`         | Data test is the prop to specifically test the component action object. dtSelectFlag is the data-test to button close. | `string`   | `null`           |
-| `errorMessage`         | `error-message`          | Indicated to pass an feeback to user.                                                                                  | `string`   | `''`             |
-| `helperMessage`        | `helper-message`         | Indicated to pass a help the user in complex filling.                                                                  | `string`   | `''`             |
-| `icon`                 | `icon`                   | used for add icon in input left. Uses the bds-icon component.                                                          | `string`   | `''`             |
-| `label`                | `label`                  | label in input, with he the input size increases.                                                                      | `string`   | `'Phone number'` |
-| `numberErrorMessage`   | `number-error-message`   | Error message when input is required                                                                                   | `string`   | `undefined`      |
-| `options`              | --                       | The options of select.                                                                                                 | `Option[]` | `[]`             |
-| `required`             | `required`               | If `true`, the input value will be required.                                                                           | `boolean`  | `undefined`      |
-| `requiredErrorMessage` | `required-error-message` | Error message when input is required                                                                                   | `string`   | `undefined`      |
-| `success`              | `success`                | Add state success on input, use for use feedback.                                                                      | `boolean`  | `false`          |
-| `successMessage`       | `success-message`        | Indicated to pass an feeback to user.                                                                                  | `string`   | `''`             |
-| `text`                 | `text`                   | The value of the phone number input.                                                                                   | `string`   | `''`             |
-| `value`                | `value`                  | the value of the select.                                                                                               | `string`   | `'+55'`          |
+| Property               | Attribute                | Description                                                                                                       | Type                            | Default          |
+| ---------------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------------- |
+| `danger`               | `danger`                 | Habilita o estado "danger" no input.                                                                              | `boolean`                       | `false`          |
+| `dataTest`             | `data-test`              | Data-test para identificar o componente.                                                                          | `string`                        | `null`           |
+| `disabled`             | `disabled`               | Desabilita o input.                                                                                               | `boolean`                       | `false`          |
+| `dtSelectFlag`         | `dt-select-flag`         | Data-test para o botão de seleção de bandeira.                                                                    | `string`                        | `null`           |
+| `errorMessage`         | `error-message`          | Mensagem de erro a ser exibida.                                                                                   | `string`                        | `''`             |
+| `helperMessage`        | `helper-message`         | Mensagem de ajuda para o usuário.                                                                                 | `string`                        | `''`             |
+| `icon`                 | `icon`                   | Ícone à esquerda do input.                                                                                        | `string`                        | `''`             |
+| `label`                | `label`                  | Label do input.                                                                                                   | `string`                        | `'Phone number'` |
+| `language`             | `language`               | Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json). | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`        |
+| `numberErrorMessage`   | `number-error-message`   | Mensagem de erro para validação numérica.                                                                         | `string`                        | `undefined`      |
+| `options`              | --                       | Lista de opções do select.                                                                                        | `Option[]`                      | `[]`             |
+| `required`             | `required`               | Se `true`, o valor do input será obrigatório.                                                                     | `boolean`                       | `undefined`      |
+| `requiredErrorMessage` | `required-error-message` | Mensagem de erro para campo obrigatório.                                                                          | `string`                        | `undefined`      |
+| `success`              | `success`                | Habilita o estado "success" no input.                                                                             | `boolean`                       | `false`          |
+| `successMessage`       | `success-message`        | Mensagem de sucesso a ser exibida.                                                                                | `string`                        | `''`             |
+| `text`                 | `text`                   | Valor do input de telefone.                                                                                       | `string`                        | `''`             |
+| `value`                | `value`                  | Valor do select.                                                                                                  | `string`                        | `'+55'`          |
 
 
 ## Events
 
-| Event                  | Description                              | Type                         |
-| ---------------------- | ---------------------------------------- | ---------------------------- |
-| `bdsBlur`              | Emitted when the select loses focus.     | `CustomEvent<void>`          |
-| `bdsCancel`            | Emitted when the selection is cancelled. | `CustomEvent<void>`          |
-| `bdsFocus`             | Emitted when the select loses focus.     | `CustomEvent<void>`          |
-| `bdsInput`             | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>` |
-| `bdsPhoneNumberChange` | Emitted when the value has changed.      | `CustomEvent<any>`           |
+| Event                  | Description                                      | Type                         |
+| ---------------------- | ------------------------------------------------ | ---------------------------- |
+| `bdsBlur`              | Evento disparado quando o select perde o foco.   | `CustomEvent<void>`          |
+| `bdsCancel`            | Evento disparado quando a seleção é cancelada.   | `CustomEvent<void>`          |
+| `bdsFocus`             | Evento disparado quando o select ganha foco.     | `CustomEvent<void>`          |
+| `bdsInput`             | Evento disparado quando o input sofre alteração. | `CustomEvent<KeyboardEvent>` |
+| `bdsPhoneNumberChange` | Evento disparado quando o valor é alterado.      | `CustomEvent<any>`           |
 
 
 ## Methods

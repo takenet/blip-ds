@@ -70,6 +70,14 @@ export class Accordion {
     this.condition = false;
   }
 
+  @Watch('divisor')
+  divisorChanged(newValue: boolean): void {
+    const accordionBody = this.element.querySelector('bds-accordion-body') as HTMLBdsAccordionBodyElement;
+    if (accordionBody) {
+      (accordionBody as any).divisor(newValue);
+    }
+  }
+
   componentWillLoad() {
     this.accGroup =
       this.element.parentElement.tagName == 'BDS-ACCORDION-GROUP' &&

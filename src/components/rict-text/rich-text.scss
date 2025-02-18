@@ -1,0 +1,191 @@
+@import 'fonts';
+@import 'mixins';
+
+.rich-text {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 8px;
+  border: 1px solid $color-border-1;
+  border-radius: 16px;
+  background-color: $color-surface-1;
+
+  &.active {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px $color-info;
+  }
+
+  .format-buttons {
+    position: relative;
+    background-color: $color-surface-0;
+    border: 1px solid $color-border-1;
+    border-radius: 16px;
+
+    .style-onhover {
+      position: absolute;
+      background-color: $color-surface-1;
+      border-radius: 32px;
+      bottom: -32px;
+      right: 0;
+      opacity: 0;
+      -webkit-transition: opacity ease-in-out 0.5s;
+      -moz-transition: opacity ease-in-out 0.5s;
+      transition: opacity ease-in-out 0.5s;
+      pointer-events: none;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+
+    .accordion-header {
+      width: 100%;
+      position: relative;
+      padding-right: 40px;
+
+      .buttons-list {
+        column-gap: 8px;
+
+        & bds-tooltip {
+          -webkit-transition: height ease-in-out 0.25s;
+          -moz-transition: height ease-in-out 0.25s;
+          transition: height ease-in-out 0.25s;
+          height: 0px;
+
+          & > bds-button {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            display: block;
+            -webkit-transition:
+              height ease-in-out 0.25s,
+              opacity 0.5s ease-in-out 0.25s;
+            -moz-transition:
+              height ease-in-out 0.25s,
+              opacity 0.5s ease-in-out 0.25s;
+            transition:
+              height ease-in-out 0.25s,
+              opacity 0.5s ease-in-out 0.25s;
+          }
+
+          &.active {
+            height: 32px;
+            & > bds-button {
+              height: 32px;
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      .arrow-down {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+        &.active {
+          display: block;
+        }
+      }
+    }
+  }
+  .preview {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    -webkit-transition: height ease-in-out 0.25s;
+    -moz-transition: height ease-in-out 0.25s;
+    transition: height ease-in-out 0.25s;
+
+    .editor-uai-design-system {
+      min-height: 48px;
+      height: 100%;
+      background-color: transparent;
+      font-size: 1rem;
+      line-height: 1.5;
+      overflow-y: auto;
+      outline: none;
+      font-family: $font-family;
+      font-style: normal;
+      font-weight: normal;
+      color: $color-content-default;
+      @include custom-scroll;
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      blockquote {
+        margin: 0 0 8px 0;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: 600;
+      }
+      h2 {
+        font-size: 28px;
+        font-weight: 600;
+      }
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+      h4 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      h5 {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      h6 {
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      blockquote {
+        padding: 4px 16px 4px 32px;
+        font-size: 14px;
+        position: relative;
+        display: inline-block;
+
+        &::before,
+        &::after {
+          content: '"';
+          position: absolute;
+          font-size: 24px;
+          color: $color-content-ghost;
+        }
+
+        &::before {
+          left: 8px;
+          top: -6px;
+        }
+
+        &::after {
+          right: 0px;
+          bottom: 0px;
+        }
+      }
+      code {
+        font-family: monospace;
+        font-size: 12px;
+        background-color: $color-surface-2;
+        padding: 4px;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+/* Editor */

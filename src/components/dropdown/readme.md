@@ -60,11 +60,13 @@ Type: `Promise<void>`
 ### Used by
 
  - [bds-breadcrumb](../breadcrumb)
+ - [bds-rich-text](../rict-text)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-breadcrumb --> bds-dropdown
+  bds-rich-text --> bds-dropdown
   style bds-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
