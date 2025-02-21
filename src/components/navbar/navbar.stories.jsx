@@ -59,7 +59,7 @@ Properties.argTypes = {
     },
     description: 'Coloque a cor de fundo da navegação.',
     control: 'select',
-    options: ['surface-1', 'surface-2', 'surface-3'],
+    options: ['surface-0','surface-1', 'surface-2', 'surface-3'],
   },
 };
 

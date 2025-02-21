@@ -54,6 +54,9 @@
       order: 3;
     }
 
+    &.background_surface-0 {
+      background-color: $color-surface-0;
+    }
     &.background_surface-1 {
       background-color: $color-surface-1;
     }

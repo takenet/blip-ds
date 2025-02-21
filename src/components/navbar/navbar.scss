@@ -68,6 +68,9 @@
   }
   
   &__background-color {
+    &__surface-0 {
+      background-color: $color-surface-0;
+    }
     &__surface-1 {
       background-color: $color-surface-1;
     }

@@ -75,7 +75,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'surface-2' },
     },
-    options: ["surface-1", "surface-2", "surface-3", "surface-4"],
+    options: ["surface-0", "surface-1", "surface-2", "surface-3", "surface-4"],
     control: 'select',
   },
   margin: {

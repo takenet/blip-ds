@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop, Element } from '@stencil/core';
 
 export type orientation = 'horizontal' | 'vertical';
-export type navbarBackground = 'surface-1' | 'surface-2' | 'surface-3';
+export type navbarBackground = 'surface-0' |'surface-1' | 'surface-2' | 'surface-3';
 export type justifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
 @Component({
   tag: 'bds-navbar',
