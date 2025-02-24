@@ -75,3 +75,16 @@ export const Events = () => {
     </div>
   );
 };
+
+export const FrameworkReact = () => {
+  return (
+    <BdsBreadcrumb
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Features', href: '/features' },
+        { label: 'Pricing', href: '/pricing' },
+        { label: 'Documentation' },
+      ]}
+    />
+  );
+};

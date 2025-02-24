@@ -60,7 +60,7 @@ import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { languages as languages1 } from "./components/rict-text/rich-text-interface";
+import { languages as languages2 } from "./components/rict-text/rich-text-interface";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -73,7 +73,7 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages2 } from "./components/upload/languages";
+import { languages as languages3 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -2114,7 +2114,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
     }
     interface BdsSelect {
         /**
@@ -2820,7 +2820,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * Used to allow upload multiple files.
          */
@@ -6021,7 +6021,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Event input onblur.
          */
@@ -6747,7 +6747,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * Used to allow upload multiple files.
          */

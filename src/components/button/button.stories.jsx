@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BdsButton } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './button.mdx';
 

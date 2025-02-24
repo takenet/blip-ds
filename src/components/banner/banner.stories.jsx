@@ -29,7 +29,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'system' },
     },
-
+    description: 'Define o estilo do banner.',
     options: ['system', 'error', 'warning', 'info', 'success'],
     control: 'select',
   },
@@ -37,7 +37,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'outside' },
     },
-
+    description: 'Define o contexto do banner.',
     options: ['outside', 'inside'],
     control: 'select',
   },
@@ -45,20 +45,21 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'false' },
     },
-
+    description: 'Define se o botão de fechar será exibido.',
     control: 'boolean',
   },
   buttonLink: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Defina o link a ser aberto',
+    description: 'Define o link a ser aberto.',
     control: 'text',
   },
   buttonTarget: {
     table: {
-      defaultValue: { summary: 'false' },
+      defaultValue: { summary: 'blank' },
     },
+    description: 'Define o alvo do link.',
     options: ['blank', 'self', 'parent', 'top', 'framename'],
     control: 'select',
   },
@@ -71,6 +72,33 @@ Properties.args = {
   buttonLink: 'https://www.blip.ai/',
   buttonTarget: 'blank',
 };
+
+export const Methods = () => {
+  useEffect(() => {
+    const banner = document.getElementById('banner-method');
+    const toggleButton = document.getElementById('toggle-button');
+
+    toggleButton.addEventListener('click', () => {
+      banner.toggle();
+    });
+
+    return () => {
+      toggleButton.removeEventListener('click', () => {
+        banner.toggle();
+      });
+    };
+  }, []);
+
+  return (
+    <div>
+      <bds-banner id="banner-method" variant="system" button-close={true} context="outside">
+        Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!
+      </bds-banner>
+      <bds-button id="toggle-button" variant="primary">Toggle Banner Visibility</bds-button>
+    </div>
+  );
+};
+
 export const Events = () => {
   useEffect(() => {
     const banner = document.getElementById('bannerEvent');
@@ -78,6 +106,7 @@ export const Events = () => {
       console.log('Evento para fechar funcionando');
     });
   });
+
   return (
     <bds-banner id="bannerEvent" variant="system" button-close={true} context="outside">
       Instabilidade na plataforma? Não se preocupe, já estamos resolvendo!
