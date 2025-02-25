@@ -3,6 +3,8 @@ import { getParentsUntil } from '../../utils/position-element';
 import { languages } from './rich-text-interface';
 import { termTranslate } from './languages';
 
+export type positionBar = 'top' | 'bottom';
+
 @Component({
   tag: 'bds-rich-text',
   styleUrl: 'rich-text.scss',
@@ -13,46 +15,28 @@ export class RichText {
   private buttonsEditElements?: HTMLCollectionOf<HTMLBdsTooltipElement> = null;
   private editor?: HTMLElement = null;
   private dropDownLink?: HTMLBdsDropdownElement = null;
+  private inputSetLink?: HTMLBdsInputElement;
 
   @Element() el: HTMLElement;
   @State() buttomBoldActive?: boolean = false;
-  @State() buttomBoldDisabled?: boolean = true;
   @State() buttomItalicActive?: boolean = false;
-  @State() buttomItalicDisabled?: boolean = true;
   @State() buttomStrikeActive?: boolean = false;
-  @State() buttomStrikeDisabled?: boolean = true;
   @State() buttomUnderlineActive?: boolean = false;
-  @State() buttomUnderlineDisabled?: boolean = true;
   @State() buttomCodeActive?: boolean = false;
-  @State() buttomCodeDisabled?: boolean = true;
   @State() buttomLinkActive?: boolean = false;
-  @State() buttomLinkDisabled?: boolean = true;
   @State() buttomLinkValidDisabled?: boolean = true;
   @State() buttomAlignLeftActive?: boolean = false;
-  @State() buttomAlignLeftDisabled?: boolean = true;
   @State() buttomAlignCenterActive?: boolean = false;
-  @State() buttomAlignCenterDisabled?: boolean = true;
   @State() buttomAlignRightActive?: boolean = false;
-  @State() buttomAlignRightDisabled?: boolean = true;
   @State() buttomUnorderedListActive?: boolean = false;
-  @State() buttomUnorderedListDisabled?: boolean = true;
   @State() buttomOrderedListActive?: boolean = false;
-  @State() buttomOrderedListDisabled?: boolean = true;
   @State() buttomQuoteActive?: boolean = false;
-  @State() buttomQuoteDisabled?: boolean = true;
   @State() buttomH1Active?: boolean = false;
-  @State() buttomH1Disabled?: boolean = true;
   @State() buttomH2Active?: boolean = false;
-  @State() buttomH2Disabled?: boolean = true;
   @State() buttomH3Active?: boolean = false;
-  @State() buttomH3Disabled?: boolean = true;
   @State() buttomH4Active?: boolean = false;
-  @State() buttomH4Disabled?: boolean = true;
   @State() buttomH5Active?: boolean = false;
-  @State() buttomH5Disabled?: boolean = true;
   @State() buttomH6Active?: boolean = false;
-  @State() buttomH6Disabled?: boolean = true;
-  @State() buttomUnStyledDisabled?: boolean = true;
   @State() buttomAccordionActive?: boolean = false;
   @State() headerHeight?: string = '32px';
   @State() hasSelectionRange?: boolean = false;
@@ -67,9 +51,61 @@ export class RichText {
    */
   @Prop() language?: languages = 'pt_BR';
   /**
-   * Data test is the prop to specifically test the component action object.
+   * buttonBold to define if component has Bold Control.
+   */
+  @Prop() buttonBold?: boolean = true;
+  /**
+   * buttonItalic to define if component has Italic Control.
+   */
+  @Prop() buttonItalic?: boolean = true;
+  /**
+   * buttonStrike to define if component has Strike Control.
+   */
+  @Prop() buttonStrike?: boolean = true;
+  /**
+   * buttonUnderline to define if component has Underline Control.
+   */
+  @Prop() buttonUnderline?: boolean = true;
+  /**
+   * buttonLink to define if component has Link Control.
+   */
+  @Prop() buttonLink?: boolean = true;
+  /**
+   * buttonCode to define if component has Code Control.
+   */
+  @Prop() buttonCode?: boolean = true;
+  /**
+   * buttonTextAlign to define if component has TextAlign Control.
+   */
+  @Prop() buttonTextAlign?: boolean = true;
+  /**
+   * buttonList to define if component has List Control.
+   */
+  @Prop() buttonList?: boolean = true;
+  /**
+   * buttonQuote to define if component has Quote Control.
+   */
+  @Prop() buttonQuote?: boolean = true;
+  /**
+   * buttonHeading to define if component has Heading Control.
+   */
+  @Prop() buttonHeading?: boolean = true;
+  /**
+   * buttonUnstyled to define if component has Unstyled Control.
+   */
+  @Prop() buttonUnstyled?: boolean = true;
+  /**
+   * height is the prop to define height of component.
    */
   @Prop() height?: string = null;
+  /**
+   * maxHeight is the prop to define max height of component.
+   */
+  @Prop() maxHeight?: string = null;
+  /**
+   * positionBar is the prop to define max height of component.
+   */
+  @Prop() positionBar?: positionBar = 'top';
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -100,16 +136,47 @@ export class RichText {
     if (this.editor.innerHTML.trim() === '') {
       this.editor.innerHTML = '<p class="line"><br></p>';
     }
-    this.buttonsEditElements = this.buttonsListElement.getElementsByTagName(
-      'bds-tooltip',
-    ) as HTMLCollectionOf<HTMLBdsTooltipElement>;
-    this.accordionHeader(false);
-    this.editor.parentElement.style.height = `calc(100% - 56px)`;
+    if (
+      this.buttonBold ||
+      this.buttonItalic ||
+      this.buttonStrike ||
+      this.buttonUnderline ||
+      this.buttonLink ||
+      this.buttonCode ||
+      this.buttonTextAlign ||
+      this.buttonList ||
+      this.buttonQuote ||
+      this.buttonHeading ||
+      this.buttonUnstyled
+    ) {
+      this.buttonsEditElements = this.buttonsListElement.getElementsByTagName(
+        'bds-tooltip',
+      ) as HTMLCollectionOf<HTMLBdsTooltipElement>;
+      this.accordionHeader(false);
+      this.editor.parentElement.style.height = `calc(100% - 56px)`;
+    } else {
+      this.editor.parentElement.style.height = `100%`;
+    }
+  }
+
+  @Watch('buttonBold')
+  @Watch('buttonItalic')
+  @Watch('buttonStrike')
+  @Watch('buttonUnderline')
+  @Watch('buttonLink')
+  @Watch('buttonCode')
+  @Watch('buttonTextAlign')
+  @Watch('buttonList')
+  @Watch('buttonQuote')
+  @Watch('buttonHeading')
+  @Watch('buttonUnstyled')
+  protected buttomsHeaderChanged(): void {
+    setTimeout(() => this.accordionHeader(this.buttomAccordionActive), 500);
   }
 
   @Watch('buttomAccordionActive')
-  protected buttomAccordionActiveChanged(value): void {
-    this.accordionHeader(value);
+  protected buttomAccordionActiveChanged(): void {
+    this.accordionHeader(this.buttomAccordionActive);
   }
 
   private updateToolbarState() {
@@ -119,18 +186,10 @@ export class RichText {
     const parentElement =
       commonAncestor.nodeType === Node.TEXT_NODE ? commonAncestor.parentElement : (commonAncestor as HTMLElement);
     this.treeElementsEditor = getParentsUntil(parentElement, '.editor-uai-design-system');
-    const rangeClone = range.cloneContents();
-    this.hasSelectionRange = rangeClone.textContent.length > 0;
-    this.buttomBoldDisabled = this.buttomBoldActive ? false : !this.hasSelectionRange;
-    this.buttomItalicDisabled = this.buttomItalicActive ? false : !this.hasSelectionRange;
-    this.buttomStrikeDisabled = this.buttomStrikeActive ? false : !this.hasSelectionRange;
-    this.buttomUnderlineDisabled = this.buttomUnderlineActive ? false : !this.hasSelectionRange;
-    this.buttomCodeDisabled = this.buttomCodeActive ? false : !this.hasSelectionRange;
-    this.buttomLinkDisabled = this.buttomLinkActive ? false : !this.hasSelectionRange;
   }
 
   // Coloca o cursor no final do editor
-  private accordionHeader(value: false) {
+  private accordionHeader(value: boolean) {
     const allbuttonsEditElementsWidth = this.buttonsEditElements.length * 40;
     const buttonsListWidth = this.buttonsListElement.offsetWidth;
     const buttonAccordion = this.el.querySelector('#buttonAccordion') as HTMLBdsButtonElement;
@@ -193,71 +252,27 @@ export class RichText {
     this.dropDownLink = el;
   };
 
+  private refInputSetLink = (el: HTMLBdsInputElement): void => {
+    this.inputSetLink = el;
+  };
+
   private setheaderHeight = () => {
     this.buttomAccordionActive = !this.buttomAccordionActive;
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+    const range = selection.getRangeAt(0);
+    // Limpa a seleção para evitar comportamento inesperado
+    selection.removeAllRanges();
+    selection.addRange(range);
   };
 
   private onBlur = () => {
     this.el.classList.remove('active');
-    setTimeout(() => {
-      this.buttomBoldActive = false;
-      this.buttomItalicActive = false;
-      this.buttomStrikeActive = false;
-      this.buttomUnderlineActive = false;
-      this.buttomCodeActive = false;
-      this.buttomLinkActive = false;
-      this.buttomAlignLeftActive = false;
-      this.buttomAlignCenterActive = false;
-      this.buttomAlignRightActive = false;
-      this.buttomUnorderedListActive = false;
-      this.buttomOrderedListActive = false;
-      this.buttomQuoteActive = false;
-      this.buttomH1Active = false;
-      this.buttomH2Active = false;
-      this.buttomH3Active = false;
-      this.buttomH4Active = false;
-      this.buttomH5Active = false;
-      this.buttomH6Active = false;
-      this.buttomBoldDisabled = true;
-      this.buttomItalicDisabled = true;
-      this.buttomStrikeDisabled = true;
-      this.buttomUnderlineDisabled = true;
-      this.buttomCodeDisabled = true;
-      this.buttomLinkDisabled = true;
-      this.buttomAlignLeftDisabled = true;
-      this.buttomAlignCenterDisabled = true;
-      this.buttomAlignRightDisabled = true;
-      this.buttomUnorderedListDisabled = true;
-      this.buttomOrderedListDisabled = true;
-      this.buttomQuoteDisabled = true;
-      this.buttomH1Disabled = true;
-      this.buttomH2Disabled = true;
-      this.buttomH3Disabled = true;
-      this.buttomH4Disabled = true;
-      this.buttomH5Disabled = true;
-      this.buttomH6Disabled = true;
-      this.buttomUnStyledDisabled = true;
-    }, 100);
     this.bdsBlur.emit();
   };
 
   private onFocus = () => {
     this.el.classList.add('active');
-    setTimeout(() => {
-      this.buttomAlignLeftDisabled = false;
-      this.buttomAlignCenterDisabled = false;
-      this.buttomAlignRightDisabled = false;
-      this.buttomUnorderedListDisabled = false;
-      this.buttomOrderedListDisabled = false;
-      this.buttomQuoteDisabled = false;
-      this.buttomH1Disabled = false;
-      this.buttomH2Disabled = false;
-      this.buttomH3Disabled = false;
-      this.buttomH4Disabled = false;
-      this.buttomH5Disabled = false;
-      this.buttomH6Disabled = false;
-      this.buttomUnStyledDisabled = false;
-    }, 100);
     this.bdsFocus.emit();
   };
 
@@ -325,7 +340,20 @@ export class RichText {
       this.editor.innerHTML = `<p class="line"><br></p>`;
       this.setCursorToEnd();
     }
+    if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
+      event.preventDefault(); // Impede o Ctrl+Z
+      event.stopPropagation(); // Evita que afete outros elementos
+    }
   };
+
+  // Controle a navegação do componente
+  private onFocusEditorBar(ev: FocusEvent) {
+    const editorBar = ev.target as HTMLElement;
+    const NextButton = editorBar.nextElementSibling.querySelector('bds-button');
+    const ElementToFocus = NextButton.shadowRoot.querySelector('.focus') as HTMLElement;
+    ElementToFocus.focus();
+    this.buttomAccordionActive = true;
+  }
 
   // Coloca o cursor no final do editor
   private setCursorToEnd() {
@@ -342,64 +370,116 @@ export class RichText {
     return value.includes(tag);
   }
 
-  private wrapSelection(tag: string, link?: string) {
+  private wrapSelection(ev: CustomEvent, tag: string, link?: string) {
+    const detail = ev.detail;
+    if (detail instanceof KeyboardEvent && detail.key === 'Enter') {
+      detail.preventDefault();
+      detail.stopPropagation();
+    }
+
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
 
     const range = selection.getRangeAt(0);
-    const startNode = range.startContainer as HTMLElement;
     const commonAncestor = range.commonAncestorContainer;
     const parentElement =
       commonAncestor.nodeType === Node.TEXT_NODE ? commonAncestor.parentElement : (commonAncestor as HTMLElement);
 
     const tagList = getParentsUntil(parentElement, '.line');
+    const isTagApplied = this.tagName(tag, tagList);
 
-    // Verifica se a tag já está aplicada
-    if (this.tagName(tag, getParentsUntil(parentElement, '.line'))) {
-      tagList.forEach((element) => {
-        if (element.tagName.toLowerCase() === tag) {
-          const parent = element.parentElement;
-          if (parent) {
-            while (element.firstChild) {
-              parent.insertBefore(element.firstChild, element);
-            }
-            parent.removeChild(element);
+    // Se a seleção estiver vazia, cria um espaço invisível para edição
+    let content: DocumentFragment;
+    let collapsedCursor = false;
+
+    // Se a tag já está aplicada e o usuário quer remover
+    if (isTagApplied) {
+      const appliedTag = tagList.find((el) => el.tagName.toLowerCase() === tag);
+      if (appliedTag) {
+        const parent = appliedTag.parentElement;
+        const isFullSelection = range.toString().trim() === appliedTag.textContent.trim();
+        const isAtEndOfTag = range.endOffset === appliedTag.textContent.length;
+
+        if (isFullSelection && parent) {
+          // Remove a tag se toda a seleção corresponde ao conteúdo da tag
+          while (appliedTag.firstChild) {
+            parent.insertBefore(appliedTag.firstChild, appliedTag);
           }
+          parent.removeChild(appliedTag);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          this.updateToolbarState();
+        } else if (isAtEndOfTag) {
+          // Se o cursor está no final da tag, move para fora dela
+          content = document.createDocumentFragment();
+          const placeholder = document.createTextNode('\u200B'); // Zero-width space
+          content.appendChild(placeholder);
+          collapsedCursor = true;
+          const newRange = document.createRange();
+          newRange.setStartAfter(appliedTag); // Define o início depois do elemento
+          newRange.setEndAfter(appliedTag);
+          newRange.insertNode(content);
+          selection.removeAllRanges();
+          selection.addRange(newRange);
+          this.updateToolbarState();
+        } else {
+          // Se o cursor está no final da tag, move para fora dela
+          selection.removeAllRanges();
+          selection.addRange(range);
+          this.updateToolbarState();
         }
-      });
+      }
+      return;
     }
 
-    const content = range.extractContents();
-    const elements = content.querySelectorAll('*');
+    if (range.collapsed) {
+      content = document.createDocumentFragment();
+      const placeholder = document.createTextNode('\u200B'); // Zero-width space
+      content.appendChild(placeholder);
+      collapsedCursor = true;
+    } else {
+      content = range.extractContents();
+    }
 
-    elements.forEach((element) => {
-      // Move os filhos do elemento para o pai antes de remover a tag
+    // Remove tags desnecessárias dentro da seleção
+    content.querySelectorAll('*').forEach((element) => {
       while (element.firstChild) {
         element.parentNode.insertBefore(element.firstChild, element);
       }
-      // Remove a tag agora vazia
       element.remove();
     });
 
-    // Adiciona a tag se ela não estiver aplicada
-
+    // Cria a nova tag e aplica o conteúdo extraído
     const wrapper = document.createElement(tag);
-    if (tag === 'a') {
+    if (tag === 'a' && link) {
       wrapper.setAttribute('href', link);
     }
     wrapper.appendChild(content);
     range.insertNode(wrapper);
 
-    startNode.parentElement.querySelectorAll('*').forEach((tag) => {
-      // Verifica se a tag está vazia (sem texto e sem filhos visíveis)
-      if (!tag.textContent.trim() && tag.children.length === 0) {
-        tag.remove(); // Remove a tag vazia
+    // Remove tags vazias no editor
+    this.editor.querySelectorAll('*').forEach((el) => {
+      if (!el.textContent.trim() && el.children.length === 0) {
+        el.remove();
       }
     });
 
-    // Restaura a seleção
+    // Se o cursor estava no meio da edição, mantém a seleção original
+    const newRange = document.createRange();
+    if (collapsedCursor) {
+      newRange.setStart(wrapper, 0);
+      newRange.setEnd(wrapper, 1);
+    } else {
+      newRange.setStartBefore(wrapper.firstChild || wrapper);
+      newRange.setEndAfter(wrapper.lastChild || wrapper);
+    }
     selection.removeAllRanges();
 
+    selection.addRange(newRange);
+
+    this.updateToolbarState();
+
+    // Emite o evento para atualizar o estado
     this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
   }
 
@@ -448,14 +528,40 @@ export class RichText {
     if (enableLinesReturn) {
       this.selectedLinesList = returnSelected.map((element) => ({ element }));
     }
+
     // Limpa a seleção para evitar comportamento inesperado
+    const newRange = document.createRange();
+    let lastNode = returnSelected[0].lastChild;
+
+    // Se não houver filhos, cria um nó de texto para evitar erro
+    if (!lastNode) {
+      lastNode = document.createTextNode('');
+      returnSelected[0].appendChild(lastNode);
+    }
+
+    // Se o último nó for outro elemento, busca um nó de texto dentro dele
+    while (lastNode && lastNode.nodeType !== Node.TEXT_NODE) {
+      lastNode = lastNode.lastChild || lastNode;
+    }
+
+    // Define o range no final do último nó de texto
+    newRange.setStart(lastNode, lastNode.textContent?.length || 0);
+    newRange.setEnd(lastNode, lastNode.textContent?.length || 0);
     selection.removeAllRanges();
+    selection.addRange(newRange);
+
+    this.updateToolbarState();
 
     this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
   }
 
   // Função para aplicar alinhamento ao texto selecionado
-  private alignText(alignment: 'left' | 'center' | 'right' | 'justify') {
+  private alignText(ev: CustomEvent, alignment: 'left' | 'center' | 'right' | 'justify') {
+    const detail = ev.detail;
+    if (detail instanceof KeyboardEvent && detail.key === 'Enter') {
+      detail.preventDefault();
+      detail.stopPropagation();
+    }
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
 
@@ -482,14 +588,23 @@ export class RichText {
         (blockElement as HTMLElement).style.textAlign = alignment;
       }
     }
+
     // Limpa a seleção para evitar comportamento inesperado
     selection.removeAllRanges();
+    selection.addRange(range);
+
+    this.updateToolbarState();
 
     this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
   }
 
   // Função para criar/remover lista (ordenada ou não ordenada)
-  private createHeading(type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote') {
+  private createHeading(ev: CustomEvent, type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote') {
+    const detail = ev.detail;
+    if (detail instanceof KeyboardEvent && detail.key === 'Enter') {
+      detail.preventDefault();
+      detail.stopPropagation();
+    }
     this.wrapSelectionLine(type, true);
     const firstItemList = this.selectedLinesList[0].element;
     const firstParent = firstItemList.parentElement.previousElementSibling;
@@ -512,7 +627,12 @@ export class RichText {
   }
 
   // Função para criar/remover lista (ordenada ou não ordenada)
-  private createList(type: 'ol' | 'ul') {
+  private createList(ev: CustomEvent, type: 'ol' | 'ul') {
+    const detail = ev.detail;
+    if (detail instanceof KeyboardEvent && detail.key === 'Enter') {
+      detail.preventDefault();
+      detail.stopPropagation();
+    }
     this.wrapSelectionLine('li', true);
 
     const firstItemList = this.selectedLinesList[0].element;
@@ -558,9 +678,16 @@ export class RichText {
     }
   }
 
-  private addSelectionLink() {
+  private addSelectionLink(ev: CustomEvent) {
+    const detail = ev.detail;
+    if (detail instanceof KeyboardEvent && detail.key === 'Enter') {
+      this.dropDownLink.setOpen();
+    }
+    this.editor.focus();
     const selection = window.getSelection();
     this.whenSelectionLink = selection.getRangeAt(0);
+    const ElementToFocus = this.inputSetLink.shadowRoot.querySelector('.input__container__text') as HTMLInputElement;
+    ElementToFocus.focus();
   }
 
   private addLinkInput(ev: CustomEvent) {
@@ -585,11 +712,10 @@ export class RichText {
     const selection = window.getSelection();
     selection.removeAllRanges();
     selection.addRange(this.whenSelectionLink);
-    this.wrapSelection('a', this.linkButtonInput);
+    this.wrapSelection(ev, 'a', this.linkButtonInput);
     if (this.dropDownLink) {
       this.dropDownLink.setClose();
     }
-    this.editor.blur();
   }
 
   private verifyList(firstItem: HTMLElement, lastItem: HTMLElement) {
@@ -603,6 +729,7 @@ export class RichText {
   // Função para limpar o HTML ao colar conteúdo
   private handlePaste(event: ClipboardEvent) {
     event.preventDefault(); // Bloqueia a colagem padrão
+    event.stopPropagation(); // Evita que afete outros elementos
 
     const clipboardData = event.clipboardData || (window as any).clipboardData;
     const plainText = clipboardData.getData('text/plain'); // Obtém apenas texto puro
@@ -611,6 +738,13 @@ export class RichText {
     if (!selection || selection.rangeCount === 0) return;
 
     const range = selection.getRangeAt(0);
+    const commonAncestor = range.commonAncestorContainer;
+    const parentElement =
+      commonAncestor.nodeType === Node.TEXT_NODE ? commonAncestor.parentElement : (commonAncestor as HTMLElement);
+    if (parentElement.classList.contains('line')) {
+      parentElement.remove();
+    }
+
     range.deleteContents(); // Remove qualquer seleção existente
 
     // Converte cada linha do texto colado em <p class="line">
@@ -633,7 +767,12 @@ export class RichText {
   }
 
   // Função para restaurar a formatação do texto selecionado
-  private clearFormatting() {
+  private clearFormatting(ev: CustomEvent) {
+    const detail = ev.detail;
+    if (detail instanceof KeyboardEvent && detail.key === 'Enter') {
+      detail.preventDefault();
+      detail.stopPropagation();
+    }
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
 
@@ -677,339 +816,13 @@ export class RichText {
 
   render() {
     return (
-      <Host class="rich-text" style={{ height: this.height }}>
-        <bds-grid class="format-buttons" padding="1">
-          <div class="accordion-header">
-            <bds-grid ref={(el) => this.refButtonsListElement(el)} class="buttons-list" flex-wrap="wrap">
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'bold')}`}
-                position="top-center"
-                disabled={this.buttomBoldDisabled}
-              >
-                <bds-button
-                  variant={this.buttomBoldActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.wrapSelection('b')}
-                  icon-left="text-style-bold"
-                  disabled={this.buttomBoldDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'italic')}`}
-                position="top-center"
-                disabled={this.buttomItalicDisabled}
-              >
-                <bds-button
-                  variant={this.buttomItalicActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.wrapSelection('i')}
-                  icon-left="text-style-italic"
-                  disabled={this.buttomItalicDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'strike')}`}
-                position="top-center"
-                disabled={this.buttomStrikeDisabled}
-              >
-                <bds-button
-                  variant={this.buttomStrikeActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.wrapSelection('strike')}
-                  icon-left="text-style-strikethrough"
-                  disabled={this.buttomStrikeDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'underline')}`}
-                position="top-center"
-                disabled={this.buttomUnderlineDisabled}
-              >
-                <bds-button
-                  variant={this.buttomUnderlineActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.wrapSelection('u')}
-                  icon-left="text-style-underline"
-                  disabled={this.buttomUnderlineDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'link')}`}
-                position="top-center"
-                disabled={this.buttomLinkDisabled}
-              >
-                {this.buttomLinkActive ? (
-                  <bds-button
-                    variant="solid"
-                    color="content"
-                    size="short"
-                    onBdsClick={() => this.wrapSelection('a')}
-                    icon-left="link"
-                    disabled={this.buttomLinkDisabled}
-                    tabindex="-1"
-                  ></bds-button>
-                ) : (
-                  <bds-dropdown ref={(el) => this.refDropDownLinkElement(el)} activeMode="click" position="bottom-left">
-                    <div slot="dropdown-activator">
-                      <bds-button
-                        variant="text"
-                        color="content"
-                        size="short"
-                        onBdsClick={() => this.addSelectionLink()}
-                        icon-left="link"
-                        disabled={this.buttomLinkDisabled}
-                        tabindex="-1"
-                      ></bds-button>
-                    </div>
-                    <bds-grid padding="half" alignItems="center" gap="half" slot="dropdown-content">
-                      <bds-input
-                        onBdsInput={(ev) => this.addLinkInput(ev)}
-                        style={{ flexShrink: '99999' }}
-                        placeholder="adcione o link aqui"
-                        onKeyDown={(ev) => this.createLinkKeyDown(ev)}
-                        tabindex="-1"
-                      ></bds-input>
-                      <bds-button
-                        disabled={this.buttomLinkValidDisabled}
-                        icon-left="check"
-                        onBdsClick={(ev) => this.createLink(ev)}
-                        tabindex="-1"
-                      ></bds-button>
-                    </bds-grid>
-                  </bds-dropdown>
-                )}
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'code')}`}
-                position="top-center"
-                disabled={this.buttomCodeDisabled}
-              >
-                <bds-button
-                  variant={this.buttomCodeActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.wrapSelection('code')}
-                  icon-left="code"
-                  disabled={this.buttomCodeDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'align_left')}`}
-                position="top-center"
-                disabled={this.buttomAlignLeftDisabled}
-              >
-                <bds-button
-                  variant={this.buttomAlignLeftActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.alignText('left')}
-                  icon-left="align-left"
-                  disabled={this.buttomAlignLeftDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'align_center')}`}
-                position="top-center"
-                disabled={this.buttomAlignCenterDisabled}
-              >
-                <bds-button
-                  variant={this.buttomAlignCenterActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.alignText('center')}
-                  icon-left="align-center"
-                  disabled={this.buttomAlignCenterDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'align_right')}`}
-                position="top-center"
-                disabled={this.buttomAlignRightDisabled}
-              >
-                <bds-button
-                  variant={this.buttomAlignRightActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.alignText('right')}
-                  icon-left="align-right"
-                  disabled={this.buttomAlignRightDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'unordered_list')}`}
-                position="top-center"
-                disabled={this.buttomUnorderedListDisabled}
-              >
-                <bds-button
-                  variant={this.buttomUnorderedListActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createList('ul')}
-                  icon-left="unordered-list"
-                  disabled={this.buttomUnorderedListDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'ordered_list')}`}
-                position="top-center"
-                disabled={this.buttomOrderedListDisabled}
-              >
-                <bds-button
-                  variant={this.buttomOrderedListActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createList('ol')}
-                  icon-left="ordered-list"
-                  disabled={this.buttomOrderedListDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'quote')}`}
-                position="top-center"
-                disabled={this.buttomQuoteDisabled}
-              >
-                <bds-button
-                  variant={this.buttomQuoteActive ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createHeading('blockquote')}
-                  icon-left="quote"
-                  disabled={this.buttomQuoteDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'h1')}`}
-                position="top-center"
-                disabled={this.buttomH1Disabled}
-              >
-                <bds-button
-                  variant={this.buttomH1Active ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createHeading('h1')}
-                  icon-left="h-1"
-                  disabled={this.buttomH1Disabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'h2')}`}
-                position="top-center"
-                disabled={this.buttomH2Disabled}
-              >
-                <bds-button
-                  variant={this.buttomH2Active ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createHeading('h2')}
-                  icon-left="h-2"
-                  disabled={this.buttomH2Disabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'h3')}`}
-                position="top-center"
-                disabled={this.buttomH3Disabled}
-              >
-                <bds-button
-                  variant={this.buttomH3Active ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createHeading('h3')}
-                  icon-left="h-3"
-                  disabled={this.buttomH3Disabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'h4')}`}
-                position="top-center"
-                disabled={this.buttomH4Disabled}
-              >
-                <bds-button
-                  variant={this.buttomH4Active ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createHeading('h4')}
-                  icon-left="h-4"
-                  disabled={this.buttomH4Disabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'h5')}`}
-                position="top-center"
-                disabled={this.buttomH5Disabled}
-              >
-                <bds-button
-                  variant={this.buttomH5Active ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createHeading('h5')}
-                  icon-left="h-5"
-                  disabled={this.buttomH5Disabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'h6')}`}
-                position="top-center"
-                disabled={this.buttomH6Disabled}
-              >
-                <bds-button
-                  variant={this.buttomH6Active ? 'solid' : 'text'}
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.createHeading('h6')}
-                  icon-left="h-6"
-                  disabled={this.buttomH6Disabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-              <bds-tooltip
-                tooltip-text={`${termTranslate(this.language, 'clear_formatting')}`}
-                position="top-center"
-                disabled={this.buttomUnStyledDisabled}
-              >
-                <bds-button
-                  variant="text"
-                  color="content"
-                  size="short"
-                  onBdsClick={() => this.clearFormatting()}
-                  icon-left="unstyled"
-                  disabled={this.buttomUnStyledDisabled}
-                  tabindex="-1"
-                ></bds-button>
-              </bds-tooltip>
-            </bds-grid>
-            <bds-button
-              id="buttonAccordion"
-              variant={this.buttomAccordionActive ? 'solid' : 'text'}
-              class="arrow-down"
-              color="content"
-              size="short"
-              onBdsClick={() => this.setheaderHeight()}
-              icon-left={this.buttomAccordionActive ? 'arrow-up' : 'arrow-down'}
-              tabindex="-1"
-            ></bds-button>
-          </div>
-        </bds-grid>
+      <Host
+        class={{
+          [`rich-text`]: true,
+          [`rich-text-${this.positionBar}`]: true,
+        }}
+        style={{ height: this.height, maxHeight: this.maxHeight }}
+      >
         <div class="preview">
           <div
             data-test={this.dataTest}
@@ -1026,6 +839,312 @@ export class RichText {
             onPaste={this.handlePaste.bind(this)}
           ></div>
         </div>
+
+        <bds-grid
+          class={{
+            [`format-buttons`]: true,
+            [`format-buttons-active`]:
+              this.buttonBold ||
+              this.buttonItalic ||
+              this.buttonStrike ||
+              this.buttonUnderline ||
+              this.buttonLink ||
+              this.buttonCode ||
+              this.buttonTextAlign ||
+              this.buttonList ||
+              this.buttonQuote ||
+              this.buttonHeading ||
+              this.buttonUnstyled,
+          }}
+        >
+          <div class="accordion-header">
+            <bds-grid ref={(el) => this.refButtonsListElement(el)} class="buttons-list" flex-wrap="wrap">
+              <div onFocus={(ev) => this.onFocusEditorBar(ev)} tabindex="1" class="editor-bar"></div>
+              {this.buttonBold && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'bold')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomBoldActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.wrapSelection(ev, 'b')}
+                    icon-left="text-style-bold"
+                    aria-label={`${termTranslate(this.language, 'bold')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonItalic && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'italic')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomItalicActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.wrapSelection(ev, 'i')}
+                    icon-left="text-style-italic"
+                    aria-label={`${termTranslate(this.language, 'italic')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonStrike && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'strike')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomStrikeActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.wrapSelection(ev, 'strike')}
+                    icon-left="text-style-strikethrough"
+                    aria-label={`${termTranslate(this.language, 'strike')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonUnderline && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'underline')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomUnderlineActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.wrapSelection(ev, 'u')}
+                    icon-left="text-style-underline"
+                    aria-label={`${termTranslate(this.language, 'underline')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonLink && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'link')}`} position="top-center">
+                  {this.buttomLinkActive ? (
+                    <bds-button
+                      variant="solid"
+                      color="content"
+                      size="short"
+                      onBdsClick={(ev) => this.wrapSelection(ev, 'a')}
+                      icon-left="link"
+                      aria-label={`${termTranslate(this.language, 'link')}`}
+                    ></bds-button>
+                  ) : (
+                    <bds-dropdown
+                      ref={(el) => this.refDropDownLinkElement(el)}
+                      activeMode="click"
+                      position="bottom-left"
+                    >
+                      <div slot="dropdown-activator">
+                        <bds-button
+                          slot="dropdown-activator"
+                          variant="text"
+                          color="content"
+                          size="short"
+                          onBdsClick={(ev) => this.addSelectionLink(ev)}
+                          icon-left="link"
+                          aria-label={`${termTranslate(this.language, 'link')}`}
+                        ></bds-button>
+                      </div>
+                      <bds-grid padding="half" alignItems="center" gap="half" slot="dropdown-content">
+                        <bds-input
+                          ref={this.refInputSetLink}
+                          onBdsInput={(ev) => this.addLinkInput(ev)}
+                          style={{ flexShrink: '99999' }}
+                          placeholder="adcione o link aqui"
+                          onKeyDown={(ev) => this.createLinkKeyDown(ev)}
+                          tabindex={this.dropDownLink?.open ? '1' : '-1'}
+                        ></bds-input>
+                        <bds-button
+                          disabled={this.buttomLinkValidDisabled}
+                          icon-left="check"
+                          onBdsClick={(ev) => this.createLink(ev)}
+                          tabindex={this.dropDownLink?.open ? '1' : '-1'}
+                          aria-label={`${termTranslate(this.language, 'link')}`}
+                        ></bds-button>
+                      </bds-grid>
+                    </bds-dropdown>
+                  )}
+                </bds-tooltip>
+              )}
+              {this.buttonCode && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'code')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomCodeActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.wrapSelection(ev, 'code')}
+                    icon-left="code"
+                    aria-label={`${termTranslate(this.language, 'code')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonTextAlign && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'align_left')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomAlignLeftActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.alignText(ev, 'left')}
+                    icon-left="align-left"
+                    aria-label={`${termTranslate(this.language, 'align_left')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonTextAlign && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'align_center')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomAlignCenterActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.alignText(ev, 'center')}
+                    icon-left="align-center"
+                    aria-label={`${termTranslate(this.language, 'align_center')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonTextAlign && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'align_right')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomAlignRightActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.alignText(ev, 'right')}
+                    icon-left="align-right"
+                    aria-label={`${termTranslate(this.language, 'align_right')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonList && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'unordered_list')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomUnorderedListActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createList(ev, 'ul')}
+                    icon-left="unordered-list"
+                    aria-label={`${termTranslate(this.language, 'unordered_list')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonList && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'ordered_list')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomOrderedListActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createList(ev, 'ol')}
+                    icon-left="ordered-list"
+                    aria-label={`${termTranslate(this.language, 'ordered_list')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonQuote && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'quote')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomQuoteActive ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createHeading(ev, 'blockquote')}
+                    icon-left="quote"
+                    aria-label={`${termTranslate(this.language, 'quote')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonHeading && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h1')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomH1Active ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createHeading(ev, 'h1')}
+                    icon-left="h-1"
+                    aria-label={`${termTranslate(this.language, 'h1')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonHeading && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h2')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomH2Active ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createHeading(ev, 'h2')}
+                    icon-left="h-2"
+                    aria-label={`${termTranslate(this.language, 'h2')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonHeading && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h3')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomH3Active ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createHeading(ev, 'h3')}
+                    icon-left="h-3"
+                    aria-label={`${termTranslate(this.language, 'h3')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonHeading && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h4')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomH4Active ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createHeading(ev, 'h4')}
+                    icon-left="h-4"
+                    aria-label={`${termTranslate(this.language, 'h4')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonHeading && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h5')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomH5Active ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createHeading(ev, 'h5')}
+                    icon-left="h-5"
+                    aria-label={`${termTranslate(this.language, 'h5')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonHeading && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h6')}`} position="top-center">
+                  <bds-button
+                    variant={this.buttomH6Active ? 'solid' : 'text'}
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.createHeading(ev, 'h6')}
+                    icon-left="h-6"
+                    aria-label={`${termTranslate(this.language, 'h6')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+              {this.buttonUnstyled && (
+                <bds-tooltip tooltip-text={`${termTranslate(this.language, 'clear_formatting')}`} position="top-center">
+                  <bds-button
+                    variant="text"
+                    color="content"
+                    size="short"
+                    onBdsClick={(ev) => this.clearFormatting(ev)}
+                    icon-left="unstyled"
+                    aria-label={`${termTranslate(this.language, 'clear_formatting')}`}
+                  ></bds-button>
+                </bds-tooltip>
+              )}
+            </bds-grid>
+            <bds-button
+              id="buttonAccordion"
+              variant={this.buttomAccordionActive ? 'solid' : 'text'}
+              class="arrow-down"
+              color="content"
+              size="short"
+              onBdsClick={() => this.setheaderHeight()}
+              icon-left={
+                this.positionBar == 'top'
+                  ? this.buttomAccordionActive
+                    ? 'arrow-up'
+                    : 'arrow-down'
+                  : this.buttomAccordionActive
+                    ? 'arrow-down'
+                    : 'arrow-up'
+              }
+            ></bds-button>
+          </div>
+        </bds-grid>
       </Host>
     );
   }

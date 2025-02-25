@@ -60,7 +60,8 @@ import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { languages as languages1 } from "./components/rict-text/rich-text-interface";
+import { languages as languages2 } from "./components/rict-text/rich-text-interface";
+import { positionBar } from "./components/rict-text/rich-text";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -73,7 +74,7 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages2 } from "./components/upload/languages";
+import { languages as languages3 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -2104,17 +2105,69 @@ export namespace Components {
     }
     interface BdsRichText {
         /**
+          * buttonBold to define if component has Bold Control.
+         */
+        "buttonBold"?: boolean;
+        /**
+          * buttonCode to define if component has Code Control.
+         */
+        "buttonCode"?: boolean;
+        /**
+          * buttonHeading to define if component has Heading Control.
+         */
+        "buttonHeading"?: boolean;
+        /**
+          * buttonItalic to define if component has Italic Control.
+         */
+        "buttonItalic"?: boolean;
+        /**
+          * buttonLink to define if component has Link Control.
+         */
+        "buttonLink"?: boolean;
+        /**
+          * buttonList to define if component has List Control.
+         */
+        "buttonList"?: boolean;
+        /**
+          * buttonQuote to define if component has Quote Control.
+         */
+        "buttonQuote"?: boolean;
+        /**
+          * buttonStrike to define if component has Strike Control.
+         */
+        "buttonStrike"?: boolean;
+        /**
+          * buttonTextAlign to define if component has TextAlign Control.
+         */
+        "buttonTextAlign"?: boolean;
+        /**
+          * buttonUnderline to define if component has Underline Control.
+         */
+        "buttonUnderline"?: boolean;
+        /**
+          * buttonUnstyled to define if component has Unstyled Control.
+         */
+        "buttonUnstyled"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * height is the prop to define height of component.
          */
         "height"?: string;
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
+        /**
+          * maxHeight is the prop to define max height of component.
+         */
+        "maxHeight"?: string;
+        /**
+          * positionBar is the prop to define max height of component.
+         */
+        "positionBar"?: positionBar;
     }
     interface BdsSelect {
         /**
@@ -2820,7 +2873,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * Used to allow upload multiple files.
          */
@@ -6011,17 +6064,65 @@ declare namespace LocalJSX {
     }
     interface BdsRichText {
         /**
+          * buttonBold to define if component has Bold Control.
+         */
+        "buttonBold"?: boolean;
+        /**
+          * buttonCode to define if component has Code Control.
+         */
+        "buttonCode"?: boolean;
+        /**
+          * buttonHeading to define if component has Heading Control.
+         */
+        "buttonHeading"?: boolean;
+        /**
+          * buttonItalic to define if component has Italic Control.
+         */
+        "buttonItalic"?: boolean;
+        /**
+          * buttonLink to define if component has Link Control.
+         */
+        "buttonLink"?: boolean;
+        /**
+          * buttonList to define if component has List Control.
+         */
+        "buttonList"?: boolean;
+        /**
+          * buttonQuote to define if component has Quote Control.
+         */
+        "buttonQuote"?: boolean;
+        /**
+          * buttonStrike to define if component has Strike Control.
+         */
+        "buttonStrike"?: boolean;
+        /**
+          * buttonTextAlign to define if component has TextAlign Control.
+         */
+        "buttonTextAlign"?: boolean;
+        /**
+          * buttonUnderline to define if component has Underline Control.
+         */
+        "buttonUnderline"?: boolean;
+        /**
+          * buttonUnstyled to define if component has Unstyled Control.
+         */
+        "buttonUnstyled"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * height is the prop to define height of component.
          */
         "height"?: string;
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages1;
+        "language"?: languages2;
+        /**
+          * maxHeight is the prop to define max height of component.
+         */
+        "maxHeight"?: string;
         /**
           * Event input onblur.
          */
@@ -6038,6 +6139,10 @@ declare namespace LocalJSX {
           * Emitted when the input has changed.
          */
         "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
+        /**
+          * positionBar is the prop to define max height of component.
+         */
+        "positionBar"?: positionBar;
     }
     interface BdsSelect {
         /**
@@ -6747,7 +6852,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * Used to allow upload multiple files.
          */

@@ -16,10 +16,92 @@ export const Properties = (args) => {
   if (el.length !== 0) {
     el[0].style.width = '560px';
   }
-  return <bds-rich-text height={args.height} language={args.language}></bds-rich-text>;
+  return (
+    <bds-rich-text
+      button-bold={args.buttonBold}
+      button-italic={args.buttonItalic}
+      button-strike={args.buttonStrike}
+      button-underline={args.buttonUnderline}
+      button-link={args.buttonLink}
+      button-code={args.buttonCode}
+      button-text-align={args.buttonTextAlign}
+      button-list={args.buttonList}
+      button-quote={args.buttonQuote}
+      button-heading={args.buttonHeading}
+      button-unstyled={args.buttonUnstyled}
+      height={args.height}
+      language={args.language}
+    ></bds-rich-text>
+  );
 };
 
 Properties.argTypes = {
+  buttonBold: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonItalic: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonStrike: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonUnderline: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonLink: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonCode: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonTextAlign: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonList: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonQuote: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonHeading: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  buttonUnstyled: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
   height: {
     table: {
       defaultValue: { summary: 'vazio' },
@@ -36,6 +118,17 @@ Properties.argTypes = {
 };
 
 Properties.args = {
+  buttonBold: true,
+  buttonItalic: true,
+  buttonStrike: true,
+  buttonUnderline: true,
+  buttonLink: true,
+  buttonCode: true,
+  buttonTextAlign: true,
+  buttonList: true,
+  buttonQuote: true,
+  buttonHeading: true,
+  buttonUnstyled: true,
   height: '280px',
   language: 'pt_BR',
 };
