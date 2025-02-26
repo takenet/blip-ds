@@ -18,17 +18,17 @@ export const Properties = (args) => {
   }
   return (
     <bds-rich-text
-      button-bold={args.buttonBold}
-      button-italic={args.buttonItalic}
-      button-strike={args.buttonStrike}
-      button-underline={args.buttonUnderline}
-      button-link={args.buttonLink}
-      button-code={args.buttonCode}
-      button-text-align={args.buttonTextAlign}
-      button-list={args.buttonList}
-      button-quote={args.buttonQuote}
-      button-heading={args.buttonHeading}
-      button-unstyled={args.buttonUnstyled}
+      weight-button={args.weightButton}
+      italic-button={args.italicButton}
+      strike-through-button={args.strikeThroughButton}
+      underline-button={args.underlineButton}
+      link-button={args.linkButton}
+      code-button={args.codeButton}
+      alignment-buttons={args.alignmentButtons}
+      list-buttons={args.listButtons}
+      quote-button={args.quoteButton}
+      heading-buttons={args.headingButtons}
+      unstyled-button={args.unstyledButton}
       height={args.height}
       language={args.language}
     ></bds-rich-text>
@@ -36,67 +36,67 @@ export const Properties = (args) => {
 };
 
 Properties.argTypes = {
-  buttonBold: {
+  weightButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonItalic: {
+  italicButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonStrike: {
+  strikeThroughButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonUnderline: {
+  underlineButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonLink: {
+  linkButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonCode: {
+  codeButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonTextAlign: {
+  alignmentButtons: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonList: {
+  listButtons: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonQuote: {
+  quoteButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonHeading: {
+  headingButtons: {
     table: {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
   },
-  buttonUnstyled: {
+  unstyledButton: {
     table: {
       defaultValue: { summary: 'true' },
     },
@@ -118,17 +118,17 @@ Properties.argTypes = {
 };
 
 Properties.args = {
-  buttonBold: true,
-  buttonItalic: true,
-  buttonStrike: true,
-  buttonUnderline: true,
-  buttonLink: true,
-  buttonCode: true,
-  buttonTextAlign: true,
-  buttonList: true,
-  buttonQuote: true,
-  buttonHeading: true,
-  buttonUnstyled: true,
+  weightButton: true,
+  italicButton: true,
+  strikeThroughButton: true,
+  underlineButton: true,
+  linkButton: true,
+  codeButton: true,
+  alignmentButtons: true,
+  listButtons: true,
+  quoteButton: true,
+  headingButtons: true,
+  unstyledButton: true,
   height: '280px',
   language: 'pt_BR',
 };

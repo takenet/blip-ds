@@ -51,49 +51,49 @@ export class RichText {
    */
   @Prop() language?: languages = 'pt_BR';
   /**
-   * buttonBold to define if component has Bold Control.
+   * weightButton to define if component has Bold Control.
    */
-  @Prop() buttonBold?: boolean = true;
+  @Prop() weightButton?: boolean = true;
   /**
-   * buttonItalic to define if component has Italic Control.
+   * italicButton to define if component has Italic Control.
    */
-  @Prop() buttonItalic?: boolean = true;
+  @Prop() italicButton?: boolean = true;
   /**
-   * buttonStrike to define if component has Strike Control.
+   * strikeThroughbutton to define if component has Strike Control.
    */
-  @Prop() buttonStrike?: boolean = true;
+  @Prop() strikeThroughButton?: boolean = true;
   /**
-   * buttonUnderline to define if component has Underline Control.
+   * underlineButton to define if component has Underline Control.
    */
-  @Prop() buttonUnderline?: boolean = true;
+  @Prop() underlineButton?: boolean = true;
   /**
-   * buttonLink to define if component has Link Control.
+   * linkButton to define if component has Link Control.
    */
-  @Prop() buttonLink?: boolean = true;
+  @Prop() linkButton?: boolean = true;
   /**
-   * buttonCode to define if component has Code Control.
+   * codeButton to define if component has Code Control.
    */
-  @Prop() buttonCode?: boolean = true;
+  @Prop() codeButton?: boolean = true;
   /**
-   * buttonTextAlign to define if component has TextAlign Control.
+   * alignmentButtons to define if component has TextAlign Control.
    */
-  @Prop() buttonTextAlign?: boolean = true;
+  @Prop() alignmentButtons?: boolean = true;
   /**
-   * buttonList to define if component has List Control.
+   * listButtons to define if component has List Control.
    */
-  @Prop() buttonList?: boolean = true;
+  @Prop() listButtons?: boolean = true;
   /**
-   * buttonQuote to define if component has Quote Control.
+   * quoteButton to define if component has Quote Control.
    */
-  @Prop() buttonQuote?: boolean = true;
+  @Prop() quoteButton?: boolean = true;
   /**
-   * buttonHeading to define if component has Heading Control.
+   * headingButtons to define if component has Heading Control.
    */
-  @Prop() buttonHeading?: boolean = true;
+  @Prop() headingButtons?: boolean = true;
   /**
-   * buttonUnstyled to define if component has Unstyled Control.
+   * unstyledButton to define if component has Unstyled Control.
    */
-  @Prop() buttonUnstyled?: boolean = true;
+  @Prop() unstyledButton?: boolean = true;
   /**
    * height is the prop to define height of component.
    */
@@ -137,17 +137,17 @@ export class RichText {
       this.editor.innerHTML = '<p class="line"><br></p>';
     }
     if (
-      this.buttonBold ||
-      this.buttonItalic ||
-      this.buttonStrike ||
-      this.buttonUnderline ||
-      this.buttonLink ||
-      this.buttonCode ||
-      this.buttonTextAlign ||
-      this.buttonList ||
-      this.buttonQuote ||
-      this.buttonHeading ||
-      this.buttonUnstyled
+      this.weightButton ||
+      this.italicButton ||
+      this.strikeThroughButton ||
+      this.underlineButton ||
+      this.linkButton ||
+      this.codeButton ||
+      this.alignmentButtons ||
+      this.listButtons ||
+      this.quoteButton ||
+      this.headingButtons ||
+      this.unstyledButton
     ) {
       this.buttonsEditElements = this.buttonsListElement.getElementsByTagName(
         'bds-tooltip',
@@ -159,17 +159,17 @@ export class RichText {
     }
   }
 
-  @Watch('buttonBold')
-  @Watch('buttonItalic')
-  @Watch('buttonStrike')
-  @Watch('buttonUnderline')
-  @Watch('buttonLink')
-  @Watch('buttonCode')
-  @Watch('buttonTextAlign')
-  @Watch('buttonList')
-  @Watch('buttonQuote')
-  @Watch('buttonHeading')
-  @Watch('buttonUnstyled')
+  @Watch('weightButton')
+  @Watch('italicButton')
+  @Watch('strikeThroughButton')
+  @Watch('underlineButton')
+  @Watch('linkButton')
+  @Watch('codeButton')
+  @Watch('alignmentButtons')
+  @Watch('listButtons')
+  @Watch('quoteButton')
+  @Watch('headingButtons')
+  @Watch('unstyledButton')
   protected buttomsHeaderChanged(): void {
     setTimeout(() => this.accordionHeader(this.buttomAccordionActive), 500);
   }
@@ -844,23 +844,23 @@ export class RichText {
           class={{
             [`format-buttons`]: true,
             [`format-buttons-active`]:
-              this.buttonBold ||
-              this.buttonItalic ||
-              this.buttonStrike ||
-              this.buttonUnderline ||
-              this.buttonLink ||
-              this.buttonCode ||
-              this.buttonTextAlign ||
-              this.buttonList ||
-              this.buttonQuote ||
-              this.buttonHeading ||
-              this.buttonUnstyled,
+              this.weightButton ||
+              this.italicButton ||
+              this.strikeThroughButton ||
+              this.underlineButton ||
+              this.linkButton ||
+              this.codeButton ||
+              this.alignmentButtons ||
+              this.listButtons ||
+              this.quoteButton ||
+              this.headingButtons ||
+              this.unstyledButton,
           }}
         >
           <div class="accordion-header">
             <bds-grid ref={(el) => this.refButtonsListElement(el)} class="buttons-list" flex-wrap="wrap">
               <div onFocus={(ev) => this.onFocusEditorBar(ev)} tabindex="1" class="editor-bar"></div>
-              {this.buttonBold && (
+              {this.weightButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'bold')}`} position="top-center">
                   <bds-button
                     variant={this.buttomBoldActive ? 'solid' : 'text'}
@@ -872,7 +872,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonItalic && (
+              {this.italicButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'italic')}`} position="top-center">
                   <bds-button
                     variant={this.buttomItalicActive ? 'solid' : 'text'}
@@ -884,7 +884,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonStrike && (
+              {this.strikeThroughButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'strike')}`} position="top-center">
                   <bds-button
                     variant={this.buttomStrikeActive ? 'solid' : 'text'}
@@ -896,7 +896,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonUnderline && (
+              {this.underlineButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'underline')}`} position="top-center">
                   <bds-button
                     variant={this.buttomUnderlineActive ? 'solid' : 'text'}
@@ -908,7 +908,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonLink && (
+              {this.linkButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'link')}`} position="top-center">
                   {this.buttomLinkActive ? (
                     <bds-button
@@ -957,7 +957,7 @@ export class RichText {
                   )}
                 </bds-tooltip>
               )}
-              {this.buttonCode && (
+              {this.codeButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'code')}`} position="top-center">
                   <bds-button
                     variant={this.buttomCodeActive ? 'solid' : 'text'}
@@ -969,7 +969,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonTextAlign && (
+              {this.alignmentButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'align_left')}`} position="top-center">
                   <bds-button
                     variant={this.buttomAlignLeftActive ? 'solid' : 'text'}
@@ -981,7 +981,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonTextAlign && (
+              {this.alignmentButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'align_center')}`} position="top-center">
                   <bds-button
                     variant={this.buttomAlignCenterActive ? 'solid' : 'text'}
@@ -993,7 +993,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonTextAlign && (
+              {this.alignmentButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'align_right')}`} position="top-center">
                   <bds-button
                     variant={this.buttomAlignRightActive ? 'solid' : 'text'}
@@ -1005,7 +1005,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonList && (
+              {this.listButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'unordered_list')}`} position="top-center">
                   <bds-button
                     variant={this.buttomUnorderedListActive ? 'solid' : 'text'}
@@ -1017,7 +1017,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonList && (
+              {this.listButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'ordered_list')}`} position="top-center">
                   <bds-button
                     variant={this.buttomOrderedListActive ? 'solid' : 'text'}
@@ -1029,7 +1029,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonQuote && (
+              {this.quoteButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'quote')}`} position="top-center">
                   <bds-button
                     variant={this.buttomQuoteActive ? 'solid' : 'text'}
@@ -1041,7 +1041,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonHeading && (
+              {this.headingButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h1')}`} position="top-center">
                   <bds-button
                     variant={this.buttomH1Active ? 'solid' : 'text'}
@@ -1053,7 +1053,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonHeading && (
+              {this.headingButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h2')}`} position="top-center">
                   <bds-button
                     variant={this.buttomH2Active ? 'solid' : 'text'}
@@ -1065,7 +1065,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonHeading && (
+              {this.headingButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h3')}`} position="top-center">
                   <bds-button
                     variant={this.buttomH3Active ? 'solid' : 'text'}
@@ -1077,7 +1077,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonHeading && (
+              {this.headingButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h4')}`} position="top-center">
                   <bds-button
                     variant={this.buttomH4Active ? 'solid' : 'text'}
@@ -1089,7 +1089,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonHeading && (
+              {this.headingButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h5')}`} position="top-center">
                   <bds-button
                     variant={this.buttomH5Active ? 'solid' : 'text'}
@@ -1101,7 +1101,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonHeading && (
+              {this.headingButtons && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'h6')}`} position="top-center">
                   <bds-button
                     variant={this.buttomH6Active ? 'solid' : 'text'}
@@ -1113,7 +1113,7 @@ export class RichText {
                   ></bds-button>
                 </bds-tooltip>
               )}
-              {this.buttonUnstyled && (
+              {this.unstyledButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'clear_formatting')}`} position="top-center">
                   <bds-button
                     variant="text"

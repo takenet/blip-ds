@@ -2105,61 +2105,41 @@ export namespace Components {
     }
     interface BdsRichText {
         /**
-          * buttonBold to define if component has Bold Control.
+          * alignmentButtons to define if component has TextAlign Control.
          */
-        "buttonBold"?: boolean;
+        "alignmentButtons"?: boolean;
         /**
-          * buttonCode to define if component has Code Control.
+          * codeButton to define if component has Code Control.
          */
-        "buttonCode"?: boolean;
-        /**
-          * buttonHeading to define if component has Heading Control.
-         */
-        "buttonHeading"?: boolean;
-        /**
-          * buttonItalic to define if component has Italic Control.
-         */
-        "buttonItalic"?: boolean;
-        /**
-          * buttonLink to define if component has Link Control.
-         */
-        "buttonLink"?: boolean;
-        /**
-          * buttonList to define if component has List Control.
-         */
-        "buttonList"?: boolean;
-        /**
-          * buttonQuote to define if component has Quote Control.
-         */
-        "buttonQuote"?: boolean;
-        /**
-          * buttonStrike to define if component has Strike Control.
-         */
-        "buttonStrike"?: boolean;
-        /**
-          * buttonTextAlign to define if component has TextAlign Control.
-         */
-        "buttonTextAlign"?: boolean;
-        /**
-          * buttonUnderline to define if component has Underline Control.
-         */
-        "buttonUnderline"?: boolean;
-        /**
-          * buttonUnstyled to define if component has Unstyled Control.
-         */
-        "buttonUnstyled"?: boolean;
+        "codeButton"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
+          * headingButtons to define if component has Heading Control.
+         */
+        "headingButtons"?: boolean;
+        /**
           * height is the prop to define height of component.
          */
         "height"?: string;
         /**
+          * italicButton to define if component has Italic Control.
+         */
+        "italicButton"?: boolean;
+        /**
           * Set the language for fixed texts.
          */
         "language"?: languages2;
+        /**
+          * linkButton to define if component has Link Control.
+         */
+        "linkButton"?: boolean;
+        /**
+          * listButtons to define if component has List Control.
+         */
+        "listButtons"?: boolean;
         /**
           * maxHeight is the prop to define max height of component.
          */
@@ -2168,6 +2148,26 @@ export namespace Components {
           * positionBar is the prop to define max height of component.
          */
         "positionBar"?: positionBar;
+        /**
+          * quoteButton to define if component has Quote Control.
+         */
+        "quoteButton"?: boolean;
+        /**
+          * strikeThroughbutton to define if component has Strike Control.
+         */
+        "strikeThroughButton"?: boolean;
+        /**
+          * underlineButton to define if component has Underline Control.
+         */
+        "underlineButton"?: boolean;
+        /**
+          * unstyledButton to define if component has Unstyled Control.
+         */
+        "unstyledButton"?: boolean;
+        /**
+          * weightButton to define if component has Bold Control.
+         */
+        "weightButton"?: boolean;
     }
     interface BdsSelect {
         /**
@@ -6064,61 +6064,41 @@ declare namespace LocalJSX {
     }
     interface BdsRichText {
         /**
-          * buttonBold to define if component has Bold Control.
+          * alignmentButtons to define if component has TextAlign Control.
          */
-        "buttonBold"?: boolean;
+        "alignmentButtons"?: boolean;
         /**
-          * buttonCode to define if component has Code Control.
+          * codeButton to define if component has Code Control.
          */
-        "buttonCode"?: boolean;
-        /**
-          * buttonHeading to define if component has Heading Control.
-         */
-        "buttonHeading"?: boolean;
-        /**
-          * buttonItalic to define if component has Italic Control.
-         */
-        "buttonItalic"?: boolean;
-        /**
-          * buttonLink to define if component has Link Control.
-         */
-        "buttonLink"?: boolean;
-        /**
-          * buttonList to define if component has List Control.
-         */
-        "buttonList"?: boolean;
-        /**
-          * buttonQuote to define if component has Quote Control.
-         */
-        "buttonQuote"?: boolean;
-        /**
-          * buttonStrike to define if component has Strike Control.
-         */
-        "buttonStrike"?: boolean;
-        /**
-          * buttonTextAlign to define if component has TextAlign Control.
-         */
-        "buttonTextAlign"?: boolean;
-        /**
-          * buttonUnderline to define if component has Underline Control.
-         */
-        "buttonUnderline"?: boolean;
-        /**
-          * buttonUnstyled to define if component has Unstyled Control.
-         */
-        "buttonUnstyled"?: boolean;
+        "codeButton"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
+          * headingButtons to define if component has Heading Control.
+         */
+        "headingButtons"?: boolean;
+        /**
           * height is the prop to define height of component.
          */
         "height"?: string;
         /**
+          * italicButton to define if component has Italic Control.
+         */
+        "italicButton"?: boolean;
+        /**
           * Set the language for fixed texts.
          */
         "language"?: languages2;
+        /**
+          * linkButton to define if component has Link Control.
+         */
+        "linkButton"?: boolean;
+        /**
+          * listButtons to define if component has List Control.
+         */
+        "listButtons"?: boolean;
         /**
           * maxHeight is the prop to define max height of component.
          */
@@ -6143,6 +6123,26 @@ declare namespace LocalJSX {
           * positionBar is the prop to define max height of component.
          */
         "positionBar"?: positionBar;
+        /**
+          * quoteButton to define if component has Quote Control.
+         */
+        "quoteButton"?: boolean;
+        /**
+          * strikeThroughbutton to define if component has Strike Control.
+         */
+        "strikeThroughButton"?: boolean;
+        /**
+          * underlineButton to define if component has Underline Control.
+         */
+        "underlineButton"?: boolean;
+        /**
+          * unstyledButton to define if component has Unstyled Control.
+         */
+        "unstyledButton"?: boolean;
+        /**
+          * weightButton to define if component has Bold Control.
+         */
+        "weightButton"?: boolean;
     }
     interface BdsSelect {
         /**
