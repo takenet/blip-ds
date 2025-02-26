@@ -152,6 +152,11 @@ export class BdsAutocomplete {
    */
   @Prop() selectionTitle?: string = '';
 
+    /**
+   * Selection Title, Prop to enable title to select.
+   */
+    @Prop() selectedAll?: boolean = true;
+
   /**
    * Emitted when the value has changed.
    */
@@ -679,7 +684,7 @@ export class BdsAutocomplete {
                 {this.selectionTitle}
               </bds-typo>
             )}
-            {this.selectionType == 'multiple' && this.value == null && (
+            {this.selectionType == 'multiple' && this.selectedAll && this.value == null && (
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}

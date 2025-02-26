@@ -218,6 +218,10 @@ export namespace Components {
         /**
           * Selection Title, Prop to enable title to select.
          */
+        "selectedAll"?: boolean;
+        /**
+          * Selection Title, Prop to enable title to select.
+         */
         "selectionTitle"?: string;
         /**
           * Multiselect, Prop to enable multi selections.
@@ -3991,6 +3995,10 @@ declare namespace LocalJSX {
         /**
           * Selection Title, Prop to enable title to select.
          */
+        "selectedAll"?: boolean;
+        /**
+          * Selection Title, Prop to enable title to select.
+         */
         "selectionTitle"?: string;
         /**
           * Multiselect, Prop to enable multi selections.
@@ -6103,7 +6111,6 @@ declare namespace LocalJSX {
           * maxHeight is the prop to define max height of component.
          */
         "maxHeight"?: string;
-
         /**
           * Event input onblur.
          */
