@@ -166,7 +166,14 @@ export class InputPhoneNumber {
     }
 
     const flagsNames = Object.keys(this.countries);
-    this.selectedCountry = this.selectedCountry || flagsNames[0];
+  
+    const countryIndex = Object.values(this.countries).findIndex((country: any) => country.code === this.value);
+  
+    if (countryIndex !== -1) {
+      this.selectedCountry = flagsNames[countryIndex];
+    } else {
+      this.selectedCountry = this.selectedCountry || flagsNames[0];
+    }
     this.isoCode = this.isoCode || flagsNames[0];
   }
 

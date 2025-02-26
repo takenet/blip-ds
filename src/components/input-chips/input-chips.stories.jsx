@@ -13,15 +13,17 @@ export default {
 
 export const Properties = (args) => {
   return (
-    <bds-input-chips
-      label={args.label}
-      danger={args.danger}
-      error-message={args.errorMessage}
-      chips={args.chips}
-      blur-creation={args.blurCreation}
-      disable-submit={args.disableSubmit}
-      disabled={args.disabled}
-    ></bds-input-chips>
+    <bds-grid height="100px">
+      <bds-input-chips
+        label={args.label}
+        danger={args.danger}
+        error-message={args.errorMessage}
+        chips={args.chips}
+        blur-creation={args.blurCreation}
+        disable-submit={args.disableSubmit}
+        disabled={args.disabled}
+      ></bds-input-chips>
+    </bds-grid>
   );
 };
 
@@ -121,7 +123,11 @@ export const Events = () => {
       console.log('Evento Selected Change funcionando');
     });
   });
-  return <bds-input-chips id="input-chips" label="input chips" chips='["chip1", "chip2"]'></bds-input-chips>;
+  return (
+    <bds-grid height="100px">
+      <bds-input-chips id="input-chips" label="input chips" chips='["chip1", "chip2"]'></bds-input-chips>
+    </bds-grid>
+  );
 };
 
 export const Methods = () => {
@@ -168,13 +174,12 @@ export const Methods = () => {
       </bds-grid>
       <bds-grid direction="row" gap="2">
         <bds-button onClick={() => btIsValid('input-chips-example')}>Is Valid</bds-button>
-      <bds-button onClick={() => btGet('input-chips-example')}>Get Chips</bds-button>
-      <bds-button onClick={() => btClear('input-chips-example')}>Clear Chips</bds-button>
-      <bds-button onClick={() => btAdd('input-chips-example', 'New Chip')}>Add Chip</bds-button>
-      <bds-button onClick={() => btSetFocus('input-chips-example')}>Set Focus</bds-button>
-      <bds-button onClick={() => btRemoveFocus('input-chips-example')}>Remove Focus</bds-button>
+        <bds-button onClick={() => btGet('input-chips-example')}>Get Chips</bds-button>
+        <bds-button onClick={() => btClear('input-chips-example')}>Clear Chips</bds-button>
+        <bds-button onClick={() => btAdd('input-chips-example', 'New Chip')}>Add Chip</bds-button>
+        <bds-button onClick={() => btSetFocus('input-chips-example')}>Set Focus</bds-button>
+        <bds-button onClick={() => btRemoveFocus('input-chips-example')}>Remove Focus</bds-button>
       </bds-grid>
-      
     </bds-grid>
   );
 };

@@ -6103,6 +6103,7 @@ declare namespace LocalJSX {
           * maxHeight is the prop to define max height of component.
          */
         "maxHeight"?: string;
+
         /**
           * Event input onblur.
          */
