@@ -61,6 +61,7 @@ import { justifyContent as justifyContent3, navbarBackground, orientation } from
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { languages as languages2 } from "./components/rict-text/rich-text-interface";
+import { positionBar } from "./components/rict-text/rich-text";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -2104,17 +2105,69 @@ export namespace Components {
     }
     interface BdsRichText {
         /**
+          * alignmentButtons to define if component has TextAlign Control.
+         */
+        "alignmentButtons"?: boolean;
+        /**
+          * codeButton to define if component has Code Control.
+         */
+        "codeButton"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * headingButtons to define if component has Heading Control.
+         */
+        "headingButtons"?: boolean;
+        /**
+          * height is the prop to define height of component.
          */
         "height"?: string;
+        /**
+          * italicButton to define if component has Italic Control.
+         */
+        "italicButton"?: boolean;
         /**
           * Set the language for fixed texts.
          */
         "language"?: languages2;
+        /**
+          * linkButton to define if component has Link Control.
+         */
+        "linkButton"?: boolean;
+        /**
+          * listButtons to define if component has List Control.
+         */
+        "listButtons"?: boolean;
+        /**
+          * maxHeight is the prop to define max height of component.
+         */
+        "maxHeight"?: string;
+        /**
+          * positionBar is the prop to define max height of component.
+         */
+        "positionBar"?: positionBar;
+        /**
+          * quoteButton to define if component has Quote Control.
+         */
+        "quoteButton"?: boolean;
+        /**
+          * strikeThroughbutton to define if component has Strike Control.
+         */
+        "strikeThroughButton"?: boolean;
+        /**
+          * underlineButton to define if component has Underline Control.
+         */
+        "underlineButton"?: boolean;
+        /**
+          * unstyledButton to define if component has Unstyled Control.
+         */
+        "unstyledButton"?: boolean;
+        /**
+          * weightButton to define if component has Bold Control.
+         */
+        "weightButton"?: boolean;
     }
     interface BdsSelect {
         /**
@@ -6011,17 +6064,46 @@ declare namespace LocalJSX {
     }
     interface BdsRichText {
         /**
+          * alignmentButtons to define if component has TextAlign Control.
+         */
+        "alignmentButtons"?: boolean;
+        /**
+          * codeButton to define if component has Code Control.
+         */
+        "codeButton"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
         /**
-          * Data test is the prop to specifically test the component action object.
+          * headingButtons to define if component has Heading Control.
+         */
+        "headingButtons"?: boolean;
+        /**
+          * height is the prop to define height of component.
          */
         "height"?: string;
+        /**
+          * italicButton to define if component has Italic Control.
+         */
+        "italicButton"?: boolean;
         /**
           * Set the language for fixed texts.
          */
         "language"?: languages2;
+        /**
+          * linkButton to define if component has Link Control.
+         */
+        "linkButton"?: boolean;
+        /**
+          * listButtons to define if component has List Control.
+         */
+        "listButtons"?: boolean;
+        /**
+          * maxHeight is the prop to define max height of component.
+         */
+        "maxHeight"?: string;
+
         /**
           * Event input onblur.
          */
@@ -6038,6 +6120,30 @@ declare namespace LocalJSX {
           * Emitted when the input has changed.
          */
         "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
+        /**
+          * positionBar is the prop to define max height of component.
+         */
+        "positionBar"?: positionBar;
+        /**
+          * quoteButton to define if component has Quote Control.
+         */
+        "quoteButton"?: boolean;
+        /**
+          * strikeThroughbutton to define if component has Strike Control.
+         */
+        "strikeThroughButton"?: boolean;
+        /**
+          * underlineButton to define if component has Underline Control.
+         */
+        "underlineButton"?: boolean;
+        /**
+          * unstyledButton to define if component has Unstyled Control.
+         */
+        "unstyledButton"?: boolean;
+        /**
+          * weightButton to define if component has Bold Control.
+         */
+        "weightButton"?: boolean;
     }
     interface BdsSelect {
         /**
