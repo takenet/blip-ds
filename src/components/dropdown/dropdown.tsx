@@ -97,6 +97,12 @@ export class BdsDropdown implements ComponentInterface {
     } else {
       this.validatePositionDrop();
     }
+
+    document.addEventListener('click', this.handleClickOutside);
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('click', this.handleClickOutside);
   }
 
   private setDefaultPlacement(value: DropdownPostionType) {
@@ -196,8 +202,14 @@ export class BdsDropdown implements ComponentInterface {
   private onMouseOut = () => {
     if (this.activeMode === 'hover') {
       this.zIndex = 0;
+      this.stateOpenSubMenu = false;
     }
-    this.stateOpenSubMenu = false;
+  };
+
+  private handleClickOutside = (event: MouseEvent) => {
+    if (this.open && !this.hostElement.contains(event.target as Node)) {
+      this.setClose();
+    }
   };
 
   private centerDropElement = (value: DropdownPostionType) => {
