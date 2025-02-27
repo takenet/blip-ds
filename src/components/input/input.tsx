@@ -606,11 +606,21 @@ export class Input {
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
-              />
+              ></Element>
             </div>
           </div>
-          {this.renderMessage()}
+          {this.counterLength && (
+            <bds-counter-text
+              length={this.value.length}
+              max={this.maxlength}
+              active={isPressed}
+              {...this.counterLengthRule}
+            />
+          )}
+          {this.success && <bds-icon class="icon-success" name="check" theme="outline" size="small" />}
+          <slot name="input-right" />
         </div>
+        {this.renderMessage()}
       </Host>
     );
   }

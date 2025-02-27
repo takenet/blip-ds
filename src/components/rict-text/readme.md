@@ -61,6 +61,8 @@ graph TD;
   bds-button --> bds-typo
   bds-input --> bds-icon
   bds-input --> bds-typo
+  bds-input --> bds-counter-text
+  bds-counter-text --> bds-typo
   style bds-rich-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
