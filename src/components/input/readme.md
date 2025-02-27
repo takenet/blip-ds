@@ -131,12 +131,15 @@ Type: `Promise<void>`
 
 - [bds-icon](../icon)
 - [bds-typo](../typo)
+- [bds-counter-text](../counter-text)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-input --> bds-icon
   bds-input --> bds-typo
+  bds-input --> bds-counter-text
+  bds-counter-text --> bds-typo
   bds-datepicker --> bds-input
   bds-rich-text --> bds-input
   style bds-input fill:#f9f,stroke:#333,stroke-width:4px

@@ -20,6 +20,7 @@
 
 ### Used by
 
+ - [bds-input](../input)
  - [bds-input-chips](../input-chips)
 
 ### Depends on
@@ -30,6 +31,7 @@
 ```mermaid
 graph TD;
   bds-counter-text --> bds-typo
+  bds-input --> bds-counter-text
   bds-input-chips --> bds-counter-text
   style bds-counter-text fill:#f9f,stroke:#333,stroke-width:4px
 ```

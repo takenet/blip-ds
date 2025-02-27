@@ -62,6 +62,8 @@ graph TD;
   bds-datepicker --> bds-button
   bds-input --> bds-icon
   bds-input --> bds-typo
+  bds-input --> bds-counter-text
+  bds-counter-text --> bds-typo
   bds-banner --> bds-icon
   bds-banner --> bds-button-icon
   bds-button-icon --> bds-icon
