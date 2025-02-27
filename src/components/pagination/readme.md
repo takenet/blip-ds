@@ -38,7 +38,6 @@
 - [bds-grid](../grid)
 - [bds-typo](../typo)
 - [bds-select](../selects/select)
-- [bds-select-option](../select-option)
 - [bds-button-icon](../icon-button)
 
 ### Graph
@@ -47,7 +46,6 @@ graph TD;
   bds-pagination --> bds-grid
   bds-pagination --> bds-typo
   bds-pagination --> bds-select
-  bds-pagination --> bds-select-option
   bds-pagination --> bds-button-icon
   bds-select --> bds-icon
   bds-select --> bds-typo
