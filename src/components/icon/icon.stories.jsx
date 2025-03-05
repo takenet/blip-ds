@@ -12,6 +12,9 @@ export default {
 };
 
 const solidIconsName = [
+  'checkbox',
+  'toggle',
+  'radiobutton',
   'bottom-sheet',
   'text-variable',
   'user-favorite',
@@ -113,6 +116,9 @@ const solidIconsName = [
 ];
 
 const outlineIconsName = [
+  'checkbox',
+  'toggle',
+  'radiobutton',
   'bottom-sheet',
   'text-variable',
   'user-favorite',
