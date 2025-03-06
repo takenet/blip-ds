@@ -11,222 +11,221 @@ import { emailValidation, numberValidation } from '../../utils/validations';
 export class Input {
   private nativeInput?: HTMLInputElement;
 
-  @State() isPressed? = false; 
-  @State() isPassword? = false; 
-  @State() validationMesage? = ''; 
+  @State() isPressed? = false;
+  @State() isPassword? = false;
+  @State() validationMesage? = '';
   @State() validationDanger? = false;
   /**
    * Nome do input, usado para identificação no formulário.
    */
-   @Prop() inputName? = '';
+  @Prop() inputName? = '';
 
-   /**
-    * Define o tipo do input (por exemplo, `text`, `password`, etc).
-    */
-   @Prop({ reflect: true }) type?: InputType = 'text';
- 
-   /**
-    * Rótulo que será exibido acima do input.
-    */
-   @Prop() label? = '';
- 
-   /**
-    * Texto que será exibido como sugestão ou dica no input.
-    */
-   @Prop() placeholder?: string = '';
- 
-   /**
-    * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
-    */
-   @Prop() autoCapitalize?: InputAutocapitalize = 'off';
- 
-   /**
-    * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
-    */
-   @Prop() autoComplete?: InputAutoComplete = 'off';
- 
-   /**
-    * Define o valor máximo permitido para o input.
-    */
-   @Prop() max?: string;
- 
-   /**
-    * Define o número máximo de caracteres permitidos no input.
-    */
-   @Prop() maxlength?: number;
- 
-   /**
-    * Define o valor mínimo permitido para o input.
-    */
-   @Prop() min?: string;
- 
-   /**
-    * Define o número mínimo de caracteres permitidos no input.
-    */
-   @Prop() minlength?: number;
- 
-   /**
-    * Torna o input somente leitura.
-    */
-   @Prop() readonly = false;
- 
-   /**
-    * Define se o input é obrigatório.
-    */
-   @Prop() required: boolean;
- 
-   /**
-    * Define um padrão regex que o valor do input deve seguir.
-    */
-   @Prop() pattern?: string;
- 
-   /**
-    * Mensagem de ajuda exibida abaixo do input.
-    */
-   @Prop() helperMessage?: string = '';
- 
-   /**
-    * Mensagem de erro exibida quando o valor do input é inválido.
-    */
-   @Prop({ mutable: true }) errorMessage?: string = '';
- 
-   /**
-    * Mensagem exibida quando o valor do input é válido.
-    */
-   @Prop({ mutable: true }) successMessage?: string = '';
- 
-   /**
-    * Nome do ícone a ser exibido dentro do input.
-    */
-   @Prop({ reflect: true }) icon?: string = '';
- 
-   /**
-    * Define se o input está desabilitado.
-    */
-   @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
- 
-   /**
-    * Define se o input está em estado de erro.
-    */
-   @Prop({ reflect: true, mutable: true }) danger?: boolean = false;
- 
-   /**
-    * Define se o input está em estado de sucesso.
-    */
-   @Prop({ reflect: true, mutable: true }) success?: boolean = false;
- 
-   /**
-    * O valor atual do input.
-    */
-   @Prop({ mutable: true }) value?: string | null = '';
- 
-   /**
-    * Define se será exibido um contador de comprimento de caracteres.
-    */
-   @Prop() counterLength? = false;
- 
-   /**
-    * Define a regra do contador de comprimento de caracteres (min, max, etc).
-    */
-   @Prop() counterLengthRule?: InputCounterLengthRules = null;
- 
-   /**
-    * Define se o input será submetido ao pressionar Enter.
-    */
-   @Prop() isSubmit = false;
- 
-   /**
-    * Define se o input é uma área de texto (textarea).
-    */
-   @Prop() isTextarea = false;
- 
-   /**
-    * Define a quantidade de linhas da área de texto (se for `textarea`).
-    */
-   @Prop() rows?: number = 1;
- 
-   /**
-    * Define a quantidade de colunas da área de texto (se for `textarea`).
-    */
-   @Prop() cols?: number = 0;
- 
-   /**
-    * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
-    */
-   @Prop() requiredErrorMessage: string;
- 
-   /**
-    * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
-    */
-   @Prop() minlengthErrorMessage: string;
- 
-   /**
-    * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
-    */
-   @Prop() minErrorMessage: string;
- 
-   /**
-    * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
-    */
-   @Prop() maxErrorMessage: string;
- 
-   /**
-    * Mensagem de erro exibida quando o valor do input não é um email válido.
-    */
-   @Prop() emailErrorMessage: string;
- 
-   /**
-    * Mensagem de erro exibida quando o valor do input não é um número válido.
-    */
-   @Prop() numberErrorMessage: string;
- 
-   /**
-    * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
-    */
-   @Prop() chips: boolean;
- 
-   /**
-    * Data test é a prop para testar especificamente a ação do componente.
-    */
-   @Prop() dataTest?: string = null;
+  /**
+   * Define o tipo do input (por exemplo, `text`, `password`, etc).
+   */
+  @Prop({ reflect: true }) type?: InputType = 'text';
 
-   @Prop() encode?: boolean = false;
- 
-   /**
-    * Evento disparado quando o valor do input muda.
-    */
-   @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
- 
-   /**
-    * Evento disparado quando o input recebe um input (digitação).
-    */
-   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
- 
-   /**
-    * Evento disparado quando o input perde o foco.
-    */
-   @Event() bdsOnBlur: EventEmitter;
- 
-   /**
-    * Evento disparado quando o input ganha o foco.
-    */
-   @Event() bdsFocus: EventEmitter;
- 
-   /**
-    * Evento disparado quando o formulário é submetido.
-    */
-   @Event() bdsSubmit: EventEmitter;
- 
-   /**
-    * Evento disparado para validação de padrão regex.
-    */
-   @Event() bdsPatternValidation: EventEmitter;
- 
-   /**
-    * Evento disparado quando a tecla "Backspace" é pressionada.
-    */
-   @Event() bdsKeyDownBackspace: EventEmitter;
- 
+  /**
+   * Rótulo que será exibido acima do input.
+   */
+  @Prop() label? = '';
+
+  /**
+   * Texto que será exibido como sugestão ou dica no input.
+   */
+  @Prop() placeholder?: string = '';
+
+  /**
+   * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
+   */
+  @Prop() autoCapitalize?: InputAutocapitalize = 'off';
+
+  /**
+   * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
+   */
+  @Prop() autoComplete?: InputAutoComplete = 'off';
+
+  /**
+   * Define o valor máximo permitido para o input.
+   */
+  @Prop() max?: string;
+
+  /**
+   * Define o número máximo de caracteres permitidos no input.
+   */
+  @Prop() maxlength?: number;
+
+  /**
+   * Define o valor mínimo permitido para o input.
+   */
+  @Prop() min?: string;
+
+  /**
+   * Define o número mínimo de caracteres permitidos no input.
+   */
+  @Prop() minlength?: number;
+
+  /**
+   * Torna o input somente leitura.
+   */
+  @Prop() readonly = false;
+
+  /**
+   * Define se o input é obrigatório.
+   */
+  @Prop() required: boolean;
+
+  /**
+   * Define um padrão regex que o valor do input deve seguir.
+   */
+  @Prop() pattern?: string;
+
+  /**
+   * Mensagem de ajuda exibida abaixo do input.
+   */
+  @Prop() helperMessage?: string = '';
+
+  /**
+   * Mensagem de erro exibida quando o valor do input é inválido.
+   */
+  @Prop({ mutable: true }) errorMessage?: string = '';
+
+  /**
+   * Mensagem exibida quando o valor do input é válido.
+   */
+  @Prop({ mutable: true }) successMessage?: string = '';
+
+  /**
+   * Nome do ícone a ser exibido dentro do input.
+   */
+  @Prop({ reflect: true }) icon?: string = '';
+
+  /**
+   * Define se o input está desabilitado.
+   */
+  @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
+
+  /**
+   * Define se o input está em estado de erro.
+   */
+  @Prop({ reflect: true, mutable: true }) danger?: boolean = false;
+
+  /**
+   * Define se o input está em estado de sucesso.
+   */
+  @Prop({ reflect: true, mutable: true }) success?: boolean = false;
+
+  /**
+   * O valor atual do input.
+   */
+  @Prop({ mutable: true }) value?: string | null = '';
+
+  /**
+   * Define se será exibido um contador de comprimento de caracteres.
+   */
+  @Prop() counterLength? = false;
+
+  /**
+   * Define a regra do contador de comprimento de caracteres (min, max, etc).
+   */
+  @Prop() counterLengthRule?: InputCounterLengthRules = null;
+
+  /**
+   * Define se o input será submetido ao pressionar Enter.
+   */
+  @Prop() isSubmit = false;
+
+  /**
+   * Define se o input é uma área de texto (textarea).
+   */
+  @Prop() isTextarea = false;
+
+  /**
+   * Define a quantidade de linhas da área de texto (se for `textarea`).
+   */
+  @Prop() rows?: number = 1;
+
+  /**
+   * Define a quantidade de colunas da área de texto (se for `textarea`).
+   */
+  @Prop() cols?: number = 0;
+
+  /**
+   * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
+   */
+  @Prop() requiredErrorMessage: string;
+
+  /**
+   * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
+   */
+  @Prop() minlengthErrorMessage: string;
+
+  /**
+   * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
+   */
+  @Prop() minErrorMessage: string;
+
+  /**
+   * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
+   */
+  @Prop() maxErrorMessage: string;
+
+  /**
+   * Mensagem de erro exibida quando o valor do input não é um email válido.
+   */
+  @Prop() emailErrorMessage: string;
+
+  /**
+   * Mensagem de erro exibida quando o valor do input não é um número válido.
+   */
+  @Prop() numberErrorMessage: string;
+
+  /**
+   * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
+   */
+  @Prop() chips: boolean;
+
+  /**
+   * Data test é a prop para testar especificamente a ação do componente.
+   */
+  @Prop() dataTest?: string = null;
+
+  @Prop() encode?: boolean = false;
+
+  /**
+   * Evento disparado quando o valor do input muda.
+   */
+  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
+
+  /**
+   * Evento disparado quando o input recebe um input (digitação).
+   */
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+
+  /**
+   * Evento disparado quando o input perde o foco.
+   */
+  @Event() bdsOnBlur: EventEmitter;
+
+  /**
+   * Evento disparado quando o input ganha o foco.
+   */
+  @Event() bdsFocus: EventEmitter;
+
+  /**
+   * Evento disparado quando o formulário é submetido.
+   */
+  @Event() bdsSubmit: EventEmitter;
+
+  /**
+   * Evento disparado para validação de padrão regex.
+   */
+  @Event() bdsPatternValidation: EventEmitter;
+
+  /**
+   * Evento disparado quando a tecla "Backspace" é pressionada.
+   */
+  @Event() bdsKeyDownBackspace: EventEmitter;
 
   /**
    * Define o foco no campo de entrada.
@@ -271,22 +270,25 @@ export class Input {
   /**
    * Codifica os caracteres especiais para exibição segura (evita injeção de código HTML).
    */
-   private encodeValue(value: string): string {
-    const lt = /</g, 
-          gt = />/g, 
-          ap = /'/g, 
-          ic = /"/g, 
-          amp = /&/g, 
-          slash = /\//g;
-    
-    return value
-      .toString()
-      .replace(lt, "&lt;")
-      .replace(gt, "&gt;")
-      .replace(ap, "&#39;")
-      .replace(ic, "&#34;")
-      .replace(amp, "&amp;")
-      .replace(slash, "&#47;");
+  private encodeValue(value?: string): string {
+    const lt = /</g,
+      gt = />/g,
+      ap = /'/g,
+      ic = /"/g,
+      amp = /&/g,
+      slash = /\//g;
+
+    return (
+      value &&
+      value
+        .toString()
+        .replace(lt, '&lt;')
+        .replace(gt, '&gt;')
+        .replace(ap, '&#39;')
+        .replace(ic, '&#34;')
+        .replace(amp, '&amp;')
+        .replace(slash, '&#47;')
+    );
   }
 
   /**
@@ -294,7 +296,7 @@ export class Input {
    */
   @Watch('value')
   protected valueChanged(newValue: string | null): void {
-      const changeValue = this.encode ? this.encodeValue(newValue || '') : (newValue || '');
+    const changeValue = this.encode ? this.encodeValue(newValue || '') : newValue || '';
     this.bdsChange.emit({ value: changeValue });
   }
 
@@ -601,16 +603,26 @@ export class Input {
                 placeholder={this.placeholder}
                 readOnly={this.readonly}
                 type={this.type}
-                value={this.encodeValue(this.value)} 
+                value={this.encodeValue(this.value)}
                 pattern={this.pattern}
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
-              />
+              ></Element>
             </div>
           </div>
-          {this.renderMessage()}
+          {this.counterLength && (
+            <bds-counter-text
+              length={this.value.length}
+              max={this.maxlength}
+              active={isPressed}
+              {...this.counterLengthRule}
+            />
+          )}
+          {this.success && <bds-icon class="icon-success" name="check" theme="outline" size="small" />}
+          <slot name="input-right" />
         </div>
+        {this.renderMessage()}
       </Host>
     );
   }

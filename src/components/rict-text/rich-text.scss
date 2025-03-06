@@ -12,16 +12,40 @@
   border-radius: 16px;
   background-color: $color-surface-1;
 
+  &-top {
+    .format-buttons {
+      order: 1;
+    }
+    .preview {
+      order: 2;
+    }
+  }
+
+  &-bottom {
+    .format-buttons {
+      order: 2;
+    }
+    .preview {
+      order: 1;
+    }
+  }
+
   &.active {
     border-color: $color-primary;
     box-shadow: 0 0 0 2px $color-info;
   }
 
   .format-buttons {
-    position: relative;
-    background-color: $color-surface-0;
-    border: 1px solid $color-border-1;
-    border-radius: 16px;
+    display: none !important;
+
+    &-active {
+      display: flex !important;
+      position: relative;
+      background-color: $color-surface-0;
+      border: 1px solid $color-border-1;
+      border-radius: 16px;
+      padding: 8px;
+    }
 
     .style-onhover {
       position: absolute;
@@ -48,17 +72,23 @@
       .buttons-list {
         column-gap: 8px;
 
+        .editor-bar {
+          width: 0;
+          margin-right: -8px;
+        }
+
         & bds-tooltip {
           -webkit-transition: height ease-in-out 0.25s;
           -moz-transition: height ease-in-out 0.25s;
           transition: height ease-in-out 0.25s;
           height: 0px;
 
-          & > bds-button {
+          & > bds-button,
+          & > bds-dropdown > div[slot='dropdown-activator'] > bds-button {
             height: 0;
             opacity: 0;
-            overflow: hidden;
             display: block;
+            overflow: hidden;
             -webkit-transition:
               height ease-in-out 0.25s,
               opacity 0.5s ease-in-out 0.25s;
@@ -72,7 +102,9 @@
 
           &.active {
             height: 32px;
-            & > bds-button {
+            & > bds-button,
+            & > bds-dropdown > div[slot='dropdown-activator'] > bds-button {
+              overflow: inherit;
               height: 32px;
               opacity: 1;
             }
@@ -151,6 +183,11 @@
       h6 {
         font-size: 12px;
         font-weight: 600;
+      }
+
+      a {
+        text-decoration: none;
+        color: $color-primary;
       }
 
       blockquote {

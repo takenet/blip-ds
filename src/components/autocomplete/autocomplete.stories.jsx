@@ -28,6 +28,7 @@ export const Properties = (args) => {
       placeholder={args.placeholder}
       selection-type={args.selectionType}
       selection-title={args.selectionTitle}
+      selected-all={args.selectedAll}
       options-position={args.optionsPosition}
       danger={args.danger}
       error-message={args.errorMessage}
@@ -79,6 +80,13 @@ Properties.argTypes = {
     description: 'Defina o tipo de seleção dos itens. "single" permite selecionar um item por vez, "multiple" permite múltiplas seleções.',
     options: ['single', 'multiple'],
     control: 'select',
+  },
+  selectedAll: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Define se aparece a opção de selecionar todos.',
+    control: 'boolean',
   },
   selectionTitle: {
     table: {
@@ -172,6 +180,7 @@ Properties.args = {
   disabled: false,
   placeholder: 'Selecione uma opção',
   selectionType: 'single',
+  selectedAll: true,
   selectionTitle: 'Selection Title',
   errorMessage: '',
   helperMessage: '',

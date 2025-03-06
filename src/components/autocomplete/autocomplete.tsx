@@ -4,6 +4,7 @@ import {
   AutocompleteChangeEventDetail,
   AutocompleteSelectedChangeEventDetail,
   AutocompleteOptionsPositionType,
+  AutocompleteMultiSelectedChangeEventDetail,
 } from './autocomplete-select-interface';
 import { SelectOptionsPositionType } from '../selects/select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
@@ -151,6 +152,11 @@ export class BdsAutocomplete {
    */
   @Prop() selectionTitle?: string = '';
 
+    /**
+   * Selection Title, Prop to enable title to select.
+   */
+    @Prop() selectedAll?: boolean = true;
+
   /**
    * Emitted when the value has changed.
    */
@@ -164,7 +170,7 @@ export class BdsAutocomplete {
   /**
    * Emitted when the selected value has changed.
    */
-  @Event() bdsMultiselectedChange!: EventEmitter;
+  @Event() bdsMultiselectedChange!: EventEmitter<AutocompleteMultiSelectedChangeEventDetail>;
 
   /**
    * Emitted when the input has changed.
@@ -358,7 +364,7 @@ export class BdsAutocomplete {
     if (!this.isOpen) {
       this.isFocused = false;
       this.nativeInput.value = this.getText();
-      this.cleanInputSelection();
+      if (this.selectionType == 'multiple') this.cleanInputSelection();
     }
     if (this.selectionType == 'multiple' && this.checkedOptions?.length > 0)
       this.getTextMultiselect(this.checkedOptions);
@@ -385,7 +391,7 @@ export class BdsAutocomplete {
         return internalOption.label;
       }
     }
-    return opt?.titleText ? opt.titleText : (opt?.textContent?.trim() ?? '');
+    return opt?.titleText ? opt.titleText : (opt?.innerText ?? '');
   };
 
   private getText = (): string => {
@@ -678,7 +684,7 @@ export class BdsAutocomplete {
                 {this.selectionTitle}
               </bds-typo>
             )}
-            {this.selectionType == 'multiple' && this.value == null && (
+            {this.selectionType == 'multiple' && this.selectedAll && this.value == null && (
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}
