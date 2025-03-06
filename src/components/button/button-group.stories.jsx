@@ -65,6 +65,36 @@ Properties.args = {
   multiple: false,
 };
 
+export const Methods = () => {
+  useEffect(() => {
+    const buttonGroup = document.getElementById('button-group');
+    const activateButton = document.getElementById('activate-button');
+
+    activateButton.addEventListener('click', () => {
+      buttonGroup.activateButton(1);
+    });
+
+    return () => {
+      activateButton.removeEventListener('click', () => {
+        buttonGroup.activateButton(1);
+      });
+    };
+  }, []);
+
+  return (
+    <bds-grid direction="column" align="center" gap="2">
+      <bds-button id="activate-button" variant="primary">Ativar o segundo botão</bds-button>
+      <bds-button-group id="button-group">
+        <bds-button icon-left="builder-publish-bot" id="bot-builder-publish"></bds-button>
+        <bds-button icon-left="search" id="bot-search"></bds-button>
+        <bds-button icon-left="email" id="bot-email"></bds-button>
+        <bds-button icon-left="bell" id="bot-bell"></bds-button>
+        <bds-button icon-left="settings-general" id="bot-settings"></bds-button>
+      </bds-button-group>
+    </bds-grid>
+  );
+};
+
 export const Events = () => {
   useEffect(() => {
     const buttonGroup = document.getElementById('button-group');

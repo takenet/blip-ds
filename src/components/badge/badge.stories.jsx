@@ -35,33 +35,37 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'circle' },
     },
-    
-    options: ['circle' , 'triangle' , 'triangle-reverse' , 'polygon', 'square'],
+    description: 'Define o formato do badge.',
+    options: ['circle', 'triangle', 'triangle-reverse', 'polygon', 'square'],
     control: 'select',
   },
   icon: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
+    description: 'Define o ícone a ser exibido no badge.',
     control: 'text',
   },
   color: {
     table: {
       defaultValue: { summary: 'system' },
     },
-    options: ['system' , 'danger' , 'warning' , 'success', 'neutral'],
+    description: 'Define a cor do badge.',
+    options: ['system', 'danger', 'warning', 'success', 'neutral'],
     control: 'select',
   },
   animation: {
     table: {
       defaultValue: { summary: 'false' },
     },
+    description: 'Ativa a animação do badge.',
     control: 'boolean',
   },
   number: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
+    description: 'Define o número a ser exibido no badge.',
     control: 'number',
   },
 };
