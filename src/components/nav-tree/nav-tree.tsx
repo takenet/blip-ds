@@ -146,7 +146,7 @@ export class NavTree {
                     variant="fs-14"
                     tag="span"
                     line-height="small"
-                    bold={this.isOpen ? 'bold' : 'regular'}
+                    bold={this.isOpen ? 'bold' : 'semi-bold'}
                   >
                     {this.text}
                   </bds-typo>
