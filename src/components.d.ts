@@ -96,16 +96,22 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
+        "arrowAlign"?: string;
         "closeAll": (actNumber?: any) => Promise<void>;
         "collapse"?: collapses;
         "divisor"?: boolean;
         "openAll": (actNumber?: any) => Promise<void>;
+        "size"?: string;
     }
     interface BdsAccordionHeader {
         /**
           * Accordion Title. Used to add title in header accordion.
          */
         "accordionTitle"?: string;
+        /**
+          * Arrow Align. Used to define the alignment of the arrow icon.
+         */
+        "arrowAlign"?: string;
         /**
           * Avatar Name. Used to add avatar in header accordion.
          */
@@ -124,6 +130,10 @@ export namespace Components {
          */
         "icon"?: string;
         "open": () => Promise<void>;
+        /**
+          * Size. Used to define the size of the accordion header.
+         */
+        "size"?: string;
         "toggle": () => Promise<void>;
     }
     interface BdsAlert {
@@ -3848,16 +3858,22 @@ declare namespace LocalJSX {
         "dataTest"?: string;
     }
     interface BdsAccordionGroup {
+        "arrowAlign"?: string;
         "collapse"?: collapses;
         "divisor"?: boolean;
         "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
         "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
+        "size"?: string;
     }
     interface BdsAccordionHeader {
         /**
           * Accordion Title. Used to add title in header accordion.
          */
         "accordionTitle"?: string;
+        /**
+          * Arrow Align. Used to define the alignment of the arrow icon.
+         */
+        "arrowAlign"?: string;
         /**
           * Avatar Name. Used to add avatar in header accordion.
          */
@@ -3874,6 +3890,10 @@ declare namespace LocalJSX {
           * Icon. Used to add icon in header accordion.
          */
         "icon"?: string;
+        /**
+          * Size. Used to define the size of the accordion header.
+         */
+        "size"?: string;
     }
     interface BdsAlert {
         /**

@@ -19,16 +19,69 @@
     /* background: var(--color-background-2, #0a0f1a);  */
     margin: 0;
     height: 100vh;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
   }
 </style>
 
 <body>
-    <bds-typo>Página de teste Uai Design System</bds-typo>
+  <bds-typo>Página de teste Uai Design System</bds-typo>
   <bds-test-component></bds-test-component>
+  <bds-card bg-color="surface-0">
+    <bds-grid xxs="12" direction="column" align-items="center" gap="4" justify-content="center" padding="4">
+      <bds-button id="change-size" variant="primary">Change Size</bds-button>
+      <bds-button id="change-arrow-align" variant="primary">Change Arrow Align</bds-button>
+
+      <bds-accordion-group id="accordion-group" size="small" arrow-align="left">
+        <bds-accordion>
+          <bds-accordion-header accordion-title="Título do accordion" avatar-name="" avatar-thumb="" icon="warning"></bds-accordion-header>
+          <bds-accordion-body>
+            <bds-typo variant="fs-16">
+              Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo
+              associados.
+            </bds-typo>
+          </bds-accordion-body>
+        </bds-accordion>
+        <bds-accordion>
+          <bds-accordion-header accordion-title="Título do accordion" avatar-name="" avatar-thumb="" icon=""></bds-accordion-header>
+          <bds-accordion-body>
+            <bds-typo variant="fs-16">
+              Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo
+              associados.
+            </bds-typo>
+          </bds-accordion-body>
+        </bds-accordion>
+        <bds-accordion>
+          <bds-accordion-header accordion-title="Título do accordion" avatar-name="" avatar-thumb="" icon=""></bds-accordion-header>
+          <bds-accordion-body>
+            <bds-typo variant="fs-16">
+              Um accordion é uma lista de cabeçalhos empilhados verticalmente que revelam ou ocultam seções de conteúdo
+              associados.
+            </bds-typo>
+          </bds-accordion-body>
+        </bds-accordion>
+      </bds-accordion-group>
+    </bds-grid>
+  </bds-card>
 </body>
 
 <script>
+  const changeSizeButton = document.getElementById('change-size');
+  const changeArrowAlignButton = document.getElementById('change-arrow-align');
+  const accordionGroup = document.getElementById('accordion-group');
 
+  changeSizeButton.addEventListener('click', () => {
+    const newSize = accordionGroup.size === 'small' ? 'medium' : accordionGroup.size === 'medium' ? 'large' : 'small';
+    accordionGroup.size = newSize;
+  });
+
+  changeArrowAlignButton.addEventListener('click', () => {
+    const newArrowAlign = accordionGroup.arrowAlign === 'left' ? 'right' : 'left';
+    accordionGroup.arrowAlign = newArrowAlign;
+  });
 </script>
 
 </html>
