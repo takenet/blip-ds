@@ -6,6 +6,7 @@ import * as countriesJson from './countries.json';
   tag: 'bds-input-phone-number',
   styleUrl: 'input-phone-number.scss',
   shadow: true,
+  formAssociated: true,
 })
 export class InputPhoneNumber {
   private nativeInput?: HTMLInputElement;

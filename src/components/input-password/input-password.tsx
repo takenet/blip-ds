@@ -5,6 +5,7 @@ import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface
   tag: 'bds-input-password',
   styleUrl: 'input-password.scss',
   shadow: true,
+  formAssociated: true,
 })
 export class InputPassword {
   private nativeInput?: HTMLInputElement;

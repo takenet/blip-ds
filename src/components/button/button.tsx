@@ -27,6 +27,7 @@ export type IconTheme = 'outline' | 'solid';
   tag: 'bds-button',
   styleUrl: 'button.scss',
   shadow: true,
+  formAssociated: true,
 })
 export class Button {
   @Element() el!: HTMLElement;

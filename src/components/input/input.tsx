@@ -7,6 +7,7 @@ import { emailValidation, numberValidation } from '../../utils/validations';
   tag: 'bds-input',
   styleUrl: 'input.scss',
   shadow: true,
+  formAssociated: true,
 })
 export class Input {
   private nativeInput?: HTMLInputElement;
