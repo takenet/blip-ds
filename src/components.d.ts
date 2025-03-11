@@ -4667,6 +4667,10 @@ declare namespace LocalJSX {
          */
         "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
+          * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
+         */
+        "onEmptyConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        /**
           * Used to set drop position
          */
         "positionOptions"?: DropdownPostionType;

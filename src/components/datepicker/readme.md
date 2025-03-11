@@ -33,11 +33,12 @@
 
 ## Events
 
-| Event                | Description                                            | Type               |
-| -------------------- | ------------------------------------------------------ | ------------------ |
-| `bdsEndDate`         | bdsStartDate. Event to return selected end date value. | `CustomEvent<any>` |
-| `bdsStartDate`       | bdsStartDate. Event to return selected date value.     | `CustomEvent<any>` |
-| `concludeDatepicker` | bdsStartDate. Event to return selected end date value. | `CustomEvent<any>` |
+| Event                     | Description                                                                                        | Type               |
+| ------------------------- | -------------------------------------------------------------------------------------------------- | ------------------ |
+| `bdsEndDate`              | bdsStartDate. Event to return selected end date value.                                             | `CustomEvent<any>` |
+| `bdsStartDate`            | bdsStartDate. Event to return selected date value.                                                 | `CustomEvent<any>` |
+| `concludeDatepicker`      | bdsStartDate. Event to return selected end date value.                                             | `CustomEvent<any>` |
+| `emptyConcludeDatepicker` | emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected. | `CustomEvent<any>` |
 
 
 ## Dependencies

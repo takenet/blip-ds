@@ -148,6 +148,9 @@ export const Events = () => {
     datepicker.addEventListener('concludeDatepicker', () => {
       console.log('Evento Conclude funcionando');
     });
+    datepicker.addEventListener('emptyConcludeDatepicker', () => {
+      console.log('Evento Conclude vazio funcionando');
+    });
   });
 
   return (
