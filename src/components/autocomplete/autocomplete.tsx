@@ -395,19 +395,11 @@ export class BdsAutocomplete {
   };
 
   private getText = (): string => {
-    if (this.selectionType == 'multiple') {
-      return this.getTextMultiselect(this.value);
-    } else {
-      const opt = this.childOptions.find((option) => option.value == this.value);
+    const opt = this.childOptions.find((option) => option.value == this.value);
     return this.getTextFromOption(opt);
-
-    }
-    
   };
 
-  private getTextMultiselect = (data): any => {
-    if(this.selectionType == 'multiple') {
-    }
+  private getTextMultiselect = (data): void => {
     const valueInput = data?.length > 0 && `${data?.length} selecionados`;
     this.textMultiselect = valueInput;
   };
