@@ -1,4 +1,4 @@
-import { Component, h, Host, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, Host, State, Prop, EventEmitter, Event, Watch, Element, Listen, Method } from '@stencil/core';
 import {
   AutocompleteOption,
   AutocompleteChangeEventDetail,
@@ -152,10 +152,10 @@ export class BdsAutocomplete {
    */
   @Prop() selectionTitle?: string = '';
 
-  /**
+    /**
    * Selection Title, Prop to enable title to select.
    */
-  @Prop() selectedAll?: boolean = true;
+    @Prop() selectedAll?: boolean = true;
 
   /**
    * Emitted when the value has changed.
@@ -215,25 +215,12 @@ export class BdsAutocomplete {
   @Watch('value')
   protected valueChanged(): void {
     this.bdsChange.emit({ value: this.value == null ? this.value : this.value.toString() });
-    this.markSelectedOption();
-    if (this.selectionType !== 'multiple') {
-      this.text = this.getText();
-    }
-  }
-
-  private markSelectedOption = () => {
     for (const option of this.childOptions) {
-      
-      if (this.selectionType === 'multiple' && this.value !== null) {
-        option.selected = this.value === this.value;
-      } else {
-          option.checked = this.value ? true : false;
-        }
-      console.log('option:', option.value, this.selected, this.childOptionSelected);
+      option.selected = this.value === option.value;
     }
     this.selected = this.childOptionSelected;
+    this.text = this.getText();
   }
-
 
   @Listen('mousedown', { target: 'window', passive: true })
   handleWindow(ev: Event) {
@@ -250,7 +237,6 @@ export class BdsAutocomplete {
           ? this.placeholder
           : ''
         : this.placeholder;
-        
     this.getTextMultiselect(this.checkedOptions);
     this.bdsMultiselectedChange.emit({ value: this.checkedOptions });
   }
@@ -286,13 +272,10 @@ export class BdsAutocomplete {
   componentWillLoad() {
     this.intoView = getScrollParent(this.el);
     this.options && this.parseOptions();
-    if (this.selectionType == 'multiple' && this.value) {
-      this.getTextMultiselect(this.value);
-      }
   }
 
   componentDidLoad() {
-        if (!this.options) {
+    if (!this.options) {
       for (const option of this.childOptions) {
         if (this.selectionType === 'multiple') {
           option.typeOption = 'checkbox';
@@ -304,11 +287,8 @@ export class BdsAutocomplete {
         }
       }
     }
-    if(this.selectionType !== 'multiple') {
+
     this.text = this.getText();
-    } else {
-      this.markSelectedOption();
-    }
     if (this.optionsPosition != 'auto') {
       this.setDefaultPlacement(this.optionsPosition);
     } else {
@@ -373,7 +353,7 @@ export class BdsAutocomplete {
   };
 
   private onFocusout = (): void => {
-    if (!this.isOpen && this.selectionType == 'single') {
+    if (!this.isOpen) {
       this.nativeInput.value = this.getText();
     }
   };
@@ -383,20 +363,11 @@ export class BdsAutocomplete {
     this.isPressed = false;
     if (!this.isOpen) {
       this.isFocused = false;
-      if (this.selectionType == 'single') {
-        this.nativeInput.value = this.getText();
-        console.log('nativoBlur', this.nativeInput.value);
-      }
+      this.nativeInput.value = this.getText();
       if (this.selectionType == 'multiple') this.cleanInputSelection();
     }
-    if (this.selectionType == 'multiple' && this.checkedOptions?.length > 0) {
-      if(this.value == null) {
-        this.getTextMultiselect(this.checkedOptions);
-      } else {
-        this.getTextMultiselect(this.value);
-      }
-    }
-      
+    if (this.selectionType == 'multiple' && this.checkedOptions?.length > 0)
+      this.getTextMultiselect(this.checkedOptions);
   };
 
   private onClickWrapper = (): void => {
@@ -424,19 +395,19 @@ export class BdsAutocomplete {
   };
 
   private getText = (): string => {
+    if (this.selectionType == 'multiple') {
+      return this.getTextMultiselect(this.value);
+    } else {
       const opt = this.childOptions.find((option) => option.value == this.value);
-      return this.getTextFromOption(opt);
+    return this.getTextFromOption(opt);
+
+    }
+    
   };
 
   private getTextMultiselect = (data): any => {
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) {
-        data = data.split(',');
-      }
+    if(this.selectionType == 'multiple') {
     }
-    console.log('dataGetText:', data);
     const valueInput = data?.length > 0 && `${data?.length} selecionados`;
     this.textMultiselect = valueInput;
   };
@@ -522,6 +493,18 @@ export class BdsAutocomplete {
       this.isOpen = false;
       this.bdsCancel.emit({ value: '' });
       await this.resetFilterOptions();
+    }
+  };
+
+  @Method()
+  async cleanMultipleSelection() {
+    if (this.selectionType === 'multiple') {
+      this.checkedOptions = [];
+      this.nativeInput.value = '';
+      this.value = undefined;
+      this.resetFilterOptions();
+    } else {
+      this.cleanInputSelection();
     }
   };
 

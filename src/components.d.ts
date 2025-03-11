@@ -159,6 +159,7 @@ export namespace Components {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsAutocomplete {
+        "cleanMultipleSelection": () => Promise<void>;
         /**
           * If true, the X icon will appear only when component is focused.
          */
