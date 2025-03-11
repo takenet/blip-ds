@@ -1,4 +1,4 @@
-import { Component, h, Host, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, Host, State, Prop, EventEmitter, Event, Watch, Element, Listen, Method } from '@stencil/core';
 import {
   AutocompleteOption,
   AutocompleteChangeEventDetail,
@@ -485,6 +485,18 @@ export class BdsAutocomplete {
       this.isOpen = false;
       this.bdsCancel.emit({ value: '' });
       await this.resetFilterOptions();
+    }
+  };
+
+  @Method()
+  async cleanMultipleSelection() {
+    if (this.selectionType === 'multiple') {
+      this.checkedOptions = [];
+      this.nativeInput.value = '';
+      this.value = undefined;
+      this.resetFilterOptions();
+    } else {
+      this.cleanInputSelection();
     }
   };
 
