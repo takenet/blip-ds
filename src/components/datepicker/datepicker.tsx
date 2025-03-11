@@ -168,6 +168,10 @@ export class DatePicker {
    * bdsStartDate. Event to return selected end date value.
    */
   @Event() concludeDatepicker?: EventEmitter;
+    /**
+     * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
+     */
+    @Event() emptyConcludeDatepicker?: EventEmitter;
 
   componentWillLoad() {
     this.endDateLimitChanged();
@@ -415,6 +419,7 @@ export class DatePicker {
       } else {
         if (!this.valueDate && !this.valueEndDate) {
           this.open = false;
+          this.emptyConcludeDatepicker.emit();
         } else {
           this.open = true;
           this.errorMsgEndDate = messageTranslate(this.language, 'endDateIsEmpty');
