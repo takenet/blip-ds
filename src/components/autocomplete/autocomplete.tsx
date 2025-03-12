@@ -491,7 +491,12 @@ export class BdsAutocomplete {
   @Method()
   async cleanMultipleSelection() {
     if (this.selectionType === 'multiple') {
+      for (const option of this.childOptions) {
+        option.checked = false;
+        option.classList.remove('option-checked');
+      }
       this.checkedOptions = [];
+      this.checkAllInput.checked = false;
       this.nativeInput.value = '';
       this.value = undefined;
       this.resetFilterOptions();
