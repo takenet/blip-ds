@@ -116,6 +116,8 @@ const solidIconsName = [
 ];
 
 const outlineIconsName = [
+  'message-error',
+  'message-read',
   'checkbox',
   'toggle',
   'radiobutton',
