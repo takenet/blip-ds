@@ -57,28 +57,39 @@ Os seguintes métodos que são compartilhados por **Carousel**.
     <tr>
       <th>Método</th>
       <th>Descrição</th>
+      <th>Tipo</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>nextSlide</td>
       <td>Função para avançar um item no slide.</td>
+      <td>() =&gt; Promise&lt;void&gt;</td>
     </tr>
     <tr>
       <td>prevSlide</td>
       <td>Função para retroceder um item no slide.</td>
+      <td>() =&gt; Promise&lt;void&gt;</td>
     </tr>
     <tr>
       <td>setActivated</td>
       <td>Função para selecionar um item específico no slide. Passar o valor(number) para selecionar.</td>
+      <td>(item: number) =&gt; Promise&lt;void&gt;</td>
     </tr>
     <tr>
       <td>pauseAutoplay</td>
       <td>Função para pausar o autoplay caso propriedade de autoplay estiver verdadeira.</td>
+      <td>() =&gt; Promise&lt;void&gt;</td>
     </tr>
     <tr>
       <td>runAutoplay</td>
       <td>Função para rodar o autoplay caso propriedade de autoplay estiver verdadeira.</td>
+      <td>() =&gt; Promise&lt;void&gt;</td>
+    </tr>
+    <tr>
+      <td>buildCarousel</td>
+      <td>Função para reconstruir o carousel.</td>
+      <td>() =&gt; Promise&lt;void&gt;</td>
     </tr>
   </tbody>
 </table>
