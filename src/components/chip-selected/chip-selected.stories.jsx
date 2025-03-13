@@ -18,6 +18,7 @@ export const Properties = (args) => (
     selected={args.selected}
     disabled={args.disabled}
     size={args.size}
+    data-test={args.dataTest}
   >
     Chip-selected Default
   </bds-chip-selected>
@@ -28,7 +29,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'default' },
     },
-    description: 'Escolha a cor do chip clickable.',
+    description: 'Escolha a cor do chip selected.',
     options: ['default', 'danger', 'info', 'outline', 'success', 'warning'],
     control: 'select',
   },
@@ -57,9 +58,16 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'standard' },
     },
-    description: 'Escolha a cor do chip tag.',
+    description: 'Escolha o tamanho do chip.',
     options: ['standard', 'tall'],
     control: 'select',
+  },
+  dataTest: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Define o id para testes externos. (Sem alteração visual).',
+    control: 'text',
   },
 };
 
@@ -69,6 +77,7 @@ Properties.args = {
   selected: false,
   disabled: false,
   size: 'tall',
+  dataTest: '',
 };
 
 export const Events = () => {
@@ -86,7 +95,7 @@ export const Events = () => {
 };
 
 export const FrameworkReact = () => (
-  <BdsChipSelected color="default" icon="" avatar="" selected={false} close={false} disabled={false} size="tall">
+  <BdsChipSelected color="default" icon="" selected={false} disabled={false} size="tall">
     Chip-selected Default
   </BdsChipSelected>
 );
