@@ -53,6 +53,7 @@
  - [bds-skeleton](../skeleton)
  - [bds-tab-group](../tabs)
  - [bds-test-component](../test-component)
+ - [bds-upload](../upload)
 
 ### Graph
 ```mermaid
@@ -72,6 +73,7 @@ graph TD;
   bds-skeleton --> bds-grid
   bds-tab-group --> bds-grid
   bds-test-component --> bds-grid
+  bds-upload --> bds-grid
   style bds-grid fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
