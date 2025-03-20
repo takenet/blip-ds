@@ -490,7 +490,7 @@ export class BdsAutocomplete {
 
   @Method()
   async cleanMultipleSelection() {
-    if (this.selectionType === 'multiple') {
+    if (this.selectionType === 'multiple' && this.checkedOptions?.length > 0) {
       for (const option of this.childOptions) {
         option.checked = false;
         option.classList.remove('option-checked');
@@ -701,7 +701,7 @@ export class BdsAutocomplete {
                 {this.selectionTitle}
               </bds-typo>
             )}
-            {this.selectionType == 'multiple' && this.selectedAll && this.value == null && (
+            {this.selectionType == 'multiple' && this.selectedAll && (
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}
