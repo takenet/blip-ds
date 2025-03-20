@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './badge.mdx';
-import { BdsBadge } from '../../../blip-ds-react/dist/components';
+import { BdsBadge, BdsButton, BdsGrid } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'Components/Badge',
@@ -10,6 +10,7 @@ export default {
     },
   },
 };
+
 const mixBadge = {
   display: 'inline-flex',
   position: 'relative',
@@ -28,7 +29,7 @@ const badgeStatus = {
 };
 
 export const Properties = (args) => (
-  <bds-badge shape={args.shape} color={args.color} icon={args.icon} number={args.number ? args.number : null} animation={args.animation}></bds-badge>
+  <bds-badge shape={args.shape} color={args.color} icon={args.icon} icon-theme={args.iconTheme} number={args.number ? args.number : null} animation={args.animation}></bds-badge>
 );
 Properties.argTypes = {
   shape: {
@@ -45,6 +46,14 @@ Properties.argTypes = {
     },
     description: 'Define o ícone a ser exibido no badge.',
     control: 'text',
+  },
+  iconTheme: {
+    table: {
+      defaultValue: { summary: 'outline' },
+    },
+    description: 'Define o tema do ícone.',
+    options: ['outline', 'solid'],
+    control: 'select',
   },
   color: {
     table: {
@@ -65,7 +74,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
-    description: 'Define o número a ser exibido no badge.',
+    description: 'Define o número a ser exibido no badge. Funciona apenas se o formato for círculo.',
     control: 'number',
   },
 };
@@ -74,6 +83,7 @@ Properties.args = {
   shape: 'circle',
   color: 'system',
   icon: 'info',
+  iconTheme: 'outline',
   animation: false,
   number: null
 };
@@ -87,11 +97,11 @@ export const typeBadge = () => (
       </bds-grid>
       <bds-grid direction="column" align-items="center" gap="2">
         <bds-badge shape="circle" color="system" icon="info"></bds-badge>
-        <bds-typo bold="bold">Icon</bds-typo>
+        <bds-typo bold="bold">Ícone</bds-typo>
       </bds-grid>
       <bds-grid direction="column" align-items="center" gap="2">
         <bds-badge shape="circle" color="system" number={1234}></bds-badge>
-        <bds-typo bold="bold">Number</bds-typo>
+        <bds-typo bold="bold">Número</bds-typo>
       </bds-grid>
     </bds-grid>
   </bds-grid>
@@ -119,6 +129,67 @@ export const exampleBadge = () => (
     </bds-grid>
   </bds-grid>
 );
+
+export const Methods = () => {
+  useEffect(() => {
+    const badge = document.getElementById('badge');
+    badge.addEventListener('bdsChange', () => {
+      console.log('bdsChange event');
+    });
+  });
+
+  const changeColor = async () => {
+    const badge = document.getElementById('badge');
+    await badge.setColor('danger');
+  };
+
+  const changeIcon = async () => {
+    const badge = document.getElementById('badge');
+    await badge.setIcon('warning');
+  };
+
+  const changeIconTheme = async () => {
+    const badge = document.getElementById('badge');
+    await badge.setIconTheme('solid');
+  };
+
+  const changeNumber = async () => {
+    const badge = document.getElementById('badge');
+    await badge.setNumber(10);
+  };
+
+  const toggleAnimation = async () => {
+    const badge = document.getElementById('badge');
+    const currentAnimation = badge.animation;
+    await badge.setAnimation(!currentAnimation);
+  };
+
+  const changeType = async () => {
+    const badge = document.getElementById('badge');
+    await badge.setType('icon');
+  };
+
+  const changeShape = async () => {
+    const badge = document.getElementById('badge');
+    await badge.setShape('square');
+  };
+
+  return (
+    <BdsGrid direction='column' gap='4' alignItems='center'>
+      <BdsBadge id="badge" color="system" shape="circle" number="5"></BdsBadge>
+      <BdsGrid gap="4">
+        <BdsButton onClick={changeColor}>Mudar Cor</BdsButton>
+      <BdsButton onClick={changeIcon}>Mudar Ícone</BdsButton>
+      <BdsButton onClick={changeIconTheme}>Mudar Tema do Ícone</BdsButton>
+      <BdsButton onClick={changeNumber}>Mudar Número</BdsButton>
+      <BdsButton onClick={toggleAnimation}>Alternar Animação</BdsButton>
+      <BdsButton onClick={changeType}>Mudar Tipo</BdsButton>
+      <BdsButton onClick={changeShape}>Mudar Formato</BdsButton>
+      </BdsGrid>
+      
+    </BdsGrid>
+  );
+};
 
 export const FrameworkReact = () => (
   <BdsBadge animation={true} shape="circle" color="system" icon="info"></BdsBadge>

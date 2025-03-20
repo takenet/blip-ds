@@ -12,10 +12,10 @@ import { SelectionType } from "./components/autocomplete/autocomplete";
 import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
-import { Shape } from "./components/badge/badge";
+import { Color, IconTheme, Shape, Type } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { targets } from "./components/banner/banner-link/banner-link";
-import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
+import { ButtonSize, ButtonType, ButtonVariant, IconTheme as IconTheme1, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
 import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
@@ -36,8 +36,8 @@ import { languages } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
-import { Color } from "./components/grid/color-grid-interface";
-import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
+import { Color as Color1 } from "./components/grid/color-grid-interface";
+import { IconSize, IconTheme as IconTheme2, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
@@ -287,7 +287,7 @@ export namespace Components {
     }
     interface BdsBadge {
         /**
-          * If true, actived the pulse animation.
+          * If true, activates the pulse animation. This prop only works if the shape prop is set to 'circle'.
          */
         "animation"?: boolean;
         /**
@@ -303,9 +303,20 @@ export namespace Components {
          */
         "icon"?: string;
         /**
+          * Set the theme of the icon.
+         */
+        "iconTheme"?: IconTheme;
+        /**
           * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
          */
         "number"?: number;
+        "setAnimation": (newAnimation: boolean) => Promise<void>;
+        "setColor": (newColor: Color) => Promise<void>;
+        "setIcon": (newIcon: string) => Promise<void>;
+        "setIconTheme": (newIconTheme: IconTheme) => Promise<void>;
+        "setNumber": (newNumber: number) => Promise<void>;
+        "setShape": (newShape: Shape) => Promise<void>;
+        "setType": (newType: Type) => Promise<void>;
         /**
           * Set the shape of the component.
          */
@@ -1001,7 +1012,7 @@ export namespace Components {
     }
     interface BdsGrid {
         "alignItems"?: alignItems;
-        "bgColor"?: Color;
+        "bgColor"?: Color1;
         "container"?: boolean;
         "containerFluid"?: boolean;
         "direction"?: direction;
@@ -1064,7 +1075,7 @@ export namespace Components {
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
-        "theme": IconTheme1;
+        "theme": IconTheme2;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
@@ -4067,7 +4078,7 @@ declare namespace LocalJSX {
     }
     interface BdsBadge {
         /**
-          * If true, actived the pulse animation.
+          * If true, activates the pulse animation. This prop only works if the shape prop is set to 'circle'.
          */
         "animation"?: boolean;
         /**
@@ -4082,6 +4093,10 @@ declare namespace LocalJSX {
           * Set witch icon will be render inside the component.
          */
         "icon"?: string;
+        /**
+          * Set the theme of the icon.
+         */
+        "iconTheme"?: IconTheme;
         /**
           * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
          */
@@ -4830,7 +4845,7 @@ declare namespace LocalJSX {
     }
     interface BdsGrid {
         "alignItems"?: alignItems;
-        "bgColor"?: Color;
+        "bgColor"?: Color1;
         "container"?: boolean;
         "containerFluid"?: boolean;
         "direction"?: direction;
@@ -4893,7 +4908,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
-        "theme"?: IconTheme1;
+        "theme"?: IconTheme2;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */

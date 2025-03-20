@@ -1,6 +1,7 @@
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 
 export type Shape = 'circle' | 'triangle' | 'triangle-reverse' | 'polygon' | 'square';
+export type IconTheme = 'outline' | 'solid';
 
 export type Color = 'system' | 'danger' | 'warning' | 'success' | 'neutral';
 
@@ -29,11 +30,15 @@ export class Badge {
    */
   @Prop() icon?: string = null;
   /**
+   * Set the theme of the icon.
+   */
+  @Prop() iconTheme?: IconTheme = 'outline';
+  /**
    * Set the text in shape circle. Is just alow numbers, but if the number pass 999 a symbol '+' will be render.
    */
   @Prop() number?: number;
   /**
-   * If true, actived the pulse animation.
+   * If true, activates the pulse animation. This prop only works if the shape prop is set to 'circle'.
    */
   @Prop() animation?: boolean = false;
 
@@ -63,6 +68,43 @@ export class Badge {
     }
   }
 
+  @Method()
+  async setColor(newColor: Color) {
+    this.color = newColor;
+  }
+
+  @Method()
+  async setIcon(newIcon: string) {
+    this.icon = newIcon;
+    this.type = 'icon';
+  }
+
+  @Method()
+  async setIconTheme(newIconTheme: IconTheme) {
+    this.iconTheme = newIconTheme;
+  }
+
+  @Method()
+  async setNumber(newNumber: number) {
+    this.number = newNumber;
+    this.type = newNumber === 0 ? 'empty' : 'number';
+  }
+
+  @Method()
+  async setAnimation(newAnimation: boolean) {
+    this.animation = newAnimation;
+  }
+
+  @Method()
+  async setType(newType: Type) {
+    this.type = newType;
+  }
+
+  @Method()
+  async setShape(newShape: Shape) {
+    this.shape = newShape;
+  }
+
   render() {
     return (
       <Host>
@@ -88,7 +130,7 @@ export class Badge {
           {this.type === 'icon' && (
             <div class={{ icon: true, [`icon--${this.shape}`]: true }}>
               <div class={{ [`color--${this.color}`]: true, trim: true, [`trim-${this.animation}`]: true }}></div>
-              <bds-icon size="xxx-small" name={this.icon}></bds-icon>
+              <bds-icon size="xxx-small" name={this.icon} theme={this.iconTheme}></bds-icon>
             </div>
           )}
           {this.type === 'number' && (

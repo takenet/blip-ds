@@ -15,12 +15,50 @@ O Badge é um componente usado para fornecer informações sobre novas atualiza�
 
 <Meta isTemplate />
 
-<br></br>
-## Propriedades
-
-As seguintes propriedades são compartilhadas pelo **Badge**.
-
 <Controls />
+
+<br></br>
+
+## Métodos
+
+Os seguintes métodos são compartilhados pelo **Badge**.
+
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>setColor(newColor: Color)</code></td>
+      <td>Define a cor do badge.</td>
+    </tr>
+    <tr>
+      <td><code>setIcon(newIcon: string)</code></td>
+      <td>Define o ícone do badge.</td>
+    </tr>
+    <tr>
+      <td><code>setNumber(newNumber: number)</code></td>
+      <td>Define o número do badge.</td>
+    </tr>
+    <tr>
+      <td><code>setAnimation(newAnimation: boolean)</code></td>
+      <td>Ativa ou desativa a animação do badge.</td>
+    </tr>
+    <tr>
+      <td><code>setType(newType: Type)</code></td>
+      <td>Define o tipo do badge.</td>
+    </tr>
+    <tr>
+      <td><code>setShape(newShape: Shape)</code></td>
+      <td>Define o formato do badge.</td>
+    </tr>
+  </tbody>
+</table>
+
+<Source of={BadgeStories.Methods} />
 
 <br></br>
 ## Usando em React
