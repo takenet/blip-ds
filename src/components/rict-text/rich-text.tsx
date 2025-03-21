@@ -46,6 +46,7 @@ export class RichText {
   @State() styleOnHover?: string = 'teste';
   @State() whenSelectionLink?: Range = null;
   @State() linkButtonInput?: string = null;
+  @State() insideComponent?: boolean = false;
   /**
    * Set the language for fixed texts.
    */
@@ -219,9 +220,9 @@ export class RichText {
 
   @Watch('treeElementsEditor')
   protected treeElementsEditorChanged(value): void {
-    const tagList = value.map((element) => element.tagName.toLowerCase());
+    const tagList = value.map((element) => element?.tagName.toLowerCase());
     const tagVerifyName = (tag) => tagList.includes(tag);
-    const getLine = value.find((el) => el.classList.contains('line'));
+    const getLine = value.find((el) => el?.classList.contains('line'));
     this.buttomBoldActive = tagVerifyName('b');
     this.buttomItalicActive = tagVerifyName('i');
     this.buttomStrikeActive = tagVerifyName('strike');
@@ -256,6 +257,27 @@ export class RichText {
     this.inputSetLink = el;
   };
 
+  private clearToolbar = () => {
+    this.buttomBoldActive = false;
+    this.buttomItalicActive = false;
+    this.buttomStrikeActive = false;
+    this.buttomUnderlineActive = false;
+    this.buttomLinkActive = false;
+    this.buttomCodeActive = false;
+    this.buttomAlignLeftActive = false;
+    this.buttomAlignCenterActive = false;
+    this.buttomAlignRightActive = false;
+    this.buttomUnorderedListActive = false;
+    this.buttomOrderedListActive = false;
+    this.buttomQuoteActive = false;
+    this.buttomH1Active = false;
+    this.buttomH2Active = false;
+    this.buttomH3Active = false;
+    this.buttomH4Active = false;
+    this.buttomH5Active = false;
+    this.buttomH6Active = false;
+  };
+
   private setheaderHeight = () => {
     this.buttomAccordionActive = !this.buttomAccordionActive;
     const selection = window.getSelection();
@@ -268,6 +290,9 @@ export class RichText {
 
   private onBlur = () => {
     this.el.classList.remove('active');
+    if (this.insideComponent === false) {
+      this.clearToolbar();
+    }
     this.bdsBlur.emit();
   };
 
@@ -366,7 +391,7 @@ export class RichText {
   }
 
   private tagName(tag: string, tagList: HTMLElement[]): boolean {
-    const value = tagList.map((element) => element.tagName.toLowerCase());
+    const value = tagList.map((element) => element?.tagName.toLowerCase());
     return value.includes(tag);
   }
 
@@ -379,6 +404,7 @@ export class RichText {
 
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
+    if (!this.editor.contains(selection.anchorNode)) return;
 
     const range = selection.getRangeAt(0);
     const commonAncestor = range.commonAncestorContainer;
@@ -486,6 +512,7 @@ export class RichText {
   private wrapSelectionLine(tag: string, enableLinesReturn: boolean = false) {
     const selection = window.getSelection();
     if (!selection || selection.rangeCount === 0) return;
+    if (!this.editor.contains(selection.anchorNode)) return;
 
     const range = selection.getRangeAt(0);
     const startNode = range.startContainer as HTMLElement;
@@ -605,8 +632,11 @@ export class RichText {
       detail.preventDefault();
       detail.stopPropagation();
     }
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+    if (!this.editor.contains(selection.anchorNode)) return;
     this.wrapSelectionLine(type, true);
-    const firstItemList = this.selectedLinesList[0].element;
+    const firstItemList = this.selectedLinesList[0]?.element;
     const firstParent = firstItemList.parentElement.previousElementSibling;
     const lastParent = firstItemList.parentElement.nextElementSibling;
     const parent = firstItemList.parentElement;
@@ -633,10 +663,12 @@ export class RichText {
       detail.preventDefault();
       detail.stopPropagation();
     }
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+    if (!this.editor.contains(selection.anchorNode)) return;
     this.wrapSelectionLine('li', true);
-
     const firstItemList = this.selectedLinesList[0].element;
-    const lastItemList = this.selectedLinesList[this.selectedLinesList.length - 1].element;
+    const lastItemList = this.selectedLinesList[this.selectedLinesList.length - 1]?.element;
     const wrapper = document.createElement(type);
     const parent = firstItemList.parentElement;
 
@@ -822,6 +854,9 @@ export class RichText {
           [`rich-text-${this.positionBar}`]: true,
         }}
         style={{ height: this.height, maxHeight: this.maxHeight }}
+        tabindex="0"
+        onMouseEnter={() => (this.insideComponent = true)}
+        onMouseLeave={() => (this.insideComponent = false)}
       >
         <div class="preview">
           <div
