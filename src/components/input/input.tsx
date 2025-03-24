@@ -277,7 +277,7 @@ export class Input {
       ic = /"/g,
       amp = /&/g,
       slash = /\//g;
-
+if(!this.encode) return value;
     return (
       value &&
       value
