@@ -18,6 +18,7 @@ export const BdsAlertHeader = /*@__PURE__*/createReactComponent<JSX.BdsAlertHead
 export const BdsAutocomplete = /*@__PURE__*/createReactComponent<JSX.BdsAutocomplete, HTMLBdsAutocompleteElement>('bds-autocomplete');
 export const BdsAvatar = /*@__PURE__*/createReactComponent<JSX.BdsAvatar, HTMLBdsAvatarElement>('bds-avatar');
 export const BdsAvatarGroup = /*@__PURE__*/createReactComponent<JSX.BdsAvatarGroup, HTMLBdsAvatarGroupElement>('bds-avatar-group');
+export const BdsAvatarIcon = /*@__PURE__*/createReactComponent<JSX.BdsAvatarIcon, HTMLBdsAvatarIconElement>('bds-avatar-icon');
 export const BdsBadge = /*@__PURE__*/createReactComponent<JSX.BdsBadge, HTMLBdsBadgeElement>('bds-badge');
 export const BdsBanner = /*@__PURE__*/createReactComponent<JSX.BdsBanner, HTMLBdsBannerElement>('bds-banner');
 export const BdsBannerLink = /*@__PURE__*/createReactComponent<JSX.BdsBannerLink, HTMLBdsBannerLinkElement>('bds-banner-link');
