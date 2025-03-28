@@ -24,7 +24,7 @@ const paragraph =
 
 export const Properties = (args) => {
   return (
-    <bds-accordion-group collapse={args.collapse} divisor={args.divisor}>
+    <bds-accordion-group collapse={args.collapse} divisor={args.divisor} size={args.size} arrow-align={args.arrowAlign}>
       <bds-accordion start-open={args.startOpen}>
         <bds-accordion-header
           accordion-title="Titulo do accordion"
@@ -60,11 +60,29 @@ Properties.argTypes = {
     description: 'Escolha se o accordion terá um linha dividindo os accordions.',
     control: 'boolean',
   },
+  size: {
+    table: {
+      defaultValue: { summary: 'large' },
+    },
+    description: 'Defina o tamanho do cabeçalho do accordion.',
+    options: ['small', 'medium', 'large'],
+    control: { type: 'select' },
+  },
+  arrowAlign: {
+    table: {
+      defaultValue: { summary: 'right' },
+    },
+    description: 'Defina o alinhamento do ícone de seta.',
+    options: ['left', 'right'],
+    control: { type: 'select' },
+  },
 };
 
 Properties.args = {
   collapse: 'single',
   divisor: true,
+  size: 'large',
+  arrowAlign: 'right',
 };
 
 export const Methods = () => {
