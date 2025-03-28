@@ -167,6 +167,7 @@ export class Icon {
         {this.svgContent ? (
           <div
             class={{
+              [`color-${this.color}`]: !!this.color,
               'icon-inner': this.type === 'icon',
               'emoji-inner': this.type === 'emoji',
               'logo-inner': this.type === 'logo',

@@ -7,54 +7,69 @@
 
 ## Properties
 
-| Property     | Attribute     | Description                                                                                                  | Type                                                                                    | Default         |
-| ------------ | ------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- | --------------- |
-| `color`      | `color`       | Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.          | `"colorLetter" \| "error" \| "info" \| "success" \| "surface" \| "system" \| "warning"` | `'colorLetter'` |
-| `dataTest`   | `data-test`   | Data test is the prop to specifically test the component action object.                                      | `string`                                                                                | `null`          |
-| `ellipsis`   | `ellipsis`    | Ellipses, serves to indicate the user number in the listing.                                                 | `number`                                                                                | `null`          |
-| `name`       | `name`        | Name, Inserted for highlighted osuary name. Enter the full name.                                             | `string`                                                                                | `null`          |
-| `openUpload` | `open-upload` | When set to true, allows the avatar to be clicked to select and upload an image.                             | `boolean`                                                                               | `false`         |
-| `size`       | `size`        | Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'. | `"extra-large" \| "extra-small" \| "large" \| "micro" \| "small" \| "standard"`         | `'standard'`    |
-| `thumbnail`  | `thumbnail`   | Thumbnail, Inserted to highlight user image. Url field.                                                      | `string`                                                                                | `null`          |
-| `upload`     | `upload`      | Upload, Serve to enable upload function on avatar.                                                           | `boolean`                                                                               | `false`         |
+| Property   | Attribute   | Description                           | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Default     |
+| ---------- | ----------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `color`    | `color`     | The color of the icon.                | `"system" \| "error" \| "warning" \| "delete" \| "brand" \| "success" \| "focus" \| "info" \| "positive" \| "negative" \| "primary" \| "secondary" \| "surface-0" \| "surface-1" \| "surface-2" \| "surface-3" \| "surface-4" \| "surface-positive" \| "surface-negative" \| "surface-primary" \| "content-default" \| "content-disable" \| "content-ghost" \| "content-bright" \| "content-din" \| "extended-blue" \| "extended-blue-bright" \| "extended-ocean" \| "extended-ocean-bright" \| "extended-green" \| "extended-green-bright" \| "extended-yellow" \| "extended-yellow-bright" \| "extended-orange" \| "extended-orange-bright" \| "extended-red" \| "extended-red-bright" \| "extended-pink" \| "extended-pink-bright" \| "extended-gray" \| "extended-gray-bright"` | `null`      |
+| `iconName` | `icon-name` | The name of the icon to be displayed. | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `undefined` |
+| `size`     | `size`      | The size of the icon.                 | `"brand" \| "large" \| "medium" \| "small" \| "x-large" \| "x-small" \| "xx-large" \| "xx-small" \| "xxx-large" \| "xxx-small"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `'medium'`  |
+| `theme`    | `theme`     | The theme of the icon.                | `"outline" \| "solid"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `'outline'` |
+| `type`     | `type`      | The type of the icon.                 | `"emoji" \| "icon" \| "logo"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `'icon'`    |
 
 
-## Events
+## Methods
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `bdsClickAvatar` |             | `CustomEvent<any>` |
-| `bdsImageUpload` |             | `CustomEvent<any>` |
+### `setColor(color: BgColor) => Promise<void>`
+
+Method to update the icon color.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setIconName(name: string) => Promise<void>`
+
+Method to update the icon name.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setSize(size: IconSize) => Promise<void>`
+
+Method to update the icon size.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setTheme(theme: IconTheme) => Promise<void>`
+
+Method to update the icon theme.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies
 
-### Used by
-
- - [bds-accordion-header](../accordion)
- - [bds-avatar-group](../avatar-group)
- - [bds-chip-clickable](../chip-clickable)
- - [bds-data-table](../table)
- - [bds-list-item](../list)
- - [bds-menu-exibition](../menu/menu-exibition)
-
 ### Depends on
 
-- [bds-typo](../typo)
 - [bds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-avatar --> bds-typo
-  bds-avatar --> bds-icon
-  bds-accordion-header --> bds-avatar
-  bds-avatar-group --> bds-avatar
-  bds-chip-clickable --> bds-avatar
-  bds-data-table --> bds-avatar
-  bds-list-item --> bds-avatar
-  bds-menu-exibition --> bds-avatar
-  style bds-avatar fill:#f9f,stroke:#333,stroke-width:4px
+  bds-avatar-icon --> bds-icon
+  style bds-avatar-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
