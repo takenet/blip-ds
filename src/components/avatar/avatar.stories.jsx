@@ -24,7 +24,7 @@ export const Properties = (args) => {
       upload={args.upload}
     >
       {args.type === 'icon' && (
-        <bds-avatar-icon name={args.iconName} theme={args.theme} color={args.color}></bds-avatar-icon>
+        <bds-avatar-icon icon-name={args.iconName} theme={args.theme} color={args.color}></bds-avatar-icon>
       )}
     </bds-avatar>
   );
@@ -264,9 +264,9 @@ export const Events = () => {
       console.log('Evento Click funcionando');
     });
   });
-  return <bds-avatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload="true"></bds-avatar>;
+  return <BdsAvatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload={true}></BdsAvatar>;
 };
 
 export const FrameworkReact = () => (
-  <BdsAvatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload="true"></BdsAvatar>
+  <BdsAvatar id="avatar" name="Michael Scott" thumbnail="" size="standard" upload={true}></BdsAvatar>
 );
