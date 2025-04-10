@@ -1,4 +1,4 @@
-import { Component, h, Host, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, Host, State, Prop, EventEmitter, Event, Watch, Element, Listen, Method } from '@stencil/core';
 import {
   AutocompleteOption,
   AutocompleteChangeEventDetail,
@@ -488,6 +488,23 @@ export class BdsAutocomplete {
     }
   };
 
+  @Method()
+  async cleanMultipleSelection() {
+    if (this.selectionType === 'multiple' && this.checkedOptions?.length > 0) {
+      for (const option of this.childOptions) {
+        option.checked = false;
+        option.classList.remove('option-checked');
+      }
+      this.checkedOptions = [];
+      this.checkAllInput.checked = false;
+      this.nativeInput.value = '';
+      this.value = undefined;
+      this.resetFilterOptions();
+    } else {
+      this.cleanInputSelection();
+    }
+  };
+
   private changedInputValue = async (ev: Event) => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
@@ -684,7 +701,7 @@ export class BdsAutocomplete {
                 {this.selectionTitle}
               </bds-typo>
             )}
-            {this.selectionType == 'multiple' && this.selectedAll && this.value == null && (
+            {this.selectionType == 'multiple' && this.selectedAll && (
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}

@@ -111,6 +111,7 @@ $checkbox-spacing-text: 8px;
     justify-content: center;
     height: $checkbox-size;
     width: $checkbox-size;
+    min-width: 18px;
     border-radius: $checkbox-icon-radius;
     color: $color-surface-1;
     border: 1px solid $color-content-default;

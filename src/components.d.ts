@@ -170,6 +170,7 @@ export namespace Components {
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsAutocomplete {
+        "cleanMultipleSelection": () => Promise<void>;
         /**
           * If true, the X icon will appear only when component is focused.
          */
@@ -4778,6 +4779,10 @@ declare namespace LocalJSX {
           * bdsStartDate. Event to return selected end date value.
          */
         "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        /**
+          * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
+         */
+        "onEmptyConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
           * Used to set drop position
          */

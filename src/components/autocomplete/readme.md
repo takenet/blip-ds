@@ -44,6 +44,19 @@
 | `bdsSelectedChange`      | Emitted when the selected value has changed. | `CustomEvent<AutocompleteSelectedChangeEventDetail>`      |
 
 
+## Methods
+
+### `cleanMultipleSelection() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Shadow Parts
 
 | Part               | Description |
