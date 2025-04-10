@@ -124,7 +124,7 @@
 
   &__scrolled {
     flex-shrink: 999;
-    overflow: auto;
+    overflow: none;
 
     @include custom-scroll;
   }
