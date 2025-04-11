@@ -13,7 +13,7 @@
   position: relative;
 
   &__header {
-    padding: 4px 16px;
+    padding: 4px 16px 0px 16px;
     overflow: hidden;
 
     &__itens {
@@ -45,7 +45,7 @@
         width: auto;
         display: flex;
         align-items: center;
-        border-bottom: 2px solid transparent;
+        border-bottom: 4px solid transparent;
         position: relative;
 
         &__typo{
@@ -59,7 +59,7 @@
           content: '';
           position: absolute;
           inset: -4px;
-          border: 2px solid transparent;
+          border: 4px solid transparent;
           border-radius: 4px;
         }
 
