@@ -90,6 +90,7 @@ const defaults = [
   'stilingue-4',
   'solicitation',
   'solutions-agent',
+  'sparkle-ai',
   'surprise',
   'talking',
   'tangram',
@@ -354,17 +355,22 @@ const brand = [
 ];
 
 const emptyStates = [
+  'adjuts',
   'agent-1',
   'agent-2',
   'box',
   'clock',
   'column-chart',
+  'folder-variable',
   'glad',
   'letter-search-question',
   'robot',
   'robot-1',
+  'sparkles-ai',
+  'task',
   'broken-image',
   'image-not-found',
+  'integration',
 ];
 
 const logoIntegration = ['blip-instagram', 'blip-messenger', 'blip-whatsapp'];
