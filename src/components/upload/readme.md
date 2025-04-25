@@ -58,19 +58,24 @@ Type: `Promise<void>`
 
 - [bds-icon](../icon)
 - [bds-typo](../typo)
+- [bds-grid](../grid)
 - [bds-banner](../banner)
-- [bds-button-icon](../icon-button)
+- [bds-button](../button)
 
 ### Graph
 ```mermaid
 graph TD;
   bds-upload --> bds-icon
   bds-upload --> bds-typo
+  bds-upload --> bds-grid
   bds-upload --> bds-banner
-  bds-upload --> bds-button-icon
+  bds-upload --> bds-button
   bds-banner --> bds-icon
   bds-banner --> bds-button-icon
   bds-button-icon --> bds-icon
+  bds-button --> bds-loading-spinner
+  bds-button --> bds-icon
+  bds-button --> bds-typo
   style bds-upload fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
