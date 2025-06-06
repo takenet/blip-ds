@@ -379,7 +379,7 @@ $input-width: 100%;
   }
 
   // When both resizable and auto-grow are enabled, prioritize auto-grow
-  &--auto-grow&--resizable {
+  &--auto-grow.input__container__text--resizable {
     resize: none;
   }
 }
