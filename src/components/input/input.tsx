@@ -9,7 +9,7 @@ import { emailValidation, numberValidation } from '../../utils/validations';
   shadow: true,
 })
 export class Input {
-  private nativeInput?: HTMLInputElement;
+  private nativeInput?: HTMLInputElement | HTMLTextAreaElement;
 
   @State() isPressed? = false;
   @State() isPassword? = false;
@@ -262,7 +262,7 @@ export class Input {
    * Retorna o elemento de input do componente.
    */
   @Method()
-  async getInputElement(): Promise<HTMLInputElement> {
+  async getInputElement(): Promise<HTMLInputElement | HTMLTextAreaElement> {
     return this.nativeInput;
   }
 
@@ -315,9 +315,10 @@ if(!this.encode) return value;
     this.bdsChange.emit({ value: changeValue });
     
     // Trigger auto-grow when value changes programmatically
-    if (this.isTextarea && this.autoGrow && this.nativeInput) {
+    if (this.isTextarea && this.autoGrow && this.nativeInput && this.isTextareaElement(this.nativeInput)) {
+      const textareaElement = this.nativeInput;
       requestAnimationFrame(() => {
-        this.adjustTextareaHeight(this.nativeInput as HTMLTextAreaElement);
+        this.adjustTextareaHeight(textareaElement);
       });
     }
   }
@@ -346,14 +347,14 @@ if(!this.encode) return value;
    */
   private onInput = (ev: Event): void => {
     this.onBdsInputValidations();
-    const input = ev.target as HTMLInputElement | null;
+    const input = ev.target as HTMLInputElement | HTMLTextAreaElement | null;
     if (input) {
       this.value = input.value || '';
     }
     
     // Auto-grow para textarea
-    if (this.isTextarea && this.autoGrow && input) {
-      this.adjustTextareaHeight(input as HTMLTextAreaElement);
+    if (this.isTextarea && this.autoGrow && input && this.isTextareaElement(input)) {
+      this.adjustTextareaHeight(input);
     }
     
     this.bdsInput.emit(ev as KeyboardEvent);
@@ -401,6 +402,13 @@ if(!this.encode) return value;
     const numValue = parseInt(height, 10);
     return isNaN(numValue) ? null : numValue;
   };
+
+  /**
+   * Type guard to check if nativeInput is a HTMLTextAreaElement
+   */
+  private isTextareaElement(element: HTMLInputElement | HTMLTextAreaElement): element is HTMLTextAreaElement {
+    return element.tagName.toLowerCase() === 'textarea';
+  }
 
   /**
    * Função chamada ao perder o foco do campo de entrada.
@@ -628,9 +636,10 @@ if(!this.encode) return value;
       this.nativeInput.value = this.value;
       
       // Trigger auto-grow after value update
-      if (this.isTextarea && this.autoGrow) {
+      if (this.isTextarea && this.autoGrow && this.nativeInput && this.isTextareaElement(this.nativeInput)) {
+        const textareaElement = this.nativeInput;
         requestAnimationFrame(() => {
-          this.adjustTextareaHeight(this.nativeInput as HTMLTextAreaElement);
+          this.adjustTextareaHeight(textareaElement);
         });
       }
     }
@@ -640,8 +649,8 @@ if(!this.encode) return value;
    * Inicializa funcionalidades após o componente ser carregado.
    */
   componentDidLoad() {
-    if (this.isTextarea && this.autoGrow && this.nativeInput) {
-      this.adjustTextareaHeight(this.nativeInput as HTMLTextAreaElement);
+    if (this.isTextarea && this.autoGrow && this.nativeInput && this.isTextareaElement(this.nativeInput)) {
+      this.adjustTextareaHeight(this.nativeInput);
     }
   }
 
