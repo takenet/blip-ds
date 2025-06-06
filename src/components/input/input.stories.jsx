@@ -36,6 +36,9 @@ export const Properties = (args) => {
       readonly={args.readonly}
       is-textarea={args.istextarea}
       rows={args.rows}
+      resizable={args.resizable}
+      auto-grow={args.autoGrow}
+      max-height={args.maxHeight}
       counter-length={args.counterlength}
       encode={args.encode}
     ></bds-input>
@@ -61,6 +64,9 @@ Properties.args = {
   readonly: false,
   istextarea: false,
   rows: '',
+  resizable: false,
+  autoGrow: false,
+  maxHeight: '',
   counterlength: false,
   encode: false,
 };
@@ -187,6 +193,27 @@ Properties.argTypes = {
     control: 'boolean',
   },
   rows: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    
+    control: 'text',
+  },
+  resizable: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
+  },
+  autoGrow: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    
+    control: 'boolean',
+  },
+  maxHeight: {
     table: {
       defaultValue: { summary: 'vazio' },
     },

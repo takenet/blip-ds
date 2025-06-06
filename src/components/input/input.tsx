@@ -151,6 +151,21 @@ export class Input {
   @Prop() cols?: number = 0;
 
   /**
+   * Define se a área de texto pode ser redimensionada manualmente (apenas para `textarea`).
+   */
+  @Prop() resizable = false;
+
+  /**
+   * Define se a altura da área de texto deve crescer automaticamente conforme o conteúdo (apenas para `textarea`).
+   */
+  @Prop() autoGrow = false;
+
+  /**
+   * Define a altura máxima da área de texto (apenas para `textarea`). Ex: '300px', '10em'.
+   */
+  @Prop() maxHeight?: string;
+
+  /**
    * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
    */
   @Prop() requiredErrorMessage: string;
@@ -328,7 +343,56 @@ if(!this.encode) return value;
     if (input) {
       this.value = input.value || '';
     }
+    
+    // Auto-grow para textarea
+    if (this.isTextarea && this.autoGrow && input) {
+      this.adjustTextareaHeight(input as HTMLTextAreaElement);
+    }
+    
     this.bdsInput.emit(ev as KeyboardEvent);
+  };
+
+  /**
+   * Ajusta a altura da textarea automaticamente baseado no conteúdo.
+   */
+  private adjustTextareaHeight = (textarea: HTMLTextAreaElement): void => {
+    if (!this.autoGrow || !this.isTextarea) return;
+    
+    // Reset height to calculate the correct scrollHeight
+    textarea.style.height = 'auto';
+    
+    // Calculate new height based on scrollHeight
+    let newHeight = textarea.scrollHeight;
+    
+    // Apply max height limit if defined
+    if (this.maxHeight) {
+      const maxHeightValue = this.parseHeightValue(this.maxHeight);
+      if (maxHeightValue && newHeight > maxHeightValue) {
+        newHeight = maxHeightValue;
+        textarea.style.overflowY = 'auto';
+      } else {
+        textarea.style.overflowY = 'hidden';
+      }
+    }
+    
+    textarea.style.height = `${newHeight}px`;
+  };
+
+  /**
+   * Converte valores de altura para pixels.
+   */
+  private parseHeightValue = (height: string): number | null => {
+    if (height.endsWith('px')) {
+      return parseInt(height.replace('px', ''), 10);
+    }
+    if (height.endsWith('em')) {
+      const em = parseFloat(height.replace('em', ''));
+      const fontSize = parseFloat(getComputedStyle(document.body).fontSize || '16');
+      return em * fontSize;
+    }
+    // Try to parse as a number (assume pixels)
+    const numValue = parseInt(height, 10);
+    return isNaN(numValue) ? null : numValue;
   };
 
   /**
@@ -558,6 +622,15 @@ if(!this.encode) return value;
     }
   }
 
+  /**
+   * Inicializa funcionalidades após o componente ser carregado.
+   */
+  componentDidLoad() {
+    if (this.isTextarea && this.autoGrow && this.nativeInput) {
+      this.adjustTextareaHeight(this.nativeInput as HTMLTextAreaElement);
+    }
+  }
+
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const Element = this.isTextarea ? 'textarea' : 'input';
@@ -585,7 +658,12 @@ if(!this.encode) return value;
             <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
               <slot name="inside-input-left"></slot>
               <Element
-                class={{ input__container__text: true, input__container__text__chips: this.chips }}
+                class={{ 
+                  input__container__text: true, 
+                  input__container__text__chips: this.chips,
+                  'input__container__text--resizable': this.isTextarea && this.resizable,
+                  'input__container__text--auto-grow': this.isTextarea && this.autoGrow
+                }}
                 ref={(input) => (this.nativeInput = input)}
                 rows={this.rows}
                 cols={this.cols}
@@ -608,6 +686,7 @@ if(!this.encode) return value;
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
+                style={this.isTextarea && this.maxHeight ? { maxHeight: this.maxHeight } : {}}
               ></Element>
             </div>
           </div>
