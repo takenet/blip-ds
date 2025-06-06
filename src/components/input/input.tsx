@@ -313,6 +313,13 @@ if(!this.encode) return value;
   protected valueChanged(newValue: string | null): void {
     const changeValue = this.encode ? this.encodeValue(newValue || '') : newValue || '';
     this.bdsChange.emit({ value: changeValue });
+    
+    // Trigger auto-grow when value changes programmatically
+    if (this.isTextarea && this.autoGrow && this.nativeInput) {
+      requestAnimationFrame(() => {
+        this.adjustTextareaHeight(this.nativeInput as HTMLTextAreaElement);
+      });
+    }
   }
 
   /**
@@ -619,6 +626,13 @@ if(!this.encode) return value;
   componentDidUpdate() {
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
+      
+      // Trigger auto-grow after value update
+      if (this.isTextarea && this.autoGrow) {
+        requestAnimationFrame(() => {
+          this.adjustTextareaHeight(this.nativeInput as HTMLTextAreaElement);
+        });
+      }
     }
   }
 
@@ -686,7 +700,7 @@ if(!this.encode) return value;
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
-                style={this.isTextarea && this.maxHeight ? { maxHeight: this.maxHeight } : {}}
+                style={this.isTextarea && this.maxHeight && this.autoGrow ? { maxHeight: this.maxHeight } : {}}
               ></Element>
             </div>
           </div>
