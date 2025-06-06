@@ -270,6 +270,24 @@ $input-width: 100%;
           pointer-events: none;
         }
       }
+
+      // Enable manual resize for textarea
+      &--resizable {
+        resize: vertical;
+        min-height: 38px; // Minimum height equivalent to ~2 lines
+      }
+
+      // Auto-grow behavior
+      &--auto-grow {
+        overflow-y: hidden;
+        transition: height 0.2s ease;
+        resize: none; // Disable manual resize when auto-grow is enabled
+      }
+
+      // When both resizable and auto-grow are enabled, prioritize auto-grow
+      &--auto-grow.input__container__text--resizable {
+        resize: none;
+      }
     }
   }
 
@@ -345,5 +363,23 @@ $input-width: 100%;
     width: auto;
     min-width: 216px;
     max-width: 216px;
+  }
+
+  // Enable manual resize for textarea
+  &--resizable {
+    resize: vertical;
+    min-height: 38px; // Minimum height equivalent to ~2 lines
+  }
+
+  // Auto-grow behavior
+  &--auto-grow {
+    overflow-y: hidden;
+    transition: height 0.2s ease;
+    resize: none; // Disable manual resize when auto-grow is enabled
+  }
+
+  // When both resizable and auto-grow are enabled, prioritize auto-grow
+  &--auto-grow&--resizable {
+    resize: none;
   }
 }
