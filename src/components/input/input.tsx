@@ -9,7 +9,7 @@ import { emailValidation, numberValidation } from '../../utils/validations';
   shadow: true,
 })
 export class Input {
-  private nativeInput?: HTMLInputElement;
+  private nativeInput?: HTMLInputElement | HTMLTextAreaElement;
 
   @State() isPressed? = false;
   @State() isPassword? = false;
@@ -151,6 +151,21 @@ export class Input {
   @Prop() cols?: number = 0;
 
   /**
+   * Define se a área de texto pode ser redimensionada manualmente (apenas para `textarea`).
+   */
+  @Prop() resizable = false;
+
+  /**
+   * Define se a altura da área de texto deve crescer automaticamente conforme o conteúdo (apenas para `textarea`).
+   */
+  @Prop() autoGrow = false;
+
+  /**
+   * Define a altura máxima da área de texto (apenas para `textarea`). Ex: '300px', '10em'.
+   */
+  @Prop() maxHeight?: string;
+
+  /**
    * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
    */
   @Prop() requiredErrorMessage: string;
@@ -247,7 +262,7 @@ export class Input {
    * Retorna o elemento de input do componente.
    */
   @Method()
-  async getInputElement(): Promise<HTMLInputElement> {
+  async getInputElement(): Promise<HTMLInputElement | HTMLTextAreaElement> {
     return this.nativeInput;
   }
 
@@ -298,6 +313,14 @@ if(!this.encode) return value;
   protected valueChanged(newValue: string | null): void {
     const changeValue = this.encode ? this.encodeValue(newValue || '') : newValue || '';
     this.bdsChange.emit({ value: changeValue });
+    
+    // Trigger auto-grow when value changes programmatically
+    if (this.isTextarea && this.autoGrow && this.nativeInput && this.isTextareaElement(this.nativeInput)) {
+      const textareaElement = this.nativeInput;
+      requestAnimationFrame(() => {
+        this.adjustTextareaHeight(textareaElement);
+      });
+    }
   }
 
   /**
@@ -324,12 +347,68 @@ if(!this.encode) return value;
    */
   private onInput = (ev: Event): void => {
     this.onBdsInputValidations();
-    const input = ev.target as HTMLInputElement | null;
+    const input = ev.target as HTMLInputElement | HTMLTextAreaElement | null;
     if (input) {
       this.value = input.value || '';
     }
+    
+    // Auto-grow para textarea
+    if (this.isTextarea && this.autoGrow && input && this.isTextareaElement(input)) {
+      this.adjustTextareaHeight(input);
+    }
+    
     this.bdsInput.emit(ev as KeyboardEvent);
   };
+
+  /**
+   * Ajusta a altura da textarea automaticamente baseado no conteúdo.
+   */
+  private adjustTextareaHeight = (textarea: HTMLTextAreaElement): void => {
+    if (!this.autoGrow || !this.isTextarea) return;
+    
+    // Reset height to calculate the correct scrollHeight
+    textarea.style.height = 'auto';
+    
+    // Calculate new height based on scrollHeight
+    let newHeight = textarea.scrollHeight;
+    
+    // Apply max height limit if defined
+    if (this.maxHeight) {
+      const maxHeightValue = this.parseHeightValue(this.maxHeight);
+      if (maxHeightValue && newHeight > maxHeightValue) {
+        newHeight = maxHeightValue;
+        textarea.style.overflowY = 'auto';
+      } else {
+        textarea.style.overflowY = 'hidden';
+      }
+    }
+    
+    textarea.style.height = `${newHeight}px`;
+  };
+
+  /**
+   * Converte valores de altura para pixels.
+   */
+  private parseHeightValue = (height: string): number | null => {
+    if (height.endsWith('px')) {
+      return parseInt(height.replace('px', ''), 10);
+    }
+    if (height.endsWith('em')) {
+      const em = parseFloat(height.replace('em', ''));
+      const fontSize = parseFloat(getComputedStyle(document.body).fontSize || '16');
+      return em * fontSize;
+    }
+    // Try to parse as a number (assume pixels)
+    const numValue = parseInt(height, 10);
+    return isNaN(numValue) ? null : numValue;
+  };
+
+  /**
+   * Type guard to check if nativeInput is a HTMLTextAreaElement
+   */
+  private isTextareaElement(element: HTMLInputElement | HTMLTextAreaElement): element is HTMLTextAreaElement {
+    return element.tagName.toLowerCase() === 'textarea';
+  }
 
   /**
    * Função chamada ao perder o foco do campo de entrada.
@@ -555,6 +634,23 @@ if(!this.encode) return value;
   componentDidUpdate() {
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
+      
+      // Trigger auto-grow after value update
+      if (this.isTextarea && this.autoGrow && this.nativeInput && this.isTextareaElement(this.nativeInput)) {
+        const textareaElement = this.nativeInput;
+        requestAnimationFrame(() => {
+          this.adjustTextareaHeight(textareaElement);
+        });
+      }
+    }
+  }
+
+  /**
+   * Inicializa funcionalidades após o componente ser carregado.
+   */
+  componentDidLoad() {
+    if (this.isTextarea && this.autoGrow && this.nativeInput && this.isTextareaElement(this.nativeInput)) {
+      this.adjustTextareaHeight(this.nativeInput);
     }
   }
 
@@ -585,7 +681,12 @@ if(!this.encode) return value;
             <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
               <slot name="inside-input-left"></slot>
               <Element
-                class={{ input__container__text: true, input__container__text__chips: this.chips }}
+                class={{ 
+                  input__container__text: true, 
+                  input__container__text__chips: this.chips,
+                  'input__container__text--resizable': this.isTextarea && this.resizable,
+                  'input__container__text--auto-grow': this.isTextarea && this.autoGrow
+                }}
                 ref={(input) => (this.nativeInput = input)}
                 rows={this.rows}
                 cols={this.cols}
@@ -608,6 +709,7 @@ if(!this.encode) return value;
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
+                style={this.isTextarea && this.maxHeight && this.autoGrow ? { maxHeight: this.maxHeight } : {}}
               ></Element>
             </div>
           </div>
