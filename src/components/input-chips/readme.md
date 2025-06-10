@@ -14,7 +14,7 @@
 | `counterLength`  | `counter-length`   | Passing true to display a counter of available size, it is necessary to pass another maxlength property.                | `boolean`            | `false`     |
 | `danger`         | `danger`           | Add state danger on input, use for use feedback.                                                                        | `boolean`            | `false`     |
 | `dataTest`       | `data-test`        | Data test is the prop to specifically test the component action object.                                                 | `string`             | `null`      |
-| `delimiters`     | --                 | The delimiter is used to add multiple chips in the same string.                                                         | `RegExp`             | `/,\|;/`    |
+| `delimiters`     | `delimiters`       | The delimiter is used to add multiple chips in the same string.                                                         | `RegExp`             | `/,\|;/`    |
 | `disableSubmit`  | `disable-submit`   | If `true`, the user cannot modify the value.                                                                            | `boolean`            | `false`     |
 | `disabled`       | `disabled`         | Disabled input                                                                                                          | `boolean`            | `false`     |
 | `dtButtonClose`  | `dt-button-close`  | Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close. | `string`             | `null`      |
@@ -53,6 +53,12 @@
 ### `add(value: string) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `value` | `string` |             |
 
 #### Returns
 

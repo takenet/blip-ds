@@ -6,8 +6,8 @@ export const config: Config = {
   namespace: 'blip-ds',
   plugins: [
     sass({
-      includePaths: ['src/globals'],
-      injectGlobalPaths: ['src/globals/app.scss', 'node_modules/blip-tokens/build/scss/variables.scss'],
+      includePaths: ['src/globals', 'node_modules'],
+      injectGlobalPaths: ['src/globals/app.scss'],
     }),
   ],
   outputTargets: [
@@ -18,6 +18,10 @@ export const config: Config = {
         { src: 'globals', dest: 'styles' },
         { src: '../blip-ds-react/dist', dest: '../blip-ds-react' },
       ],
+    },
+    {
+      type: 'dist-custom-elements',
+      externalRuntime: false,
     },
     {
       type: 'docs-readme',
@@ -36,13 +40,13 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '../../loader',
       proxiesFile: './blip-ds-react/src/components.ts',
+      outDir: './blip-ds-react/src',
     }),
   ],
   buildEs5: 'prod',
   extras: {
     appendChildSlotFix: true,
     cssVarsShim: true,
-    dynamicImportShim: true,
     shadowDomShim: true,
     safari10: true,
     scriptDataOpts: true,
