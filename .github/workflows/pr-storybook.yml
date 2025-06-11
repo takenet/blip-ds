@@ -9,14 +9,14 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: "pr-preview-${{ github.event.pull_request.number }}"
+  group: 'pr-preview-${{ github.event.pull_request.number }}'
   cancel-in-progress: true
 
 jobs:
   deploy-storybook-preview:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,9 +45,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
           destination_dir: pr-previews/pr-${{ github.event.pull_request.number }}
-          keep_files: true
-          # This ensures we don't overwrite the main storybook deployment
-          exclude_assets: '.github,README.md'
 
       - name: Comment PR with preview link
         uses: actions/github-script@v7
@@ -55,28 +52,28 @@ jobs:
           script: |
             const prNumber = context.payload.pull_request.number;
             const previewUrl = `https://${{ github.repository_owner }}.github.io/blip-ds/pr-previews/pr-${prNumber}`;
-            
+
             const comment = `## 📖 Storybook Preview
-            
+
             Your Storybook preview is ready! 🎉
-            
+
             **🔗 Preview URL:** ${previewUrl}
-            
+
             This preview will be updated automatically when you push new commits to this PR.
-            
+
             > **Note:** This is a temporary preview that will be removed when the PR is closed.`;
-            
+
             // Check if we already commented
             const comments = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: prNumber,
             });
-            
+
             const existingComment = comments.data.find(comment => 
               comment.body.includes('📖 Storybook Preview')
             );
-            
+
             if (existingComment) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
@@ -96,7 +93,7 @@ jobs:
   cleanup-storybook-preview:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout gh-pages
         uses: actions/checkout@v4
@@ -120,11 +117,11 @@ jobs:
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            
+
             const comment = `## 📖 Storybook Preview - Cleaned Up
-            
+
             The Storybook preview for this PR has been removed as the PR was closed. ✨`;
-            
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
