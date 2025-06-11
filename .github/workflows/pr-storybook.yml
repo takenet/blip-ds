@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy-storybook-pr:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     environment:
@@ -126,7 +126,7 @@ jobs:
               });
             }
 
-  cleanup:
+  destroy-storybook-pr:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
     
