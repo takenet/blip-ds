@@ -37,6 +37,8 @@ jobs:
 
       - name: Deploy Storybook to Root (preserving previews)
         uses: JamesIves/github-pages-deploy-action@v4
+        env:
+          CI: true
         with:
           folder: ./storybook-static
           clean: true

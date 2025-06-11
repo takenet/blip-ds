@@ -46,5 +46,7 @@ jobs:
 
       - name: Deploy PR Preview (separate from main)
         uses: rossjrw/pr-preview-action@v1
+        env:
+          CI: true
         with:
           source-dir: ./storybook-static
