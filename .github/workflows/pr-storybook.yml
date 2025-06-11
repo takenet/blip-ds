@@ -16,6 +16,7 @@ jobs:
   deploy-storybook-preview:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
+    environment: github-pages
 
     steps:
       - name: Checkout
@@ -37,7 +38,7 @@ jobs:
         run: |
           npm run storybook:build
         env:
-          STORYBOOK_BASE_PATH: /blip-ds/pr-${{ github.event.pull_request.number }}
+          STORYBOOK_BASE_PATH: /blip-ds/pr-previews/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy PR Preview (separate from main)
         uses: peaceiris/actions-gh-pages@v4
@@ -93,6 +94,7 @@ jobs:
   cleanup-storybook-preview:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
+    environment: github-pages
 
     steps:
       - name: Checkout gh-pages
