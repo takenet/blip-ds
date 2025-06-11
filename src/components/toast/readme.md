@@ -26,9 +26,9 @@
 
 ## Events
 
-| Event              | Description                                                                      | Type               |
-| ------------------ | -------------------------------------------------------------------------------- | ------------------ |
-| `toastButtonClick` | Event used to execute some action when the action button on the toast is clicked | `CustomEvent<any>` |
+| Event              | Description                                                                      | Type                               |
+| ------------------ | -------------------------------------------------------------------------------- | ---------------------------------- |
+| `toastButtonClick` | Event used to execute some action when the action button on the toast is clicked | `CustomEvent<HTMLBdsToastElement>` |
 
 
 ## Methods
@@ -46,6 +46,12 @@ Type: `Promise<void>`
 ### `create({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>`
 
 Can be used outside to open the toast
+
+#### Parameters
+
+| Name  | Type                                                                                                                                                                                                          | Description |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `__0` | `{ buttonAction?: ButtonActionType; buttonText?: string; toastText: string; toastTitle: string; icon?: string; actionType?: ActionType; variant?: VariantType; duration?: number; position?: PositionType; }` |             |
 
 #### Returns
 

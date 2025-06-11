@@ -25,10 +25,10 @@
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `optionChecked`  |             | `CustomEvent<any>` |
-| `optionSelected` |             | `CustomEvent<any>` |
+| Event            | Description | Type                                                               |
+| ---------------- | ----------- | ------------------------------------------------------------------ |
+| `optionChecked`  |             | `CustomEvent<{ value: string; label: string; checked: boolean; }>` |
+| `optionSelected` |             | `CustomEvent<{ value: any; label: string; }>`                      |
 
 
 ## Methods

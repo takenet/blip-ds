@@ -83,7 +83,7 @@ export class BdsTabItem {
   async reciveNumber(number) {
     this.numberElement = number;
   }
-  @Event() tabDisabled: EventEmitter;
+  @Event() tabDisabled: EventEmitter<{ item: number; disable: boolean }>;
 
   @Watch('disable')
   disableChanged(): void {

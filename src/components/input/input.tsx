@@ -195,37 +195,37 @@ export class Input {
   /**
    * Evento disparado quando o valor do input muda.
    */
-  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
+  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter<{ value: string }>;
 
   /**
    * Evento disparado quando o input recebe um input (digitação).
    */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInput!: EventEmitter<InputEvent>;
 
   /**
    * Evento disparado quando o input perde o foco.
    */
-  @Event() bdsOnBlur: EventEmitter;
+  @Event() bdsOnBlur: EventEmitter<void>;
 
   /**
    * Evento disparado quando o input ganha o foco.
    */
-  @Event() bdsFocus: EventEmitter;
+  @Event() bdsFocus: EventEmitter<void>;
 
   /**
    * Evento disparado quando o formulário é submetido.
    */
-  @Event() bdsSubmit: EventEmitter;
+  @Event() bdsSubmit: EventEmitter<{ event: KeyboardEvent; value: string }>;
 
   /**
    * Evento disparado para validação de padrão regex.
    */
-  @Event() bdsPatternValidation: EventEmitter;
+  @Event() bdsPatternValidation: EventEmitter<boolean>;
 
   /**
    * Evento disparado quando a tecla "Backspace" é pressionada.
    */
-  @Event() bdsKeyDownBackspace: EventEmitter;
+  @Event() bdsKeyDownBackspace: EventEmitter<{ event: KeyboardEvent; value: string }>;
 
   /**
    * Define o foco no campo de entrada.
@@ -313,7 +313,8 @@ if(!this.encode) return value;
           event.preventDefault();
         }
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
@@ -322,13 +323,13 @@ if(!this.encode) return value;
   /**
    * Função chamada ao digitar no campo de entrada.
    */
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     this.onBdsInputValidations();
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsInput.emit(ev);
   };
 
   /**

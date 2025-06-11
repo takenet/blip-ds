@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event                 | Description | Type               |
-| --------------------- | ----------- | ------------------ |
-| `bdsClickAvatarGroup` |             | `CustomEvent<any>` |
+| Event                 | Description | Type                        |
+| --------------------- | ----------- | --------------------------- |
+| `bdsClickAvatarGroup` |             | `CustomEvent<PointerEvent>` |
 
 
 ## Dependencies

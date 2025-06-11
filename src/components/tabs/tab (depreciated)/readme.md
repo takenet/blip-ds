@@ -16,7 +16,7 @@
 
 | Event               | Description | Type                    |
 | ------------------- | ----------- | ----------------------- |
-| `bdsTabInit`        |             | `CustomEvent<any>`      |
+| `bdsTabInit`        |             | `CustomEvent<string>`   |
 | `scrollButtonClick` |             | `CustomEvent<Overflow>` |
 
 

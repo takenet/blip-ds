@@ -68,11 +68,11 @@ export class BdsUpload {
   /**
    * Event emited when delete a item from the list.
    */
-  @Event() bdsUploadDelete: EventEmitter;
+  @Event() bdsUploadDelete: EventEmitter<{ value: File[] }>;
   /**
    * Event emited when change the value of Upload.
    */
-  @Event() bdsUploadChange: EventEmitter;
+  @Event() bdsUploadChange: EventEmitter<{ value: File[] }>;
 
   @Watch('dataAccept')
   protected dataAcceptChanged(): void {

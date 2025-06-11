@@ -28,7 +28,7 @@ export class Tab implements ComponentInterface {
   /**
    * Event to emmit when the active tab should be updated
    */
-  @Event() bdsTabChange: EventEmitter;
+  @Event() bdsTabChange: EventEmitter<string>;
 
   @Listen('bdsTabChange', { target: 'body' })
   @Listen('bdsTabInit', { target: 'body' })

@@ -36,7 +36,7 @@ export class ChipSelected {
    */
   @Prop() dataTest?: string = null;
 
-  @Event() chipClick: EventEmitter;
+  @Event() chipClick: EventEmitter<{ selected: boolean }>;
 
   private handleKeyDown(event) {
     if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {

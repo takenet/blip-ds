@@ -51,8 +51,8 @@ export class BdsAvatar {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
-  @Event() bdsClickAvatar: EventEmitter;
-  @Event() bdsImageUpload: EventEmitter;
+  @Event() bdsClickAvatar: EventEmitter<PointerEvent>;
+  @Event() bdsImageUpload: EventEmitter<string>;
 
   private onUploadClick(e) {
     e.preventDefault();
@@ -153,8 +153,7 @@ export class BdsAvatar {
         <div
           class={{
             avatar: true,
-            [`avatar__color--${
-              this.name && !this.hasThumb
+            [`avatar__color--${this.name && !this.hasThumb
                 ? this.avatarBgColor(firstName)
                 : this.hasThumb && !this.name
                   ? 'surface'
@@ -163,7 +162,7 @@ export class BdsAvatar {
                     : this.name && this.hasThumb
                       ? this.avatarBgColor(firstName)
                       : null
-            }`]: true,
+              }`]: true,
             [`avatar__size--${this.size}`]: true,
             upload: this.upload || this.openUpload,
           }}

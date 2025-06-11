@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event          | Description                                          | Type               |
-| -------------- | ---------------------------------------------------- | ------------------ |
-| `bdsTabChange` | Event to emmit when the active tab should be updated | `CustomEvent<any>` |
+| Event          | Description                                          | Type                  |
+| -------------- | ---------------------------------------------------- | --------------------- |
+| `bdsTabChange` | Event to emmit when the active tab should be updated | `CustomEvent<string>` |
 
 
 ## Dependencies

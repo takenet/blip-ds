@@ -95,7 +95,7 @@ describe('bds-illustration', () => {
     await page.waitForChanges();
     
     // Wait a bit for the async fetch to complete
-    await page.waitForTimeout(100);
+    await new Promise((r) => setTimeout(r, 100));
 
     const img = await page.find('bds-illustration >>> img');
     expect(img).toBeTruthy();

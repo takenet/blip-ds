@@ -18,8 +18,8 @@ export class NavTreeGroup {
    */
   @Prop() collapse?: collapses = 'single';
 
-  @Event() bdsNavTreeGroupCloseAll?: EventEmitter;
-  @Event() bdsNavTreeGroupOpenAll?: EventEmitter;
+  @Event() bdsNavTreeGroupCloseAll?: EventEmitter<void>;
+  @Event() bdsNavTreeGroupOpenAll?: EventEmitter<void>;
 
   componentWillRender() {
     this.itemsElement = this.element.getElementsByTagName('bds-nav-tree') as HTMLCollectionOf<HTMLBdsNavTreeElement>;

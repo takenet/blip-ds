@@ -1,4 +1,4 @@
-@import 'resets';
+@use '../../globals/helpers' as *;
 
 $switch-size-width-tall: 56px;
 $switch-size-width-standard: 42px;

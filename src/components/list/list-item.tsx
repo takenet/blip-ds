@@ -86,12 +86,22 @@ export class ListItem {
   /**
    * Emitted when the value has changed because of a click event.
    */
-  @Event() bdsChecked!: EventEmitter;
+  @Event() bdsChecked!: EventEmitter<{
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    typeList: TypeList | null;
+    checked: boolean | null;
+  }>;
 
   /**
    * Emitted when click in someone actions buttom insert in data.
    */
-  @Event() bdsClickActionButtom!: EventEmitter;
+  @Event() bdsClickActionButtom!: EventEmitter<{
+    value: string | null;
+    icon: string;
+    elementButton: EventTarget;
+  }>;
 
   componentWillLoad() {
     this.hasActionAreaSlot = !!this.hostElement.querySelector('[slot="action-area"]');
@@ -141,7 +151,7 @@ export class ListItem {
     this.typeList == 'radio' ? (this.checked = true) : (this.checked = !this.checked);
   };
 
-  private clickActionButtons = (data, event): void => {
+  private clickActionButtons = (data: string, event: PointerEvent): void => {
     const elementButton = event.composedPath()[0];
     this.bdsClickActionButtom.emit({
       value: this.value,
