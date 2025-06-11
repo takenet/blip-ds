@@ -256,12 +256,13 @@ export class InputChips {
     }
     return this.internalChips.map((chip, index) => {
       const id = index.toString();
-      const limit = 30;
+      // Reduce the limit to prevent chips from being too wide and causing scroll issues
+      const limit = 20;
       if (chip.length <= limit) {
         return (h("bds-chip-clickable", { id: id, key: id, color: "outline", close: !this.disabled, onChipClickableClose: (event) => this.removeChip(event), dtButtonClose: this.dtButtonClose }, chip));
       }
       else {
-        return (h("bds-tooltip", { key: id, position: "top-center", "tooltip-text": chip }, h("bds-chip-clickable", { id: id, key: id, color: "outline", close: !this.disabled, onChipClickableClose: (event) => this.removeChip(event), dtButtonClose: this.dtButtonClose }, `${chip.slice(0, limit)} ...`)));
+        return (h("bds-tooltip", { key: id, position: "top-center", "tooltip-text": chip }, h("bds-chip-clickable", { id: id, key: id, color: "outline", close: !this.disabled, onChipClickableClose: (event) => this.removeChip(event), dtButtonClose: this.dtButtonClose }, `${chip.slice(0, limit)}...`)));
       }
     });
   }
@@ -294,6 +295,8 @@ export class InputChips {
   }
   render() {
     const isPressed = this.isPressed && !this.disabled;
+    // Set default maxHeight if not provided to prevent UI breaking
+    const defaultMaxHeight = this.maxHeight || '80px';
     return (h(Host, { "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: {
         input: true,
         'input--state-primary': !this.danger && !this.validationDanger,
@@ -302,7 +305,7 @@ export class InputChips {
         'input--state-disabled': this.disabled,
         'input--label': !!this.label,
         'input--pressed': isPressed,
-      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: { input__container__wrapper: true } }, this.internalChips.length > 0 && (h("span", { style: { height: this.height, maxHeight: this.maxHeight }, class: "inside-input-left" }, this.renderChips())), this.inputAvalible && (h("input", { ref: (input) => (this.nativeInput = input), class: { input__container__text: true }, name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { name: "input-right" })), this.renderMessage()));
+      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { name: "input-right" })), this.renderMessage()));
   }
   static get is() { return "bds-input-chips"; }
   static get encapsulation() { return "shadow"; }

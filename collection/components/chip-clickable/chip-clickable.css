@@ -27,14 +27,15 @@
   display: flex;
   min-width: 32px;
   width: fit-content;
-  height: 32px;
-  border-radius: 16px;
-  padding: 2px 4px;
+  height: 24px;
+  border-radius: 12px;
+  padding: 2px 6px;
   align-items: center;
   box-sizing: border-box;
   justify-content: center;
   position: relative;
-  z-index: 0;
+  z-index: 1;
+  flex-shrink: 0;
 }
 :host .chip_clickable--container-text--full {
   width: 100%;
@@ -92,18 +93,28 @@
 :host .chip_clickable--disabled .chip_clickable--close {
   cursor: default;
 }
+:host .chip_clickable--text {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  margin: 0;
+  padding: 0 2px;
+  z-index: 2;
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  line-height: 1;
+}
 :host .chip_clickable--icon {
   display: flex;
   align-items: center;
-  height: 20px;
-  padding-left: 4px;
+  height: 16px;
+  padding-right: 2px;
   z-index: 2;
 }
 :host .chip_clickable--close {
   display: flex;
   align-items: center;
-  height: 20px;
-  padding-right: 4px;
+  height: 16px;
+  padding-left: 2px;
   mix-blend-mode: hard-light;
   opacity: 0.5;
   z-index: 2;
@@ -118,17 +129,22 @@
   border-radius: 4px;
   outline: var(--color-focus, #c226fb) solid 2px;
 }
-:host .chip_clickable--text {
-  display: flex;
-  align-items: center;
-  height: 20px;
-  margin: 0 8px;
-  z-index: 2;
-  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
-}
 :host .chip_clickable--tall {
-  height: 40px;
-  border-radius: 24px;
+  height: 32px;
+  border-radius: 16px;
+  padding: 4px 8px;
+}
+:host .chip_clickable--tall .chip_clickable--text {
+  height: 20px;
+  line-height: 1.1;
+}
+:host .chip_clickable--tall .chip_clickable--icon {
+  height: 20px;
+  padding-right: 4px;
+}
+:host .chip_clickable--tall .chip_clickable--close {
+  height: 20px;
+  padding-left: 4px;
 }
 :host .chip_clickable--default {
   background-color: var(--color-system, #b2dffd);
