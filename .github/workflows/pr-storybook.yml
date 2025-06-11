@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy-preview:
+  deploy-storybook-preview:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     
@@ -40,7 +40,7 @@ jobs:
           STORYBOOK_BASE_PATH: /blip-ds/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy PR Preview (separate from main)
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
@@ -93,7 +93,7 @@ jobs:
               });
             }
 
-  cleanup-preview:
+  cleanup-storybook-preview:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
     
