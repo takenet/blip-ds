@@ -40,21 +40,21 @@ jobs:
           ls -la dist/ || echo "dist folder not found"
           npm run storybook:build -- --output-dir ./storybook-static
         env:
-          STORYBOOK_BASE_PATH: /test-before-migrate/pr-${{ github.event.pull_request.number }}
+          STORYBOOK_BASE_PATH: /test-before-migrate/previews/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy PR Preview (separate from main)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
-          destination_dir: pr-${{ github.event.pull_request.number }}
+          destination_dir: previews/pr-${{ github.event.pull_request.number }}
 
       - name: Comment PR with preview link
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            const previewUrl = `https://${{ github.repository_owner }}.github.io/test-before-migrate/pr-${prNumber}`;
+            const previewUrl = `https://${{ github.repository_owner }}.github.io/test-before-migrate/previews/pr-${prNumber}`;
 
             const comment = `## 📖 Storybook Preview
 
@@ -107,8 +107,8 @@ jobs:
 
       - name: Remove PR preview directory
         run: |
-          if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
-            rm -rf pr-${{ github.event.pull_request.number }}
+          if [ -d "previews/pr-${{ github.event.pull_request.number }}" ]; then
+            rm -rf previews/pr-${{ github.event.pull_request.number }}
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
             git add .
