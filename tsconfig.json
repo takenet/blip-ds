@@ -15,17 +15,16 @@
     "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "typeRoots": [
-      "node_modules/@types",
-      "types"
+      "node_modules/@types"
     ],
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
   "include": [
     "./src/**/*",
-    "src",
-    "types/jsx.d.ts"
+    "src"
   ],
   "exclude": [
     "node_modules"

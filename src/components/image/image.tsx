@@ -88,7 +88,7 @@ export class Image {
     }
   }
 
-  render(): JSX.Element {
+  render() {
     if (!this.imageLoaded && !this.loadError) {
       // Se a imagem ainda não foi carregada, chame o método loadImage
       this.loadImage();
