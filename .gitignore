@@ -35,10 +35,3 @@ icons/
 scripts/*.js
 
 /screenshot
-
-cypress/assets/
-cypress/build/
-cypress/dist/
-cypress/screenshots/
-cypress/host.config.json
-cypress/index.html

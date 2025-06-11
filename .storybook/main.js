@@ -6,6 +6,8 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-docs',
     '@storybook/addon-console',
+    '@storybook/addon-notes',
+    '@storybook/preset-create-react-app',
   ],
   typescript: {
     reactDocgen: false,

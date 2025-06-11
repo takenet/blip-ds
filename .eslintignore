@@ -4,7 +4,6 @@ node_modules
 dist
 www
 loader
-cypress
 # don't lint nyc coverage output
 coverage
 
