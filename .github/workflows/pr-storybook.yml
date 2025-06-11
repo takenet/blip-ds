@@ -16,7 +16,7 @@ jobs:
   deploy-storybook-preview:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
-    environment: github-pages
+    environment: storybook-preview
 
     steps:
       - name: Checkout
@@ -94,7 +94,7 @@ jobs:
   cleanup-storybook-preview:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
-    environment: github-pages
+    environment: storybook-preview
 
     steps:
       - name: Checkout gh-pages
