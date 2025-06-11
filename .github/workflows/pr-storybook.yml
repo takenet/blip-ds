@@ -38,21 +38,21 @@ jobs:
         run: |
           npm run storybook:build
         env:
-          STORYBOOK_BASE_PATH: /blip-ds/pr-previews/pr-${{ github.event.pull_request.number }}
+          STORYBOOK_BASE_PATH: /blip-ds/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy PR Preview (separate from main)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
-          destination_dir: pr-previews/pr-${{ github.event.pull_request.number }}
+          destination_dir: pr-${{ github.event.pull_request.number }}
 
       - name: Comment PR with preview link
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            const previewUrl = `https://${{ github.repository_owner }}.github.io/blip-ds/pr-previews/pr-${prNumber}`;
+            const previewUrl = `https://${{ github.repository_owner }}.github.io/blip-ds/pr-${prNumber}`;
 
             const comment = `## 📖 Storybook Preview
 
@@ -105,8 +105,8 @@ jobs:
 
       - name: Remove PR preview directory
         run: |
-          if [ -d "pr-previews/pr-${{ github.event.pull_request.number }}" ]; then
-            rm -rf pr-previews/pr-${{ github.event.pull_request.number }}
+          if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
+            rm -rf pr-${{ github.event.pull_request.number }}
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
             git add .
