@@ -21,11 +21,11 @@ module.exports = {
     defaultName: 'Visão Geral'
   },
   staticDirs: ['../dist'], // Include the Stencil build output
-  webpackFinal: async (config) => {
-    // Only set publicPath if we have a base path
+  // Use managerWebpack for base path configuration instead of webpackFinal
+  managerWebpack: async (config) => {
     if (process.env.STORYBOOK_BASE_PATH) {
       config.output = config.output || {};
-      config.output.publicPath = process.env.STORYBOOK_BASE_PATH + '/';
+      config.output.publicPath = process.env.STORYBOOK_BASE_PATH;
     }
     return config;
   },
