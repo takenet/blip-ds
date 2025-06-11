@@ -17,7 +17,7 @@
   "scripts": {
     "generate": "stencil generate",
     "clear": "rimraf  node_modules/ && rimraf  dist/ && rimraf  www/",
-    "dev": "concurrently \"npm:build:watch\" \"npm:storybook\"",
+    "dev": "stencil build --docs && concurrently \"npm:build:watch\" \"npm:storybook\"",
     "start": "stencil build --dev --watch --serve --docs",
     "build": "stencil build --docs --prod",
     "build:watch": "stencil build --watch",
