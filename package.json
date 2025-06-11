@@ -126,8 +126,8 @@
     "fsevents": "^2.3.1"
   },
   "overrides": {
-    "@typescript-eslint/typescript-estree": "^8.34.0",
-    "fork-ts-checker-webpack-plugin": "^9.1.0",
+    "@typescript-eslint/typescript-estree": "^5.62.0",
+    "fork-ts-checker-webpack-plugin": "^6.5.3",
     "typescript": "^5.8.3"
   }
 }
