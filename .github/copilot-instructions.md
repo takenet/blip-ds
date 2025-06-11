@@ -60,6 +60,7 @@ Must follow stencil's testing guidelines and use the `@stencil/core/testing` pac
 1. When adding new components:
 
    - Create the StencilJS component in `/src/components/`
+   - Ensure it runs correctly with `npm run dev`
    - React wrappers will be auto-generated in `/blip-ds-react/` with `npm run build:react`
    - Add Storybook documentation. Use an existing component as a reference for structure and format.
    - Ensure unit tests are written in the component's `test` folder
