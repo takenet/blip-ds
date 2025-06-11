@@ -4,7 +4,7 @@ export type StencilReactExternalProps<PropType, ElementType> = PropType & Omit<R
 export type StencilReactForwardedRef<T> = ((instance: T | null) => void) | React.MutableRefObject<T | null> | null;
 export declare const setRef: (ref: StencilReactForwardedRef<any> | React.Ref<any> | undefined, value: any) => void;
 export declare const mergeRefs: (...refs: (StencilReactForwardedRef<any> | React.Ref<any> | undefined)[]) => React.RefCallback<any>;
-export declare const createForwardRef: <PropType, ElementType>(ReactComponent: any, displayName: string) => React.ForwardRefExoticComponent<React.PropsWithoutRef<StencilReactExternalProps<PropType, ElementType>> & React.RefAttributes<ElementType>>;
+export declare const createForwardRef: <PropType, ElementType>(ReactComponent: any, displayName: string) => React.ForwardRefExoticComponent<React.RefAttributes<unknown>>;
 export declare const defineCustomElement: (tagName: string, customElement: any) => void;
 export * from './attachProps';
 export * from './case';
