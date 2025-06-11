@@ -36,9 +36,11 @@ jobs:
 
       - name: Build Storybook for PR
         run: |
+          # Ensure dist folder exists and is populated
+          ls -la dist/ || echo "dist folder not found"
           npm run storybook:build -- --output-dir ./storybook-static
         env:
-          STORYBOOK_BASE_PATH: /test-before-migrate/pr-${{ github.event.pull_request.number }}/
+          STORYBOOK_BASE_PATH: /test-before-migrate/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy PR Preview (separate from main)
         uses: peaceiris/actions-gh-pages@v4

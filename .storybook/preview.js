@@ -2,7 +2,8 @@ import { defineCustomElements } from '../dist/esm/loader';
 import { withConsole } from '@storybook/addon-console';
 import './preview.css';
 
-defineCustomElements();
+// Load the custom elements
+defineCustomElements(window);
 
 export const globalTypes = {
   hasTheme: {

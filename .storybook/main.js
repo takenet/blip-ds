@@ -6,7 +6,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-docs',
     '@storybook/addon-console',
-    '@storybook/addon-notes',
+    // '@storybook/addon-notes', // Remove this as it's causing compatibility issues
     '@storybook/preset-create-react-app',
   ],
   typescript: {
@@ -20,16 +20,13 @@ module.exports = {
     autodocs: true,
     defaultName: 'Visão Geral'
   },
-  // Add base path configuration for subdirectory deployment
-  ...(process.env.STORYBOOK_BASE_PATH && {
-    managerHead: (head) => `
-      ${head}
-      <base href="${process.env.STORYBOOK_BASE_PATH}">
-    `,
-    webpackFinal: async (config) => {
+  staticDirs: ['../dist'], // Include the Stencil build output
+  webpackFinal: async (config) => {
+    // Only set publicPath if we have a base path
+    if (process.env.STORYBOOK_BASE_PATH) {
       config.output = config.output || {};
-      config.output.publicPath = process.env.STORYBOOK_BASE_PATH;
-      return config;
-    },
-  }),
+      config.output.publicPath = process.env.STORYBOOK_BASE_PATH + '/';
+    }
+    return config;
+  },
 };
