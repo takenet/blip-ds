@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - main
 
 permissions:
   contents: write
@@ -30,12 +31,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Build and Deploy to Storybook
+      - name: Build Storybook
         run: |
-          npm run storybook:build
-          npm run storybook:deploy
-        env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          npm run storybook:build -- --output-dir ./storybook-static
+
+      - name: Deploy Storybook to Root (preserving previews)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./storybook-static
+          clean: true
+          clean-exclude: |
+            'pr-preview/**'
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
