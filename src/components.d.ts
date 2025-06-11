@@ -1130,6 +1130,10 @@ export namespace Components {
          */
         "autoComplete"?: InputAutoComplete;
         /**
+          * Define se a altura da área de texto deve crescer automaticamente conforme o conteúdo (apenas para `textarea`).
+         */
+        "autoGrow": boolean;
+        /**
           * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips": boolean;
@@ -1173,7 +1177,7 @@ export namespace Components {
         /**
           * Retorna o elemento de input do componente.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLInputElement | HTMLTextAreaElement>;
         /**
           * Mensagem de ajuda exibida abaixo do input.
          */
@@ -1210,6 +1214,10 @@ export namespace Components {
           * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
          */
         "maxErrorMessage": string;
+        /**
+          * Define a altura máxima da área de texto (apenas para `textarea`). Ex: '300px', '10em'.
+         */
+        "maxHeight"?: string;
         /**
           * Define o número máximo de caracteres permitidos no input.
          */
@@ -1258,6 +1266,10 @@ export namespace Components {
           * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
          */
         "requiredErrorMessage": string;
+        /**
+          * Define se a área de texto pode ser redimensionada manualmente (apenas para `textarea`).
+         */
+        "resizable": boolean;
         /**
           * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
@@ -4962,6 +4974,10 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputAutoComplete;
         /**
+          * Define se a altura da área de texto deve crescer automaticamente conforme o conteúdo (apenas para `textarea`).
+         */
+        "autoGrow"?: boolean;
+        /**
           * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips"?: boolean;
@@ -5030,6 +5046,10 @@ declare namespace LocalJSX {
           * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
          */
         "maxErrorMessage"?: string;
+        /**
+          * Define a altura máxima da área de texto (apenas para `textarea`). Ex: '300px', '10em'.
+         */
+        "maxHeight"?: string;
         /**
           * Define o número máximo de caracteres permitidos no input.
          */
@@ -5102,6 +5122,10 @@ declare namespace LocalJSX {
           * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
          */
         "requiredErrorMessage"?: string;
+        /**
+          * Define se a área de texto pode ser redimensionada manualmente (apenas para `textarea`).
+         */
+        "resizable"?: boolean;
         /**
           * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
