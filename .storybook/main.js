@@ -20,4 +20,20 @@ module.exports = {
     autodocs: true,
     defaultName: 'Visão Geral'
   },
+  // Add base path configuration for subdirectory deployment
+  ...(process.env.STORYBOOK_BASE_PATH && {
+    managerHead: (head) => `
+      ${head}
+      <base href="${process.env.STORYBOOK_BASE_PATH}/">
+    `,
+    viteFinal: async (config) => {
+      config.base = process.env.STORYBOOK_BASE_PATH + '/';
+      return config;
+    },
+    webpackFinal: async (config) => {
+      config.output = config.output || {};
+      config.output.publicPath = process.env.STORYBOOK_BASE_PATH + '/';
+      return config;
+    },
+  }),
 };
