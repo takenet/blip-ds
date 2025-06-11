@@ -1,0 +1,58 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: NPM Install, build and test
+        run: |
+          npm install
+          npm run eslint
+          npm run test
+          npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          HUSKY: 0
+
+      - name: Build Storybook
+        run: |
+          npm run storybook:build -- --output-dir ./storybook-static
+        env:
+          HUSKY: 0
+
+      - name: Deploy Storybook to Root (preserving previews)
+        uses: JamesIves/github-pages-deploy-action@v4
+        env:
+          CI: true
+        with:
+          folder: ./storybook-static
+          clean: true
+          clean-exclude: |
+            'pr-preview/**'
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        id: semantic
+        with:
+          branch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

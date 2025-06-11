@@ -10,6 +10,7 @@ import { gapChanged, getHighestItem, getItems } from '../../utils/position-eleme
 export class BdsCarousel {
   private itemsElement?: HTMLCollectionOf<HTMLBdsCarouselItemElement> = null;
   private bulletElement?: HTMLElement = null;
+  private bulletElements: HTMLElement[] = [];
   private frame?: HTMLElement;
   private themeProviderArrows?: any;
   private frameRepeater?: HTMLElement;
@@ -308,7 +309,10 @@ export class BdsCarousel {
   };
 
   private refBulletElement = (el: HTMLElement): void => {
-    this.bulletElement = el;
+    if (el) {
+      this.bulletElement = el; // Keep the current behavior
+      this.bulletElements.push(el); // Store all bullet elements
+    }
   };
 
   private onMouseOver = () => {
@@ -372,18 +376,25 @@ export class BdsCarousel {
   };
 
   private setKeydownNavigation = (ev) => {
-    if (ev.key == 'Tab') {
-      this.bulletElement.focus();
+    if (ev.key === 'Tab') {
+      if (this.bulletElements.length > 0) {
+        this.bulletElements[0].focus();
+      } else if (this.bulletElement) {
+        this.bulletElement.focus();
+      }
     }
-    if (ev.key == 'ArrowRight') {
+    if (ev.key === 'ArrowRight') {
       this.nextSlide();
     }
-    if (ev.key == 'ArrowLeft') {
+    if (ev.key === 'ArrowLeft') {
       this.prevSlide();
     }
   };
 
   render() {
+    // Reset bullet elements array at start of render
+    this.bulletElements = [];
+    
     const ThemeOrDivArrows = this.arrows == 'inside' ? 'bds-theme-provider' : 'div';
     const justifybulletsPosition =
       this.bulletsPosition == 'center'

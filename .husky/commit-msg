@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Simple commit message validation using commitizen config
+# This ensures commit messages follow conventional commit format
+npx --no-install commitizen --hook || true

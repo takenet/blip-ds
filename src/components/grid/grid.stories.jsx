@@ -17,6 +17,12 @@ const gridStyle = {
   backgroundColor: '#1e6bf1'
 };
 
+const paperSize = {
+  width: '100%',
+  padding: '24px',
+};
+
+
 export const Properties = (args) => (
   <bds-grid style={gridStyle} container={args.container} align-items={args.alignItems} container-fluid={args.containerFluid} direction={args.direction} flex-wrap={args.flexWrap} gap={args.gap} height={args.height} justify-content={args.justifyContent} margin={args.margin} padding={args.padding} xxs={args.xxs} xs={args.xs} sm={args.sm} md={args.md} lg={args.lg} xg={args.xg} xxs-off-set={args.xxsOffset} xs-off-set={args.xsOffset} sm-off-set={args.smOffset} md-off-set={args.mdOffset} lg-off-set={args.lgOffset}>
     <bds-typo bold="semi-bold" style={{color: '#fff'}}>Texto do Container</bds-typo>

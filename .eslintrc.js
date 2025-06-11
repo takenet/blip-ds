@@ -20,6 +20,7 @@ module.exports = {
   settings: {
     react: {
       pragma: 'h',
+      version: 'detect', // Automatically detect the React version
     },
   },
 };
