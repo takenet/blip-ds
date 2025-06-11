@@ -97,7 +97,6 @@ $input_fixed: 140px;
 :host {
   display: flex;
   flex-direction: column;
-  position: relative;
   flex: 1;
   width: 100%;
   max-width: 100%;
@@ -271,13 +270,14 @@ $input_fixed: 140px;
     &__wrapper {
       display: flex;
       flex-wrap: wrap;
-    }
-
-    &__wrapper__chips {
-      @include custom-scroll();
-      display: inline;
-      max-height: 100px;
-      overflow: auto;
+      align-items: center;
+      gap: 6px;
+      min-height: 24px;
+      max-width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden; /* Force no horizontal scroll */
+      word-break: break-word; /* Break long text in chips */
+      @include custom-scroll;
     }
 
     &__label {
@@ -288,10 +288,15 @@ $input_fixed: 140px;
     &__text {
       @include reset-input();
       @include input-text();
-      @include custom-scroll();
-      width: 100%;
+      min-width: 80px; /* Reduced from 120px */
+      max-width: 100%;
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
       resize: none;
       cursor: inherit;
+      overflow: hidden; /* Prevent text overflow */
     }
   }
 
@@ -336,21 +341,4 @@ $input_fixed: 140px;
       }
     }
   }
-}
-
-.inside-input-left {
-  position: relative;
-  display: inline-flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-right: 8px;
-  overflow-y: auto;
-  @include custom-scroll;
-}
-.input-chips__chip {
-  margin: 2px 4px 2px 0px;
-}
-
-.input-chips__chips {
-  flex: 1;
 }
