@@ -36,9 +36,9 @@ jobs:
 
       - name: Build Storybook for PR
         run: |
-          npm run storybook:build
+          npm run storybook:build -- --output-dir ./storybook-static
         env:
-          STORYBOOK_BASE_PATH: /test-before-migrate/pr-${{ github.event.pull_request.number }}
+          STORYBOOK_BASE_PATH: /test-before-migrate/pr-${{ github.event.pull_request.number }}/
 
       - name: Deploy PR Preview (separate from main)
         uses: peaceiris/actions-gh-pages@v4
