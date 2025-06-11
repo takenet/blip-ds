@@ -45,6 +45,7 @@ export const config: Config = {
   },
   testing: {
     timers: 'fake',
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
   },
   devServer: {
     reloadStrategy: 'pageReload',

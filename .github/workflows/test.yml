@@ -25,7 +25,6 @@ jobs:
       - name: NPM Install and build
         run: |
           npm install
-          npm run build
 
       - name: Lint
         run: |
