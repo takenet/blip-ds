@@ -22,12 +22,10 @@
     "build": "stencil build --docs --prod",
     "build:watch": "stencil build --watch",
     "build:react": "cd ./blip-ds-react && npm install && npm run build",
-    "ci": "npm run build && npm run storybook:build && npm run storybook:deploy",
     "test": "stencil test --spec --e2e --screenshot --coverage",
     "test:watch": "stencil test --spec --e2e --screenshot --watch",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "storybook:deploy": "storybook-to-ghpages",
     "eslint": "eslint . --ext .jsx,.ts,.tsx --fix",
     "semantic-release": "semantic-release",
     "commit": "git-cz"
