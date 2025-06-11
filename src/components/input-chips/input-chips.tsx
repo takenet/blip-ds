@@ -449,7 +449,8 @@ export class InputChips {
 
     return this.internalChips.map((chip, index) => {
       const id = index.toString();
-      const limit = 30;
+      // Reduce the limit to prevent chips from being too wide and causing scroll issues
+      const limit = 20;
       if (chip.length <= limit) {
         return (
           <bds-chip-clickable
@@ -474,7 +475,7 @@ export class InputChips {
               onChipClickableClose={(event) => this.removeChip(event)}
               dtButtonClose={this.dtButtonClose}
             >
-              {`${chip.slice(0, limit)} ...`}
+              {`${chip.slice(0, limit)}...`}
             </bds-chip-clickable>
           </bds-tooltip>
         );
@@ -545,6 +546,9 @@ export class InputChips {
 
   render() {
     const isPressed = this.isPressed && !this.disabled;
+    // Set default maxHeight if not provided to prevent UI breaking
+    const defaultMaxHeight = this.maxHeight || '80px';
+    
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
         <div
@@ -564,16 +568,16 @@ export class InputChips {
           {this.renderIcon()}
           <div class="input__container">
             {this.renderLabel()}
-            <div class={{ input__container__wrapper: true }}>
-              {this.internalChips.length > 0 && (
-                <span style={{ height: this.height, maxHeight: this.maxHeight }} class="inside-input-left">
-                  {this.renderChips()}
-                </span>
-              )}
+            <div 
+              class="input__container__wrapper"
+              style={{ maxHeight: defaultMaxHeight }}
+            >
+              {/* Chips and input are now siblings in the same flex container */}
+              {this.internalChips.length > 0 && this.renderChips()}
               {this.inputAvalible && (
                 <input
                   ref={(input) => (this.nativeInput = input)}
-                  class={{ input__container__text: true }}
+                  class="input__container__text"
                   name={this.inputName}
                   maxlength={this.maxlength}
                   placeholder={this.placeholder}
@@ -584,7 +588,7 @@ export class InputChips {
                   value={this.value}
                   disabled={this.disabled}
                   data-test={this.dataTest}
-                ></input>
+                />
               )}
             </div>
           </div>

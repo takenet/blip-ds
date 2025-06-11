@@ -9,14 +9,15 @@
     display: flex;
     min-width: 32px;
     width: fit-content;
-    height: 32px;
-    border-radius: 16px;
-    padding: 2px 4px;
+    height: 24px;
+    border-radius: 12px;
+    padding: 2px 6px;
     align-items: center;
     box-sizing: border-box;
     justify-content: center;
     position: relative;
-    z-index: 0;
+    z-index: 1; // Keep chips behind other screen components
+    flex-shrink: 0; // Prevent chips from shrinking in flex layout
 
     &--container-text {
       &--full {
@@ -84,18 +85,28 @@
       }
     }
 
+    &--text {
+      display: flex;
+      align-items: center;
+      height: 16px;
+      margin: 0;
+      padding: 0 2px;
+      z-index: 2;
+      font-family: $font-family;
+      line-height: 1;
+    }
     &--icon {
       display: flex;
       align-items: center;
-      height: 20px;
-      padding-left: 4px;
+      height: 16px;
+      padding-right: 2px;
       z-index: 2;
     }
     &--close {
       display: flex;
       align-items: center;
-      height: 20px;
-      padding-right: 4px;
+      height: 16px;
+      padding-left: 2px;
       mix-blend-mode: hard-light;
       opacity: 0.5;
       z-index: 2;
@@ -111,17 +122,23 @@
         outline: $color-focus solid 2px;
       }
     }
-    &--text {
-      display: flex;
-      align-items: center;
-      height: 20px;
-      margin: 0 8px;
-      z-index: 2;
-      font-family: $font-family;
-    }
     &--tall {
-      height: 40px;
-      border-radius: 24px;
+      height: 32px;
+      border-radius: 16px;
+      padding: 4px 8px;
+
+      .chip_clickable--text {
+        height: 20px;
+        line-height: 1.1;
+      }
+      .chip_clickable--icon {
+        height: 20px;
+        padding-right: 4px;
+      }
+      .chip_clickable--close {
+        height: 20px;
+        padding-left: 4px;
+      }
     }
     &--default {
       background-color: $color-system;
