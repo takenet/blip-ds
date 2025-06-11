@@ -1,0 +1,42 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+.menuseparation {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+.menuseparation__small {
+  margin: 8px 0;
+}
+.menuseparation__default {
+  margin: 12px 0;
+}
+.menuseparation__large {
+  margin: 16px 0;
+}
+.menuseparation .dividor-item {
+  height: 1px;
+  width: 100%;
+  background-color: #d2dfe6;
+}
+.menuseparation .title-item {
+  margin-right: 8px;
+  margin-top: -4px;
+  color: #6e7b91;
+}
