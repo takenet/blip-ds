@@ -20,6 +20,10 @@ export const config: Config = {
       ],
     },
     {
+      type: 'dist-custom-elements',
+      externalRuntime: false,
+    },
+    {
       type: 'docs-readme',
     },
     {
@@ -29,6 +33,7 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '../../loader',
       proxiesFile: './blip-ds-react/src/components.ts',
+      outDir: './blip-ds-react/src',
     }),
   ],
   buildEs5: 'prod',
