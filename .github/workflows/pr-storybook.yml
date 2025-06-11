@@ -5,22 +5,17 @@ on:
     types: [opened, synchronize, reopened, closed]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
   pull-requests: write
 
 concurrency:
-  group: "pages-${{ github.event.pull_request.number }}"
+  group: "pr-preview-${{ github.event.pull_request.number }}"
   cancel-in-progress: true
 
 jobs:
-  deploy-storybook-pr:
+  deploy-preview:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
       - name: Checkout
@@ -44,52 +39,22 @@ jobs:
         env:
           STORYBOOK_BASE_PATH: /blip-ds/pr-${{ github.event.pull_request.number }}
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Create PR directory structure
-        run: |
-          mkdir -p ./pr-preview/pr-${{ github.event.pull_request.number }}
-          cp -r ./storybook-static/* ./pr-preview/pr-${{ github.event.pull_request.number }}/
-          
-          # Create or update index.html with PR links
-          if [ ! -f ./pr-preview/index.html ]; then
-            cat > ./pr-preview/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>Blip DS - PR Previews</title>
-            <style>
-              body { font-family: Arial, sans-serif; margin: 40px; }
-              .pr-link { display: block; margin: 10px 0; padding: 10px; background: #f5f5f5; text-decoration: none; color: #333; border-radius: 4px; }
-              .pr-link:hover { background: #e0e0e0; }
-            </style>
-          </head>
-          <body>
-            <h1>Blip Design System - PR Previews</h1>
-            <div id="pr-list">
-              <!-- PR links will be added here -->
-            </div>
-          </body>
-          </html>
-          EOF
-          fi
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy PR Preview (separate from main)
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./pr-preview
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
+          destination_dir: pr-previews/pr-${{ github.event.pull_request.number }}
+          keep_files: true
+          # This ensures we don't overwrite the main storybook deployment
+          exclude_assets: '.github,README.md'
 
       - name: Comment PR with preview link
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            const previewUrl = `https://${{ github.repository_owner }}.github.io/blip-ds/pr-${prNumber}`;
+            const previewUrl = `https://${{ github.repository_owner }}.github.io/blip-ds/pr-previews/pr-${prNumber}`;
             
             const comment = `## 📖 Storybook Preview
             
@@ -97,7 +62,9 @@ jobs:
             
             **🔗 Preview URL:** ${previewUrl}
             
-            This preview will be updated automatically when you push new commits to this PR.`;
+            This preview will be updated automatically when you push new commits to this PR.
+            
+            > **Note:** This is a temporary preview that will be removed when the PR is closed.`;
             
             // Check if we already commented
             const comments = await github.rest.issues.listComments({
@@ -126,7 +93,7 @@ jobs:
               });
             }
 
-  destroy-storybook-pr:
+  cleanup-preview:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
     
@@ -139,12 +106,12 @@ jobs:
 
       - name: Remove PR preview directory
         run: |
-          if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
-            rm -rf pr-${{ github.event.pull_request.number }}
+          if [ -d "pr-previews/pr-${{ github.event.pull_request.number }}" ]; then
+            rm -rf pr-previews/pr-${{ github.event.pull_request.number }}
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
             git add .
-            git commit -m "Remove preview for PR #${{ github.event.pull_request.number }}" || exit 0
+            git commit -m "🗑️ Remove preview for PR #${{ github.event.pull_request.number }}" || exit 0
             git push
           fi
 
@@ -156,7 +123,7 @@ jobs:
             
             const comment = `## 📖 Storybook Preview - Cleaned Up
             
-            The Storybook preview for this PR has been removed as the PR was closed.`;
+            The Storybook preview for this PR has been removed as the PR was closed. ✨`;
             
             await github.rest.issues.createComment({
               owner: context.repo.owner,
