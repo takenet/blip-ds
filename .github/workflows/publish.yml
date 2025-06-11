@@ -30,10 +30,13 @@ jobs:
           npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          HUSKY: 0
 
       - name: Build Storybook
         run: |
           npm run storybook:build -- --output-dir ./storybook-static
+        env:
+          HUSKY: 0
 
       - name: Deploy Storybook to Root (preserving previews)
         uses: JamesIves/github-pages-deploy-action@v4

@@ -28,7 +28,8 @@
     "storybook:build": "storybook build",
     "eslint": "eslint . --ext .jsx,.ts,.tsx --fix",
     "semantic-release": "semantic-release",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -61,7 +62,6 @@
     "copy-webpack-plugin": "^11.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
-    "cz-customizable-ghooks": "^2.0.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^16.0.0",
@@ -69,7 +69,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-storybook": "^0.8.0",
-    "ghooks": "^2.0.4",
+    "husky": "^8.0.3",
     "jest": "27.4.5",
     "jest-cli": "27.4.5",
     "npm-run-all": "^4.1.5",
@@ -106,11 +106,6 @@
     },
     "cz-customizable": {
       "config": "./.cz-config.js"
-    },
-    "ghooks": {
-      "pre-commit": "npm run eslint && npm run test",
-      "pre-push": "npm run eslint",
-      "commit-msg": "cz-customizable-ghooks $2"
     }
   },
   "browserslist": {
