@@ -246,3 +246,40 @@ export const FrameworkReact = () => (
     label="label do input"
   ></BdsInput>
 );
+
+export const TextareaExample = () => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '500px';
+  }
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <bds-input
+        is-textarea="true"
+        rows="4"
+        label="Textarea Example"
+        placeholder="Digite sua mensagem aqui..."
+        helper-message="Este é um exemplo de textarea com múltiplas linhas"
+      ></bds-input>
+      
+      <bds-input
+        is-textarea="true"
+        rows="2"
+        label="Textarea com Erro"
+        placeholder="Digite aqui..."
+        danger="true"
+        error-message="Este campo contém um erro"
+      ></bds-input>
+      
+      <bds-input
+        is-textarea="true"
+        rows="3"
+        label="Textarea com Sucesso"
+        placeholder="Digite aqui..."
+        success="true"
+        success-message="Campo preenchido corretamente"
+        value="Texto de exemplo preenchido"
+      ></bds-input>
+    </div>
+  );
+};

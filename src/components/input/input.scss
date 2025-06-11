@@ -110,6 +110,11 @@ $input-width: 100%;
     z-index: 1;
   }
 
+  // Adjust alignment for textarea mode
+  &--textarea {
+    align-items: flex-start;
+  }
+
   &--state {
     &-primary {
       .input__icon {
@@ -263,6 +268,12 @@ $input-width: 100%;
 
       resize: none;
       cursor: inherit;
+
+      // Allow vertical resize for textareas
+      &[data-is-textarea="true"] {
+        resize: vertical;
+        min-height: auto;
+      }
 
       &[type='date'] {
         &::-webkit-calendar-picker-indicator {

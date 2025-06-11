@@ -573,6 +573,7 @@ if(!this.encode) return value;
             'input--state-disabled': this.disabled,
             'input--label': !!this.label,
             'input--pressed': isPressed,
+            'input--textarea': this.isTextarea,
           }}
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}
@@ -608,6 +609,7 @@ if(!this.encode) return value;
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
+                data-is-textarea={this.isTextarea ? 'true' : null}
               ></Element>
             </div>
           </div>
