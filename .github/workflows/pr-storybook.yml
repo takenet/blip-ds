@@ -38,7 +38,7 @@ jobs:
         run: |
           npm run storybook:build
         env:
-          STORYBOOK_BASE_PATH: /blip-ds/pr-${{ github.event.pull_request.number }}
+          STORYBOOK_BASE_PATH: /test-before-migrate/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy PR Preview (separate from main)
         uses: peaceiris/actions-gh-pages@v4
@@ -52,7 +52,7 @@ jobs:
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
-            const previewUrl = `https://${{ github.repository_owner }}.github.io/blip-ds/pr-${prNumber}`;
+            const previewUrl = `https://${{ github.repository_owner }}.github.io/test-before-migrate/pr-${prNumber}`;
 
             const comment = `## 📖 Storybook Preview
 
