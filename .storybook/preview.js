@@ -1,3 +1,4 @@
+import React from 'react';
 import { defineCustomElements } from '../dist/esm/loader';
 import { withConsole } from '@storybook/addon-console';
 import './preview.css';
