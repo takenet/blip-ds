@@ -6,8 +6,6 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-docs',
     '@storybook/addon-console',
-    // '@storybook/addon-notes', // Remove this as it's causing compatibility issues
-    '@storybook/preset-create-react-app',
   ],
   typescript: {
     reactDocgen: false,
@@ -23,7 +21,7 @@ module.exports = {
     defaultName: 'Visão Geral'
   },
   staticDirs: ['../dist'], // Include the Stencil build output
-  // Configure webpack to resolve blip-ds imports
+  // Configure webpack to resolve blip-ds imports and handle JSX
   webpackFinal: async (config) => {
     // Add alias to resolve blip-ds imports to the dist directory
     config.resolve = config.resolve || {};
@@ -34,6 +32,23 @@ module.exports = {
     // Remove TypeScript checker to avoid TypeScript errors during build
     config.plugins = config.plugins.filter(plugin => {
       return plugin.constructor.name !== 'ForkTsCheckerWebpackPlugin';
+    });
+
+    // Add JSX support for .js and .jsx files
+    config.module.rules.push({
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            '@babel/preset-env',
+            ['@babel/preset-react', {
+              runtime: 'automatic' // This enables automatic JSX runtime
+            }]
+          ]
+        }
+      }
     });
     
     return config;
