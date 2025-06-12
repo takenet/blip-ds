@@ -1,4 +1,4 @@
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 .counter-text {
   background: $color-surface-2;

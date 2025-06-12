@@ -1,3 +1,6 @@
+@use '../../globals/helpers' as *;
+@use '../../globals/theme/color-legacy';
+
 $avatar-size-extra-small :32px;
 $avatar-size-small :40px;
 $avatar-size-standard :56px;
@@ -31,7 +34,7 @@ $avatar-size-extra-large :72px;
       z-index: 6;
       width: auto;
       div {
-        background-color: $color-neutral-dark-onix;
+        background-color: color-legacy.$color-neutral-dark-onix;
         padding: 0 16px;
         width: auto;
       }
