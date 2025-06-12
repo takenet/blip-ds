@@ -3,8 +3,6 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-docs',
-// https://github.com/storybookjs/storybook-addon-console/issues/86
-//    '@storybook/addon-console',
     'storybook/actions',
   ],
   typescript: {
@@ -17,9 +15,12 @@ module.exports = {
     options: {},
   },
   docs: {
-    defaultName: 'Vis\xE3o Geral'
+    defaultName: 'Visão Geral'
   },
-  staticDirs: ['../dist'], // Include the Stencil build output
+  staticDirs: [
+    { from: '../dist', to: '/dist' },
+    { from: '../src/assets', to: '/assets' }
+  ],
   // Configure webpack to resolve blip-ds imports and handle JSX
   webpackFinal: async (config) => {
     // Add alias to resolve blip-ds imports to the dist directory
@@ -33,10 +34,30 @@ module.exports = {
       return plugin.constructor.name !== 'ForkTsCheckerWebpackPlugin';
     });
 
+    // Exclude source map files from being processed by adding to ignorePattern
+    const existingRule = config.module.rules.find(rule => 
+      rule.test && rule.test.toString().includes('js') && rule.exclude
+    );
+    
+    if (existingRule && Array.isArray(existingRule.exclude)) {
+      existingRule.exclude.push(/\.map$/);
+    } else if (existingRule) {
+      existingRule.exclude = [existingRule.exclude, /\.map$/];
+    }
+
+    // Add rule to handle source map files properly
+    config.module.rules.unshift({
+      test: /\.map$/,
+      type: 'asset/resource',
+      generator: {
+        emit: false
+      }
+    });
+
     // Add JSX support for .js and .jsx files
     config.module.rules.push({
       test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
+      exclude: [/node_modules/, /\.map$/],
       use: {
         loader: 'babel-loader',
         options: {
