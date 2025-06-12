@@ -1130,6 +1130,10 @@ export namespace Components {
          */
         "autoComplete"?: InputAutoComplete;
         /**
+          * Define se a área de texto deve redimensionar automaticamente com base no conteúdo.
+         */
+        "autoResize": boolean;
+        /**
           * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips": boolean;
@@ -1173,7 +1177,7 @@ export namespace Components {
         /**
           * Retorna o elemento de input do componente.
          */
-        "getInputElement": () => Promise<HTMLInputElement>;
+        "getInputElement": () => Promise<HTMLInputElement | HTMLTextAreaElement>;
         /**
           * Mensagem de ajuda exibida abaixo do input.
          */
@@ -1182,6 +1186,10 @@ export namespace Components {
           * Nome do ícone a ser exibido dentro do input.
          */
         "icon"?: string;
+        /**
+          * Define o tamanho do ícone (small ou medium).
+         */
+        "iconSize"?: 'small' | 'medium';
         /**
           * Nome do input, usado para identificação no formulário.
          */
@@ -1211,6 +1219,10 @@ export namespace Components {
          */
         "maxErrorMessage": string;
         /**
+          * Define a altura máxima da área de texto em pixels.
+         */
+        "maxHeight"?: number;
+        /**
           * Define o número máximo de caracteres permitidos no input.
          */
         "maxlength"?: number;
@@ -1222,6 +1234,10 @@ export namespace Components {
           * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
          */
         "minErrorMessage": string;
+        /**
+          * Define a altura mínima da área de texto em pixels.
+         */
+        "minHeight"?: number;
         /**
           * Define o número mínimo de caracteres permitidos no input.
          */
@@ -4962,6 +4978,10 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputAutoComplete;
         /**
+          * Define se a área de texto deve redimensionar automaticamente com base no conteúdo.
+         */
+        "autoResize"?: boolean;
+        /**
           * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
          */
         "chips"?: boolean;
@@ -5007,6 +5027,10 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
+          * Define o tamanho do ícone (small ou medium).
+         */
+        "iconSize"?: 'small' | 'medium';
+        /**
           * Nome do input, usado para identificação no formulário.
          */
         "inputName"?: string;
@@ -5031,6 +5055,10 @@ declare namespace LocalJSX {
          */
         "maxErrorMessage"?: string;
         /**
+          * Define a altura máxima da área de texto em pixels.
+         */
+        "maxHeight"?: number;
+        /**
           * Define o número máximo de caracteres permitidos no input.
          */
         "maxlength"?: number;
@@ -5042,6 +5070,10 @@ declare namespace LocalJSX {
           * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
          */
         "minErrorMessage"?: string;
+        /**
+          * Define a altura mínima da área de texto em pixels.
+         */
+        "minHeight"?: number;
         /**
           * Define o número mínimo de caracteres permitidos no input.
          */

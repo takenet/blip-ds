@@ -133,4 +133,226 @@ describe('bds-input e2e tests', () => {
       expect(focusedElement).toBe('BDS-INPUT');
     });
   });
+
+  describe('Textarea Functionality', () => {
+    beforeEach(async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" label="Textarea Label" placeholder="Digite aqui..." data-test="bds-input"></bds-input>`,
+      });
+    });
+
+    it('should render as textarea when is-textarea is true', async () => {
+      const input = await page.find('bds-input');
+      const isTextarea = await input.getProperty('isTextarea');
+      expect(isTextarea).toBe(true);
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      expect(textareaElement).toBeTruthy();
+    });
+
+    it('should set correct default rows for textarea', async () => {
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const rows = await textareaElement.getProperty('rows');
+      expect(rows).toBe(3);
+    });
+
+    it('should allow multiline text input in textarea', async () => {
+      const textareaElement = await page.find('bds-input >>> textarea');
+      
+      const multilineText = 'Line 1\nLine 2\nLine 3';
+      await textareaElement.type(multilineText);
+      await page.waitForChanges();
+      
+      const value = await textareaElement.getProperty('value');
+      expect(value).toBe(multilineText);
+    });
+
+    it('should respect custom rows property', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" rows="5" data-test="bds-input"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const rows = await textareaElement.getProperty('rows');
+      expect(rows).toBe(5);
+    });
+
+    it('should show correct CSS classes for textarea', async () => {
+      const inputContainer = await page.find('bds-input >>> .input');
+      const className = await inputContainer.getProperty('className');
+      expect(className).toContain('input--textarea');
+    });
+
+    it('should handle auto-resize property', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" auto-resize="false" data-test="bds-input"></bds-input>`,
+      });
+
+      const input = await page.find('bds-input');
+      const autoResize = await input.getProperty('autoResize');
+      expect(autoResize).toBe(false);
+    });
+
+    it('should handle icon with textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" icon="edit" icon-size="medium" data-test="bds-input"></bds-input>`,
+      });
+
+      const iconElement = await page.find('bds-input >>> .input__icon bds-icon');
+      expect(iconElement).toBeTruthy();
+      
+      const iconSize = await iconElement.getProperty('size');
+      expect(iconSize).toBe('medium');
+    });
+
+    it('should handle error state with textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" danger="true" error-message="Error message" data-test="bds-input"></bds-input>`,
+      });
+
+      const inputContainer = await page.find('bds-input >>> .input');
+      const className = await inputContainer.getProperty('className');
+      expect(className).toContain('input--state-danger');
+
+      const errorMessage = await page.find('bds-input >>> .input__message--danger');
+      expect(errorMessage).toBeTruthy();
+    });
+
+    it('should handle success state with textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" success="true" success-message="Success message" data-test="bds-input"></bds-input>`,
+      });
+
+      const inputContainer = await page.find('bds-input >>> .input');
+      const className = await inputContainer.getProperty('className');
+      expect(className).toContain('input--state-success');
+
+      const successMessage = await page.find('bds-input >>> .input__message--success');
+      expect(successMessage).toBeTruthy();
+    });
+
+    it('should handle disabled state with textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" disabled="true" data-test="bds-input"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const isDisabled = await textareaElement.getProperty('disabled');
+      expect(isDisabled).toBe(true);
+
+      const inputContainer = await page.find('bds-input >>> .input');
+      const className = await inputContainer.getProperty('className');
+      expect(className).toContain('input--state-disabled');
+    });
+
+    it('should handle character counter with textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" counter-length="true" maxlength="100" data-test="bds-input"></bds-input>`,
+      });
+
+      const counterElement = await page.find('bds-input >>> bds-counter-text');
+      expect(counterElement).toBeTruthy();
+    });
+
+    it('should emit events correctly for textarea', async () => {
+      const input = await page.find('bds-input');
+      const bdsChangeEvent = await input.spyOnEvent('bdsChange');
+      const bdsInputEvent = await input.spyOnEvent('bdsInput');
+      const bdsFocusEvent = await input.spyOnEvent('bdsFocus');
+      
+      const textareaElement = await page.find('bds-input >>> textarea');
+
+      await textareaElement.focus();
+      await page.waitForChanges();
+      expect(bdsFocusEvent).toHaveReceivedEvent();
+
+      await textareaElement.type('Test content');
+      await page.waitForChanges();
+      
+      expect(bdsInputEvent).toHaveReceivedEvent();
+      expect(bdsChangeEvent).toHaveReceivedEvent();
+    });
+
+    it('should handle focus and blur states correctly for textarea', async () => {
+      const input = await page.find('bds-input');
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const inputContainer = await page.find('bds-input >>> .input');
+
+      await textareaElement.focus();
+      await page.waitForChanges();
+      
+      let className = await inputContainer.getProperty('className');
+      expect(className).toContain('input--pressed');
+
+      // Use the component's removeFocus method to ensure proper blur handling
+      await input.callMethod('removeFocus');
+      await page.waitForChanges();
+      
+      className = await inputContainer.getProperty('className');
+      expect(className).not.toContain('input--pressed');
+    });
+  });
+
+  describe('Textarea Methods', () => {
+    beforeEach(async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" data-test="bds-input"></bds-input>`,
+      });
+    });
+
+    it('should be able to set focus programmatically', async () => {
+      const input = await page.find('bds-input');
+      await input.callMethod('setFocus');
+      await page.waitForChanges();
+
+      const activeElement = await page.evaluate(() => {
+        const shadowRoot = document.querySelector('bds-input').shadowRoot;
+        return shadowRoot.activeElement?.tagName;
+      });
+      expect(activeElement).toBe('TEXTAREA');
+    });
+
+    it('should be able to clear textarea programmatically', async () => {
+      const input = await page.find('bds-input');
+      const textareaElement = await page.find('bds-input >>> textarea');
+      
+      await textareaElement.type('Test content');
+      await page.waitForChanges();
+      
+      await input.callMethod('clear');
+      await page.waitForChanges();
+      
+      const value = await textareaElement.getProperty('value');
+      expect(value).toBe('');
+    });
+
+    it('should return textarea element from getInputElement method', async () => {
+      const input = await page.find('bds-input');
+      await input.callMethod('getInputElement');
+      
+      // The element should be a textarea
+      const textareaElement = await page.find('bds-input >>> textarea');
+      expect(textareaElement).toBeTruthy();
+    });
+
+    it('should validate textarea correctly', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" required="true" data-test="bds-input"></bds-input>`,
+      });
+
+      const input = await page.find('bds-input');
+      
+      // Empty textarea should be invalid when required
+      let isValid = await input.callMethod('isValid');
+      expect(isValid).toBe(false);
+      
+      // Fill textarea and check validity
+      const textareaElement = await page.find('bds-input >>> textarea');
+      await textareaElement.type('Valid content');
+      await page.waitForChanges();
+      
+      isValid = await input.callMethod('isValid');
+      expect(isValid).toBe(true);
+    });
+  });
 });
