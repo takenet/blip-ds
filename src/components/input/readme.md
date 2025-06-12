@@ -9,6 +9,7 @@
 | ----------------------- | ------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------- |
 | `autoCapitalize`        | `auto-capitalize`         | Define a capitalização automática do texto (valores possíveis: `on`, `off`).           | `"characters" \| "none" \| "off" \| "on" \| "sentences" \| "words"`      | `'off'`     |
 | `autoComplete`          | `auto-complete`           | Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`). | `"current-password" \| "new-password" \| "off" \| "on" \| "username"`    | `'off'`     |
+| `autoResize`            | `auto-resize`             | Define se a área de texto deve redimensionar automaticamente com base no conteúdo.     | `boolean`                                                                | `true`      |
 | `chips`                 | `chips`                   | Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).  | `boolean`                                                                | `undefined` |
 | `cols`                  | `cols`                    | Define a quantidade de colunas da área de texto (se for `textarea`).                   | `number`                                                                 | `0`         |
 | `counterLength`         | `counter-length`          | Define se será exibido um contador de comprimento de caracteres.                       | `boolean`                                                                | `false`     |
@@ -21,15 +22,18 @@
 | `errorMessage`          | `error-message`           | Mensagem de erro exibida quando o valor do input é inválido.                           | `string`                                                                 | `''`        |
 | `helperMessage`         | `helper-message`          | Mensagem de ajuda exibida abaixo do input.                                             | `string`                                                                 | `''`        |
 | `icon`                  | `icon`                    | Nome do ícone a ser exibido dentro do input.                                           | `string`                                                                 | `''`        |
+| `iconSize`              | `icon-size`               | Define o tamanho do ícone (small ou medium).                                           | `"medium" \| "small"`                                                    | `'small'`   |
 | `inputName`             | `input-name`              | Nome do input, usado para identificação no formulário.                                 | `string`                                                                 | `''`        |
 | `isSubmit`              | `is-submit`               | Define se o input será submetido ao pressionar Enter.                                  | `boolean`                                                                | `false`     |
 | `isTextarea`            | `is-textarea`             | Define se o input é uma área de texto (textarea).                                      | `boolean`                                                                | `false`     |
 | `label`                 | `label`                   | Rótulo que será exibido acima do input.                                                | `string`                                                                 | `''`        |
 | `max`                   | `max`                     | Define o valor máximo permitido para o input.                                          | `string`                                                                 | `undefined` |
 | `maxErrorMessage`       | `max-error-message`       | Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido. | `string`                                                                 | `undefined` |
+| `maxHeight`             | `max-height`              | Define a altura máxima da área de texto em pixels.                                     | `number`                                                                 | `200`       |
 | `maxlength`             | `maxlength`               | Define o número máximo de caracteres permitidos no input.                              | `number`                                                                 | `undefined` |
 | `min`                   | `min`                     | Define o valor mínimo permitido para o input.                                          | `string`                                                                 | `undefined` |
 | `minErrorMessage`       | `min-error-message`       | Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido. | `string`                                                                 | `undefined` |
+| `minHeight`             | `min-height`              | Define a altura mínima da área de texto em pixels.                                     | `number`                                                                 | `60`        |
 | `minlength`             | `minlength`               | Define o número mínimo de caracteres permitidos no input.                              | `number`                                                                 | `undefined` |
 | `minlengthErrorMessage` | `minlength-error-message` | Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.     | `string`                                                                 | `undefined` |
 | `numberErrorMessage`    | `number-error-message`    | Mensagem de erro exibida quando o valor do input não é um número válido.               | `string`                                                                 | `undefined` |
@@ -38,7 +42,7 @@
 | `readonly`              | `readonly`                | Torna o input somente leitura.                                                         | `boolean`                                                                | `false`     |
 | `required`              | `required`                | Define se o input é obrigatório.                                                       | `boolean`                                                                | `undefined` |
 | `requiredErrorMessage`  | `required-error-message`  | Mensagem de erro exibida quando o input não é preenchido e é obrigatório.              | `string`                                                                 | `undefined` |
-| `rows`                  | `rows`                    | Define a quantidade de linhas da área de texto (se for `textarea`).                    | `number`                                                                 | `1`         |
+| `rows`                  | `rows`                    | Define a quantidade de linhas da área de texto (se for `textarea`).                    | `number`                                                                 | `3`         |
 | `success`               | `success`                 | Define se o input está em estado de sucesso.                                           | `boolean`                                                                | `false`     |
 | `successMessage`        | `success-message`         | Mensagem exibida quando o valor do input é válido.                                     | `string`                                                                 | `''`        |
 | `type`                  | `type`                    | Define o tipo do input (por exemplo, `text`, `password`, etc).                         | `"date" \| "email" \| "number" \| "password" \| "phonenumber" \| "text"` | `'text'`    |
@@ -70,13 +74,13 @@ Type: `Promise<void>`
 
 
 
-### `getInputElement() => Promise<HTMLInputElement>`
+### `getInputElement() => Promise<HTMLInputElement | HTMLTextAreaElement>`
 
 Retorna o elemento de input do componente.
 
 #### Returns
 
-Type: `Promise<HTMLInputElement>`
+Type: `Promise<HTMLInputElement | HTMLTextAreaElement>`
 
 
 

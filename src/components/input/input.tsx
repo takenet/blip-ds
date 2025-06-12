@@ -9,7 +9,7 @@ import { emailValidation, numberValidation } from '../../utils/validations';
   shadow: true,
 })
 export class Input {
-  private nativeInput?: HTMLInputElement;
+  private nativeInput?: HTMLInputElement | HTMLTextAreaElement;
 
   @State() isPressed? = false;
   @State() isPassword? = false;
@@ -143,12 +143,32 @@ export class Input {
   /**
    * Define a quantidade de linhas da área de texto (se for `textarea`).
    */
-  @Prop() rows?: number = 1;
+  @Prop() rows?: number = 3;
 
   /**
    * Define a quantidade de colunas da área de texto (se for `textarea`).
    */
   @Prop() cols?: number = 0;
+
+  /**
+   * Define se a área de texto deve redimensionar automaticamente com base no conteúdo.
+   */
+  @Prop() autoResize = true;
+
+  /**
+   * Define a altura mínima da área de texto em pixels.
+   */
+  @Prop() minHeight?: number = 60;
+
+  /**
+   * Define a altura máxima da área de texto em pixels.
+   */
+  @Prop() maxHeight?: number = 200;
+
+  /**
+   * Define o tamanho do ícone (small ou medium).
+   */
+  @Prop() iconSize?: 'small' | 'medium' = 'small';
 
   /**
    * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
@@ -247,7 +267,7 @@ export class Input {
    * Retorna o elemento de input do componente.
    */
   @Method()
-  async getInputElement(): Promise<HTMLInputElement> {
+  async getInputElement(): Promise<HTMLInputElement | HTMLTextAreaElement> {
     return this.nativeInput;
   }
 
@@ -313,21 +333,49 @@ if(!this.encode) return value;
           event.preventDefault();
         }
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
   };
 
   /**
+   * Auto-redimensiona a área de texto baseada no conteúdo.
+   */
+  private autoResizeTextarea(): void {
+    if (this.isTextarea && this.autoResize && this.nativeInput) {
+      const textarea = this.nativeInput as HTMLTextAreaElement;
+      
+      // Reset height to auto to get the correct scrollHeight
+      textarea.style.height = 'auto';
+      
+      // Calculate new height
+      const scrollHeight = textarea.scrollHeight;
+      const newHeight = Math.min(
+        Math.max(scrollHeight, this.minHeight || 60),
+        this.maxHeight || 200
+      );
+      
+      textarea.style.height = `${newHeight}px`;
+    }
+  }
+
+  /**
    * Função chamada ao digitar no campo de entrada.
    */
   private onInput = (ev: Event): void => {
     this.onBdsInputValidations();
-    const input = ev.target as HTMLInputElement | null;
+    const input = ev.target as HTMLInputElement | HTMLTextAreaElement | null;
     if (input) {
       this.value = input.value || '';
     }
+    
+    // Auto-resize textarea if enabled
+    if (this.isTextarea && this.autoResize) {
+      this.autoResizeTextarea();
+    }
+    
     this.bdsInput.emit(ev as KeyboardEvent);
   };
 
@@ -383,12 +431,13 @@ if(!this.encode) return value;
         <div
           class={{
             input__icon: true,
-            'input__icon--large': !!this.label,
+            'input__icon--large': !!this.label || this.iconSize === 'medium',
+            'input__icon--textarea': this.isTextarea,
           }}
         >
           <bds-icon
             class="input__icon--color"
-            size={this.label ? 'medium' : 'small'}
+            size={this.label || this.iconSize === 'medium' ? 'medium' : 'small'}
             name={this.icon}
             color="inherit"
           ></bds-icon>
@@ -556,6 +605,21 @@ if(!this.encode) return value;
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
     }
+    
+    // Auto-resize textarea after value changes
+    if (this.isTextarea && this.autoResize) {
+      this.autoResizeTextarea();
+    }
+  }
+
+  /**
+   * Configurações iniciais após o componente carregar.
+   */
+  componentDidLoad() {
+    // Set initial height for textarea
+    if (this.isTextarea && this.autoResize) {
+      this.autoResizeTextarea();
+    }
   }
 
   render(): HTMLElement {
@@ -573,6 +637,7 @@ if(!this.encode) return value;
             'input--state-disabled': this.disabled,
             'input--label': !!this.label,
             'input--pressed': isPressed,
+            'input--textarea': this.isTextarea,
           }}
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}
@@ -582,13 +647,21 @@ if(!this.encode) return value;
           <slot name="input-left"></slot>
           <div class="input__container">
             {this.renderLabel()}
-            <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
+            <div class={{ 
+              input__container__wrapper: !this.chips, 
+              input__container__wrapper__chips: this.chips,
+              'input__container__wrapper--textarea': this.isTextarea
+            }}>
               <slot name="inside-input-left"></slot>
               <Element
-                class={{ input__container__text: true, input__container__text__chips: this.chips }}
+                class={{ 
+                  input__container__text: true, 
+                  input__container__text__chips: this.chips,
+                  'input__container__text--textarea': this.isTextarea
+                }}
                 ref={(input) => (this.nativeInput = input)}
-                rows={this.rows}
-                cols={this.cols}
+                rows={this.isTextarea ? this.rows : undefined}
+                cols={this.isTextarea ? this.cols : undefined}
                 autocapitalize={this.autoCapitalize}
                 autocomplete={this.autoComplete}
                 disabled={this.disabled}
@@ -602,12 +675,17 @@ if(!this.encode) return value;
                 onInput={this.onInput}
                 placeholder={this.placeholder}
                 readOnly={this.readonly}
-                type={this.type}
+                type={this.isTextarea ? undefined : this.type}
                 value={this.encodeValue(this.value)}
                 pattern={this.pattern}
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
+                style={this.isTextarea ? {
+                  minHeight: `${this.minHeight || 60}px`,
+                  maxHeight: `${this.maxHeight || 200}px`,
+                  resize: this.autoResize ? 'none' : 'vertical'
+                } : {}}
               ></Element>
             </div>
           </div>
