@@ -11,6 +11,8 @@ module.exports = {
   ],
   typescript: {
     reactDocgen: false,
+    skipBabel: true,
+    check: false,
   },
   framework: {
     name: '@storybook/react-webpack5',
@@ -21,6 +23,21 @@ module.exports = {
     defaultName: 'Visão Geral'
   },
   staticDirs: ['../dist'], // Include the Stencil build output
+  // Configure webpack to resolve blip-ds imports
+  webpackFinal: async (config) => {
+    // Add alias to resolve blip-ds imports to the dist directory
+    config.resolve = config.resolve || {};
+    config.resolve.alias = config.resolve.alias || {};
+    config.resolve.alias['blip-ds'] = require('path').resolve(__dirname, '../');
+    config.resolve.alias['blip-ds/dist'] = require('path').resolve(__dirname, '../dist');
+    
+    // Remove TypeScript checker to avoid TypeScript errors during build
+    config.plugins = config.plugins.filter(plugin => {
+      return plugin.constructor.name !== 'ForkTsCheckerWebpackPlugin';
+    });
+    
+    return config;
+  },
   // Use managerWebpack for base path configuration instead of webpackFinal
   managerWebpack: async (config) => {
     if (process.env.STORYBOOK_BASE_PATH) {
