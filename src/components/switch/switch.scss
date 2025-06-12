@@ -1,4 +1,5 @@
-@import 'resets';
+@use '../../globals/helpers' as *;
+@use '../../globals/theme/color-legacy' as *;
 
 $switch-size-width-tall: 56px;
 $switch-size-width-standard: 42px;

@@ -1,4 +1,5 @@
-@import 'mixins';
+@use '../../globals/helpers' as *;
+@use '../../globals/theme/color-legacy.scss' as *;
 
 $select-option-padding: 8px;
 $select-option-left: 12px;

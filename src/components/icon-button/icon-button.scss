@@ -1,4 +1,5 @@
-@import 'resets';
+@use '../../globals/helpers' as *;
+@use '../../globals/theme/color-legacy' as *;
 
 $icon-button-border-radius: 8px;
 $icon-button-padding: 8px;
