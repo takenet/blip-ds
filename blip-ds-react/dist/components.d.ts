@@ -266,7 +266,7 @@ export type BdsImageEvents = NonNullable<unknown>;
 export declare const BdsImage: StencilReactComponent<BdsImageElement, BdsImageEvents>;
 export type BdsInputEvents = {
     onBdsChange: EventName<CustomEvent<any>>;
-    onBdsInput: EventName<BdsInputCustomEvent<KeyboardEvent>>;
+    onBdsInput: EventName<BdsInputCustomEvent<InputEvent>>;
     onBdsOnBlur: EventName<CustomEvent<any>>;
     onBdsFocus: EventName<CustomEvent<any>>;
     onBdsSubmit: EventName<CustomEvent<any>>;

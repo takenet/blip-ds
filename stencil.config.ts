@@ -7,7 +7,7 @@ export const config: Config = {
   plugins: [
     sass({
       includePaths: ['src/globals'],
-      injectGlobalPaths: ['src/globals/app.scss'],
+      injectGlobalPaths: ['src/globals/app.scss', 'node_modules/blip-tokens/build/scss/variables.scss'],
     }),
   ],
   outputTargets: [
@@ -31,18 +31,12 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      componentCorePackage: 'blip-ds',
-      proxiesFile: './blip-ds-react/src/components.ts',
-      outDir: './blip-ds-react/src',
+      outDir: '../blip-ds-react/dist',
     }),
   ],
   buildEs5: 'prod',
   extras: {
     appendChildSlotFix: true,
-    cssVarsShim: true,
-    dynamicImportShim: true,
-    shadowDomShim: true,
-    safari10: true,
     scriptDataOpts: true,
     cloneNodeFix: false,
     slotChildNodesFix: true,

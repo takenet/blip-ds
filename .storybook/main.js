@@ -2,10 +2,10 @@ module.exports = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-actions',
     '@storybook/addon-docs',
-    '@storybook/addon-console',
+// https://github.com/storybookjs/storybook-addon-console/issues/86
+//    '@storybook/addon-console',
+    'storybook/actions',
   ],
   typescript: {
     reactDocgen: false,
@@ -17,8 +17,7 @@ module.exports = {
     options: {},
   },
   docs: {
-    autodocs: true,
-    defaultName: 'Visão Geral'
+    defaultName: 'Vis\xE3o Geral'
   },
   staticDirs: ['../dist'], // Include the Stencil build output
   // Configure webpack to resolve blip-ds imports and handle JSX

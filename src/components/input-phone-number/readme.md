@@ -30,13 +30,13 @@
 
 ## Events
 
-| Event                  | Description                                      | Type                         |
-| ---------------------- | ------------------------------------------------ | ---------------------------- |
-| `bdsBlur`              | Evento disparado quando o select perde o foco.   | `CustomEvent<void>`          |
-| `bdsCancel`            | Evento disparado quando a seleção é cancelada.   | `CustomEvent<void>`          |
-| `bdsFocus`             | Evento disparado quando o select ganha foco.     | `CustomEvent<void>`          |
-| `bdsInput`             | Evento disparado quando o input sofre alteração. | `CustomEvent<KeyboardEvent>` |
-| `bdsPhoneNumberChange` | Evento disparado quando o valor é alterado.      | `CustomEvent<any>`           |
+| Event                  | Description                                      | Type                      |
+| ---------------------- | ------------------------------------------------ | ------------------------- |
+| `bdsBlur`              | Evento disparado quando o select perde o foco.   | `CustomEvent<void>`       |
+| `bdsCancel`            | Evento disparado quando a seleção é cancelada.   | `CustomEvent<void>`       |
+| `bdsFocus`             | Evento disparado quando o select ganha foco.     | `CustomEvent<void>`       |
+| `bdsInput`             | Evento disparado quando o input sofre alteração. | `CustomEvent<InputEvent>` |
+| `bdsPhoneNumberChange` | Evento disparado quando o valor é alterado.      | `CustomEvent<any>`        |
 
 
 ## Methods

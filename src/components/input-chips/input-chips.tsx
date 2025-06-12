@@ -293,12 +293,12 @@ export class InputChips {
     }
   }
 
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInputChipsInput.emit(ev as KeyboardEvent);
+    this.bdsInputChipsInput.emit(ev);
   };
 
   private minMaxValidation() {

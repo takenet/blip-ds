@@ -3844,7 +3844,7 @@ declare global {
         "bdsChange": AutocompleteChangeEventDetail;
         "bdsSelectedChange": AutocompleteSelectedChangeEventDetail;
         "bdsMultiselectedChange": AutocompleteMultiSelectedChangeEventDetail;
-        "bdsInput": KeyboardEvent;
+        "bdsInput": InputEvent;
         "bdsCancel": AutocompleteChangeEventDetail;
         "bdsFocus": void;
         "bdsBlur": void;
@@ -4295,7 +4295,7 @@ declare global {
     };
     interface HTMLBdsInputElementEventMap {
         "bdsChange": any;
-        "bdsInput": KeyboardEvent;
+        "bdsInput": InputEvent;
         "bdsOnBlur": any;
         "bdsFocus": any;
         "bdsSubmit": any;
@@ -4342,7 +4342,7 @@ declare global {
     interface HTMLBdsInputEditableElementEventMap {
         "bdsInputEditableSave": InputEditableEventDetail;
         "bdsChange": InputEditableEventDetail;
-        "bdsInput": KeyboardEvent;
+        "bdsInput": InputEvent;
         "bdsCancel": void;
         "bdsFocus": void;
         "bdsBlur": void;
@@ -4363,7 +4363,7 @@ declare global {
     };
     interface HTMLBdsInputPasswordElementEventMap {
         "bdsInputPasswordChange": any;
-        "bdsInputPasswordInput": KeyboardEvent;
+        "bdsInputPasswordInput": InputEvent;
         "bdsInputPasswordBlur": any;
         "bdsInputPasswordFocus": any;
         "bdsInputPasswordSubmit": any;
@@ -4385,7 +4385,7 @@ declare global {
     };
     interface HTMLBdsInputPhoneNumberElementEventMap {
         "bdsPhoneNumberChange": any;
-        "bdsInput": KeyboardEvent;
+        "bdsInput": InputEvent;
         "bdsCancel": void;
         "bdsFocus": void;
         "bdsBlur": void;
@@ -4673,7 +4673,7 @@ declare global {
     };
     interface HTMLBdsRichTextElementEventMap {
         "bdsRichTextChange": any;
-        "bdsRichTextInput": KeyboardEvent;
+        "bdsRichTextInput": InputEvent;
         "bdsBlur": any;
         "bdsFocus": any;
     }
@@ -4717,7 +4717,7 @@ declare global {
         "bdsFocus": void;
         "bdsBlur": void;
         "bdsChangeChips": any;
-        "bdsSelectChipsInput": any;
+        "bdsSelectChipsInput": InputEvent;
         "bdsSubmit": any;
     }
     interface HTMLBdsSelectChipsElement extends Components.BdsSelectChips, HTMLStencilElement {
@@ -5274,7 +5274,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: BdsAutocompleteCustomEvent<KeyboardEvent>) => void;
+        "onBdsInput"?: (event: BdsAutocompleteCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the selected value has changed.
          */
@@ -6579,7 +6579,7 @@ declare namespace LocalJSX {
         /**
           * Evento disparado quando o input recebe um input (digitação).
          */
-        "onBdsInput"?: (event: BdsInputCustomEvent<KeyboardEvent>) => void;
+        "onBdsInput"?: (event: BdsInputCustomEvent<InputEvent>) => void;
         /**
           * Evento disparado quando a tecla "Backspace" é pressionada.
          */
@@ -6868,7 +6868,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: BdsInputEditableCustomEvent<KeyboardEvent>) => void;
+        "onBdsInput"?: (event: BdsInputEditableCustomEvent<InputEvent>) => void;
         /**
           * Emitted when input text confirm.
          */
@@ -6985,7 +6985,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInputPasswordInput"?: (event: BdsInputPasswordCustomEvent<KeyboardEvent>) => void;
+        "onBdsInputPasswordInput"?: (event: BdsInputPasswordCustomEvent<InputEvent>) => void;
         /**
           * Event input enter.
          */
@@ -7089,7 +7089,7 @@ declare namespace LocalJSX {
         /**
           * Evento disparado quando o input sofre alteração.
          */
-        "onBdsInput"?: (event: BdsInputPhoneNumberCustomEvent<KeyboardEvent>) => void;
+        "onBdsInput"?: (event: BdsInputPhoneNumberCustomEvent<InputEvent>) => void;
         /**
           * Evento disparado quando o valor é alterado.
          */
@@ -7841,7 +7841,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
+        "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<InputEvent>) => void;
         /**
           * positionBar is the prop to define max height of component.
           * @default 'top'
@@ -8065,7 +8065,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsSelectChipsInput"?: (event: BdsSelectChipsCustomEvent<any>) => void;
+        "onBdsSelectChipsInput"?: (event: BdsSelectChipsCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the chip has added.
          */
