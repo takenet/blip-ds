@@ -149,7 +149,7 @@ export class InputEditable {
   /**
    * Emitted when the input has changed.
    */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInput!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the selection is cancelled.
@@ -188,7 +188,7 @@ export class InputEditable {
     }
   };
 
-  private changedInputValue = async (ev: Event) => {
+  private changedInputValue = async (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null;
     this.checkValidity();
     if (input) {
@@ -198,7 +198,7 @@ export class InputEditable {
         this.isValid = true;
       }
     }
-    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsInput.emit(ev);
     this.bdsChange.emit({ value: this.nativeInput.value, oldValue: this.oldValue });
   };
 

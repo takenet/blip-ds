@@ -47,15 +47,15 @@
 
 ## Events
 
-| Event                  | Description                                                  | Type                         |
-| ---------------------- | ------------------------------------------------------------ | ---------------------------- |
-| `bdsChange`            | Evento disparado quando o valor do input muda.               | `CustomEvent<any>`           |
-| `bdsFocus`             | Evento disparado quando o input ganha o foco.                | `CustomEvent<any>`           |
-| `bdsInput`             | Evento disparado quando o input recebe um input (digitação). | `CustomEvent<KeyboardEvent>` |
-| `bdsKeyDownBackspace`  | Evento disparado quando a tecla "Backspace" é pressionada.   | `CustomEvent<any>`           |
-| `bdsOnBlur`            | Evento disparado quando o input perde o foco.                | `CustomEvent<any>`           |
-| `bdsPatternValidation` | Evento disparado para validação de padrão regex.             | `CustomEvent<any>`           |
-| `bdsSubmit`            | Evento disparado quando o formulário é submetido.            | `CustomEvent<any>`           |
+| Event                  | Description                                                  | Type                      |
+| ---------------------- | ------------------------------------------------------------ | ------------------------- |
+| `bdsChange`            | Evento disparado quando o valor do input muda.               | `CustomEvent<any>`        |
+| `bdsFocus`             | Evento disparado quando o input ganha o foco.                | `CustomEvent<any>`        |
+| `bdsInput`             | Evento disparado quando o input recebe um input (digitação). | `CustomEvent<InputEvent>` |
+| `bdsKeyDownBackspace`  | Evento disparado quando a tecla "Backspace" é pressionada.   | `CustomEvent<any>`        |
+| `bdsOnBlur`            | Evento disparado quando o input perde o foco.                | `CustomEvent<any>`        |
+| `bdsPatternValidation` | Evento disparado para validação de padrão regex.             | `CustomEvent<any>`        |
+| `bdsSubmit`            | Evento disparado quando o formulário é submetido.            | `CustomEvent<any>`        |
 
 
 ## Methods

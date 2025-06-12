@@ -194,7 +194,7 @@ export class SelectChips {
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsSelectChipsInput!: EventEmitter;
+  @Event() bdsSelectChipsInput!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the chip has added.
@@ -514,12 +514,12 @@ export class SelectChips {
     this.isPressed = false;
   }
 
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsSelectChipsInput.emit(ev as KeyboardEvent);
+    this.bdsSelectChipsInput.emit(ev);
     this.changedInputValue();
   };
 

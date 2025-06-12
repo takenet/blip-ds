@@ -45,7 +45,7 @@
 | `bdsChange`           | Emitted when the value has changed.      | `CustomEvent<SelectChangeEvent>` |
 | `bdsChangeChips`      | Emitted when the chip has added.         | `CustomEvent<any>`               |
 | `bdsFocus`            | Emitted when the select loses focus.     | `CustomEvent<void>`              |
-| `bdsSelectChipsInput` | Emitted when the chip has added.         | `CustomEvent<any>`               |
+| `bdsSelectChipsInput` | Emitted when the chip has added.         | `CustomEvent<InputEvent>`        |
 | `bdsSubmit`           | Emitted when the chip has added.         | `CustomEvent<any>`               |
 
 
