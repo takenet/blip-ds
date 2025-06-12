@@ -1,0 +1,48 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+.counter-text {
+  background: var(--color-surface-2, rgb(237, 237, 237));
+  color: var(--color-content-disable, rgb(89, 89, 89));
+  box-sizing: content-box;
+  width: fit-content;
+  border-radius: 11px;
+  padding: 0 8px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.counter-text--active {
+  background: var(--color-system, rgb(178, 223, 253));
+  color: var(--color-content-din, rgb(0, 0, 0));
+}
+.counter-text--warning {
+  background: var(--color-warning, rgb(253, 233, 155));
+  color: var(--color-content-din, rgb(0, 0, 0));
+}
+.counter-text--delete {
+  background: var(--color-delete, rgb(230, 15, 15));
+  color: var(--color-content-bright, rgb(255, 255, 255));
+}

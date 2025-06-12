@@ -1,0 +1,118 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+.host {
+  position: relative;
+  height: fit-content;
+}
+
+.avatar__group {
+  display: flex;
+}
+.avatar__group > *:nth-child(1) {
+  z-index: 1;
+}
+.avatar__group > *:nth-child(2) {
+  z-index: 2;
+}
+.avatar__group > *:nth-child(3) {
+  z-index: 3;
+}
+.avatar__group > *:nth-child(4) {
+  z-index: 4;
+}
+.avatar__group > *:nth-child(5) {
+  z-index: 5;
+}
+.avatar__group > *:nth-child(6) {
+  z-index: 6;
+  width: auto;
+}
+.avatar__group > *:nth-child(6) div {
+  background-color: #1a2437;
+  padding: 0 16px;
+  width: auto;
+}
+.avatar__group__click--true {
+  cursor: pointer;
+}
+.avatar__group .avatar {
+  position: relative;
+}
+.avatar__group__size--extra-small {
+  margin-left: 8px;
+}
+.avatar__group__size--extra-small > * {
+  margin-left: -8px;
+}
+.avatar__group__size--extra-small > *:nth-child(6) div {
+  padding: 0 8px;
+}
+.avatar__group__size--extra-small .avatar {
+  height: 32px;
+}
+.avatar__group__size--small {
+  margin-left: 8px;
+}
+.avatar__group__size--small > * {
+  margin-left: -8px;
+}
+.avatar__group__size--small .avatar {
+  height: 40px;
+}
+.avatar__group__size--standard {
+  margin-left: 16px;
+}
+.avatar__group__size--standard > * {
+  margin-left: -16px;
+}
+.avatar__group__size--standard .avatar {
+  height: 56px;
+}
+.avatar__group__size--large {
+  margin-left: 16px;
+}
+.avatar__group__size--large > * {
+  margin-left: -16px;
+}
+.avatar__group__size--large .avatar {
+  height: 64px;
+}
+.avatar__group__size--extra-large {
+  margin-left: 16px;
+}
+.avatar__group__size--extra-large > * {
+  margin-left: -16px;
+}
+.avatar__group__size--extra-large .avatar {
+  height: 72px;
+}
+
+.focus:focus-visible {
+  display: flex;
+  position: absolute;
+  border: 2px solid var(--color-focus, rgb(194, 38, 251));
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  top: -4px;
+  left: -4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  outline: none;
+}
