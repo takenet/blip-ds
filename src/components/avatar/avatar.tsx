@@ -1,10 +1,12 @@
 import { Component, EventEmitter, h, Prop, Event, Host, State, Element } from '@stencil/core';
 import { FontSize } from '../typo/typo';
 import { IconSize } from '../icon/icon-interface';
-import { colorLetter } from './color-letter';
+import { colorLetter, BgColor } from './color-letter';
 
 export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
 export type colors = 'colorLetter' | 'system' | 'success' | 'warning' | 'error' | 'info' | 'surface';
+export type avatarShape = 'circle' | 'square';
+export type avatarType = 'user' | 'icon';
 
 @Component({
   tag: 'bds-avatar',
@@ -35,6 +37,20 @@ export class BdsAvatar {
    */
   @Prop() color?: colors = 'colorLetter';
   /**
+   * Background Color, Entered as one of the background color.
+   */
+  @Prop() bgColor?: BgColor = 'surface-2';
+  /**
+   * Type, Entered as one of the type. Can be one of:
+   * 'user', 'icon'.
+   */
+  @Prop() type?: avatarType = 'user';
+  /**
+   * Shape, Entered as one of the shape. Can be one of:
+   * 'circle', 'square'.
+   */
+  @Prop() shape?: avatarShape = 'circle';
+  /**
    * Upload, Serve to enable upload function on avatar.
    */
   @Prop() upload?: boolean = false;
@@ -55,11 +71,14 @@ export class BdsAvatar {
   @Event() bdsImageUpload: EventEmitter;
 
   private onUploadClick(e) {
-    e.preventDefault();
+    if(this.type !== 'icon') {
+      e.preventDefault();
     this.bdsClickAvatar.emit(e);
     if (this.openUpload) {
       this.handleOpenUpload(e);
     }
+    }
+    
   }
 
   handleOpenUpload = (e) => {
@@ -91,7 +110,7 @@ export class BdsAvatar {
     switch (value) {
       case 'micro':
         this.typoSize = 'fs-12';
-        this.iconSize = 'xx-small';
+        this.iconSize = 'x-small';
         break;
       case 'extra-small':
         this.typoSize = 'fs-14';
@@ -132,7 +151,7 @@ export class BdsAvatar {
     this.hasThumb = this.thumbnail ? (this.thumbnail.length !== 0 ? true : false) : false;
   }
 
-  render(): HTMLElement {
+  renderUserContent() {
     const arrayName = this.name ? this.name.split(' ') : [];
     const firstName = arrayName.length ? arrayName.shift().charAt(0).toUpperCase() : '';
     const lastName = arrayName.length ? arrayName.pop().charAt(0).toUpperCase() : '';
@@ -140,6 +159,77 @@ export class BdsAvatar {
     const thumbnailStyle = {
       backgroundImage: `url(${this.hasThumb ? this.thumbnail : null})`,
     };
+
+    return this.ellipsis ? (
+      <div class="avatar__btn">
+        <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
+      </div>
+    ) : this.thumbnail ? (
+      this.upload || this.openUpload ? (
+        <div class={`avatar__btn avatar__size--${this.size} avatar__shape--${this.shape}`}>
+          <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
+          <div class="avatar__btn__thumb">
+            <bds-icon
+              class="avatar__btn__thumb__icon"
+              name="upload"
+              theme="outline"
+              size={this.iconSize}
+            ></bds-icon>
+          </div>
+        </div>
+      ) : (
+        <div class={`avatar__btn avatar__size--${this.size} avatar__shape--${this.shape}`}>
+          <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
+        </div>
+      )
+    ) : this.name ? (
+      this.upload || this.openUpload ? (
+        <div class={`avatar__btn avatar__size--${this.size} avatar__shape--${this.shape}`}>
+          <bds-typo margin={false} class="avatar__btn__text" variant={this.typoSize} tag="span">
+            {firstName + lastName}
+          </bds-typo>
+          <div class="avatar__btn__name">
+            <bds-icon
+              class="avatar__btn__name__icon"
+              name="upload"
+              theme="outline"
+              size={this.iconSize}
+            ></bds-icon>
+          </div>
+        </div>
+      ) : (
+        <div class={`avatar__btn avatar__size--${this.size} avatar__shape--${this.shape}`}>
+          <bds-typo margin={false} class="avatar__text" variant={this.typoSize} tag="span">
+            {firstName + lastName}
+          </bds-typo>
+        </div>
+      )
+    ) : this.upload || this.openUpload ? (
+      <div class={`avatar__btn avatar__size--${this.size} avatar__shape--${this.shape}`}>
+        <bds-icon class="avatar__btn__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
+        <div class="avatar__btn__empty">
+          <bds-icon
+            class="avatar__btn__empty__icon"
+            name="upload"
+            theme="outline"
+            size={this.iconSize}
+          ></bds-icon>
+        </div>
+      </div>
+    ) : this.name === null && !this.hasThumb ? (
+      <div class={`avatar__btn avatar__size--${this.size} avatar__shape--${this.shape}`}>
+        <bds-icon class="avatar__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
+      </div>
+    ) : (
+      ''
+    )
+  }
+
+
+  render(): HTMLElement {
+    const arrayName = this.name ? this.name.split(' ') : [];
+    const firstName = arrayName.length ? arrayName.shift().charAt(0).toUpperCase() : '';
+    this.selectTypoSize(this.size);
 
     return (
       <Host>
@@ -163,8 +253,9 @@ export class BdsAvatar {
                     : this.name && this.hasThumb
                       ? this.avatarBgColor(firstName)
                       : null
-            }`]: true,
+            }`]: this.type === 'user',
             [`avatar__size--${this.size}`]: true,
+            [`avatar__shape--${this.shape}`]: true,
             upload: this.upload || this.openUpload,
           }}
           onClick={(ev) => this.onUploadClick(ev)}
@@ -172,69 +263,7 @@ export class BdsAvatar {
           onKeyDown={(ev) => this.onUploadClick(ev)}
           data-test={this.dataTest}
         >
-          {this.ellipsis ? (
-            <div class="avatar__btn">
-              <bds-typo margin={false} variant={this.typoSize} tag="span">{`+${this.ellipsis}`}</bds-typo>
-            </div>
-          ) : this.thumbnail ? (
-            this.upload || this.openUpload ? (
-              <div class="avatar__btn">
-                <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
-                <div class="avatar__btn__thumb">
-                  <bds-icon
-                    class="avatar__btn__thumb__icon"
-                    name="upload"
-                    theme="outline"
-                    size={this.iconSize}
-                  ></bds-icon>
-                </div>
-              </div>
-            ) : (
-              <div class="avatar__btn">
-                <div class={`avatar__btn__img avatar__size--${this.size}`} style={thumbnailStyle}></div>
-              </div>
-            )
-          ) : this.name ? (
-            this.upload || this.openUpload ? (
-              <div class="avatar__btn">
-                <bds-typo margin={false} class="avatar__btn__text" variant={this.typoSize} tag="span">
-                  {firstName + lastName}
-                </bds-typo>
-                <div class="avatar__btn__name">
-                  <bds-icon
-                    class="avatar__btn__name__icon"
-                    name="upload"
-                    theme="outline"
-                    size={this.iconSize}
-                  ></bds-icon>
-                </div>
-              </div>
-            ) : (
-              <div class="avatar__btn">
-                <bds-typo margin={false} class="avatar__text" variant={this.typoSize} tag="span">
-                  {firstName + lastName}
-                </bds-typo>
-              </div>
-            )
-          ) : this.upload || this.openUpload ? (
-            <div class="avatar__btn">
-              <bds-icon class="avatar__btn__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
-              <div class="avatar__btn__empty">
-                <bds-icon
-                  class="avatar__btn__empty__icon"
-                  name="upload"
-                  theme="outline"
-                  size={this.iconSize}
-                ></bds-icon>
-              </div>
-            </div>
-          ) : this.name === null && !this.hasThumb ? (
-            <div class="avatar__btn">
-              <bds-icon class="avatar__icon" name="user-default" theme="outline" size={this.iconSize}></bds-icon>
-            </div>
-          ) : (
-            ''
-          )}
+         {this.type === 'user' ? this.renderUserContent() : <div class={`avatar__btn avatar__size--${this.size} avatar__shape--${this.shape} bg-color-${this.bgColor}`}><slot></slot></div>}
         </div>
       </Host>
     );
