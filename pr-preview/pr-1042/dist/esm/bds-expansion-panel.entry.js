@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-UYZ9xe6Z.js';
+import { r as registerInstance, h, H as Host } from './index-COEIU3SQ.js';
 
 const expansionPanelCss = "*{-webkit-transition:all 0.5s;-moz-transition:all 0.5s;transition:all 0.5s}:host{display:block}";
 

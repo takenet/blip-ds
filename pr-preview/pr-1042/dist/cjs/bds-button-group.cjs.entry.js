@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DnryYWxm.js');
+var index = require('./index-ljSeaagN.js');
 
 const buttonGroupCss = ":host{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}";
 

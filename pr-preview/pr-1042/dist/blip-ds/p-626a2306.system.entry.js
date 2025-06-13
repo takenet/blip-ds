@@ -1,0 +1,2 @@
+System.register(["./p-CrF-RSPC.system.js"],(function(t){"use strict";var n,e,s;return{setters:[function(t){n=t.r;e=t.h;s=t.H}],execute:function(){var i="*{-webkit-transition:all 0.5s;-moz-transition:all 0.5s;transition:all 0.5s}:host{display:block}";var c=t("bds_expansion_panel",function(){function t(t){n(this,t)}t.prototype.render=function(){return e(s,{key:"e6517c554947ddf47f9e389853357dc772fcfe3c"},e("slot",{key:"6c9e0041ee7030c9f01e78730282b417b5c2425b"}))};return t}());c.style=i}}}));
+//# sourceMappingURL=p-626a2306.system.entry.js.map

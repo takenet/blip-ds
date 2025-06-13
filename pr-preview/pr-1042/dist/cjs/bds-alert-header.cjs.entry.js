@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DnryYWxm.js');
+var index = require('./index-ljSeaagN.js');
 
 const alertHeaderCss = ".alert__header{width:100%;min-height:64px;padding:12px 16px;-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center}.alert__header bds-icon{min-width:32px}.alert__header bds-typo{margin-left:8px;color:var(--color-content-din, rgb(0, 0, 0))}.alert__header--system{background:var(--color-system, rgb(178, 223, 253))}.alert__header--system bds-typo{color:var(--color-content-default, rgb(40, 40, 40))}.alert__header--system .color-icon{color:var(--color-content-default, rgb(40, 40, 40))}.alert__header--error{background:var(--color-error, rgb(250, 190, 190))}.alert__header--error bds-typo{color:var(--color-content-default, rgb(40, 40, 40))}.alert__header--error .color-icon{color:var(--color-content-default, rgb(40, 40, 40))}.alert__header--warning{background:var(--color-warning, rgb(253, 233, 155))}.alert__header--warning bds-typo{color:var(--color-content-default, rgb(40, 40, 40))}.alert__header--warning .color-icon{color:var(--color-content-default, rgb(40, 40, 40))}.alert__header--delete{background:var(--color-delete, rgb(230, 15, 15))}.alert__header--delete bds-typo{color:var(--color-content-bright, rgb(255, 255, 255))}.alert__header--delete .color-icon{color:var(--color-content-bright, rgb(255, 255, 255))}";
 

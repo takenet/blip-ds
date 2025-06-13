@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-UYZ9xe6Z.js';
+import { r as registerInstance, h } from './index-COEIU3SQ.js';
 
 const modalActionCss = ".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";
 

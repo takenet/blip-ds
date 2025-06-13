@@ -4,7 +4,7 @@ const NAMESPACE = 'blip-ds';
 const BUILD = /* blip-ds */ { hydratedSelectorName: "hydrated", lazyLoad: false, slotRelocation: true, updatable: true};
 
 /*
- Stencil Client Platform v4.34.0 | MIT Licensed | https://stenciljs.com
+ Stencil Client Platform v4.35.0 | MIT Licensed | https://stenciljs.com
  */
 var __defProp = Object.defineProperty;
 var __export = (target, all) => {

@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-UYZ9xe6Z.js';
+import { r as registerInstance, h } from './index-COEIU3SQ.js';
 
 const alertBodyCss = ".alert__body{position:relative;width:100%;padding:12px 16px;margin-bottom:8px;-webkit-box-sizing:border-box;box-sizing:border-box}";
 

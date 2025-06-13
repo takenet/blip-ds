@@ -65,8 +65,8 @@ const Accordion = /*@__PURE__*/ proxyCustomElement(class Accordion extends H {
         this.accGroup =
             this.element.parentElement.tagName == 'BDS-ACCORDION-GROUP' &&
                 this.element.parentElement;
-        this.accheaders = this.element.children[0];
-        this.accBodies = this.element.children[1];
+        this.accheaders = this.element.querySelector('bds-accordion-header');
+        this.accBodies = this.element.querySelector('bds-accordion-body');
         // Passar a prop divisor para o AccordionBody
         const accordionBody = this.element.querySelector('bds-accordion-body');
         if (accordionBody) {
@@ -78,7 +78,7 @@ const Accordion = /*@__PURE__*/ proxyCustomElement(class Accordion extends H {
         }
     }
     render() {
-        return (h("div", { key: '6eccc3d0a35c8460a98dc2ad4dbbece19e8260b0', class: "accordion_group" }, h("slot", { key: '48b84b3db8e76028dc5a98161bef920c5ec12650' })));
+        return (h("div", { key: '15a93f082e6af990c446d4d24d449ac66f0b44ab', class: "accordion_group" }, h("slot", { key: 'bebf8655f42edcb894384d4d2c67085333ec2372' })));
     }
     get element() { return this; }
     static get watchers() { return {

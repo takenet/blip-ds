@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DnryYWxm.js');
+var index = require('./index-ljSeaagN.js');
 
 const tableHeaderCss = ".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}";
 

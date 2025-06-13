@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-UYZ9xe6Z.js';
+import { r as registerInstance, h, H as Host } from './index-COEIU3SQ.js';
 
 const tabPanelCss = ".bds-tab-panel{display:none;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}";
 

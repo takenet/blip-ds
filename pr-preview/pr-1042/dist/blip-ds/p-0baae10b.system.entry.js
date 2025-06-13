@@ -1,2 +1,0 @@
-System.register(["./p-BLMciFx5.system.js"],(function(t){"use strict";var e,n;return{setters:[function(t){e=t.r;n=t.h}],execute:function(){var r=t("bds_card_subtitle",function(){function t(t){e(this,t)}t.prototype.render=function(){return n("bds-typo",{key:"27b953c62bb282ef0aba9e2434a0a6fb730ebf31",variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)};return t}())}}}));
-//# sourceMappingURL=p-0baae10b.system.entry.js.map

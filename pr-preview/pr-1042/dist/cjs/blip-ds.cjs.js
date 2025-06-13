@@ -1,10 +1,10 @@
 'use strict';
 
-var index = require('./index-DnryYWxm.js');
+var index = require('./index-ljSeaagN.js');
 
 var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
 /*
- Stencil Client Patch Browser v4.34.0 | MIT Licensed | https://stenciljs.com
+ Stencil Client Patch Browser v4.35.0 | MIT Licensed | https://stenciljs.com
  */
 
 var patchBrowser = () => {

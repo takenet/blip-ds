@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-UYZ9xe6Z.js';
+import { r as registerInstance, h, H as Host } from './index-COEIU3SQ.js';
 
 const tableHeaderCss = ".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}";
 

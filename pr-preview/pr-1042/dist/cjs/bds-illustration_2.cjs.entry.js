@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-DnryYWxm.js');
+var index = require('./index-ljSeaagN.js');
 
 const dependencies = {
-	"blip-tokens": "^1.91.0"};
+	"blip-tokens": "^1.93.0"};
 var packageJson = {
 	dependencies: dependencies};
 
