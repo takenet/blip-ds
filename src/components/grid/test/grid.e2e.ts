@@ -241,7 +241,7 @@ describe('bds-grid e2e tests', () => {
     it('should render slot content', async () => {
       const content = await page.findAll('bds-grid div');
       expect(content.length).toBe(2);
-      
+
       const firstItem = await content[0].textContent;
       const secondItem = await content[1].textContent;
       expect(firstItem).toContain('Grid Item 1');
@@ -272,19 +272,19 @@ describe('bds-grid e2e tests', () => {
       });
 
       const grid = await page.find('bds-grid');
-      
+
       // Check if height property is set
       const heightProp = await grid.getProperty('height');
       expect(heightProp).toBe('300px');
-      
+
       // Check style is applied (may be on shadowRoot)
       const computedStyle = await page.evaluate(() => {
         const element = document.querySelector('bds-grid');
         return window.getComputedStyle(element).height;
       });
-      
-      // Just verify height property exists, computed style might vary
+
       expect(heightProp).toBeTruthy();
+      expect(computedStyle).toBe('300px');
     });
   });
 
@@ -442,7 +442,7 @@ describe('bds-grid e2e tests', () => {
     it('should be accessible', async () => {
       const grid = await page.find('bds-grid');
       expect(grid).toBeTruthy();
-      
+
       // The component should exist and be renderable
       const tagName = await grid.getProperty('tagName');
       expect(tagName).toBe('BDS-GRID');
@@ -482,7 +482,7 @@ describe('bds-grid e2e tests', () => {
       const title = await page.find('bds-grid h2');
       const description = await page.find('bds-grid p');
       const button = await page.find('bds-grid button');
-      
+
       expect(title).toBeTruthy();
       expect(description).toBeTruthy();
       expect(button).toBeTruthy();
@@ -506,7 +506,7 @@ describe('bds-grid e2e tests', () => {
 
       const grid = await page.find('bds-grid');
       expect(grid).toBeTruthy();
-      
+
       // Should still have host class
       const classes = await grid.getAttribute('class');
       expect(classes).toContain('host');
@@ -533,7 +533,7 @@ describe('bds-grid e2e tests', () => {
       const gap = await grid.getProperty('gap');
       const padding = await grid.getProperty('padding');
       const margin = await grid.getProperty('margin');
-      
+
       expect(gap).toBe('none');
       expect(padding).toBe('none');
       expect(margin).toBe('none');
@@ -548,7 +548,7 @@ describe('bds-grid e2e tests', () => {
       const gap = await grid.getProperty('gap');
       const padding = await grid.getProperty('padding');
       const margin = await grid.getProperty('margin');
-      
+
       expect(gap).toBe('half');
       expect(padding).toBe('half');
       expect(margin).toBe('half');
