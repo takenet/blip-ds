@@ -43,7 +43,7 @@ export const config: Config = {
     experimentalImportInjection: true,
   },
   testing: {
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-web-security', '--disable-features=VizDisplayCompositor'],
     collectCoverageFrom: ['src/**/*.{ts,tsx}'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     transform: {
