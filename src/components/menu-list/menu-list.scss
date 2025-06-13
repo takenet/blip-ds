@@ -1,5 +1,5 @@
 @use '../../globals/helpers' as *;
-@use '../../globals/theme/color-legacy' as *;
+@use '../../globals/theme/color-legacy';
 
 $menu-list-width: 7px;
 $menu-list-height: 56px;
@@ -16,20 +16,20 @@ $menu-list-border-right: 0px 8px 8px 0px;
   border-radius: $menu-list-border;
 
   bds-menu-list-item + bds-menu-list-item {
-    border-left: 1px solid $color-neutral-medium-wave;
+    border-left: 1px solid color-legacy.$color-neutral-medium-wave;
   }
 
   &__left {
     width: $menu-list-width;
     height: $menu-list-height;
     border-radius: $menu-list-border-left;
-    background-color: $color-neutral-light-snow;
+    background-color: color-legacy.$color-neutral-light-snow;
   }
 
   &__right {
     width: $menu-list-width;
     height: $menu-list-height;
     border-radius: $menu-list-border-right;
-    background-color: $color-neutral-light-snow;
+    background-color: color-legacy.$color-neutral-light-snow;
   }
 }
