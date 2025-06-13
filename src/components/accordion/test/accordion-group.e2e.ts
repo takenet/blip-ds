@@ -1,5 +1,8 @@
 import { newE2EPage } from '@stencil/core/testing';
 
+// Helper function to replace page.waitForTimeout
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 describe('bds-accordion-group e2e tests', () => {
   let page;
 
@@ -59,7 +62,7 @@ describe('bds-accordion-group e2e tests', () => {
       await page.waitForChanges();
       
       // Wait for animations to complete
-      await page.waitForTimeout(600);
+      await sleep(600);
 
       const accordionBodies = await page.findAll('bds-accordion-body >>> .accordion_body');
       
@@ -75,7 +78,7 @@ describe('bds-accordion-group e2e tests', () => {
       // First open all accordions
       await accordionGroup.callMethod('openAll');
       await page.waitForChanges();
-      await page.waitForTimeout(600);
+      await sleep(600);
 
       // Then close all
       await accordionGroup.callMethod('closeAll');
