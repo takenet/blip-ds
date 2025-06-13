@@ -1,4 +1,4 @@
-import { Component, h, State, Element, Method, EventEmitter, Event, Watch, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
 
 @Component({
   tag: 'bds-accordion',
@@ -82,8 +82,8 @@ export class Accordion {
     this.accGroup =
       this.element.parentElement.tagName == 'BDS-ACCORDION-GROUP' &&
       (this.element.parentElement as HTMLBdsAccordionGroupElement);
-    this.accheaders = this.element.children[0] as HTMLBdsAccordionHeaderElement;
-    this.accBodies = this.element.children[1] as HTMLBdsAccordionBodyElement;
+    this.accheaders = this.element.querySelector('bds-accordion-header') as HTMLBdsAccordionHeaderElement;
+    this.accBodies = this.element.querySelector('bds-accordion-body') as HTMLBdsAccordionBodyElement;
 
     // Passar a prop divisor para o AccordionBody
     const accordionBody = this.element.querySelector('bds-accordion-body') as HTMLBdsAccordionBodyElement;
