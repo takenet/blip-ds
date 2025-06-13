@@ -1,5 +1,5 @@
 @use '../../globals/helpers' as *;
-@use '../../globals/theme/color-legacy' as *;
+@use '../../globals/theme/color-legacy';
 
 :host {
   display: flex;
@@ -12,16 +12,16 @@
   width: 100%;
   max-width: 100%;
   max-height: 100%;
-  background-color: $color-neutral-light-breeze;
+  background-color: color-legacy.$color-neutral-light-breeze;
   border-radius: 8px;
   padding: 16px;
 }
 
 .warning__icon {
-  color: $color-extend-browns-cheetos;
+  color: color-legacy.$color-extend-browns-cheetos;
 }
 
 .warning__message {
-  color: $color-neutral-dark-rooftop;
+  color: color-legacy.$color-neutral-dark-rooftop;
   margin-left: 8px;
 }

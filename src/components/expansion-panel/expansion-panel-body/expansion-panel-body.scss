@@ -1,5 +1,5 @@
 @use '../../../globals/helpers' as *;
-@use '../../../globals/theme/color-legacy' as *;
+@use '../../../globals/theme/color-legacy';
 
 :host {
   display: block;
@@ -10,7 +10,7 @@
 
 
   .with-line {
-    border-left: 2px solid $color-neutral-medium-cloud;
+    border-left: 2px solid color-legacy.$color-neutral-medium-cloud;
     padding-left: 9px;
     padding-top: 16px;
     display: flex;
@@ -23,7 +23,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: $color-neutral-medium-cloud;
+    background-color: color-legacy.$color-neutral-medium-cloud;
     position: relative;
     right: 14px;
   }
@@ -33,7 +33,7 @@
     width: 37px;
     height: 30px;
     position: relative;
-    background: $color-neutral-medium-wave;
+    background: color-legacy.$color-neutral-medium-wave;
     justify-content: center;
     border-radius: 8px;
     font-family: $font-family;
@@ -43,7 +43,7 @@
     line-height: 22px;
     display: flex;
     align-items: center;
-    color: $color-neutral-dark-city;
+    color: color-legacy.$color-neutral-dark-city;
     top: 10px ;
   }
 }

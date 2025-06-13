@@ -1,5 +1,5 @@
 @use '../../../globals/helpers' as *;
-@use '../../../globals/theme/color-legacy' as *;
+@use '../../../globals/theme/color-legacy';
 
 .menuseparation {
   display: flex;
@@ -19,12 +19,12 @@
   & .dividor-item{
     height: 1px;
     width: 100%;
-    background-color: $color-neutral-medium-wave;
+    background-color: color-legacy.$color-neutral-medium-wave;
   }
 
   & .title-item{
     margin-right: 8px;
     margin-top: -4px;
-    color: $color-neutral-medium-elephant;
+    color: color-legacy.$color-neutral-medium-elephant;
   }
 }
