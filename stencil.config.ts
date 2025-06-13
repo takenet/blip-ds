@@ -46,6 +46,10 @@ export const config: Config = {
   testing: {
     timers: 'fake',
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+    collectCoverage: true,
+    collectCoverageFrom: [
+        'src/**/*.{ts,tsx}'
+    ],
   },
   devServer: {
     reloadStrategy: 'pageReload',
