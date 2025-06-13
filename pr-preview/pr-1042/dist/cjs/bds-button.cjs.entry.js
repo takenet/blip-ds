@@ -75,26 +75,6 @@ const Button = class {
          * Data test is the prop to specifically test the component action object.
          */
         this.dataTest = null;
-        this.handleClick = (ev) => {
-            if (!this.disabled) {
-                if (ev.key == 'Enter') {
-                    this.bdsClick.emit(ev);
-                }
-                if (ev.type == 'click') {
-                    this.bdsClick.emit(ev);
-                }
-                const form = this.el.closest('form');
-                if (form) {
-                    ev.preventDefault();
-                    const fakeButton = document.createElement('button');
-                    fakeButton.type = this.type;
-                    fakeButton.style.display = 'none';
-                    form.appendChild(fakeButton);
-                    fakeButton.click();
-                    fakeButton.remove();
-                }
-            }
-        };
     }
     async isActive(value) {
         this.active = value;
@@ -163,8 +143,24 @@ const Button = class {
         }
         return index.h("bds-loading-spinner", { size: "extra-small", color: this.loadingColor });
     }
+    handleClick(ev) {
+        if (!this.disabled) {
+            this.bdsClick.emit(ev);
+            const form = this.el.closest('form');
+            if (form) {
+                ev.preventDefault();
+                const fakeButton = document.createElement('button');
+                fakeButton.type = this.type;
+                fakeButton.style.display = 'none';
+                form.appendChild(fakeButton);
+                fakeButton.click();
+                fakeButton.remove();
+            }
+        }
+    }
+    ;
     render() {
-        return (index.h(index.Host, { key: 'e9b4730d290ad95c63c29fff94c4abc8d66c5a85', class: { host: true, block: this.block, group: this.group } }, index.h("div", { key: '6e739d614a4fc948abfb538186c9fdf7629f0f74', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), index.h("button", { key: '32fcfa2824f056e2264477b7c50ef6cd965b98e2', onClick: (ev) => this.handleClick(ev), disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
+        return (index.h(index.Host, { key: 'ea0fdfbd7dea4953d27e0ab7441657d93c0d2e18', class: { host: true, block: this.block, group: this.group } }, index.h("div", { key: 'a6f9a0831fe820f1b8095ace8724d8b2a683f491', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), index.h("button", { key: '61e8483a9b7cc8479f07f64860bfef3aca573f7e', onClick: (ev) => this.handleClick(ev), disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
                 button: true,
                 'button--block': this.block,
                 'button--group': this.group,
@@ -175,7 +171,7 @@ const Button = class {
                 [`button__color--${this.variant === 'delete' ? 'negative' : this.color}`]: true,
                 [`button__variant--${this.variant}--disabled`]: this.disabled,
                 [`button__size--${this.size}`]: true,
-            }, part: "button", "data-test": this.dataTest }, this.bdsLoading ? this.renderLoadingSpinner() : '', this.iconLeft || this.icon ? (index.h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: 'medium' })) : (''), index.h("bds-typo", { key: '189c95fa690eb50b419f582d861e92fc838f3054', class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, index.h("slot", { key: '5f09722a895c50a984b31cd7f952faec49e1621d' })), this.iconRight || this.arrow ? (index.h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.arrow ? 'arrow-right' : this.iconRight, color: "inherit", theme: this.iconTheme, type: this.typeIcon })) : (''))));
+            }, part: "button", "data-test": this.dataTest }, this.bdsLoading ? this.renderLoadingSpinner() : '', this.iconLeft || this.icon ? (index.h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: 'medium' })) : (''), index.h("bds-typo", { key: 'd655c2da9dfca9081e13d8791a93c583e51a4b80', class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, index.h("slot", { key: '10e2d744dfa152d1c7ee8e227346dc93df83c208' })), this.iconRight || this.arrow ? (index.h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.arrow ? 'arrow-right' : this.iconRight, color: "inherit", theme: this.iconTheme, type: this.typeIcon })) : (''))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

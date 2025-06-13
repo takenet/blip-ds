@@ -94,6 +94,6 @@ export declare class Button {
     buttonLegacy(): void;
     logSlotText(): void;
     renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement;
-    private handleClick;
+    handleClick(ev: any): void;
     render(): HTMLElement;
 }
