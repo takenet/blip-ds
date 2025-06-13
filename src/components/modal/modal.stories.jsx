@@ -139,7 +139,7 @@ export const Methods = () => {
             <bds-button icon="video" variant="secondary">
               Tutorial
             </bds-button>
-            <bds-button>Ok, entendi</bds-button>
+            <bds-button onClick={() => btToggle('modal')} >Ok, entendi</bds-button>
           </div>
         </bds-modal-action>
       </bds-modal>
@@ -148,8 +148,14 @@ export const Methods = () => {
 };
 
 export const FrameworkReact = (args) => {
+  const [modalOpen, setModalOpen] = React.useState(true);
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    <BdsModal open={args.open} outzone-close={args.outzoneClose} close-button={args.CloseButton} size={args.size}>
+    <BdsModal open={modalOpen} outzone-close={true} close-button={true}>
       <BdsTypo variant="fs-14" bold="regular">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -161,7 +167,7 @@ export const FrameworkReact = (args) => {
           <BdsButton icon="video" variant="secondary">
             Tutorial
           </BdsButton>
-          <BdsButton>Ok, entendi</BdsButton>
+          <BdsButton onClick={handleCloseModal}>Ok, entendi</BdsButton>
         </div>
       </BdsModalAction>
     </BdsModal>
