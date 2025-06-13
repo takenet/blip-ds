@@ -23,7 +23,7 @@ describe('bds-button e2e tests', () => {
       const bdsButton = await page.find('bds-button');
       await bdsButton.click();
 
-      expect(formSubmit).toHaveReceivedEvent();
+      expect(formSubmit).toHaveReceivedEventTimes(1);
     });
   });
 
@@ -98,7 +98,7 @@ describe('bds-button e2e tests', () => {
         await button.click();
         await page.waitForChanges();
 
-        expect(bdsClickEvent).toHaveReceivedEvent();
+        expect(bdsClickEvent).toHaveReceivedEventTimes(1);
       });
     });
 

@@ -44,7 +44,12 @@ export const config: Config = {
   },
   testing: {
     timers: 'fake',
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-web-security', '--disable-features=VizDisplayCompositor'],
+    browserArgs: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-web-security',
+      '--disable-features=VizDisplayCompositor',
+    ],
   },
   devServer: {
     reloadStrategy: 'pageReload',
