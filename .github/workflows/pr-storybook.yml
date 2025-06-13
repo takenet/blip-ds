@@ -28,11 +28,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: NPM Install and build
         if: github.event.action != 'closed'
         run: |
-          npm install
+          npm ci
           npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

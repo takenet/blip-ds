@@ -12,3 +12,4 @@ coverage
 # dont lint the blip-ds-react package
 blip-ds-react
 /src
+storybook-static
