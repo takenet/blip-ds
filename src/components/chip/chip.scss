@@ -1,3 +1,6 @@
+@use '../../globals/helpers' as *;
+@use '../../globals/theme/color-legacy';
+
 :host {
   display: inline-flex;
   align-items: center;
@@ -13,44 +16,44 @@
 }
 
 :host(.chip--primary) {
-  background: $color-disabled-bg;
-  color: $color-primary-main;
+  background: color-legacy.$color-disabled-bg;
+  color: color-legacy.$color-primary-main;
 }
 
 :host(.chip--click.chip--primary:hover) {
-  background: $color-hover-light;
-  color: $color-primary-dark;
+  background: color-legacy.$color-hover-light;
+  color: color-legacy.$color-primary-dark;
 }
 
 :host(.chip--watermelon) {
-  background: $color-primary-pinks-watermelon;
-  color: $color-neutral-light-snow;
+  background: color-legacy.$color-primary-pinks-watermelon;
+  color: color-legacy.$color-neutral-light-snow;
 }
 
 :host(.chip--default) {
-  background: $color-neutral-light-breeze;
-  color: $color-neutral-medium-cloud;
+  background: color-legacy.$color-neutral-light-breeze;
+  color: color-legacy.$color-neutral-medium-cloud;
 }
 
 :host(.chip--danger) {
-  background: $color-extend-reds-flower;
-  color: $color-extend-reds-delete;
+  background: color-legacy.$color-extend-reds-flower;
+  color: color-legacy.$color-extend-reds-delete;
 }
 
 :host(.chip--click.chip--danger:hover) {
-  background: $color-disabled-delete;
-  color: $color-extend-reds-dragon;
+  background: color-legacy.$color-disabled-delete;
+  color: color-legacy.$color-extend-reds-dragon;
 }
 
 :host(.chip--filter) {
-  background: $color-primary-dark;
-  color: $color-neutral-light-snow;
+  background: color-legacy.$color-primary-dark;
+  color: color-legacy.$color-neutral-light-snow;
   
 }
 
 :host(.chip--click.chip--filter:hover) {
-  background: $color-primary-night;
-  color: $color-neutral-light-snow;
+  background: color-legacy.$color-primary-night;
+  color: color-legacy.$color-neutral-light-snow;
 }
 
 :host(.chip--standard) {

@@ -121,7 +121,7 @@ export class RichText {
   /**
    * Emitted when the input has changed.
    */
-  @Event() bdsRichTextInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsRichTextInput!: EventEmitter<InputEvent>;
 
   /**
    * Event input onblur.
@@ -302,9 +302,9 @@ export class RichText {
   };
 
   // Função para ajustar parágrafos durante a edição
-  private onInput(ev: Event) {
+  private onInput(ev: InputEvent) {
     ev.preventDefault();
-    this.bdsRichTextInput.emit(ev as KeyboardEvent);
+    this.bdsRichTextInput.emit(ev);
 
     this.bdsRichTextChange.emit({ value: this.editor.innerHTML });
 
@@ -722,7 +722,7 @@ export class RichText {
     ElementToFocus.focus();
   }
 
-  private addLinkInput(ev: CustomEvent) {
+  private addLinkInput(ev: InputEvent) {
     ev.preventDefault();
     const input = ev.target as HTMLInputElement | null;
     this.linkButtonInput = input.value;
@@ -974,7 +974,7 @@ export class RichText {
                       <bds-grid padding="half" alignItems="center" gap="half" slot="dropdown-content">
                         <bds-input
                           ref={this.refInputSetLink}
-                          onBdsInput={(ev) => this.addLinkInput(ev)}
+                          onBdsInput={(ev) => this.addLinkInput(ev.detail)}
                           style={{ flexShrink: '99999' }}
                           placeholder="adcione o link aqui"
                           onKeyDown={(ev) => this.createLinkKeyDown(ev)}

@@ -123,7 +123,7 @@ export class Slider {
     return percentage;
   };
 
-  private onInputSlide = (ev: Event): void => {
+  private onInputSlide = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     this.progressBar.style.width = `${this.valuePercent(input)}%`;
     const valueName = this.emiterChange(parseInt(input.value));

@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch, Listen } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -207,14 +207,10 @@ export class Button {
     return <bds-loading-spinner size="extra-small" color={this.loadingColor}></bds-loading-spinner>;
   }
 
-  private handleClick = (ev) => {
+  @Listen('click', { capture: true })
+  handleClick(ev): void {
     if (!this.disabled) {
-      if (ev.key == 'Enter') {
-        this.bdsClick.emit(ev);
-      }
-      if (ev.type == 'click') {
-        this.bdsClick.emit(ev);
-      }
+      this.bdsClick.emit(ev);
 
       const form = this.el.closest('form');
       if (form) {
@@ -269,7 +265,7 @@ export class Button {
             ''
           )}
           <bds-typo
-            class={{ typo_buttom: true, button__content:true, hide: this.bdsLoading }}
+            class={{ typo_buttom: true, button__content: true, hide: this.bdsLoading }}
             variant="fs-14"
             lineHeight="simple"
             bold="bold"

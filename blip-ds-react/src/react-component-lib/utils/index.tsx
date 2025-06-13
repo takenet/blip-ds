@@ -37,7 +37,7 @@ export const createForwardRef = <PropType, ElementType>(ReactComponent: any, dis
   };
   forwardRef.displayName = displayName;
 
-  return React.forwardRef(forwardRef);
+  return React.forwardRef(forwardRef as any);
 };
 
 export const defineCustomElement = (tagName: string, customElement: any) => {

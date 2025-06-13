@@ -200,7 +200,7 @@ export class Input {
   /**
    * Evento disparado quando o input recebe um input (digitação).
    */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInput!: EventEmitter<InputEvent>;
 
   /**
    * Evento disparado quando o input perde o foco.
@@ -322,13 +322,13 @@ if(!this.encode) return value;
   /**
    * Função chamada ao digitar no campo de entrada.
    */
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     this.onBdsInputValidations();
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsInput.emit(ev);
   };
 
   /**

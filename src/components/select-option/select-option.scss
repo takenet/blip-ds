@@ -1,4 +1,5 @@
-@import 'mixins';
+@use '../../globals/helpers' as *;
+@use '../../globals/theme/color-legacy.scss';
 
 $select-option-padding: 8px;
 $select-option-left: 12px;
@@ -105,7 +106,7 @@ $select-option-left: 12px;
 
   &:focus {
     background-color: $color-surface-1;
-    color: $color-primary-main;
+    color: color-legacy.$color-primary-main;
   }
 
   &--selected {

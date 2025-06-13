@@ -20,6 +20,10 @@ export const config: Config = {
       ],
     },
     {
+      type: 'dist-custom-elements',
+      externalRuntime: false,
+    },
+    {
       type: 'docs-readme',
     },
     {
@@ -27,17 +31,12 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      componentCorePackage: '../../loader',
-      proxiesFile: './blip-ds-react/src/components.ts',
+      outDir: '../blip-ds-react/dist',
     }),
   ],
   buildEs5: 'prod',
   extras: {
     appendChildSlotFix: true,
-    cssVarsShim: true,
-    dynamicImportShim: true,
-    shadowDomShim: true,
-    safari10: true,
     scriptDataOpts: true,
     cloneNodeFix: false,
     slotChildNodesFix: true,
@@ -45,7 +44,12 @@ export const config: Config = {
   },
   testing: {
     timers: 'fake',
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+    browserArgs: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-web-security',
+      '--disable-features=VizDisplayCompositor',
+    ],
   },
   devServer: {
     reloadStrategy: 'pageReload',
