@@ -25,8 +25,7 @@ jobs:
 
       - name: NPM Install, build and test
         run: |
-          npm install
-          npm run eslint
+          npm ci
           npm run test
           npm run build
         env:
