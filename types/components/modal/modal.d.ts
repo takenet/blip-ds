@@ -42,6 +42,6 @@ export declare class BdsModal implements ComponentInterface {
   protected isOpenChanged(): void;
   private listener;
   private handleMouseClick;
-  private onClickCloseButtom;
+  private onClickOutzone;
   render(): any;
 }
