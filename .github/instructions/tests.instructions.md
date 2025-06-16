@@ -29,3 +29,6 @@ npm run test:unit -- -- <test-file-path>
 # E2e tests:
 npm run test:e2e -- -- <test-file-path>
 ```
+
+> Stencil can not run tests using fake timers, so DO NOT USE fake timers in tests.
+> Only for reference: https://github.com/stenciljs/core/issues/3292

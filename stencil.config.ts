@@ -44,7 +44,6 @@ export const config: Config = {
     experimentalImportInjection: true,
   },
   testing: {
-    timers: 'fake',
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     collectCoverage: true,
     collectCoverageFrom: ['src/**/*.{ts,tsx}'],
