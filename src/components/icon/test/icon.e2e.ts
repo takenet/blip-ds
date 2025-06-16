@@ -2,39 +2,36 @@ import { newE2EPage } from '@stencil/core/testing';
 
 describe('bds-icon e2e tests', () => {
   let page;
+  let icon;
 
   beforeEach(async () => {
     page = await newE2EPage({
       html: `<bds-icon name="edit" size="medium" theme="outline"></bds-icon>`,
     });
+    icon = await page.find('bds-icon');
   });
 
   describe('Properties', () => {
     it('should render icon component', async () => {
-      const icon = await page.find('bds-icon');
       expect(icon).toBeTruthy();
     });
 
     it('should render with correct name', async () => {
-      const icon = await page.find('bds-icon');
       const name = await icon.getProperty('name');
       expect(name).toBe('edit');
     });
 
     it('should render with correct size', async () => {
-      const icon = await page.find('bds-icon');
       const size = await icon.getProperty('size');
       expect(size).toBe('medium');
     });
 
     it('should render with correct theme', async () => {
-      const icon = await page.find('bds-icon');
       const theme = await icon.getProperty('theme');
       expect(theme).toBe('outline');
     });
 
     it('should handle different sizes', async () => {
-      const icon = await page.find('bds-icon');
       await icon.setProperty('size', 'large');
       await page.waitForChanges();
 
@@ -43,7 +40,6 @@ describe('bds-icon e2e tests', () => {
     });
 
     it('should handle different themes', async () => {
-      const icon = await page.find('bds-icon');
       await icon.setProperty('theme', 'solid');
       await page.waitForChanges();
 
@@ -52,7 +48,6 @@ describe('bds-icon e2e tests', () => {
     });
 
     it('should handle emoji type', async () => {
-      const icon = await page.find('bds-icon');
       await icon.setProperty('type', 'emoji');
       await page.waitForChanges();
 
@@ -61,7 +56,6 @@ describe('bds-icon e2e tests', () => {
     });
 
     it('should handle logo type', async () => {
-      const icon = await page.find('bds-icon');
       await icon.setProperty('type', 'logo');
       await page.waitForChanges();
 
@@ -72,7 +66,6 @@ describe('bds-icon e2e tests', () => {
 
   describe('Structure', () => {
     it('should render with proper role', async () => {
-      const icon = await page.find('bds-icon');
       const role = await icon.getAttribute('role');
       expect(role).toBe('img');
     });
@@ -86,7 +79,6 @@ describe('bds-icon e2e tests', () => {
     });
 
     it('should have proper CSS classes', async () => {
-      const icon = await page.find('bds-icon');
       const className = await icon.getProperty('className');
       expect(className).toContain('bds-icon');
     });
@@ -94,7 +86,6 @@ describe('bds-icon e2e tests', () => {
 
   describe('Accessibility', () => {
     it('should have proper aria-label', async () => {
-      const icon = await page.find('bds-icon');
       await page.waitForChanges();
       
       const ariaLabel = await icon.getAttribute('aria-label');
@@ -102,13 +93,11 @@ describe('bds-icon e2e tests', () => {
     });
 
     it('should have role img for accessibility', async () => {
-      const icon = await page.find('bds-icon');
       const role = await icon.getAttribute('role');
       expect(role).toBe('img');
     });
 
     it('should be accessible', async () => {
-      const icon = await page.find('bds-icon');
       expect(icon).toBeTruthy();
       
       const tagName = await icon.getProperty('tagName');
@@ -118,7 +107,6 @@ describe('bds-icon e2e tests', () => {
 
   describe('Lazy Loading', () => {
     it('should handle lazy loading property', async () => {
-      const icon = await page.find('bds-icon');
       await icon.setProperty('lazy', true);
       await page.waitForChanges();
 
@@ -129,7 +117,6 @@ describe('bds-icon e2e tests', () => {
 
   describe('Color and Styling', () => {
     it('should accept color property', async () => {
-      const icon = await page.find('bds-icon');
       await icon.setProperty('color', '#ff0000');
       await page.waitForChanges();
 
@@ -138,7 +125,6 @@ describe('bds-icon e2e tests', () => {
     });
 
     it('should handle data-test attribute', async () => {
-      const icon = await page.find('bds-icon');
       await icon.setProperty('dataTest', 'test-icon');
       await page.waitForChanges();
 
