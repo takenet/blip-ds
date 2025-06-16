@@ -27,6 +27,8 @@ const scripts = {
 	"build:watch": "stencil build --watch",
 	"build:react": "cd ./blip-ds-react && npm install && npm run build",
 	test: "stencil test --spec --e2e --screenshot --coverage",
+	"test:e2e": "stencil test --e2e --screenshot",
+	"test:unit": "stencil test --spec --coverage",
 	"test:watch": "stencil test --spec --e2e --screenshot --watch",
 	storybook: "storybook dev -p 6006",
 	"storybook:build": "storybook build",
