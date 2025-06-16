@@ -67,19 +67,17 @@ export class BdsModal implements ComponentInterface {
   @Method()
   async toggle() {
     this.open = !this.open;
-
-    if (this.open) {
-      this.bdsModalChanged.emit({ modalStatus: 'opened' });
-    } else {
-      this.bdsModalChanged.emit({ modalStatus: 'closed' });
-    }
   }
 
   @Watch('open')
   protected isOpenChanged(): void {
     if (this.open) {
       document.addEventListener('keydown', this.listener, false);
-    } else document.removeEventListener('keydown', this.listener, false);
+      this.bdsModalChanged.emit({ modalStatus: 'opened' });
+    } else {
+      document.removeEventListener('keydown', this.listener, false);
+      this.bdsModalChanged.emit({ modalStatus: 'closed' });
+    }
   }
 
   private listener = (event) => {
@@ -90,13 +88,11 @@ export class BdsModal implements ComponentInterface {
 
   private handleMouseClick = (): void => {
     this.open = false;
-    this.bdsModalChanged.emit({ modalStatus: 'closed' });
   };
 
-  private onClickCloseButtom = () => {
-    if (this.outzoneClose === true) {
+  private onClickOutzone = () => {
+    if (this.outzoneClose) {
       this.open = false;
-      this.bdsModalChanged.emit({ modalStatus: 'closed' });
     }
   };
 
@@ -109,7 +105,7 @@ export class BdsModal implements ComponentInterface {
           [`modal__dialog--${this.size}`]: true,
         }}
       >
-        <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
+        <div class={{ outzone: true }} onClick={() => this.onClickOutzone()} data-test={this.dtOutzone}></div>
         <div class={{ modal: true, [`modal--${this.size}`]: true }}>
           {this.closeButton && (
             <bds-icon
