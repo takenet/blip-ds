@@ -51,11 +51,11 @@ This checklist tracks the progress of implementing comprehensive unit tests for 
 - [x] ✅ **divider** - Comprehensive tests implemented
 - [x] ✅ **dropdown** - Comprehensive unit tests implemented and passing
 ### E
-- [ ] ❌ **expansion-panel** - Basic test (creation + render check only)
-- [ ] ❌ **expansion-panel-body** - Basic test (creation + render check only)
-- [ ] ❌ **expansion-panel-header** - Basic test (creation + render check only)
+- [x] ✅ **expansion-panel** - Comprehensive unit tests implemented and passing
+- [x] ✅ **expansion-panel-body** - Comprehensive unit tests implemented and passing
+- [x] ✅ **expansion-panel-header** - Comprehensive unit tests implemented and passing
 ### G
-- [ ] ❌ **grid** - Basic test (creation + render check only)
+- [x] ✅ **grid** - Comprehensive unit tests implemented and passing
 ### I
 - [ ] ❌ **icon** - Basic test (creation + render check only)
 - [ ] ❌ **icon-button** - Basic test (creation + render check only)
@@ -129,9 +129,9 @@ This checklist tracks the progress of implementing comprehensive unit tests for 
 ## Test Coverage Summary
 
 - **Total Components**: 100
-- **Complete**: 32 (32.0%)
+- **Complete**: 36 (36.0%)
 - **In Progress**: 0 (0%)
-- **Needs Work**: 68 (68.0%)
+- **Needs Work**: 64 (64.0%)
 
 ## Current Status
 

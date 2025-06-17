@@ -222,7 +222,7 @@ describe('bds-chip', () => {
       const deleteHandler = jest.fn();
       page.root.addEventListener('bdsDelete', deleteHandler);
 
-      const deleteButton = page.root.shadowRoot.querySelector('.chip__delete');
+      const deleteButton = page.root.shadowRoot.querySelector('.chip__delete') as HTMLElement;
       deleteButton.click();
 
       expect(deleteHandler).toHaveBeenCalledWith(
@@ -241,7 +241,7 @@ describe('bds-chip', () => {
       const deleteHandler = jest.fn();
       page.root.addEventListener('bdsDelete', deleteHandler);
 
-      const deleteButton = page.root.shadowRoot.querySelector('.chip__delete');
+      const deleteButton = page.root.shadowRoot.querySelector('.chip__delete') as HTMLElement;
       deleteButton.click();
 
       expect(deleteHandler).not.toHaveBeenCalled();
@@ -291,58 +291,89 @@ describe('bds-chip', () => {
     });
   });
 
-  describe('class methods', () => {
-    it('should return correct click class from getClickClass method', () => {
-      const component = new Chip();
+  describe('css class methods behavior', () => {
+    it('should apply correct click class when clickable is true', async () => {
+      const page = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip clickable="true">Clickable Chip</bds-chip>`,
+      });
       
-      component.clickable = true;
-      expect(component.getClickClass()).toEqual({ 'chip--click': true });
-      
-      component.clickable = false;
-      expect(component.getClickClass()).toEqual({});
+      expect(page.root.classList.contains('chip--click')).toBeTruthy();
     });
 
-    it('should return correct size class from getSizeClass method', () => {
-      const component = new Chip();
+    it('should not apply click class when clickable is false', async () => {
+      const page = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip clickable="false">Non-clickable Chip</bds-chip>`,
+      });
       
-      component.size = 'standard';
-      expect(component.getSizeClass()).toEqual({ 'chip--standard': true });
-      
-      component.size = 'tall';
-      expect(component.getSizeClass()).toEqual({ 'chip--tall': true });
+      expect(page.root.classList.contains('chip--click')).toBeFalsy();
     });
 
-    it('should return correct state class from getStateClass method', () => {
-      const component = new Chip();
+    it('should apply correct size classes', async () => {
+      const standardPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip size="standard">Standard Chip</bds-chip>`,
+      });
       
-      // Test disabled state (highest priority)
-      component.disabled = true;
-      component.danger = true;
-      component.variant = 'primary';
-      expect(component.getStateClass()).toEqual({ 'chip--default': true });
+      expect(standardPage.root.classList.contains('chip--standard')).toBeTruthy();
+
+      const tallPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip size="tall">Tall Chip</bds-chip>`,
+      });
+      
+      expect(tallPage.root.classList.contains('chip--tall')).toBeTruthy();
+    });
+
+    it('should apply correct state classes based on props', async () => {
+      // Test disabled state
+      const disabledPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip disabled="true" danger="true" variant="primary">Disabled Chip</bds-chip>`,
+      });
+      
+      expect(disabledPage.root.classList.contains('chip--default')).toBeTruthy();
       
       // Test danger state
-      component.disabled = false;
-      component.danger = true;
-      expect(component.getStateClass()).toEqual({ 'chip--danger': true });
+      const dangerPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip danger="true">Danger Chip</bds-chip>`,
+      });
+      
+      expect(dangerPage.root.classList.contains('chip--danger')).toBeTruthy();
       
       // Test filter state
-      component.danger = false;
-      component.filter = true;
-      expect(component.getStateClass()).toEqual({ 'chip--filter': true });
+      const filterPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip filter="true">Filter Chip</bds-chip>`,
+      });
+      
+      expect(filterPage.root.classList.contains('chip--filter')).toBeTruthy();
       
       // Test primary variant
-      component.filter = false;
-      component.variant = 'primary';
-      expect(component.getStateClass()).toEqual({ 'chip--primary': true });
+      const primaryPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip variant="primary">Primary Chip</bds-chip>`,
+      });
+      
+      expect(primaryPage.root.classList.contains('chip--primary')).toBeTruthy();
       
       // Test watermelon variant
-      component.variant = 'watermelon';
-      expect(component.getStateClass()).toEqual({ 'chip--watermelon': true });
+      const watermelonPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip variant="watermelon">Watermelon Chip</bds-chip>`,
+      });
       
-      // Test default
-      component.variant = 'default';
-      expect(component.getStateClass()).toEqual({ 'chip--default': true });
+      expect(watermelonPage.root.classList.contains('chip--watermelon')).toBeTruthy();
+      
+      // Test default variant
+      const defaultPage = await newSpecPage({
+        components: [Chip],
+        html: `<bds-chip variant="default">Default Chip</bds-chip>`,
+      });
+      
+      expect(defaultPage.root.classList.contains('chip--default')).toBeTruthy();
     });
   });
 
