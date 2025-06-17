@@ -1,33 +1,41 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('bds-typo e2e tests', () => {
-  let page;
-
-  beforeEach(async () => {
-    page = await newE2EPage({
-      html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
-    });
-  });
-
   describe('Properties', () => {
     it('should render typo component', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       expect(typo).toBeTruthy();
     });
 
     it('should render with correct variant', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       const variant = await typo.getProperty('variant');
       expect(variant).toBe('fs-16');
     });
 
     it('should render with correct tag', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       const tag = await typo.getProperty('tag');
       expect(tag).toBe('p');
     });
 
     it('should handle bold property', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('bold', 'semi-bold');
       await page.waitForChanges();
@@ -37,6 +45,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should handle italic property', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('italic', true);
       await page.waitForChanges();
@@ -46,6 +58,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should handle noWrap property', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('noWrap', true);
       await page.waitForChanges();
@@ -55,6 +71,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should handle paragraph property', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('paragraph', true);
       await page.waitForChanges();
@@ -64,6 +84,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should handle margin property', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('margin', false);
       await page.waitForChanges();
@@ -73,6 +97,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should handle lineHeight property', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('lineHeight', 'simple');
       await page.waitForChanges();
@@ -82,6 +110,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should handle dataTest property', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('dataTest', 'test-typo');
       await page.waitForChanges();
@@ -93,11 +125,19 @@ describe('bds-typo e2e tests', () => {
 
   describe('Structure', () => {
     it('should render correct HTML tag', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const element = await page.find('bds-typo >>> p');
       expect(element).toBeTruthy();
     });
 
     it('should render different tags when tag property changes', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('tag', 'h1');
       await page.waitForChanges();
@@ -107,11 +147,19 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should render slot content', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const slot = await page.find('bds-typo >>> slot');
       expect(slot).toBeTruthy();
     });
 
     it('should apply correct CSS classes', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const element = await page.find('bds-typo >>> p');
       const className = await element.getProperty('className');
       expect(className).toContain('typo');
@@ -119,6 +167,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should apply italic class when italic is true', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('italic', true);
       await page.waitForChanges();
@@ -129,6 +181,10 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should apply bold class when bold is set', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('bold', 'bold');
       await page.waitForChanges();
@@ -141,6 +197,10 @@ describe('bds-typo e2e tests', () => {
 
   describe('Accessibility', () => {
     it('should be accessible', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       expect(typo).toBeTruthy();
       
@@ -149,21 +209,29 @@ describe('bds-typo e2e tests', () => {
     });
 
     it('should render semantic HTML elements', async () => {
-      const typo = await page.find('bds-typo');
-      await typo.setProperty('tag', 'h2');
-      await page.waitForChanges();
-
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="h2">Sample Text</bds-typo>`,
+      });
+      
       const h2Element = await page.find('bds-typo >>> h2');
       expect(h2Element).toBeTruthy();
     });
 
     it('should render text content in slot', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       const textContent = await typo.textContent;
       expect(textContent).toContain('Sample Text');
     });
 
     it('should apply data-test attribute correctly', async () => {
+      const page = await newE2EPage({
+        html: `<bds-typo variant="fs-16" tag="p" data-test="accessibility-test">Sample Text</bds-typo>`,
+      });
+      
       const typo = await page.find('bds-typo');
       await typo.setProperty('dataTest', 'accessibility-test');
       await page.waitForChanges();
