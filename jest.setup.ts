@@ -1,14 +1,17 @@
 /* eslint-disable */
-// Mock timers to prevent setTimeout issues in tests
-// https://github.com/stenciljs/core/issues/3292
 
 const originalSetTimeout = global.setTimeout;
 const originalSetInterval = global.setInterval;
 const originalClearTimeout = global.clearTimeout;
 const originalClearInterval = global.clearInterval;
+const originalConsoleWarn = console.warn;
 
 beforeEach(() => {
   jest.clearAllTimers();
+
+  // Mock timers to prevent setTimeout issues in tests
+  // https://github.com/stenciljs/core/issues/3292
+
   global.setTimeout = jest.fn((fn, _delay) => {
     if (typeof fn === 'function') {
       // Execute immediately for tests
@@ -25,6 +28,17 @@ beforeEach(() => {
   }) as any;
   global.clearTimeout = jest.fn();
   global.clearInterval = jest.fn();
+
+
+  // Mock console.warn to prevent immutable warnings in tests
+  // https://github.com/stenciljs/core/issues/2832
+  global.console.warn = (...args: any[]) => {
+    const arg1 = args[0];
+    if (typeof arg1 === "string" && arg1.includes("stenciljs.com/docs/properties#prop-mutability"))
+      return undefined;
+
+    originalConsoleWarn(...args);
+  }
 });
 
 afterEach(() => {
@@ -33,4 +47,5 @@ afterEach(() => {
   global.setInterval = originalSetInterval;
   global.clearTimeout = originalClearInterval;
   global.clearInterval = originalClearInterval;
+  global.console.warn = originalConsoleWarn;
 });
