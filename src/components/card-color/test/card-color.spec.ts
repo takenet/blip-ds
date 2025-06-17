@@ -74,19 +74,25 @@ describe('bds-card-color', () => {
 
       const paperElement = page.root.shadowRoot.querySelector('bds-paper');
       expect(paperElement).toBeTruthy();
-      
+
       // Verify that the paper element has an onClick handler by checking if it exists
       expect(paperElement.getAttribute('onClick')).toBeFalsy(); // Stencil handles this internally
     });
 
     it('should show success message when handleCopyVariable is called', async () => {
+      let fn = null;
+      global.setTimeout = jest.fn((callback, _) => {
+        fn = callback;
+        return 1;
+      }) as any;
+
       const page = await newSpecPage({
         components: [CardColor],
         html: `<bds-card-color name="Primary" variable="color-primary"></bds-card-color>`,
       });
 
       const componentInstance = page.rootInstance;
-      
+
       // Mock clipboard to prevent errors
       Object.defineProperty(global.navigator, 'clipboard', {
         value: { writeText: jest.fn(() => Promise.resolve()) },
@@ -107,31 +113,40 @@ describe('bds-card-color', () => {
       const copiedElement = page.root.shadowRoot.querySelector('.card-text-copie');
       expect(copiedElement).toBeTruthy();
       expect(copiedElement.textContent.trim()).toBe('Cor copiada!');
+
+      fn();
+
+      await page.waitForChanges();
+      expect(componentInstance.showMessage).toBe(false);
     });
 
     it('should hide success message after timeout', async () => {
+      let fn = null;
+      global.setTimeout = jest.fn((callback, _) => {
+        fn = callback;
+        return 1;
+      }) as any;
+
       const page = await newSpecPage({
         components: [CardColor],
         html: `<bds-card-color name="Primary" variable="color-primary"></bds-card-color>`,
       });
 
       const componentInstance = page.rootInstance;
-      
+
       // Mock clipboard to prevent errors
       Object.defineProperty(global.navigator, 'clipboard', {
         value: { writeText: jest.fn(() => Promise.resolve()) },
         writable: true,
       });
-      
+
       // Test that the component sets up the timeout mechanism
       componentInstance.handleCopyVariable('color-primary');
       expect(componentInstance.showMessage).toBe(true);
 
-      // Since we can't use fake timers with Stencil, we'll just verify that the state changes correctly
-      // when we manually set showMessage back to false (simulating the timeout)
-      componentInstance.showMessage = false;
+      fn(); // Simulate timeout callback
       await page.waitForChanges();
-      
+
       expect(componentInstance.showMessage).toBe(false);
       expect(page.root.shadowRoot.querySelector('.card-text')).toBeTruthy();
       expect(page.root.shadowRoot.querySelector('.card-text-copie')).toBeFalsy();
@@ -224,13 +239,13 @@ describe('bds-card-color', () => {
       });
 
       const componentInstance = page.rootInstance;
-      
+
       // Mock clipboard to prevent errors
       Object.defineProperty(global.navigator, 'clipboard', {
         value: { writeText: jest.fn(() => Promise.resolve()) },
         writable: true,
       });
-      
+
       const handleCopyVariableSpy = jest.spyOn(componentInstance, 'handleCopyVariable');
 
       // Call the method directly instead of clicking
@@ -240,19 +255,24 @@ describe('bds-card-color', () => {
     });
 
     it('should update showMessage state correctly', async () => {
+      // Never change showMessage to false
+      global.setTimeout = jest.fn(() => {
+        return 1;
+      }) as any;
+
       const page = await newSpecPage({
         components: [CardColor],
         html: `<bds-card-color name="Primary" variable="color-primary"></bds-card-color>`,
       });
 
       const componentInstance = page.rootInstance;
-      
+
       // Mock clipboard to prevent errors
       Object.defineProperty(global.navigator, 'clipboard', {
         value: { writeText: jest.fn(() => Promise.resolve()) },
         writable: true,
       });
-      
+
       expect(componentInstance.showMessage).toBe(false);
 
       componentInstance.handleCopyVariable('color-primary');
@@ -268,7 +288,7 @@ describe('bds-card-color', () => {
 
     it('should render method return JSX element', () => {
       const component = new CardColor();
-      
+
       const result = component.render();
       expect(result).toBeTruthy();
       expect(typeof result).toBe('object');

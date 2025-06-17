@@ -3,36 +3,18 @@ jest.mock('../../../utils/position-element', () => ({
   getScrollParent: jest.fn().mockImplementation(() => {
     const mockElement = document.createElement('div');
     Object.defineProperty(mockElement, 'tagName', { value: 'BODY', writable: false });
-    Object.defineProperty(mockElement, 'classList', { 
+    Object.defineProperty(mockElement, 'classList', {
       value: {
         contains: jest.fn(() => false),
         add: jest.fn(),
         remove: jest.fn()
       },
-      writable: false 
+      writable: false
     });
     return mockElement;
   }),
   positionAbsoluteElement: jest.fn(() => ({ x: 'center', y: 'bottom' }))
 }));
-
-// Mock timers to prevent setTimeout issues in tests
-const originalSetTimeout = global.setTimeout;
-beforeEach(() => {
-  jest.clearAllTimers();
-  global.setTimeout = jest.fn((fn, _delay) => {
-    if (typeof fn === 'function') {
-      // Execute immediately for tests
-      fn();
-    }
-    return 1 as any;
-  }) as any;
-});
-
-afterEach(() => {
-  jest.clearAllTimers();
-  global.setTimeout = originalSetTimeout;
-});
 
 import { newSpecPage } from '@stencil/core/testing';
 import { BdsDropdown } from '../dropdown';
@@ -85,7 +67,7 @@ describe('bds-dropdown', () => {
         </bds-dropdown>
       `,
     });
-    
+
     const component = page.rootInstance;
     expect(component.activeMode).toBe('hover');
     expect(component.open).toBe(true);
@@ -100,10 +82,10 @@ describe('bds-dropdown', () => {
     });
     const component = page.rootInstance;
     expect(component.open).toBe(false);
-    
+
     await component.toggle();
     expect(component.open).toBe(true);
-    
+
     await component.toggle();
     expect(component.open).toBe(false);
   });
@@ -115,7 +97,7 @@ describe('bds-dropdown', () => {
     });
     const component = page.rootInstance;
     expect(component.open).toBe(false);
-    
+
     await component.setOpen();
     expect(component.open).toBe(true);
   });
@@ -126,7 +108,7 @@ describe('bds-dropdown', () => {
       html: `<bds-dropdown open="true"><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
     const component = page.rootInstance;
-    
+
     await component.setClose();
     expect(component.open).toBe(false);
     expect(component.stateOpenSubMenu).toBe(false);
@@ -145,7 +127,7 @@ describe('bds-dropdown', () => {
       `,
     });
     expect(clickPage.rootInstance.activeMode).toBe('click');
-    
+
     // Test with hover mode
     const hoverPage = await newSpecPage({
       components: [BdsDropdown],
@@ -163,7 +145,7 @@ describe('bds-dropdown', () => {
   it('should accept all valid position values', async () => {
     // Test a few key position values to ensure they are accepted correctly
     const testPositions = ['auto', 'top-center', 'bottom-left', 'right-center'];
-    
+
     for (const position of testPositions) {
       const page = await newSpecPage({
         components: [BdsDropdown],
@@ -196,15 +178,15 @@ describe('bds-dropdown', () => {
       html: `<bds-dropdown><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
     const component = page.rootInstance;
-    
+
     // Test initial state
     expect(component.stateOpenSubMenu).toBe(false);
     expect(component.stateSubMenu).toBe('close');
-    
+
     // Test state changes through public properties
     component.stateOpenSubMenu = true;
     expect(component.stateOpenSubMenu).toBe(true);
-    
+
     component.stateOpenSubMenu = false;
     expect(component.stateOpenSubMenu).toBe(false);
   });
@@ -215,14 +197,14 @@ describe('bds-dropdown', () => {
       html: `<bds-dropdown><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
     const component = page.rootInstance;
-    
+
     // Test each state property directly
     component.stateSubMenu = 'open';
     expect(component.stateSubMenu).toBe('open');
-    
+
     component.stateSubMenu = 'pending';
     expect(component.stateSubMenu).toBe('pending');
-    
+
     component.stateSubMenu = 'close';
     expect(component.stateSubMenu).toBe('close');
   });
@@ -232,7 +214,7 @@ describe('bds-dropdown', () => {
       components: [BdsDropdown],
       html: `<bds-dropdown><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
-    
+
     expect(page.root).toBeTruthy();
     expect(page.root.shadowRoot).toBeTruthy();
   });
@@ -242,7 +224,7 @@ describe('bds-dropdown', () => {
       components: [BdsDropdown],
       html: `<bds-dropdown open="true"><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
-    
+
     expect(page.root).toBeTruthy();
     expect(page.rootInstance.open).toBe(true);
   });
@@ -252,7 +234,7 @@ describe('bds-dropdown', () => {
       components: [BdsDropdown],
       html: `<bds-dropdown active-mode="hover"><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
-    
+
     expect(page.root).toBeTruthy();
     expect(page.rootInstance.activeMode).toBe('hover');
   });
@@ -264,7 +246,7 @@ describe('bds-dropdown', () => {
     });
     const component = page.rootInstance;
     component.zIndex = 1;
-    
+
     expect(component.zIndex).toBe(1);
   });
 
@@ -282,17 +264,17 @@ describe('bds-dropdown', () => {
         </bds-dropdown>
       `,
     });
-    
+
     const component = page.rootInstance;
-    
+
     // Test toggle method changes open state
     expect(component.open).toBe(false);
     await component.toggle();
     expect(component.open).toBe(true);
-    
+
     await component.toggle();
     expect(component.open).toBe(false);
-    
+
     // For unit tests, we validate that the toggle method correctly changes the open state
     // The event emission is handled by Stencil's watch decorator in the real component
     expect(component.open).toBe(false);
@@ -309,17 +291,17 @@ describe('bds-dropdown', () => {
         </bds-dropdown>
       `,
     });
-    
+
     const component = page.rootInstance;
-    
+
     // Test initial state
     expect(component.zIndex).toBe(0);
     expect(component.stateOpenSubMenu).toBe(false);
-    
+
     // Test state changes directly through properties
     component.stateOpenSubMenu = true;
     expect(component.stateOpenSubMenu).toBe(true);
-    
+
     component.stateOpenSubMenu = false;
     expect(component.stateOpenSubMenu).toBe(false);
   });
@@ -330,7 +312,7 @@ describe('bds-dropdown', () => {
       html: `<bds-dropdown open="true"><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
     const component = page.rootInstance;
-    
+
     // Use public method instead of private one
     await component.setClose();
     expect(component.open).toBe(false);
@@ -342,7 +324,7 @@ describe('bds-dropdown', () => {
       html: `<bds-dropdown><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
     const component = page.rootInstance;
-    
+
     // Check all required properties are defined
     expect(component.activeMode).toBeDefined();
     expect(component.open).toBeDefined();
@@ -366,7 +348,7 @@ describe('bds-dropdown', () => {
       `,
     });
     expect(defaultPage.rootInstance.position).toBe('auto');
-    
+
     // Test custom position
     const customPage = await newSpecPage({
       components: [BdsDropdown],
@@ -387,14 +369,14 @@ describe('bds-dropdown', () => {
       html: `<bds-dropdown><div slot="dropdown-activator"><button>Test</button></div></bds-dropdown>`,
     });
     const component = page.rootInstance;
-    
+
     // Test that delay timeout can be set and cleared
     expect(component.delay).toBe(null);
-    
+
     // Simulate delay setting (this would normally happen in watchers)
-    component.delay = setTimeout(() => {}, 1000);
+    component.delay = setTimeout(() => { }, 1000);
     expect(component.delay).not.toBe(null);
-    
+
     // Clear it
     clearTimeout(component.delay);
     component.delay = null;

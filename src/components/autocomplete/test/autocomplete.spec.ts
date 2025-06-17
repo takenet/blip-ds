@@ -15,27 +15,9 @@ jest.mock('../../../utils/position-element', () => ({
   })
 }));
 
-// Mock timers to prevent setTimeout issues in tests
-const originalSetTimeout = global.setTimeout;
-beforeEach(() => {
-  jest.clearAllTimers();
-  global.setTimeout = jest.fn((fn, _delay) => {
-    if (typeof fn === 'function') {
-      // Execute immediately for tests
-      fn();
-    }
-    return 1 as any;
-  }) as any;
-});
-
-afterEach(() => {
-  jest.clearAllTimers();
-  global.setTimeout = originalSetTimeout;
-});
-
+import { SelectOption } from '../../select-option/select-option';
 import { BdsAutocomplete } from '../autocomplete';
 import { AutocompleteOption } from '../autocomplete-select-interface';
-import { SelectOption } from '../../select-option/select-option';
 
 describe('bds-autocomplete', () => {
   const defaultOptions: AutocompleteOption[] = [
@@ -145,7 +127,7 @@ describe('bds-autocomplete', () => {
       });
 
       expect(page.rootInstance.selectionType).toBe('single');
-      
+
       // Open dropdown and check option types
       page.rootInstance.isOpen = true;
       await page.waitForChanges();
@@ -164,7 +146,7 @@ describe('bds-autocomplete', () => {
       });
 
       expect(page.rootInstance.selectionType).toBe('multiple');
-      
+
       // Open dropdown and check option types
       page.rootInstance.isOpen = true;
       await page.waitForChanges();
@@ -239,7 +221,7 @@ describe('bds-autocomplete', () => {
 
       const inputWrapper = page.root.shadowRoot.querySelector('.input');
       const nativeInput = page.root.shadowRoot.querySelector('input');
-      
+
       expect(inputWrapper.classList.contains('input--state-disabled')).toBe(true);
       expect(nativeInput.disabled).toBe(true);
     });
@@ -515,7 +497,7 @@ describe('bds-autocomplete', () => {
       });
 
       expect(page.rootInstance.internalOptions).toEqual(optionsWithStatus);
-      
+
       page.rootInstance.isOpen = true;
       await page.waitForChanges();
 
@@ -530,7 +512,7 @@ describe('bds-autocomplete', () => {
         { value: 'bulk1', label: 'Bulk 1', bulkOption: 'Bulk Text 1' },
         { value: 'bulk2', label: 'Bulk 2', bulkOption: 'Bulk Text 2' }
       ];
-      
+
       const page = await newSpecPage({
         components: [BdsAutocomplete, SelectOption],
         html: '<bds-autocomplete></bds-autocomplete>',
@@ -543,7 +525,7 @@ describe('bds-autocomplete', () => {
       await page.waitForChanges();
 
       const options = page.root.shadowRoot.querySelectorAll('bds-select-option');
-      
+
       // Check that the bulkOption prop is passed correctly
       expect(options[0].bulkOption).toBe('Bulk Text 1');
       expect(options[1].bulkOption).toBe('Bulk Text 2');
@@ -563,7 +545,7 @@ describe('bds-autocomplete', () => {
       const nativeInput = page.root.shadowRoot.querySelector('input');
       const inputEvent = new Event('input', { bubbles: true });
       Object.defineProperty(inputEvent, 'target', { value: { value: 'test input' } });
-      
+
       nativeInput.dispatchEvent(inputEvent);
       await page.waitForChanges();
 

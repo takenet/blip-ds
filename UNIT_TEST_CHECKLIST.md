@@ -57,10 +57,10 @@ This checklist tracks the progress of implementing comprehensive unit tests for 
 ### G
 - [x] ✅ **grid** - Comprehensive unit tests implemented and passing
 ### I
-- [ ] ❌ **icon** - Basic test (creation + render check only)
-- [ ] ❌ **icon-button** - Basic test (creation + render check only)
-- [ ] ❌ **illustration** - Basic test (creation + render check only)
-- [ ] ❌ **image** - Basic test (creation + render check only)
+- [x] ✅ **icon** - Comprehensive unit tests implemented and passing
+- [x] ✅ **icon-button** - Comprehensive unit tests implemented and passing
+- [x] ✅ **illustration** - Comprehensive unit tests implemented and passing
+- [x] ✅ **image** - Comprehensive unit tests implemented and passing
 - [x] ✅ **input** - Comprehensive unit tests implemented and passing
 - [ ] ❌ **input-chips** - Basic test (creation + render check only)
 - [ ] ❌ **input-editable** - Basic test (creation + render check only)
@@ -129,9 +129,9 @@ This checklist tracks the progress of implementing comprehensive unit tests for 
 ## Test Coverage Summary
 
 - **Total Components**: 100
-- **Complete**: 36 (36.0%)
+- **Complete**: 38 (38.0%)
 - **In Progress**: 0 (0%)
-- **Needs Work**: 64 (64.0%)
+- **Needs Work**: 62 (62.0%)
 
 ## Current Status
 

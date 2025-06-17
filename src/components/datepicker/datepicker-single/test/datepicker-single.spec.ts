@@ -1,5 +1,4 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { BdsdatepickerSingle } from '../datepicker-single';
 
 // Mock the utility functions that cause issues in testing
 jest.mock('../../../../utils/calendar', () => ({
@@ -85,6 +84,8 @@ jest.mock('../../../../utils/calendar', () => ({
   }),
 }));
 
+import { BdsdatepickerSingle } from '../datepicker-single';
+
 describe('bds-datepicker-single', () => {
   let page: SpecPage;
   let component: BdsdatepickerSingle;
@@ -130,9 +131,9 @@ describe('bds-datepicker-single', () => {
       });
       component = page.rootInstance;
       component.dateSelect = testDate;
-      
+
       await page.waitForChanges();
-      
+
       expect(component.monthActivated).toBeDefined();
       expect(component.yearActivated).toBeDefined();
     });
@@ -155,7 +156,7 @@ describe('bds-datepicker-single', () => {
         html: '<bds-datepicker-single></bds-datepicker-single>',
       });
       component = page.rootInstance;
-      
+
       expect(component.startDate).toBeDefined();
       expect(component.endDate).toBeDefined();
     });
@@ -173,7 +174,7 @@ describe('bds-datepicker-single', () => {
         ></bds-datepicker-single>`,
       });
       component = page.rootInstance;
-      
+
       expect(component.dtButtonPrev).toBe('test-btn-prev');
       expect(component.dtButtonNext).toBe('test-btn-next');
       expect(component.dtSelectMonth).toBe('test-select-month');
@@ -189,19 +190,19 @@ describe('bds-datepicker-single', () => {
     it('should emit bdsDateSelected event when dateSelect changes', () => {
       const spy = jest.spyOn(component.bdsDateSelected, 'emit');
       const testDate = new Date('2023-06-15');
-      
+
       component.dateSelect = testDate;
       component['startDateSelectChanged']();
-      
+
       expect(spy).toHaveBeenCalledWith({ value: testDate });
     });
 
     it('should emit bdsDateSelected event when date is selected', () => {
       const spy = jest.spyOn(component.bdsDateSelected, 'emit');
       const testDay = { date: 15, month: 5, year: 2023, day: 4 };
-      
+
       component['selectDate'](testDay);
-      
+
       expect(spy).toHaveBeenCalledWith({ value: new Date(2023, 5, 15) });
     });
   });
@@ -210,9 +211,9 @@ describe('bds-datepicker-single', () => {
     it('should select date and emit event', () => {
       const spy = jest.spyOn(component.bdsDateSelected, 'emit');
       const testDay = { date: 15, month: 5, year: 2023, day: 4 };
-      
+
       component['selectDate'](testDay);
-      
+
       expect(spy).toHaveBeenCalledWith({ value: new Date(2023, 5, 15) });
     });
 
@@ -220,10 +221,10 @@ describe('bds-datepicker-single', () => {
       const spy = jest.spyOn(component.bdsDateSelected, 'emit');
       const testDay1 = { date: 1, month: 0, year: 2023, day: 0 };
       const testDay2 = { date: 31, month: 11, year: 2023, day: 0 };
-      
+
       component['selectDate'](testDay1);
       expect(spy).toHaveBeenCalledWith({ value: new Date(2023, 0, 1) });
-      
+
       component['selectDate'](testDay2);
       expect(spy).toHaveBeenCalledWith({ value: new Date(2023, 11, 31) });
     });
@@ -242,14 +243,14 @@ describe('bds-datepicker-single', () => {
       component.loadingSlide = 'await';
       component.monthActivated = 5;
       component.yearActivated = 2023;
-      
+
       component['prevMonth']();
-      
+
       expect(component.animatePrev).toBe(true);
       expect(component.loadingSlide).toBe('pendding');
-      
+
       jest.advanceTimersByTime(300);
-      
+
       expect(component.animatePrev).toBe(false);
       expect(component.monthActivated).toBe(4);
       expect(component.yearActivated).toBe(2023);
@@ -260,10 +261,10 @@ describe('bds-datepicker-single', () => {
       component.loadingSlide = 'await';
       component.monthActivated = 0;
       component.yearActivated = 2023;
-      
+
       component['prevMonth']();
       jest.advanceTimersByTime(300);
-      
+
       expect(component.monthActivated).toBe(11);
       expect(component.yearActivated).toBe(2022);
     });
@@ -272,14 +273,14 @@ describe('bds-datepicker-single', () => {
       component.loadingSlide = 'await';
       component.monthActivated = 5;
       component.yearActivated = 2023;
-      
+
       component['nextMonth']();
-      
+
       expect(component.animateNext).toBe(true);
       expect(component.loadingSlide).toBe('pendding');
-      
+
       jest.advanceTimersByTime(300);
-      
+
       expect(component.animateNext).toBe(false);
       expect(component.monthActivated).toBe(6);
       expect(component.yearActivated).toBe(2023);
@@ -290,10 +291,10 @@ describe('bds-datepicker-single', () => {
       component.loadingSlide = 'await';
       component.monthActivated = 11;
       component.yearActivated = 2023;
-      
+
       component['nextMonth']();
       jest.advanceTimersByTime(300);
-      
+
       expect(component.monthActivated).toBe(0);
       expect(component.yearActivated).toBe(2024);
     });
@@ -301,18 +302,18 @@ describe('bds-datepicker-single', () => {
     it('should not navigate when loading slide is pending', () => {
       component.loadingSlide = 'pendding';
       const initialMonth = component.monthActivated;
-      
+
       component['prevMonth']();
-      
+
       expect(component.monthActivated).toBe(initialMonth);
     });
 
     it('should not navigate next when loading slide is pending', () => {
       component.loadingSlide = 'pendding';
       const initialMonth = component.monthActivated;
-      
+
       component['nextMonth']();
-      
+
       expect(component.monthActivated).toBe(initialMonth);
     });
   });
@@ -321,7 +322,7 @@ describe('bds-datepicker-single', () => {
     it('should check if day is current day', () => {
       const currentDay = { date: 15, month: 5, year: 2023, day: 4 };
       const notCurrentDay = { date: 16, month: 5, year: 2023, day: 5 };
-      
+
       expect(typeof component['checkCurrentDay'](currentDay)).toBe('boolean');
       expect(typeof component['checkCurrentDay'](notCurrentDay)).toBe('boolean');
     });
@@ -330,39 +331,39 @@ describe('bds-datepicker-single', () => {
       component.startDate = { date: 1, month: 5, year: 2023, day: 4 };
       const dayBeforeStart = { date: 31, month: 4, year: 2023, day: 3 };
       const validDay = { date: 15, month: 5, year: 2023, day: 4 };
-      
+
       expect(component['checkDisableDay'](dayBeforeStart)).toBe(true);
       expect(component['checkDisableDay'](validDay)).toBe(undefined);
     });
 
     it('should check if day is disabled due to end date limit', () => {
       component.endDate = { date: 30, month: 5, year: 2023, day: 5 };
-      
+
       const dayAfterEnd = { date: 1, month: 6, year: 2023, day: 4 };
       const validDay = { date: 15, month: 5, year: 2023, day: 4 };
-      
+
       const result1 = component['checkDisableDay'](dayAfterEnd);
       const result2 = component['checkDisableDay'](validDay);
-      
+
       expect(typeof result1 === 'boolean' || result1 === undefined).toBe(true);
       expect(typeof result2 === 'boolean' || result2 === undefined).toBe(true);
     });
 
     it('should check if day is selected', () => {
       component.dateSelect = new Date(2023, 5, 15);
-      
+
       const selectedDay = { date: 15, month: 5, year: 2023, day: 4 };
       const notSelectedDay = { date: 16, month: 5, year: 2023, day: 5 };
-      
+
       expect(typeof component['checkSelectedDay'](selectedDay)).toBe('boolean');
       expect(typeof component['checkSelectedDay'](notSelectedDay)).toBe('boolean');
     });
 
     it('should handle null dateSelect in selected day check', () => {
       component.dateSelect = null;
-      
+
       const testDay = { date: 15, month: 5, year: 2023, day: 4 };
-      
+
       expect(component['checkSelectedDay'](testDay)).toBe(false);
     });
   });
@@ -378,9 +379,9 @@ describe('bds-datepicker-single', () => {
 
     it('should handle month selection', () => {
       const event = { detail: { value: 8 } } as CustomEvent;
-      
+
       component['handler'](event, 'months');
-      
+
       expect(component.monthActivated).toBe(8);
     });
 
@@ -388,22 +389,22 @@ describe('bds-datepicker-single', () => {
       component.startDate = { date: 1, month: 2, year: 2020, day: 0 };
       component.endDate = { date: 31, month: 10, year: 2025, day: 2 };
       component.monthActivated = 1; // February
-      
+
       const event = { detail: { value: 2023 } } as CustomEvent;
-      
+
       component['handler'](event, 'years');
-      
+
       expect(component.yearActivated).toBe(2023);
     });
 
     it('should adjust month when year is start year and month is before start month', () => {
       component.startDate = { date: 1, month: 5, year: 2023, day: 4 };
       component.monthActivated = 3; // April (before June)
-      
+
       const event = { detail: { value: 2023 } } as CustomEvent;
-      
+
       component['handler'](event, 'years');
-      
+
       expect(component.monthActivated).toBe(5); // Adjusted to June
       expect(component.yearActivated).toBe(2023);
     });
@@ -411,48 +412,48 @@ describe('bds-datepicker-single', () => {
     it('should adjust month when year is end year and month is after end month', () => {
       component.endDate = { date: 31, month: 8, year: 2023, day: 0 };
       component.monthActivated = 10; // November (after September)
-      
+
       const event = { detail: { value: 2023 } } as CustomEvent;
-      
+
       component['handler'](event, 'years');
-      
+
       expect(component.monthActivated).toBe(8); // Adjusted to September
       expect(component.yearActivated).toBe(2023);
     });
 
     it('should open month selector', () => {
       component['openDateSelect'](true, 'months');
-      
+
       jest.advanceTimersByTime(100);
-      
+
       expect(component.openSelectMonth).toBe(true);
     });
 
     it('should close month selector', () => {
       component.openSelectMonth = true;
-      
+
       component['openDateSelect'](false, 'months');
-      
+
       jest.advanceTimersByTime(100);
-      
+
       expect(component.openSelectMonth).toBe(false);
     });
 
     it('should open year selector', () => {
       component['openDateSelect'](true, 'years');
-      
+
       jest.advanceTimersByTime(100);
-      
+
       expect(component.openSelectYear).toBe(true);
     });
 
     it('should close year selector', () => {
       component.openSelectYear = true;
-      
+
       component['openDateSelect'](false, 'years');
-      
+
       jest.advanceTimersByTime(100);
-      
+
       expect(component.openSelectYear).toBe(false);
     });
   });
@@ -460,19 +461,19 @@ describe('bds-datepicker-single', () => {
   describe('Utility Methods', () => {
     it('should generate previous days spacing', () => {
       const result = component['prevDays'](3);
-      
+
       expect(result).toHaveLength(3);
     });
 
     it('should generate empty array for zero previous days', () => {
       const result = component['prevDays'](0);
-      
+
       expect(result).toHaveLength(0);
     });
 
     it('should generate correct number of spacing elements', () => {
       const result = component['prevDays'](5);
-      
+
       expect(result).toHaveLength(5);
     });
   });
@@ -480,17 +481,17 @@ describe('bds-datepicker-single', () => {
   describe('Clear Method', () => {
     it('should clear selected date', async () => {
       component.dateSelect = new Date('2023-06-15');
-      
+
       await component.clear();
-      
+
       expect(component.dateSelect).toBe(null);
     });
 
     it('should handle clearing when dateSelect is already null', async () => {
       component.dateSelect = null;
-      
+
       await component.clear();
-      
+
       expect(component.dateSelect).toBe(null);
     });
   });
@@ -499,10 +500,10 @@ describe('bds-datepicker-single', () => {
     it('should update month and year when period dates change', () => {
       const newValue = { date: 1, month: 8, year: 2024, day: 0 };
       const oldValue = { date: 1, month: 5, year: 2023, day: 4 };
-      
+
       component.startDate = newValue;
       component['periodToSelectChanged'](newValue, oldValue);
-      
+
       expect(component.monthActivated).toBe(newValue.month);
       expect(component.yearActivated).toBe(newValue.year);
     });
@@ -511,12 +512,9 @@ describe('bds-datepicker-single', () => {
       const sameValue = { date: 1, month: 5, year: 2023, day: 4 };
       const initialMonth = component.monthActivated;
       const initialYear = component.yearActivated;
-      
-      // Mock fillDayList to return same values
-      require('../../../../utils/calendar').fillDayList.mockReturnValue(20230601);
-      
+
       component['periodToSelectChanged'](sameValue, sameValue);
-      
+
       expect(component.monthActivated).toBe(initialMonth);
       expect(component.yearActivated).toBe(initialYear);
     });
@@ -524,10 +522,10 @@ describe('bds-datepicker-single', () => {
     it('should emit event when dateSelect changes', () => {
       const spy = jest.spyOn(component.bdsDateSelected, 'emit');
       const testDate = new Date('2023-06-20');
-      
+
       component.dateSelect = testDate;
       component['startDateSelectChanged']();
-      
+
       expect(spy).toHaveBeenCalledWith({ value: testDate });
     });
   });
@@ -536,25 +534,19 @@ describe('bds-datepicker-single', () => {
     it('should initialize correctly in componentWillLoad when dates are outside current range', () => {
       const futureStartDate = { date: 1, month: 11, year: 2025, day: 1 };
       const futureEndDate = { date: 31, month: 11, year: 2025, day: 3 };
-      
+
       component.startDate = futureStartDate;
       component.endDate = futureEndDate;
-      
-      // Mock fillDayList and fillDate to simulate future dates
-      require('../../../../utils/calendar').fillDayList
-        .mockReturnValueOnce(20251201) // startDate
-        .mockReturnValueOnce(20251231) // endDate
-        .mockReturnValueOnce(20230615); // THIS_DAY
-      
+
       component.componentWillLoad();
-      
+
       expect(component.monthActivated).toBe(futureStartDate.month);
       expect(component.yearActivated).toBe(futureStartDate.year);
     });
 
     it('should set up component data in componentWillRender', () => {
       component.componentWillRender();
-      
+
       expect(component.week).toBeDefined();
       expect(component.monthsSlide).toBeDefined();
       expect(component.years).toBeDefined();
@@ -564,21 +556,15 @@ describe('bds-datepicker-single', () => {
     it('should handle current date within range in componentWillLoad', () => {
       const currentStartDate = { date: 1, month: 5, year: 2023, day: 4 };
       const currentEndDate = { date: 30, month: 6, year: 2023, day: 5 };
-      
+
       component.startDate = currentStartDate;
       component.endDate = currentEndDate;
-      
-      // Mock to simulate current date within range
-      require('../../../../utils/calendar').fillDayList
-        .mockReturnValueOnce(20230601) // startDate
-        .mockReturnValueOnce(20230630) // endDate
-        .mockReturnValueOnce(20230615); // THIS_DAY (within range)
-      
+
       const initialMonth = component.monthActivated;
       const initialYear = component.yearActivated;
-      
+
       component.componentWillLoad();
-      
+
       // Should not change when current date is within range
       expect(component.monthActivated).toBe(initialMonth);
       expect(component.yearActivated).toBe(initialYear);
@@ -588,7 +574,7 @@ describe('bds-datepicker-single', () => {
   describe('Render Methods', () => {
     it('should render main component', () => {
       const rendered = component.render();
-      
+
       expect(rendered).toBeDefined();
     });
 
@@ -597,9 +583,9 @@ describe('bds-datepicker-single', () => {
         { value: 0, label: 'Janeiro' },
         { value: 1, label: 'Fevereiro' }
       ];
-      
+
       const rendered = component.renderSelectData(testData, 0, 'months');
-      
+
       expect(rendered).toBeDefined();
     });
 
@@ -608,23 +594,23 @@ describe('bds-datepicker-single', () => {
         { date: 1, month: 5, year: 2023, day: 4 },
         { date: 2, month: 5, year: 2023, day: 5 }
       ];
-      
+
       const rendered = component.renderCarSlideBox(testDays, 1);
-      
+
       expect(rendered).toBeDefined();
     });
 
     it('should handle empty data in renderSelectData', () => {
       const testData = [];
-      
+
       expect(() => component.renderSelectData(testData, 0, 'months')).not.toThrow();
     });
 
     it('should handle empty days in renderCarSlideBox', () => {
       const testDays = [];
-      
+
       const rendered = component.renderCarSlideBox(testDays, 0);
-      
+
       expect(rendered).toBeDefined();
     });
   });
@@ -636,20 +622,20 @@ describe('bds-datepicker-single', () => {
         html: '<bds-datepicker-single language="en_US"></bds-datepicker-single>',
       });
       component = page.rootInstance;
-      
+
       expect(component.language).toBe('en_US');
     });
 
     it('should handle different language options', async () => {
       const languages = ['pt_BR', 'en_US', 'es_ES'];
-      
+
       for (const lang of languages) {
         page = await newSpecPage({
           components: [BdsdatepickerSingle],
           html: `<bds-datepicker-single language="${lang}"></bds-datepicker-single>`,
         });
         component = page.rootInstance;
-        
+
         expect(component.language).toBe(lang);
       }
     });
@@ -658,9 +644,9 @@ describe('bds-datepicker-single', () => {
       const initialLanguage = component.language;
       const initialStartDate = component.startDate;
       const initialEndDate = component.endDate;
-      
+
       component['nextMonth']();
-      
+
       expect(component.language).toBe(initialLanguage);
       expect(component.startDate).toBe(initialStartDate);
       expect(component.endDate).toBe(initialEndDate);
@@ -672,9 +658,9 @@ describe('bds-datepicker-single', () => {
       component.dateSelect = null;
       component.startDate = null;
       component.endDate = null;
-      
+
       const testDay = { date: 15, month: 5, year: 2023, day: 4 };
-      
+
       expect(() => component['checkSelectedDay'](testDay)).not.toThrow();
       expect(() => component['checkDisableDay'](testDay)).not.toThrow();
       expect(() => component['checkCurrentDay'](testDay)).not.toThrow();
@@ -682,7 +668,7 @@ describe('bds-datepicker-single', () => {
 
     it('should handle invalid date objects', () => {
       const invalidDay = { date: 32, month: 13, year: 2023, day: 8 };
-      
+
       expect(() => component['selectDate'](invalidDay)).not.toThrow();
       expect(() => component['checkCurrentDay'](invalidDay)).not.toThrow();
       expect(() => component['checkSelectedDay'](invalidDay)).not.toThrow();
@@ -690,30 +676,30 @@ describe('bds-datepicker-single', () => {
 
     it('should handle empty selector data', () => {
       const emptyData = [];
-      
+
       expect(() => component.renderSelectData(emptyData, 0, 'months')).not.toThrow();
     });
 
     it('should handle selector with single option', () => {
       const singleOption = [{ value: 0, label: 'Janeiro' }];
-      
+
       const rendered = component.renderSelectData(singleOption, 0, 'months');
-      
+
       expect(rendered).toBeDefined();
     });
 
     it('should handle animation state changes', () => {
       component.animatePrev = true;
       component.animateNext = true;
-      
+
       const rendered = component.render();
-      
+
       expect(rendered).toBeDefined();
     });
 
     it('should handle loading state transitions', () => {
       const states = ['await', 'pendding', 'success'];
-      
+
       states.forEach(state => {
         component.loadingSlide = state as any;
         expect(component.loadingSlide).toBe(state);
@@ -725,55 +711,55 @@ describe('bds-datepicker-single', () => {
     it('should handle complete date selection flow', () => {
       const spy = jest.spyOn(component.bdsDateSelected, 'emit');
       const testDay = { date: 15, month: 5, year: 2023, day: 4 };
-      
+
       // Select a date
       component['selectDate'](testDay);
-      
+
       // Verify event was emitted
       expect(spy).toHaveBeenCalledWith({ value: new Date(2023, 5, 15) });
-      
+
       // Clear the selection
       component.clear();
-      
+
       expect(component.dateSelect).toBe(null);
     });
 
     it('should handle navigation and date selection together', () => {
       jest.useFakeTimers();
-      
+
       // Navigate to next month
       component['nextMonth']();
       jest.advanceTimersByTime(300);
-      
+
       // Then select a date
       const spy = jest.spyOn(component.bdsDateSelected, 'emit');
       const testDay = { date: 15, month: component.monthActivated, year: component.yearActivated, day: 4 };
-      
+
       component['selectDate'](testDay);
-      
+
       expect(spy).toHaveBeenCalled();
-      
+
       jest.useRealTimers();
     });
 
     it('should handle selector interactions', () => {
       jest.useFakeTimers();
-      
+
       // Open month selector
       component['openDateSelect'](true, 'months');
       jest.advanceTimersByTime(100);
       expect(component.openSelectMonth).toBe(true);
-      
+
       // Select a month
       const event = { detail: { value: 8 } } as CustomEvent;
       component['handler'](event, 'months');
       expect(component.monthActivated).toBe(8);
-      
+
       // Close selector
       component['openDateSelect'](false, 'months');
       jest.advanceTimersByTime(100);
       expect(component.openSelectMonth).toBe(false);
-      
+
       jest.useRealTimers();
     });
   });

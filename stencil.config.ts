@@ -47,6 +47,7 @@ export const config: Config = {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
     collectCoverage: true,
     collectCoverageFrom: ['src/**/*.{ts,tsx}'],
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   },
   devServer: {
     reloadStrategy: 'pageReload',
