@@ -62,7 +62,7 @@ describe('bds-avatar', () => {
       html: `<bds-avatar thumbnail="https://example.com/avatar.jpg"></bds-avatar>`,
     });
 
-    const imageDiv = page.root.shadowRoot.querySelector('.avatar__btn__img');
+    const imageDiv = page.root.shadowRoot.querySelector('.avatar__btn__img') as HTMLElement;
     expect(imageDiv).toBeTruthy();
     expect(imageDiv.style.backgroundImage).toBe('url(https://example.com/avatar.jpg)');
   });
@@ -165,7 +165,7 @@ describe('bds-avatar', () => {
         html: `<bds-avatar upload="true"></bds-avatar>`,
       });
 
-      const fileInput = page.root.shadowRoot.querySelector('input[type="file"]');
+      const fileInput = page.root.shadowRoot.querySelector('input[type="file"]') as HTMLInputElement;
       expect(fileInput).toBeTruthy();
       expect(fileInput.getAttribute('accept')).toBe('image/*');
       expect(fileInput.style.display).toBe('none');
@@ -191,7 +191,7 @@ describe('bds-avatar', () => {
       const clickHandler = jest.fn();
       page.root.addEventListener('bdsClickAvatar', clickHandler);
 
-      const avatarDiv = page.root.shadowRoot.querySelector('.avatar');
+      const avatarDiv = page.root.shadowRoot.querySelector('.avatar') as HTMLElement;
       avatarDiv.click();
 
       expect(clickHandler).toHaveBeenCalled();

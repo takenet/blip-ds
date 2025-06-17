@@ -1,6 +1,24 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { AccordionHeader } from '../accordion-header';
 
+// Mock timers to prevent setTimeout issues in tests
+const originalSetTimeout = global.setTimeout;
+beforeEach(() => {
+  jest.clearAllTimers();
+  global.setTimeout = jest.fn((fn, _delay) => {
+    if (typeof fn === 'function') {
+      // Execute immediately for tests
+      fn();
+    }
+    return 1 as any;
+  }) as any;
+});
+
+afterEach(() => {
+  jest.clearAllTimers();
+  global.setTimeout = originalSetTimeout;
+});
+
 describe('bds-accordion-header', () => {
   let page;
   let component;
