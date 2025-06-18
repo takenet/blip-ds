@@ -37,6 +37,7 @@ export const Properties = (args) => {
       is-textarea={args.istextarea}
       rows={args.rows}
       auto-resize={args.autoresize}
+      resizable={args.resizable}
       min-height={args.minheight}
       max-height={args.maxheight}
       icon-size={args.iconsize}
@@ -66,6 +67,7 @@ Properties.args = {
   istextarea: false,
   rows: 3,
   autoresize: true,
+  resizable: false,
   minheight: 60,
   maxheight: 200,
   iconsize: 'small',
@@ -186,6 +188,12 @@ Properties.argTypes = {
   autoresize: {
     table: {
       defaultValue: { summary: 'true' },
+    },
+    control: 'boolean',
+  },
+  resizable: {
+    table: {
+      defaultValue: { summary: 'false' },
     },
     control: 'boolean',
   },
@@ -334,6 +342,45 @@ export const TextareaExamples = () => {
           min-height={80}
           max-height={150}
           helper-message="Min: 80px, Max: 150px"
+        ></bds-input>
+      </div>
+      
+      <div>
+        <h3>Resizable Textarea (Manual Resize Disabled)</h3>
+        <bds-input
+          is-textarea={true}
+          placeholder="This textarea cannot be resized manually..."
+          label="Not Resizable"
+          resizable={false}
+          auto-resize={false}
+          rows={4}
+          helper-message="Resizable is set to false (default)"
+        ></bds-input>
+      </div>
+      
+      <div>
+        <h3>Resizable Textarea (Manual Resize Enabled)</h3>
+        <bds-input
+          is-textarea={true}
+          placeholder="This textarea can be resized manually by dragging the corner..."
+          label="Resizable"
+          resizable={true}
+          auto-resize={false}
+          rows={4}
+          helper-message="Resizable is set to true, auto-resize is false"
+        ></bds-input>
+      </div>
+      
+      <div>
+        <h3>Resizable with Auto-resize (No Manual Resize)</h3>
+        <bds-input
+          is-textarea={true}
+          placeholder="This textarea auto-resizes, but manual resize is disabled because auto-resize takes precedence..."
+          label="Auto-resize Priority"
+          resizable={true}
+          auto-resize={true}
+          rows={3}
+          helper-message="When auto-resize is true, manual resizing is disabled"
         ></bds-input>
       </div>
     </div>

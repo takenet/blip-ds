@@ -156,6 +156,11 @@ export class Input {
   @Prop() autoResize = true;
 
   /**
+   * Define se a área de texto pode ser redimensionada manualmente pelo usuário.
+   */
+  @Prop() resizable = false;
+
+  /**
    * Define a altura mínima da área de texto em pixels.
    */
   @Prop() minHeight?: number = 60;
@@ -684,7 +689,7 @@ if(!this.encode) return value;
                 style={this.isTextarea ? {
                   minHeight: `${this.minHeight || 60}px`,
                   maxHeight: `${this.maxHeight || 200}px`,
-                  resize: this.autoResize ? 'none' : 'vertical'
+                  resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
                 } : {}}
               ></Element>
             </div>

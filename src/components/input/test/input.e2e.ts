@@ -291,6 +291,74 @@ describe('bds-input e2e tests', () => {
       className = await inputContainer.getProperty('className');
       expect(className).not.toContain('input--pressed');
     });
+
+    it('should have resizable property defaulted to false', async () => {
+      const input = await page.find('bds-input');
+      const resizable = await input.getProperty('resizable');
+      expect(resizable).toBe(false);
+    });
+
+    it('should set resize style to none when resizable is false', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" resizable="false" data-test="bds-input"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const resizeStyle = await textareaElement.getComputedStyle();
+      expect(resizeStyle.resize).toBe('none');
+    });
+
+    it('should set resize style to vertical when resizable is true and autoResize is false', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" resizable="true" auto-resize="false" data-test="bds-input"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const resizeStyle = await textareaElement.getComputedStyle();
+      expect(resizeStyle.resize).toBe('vertical');
+    });
+
+    it('should set resize style to none when resizable is true but autoResize is true', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" resizable="true" auto-resize="true" data-test="bds-input"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const resizeStyle = await textareaElement.getComputedStyle();
+      expect(resizeStyle.resize).toBe('none');
+    });
+
+    it('should allow manual resizing when resizable is true and autoResize is false', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" resizable="true" auto-resize="false" data-test="bds-input"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      
+      // Get initial height
+      const initialHeight = await textareaElement.getComputedStyle().then(style => style.height);
+      
+      // The resize handle should be available (this test verifies the CSS is correctly applied)
+      const resizeStyle = await textareaElement.getComputedStyle();
+      expect(resizeStyle.resize).toBe('vertical');
+      
+      // Note: Actual drag and resize simulation is complex in e2e tests,
+      // but we can verify the CSS property is correctly applied
+      expect(initialHeight).toBeTruthy();
+    });
+
+    it('should handle min and max height correctly with resizable textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea="true" resizable="true" auto-resize="false" min-height="100" max-height="400" data-test="bds-input"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea');
+      const style = await textareaElement.getComputedStyle();
+      
+      // These should be set as inline styles and reflected in computed styles
+      expect(style.minHeight).toBe('100px');
+      expect(style.maxHeight).toBe('400px');
+    });
   });
 
   describe('Textarea Methods', () => {

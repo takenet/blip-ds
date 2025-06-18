@@ -1275,6 +1275,10 @@ export namespace Components {
          */
         "requiredErrorMessage": string;
         /**
+          * Define se a área de texto pode ser redimensionada manualmente pelo usuário.
+         */
+        "resizable": boolean;
+        /**
           * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
         "rows"?: number;
@@ -5134,6 +5138,10 @@ declare namespace LocalJSX {
           * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
          */
         "requiredErrorMessage"?: string;
+        /**
+          * Define se a área de texto pode ser redimensionada manualmente pelo usuário.
+         */
+        "resizable"?: boolean;
         /**
           * Define a quantidade de linhas da área de texto (se for `textarea`).
          */
