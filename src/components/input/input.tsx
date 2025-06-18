@@ -463,18 +463,21 @@ if(!this.encode) return value;
    * Function that renders the icon inside the input field.
    */
   private renderIcon(): HTMLElement {
+    const iconSizeValue = this.iconSize === 'medium' ? 'medium' : 'small';
+    const isLargeIcon = this.iconSize === 'medium';
+    
     return (
       this.icon && (
         <div
           class={{
             input__icon: true,
-            'input__icon--large': !!this.label || this.iconSize === 'medium',
+            'input__icon--large': isLargeIcon,
             'input__icon--textarea': this.isTextarea,
           }}
         >
           <bds-icon
             class="input__icon--color"
-            size={this.label || this.iconSize === 'medium' ? 'medium' : 'small'}
+            size={iconSizeValue}
             name={this.icon}
             color="inherit"
           ></bds-icon>
