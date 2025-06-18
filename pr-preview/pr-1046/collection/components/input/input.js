@@ -216,11 +216,13 @@ export class Input {
    * Function that renders the icon inside the input field.
    */
   renderIcon() {
+    const iconSizeValue = this.iconSize === 'medium' ? 'medium' : 'small';
+    const isLargeIcon = this.iconSize === 'medium';
     return (this.icon && (h("div", { class: {
         input__icon: true,
-        'input__icon--large': !!this.label || this.iconSize === 'medium',
+        'input__icon--large': isLargeIcon,
         'input__icon--textarea': this.isTextarea,
-      } }, h("bds-icon", { class: "input__icon--color", size: this.label || this.iconSize === 'medium' ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
+      } }, h("bds-icon", { class: "input__icon--color", size: iconSizeValue, name: this.icon, color: "inherit" }))));
   }
   /**
    * Function that renders the label of the input field.
