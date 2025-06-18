@@ -43,7 +43,7 @@ export class Slider {
     };
     this.stepArray = undefined;
     this.internalOptions = undefined;
-    this.inputValue = this.value.toString();
+    this.inputValue = this.value?.toString() ?? (this.min ? this.min.toString() : '0');
     this.step = undefined;
     this.min = undefined;
     this.max = undefined;
