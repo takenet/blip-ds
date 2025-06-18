@@ -143,12 +143,12 @@ export class Input {
   /**
    * Define a quantidade de linhas da área de texto (se for `textarea`).
    */
-  @Prop() rows?: number = 1;
+  @Prop({ reflect: true, attribute: 'rows' }) rows?: number;
 
   /**
    * Define a quantidade de colunas da área de texto (se for `textarea`).
    */
-  @Prop() cols?: number = 0;
+  @Prop({ reflect: true, attribute: 'cols' }) cols?: number;
 
   /**
    * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
@@ -550,6 +550,24 @@ if(!this.encode) return value;
   }
 
   /**
+   * Inicializa o componente e processa conversões de tipos necessárias.
+   */
+  componentWillLoad() {
+    // Garante que rows e cols tenham valores padrão se não especificados
+    if (this.rows === undefined) {
+      this.rows = 1;
+    } else if (typeof this.rows === 'string') {
+      this.rows = parseInt(this.rows as any, 10) || 1;
+    }
+    
+    if (this.cols === undefined) {
+      this.cols = 0;
+    } else if (typeof this.cols === 'string') {
+      this.cols = parseInt(this.cols as any, 10) || 0;
+    }
+  }
+
+  /**
    * Atualiza o valor do campo de entrada após as mudanças.
    */
   componentDidUpdate() {
@@ -587,8 +605,8 @@ if(!this.encode) return value;
               <Element
                 class={{ input__container__text: true, input__container__text__chips: this.chips }}
                 ref={(input) => (this.nativeInput = input)}
-                rows={this.rows}
-                cols={this.cols}
+                rows={this.isTextarea ? this.rows : undefined}
+                cols={this.isTextarea ? this.cols : undefined}
                 autocapitalize={this.autoCapitalize}
                 autocomplete={this.autoComplete}
                 disabled={this.disabled}
@@ -602,7 +620,7 @@ if(!this.encode) return value;
                 onInput={this.onInput}
                 placeholder={this.placeholder}
                 readOnly={this.readonly}
-                type={this.type}
+                type={this.isTextarea ? undefined : this.type}
                 value={this.encodeValue(this.value)}
                 pattern={this.pattern}
                 required={this.required}

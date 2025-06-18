@@ -116,6 +116,77 @@ describe('bds-input e2e tests', () => {
     });
   });
 
+  describe('Textarea Functionality', () => {
+    it('should render textarea when isTextarea is true', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea label="Textarea Label" placeholder="Enter multiline text..." data-test="bds-textarea"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea[data-test="bds-textarea"]');
+      const inputElement = await page.find('bds-input >>> input');
+      
+      expect(textareaElement).toBeTruthy();
+      expect(inputElement).toBeFalsy();
+    });
+
+    it('should allow typing multiline text in textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea data-test="bds-textarea"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea[data-test="bds-textarea"]');
+      
+      await textareaElement.type('Line 1');
+      await page.keyboard.press('Enter');
+      await textareaElement.type('Line 2');
+      await page.waitForChanges();
+      
+      const value = await textareaElement.getProperty('value');
+      expect(value).toBe('Line 1\nLine 2');
+    });
+
+    it('should emit bdsChange event when typing in textarea', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea data-test="bds-textarea"></bds-input>`,
+      });
+
+      const input = await page.find('bds-input');
+      const bdsChangeEvent = await input.spyOnEvent('bdsChange');
+      const textareaElement = await page.find('bds-input >>> textarea[data-test="bds-textarea"]');
+
+      await textareaElement.type('Multiline\nText');
+      await page.waitForChanges();
+
+      expect(bdsChangeEvent).toHaveReceivedEvent();
+    });
+
+    it('should handle textarea with icon and label', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea icon="edit" label="Description" placeholder="Enter description..." data-test="bds-textarea"></bds-input>`,
+      });
+
+      const input = await page.find('bds-input');
+      const icon = await input.getProperty('icon');
+      const label = await input.getProperty('label');
+      
+      expect(icon).toBe('edit');
+      expect(label).toBe('Description');
+    });
+
+    it('should support rows and cols properties', async () => {
+      page = await newE2EPage({
+        html: `<bds-input is-textarea rows="5" cols="40" data-test="bds-textarea"></bds-input>`,
+      });
+
+      const textareaElement = await page.find('bds-input >>> textarea[data-test="bds-textarea"]');
+      const rows = await textareaElement.getProperty('rows');
+      const cols = await textareaElement.getProperty('cols');
+      
+      expect(rows).toBe(5);
+      expect(cols).toBe(40);
+    });
+  });
+
   describe('Accessibility', () => {
     it('should be accessible via Tab navigation', async () => {
       page = await newE2EPage({
@@ -131,6 +202,31 @@ describe('bds-input e2e tests', () => {
 
       const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
       expect(focusedElement).toBe('BDS-INPUT');
+    });
+
+    it('should support textarea accessibility navigation', async () => {
+      page = await newE2EPage({
+        html: `
+          <button>Previous button</button>
+          <bds-input is-textarea label="Accessible Textarea" data-test="bds-textarea"></bds-input>
+          <button>Next button</button>
+        `,
+      });
+
+      await page.focus('button');
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+
+      const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
+      expect(focusedElement).toBe('BDS-INPUT');
+      
+      // Test that we can interact with the textarea through the component
+      const textareaElement = await page.find('bds-input >>> textarea[data-test="bds-textarea"]');
+      await textareaElement.type('Accessibility test');
+      await page.waitForChanges();
+      
+      const value = await textareaElement.getProperty('value');
+      expect(value).toBe('Accessibility test');
     });
   });
 });

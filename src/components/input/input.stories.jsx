@@ -36,6 +36,7 @@ export const Properties = (args) => {
       readonly={args.readonly}
       is-textarea={args.istextarea}
       rows={args.rows}
+      cols={args.cols}
       counter-length={args.counterlength}
       encode={args.encode}
     ></bds-input>
@@ -60,7 +61,8 @@ Properties.args = {
   maxlength: 30,
   readonly: false,
   istextarea: false,
-  rows: '',
+  rows: 3,
+  cols: 0,
   counterlength: false,
   encode: false,
 };
@@ -188,10 +190,17 @@ Properties.argTypes = {
   },
   rows: {
     table: {
-      defaultValue: { summary: 'vazio' },
+      defaultValue: { summary: '3' },
     },
     
-    control: 'text',
+    control: 'number',
+  },
+  cols: {
+    table: {
+      defaultValue: { summary: '0' },
+    },
+    
+    control: 'number',
   },
   counterlength: {
     table: {
@@ -207,6 +216,53 @@ Properties.argTypes = {
     
     control: 'boolean',
   },
+};
+
+export const TextareaExample = () => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '500px';
+  }
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <bds-input
+        is-textarea
+        label="Descrição"
+        placeholder="Digite uma descrição detalhada..."
+        helper-message="Máximo de 500 caracteres"
+        rows={4}
+        maxlength={500}
+        counter-length
+      ></bds-input>
+      
+      <bds-input
+        is-textarea
+        label="Comentários"
+        placeholder="Deixe seus comentários..."
+        icon="edit"
+        rows={3}
+      ></bds-input>
+      
+      <bds-input
+        is-textarea
+        label="Observações"
+        placeholder="Observações importantes..."
+        danger
+        error-message="Este campo é obrigatório"
+        rows={2}
+      ></bds-input>
+      
+      <bds-input
+        is-textarea
+        label="Feedback"
+        value="Excelente atendimento! Muito satisfeito com o serviço prestado."
+        success
+        success-message="Feedback enviado com sucesso"
+        readonly
+        rows={3}
+      ></bds-input>
+    </div>
+  );
 };
 
 export const Events = () => {

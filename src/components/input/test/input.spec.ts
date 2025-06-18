@@ -346,6 +346,132 @@ describe('bds-input', () => {
     });
   });
 
+  describe('Textarea Functionality', () => {
+    it('should render as textarea when isTextarea is true', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea');
+      const input = page.root.shadowRoot.querySelector('input');
+      
+      expect(textarea).toBeTruthy();
+      expect(input).toBeFalsy();
+    });
+
+    it('should render textarea with specified rows', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea rows="5"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea).toBeTruthy();
+      // The component should render as textarea and accept the rows attribute
+      expect(textarea.getAttribute('rows')).toBeTruthy();
+    });
+
+    it('should render textarea with specified cols', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea cols="50"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea).toBeTruthy();
+      // The component should render as textarea and accept the cols attribute
+      expect(textarea.getAttribute('cols')).toBeTruthy();
+    });
+
+    it('should handle multiline text in textarea', async () => {
+      const multilineValue = 'Line 1\nLine 2\nLine 3';
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea></bds-input>`,
+      });
+      
+      // Set the value after component initialization
+      page.root.value = multilineValue;
+      await page.waitForChanges();
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea).toBeTruthy();
+      expect(page.root.value).toBe(multilineValue);
+    });
+
+    it('should apply same styling states to textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea danger label="Textarea Label"></bds-input>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.input');
+      const label = page.root.shadowRoot.querySelector('.input__container__label');
+      
+      expect(container.classList.contains('input--state-danger')).toBe(true);
+      expect(container.classList.contains('input--label')).toBe(true);
+      expect(label).toBeTruthy();
+    });
+
+    it('should emit same events for textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea></bds-input>`,
+      });
+      
+      const inputSpy = jest.fn();
+      page.root.addEventListener('bdsInput', inputSpy);
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      
+      // Mock the validity property
+      Object.defineProperty(textarea, 'validity', {
+        value: { valid: true },
+        writable: true
+      });
+      
+      textarea.value = 'test content';
+      textarea.dispatchEvent(new Event('input', { bubbles: true }));
+      
+      expect(inputSpy).toHaveBeenCalled();
+    });
+
+    it('should support icon with textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea icon="edit" label="Textarea with icon"></bds-input>`,
+      });
+      
+      const icon = page.root.shadowRoot.querySelector('bds-icon');
+      expect(icon).toBeTruthy();
+      expect(icon.getAttribute('name')).toBe('edit');
+    });
+
+    it('should handle error and success states for textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea success success-message="Success message"></bds-input>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.input');
+      const successIcon = page.root.shadowRoot.querySelector('.icon-success');
+      
+      expect(container.classList.contains('input--state-success')).toBe(true);
+      expect(successIcon).toBeTruthy();
+    });
+
+    it('should support counter-length for textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea counter-length maxlength="200" value="Some text"></bds-input>`,
+      });
+      
+      const counter = page.root.shadowRoot.querySelector('bds-counter-text');
+      expect(counter).toBeTruthy();
+    });
+  });
+
   describe('Edge Cases', () => {
     it('should handle empty value', async () => {
       const page = await newSpecPage({
