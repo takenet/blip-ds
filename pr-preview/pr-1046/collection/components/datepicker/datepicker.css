@@ -52,7 +52,7 @@
 .input {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   padding: 8px 4px 8px 12px;
   flex: 1;
   width: 100%;
