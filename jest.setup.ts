@@ -44,7 +44,7 @@ afterEach(() => {
   jest.clearAllTimers();
   global.setTimeout = originalSetTimeout;
   global.setInterval = originalSetInterval;
-  global.clearTimeout = originalClearInterval;
+  global.clearTimeout = originalClearTimeout;
   global.clearInterval = originalClearInterval;
   global.console.warn = originalConsoleWarn;
 });
