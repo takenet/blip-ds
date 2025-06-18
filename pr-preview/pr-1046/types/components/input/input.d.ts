@@ -164,6 +164,10 @@ export declare class Input {
    */
   chips: boolean;
   /**
+   * Defines the debounce delay in milliseconds for textarea auto-resize.
+   */
+  debounceDelay?: number;
+  /**
    * Data test is the prop to specifically test the component action.
    */
   dataTest?: string;

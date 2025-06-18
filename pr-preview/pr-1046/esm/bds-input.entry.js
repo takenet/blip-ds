@@ -124,6 +124,7 @@ const Input = class {
     this.emailErrorMessage = undefined;
     this.numberErrorMessage = undefined;
     this.chips = undefined;
+    this.debounceDelay = 100;
     this.dataTest = null;
     this.encode = false;
   }
@@ -202,9 +203,9 @@ const Input = class {
     if (this.autoResizeDebounceTimer) {
       clearTimeout(this.autoResizeDebounceTimer);
     }
-    this.autoResizeDebounceTimer = setTimeout(() => {
+    this.autoResizeDebounceTimer = window.setTimeout(() => {
       this.autoResizeTextarea();
-    }, 100); // 100ms debounce delay
+    }, this.debounceDelay); // Configurable debounce delay
   }
   /**
    * Centralizes all necessary updates for the textarea, including auto-resize.
@@ -369,7 +370,7 @@ const Input = class {
    */
   disconnectedCallback() {
     if (this.autoResizeDebounceTimer) {
-      clearTimeout(this.autoResizeDebounceTimer);
+      window.clearTimeout(this.autoResizeDebounceTimer);
     }
   }
   render() {
