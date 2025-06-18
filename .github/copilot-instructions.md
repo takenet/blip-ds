@@ -23,7 +23,7 @@ Blip Design System (blip-ds) is a design system component library built with Web
 
 The project uses [StencilJS](https://stenciljs.com/) (v2.16.1) as the core technology for building web components. StencilJS is a compiler that generates standard Web Components that can work in any framework or with no framework at all.
 
-Stencil config is located in #file:../stencil.config.ts
+Stencil config is located in stencil.config.ts
 
 #### React Integration
 
@@ -65,7 +65,8 @@ Must follow stencil's testing guidelines and use the `@stencil/core/testing` pac
    - Add Storybook documentation. Use an existing component as a reference for structure and format.
    - Ensure unit tests are written in the component's `test` folder
    - Ensure e2e tests cover integration scenarios
-   - Review and update documentation as necessary
+   - Ensure both unit and e2e tests pass with `npm run test -- -- <componentFolder>`
+   - Review and update documentation as necessary (components readme.md are automatically generated)
 
 2. The project follows semantic versioning and uses conventional commits for releases.
 
