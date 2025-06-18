@@ -14,7 +14,7 @@ const Input = class {
     this.bdsPatternValidation = createEvent(this, "bdsPatternValidation", 7);
     this.bdsKeyDownBackspace = createEvent(this, "bdsKeyDownBackspace", 7);
     /**
-     * Tratamento de eventos de pressionamento de tecla (Enter, Backspace, etc).
+     * Key press event handling (Enter, Backspace, etc).
      */
     this.keyPressWrapper = (event) => {
       switch (event.key) {
@@ -32,7 +32,7 @@ const Input = class {
       }
     };
     /**
-     * Função chamada ao digitar no campo de entrada.
+     * Function called when typing in the input field.
      */
     this.onInput = (ev) => {
       this.onBdsInputValidations();
@@ -40,14 +40,12 @@ const Input = class {
       if (input) {
         this.value = input.value || '';
       }
-      // Auto-resize textarea if enabled
-      if (this.isTextarea && this.autoResize) {
-        this.autoResizeTextarea();
-      }
+      // Update textarea if needed
+      this.updateTextarea();
       this.bdsInput.emit(ev);
     };
     /**
-     * Função chamada ao perder o foco do campo de entrada.
+     * Function called when the input field loses focus.
      */
     this.onBlur = () => {
       this.onBlurValidations();
@@ -55,14 +53,14 @@ const Input = class {
       this.bdsOnBlur.emit();
     };
     /**
-     * Função chamada ao ganhar o foco do campo de entrada.
+     * Function called when the input field gains focus.
      */
     this.onFocus = () => {
       this.isPressed = true;
       this.bdsFocus.emit();
     };
     /**
-     * Função chamada ao clicar no campo de entrada.
+     * Function called when clicking on the input field.
      */
     this.onClickWrapper = () => {
       this.onFocus();
@@ -71,7 +69,7 @@ const Input = class {
       }
     };
     /**
-     * Limpa o valor do campo de entrada.
+     * Clears the input field value.
      */
     this.clearTextInput = (ev) => {
       if (!this.readonly && !this.disabled && ev) {
@@ -130,37 +128,37 @@ const Input = class {
     this.encode = false;
   }
   /**
-   * Define o foco no campo de entrada.
+   * Sets focus to the input field.
    */
   async setFocus() {
     this.onClickWrapper();
   }
   /**
-   * Remove o foco do campo de entrada.
+   * Removes focus from the input field.
    */
   async removeFocus() {
     this.onBlur();
   }
   /**
-   * Retorna o elemento de input do componente.
+   * Returns the input element of the component.
    */
   async getInputElement() {
     return this.nativeInput;
   }
   /**
-   * Verifica se o campo de entrada é válido.
+   * Checks if the input field is valid.
    */
   async isValid() {
     return this.nativeInput.validity.valid;
   }
   /**
-   * Limpa o valor do campo de entrada.
+   * Clears the input field value.
    */
   async clear() {
     this.value = '';
   }
   /**
-   * Codifica os caracteres especiais para exibição segura (evita injeção de código HTML).
+   * Encodes special characters for safe display (prevents HTML code injection).
    */
   encodeValue(value) {
     const lt = /</g, gt = />/g, ap = /'/g, ic = /"/g, amp = /&/g, slash = /\//g;
@@ -177,14 +175,14 @@ const Input = class {
         .replace(slash, '&#47;'));
   }
   /**
-   * Avisa sobre a mudança do valor do campo de entrada.
+   * Notifies about the input field value change.
    */
   valueChanged(newValue) {
     const changeValue = this.encode ? this.encodeValue(newValue || '') : newValue || '';
     this.bdsChange.emit({ value: changeValue });
   }
   /**
-   * Auto-redimensiona a área de texto baseada no conteúdo.
+   * Auto-resizes the textarea based on content.
    */
   autoResizeTextarea() {
     if (this.isTextarea && this.autoResize && this.nativeInput) {
@@ -198,7 +196,15 @@ const Input = class {
     }
   }
   /**
-   * Função que renderiza o ícone dentro do campo de entrada.
+   * Centralizes all necessary updates for the textarea, including auto-resize.
+   */
+  updateTextarea() {
+    if (this.isTextarea && this.autoResize) {
+      this.autoResizeTextarea();
+    }
+  }
+  /**
+   * Function that renders the icon inside the input field.
    */
   renderIcon() {
     return (this.icon && (h("div", { class: {
@@ -208,7 +214,7 @@ const Input = class {
       } }, h("bds-icon", { class: "input__icon--color", size: this.label || this.iconSize === 'medium' ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
   }
   /**
-   * Função que renderiza a label do campo de entrada.
+   * Function that renders the label of the input field.
    */
   renderLabel() {
     return (this.label && (h("label", { class: {
@@ -217,7 +223,7 @@ const Input = class {
       } }, h("bds-typo", { variant: "fs-12", bold: "bold" }, this.label))));
   }
   /**
-   * Função que renderiza as mensagens de erro ou sucesso abaixo do campo de entrada.
+   * Function that renders error or success messages below the input field.
    */
   renderMessage() {
     const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
@@ -235,7 +241,7 @@ const Input = class {
     return undefined;
   }
   /**
-   * Valida o campo de entrada ao perder o foco.
+   * Validates the input field when it loses focus.
    */
   onBlurValidations() {
     this.required && this.requiredValidation();
@@ -245,7 +251,7 @@ const Input = class {
     this.checkValidity();
   }
   /**
-   * Realiza as validações do campo enquanto o usuário digita.
+   * Performs field validations while the user types.
    */
   onBdsInputValidations() {
     this.type === 'email' && this.emailValidation();
@@ -253,14 +259,14 @@ const Input = class {
     this.checkValidity();
   }
   /**
-   * Valida o padrão regex do campo.
+   * Validates the regex pattern of the field.
    */
   patternValidation() {
     const regex = new RegExp(this.pattern);
     this.bdsPatternValidation.emit(regex.test(this.nativeInput.value));
   }
   /**
-   * Valida se o campo é obrigatório.
+   * Validates if the field is required.
    */
   requiredValidation() {
     if (this.nativeInput.validity.valueMissing) {
@@ -269,7 +275,7 @@ const Input = class {
     }
   }
   /**
-   * Valida o comprimento do texto no campo de entrada.
+   * Validates the text length in the input field.
    */
   lengthValidation() {
     if (this.nativeInput.validity.tooShort) {
@@ -283,7 +289,7 @@ const Input = class {
     }
   }
   /**
-   * Valida os valores mínimos e máximos do campo de entrada.
+   * Validates the minimum and maximum values of the input field.
    */
   minMaxValidation() {
     if (this.nativeInput.validity.rangeUnderflow) {
@@ -298,7 +304,7 @@ const Input = class {
     }
   }
   /**
-   * Valida se o campo contém um email válido.
+   * Validates if the field contains a valid email.
    */
   emailValidation() {
     if (emailValidation(this.nativeInput.value)) {
@@ -307,7 +313,7 @@ const Input = class {
     }
   }
   /**
-   * Valida se o campo contém um número válido.
+   * Validates if the field contains a valid number.
    */
   numberValidation() {
     if (numberValidation(this.nativeInput.value)) {
@@ -316,7 +322,7 @@ const Input = class {
     }
   }
   /**
-   * Verifica se o campo de entrada é válido.
+   * Checks if the input field is valid.
    */
   checkValidity() {
     if (this.nativeInput.validity.valid) {
@@ -324,25 +330,21 @@ const Input = class {
     }
   }
   /**
-   * Atualiza o valor do campo de entrada após as mudanças.
+   * Updates the input field value after changes.
    */
   componentDidUpdate() {
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
     }
-    // Auto-resize textarea after value changes
-    if (this.isTextarea && this.autoResize) {
-      this.autoResizeTextarea();
-    }
+    // Update textarea after value changes
+    this.updateTextarea();
   }
   /**
-   * Configurações iniciais após o componente carregar.
+   * Initial configurations after the component loads.
    */
   componentDidLoad() {
     // Set initial height for textarea
-    if (this.isTextarea && this.autoResize) {
-      this.autoResizeTextarea();
-    }
+    this.updateTextarea();
   }
   render() {
     const isPressed = this.isPressed && !this.disabled;
