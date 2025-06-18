@@ -1,61 +1,22 @@
-import { r as registerInstance, h, c as createEvent, H as Host } from './index-611fd21e.js';
-import { e as emailValidation, n as numberValidation } from './validations-e4c049e4.js';
+'use strict';
 
-var CounterTextState;
-(function (CounterTextState) {
-  CounterTextState["Default"] = "default";
-  CounterTextState["Warning"] = "warning";
-  CounterTextState["Delete"] = "delete";
-})(CounterTextState || (CounterTextState = {}));
+Object.defineProperty(exports, '__esModule', { value: true });
 
-const counterTextCss = ".counter-text{background:var(--color-surface-2, #ededed);color:var(--color-content-disable, #595959);-webkit-box-sizing:content-box;box-sizing:content-box;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;border-radius:11px;padding:0 8px;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none}.counter-text--active{background:var(--color-system, #b2dffd);color:var(--color-content-din, black)}.counter-text--warning{background:var(--color-warning, #fde99b);color:var(--color-content-din, black)}.counter-text--delete{background:var(--color-delete, #e60f0f);color:var(--color-content-bright, white)}";
-
-const CounterText = class {
-  constructor(hostRef) {
-    registerInstance(this, hostRef);
-    this.length = undefined;
-    this.max = undefined;
-    this.active = false;
-    this.warning = { max: 20, min: 2 };
-    this.delete = { max: 1, min: 0 };
-  }
-  getState() {
-    const actualLength = this.getActualLength();
-    if (actualLength >= this.warning.min && actualLength <= this.warning.max) {
-      return CounterTextState.Warning;
-    }
-    if (actualLength <= this.delete.max) {
-      return CounterTextState.Delete;
-    }
-    return CounterTextState.Default;
-  }
-  getActualLength() {
-    return this.max - this.length;
-  }
-  render() {
-    const state = this.getState();
-    const actualLength = this.getActualLength();
-    return (h("div", { class: {
-        'counter-text': true,
-        'counter-text--active': this.active,
-        [`counter-text--${state}`]: true,
-      } }, h("bds-typo", { variant: "fs-10" }, actualLength)));
-  }
-};
-CounterText.style = counterTextCss;
+const index = require('./index-6a53aecf.js');
+const validations = require('./validations-d525e60d.js');
 
 const inputCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:relative;width:100%;max-width:100%;max-height:100%}:host input,:host textarea{-webkit-box-shadow:inherit;box-shadow:inherit}:host input::-webkit-input-placeholder,:host textarea::-webkit-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}:host input::-moz-placeholder,:host textarea::-moz-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}:host input:-ms-input-placeholder,:host textarea:-ms-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}:host input::-ms-input-placeholder,:host textarea::-ms-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}:host input::placeholder,:host textarea::placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}:host input::-webkit-input-placeholder,:host textarea::-webkit-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;padding:8px 4px 8px 12px;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%;gap:8px}.input .bds-icon{position:relative;z-index:1}.input--state-primary{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary .input__icon{position:relative}.input--state-primary .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));z-index:0;border-radius:8px}.input--state-primary:hover{border:1px solid var(--color-primary, #1e6bf1);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary.input--pressed{border:1px solid var(--color-primary, #1e6bf1);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-info, #80e3eb);box-shadow:0 0 0 2px var(--color-info, #80e3eb)}.input--state-primary.input--pressed .input__icon .bds-icon{color:var(--color-primary, #1e6bf1)}.input--state-primary .input__container__label{color:var(--color-content-default, #282828)}.input--state-primary .input__container__label--pressed bds-typo{color:var(--color-primary, #1e6bf1)}.input--state-primary .input__container__text{caret-color:var(--color-primary, #1e6bf1);color:var(--color-content-default, #282828)}.input--state-danger{border:1px solid var(--color-delete, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger .input__icon{position:relative}.input--state-danger .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-surface-negative, #8a0000);z-index:0;opacity:50%;border-radius:8px}.input--state-danger:hover{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger.input--pressed{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-error, #fabebe);box-shadow:0 0 0 2px var(--color-error, #fabebe)}.input--state-danger.input--pressed .input__icon .bds-icon{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__label{color:var(--color-delete, #e60f0f)}.input--state-danger .input__container__label--pressed bds-typo{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__text{caret-color:var(--color-negative, #e60f0f);color:var(--color-content-default, #282828)}.input--state-success{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success .input__icon{position:relative}.input--state-success .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-surface-positive, #01723e);z-index:0;border-radius:8px}.input--state-success:hover{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success.input--pressed{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-success, #84ebbc);box-shadow:0 0 0 2px var(--color-success, #84ebbc)}.input--state-success.input--pressed .input__icon .bds-icon{color:var(--color-positive, #10603b)}.input--state-success .input__container__label{color:var(--color-content-default, #282828)}.input--state-success .input__container__label--pressed bds-typo{color:var(--color-positive, #10603b)}.input--state-success .input__container__text{caret-color:var(--color-positive, #10603b);color:var(--color-content-default, #282828)}.input--state-disabled{opacity:50%;pointer-events:none;cursor:not-allowed}.input--state-disabled .input__icon{position:relative}.input--state-disabled .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));z-index:0;opacity:50%;border-radius:8px}.input .icon-success{color:var(--color-positive, #10603b);margin-left:4px}.input--label{padding:7px 4px 8px 12px}.input__icon{cursor:inherit;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;border-radius:8px;padding:2px}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%}.input__container__wrapper{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.input__container__wrapper__chips{display:inline;max-height:100px;overflow:auto}.input__container__wrapper__chips::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__wrapper__chips::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:22px;resize:none;cursor:inherit}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__text::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__text[type=date]::-webkit-calendar-picker-indicator{opacity:0;pointer-events:none}.input__message{display:-ms-flexbox;display:flex;-ms-flex-align:baseline;align-items:baseline;height:20px;margin:3.7px 2.5px;gap:4px;-webkit-transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);color:var(--color-content-disable, #595959);word-break:break-word;height:auto;min-height:20px}.input__message bds-typo{margin-top:0px;-ms-flex-item-align:self-start;align-self:self-start}.input__message__icon{display:-ms-flexbox;display:flex;margin-top:0px}.input__message--danger .input__message__icon .bds-icon{color:var(--color-negative, #e60f0f)}.input__message--danger .input__message__text{color:var(--color-negative, #e60f0f)}.input__message--success .input__message__icon .bds-icon{color:var(--color-positive, #10603b)}.input__message--success .input__message__text{color:var(--color-content-default, #282828)}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.input__container__wrapper{display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:22px;width:100%;resize:none;cursor:inherit}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text__chips{width:auto;min-width:216px;max-width:216px}";
 
 const Input = class {
   constructor(hostRef) {
-    registerInstance(this, hostRef);
-    this.bdsChange = createEvent(this, "bdsChange", 7);
-    this.bdsInput = createEvent(this, "bdsInput", 7);
-    this.bdsOnBlur = createEvent(this, "bdsOnBlur", 7);
-    this.bdsFocus = createEvent(this, "bdsFocus", 7);
-    this.bdsSubmit = createEvent(this, "bdsSubmit", 7);
-    this.bdsPatternValidation = createEvent(this, "bdsPatternValidation", 7);
-    this.bdsKeyDownBackspace = createEvent(this, "bdsKeyDownBackspace", 7);
+    index.registerInstance(this, hostRef);
+    this.bdsChange = index.createEvent(this, "bdsChange", 7);
+    this.bdsInput = index.createEvent(this, "bdsInput", 7);
+    this.bdsOnBlur = index.createEvent(this, "bdsOnBlur", 7);
+    this.bdsFocus = index.createEvent(this, "bdsFocus", 7);
+    this.bdsSubmit = index.createEvent(this, "bdsSubmit", 7);
+    this.bdsPatternValidation = index.createEvent(this, "bdsPatternValidation", 7);
+    this.bdsKeyDownBackspace = index.createEvent(this, "bdsKeyDownBackspace", 7);
     /**
      * Tratamento de eventos de pressionamento de tecla (Enter, Backspace, etc).
      */
@@ -220,19 +181,19 @@ const Input = class {
    * Função que renderiza o ícone dentro do campo de entrada.
    */
   renderIcon() {
-    return (this.icon && (h("div", { class: {
+    return (this.icon && (index.h("div", { class: {
         input__icon: true,
         'input__icon--large': !!this.label,
-      } }, h("bds-icon", { class: "input__icon--color", size: this.label ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
+      } }, index.h("bds-icon", { class: "input__icon--color", size: this.label ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
   }
   /**
    * Função que renderiza a label do campo de entrada.
    */
   renderLabel() {
-    return (this.label && (h("label", { class: {
+    return (this.label && (index.h("label", { class: {
         input__container__label: true,
         'input__container__label--pressed': this.isPressed && !this.disabled,
-      } }, h("bds-typo", { variant: "fs-12", bold: "bold" }, this.label))));
+      } }, index.h("bds-typo", { variant: "fs-12", bold: "bold" }, this.label))));
   }
   /**
    * Função que renderiza as mensagens de erro ou sucesso abaixo do campo de entrada.
@@ -248,7 +209,7 @@ const Input = class {
         ? 'input__message input__message--success'
         : 'input__message';
     if (message) {
-      return (h("div", { class: styles, part: "input__message" }, h("div", { class: "input__message__icon" }, h("bds-icon", { size: "x-small", name: icon, theme: "outline", color: "inherit" })), h("bds-typo", { class: "input__message__text", variant: "fs-12" }, message)));
+      return (index.h("div", { class: styles, part: "input__message" }, index.h("div", { class: "input__message__icon" }, index.h("bds-icon", { size: "x-small", name: icon, theme: "outline", color: "inherit" })), index.h("bds-typo", { class: "input__message__text", variant: "fs-12" }, message)));
     }
     return undefined;
   }
@@ -319,7 +280,7 @@ const Input = class {
    * Valida se o campo contém um email válido.
    */
   emailValidation() {
-    if (emailValidation(this.nativeInput.value)) {
+    if (validations.emailValidation(this.nativeInput.value)) {
       this.validationMesage = this.emailErrorMessage;
       this.validationDanger = true;
     }
@@ -328,7 +289,7 @@ const Input = class {
    * Valida se o campo contém um número válido.
    */
   numberValidation() {
-    if (numberValidation(this.nativeInput.value)) {
+    if (validations.numberValidation(this.nativeInput.value)) {
       this.validationMesage = this.numberErrorMessage;
       this.validationDanger = true;
     }
@@ -352,7 +313,7 @@ const Input = class {
   render() {
     const isPressed = this.isPressed && !this.disabled;
     const Element = this.isTextarea ? 'textarea' : 'input';
-    return (h(Host, { "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: {
+    return (index.h(index.Host, { "aria-disabled": this.disabled ? 'true' : null }, index.h("div", { class: {
         input: true,
         'input--state-primary': !this.danger && !this.validationDanger,
         'input--state-danger': this.danger || this.validationDanger,
@@ -360,7 +321,7 @@ const Input = class {
         'input--state-disabled': this.disabled,
         'input--label': !!this.label,
         'input--pressed': isPressed,
-      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { name: "input-left" }), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: { input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips } }, h("slot", { name: "inside-input-left" }), h(Element, { class: { input__container__text: true, input__container__text__chips: this.chips }, ref: (input) => (this.nativeInput = input), rows: this.rows, cols: this.cols, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest }))), this.counterLength && (h("bds-counter-text", { length: this.value.length, max: this.maxlength, active: isPressed, ...this.counterLengthRule })), this.success && h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { name: "input-right" })), this.renderMessage()));
+      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), index.h("slot", { name: "input-left" }), index.h("div", { class: "input__container" }, this.renderLabel(), index.h("div", { class: { input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips } }, index.h("slot", { name: "inside-input-left" }), index.h(Element, { class: { input__container__text: true, input__container__text__chips: this.chips }, ref: (input) => (this.nativeInput = input), rows: this.rows, cols: this.cols, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest }))), this.counterLength && (index.h("bds-counter-text", { length: this.value.length, max: this.maxlength, active: isPressed, ...this.counterLengthRule })), this.success && index.h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "small" }), index.h("slot", { name: "input-right" })), this.renderMessage()));
   }
   static get watchers() { return {
     "value": ["valueChanged"]
@@ -368,4 +329,4 @@ const Input = class {
 };
 Input.style = inputCss;
 
-export { CounterText as bds_counter_text, Input as bds_input };
+exports.bds_input = Input;

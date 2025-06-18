@@ -10,6 +10,8 @@ export declare class InputPhoneNumber {
   validationDanger?: boolean;
   validationMesage?: string;
   isPressed?: boolean;
+  searchTerm: string;
+  filteredCountries: any;
   /**
    * Lista de opções do select.
    */
@@ -118,8 +120,6 @@ export declare class InputPhoneNumber {
    */
   searchPlaceholder?: string;
   private countries;
-  private filteredCountries;
-  private searchTerm;
   removeFocus(): Promise<void>;
   valueChanged(): void;
   handleWindow(ev: Event): void;
@@ -127,7 +127,7 @@ export declare class InputPhoneNumber {
   initialCountryFlagChanged(): void;
   initialIsoCodeChanged(): void;
   private updateCountries;
-  componentWillRender(): void;
+  componentWillLoad(): void;
   private get childOptions();
   private refNativeInput;
   private onClickWrapper;
@@ -141,14 +141,17 @@ export declare class InputPhoneNumber {
   private handler;
   changeCountry(code: any, isoCode: any, flag: any): Promise<void>;
   private keyPressWrapper;
-  private filterCountries;
+  private checkValidity;
+  getSelectedCountry(): Promise<string>;
+  getIsoCode(): Promise<string>;
+  filterCountries(term: string): Promise<void>;
+  private internalFilterCountries;
   private resetFilterCountries;
   private onSearchInput;
   private onSearchKeyDown;
-  private checkValidity;
+  private renderSearchInput;
   private renderIcon;
   private renderLabel;
   private renderMessage;
-  private renderSearchInput;
   render(): HTMLElement;
 }

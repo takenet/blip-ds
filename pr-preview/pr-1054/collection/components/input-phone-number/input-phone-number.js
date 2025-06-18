@@ -7,8 +7,6 @@ import * as countriesEsES from './countries-es_ES.json';
 export class InputPhoneNumber {
   constructor() {
     this.countries = {};
-    this.filteredCountries = {};
-    this.searchTerm = '';
     this.refNativeInput = (el) => {
       this.nativeInput = el;
     };
@@ -65,22 +63,8 @@ export class InputPhoneNumber {
         this.toggle();
       }
     };
-    this.filterCountries = (term) => {
-      if (!term || term.trim() === '') {
-        this.resetFilterCountries();
-        return;
-      }
-      const termLower = term.toLowerCase().trim();
-      this.filteredCountries = {};
-      Object.keys(this.countries).forEach(flagKey => {
-        const country = this.countries[flagKey];
-        const matchesName = country.name.toLowerCase().includes(termLower);
-        const matchesCode = country.code.toLowerCase().includes(termLower);
-        const matchesIsoCode = country.isoCode.toLowerCase().includes(termLower);
-        if (matchesName || matchesCode || matchesIsoCode) {
-          this.filteredCountries[flagKey] = country;
-        }
-      });
+    this.internalFilterCountries = (term) => {
+      this.filterCountries(term);
     };
     this.resetFilterCountries = () => {
       this.filteredCountries = { ...this.countries };
@@ -88,7 +72,7 @@ export class InputPhoneNumber {
     this.onSearchInput = (event) => {
       const input = event.target;
       this.searchTerm = input.value || '';
-      this.filterCountries(this.searchTerm);
+      this.internalFilterCountries(this.searchTerm);
     };
     this.onSearchKeyDown = (event) => {
       // Prevent search input from closing the dropdown
@@ -100,6 +84,8 @@ export class InputPhoneNumber {
     this.validationDanger = false;
     this.validationMesage = '';
     this.isPressed = false;
+    this.searchTerm = '';
+    this.filteredCountries = {};
     this.options = [];
     this.text = '';
     this.value = '+55';
@@ -175,8 +161,15 @@ export class InputPhoneNumber {
       this.isoCode = this.countries[this.initialCountryFlag].isoCode;
     }
     else if (this.initialIsoCode) {
-      countryIndex = Object.values(this.countries).findIndex((country) => country.isoCode === this.initialIsoCode ||
-        country.isoCode.includes(this.initialIsoCode.toUpperCase()));
+      countryIndex = Object.values(this.countries).findIndex((country) => {
+        const isoUpper = this.initialIsoCode.toUpperCase();
+        // Check for exact match first, then partial match
+        return country.isoCode === isoUpper ||
+          country.isoCode.startsWith(isoUpper + ' ') ||
+          country.isoCode.endsWith(' ' + isoUpper) ||
+          country.isoCode === `${isoUpper} / ${isoUpper}` ||
+          country.isoCode.includes(`${isoUpper} /`);
+      });
       if (countryIndex !== -1) {
         this.selectedCountry = flagsNames[countryIndex];
         this.value = this.countries[flagsNames[countryIndex]].code;
@@ -197,7 +190,7 @@ export class InputPhoneNumber {
       this.value = this.value || this.countries[flagsNames[0]].code;
     }
   }
-  componentWillRender() {
+  componentWillLoad() {
     this.updateCountries();
   }
   get childOptions() {
@@ -241,6 +234,40 @@ export class InputPhoneNumber {
       this.validationDanger = false;
     }
   }
+  async getSelectedCountry() {
+    return this.selectedCountry;
+  }
+  async getIsoCode() {
+    return this.isoCode;
+  }
+  async filterCountries(term) {
+    if (!term || term.trim() === '') {
+      this.resetFilterCountries();
+      return;
+    }
+    const termLower = term.toLowerCase().trim();
+    const newFilteredCountries = {};
+    Object.keys(this.countries).forEach(flagKey => {
+      const country = this.countries[flagKey];
+      const matchesName = country.name.toLowerCase().includes(termLower);
+      const matchesCode = country.code.toLowerCase().includes(termLower);
+      const matchesIsoCode = country.isoCode.toLowerCase().includes(termLower);
+      if (matchesName || matchesCode || matchesIsoCode) {
+        newFilteredCountries[flagKey] = country;
+      }
+    });
+    // Set to new object to trigger reactivity
+    this.filteredCountries = newFilteredCountries;
+  }
+  renderSearchInput() {
+    return (this.enableSearch && (h("div", { class: "select-phone-number__search" }, h("input", { type: "text", placeholder: this.searchPlaceholder, value: this.searchTerm, onInput: this.onSearchInput, onKeyDown: this.onSearchKeyDown, style: {
+        width: '100%',
+        padding: '8px 12px',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        fontSize: '14px'
+      } }))));
+  }
   renderIcon() {
     return (this.icon && (h("div", { class: {
         input__icon: true,
@@ -264,9 +291,6 @@ export class InputPhoneNumber {
         ? 'input__message input__message--success'
         : 'input__message';
     return message ? (h("div", { class: styles, part: "input__message" }, h("div", { class: "input__message__icon" }, h("bds-icon", { size: "x-small", name: icon, theme: "outline", color: "inherit" })), h("bds-typo", { class: "input__message__text", variant: "fs-12" }, message))) : null;
-  }
-  renderSearchInput() {
-    return (this.enableSearch && (h("div", { class: "select-phone-number__search" }, h("bds-input", { icon: "search", placeholder: this.searchPlaceholder, value: this.searchTerm, onBdsInput: this.onSearchInput, onKeyDown: this.onSearchKeyDown }))));
   }
   render() {
     const isPressed = this.isPressed && !this.disabled;
@@ -694,7 +718,9 @@ export class InputPhoneNumber {
       "isoCode": {},
       "validationDanger": {},
       "validationMesage": {},
-      "isPressed": {}
+      "isPressed": {},
+      "searchTerm": {},
+      "filteredCountries": {}
     };
   }
   static get events() {
@@ -807,6 +833,57 @@ export class InputPhoneNumber {
               "tags": [],
               "text": ""
             }, {
+              "tags": [],
+              "text": ""
+            }],
+          "references": {
+            "Promise": {
+              "location": "global"
+            }
+          },
+          "return": "Promise<void>"
+        },
+        "docs": {
+          "text": "",
+          "tags": []
+        }
+      },
+      "getSelectedCountry": {
+        "complexType": {
+          "signature": "() => Promise<string>",
+          "parameters": [],
+          "references": {
+            "Promise": {
+              "location": "global"
+            }
+          },
+          "return": "Promise<string>"
+        },
+        "docs": {
+          "text": "",
+          "tags": []
+        }
+      },
+      "getIsoCode": {
+        "complexType": {
+          "signature": "() => Promise<string>",
+          "parameters": [],
+          "references": {
+            "Promise": {
+              "location": "global"
+            }
+          },
+          "return": "Promise<string>"
+        },
+        "docs": {
+          "text": "",
+          "tags": []
+        }
+      },
+      "filterCountries": {
+        "complexType": {
+          "signature": "(term: string) => Promise<void>",
+          "parameters": [{
               "tags": [],
               "text": ""
             }],
