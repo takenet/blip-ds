@@ -2,7 +2,6 @@ import { EventEmitter } from '../../stencil-public-runtime';
 import { Option } from '../selects/select-interface';
 export type languages = 'pt_BR' | 'es_ES' | 'en_US';
 export declare class InputPhoneNumber {
-  private nativeInput?;
   el: HTMLBdsSelectElement;
   isOpen?: boolean;
   selectedCountry: string;
@@ -129,19 +128,15 @@ export declare class InputPhoneNumber {
   private updateCountries;
   componentWillLoad(): void;
   private get childOptions();
-  private refNativeInput;
-  private onClickWrapper;
-  private onFocus;
-  private onBlur;
-  private changedInputValue;
+  private onBdsInputChange;
+  private onBdsInputInput;
+  private onBdsInputFocus;
+  private onBdsInputBlur;
   protected handleInputChange(): void;
-  private numberValidation;
-  private toggle;
-  private handleKeyDown;
   private handler;
   changeCountry(code: any, isoCode: any, flag: any): Promise<void>;
-  private keyPressWrapper;
-  private checkValidity;
+  private toggle;
+  private handleKeyDown;
   getSelectedCountry(): Promise<string>;
   getIsoCode(): Promise<string>;
   filterCountries(term: string): Promise<void>;
@@ -150,8 +145,6 @@ export declare class InputPhoneNumber {
   private onSearchInput;
   private onSearchKeyDown;
   private renderSearchInput;
-  private renderIcon;
-  private renderLabel;
-  private renderMessage;
+  private renderCountrySelector;
   render(): HTMLElement;
 }

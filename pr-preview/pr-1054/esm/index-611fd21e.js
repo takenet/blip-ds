@@ -2466,22 +2466,18 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           return import(
             /* webpackMode: "lazy" */
             './bds-illustration_2.entry.js').then(processMod, consoleError);
-        case 'bds-input':
-          return import(
-            /* webpackMode: "lazy" */
-            './bds-input.entry.js').then(processMod, consoleError);
         case 'bds-radio_2':
           return import(
             /* webpackMode: "lazy" */
             './bds-radio_2.entry.js').then(processMod, consoleError);
+        case 'bds-counter-text_2':
+          return import(
+            /* webpackMode: "lazy" */
+            './bds-counter-text_2.entry.js').then(processMod, consoleError);
         case 'bds-chip-clickable_2':
           return import(
             /* webpackMode: "lazy" */
             './bds-chip-clickable_2.entry.js').then(processMod, consoleError);
-        case 'bds-counter-text':
-          return import(
-            /* webpackMode: "lazy" */
-            './bds-counter-text.entry.js').then(processMod, consoleError);
         case 'bds-button':
           return import(
             /* webpackMode: "lazy" */

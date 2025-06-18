@@ -1,5 +1,4 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-611fd21e.js';
-import { n as numberValidation } from './validations-e4c049e4.js';
 
 const countries = {
 	"brazil-flag": {
@@ -4813,7 +4812,7 @@ const countriesEs_ES = {
 }
 };
 
-const inputPhoneNumberCss = ":host{display:-ms-flexbox;display:flex;border-radius:8px;position:relative;outline:none;width:100%;min-width:200px}.element_input{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:relative;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%}.element_input input{-webkit-box-shadow:inherit;box-shadow:inherit}.element_input input::-webkit-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::-moz-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input:-ms-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::-ms-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::-webkit-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%}.input .bds-icon{position:relative;z-index:1}.input--state-primary{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary:hover{border:1px solid var(--color-primary, #1e6bf1);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary.input--pressed{border:1px solid var(--color-primary, #1e6bf1);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-info, #80e3eb);box-shadow:0 0 0 2px var(--color-info, #80e3eb)}.input--state-primary .input__container{padding:4px 8px 9px}.input--state-primary .input__container__label{color:var(--color-content-default, #282828)}.input--state-primary .input__container__label--pressed bds-typo{color:var(--color-primary, #1e6bf1)}.input--state-primary .input__container__text{caret-color:var(--color-primary, #1e6bf1);color:var(--color-content-default, #282828);-ms-flex-positive:1;flex-grow:1}.input--state-danger{border:1px solid var(--color-delete, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger:hover{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger.input--pressed{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-error, #fabebe);box-shadow:0 0 0 2px var(--color-error, #fabebe)}.input--state-danger .input__container{padding:4px 8px 9px}.input--state-danger .input__container__label{color:var(--color-delete, #e60f0f)}.input--state-danger .input__container__label--pressed bds-typo{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__text{caret-color:var(--color-negative, #e60f0f);color:var(--color-content-default, #282828);-ms-flex-positive:1;flex-grow:1}.input--state-success{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success:hover{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success.input--pressed{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-success, #84ebbc);box-shadow:0 0 0 2px var(--color-success, #84ebbc)}.input--state-success .input__container{padding:4px 8px 9px}.input--state-success .input__container__label{color:var(--color-content-default, #282828)}.input--state-success .input__container__label--pressed bds-typo{color:var(--color-positive, #10603b)}.input--state-success .input__container__text{caret-color:var(--color-positive, #10603b);color:var(--color-content-default, #282828);-ms-flex-positive:1;flex-grow:1}.input--state-disabled{opacity:50%;pointer-events:none;cursor:not-allowed}.input .icon-success{color:var(--color-positive, #10603b);margin-left:4px}.input--label{padding:0}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%}.input__container__wrapper{display:-ms-flexbox;display:flex}.input__container__wrapper__chips{display:inline;max-height:100px;overflow:auto}.input__container__wrapper__chips::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__wrapper__chips::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:150%;resize:none;cursor:inherit}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__text::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__message{display:-ms-flexbox;display:flex;-ms-flex-align:baseline;align-items:baseline;height:20px;margin:3.7px 2.5px;-webkit-transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);color:var(--color-content-disable, #595959);word-break:break-word;height:auto;min-height:20px}.input__message bds-typo{margin-top:0px;-ms-flex-item-align:self-start;align-self:self-start}.input__message__icon{display:-ms-flexbox;display:flex;padding-right:4px;margin-top:0px;padding-top:2px}.input__message--danger .bds-icon{color:var(--color-negative, #e60f0f)}.input__message--danger .input__message__text{color:var(--color-negative, #e60f0f)}.input__message--success .input__message__icon .bds-icon{color:var(--color-positive, #10603b)}.input__message--success .input__message__text{color:var(--color-content-default, #282828)}.input__icon{position:relative;height:100%;color:var(--color-content-disable, #595959);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:space-evenly;justify-content:space-evenly;padding-right:16px;padding-left:12px;cursor:pointer}.input__icon bds-icon{position:relative}.input__icon bds-icon:first-child{margin-right:8px}.input__icon::before{content:\"\";background:transparent;height:calc(100% - 2px);max-height:54px;width:70px;position:absolute;left:1px;top:1px;border-radius:8px 0px 0px 8px}.input__icon::after{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.input__icon:focus-visible{outline:none}.input__icon:focus-visible::after{border-color:var(--color-focus, #c226fb)}.input__country-code{color:var(--color-content-disable, #595959);padding-right:5px}.input:hover .input__icon::before,.input--pressed .input__icon::before{background:var(--color-surface-2, #ededed)}.select-phone-number__options{background:var(--color-surface-2, #ededed);width:100%;max-height:250px;position:absolute;top:99%;left:0;border-radius:8px;-webkit-box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));overflow-y:auto;overflow-x:hidden;z-index:2;margin-top:4px;-webkit-transition:opacity 0.75s, visibility 0.75s, -webkit-transform 0.25s;transition:opacity 0.75s, visibility 0.75s, -webkit-transform 0.25s;transition:transform 0.25s, opacity 0.75s, visibility 0.75s;transition:transform 0.25s, opacity 0.75s, visibility 0.75s, -webkit-transform 0.25s;-webkit-transform-origin:top left;transform-origin:top left;-webkit-transform:scaleY(0);transform:scaleY(0);opacity:0}.select-phone-number__options::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.select-phone-number__options::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.select-phone-number__options--open{visibility:visible;-webkit-transform:scale(1);transform:scale(1);opacity:1}.select-phone-number__search{padding:8px 12px;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));background:var(--color-surface-2, #ededed);position:-webkit-sticky;position:sticky;top:0;z-index:3}.select-phone-number__search bds-input{width:100%}";
+const inputPhoneNumberCss = ":host{display:-ms-flexbox;display:flex;border-radius:8px;position:relative;outline:none;width:100%;min-width:200px}.element_input{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:relative;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%}.element_input input{-webkit-box-shadow:inherit;box-shadow:inherit}.element_input input::-webkit-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::-moz-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input:-ms-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::-ms-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.element_input input::-webkit-input-placeholder{color:var(--color-content-ghost, #8c8c8c);opacity:1}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%}.input .bds-icon{position:relative;z-index:1}.input--state-primary{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary:hover{border:1px solid var(--color-primary, #1e6bf1);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary.input--pressed{border:1px solid var(--color-primary, #1e6bf1);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-info, #80e3eb);box-shadow:0 0 0 2px var(--color-info, #80e3eb)}.input--state-primary .input__container{padding:4px 8px 9px}.input--state-primary .input__container__label{color:var(--color-content-default, #282828)}.input--state-primary .input__container__label--pressed bds-typo{color:var(--color-primary, #1e6bf1)}.input--state-primary .input__container__text{caret-color:var(--color-primary, #1e6bf1);color:var(--color-content-default, #282828);-ms-flex-positive:1;flex-grow:1}.input--state-danger{border:1px solid var(--color-delete, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger:hover{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger.input--pressed{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-error, #fabebe);box-shadow:0 0 0 2px var(--color-error, #fabebe)}.input--state-danger .input__container{padding:4px 8px 9px}.input--state-danger .input__container__label{color:var(--color-delete, #e60f0f)}.input--state-danger .input__container__label--pressed bds-typo{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__text{caret-color:var(--color-negative, #e60f0f);color:var(--color-content-default, #282828);-ms-flex-positive:1;flex-grow:1}.input--state-success{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success:hover{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success.input--pressed{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-success, #84ebbc);box-shadow:0 0 0 2px var(--color-success, #84ebbc)}.input--state-success .input__container{padding:4px 8px 9px}.input--state-success .input__container__label{color:var(--color-content-default, #282828)}.input--state-success .input__container__label--pressed bds-typo{color:var(--color-positive, #10603b)}.input--state-success .input__container__text{caret-color:var(--color-positive, #10603b);color:var(--color-content-default, #282828);-ms-flex-positive:1;flex-grow:1}.input--state-disabled{opacity:50%;pointer-events:none;cursor:not-allowed}.input .icon-success{color:var(--color-positive, #10603b);margin-left:4px}.input--label{padding:0}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%}.input__container__wrapper{display:-ms-flexbox;display:flex}.input__container__wrapper__chips{display:inline;max-height:100px;overflow:auto}.input__container__wrapper__chips::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__wrapper__chips::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:150%;resize:none;cursor:inherit}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__text::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__message{display:-ms-flexbox;display:flex;-ms-flex-align:baseline;align-items:baseline;height:20px;margin:3.7px 2.5px;-webkit-transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);color:var(--color-content-disable, #595959);word-break:break-word;height:auto;min-height:20px}.input__message bds-typo{margin-top:0px;-ms-flex-item-align:self-start;align-self:self-start}.input__message__icon{display:-ms-flexbox;display:flex;padding-right:4px;margin-top:0px;padding-top:2px}.input__message--danger .bds-icon{color:var(--color-negative, #e60f0f)}.input__message--danger .input__message__text{color:var(--color-negative, #e60f0f)}.input__message--success .input__message__icon .bds-icon{color:var(--color-positive, #10603b)}.input__message--success .input__message__text{color:var(--color-content-default, #282828)}.input__icon{position:relative;height:100%;color:var(--color-content-disable, #595959);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:space-evenly;justify-content:space-evenly;padding-right:16px;padding-left:12px;cursor:pointer}.input__icon bds-icon{position:relative}.input__icon bds-icon:first-child{margin-right:8px}.input__icon::before{content:\"\";background:transparent;height:calc(100% - 2px);max-height:54px;width:70px;position:absolute;left:1px;top:1px;border-radius:8px 0px 0px 8px}.input__icon::after{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.input__icon:focus-visible{outline:none}.input__icon:focus-visible::after{border-color:var(--color-focus, #c226fb)}.input__country-selector{position:relative;height:100%;color:var(--color-content-disable, #595959);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:space-evenly;justify-content:space-evenly;padding-right:16px;padding-left:12px;cursor:pointer;border-right:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));margin-right:8px}.input__country-selector bds-icon{position:relative}.input__country-selector bds-icon:first-child{margin-right:8px}.input__country-selector::after{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px;pointer-events:none}.input__country-selector:focus-visible{outline:none}.input__country-selector:focus-visible::after{border-color:var(--color-focus, #c226fb)}.input__country-selector .input__container__country-code{color:var(--color-content-disable, #595959);padding-right:5px}.input__country-selector:hover{background:var(--color-surface-2, #ededed)}.input__country-code{color:var(--color-content-disable, #595959);padding-right:5px}.input:hover .input__icon::before,.input--pressed .input__icon::before{background:var(--color-surface-2, #ededed)}.select-phone-number__options{background:var(--color-surface-2, #ededed);width:100%;max-height:250px;position:absolute;top:99%;left:0;border-radius:8px;-webkit-box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));overflow-y:auto;overflow-x:hidden;z-index:2;margin-top:4px;-webkit-transition:opacity 0.75s, visibility 0.75s, -webkit-transform 0.25s;transition:opacity 0.75s, visibility 0.75s, -webkit-transform 0.25s;transition:transform 0.25s, opacity 0.75s, visibility 0.75s;transition:transform 0.25s, opacity 0.75s, visibility 0.75s, -webkit-transform 0.25s;-webkit-transform-origin:top left;transform-origin:top left;-webkit-transform:scaleY(0);transform:scaleY(0);opacity:0}.select-phone-number__options::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.select-phone-number__options::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.select-phone-number__options--open{visibility:visible;-webkit-transform:scale(1);transform:scale(1);opacity:1}.select-phone-number__search{padding:8px 12px;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));background:var(--color-surface-2, #ededed);position:-webkit-sticky;position:sticky;top:0;z-index:3}.select-phone-number__search bds-input{width:100%}";
 
 const InputPhoneNumber = class {
   constructor(hostRef) {
@@ -4824,41 +4823,22 @@ const InputPhoneNumber = class {
     this.bdsFocus = createEvent(this, "bdsFocus", 7);
     this.bdsBlur = createEvent(this, "bdsBlur", 7);
     this.countries = {};
-    this.refNativeInput = (el) => {
-      this.nativeInput = el;
+    // Event handlers for bds-input integration
+    this.onBdsInputChange = (event) => {
+      const { value } = event.detail;
+      this.text = value || '';
+      // Don't call numberValidation here as bds-input handles its own validation
     };
-    this.onClickWrapper = () => {
-      this.onFocus();
-      if (this.nativeInput) {
-        this.nativeInput.focus();
-      }
+    this.onBdsInputInput = (event) => {
+      this.bdsInput.emit(event.detail);
     };
-    this.onFocus = () => {
+    this.onBdsInputFocus = () => {
       this.bdsFocus.emit();
       this.isPressed = true;
     };
-    this.onBlur = () => {
+    this.onBdsInputBlur = () => {
       this.bdsBlur.emit();
       this.isPressed = false;
-    };
-    this.changedInputValue = async (ev) => {
-      const input = ev.target;
-      this.checkValidity();
-      if (input) {
-        this.text = input.value || '';
-        this.numberValidation();
-      }
-      this.bdsInput.emit(ev);
-    };
-    this.toggle = () => {
-      if (!this.disabled) {
-        this.isOpen = !this.isOpen;
-        if (this.isOpen) {
-          // Reset search when opening
-          this.searchTerm = '';
-          this.resetFilterCountries();
-        }
-      }
     };
     this.handler = (event) => {
       const { value } = event.detail;
@@ -4873,11 +4853,14 @@ const InputPhoneNumber = class {
       });
       this.toggle();
     };
-    this.keyPressWrapper = (event) => {
-      const isSelectElement = event.target.localName === 'bds-select';
-      const isInputElement = event.target.localName === 'input';
-      if (event.key === 'Enter' && !this.isOpen && (isSelectElement || isInputElement)) {
-        this.toggle();
+    this.toggle = () => {
+      if (!this.disabled) {
+        this.isOpen = !this.isOpen;
+        if (this.isOpen) {
+          // Reset search when opening
+          this.searchTerm = '';
+          this.resetFilterCountries();
+        }
       }
     };
     this.internalFilterCountries = (term) => {
@@ -4926,7 +4909,7 @@ const InputPhoneNumber = class {
     this.searchPlaceholder = 'Search countries...';
   }
   async removeFocus() {
-    this.onBlur();
+    this.onBdsInputBlur();
   }
   valueChanged() {
     for (const option of this.childOptions) {
@@ -5021,20 +5004,6 @@ const InputPhoneNumber = class {
       country: this.selectedCountry,
     });
   }
-  numberValidation() {
-    if (numberValidation(this.nativeInput.value)) {
-      this.validationMesage = this.numberErrorMessage;
-      this.validationDanger = true;
-    }
-    else {
-      this.validationDanger = false;
-    }
-  }
-  handleKeyDown(event) {
-    if (event.key == 'Enter') {
-      this.toggle();
-    }
-  }
   async changeCountry(code, isoCode, flag) {
     this.value = code;
     this.selectedCountry = flag;
@@ -5046,9 +5015,9 @@ const InputPhoneNumber = class {
       country: this.selectedCountry,
     });
   }
-  checkValidity() {
-    if (this.nativeInput.validity.valid) {
-      this.validationDanger = false;
+  handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.toggle();
     }
   }
   async getSelectedCountry() {
@@ -5085,43 +5054,13 @@ const InputPhoneNumber = class {
         fontSize: '14px'
       } }))));
   }
-  renderIcon() {
-    return (this.icon && (h("div", { class: {
-        input__icon: true,
-        'input__icon--large': !!this.label,
-      } }, h("bds-icon", { size: this.label ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
-  }
-  renderLabel() {
-    return (this.label && (h("label", { class: {
-        input__container__label: true,
-        'input__container__label--pressed': this.isPressed && !this.disabled,
-      } }, h("bds-typo", { variant: "fs-12", bold: "bold" }, this.label))));
-  }
-  renderMessage() {
-    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
-    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
-    if (!message && this.validationDanger)
-      message = this.validationMesage;
-    const styles = this.danger || this.validationDanger
-      ? 'input__message input__message--danger'
-      : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
-    return message ? (h("div", { class: styles, part: "input__message" }, h("div", { class: "input__message__icon" }, h("bds-icon", { size: "x-small", name: icon, theme: "outline", color: "inherit" })), h("bds-typo", { class: "input__message__text", variant: "fs-12" }, message))) : null;
+  renderCountrySelector() {
+    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
+    return (h("div", { onClick: this.toggle, onKeyDown: this.handleKeyDown.bind(this), "data-test": this.dtSelectFlag, class: "input__country-selector", tabindex: "0" }, h("bds-icon", { size: "medium", theme: "solid", name: this.selectedCountry, color: "primary" }), h("bds-icon", { size: "x-small", name: iconArrow }), h("div", { class: "input__container__country-code" }, h("bds-typo", { "no-wrap": "true", variant: "fs-14" }, this.value))));
   }
   render() {
-    const isPressed = this.isPressed && !this.disabled;
-    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
     const filteredFlagsNames = Object.keys(this.filteredCountries);
-    return (h(Host, { "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: {
-        input: true,
-        'input--state-primary': !this.danger && !this.validationDanger,
-        'input--state-danger': this.danger || this.validationDanger,
-        'input--state-success': this.success,
-        'input--state-disabled': this.disabled,
-        'input--label': !!this.label,
-        'input--pressed': isPressed,
-      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { onClick: this.toggle, onKeyDown: this.handleKeyDown.bind(this), "data-test": this.dtSelectFlag, class: "input__icon", tabindex: "0" }, h("bds-icon", { size: "medium", theme: "solid", name: this.selectedCountry, color: "primary" }), h("bds-icon", { size: "x-small", name: iconArrow })), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: { input__container__wrapper: true } }, h("div", { class: "input__container__country-code" }, h("bds-typo", { "no-wrap": "true", variant: "fs-14" }, this.value)), h("input", { class: { input__container__text: true }, type: "phonenumber", required: this.required, pattern: "/^(\\(?\\+?[0-9]*\\)?)?[0-9_\\- \\(\\)]*$/", ref: this.refNativeInput, onInput: this.changedInputValue, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, "data-test": this.dataTest, ...{ maxlength: this.value === '+55' ? 25 : null } }))), this.success && h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "xxx-small" }), h("slot", { name: "input-right" })), this.renderMessage()), h("div", { class: {
+    return (h(Host, { "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("bds-input", { type: "phonenumber", label: this.label, value: this.text, disabled: this.disabled, danger: this.danger || this.validationDanger, success: this.success, required: this.required, icon: this.icon, helperMessage: this.helperMessage, errorMessage: this.danger ? this.errorMessage : this.validationDanger ? this.validationMesage : '', successMessage: this.successMessage, numberErrorMessage: this.numberErrorMessage, requiredErrorMessage: this.requiredErrorMessage, pattern: "/^(\\(?\\+?[0-9]*\\)?)?[0-9_\\- \\(\\)]*$/", dataTest: this.dataTest, maxlength: this.value === '+55' ? 25 : null, onBdsChange: this.onBdsInputChange, onBdsInput: this.onBdsInputInput, onBdsFocus: this.onBdsInputFocus, onBdsOnBlur: this.onBdsInputBlur }, h("div", { slot: "inside-input-left" }, this.renderCountrySelector()))), h("div", { class: {
         'select-phone-number__options': true,
         'select-phone-number__options--open': this.isOpen,
       } }, this.isOpen && [

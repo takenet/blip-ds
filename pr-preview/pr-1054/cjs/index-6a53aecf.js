@@ -2488,22 +2488,18 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */
             './bds-illustration_2.cjs.entry.js')); }).then(processMod, consoleError);
-        case 'bds-input.cjs':
-          return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-            /* webpackMode: "lazy" */
-            './bds-input.cjs.entry.js')); }).then(processMod, consoleError);
         case 'bds-radio_2.cjs':
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */
             './bds-radio_2.cjs.entry.js')); }).then(processMod, consoleError);
+        case 'bds-counter-text_2.cjs':
+          return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+            /* webpackMode: "lazy" */
+            './bds-counter-text_2.cjs.entry.js')); }).then(processMod, consoleError);
         case 'bds-chip-clickable_2.cjs':
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */
             './bds-chip-clickable_2.cjs.entry.js')); }).then(processMod, consoleError);
-        case 'bds-counter-text.cjs':
-          return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-            /* webpackMode: "lazy" */
-            './bds-counter-text.cjs.entry.js')); }).then(processMod, consoleError);
         case 'bds-button.cjs':
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */

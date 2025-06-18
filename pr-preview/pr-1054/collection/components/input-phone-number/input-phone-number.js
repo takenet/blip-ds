@@ -1,5 +1,4 @@
 import { h, Host } from '@stencil/core';
-import { numberValidation } from '../../utils/validations';
 import * as countriesDefault from './countries.json';
 import * as countriesPtBR from './countries-pt_BR.json';
 import * as countriesEnUS from './countries-en_US.json';
@@ -7,41 +6,22 @@ import * as countriesEsES from './countries-es_ES.json';
 export class InputPhoneNumber {
   constructor() {
     this.countries = {};
-    this.refNativeInput = (el) => {
-      this.nativeInput = el;
+    // Event handlers for bds-input integration
+    this.onBdsInputChange = (event) => {
+      const { value } = event.detail;
+      this.text = value || '';
+      // Don't call numberValidation here as bds-input handles its own validation
     };
-    this.onClickWrapper = () => {
-      this.onFocus();
-      if (this.nativeInput) {
-        this.nativeInput.focus();
-      }
+    this.onBdsInputInput = (event) => {
+      this.bdsInput.emit(event.detail);
     };
-    this.onFocus = () => {
+    this.onBdsInputFocus = () => {
       this.bdsFocus.emit();
       this.isPressed = true;
     };
-    this.onBlur = () => {
+    this.onBdsInputBlur = () => {
       this.bdsBlur.emit();
       this.isPressed = false;
-    };
-    this.changedInputValue = async (ev) => {
-      const input = ev.target;
-      this.checkValidity();
-      if (input) {
-        this.text = input.value || '';
-        this.numberValidation();
-      }
-      this.bdsInput.emit(ev);
-    };
-    this.toggle = () => {
-      if (!this.disabled) {
-        this.isOpen = !this.isOpen;
-        if (this.isOpen) {
-          // Reset search when opening
-          this.searchTerm = '';
-          this.resetFilterCountries();
-        }
-      }
     };
     this.handler = (event) => {
       const { value } = event.detail;
@@ -56,11 +36,14 @@ export class InputPhoneNumber {
       });
       this.toggle();
     };
-    this.keyPressWrapper = (event) => {
-      const isSelectElement = event.target.localName === 'bds-select';
-      const isInputElement = event.target.localName === 'input';
-      if (event.key === 'Enter' && !this.isOpen && (isSelectElement || isInputElement)) {
-        this.toggle();
+    this.toggle = () => {
+      if (!this.disabled) {
+        this.isOpen = !this.isOpen;
+        if (this.isOpen) {
+          // Reset search when opening
+          this.searchTerm = '';
+          this.resetFilterCountries();
+        }
       }
     };
     this.internalFilterCountries = (term) => {
@@ -109,7 +92,7 @@ export class InputPhoneNumber {
     this.searchPlaceholder = 'Search countries...';
   }
   async removeFocus() {
-    this.onBlur();
+    this.onBdsInputBlur();
   }
   valueChanged() {
     for (const option of this.childOptions) {
@@ -204,20 +187,6 @@ export class InputPhoneNumber {
       country: this.selectedCountry,
     });
   }
-  numberValidation() {
-    if (numberValidation(this.nativeInput.value)) {
-      this.validationMesage = this.numberErrorMessage;
-      this.validationDanger = true;
-    }
-    else {
-      this.validationDanger = false;
-    }
-  }
-  handleKeyDown(event) {
-    if (event.key == 'Enter') {
-      this.toggle();
-    }
-  }
   async changeCountry(code, isoCode, flag) {
     this.value = code;
     this.selectedCountry = flag;
@@ -229,9 +198,9 @@ export class InputPhoneNumber {
       country: this.selectedCountry,
     });
   }
-  checkValidity() {
-    if (this.nativeInput.validity.valid) {
-      this.validationDanger = false;
+  handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.toggle();
     }
   }
   async getSelectedCountry() {
@@ -268,43 +237,13 @@ export class InputPhoneNumber {
         fontSize: '14px'
       } }))));
   }
-  renderIcon() {
-    return (this.icon && (h("div", { class: {
-        input__icon: true,
-        'input__icon--large': !!this.label,
-      } }, h("bds-icon", { size: this.label ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
-  }
-  renderLabel() {
-    return (this.label && (h("label", { class: {
-        input__container__label: true,
-        'input__container__label--pressed': this.isPressed && !this.disabled,
-      } }, h("bds-typo", { variant: "fs-12", bold: "bold" }, this.label))));
-  }
-  renderMessage() {
-    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
-    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
-    if (!message && this.validationDanger)
-      message = this.validationMesage;
-    const styles = this.danger || this.validationDanger
-      ? 'input__message input__message--danger'
-      : this.success
-        ? 'input__message input__message--success'
-        : 'input__message';
-    return message ? (h("div", { class: styles, part: "input__message" }, h("div", { class: "input__message__icon" }, h("bds-icon", { size: "x-small", name: icon, theme: "outline", color: "inherit" })), h("bds-typo", { class: "input__message__text", variant: "fs-12" }, message))) : null;
+  renderCountrySelector() {
+    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
+    return (h("div", { onClick: this.toggle, onKeyDown: this.handleKeyDown.bind(this), "data-test": this.dtSelectFlag, class: "input__country-selector", tabindex: "0" }, h("bds-icon", { size: "medium", theme: "solid", name: this.selectedCountry, color: "primary" }), h("bds-icon", { size: "x-small", name: iconArrow }), h("div", { class: "input__container__country-code" }, h("bds-typo", { "no-wrap": "true", variant: "fs-14" }, this.value))));
   }
   render() {
-    const isPressed = this.isPressed && !this.disabled;
-    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
     const filteredFlagsNames = Object.keys(this.filteredCountries);
-    return (h(Host, { "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: {
-        input: true,
-        'input--state-primary': !this.danger && !this.validationDanger,
-        'input--state-danger': this.danger || this.validationDanger,
-        'input--state-success': this.success,
-        'input--state-disabled': this.disabled,
-        'input--label': !!this.label,
-        'input--pressed': isPressed,
-      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { onClick: this.toggle, onKeyDown: this.handleKeyDown.bind(this), "data-test": this.dtSelectFlag, class: "input__icon", tabindex: "0" }, h("bds-icon", { size: "medium", theme: "solid", name: this.selectedCountry, color: "primary" }), h("bds-icon", { size: "x-small", name: iconArrow })), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: { input__container__wrapper: true } }, h("div", { class: "input__container__country-code" }, h("bds-typo", { "no-wrap": "true", variant: "fs-14" }, this.value)), h("input", { class: { input__container__text: true }, type: "phonenumber", required: this.required, pattern: "/^(\\(?\\+?[0-9]*\\)?)?[0-9_\\- \\(\\)]*$/", ref: this.refNativeInput, onInput: this.changedInputValue, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, "data-test": this.dataTest, ...{ maxlength: this.value === '+55' ? 25 : null } }))), this.success && h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "xxx-small" }), h("slot", { name: "input-right" })), this.renderMessage()), h("div", { class: {
+    return (h(Host, { "aria-disabled": this.disabled ? 'true' : null }, h("div", { class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("bds-input", { type: "phonenumber", label: this.label, value: this.text, disabled: this.disabled, danger: this.danger || this.validationDanger, success: this.success, required: this.required, icon: this.icon, helperMessage: this.helperMessage, errorMessage: this.danger ? this.errorMessage : this.validationDanger ? this.validationMesage : '', successMessage: this.successMessage, numberErrorMessage: this.numberErrorMessage, requiredErrorMessage: this.requiredErrorMessage, pattern: "/^(\\(?\\+?[0-9]*\\)?)?[0-9_\\- \\(\\)]*$/", dataTest: this.dataTest, maxlength: this.value === '+55' ? 25 : null, onBdsChange: this.onBdsInputChange, onBdsInput: this.onBdsInputInput, onBdsFocus: this.onBdsInputFocus, onBdsOnBlur: this.onBdsInputBlur }, h("div", { slot: "inside-input-left" }, this.renderCountrySelector()))), h("div", { class: {
         'select-phone-number__options': true,
         'select-phone-number__options--open': this.isOpen,
       } }, this.isOpen && [

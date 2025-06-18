@@ -338,6 +338,46 @@
 .input__icon:focus-visible::after {
   border-color: var(--color-focus, #c226fb);
 }
+.input__country-selector {
+  position: relative;
+  height: 100%;
+  color: var(--color-content-disable, #595959);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-right: 16px;
+  padding-left: 12px;
+  cursor: pointer;
+  border-right: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  margin-right: 8px;
+}
+.input__country-selector bds-icon {
+  position: relative;
+}
+.input__country-selector bds-icon:first-child {
+  margin-right: 8px;
+}
+.input__country-selector::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.input__country-selector:focus-visible {
+  outline: none;
+}
+.input__country-selector:focus-visible::after {
+  border-color: var(--color-focus, #c226fb);
+}
+.input__country-selector .input__container__country-code {
+  color: var(--color-content-disable, #595959);
+  padding-right: 5px;
+}
+.input__country-selector:hover {
+  background: var(--color-surface-2, #ededed);
+}
 .input__country-code {
   color: var(--color-content-disable, #595959);
   padding-right: 5px;
