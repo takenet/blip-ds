@@ -224,6 +224,23 @@ $input-width: 100%;
     padding: $input-padding-label;
   }
 
+  &--textarea {
+    .input__container__text {
+      // Specific styling for textarea elements to match Figma design
+      &textarea {
+        resize: vertical; // Allow only vertical resize for better UX
+        min-height: 44px; // WCAG 2.5.5 minimum target size
+        padding: 8px 12px; // Consistent padding with input
+        
+        // Ensure proper focus outline
+        &:focus {
+          outline: 2px solid $color-info;
+          outline-offset: 1px;
+        }
+      }
+    }
+  }
+
   &__icon {
     cursor: inherit;
     display: flex;
@@ -268,6 +285,24 @@ $input-width: 100%;
         &::-webkit-calendar-picker-indicator {
           opacity: 0;
           pointer-events: none;
+        }
+      }
+
+      // Textarea-specific enhancements for better alignment with Figma designs
+      &textarea {
+        min-height: 44px; // Minimum target size for accessibility (WCAG 2.5.5)
+        line-height: 1.5; // Better line spacing for multiline text
+        vertical-align: top; // Ensure text starts at the top
+        overflow-y: auto; // Allow vertical scrolling when needed
+        word-wrap: break-word; // Handle long words properly
+        
+        // Ensure consistent font rendering
+        font-family: $font-family;
+        font-size: $fs-14;
+        
+        // Better placeholder styling for textarea
+        &::placeholder {
+          line-height: 1.5;
         }
       }
     }

@@ -435,7 +435,7 @@ if(!this.encode) return value;
 
     if (message) {
       return (
-        <div class={styles} part="input__message">
+        <div class={styles} part="input__message" id={`${this.inputName}-message`}>
           <div class="input__message__icon">
             <bds-icon size="x-small" name={icon} theme="outline" color="inherit"></bds-icon>
           </div>
@@ -591,6 +591,7 @@ if(!this.encode) return value;
             'input--state-disabled': this.disabled,
             'input--label': !!this.label,
             'input--pressed': isPressed,
+            'input--textarea': this.isTextarea,
           }}
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}
@@ -626,6 +627,9 @@ if(!this.encode) return value;
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
+                aria-label={this.label || this.placeholder}
+                aria-invalid={this.danger || this.validationDanger ? 'true' : 'false'}
+                aria-describedby={this.helperMessage || this.errorMessage || this.successMessage ? `${this.inputName}-message` : undefined}
               ></Element>
             </div>
           </div>
