@@ -31,6 +31,7 @@
   box-sizing: border-box;
   padding: 23px 16px;
   position: relative;
+  min-height: 88px; /* Fixed height to prevent flickering when text changes */
 
   &::before {
     content: '';
@@ -86,6 +87,7 @@
   cursor: pointer;
   text-decoration: underline $color-primary;
   color: $color-brand;
+  min-height: 88px; /* Maintain consistent height */
 
   .text {
     color: $color-primary;
@@ -98,6 +100,7 @@
   color: $color-primary;
   font-weight: bold;
   border-radius: 8px;
+  min-height: 88px; /* Maintain consistent height during drag hover */
 }
 
 .upload__img--invisible {
