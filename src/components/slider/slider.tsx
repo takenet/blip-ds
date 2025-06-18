@@ -13,7 +13,7 @@ export class Slider {
 
   @State() stepArray?: StepOption[];
   @State() internalOptions?: StepOption[];
-  @State() inputValue?: string = this.value.toString();
+  @State() inputValue?: string = this.value?.toString() ?? (this.min ? this.min.toString() : '0');
 
   /**
    * Step, property to insert steps into the input range.

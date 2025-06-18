@@ -98,4 +98,64 @@ describe('bds-warning', () => {
     expect(shortContent.root.shadowRoot.querySelector('bds-icon')).toBeTruthy();
     expect(longContent.root.shadowRoot.querySelector('bds-icon')).toBeTruthy();
   });
+
+  it('should implement ComponentInterface', async () => {
+    const page = await newSpecPage({
+      components: [Warning],
+      html: `<bds-warning>Test</bds-warning>`,
+    });
+
+    const warning = page.rootInstance;
+    expect(typeof warning.render).toBe('function');
+  });
+
+  it('should have shadow DOM', async () => {
+    const page = await newSpecPage({
+      components: [Warning],
+      html: `<bds-warning>Test</bds-warning>`,
+    });
+
+    expect(page.root.shadowRoot).toBeTruthy();
+    expect(page.root.shadowRoot.querySelector('.warning__body')).toBeTruthy();
+  });
+
+  it('should use Host component correctly', async () => {
+    const page = await newSpecPage({
+      components: [Warning],
+      html: `<bds-warning>Test</bds-warning>`,
+    });
+
+    // Host should render the component content directly inside the custom element
+    expect(page.root.shadowRoot.children.length).toBe(1);
+    expect(page.root.shadowRoot.firstElementChild.classList.contains('warning__body')).toBe(true);
+  });
+
+  it('should preserve whitespace in slot content', async () => {
+    const page = await newSpecPage({
+      components: [Warning],
+      html: `<bds-warning>  Spaced  content  </bds-warning>`,
+    });
+
+    expect(page.root.textContent).toBe('  Spaced  content  ');
+  });
+
+  it('should handle nested components in slot', async () => {
+    const page = await newSpecPage({
+      components: [Warning],
+      html: `
+        <bds-warning>
+          <div>
+            <span>Nested</span>
+            <strong>content</strong>
+          </div>
+        </bds-warning>
+      `,
+    });
+
+    expect(page.root.querySelector('div')).toBeTruthy();
+    expect(page.root.querySelector('span')).toBeTruthy();
+    expect(page.root.querySelector('strong')).toBeTruthy();
+    expect(page.root.textContent).toContain('Nested');
+    expect(page.root.textContent).toContain('content');
+  });
 });
