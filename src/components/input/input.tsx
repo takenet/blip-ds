@@ -10,7 +10,7 @@ import { emailValidation, numberValidation } from '../../utils/validations';
 })
 export class Input {
   private nativeInput?: HTMLInputElement | HTMLTextAreaElement;
-  private autoResizeDebounceTimer?: NodeJS.Timeout;
+  private autoResizeDebounceTimer?: number;
 
   @State() isPressed? = false;
   @State() isPassword? = false;
@@ -212,6 +212,11 @@ export class Input {
   @Prop() chips: boolean;
 
   /**
+   * Defines the debounce delay in milliseconds for textarea auto-resize.
+   */
+  @Prop() debounceDelay?: number = 100;
+
+  /**
    * Data test is the prop to specifically test the component action.
    */
   @Prop() dataTest?: string = null;
@@ -375,9 +380,9 @@ if(!this.encode) return value;
       clearTimeout(this.autoResizeDebounceTimer);
     }
     
-    this.autoResizeDebounceTimer = setTimeout(() => {
+    this.autoResizeDebounceTimer = window.setTimeout(() => {
       this.autoResizeTextarea();
-    }, 100); // 100ms debounce delay
+    }, this.debounceDelay); // Configurable debounce delay
   }
 
   /**
@@ -655,7 +660,7 @@ if(!this.encode) return value;
    */
   disconnectedCallback() {
     if (this.autoResizeDebounceTimer) {
-      clearTimeout(this.autoResizeDebounceTimer);
+      window.clearTimeout(this.autoResizeDebounceTimer);
     }
   }
 

@@ -1162,6 +1162,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * Defines the debounce delay in milliseconds for textarea auto-resize.
+         */
+        "debounceDelay"?: number;
+        /**
           * Defines if the input is disabled.
          */
         "disabled"?: boolean;
@@ -5009,6 +5013,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action.
          */
         "dataTest"?: string;
+        /**
+          * Defines the debounce delay in milliseconds for textarea auto-resize.
+         */
+        "debounceDelay"?: number;
         /**
           * Defines if the input is disabled.
          */
