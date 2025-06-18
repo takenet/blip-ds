@@ -34,7 +34,7 @@ describe('bds-input-phone-number e2e tests', () => {
     });
 
     it('should allow user to type phone numbers in the input', async () => {
-      const inputElement = await page.find('bds-input-phone-number >>> [data-test="bds-input-phone-number"]');
+      const inputElement = await page.find('bds-input-phone-number >>> bds-input >>> [data-test="bds-input-phone-number"]');
       
       await inputElement.type('5555-5555');
       await page.waitForChanges();
@@ -48,7 +48,7 @@ describe('bds-input-phone-number e2e tests', () => {
     it('should emit bdsPhoneNumberChange event when typing', async () => {
       const inputPhoneNumber = await page.find('bds-input-phone-number');
       const bdsChangeEvent = await inputPhoneNumber.spyOnEvent('bdsPhoneNumberChange');
-      const inputElement = await page.find('bds-input-phone-number >>> [data-test="bds-input-phone-number"]');
+      const inputElement = await page.find('bds-input-phone-number >>> bds-input >>> [data-test="bds-input-phone-number"]');
 
       await inputElement.type('1234-1234');
       await page.waitForChanges();
@@ -59,7 +59,7 @@ describe('bds-input-phone-number e2e tests', () => {
     it('should emit bdsInput event when typing', async () => {
       const inputPhoneNumber = await page.find('bds-input-phone-number');
       const bdsInputEvent = await inputPhoneNumber.spyOnEvent('bdsInput');
-      const inputElement = await page.find('bds-input-phone-number >>> [data-test="bds-input-phone-number"]');
+      const inputElement = await page.find('bds-input-phone-number >>> bds-input >>> [data-test="bds-input-phone-number"]');
 
       await inputElement.type('1234-1234');
       await page.waitForChanges();
@@ -134,7 +134,7 @@ describe('bds-input-phone-number e2e tests', () => {
       });
       
       // Click to open dropdown
-      const flagIcon = await page.find('bds-input-phone-number >>> .input__icon');
+      const flagIcon = await page.find('bds-input-phone-number >>> .input__country-selector');
       await flagIcon.click();
       await page.waitForChanges();
       
@@ -155,7 +155,7 @@ describe('bds-input-phone-number e2e tests', () => {
       });
       
       // Click to open dropdown
-      const flagIcon = await page.find('bds-input-phone-number >>> .input__icon');
+      const flagIcon = await page.find('bds-input-phone-number >>> .input__country-selector');
       await flagIcon.click();
       await page.waitForChanges();
       
@@ -178,7 +178,7 @@ describe('bds-input-phone-number e2e tests', () => {
       });
       
       // Click to open dropdown
-      const flagIcon = await page.find('bds-input-phone-number >>> .input__icon');
+      const flagIcon = await page.find('bds-input-phone-number >>> .input__country-selector');
       await flagIcon.click();
       await page.waitForChanges();
       

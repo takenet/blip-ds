@@ -96,20 +96,13 @@ Type: `Promise<void>`
 
 
 
-## Shadow Parts
-
-| Part                | Description |
-| ------------------- | ----------- |
-| `"input-container"` |             |
-| `"input__message"`  |             |
-
-
 ## Dependencies
 
 ### Depends on
 
 - [bds-icon](../icon)
 - [bds-typo](../typo)
+- [bds-input](../input)
 - [bds-select-option](../select-option)
 
 ### Graph
@@ -117,7 +110,12 @@ Type: `Promise<void>`
 graph TD;
   bds-input-phone-number --> bds-icon
   bds-input-phone-number --> bds-typo
+  bds-input-phone-number --> bds-input
   bds-input-phone-number --> bds-select-option
+  bds-input --> bds-icon
+  bds-input --> bds-typo
+  bds-input --> bds-counter-text
+  bds-counter-text --> bds-typo
   bds-select-option --> bds-typo
   bds-select-option --> bds-checkbox
   bds-checkbox --> bds-icon

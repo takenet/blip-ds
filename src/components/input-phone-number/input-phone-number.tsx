@@ -1,6 +1,5 @@
 import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen, Host } from '@stencil/core';
 import { Option } from '../selects/select-interface';
-import { numberValidation } from '../../utils/validations';
 import * as countriesDefault from './countries.json';
 import * as countriesPtBR from './countries-pt_BR.json';
 import * as countriesEnUS from './countries-en_US.json';
@@ -13,8 +12,6 @@ export type languages = 'pt_BR' | 'es_ES' | 'en_US';
   shadow: true,
 })
 export class InputPhoneNumber {
-  private nativeInput?: HTMLInputElement;
-
   @Element() el!: HTMLBdsSelectElement;
 
   @State() isOpen? = false;
@@ -151,7 +148,7 @@ export class InputPhoneNumber {
 
   @Method()
   async removeFocus(): Promise<void> {
-    this.onBlur();
+    this.onBdsInputBlur();
   }
 
   @Watch('value')
@@ -255,35 +252,25 @@ export class InputPhoneNumber {
     return Array.from(this.el.querySelectorAll('bds-select-option'));
   }
 
-  private refNativeInput = (el: HTMLInputElement): void => {
-    this.nativeInput = el;
+  // Event handlers for bds-input integration
+  private onBdsInputChange = (event: CustomEvent): void => {
+    const { value } = event.detail;
+    this.text = value || '';
+    // Don't call numberValidation here as bds-input handles its own validation
   };
 
-  private onClickWrapper = (): void => {
-    this.onFocus();
-    if (this.nativeInput) {
-      this.nativeInput.focus();
-    }
+  private onBdsInputInput = (event: CustomEvent): void => {
+    this.bdsInput.emit(event.detail as KeyboardEvent);
   };
 
-  private onFocus = (): void => {
+  private onBdsInputFocus = (): void => {
     this.bdsFocus.emit();
     this.isPressed = true;
   };
 
-  private onBlur = (): void => {
+  private onBdsInputBlur = (): void => {
     this.bdsBlur.emit();
     this.isPressed = false;
-  };
-
-  private changedInputValue = async (ev: Event) => {
-    const input = ev.target as HTMLInputElement | null;
-    this.checkValidity();
-    if (input) {
-      this.text = input.value || '';
-      this.numberValidation();
-    }
-    this.bdsInput.emit(ev as KeyboardEvent);
   };
 
   @Watch('text')
@@ -294,32 +281,6 @@ export class InputPhoneNumber {
       isoCode: this.isoCode,
       country: this.selectedCountry,
     });
-  }
-
-  private numberValidation() {
-    if (numberValidation(this.nativeInput.value)) {
-      this.validationMesage = this.numberErrorMessage;
-      this.validationDanger = true;
-    } else {
-      this.validationDanger = false;
-    }
-  }
-
-  private toggle = (): void => {
-    if (!this.disabled) {
-      this.isOpen = !this.isOpen;
-      if (this.isOpen) {
-        // Reset search when opening
-        this.searchTerm = '';
-        this.resetFilterCountries();
-      }
-    }
-  };
-
-  private handleKeyDown(event) {
-    if (event.key == 'Enter') {
-      this.toggle();
-    }
   }
 
   private handler = (event: CustomEvent): void => {
@@ -349,18 +310,20 @@ export class InputPhoneNumber {
     });
   }
 
-  private keyPressWrapper = (event: KeyboardEvent): void => {
-    const isSelectElement = (event.target as Element).localName === 'bds-select';
-    const isInputElement = (event.target as Element).localName === 'input';
-
-    if (event.key === 'Enter' && !this.isOpen && (isSelectElement || isInputElement)) {
-      this.toggle();
+  private toggle = (): void => {
+    if (!this.disabled) {
+      this.isOpen = !this.isOpen;
+      if (this.isOpen) {
+        // Reset search when opening
+        this.searchTerm = '';
+        this.resetFilterCountries();
+      }
     }
   };
 
-  private checkValidity() {
-    if (this.nativeInput.validity.valid) {
-      this.validationDanger = false;
+  private handleKeyDown(event) {
+    if (event.key == 'Enter') {
+      this.toggle();
     }
   }
 
@@ -441,124 +404,60 @@ export class InputPhoneNumber {
     );
   }
 
-  private renderIcon(): HTMLElement {
+  private renderCountrySelector(): HTMLElement {
+    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
+    
     return (
-      this.icon && (
-        <div
-          class={{
-            input__icon: true,
-            'input__icon--large': !!this.label,
-          }}
-        >
-          <bds-icon size={this.label ? 'medium' : 'small'} name={this.icon} color="inherit"></bds-icon>
-        </div>
-      )
-    );
-  }
-
-  private renderLabel(): HTMLElement {
-    return (
-      this.label && (
-        <label
-          class={{
-            input__container__label: true,
-            'input__container__label--pressed': this.isPressed && !this.disabled,
-          }}
-        >
-          <bds-typo variant="fs-12" bold="bold">
-            {this.label}
+      <div
+        onClick={this.toggle}
+        onKeyDown={this.handleKeyDown.bind(this)}
+        data-test={this.dtSelectFlag}
+        class="input__country-selector"
+        tabindex="0"
+      >
+        <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
+        <bds-icon size="x-small" name={iconArrow}></bds-icon>
+        <div class="input__container__country-code">
+          <bds-typo no-wrap="true" variant="fs-14">
+            {this.value}
           </bds-typo>
-        </label>
-      )
-    );
-  }
-
-  private renderMessage(): HTMLElement {
-    const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
-    let message = this.danger ? this.errorMessage : this.success ? this.successMessage : this.helperMessage;
-
-    if (!message && this.validationDanger) message = this.validationMesage;
-
-    const styles =
-      this.danger || this.validationDanger
-        ? 'input__message input__message--danger'
-        : this.success
-          ? 'input__message input__message--success'
-          : 'input__message';
-
-    return message ? (
-      <div class={styles} part="input__message">
-        <div class="input__message__icon">
-          <bds-icon size="x-small" name={icon} theme="outline" color="inherit"></bds-icon>
         </div>
-        <bds-typo class="input__message__text" variant="fs-12">
-          {message}
-        </bds-typo>
       </div>
-    ) : null;
+    );
   }
 
   render(): HTMLElement {
-    const isPressed = this.isPressed && !this.disabled;
-    const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
     const filteredFlagsNames = Object.keys(this.filteredCountries);
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
         <div class={{ element_input: true }} aria-disabled={this.disabled ? 'true' : null}>
-          <div
-            class={{
-              input: true,
-              'input--state-primary': !this.danger && !this.validationDanger,
-              'input--state-danger': this.danger || this.validationDanger,
-              'input--state-success': this.success,
-              'input--state-disabled': this.disabled,
-              'input--label': !!this.label,
-              'input--pressed': isPressed,
-            }}
-            onClick={this.onClickWrapper}
-            onKeyDown={this.keyPressWrapper}
-            part="input-container"
+          <bds-input
+            type="phonenumber"
+            label={this.label}
+            value={this.text}
+            disabled={this.disabled}
+            danger={this.danger || this.validationDanger}
+            success={this.success}
+            required={this.required}
+            icon={this.icon}
+            helperMessage={this.helperMessage}
+            errorMessage={this.danger ? this.errorMessage : this.validationDanger ? this.validationMesage : ''}
+            successMessage={this.successMessage}
+            numberErrorMessage={this.numberErrorMessage}
+            requiredErrorMessage={this.requiredErrorMessage}
+            pattern="/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/"
+            dataTest={this.dataTest}
+            maxlength={this.value === '+55' ? 25 : null}
+            onBdsChange={this.onBdsInputChange}
+            onBdsInput={this.onBdsInputInput}
+            onBdsFocus={this.onBdsInputFocus}
+            onBdsOnBlur={this.onBdsInputBlur}
           >
-            {this.renderIcon()}
-            <div
-              onClick={this.toggle}
-              onKeyDown={this.handleKeyDown.bind(this)}
-              data-test={this.dtSelectFlag}
-              class="input__icon"
-              tabindex="0"
-            >
-              <bds-icon size="medium" theme="solid" name={this.selectedCountry} color="primary"></bds-icon>
-              <bds-icon size="x-small" name={iconArrow}></bds-icon>
+            <div slot="inside-input-left">
+              {this.renderCountrySelector()}
             </div>
-            <div class="input__container">
-              {this.renderLabel()}
-              <div class={{ input__container__wrapper: true }}>
-                <div class="input__container__country-code">
-                  <bds-typo no-wrap="true" variant="fs-14">
-                    {this.value}
-                  </bds-typo>
-                </div>
-                <input
-                  class={{ input__container__text: true }}
-                  type="phonenumber"
-                  required={this.required}
-                  pattern="/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/"
-                  ref={this.refNativeInput}
-                  onInput={this.changedInputValue}
-                  onFocus={this.onFocus}
-                  onBlur={this.onBlur}
-                  value={this.text}
-                  disabled={this.disabled}
-                  data-test={this.dataTest}
-                  {...{ maxlength: this.value === '+55' ? 25 : null }}
-                ></input>
-              </div>
-            </div>
-            {this.success && <bds-icon class="icon-success" name="check" theme="outline" size="xxx-small" />}
-            <slot name="input-right" />
-          </div>
-          {this.renderMessage()}
+          </bds-input>
         </div>
         <div
           class={{

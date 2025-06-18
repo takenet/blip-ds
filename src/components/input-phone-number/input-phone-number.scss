@@ -304,6 +304,53 @@ $select-options-max-height: 250px;
     cursor: pointer;
   }
 
+  &__country-selector {
+    position: relative;
+    height: 100%;
+    color: $color-content-disable;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-right: 16px;
+    padding-left: 12px;
+    cursor: pointer;
+    border-right: 1px solid $color-border-1;
+    margin-right: 8px;
+
+    bds-icon {
+      position: relative;
+    }
+    
+    bds-icon:first-child {
+      margin-right: 8px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    
+    &:focus-visible {
+      outline: none;
+      &::after {
+        border-color: $color-focus;
+      }
+    }
+
+    .input__container__country-code {
+      color: $color-content-disable;
+      padding-right: 5px;
+    }
+
+    &:hover {
+      background: $color-surface-2;
+    }
+  }
+
   &__country-code {
     color: $color-content-disable;
     padding-right: 5px;
