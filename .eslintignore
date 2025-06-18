@@ -13,3 +13,5 @@ coverage
 blip-ds-react
 /src
 storybook-static
+jest.setup.ts
+jest.svg-transform.js

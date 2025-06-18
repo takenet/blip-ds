@@ -29,7 +29,6 @@ beforeEach(() => {
   global.clearTimeout = jest.fn();
   global.clearInterval = jest.fn();
 
-
   // Mock console.warn to prevent immutable warnings in tests
   // https://github.com/stenciljs/core/issues/2832
   global.console.warn = (...args: any[]) => {

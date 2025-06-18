@@ -45,9 +45,11 @@ export const config: Config = {
   },
   testing: {
     browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
-    collectCoverage: true,
     collectCoverageFrom: ['src/**/*.{ts,tsx}'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+    transform: {
+      '^.+\\.svg$': '<rootDir>/jest.svg-transform.js',
+    },
   },
   devServer: {
     reloadStrategy: 'pageReload',

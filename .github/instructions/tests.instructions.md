@@ -24,11 +24,11 @@ To run a specific test file, use:
 
 ```bash
 # All tests:
-npm run test -- -- <test-file-path>
+npm run test <test-file-path>
 # Unit tests:
-npm run test:unit -- -- <test-file-path>
+npm run test:unit <test-file-path>
 # E2e tests:
-npm run test:e2e -- -- <test-file-path>
+npm run test:e2e <test-file-path>
 ```
 
 > Stencil can not run tests using fake timers, so DO NOT USE fake timers in tests.
