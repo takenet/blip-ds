@@ -5,64 +5,70 @@
 
 ## Properties
 
-| Property                | Attribute                 | Description                                                                            | Type                                                                     | Default     |
-| ----------------------- | ------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------- |
-| `autoCapitalize`        | `auto-capitalize`         | Define a capitalização automática do texto (valores possíveis: `on`, `off`).           | `"characters" \| "none" \| "off" \| "on" \| "sentences" \| "words"`      | `'off'`     |
-| `autoComplete`          | `auto-complete`           | Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`). | `"current-password" \| "new-password" \| "off" \| "on" \| "username"`    | `'off'`     |
-| `chips`                 | `chips`                   | Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).  | `boolean`                                                                | `undefined` |
-| `cols`                  | `cols`                    | Define a quantidade de colunas da área de texto (se for `textarea`).                   | `number`                                                                 | `0`         |
-| `counterLength`         | `counter-length`          | Define se será exibido um contador de comprimento de caracteres.                       | `boolean`                                                                | `false`     |
-| `counterLengthRule`     | --                        | Define a regra do contador de comprimento de caracteres (min, max, etc).               | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
-| `danger`                | `danger`                  | Define se o input está em estado de erro.                                              | `boolean`                                                                | `false`     |
-| `dataTest`              | `data-test`               | Data test é a prop para testar especificamente a ação do componente.                   | `string`                                                                 | `null`      |
-| `disabled`              | `disabled`                | Define se o input está desabilitado.                                                   | `boolean`                                                                | `false`     |
-| `emailErrorMessage`     | `email-error-message`     | Mensagem de erro exibida quando o valor do input não é um email válido.                | `string`                                                                 | `undefined` |
-| `encode`                | `encode`                  |                                                                                        | `boolean`                                                                | `false`     |
-| `errorMessage`          | `error-message`           | Mensagem de erro exibida quando o valor do input é inválido.                           | `string`                                                                 | `''`        |
-| `helperMessage`         | `helper-message`          | Mensagem de ajuda exibida abaixo do input.                                             | `string`                                                                 | `''`        |
-| `icon`                  | `icon`                    | Nome do ícone a ser exibido dentro do input.                                           | `string`                                                                 | `''`        |
-| `inputName`             | `input-name`              | Nome do input, usado para identificação no formulário.                                 | `string`                                                                 | `''`        |
-| `isSubmit`              | `is-submit`               | Define se o input será submetido ao pressionar Enter.                                  | `boolean`                                                                | `false`     |
-| `isTextarea`            | `is-textarea`             | Define se o input é uma área de texto (textarea).                                      | `boolean`                                                                | `false`     |
-| `label`                 | `label`                   | Rótulo que será exibido acima do input.                                                | `string`                                                                 | `''`        |
-| `max`                   | `max`                     | Define o valor máximo permitido para o input.                                          | `string`                                                                 | `undefined` |
-| `maxErrorMessage`       | `max-error-message`       | Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido. | `string`                                                                 | `undefined` |
-| `maxlength`             | `maxlength`               | Define o número máximo de caracteres permitidos no input.                              | `number`                                                                 | `undefined` |
-| `min`                   | `min`                     | Define o valor mínimo permitido para o input.                                          | `string`                                                                 | `undefined` |
-| `minErrorMessage`       | `min-error-message`       | Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido. | `string`                                                                 | `undefined` |
-| `minlength`             | `minlength`               | Define o número mínimo de caracteres permitidos no input.                              | `number`                                                                 | `undefined` |
-| `minlengthErrorMessage` | `minlength-error-message` | Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.     | `string`                                                                 | `undefined` |
-| `numberErrorMessage`    | `number-error-message`    | Mensagem de erro exibida quando o valor do input não é um número válido.               | `string`                                                                 | `undefined` |
-| `pattern`               | `pattern`                 | Define um padrão regex que o valor do input deve seguir.                               | `string`                                                                 | `undefined` |
-| `placeholder`           | `placeholder`             | Texto que será exibido como sugestão ou dica no input.                                 | `string`                                                                 | `''`        |
-| `readonly`              | `readonly`                | Torna o input somente leitura.                                                         | `boolean`                                                                | `false`     |
-| `required`              | `required`                | Define se o input é obrigatório.                                                       | `boolean`                                                                | `undefined` |
-| `requiredErrorMessage`  | `required-error-message`  | Mensagem de erro exibida quando o input não é preenchido e é obrigatório.              | `string`                                                                 | `undefined` |
-| `rows`                  | `rows`                    | Define a quantidade de linhas da área de texto (se for `textarea`).                    | `number`                                                                 | `1`         |
-| `success`               | `success`                 | Define se o input está em estado de sucesso.                                           | `boolean`                                                                | `false`     |
-| `successMessage`        | `success-message`         | Mensagem exibida quando o valor do input é válido.                                     | `string`                                                                 | `''`        |
-| `type`                  | `type`                    | Define o tipo do input (por exemplo, `text`, `password`, etc).                         | `"date" \| "email" \| "number" \| "password" \| "phonenumber" \| "text"` | `'text'`    |
-| `value`                 | `value`                   | O valor atual do input.                                                                | `string`                                                                 | `''`        |
+| Property                | Attribute                 | Description                                                                               | Type                                                                     | Default     |
+| ----------------------- | ------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------- |
+| `autoCapitalize`        | `auto-capitalize`         | Defines automatic text capitalization (possible values: `on`, `off`).                     | `"characters" \| "none" \| "off" \| "on" \| "sentences" \| "words"`      | `'off'`     |
+| `autoComplete`          | `auto-complete`           | Defines browser autocomplete behavior (possible values: `on`, `off`).                     | `"current-password" \| "new-password" \| "off" \| "on" \| "username"`    | `'off'`     |
+| `autoResize`            | `auto-resize`             | Defines whether the textarea should automatically resize based on content.                | `boolean`                                                                | `true`      |
+| `chips`                 | `chips`                   | Defines if the input will be displayed as chips (a type of input with multiple values).   | `boolean`                                                                | `undefined` |
+| `cols`                  | `cols`                    | Defines the number of columns for the textarea (if `textarea`).                           | `number`                                                                 | `0`         |
+| `counterLength`         | `counter-length`          | Defines whether a character length counter will be displayed.                             | `boolean`                                                                | `false`     |
+| `counterLengthRule`     | --                        | Defines the character length counter rule (min, max, etc).                                | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
+| `danger`                | `danger`                  | Defines if the input is in error state.                                                   | `boolean`                                                                | `false`     |
+| `dataTest`              | `data-test`               | Data test is the prop to specifically test the component action.                          | `string`                                                                 | `null`      |
+| `debounceDelay`         | `debounce-delay`          | Defines the debounce delay in milliseconds for textarea auto-resize.                      | `number`                                                                 | `100`       |
+| `disabled`              | `disabled`                | Defines if the input is disabled.                                                         | `boolean`                                                                | `false`     |
+| `emailErrorMessage`     | `email-error-message`     | Error message displayed when the input value is not a valid email.                        | `string`                                                                 | `undefined` |
+| `encode`                | `encode`                  |                                                                                           | `boolean`                                                                | `false`     |
+| `errorMessage`          | `error-message`           | Error message displayed when the input value is invalid.                                  | `string`                                                                 | `''`        |
+| `helperMessage`         | `helper-message`          | Help message displayed below the input.                                                   | `string`                                                                 | `''`        |
+| `icon`                  | `icon`                    | Name of the icon to be displayed inside the input.                                        | `string`                                                                 | `''`        |
+| `iconSize`              | `icon-size`               | Defines the icon size (small or medium).                                                  | `"medium" \| "small"`                                                    | `'small'`   |
+| `inputName`             | `input-name`              | Input name, used for form identification.                                                 | `string`                                                                 | `''`        |
+| `isSubmit`              | `is-submit`               | Defines whether the input will be submitted when pressing Enter.                          | `boolean`                                                                | `false`     |
+| `isTextarea`            | `is-textarea`             | Defines whether the input is a textarea.                                                  | `boolean`                                                                | `false`     |
+| `label`                 | `label`                   | Label to be displayed above the input.                                                    | `string`                                                                 | `''`        |
+| `max`                   | `max`                     | Defines the maximum allowed value for the input.                                          | `string`                                                                 | `undefined` |
+| `maxErrorMessage`       | `max-error-message`       | Error message displayed when the input value doesn't meet the maximum allowed value.      | `string`                                                                 | `undefined` |
+| `maxHeight`             | `max-height`              | Defines the maximum height of the textarea in pixels.                                     | `number`                                                                 | `200`       |
+| `maxlength`             | `maxlength`               | Defines the maximum number of characters allowed in the input.                            | `number`                                                                 | `undefined` |
+| `min`                   | `min`                     | Defines the minimum allowed value for the input.                                          | `string`                                                                 | `undefined` |
+| `minErrorMessage`       | `min-error-message`       | Error message displayed when the input value doesn't meet the minimum allowed value.      | `string`                                                                 | `undefined` |
+| `minHeight`             | `min-height`              | Defines the minimum height of the textarea in pixels.                                     | `number`                                                                 | `60`        |
+| `minlength`             | `minlength`               | Defines the minimum number of characters allowed in the input.                            | `number`                                                                 | `undefined` |
+| `minlengthErrorMessage` | `minlength-error-message` | Error message displayed when the input value doesn't meet the minimum length requirement. | `string`                                                                 | `undefined` |
+| `numberErrorMessage`    | `number-error-message`    | Error message displayed when the input value is not a valid number.                       | `string`                                                                 | `undefined` |
+| `pattern`               | `pattern`                 | Defines a regex pattern that the input value must follow.                                 | `string`                                                                 | `undefined` |
+| `placeholder`           | `placeholder`             | Text to be displayed as a hint or placeholder in the input.                               | `string`                                                                 | `''`        |
+| `readonly`              | `readonly`                | Makes the input read-only.                                                                | `boolean`                                                                | `false`     |
+| `required`              | `required`                | Defines if the input is required.                                                         | `boolean`                                                                | `undefined` |
+| `requiredErrorMessage`  | `required-error-message`  | Error message displayed when the input is not filled and is required.                     | `string`                                                                 | `undefined` |
+| `resizable`             | `resizable`               | Defines whether the textarea can be manually resized by the user.                         | `boolean`                                                                | `false`     |
+| `rows`                  | `rows`                    | Defines the number of lines for the textarea (if `textarea`).                             | `number`                                                                 | `3`         |
+| `success`               | `success`                 | Defines if the input is in success state.                                                 | `boolean`                                                                | `false`     |
+| `successMessage`        | `success-message`         | Message displayed when the input value is valid.                                          | `string`                                                                 | `''`        |
+| `type`                  | `type`                    | Defines the input type (e.g., `text`, `password`, etc).                                   | `"date" \| "email" \| "number" \| "password" \| "phonenumber" \| "text"` | `'text'`    |
+| `value`                 | `value`                   | The current value of the input.                                                           | `string`                                                                 | `''`        |
 
 
 ## Events
 
-| Event                  | Description                                                  | Type                         |
-| ---------------------- | ------------------------------------------------------------ | ---------------------------- |
-| `bdsChange`            | Evento disparado quando o valor do input muda.               | `CustomEvent<any>`           |
-| `bdsFocus`             | Evento disparado quando o input ganha o foco.                | `CustomEvent<any>`           |
-| `bdsInput`             | Evento disparado quando o input recebe um input (digitação). | `CustomEvent<KeyboardEvent>` |
-| `bdsKeyDownBackspace`  | Evento disparado quando a tecla "Backspace" é pressionada.   | `CustomEvent<any>`           |
-| `bdsOnBlur`            | Evento disparado quando o input perde o foco.                | `CustomEvent<any>`           |
-| `bdsPatternValidation` | Evento disparado para validação de padrão regex.             | `CustomEvent<any>`           |
-| `bdsSubmit`            | Evento disparado quando o formulário é submetido.            | `CustomEvent<any>`           |
+| Event                  | Description                                           | Type                         |
+| ---------------------- | ----------------------------------------------------- | ---------------------------- |
+| `bdsChange`            | Event emitted when the input value changes.           | `CustomEvent<any>`           |
+| `bdsFocus`             | Event emitted when the input gains focus.             | `CustomEvent<any>`           |
+| `bdsInput`             | Event emitted when the input receives input (typing). | `CustomEvent<KeyboardEvent>` |
+| `bdsKeyDownBackspace`  | Event emitted when the "Backspace" key is pressed.    | `CustomEvent<any>`           |
+| `bdsOnBlur`            | Event emitted when the input loses focus.             | `CustomEvent<any>`           |
+| `bdsPatternValidation` | Event emitted for regex pattern validation.           | `CustomEvent<any>`           |
+| `bdsSubmit`            | Event emitted when the form is submitted.             | `CustomEvent<any>`           |
 
 
 ## Methods
 
 ### `clear() => Promise<void>`
 
-Limpa o valor do campo de entrada.
+Clears the input field value.
 
 #### Returns
 
@@ -70,19 +76,19 @@ Type: `Promise<void>`
 
 
 
-### `getInputElement() => Promise<HTMLInputElement>`
+### `getInputElement() => Promise<HTMLInputElement | HTMLTextAreaElement>`
 
-Retorna o elemento de input do componente.
+Returns the input element of the component.
 
 #### Returns
 
-Type: `Promise<HTMLInputElement>`
+Type: `Promise<HTMLInputElement | HTMLTextAreaElement>`
 
 
 
 ### `isValid() => Promise<boolean>`
 
-Verifica se o campo de entrada é válido.
+Checks if the input field is valid.
 
 #### Returns
 
@@ -92,7 +98,7 @@ Type: `Promise<boolean>`
 
 ### `removeFocus() => Promise<void>`
 
-Remove o foco do campo de entrada.
+Removes focus from the input field.
 
 #### Returns
 
@@ -102,7 +108,7 @@ Type: `Promise<void>`
 
 ### `setFocus() => Promise<void>`
 
-Define o foco no campo de entrada.
+Sets focus to the input field.
 
 #### Returns
 

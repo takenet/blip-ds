@@ -9,226 +9,257 @@ import { emailValidation, numberValidation } from '../../utils/validations';
   shadow: true,
 })
 export class Input {
-  private nativeInput?: HTMLInputElement;
+  private nativeInput?: HTMLInputElement | HTMLTextAreaElement;
+  private autoResizeDebounceTimer?: number;
 
   @State() isPressed? = false;
   @State() isPassword? = false;
   @State() validationMesage? = '';
   @State() validationDanger? = false;
   /**
-   * Nome do input, usado para identificação no formulário.
+   * Input name, used for form identification.
    */
   @Prop() inputName? = '';
 
   /**
-   * Define o tipo do input (por exemplo, `text`, `password`, etc).
+   * Defines the input type (e.g., `text`, `password`, etc).
    */
   @Prop({ reflect: true }) type?: InputType = 'text';
 
   /**
-   * Rótulo que será exibido acima do input.
+   * Label to be displayed above the input.
    */
   @Prop() label? = '';
 
   /**
-   * Texto que será exibido como sugestão ou dica no input.
+   * Text to be displayed as a hint or placeholder in the input.
    */
   @Prop() placeholder?: string = '';
 
   /**
-   * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
+   * Defines automatic text capitalization (possible values: `on`, `off`).
    */
   @Prop() autoCapitalize?: InputAutocapitalize = 'off';
 
   /**
-   * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
+   * Defines browser autocomplete behavior (possible values: `on`, `off`).
    */
   @Prop() autoComplete?: InputAutoComplete = 'off';
 
   /**
-   * Define o valor máximo permitido para o input.
+   * Defines the maximum allowed value for the input.
    */
   @Prop() max?: string;
 
   /**
-   * Define o número máximo de caracteres permitidos no input.
+   * Defines the maximum number of characters allowed in the input.
    */
   @Prop() maxlength?: number;
 
   /**
-   * Define o valor mínimo permitido para o input.
+   * Defines the minimum allowed value for the input.
    */
   @Prop() min?: string;
 
   /**
-   * Define o número mínimo de caracteres permitidos no input.
+   * Defines the minimum number of characters allowed in the input.
    */
   @Prop() minlength?: number;
 
   /**
-   * Torna o input somente leitura.
+   * Makes the input read-only.
    */
   @Prop() readonly = false;
 
   /**
-   * Define se o input é obrigatório.
+   * Defines if the input is required.
    */
   @Prop() required: boolean;
 
   /**
-   * Define um padrão regex que o valor do input deve seguir.
+   * Defines a regex pattern that the input value must follow.
    */
   @Prop() pattern?: string;
 
   /**
-   * Mensagem de ajuda exibida abaixo do input.
+   * Help message displayed below the input.
    */
   @Prop() helperMessage?: string = '';
 
   /**
-   * Mensagem de erro exibida quando o valor do input é inválido.
+   * Error message displayed when the input value is invalid.
    */
   @Prop({ mutable: true }) errorMessage?: string = '';
 
   /**
-   * Mensagem exibida quando o valor do input é válido.
+   * Message displayed when the input value is valid.
    */
   @Prop({ mutable: true }) successMessage?: string = '';
 
   /**
-   * Nome do ícone a ser exibido dentro do input.
+   * Name of the icon to be displayed inside the input.
    */
   @Prop({ reflect: true }) icon?: string = '';
 
   /**
-   * Define se o input está desabilitado.
+   * Defines if the input is disabled.
    */
   @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
 
   /**
-   * Define se o input está em estado de erro.
+   * Defines if the input is in error state.
    */
   @Prop({ reflect: true, mutable: true }) danger?: boolean = false;
 
   /**
-   * Define se o input está em estado de sucesso.
+   * Defines if the input is in success state.
    */
   @Prop({ reflect: true, mutable: true }) success?: boolean = false;
 
   /**
-   * O valor atual do input.
+   * The current value of the input.
    */
   @Prop({ mutable: true }) value?: string | null = '';
 
   /**
-   * Define se será exibido um contador de comprimento de caracteres.
+   * Defines whether a character length counter will be displayed.
    */
   @Prop() counterLength? = false;
 
   /**
-   * Define a regra do contador de comprimento de caracteres (min, max, etc).
+   * Defines the character length counter rule (min, max, etc).
    */
   @Prop() counterLengthRule?: InputCounterLengthRules = null;
 
   /**
-   * Define se o input será submetido ao pressionar Enter.
+   * Defines whether the input will be submitted when pressing Enter.
    */
   @Prop() isSubmit = false;
 
   /**
-   * Define se o input é uma área de texto (textarea).
+   * Defines whether the input is a textarea.
    */
   @Prop() isTextarea = false;
 
   /**
-   * Define a quantidade de linhas da área de texto (se for `textarea`).
+   * Defines the number of lines for the textarea (if `textarea`).
    */
-  @Prop() rows?: number = 1;
+  @Prop() rows?: number = 3;
 
   /**
-   * Define a quantidade de colunas da área de texto (se for `textarea`).
+   * Defines the number of columns for the textarea (if `textarea`).
    */
   @Prop() cols?: number = 0;
 
   /**
-   * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
+   * Defines whether the textarea should automatically resize based on content.
+   */
+  @Prop() autoResize = true;
+
+  /**
+   * Defines whether the textarea can be manually resized by the user.
+   */
+  @Prop() resizable = false;
+
+  /**
+   * Defines the minimum height of the textarea in pixels.
+   */
+  @Prop() minHeight?: number = 60;
+
+  /**
+   * Defines the maximum height of the textarea in pixels.
+   */
+  @Prop() maxHeight?: number = 200;
+
+  /**
+   * Defines the icon size (small or medium).
+   */
+  @Prop() iconSize?: 'small' | 'medium' = 'small';
+
+  /**
+   * Error message displayed when the input is not filled and is required.
    */
   @Prop() requiredErrorMessage: string;
 
   /**
-   * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
+   * Error message displayed when the input value doesn't meet the minimum length requirement.
    */
   @Prop() minlengthErrorMessage: string;
 
   /**
-   * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
+   * Error message displayed when the input value doesn't meet the minimum allowed value.
    */
   @Prop() minErrorMessage: string;
 
   /**
-   * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
+   * Error message displayed when the input value doesn't meet the maximum allowed value.
    */
   @Prop() maxErrorMessage: string;
 
   /**
-   * Mensagem de erro exibida quando o valor do input não é um email válido.
+   * Error message displayed when the input value is not a valid email.
    */
   @Prop() emailErrorMessage: string;
 
   /**
-   * Mensagem de erro exibida quando o valor do input não é um número válido.
+   * Error message displayed when the input value is not a valid number.
    */
   @Prop() numberErrorMessage: string;
 
   /**
-   * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
+   * Defines if the input will be displayed as chips (a type of input with multiple values).
    */
   @Prop() chips: boolean;
 
   /**
-   * Data test é a prop para testar especificamente a ação do componente.
+   * Defines the debounce delay in milliseconds for textarea auto-resize.
+   */
+  @Prop() debounceDelay?: number = 100;
+
+  /**
+   * Data test is the prop to specifically test the component action.
    */
   @Prop() dataTest?: string = null;
 
   @Prop() encode?: boolean = false;
 
   /**
-   * Evento disparado quando o valor do input muda.
+   * Event emitted when the input value changes.
    */
   @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
 
   /**
-   * Evento disparado quando o input recebe um input (digitação).
+   * Event emitted when the input receives input (typing).
    */
   @Event() bdsInput!: EventEmitter<KeyboardEvent>;
 
   /**
-   * Evento disparado quando o input perde o foco.
+   * Event emitted when the input loses focus.
    */
   @Event() bdsOnBlur: EventEmitter;
 
   /**
-   * Evento disparado quando o input ganha o foco.
+   * Event emitted when the input gains focus.
    */
   @Event() bdsFocus: EventEmitter;
 
   /**
-   * Evento disparado quando o formulário é submetido.
+   * Event emitted when the form is submitted.
    */
   @Event() bdsSubmit: EventEmitter;
 
   /**
-   * Evento disparado para validação de padrão regex.
+   * Event emitted for regex pattern validation.
    */
   @Event() bdsPatternValidation: EventEmitter;
 
   /**
-   * Evento disparado quando a tecla "Backspace" é pressionada.
+   * Event emitted when the "Backspace" key is pressed.
    */
   @Event() bdsKeyDownBackspace: EventEmitter;
 
   /**
-   * Define o foco no campo de entrada.
+   * Sets focus to the input field.
    */
   @Method()
   async setFocus(): Promise<void> {
@@ -236,7 +267,7 @@ export class Input {
   }
 
   /**
-   * Remove o foco do campo de entrada.
+   * Removes focus from the input field.
    */
   @Method()
   async removeFocus(): Promise<void> {
@@ -244,15 +275,15 @@ export class Input {
   }
 
   /**
-   * Retorna o elemento de input do componente.
+   * Returns the input element of the component.
    */
   @Method()
-  async getInputElement(): Promise<HTMLInputElement> {
+  async getInputElement(): Promise<HTMLInputElement | HTMLTextAreaElement> {
     return this.nativeInput;
   }
 
   /**
-   * Verifica se o campo de entrada é válido.
+   * Checks if the input field is valid.
    */
   @Method()
   async isValid(): Promise<boolean> {
@@ -260,7 +291,7 @@ export class Input {
   }
 
   /**
-   * Limpa o valor do campo de entrada.
+   * Clears the input field value.
    */
   @Method()
   async clear(): Promise<void> {
@@ -268,7 +299,7 @@ export class Input {
   }
 
   /**
-   * Codifica os caracteres especiais para exibição segura (evita injeção de código HTML).
+   * Encodes special characters for safe display (prevents HTML code injection).
    */
   private encodeValue(value?: string): string {
     const lt = /</g,
@@ -292,7 +323,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Avisa sobre a mudança do valor do campo de entrada.
+   * Notifies about the input field value change.
    */
   @Watch('value')
   protected valueChanged(newValue: string | null): void {
@@ -301,7 +332,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Tratamento de eventos de pressionamento de tecla (Enter, Backspace, etc).
+   * Key press event handling (Enter, Backspace, etc).
    */
   private keyPressWrapper = (event: KeyboardEvent): void => {
     switch (event.key) {
@@ -313,26 +344,80 @@ if(!this.encode) return value;
           event.preventDefault();
         }
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
   };
 
   /**
-   * Função chamada ao digitar no campo de entrada.
+   * Auto-resizes the textarea based on content.
+   */
+  private autoResizeTextarea(): void {
+    if (this.isTextarea && this.autoResize && this.nativeInput) {
+      const textarea = this.nativeInput as HTMLTextAreaElement;
+      
+      // Reset height to auto to get the correct scrollHeight
+      textarea.style.height = 'auto';
+      
+      // Calculate new height
+      const scrollHeight = textarea.scrollHeight;
+      const newHeight = Math.min(
+        Math.max(scrollHeight, this.minHeight || 60),
+        this.maxHeight || 200
+      );
+      
+      textarea.style.height = `${newHeight}px`;
+    }
+  }
+
+  /**
+   * Debounced version of auto-resize to improve performance during rapid input events.
+   */
+  private debouncedAutoResize(): void {
+    if (this.autoResizeDebounceTimer) {
+      clearTimeout(this.autoResizeDebounceTimer);
+    }
+    
+    this.autoResizeDebounceTimer = window.setTimeout(() => {
+      this.autoResizeTextarea();
+    }, this.debounceDelay); // Configurable debounce delay
+  }
+
+  /**
+   * Centralizes all necessary updates for the textarea, including auto-resize.
+   */
+  private updateTextarea(immediate = false): void {
+    if (this.isTextarea && this.autoResize) {
+      if (immediate) {
+        // For immediate updates (component load, prop changes)
+        this.autoResizeTextarea();
+      } else {
+        // For input events, use debounced version
+        this.debouncedAutoResize();
+      }
+    }
+  }
+
+  /**
+   * Function called when typing in the input field.
    */
   private onInput = (ev: Event): void => {
     this.onBdsInputValidations();
-    const input = ev.target as HTMLInputElement | null;
+    const input = ev.target as HTMLInputElement | HTMLTextAreaElement | null;
     if (input) {
       this.value = input.value || '';
     }
+    
+    // Update textarea if needed
+    this.updateTextarea();
+    
     this.bdsInput.emit(ev as KeyboardEvent);
   };
 
   /**
-   * Função chamada ao perder o foco do campo de entrada.
+   * Function called when the input field loses focus.
    */
   private onBlur = (): void => {
     this.onBlurValidations();
@@ -341,7 +426,7 @@ if(!this.encode) return value;
   };
 
   /**
-   * Função chamada ao ganhar o foco do campo de entrada.
+   * Function called when the input field gains focus.
    */
   private onFocus = (): void => {
     this.isPressed = true;
@@ -349,7 +434,7 @@ if(!this.encode) return value;
   };
 
   /**
-   * Função chamada ao clicar no campo de entrada.
+   * Function called when clicking on the input field.
    */
   private onClickWrapper = (): void => {
     this.onFocus();
@@ -359,7 +444,7 @@ if(!this.encode) return value;
   };
 
   /**
-   * Limpa o valor do campo de entrada.
+   * Clears the input field value.
    */
   private clearTextInput = (ev?: Event) => {
     if (!this.readonly && !this.disabled && ev) {
@@ -375,20 +460,24 @@ if(!this.encode) return value;
   };
 
   /**
-   * Função que renderiza o ícone dentro do campo de entrada.
+   * Function that renders the icon inside the input field.
    */
   private renderIcon(): HTMLElement {
+    const iconSizeValue = this.iconSize === 'medium' ? 'medium' : 'small';
+    const isLargeIcon = this.iconSize === 'medium';
+    
     return (
       this.icon && (
         <div
           class={{
             input__icon: true,
-            'input__icon--large': !!this.label,
+            'input__icon--large': isLargeIcon,
+            'input__icon--textarea': this.isTextarea,
           }}
         >
           <bds-icon
             class="input__icon--color"
-            size={this.label ? 'medium' : 'small'}
+            size={iconSizeValue}
             name={this.icon}
             color="inherit"
           ></bds-icon>
@@ -398,7 +487,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Função que renderiza a label do campo de entrada.
+   * Function that renders the label of the input field.
    */
   private renderLabel(): HTMLElement {
     return (
@@ -418,7 +507,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Função que renderiza as mensagens de erro ou sucesso abaixo do campo de entrada.
+   * Function that renders error or success messages below the input field.
    */
   private renderMessage(): HTMLElement {
     const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
@@ -450,7 +539,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Valida o campo de entrada ao perder o foco.
+   * Validates the input field when it loses focus.
    */
   private onBlurValidations() {
     this.required && this.requiredValidation();
@@ -461,7 +550,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Realiza as validações do campo enquanto o usuário digita.
+   * Performs field validations while the user types.
    */
   private onBdsInputValidations() {
     this.type === 'email' && this.emailValidation();
@@ -470,7 +559,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Valida o padrão regex do campo.
+   * Validates the regex pattern of the field.
    */
   private patternValidation() {
     const regex = new RegExp(this.pattern);
@@ -478,7 +567,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Valida se o campo é obrigatório.
+   * Validates if the field is required.
    */
   private requiredValidation() {
     if (this.nativeInput.validity.valueMissing) {
@@ -488,7 +577,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Valida o comprimento do texto no campo de entrada.
+   * Validates the text length in the input field.
    */
   private lengthValidation() {
     if (this.nativeInput.validity.tooShort) {
@@ -504,7 +593,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Valida os valores mínimos e máximos do campo de entrada.
+   * Validates the minimum and maximum values of the input field.
    */
   private minMaxValidation() {
     if (this.nativeInput.validity.rangeUnderflow) {
@@ -521,7 +610,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Valida se o campo contém um email válido.
+   * Validates if the field contains a valid email.
    */
   private emailValidation() {
     if (emailValidation(this.nativeInput.value)) {
@@ -531,7 +620,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Valida se o campo contém um número válido.
+   * Validates if the field contains a valid number.
    */
   private numberValidation() {
     if (numberValidation(this.nativeInput.value)) {
@@ -541,7 +630,7 @@ if(!this.encode) return value;
   }
 
   /**
-   * Verifica se o campo de entrada é válido.
+   * Checks if the input field is valid.
    */
   private checkValidity() {
     if (this.nativeInput.validity.valid) {
@@ -550,11 +639,31 @@ if(!this.encode) return value;
   }
 
   /**
-   * Atualiza o valor do campo de entrada após as mudanças.
+   * Updates the input field value after changes.
    */
   componentDidUpdate() {
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
+    }
+    
+    // Update textarea after value changes (immediate for prop changes)
+    this.updateTextarea(true);
+  }
+
+  /**
+   * Initial configurations after the component loads.
+   */
+  componentDidLoad() {
+    // Set initial height for textarea (immediate for initial load)
+    this.updateTextarea(true);
+  }
+
+  /**
+   * Cleanup when component is destroyed.
+   */
+  disconnectedCallback() {
+    if (this.autoResizeDebounceTimer) {
+      window.clearTimeout(this.autoResizeDebounceTimer);
     }
   }
 
@@ -573,6 +682,7 @@ if(!this.encode) return value;
             'input--state-disabled': this.disabled,
             'input--label': !!this.label,
             'input--pressed': isPressed,
+            'input--textarea': this.isTextarea,
           }}
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}
@@ -582,13 +692,21 @@ if(!this.encode) return value;
           <slot name="input-left"></slot>
           <div class="input__container">
             {this.renderLabel()}
-            <div class={{ input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips }}>
+            <div class={{ 
+              input__container__wrapper: !this.chips, 
+              input__container__wrapper__chips: this.chips,
+              'input__container__wrapper--textarea': this.isTextarea
+            }}>
               <slot name="inside-input-left"></slot>
               <Element
-                class={{ input__container__text: true, input__container__text__chips: this.chips }}
+                class={{ 
+                  input__container__text: true, 
+                  input__container__text__chips: this.chips,
+                  'input__container__text--textarea': this.isTextarea
+                }}
                 ref={(input) => (this.nativeInput = input)}
-                rows={this.rows}
-                cols={this.cols}
+                rows={this.isTextarea ? this.rows : undefined}
+                cols={this.isTextarea ? this.cols : undefined}
                 autocapitalize={this.autoCapitalize}
                 autocomplete={this.autoComplete}
                 disabled={this.disabled}
@@ -602,12 +720,17 @@ if(!this.encode) return value;
                 onInput={this.onInput}
                 placeholder={this.placeholder}
                 readOnly={this.readonly}
-                type={this.type}
+                type={this.isTextarea ? undefined : this.type}
                 value={this.encodeValue(this.value)}
                 pattern={this.pattern}
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
+                style={this.isTextarea ? {
+                  minHeight: `${this.minHeight || 60}px`,
+                  maxHeight: `${this.maxHeight || 200}px`,
+                  resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
+                } : {}}
               ></Element>
             </div>
           </div>
