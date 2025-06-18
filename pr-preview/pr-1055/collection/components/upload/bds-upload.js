@@ -95,18 +95,19 @@ export class BdsUpload {
     this.dataAcceptChanged();
   }
   componentDidLoad() {
+    // Prevent default drag behaviors for all drag events
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName) => {
       this.dropArea.shadowRoot.addEventListener(eventName, this.preventDefaults, false);
-      this.dropArea.shadowRoot.addEventListener(eventName, () => this.hoverFile(true), false);
     });
+    // Set hover state to true when entering or dragging over
     ['dragenter', 'dragover'].forEach((eventName) => {
-      this.dropArea.shadowRoot.addEventListener(eventName, () => this.preventDefaults, false);
       this.dropArea.shadowRoot.addEventListener(eventName, () => this.hoverFile(true), false);
     });
+    // Set hover state to false when leaving or dropping
     ['dragleave', 'drop'].forEach((eventName) => {
-      this.dropArea.shadowRoot.addEventListener(eventName, () => this.preventDefaults, false);
       this.dropArea.shadowRoot.addEventListener(eventName, () => this.hoverFile(false), false);
     });
+    // Handle file drop
     this.dropArea.shadowRoot.addEventListener('drop', this.handleDrop, false);
   }
   /**
