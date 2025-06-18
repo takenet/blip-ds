@@ -119,6 +119,7 @@ const Input = class {
     this.rows = 3;
     this.cols = 0;
     this.autoResize = true;
+    this.resizable = false;
     this.minHeight = 60;
     this.maxHeight = 200;
     this.iconSize = 'small';
@@ -370,7 +371,7 @@ const Input = class {
       }, ref: (input) => (this.nativeInput = input), rows: this.isTextarea ? this.rows : undefined, cols: this.isTextarea ? this.cols : undefined, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.isTextarea ? undefined : this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest, style: this.isTextarea ? {
         minHeight: `${this.minHeight || 60}px`,
         maxHeight: `${this.maxHeight || 200}px`,
-        resize: this.autoResize ? 'none' : 'vertical'
+        resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
       } : {} }))), this.counterLength && (index.h("bds-counter-text", { length: this.value.length, max: this.maxlength, active: isPressed, ...this.counterLengthRule })), this.success && index.h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "small" }), index.h("slot", { name: "input-right" })), this.renderMessage()));
   }
   static get watchers() { return {

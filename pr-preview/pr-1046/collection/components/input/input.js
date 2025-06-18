@@ -105,6 +105,7 @@ export class Input {
     this.rows = 3;
     this.cols = 0;
     this.autoResize = true;
+    this.resizable = false;
     this.minHeight = 60;
     this.maxHeight = 200;
     this.iconSize = 'small';
@@ -356,7 +357,7 @@ export class Input {
       }, ref: (input) => (this.nativeInput = input), rows: this.isTextarea ? this.rows : undefined, cols: this.isTextarea ? this.cols : undefined, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.isTextarea ? undefined : this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest, style: this.isTextarea ? {
         minHeight: `${this.minHeight || 60}px`,
         maxHeight: `${this.maxHeight || 200}px`,
-        resize: this.autoResize ? 'none' : 'vertical'
+        resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
       } : {} }))), this.counterLength && (h("bds-counter-text", { length: this.value.length, max: this.maxlength, active: isPressed, ...this.counterLengthRule })), this.success && h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { name: "input-right" })), this.renderMessage()));
   }
   static get is() { return "bds-input"; }
@@ -888,6 +889,24 @@ export class Input {
         "attribute": "auto-resize",
         "reflect": false,
         "defaultValue": "true"
+      },
+      "resizable": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "Define se a \u00E1rea de texto pode ser redimensionada manualmente pelo usu\u00E1rio."
+        },
+        "attribute": "resizable",
+        "reflect": false,
+        "defaultValue": "false"
       },
       "minHeight": {
         "type": "number",

@@ -119,6 +119,10 @@ export declare class Input {
    */
   autoResize: boolean;
   /**
+   * Define se a área de texto pode ser redimensionada manualmente pelo usuário.
+   */
+  resizable: boolean;
+  /**
    * Define a altura mínima da área de texto em pixels.
    */
   minHeight?: number;
