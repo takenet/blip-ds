@@ -2,6 +2,7 @@ import { EventEmitter } from '../../stencil-public-runtime';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 export declare class Input {
   private nativeInput?;
+  private autoResizeDebounceTimer?;
   isPressed?: boolean;
   isPassword?: boolean;
   validationMesage?: string;
@@ -232,6 +233,10 @@ export declare class Input {
    */
   private autoResizeTextarea;
   /**
+   * Debounced version of auto-resize to improve performance during rapid input events.
+   */
+  private debouncedAutoResize;
+  /**
    * Centralizes all necessary updates for the textarea, including auto-resize.
    */
   private updateTextarea;
@@ -311,5 +316,9 @@ export declare class Input {
    * Initial configurations after the component loads.
    */
   componentDidLoad(): void;
+  /**
+   * Cleanup when component is destroyed.
+   */
+  disconnectedCallback(): void;
   render(): HTMLElement;
 }

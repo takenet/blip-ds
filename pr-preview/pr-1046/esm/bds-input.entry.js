@@ -196,11 +196,29 @@ const Input = class {
     }
   }
   /**
+   * Debounced version of auto-resize to improve performance during rapid input events.
+   */
+  debouncedAutoResize() {
+    if (this.autoResizeDebounceTimer) {
+      clearTimeout(this.autoResizeDebounceTimer);
+    }
+    this.autoResizeDebounceTimer = setTimeout(() => {
+      this.autoResizeTextarea();
+    }, 100); // 100ms debounce delay
+  }
+  /**
    * Centralizes all necessary updates for the textarea, including auto-resize.
    */
-  updateTextarea() {
+  updateTextarea(immediate = false) {
     if (this.isTextarea && this.autoResize) {
-      this.autoResizeTextarea();
+      if (immediate) {
+        // For immediate updates (component load, prop changes)
+        this.autoResizeTextarea();
+      }
+      else {
+        // For input events, use debounced version
+        this.debouncedAutoResize();
+      }
     }
   }
   /**
@@ -336,15 +354,23 @@ const Input = class {
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
     }
-    // Update textarea after value changes
-    this.updateTextarea();
+    // Update textarea after value changes (immediate for prop changes)
+    this.updateTextarea(true);
   }
   /**
    * Initial configurations after the component loads.
    */
   componentDidLoad() {
-    // Set initial height for textarea
-    this.updateTextarea();
+    // Set initial height for textarea (immediate for initial load)
+    this.updateTextarea(true);
+  }
+  /**
+   * Cleanup when component is destroyed.
+   */
+  disconnectedCallback() {
+    if (this.autoResizeDebounceTimer) {
+      clearTimeout(this.autoResizeDebounceTimer);
+    }
   }
   render() {
     const isPressed = this.isPressed && !this.disabled;
