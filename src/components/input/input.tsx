@@ -10,6 +10,7 @@ import { emailValidation, numberValidation } from '../../utils/validations';
 })
 export class Input {
   private nativeInput?: HTMLInputElement | HTMLTextAreaElement;
+  private autoResizeDebounceTimer?: NodeJS.Timeout;
 
   @State() isPressed? = false;
   @State() isPassword? = false;
@@ -367,11 +368,30 @@ if(!this.encode) return value;
   }
 
   /**
+   * Debounced version of auto-resize to improve performance during rapid input events.
+   */
+  private debouncedAutoResize(): void {
+    if (this.autoResizeDebounceTimer) {
+      clearTimeout(this.autoResizeDebounceTimer);
+    }
+    
+    this.autoResizeDebounceTimer = setTimeout(() => {
+      this.autoResizeTextarea();
+    }, 100); // 100ms debounce delay
+  }
+
+  /**
    * Centralizes all necessary updates for the textarea, including auto-resize.
    */
-  private updateTextarea(): void {
+  private updateTextarea(immediate = false): void {
     if (this.isTextarea && this.autoResize) {
-      this.autoResizeTextarea();
+      if (immediate) {
+        // For immediate updates (component load, prop changes)
+        this.autoResizeTextarea();
+      } else {
+        // For input events, use debounced version
+        this.debouncedAutoResize();
+      }
     }
   }
 
@@ -618,16 +638,25 @@ if(!this.encode) return value;
       this.nativeInput.value = this.value;
     }
     
-    // Update textarea after value changes
-    this.updateTextarea();
+    // Update textarea after value changes (immediate for prop changes)
+    this.updateTextarea(true);
   }
 
   /**
    * Initial configurations after the component loads.
    */
   componentDidLoad() {
-    // Set initial height for textarea
-    this.updateTextarea();
+    // Set initial height for textarea (immediate for initial load)
+    this.updateTextarea(true);
+  }
+
+  /**
+   * Cleanup when component is destroyed.
+   */
+  disconnectedCallback() {
+    if (this.autoResizeDebounceTimer) {
+      clearTimeout(this.autoResizeDebounceTimer);
+    }
   }
 
   render(): HTMLElement {
