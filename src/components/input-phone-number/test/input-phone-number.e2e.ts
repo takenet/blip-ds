@@ -95,6 +95,39 @@ describe('bds-input-phone-number e2e tests', () => {
       const searchPlaceholder = await inputPhoneNumber.getProperty('searchPlaceholder');
       expect(searchPlaceholder).toBe('Search countries...');
     });
+
+    it('should filter countries when searching', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-phone-number enable-search="true"></bds-input-phone-number>`,
+      });
+      
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      
+      // Click to open dropdown
+      const flagIcon = await page.find('bds-input-phone-number >>> .input__icon');
+      await flagIcon.click();
+      await page.waitForChanges();
+      
+      // Get initial number of options
+      const initialOptions = await page.findAll('bds-input-phone-number >>> bds-select-option');
+      expect(initialOptions.length).toBeGreaterThan(1);
+      
+      // Find and type in search input (now back to bds-input)
+      const searchInput = await page.find('bds-input-phone-number >>> bds-input >>> input');
+      expect(searchInput).toBeTruthy();
+      
+      // Type "brazil" to filter
+      await searchInput.type('brazil');
+      await page.waitForChanges();
+      
+      // Wait a bit more for the filtering to take effect
+      await page.waitForTimeout(500);
+      
+      // Check that options are filtered
+      const filteredOptions = await page.findAll('bds-input-phone-number >>> bds-select-option');
+      expect(filteredOptions.length).toBeLessThan(initialOptions.length);
+      expect(filteredOptions.length).toBeGreaterThan(0);
+    });
   });
 
   describe('Interactions', () => {

@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen, Host } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen, Host, forceUpdate } from '@stencil/core';
 import { Option } from '../selects/select-interface';
 import { numberValidation } from '../../utils/validations';
 import * as countriesDefault from './countries.json';
@@ -23,6 +23,8 @@ export class InputPhoneNumber {
   @State() validationDanger? = false;
   @State() validationMesage? = '';
   @State() isPressed? = false;
+  @State() searchTerm: string = '';
+  @State() countryList: Array<{flag: string, country: any}> = [];
 
   /**
    * Lista de opções do select.
@@ -146,8 +148,6 @@ export class InputPhoneNumber {
   @Prop() searchPlaceholder?: string = 'Search countries...';
 
   private countries: any = {};
-  private filteredCountries: any = {};
-  private searchTerm: string = '';
 
   @Method()
   async removeFocus(): Promise<void> {
@@ -200,7 +200,7 @@ export class InputPhoneNumber {
     }
 
     // Reset filtered countries to show all initially
-    this.filteredCountries = { ...this.countries };
+    this.updateCountryList();
     const flagsNames = Object.keys(this.countries);
   
     // Priority order for setting initial country:
@@ -306,7 +306,7 @@ export class InputPhoneNumber {
       if (this.isOpen) {
         // Reset search when opening
         this.searchTerm = '';
-        this.resetFilterCountries();
+        this.updateCountryList();
       }
     }
   };
@@ -353,34 +353,51 @@ export class InputPhoneNumber {
     }
   };
 
+  private updateCountryList(): void {
+    const list = Object.keys(this.countries).map(flag => ({
+      flag,
+      country: this.countries[flag]
+    }));
+    // Force new array reference to trigger re-render
+    this.countryList = [...list];
+  }
+
   private filterCountries = (term: string): void => {
     if (!term || term.trim() === '') {
-      this.resetFilterCountries();
+      this.updateCountryList();
+      forceUpdate(this.el);
       return;
     }
 
     const termLower = term.toLowerCase().trim();
-    this.filteredCountries = {};
-
-    Object.keys(this.countries).forEach(flagKey => {
-      const country = this.countries[flagKey];
-      const matchesName = country.name.toLowerCase().includes(termLower);
-      const matchesCode = country.code.toLowerCase().includes(termLower);
-      const matchesIsoCode = country.isoCode.toLowerCase().includes(termLower);
-
-      if (matchesName || matchesCode || matchesIsoCode) {
-        this.filteredCountries[flagKey] = country;
-      }
-    });
+    const filtered = Object.keys(this.countries)
+      .filter(flagKey => {
+        const country = this.countries[flagKey];
+        const matchesName = country.name.toLowerCase().includes(termLower);
+        const matchesCode = country.code.toLowerCase().includes(termLower);
+        const matchesIsoCode = country.isoCode.toLowerCase().includes(termLower);
+        return matchesName || matchesCode || matchesIsoCode;
+      })
+      .map(flag => ({
+        flag,
+        country: this.countries[flag]
+      }));
+    
+    // Force new array reference to trigger re-render
+    this.countryList = [...filtered];
+    forceUpdate(this.el);
   };
 
   private resetFilterCountries = (): void => {
-    this.filteredCountries = { ...this.countries };
+    this.updateCountryList();
   };
 
-  private onSearchInput = (event: Event): void => {
-    const input = event.target as HTMLInputElement;
-    this.searchTerm = input.value || '';
+  private onSearchInput = (event: CustomEvent): void => {
+    // For bds-input, the value should be available in the component's value property
+    const bdsInput = event.target as any;
+    const value = bdsInput.value || '';
+    
+    this.searchTerm = value;
     this.filterCountries(this.searchTerm);
   };
 
@@ -471,7 +488,6 @@ export class InputPhoneNumber {
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
-    const filteredFlagsNames = Object.keys(this.filteredCountries);
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
@@ -538,15 +554,15 @@ export class InputPhoneNumber {
         >
           {this.isOpen && [
             this.renderSearchInput(),
-            filteredFlagsNames.map((flag) => (
+            this.countryList.map(({ flag, country }) => (
               <bds-select-option
                 key={flag}
                 onOptionSelected={this.handler}
                 selected={flag === this.selectedCountry}
-                value={{ code: this.filteredCountries[flag].code, isoCode: this.filteredCountries[flag].isoCode, flag }}
-                status={this.filteredCountries[flag].isoCode}
+                value={{ code: country.code, isoCode: country.isoCode, flag }}
+                status={country.isoCode}
               >
-                {this.filteredCountries[flag].name} {this.filteredCountries[flag].code}
+                {country.name} {country.code}
               </bds-select-option>
             ))
           ]}
