@@ -325,7 +325,7 @@ $select-options-max-height: 250px;
 
     background: $color-surface-2;
     width: 100%;
-    max-height: 200px;
+    max-height: 250px;
     position: absolute;
     top: 99%;
     left: 0;
@@ -348,6 +348,19 @@ $select-options-max-height: 250px;
       visibility: visible;
       transform: scale(1);
       opacity: 1;
+    }
+  }
+
+  &__search {
+    padding: 8px 12px;
+    border-bottom: 1px solid $color-border-1;
+    background: $color-surface-2;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+
+    bds-input {
+      width: 100%;
     }
   }
 }

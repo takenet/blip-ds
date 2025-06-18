@@ -21,6 +21,80 @@ describe('bds-input-phone-number e2e tests', () => {
       const helperMessage = await inputPhoneNumber.getAttribute('helper-message');
       expect(helperMessage).toBe('Mensagem de ajuda');
     });
+
+    it('should set initial country by flag name', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-phone-number initial-country-flag="united-states-flag"></bds-input-phone-number>`,
+      });
+      
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      await page.waitForChanges();
+      
+      const value = await inputPhoneNumber.getProperty('value');
+      expect(value).toBe('+1');
+    });
+
+    it('should set initial country by ISO code', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-phone-number initial-iso-code="US"></bds-input-phone-number>`,
+      });
+      
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      await page.waitForChanges();
+      
+      const value = await inputPhoneNumber.getProperty('value');
+      expect(value).toBe('+1');
+    });
+
+    it('should prioritize initialCountryFlag over initialIsoCode', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-phone-number initial-country-flag="brazil-flag" initial-iso-code="US"></bds-input-phone-number>`,
+      });
+      
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      await page.waitForChanges();
+      
+      const value = await inputPhoneNumber.getProperty('value');
+      expect(value).toBe('+55');
+    });
+  });
+
+  describe('Search Functionality', () => {
+    it('should render component with search enabled', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-phone-number enable-search="true"></bds-input-phone-number>`,
+      });
+      
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      const enableSearch = await inputPhoneNumber.getProperty('enableSearch');
+      expect(enableSearch).toBe(true);
+    });
+
+    it('should render component with search disabled by default', async () => {
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      const enableSearch = await inputPhoneNumber.getProperty('enableSearch');
+      expect(enableSearch).toBe(false);
+    });
+
+    it('should render component with custom search placeholder', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-phone-number enable-search="true" search-placeholder="Buscar paises..."></bds-input-phone-number>`,
+      });
+      
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      const searchPlaceholder = await inputPhoneNumber.getProperty('searchPlaceholder');
+      expect(searchPlaceholder).toBe('Buscar paises...');
+    });
+
+    it('should have default search placeholder', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-phone-number enable-search="true"></bds-input-phone-number>`,
+      });
+      
+      const inputPhoneNumber = await page.find('bds-input-phone-number');
+      const searchPlaceholder = await inputPhoneNumber.getProperty('searchPlaceholder');
+      expect(searchPlaceholder).toBe('Search countries...');
+    });
   });
 
   describe('Interactions', () => {

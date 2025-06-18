@@ -1568,6 +1568,10 @@ export namespace Components {
          */
         "dtSelectFlag"?: string;
         /**
+          * Habilita funcionalidade de busca no dropdown de países.
+         */
+        "enableSearch"?: boolean;
+        /**
           * Mensagem de erro a ser exibida.
          */
         "errorMessage"?: string;
@@ -1579,6 +1583,14 @@ export namespace Components {
           * Ícone à esquerda do input.
          */
         "icon"?: string;
+        /**
+          * Define o país inicial pelo nome da bandeira (ex: "brazil-flag", "united-states-flag"). Tem prioridade sobre o valor padrão quando especificado.
+         */
+        "initialCountryFlag"?: string;
+        /**
+          * Define o país inicial pelo código ISO (ex: "BR", "US", "BR / BRA"). Tem prioridade sobre o valor padrão quando especificado.
+         */
+        "initialIsoCode"?: string;
         /**
           * Label do input.
          */
@@ -1604,6 +1616,10 @@ export namespace Components {
           * Mensagem de erro para campo obrigatório.
          */
         "requiredErrorMessage": string;
+        /**
+          * Texto placeholder para o campo de busca.
+         */
+        "searchPlaceholder"?: string;
         /**
           * Habilita o estado "success" no input.
          */
@@ -5468,6 +5484,10 @@ declare namespace LocalJSX {
          */
         "dtSelectFlag"?: string;
         /**
+          * Habilita funcionalidade de busca no dropdown de países.
+         */
+        "enableSearch"?: boolean;
+        /**
           * Mensagem de erro a ser exibida.
          */
         "errorMessage"?: string;
@@ -5479,6 +5499,14 @@ declare namespace LocalJSX {
           * Ícone à esquerda do input.
          */
         "icon"?: string;
+        /**
+          * Define o país inicial pelo nome da bandeira (ex: "brazil-flag", "united-states-flag"). Tem prioridade sobre o valor padrão quando especificado.
+         */
+        "initialCountryFlag"?: string;
+        /**
+          * Define o país inicial pelo código ISO (ex: "BR", "US", "BR / BRA"). Tem prioridade sobre o valor padrão quando especificado.
+         */
+        "initialIsoCode"?: string;
         /**
           * Label do input.
          */
@@ -5523,6 +5551,10 @@ declare namespace LocalJSX {
           * Mensagem de erro para campo obrigatório.
          */
         "requiredErrorMessage"?: string;
+        /**
+          * Texto placeholder para o campo de busca.
+         */
+        "searchPlaceholder"?: string;
         /**
           * Habilita o estado "success" no input.
          */

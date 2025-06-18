@@ -123,7 +123,31 @@ export class InputPhoneNumber {
    */
   @Prop({ mutable: true }) language?: languages = 'pt_BR';
 
+  /**
+   * Define o país inicial pelo nome da bandeira (ex: "brazil-flag", "united-states-flag").
+   * Tem prioridade sobre o valor padrão quando especificado.
+   */
+  @Prop() initialCountryFlag?: string;
+
+  /**
+   * Define o país inicial pelo código ISO (ex: "BR", "US", "BR / BRA").
+   * Tem prioridade sobre o valor padrão quando especificado.
+   */
+  @Prop() initialIsoCode?: string;
+
+  /**
+   * Habilita funcionalidade de busca no dropdown de países.
+   */
+  @Prop() enableSearch?: boolean = false;
+
+  /**
+   * Texto placeholder para o campo de busca.
+   */
+  @Prop() searchPlaceholder?: string = 'Search countries...';
+
   private countries: any = {};
+  private filteredCountries: any = {};
+  private searchTerm: string = '';
 
   @Method()
   async removeFocus(): Promise<void> {
@@ -149,6 +173,16 @@ export class InputPhoneNumber {
     this.updateCountries();
   }
 
+  @Watch('initialCountryFlag')
+  initialCountryFlagChanged() {
+    this.updateCountries();
+  }
+
+  @Watch('initialIsoCode')
+  initialIsoCodeChanged() {
+    this.updateCountries();
+  }
+
   private updateCountries() {
     switch (this.language) {
       case 'pt_BR':
@@ -165,16 +199,47 @@ export class InputPhoneNumber {
         break;
     }
 
+    // Reset filtered countries to show all initially
+    this.filteredCountries = { ...this.countries };
     const flagsNames = Object.keys(this.countries);
   
-    const countryIndex = Object.values(this.countries).findIndex((country: any) => country.code === this.value);
-  
-    if (countryIndex !== -1) {
-      this.selectedCountry = flagsNames[countryIndex];
-    } else {
-      this.selectedCountry = this.selectedCountry || flagsNames[0];
+    // Priority order for setting initial country:
+    // 1. initialCountryFlag prop
+    // 2. initialIsoCode prop  
+    // 3. value prop (country code)
+    // 4. default (first country)
+    
+    let countryIndex = -1;
+    
+    if (this.initialCountryFlag && flagsNames.includes(this.initialCountryFlag)) {
+      countryIndex = flagsNames.indexOf(this.initialCountryFlag);
+      this.selectedCountry = this.initialCountryFlag;
+      this.value = this.countries[this.initialCountryFlag].code;
+      this.isoCode = this.countries[this.initialCountryFlag].isoCode;
+    } else if (this.initialIsoCode) {
+      countryIndex = Object.values(this.countries).findIndex((country: any) => 
+        country.isoCode === this.initialIsoCode || 
+        country.isoCode.includes(this.initialIsoCode.toUpperCase())
+      );
+      if (countryIndex !== -1) {
+        this.selectedCountry = flagsNames[countryIndex];
+        this.value = this.countries[flagsNames[countryIndex]].code;
+        this.isoCode = this.countries[flagsNames[countryIndex]].isoCode;
+      }
+    } else if (this.value) {
+      countryIndex = Object.values(this.countries).findIndex((country: any) => country.code === this.value);
+      if (countryIndex !== -1) {
+        this.selectedCountry = flagsNames[countryIndex];
+        this.isoCode = this.countries[flagsNames[countryIndex]].isoCode;
+      }
     }
-    this.isoCode = this.isoCode || flagsNames[0];
+    
+    // Fallback to first country if none found
+    if (countryIndex === -1) {
+      this.selectedCountry = this.selectedCountry || flagsNames[0];
+      this.isoCode = this.isoCode || this.countries[flagsNames[0]].isoCode;
+      this.value = this.value || this.countries[flagsNames[0]].code;
+    }
   }
 
   componentWillRender() {
@@ -238,6 +303,11 @@ export class InputPhoneNumber {
   private toggle = (): void => {
     if (!this.disabled) {
       this.isOpen = !this.isOpen;
+      if (this.isOpen) {
+        // Reset search when opening
+        this.searchTerm = '';
+        this.resetFilterCountries();
+      }
     }
   };
 
@@ -281,6 +351,42 @@ export class InputPhoneNumber {
     if (event.key === 'Enter' && !this.isOpen && (isSelectElement || isInputElement)) {
       this.toggle();
     }
+  };
+
+  private filterCountries = (term: string): void => {
+    if (!term || term.trim() === '') {
+      this.resetFilterCountries();
+      return;
+    }
+
+    const termLower = term.toLowerCase().trim();
+    this.filteredCountries = {};
+
+    Object.keys(this.countries).forEach(flagKey => {
+      const country = this.countries[flagKey];
+      const matchesName = country.name.toLowerCase().includes(termLower);
+      const matchesCode = country.code.toLowerCase().includes(termLower);
+      const matchesIsoCode = country.isoCode.toLowerCase().includes(termLower);
+
+      if (matchesName || matchesCode || matchesIsoCode) {
+        this.filteredCountries[flagKey] = country;
+      }
+    });
+  };
+
+  private resetFilterCountries = (): void => {
+    this.filteredCountries = { ...this.countries };
+  };
+
+  private onSearchInput = (event: Event): void => {
+    const input = event.target as HTMLInputElement;
+    this.searchTerm = input.value || '';
+    this.filterCountries(this.searchTerm);
+  };
+
+  private onSearchKeyDown = (event: KeyboardEvent): void => {
+    // Prevent search input from closing the dropdown
+    event.stopPropagation();
   };
 
   private checkValidity() {
@@ -346,10 +452,26 @@ export class InputPhoneNumber {
     ) : null;
   }
 
+  private renderSearchInput(): HTMLElement {
+    return (
+      this.enableSearch && (
+        <div class="select-phone-number__search">
+          <bds-input
+            icon="search"
+            placeholder={this.searchPlaceholder}
+            value={this.searchTerm}
+            onBdsInput={this.onSearchInput}
+            onKeyDown={this.onSearchKeyDown}
+          ></bds-input>
+        </div>
+      )
+    );
+  }
+
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
-    const flagsNames = Object.keys(this.countries);
+    const filteredFlagsNames = Object.keys(this.filteredCountries);
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
@@ -414,18 +536,20 @@ export class InputPhoneNumber {
             'select-phone-number__options--open': this.isOpen,
           }}
         >
-          {this.isOpen &&
-            flagsNames.map((flag) => (
+          {this.isOpen && [
+            this.renderSearchInput(),
+            filteredFlagsNames.map((flag) => (
               <bds-select-option
                 key={flag}
                 onOptionSelected={this.handler}
                 selected={flag === this.selectedCountry}
-                value={{ code: this.countries[flag].code, isoCode: this.countries[flag].isoCode, flag }}
-                status={this.countries[flag].isoCode}
+                value={{ code: this.filteredCountries[flag].code, isoCode: this.filteredCountries[flag].isoCode, flag }}
+                status={this.filteredCountries[flag].isoCode}
               >
-                {this.countries[flag].name} {this.countries[flag].code}
+                {this.filteredCountries[flag].name} {this.filteredCountries[flag].code}
               </bds-select-option>
-            ))}
+            ))
+          ]}
         </div>
       </Host>
     );
