@@ -1575,6 +1575,9 @@ export namespace Components {
           * Mensagem de erro a ser exibida.
          */
         "errorMessage"?: string;
+        "filterCountries": (term: string) => Promise<void>;
+        "getIsoCode": () => Promise<string>;
+        "getSelectedCountry": () => Promise<string>;
         /**
           * Mensagem de ajuda para o usuário.
          */

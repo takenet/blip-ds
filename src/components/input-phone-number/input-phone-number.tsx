@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen, Host, forceUpdate } from '@stencil/core';
+import { Component, h, State, Prop, EventEmitter, Event, Method, Watch, Element, Listen, Host } from '@stencil/core';
 import { Option } from '../selects/select-interface';
 import { numberValidation } from '../../utils/validations';
 import * as countriesDefault from './countries.json';
@@ -24,7 +24,7 @@ export class InputPhoneNumber {
   @State() validationMesage? = '';
   @State() isPressed? = false;
   @State() searchTerm: string = '';
-  @State() countryList: Array<{flag: string, country: any}> = [];
+  @State() filteredCountries: any = {};
 
   /**
    * Lista de opções do select.
@@ -200,7 +200,7 @@ export class InputPhoneNumber {
     }
 
     // Reset filtered countries to show all initially
-    this.updateCountryList();
+    this.filteredCountries = { ...this.countries };
     const flagsNames = Object.keys(this.countries);
   
     // Priority order for setting initial country:
@@ -217,10 +217,15 @@ export class InputPhoneNumber {
       this.value = this.countries[this.initialCountryFlag].code;
       this.isoCode = this.countries[this.initialCountryFlag].isoCode;
     } else if (this.initialIsoCode) {
-      countryIndex = Object.values(this.countries).findIndex((country: any) => 
-        country.isoCode === this.initialIsoCode || 
-        country.isoCode.includes(this.initialIsoCode.toUpperCase())
-      );
+      countryIndex = Object.values(this.countries).findIndex((country: any) => {
+        const isoUpper = this.initialIsoCode.toUpperCase();
+        // Check for exact match first, then partial match
+        return country.isoCode === isoUpper || 
+               country.isoCode.startsWith(isoUpper + ' ') || 
+               country.isoCode.endsWith(' ' + isoUpper) ||
+               country.isoCode === `${isoUpper} / ${isoUpper}` ||
+               country.isoCode.includes(`${isoUpper} /`);
+      });
       if (countryIndex !== -1) {
         this.selectedCountry = flagsNames[countryIndex];
         this.value = this.countries[flagsNames[countryIndex]].code;
@@ -242,7 +247,7 @@ export class InputPhoneNumber {
     }
   }
 
-  componentWillRender() {
+  componentWillLoad() {
     this.updateCountries();
   }
 
@@ -306,7 +311,7 @@ export class InputPhoneNumber {
       if (this.isOpen) {
         // Reset search when opening
         this.searchTerm = '';
-        this.updateCountryList();
+        this.resetFilterCountries();
       }
     }
   };
@@ -353,52 +358,59 @@ export class InputPhoneNumber {
     }
   };
 
-  private updateCountryList(): void {
-    const list = Object.keys(this.countries).map(flag => ({
-      flag,
-      country: this.countries[flag]
-    }));
-    // Force new array reference to trigger re-render
-    this.countryList = [...list];
+  private checkValidity() {
+    if (this.nativeInput.validity.valid) {
+      this.validationDanger = false;
+    }
   }
 
-  private filterCountries = (term: string): void => {
+  @Method()
+  async getSelectedCountry(): Promise<string> {
+    return this.selectedCountry;
+  }
+
+  @Method()
+  async getIsoCode(): Promise<string> {
+    return this.isoCode;
+  }
+
+  @Method()
+  async filterCountries(term: string): Promise<void> {
     if (!term || term.trim() === '') {
-      this.updateCountryList();
-      forceUpdate(this.el);
+      this.resetFilterCountries();
       return;
     }
 
     const termLower = term.toLowerCase().trim();
-    const filtered = Object.keys(this.countries)
-      .filter(flagKey => {
-        const country = this.countries[flagKey];
-        const matchesName = country.name.toLowerCase().includes(termLower);
-        const matchesCode = country.code.toLowerCase().includes(termLower);
-        const matchesIsoCode = country.isoCode.toLowerCase().includes(termLower);
-        return matchesName || matchesCode || matchesIsoCode;
-      })
-      .map(flag => ({
-        flag,
-        country: this.countries[flag]
-      }));
+    const newFilteredCountries = {};
+
+    Object.keys(this.countries).forEach(flagKey => {
+      const country = this.countries[flagKey];
+      const matchesName = country.name.toLowerCase().includes(termLower);
+      const matchesCode = country.code.toLowerCase().includes(termLower);
+      const matchesIsoCode = country.isoCode.toLowerCase().includes(termLower);
+
+      if (matchesName || matchesCode || matchesIsoCode) {
+        newFilteredCountries[flagKey] = country;
+      }
+    });
     
-    // Force new array reference to trigger re-render
-    this.countryList = [...filtered];
-    forceUpdate(this.el);
+    // Set to new object to trigger reactivity
+    this.filteredCountries = newFilteredCountries;
+  }
+
+  private internalFilterCountries = (term: string): void => {
+    this.filterCountries(term);
   };
 
   private resetFilterCountries = (): void => {
-    this.updateCountryList();
+    this.filteredCountries = { ...this.countries };
   };
 
-  private onSearchInput = (event: CustomEvent): void => {
-    // For bds-input, the value should be available in the component's value property
-    const bdsInput = event.target as any;
-    const value = bdsInput.value || '';
-    
-    this.searchTerm = value;
-    this.filterCountries(this.searchTerm);
+  private onSearchInput = (event: Event): void => {
+    const input = event.target as HTMLInputElement;
+    this.searchTerm = input.value || '';
+    this.internalFilterCountries(this.searchTerm);
   };
 
   private onSearchKeyDown = (event: KeyboardEvent): void => {
@@ -406,10 +418,27 @@ export class InputPhoneNumber {
     event.stopPropagation();
   };
 
-  private checkValidity() {
-    if (this.nativeInput.validity.valid) {
-      this.validationDanger = false;
-    }
+  private renderSearchInput(): HTMLElement {
+    return (
+      this.enableSearch && (
+        <div class="select-phone-number__search">
+          <input
+            type="text"
+            placeholder={this.searchPlaceholder}
+            value={this.searchTerm}
+            onInput={this.onSearchInput}
+            onKeyDown={this.onSearchKeyDown}
+            style={{
+              width: '100%',
+              padding: '8px 12px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+      )
+    );
   }
 
   private renderIcon(): HTMLElement {
@@ -469,25 +498,10 @@ export class InputPhoneNumber {
     ) : null;
   }
 
-  private renderSearchInput(): HTMLElement {
-    return (
-      this.enableSearch && (
-        <div class="select-phone-number__search">
-          <bds-input
-            icon="search"
-            placeholder={this.searchPlaceholder}
-            value={this.searchTerm}
-            onBdsInput={this.onSearchInput}
-            onKeyDown={this.onSearchKeyDown}
-          ></bds-input>
-        </div>
-      )
-    );
-  }
-
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
+    const filteredFlagsNames = Object.keys(this.filteredCountries);
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
@@ -554,15 +568,15 @@ export class InputPhoneNumber {
         >
           {this.isOpen && [
             this.renderSearchInput(),
-            this.countryList.map(({ flag, country }) => (
+            filteredFlagsNames.map((flag) => (
               <bds-select-option
                 key={flag}
                 onOptionSelected={this.handler}
                 selected={flag === this.selectedCountry}
-                value={{ code: country.code, isoCode: country.isoCode, flag }}
-                status={country.isoCode}
+                value={{ code: this.filteredCountries[flag].code, isoCode: this.filteredCountries[flag].isoCode, flag }}
+                status={this.filteredCountries[flag].isoCode}
               >
-                {country.name} {country.code}
+                {this.filteredCountries[flag].name} {this.filteredCountries[flag].code}
               </bds-select-option>
             ))
           ]}
