@@ -12,7 +12,7 @@ export default {
 };
 
 export const Properties = (args) => (
-  <bds-chip-tag color={args.color} icon={args.icon}>
+  <bds-chip-tag color={args.color} icon={args.icon} data-test={args.dataTest}>
     Chip-tag Default
   </bds-chip-tag>
 );
@@ -22,6 +22,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'default' },
     },
+    description: 'Define a cor do chip.',
     options: ['default', 'danger', 'info', 'outline', 'success', 'warning', 'disabled'],
     control: 'select',
   },
@@ -29,6 +30,14 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'vazio' },
     },
+    description: 'Define o ícone do chip.',
+    control: 'text',
+  },
+  dataTest: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    description: 'Define o id para testes externos. (Sem alteração visual).',
     control: 'text',
   },
 };
@@ -36,10 +45,11 @@ Properties.argTypes = {
 Properties.args = {
   color: 'default',
   icon: '',
+  dataTest: '',
 };
 
 export const FrameworkReact = () => (
-  <BdsChipTag color="default" icon="">
+  <BdsChipTag color="default" icon="" dataTest="">
     Chip-tag Default
   </BdsChipTag>
 );

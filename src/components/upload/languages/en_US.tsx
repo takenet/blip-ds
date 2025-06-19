@@ -1,8 +1,9 @@
 export const enTerms = [
   {
     uploaded: 'Files uploaded',
-    dropHere: 'Drop here to attach file',
-    dropOrClick: 'Drag and drop your files here or click to upload file',
+    dropHere: 'Drop here to attach the file',
+    dropOrClick: 'or drop the files here',
     formatError: 'There was an error attaching the file, please try again or select another file',
+    chooseFiles: 'Choose files',
   },
 ];

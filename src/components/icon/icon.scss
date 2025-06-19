@@ -1,3 +1,4 @@
+@import '../../globals/text-colors.scss';
 @mixin size($size) {
   width: $size;
   min-width: $size;

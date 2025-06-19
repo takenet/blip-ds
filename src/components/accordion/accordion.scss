@@ -13,6 +13,18 @@
   color: $color-content-default;
   cursor: pointer;
 
+  &-size {
+    &--small {
+      padding: 8px;
+    }
+    &--medium {
+      padding: 16px;
+    }
+    &--large {
+      padding: 24px;
+    }
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -39,8 +51,6 @@
   }
 
   & .accButton {
-    position: absolute;
-    right: 24px;
     top: calc(50% - 16px);
     border-radius: 8px;
     contain: inherit;
