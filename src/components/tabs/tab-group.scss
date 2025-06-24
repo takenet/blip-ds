@@ -3,6 +3,19 @@
 :host {
   display: block;
   width: 100%;
+  
+  // CSS Custom Properties for independent styling
+  --tab-navigation-background: transparent;
+  --tab-navigation-border: none;
+  --tab-navigation-padding: 4px 16px;
+  --tab-navigation-margin: 0;
+  --tab-navigation-border-radius: 0;
+  
+  --tab-body-background: transparent;
+  --tab-body-border: none;
+  --tab-body-padding: 0;
+  --tab-body-margin: 0;
+  --tab-body-border-radius: 0;
 }
 
 .tab_group {
@@ -12,8 +25,27 @@
   flex-direction: column;
   position: relative;
 
+  // Additional classes for independent styling
+  &--navigation-styled {
+    .tab_group__header {
+      box-shadow: var(--tab-navigation-shadow, none);
+      transition: var(--tab-navigation-transition, none);
+    }
+  }
+
+  &--body-styled {
+    .tab_group__content {
+      box-shadow: var(--tab-body-shadow, none);
+      transition: var(--tab-body-transition, none);
+    }
+  }
+
   &__header {
-    padding: 4px 16px;
+    padding: var(--tab-navigation-padding, 4px 16px);
+    background: var(--tab-navigation-background, transparent);
+    border: var(--tab-navigation-border, none);
+    margin: var(--tab-navigation-margin, 0);
+    border-radius: var(--tab-navigation-border-radius, 0);
     overflow: hidden;
 
     &__itens {
@@ -120,6 +152,11 @@
   }
   &__content {
     height: 100%;
+    background: var(--tab-body-background, transparent);
+    border: var(--tab-body-border, none);
+    padding: var(--tab-body-padding, 0);
+    margin: var(--tab-body-margin, 0);
+    border-radius: var(--tab-body-border-radius, 0);
   }
 
   &__scrolled {

@@ -2580,6 +2580,10 @@ export namespace Components {
     }
     interface BdsTabGroup {
         "align": 'left' | 'center' | 'right';
+        /**
+          * Enable independent styling for body area
+         */
+        "bodyStyled"?: boolean;
         "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
@@ -2589,6 +2593,10 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
          */
         "dtButtonPrev"?: string;
+        /**
+          * Enable independent styling for navigation area
+         */
+        "navigationStyled"?: boolean;
     }
     interface BdsTabItem {
         /**
@@ -6577,6 +6585,10 @@ declare namespace LocalJSX {
     }
     interface BdsTabGroup {
         "align"?: 'left' | 'center' | 'right';
+        /**
+          * Enable independent styling for body area
+         */
+        "bodyStyled"?: boolean;
         "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
@@ -6586,6 +6598,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
          */
         "dtButtonPrev"?: string;
+        /**
+          * Enable independent styling for navigation area
+         */
+        "navigationStyled"?: boolean;
         /**
           * bdsTabChange. Event to return value when Tabs is change.
          */
