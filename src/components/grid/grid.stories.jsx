@@ -322,6 +322,73 @@ export const gapGrid = () => (
   </bds-grid>
 );
 
+export const gapGridFixed = () => (
+  <div>
+    <h3 style={{color: '#333', marginBottom: '10px'}}>Grid with gap="1" - Fixed alignment</h3>
+    <bds-grid direction="row" gap="1" style={{border: '2px solid #e0e0e0', padding: '10px'}}>
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 1</bds-typo>
+        </bds-paper>
+      </bds-grid>
+
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 2</bds-typo>
+        </bds-paper>
+      </bds-grid>
+
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 3</bds-typo>
+        </bds-paper>
+      </bds-grid>
+    </bds-grid>
+
+    <h3 style={{color: '#333', margin: '30px 0 10px 0'}}>Grid without gap - Reference</h3>
+    <bds-grid direction="row" style={{border: '2px solid #e0e0e0', padding: '10px'}}>
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 1</bds-typo>
+        </bds-paper>
+      </bds-grid>
+
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 2</bds-typo>
+        </bds-paper>
+      </bds-grid>
+
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 3</bds-typo>
+        </bds-paper>
+      </bds-grid>
+    </bds-grid>
+
+    <h3 style={{color: '#333', margin: '30px 0 10px 0'}}>Grid with gap="2" - Also fixed</h3>
+    <bds-grid direction="row" gap="2" style={{border: '2px solid #e0e0e0', padding: '10px'}}>
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 1</bds-typo>
+        </bds-paper>
+      </bds-grid>
+
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 2</bds-typo>
+        </bds-paper>
+      </bds-grid>
+
+      <bds-grid md="4" sm="4">
+        <bds-paper style={paperHeight}>
+          <bds-typo>Card 3</bds-typo>
+        </bds-paper>
+      </bds-grid>
+    </bds-grid>
+  </div>
+);
+
 const miniCards = {
   width: '50px',
   padding: '24px',

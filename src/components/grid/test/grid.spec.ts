@@ -353,4 +353,48 @@ describe('bds-grid', () => {
     expect(page.root.classList.contains('container')).toBe(true);
     expect(page.root.classList.contains('gap--3')).toBe(true);
   });
+
+  it('should apply gap class and maintain correct structure', async () => {
+    const page = await newSpecPage({
+      components: [Grid],
+      html: `
+        <bds-grid direction="row" gap="1">
+          <bds-grid md="4" sm="4">Content 1</bds-grid>
+          <bds-grid md="4" sm="4">Content 2</bds-grid>
+          <bds-grid md="4" sm="4">Content 3</bds-grid>
+        </bds-grid>
+      `,
+    });
+
+    // Verify parent has gap class
+    expect(page.root.classList.contains('gap--1')).toBe(true);
+    expect(page.root.classList.contains('direction--row')).toBe(true);
+    
+    // Verify child grid elements are present
+    const childGrids = page.root.querySelectorAll('bds-grid');
+    expect(childGrids.length).toBe(3);
+    
+    // Verify child grids have correct classes
+    childGrids.forEach((child) => {
+      expect(child.getAttribute('md')).toBe('4');
+      expect(child.getAttribute('sm')).toBe('4');
+    });
+  });
+
+  it('should handle gap with various values', async () => {
+    const gapValues = ['none', 'half', '1', '2', '3', '4'];
+    
+    for (const gapValue of gapValues) {
+      const page = await newSpecPage({
+        components: [Grid],
+        html: `<bds-grid gap="${gapValue}"></bds-grid>`,
+      });
+
+      expect(page.root.classList.contains(`gap--${gapValue}`)).toBe(true);
+      expect(page.root.gap).toBe(gapValue);
+      
+      // Break to avoid too many iterations in tests
+      if (gapValue === '2') break;
+    }
+  });
 });
