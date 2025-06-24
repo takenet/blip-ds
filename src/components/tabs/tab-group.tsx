@@ -30,6 +30,16 @@ export class BdsTabGroup {
   @Prop() align: 'left' | 'center' | 'right' = 'center';
 
   /**
+   * Enable independent styling for navigation area
+   */
+  @Prop() navigationStyled?: boolean = false;
+
+  /**
+   * Enable independent styling for body area
+   */
+  @Prop() bodyStyled?: boolean = false;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    * dtButtonPrev is the data-test to button prev.
    */
@@ -219,7 +229,11 @@ export class BdsTabGroup {
     const slidePosition = { left: `${this.positionLeft}px` };
     return (
       <Host>
-        <div class={{ tab_group: true }}>
+        <div class={{ 
+          tab_group: true,
+          'tab_group--navigation-styled': this.navigationStyled,
+          'tab_group--body-styled': this.bodyStyled
+        }}>
           {this.isSlideTabs && this.alignTab != 'left' && (
             <bds-button-icon
               class="tab_group__slide-button"

@@ -10,9 +10,11 @@
 | Property            | Attribute            | Description                                                                                                           | Type                            | Default    |
 | ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------- |
 | `align`             | `align`              |                                                                                                                       | `"center" \| "left" \| "right"` | `'center'` |
+| `bodyStyled`        | `body-styled`        | Enable independent styling for body area                                                                              | `boolean`                       | `false`    |
 | `contentScrollable` | `content-scrollable` |                                                                                                                       | `boolean`                       | `true`     |
 | `dtButtonNext`      | `dt-button-next`     | Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next. | `string`                        | `null`     |
 | `dtButtonPrev`      | `dt-button-prev`     | Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev. | `string`                        | `null`     |
+| `navigationStyled`  | `navigation-styled`  | Enable independent styling for navigation area                                                                        | `boolean`                       | `false`    |
 
 
 ## Events
