@@ -43,6 +43,13 @@
   background-color: $color-surface-4;
 }
 
+// Fix for grid gap alignment issue
+// When a bds-grid has gap attribute, remove horizontal padding from child bds-grid elements
+bds-grid[gap] bds-grid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 
 
 
