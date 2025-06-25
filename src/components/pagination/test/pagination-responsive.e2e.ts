@@ -22,10 +22,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 500, height: 800 });
       await page.waitForChanges();
 
-      const itemsPerPageElement = await page.find('bds-pagination >>> .items_per_page');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, itemsPerPageElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.items_per_page');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).toBe('none');
     });
@@ -34,10 +34,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 750, height: 800 });
       await page.waitForChanges();
 
-      const itemsPerPageElement = await page.find('bds-pagination >>> .items_per_page');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, itemsPerPageElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.items_per_page');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).toBe('none');
     });
@@ -46,10 +46,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 1200, height: 800 });
       await page.waitForChanges();
 
-      const itemsPerPageElement = await page.find('bds-pagination >>> .items_per_page');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, itemsPerPageElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.items_per_page');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).not.toBe('none');
     });
@@ -58,10 +58,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 500, height: 800 });
       await page.waitForChanges();
 
-      const actionsTextElement = await page.find('bds-pagination >>> .actions--text');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, actionsTextElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.actions--text');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).toBe('none');
     });
@@ -70,10 +70,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 750, height: 800 });
       await page.waitForChanges();
 
-      const actionsTextElement = await page.find('bds-pagination >>> .actions--text');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, actionsTextElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.actions--text');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).not.toBe('none');
     });
@@ -82,10 +82,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 1200, height: 800 });
       await page.waitForChanges();
 
-      const actionsTextElement = await page.find('bds-pagination >>> .actions--text');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, actionsTextElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.actions--text');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).not.toBe('none');
     });
@@ -112,10 +112,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 905, height: 800 });
       await page.waitForChanges();
 
-      const itemsPerPageElement = await page.find('bds-pagination >>> .items_per_page');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, itemsPerPageElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.items_per_page');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).toBe('none');
     });
@@ -124,10 +124,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 906, height: 800 });
       await page.waitForChanges();
 
-      const itemsPerPageElement = await page.find('bds-pagination >>> .items_per_page');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, itemsPerPageElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.items_per_page');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).not.toBe('none');
     });
@@ -136,10 +136,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 600, height: 800 });
       await page.waitForChanges();
 
-      const actionsTextElement = await page.find('bds-pagination >>> .actions--text');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, actionsTextElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.actions--text');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).toBe('none');
     });
@@ -148,10 +148,10 @@ describe('bds-pagination responsive behavior', () => {
       await page.setViewport({ width: 601, height: 800 });
       await page.waitForChanges();
 
-      const actionsTextElement = await page.find('bds-pagination >>> .actions--text');
-      const computedStyle = await page.evaluate((element) => {
-        return window.getComputedStyle(element).display;
-      }, actionsTextElement);
+      const computedStyle = await page.evaluate(() => {
+        const element = document.querySelector('bds-pagination').shadowRoot.querySelector('.actions--text');
+        return element ? window.getComputedStyle(element).display : null;
+      });
 
       expect(computedStyle).not.toBe('none');
     });
