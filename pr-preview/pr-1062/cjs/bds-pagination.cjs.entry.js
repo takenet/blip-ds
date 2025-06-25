@@ -92,7 +92,8 @@ const Pagination = class {
     this.countPage();
     this.intoView = positionElement.getScrollParent(this.el);
     this.processItemsPage();
-    if (this.pageCounter) {
+    // Initialize itemValue if items per page section will be rendered
+    if (this.itemsPage && this.numberItems && this.itemsPage.length > 0) {
       this.itemValue = this.itemsPage[0];
     }
     this.itemSelected(this.itemValue);
