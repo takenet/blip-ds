@@ -248,7 +248,7 @@ export class Pagination {
     return (
       <Host class={{ full_width: this.pageCounter }}>
         <bds-grid justify-content="space-between">
-          {this.itemsPerPage && this.itemsPage && (
+          {this.itemsPage && this.numberItems && (
             <bds-grid gap="1" align-items="center" class="items_per_page">
               <bds-typo variant="fs-14">{currentLanguage.itemsPerPage}:</bds-typo>
               <bds-select class="actions_select" value={this.itemValue} options-position={this.optionsPosition}>
