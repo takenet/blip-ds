@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
 import { g as getScrollParent } from './p-DJObw-Em.js';
-import { d as defineCustomElement$8 } from './p-f1kf6rmf.js';
+import { d as defineCustomElement$8 } from './p-uLhI4ppg.js';
 import { d as defineCustomElement$7 } from './p-DrQwSKy2.js';
 import { d as defineCustomElement$6 } from './p-CGgHblXS.js';
 import { d as defineCustomElement$5 } from './p-3JBO9P5_.js';

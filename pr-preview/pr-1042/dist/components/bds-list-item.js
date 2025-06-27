@@ -1,4 +1,4 @@
-import { L as ListItem, d as defineCustomElement$1 } from './p-wMw2R5Tq.js';
+import { L as ListItem, d as defineCustomElement$1 } from './p-Ch3l1Ibj.js';
 
 const BdsListItem = ListItem;
 const defineCustomElement = defineCustomElement$1;

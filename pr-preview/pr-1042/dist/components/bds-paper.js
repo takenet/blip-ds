@@ -1,4 +1,4 @@
-import { P as Paper, d as defineCustomElement$1 } from './p-ChMk0f2U.js';
+import { P as Paper, d as defineCustomElement$1 } from './p-CzMNFclR.js';
 
 const BdsPaper = Paper;
 const defineCustomElement = defineCustomElement$1;

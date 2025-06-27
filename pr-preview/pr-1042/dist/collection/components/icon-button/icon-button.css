@@ -4,11 +4,9 @@
 /*
   Font sizes have been converted to rem considering a base size of 16px.
 */
-/** Customs */
-/** Animations */
-/** Aligns */
-/** Scoll Bar */
-/** Hover & Pressed */
+/**
+* Define media query values
+*/
 /*
 *  Z-Index
 *  
@@ -17,9 +15,6 @@
 *  
 *  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
 *  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
-*/
-/**
-* Define media query values
 */
 .icon__button {
   border: none;
@@ -165,15 +160,15 @@
 }
 .icon__button--secondary-white {
   background: transparent;
-  color: #f6f6f6;
+  color: #ffffff;
 }
 .icon__button--secondary-white:hover, .icon__button--secondary-white:focus {
-  background: rgba(246, 246, 246, 0.3);
-  color: #f6f6f6;
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
 }
 .icon__button--secondary-white:active {
-  background: rgba(246, 246, 246, 0.4);
-  color: #f6f6f6;
+  background: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 .icon__button--secondary-white--disabled {
   cursor: not-allowed;
