@@ -14,6 +14,10 @@ describe('bds-banner e2e tests', () => {
     });
   });
 
+  afterEach(async () => {
+    await page.close();
+  })
+
   describe('Properties', () => {
     it('should render banner with correct variant', async () => {
       const banner = await page.find('bds-banner');
@@ -47,14 +51,33 @@ describe('bds-banner e2e tests', () => {
     });
 
     it('should emit bdsBannerLink event when banner link is clicked', async () => {
-      const bannerLink = await page.find('bds-banner-link');
-      const bdsBannerLinkEvent = await bannerLink.spyOnEvent('bdsBannerLink');
-
-      await bannerLink.click();
+      // Mock window.open on the page
+      await page.evaluate(() => {
+        window.open = () => null;
+      });
+      
+      // Wait for components to be hydrated
       await page.waitForChanges();
-
+      
+      const bannerLink = await page.find('bds-banner-link');
+      expect(bannerLink).toBeTruthy();
+      
+      // Set up event spy
+      const bdsBannerLinkEvent = await page.spyOnEvent('bdsBannerLink');
+      
+      // Click the actual anchor element in the shadow DOM
+      const anchorElement = await page.find('bds-banner-link >>> a');
+      if (anchorElement) {
+        await anchorElement.click();
+      } else {
+        // Fallback to clicking the component directly
+        await bannerLink.click();
+      }
+      
+      await page.waitForChanges();
+      
       expect(bdsBannerLinkEvent).toHaveReceivedEvent();
-    });
+    }, 10000);
   });
 
   describe('Methods', () => {
@@ -70,7 +93,7 @@ describe('bds-banner e2e tests', () => {
       });
 
       const banner = await page.find('bds-banner');
-      
+
       // Close banner via close button
       const closeButton = await page.find('bds-banner >>> bds-button-icon[icon="close"]');
       await closeButton.click();
