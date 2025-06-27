@@ -38,7 +38,7 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@stencil/core": "^4.35.0",
-    "@stencil/react-output-target": "^1.0.4",
+    "@stencil/react-output-target": "^1.1.0",
     "@stencil/sass": "^3.2.1",
     "@storybook/addon-links": "^9.0.9",
     "@storybook/react-webpack5": "^9.0.9",
