@@ -32,7 +32,7 @@ export const config: Config = {
     },
     reactOutputTarget({
       outDir: 'blip-ds-react/dist',
-      stencilPackageName: 'blip-ds'
+      stencilPackageName: 'blip-ds',
     }),
   ],
   buildEs5: 'prod',

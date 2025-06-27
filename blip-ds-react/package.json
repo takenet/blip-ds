@@ -6,7 +6,7 @@
   "description": "React specific wrapper for blip-ds",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/ionic.git"
+    "url": "https://github.com/takenet/blip-ds.git"
   },
   "scripts": {
     "build": "npm run tsc",
@@ -24,11 +24,9 @@
     "blip-ds": "*"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "blip-ds": "file:../",
-    "jest": "^29.7.0",
     "np": "^10.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -40,13 +38,5 @@
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
-    "testPathIgnorePatterns": [
-      "node_modules",
-      "dist"
-    ]
   }
 }
