@@ -8,8 +8,6 @@
   border-radius: 11px;
   padding: 0 8px;
 
-  @include no-select();
-
   &--active {
     background: $color-system;
     color: $color-content-din;
@@ -24,4 +22,6 @@
     background: $color-delete;
     color: $color-content-bright;
   }
+
+   @include no-select;
 }

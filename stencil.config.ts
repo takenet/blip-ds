@@ -7,7 +7,7 @@ export const config: Config = {
   plugins: [
     sass({
       includePaths: ['src/globals'],
-      injectGlobalPaths: ['src/globals/app.scss', 'node_modules/blip-tokens/build/scss/variables.scss'],
+      injectGlobalPaths: ['src/globals/_helper.scss'],
     }),
   ],
   outputTargets: [
