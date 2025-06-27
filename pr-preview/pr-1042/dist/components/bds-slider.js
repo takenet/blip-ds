@@ -10,7 +10,8 @@ const Slider = /*@__PURE__*/ proxyCustomElement(class Slider extends H {
         this.__registerHost();
         this.__attachShadow();
         this.bdsChange = createEvent(this, "bdsChange");
-        this.inputValue = this.value?.toString() ?? (this.min ? this.min.toString() : '0');
+        var _a, _b;
+        this.inputValue = (_b = (_a = this.value) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : (this.min ? this.min.toString() : '0');
         /**
          * Value, prop to define value of input.
          */

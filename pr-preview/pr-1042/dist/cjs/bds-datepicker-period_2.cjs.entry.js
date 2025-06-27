@@ -563,6 +563,7 @@ const BdsdatepickerSingle = class {
             return false;
     }
     renderSelectData(data, selected, ref) {
+        var _a;
         const openSelect = ref == 'months' ? this.openSelectMonth : this.openSelectYear;
         const labelSelect = data.filter((obj) => obj.value === selected);
         const iconArrow = openSelect ? 'arrow-up' : 'arrow-down';
@@ -573,7 +574,7 @@ const BdsdatepickerSingle = class {
                 datepicker__calendar__selectDate__select__input: true,
                 datepicker__calendar__selectDate__select__input__disable: data.length <= 1,
                 [`input--pressed`]: openSelect,
-            }, "data-test": ref == 'months' ? this.dtSelectMonth : this.dtSelectYear }, index.h("bds-typo", { variant: "fs-14" }, labelSelect[0]?.label), index.h("div", { class: "icon-arrow" }, index.h("bds-icon", { size: "small", name: iconArrow, color: "inherit" }))), index.h("div", { class: {
+            }, "data-test": ref == 'months' ? this.dtSelectMonth : this.dtSelectYear }, index.h("bds-typo", { variant: "fs-14" }, (_a = labelSelect[0]) === null || _a === void 0 ? void 0 : _a.label), index.h("div", { class: "icon-arrow" }, index.h("bds-icon", { size: "small", name: iconArrow, color: "inherit" }))), index.h("div", { class: {
                 datepicker__calendar__selectDate__select__options: true,
                 'datepicker__calendar__selectDate__select__options--open': openSelect,
             } }, data.map((option) => (index.h("bds-select-option", { value: option.value, key: option.value, onOptionSelected: (event) => this.handler(event, ref), selected: option.value == selected, onClick: () => this.openDateSelect(false, ref) }, option.label))))));

@@ -20,13 +20,14 @@ export class Tabs {
         };
     }
     onScrollButtonClick(event) {
+        var _a;
         event.preventDefault();
         const options = {
             behavior: this.SCROLL_BEHAVIOR,
             top: 0,
             left: event.detail.distance,
         };
-        options.left ?? (options.left = this.getDistance(options, event));
+        (_a = options.left) !== null && _a !== void 0 ? _a : (options.left = this.getDistance(options, event));
         this.tabsHeaderChildElement.scrollTo(options);
     }
     onSelectedTab(event) {

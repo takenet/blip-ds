@@ -76,7 +76,7 @@ export class BdsUpload {
                 try {
                     this.internalAccepts = JSON.parse(this.dataAccept);
                 }
-                catch {
+                catch (_a) {
                     this.internalAccepts = [];
                 }
             }

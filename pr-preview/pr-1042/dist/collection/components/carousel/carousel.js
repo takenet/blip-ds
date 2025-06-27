@@ -247,11 +247,12 @@ export class BdsCarousel {
         }
     }
     isWholeChanged() {
+        var _a, _b;
         if (this.internalItens != undefined) {
             if (this.isWhole > 0) {
                 const newItem = {
-                    id: this.internalItens?.length + 1,
-                    label: `Frame - ${this.internalItens?.length + 1}`,
+                    id: ((_a = this.internalItens) === null || _a === void 0 ? void 0 : _a.length) + 1,
+                    label: `Frame - ${((_b = this.internalItens) === null || _b === void 0 ? void 0 : _b.length) + 1}`,
                     isWhole: true,
                 };
                 this.internalItens = [...this.internalItens, newItem];

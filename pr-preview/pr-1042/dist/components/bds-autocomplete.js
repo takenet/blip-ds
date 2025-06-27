@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { g as getScrollParent, p as positionAbsoluteElement } from './p-DJObw-Em.js';
+import { g as getScrollParent, p as positionAbsoluteElement } from './p-BNEKIkjk.js';
 import { d as defineCustomElement$6 } from './p-DrQwSKy2.js';
 import { d as defineCustomElement$5 } from './p-3JBO9P5_.js';
 import { d as defineCustomElement$4 } from './p-DOQirQsC.js';
@@ -126,6 +126,7 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
             }
         };
         this.onBlur = () => {
+            var _a;
             this.bdsBlur.emit();
             this.isPressed = false;
             if (!this.isOpen) {
@@ -134,7 +135,7 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
                 if (this.selectionType == 'multiple')
                     this.cleanInputSelection();
             }
-            if (this.selectionType == 'multiple' && this.checkedOptions?.length > 0)
+            if (this.selectionType == 'multiple' && ((_a = this.checkedOptions) === null || _a === void 0 ? void 0 : _a.length) > 0)
                 this.getTextMultiselect(this.checkedOptions);
         };
         this.onClickWrapper = () => {
@@ -150,20 +151,21 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
             }
         };
         this.getTextFromOption = (opt) => {
+            var _a;
             if (this.internalOptions) {
-                const internalOption = this.internalOptions.find((option) => option.value == opt?.value);
+                const internalOption = this.internalOptions.find((option) => option.value == (opt === null || opt === void 0 ? void 0 : opt.value));
                 if (internalOption) {
                     return internalOption.label;
                 }
             }
-            return opt?.titleText ? opt.titleText : (opt?.innerText ?? '');
+            return (opt === null || opt === void 0 ? void 0 : opt.titleText) ? opt.titleText : ((_a = opt === null || opt === void 0 ? void 0 : opt.innerText) !== null && _a !== void 0 ? _a : '');
         };
         this.getText = () => {
             const opt = this.childOptions.find((option) => option.value == this.value);
             return this.getTextFromOption(opt);
         };
         this.getTextMultiselect = (data) => {
-            const valueInput = data?.length > 0 && `${data?.length} selecionados`;
+            const valueInput = (data === null || data === void 0 ? void 0 : data.length) > 0 && `${data === null || data === void 0 ? void 0 : data.length} selecionados`;
             this.textMultiselect = valueInput;
         };
         this.handlerMultiselect = () => {
@@ -273,9 +275,10 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
         }
     }
     changeCheckedOptions() {
+        var _a;
         this.placeholderState =
             this.selectionType === 'multiple'
-                ? this.checkedOptions?.length === 0 || this.checkedOptions === null
+                ? ((_a = this.checkedOptions) === null || _a === void 0 ? void 0 : _a.length) === 0 || this.checkedOptions === null
                     ? this.placeholder
                     : ''
                 : this.placeholder;
@@ -371,6 +374,7 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
             : Array.from(this.el.querySelectorAll('bds-select-option')).find((option) => option.selected);
     }
     keyPressWrapper(event) {
+        var _a, _b, _c, _d;
         switch (event.key) {
             case 'Enter':
                 this.toggle();
@@ -380,22 +384,23 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
                     this.isOpen = true;
                 }
                 if (this.childOptionSelected) {
-                    this.value = this.childOptionSelected.nextSibling?.value;
+                    this.value = (_a = this.childOptionSelected.nextSibling) === null || _a === void 0 ? void 0 : _a.value;
                     return;
                 }
-                this.value = this.el.firstElementChild?.value;
+                this.value = (_b = this.el.firstElementChild) === null || _b === void 0 ? void 0 : _b.value;
                 break;
             case 'ArrowUp':
                 if (this.childOptionSelected) {
-                    this.value = this.childOptionSelected.previousSibling?.value;
+                    this.value = (_c = this.childOptionSelected.previousSibling) === null || _c === void 0 ? void 0 : _c.value;
                     return;
                 }
-                this.value = this.el.lastElementChild?.value;
+                this.value = (_d = this.el.lastElementChild) === null || _d === void 0 ? void 0 : _d.value;
                 break;
         }
     }
     async cleanMultipleSelection() {
-        if (this.selectionType === 'multiple' && this.checkedOptions?.length > 0) {
+        var _a;
+        if (this.selectionType === 'multiple' && ((_a = this.checkedOptions) === null || _a === void 0 ? void 0 : _a.length) > 0) {
             for (const option of this.childOptions) {
                 option.checked = false;
                 option.classList.remove('option-checked');
@@ -437,7 +442,8 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
         }
     }
     getSelectedValue() {
-        return this.childOptionSelected?.value;
+        var _a;
+        return (_a = this.childOptionSelected) === null || _a === void 0 ? void 0 : _a.value;
     }
     renderIcon() {
         return (this.icon && (h("div", { class: {
@@ -467,6 +473,7 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
         return undefined;
     }
     render() {
+        var _a, _b;
         return (h(Host, { key: '47da2306938ead7f3213d58f83e97de5151ca080', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '2f41a9eecd8d97614d55664ea7303a7e6b08df3c', class: {
                 input: true,
                 select: true,
@@ -476,7 +483,7 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': this.isPressed,
-            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: 'd4a2d0601d51d230890b4d174b7528a957f8b983', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: '143fc2050114825c17c17a4b8ccb5a7f61e27390', class: { input__container__wrapper: true } }, this.textMultiselect?.length > 0 && (h("bds-typo", { key: 'f5e0c78723a41d3062d0aaa499b2325ae11ab024', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '945e986b720854b838f86e4ea1ff55e1b4e729a0', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '312eaafa0abf780aba1bed1d168dd9cc34ad6d60', class: "select__icon" }, h("bds-icon", { key: 'ce8c766e9407b13c84270a20ee11017ea3cde6fc', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
+            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: 'd4a2d0601d51d230890b4d174b7528a957f8b983', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: '143fc2050114825c17c17a4b8ccb5a7f61e27390', class: { input__container__wrapper: true } }, ((_a = this.textMultiselect) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("bds-typo", { key: 'f5e0c78723a41d3062d0aaa499b2325ae11ab024', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '945e986b720854b838f86e4ea1ff55e1b4e729a0', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '312eaafa0abf780aba1bed1d168dd9cc34ad6d60', class: "select__icon" }, h("bds-icon", { key: 'ce8c766e9407b13c84270a20ee11017ea3cde6fc', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
                 'icon-hidden': (this.clearIconOnFocus && (!this.isFocused || !this.isOpen)) || !this.value,
             } }), h("bds-icon", { key: '7f9bb1b87a173c68fac35d444abeb6bf5efeca36', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" }))), this.renderMessage(), this.loading ? (h("div", { ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
@@ -484,7 +491,7 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
             } }, h("bds-loading-spinner", { class: "load-spinner", size: "small" }))) : (h("div", { ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
-            } }, this.selectionTitle && this.selectionType == 'multiple' && (h("bds-typo", { class: "selection-title", variant: "fs-10", bold: "bold" }, this.selectionTitle)), this.selectionType == 'multiple' && this.selectedAll && (h("bds-checkbox", { ref: this.refCheckAllInput, refer: `refer-multiselect`, label: `Selecionar Todos`, name: "chack-all", class: "select-all", onBdsChange: (ev) => this.handleCheckAll(ev) })), this.checkedOptions?.length > 0 && (h("span", { class: "content-divisor" }, h("span", { class: "divisor" }))), this.internalOptions ? (this.internalOptions.map((option, idx) => (h("bds-select-option", { onOptionSelected: this.handler, onOptionChecked: this.handlerMultiselect, selected: this.value === option.value, value: option.value, key: idx, bulkOption: option.bulkOption, status: option.status, "type-option": this.selectionType == 'multiple' ? 'checkbox' : 'default' }, option.label)))) : (h("slot", null))))));
+            } }, this.selectionTitle && this.selectionType == 'multiple' && (h("bds-typo", { class: "selection-title", variant: "fs-10", bold: "bold" }, this.selectionTitle)), this.selectionType == 'multiple' && this.selectedAll && (h("bds-checkbox", { ref: this.refCheckAllInput, refer: `refer-multiselect`, label: `Selecionar Todos`, name: "chack-all", class: "select-all", onBdsChange: (ev) => this.handleCheckAll(ev) })), ((_b = this.checkedOptions) === null || _b === void 0 ? void 0 : _b.length) > 0 && (h("span", { class: "content-divisor" }, h("span", { class: "divisor" }))), this.internalOptions ? (this.internalOptions.map((option, idx) => (h("bds-select-option", { onOptionSelected: this.handler, onOptionChecked: this.handlerMultiselect, selected: this.value === option.value, value: option.value, key: idx, bulkOption: option.bulkOption, status: option.status, "type-option": this.selectionType == 'multiple' ? 'checkbox' : 'default' }, option.label)))) : (h("slot", null))))));
     }
     get el() { return this; }
     static get watchers() { return {

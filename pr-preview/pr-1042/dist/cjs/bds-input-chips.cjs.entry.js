@@ -164,7 +164,7 @@ const InputChips = class {
                 try {
                     this.internalChips = JSON.parse(this.chips);
                 }
-                catch {
+                catch (_a) {
                     this.internalChips = [];
                 }
             }

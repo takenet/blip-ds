@@ -138,7 +138,8 @@ export class DatePicker {
                 this.valueEndDate = null;
                 this.bdsEndDate.emit({ value: null });
                 setTimeout(() => {
-                    this.inputSetDate?.setFocus();
+                    var _a;
+                    (_a = this.inputSetDate) === null || _a === void 0 ? void 0 : _a.setFocus();
                 }, 10);
             }
         };
@@ -324,9 +325,10 @@ export class DatePicker {
      * whenClickCalendar. Function to output selected date.
      */
     whenClickCalendar(event) {
+        var _a;
         const { detail: { value }, } = event;
         if (value == 'start') {
-            this.inputSetEndDate?.setFocus();
+            (_a = this.inputSetEndDate) === null || _a === void 0 ? void 0 : _a.setFocus();
         }
     }
     /**

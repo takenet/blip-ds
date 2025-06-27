@@ -127,7 +127,7 @@ const BdsUpload = class {
                 try {
                     this.internalAccepts = JSON.parse(this.dataAccept);
                 }
-                catch {
+                catch (_a) {
                     this.internalAccepts = [];
                 }
             }

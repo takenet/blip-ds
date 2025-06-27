@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
-import { a as getItems, b as getHighestItem, c as gapChanged } from './p-DJObw-Em.js';
+import { a as getItems, b as getHighestItem, c as gapChanged } from './p-BNEKIkjk.js';
 import { d as defineCustomElement$7 } from './p-CMIcF8U6.js';
 import { d as defineCustomElement$6 } from './p-CGgHblXS.js';
 import { d as defineCustomElement$5 } from './p-3JBO9P5_.js';
@@ -260,11 +260,12 @@ const BdsCarousel$1 = /*@__PURE__*/ proxyCustomElement(class BdsCarousel extends
         }
     }
     isWholeChanged() {
+        var _a, _b;
         if (this.internalItens != undefined) {
             if (this.isWhole > 0) {
                 const newItem = {
-                    id: this.internalItens?.length + 1,
-                    label: `Frame - ${this.internalItens?.length + 1}`,
+                    id: ((_a = this.internalItens) === null || _a === void 0 ? void 0 : _a.length) + 1,
+                    label: `Frame - ${((_b = this.internalItens) === null || _b === void 0 ? void 0 : _b.length) + 1}`,
                     isWhole: true,
                 };
                 this.internalItens = [...this.internalItens, newItem];

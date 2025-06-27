@@ -59,10 +59,11 @@ const NavTree = class {
         this.isOpen = false;
     }
     isOpenChanged(value) {
+        var _a;
         this.bdsToogleChange.emit({ value: value, element: this.element });
         if (value) {
             if (this.itemsGroup.collapse == 'single') {
-                this.itemsGroup?.closeAll(this.numberElement);
+                (_a = this.itemsGroup) === null || _a === void 0 ? void 0 : _a.closeAll(this.numberElement);
             }
         }
     }

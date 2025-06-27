@@ -2,7 +2,7 @@ export const getScrollParent = (node) => {
     if (node === null) {
         return null;
     }
-    if (node.classList.contains('element_scrolled') || node?.tagName === 'BODY') {
+    if (node.classList.contains('element_scrolled') || (node === null || node === void 0 ? void 0 : node.tagName) === 'BODY') {
         return node;
     }
     else {
@@ -25,14 +25,14 @@ export function positionElement({ actionElement, changedElement, intoView, }) {
         ? actionElement.offsetTop - body.scrollTop + parentElement.offsetTop
         : actionElement.offsetTop - window.scrollY;
     const positionLeft = contentScrolled ? actionElement.offsetLeft + parentElement.offsetLeft : actionElement.offsetLeft;
-    const changedpositionTop = changedElement?.offsetHeight > window.innerHeight - positionTop
-        ? positionTop - changedElement?.offsetHeight - 16
-        : positionTop + actionElement?.offsetHeight + 16;
-    const changedpositionLeft = changedElement?.offsetWidth > window.innerWidth - positionLeft
-        ? positionLeft + actionElement?.offsetWidth - changedElement?.offsetWidth
+    const changedpositionTop = (changedElement === null || changedElement === void 0 ? void 0 : changedElement.offsetHeight) > window.innerHeight - positionTop
+        ? positionTop - (changedElement === null || changedElement === void 0 ? void 0 : changedElement.offsetHeight) - 16
+        : positionTop + (actionElement === null || actionElement === void 0 ? void 0 : actionElement.offsetHeight) + 16;
+    const changedpositionLeft = (changedElement === null || changedElement === void 0 ? void 0 : changedElement.offsetWidth) > window.innerWidth - positionLeft
+        ? positionLeft + (actionElement === null || actionElement === void 0 ? void 0 : actionElement.offsetWidth) - (changedElement === null || changedElement === void 0 ? void 0 : changedElement.offsetWidth)
         : positionLeft;
-    const limitedHeightScreen = window.innerHeight - changedElement?.offsetHeight;
-    const limitedWidthScreen = window.innerWidth - changedElement?.offsetWidth;
+    const limitedHeightScreen = window.innerHeight - (changedElement === null || changedElement === void 0 ? void 0 : changedElement.offsetHeight);
+    const limitedWidthScreen = window.innerWidth - (changedElement === null || changedElement === void 0 ? void 0 : changedElement.offsetWidth);
     const result = {
         top: changedpositionTop < 8
             ? 8

@@ -92,14 +92,15 @@ export class Select {
             }
         };
         this.getText = (value) => {
+            var _a;
             const opt = this.childOptions.find((option) => option.value == value);
             if (this.internalOptions) {
-                const internalOption = this.internalOptions.find((option) => option.value == opt?.value);
+                const internalOption = this.internalOptions.find((option) => option.value == (opt === null || opt === void 0 ? void 0 : opt.value));
                 if (internalOption) {
                     return internalOption.titleText ? internalOption.titleText : internalOption.label;
                 }
             }
-            return opt?.titleText ? opt?.titleText : (opt?.innerText ?? '');
+            return (opt === null || opt === void 0 ? void 0 : opt.titleText) ? opt === null || opt === void 0 ? void 0 : opt.titleText : ((_a = opt === null || opt === void 0 ? void 0 : opt.innerText) !== null && _a !== void 0 ? _a : '');
         };
         this.handler = (event) => {
             const { detail: { value }, } = event;
@@ -209,6 +210,7 @@ export class Select {
             : Array.from(this.el.querySelectorAll('bds-select-option')).find((option) => option.selected);
     }
     keyPressWrapper(event) {
+        var _a, _b, _c, _d;
         switch (event.key) {
             case 'Enter':
                 this.toggle();
@@ -218,17 +220,17 @@ export class Select {
                     this.isOpen = true;
                 }
                 if (this.childOptionSelected) {
-                    this.value = this.childOptionSelected.nextSibling?.value;
+                    this.value = (_a = this.childOptionSelected.nextSibling) === null || _a === void 0 ? void 0 : _a.value;
                     return;
                 }
-                this.value = this.el.firstElementChild?.value;
+                this.value = (_b = this.el.firstElementChild) === null || _b === void 0 ? void 0 : _b.value;
                 break;
             case 'ArrowUp':
                 if (this.childOptionSelected) {
-                    this.value = this.childOptionSelected.previousSibling?.value;
+                    this.value = (_c = this.childOptionSelected.previousSibling) === null || _c === void 0 ? void 0 : _c.value;
                     return;
                 }
-                this.value = this.el.lastElementChild?.value;
+                this.value = (_d = this.el.lastElementChild) === null || _d === void 0 ? void 0 : _d.value;
                 break;
         }
     }

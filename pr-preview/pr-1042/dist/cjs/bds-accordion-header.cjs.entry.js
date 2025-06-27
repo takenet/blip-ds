@@ -32,11 +32,12 @@ const AccordionHeader = class {
          */
         this.dataTest = null;
         this.toggleHeader = () => {
+            var _a, _b;
             if (this.isOpen) {
-                this.accordionElement?.close();
+                (_a = this.accordionElement) === null || _a === void 0 ? void 0 : _a.close();
             }
             else {
-                this.accordionElement?.open();
+                (_b = this.accordionElement) === null || _b === void 0 ? void 0 : _b.open();
             }
         };
     }
@@ -53,12 +54,13 @@ const AccordionHeader = class {
         this.accordionElement = this.element.parentElement;
     }
     handleKeyDown(event) {
+        var _a, _b;
         if (event.key == 'Enter') {
             if (this.isOpen) {
-                this.accordionElement?.close();
+                (_a = this.accordionElement) === null || _a === void 0 ? void 0 : _a.close();
             }
             else {
-                this.accordionElement?.open();
+                (_b = this.accordionElement) === null || _b === void 0 ? void 0 : _b.open();
             }
         }
     }

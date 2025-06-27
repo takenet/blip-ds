@@ -138,13 +138,14 @@ export class SelectChips {
             return this.getTextFromOption(el);
         };
         this.getTextFromOption = (opt) => {
+            var _a, _b;
             if (this.internalOptions) {
-                const internalOption = this.internalOptions.find((option) => option.value == opt?.value);
+                const internalOption = this.internalOptions.find((option) => option.value == (opt === null || opt === void 0 ? void 0 : opt.value));
                 if (internalOption) {
                     return internalOption.label;
                 }
             }
-            return opt?.titleText ? opt.titleText : (opt?.textContent?.trim() ?? '');
+            return (opt === null || opt === void 0 ? void 0 : opt.titleText) ? opt.titleText : ((_b = (_a = opt === null || opt === void 0 ? void 0 : opt.textContent) === null || _a === void 0 ? void 0 : _a.trim()) !== null && _b !== void 0 ? _b : '');
         };
         this.setFocusWrapper = () => {
             if (this.nativeInput) {
@@ -260,7 +261,7 @@ export class SelectChips {
                 try {
                     this.internalChips = JSON.parse(this.chips);
                 }
-                catch {
+                catch (_a) {
                     this.internalChips = [];
                 }
             }
@@ -284,7 +285,7 @@ export class SelectChips {
         }
     }
     validValueChip(value, internalOptions) {
-        const selectOption = internalOptions?.find((option) => option.textContent == value);
+        const selectOption = internalOptions === null || internalOptions === void 0 ? void 0 : internalOptions.find((option) => option.textContent == value);
         return `${selectOption ? selectOption.value : value}`;
     }
     /**

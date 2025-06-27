@@ -24,8 +24,9 @@ const Image = class {
         this.loadError = false;
     }
     componentDidLoad() {
+        var _a;
         this.element.style.width = this.width ? this.width : 'auto';
-        this.element.style.height = this.height?.length > 0 ? this.height : 'auto';
+        this.element.style.height = ((_a = this.height) === null || _a === void 0 ? void 0 : _a.length) > 0 ? this.height : 'auto';
     }
     async loadImage() {
         if (this.src) {
@@ -43,7 +44,7 @@ const Image = class {
                     this.loadError = true;
                 }
             }
-            catch {
+            catch (_a) {
                 this.imageHasLoading = false;
                 this.loadError = true;
             }

@@ -133,7 +133,7 @@ const BdsUpload$1 = /*@__PURE__*/ proxyCustomElement(class BdsUpload extends H {
                 try {
                     this.internalAccepts = JSON.parse(this.dataAccept);
                 }
-                catch {
+                catch (_a) {
                     this.internalAccepts = [];
                 }
             }

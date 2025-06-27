@@ -15,13 +15,15 @@ export class Accordion {
         this.bdsToggle.emit({ value: this.isOpen });
     }
     async open() {
-        this.accheaders?.open();
-        this.accBodies?.open();
+        var _a, _b;
+        (_a = this.accheaders) === null || _a === void 0 ? void 0 : _a.open();
+        (_b = this.accBodies) === null || _b === void 0 ? void 0 : _b.open();
         this.isOpen = true;
     }
     async close() {
-        this.accheaders?.close();
-        this.accBodies?.close();
+        var _a, _b;
+        (_a = this.accheaders) === null || _a === void 0 ? void 0 : _a.close();
+        (_b = this.accBodies) === null || _b === void 0 ? void 0 : _b.close();
         this.isOpen = false;
     }
     async notStart() {
@@ -31,17 +33,18 @@ export class Accordion {
         this.numberElement = number;
     }
     isOpenChanged(value) {
+        var _a, _b, _c, _d, _e;
         if (value) {
             if (this.accGroup.collapse == 'single' && this.condition === false) {
-                this.accGroup?.closeAll(this.numberElement);
+                (_a = this.accGroup) === null || _a === void 0 ? void 0 : _a.closeAll(this.numberElement);
             }
-            this.accheaders?.open();
-            this.accBodies?.open();
+            (_b = this.accheaders) === null || _b === void 0 ? void 0 : _b.open();
+            (_c = this.accBodies) === null || _c === void 0 ? void 0 : _c.open();
             this.bdsAccordionOpen.emit();
         }
         else {
-            this.accheaders?.close();
-            this.accBodies?.close();
+            (_d = this.accheaders) === null || _d === void 0 ? void 0 : _d.close();
+            (_e = this.accBodies) === null || _e === void 0 ? void 0 : _e.close();
             this.bdsAccordionClose.emit();
         }
         this.condition = false;

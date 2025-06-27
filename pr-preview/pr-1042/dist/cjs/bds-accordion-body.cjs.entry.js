@@ -33,7 +33,8 @@ const AccordionBody = class {
         this.hasDivisor = valor;
     }
     isOpenChanged() {
-        this.heightContainer = this.isOpen ? (this.container?.offsetHeight || 0) : 0;
+        var _a;
+        this.heightContainer = this.isOpen ? (((_a = this.container) === null || _a === void 0 ? void 0 : _a.offsetHeight) || 0) : 0;
         if (this.isOpen) {
             setTimeout(() => {
                 this.isOpenAftAnimation = true;

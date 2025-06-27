@@ -118,7 +118,7 @@ const BdsToast$1 = /*@__PURE__*/ proxyCustomElement(class BdsToast extends H {
         this.el.variant = variant || 'system';
         this.el.duration = duration * 1000 || 0;
         this.el.position = variant === 'notification' ? 'top-right' : 'bottom-left';
-        this.el.icon = icon ?? this.mapIconName[this.variant];
+        this.el.icon = icon !== null && icon !== void 0 ? icon : this.mapIconName[this.variant];
         this.el.show = true;
         if (this.el.duration > 0) {
             setTimeout(() => {

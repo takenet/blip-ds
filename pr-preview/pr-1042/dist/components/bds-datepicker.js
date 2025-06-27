@@ -1,17 +1,17 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
 import { h as defaultStartDate, i as defaultEndDate, t as typeDateToStringDate, d as dateToDayList, m as messageTranslate, f as fillDayList, j as dateToInputDate, k as dateToTypeDate, l as termTranslate } from './p-DnLxuNI7.js';
 import { d as dateValidation } from './p-BXYXNVip.js';
-import { g as getScrollParent, p as positionAbsoluteElement } from './p-DJObw-Em.js';
+import { g as getScrollParent, p as positionAbsoluteElement } from './p-BNEKIkjk.js';
 import { d as defineCustomElement$e } from './p-CZ1cgYFr.js';
 import { d as defineCustomElement$d } from './p-CMIcF8U6.js';
 import { d as defineCustomElement$c } from './p-uLhI4ppg.js';
 import { d as defineCustomElement$b } from './p-DrQwSKy2.js';
 import { d as defineCustomElement$a } from './p-DWiWA_5T.js';
 import { d as defineCustomElement$9 } from './p-C_jqwUKE.js';
-import { d as defineCustomElement$8 } from './p-CRGxYW2x.js';
+import { d as defineCustomElement$8 } from './p-L79Z5Bp4.js';
 import { d as defineCustomElement$7 } from './p-CGgHblXS.js';
 import { d as defineCustomElement$6 } from './p-3JBO9P5_.js';
-import { d as defineCustomElement$5 } from './p-DIIIBxpr.js';
+import { d as defineCustomElement$5 } from './p-jyQD4Fsf.js';
 import { d as defineCustomElement$4 } from './p-DOQirQsC.js';
 import { d as defineCustomElement$3 } from './p-ChNegX1L.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
@@ -160,7 +160,8 @@ const DatePicker = /*@__PURE__*/ proxyCustomElement(class DatePicker extends H {
                 this.valueEndDate = null;
                 this.bdsEndDate.emit({ value: null });
                 setTimeout(() => {
-                    this.inputSetDate?.setFocus();
+                    var _a;
+                    (_a = this.inputSetDate) === null || _a === void 0 ? void 0 : _a.setFocus();
                 }, 10);
             }
         };
@@ -346,9 +347,10 @@ const DatePicker = /*@__PURE__*/ proxyCustomElement(class DatePicker extends H {
      * whenClickCalendar. Function to output selected date.
      */
     whenClickCalendar(event) {
+        var _a;
         const { detail: { value }, } = event;
         if (value == 'start') {
-            this.inputSetEndDate?.setFocus();
+            (_a = this.inputSetEndDate) === null || _a === void 0 ? void 0 : _a.setFocus();
         }
     }
     /**

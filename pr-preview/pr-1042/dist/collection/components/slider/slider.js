@@ -1,7 +1,8 @@
 import { Host, h } from "@stencil/core";
 export class Slider {
     constructor() {
-        this.inputValue = this.value?.toString() ?? (this.min ? this.min.toString() : '0');
+        var _a, _b;
+        this.inputValue = (_b = (_a = this.value) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : (this.min ? this.min.toString() : '0');
         /**
          * Value, prop to define value of input.
          */

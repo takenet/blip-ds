@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
-import { g as getScrollParent, p as positionAbsoluteElement } from './p-DJObw-Em.js';
+import { g as getScrollParent, p as positionAbsoluteElement } from './p-BNEKIkjk.js';
 import { w as whitespaceValidation, e as emailValidation } from './p-BXYXNVip.js';
 import { d as defineCustomElement$8 } from './p-Oerd8HLX.js';
 import { d as defineCustomElement$7 } from './p-DrQwSKy2.js';
@@ -158,13 +158,14 @@ const SelectChips = /*@__PURE__*/ proxyCustomElement(class SelectChips extends H
             return this.getTextFromOption(el);
         };
         this.getTextFromOption = (opt) => {
+            var _a, _b;
             if (this.internalOptions) {
-                const internalOption = this.internalOptions.find((option) => option.value == opt?.value);
+                const internalOption = this.internalOptions.find((option) => option.value == (opt === null || opt === void 0 ? void 0 : opt.value));
                 if (internalOption) {
                     return internalOption.label;
                 }
             }
-            return opt?.titleText ? opt.titleText : (opt?.textContent?.trim() ?? '');
+            return (opt === null || opt === void 0 ? void 0 : opt.titleText) ? opt.titleText : ((_b = (_a = opt === null || opt === void 0 ? void 0 : opt.textContent) === null || _a === void 0 ? void 0 : _a.trim()) !== null && _b !== void 0 ? _b : '');
         };
         this.setFocusWrapper = () => {
             if (this.nativeInput) {
@@ -279,7 +280,7 @@ const SelectChips = /*@__PURE__*/ proxyCustomElement(class SelectChips extends H
                 try {
                     this.internalChips = JSON.parse(this.chips);
                 }
-                catch {
+                catch (_a) {
                     this.internalChips = [];
                 }
             }
@@ -303,7 +304,7 @@ const SelectChips = /*@__PURE__*/ proxyCustomElement(class SelectChips extends H
         }
     }
     validValueChip(value, internalOptions) {
-        const selectOption = internalOptions?.find((option) => option.textContent == value);
+        const selectOption = internalOptions === null || internalOptions === void 0 ? void 0 : internalOptions.find((option) => option.textContent == value);
         return `${selectOption ? selectOption.value : value}`;
     }
     /**

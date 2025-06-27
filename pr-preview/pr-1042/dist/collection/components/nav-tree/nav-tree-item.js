@@ -52,9 +52,10 @@ export class NavTreeItem {
         // if (this.navTreeChild) this.navTreeChild.isOpen = value;
     }
     componentWillLoad() {
+        var _a, _b;
         this.navTreeParent =
-            (this.element.parentElement?.tagName == 'BDS-NAV-TREE' && this.element.parentElement) ||
-                (this.element.parentElement?.tagName == 'BDS-NAV-TREE-ITEM' && this.element.parentElement) ||
+            (((_a = this.element.parentElement) === null || _a === void 0 ? void 0 : _a.tagName) == 'BDS-NAV-TREE' && this.element.parentElement) ||
+                (((_b = this.element.parentElement) === null || _b === void 0 ? void 0 : _b.tagName) == 'BDS-NAV-TREE-ITEM' && this.element.parentElement) ||
                 null;
         this.navTreeChild = this.element.querySelector('bds-nav-tree-item');
     }

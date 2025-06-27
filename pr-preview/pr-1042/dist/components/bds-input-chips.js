@@ -170,7 +170,7 @@ const InputChips = /*@__PURE__*/ proxyCustomElement(class InputChips extends H {
                 try {
                     this.internalChips = JSON.parse(this.chips);
                 }
-                catch {
+                catch (_a) {
                     this.internalChips = [];
                 }
             }

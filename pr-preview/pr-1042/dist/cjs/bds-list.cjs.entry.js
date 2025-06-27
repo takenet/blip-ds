@@ -76,6 +76,7 @@ const List = class {
         }
     }
     setSelectedRadio(itemList) {
+        var _a, _b, _c, _d, _e;
         const itens = Array.from(this.itemListElement);
         const radios = itens.filter((item) => item.typeList == 'radio');
         for (let i = 0; i < radios.length; i++) {
@@ -85,11 +86,11 @@ const List = class {
             else {
                 const construct = {
                     value: radios[i].value,
-                    text: radios[i]?.text,
-                    secondaryText: radios[i]?.secondaryText,
-                    avatarName: radios[i]?.avatarName,
-                    avatarThumbnail: radios[i]?.avatarThumbnail,
-                    typeList: radios[i]?.typeList,
+                    text: (_a = radios[i]) === null || _a === void 0 ? void 0 : _a.text,
+                    secondaryText: (_b = radios[i]) === null || _b === void 0 ? void 0 : _b.secondaryText,
+                    avatarName: (_c = radios[i]) === null || _c === void 0 ? void 0 : _c.avatarName,
+                    avatarThumbnail: (_d = radios[i]) === null || _d === void 0 ? void 0 : _d.avatarThumbnail,
+                    typeList: (_e = radios[i]) === null || _e === void 0 ? void 0 : _e.typeList,
                 };
                 this.bdsListRadioChange.emit(construct);
             }
@@ -102,11 +103,11 @@ const List = class {
             .filter((item) => item.checked)
             .map((term) => ({
             value: term.value,
-            text: term?.text,
-            secondaryText: term?.secondaryText,
-            avatarName: term?.avatarName,
-            avatarThumbnail: term?.avatarThumbnail,
-            typeList: term?.typeList,
+            text: term === null || term === void 0 ? void 0 : term.text,
+            secondaryText: term === null || term === void 0 ? void 0 : term.secondaryText,
+            avatarName: term === null || term === void 0 ? void 0 : term.avatarName,
+            avatarThumbnail: term === null || term === void 0 ? void 0 : term.avatarThumbnail,
+            typeList: term === null || term === void 0 ? void 0 : term.typeList,
         }));
         this.bdsListCheckboxChange.emit(result);
     }
@@ -117,11 +118,11 @@ const List = class {
             .filter((item) => item.checked)
             .map((term) => ({
             value: term.value,
-            text: term?.text,
-            secondaryText: term?.secondaryText,
-            avatarName: term?.avatarName,
-            avatarThumbnail: term?.avatarThumbnail,
-            typeList: term?.typeList,
+            text: term === null || term === void 0 ? void 0 : term.text,
+            secondaryText: term === null || term === void 0 ? void 0 : term.secondaryText,
+            avatarName: term === null || term === void 0 ? void 0 : term.avatarName,
+            avatarThumbnail: term === null || term === void 0 ? void 0 : term.avatarThumbnail,
+            typeList: term === null || term === void 0 ? void 0 : term.typeList,
         }));
         this.bdsListSwitchChange.emit(result);
     }

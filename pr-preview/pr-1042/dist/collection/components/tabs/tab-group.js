@@ -27,8 +27,9 @@ export class BdsTabGroup {
             });
         };
         this.checkSlideTabs = () => {
+            var _a, _b;
             if (this.headerElement || this.headerSlideElement) {
-                if (this.headerSlideElement?.offsetWidth > this.headerElement?.offsetWidth) {
+                if (((_a = this.headerSlideElement) === null || _a === void 0 ? void 0 : _a.offsetWidth) > ((_b = this.headerElement) === null || _b === void 0 ? void 0 : _b.offsetWidth)) {
                     return true;
                 }
             }
@@ -46,23 +47,7 @@ export class BdsTabGroup {
         };
         this.setInternalItens = (ItensElement) => {
             const arrayItens = ItensElement.map((item, index) => {
-                return {
-                    label: item.label,
-                    open: item.open,
-                    numberElement: index,
-                    badge: item.badge,
-                    ...(item.disable !== undefined && { disable: item.disable }),
-                    ...(item.icon !== undefined && { icon: item.icon }),
-                    ...(item.iconPosition !== undefined && { iconPosition: item.iconPosition }),
-                    ...(item.iconTheme !== undefined && { iconTheme: item.iconTheme }),
-                    ...(item.badgeShape !== undefined && { badgeShape: item.badgeShape }),
-                    ...(item.badgeColor !== undefined && { badgeColor: item.badgeColor }),
-                    ...(item.badgeIcon !== undefined && { badgeIcon: item.badgeIcon }),
-                    ...(item.badgeAnimation !== undefined && { badgeAnimation: item.badgeAnimation }),
-                    ...(item.badgeNumber !== undefined && { badgeNumber: item.badgeNumber }),
-                    ...(item.badgePosition !== undefined && { badgePosition: item.badgePosition }),
-                    ...(item.dataTest !== undefined && { dataTest: item.dataTest }),
-                };
+                return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ label: item.label, open: item.open, numberElement: index, badge: item.badge }, (item.disable !== undefined && { disable: item.disable })), (item.icon !== undefined && { icon: item.icon })), (item.iconPosition !== undefined && { iconPosition: item.iconPosition })), (item.iconTheme !== undefined && { iconTheme: item.iconTheme })), (item.badgeShape !== undefined && { badgeShape: item.badgeShape })), (item.badgeColor !== undefined && { badgeColor: item.badgeColor })), (item.badgeIcon !== undefined && { badgeIcon: item.badgeIcon })), (item.badgeAnimation !== undefined && { badgeAnimation: item.badgeAnimation })), (item.badgeNumber !== undefined && { badgeNumber: item.badgeNumber })), (item.badgePosition !== undefined && { badgePosition: item.badgePosition })), (item.dataTest !== undefined && { dataTest: item.dataTest }));
             });
             return (this.internalItens = arrayItens);
         };
@@ -95,18 +80,20 @@ export class BdsTabGroup {
             this.bdsTabDisabled.emit(this.tabItensElement[id]);
         };
         this.nextSlide = () => {
-            const minLeft = this.headerElement?.offsetWidth - this.headerSlideElement?.offsetWidth;
-            const calcNumber = this.headerSlideElement?.offsetWidth / this.headerElement?.offsetWidth;
+            var _a, _b, _c, _d, _e;
+            const minLeft = ((_a = this.headerElement) === null || _a === void 0 ? void 0 : _a.offsetWidth) - ((_b = this.headerSlideElement) === null || _b === void 0 ? void 0 : _b.offsetWidth);
+            const calcNumber = ((_c = this.headerSlideElement) === null || _c === void 0 ? void 0 : _c.offsetWidth) / ((_d = this.headerElement) === null || _d === void 0 ? void 0 : _d.offsetWidth);
             const numberClicks = parseInt(calcNumber.toString());
-            const newPosition = this.positionLeft - this.headerElement?.offsetWidth;
+            const newPosition = this.positionLeft - ((_e = this.headerElement) === null || _e === void 0 ? void 0 : _e.offsetWidth);
             this.positionLeft = newPosition < minLeft ? minLeft : newPosition;
             this.alignTab = newPosition < minLeft ? 'right' : 'scrolling';
             this.tabRefSlide = numberClicks <= this.tabRefSlide ? this.tabRefSlide + 1 : numberClicks;
         };
         this.prevSlide = () => {
-            const calcNumber = this.headerSlideElement?.offsetWidth / this.headerElement?.offsetWidth;
+            var _a, _b, _c;
+            const calcNumber = ((_a = this.headerSlideElement) === null || _a === void 0 ? void 0 : _a.offsetWidth) / ((_b = this.headerElement) === null || _b === void 0 ? void 0 : _b.offsetWidth);
             const numberClicks = parseInt(calcNumber.toString());
-            const newPosition = this.positionLeft + this.headerElement?.offsetWidth;
+            const newPosition = this.positionLeft + ((_c = this.headerElement) === null || _c === void 0 ? void 0 : _c.offsetWidth);
             this.positionLeft = newPosition > 0 ? 0 : newPosition;
             this.alignTab = newPosition > 0 ? 'left' : 'scrolling';
             this.tabRefSlide = numberClicks <= this.tabRefSlide ? this.tabRefSlide - 1 : numberClicks;
