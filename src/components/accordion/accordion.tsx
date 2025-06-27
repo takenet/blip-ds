@@ -20,8 +20,8 @@ export class Accordion {
   @Event() bdsAccordionOpen?: EventEmitter;
   @Event() bdsAccordionClose?: EventEmitter;
 
-  @Prop() startOpen?: boolean = false;
-  @Prop() divisor?: boolean = true;
+  @Prop({ reflect: true }) startOpen?: boolean = false;
+  @Prop({ reflect: true }) divisor?: boolean = true;
 
   @Method()
   async toggle() {

@@ -24,7 +24,7 @@
     "build:react": "cd ./blip-ds-react && npm install && npm run build",
     "test": "stencil test --spec --e2e --screenshot --coverage --runInBand",
     "test:e2e": "stencil test --e2e --screenshot --runInBand",
-    "test:unit": "stencil test --spec --coverage --runInBand",
+    "test:unit": "stencil test --spec --coverage",
     "test:watch": "stencil test --spec --e2e --screenshot --watch",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
