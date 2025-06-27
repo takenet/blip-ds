@@ -95,7 +95,7 @@ export class InputPhoneNumber {
   /**
    * Evento disparado quando o input sofre alteração.
    */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInput!: EventEmitter<InputEvent>;
   /**
    * Evento disparado quando a seleção é cancelada.
    */
@@ -206,14 +206,14 @@ export class InputPhoneNumber {
     this.isPressed = false;
   };
 
-  private changedInputValue = async (ev: Event) => {
+  private changedInputValue = async (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null;
     this.checkValidity();
     if (input) {
       this.text = input.value || '';
       this.numberValidation();
     }
-    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsInput.emit(ev);
   };
 
   @Watch('text')

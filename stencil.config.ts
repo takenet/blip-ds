@@ -7,7 +7,7 @@ export const config: Config = {
   plugins: [
     sass({
       includePaths: ['src/globals'],
-      injectGlobalPaths: ['src/globals/app.scss', 'node_modules/blip-tokens/build/scss/variables.scss'],
+      injectGlobalPaths: ['src/globals/_helper.scss'],
     }),
   ],
   outputTargets: [
@@ -20,6 +20,10 @@ export const config: Config = {
       ],
     },
     {
+      type: 'dist-custom-elements',
+      externalRuntime: false,
+    },
+    {
       type: 'docs-readme',
     },
     {
@@ -27,24 +31,25 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      componentCorePackage: '../../loader',
-      proxiesFile: './blip-ds-react/src/components.ts',
+      outDir: 'blip-ds-react/dist',
+      stencilPackageName: 'blip-ds',
     }),
   ],
-  buildEs5: 'prod',
+  buildEs5: true,
   extras: {
     appendChildSlotFix: true,
-    cssVarsShim: true,
-    dynamicImportShim: true,
-    shadowDomShim: true,
-    safari10: true,
     scriptDataOpts: true,
     cloneNodeFix: false,
     slotChildNodesFix: true,
     experimentalImportInjection: true,
   },
   testing: {
-    browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+    browserArgs: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-web-security',
+      '--disable-features=VizDisplayCompositor',
+    ],
     collectCoverageFrom: ['src/**/*.{ts,tsx}'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     transform: {

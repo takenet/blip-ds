@@ -71,7 +71,7 @@ describe('bds-breadcrumb e2e tests', () => {
     it('should render links for items with href', async () => {
       // Wait for component to render
       await page.waitForChanges();
-      await page.waitForTimeout(100);
+      await new Promise((r) => setTimeout(r, 100));
       
       const links = await page.findAll('bds-breadcrumb >>> a.breadcrumb__link');
       // Should have at least some links since we have href values

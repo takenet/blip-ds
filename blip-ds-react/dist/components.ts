@@ -223,7 +223,7 @@ export type BdsAutocompleteEvents = {
     onBdsChange: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>,
     onBdsSelectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteSelectedChangeEventDetail>>,
     onBdsMultiselectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteMultiSelectedChangeEventDetail>>,
-    onBdsInput: EventName<BdsAutocompleteCustomEvent<KeyboardEvent>>,
+    onBdsInput: EventName<BdsAutocompleteCustomEvent<InputEvent>>,
     onBdsCancel: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>,
     onBdsFocus: EventName<CustomEvent<void>>,
     onBdsBlur: EventName<CustomEvent<void>>
@@ -754,7 +754,7 @@ export const BdsInputChips: StencilReactComponent<BdsInputChipsElement, BdsInput
 export type BdsInputEditableEvents = {
     onBdsInputEditableSave: EventName<BdsInputEditableCustomEvent<InputEditableEventDetail>>,
     onBdsChange: EventName<BdsInputEditableCustomEvent<InputEditableEventDetail>>,
-    onBdsInput: EventName<BdsInputEditableCustomEvent<KeyboardEvent>>,
+    onBdsInput: EventName<BdsInputEditableCustomEvent<InputEvent>>,
     onBdsCancel: EventName<CustomEvent<void>>,
     onBdsFocus: EventName<CustomEvent<void>>,
     onBdsBlur: EventName<CustomEvent<void>>
@@ -778,7 +778,7 @@ export const BdsInputEditable: StencilReactComponent<BdsInputEditableElement, Bd
 
 export type BdsInputPasswordEvents = {
     onBdsInputPasswordChange: EventName<CustomEvent<any>>,
-    onBdsInputPasswordInput: EventName<BdsInputPasswordCustomEvent<KeyboardEvent>>,
+    onBdsInputPasswordInput: EventName<BdsInputPasswordCustomEvent<InputEvent>>,
     onBdsInputPasswordBlur: EventName<CustomEvent<any>>,
     onBdsInputPasswordFocus: EventName<CustomEvent<any>>,
     onBdsInputPasswordSubmit: EventName<CustomEvent<any>>,
@@ -803,7 +803,7 @@ export const BdsInputPassword: StencilReactComponent<BdsInputPasswordElement, Bd
 
 export type BdsInputPhoneNumberEvents = {
     onBdsPhoneNumberChange: EventName<CustomEvent<any>>,
-    onBdsInput: EventName<BdsInputPhoneNumberCustomEvent<KeyboardEvent>>,
+    onBdsInput: EventName<BdsInputPhoneNumberCustomEvent<InputEvent>>,
     onBdsCancel: EventName<CustomEvent<void>>,
     onBdsFocus: EventName<CustomEvent<void>>,
     onBdsBlur: EventName<CustomEvent<void>>
@@ -1135,7 +1135,7 @@ export const BdsRadioGroup: StencilReactComponent<BdsRadioGroupElement, BdsRadio
 
 export type BdsRichTextEvents = {
     onBdsRichTextChange: EventName<CustomEvent<any>>,
-    onBdsRichTextInput: EventName<BdsRichTextCustomEvent<KeyboardEvent>>,
+    onBdsRichTextInput: EventName<BdsRichTextCustomEvent<InputEvent>>,
     onBdsBlur: EventName<CustomEvent<any>>,
     onBdsFocus: EventName<CustomEvent<any>>
 };
@@ -1181,7 +1181,7 @@ export type BdsSelectChipsEvents = {
     onBdsFocus: EventName<CustomEvent<void>>,
     onBdsBlur: EventName<CustomEvent<void>>,
     onBdsChangeChips: EventName<CustomEvent<any>>,
-    onBdsSelectChipsInput: EventName<CustomEvent<any>>,
+    onBdsSelectChipsInput: EventName<BdsSelectChipsCustomEvent<InputEvent>>,
     onBdsSubmit: EventName<CustomEvent<any>>
 };
 

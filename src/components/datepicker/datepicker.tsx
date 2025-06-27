@@ -336,7 +336,7 @@ export class DatePicker {
     }
   };
 
-  private onInputDateSelected = (ev: Event): void => {
+  private onInputDateSelected = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueDate = input.value;
     if (!this.valueDate) {
@@ -368,7 +368,7 @@ export class DatePicker {
     }
   };
 
-  private onInputEndDateSelected = (ev: Event): void => {
+  private onInputEndDateSelected = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueEndDate = input.value;
     this.validationEndDateSelected(this.valueEndDate);
@@ -464,7 +464,7 @@ export class DatePicker {
               maxlength={10}
               icon="calendar"
               onClick={() => this.openDatepicker()}
-              onBdsInput={(ev) => this.onInputDateSelected(ev)}
+              onBdsInput={(ev) => this.onInputDateSelected(ev.detail)}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
               dataTest={this.dtInputStart}
@@ -489,7 +489,7 @@ export class DatePicker {
               icon="calendar"
               onClick={() => this.openDatepicker()}
               onFocus={() => this.onFocusDateSelect()}
-              onBdsInput={(ev) => this.onInputDateSelected(ev)}
+              onBdsInput={(ev) => this.onInputDateSelected(ev.detail)}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
               dataTest={this.dtInputStart}
@@ -505,7 +505,7 @@ export class DatePicker {
               icon="calendar"
               onClick={() => this.openDatepicker()}
               onFocus={() => this.onFocusEndDateSelect()}
-              onBdsInput={(ev) => this.onInputEndDateSelected(ev)}
+              onBdsInput={(ev) => this.onInputEndDateSelected(ev.detail)}
               danger={this.errorMsgEndDate ? true : false}
               errorMessage={this.errorMsgEndDate}
               dataTest={this.dtInputEnd}

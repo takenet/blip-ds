@@ -11,19 +11,15 @@ describe('bds-radio-group', () => {
     });
   });
 
-  afterEach(() => {
-    page = null;
-  });
-
   it('should create component', () => {
     const component = new RadioGroup();
     expect(component).toBeTruthy();
   });
 
   it('should render with default props', async () => {
-    expect(page.root.tagName).toBe('BDS-RADIO-GROUP');
-    expect(page.root.hasAttribute('value')).toBe(false);
-    expect(page.root.innerHTML).toBe('<!----> ');
+    expect(page.root?.tagName).toBe('BDS-RADIO-GROUP');
+    expect(page.root?.hasAttribute('value')).toBe(false);
+    expect(page.root?.innerHTML).toBe('<!---->');
   });
 
   it('should have default values', () => {
@@ -37,7 +33,7 @@ describe('bds-radio-group', () => {
       html: `<bds-radio-group value="option1"></bds-radio-group>`,
     });
 
-    expect(page.root.getAttribute('value')).toBe('option1');
+    expect(page.root?.getAttribute('value')).toBe('option1');
     expect(page.rootInstance.value).toBe('option1');
   });
 
@@ -46,7 +42,7 @@ describe('bds-radio-group', () => {
     component.value = 'test-value';
     await page.waitForChanges();
 
-    expect(page.root.getAttribute('value')).toBe('test-value');
+    expect(page.root?.getAttribute('value')).toBe('test-value');
   });
 
   it('should update value property', async () => {
@@ -56,12 +52,12 @@ describe('bds-radio-group', () => {
     await page.waitForChanges();
     
     expect(component.value).toBe('new-value');
-    expect(page.root.getAttribute('value')).toBe('new-value');
+    expect(page.root?.getAttribute('value')).toBe('new-value');
   });
 
   it('should emit bdsRadioGroupChange event when value changes', async () => {
     const bdsRadioGroupChangeSpy = jest.fn();
-    page.root.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
+    page.root?.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
     
     const component = page.rootInstance;
     component.value = 'test-option';
@@ -76,7 +72,7 @@ describe('bds-radio-group', () => {
 
   it('should emit event with correct value when value changes multiple times', async () => {
     const bdsRadioGroupChangeSpy = jest.fn();
-    page.root.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
+    page.root?.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
     
     const component = page.rootInstance;
     
@@ -105,7 +101,7 @@ describe('bds-radio-group', () => {
     await page.waitForChanges();
     
     const bdsRadioGroupChangeSpy = jest.fn();
-    page.root.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
+    page.root?.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
     
     // Stencil watchers will not trigger if setting the same value via prop
     // So let's test by setting a different value first, then the same value
@@ -128,7 +124,7 @@ describe('bds-radio-group', () => {
     await page.waitForChanges();
 
     expect(component.value).toBeUndefined();
-    expect(page.root.hasAttribute('value')).toBe(false);
+    expect(page.root?.hasAttribute('value')).toBe(false);
   });
 
   it('should handle null value', async () => {
@@ -137,7 +133,7 @@ describe('bds-radio-group', () => {
     await page.waitForChanges();
 
     expect(component.value).toBeNull();
-    expect(page.root.hasAttribute('value')).toBe(false);
+    expect(page.root?.hasAttribute('value')).toBe(false);
   });
 
   it('should handle empty string value', async () => {
@@ -146,7 +142,7 @@ describe('bds-radio-group', () => {
     await page.waitForChanges();
 
     expect(component.value).toBe('');
-    expect(page.root.getAttribute('value')).toBe('');
+    expect(page.root?.getAttribute('value')).toBe('');
   });
 
   it('should maintain component structure', async () => {
@@ -186,12 +182,12 @@ describe('bds-radio-group', () => {
     });
 
     expect(page.rootInstance.value).toBe('initial-option');
-    expect(page.root.getAttribute('value')).toBe('initial-option');
+    expect(page.root?.getAttribute('value')).toBe('initial-option');
   });
 
   it('should handle rapid value changes', async () => {
     const bdsRadioGroupChangeSpy = jest.fn();
-    page.root.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
+    page.root?.addEventListener('bdsRadioGroupChange', bdsRadioGroupChangeSpy);
     
     const component = page.rootInstance;
     
