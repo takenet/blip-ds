@@ -31,7 +31,8 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      outDir: '../blip-ds-react/dist',
+      outDir: 'blip-ds-react/dist',
+      stencilPackageName: 'blip-ds'
     }),
   ],
   buildEs5: 'prod',

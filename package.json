@@ -90,6 +90,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
+  "peerDependencies": {
+    "@stencil/react-output-target": "^1.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/takenet/blip-ds.git"
@@ -136,5 +139,24 @@
     "postcss": "^8.5.5",
     "svgo": "^3.3.2",
     "rimraf": "^6.0.1"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/blip-ds/blip-ds.esm.js",
+      "require": "./dist/blip-ds/blip-ds.cjs.js"
+    },
+    "./dist/*": {
+      "import": "./dist/*",
+      "types": "./dist/*"
+    },
+    "./components/*": {
+      "import": "./dist/components/*.js",
+      "types": "./dist/components/*.d.ts"
+    },
+    "./loader": {
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs",
+      "types": "./loader/index.d.ts"
+    }
   }
 }
