@@ -1,0 +1,2 @@
+import{r as registerInstance,h}from"./index-C3J6Z5OX.js";var cardHeaderCss=":host{width:100%}";var CardHeader=function(){function e(e){registerInstance(this,e);this.align="space-between"}e.prototype.render=function(){return h("bds-grid",{key:"50c941f132a8fc8cbd9c4b1706a0d0c2118e7e50",xxs:"12",direction:"row",gap:"1",justifyContent:this.align,alignItems:"center"},h("slot",{key:"d26ee87e1486b99797b8c5f9cee44661b7c046f5"}))};return e}();CardHeader.style=cardHeaderCss;export{CardHeader as bds_card_header};
+//# sourceMappingURL=bds-card-header.entry.js.map
