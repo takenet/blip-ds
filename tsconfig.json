@@ -6,11 +6,11 @@
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2020"
+      "es2017"
     ],
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "es2020",
+    "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",

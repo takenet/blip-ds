@@ -90,9 +90,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
-  "peerDependencies": {
-    "@stencil/react-output-target": "^1.1.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/takenet/blip-ds.git"

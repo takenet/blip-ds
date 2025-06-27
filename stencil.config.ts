@@ -35,7 +35,7 @@ export const config: Config = {
       stencilPackageName: 'blip-ds',
     }),
   ],
-  buildEs5: 'prod',
+  buildEs5: true,
   extras: {
     appendChildSlotFix: true,
     scriptDataOpts: true,
