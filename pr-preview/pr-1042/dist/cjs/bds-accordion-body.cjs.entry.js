@@ -33,22 +33,22 @@ const AccordionBody = class {
         this.hasDivisor = valor;
     }
     isOpenChanged() {
-        this.heightContainer = this.isOpen ? this.container.offsetHeight : 0;
+        this.heightContainer = this.isOpen ? (this.container?.offsetHeight || 0) : 0;
         if (this.isOpen) {
             setTimeout(() => {
-                this.isOpenAftAnimation = !this.isOpenAftAnimation;
+                this.isOpenAftAnimation = true;
             }, 500);
         }
         else {
-            this.isOpenAftAnimation = !this.isOpenAftAnimation;
+            this.isOpenAftAnimation = false;
         }
     }
     render() {
-        return (index.h("div", { key: '4b8bba0c905958a7dec1b1538357ae287ee94aa2', class: {
+        return (index.h("div", { key: '1ce7d8262b30074d8c611d9ef1e7d9dc34cc95af', class: {
                 accordion_body: true,
                 accordion_body_divisor: this.hasDivisor,
                 accordion_body_isOpen: this.isOpenAftAnimation,
-            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, index.h("div", { key: 'e1a03b79db5c3d94016f0055484f36e1ae5e0228', class: "container", ref: (el) => this.refContainer(el) }, index.h("slot", { key: '668217497b33854a7e3c20267bd7dea955814866' }))));
+            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, index.h("div", { key: '4758185d2898ac14015d1bf542fdaaec385fca9b', class: "container", ref: (el) => this.refContainer(el) }, index.h("slot", { key: 'e82b005345aa83ceeaef25a115a25d51e308a40f' }))));
     }
     static get watchers() { return {
         "isOpen": ["isOpenChanged"]

@@ -78,7 +78,7 @@ const Accordion = /*@__PURE__*/ proxyCustomElement(class Accordion extends H {
         }
     }
     render() {
-        return (h("div", { key: '15a93f082e6af990c446d4d24d449ac66f0b44ab', class: "accordion_group" }, h("slot", { key: 'bebf8655f42edcb894384d4d2c67085333ec2372' })));
+        return (h("div", { key: '6c6437b0bd0b325ea2968effd3c8ad01df053e86', class: "accordion_group" }, h("slot", { key: '4db50b53f2c5b6b0d3419544b4d00ea6de7445b2' })));
     }
     get element() { return this; }
     static get watchers() { return {
@@ -87,8 +87,8 @@ const Accordion = /*@__PURE__*/ proxyCustomElement(class Accordion extends H {
     }; }
     static get style() { return accordionCss; }
 }, [1, "bds-accordion", {
-        "startOpen": [4, "start-open"],
-        "divisor": [4],
+        "startOpen": [516, "start-open"],
+        "divisor": [516],
         "isOpen": [32],
         "numberElement": [32],
         "condition": [32],

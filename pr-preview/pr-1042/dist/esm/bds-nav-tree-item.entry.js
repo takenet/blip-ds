@@ -39,7 +39,7 @@ const NavTreeItem = class {
         this.dataTest = null;
         this.handler = () => {
             if (!this.loading && !this.disable) {
-                if (this.navTreeParent.collapse == 'single') {
+                if (this.navTreeParent && this.navTreeParent.collapse == 'single' && this.itensElement) {
                     for (let i = 0; i < this.itensElement.length; i++) {
                         if (this.itensElement[i] != this.element)
                             this.itensElement[i].isOpen = false;
@@ -58,12 +58,15 @@ const NavTreeItem = class {
     }
     componentWillLoad() {
         this.navTreeParent =
-            (this.element.parentElement.tagName == 'BDS-NAV-TREE' && this.element.parentElement) ||
-                (this.element.parentElement.tagName == 'BDS-NAV-TREE-ITEM' && this.element.parentElement);
+            (this.element.parentElement?.tagName == 'BDS-NAV-TREE' && this.element.parentElement) ||
+                (this.element.parentElement?.tagName == 'BDS-NAV-TREE-ITEM' && this.element.parentElement) ||
+                null;
         this.navTreeChild = this.element.querySelector('bds-nav-tree-item');
     }
     componentWillRender() {
-        this.itensElement = this.navTreeParent.getElementsByTagName('bds-nav-tree-item');
+        if (this.navTreeParent) {
+            this.itensElement = this.navTreeParent.querySelectorAll('bds-nav-tree-item');
+        }
     }
     handleKeyDown(event) {
         if (event.key == 'Enter') {
@@ -71,7 +74,7 @@ const NavTreeItem = class {
         }
     }
     render() {
-        return (h(Host, { key: 'eca656b5f119b1797de877cf1b9837ffa63cf875' }, h("div", { key: 'a6be21a84c529b28d53b3706e76d70b8f659f12c', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, h("div", { key: 'ac154eeaec35ec2b9354a144e806d2cda1e6737e', class: {
+        return (h(Host, { key: 'a3422e7629ea37ebfe00471483c1a59af062ef30' }, h("div", { key: '721bbf812db14c85f953b626399b78a980f73351', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, h("div", { key: 'da1830422efaf5d4002fd4363abd699ac3f1360e', class: {
                 nav_tree_item: true,
                 nav_tree_item_active: this.isOpen,
                 nav_tree_item_button: !this.navTreeChild,
@@ -81,14 +84,14 @@ const NavTreeItem = class {
             }, onClick: () => this.handler(), "data-test": this.dataTest, "aria-label": this.text + (this.secondaryText && `: ${this.secondaryText}`) }, this.loading ? (h("bds-loading-spinner", { size: "extra-small" })) : this.icon ? (h("bds-icon", { class: {
                 [`icon-item`]: true,
                 [`icon-item-active`]: this.isOpen,
-            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { key: '482633801011aed37cebb2ba4580f1ddb7bdc4fa', class: "nav_tree_item_content" }, this.text && (h("bds-typo", { key: '34185a9b84644c42726975869cbb82ac6b6af59a', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { key: '0caaf4f0c422bc65f13164143db7481b8f5a891e', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { key: '16a4176cd76c6242b1d6a5fa7f30b50be4e2ebdc', class: "nav_tree_item_slot" }, h("slot", { key: 'd8a402fe971c3afe6c78db8fecb0e1bfa5919179', name: "header-content" })), this.navTreeChild && (h("bds-icon", { key: '112a78ab82ad3fe277146ba288f2e497641a47be', class: {
+            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { key: '30e7cd546407058418409e15aff6e02501db98e7', class: "nav_tree_item_content" }, this.text && (h("bds-typo", { key: '0f5d3381d15afba2a7c7b24ab1b4487387a01b0e', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { key: 'e4ab837492e60d122db330d9aa467ac3b11c8e4a', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { key: 'bbccc7a7db0939cd156aaf9d1cf7787ebfc2d821', class: "nav_tree_item_slot" }, h("slot", { key: '873e50660a2f6f64449dcdc14e74195809ca6277', name: "header-content" })), this.navTreeChild && (h("bds-icon", { key: 'e6d49843188ccfe13cc03ec605414b64dd3721ec', class: {
                 [`nav_main_arrow`]: true,
                 [`nav_main_arrow_active`]: this.isOpen,
                 [`nav_main_arrow--loading`]: this.loading,
-            }, name: "arrow-down" })))), this.navTreeChild && (h("div", { key: '4ee3a3a5d2c8529a7b7dcef7b9b28c2bc82af5a1', class: {
+            }, name: "arrow-down" })))), this.navTreeChild && (h("div", { key: '391abd866e68a3fee52012a7c09be72e4a08b7e1', class: {
                 accordion: true,
                 accordion_open: this.isOpen,
-            } }, h("div", { key: 'ebab9fe7dadae0834d7e5e1646e3841560aae8d4', class: "container" }, h("slot", { key: 'd70ca611c5bdd1fc72d398dfb575a94ae1d4acf4' }))))));
+            } }, h("div", { key: '322196398fdc34c1f1d4abf91283b9235eb16516', class: "container" }, h("slot", { key: 'c8b4ba0887ffb78407e9cebcc9de02ba44a26c91' }))))));
     }
     get element() { return getElement(this); }
     static get watchers() { return {
