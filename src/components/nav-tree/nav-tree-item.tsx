@@ -65,7 +65,7 @@ export class NavTreeItem {
   componentWillLoad() {
     this.navTreeParent =
       (this.element.parentElement.tagName == 'BDS-NAV-TREE' && (this.element.parentElement as HTMLBdsNavTreeElement)) ||
-      ('BDS-NAV-TREE-ITEM' && (this.element.parentElement as HTMLBdsNavTreeItemElement));
+      (this.element.parentElement.tagName == 'BDS-NAV-TREE-ITEM' && (this.element.parentElement as HTMLBdsNavTreeItemElement));
     this.navTreeChild = this.element.querySelector('bds-nav-tree-item');
   }
   componentWillRender() {

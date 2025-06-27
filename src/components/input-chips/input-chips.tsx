@@ -325,7 +325,8 @@ export class InputChips {
         this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
         this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
           this.removeLastChip();
           this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });

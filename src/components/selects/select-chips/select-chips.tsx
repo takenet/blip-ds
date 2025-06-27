@@ -547,7 +547,8 @@ export class SelectChips {
           this.isOpen = false;
         }
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
           this.removeLastChip();
           this.handleChangeChipsValue;

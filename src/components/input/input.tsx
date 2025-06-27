@@ -313,7 +313,8 @@ if(!this.encode) return value;
           event.preventDefault();
         }
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
