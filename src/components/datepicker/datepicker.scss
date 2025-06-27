@@ -1,5 +1,6 @@
-@use '../../globals/helpers' as *;
-@use '../input/input' as *;
+@import 'resets';
+@import 'mixins';
+@import '../input/input.scss';
 
 :host {
   position: relative;

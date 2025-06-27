@@ -1,4 +1,5 @@
-@use '../../globals/helpers' as *;
+@import 'resets';
+@import 'mixins';
 
 .accordion_header {
   display: flex;

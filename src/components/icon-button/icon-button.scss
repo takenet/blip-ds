@@ -1,5 +1,4 @@
-@use '../../globals/helpers' as *;
-@use '../../globals/theme/color-legacy';
+@import 'resets';
 
 $icon-button-border-radius: 8px;
 $icon-button-padding: 8px;
@@ -42,7 +41,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(color-legacy.$color-disabled-bg, color-legacy.$color-disabled-text);
+    @include disable-button($color-disabled-bg, $color-disabled-text);
   }
 }
 
@@ -55,29 +54,29 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(transparent, color-legacy.$color-disabled-text);
+    @include disable-button(transparent, $color-disabled-text);
   }
 }
 
 @mixin icon-button-secondary-white {
   background: transparent;
-  color: color-legacy.$color-neutral-light-snow;
+  color: $color-neutral-light-snow;
 
   &:hover,
   &:focus {
-    background: rgba(color-legacy.$color-neutral-light-snow, 0.3);
-    color: color-legacy.$color-neutral-light-snow;
+    background: rgba($color-neutral-light-snow, 0.3);
+    color: $color-neutral-light-snow;
   }
 
   &:active {
-    background: rgba(color-legacy.$color-neutral-light-snow, 0.4);
-    color: color-legacy.$color-neutral-light-snow;
+    background: rgba($color-neutral-light-snow, 0.4);
+    color: $color-neutral-light-snow;
   }
 
   &--disabled {
     cursor: not-allowed;
-    color: color-legacy.$color-disabled-text;
-    background: color-legacy.$color-disabled-bg;
+    color: $color-disabled-text;
+    background: $color-disabled-bg;
   }
 }
 
@@ -89,7 +88,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(color-legacy.$color-disabled-wrong);
+    @include disable-button($color-disabled-wrong);
   }
 }
 
@@ -102,7 +101,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(color-legacy.$color-disabled-text, 1px solid color-legacy.$color-disabled-text);
+    @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 
@@ -115,7 +114,7 @@ $icon-button-padding: 8px;
   }
 
   &--disabled {
-    @include disable-button(color-legacy.$color-disabled-text, 1px solid color-legacy.$color-disabled-text);
+    @include disable-button($color-disabled-text, 1px solid $color-disabled-text);
   }
 }
 

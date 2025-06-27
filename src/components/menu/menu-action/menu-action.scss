@@ -1,6 +1,3 @@
-@use '../../../globals/helpers' as *;
-@use '../../../globals/theme/color-legacy';
-
 .menuaction {
   position: relative;
 
@@ -45,13 +42,13 @@
 
     &__lipstick {
       & .icon-item {
-        color: color-legacy.$color-extend-reds-lipstick;
+        color: $color-extend-reds-lipstick;
       }
       & .content-item {
-        color: color-legacy.$color-extend-reds-lipstick;
+        color: $color-extend-reds-lipstick;
       }
       & .arrow {
-        color: color-legacy.$color-extend-reds-lipstick;
+        color: $color-extend-reds-lipstick;
       }
     }
 

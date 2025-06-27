@@ -1,4 +1,4 @@
-@use '../../globals/helpers' as *;
+@import 'mixins';
 
 .modal__dialog {
   opacity: 0;

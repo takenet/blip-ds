@@ -1,5 +1,3 @@
-@use '../../globals/helpers' as *;
-
 @mixin inherit-color() {
   color: inherit;
   background-color: inherit;

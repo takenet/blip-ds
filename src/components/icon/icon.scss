@@ -1,5 +1,3 @@
-@use '../../globals/helpers' as *;
-
 @mixin size($size) {
   width: $size;
   min-width: $size;

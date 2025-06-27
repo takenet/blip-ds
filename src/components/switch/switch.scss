@@ -1,5 +1,4 @@
-@use '../../globals/helpers' as *;
-@use '../../globals/theme/color-legacy';
+@import 'resets';
 
 $switch-size-width-tall: 56px;
 $switch-size-width-standard: 42px;
@@ -122,14 +121,14 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px color-legacy.$color-primary-main;
+  box-shadow: 0 0 1px $color-primary-main;
 
   &--selected-disabled {
-    box-shadow: 0 0 1px color-legacy.$color-neutral-medium-silver;
+    box-shadow: 0 0 1px $color-neutral-medium-silver;
   }
 
   &--deselected-disabled {
-    box-shadow: 0 0 1px color-legacy.$color-neutral-medium-wave;
+    box-shadow: 0 0 1px $color-neutral-medium-wave;
   }
 }
 

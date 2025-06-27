@@ -1,4 +1,4 @@
-@use '../../globals/helpers' as *;
+@import 'mixins';
 
 :host {
   display: block;

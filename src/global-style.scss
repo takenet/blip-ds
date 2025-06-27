@@ -1,6 +1,3 @@
-@use "globals/app.scss" as *;
-@use "globals/helpers.scss" as *;
-
 .bds-hover:hover {
   mix-blend-mode: multiply;
 }
@@ -19,7 +16,7 @@
     outline: none;
 
     &::before {
-      border-color: $color-focus;
+      border-color: $color-primary-purples-bell;
     }
   }
 }
