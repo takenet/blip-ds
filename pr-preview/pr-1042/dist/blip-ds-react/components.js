@@ -106,10 +106,9 @@ import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from 
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import React from 'react';
-export const BdsAccordion = /*@__PURE__*/ createComponent({
+export const BdsAccordion = createComponent({
     tagName: 'bds-accordion',
     elementClass: BdsAccordionElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsToggle: 'bdsToggle',
@@ -118,18 +117,16 @@ export const BdsAccordion = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsAccordion
 });
-export const BdsAccordionBody = /*@__PURE__*/ createComponent({
+export const BdsAccordionBody = createComponent({
     tagName: 'bds-accordion-body',
     elementClass: BdsAccordionBodyElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsAccordionBody
 });
-export const BdsAccordionGroup = /*@__PURE__*/ createComponent({
+export const BdsAccordionGroup = createComponent({
     tagName: 'bds-accordion-group',
     elementClass: BdsAccordionGroupElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsAccordionCloseAll: 'bdsAccordionCloseAll',
@@ -137,50 +134,44 @@ export const BdsAccordionGroup = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsAccordionGroup
 });
-export const BdsAccordionHeader = /*@__PURE__*/ createComponent({
+export const BdsAccordionHeader = createComponent({
     tagName: 'bds-accordion-header',
     elementClass: BdsAccordionHeaderElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsAccordionHeader
 });
-export const BdsAlert = /*@__PURE__*/ createComponent({
+export const BdsAlert = createComponent({
     tagName: 'bds-alert',
     elementClass: BdsAlertElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsAlertChanged: 'bdsAlertChanged' },
     defineCustomElement: defineBdsAlert
 });
-export const BdsAlertActions = /*@__PURE__*/ createComponent({
+export const BdsAlertActions = createComponent({
     tagName: 'bds-alert-actions',
     elementClass: BdsAlertActionsElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsAlertActions
 });
-export const BdsAlertBody = /*@__PURE__*/ createComponent({
+export const BdsAlertBody = createComponent({
     tagName: 'bds-alert-body',
     elementClass: BdsAlertBodyElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsAlertBody
 });
-export const BdsAlertHeader = /*@__PURE__*/ createComponent({
+export const BdsAlertHeader = createComponent({
     tagName: 'bds-alert-header',
     elementClass: BdsAlertHeaderElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsAlertHeader
 });
-export const BdsAutocomplete = /*@__PURE__*/ createComponent({
+export const BdsAutocomplete = createComponent({
     tagName: 'bds-autocomplete',
     elementClass: BdsAutocompleteElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChange: 'bdsChange',
@@ -193,10 +184,9 @@ export const BdsAutocomplete = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsAutocomplete
 });
-export const BdsAvatar = /*@__PURE__*/ createComponent({
+export const BdsAvatar = createComponent({
     tagName: 'bds-avatar',
     elementClass: BdsAvatarElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsClickAvatar: 'bdsClickAvatar',
@@ -204,146 +194,128 @@ export const BdsAvatar = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsAvatar
 });
-export const BdsAvatarGroup = /*@__PURE__*/ createComponent({
+export const BdsAvatarGroup = createComponent({
     tagName: 'bds-avatar-group',
     elementClass: BdsAvatarGroupElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClickAvatarGroup: 'bdsClickAvatarGroup' },
     defineCustomElement: defineBdsAvatarGroup
 });
-export const BdsBadge = /*@__PURE__*/ createComponent({
+export const BdsBadge = createComponent({
     tagName: 'bds-badge',
     elementClass: BdsBadgeElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsBadge
 });
-export const BdsBanner = /*@__PURE__*/ createComponent({
+export const BdsBanner = createComponent({
     tagName: 'bds-banner',
     elementClass: BdsBannerElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsBannerClose: 'bdsBannerClose' },
     defineCustomElement: defineBdsBanner
 });
-export const BdsBannerLink = /*@__PURE__*/ createComponent({
+export const BdsBannerLink = createComponent({
     tagName: 'bds-banner-link',
     elementClass: BdsBannerLinkElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsBannerLink: 'bdsBannerLink' },
     defineCustomElement: defineBdsBannerLink
 });
-export const BdsBreadcrumb = /*@__PURE__*/ createComponent({
+export const BdsBreadcrumb = createComponent({
     tagName: 'bds-breadcrumb',
     elementClass: BdsBreadcrumbElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsBreadcrumb
 });
-export const BdsButton = /*@__PURE__*/ createComponent({
+export const BdsButton = createComponent({
     tagName: 'bds-button',
     elementClass: BdsButtonElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClick: 'bdsClick' },
     defineCustomElement: defineBdsButton
 });
-export const BdsButtonGroup = /*@__PURE__*/ createComponent({
+export const BdsButtonGroup = createComponent({
     tagName: 'bds-button-group',
     elementClass: BdsButtonGroupElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onButtonSelected: 'buttonSelected' },
     defineCustomElement: defineBdsButtonGroup
 });
-export const BdsButtonIcon = /*@__PURE__*/ createComponent({
+export const BdsButtonIcon = createComponent({
     tagName: 'bds-button-icon',
     elementClass: BdsButtonIconElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClick: 'bdsClick' },
     defineCustomElement: defineBdsButtonIcon
 });
-export const BdsCard = /*@__PURE__*/ createComponent({
+export const BdsCard = createComponent({
     tagName: 'bds-card',
     elementClass: BdsCardElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClick: 'bdsClick' },
     defineCustomElement: defineBdsCard
 });
-export const BdsCardBody = /*@__PURE__*/ createComponent({
+export const BdsCardBody = createComponent({
     tagName: 'bds-card-body',
     elementClass: BdsCardBodyElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCardBody
 });
-export const BdsCardColor = /*@__PURE__*/ createComponent({
+export const BdsCardColor = createComponent({
     tagName: 'bds-card-color',
     elementClass: BdsCardColorElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCardColor
 });
-export const BdsCardFooter = /*@__PURE__*/ createComponent({
+export const BdsCardFooter = createComponent({
     tagName: 'bds-card-footer',
     elementClass: BdsCardFooterElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCardFooter
 });
-export const BdsCardHeader = /*@__PURE__*/ createComponent({
+export const BdsCardHeader = createComponent({
     tagName: 'bds-card-header',
     elementClass: BdsCardHeaderElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCardHeader
 });
-export const BdsCardSubtitle = /*@__PURE__*/ createComponent({
+export const BdsCardSubtitle = createComponent({
     tagName: 'bds-card-subtitle',
     elementClass: BdsCardSubtitleElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCardSubtitle
 });
-export const BdsCardTitle = /*@__PURE__*/ createComponent({
+export const BdsCardTitle = createComponent({
     tagName: 'bds-card-title',
     elementClass: BdsCardTitleElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCardTitle
 });
-export const BdsCarousel = /*@__PURE__*/ createComponent({
+export const BdsCarousel = createComponent({
     tagName: 'bds-carousel',
     elementClass: BdsCarouselElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsChangeCarousel: 'bdsChangeCarousel' },
     defineCustomElement: defineBdsCarousel
 });
-export const BdsCarouselItem = /*@__PURE__*/ createComponent({
+export const BdsCarouselItem = createComponent({
     tagName: 'bds-carousel-item',
     elementClass: BdsCarouselItemElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCarouselItem
 });
-export const BdsCheckbox = /*@__PURE__*/ createComponent({
+export const BdsCheckbox = createComponent({
     tagName: 'bds-checkbox',
     elementClass: BdsCheckboxElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChange: 'bdsChange',
@@ -351,18 +323,16 @@ export const BdsCheckbox = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsCheckbox
 });
-export const BdsChip = /*@__PURE__*/ createComponent({
+export const BdsChip = createComponent({
     tagName: 'bds-chip',
     elementClass: BdsChipElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsDelete: 'bdsDelete' },
     defineCustomElement: defineBdsChip
 });
-export const BdsChipClickable = /*@__PURE__*/ createComponent({
+export const BdsChipClickable = createComponent({
     tagName: 'bds-chip-clickable',
     elementClass: BdsChipClickableElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onChipClickableClose: 'chipClickableClose',
@@ -370,34 +340,30 @@ export const BdsChipClickable = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsChipClickable
 });
-export const BdsChipSelected = /*@__PURE__*/ createComponent({
+export const BdsChipSelected = createComponent({
     tagName: 'bds-chip-selected',
     elementClass: BdsChipSelectedElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onChipClick: 'chipClick' },
     defineCustomElement: defineBdsChipSelected
 });
-export const BdsChipTag = /*@__PURE__*/ createComponent({
+export const BdsChipTag = createComponent({
     tagName: 'bds-chip-tag',
     elementClass: BdsChipTagElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsChipTag
 });
-export const BdsCounterText = /*@__PURE__*/ createComponent({
+export const BdsCounterText = createComponent({
     tagName: 'bds-counter-text',
     elementClass: BdsCounterTextElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsCounterText
 });
-export const BdsDataTable = /*@__PURE__*/ createComponent({
+export const BdsDataTable = createComponent({
     tagName: 'bds-data-table',
     elementClass: BdsDataTableElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsTableClick: 'bdsTableClick',
@@ -406,10 +372,9 @@ export const BdsDataTable = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsDataTable
 });
-export const BdsDatepicker = /*@__PURE__*/ createComponent({
+export const BdsDatepicker = createComponent({
     tagName: 'bds-datepicker',
     elementClass: BdsDatepickerElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsStartDate: 'bdsStartDate',
@@ -419,10 +384,9 @@ export const BdsDatepicker = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsDatepicker
 });
-export const BdsDatepickerPeriod = /*@__PURE__*/ createComponent({
+export const BdsDatepickerPeriod = createComponent({
     tagName: 'bds-datepicker-period',
     elementClass: BdsDatepickerPeriodElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsStartDate: 'bdsStartDate',
@@ -431,90 +395,79 @@ export const BdsDatepickerPeriod = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsDatepickerPeriod
 });
-export const BdsDatepickerSingle = /*@__PURE__*/ createComponent({
+export const BdsDatepickerSingle = createComponent({
     tagName: 'bds-datepicker-single',
     elementClass: BdsDatepickerSingleElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsDateSelected: 'bdsDateSelected' },
     defineCustomElement: defineBdsDatepickerSingle
 });
-export const BdsDivider = /*@__PURE__*/ createComponent({
+export const BdsDivider = createComponent({
     tagName: 'bds-divider',
     elementClass: BdsDividerElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsDivider
 });
-export const BdsDropdown = /*@__PURE__*/ createComponent({
+export const BdsDropdown = createComponent({
     tagName: 'bds-dropdown',
     elementClass: BdsDropdownElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToggle: 'bdsToggle' },
     defineCustomElement: defineBdsDropdown
 });
-export const BdsExpansionPanel = /*@__PURE__*/ createComponent({
+export const BdsExpansionPanel = createComponent({
     tagName: 'bds-expansion-panel',
     elementClass: BdsExpansionPanelElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsExpansionPanel
 });
-export const BdsExpansionPanelBody = /*@__PURE__*/ createComponent({
+export const BdsExpansionPanelBody = createComponent({
     tagName: 'bds-expansion-panel-body',
     elementClass: BdsExpansionPanelBodyElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsExpansionPanelBody
 });
-export const BdsExpansionPanelHeader = /*@__PURE__*/ createComponent({
+export const BdsExpansionPanelHeader = createComponent({
     tagName: 'bds-expansion-panel-header',
     elementClass: BdsExpansionPanelHeaderElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsExpansionPanelHeader
 });
-export const BdsGrid = /*@__PURE__*/ createComponent({
+export const BdsGrid = createComponent({
     tagName: 'bds-grid',
     elementClass: BdsGridElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsGrid
 });
-export const BdsIcon = /*@__PURE__*/ createComponent({
+export const BdsIcon = createComponent({
     tagName: 'bds-icon',
     elementClass: BdsIconElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsIcon
 });
-export const BdsIllustration = /*@__PURE__*/ createComponent({
+export const BdsIllustration = createComponent({
     tagName: 'bds-illustration',
     elementClass: BdsIllustrationElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsIllustration
 });
-export const BdsImage = /*@__PURE__*/ createComponent({
+export const BdsImage = createComponent({
     tagName: 'bds-image',
     elementClass: BdsImageElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsImage
 });
-export const BdsInput = /*@__PURE__*/ createComponent({
+export const BdsInput = createComponent({
     tagName: 'bds-input',
     elementClass: BdsInputElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChange: 'bdsChange',
@@ -527,10 +480,9 @@ export const BdsInput = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsInput
 });
-export const BdsInputChips = /*@__PURE__*/ createComponent({
+export const BdsInputChips = createComponent({
     tagName: 'bds-input-chips',
     elementClass: BdsInputChipsElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChange: 'bdsChange',
@@ -543,10 +495,9 @@ export const BdsInputChips = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsInputChips
 });
-export const BdsInputEditable = /*@__PURE__*/ createComponent({
+export const BdsInputEditable = createComponent({
     tagName: 'bds-input-editable',
     elementClass: BdsInputEditableElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsInputEditableSave: 'bdsInputEditableSave',
@@ -558,10 +509,9 @@ export const BdsInputEditable = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsInputEditable
 });
-export const BdsInputPassword = /*@__PURE__*/ createComponent({
+export const BdsInputPassword = createComponent({
     tagName: 'bds-input-password',
     elementClass: BdsInputPasswordElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsInputPasswordChange: 'bdsInputPasswordChange',
@@ -573,10 +523,9 @@ export const BdsInputPassword = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsInputPassword
 });
-export const BdsInputPhoneNumber = /*@__PURE__*/ createComponent({
+export const BdsInputPhoneNumber = createComponent({
     tagName: 'bds-input-phone-number',
     elementClass: BdsInputPhoneNumberElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsPhoneNumberChange: 'bdsPhoneNumberChange',
@@ -587,10 +536,9 @@ export const BdsInputPhoneNumber = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsInputPhoneNumber
 });
-export const BdsList = /*@__PURE__*/ createComponent({
+export const BdsList = createComponent({
     tagName: 'bds-list',
     elementClass: BdsListElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsListCheckboxChange: 'bdsListCheckboxChange',
@@ -600,10 +548,9 @@ export const BdsList = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsList
 });
-export const BdsListItem = /*@__PURE__*/ createComponent({
+export const BdsListItem = createComponent({
     tagName: 'bds-list-item',
     elementClass: BdsListItemElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChecked: 'bdsChecked',
@@ -611,122 +558,107 @@ export const BdsListItem = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsListItem
 });
-export const BdsListItemContent = /*@__PURE__*/ createComponent({
+export const BdsListItemContent = createComponent({
     tagName: 'bds-list-item-content',
     elementClass: BdsListItemContentElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsListItemContent
 });
-export const BdsLoadingBar = /*@__PURE__*/ createComponent({
+export const BdsLoadingBar = createComponent({
     tagName: 'bds-loading-bar',
     elementClass: BdsLoadingBarElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsLoadingBar
 });
-export const BdsLoadingPage = /*@__PURE__*/ createComponent({
+export const BdsLoadingPage = createComponent({
     tagName: 'bds-loading-page',
     elementClass: BdsLoadingPageElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsLoadingPage
 });
-export const BdsLoadingSpinner = /*@__PURE__*/ createComponent({
+export const BdsLoadingSpinner = createComponent({
     tagName: 'bds-loading-spinner',
     elementClass: BdsLoadingSpinnerElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsLoadingSpinner
 });
-export const BdsMenu = /*@__PURE__*/ createComponent({
+export const BdsMenu = createComponent({
     tagName: 'bds-menu',
     elementClass: BdsMenuElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToggle: 'bdsToggle' },
     defineCustomElement: defineBdsMenu
 });
-export const BdsMenuAction = /*@__PURE__*/ createComponent({
+export const BdsMenuAction = createComponent({
     tagName: 'bds-menu-action',
     elementClass: BdsMenuActionElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsMenuAction
 });
-export const BdsMenuExibition = /*@__PURE__*/ createComponent({
+export const BdsMenuExibition = createComponent({
     tagName: 'bds-menu-exibition',
     elementClass: BdsMenuExibitionElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsMenuExibition
 });
-export const BdsMenuList = /*@__PURE__*/ createComponent({
+export const BdsMenuList = createComponent({
     tagName: 'bds-menu-list',
     elementClass: BdsMenuListElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsMenuList
 });
-export const BdsMenuListItem = /*@__PURE__*/ createComponent({
+export const BdsMenuListItem = createComponent({
     tagName: 'bds-menu-list-item',
     elementClass: BdsMenuListItemElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsMenuListItem
 });
-export const BdsMenuSeparation = /*@__PURE__*/ createComponent({
+export const BdsMenuSeparation = createComponent({
     tagName: 'bds-menu-separation',
     elementClass: BdsMenuSeparationElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsMenuSeparation
 });
-export const BdsModal = /*@__PURE__*/ createComponent({
+export const BdsModal = createComponent({
     tagName: 'bds-modal',
     elementClass: BdsModalElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsModalChanged: 'bdsModalChanged' },
     defineCustomElement: defineBdsModal
 });
-export const BdsModalAction = /*@__PURE__*/ createComponent({
+export const BdsModalAction = createComponent({
     tagName: 'bds-modal-action',
     elementClass: BdsModalActionElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsModalAction
 });
-export const BdsModalCloseButton = /*@__PURE__*/ createComponent({
+export const BdsModalCloseButton = createComponent({
     tagName: 'bds-modal-close-button',
     elementClass: BdsModalCloseButtonElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsModalCloseButton
 });
-export const BdsNavTree = /*@__PURE__*/ createComponent({
+export const BdsNavTree = createComponent({
     tagName: 'bds-nav-tree',
     elementClass: BdsNavTreeElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToogleChange: 'bdsToogleChange' },
     defineCustomElement: defineBdsNavTree
 });
-export const BdsNavTreeGroup = /*@__PURE__*/ createComponent({
+export const BdsNavTreeGroup = createComponent({
     tagName: 'bds-nav-tree-group',
     elementClass: BdsNavTreeGroupElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsNavTreeGroupCloseAll: 'bdsNavTreeGroupCloseAll',
@@ -734,34 +666,30 @@ export const BdsNavTreeGroup = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsNavTreeGroup
 });
-export const BdsNavTreeItem = /*@__PURE__*/ createComponent({
+export const BdsNavTreeItem = createComponent({
     tagName: 'bds-nav-tree-item',
     elementClass: BdsNavTreeItemElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToogleChange: 'bdsToogleChange' },
     defineCustomElement: defineBdsNavTreeItem
 });
-export const BdsNavbar = /*@__PURE__*/ createComponent({
+export const BdsNavbar = createComponent({
     tagName: 'bds-navbar',
     elementClass: BdsNavbarElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsNavbar
 });
-export const BdsNavbarContent = /*@__PURE__*/ createComponent({
+export const BdsNavbarContent = createComponent({
     tagName: 'bds-navbar-content',
     elementClass: BdsNavbarContentElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsNavbarContent
 });
-export const BdsPagination = /*@__PURE__*/ createComponent({
+export const BdsPagination = createComponent({
     tagName: 'bds-pagination',
     elementClass: BdsPaginationElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsPaginationChange: 'bdsPaginationChange',
@@ -769,26 +697,23 @@ export const BdsPagination = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsPagination
 });
-export const BdsPaper = /*@__PURE__*/ createComponent({
+export const BdsPaper = createComponent({
     tagName: 'bds-paper',
     elementClass: BdsPaperElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsPaper
 });
-export const BdsProgressBar = /*@__PURE__*/ createComponent({
+export const BdsProgressBar = createComponent({
     tagName: 'bds-progress-bar',
     elementClass: BdsProgressBarElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsProgressBar
 });
-export const BdsRadio = /*@__PURE__*/ createComponent({
+export const BdsRadio = createComponent({
     tagName: 'bds-radio',
     elementClass: BdsRadioElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChange: 'bdsChange',
@@ -796,18 +721,16 @@ export const BdsRadio = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsRadio
 });
-export const BdsRadioGroup = /*@__PURE__*/ createComponent({
+export const BdsRadioGroup = createComponent({
     tagName: 'bds-radio-group',
     elementClass: BdsRadioGroupElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsRadioGroupChange: 'bdsRadioGroupChange' },
     defineCustomElement: defineBdsRadioGroup
 });
-export const BdsRichText = /*@__PURE__*/ createComponent({
+export const BdsRichText = createComponent({
     tagName: 'bds-rich-text',
     elementClass: BdsRichTextElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsRichTextChange: 'bdsRichTextChange',
@@ -817,10 +740,9 @@ export const BdsRichText = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsRichText
 });
-export const BdsSelect = /*@__PURE__*/ createComponent({
+export const BdsSelect = createComponent({
     tagName: 'bds-select',
     elementClass: BdsSelectElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChange: 'bdsChange',
@@ -830,10 +752,9 @@ export const BdsSelect = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsSelect
 });
-export const BdsSelectChips = /*@__PURE__*/ createComponent({
+export const BdsSelectChips = createComponent({
     tagName: 'bds-select-chips',
     elementClass: BdsSelectChipsElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsChange: 'bdsChange',
@@ -846,10 +767,9 @@ export const BdsSelectChips = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsSelectChips
 });
-export const BdsSelectOption = /*@__PURE__*/ createComponent({
+export const BdsSelectOption = createComponent({
     tagName: 'bds-select-option',
     elementClass: BdsSelectOptionElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onOptionSelected: 'optionSelected',
@@ -857,66 +777,58 @@ export const BdsSelectOption = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsSelectOption
 });
-export const BdsSidebar = /*@__PURE__*/ createComponent({
+export const BdsSidebar = createComponent({
     tagName: 'bds-sidebar',
     elementClass: BdsSidebarElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToggle: 'bdsToggle' },
     defineCustomElement: defineBdsSidebar
 });
-export const BdsSkeleton = /*@__PURE__*/ createComponent({
+export const BdsSkeleton = createComponent({
     tagName: 'bds-skeleton',
     elementClass: BdsSkeletonElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsSkeleton
 });
-export const BdsSlider = /*@__PURE__*/ createComponent({
+export const BdsSlider = createComponent({
     tagName: 'bds-slider',
     elementClass: BdsSliderElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsChange: 'bdsChange' },
     defineCustomElement: defineBdsSlider
 });
-export const BdsStep = /*@__PURE__*/ createComponent({
+export const BdsStep = createComponent({
     tagName: 'bds-step',
     elementClass: BdsStepElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsStep
 });
-export const BdsStepper = /*@__PURE__*/ createComponent({
+export const BdsStepper = createComponent({
     tagName: 'bds-stepper',
     elementClass: BdsStepperElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsStepper
 });
-export const BdsSwitch = /*@__PURE__*/ createComponent({
+export const BdsSwitch = createComponent({
     tagName: 'bds-switch',
     elementClass: BdsSwitchElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsChange: 'bdsChange' },
     defineCustomElement: defineBdsSwitch
 });
-export const BdsTab = /*@__PURE__*/ createComponent({
+export const BdsTab = createComponent({
     tagName: 'bds-tab',
     elementClass: BdsTabElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsTabChange: 'bdsTabChange' },
     defineCustomElement: defineBdsTab
 });
-export const BdsTabGroup = /*@__PURE__*/ createComponent({
+export const BdsTabGroup = createComponent({
     tagName: 'bds-tab-group',
     elementClass: BdsTabGroupElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsTabChange: 'bdsTabChange',
@@ -924,74 +836,65 @@ export const BdsTabGroup = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsTabGroup
 });
-export const BdsTabItem = /*@__PURE__*/ createComponent({
+export const BdsTabItem = createComponent({
     tagName: 'bds-tab-item',
     elementClass: BdsTabItemElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onTabDisabled: 'tabDisabled' },
     defineCustomElement: defineBdsTabItem
 });
-export const BdsTabPanel = /*@__PURE__*/ createComponent({
+export const BdsTabPanel = createComponent({
     tagName: 'bds-tab-panel',
     elementClass: BdsTabPanelElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTabPanel
 });
-export const BdsTable = /*@__PURE__*/ createComponent({
+export const BdsTable = createComponent({
     tagName: 'bds-table',
     elementClass: BdsTableElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTable
 });
-export const BdsTableBody = /*@__PURE__*/ createComponent({
+export const BdsTableBody = createComponent({
     tagName: 'bds-table-body',
     elementClass: BdsTableBodyElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTableBody
 });
-export const BdsTableCell = /*@__PURE__*/ createComponent({
+export const BdsTableCell = createComponent({
     tagName: 'bds-table-cell',
     elementClass: BdsTableCellElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTableCell
 });
-export const BdsTableHeader = /*@__PURE__*/ createComponent({
+export const BdsTableHeader = createComponent({
     tagName: 'bds-table-header',
     elementClass: BdsTableHeaderElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTableHeader
 });
-export const BdsTableRow = /*@__PURE__*/ createComponent({
+export const BdsTableRow = createComponent({
     tagName: 'bds-table-row',
     elementClass: BdsTableRowElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTableRow
 });
-export const BdsTableTh = /*@__PURE__*/ createComponent({
+export const BdsTableTh = createComponent({
     tagName: 'bds-table-th',
     elementClass: BdsTableThElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTableTh
 });
-export const BdsTabs = /*@__PURE__*/ createComponent({
+export const BdsTabs = createComponent({
     tagName: 'bds-tabs',
     elementClass: BdsTabsElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onScrollButtonClick: 'scrollButtonClick',
@@ -999,58 +902,51 @@ export const BdsTabs = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsTabs
 });
-export const BdsTestComponent = /*@__PURE__*/ createComponent({
+export const BdsTestComponent = createComponent({
     tagName: 'bds-test-component',
     elementClass: BdsTestComponentElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTestComponent
 });
-export const BdsThemeProvider = /*@__PURE__*/ createComponent({
+export const BdsThemeProvider = createComponent({
     tagName: 'bds-theme-provider',
     elementClass: BdsThemeProviderElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsThemeProvider
 });
-export const BdsToast = /*@__PURE__*/ createComponent({
+export const BdsToast = createComponent({
     tagName: 'bds-toast',
     elementClass: BdsToastElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onToastButtonClick: 'toastButtonClick' },
     defineCustomElement: defineBdsToast
 });
-export const BdsToastContainer = /*@__PURE__*/ createComponent({
+export const BdsToastContainer = createComponent({
     tagName: 'bds-toast-container',
     elementClass: BdsToastContainerElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsToastContainer
 });
-export const BdsTooltip = /*@__PURE__*/ createComponent({
+export const BdsTooltip = createComponent({
     tagName: 'bds-tooltip',
     elementClass: BdsTooltipElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTooltip
 });
-export const BdsTypo = /*@__PURE__*/ createComponent({
+export const BdsTypo = createComponent({
     tagName: 'bds-typo',
     elementClass: BdsTypoElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsTypo
 });
-export const BdsUpload = /*@__PURE__*/ createComponent({
+export const BdsUpload = createComponent({
     tagName: 'bds-upload',
     elementClass: BdsUploadElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {
         onBdsUploadDelete: 'bdsUploadDelete',
@@ -1058,10 +954,9 @@ export const BdsUpload = /*@__PURE__*/ createComponent({
     },
     defineCustomElement: defineBdsUpload
 });
-export const BdsWarning = /*@__PURE__*/ createComponent({
+export const BdsWarning = createComponent({
     tagName: 'bds-warning',
     elementClass: BdsWarningElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {},
     defineCustomElement: defineBdsWarning
