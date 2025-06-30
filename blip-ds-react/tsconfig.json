@@ -7,22 +7,22 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "moduleResolution": "bundler",
+    "module": "esnext",
     "target": "es2015",
-    "useDefineForClassFields": true,
     "lib": [
       "ES2015",
       "DOM",
       "DOM.Iterable"
     ],
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "useDefineForClassFields": true,
+    "outDir": "dist",
     "skipLibCheck": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "dist"
+    "src"
   ],
   "exclude": [
     "node_modules"

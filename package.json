@@ -38,7 +38,7 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@stencil/core": "^4.35.0",
-    "@stencil/react-output-target": "^1.1.0",
+    "@stencil/react-output-target": "^1.1.1",
     "@stencil/sass": "^3.2.1",
     "@storybook/addon-links": "^9.0.9",
     "@storybook/react-webpack5": "^9.0.9",
@@ -140,7 +140,7 @@
   "exports": {
     ".": {
       "import": "./dist/blip-ds/blip-ds.esm.js",
-      "require": "./dist/blip-ds/blip-ds.cjs.js"
+      "require": "./dist/blip-ds/blip-ds.js"
     },
     "./dist/*": {
       "import": "./dist/*",
@@ -151,9 +151,9 @@
       "types": "./dist/components/*.d.ts"
     },
     "./loader": {
+      "types": "./loader/index.d.ts",
       "import": "./loader/index.js",
-      "require": "./loader/index.cjs",
-      "types": "./loader/index.d.ts"
+      "require": "./loader/index.cjs"
     }
   }
 }

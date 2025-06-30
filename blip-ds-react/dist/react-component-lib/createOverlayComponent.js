@@ -32,6 +32,18 @@ export const createOverlayComponent = (tagName, controller, customElement) => {
     class Overlay extends React.Component {
         constructor(props) {
             super(props);
+            Object.defineProperty(this, "overlay", {
+                enumerable: true,
+                configurable: true,
+                writable: true,
+                value: void 0
+            });
+            Object.defineProperty(this, "el", {
+                enumerable: true,
+                configurable: true,
+                writable: true,
+                value: void 0
+            });
             if (typeof document !== 'undefined') {
                 this.el = document.createElement('div');
             }
@@ -57,7 +69,6 @@ export const createOverlayComponent = (tagName, controller, customElement) => {
             setRef(this.props.forwardedRef, null);
         }
         shouldComponentUpdate(nextProps) {
-            // Check if the overlay component is about to dismiss
             if (this.overlay && nextProps.isOpen !== this.props.isOpen && nextProps.isOpen === false) {
                 isDismissing = true;
             }
@@ -74,11 +85,6 @@ export const createOverlayComponent = (tagName, controller, customElement) => {
                 if (this.overlay && prevProps.isOpen !== this.props.isOpen && this.props.isOpen === false) {
                     yield this.overlay.dismiss();
                     isDismissing = false;
-                    /**
-                     * Now that the overlay is dismissed
-                     * we need to render again so that any
-                     * inner components will be unmounted
-                     */
                     this.forceUpdate();
                 }
             });
@@ -94,11 +100,6 @@ export const createOverlayComponent = (tagName, controller, customElement) => {
             });
         }
         render() {
-            /**
-             * Continue to render the component even when
-             * overlay is dismissing otherwise component
-             * will be hidden before animation is done.
-             */
             return ReactDOM.createPortal(this.props.isOpen || isDismissing ? this.props.children : null, this.el);
         }
     }

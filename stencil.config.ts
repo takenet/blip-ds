@@ -6,8 +6,17 @@ export const config: Config = {
   namespace: 'blip-ds',
   plugins: [
     sass({
-      includePaths: ['src/globals'],
+      includePaths: ['src/globals', 'node_modules/blip-tokens'],
       injectGlobalPaths: ['src/globals/_helper.scss'],
+      importer: (url) => {
+        // Handle ~ prefix for node_modules imports
+        if (url.startsWith('~')) {
+          return {
+            file: url.substring(1),
+          };
+        }
+        return null;
+      },
     }),
   ],
   outputTargets: [
@@ -31,7 +40,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      outDir: 'blip-ds-react/dist',
+      outDir: 'blip-ds-react/src',
       stencilPackageName: 'blip-ds',
     }),
   ],
