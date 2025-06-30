@@ -108,6 +108,8 @@ export class BdsTabGroup {
     this.positionLeft = 0;
     this.contentScrollable = true;
     this.align = 'center';
+    this.navigationBackground = null;
+    this.bodyBackground = null;
     this.dtButtonPrev = null;
     this.dtButtonNext = null;
   }
@@ -142,7 +144,11 @@ export class BdsTabGroup {
   }
   render() {
     const slidePosition = { left: `${this.positionLeft}px` };
-    return (h(Host, null, h("div", { class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { class: { tab_group__header: true, tab_group__slide: this.isSlideTabs }, ref: this.refHeaderElement }, h("div", { class: {
+    return (h(Host, null, h("div", { class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { class: {
+        tab_group__header: true,
+        tab_group__slide: this.isSlideTabs,
+        [`tab_group__header--background-${this.navigationBackground}`]: !!this.navigationBackground
+      }, ref: this.refHeaderElement }, h("div", { class: {
         tab_group__header__itens: true,
         tab_group__slide__itens: this.isSlideTabs,
         [`tab_group__header__itens__${this.align}`]: !this.isSlideTabs,
@@ -162,7 +168,11 @@ export class BdsTabGroup {
           : '', item.badgePosition === 'right' && item.badge
           ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
           : ''));
-      }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { class: { tab_group__content: true, tab_group__scrolled: this.contentScrollable } }, h("slot", null)))));
+      }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { class: {
+        tab_group__content: true,
+        tab_group__scrolled: this.contentScrollable,
+        [`tab_group__content--background-${this.bodyBackground}`]: !!this.bodyBackground
+      } }, h("slot", null)))));
   }
   static get is() { return "bds-tab-group"; }
   static get encapsulation() { return "shadow"; }
@@ -213,6 +223,50 @@ export class BdsTabGroup {
         "attribute": "align",
         "reflect": false,
         "defaultValue": "'center'"
+      },
+      "navigationBackground": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "tabBackground",
+          "resolved": "\"surface-1\" | \"surface-2\" | \"surface-3\" | \"surface-4\"",
+          "references": {
+            "tabBackground": {
+              "location": "local"
+            }
+          }
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Background color for the navigation bar section"
+        },
+        "attribute": "navigation-background",
+        "reflect": false,
+        "defaultValue": "null"
+      },
+      "bodyBackground": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "tabBackground",
+          "resolved": "\"surface-1\" | \"surface-2\" | \"surface-3\" | \"surface-4\"",
+          "references": {
+            "tabBackground": {
+              "location": "local"
+            }
+          }
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Background color for the body content section"
+        },
+        "attribute": "body-background",
+        "reflect": false,
+        "defaultValue": "null"
       },
       "dtButtonPrev": {
         "type": "string",

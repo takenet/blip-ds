@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { Itens } from './tab-group-interface';
+export type tabBackground = 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
 export declare class BdsTabGroup {
   private tabItensElement?;
   private tabItensSlideElement?;
@@ -14,6 +15,14 @@ export declare class BdsTabGroup {
   positionLeft?: number;
   contentScrollable?: boolean;
   align: 'left' | 'center' | 'right';
+  /**
+   * Background color for the navigation bar section
+   */
+  navigationBackground?: tabBackground;
+  /**
+   * Background color for the body content section
+   */
+  bodyBackground?: tabBackground;
   /**
    * Data test is the prop to specifically test the component action object.
    * dtButtonPrev is the data-test to button prev.
