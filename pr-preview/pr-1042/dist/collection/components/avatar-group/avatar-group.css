@@ -4,9 +4,11 @@
 /*
   Font sizes have been converted to rem considering a base size of 16px.
 */
-/**
-* Define media query values
-*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
 /*
 *  Z-Index
 *  
@@ -15,6 +17,9 @@
 *  
 *  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
 *  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
 */
 .host {
   position: relative;
@@ -44,7 +49,7 @@
   width: auto;
 }
 .avatar__group > *:nth-child(6) div {
-  background-color: #1a2437;
+  background-color: #292929;
   padding: 0 16px;
   width: auto;
 }

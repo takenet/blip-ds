@@ -1,4 +1,4 @@
-import { S as Switch, d as defineCustomElement$1 } from './p-C05quLCI.js';
+import { S as Switch, d as defineCustomElement$1 } from './p-asrdgZCP.js';
 
 const BdsSwitch = Switch;
 const defineCustomElement = defineCustomElement$1;

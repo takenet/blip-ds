@@ -4,9 +4,11 @@
 /*
   Font sizes have been converted to rem considering a base size of 16px.
 */
-/**
-* Define media query values
-*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
 /*
 *  Z-Index
 *  
@@ -15,6 +17,9 @@
 *  
 *  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
 *  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
 */
 :host {
   display: block;
@@ -25,7 +30,7 @@
   padding-left: 22px;
 }
 .expansion-content .with-line {
-  border-left: 2px solid #8ca0b3;
+  border-left: 2px solid #e3e3e3;
   padding-left: 9px;
   padding-top: 16px;
   display: flex;
@@ -37,7 +42,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #8ca0b3;
+  background-color: #e3e3e3;
   position: relative;
   right: 14px;
 }
@@ -46,7 +51,7 @@
   width: 37px;
   height: 30px;
   position: relative;
-  background: #d2dfe6;
+  background: #d4d4d4;
   justify-content: center;
   border-radius: 8px;
   font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;

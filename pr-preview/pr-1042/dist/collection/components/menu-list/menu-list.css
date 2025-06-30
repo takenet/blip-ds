@@ -4,9 +4,11 @@
 /*
   Font sizes have been converted to rem considering a base size of 16px.
 */
-/**
-* Define media query values
-*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
 /*
 *  Z-Index
 *  
@@ -16,6 +18,9 @@
 *  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
 *  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
 */
+/**
+* Define media query values
+*/
 .menu-list {
   display: flex;
   width: fit-content;
@@ -24,17 +29,17 @@
   border-radius: 8px;
 }
 .menu-list bds-menu-list-item + bds-menu-list-item {
-  border-left: 1px solid #d2dfe6;
+  border-left: 1px solid #d4d4d4;
 }
 .menu-list__left {
   width: 7px;
   height: 56px;
   border-radius: 8px 0px 0px 8px;
-  background-color: #ffffff;
+  background-color: #f6f6f6;
 }
 .menu-list__right {
   width: 7px;
   height: 56px;
   border-radius: 0px 8px 8px 0px;
-  background-color: #ffffff;
+  background-color: #f6f6f6;
 }

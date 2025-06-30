@@ -4,9 +4,11 @@
 /*
   Font sizes have been converted to rem considering a base size of 16px.
 */
-/**
-* Define media query values
-*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
 /*
 *  Z-Index
 *  
@@ -15,6 +17,9 @@
 *  
 *  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
 *  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
 */
 :host(.theme--light) {
   width: 100%;
@@ -117,7 +122,7 @@
   --color-extended-gray: rgb(102, 102, 102);
   --color-extended-gray-bright: rgb(199, 199, 199);
   --color-hover: rgba(255, 255, 255, 0.16);
-  --color-pressed: rgba(255, 255, 255, 0.08);
+  --color-pressed: rgba(255, 255, 255, 0.16);
   --color-shadow-0: var(--color-shadow-0, rgba(0, 0, 0, 0.04));
   --color-shadow-1: var(--color-shadow-1, rgba(0, 0, 0, 0.16));
 }

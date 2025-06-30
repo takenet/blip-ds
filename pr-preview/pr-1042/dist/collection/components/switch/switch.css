@@ -4,9 +4,11 @@
 /*
   Font sizes have been converted to rem considering a base size of 16px.
 */
-/**
-* Define media query values
-*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
 /*
 *  Z-Index
 *  
@@ -15,6 +17,9 @@
 *  
 *  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
 *  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
 */
 .switch {
   position: relative;
@@ -124,7 +129,7 @@ input:focus + .slider--selected-disabled {
   box-shadow: 0 0 1px #b9cbd3;
 }
 input:focus + .slider--deselected-disabled {
-  box-shadow: 0 0 1px #d2dfe6;
+  box-shadow: 0 0 1px #d4d4d4;
 }
 
 input:checked + .slider--size-tall::before {

@@ -3,7 +3,7 @@ import { d as defineCustomElement$6 } from './p-CGgHblXS.js';
 import { d as defineCustomElement$5 } from './p-BiURb2Nl.js';
 import { d as defineCustomElement$4 } from './p-NO5PczPJ.js';
 import { d as defineCustomElement$3 } from './p-ocQDTgq9.js';
-import { d as defineCustomElement$2 } from './p-D4Y1c0nl.js';
+import { d as defineCustomElement$2 } from './p-Bn95t-l-.js';
 
 const carouselItemCss = ":host{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;width:auto}.carrosel-item-frame{display:block;width:100%;height:100%;border-radius:8px;position:relative;overflow:hidden}.carrosel-item-frame ::slotted(*){position:relative}.image-bg{position:absolute;width:100%;height:100%}";
 
