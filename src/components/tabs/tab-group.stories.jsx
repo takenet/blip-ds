@@ -268,30 +268,49 @@ export const FrameworkReact = () => {
   );
 };
 
-// Independent styling examples
+// Independent styling examples with dramatic visual differences
 export const IndependentNavigationStyling = () => {
   return (
-    <bds-grid padding="2" gap="2" direction="column">
-      <bds-typo variant="fs-20" bold="bold">Navigation with Surface-2 Background</bds-typo>
-      <bds-tab-group navigation-background="surface-2">
-        <bds-tab-item label="Design">
-          <bds-grid padding="2">
+    <bds-grid padding="3" gap="4" direction="column" style={{ backgroundColor: '#f0f0f0', minHeight: '400px' }}>
+      <bds-typo variant="fs-20" bold="bold">🎨 Dark Navigation with Light Content</bds-typo>
+      <bds-typo variant="fs-14" style={{ color: '#666', marginTop: '-12px' }}>
+        Navigation uses surface-4 (dark) background for strong visual contrast
+      </bds-typo>
+      <bds-tab-group navigation-background="surface-4">
+        <bds-tab-item label="🎯 Dashboard">
+          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
+            <bds-typo variant="fs-18" bold="bold">Welcome to the Dashboard</bds-typo>
             <bds-typo variant="fs-16">
-              This example shows independent styling of the navigation bar with surface-2 background.
+              Notice how the navigation bar has a dark background (surface-4) while this content area 
+              maintains the default light background. This creates a strong visual separation between 
+              the navigation and content sections.
             </bds-typo>
+            <bds-grid direction="row" gap="2">
+              <bds-button variant="primary">Primary Action</bds-button>
+              <bds-button variant="secondary">Secondary Action</bds-button>
+            </bds-grid>
           </bds-grid>
         </bds-tab-item>
-        <bds-tab-item label="Development">
-          <bds-grid padding="2">
+        <bds-tab-item label="📊 Analytics">
+          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
+            <bds-typo variant="fs-18" bold="bold">Analytics Overview</bds-typo>
             <bds-typo variant="fs-16">
-              The navigation has a different background color while the content remains with default styling.
+              The dark navigation provides a professional header-like appearance, similar to many 
+              modern applications. This matches the Figma design intention for independent styling.
             </bds-typo>
+            <bds-grid direction="row" gap="2">
+              <bds-chip>Active Users</bds-chip>
+              <bds-chip>Revenue</bds-chip>
+              <bds-chip>Conversions</bds-chip>
+            </bds-grid>
           </bds-grid>
         </bds-tab-item>
-        <bds-tab-item label="Testing">
-          <bds-grid padding="2">
+        <bds-tab-item label="⚙️ Settings">
+          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
+            <bds-typo variant="fs-18" bold="bold">System Settings</bds-typo>
             <bds-typo variant="fs-16">
-              This allows for creating distinct visual sections as shown in the Figma designs.
+              This demonstrates how the dark navigation bar creates a clear visual hierarchy and 
+              separates the tab controls from the main content area.
             </bds-typo>
           </bds-grid>
         </bds-tab-item>
@@ -302,27 +321,40 @@ export const IndependentNavigationStyling = () => {
 
 export const IndependentBodyStyling = () => {
   return (
-    <bds-grid padding="2" gap="2" direction="column">
-      <bds-typo variant="fs-20" bold="bold">Body with Surface-3 Background</bds-typo>
-      <bds-tab-group body-background="surface-3">
-        <bds-tab-item label="Overview">
-          <bds-grid padding="2">
-            <bds-typo variant="fs-16">
-              This example shows independent styling of the body content with surface-3 background.
+    <bds-grid padding="3" gap="4" direction="column" style={{ backgroundColor: '#f0f0f0', minHeight: '400px' }}>
+      <bds-typo variant="fs-20" bold="bold">🌟 Light Navigation with Dark Content</bds-typo>
+      <bds-typo variant="fs-14" style={{ color: '#666', marginTop: '-12px' }}>
+        Content area uses surface-4 (dark) background with light text for dramatic contrast
+      </bds-typo>
+      <bds-tab-group body-background="surface-4">
+        <bds-tab-item label="🏠 Home">
+          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
+            <bds-typo variant="fs-18" bold="bold" style={{ color: 'white' }}>Dark Content Area</bds-typo>
+            <bds-typo variant="fs-16" style={{ color: '#e0e0e0' }}>
+              This example showcases how the content area can have a completely different visual treatment 
+              from the navigation. The dark background (surface-4) creates a dramatic contrast with the 
+              light navigation tabs above.
+            </bds-typo>
+            <bds-typo variant="fs-14" style={{ color: '#cfcfcf' }}>
+              Perfect for creating modern, high-contrast interfaces or dark-themed content sections.
             </bds-typo>
           </bds-grid>
         </bds-tab-item>
-        <bds-tab-item label="Details">
-          <bds-grid padding="2">
-            <bds-typo variant="fs-16">
-              The content area has a different background color while the navigation remains with default styling.
+        <bds-tab-item label="📱 Mobile">
+          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
+            <bds-typo variant="fs-18" bold="bold" style={{ color: 'white' }}>Mobile Experience</bds-typo>
+            <bds-typo variant="fs-16" style={{ color: '#e0e0e0' }}>
+              The navigation maintains its light appearance while the content area provides a rich, 
+              dark background that could be ideal for displaying media content or creating focus areas.
             </bds-typo>
           </bds-grid>
         </bds-tab-item>
-        <bds-tab-item label="Settings">
-          <bds-grid padding="2">
-            <bds-typo variant="fs-16">
-              This enables creating interfaces with distinct visual treatments for different sections.
+        <bds-tab-item label="💻 Desktop">
+          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
+            <bds-typo variant="fs-18" bold="bold" style={{ color: 'white' }}>Desktop Interface</bds-typo>
+            <bds-typo variant="fs-16" style={{ color: '#e0e0e0' }}>
+              This demonstrates the flexibility of independent styling - you can create interfaces 
+              that match your design requirements exactly.
             </bds-typo>
           </bds-grid>
         </bds-tab-item>
@@ -333,27 +365,80 @@ export const IndependentBodyStyling = () => {
 
 export const CombinedIndependentStyling = () => {
   return (
-    <bds-grid padding="2" gap="2" direction="column">
-      <bds-typo variant="fs-20" bold="bold">Both Navigation and Body with Independent Backgrounds</bds-typo>
-      <bds-tab-group navigation-background="surface-2" body-background="surface-1">
-        <bds-tab-item label="Dashboard">
-          <bds-grid padding="2">
+    <bds-grid padding="3" gap="4" direction="column" style={{ backgroundColor: '#f0f0f0', minHeight: '500px' }}>
+      <bds-typo variant="fs-20" bold="bold">🔥 Maximum Contrast: Dark Navigation + Light Content</bds-typo>
+      <bds-typo variant="fs-14" style={{ color: '#666', marginTop: '-12px' }}>
+        Dark navigation (surface-4) with very light content (surface-1) for maximum visual impact
+      </bds-typo>
+      <bds-tab-group navigation-background="surface-4" body-background="surface-1">
+        <bds-tab-item label="🚀 Launch">
+          <bds-grid padding="4" gap="4" direction="column" style={{ minHeight: '250px' }}>
+            <bds-typo variant="fs-18" bold="bold">Product Launch Dashboard</bds-typo>
             <bds-typo variant="fs-16">
-              This example shows both navigation and body with independent background styling.
+              This combination creates the strongest visual contrast possible with our surface colors. 
+              The dark navigation (surface-4: #141414) paired with the very light content area 
+              (surface-1: #F6F6F6) provides maximum distinction between sections.
             </bds-typo>
+            <bds-grid direction="row" gap="2" style={{ marginTop: '16px' }}>
+              <div style={{ 
+                padding: '12px 16px', 
+                backgroundColor: '#e8f4f8', 
+                borderRadius: '4px',
+                border: '1px solid #d0ebf0'
+              }}>
+                <bds-typo variant="fs-14" bold="bold">Launch Status</bds-typo>
+                <bds-typo variant="fs-12">Ready to deploy</bds-typo>
+              </div>
+              <div style={{ 
+                padding: '12px 16px', 
+                backgroundColor: '#fff2e8', 
+                borderRadius: '4px',
+                border: '1px solid #ffe4d0'
+              }}>
+                <bds-typo variant="fs-14" bold="bold">Pending Reviews</bds-typo>
+                <bds-typo variant="fs-12">3 items</bds-typo>
+              </div>
+            </bds-grid>
           </bds-grid>
         </bds-tab-item>
-        <bds-tab-item label="Analytics">
-          <bds-grid padding="2">
+        <bds-tab-item label="📈 Metrics">
+          <bds-grid padding="4" gap="4" direction="column" style={{ minHeight: '250px' }}>
+            <bds-typo variant="fs-18" bold="bold">Performance Metrics</bds-typo>
             <bds-typo variant="fs-16">
-              The navigation has surface-2 background while the content area has surface-1 background.
+              Perfect for creating professional dashboards where you need clear visual hierarchy. 
+              The dark header acts like a toolbar while the light content area provides excellent 
+              readability for data and content.
             </bds-typo>
+            <bds-grid direction="row" gap="3" style={{ marginTop: '16px' }}>
+              <div style={{ 
+                padding: '16px', 
+                backgroundColor: 'white', 
+                borderRadius: '8px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                flex: 1
+              }}>
+                <bds-typo variant="fs-16" bold="bold">Active Users</bds-typo>
+                <bds-typo variant="fs-24" bold="bold" style={{ color: '#1e6bf1' }}>12,547</bds-typo>
+              </div>
+              <div style={{ 
+                padding: '16px', 
+                backgroundColor: 'white', 
+                borderRadius: '8px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                flex: 1
+              }}>
+                <bds-typo variant="fs-16" bold="bold">Conversion Rate</bds-typo>
+                <bds-typo variant="fs-24" bold="bold" style={{ color: '#84ebbc' }}>23.4%</bds-typo>
+              </div>
+            </bds-grid>
           </bds-grid>
         </bds-tab-item>
-        <bds-tab-item label="Reports">
-          <bds-grid padding="2">
+        <bds-tab-item label="⚡ Performance">
+          <bds-grid padding="4" gap="4" direction="column" style={{ minHeight: '250px' }}>
+            <bds-typo variant="fs-18" bold="bold">System Performance</bds-typo>
             <bds-typo variant="fs-16">
-              This matches the desired interface shown in the Figma designs.
+              This styling approach matches modern application designs where navigation areas are 
+              darker and content areas are lighter for optimal readability and visual hierarchy.
             </bds-typo>
           </bds-grid>
         </bds-tab-item>
@@ -364,72 +449,260 @@ export const CombinedIndependentStyling = () => {
 
 export const AllSurfaceVariations = () => {
   return (
-    <bds-grid padding="2" gap="3" direction="column">
-      <bds-typo variant="fs-20" bold="bold">All Surface Background Variations</bds-typo>
+    <bds-grid padding="3" gap="4" direction="column" style={{ minHeight: '600px' }}>
+      <bds-typo variant="fs-20" bold="bold">🎨 Complete Surface Color Showcase</bds-typo>
+      <bds-typo variant="fs-14" style={{ color: '#666' }}>
+        Compare all surface background options to see the visual differences
+      </bds-typo>
       
-      <bds-grid gap="2" direction="column">
-        <bds-typo variant="fs-16" bold="bold">Surface-1 Navigation</bds-typo>
-        <bds-tab-group navigation-background="surface-1">
-          <bds-tab-item label="Tab 1">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Navigation with surface-1 background</bds-typo>
-            </bds-grid>
-          </bds-tab-item>
-          <bds-tab-item label="Tab 2">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Content with default background</bds-typo>
-            </bds-grid>
-          </bds-tab-item>
-        </bds-tab-group>
+      <bds-grid gap="3" direction="column">
+        <bds-typo variant="fs-16" bold="bold">🌟 Most Dramatic: Dark Navigation</bds-typo>
+        <div style={{ border: '2px solid #0096fa', borderRadius: '8px', padding: '8px' }}>
+          <bds-tab-group navigation-background="surface-4">
+            <bds-tab-item label="Dark Header">
+              <bds-grid padding="3">
+                <bds-typo variant="fs-14" bold="bold">Surface-4 Navigation (#141414)</bds-typo>
+                <bds-typo variant="fs-12">Creates maximum contrast with light content</bds-typo>
+              </bds-grid>
+            </bds-tab-item>
+            <bds-tab-item label="Example">
+              <bds-grid padding="3">
+                <bds-typo variant="fs-14">Professional, modern look with clear separation</bds-typo>
+              </bds-grid>
+            </bds-tab-item>
+          </bds-tab-group>
+        </div>
       </bds-grid>
 
-      <bds-grid gap="2" direction="column">
-        <bds-typo variant="fs-16" bold="bold">Surface-2 Navigation</bds-typo>
-        <bds-tab-group navigation-background="surface-2">
-          <bds-tab-item label="Tab 1">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Navigation with surface-2 background</bds-typo>
-            </bds-grid>
-          </bds-tab-item>
-          <bds-tab-item label="Tab 2">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Content with default background</bds-typo>
-            </bds-grid>
-          </bds-tab-item>
-        </bds-tab-group>
+      <bds-grid gap="3" direction="column">
+        <bds-typo variant="fs-16" bold="bold">🔄 Reversed: Dark Content</bds-typo>
+        <div style={{ border: '2px solid #84ebbc', borderRadius: '8px', padding: '8px' }}>
+          <bds-tab-group body-background="surface-4">
+            <bds-tab-item label="Light Header">
+              <bds-grid padding="3" style={{ minHeight: '100px' }}>
+                <bds-typo variant="fs-14" bold="bold" style={{ color: 'white' }}>Surface-4 Content (#141414)</bds-typo>
+                <bds-typo variant="fs-12" style={{ color: '#e0e0e0' }}>Dark content area with light navigation</bds-typo>
+              </bds-grid>
+            </bds-tab-item>
+            <bds-tab-item label="Example">
+              <bds-grid padding="3" style={{ minHeight: '100px' }}>
+                <bds-typo variant="fs-12" style={{ color: '#cfcfcf' }}>Great for media or focus content</bds-typo>
+              </bds-grid>
+            </bds-tab-item>
+          </bds-tab-group>
+        </div>
       </bds-grid>
 
-      <bds-grid gap="2" direction="column">
-        <bds-typo variant="fs-16" bold="bold">Surface-3 Navigation</bds-typo>
-        <bds-tab-group navigation-background="surface-3">
-          <bds-tab-item label="Tab 1">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Navigation with surface-3 background</bds-typo>
-            </bds-grid>
-          </bds-tab-item>
-          <bds-tab-item label="Tab 2">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Content with default background</bds-typo>
-            </bds-grid>
-          </bds-tab-item>
-        </bds-tab-group>
+      <bds-grid gap="3" direction="column">
+        <bds-typo variant="fs-16" bold="bold">⚡ Subtle Variations</bds-typo>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '4px' }}>
+            <bds-tab-group navigation-background="surface-2">
+              <bds-tab-item label="Surface-2">
+                <bds-grid padding="2">
+                  <bds-typo variant="fs-12">Medium gray (#E0E0E0)</bds-typo>
+                </bds-grid>
+              </bds-tab-item>
+            </bds-tab-group>
+          </div>
+          <div style={{ border: '1px solid #ccc', borderRadius: '4px', padding: '4px' }}>
+            <bds-tab-group navigation-background="surface-3">
+              <bds-tab-item label="Surface-3">
+                <bds-grid padding="2">
+                  <bds-typo variant="fs-12">Darker gray (#CFCFCF)</bds-typo>
+                </bds-grid>
+              </bds-tab-item>
+            </bds-tab-group>
+          </div>
+        </div>
       </bds-grid>
 
-      <bds-grid gap="2" direction="column">
-        <bds-typo variant="fs-16" bold="bold">Surface-4 Navigation</bds-typo>
-        <bds-tab-group navigation-background="surface-4">
-          <bds-tab-item label="Tab 1">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Navigation with surface-4 background</bds-typo>
-            </bds-grid>
+      <bds-grid gap="3" direction="column">
+        <bds-typo variant="fs-16" bold="bold">🎯 Best Practice Combinations</bds-typo>
+        <div style={{ 
+          border: '3px solid #fde99b', 
+          borderRadius: '8px', 
+          padding: '8px',
+          backgroundColor: '#fffbf0'
+        }}>
+          <bds-tab-group navigation-background="surface-4" body-background="surface-1">
+            <bds-tab-item label="Recommended">
+              <bds-grid padding="3">
+                <bds-typo variant="fs-14" bold="bold">Best Contrast Combination</bds-typo>
+                <bds-typo variant="fs-12">Dark navigation + Very light content = Maximum readability</bds-typo>
+              </bds-grid>
+            </bds-tab-item>
+            <bds-tab-item label="Professional">
+              <bds-grid padding="3">
+                <bds-typo variant="fs-12">Perfect for dashboards, admin panels, and professional interfaces</bds-typo>
+              </bds-grid>
+            </bds-tab-item>
+          </bds-tab-group>
+        </div>
+      </bds-grid>
+    </bds-grid>
+  );
+};
+
+export const ExtremeContrastExample = () => {
+  return (
+    <bds-grid padding="4" gap="4" direction="column" style={{ 
+      backgroundColor: '#ffffff', 
+      minHeight: '500px',
+      border: '1px solid #e0e0e0',
+      borderRadius: '8px'
+    }}>
+      <bds-typo variant="fs-24" bold="bold" style={{ textAlign: 'center', color: '#1e6bf1' }}>
+        🔥 EXTREME CONTRAST DEMO 🔥
+      </bds-typo>
+      <bds-typo variant="fs-16" style={{ textAlign: 'center', color: '#666' }}>
+        This example uses the darkest navigation with the lightest content for maximum visual impact
+      </bds-typo>
+      
+      <div style={{ 
+        padding: '16px',
+        backgroundColor: '#f8f9fa',
+        borderRadius: '8px',
+        border: '2px dashed #0096fa'
+      }}>
+        <bds-tab-group navigation-background="surface-4" body-background="surface-1">
+          <bds-tab-item label="🎯 BEFORE & AFTER">
+            <div style={{ 
+              padding: '32px',
+              background: 'linear-gradient(135deg, #f6f6f6 0%, #ffffff 100%)',
+              minHeight: '200px'
+            }}>
+              <bds-typo variant="fs-20" bold="bold" style={{ marginBottom: '16px' }}>
+                Navigation: DARK (#141414) vs Content: LIGHT (#F6F6F6)
+              </bds-typo>
+              <bds-typo variant="fs-16" style={{ marginBottom: '24px' }}>
+                Look at the stark difference! The navigation bar above is nearly black while this 
+                content area is very light gray - creating maximum visual separation.
+              </bds-typo>
+              
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '1fr 1fr', 
+                gap: '16px',
+                marginTop: '24px'
+              }}>
+                <div style={{ 
+                  padding: '16px', 
+                  backgroundColor: '#141414',
+                  color: 'white',
+                  borderRadius: '4px',
+                  textAlign: 'center'
+                }}>
+                  <bds-typo variant="fs-14" bold="bold" style={{ color: 'white' }}>
+                    Navigation Color
+                  </bds-typo>
+                  <bds-typo variant="fs-12" style={{ color: '#e0e0e0' }}>
+                    #141414 (surface-4)
+                  </bds-typo>
+                </div>
+                <div style={{ 
+                  padding: '16px', 
+                  backgroundColor: '#F6F6F6',
+                  color: '#333',
+                  borderRadius: '4px',
+                  textAlign: 'center',
+                  border: '1px solid #e0e0e0'
+                }}>
+                  <bds-typo variant="fs-14" bold="bold">Content Color</bds-typo>
+                  <bds-typo variant="fs-12">#F6F6F6 (surface-1)</bds-typo>
+                </div>
+              </div>
+            </div>
           </bds-tab-item>
-          <bds-tab-item label="Tab 2">
-            <bds-grid padding="2">
-              <bds-typo variant="fs-14">Content with default background</bds-typo>
-            </bds-grid>
+          
+          <bds-tab-item label="📊 VISUAL COMPARISON">
+            <div style={{ 
+              padding: '32px',
+              background: 'linear-gradient(135deg, #f6f6f6 0%, #ffffff 100%)',
+              minHeight: '200px'
+            }}>
+              <bds-typo variant="fs-18" bold="bold" style={{ marginBottom: '16px' }}>
+                Compare with Default Styling
+              </bds-typo>
+              
+              <div style={{ marginBottom: '24px' }}>
+                <bds-typo variant="fs-14" bold="bold" style={{ marginBottom: '8px' }}>
+                  ❌ Default (No Background Props):
+                </bds-typo>
+                <div style={{ 
+                  padding: '12px', 
+                  backgroundColor: 'white', 
+                  border: '1px solid #e0e0e0',
+                  borderRadius: '4px',
+                  marginBottom: '16px'
+                }}>
+                  <bds-typo variant="fs-12">Both navigation and content have same/similar backgrounds</bds-typo>
+                </div>
+              </div>
+              
+              <div>
+                <bds-typo variant="fs-14" bold="bold" style={{ marginBottom: '8px' }}>
+                  ✅ With Independent Styling:
+                </bds-typo>
+                <div style={{ 
+                  padding: '12px', 
+                  background: 'linear-gradient(to right, #141414 0%, #141414 30%, #F6F6F6 30%, #F6F6F6 100%)',
+                  borderRadius: '4px',
+                  color: 'white'
+                }}>
+                  <bds-typo variant="fs-12" style={{ color: 'white' }}>
+                    Clear visual separation between navigation and content sections!
+                  </bds-typo>
+                </div>
+              </div>
+            </div>
+          </bds-tab-item>
+          
+          <bds-tab-item label="🎨 USE CASES">
+            <div style={{ 
+              padding: '32px',
+              background: 'linear-gradient(135deg, #f6f6f6 0%, #ffffff 100%)',
+              minHeight: '200px'
+            }}>
+              <bds-typo variant="fs-18" bold="bold" style={{ marginBottom: '20px' }}>
+                Perfect For These Interface Types:
+              </bds-typo>
+              
+              <div style={{ display: 'grid', gap: '16px' }}>
+                <div style={{ 
+                  padding: '16px', 
+                  backgroundColor: 'white',
+                  borderLeft: '4px solid #1e6bf1',
+                  borderRadius: '0 4px 4px 0'
+                }}>
+                  <bds-typo variant="fs-14" bold="bold">🏢 Admin Dashboards</bds-typo>
+                  <bds-typo variant="fs-12">Professional look with clear navigation hierarchy</bds-typo>
+                </div>
+                
+                <div style={{ 
+                  padding: '16px', 
+                  backgroundColor: 'white',
+                  borderLeft: '4px solid #84ebbc',
+                  borderRadius: '0 4px 4px 0'
+                }}>
+                  <bds-typo variant="fs-14" bold="bold">📱 Modern Apps</bds-typo>
+                  <bds-typo variant="fs-12">Clean separation between header and content areas</bds-typo>
+                </div>
+                
+                <div style={{ 
+                  padding: '16px', 
+                  backgroundColor: 'white',
+                  borderLeft: '4px solid #fde99b',
+                  borderRadius: '0 4px 4px 0'
+                }}>
+                  <bds-typo variant="fs-14" bold="bold">💼 Enterprise Interfaces</bds-typo>
+                  <bds-typo variant="fs-12">Matches Figma design system requirements</bds-typo>
+                </div>
+              </div>
+            </div>
           </bds-tab-item>
         </bds-tab-group>
-      </bds-grid>
+      </div>
     </bds-grid>
   );
 };
