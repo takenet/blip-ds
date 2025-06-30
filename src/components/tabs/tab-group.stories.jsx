@@ -17,7 +17,12 @@ const contentDefault = {
 
 export const Properties = (args) => {
   return (
-    <bds-tab-group align={args.align} content-scrollable={args.contentScrollable}>
+    <bds-tab-group 
+      align={args.align} 
+      content-scrollable={args.contentScrollable}
+      navigation-background={args.navigationBackground}
+      body-background={args.bodyBackground}
+    >
       <bds-tab-item 
         label={args.label} 
         icon={args.icon} 
@@ -58,6 +63,8 @@ export const Properties = (args) => {
 Properties.args = {
   align: 'center',
   contentScrollable: true,
+  navigationBackground: null,
+  bodyBackground: null,
   disable: false,
   label: 'Basic settings',
   icon: 'builder-publish-bot',
@@ -87,6 +94,20 @@ Properties.argTypes = {
       defaultValue: { summary: 'true' },
     },
     control: 'boolean',
+  },
+  navigationBackground: {
+    table: {
+      defaultValue: { summary: 'null' },
+    },
+    options: [null, 'surface-1', 'surface-2', 'surface-3', 'surface-4'],
+    control: 'select',
+  },
+  bodyBackground: {
+    table: {
+      defaultValue: { summary: 'null' },
+    },
+    options: [null, 'surface-1', 'surface-2', 'surface-3', 'surface-4'],
+    control: 'select',
   },
   disable: {
     table: {
@@ -244,5 +265,171 @@ export const FrameworkReact = () => {
             </BdsTabItem>
           </BdsTabGroup>
     </>
+  );
+};
+
+// Independent styling examples
+export const IndependentNavigationStyling = () => {
+  return (
+    <bds-grid padding="2" gap="2" direction="column">
+      <bds-typo variant="fs-20" bold="bold">Navigation with Surface-2 Background</bds-typo>
+      <bds-tab-group navigation-background="surface-2">
+        <bds-tab-item label="Design">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              This example shows independent styling of the navigation bar with surface-2 background.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+        <bds-tab-item label="Development">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              The navigation has a different background color while the content remains with default styling.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+        <bds-tab-item label="Testing">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              This allows for creating distinct visual sections as shown in the Figma designs.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+      </bds-tab-group>
+    </bds-grid>
+  );
+};
+
+export const IndependentBodyStyling = () => {
+  return (
+    <bds-grid padding="2" gap="2" direction="column">
+      <bds-typo variant="fs-20" bold="bold">Body with Surface-3 Background</bds-typo>
+      <bds-tab-group body-background="surface-3">
+        <bds-tab-item label="Overview">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              This example shows independent styling of the body content with surface-3 background.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+        <bds-tab-item label="Details">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              The content area has a different background color while the navigation remains with default styling.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+        <bds-tab-item label="Settings">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              This enables creating interfaces with distinct visual treatments for different sections.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+      </bds-tab-group>
+    </bds-grid>
+  );
+};
+
+export const CombinedIndependentStyling = () => {
+  return (
+    <bds-grid padding="2" gap="2" direction="column">
+      <bds-typo variant="fs-20" bold="bold">Both Navigation and Body with Independent Backgrounds</bds-typo>
+      <bds-tab-group navigation-background="surface-2" body-background="surface-1">
+        <bds-tab-item label="Dashboard">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              This example shows both navigation and body with independent background styling.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+        <bds-tab-item label="Analytics">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              The navigation has surface-2 background while the content area has surface-1 background.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+        <bds-tab-item label="Reports">
+          <bds-grid padding="2">
+            <bds-typo variant="fs-16">
+              This matches the desired interface shown in the Figma designs.
+            </bds-typo>
+          </bds-grid>
+        </bds-tab-item>
+      </bds-tab-group>
+    </bds-grid>
+  );
+};
+
+export const AllSurfaceVariations = () => {
+  return (
+    <bds-grid padding="2" gap="3" direction="column">
+      <bds-typo variant="fs-20" bold="bold">All Surface Background Variations</bds-typo>
+      
+      <bds-grid gap="2" direction="column">
+        <bds-typo variant="fs-16" bold="bold">Surface-1 Navigation</bds-typo>
+        <bds-tab-group navigation-background="surface-1">
+          <bds-tab-item label="Tab 1">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Navigation with surface-1 background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+          <bds-tab-item label="Tab 2">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Content with default background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </bds-grid>
+
+      <bds-grid gap="2" direction="column">
+        <bds-typo variant="fs-16" bold="bold">Surface-2 Navigation</bds-typo>
+        <bds-tab-group navigation-background="surface-2">
+          <bds-tab-item label="Tab 1">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Navigation with surface-2 background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+          <bds-tab-item label="Tab 2">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Content with default background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </bds-grid>
+
+      <bds-grid gap="2" direction="column">
+        <bds-typo variant="fs-16" bold="bold">Surface-3 Navigation</bds-typo>
+        <bds-tab-group navigation-background="surface-3">
+          <bds-tab-item label="Tab 1">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Navigation with surface-3 background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+          <bds-tab-item label="Tab 2">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Content with default background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </bds-grid>
+
+      <bds-grid gap="2" direction="column">
+        <bds-typo variant="fs-16" bold="bold">Surface-4 Navigation</bds-typo>
+        <bds-tab-group navigation-background="surface-4">
+          <bds-tab-item label="Tab 1">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Navigation with surface-4 background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+          <bds-tab-item label="Tab 2">
+            <bds-grid padding="2">
+              <bds-typo variant="fs-14">Content with default background</bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </bds-grid>
+    </bds-grid>
   );
 };
