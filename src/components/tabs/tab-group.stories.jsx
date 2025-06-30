@@ -321,44 +321,187 @@ export const IndependentNavigationStyling = () => {
 
 export const IndependentBodyStyling = () => {
   return (
-    <bds-grid padding="3" gap="4" direction="column" style={{ backgroundColor: '#f0f0f0', minHeight: '400px' }}>
-      <bds-typo variant="fs-20" bold="bold">🌟 Light Navigation with Dark Content</bds-typo>
+    <bds-grid padding="3" gap="4" direction="column" style={{ backgroundColor: '#f0f0f0', minHeight: '800px' }}>
+      <bds-typo variant="fs-20" bold="bold">🌈 Each Tab with Different Body Background</bds-typo>
       <bds-typo variant="fs-14" style={{ color: '#666', marginTop: '-12px' }}>
-        Content area uses surface-4 (dark) background with light text for dramatic contrast
+        Demonstrating all surface background variations with different content styling for each tab
       </bds-typo>
-      <bds-tab-group body-background="surface-4">
-        <bds-tab-item label="🏠 Home">
-          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
-            <bds-typo variant="fs-18" bold="bold" style={{ color: 'white' }}>Dark Content Area</bds-typo>
-            <bds-typo variant="fs-16" style={{ color: '#e0e0e0' }}>
-              This example showcases how the content area can have a completely different visual treatment 
-              from the navigation. The dark background (surface-4) creates a dramatic contrast with the 
-              light navigation tabs above.
-            </bds-typo>
-            <bds-typo variant="fs-14" style={{ color: '#cfcfcf' }}>
-              Perfect for creating modern, high-contrast interfaces or dark-themed content sections.
-            </bds-typo>
-          </bds-grid>
-        </bds-tab-item>
-        <bds-tab-item label="📱 Mobile">
-          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
-            <bds-typo variant="fs-18" bold="bold" style={{ color: 'white' }}>Mobile Experience</bds-typo>
-            <bds-typo variant="fs-16" style={{ color: '#e0e0e0' }}>
-              The navigation maintains its light appearance while the content area provides a rich, 
-              dark background that could be ideal for displaying media content or creating focus areas.
-            </bds-typo>
-          </bds-grid>
-        </bds-tab-item>
-        <bds-tab-item label="💻 Desktop">
-          <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '200px' }}>
-            <bds-typo variant="fs-18" bold="bold" style={{ color: 'white' }}>Desktop Interface</bds-typo>
-            <bds-typo variant="fs-16" style={{ color: '#e0e0e0' }}>
-              This demonstrates the flexibility of independent styling - you can create interfaces 
-              that match your design requirements exactly.
-            </bds-typo>
-          </bds-grid>
-        </bds-tab-item>
-      </bds-tab-group>
+      
+      {/* Tab with Default Background */}
+      <div style={{ marginBottom: '24px' }}>
+        <bds-typo variant="fs-16" bold="bold" style={{ marginBottom: '8px' }}>🏠 Default Background (No Styling)</bds-typo>
+        <bds-tab-group>
+          <bds-tab-item label="Default Home">
+            <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '120px' }}>
+              <bds-typo variant="fs-16" bold="bold">Default White Background</bds-typo>
+              <bds-typo variant="fs-14">
+                This is the standard appearance without any background styling applied.
+              </bds-typo>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </div>
+
+      {/* Tab with Surface-1 Background */}
+      <div style={{ marginBottom: '24px' }}>
+        <bds-typo variant="fs-16" bold="bold" style={{ marginBottom: '8px' }}>🌟 Surface-1 Background (Very Light Gray)</bds-typo>
+        <bds-tab-group body-background="surface-1">
+          <bds-tab-item label="Surface-1 Content">
+            <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '120px' }}>
+              <bds-typo variant="fs-16" bold="bold">Surface-1 Background (#F6F6F6)</bds-typo>
+              <bds-typo variant="fs-14">
+                Very light gray background - subtle but provides slight contrast from pure white.
+              </bds-typo>
+              <div style={{ 
+                padding: '12px', 
+                backgroundColor: 'white', 
+                borderRadius: '4px',
+                border: '1px solid #e0e0e0'
+              }}>
+                <bds-typo variant="fs-12">Notice the subtle contrast with this white card</bds-typo>
+              </div>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </div>
+
+      {/* Tab with Surface-2 Background */}
+      <div style={{ marginBottom: '24px' }}>
+        <bds-typo variant="fs-16" bold="bold" style={{ marginBottom: '8px' }}>🌫️ Surface-2 Background (Light Gray)</bds-typo>
+        <bds-tab-group body-background="surface-2">
+          <bds-tab-item label="Surface-2 Content">
+            <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '120px' }}>
+              <bds-typo variant="fs-16" bold="bold">Surface-2 Background (#E0E0E0)</bds-typo>
+              <bds-typo variant="fs-14">
+                Light gray background - more noticeable than surface-1, good for secondary content areas.
+              </bds-typo>
+              <div style={{ 
+                padding: '12px', 
+                backgroundColor: 'white', 
+                borderRadius: '4px',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
+              }}>
+                <bds-typo variant="fs-12">Cards stand out nicely against this background</bds-typo>
+              </div>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </div>
+
+      {/* Tab with Surface-3 Background */}
+      <div style={{ marginBottom: '24px' }}>
+        <bds-typo variant="fs-16" bold="bold" style={{ marginBottom: '8px' }}>🌊 Surface-3 Background (Medium Gray)</bds-typo>
+        <bds-tab-group body-background="surface-3">
+          <bds-tab-item label="Surface-3 Content">
+            <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '120px' }}>
+              <bds-typo variant="fs-16" bold="bold">Surface-3 Background (#CFCFCF)</bds-typo>
+              <bds-typo variant="fs-14">
+                Medium gray background - creates good contrast and visual hierarchy.
+              </bds-typo>
+              <div style={{ 
+                padding: '12px', 
+                backgroundColor: 'white', 
+                borderRadius: '4px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}>
+                <bds-typo variant="fs-12">Strong contrast makes content pop</bds-typo>
+              </div>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </div>
+
+      {/* Tab with Surface-4 Background */}
+      <div style={{ marginBottom: '24px' }}>
+        <bds-typo variant="fs-16" bold="bold" style={{ marginBottom: '8px' }}>🌚 Surface-4 Background (Dark Gray)</bds-typo>
+        <bds-tab-group body-background="surface-4">
+          <bds-tab-item label="Surface-4 Content">
+            <bds-grid padding="4" gap="3" direction="column" style={{ minHeight: '120px' }}>
+              <bds-typo variant="fs-16" bold="bold" style={{ color: 'white' }}>Surface-4 Background (#141414)</bds-typo>
+              <bds-typo variant="fs-14" style={{ color: '#e0e0e0' }}>
+                Dark background - perfect for dramatic contrast and modern interfaces.
+              </bds-typo>
+              <div style={{ 
+                padding: '12px', 
+                backgroundColor: 'rgba(255,255,255,0.1)', 
+                borderRadius: '4px',
+                border: '1px solid rgba(255,255,255,0.2)'
+              }}>
+                <bds-typo variant="fs-12" style={{ color: '#cfcfcf' }}>Dark theme styling with subtle contrast</bds-typo>
+              </div>
+            </bds-grid>
+          </bds-tab-item>
+        </bds-tab-group>
+      </div>
+
+      {/* Comparison Summary */}
+      <div style={{ 
+        marginTop: '32px',
+        padding: '20px',
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        border: '2px solid #0096fa'
+      }}>
+        <bds-typo variant="fs-18" bold="bold" style={{ marginBottom: '16px' }}>📊 Background Color Comparison</bds-typo>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', 
+          gap: '12px',
+          marginTop: '16px'
+        }}>
+          <div style={{ 
+            padding: '16px', 
+            backgroundColor: 'white',
+            border: '2px solid #f0f0f0',
+            borderRadius: '4px',
+            textAlign: 'center'
+          }}>
+            <bds-typo variant="fs-12" bold="bold">Default</bds-typo>
+            <bds-typo variant="fs-10">White</bds-typo>
+          </div>
+          <div style={{ 
+            padding: '16px', 
+            backgroundColor: '#F6F6F6',
+            border: '2px solid #e0e0e0',
+            borderRadius: '4px',
+            textAlign: 'center'
+          }}>
+            <bds-typo variant="fs-12" bold="bold">Surface-1</bds-typo>
+            <bds-typo variant="fs-10">#F6F6F6</bds-typo>
+          </div>
+          <div style={{ 
+            padding: '16px', 
+            backgroundColor: '#E0E0E0',
+            border: '2px solid #cfcfcf',
+            borderRadius: '4px',
+            textAlign: 'center'
+          }}>
+            <bds-typo variant="fs-12" bold="bold">Surface-2</bds-typo>
+            <bds-typo variant="fs-10">#E0E0E0</bds-typo>
+          </div>
+          <div style={{ 
+            padding: '16px', 
+            backgroundColor: '#CFCFCF',
+            border: '2px solid #a0a0a0',
+            borderRadius: '4px',
+            textAlign: 'center'
+          }}>
+            <bds-typo variant="fs-12" bold="bold">Surface-3</bds-typo>
+            <bds-typo variant="fs-10">#CFCFCF</bds-typo>
+          </div>
+          <div style={{ 
+            padding: '16px', 
+            backgroundColor: '#141414',
+            color: 'white',
+            border: '2px solid #333',
+            borderRadius: '4px',
+            textAlign: 'center'
+          }}>
+            <bds-typo variant="fs-12" bold="bold" style={{ color: 'white' }}>Surface-4</bds-typo>
+            <bds-typo variant="fs-10" style={{ color: '#e0e0e0' }}>#141414</bds-typo>
+          </div>
+        </div>
+      </div>
     </bds-grid>
   );
 };
