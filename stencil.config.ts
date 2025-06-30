@@ -6,13 +6,14 @@ export const config: Config = {
   namespace: 'blip-ds',
   plugins: [
     sass({
-      includePaths: ['src/globals', 'node_modules/blip-tokens'],
-      injectGlobalPaths: ['src/globals/_helper.scss'],
+      includePaths: ['src/globals', 'node_modules'],
+      injectGlobalPaths: ['src/globals/helpers.scss'],
       importer: (url) => {
         // Handle ~ prefix for node_modules imports
         if (url.startsWith('~')) {
+          const modulePath = url.substring(1);
           return {
-            file: url.substring(1),
+            file: `node_modules/${modulePath}`,
           };
         }
         return null;

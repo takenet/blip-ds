@@ -1,4 +1,4 @@
-@import 'resets';
+@use '../../globals/helpers' as *;
 
 $icon-button-border-radius: 8px;
 $icon-button-padding: 8px;

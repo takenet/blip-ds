@@ -1,5 +1,4 @@
-@import 'fonts';
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 .rich-text {
   box-sizing: border-box;
