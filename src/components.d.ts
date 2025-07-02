@@ -67,6 +67,7 @@ import { sidebarBackground, sidebarPosition, sidebarType } from "./components/si
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
 import { StepOption, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
+import { tabBackground } from "./components/tabs/tab-group";
 import { JustifyContent } from "./components/table/table-cell/table-cell";
 import { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
@@ -2580,6 +2581,10 @@ export namespace Components {
     }
     interface BdsTabGroup {
         "align": 'left' | 'center' | 'right';
+        /**
+          * Background color for the body content section
+         */
+        "bodyBackground"?: tabBackground;
         "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
@@ -2589,6 +2594,10 @@ export namespace Components {
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
          */
         "dtButtonPrev"?: string;
+        /**
+          * Background color for the navigation bar section
+         */
+        "navigationBackground"?: tabBackground;
     }
     interface BdsTabItem {
         /**
@@ -6577,6 +6586,10 @@ declare namespace LocalJSX {
     }
     interface BdsTabGroup {
         "align"?: 'left' | 'center' | 'right';
+        /**
+          * Background color for the body content section
+         */
+        "bodyBackground"?: tabBackground;
         "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
@@ -6586,6 +6599,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
          */
         "dtButtonPrev"?: string;
+        /**
+          * Background color for the navigation bar section
+         */
+        "navigationBackground"?: tabBackground;
         /**
           * bdsTabChange. Event to return value when Tabs is change.
          */

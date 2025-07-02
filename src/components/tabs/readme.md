@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property            | Attribute            | Description                                                                                                           | Type                            | Default    |
-| ------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ---------- |
-| `align`             | `align`              |                                                                                                                       | `"center" \| "left" \| "right"` | `'center'` |
-| `contentScrollable` | `content-scrollable` |                                                                                                                       | `boolean`                       | `true`     |
-| `dtButtonNext`      | `dt-button-next`     | Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next. | `string`                        | `null`     |
-| `dtButtonPrev`      | `dt-button-prev`     | Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev. | `string`                        | `null`     |
+| Property               | Attribute               | Description                                                                                                           | Type                                                       | Default    |
+| ---------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ---------- |
+| `align`                | `align`                 |                                                                                                                       | `"center" \| "left" \| "right"`                            | `'center'` |
+| `bodyBackground`       | `body-background`       | Background color for the body content section                                                                         | `"surface-1" \| "surface-2" \| "surface-3" \| "surface-4"` | `null`     |
+| `contentScrollable`    | `content-scrollable`    |                                                                                                                       | `boolean`                                                  | `true`     |
+| `dtButtonNext`         | `dt-button-next`        | Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next. | `string`                                                   | `null`     |
+| `dtButtonPrev`         | `dt-button-prev`        | Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev. | `string`                                                   | `null`     |
+| `navigationBackground` | `navigation-background` | Background color for the navigation bar section                                                                       | `"surface-1" \| "surface-2" \| "surface-3" \| "surface-4"` | `null`     |
 
 
 ## Events

@@ -1,6 +1,8 @@
 import { Component, h, Host, Element, State, Prop, EventEmitter, Event } from '@stencil/core';
 import { Itens } from './tab-group-interface';
 
+export type tabBackground = 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
+
 @Component({
   tag: 'bds-tab-group',
   styleUrl: 'tab-group.scss',
@@ -28,6 +30,16 @@ export class BdsTabGroup {
   @Prop() contentScrollable?: boolean = true;
 
   @Prop() align: 'left' | 'center' | 'right' = 'center';
+
+  /**
+   * Background color for the navigation bar section
+   */
+  @Prop() navigationBackground?: tabBackground = null;
+
+  /**
+   * Background color for the body content section
+   */
+  @Prop() bodyBackground?: tabBackground = null;
 
   /**
    * Data test is the prop to specifically test the component action object.
@@ -231,7 +243,14 @@ export class BdsTabGroup {
               variant="secondary"
             ></bds-button-icon>
           )}
-          <div class={{ tab_group__header: true, tab_group__slide: this.isSlideTabs }} ref={this.refHeaderElement}>
+          <div 
+            class={{ 
+              tab_group__header: true, 
+              tab_group__slide: this.isSlideTabs,
+              [`tab_group__header--background-${this.navigationBackground}`]: !!this.navigationBackground
+            }} 
+            ref={this.refHeaderElement}
+          >
             <div
               class={{
                 tab_group__header__itens: true,
@@ -305,7 +324,13 @@ export class BdsTabGroup {
               variant="secondary"
             ></bds-button-icon>
           )}
-          <div class={{ tab_group__content: true, tab_group__scrolled: this.contentScrollable }}>
+          <div 
+            class={{ 
+              tab_group__content: true, 
+              tab_group__scrolled: this.contentScrollable,
+              [`tab_group__content--background-${this.bodyBackground}`]: !!this.bodyBackground
+            }}
+          >
             <slot></slot>
           </div>
         </div>

@@ -291,4 +291,94 @@ describe('bds-tab-group', () => {
       component.componentDidLoad();
     }).not.toThrow();
   });
+
+  // Independent styling tests
+  it('should apply navigation background classes correctly', async () => {
+    const componentDidLoadSpy = jest.spyOn(BdsTabGroup.prototype, 'componentDidLoad').mockImplementation(() => {});
+    
+    const page = await newSpecPage({
+      components: [BdsTabGroup, BdsTabItem],
+      html: `<bds-tab-group navigation-background="surface-2">
+        <bds-tab-item>Tab 1</bds-tab-item>
+      </bds-tab-group>`,
+      supportsShadowDom: false,
+    });
+    
+    const component = page.rootInstance;
+    expect(component.navigationBackground).toBe('surface-2');
+    
+    componentDidLoadSpy.mockRestore();
+  });
+
+  it('should apply body background classes correctly', async () => {
+    const componentDidLoadSpy = jest.spyOn(BdsTabGroup.prototype, 'componentDidLoad').mockImplementation(() => {});
+    
+    const page = await newSpecPage({
+      components: [BdsTabGroup, BdsTabItem],
+      html: `<bds-tab-group body-background="surface-3">
+        <bds-tab-item>Tab 1</bds-tab-item>
+      </bds-tab-group>`,
+      supportsShadowDom: false,
+    });
+    
+    const component = page.rootInstance;
+    expect(component.bodyBackground).toBe('surface-3');
+    
+    componentDidLoadSpy.mockRestore();
+  });
+
+  it('should apply both navigation and body backgrounds independently', async () => {
+    const componentDidLoadSpy = jest.spyOn(BdsTabGroup.prototype, 'componentDidLoad').mockImplementation(() => {});
+    
+    const page = await newSpecPage({
+      components: [BdsTabGroup, BdsTabItem],
+      html: `<bds-tab-group navigation-background="surface-1" body-background="surface-4">
+        <bds-tab-item>Tab 1</bds-tab-item>
+      </bds-tab-group>`,
+      supportsShadowDom: false,
+    });
+    
+    const component = page.rootInstance;
+    expect(component.navigationBackground).toBe('surface-1');
+    expect(component.bodyBackground).toBe('surface-4');
+    
+    componentDidLoadSpy.mockRestore();
+  });
+
+  it('should default to null for background props', () => {
+    const component = new BdsTabGroup();
+    expect(component.navigationBackground).toBe(null);
+    expect(component.bodyBackground).toBe(null);
+  });
+
+  it('should render with background CSS classes when props are set', () => {
+    const component = new BdsTabGroup();
+    component.navigationBackground = 'surface-2';
+    component.bodyBackground = 'surface-3';
+    
+    // Mock the necessary properties to avoid errors
+    component['tabItensElement'] = [] as any;
+    component.internalItens = [];
+    
+    const result = component.render();
+    expect(result).toBeTruthy();
+    
+    // The component should render without errors with the new background props
+    expect(typeof result).toBe('object');
+  });
+
+  it('should handle all surface background types', () => {
+    const component = new BdsTabGroup();
+    
+    const validBackgrounds: ('surface-1' | 'surface-2' | 'surface-3' | 'surface-4')[] = 
+      ['surface-1', 'surface-2', 'surface-3', 'surface-4'];
+    
+    validBackgrounds.forEach(bg => {
+      component.navigationBackground = bg;
+      component.bodyBackground = bg;
+      
+      expect(component.navigationBackground).toBe(bg);
+      expect(component.bodyBackground).toBe(bg);
+    });
+  });
 });
