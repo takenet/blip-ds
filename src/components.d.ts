@@ -387,6 +387,10 @@ export namespace Components {
          */
         "fullWidth"?: boolean;
         /**
+          * If true, groups the left icon with the label when justifyContent is 'space-between'. This keeps the left icon and text together as a single visual unit on the left side.
+         */
+        "groupIcon"?: boolean;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -4181,6 +4185,10 @@ declare namespace LocalJSX {
           * If true, the button will occupy 100% width with centered content.
          */
         "fullWidth"?: boolean;
+        /**
+          * If true, groups the left icon with the label when justifyContent is 'space-between'. This keeps the left icon and text together as a single visual unit on the left side.
+         */
+        "groupIcon"?: boolean;
         /**
           * used for add icon in input left. Uses the bds-icon component.
          */

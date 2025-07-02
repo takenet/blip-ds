@@ -22,6 +22,7 @@ export const Properties = (args) => {
       disabled={args.disabled}
       full-width={args.fullWidth}
       justify-content={args.justifyContent}
+      group-icon={args.groupIcon}
       icon-left={args.iconLeft}
       icon-right={args.iconRight}
       icon-theme={args.iconTheme}
@@ -141,6 +142,13 @@ Properties.argTypes = {
     options: ['center', 'space-between'],
     control: { type: 'select' },
   },
+  groupIcon: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Se verdadeiro, agrupa o ícone esquerdo com o label quando justifyContent é "space-between".',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -158,6 +166,7 @@ Properties.args = {
   dataTest: '',
   fullWidth: false,
   justifyContent: 'center',
+  groupIcon: false,
 };
 
 export const Events = () => {
@@ -206,6 +215,13 @@ export const FlexibleLayouts = () => {
       <bds-grid direction="column" gap="1">
         <bds-typo variant="fs-16" bold="bold">Space Between (ícone esquerdo + label à esquerda, ícone direito à direita)</bds-typo>
         <bds-button variant="solid" color="primary" icon-left="info" icon-right="arrow-right" full-width justify-content="space-between">
+          Verbo + complemento
+        </bds-button>
+      </bds-grid>
+
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-16" bold="bold">Space Between + Group Icon (ícone esquerdo agrupado com label)</bds-typo>
+        <bds-button variant="solid" color="primary" icon-left="info" icon-right="arrow-right" full-width justify-content="space-between" group-icon>
           Verbo + complemento
         </bds-button>
       </bds-grid>

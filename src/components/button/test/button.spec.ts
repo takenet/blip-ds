@@ -92,6 +92,7 @@ describe('bds-button', () => {
       expect(component.block).toBe(false);
       expect(component.fullWidth).toBe(false);
       expect(component.justifyContent).toBe('center');
+      expect(component.groupIcon).toBe(false);
       expect(component.disabled).toBe(false);
       expect(component.color).toBe('primary');
       expect(component.size).toBe('medium');
@@ -152,6 +153,9 @@ describe('bds-button', () => {
 
       component.fullWidth = true;
       expect(component.fullWidth).toBe(true);
+
+      component.groupIcon = true;
+      expect(component.groupIcon).toBe(true);
     });
 
     it('should accept different justify-content values', () => {
@@ -251,6 +255,61 @@ describe('bds-button', () => {
       expect(icons.length).toBe(2);
       expect(icons[0].getAttribute('name')).toBe('edit');
       expect(icons[1].getAttribute('name')).toBe('arrow-right');
+    });
+
+    it('should render with grouped icon and text when groupIcon is true', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button icon-left="info" icon-right="arrow-right" group-icon>Button with grouped content</bds-button>`,
+      });
+      
+      const groupContent = page.root.shadowRoot.querySelector('.button__group-content');
+      expect(groupContent).toBeTruthy();
+      
+      // Should have icon and text inside the group
+      const iconInsideGroup = groupContent.querySelector('bds-icon');
+      const textInsideGroup = groupContent.querySelector('bds-typo');
+      expect(iconInsideGroup).toBeTruthy();
+      expect(textInsideGroup).toBeTruthy();
+      expect(iconInsideGroup.getAttribute('name')).toBe('info');
+      
+      // Should still have right icon outside the group
+      const rightIcon = page.root.shadowRoot.querySelector('button > bds-icon:last-of-type');
+      expect(rightIcon).toBeTruthy();
+      expect(rightIcon.getAttribute('name')).toBe('arrow-right');
+    });
+
+    it('should not render grouped content when groupIcon is false', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button icon-left="info" icon-right="arrow-right">Button without grouped content</bds-button>`,
+      });
+      
+      const groupContent = page.root.shadowRoot.querySelector('.button__group-content');
+      expect(groupContent).toBeFalsy();
+      
+      // Should have separate icon and text elements
+      const icons = page.root.shadowRoot.querySelectorAll('bds-icon');
+      const text = page.root.shadowRoot.querySelector('bds-typo');
+      expect(icons.length).toBe(2);
+      expect(text).toBeTruthy();
+    });
+
+    it('should not render grouped content when groupIcon is true but no left icon', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button icon-right="arrow-right" group-icon>Button with no left icon</bds-button>`,
+      });
+      
+      const groupContent = page.root.shadowRoot.querySelector('.button__group-content');
+      expect(groupContent).toBeFalsy();
+      
+      // Should render text normally and only the right icon
+      const icons = page.root.shadowRoot.querySelectorAll('bds-icon');
+      const text = page.root.shadowRoot.querySelector('bds-typo');
+      expect(icons.length).toBe(1); // Only right icon
+      expect(text).toBeTruthy();
+      expect(icons[0].getAttribute('name')).toBe('arrow-right');
     });
   });
 

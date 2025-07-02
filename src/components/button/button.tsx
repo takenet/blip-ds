@@ -57,6 +57,12 @@ export class Button {
   @Prop() justifyContent?: ButtonJustifyContent = 'center';
 
   /**
+   * 	If true, groups the left icon with the label when justifyContent is 'space-between'.
+   * 	This keeps the left icon and text together as a single visual unit on the left side.
+   */
+  @Prop() groupIcon?: boolean = false;
+
+  /**
    * 	If true, the base button will be disabled.
    */
   @Prop() disabled?: boolean = false;
@@ -272,26 +278,47 @@ export class Button {
           data-test={this.dataTest}
         >
           {this.bdsLoading ? this.renderLoadingSpinner() : ''}
-          {this.iconLeft || this.icon ? (
-            <bds-icon
-              class={{ icon_buttom: true, hide: this.bdsLoading }}
-              name={this.icon ? this.icon : this.iconLeft}
-              theme={this.iconTheme}
-              type={this.typeIcon}
-              color="inherit"
-              size={'medium'}
-            ></bds-icon>
+          {this.groupIcon && (this.iconLeft || this.icon) ? (
+            <div class="button__group-content">
+              <bds-icon
+                class={{ icon_buttom: true, hide: this.bdsLoading }}
+                name={this.icon ? this.icon : this.iconLeft}
+                theme={this.iconTheme}
+                type={this.typeIcon}
+                color="inherit"
+                size={'medium'}
+              ></bds-icon>
+              <bds-typo
+                class={{ typo_buttom: true, button__content:true, hide: this.bdsLoading }}
+                variant="fs-14"
+                lineHeight="simple"
+                bold="bold"
+              >
+                <slot></slot>
+              </bds-typo>
+            </div>
           ) : (
-            ''
+            [
+              this.iconLeft || this.icon ? (
+                <bds-icon
+                  class={{ icon_buttom: true, hide: this.bdsLoading }}
+                  name={this.icon ? this.icon : this.iconLeft}
+                  theme={this.iconTheme}
+                  type={this.typeIcon}
+                  color="inherit"
+                  size={'medium'}
+                ></bds-icon>
+              ) : null,
+              <bds-typo
+                class={{ typo_buttom: true, button__content:true, hide: this.bdsLoading }}
+                variant="fs-14"
+                lineHeight="simple"
+                bold="bold"
+              >
+                <slot></slot>
+              </bds-typo>
+            ]
           )}
-          <bds-typo
-            class={{ typo_buttom: true, button__content:true, hide: this.bdsLoading }}
-            variant="fs-14"
-            lineHeight="simple"
-            bold="bold"
-          >
-            <slot></slot>
-          </bds-typo>
           {this.iconRight || this.arrow ? (
             <bds-icon
               class={{ icon_buttom: true, hide: this.bdsLoading }}

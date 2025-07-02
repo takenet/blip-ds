@@ -186,6 +186,12 @@ $button-border-radius: 8px;
     }
   }
 
+  &__group-content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
   bds-loading-spinner {
     max-height: 100%;
     position: absolute;
