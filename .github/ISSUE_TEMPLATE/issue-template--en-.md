@@ -43,7 +43,7 @@ Add any other context, screenshots, edge cases, or UX considerations here.
 
 ----
 
-### 🛠️ Implementation Notes (for developers and AI Agents)
+### 🛠️ Implementation Notes (for developers and AI Agents) - DO NOT REMOVE
 
 - Use the provided Figma links with the **Figma MCP tools** to inspect and extract component details before starting implementation.
 - All implemented or updated components **must include Storybook stories** that demonstrate **every possible state** of the component.
