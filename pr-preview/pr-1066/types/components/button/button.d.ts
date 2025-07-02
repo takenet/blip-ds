@@ -30,6 +30,11 @@ export declare class Button {
    */
   justifyContent?: ButtonJustifyContent;
   /**
+   * 	If true, groups the left icon with the label when justifyContent is 'space-between'.
+   * 	This keeps the left icon and text together as a single visual unit on the left side.
+   */
+  groupIcon?: boolean;
+  /**
    * 	If true, the base button will be disabled.
    */
   disabled?: boolean;

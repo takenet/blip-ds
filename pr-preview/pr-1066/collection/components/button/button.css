@@ -112,6 +112,11 @@
 .button__justify-content--space-between {
   justify-content: space-between;
 }
+.button__group-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
 .button bds-loading-spinner {
   max-height: 100%;
   position: absolute;
