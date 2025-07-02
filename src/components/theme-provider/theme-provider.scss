@@ -1,5 +1,6 @@
-@import '../../globals/theme/theme-light.scss';
-@import '../../globals/theme/theme-dark.scss';
+@use '../../globals/theme/theme-light.scss' as *;
+@use '../../globals/theme/theme-dark.scss' as *;
+@use '../../globals/colors' as *;
 
 :host(.theme--light) {
   width: 100%;

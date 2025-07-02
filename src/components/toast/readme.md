@@ -47,6 +47,12 @@ Type: `Promise<void>`
 
 Can be used outside to open the toast
 
+#### Parameters
+
+| Name  | Type                                                                                                                                                                                                          | Description |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `__0` | `{ buttonAction?: ButtonActionType; buttonText?: string; toastText: string; toastTitle: string; icon?: string; actionType?: ActionType; variant?: VariantType; duration?: number; position?: PositionType; }` |             |
+
 #### Returns
 
 Type: `Promise<void>`

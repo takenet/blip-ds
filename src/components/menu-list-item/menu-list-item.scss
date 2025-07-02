@@ -1,4 +1,4 @@
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 $menu-list-item-width: 76px;
 $menu-list-item-height: 56px;

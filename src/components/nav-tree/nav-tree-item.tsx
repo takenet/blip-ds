@@ -10,7 +10,7 @@ export type collapses = 'single' | 'multiple';
 export class NavTreeItem {
   private navTreeParent?: HTMLBdsNavTreeElement | HTMLBdsNavTreeItemElement = null;
   private navTreeChild?: HTMLBdsNavTreeItemElement = null;
-  private itensElement?: HTMLCollectionOf<HTMLBdsNavTreeItemElement> = null;
+  private itensElement?: NodeListOf<HTMLBdsNavTreeItemElement> = null;
 
   @Element() private element: HTMLElement;
   /**
@@ -64,19 +64,22 @@ export class NavTreeItem {
 
   componentWillLoad() {
     this.navTreeParent =
-      (this.element.parentElement.tagName == 'BDS-NAV-TREE' && (this.element.parentElement as HTMLBdsNavTreeElement)) ||
-      ('BDS-NAV-TREE-ITEM' && (this.element.parentElement as HTMLBdsNavTreeItemElement));
+      (this.element.parentElement?.tagName == 'BDS-NAV-TREE' && (this.element.parentElement as HTMLBdsNavTreeElement)) ||
+      (this.element.parentElement?.tagName == 'BDS-NAV-TREE-ITEM' && (this.element.parentElement as HTMLBdsNavTreeItemElement)) ||
+      null;
     this.navTreeChild = this.element.querySelector('bds-nav-tree-item');
   }
   componentWillRender() {
-    this.itensElement = this.navTreeParent.getElementsByTagName(
-      'bds-nav-tree-item',
-    ) as HTMLCollectionOf<HTMLBdsNavTreeItemElement>;
+    if (this.navTreeParent) {
+      this.itensElement = this.navTreeParent.querySelectorAll(
+        'bds-nav-tree-item',
+      ) as NodeListOf<HTMLBdsNavTreeItemElement>;
+    }
   }
 
   private handler = () => {
     if (!this.loading && !this.disable) {
-      if (this.navTreeParent.collapse == 'single') {
+      if (this.navTreeParent && this.navTreeParent.collapse == 'single' && this.itensElement) {
         for (let i = 0; i < this.itensElement.length; i++) {
           if (this.itensElement[i] != this.element) this.itensElement[i].isOpen = false;
         }

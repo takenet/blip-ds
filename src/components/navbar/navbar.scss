@@ -1,5 +1,4 @@
-@import 'mixins';
-@import 'resets';
+@use '../../globals/helpers' as *;
 
 :host {
   display: flex;

@@ -9,25 +9,32 @@ const originalConsoleWarn = console.warn;
 beforeEach(() => {
   jest.clearAllTimers();
 
-  // Mock timers to prevent setTimeout issues in tests
-  // https://github.com/stenciljs/core/issues/3292
+  // Only apply timer mocking to unit tests (.spec.ts), not e2e tests (.e2e.ts)
+  // E2e tests run in a real browser and need real timers for animations
+  const testPath = expect.getState().testPath;
+  const isE2eTest = testPath && testPath.includes('.e2e.ts');
 
-  global.setTimeout = jest.fn((fn, _delay) => {
-    if (typeof fn === 'function') {
-      // Execute immediately for tests
-      fn();
-    }
-    return 1 as any;
-  }) as any;
-  global.setInterval = jest.fn((fn, _delay) => {
-    if (typeof fn === 'function') {
-      // Execute immediately and only once for tests
-      fn();
-    }
-    return 1 as any;
-  }) as any;
-  global.clearTimeout = jest.fn();
-  global.clearInterval = jest.fn();
+  if (!isE2eTest) {
+    // Mock timers to prevent setTimeout issues in unit tests
+    // https://github.com/stenciljs/core/issues/3292
+
+    global.setTimeout = jest.fn((fn, _delay) => {
+      if (typeof fn === 'function') {
+        // Execute immediately for tests
+        fn();
+      }
+      return 1 as any;
+    }) as any;
+    global.setInterval = jest.fn((fn, _delay) => {
+      if (typeof fn === 'function') {
+        // Execute immediately and only once for tests
+        fn();
+      }
+      return 1 as any;
+    }) as any;
+    global.clearTimeout = jest.fn();
+    global.clearInterval = jest.fn();
+  }
 
   // Mock console.warn to prevent immutable warnings in tests
   // https://github.com/stenciljs/core/issues/2832
@@ -42,9 +49,17 @@ beforeEach(() => {
 
 afterEach(() => {
   jest.clearAllTimers();
-  global.setTimeout = originalSetTimeout;
-  global.setInterval = originalSetInterval;
-  global.clearTimeout = originalClearTimeout;
-  global.clearInterval = originalClearInterval;
+  
+  // Only restore timers if we're not in an e2e test
+  const testPath = expect.getState().testPath;
+  const isE2eTest = testPath && testPath.includes('.e2e.ts');
+  
+  if (!isE2eTest) {
+    global.setTimeout = originalSetTimeout;
+    global.setInterval = originalSetInterval;
+    global.clearTimeout = originalClearTimeout;
+    global.clearInterval = originalClearInterval;
+  }
+  
   global.console.warn = originalConsoleWarn;
 });

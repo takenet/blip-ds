@@ -1,6 +1,6 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
+import { Story, ArgsTable, Canvas } from '@storybook/addon-docs/blocks';
 import * as CardColor from './card-color.stories';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source, Unstyled } from '@storybook/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source, Unstyled } from '@storybook/addon-docs/blocks';
 
 <br></br>
 # Cores
@@ -36,7 +36,7 @@ Na pasta onde se encontra o arquivo HTML do que será alterado, adicione um arqu
 No arquivo SCSS, realize a importação das variáveis:
 
 ```css
-@import "~blip-ds/dist/collection/styles/_colors.scss";
+@use "~blip-ds/dist/collection/styles/_colors.scss" as *;
 ```
 
 <br></br>
@@ -58,7 +58,7 @@ Através da propriedade `class` ou `className` (em projetos React), referencie c
 No arquivo SCSS, com a importação das variáveis realizadas, utilize a propriedade de cor desejada e aplique a variável referente à cor definida:
 
 ```css
-@import "~blip-ds/dist/collection/styles/_colors.scss";
+@use "~blip-ds/dist/collection/styles/_colors.scss" as *;
 
 .text1 {
   color: $color-brand;

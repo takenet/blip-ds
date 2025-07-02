@@ -1,3 +1,5 @@
+@use '../../globals/helpers' as *;
+
 $border-radius: 8px;
 .card {
   cursor: pointer;
