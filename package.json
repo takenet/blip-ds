@@ -159,7 +159,7 @@
   "release": {
     "branches": [
       {
-        "name": "main",
+        "name": "master",
         "range": "1.x.x"
       },
       {
