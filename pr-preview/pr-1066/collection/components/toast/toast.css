@@ -1,0 +1,189 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+:host .show,
+:host .hide {
+  display: flex;
+}
+:host .show {
+  opacity: 1;
+}
+:host .show--top-right, :host .show--bottom-right {
+  animation: toastAnimationFadeInFromRight 1s;
+}
+:host .show--top-left, :host .show--bottom-left {
+  animation: toastAnimationFadeInFromLeft 1s;
+}
+:host .hide {
+  transition: all 1s;
+  animation: toastAnimationFadeOut 0.5s;
+}
+
+.toast {
+  display: none;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0px 8px 4px -4px var(--color-shadow-0, rgba(0, 0, 0, 0.04)), 0px 12px 12px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));
+  color: var(--color-content-default, #282828);
+  opacity: 0;
+  margin-top: 16px;
+  overflow: hidden;
+  gap: 16px;
+}
+.toast--action--icon {
+  min-width: 440px;
+  max-width: 440px;
+  padding: 8px 16px;
+}
+.toast--action--icon bds-icon-button {
+  height: 32px;
+}
+@media (max-width: 780px) {
+  .toast--action--icon {
+    min-width: 220px;
+    width: 95%;
+    margin: 16px auto 0px auto;
+  }
+}
+.toast--action--button {
+  min-width: 440px;
+  max-width: 456px;
+  padding: 8px 16px;
+}
+@media (max-width: 780px) {
+  .toast--action--button {
+    min-width: 220px;
+    width: 95%;
+    margin: 16px auto 0px auto;
+  }
+}
+.toast--system {
+  background: var(--color-system, #b2dffd);
+}
+.toast--error {
+  background: var(--color-error, #fabebe);
+}
+.toast--success {
+  background: var(--color-success, #84ebbc);
+}
+.toast--warning {
+  background: var(--color-warning, #fde99b);
+}
+.toast--undo {
+  background-color: var(--color-system, #b2dffd);
+}
+.toast--redo {
+  background-color: var(--color-system, #b2dffd);
+}
+.toast--notification {
+  background-color: var(--color-surface-1, #f6f6f6);
+}
+.toast__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+.toast__ballon {
+  display: flex;
+  position: absolute;
+  top: -8px;
+  left: -12px;
+  color: var(--color-system, #b2dffd);
+  width: 72px;
+}
+.toast__content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 0;
+}
+.toast__action {
+  display: flex;
+  align-items: flex-start;
+}
+.toast__action bds-button-icon,
+.toast__action bds-button {
+  position: relative;
+}
+.toast__action bds-button-icon::before,
+.toast__action bds-button::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+.toast__action bds-button-icon:focus-visible,
+.toast__action bds-button:focus-visible {
+  outline: none;
+}
+.toast__action bds-button-icon:focus-visible::before,
+.toast__action bds-button:focus-visible::before {
+  border-color: var(--color-focus, #c226fb);
+}
+.toast__action__button {
+  white-space: nowrap;
+}
+
+@keyframes toastAnimationFadeInFromRight {
+  0% {
+    opacity: 0;
+    right: -200px;
+  }
+  50% {
+    opacity: 0.9;
+    right: 1px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes toastAnimationFadeInFromLeft {
+  0% {
+    opacity: 0;
+    left: -200px;
+  }
+  50% {
+    opacity: 0.9;
+    left: 1px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes toastAnimationFadeOut {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    max-height: 60px;
+  }
+  80% {
+    opacity: 0;
+    max-height: 30px;
+  }
+  100% {
+    max-height: 0px;
+  }
+}
