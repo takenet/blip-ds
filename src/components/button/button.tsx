@@ -23,6 +23,8 @@ export type IconType = 'icon' | 'logo' | 'emoji';
 
 export type IconTheme = 'outline' | 'solid';
 
+export type ButtonJustifyContent = 'center' | 'space-between';
+
 @Component({
   tag: 'bds-button',
   styleUrl: 'button.scss',
@@ -41,6 +43,18 @@ export class Button {
    * 	If true, the base button will be disabled.
    */
   @Prop() block?: boolean = false;
+
+  /**
+   * 	If true, the button will occupy 100% width with centered content.
+   */
+  @Prop() fullWidth?: boolean = false;
+
+  /**
+   * 	Controls the horizontal alignment of button content.
+   * 	'center' - content is centered (default)
+   * 	'space-between' - left content aligned left, right content aligned right
+   */
+  @Prop() justifyContent?: ButtonJustifyContent = 'center';
 
   /**
    * 	If true, the base button will be disabled.
@@ -231,7 +245,7 @@ export class Button {
 
   render(): HTMLElement {
     return (
-      <Host class={{ host: true, block: this.block, group: this.group }}>
+      <Host class={{ host: true, block: this.block || this.fullWidth, group: this.group }}>
         <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
         <button
           onClick={(ev) => this.handleClick(ev)}
@@ -243,7 +257,9 @@ export class Button {
           class={{
             button: true,
             'button--block': this.block,
+            'button--full-width': this.fullWidth,
             'button--group': this.group,
+            [`button__justify-content--${this.justifyContent}`]: true,
             [`button__position--${this.direction}--${this.position}`]: true,
             'button--active': this.active,
             [`button__variant--${this.variant === 'delete' ? 'solid' : this.variant}`]: true,

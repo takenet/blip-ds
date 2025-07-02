@@ -74,7 +74,7 @@ describe('bds-button', () => {
         <bds-button class="host" icon-theme="outline" type-icon="icon">
           <mock:shadow-root>
             <div class="focus" tabindex="0"></div>
-            <button aria-disabled="false" aria-live="assertive" class="button button__color--primary button__position--undefined--undefined button__size--medium button__solid button__variant--solid" part="button" tabindex="-1" type="button">
+            <button aria-disabled="false" aria-live="assertive" class="button button__color--primary button__justify-content--center button__position--undefined--undefined button__size--medium button__solid button__variant--solid" part="button" tabindex="-1" type="button">
               <bds-typo bold="bold" class="button__content typo_buttom" lineheight="simple" variant="fs-14">
                 <slot></slot>
               </bds-typo>
@@ -90,6 +90,8 @@ describe('bds-button', () => {
     it('should have default values', () => {
       const component = new Button();
       expect(component.block).toBe(false);
+      expect(component.fullWidth).toBe(false);
+      expect(component.justifyContent).toBe('center');
       expect(component.disabled).toBe(false);
       expect(component.color).toBe('primary');
       expect(component.size).toBe('medium');
@@ -147,6 +149,19 @@ describe('bds-button', () => {
       
       component.arrow = true;
       expect(component.arrow).toBe(true);
+
+      component.fullWidth = true;
+      expect(component.fullWidth).toBe(true);
+    });
+
+    it('should accept different justify-content values', () => {
+      const component = new Button();
+      const validJustifyContent = ['center', 'space-between'];
+      
+      validJustifyContent.forEach(value => {
+        component.justifyContent = value as any;
+        expect(component.justifyContent).toBe(value);
+      });
     });
   });
 
@@ -171,6 +186,37 @@ describe('bds-button', () => {
       
       const button = page.root.shadowRoot.querySelector('button');
       expect(button.classList.contains('button--block')).toBe(true);
+    });
+
+    it('should render with full-width style', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button full-width>Full Width Button</bds-button>`,
+      });
+      
+      const button = page.root.shadowRoot.querySelector('button');
+      expect(button.classList.contains('button--full-width')).toBe(true);
+      expect(page.root.classList.contains('block')).toBe(true); // Host should have block class for full-width
+    });
+
+    it('should render with justify-content styles', async () => {
+      // Test center (default)
+      const centerPage = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button>Center Button</bds-button>`,
+      });
+      
+      const centerButton = centerPage.root.shadowRoot.querySelector('button');
+      expect(centerButton.classList.contains('button__justify-content--center')).toBe(true);
+
+      // Test space-between
+      const spaceBetweenPage = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button justify-content="space-between">Space Between Button</bds-button>`,
+      });
+      
+      const spaceBetweenButton = spaceBetweenPage.root.shadowRoot.querySelector('button');
+      expect(spaceBetweenButton.classList.contains('button__justify-content--space-between')).toBe(true);
     });
 
     it('should render with loading state', async () => {
