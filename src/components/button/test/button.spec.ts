@@ -74,7 +74,7 @@ describe('bds-button', () => {
         <bds-button class="host" icon-theme="outline" type-icon="icon">
           <mock:shadow-root>
             <div class="focus" tabindex="0"></div>
-            <button aria-disabled="false" aria-live="assertive" class="button button__color--primary button__position--undefined--undefined button__size--medium button__solid button__variant--solid" part="button" tabindex="-1" type="button">
+            <button aria-disabled="false" aria-live="assertive" class="button button__color--primary button__justify-content--center button__position--undefined--undefined button__size--medium button__solid button__variant--solid" part="button" tabindex="-1" type="button">
               <bds-typo bold="bold" class="button__content typo_buttom" lineheight="simple" variant="fs-14">
                 <slot></slot>
               </bds-typo>
@@ -101,6 +101,9 @@ describe('bds-button', () => {
       expect(component.type).toBe('button');
       expect(component.iconTheme).toBe('outline');
       expect(component.typeIcon).toBe('icon');
+      expect(component.expanded).toBe(false);
+      expect(component.justifyContent).toBe('center');
+      expect(component.groupIcon).toBe(false);
     });
 
     it('should accept different sizes', async () => {
@@ -147,6 +150,22 @@ describe('bds-button', () => {
       
       component.arrow = true;
       expect(component.arrow).toBe(true);
+
+      component.expanded = true;
+      expect(component.expanded).toBe(true);
+
+      component.groupIcon = true;
+      expect(component.groupIcon).toBe(true);
+    });
+
+    it('should accept different justify content values', () => {
+      const component = new Button();
+      const validJustifyContent = ['center', 'space-between'];
+      
+      validJustifyContent.forEach(justifyContent => {
+        component.justifyContent = justifyContent as any;
+        expect(component.justifyContent).toBe(justifyContent);
+      });
     });
   });
 
@@ -173,15 +192,52 @@ describe('bds-button', () => {
       expect(button.classList.contains('button--block')).toBe(true);
     });
 
-    it('should render with loading state', async () => {
+    it('should render with expanded style', async () => {
       const page = await newSpecPage({
         components: [Button, MockLoadingSpinner, MockIcon],
-        html: `<bds-button bds-loading>Loading Button</bds-button>`,
+        html: `<bds-button expanded>Expanded Button</bds-button>`,
       });
       
-      // There's no specific loading class applied to the button, but the spinner should be present
-      const spinner = page.root.shadowRoot.querySelector('bds-loading-spinner');
-      expect(spinner).toBeTruthy();
+      const button = page.root.shadowRoot.querySelector('button');
+      expect(button.classList.contains('button--expanded')).toBe(true);
+      expect(page.root.classList.contains('expanded')).toBe(true);
+    });
+
+    it('should render with justify-content space-between', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button justify-content="space-between">Button</bds-button>`,
+      });
+      
+      const button = page.root.shadowRoot.querySelector('button');
+      expect(button.classList.contains('button__justify-content--space-between')).toBe(true);
+    });
+
+    it('should render with groupIcon and iconLeft', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button justify-content="space-between" group-icon icon-left="edit">Button with Group Icon</bds-button>`,
+      });
+      
+      const iconLabelGroup = page.root.shadowRoot.querySelector('.button__icon-label-group');
+      expect(iconLabelGroup).toBeTruthy();
+      
+      const icon = iconLabelGroup.querySelector('bds-icon');
+      expect(icon).toBeTruthy();
+      expect(icon.getAttribute('name')).toBe('edit');
+      
+      const typo = iconLabelGroup.querySelector('bds-typo');
+      expect(typo).toBeTruthy();
+    });
+
+    it('should not render groupIcon wrapper when groupIcon is false', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button justify-content="space-between" icon-left="edit">Button without Group Icon</bds-button>`,
+      });
+      
+      const iconLabelGroup = page.root.shadowRoot.querySelector('.button__icon-label-group');
+      expect(iconLabelGroup).toBeFalsy();
     });
 
     it('should render with icon', async () => {

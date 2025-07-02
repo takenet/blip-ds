@@ -20,6 +20,9 @@ export const Properties = (args) => {
       color={args.color}
       size={args.size}
       disabled={args.disabled}
+      expanded={args.expanded}
+      justify-content={args.justifyContent}
+      group-icon={args.groupIcon}
       icon-left={args.iconLeft}
       icon-right={args.iconRight}
       icon-theme={args.iconTheme}
@@ -124,6 +127,28 @@ Properties.argTypes = {
     description: 'Defina o id para testes externos. (Sem alteração visual).',
     control: 'text',
   },
+  expanded: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Se verdadeiro, o botão ocupa 100% da largura do container com conteúdo centralizado.',
+    control: 'boolean',
+  },
+  justifyContent: {
+    table: {
+      defaultValue: { summary: 'center' },
+    },
+    description: 'Controla o alinhamento do conteúdo dentro do botão.',
+    options: ['center', 'space-between'],
+    control: { type: 'select' },
+  },
+  groupIcon: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Quando verdadeiro, agrupa o ícone esquerdo com o label quando justify-content é space-between.',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -139,6 +164,9 @@ Properties.args = {
   type: 'button',
   loading: 'false',
   dataTest: '',
+  expanded: 'false',
+  justifyContent: 'center',
+  groupIcon: 'false',
 };
 
 export const Events = () => {
@@ -164,5 +192,41 @@ export const FrameworkReact = () => {
     <BdsButton variant="primary" icon="file-new" size="standard">
       Button
     </BdsButton>
+  );
+};
+
+export const ExpandedLayout = () => {
+  return (
+    <div style={{ width: '300px', padding: '16px', backgroundColor: '#f5f5f5' }}>
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-14" bold="bold">Botão padrão (largura dinâmica)</bds-typo>
+        <bds-button variant="solid" color="primary" icon-left="info" icon-right="arrow-right">
+          Verbo + complemento
+        </bds-button>
+        
+        <bds-typo variant="fs-14" bold="bold">Botão expandido (largura total, conteúdo centralizado)</bds-typo>
+        <bds-button variant="solid" color="primary" expanded icon-left="info" icon-right="arrow-right">
+          Verbo + complemento
+        </bds-button>
+      </bds-grid>
+    </div>
+  );
+};
+
+export const SpaceBetweenLayout = () => {
+  return (
+    <div style={{ width: '300px', padding: '16px', backgroundColor: '#f5f5f5' }}>
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-14" bold="bold">Justify space-between (sem ícone esquerdo)</bds-typo>
+        <bds-button variant="solid" color="primary" expanded justify-content="space-between" icon-right="arrow-right">
+          Verbo + complemento
+        </bds-button>
+        
+        <bds-typo variant="fs-14" bold="bold">Justify space-between com groupIcon</bds-typo>
+        <bds-button variant="solid" color="primary" expanded justify-content="space-between" group-icon icon-left="info" icon-right="arrow-right">
+          Verbo + complemento
+        </bds-button>
+      </bds-grid>
+    </div>
   );
 };

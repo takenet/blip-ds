@@ -15,7 +15,7 @@ import { AvatarDataList } from "./components/avatar-group/avatar-group-interface
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { targets } from "./components/banner/banner-link/banner-link";
-import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
+import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType, JustifyContent } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
 import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
@@ -67,8 +67,8 @@ import { sidebarBackground, sidebarPosition, sidebarType } from "./components/si
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
 import { StepOption, typeRange } from "./components/slider/slider-interface";
 import { SwitchSize } from "./components/switch/switch";
-import { JustifyContent } from "./components/table/table-cell/table-cell";
-import { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
+import { JustifyContent as JustifyContent1 } from "./components/table/table-cell/table-cell";
+import { JustifyContent as JustifyContent2 } from "./components/table/table-header-cell/table-header-cell";
 import { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
 import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
@@ -383,6 +383,14 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * If true, the button will take full width of its container with centered content.
+         */
+        "expanded"?: boolean;
+        /**
+          * When true, groups the left icon with the label when justify-content is space-between.
+         */
+        "groupIcon"?: boolean;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -399,6 +407,10 @@ export namespace Components {
          */
         "iconTheme": IconTheme;
         "isActive": (value: any) => Promise<void>;
+        /**
+          * Controls the content alignment within the button.
+         */
+        "justifyContent"?: JustifyContent;
         "setColor": (color: 'primary' | 'content' | 'negative' | 'positive') => Promise<void>;
         "setDirection": (direction: 'row' | 'column') => Promise<void>;
         "setPosition": (position: 'first' | 'last' | 'middle') => Promise<void>;
@@ -4170,6 +4182,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If true, the button will take full width of its container with centered content.
+         */
+        "expanded"?: boolean;
+        /**
+          * When true, groups the left icon with the label when justify-content is space-between.
+         */
+        "groupIcon"?: boolean;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -4185,6 +4205,10 @@ declare namespace LocalJSX {
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme"?: IconTheme;
+        /**
+          * Controls the content alignment within the button.
+         */
+        "justifyContent"?: JustifyContent;
         /**
           * Event buttom onClick.
          */
