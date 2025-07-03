@@ -119,4 +119,104 @@ describe('bds-breadcrumb e2e tests', () => {
       expect(focusedElement).toBe('BDS-BREADCRUMB');
     });
   });
+
+  describe('Editable Current Page', () => {
+    it('should render input-editable when editableCurrentPage is true', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-breadcrumb 
+            editable-current-page="true"
+            items='[{"label":"Home","href":"/"},{"label":"Current Page"}]'>
+          </bds-breadcrumb>
+        `,
+      });
+
+      await page.waitForChanges();
+      await page.waitForTimeout(100);
+
+      const inputEditable = await page.find('bds-breadcrumb >>> bds-input-editable');
+      expect(inputEditable).toBeTruthy();
+      
+      const value = await inputEditable.getAttribute('value');
+      expect(value).toBe('Current Page');
+    });
+
+    it('should not render input-editable when editableCurrentPage is false', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-breadcrumb 
+            editable-current-page="false"
+            items='[{"label":"Home","href":"/"},{"label":"Current Page"}]'>
+          </bds-breadcrumb>
+        `,
+      });
+
+      await page.waitForChanges();
+      await page.waitForTimeout(100);
+
+      const inputEditable = await page.find('bds-breadcrumb >>> bds-input-editable');
+      expect(inputEditable).toBeFalsy();
+      
+      // Should render regular typo instead
+      const typo = await page.find('bds-breadcrumb >>> bds-typo');
+      expect(typo).toBeTruthy();
+    });
+
+    it('should emit bdsCurrentPageLabelChange event when label is changed', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-breadcrumb 
+            editable-current-page="true"
+            items='[{"label":"Home","href":"/"},{"label":"Old Label"}]'>
+          </bds-breadcrumb>
+        `,
+      });
+
+      await page.waitForChanges();
+      
+      const labelChangeEventSpy = await page.spyOnEvent('bdsCurrentPageLabelChange');
+      
+      // Trigger the input-editable save event
+      await page.$eval('bds-breadcrumb', (element) => {
+        const inputEditable = element.shadowRoot.querySelector('bds-input-editable');
+        if (inputEditable) {
+          const event = new CustomEvent('bdsInputEditableSave', {
+            detail: {
+              oldValue: 'Old Label',
+              value: 'New Label'
+            }
+          });
+          inputEditable.dispatchEvent(event);
+        }
+      });
+
+      await page.waitForChanges();
+      
+      expect(labelChangeEventSpy).toHaveReceivedEventDetail({
+        oldLabel: 'Old Label',
+        newLabel: 'New Label'
+      });
+    });
+
+    it('should not render input-editable for current page with href', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-breadcrumb 
+            editable-current-page="true"
+            items='[{"label":"Home","href":"/"},{"label":"Current","href":"/current"}]'>
+          </bds-breadcrumb>
+        `,
+      });
+
+      await page.waitForChanges();
+      await page.waitForTimeout(100);
+
+      const inputEditable = await page.find('bds-breadcrumb >>> bds-input-editable');
+      expect(inputEditable).toBeFalsy();
+      
+      // Should render link instead
+      const link = await page.find('bds-breadcrumb >>> a.breadcrumb__link');
+      expect(link).toBeTruthy();
+    });
+  });
 });

@@ -15,6 +15,7 @@ import { AvatarDataList } from "./components/avatar-group/avatar-group-interface
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { targets } from "./components/banner/banner-link/banner-link";
+import { BreadcrumbCurrentPageChangeEventDetail } from "./components/breadcrumb/breadcrumb";
 import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
@@ -350,6 +351,10 @@ export namespace Components {
         "target": targets;
     }
     interface BdsBreadcrumb {
+        /**
+          * Enable editing of the current page label using bds-input-editable
+         */
+        "editableCurrentPage"?: boolean;
         "items": string | Array<{ label: string; href?: string }>;
     }
     interface BdsButton {
@@ -2927,6 +2932,10 @@ export interface BdsBannerLinkCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsBannerLinkElement;
 }
+export interface BdsBreadcrumbCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsBreadcrumbElement;
+}
 export interface BdsButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsButtonElement;
@@ -4137,7 +4146,15 @@ declare namespace LocalJSX {
         "target"?: targets;
     }
     interface BdsBreadcrumb {
+        /**
+          * Enable editing of the current page label using bds-input-editable
+         */
+        "editableCurrentPage"?: boolean;
         "items"?: string | Array<{ label: string; href?: string }>;
+        /**
+          * Emitted when the current page label is changed
+         */
+        "onBdsCurrentPageLabelChange"?: (event: BdsBreadcrumbCustomEvent<BreadcrumbCurrentPageChangeEventDetail>) => void;
     }
     interface BdsButton {
         /**
