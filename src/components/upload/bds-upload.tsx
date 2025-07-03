@@ -1,6 +1,5 @@
 import { Component, h, Element, State, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { termTranslate, languages } from './languages';
-import background from '../../assets/svg/pattern.svg';
 
 @Component({
   tag: 'bds-upload',
@@ -147,10 +146,12 @@ export class BdsUpload {
    * Recive the file data using drag and drop.
    */
   handleDrop = (Event) => {
+    this.preventDefaults(Event);
     this.haveFiles = true;
     const dt = Event.dataTransfer;
     const files = dt.files;
     this.handleFiles(files);
+    this.hover = false;
   };
 
   /**
@@ -247,44 +248,57 @@ export class BdsUpload {
 
   render() {
     return (
-      <div class="upload">
+      <div
+        class={{ upload: true, 'upload__edit--hover': true, 'upload--drag':this.hover }}
+      >
+        <div 
+        class={{ upload__overlay: true}}
+        onDrop={this.handleDrop}
+        onDragOver={this.preventDefaults}
+        onKeyDown={this.handleKeyDown.bind(this)}>
         <div class="upload-header">
-          <bds-icon class="upload-header_icon" size="xxx-large" name="upload"></bds-icon>
+          <bds-icon class="upload-header_icon" size="x-large" name="upload"></bds-icon>
           <div class="upload-header_text">
             <bds-typo variant="fs-16" bold="bold" aria-label={this.titleName}>
               {this.titleName}
             </bds-typo>
-            <bds-typo variant="fs-14" bold="regular" aria-label={this.subtitle}>
+            <bds-typo variant="fs-12" bold="regular" aria-label={this.subtitle}>
               {this.subtitle}
             </bds-typo>
           </div>
         </div>
         {this.error ? (
-          <bds-banner context="inside" variant="error" aria-label={this.error}>
+          <bds-grid padding="x-2">
+            <bds-banner context="inside" variant="error" aria-label={this.error}>
             {this.error}
           </bds-banner>
+          </bds-grid>
+          
         ) : (
           ''
         )}
         {this.haveFiles ? (
-          <div>
+          <div class="upload__list">
             <div class="list-preview">
               {this.files.map((names: any, index) => (
                 <div class="upload__preview" key={index} id="drop-area">
                   <div class="preview" id="preview">
                     <bds-icon size="x-small" name="attach"></bds-icon>
-                    <p class="preview-text" id="preview-text" aria-label={names.name}>
-                      {names.name}
-                    </p>
-                    <bds-button-icon
+                    <div class="preview-text-box">
+                      <p class="preview-text" id="preview-text" aria-label={names.name}>
+                        {names.name}
+                      </p>
+                    </div>
+                    <bds-button
                       class="preview-icon"
                       size="short"
-                      icon="trash"
-                      variant="secondary"
+                      icon-left="trash"
+                      variant="text"
+                      color="content"
                       onClick={() => this.deleteFile(index)}
                       aria-label={`delete ${names.name}`}
                       data-test={`${this.dtButtonDelete}-${index}`}
-                    ></bds-button-icon>
+                    ></bds-button>
                   </div>
                 </div>
               ))}
@@ -305,49 +319,42 @@ export class BdsUpload {
         ) : (
           ''
         )}
-        <div class={{ upload__edit: true }}>
-          <label
-            class={{ 'upload__edit--label': true, 'upload__edit--hover': this.hover }}
-            id="file-label"
-            htmlFor="file"
-            data-test={this.dtLabelAddFile}
-            tabindex="0"
-            onKeyDown={this.handleKeyDown.bind(this)}
-          >
-            <div class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
-              {this.hover ? (
+        <bds-grid
+          direction="row"
+          flex-wrap="wrap"
+          justify-content="center"
+          align-items="center"
+          padding="y-6"
+          gap="1"
+          class={{ 'upload__edit--label': true, 'upload__edit--drag': this.hover }}
+        >
+          {!this.hover && (
+            <bds-button onClick={() => this.inputElement.click()} variant="solid" size="short" color="content">
+              {termTranslate(this.language, 'chooseFiles')}
+            </bds-button>
+          )}
+            <bds-grid padding="1" class={{ 'text-box': true, 'text-box--hover': this.hover }} id="file-text_box">
                 <bds-typo
-                  class="text"
-                  variant="fs-14"
-                  bold="regular"
-                  aria-label={termTranslate(this.language, 'dropHere')}
+                class={{ [`text-${this.hover}`]: true }}
+                variant="fs-14"
+                bold='bold'
+                aria-label={termTranslate(this.language, this.hover ? 'dropHere' : 'dropOrClick')}
                 >
-                  {termTranslate(this.language, 'dropHere')}
+                {termTranslate(this.language, this.hover ? 'dropHere' : 'dropOrClick')}
                 </bds-typo>
-              ) : (
-                <bds-typo
-                  class="text"
-                  variant="fs-14"
-                  bold="regular"
-                  aria-label={termTranslate(this.language, 'dropOrClick')}
-                >
-                  {termTranslate(this.language, 'dropOrClick')}
-                </bds-typo>
-              )}
-            </div>
-            <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={background} />
-          </label>
-          <input
-            ref={this.refInputElement}
-            type="file"
-            name="files[]"
-            id="file"
-            class="upload__input"
-            multiple={this.multiple}
-            accept={this.internalAccepts.length > 0 ? this.internalAccepts.toString() : this.accept}
-            onChange={($event: any) => this.onUploadClick($event.target.files)}
-            data-test={this.dtInputFiles}
-          />
+            </bds-grid>
+            <input
+              ref={this.refInputElement}
+              type="file"
+              name="files[]"
+              id="file"
+              class="upload__input"
+              multiple={this.multiple}
+              accept={this.internalAccepts.length > 0 ? this.internalAccepts.toString() : this.accept}
+              onChange={($event: any) => this.onUploadClick($event.target.files)}
+              data-test={this.dtInputFiles}
+            />
+        </bds-grid>
         </div>
       </div>
     );

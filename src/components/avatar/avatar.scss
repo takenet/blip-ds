@@ -1,3 +1,4 @@
+@import '../../globals/bg-colors.scss';
 $avatar-size-micro: 24px;
 $avatar-size-extra-small: 32px;
 $avatar-size-small: 40px;
@@ -46,7 +47,6 @@ $avatar-size-extra-large: 72px;
   }
 
   &__btn {
-    border-radius: 40px;
     border: 1px solid $color-border-2;
     box-sizing: border-box;
     position: relative;
@@ -78,54 +78,8 @@ $avatar-size-extra-large: 72px;
       transition: all 0.5s;
     }
 
-    &__thumb {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      top: 0;
-      left: 0;
-      cursor: pointer;
-
-      &:before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-color: $color-content-default;
-        opacity: 0;
-        transition: all 0.5s;
-      }
-
-      &__icon {
-        position: relative;
-        color: $color-surface-1;
-        opacity: 0;
-        transition: all 0.5s;
-      }
-    }
-
-    &__name {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      top: 0;
-      left: 0;
-      cursor: pointer;
-      opacity: 0;
-      -webkit-transition: all 0.5s;
-      -moz-transition: all 0.5s;
-      transition: all 0.5s;
-
-      &__icon {
-        color: $color-content-default;
-      }
-    }
-
+    &__thumb,
+    &__name,
     &__empty {
       position: absolute;
       width: 100%;
@@ -137,12 +91,25 @@ $avatar-size-extra-large: 72px;
       left: 0;
       cursor: pointer;
       opacity: 0;
-      -webkit-transition: all 0.5s;
-      -moz-transition: all 0.5s;
       transition: all 0.5s;
 
       &__icon {
         color: $color-content-default;
+      }
+    }
+
+    &__thumb {
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: $color-content-default;
+        opacity: 0;
+        transition: all 0.5s;
+      }
+
+      &__icon {
+        color: $color-surface-1;
       }
     }
   }
@@ -183,6 +150,32 @@ $avatar-size-extra-large: 72px;
       height: $avatar-size-extra-large;
       min-width: $avatar-size-extra-large;
       min-height: $avatar-size-extra-large;
+    }
+  }
+
+  &__shape {
+    &--circle .avatar__btn {
+      border-radius: 50%;
+    }
+    &--square .avatar__btn {
+      &.avatar__size--micro {
+        border-radius: 8px;
+      }
+      &.avatar__size--extra-small {
+        border-radius: 8px;
+      }
+      &.avatar__size--small {
+        border-radius: 8px;
+      }
+      &.avatar__size--standard {
+        border-radius: 16px;
+      }
+      &.avatar__size--large {
+        border-radius: 16px;
+      }
+      &.avatar__size--extra-large {
+        border-radius: 16px;
+      }
     }
   }
 
@@ -246,6 +239,10 @@ $avatar-size-extra-large: 72px;
       }
     }
   }
+}
+
+.hidden {
+  display: none;
 }
 
 .focus:focus-visible {

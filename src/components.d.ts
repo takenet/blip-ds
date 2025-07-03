@@ -9,13 +9,15 @@ import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
 import { SelectionType } from "./components/autocomplete/autocomplete";
-import { avatarSize, colors } from "./components/avatar/avatar";
+import { avatarShape, avatarSize, avatarType, colors } from "./components/avatar/avatar";
+import { BgColor } from "./components/avatar/color-letter";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
 import { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
+import { IconSize, IconTheme, IconType } from "./components/icon/icon-interface";
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { targets } from "./components/banner/banner-link/banner-link";
-import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
+import { ButtonSize, ButtonType, ButtonVariant, IconTheme as IconTheme1, IconType as IconType1 } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
 import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
@@ -37,7 +39,6 @@ import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
 import { Color } from "./components/grid/color-grid-interface";
-import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
 import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
@@ -96,16 +97,22 @@ export namespace Components {
         "toggle": () => Promise<void>;
     }
     interface BdsAccordionGroup {
+        "arrowAlign"?: string;
         "closeAll": (actNumber?: any) => Promise<void>;
         "collapse"?: collapses;
         "divisor"?: boolean;
         "openAll": (actNumber?: any) => Promise<void>;
+        "size"?: string;
     }
     interface BdsAccordionHeader {
         /**
           * Accordion Title. Used to add title in header accordion.
          */
         "accordionTitle"?: string;
+        /**
+          * Arrow Align. Used to define the alignment of the arrow icon.
+         */
+        "arrowAlign"?: string;
         /**
           * Avatar Name. Used to add avatar in header accordion.
          */
@@ -124,6 +131,10 @@ export namespace Components {
          */
         "icon"?: string;
         "open": () => Promise<void>;
+        /**
+          * Size. Used to define the size of the accordion header.
+         */
+        "size"?: string;
         "toggle": () => Promise<void>;
     }
     interface BdsAlert {
@@ -243,6 +254,10 @@ export namespace Components {
     }
     interface BdsAvatar {
         /**
+          * Background Color, Entered as one of the background color.
+         */
+        "bgColor"?: BgColor;
+        /**
           * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
          */
         "color"?: colors;
@@ -263,6 +278,10 @@ export namespace Components {
          */
         "openUpload"?: boolean;
         /**
+          * Shape, Entered as one of the shape. Can be one of: 'circle', 'square'.
+         */
+        "shape"?: avatarShape;
+        /**
           * Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
         "size"?: avatarSize;
@@ -270,6 +289,10 @@ export namespace Components {
           * Thumbnail, Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
+        /**
+          * Type, Entered as one of the type. Can be one of: 'user', 'icon'.
+         */
+        "type"?: avatarType;
         /**
           * Upload, Serve to enable upload function on avatar.
          */
@@ -285,6 +308,44 @@ export namespace Components {
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
+    }
+    interface BdsAvatarIcon {
+        /**
+          * The color of the icon.
+         */
+        "color"?: BgColor;
+        /**
+          * The name of the icon to be displayed.
+         */
+        "iconName"?: string;
+        /**
+          * Method to update the icon color.
+         */
+        "setColor": (color: BgColor) => Promise<void>;
+        /**
+          * Method to update the icon name.
+         */
+        "setIconName": (name: string) => Promise<void>;
+        /**
+          * Method to update the icon size.
+         */
+        "setSize": (size: IconSize) => Promise<void>;
+        /**
+          * Method to update the icon theme.
+         */
+        "setTheme": (theme: IconTheme) => Promise<void>;
+        /**
+          * The size of the icon.
+         */
+        "size"?: IconSize;
+        /**
+          * The theme of the icon.
+         */
+        "theme"?: IconTheme;
+        /**
+          * The type of the icon.
+         */
+        "type"?: IconType;
     }
     interface BdsBadge {
         /**
@@ -1065,11 +1126,11 @@ export namespace Components {
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
-        "theme": IconTheme1;
+        "theme": IconTheme;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
-        "type": IconType1;
+        "type": IconType;
     }
     interface BdsIllustration {
         /**
@@ -3162,6 +3223,12 @@ declare global {
         prototype: HTMLBdsAvatarGroupElement;
         new (): HTMLBdsAvatarGroupElement;
     };
+    interface HTMLBdsAvatarIconElement extends Components.BdsAvatarIcon, HTMLStencilElement {
+    }
+    var HTMLBdsAvatarIconElement: {
+        prototype: HTMLBdsAvatarIconElement;
+        new (): HTMLBdsAvatarIconElement;
+    };
     interface HTMLBdsBadgeElement extends Components.BdsBadge, HTMLStencilElement {
     }
     var HTMLBdsBadgeElement: {
@@ -3738,6 +3805,7 @@ declare global {
         "bds-autocomplete": HTMLBdsAutocompleteElement;
         "bds-avatar": HTMLBdsAvatarElement;
         "bds-avatar-group": HTMLBdsAvatarGroupElement;
+        "bds-avatar-icon": HTMLBdsAvatarIconElement;
         "bds-badge": HTMLBdsBadgeElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
@@ -3849,16 +3917,22 @@ declare namespace LocalJSX {
         "dataTest"?: string;
     }
     interface BdsAccordionGroup {
+        "arrowAlign"?: string;
         "collapse"?: collapses;
         "divisor"?: boolean;
         "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
         "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
+        "size"?: string;
     }
     interface BdsAccordionHeader {
         /**
           * Accordion Title. Used to add title in header accordion.
          */
         "accordionTitle"?: string;
+        /**
+          * Arrow Align. Used to define the alignment of the arrow icon.
+         */
+        "arrowAlign"?: string;
         /**
           * Avatar Name. Used to add avatar in header accordion.
          */
@@ -3875,6 +3949,10 @@ declare namespace LocalJSX {
           * Icon. Used to add icon in header accordion.
          */
         "icon"?: string;
+        /**
+          * Size. Used to define the size of the accordion header.
+         */
+        "size"?: string;
     }
     interface BdsAlert {
         /**
@@ -4020,6 +4098,10 @@ declare namespace LocalJSX {
     }
     interface BdsAvatar {
         /**
+          * Background Color, Entered as one of the background color.
+         */
+        "bgColor"?: BgColor;
+        /**
           * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
          */
         "color"?: colors;
@@ -4042,6 +4124,10 @@ declare namespace LocalJSX {
          */
         "openUpload"?: boolean;
         /**
+          * Shape, Entered as one of the shape. Can be one of: 'circle', 'square'.
+         */
+        "shape"?: avatarShape;
+        /**
           * Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
          */
         "size"?: avatarSize;
@@ -4049,6 +4135,10 @@ declare namespace LocalJSX {
           * Thumbnail, Inserted to highlight user image. Url field.
          */
         "thumbnail"?: string;
+        /**
+          * Type, Entered as one of the type. Can be one of: 'user', 'icon'.
+         */
+        "type"?: avatarType;
         /**
           * Upload, Serve to enable upload function on avatar.
          */
@@ -4065,6 +4155,28 @@ declare namespace LocalJSX {
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
         "users"?: string | AvatarDataList[];
+    }
+    interface BdsAvatarIcon {
+        /**
+          * The color of the icon.
+         */
+        "color"?: BgColor;
+        /**
+          * The name of the icon to be displayed.
+         */
+        "iconName"?: string;
+        /**
+          * The size of the icon.
+         */
+        "size"?: IconSize;
+        /**
+          * The theme of the icon.
+         */
+        "theme"?: IconTheme;
+        /**
+          * The type of the icon.
+         */
+        "type"?: IconType;
     }
     interface BdsBadge {
         /**
@@ -4898,11 +5010,11 @@ declare namespace LocalJSX {
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
          */
-        "theme"?: IconTheme1;
+        "theme"?: IconTheme;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
          */
-        "type"?: IconType1;
+        "type"?: IconType;
     }
     interface BdsIllustration {
         /**
@@ -6901,6 +7013,7 @@ declare namespace LocalJSX {
         "bds-autocomplete": BdsAutocomplete;
         "bds-avatar": BdsAvatar;
         "bds-avatar-group": BdsAvatarGroup;
+        "bds-avatar-icon": BdsAvatarIcon;
         "bds-badge": BdsBadge;
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
@@ -7012,6 +7125,7 @@ declare module "@stencil/core" {
             "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
             "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
             "bds-avatar-group": LocalJSX.BdsAvatarGroup & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
+            "bds-avatar-icon": LocalJSX.BdsAvatarIcon & JSXBase.HTMLAttributes<HTMLBdsAvatarIconElement>;
             "bds-badge": LocalJSX.BdsBadge & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;

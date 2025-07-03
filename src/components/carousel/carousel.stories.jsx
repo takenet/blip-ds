@@ -163,7 +163,7 @@ Properties.argTypes = {
   },
   autoplayTimeout: {
     table: {
-      defaultValue: { summary: 'vazio' },
+      defaultValue: { summary: '5000' },
     },
     description: 'Escolha o tempo do Autoplay em milissegundo, ex: 5000.',
     control: 'text',

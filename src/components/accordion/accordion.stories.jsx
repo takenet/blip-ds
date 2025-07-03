@@ -24,6 +24,8 @@ export const Properties = (args) => {
         icon={args.icon}
         avatar-name={args.avatarName}
         avatar-thumb={args.avatarThumb}
+        size={args.size}
+        arrow-align={args.arrowAlign}
       ></bds-accordion-header>
       <bds-accordion-body>
         <bds-typo variant="fs-16">{paragraph}</bds-typo>
@@ -75,6 +77,22 @@ Properties.argTypes = {
     description: 'Escolha se o accordion terá a linha inferior.',
     control: 'boolean',
   },
+  size: {
+    table: {
+      defaultValue: { summary: 'large' },
+    },
+    description: 'Defina o tamanho do cabeçalho do accordion.',
+    options: ['small', 'medium', 'large'],
+    control: { type: 'select' },
+  },
+  arrowAlign: {
+    table: {
+      defaultValue: { summary: 'right' },
+    },
+    description: 'Defina o alinhamento do ícone de seta.',
+    options: ['left', 'right'],
+    control: { type: 'select' },
+  },
 };
 
 Properties.args = {
@@ -84,6 +102,8 @@ Properties.args = {
   icon: '',
   startOpen: false,
   divisor: true,
+  size: 'large',
+  arrowAlign: 'right',
 };
 
 export const Methods = () => {
