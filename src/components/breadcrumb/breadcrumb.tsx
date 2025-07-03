@@ -1,4 +1,9 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
+
+export interface BreadcrumbCurrentPageChangeEventDetail {
+  oldLabel: string;
+  newLabel: string;
+}
 
 @Component({
   tag: 'bds-breadcrumb',
@@ -8,9 +13,19 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 export class Breadcrumb {
   @Prop() items: string | Array<{ label: string; href?: string }> = [];
 
+  /**
+   * Enable editing of the current page label using bds-input-editable
+   */
+  @Prop() editableCurrentPage?: boolean = false;
+
   @State() parsedItems: Array<{ label: string; href?: string }> = [];
 
   @State() isDropdownOpen: boolean = false;
+
+  /**
+   * Emitted when the current page label is changed
+   */
+  @Event() bdsCurrentPageLabelChange: EventEmitter<BreadcrumbCurrentPageChangeEventDetail>;
 
   @Watch('items')
   parseItems(newValue: string | Array<{ label: string; href?: string }>) {
@@ -32,6 +47,30 @@ export class Breadcrumb {
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+
+  private handleCurrentPageLabelSave = (event: CustomEvent) => {
+    const detail = event.detail;
+    const oldLabel = detail.oldValue;
+    const newLabel = detail.value;
+    
+    if (oldLabel !== newLabel) {
+      // Update the current page label in parsedItems
+      const updatedItems = [...this.parsedItems];
+      if (updatedItems.length > 0) {
+        updatedItems[updatedItems.length - 1] = {
+          ...updatedItems[updatedItems.length - 1],
+          label: newLabel
+        };
+        this.parsedItems = updatedItems;
+      }
+      
+      // Emit the change event
+      this.bdsCurrentPageLabelChange.emit({
+        oldLabel,
+        newLabel
+      });
+    }
+  };
 
   render() {
     if (!this.parsedItems || this.parsedItems.length === 0) {
@@ -118,9 +157,17 @@ export class Breadcrumb {
                 </bds-grid>
               ) : (
                 <bds-grid direction="row">
-                  <bds-typo variant="fs-12" bold="semi-bold" margin={false}>
-                    {item.label}
-                  </bds-typo>
+                  {index === visibleItems.length - 1 && this.editableCurrentPage && !item.href ? (
+                    <bds-input-editable
+                      value={item.label}
+                      size="short"
+                      onBdsInputEditableSave={this.handleCurrentPageLabelSave}
+                    ></bds-input-editable>
+                  ) : (
+                    <bds-typo variant="fs-12" bold="semi-bold" margin={false}>
+                      {item.label}
+                    </bds-typo>
+                  )}
                 </bds-grid>
               )}
             </bds-grid>

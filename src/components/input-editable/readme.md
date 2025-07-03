@@ -52,6 +52,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [bds-breadcrumb](../breadcrumb)
+
 ### Depends on
 
 - [bds-icon](../icon)
@@ -62,6 +66,7 @@
 graph TD;
   bds-input-editable --> bds-icon
   bds-input-editable --> bds-typo
+  bds-breadcrumb --> bds-input-editable
   style bds-input-editable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

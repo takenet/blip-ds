@@ -316,4 +316,145 @@ describe('bds-breadcrumb', () => {
       expect(page.rootInstance.parsedItems).toEqual(null);
     });
   });
+
+  describe('Editable Current Page', () => {
+    it('should have editableCurrentPage prop defaulting to false', async () => {
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb></bds-breadcrumb>`,
+      });
+      
+      expect(page.rootInstance.editableCurrentPage).toBe(false);
+    });
+
+    it('should accept editableCurrentPage prop as true', async () => {
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb editable-current-page="true"></bds-breadcrumb>`,
+      });
+      
+      expect(page.rootInstance.editableCurrentPage).toBe(true);
+    });
+
+    it('should render bds-input-editable for current page when editableCurrentPage is true', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Current Page' } // No href, should be editable
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb editable-current-page="true" items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      await page.waitForChanges();
+      
+      // Check that input-editable is rendered for the last item
+      const inputEditable = page.root.shadowRoot.querySelector('bds-input-editable');
+      expect(inputEditable).toBeTruthy();
+      expect(inputEditable.getAttribute('value')).toBe('Current Page');
+      expect(inputEditable.getAttribute('size')).toBe('short');
+    });
+
+    it('should not render input-editable when editableCurrentPage is false', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Current Page' }
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb editable-current-page="false" items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      await page.waitForChanges();
+      
+      const inputEditable = page.root.shadowRoot.querySelector('bds-input-editable');
+      expect(inputEditable).toBeFalsy();
+      
+      // Should render regular typo instead
+      const typo = page.root.shadowRoot.querySelector('bds-typo');
+      expect(typo).toBeTruthy();
+    });
+
+    it('should not render input-editable for current page if it has href', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Current Page', href: '/current' } // Has href, should not be editable
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb editable-current-page="true" items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      await page.waitForChanges();
+      
+      const inputEditable = page.root.shadowRoot.querySelector('bds-input-editable');
+      expect(inputEditable).toBeFalsy();
+    });
+
+    it('should handle current page label change', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Old Label' }
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb editable-current-page="true" items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      const eventSpy = jest.fn();
+      page.root.addEventListener('bdsCurrentPageLabelChange', eventSpy);
+      
+      // Simulate input-editable save event
+      const mockEvent = {
+        detail: {
+          oldValue: 'Old Label',
+          value: 'New Label'
+        }
+      } as CustomEvent;
+      
+      page.rootInstance.handleCurrentPageLabelSave(mockEvent);
+      await page.waitForChanges();
+      
+      // Check that the event was emitted
+      expect(eventSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          detail: {
+            oldLabel: 'Old Label',
+            newLabel: 'New Label'
+          }
+        })
+      );
+      
+      // Check that parsedItems was updated
+      expect(page.rootInstance.parsedItems[1].label).toBe('New Label');
+    });
+
+    it('should not emit event if label did not change', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Same Label' }
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb editable-current-page="true" items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      const eventSpy = jest.fn();
+      page.root.addEventListener('bdsCurrentPageLabelChange', eventSpy);
+      
+      // Simulate input-editable save event with same value
+      const mockEvent = {
+        detail: {
+          oldValue: 'Same Label',
+          value: 'Same Label'
+        }
+      } as CustomEvent;
+      
+      page.rootInstance.handleCurrentPageLabelSave(mockEvent);
+      await page.waitForChanges();
+      
+      // Check that the event was not emitted
+      expect(eventSpy).not.toHaveBeenCalled();
+    });
+  });
 });
