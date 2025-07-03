@@ -1,11 +1,34 @@
-import { r as registerInstance, h } from './index-611fd21e.js';
+import { r as registerInstance, c as createEvent, h } from './index-611fd21e.js';
 
 const breadcrumbCss = ":host{display:block}:host *{color:var(--color-content-default, #282828)}.button--icon{-webkit-transform:rotate(180deg);transform:rotate(180deg);color:var(--color-content-ghost, #8c8c8c)}.breadcrumb__button--0{padding-left:0}.breadcrumb__button--0 .button--icon{display:none}.breadcrumb__button--1{padding-left:8px}.breadcrumb__button--2{padding-left:16px}.breadcrumb__button--3{padding-left:24px}.breadcrumb__button--4{padding-left:32px}.breadcrumb__link--text{color:var(--color-content-disable, #595959)}.breadcrumb__link{text-decoration:none}";
 
 const Breadcrumb = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
+    this.bdsCurrentPageLabelChange = createEvent(this, "bdsCurrentPageLabelChange", 7);
+    this.handleCurrentPageLabelSave = (event) => {
+      const detail = event.detail;
+      const oldLabel = detail.oldValue;
+      const newLabel = detail.value;
+      if (oldLabel !== newLabel) {
+        // Update the current page label in parsedItems
+        const updatedItems = [...this.parsedItems];
+        if (updatedItems.length > 0) {
+          updatedItems[updatedItems.length - 1] = {
+            ...updatedItems[updatedItems.length - 1],
+            label: newLabel
+          };
+          this.parsedItems = updatedItems;
+        }
+        // Emit the change event
+        this.bdsCurrentPageLabelChange.emit({
+          oldLabel,
+          newLabel
+        });
+      }
+    };
     this.items = [];
+    this.editableCurrentPage = false;
     this.parsedItems = [];
     this.isDropdownOpen = false;
   }
@@ -42,7 +65,7 @@ const Breadcrumb = class {
     return (h("nav", { "aria-label": "breadcrumb" }, h("bds-grid", { direction: "row", "align-items": "center" }, visibleItems.map((item, index) => (h("bds-grid", { class: {
         breadcrumb__item: true,
         'breadcrumb__item--active': index === visibleItems.length - 1,
-      }, "aria-current": index === visibleItems.length - 1 ? 'page' : null }, item.label === '...' ? (h("bds-dropdown", { "active-mode": "click", position: "auto" }, h("bds-grid", { slot: "dropdown-content" }, h("bds-grid", { direction: "column", padding: "1", gap: "half" }, this.parsedItems.slice(1, -1).map((subItem, idx) => (h("bds-grid", { class: `breadcrumb__button--${idx}` }, subItem.href ? (h("a", { href: subItem.href, class: `breadcrumb__link breadcrumb__button--${idx}` }, h("bds-grid", { "align-items": "center", gap: "half" }, h("bds-icon", { name: "reply", theme: "outline", class: "button--icon", size: "x-small" }), h("bds-button", { variant: "text", color: "content", size: "short" }, subItem.label)))) : (h("span", null, subItem.label))))))), h("bds-grid", { slot: "dropdown-activator", "align-items": "center" }, h("bds-button", { variant: "text", color: "content", size: "short", onClick: () => this.toggleDropdown(), "icon-left": "more-options-horizontal" }), h("bds-icon", { name: "arrow-right", size: "x-small" })))) : item.href ? (h("bds-grid", { direction: "row" }, h("bds-typo", { variant: "fs-12", margin: false, class: "breadcrumb__link--text" }, h("a", { href: item.href, class: "breadcrumb__link" }, item.label)), h("bds-icon", { name: "arrow-right", size: "x-small" }))) : (h("bds-grid", { direction: "row" }, h("bds-typo", { variant: "fs-12", bold: "semi-bold", margin: false }, item.label)))))))));
+      }, "aria-current": index === visibleItems.length - 1 ? 'page' : null }, item.label === '...' ? (h("bds-dropdown", { "active-mode": "click", position: "auto" }, h("bds-grid", { slot: "dropdown-content" }, h("bds-grid", { direction: "column", padding: "1", gap: "half" }, this.parsedItems.slice(1, -1).map((subItem, idx) => (h("bds-grid", { class: `breadcrumb__button--${idx}` }, subItem.href ? (h("a", { href: subItem.href, class: `breadcrumb__link breadcrumb__button--${idx}` }, h("bds-grid", { "align-items": "center", gap: "half" }, h("bds-icon", { name: "reply", theme: "outline", class: "button--icon", size: "x-small" }), h("bds-button", { variant: "text", color: "content", size: "short" }, subItem.label)))) : (h("span", null, subItem.label))))))), h("bds-grid", { slot: "dropdown-activator", "align-items": "center" }, h("bds-button", { variant: "text", color: "content", size: "short", onClick: () => this.toggleDropdown(), "icon-left": "more-options-horizontal" }), h("bds-icon", { name: "arrow-right", size: "x-small" })))) : item.href ? (h("bds-grid", { direction: "row" }, h("bds-typo", { variant: "fs-12", margin: false, class: "breadcrumb__link--text" }, h("a", { href: item.href, class: "breadcrumb__link" }, item.label)), h("bds-icon", { name: "arrow-right", size: "x-small" }))) : (h("bds-grid", { direction: "row" }, index === visibleItems.length - 1 && this.editableCurrentPage && !item.href ? (h("bds-input-editable", { value: item.label, size: "short", onBdsInputEditableSave: this.handleCurrentPageLabelSave })) : (h("bds-typo", { variant: "fs-12", bold: "semi-bold", margin: false }, item.label))))))))));
   }
   static get watchers() { return {
     "items": ["parseItems"]

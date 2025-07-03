@@ -9,7 +9,30 @@ const breadcrumbCss = ":host{display:block}:host *{color:var(--color-content-def
 const Breadcrumb = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
+    this.bdsCurrentPageLabelChange = index.createEvent(this, "bdsCurrentPageLabelChange", 7);
+    this.handleCurrentPageLabelSave = (event) => {
+      const detail = event.detail;
+      const oldLabel = detail.oldValue;
+      const newLabel = detail.value;
+      if (oldLabel !== newLabel) {
+        // Update the current page label in parsedItems
+        const updatedItems = [...this.parsedItems];
+        if (updatedItems.length > 0) {
+          updatedItems[updatedItems.length - 1] = {
+            ...updatedItems[updatedItems.length - 1],
+            label: newLabel
+          };
+          this.parsedItems = updatedItems;
+        }
+        // Emit the change event
+        this.bdsCurrentPageLabelChange.emit({
+          oldLabel,
+          newLabel
+        });
+      }
+    };
     this.items = [];
+    this.editableCurrentPage = false;
     this.parsedItems = [];
     this.isDropdownOpen = false;
   }
@@ -46,7 +69,7 @@ const Breadcrumb = class {
     return (index.h("nav", { "aria-label": "breadcrumb" }, index.h("bds-grid", { direction: "row", "align-items": "center" }, visibleItems.map((item, index$1) => (index.h("bds-grid", { class: {
         breadcrumb__item: true,
         'breadcrumb__item--active': index$1 === visibleItems.length - 1,
-      }, "aria-current": index$1 === visibleItems.length - 1 ? 'page' : null }, item.label === '...' ? (index.h("bds-dropdown", { "active-mode": "click", position: "auto" }, index.h("bds-grid", { slot: "dropdown-content" }, index.h("bds-grid", { direction: "column", padding: "1", gap: "half" }, this.parsedItems.slice(1, -1).map((subItem, idx) => (index.h("bds-grid", { class: `breadcrumb__button--${idx}` }, subItem.href ? (index.h("a", { href: subItem.href, class: `breadcrumb__link breadcrumb__button--${idx}` }, index.h("bds-grid", { "align-items": "center", gap: "half" }, index.h("bds-icon", { name: "reply", theme: "outline", class: "button--icon", size: "x-small" }), index.h("bds-button", { variant: "text", color: "content", size: "short" }, subItem.label)))) : (index.h("span", null, subItem.label))))))), index.h("bds-grid", { slot: "dropdown-activator", "align-items": "center" }, index.h("bds-button", { variant: "text", color: "content", size: "short", onClick: () => this.toggleDropdown(), "icon-left": "more-options-horizontal" }), index.h("bds-icon", { name: "arrow-right", size: "x-small" })))) : item.href ? (index.h("bds-grid", { direction: "row" }, index.h("bds-typo", { variant: "fs-12", margin: false, class: "breadcrumb__link--text" }, index.h("a", { href: item.href, class: "breadcrumb__link" }, item.label)), index.h("bds-icon", { name: "arrow-right", size: "x-small" }))) : (index.h("bds-grid", { direction: "row" }, index.h("bds-typo", { variant: "fs-12", bold: "semi-bold", margin: false }, item.label)))))))));
+      }, "aria-current": index$1 === visibleItems.length - 1 ? 'page' : null }, item.label === '...' ? (index.h("bds-dropdown", { "active-mode": "click", position: "auto" }, index.h("bds-grid", { slot: "dropdown-content" }, index.h("bds-grid", { direction: "column", padding: "1", gap: "half" }, this.parsedItems.slice(1, -1).map((subItem, idx) => (index.h("bds-grid", { class: `breadcrumb__button--${idx}` }, subItem.href ? (index.h("a", { href: subItem.href, class: `breadcrumb__link breadcrumb__button--${idx}` }, index.h("bds-grid", { "align-items": "center", gap: "half" }, index.h("bds-icon", { name: "reply", theme: "outline", class: "button--icon", size: "x-small" }), index.h("bds-button", { variant: "text", color: "content", size: "short" }, subItem.label)))) : (index.h("span", null, subItem.label))))))), index.h("bds-grid", { slot: "dropdown-activator", "align-items": "center" }, index.h("bds-button", { variant: "text", color: "content", size: "short", onClick: () => this.toggleDropdown(), "icon-left": "more-options-horizontal" }), index.h("bds-icon", { name: "arrow-right", size: "x-small" })))) : item.href ? (index.h("bds-grid", { direction: "row" }, index.h("bds-typo", { variant: "fs-12", margin: false, class: "breadcrumb__link--text" }, index.h("a", { href: item.href, class: "breadcrumb__link" }, item.label)), index.h("bds-icon", { name: "arrow-right", size: "x-small" }))) : (index.h("bds-grid", { direction: "row" }, index$1 === visibleItems.length - 1 && this.editableCurrentPage && !item.href ? (index.h("bds-input-editable", { value: item.label, size: "short", onBdsInputEditableSave: this.handleCurrentPageLabelSave })) : (index.h("bds-typo", { variant: "fs-12", bold: "semi-bold", margin: false }, item.label))))))))));
   }
   static get watchers() { return {
     "items": ["parseItems"]

@@ -2250,10 +2250,6 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           return import(
             /* webpackMode: "lazy" */
             './bds-input-chips.entry.js').then(processMod, consoleError);
-        case 'bds-input-editable':
-          return import(
-            /* webpackMode: "lazy" */
-            './bds-input-editable.entry.js').then(processMod, consoleError);
         case 'bds-input-password':
           return import(
             /* webpackMode: "lazy" */
@@ -2438,6 +2434,10 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           return import(
             /* webpackMode: "lazy" */
             './bds-image.entry.js').then(processMod, consoleError);
+        case 'bds-input-editable':
+          return import(
+            /* webpackMode: "lazy" */
+            './bds-input-editable.entry.js').then(processMod, consoleError);
         case 'bds-list-item':
           return import(
             /* webpackMode: "lazy" */

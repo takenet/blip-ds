@@ -2272,10 +2272,6 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */
             './bds-input-chips.cjs.entry.js')); }).then(processMod, consoleError);
-        case 'bds-input-editable.cjs':
-          return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-            /* webpackMode: "lazy" */
-            './bds-input-editable.cjs.entry.js')); }).then(processMod, consoleError);
         case 'bds-input-password.cjs':
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */
@@ -2460,6 +2456,10 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */
             './bds-image.cjs.entry.js')); }).then(processMod, consoleError);
+        case 'bds-input-editable.cjs':
+          return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+            /* webpackMode: "lazy" */
+            './bds-input-editable.cjs.entry.js')); }).then(processMod, consoleError);
         case 'bds-list-item.cjs':
           return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
             /* webpackMode: "lazy" */
