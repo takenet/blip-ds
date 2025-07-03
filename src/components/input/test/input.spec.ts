@@ -373,4 +373,119 @@ describe('bds-input', () => {
       expect(typeof result).toBe('object');
     });
   });
+
+  describe('Textarea Functionality', () => {
+    it('should render as textarea when isTextarea is true', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea');
+      const input = page.root.shadowRoot.querySelector('input');
+      
+      expect(textarea).toBeTruthy();
+      expect(input).toBeFalsy();
+      expect(page.root.isTextarea).toBe(true);
+    });
+
+    it('should render as input when isTextarea is false', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="false"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea');
+      const input = page.root.shadowRoot.querySelector('input');
+      
+      expect(textarea).toBeFalsy();
+      expect(input).toBeTruthy();
+      expect(page.root.isTextarea).toBe(false);
+    });
+
+    it('should have default resizable property as false', () => {
+      const component = new Input();
+      expect(component.resizable).toBe(false);
+    });
+
+    it('should accept resizable property', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true" resizable="true"></bds-input>`,
+      });
+      
+      expect(page.root.resizable).toBe(true);
+    });
+
+    it('should set resize style to none when resizable is false', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true" resizable="false"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea.style.resize).toBe('none');
+    });
+
+    it('should set resize style to vertical when resizable is true and autoResize is false', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true" resizable="true" auto-resize="false"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea.style.resize).toBe('vertical');
+    });
+
+    it('should set resize style to none when resizable is true and autoResize is true', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true" resizable="true" auto-resize="true"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea.style.resize).toBe('none');
+    });
+
+    it('should set default rows for textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea.getAttribute('rows')).toBe('3');
+    });
+
+    it('should accept custom rows for textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true" rows="5"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea.getAttribute('rows')).toBe('5');
+    });
+
+    it('should accept custom cols for textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true" cols="10"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea.getAttribute('cols')).toBe('10');
+    });
+
+    it('should set min and max height styles for textarea', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input is-textarea="true" min-height="80" max-height="300"></bds-input>`,
+      });
+      
+      const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
+      expect(textarea.style.minHeight).toBe('80px');
+      expect(textarea.style.maxHeight).toBe('300px');
+    });
+  });
 });
