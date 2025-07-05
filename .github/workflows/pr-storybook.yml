@@ -37,7 +37,6 @@ jobs:
           npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HUSKY: 0
 
       - name: Build Storybook for PR
         if: github.event.action != 'closed'
