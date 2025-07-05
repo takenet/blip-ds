@@ -45,11 +45,8 @@ jobs:
           npm run storybook:build -- --output-dir ./storybook-static
         env:
           STORYBOOK_BASE_PATH: /pr-preview/pr-${{ github.event.pull_request.number }}
-          HUSKY: 0
 
       - name: Deploy PR Preview (separate from main)
         uses: rossjrw/pr-preview-action@v1
-        env:
-          CI: true
         with:
           source-dir: ./storybook-static
