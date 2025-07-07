@@ -172,6 +172,26 @@ $button-border-radius: 8px;
     width: 100%;
   }
 
+  &--full-width {
+    width: 100%;
+  }
+
+  &__justify-content {
+    &--center {
+      justify-content: center;
+    }
+
+    &--space-between {
+      justify-content: space-between;
+    }
+  }
+
+  &__group-content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
   bds-loading-spinner {
     max-height: 100%;
     position: absolute;

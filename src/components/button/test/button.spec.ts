@@ -74,7 +74,7 @@ describe('bds-button', () => {
         <bds-button class="host" icon-theme="outline" type-icon="icon">
           <mock:shadow-root>
             <div class="focus" tabindex="0"></div>
-            <button aria-disabled="false" aria-live="assertive" class="button button__color--primary button__position--undefined--undefined button__size--medium button__solid button__variant--solid" part="button" tabindex="-1" type="button">
+            <button aria-disabled="false" aria-live="assertive" class="button button__color--primary button__justify-content--center button__position--undefined--undefined button__size--medium button__solid button__variant--solid" part="button" tabindex="-1" type="button">
               <bds-typo bold="bold" class="button__content typo_buttom" lineheight="simple" variant="fs-14">
                 <slot></slot>
               </bds-typo>
@@ -90,6 +90,9 @@ describe('bds-button', () => {
     it('should have default values', () => {
       const component = new Button();
       expect(component.block).toBe(false);
+      expect(component.fullWidth).toBe(false);
+      expect(component.justifyContent).toBe('center');
+      expect(component.groupIcon).toBe(false);
       expect(component.disabled).toBe(false);
       expect(component.color).toBe('primary');
       expect(component.size).toBe('medium');
@@ -147,6 +150,22 @@ describe('bds-button', () => {
       
       component.arrow = true;
       expect(component.arrow).toBe(true);
+
+      component.fullWidth = true;
+      expect(component.fullWidth).toBe(true);
+
+      component.groupIcon = true;
+      expect(component.groupIcon).toBe(true);
+    });
+
+    it('should accept different justify-content values', () => {
+      const component = new Button();
+      const validJustifyContent = ['center', 'space-between'];
+      
+      validJustifyContent.forEach(value => {
+        component.justifyContent = value as any;
+        expect(component.justifyContent).toBe(value);
+      });
     });
   });
 
@@ -171,6 +190,37 @@ describe('bds-button', () => {
       
       const button = page.root.shadowRoot.querySelector('button');
       expect(button.classList.contains('button--block')).toBe(true);
+    });
+
+    it('should render with full-width style', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button full-width>Full Width Button</bds-button>`,
+      });
+      
+      const button = page.root.shadowRoot.querySelector('button');
+      expect(button.classList.contains('button--full-width')).toBe(true);
+      expect(page.root.classList.contains('block')).toBe(true); // Host should have block class for full-width
+    });
+
+    it('should render with justify-content styles', async () => {
+      // Test center (default)
+      const centerPage = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button>Center Button</bds-button>`,
+      });
+      
+      const centerButton = centerPage.root.shadowRoot.querySelector('button');
+      expect(centerButton.classList.contains('button__justify-content--center')).toBe(true);
+
+      // Test space-between
+      const spaceBetweenPage = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button justify-content="space-between">Space Between Button</bds-button>`,
+      });
+      
+      const spaceBetweenButton = spaceBetweenPage.root.shadowRoot.querySelector('button');
+      expect(spaceBetweenButton.classList.contains('button__justify-content--space-between')).toBe(true);
     });
 
     it('should render with loading state', async () => {
@@ -205,6 +255,61 @@ describe('bds-button', () => {
       expect(icons.length).toBe(2);
       expect(icons[0].getAttribute('name')).toBe('edit');
       expect(icons[1].getAttribute('name')).toBe('arrow-right');
+    });
+
+    it('should render with grouped icon and text when groupIcon is true', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button icon-left="info" icon-right="arrow-right" group-icon>Button with grouped content</bds-button>`,
+      });
+      
+      const groupContent = page.root.shadowRoot.querySelector('.button__group-content');
+      expect(groupContent).toBeTruthy();
+      
+      // Should have icon and text inside the group
+      const iconInsideGroup = groupContent.querySelector('bds-icon');
+      const textInsideGroup = groupContent.querySelector('bds-typo');
+      expect(iconInsideGroup).toBeTruthy();
+      expect(textInsideGroup).toBeTruthy();
+      expect(iconInsideGroup.getAttribute('name')).toBe('info');
+      
+      // Should still have right icon outside the group
+      const rightIcon = page.root.shadowRoot.querySelector('button > bds-icon:last-of-type');
+      expect(rightIcon).toBeTruthy();
+      expect(rightIcon.getAttribute('name')).toBe('arrow-right');
+    });
+
+    it('should not render grouped content when groupIcon is false', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button icon-left="info" icon-right="arrow-right">Button without grouped content</bds-button>`,
+      });
+      
+      const groupContent = page.root.shadowRoot.querySelector('.button__group-content');
+      expect(groupContent).toBeFalsy();
+      
+      // Should have separate icon and text elements
+      const icons = page.root.shadowRoot.querySelectorAll('bds-icon');
+      const text = page.root.shadowRoot.querySelector('bds-typo');
+      expect(icons.length).toBe(2);
+      expect(text).toBeTruthy();
+    });
+
+    it('should not render grouped content when groupIcon is true but no left icon', async () => {
+      const page = await newSpecPage({
+        components: [Button, MockLoadingSpinner, MockIcon],
+        html: `<bds-button icon-right="arrow-right" group-icon>Button with no left icon</bds-button>`,
+      });
+      
+      const groupContent = page.root.shadowRoot.querySelector('.button__group-content');
+      expect(groupContent).toBeFalsy();
+      
+      // Should render text normally and only the right icon
+      const icons = page.root.shadowRoot.querySelectorAll('bds-icon');
+      const text = page.root.shadowRoot.querySelector('bds-typo');
+      expect(icons.length).toBe(1); // Only right icon
+      expect(text).toBeTruthy();
+      expect(icons[0].getAttribute('name')).toBe('arrow-right');
     });
   });
 

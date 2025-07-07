@@ -20,6 +20,9 @@ export const Properties = (args) => {
       color={args.color}
       size={args.size}
       disabled={args.disabled}
+      full-width={args.fullWidth}
+      justify-content={args.justifyContent}
+      group-icon={args.groupIcon}
       icon-left={args.iconLeft}
       icon-right={args.iconRight}
       icon-theme={args.iconTheme}
@@ -124,6 +127,28 @@ Properties.argTypes = {
     description: 'Defina o id para testes externos. (Sem alteração visual).',
     control: 'text',
   },
+  fullWidth: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Se verdadeiro, o botão ocupa 100% da largura com conteúdo centralizado.',
+    control: 'boolean',
+  },
+  justifyContent: {
+    table: {
+      defaultValue: { summary: 'center' },
+    },
+    description: 'Controla o alinhamento horizontal do conteúdo do botão.',
+    options: ['center', 'space-between'],
+    control: { type: 'select' },
+  },
+  groupIcon: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'Se verdadeiro, agrupa o ícone esquerdo com o label quando justifyContent é "space-between".',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -139,6 +164,9 @@ Properties.args = {
   type: 'button',
   loading: 'false',
   dataTest: '',
+  fullWidth: false,
+  justifyContent: 'center',
+  groupIcon: false,
 };
 
 export const Events = () => {
@@ -164,5 +192,39 @@ export const FrameworkReact = () => {
     <BdsButton variant="primary" icon="file-new" size="standard">
       Button
     </BdsButton>
+  );
+};
+
+export const FlexibleLayouts = () => {
+  return (
+    <bds-grid direction="column" gap="3" padding="3">
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-16" bold="bold">Padrão (width dinâmico, conteúdo centralizado)</bds-typo>
+        <bds-button variant="solid" color="primary" icon-left="info" icon-right="arrow-right">
+          Verbo + complemento
+        </bds-button>
+      </bds-grid>
+
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-16" bold="bold">Full Width (100% largura, conteúdo centralizado)</bds-typo>
+        <bds-button variant="solid" color="primary" icon-left="info" icon-right="arrow-right" full-width>
+          Verbo + complemento
+        </bds-button>
+      </bds-grid>
+
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-16" bold="bold">Space Between (ícone esquerdo + label à esquerda, ícone direito à direita)</bds-typo>
+        <bds-button variant="solid" color="primary" icon-left="info" icon-right="arrow-right" full-width justify-content="space-between">
+          Verbo + complemento
+        </bds-button>
+      </bds-grid>
+
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-16" bold="bold">Space Between + Group Icon (ícone esquerdo agrupado com label)</bds-typo>
+        <bds-button variant="solid" color="primary" icon-left="info" icon-right="arrow-right" full-width justify-content="space-between" group-icon>
+          Verbo + complemento
+        </bds-button>
+      </bds-grid>
+    </bds-grid>
   );
 };
