@@ -1,2 +1,0 @@
-System.register(["./p-B47mPBRA.system.js"],(function(e){"use strict";var t,n;return{setters:[function(e){t=e.r;n=e.h}],execute:function(){var c=e("bds_card_body",function(){function e(e){t(this,e)}e.prototype.render=function(){return n("bds-grid",{key:"f648f95adba8483e51af2e2cca98f40e2dd0492d"},n("slot",{key:"e79e6b35d2d2bb5781379410fe85ca79325a606d"}))};return e}())}}}));
-//# sourceMappingURL=p-bd092490.system.entry.js.map

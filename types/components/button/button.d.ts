@@ -6,6 +6,7 @@ export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'delete' | 's
 export type ButtonType = 'button' | 'submit' | 'reset';
 export type IconType = 'icon' | 'logo' | 'emoji';
 export type IconTheme = 'outline' | 'solid';
+export type ButtonJustifyContent = 'center' | 'space-between';
 export declare class Button {
   el: HTMLElement;
   slotText: string;
@@ -18,6 +19,21 @@ export declare class Button {
    * 	If true, the base button will be disabled.
    */
   block?: boolean;
+  /**
+   * 	If true, the button will occupy 100% width with centered content.
+   */
+  fullWidth?: boolean;
+  /**
+   * 	Controls the horizontal alignment of button content.
+   * 	'center' - content is centered (default)
+   * 	'space-between' - left content aligned left, right content aligned right
+   */
+  justifyContent?: ButtonJustifyContent;
+  /**
+   * 	If true, groups the left icon with the label when justifyContent is 'space-between'.
+   * 	This keeps the left icon and text together as a single visual unit on the left side.
+   */
+  groupIcon?: boolean;
   /**
    * 	If true, the base button will be disabled.
    */

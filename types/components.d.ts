@@ -15,7 +15,7 @@ import { AvatarDataList } from "./components/avatar-group/avatar-group-interface
 import { Shape } from "./components/badge/badge";
 import { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
 import { targets } from "./components/banner/banner-link/banner-link";
-import { ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
+import { ButtonJustifyContent, ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
 import { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
 import { ButtonSize as ButtonSize1 } from "./components/button/button";
 import { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
@@ -383,6 +383,14 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * If true, the button will occupy 100% width with centered content.
+         */
+        "fullWidth"?: boolean;
+        /**
+          * If true, groups the left icon with the label when justifyContent is 'space-between'. This keeps the left icon and text together as a single visual unit on the left side.
+         */
+        "groupIcon"?: boolean;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -399,6 +407,10 @@ export namespace Components {
          */
         "iconTheme": IconTheme;
         "isActive": (value: any) => Promise<void>;
+        /**
+          * Controls the horizontal alignment of button content. 'center' - content is centered (default) 'space-between' - left content aligned left, right content aligned right
+         */
+        "justifyContent"?: ButtonJustifyContent;
         "setColor": (color: 'primary' | 'content' | 'negative' | 'positive') => Promise<void>;
         "setDirection": (direction: 'row' | 'column') => Promise<void>;
         "setPosition": (position: 'first' | 'last' | 'middle') => Promise<void>;
@@ -4170,6 +4182,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * If true, the button will occupy 100% width with centered content.
+         */
+        "fullWidth"?: boolean;
+        /**
+          * If true, groups the left icon with the label when justifyContent is 'space-between'. This keeps the left icon and text together as a single visual unit on the left side.
+         */
+        "groupIcon"?: boolean;
+        /**
           * used for add icon in input left. Uses the bds-icon component.
          */
         "icon"?: string;
@@ -4185,6 +4205,10 @@ declare namespace LocalJSX {
           * The theme of the icon. Can be one of: 'outline', 'solid';
          */
         "iconTheme"?: IconTheme;
+        /**
+          * Controls the horizontal alignment of button content. 'center' - content is centered (default) 'space-between' - left content aligned left, right content aligned right
+         */
+        "justifyContent"?: ButtonJustifyContent;
         /**
           * Event buttom onClick.
          */

@@ -28,6 +28,9 @@ export class Button {
     this.group = false;
     this.loadingColor = undefined;
     this.block = false;
+    this.fullWidth = false;
+    this.justifyContent = 'center';
+    this.groupIcon = false;
     this.disabled = false;
     this.color = 'primary';
     this.size = 'medium';
@@ -112,10 +115,12 @@ export class Button {
     return h("bds-loading-spinner", { size: "extra-small", color: this.loadingColor });
   }
   render() {
-    return (h(Host, { class: { host: true, block: this.block, group: this.group } }, h("div", { tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("button", { onClick: (ev) => this.handleClick(ev), disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
+    return (h(Host, { class: { host: true, block: this.block || this.fullWidth, group: this.group } }, h("div", { tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("button", { onClick: (ev) => this.handleClick(ev), disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
         button: true,
         'button--block': this.block,
+        'button--full-width': this.fullWidth,
         'button--group': this.group,
+        [`button__justify-content--${this.justifyContent}`]: true,
         [`button__position--${this.direction}--${this.position}`]: true,
         'button--active': this.active,
         [`button__variant--${this.variant === 'delete' ? 'solid' : this.variant}`]: true,
@@ -123,7 +128,10 @@ export class Button {
         [`button__color--${this.variant === 'delete' ? 'negative' : this.color}`]: true,
         [`button__variant--${this.variant}--disabled`]: this.disabled,
         [`button__size--${this.size}`]: true,
-      }, part: "button", "data-test": this.dataTest }, this.bdsLoading ? this.renderLoadingSpinner() : '', this.iconLeft || this.icon ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: 'medium' })) : (''), h("bds-typo", { class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, h("slot", null)), this.iconRight || this.arrow ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.arrow ? 'arrow-right' : this.iconRight, color: "inherit", theme: this.iconTheme, type: this.typeIcon })) : (''))));
+      }, part: "button", "data-test": this.dataTest }, this.bdsLoading ? this.renderLoadingSpinner() : '', this.groupIcon && (this.iconLeft || this.icon) ? (h("div", { class: "button__group-content" }, h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: 'medium' }), h("bds-typo", { class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, h("slot", null)))) : ([
+      this.iconLeft || this.icon ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: 'medium' })) : null,
+      h("bds-typo", { class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, h("slot", null))
+    ]), this.iconRight || this.arrow ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.arrow ? 'arrow-right' : this.iconRight, color: "inherit", theme: this.iconTheme, type: this.typeIcon })) : (''))));
   }
   static get is() { return "bds-button"; }
   static get encapsulation() { return "shadow"; }
@@ -154,6 +162,64 @@ export class Button {
           "text": "If true, the base button will be disabled."
         },
         "attribute": "block",
+        "reflect": false,
+        "defaultValue": "false"
+      },
+      "fullWidth": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "If true, the button will occupy 100% width with centered content."
+        },
+        "attribute": "full-width",
+        "reflect": false,
+        "defaultValue": "false"
+      },
+      "justifyContent": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "ButtonJustifyContent",
+          "resolved": "\"center\" | \"space-between\"",
+          "references": {
+            "ButtonJustifyContent": {
+              "location": "local"
+            }
+          }
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Controls the horizontal alignment of button content.\n'center' - content is centered (default)\n'space-between' - left content aligned left, right content aligned right"
+        },
+        "attribute": "justify-content",
+        "reflect": false,
+        "defaultValue": "'center'"
+      },
+      "groupIcon": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "If true, groups the left icon with the label when justifyContent is 'space-between'.\nThis keeps the left icon and text together as a single visual unit on the left side."
+        },
+        "attribute": "group-icon",
         "reflect": false,
         "defaultValue": "false"
       },
