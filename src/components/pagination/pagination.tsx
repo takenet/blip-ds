@@ -116,7 +116,8 @@ export class Pagination {
     this.countPage();
     this.intoView = getScrollParent(this.el);
     this.processItemsPage();
-    if (this.pageCounter) {
+    // Initialize itemValue if items per page section will be rendered
+    if (this.itemsPage && this.numberItems && this.itemsPage.length > 0) {
       this.itemValue = this.itemsPage[0];
     }
     this.itemSelected(this.itemValue);
@@ -248,7 +249,7 @@ export class Pagination {
     return (
       <Host class={{ full_width: this.pageCounter }}>
         <bds-grid justify-content="space-between">
-          {this.itemsPerPage && this.itemsPage && (
+          {this.itemsPage && this.numberItems && (
             <bds-grid gap="1" align-items="center" class="items_per_page">
               <bds-typo variant="fs-14">{currentLanguage.itemsPerPage}:</bds-typo>
               <bds-select class="actions_select" value={this.itemValue} options-position={this.optionsPosition}>
