@@ -4,7 +4,6 @@
 
 This project was born based out of the need to create a Design System for Blip. Components are written in Web Components using the StencilJS library created by the Ionic team.
 
-
 Components. Guides. Brands. It's all here, no riddles. [UAI is all yours](https://design.take.net/240287753/p/9953dc-take-blip-ds-elementar).
 
 ![thumbnail-components](./src/assets/svg/thumbnail-github.svg).
