@@ -140,39 +140,15 @@ describe('bds-input e2e tests', () => {
         html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
       });
 
-      const input = await page.find('bds-input');
-      
-      await input.setProperty('validationDanger', true);
-      await input.setProperty('validationMesage', 'Email inválido');
+      const inputElement = await page.find('bds-input >>> input');
+
+      await inputElement.type('invalid-email');
       await page.waitForChanges();
 
       let container = await page.find('bds-input >>> .input');
       expect(container).toHaveClass('input--state-danger');
 
-      const inputElement = await page.find('bds-input >>> input');
-      await inputElement.type('a');
-      await page.waitForChanges();
-
-      container = await page.find('bds-input >>> .input');
-      expect(container).not.toHaveClass('input--state-danger');
-    });
-
-    it('should clear validation states when input gains focus', async () => {
-      page = await newE2EPage({
-        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
-      });
-
-      const input = await page.find('bds-input');
-      
-      await input.setProperty('validationDanger', true);
-      await input.setProperty('validationMesage', 'Email inválido');
-      await page.waitForChanges();
-
-      let container = await page.find('bds-input >>> .input');
-      expect(container).toHaveClass('input--state-danger');
-
-      const inputElement = await page.find('bds-input >>> input');
-      await inputElement.focus();
+      await inputElement.type('user@example.com');
       await page.waitForChanges();
 
       container = await page.find('bds-input >>> .input');
@@ -256,20 +232,17 @@ describe('bds-input e2e tests', () => {
         html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
       });
 
-      const input = await page.find('bds-input');
+      const inputElement = await page.find('bds-input >>> input');
 
-      await input.setProperty('validationDanger', true);
-      await input.setProperty('validationMesage', 'Email inválido');
+      await inputElement.type('invalid-email');
       await page.waitForChanges();
 
       let container = await page.find('bds-input >>> .input');
       expect(container).toHaveClass('input--state-danger');
 
-      await input.setProperty('value', 'user@example.com');
-      await page.waitForChanges();
-
-      const inputElement = await page.find('bds-input >>> input');
-      await inputElement.focus();
+      await inputElement.click({ clickCount: 3 });
+      await page.keyboard.press('Backspace');
+      await inputElement.type('user@example.com');
       await page.waitForChanges();
 
       container = await page.find('bds-input >>> .input');

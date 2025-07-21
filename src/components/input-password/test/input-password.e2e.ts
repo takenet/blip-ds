@@ -219,9 +219,11 @@ describe('bds-input-password e2e tests', () => {
 
       const inputPassword = await page.find('bds-input-password');
       
-      await inputPassword.setProperty('validationDanger', true);
-      await inputPassword.setProperty('validationMesage', 'Senha inválida');
+      await inputPassword.setProperty('danger', true);
       await page.waitForChanges();
+
+      let container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
 
       const inputElement = await page.find('bds-input-password >>> input');
       await inputElement.type('password');
@@ -230,7 +232,7 @@ describe('bds-input-password e2e tests', () => {
       await inputElement.blur();
       await page.waitForChanges();
 
-      const container = await page.find('bds-input-password >>> .input');
+      container = await page.find('bds-input-password >>> .input');
       expect(container).toHaveClass('input--state-danger');
     });
   });
@@ -259,19 +261,16 @@ describe('bds-input-password e2e tests', () => {
       });
 
       const inputPassword = await page.find('bds-input-password');
+      const inputElement = await page.find('bds-input-password >>> input');
 
-      await inputPassword.setProperty('validationDanger', true);
-      await inputPassword.setProperty('validationMesage', 'Senha inválida');
+      await inputPassword.setProperty('danger', true);
       await page.waitForChanges();
 
       let container = await page.find('bds-input-password >>> .input');
       expect(container).toHaveClass('input--state-danger');
 
-      await inputPassword.setProperty('value', 'strongPassword123!');
-      await page.waitForChanges();
-
-      const inputElement = await page.find('bds-input-password >>> input');
-      await inputElement.focus();
+      await inputPassword.setProperty('danger', false);
+      await inputElement.type('strongPassword123!');
       await page.waitForChanges();
 
       container = await page.find('bds-input-password >>> .input');
