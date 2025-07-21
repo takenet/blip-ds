@@ -180,7 +180,6 @@ export class InputPassword {
 
   private onInput = (ev: Event): void => {
     this.validationDanger = false;
-    this.validationMesage = '';
     
     const input = ev.target as HTMLInputElement | null;
     if (input) {
@@ -192,7 +191,6 @@ export class InputPassword {
   private onBlur = (): void => {
     if (!this.nativeInput || !this.nativeInput.value) {
       this.validationDanger = false;
-      this.validationMesage = '';
     }
     
     this.bdsInputPasswordBlur.emit();
@@ -201,8 +199,7 @@ export class InputPassword {
 
   private onFocus = (): void => {
     this.validationDanger = false;
-    this.validationMesage = '';
-    
+
     this.bdsInputPasswordFocus.emit();
     this.isPressed = true;
   };

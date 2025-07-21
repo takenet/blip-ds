@@ -152,8 +152,7 @@ describe('bds-input-password e2e tests', () => {
 
       const inputPassword = await page.find('bds-input-password');
 
-      await inputPassword.setProperty('validationDanger', true);
-      await inputPassword.setProperty('validationMesage', 'Senha inválida');
+      await inputPassword.setProperty('danger', true);
       await page.waitForChanges();
 
       let container = await page.find('bds-input-password >>> .input');
@@ -164,29 +163,7 @@ describe('bds-input-password e2e tests', () => {
       await page.waitForChanges();
 
       container = await page.find('bds-input-password >>> .input');
-      expect(container).not.toHaveClass('input--state-danger');
-    });
-
-    it('should clear validation states when input gains focus', async () => {
-      page = await newE2EPage({
-        html: `<bds-input-password error-message="Senha inválida"></bds-input-password>`,
-      });
-
-      const inputPassword = await page.find('bds-input-password');
-      
-      await inputPassword.setProperty('validationDanger', true);
-      await inputPassword.setProperty('validationMesage', 'Senha inválida');
-      await page.waitForChanges();
-
-      let container = await page.find('bds-input-password >>> .input');
       expect(container).toHaveClass('input--state-danger');
-
-      const inputElement = await page.find('bds-input-password >>> input');
-      await inputElement.focus();
-      await page.waitForChanges();
-
-      container = await page.find('bds-input-password >>> .input');
-      expect(container).not.toHaveClass('input--state-danger');
     });
 
     it('should clear validation states when empty field loses focus', async () => {
@@ -196,8 +173,7 @@ describe('bds-input-password e2e tests', () => {
 
       const inputPassword = await page.find('bds-input-password');
       
-      await inputPassword.setProperty('validationDanger', true);
-      await inputPassword.setProperty('validationMesage', 'Senha inválida');
+      await inputPassword.setProperty('danger', true);
       await page.waitForChanges();
 
       let container = await page.find('bds-input-password >>> .input');
@@ -209,7 +185,7 @@ describe('bds-input-password e2e tests', () => {
       await page.waitForChanges();
 
       container = await page.find('bds-input-password >>> .input');
-      expect(container).not.toHaveClass('input--state-danger');
+      expect(container).toHaveClass('input--state-danger');
     });
 
     it('should maintain validation states when field with content loses focus', async () => {

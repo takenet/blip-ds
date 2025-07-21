@@ -345,6 +345,8 @@ if(!this.encode) return value;
    * Função chamada ao ganhar o foco do campo de entrada.
    */
   private onFocus = (): void => {
+    this.validationDanger = false;
+
     this.isPressed = true;
     this.bdsFocus.emit();
   };
@@ -455,7 +457,6 @@ if(!this.encode) return value;
    */
   private onBlurValidations() {
     this.validationDanger = false;
-    this.validationMesage = '';
     
     this.required && this.requiredValidation();
     this.pattern && this.patternValidation();
@@ -469,7 +470,6 @@ if(!this.encode) return value;
    */
   private onBdsInputValidations() {
     this.validationDanger = false;
-    this.validationMesage = '';
     
     this.type === 'email' && this.emailValidation();
     this.type === 'phonenumber' && this.numberValidation();

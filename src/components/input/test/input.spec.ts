@@ -391,7 +391,6 @@ describe('bds-input', () => {
       await page.waitForChanges();
 
       expect(page.rootInstance.validationDanger).toBe(false);
-      expect(page.rootInstance.validationMesage).toBe('');
     });
 
     it('should clear validation states on focus', async () => {
@@ -408,8 +407,7 @@ describe('bds-input', () => {
       inputElement.dispatchEvent(new Event('focus', { bubbles: true }));
       await page.waitForChanges();
 
-      expect(page.rootInstance.validationDanger).toBe(true);
-      expect(page.rootInstance.validationMesage).toBe('Email inválido');
+      expect(page.rootInstance.validationDanger).toBe(false);
     });
 
     it('should not validate email when field is empty', async () => {
@@ -473,7 +471,6 @@ describe('bds-input', () => {
       await page.waitForChanges();
 
       expect(page.rootInstance.validationDanger).toBe(false);
-      expect(page.rootInstance.validationMesage).toBe('');
     });
 
     it('should sync value with nativeInput in componentDidUpdate', async () => {

@@ -605,7 +605,6 @@ describe('bds-input-password', () => {
       await page.waitForChanges();
 
       expect(page.rootInstance.validationDanger).toBe(false);
-      expect(page.rootInstance.validationMesage).toBe('');
     });
 
     it('should clear validation states on focus', async () => {
@@ -623,7 +622,6 @@ describe('bds-input-password', () => {
       await page.waitForChanges();
 
       expect(page.rootInstance.validationDanger).toBe(false);
-      expect(page.rootInstance.validationMesage).toBe('');
     });
 
     it('should clear validation states on blur when field is empty', async () => {
@@ -645,7 +643,6 @@ describe('bds-input-password', () => {
       await page.waitForChanges();
 
       expect(page.rootInstance.validationDanger).toBe(false);
-      expect(page.rootInstance.validationMesage).toBe('');
     });
 
     it('should not clear validation states on blur when field has content', async () => {
@@ -741,7 +738,6 @@ describe('bds-input-password', () => {
       await page.waitForChanges();
 
       expect(page.rootInstance.validationDanger).toBe(false);
-      expect(page.rootInstance.validationMesage).toBe('');
     });
   });
 });
