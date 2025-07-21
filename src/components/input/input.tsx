@@ -313,7 +313,8 @@ if(!this.encode) return value;
           event.preventDefault();
         }
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
@@ -344,6 +345,8 @@ if(!this.encode) return value;
    * Função chamada ao ganhar o foco do campo de entrada.
    */
   private onFocus = (): void => {
+    this.validationDanger = false;
+
     this.isPressed = true;
     this.bdsFocus.emit();
   };
@@ -453,6 +456,8 @@ if(!this.encode) return value;
    * Valida o campo de entrada ao perder o foco.
    */
   private onBlurValidations() {
+    this.validationDanger = false;
+    
     this.required && this.requiredValidation();
     this.pattern && this.patternValidation();
     (this.minlength || this.maxlength) && this.lengthValidation();
@@ -464,6 +469,8 @@ if(!this.encode) return value;
    * Realiza as validações do campo enquanto o usuário digita.
    */
   private onBdsInputValidations() {
+    this.validationDanger = false;
+    
     this.type === 'email' && this.emailValidation();
     this.type === 'phonenumber' && this.numberValidation();
     this.checkValidity();
@@ -524,7 +531,7 @@ if(!this.encode) return value;
    * Valida se o campo contém um email válido.
    */
   private emailValidation() {
-    if (emailValidation(this.nativeInput.value)) {
+    if (this.nativeInput.value && emailValidation(this.nativeInput.value)) {
       this.validationMesage = this.emailErrorMessage;
       this.validationDanger = true;
     }
@@ -534,7 +541,7 @@ if(!this.encode) return value;
    * Valida se o campo contém um número válido.
    */
   private numberValidation() {
-    if (numberValidation(this.nativeInput.value)) {
+    if (this.nativeInput.value && numberValidation(this.nativeInput.value)) {
       this.validationMesage = this.numberErrorMessage;
       this.validationDanger = true;
     }
@@ -544,7 +551,7 @@ if(!this.encode) return value;
    * Verifica se o campo de entrada é válido.
    */
   private checkValidity() {
-    if (this.nativeInput.validity.valid) {
+    if (this.nativeInput && this.nativeInput.validity && this.nativeInput.validity.valid) {
       this.validationDanger = false;
     }
   }

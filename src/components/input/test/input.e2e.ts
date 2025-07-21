@@ -133,4 +133,120 @@ describe('bds-input e2e tests', () => {
       expect(focusedElement).toBe('BDS-INPUT');
     });
   });
+
+  describe('Validation State Management', () => {
+    it('should clear validation states when user starts typing', async () => {
+      page = await newE2EPage({
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = await page.find('bds-input >>> input');
+
+      await inputElement.type('invalid-email');
+      await page.waitForChanges();
+
+      let container = await page.find('bds-input >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      await inputElement.type('user@example.com');
+      await page.waitForChanges();
+
+      container = await page.find('bds-input >>> .input');
+      expect(container).not.toHaveClass('input--state-danger');
+    });
+
+    it('should not validate empty email fields', async () => {
+      page = await newE2EPage({
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = await page.find('bds-input >>> input');
+
+      await inputElement.focus();
+      await inputElement.blur();
+      await page.waitForChanges();
+
+      const container = await page.find('bds-input >>> .input');
+      expect(container).not.toHaveClass('input--state-danger');
+    });
+
+    it('should validate email only when field has content', async () => {
+      page = await newE2EPage({
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = await page.find('bds-input >>> input');
+
+      await inputElement.type('invalid-email');
+      await page.waitForChanges();
+
+      const container = await page.find('bds-input >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      const errorMessage = await page.find('bds-input >>> .input__message--danger');
+      expect(errorMessage).toBeTruthy();
+    });
+
+    it('should clear validation states when field becomes empty', async () => {
+      page = await newE2EPage({
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = await page.find('bds-input >>> input');
+
+      await inputElement.type('invalid-email');
+      await page.waitForChanges();
+
+      let container = await page.find('bds-input >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      await inputElement.click({ clickCount: 3 }); // Seleciona todo o texto
+      await page.keyboard.press('Backspace');
+      await page.waitForChanges();
+
+      container = await page.find('bds-input >>> .input');
+      expect(container).not.toHaveClass('input--state-danger');
+    });
+  });
+
+  describe('Autofill Compatibility', () => {
+    it('should handle programmatically set values correctly', async () => {
+      page = await newE2EPage({
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const input = await page.find('bds-input');
+
+      await input.setProperty('value', 'user@example.com');
+      await page.waitForChanges();
+
+      const value = await input.getProperty('value');
+      expect(value).toBe('user@example.com');
+
+      const container = await page.find('bds-input >>> .input');
+      expect(container).not.toHaveClass('input--state-danger');
+    });
+
+    it('should clear previous validation states on programmatic value change', async () => {
+      page = await newE2EPage({
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = await page.find('bds-input >>> input');
+
+      await inputElement.type('invalid-email');
+      await page.waitForChanges();
+
+      let container = await page.find('bds-input >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      await inputElement.click({ clickCount: 3 });
+      await page.keyboard.press('Backspace');
+      await inputElement.type('user@example.com');
+      await page.waitForChanges();
+
+      container = await page.find('bds-input >>> .input');
+      expect(container).not.toHaveClass('input--state-danger');
+    });
+  });
 });

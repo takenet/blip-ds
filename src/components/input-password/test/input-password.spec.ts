@@ -587,4 +587,157 @@ describe('bds-input-password', () => {
     expect(focusSpy).toHaveBeenCalled();
     expect(page.rootInstance.isPressed).toBe(true);
   });
+
+  describe('Validation State Management', () => {
+    it('should clear validation states on input', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password></bds-input-password>',
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Erro de validação';
+      await page.waitForChanges();
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = 'a';
+      inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(false);
+    });
+
+    it('should clear validation states on focus', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password></bds-input-password>',
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Erro de validação';
+      await page.waitForChanges();
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.dispatchEvent(new Event('focus', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(false);
+    });
+
+    it('should clear validation states on blur when field is empty', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password></bds-input-password>',
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Erro de validação';
+      await page.waitForChanges();
+
+      const mockInput = { value: '', trim: () => '' };
+      page.rootInstance.nativeInput = mockInput;
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = '';
+      inputElement.dispatchEvent(new Event('blur', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(false);
+    });
+
+    it('should not clear validation states on blur when field has content', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password></bds-input-password>',
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Erro de validação';
+      await page.waitForChanges();
+
+      const mockInput = { value: 'password123', trim: () => 'password123' };
+      page.rootInstance.nativeInput = mockInput;
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = 'password123';
+      inputElement.dispatchEvent(new Event('blur', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(true);
+      expect(page.rootInstance.validationMesage).toBe('Erro de validação');
+    });
+
+    it('should sync value with nativeInput in componentDidUpdate', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password></bds-input-password>',
+      });
+
+      const mockInput = { value: '' };
+      page.rootInstance.nativeInput = mockInput;
+
+      page.rootInstance.value = 'test-password';
+      await page.waitForChanges();
+
+      expect(mockInput.value).toBe('test-password');
+    });
+
+    it('should handle keyPressWrapper correctly for Backspace and Delete', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password></bds-input-password>',
+      });
+
+      const spy = jest.fn();
+      page.root.addEventListener('bdsKeyDownBackspace', spy);
+
+      const backspaceEvent = new KeyboardEvent('keydown', { key: 'Backspace' });
+      page.rootInstance.keyPressWrapper(backspaceEvent);
+      
+      expect(spy).toHaveBeenCalledTimes(1);
+
+      const deleteEvent = new KeyboardEvent('keydown', { key: 'Delete' });
+      page.rootInstance.keyPressWrapper(deleteEvent);
+      
+      expect(spy).toHaveBeenCalledTimes(2);
+    });
+
+    it('should emit bdsInputPasswordSubmit on Enter key', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password></bds-input-password>',
+      });
+
+      const spy = jest.fn();
+      page.root.addEventListener('bdsInputPasswordSubmit', spy);
+
+      const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+      page.rootInstance.keyPressWrapper(enterEvent);
+      
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should preserve validation behavior with autofill', async () => {
+      const page = await newSpecPage({
+        components: [InputPassword],
+        html: '<bds-input-password error-message="Senha muito fraca"></bds-input-password>',
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Senha muito fraca';
+      await page.waitForChanges();
+
+      const container = page.root.shadowRoot.querySelector('.input');
+      expect(container).toHaveClass('input--state-danger');
+
+      page.rootInstance.value = 'strongPassword123!';
+      await page.waitForChanges();
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.dispatchEvent(new Event('focus', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(false);
+    });
+  });
 });

@@ -143,4 +143,175 @@ describe('bds-input-password e2e tests', () => {
       expect(focusedElement).toBe('BDS-INPUT-PASSWORD');
     });
   });
+
+  describe('Validation State Management', () => {
+    it('should clear validation states when user starts typing', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password error-message="Senha inválida"></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+
+      await inputPassword.setProperty('danger', true);
+      await page.waitForChanges();
+
+      let container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      const inputElement = await page.find('bds-input-password >>> input');
+      await inputElement.type('a');
+      await page.waitForChanges();
+
+      container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+    });
+
+    it('should clear validation states when empty field loses focus', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password error-message="Senha inválida"></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+      
+      await inputPassword.setProperty('danger', true);
+      await page.waitForChanges();
+
+      let container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      const inputElement = await page.find('bds-input-password >>> input');
+      await inputElement.focus();
+      await inputElement.blur();
+      await page.waitForChanges();
+
+      container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+    });
+
+    it('should maintain validation states when field with content loses focus', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password error-message="Senha inválida"></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+      
+      await inputPassword.setProperty('danger', true);
+      await page.waitForChanges();
+
+      let container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      const inputElement = await page.find('bds-input-password >>> input');
+      await inputElement.type('password');
+      await page.waitForChanges();
+
+      await inputElement.blur();
+      await page.waitForChanges();
+
+      container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+    });
+  });
+
+  describe('Autofill Compatibility', () => {
+    it('should handle programmatically set values correctly', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+
+      await inputPassword.setProperty('value', 'autoFilledPassword123');
+      await page.waitForChanges();
+
+      const value = await inputPassword.getProperty('value');
+      expect(value).toBe('autoFilledPassword123');
+
+      const container = await page.find('bds-input-password >>> .input');
+      expect(container).not.toHaveClass('input--state-danger');
+    });
+
+    it('should clear previous validation states on programmatic value change', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password error-message="Senha inválida"></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+      const inputElement = await page.find('bds-input-password >>> input');
+
+      await inputPassword.setProperty('danger', true);
+      await page.waitForChanges();
+
+      let container = await page.find('bds-input-password >>> .input');
+      expect(container).toHaveClass('input--state-danger');
+
+      await inputPassword.setProperty('danger', false);
+      await inputElement.type('strongPassword123!');
+      await page.waitForChanges();
+
+      container = await page.find('bds-input-password >>> .input');
+      expect(container).not.toHaveClass('input--state-danger');
+    });
+
+    it('should handle eye toggle correctly with validation states', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password value="password123"></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+      
+      expect(await inputPassword.getProperty('openEyes')).toBe(false);
+
+      const eyeIcon = await page.find('bds-input-password >>> .input__password--icon');
+      await eyeIcon.click();
+      await page.waitForChanges();
+
+      expect(await inputPassword.getProperty('openEyes')).toBe(true);
+
+      const inputElement = await page.find('bds-input-password >>> input');
+      const inputType = await inputElement.getProperty('type');
+      expect(inputType).toBe('text');
+    });
+  });
+
+  describe('Keyboard Interactions', () => {
+    it('should toggle eye visibility with Enter key on eye icon', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+      
+      expect(await inputPassword.getProperty('openEyes')).toBe(false);
+
+      const eyeIcon = await page.find('bds-input-password >>> .input__password--icon');
+      await eyeIcon.focus();
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+
+      expect(await inputPassword.getProperty('openEyes')).toBe(true);
+    });
+
+    it('should emit correct events for keyboard interactions', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-password></bds-input-password>`,
+      });
+
+      const inputPassword = await page.find('bds-input-password');
+      const backspaceEvent = await inputPassword.spyOnEvent('bdsKeyDownBackspace');
+      const submitEvent = await inputPassword.spyOnEvent('bdsInputPasswordSubmit');
+
+      const inputElement = await page.find('bds-input-password >>> input');
+
+      await inputElement.focus();
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      expect(submitEvent).toHaveReceivedEvent();
+
+      await inputElement.type('test');
+      await page.keyboard.press('Backspace');
+      await page.waitForChanges();
+      expect(backspaceEvent).toHaveReceivedEvent();
+    });
+  });
 });
