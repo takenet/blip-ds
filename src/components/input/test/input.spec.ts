@@ -373,4 +373,121 @@ describe('bds-input', () => {
       expect(typeof result).toBe('object');
     });
   });
+
+  describe('Validation State Management', () => {
+    it('should clear validation states on input', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Email inválido';
+      await page.waitForChanges();
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = 'user@example.com';
+      inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(false);
+      expect(page.rootInstance.validationMesage).toBe('');
+    });
+
+    it('should clear validation states on focus', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Email inválido';
+      await page.waitForChanges();
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.dispatchEvent(new Event('focus', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(true);
+      expect(page.rootInstance.validationMesage).toBe('Email inválido');
+    });
+
+    it('should not validate email when field is empty', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = '';
+      inputElement.dispatchEvent(new Event('blur', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(false);
+      expect(page.rootInstance.validationMesage).toBe('');
+    });
+
+    it('should validate email when field contains only whitespace', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = '   ';
+      inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(true);
+      expect(page.rootInstance.validationMesage).toBe('Email inválido');
+    });
+
+    it('should validate email when field has trimmed content', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = 'invalid-email';
+      inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(true);
+      expect(page.rootInstance.validationMesage).toBe('Email inválido');
+    });
+
+    it('should clear validation on blur when field is empty', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input type="email" email-error-message="Email inválido"></bds-input>`,
+      });
+
+      page.rootInstance.validationDanger = true;
+      page.rootInstance.validationMesage = 'Email inválido';
+      await page.waitForChanges();
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      inputElement.value = '';
+      inputElement.dispatchEvent(new Event('blur', { bubbles: true }));
+      await page.waitForChanges();
+
+      expect(page.rootInstance.validationDanger).toBe(false);
+      expect(page.rootInstance.validationMesage).toBe('');
+    });
+
+    it('should sync value with nativeInput in componentDidUpdate', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input></bds-input>`,
+      });
+
+      page.rootInstance.value = 'test-value';
+      await page.waitForChanges();
+
+      const inputElement = page.root.shadowRoot.querySelector('input');
+      expect(inputElement.value).toBe('test-value');
+    });
+  });
 });
+

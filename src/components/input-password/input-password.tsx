@@ -179,6 +179,9 @@ export class InputPassword {
   }
 
   private onInput = (ev: Event): void => {
+    this.validationDanger = false;
+    this.validationMesage = '';
+    
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
@@ -187,11 +190,19 @@ export class InputPassword {
   };
 
   private onBlur = (): void => {
+    if (!this.nativeInput || !this.nativeInput.value) {
+      this.validationDanger = false;
+      this.validationMesage = '';
+    }
+    
     this.bdsInputPasswordBlur.emit();
     this.isPressed = false;
   };
 
   private onFocus = (): void => {
+    this.validationDanger = false;
+    this.validationMesage = '';
+    
     this.bdsInputPasswordFocus.emit();
     this.isPressed = true;
   };
@@ -204,9 +215,9 @@ export class InputPassword {
     switch (event.key) {
       case 'Enter':
         this.bdsInputPasswordSubmit.emit({ event, value: this.value });
-
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }
@@ -271,6 +282,12 @@ export class InputPassword {
     }
 
     return undefined;
+  }
+
+  componentDidUpdate() {
+    if (this.nativeInput && this.value != this.nativeInput.value) {
+      this.nativeInput.value = this.value;
+    }
   }
 
   render(): HTMLElement {
