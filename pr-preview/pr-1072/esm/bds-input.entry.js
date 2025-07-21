@@ -54,6 +54,7 @@ const Input = class {
      * Função chamada ao ganhar o foco do campo de entrada.
      */
     this.onFocus = () => {
+      this.validationDanger = false;
       this.isPressed = true;
       this.bdsFocus.emit();
     };
@@ -215,7 +216,6 @@ const Input = class {
    */
   onBlurValidations() {
     this.validationDanger = false;
-    this.validationMesage = '';
     this.required && this.requiredValidation();
     this.pattern && this.patternValidation();
     (this.minlength || this.maxlength) && this.lengthValidation();
@@ -227,7 +227,6 @@ const Input = class {
    */
   onBdsInputValidations() {
     this.validationDanger = false;
-    this.validationMesage = '';
     this.type === 'email' && this.emailValidation();
     this.type === 'phonenumber' && this.numberValidation();
     this.checkValidity();

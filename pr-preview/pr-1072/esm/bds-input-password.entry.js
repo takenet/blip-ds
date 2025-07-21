@@ -27,7 +27,6 @@ const InputPassword = class {
     };
     this.onInput = (ev) => {
       this.validationDanger = false;
-      this.validationMesage = '';
       const input = ev.target;
       if (input) {
         this.value = input.value || '';
@@ -37,14 +36,12 @@ const InputPassword = class {
     this.onBlur = () => {
       if (!this.nativeInput || !this.nativeInput.value) {
         this.validationDanger = false;
-        this.validationMesage = '';
       }
       this.bdsInputPasswordBlur.emit();
       this.isPressed = false;
     };
     this.onFocus = () => {
       this.validationDanger = false;
-      this.validationMesage = '';
       this.bdsInputPasswordFocus.emit();
       this.isPressed = true;
     };
