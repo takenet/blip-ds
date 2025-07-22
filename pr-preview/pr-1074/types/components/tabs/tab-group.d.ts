@@ -48,6 +48,7 @@ export declare class BdsTabGroup {
   private nextSlide;
   private prevSlide;
   private handleKeyDown;
+  private parseInlineStyle;
   private renderIcon;
   private renderBadge;
   render(): HTMLElement;

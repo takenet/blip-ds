@@ -57,6 +57,14 @@ export declare class BdsTabItem {
    */
   error?: boolean;
   /**
+   * Inline styles to be applied to the tab group header element.
+   */
+  headerStyle?: string;
+  /**
+   * Inline styles to be applied to the tab group content element.
+   */
+  contentStyle?: string;
+  /**
    * Used to open/close the Tab item.
    */
   open?: boolean;

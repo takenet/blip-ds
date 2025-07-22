@@ -15,6 +15,8 @@ export class BdsTabItem {
     this.badgeNumber = null;
     this.disable = false;
     this.error = false;
+    this.headerStyle = null;
+    this.contentStyle = null;
     this.open = false;
     this.dataTest = null;
   }
@@ -292,6 +294,42 @@ export class BdsTabItem {
         "attribute": "error",
         "reflect": false,
         "defaultValue": "false"
+      },
+      "headerStyle": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Inline styles to be applied to the tab group header element."
+        },
+        "attribute": "header-style",
+        "reflect": false,
+        "defaultValue": "null"
+      },
+      "contentStyle": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Inline styles to be applied to the tab group content element."
+        },
+        "attribute": "content-style",
+        "reflect": false,
+        "defaultValue": "null"
       },
       "open": {
         "type": "boolean",

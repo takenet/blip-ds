@@ -37,6 +37,8 @@ export class BdsTabGroup {
           badge: item.badge,
           ...(item.disable !== undefined && { disable: item.disable }),
           ...(item.error !== undefined && { error: item.error }),
+          ...(item.headerStyle !== undefined && { headerStyle: item.headerStyle }),
+          ...(item.contentStyle !== undefined && { contentStyle: item.contentStyle }),
           ...(item.icon !== undefined && { icon: item.icon }),
           ...(item.iconPosition !== undefined && { iconPosition: item.iconPosition }),
           ...(item.iconTheme !== undefined && { iconTheme: item.iconTheme }),
@@ -144,9 +146,29 @@ export class BdsTabGroup {
       this.tabItensSlideElement[item.numberElement - 1].focus();
     }
   }
+  parseInlineStyle(styleString) {
+    if (!styleString)
+      return {};
+    return styleString
+      .split(';')
+      .filter(style => style.trim())
+      .reduce((acc, style) => {
+      const [property, value] = style.split(':').map(s => s.trim());
+      if (property && value) {
+        // Convert kebab-case to camelCase for CSS properties
+        const camelProperty = property.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+        acc[camelProperty] = value;
+      }
+      return acc;
+    }, {});
+  }
   render() {
     const slidePosition = { left: `${this.positionLeft}px` };
-    return (h(Host, null, h("div", { class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { class: { tab_group__header: true, tab_group__slide: this.isSlideTabs }, ref: this.refHeaderElement }, h("div", { class: {
+    // Find the currently open tab to get its headerStyle and contentStyle
+    const openTab = this.internalItens?.find(item => item.open);
+    const headerStyle = openTab?.headerStyle ? this.parseInlineStyle(openTab.headerStyle) : {};
+    const contentStyle = openTab?.contentStyle ? this.parseInlineStyle(openTab.contentStyle) : {};
+    return (h(Host, null, h("div", { class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { class: { tab_group__header: true, tab_group__slide: this.isSlideTabs }, ref: this.refHeaderElement, style: headerStyle }, h("div", { class: {
         tab_group__header__itens: true,
         tab_group__slide__itens: this.isSlideTabs,
         [`tab_group__header__itens__${this.align}`]: !this.isSlideTabs,
@@ -169,7 +191,7 @@ export class BdsTabGroup {
           : '', item.badgePosition === 'right' && item.badge
           ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
           : ''));
-      }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { class: { tab_group__content: true, tab_group__scrolled: this.contentScrollable } }, h("slot", null)))));
+      }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { class: { tab_group__content: true, tab_group__scrolled: this.contentScrollable }, style: contentStyle }, h("slot", null)))));
   }
   static get is() { return "bds-tab-group"; }
   static get encapsulation() { return "shadow"; }

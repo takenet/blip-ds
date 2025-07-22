@@ -5,6 +5,8 @@ export interface Itens {
   dataTest?: string;
   disable?: boolean;
   error?: boolean;
+  headerStyle?: string;
+  contentStyle?: string;
   icon?: string;
   iconPosition?: string;
   iconTheme?: string;
