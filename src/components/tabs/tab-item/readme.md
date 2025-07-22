@@ -18,6 +18,7 @@
 | `badgeShape`     | `badge-shape`     | The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon'). | `string`  | `'circle'`  |
 | `dataTest`       | `data-test`       | Data test is the prop to specifically test the component action object.                                             | `string`  | `null`      |
 | `disable`        | `disable`         | Prop for disable the especific tab.                                                                                 | `boolean` | `false`     |
+| `error`          | `error`           | Prop to indicate an error state for the tab.                                                                        | `boolean` | `false`     |
 | `icon`           | `icon`            | The icon to be shown at the Tab item.                                                                               | `string`  | `null`      |
 | `iconPosition`   | `icon-position`   | The position of the icon at the Tab item ('left', 'right').                                                         | `string`  | `'left'`    |
 | `iconTheme`      | `icon-theme`      | The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').                                       | `string`  | `'outline'` |

@@ -291,4 +291,49 @@ describe('bds-tab-group', () => {
       component.componentDidLoad();
     }).not.toThrow();
   });
+
+  it('should handle error property in setInternalItens', () => {
+    const component = new BdsTabGroup();
+
+    const mockTabElements = [
+      {
+        label: 'Normal Tab',
+        open: true,
+        error: false,
+      },
+      {
+        label: 'Error Tab', 
+        open: false,
+        error: true,
+      },
+    ];
+
+    const result = component['setInternalItens'](mockTabElements);
+    
+    expect(result).toBeDefined();
+    expect(result.length).toBe(2);
+    expect(result[0].label).toBe('Normal Tab');
+    expect(result[0].error).toBe(false);
+    expect(result[1].label).toBe('Error Tab');
+    expect(result[1].error).toBe(true);
+  });
+
+  it('should handle undefined error property in setInternalItens', () => {
+    const component = new BdsTabGroup();
+
+    const mockTabElements = [
+      {
+        label: 'Tab without error prop',
+        open: true,
+        // error is undefined
+      },
+    ];
+
+    const result = component['setInternalItens'](mockTabElements);
+    
+    expect(result).toBeDefined();
+    expect(result.length).toBe(1);
+    expect(result[0].label).toBe('Tab without error prop');
+    expect(result[0].error).toBeUndefined();
+  });
 });

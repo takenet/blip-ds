@@ -2640,6 +2640,10 @@ export namespace Components {
          */
         "disable"?: boolean;
         /**
+          * Prop to indicate an error state for the tab.
+         */
+        "error"?: boolean;
+        /**
           * The icon to be shown at the Tab item.
          */
         "icon"?: string;
@@ -6656,6 +6660,10 @@ declare namespace LocalJSX {
           * Prop for disable the especific tab.
          */
         "disable"?: boolean;
+        /**
+          * Prop to indicate an error state for the tab.
+         */
+        "error"?: boolean;
         /**
           * The icon to be shown at the Tab item.
          */

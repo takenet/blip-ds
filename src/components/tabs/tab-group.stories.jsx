@@ -30,6 +30,7 @@ export const Properties = (args) => {
         badge-animation={args.badgeAnimation} 
         badge-number={args.badgeNumber}
         badge-position={args.badgePosition}
+        error={args.error}
       >
         <bds-grid padding="2">
           <bds-typo variant="fs-16">
@@ -71,7 +72,8 @@ Properties.args = {
   badgeNumber: null,
   badgePosition: 'right',
   open: false,
-  dataTest: ''
+  dataTest: '',
+  error: false
 };
 
 Properties.argTypes = {
@@ -177,6 +179,12 @@ Properties.argTypes = {
     },
     control: 'text',
   },
+  error: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    control: 'boolean',
+  },
 };
 
 
@@ -192,7 +200,7 @@ export const Events = () => {
   });
   return (
           <bds-tab-group id="tabs">
-            <bds-tab-item label="Basic settings">
+            <bds-tab-item label="Basic settings" error={true}>
               <bds-typo style={contentDefault} variant="fs-16">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies consectetur quam ut feugiat.
                 Integer arcu enim, placerat eget mauris sed, pretium congue augue.

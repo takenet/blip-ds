@@ -53,6 +53,9 @@
           &__disable {
             color: $color-content-ghost;
           }
+          &__error {
+            color: $color-surface-negative;
+          }
         }
 
         &::before {
