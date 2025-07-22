@@ -336,4 +336,147 @@ describe('bds-tab-group', () => {
     expect(result[0].label).toBe('Tab without error prop');
     expect(result[0].error).toBeUndefined();
   });
+
+  it('should handle headerStyle property in setInternalItens', () => {
+    const component = new BdsTabGroup();
+
+    const mockTabElements = [
+      {
+        label: 'Tab with header style',
+        open: true,
+        headerStyle: 'padding: 0;',
+      },
+      {
+        label: 'Tab without header style', 
+        open: false,
+        // headerStyle is undefined
+      },
+    ];
+
+    const result = component['setInternalItens'](mockTabElements);
+    
+    expect(result).toBeDefined();
+    expect(result.length).toBe(2);
+    expect(result[0].label).toBe('Tab with header style');
+    expect(result[0].headerStyle).toBe('padding: 0;');
+    expect(result[1].label).toBe('Tab without header style');
+    expect(result[1].headerStyle).toBeUndefined();
+  });
+
+  it('should handle contentStyle property in setInternalItens', () => {
+    const component = new BdsTabGroup();
+
+    const mockTabElements = [
+      {
+        label: 'Tab with content style',
+        open: true,
+        contentStyle: 'background: red;',
+      },
+      {
+        label: 'Tab without content style', 
+        open: false,
+        // contentStyle is undefined
+      },
+    ];
+
+    const result = component['setInternalItens'](mockTabElements);
+    
+    expect(result).toBeDefined();
+    expect(result.length).toBe(2);
+    expect(result[0].label).toBe('Tab with content style');
+    expect(result[0].contentStyle).toBe('background: red;');
+    expect(result[1].label).toBe('Tab without content style');
+    expect(result[1].contentStyle).toBeUndefined();
+  });
+
+  it('should apply styles from open tab in render method', () => {
+    const component = new BdsTabGroup();
+    
+    // Mock internal items with one open tab that has styles
+    component.internalItens = [
+      { 
+        label: 'Tab 1', 
+        open: false, 
+        numberElement: 0,
+        headerStyle: 'padding: 10px;',
+        contentStyle: 'background: blue;'
+      },
+      { 
+        label: 'Tab 2', 
+        open: true, 
+        numberElement: 1,
+        headerStyle: 'padding: 0;',
+        contentStyle: 'background: red;'
+      },
+      { 
+        label: 'Tab 3', 
+        open: false, 
+        numberElement: 2 
+      },
+    ];
+
+    const result = component.render();
+    
+    expect(result).toBeTruthy();
+    // The render method should find the open tab (Tab 2) and use its styles
+    // We can't easily test the actual DOM here, but we can verify the method doesn't throw
+  });
+
+  it('should handle render when no tab is open', () => {
+    const component = new BdsTabGroup();
+    
+    // Mock internal items with no open tabs
+    component.internalItens = [
+      { label: 'Tab 1', open: false, numberElement: 0 },
+      { label: 'Tab 2', open: false, numberElement: 1 },
+    ];
+
+    const result = component.render();
+    
+    expect(result).toBeTruthy();
+    // Should not throw when no tab is open
+  });
+
+  it('should handle render when open tab has no styles', () => {
+    const component = new BdsTabGroup();
+    
+    // Mock internal items with open tab but no styles
+    component.internalItens = [
+      { label: 'Tab 1', open: false, numberElement: 0 },
+      { label: 'Tab 2', open: true, numberElement: 1 },
+    ];
+
+    const result = component.render();
+    
+    expect(result).toBeTruthy();
+    // Should not throw when open tab has no headerStyle or contentStyle
+  });
+
+  it('should parse inline style strings correctly', () => {
+    const component = new BdsTabGroup();
+    
+    const result1 = component['parseInlineStyle']('padding: 10px; background-color: red; margin-top: 5px;');
+    expect(result1).toEqual({
+      padding: '10px',
+      backgroundColor: 'red',
+      marginTop: '5px'
+    });
+
+    const result2 = component['parseInlineStyle']('color: blue;');
+    expect(result2).toEqual({
+      color: 'blue'
+    });
+
+    const result3 = component['parseInlineStyle']('');
+    expect(result3).toEqual({});
+
+    const result4 = component['parseInlineStyle'](null);
+    expect(result4).toEqual({});
+
+    const result5 = component['parseInlineStyle']('padding: 0; ; margin: auto; invalid-property;');
+    expect(result5).toEqual({
+      padding: '0',
+      margin: 'auto'
+    });
+  });
 });

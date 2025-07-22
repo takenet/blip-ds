@@ -31,6 +31,8 @@ export const Properties = (args) => {
         badge-number={args.badgeNumber}
         badge-position={args.badgePosition}
         error={args.error}
+        header-style={args.headerStyle}
+        content-style={args.contentStyle}
       >
         <bds-grid padding="2">
           <bds-typo variant="fs-16">
@@ -73,7 +75,9 @@ Properties.args = {
   badgePosition: 'right',
   open: false,
   dataTest: '',
-  error: false
+  error: false,
+  headerStyle: null,
+  contentStyle: null
 };
 
 Properties.argTypes = {
@@ -185,6 +189,18 @@ Properties.argTypes = {
     },
     control: 'boolean',
   },
+  headerStyle: {
+    table: {
+      defaultValue: { summary: 'null' },
+    },
+    control: 'text',
+  },
+  contentStyle: {
+    table: {
+      defaultValue: { summary: 'null' },
+    },
+    control: 'text',
+  },
 };
 
 
@@ -231,6 +247,41 @@ export const Events = () => {
               </bds-typo>
             </bds-tab-item>
           </bds-tab-group>
+  );
+};
+
+export const CustomStyling = () => {
+  return (
+    <bds-tab-group>
+      <bds-tab-item 
+        label="Basic settings" 
+        error={true}
+        header-style="padding: 0;"
+        content-style="background: red;"
+      >
+        <bds-typo variant="fs-16">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies consectetur quam ut feugiat. Integer arcu enim, placerat eget mauris sed, pretium congue augue.
+        </bds-typo>
+      </bds-tab-item>
+      <bds-tab-item 
+        label="Advanced settings"
+        header-style="padding: 20px; background: lightblue;"
+        content-style="background: lightgreen; padding: 20px;"
+      >
+        <bds-typo variant="fs-16">
+          Donec ut lacus sit amet tellus egestas placerat non sed lacus. Curabitur varius commodo sagittis. In hac habitasse platea dictumst. Morbi non suscipit nisi.
+        </bds-typo>
+      </bds-tab-item>
+      <bds-tab-item 
+        label="Very advanced settings"
+        header-style="padding: 10px; border: 2px solid purple;"
+        content-style="background: lightyellow; border: 1px solid orange; padding: 15px;"
+      >
+        <bds-typo variant="fs-16">
+          Suspendisse pellentesque quam porttitor enim rhoncus vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+        </bds-typo>
+      </bds-tab-item>
+    </bds-tab-group>
   );
 };
 

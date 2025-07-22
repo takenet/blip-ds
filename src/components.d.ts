@@ -2632,6 +2632,10 @@ export namespace Components {
          */
         "badgeShape"?: string;
         /**
+          * Inline styles to be applied to the tab group content element.
+         */
+        "contentStyle"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -2643,6 +2647,10 @@ export namespace Components {
           * Prop to indicate an error state for the tab.
          */
         "error"?: boolean;
+        /**
+          * Inline styles to be applied to the tab group header element.
+         */
+        "headerStyle"?: string;
         /**
           * The icon to be shown at the Tab item.
          */
@@ -6653,6 +6661,10 @@ declare namespace LocalJSX {
          */
         "badgeShape"?: string;
         /**
+          * Inline styles to be applied to the tab group content element.
+         */
+        "contentStyle"?: string;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -6664,6 +6676,10 @@ declare namespace LocalJSX {
           * Prop to indicate an error state for the tab.
          */
         "error"?: boolean;
+        /**
+          * Inline styles to be applied to the tab group header element.
+         */
+        "headerStyle"?: string;
         /**
           * The icon to be shown at the Tab item.
          */

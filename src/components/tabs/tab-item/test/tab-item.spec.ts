@@ -280,6 +280,42 @@ describe('bds-tab-item', () => {
 
       expect(page.rootInstance.error).toBe(true);
     });
+
+    it('should set headerStyle property with default value', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.headerStyle).toBe(null);
+    });
+
+    it('should set headerStyle property', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item header-style="padding: 0;"></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.headerStyle).toBe('padding: 0;');
+    });
+
+    it('should set contentStyle property with default value', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.contentStyle).toBe(null);
+    });
+
+    it('should set contentStyle property', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item content-style="background: red;"></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.contentStyle).toBe('background: red;');
+    });
   });
 
   describe('Open state behavior', () => {

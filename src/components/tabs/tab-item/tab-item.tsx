@@ -63,6 +63,14 @@ export class BdsTabItem {
    */
   @Prop() error?: boolean = false;
   /**
+   * Inline styles to be applied to the tab group header element.
+   */
+  @Prop() headerStyle?: string = null;
+  /**
+   * Inline styles to be applied to the tab group content element.
+   */
+  @Prop() contentStyle?: string = null;
+  /**
    * Used to open/close the Tab item.
    */
   @Prop({ mutable: true, reflect: true }) public open?: boolean = false;

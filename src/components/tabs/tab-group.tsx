@@ -116,6 +116,8 @@ export class BdsTabGroup {
         badge: item.badge,
         ...(item.disable !== undefined && { disable: item.disable }),
         ...(item.error !== undefined && { error: item.error }),
+        ...(item.headerStyle !== undefined && { headerStyle: item.headerStyle }),
+        ...(item.contentStyle !== undefined && { contentStyle: item.contentStyle }),
         ...(item.icon !== undefined && { icon: item.icon }),
         ...(item.iconPosition !== undefined && { iconPosition: item.iconPosition }),
         ...(item.iconTheme !== undefined && { iconTheme: item.iconTheme }),
@@ -197,6 +199,23 @@ export class BdsTabGroup {
     }
   }
 
+  private parseInlineStyle(styleString: string): { [key: string]: string } {
+    if (!styleString) return {};
+    
+    return styleString
+      .split(';')
+      .filter(style => style.trim())
+      .reduce((acc, style) => {
+        const [property, value] = style.split(':').map(s => s.trim());
+        if (property && value) {
+          // Convert kebab-case to camelCase for CSS properties
+          const camelProperty = property.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+          acc[camelProperty] = value;
+        }
+        return acc;
+      }, {});
+  }
+
   private renderIcon = (Icon, Theme, disable, error) => {
     return (
       <bds-icon
@@ -221,6 +240,12 @@ export class BdsTabGroup {
 
   render(): HTMLElement {
     const slidePosition = { left: `${this.positionLeft}px` };
+    
+    // Find the currently open tab to get its headerStyle and contentStyle
+    const openTab = this.internalItens?.find(item => item.open);
+    const headerStyle = openTab?.headerStyle ? this.parseInlineStyle(openTab.headerStyle) : {};
+    const contentStyle = openTab?.contentStyle ? this.parseInlineStyle(openTab.contentStyle) : {};
+    
     return (
       <Host>
         <div class={{ tab_group: true }}>
@@ -235,7 +260,11 @@ export class BdsTabGroup {
               variant="secondary"
             ></bds-button-icon>
           )}
-          <div class={{ tab_group__header: true, tab_group__slide: this.isSlideTabs }} ref={this.refHeaderElement}>
+          <div 
+            class={{ tab_group__header: true, tab_group__slide: this.isSlideTabs }} 
+            ref={this.refHeaderElement}
+            style={headerStyle}
+          >
             <div
               class={{
                 tab_group__header__itens: true,
@@ -312,7 +341,10 @@ export class BdsTabGroup {
               variant="secondary"
             ></bds-button-icon>
           )}
-          <div class={{ tab_group__content: true, tab_group__scrolled: this.contentScrollable }}>
+          <div 
+            class={{ tab_group__content: true, tab_group__scrolled: this.contentScrollable }}
+            style={contentStyle}
+          >
             <slot></slot>
           </div>
         </div>
