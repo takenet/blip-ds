@@ -4,6 +4,7 @@ export interface Itens {
   numberElement: number;
   dataTest?: string;
   disable?: boolean;
+  error?: boolean;
   icon?: string;
   iconPosition?: string;
   iconTheme?: string;

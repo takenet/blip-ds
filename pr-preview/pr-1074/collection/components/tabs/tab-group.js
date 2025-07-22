@@ -36,6 +36,7 @@ export class BdsTabGroup {
           numberElement: index,
           badge: item.badge,
           ...(item.disable !== undefined && { disable: item.disable }),
+          ...(item.error !== undefined && { error: item.error }),
           ...(item.icon !== undefined && { icon: item.icon }),
           ...(item.iconPosition !== undefined && { iconPosition: item.iconPosition }),
           ...(item.iconTheme !== undefined && { iconTheme: item.iconTheme }),
@@ -95,8 +96,11 @@ export class BdsTabGroup {
       this.alignTab = newPosition > 0 ? 'left' : 'scrolling';
       this.tabRefSlide = numberClicks <= this.tabRefSlide ? this.tabRefSlide - 1 : numberClicks;
     };
-    this.renderIcon = (Icon, Theme, disable) => {
-      return (h("bds-icon", { class: { tab_group__header__itens__item__typo__disable: disable }, size: "x-small", name: Icon, theme: Theme }));
+    this.renderIcon = (Icon, Theme, disable, error) => {
+      return (h("bds-icon", { class: {
+          tab_group__header__itens__item__typo__disable: disable,
+          tab_group__header__itens__item__typo__error: error
+        }, size: "x-small", name: Icon, theme: Theme }));
     };
     this.renderBadge = (Shape, Color, Icon, Animation, Number) => {
       return (h("bds-grid", { "justify-content": "center" }, h("bds-badge", { color: Color, icon: Icon, number: Number, shape: Shape, animation: Animation })));
@@ -154,11 +158,14 @@ export class BdsTabGroup {
             tab_group__header__itens__item__open: item.open,
             tab_group__header__itens__item__disable: item.disable,
           }, key: index, tabindex: "0", onClick: () => item.disable ? this.handleDisabled(item.numberElement) : this.handleClick(item.numberElement), onKeyDown: (ev) => this.handleKeyDown(ev, item) }, item.iconPosition === 'left' && item.icon
-          ? this.renderIcon(item.icon, item.iconTheme, item.disable)
+          ? this.renderIcon(item.icon, item.iconTheme, item.disable, item.error)
           : '', item.badgePosition === 'left' && item.badge
           ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
-          : '', h("bds-typo", { class: { tab_group__header__itens__item__typo__disable: item.disable }, variant: "fs-16", bold: bold }, item.label), item.iconPosition === 'right' && item.icon
-          ? this.renderIcon(item.icon, item.iconTheme, item.disable)
+          : '', h("bds-typo", { class: {
+            tab_group__header__itens__item__typo__disable: item.disable,
+            tab_group__header__itens__item__typo__error: item.error
+          }, variant: "fs-16", bold: bold }, item.label), item.iconPosition === 'right' && item.icon
+          ? this.renderIcon(item.icon, item.iconTheme, item.disable, item.error)
           : '', item.badgePosition === 'right' && item.badge
           ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
           : ''));

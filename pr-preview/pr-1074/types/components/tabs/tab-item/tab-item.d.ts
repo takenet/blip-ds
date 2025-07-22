@@ -53,6 +53,10 @@ export declare class BdsTabItem {
    */
   disable?: boolean;
   /**
+   * Prop to indicate an error state for the tab.
+   */
+  error?: boolean;
+  /**
    * Used to open/close the Tab item.
    */
   open?: boolean;

@@ -23,6 +23,7 @@ const BdsTabItem = class {
     this.badgePosition = 'left';
     this.badgeNumber = null;
     this.disable = false;
+    this.error = false;
     this.open = false;
     this.dataTest = null;
   }

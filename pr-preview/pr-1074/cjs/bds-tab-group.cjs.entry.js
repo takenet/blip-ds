@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-6a53aecf.js');
 
-const tabGroupCss = ":host{display:block;width:100%}.tab_group{width:100%;height:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:relative}.tab_group__header{padding:4px 16px;overflow:hidden}.tab_group__header__itens{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;width:-webkit-max-content;width:-moz-max-content;width:max-content;gap:32px;margin:auto}.tab_group__header__itens__center{-ms-flex-pack:center;justify-content:center;margin:auto}.tab_group__header__itens__right{-ms-flex-pack:right;justify-content:right;margin:0 0 0 auto}.tab_group__header__itens__left{-ms-flex-pack:left;justify-content:left;margin:0 auto 0 0}.tab_group__header__itens__item{cursor:pointer;height:46px;gap:4px;width:auto;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;border-bottom:2px solid transparent;position:relative}.tab_group__header__itens__item__typo{color:var(--color-content-disable, #595959)}.tab_group__header__itens__item__typo__disable{color:var(--color-content-ghost, #8c8c8c)}.tab_group__header__itens__item::before{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.tab_group__header__itens__item:focus-visible{outline:none}.tab_group__header__itens__item:focus-visible::before{border-color:var(--color-focus, #c226fb)}.tab_group__header__itens__item__open{color:var(--color-content-default, #282828);border-color:var(--color-primary, #1e6bf1)}.tab_group__header__itens__item__disable{cursor:no-drop}.tab_group__slide{position:relative;overflow:hidden;padding:0 16px;height:54px;margin-left:56px;margin-right:56px}.tab_group__slide-button{position:absolute;z-index:1;background-color:var(--color-surface-1, #f6f6f6)}.tab_group__slide-button[icon=arrow-left]{left:0}.tab_group__slide-button[icon=arrow-right]{right:0}.tab_group__slide__itens{position:absolute;left:56px;width:-webkit-max-content;width:-moz-max-content;width:max-content;height:48px;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:center;justify-content:center;padding:4px;gap:32px;-webkit-transition:left 0.5s;-moz-transition:left 0.5s;transition:left 0.5s}.tab_group__content{height:100%}.tab_group__scrolled{-ms-flex-negative:999;flex-shrink:999;overflow:none}.tab_group__scrolled::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.tab_group__scrolled::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}";
+const tabGroupCss = ":host{display:block;width:100%}.tab_group{width:100%;height:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:relative}.tab_group__header{padding:4px 16px;overflow:hidden}.tab_group__header__itens{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;width:-webkit-max-content;width:-moz-max-content;width:max-content;gap:32px;margin:auto}.tab_group__header__itens__center{-ms-flex-pack:center;justify-content:center;margin:auto}.tab_group__header__itens__right{-ms-flex-pack:right;justify-content:right;margin:0 0 0 auto}.tab_group__header__itens__left{-ms-flex-pack:left;justify-content:left;margin:0 auto 0 0}.tab_group__header__itens__item{cursor:pointer;height:46px;gap:4px;width:auto;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;border-bottom:2px solid transparent;position:relative}.tab_group__header__itens__item__typo{color:var(--color-content-disable, #595959)}.tab_group__header__itens__item__typo__disable{color:var(--color-content-ghost, #8c8c8c)}.tab_group__header__itens__item__typo__error{color:var(--color-surface-negative, #8a0000)}.tab_group__header__itens__item::before{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.tab_group__header__itens__item:focus-visible{outline:none}.tab_group__header__itens__item:focus-visible::before{border-color:var(--color-focus, #c226fb)}.tab_group__header__itens__item__open{color:var(--color-content-default, #282828);border-color:var(--color-primary, #1e6bf1)}.tab_group__header__itens__item__disable{cursor:no-drop}.tab_group__slide{position:relative;overflow:hidden;padding:0 16px;height:54px;margin-left:56px;margin-right:56px}.tab_group__slide-button{position:absolute;z-index:1;background-color:var(--color-surface-1, #f6f6f6)}.tab_group__slide-button[icon=arrow-left]{left:0}.tab_group__slide-button[icon=arrow-right]{right:0}.tab_group__slide__itens{position:absolute;left:56px;width:-webkit-max-content;width:-moz-max-content;width:max-content;height:48px;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:center;justify-content:center;padding:4px;gap:32px;-webkit-transition:left 0.5s;-moz-transition:left 0.5s;transition:left 0.5s}.tab_group__content{height:100%}.tab_group__scrolled{-ms-flex-negative:999;flex-shrink:999;overflow:none}.tab_group__scrolled::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.tab_group__scrolled::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}";
 
 const BdsTabGroup = class {
   constructor(hostRef) {
@@ -46,6 +46,7 @@ const BdsTabGroup = class {
           numberElement: index,
           badge: item.badge,
           ...(item.disable !== undefined && { disable: item.disable }),
+          ...(item.error !== undefined && { error: item.error }),
           ...(item.icon !== undefined && { icon: item.icon }),
           ...(item.iconPosition !== undefined && { iconPosition: item.iconPosition }),
           ...(item.iconTheme !== undefined && { iconTheme: item.iconTheme }),
@@ -105,8 +106,11 @@ const BdsTabGroup = class {
       this.alignTab = newPosition > 0 ? 'left' : 'scrolling';
       this.tabRefSlide = numberClicks <= this.tabRefSlide ? this.tabRefSlide - 1 : numberClicks;
     };
-    this.renderIcon = (Icon, Theme, disable) => {
-      return (index.h("bds-icon", { class: { tab_group__header__itens__item__typo__disable: disable }, size: "x-small", name: Icon, theme: Theme }));
+    this.renderIcon = (Icon, Theme, disable, error) => {
+      return (index.h("bds-icon", { class: {
+          tab_group__header__itens__item__typo__disable: disable,
+          tab_group__header__itens__item__typo__error: error
+        }, size: "x-small", name: Icon, theme: Theme }));
     };
     this.renderBadge = (Shape, Color, Icon, Animation, Number) => {
       return (index.h("bds-grid", { "justify-content": "center" }, index.h("bds-badge", { color: Color, icon: Icon, number: Number, shape: Shape, animation: Animation })));
@@ -164,11 +168,14 @@ const BdsTabGroup = class {
             tab_group__header__itens__item__open: item.open,
             tab_group__header__itens__item__disable: item.disable,
           }, key: index$1, tabindex: "0", onClick: () => item.disable ? this.handleDisabled(item.numberElement) : this.handleClick(item.numberElement), onKeyDown: (ev) => this.handleKeyDown(ev, item) }, item.iconPosition === 'left' && item.icon
-          ? this.renderIcon(item.icon, item.iconTheme, item.disable)
+          ? this.renderIcon(item.icon, item.iconTheme, item.disable, item.error)
           : '', item.badgePosition === 'left' && item.badge
           ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
-          : '', index.h("bds-typo", { class: { tab_group__header__itens__item__typo__disable: item.disable }, variant: "fs-16", bold: bold }, item.label), item.iconPosition === 'right' && item.icon
-          ? this.renderIcon(item.icon, item.iconTheme, item.disable)
+          : '', index.h("bds-typo", { class: {
+            tab_group__header__itens__item__typo__disable: item.disable,
+            tab_group__header__itens__item__typo__error: item.error
+          }, variant: "fs-16", bold: bold }, item.label), item.iconPosition === 'right' && item.icon
+          ? this.renderIcon(item.icon, item.iconTheme, item.disable, item.error)
           : '', item.badgePosition === 'right' && item.badge
           ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
           : ''));

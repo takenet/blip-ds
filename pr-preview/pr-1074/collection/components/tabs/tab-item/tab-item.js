@@ -14,6 +14,7 @@ export class BdsTabItem {
     this.badgePosition = 'left';
     this.badgeNumber = null;
     this.disable = false;
+    this.error = false;
     this.open = false;
     this.dataTest = null;
   }
@@ -272,6 +273,24 @@ export class BdsTabItem {
         },
         "attribute": "disable",
         "reflect": true,
+        "defaultValue": "false"
+      },
+      "error": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Prop to indicate an error state for the tab."
+        },
+        "attribute": "error",
+        "reflect": false,
         "defaultValue": "false"
       },
       "open": {
