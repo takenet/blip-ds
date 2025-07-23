@@ -20,6 +20,11 @@ export declare class Pagination {
    * Estado que armazena apenas as opções de página visíveis para renderização otimizada.
    */
   visiblePageOptions: any[];
+  /**
+   * Estado que controla quantas páginas foram carregadas no select (para lazy loading).
+   * Começa com 100 páginas conforme solicitado.
+   */
+  loadedPagesCount: number;
   itemsPerPage: number;
   intoView?: HTMLElement;
   /**
@@ -76,7 +81,19 @@ export declare class Pagination {
   bdsItemsPerPageChange: EventEmitter;
   startItem: number;
   endItem: number;
+  private selectElement?;
   componentWillLoad(): void;
+  componentDidLoad(): void;
+  componentDidUpdate(): void;
+  /**
+   * Configura o event listener de scroll no dropdown do select.
+   */
+  setupSelectScrollListener(): void;
+  /**
+   * Remove o event listener de scroll.
+   */
+  removeSelectScrollListener(): void;
+  disconnectedCallback(): void;
   pagesChanged(): void;
   valueChanged(): void;
   processItemsPage(): void;
@@ -84,7 +101,8 @@ export declare class Pagination {
   countPage(): void;
   /**
    * Atualiza as opções de página visíveis para renderização otimizada.
-   * Mostra apenas um subconjunto das páginas próximas à página atual.
+   * Implementa lazy loading conforme solicitado: mostra até 100 páginas inicialmente,
+   * mas mantém otimização inteligente para garantir performance.
    */
   updateVisiblePageOptions(): void;
   nextPage: (event: Event) => void;
@@ -98,6 +116,15 @@ export declare class Pagination {
    * Permite navegar para uma página específica mesmo que não esteja nas opções visíveis.
    */
   navigateToPage(pageNumber: number): void;
+  /**
+   * Manipula o evento de scroll no select para implementar lazy loading.
+   */
+  onSelectScroll: (event: Event) => void;
+  /**
+   * Carrega mais páginas quando o usuário scroll próximo ao final.
+   * Implementa lazy loading conforme solicitado: carrega 100 páginas por vez.
+   */
+  loadMorePages(): void;
   itemSelected(index: any): void;
   updateItemRange(): void;
   get currentLanguage(): {

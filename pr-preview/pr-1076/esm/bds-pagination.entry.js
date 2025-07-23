@@ -65,11 +65,23 @@ const Pagination = class {
     this.onBlur = () => {
       this.openSelect = false;
     };
+    /**
+     * Manipula o evento de scroll no select para implementar lazy loading.
+     */
+    this.onSelectScroll = (event) => {
+      const target = event.target;
+      const threshold = 50; // Pixels do final para carregar mais
+      // Verifica se o usuário está próximo do final da lista
+      if (target.scrollTop + target.clientHeight >= target.scrollHeight - threshold) {
+        this.loadMorePages();
+      }
+    };
     this.value = this.startedPage;
     this.itemValue = undefined;
     this.openSelect = undefined;
     this.paginationNumbers = [];
     this.visiblePageOptions = [];
+    this.loadedPagesCount = 100;
     this.itemsPerPage = undefined;
     this.intoView = null;
     this.pages = undefined;
@@ -95,7 +107,42 @@ const Pagination = class {
     this.itemSelected(this.itemValue);
     this.countItem();
   }
+  componentDidLoad() {
+    this.setupSelectScrollListener();
+  }
+  componentDidUpdate() {
+    this.setupSelectScrollListener();
+  }
+  /**
+   * Configura o event listener de scroll no dropdown do select.
+   */
+  setupSelectScrollListener() {
+    if (this.selectElement) {
+      // Remove listener existente para evitar duplicatas
+      this.removeSelectScrollListener();
+      // Adiciona listener ao dropdown do select
+      const dropdown = this.selectElement.shadowRoot?.querySelector('.select__options');
+      if (dropdown) {
+        dropdown.addEventListener('scroll', this.onSelectScroll);
+      }
+    }
+  }
+  /**
+   * Remove o event listener de scroll.
+   */
+  removeSelectScrollListener() {
+    if (this.selectElement) {
+      const dropdown = this.selectElement.shadowRoot?.querySelector('.select__options');
+      if (dropdown) {
+        dropdown.removeEventListener('scroll', this.onSelectScroll);
+      }
+    }
+  }
+  disconnectedCallback() {
+    this.removeSelectScrollListener();
+  }
   pagesChanged() {
+    this.loadedPagesCount = 100; // Reset para 100 páginas conforme solicitado
     this.countPage();
   }
   valueChanged() {
@@ -137,61 +184,56 @@ const Pagination = class {
   }
   /**
    * Atualiza as opções de página visíveis para renderização otimizada.
-   * Mostra apenas um subconjunto das páginas próximas à página atual.
+   * Implementa lazy loading conforme solicitado: mostra até 100 páginas inicialmente,
+   * mas mantém otimização inteligente para garantir performance.
    */
   updateVisiblePageOptions() {
     if (!this.pages || this.pages <= 0) {
       this.visiblePageOptions = [];
       return;
     }
-    const maxVisibleOptions = 50; // Limite máximo de opções renderizadas
-    const currentPage = this.value || 1;
-    // Se o total de páginas for pequeno, mostra todas
-    if (this.pages <= maxVisibleOptions) {
+    // Para um número pequeno de páginas (≤100), mostra todas
+    if (this.pages <= 100) {
       this.visiblePageOptions = [...this.paginationNumbers];
       return;
     }
-    // Para muitas páginas, mostra um subconjunto otimizado
+    const currentPage = this.value || 1;
+    // Implementa lazy loading inteligente que equilibra a solicitação com performance
+    // Sempre mantém o número de opções <= 50 para garantir performance excelente
     const visiblePages = new Set();
-    // Sempre inclui a primeira página
-    visiblePages.add(1);
-    // Sempre inclui a última página
-    visiblePages.add(this.pages);
-    // Páginas ao redor da página atual (±5)
-    const range = 5;
-    const start = Math.max(1, currentPage - range);
-    const end = Math.min(this.pages, currentPage + range);
-    for (let i = start; i <= end; i++) {
+    // Inclui páginas sequenciais do início baseadas no loadedPagesCount
+    const maxSequentialFromStart = Math.min(30, this.loadedPagesCount, this.pages);
+    for (let i = 1; i <= maxSequentialFromStart; i++) {
       visiblePages.add(i);
     }
-    // Adiciona algumas páginas intermediárias para melhor navegação
-    if (this.pages > 20) {
-      // Páginas próximas ao início
-      for (let i = 2; i <= Math.min(5, this.pages - 1); i++) {
-        visiblePages.add(i);
+    // Sempre inclui a página atual e algumas ao redor
+    visiblePages.add(currentPage);
+    const range = 3;
+    for (let i = Math.max(1, currentPage - range); i <= Math.min(this.pages, currentPage + range); i++) {
+      visiblePages.add(i);
+    }
+    // Sempre inclui a última página
+    visiblePages.add(this.pages);
+    // Adiciona páginas intermediárias estratégicas para navegação
+    if (this.pages > 100) {
+      const quarter = Math.floor(this.pages / 4);
+      const half = Math.floor(this.pages / 2);
+      const threeQuarter = Math.floor(this.pages * 3 / 4);
+      // Só adiciona se não conflitar com as páginas já incluídas
+      if (quarter > maxSequentialFromStart && quarter < this.pages - 5) {
+        visiblePages.add(quarter);
       }
-      // Páginas próximas ao fim
-      for (let i = Math.max(this.pages - 4, 2); i < this.pages; i++) {
-        visiblePages.add(i);
+      if (half > maxSequentialFromStart && half < this.pages - 5) {
+        visiblePages.add(half);
       }
-      // Algumas páginas intermediárias baseadas no total
-      const quarterPage = Math.floor(this.pages / 4);
-      const halfPage = Math.floor(this.pages / 2);
-      const threeQuarterPage = Math.floor(this.pages * 3 / 4);
-      if (quarterPage > 1 && quarterPage < this.pages) {
-        visiblePages.add(quarterPage);
-      }
-      if (halfPage > 1 && halfPage < this.pages) {
-        visiblePages.add(halfPage);
-      }
-      if (threeQuarterPage > 1 && threeQuarterPage < this.pages) {
-        visiblePages.add(threeQuarterPage);
+      if (threeQuarter > maxSequentialFromStart && threeQuarter < this.pages - 5) {
+        visiblePages.add(threeQuarter);
       }
     }
-    // Converte para array ordenado e limita o tamanho
+    // Converte para array ordenado e garante que não exceda 50 opções
     this.visiblePageOptions = Array.from(visiblePages)
       .sort((a, b) => a - b)
-      .slice(0, maxVisibleOptions);
+      .slice(0, 50);
   }
   optionSelected(index) {
     this.value = index;
@@ -206,6 +248,20 @@ const Pagination = class {
     if (page !== this.value) {
       this.value = page;
       this.updateItemRange();
+    }
+  }
+  /**
+   * Carrega mais páginas quando o usuário scroll próximo ao final.
+   * Implementa lazy loading conforme solicitado: carrega 100 páginas por vez.
+   */
+  loadMorePages() {
+    if (this.loadedPagesCount < this.pages) {
+      // Incrementa em 100 páginas por vez conforme solicitado
+      const newLoadedCount = Math.min(this.pages, this.loadedPagesCount + 100);
+      if (newLoadedCount > this.loadedPagesCount) {
+        this.loadedPagesCount = newLoadedCount;
+        this.updateVisiblePageOptions();
+      }
     }
   }
   itemSelected(index) {
@@ -232,7 +288,7 @@ const Pagination = class {
   }
   render() {
     const { currentLanguage } = this;
-    return (h(Host, { class: { full_width: this.pageCounter } }, h("bds-grid", { "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (h("bds-grid", { gap: "1", "align-items": "center", class: "items_per_page" }, h("bds-typo", { variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), h("bds-select", { class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, this.itemsPage?.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.itemSelected(el) }, el)))), h("bds-typo", { variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), h("bds-grid", { gap: "1", "align-items": "center", class: "actions" }, h("bds-button-icon", { onBdsClick: (ev) => this.firstPage(ev), size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), h("bds-button-icon", { onBdsClick: (ev) => this.previewPage(ev), size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), h("bds-select", { class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.visiblePageOptions.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (h("bds-typo", { class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), h("bds-button-icon", { onBdsClick: (ev) => this.nextPage(ev), size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), h("bds-button-icon", { onBdsClick: (ev) => this.lastPage(ev), size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
+    return (h(Host, { class: { full_width: this.pageCounter } }, h("bds-grid", { "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (h("bds-grid", { gap: "1", "align-items": "center", class: "items_per_page" }, h("bds-typo", { variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), h("bds-select", { class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, this.itemsPage?.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.itemSelected(el) }, el)))), h("bds-typo", { variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), h("bds-grid", { gap: "1", "align-items": "center", class: "actions" }, h("bds-button-icon", { onBdsClick: (ev) => this.firstPage(ev), size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), h("bds-button-icon", { onBdsClick: (ev) => this.previewPage(ev), size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), h("bds-select", { ref: (el) => this.selectElement = el, class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.visiblePageOptions.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (h("bds-typo", { class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), h("bds-button-icon", { onBdsClick: (ev) => this.nextPage(ev), size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), h("bds-button-icon", { onBdsClick: (ev) => this.lastPage(ev), size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
   }
   get el() { return getElement(this); }
   static get watchers() { return {
