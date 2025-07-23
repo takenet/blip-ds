@@ -193,13 +193,19 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'null' },
     },
-    control: 'text',
+    control: {
+      type: 'text',
+    },
+    description: 'Optional inline styles to be applied to the tab group header element',
   },
   contentStyle: {
     table: {
       defaultValue: { summary: 'null' },
     },
-    control: 'text',
+    control: {
+      type: 'text',
+    },
+    description: 'Optional inline styles to be applied to the tab group content element',
   },
 };
 
