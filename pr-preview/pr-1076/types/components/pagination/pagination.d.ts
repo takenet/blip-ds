@@ -16,6 +16,10 @@ export declare class Pagination {
    * Estado que armazena o número de páginas, gerado com base no total de itens e itens por página.
    */
   paginationNumbers: any[];
+  /**
+   * Estado que armazena apenas as opções de página visíveis para renderização otimizada.
+   */
+  visiblePageOptions: any[];
   itemsPerPage: number;
   intoView?: HTMLElement;
   /**
@@ -78,6 +82,11 @@ export declare class Pagination {
   processItemsPage(): void;
   countItem(): void;
   countPage(): void;
+  /**
+   * Atualiza as opções de página visíveis para renderização otimizada.
+   * Mostra apenas um subconjunto das páginas próximas à página atual.
+   */
+  updateVisiblePageOptions(): void;
   nextPage: (event: Event) => void;
   previewPage: (event: Event) => void;
   firstPage: (event: Event) => void;
@@ -85,6 +94,10 @@ export declare class Pagination {
   openOptions: () => void;
   onBlur: () => void;
   optionSelected(index: any): void;
+  /**
+   * Permite navegar para uma página específica mesmo que não esteja nas opções visíveis.
+   */
+  navigateToPage(pageNumber: number): void;
   itemSelected(index: any): void;
   updateItemRange(): void;
   get currentLanguage(): {
