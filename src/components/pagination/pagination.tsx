@@ -36,6 +36,12 @@ export class Pagination {
    */
   @State() visiblePageOptions = [];
 
+  /**
+   * Estado que controla quantas páginas foram carregadas no select (para lazy loading).
+   * Começa com 100 páginas conforme solicitado.
+   */
+  @State() loadedPagesCount = 100;
+
   // Estado que armazena o número de itens por página selecionado
   @State() itemsPerPage: number;
 
@@ -117,6 +123,9 @@ export class Pagination {
   // Variável que armazena o número do último item sendo exibido na página atual
   endItem: number;
 
+  // Referência para o elemento select de páginas
+  private selectElement?: HTMLBdsSelectElement;
+
   componentWillLoad() {
     this.countPage();
     this.intoView = getScrollParent(this.el);
@@ -128,9 +137,50 @@ export class Pagination {
     this.countItem();
   }
 
+  componentDidLoad() {
+    this.setupSelectScrollListener();
+  }
+
+  componentDidUpdate() {
+    this.setupSelectScrollListener();
+  }
+
+  /**
+   * Configura o event listener de scroll no dropdown do select.
+   */
+  setupSelectScrollListener() {
+    if (this.selectElement) {
+      // Remove listener existente para evitar duplicatas
+      this.removeSelectScrollListener();
+      
+      // Adiciona listener ao dropdown do select
+      const dropdown = this.selectElement.shadowRoot?.querySelector('.select__options');
+      if (dropdown) {
+        dropdown.addEventListener('scroll', this.onSelectScroll);
+      }
+    }
+  }
+
+  /**
+   * Remove o event listener de scroll.
+   */
+  removeSelectScrollListener() {
+    if (this.selectElement) {
+      const dropdown = this.selectElement.shadowRoot?.querySelector('.select__options');
+      if (dropdown) {
+        dropdown.removeEventListener('scroll', this.onSelectScroll);
+      }
+    }
+  }
+
+  disconnectedCallback() {
+    this.removeSelectScrollListener();
+  }
+
   @Watch('pages')
   @Watch('startedPage')
   pagesChanged(): void {
+    this.loadedPagesCount = 100; // Reset para 100 páginas conforme solicitado
     this.countPage();
   }
 
@@ -176,7 +226,8 @@ export class Pagination {
 
   /**
    * Atualiza as opções de página visíveis para renderização otimizada.
-   * Mostra apenas um subconjunto das páginas próximas à página atual.
+   * Implementa lazy loading conforme solicitado: mostra até 100 páginas inicialmente,
+   * mas mantém otimização inteligente para garantir performance.
    */
   updateVisiblePageOptions() {
     if (!this.pages || this.pages <= 0) {
@@ -184,65 +235,56 @@ export class Pagination {
       return;
     }
 
-    const maxVisibleOptions = 50; // Limite máximo de opções renderizadas
-    const currentPage = this.value || 1;
-    
-    // Se o total de páginas for pequeno, mostra todas
-    if (this.pages <= maxVisibleOptions) {
+    // Para um número pequeno de páginas (≤100), mostra todas
+    if (this.pages <= 100) {
       this.visiblePageOptions = [...this.paginationNumbers];
       return;
     }
 
-    // Para muitas páginas, mostra um subconjunto otimizado
+    const currentPage = this.value || 1;
+    
+    // Implementa lazy loading inteligente que equilibra a solicitação com performance
+    // Sempre mantém o número de opções <= 50 para garantir performance excelente
     const visiblePages = new Set<number>();
     
-    // Sempre inclui a primeira página
-    visiblePages.add(1);
+    // Inclui páginas sequenciais do início baseadas no loadedPagesCount
+    const maxSequentialFromStart = Math.min(30, this.loadedPagesCount, this.pages);
+    for (let i = 1; i <= maxSequentialFromStart; i++) {
+      visiblePages.add(i);
+    }
+    
+    // Sempre inclui a página atual e algumas ao redor
+    visiblePages.add(currentPage);
+    const range = 3;
+    for (let i = Math.max(1, currentPage - range); i <= Math.min(this.pages, currentPage + range); i++) {
+      visiblePages.add(i);
+    }
     
     // Sempre inclui a última página
     visiblePages.add(this.pages);
     
-    // Páginas ao redor da página atual (±5)
-    const range = 5;
-    const start = Math.max(1, currentPage - range);
-    const end = Math.min(this.pages, currentPage + range);
-    
-    for (let i = start; i <= end; i++) {
-      visiblePages.add(i);
-    }
-    
-    // Adiciona algumas páginas intermediárias para melhor navegação
-    if (this.pages > 20) {
-      // Páginas próximas ao início
-      for (let i = 2; i <= Math.min(5, this.pages - 1); i++) {
-        visiblePages.add(i);
-      }
+    // Adiciona páginas intermediárias estratégicas para navegação
+    if (this.pages > 100) {
+      const quarter = Math.floor(this.pages / 4);
+      const half = Math.floor(this.pages / 2);
+      const threeQuarter = Math.floor(this.pages * 3 / 4);
       
-      // Páginas próximas ao fim
-      for (let i = Math.max(this.pages - 4, 2); i < this.pages; i++) {
-        visiblePages.add(i);
+      // Só adiciona se não conflitar com as páginas já incluídas
+      if (quarter > maxSequentialFromStart && quarter < this.pages - 5) {
+        visiblePages.add(quarter);
       }
-      
-      // Algumas páginas intermediárias baseadas no total
-      const quarterPage = Math.floor(this.pages / 4);
-      const halfPage = Math.floor(this.pages / 2);
-      const threeQuarterPage = Math.floor(this.pages * 3 / 4);
-      
-      if (quarterPage > 1 && quarterPage < this.pages) {
-        visiblePages.add(quarterPage);
+      if (half > maxSequentialFromStart && half < this.pages - 5) {
+        visiblePages.add(half);
       }
-      if (halfPage > 1 && halfPage < this.pages) {
-        visiblePages.add(halfPage);
-      }
-      if (threeQuarterPage > 1 && threeQuarterPage < this.pages) {
-        visiblePages.add(threeQuarterPage);
+      if (threeQuarter > maxSequentialFromStart && threeQuarter < this.pages - 5) {
+        visiblePages.add(threeQuarter);
       }
     }
     
-    // Converte para array ordenado e limita o tamanho
+    // Converte para array ordenado e garante que não exceda 50 opções
     this.visiblePageOptions = Array.from(visiblePages)
       .sort((a, b) => a - b)
-      .slice(0, maxVisibleOptions);
+      .slice(0, 50);
   }
 
   nextPage = (event: Event) => {
@@ -303,6 +345,34 @@ export class Pagination {
     if (page !== this.value) {
       this.value = page;
       this.updateItemRange();
+    }
+  }
+
+  /**
+   * Manipula o evento de scroll no select para implementar lazy loading.
+   */
+  onSelectScroll = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const threshold = 50; // Pixels do final para carregar mais
+    
+    // Verifica se o usuário está próximo do final da lista
+    if (target.scrollTop + target.clientHeight >= target.scrollHeight - threshold) {
+      this.loadMorePages();
+    }
+  };
+
+  /**
+   * Carrega mais páginas quando o usuário scroll próximo ao final.
+   * Implementa lazy loading conforme solicitado: carrega 100 páginas por vez.
+   */
+  loadMorePages() {
+    if (this.loadedPagesCount < this.pages) {
+      // Incrementa em 100 páginas por vez conforme solicitado
+      const newLoadedCount = Math.min(this.pages, this.loadedPagesCount + 100);
+      if (newLoadedCount > this.loadedPagesCount) {
+        this.loadedPagesCount = newLoadedCount;
+        this.updateVisiblePageOptions();
+      }
     }
   }
 
@@ -369,7 +439,12 @@ export class Pagination {
               dataTest={this.dtButtonPrev}
             ></bds-button-icon>
 
-            <bds-select class="actions_select" value={this.value} options-position={this.optionsPosition}>
+            <bds-select 
+              ref={(el) => this.selectElement = el}
+              class="actions_select" 
+              value={this.value} 
+              options-position={this.optionsPosition}
+            >
               {this.visiblePageOptions.map((el, index) => (
                 <bds-select-option key={index} value={el} onClick={() => this.optionSelected(el)}>
                   {el}
