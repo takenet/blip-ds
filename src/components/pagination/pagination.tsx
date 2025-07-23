@@ -226,8 +226,8 @@ export class Pagination {
 
   /**
    * Atualiza as opções de página visíveis para renderização otimizada.
-   * Implementa lazy loading conforme solicitado: mostra até 100 páginas inicialmente,
-   * mas mantém otimização inteligente para garantir performance.
+   * Implementa lazy loading conforme solicitado: mostra páginas consecutivas de 1 até loadedPagesCount,
+   * expandindo conforme o usuário faz scroll.
    */
   updateVisiblePageOptions() {
     if (!this.pages || this.pages <= 0) {
@@ -241,50 +241,14 @@ export class Pagination {
       return;
     }
 
-    const currentPage = this.value || 1;
+    // Para páginas > 100, mostra páginas consecutivas de 1 até loadedPagesCount
+    // Limita a 500 opções máximas para manter performance razoável
+    const maxPagesToShow = Math.min(this.loadedPagesCount, this.pages, 500);
     
-    // Implementa lazy loading inteligente que equilibra a solicitação com performance
-    // Sempre mantém o número de opções <= 50 para garantir performance excelente
-    const visiblePages = new Set<number>();
-    
-    // Inclui páginas sequenciais do início baseadas no loadedPagesCount
-    const maxSequentialFromStart = Math.min(30, this.loadedPagesCount, this.pages);
-    for (let i = 1; i <= maxSequentialFromStart; i++) {
-      visiblePages.add(i);
+    this.visiblePageOptions = [];
+    for (let i = 1; i <= maxPagesToShow; i++) {
+      this.visiblePageOptions.push(i);
     }
-    
-    // Sempre inclui a página atual e algumas ao redor
-    visiblePages.add(currentPage);
-    const range = 3;
-    for (let i = Math.max(1, currentPage - range); i <= Math.min(this.pages, currentPage + range); i++) {
-      visiblePages.add(i);
-    }
-    
-    // Sempre inclui a última página
-    visiblePages.add(this.pages);
-    
-    // Adiciona páginas intermediárias estratégicas para navegação
-    if (this.pages > 100) {
-      const quarter = Math.floor(this.pages / 4);
-      const half = Math.floor(this.pages / 2);
-      const threeQuarter = Math.floor(this.pages * 3 / 4);
-      
-      // Só adiciona se não conflitar com as páginas já incluídas
-      if (quarter > maxSequentialFromStart && quarter < this.pages - 5) {
-        visiblePages.add(quarter);
-      }
-      if (half > maxSequentialFromStart && half < this.pages - 5) {
-        visiblePages.add(half);
-      }
-      if (threeQuarter > maxSequentialFromStart && threeQuarter < this.pages - 5) {
-        visiblePages.add(threeQuarter);
-      }
-    }
-    
-    // Converte para array ordenado e garante que não exceda 50 opções
-    this.visiblePageOptions = Array.from(visiblePages)
-      .sort((a, b) => a - b)
-      .slice(0, 50);
   }
 
   nextPage = (event: Event) => {

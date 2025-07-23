@@ -67,7 +67,7 @@ describe('bds-pagination performance tests', () => {
   it('should create reasonable number of options in select for large page counts', async () => {
     const page = await newSpecPage({
       components: [Pagination],
-      html: `<bds-pagination pages="30000" started-page="15000"></bds-pagination>`,
+      html: `<bds-pagination pages="30000" started-page="1"></bds-pagination>`,
     });
     
     await page.waitForChanges();
@@ -75,31 +75,35 @@ describe('bds-pagination performance tests', () => {
     // Count the actual rendered select options in the DOM
     const selectOptions = page.root.shadowRoot.querySelectorAll('bds-select-option');
     
-    // After optimization, there should be far fewer than 30000 options rendered
-    // This test demonstrates the current issue and will validate the fix
+    // With the new implementation, should show 100 consecutive pages initially
     console.log(`Number of select options rendered: ${selectOptions.length}`);
     
-    // Should have a reasonable number of options (much less than 50)
-    expect(selectOptions.length).toBeLessThan(50);
+    // Should have 100 options initially (pages 1-100)
+    expect(selectOptions.length).toBe(100);
     expect(selectOptions.length).toBeGreaterThan(10); // Should have meaningful options
   });
 
   it('should include current page in visible options', async () => {
     const page = await newSpecPage({
       components: [Pagination],
-      html: `<bds-pagination pages="30000" started-page="15000"></bds-pagination>`,
+      html: `<bds-pagination pages="30000" started-page="50"></bds-pagination>`,
     });
     
     await page.waitForChanges();
     
     const component = page.rootInstance;
     
-    // Current page should always be in visible options
-    expect(component.visiblePageOptions).toContain(15000);
+    // Current page should be in visible options (since it's within first 100)
+    expect(component.visiblePageOptions).toContain(50);
     
-    // First and last pages should be included
+    // First page should be included
     expect(component.visiblePageOptions).toContain(1);
-    expect(component.visiblePageOptions).toContain(30000);
+    
+    // Page 100 should be included (last of initial 100)
+    expect(component.visiblePageOptions).toContain(100);
+    
+    // Should have 100 options initially
+    expect(component.visiblePageOptions).toHaveLength(100);
   });
 
   it('should show all pages when total pages is small', async () => {
@@ -128,17 +132,25 @@ describe('bds-pagination performance tests', () => {
     const component = page.rootInstance;
     const initialOptions = [...component.visiblePageOptions];
     
-    // Navigate to a different page
-    component.value = 5000;
+    // Initially should have pages 1-100
+    expect(initialOptions).toHaveLength(100);
+    expect(initialOptions[0]).toBe(1);
+    expect(initialOptions[99]).toBe(100);
+    
+    // Simulate loading more pages
+    component.loadedPagesCount = 200;
+    component.updateVisiblePageOptions();
     await page.waitForChanges();
     
     const newOptions = component.visiblePageOptions;
     
-    // Should include the new current page
-    expect(newOptions).toContain(5000);
+    // Should now have pages 1-200
+    expect(newOptions).toHaveLength(200);
+    expect(newOptions[0]).toBe(1);
+    expect(newOptions[199]).toBe(200);
     
-    // Options should have changed to include pages around the new current page
-    expect(newOptions).not.toEqual(initialOptions);
+    // Options should have changed to include more pages
+    expect(newOptions.length).toBeGreaterThan(initialOptions.length);
   });
 
   it('should maintain functionality with optimized rendering', async () => {
@@ -166,5 +178,62 @@ describe('bds-pagination performance tests', () => {
     
     component.previewPage(new Event('click'));
     expect(component.value).toBe(1);
+  });
+
+  it('should load more pages when scrolling to bottom', async () => {
+    const page = await newSpecPage({
+      components: [Pagination],
+      html: `<bds-pagination pages="450"></bds-pagination>`,
+    });
+    
+    await page.waitForChanges();
+    
+    const component = page.rootInstance;
+    
+    // Initially should show 100 pages
+    expect(component.loadedPagesCount).toBe(100);
+    expect(component.visiblePageOptions).toHaveLength(100);
+    expect(component.visiblePageOptions[0]).toBe(1);
+    expect(component.visiblePageOptions[99]).toBe(100);
+    
+    // Simulate scroll to bottom (load more pages)
+    component.loadMorePages();
+    await page.waitForChanges();
+    
+    // Should now show 200 pages
+    expect(component.loadedPagesCount).toBe(200);
+    expect(component.visiblePageOptions).toHaveLength(200);
+    expect(component.visiblePageOptions[0]).toBe(1);
+    expect(component.visiblePageOptions[199]).toBe(200);
+    
+    // Simulate another scroll to bottom
+    component.loadMorePages();
+    await page.waitForChanges();
+    
+    // Should now show 300 pages
+    expect(component.loadedPagesCount).toBe(300);
+    expect(component.visiblePageOptions).toHaveLength(300);
+    expect(component.visiblePageOptions[0]).toBe(1);
+    expect(component.visiblePageOptions[299]).toBe(300);
+    
+    // One more scroll to bottom
+    component.loadMorePages();
+    await page.waitForChanges();
+    
+    // Should now show 400 pages
+    expect(component.loadedPagesCount).toBe(400);
+    expect(component.visiblePageOptions).toHaveLength(400);
+    expect(component.visiblePageOptions[0]).toBe(1);
+    expect(component.visiblePageOptions[399]).toBe(400);
+    
+    // Final scroll to bottom
+    component.loadMorePages();
+    await page.waitForChanges();
+    
+    // Should show all 450 pages (since total is 450)
+    expect(component.loadedPagesCount).toBe(450);
+    expect(component.visiblePageOptions).toHaveLength(450);
+    expect(component.visiblePageOptions[0]).toBe(1);
+    expect(component.visiblePageOptions[449]).toBe(450);
   });
 });
