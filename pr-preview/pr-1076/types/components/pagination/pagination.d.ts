@@ -101,8 +101,8 @@ export declare class Pagination {
   countPage(): void;
   /**
    * Atualiza as opções de página visíveis para renderização otimizada.
-   * Implementa lazy loading conforme solicitado: mostra até 100 páginas inicialmente,
-   * mas mantém otimização inteligente para garantir performance.
+   * Implementa lazy loading conforme solicitado: mostra páginas consecutivas de 1 até loadedPagesCount,
+   * expandindo conforme o usuário faz scroll.
    */
   updateVisiblePageOptions(): void;
   nextPage: (event: Event) => void;
