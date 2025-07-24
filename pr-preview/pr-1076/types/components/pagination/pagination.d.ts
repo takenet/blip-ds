@@ -25,6 +25,10 @@ export declare class Pagination {
    * Começa com PAGE_LOAD_CHUNK_SIZE páginas conforme solicitado.
    */
   loadedPagesCount: number;
+  /**
+   * Estado que controla se estamos no modo de paginação reversa (carregando do final para o início).
+   */
+  isReversePaginationMode: boolean;
   itemsPerPage: number;
   intoView?: HTMLElement;
   /**
@@ -101,11 +105,23 @@ export declare class Pagination {
   countPage(): void;
   /**
    * Atualiza as opções de página visíveis para renderização otimizada.
-   * Implementa lazy loading conforme solicitado: mostra páginas consecutivas de 1 até loadedPagesCount,
-   * expandindo conforme o usuário faz scroll.
-   * Garante que a página atual esteja sempre visível nas opções.
+   * Implementa lazy loading com modo normal (do início) e modo reverso (do final).
+   *
+   * Comportamento:
+   * - Para ≤100 páginas: mostra todas
+   * - Para >100 páginas no modo normal: mostra páginas 1 até loadedPagesCount
+   * - Para >100 páginas no modo reverso: mostra últimas loadedPagesCount páginas
+   * - Garante que a página atual esteja sempre visível nas opções
    */
   updateVisiblePageOptions(): void;
+  /**
+   * Atualiza as opções no modo normal (do início para o final).
+   */
+  private updateVisiblePageOptionsNormal;
+  /**
+   * Atualiza as opções no modo reverso (do final para o início).
+   */
+  private updateVisiblePageOptionsReverse;
   nextPage: (event: Event) => void;
   previewPage: (event: Event) => void;
   firstPage: (event: Event) => void;
@@ -118,14 +134,19 @@ export declare class Pagination {
    */
   navigateToPage(pageNumber: number): void;
   /**
-   * Manipula o evento de scroll no select para implementar lazy loading.
+   * Manipula o evento de scroll no select para implementar lazy loading bidirecional.
    */
   onSelectScroll: (event: Event) => void;
   /**
-   * Carrega mais páginas quando o usuário scroll próximo ao final.
+   * Carrega mais páginas quando o usuário scroll próximo ao final (modo normal).
    * Implementa lazy loading conforme solicitado: carrega PAGE_LOAD_CHUNK_SIZE páginas por vez.
    */
   loadMorePages(): void;
+  /**
+   * Carrega páginas anteriores quando o usuário scroll próximo ao topo (modo reverso).
+   * Implementa lazy loading reverso: carrega PAGE_LOAD_CHUNK_SIZE páginas anteriores por vez.
+   */
+  loadPreviousPages(): void;
   itemSelected(index: any): void;
   updateItemRange(): void;
   get currentLanguage(): {
