@@ -12,6 +12,9 @@ export class Pagination {
   // Elemento HTML nativo onde o componente será renderizado
   @Element() private el!: HTMLElement;
 
+  // Referência para o elemento select de paginação
+  private selectRef?: HTMLBdsSelectElement;
+
   /**
    * Estado que armazena o valor selecionado no seletor de página.
    * Inicialmente, é configurado com a página inicial (startedPage).
@@ -131,6 +134,41 @@ export class Pagination {
     }
     this.itemSelected(this.itemValue);
     this.countItem();
+  }
+
+  componentDidRender() {
+    this.attachScrollListener();
+  }
+
+  disconnectedCallback() {
+    this.removeScrollListener();
+  }
+
+  /**
+   * Anexa o listener de scroll ao dropdown do select quando ele está disponível
+   */
+  private attachScrollListener() {
+    if (this.selectRef) {
+      // Busca o dropdown dentro do shadow root do select
+      const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
+      if (dropdown && !dropdown.hasAttribute('data-scroll-listener-attached')) {
+        dropdown.addEventListener('scroll', this.handleSelectScroll);
+        dropdown.setAttribute('data-scroll-listener-attached', 'true');
+      }
+    }
+  }
+
+  /**
+   * Remove o listener de scroll do dropdown
+   */
+  private removeScrollListener() {
+    if (this.selectRef) {
+      const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
+      if (dropdown) {
+        dropdown.removeEventListener('scroll', this.handleSelectScroll);
+        dropdown.removeAttribute('data-scroll-listener-attached');
+      }
+    }
   }
 
   @Watch('pages')
@@ -329,23 +367,57 @@ export class Pagination {
     // Check if scrolled to bottom (load next pages)
     if (scrollTop + clientHeight >= scrollHeight - 10) {
       if (this.loadedPageRange.end < this.pages) {
-        const currentNumbers = [...this.paginationNumbers];
-        this.loadMorePages('next');
-        // Merge with existing numbers to avoid jump
-        this.paginationNumbers = [...currentNumbers, ...this.paginationNumbers.filter(num => !currentNumbers.includes(num))];
+        this.loadMorePagesForScroll('next');
       }
     }
     
-    // Check if scrolled to top (load previous pages)
+    // Check if scrolled to top (load previous pages)  
     if (scrollTop <= 10) {
       if (this.loadedPageRange.start > 1) {
-        const currentNumbers = [...this.paginationNumbers];
-        this.loadMorePages('prev');
-        // Merge with existing numbers to avoid jump
-        this.paginationNumbers = [...this.paginationNumbers.filter(num => !currentNumbers.includes(num)), ...currentNumbers];
+        this.loadMorePagesForScroll('prev');
       }
     }
   };
+
+  /**
+   * Carrega mais páginas para scroll (mantém as páginas existentes e adiciona novas)
+   */
+  loadMorePagesForScroll(direction: 'next' | 'prev') {
+    if (!this.pages) return;
+    
+    const batchSize = 50; // Smaller batch for smooth scrolling
+    let newStart = this.loadedPageRange.start;
+    let newEnd = this.loadedPageRange.end;
+    
+    if (direction === 'next' && newEnd < this.pages) {
+      // Extend the range to the right
+      newEnd = Math.min(this.pages, newEnd + batchSize);
+      this.loadedPageRange = { start: newStart, end: newEnd };
+      
+      // Add new pages to the existing array
+      for (let i = this.loadedPageRange.end - batchSize + 1; i <= newEnd; i++) {
+        if (i > 0 && !this.paginationNumbers.includes(i)) {
+          this.paginationNumbers.push(i);
+        }
+      }
+    } else if (direction === 'prev' && newStart > 1) {
+      // Extend the range to the left
+      newStart = Math.max(1, newStart - batchSize);
+      this.loadedPageRange = { start: newStart, end: newEnd };
+      
+      // Add new pages to the beginning of the array
+      const newPages = [];
+      for (let i = newStart; i < this.loadedPageRange.start + batchSize; i++) {
+        if (i > 0 && !this.paginationNumbers.includes(i)) {
+          newPages.push(i);
+        }
+      }
+      this.paginationNumbers = [...newPages, ...this.paginationNumbers];
+    }
+    
+    // Force re-render to show new options
+    this.paginationNumbers = [...this.paginationNumbers];
+  }
 
   @Watch('itemValue')
   itemSelected(index) {
@@ -410,7 +482,12 @@ export class Pagination {
               dataTest={this.dtButtonPrev}
             ></bds-button-icon>
 
-            <bds-select class="actions_select" value={this.value} options-position={this.optionsPosition}>
+            <bds-select 
+              ref={(el) => this.selectRef = el}
+              class="actions_select" 
+              value={this.value} 
+              options-position={this.optionsPosition}
+            >
               {this.paginationNumbers.map((el, index) => (
                 <bds-select-option key={index} value={el} onClick={() => this.optionSelected(el)}>
                   {el}

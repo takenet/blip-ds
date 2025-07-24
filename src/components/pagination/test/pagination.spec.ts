@@ -438,4 +438,153 @@ describe('bds-pagination', () => {
       expect(typeof result).toBe('object');
     });
   });
+
+  describe('Scroll Loading', () => {
+    it('should load more pages when scrolling to bottom', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // Initial state should have 100 pages loaded
+      expect(component.paginationNumbers.length).toBe(100);
+      expect(component.loadedPageRange.start).toBe(1);
+      expect(component.loadedPageRange.end).toBe(100);
+      
+      // Simulate scroll to bottom event
+      const mockScrollEvent = {
+        target: {
+          scrollTop: 900,
+          scrollHeight: 1000,
+          clientHeight: 100
+        }
+      } as any;
+      
+      component.handleSelectScroll(mockScrollEvent);
+      
+      // Should have loaded more pages
+      expect(component.paginationNumbers.length).toBeGreaterThan(100);
+      expect(component.loadedPageRange.end).toBeGreaterThan(100);
+    });
+
+    it('should load more pages when scrolling to top', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="500"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // Load a range around page 500
+      component.loadPageRange(500);
+      const initialLength = component.paginationNumbers.length;
+      const initialStart = component.loadedPageRange.start;
+      
+      // Simulate scroll to top event
+      const mockScrollEvent = {
+        target: {
+          scrollTop: 5,
+          scrollHeight: 1000,
+          clientHeight: 100
+        }
+      } as any;
+      
+      component.handleSelectScroll(mockScrollEvent);
+      
+      // Should have loaded more pages at the beginning
+      expect(component.paginationNumbers.length).toBeGreaterThan(initialLength);
+      expect(component.loadedPageRange.start).toBeLessThan(initialStart);
+    });
+
+    it('should not load more pages when at boundaries', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="50"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // For small page counts, all pages should be loaded initially
+      const initialLength = component.paginationNumbers.length;
+      
+      // Simulate scroll to bottom event
+      const mockScrollEvent = {
+        target: {
+          scrollTop: 900,
+          scrollHeight: 1000,
+          clientHeight: 100
+        }
+      } as any;
+      
+      component.handleSelectScroll(mockScrollEvent);
+      
+      // Should not have loaded more pages since we're at the boundary
+      expect(component.paginationNumbers.length).toBe(initialLength);
+    });
+
+    it('should attach scroll listener in componentDidRender', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // Mock the selectRef and its shadowRoot
+      const mockDropdown = {
+        addEventListener: jest.fn(),
+        setAttribute: jest.fn(),
+        hasAttribute: jest.fn().mockReturnValue(false)
+      };
+      
+      const mockShadowRoot = {
+        querySelector: jest.fn().mockReturnValue(mockDropdown)
+      };
+      
+      component.selectRef = {
+        shadowRoot: mockShadowRoot
+      } as any;
+      
+      // Call componentDidRender
+      component.componentDidRender();
+      
+      // Verify scroll listener was attached
+      expect(mockShadowRoot.querySelector).toHaveBeenCalledWith('.select__options');
+      expect(mockDropdown.addEventListener).toHaveBeenCalledWith('scroll', component.handleSelectScroll);
+      expect(mockDropdown.setAttribute).toHaveBeenCalledWith('data-scroll-listener-attached', 'true');
+    });
+
+    it('should remove scroll listener in disconnectedCallback', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // Mock the selectRef and its shadowRoot
+      const mockDropdown = {
+        removeEventListener: jest.fn(),
+        removeAttribute: jest.fn()
+      };
+      
+      const mockShadowRoot = {
+        querySelector: jest.fn().mockReturnValue(mockDropdown)
+      };
+      
+      component.selectRef = {
+        shadowRoot: mockShadowRoot
+      } as any;
+      
+      // Call disconnectedCallback
+      component.disconnectedCallback();
+      
+      // Verify scroll listener was removed
+      expect(mockShadowRoot.querySelector).toHaveBeenCalledWith('.select__options');
+      expect(mockDropdown.removeEventListener).toHaveBeenCalledWith('scroll', component.handleSelectScroll);
+      expect(mockDropdown.removeAttribute).toHaveBeenCalledWith('data-scroll-listener-attached');
+    });
+  });
 });
