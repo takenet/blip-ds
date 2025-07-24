@@ -353,4 +353,87 @@ describe('bds-pagination', () => {
       expect(typeof result).toBe('object');
     });
   });
+
+  describe('Bug Fixes - Navigation Issues', () => {
+    it('Bug 1: should correctly navigate to page 101 and 102 when clicking next button multiple times', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Verify starting state
+      expect(component.value).toBe(1);
+      expect(component.pages).toBe(1000);
+      
+      // Click next button 100 times to get to page 101
+      for (let i = 0; i < 100; i++) {
+        component.nextPage(new Event('click'));
+      }
+      
+      // Should be on page 101
+      expect(component.value).toBe(101);
+      
+      // Page 101 should be available in visible options
+      expect(component.visiblePageOptions).toContain(101);
+      
+      // Click next button again to get to page 102
+      component.nextPage(new Event('click'));
+      
+      // Should be on page 102
+      expect(component.value).toBe(102);
+      
+      // Page 102 should be available in visible options
+      expect(component.visiblePageOptions).toContain(102);
+    });
+
+    it('Bug 2: should correctly navigate to the last page when clicking last page button', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Verify starting state
+      expect(component.value).toBe(1);
+      expect(component.pages).toBe(1000);
+      
+      // Click last page button
+      component.lastPage(new Event('click'));
+      
+      // Should be on page 1000 (last page)
+      expect(component.value).toBe(1000);
+      
+      // Page 1000 should be available in visible options
+      expect(component.visiblePageOptions).toContain(1000);
+    });
+
+    it('should ensure current page is always included in visible options regardless of navigation method', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Test navigation to various pages
+      const testPages = [1, 50, 150, 500, 1000, 2500, 5000];
+      
+      for (const targetPage of testPages) {
+        // Navigate to the page directly
+        component.value = targetPage;
+        component.updateVisiblePageOptions();
+        await page.waitForChanges();
+        
+        // Current page should always be visible
+        expect(component.visiblePageOptions).toContain(targetPage);
+        expect(component.value).toBe(targetPage);
+      }
+    });
+  });
 });
