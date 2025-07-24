@@ -103,6 +103,7 @@ export declare class Pagination {
    * Atualiza as opções de página visíveis para renderização otimizada.
    * Implementa lazy loading conforme solicitado: mostra páginas consecutivas de 1 até loadedPagesCount,
    * expandindo conforme o usuário faz scroll.
+   * Garante que a página atual esteja sempre visível nas opções.
    */
   updateVisiblePageOptions(): void;
   nextPage: (event: Event) => void;

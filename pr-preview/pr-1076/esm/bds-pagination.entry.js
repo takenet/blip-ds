@@ -188,6 +188,7 @@ const Pagination = class {
    * Atualiza as opções de página visíveis para renderização otimizada.
    * Implementa lazy loading conforme solicitado: mostra páginas consecutivas de 1 até loadedPagesCount,
    * expandindo conforme o usuário faz scroll.
+   * Garante que a página atual esteja sempre visível nas opções.
    */
   updateVisiblePageOptions() {
     if (!this.pages || this.pages <= 0) {
@@ -199,12 +200,17 @@ const Pagination = class {
       this.visiblePageOptions = [...this.paginationNumbers];
       return;
     }
-    // Para páginas > PAGE_LOAD_CHUNK_SIZE, mostra páginas consecutivas de 1 até loadedPagesCount
-    const maxPagesToShow = Math.min(this.loadedPagesCount, this.pages);
+    // Garantir que a página atual esteja incluída nas páginas carregadas
+    const currentPage = this.value || 1;
+    const minLoadedPages = Math.max(this.loadedPagesCount, currentPage);
+    // Para páginas > PAGE_LOAD_CHUNK_SIZE, mostra páginas consecutivas de 1 até minLoadedPages
+    const maxPagesToShow = Math.min(minLoadedPages, this.pages);
     this.visiblePageOptions = [];
     for (let i = 1; i <= maxPagesToShow; i++) {
       this.visiblePageOptions.push(i);
     }
+    // Atualizar loadedPagesCount para refletir as páginas realmente carregadas
+    this.loadedPagesCount = maxPagesToShow;
   }
   optionSelected(index) {
     this.value = index;
