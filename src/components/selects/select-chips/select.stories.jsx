@@ -17,13 +17,7 @@ export const Properties = (args) => {
     el[0].style.height = '270px';
   }
   return (
-      <bds-select-chips new-prefix={args.newPrefix} can-add-new={args.canAddNew} chips={args.chips} placeholder={args.placeholder} label={args.label} disabled={args.disabled} danger={args.danger}icon={args.icon} value={args.value} error-message={args.errorMessage} helper-message={args.helperMessage} success-message={args.successMessage} success={args.success}>
-        <bds-select-option value="1">Millie Bobby</bds-select-option>
-        <bds-select-option value="2">Finn Wolfhard</bds-select-option>
-        <bds-select-option value="3">David Harbour</bds-select-option>
-        <bds-select-option value="4">Gaten Matarazzo</bds-select-option>
-        <bds-select-option value="5">Caleb McLaughlin</bds-select-option>
-        <bds-select-option value="6">Noah Schnapp</bds-select-option>
+      <bds-select-chips new-prefix={args.newPrefix} can-add-new={args.canAddNew} chips={args.chips} options={args.options} placeholder={args.placeholder} label={args.label} disabled={args.disabled} danger={args.danger} icon={args.icon} value={args.value} error-message={args.errorMessage} helper-message={args.helperMessage} success-message={args.successMessage} success={args.success}>
       </bds-select-chips>
   );
 };
@@ -32,6 +26,7 @@ Properties.args = {
   canAddNew: true,
   newPrefix: 'Create: ',
   chips: '["Millie Bobby"]',
+  options: '[{"value": "1", "label": "Millie Bobby"}, {"value": "2", "label": "Finn Wolfhard"}, {"value": "3", "label": "David Harbour"}, {"value": "4", "label": "Gaten Matarazzo"}, {"value": "5", "label": "Caleb McLaughlin"}, {"value": "6", "label": "Noah Schnapp"}]',
   placeholder: 'nome completo',
   label: '',
   disabled: false,
@@ -58,6 +53,12 @@ Properties.argTypes = {
     control: 'text',
   },
   chips: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
+  options: {
     table: {
       defaultValue: { summary: 'vazio' },
     },
