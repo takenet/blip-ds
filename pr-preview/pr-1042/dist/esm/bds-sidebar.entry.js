@@ -1,0 +1,94 @@
+import { r as registerInstance, c as createEvent, h, a as getElement } from './index-C3J6Z5OX.js';
+
+const sidebarCss = ".sidebar_dialog{width:100%;height:100vh;-webkit-box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));background-color:rgba(0, 0, 0, 0.7);opacity:0;visibility:hidden;-webkit-transition:opacity 0.3s ease-in-out;transition:opacity 0.3s ease-in-out;display:none}.sidebar_dialog.type_over{position:fixed;top:0;left:0;z-index:80000}.sidebar_dialog.type_over .sidebar{z-index:90000}.sidebar_dialog.type_fixed{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;position:relative;height:100%;-webkit-box-shadow:none;box-shadow:none}.sidebar_dialog.is_open{display:-ms-flexbox;display:flex;opacity:1;visibility:visible}.sidebar_dialog .outzone{-ms-flex-order:2;order:2;width:100%;height:100vh}.sidebar_dialog .sidebar{width:360px;-webkit-transition:all 0.5s ease-in-out;transition:all 0.5s ease-in-out;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;background-color:var(--color-surface-2, rgb(237, 237, 237));-ms-flex-negative:0;flex-shrink:0}.sidebar_dialog .sidebar.position_left{-ms-flex-order:1;order:1}.sidebar_dialog .sidebar.position_right{-ms-flex-order:3;order:3}.sidebar_dialog .sidebar.background_surface-1{background-color:var(--color-surface-1, rgb(246, 246, 246))}.sidebar_dialog .sidebar.background_surface-2{background-color:var(--color-surface-2, rgb(237, 237, 237))}.sidebar_dialog .sidebar.background_surface-3{background-color:var(--color-surface-3, rgb(227, 227, 227))}.sidebar_dialog .sidebar.background_surface-4{background-color:var(--color-surface-4, rgb(20, 20, 20))}.sidebar_dialog .sidebar.type_fixed{width:288px}.sidebar_dialog .sidebar .header{display:-ms-flexbox;display:flex;-ms-flex-line-pack:center;align-content:center;-ms-flex-pack:justify;justify-content:space-between;padding:24px}.sidebar_dialog .sidebar .header .content{display:-ms-flexbox;display:flex;width:100%;-ms-flex-align:center;align-items:center;position:relative;color:var(--color-content-default, rgb(40, 40, 40))}.sidebar_dialog .sidebar .header .content ::slotted(*){width:100%}.sidebar_dialog .sidebar .header .closeButton{border-radius:8px;contain:inherit;-webkit-transition:height 0.5s, all 0.3s;-moz-transition:height 0.5s, all 0.3s;transition:height 0.5s, all 0.3s;z-index:1;cursor:pointer;color:var(--color-content-default, rgb(40, 40, 40))}.sidebar_dialog .sidebar .body{position:relative;-ms-flex:1 1 auto;flex:1 1 auto}.sidebar_dialog .sidebar .body .content{position:absolute;inset:0;z-index:999999;overflow-y:overlay;overflow-x:clip}.sidebar_dialog .sidebar .body .content::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.sidebar_dialog .sidebar .body .content::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.sidebar_dialog .sidebar .body .margin{padding:8px 24px}.sidebar_dialog .sidebar .footer .content{padding:24px}.sidebar_dialog .sidebar .footer .content ::slotted(*){height:40px;overflow:hidden}.sidebar_dialog .sidebar.is_open.position_left{right:calc(100% - 360px)}.sidebar_dialog .sidebar.is_open.position_right{left:calc(100% - 360px)}";
+
+const Sidebar = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        this.bdsToggle = createEvent(this, "bdsToggle");
+        this.InnerSpacing = 0;
+        /**;
+         * isOpen. Used to open sidebar.
+         */
+        this.isOpen = this.type === 'fixed' ? true : false;
+        /**
+         * sidebar position. Used to position the sidebar. Either on the left or on the right.
+         */
+        this.sidebarPosition = 'left';
+        /**
+         * sidebar type. Used to define how open.
+         */
+        this.type = 'over';
+        /**
+         * If true, a lateral margin will apear in the content.
+         */
+        this.margin = true;
+        /**
+         * Width, number to define sidebar width.
+         */
+        this.width = 360;
+        /**
+         * Data test is the prop to specifically test the component action object.
+         * dtOutzone is the data-test to button close.
+         */
+        this.dtOutzone = null;
+        /**
+         * Data test is the prop to specifically test the component action object.
+         * dtButtonClose is the data-test to button close.
+         */
+        this.dtButtonClose = null;
+        /**
+         * Width, number to define sidebar width.
+         */
+        this.background = 'surface-2';
+        this.listiner = (event) => {
+            if (event.key == 'Escape' && this.type !== 'fixed') {
+                this.isOpen = false;
+            }
+        };
+        this.onClickCloseButtom = () => {
+            this.isOpen = false;
+        };
+    }
+    async toggle() {
+        this.isOpen = !this.isOpen;
+    }
+    isOpenChanged(newValue) {
+        this.bdsToggle.emit({ value: newValue });
+        if (newValue === true) {
+            document.addEventListener('keyup', this.listiner, false);
+        }
+        else {
+            document.removeEventListener('keyup', this.listiner, false);
+        }
+    }
+    componentWillLoad() {
+        this.hasFooterSlot = !!this.hostElement.querySelector('[slot="footer"]');
+        this.hasHeaderSlot = !!this.hostElement.querySelector('[slot="header"]');
+    }
+    render() {
+        return (h("div", { key: '13ba704ac3fd10d7c77d4ded636c5b17c5560c87', class: {
+                sidebar_dialog: true,
+                is_open: this.isOpen,
+                [`type_${this.type}`]: true,
+            } }, this.type === 'over' ? (h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone })) : (''), h("div", { key: '498dbf3de26d0dd07e5cfbe68a484f0771225df3', class: {
+                sidebar: true,
+                is_open: this.isOpen,
+                [`type_${this.type}`]: true,
+                [`position_${this.sidebarPosition}`]: true,
+                [`background_${this.background}`]: true,
+            }, style: { width: `${this.width < 144 ? 144 : this.width}px` } }, this.hasHeaderSlot && (h("div", { key: '5ff63216fe15dcb73f5c1bac2d40cb450a12efe4', class: { header: true } }, h("div", { key: '513387ec6653504e8b4f960f6c204fa29f79b7ef', class: { content: true } }, h("slot", { key: '2f66f02119c41d41c0b54ec310971845920ffd75', name: "header" })), this.type === 'fixed' ? ('') : (h("bds-button-icon", { class: {
+                closeButton: true,
+            }, icon: "close", size: "short", variant: "secondary", onClick: () => this.onClickCloseButtom(), dataTest: this.dtButtonClose })))), h("div", { key: '1fe85b9e8df3ff755f73decb42a013c917240eae', class: { body: true } }, h("div", { key: '6da11a2c668372b9dc612aa99a598c9929796bce', class: { content: true, element_scrolled: true, margin: this.margin } }, h("slot", { key: 'ccd7205ca9a9a2c1c821b84a0f166f1c9678e288', name: "body" }))), this.hasFooterSlot && (h("div", { key: '60401dd3bf62dd56903e48835f1bf1a4170ae370', class: { footer: true } }, h("div", { key: 'd316cc85e985252145748929d4a585b05a8d96ed', class: { content: true } }, h("slot", { key: '0b917bd07043a083f15ae67dea83d15ee418596d', name: "footer" })))))));
+    }
+    get hostElement() { return getElement(this); }
+    static get watchers() { return {
+        "isOpen": ["isOpenChanged"]
+    }; }
+};
+Sidebar.style = sidebarCss;
+
+export { Sidebar as bds_sidebar };
+//# sourceMappingURL=bds-sidebar.entry.js.map
+
+//# sourceMappingURL=bds-sidebar.entry.js.map
