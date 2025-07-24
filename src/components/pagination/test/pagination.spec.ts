@@ -322,6 +322,91 @@ describe('bds-pagination', () => {
     });
   });
 
+  describe('Lazy Loading Performance Optimization', () => {
+    it('should load only first 100 pages initially with large page count', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      expect(component.paginationNumbers.length).toBeLessThanOrEqual(100);
+      expect(component.loadedPageRange.start).toBe(1);
+      expect(component.loadedPageRange.end).toBeLessThanOrEqual(100);
+    });
+
+    it('should handle started page outside initial range', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000" started-page="200"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      expect(component.value).toBe(200);
+      expect(component.loadedPageRange.start).toBeLessThanOrEqual(200);
+      expect(component.loadedPageRange.end).toBeGreaterThanOrEqual(200);
+    });
+
+    it('should update page range when navigating beyond current range', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000" started-page="50"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      const initialEnd = component.loadedPageRange.end;
+      
+      // Navigate to next page beyond current range
+      component.value = initialEnd;
+      component.nextPage(new Event('click'));
+      
+      expect(component.value).toBe(initialEnd + 1);
+      expect(component.loadedPageRange.end).toBeGreaterThan(initialEnd);
+    });
+
+    it('should load appropriate range for first page navigation', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000" started-page="1000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      component.firstPage(new Event('click'));
+      
+      expect(component.value).toBe(1);
+      expect(component.loadedPageRange.start).toBe(1);
+      expect(component.loadedPageRange.end).toBeLessThanOrEqual(100);
+    });
+
+    it('should load appropriate range for last page navigation', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000" started-page="100"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      component.lastPage(new Event('click'));
+      
+      expect(component.value).toBe(5000);
+      expect(component.loadedPageRange.end).toBe(5000);
+      expect(component.loadedPageRange.start).toBeGreaterThan(4900);
+    });
+
+    it('should handle option selection outside current range', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      component.optionSelected(1000);
+      
+      expect(component.value).toBe(1000);
+      expect(component.loadedPageRange.start).toBeLessThanOrEqual(1000);
+      expect(component.loadedPageRange.end).toBeGreaterThanOrEqual(1000);
+    });
+  });
+
   describe('Edge Cases', () => {
     it('should handle undefined pages', async () => {
       const page = await newSpecPage({
