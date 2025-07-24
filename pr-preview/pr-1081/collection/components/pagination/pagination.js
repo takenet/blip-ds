@@ -3,11 +3,20 @@ import { getScrollParent } from '../../utils/position-element';
 import { pt_BR, en_US, es_MX } from './languages';
 export class Pagination {
   constructor() {
+    /**
+     * Tamanho do batch de páginas carregadas por vez.
+     */
+    this.pageLoadSize = 100;
     this.nextPage = (event) => {
       const el = this.value;
       if (el < this.pages) {
         event.preventDefault();
-        this.value = this.value + 1;
+        const newValue = this.value + 1;
+        // Check if we need to load more pages
+        if (newValue > this.loadedPageRange.end) {
+          this.loadMorePages('next');
+        }
+        this.value = newValue;
         this.updateItemRange();
       }
     };
@@ -15,7 +24,12 @@ export class Pagination {
       const el = this.value;
       if (el > 1) {
         event.preventDefault();
-        this.value = this.value - 1;
+        const newValue = this.value - 1;
+        // Check if we need to load more pages
+        if (newValue < this.loadedPageRange.start) {
+          this.loadMorePages('prev');
+        }
+        this.value = newValue;
         this.updateItemRange();
       }
     };
@@ -23,7 +37,8 @@ export class Pagination {
       const el = this.value;
       if (el > 1) {
         event.preventDefault();
-        this.value = this.paginationNumbers[0];
+        this.loadMorePages('first');
+        this.value = 1;
         this.updateItemRange();
       }
     };
@@ -31,6 +46,7 @@ export class Pagination {
       const el = this.value;
       if (el < this.pages) {
         event.preventDefault();
+        this.loadMorePages('last');
         this.value = this.pages;
         this.updateItemRange();
       }
@@ -41,10 +57,36 @@ export class Pagination {
     this.onBlur = () => {
       this.openSelect = false;
     };
+    /**
+     * Manipula o scroll no dropdown de páginas para carregar mais opções
+     */
+    this.handleSelectScroll = (event) => {
+      const target = event.target;
+      const { scrollTop, scrollHeight, clientHeight } = target;
+      // Check if scrolled to bottom (load next pages)
+      if (scrollTop + clientHeight >= scrollHeight - 10) {
+        if (this.loadedPageRange.end < this.pages) {
+          const currentNumbers = [...this.paginationNumbers];
+          this.loadMorePages('next');
+          // Merge with existing numbers to avoid jump
+          this.paginationNumbers = [...currentNumbers, ...this.paginationNumbers.filter(num => !currentNumbers.includes(num))];
+        }
+      }
+      // Check if scrolled to top (load previous pages)
+      if (scrollTop <= 10) {
+        if (this.loadedPageRange.start > 1) {
+          const currentNumbers = [...this.paginationNumbers];
+          this.loadMorePages('prev');
+          // Merge with existing numbers to avoid jump
+          this.paginationNumbers = [...this.paginationNumbers.filter(num => !currentNumbers.includes(num)), ...currentNumbers];
+        }
+      }
+    };
     this.value = this.startedPage;
     this.itemValue = undefined;
     this.openSelect = undefined;
     this.paginationNumbers = [];
+    this.loadedPageRange = { start: 1, end: 100 };
     this.itemsPerPage = undefined;
     this.intoView = null;
     this.pages = undefined;
@@ -92,16 +134,78 @@ export class Pagination {
       this.pages = Math.ceil(pages);
     }
   }
+  /**
+   * Carrega um range específico de páginas centrado na página fornecida
+   */
+  loadPageRange(targetPage) {
+    if (!this.pages)
+      return;
+    const halfRange = Math.floor(this.pageLoadSize / 2);
+    let start = Math.max(1, targetPage - halfRange);
+    let end = Math.min(this.pages, start + this.pageLoadSize - 1);
+    // Adjust start if we're near the end
+    if (end - start < this.pageLoadSize - 1) {
+      start = Math.max(1, end - this.pageLoadSize + 1);
+    }
+    this.loadedPageRange = { start, end };
+    this.paginationNumbers = [];
+    for (let i = start; i <= end; i++) {
+      this.paginationNumbers.push(i);
+    }
+  }
+  /**
+   * Carrega mais páginas baseado na direção da navegação
+   */
+  loadMorePages(direction) {
+    if (!this.pages)
+      return;
+    let newStart = this.loadedPageRange.start;
+    let newEnd = this.loadedPageRange.end;
+    switch (direction) {
+      case 'next':
+        if (newEnd < this.pages) {
+          newStart = newEnd + 1;
+          newEnd = Math.min(this.pages, newStart + this.pageLoadSize - 1);
+        }
+        break;
+      case 'prev':
+        if (newStart > 1) {
+          newEnd = newStart - 1;
+          newStart = Math.max(1, newEnd - this.pageLoadSize + 1);
+        }
+        break;
+      case 'first':
+        newStart = 1;
+        newEnd = Math.min(this.pages, this.pageLoadSize);
+        break;
+      case 'last':
+        newEnd = this.pages;
+        newStart = Math.max(1, newEnd - this.pageLoadSize + 1);
+        break;
+    }
+    this.loadedPageRange = { start: newStart, end: newEnd };
+    this.paginationNumbers = [];
+    for (let i = newStart; i <= newEnd; i++) {
+      this.paginationNumbers.push(i);
+    }
+  }
   countPage() {
     if (this.paginationNumbers.length !== 0) {
       this.paginationNumbers = [];
     }
     if (this.paginationNumbers.length === 0) {
-      for (let i = 1; i <= this.pages; i++) {
+      // Load only a subset of pages for performance optimization
+      const endPage = Math.min(this.pageLoadSize, this.pages || 0);
+      this.loadedPageRange = { start: 1, end: endPage };
+      for (let i = this.loadedPageRange.start; i <= this.loadedPageRange.end; i++) {
         this.paginationNumbers.push(i);
       }
       if (this.startedPage && this.startedPage < this.pages) {
         this.value = this.startedPage;
+        // If started page is outside current range, load appropriate range
+        if (this.startedPage > this.loadedPageRange.end) {
+          this.loadPageRange(this.startedPage);
+        }
       }
       else {
         this.value = this.paginationNumbers[0];
@@ -109,6 +213,10 @@ export class Pagination {
     }
   }
   optionSelected(index) {
+    // If the selected page is outside current range, load appropriate range
+    if (index < this.loadedPageRange.start || index > this.loadedPageRange.end) {
+      this.loadPageRange(index);
+    }
     this.value = index;
     this.openOptions();
     this.updateItemRange();
@@ -377,6 +485,7 @@ export class Pagination {
       "itemValue": {},
       "openSelect": {},
       "paginationNumbers": {},
+      "loadedPageRange": {},
       "itemsPerPage": {},
       "intoView": {}
     };

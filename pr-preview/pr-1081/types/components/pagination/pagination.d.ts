@@ -16,6 +16,17 @@ export declare class Pagination {
    * Estado que armazena o número de páginas, gerado com base no total de itens e itens por página.
    */
   paginationNumbers: any[];
+  /**
+   * Estado que controla o range de páginas carregadas para otimização de performance.
+   */
+  loadedPageRange: {
+    start: number;
+    end: number;
+  };
+  /**
+   * Tamanho do batch de páginas carregadas por vez.
+   */
+  private pageLoadSize;
   itemsPerPage: number;
   intoView?: HTMLElement;
   /**
@@ -77,6 +88,14 @@ export declare class Pagination {
   valueChanged(): void;
   processItemsPage(): void;
   countItem(): void;
+  /**
+   * Carrega um range específico de páginas centrado na página fornecida
+   */
+  loadPageRange(targetPage: number): void;
+  /**
+   * Carrega mais páginas baseado na direção da navegação
+   */
+  loadMorePages(direction: 'next' | 'prev' | 'first' | 'last'): void;
   countPage(): void;
   nextPage: (event: Event) => void;
   previewPage: (event: Event) => void;
@@ -85,6 +104,10 @@ export declare class Pagination {
   openOptions: () => void;
   onBlur: () => void;
   optionSelected(index: any): void;
+  /**
+   * Manipula o scroll no dropdown de páginas para carregar mais opções
+   */
+  handleSelectScroll: (event: Event) => void;
   itemSelected(index: any): void;
   updateItemRange(): void;
   get currentLanguage(): {
