@@ -130,6 +130,12 @@ export declare class Pagination {
   onBlur: () => void;
   optionSelected(index: any): void;
   /**
+   * Ensures that a specific page number is visible in the visiblePageOptions.
+   * This method should be called BEFORE changing the value to prevent the select
+   * component from trying to display a value that doesn't have a corresponding option.
+   */
+  private ensurePageIsVisible;
+  /**
    * Allows navigation to a specific page even if not in visible options.
    */
   navigateToPage(pageNumber: number): void;

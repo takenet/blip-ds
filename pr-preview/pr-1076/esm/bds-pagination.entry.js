@@ -33,8 +33,10 @@ const Pagination = class {
       const el = this.value;
       if (el < this.pages) {
         event.preventDefault();
-        this.value = this.value + 1;
-        this.updateVisiblePageOptions();
+        const newValue = this.value + 1;
+        // Update visible options BEFORE changing value to ensure select component can find the option
+        this.ensurePageIsVisible(newValue);
+        this.value = newValue;
         this.updateItemRange();
       }
     };
@@ -42,8 +44,10 @@ const Pagination = class {
       const el = this.value;
       if (el > 1) {
         event.preventDefault();
-        this.value = this.value - 1;
-        this.updateVisiblePageOptions();
+        const newValue = this.value - 1;
+        // Update visible options BEFORE changing value to ensure select component can find the option
+        this.ensurePageIsVisible(newValue);
+        this.value = newValue;
         this.updateItemRange();
       }
     };
@@ -51,8 +55,10 @@ const Pagination = class {
       const el = this.value;
       if (el > 1) {
         event.preventDefault();
-        this.value = this.paginationNumbers[0];
-        this.updateVisiblePageOptions();
+        const newValue = this.paginationNumbers[0];
+        // Update visible options BEFORE changing value to ensure select component can find the option
+        this.ensurePageIsVisible(newValue);
+        this.value = newValue;
         this.updateItemRange();
       }
     };
@@ -60,14 +66,17 @@ const Pagination = class {
       const el = this.value;
       if (el < this.pages) {
         event.preventDefault();
-        this.value = this.pages;
+        const newValue = this.pages;
+        // Update visible options BEFORE changing value to ensure select component can find the option
+        this.ensurePageIsVisible(newValue);
         // Implementar novo comportamento: ao clicar na última página,
         // carregar apenas as últimas PAGE_LOAD_CHUNK_SIZE páginas
         if (this.pages > PAGE_LOAD_CHUNK_SIZE) {
           this.isReversePaginationMode = true;
           this.loadedPagesCount = PAGE_LOAD_CHUNK_SIZE;
+          this.updateVisiblePageOptions();
         }
-        this.updateVisiblePageOptions();
+        this.value = newValue;
         this.updateItemRange();
       }
     };
@@ -265,9 +274,44 @@ const Pagination = class {
     }
   }
   optionSelected(index) {
+    // No need to call ensurePageIsVisible here since the option is already visible
+    // (user selected it from the dropdown)
     this.value = index;
     this.openOptions();
     this.updateItemRange();
+  }
+  /**
+   * Ensures that a specific page number is visible in the visiblePageOptions.
+   * This method should be called BEFORE changing the value to prevent the select
+   * component from trying to display a value that doesn't have a corresponding option.
+   */
+  ensurePageIsVisible(pageNumber) {
+    if (!pageNumber || pageNumber < 1 || pageNumber > this.pages) {
+      return;
+    }
+    // If the page is already visible, no need to update
+    if (this.visiblePageOptions.includes(pageNumber)) {
+      return;
+    }
+    // Determine if we should use reverse mode based on the target page
+    const shouldUseReverseMode = pageNumber > (this.pages - 50);
+    if (shouldUseReverseMode) {
+      this.isReversePaginationMode = true;
+      // Ensure we load enough pages to include the target page
+      const minPagesNeeded = this.pages - pageNumber + 1;
+      if (this.loadedPagesCount < minPagesNeeded) {
+        this.loadedPagesCount = Math.min(this.pages, Math.max(PAGE_LOAD_CHUNK_SIZE, minPagesNeeded));
+      }
+    }
+    else {
+      this.isReversePaginationMode = false;
+      // Ensure we load enough pages to include the target page
+      if (this.loadedPagesCount < pageNumber) {
+        this.loadedPagesCount = Math.max(this.loadedPagesCount, pageNumber);
+      }
+    }
+    // Update the visible options with the new configuration
+    this.updateVisiblePageOptions();
   }
   /**
    * Allows navigation to a specific page even if not in visible options.
@@ -275,8 +319,9 @@ const Pagination = class {
   navigateToPage(pageNumber) {
     const page = Math.max(1, Math.min(pageNumber, this.pages));
     if (page !== this.value) {
+      // Update visible options BEFORE changing value to ensure select component can find the option
+      this.ensurePageIsVisible(page);
       this.value = page;
-      this.updateVisiblePageOptions();
       this.updateItemRange();
     }
   }
