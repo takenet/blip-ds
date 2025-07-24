@@ -22,7 +22,7 @@ export declare class Pagination {
   visiblePageOptions: any[];
   /**
    * Estado que controla quantas páginas foram carregadas no select (para lazy loading).
-   * Começa com 100 páginas conforme solicitado.
+   * Começa com PAGE_LOAD_CHUNK_SIZE páginas conforme solicitado.
    */
   loadedPagesCount: number;
   itemsPerPage: number;
@@ -122,7 +122,7 @@ export declare class Pagination {
   onSelectScroll: (event: Event) => void;
   /**
    * Carrega mais páginas quando o usuário scroll próximo ao final.
-   * Implementa lazy loading conforme solicitado: carrega 100 páginas por vez.
+   * Implementa lazy loading conforme solicitado: carrega PAGE_LOAD_CHUNK_SIZE páginas por vez.
    */
   loadMorePages(): void;
   itemSelected(index: any): void;

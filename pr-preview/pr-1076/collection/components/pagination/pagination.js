@@ -1,6 +1,8 @@
 import { Host, h } from '@stencil/core';
 import { getScrollParent } from '../../utils/position-element';
 import { pt_BR, en_US, es_MX } from './languages';
+// Constante que define o tamanho do chunk de páginas a serem carregadas por vez
+const PAGE_LOAD_CHUNK_SIZE = 100;
 export class Pagination {
   constructor() {
     this.nextPage = (event) => {
@@ -57,7 +59,7 @@ export class Pagination {
     this.openSelect = undefined;
     this.paginationNumbers = [];
     this.visiblePageOptions = [];
-    this.loadedPagesCount = 100;
+    this.loadedPagesCount = PAGE_LOAD_CHUNK_SIZE;
     this.itemsPerPage = undefined;
     this.intoView = null;
     this.pages = undefined;
@@ -118,7 +120,7 @@ export class Pagination {
     this.removeSelectScrollListener();
   }
   pagesChanged() {
-    this.loadedPagesCount = 100; // Reset para 100 páginas conforme solicitado
+    this.loadedPagesCount = PAGE_LOAD_CHUNK_SIZE; // Reset para PAGE_LOAD_CHUNK_SIZE páginas conforme solicitado
     this.countPage();
   }
   valueChanged() {
@@ -168,14 +170,13 @@ export class Pagination {
       this.visiblePageOptions = [];
       return;
     }
-    // Para um número pequeno de páginas (≤100), mostra todas
-    if (this.pages <= 100) {
+    // Para um número pequeno de páginas (≤PAGE_LOAD_CHUNK_SIZE), mostra todas
+    if (this.pages <= PAGE_LOAD_CHUNK_SIZE) {
       this.visiblePageOptions = [...this.paginationNumbers];
       return;
     }
-    // Para páginas > 100, mostra páginas consecutivas de 1 até loadedPagesCount
-    // Limita a 500 opções máximas para manter performance razoável
-    const maxPagesToShow = Math.min(this.loadedPagesCount, this.pages, 500);
+    // Para páginas > PAGE_LOAD_CHUNK_SIZE, mostra páginas consecutivas de 1 até loadedPagesCount
+    const maxPagesToShow = Math.min(this.loadedPagesCount, this.pages);
     this.visiblePageOptions = [];
     for (let i = 1; i <= maxPagesToShow; i++) {
       this.visiblePageOptions.push(i);
@@ -198,12 +199,12 @@ export class Pagination {
   }
   /**
    * Carrega mais páginas quando o usuário scroll próximo ao final.
-   * Implementa lazy loading conforme solicitado: carrega 100 páginas por vez.
+   * Implementa lazy loading conforme solicitado: carrega PAGE_LOAD_CHUNK_SIZE páginas por vez.
    */
   loadMorePages() {
     if (this.loadedPagesCount < this.pages) {
-      // Incrementa em 100 páginas por vez conforme solicitado
-      const newLoadedCount = Math.min(this.pages, this.loadedPagesCount + 100);
+      // Incrementa em PAGE_LOAD_CHUNK_SIZE páginas por vez conforme solicitado
+      const newLoadedCount = Math.min(this.pages, this.loadedPagesCount + PAGE_LOAD_CHUNK_SIZE);
       if (newLoadedCount > this.loadedPagesCount) {
         this.loadedPagesCount = newLoadedCount;
         this.updateVisiblePageOptions();
