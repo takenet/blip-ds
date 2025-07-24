@@ -536,5 +536,39 @@ describe('bds-pagination', () => {
       expect(component.visiblePageOptions[0]).toBe(1);
       expect(component.visiblePageOptions).toContain(50);
     });
+
+    it('should synchronously update visible options when navigating to ensure current page is always visible', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Verify starting state
+      expect(component.value).toBe(1);
+      expect(component.loadedPagesCount).toBe(100);
+      expect(component.visiblePageOptions.length).toBe(100);
+      expect(component.visiblePageOptions.includes(101)).toBe(false);
+      
+      // Navigate to page 101 using nextPage
+      for (let i = 0; i < 100; i++) {
+        component.nextPage(new Event('click'));
+      }
+      
+      // Page 101 should be immediately available after navigation
+      expect(component.value).toBe(101);
+      expect(component.loadedPagesCount).toBe(101);
+      expect(component.visiblePageOptions.includes(101)).toBe(true);
+      expect(component.visiblePageOptions.length).toBe(101);
+      
+      // Navigate to page 102 
+      component.nextPage(new Event('click'));
+      
+      // Page 102 should also be immediately available
+      expect(component.value).toBe(102);
+      expect(component.visiblePageOptions.includes(102)).toBe(true);
+    });
   });
 });

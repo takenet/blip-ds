@@ -307,6 +307,7 @@ export class Pagination {
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.value + 1;
+      this.updateVisiblePageOptions();
       this.updateItemRange();
     }
   };
@@ -316,6 +317,7 @@ export class Pagination {
     if (el > 1) {
       event.preventDefault();
       this.value = this.value - 1;
+      this.updateVisiblePageOptions();
       this.updateItemRange();
     }
   };
@@ -325,6 +327,7 @@ export class Pagination {
     if (el > 1) {
       event.preventDefault();
       this.value = this.paginationNumbers[0];
+      this.updateVisiblePageOptions();
       this.updateItemRange();
     }
   };
@@ -342,6 +345,7 @@ export class Pagination {
         this.loadedPagesCount = PAGE_LOAD_CHUNK_SIZE;
       }
       
+      this.updateVisiblePageOptions();
       this.updateItemRange();
     }
   };
@@ -361,12 +365,13 @@ export class Pagination {
   }
 
   /**
-   * Permite navegar para uma página específica mesmo que não esteja nas opções visíveis.
+   * Allows navigation to a specific page even if not in visible options.
    */
   navigateToPage(pageNumber: number) {
     const page = Math.max(1, Math.min(pageNumber, this.pages));
     if (page !== this.value) {
       this.value = page;
+      this.updateVisiblePageOptions();
       this.updateItemRange();
     }
   }
