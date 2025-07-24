@@ -46,7 +46,7 @@ export declare class Slider {
     /**
      * bdsChange. Event to return selected date value.
      */
-    bdsChange?: EventEmitter;
+    bdsChange?: EventEmitter<StepOption>;
     componentWillLoad(): void;
     componentDidLoad(): void;
     componentDidRender(): void;

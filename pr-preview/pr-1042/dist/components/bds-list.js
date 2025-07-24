@@ -1,12 +1,12 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$b } from './p-FnzKEJwK.js';
+import { d as defineCustomElement$b } from './p-BbK5Lskz.js';
 import { d as defineCustomElement$a } from './p-BlC8WqrE.js';
-import { d as defineCustomElement$9 } from './p-BmvUJnHb.js';
-import { d as defineCustomElement$8 } from './p-BSqNavl9.js';
+import { d as defineCustomElement$9 } from './p-BpaUgttw.js';
+import { d as defineCustomElement$8 } from './p-DPhFiDhH.js';
 import { d as defineCustomElement$7 } from './p-BHBVuzyo.js';
-import { d as defineCustomElement$6 } from './p-wxQz6ZoZ.js';
-import { d as defineCustomElement$5 } from './p-CRcvbDav.js';
-import { d as defineCustomElement$4 } from './p-CRfgrqCd.js';
+import { d as defineCustomElement$6 } from './p-DaPA6uuu.js';
+import { d as defineCustomElement$5 } from './p-DzNR1kSf.js';
+import { d as defineCustomElement$4 } from './p-mcLFs8cG.js';
 import { d as defineCustomElement$3 } from './p-IEiDdwGC.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
@@ -137,7 +137,7 @@ const List = /*@__PURE__*/ proxyCustomElement(class List extends H {
         this.bdsListSwitchChange.emit(result);
     }
     render() {
-        return (h(Host, { key: '74e1b4e602cd6e1f0ab6351394a494cbb74e5a6e' }, h("div", { key: '576759d97c75e15ef10b3d34bdf7044cc00b70b0', class: {
+        return (h(Host, { key: 'dcdf6ac9fbf6510d7ef1308d96c8514214008fd8' }, h("div", { key: '87a84c84e1750418a9a98398b3dc7afe5f1dc91f', class: {
                 list: true,
             } }, this.internalData ? (this.internalData.map((item, idx) => (h("bds-list-item", { key: idx, value: item.value, text: item.text, "type-list": this.typeList ? this.typeList : item.typeList, "secondary-text": item.secondaryText, "avatar-name": item.avatarName, "avatar-thumbnail": item.avatarThumbnail, checked: item.checked, icon: item.icon, chips: item.chips, actionsButtons: item.actionsButtons, onBdsChecked: (ev) => this.chagedOptions(ev), onBdsClickActionButtom: (ev) => this.onClickActionsButtons(ev), dataTest: item.dataTest })))) : (h("slot", null)))));
     }

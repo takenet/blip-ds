@@ -29,7 +29,7 @@ export class RadioGroup {
         }
     }
     render() {
-        return (h(Host, { key: 'e3125c6fb59d1ae2d14b403c0987a1c38d3ed4e9' }, h("slot", { key: '760a98c72db9700f888e85436e4f07a89bc7209b' })));
+        return (h(Host, { key: 'c1a2f0b95b7e6d17cd70c8358b8ea78b51152a7e' }, h("slot", { key: '5158c9c608213c405366ba03d522e977e6d896ca' })));
     }
     static get is() { return "bds-radio-group"; }
     static get encapsulation() { return "scoped"; }
@@ -68,8 +68,8 @@ export class RadioGroup {
                     "text": "Emitted when the value has changed due to a click event."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ value?: string }",
+                    "resolved": "{ value?: string; }",
                     "references": {}
                 }
             }];

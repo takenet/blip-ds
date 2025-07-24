@@ -17,7 +17,7 @@ export declare class BannerLink {
     /**
      * Emitted when the link is clicked.
      */
-    bdsBannerLink: EventEmitter;
+    bdsBannerLink: EventEmitter<HTMLBdsBannerElement>;
     private _buttonClickHandler;
     private handleKeyDown;
     render(): HTMLElement;

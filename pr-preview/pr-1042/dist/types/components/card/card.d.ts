@@ -36,7 +36,7 @@ export declare class Card implements ComponentInterface {
     /**
      * This event will be dispatch when click on the component.
      */
-    bdsClick: EventEmitter;
+    bdsClick: EventEmitter<PointerEvent | KeyboardEvent>;
     element: HTMLElement;
     private cardElement;
     componentDidLoad(): void;

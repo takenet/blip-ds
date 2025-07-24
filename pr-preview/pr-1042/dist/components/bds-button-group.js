@@ -120,7 +120,7 @@ const ButtonGroup = /*@__PURE__*/ proxyCustomElement(class ButtonGroup extends H
         button.setColor(this.color);
     }
     render() {
-        return (h(Host, { key: 'dc12bbfd11ecdfc7a39bb3474bbef396d8182d3f', class: "button_group" }, h("bds-grid", { key: 'b2a0f033711ac0dd8c0bf6c773fba095d8d91be8', direction: this.direction }, h("slot", { key: '877672a01e95c7fb6dfbeecafabd7ce93ebc0dc0' }))));
+        return (h(Host, { key: '4e0238820d5167d4a569e33eadb95f90b101358a', class: "button_group" }, h("bds-grid", { key: 'd39ddf41a04d2bda4906da8311b8a455d6224f97', direction: this.direction }, h("slot", { key: 'c76401b3941e44fee48435a26a1e687d1ab1955d' }))));
     }
     get el() { return this; }
     static get watchers() { return {

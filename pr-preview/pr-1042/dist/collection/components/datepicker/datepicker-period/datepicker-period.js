@@ -310,7 +310,7 @@ export class BdsdatepickerPeriod {
     render() {
         const futureMonth = changeMonths(this.language).filter((obj) => obj.value === this.monthsSlide[2].month);
         const futureYear = this.monthsSlide[2].year;
-        return (h("div", { key: '1b6c17809d83cc528d94ee21d6c6d6e422c31055', class: { datepicker__calendar: true, [`period`]: true } }, h("div", { key: 'e01a46ea9bad84e022ef112f911b705d04ca4346', class: { datepicker__calendar__selectDate: true } }, h("bds-icon", { key: '6d6224d9c12ce4b95c99700ca21ee2b130406d25', class: {
+        return (h("div", { key: '2814a08e8d101d06cd7291bb9d97f36a0cde7112', class: { datepicker__calendar: true, [`period`]: true } }, h("div", { key: 'a09d591a0f31b59fa96ec35b320a4fb6b77b5d8b', class: { datepicker__calendar__selectDate: true } }, h("bds-icon", { key: 'c8d6db21cb737f6e2320dfaa8fc391e348062e7f', class: {
                 [`arrow-left`]: true,
                 [`arrow-left__disable`]: fillDayList(this.monthsSlide[0].days[this.monthsSlide[0].days.length - 1]) <
                     fillDayList(this.startDate),
@@ -318,11 +318,11 @@ export class BdsdatepickerPeriod {
             }, name: "arrow-left", theme: "outline", size: "small", onClick: () => this.prevMonth(), dataTest: this.dtButtonPrev }), [
             this.renderSelectData(this.months, this.monthActivated, 'months'),
             this.renderSelectData(this.years, this.yearActivated, 'years'),
-        ], h("bds-typo", { key: 'ca0ff960b04e1573e35eba5fdcda5022deee0359', class: "datepicker__calendar__selectDate__futureMonth", variant: "fs-14" }, `${futureMonth[0].label}, ${futureYear}`), h("bds-icon", { key: '4f813679c8526ec5a50d766e57f1926ccb3c4702', class: {
+        ], h("bds-typo", { key: 'ac9f3b154f1a56b14bc9ab3c9ff035db65d1beb2', class: "datepicker__calendar__selectDate__futureMonth", variant: "fs-14" }, `${futureMonth[0].label}, ${futureYear}`), h("bds-icon", { key: '502e5af654e30ede0ede4a18dd4088cb8bbd3fc4', class: {
                 [`arrow-right`]: true,
                 [`arrow-right__disable`]: fillDayList(this.monthsSlide[2].days[0]) > fillDayList(this.endDate),
                 datepicker__calendar__selectDate__icon: true,
-            }, name: "arrow-right", theme: "outline", size: "small", onClick: () => this.nextMonth(), dataTest: this.dtButtonNext })), h("div", { key: '4cdf2341e9c5779e9c1ea12f2294a37b8e37c9d0' }, h("div", { key: '81bfa5df025ca23dce29b52098ef890320f20ec0', class: { datepicker__calendar__week: true } }, h("div", { key: 'b5fae83dfda1e30ab43f1176c65864c4dd77052d', class: { datepicker__calendar__week__present: true } }, this.week.map((item, idx) => (h("bds-typo", { variant: "fs-14", key: idx, class: `datepicker__calendar__week__day` }, item.charAt(0))))), h("div", { key: '87fbd028e390c5ac9c12f0954271a1b1cd5326e8', class: { datepicker__calendar__week__future: true } }, this.week.map((item, idx) => (h("bds-typo", { variant: "fs-14", key: idx, class: `datepicker__calendar__week__day` }, item.charAt(0)))))), h("div", { key: 'ab6420524540a79e8358ddb0045016da2236b24a', class: { datepicker__calendar__car: true, datepicker__calendar__car__period: true } }, h("div", { key: 'de19d2a4bce241bf0bd0cce5921a0dc0c6f9ee36', class: {
+            }, name: "arrow-right", theme: "outline", size: "small", onClick: () => this.nextMonth(), dataTest: this.dtButtonNext })), h("div", { key: '16464131df0a28e37cc7ad0f8a2b7c5450b0906c' }, h("div", { key: '62ffe55b4b41ba6b5825ce8ded7d562f1c0bc28a', class: { datepicker__calendar__week: true } }, h("div", { key: '4d326dc43a21601b3990d97a2c8ebe823fddf2d6', class: { datepicker__calendar__week__present: true } }, this.week.map((item, idx) => (h("bds-typo", { variant: "fs-14", key: idx, class: `datepicker__calendar__week__day` }, item.charAt(0))))), h("div", { key: '7da120c1b69f1172409b93c6cd2f9171d6c9877c', class: { datepicker__calendar__week__future: true } }, this.week.map((item, idx) => (h("bds-typo", { variant: "fs-14", key: idx, class: `datepicker__calendar__week__day` }, item.charAt(0)))))), h("div", { key: 'a5b4558085b2c53eb825607b32bf11ae59d9095b', class: { datepicker__calendar__car: true, datepicker__calendar__car__period: true } }, h("div", { key: '433a6a3c0cc0a4cfabbddcb4bb0a620fd2eb8cdc', class: {
                 datepicker__calendar__car__slide: true,
                 animate__prev: this.animatePrev,
                 animate__next: this.animateNext,
@@ -607,9 +607,14 @@ export class BdsdatepickerPeriod {
                     "text": "bdsStartDate. Event to return selected date value."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "{ value: Date | null }",
+                    "resolved": "{ value: Date; }",
+                    "references": {
+                        "Date": {
+                            "location": "global",
+                            "id": "global::Date"
+                        }
+                    }
                 }
             }, {
                 "method": "bdsEndDate",
@@ -622,9 +627,14 @@ export class BdsdatepickerPeriod {
                     "text": "bdsEndDate. Event to return selected end date value."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "{ value: Date | null }",
+                    "resolved": "{ value: Date; }",
+                    "references": {
+                        "Date": {
+                            "location": "global",
+                            "id": "global::Date"
+                        }
+                    }
                 }
             }, {
                 "method": "bdsClickDayButton",
@@ -637,9 +647,15 @@ export class BdsdatepickerPeriod {
                     "text": "bdsClickDayButton. Event to return when click on day button."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "{ state?: stateSelect }",
+                    "resolved": "{ state?: stateSelect; }",
+                    "references": {
+                        "stateSelect": {
+                            "location": "local",
+                            "path": "/home/runner/work/blip-ds/blip-ds/src/components/datepicker/datepicker-period/datepicker-period.tsx",
+                            "id": "src/components/datepicker/datepicker-period/datepicker-period.tsx::stateSelect"
+                        }
+                    }
                 }
             }];
     }

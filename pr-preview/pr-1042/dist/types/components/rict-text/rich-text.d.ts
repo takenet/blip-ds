@@ -106,7 +106,9 @@ export declare class RichText {
     /**
      * Emitted when the value has changed.
      */
-    bdsRichTextChange: EventEmitter;
+    bdsRichTextChange: EventEmitter<{
+        value: string;
+    }>;
     /**
      * Emitted when the input has changed.
      */
@@ -114,11 +116,11 @@ export declare class RichText {
     /**
      * Event input onblur.
      */
-    bdsBlur: EventEmitter;
+    bdsBlur: EventEmitter<void>;
     /**
      * Event input focus.
      */
-    bdsFocus: EventEmitter;
+    bdsFocus: EventEmitter<void>;
     componentDidLoad(): void;
     protected buttomsHeaderChanged(): void;
     protected buttomAccordionActiveChanged(): void;

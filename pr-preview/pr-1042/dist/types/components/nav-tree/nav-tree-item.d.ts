@@ -40,9 +40,12 @@ export declare class NavTreeItem {
     /**
      * When de activation of component change, the event are dispache.
      */
-    bdsToogleChange: EventEmitter;
+    bdsToogleChange: EventEmitter<{
+        value?: boolean;
+        element: HTMLElement;
+    }>;
     toggle(): Promise<void>;
-    protected isOpenChanged(value: any): void;
+    protected isOpenChanged(value?: boolean): void;
     componentWillLoad(): void;
     componentWillRender(): void;
     private handler;

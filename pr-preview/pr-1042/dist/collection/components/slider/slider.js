@@ -108,9 +108,9 @@ export class Slider {
         return valueSteps.map((term) => ({ value: term, name: term * this.step + this.min }));
     }
     render() {
-        return (h(Host, { key: '29451c00acb28b35da8b8cc8cb632cf933b664a8' }, h("input", { key: 'e72694e41261abfa6094ec05bca761a5b90e3117', ref: this.refInputSlide, type: "range", class: {
+        return (h(Host, { key: '0cb0e5d7feb24f152bfe4bf0857ffba9349710e0' }, h("input", { key: '6ea98a9753d17a41f00e2d894946d1d55ca13adf', ref: this.refInputSlide, type: "range", class: {
                 input_slide: true,
-            }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { key: '66c0346da07f072e40e4d6e7ee819473b66d1e84', class: "track-bg" }, h("div", { key: '30a91ac84bac7d436b36f7c88c2465158e4812cb', class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { key: '97cf038eb25945c3dcdf8e1d08495f2bf6ce0377', ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: "top-center", "tooltip-text": this.inputValue }, h("div", { key: 'b21a646fcf26179271064c7256ccb1caaa2b5e38', class: { [`progress-bar-thumb`]: true } }))), this.markers &&
+            }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { key: '69b4b78e7c790810d48a5dfaffa9934fa489501e', class: "track-bg" }, h("div", { key: 'c18f68a9847341c0ac50b3c82d2c5f86ad2db97a', class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { key: '4f3be35713caddf9405137a10bc171e912220cae', ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: "top-center", "tooltip-text": this.inputValue }, h("div", { key: '17f6bf6c8a67c2bd23cc8cfac831c851c89489d6', class: { [`progress-bar-thumb`]: true } }))), this.markers &&
             this.stepArray.map((item, index) => (h("div", { key: index, class: `step` }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))))));
     }
     static get is() { return "bds-slider"; }
@@ -336,9 +336,15 @@ export class Slider {
                     "text": "bdsChange. Event to return selected date value."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "StepOption",
+                    "resolved": "StepOption",
+                    "references": {
+                        "StepOption": {
+                            "location": "import",
+                            "path": "./slider-interface",
+                            "id": "src/components/slider/slider-interface.ts::StepOption"
+                        }
+                    }
                 }
             }];
     }

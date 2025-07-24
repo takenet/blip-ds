@@ -27,11 +27,11 @@ export declare class BdsTabGroup {
     /**
      * bdsTabChange. Event to return value when Tabs is change.
      */
-    bdsTabChange?: EventEmitter;
+    bdsTabChange?: EventEmitter<HTMLBdsTabItemElement>;
     /**
      * bdsTabDisabled. Event to return value when Tabs disable is change.
      */
-    bdsTabDisabled?: EventEmitter;
+    bdsTabDisabled?: EventEmitter<HTMLBdsTabItemElement>;
     componentWillRender(): void;
     componentDidLoad(): void;
     connectedCallback(): void;

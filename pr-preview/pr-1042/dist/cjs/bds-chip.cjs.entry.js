@@ -70,7 +70,7 @@ const Chip = class {
         return { 'chip--default': true };
     }
     render() {
-        return (index.h(index.Host, { key: 'd831b25dab1957b462d16c052ebd9d67ba795839', class: Object.assign(Object.assign(Object.assign({ chip: true }, this.getClickClass()), this.getStateClass()), this.getSizeClass()) }, this.icon && (index.h("div", { key: 'fef08391ae455996360d9f5e7d723b3b89353e84', class: "chip__icon" }, index.h("bds-icon", { key: '3f003aa3b8611fffb5e836c178c797d92bc40520', size: "x-small", name: this.icon }))), index.h("slot", { key: 'decd45998ea5247618739698e01bc38237c9c2dd' }), this.deletable && (index.h("div", { key: 'c351986efc842e885502b0b608ca3bcfd2aadee1', class: "chip__delete", onClick: this.handleClickDelete.bind(this) }, index.h("bds-icon", { key: 'cd0d62c912efe8260eb620ddd2bf4024619f1206', size: "x-small", theme: "solid", name: "error" })))));
+        return (index.h(index.Host, { key: '635ce5ca9f698b889b6de4f87ff655da3d490597', class: Object.assign(Object.assign(Object.assign({ chip: true }, this.getClickClass()), this.getStateClass()), this.getSizeClass()) }, this.icon && (index.h("div", { key: '413dcee01d119254d2eb3201db8d99a8c5adc7aa', class: "chip__icon" }, index.h("bds-icon", { key: 'd50e98bd14192025f3c216b5c53f31653f1e1709', size: "x-small", name: this.icon }))), index.h("slot", { key: 'dbb463b219818f9a4dd01fa4795b1fda26527848' }), this.deletable && (index.h("div", { key: 'b5c96ac576d48e339c2e6aa0fd201b49be004829', class: "chip__delete", onClick: this.handleClickDelete.bind(this) }, index.h("bds-icon", { key: '53f33457c8fa2fbabb3fd7b6736adac9298feb4f', size: "x-small", theme: "solid", name: "error" })))));
     }
     get element() { return index.getElement(this); }
 };

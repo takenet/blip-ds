@@ -16,7 +16,9 @@ export declare class BdsAlert implements ComponentInterface {
     /**
      * Emitted when modal status has changed.
      */
-    bdsAlertChanged: EventEmitter;
+    bdsAlertChanged: EventEmitter<{
+        alertStatus: string;
+    }>;
     /**
      * Can be used outside to open/close the alert
      */

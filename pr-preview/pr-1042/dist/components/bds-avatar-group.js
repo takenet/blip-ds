@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$4 } from './p-FnzKEJwK.js';
+import { d as defineCustomElement$4 } from './p-BbK5Lskz.js';
 import { d as defineCustomElement$3 } from './p-BHBVuzyo.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
@@ -46,7 +46,7 @@ const AvatarGroup = /*@__PURE__*/ proxyCustomElement(class AvatarGroup extends H
         this.leftoversUsers = this.internalUsers.length - 5;
     }
     render() {
-        return (h(Host, { key: '31b6ae002cf06ab2e205c4658d5af725f8fd3409', class: "host" }, h("div", { key: 'e22014bf3f77fc82b4ee3c5517ea7d74b1be8d76', class: {
+        return (h(Host, { key: 'd573fd0a93f49d5001dbf72017643c76cbb53c7a', class: "host" }, h("div", { key: 'e6b551e5fbb12d9eba2d98ee067f97ac943be5c0', class: {
                 avatar__group: true,
                 [`avatar__group__size--${this.size}`]: true,
                 [`avatar__group__click--${this.canClick}`]: true,

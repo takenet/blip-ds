@@ -225,9 +225,14 @@ export class IconButton {
                     "text": "Event buttom onClick."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "PointerEvent",
+                    "resolved": "PointerEvent",
+                    "references": {
+                        "PointerEvent": {
+                            "location": "global",
+                            "id": "global::PointerEvent"
+                        }
+                    }
                 }
             }];
     }

@@ -40,7 +40,7 @@ export declare class IconButton {
     /**
      * Event buttom onClick.
      */
-    bdsClick: EventEmitter;
+    bdsClick: EventEmitter<PointerEvent>;
     private mapSize;
     private mapVariantStyle;
     private handleClick;

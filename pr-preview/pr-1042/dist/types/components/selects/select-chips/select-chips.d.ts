@@ -153,7 +153,10 @@ export declare class SelectChips {
     /**
      * Emitted when the chip has added.
      */
-    bdsChangeChips: EventEmitter;
+    bdsChangeChips: EventEmitter<{
+        data: string[];
+        value: number;
+    }>;
     /**
      * Emitted when the chip has added.
      */
@@ -161,7 +164,7 @@ export declare class SelectChips {
     /**
      * Emitted when the chip has added.
      */
-    bdsSubmit: EventEmitter;
+    bdsSubmit: EventEmitter<void>;
     protected isOpenChanged(isOpen: boolean): void;
     handleWindow(ev: Event): void;
     protected optionsChanged(): void;

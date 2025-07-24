@@ -95,19 +95,19 @@ export class SelectOption {
         this.checked = false;
     }
     render() {
-        return (h("div", { key: '606cdb0a653a89da9875f700e82a42ab8484f641', id: `bds-select-option-${this.value}`, "data-event": "click", role: "button", onKeyDown: this.attachOptionKeyboardListeners, onClick: this.onClickSelectOption, "data-value": this.value, "data-test": this.dataTest, class: {
+        return (h("div", { key: '5b7c2422b760789a14b01edb074d14a95ebf4d9b', id: `bds-select-option-${this.value}`, "data-event": "click", role: "button", onKeyDown: this.attachOptionKeyboardListeners, onClick: this.onClickSelectOption, "data-value": this.value, "data-test": this.dataTest, class: {
                 'select-option': this.typeOption != 'checkbox',
                 'select-option--selected': this.selected,
                 'select-option--disabled': this.disabled,
                 'select-option--invisible': this.invisible,
-            } }, h("div", { key: '3ecdaf47a248a04dbc73b415d2372822f6b9cd38', style: { alignSelf: this.slotAlign } }, h("slot", { key: '50741f2d520e6710ee504ce39ba6313afa86ee5f', name: "input-left" })), h("div", { key: '4b6ead24b263297f5e1ee295781a23e15d901477', class: {
+            } }, h("div", { key: 'd4398f3f076c9819e3801ecf422a36f60f337abf', style: { alignSelf: this.slotAlign } }, h("slot", { key: '107cdbe656c38de44bd58237a0425e1fd984f683', name: "input-left" })), h("div", { key: '30d79c0e46edbdeaee3fea51cbf3a6e31954f8ec', class: {
                 'select-option__container': true,
                 'select-option__container__fill_space': !!this.status,
                 'select-option__container__checkbox': this.typeOption == 'checkbox',
-            }, onClick: () => this.checkedCurrent() }, this.titleText && (h("bds-typo", { key: '6d11836176f2fbac8290dd882b2c6ba523f438e6', class: "select-option__container--value", variant: "fs-16", bold: "semi-bold" }, this.titleText)), this.typeOption === 'checkbox' ? (h("bds-checkbox", { ref: this.refNativeInput, refer: `html-for-${this.value}`, label: this.element.innerHTML, name: this.value, checked: this.checked, onBdsChange: (ev) => this.optionHandle(ev) })) : (h("bds-typo", { class: {
+            }, onClick: () => this.checkedCurrent() }, this.titleText && (h("bds-typo", { key: '961a3a61273eb6f68c2d6cba60497d6b64e999b6', class: "select-option__container--value", variant: "fs-16", bold: "semi-bold" }, this.titleText)), this.typeOption === 'checkbox' ? (h("bds-checkbox", { ref: this.refNativeInput, refer: `html-for-${this.value}`, label: this.element.innerHTML, name: this.value, checked: this.checked, onBdsChange: (ev) => this.optionHandle(ev) })) : (h("bds-typo", { class: {
                 'select-option__container--value': true,
                 'select-option__container__overflow': !!this.status,
-            }, noWrap: !!this.status, variant: "fs-14" }, h("slot", null)))), this.bulkOption && (h("bds-typo", { key: '5677cc4ba79f3d70370e5782438f1d0a5f133b0a', class: "select-option__container--bulk", variant: "fs-10" }, this.bulkOption)), this.status && (h("bds-typo", { key: '902fe35eced9f30928efd22946dc84cc2a55672d', class: "select-option__container--status", noWrap: true, variant: "fs-10" }, this.status))));
+            }, noWrap: !!this.status, variant: "fs-14" }, h("slot", null)))), this.bulkOption && (h("bds-typo", { key: '8344a83667a5a29dcc487c8bb8a3df1af3583d30', class: "select-option__container--bulk", variant: "fs-10" }, this.bulkOption)), this.status && (h("bds-typo", { key: 'a4234b17ea814f502a485eea748e52091090bcf0', class: "select-option__container--status", noWrap: true, variant: "fs-10" }, this.status))));
     }
     static get is() { return "bds-select-option"; }
     static get encapsulation() { return "shadow"; }
@@ -380,8 +380,8 @@ export class SelectOption {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ value: any; label: string }",
+                    "resolved": "{ value: any; label: string; }",
                     "references": {}
                 }
             }, {
@@ -395,8 +395,8 @@ export class SelectOption {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ value: string; label: string; checked: boolean }",
+                    "resolved": "{ value: string; label: string; checked: boolean; }",
                     "references": {}
                 }
             }];

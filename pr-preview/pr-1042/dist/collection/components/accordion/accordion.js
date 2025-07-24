@@ -72,7 +72,7 @@ export class Accordion {
         }
     }
     render() {
-        return (h("div", { key: '5026d0a595341208663ef3020c3930364ee50195', class: "accordion_group" }, h("slot", { key: 'b2f75fc28ba9752f1bcb935daaa9df818063e31d' })));
+        return (h("div", { key: '24b769afb547f00b1cafe2a24d1b49dec5e2df4d', class: "accordion_group" }, h("slot", { key: 'e7915c277ee8c4ef41c8925028918f2feee7e367' })));
     }
     static get is() { return "bds-accordion"; }
     static get encapsulation() { return "shadow"; }
@@ -149,8 +149,8 @@ export class Accordion {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ value: boolean }",
+                    "resolved": "{ value: boolean; }",
                     "references": {}
                 }
             }, {
@@ -164,8 +164,8 @@ export class Accordion {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "void",
+                    "resolved": "void",
                     "references": {}
                 }
             }, {
@@ -179,8 +179,8 @@ export class Accordion {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "void",
+                    "resolved": "void",
                     "references": {}
                 }
             }];

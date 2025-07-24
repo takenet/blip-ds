@@ -54,7 +54,9 @@ export declare class BdsdatepickerSingle {
     /**
      * bdsDateSelected. Event to return selected date value.
      */
-    bdsDateSelected?: EventEmitter;
+    bdsDateSelected?: EventEmitter<{
+        value: Date | null;
+    }>;
     /**
      * Return the validity of the input.
      */

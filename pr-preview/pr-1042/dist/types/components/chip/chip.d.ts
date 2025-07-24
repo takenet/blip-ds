@@ -40,7 +40,9 @@ export declare class Chip {
     /**
      *  Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
      */
-    bdsDelete: EventEmitter;
+    bdsDelete: EventEmitter<{
+        id: string;
+    }>;
     handleClickDelete(event: any): void;
     private getClickClass;
     private getSizeClass;

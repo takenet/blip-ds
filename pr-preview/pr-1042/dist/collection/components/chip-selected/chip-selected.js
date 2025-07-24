@@ -73,7 +73,7 @@ export class ChipSelected {
             return 'x-small';
     }
     render() {
-        return (h(Host, { key: '91d33c460176f9b163760db431bb6e40f2315a0d' }, h("div", { key: 'fa32872ea7e2d99db15ed3f3915320730eb259f2', class: Object.assign(Object.assign({ chip: true }, this.getStyleChip()), this.getDisabledChip()), onClick: (ev) => this.handleClick(ev), "data-test": this.dataTest }, !this.disabled && h("div", { key: 'afac917fb643afe0f74dbf0d4a342a8abf1bf51a', class: "chip_focus", onKeyDown: this.handleKeyDown.bind(this), tabindex: "0" }), !this.isSelected && !this.disabled && h("div", { key: '1ff4dc3b67a4122420d8beb1108d975216f59e66', class: "chip_darker" }), this.icon && !this.isSelected && (h("div", { key: '16d5a1055d1f140ebe8a41715373e5a938be1843', class: "chip--icon" }, h("bds-icon", { key: '756221618403928021c4e6a6a503f6bf7972da73', size: this.getSizeIconChip(), name: this.icon }))), this.isSelected && (h("div", { key: 'e9d7eb49b3a7ff338d98bf42ed72ad11ba8f5b3a', class: "chip_selected--icon" }, h("bds-icon", { key: '0e0175d66d0d1a3e13459ecdc77b6db992e347e7', size: this.getSizeIconChip(), name: "checkball" }))), h("div", { key: '4cba6caffec90399696995c61bd169de5c0fad8d', class: this.isSelected ? `chip_selected--container-text--half` : `chip_selected--container-text--full` }, h("bds-typo", { key: 'f60732ceba2a6ebacf856f7120e4ea7e7b1f693a', class: Object.assign({ 'chip--text': true }, this.getStyleText()), variant: "fs-12", "no-wrap": true, bold: "bold" }, h("slot", { key: '7eb8412b2ea1ec66d430eb8313dd66e58b8d1477' }))))));
+        return (h(Host, { key: '18075d116fbfd2778ead391f6eabe73f4cc4ba9b' }, h("div", { key: 'e58dc939ed85f6c0bb8d36fc872a5cc56fc3bda7', class: Object.assign(Object.assign({ chip: true }, this.getStyleChip()), this.getDisabledChip()), onClick: (ev) => this.handleClick(ev), "data-test": this.dataTest }, !this.disabled && h("div", { key: 'b8c686322397598a1280c67f2754a48403334266', class: "chip_focus", onKeyDown: this.handleKeyDown.bind(this), tabindex: "0" }), !this.isSelected && !this.disabled && h("div", { key: '1c475b5e7a51324f031c2c6953f5116fd2edca9c', class: "chip_darker" }), this.icon && !this.isSelected && (h("div", { key: '954ca24707820e1780f9cd78bdd1c79a1645b921', class: "chip--icon" }, h("bds-icon", { key: '1fe6e7a56d1cdf2e94bef4ef8c845c364de6d77d', size: this.getSizeIconChip(), name: this.icon }))), this.isSelected && (h("div", { key: '83da6efe0dd55781a4a94c47974be22d313a94a0', class: "chip_selected--icon" }, h("bds-icon", { key: '5b8de80b511814c2315654c9dd0a69cdaa7b8ba1', size: this.getSizeIconChip(), name: "checkball" }))), h("div", { key: 'b1f1d265c4bcf4bbd05dc35bbd8aeca99c2bdeb4', class: this.isSelected ? `chip_selected--container-text--half` : `chip_selected--container-text--full` }, h("bds-typo", { key: '6245650ace38bb0ef3115c61e84fb1ccf75396e3', class: Object.assign({ 'chip--text': true }, this.getStyleText()), variant: "fs-12", "no-wrap": true, bold: "bold" }, h("slot", { key: 'd9c7d48ada626b245e5b9eefe1cc029649eb56bf' }))))));
     }
     static get is() { return "bds-chip-selected"; }
     static get encapsulation() { return "shadow"; }
@@ -239,8 +239,8 @@ export class ChipSelected {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ selected: boolean }",
+                    "resolved": "{ selected: boolean; }",
                     "references": {}
                 }
             }];

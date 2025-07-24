@@ -33,11 +33,15 @@ export declare class Radio {
     /**
      * Emitted when the value has changed.
      */
-    bdsChange: EventEmitter;
+    bdsChange: EventEmitter<{
+        checked: boolean;
+    }>;
     /**
      * Emitted when the value has changed because of a click event.
      */
-    bdsClickChange: EventEmitter;
+    bdsClickChange: EventEmitter<{
+        checked: boolean;
+    }>;
     protected checkedChanged(isChecked: boolean): void;
     getInputElement(): Promise<HTMLInputElement>;
     getValue(): Promise<boolean>;

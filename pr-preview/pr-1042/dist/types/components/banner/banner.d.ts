@@ -31,7 +31,7 @@ export declare class Banner implements ComponentInterface {
     /**
      * Emitted when the banner is closed.
      */
-    bdsBannerClose: EventEmitter;
+    bdsBannerClose: EventEmitter<void>;
     toggle(): Promise<void>;
     private _buttonClickHandler;
     render(): any;

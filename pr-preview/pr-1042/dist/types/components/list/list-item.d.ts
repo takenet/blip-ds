@@ -72,11 +72,21 @@ export declare class ListItem {
     /**
      * Emitted when the value has changed because of a click event.
      */
-    bdsChecked: EventEmitter;
+    bdsChecked: EventEmitter<{
+        value: string | null;
+        text: string | null;
+        secondaryText: string | null;
+        typeList: TypeList | null;
+        checked: boolean | null;
+    }>;
     /**
      * Emitted when click in someone actions buttom insert in data.
      */
-    bdsClickActionButtom: EventEmitter;
+    bdsClickActionButtom: EventEmitter<{
+        value: string | null;
+        icon: string;
+        elementButton: EventTarget;
+    }>;
     componentWillLoad(): void;
     protected checkedChanged(isChecked: boolean): void;
     protected chipsChanged(): void;

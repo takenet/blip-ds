@@ -168,7 +168,7 @@ export class Button {
     }
     ;
     render() {
-        return (h(Host, { key: '14e854be99707cebafdfc4bc53387046224e0d4b', class: { host: true, block: this.block || this.fullWidth, group: this.group } }, h("div", { key: '0e51d7804bef62a92c817c19bfdcf3dedf61827a', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("button", { key: '9f3c8621fe71c9708fba62f52533a4b0dbf2db13', onClick: (ev) => this.handleClick(ev), disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
+        return (h(Host, { key: '7339c555922e55b122fc2c081200798e0409393d', class: { host: true, block: this.block || this.fullWidth, group: this.group } }, h("div", { key: 'b4944f21815aa4ea5ab836ed3781b27047406beb', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("button", { key: '2d094768de21e406dbb5bafef56ae628af980719', onClick: (ev) => this.handleClick(ev), disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
                 button: true,
                 'button--block': this.block,
                 'button--full-width': this.fullWidth,
@@ -652,9 +652,18 @@ export class Button {
                     "text": "Event buttom onClick."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "PointerEvent|KeyboardEvent",
+                    "resolved": "KeyboardEvent | PointerEvent",
+                    "references": {
+                        "PointerEvent": {
+                            "location": "global",
+                            "id": "global::PointerEvent"
+                        },
+                        "KeyboardEvent": {
+                            "location": "global",
+                            "id": "global::KeyboardEvent"
+                        }
+                    }
                 }
             }];
     }

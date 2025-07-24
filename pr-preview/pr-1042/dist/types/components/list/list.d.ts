@@ -23,19 +23,40 @@ export declare class List {
     /**
      * Emitted when the value checkboxes has changed because of a click event.
      */
-    bdsListCheckboxChange: EventEmitter;
+    bdsListCheckboxChange: EventEmitter<{
+        value: string | null;
+        text: string | null;
+        secondaryText: string | null;
+        avatarName: string | null;
+        avatarThumbnail: string | null;
+        typeList: TypeList | null;
+    }[]>;
     /**
      * Emitted when the value radios has changed because of a click event.
      */
-    bdsListRadioChange: EventEmitter;
+    bdsListRadioChange: EventEmitter<{
+        value: string | null;
+        text: string | null;
+        secondaryText: string | null;
+        avatarName: string | null;
+        avatarThumbnail: string | null;
+        typeList: TypeList | null;
+    }>;
     /**
      * Emitted when the value switches has changed because of a click event.
      */
-    bdsListSwitchChange: EventEmitter;
+    bdsListSwitchChange: EventEmitter<{
+        value: string | null;
+        text: string | null;
+        secondaryText: string | null;
+        avatarName: string | null;
+        avatarThumbnail: string | null;
+        typeList: TypeList | null;
+    }[]>;
     /**
      * Emitted when click in someone actions buttom insert in data.
      */
-    bdsClickActionsButtons: EventEmitter;
+    bdsClickActionsButtons: EventEmitter<any>;
     componentWillLoad(): void;
     componentWillRender(): void;
     componentDidRender(): void;

@@ -44,8 +44,10 @@ export declare class ChipClickable {
     /**
      *  Triggered after a mouse click on close icon, return id element. Only fired when close is true.
      */
-    chipClickableClose: EventEmitter;
-    chipClickableClick: EventEmitter;
+    chipClickableClose: EventEmitter<{
+        id: string;
+    }>;
+    chipClickableClick: EventEmitter<void>;
     private handleClickKey;
     private handleClick;
     private handleCloseChip;

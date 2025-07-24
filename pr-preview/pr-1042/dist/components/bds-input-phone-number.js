@@ -1,8 +1,8 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
 import { n as numberValidation } from './p-BXYXNVip.js';
-import { d as defineCustomElement$5 } from './p-BmvUJnHb.js';
+import { d as defineCustomElement$5 } from './p-BpaUgttw.js';
 import { d as defineCustomElement$4 } from './p-BHBVuzyo.js';
-import { d as defineCustomElement$3 } from './p-CpJLOuix.js';
+import { d as defineCustomElement$3 } from './p-BllZLSuS.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 var countries = {
@@ -5057,7 +5057,7 @@ const InputPhoneNumber = /*@__PURE__*/ proxyCustomElement(class InputPhoneNumber
         const isPressed = this.isPressed && !this.disabled;
         const iconArrow = this.isOpen ? 'arrow-up' : 'arrow-down';
         const flagsNames = Object.keys(this.countries);
-        return (h(Host, { key: '544475022847584bfd0251606b7055c3c37ed4bf', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '5c9890fdc79f2300efc90e679a652b7db93d0f46', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '95c40d8489f5a17058a6ec0d623e6ce9b70097ed', class: {
+        return (h(Host, { key: '80af7d9987529ce36a774d0e98f2b83cdaf0729c', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '9b3f9354b1f51112b43ab9a3baeff7f33f44594e', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '4b417b77765e29a956dcffb9e0b829746bd5a29e', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -5065,7 +5065,7 @@ const InputPhoneNumber = /*@__PURE__*/ proxyCustomElement(class InputPhoneNumber
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: 'c6b26a34caa587bf12290703ce9c4f1c2e2c8902', onClick: this.toggle, onKeyDown: this.handleKeyDown.bind(this), "data-test": this.dtSelectFlag, class: "input__icon", tabindex: "0" }, h("bds-icon", { key: 'f7d0db71ea096d6e2fb0bc3cae44d688775f4ea4', size: "medium", theme: "solid", name: this.selectedCountry, color: "primary" }), h("bds-icon", { key: '717fb5a6c9ddf56e7fb9fe2f3a83c4354e8263ea', size: "x-small", name: iconArrow })), h("div", { key: '91211b1e0bb13f43886ebc2d5d0d50033015bdf4', class: "input__container" }, this.renderLabel(), h("div", { key: '6106bf6fe58c2793694f7f39ae9bb097c9d75277', class: { input__container__wrapper: true } }, h("div", { key: '89b22af55d604c26d36a4342e198217914f8bdd5', class: "input__container__country-code" }, h("bds-typo", { key: 'a6966011b48fa9799388ee6c8a96192edb111de5', "no-wrap": "true", variant: "fs-14" }, this.value)), h("input", { key: 'cf76d226e790edd48b51ae86ce3a91c3a616eb35', class: { input__container__text: true }, type: "phonenumber", required: this.required, pattern: "/^(\\(?\\+?[0-9]*\\)?)?[0-9_\\- \\(\\)]*$/", ref: this.refNativeInput, onInput: this.changedInputValue, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, "data-test": this.dataTest, maxlength: this.value === '+55' ? 25 : null }))), this.success && h("bds-icon", { key: '8383ae9fdb2cca9e19ef2f969dc177d2eb8536e2', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" }), h("slot", { key: 'aca9d5f821c73d57921952093608d00ea89652f5', name: "input-right" })), this.renderMessage()), h("div", { key: 'd4f007c25ccfad5242b530504ca291b23dee5ae5', class: {
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '705940a91e47dee1f08d990712d381066f661a2c', onClick: this.toggle, onKeyDown: this.handleKeyDown.bind(this), "data-test": this.dtSelectFlag, class: "input__icon", tabindex: "0" }, h("bds-icon", { key: 'da36734f816abced7257183ad3898a0d8c98a4e8', size: "medium", theme: "solid", name: this.selectedCountry, color: "primary" }), h("bds-icon", { key: '51b1c1723bfaeb1324d1c374e5caf1e502d22b27', size: "x-small", name: iconArrow })), h("div", { key: '16aa521a223443c00794a65f438fea8f538af10f', class: "input__container" }, this.renderLabel(), h("div", { key: '3dae7d5e55c11c1807921a64e55d94a6b8d79b69', class: { input__container__wrapper: true } }, h("div", { key: '335654457cf752741af259a5f3c4377fa4f76f5e', class: "input__container__country-code" }, h("bds-typo", { key: 'e0f3c23a6afa43772f248a9df5563c232e2cc046', "no-wrap": "true", variant: "fs-14" }, this.value)), h("input", { key: '00f1f05dbf98d42739669594b900df9eac8fa27a', class: { input__container__text: true }, type: "phonenumber", required: this.required, pattern: "/^(\\(?\\+?[0-9]*\\)?)?[0-9_\\- \\(\\)]*$/", ref: this.refNativeInput, onInput: this.changedInputValue, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, "data-test": this.dataTest, maxlength: this.value === '+55' ? 25 : null }))), this.success && h("bds-icon", { key: 'b2fe83800fe3eba2cc03fae488d0b0ae6616f9bc', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" }), h("slot", { key: '14331733e14ee3ee687952fa077be5d1063a60a3', name: "input-right" })), this.renderMessage()), h("div", { key: '1ecc7f21541376658acfd0ac5ffdb0f0138db818', class: {
                 'select-phone-number__options': true,
                 'select-phone-number__options--open': this.isOpen,
             } }, this.isOpen &&

@@ -32,11 +32,13 @@ export declare class Switch {
      */
     dataTest?: string;
     connectedCallback(): void;
-    protected checkedChanged(isChecked: boolean): void;
     /**
      * Emitted when the value has changed.
      */
-    bdsChange: EventEmitter;
+    bdsChange: EventEmitter<{
+        checked: boolean;
+    }>;
+    protected checkedChanged(isChecked: boolean): void;
     getInputElement(): Promise<HTMLInputElement>;
     getValue(): Promise<boolean>;
     private onClick;

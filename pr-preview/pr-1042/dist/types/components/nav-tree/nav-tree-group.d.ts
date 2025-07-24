@@ -9,8 +9,8 @@ export declare class NavTreeGroup {
      * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
      */
     collapse?: collapses;
-    bdsNavTreeGroupCloseAll?: EventEmitter;
-    bdsNavTreeGroupOpenAll?: EventEmitter;
+    bdsNavTreeGroupCloseAll?: EventEmitter<void>;
+    bdsNavTreeGroupOpenAll?: EventEmitter<void>;
     componentWillRender(): void;
     closeAll(actNumber?: any): Promise<void>;
     openAll(actNumber?: any): Promise<void>;

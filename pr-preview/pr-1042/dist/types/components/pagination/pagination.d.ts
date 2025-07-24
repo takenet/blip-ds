@@ -64,12 +64,12 @@ export declare class Pagination {
      * Evento emitido quando o valor da página atual é alterado.
      * Pode ser escutado para realizar ações específicas ao mudar de página.
      */
-    bdsPaginationChange: EventEmitter;
+    bdsPaginationChange: EventEmitter<number>;
     /**
      * Evento emitido quando o valor da página atual é alterado.
      * Pode ser escutado para realizar ações específicas ao mudar de página.
      */
-    bdsItemsPerPageChange: EventEmitter;
+    bdsItemsPerPageChange: EventEmitter<number>;
     startItem: number;
     endItem: number;
     componentWillLoad(): void;

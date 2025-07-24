@@ -40,7 +40,7 @@ export class NavTreeGroup {
         }
     }
     render() {
-        return (h(Host, { key: '40ff04183fc859ff2c7ffeca594f1c8b9c3edd61' }, h("slot", { key: '4752bf337494866f7e724f371ec7cd30fd8cbeda' })));
+        return (h(Host, { key: '2000d6225b5813ac275a1d8b77f1700f91f9336a' }, h("slot", { key: '79df764f1c04a93392a8d04155bb636f06275728' })));
     }
     static get is() { return "bds-nav-tree-group"; }
     static get encapsulation() { return "shadow"; }
@@ -102,8 +102,8 @@ export class NavTreeGroup {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "void",
+                    "resolved": "void",
                     "references": {}
                 }
             }, {
@@ -117,8 +117,8 @@ export class NavTreeGroup {
                     "text": ""
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "void",
+                    "resolved": "void",
                     "references": {}
                 }
             }];

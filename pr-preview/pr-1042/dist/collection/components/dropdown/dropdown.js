@@ -146,10 +146,10 @@ export class BdsDropdown {
         const zIndexSubmenu = {
             zIndex: `${this.zIndex}`,
         };
-        return (h(Host, { key: '939a25fc739bb7820e92fd85b8875ecd19482e9a' }, h("slot", { key: '8ca0ab91226ca341c5d73a44d402dcc601ce9085', name: "dropdown-activator" }), h("div", { key: '1b0ec61d5bdba6ebbfc4b52d6135f370e643a0cd', ref: (el) => this.refDropElement(el), class: {
+        return (h(Host, { key: '9506c03b715ae15a02663604caa0134fd74305df' }, h("slot", { key: 'b040be89614b532467b7902579316b7c3214a042', name: "dropdown-activator" }), h("div", { key: 'a41de68091a5184dd30d0e817ca8a785caf088fd', ref: (el) => this.refDropElement(el), class: {
                 dropdown: true,
                 dropdown__open: this.open,
-            }, "data-test": this.dataTest, onMouseOver: () => this.onMouseOver(), onMouseOut: () => this.onMouseOut() }, h("div", { key: 'a9bfdcc1db256676b7ae4c39d0aca6abe2209c92', class: "content", style: zIndexSubmenu }, h("slot", { key: 'a10054f1c922dc1f10ae9e668443942fb02d77a8', name: "dropdown-content" }))), this.activeMode !== 'hover' && this.open && (h("div", { key: 'd7a20da55b47fd6c3714a7908f1cd931755fd49a', class: { outzone: true }, onClick: () => this.onClickCloseButtom() }))));
+            }, "data-test": this.dataTest, onMouseOver: () => this.onMouseOver(), onMouseOut: () => this.onMouseOut() }, h("div", { key: '78215d5f616b99f77057c794c648e17805208903', class: "content", style: zIndexSubmenu }, h("slot", { key: 'fcd19931712926d39c084922c30ed3ab713cb704', name: "dropdown-content" }))), this.activeMode !== 'hover' && this.open && (h("div", { key: 'd7d76358de753b672aa63df1ac63ac78d5e3ade2', class: { outzone: true }, onClick: () => this.onClickCloseButtom() }))));
     }
     static get is() { return "bds-dropdown"; }
     static get encapsulation() { return "shadow"; }
@@ -280,8 +280,8 @@ export class BdsDropdown {
                     "text": "bdsToggle. Event to return selected date value."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ value: boolean }",
+                    "resolved": "{ value: boolean; }",
                     "references": {}
                 }
             }];

@@ -40,8 +40,8 @@ export declare class BdsAvatar {
      * Data test is the prop to specifically test the component action object.
      */
     dataTest?: string;
-    bdsClickAvatar: EventEmitter;
-    bdsImageUpload: EventEmitter;
+    bdsClickAvatar: EventEmitter<PointerEvent>;
+    bdsImageUpload: EventEmitter<string>;
     private onUploadClick;
     handleOpenUpload: (e: any) => void;
     private onFileInputChange;

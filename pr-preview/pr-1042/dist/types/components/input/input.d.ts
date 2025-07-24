@@ -150,7 +150,9 @@ export declare class Input {
     /**
      * Evento disparado quando o valor do input muda.
      */
-    bdsChange: EventEmitter;
+    bdsChange: EventEmitter<{
+        value: string;
+    }>;
     /**
      * Evento disparado quando o input recebe um input (digitação).
      */
@@ -158,23 +160,29 @@ export declare class Input {
     /**
      * Evento disparado quando o input perde o foco.
      */
-    bdsOnBlur: EventEmitter;
+    bdsOnBlur: EventEmitter<void>;
     /**
      * Evento disparado quando o input ganha o foco.
      */
-    bdsFocus: EventEmitter;
+    bdsFocus: EventEmitter<void>;
     /**
      * Evento disparado quando o formulário é submetido.
      */
-    bdsSubmit: EventEmitter;
+    bdsSubmit: EventEmitter<{
+        event: KeyboardEvent;
+        value: string;
+    }>;
     /**
      * Evento disparado para validação de padrão regex.
      */
-    bdsPatternValidation: EventEmitter;
+    bdsPatternValidation: EventEmitter<boolean>;
     /**
      * Evento disparado quando a tecla "Backspace" é pressionada.
      */
-    bdsKeyDownBackspace: EventEmitter;
+    bdsKeyDownBackspace: EventEmitter<{
+        event: KeyboardEvent;
+        value: string;
+    }>;
     /**
      * Define o foco no campo de entrada.
      */

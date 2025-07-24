@@ -99,7 +99,7 @@ export declare class Button {
     /**
      * Event buttom onClick.
      */
-    bdsClick: EventEmitter;
+    bdsClick: EventEmitter<PointerEvent | KeyboardEvent>;
     isActive(value: any): Promise<void>;
     setPosition(position: 'first' | 'last' | 'middle'): Promise<void>;
     setDirection(direction: 'row' | 'column'): Promise<void>;
@@ -110,6 +110,6 @@ export declare class Button {
     buttonLegacy(): void;
     logSlotText(): void;
     renderLoadingSpinner(): HTMLBdsLoadingSpinnerElement;
-    handleClick(ev: any): void;
+    handleClick(ev: PointerEvent | KeyboardEvent): void;
     render(): HTMLElement;
 }

@@ -7,9 +7,11 @@ export declare class Accordion {
     isOpen?: boolean;
     numberElement?: number;
     condition?: boolean;
-    bdsToggle?: EventEmitter;
-    bdsAccordionOpen?: EventEmitter;
-    bdsAccordionClose?: EventEmitter;
+    bdsToggle?: EventEmitter<{
+        value: boolean;
+    }>;
+    bdsAccordionOpen?: EventEmitter<void>;
+    bdsAccordionClose?: EventEmitter<void>;
     startOpen?: boolean;
     divisor?: boolean;
     toggle(): Promise<void>;

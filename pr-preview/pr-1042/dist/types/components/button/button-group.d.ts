@@ -22,7 +22,7 @@ export declare class ButtonGroup {
      * Allows multiple buttons to be selected simultaneously if true.
      */
     multiple?: boolean;
-    buttonSelected: EventEmitter;
+    buttonSelected: EventEmitter<string>;
     private buttons;
     componentDidLoad(): void;
     componentDidUpdate(): void;

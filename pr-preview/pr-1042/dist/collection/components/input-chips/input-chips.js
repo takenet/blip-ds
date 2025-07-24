@@ -371,7 +371,7 @@ export class InputChips {
         const isPressed = this.isPressed && !this.disabled;
         // Set default maxHeight if not provided to prevent UI breaking
         const defaultMaxHeight = this.maxHeight || '80px';
-        return (h(Host, { key: 'c682a9905bc1bbdbceaa54cbbdebab923e0803a9', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '172a048d81591655fe4a13f387f4cf2d47f02bc8', class: {
+        return (h(Host, { key: '02f79ea658967807a3fa6cb5d8ca13a085683fac', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '649e393605dcb8234feb5d630993d9509a8746fd', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -379,7 +379,7 @@ export class InputChips {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '95a0579433aa22fc5bce731fd5689f4b47f32b7a', class: "input__container" }, this.renderLabel(), h("div", { key: 'bd8221fd70876b912baf5765ce6cf8c546121993', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: '0424c72fdd1595c5acb88aa89beef8b84081402d', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: '5dcbd43cf9bac1444f9a05880c2315adb3ffcb72', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: '51801e5c5471306eccc0d88773295c50b19e7f80', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: '56decc59c8872669d0a1f46050d4386da9e628ff', name: "input-right" })), this.renderMessage()));
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '64dfdd42e3d0d9f73c18fa34b562f037056ca05d', class: "input__container" }, this.renderLabel(), h("div", { key: '89225c3d468be28f514525fbe060f5cc4cb5a025', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: 'fd3f935d074cf8dd6610a3c4c999430531b7f290', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: 'ee920b84e605fda1c333ddf1b48372e8fa1791d2', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: 'e11abf98d6e67930faad94617c822e36f861cbeb', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: 'b309274b164b48671b2a2944c506a2747dabd3c7', name: "input-right" })), this.renderMessage()));
     }
     static get is() { return "bds-input-chips"; }
     static get encapsulation() { return "shadow"; }
@@ -905,8 +905,8 @@ export class InputChips {
                     "text": "Emitted when the chip has added."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ data: string[]; value: string }",
+                    "resolved": "{ data: string[]; value: string; }",
                     "references": {}
                 }
             }, {
@@ -920,8 +920,8 @@ export class InputChips {
                     "text": "Emitted when the chip has added."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ data: string[]; value: string }",
+                    "resolved": "{ data: string[]; value: string; }",
                     "references": {}
                 }
             }, {
@@ -935,8 +935,8 @@ export class InputChips {
                     "text": "Emitted when the chip has added."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "void",
+                    "resolved": "void",
                     "references": {}
                 }
             }, {
@@ -950,8 +950,8 @@ export class InputChips {
                     "text": "Emitted when the chip has added."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "string[]",
+                    "resolved": "string[]",
                     "references": {}
                 }
             }, {
@@ -965,9 +965,14 @@ export class InputChips {
                     "text": "Emitted when the chip has added."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "InputEvent",
+                    "resolved": "InputEvent",
+                    "references": {
+                        "InputEvent": {
+                            "location": "global",
+                            "id": "global::InputEvent"
+                        }
+                    }
                 }
             }, {
                 "method": "bdsExtendedQuantityInput",
@@ -980,8 +985,8 @@ export class InputChips {
                     "text": "Emitted when a maximum value defined by the \"max-chips-length\" prop is entered"
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ value: boolean }",
+                    "resolved": "{ value: boolean; }",
                     "references": {}
                 }
             }, {
@@ -995,8 +1000,8 @@ export class InputChips {
                     "text": "Emitted when the chip has added."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ value: string[] }",
+                    "resolved": "{ value: string[]; }",
                     "references": {}
                 }
             }];

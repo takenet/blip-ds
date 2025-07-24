@@ -85,7 +85,9 @@ export declare class BdsCarousel {
     /**
      * Emitted when active frame value.
      */
-    bdsChangeCarousel: EventEmitter;
+    bdsChangeCarousel: EventEmitter<{
+        value: Itens;
+    }>;
     componentWillLoad(): void;
     componentDidRender(): void;
     componentDidLoad(): void;

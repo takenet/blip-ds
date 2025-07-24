@@ -28,7 +28,9 @@ export declare class ChipSelected {
      * Data test is the prop to specifically test the component action object.
      */
     dataTest?: string;
-    chipClick: EventEmitter;
+    chipClick: EventEmitter<{
+        selected: boolean;
+    }>;
     private handleKeyDown;
     private handleClick;
     componentWillLoad(): void;

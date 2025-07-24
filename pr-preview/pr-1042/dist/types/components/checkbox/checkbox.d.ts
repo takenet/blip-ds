@@ -24,7 +24,9 @@ export declare class Checkbox {
     /**
      * Emitted when the value has changed.
      */
-    bdsChange: EventEmitter;
+    bdsChange: EventEmitter<{
+        checked: boolean;
+    }>;
     /**
      * Emitted when the input has changed.
      */

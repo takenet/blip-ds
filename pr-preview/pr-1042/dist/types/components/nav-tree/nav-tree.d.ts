@@ -41,12 +41,15 @@ export declare class NavTree {
     /**
      * When de open or close of component change, the event are dispache.
      */
-    bdsToogleChange: EventEmitter;
+    bdsToogleChange: EventEmitter<{
+        value?: boolean;
+        element: HTMLElement;
+    }>;
     toggle(): Promise<void>;
     reciveNumber(number: any): Promise<void>;
     open(): Promise<void>;
     close(): Promise<void>;
-    protected isOpenChanged(value: any): void;
+    protected isOpenChanged(value?: boolean): void;
     componentWillLoad(): void;
     private handler;
     private handleKeyDown;

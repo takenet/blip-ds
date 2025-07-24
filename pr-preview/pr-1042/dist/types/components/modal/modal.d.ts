@@ -34,7 +34,9 @@ export declare class BdsModal implements ComponentInterface {
     /**
      * Emitted when modal status has changed.
      */
-    bdsModalChanged: EventEmitter;
+    bdsModalChanged: EventEmitter<{
+        modalStatus: 'opened' | 'closed';
+    }>;
     /**
      * Can be used outside to open/close the modal
      */

@@ -44,7 +44,9 @@ export declare class Sidebar {
     /**
      * Emitted when the isOpen has changed.
      */
-    bdsToggle: EventEmitter;
+    bdsToggle: EventEmitter<{
+        value: boolean;
+    }>;
     toggle(): Promise<void>;
     isOpenChanged(newValue: boolean): void;
     componentWillLoad(): void;

@@ -153,7 +153,7 @@ const BdsAvatar = class {
         const thumbnailStyle = {
             backgroundImage: `url(${this.hasThumb ? this.thumbnail : null})`,
         };
-        return (index.h(index.Host, { key: 'b4352d630f52526279c919971c8882e14d65000c' }, index.h("input", { key: '567b5f3b5d2875e31ece31afbfa9e75c168e53c3', type: "file", id: "file-input", accept: "image/*", onChange: (event) => this.onFileInputChange(event), style: { display: 'none' } }), index.h("div", { key: '54b58c5162f627fcbb76e2b143f6186f0ba98070', class: {
+        return (index.h(index.Host, { key: '05ce48cc57cd10eed34e8aaceffd22fa94e9a96f' }, index.h("input", { key: 'cdf19a2ed099f95bf9b498d2fa6653f213dc0381', type: "file", id: "file-input", accept: "image/*", onChange: (event) => this.onFileInputChange(event), style: { display: 'none' } }), index.h("div", { key: '21496595eeb3a27c882dc4600450eef4f50c18eb', class: {
                 avatar: true,
                 [`avatar__color--${this.name && !this.hasThumb
                     ? this.avatarBgColor(firstName)

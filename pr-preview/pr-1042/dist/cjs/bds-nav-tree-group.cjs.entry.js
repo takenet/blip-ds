@@ -48,7 +48,7 @@ const NavTreeGroup = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '40ff04183fc859ff2c7ffeca594f1c8b9c3edd61' }, index.h("slot", { key: '4752bf337494866f7e724f371ec7cd30fd8cbeda' })));
+        return (index.h(index.Host, { key: '2000d6225b5813ac275a1d8b77f1700f91f9336a' }, index.h("slot", { key: '79df764f1c04a93392a8d04155bb636f06275728' })));
     }
     get element() { return index.getElement(this); }
 };

@@ -69,11 +69,11 @@ const BdsModal = class {
         }
     }
     render() {
-        return (index.h("div", { key: '3a82682d2fa331315a99d2ed594e58437d76d8b7', class: {
+        return (index.h("div", { key: '6986a98406815d14bf26cd09cbd8a0aaa69abcbe', class: {
                 modal__dialog: true,
                 'modal__dialog--open': this.open,
                 [`modal__dialog--${this.size}`]: true,
-            } }, index.h("div", { key: '94dd90b69a47fa57c2033efeaf356d413922c09f', class: { outzone: true }, onClick: () => this.onClickOutzone(), "data-test": this.dtOutzone }), index.h("div", { key: '4f8c5fc5915a1ccc96bfbe6d567cdfa8ddd5aa13', class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (index.h("bds-icon", { key: 'c1c5d0e581f5e12b701d883e499c9b1d01382ac5', size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && index.h("slot", { key: 'f8dbec96027b15fe74507b081c9181306c980a62' }), this.size !== 'fixed' && (index.h("div", { key: '62c76b08122932e90f7d09e6b0e81d3ea2d474a9', class: { slot: true, [`slot--${this.size}`]: true } }, index.h("slot", { key: '0b3a9d7a888423f052d5b03dd7c92c05d77d4310' }))))));
+            } }, index.h("div", { key: '641b0b39cfebb26d32922e3754bbc3de80d88f5a', class: { outzone: true }, onClick: () => this.onClickOutzone(), "data-test": this.dtOutzone }), index.h("div", { key: '519391f81689ac6e02a7731a9529b03e7180c080', class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (index.h("bds-icon", { key: '61de0c282c22b312702b61e87c6b325d28fb5582', size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && index.h("slot", { key: '3338b38d2bddc4204da7cf89ad139b65f99de203' }), this.size !== 'fixed' && (index.h("div", { key: '8238b88c265279521507f61d81c4af3a70cdd02c', class: { slot: true, [`slot--${this.size}`]: true } }, index.h("slot", { key: '9737f6f35d906c1c00a331446b6580a8d11d0ab6' }))))));
     }
     static get watchers() { return {
         "open": ["isOpenChanged"]

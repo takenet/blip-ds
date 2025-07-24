@@ -45,14 +45,24 @@ export declare class DataTable {
      * Prop to activate the sorting.
      */
     sorting?: boolean;
-    bdsTableClick: EventEmitter;
-    bdsTableDelete: EventEmitter;
-    bdsTableChange: EventEmitter;
+    bdsTableClick: EventEmitter<{
+        item: {
+            [key: string]: any;
+        };
+        index: number;
+        nameButton: string;
+    }>;
+    bdsTableDelete: EventEmitter<{
+        [key: string]: any;
+    }>;
+    bdsTableChange: EventEmitter<{
+        [key: string]: any;
+    }[]>;
     componentWillLoad(): void;
     private getDataFromProprety;
     renderArrow(value: any): any;
     deleteItem(index: number): Promise<void>;
-    clickButton(item: any, index: any, btn: any): void;
+    clickButton(item: Data, index: number, btn: any): void;
     orderColumn(idx: any): void;
     render(): any;
 }

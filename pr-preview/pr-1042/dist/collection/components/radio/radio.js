@@ -43,7 +43,7 @@ export class Radio {
         }
     }
     render() {
-        return (h(Host, { key: 'a048587290fa2514c4589be35e04c87f4c7d3593' }, h("label", { key: 'a461c94d4f8bd6b14620dd976084395ff283f4ad', class: "radio", htmlFor: this.radioId }, h("input", { key: '448154449b72b8e882e79b44a86b616ff850d5d9', class: "radio__input", type: "radio", ref: this.refNativeInput, id: this.radioId, onClick: this.onClick, disabled: this.disabled, checked: this.checked, value: this.value, name: this.name, "data-test": this.dataTest }), h("div", { key: 'f208936bfdd174146a16844549239af92568b358', class: "radio__circle" }, !this.disabled ? h("div", { class: "focus", tabindex: "0", onKeyDown: this.handleClickKey.bind(this) }) : '', !this.disabled ? h("div", { class: "hover" }) : '', h("div", { key: '3562185845c35a4af93b85f385784c481e06f3f0', class: "radio__circle__pointer" })), this.label && (h("bds-typo", { key: 'e279e4ce989eb9681ffcb3b730432fda3ab1d7ed', class: "radio__text", variant: "fs-14", bold: this.checked ? 'bold' : 'regular', tag: "span" }, this.label)), h("slot", { key: '52083c8e232b7ad8bd73d21b11c2221539e8821a' }))));
+        return (h(Host, { key: '31adeb4809c2ef3eacd5bddfbda001bc8e288baa' }, h("label", { key: '99574dc9df08079070fc19e45004e4714953d3ea', class: "radio", htmlFor: this.radioId }, h("input", { key: '035f95804233ce3138ccb0b47c2ebe44f637f7cd', class: "radio__input", type: "radio", ref: this.refNativeInput, id: this.radioId, onClick: this.onClick, disabled: this.disabled, checked: this.checked, value: this.value, name: this.name, "data-test": this.dataTest }), h("div", { key: '4aedd309c53fc1b2211eb5c8ce20a86474273658', class: "radio__circle" }, !this.disabled ? h("div", { class: "focus", tabindex: "0", onKeyDown: this.handleClickKey.bind(this) }) : '', !this.disabled ? h("div", { class: "hover" }) : '', h("div", { key: '48c8bf51b4be33284f022e2d9be4308de2b33492', class: "radio__circle__pointer" })), this.label && (h("bds-typo", { key: 'd2b8e9bd1552417eb048fa947914f721055d6200', class: "radio__text", variant: "fs-14", bold: this.checked ? 'bold' : 'regular', tag: "span" }, this.label)), h("slot", { key: '2232a5f27aee2679af81cafb73ff0f0b368b216e' }))));
     }
     static get is() { return "bds-radio"; }
     static get encapsulation() { return "shadow"; }
@@ -214,8 +214,8 @@ export class Radio {
                     "text": "Emitted when the value has changed."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ checked: boolean }",
+                    "resolved": "{ checked: boolean; }",
                     "references": {}
                 }
             }, {
@@ -229,8 +229,8 @@ export class Radio {
                     "text": "Emitted when the value has changed because of a click event."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{ checked: boolean }",
+                    "resolved": "{ checked: boolean; }",
                     "references": {}
                 }
             }];

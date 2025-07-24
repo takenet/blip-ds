@@ -48,8 +48,15 @@ export declare class SelectOption {
      * Data test is the prop to specifically test the component action object.
      */
     dataTest?: string;
-    optionSelected: EventEmitter;
-    optionChecked: EventEmitter;
+    optionSelected: EventEmitter<{
+        value: any;
+        label: string;
+    }>;
+    optionChecked: EventEmitter<{
+        value: string;
+        label: string;
+        checked: boolean;
+    }>;
     protected changeSelectionType(): void;
     toggle(): Promise<void>;
     toMark(): Promise<void>;

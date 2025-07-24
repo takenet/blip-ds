@@ -146,18 +146,18 @@ export class ListItem {
         const hasInput = this.clickable == true || this.typeList == 'checkbox' || this.typeList == 'radio' || this.typeList == 'switch';
         const hasLeftInput = this.typeList == 'checkbox' || this.typeList == 'radio';
         const hasAvatar = this.avatarName || this.avatarThumbnail;
-        return (h(Host, { key: 'c6f535bacd09a7380a8bfed5aa43cafd6e77480e' }, h("div", { key: '6069a62d8aaf8da2a44087c543e7bf03945d94b3', onClick: this.handler, tabindex: "0", class: {
+        return (h(Host, { key: '56f8abbad0d450166ba62956ce3e3fa17dd40e15' }, h("div", { key: '42ac5c1f2f37189481108a84e37419123eb124bf', onClick: this.handler, tabindex: "0", class: {
                 list_item: true,
                 clickable: hasInput,
                 border_radius: this.borderRadius,
                 [`list_item_${this.size}`]: true,
-            }, "data-test": this.dataTest }, this.active && h("div", { key: '1c9877baeb95d6d0b442ffef23a3036b0aaf6f05', class: "active" }), hasLeftInput && (h("div", { key: 'cb8d6e06b0461667d8d833de543a354a2695790b', class: { input_list: true } }, this.typeList == 'radio' && h("bds-radio", { key: 'd2bb56ce9d7368ebf2042bd120a46897032d918d', value: this.value, checked: this.checked }), this.typeList == 'checkbox' && (h("bds-checkbox", { key: 'd2b1192fe200be921f27b13ff404b77636c248b7', refer: "", label: "", name: "cb1", disabled: false, checked: this.checked })))), hasAvatar ? (h("bds-avatar", { class: "avatar-item", name: this.avatarName, thumbnail: this.avatarThumbnail, size: "extra-small" })) : (this.icon && (h("bds-icon", { class: {
+            }, "data-test": this.dataTest }, this.active && h("div", { key: '113b8e54e59723374cfd4f9e9874bb2689498376', class: "active" }), hasLeftInput && (h("div", { key: '91b65bee05d965ceccc51841a9cc1fe44957e061', class: { input_list: true } }, this.typeList == 'radio' && h("bds-radio", { key: 'b1d4bb209f945de1ffc5055769ecb5e7b505615b', value: this.value, checked: this.checked }), this.typeList == 'checkbox' && (h("bds-checkbox", { key: '6592d72497d1f9989772688d0f47cc81094dbb60', refer: "", label: "", name: "cb1", disabled: false, checked: this.checked })))), hasAvatar ? (h("bds-avatar", { class: "avatar-item", name: this.avatarName, thumbnail: this.avatarThumbnail, size: "extra-small" })) : (this.icon && (h("bds-icon", { class: {
                 [`icon-item`]: true,
                 [`icon-item-active`]: this.active,
-            }, size: "medium", name: this.icon, color: "inherit", theme: this.active ? 'solid' : 'outline' }))), h("div", { key: '552b5e8b789d876a36152ffe08d3345a00432964', class: { [`content-slot`]: true } }, h("slot", { key: '9d29123adda77805387e2cec7c48a8f8420f629d' })), (this.text || this.secondaryText) && (h("div", { key: '13e2dcacf1d732f6fe7ceec0dd35b573e1d516e6', class: {
+            }, size: "medium", name: this.icon, color: "inherit", theme: this.active ? 'solid' : 'outline' }))), h("div", { key: 'ed24b2464863b3050d004b422e03e88e4d2eda3d', class: { [`content-slot`]: true } }, h("slot", { key: '92b701d45a847fe523b5757b338332f9aad47259' })), (this.text || this.secondaryText) && (h("div", { key: '9937d50680a246a50444880cea3e6cacd2d7f61e', class: {
                 [`content-item`]: true,
                 [`grow-up`]: !this.hasActionAreaSlot && !this.hasContentAreaSlot && this.internalChips.length < 0,
-            } }, this.text && (h("bds-typo", { key: 'd9a70e2a6f86587228999282950c22ffd783d8dd', class: "title-item", variant: "fs-16", tag: "span", bold: this.active ? 'bold' : 'regular' }, this.text)), this.secondaryText && (h("bds-typo", { key: '64f9a2d8603a984f2e21f6e5fc2bb4cd0dac5bdd', class: "subtitle-item", variant: "fs-12", "line-height": "small", tag: "span" }, this.secondaryText)))), h("div", { key: '8fd955b1692070969a655b9b915d603037fc7b76', class: { [`content-area`]: true, [`grow-up`]: true } }, this.internalChips.length > 0 && h("div", { key: 'f4d5a1b4f3853bca8be36ada97194c9c5cb0d5ff', class: "internal-chips" }, this.renderChips()), h("slot", { key: 'f354984737785227a7a6616ccb14a36cdb019573', name: "content-area" })), (!this.typeList || this.typeList == 'default') && (h("div", { key: '7ad2aab79dc28f5bb3be6a2bc191f6d23363069c', class: { [`action-area`]: true } }, this.internalActionsButtons.length > 0 && (h("div", { key: 'fb7e71327931ebfd91f089d2f75d50b468cd0d05', class: "internal-actions-buttons" }, this.renderActionsButtons())), h("slot", { key: 'dee52851703625af2e149d5e40a5eecfe1a2194c', name: "action-area" }))), this.typeList == 'switch' && h("bds-switch", { key: 'c4aee037502773767d1ccad20a9331a18232860f', refer: "", name: "", checked: this.checked }))));
+            } }, this.text && (h("bds-typo", { key: '59aadf41d9563848ef055a4b17315d070544c2ce', class: "title-item", variant: "fs-16", tag: "span", bold: this.active ? 'bold' : 'regular' }, this.text)), this.secondaryText && (h("bds-typo", { key: 'fd6dac17a8458295f54a5841f2704b12ca82fb21', class: "subtitle-item", variant: "fs-12", "line-height": "small", tag: "span" }, this.secondaryText)))), h("div", { key: '41047fcc535640d9091abbe5af4689f8f8cc0840', class: { [`content-area`]: true, [`grow-up`]: true } }, this.internalChips.length > 0 && h("div", { key: '9bf4d9e33adc8c84114353fea46573f677a41316', class: "internal-chips" }, this.renderChips()), h("slot", { key: '7368ea5db603c6afca931256a985faac6acafdfd', name: "content-area" })), (!this.typeList || this.typeList == 'default') && (h("div", { key: '476037573189161ba9f9148825d738ac99e0c56f', class: { [`action-area`]: true } }, this.internalActionsButtons.length > 0 && (h("div", { key: '2de36580618a601459ca51c0a3f94acd17543afb', class: "internal-actions-buttons" }, this.renderActionsButtons())), h("slot", { key: '16086839c741059cfb8967c397cdf38b75131a9b', name: "action-area" }))), this.typeList == 'switch' && h("bds-switch", { key: 'd2802b507bb137154b7ab7bfd1c8f67eff6bfebd', refer: "", name: "", checked: this.checked }))));
     }
     static get is() { return "bds-list-item"; }
     static get encapsulation() { return "shadow"; }
@@ -505,9 +505,15 @@ export class ListItem {
                     "text": "Emitted when the value has changed because of a click event."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "{\n    value: string | null;\n    text: string | null;\n    secondaryText: string | null;\n    typeList: TypeList | null;\n    checked: boolean | null;\n  }",
+                    "resolved": "{ value: string; text: string; secondaryText: string; typeList: TypeList; checked: boolean; }",
+                    "references": {
+                        "TypeList": {
+                            "location": "import",
+                            "path": "./list",
+                            "id": "src/components/list/list.tsx::TypeList"
+                        }
+                    }
                 }
             }, {
                 "method": "bdsClickActionButtom",
@@ -520,9 +526,14 @@ export class ListItem {
                     "text": "Emitted when click in someone actions buttom insert in data."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
-                    "references": {}
+                    "original": "{\n    value: string | null;\n    icon: string;\n    elementButton: EventTarget;\n  }",
+                    "resolved": "{ value: string; icon: string; elementButton: EventTarget; }",
+                    "references": {
+                        "EventTarget": {
+                            "location": "global",
+                            "id": "global::EventTarget"
+                        }
+                    }
                 }
             }];
     }

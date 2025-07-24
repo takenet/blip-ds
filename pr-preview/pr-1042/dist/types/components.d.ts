@@ -23,7 +23,7 @@ import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components
 import { BorderColor, PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
-import { arrows, bullets, bulletsPositions, gap } from "./components/carousel/carousel-interface";
+import { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
@@ -93,7 +93,7 @@ export { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components
 export { BorderColor, PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 export { justifyContent } from "./components/card/card-footer/card-footer";
 export { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
-export { arrows, bullets, bulletsPositions, gap } from "./components/carousel/carousel-interface";
+export { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
 export { Themes } from "./components/theme-provider/theme-provider";
 export { ChipSize, ChipVariant } from "./components/chip/chip";
 export { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
@@ -3787,9 +3787,9 @@ export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLBdsAccordionElementEventMap {
-        "bdsToggle": any;
-        "bdsAccordionOpen": any;
-        "bdsAccordionClose": any;
+        "bdsToggle": { value: boolean };
+        "bdsAccordionOpen": void;
+        "bdsAccordionClose": void;
     }
     interface HTMLBdsAccordionElement extends Components.BdsAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsAccordionElementEventMap>(type: K, listener: (this: HTMLBdsAccordionElement, ev: BdsAccordionCustomEvent<HTMLBdsAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3812,8 +3812,8 @@ declare global {
         new (): HTMLBdsAccordionBodyElement;
     };
     interface HTMLBdsAccordionGroupElementEventMap {
-        "bdsAccordionCloseAll": any;
-        "bdsAccordionOpenAll": any;
+        "bdsAccordionCloseAll": void;
+        "bdsAccordionOpenAll": void;
     }
     interface HTMLBdsAccordionGroupElement extends Components.BdsAccordionGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsAccordionGroupElementEventMap>(type: K, listener: (this: HTMLBdsAccordionGroupElement, ev: BdsAccordionGroupCustomEvent<HTMLBdsAccordionGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3836,7 +3836,7 @@ declare global {
         new (): HTMLBdsAccordionHeaderElement;
     };
     interface HTMLBdsAlertElementEventMap {
-        "bdsAlertChanged": any;
+        "bdsAlertChanged": { alertStatus: string };
     }
     interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsAlertElementEventMap>(type: K, listener: (this: HTMLBdsAlertElement, ev: BdsAlertCustomEvent<HTMLBdsAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3894,8 +3894,8 @@ declare global {
         new (): HTMLBdsAutocompleteElement;
     };
     interface HTMLBdsAvatarElementEventMap {
-        "bdsClickAvatar": any;
-        "bdsImageUpload": any;
+        "bdsClickAvatar": PointerEvent;
+        "bdsImageUpload": string;
     }
     interface HTMLBdsAvatarElement extends Components.BdsAvatar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsAvatarElementEventMap>(type: K, listener: (this: HTMLBdsAvatarElement, ev: BdsAvatarCustomEvent<HTMLBdsAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3912,7 +3912,7 @@ declare global {
         new (): HTMLBdsAvatarElement;
     };
     interface HTMLBdsAvatarGroupElementEventMap {
-        "bdsClickAvatarGroup": any;
+        "bdsClickAvatarGroup": PointerEvent;
     }
     interface HTMLBdsAvatarGroupElement extends Components.BdsAvatarGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsAvatarGroupElementEventMap>(type: K, listener: (this: HTMLBdsAvatarGroupElement, ev: BdsAvatarGroupCustomEvent<HTMLBdsAvatarGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3935,7 +3935,7 @@ declare global {
         new (): HTMLBdsBadgeElement;
     };
     interface HTMLBdsBannerElementEventMap {
-        "bdsBannerClose": any;
+        "bdsBannerClose": void;
     }
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsBannerElementEventMap>(type: K, listener: (this: HTMLBdsBannerElement, ev: BdsBannerCustomEvent<HTMLBdsBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3952,7 +3952,7 @@ declare global {
         new (): HTMLBdsBannerElement;
     };
     interface HTMLBdsBannerLinkElementEventMap {
-        "bdsBannerLink": any;
+        "bdsBannerLink": HTMLBdsBannerElement;
     }
     interface HTMLBdsBannerLinkElement extends Components.BdsBannerLink, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsBannerLinkElementEventMap>(type: K, listener: (this: HTMLBdsBannerLinkElement, ev: BdsBannerLinkCustomEvent<HTMLBdsBannerLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3975,7 +3975,7 @@ declare global {
         new (): HTMLBdsBreadcrumbElement;
     };
     interface HTMLBdsButtonElementEventMap {
-        "bdsClick": any;
+        "bdsClick": PointerEvent|KeyboardEvent;
     }
     interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsButtonElementEventMap>(type: K, listener: (this: HTMLBdsButtonElement, ev: BdsButtonCustomEvent<HTMLBdsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3992,7 +3992,7 @@ declare global {
         new (): HTMLBdsButtonElement;
     };
     interface HTMLBdsButtonGroupElementEventMap {
-        "buttonSelected": any;
+        "buttonSelected": string;
     }
     interface HTMLBdsButtonGroupElement extends Components.BdsButtonGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsButtonGroupElementEventMap>(type: K, listener: (this: HTMLBdsButtonGroupElement, ev: BdsButtonGroupCustomEvent<HTMLBdsButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4009,7 +4009,7 @@ declare global {
         new (): HTMLBdsButtonGroupElement;
     };
     interface HTMLBdsButtonIconElementEventMap {
-        "bdsClick": any;
+        "bdsClick": PointerEvent;
     }
     interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsButtonIconElementEventMap>(type: K, listener: (this: HTMLBdsButtonIconElement, ev: BdsButtonIconCustomEvent<HTMLBdsButtonIconElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4026,7 +4026,7 @@ declare global {
         new (): HTMLBdsButtonIconElement;
     };
     interface HTMLBdsCardElementEventMap {
-        "bdsClick": any;
+        "bdsClick": PointerEvent | KeyboardEvent;
     }
     interface HTMLBdsCardElement extends Components.BdsCard, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsCardElementEventMap>(type: K, listener: (this: HTMLBdsCardElement, ev: BdsCardCustomEvent<HTMLBdsCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4079,7 +4079,7 @@ declare global {
         new (): HTMLBdsCardTitleElement;
     };
     interface HTMLBdsCarouselElementEventMap {
-        "bdsChangeCarousel": any;
+        "bdsChangeCarousel": { value: Itens };
     }
     interface HTMLBdsCarouselElement extends Components.BdsCarousel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsCarouselElementEventMap>(type: K, listener: (this: HTMLBdsCarouselElement, ev: BdsCarouselCustomEvent<HTMLBdsCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4102,7 +4102,9 @@ declare global {
         new (): HTMLBdsCarouselItemElement;
     };
     interface HTMLBdsCheckboxElementEventMap {
-        "bdsChange": any;
+        "bdsChange": {
+    checked: boolean;
+  };
         "bdsInput": KeyboardEvent;
     }
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
@@ -4120,7 +4122,7 @@ declare global {
         new (): HTMLBdsCheckboxElement;
     };
     interface HTMLBdsChipElementEventMap {
-        "bdsDelete": any;
+        "bdsDelete": { id: string };
     }
     interface HTMLBdsChipElement extends Components.BdsChip, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsChipElementEventMap>(type: K, listener: (this: HTMLBdsChipElement, ev: BdsChipCustomEvent<HTMLBdsChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4137,8 +4139,8 @@ declare global {
         new (): HTMLBdsChipElement;
     };
     interface HTMLBdsChipClickableElementEventMap {
-        "chipClickableClose": any;
-        "chipClickableClick": any;
+        "chipClickableClose": { id: string };
+        "chipClickableClick": void;
     }
     interface HTMLBdsChipClickableElement extends Components.BdsChipClickable, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsChipClickableElementEventMap>(type: K, listener: (this: HTMLBdsChipClickableElement, ev: BdsChipClickableCustomEvent<HTMLBdsChipClickableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4155,7 +4157,7 @@ declare global {
         new (): HTMLBdsChipClickableElement;
     };
     interface HTMLBdsChipSelectedElementEventMap {
-        "chipClick": any;
+        "chipClick": { selected: boolean };
     }
     interface HTMLBdsChipSelectedElement extends Components.BdsChipSelected, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsChipSelectedElementEventMap>(type: K, listener: (this: HTMLBdsChipSelectedElement, ev: BdsChipSelectedCustomEvent<HTMLBdsChipSelectedElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4184,9 +4186,17 @@ declare global {
         new (): HTMLBdsCounterTextElement;
     };
     interface HTMLBdsDataTableElementEventMap {
-        "bdsTableClick": any;
-        "bdsTableDelete": any;
-        "bdsTableChange": any;
+        "bdsTableClick": {
+    item: {
+      [key: string]: any;
+    }; index: number; nameButton: string
+  };
+        "bdsTableDelete": {
+    [key: string]: any;
+  };
+        "bdsTableChange": {
+    [key: string]: any;
+  }[];
     }
     interface HTMLBdsDataTableElement extends Components.BdsDataTable, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsDataTableElementEventMap>(type: K, listener: (this: HTMLBdsDataTableElement, ev: BdsDataTableCustomEvent<HTMLBdsDataTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4203,10 +4213,10 @@ declare global {
         new (): HTMLBdsDataTableElement;
     };
     interface HTMLBdsDatepickerElementEventMap {
-        "bdsStartDate": any;
-        "bdsEndDate": any;
-        "concludeDatepicker": any;
-        "emptyConcludeDatepicker": any;
+        "bdsStartDate": { value: Date | null };
+        "bdsEndDate": { value: Date | null };
+        "concludeDatepicker": { startDate: string; endDate?: string } | { startDate: string } | any;
+        "emptyConcludeDatepicker": void;
     }
     interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsDatepickerElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerElement, ev: BdsDatepickerCustomEvent<HTMLBdsDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4223,9 +4233,9 @@ declare global {
         new (): HTMLBdsDatepickerElement;
     };
     interface HTMLBdsDatepickerPeriodElementEventMap {
-        "bdsStartDate": any;
-        "bdsEndDate": any;
-        "bdsClickDayButton": any;
+        "bdsStartDate": { value: Date | null };
+        "bdsEndDate": { value: Date | null };
+        "bdsClickDayButton": { state?: stateSelect };
     }
     interface HTMLBdsDatepickerPeriodElement extends Components.BdsDatepickerPeriod, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsDatepickerPeriodElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerPeriodElement, ev: BdsDatepickerPeriodCustomEvent<HTMLBdsDatepickerPeriodElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4242,7 +4252,7 @@ declare global {
         new (): HTMLBdsDatepickerPeriodElement;
     };
     interface HTMLBdsDatepickerSingleElementEventMap {
-        "bdsDateSelected": any;
+        "bdsDateSelected": { value: Date | null };
     }
     interface HTMLBdsDatepickerSingleElement extends Components.BdsDatepickerSingle, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsDatepickerSingleElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerSingleElement, ev: BdsDatepickerSingleCustomEvent<HTMLBdsDatepickerSingleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4265,7 +4275,7 @@ declare global {
         new (): HTMLBdsDividerElement;
     };
     interface HTMLBdsDropdownElementEventMap {
-        "bdsToggle": any;
+        "bdsToggle": { value: boolean };
     }
     interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsDropdownElementEventMap>(type: K, listener: (this: HTMLBdsDropdownElement, ev: BdsDropdownCustomEvent<HTMLBdsDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4324,13 +4334,13 @@ declare global {
         new (): HTMLBdsImageElement;
     };
     interface HTMLBdsInputElementEventMap {
-        "bdsChange": any;
+        "bdsChange": { value: string };
         "bdsInput": InputEvent;
-        "bdsOnBlur": any;
-        "bdsFocus": any;
-        "bdsSubmit": any;
-        "bdsPatternValidation": any;
-        "bdsKeyDownBackspace": any;
+        "bdsOnBlur": void;
+        "bdsFocus": void;
+        "bdsSubmit": { event: KeyboardEvent; value: string };
+        "bdsPatternValidation": boolean;
+        "bdsKeyDownBackspace": { event: KeyboardEvent; value: string };
     }
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputElementEventMap>(type: K, listener: (this: HTMLBdsInputElement, ev: BdsInputCustomEvent<HTMLBdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4347,13 +4357,13 @@ declare global {
         new (): HTMLBdsInputElement;
     };
     interface HTMLBdsInputChipsElementEventMap {
-        "bdsChange": any;
-        "bdsChangeChips": any;
-        "bdsInputChipsFocus": any;
-        "bdsBlur": any;
-        "bdsInputChipsInput": any;
-        "bdsExtendedQuantityInput": any;
-        "bdsSubmit": any;
+        "bdsChange": { data: string[]; value: string };
+        "bdsChangeChips": { data: string[]; value: string };
+        "bdsInputChipsFocus": void;
+        "bdsBlur": string[];
+        "bdsInputChipsInput": InputEvent;
+        "bdsExtendedQuantityInput": { value: boolean };
+        "bdsSubmit": { value: string[] };
     }
     interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputChipsElementEventMap>(type: K, listener: (this: HTMLBdsInputChipsElement, ev: BdsInputChipsCustomEvent<HTMLBdsInputChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4392,12 +4402,12 @@ declare global {
         new (): HTMLBdsInputEditableElement;
     };
     interface HTMLBdsInputPasswordElementEventMap {
-        "bdsInputPasswordChange": any;
+        "bdsInputPasswordChange": { value: string | null };
         "bdsInputPasswordInput": InputEvent;
-        "bdsInputPasswordBlur": any;
-        "bdsInputPasswordFocus": any;
-        "bdsInputPasswordSubmit": any;
-        "bdsKeyDownBackspace": any;
+        "bdsInputPasswordBlur": void;
+        "bdsInputPasswordFocus": void;
+        "bdsInputPasswordSubmit": { event: KeyboardEvent; value: string | null } | void;
+        "bdsKeyDownBackspace": { event: KeyboardEvent; value: string | null };
     }
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputPasswordElementEventMap>(type: K, listener: (this: HTMLBdsInputPasswordElement, ev: BdsInputPasswordCustomEvent<HTMLBdsInputPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4414,7 +4424,12 @@ declare global {
         new (): HTMLBdsInputPasswordElement;
     };
     interface HTMLBdsInputPhoneNumberElementEventMap {
-        "bdsPhoneNumberChange": any;
+        "bdsPhoneNumberChange": {
+    value: string | null;
+    code: string | null;
+    isoCode: string | null;
+    country: string | null;
+  };
         "bdsInput": InputEvent;
         "bdsCancel": void;
         "bdsFocus": void;
@@ -4435,9 +4450,30 @@ declare global {
         new (): HTMLBdsInputPhoneNumberElement;
     };
     interface HTMLBdsListElementEventMap {
-        "bdsListCheckboxChange": any;
-        "bdsListRadioChange": any;
-        "bdsListSwitchChange": any;
+        "bdsListCheckboxChange": {
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    avatarName: string | null;
+    avatarThumbnail: string | null;
+    typeList: TypeList | null;
+  }[];
+        "bdsListRadioChange": {
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    avatarName: string | null;
+    avatarThumbnail: string | null;
+    typeList: TypeList | null;
+  };
+        "bdsListSwitchChange": {
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    avatarName: string | null;
+    avatarThumbnail: string | null;
+    typeList: TypeList | null;
+  }[];
         "bdsClickActionsButtons": any;
     }
     interface HTMLBdsListElement extends Components.BdsList, HTMLStencilElement {
@@ -4455,8 +4491,18 @@ declare global {
         new (): HTMLBdsListElement;
     };
     interface HTMLBdsListItemElementEventMap {
-        "bdsChecked": any;
-        "bdsClickActionButtom": any;
+        "bdsChecked": {
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    typeList: TypeList1 | null;
+    checked: boolean | null;
+  };
+        "bdsClickActionButtom": {
+    value: string | null;
+    icon: string;
+    elementButton: EventTarget;
+  };
     }
     interface HTMLBdsListItemElement extends Components.BdsListItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsListItemElementEventMap>(type: K, listener: (this: HTMLBdsListItemElement, ev: BdsListItemCustomEvent<HTMLBdsListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4497,7 +4543,7 @@ declare global {
         new (): HTMLBdsLoadingSpinnerElement;
     };
     interface HTMLBdsMenuElementEventMap {
-        "bdsToggle": any;
+        "bdsToggle": { value?: boolean };
     }
     interface HTMLBdsMenuElement extends Components.BdsMenu, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsMenuElementEventMap>(type: K, listener: (this: HTMLBdsMenuElement, ev: BdsMenuCustomEvent<HTMLBdsMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4544,7 +4590,7 @@ declare global {
         new (): HTMLBdsMenuSeparationElement;
     };
     interface HTMLBdsModalElementEventMap {
-        "bdsModalChanged": any;
+        "bdsModalChanged": { modalStatus: 'opened' | 'closed' };
     }
     interface HTMLBdsModalElement extends Components.BdsModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsModalElementEventMap>(type: K, listener: (this: HTMLBdsModalElement, ev: BdsModalCustomEvent<HTMLBdsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4573,7 +4619,7 @@ declare global {
         new (): HTMLBdsModalCloseButtonElement;
     };
     interface HTMLBdsNavTreeElementEventMap {
-        "bdsToogleChange": any;
+        "bdsToogleChange": { value?: boolean; element: HTMLElement };
     }
     interface HTMLBdsNavTreeElement extends Components.BdsNavTree, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsNavTreeElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeElement, ev: BdsNavTreeCustomEvent<HTMLBdsNavTreeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4590,8 +4636,8 @@ declare global {
         new (): HTMLBdsNavTreeElement;
     };
     interface HTMLBdsNavTreeGroupElementEventMap {
-        "bdsNavTreeGroupCloseAll": any;
-        "bdsNavTreeGroupOpenAll": any;
+        "bdsNavTreeGroupCloseAll": void;
+        "bdsNavTreeGroupOpenAll": void;
     }
     interface HTMLBdsNavTreeGroupElement extends Components.BdsNavTreeGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsNavTreeGroupElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeGroupElement, ev: BdsNavTreeGroupCustomEvent<HTMLBdsNavTreeGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4608,7 +4654,7 @@ declare global {
         new (): HTMLBdsNavTreeGroupElement;
     };
     interface HTMLBdsNavTreeItemElementEventMap {
-        "bdsToogleChange": any;
+        "bdsToogleChange": { value?: boolean; element: HTMLElement };
     }
     interface HTMLBdsNavTreeItemElement extends Components.BdsNavTreeItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsNavTreeItemElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeItemElement, ev: BdsNavTreeItemCustomEvent<HTMLBdsNavTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4637,8 +4683,8 @@ declare global {
         new (): HTMLBdsNavbarContentElement;
     };
     interface HTMLBdsPaginationElementEventMap {
-        "bdsPaginationChange": any;
-        "bdsItemsPerPageChange": any;
+        "bdsPaginationChange": number;
+        "bdsItemsPerPageChange": number;
     }
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsPaginationElementEventMap>(type: K, listener: (this: HTMLBdsPaginationElement, ev: BdsPaginationCustomEvent<HTMLBdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4667,8 +4713,8 @@ declare global {
         new (): HTMLBdsProgressBarElement;
     };
     interface HTMLBdsRadioElementEventMap {
-        "bdsChange": any;
-        "bdsClickChange": any;
+        "bdsChange": { checked: boolean };
+        "bdsClickChange": { checked: boolean };
     }
     interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsRadioElementEventMap>(type: K, listener: (this: HTMLBdsRadioElement, ev: BdsRadioCustomEvent<HTMLBdsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4685,7 +4731,7 @@ declare global {
         new (): HTMLBdsRadioElement;
     };
     interface HTMLBdsRadioGroupElementEventMap {
-        "bdsRadioGroupChange": any;
+        "bdsRadioGroupChange": { value?: string };
     }
     interface HTMLBdsRadioGroupElement extends Components.BdsRadioGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLBdsRadioGroupElement, ev: BdsRadioGroupCustomEvent<HTMLBdsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4702,10 +4748,10 @@ declare global {
         new (): HTMLBdsRadioGroupElement;
     };
     interface HTMLBdsRichTextElementEventMap {
-        "bdsRichTextChange": any;
+        "bdsRichTextChange": { value: string };
         "bdsRichTextInput": InputEvent;
-        "bdsBlur": any;
-        "bdsFocus": any;
+        "bdsBlur": void;
+        "bdsFocus": void;
     }
     interface HTMLBdsRichTextElement extends Components.BdsRichText, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsRichTextElementEventMap>(type: K, listener: (this: HTMLBdsRichTextElement, ev: BdsRichTextCustomEvent<HTMLBdsRichTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4746,9 +4792,9 @@ declare global {
         "bdsCancel": void;
         "bdsFocus": void;
         "bdsBlur": void;
-        "bdsChangeChips": any;
+        "bdsChangeChips": { data: string[]; value: number };
         "bdsSelectChipsInput": InputEvent;
-        "bdsSubmit": any;
+        "bdsSubmit": void;
     }
     interface HTMLBdsSelectChipsElement extends Components.BdsSelectChips, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSelectChipsElementEventMap>(type: K, listener: (this: HTMLBdsSelectChipsElement, ev: BdsSelectChipsCustomEvent<HTMLBdsSelectChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4765,8 +4811,8 @@ declare global {
         new (): HTMLBdsSelectChipsElement;
     };
     interface HTMLBdsSelectOptionElementEventMap {
-        "optionSelected": any;
-        "optionChecked": any;
+        "optionSelected": { value: any; label: string };
+        "optionChecked": { value: string; label: string; checked: boolean };
     }
     interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSelectOptionElementEventMap>(type: K, listener: (this: HTMLBdsSelectOptionElement, ev: BdsSelectOptionCustomEvent<HTMLBdsSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4783,7 +4829,7 @@ declare global {
         new (): HTMLBdsSelectOptionElement;
     };
     interface HTMLBdsSidebarElementEventMap {
-        "bdsToggle": any;
+        "bdsToggle": { value: boolean };
     }
     interface HTMLBdsSidebarElement extends Components.BdsSidebar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSidebarElementEventMap>(type: K, listener: (this: HTMLBdsSidebarElement, ev: BdsSidebarCustomEvent<HTMLBdsSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4806,7 +4852,7 @@ declare global {
         new (): HTMLBdsSkeletonElement;
     };
     interface HTMLBdsSliderElementEventMap {
-        "bdsChange": any;
+        "bdsChange": StepOption;
     }
     interface HTMLBdsSliderElement extends Components.BdsSlider, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSliderElementEventMap>(type: K, listener: (this: HTMLBdsSliderElement, ev: BdsSliderCustomEvent<HTMLBdsSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4835,7 +4881,7 @@ declare global {
         new (): HTMLBdsStepperElement;
     };
     interface HTMLBdsSwitchElementEventMap {
-        "bdsChange": any;
+        "bdsChange": { checked: boolean };
     }
     interface HTMLBdsSwitchElement extends Components.BdsSwitch, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSwitchElementEventMap>(type: K, listener: (this: HTMLBdsSwitchElement, ev: BdsSwitchCustomEvent<HTMLBdsSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4852,7 +4898,7 @@ declare global {
         new (): HTMLBdsSwitchElement;
     };
     interface HTMLBdsTabElementEventMap {
-        "bdsTabChange": any;
+        "bdsTabChange": string;
     }
     interface HTMLBdsTabElement extends Components.BdsTab, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsTabElementEventMap>(type: K, listener: (this: HTMLBdsTabElement, ev: BdsTabCustomEvent<HTMLBdsTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4869,8 +4915,8 @@ declare global {
         new (): HTMLBdsTabElement;
     };
     interface HTMLBdsTabGroupElementEventMap {
-        "bdsTabChange": any;
-        "bdsTabDisabled": any;
+        "bdsTabChange": HTMLBdsTabItemElement;
+        "bdsTabDisabled": HTMLBdsTabItemElement;
     }
     interface HTMLBdsTabGroupElement extends Components.BdsTabGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsTabGroupElementEventMap>(type: K, listener: (this: HTMLBdsTabGroupElement, ev: BdsTabGroupCustomEvent<HTMLBdsTabGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4887,7 +4933,7 @@ declare global {
         new (): HTMLBdsTabGroupElement;
     };
     interface HTMLBdsTabItemElementEventMap {
-        "tabDisabled": any;
+        "tabDisabled": { item: number; disable: boolean };
     }
     interface HTMLBdsTabItemElement extends Components.BdsTabItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsTabItemElementEventMap>(type: K, listener: (this: HTMLBdsTabItemElement, ev: BdsTabItemCustomEvent<HTMLBdsTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4947,7 +4993,7 @@ declare global {
     };
     interface HTMLBdsTabsElementEventMap {
         "scrollButtonClick": Overflow;
-        "bdsTabInit": any;
+        "bdsTabInit": string;
     }
     interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsTabsElementEventMap>(type: K, listener: (this: HTMLBdsTabsElement, ev: BdsTabsCustomEvent<HTMLBdsTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4976,7 +5022,7 @@ declare global {
         new (): HTMLBdsThemeProviderElement;
     };
     interface HTMLBdsToastElementEventMap {
-        "toastButtonClick": any;
+        "toastButtonClick": HTMLBdsToastElement;
     }
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsToastElementEventMap>(type: K, listener: (this: HTMLBdsToastElement, ev: BdsToastCustomEvent<HTMLBdsToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5011,8 +5057,8 @@ declare global {
         new (): HTMLBdsTypoElement;
     };
     interface HTMLBdsUploadElementEventMap {
-        "bdsUploadDelete": any;
-        "bdsUploadChange": any;
+        "bdsUploadDelete": { value: File[] };
+        "bdsUploadChange": { value: File[] };
     }
     interface HTMLBdsUploadElement extends Components.BdsUpload, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsUploadElementEventMap>(type: K, listener: (this: HTMLBdsUploadElement, ev: BdsUploadCustomEvent<HTMLBdsUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5148,9 +5194,9 @@ declare namespace LocalJSX {
           * @default true
          */
         "divisor"?: boolean;
-        "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<any>) => void;
-        "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<any>) => void;
-        "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
+        "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<void>) => void;
+        "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<void>) => void;
+        "onBdsToggle"?: (event: BdsAccordionCustomEvent<{ value: boolean }>) => void;
         /**
           * @default false
          */
@@ -5172,8 +5218,8 @@ declare namespace LocalJSX {
           * @default true
          */
         "divisor"?: boolean;
-        "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
-        "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
+        "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<void>) => void;
+        "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<void>) => void;
     }
     interface BdsAccordionHeader {
         /**
@@ -5211,7 +5257,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when modal status has changed.
          */
-        "onBdsAlertChanged"?: (event: BdsAlertCustomEvent<any>) => void;
+        "onBdsAlertChanged"?: (event: BdsAlertCustomEvent<{ alertStatus: string }>) => void;
         /**
           * Used to open/close the alert
           * @default false
@@ -5387,8 +5433,8 @@ declare namespace LocalJSX {
           * @default null
          */
         "name"?: string;
-        "onBdsClickAvatar"?: (event: BdsAvatarCustomEvent<any>) => void;
-        "onBdsImageUpload"?: (event: BdsAvatarCustomEvent<any>) => void;
+        "onBdsClickAvatar"?: (event: BdsAvatarCustomEvent<PointerEvent>) => void;
+        "onBdsImageUpload"?: (event: BdsAvatarCustomEvent<string>) => void;
         /**
           * When set to true, allows the avatar to be clicked to select and upload an image.
           * @default false
@@ -5412,7 +5458,7 @@ declare namespace LocalJSX {
     }
     interface BdsAvatarGroup {
         "canClick"?: boolean;
-        "onBdsClickAvatarGroup"?: (event: BdsAvatarGroupCustomEvent<any>) => void;
+        "onBdsClickAvatarGroup"?: (event: BdsAvatarGroupCustomEvent<PointerEvent>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
           * @default 'standard'
@@ -5478,7 +5524,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the banner is closed.
          */
-        "onBdsBannerClose"?: (event: BdsBannerCustomEvent<any>) => void;
+        "onBdsBannerClose"?: (event: BdsBannerCustomEvent<void>) => void;
         /**
           * Set the banner varient, it can be 'system' or 'warning'.
           * @default 'system'
@@ -5498,7 +5544,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link is clicked.
          */
-        "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<any>) => void;
+        "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<HTMLBdsBannerElement>) => void;
         /**
           * Set the link pass.
           * @default 'blank'
@@ -5589,7 +5635,7 @@ declare namespace LocalJSX {
         /**
           * Event buttom onClick.
          */
-        "onBdsClick"?: (event: BdsButtonCustomEvent<any>) => void;
+        "onBdsClick"?: (event: BdsButtonCustomEvent<PointerEvent|KeyboardEvent>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
           * @default 'medium'
@@ -5627,7 +5673,7 @@ declare namespace LocalJSX {
           * @default false
          */
         "multiple"?: boolean;
-        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<any>) => void;
+        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<string>) => void;
         /**
           * Size of the buttons. Can be one of: 'medium', 'large'.
           * @default 'medium'
@@ -5658,7 +5704,7 @@ declare namespace LocalJSX {
         /**
           * Event buttom onClick.
          */
-        "onBdsClick"?: (event: BdsButtonIconCustomEvent<any>) => void;
+        "onBdsClick"?: (event: BdsButtonIconCustomEvent<PointerEvent>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
           * @default 'standard'
@@ -5699,7 +5745,7 @@ declare namespace LocalJSX {
         /**
           * This event will be dispatch when click on the component.
          */
-        "onBdsClick"?: (event: BdsCardCustomEvent<any>) => void;
+        "onBdsClick"?: (event: BdsCardCustomEvent<PointerEvent | KeyboardEvent>) => void;
         /**
           * Prop for set the background color.
           * @default false
@@ -5837,7 +5883,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when active frame value.
          */
-        "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<any>) => void;
+        "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<{ value: Itens }>) => void;
         /**
           * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
           * @default 1
@@ -5881,7 +5927,9 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsCheckboxCustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsCheckboxCustomEvent<{
+    checked: boolean;
+  }>) => void;
         /**
           * Emitted when the input has changed.
          */
@@ -5921,7 +5969,7 @@ declare namespace LocalJSX {
         /**
           * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
          */
-        "onBdsDelete"?: (event: BdsChipCustomEvent<any>) => void;
+        "onBdsDelete"?: (event: BdsChipCustomEvent<{ id: string }>) => void;
         /**
           * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
           * @default 'standard'
@@ -5972,11 +6020,11 @@ declare namespace LocalJSX {
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
-        "onChipClickableClick"?: (event: BdsChipClickableCustomEvent<any>) => void;
+        "onChipClickableClick"?: (event: BdsChipClickableCustomEvent<void>) => void;
         /**
           * Triggered after a mouse click on close icon, return id element. Only fired when close is true.
          */
-        "onChipClickableClose"?: (event: BdsChipClickableCustomEvent<any>) => void;
+        "onChipClickableClose"?: (event: BdsChipClickableCustomEvent<{ id: string }>) => void;
         /**
           * used for change the size chip. Uses one of them.
           * @default 'standard'
@@ -6003,7 +6051,7 @@ declare namespace LocalJSX {
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
-        "onChipClick"?: (event: BdsChipSelectedCustomEvent<any>) => void;
+        "onChipClick"?: (event: BdsChipSelectedCustomEvent<{ selected: boolean }>) => void;
         /**
           * used for set the initial setup for true;
           * @default false
@@ -6066,9 +6114,17 @@ declare namespace LocalJSX {
           * Prop to recive the header and configuration of table.
          */
         "column"?: string;
-        "onBdsTableChange"?: (event: BdsDataTableCustomEvent<any>) => void;
-        "onBdsTableClick"?: (event: BdsDataTableCustomEvent<any>) => void;
-        "onBdsTableDelete"?: (event: BdsDataTableCustomEvent<any>) => void;
+        "onBdsTableChange"?: (event: BdsDataTableCustomEvent<{
+    [key: string]: any;
+  }[]>) => void;
+        "onBdsTableClick"?: (event: BdsDataTableCustomEvent<{
+    item: {
+      [key: string]: any;
+    }; index: number; nameButton: string
+  }>) => void;
+        "onBdsTableDelete"?: (event: BdsDataTableCustomEvent<{
+    [key: string]: any;
+  }>) => void;
         /**
           * Prop to recive the content of the table.
          */
@@ -6153,19 +6209,19 @@ declare namespace LocalJSX {
         /**
           * bdsStartDate. Event to return selected end date value.
          */
-        "onBdsEndDate"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        "onBdsEndDate"?: (event: BdsDatepickerCustomEvent<{ value: Date | null }>) => void;
         /**
           * bdsStartDate. Event to return selected date value.
          */
-        "onBdsStartDate"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: BdsDatepickerCustomEvent<{ value: Date | null }>) => void;
         /**
           * bdsStartDate. Event to return selected end date value.
          */
-        "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<{ startDate: string; endDate?: string } | { startDate: string } | any>) => void;
         /**
           * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
          */
-        "onEmptyConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
+        "onEmptyConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<void>) => void;
         /**
           * Used to set drop position
           * @default 'auto'
@@ -6236,15 +6292,15 @@ declare namespace LocalJSX {
         /**
           * bdsClickDayButton. Event to return when click on day button.
          */
-        "onBdsClickDayButton"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
+        "onBdsClickDayButton"?: (event: BdsDatepickerPeriodCustomEvent<{ state?: stateSelect }>) => void;
         /**
           * bdsEndDate. Event to return selected end date value.
          */
-        "onBdsEndDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
+        "onBdsEndDate"?: (event: BdsDatepickerPeriodCustomEvent<{ value: Date | null }>) => void;
         /**
           * bdsStartDate. Event to return selected date value.
          */
-        "onBdsStartDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
+        "onBdsStartDate"?: (event: BdsDatepickerPeriodCustomEvent<{ value: Date | null }>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
           * @default dateToDayList(defaultStartDate)
@@ -6300,7 +6356,7 @@ declare namespace LocalJSX {
         /**
           * bdsDateSelected. Event to return selected date value.
          */
-        "onBdsDateSelected"?: (event: BdsDatepickerSingleCustomEvent<any>) => void;
+        "onBdsDateSelected"?: (event: BdsDatepickerSingleCustomEvent<{ value: Date | null }>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
           * @default dateToDayList(defaultStartDate)
@@ -6338,7 +6394,7 @@ declare namespace LocalJSX {
         /**
           * bdsToggle. Event to return selected date value.
          */
-        "onBdsToggle"?: (event: BdsDropdownCustomEvent<any>) => void;
+        "onBdsToggle"?: (event: BdsDropdownCustomEvent<{ value: boolean }>) => void;
         /**
           * Open. Used to open/close the dropdown.
           * @default false
@@ -6616,11 +6672,11 @@ declare namespace LocalJSX {
         /**
           * Evento disparado quando o valor do input muda.
          */
-        "onBdsChange"?: (event: BdsInputCustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsInputCustomEvent<{ value: string }>) => void;
         /**
           * Evento disparado quando o input ganha o foco.
          */
-        "onBdsFocus"?: (event: BdsInputCustomEvent<any>) => void;
+        "onBdsFocus"?: (event: BdsInputCustomEvent<void>) => void;
         /**
           * Evento disparado quando o input recebe um input (digitação).
          */
@@ -6628,19 +6684,19 @@ declare namespace LocalJSX {
         /**
           * Evento disparado quando a tecla "Backspace" é pressionada.
          */
-        "onBdsKeyDownBackspace"?: (event: BdsInputCustomEvent<any>) => void;
+        "onBdsKeyDownBackspace"?: (event: BdsInputCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
         /**
           * Evento disparado quando o input perde o foco.
          */
-        "onBdsOnBlur"?: (event: BdsInputCustomEvent<any>) => void;
+        "onBdsOnBlur"?: (event: BdsInputCustomEvent<void>) => void;
         /**
           * Evento disparado para validação de padrão regex.
          */
-        "onBdsPatternValidation"?: (event: BdsInputCustomEvent<any>) => void;
+        "onBdsPatternValidation"?: (event: BdsInputCustomEvent<boolean>) => void;
         /**
           * Evento disparado quando o formulário é submetido.
          */
-        "onBdsSubmit"?: (event: BdsInputCustomEvent<any>) => void;
+        "onBdsSubmit"?: (event: BdsInputCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
         /**
           * Define um padrão regex que o valor do input deve seguir.
          */
@@ -6784,31 +6840,31 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsBlur"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        "onBdsBlur"?: (event: BdsInputChipsCustomEvent<string[]>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChange"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsInputChipsCustomEvent<{ data: string[]; value: string }>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<{ data: string[]; value: string }>) => void;
         /**
           * Emitted when a maximum value defined by the "max-chips-length" prop is entered
          */
-        "onBdsExtendedQuantityInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        "onBdsExtendedQuantityInput"?: (event: BdsInputChipsCustomEvent<{ value: boolean }>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<void>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsInputChipsInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        "onBdsInputChipsInput"?: (event: BdsInputChipsCustomEvent<InputEvent>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsSubmit"?: (event: BdsInputChipsCustomEvent<any>) => void;
+        "onBdsSubmit"?: (event: BdsInputChipsCustomEvent<{ value: string[] }>) => void;
         /**
           * A tip for the user who can enter no controls.
           * @default ''
@@ -7018,15 +7074,15 @@ declare namespace LocalJSX {
         /**
           * Event input onblur.
          */
-        "onBdsInputPasswordBlur"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        "onBdsInputPasswordBlur"?: (event: BdsInputPasswordCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsInputPasswordChange"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        "onBdsInputPasswordChange"?: (event: BdsInputPasswordCustomEvent<{ value: string | null }>) => void;
         /**
           * Event input focus.
          */
-        "onBdsInputPasswordFocus"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        "onBdsInputPasswordFocus"?: (event: BdsInputPasswordCustomEvent<void>) => void;
         /**
           * Emitted when the input has changed.
          */
@@ -7034,11 +7090,11 @@ declare namespace LocalJSX {
         /**
           * Event input enter.
          */
-        "onBdsInputPasswordSubmit"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        "onBdsInputPasswordSubmit"?: (event: BdsInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null } | void>) => void;
         /**
           * Event input key down backspace.
          */
-        "onBdsKeyDownBackspace"?: (event: BdsInputPasswordCustomEvent<any>) => void;
+        "onBdsKeyDownBackspace"?: (event: BdsInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null }>) => void;
         /**
           * @default false
          */
@@ -7138,7 +7194,12 @@ declare namespace LocalJSX {
         /**
           * Evento disparado quando o valor é alterado.
          */
-        "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<any>) => void;
+        "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<{
+    value: string | null;
+    code: string | null;
+    isoCode: string | null;
+    country: string | null;
+  }>) => void;
         /**
           * Lista de opções do select.
           * @default []
@@ -7185,15 +7246,36 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value checkboxes has changed because of a click event.
          */
-        "onBdsListCheckboxChange"?: (event: BdsListCustomEvent<any>) => void;
+        "onBdsListCheckboxChange"?: (event: BdsListCustomEvent<{
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    avatarName: string | null;
+    avatarThumbnail: string | null;
+    typeList: TypeList | null;
+  }[]>) => void;
         /**
           * Emitted when the value radios has changed because of a click event.
          */
-        "onBdsListRadioChange"?: (event: BdsListCustomEvent<any>) => void;
+        "onBdsListRadioChange"?: (event: BdsListCustomEvent<{
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    avatarName: string | null;
+    avatarThumbnail: string | null;
+    typeList: TypeList | null;
+  }>) => void;
         /**
           * Emitted when the value switches has changed because of a click event.
          */
-        "onBdsListSwitchChange"?: (event: BdsListCustomEvent<any>) => void;
+        "onBdsListSwitchChange"?: (event: BdsListCustomEvent<{
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    avatarName: string | null;
+    avatarThumbnail: string | null;
+    typeList: TypeList | null;
+  }[]>) => void;
         /**
           * Typelist. Used to .
           * @default null
@@ -7257,11 +7339,21 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed because of a click event.
          */
-        "onBdsChecked"?: (event: BdsListItemCustomEvent<any>) => void;
+        "onBdsChecked"?: (event: BdsListItemCustomEvent<{
+    value: string | null;
+    text: string | null;
+    secondaryText: string | null;
+    typeList: TypeList1 | null;
+    checked: boolean | null;
+  }>) => void;
         /**
           * Emitted when click in someone actions buttom insert in data.
          */
-        "onBdsClickActionButtom"?: (event: BdsListItemCustomEvent<any>) => void;
+        "onBdsClickActionButtom"?: (event: BdsListItemCustomEvent<{
+    value: string | null;
+    icon: string;
+    elementButton: EventTarget;
+  }>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
           * @default null
@@ -7367,7 +7459,7 @@ declare namespace LocalJSX {
         /**
           * bdsToggle. Event to return selected date value.
          */
-        "onBdsToggle"?: (event: BdsMenuCustomEvent<any>) => void;
+        "onBdsToggle"?: (event: BdsMenuCustomEvent<{ value?: boolean }>) => void;
         /**
           * Open. Used to open/close the menu.
           * @default false
@@ -7498,7 +7590,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when modal status has changed.
          */
-        "onBdsModalChanged"?: (event: BdsModalCustomEvent<any>) => void;
+        "onBdsModalChanged"?: (event: BdsModalCustomEvent<{ modalStatus: 'opened' | 'closed' }>) => void;
         /**
           * Used to open/close the modal
           * @default false
@@ -7558,7 +7650,7 @@ declare namespace LocalJSX {
         /**
           * When de open or close of component change, the event are dispache.
          */
-        "onBdsToogleChange"?: (event: BdsNavTreeCustomEvent<any>) => void;
+        "onBdsToogleChange"?: (event: BdsNavTreeCustomEvent<{ value?: boolean; element: HTMLElement }>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
           * @default null
@@ -7575,8 +7667,8 @@ declare namespace LocalJSX {
           * @default 'single'
          */
         "collapse"?: collapses2;
-        "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
-        "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
+        "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<void>) => void;
+        "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<void>) => void;
     }
     interface BdsNavTreeItem {
         /**
@@ -7612,7 +7704,7 @@ declare namespace LocalJSX {
         /**
           * When de activation of component change, the event are dispache.
          */
-        "onBdsToogleChange"?: (event: BdsNavTreeItemCustomEvent<any>) => void;
+        "onBdsToogleChange"?: (event: BdsNavTreeItemCustomEvent<{ value?: boolean; element: HTMLElement }>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
           * @default null
@@ -7682,11 +7774,11 @@ declare namespace LocalJSX {
         /**
           * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
          */
-        "onBdsItemsPerPageChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        "onBdsItemsPerPageChange"?: (event: BdsPaginationCustomEvent<number>) => void;
         /**
           * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
          */
-        "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
+        "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<number>) => void;
         /**
           * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
           * @default 'auto'
@@ -7796,11 +7888,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsRadioCustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsRadioCustomEvent<{ checked: boolean }>) => void;
         /**
           * Emitted when the value has changed because of a click event.
          */
-        "onBdsClickChange"?: (event: BdsRadioCustomEvent<any>) => void;
+        "onBdsClickChange"?: (event: BdsRadioCustomEvent<{ checked: boolean }>) => void;
         /**
           * Refer. Field to add refer in radio buttom.
          */
@@ -7814,7 +7906,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed due to a click event.
          */
-        "onBdsRadioGroupChange"?: (event: BdsRadioGroupCustomEvent<any>) => void;
+        "onBdsRadioGroupChange"?: (event: BdsRadioGroupCustomEvent<{ value?: string }>) => void;
         /**
           * The value of the selected radio
          */
@@ -7874,15 +7966,15 @@ declare namespace LocalJSX {
         /**
           * Event input onblur.
          */
-        "onBdsBlur"?: (event: BdsRichTextCustomEvent<any>) => void;
+        "onBdsBlur"?: (event: BdsRichTextCustomEvent<void>) => void;
         /**
           * Event input focus.
          */
-        "onBdsFocus"?: (event: BdsRichTextCustomEvent<any>) => void;
+        "onBdsFocus"?: (event: BdsRichTextCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsRichTextChange"?: (event: BdsRichTextCustomEvent<any>) => void;
+        "onBdsRichTextChange"?: (event: BdsRichTextCustomEvent<{ value: string }>) => void;
         /**
           * Emitted when the input has changed.
          */
@@ -8102,7 +8194,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChangeChips"?: (event: BdsSelectChipsCustomEvent<any>) => void;
+        "onBdsChangeChips"?: (event: BdsSelectChipsCustomEvent<{ data: string[]; value: number }>) => void;
         /**
           * Emitted when the select loses focus.
          */
@@ -8114,7 +8206,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsSubmit"?: (event: BdsSelectChipsCustomEvent<any>) => void;
+        "onBdsSubmit"?: (event: BdsSelectChipsCustomEvent<void>) => void;
         /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -8181,8 +8273,8 @@ declare namespace LocalJSX {
           * @default false
          */
         "invisible"?: boolean;
-        "onOptionChecked"?: (event: BdsSelectOptionCustomEvent<any>) => void;
-        "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
+        "onOptionChecked"?: (event: BdsSelectOptionCustomEvent<{ value: string; label: string; checked: boolean }>) => void;
+        "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<{ value: any; label: string }>) => void;
         /**
           * The text value of the option.
           * @default false
@@ -8237,7 +8329,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the isOpen has changed.
          */
-        "onBdsToggle"?: (event: BdsSidebarCustomEvent<any>) => void;
+        "onBdsToggle"?: (event: BdsSidebarCustomEvent<{ value: boolean }>) => void;
         /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
           * @default 'left'
@@ -8304,7 +8396,7 @@ declare namespace LocalJSX {
         /**
           * bdsChange. Event to return selected date value.
          */
-        "onBdsChange"?: (event: BdsSliderCustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsSliderCustomEvent<StepOption>) => void;
         /**
           * Step, property to insert steps into the input range.
          */
@@ -8382,7 +8474,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsSwitchCustomEvent<any>) => void;
+        "onBdsChange"?: (event: BdsSwitchCustomEvent<{ checked: boolean }>) => void;
         /**
           * The refer of the control.
          */
@@ -8410,7 +8502,7 @@ declare namespace LocalJSX {
         /**
           * Event to emmit when the active tab should be updated
          */
-        "onBdsTabChange"?: (event: BdsTabCustomEvent<any>) => void;
+        "onBdsTabChange"?: (event: BdsTabCustomEvent<string>) => void;
     }
     interface BdsTabGroup {
         /**
@@ -8434,11 +8526,11 @@ declare namespace LocalJSX {
         /**
           * bdsTabChange. Event to return value when Tabs is change.
          */
-        "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
+        "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<HTMLBdsTabItemElement>) => void;
         /**
           * bdsTabDisabled. Event to return value when Tabs disable is change.
          */
-        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
+        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<HTMLBdsTabItemElement>) => void;
     }
     interface BdsTabItem {
         /**
@@ -8526,7 +8618,7 @@ declare namespace LocalJSX {
           * @default null
          */
         "numberElement"?: number;
-        "onTabDisabled"?: (event: BdsTabItemCustomEvent<any>) => void;
+        "onTabDisabled"?: (event: BdsTabItemCustomEvent<{ item: number; disable: boolean }>) => void;
         /**
           * Used to open/close the Tab item.
           * @default false
@@ -8604,7 +8696,7 @@ declare namespace LocalJSX {
           * @default 'center'
          */
         "align"?: 'left' | 'center' | 'right';
-        "onBdsTabInit"?: (event: BdsTabsCustomEvent<any>) => void;
+        "onBdsTabInit"?: (event: BdsTabsCustomEvent<string>) => void;
         "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
     }
     interface BdsTestComponent {
@@ -8659,7 +8751,7 @@ declare namespace LocalJSX {
         /**
           * Event used to execute some action when the action button on the toast is clicked
          */
-        "onToastButtonClick"?: (event: BdsToastCustomEvent<any>) => void;
+        "onToastButtonClick"?: (event: BdsToastCustomEvent<HTMLBdsToastElement>) => void;
         /**
           * The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
           * @default 'bottom-left'
@@ -8801,11 +8893,11 @@ declare namespace LocalJSX {
         /**
           * Event emited when change the value of Upload.
          */
-        "onBdsUploadChange"?: (event: BdsUploadCustomEvent<any>) => void;
+        "onBdsUploadChange"?: (event: BdsUploadCustomEvent<{ value: File[] }>) => void;
         /**
           * Event emited when delete a item from the list.
          */
-        "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<any>) => void;
+        "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<{ value: File[] }>) => void;
         /**
           * Used for add a text on subtitle.
          */

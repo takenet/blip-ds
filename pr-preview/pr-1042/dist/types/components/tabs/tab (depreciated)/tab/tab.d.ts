@@ -19,7 +19,7 @@ export declare class Tab implements ComponentInterface {
     /**
      * Event to emmit when the active tab should be updated
      */
-    bdsTabChange: EventEmitter;
+    bdsTabChange: EventEmitter<string>;
     handleTabChange(event: CustomEvent): void;
     onClick(): Promise<void>;
     render(): HTMLElement;

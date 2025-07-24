@@ -64,15 +64,21 @@ export declare class BdsdatepickerPeriod {
     /**
      * bdsStartDate. Event to return selected date value.
      */
-    bdsStartDate?: EventEmitter;
+    bdsStartDate?: EventEmitter<{
+        value: Date | null;
+    }>;
     /**
      * bdsEndDate. Event to return selected end date value.
      */
-    bdsEndDate?: EventEmitter;
+    bdsEndDate?: EventEmitter<{
+        value: Date | null;
+    }>;
     /**
      * bdsClickDayButton. Event to return when click on day button.
      */
-    bdsClickDayButton?: EventEmitter;
+    bdsClickDayButton?: EventEmitter<{
+        state?: stateSelect;
+    }>;
     /**
      * Return the validity of the input.
      */

@@ -127,7 +127,7 @@ const List = class {
         this.bdsListSwitchChange.emit(result);
     }
     render() {
-        return (index.h(index.Host, { key: '74e1b4e602cd6e1f0ab6351394a494cbb74e5a6e' }, index.h("div", { key: '576759d97c75e15ef10b3d34bdf7044cc00b70b0', class: {
+        return (index.h(index.Host, { key: 'dcdf6ac9fbf6510d7ef1308d96c8514214008fd8' }, index.h("div", { key: '87a84c84e1750418a9a98398b3dc7afe5f1dc91f', class: {
                 list: true,
             } }, this.internalData ? (this.internalData.map((item, idx) => (index.h("bds-list-item", { key: idx, value: item.value, text: item.text, "type-list": this.typeList ? this.typeList : item.typeList, "secondary-text": item.secondaryText, "avatar-name": item.avatarName, "avatar-thumbnail": item.avatarThumbnail, checked: item.checked, icon: item.icon, chips: item.chips, actionsButtons: item.actionsButtons, onBdsChecked: (ev) => this.chagedOptions(ev), onBdsClickActionButtom: (ev) => this.onClickActionsButtons(ev), dataTest: item.dataTest })))) : (index.h("slot", null)))));
     }

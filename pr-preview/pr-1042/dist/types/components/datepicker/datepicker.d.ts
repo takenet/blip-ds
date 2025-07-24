@@ -114,19 +114,28 @@ export declare class DatePicker {
     /**
      * bdsStartDate. Event to return selected date value.
      */
-    bdsStartDate?: EventEmitter;
+    bdsStartDate?: EventEmitter<{
+        value: Date | null;
+    }>;
     /**
      * bdsStartDate. Event to return selected end date value.
      */
-    bdsEndDate?: EventEmitter;
+    bdsEndDate?: EventEmitter<{
+        value: Date | null;
+    }>;
     /**
      * bdsStartDate. Event to return selected end date value.
      */
-    concludeDatepicker?: EventEmitter;
+    concludeDatepicker?: EventEmitter<{
+        startDate: string;
+        endDate?: string;
+    } | {
+        startDate: string;
+    } | any>;
     /**
      * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
      */
-    emptyConcludeDatepicker?: EventEmitter;
+    emptyConcludeDatepicker?: EventEmitter<void>;
     componentWillLoad(): void;
     componentDidLoad(): void;
     valueDateSelectedChanged(): void;

@@ -49,9 +49,9 @@ const Card = class {
             this.cardElement.addEventListener('mouseleave', () => {
                 this.isHovered = false;
             });
-            this.cardElement.addEventListener('mousedown', () => {
+            this.cardElement.addEventListener('mousedown', (event) => {
                 this.isPressed = true;
-                this.bdsClick.emit();
+                this.bdsClick.emit(event);
             });
             document.addEventListener('mouseup', () => {
                 this.isPressed = false;
@@ -59,7 +59,7 @@ const Card = class {
             this.cardElement.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     this.isPressed = true;
-                    this.bdsClick.emit();
+                    this.bdsClick.emit(event);
                 }
             });
             this.cardElement.addEventListener('keyup', (event) => {
@@ -87,12 +87,12 @@ const Card = class {
         const styleHost = {
             width: this.width,
         };
-        return (index.h(index.Host, { key: '9a1a837ae9e47555d7f1e2a6300449c492d70a96', style: styleHost }, index.h("bds-paper", { key: 'ea250b930c8b09c55ad4137f8a21fdc9c46a351e', border: this.clickable ? false : true, elevation: this.elevation, class: {
+        return (index.h(index.Host, { key: '687351ef20eb5cc606beb8f79245038530592b35', style: styleHost }, index.h("bds-paper", { key: '4170263f939ecb713199955b9a4b24277f3c9122', border: this.clickable ? false : true, elevation: this.elevation, class: {
                 card: true,
                 card_hover: this.clickable,
                 card_hover_selectable: this.isHovered && this.selectable ? true : false,
                 card_hover_pressed: this.isHovered && this.selectable ? true : false
-            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, index.h("div", { key: '2f5d2ef71dd309ada7c9bd9c7298851ba33ccc24', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), index.h("bds-grid", { key: '3e4271c1d8b65e08ff6db22674cdb2095dae2e02', xxs: "12", direction: "column", gap: "2", padding: "2" }, index.h("slot", { key: '6618f26114e5aaba2df45f66380d89b3d24f6453' })))));
+            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, index.h("div", { key: '2d335525082502f9b7f549df33487a7860717c12', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), index.h("bds-grid", { key: '98ba4927febe56906ec7e6f8ed7688a40bae094b', xxs: "12", direction: "column", gap: "2", padding: "2" }, index.h("slot", { key: '61a1dab93bca0893b0f172a6985a25c7365bd35f' })))));
     }
     get element() { return index.getElement(this); }
 };

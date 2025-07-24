@@ -9,7 +9,9 @@ export declare class RadioGroup implements ComponentInterface {
     /**
      * Emitted when the value has changed due to a click event.
      */
-    bdsRadioGroupChange: EventEmitter;
+    bdsRadioGroupChange: EventEmitter<{
+        value?: string;
+    }>;
     valueChanged(value: string): void;
     componentWillRender(): void;
     private chagedOptions;

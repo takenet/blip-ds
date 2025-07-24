@@ -7,7 +7,7 @@ export declare class Tabs {
     readonly SCROLL_BEHAVIOR = "smooth";
     el: HTMLElement;
     scrollButtonClick: EventEmitter<Overflow>;
-    bdsTabInit: EventEmitter;
+    bdsTabInit: EventEmitter<string>;
     align: 'left' | 'center' | 'right';
     onScrollButtonClick(event: CustomEvent<Overflow>): void;
     onSelectedTab(event: CustomEvent): void;

@@ -77,7 +77,7 @@ const NavTreeItem = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'e1d3bcfd325b0fe24e59872f41fec9118f180e28' }, index.h("div", { key: '17d859b63b84eb93ca0f30ede328c1ff699da856', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, index.h("div", { key: '90c9d5c6b084667fa04ccbbf67ae1e7fc3e38a6e', class: {
+        return (index.h(index.Host, { key: 'e118bf10bd6864eb4a9dc5b67107ec56910d62ea' }, index.h("div", { key: 'a832a417ea8879d21d1f648c4cc760a420dc7626', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, index.h("div", { key: '6659deea843284153e031994f86ea8288f349258', class: {
                 nav_tree_item: true,
                 nav_tree_item_active: this.isOpen,
                 nav_tree_item_button: !this.navTreeChild,
@@ -87,14 +87,14 @@ const NavTreeItem = class {
             }, onClick: () => this.handler(), "data-test": this.dataTest, "aria-label": this.text + (this.secondaryText && `: ${this.secondaryText}`) }, this.loading ? (index.h("bds-loading-spinner", { size: "extra-small" })) : this.icon ? (index.h("bds-icon", { class: {
                 [`icon-item`]: true,
                 [`icon-item-active`]: this.isOpen,
-            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), index.h("div", { key: '332afb1989b58cb2d45f59de1801cd7e781a5b1c', class: "nav_tree_item_content" }, this.text && (index.h("bds-typo", { key: '3f4846a4d557ab09339946f9c929f6be171799a8', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (index.h("bds-typo", { key: 'fb23f3924bdaa30ecda86de5d50513417eb459cc', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), index.h("div", { key: '7fb98224ac8ecdc8dcc0207ec387d32f7b0d1a65', class: "nav_tree_item_slot" }, index.h("slot", { key: '55751342b621931a9899e94bf613a5c3a5ca70f3', name: "header-content" })), this.navTreeChild && (index.h("bds-icon", { key: 'dfc6d22d09f6659841f827f3d56ce3fac5564288', class: {
+            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), index.h("div", { key: '1584948e66adf30b48c8c0e98e01ca8320db0e69', class: "nav_tree_item_content" }, this.text && (index.h("bds-typo", { key: 'ff7d580f9758aaf069e748a6db27d16e0c743f7f', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (index.h("bds-typo", { key: '7ec40762f3ffdf24b7905a366d52c6dba30ecf8d', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), index.h("div", { key: 'f575665cc68beb46a500cde8ef1ead79da69c5bd', class: "nav_tree_item_slot" }, index.h("slot", { key: '2791dffc6c055710d25c2755486dad8b3312fac6', name: "header-content" })), this.navTreeChild && (index.h("bds-icon", { key: 'dbd73505cc9598bced4ac1a64c0f76aa9201766c', class: {
                 [`nav_main_arrow`]: true,
                 [`nav_main_arrow_active`]: this.isOpen,
                 [`nav_main_arrow--loading`]: this.loading,
-            }, name: "arrow-down" })))), this.navTreeChild && (index.h("div", { key: '0c24e36910cb1253b1bf7b161d1a40a6c07744a9', class: {
+            }, name: "arrow-down" })))), this.navTreeChild && (index.h("div", { key: '921344dcc511c31c2b1e44f65f3bc6a30e206a0b', class: {
                 accordion: true,
                 accordion_open: this.isOpen,
-            } }, index.h("div", { key: '2da280a88a3aad6d8aeb7509e91947e207dc1bf5', class: "container" }, index.h("slot", { key: '9042f029e6f859a163c8a98c6732f7f726aa3fe5' }))))));
+            } }, index.h("div", { key: '249bce6e0c8442a0a7cbc0e2b073e2c14ad3faaa', class: "container" }, index.h("slot", { key: 'ad21aed4acd1dd754ecc2fc5a9d368dfdbda7f96' }))))));
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {

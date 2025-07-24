@@ -69,19 +69,19 @@ const Sidebar = class {
         this.hasHeaderSlot = !!this.hostElement.querySelector('[slot="header"]');
     }
     render() {
-        return (index.h("div", { key: '13ba704ac3fd10d7c77d4ded636c5b17c5560c87', class: {
+        return (index.h("div", { key: '6a28b23936d194ff0e9b85a67a9ed6929d8a6eae', class: {
                 sidebar_dialog: true,
                 is_open: this.isOpen,
                 [`type_${this.type}`]: true,
-            } }, this.type === 'over' ? (index.h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone })) : (''), index.h("div", { key: '498dbf3de26d0dd07e5cfbe68a484f0771225df3', class: {
+            } }, this.type === 'over' ? (index.h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone })) : (''), index.h("div", { key: 'fbe30dcc8f4b4edf4974d3ca5e9f2dd7b3af19c5', class: {
                 sidebar: true,
                 is_open: this.isOpen,
                 [`type_${this.type}`]: true,
                 [`position_${this.sidebarPosition}`]: true,
                 [`background_${this.background}`]: true,
-            }, style: { width: `${this.width < 144 ? 144 : this.width}px` } }, this.hasHeaderSlot && (index.h("div", { key: '5ff63216fe15dcb73f5c1bac2d40cb450a12efe4', class: { header: true } }, index.h("div", { key: '513387ec6653504e8b4f960f6c204fa29f79b7ef', class: { content: true } }, index.h("slot", { key: '2f66f02119c41d41c0b54ec310971845920ffd75', name: "header" })), this.type === 'fixed' ? ('') : (index.h("bds-button-icon", { class: {
+            }, style: { width: `${this.width < 144 ? 144 : this.width}px` } }, this.hasHeaderSlot && (index.h("div", { key: '4986a151f22653b354c7067d0d8c8fb47f4d1075', class: { header: true } }, index.h("div", { key: 'e6ca184aafa3b030c7092ad93a36a959ad42f4c8', class: { content: true } }, index.h("slot", { key: 'df771cc232129a7920cdd02236d62eb16b96b9b7', name: "header" })), this.type === 'fixed' ? ('') : (index.h("bds-button-icon", { class: {
                 closeButton: true,
-            }, icon: "close", size: "short", variant: "secondary", onClick: () => this.onClickCloseButtom(), dataTest: this.dtButtonClose })))), index.h("div", { key: '1fe85b9e8df3ff755f73decb42a013c917240eae', class: { body: true } }, index.h("div", { key: '6da11a2c668372b9dc612aa99a598c9929796bce', class: { content: true, element_scrolled: true, margin: this.margin } }, index.h("slot", { key: 'ccd7205ca9a9a2c1c821b84a0f166f1c9678e288', name: "body" }))), this.hasFooterSlot && (index.h("div", { key: '60401dd3bf62dd56903e48835f1bf1a4170ae370', class: { footer: true } }, index.h("div", { key: 'd316cc85e985252145748929d4a585b05a8d96ed', class: { content: true } }, index.h("slot", { key: '0b917bd07043a083f15ae67dea83d15ee418596d', name: "footer" })))))));
+            }, icon: "close", size: "short", variant: "secondary", onClick: () => this.onClickCloseButtom(), dataTest: this.dtButtonClose })))), index.h("div", { key: '4af832ac6385607998d02bd2b6bc0c9adb084aee', class: { body: true } }, index.h("div", { key: 'c50c703d56a9c368093e977a52062c94a7c4bf2c', class: { content: true, element_scrolled: true, margin: this.margin } }, index.h("slot", { key: 'c1bd9e729bd4d857d0da69e300301b1b3929c321', name: "body" }))), this.hasFooterSlot && (index.h("div", { key: '4123cbb084466f2eef25423b47acef6f09ce3c40', class: { footer: true } }, index.h("div", { key: '2d10d1921041a202770eb7e9cd126a7cb446f019', class: { content: true } }, index.h("slot", { key: 'c2fb737665f52abc3a1c0523014c9d1ead74a320', name: "footer" })))))));
     }
     get hostElement() { return index.getElement(this); }
     static get watchers() { return {

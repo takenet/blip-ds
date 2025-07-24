@@ -73,7 +73,10 @@ export declare class BdsTabItem {
      */
     dataTest?: string;
     reciveNumber(number: any): Promise<void>;
-    tabDisabled: EventEmitter;
+    tabDisabled: EventEmitter<{
+        item: number;
+        disable: boolean;
+    }>;
     disableChanged(): void;
     render(): HTMLElement;
 }

@@ -56,11 +56,15 @@ export declare class BdsUpload {
     /**
      * Event emited when delete a item from the list.
      */
-    bdsUploadDelete: EventEmitter;
+    bdsUploadDelete: EventEmitter<{
+        value: File[];
+    }>;
     /**
      * Event emited when change the value of Upload.
      */
-    bdsUploadChange: EventEmitter;
+    bdsUploadChange: EventEmitter<{
+        value: File[];
+    }>;
     protected dataAcceptChanged(): void;
     protected filesChanged(): void;
     protected formatErrorChanged(value: any): void;

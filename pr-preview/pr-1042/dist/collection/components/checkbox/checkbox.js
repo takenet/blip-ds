@@ -65,10 +65,10 @@ export class Checkbox {
     }
     render() {
         const styleState = this.getStyleState();
-        return (h("div", { key: '98f55751effaa89fb5fc721a95605775111f5d13', class: {
+        return (h("div", { key: '5d189c41e08a759332fb372dd32814d1f568ee6d', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, h("input", { key: '49a20fdd4ba8211e64c1e37ee44c2358a1c30703', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'e12e568e603356b179cfff801166fea188505f8b', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: 'a229cd9a79988a94ab54f6aeb301e332d243a0fe', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '5e4603d9e36b5a0230836ca6028445c6478bbe6a', class: "checkbox__icon__svg", size: "x-small", name: "true", color: "inherit" })), this.label && (h("bds-typo", { key: '7ae297f34d69825b0468f72840df1ec211a8ff59', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, h("input", { key: '5ce44f6d46d421f333b4f6067fe05d079e65769c', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'ba6392bc29b7cf261236014cb2efc4b0fab7d1af', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: '1d2e679e7b06e235fc8076f8210014f734c9f5c4', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '693030518309efde0db4a07d8d4aaf2f3b6975a7', class: "checkbox__icon__svg", size: "x-small", name: "true", color: "inherit" })), this.label && (h("bds-typo", { key: '73635d43f719451ed7acb1e2b7d76f508c3da612', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
     static get is() { return "bds-checkbox"; }
     static get encapsulation() { return "shadow"; }
@@ -220,8 +220,8 @@ export class Checkbox {
                     "text": "Emitted when the value has changed."
                 },
                 "complexType": {
-                    "original": "any",
-                    "resolved": "any",
+                    "original": "{\n    checked: boolean;\n  }",
+                    "resolved": "{ checked: boolean; }",
                     "references": {}
                 }
             }, {

@@ -94,7 +94,9 @@ export declare class InputPassword {
     /**
      * Emitted when the value has changed.
      */
-    bdsInputPasswordChange: EventEmitter;
+    bdsInputPasswordChange: EventEmitter<{
+        value: string | null;
+    }>;
     /**
      * Emitted when the input has changed.
      */
@@ -102,19 +104,25 @@ export declare class InputPassword {
     /**
      * Event input onblur.
      */
-    bdsInputPasswordBlur: EventEmitter;
+    bdsInputPasswordBlur: EventEmitter<void>;
     /**
      * Event input focus.
      */
-    bdsInputPasswordFocus: EventEmitter;
+    bdsInputPasswordFocus: EventEmitter<void>;
     /**
      * Event input enter.
      */
-    bdsInputPasswordSubmit: EventEmitter;
+    bdsInputPasswordSubmit: EventEmitter<{
+        event: KeyboardEvent;
+        value: string | null;
+    } | void>;
     /**
      * Event input key down backspace.
      */
-    bdsKeyDownBackspace: EventEmitter;
+    bdsKeyDownBackspace: EventEmitter<{
+        event: KeyboardEvent;
+        value: string | null;
+    }>;
     private refNativeInput;
     private toggleEyePassword;
     private handleKeyDown;

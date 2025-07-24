@@ -84,9 +84,9 @@ const NavTree = /*@__PURE__*/ proxyCustomElement(class NavTree extends H {
         }
     }
     render() {
-        return (h(Host, { key: '80ac5273c12d66e3dd437a0d97e155cfae225360' }, h("div", { key: 'cad8aaf5175c6c220371b37967c698d0a1ded530', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, h("div", { key: '6b5d037ad94347ee0c923919b5e9c61f64ea32e7', class: {
+        return (h(Host, { key: 'c3b83bc79738411d309fc031b8967cd559860685' }, h("div", { key: '1d5c99d78339a4a685d3bc3fe5d7ab1d6ea4b265', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, h("div", { key: 'a3c3232c515afc6ee51f253edc756421e464ae9d', class: {
                 [`nav_main--disable`]: this.disable,
-            } }, h("div", { key: 'cb9f7fd56b3f6092c9490955feda6ef9733f015d', onClick: this.handler, class: {
+            } }, h("div", { key: '9b8b8025503db5afd800aa6d0764cd3bb28e45f7', onClick: this.handler, class: {
                 nav_main: true,
                 nav_main_active: this.isOpen,
                 [`nav_main--loading`]: this.loading,
@@ -94,14 +94,14 @@ const NavTree = /*@__PURE__*/ proxyCustomElement(class NavTree extends H {
             }, "data-test": this.dataTest, "aria-label": this.text + (this.secondaryText && `: ${this.secondaryText}`) }, this.loading ? (h("bds-loading-spinner", { size: "extra-small" })) : this.icon ? (h("bds-icon", { class: {
                 [`icon-item`]: true,
                 [`icon-item-active`]: this.isOpen,
-            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { key: 'c27f99a63d3daff9ebc5d14126117ee1d6df765c', class: "nav_main_text" }, this.text && (h("bds-typo", { key: '750964e347e14973f2690364c3c7104eae15b8af', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { key: 'e3de7f19865b637c4ac1af10bbcabd973a2787a0', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { key: '83b1e2d7edad3678e2437e04b91158dd841a42b2', class: "nav_main_content" }, h("slot", { key: '1ba5665ad7028a10c9e9e79081efeee60570cdc1', name: "header-content" })), this.navTreeChild && (h("bds-icon", { key: '369c145d451124cf001ef1677e9244438adee834', name: "arrow-down", class: {
+            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { key: 'f74e3435801872bdb295c4dae49cc67570ff1ec6', class: "nav_main_text" }, this.text && (h("bds-typo", { key: '59acc4f6eeac7718d5ed43e218f53ef5e6327716', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { key: 'b82578a514065a57a0d21accacb02287b1001fed', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { key: '463a467bb7358e6e4fb5dcb3592d9d23531d8d0b', class: "nav_main_content" }, h("slot", { key: 'c62fc1631249715a74655f285bbcfcc90eceeeab', name: "header-content" })), this.navTreeChild && (h("bds-icon", { key: 'badd66942ffc608d2ff3fcda03e68a9c5f5c07ad', name: "arrow-down", class: {
                 [`nav_main_arrow`]: true,
                 [`nav_main_arrow_active`]: this.isOpen,
                 [`nav_main_arrow--loading`]: this.loading,
-            } }))))), h("div", { key: '1da4e53b786d2d2b79a84f833ef433b8ff4bbc93', class: {
+            } }))))), h("div", { key: '94d3f177c5f38acf3c20deffa720c8e102514ace', class: {
                 accordion: true,
                 accordion_open: this.isOpen && this.navTreeChild,
-            } }, h("div", { key: 'a34a1324f95be2dbb10d743c1350ee344b99e4ed', class: { ['container']: true, [`container--disable`]: this.disable } }, h("slot", { key: 'd25ef5dbbe277995f17b1a22d4f0bf08434a035c' })))));
+            } }, h("div", { key: '436c06f2c9520de2b1c2c392f5ec6e4b50aa3431', class: { ['container']: true, [`container--disable`]: this.disable } }, h("slot", { key: '656f6ab4bf453b7cff42a5bed47275852a7c560c' })))));
     }
     get element() { return this; }
     static get watchers() { return {

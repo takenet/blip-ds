@@ -32,7 +32,9 @@ export declare class BdsDropdown implements ComponentInterface {
     /**
      * bdsToggle. Event to return selected date value.
      */
-    bdsToggle?: EventEmitter;
+    bdsToggle?: EventEmitter<{
+        value: boolean;
+    }>;
     componentWillLoad(): void;
     componentDidLoad(): void;
     disconnectedCallback(): void;

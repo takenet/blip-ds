@@ -24,8 +24,8 @@ export declare class AvatarGroup {
     */
     users?: string | AvatarDataList[];
     canClick?: boolean;
-    bdsClickAvatarGroup: EventEmitter;
-    handleClickGroup(e: any): void;
+    bdsClickAvatarGroup: EventEmitter<PointerEvent>;
+    handleClickGroup(e: PointerEvent): void;
     private handleClickKey;
     parseUsers(): void;
     private avatarBgColor;

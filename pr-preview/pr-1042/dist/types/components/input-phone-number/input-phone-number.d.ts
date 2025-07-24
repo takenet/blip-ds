@@ -69,7 +69,12 @@ export declare class InputPhoneNumber {
     /**
      * Evento disparado quando o valor é alterado.
      */
-    bdsPhoneNumberChange: EventEmitter;
+    bdsPhoneNumberChange: EventEmitter<{
+        value: string | null;
+        code: string | null;
+        isoCode: string | null;
+        country: string | null;
+    }>;
     /**
      * Evento disparado quando o input sofre alteração.
      */

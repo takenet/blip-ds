@@ -124,31 +124,41 @@ export declare class InputChips {
     /**
      * Emitted when the chip has added.
      */
-    bdsChange: EventEmitter;
+    bdsChange: EventEmitter<{
+        data: string[];
+        value: string;
+    }>;
     /**
      * Emitted when the chip has added.
      */
-    bdsChangeChips: EventEmitter;
+    bdsChangeChips: EventEmitter<{
+        data: string[];
+        value: string;
+    }>;
     /**
      * Emitted when the chip has added.
      */
-    bdsInputChipsFocus: EventEmitter;
+    bdsInputChipsFocus: EventEmitter<void>;
     /**
      * Emitted when the chip has added.
      */
-    bdsBlur: EventEmitter;
+    bdsBlur: EventEmitter<string[]>;
     /**
      * Emitted when the chip has added.
      */
-    bdsInputChipsInput: EventEmitter;
+    bdsInputChipsInput: EventEmitter<InputEvent>;
     /**
      * Emitted when a maximum value defined by the "max-chips-length" prop is entered
      */
-    bdsExtendedQuantityInput: EventEmitter;
+    bdsExtendedQuantityInput: EventEmitter<{
+        value: boolean;
+    }>;
     /**
      * Emitted when the chip has added.
      */
-    bdsSubmit: EventEmitter;
+    bdsSubmit: EventEmitter<{
+        value: string[];
+    }>;
     /**
      * Call change event before alter chips values.
      */

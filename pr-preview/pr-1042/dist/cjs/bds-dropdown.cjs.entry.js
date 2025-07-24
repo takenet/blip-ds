@@ -152,10 +152,10 @@ const BdsDropdown = class {
         const zIndexSubmenu = {
             zIndex: `${this.zIndex}`,
         };
-        return (index.h(index.Host, { key: '939a25fc739bb7820e92fd85b8875ecd19482e9a' }, index.h("slot", { key: '8ca0ab91226ca341c5d73a44d402dcc601ce9085', name: "dropdown-activator" }), index.h("div", { key: '1b0ec61d5bdba6ebbfc4b52d6135f370e643a0cd', ref: (el) => this.refDropElement(el), class: {
+        return (index.h(index.Host, { key: '9506c03b715ae15a02663604caa0134fd74305df' }, index.h("slot", { key: 'b040be89614b532467b7902579316b7c3214a042', name: "dropdown-activator" }), index.h("div", { key: 'a41de68091a5184dd30d0e817ca8a785caf088fd', ref: (el) => this.refDropElement(el), class: {
                 dropdown: true,
                 dropdown__open: this.open,
-            }, "data-test": this.dataTest, onMouseOver: () => this.onMouseOver(), onMouseOut: () => this.onMouseOut() }, index.h("div", { key: 'a9bfdcc1db256676b7ae4c39d0aca6abe2209c92', class: "content", style: zIndexSubmenu }, index.h("slot", { key: 'a10054f1c922dc1f10ae9e668443942fb02d77a8', name: "dropdown-content" }))), this.activeMode !== 'hover' && this.open && (index.h("div", { key: 'd7a20da55b47fd6c3714a7908f1cd931755fd49a', class: { outzone: true }, onClick: () => this.onClickCloseButtom() }))));
+            }, "data-test": this.dataTest, onMouseOver: () => this.onMouseOver(), onMouseOut: () => this.onMouseOut() }, index.h("div", { key: '78215d5f616b99f77057c794c648e17805208903', class: "content", style: zIndexSubmenu }, index.h("slot", { key: 'fcd19931712926d39c084922c30ed3ab713cb704', name: "dropdown-content" }))), this.activeMode !== 'hover' && this.open && (index.h("div", { key: 'd7d76358de753b672aa63df1ac63ac78d5e3ade2', class: { outzone: true }, onClick: () => this.onClickCloseButtom() }))));
     }
     get hostElement() { return index.getElement(this); }
     static get watchers() { return {

@@ -27,7 +27,7 @@ const BannerLink = class {
     }
     render() {
         const Element = 'a';
-        return (h(Element, { key: 'c8568adcbe7eb31b2bcf5ac88f08357a950d30c5', class: { banner__link: true }, onClick: () => this._buttonClickHandler(), "data-test": this.dataTest, tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("slot", { key: 'eaaa13f59a5662c02459cbb12cb1cfa78c5a1120' })));
+        return (h(Element, { key: '5d7ce8c2e9663e11c34610edfb8133e893f407d8', class: { banner__link: true }, onClick: () => this._buttonClickHandler(), "data-test": this.dataTest, tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("slot", { key: 'c3f618d5db27a6aeef57f661b53802ea3af9137d' })));
     }
     get el() { return getElement(this); }
 };
