@@ -427,10 +427,7 @@ describe('bds-pagination', () => {
       };
       
       const mockDropdown = {
-        querySelector: jest.fn().mockReturnValue(mockSelectedOption),
-        classList: {
-          contains: jest.fn().mockReturnValue(true) // Mock dropdown as open
-        }
+        querySelector: jest.fn().mockReturnValue(mockSelectedOption)
       };
       
       const mockShadowRoot = {
@@ -569,20 +566,13 @@ describe('bds-pagination', () => {
       expect(component.paginationNumbers.length).toBe(initialLength);
     });
 
-    it('should attach scroll listener and mutation observer in componentDidRender', async () => {
+    it('should attach scroll listener in componentDidRender', async () => {
       const page = await newSpecPage({
         components: [Pagination],
         html: `<bds-pagination pages="1000"></bds-pagination>`,
       });
       
       const component = page.rootInstance;
-      
-      // Mock MutationObserver
-      const mockObserver = {
-        observe: jest.fn(),
-        disconnect: jest.fn()
-      };
-      (global as any).MutationObserver = jest.fn(() => mockObserver);
       
       // Mock the selectRef and its shadowRoot
       const mockDropdown = {
@@ -606,29 +596,15 @@ describe('bds-pagination', () => {
       expect(mockShadowRoot.querySelector).toHaveBeenCalledWith('.select__options');
       expect(mockDropdown.addEventListener).toHaveBeenCalledWith('scroll', component.handleSelectScroll);
       expect(mockDropdown.setAttribute).toHaveBeenCalledWith('data-scroll-listener-attached', 'true');
-      
-      // Verify mutation observer was set up
-      expect(global.MutationObserver).toHaveBeenCalled();
-      expect(mockObserver.observe).toHaveBeenCalledWith(mockDropdown, {
-        attributes: true,
-        attributeFilter: ['class']
-      });
     });
 
-    it('should remove scroll listener and disconnect observer in disconnectedCallback', async () => {
+    it('should remove scroll listener in disconnectedCallback', async () => {
       const page = await newSpecPage({
         components: [Pagination],
         html: `<bds-pagination pages="1000"></bds-pagination>`,
       });
       
       const component = page.rootInstance;
-      
-      // Mock MutationObserver
-      const mockObserver = {
-        observe: jest.fn(),
-        disconnect: jest.fn()
-      };
-      component.dropdownObserver = mockObserver;
       
       // Mock the selectRef and its shadowRoot
       const mockDropdown = {
@@ -651,10 +627,6 @@ describe('bds-pagination', () => {
       expect(mockShadowRoot.querySelector).toHaveBeenCalledWith('.select__options');
       expect(mockDropdown.removeEventListener).toHaveBeenCalledWith('scroll', component.handleSelectScroll);
       expect(mockDropdown.removeAttribute).toHaveBeenCalledWith('data-scroll-listener-attached');
-      
-      // Verify mutation observer was disconnected
-      expect(mockObserver.disconnect).toHaveBeenCalled();
-      expect(component.dropdownObserver).toBeNull();
     });
   });
 });

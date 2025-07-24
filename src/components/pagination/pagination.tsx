@@ -145,11 +145,6 @@ export class Pagination {
   }
 
   /**
-   * MutationObserver to watch for dropdown state changes
-   */
-  private dropdownObserver?: MutationObserver;
-
-  /**
    * Anexa o listener de scroll ao dropdown do select quando ele está disponível
    */
   private attachScrollListener() {
@@ -160,35 +155,24 @@ export class Pagination {
         dropdown.addEventListener('scroll', this.handleSelectScroll);
         dropdown.setAttribute('data-scroll-listener-attached', 'true');
         
-        // Set up mutation observer to watch for dropdown opening
-        this.setupDropdownObserver(dropdown);
+        // Add event listener to the select input to detect when dropdown opens
+        const selectInput = this.selectRef.shadowRoot?.querySelector('.input__container__text');
+        if (selectInput) {
+          selectInput.addEventListener('focus', this.handleSelectOpen);
+        }
       }
     }
   }
 
   /**
-   * Sets up a MutationObserver to watch for when dropdown opens
+   * Handle when select dropdown opens
    */
-  private setupDropdownObserver(dropdown: Element) {
-    this.dropdownObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const target = mutation.target as HTMLElement;
-          if (target.classList.contains('select__options--open')) {
-            // Dropdown just opened, schedule scroll to selected option
-            requestAnimationFrame(() => {
-              this.scrollToSelectedOption();
-            });
-          }
-        }
-      });
-    });
-
-    this.dropdownObserver.observe(dropdown, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-  }
+  private handleSelectOpen = () => {
+    // Use setTimeout to ensure dropdown is rendered and visible
+    setTimeout(() => {
+      this.scrollToSelectedOption();
+    }, 100);
+  };
 
   /**
    * Scroll dropdown to the currently selected option when it opens
@@ -196,7 +180,7 @@ export class Pagination {
   scrollToSelectedOption() {
     if (this.selectRef && this.value) {
       const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
-      if (dropdown && dropdown.classList.contains('select__options--open')) {
+      if (dropdown) {
         // Find the selected option element
         const selectedOption = dropdown.querySelector(`bds-select-option[value="${this.value}"]`);
         if (selectedOption) {
@@ -217,12 +201,12 @@ export class Pagination {
         dropdown.removeEventListener('scroll', this.handleSelectScroll);
         dropdown.removeAttribute('data-scroll-listener-attached');
       }
-    }
-    
-    // Disconnect mutation observer
-    if (this.dropdownObserver) {
-      this.dropdownObserver.disconnect();
-      this.dropdownObserver = null;
+      
+      // Remove focus listener from select input
+      const selectInput = this.selectRef.shadowRoot?.querySelector('.input__container__text');
+      if (selectInput) {
+        selectInput.removeEventListener('focus', this.handleSelectOpen);
+      }
     }
   }
 
@@ -275,11 +259,6 @@ export class Pagination {
     for (let i = start; i <= end; i++) {
       this.paginationNumbers.push(i);
     }
-    
-    // After loading a range, re-attach scroll listeners and scroll to current value
-    requestAnimationFrame(() => {
-      this.attachScrollListener();
-    });
   }
 
   /**
@@ -320,11 +299,6 @@ export class Pagination {
     for (let i = newStart; i <= newEnd; i++) {
       this.paginationNumbers.push(i);
     }
-    
-    // After loading a range, re-attach scroll listeners
-    requestAnimationFrame(() => {
-      this.attachScrollListener();
-    });
   }
 
   countPage() {
