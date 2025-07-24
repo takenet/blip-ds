@@ -622,5 +622,84 @@ describe('bds-pagination', () => {
       expect(mockDropdown.removeEventListener).toHaveBeenCalledWith('scroll', component.handleSelectScroll);
       expect(mockDropdown.removeAttribute).toHaveBeenCalledWith('data-scroll-listener-attached');
     });
+    it('should attach scroll listener after loading last page range', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // Mock the selectRef and its shadowRoot
+      const mockDropdown = {
+        addEventListener: jest.fn(),
+        setAttribute: jest.fn(),
+        hasAttribute: jest.fn().mockReturnValue(false)
+      };
+      
+      const mockShadowRoot = {
+        querySelector: jest.fn().mockReturnValue(mockDropdown)
+      };
+      
+      component.selectRef = {
+        shadowRoot: mockShadowRoot
+      } as any;
+      
+      // Navigate to last page (this should trigger scroll listener re-attachment)
+      component.lastPage(new Event('click'));
+      
+      // Wait for the setTimeout in loadMorePages to execute
+      await new Promise(resolve => setTimeout(resolve, 150));
+      
+      // Verify scroll listener was attached after navigation
+      expect(mockShadowRoot.querySelector).toHaveBeenCalledWith('.select__options');
+      expect(mockDropdown.addEventListener).toHaveBeenCalledWith('scroll', component.handleSelectScroll);
+    });
+
+    it('should correctly handle scroll to top after navigating to last page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5000"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // Step 1: Navigate to last page
+      component.lastPage(new Event('click'));
+      
+      // Verify we're on the last range
+      expect(component.value).toBe(5000);
+      expect(component.loadedPageRange.start).toBe(4901);
+      expect(component.loadedPageRange.end).toBe(5000);
+      expect(component.paginationNumbers.length).toBe(100);
+      
+      // Step 2: Simulate scroll to top
+      const mockScrollEvent = {
+        target: {
+          scrollTop: 5, // This triggers "scroll to top" (<=10)
+          scrollHeight: 1000,
+          clientHeight: 100
+        }
+      } as any;
+      
+      component.handleSelectScroll(mockScrollEvent);
+      
+      // Step 3: Verify previous pages were loaded
+      expect(component.loadedPageRange.start).toBe(4851); // 4901 - 50 = 4851
+      expect(component.loadedPageRange.end).toBe(5000); // Should remain the same
+      expect(component.paginationNumbers.length).toBe(150); // 100 original + 50 new
+      
+      // Verify specific pages are present
+      expect(component.paginationNumbers).toContain(4851); // First new page
+      expect(component.paginationNumbers).toContain(4900); // Last new page
+      expect(component.paginationNumbers).toContain(4901); // First original page
+      expect(component.paginationNumbers).toContain(5000); // Last original page
+      
+      // Verify pages are in correct order
+      expect(component.paginationNumbers[0]).toBe(4851);
+      expect(component.paginationNumbers[49]).toBe(4900);
+      expect(component.paginationNumbers[50]).toBe(4901);
+      expect(component.paginationNumbers[149]).toBe(5000);
+    });
   });
 });
