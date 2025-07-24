@@ -435,5 +435,106 @@ describe('bds-pagination', () => {
         expect(component.value).toBe(targetPage);
       }
     });
+
+    it('New Behavior: should switch to reverse pagination mode when clicking last page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Verify starting state - should be in normal mode
+      expect(component.isReversePaginationMode).toBe(false);
+      expect(component.value).toBe(1);
+      
+      // Click last page button
+      component.lastPage(new Event('click'));
+      
+      // Should be on page 1000 and in reverse mode
+      expect(component.value).toBe(1000);
+      expect(component.isReversePaginationMode).toBe(true);
+      
+      // Should show only last 100 pages (901-1000)
+      expect(component.visiblePageOptions.length).toBe(100);
+      expect(component.visiblePageOptions[0]).toBe(901);
+      expect(component.visiblePageOptions[component.visiblePageOptions.length - 1]).toBe(1000);
+      
+      // Should contain the current page (1000)
+      expect(component.visiblePageOptions).toContain(1000);
+    });
+
+    it('New Behavior: should load previous pages when scrolling up in reverse mode', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Switch to reverse mode by clicking last page
+      component.lastPage(new Event('click'));
+      expect(component.isReversePaginationMode).toBe(true);
+      expect(component.visiblePageOptions.length).toBe(100); // Pages 901-1000
+      
+      // Simulate scrolling up (load previous pages)
+      component.loadPreviousPages();
+      
+      // Should now show last 200 pages (801-1000)
+      expect(component.visiblePageOptions.length).toBe(200);
+      expect(component.visiblePageOptions[0]).toBe(801);
+      expect(component.visiblePageOptions[component.visiblePageOptions.length - 1]).toBe(1000);
+      
+      // Load more previous pages
+      component.loadPreviousPages();
+      
+      // Should now show last 300 pages (701-1000)
+      expect(component.visiblePageOptions.length).toBe(300);
+      expect(component.visiblePageOptions[0]).toBe(701);
+      expect(component.visiblePageOptions[component.visiblePageOptions.length - 1]).toBe(1000);
+    });
+
+    it('New Behavior: should maintain reverse mode for pages near the end', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Navigate to a page near the end (page 960)
+      component.value = 960;
+      component.updateVisiblePageOptions();
+      
+      // Should be in reverse mode because 960 > (1000 - 50)
+      expect(component.isReversePaginationMode).toBe(true);
+      
+      // Should show appropriate range including current page
+      expect(component.visiblePageOptions).toContain(960);
+    });
+
+    it('New Behavior: should use normal mode for pages at the beginning', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Navigate to a page at the beginning
+      component.value = 50;
+      component.updateVisiblePageOptions();
+      
+      // Should be in normal mode
+      expect(component.isReversePaginationMode).toBe(false);
+      
+      // Should show pages from 1 to at least 100
+      expect(component.visiblePageOptions[0]).toBe(1);
+      expect(component.visiblePageOptions).toContain(50);
+    });
   });
 });

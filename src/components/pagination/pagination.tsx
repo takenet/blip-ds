@@ -46,6 +46,11 @@ export class Pagination {
    */
   @State() loadedPagesCount = PAGE_LOAD_CHUNK_SIZE;
 
+  /**
+   * Estado que controla se estamos no modo de paginação reversa (carregando do final para o início).
+   */
+  @State() isReversePaginationMode = false;
+
   // Estado que armazena o número de itens por página selecionado
   @State() itemsPerPage: number;
 
@@ -185,6 +190,7 @@ export class Pagination {
   @Watch('startedPage')
   pagesChanged(): void {
     this.loadedPagesCount = PAGE_LOAD_CHUNK_SIZE; // Reset para PAGE_LOAD_CHUNK_SIZE páginas conforme solicitado
+    this.isReversePaginationMode = false; // Reset para modo normal
     this.countPage();
   }
 
@@ -230,9 +236,13 @@ export class Pagination {
 
   /**
    * Atualiza as opções de página visíveis para renderização otimizada.
-   * Implementa lazy loading conforme solicitado: mostra páginas consecutivas de 1 até loadedPagesCount,
-   * expandindo conforme o usuário faz scroll.
-   * Garante que a página atual esteja sempre visível nas opções.
+   * Implementa lazy loading com modo normal (do início) e modo reverso (do final).
+   * 
+   * Comportamento:
+   * - Para ≤100 páginas: mostra todas
+   * - Para >100 páginas no modo normal: mostra páginas 1 até loadedPagesCount
+   * - Para >100 páginas no modo reverso: mostra últimas loadedPagesCount páginas
+   * - Garante que a página atual esteja sempre visível nas opções
    */
   updateVisiblePageOptions() {
     if (!this.pages || this.pages <= 0) {
@@ -243,23 +253,53 @@ export class Pagination {
     // Para um número pequeno de páginas (≤PAGE_LOAD_CHUNK_SIZE), mostra todas
     if (this.pages <= PAGE_LOAD_CHUNK_SIZE) {
       this.visiblePageOptions = [...this.paginationNumbers];
+      this.isReversePaginationMode = false;
       return;
     }
 
-    // Garantir que a página atual esteja incluída nas páginas carregadas
     const currentPage = this.value || 1;
-    const minLoadedPages = Math.max(this.loadedPagesCount, currentPage);
-    
-    // Para páginas > PAGE_LOAD_CHUNK_SIZE, mostra páginas consecutivas de 1 até minLoadedPages
-    const maxPagesToShow = Math.min(minLoadedPages, this.pages);
+
+    // Determinar se devemos usar modo reverso baseado na página atual
+    // Se a página atual está próxima do final (últimas 50 páginas), usar modo reverso
+    const shouldUseReverseMode = currentPage > (this.pages - 50);
+
+    if (shouldUseReverseMode) {
+      this.isReversePaginationMode = true;
+      this.updateVisiblePageOptionsReverse();
+    } else {
+      // Verificar se a página atual está além das páginas carregadas no modo normal
+      if (currentPage > this.loadedPagesCount) {
+        // Expandir o range para incluir a página atual
+        this.loadedPagesCount = Math.max(this.loadedPagesCount, currentPage);
+      }
+      this.isReversePaginationMode = false;
+      this.updateVisiblePageOptionsNormal();
+    }
+  }
+
+  /**
+   * Atualiza as opções no modo normal (do início para o final).
+   */
+  private updateVisiblePageOptionsNormal() {
+    const maxPagesToShow = Math.min(this.loadedPagesCount, this.pages);
     
     this.visiblePageOptions = [];
     for (let i = 1; i <= maxPagesToShow; i++) {
       this.visiblePageOptions.push(i);
     }
+  }
+
+  /**
+   * Atualiza as opções no modo reverso (do final para o início).
+   */
+  private updateVisiblePageOptionsReverse() {
+    const maxPagesToShow = Math.min(this.loadedPagesCount, this.pages);
+    const startPage = Math.max(1, this.pages - maxPagesToShow + 1);
     
-    // Atualizar loadedPagesCount para refletir as páginas realmente carregadas
-    this.loadedPagesCount = maxPagesToShow;
+    this.visiblePageOptions = [];
+    for (let i = startPage; i <= this.pages; i++) {
+      this.visiblePageOptions.push(i);
+    }
   }
 
   nextPage = (event: Event) => {
@@ -294,6 +334,14 @@ export class Pagination {
     if (el < this.pages) {
       event.preventDefault();
       this.value = this.pages;
+      
+      // Implementar novo comportamento: ao clicar na última página,
+      // carregar apenas as últimas PAGE_LOAD_CHUNK_SIZE páginas
+      if (this.pages > PAGE_LOAD_CHUNK_SIZE) {
+        this.isReversePaginationMode = true;
+        this.loadedPagesCount = PAGE_LOAD_CHUNK_SIZE;
+      }
+      
       this.updateItemRange();
     }
   };
@@ -324,24 +372,46 @@ export class Pagination {
   }
 
   /**
-   * Manipula o evento de scroll no select para implementar lazy loading.
+   * Manipula o evento de scroll no select para implementar lazy loading bidirecional.
    */
   onSelectScroll = (event: Event) => {
     const target = event.target as HTMLElement;
-    const threshold = 50; // Pixels do final para carregar mais
+    const threshold = 50; // Pixels do final/início para carregar mais
     
-    // Verifica se o usuário está próximo do final da lista
-    if (target.scrollTop + target.clientHeight >= target.scrollHeight - threshold) {
-      this.loadMorePages();
+    if (this.isReversePaginationMode) {
+      // No modo reverso, verifica se o usuário está no topo para carregar páginas anteriores
+      if (target.scrollTop <= threshold) {
+        this.loadPreviousPages();
+      }
+    } else {
+      // No modo normal, verifica se o usuário está no final para carregar mais páginas
+      if (target.scrollTop + target.clientHeight >= target.scrollHeight - threshold) {
+        this.loadMorePages();
+      }
     }
   };
 
   /**
-   * Carrega mais páginas quando o usuário scroll próximo ao final.
+   * Carrega mais páginas quando o usuário scroll próximo ao final (modo normal).
    * Implementa lazy loading conforme solicitado: carrega PAGE_LOAD_CHUNK_SIZE páginas por vez.
    */
   loadMorePages() {
-    if (this.loadedPagesCount < this.pages) {
+    if (!this.isReversePaginationMode && this.loadedPagesCount < this.pages) {
+      // Incrementa em PAGE_LOAD_CHUNK_SIZE páginas por vez conforme solicitado
+      const newLoadedCount = Math.min(this.pages, this.loadedPagesCount + PAGE_LOAD_CHUNK_SIZE);
+      if (newLoadedCount > this.loadedPagesCount) {
+        this.loadedPagesCount = newLoadedCount;
+        this.updateVisiblePageOptions();
+      }
+    }
+  }
+
+  /**
+   * Carrega páginas anteriores quando o usuário scroll próximo ao topo (modo reverso).
+   * Implementa lazy loading reverso: carrega PAGE_LOAD_CHUNK_SIZE páginas anteriores por vez.
+   */
+  loadPreviousPages() {
+    if (this.isReversePaginationMode && this.loadedPagesCount < this.pages) {
       // Incrementa em PAGE_LOAD_CHUNK_SIZE páginas por vez conforme solicitado
       const newLoadedCount = Math.min(this.pages, this.loadedPagesCount + PAGE_LOAD_CHUNK_SIZE);
       if (newLoadedCount > this.loadedPagesCount) {
