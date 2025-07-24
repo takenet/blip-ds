@@ -570,5 +570,42 @@ describe('bds-pagination', () => {
       expect(component.value).toBe(102);
       expect(component.visiblePageOptions.includes(102)).toBe(true);
     });
+
+    it('Bug 3: should display the selected page in select without needing to click on the select', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1000" started-page="1"></bds-pagination>`,
+      });
+      
+      await page.waitForChanges();
+      const component = page.rootInstance;
+      
+      // Initial state - page 1 should be selected
+      expect(component.value).toBe(1);
+      expect(component.visiblePageOptions).toContain(1);
+      
+      // Navigate to page 101 by clicking next button 100 times
+      for (let i = 0; i < 100; i++) {
+        component.nextPage(new Event('click'));
+      }
+      
+      // Page 101 should be selected and visible in visiblePageOptions
+      expect(component.value).toBe(101);
+      expect(component.visiblePageOptions).toContain(101);
+      
+      // Click next button again to go to page 102
+      component.nextPage(new Event('click'));
+      
+      // Page 102 should be selected and visible in visiblePageOptions
+      expect(component.value).toBe(102);
+      expect(component.visiblePageOptions).toContain(102);
+      
+      // Test last page navigation
+      component.lastPage(new Event('click'));
+      
+      // Last page (1000) should be selected and visible in visiblePageOptions
+      expect(component.value).toBe(1000);
+      expect(component.visiblePageOptions).toContain(1000);
+    });
   });
 });
