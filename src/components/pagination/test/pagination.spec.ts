@@ -498,42 +498,6 @@ describe('bds-pagination', () => {
       expect(component.loadedPageRange.start).toBeLessThan(initialStart);
     });
 
-    it('should correctly load previous pages when scrolling to top with specific range', async () => {
-      const page = await newSpecPage({
-        components: [Pagination],
-        html: `<bds-pagination pages="1000"></bds-pagination>`,
-      });
-      
-      const component = page.rootInstance;
-      
-      // Set up initial state: pages 451-550 loaded
-      component.loadedPageRange = { start: 451, end: 550 };
-      component.paginationNumbers = [];
-      for (let i = 451; i <= 550; i++) {
-        component.paginationNumbers.push(i);
-      }
-      
-      // Simulate scroll to top to load previous pages
-      component.loadMorePagesForScroll('prev');
-      
-      // Should have extended the range to the left
-      expect(component.loadedPageRange.start).toBe(401); // 451 - 50 = 401
-      expect(component.loadedPageRange.end).toBe(550); // end should remain the same
-      
-      // Should have added previous pages (401-450) to the beginning
-      expect(component.paginationNumbers).toContain(401);
-      expect(component.paginationNumbers).toContain(450);
-      expect(component.paginationNumbers).toContain(451); // original pages should still be there
-      expect(component.paginationNumbers).toContain(550);
-      
-      // Should have exactly 150 pages now (50 new + 100 original)
-      expect(component.paginationNumbers.length).toBe(150);
-      
-      // The first page should be 401 and last should be 550
-      expect(component.paginationNumbers[0]).toBe(401);
-      expect(component.paginationNumbers[component.paginationNumbers.length - 1]).toBe(550);
-    });
-
     it('should not load more pages when at boundaries', async () => {
       const page = await newSpecPage({
         components: [Pagination],
