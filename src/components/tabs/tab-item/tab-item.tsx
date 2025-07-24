@@ -59,6 +59,18 @@ export class BdsTabItem {
    */
   @Prop({ mutable: true, reflect: true }) disable?: boolean = false;
   /**
+   * Prop to indicate an error state for the tab.
+   */
+  @Prop() error?: boolean = false;
+  /**
+   * Inline styles to be applied to the tab group header element.
+   */
+  @Prop() headerStyle?: string = null;
+  /**
+   * Inline styles to be applied to the tab group content element.
+   */
+  @Prop() contentStyle?: string = null;
+  /**
    * Used to open/close the Tab item.
    */
   @Prop({ mutable: true, reflect: true }) public open?: boolean = false;

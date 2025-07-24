@@ -262,6 +262,60 @@ describe('bds-tab-item', () => {
 
       expect(page.rootInstance.dataTest).toBe('tab-test');
     });
+
+    it('should set error property with default value', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.error).toBe(false);
+    });
+
+    it('should set error property', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item error="true"></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.error).toBe(true);
+    });
+
+    it('should set headerStyle property with default value', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.headerStyle).toBe(null);
+    });
+
+    it('should set headerStyle property', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item header-style="padding: 0;"></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.headerStyle).toBe('padding: 0;');
+    });
+
+    it('should set contentStyle property with default value', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.contentStyle).toBe(null);
+    });
+
+    it('should set contentStyle property', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `<bds-tab-item content-style="background: red;"></bds-tab-item>`,
+      });
+
+      expect(page.rootInstance.contentStyle).toBe('background: red;');
+    });
   });
 
   describe('Open state behavior', () => {
@@ -427,6 +481,36 @@ describe('bds-tab-item', () => {
       // But the content div should still have the open class based on the open prop
       const contentDiv = page.root.shadowRoot.querySelector('.tab_item_content');
       expect(contentDiv).toHaveClass('tab_item_content--open');
+    });
+
+    it('should handle error property in complex scenarios', async () => {
+      const page = await newSpecPage({
+        components: [BdsTabItem],
+        html: `
+          <bds-tab-item 
+            label="Error Tab" 
+            icon="warning" 
+            error="true"
+            open="true"
+            data-test="error-tab">
+            Error content
+          </bds-tab-item>
+        `,
+      });
+
+      expect(page.rootInstance.label).toBe('Error Tab');
+      expect(page.rootInstance.icon).toBe('warning');
+      expect(page.rootInstance.error).toBe(true);
+      expect(page.rootInstance.open).toBe(true);
+      expect(page.rootInstance.dataTest).toBe('error-tab');
+      
+      expect(page.root).toHaveClass('is-open');
+      
+      const contentDiv = page.root.shadowRoot.querySelector('.tab_item_content');
+      expect(contentDiv).toHaveClass('tab_item_content--open');
+      
+      const tabDiv = page.root.shadowRoot.querySelector('.tab_item');
+      expect(tabDiv.getAttribute('data-test')).toBe('error-tab');
     });
   });
 });
