@@ -7,15 +7,6 @@ export class Pagination {
      * Tamanho do batch de páginas carregadas por vez.
      */
     this.pageLoadSize = 100;
-    /**
-     * Handle when select dropdown opens
-     */
-    this.handleSelectOpen = () => {
-      // Use setTimeout to ensure dropdown is rendered and visible
-      setTimeout(() => {
-        this.scrollToSelectedOption();
-      }, 100);
-    };
     this.nextPage = (event) => {
       const el = this.value;
       if (el < this.pages) {
@@ -131,13 +122,32 @@ export class Pagination {
       if (dropdown && !dropdown.hasAttribute('data-scroll-listener-attached')) {
         dropdown.addEventListener('scroll', this.handleSelectScroll);
         dropdown.setAttribute('data-scroll-listener-attached', 'true');
-        // Add event listener to the select input to detect when dropdown opens
-        const selectInput = this.selectRef.shadowRoot?.querySelector('.input__container__text');
-        if (selectInput) {
-          selectInput.addEventListener('focus', this.handleSelectOpen);
-        }
+        // Set up mutation observer to watch for dropdown opening
+        this.setupDropdownObserver(dropdown);
       }
     }
+  }
+  /**
+   * Sets up a MutationObserver to watch for when dropdown opens
+   */
+  setupDropdownObserver(dropdown) {
+    this.dropdownObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const target = mutation.target;
+          if (target.classList.contains('select__options--open')) {
+            // Dropdown just opened, schedule scroll to selected option
+            requestAnimationFrame(() => {
+              this.scrollToSelectedOption();
+            });
+          }
+        }
+      });
+    });
+    this.dropdownObserver.observe(dropdown, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
   }
   /**
    * Scroll dropdown to the currently selected option when it opens
@@ -145,7 +155,7 @@ export class Pagination {
   scrollToSelectedOption() {
     if (this.selectRef && this.value) {
       const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
-      if (dropdown) {
+      if (dropdown && dropdown.classList.contains('select__options--open')) {
         // Find the selected option element
         const selectedOption = dropdown.querySelector(`bds-select-option[value="${this.value}"]`);
         if (selectedOption) {
@@ -165,11 +175,11 @@ export class Pagination {
         dropdown.removeEventListener('scroll', this.handleSelectScroll);
         dropdown.removeAttribute('data-scroll-listener-attached');
       }
-      // Remove focus listener from select input
-      const selectInput = this.selectRef.shadowRoot?.querySelector('.input__container__text');
-      if (selectInput) {
-        selectInput.removeEventListener('focus', this.handleSelectOpen);
-      }
+    }
+    // Disconnect mutation observer
+    if (this.dropdownObserver) {
+      this.dropdownObserver.disconnect();
+      this.dropdownObserver = null;
     }
   }
   pagesChanged() {
@@ -212,6 +222,10 @@ export class Pagination {
     for (let i = start; i <= end; i++) {
       this.paginationNumbers.push(i);
     }
+    // After loading a range, re-attach scroll listeners and scroll to current value
+    requestAnimationFrame(() => {
+      this.attachScrollListener();
+    });
   }
   /**
    * Carrega mais páginas baseado na direção da navegação
@@ -248,6 +262,10 @@ export class Pagination {
     for (let i = newStart; i <= newEnd; i++) {
       this.paginationNumbers.push(i);
     }
+    // After loading a range, re-attach scroll listeners
+    requestAnimationFrame(() => {
+      this.attachScrollListener();
+    });
   }
   countPage() {
     if (this.paginationNumbers.length !== 0) {

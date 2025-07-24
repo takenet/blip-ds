@@ -88,13 +88,17 @@ export declare class Pagination {
   componentDidRender(): void;
   disconnectedCallback(): void;
   /**
+   * MutationObserver to watch for dropdown state changes
+   */
+  private dropdownObserver?;
+  /**
    * Anexa o listener de scroll ao dropdown do select quando ele está disponível
    */
   private attachScrollListener;
   /**
-   * Handle when select dropdown opens
+   * Sets up a MutationObserver to watch for when dropdown opens
    */
-  private handleSelectOpen;
+  private setupDropdownObserver;
   /**
    * Scroll dropdown to the currently selected option when it opens
    */
