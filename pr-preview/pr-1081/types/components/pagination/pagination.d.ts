@@ -2,6 +2,7 @@ import { Event, EventEmitter } from '../../stencil-public-runtime';
 export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
 export declare class Pagination {
   private el;
+  private selectRef?;
   /**
    * Estado que armazena o valor selecionado no seletor de página.
    * Inicialmente, é configurado com a página inicial (startedPage).
@@ -84,6 +85,16 @@ export declare class Pagination {
   startItem: number;
   endItem: number;
   componentWillLoad(): void;
+  componentDidRender(): void;
+  disconnectedCallback(): void;
+  /**
+   * Anexa o listener de scroll ao dropdown do select quando ele está disponível
+   */
+  private attachScrollListener;
+  /**
+   * Remove o listener de scroll do dropdown
+   */
+  private removeScrollListener;
   pagesChanged(): void;
   valueChanged(): void;
   processItemsPage(): void;
@@ -108,6 +119,10 @@ export declare class Pagination {
    * Manipula o scroll no dropdown de páginas para carregar mais opções
    */
   handleSelectScroll: (event: Event) => void;
+  /**
+   * Carrega mais páginas para scroll (mantém as páginas existentes e adiciona novas)
+   */
+  loadMorePagesForScroll(direction: 'next' | 'prev'): void;
   itemSelected(index: any): void;
   updateItemRange(): void;
   get currentLanguage(): {

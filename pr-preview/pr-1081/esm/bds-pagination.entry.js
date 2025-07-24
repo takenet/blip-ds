@@ -90,19 +90,13 @@ const Pagination = class {
       // Check if scrolled to bottom (load next pages)
       if (scrollTop + clientHeight >= scrollHeight - 10) {
         if (this.loadedPageRange.end < this.pages) {
-          const currentNumbers = [...this.paginationNumbers];
-          this.loadMorePages('next');
-          // Merge with existing numbers to avoid jump
-          this.paginationNumbers = [...currentNumbers, ...this.paginationNumbers.filter(num => !currentNumbers.includes(num))];
+          this.loadMorePagesForScroll('next');
         }
       }
-      // Check if scrolled to top (load previous pages)
+      // Check if scrolled to top (load previous pages)  
       if (scrollTop <= 10) {
         if (this.loadedPageRange.start > 1) {
-          const currentNumbers = [...this.paginationNumbers];
-          this.loadMorePages('prev');
-          // Merge with existing numbers to avoid jump
-          this.paginationNumbers = [...this.paginationNumbers.filter(num => !currentNumbers.includes(num)), ...currentNumbers];
+          this.loadMorePagesForScroll('prev');
         }
       }
     };
@@ -135,6 +129,37 @@ const Pagination = class {
     }
     this.itemSelected(this.itemValue);
     this.countItem();
+  }
+  componentDidRender() {
+    this.attachScrollListener();
+  }
+  disconnectedCallback() {
+    this.removeScrollListener();
+  }
+  /**
+   * Anexa o listener de scroll ao dropdown do select quando ele está disponível
+   */
+  attachScrollListener() {
+    if (this.selectRef) {
+      // Busca o dropdown dentro do shadow root do select
+      const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
+      if (dropdown && !dropdown.hasAttribute('data-scroll-listener-attached')) {
+        dropdown.addEventListener('scroll', this.handleSelectScroll);
+        dropdown.setAttribute('data-scroll-listener-attached', 'true');
+      }
+    }
+  }
+  /**
+   * Remove o listener de scroll do dropdown
+   */
+  removeScrollListener() {
+    if (this.selectRef) {
+      const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
+      if (dropdown) {
+        dropdown.removeEventListener('scroll', this.handleSelectScroll);
+        dropdown.removeAttribute('data-scroll-listener-attached');
+      }
+    }
   }
   pagesChanged() {
     this.countPage();
@@ -245,6 +270,42 @@ const Pagination = class {
     this.openOptions();
     this.updateItemRange();
   }
+  /**
+   * Carrega mais páginas para scroll (mantém as páginas existentes e adiciona novas)
+   */
+  loadMorePagesForScroll(direction) {
+    if (!this.pages)
+      return;
+    const batchSize = 50; // Smaller batch for smooth scrolling
+    let newStart = this.loadedPageRange.start;
+    let newEnd = this.loadedPageRange.end;
+    if (direction === 'next' && newEnd < this.pages) {
+      // Extend the range to the right
+      newEnd = Math.min(this.pages, newEnd + batchSize);
+      this.loadedPageRange = { start: newStart, end: newEnd };
+      // Add new pages to the existing array
+      for (let i = this.loadedPageRange.end - batchSize + 1; i <= newEnd; i++) {
+        if (i > 0 && !this.paginationNumbers.includes(i)) {
+          this.paginationNumbers.push(i);
+        }
+      }
+    }
+    else if (direction === 'prev' && newStart > 1) {
+      // Extend the range to the left
+      newStart = Math.max(1, newStart - batchSize);
+      this.loadedPageRange = { start: newStart, end: newEnd };
+      // Add new pages to the beginning of the array
+      const newPages = [];
+      for (let i = newStart; i < this.loadedPageRange.start + batchSize; i++) {
+        if (i > 0 && !this.paginationNumbers.includes(i)) {
+          newPages.push(i);
+        }
+      }
+      this.paginationNumbers = [...newPages, ...this.paginationNumbers];
+    }
+    // Force re-render to show new options
+    this.paginationNumbers = [...this.paginationNumbers];
+  }
   itemSelected(index) {
     this.itemValue = index;
     this.itemsPerPage = index;
@@ -269,7 +330,7 @@ const Pagination = class {
   }
   render() {
     const { currentLanguage } = this;
-    return (h(Host, { class: { full_width: this.pageCounter } }, h("bds-grid", { "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (h("bds-grid", { gap: "1", "align-items": "center", class: "items_per_page" }, h("bds-typo", { variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), h("bds-select", { class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, this.itemsPage?.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.itemSelected(el) }, el)))), h("bds-typo", { variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), h("bds-grid", { gap: "1", "align-items": "center", class: "actions" }, h("bds-button-icon", { onBdsClick: (ev) => this.firstPage(ev), size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), h("bds-button-icon", { onBdsClick: (ev) => this.previewPage(ev), size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), h("bds-select", { class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.paginationNumbers.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (h("bds-typo", { class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), h("bds-button-icon", { onBdsClick: (ev) => this.nextPage(ev), size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), h("bds-button-icon", { onBdsClick: (ev) => this.lastPage(ev), size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
+    return (h(Host, { class: { full_width: this.pageCounter } }, h("bds-grid", { "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (h("bds-grid", { gap: "1", "align-items": "center", class: "items_per_page" }, h("bds-typo", { variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), h("bds-select", { class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, this.itemsPage?.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.itemSelected(el) }, el)))), h("bds-typo", { variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), h("bds-grid", { gap: "1", "align-items": "center", class: "actions" }, h("bds-button-icon", { onBdsClick: (ev) => this.firstPage(ev), size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), h("bds-button-icon", { onBdsClick: (ev) => this.previewPage(ev), size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), h("bds-select", { ref: (el) => this.selectRef = el, class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.paginationNumbers.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (h("bds-typo", { class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), h("bds-button-icon", { onBdsClick: (ev) => this.nextPage(ev), size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), h("bds-button-icon", { onBdsClick: (ev) => this.lastPage(ev), size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
   }
   get el() { return getElement(this); }
   static get watchers() { return {
