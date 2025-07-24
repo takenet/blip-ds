@@ -363,6 +363,8 @@ export class Pagination {
   handleSelectScroll = (event: Event) => {
     const target = event.target as HTMLElement;
     const { scrollTop, scrollHeight, clientHeight } = target;
+
+    console.log('handleSelectScroll ', scrollTop, scrollHeight, clientHeight);
     
     // Check if scrolled to bottom (load next pages)
     if (scrollTop + clientHeight >= scrollHeight - 10) {
@@ -388,6 +390,8 @@ export class Pagination {
     const batchSize = 50; // Smaller batch for smooth scrolling
     let newStart = this.loadedPageRange.start;
     let newEnd = this.loadedPageRange.end;
+
+    console.log('loadMorePagesForScroll', direction, newStart, newEnd)
     
     if (direction === 'next' && newEnd < this.pages) {
       // Extend the range to the right
