@@ -92,6 +92,14 @@ export declare class Pagination {
    */
   private attachScrollListener;
   /**
+   * Handle when select dropdown opens
+   */
+  private handleSelectOpen;
+  /**
+   * Scroll dropdown to the currently selected option when it opens
+   */
+  scrollToSelectedOption(): void;
+  /**
    * Remove o listener de scroll do dropdown
    */
   private removeScrollListener;
