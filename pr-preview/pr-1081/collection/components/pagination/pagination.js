@@ -114,16 +114,23 @@ export class Pagination {
   }
   /**
    * Anexa o listener de scroll ao dropdown do select quando ele está disponível
+   * Usa retry logic para garantir que o dropdown esteja disponível
    */
   attachScrollListener() {
-    if (this.selectRef) {
-      // Busca o dropdown dentro do shadow root do select
+    if (!this.selectRef)
+      return;
+    const tryAttach = (attempts = 0) => {
       const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
       if (dropdown && !dropdown.hasAttribute('data-scroll-listener-attached')) {
         dropdown.addEventListener('scroll', this.handleSelectScroll);
         dropdown.setAttribute('data-scroll-listener-attached', 'true');
       }
-    }
+      else if (attempts < 3) {
+        // Retry after a short delay if dropdown is not ready yet
+        setTimeout(() => tryAttach(attempts + 1), 50);
+      }
+    };
+    tryAttach();
   }
   /**
    * Remove o listener de scroll do dropdown
@@ -177,6 +184,8 @@ export class Pagination {
     for (let i = start; i <= end; i++) {
       this.paginationNumbers.push(i);
     }
+    // Re-attach scroll listener after page range changes
+    setTimeout(() => this.attachScrollListener(), 100);
   }
   /**
    * Carrega mais páginas baseado na direção da navegação
@@ -213,6 +222,8 @@ export class Pagination {
     for (let i = newStart; i <= newEnd; i++) {
       this.paginationNumbers.push(i);
     }
+    // Re-attach scroll listener after page range changes
+    setTimeout(() => this.attachScrollListener(), 100);
   }
   countPage() {
     if (this.paginationNumbers.length !== 0) {

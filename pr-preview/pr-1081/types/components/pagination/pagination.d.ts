@@ -89,6 +89,7 @@ export declare class Pagination {
   disconnectedCallback(): void;
   /**
    * Anexa o listener de scroll ao dropdown do select quando ele está disponível
+   * Usa retry logic para garantir que o dropdown esteja disponível
    */
   private attachScrollListener;
   /**
