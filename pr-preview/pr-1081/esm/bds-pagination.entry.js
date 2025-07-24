@@ -292,12 +292,11 @@ const Pagination = class {
     }
     else if (direction === 'prev' && newStart > 1) {
       // Extend the range to the left
-      const originalStart = newStart;
       newStart = Math.max(1, newStart - batchSize);
       this.loadedPageRange = { start: newStart, end: newEnd };
       // Add new pages to the beginning of the array
       const newPages = [];
-      for (let i = newStart; i < originalStart; i++) {
+      for (let i = newStart; i < this.loadedPageRange.start + batchSize; i++) {
         if (i > 0 && !this.paginationNumbers.includes(i)) {
           newPages.push(i);
         }
