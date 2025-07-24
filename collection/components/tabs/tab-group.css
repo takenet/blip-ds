@@ -72,6 +72,9 @@
 .tab_group__header__itens__item__typo__disable {
   color: var(--color-content-ghost, #8c8c8c);
 }
+.tab_group__header__itens__item__typo__error {
+  color: var(--color-surface-negative, #8a0000);
+}
 .tab_group__header__itens__item::before {
   content: "";
   position: absolute;

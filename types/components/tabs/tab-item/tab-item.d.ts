@@ -53,6 +53,18 @@ export declare class BdsTabItem {
    */
   disable?: boolean;
   /**
+   * Prop to indicate an error state for the tab.
+   */
+  error?: boolean;
+  /**
+   * Inline styles to be applied to the tab group header element.
+   */
+  headerStyle?: string;
+  /**
+   * Inline styles to be applied to the tab group content element.
+   */
+  contentStyle?: string;
+  /**
    * Used to open/close the Tab item.
    */
   open?: boolean;
