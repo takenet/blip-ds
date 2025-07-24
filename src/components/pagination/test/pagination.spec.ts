@@ -405,6 +405,48 @@ describe('bds-pagination', () => {
       expect(component.loadedPageRange.start).toBeLessThanOrEqual(1000);
       expect(component.loadedPageRange.end).toBeGreaterThanOrEqual(1000);
     });
+
+    it('should scroll to selected option when dropdown opens after last page navigation', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1200"></bds-pagination>`,
+      });
+      
+      const component = page.rootInstance;
+      
+      // Navigate to last page
+      component.lastPage(new Event('click'));
+      expect(component.value).toBe(1200);
+      
+      // Mock scrollIntoView
+      const mockScrollIntoView = jest.fn();
+      
+      // Mock the select element and its shadow root
+      const mockSelectedOption = {
+        scrollIntoView: mockScrollIntoView
+      };
+      
+      const mockDropdown = {
+        querySelector: jest.fn().mockReturnValue(mockSelectedOption)
+      };
+      
+      const mockShadowRoot = {
+        querySelector: jest.fn((selector) => {
+          if (selector === '.select__options') return mockDropdown;
+          return null;
+        })
+      };
+      
+      component.selectRef = {
+        shadowRoot: mockShadowRoot
+      } as any;
+      
+      // Call scrollToSelectedOption directly
+      component.scrollToSelectedOption();
+      
+      expect(mockDropdown.querySelector).toHaveBeenCalledWith('bds-select-option[value="1200"]');
+      expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'center' });
+    });
   });
 
   describe('Edge Cases', () => {

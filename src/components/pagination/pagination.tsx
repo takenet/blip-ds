@@ -154,6 +154,39 @@ export class Pagination {
       if (dropdown && !dropdown.hasAttribute('data-scroll-listener-attached')) {
         dropdown.addEventListener('scroll', this.handleSelectScroll);
         dropdown.setAttribute('data-scroll-listener-attached', 'true');
+        
+        // Add event listener to the select input to detect when dropdown opens
+        const selectInput = this.selectRef.shadowRoot?.querySelector('.input__container__text');
+        if (selectInput) {
+          selectInput.addEventListener('focus', this.handleSelectOpen);
+        }
+      }
+    }
+  }
+
+  /**
+   * Handle when select dropdown opens
+   */
+  private handleSelectOpen = () => {
+    // Use setTimeout to ensure dropdown is rendered and visible
+    setTimeout(() => {
+      this.scrollToSelectedOption();
+    }, 100);
+  };
+
+  /**
+   * Scroll dropdown to the currently selected option when it opens
+   */
+  scrollToSelectedOption() {
+    if (this.selectRef && this.value) {
+      const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
+      if (dropdown) {
+        // Find the selected option element
+        const selectedOption = dropdown.querySelector(`bds-select-option[value="${this.value}"]`);
+        if (selectedOption) {
+          // Scroll the selected option into view
+          selectedOption.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
     }
   }
@@ -167,6 +200,12 @@ export class Pagination {
       if (dropdown) {
         dropdown.removeEventListener('scroll', this.handleSelectScroll);
         dropdown.removeAttribute('data-scroll-listener-attached');
+      }
+      
+      // Remove focus listener from select input
+      const selectInput = this.selectRef.shadowRoot?.querySelector('.input__container__text');
+      if (selectInput) {
+        selectInput.removeEventListener('focus', this.handleSelectOpen);
       }
     }
   }
