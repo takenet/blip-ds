@@ -146,46 +146,6 @@ const Pagination = class {
       if (dropdown && !dropdown.hasAttribute('data-scroll-listener-attached')) {
         dropdown.addEventListener('scroll', this.handleSelectScroll);
         dropdown.setAttribute('data-scroll-listener-attached', 'true');
-        // Set up mutation observer to watch for dropdown opening
-        this.setupDropdownObserver(dropdown);
-      }
-    }
-  }
-  /**
-   * Sets up a MutationObserver to watch for when dropdown opens
-   */
-  setupDropdownObserver(dropdown) {
-    this.dropdownObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const target = mutation.target;
-          if (target.classList.contains('select__options--open')) {
-            // Dropdown just opened, schedule scroll to selected option
-            requestAnimationFrame(() => {
-              this.scrollToSelectedOption();
-            });
-          }
-        }
-      });
-    });
-    this.dropdownObserver.observe(dropdown, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-  }
-  /**
-   * Scroll dropdown to the currently selected option when it opens
-   */
-  scrollToSelectedOption() {
-    if (this.selectRef && this.value) {
-      const dropdown = this.selectRef.shadowRoot?.querySelector('.select__options');
-      if (dropdown && dropdown.classList.contains('select__options--open')) {
-        // Find the selected option element
-        const selectedOption = dropdown.querySelector(`bds-select-option[value="${this.value}"]`);
-        if (selectedOption) {
-          // Scroll the selected option into view
-          selectedOption.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
       }
     }
   }
@@ -199,11 +159,6 @@ const Pagination = class {
         dropdown.removeEventListener('scroll', this.handleSelectScroll);
         dropdown.removeAttribute('data-scroll-listener-attached');
       }
-    }
-    // Disconnect mutation observer
-    if (this.dropdownObserver) {
-      this.dropdownObserver.disconnect();
-      this.dropdownObserver = null;
     }
   }
   pagesChanged() {
@@ -246,10 +201,6 @@ const Pagination = class {
     for (let i = start; i <= end; i++) {
       this.paginationNumbers.push(i);
     }
-    // After loading a range, re-attach scroll listeners and scroll to current value
-    requestAnimationFrame(() => {
-      this.attachScrollListener();
-    });
   }
   /**
    * Carrega mais páginas baseado na direção da navegação
@@ -286,10 +237,6 @@ const Pagination = class {
     for (let i = newStart; i <= newEnd; i++) {
       this.paginationNumbers.push(i);
     }
-    // After loading a range, re-attach scroll listeners
-    requestAnimationFrame(() => {
-      this.attachScrollListener();
-    });
   }
   countPage() {
     if (this.paginationNumbers.length !== 0) {
