@@ -87,6 +87,7 @@ const Pagination = class {
     this.handleSelectScroll = (event) => {
       const target = event.target;
       const { scrollTop, scrollHeight, clientHeight } = target;
+      console.log('handleSelectScroll ', scrollTop, scrollHeight, clientHeight);
       // Check if scrolled to bottom (load next pages)
       if (scrollTop + clientHeight >= scrollHeight - 10) {
         if (this.loadedPageRange.end < this.pages) {
@@ -279,6 +280,7 @@ const Pagination = class {
     const batchSize = 50; // Smaller batch for smooth scrolling
     let newStart = this.loadedPageRange.start;
     let newEnd = this.loadedPageRange.end;
+    console.log('loadMorePagesForScroll', direction, newStart, newEnd);
     if (direction === 'next' && newEnd < this.pages) {
       // Extend the range to the right
       newEnd = Math.min(this.pages, newEnd + batchSize);
