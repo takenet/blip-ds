@@ -4,7 +4,7 @@ import { emailValidation, numberValidation } from '../../utils/validations';
 export class Input {
   constructor() {
     /**
-     * Tratamento de eventos de pressionamento de tecla (Enter, Backspace, etc).
+     * Key press event handling (Enter, Backspace, etc).
      */
     this.keyPressWrapper = (event) => {
       switch (event.key) {
@@ -15,13 +15,14 @@ export class Input {
             event.preventDefault();
           }
           break;
-        case 'Backspace' || 'Delete':
+        case 'Backspace':
+        case 'Delete':
           this.bdsKeyDownBackspace.emit({ event, value: this.value });
           break;
       }
     };
     /**
-     * Função chamada ao digitar no campo de entrada.
+     * Function called when typing in the input field.
      */
     this.onInput = (ev) => {
       this.onBdsInputValidations();
@@ -29,10 +30,12 @@ export class Input {
       if (input) {
         this.value = input.value || '';
       }
+      // Update textarea if needed
+      this.updateTextarea();
       this.bdsInput.emit(ev);
     };
     /**
-     * Função chamada ao perder o foco do campo de entrada.
+     * Function called when the input field loses focus.
      */
     this.onBlur = () => {
       this.onBlurValidations();
@@ -40,14 +43,14 @@ export class Input {
       this.bdsOnBlur.emit();
     };
     /**
-     * Função chamada ao ganhar o foco do campo de entrada.
+     * Function called when the input field gains focus.
      */
     this.onFocus = () => {
       this.isPressed = true;
       this.bdsFocus.emit();
     };
     /**
-     * Função chamada ao clicar no campo de entrada.
+     * Function called when clicking on the input field.
      */
     this.onClickWrapper = () => {
       this.onFocus();
@@ -56,7 +59,7 @@ export class Input {
       }
     };
     /**
-     * Limpa o valor do campo de entrada.
+     * Clears the input field value.
      */
     this.clearTextInput = (ev) => {
       if (!this.readonly && !this.disabled && ev) {
@@ -97,8 +100,13 @@ export class Input {
     this.counterLengthRule = null;
     this.isSubmit = false;
     this.isTextarea = false;
-    this.rows = 1;
+    this.rows = 3;
     this.cols = 0;
+    this.autoResize = true;
+    this.resizable = false;
+    this.minHeight = 60;
+    this.maxHeight = 200;
+    this.iconSize = 'small';
     this.requiredErrorMessage = undefined;
     this.minlengthErrorMessage = undefined;
     this.minErrorMessage = undefined;
@@ -106,41 +114,42 @@ export class Input {
     this.emailErrorMessage = undefined;
     this.numberErrorMessage = undefined;
     this.chips = undefined;
+    this.debounceDelay = 100;
     this.dataTest = null;
     this.encode = false;
   }
   /**
-   * Define o foco no campo de entrada.
+   * Sets focus to the input field.
    */
   async setFocus() {
     this.onClickWrapper();
   }
   /**
-   * Remove o foco do campo de entrada.
+   * Removes focus from the input field.
    */
   async removeFocus() {
     this.onBlur();
   }
   /**
-   * Retorna o elemento de input do componente.
+   * Returns the input element of the component.
    */
   async getInputElement() {
     return this.nativeInput;
   }
   /**
-   * Verifica se o campo de entrada é válido.
+   * Checks if the input field is valid.
    */
   async isValid() {
     return this.nativeInput.validity.valid;
   }
   /**
-   * Limpa o valor do campo de entrada.
+   * Clears the input field value.
    */
   async clear() {
     this.value = '';
   }
   /**
-   * Codifica os caracteres especiais para exibição segura (evita injeção de código HTML).
+   * Encodes special characters for safe display (prevents HTML code injection).
    */
   encodeValue(value) {
     const lt = /</g, gt = />/g, ap = /'/g, ic = /"/g, amp = /&/g, slash = /\//g;
@@ -157,23 +166,66 @@ export class Input {
         .replace(slash, '&#47;'));
   }
   /**
-   * Avisa sobre a mudança do valor do campo de entrada.
+   * Notifies about the input field value change.
    */
   valueChanged(newValue) {
     const changeValue = this.encode ? this.encodeValue(newValue || '') : newValue || '';
     this.bdsChange.emit({ value: changeValue });
   }
   /**
-   * Função que renderiza o ícone dentro do campo de entrada.
+   * Auto-resizes the textarea based on content.
    */
-  renderIcon() {
-    return (this.icon && (h("div", { class: {
-        input__icon: true,
-        'input__icon--large': !!this.label,
-      } }, h("bds-icon", { class: "input__icon--color", size: this.label ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
+  autoResizeTextarea() {
+    if (this.isTextarea && this.autoResize && this.nativeInput) {
+      const textarea = this.nativeInput;
+      // Reset height to auto to get the correct scrollHeight
+      textarea.style.height = 'auto';
+      // Calculate new height
+      const scrollHeight = textarea.scrollHeight;
+      const newHeight = Math.min(Math.max(scrollHeight, this.minHeight || 60), this.maxHeight || 200);
+      textarea.style.height = `${newHeight}px`;
+    }
   }
   /**
-   * Função que renderiza a label do campo de entrada.
+   * Debounced version of auto-resize to improve performance during rapid input events.
+   */
+  debouncedAutoResize() {
+    if (this.autoResizeDebounceTimer) {
+      clearTimeout(this.autoResizeDebounceTimer);
+    }
+    this.autoResizeDebounceTimer = window.setTimeout(() => {
+      this.autoResizeTextarea();
+    }, this.debounceDelay); // Configurable debounce delay
+  }
+  /**
+   * Centralizes all necessary updates for the textarea, including auto-resize.
+   */
+  updateTextarea(immediate = false) {
+    if (this.isTextarea && this.autoResize) {
+      if (immediate) {
+        // For immediate updates (component load, prop changes)
+        this.autoResizeTextarea();
+      }
+      else {
+        // For input events, use debounced version
+        this.debouncedAutoResize();
+      }
+    }
+  }
+  /**
+   * Function that renders the icon inside the input field.
+   */
+  renderIcon() {
+    const iconSizeValue = this.iconSize === 'medium' ? 'medium' : 'small';
+    const isLargeIcon = this.iconSize === 'medium';
+    return (this.icon && (h("div", { class: {
+        input__icon: true,
+        'input__icon--large': isLargeIcon,
+        'input__icon--textarea': this.isTextarea,
+      } }, h("bds-icon", { class: "input__icon--color", size: iconSizeValue, name: this.icon, color: "inherit" }))));
+  }
+  /**
+   * Function that renders the label of the input field.
    */
   renderLabel() {
     return (this.label && (h("label", { class: {
@@ -182,7 +234,7 @@ export class Input {
       } }, h("bds-typo", { variant: "fs-12", bold: "bold" }, this.label))));
   }
   /**
-   * Função que renderiza as mensagens de erro ou sucesso abaixo do campo de entrada.
+   * Function that renders error or success messages below the input field.
    */
   renderMessage() {
     const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
@@ -200,7 +252,7 @@ export class Input {
     return undefined;
   }
   /**
-   * Valida o campo de entrada ao perder o foco.
+   * Validates the input field when it loses focus.
    */
   onBlurValidations() {
     this.required && this.requiredValidation();
@@ -210,7 +262,7 @@ export class Input {
     this.checkValidity();
   }
   /**
-   * Realiza as validações do campo enquanto o usuário digita.
+   * Performs field validations while the user types.
    */
   onBdsInputValidations() {
     this.type === 'email' && this.emailValidation();
@@ -218,14 +270,14 @@ export class Input {
     this.checkValidity();
   }
   /**
-   * Valida o padrão regex do campo.
+   * Validates the regex pattern of the field.
    */
   patternValidation() {
     const regex = new RegExp(this.pattern);
     this.bdsPatternValidation.emit(regex.test(this.nativeInput.value));
   }
   /**
-   * Valida se o campo é obrigatório.
+   * Validates if the field is required.
    */
   requiredValidation() {
     if (this.nativeInput.validity.valueMissing) {
@@ -234,7 +286,7 @@ export class Input {
     }
   }
   /**
-   * Valida o comprimento do texto no campo de entrada.
+   * Validates the text length in the input field.
    */
   lengthValidation() {
     if (this.nativeInput.validity.tooShort) {
@@ -248,7 +300,7 @@ export class Input {
     }
   }
   /**
-   * Valida os valores mínimos e máximos do campo de entrada.
+   * Validates the minimum and maximum values of the input field.
    */
   minMaxValidation() {
     if (this.nativeInput.validity.rangeUnderflow) {
@@ -263,7 +315,7 @@ export class Input {
     }
   }
   /**
-   * Valida se o campo contém um email válido.
+   * Validates if the field contains a valid email.
    */
   emailValidation() {
     if (emailValidation(this.nativeInput.value)) {
@@ -272,7 +324,7 @@ export class Input {
     }
   }
   /**
-   * Valida se o campo contém um número válido.
+   * Validates if the field contains a valid number.
    */
   numberValidation() {
     if (numberValidation(this.nativeInput.value)) {
@@ -281,7 +333,7 @@ export class Input {
     }
   }
   /**
-   * Verifica se o campo de entrada é válido.
+   * Checks if the input field is valid.
    */
   checkValidity() {
     if (this.nativeInput.validity.valid) {
@@ -289,11 +341,28 @@ export class Input {
     }
   }
   /**
-   * Atualiza o valor do campo de entrada após as mudanças.
+   * Updates the input field value after changes.
    */
   componentDidUpdate() {
     if (this.nativeInput && this.value != this.nativeInput.value) {
       this.nativeInput.value = this.value;
+    }
+    // Update textarea after value changes (immediate for prop changes)
+    this.updateTextarea(true);
+  }
+  /**
+   * Initial configurations after the component loads.
+   */
+  componentDidLoad() {
+    // Set initial height for textarea (immediate for initial load)
+    this.updateTextarea(true);
+  }
+  /**
+   * Cleanup when component is destroyed.
+   */
+  disconnectedCallback() {
+    if (this.autoResizeDebounceTimer) {
+      window.clearTimeout(this.autoResizeDebounceTimer);
     }
   }
   render() {
@@ -307,7 +376,20 @@ export class Input {
         'input--state-disabled': this.disabled,
         'input--label': !!this.label,
         'input--pressed': isPressed,
-      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { name: "input-left" }), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: { input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips } }, h("slot", { name: "inside-input-left" }), h(Element, { class: { input__container__text: true, input__container__text__chips: this.chips }, ref: (input) => (this.nativeInput = input), rows: this.rows, cols: this.cols, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest }))), this.counterLength && (h("bds-counter-text", { length: this.value.length, max: this.maxlength, active: isPressed, ...this.counterLengthRule })), this.success && h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { name: "input-right" })), this.renderMessage()));
+        'input--textarea': this.isTextarea,
+      }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { name: "input-left" }), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: {
+        input__container__wrapper: !this.chips,
+        input__container__wrapper__chips: this.chips,
+        'input__container__wrapper--textarea': this.isTextarea
+      } }, h("slot", { name: "inside-input-left" }), h(Element, { class: {
+        input__container__text: true,
+        input__container__text__chips: this.chips,
+        'input__container__text--textarea': this.isTextarea
+      }, ref: (input) => (this.nativeInput = input), rows: this.isTextarea ? this.rows : undefined, cols: this.isTextarea ? this.cols : undefined, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.isTextarea ? undefined : this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest, style: this.isTextarea ? {
+        minHeight: `${this.minHeight || 60}px`,
+        maxHeight: `${this.maxHeight || 200}px`,
+        resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
+      } : {} }))), this.counterLength && (h("bds-counter-text", { length: this.value.length, max: this.maxlength, active: isPressed, ...this.counterLengthRule })), this.success && h("bds-icon", { class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { name: "input-right" })), this.renderMessage()));
   }
   static get is() { return "bds-input"; }
   static get encapsulation() { return "shadow"; }
@@ -335,7 +417,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Nome do input, usado para identifica\u00E7\u00E3o no formul\u00E1rio."
+          "text": "Input name, used for form identification."
         },
         "attribute": "input-name",
         "reflect": false,
@@ -358,7 +440,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define o tipo do input (por exemplo, `text`, `password`, etc)."
+          "text": "Defines the input type (e.g., `text`, `password`, etc)."
         },
         "attribute": "type",
         "reflect": true,
@@ -376,7 +458,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "R\u00F3tulo que ser\u00E1 exibido acima do input."
+          "text": "Label to be displayed above the input."
         },
         "attribute": "label",
         "reflect": false,
@@ -394,7 +476,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Texto que ser\u00E1 exibido como sugest\u00E3o ou dica no input."
+          "text": "Text to be displayed as a hint or placeholder in the input."
         },
         "attribute": "placeholder",
         "reflect": false,
@@ -417,7 +499,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define a capitaliza\u00E7\u00E3o autom\u00E1tica do texto (valores poss\u00EDveis: `on`, `off`)."
+          "text": "Defines automatic text capitalization (possible values: `on`, `off`)."
         },
         "attribute": "auto-capitalize",
         "reflect": false,
@@ -440,7 +522,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define o comportamento de autocompletar do navegador (valores poss\u00EDveis: `on`, `off`)."
+          "text": "Defines browser autocomplete behavior (possible values: `on`, `off`)."
         },
         "attribute": "auto-complete",
         "reflect": false,
@@ -458,7 +540,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define o valor m\u00E1ximo permitido para o input."
+          "text": "Defines the maximum allowed value for the input."
         },
         "attribute": "max",
         "reflect": false
@@ -475,7 +557,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define o n\u00FAmero m\u00E1ximo de caracteres permitidos no input."
+          "text": "Defines the maximum number of characters allowed in the input."
         },
         "attribute": "maxlength",
         "reflect": false
@@ -492,7 +574,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define o valor m\u00EDnimo permitido para o input."
+          "text": "Defines the minimum allowed value for the input."
         },
         "attribute": "min",
         "reflect": false
@@ -509,7 +591,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define o n\u00FAmero m\u00EDnimo de caracteres permitidos no input."
+          "text": "Defines the minimum number of characters allowed in the input."
         },
         "attribute": "minlength",
         "reflect": false
@@ -526,7 +608,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Torna o input somente leitura."
+          "text": "Makes the input read-only."
         },
         "attribute": "readonly",
         "reflect": false,
@@ -544,7 +626,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Define se o input \u00E9 obrigat\u00F3rio."
+          "text": "Defines if the input is required."
         },
         "attribute": "required",
         "reflect": false
@@ -561,7 +643,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define um padr\u00E3o regex que o valor do input deve seguir."
+          "text": "Defines a regex pattern that the input value must follow."
         },
         "attribute": "pattern",
         "reflect": false
@@ -578,7 +660,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Mensagem de ajuda exibida abaixo do input."
+          "text": "Help message displayed below the input."
         },
         "attribute": "helper-message",
         "reflect": false,
@@ -596,7 +678,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Mensagem de erro exibida quando o valor do input \u00E9 inv\u00E1lido."
+          "text": "Error message displayed when the input value is invalid."
         },
         "attribute": "error-message",
         "reflect": false,
@@ -614,7 +696,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Mensagem exibida quando o valor do input \u00E9 v\u00E1lido."
+          "text": "Message displayed when the input value is valid."
         },
         "attribute": "success-message",
         "reflect": false,
@@ -632,7 +714,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Nome do \u00EDcone a ser exibido dentro do input."
+          "text": "Name of the icon to be displayed inside the input."
         },
         "attribute": "icon",
         "reflect": true,
@@ -650,7 +732,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define se o input est\u00E1 desabilitado."
+          "text": "Defines if the input is disabled."
         },
         "attribute": "disabled",
         "reflect": true,
@@ -668,7 +750,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define se o input est\u00E1 em estado de erro."
+          "text": "Defines if the input is in error state."
         },
         "attribute": "danger",
         "reflect": true,
@@ -686,7 +768,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define se o input est\u00E1 em estado de sucesso."
+          "text": "Defines if the input is in success state."
         },
         "attribute": "success",
         "reflect": true,
@@ -704,7 +786,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "O valor atual do input."
+          "text": "The current value of the input."
         },
         "attribute": "value",
         "reflect": false,
@@ -722,7 +804,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define se ser\u00E1 exibido um contador de comprimento de caracteres."
+          "text": "Defines whether a character length counter will be displayed."
         },
         "attribute": "counter-length",
         "reflect": false,
@@ -745,7 +827,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define a regra do contador de comprimento de caracteres (min, max, etc)."
+          "text": "Defines the character length counter rule (min, max, etc)."
         },
         "defaultValue": "null"
       },
@@ -761,7 +843,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Define se o input ser\u00E1 submetido ao pressionar Enter."
+          "text": "Defines whether the input will be submitted when pressing Enter."
         },
         "attribute": "is-submit",
         "reflect": false,
@@ -779,7 +861,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Define se o input \u00E9 uma \u00E1rea de texto (textarea)."
+          "text": "Defines whether the input is a textarea."
         },
         "attribute": "is-textarea",
         "reflect": false,
@@ -797,11 +879,11 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define a quantidade de linhas da \u00E1rea de texto (se for `textarea`)."
+          "text": "Defines the number of lines for the textarea (if `textarea`)."
         },
         "attribute": "rows",
         "reflect": false,
-        "defaultValue": "1"
+        "defaultValue": "3"
       },
       "cols": {
         "type": "number",
@@ -815,11 +897,101 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Define a quantidade de colunas da \u00E1rea de texto (se for `textarea`)."
+          "text": "Defines the number of columns for the textarea (if `textarea`)."
         },
         "attribute": "cols",
         "reflect": false,
         "defaultValue": "0"
+      },
+      "autoResize": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "Defines whether the textarea should automatically resize based on content."
+        },
+        "attribute": "auto-resize",
+        "reflect": false,
+        "defaultValue": "true"
+      },
+      "resizable": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "Defines whether the textarea can be manually resized by the user."
+        },
+        "attribute": "resizable",
+        "reflect": false,
+        "defaultValue": "false"
+      },
+      "minHeight": {
+        "type": "number",
+        "mutable": false,
+        "complexType": {
+          "original": "number",
+          "resolved": "number",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Defines the minimum height of the textarea in pixels."
+        },
+        "attribute": "min-height",
+        "reflect": false,
+        "defaultValue": "60"
+      },
+      "maxHeight": {
+        "type": "number",
+        "mutable": false,
+        "complexType": {
+          "original": "number",
+          "resolved": "number",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Defines the maximum height of the textarea in pixels."
+        },
+        "attribute": "max-height",
+        "reflect": false,
+        "defaultValue": "200"
+      },
+      "iconSize": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "'small' | 'medium'",
+          "resolved": "\"medium\" | \"small\"",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Defines the icon size (small or medium)."
+        },
+        "attribute": "icon-size",
+        "reflect": false,
+        "defaultValue": "'small'"
       },
       "requiredErrorMessage": {
         "type": "string",
@@ -833,7 +1005,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Mensagem de erro exibida quando o input n\u00E3o \u00E9 preenchido e \u00E9 obrigat\u00F3rio."
+          "text": "Error message displayed when the input is not filled and is required."
         },
         "attribute": "required-error-message",
         "reflect": false
@@ -850,7 +1022,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Mensagem de erro exibida quando o valor do input n\u00E3o atende ao comprimento m\u00EDnimo."
+          "text": "Error message displayed when the input value doesn't meet the minimum length requirement."
         },
         "attribute": "minlength-error-message",
         "reflect": false
@@ -867,7 +1039,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Mensagem de erro exibida quando o valor do input n\u00E3o atende ao valor m\u00EDnimo permitido."
+          "text": "Error message displayed when the input value doesn't meet the minimum allowed value."
         },
         "attribute": "min-error-message",
         "reflect": false
@@ -884,7 +1056,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Mensagem de erro exibida quando o valor do input n\u00E3o atende ao valor m\u00E1ximo permitido."
+          "text": "Error message displayed when the input value doesn't meet the maximum allowed value."
         },
         "attribute": "max-error-message",
         "reflect": false
@@ -901,7 +1073,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Mensagem de erro exibida quando o valor do input n\u00E3o \u00E9 um email v\u00E1lido."
+          "text": "Error message displayed when the input value is not a valid email."
         },
         "attribute": "email-error-message",
         "reflect": false
@@ -918,7 +1090,7 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Mensagem de erro exibida quando o valor do input n\u00E3o \u00E9 um n\u00FAmero v\u00E1lido."
+          "text": "Error message displayed when the input value is not a valid number."
         },
         "attribute": "number-error-message",
         "reflect": false
@@ -935,10 +1107,28 @@ export class Input {
         "optional": false,
         "docs": {
           "tags": [],
-          "text": "Define se o input ser\u00E1 exibido como chips (um tipo de entrada com m\u00FAltiplos valores)."
+          "text": "Defines if the input will be displayed as chips (a type of input with multiple values)."
         },
         "attribute": "chips",
         "reflect": false
+      },
+      "debounceDelay": {
+        "type": "number",
+        "mutable": false,
+        "complexType": {
+          "original": "number",
+          "resolved": "number",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Defines the debounce delay in milliseconds for textarea auto-resize."
+        },
+        "attribute": "debounce-delay",
+        "reflect": false,
+        "defaultValue": "100"
       },
       "dataTest": {
         "type": "string",
@@ -952,7 +1142,7 @@ export class Input {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Data test \u00E9 a prop para testar especificamente a a\u00E7\u00E3o do componente."
+          "text": "Data test is the prop to specifically test the component action."
         },
         "attribute": "data-test",
         "reflect": false,
@@ -995,7 +1185,7 @@ export class Input {
         "composed": true,
         "docs": {
           "tags": [],
-          "text": "Evento disparado quando o valor do input muda."
+          "text": "Event emitted when the input value changes."
         },
         "complexType": {
           "original": "any",
@@ -1010,7 +1200,7 @@ export class Input {
         "composed": true,
         "docs": {
           "tags": [],
-          "text": "Evento disparado quando o input recebe um input (digita\u00E7\u00E3o)."
+          "text": "Event emitted when the input receives input (typing)."
         },
         "complexType": {
           "original": "KeyboardEvent",
@@ -1029,7 +1219,7 @@ export class Input {
         "composed": true,
         "docs": {
           "tags": [],
-          "text": "Evento disparado quando o input perde o foco."
+          "text": "Event emitted when the input loses focus."
         },
         "complexType": {
           "original": "any",
@@ -1044,7 +1234,7 @@ export class Input {
         "composed": true,
         "docs": {
           "tags": [],
-          "text": "Evento disparado quando o input ganha o foco."
+          "text": "Event emitted when the input gains focus."
         },
         "complexType": {
           "original": "any",
@@ -1059,7 +1249,7 @@ export class Input {
         "composed": true,
         "docs": {
           "tags": [],
-          "text": "Evento disparado quando o formul\u00E1rio \u00E9 submetido."
+          "text": "Event emitted when the form is submitted."
         },
         "complexType": {
           "original": "any",
@@ -1074,7 +1264,7 @@ export class Input {
         "composed": true,
         "docs": {
           "tags": [],
-          "text": "Evento disparado para valida\u00E7\u00E3o de padr\u00E3o regex."
+          "text": "Event emitted for regex pattern validation."
         },
         "complexType": {
           "original": "any",
@@ -1089,7 +1279,7 @@ export class Input {
         "composed": true,
         "docs": {
           "tags": [],
-          "text": "Evento disparado quando a tecla \"Backspace\" \u00E9 pressionada."
+          "text": "Event emitted when the \"Backspace\" key is pressed."
         },
         "complexType": {
           "original": "any",
@@ -1112,7 +1302,7 @@ export class Input {
           "return": "Promise<void>"
         },
         "docs": {
-          "text": "Define o foco no campo de entrada.",
+          "text": "Sets focus to the input field.",
           "tags": []
         }
       },
@@ -1128,13 +1318,13 @@ export class Input {
           "return": "Promise<void>"
         },
         "docs": {
-          "text": "Remove o foco do campo de entrada.",
+          "text": "Removes focus from the input field.",
           "tags": []
         }
       },
       "getInputElement": {
         "complexType": {
-          "signature": "() => Promise<HTMLInputElement>",
+          "signature": "() => Promise<HTMLInputElement | HTMLTextAreaElement>",
           "parameters": [],
           "references": {
             "Promise": {
@@ -1142,12 +1332,15 @@ export class Input {
             },
             "HTMLInputElement": {
               "location": "global"
+            },
+            "HTMLTextAreaElement": {
+              "location": "global"
             }
           },
-          "return": "Promise<HTMLInputElement>"
+          "return": "Promise<HTMLInputElement | HTMLTextAreaElement>"
         },
         "docs": {
-          "text": "Retorna o elemento de input do componente.",
+          "text": "Returns the input element of the component.",
           "tags": []
         }
       },
@@ -1163,7 +1356,7 @@ export class Input {
           "return": "Promise<boolean>"
         },
         "docs": {
-          "text": "Verifica se o campo de entrada \u00E9 v\u00E1lido.",
+          "text": "Checks if the input field is valid.",
           "tags": []
         }
       },
@@ -1179,7 +1372,7 @@ export class Input {
           "return": "Promise<void>"
         },
         "docs": {
-          "text": "Limpa o valor do campo de entrada.",
+          "text": "Clears the input field value.",
           "tags": []
         }
       }

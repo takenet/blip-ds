@@ -64,6 +64,19 @@
   position: relative;
   z-index: 1;
 }
+.input--textarea {
+  padding: 12px 12px 12px 12px;
+  align-items: flex-start;
+}
+.input--textarea.input--label {
+  padding: 12px 12px 12px 12px;
+}
+.input--textarea .input__icon {
+  margin-top: 1px;
+}
+.input--textarea .input__icon--textarea {
+  align-self: flex-start;
+}
 .input--state-primary {
   border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
   box-sizing: border-box;
@@ -220,9 +233,13 @@
 .input .icon-success {
   color: var(--color-positive, #10603b);
   margin-left: 4px;
+  margin-top: 1px;
 }
 .input--label {
   padding: 7px 4px 8px 12px;
+}
+.input--label.input--textarea {
+  padding: 12px 12px 12px 12px;
 }
 .input__icon {
   cursor: inherit;
@@ -231,16 +248,26 @@
   justify-content: center;
   border-radius: 8px;
   padding: 2px;
+  flex-shrink: 0;
+}
+.input__icon--textarea {
+  align-self: flex-start;
+  margin-top: 1px;
 }
 .input__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  flex: 1;
 }
 .input__container__wrapper {
   display: flex;
   flex-wrap: wrap;
+}
+.input__container__wrapper--textarea {
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 .input__container__wrapper__chips {
   display: inline;
@@ -262,6 +289,7 @@
 .input__container__label {
   display: flex;
   align-items: center;
+  margin-bottom: 2px;
 }
 .input__container__text {
   display: inline-block;
@@ -288,6 +316,8 @@
   line-height: 22px;
   resize: none;
   cursor: inherit;
+  width: 100%;
+  min-height: auto;
 }
 .input__container__text:focus {
   outline: 0;
@@ -327,6 +357,27 @@
   background-clip: content-box;
   background-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
 }
+.input__container__text--textarea {
+  resize: vertical;
+  overflow-y: auto;
+  line-height: 20px;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-2, rgba(0, 0, 0, 0.16)) transparent;
+}
+.input__container__text--textarea::-webkit-scrollbar {
+  width: 8px;
+}
+.input__container__text--textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+.input__container__text--textarea::-webkit-scrollbar-thumb {
+  background: var(--color-border-2, rgba(0, 0, 0, 0.16));
+  border-radius: 4px;
+}
+.input__container__text--textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--color-content-ghost, #8c8c8c);
+}
 .input__container__text[type=date]::-webkit-calendar-picker-indicator {
   opacity: 0;
   pointer-events: none;
@@ -350,6 +401,7 @@
 .input__message__icon {
   display: flex;
   margin-top: 0px;
+  flex-shrink: 0;
 }
 .input__message--danger .input__message__icon .bds-icon {
   color: var(--color-negative, #e60f0f);
