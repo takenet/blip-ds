@@ -171,7 +171,7 @@ describe('bds-card-color e2e tests', () => {
       await freshPage.waitForChanges();
       
       // Wait for the state change to take effect
-      await freshPage.waitForTimeout(500);
+      await new Promise((r) => setTimeout(r, 500));
       
       // Check that the copied message appears
       const copiedText = await freshPage.find('bds-card-color >>> .card-text-copie');

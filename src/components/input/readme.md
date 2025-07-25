@@ -12,7 +12,7 @@
 | `chips`                 | `chips`                   | Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).  | `boolean`                                                                | `undefined` |
 | `cols`                  | `cols`                    | Define a quantidade de colunas da área de texto (se for `textarea`).                   | `number`                                                                 | `0`         |
 | `counterLength`         | `counter-length`          | Define se será exibido um contador de comprimento de caracteres.                       | `boolean`                                                                | `false`     |
-| `counterLengthRule`     | --                        | Define a regra do contador de comprimento de caracteres (min, max, etc).               | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
+| `counterLengthRule`     | `counter-length-rule`     | Define a regra do contador de comprimento de caracteres (min, max, etc).               | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
 | `danger`                | `danger`                  | Define se o input está em estado de erro.                                              | `boolean`                                                                | `false`     |
 | `dataTest`              | `data-test`               | Data test é a prop para testar especificamente a ação do componente.                   | `string`                                                                 | `null`      |
 | `disabled`              | `disabled`                | Define se o input está desabilitado.                                                   | `boolean`                                                                | `false`     |
@@ -47,15 +47,15 @@
 
 ## Events
 
-| Event                  | Description                                                  | Type                         |
-| ---------------------- | ------------------------------------------------------------ | ---------------------------- |
-| `bdsChange`            | Evento disparado quando o valor do input muda.               | `CustomEvent<any>`           |
-| `bdsFocus`             | Evento disparado quando o input ganha o foco.                | `CustomEvent<any>`           |
-| `bdsInput`             | Evento disparado quando o input recebe um input (digitação). | `CustomEvent<KeyboardEvent>` |
-| `bdsKeyDownBackspace`  | Evento disparado quando a tecla "Backspace" é pressionada.   | `CustomEvent<any>`           |
-| `bdsOnBlur`            | Evento disparado quando o input perde o foco.                | `CustomEvent<any>`           |
-| `bdsPatternValidation` | Evento disparado para validação de padrão regex.             | `CustomEvent<any>`           |
-| `bdsSubmit`            | Evento disparado quando o formulário é submetido.            | `CustomEvent<any>`           |
+| Event                  | Description                                                  | Type                                                    |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------- |
+| `bdsChange`            | Evento disparado quando o valor do input muda.               | `CustomEvent<{ value: string; }>`                       |
+| `bdsFocus`             | Evento disparado quando o input ganha o foco.                | `CustomEvent<void>`                                     |
+| `bdsInput`             | Evento disparado quando o input recebe um input (digitação). | `CustomEvent<InputEvent>`                               |
+| `bdsKeyDownBackspace`  | Evento disparado quando a tecla "Backspace" é pressionada.   | `CustomEvent<{ event: KeyboardEvent; value: string; }>` |
+| `bdsOnBlur`            | Evento disparado quando o input perde o foco.                | `CustomEvent<void>`                                     |
+| `bdsPatternValidation` | Evento disparado para validação de padrão regex.             | `CustomEvent<boolean>`                                  |
+| `bdsSubmit`            | Evento disparado quando o formulário é submetido.            | `CustomEvent<{ event: KeyboardEvent; value: string; }>` |
 
 
 ## Methods

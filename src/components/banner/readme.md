@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event            | Description                        | Type               |
-| ---------------- | ---------------------------------- | ------------------ |
-| `bdsBannerClose` | Emitted when the banner is closed. | `CustomEvent<any>` |
+| Event            | Description                        | Type                |
+| ---------------- | ---------------------------------- | ------------------- |
+| `bdsBannerClose` | Emitted when the banner is closed. | `CustomEvent<void>` |
 
 
 ## Methods

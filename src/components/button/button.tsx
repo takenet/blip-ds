@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch, Listen } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -141,7 +141,7 @@ export class Button {
   /**
    * Event buttom onClick.
    */
-  @Event() bdsClick: EventEmitter;
+  @Event() bdsClick: EventEmitter<PointerEvent|KeyboardEvent>;
 
   @Method()
   async isActive(value) {
@@ -227,14 +227,10 @@ export class Button {
     return <bds-loading-spinner size="extra-small" color={this.loadingColor}></bds-loading-spinner>;
   }
 
-  private handleClick = (ev) => {
+  @Listen('click', { capture: true })
+  handleClick(ev: PointerEvent | KeyboardEvent): void {
     if (!this.disabled) {
-      if (ev.key == 'Enter') {
-        this.bdsClick.emit(ev);
-      }
-      if (ev.type == 'click') {
-        this.bdsClick.emit(ev);
-      }
+      this.bdsClick.emit(ev);
 
       const form = this.el.closest('form');
       if (form) {

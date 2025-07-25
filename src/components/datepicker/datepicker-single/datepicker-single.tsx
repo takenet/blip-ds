@@ -82,7 +82,7 @@ export class BdsdatepickerSingle {
   /**
    * bdsDateSelected. Event to return selected date value.
    */
-  @Event() bdsDateSelected?: EventEmitter;
+  @Event() bdsDateSelected?: EventEmitter<{ value: Date | null }>;
 
   /**
    * Return the validity of the input.

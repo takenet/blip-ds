@@ -22,10 +22,10 @@
 
 ## Events
 
-| Event                | Description                                                                                    | Type               |
-| -------------------- | ---------------------------------------------------------------------------------------------- | ------------------ |
-| `chipClickableClick` |                                                                                                | `CustomEvent<any>` |
-| `chipClickableClose` | Triggered after a mouse click on close icon, return id element. Only fired when close is true. | `CustomEvent<any>` |
+| Event                | Description                                                                                    | Type                           |
+| -------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------ |
+| `chipClickableClick` |                                                                                                | `CustomEvent<void>`            |
+| `chipClickableClose` | Triggered after a mouse click on close icon, return id element. Only fired when close is true. | `CustomEvent<{ id: string; }>` |
 
 
 ## Dependencies

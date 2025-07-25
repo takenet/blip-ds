@@ -14,8 +14,8 @@ export class AccordionGroup {
   @Prop() collapse?: collapses = 'single';
   @Prop() divisor?: boolean = true;
 
-  @Event() bdsAccordionCloseAll?: EventEmitter;
-  @Event() bdsAccordionOpenAll?: EventEmitter;
+  @Event() bdsAccordionCloseAll?: EventEmitter<void>;
+  @Event() bdsAccordionOpenAll?: EventEmitter<void>;
 
   @Method()
   async closeAll(actNumber?) {

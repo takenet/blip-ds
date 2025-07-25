@@ -35,7 +35,7 @@ export class BdsMenu implements ComponentInterface {
   /**
    * bdsToggle. Event to return selected date value.
    */
-  @Event() bdsToggle?: EventEmitter;
+  @Event() bdsToggle?: EventEmitter<{ value?: boolean }>;
 
   componentWillLoad() {
     this.refElement = document.getElementById(this.menu);

@@ -31,9 +31,9 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `tabDisabled` |             | `CustomEvent<any>` |
+| Event         | Description | Type                                               |
+| ------------- | ----------- | -------------------------------------------------- |
+| `tabDisabled` |             | `CustomEvent<{ item: number; disable: boolean; }>` |
 
 
 ## Methods
@@ -41,6 +41,12 @@
 ### `reciveNumber(number: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name     | Type  | Description |
+| -------- | ----- | ----------- |
+| `number` | `any` |             |
 
 #### Returns
 

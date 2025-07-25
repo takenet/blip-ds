@@ -92,15 +92,15 @@ export class BdsdatepickerPeriod {
   /**
    * bdsStartDate. Event to return selected date value.
    */
-  @Event() bdsStartDate?: EventEmitter;
+  @Event() bdsStartDate?: EventEmitter<{ value: Date | null }>;
   /**
    * bdsEndDate. Event to return selected end date value.
    */
-  @Event() bdsEndDate?: EventEmitter;
+  @Event() bdsEndDate?: EventEmitter<{ value: Date | null }>;
   /**
    * bdsClickDayButton. Event to return when click on day button.
    */
-  @Event() bdsClickDayButton?: EventEmitter;
+  @Event() bdsClickDayButton?: EventEmitter<{ state?: stateSelect }>;
 
   /**
    * Return the validity of the input.

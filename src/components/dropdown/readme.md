@@ -17,9 +17,9 @@
 
 ## Events
 
-| Event       | Description                                     | Type               |
-| ----------- | ----------------------------------------------- | ------------------ |
-| `bdsToggle` | bdsToggle. Event to return selected date value. | `CustomEvent<any>` |
+| Event       | Description                                     | Type                               |
+| ----------- | ----------------------------------------------- | ---------------------------------- |
+| `bdsToggle` | bdsToggle. Event to return selected date value. | `CustomEvent<{ value: boolean; }>` |
 
 
 ## Methods

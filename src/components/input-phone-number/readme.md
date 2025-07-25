@@ -19,7 +19,7 @@
 | `label`                | `label`                  | Label do input.                                                                                                   | `string`                        | `'Phone number'` |
 | `language`             | `language`               | Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json). | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`        |
 | `numberErrorMessage`   | `number-error-message`   | Mensagem de erro para validação numérica.                                                                         | `string`                        | `undefined`      |
-| `options`              | --                       | Lista de opções do select.                                                                                        | `Option[]`                      | `[]`             |
+| `options`              | `options`                | Lista de opções do select.                                                                                        | `Option[]`                      | `[]`             |
 | `required`             | `required`               | Se `true`, o valor do input será obrigatório.                                                                     | `boolean`                       | `undefined`      |
 | `requiredErrorMessage` | `required-error-message` | Mensagem de erro para campo obrigatório.                                                                          | `string`                        | `undefined`      |
 | `success`              | `success`                | Habilita o estado "success" no input.                                                                             | `boolean`                       | `false`          |
@@ -30,13 +30,13 @@
 
 ## Events
 
-| Event                  | Description                                      | Type                         |
-| ---------------------- | ------------------------------------------------ | ---------------------------- |
-| `bdsBlur`              | Evento disparado quando o select perde o foco.   | `CustomEvent<void>`          |
-| `bdsCancel`            | Evento disparado quando a seleção é cancelada.   | `CustomEvent<void>`          |
-| `bdsFocus`             | Evento disparado quando o select ganha foco.     | `CustomEvent<void>`          |
-| `bdsInput`             | Evento disparado quando o input sofre alteração. | `CustomEvent<KeyboardEvent>` |
-| `bdsPhoneNumberChange` | Evento disparado quando o valor é alterado.      | `CustomEvent<any>`           |
+| Event                  | Description                                      | Type                                                                              |
+| ---------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------- |
+| `bdsBlur`              | Evento disparado quando o select perde o foco.   | `CustomEvent<void>`                                                               |
+| `bdsCancel`            | Evento disparado quando a seleção é cancelada.   | `CustomEvent<void>`                                                               |
+| `bdsFocus`             | Evento disparado quando o select ganha foco.     | `CustomEvent<void>`                                                               |
+| `bdsInput`             | Evento disparado quando o input sofre alteração. | `CustomEvent<InputEvent>`                                                         |
+| `bdsPhoneNumberChange` | Evento disparado quando o valor é alterado.      | `CustomEvent<{ value: string; code: string; isoCode: string; country: string; }>` |
 
 
 ## Methods
@@ -44,6 +44,14 @@
 ### `changeCountry(code: any, isoCode: any, flag: any) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name      | Type  | Description |
+| --------- | ----- | ----------- |
+| `code`    | `any` |             |
+| `isoCode` | `any` |             |
+| `flag`    | `any` |             |
 
 #### Returns
 

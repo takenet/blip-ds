@@ -43,7 +43,7 @@ export class ButtonGroup {
    */
   @Prop({ mutable: true }) multiple? = false;
 
-  @Event() buttonSelected: EventEmitter;
+  @Event() buttonSelected: EventEmitter<string>;
 
   private buttons: HTMLCollectionOf<HTMLBdsButtonElement>;
 

@@ -1,6 +1,11 @@
-@import './theme/color-legacy.scss';
-@import './theme/theme-light.scss';
-@import './theme/theme-dark.scss';
+@forward '~blip-tokens/build/scss/variables.scss';
+@forward './theme/theme-light.scss';
+@forward './theme/theme-dark.scss';
+@use './theme/theme-light.scss' as *;
+@use './theme/theme-dark.scss' as *;
+
+// Common variables
+$border-radius: 8px;
 
 $color-brand: var(--color-brand, $color-light-brand);
 $color-primary: var(--color-primary, $color-light-primary);
@@ -36,6 +41,16 @@ $color-hover: var(--color-hover, rgba(0, 0, 0, 0.08));
 $color-pressed: var(--color-pressed, rgba(0, 0, 0, 0.16));
 $color-positive: var(--color-positive, #10603b);
 $color-negative: var(--color-negative, #e60f0f);
+
+// Legacy neutral colors (commonly used in components)
+$color-neutral-dark-onix: #292929;
+$color-neutral-light-snow: #f6f6f6;
+$color-neutral-light-breeze: #ededed;
+$color-neutral-medium-cloud: #e3e3e3;
+$color-neutral-medium-wave: #d4d4d4;
+
+// Dark theme colors for theme provider
+$color-dark-pressed: rgba(255, 255, 255, 0.16);
 
 //Extended
 $color-extended-blue: var(--color-extended-blue, $color-light-extended-blue);

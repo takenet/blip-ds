@@ -26,9 +26,9 @@ describe('bds-nav-tree e2e tests', () => {
     // Add nav-tree control functionality
     await page.evaluate(() => {
       const toggleButton = document.getElementById('toggle');
-      const navTree = document.querySelector('bds-nav-tree');
+      const navTree = document.querySelector('bds-nav-tree') as any;
       
-      toggleButton.addEventListener('click', () => {
+      toggleButton?.addEventListener('click', () => {
         navTree.toggle();
       });
 
@@ -188,7 +188,7 @@ describe('bds-nav-tree-group e2e tests', () => {
         const navTreeGroup = document.getElementById('nav-tree-group');
         const eventInput = document.getElementById('group-event-test') as HTMLInputElement;
         
-        openAllButton.addEventListener('click', async () => {
+        openAllButton?.addEventListener('click', async () => {
           await (navTreeGroup as any).openAll();
           eventInput.value = 'openAll';
         });
@@ -212,7 +212,7 @@ describe('bds-nav-tree-group e2e tests', () => {
         const navTreeGroup = document.getElementById('nav-tree-group');
         const eventInput = document.getElementById('group-event-test') as HTMLInputElement;
         
-        closeAllButton.addEventListener('click', async () => {
+        closeAllButton?.addEventListener('click', async () => {
           await (navTreeGroup as any).closeAll();
           eventInput.value = 'closeAll';
         });

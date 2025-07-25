@@ -41,6 +41,12 @@ void
 
 Set the active step
 
+#### Parameters
+
+| Name    | Type     | Description                               |
+| ------- | -------- | ----------------------------------------- |
+| `index` | `number` | The index of the step to be set as active |
+
 #### Returns
 
 Type: `Promise<void>`
@@ -50,6 +56,12 @@ void
 ### `setCompletedStep(index: number) => Promise<void>`
 
 Set the completed step
+
+#### Parameters
+
+| Name    | Type     | Description                                  |
+| ------- | -------- | -------------------------------------------- |
+| `index` | `number` | The index of the step to be set as completed |
 
 #### Returns
 

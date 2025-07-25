@@ -49,7 +49,7 @@ export class Banner implements ComponentInterface {
   /**
    * Emitted when the banner is closed.
    */
-  @Event() bdsBannerClose!: EventEmitter;
+  @Event() bdsBannerClose!: EventEmitter<void>;
   @Method()
   async toggle() {
     this.visible = !this.visible;

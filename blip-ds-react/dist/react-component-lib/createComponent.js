@@ -19,9 +19,20 @@ export const createReactComponent = (tagName, ReactComponentContext, manipulateP
     const ReactComponent = class extends React.Component {
         constructor(props) {
             super(props);
-            this.setComponentElRef = (element) => {
-                this.componentEl = element;
-            };
+            Object.defineProperty(this, "componentEl", {
+                enumerable: true,
+                configurable: true,
+                writable: true,
+                value: void 0
+            });
+            Object.defineProperty(this, "setComponentElRef", {
+                enumerable: true,
+                configurable: true,
+                writable: true,
+                value: (element) => {
+                    this.componentEl = element;
+                }
+            });
         }
         componentDidMount() {
             this.componentDidUpdate(this.props);
@@ -40,8 +51,6 @@ export const createReactComponent = (tagName, ReactComponentContext, manipulateP
                     }
                 }
                 else {
-                    // we should only render strings, booleans, and numbers as attrs in html.
-                    // objects, functions, arrays etc get synced via properties on mount.
                     const type = typeof value;
                     if (type === 'string' || type === 'boolean' || type === 'number') {
                         acc[camelToDashCase(name)] = value;
@@ -53,20 +62,12 @@ export const createReactComponent = (tagName, ReactComponentContext, manipulateP
                 propsToPass = manipulatePropsFunction(this.props, propsToPass);
             }
             const newProps = Object.assign(Object.assign({}, propsToPass), { ref: mergeRefs(forwardedRef, this.setComponentElRef), style });
-            /**
-             * We use createElement here instead of
-             * React.createElement to work around a
-             * bug in Vite (https://github.com/vitejs/vite/issues/6104).
-             * React.createElement causes all elements to be rendered
-             * as <tagname> instead of the actual Web Component.
-             */
             return createElement(tagName, newProps, children);
         }
         static get displayName() {
             return displayName;
         }
     };
-    // If context was passed to createReactComponent then conditionally add it to the Component Class
     if (ReactComponentContext) {
         ReactComponent.contextType = ReactComponentContext;
     }

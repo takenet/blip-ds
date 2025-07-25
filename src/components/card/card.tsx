@@ -47,7 +47,7 @@ export class Card implements ComponentInterface {
   /**
    * This event will be dispatch when click on the component.
    */
-  @Event() bdsClick: EventEmitter;
+  @Event() bdsClick: EventEmitter<PointerEvent | KeyboardEvent>;
 
   @Element() element: HTMLElement;
 
@@ -65,9 +65,9 @@ export class Card implements ComponentInterface {
         this.isHovered = false;
       });
 
-      this.cardElement.addEventListener('mousedown', () => {
+      this.cardElement.addEventListener('mousedown', (event: PointerEvent) => {
         this.isPressed = true;
-        this.bdsClick.emit();
+        this.bdsClick.emit(event);
       });
 
       document.addEventListener('mouseup', () => {
@@ -77,7 +77,7 @@ export class Card implements ComponentInterface {
       this.cardElement.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
           this.isPressed = true;
-          this.bdsClick.emit();
+          this.bdsClick.emit(event);
         }
       });
 
@@ -97,7 +97,7 @@ export class Card implements ComponentInterface {
     }
   }
 
-  private handleKeyDown(event) {
+  private handleKeyDown(event: KeyboardEvent) {
     if (event.key == 'Enter') {
       this.isPressed = true;
       this.bdsClick.emit(event);

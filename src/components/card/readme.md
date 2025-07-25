@@ -20,9 +20,9 @@
 
 ## Events
 
-| Event      | Description                                              | Type               |
-| ---------- | -------------------------------------------------------- | ------------------ |
-| `bdsClick` | This event will be dispatch when click on the component. | `CustomEvent<any>` |
+| Event      | Description                                              | Type                                         |
+| ---------- | -------------------------------------------------------- | -------------------------------------------- |
+| `bdsClick` | This event will be dispatch when click on the component. | `CustomEvent<KeyboardEvent \| PointerEvent>` |
 
 
 ## Dependencies

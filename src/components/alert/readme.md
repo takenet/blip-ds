@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event             | Description                            | Type               |
-| ----------------- | -------------------------------------- | ------------------ |
-| `bdsAlertChanged` | Emitted when modal status has changed. | `CustomEvent<any>` |
+| Event             | Description                            | Type                                    |
+| ----------------- | -------------------------------------- | --------------------------------------- |
+| `bdsAlertChanged` | Emitted when modal status has changed. | `CustomEvent<{ alertStatus: string; }>` |
 
 
 ## Methods

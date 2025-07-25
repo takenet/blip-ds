@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event      | Description           | Type               |
-| ---------- | --------------------- | ------------------ |
-| `bdsClick` | Event buttom onClick. | `CustomEvent<any>` |
+| Event      | Description           | Type                        |
+| ---------- | --------------------- | --------------------------- |
+| `bdsClick` | Event buttom onClick. | `CustomEvent<PointerEvent>` |
 
 
 ## Dependencies

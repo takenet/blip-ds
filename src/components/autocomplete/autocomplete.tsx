@@ -175,7 +175,7 @@ export class BdsAutocomplete {
   /**
    * Emitted when the input has changed.
    */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInput!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the selection is cancelled.
@@ -505,12 +505,12 @@ export class BdsAutocomplete {
     }
   };
 
-  private changedInputValue = async (ev: Event) => {
+  private changedInputValue = async (ev: InputEvent) => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsInput.emit(ev);
     if (this.nativeInput.value) {
       await this.filterOptions(this.nativeInput.value);
     } else {

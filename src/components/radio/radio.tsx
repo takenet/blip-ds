@@ -49,12 +49,12 @@ export class Radio {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsChange!: EventEmitter;
+  @Event() bdsChange!: EventEmitter<{ checked: boolean }>;
 
   /**
    * Emitted when the value has changed because of a click event.
    */
-  @Event() bdsClickChange!: EventEmitter;
+  @Event() bdsClickChange!: EventEmitter<{ checked: boolean }>;
 
   @Watch('checked')
   protected checkedChanged(isChecked: boolean): void {

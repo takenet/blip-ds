@@ -51,9 +51,20 @@ export class DataTable {
    * Prop to activate the sorting.
    */
   @Prop() sorting?: boolean = false;
-  @Event() bdsTableClick: EventEmitter;
-  @Event() bdsTableDelete: EventEmitter;
-  @Event() bdsTableChange: EventEmitter;
+
+  @Event() bdsTableClick: EventEmitter<{
+    item: {
+      [key: string]: any;
+    }; index: number; nameButton: string
+  }>;
+
+  @Event() bdsTableDelete: EventEmitter<{
+    [key: string]: any;
+  }>;
+
+  @Event() bdsTableChange: EventEmitter<{
+    [key: string]: any;
+  }[]>;
 
   componentWillLoad() {
     this.getDataFromProprety();
@@ -81,7 +92,7 @@ export class DataTable {
     this.bdsTableChange.emit(this.tableData);
   }
 
-  clickButton(item, index, btn) {
+  clickButton(item: Data, index: number, btn: any) {
     this.bdsTableClick.emit({ item: item, index: index, nameButton: btn });
   }
 

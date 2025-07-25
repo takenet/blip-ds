@@ -23,10 +23,10 @@
 
 ## Events
 
-| Event             | Description                                    | Type               |
-| ----------------- | ---------------------------------------------- | ------------------ |
-| `bdsUploadChange` | Event emited when change the value of Upload.  | `CustomEvent<any>` |
-| `bdsUploadDelete` | Event emited when delete a item from the list. | `CustomEvent<any>` |
+| Event             | Description                                    | Type                              |
+| ----------------- | ---------------------------------------------- | --------------------------------- |
+| `bdsUploadChange` | Event emited when change the value of Upload.  | `CustomEvent<{ value: File[]; }>` |
+| `bdsUploadDelete` | Event emited when delete a item from the list. | `CustomEvent<{ value: File[]; }>` |
 
 
 ## Methods
@@ -44,6 +44,12 @@ Type: `Promise<void>`
 ### `deleteFile(index: any) => Promise<void>`
 
 Used for delete a item from the list.
+
+#### Parameters
+
+| Name    | Type  | Description |
+| ------- | ----- | ----------- |
+| `index` | `any` |             |
 
 #### Returns
 

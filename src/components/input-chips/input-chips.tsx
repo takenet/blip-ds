@@ -150,36 +150,36 @@ export class InputChips {
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsChange!: EventEmitter;
+  @Event() bdsChange!: EventEmitter<{ data: string[]; value: string }>;
 
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsChangeChips!: EventEmitter;
+  @Event() bdsChangeChips!: EventEmitter<{ data: string[]; value: string }>;
 
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsInputChipsFocus!: EventEmitter;
+  @Event() bdsInputChipsFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsBlur!: EventEmitter;
+  @Event() bdsBlur!: EventEmitter<string[]>;
 
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsInputChipsInput!: EventEmitter;
+  @Event() bdsInputChipsInput!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when a maximum value defined by the "max-chips-length" prop is entered
    */
-  @Event() bdsExtendedQuantityInput!: EventEmitter;
+  @Event() bdsExtendedQuantityInput!: EventEmitter<{ value: boolean }>;
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsSubmit!: EventEmitter;
+  @Event() bdsSubmit!: EventEmitter<{ value: string[] }>;
 
   /**
    * Call change event before alter chips values.
@@ -293,12 +293,12 @@ export class InputChips {
     }
   }
 
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInputChipsInput.emit(ev as KeyboardEvent);
+    this.bdsInputChipsInput.emit(ev);
   };
 
   private minMaxValidation() {
@@ -325,7 +325,8 @@ export class InputChips {
         this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
         this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
           this.removeLastChip();
           this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });

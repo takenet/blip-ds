@@ -22,9 +22,9 @@
 
 ## Events
 
-| Event       | Description                                     | Type               |
-| ----------- | ----------------------------------------------- | ------------------ |
-| `bdsChange` | bdsChange. Event to return selected date value. | `CustomEvent<any>` |
+| Event       | Description                                     | Type                      |
+| ----------- | ----------------------------------------------- | ------------------------- |
+| `bdsChange` | bdsChange. Event to return selected date value. | `CustomEvent<StepOption>` |
 
 
 ## Dependencies

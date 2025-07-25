@@ -1,3 +1,5 @@
+@use '../../../globals/helpers' as *;
+
 :host {
     display: table-row-group;
     height: 64px;

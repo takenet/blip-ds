@@ -21,9 +21,9 @@
 
 ## Events
 
-| Event             | Description                                                     | Type               |
-| ----------------- | --------------------------------------------------------------- | ------------------ |
-| `bdsToogleChange` | When de activation of component change, the event are dispache. | `CustomEvent<any>` |
+| Event             | Description                                                     | Type                                                      |
+| ----------------- | --------------------------------------------------------------- | --------------------------------------------------------- |
+| `bdsToogleChange` | When de activation of component change, the event are dispache. | `CustomEvent<{ value?: boolean; element: HTMLElement; }>` |
 
 
 ## Methods

@@ -1,4 +1,4 @@
-@import 'fonts';
+@use '../../globals/helpers' as *;
 
 :host {
   color: $color-content-default;

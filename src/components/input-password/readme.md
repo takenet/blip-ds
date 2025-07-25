@@ -33,14 +33,14 @@
 
 ## Events
 
-| Event                    | Description                         | Type                         |
-| ------------------------ | ----------------------------------- | ---------------------------- |
-| `bdsInputPasswordBlur`   | Event input onblur.                 | `CustomEvent<any>`           |
-| `bdsInputPasswordChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
-| `bdsInputPasswordFocus`  | Event input focus.                  | `CustomEvent<any>`           |
-| `bdsInputPasswordInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
-| `bdsInputPasswordSubmit` | Event input enter.                  | `CustomEvent<any>`           |
-| `bdsKeyDownBackspace`    | Event input key down backspace.     | `CustomEvent<any>`           |
+| Event                    | Description                         | Type                                                            |
+| ------------------------ | ----------------------------------- | --------------------------------------------------------------- |
+| `bdsInputPasswordBlur`   | Event input onblur.                 | `CustomEvent<void>`                                             |
+| `bdsInputPasswordChange` | Emitted when the value has changed. | `CustomEvent<{ value: string; }>`                               |
+| `bdsInputPasswordFocus`  | Event input focus.                  | `CustomEvent<void>`                                             |
+| `bdsInputPasswordInput`  | Emitted when the input has changed. | `CustomEvent<InputEvent>`                                       |
+| `bdsInputPasswordSubmit` | Event input enter.                  | `CustomEvent<void \| { event: KeyboardEvent; value: string; }>` |
+| `bdsKeyDownBackspace`    | Event input key down backspace.     | `CustomEvent<{ event: KeyboardEvent; value: string; }>`         |
 
 
 ## Shadow Parts

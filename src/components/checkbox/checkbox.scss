@@ -1,4 +1,4 @@
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 $checkbox-size: 18px;
 $checkbox-icon-radius: 4px;

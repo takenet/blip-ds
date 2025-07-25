@@ -189,17 +189,17 @@ export class SelectChips {
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsChangeChips!: EventEmitter;
+  @Event() bdsChangeChips!: EventEmitter<{ data: string[]; value: number }>;
 
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsSelectChipsInput!: EventEmitter;
+  @Event() bdsSelectChipsInput!: EventEmitter<InputEvent>;
 
   /**
    * Emitted when the chip has added.
    */
-  @Event() bdsSubmit!: EventEmitter;
+  @Event() bdsSubmit!: EventEmitter<void>;
 
   @Watch('isOpen')
   protected isOpenChanged(isOpen: boolean): void {
@@ -514,12 +514,12 @@ export class SelectChips {
     this.isPressed = false;
   }
 
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsSelectChipsInput.emit(ev as KeyboardEvent);
+    this.bdsSelectChipsInput.emit(ev);
     this.changedInputValue();
   };
 
@@ -547,7 +547,8 @@ export class SelectChips {
           this.isOpen = false;
         }
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
           this.removeLastChip();
           this.handleChangeChipsValue;

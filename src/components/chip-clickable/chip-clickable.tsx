@@ -52,8 +52,8 @@ export class ChipClickable {
   /**
    *  Triggered after a mouse click on close icon, return id element. Only fired when close is true.
    */
-  @Event() chipClickableClose: EventEmitter;
-  @Event() chipClickableClick: EventEmitter;
+  @Event() chipClickableClose: EventEmitter<{ id: string }>;
+  @Event() chipClickableClick: EventEmitter<void>;
 
   private handleClickKey(event) {
     if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {

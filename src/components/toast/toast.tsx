@@ -79,7 +79,7 @@ export class BdsToast implements ComponentInterface {
   /**
    * Event used to execute some action when the action button on the toast is clicked
    */
-  @Event() toastButtonClick!: EventEmitter;
+  @Event() toastButtonClick!: EventEmitter<HTMLBdsToastElement>;
   /**
    * Sends an event to be used when creating an action when clicking the toast button
    */

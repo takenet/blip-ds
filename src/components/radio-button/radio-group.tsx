@@ -16,7 +16,7 @@ export class RadioGroup implements ComponentInterface {
   /**
    * Emitted when the value has changed due to a click event.
    */
-  @Event() bdsRadioGroupChange: EventEmitter;
+  @Event() bdsRadioGroupChange: EventEmitter<{ value?: string }>;
 
   @Watch('value')
   valueChanged(value: string) {

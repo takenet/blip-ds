@@ -6,11 +6,11 @@
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2020"
+      "es2017"
     ],
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "es2020",
+    "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
@@ -20,14 +20,30 @@
       "types"
     ],
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": false
   },
   "include": [
-    "./src/**/*",
     "src",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "types/jsx.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
+    "loader",
+    "www",
+    "storybook-static",
+    "blip-ds-react",
+    ".storybook",
+    "**/*.stories.js",
+    "**/*.stories.jsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.e2e.ts",
+    "**/*.d.ts"
   ]
 }

@@ -20,9 +20,9 @@
 
 ## Events
 
-| Event             | Description                            | Type               |
-| ----------------- | -------------------------------------- | ------------------ |
-| `bdsModalChanged` | Emitted when modal status has changed. | `CustomEvent<any>` |
+| Event             | Description                            | Type                                                  |
+| ----------------- | -------------------------------------- | ----------------------------------------------------- |
+| `bdsModalChanged` | Emitted when modal status has changed. | `CustomEvent<{ modalStatus: "opened" \| "closed"; }>` |
 
 
 ## Methods

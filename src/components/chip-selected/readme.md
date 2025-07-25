@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event       | Description | Type               |
-| ----------- | ----------- | ------------------ |
-| `chipClick` |             | `CustomEvent<any>` |
+| Event       | Description | Type                                  |
+| ----------- | ----------- | ------------------------------------- |
+| `chipClick` |             | `CustomEvent<{ selected: boolean; }>` |
 
 
 ## Dependencies

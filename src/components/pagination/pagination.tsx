@@ -99,12 +99,12 @@ export class Pagination {
    * Evento emitido quando o valor da página atual é alterado.
    * Pode ser escutado para realizar ações específicas ao mudar de página.
    */
-  @Event() bdsPaginationChange: EventEmitter;
+  @Event() bdsPaginationChange: EventEmitter<number>;
   /**
    * Evento emitido quando o valor da página atual é alterado.
    * Pode ser escutado para realizar ações específicas ao mudar de página.
    */
-  @Event() bdsItemsPerPageChange: EventEmitter;
+  @Event() bdsItemsPerPageChange: EventEmitter<number>;
 
   // Variável que armazena o número do primeiro item sendo exibido na página atual
   startItem: number;

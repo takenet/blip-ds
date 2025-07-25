@@ -56,7 +56,7 @@ export class Chip {
   /**
    *  Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
    */
-  @Event() bdsDelete: EventEmitter;
+  @Event() bdsDelete: EventEmitter<{ id: string }>;
 
   handleClickDelete(event) {
     if (!this.deletable || this.disabled) return;

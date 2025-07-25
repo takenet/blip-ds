@@ -21,9 +21,9 @@
 
 ## Events
 
-| Event       | Description                          | Type               |
-| ----------- | ------------------------------------ | ------------------ |
-| `bdsToggle` | Emitted when the isOpen has changed. | `CustomEvent<any>` |
+| Event       | Description                          | Type                               |
+| ----------- | ------------------------------------ | ---------------------------------- |
+| `bdsToggle` | Emitted when the isOpen has changed. | `CustomEvent<{ value: boolean; }>` |
 
 
 ## Methods

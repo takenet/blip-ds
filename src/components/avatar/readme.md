@@ -21,10 +21,10 @@
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `bdsClickAvatar` |             | `CustomEvent<any>` |
-| `bdsImageUpload` |             | `CustomEvent<any>` |
+| Event            | Description | Type                        |
+| ---------------- | ----------- | --------------------------- |
+| `bdsClickAvatar` |             | `CustomEvent<PointerEvent>` |
+| `bdsImageUpload` |             | `CustomEvent<string>`       |
 
 
 ## Dependencies

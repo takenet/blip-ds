@@ -19,10 +19,10 @@
 
 ## Events
 
-| Event       | Description                         | Type                         |
-| ----------- | ----------------------------------- | ---------------------------- |
-| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
-| `bdsInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
+| Event       | Description                         | Type                                 |
+| ----------- | ----------------------------------- | ------------------------------------ |
+| `bdsChange` | Emitted when the value has changed. | `CustomEvent<{ checked: boolean; }>` |
+| `bdsInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>`         |
 
 
 ## Methods

@@ -29,12 +29,12 @@
 
 ## Events
 
-| Event               | Description                         | Type                         |
-| ------------------- | ----------------------------------- | ---------------------------- |
-| `bdsBlur`           | Event input onblur.                 | `CustomEvent<any>`           |
-| `bdsFocus`          | Event input focus.                  | `CustomEvent<any>`           |
-| `bdsRichTextChange` | Emitted when the value has changed. | `CustomEvent<any>`           |
-| `bdsRichTextInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
+| Event               | Description                         | Type                              |
+| ------------------- | ----------------------------------- | --------------------------------- |
+| `bdsBlur`           | Event input onblur.                 | `CustomEvent<void>`               |
+| `bdsFocus`          | Event input focus.                  | `CustomEvent<void>`               |
+| `bdsRichTextChange` | Emitted when the value has changed. | `CustomEvent<{ value: string; }>` |
+| `bdsRichTextInput`  | Emitted when the input has changed. | `CustomEvent<InputEvent>`         |
 
 
 ## Dependencies

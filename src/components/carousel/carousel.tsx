@@ -110,7 +110,7 @@ export class BdsCarousel {
   /**
    * Emitted when active frame value.
    */
-  @Event() bdsChangeCarousel!: EventEmitter;
+  @Event() bdsChangeCarousel!: EventEmitter<{ value: Itens }>;
 
   componentWillLoad() {
     this.itemsElement = this.element.getElementsByTagName(
