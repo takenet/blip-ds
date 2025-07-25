@@ -3,6 +3,8 @@
 
 $input-padding: 8px 4px 8px 12px;
 $input-padding-label: 7px 4px 8px 12px;
+$input-padding-textarea: 12px 12px 12px 12px;
+$input-padding-textarea-label: 12px 12px 12px 12px;
 $input-width: 100%;
 
 @mixin input-text {
@@ -108,6 +110,24 @@ $input-width: 100%;
   .bds-icon {
     position: relative;
     z-index: 1;
+  }
+
+  // Textarea specific styling
+  &--textarea {
+    padding: $input-padding-textarea;
+    align-items: flex-start;
+
+    &.input--label {
+      padding: $input-padding-textarea-label;
+    }
+
+    .input__icon {
+      margin-top: 1px; // Align icon with first line of text
+
+      &--textarea {
+        align-self: flex-start;
+      }
+    }
   }
 
   &--state {
@@ -218,10 +238,15 @@ $input-width: 100%;
   & .icon-success {
     color: $color-positive;
     margin-left: 4px;
+    margin-top: 1px; // Align with text baseline
   }
 
   &--label {
     padding: $input-padding-label;
+
+    &.input--textarea {
+      padding: $input-padding-textarea-label;
+    }
   }
 
   &__icon {
@@ -231,6 +256,12 @@ $input-width: 100%;
     justify-content: center;
     border-radius: 8px;
     padding: 2px;
+    flex-shrink: 0;
+
+    &--textarea {
+      align-self: flex-start;
+      margin-top: 1px;
+    }
   }
 
   &__container {
@@ -238,10 +269,16 @@ $input-width: 100%;
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    flex: 1;
 
     &__wrapper {
       display: flex;
       flex-wrap: wrap;
+
+      &--textarea {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
     }
 
     &__wrapper__chips {
@@ -254,6 +291,7 @@ $input-width: 100%;
     &__label {
       display: flex;
       align-items: center;
+      margin-bottom: 2px;
     }
 
     &__text {
@@ -263,6 +301,37 @@ $input-width: 100%;
 
       resize: none;
       cursor: inherit;
+      width: 100%;
+      min-height: auto;
+
+      &--textarea {
+        resize: vertical;
+        overflow-y: auto;
+        line-height: 20px;
+        padding: 0;
+
+        // Custom scrollbar styling for textarea
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $color-border-2;
+          border-radius: 4px;
+
+          &:hover {
+            background: $color-content-ghost;
+          }
+        }
+
+        // Firefox scrollbar styling
+        scrollbar-width: thin;
+        scrollbar-color: $color-border-2 transparent;
+      }
 
       &[type='date'] {
         &::-webkit-calendar-picker-indicator {
@@ -292,6 +361,7 @@ $input-width: 100%;
     &__icon {
       display: flex;
       margin-top: 0px;
+      flex-shrink: 0;
     }
 
     &--danger {
@@ -317,6 +387,7 @@ $input-width: 100%;
   }
 }
 
+// Legacy classes for backward compatibility
 .input__container {
   display: flex;
   flex-direction: column;
