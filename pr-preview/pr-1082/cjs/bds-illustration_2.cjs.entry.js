@@ -94,7 +94,7 @@ const dependencies = {
 	"@storybook/addon-docs": "^7.6.20",
 	"@storybook/preset-create-react-app": "^7.6.20",
 	autoprefixer: "^10.4.7",
-	"blip-tokens": "^1.91.0",
+	"blip-tokens": "^1.94.0",
 	react: "^18.1.0",
 	"react-dom": "^18.1.0"
 };
