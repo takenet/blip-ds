@@ -1,0 +1,2 @@
+System.register(["./p-B47mPBRA.system.js"],(function(t){"use strict";var e,n;return{setters:[function(t){e=t.r;n=t.h}],execute:function(){var r=t("bds_card_subtitle",function(){function t(t){e(this,t)}t.prototype.render=function(){return n("bds-typo",{key:"730db62f0ca2e8cd88656774e315cb12012d2e8c",variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)};return t}())}}}));
+//# sourceMappingURL=p-57de6879.system.entry.js.map
