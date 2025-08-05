@@ -1,0 +1,113 @@
+import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
+import { d as defineCustomElement$2 } from './p-BHBVuzyo.js';
+
+const chipCss = ":host{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;cursor:pointer;white-space:nowrap;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-weight:600}:host(.chip){border-radius:8px;padding:3px 8px}:host(.chip--primary){background:#e8f2ff;color:#3f7de8}:host(.chip--click.chip--primary:hover){background:#d1e3fa;color:#125ad5}:host(.chip--watermelon){background:#fb5a8b;color:#f6f6f6}:host(.chip--default){background:#ededed;color:#e3e3e3}:host(.chip--danger){background:#ffa5a5;color:#ff4c4c}:host(.chip--click.chip--danger:hover){background:#fccccc;color:#6a2026}:host(.chip--filter){background:#125ad5;color:#f6f6f6}:host(.chip--click.chip--filter:hover){background:#0747a6;color:#f6f6f6}:host(.chip--standard){height:24px;font-size:0.75rem}:host(.chip--tall){height:32px;font-size:0.875rem}.chip__delete{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;padding-left:6px;cursor:pointer}.chip__icon{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;padding-right:4px}";
+
+const Chip = /*@__PURE__*/ proxyCustomElement(class Chip extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.__attachShadow();
+        this.bdsDelete = createEvent(this, "bdsDelete");
+        /**
+         * Chip size. Entered as one of the size design tokens. Can be one of:
+         * "standard" and "tall"
+         */
+        this.size = 'standard';
+        /**
+         * Variant. Entered as one of the variant. Can be one of:
+         * 'primary', 'default';
+         */
+        this.variant = 'default';
+        /**
+         * Add state danger on chip, use for use feedback.
+         */
+        this.danger = false;
+        /**
+         * Add state filter on chip whith specific color.
+         */
+        this.filter = false;
+        /**
+         * When 'true' and the component is using the primary variant, a hover is added
+         */
+        this.clickable = false;
+        /**
+         * When 'true', the component recive remove button and dispach event onBdsDelete
+         */
+        this.deletable = false;
+        /**
+         * When 'true', no events will be dispatched
+         */
+        this.disabled = false;
+    }
+    handleClickDelete(event) {
+        if (!this.deletable || this.disabled)
+            return;
+        event.preventDefault();
+        this.bdsDelete.emit({ id: this.element.id });
+    }
+    getClickClass() {
+        return this.clickable ? { 'chip--click': true } : {};
+    }
+    getSizeClass() {
+        return this.size === 'standard' ? { 'chip--standard': true } : { 'chip--tall': true };
+    }
+    getStateClass() {
+        if (this.disabled) {
+            return { 'chip--default': true };
+        }
+        if (this.danger) {
+            return { 'chip--danger': true };
+        }
+        if (this.filter) {
+            return { 'chip--filter': true };
+        }
+        if (this.variant === 'primary') {
+            return { 'chip--primary': true };
+        }
+        if (this.variant === 'watermelon') {
+            return { 'chip--watermelon': true };
+        }
+        return { 'chip--default': true };
+    }
+    render() {
+        return (h(Host, { key: '635ce5ca9f698b889b6de4f87ff655da3d490597', class: Object.assign(Object.assign(Object.assign({ chip: true }, this.getClickClass()), this.getStateClass()), this.getSizeClass()) }, this.icon && (h("div", { key: '413dcee01d119254d2eb3201db8d99a8c5adc7aa', class: "chip__icon" }, h("bds-icon", { key: 'd50e98bd14192025f3c216b5c53f31653f1e1709', size: "x-small", name: this.icon }))), h("slot", { key: 'dbb463b219818f9a4dd01fa4795b1fda26527848' }), this.deletable && (h("div", { key: 'b5c96ac576d48e339c2e6aa0fd201b49be004829', class: "chip__delete", onClick: this.handleClickDelete.bind(this) }, h("bds-icon", { key: '53f33457c8fa2fbabb3fd7b6736adac9298feb4f', size: "x-small", theme: "solid", name: "error" })))));
+    }
+    get element() { return this; }
+    static get style() { return chipCss; }
+}, [1, "bds-chip", {
+        "icon": [1],
+        "size": [1],
+        "variant": [1],
+        "danger": [516],
+        "filter": [4],
+        "clickable": [4],
+        "deletable": [4],
+        "disabled": [4]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["bds-chip", "bds-icon"];
+    components.forEach(tagName => { switch (tagName) {
+        case "bds-chip":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, Chip);
+            }
+            break;
+        case "bds-icon":
+            if (!customElements.get(tagName)) {
+                defineCustomElement$2();
+            }
+            break;
+    } });
+}
+
+const BdsChip = Chip;
+const defineCustomElement = defineCustomElement$1;
+
+export { BdsChip, defineCustomElement };
+//# sourceMappingURL=bds-chip.js.map
+
+//# sourceMappingURL=bds-chip.js.map

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblip_ds=self.webpackChunkblip_ds||[]).push([[5025],{"./dist/esm-es5/bds-card-color.entry.js.map":(module,__unused_webpack_exports,__webpack_require__)=>{module.exports=__webpack_require__.p+"f6bd9cdfb5b3d94b0223.map"}}]);
