@@ -1,9 +1,9 @@
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 $radio-spacing-text: 8px;
 $radio-circle-width: 24px;
 $radio-circle-height: 24px;
-$radio-boder-radius: 16px;
+$radio-border-radius: 16px;
 $radio-circle-pointer-width: 10px;
 $radio-circle-pointer-height: 10px;
 

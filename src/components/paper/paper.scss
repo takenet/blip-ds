@@ -1,4 +1,5 @@
-@import '../../global-style';
+@use '../../global-style' as *;
+@use '../../globals/helpers' as *;
 
 :host {
   display: block;

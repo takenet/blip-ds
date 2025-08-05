@@ -37,7 +37,7 @@
 | `bdsCancel`            | Emitted when the selection is cancelled. | `CustomEvent<void>`                     |
 | `bdsChange`            | Emitted when the value has changed.      | `CustomEvent<InputEditableEventDetail>` |
 | `bdsFocus`             | Emitted when the select loses focus.     | `CustomEvent<void>`                     |
-| `bdsInput`             | Emitted when the input has changed.      | `CustomEvent<KeyboardEvent>`            |
+| `bdsInput`             | Emitted when the input has changed.      | `CustomEvent<InputEvent>`               |
 | `bdsInputEditableSave` | Emitted when input text confirm.         | `CustomEvent<InputEditableEventDetail>` |
 
 

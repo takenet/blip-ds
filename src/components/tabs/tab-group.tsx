@@ -44,11 +44,12 @@ export class BdsTabGroup {
   /**
    * bdsTabChange. Event to return value when Tabs is change.
    */
-  @Event() bdsTabChange?: EventEmitter;
+  @Event() bdsTabChange?: EventEmitter<HTMLBdsTabItemElement>;
+
   /**
    * bdsTabDisabled. Event to return value when Tabs disable is change.
    */
-  @Event() bdsTabDisabled?: EventEmitter;
+  @Event() bdsTabDisabled?: EventEmitter<HTMLBdsTabItemElement>;
 
   componentWillRender() {
     this.tabItensElement = this.element.getElementsByTagName('bds-tab-item') as HTMLCollectionOf<HTMLBdsTabItemElement>;

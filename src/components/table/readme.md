@@ -19,11 +19,11 @@
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `bdsTableChange` |             | `CustomEvent<any>` |
-| `bdsTableClick`  |             | `CustomEvent<any>` |
-| `bdsTableDelete` |             | `CustomEvent<any>` |
+| Event            | Description | Type                                                                                 |
+| ---------------- | ----------- | ------------------------------------------------------------------------------------ |
+| `bdsTableChange` |             | `CustomEvent<{ [key: string]: any; }[]>`                                             |
+| `bdsTableClick`  |             | `CustomEvent<{ item: { [key: string]: any; }; index: number; nameButton: string; }>` |
+| `bdsTableDelete` |             | `CustomEvent<{ [key: string]: any; }>`                                               |
 
 
 ## Methods
@@ -31,6 +31,12 @@
 ### `deleteItem(index: number) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `index` | `number` |             |
 
 #### Returns
 

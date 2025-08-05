@@ -159,19 +159,20 @@ export class DatePicker {
   /**
    * bdsStartDate. Event to return selected date value.
    */
-  @Event() bdsStartDate?: EventEmitter;
+  @Event() bdsStartDate?: EventEmitter<{ value: Date | null }>;
   /**
    * bdsStartDate. Event to return selected end date value.
    */
-  @Event() bdsEndDate?: EventEmitter;
+  @Event() bdsEndDate?: EventEmitter<{ value: Date | null }>;
   /**
    * bdsStartDate. Event to return selected end date value.
    */
-  @Event() concludeDatepicker?: EventEmitter;
-    /**
-     * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
-     */
-    @Event() emptyConcludeDatepicker?: EventEmitter;
+  @Event() concludeDatepicker?: EventEmitter<{ startDate: string; endDate?: string } | { startDate: string } | any>;
+
+  /**
+   * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
+   */
+  @Event() emptyConcludeDatepicker?: EventEmitter<void>;
 
   componentWillLoad() {
     this.endDateLimitChanged();
@@ -336,7 +337,7 @@ export class DatePicker {
     }
   };
 
-  private onInputDateSelected = (ev: Event): void => {
+  private onInputDateSelected = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueDate = input.value;
     if (!this.valueDate) {
@@ -368,7 +369,7 @@ export class DatePicker {
     }
   };
 
-  private onInputEndDateSelected = (ev: Event): void => {
+  private onInputEndDateSelected = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     this.valueEndDate = input.value;
     this.validationEndDateSelected(this.valueEndDate);
@@ -464,7 +465,7 @@ export class DatePicker {
               maxlength={10}
               icon="calendar"
               onClick={() => this.openDatepicker()}
-              onBdsInput={(ev) => this.onInputDateSelected(ev)}
+              onBdsInput={(ev) => this.onInputDateSelected(ev.detail)}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
               dataTest={this.dtInputStart}
@@ -489,7 +490,7 @@ export class DatePicker {
               icon="calendar"
               onClick={() => this.openDatepicker()}
               onFocus={() => this.onFocusDateSelect()}
-              onBdsInput={(ev) => this.onInputDateSelected(ev)}
+              onBdsInput={(ev) => this.onInputDateSelected(ev.detail)}
               danger={this.errorMsgDate ? true : false}
               errorMessage={this.errorMsgDate}
               dataTest={this.dtInputStart}
@@ -505,7 +506,7 @@ export class DatePicker {
               icon="calendar"
               onClick={() => this.openDatepicker()}
               onFocus={() => this.onFocusEndDateSelect()}
-              onBdsInput={(ev) => this.onInputEndDateSelected(ev)}
+              onBdsInput={(ev) => this.onInputEndDateSelected(ev.detail)}
               danger={this.errorMsgEndDate ? true : false}
               errorMessage={this.errorMsgEndDate}
               dataTest={this.dtInputEnd}

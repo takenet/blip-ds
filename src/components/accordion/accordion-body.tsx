@@ -41,13 +41,13 @@ export class AccordionBody {
 
   @Watch('isOpen')
   isOpenChanged(): void {
-    this.heightContainer = this.isOpen ? this.container.offsetHeight : 0;
+    this.heightContainer = this.isOpen ? (this.container?.offsetHeight || 0) : 0;
     if (this.isOpen) {
       setTimeout(() => {
-        this.isOpenAftAnimation = !this.isOpenAftAnimation;
+        this.isOpenAftAnimation = true;
       }, 500);
     } else {
-      this.isOpenAftAnimation = !this.isOpenAftAnimation;
+      this.isOpenAftAnimation = false;
     }
   }
 

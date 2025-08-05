@@ -1,5 +1,4 @@
-@import 'resets';
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 :host {
   display: block;

@@ -16,7 +16,7 @@ describe('bds-accordion', () => {
   it('should create and render component', async () => {
     expect(component).toBeTruthy();
     expect(page.root).toEqualHtml(`
-      <bds-accordion>
+      <bds-accordion divisor="">
         <mock:shadow-root>
           <div class="accordion_group">
             <slot></slot>
@@ -185,7 +185,7 @@ describe('bds-accordion', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <bds-accordion>
+      <bds-accordion divisor="">
         <mock:shadow-root>
           <div class="accordion_group">
             <slot></slot>

@@ -21,9 +21,9 @@
 
 ## Events
 
-| Event       | Description                                                                                         | Type               |
-| ----------- | --------------------------------------------------------------------------------------------------- | ------------------ |
-| `bdsDelete` | Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true. | `CustomEvent<any>` |
+| Event       | Description                                                                                         | Type                           |
+| ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `bdsDelete` | Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true. | `CustomEvent<{ id: string; }>` |
 
 
 ## Dependencies

@@ -1,4 +1,4 @@
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 $select-option-padding: 8px;
 $select-option-left: 12px;

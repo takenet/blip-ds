@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event           | Description                       | Type               |
-| --------------- | --------------------------------- | ------------------ |
-| `bdsBannerLink` | Emitted when the link is clicked. | `CustomEvent<any>` |
+| Event           | Description                       | Type                                |
+| --------------- | --------------------------------- | ----------------------------------- |
+| `bdsBannerLink` | Emitted when the link is clicked. | `CustomEvent<HTMLBdsBannerElement>` |
 
 
 ----------------------------------------------
