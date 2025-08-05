@@ -32,9 +32,9 @@ export class AvatarGroup {
   */
   @Prop() users?: string | AvatarDataList[];
   @Prop() canClick?: boolean;
-  @Event() bdsClickAvatarGroup: EventEmitter;
+  @Event() bdsClickAvatarGroup: EventEmitter<PointerEvent>;
 
-  handleClickGroup(e) {
+  handleClickGroup(e: PointerEvent) {
     e.preventDefault();
     this.bdsClickAvatarGroup.emit(e);
   }

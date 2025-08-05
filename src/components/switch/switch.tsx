@@ -48,17 +48,17 @@ export class Switch {
     this.switchId = this.refer || `bds-switch-${switchIds++}`;
   }
 
+  /**
+   * Emitted when the value has changed.
+   */
+  @Event() bdsChange!: EventEmitter<{ checked: boolean }>;
+
   @Watch('checked')
   protected checkedChanged(isChecked: boolean): void {
     this.bdsChange.emit({
       checked: isChecked,
     });
   }
-
-  /**
-   * Emitted when the value has changed.
-   */
-  @Event() bdsChange!: EventEmitter;
 
   @Method()
   getInputElement(): Promise<HTMLInputElement> {

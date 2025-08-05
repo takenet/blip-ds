@@ -1,9 +1,11 @@
-import { defineCustomElements } from '../dist/esm/loader';
-import { withConsole } from '@storybook/addon-console';
+import React from 'react';
+import { defineCustomElements } from '../loader/index.js';
+// https://github.com/storybookjs/storybook-addon-console/issues/86
+//import { withConsole } from '@storybook/addon-console';
 import './preview.css';
 
 // Load the custom elements
-defineCustomElements(window);
+defineCustomElements();
 
 export const globalTypes = {
   hasTheme: {
@@ -21,7 +23,7 @@ export const globalTypes = {
   },
 };
 export const parameters = {
-  decorators: [(storyFn, context) => withConsole()(storyFn)(context)],
+  //decorators: [(storyFn, context) => withConsole()(storyFn)(context)],
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
@@ -53,6 +55,16 @@ export const decorators = [
       }
     }
 
+    // Ensure components are fully loaded before rendering
+    React.useEffect(() => {
+      // Give components time to register after dependency upgrades
+      const timer = setTimeout(() => {
+        // Force a rerender to ensure event handlers are properly bound
+        window.dispatchEvent(new CustomEvent('storybook-components-ready'));
+      }, 100);
+      return () => clearTimeout(timer);
+    }, []);
+
     return (
       <bds-grid height="100%" direction="column">
         <bds-theme-provider theme={themeValue()}>
@@ -66,3 +78,4 @@ export const decorators = [
     );
   },
 ];
+export const tags = ['autodocs'];

@@ -13,7 +13,7 @@
 | `chips`           | `chips`             | The chips on the component Should be passed this way: chips='["chip1", "chip2"]'                                                                                                                                                                                                              | `string \| string[]`          | `[]`                 |
 | `danger`          | `danger`            | Add state danger on input, use for use feedback.                                                                                                                                                                                                                                              | `boolean`                     | `false`              |
 | `dataTest`        | `data-test`         | Data test is the prop to specifically test the component action object.                                                                                                                                                                                                                       | `string`                      | `null`               |
-| `delimiters`      | --                  | The delimiter is used to add multiple chips in the same string.                                                                                                                                                                                                                               | `RegExp`                      | `/,\|;/`             |
+| `delimiters`      | `delimiters`        | The delimiter is used to add multiple chips in the same string.                                                                                                                                                                                                                               | `RegExp`                      | `/,\|;/`             |
 | `disableSubmit`   | `disable-submit`    | If `true`, the user cannot modify the value.                                                                                                                                                                                                                                                  | `boolean`                     | `false`              |
 | `disabled`        | `disabled`          | Disabled input.                                                                                                                                                                                                                                                                               | `boolean`                     | `false`              |
 | `duplicated`      | `duplicated`        | Do not accept duplicate chip elements.                                                                                                                                                                                                                                                        | `boolean`                     | `false`              |
@@ -38,15 +38,15 @@
 
 ## Events
 
-| Event                 | Description                              | Type                             |
-| --------------------- | ---------------------------------------- | -------------------------------- |
-| `bdsBlur`             | Emitted when the select loses focus.     | `CustomEvent<void>`              |
-| `bdsCancel`           | Emitted when the selection is cancelled. | `CustomEvent<void>`              |
-| `bdsChange`           | Emitted when the value has changed.      | `CustomEvent<SelectChangeEvent>` |
-| `bdsChangeChips`      | Emitted when the chip has added.         | `CustomEvent<any>`               |
-| `bdsFocus`            | Emitted when the select loses focus.     | `CustomEvent<void>`              |
-| `bdsSelectChipsInput` | Emitted when the chip has added.         | `CustomEvent<any>`               |
-| `bdsSubmit`           | Emitted when the chip has added.         | `CustomEvent<any>`               |
+| Event                 | Description                              | Type                                              |
+| --------------------- | ---------------------------------------- | ------------------------------------------------- |
+| `bdsBlur`             | Emitted when the select loses focus.     | `CustomEvent<void>`                               |
+| `bdsCancel`           | Emitted when the selection is cancelled. | `CustomEvent<void>`                               |
+| `bdsChange`           | Emitted when the value has changed.      | `CustomEvent<SelectChangeEvent>`                  |
+| `bdsChangeChips`      | Emitted when the chip has added.         | `CustomEvent<{ data: string[]; value: number; }>` |
+| `bdsFocus`            | Emitted when the select loses focus.     | `CustomEvent<void>`                               |
+| `bdsSelectChipsInput` | Emitted when the chip has added.         | `CustomEvent<InputEvent>`                         |
+| `bdsSubmit`           | Emitted when the chip has added.         | `CustomEvent<void>`                               |
 
 
 ## Methods
@@ -54,6 +54,12 @@
 ### `add(value: string) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `value` | `string` |             |
 
 #### Returns
 

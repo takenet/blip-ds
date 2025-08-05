@@ -13,6 +13,13 @@ Components. Guides. Brands. It's all here, no riddles. [UAI is all yours](https:
 
 The UAI installation is available through the [Design Portal](https://design.take.net/240287753/p/216ef2-instalao/b/8176c4).
 
+## Versioning
+
+`blip-ds` uses [Semantic Versioning](https://semver.org/).
+
+The v2 pre-release of the `blip-ds` is hosted in the `v2` branch. The v1 is hosted on the `master` branch.
+
+We are working on having a production-ready version of the v2 with all updates, but until it's done, the v1 is the recommended version.
 
 ## License
 

@@ -51,7 +51,7 @@ export class NavTree {
   /**
    * When de open or close of component change, the event are dispache.
    */
-  @Event() bdsToogleChange: EventEmitter;
+  @Event() bdsToogleChange: EventEmitter<{ value?: boolean; element: HTMLElement }>;
 
   @Method()
   async toggle() {
@@ -75,7 +75,7 @@ export class NavTree {
     this.isOpen = false;
   }
   @Watch('isOpen')
-  protected isOpenChanged(value): void {
+  protected isOpenChanged(value?: boolean): void {
     this.bdsToogleChange.emit({ value: value, element: this.element });
     if (value) {
       if (this.itemsGroup.collapse == 'single') {

@@ -1,5 +1,8 @@
 import { newE2EPage } from '@stencil/core/testing';
 
+// Helper function to replace page.waitForTimeout
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 describe('bds-datepicker e2e tests', () => {
   let page;
 
@@ -57,6 +60,16 @@ describe('bds-datepicker e2e tests', () => {
 
   describe('Events', () => {
     it('should emit bdsStartDate event when typing in start input', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-datepicker
+            type-of-date="Period"
+            dt-input-start="should-input-start"
+            dt-input-end="should-input-end"
+          ></bds-datepicker>
+        `,
+      });
+
       // Simplify this test to just check that the component can receive the event
       const datepicker = await page.find('bds-datepicker');
       const bdsStartDateEvent = await datepicker.spyOnEvent('bdsStartDate');
@@ -161,7 +174,7 @@ describe('bds-datepicker e2e tests', () => {
       await page.waitForChanges();
 
       // Give it a bit more time to process the click outside
-      await page.waitForTimeout(100);
+      await sleep(100);
 
       const menu = await page.find('bds-datepicker >>> .datepicker__menu');
       // Just verify the menu exists - the actual behavior may vary

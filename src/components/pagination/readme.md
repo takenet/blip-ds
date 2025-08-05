@@ -25,10 +25,10 @@
 
 ## Events
 
-| Event                   | Description                                                                                                                     | Type               |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `bdsItemsPerPageChange` | Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página. | `CustomEvent<any>` |
-| `bdsPaginationChange`   | Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página. | `CustomEvent<any>` |
+| Event                   | Description                                                                                                                     | Type                  |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| `bdsItemsPerPageChange` | Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página. | `CustomEvent<number>` |
+| `bdsPaginationChange`   | Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página. | `CustomEvent<number>` |
 
 
 ## Dependencies

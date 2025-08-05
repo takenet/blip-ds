@@ -17,7 +17,7 @@ export class Tabs {
 
   @Event() scrollButtonClick: EventEmitter<Overflow>;
 
-  @Event() bdsTabInit: EventEmitter;
+  @Event() bdsTabInit: EventEmitter<string>;
 
   @Prop() align: 'left' | 'center' | 'right' = 'center';
 

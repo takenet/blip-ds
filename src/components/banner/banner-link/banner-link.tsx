@@ -26,7 +26,7 @@ export class BannerLink {
   /**
    * Emitted when the link is clicked.
    */
-  @Event() bdsBannerLink!: EventEmitter;
+  @Event() bdsBannerLink!: EventEmitter<HTMLBdsBannerElement>;
 
   private _buttonClickHandler = () => {
     this.bdsBannerLink.emit(this.el);

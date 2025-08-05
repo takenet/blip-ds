@@ -13,7 +13,7 @@
 | `chips`                 | `chips`                   | Defines if the input will be displayed as chips (a type of input with multiple values).   | `boolean`                                                                | `undefined` |
 | `cols`                  | `cols`                    | Defines the number of columns for the textarea (if `textarea`).                           | `number`                                                                 | `0`         |
 | `counterLength`         | `counter-length`          | Defines whether a character length counter will be displayed.                             | `boolean`                                                                | `false`     |
-| `counterLengthRule`     | --                        | Defines the character length counter rule (min, max, etc).                                | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
+| `counterLengthRule`     | `counter-length-rule`     | Defines the character length counter rule (min, max, etc).                                | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
 | `danger`                | `danger`                  | Defines if the input is in error state.                                                   | `boolean`                                                                | `false`     |
 | `dataTest`              | `data-test`               | Data test is the prop to specifically test the component action.                          | `string`                                                                 | `null`      |
 | `debounceDelay`         | `debounce-delay`          | Defines the debounce delay in milliseconds for textarea auto-resize.                      | `number`                                                                 | `100`       |
@@ -53,15 +53,15 @@
 
 ## Events
 
-| Event                  | Description                                           | Type                         |
-| ---------------------- | ----------------------------------------------------- | ---------------------------- |
-| `bdsChange`            | Event emitted when the input value changes.           | `CustomEvent<any>`           |
-| `bdsFocus`             | Event emitted when the input gains focus.             | `CustomEvent<any>`           |
-| `bdsInput`             | Event emitted when the input receives input (typing). | `CustomEvent<KeyboardEvent>` |
-| `bdsKeyDownBackspace`  | Event emitted when the "Backspace" key is pressed.    | `CustomEvent<any>`           |
-| `bdsOnBlur`            | Event emitted when the input loses focus.             | `CustomEvent<any>`           |
-| `bdsPatternValidation` | Event emitted for regex pattern validation.           | `CustomEvent<any>`           |
-| `bdsSubmit`            | Event emitted when the form is submitted.             | `CustomEvent<any>`           |
+| Event                  | Description                                           | Type                                                    |
+| ---------------------- | ----------------------------------------------------- | ------------------------------------------------------- |
+| `bdsChange`            | Event emitted when the input value changes.           | `CustomEvent<{ value: string; }>`                       |
+| `bdsFocus`             | Event emitted when the input gains focus.             | `CustomEvent<void>`                                     |
+| `bdsInput`             | Event emitted when the input receives input (typing). | `CustomEvent<InputEvent>`                               |
+| `bdsKeyDownBackspace`  | Event emitted when the "Backspace" key is pressed.    | `CustomEvent<{ event: KeyboardEvent; value: string; }>` |
+| `bdsOnBlur`            | Event emitted when the input loses focus.             | `CustomEvent<void>`                                     |
+| `bdsPatternValidation` | Event emitted for regex pattern validation.           | `CustomEvent<boolean>`                                  |
+| `bdsSubmit`            | Event emitted when the form is submitted.             | `CustomEvent<{ event: KeyboardEvent; value: string; }>` |
 
 
 ## Methods

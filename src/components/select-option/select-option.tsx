@@ -71,9 +71,9 @@ export class SelectOption {
    */
   @Prop() dataTest?: string = null;
 
-  @Event() optionSelected: EventEmitter;
+  @Event() optionSelected: EventEmitter<{ value: any; label: string }>;
 
-  @Event() optionChecked: EventEmitter;
+  @Event() optionChecked: EventEmitter<{ value: string; label: string; checked: boolean }>;
 
   @Watch('typeOption')
   protected changeSelectionType() {

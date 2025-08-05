@@ -226,37 +226,37 @@ export class Input {
   /**
    * Event emitted when the input value changes.
    */
-  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter;
+  @Event({ bubbles: true, composed: true }) bdsChange!: EventEmitter<{ value: string }>;
 
   /**
    * Event emitted when the input receives input (typing).
    */
-  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInput!: EventEmitter<InputEvent>;
 
   /**
    * Event emitted when the input loses focus.
    */
-  @Event() bdsOnBlur: EventEmitter;
+  @Event() bdsOnBlur: EventEmitter<void>;
 
   /**
    * Event emitted when the input gains focus.
    */
-  @Event() bdsFocus: EventEmitter;
+  @Event() bdsFocus: EventEmitter<void>;
 
   /**
    * Event emitted when the form is submitted.
    */
-  @Event() bdsSubmit: EventEmitter;
+  @Event() bdsSubmit: EventEmitter<{ event: KeyboardEvent; value: string }>;
 
   /**
    * Event emitted for regex pattern validation.
    */
-  @Event() bdsPatternValidation: EventEmitter;
+  @Event() bdsPatternValidation: EventEmitter<boolean>;
 
   /**
    * Event emitted when the "Backspace" key is pressed.
    */
-  @Event() bdsKeyDownBackspace: EventEmitter;
+  @Event() bdsKeyDownBackspace: EventEmitter<{ event: KeyboardEvent; value: string }>;
 
   /**
    * Sets focus to the input field.
@@ -403,7 +403,7 @@ if(!this.encode) return value;
   /**
    * Function called when typing in the input field.
    */
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     this.onBdsInputValidations();
     const input = ev.target as HTMLInputElement | HTMLTextAreaElement | null;
     if (input) {
@@ -413,7 +413,7 @@ if(!this.encode) return value;
     // Update textarea if needed
     this.updateTextarea();
     
-    this.bdsInput.emit(ev as KeyboardEvent);
+    this.bdsInput.emit(ev);
   };
 
   /**

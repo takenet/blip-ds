@@ -1,5 +1,5 @@
-import { Story, ArgsTable, Canvas } from '@storybook/blocks';
-import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/blocks';
+import { Story, ArgsTable, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Unstyled } from '@storybook/addon-docs/blocks';
 
 <Meta title="Vamos Começar/DS no React/Aplicação" />
 
@@ -30,7 +30,7 @@ applyPolyfills().then(() => {
 });
 ``` 
 
-Para utilizar o componente temos que realizar a importação pelo caminho ‘blip-ds/dist/blip-ds-react/components’, são wrappers gerados pela lib stencil/react-output-target, dessa maneira não será mais necessário a criação de wrappers na aplicação dos componentes em React.
+Para utilizar o componente temos que realizar a importação pelo caminho ‘blip-ds-react/dist/components’, são wrappers gerados pela lib stencil/react-output-target, dessa maneira não será mais necessário a criação de wrappers na aplicação dos componentes em React.
 
 <br></br>
 
@@ -39,7 +39,7 @@ Para utilizar o componente temos que realizar a importação pelo caminho ‘bli
 ```jsx
 import React from 'react';
 import './App.scss';
-import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+import { BdsSelect } from 'blip-ds-react/dist/components';
  
 const App = () => {
   const options = '[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
@@ -56,7 +56,7 @@ Para aplicar Eventos no componente é necessário inserir sufixo “on” antes 
 ```jsx
 import React from 'react';
 import './App.scss';
-import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+import { BdsSelect } from 'blip-ds-react/dist/components';
  
 const App = () => {
   const handle = (event) => {
@@ -114,7 +114,7 @@ root.render(
 ```jsx
 import React from 'react';
 import './App.css';
-import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+import { BdsSelect } from 'blip-ds-react/dist/components';
  
 const App = () => {
   const options = '[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]'
@@ -132,7 +132,7 @@ Para utilizar os eventos no React.ts também temos problemas para trabalhar com 
 ```jsx
 import React from 'react';
 import './App.scss';
-import { BdsSelect } from 'blip-ds/dist/blip-ds-react/components';
+import { BdsSelect } from 'blip-ds-react/dist/components';
  
 const App = () => {
   const handle = (event: CustomEvent) => {

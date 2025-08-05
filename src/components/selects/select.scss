@@ -1,5 +1,4 @@
-@import 'resets';
-@import 'mixins';
+@use '../../globals/helpers' as *;
 
 $input-padding: 8px 4px 8px 12px;
 $input-padding-label: 7px 4px 7px 12px;

@@ -60,7 +60,7 @@ export class Sidebar {
   /**
    * Emitted when the isOpen has changed.
    */
-  @Event() bdsToggle!: EventEmitter;
+  @Event() bdsToggle!: EventEmitter<{ value: boolean }>;
 
   @Method()
   async toggle() {
