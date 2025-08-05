@@ -1,0 +1,35 @@
+// Spacing tokens based on Figma variables
+// Following the pattern established in the design system
+
+:root {
+  --space-0: 0px;
+  --space-0-5: 4px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 56px;
+  --space-8: 64px;
+  --space-9: 72px;
+  --space-10: 80px;
+  --space-11: 88px;
+  --space-12: 96px;
+}
+
+// SASS variables for backward compatibility
+$space-0: var(--space-0);
+$space-0-5: var(--space-0-5);
+$space-1: var(--space-1);
+$space-2: var(--space-2);
+$space-3: var(--space-3);
+$space-4: var(--space-4);
+$space-5: var(--space-5);
+$space-6: var(--space-6);
+$space-7: var(--space-7);
+$space-8: var(--space-8);
+$space-9: var(--space-9);
+$space-10: var(--space-10);
+$space-11: var(--space-11);
+$space-12: var(--space-12);
