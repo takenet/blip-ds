@@ -1,0 +1,169 @@
+import { Meta, Title, Subtitle, Description, ArgsTable, Canvas } from '@storybook/blocks';
+
+<Meta title="Vamos Começar/Spacing" />
+
+# Spacing
+
+O sistema de espaçamento do Blip Design System fornece um conjunto consistente de tokens de espaço e classes utilitárias para criar layouts harmoniosos e consistentes.
+
+## Tokens de Espaço
+
+Os tokens de espaço estão disponíveis como variáveis CSS customizadas que podem ser utilizadas em qualquer lugar do seu código:
+
+| Token | Valor | Uso |
+|-------|--------|-----|
+| `--space-0` | 0px | Sem espaçamento |
+| `--space-0-5` | 4px | Espaçamento extra pequeno |
+| `--space-1` | 8px | Espaçamento pequeno |
+| `--space-2` | 16px | Espaçamento médio |
+| `--space-3` | 24px | Espaçamento médio-grande |
+| `--space-4` | 32px | Espaçamento grande |
+| `--space-5` | 40px | Espaçamento extra-grande |
+| `--space-6` | 48px | Espaçamento extra-grande |
+| `--space-7` | 56px | Espaçamento extra-grande |
+| `--space-8` | 64px | Espaçamento extra-grande |
+| `--space-9` | 72px | Espaçamento extra-grande |
+| `--space-10` | 80px | Espaçamento extra-grande |
+| `--space-11` | 88px | Espaçamento extra-grande |
+| `--space-12` | 96px | Espaçamento extra-grande |
+
+### Utilizando Tokens de Espaço
+
+Você pode utilizar os tokens de espaço diretamente no seu CSS/SCSS:
+
+```css
+.meu-componente {
+  margin-top: var(--space-2); /* 16px */
+  padding: var(--space-4); /* 32px */
+}
+```
+
+```scss
+.meu-componente {
+  margin-top: $space-2; // 16px
+  padding: $space-4; // 32px
+}
+```
+
+## Classes Utilitárias
+
+### Margin
+
+As classes de margem seguem o padrão do Tailwind CSS e permitem aplicar espaçamento externo de forma rápida:
+
+#### Margem em Todos os Lados
+- `m-0` a `m-12`: Aplica margem em todos os lados
+- `m-0.5`: Margem de 4px em todos os lados
+
+#### Margem Horizontal (esquerda + direita)
+- `mx-0` a `mx-12`: Aplica margem horizontal
+
+#### Margem Vertical (topo + fundo)
+- `my-0` a `my-12`: Aplica margem vertical
+
+#### Margem Individual
+- `mt-0` a `mt-12`: Margem superior
+- `mr-0` a `mr-12`: Margem direita
+- `mb-0` a `mb-12`: Margem inferior
+- `ml-0` a `ml-12`: Margem esquerda
+
+### Padding
+
+As classes de padding seguem o mesmo padrão das classes de margem:
+
+#### Padding em Todos os Lados
+- `p-0` a `p-12`: Aplica padding em todos os lados
+- `p-0.5`: Padding de 4px em todos os lados
+
+#### Padding Horizontal (esquerda + direita)
+- `px-0` a `px-12`: Aplica padding horizontal
+
+#### Padding Vertical (topo + fundo)
+- `py-0` a `py-12`: Aplica padding vertical
+
+#### Padding Individual
+- `pt-0` a `pt-12`: Padding superior
+- `pr-0` a `pr-12`: Padding direita
+- `pb-0` a `pb-12`: Padding inferior
+- `pl-0` a `pl-12`: Padding esquerda
+
+## Exemplos de Uso
+
+### Exemplo com Classes de Margem
+
+```html
+<div class="m-4">
+  <bds-typo>Conteúdo com margem de 32px em todos os lados</bds-typo>
+</div>
+
+<div class="mx-2 my-4">
+  <bds-typo>Margem horizontal de 16px e vertical de 32px</bds-typo>
+</div>
+
+<div class="mt-3 mb-2">
+  <bds-typo>Margem superior de 24px e inferior de 16px</bds-typo>
+</div>
+```
+
+### Exemplo com Classes de Padding
+
+```html
+<div class="p-4" style="background-color: #f0f0f0;">
+  <bds-typo>Conteúdo com padding de 32px em todos os lados</bds-typo>
+</div>
+
+<div class="px-3 py-2" style="background-color: #f0f0f0;">
+  <bds-typo>Padding horizontal de 24px e vertical de 16px</bds-typo>
+</div>
+```
+
+### Exemplo Combinando Margin e Padding
+
+```html
+<div class="m-2 p-4" style="background-color: #e3f2fd;">
+  <bds-typo>Margem externa de 16px e padding interno de 32px</bds-typo>
+</div>
+```
+
+## Demonstração Visual
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '16px', border: '2px dashed #ccc' }}>
+  <div style={{ border: '1px solid #333' }}>
+    <div className="m-2 p-2" style={{ backgroundColor: '#e3f2fd', border: '1px solid #1976d2' }}>
+      <div style={{ backgroundColor: '#fff', padding: '8px' }}>
+        m-2 p-2 (16px margin + 16px padding)
+      </div>
+    </div>
+  </div>
+  
+  <div style={{ border: '1px solid #333' }}>
+    <div className="m-4 p-4" style={{ backgroundColor: '#f3e5f5', border: '1px solid #7b1fa2' }}>
+      <div style={{ backgroundColor: '#fff', padding: '8px' }}>
+        m-4 p-4 (32px margin + 32px padding)
+      </div>
+    </div>
+  </div>
+  
+  <div style={{ border: '1px solid #333' }}>
+    <div className="mx-3 my-1 px-2 py-3" style={{ backgroundColor: '#e8f5e8', border: '1px solid #388e3c' }}>
+      <div style={{ backgroundColor: '#fff', padding: '8px' }}>
+        mx-3 my-1 px-2 py-3 (24px h-margin, 8px v-margin, 16px h-padding, 24px v-padding)
+      </div>
+    </div>
+  </div>
+</div>
+
+## Melhores Práticas
+
+1. **Consistência**: Use sempre os tokens de espaço definidos ao invés de valores arbitrários
+2. **Escala**: Use valores menores para componentes pequenos e maiores para layouts
+3. **Hierarchy**: Utilize espaçamentos maiores para separar seções importantes
+4. **Performance**: Prefira classes utilitárias para espaçamentos comuns
+5. **Flexibilidade**: Use tokens CSS custom properties quando precisar de valores dinâmicos
+
+## Acessibilidade
+
+Os tokens de espaçamento foram projetados para:
+- Garantir toque mínimo de 44px para elementos interativos
+- Proporcionar separação adequada entre elementos para leitores de tela
+- Manter proporções harmoniosas que facilitam a escaneabilidade visual
