@@ -41,14 +41,12 @@
   },
   "release": {
     "branches": [
-      {
-        "name": "master",
-        "range": "1.x.x"
-      },
+      "master",
+      "main",
       {
         "name": "v2",
-        "channel": "pre/rc",
-        "prerelease": "rc"
+        "prerelease": "rc",
+        "channel": "rc"
       }
     ]
   }
