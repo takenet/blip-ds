@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, h, H as Host } from './index-C3J6Z5OX.js';
 import { e as emailValidation, n as numberValidation } from './validations-BXYXNVip.js';
 
-const inputCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:relative;width:100%;max-width:100%;max-height:100%}:host input,:host textarea{-webkit-box-shadow:inherit;box-shadow:inherit}:host input::-webkit-input-placeholder,:host textarea::-webkit-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::-moz-placeholder,:host textarea::-moz-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input:-ms-input-placeholder,:host textarea:-ms-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::-ms-input-placeholder,:host textarea::-ms-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::placeholder,:host textarea::placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::-webkit-input-placeholder,:host textarea::-webkit-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;padding:8px 4px 8px 12px;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%;gap:8px}.input .bds-icon{position:relative;z-index:1}.input--state-primary{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary .input__icon{position:relative}.input--state-primary .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));z-index:0;border-radius:8px}.input--state-primary:hover{border:1px solid var(--color-primary, rgb(30, 107, 241));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary.input--pressed{border:1px solid var(--color-primary, rgb(30, 107, 241));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-info, rgb(128, 227, 235));box-shadow:0 0 0 2px var(--color-info, rgb(128, 227, 235))}.input--state-primary.input--pressed .input__icon .bds-icon{color:var(--color-primary, rgb(30, 107, 241))}.input--state-primary .input__container__label{color:var(--color-content-default, rgb(40, 40, 40))}.input--state-primary .input__container__label--pressed bds-typo{color:var(--color-primary, rgb(30, 107, 241))}.input--state-primary .input__container__text{caret-color:var(--color-primary, rgb(30, 107, 241));color:var(--color-content-default, rgb(40, 40, 40))}.input--state-danger{border:1px solid var(--color-delete, rgb(230, 15, 15));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger .input__icon{position:relative}.input--state-danger .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-surface-negative, rgb(138, 0, 0));z-index:0;opacity:50%;border-radius:8px}.input--state-danger:hover{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger.input--pressed{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-error, rgb(250, 190, 190));box-shadow:0 0 0 2px var(--color-error, rgb(250, 190, 190))}.input--state-danger.input--pressed .input__icon .bds-icon{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__label{color:var(--color-delete, rgb(230, 15, 15))}.input--state-danger .input__container__label--pressed bds-typo{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__text{caret-color:var(--color-negative, #e60f0f);color:var(--color-content-default, rgb(40, 40, 40))}.input--state-success{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success .input__icon{position:relative}.input--state-success .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-surface-positive, rgb(1, 114, 62));z-index:0;border-radius:8px}.input--state-success:hover{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success.input--pressed{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-success, rgb(132, 235, 188));box-shadow:0 0 0 2px var(--color-success, rgb(132, 235, 188))}.input--state-success.input--pressed .input__icon .bds-icon{color:var(--color-positive, #10603b)}.input--state-success .input__container__label{color:var(--color-content-default, rgb(40, 40, 40))}.input--state-success .input__container__label--pressed bds-typo{color:var(--color-positive, #10603b)}.input--state-success .input__container__text{caret-color:var(--color-positive, #10603b);color:var(--color-content-default, rgb(40, 40, 40))}.input--state-disabled{opacity:50%;pointer-events:none;cursor:not-allowed}.input--state-disabled .input__icon{position:relative}.input--state-disabled .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));z-index:0;opacity:50%;border-radius:8px}.input .icon-success{color:var(--color-positive, #10603b);margin-left:4px}.input--label{padding:7px 4px 8px 12px}.input__icon{cursor:inherit;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;border-radius:8px;padding:2px}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%}.input__container__wrapper{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.input__container__wrapper__chips{display:inline;max-height:100px;overflow:auto}.input__container__wrapper__chips::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__wrapper__chips::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:22px;resize:none;cursor:inherit}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__text::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__text[type=date]::-webkit-calendar-picker-indicator{opacity:0;pointer-events:none}.input__message{display:-ms-flexbox;display:flex;-ms-flex-align:baseline;align-items:baseline;height:20px;margin:3.7px 2.5px;gap:4px;-webkit-transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);color:var(--color-content-disable, rgb(89, 89, 89));word-break:break-word;height:auto;min-height:20px}.input__message bds-typo{margin-top:0px;-ms-flex-item-align:self-start;align-self:self-start}.input__message__icon{display:-ms-flexbox;display:flex;margin-top:0px}.input__message--danger .input__message__icon .bds-icon{color:var(--color-negative, #e60f0f)}.input__message--danger .input__message__text{color:var(--color-negative, #e60f0f)}.input__message--success .input__message__icon .bds-icon{color:var(--color-positive, #10603b)}.input__message--success .input__message__text{color:var(--color-content-default, rgb(40, 40, 40))}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.input__container__wrapper{display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:22px;width:100%;resize:none;cursor:inherit}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text__chips{width:auto;min-width:216px;max-width:216px}";
+const inputCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:relative;width:100%;max-width:100%;max-height:100%}:host input,:host textarea{-webkit-box-shadow:inherit;box-shadow:inherit}:host input::-webkit-input-placeholder,:host textarea::-webkit-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::-moz-placeholder,:host textarea::-moz-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input:-ms-input-placeholder,:host textarea:-ms-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::-ms-input-placeholder,:host textarea::-ms-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::placeholder,:host textarea::placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}:host input::-webkit-input-placeholder,:host textarea::-webkit-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140));opacity:1}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;padding:8px 4px 8px 12px;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%;gap:8px}.input .bds-icon{position:relative;z-index:1}.input--textarea{padding:12px 12px 12px 12px;-ms-flex-align:start;align-items:flex-start}.input--textarea.input--label{padding:12px 12px 12px 12px}.input--textarea .input__icon{margin-top:1px}.input--textarea .input__icon--textarea{-ms-flex-item-align:start;align-self:flex-start}.input--state-primary{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary .input__icon{position:relative}.input--state-primary .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));z-index:0;border-radius:8px}.input--state-primary:hover{border:1px solid var(--color-primary, rgb(30, 107, 241));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-primary.input--pressed{border:1px solid var(--color-primary, rgb(30, 107, 241));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-info, rgb(128, 227, 235));box-shadow:0 0 0 2px var(--color-info, rgb(128, 227, 235))}.input--state-primary.input--pressed .input__icon .bds-icon{color:var(--color-primary, rgb(30, 107, 241))}.input--state-primary .input__container__label{color:var(--color-content-default, rgb(40, 40, 40))}.input--state-primary .input__container__label--pressed bds-typo{color:var(--color-primary, rgb(30, 107, 241))}.input--state-primary .input__container__text{caret-color:var(--color-primary, rgb(30, 107, 241));color:var(--color-content-default, rgb(40, 40, 40))}.input--state-danger{border:1px solid var(--color-delete, rgb(230, 15, 15));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger .input__icon{position:relative}.input--state-danger .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-surface-negative, rgb(138, 0, 0));z-index:0;opacity:50%;border-radius:8px}.input--state-danger:hover{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-danger.input--pressed{border:1px solid var(--color-negative, #e60f0f);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-error, rgb(250, 190, 190));box-shadow:0 0 0 2px var(--color-error, rgb(250, 190, 190))}.input--state-danger.input--pressed .input__icon .bds-icon{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__label{color:var(--color-delete, rgb(230, 15, 15))}.input--state-danger .input__container__label--pressed bds-typo{color:var(--color-negative, #e60f0f)}.input--state-danger .input__container__text{caret-color:var(--color-negative, #e60f0f);color:var(--color-content-default, rgb(40, 40, 40))}.input--state-success{border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success .input__icon{position:relative}.input--state-success .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-surface-positive, rgb(1, 114, 62));z-index:0;border-radius:8px}.input--state-success:hover{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px}.input--state-success.input--pressed{border:1px solid var(--color-positive, #10603b);-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:8px;-webkit-box-shadow:0 0 0 2px var(--color-success, rgb(132, 235, 188));box-shadow:0 0 0 2px var(--color-success, rgb(132, 235, 188))}.input--state-success.input--pressed .input__icon .bds-icon{color:var(--color-positive, #10603b)}.input--state-success .input__container__label{color:var(--color-content-default, rgb(40, 40, 40))}.input--state-success .input__container__label--pressed bds-typo{color:var(--color-positive, #10603b)}.input--state-success .input__container__text{caret-color:var(--color-positive, #10603b);color:var(--color-content-default, rgb(40, 40, 40))}.input--state-disabled{opacity:50%;pointer-events:none;cursor:not-allowed}.input--state-disabled .input__icon{position:relative}.input--state-disabled .input__icon::before{content:\"\";position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));z-index:0;opacity:50%;border-radius:8px}.input .icon-success{color:var(--color-positive, #10603b);margin-left:4px;margin-top:1px}.input--label{padding:7px 4px 8px 12px}.input--label.input--textarea{padding:12px 12px 12px 12px}.input__icon{cursor:inherit;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;border-radius:8px;padding:2px;-ms-flex-negative:0;flex-shrink:0}.input__icon--textarea{-ms-flex-item-align:start;align-self:flex-start;margin-top:1px}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%;-ms-flex:1;flex:1}.input__container__wrapper{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.input__container__wrapper--textarea{-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.input__container__wrapper__chips{display:inline;max-height:100px;overflow:auto}.input__container__wrapper__chips::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__wrapper__chips::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;margin-bottom:2px}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:22px;resize:none;cursor:inherit;width:100%;min-height:auto}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.input__container__text::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.input__container__text--textarea{resize:vertical;overflow-y:auto;line-height:20px;padding:0;scrollbar-width:thin;scrollbar-color:var(--color-border-2, rgba(0, 0, 0, 0.16)) transparent}.input__container__text--textarea::-webkit-scrollbar{width:8px}.input__container__text--textarea::-webkit-scrollbar-track{background:transparent}.input__container__text--textarea::-webkit-scrollbar-thumb{background:var(--color-border-2, rgba(0, 0, 0, 0.16));border-radius:4px}.input__container__text--textarea::-webkit-scrollbar-thumb:hover{background:var(--color-content-ghost, rgb(140, 140, 140))}.input__container__text[type=date]::-webkit-calendar-picker-indicator{opacity:0;pointer-events:none}.input__message{display:-ms-flexbox;display:flex;-ms-flex-align:baseline;align-items:baseline;height:20px;margin:3.7px 2.5px;gap:4px;-webkit-transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);color:var(--color-content-disable, rgb(89, 89, 89));word-break:break-word;height:auto;min-height:20px}.input__message bds-typo{margin-top:0px;-ms-flex-item-align:self-start;align-self:self-start}.input__message__icon{display:-ms-flexbox;display:flex;margin-top:0px;-ms-flex-negative:0;flex-shrink:0}.input__message--danger .input__message__icon .bds-icon{color:var(--color-negative, #e60f0f)}.input__message--danger .input__message__text{color:var(--color-negative, #e60f0f)}.input__message--success .input__message__icon .bds-icon{color:var(--color-positive, #10603b)}.input__message--success .input__message__text{color:var(--color-content-default, rgb(40, 40, 40))}.input__container{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;width:100%}.input__container__label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.input__container__wrapper{display:-ms-flexbox;display:flex;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.input__container__text{display:inline-block;margin:0;border:0;padding:0;width:auto;vertical-align:middle;white-space:normal;line-height:inherit;background:none;color:inherit;font-size:inherit;font-family:inherit;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:0.875rem;line-height:22px;width:100%;resize:none;cursor:inherit}.input__container__text:focus{outline:0}.input__container__text::-webkit-file-upload-button{padding:0;border:0;background:none}.input__container__text:focus{outline:0}.input__container__text[type=checkbox],.input__container__text[type=radio]{width:13px;height:13px}.input__container__text[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}.input__container__text[type=reset],.input__container__text[type=button],.input__container__text[type=submit]{overflow:visible}.input__container__text__chips{width:auto;min-width:216px;max-width:216px}";
 
 const Input = class {
     constructor(hostRef) {
@@ -18,96 +18,120 @@ const Input = class {
         this.validationMesage = '';
         this.validationDanger = false;
         /**
-         * Nome do input, usado para identificação no formulário.
+         * Input name, used for form identification.
          */
         this.inputName = '';
         /**
-         * Define o tipo do input (por exemplo, `text`, `password`, etc).
+         * Defines the input type (e.g., `text`, `password`, etc).
          */
         this.type = 'text';
         /**
-         * Rótulo que será exibido acima do input.
+         * Label to be displayed above the input.
          */
         this.label = '';
         /**
-         * Texto que será exibido como sugestão ou dica no input.
+         * Text to be displayed as a hint or placeholder in the input.
          */
         this.placeholder = '';
         /**
-         * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
+         * Defines automatic text capitalization (possible values: `on`, `off`).
          */
         this.autoCapitalize = 'off';
         /**
-         * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
+         * Defines browser autocomplete behavior (possible values: `on`, `off`).
          */
         this.autoComplete = 'off';
         /**
-         * Torna o input somente leitura.
+         * Makes the input read-only.
          */
         this.readonly = false;
         /**
-         * Mensagem de ajuda exibida abaixo do input.
+         * Help message displayed below the input.
          */
         this.helperMessage = '';
         /**
-         * Mensagem de erro exibida quando o valor do input é inválido.
+         * Error message displayed when the input value is invalid.
          */
         this.errorMessage = '';
         /**
-         * Mensagem exibida quando o valor do input é válido.
+         * Message displayed when the input value is valid.
          */
         this.successMessage = '';
         /**
-         * Nome do ícone a ser exibido dentro do input.
+         * Name of the icon to be displayed inside the input.
          */
         this.icon = '';
         /**
-         * Define se o input está desabilitado.
+         * Defines if the input is disabled.
          */
         this.disabled = false;
         /**
-         * Define se o input está em estado de erro.
+         * Defines if the input is in error state.
          */
         this.danger = false;
         /**
-         * Define se o input está em estado de sucesso.
+         * Defines if the input is in success state.
          */
         this.success = false;
         /**
-         * O valor atual do input.
+         * The current value of the input.
          */
         this.value = '';
         /**
-         * Define se será exibido um contador de comprimento de caracteres.
+         * Defines whether a character length counter will be displayed.
          */
         this.counterLength = false;
         /**
-         * Define a regra do contador de comprimento de caracteres (min, max, etc).
+         * Defines the character length counter rule (min, max, etc).
          */
         this.counterLengthRule = null;
         /**
-         * Define se o input será submetido ao pressionar Enter.
+         * Defines whether the input will be submitted when pressing Enter.
          */
         this.isSubmit = false;
         /**
-         * Define se o input é uma área de texto (textarea).
+         * Defines whether the input is a textarea.
          */
         this.isTextarea = false;
         /**
-         * Define a quantidade de linhas da área de texto (se for `textarea`).
+         * Defines the number of lines for the textarea (if `textarea`).
          */
-        this.rows = 1;
+        this.rows = 3;
         /**
-         * Define a quantidade de colunas da área de texto (se for `textarea`).
+         * Defines the number of columns for the textarea (if `textarea`).
          */
         this.cols = 0;
         /**
-         * Data test é a prop para testar especificamente a ação do componente.
+         * Defines whether the textarea should automatically resize based on content.
+         */
+        this.autoResize = true;
+        /**
+         * Defines whether the textarea can be manually resized by the user.
+         */
+        this.resizable = false;
+        /**
+         * Defines the minimum height of the textarea in pixels.
+         */
+        this.minHeight = 60;
+        /**
+         * Defines the maximum height of the textarea in pixels.
+         */
+        this.maxHeight = 200;
+        /**
+         * Defines the icon size (small or medium).
+         */
+        this.iconSize = 'small';
+        /**
+         * Defines the debounce delay in milliseconds for textarea auto-resize.
+         */
+        this.debounceDelay = 100;
+        /**
+         * Data test is the prop to specifically test the component action.
          */
         this.dataTest = null;
         this.encode = false;
         /**
-         * Tratamento de eventos de pressionamento de tecla (Enter, Backspace, etc).
+         * Key press event handling (Enter, Backspace, etc).
          */
         this.keyPressWrapper = (event) => {
             switch (event.key) {
@@ -125,7 +149,7 @@ const Input = class {
             }
         };
         /**
-         * Função chamada ao digitar no campo de entrada.
+         * Function called when typing in the input field.
          */
         this.onInput = (ev) => {
             this.onBdsInputValidations();
@@ -133,10 +157,12 @@ const Input = class {
             if (input) {
                 this.value = input.value || '';
             }
+            // Update textarea if needed
+            this.updateTextarea();
             this.bdsInput.emit(ev);
         };
         /**
-         * Função chamada ao perder o foco do campo de entrada.
+         * Function called when the input field loses focus.
          */
         this.onBlur = () => {
             this.onBlurValidations();
@@ -144,14 +170,14 @@ const Input = class {
             this.bdsOnBlur.emit();
         };
         /**
-         * Função chamada ao ganhar o foco do campo de entrada.
+         * Function called when the input field gains focus.
          */
         this.onFocus = () => {
             this.isPressed = true;
             this.bdsFocus.emit();
         };
         /**
-         * Função chamada ao clicar no campo de entrada.
+         * Function called when clicking on the input field.
          */
         this.onClickWrapper = () => {
             this.onFocus();
@@ -160,7 +186,7 @@ const Input = class {
             }
         };
         /**
-         * Limpa o valor do campo de entrada.
+         * Clears the input field value.
          */
         this.clearTextInput = (ev) => {
             if (!this.readonly && !this.disabled && ev) {
@@ -174,37 +200,37 @@ const Input = class {
         };
     }
     /**
-     * Define o foco no campo de entrada.
+     * Sets focus to the input field.
      */
     async setFocus() {
         this.onClickWrapper();
     }
     /**
-     * Remove o foco do campo de entrada.
+     * Removes focus from the input field.
      */
     async removeFocus() {
         this.onBlur();
     }
     /**
-     * Retorna o elemento de input do componente.
+     * Returns the input element of the component.
      */
     async getInputElement() {
         return this.nativeInput;
     }
     /**
-     * Verifica se o campo de entrada é válido.
+     * Checks if the input field is valid.
      */
     async isValid() {
         return this.nativeInput.validity.valid;
     }
     /**
-     * Limpa o valor do campo de entrada.
+     * Clears the input field value.
      */
     async clear() {
         this.value = '';
     }
     /**
-     * Codifica os caracteres especiais para exibição segura (evita injeção de código HTML).
+     * Encodes special characters for safe display (prevents HTML code injection).
      */
     encodeValue(value) {
         const lt = /</g, gt = />/g, ap = /'/g, ic = /"/g, amp = /&/g, slash = /\//g;
@@ -221,23 +247,66 @@ const Input = class {
                 .replace(slash, '&#47;'));
     }
     /**
-     * Avisa sobre a mudança do valor do campo de entrada.
+     * Notifies about the input field value change.
      */
     valueChanged(newValue) {
         const changeValue = this.encode ? this.encodeValue(newValue || '') : newValue || '';
         this.bdsChange.emit({ value: changeValue });
     }
     /**
-     * Função que renderiza o ícone dentro do campo de entrada.
+     * Auto-resizes the textarea based on content.
      */
-    renderIcon() {
-        return (this.icon && (h("div", { class: {
-                input__icon: true,
-                'input__icon--large': !!this.label,
-            } }, h("bds-icon", { class: "input__icon--color", size: this.label ? 'medium' : 'small', name: this.icon, color: "inherit" }))));
+    autoResizeTextarea() {
+        if (this.isTextarea && this.autoResize && this.nativeInput) {
+            const textarea = this.nativeInput;
+            // Reset height to auto to get the correct scrollHeight
+            textarea.style.height = 'auto';
+            // Calculate new height
+            const scrollHeight = textarea.scrollHeight;
+            const newHeight = Math.min(Math.max(scrollHeight, this.minHeight || 60), this.maxHeight || 200);
+            textarea.style.height = `${newHeight}px`;
+        }
     }
     /**
-     * Função que renderiza a label do campo de entrada.
+     * Debounced version of auto-resize to improve performance during rapid input events.
+     */
+    debouncedAutoResize() {
+        if (this.autoResizeDebounceTimer) {
+            clearTimeout(this.autoResizeDebounceTimer);
+        }
+        this.autoResizeDebounceTimer = window.setTimeout(() => {
+            this.autoResizeTextarea();
+        }, this.debounceDelay); // Configurable debounce delay
+    }
+    /**
+     * Centralizes all necessary updates for the textarea, including auto-resize.
+     */
+    updateTextarea(immediate = false) {
+        if (this.isTextarea && this.autoResize) {
+            if (immediate) {
+                // For immediate updates (component load, prop changes)
+                this.autoResizeTextarea();
+            }
+            else {
+                // For input events, use debounced version
+                this.debouncedAutoResize();
+            }
+        }
+    }
+    /**
+     * Function that renders the icon inside the input field.
+     */
+    renderIcon() {
+        const iconSizeValue = this.iconSize === 'medium' ? 'medium' : 'small';
+        const isLargeIcon = this.iconSize === 'medium';
+        return (this.icon && (h("div", { class: {
+                input__icon: true,
+                'input__icon--large': isLargeIcon,
+                'input__icon--textarea': this.isTextarea,
+            } }, h("bds-icon", { class: "input__icon--color", size: iconSizeValue, name: this.icon, color: "inherit" }))));
+    }
+    /**
+     * Function that renders the label of the input field.
      */
     renderLabel() {
         return (this.label && (h("label", { class: {
@@ -246,7 +315,7 @@ const Input = class {
             } }, h("bds-typo", { variant: "fs-12", bold: "bold" }, this.label))));
     }
     /**
-     * Função que renderiza as mensagens de erro ou sucesso abaixo do campo de entrada.
+     * Function that renders error or success messages below the input field.
      */
     renderMessage() {
         const icon = this.danger ? 'error' : this.success ? 'checkball' : 'info';
@@ -264,7 +333,7 @@ const Input = class {
         return undefined;
     }
     /**
-     * Valida o campo de entrada ao perder o foco.
+     * Validates the input field when it loses focus.
      */
     onBlurValidations() {
         this.required && this.requiredValidation();
@@ -274,7 +343,7 @@ const Input = class {
         this.checkValidity();
     }
     /**
-     * Realiza as validações do campo enquanto o usuário digita.
+     * Performs field validations while the user types.
      */
     onBdsInputValidations() {
         this.type === 'email' && this.emailValidation();
@@ -282,14 +351,14 @@ const Input = class {
         this.checkValidity();
     }
     /**
-     * Valida o padrão regex do campo.
+     * Validates the regex pattern of the field.
      */
     patternValidation() {
         const regex = new RegExp(this.pattern);
         this.bdsPatternValidation.emit(regex.test(this.nativeInput.value));
     }
     /**
-     * Valida se o campo é obrigatório.
+     * Validates if the field is required.
      */
     requiredValidation() {
         if (this.nativeInput.validity.valueMissing) {
@@ -298,7 +367,7 @@ const Input = class {
         }
     }
     /**
-     * Valida o comprimento do texto no campo de entrada.
+     * Validates the text length in the input field.
      */
     lengthValidation() {
         if (this.nativeInput.validity.tooShort) {
@@ -312,7 +381,7 @@ const Input = class {
         }
     }
     /**
-     * Valida os valores mínimos e máximos do campo de entrada.
+     * Validates the minimum and maximum values of the input field.
      */
     minMaxValidation() {
         if (this.nativeInput.validity.rangeUnderflow) {
@@ -327,7 +396,7 @@ const Input = class {
         }
     }
     /**
-     * Valida se o campo contém um email válido.
+     * Validates if the field contains a valid email.
      */
     emailValidation() {
         if (emailValidation(this.nativeInput.value)) {
@@ -336,7 +405,7 @@ const Input = class {
         }
     }
     /**
-     * Valida se o campo contém um número válido.
+     * Validates if the field contains a valid number.
      */
     numberValidation() {
         if (numberValidation(this.nativeInput.value)) {
@@ -345,7 +414,7 @@ const Input = class {
         }
     }
     /**
-     * Verifica se o campo de entrada é válido.
+     * Checks if the input field is valid.
      */
     checkValidity() {
         if (this.nativeInput.validity.valid) {
@@ -353,17 +422,34 @@ const Input = class {
         }
     }
     /**
-     * Atualiza o valor do campo de entrada após as mudanças.
+     * Updates the input field value after changes.
      */
     componentDidUpdate() {
         if (this.nativeInput && this.value != this.nativeInput.value) {
             this.nativeInput.value = this.value;
         }
+        // Update textarea after value changes (immediate for prop changes)
+        this.updateTextarea(true);
+    }
+    /**
+     * Initial configurations after the component loads.
+     */
+    componentDidLoad() {
+        // Set initial height for textarea (immediate for initial load)
+        this.updateTextarea(true);
+    }
+    /**
+     * Cleanup when component is destroyed.
+     */
+    disconnectedCallback() {
+        if (this.autoResizeDebounceTimer) {
+            window.clearTimeout(this.autoResizeDebounceTimer);
+        }
     }
     render() {
         const isPressed = this.isPressed && !this.disabled;
         const Element = this.isTextarea ? 'textarea' : 'input';
-        return (h(Host, { key: 'a40007ea074c137d2388f727115557269a61a62e', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '5df5d9917959a69cbe5b17c3677d48e8abae86d1', class: {
+        return (h(Host, { key: 'cd976d3b96db3046f3a3eba8326bbee46ff9e151', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '6c2ba8cc39bcdc73e2be7604555783d946fac94b', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -371,7 +457,20 @@ const Input = class {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { key: '5af4646c99c554b8fbc4c207ff1a25ed529eeaed', name: "input-left" }), h("div", { key: 'd2a4be8f9127096d9bc9aebc99ea802cdb5d54ec', class: "input__container" }, this.renderLabel(), h("div", { key: '69a222cdfd0dc12e30eb5e162d0a48107fc4f8b0', class: { input__container__wrapper: !this.chips, input__container__wrapper__chips: this.chips } }, h("slot", { key: 'd2a6f7518106c52b49693d3ff3c50c2c13410494', name: "inside-input-left" }), h(Element, { key: '5a436cdda58f5763f69fde3143789f486171da24', class: { input__container__text: true, input__container__text__chips: this.chips }, ref: (input) => (this.nativeInput = input), rows: this.rows, cols: this.cols, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest }))), this.counterLength && (h("bds-counter-text", Object.assign({ key: '285d5ad9a5d5cfe07658d4646b5a9cc93d8beddb', length: this.value.length, max: this.maxlength, active: isPressed }, this.counterLengthRule))), this.success && h("bds-icon", { key: '3bbf5a4308a3c1b0788b014aeb71f0f47ffcb269', class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { key: '90444f5d49a8a4b225220cecdbc4e57e8f20c7ba', name: "input-right" })), this.renderMessage()));
+                'input--textarea': this.isTextarea,
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { key: '6767cc61b7d22a4f96e857d2c053e758cc8ff081', name: "input-left" }), h("div", { key: 'e5716618215cec9a77c90e1e0baa7f878dc27c96', class: "input__container" }, this.renderLabel(), h("div", { key: '2916bed57190055ec01438f9be400f74716be5c5', class: {
+                input__container__wrapper: !this.chips,
+                input__container__wrapper__chips: this.chips,
+                'input__container__wrapper--textarea': this.isTextarea
+            } }, h("slot", { key: '0cccef053caf8461e7bf99e8f39386b4150146c9', name: "inside-input-left" }), h(Element, { key: 'e1f54dc300b9f12f7123b081a7f05ce8c27246f0', class: {
+                input__container__text: true,
+                input__container__text__chips: this.chips,
+                'input__container__text--textarea': this.isTextarea
+            }, ref: (input) => (this.nativeInput = input), rows: this.isTextarea ? this.rows : undefined, cols: this.isTextarea ? this.cols : undefined, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, disabled: this.disabled, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, name: this.inputName, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.onInput, placeholder: this.placeholder, readOnly: this.readonly, type: this.isTextarea ? undefined : this.type, value: this.encodeValue(this.value), pattern: this.pattern, required: this.required, part: "input", "data-test": this.dataTest, style: this.isTextarea ? {
+                minHeight: `${this.minHeight || 60}px`,
+                maxHeight: `${this.maxHeight || 200}px`,
+                resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
+            } : {} }))), this.counterLength && (h("bds-counter-text", Object.assign({ key: '8665fa48a456ddf90b993442d44e93c116425fdb', length: this.value.length, max: this.maxlength, active: isPressed }, this.counterLengthRule))), this.success && h("bds-icon", { key: '244099c9cb2ff093412ed03b4b73207c68530bfd', class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { key: 'd882c2f79c904f0adc4d18febd9c5ed77932644a', name: "input-right" })), this.renderMessage()));
     }
     static get watchers() { return {
         "value": ["valueChanged"]

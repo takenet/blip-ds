@@ -2,290 +2,335 @@ import { EventEmitter } from '../../stencil-public-runtime';
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 export declare class Input {
     private nativeInput?;
+    private autoResizeDebounceTimer?;
     isPressed?: boolean;
     isPassword?: boolean;
     validationMesage?: string;
     validationDanger?: boolean;
     /**
-     * Nome do input, usado para identificação no formulário.
+     * Input name, used for form identification.
      */
     inputName?: string;
     /**
-     * Define o tipo do input (por exemplo, `text`, `password`, etc).
+     * Defines the input type (e.g., `text`, `password`, etc).
      */
     type?: InputType;
     /**
-     * Rótulo que será exibido acima do input.
+     * Label to be displayed above the input.
      */
     label?: string;
     /**
-     * Texto que será exibido como sugestão ou dica no input.
+     * Text to be displayed as a hint or placeholder in the input.
      */
     placeholder?: string;
     /**
-     * Define a capitalização automática do texto (valores possíveis: `on`, `off`).
+     * Defines automatic text capitalization (possible values: `on`, `off`).
      */
     autoCapitalize?: InputAutocapitalize;
     /**
-     * Define o comportamento de autocompletar do navegador (valores possíveis: `on`, `off`).
+     * Defines browser autocomplete behavior (possible values: `on`, `off`).
      */
     autoComplete?: InputAutoComplete;
     /**
-     * Define o valor máximo permitido para o input.
+     * Defines the maximum allowed value for the input.
      */
     max?: string;
     /**
-     * Define o número máximo de caracteres permitidos no input.
+     * Defines the maximum number of characters allowed in the input.
      */
     maxlength?: number;
     /**
-     * Define o valor mínimo permitido para o input.
+     * Defines the minimum allowed value for the input.
      */
     min?: string;
     /**
-     * Define o número mínimo de caracteres permitidos no input.
+     * Defines the minimum number of characters allowed in the input.
      */
     minlength?: number;
     /**
-     * Torna o input somente leitura.
+     * Makes the input read-only.
      */
     readonly: boolean;
     /**
-     * Define se o input é obrigatório.
+     * Defines if the input is required.
      */
     required: boolean;
     /**
-     * Define um padrão regex que o valor do input deve seguir.
+     * Defines a regex pattern that the input value must follow.
      */
     pattern?: string;
     /**
-     * Mensagem de ajuda exibida abaixo do input.
+     * Help message displayed below the input.
      */
     helperMessage?: string;
     /**
-     * Mensagem de erro exibida quando o valor do input é inválido.
+     * Error message displayed when the input value is invalid.
      */
     errorMessage?: string;
     /**
-     * Mensagem exibida quando o valor do input é válido.
+     * Message displayed when the input value is valid.
      */
     successMessage?: string;
     /**
-     * Nome do ícone a ser exibido dentro do input.
+     * Name of the icon to be displayed inside the input.
      */
     icon?: string;
     /**
-     * Define se o input está desabilitado.
+     * Defines if the input is disabled.
      */
     disabled?: boolean;
     /**
-     * Define se o input está em estado de erro.
+     * Defines if the input is in error state.
      */
     danger?: boolean;
     /**
-     * Define se o input está em estado de sucesso.
+     * Defines if the input is in success state.
      */
     success?: boolean;
     /**
-     * O valor atual do input.
+     * The current value of the input.
      */
     value?: string | null;
     /**
-     * Define se será exibido um contador de comprimento de caracteres.
+     * Defines whether a character length counter will be displayed.
      */
     counterLength?: boolean;
     /**
-     * Define a regra do contador de comprimento de caracteres (min, max, etc).
+     * Defines the character length counter rule (min, max, etc).
      */
     counterLengthRule?: InputCounterLengthRules;
     /**
-     * Define se o input será submetido ao pressionar Enter.
+     * Defines whether the input will be submitted when pressing Enter.
      */
     isSubmit: boolean;
     /**
-     * Define se o input é uma área de texto (textarea).
+     * Defines whether the input is a textarea.
      */
     isTextarea: boolean;
     /**
-     * Define a quantidade de linhas da área de texto (se for `textarea`).
+     * Defines the number of lines for the textarea (if `textarea`).
      */
     rows?: number;
     /**
-     * Define a quantidade de colunas da área de texto (se for `textarea`).
+     * Defines the number of columns for the textarea (if `textarea`).
      */
     cols?: number;
     /**
-     * Mensagem de erro exibida quando o input não é preenchido e é obrigatório.
+     * Defines whether the textarea should automatically resize based on content.
+     */
+    autoResize: boolean;
+    /**
+     * Defines whether the textarea can be manually resized by the user.
+     */
+    resizable: boolean;
+    /**
+     * Defines the minimum height of the textarea in pixels.
+     */
+    minHeight?: number;
+    /**
+     * Defines the maximum height of the textarea in pixels.
+     */
+    maxHeight?: number;
+    /**
+     * Defines the icon size (small or medium).
+     */
+    iconSize?: 'small' | 'medium';
+    /**
+     * Error message displayed when the input is not filled and is required.
      */
     requiredErrorMessage: string;
     /**
-     * Mensagem de erro exibida quando o valor do input não atende ao comprimento mínimo.
+     * Error message displayed when the input value doesn't meet the minimum length requirement.
      */
     minlengthErrorMessage: string;
     /**
-     * Mensagem de erro exibida quando o valor do input não atende ao valor mínimo permitido.
+     * Error message displayed when the input value doesn't meet the minimum allowed value.
      */
     minErrorMessage: string;
     /**
-     * Mensagem de erro exibida quando o valor do input não atende ao valor máximo permitido.
+     * Error message displayed when the input value doesn't meet the maximum allowed value.
      */
     maxErrorMessage: string;
     /**
-     * Mensagem de erro exibida quando o valor do input não é um email válido.
+     * Error message displayed when the input value is not a valid email.
      */
     emailErrorMessage: string;
     /**
-     * Mensagem de erro exibida quando o valor do input não é um número válido.
+     * Error message displayed when the input value is not a valid number.
      */
     numberErrorMessage: string;
     /**
-     * Define se o input será exibido como chips (um tipo de entrada com múltiplos valores).
+     * Defines if the input will be displayed as chips (a type of input with multiple values).
      */
     chips: boolean;
     /**
-     * Data test é a prop para testar especificamente a ação do componente.
+     * Defines the debounce delay in milliseconds for textarea auto-resize.
+     */
+    debounceDelay?: number;
+    /**
+     * Data test is the prop to specifically test the component action.
      */
     dataTest?: string;
     encode?: boolean;
     /**
-     * Evento disparado quando o valor do input muda.
+     * Event emitted when the input value changes.
      */
     bdsChange: EventEmitter<{
         value: string;
     }>;
     /**
-     * Evento disparado quando o input recebe um input (digitação).
+     * Event emitted when the input receives input (typing).
      */
     bdsInput: EventEmitter<InputEvent>;
     /**
-     * Evento disparado quando o input perde o foco.
+     * Event emitted when the input loses focus.
      */
     bdsOnBlur: EventEmitter<void>;
     /**
-     * Evento disparado quando o input ganha o foco.
+     * Event emitted when the input gains focus.
      */
     bdsFocus: EventEmitter<void>;
     /**
-     * Evento disparado quando o formulário é submetido.
+     * Event emitted when the form is submitted.
      */
     bdsSubmit: EventEmitter<{
         event: KeyboardEvent;
         value: string;
     }>;
     /**
-     * Evento disparado para validação de padrão regex.
+     * Event emitted for regex pattern validation.
      */
     bdsPatternValidation: EventEmitter<boolean>;
     /**
-     * Evento disparado quando a tecla "Backspace" é pressionada.
+     * Event emitted when the "Backspace" key is pressed.
      */
     bdsKeyDownBackspace: EventEmitter<{
         event: KeyboardEvent;
         value: string;
     }>;
     /**
-     * Define o foco no campo de entrada.
+     * Sets focus to the input field.
      */
     setFocus(): Promise<void>;
     /**
-     * Remove o foco do campo de entrada.
+     * Removes focus from the input field.
      */
     removeFocus(): Promise<void>;
     /**
-     * Retorna o elemento de input do componente.
+     * Returns the input element of the component.
      */
-    getInputElement(): Promise<HTMLInputElement>;
+    getInputElement(): Promise<HTMLInputElement | HTMLTextAreaElement>;
     /**
-     * Verifica se o campo de entrada é válido.
+     * Checks if the input field is valid.
      */
     isValid(): Promise<boolean>;
     /**
-     * Limpa o valor do campo de entrada.
+     * Clears the input field value.
      */
     clear(): Promise<void>;
     /**
-     * Codifica os caracteres especiais para exibição segura (evita injeção de código HTML).
+     * Encodes special characters for safe display (prevents HTML code injection).
      */
     private encodeValue;
     /**
-     * Avisa sobre a mudança do valor do campo de entrada.
+     * Notifies about the input field value change.
      */
     protected valueChanged(newValue: string | null): void;
     /**
-     * Tratamento de eventos de pressionamento de tecla (Enter, Backspace, etc).
+     * Key press event handling (Enter, Backspace, etc).
      */
     private keyPressWrapper;
     /**
-     * Função chamada ao digitar no campo de entrada.
+     * Auto-resizes the textarea based on content.
+     */
+    private autoResizeTextarea;
+    /**
+     * Debounced version of auto-resize to improve performance during rapid input events.
+     */
+    private debouncedAutoResize;
+    /**
+     * Centralizes all necessary updates for the textarea, including auto-resize.
+     */
+    private updateTextarea;
+    /**
+     * Function called when typing in the input field.
      */
     private onInput;
     /**
-     * Função chamada ao perder o foco do campo de entrada.
+     * Function called when the input field loses focus.
      */
     private onBlur;
     /**
-     * Função chamada ao ganhar o foco do campo de entrada.
+     * Function called when the input field gains focus.
      */
     private onFocus;
     /**
-     * Função chamada ao clicar no campo de entrada.
+     * Function called when clicking on the input field.
      */
     private onClickWrapper;
     /**
-     * Limpa o valor do campo de entrada.
+     * Clears the input field value.
      */
     private clearTextInput;
     /**
-     * Função que renderiza o ícone dentro do campo de entrada.
+     * Function that renders the icon inside the input field.
      */
     private renderIcon;
     /**
-     * Função que renderiza a label do campo de entrada.
+     * Function that renders the label of the input field.
      */
     private renderLabel;
     /**
-     * Função que renderiza as mensagens de erro ou sucesso abaixo do campo de entrada.
+     * Function that renders error or success messages below the input field.
      */
     private renderMessage;
     /**
-     * Valida o campo de entrada ao perder o foco.
+     * Validates the input field when it loses focus.
      */
     private onBlurValidations;
     /**
-     * Realiza as validações do campo enquanto o usuário digita.
+     * Performs field validations while the user types.
      */
     private onBdsInputValidations;
     /**
-     * Valida o padrão regex do campo.
+     * Validates the regex pattern of the field.
      */
     private patternValidation;
     /**
-     * Valida se o campo é obrigatório.
+     * Validates if the field is required.
      */
     private requiredValidation;
     /**
-     * Valida o comprimento do texto no campo de entrada.
+     * Validates the text length in the input field.
      */
     private lengthValidation;
     /**
-     * Valida os valores mínimos e máximos do campo de entrada.
+     * Validates the minimum and maximum values of the input field.
      */
     private minMaxValidation;
     /**
-     * Valida se o campo contém um email válido.
+     * Validates if the field contains a valid email.
      */
     private emailValidation;
     /**
-     * Valida se o campo contém um número válido.
+     * Validates if the field contains a valid number.
      */
     private numberValidation;
     /**
-     * Verifica se o campo de entrada é válido.
+     * Checks if the input field is valid.
      */
     private checkValidity;
     /**
-     * Atualiza o valor do campo de entrada após as mudanças.
+     * Updates the input field value after changes.
      */
     componentDidUpdate(): void;
+    /**
+     * Initial configurations after the component loads.
+     */
+    componentDidLoad(): void;
+    /**
+     * Cleanup when component is destroyed.
+     */
+    disconnectedCallback(): void;
     render(): HTMLElement;
 }
