@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event       | Description                         | Type               |
-| ----------- | ----------------------------------- | ------------------ |
-| `bdsChange` | Emitted when the value has changed. | `CustomEvent<any>` |
+| Event       | Description                         | Type                                 |
+| ----------- | ----------------------------------- | ------------------------------------ |
+| `bdsChange` | Emitted when the value has changed. | `CustomEvent<{ checked: boolean; }>` |
 
 
 ## Methods

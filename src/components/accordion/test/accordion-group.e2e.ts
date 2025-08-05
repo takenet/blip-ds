@@ -1,5 +1,8 @@
 import { newE2EPage } from '@stencil/core/testing';
 
+// Helper function to replace page.waitForTimeout
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 describe('bds-accordion-group e2e tests', () => {
   let page;
 
@@ -29,7 +32,10 @@ describe('bds-accordion-group e2e tests', () => {
       const accordionGroup = await page.find('bds-accordion-group');
       const bdsAccordionOpenAllEvent = await accordionGroup.spyOnEvent('bdsAccordionOpenAll');
 
-      await accordionGroup.callMethod('openAll');
+      await page.evaluate(() => {
+        const accordionGroupEl = document.querySelector('bds-accordion-group') as any;
+        return accordionGroupEl.openAll();
+      });
       await page.waitForChanges();
 
       expect(bdsAccordionOpenAllEvent).toHaveReceivedEvent();
@@ -40,11 +46,17 @@ describe('bds-accordion-group e2e tests', () => {
       const bdsAccordionCloseAllEvent = await accordionGroup.spyOnEvent('bdsAccordionCloseAll');
 
       // First open all accordions
-      await accordionGroup.callMethod('openAll');
+      await page.evaluate(() => {
+        const accordionGroupEl = document.querySelector('bds-accordion-group') as any;
+        return accordionGroupEl.openAll();
+      });
       await page.waitForChanges();
 
       // Then close all
-      await accordionGroup.callMethod('closeAll');
+      await page.evaluate(() => {
+        const accordionGroupEl = document.querySelector('bds-accordion-group') as any;
+        return accordionGroupEl.closeAll();
+      });
       await page.waitForChanges();
 
       expect(bdsAccordionCloseAllEvent).toHaveReceivedEvent();
@@ -55,11 +67,14 @@ describe('bds-accordion-group e2e tests', () => {
     it('should open all accordions when openAll method is called', async () => {
       const accordionGroup = await page.find('bds-accordion-group');
 
-      await accordionGroup.callMethod('openAll');
+      await page.evaluate(() => {
+        const accordionGroupEl = document.querySelector('bds-accordion-group') as any;
+        return accordionGroupEl.openAll();
+      });
       await page.waitForChanges();
       
-      // Wait for animations to complete
-      await page.waitForTimeout(600);
+      // Wait for animation timeout (500ms + buffer)
+      await sleep(600);
 
       const accordionBodies = await page.findAll('bds-accordion-body >>> .accordion_body');
       
@@ -73,12 +88,20 @@ describe('bds-accordion-group e2e tests', () => {
       const accordionGroup = await page.find('bds-accordion-group');
 
       // First open all accordions
-      await accordionGroup.callMethod('openAll');
+      await page.evaluate(() => {
+        const accordionGroupEl = document.querySelector('bds-accordion-group') as any;
+        return accordionGroupEl.openAll();
+      });
       await page.waitForChanges();
-      await page.waitForTimeout(600);
+      
+      // Wait for open animation
+      await sleep(600);
 
       // Then close all
-      await accordionGroup.callMethod('closeAll');
+      await page.evaluate(() => {
+        const accordionGroupEl = document.querySelector('bds-accordion-group') as any;
+        return accordionGroupEl.closeAll();
+      });
       await page.waitForChanges();
 
       const accordionBodies = await page.findAll('bds-accordion-body >>> .accordion_body');

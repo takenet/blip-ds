@@ -1,3 +1,5 @@
+@use '../../globals/helpers' as *;
+
 :host(.horizontal) { 
   width: 100%;
 }

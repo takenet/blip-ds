@@ -1,3 +1,6 @@
+@use '../../../globals/helpers' as *;
+@use '../../../globals/theme/color-legacy' as *;
+
 :host {
   padding: 8px;
 

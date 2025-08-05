@@ -17,9 +17,9 @@
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `buttonSelected` |             | `CustomEvent<any>` |
+| Event            | Description | Type                  |
+| ---------------- | ----------- | --------------------- |
+| `buttonSelected` |             | `CustomEvent<string>` |
 
 
 ## Methods
@@ -27,6 +27,12 @@
 ### `activateButton(index: number) => Promise<void>`
 
 
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `index` | `number` |             |
 
 #### Returns
 

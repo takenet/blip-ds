@@ -1,6 +1,6 @@
+@use '../../../globals/helpers' as *;
+
 :host {
-    display: table-header-group;
-    border-bottom: 1px solid $color-border-1;
-  }
-  
-  
+  display: table-header-group;
+  border-bottom: 1px solid $color-border-1;
+}

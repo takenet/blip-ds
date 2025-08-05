@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - v2
 
 permissions:
   contents: read
@@ -31,6 +32,8 @@ jobs:
         run: |
           npm run eslint
 
+      # Tests currently using https://github.com/stenciljs/core/issues/6157 workaround
+      # This may be slower than expected
       - name: Test
         run: |
           npm run test

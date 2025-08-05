@@ -42,7 +42,9 @@ export class Checkbox {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsChange!: EventEmitter;
+  @Event() bdsChange!: EventEmitter<{
+    checked: boolean;
+  }>;
 
   /**
    * Emitted when the input has changed.

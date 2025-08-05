@@ -73,8 +73,8 @@ describe('bds-banner-link', () => {
       });
       expect(page.rootInstance.dataTest).toBe('banner-link-test');
       
-      const linkElement = page.root.shadowRoot.querySelector('a');
-      expect(linkElement.getAttribute('data-test')).toBe('banner-link-test');
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
+      expect(linkElement!.getAttribute('data-test')).toBe('banner-link-test');
     });
 
     it('should handle dataTest prop with null default', async () => {
@@ -109,7 +109,7 @@ describe('bds-banner-link', () => {
         components: [BannerLink],
         html: `<bds-banner-link><strong>Bold</strong> and <em>italic</em> text</bds-banner-link>`,
       });
-      expect(page.root.textContent).toContain('Bold and italic text');
+      expect(page.root!.textContent).toContain('Bold and italic text');
     });
   });
 
@@ -121,14 +121,14 @@ describe('bds-banner-link', () => {
       });
 
       const bdsBannerLinkSpy = jest.fn();
-      page.root.addEventListener('bdsBannerLink', bdsBannerLinkSpy);
+      page.root!.addEventListener('bdsBannerLink', bdsBannerLinkSpy);
 
       // Mock window.open
       const originalOpen = window.open;
       window.open = jest.fn();
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
-      linkElement.click();
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
+      linkElement!.click();
 
       expect(bdsBannerLinkSpy).toHaveBeenCalledTimes(1);
       expect(bdsBannerLinkSpy).toHaveBeenCalledWith(
@@ -148,15 +148,15 @@ describe('bds-banner-link', () => {
       });
 
       const bdsBannerLinkSpy = jest.fn();
-      page.root.addEventListener('bdsBannerLink', bdsBannerLinkSpy);
+      page.root!.addEventListener('bdsBannerLink', bdsBannerLinkSpy);
 
       // Mock window.open
       const originalOpen = window.open;
       window.open = jest.fn();
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
       const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-      linkElement.dispatchEvent(enterEvent);
+      linkElement!.dispatchEvent(enterEvent);
 
       expect(bdsBannerLinkSpy).toHaveBeenCalledTimes(1);
       expect(bdsBannerLinkSpy).toHaveBeenCalledWith(
@@ -176,11 +176,11 @@ describe('bds-banner-link', () => {
       });
 
       const bdsBannerLinkSpy = jest.fn();
-      page.root.addEventListener('bdsBannerLink', bdsBannerLinkSpy);
+      page.root!.addEventListener('bdsBannerLink', bdsBannerLinkSpy);
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
       const spaceEvent = new KeyboardEvent('keydown', { key: ' ' });
-      linkElement.dispatchEvent(spaceEvent);
+      linkElement!.dispatchEvent(spaceEvent);
 
       expect(bdsBannerLinkSpy).not.toHaveBeenCalled();
     });
@@ -198,8 +198,8 @@ describe('bds-banner-link', () => {
       const mockOpen = jest.fn();
       window.open = mockOpen;
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
-      linkElement.click();
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
+      linkElement!.click();
 
       expect(mockOpen).toHaveBeenCalledWith('https://example.com', '_self');
 
@@ -218,9 +218,9 @@ describe('bds-banner-link', () => {
       const mockOpen = jest.fn();
       window.open = mockOpen;
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
       const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-      linkElement.dispatchEvent(enterEvent);
+      linkElement!.dispatchEvent(enterEvent);
 
       expect(mockOpen).toHaveBeenCalledWith('https://example.com', '_blank');
 
@@ -236,8 +236,8 @@ describe('bds-banner-link', () => {
         html: `<bds-banner-link></bds-banner-link>`,
       });
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
-      expect(linkElement.getAttribute('tabindex')).toBe('0');
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
+      expect(linkElement!.getAttribute('tabindex')).toBe('0');
     });
 
     it('should be keyboard accessible', async () => {
@@ -250,11 +250,11 @@ describe('bds-banner-link', () => {
       const originalOpen = window.open;
       window.open = jest.fn();
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
       
       // Should respond to Enter key
       const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-      linkElement.dispatchEvent(enterEvent);
+      linkElement!.dispatchEvent(enterEvent);
       expect(window.open).toHaveBeenCalledWith('https://example.com', '_blank');
 
       // Restore window.open
@@ -269,8 +269,8 @@ describe('bds-banner-link', () => {
         html: `<bds-banner-link></bds-banner-link>`,
       });
 
-      const linkElement = page.root.shadowRoot.querySelector('a');
-      expect(linkElement.classList.contains('banner__link')).toBe(true);
+      const linkElement = page.root!.shadowRoot!.querySelector('a');
+      expect(linkElement!.classList.contains('banner__link')).toBe(true);
     });
   });
 });

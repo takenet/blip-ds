@@ -49,7 +49,7 @@ export class IconButton {
   /**
    * Event buttom onClick.
    */
-  @Event() bdsClick: EventEmitter;
+  @Event() bdsClick: EventEmitter<PointerEvent>;
 
   private mapSize: IconSizeMap = {
     tall: 'xxx-large',
@@ -66,7 +66,7 @@ export class IconButton {
     'secondary--white': 'icon__button--secondary-white',
   };
 
-  private handleClick = (ev) => {
+  private handleClick = (ev: PointerEvent) => {
     if (!this.disabled) {
       this.bdsClick.emit(ev);
     }

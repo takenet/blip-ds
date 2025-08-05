@@ -118,32 +118,32 @@ export class InputPassword {
   /**
    * Emitted when the value has changed.
    */
-  @Event({ bubbles: true, composed: true }) bdsInputPasswordChange!: EventEmitter;
+  @Event({ bubbles: true, composed: true }) bdsInputPasswordChange!: EventEmitter<{ value: string | null }>;
 
   /**
    * Emitted when the input has changed.
    */
-  @Event() bdsInputPasswordInput!: EventEmitter<KeyboardEvent>;
+  @Event() bdsInputPasswordInput!: EventEmitter<InputEvent>;
 
   /**
    * Event input onblur.
    */
-  @Event() bdsInputPasswordBlur: EventEmitter;
+  @Event() bdsInputPasswordBlur: EventEmitter<void>;
 
   /**
    * Event input focus.
    */
-  @Event() bdsInputPasswordFocus: EventEmitter;
+  @Event() bdsInputPasswordFocus: EventEmitter<void>;
 
   /**
    * Event input enter.
    */
-  @Event() bdsInputPasswordSubmit: EventEmitter;
+  @Event() bdsInputPasswordSubmit: EventEmitter<{ event: KeyboardEvent; value: string | null } | void>;
 
   /**
    * Event input key down backspace.
    */
-  @Event() bdsKeyDownBackspace: EventEmitter;
+  @Event() bdsKeyDownBackspace: EventEmitter<{ event: KeyboardEvent; value: string | null }>;
 
   private refNativeInput = (el: HTMLInputElement): void => {
     this.nativeInput = el;
@@ -178,12 +178,12 @@ export class InputPassword {
     this.bdsInputPasswordChange.emit({ value: this.value == null ? this.value : this.value.toString() });
   }
 
-  private onInput = (ev: Event): void => {
+  private onInput = (ev: InputEvent): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInputPasswordInput.emit(ev as KeyboardEvent);
+    this.bdsInputPasswordInput.emit(ev);
   };
 
   private onBlur = (): void => {
@@ -206,7 +206,8 @@ export class InputPassword {
         this.bdsInputPasswordSubmit.emit({ event, value: this.value });
 
         break;
-      case 'Backspace' || 'Delete':
+      case 'Backspace':
+      case 'Delete':
         this.bdsKeyDownBackspace.emit({ event, value: this.value });
         break;
     }

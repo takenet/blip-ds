@@ -16,14 +16,14 @@ describe('bds-modal', () => {
     await page.waitForChanges();
 
     const element = await page.find('bds-modal');
-    
+
     // Test default property values
     const open = await element.getProperty('open');
     const closeButton = await element.getProperty('closeButton');
     const size = await element.getProperty('size');
     const outzoneClose = await element.getProperty('outzoneClose');
     const enterClose = await element.getProperty('enterClose');
-    
+
     expect(open).toBe(false);
     expect(closeButton).toBe(true);
     expect(size).toBe('fixed');
@@ -38,7 +38,7 @@ describe('bds-modal', () => {
 
     const element = await page.find('bds-modal');
     const modalDialog = await page.find('bds-modal >>> .modal__dialog');
-    
+
     expect(element).toEqualAttribute('open', '');
     expect(modalDialog).toHaveClass('modal__dialog--open');
   });
@@ -63,7 +63,7 @@ describe('bds-modal', () => {
 
   it('should render with different sizes', async () => {
     const sizes = ['fixed', 'dynamic'];
-    
+
     for (const size of sizes) {
       const page = await newE2EPage();
       await page.setContent(`<bds-modal open="true" size="${size}"></bds-modal>`);
@@ -72,7 +72,7 @@ describe('bds-modal', () => {
       const element = await page.find('bds-modal');
       const modalDialog = await page.find('bds-modal >>> .modal__dialog');
       const modal = await page.find('bds-modal >>> .modal');
-      
+
       expect(element).toEqualAttribute('size', size);
       expect(modalDialog).toHaveClass(`modal__dialog--${size}`);
       expect(modal).toHaveClass(`modal--${size}`);
@@ -87,7 +87,7 @@ describe('bds-modal', () => {
     const modalDialog = await page.find('bds-modal >>> .modal__dialog');
     const outzone = await page.find('bds-modal >>> .outzone');
     const modal = await page.find('bds-modal >>> .modal');
-    
+
     expect(modalDialog).toBeTruthy();
     expect(modalDialog).not.toHaveClass('modal__dialog--open');
     expect(outzone).toBeTruthy();
@@ -100,7 +100,7 @@ describe('bds-modal', () => {
     await page.waitForChanges();
 
     const element = await page.find('bds-modal');
-    
+
     // Initially closed
     let open = await element.getProperty('open');
     expect(open).toBe(false);
@@ -193,14 +193,14 @@ describe('bds-modal', () => {
     // Click outzone using shadow DOM evaluation - this is the correct way for shadow DOM components
     await page.evaluate(() => {
       const modal = document.querySelector('bds-modal');
-      const shadowRoot = modal.shadowRoot;
-      const outzoneElement = shadowRoot.querySelector('.outzone') as HTMLElement;
+      const shadowRoot = modal?.shadowRoot;
+      const outzoneElement = shadowRoot?.querySelector('.outzone') as HTMLElement;
       outzoneElement.click();
     });
     await page.waitForChanges();
 
     // Add a small delay to ensure event processing completes
-    await page.waitForTimeout(100);
+    await new Promise((r) => setTimeout(r, 100));
 
     // Check if the modal was closed by clicking outzone
     open = await element.getProperty('open');
@@ -219,8 +219,8 @@ describe('bds-modal', () => {
     // Click outzone using shadow DOM evaluation
     await page.evaluate(() => {
       const modal = document.querySelector('bds-modal');
-      const shadowRoot = modal.shadowRoot;
-      const outzoneElement = shadowRoot.querySelector('.outzone') as HTMLElement;
+      const shadowRoot = modal?.shadowRoot;
+      const outzoneElement = shadowRoot?.querySelector('.outzone') as HTMLElement;
       outzoneElement.click();
     });
     await page.waitForChanges();
@@ -237,7 +237,7 @@ describe('bds-modal', () => {
 
     const element = await page.find('bds-modal');
     const bdsModalChangedSpy = await element.spyOnEvent('bdsModalChanged');
-    
+
     // Directly call toggle to test the mechanism first
     await element.callMethod('toggle');
     await page.waitForChanges();
@@ -295,7 +295,7 @@ describe('bds-modal', () => {
       const modalAction = await page.find('bds-modal-action');
       const actionDiv = await page.find('bds-modal-action >>> .modal__action');
       const slot = await page.find('bds-modal-action >>> slot');
-      
+
       expect(modalAction).toBeTruthy();
       expect(actionDiv).toBeTruthy();
       expect(slot).toBeTruthy();
@@ -317,7 +317,7 @@ describe('bds-modal', () => {
       const modalAction = await page.find('bds-modal-action');
       const cancelButton = await page.find('#cancel');
       const confirmButton = await page.find('#confirm');
-      
+
       expect(modalAction).toBeTruthy();
       expect(cancelButton).toBeTruthy();
       expect(confirmButton).toBeTruthy();
@@ -337,11 +337,11 @@ describe('bds-modal', () => {
       await page.waitForChanges();
 
       const testButton = await page.find('#test-button');
-      
+
       // Should be able to click the button without errors
       await testButton.click();
       await page.waitForChanges();
-      
+
       expect(testButton).toBeTruthy();
     });
   });
@@ -374,7 +374,7 @@ describe('bds-modal', () => {
       const modalCloseButton = await page.find('bds-modal-close-button');
       const closeButtonDiv = await page.find('bds-modal-close-button >>> .modal__close__button-icon');
       const icon = await page.find('bds-modal-close-button >>> bds-icon');
-      
+
       expect(modalCloseButton).toBeTruthy();
       expect(closeButtonDiv).toBeTruthy();
       expect(icon).toBeTruthy();
@@ -392,7 +392,7 @@ describe('bds-modal', () => {
       const modalCloseButton = await page.find('bds-modal-close-button');
       const closeButtonDiv = await page.find('bds-modal-close-button >>> .modal__close__button-icon');
       const active = await modalCloseButton.getProperty('active');
-      
+
       expect(active).toBe(true);
       expect(closeButtonDiv).toHaveClass('modal__close__button-icon--active');
     });
@@ -409,7 +409,7 @@ describe('bds-modal', () => {
       const modalCloseButton = await page.find('bds-modal-close-button');
       const closeButtonDiv = await page.find('bds-modal-close-button >>> .modal__close__button-icon');
       const active = await modalCloseButton.getProperty('active');
-      
+
       expect(active).toBe(false);
       expect(closeButtonDiv).not.toHaveClass('modal__close__button-icon--active');
     });
@@ -426,7 +426,7 @@ describe('bds-modal', () => {
       const icon = await page.find('bds-modal-close-button >>> bds-icon');
       const iconName = await icon.getProperty('name');
       const iconSize = await icon.getProperty('size');
-      
+
       expect(iconName).toBe('close');
       expect(iconSize).toBe('medium');
     });
@@ -483,14 +483,14 @@ describe('bds-modal', () => {
 
       const modalActions = await page.findAll('bds-modal-action');
       expect(modalActions).toHaveLength(2);
-      
+
       expect(modalActions[0].textContent).toContain('Primary Actions');
       expect(modalActions[1].textContent).toContain('Secondary Actions');
     });
 
     it('should work with different modal sizes and sub-components', async () => {
       const sizes = ['fixed', 'dynamic'];
-      
+
       for (const size of sizes) {
         const page = await newE2EPage();
         await page.setContent(`

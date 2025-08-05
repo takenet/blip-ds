@@ -4,7 +4,6 @@ export const setRef = (ref, value) => {
         ref(value);
     }
     else if (ref != null) {
-        // Cast as a MutableRef so we can assign current
         ref.current = value;
     }
 };

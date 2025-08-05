@@ -75,7 +75,7 @@ export class BdsDropdown implements ComponentInterface {
   /**
    * bdsToggle. Event to return selected date value.
    */
-  @Event() bdsToggle?: EventEmitter;
+  @Event() bdsToggle?: EventEmitter<{ value: boolean }>;
 
   componentWillLoad() {
     this.activatorElement = this.hostElement.querySelector('[slot="dropdown-activator"]').children[0];
