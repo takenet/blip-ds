@@ -3,7 +3,6 @@ name: Publish
 on:
   push:
     branches:
-      - master
       - main
 
 permissions:
@@ -52,7 +51,7 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         id: semantic
         with:
-          branch: master
+          branch: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
