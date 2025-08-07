@@ -1,1 +1,0 @@
-import{r as t,h as s}from"./p-93b809e8.js";const r=class{constructor(s){t(this,s),this.align="flex-end"}render(){return s("bds-grid",{xxs:"12",direction:"row",gap:"2",justifyContent:this.align},s("slot",null))}};r.style=":host{width:100%}";export{r as bds_card_footer}
