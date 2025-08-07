@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblip_ds=self.webpackChunkblip_ds||[]).push([[6581],{"./dist/esm-es5/bds-pagination.entry.js.map":(module,__unused_webpack_exports,__webpack_require__)=>{module.exports=__webpack_require__.p+"a2e42670c0aac4021a0a.map"}}]);
