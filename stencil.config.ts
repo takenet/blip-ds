@@ -8,16 +8,6 @@ export const config: Config = {
     sass({
       includePaths: ['src/globals', 'node_modules'],
       injectGlobalPaths: ['src/globals/helpers.scss'],
-      importer: (url) => {
-        // Handle ~ prefix for node_modules imports
-        if (url.startsWith('~')) {
-          const modulePath = url.substring(1);
-          return {
-            file: `node_modules/${modulePath}`,
-          };
-        }
-        return null;
-      },
     }),
   ],
   outputTargets: [

@@ -1,4 +1,4 @@
-@forward '~blip-tokens/build/scss/variables.scss';
+@forward 'blip-tokens/build/scss/variables.scss';
 @forward './theme/theme-light.scss';
 @forward './theme/theme-dark.scss';
 @use './theme/theme-light.scss' as *;
