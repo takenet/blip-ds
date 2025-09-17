@@ -488,6 +488,95 @@ describe('bds-autocomplete', () => {
     });
   });
 
+  describe('default value functionality', () => {
+    it('should apply defaultValue when no value is provided', async () => {
+      const optionsString = JSON.stringify(defaultOptions);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}' default-value="option2"></bds-autocomplete>`,
+      });
+
+      expect(page.rootInstance.value).toBe('option2');
+      expect(page.rootInstance.defaultValue).toBe('option2');
+    });
+
+    it('should not apply defaultValue when value is already provided', async () => {
+      const optionsString = JSON.stringify(defaultOptions);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}' value="option1" default-value="option2"></bds-autocomplete>`,
+      });
+
+      expect(page.rootInstance.value).toBe('option1');
+      expect(page.rootInstance.defaultValue).toBe('option2');
+    });
+
+    it('should apply defaultValue to null when no defaultValue is provided', async () => {
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: '<bds-autocomplete></bds-autocomplete>',
+      });
+
+      expect(page.rootInstance.value).toBeNull();
+      expect(page.rootInstance.defaultValue).toBeUndefined();
+    });
+
+    it('should apply defaultValue correctly when options are provided', async () => {
+      const optionsString = JSON.stringify(defaultOptions);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}' default-value="option2"></bds-autocomplete>`,
+      });
+
+      // Wait for component to fully load
+      await page.waitForChanges();
+      
+      // The main functionality we care about: default value is applied
+      expect(page.rootInstance.value).toBe('option2');
+      expect(page.rootInstance.defaultValue).toBe('option2');
+      // Text display is tested in e2e tests which more accurately simulate browser behavior
+    });
+
+    it('should work with child option elements (not just options array)', async () => {
+      const page = await newSpecPage({
+        components: [BdsAutocomplete, SelectOption],
+        html: `
+          <bds-autocomplete default-value="test2">
+            <bds-select-option value="test1">Test Option 1</bds-select-option>
+            <bds-select-option value="test2">Test Option 2</bds-select-option>
+            <bds-select-option value="test3">Test Option 3</bds-select-option>
+          </bds-autocomplete>
+        `,
+      });
+
+      expect(page.rootInstance.value).toBe('test2');
+    });
+
+    it('should handle defaultValue with multiple selection type', async () => {
+      const optionsString = JSON.stringify(defaultOptions);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}' selection-type="multiple" default-value="option1"></bds-autocomplete>`,
+      });
+
+      expect(page.rootInstance.value).toBe('option1');
+      expect(page.rootInstance.selectionType).toBe('multiple');
+    });
+
+    it('should handle invalid defaultValue gracefully', async () => {
+      const optionsString = JSON.stringify(defaultOptions);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}' default-value="nonexistent"></bds-autocomplete>`,
+      });
+
+      expect(page.rootInstance.value).toBe('nonexistent');
+      expect(page.rootInstance.defaultValue).toBe('nonexistent');
+      // Should not crash, but text will be empty since option doesn't exist
+      expect(page.rootInstance.text).toBe('');
+    });
+  });
+
   describe('complex option scenarios', () => {
     it('should handle options with status', async () => {
       const optionsString = JSON.stringify(optionsWithStatus);

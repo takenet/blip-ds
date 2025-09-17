@@ -173,6 +173,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * the default value of the select that will be applied when the component loads if no value is set.
+         */
+        "defaultValue"?: string | null;
+        /**
           * Disabled input.
          */
         "disabled"?: boolean;
@@ -3969,6 +3973,10 @@ declare namespace LocalJSX {
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
+        /**
+          * the default value of the select that will be applied when the component loads if no value is set.
+         */
+        "defaultValue"?: string | null;
         /**
           * Disabled input.
          */

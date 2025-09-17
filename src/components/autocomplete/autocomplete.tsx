@@ -72,6 +72,11 @@ export class BdsAutocomplete {
   @Prop({ mutable: true }) value?: string | null;
 
   /**
+   * the default value of the select that will be applied when the component loads if no value is set.
+   */
+  @Prop() defaultValue?: string | null;
+
+  /**
    * the item selected.
    */
   @Prop({ mutable: true }) selected?: HTMLBdsSelectOptionElement | null;
@@ -272,6 +277,11 @@ export class BdsAutocomplete {
   componentWillLoad() {
     this.intoView = getScrollParent(this.el);
     this.options && this.parseOptions();
+    
+    // Apply default value if no value is set
+    if (this.value === undefined || this.value === null) {
+      this.value = this.defaultValue ?? null;
+    }
   }
 
   componentDidLoad() {
