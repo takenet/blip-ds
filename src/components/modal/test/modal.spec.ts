@@ -137,8 +137,8 @@ describe('bds-modal', () => {
       const changeSpy = jest.fn();
       page.root.addEventListener('bdsModalChanged', changeSpy);
       
-      // Change open state
-      page.root.open = true;
+      // Use toggle method to change open state
+      await page.root.toggle();
       await page.waitForChanges();
       
       expect(changeSpy).toHaveBeenCalledWith(
@@ -198,14 +198,16 @@ describe('bds-modal', () => {
     });
 
     it('should toggle modal state when toggle is called', async () => {
-      const component = new BdsModal();
-      component.open = false;
+      const page = await newSpecPage({
+        components: [BdsModal],
+        html: `<bds-modal open="false"></bds-modal>`,
+      });
       
-      await component.toggle();
-      expect(component.open).toBe(true);
+      await page.root.toggle();
+      expect(page.root.open).toBe(true);
       
-      await component.toggle();
-      expect(component.open).toBe(false);
+      await page.root.toggle();
+      expect(page.root.open).toBe(false);
     });
   });
 
@@ -245,16 +247,19 @@ describe('bds-modal', () => {
 
   describe('Edge Cases', () => {
     it('should handle rapid toggle operations', async () => {
-      const component = new BdsModal();
+      const page = await newSpecPage({
+        components: [BdsModal],
+        html: `<bds-modal open="false"></bds-modal>`,
+      });
       
-      await component.toggle();
-      expect(component.open).toBe(true);
+      await page.root.toggle();
+      expect(page.root.open).toBe(true);
       
-      await component.toggle();
-      expect(component.open).toBe(false);
+      await page.root.toggle();
+      expect(page.root.open).toBe(false);
       
-      await component.toggle();
-      expect(component.open).toBe(true);
+      await page.root.toggle();
+      expect(page.root.open).toBe(true);
     });
 
     it('should render method should return JSX element', () => {
