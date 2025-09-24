@@ -13,10 +13,12 @@ const BdsModal = class {
     };
     this.handleMouseClick = () => {
       this.open = false;
+      this.bdsModalChanged.emit({ modalStatus: 'closed' });
     };
-    this.onClickOutzone = () => {
-      if (this.outzoneClose) {
+    this.onClickCloseButtom = () => {
+      if (this.outzoneClose === true) {
         this.open = false;
+        this.bdsModalChanged.emit({ modalStatus: 'closed' });
       }
     };
     this.open = false;
@@ -32,23 +34,26 @@ const BdsModal = class {
    */
   async toggle() {
     this.open = !this.open;
+    if (this.open) {
+      this.bdsModalChanged.emit({ modalStatus: 'opened' });
+    }
+    else {
+      this.bdsModalChanged.emit({ modalStatus: 'closed' });
+    }
   }
   isOpenChanged() {
     if (this.open) {
       document.addEventListener('keydown', this.listener, false);
-      this.bdsModalChanged.emit({ modalStatus: 'opened' });
     }
-    else {
+    else
       document.removeEventListener('keydown', this.listener, false);
-      this.bdsModalChanged.emit({ modalStatus: 'closed' });
-    }
   }
   render() {
     return (h("div", { class: {
         modal__dialog: true,
         'modal__dialog--open': this.open,
         [`modal__dialog--${this.size}`]: true,
-      } }, h("div", { class: { outzone: true }, onClick: () => this.onClickOutzone(), "data-test": this.dtOutzone }), h("div", { class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (h("bds-icon", { size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && h("slot", null), this.size !== 'fixed' && (h("div", { class: { slot: true, [`slot--${this.size}`]: true } }, h("slot", null))))));
+      } }, h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone }), h("div", { class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (h("bds-icon", { size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && h("slot", null), this.size !== 'fixed' && (h("div", { class: { slot: true, [`slot--${this.size}`]: true } }, h("slot", null))))));
   }
   static get watchers() { return {
     "open": ["isOpenChanged"]
