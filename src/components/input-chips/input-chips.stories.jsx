@@ -101,14 +101,14 @@ Properties.argTypes = {
 export const Events = () => {
   useEffect(() => {
     const inputChips = document.getElementById('input-chips');
-    inputChips.addEventListener('bdsBlur', () => {
-      console.log('Evento Blur funcionando');
+    inputChips.addEventListener('bdsBlur', (event) => {
+      console.log('Evento Blur funcionando, chips:', event.detail);
     });
-    inputChips.addEventListener('bdsChangeChips', () => {
-      console.log('Evento ChangeChips funcionando');
+    inputChips.addEventListener('bdsChangeChips', (event) => {
+      console.log('Evento ChangeChips funcionando, data:', event.detail);
     });
-    inputChips.addEventListener('bdsChange', () => {
-      console.log('Evento Change funcionando');
+    inputChips.addEventListener('bdsChange', (event) => {
+      console.log('Evento Change funcionando, data:', event.detail);
     });
     inputChips.addEventListener('bdsInputChipsFocus', () => {
       console.log('Evento Focus funcionando');
@@ -117,10 +117,10 @@ export const Events = () => {
       console.log('Evento InputChips funcionando');
     });
     inputChips.addEventListener('bdsExtendedQuantityInput', () => {
-      console.log('Evento Selected Change funcionando');
+      console.log('Evento Extended Quantity Input funcionando');
     });
-    inputChips.addEventListener('bdsSubmit', () => {
-      console.log('Evento Selected Change funcionando');
+    inputChips.addEventListener('bdsSubmit', (event) => {
+      console.log('Evento Submit funcionando, value:', event.detail);
     });
   });
   return (
@@ -180,6 +180,44 @@ export const Methods = () => {
         <bds-button onClick={() => btSetFocus('input-chips-example')}>Set Focus</bds-button>
         <bds-button onClick={() => btRemoveFocus('input-chips-example')}>Remove Focus</bds-button>
       </bds-grid>
+    </bds-grid>
+  );
+};
+
+export const BlurCreation = () => {
+  useEffect(() => {
+    const inputChips = document.getElementById('blur-creation-example');
+    inputChips.addEventListener('bdsBlur', (event) => {
+      console.log('bdsBlur event - chips:', event.detail);
+    });
+    inputChips.addEventListener('bdsSubmit', (event) => {
+      console.log('bdsSubmit event - data:', event.detail);
+    });
+    inputChips.addEventListener('bdsChangeChips', (event) => {
+      console.log('bdsChangeChips event - data:', event.detail);
+    });
+    inputChips.addEventListener('bdsChange', (event) => {
+      console.log('bdsChange event - data:', event.detail);
+    });
+  });
+  
+  return (
+    <bds-grid direction="column" gap="2">
+      <bds-typo variant="fs-16" bold="bold">BlurCreation Example</bds-typo>
+      <bds-typo variant="fs-14">Type text and click outside the input to create chips. Check console for event details.</bds-typo>
+      <bds-grid>
+        <bds-input-chips 
+          id="blur-creation-example" 
+          label="Email Input with Blur Creation" 
+          blur-creation="true"
+          placeholder="Type emails and click outside..."
+          type="email"
+        ></bds-input-chips>
+      </bds-grid>
+      <bds-typo variant="fs-12">
+        With blur-creation enabled, chips are created when the input loses focus (blur event). 
+        All events now correctly include the updated chip values.
+      </bds-typo>
     </bds-grid>
   );
 };

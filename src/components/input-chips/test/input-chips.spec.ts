@@ -557,6 +557,150 @@ describe('bds-input-chips', () => {
     expect(component.isPressed).toBe(false);
   });
 
+  it('should emit bdsBlur and bdsSubmit events with updated values when blur-creation is true', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips blur-creation value="newchip"></bds-input-chips>',
+    });
+
+    const component = page.rootInstance;
+    component.internalChips = ['existing1', 'existing2'];
+    let blurEventData = null;
+    let submitEventData = null;
+
+    page.root.addEventListener('bdsBlur', (event: CustomEvent) => {
+      blurEventData = event.detail;
+    });
+    page.root.addEventListener('bdsSubmit', (event: CustomEvent) => {
+      submitEventData = event.detail;
+    });
+
+    component.handleOnBlur();
+    
+    // Check that the new chip was added
+    expect(component.internalChips).toEqual(['existing1', 'existing2', 'newchip']);
+    expect(component.value).toBe('');
+    
+    // Check that events contain the updated chip values
+    expect(blurEventData).toEqual(['existing1', 'existing2', 'newchip']);
+    expect(submitEventData).toEqual({ value: ['existing1', 'existing2', 'newchip'] });
+  });
+
+  it('should emit bdsBlur with empty array when blur-creation is true but no value to add', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips blur-creation value=""></bds-input-chips>',
+    });
+
+    const component = page.rootInstance;
+    component.internalChips = [];
+    let blurEventData = null;
+    let submitEventCalled = false;
+
+    page.root.addEventListener('bdsBlur', (event: CustomEvent) => {
+      blurEventData = event.detail;
+    });
+    page.root.addEventListener('bdsSubmit', () => {
+      submitEventCalled = true;
+    });
+
+    component.handleOnBlur();
+    
+    // Check that no chip was added
+    expect(component.internalChips).toEqual([]);
+    expect(component.value).toBe('');
+    
+    // Check that bdsBlur was emitted with empty array
+    expect(blurEventData).toEqual([]);
+    // bdsSubmit should not be called when there are no chips
+    expect(submitEventCalled).toBe(false);
+  });
+
+  it('should emit bdsBlur with correct values when blur-creation is true and value has whitespace', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips blur-creation value="  validchip  "></bds-input-chips>',
+    });
+
+    const component = page.rootInstance;
+    component.internalChips = [];
+    let blurEventData = null;
+    let submitEventData = null;
+
+    page.root.addEventListener('bdsBlur', (event: CustomEvent) => {
+      blurEventData = event.detail;
+    });
+    page.root.addEventListener('bdsSubmit', (event: CustomEvent) => {
+      submitEventData = event.detail;
+    });
+
+    component.handleOnBlur();
+    
+    // Check that the chip was added - handleDelimiters will trim the value
+    expect(component.internalChips).toEqual(['validchip']);
+    expect(component.value).toBe('');
+    
+    // Check that events contain the updated values
+    expect(blurEventData).toEqual(['validchip']);
+    expect(submitEventData).toEqual({ value: ['validchip'] });
+  });
+
+  it('should emit bdsChangeChips event when blur-creation adds a chip', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips blur-creation value="newchip"></bds-input-chips>',
+    });
+
+    const component = page.rootInstance;
+    component.internalChips = ['existing1'];
+    let changeChipsEventData = null;
+    let changeEventData = null;
+
+    page.root.addEventListener('bdsChangeChips', (event: CustomEvent) => {
+      changeChipsEventData = event.detail;
+    });
+    page.root.addEventListener('bdsChange', (event: CustomEvent) => {
+      changeEventData = event.detail;
+    });
+
+    component.handleOnBlur();
+    
+    // Check that the new chip was added
+    expect(component.internalChips).toEqual(['existing1', 'newchip']);
+    
+    // Check that change events were emitted with correct data
+    expect(changeChipsEventData).toEqual({ data: ['existing1', 'newchip'], value: 'newchip' });
+    expect(changeEventData).toEqual({ data: ['existing1', 'newchip'], value: 'newchip' });
+  });
+
+  it('should not emit bdsChangeChips when blur-creation does not add a chip', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips blur-creation value=""></bds-input-chips>',
+    });
+
+    const component = page.rootInstance;
+    component.internalChips = ['existing1'];
+    let changeChipsEventCalled = false;
+    let changeEventCalled = false;
+
+    page.root.addEventListener('bdsChangeChips', () => {
+      changeChipsEventCalled = true;
+    });
+    page.root.addEventListener('bdsChange', () => {
+      changeEventCalled = true;
+    });
+
+    component.handleOnBlur();
+    
+    // Check that no new chip was added
+    expect(component.internalChips).toEqual(['existing1']);
+    
+    // Check that change events were not emitted
+    expect(changeChipsEventCalled).toBe(false);
+    expect(changeEventCalled).toBe(false);
+  });
+
   // Chip removal tests
   it('should remove specific chip by index', async () => {
     const page = await newSpecPage({
