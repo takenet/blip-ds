@@ -1,0 +1,2 @@
+import{r as t,h as s}from"./p-C3J6Z5OX.js";const d=":host{width:100%}";const e=class{constructor(s){t(this,s);this.align="flex-end"}render(){return s("bds-grid",{key:"4876073805454a16fd854ea5903be4e8592d14d1",xxs:"12",direction:"row",gap:"2",justifyContent:this.align},s("slot",{key:"dbfd35937fbf0c4b28dec8aab2116cbcc6dbcfaa"}))}};e.style=d;export{e as bds_card_footer};
+//# sourceMappingURL=p-5cbb6182.entry.js.map

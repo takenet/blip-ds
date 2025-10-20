@@ -1,0 +1,41 @@
+'use strict';
+
+var index = require('./index-D_zq0Z7d.js');
+
+const progressBarCss = ":host{display:block}.progress_bar{-webkit-box-sizing:border-box;box-sizing:border-box;position:relative;border-radius:32px;border:1px solid var(--color-content-disable, rgb(89, 89, 89));margin-bottom:4px}.progress_bar.size_small{height:8px}.progress_bar.size_small .bar_behind .progress{border-radius:1px}.progress_bar.size_default{height:16px}.progress_bar.size_default .bar_behind .progress{border-radius:2px}.progress_bar .bar_behind{position:absolute;inset:0.5px 1px 1px 0.5px;border-radius:16px;overflow:hidden}.progress_bar .bar_behind .progress{position:absolute;height:100%;-webkit-transition:all 0.3s;transition:all 0.3s;-webkit-transition-property:all;transition-property:all;-webkit-transition-duration:0.3s;transition-duration:0.3s;-webkit-transition-timing-function:ease;transition-timing-function:ease;-webkit-transition-delay:0s;transition-delay:0s;overflow:hidden}.progress_bar .bar_behind .progress.color_default{background-color:var(--color-extended-blue, rgb(25, 104, 240))}.progress_bar .bar_behind .progress.color_positive{background-color:var(--color-extended-green, rgb(53, 222, 144))}.progress_bar .bar_behind .progress.color_information{background-color:var(--color-extended-yellow, rgb(251, 207, 35))}.progress_bar .bar_behind .progress.color_warning{background-color:var(--color-extended-red, rgb(230, 15, 15))}.progress_bar .bar_behind .progress .loading{position:absolute;left:-16px;width:calc(100% + 16px);height:100%;background:rgb(255, 255, 255);background:-webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(75%, rgba(255, 255, 255, 0)), color-stop(75%, rgba(0, 0, 0, 0.26)));background:linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 75%, rgba(0, 0, 0, 0.26) 75%);background-size:4px;-webkit-transform:skewX(-15deg);transform:skewX(-15deg);-webkit-animation-name:load;animation-name:load;-webkit-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}.typo_progress{color:var(--color-content-default, rgb(40, 40, 40))}@-webkit-keyframes load{from{left:-16px}to{left:0}}@keyframes load{from{left:-16px}to{left:0}}";
+
+const BdsProgressBar = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        /**
+         * Percent, property to enter the progress bar status percentage value.
+         */
+        this.percent = 0;
+        /**
+         * Size, property to define size of component.
+         */
+        this.size = 'default';
+        /**
+         * Text, property to define status of component.
+         */
+        this.color = 'default';
+        /**
+         * Text, property to enable the bar info text.
+         */
+        this.text = '';
+        /**
+         * Data test is the prop to specifically test the component action object.
+         */
+        this.dataTest = null;
+    }
+    render() {
+        const styles = { width: `${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}%` };
+        return (index.h(index.Host, { key: '45260bbac205b7cefca95e995efdb19dc7cf0591' }, index.h("div", { key: '69bb68554d05b6469af65023032ffb1660f57fcd', class: { progress_bar: true, [`size_${this.size}`]: true }, "data-test": this.dataTest }, index.h("div", { key: '99397107698489eaa05b238de95feea5db0a1250', class: { bar_behind: true } }, index.h("div", { key: 'a02424dbec319b1fa284a15f5808b892b63e46b2', class: { progress: true, [`color_${this.color}`]: true }, style: styles }))), this.text && (index.h("div", { key: '4e0e00f2703d7f80c97ad65ad665b9d402d66945', class: { typo_progress: true } }, index.h("bds-typo", { key: '7c099b19eeeebfbd70dde18a594299d6666f4509', variant: "fs-14" }, this.text)))));
+    }
+};
+BdsProgressBar.style = progressBarCss;
+
+exports.bds_progress_bar = BdsProgressBar;
+//# sourceMappingURL=bds-progress-bar.entry.cjs.js.map
+
+//# sourceMappingURL=bds-progress-bar.cjs.entry.js.map
