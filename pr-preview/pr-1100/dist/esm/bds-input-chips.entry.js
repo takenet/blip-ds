@@ -134,6 +134,7 @@ const InputChips = class {
             this.bdsInputChipsInput.emit(ev);
         };
         this.keyPressWrapper = (event) => {
+            var _a;
             switch (event.key) {
                 case 'Enter':
                     this.handleDelimiters();
@@ -144,11 +145,15 @@ const InputChips = class {
                     break;
                 case 'Backspace':
                 case 'Delete':
-                    if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
+                    // Use nativeInput.value to check current input state instead of this.value
+                    // This ensures we're checking the actual input value at the time of keydown
+                    const currentValue = ((_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.value) || '';
+                    if (currentValue.length === 0 && this.internalChips.length) {
                         this.removeLastChip();
                         this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
                         this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
                     }
+                    // Otherwise, allow default browser behavior for character deletion
                     break;
             }
         };
@@ -382,7 +387,7 @@ const InputChips = class {
         const isPressed = this.isPressed && !this.disabled;
         // Set default maxHeight if not provided to prevent UI breaking
         const defaultMaxHeight = this.maxHeight || '80px';
-        return (h(Host, { key: '02f79ea658967807a3fa6cb5d8ca13a085683fac', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '649e393605dcb8234feb5d630993d9509a8746fd', class: {
+        return (h(Host, { key: '59cad1eb9ac2f46e8b8d9836c7f13f589841ee8b', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '9ded5251da6bd6f1dfe9fd4115f126d667ff38f8', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -390,7 +395,7 @@ const InputChips = class {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '64dfdd42e3d0d9f73c18fa34b562f037056ca05d', class: "input__container" }, this.renderLabel(), h("div", { key: '89225c3d468be28f514525fbe060f5cc4cb5a025', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: 'fd3f935d074cf8dd6610a3c4c999430531b7f290', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: 'ee920b84e605fda1c333ddf1b48372e8fa1791d2', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: 'e11abf98d6e67930faad94617c822e36f861cbeb', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: 'b309274b164b48671b2a2944c506a2747dabd3c7', name: "input-right" })), this.renderMessage()));
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '248f5fdd749259435bee42fd1f9d1cf896f48905', class: "input__container" }, this.renderLabel(), h("div", { key: 'b7b389aa6733a9922f8d414d852cbd7495023e7c', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: 'b60d1c8a5b74a8b18cd6db6640d4111ecd16074a', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: '4bd71775e14dae9ffc000e2190804c4fe7589f9b', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: '1d514a39031a29f23a55c1da77a71f33101b5369', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: 'ec299d447670bf8054114771b5dbeabf12df4d66', name: "input-right" })), this.renderMessage()));
     }
     static get watchers() { return {
         "chips": ["valueChanged"],
