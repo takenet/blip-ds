@@ -25,16 +25,28 @@ const Image = class {
     if (this.src) {
       this.imageHasLoading = true;
       try {
-        const response = await fetch(this.src);
-        if (response.ok) {
-          const blob = await response.blob();
-          const objectURL = URL.createObjectURL(blob);
-          this.currentSrc = objectURL;
+        // Check if src is a data URL
+        if (this.src.startsWith('data:')) {
+          // Data URLs don't need to be fetched - use directly
+          // Use Promise.resolve to keep it async and avoid state changes during render
+          await Promise.resolve();
+          this.currentSrc = this.src;
           this.imageLoaded = true;
           this.imageHasLoading = false;
         }
         else {
-          this.loadError = true;
+          // Regular URLs need to be fetched
+          const response = await fetch(this.src);
+          if (response.ok) {
+            const blob = await response.blob();
+            const objectURL = URL.createObjectURL(blob);
+            this.currentSrc = objectURL;
+            this.imageLoaded = true;
+            this.imageHasLoading = false;
+          }
+          else {
+            this.loadError = true;
+          }
         }
       }
       catch {
