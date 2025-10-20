@@ -123,7 +123,7 @@ export class InputChips {
             this.bdsInputChipsInput.emit(ev);
         };
         this.keyPressWrapper = (event) => {
-            var _a;
+            var _a, _b;
             switch (event.key) {
                 case 'Enter':
                     this.handleDelimiters();
@@ -133,16 +133,36 @@ export class InputChips {
                     this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
                     break;
                 case 'Backspace':
-                case 'Delete':
                     // Use nativeInput.value to check current input state instead of this.value
                     // This ensures we're checking the actual input value at the time of keydown
                     const currentValue = ((_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.value) || '';
                     if (currentValue.length === 0 && this.internalChips.length) {
+                        // Move the last chip content to the input for editing
+                        const lastChip = this.getLastChip();
+                        this.removeLastChip();
+                        this.value = lastChip;
+                        // Update the native input value to reflect the change
+                        if (this.nativeInput) {
+                            this.nativeInput.value = lastChip;
+                            // Set cursor to the end of the input
+                            setTimeout(() => {
+                                this.nativeInput.setSelectionRange(lastChip.length, lastChip.length);
+                            }, 0);
+                        }
+                        this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
+                        this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
+                        // Prevent default backspace behavior since we handled it
+                        event.preventDefault();
+                    }
+                    break;
+                case 'Delete':
+                    // Delete key still removes the chip without editing
+                    const currentDeleteValue = ((_b = this.nativeInput) === null || _b === void 0 ? void 0 : _b.value) || '';
+                    if (currentDeleteValue.length === 0 && this.internalChips.length) {
                         this.removeLastChip();
                         this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
                         this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
                     }
-                    // Otherwise, allow default browser behavior for character deletion
                     break;
             }
         };
@@ -376,7 +396,7 @@ export class InputChips {
         const isPressed = this.isPressed && !this.disabled;
         // Set default maxHeight if not provided to prevent UI breaking
         const defaultMaxHeight = this.maxHeight || '80px';
-        return (h(Host, { key: '59cad1eb9ac2f46e8b8d9836c7f13f589841ee8b', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '9ded5251da6bd6f1dfe9fd4115f126d667ff38f8', class: {
+        return (h(Host, { key: 'ae5fdf3d95807c83b9b5e81eeef4782cac9316af', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '8ca2526c4353082c3d227f01d020c3908d126800', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -384,7 +404,7 @@ export class InputChips {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '248f5fdd749259435bee42fd1f9d1cf896f48905', class: "input__container" }, this.renderLabel(), h("div", { key: 'b7b389aa6733a9922f8d414d852cbd7495023e7c', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: 'b60d1c8a5b74a8b18cd6db6640d4111ecd16074a', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: '4bd71775e14dae9ffc000e2190804c4fe7589f9b', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: '1d514a39031a29f23a55c1da77a71f33101b5369', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: 'ec299d447670bf8054114771b5dbeabf12df4d66', name: "input-right" })), this.renderMessage()));
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '23b349e9cdb6c3035ff7b4d62876beb1b0733515', class: "input__container" }, this.renderLabel(), h("div", { key: '132f0e710d9773084cb88cc2f647e958b8320f2f', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: 'ef690b5a9367aa773d65e11690a98947d723d9f0', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: '6747088cfec73602069b661d29633398e4eff7f2', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: '3110be0f222d16ed634bb41dd27ad4cc7b1c984c', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: 'b85a812ba1f675c4090f60a1428449190bb8812f', name: "input-right" })), this.renderMessage()));
     }
     static get is() { return "bds-input-chips"; }
     static get encapsulation() { return "shadow"; }
