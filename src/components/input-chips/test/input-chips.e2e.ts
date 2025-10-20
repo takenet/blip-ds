@@ -177,7 +177,7 @@ describe('bds-input-chips e2e tests', () => {
       expect(value).toBe('test1');
     });
 
-    it('should remove last chip only when input is empty and backspace is pressed', async () => {
+    it('should move last chip to input for editing when backspace is pressed on empty input', async () => {
       page = await newE2EPage({
         html: `<bds-input-chips chips='["chip1", "chip2"]'></bds-input-chips>`,
       });
@@ -193,7 +193,7 @@ describe('bds-input-chips e2e tests', () => {
       let chips = await page.findAll('bds-input-chips >>> bds-chip-clickable');
       expect(chips.length).toBe(2);
       
-      // Press backspace - should remove last chip
+      // Press backspace - should move last chip to input
       await inputElement.focus();
       await page.keyboard.press('Backspace');
       await page.waitForChanges();
@@ -201,6 +201,10 @@ describe('bds-input-chips e2e tests', () => {
       // Should have 1 chip now
       chips = await page.findAll('bds-input-chips >>> bds-chip-clickable');
       expect(chips.length).toBe(1);
+      
+      // Input should now contain the removed chip's content
+      value = await inputElement.getProperty('value');
+      expect(value).toBe('chip2');
     });
 
     it('should NOT remove chip when backspace is pressed while typing', async () => {

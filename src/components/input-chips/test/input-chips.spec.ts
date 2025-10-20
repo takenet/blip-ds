@@ -357,7 +357,7 @@ describe('bds-input-chips', () => {
     expect(changeEmitted).toBe(true);
   });
 
-  it('should handle keypress Backspace to remove last chip', async () => {
+  it('should handle keypress Backspace to move last chip to input for editing', async () => {
     const page = await newSpecPage({
       components: [InputChips],
       html: '<bds-input-chips value=""></bds-input-chips>',
@@ -366,9 +366,10 @@ describe('bds-input-chips', () => {
     const component = page.rootInstance;
     component.internalChips = ['chip1', 'chip2'];
     
-    // Mock native input with empty value
+    // Mock native input with empty value and setSelectionRange method
     const mockInput = {
-      value: ''
+      value: '',
+      setSelectionRange: jest.fn()
     };
     component.nativeInput = mockInput as any;
     
@@ -378,12 +379,19 @@ describe('bds-input-chips', () => {
     });
 
     const backspaceEvent = {
-      key: 'Backspace'
-    } as KeyboardEvent;
+      key: 'Backspace',
+      preventDefault: jest.fn()
+    } as any;
 
     component.keyPressWrapper(backspaceEvent);
     
+    // Chip should be removed
     expect(component.internalChips).toEqual(['chip1']);
+    // Value should be set to the removed chip's content
+    expect(component.value).toBe('chip2');
+    expect(mockInput.value).toBe('chip2');
+    // Should prevent default behavior
+    expect(backspaceEvent.preventDefault).toHaveBeenCalled();
     expect(changeEmitted).toBe(true);
   });
 
@@ -437,7 +445,33 @@ describe('bds-input-chips', () => {
     expect(component.internalChips).toEqual(['chip1']);
   });
 
-  it('should handle Delete key same as Backspace when input has value', async () => {
+  it('should handle Delete key to remove last chip without editing', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips value=""></bds-input-chips>',
+    });
+
+    const component = page.rootInstance;
+    component.internalChips = ['chip1', 'chip2'];
+    
+    // Mock native input with empty value
+    const mockInput = {
+      value: ''
+    };
+    component.nativeInput = mockInput as any;
+
+    const deleteEvent = {
+      key: 'Delete'
+    } as KeyboardEvent;
+
+    component.keyPressWrapper(deleteEvent);
+    
+    // Should remove chip without moving to input
+    expect(component.internalChips).toEqual(['chip1']);
+    expect(component.value).toBe('');
+  });
+
+  it('should not remove chips with Delete when input has value', async () => {
     const page = await newSpecPage({
       components: [InputChips],
       html: '<bds-input-chips value="typing"></bds-input-chips>',
