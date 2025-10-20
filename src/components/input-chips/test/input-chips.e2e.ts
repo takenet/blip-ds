@@ -146,4 +146,91 @@ describe('bds-input-chips e2e tests', () => {
       expect(focusedElement).toBe('BDS-INPUT-CHIPS');
     });
   });
+
+  describe('Character deletion while typing', () => {
+    it('should allow deleting characters while typing a new chip', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-chips label="Tags" placeholder="Type here"></bds-input-chips>`,
+      });
+
+      const inputElement = await page.find('bds-input-chips >>> input');
+      
+      // Type some text
+      await inputElement.type('test123');
+      await page.waitForChanges();
+      
+      let value = await inputElement.getProperty('value');
+      expect(value).toBe('test123');
+      
+      // Press backspace to delete '3'
+      await page.keyboard.press('Backspace');
+      await page.waitForChanges();
+      
+      value = await inputElement.getProperty('value');
+      expect(value).toBe('test12');
+      
+      // Press backspace again to delete '2'
+      await page.keyboard.press('Backspace');
+      await page.waitForChanges();
+      
+      value = await inputElement.getProperty('value');
+      expect(value).toBe('test1');
+    });
+
+    it('should remove last chip only when input is empty and backspace is pressed', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-chips chips='["chip1", "chip2"]'></bds-input-chips>`,
+      });
+
+      const inputChips = await page.find('bds-input-chips');
+      const inputElement = await page.find('bds-input-chips >>> input');
+      
+      // Input should be empty initially
+      let value = await inputElement.getProperty('value');
+      expect(value).toBe('');
+      
+      // Verify we have 2 chips
+      let chips = await page.findAll('bds-input-chips >>> bds-chip-clickable');
+      expect(chips.length).toBe(2);
+      
+      // Press backspace - should remove last chip
+      await inputElement.focus();
+      await page.keyboard.press('Backspace');
+      await page.waitForChanges();
+      
+      // Should have 1 chip now
+      chips = await page.findAll('bds-input-chips >>> bds-chip-clickable');
+      expect(chips.length).toBe(1);
+    });
+
+    it('should NOT remove chip when backspace is pressed while typing', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-chips chips='["chip1"]'></bds-input-chips>`,
+      });
+
+      const inputElement = await page.find('bds-input-chips >>> input');
+      
+      // Type some text
+      await inputElement.type('newchip');
+      await page.waitForChanges();
+      
+      let value = await inputElement.getProperty('value');
+      expect(value).toBe('newchip');
+      
+      // Verify we still have 1 chip
+      let chips = await page.findAll('bds-input-chips >>> bds-chip-clickable');
+      expect(chips.length).toBe(1);
+      
+      // Press backspace - should delete 'p', NOT remove chip
+      await page.keyboard.press('Backspace');
+      await page.waitForChanges();
+      
+      value = await inputElement.getProperty('value');
+      expect(value).toBe('newchi');
+      
+      // Should still have 1 chip
+      chips = await page.findAll('bds-input-chips >>> bds-chip-clickable');
+      expect(chips.length).toBe(1);
+    });
+  });
 });

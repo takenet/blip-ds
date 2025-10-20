@@ -327,11 +327,15 @@ export class InputChips {
         break;
       case 'Backspace':
       case 'Delete':
-        if ((this.value === null || this.value.length <= 0) && this.internalChips.length) {
+        // Use nativeInput.value to check current input state instead of this.value
+        // This ensures we're checking the actual input value at the time of keydown
+        const currentValue = this.nativeInput?.value || '';
+        if (currentValue.length === 0 && this.internalChips.length) {
           this.removeLastChip();
           this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
           this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
         }
+        // Otherwise, allow default browser behavior for character deletion
         break;
     }
   };
