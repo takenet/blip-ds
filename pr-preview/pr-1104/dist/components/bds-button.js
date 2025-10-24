@@ -1,4 +1,4 @@
-import { B as Button, d as defineCustomElement$1 } from './p-jm0NsNPy.js';
+import { B as Button, d as defineCustomElement$1 } from './p-DCrsosJS.js';
 
 const BdsButton = Button;
 const defineCustomElement = defineCustomElement$1;
