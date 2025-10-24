@@ -1,1 +1,0 @@
-{"version":3,"file":"avatar-group-interface.js","sourceRoot":"","sources":["../../../../src/components/avatar-group/avatar-group-interface.ts"],"names":[],"mappings":"","sourcesContent":["/* eslint-disable @typescript-eslint/no-explicit-any */\nexport interface AvatarDataList {\n  id: string;\n  name: string;\n  thumbnail: string;\n}\n"]}
