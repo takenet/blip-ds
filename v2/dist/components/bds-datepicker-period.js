@@ -1,4 +1,4 @@
-import { B as BdsdatepickerPeriod, d as defineCustomElement$1 } from './p-Ca1JS-k4.js';
+import { B as BdsdatepickerPeriod, d as defineCustomElement$1 } from './p-ByD-StC1.js';
 
 const BdsDatepickerPeriod = BdsdatepickerPeriod;
 const defineCustomElement = defineCustomElement$1;

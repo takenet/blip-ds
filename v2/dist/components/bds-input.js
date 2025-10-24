@@ -1,4 +1,4 @@
-import { I as Input, d as defineCustomElement$1 } from './p-UruAZJ69.js';
+import { I as Input, d as defineCustomElement$1 } from './p-BcA_sKHc.js';
 
 const BdsInput = Input;
 const defineCustomElement = defineCustomElement$1;

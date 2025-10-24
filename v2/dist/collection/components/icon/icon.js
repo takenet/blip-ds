@@ -89,7 +89,7 @@ export class Icon {
     loadIcon() {
         if (!this.name)
             return;
-        if (Build.isBrowser && this.isVisible) {
+        if (Build.isBrowser && (!this.lazy || this.isVisible)) {
             this.setSvgContent();
         }
         if (!this.ariaLabel) {
@@ -100,7 +100,7 @@ export class Icon {
         }
     }
     render() {
-        return (h(Host, { key: '138b5e71a228c54fa1f70b645cb138840c727a9d', role: "img", class: {
+        return (h(Host, { key: 'fcd6cdf1aff860d05f2ca886f50e421b4f0f49dd', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (h("div", { class: {

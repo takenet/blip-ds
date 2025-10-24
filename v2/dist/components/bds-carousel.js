@@ -1,8 +1,8 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
 import { a as getItems, b as getHighestItem, c as gapChanged } from './p-BNEKIkjk.js';
-import { d as defineCustomElement$7 } from './p-jm0NsNPy.js';
+import { d as defineCustomElement$7 } from './p-DCrsosJS.js';
 import { d as defineCustomElement$6 } from './p-mCuNr11T.js';
-import { d as defineCustomElement$5 } from './p-sqTSDoSs.js';
+import { d as defineCustomElement$5 } from './p-BOV1BOH3.js';
 import { d as defineCustomElement$4 } from './p-DOQirQsC.js';
 import { d as defineCustomElement$3 } from './p-Cb-vaBHq.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';

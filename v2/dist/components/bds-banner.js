@@ -1,4 +1,4 @@
-import { B as Banner, d as defineCustomElement$1 } from './p-YhOy__DI.js';
+import { B as Banner, d as defineCustomElement$1 } from './p-D5f83JP5.js';
 
 const BdsBanner = Banner;
 const defineCustomElement = defineCustomElement$1;
