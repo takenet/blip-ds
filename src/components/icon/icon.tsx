@@ -121,7 +121,7 @@ export class Icon {
   loadIcon(): void {
     if (!this.name) return;
 
-    if (Build.isBrowser && this.isVisible) {
+    if (Build.isBrowser && (!this.lazy || this.isVisible)) {
       this.setSvgContent();
     }
 

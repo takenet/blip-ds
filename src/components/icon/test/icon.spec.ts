@@ -563,7 +563,32 @@ describe('bds-icon', () => {
   });
 
   describe('Error Handling', () => {
-    it('should not load content when not visible in browser', async () => {
+    it('should not load content when lazy loading is enabled and not visible', async () => {
+      const page = await newSpecPage({
+        components: [Icon],
+        html: `<bds-icon name="edit" lazy="true"></bds-icon>`,
+        supportsShadowDom: false,
+        autoApplyChanges: false,
+      });
+
+      // Set component as not visible but browser is available
+      (page.rootInstance as any).isVisible = false;
+      (Build as any).isBrowser = true;
+      
+      // Reset svgContent to ensure it starts as undefined
+      (page.rootInstance as any).svgContent = undefined;
+      
+      page.rootInstance.loadIcon();
+
+      // Since loadIcon checks lazy AND isVisible, 
+      // setSvgContent should not be called when lazy is true and isVisible is false
+      expect(page.rootInstance.svgContent).toBeUndefined();
+      
+      // But ariaLabel should still be set since that happens regardless of visibility
+      expect(page.rootInstance.ariaLabel).toBe('edit');
+    });
+
+    it('should load content immediately when lazy loading is disabled', async () => {
       const page = await newSpecPage({
         components: [Icon],
         html: `<bds-icon name="edit"></bds-icon>`,
@@ -580,11 +605,10 @@ describe('bds-icon', () => {
       
       page.rootInstance.loadIcon();
 
-      // Since loadIcon checks both Build.isBrowser AND isVisible, 
-      // setSvgContent should not be called when isVisible is false
-      expect(page.rootInstance.svgContent).toBeUndefined();
+      // Since lazy is false (default), setSvgContent should be called even when isVisible is false
+      expect(page.rootInstance.svgContent).toBeDefined();
       
-      // But ariaLabel should still be set since that happens regardless of visibility
+      // ariaLabel should also be set
       expect(page.rootInstance.ariaLabel).toBe('edit');
     });
 
