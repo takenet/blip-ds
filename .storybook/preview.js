@@ -39,7 +39,7 @@ export const parameters = {
   },
   layout: 'centered',
   backgrounds: {
-    disable: true,
+    disabled: true,
   },
 };
 
