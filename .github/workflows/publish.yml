@@ -25,9 +25,10 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      # --legacy-peer-deps temporarily added until storybook MCP addon is supported by latest storybook version
       - name: NPM Install, build and test
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm run test
           npm run build
           npm run build:react

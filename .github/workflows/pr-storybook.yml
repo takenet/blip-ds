@@ -30,10 +30,11 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      # --legacy-peer-deps temporarily added until storybook MCP addon is supported by latest storybook version
       - name: NPM Install and build
         if: github.event.action != 'closed'
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

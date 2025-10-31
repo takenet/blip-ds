@@ -7,7 +7,11 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-docs',
     'storybook/actions',
+    '@storybook/addon-mcp'
   ],
+  features: {
+    experimentalComponentsManifest: true,
+  },
   typescript: {
     reactDocgen: false,
     skipBabel: true,
