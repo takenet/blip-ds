@@ -1,7 +1,7 @@
 export const esTerms = [
     {
-        conclude: 'Concluir',
-        from: 'En',
+        conclude: 'Finalizar',
+        from: 'Desde',
         reset: 'Reiniciar',
         setTheDate: 'Establecer la fecha',
         to: 'Hasta',
@@ -13,7 +13,7 @@ export const esMonths = [
         february: 'Febrero',
         march: 'Marzo',
         april: 'Abril',
-        may: 'Puede',
+        may: 'Mayo',
         june: 'Junio',
         july: 'Julio',
         august: 'Agosto',
@@ -26,10 +26,10 @@ export const esMonths = [
 export const esDays = [
     {
         sunday: 'Domingo',
-        monday: 'Segundo',
+        monday: 'Lunes',
         tuesday: 'Martes',
-        wednesday: 'Cuatro',
-        thursday: 'Quinto',
+        wednesday: 'Miércoles',
+        thursday: 'Jueves',
         friday: 'Viernes',
         saturday: 'Sábado',
     },
@@ -37,8 +37,8 @@ export const esDays = [
 export const esMessages = [
     {
         dateFormatIsIncorrect: 'El formato de fecha es incorrecto',
-        betweenPeriodOf: 'Seleccione una fecha entre el período de',
-        endDateIsEmpty: 'Seleccione la fecha de finalización',
+        betweenPeriodOf: 'Selecciona una fecha entre el período de',
+        endDateIsEmpty: 'Selecciona la fecha de finalización',
     },
 ];
 //# sourceMappingURL=es_ES.js.map

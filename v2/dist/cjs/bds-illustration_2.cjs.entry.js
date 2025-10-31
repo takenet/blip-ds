@@ -3,7 +3,7 @@
 var index = require('./index-D_zq0Z7d.js');
 
 const dependencies = {
-	"blip-tokens": "^1.94.0"};
+	"blip-tokens": "^1.95.0"};
 var packageJson = {
 	dependencies: dependencies};
 

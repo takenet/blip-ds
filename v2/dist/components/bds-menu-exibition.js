@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$4 } from './p-D0GPtLzG.js';
-import { d as defineCustomElement$3 } from './p-BOV1BOH3.js';
+import { d as defineCustomElement$4 } from './p-MC00Y-D8.js';
+import { d as defineCustomElement$3 } from './p-19uyXyEx.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 const menuExibitionCss = ".menuexibition{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:16px}.menuexibition__disabled{opacity:0.5;cursor:no-drop}.menuexibition .avatar-item{display:block;margin-right:8px}.menuexibition .content-item{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.menuexibition .content-item .title-item{color:var(--color-content-default, rgb(40, 40, 40))}.menuexibition .content-item .subtitle-item{color:var(--color-content-disable, rgb(89, 89, 89))}.menuexibition .content-item .description-item{color:var(--color-content-default, rgb(40, 40, 40))}";

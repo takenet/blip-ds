@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h, a as Host } from './index.js';
-import { d as defineCustomElement$3 } from './p-BOV1BOH3.js';
+import { d as defineCustomElement$3 } from './p-19uyXyEx.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 const warningCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.warning__body{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;width:100%;max-width:100%;max-height:100%;background-color:#ededed;border-radius:8px;padding:16px}.warning__icon{color:#f6a721}.warning__message{color:#505f79;margin-left:8px}";
