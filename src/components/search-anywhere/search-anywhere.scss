@@ -1,0 +1,243 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.search-trigger {
+  width: 100%;
+  cursor: pointer;
+
+  bds-input {
+    cursor: pointer;
+    pointer-events: none;
+
+    ::part(native) {
+      cursor: pointer;
+    }
+  }
+
+  .keyboard-shortcut {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    background-color: $color-surface-2;
+    border-radius: 4px;
+    height: 24px;
+    border: 1px solid $color-border-1;
+
+    bds-typo {
+      color: $color-content-ghost;
+    }
+  }
+}
+
+// Modal overlay
+.search-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+  z-index: $zindex-modal-overlay;
+  backdrop-filter: blur(2px);
+}
+
+// Modal container
+.search-modal {
+  background-color: $color-surface-0;
+  border-radius: $border-radius;
+  box-shadow: $shadow-box;
+  width: 90%;
+  max-width: 640px;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid $color-border-2;
+}
+
+// Header with search input
+.search-modal-header {
+  padding: 16px;
+  border-bottom: 1px solid $color-border-1;
+
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .search-icon {
+      color: $color-content-ghost;
+      flex-shrink: 0;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: $fs-16;
+      font-family: $font-family;
+      color: $color-content-default;
+      padding: 0;
+
+      &::placeholder {
+        color: $color-content-ghost;
+      }
+    }
+  }
+}
+
+// Results container
+.search-modal-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+
+  .search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: $color-surface-1;
+    }
+
+    &--selected {
+      background-color: $color-surface-2;
+      border-color: $color-primary;
+    }
+
+    .search-result-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: $border-radius;
+      background-color: $color-surface-1;
+
+      bds-icon {
+        color: $color-content-default;
+      }
+    }
+
+    .search-result-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .search-result-title {
+        color: $color-content-default;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .search-result-description {
+        color: $color-content-ghost;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .search-result-hint {
+      flex-shrink: 0;
+      min-width: 80px;
+      text-align: right;
+
+      .keyboard-hint {
+        color: $color-content-ghost;
+      }
+    }
+  }
+
+  .no-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+
+    bds-typo {
+      color: $color-content-ghost;
+    }
+  }
+}
+
+// Footer with keyboard hints
+.search-modal-footer {
+  padding: 12px 16px;
+  border-top: 1px solid $color-border-1;
+  background-color: $color-surface-1;
+
+  .keyboard-hints {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    .hint {
+      display: flex;
+      align-items: center;
+
+      bds-typo {
+        color: $color-content-ghost;
+      }
+    }
+  }
+}
+
+// Scrollbar styling
+.search-modal-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-modal-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.search-modal-results::-webkit-scrollbar-thumb {
+  background: $color-border-2;
+  border-radius: 4px;
+}
+
+.search-modal-results::-webkit-scrollbar-thumb:hover {
+  background: $color-border-3;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .search-modal {
+    width: 95%;
+    max-height: 80vh;
+  }
+
+  .search-modal-overlay {
+    padding-top: 5vh;
+  }
+
+  .search-result-hint {
+    display: none;
+  }
+
+  .keyboard-hints {
+    justify-content: center !important;
+  }
+}
