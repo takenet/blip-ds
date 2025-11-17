@@ -1,6 +1,7 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Controls, Source } from '@storybook/addon-docs/blocks';
+import * as SearchStories from './search-anywhere.stories';
 
-<Meta title="Components/Search" />
+<Meta title="Components/SearchAnywhere" />
 
 # Search Anywhere
 
@@ -22,64 +23,39 @@ A global navigation system that provides a fast, keyboard-friendly search experi
 - **Command Palette**: Implement a command palette style interface
 - **Large Applications**: When you have many pages/features and need better discoverability
 
-## Basic Usage
+## Visão Geral
 
-```jsx
-import { BdsSearchAnywhere } from 'blip-ds-react';
+<Canvas of={SearchStories.Properties}></Canvas>
 
-const options = [
-  {
-    value: '1',
-    title: 'Dashboard',
-    description: 'View your analytics and metrics',
-    icon: 'chart',
-    url: '/dashboard'
-  },
-  {
-    value: '2',
-    title: 'Settings',
-    description: 'Configure your application',
-    icon: 'settings',
-    url: '/settings'
-  }
-];
+<br></br>
 
-function App() {
-  return (
-    <BdsSearchAnywhere 
-      options={options}
-      placeholder="Search for pages..."
-      triggerPlaceholder="Search or press Ctrl+K"
-    />
-  );
-}
-```
+As seguintes propriedades são compartilhadas pelo Search Anywhere.
 
-## Props
+<Controls />
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `options` | `SearchAnywhereOption[] \| string` | `[]` | Options to display in search results |
-| `placeholder` | `string` | `'Search...'` | Placeholder text for the search input |
-| `triggerPlaceholder` | `string` | `'Search or press Ctrl+K'` | Placeholder for the trigger input |
-| `showShortcut` | `boolean` | `true` | Show keyboard shortcut hint on trigger |
-| `maxResults` | `number` | `10` | Maximum number of results to display |
+<br></br>
 
-## Events
+## Eventos
 
-| Event | Detail | Description |
-|-------|--------|-------------|
-| `bdsSearchChange` | `{ searchText: string }` | Emitted when search text changes |
-| `bdsSearchSelect` | `{ option: SearchAnywhereOption, newTab: boolean }` | Emitted when an option is selected |
-| `bdsSearchOpen` | - | Emitted when modal opens |
-| `bdsSearchClose` | - | Emitted when modal closes |
+Exemplos de eventos do Search Anywhere.
 
-## Methods
+<Source of={SearchStories.Events} />
 
-| Method | Returns | Description |
-|--------|---------|-------------|
-| `open()` | `Promise<void>` | Opens the search modal |
-| `close()` | `Promise<void>` | Closes the search modal |
+<br></br>
+
+## Métodos
+
+Exemplos de métodos do Search Anywhere.
+
+<Source of={SearchStories.Methods} />
+
+<br></br>
+
+## Usando no React
+
+<Source of={SearchStories.FrameworkReact} />
+
+<br></br>
 
 ## SearchAnywhereOption Interface
 
