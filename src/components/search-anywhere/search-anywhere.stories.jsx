@@ -3,7 +3,7 @@ import DocumentationTemplate from './search-anywhere.mdx';
 import { BdsSearchAnywhere, BdsTypo, BdsGrid } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Search Anywhere',
+  title: 'Components/Search',
   parameters: {
     docs: {
       page: DocumentationTemplate,
@@ -302,14 +302,49 @@ export const DynamicFiltering = () => {
 export const StorybookComponentsSearch = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
 
+  // Helper function to get the correct base URL for Storybook navigation
+  const getStorybookBaseUrl = () => {
+    const currentUrl = window.location.href;
+    
+    // Check if we're in PR preview
+    if (currentUrl.includes('/pr-preview/')) {
+      const match = currentUrl.match(/(.*\/pr-preview\/pr-\d+\/)/);
+      return match ? match[1] : '';
+    }
+    
+    // Check if we're in v2 branch
+    if (currentUrl.includes('/blip-ds/v2/')) {
+      const match = currentUrl.match(/(.*\/blip-ds\/v2\/)/);
+      return match ? match[1] : '';
+    }
+    
+    // Check if we're in main/production
+    if (currentUrl.includes('/blip-ds/')) {
+      const match = currentUrl.match(/(.*\/blip-ds\/)/);
+      return match ? match[1] : '';
+    }
+    
+    // Local development or other scenarios
+    return '';
+  };
+
   useEffect(() => {
     const searchAnywhere = document.getElementById('search-anywhere-storybook');
     if (searchAnywhere) {
       searchAnywhere.addEventListener('bdsSearchSelect', (event) => {
         setSelectedComponent(event.detail.option);
         console.log('Selected component:', event.detail.option);
-        // In a real scenario, this would navigate to the component
-        // window.location.href = event.detail.option.url;
+        
+        // Navigate to the component page
+        const baseUrl = getStorybookBaseUrl();
+        const targetUrl = event.detail.option.url;
+        const fullUrl = baseUrl ? `${baseUrl}${targetUrl.replace(/^\/\?/, '?')}` : targetUrl;
+        
+        if (event.detail.newTab) {
+          window.open(fullUrl, '_blank');
+        } else {
+          window.location.href = fullUrl;
+        }
       });
     }
   }, []);
