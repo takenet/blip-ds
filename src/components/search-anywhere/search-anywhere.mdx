@@ -3,114 +3,114 @@ import * as SearchStories from './search-anywhere.stories';
 
 # Search Anywhere
 
-A global navigation system that provides a fast, keyboard-friendly search experience similar to Notion or Linear. Users can quickly navigate through any page or item using the search modal.
+Um sistema de navegação global que fornece uma experiência de busca rápida e amigável ao teclado, semelhante ao Notion ou Linear. Os usuários podem navegar rapidamente por qualquer página ou item usando o modal de busca.
 
-## Features
+## Funcionalidades
 
-- **Keyboard Shortcuts**: Press `Ctrl+K` (or `⌘K` on Mac) to open the search modal
-- **Keyboard Navigation**: Navigate results with ↑↓ arrow keys, select with Enter
-- **Fast Search**: Real-time filtering of results as you type
-- **Flexible**: Supports custom options with title, description, icon, URL, and metadata
-- **Events**: Emits events for search changes and option selection
-- **Accessible**: Fully keyboard accessible with WCAG AA compliance
+- **Atalhos de Teclado**: Pressione `Ctrl+K` (ou `⌘K` no Mac) para abrir o modal de busca
+- **Navegação por Teclado**: Navegue pelos resultados com as setas ↑↓, selecione com Enter
+- **Busca Rápida**: Filtragem em tempo real dos resultados conforme você digita
+- **Flexível**: Suporta opções personalizadas com título, descrição, ícone, URL e metadados
+- **Eventos**: Emite eventos para mudanças de busca e seleção de opções
+- **Acessível**: Totalmente acessível por teclado com conformidade WCAG AA
 
-## When to Use
+## Quando Usar
 
-- **Global Navigation**: Provide a universal search/navigation experience across your application
-- **Quick Access**: Allow users to quickly jump to any page or feature
-- **Command Palette**: Implement a command palette style interface
-- **Large Applications**: When you have many pages/features and need better discoverability
+- **Navegação Global**: Fornecer uma experiência de busca/navegação universal em toda a aplicação
+- **Acesso Rápido**: Permitir que os usuários pulem rapidamente para qualquer página ou funcionalidade
+- **Paleta de Comandos**: Implementar uma interface estilo paleta de comandos
+- **Aplicações Grandes**: Quando você tem muitas páginas/funcionalidades e precisa de melhor descoberta
 
-## Overview
+## Visão Geral
 
-Here's a basic example of the Search Anywhere component. Click the input or press `Ctrl+K` to open the search modal.
+Aqui está um exemplo básico do componente Search Anywhere. Clique no campo ou pressione `Ctrl+K` para abrir o modal de busca.
 
-<Canvas of={SearchStories.Properties} story={{ height: '600px' }}></Canvas>
+<Canvas of={SearchStories.Properties} story={{ height: '800px' }}></Canvas>
 
 <Meta isTemplate />
 
 <br></br>
 
-The following properties are available for the Search Anywhere component.
+As seguintes propriedades estão disponíveis para o componente Search Anywhere.
 
 <Controls />
 
 <br></br>
 
-## Dynamic Filtering
+## Filtragem Dinâmica
 
-Example showing how to dynamically filter options based on search input.
+Exemplo mostrando como filtrar dinamicamente as opções com base na entrada de busca.
 
 <Canvas of={SearchStories.DynamicFiltering}></Canvas>
 
 <br></br>
 
-## Events
+## Eventos
 
-Examples of Search Anywhere events.
+Exemplos de eventos do Search Anywhere.
 
 <Canvas of={SearchStories.Events}></Canvas>
 
 <br></br>
 
-## Methods
+## Métodos
 
-Examples of Search Anywhere methods.
+Exemplos de métodos do Search Anywhere.
 
 <Canvas of={SearchStories.Methods}></Canvas>
 
 <br></br>
 
-## Variations
+## Variações
 
-### Without Icons
+### Sem Ícones
 
 <Canvas of={SearchStories.WithoutIcons}></Canvas>
 
 <br></br>
 
-### Without Descriptions
+### Sem Descrições
 
 <Canvas of={SearchStories.WithoutDescriptions}></Canvas>
 
 <br></br>
 
-### Minimal Options
+### Opções Mínimas
 
 <Canvas of={SearchStories.MinimalOptions}></Canvas>
 
 <br></br>
 
-## Using in React
+## Usando no React
 
 <Canvas of={SearchStories.FrameworkReact}></Canvas>
 
 <br></br>
 
-## SearchAnywhereOption Interface
+## Interface SearchAnywhereOption
 
 ```typescript
 interface SearchAnywhereOption {
-  value: string;           // Unique identifier
-  title: string;           // Main text displayed
-  description?: string;    // Secondary text (optional)
-  icon?: string;          // Icon name from bds-icon (optional)
-  url?: string;           // URL for navigation (optional)
-  metadata?: any;         // Custom data (optional)
+  value: string;           // Identificador único
+  title: string;           // Texto principal exibido
+  description?: string;    // Texto secundário (opcional)
+  icon?: string;          // Nome do ícone do bds-icon (opcional)
+  url?: string;           // URL para navegação (opcional)
+  metadata?: any;         // Dados personalizados (opcional)
 }
 ```
 
-## Keyboard Shortcuts
+## Atalhos de Teclado
 
-- `Ctrl+K` or `⌘K`: Open search modal
-- `↑` / `↓`: Navigate through results
-- `Enter`: Select highlighted result
-- `Ctrl+Enter` or `⌘+Enter`: Open result in new tab
-- `Escape`: Close modal
+- `Ctrl+K` ou `⌘K`: Abrir modal de busca
+- `↑` / `↓`: Navegar pelos resultados
+- `Enter`: Selecionar resultado destacado
+- `Ctrl+Enter` ou `⌘+Enter`: Abrir resultado em nova aba
+- `Escape`: Fechar modal
 
-## Accessibility
+## Acessibilidade
 
-- Full keyboard navigation support
-- ARIA labels for screen readers
-- Focus management
-- High contrast mode support
+- Suporte completo à navegação por teclado
+- Labels ARIA para leitores de tela
+- Gerenciamento de foco
+- Suporte ao modo de alto contraste

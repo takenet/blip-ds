@@ -11,53 +11,53 @@ export default {
   },
 };
 
-// Sample data for demonstrations
+// Dados de exemplo para demonstrações
 const sampleOptions = [
   {
     value: '2',
-    title: 'Settings',
-    description: 'Configure your application preferences',
+    title: 'Configurações',
+    description: 'Configure as preferências da aplicação',
     url: '#settings',
   },
   {
     value: '3',
-    title: 'Users',
-    description: 'Manage user accounts and permissions',
+    title: 'Usuários',
+    description: 'Gerencie contas e permissões de usuários',
     icon: 'contact',
     url: '#users',
   },
   {
     value: '4',
-    title: 'Messages',
-    description: 'View and send messages',
+    title: 'Mensagens',
+    description: 'Visualize e envie mensagens',
     icon: 'message-ballon',
     url: '#messages',
   },
   {
     value: '5',
-    title: 'Analytics',
-    description: 'Deep dive into your data',
+    title: 'Análises',
+    description: 'Mergulhe fundo em seus dados',
     icon: 'chart-bar',
     url: '#analytics',
   },
   {
     value: '6',
-    title: 'Billing',
-    description: 'Manage payments and subscriptions',
+    title: 'Faturamento',
+    description: 'Gerencie pagamentos e assinaturas',
     icon: 'dolar',
     url: '#billing',
   },
   {
     value: '7',
-    title: 'Help Center',
-    description: 'Get support and documentation',
+    title: 'Central de Ajuda',
+    description: 'Obtenha suporte e documentação',
     icon: 'question',
     url: '#help',
   },
   {
     value: '8',
-    title: 'Notifications',
-    description: 'Configure notification settings',
+    title: 'Notificações',
+    description: 'Configure as notificações',
     icon: 'bell',
     url: '#notifications',
   },
@@ -80,13 +80,13 @@ export const Properties = (args) => {
   }, []);
 
   return (
-    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '500px' }}>
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '700px', minWidth: '800px' }}>
       <bds-typo variant="fs-16" bold="bold">
-        Search Anywhere Component
+        Componente Search Anywhere
       </bds-typo>
       <bds-typo variant="fs-14">
-        Click the input below or press <kbd>Ctrl+K</kbd> to open the search modal. 
-        Try searching for "dashboard", "settings", or "analytics".
+        Clique no campo abaixo ou pressione <kbd>Ctrl+K</kbd> para abrir o modal de busca. 
+        Tente buscar por "configurações", "usuários" ou "análises".
       </bds-typo>
       
       <bds-search-anywhere
@@ -99,12 +99,12 @@ export const Properties = (args) => {
       />
       
       <bds-grid direction="column" gap="2" margin="t-4">
-        <bds-typo variant="fs-14" bold="bold">Last Search:</bds-typo>
-        <bds-typo variant="fs-14">{lastSearch || '(none)'}</bds-typo>
+        <bds-typo variant="fs-14" bold="bold">Última Busca:</bds-typo>
+        <bds-typo variant="fs-14">{lastSearch || '(nenhuma)'}</bds-typo>
         
-        <bds-typo variant="fs-14" bold="bold" margin="t-2">Last Selection:</bds-typo>
+        <bds-typo variant="fs-14" bold="bold" margin="t-2">Última Seleção:</bds-typo>
         <bds-typo variant="fs-14">
-          {lastSelection ? `${lastSelection.title} - ${lastSelection.description}` : '(none)'}
+          {lastSelection ? `${lastSelection.title} - ${lastSelection.description}` : '(nenhuma)'}
         </bds-typo>
       </bds-grid>
     </bds-grid>
@@ -113,8 +113,8 @@ export const Properties = (args) => {
 
 Properties.args = {
   options: sampleOptions,
-  placeholder: 'Search...',
-  triggerPlaceholder: 'Search or press Ctrl+K',
+  placeholder: 'Buscar...',
+  triggerPlaceholder: 'Buscar ou pressione Ctrl+K',
   showShortcut: true,
   maxResults: 10,
 };
@@ -122,23 +122,23 @@ Properties.args = {
 Properties.argTypes = {
   placeholder: {
     control: 'text',
-    description: 'Placeholder text for search input in modal',
+    description: 'Texto placeholder para o input de busca no modal',
   },
   triggerPlaceholder: {
     control: 'text',
-    description: 'Placeholder text for trigger input',
+    description: 'Texto placeholder para o input de ativação',
   },
   showShortcut: {
     control: 'boolean',
-    description: 'Show keyboard shortcut hint',
+    description: 'Mostrar dica de atalho do teclado',
   },
   maxResults: {
     control: { type: 'number', min: 1, max: 50 },
-    description: 'Maximum number of results to display',
+    description: 'Número máximo de resultados a exibir',
   },
   options: {
     control: 'object',
-    description: 'Options to display in search results',
+    description: 'Opções para exibir nos resultados da busca',
   },
 };
 
@@ -164,26 +164,26 @@ export const DynamicFiltering = () => {
   }, []);
 
   return (
-    <bds-grid direction="column" gap="3" padding="3">
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '600px', minWidth: '800px' }}>
       <bds-typo variant="fs-16" bold="bold">
-        Dynamic Filtering Example
+        Exemplo de Filtragem Dinâmica
       </bds-typo>
       <bds-typo variant="fs-14">
-        This example shows how to handle search changes and update results dynamically.
-        You could use this to fetch results from a server.
+        Este exemplo mostra como lidar com mudanças na busca e atualizar os resultados dinamicamente.
+        Você pode usar isso para buscar resultados de um servidor.
       </bds-typo>
       
       <bds-search-anywhere
         id="search-anywhere-dynamic"
         options={JSON.stringify(filteredOptions)}
-        placeholder="Type to search..."
+        placeholder="Digite para buscar..."
       />
       
       <bds-grid direction="column" gap="1" margin="t-2">
-        <bds-typo variant="fs-12" bold="bold">Current search:</bds-typo>
-        <bds-typo variant="fs-12">{searchText || '(empty)'}</bds-typo>
+        <bds-typo variant="fs-12" bold="bold">Busca atual:</bds-typo>
+        <bds-typo variant="fs-12">{searchText || '(vazio)'}</bds-typo>
         <bds-typo variant="fs-12" bold="bold" margin="t-1">
-          Results count: {filteredOptions.length}
+          Total de resultados: {filteredOptions.length}
         </bds-typo>
       </bds-grid>
     </bds-grid>
@@ -194,17 +194,17 @@ export const WithoutIcons = () => {
   const optionsWithoutIcons = sampleOptions.map(({ icon, ...rest }) => rest);
 
   return (
-    <bds-grid direction="column" gap="3" padding="3">
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '500px', minWidth: '800px' }}>
       <bds-typo variant="fs-16" bold="bold">
-        Search Without Icons
+        Busca Sem Ícones
       </bds-typo>
       <bds-typo variant="fs-14">
-        Options can be displayed without icons for a cleaner look.
+        As opções podem ser exibidas sem ícones para uma aparência mais limpa.
       </bds-typo>
       
       <bds-search-anywhere
         options={JSON.stringify(optionsWithoutIcons)}
-        placeholder="Search..."
+        placeholder="Buscar..."
       />
     </bds-grid>
   );
@@ -214,17 +214,17 @@ export const WithoutDescriptions = () => {
   const optionsWithoutDesc = sampleOptions.map(({ description, ...rest }) => rest);
 
   return (
-    <bds-grid direction="column" gap="3" padding="3">
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '500px', minWidth: '800px' }}>
       <bds-typo variant="fs-16" bold="bold">
-        Search Without Descriptions
+        Busca Sem Descrições
       </bds-typo>
       <bds-typo variant="fs-14">
-        For simpler use cases, descriptions can be omitted.
+        Para casos de uso mais simples, as descrições podem ser omitidas.
       </bds-typo>
       
       <bds-search-anywhere
         options={JSON.stringify(optionsWithoutDesc)}
-        placeholder="Search..."
+        placeholder="Buscar..."
       />
     </bds-grid>
   );
@@ -232,24 +232,24 @@ export const WithoutDescriptions = () => {
 
 export const MinimalOptions = () => {
   const minimalOptions = [
-    { value: '1', title: 'Home' },
-    { value: '2', title: 'About' },
-    { value: '3', title: 'Contact' },
+    { value: '1', title: 'Início' },
+    { value: '2', title: 'Sobre' },
+    { value: '3', title: 'Contato' },
     { value: '4', title: 'Blog' },
   ];
 
   return (
-    <bds-grid direction="column" gap="3" padding="3">
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '500px', minWidth: '800px' }}>
       <bds-typo variant="fs-16" bold="bold">
-        Minimal Options
+        Opções Mínimas
       </bds-typo>
       <bds-typo variant="fs-14">
-        Options with just value and title - the minimal required properties.
+        Opções com apenas value e title - as propriedades mínimas necessárias.
       </bds-typo>
       
       <bds-search-anywhere
         options={JSON.stringify(minimalOptions)}
-        placeholder="Search pages..."
+        placeholder="Buscar páginas..."
         show-shortcut={false}
       />
     </bds-grid>
@@ -289,12 +289,12 @@ export const Events = () => {
   }, []);
 
   return (
-    <bds-grid direction="column" gap="3" padding="3">
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '600px', minWidth: '800px' }}>
       <bds-typo variant="fs-16" bold="bold">
-        Events Demo
+        Demonstração de Eventos
       </bds-typo>
       <bds-typo variant="fs-14">
-        All events emitted by the component are logged below. Open the search, type, and select an option to see events.
+        Todos os eventos emitidos pelo componente são registrados abaixo. Abra a busca, digite e selecione uma opção para ver os eventos.
       </bds-typo>
       
       <bds-search-anywhere
@@ -303,9 +303,9 @@ export const Events = () => {
       />
       
       <bds-grid direction="column" gap="1" margin="t-3" padding="2" style={{ backgroundColor: 'var(--color-surface-1)', borderRadius: '8px', maxHeight: '300px', overflow: 'auto' }}>
-        <bds-typo variant="fs-14" bold="bold">Event Log:</bds-typo>
+        <bds-typo variant="fs-14" bold="bold">Registro de Eventos:</bds-typo>
         {events.length === 0 ? (
-          <bds-typo variant="fs-12">(no events yet)</bds-typo>
+          <bds-typo variant="fs-12">(nenhum evento ainda)</bds-typo>
         ) : (
           events.slice(-10).reverse().map((event, index) => (
             <bds-typo key={index} variant="fs-10" style={{ fontFamily: 'monospace' }}>
@@ -330,12 +330,12 @@ export const Methods = () => {
   };
 
   return (
-    <bds-grid direction="column" gap="3" padding="3">
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '600px', minWidth: '800px' }}>
       <bds-typo variant="fs-16" bold="bold">
-        Methods Demo
+        Demonstração de Métodos
       </bds-typo>
       <bds-typo variant="fs-14">
-        You can programmatically open and close the search modal using the open() and close() methods.
+        Você pode abrir e fechar programaticamente o modal de busca usando os métodos open() e close().
       </bds-typo>
       
       <bds-search-anywhere
@@ -344,8 +344,8 @@ export const Methods = () => {
       />
       
       <bds-grid gap="2" margin="t-2">
-        <bds-button onClick={openModal}>Open Search Modal</bds-button>
-        <bds-button onClick={closeModal} variant="secondary">Close Search Modal</bds-button>
+        <bds-button onClick={openModal}>Abrir Modal de Busca</bds-button>
+        <bds-button onClick={closeModal} variant="secondary">Fechar Modal de Busca</bds-button>
       </bds-grid>
     </bds-grid>
   );
@@ -365,26 +365,26 @@ export const FrameworkReact = () => {
   };
 
   return (
-    <BdsGrid direction="column" gap="3" padding="3">
+    <BdsGrid direction="column" gap="3" padding="3" style={{ minHeight: '600px', minWidth: '800px' }}>
       <BdsTypo variant="fs-16" bold="bold">
-        React Integration Example
+        Exemplo de Integração com React
       </BdsTypo>
       <BdsTypo variant="fs-14">
-        Using the component in a React application with state management.
+        Usando o componente em uma aplicação React com gerenciamento de estado.
       </BdsTypo>
       
       <BdsSearchAnywhere
         options={sampleOptions}
-        placeholder="Search..."
+        placeholder="Buscar..."
         onBdsSearchChange={handleSearchChange}
         onBdsSearchSelect={handleSearchSelect}
       />
       
       <BdsGrid direction="column" gap="2" margin="t-3">
-        <BdsTypo variant="fs-14" bold="bold">React State:</BdsTypo>
-        <BdsTypo variant="fs-12">Search Text: {searchText || '(empty)'}</BdsTypo>
+        <BdsTypo variant="fs-14" bold="bold">Estado do React:</BdsTypo>
+        <BdsTypo variant="fs-12">Texto da Busca: {searchText || '(vazio)'}</BdsTypo>
         <BdsTypo variant="fs-12">
-          Selected: {selectedOption ? selectedOption.title : '(none)'}
+          Selecionado: {selectedOption ? selectedOption.title : '(nenhum)'}
         </BdsTypo>
       </BdsGrid>
     </BdsGrid>
