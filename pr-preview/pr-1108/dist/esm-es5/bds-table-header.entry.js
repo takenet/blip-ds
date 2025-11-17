@@ -1,0 +1,2 @@
+import{r as registerInstance,h,H as Host}from"./index-C3J6Z5OX.js";var tableHeaderCss=".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}";var TableHeader=function(){function e(e){registerInstance(this,e)}e.prototype.render=function(){return h(Host,{key:"98edcf19d2698a1d43394489c94a5e82c7ed05ee"},h("slot",{key:"6f283ca834790a2c0f73b5c92cce0511dbc65dc9"}))};return e}();TableHeader.style=tableHeaderCss;export{TableHeader as bds_table_header};
+//# sourceMappingURL=bds-table-header.entry.js.map

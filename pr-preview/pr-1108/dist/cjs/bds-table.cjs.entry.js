@@ -1,0 +1,20 @@
+'use strict';
+
+var index = require('./index-D_zq0Z7d.js');
+
+const tableCss = ".sc-bds-table-h{width:100%;border-radius:8px;background-color:var(--color-surface-1, rgb(246, 246, 246));border:1px solid var(--color-border-3, rgba(0, 0, 0, 0.06))}.bds-table.sc-bds-table{display:table;width:100%;border-spacing:0px;-webkit-box-sizing:border-box;box-sizing:border-box;border-collapse:collapse}.scrollable.sc-bds-table-h{overflow-x:auto}.dense-table.sc-bds-table-h{height:-webkit-fit-content;height:-moz-fit-content;height:fit-content}";
+
+const Table = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+    }
+    render() {
+        return (index.h(index.Host, { key: 'd351f748fc26b1acbf1c53b21766fb05da5043ec', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, index.h("div", { key: 'bb082078440cae44e2e2064286cbc6f97b225854', class: "bds-table" }, index.h("slot", { key: '709ed0006d04ee0cd93b8d8d32c03e583ea54b5e' }))));
+    }
+};
+Table.style = tableCss;
+
+exports.bds_table = Table;
+//# sourceMappingURL=bds-table.entry.cjs.js.map
+
+//# sourceMappingURL=bds-table.cjs.entry.js.map
