@@ -3,7 +3,7 @@ import DocumentationTemplate from './search-anywhere.mdx';
 import { BdsSearchAnywhere, BdsTypo, BdsGrid } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/SearchAnywhere',
+  title: 'Components/Search Anywhere',
   parameters: {
     docs: {
       page: DocumentationTemplate,
@@ -14,17 +14,9 @@ export default {
 // Sample data for demonstrations
 const sampleOptions = [
   {
-    value: '1',
-    title: 'Dashboard',
-    description: 'View your analytics and key metrics',
-    icon: 'analytics',
-    url: '#dashboard',
-  },
-  {
     value: '2',
     title: 'Settings',
     description: 'Configure your application preferences',
-    icon: 'builder-variable',
     url: '#settings',
   },
   {
@@ -45,7 +37,7 @@ const sampleOptions = [
     value: '5',
     title: 'Analytics',
     description: 'Deep dive into your data',
-    icon: 'analytics',
+    icon: 'chart-bar',
     url: '#analytics',
   },
   {
@@ -66,117 +58,8 @@ const sampleOptions = [
     value: '8',
     title: 'Notifications',
     description: 'Configure notification settings',
-    icon: 'message-ballon',
+    icon: 'bell',
     url: '#notifications',
-  },
-];
-
-// Storybook components data
-const storybookComponents = [
-  {
-    value: 'button',
-    title: 'Button',
-    description: 'Interactive button component with multiple variants',
-    icon: 'blip-chat',
-    url: '/?path=/docs/components-button--docs',
-  },
-  {
-    value: 'input',
-    title: 'Input',
-    description: 'Text input field for user data entry',
-    icon: 'text-variable',
-    url: '/?path=/docs/components-input--docs',
-  },
-  {
-    value: 'modal',
-    title: 'Modal',
-    description: 'Overlay dialog box for focused content',
-    icon: 'bottom-sheet',
-    url: '/?path=/docs/components-modal--docs',
-  },
-  {
-    value: 'dropdown',
-    title: 'Dropdown',
-    description: 'Selection dropdown menu component',
-    icon: 'arrow-down',
-    url: '/?path=/docs/components-dropdown--docs',
-  },
-  {
-    value: 'card',
-    title: 'Card',
-    description: 'Container for related content and actions',
-    icon: 'catalog',
-    url: '/?path=/docs/components-card--docs',
-  },
-  {
-    value: 'table',
-    title: 'Table',
-    description: 'Data table with sorting and pagination',
-    icon: 'filter-table',
-    url: '/?path=/docs/components-table--docs',
-  },
-  {
-    value: 'toast',
-    title: 'Toast',
-    description: 'Brief notification messages',
-    icon: 'message-ballon',
-    url: '/?path=/docs/components-toast--docs',
-  },
-  {
-    value: 'avatar',
-    title: 'Avatar',
-    description: 'User profile image or initials',
-    icon: 'contact',
-    url: '/?path=/docs/components-avatar--docs',
-  },
-  {
-    value: 'badge',
-    title: 'Badge',
-    description: 'Small count and labeling component',
-    icon: 'mark',
-    url: '/?path=/docs/components-badge--docs',
-  },
-  {
-    value: 'accordion',
-    title: 'Accordion',
-    description: 'Collapsible content sections',
-    icon: 'organize-list',
-    url: '/?path=/docs/components-accordion--docs',
-  },
-  {
-    value: 'tabs',
-    title: 'Tabs',
-    description: 'Navigation between related content',
-    icon: 'organize-blocks',
-    url: '/?path=/docs/components-tabs--docs',
-  },
-  {
-    value: 'checkbox',
-    title: 'Checkbox',
-    description: 'Toggle selection control',
-    icon: 'checkball',
-    url: '/?path=/docs/components-checkbox--docs',
-  },
-  {
-    value: 'radio',
-    title: 'Radio Button',
-    description: 'Single selection from a group',
-    icon: 'radiobutton',
-    url: '/?path=/docs/components-radio--docs',
-  },
-  {
-    value: 'switch',
-    title: 'Switch',
-    description: 'On/off toggle control',
-    icon: 'toggle',
-    url: '/?path=/docs/components-switch--docs',
-  },
-  {
-    value: 'loading',
-    title: 'Loading Spinner',
-    description: 'Loading state indicator',
-    icon: 'automation',
-    url: '/?path=/docs/components-loading-spinner--docs',
   },
 ];
 
@@ -197,7 +80,15 @@ export const Properties = (args) => {
   }, []);
 
   return (
-    <bds-grid direction="column" gap="3" padding="3">
+    <bds-grid direction="column" gap="3" padding="3" style={{ minHeight: '500px' }}>
+      <bds-typo variant="fs-16" bold="bold">
+        Search Anywhere Component
+      </bds-typo>
+      <bds-typo variant="fs-14">
+        Click the input below or press <kbd>Ctrl+K</kbd> to open the search modal. 
+        Try searching for "dashboard", "settings", or "analytics".
+      </bds-typo>
+      
       <bds-search-anywhere
         id="search-anywhere-properties"
         options={JSON.stringify(args.options)}
@@ -295,88 +186,6 @@ export const DynamicFiltering = () => {
           Results count: {filteredOptions.length}
         </bds-typo>
       </bds-grid>
-    </bds-grid>
-  );
-};
-
-export const StorybookComponentsSearch = () => {
-  const [selectedComponent, setSelectedComponent] = useState(null);
-
-  // Helper function to get the correct base URL for Storybook navigation
-  const getStorybookBaseUrl = () => {
-    const currentUrl = window.location.href;
-    
-    // Check if we're in PR preview
-    if (currentUrl.includes('/pr-preview/')) {
-      const match = currentUrl.match(/(.*\/pr-preview\/pr-\d+\/)/);
-      return match ? match[1] : '';
-    }
-    
-    // Check if we're in v2 branch
-    if (currentUrl.includes('/blip-ds/v2/')) {
-      const match = currentUrl.match(/(.*\/blip-ds\/v2\/)/);
-      return match ? match[1] : '';
-    }
-    
-    // Check if we're in main/production
-    if (currentUrl.includes('/blip-ds/')) {
-      const match = currentUrl.match(/(.*\/blip-ds\/)/);
-      return match ? match[1] : '';
-    }
-    
-    // Local development or other scenarios
-    return '';
-  };
-
-  useEffect(() => {
-    const searchAnywhere = document.getElementById('search-anywhere-storybook');
-    if (searchAnywhere) {
-      searchAnywhere.addEventListener('bdsSearchSelect', (event) => {
-        setSelectedComponent(event.detail.option);
-        console.log('Selected component:', event.detail.option);
-        
-        // Navigate to the component page
-        const baseUrl = getStorybookBaseUrl();
-        const targetUrl = event.detail.option.url;
-        const fullUrl = baseUrl ? `${baseUrl}${targetUrl.replace(/^\/\?/, '?')}` : targetUrl;
-        
-        if (event.detail.newTab) {
-          window.open(fullUrl, '_blank');
-        } else {
-          window.location.href = fullUrl;
-        }
-      });
-    }
-  }, []);
-
-  return (
-    <bds-grid direction="column" gap="3" padding="3">
-      <bds-typo variant="fs-16" bold="bold">
-        Search Storybook Components
-      </bds-typo>
-      <bds-typo variant="fs-14">
-        This demonstrates searching through all available components in the design system.
-        Try searching for "button", "input", or "modal".
-      </bds-typo>
-      
-      <bds-search-anywhere
-        id="search-anywhere-storybook"
-        options={JSON.stringify(storybookComponents)}
-        placeholder="Search components..."
-        trigger-placeholder="Find a component..."
-        max-results={8}
-      />
-      
-      {selectedComponent && (
-        <bds-grid direction="column" gap="2" margin="t-3" padding="3" style={{ backgroundColor: 'var(--color-surface-1)', borderRadius: '8px' }}>
-          <bds-typo variant="fs-14" bold="bold">Last selected component:</bds-typo>
-          <bds-typo variant="fs-16" bold="bold">{selectedComponent.title}</bds-typo>
-          <bds-typo variant="fs-12">{selectedComponent.description}</bds-typo>
-          <bds-typo variant="fs-10" style={{ fontFamily: 'monospace' }}>
-            URL: {selectedComponent.url}
-          </bds-typo>
-        </bds-grid>
-      )}
     </bds-grid>
   );
 };

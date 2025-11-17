@@ -1,8 +1,6 @@
 import { Meta, Canvas, Controls, Source } from '@storybook/addon-docs/blocks';
 import * as SearchStories from './search-anywhere.stories';
 
-<Meta title="Components/SearchAnywhere" />
-
 # Search Anywhere
 
 A global navigation system that provides a fast, keyboard-friendly search experience similar to Notion or Linear. Users can quickly navigate through any page or item using the search modal.
@@ -23,37 +21,69 @@ A global navigation system that provides a fast, keyboard-friendly search experi
 - **Command Palette**: Implement a command palette style interface
 - **Large Applications**: When you have many pages/features and need better discoverability
 
-## Visão Geral
+## Overview
 
-<Canvas of={SearchStories.Properties}></Canvas>
+Here's a basic example of the Search Anywhere component. Click the input or press `Ctrl+K` to open the search modal.
+
+<Canvas of={SearchStories.Properties} story={{ height: '600px' }}></Canvas>
+
+<Meta isTemplate />
 
 <br></br>
 
-As seguintes propriedades são compartilhadas pelo Search Anywhere.
+The following properties are available for the Search Anywhere component.
 
 <Controls />
 
 <br></br>
 
-## Eventos
+## Dynamic Filtering
 
-Exemplos de eventos do Search Anywhere.
+Example showing how to dynamically filter options based on search input.
 
-<Source of={SearchStories.Events} />
-
-<br></br>
-
-## Métodos
-
-Exemplos de métodos do Search Anywhere.
-
-<Source of={SearchStories.Methods} />
+<Canvas of={SearchStories.DynamicFiltering}></Canvas>
 
 <br></br>
 
-## Usando no React
+## Events
 
-<Source of={SearchStories.FrameworkReact} />
+Examples of Search Anywhere events.
+
+<Canvas of={SearchStories.Events}></Canvas>
+
+<br></br>
+
+## Methods
+
+Examples of Search Anywhere methods.
+
+<Canvas of={SearchStories.Methods}></Canvas>
+
+<br></br>
+
+## Variations
+
+### Without Icons
+
+<Canvas of={SearchStories.WithoutIcons}></Canvas>
+
+<br></br>
+
+### Without Descriptions
+
+<Canvas of={SearchStories.WithoutDescriptions}></Canvas>
+
+<br></br>
+
+### Minimal Options
+
+<Canvas of={SearchStories.MinimalOptions}></Canvas>
+
+<br></br>
+
+## Using in React
+
+<Canvas of={SearchStories.FrameworkReact}></Canvas>
 
 <br></br>
 

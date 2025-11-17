@@ -18,7 +18,7 @@ module.exports = {
     options: {},
   },
   docs: {
-    defaultName: 'Visão Geral'
+    defaultName: 'Overview'
   },
   staticDirs: [
     { from: '../dist', to: '/dist' },
