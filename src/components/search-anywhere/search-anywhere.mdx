@@ -1,0 +1,110 @@
+import { Meta, Canvas } from '@storybook/blocks';
+
+<Meta title="Components/Search Anywhere" />
+
+# Search Anywhere
+
+A global navigation system that provides a fast, keyboard-friendly search experience similar to Notion or Linear. Users can quickly navigate through any page or item using the search modal.
+
+## Features
+
+- **Keyboard Shortcuts**: Press `Ctrl+K` (or `⌘K` on Mac) to open the search modal
+- **Keyboard Navigation**: Navigate results with ↑↓ arrow keys, select with Enter
+- **Fast Search**: Real-time filtering of results as you type
+- **Flexible**: Supports custom options with title, description, icon, URL, and metadata
+- **Events**: Emits events for search changes and option selection
+- **Accessible**: Fully keyboard accessible with WCAG AA compliance
+
+## When to Use
+
+- **Global Navigation**: Provide a universal search/navigation experience across your application
+- **Quick Access**: Allow users to quickly jump to any page or feature
+- **Command Palette**: Implement a command palette style interface
+- **Large Applications**: When you have many pages/features and need better discoverability
+
+## Basic Usage
+
+```jsx
+import { BdsSearchAnywhere } from 'blip-ds-react';
+
+const options = [
+  {
+    value: '1',
+    title: 'Dashboard',
+    description: 'View your analytics and metrics',
+    icon: 'chart',
+    url: '/dashboard'
+  },
+  {
+    value: '2',
+    title: 'Settings',
+    description: 'Configure your application',
+    icon: 'settings',
+    url: '/settings'
+  }
+];
+
+function App() {
+  return (
+    <BdsSearchAnywhere 
+      options={options}
+      placeholder="Search for pages..."
+      triggerPlaceholder="Search or press Ctrl+K"
+    />
+  );
+}
+```
+
+## Props
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `options` | `SearchAnywhereOption[] \| string` | `[]` | Options to display in search results |
+| `placeholder` | `string` | `'Search...'` | Placeholder text for the search input |
+| `triggerPlaceholder` | `string` | `'Search or press Ctrl+K'` | Placeholder for the trigger input |
+| `showShortcut` | `boolean` | `true` | Show keyboard shortcut hint on trigger |
+| `maxResults` | `number` | `10` | Maximum number of results to display |
+
+## Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| `bdsSearchChange` | `{ searchText: string }` | Emitted when search text changes |
+| `bdsSearchSelect` | `{ option: SearchAnywhereOption, newTab: boolean }` | Emitted when an option is selected |
+| `bdsSearchOpen` | - | Emitted when modal opens |
+| `bdsSearchClose` | - | Emitted when modal closes |
+
+## Methods
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `open()` | `Promise<void>` | Opens the search modal |
+| `close()` | `Promise<void>` | Closes the search modal |
+
+## SearchAnywhereOption Interface
+
+```typescript
+interface SearchAnywhereOption {
+  value: string;           // Unique identifier
+  title: string;           // Main text displayed
+  description?: string;    // Secondary text (optional)
+  icon?: string;          // Icon name from bds-icon (optional)
+  url?: string;           // URL for navigation (optional)
+  metadata?: any;         // Custom data (optional)
+}
+```
+
+## Keyboard Shortcuts
+
+- `Ctrl+K` or `⌘K`: Open search modal
+- `↑` / `↓`: Navigate through results
+- `Enter`: Select highlighted result
+- `Ctrl+Enter` or `⌘+Enter`: Open result in new tab
+- `Escape`: Close modal
+
+## Accessibility
+
+- Full keyboard navigation support
+- ARIA labels for screen readers
+- Focus management
+- High contrast mode support

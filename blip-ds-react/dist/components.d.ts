@@ -1,5 +1,5 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeItemCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSliderCustomEvent, type BdsTabGroupCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type StepOption, type TypeList, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeItemCustomEvent, type BdsRichTextCustomEvent, type BdsSearchAnywhereCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSliderCustomEvent, type BdsTabGroupCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SearchAnywhereChangeEventDetail, type SearchAnywhereSelectEventDetail, type SelectChangeEvent, type SelectChangeEventDetail, type StepOption, type TypeList, type stateSelect } from "blip-ds";
 import { BdsAccordionBody as BdsAccordionBodyElement } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement } from "blip-ds/dist/components/bds-accordion-group.js";
 import { BdsAccordionHeader as BdsAccordionHeaderElement } from "blip-ds/dist/components/bds-accordion-header.js";
@@ -77,6 +77,7 @@ import { BdsProgressBar as BdsProgressBarElement } from "blip-ds/dist/components
 import { BdsRadioGroup as BdsRadioGroupElement } from "blip-ds/dist/components/bds-radio-group.js";
 import { BdsRadio as BdsRadioElement } from "blip-ds/dist/components/bds-radio.js";
 import { BdsRichText as BdsRichTextElement } from "blip-ds/dist/components/bds-rich-text.js";
+import { BdsSearchAnywhere as BdsSearchAnywhereElement } from "blip-ds/dist/components/bds-search-anywhere.js";
 import { BdsSelectChips as BdsSelectChipsElement } from "blip-ds/dist/components/bds-select-chips.js";
 import { BdsSelectOption as BdsSelectOptionElement } from "blip-ds/dist/components/bds-select-option.js";
 import { BdsSelect as BdsSelectElement } from "blip-ds/dist/components/bds-select.js";
@@ -513,6 +514,13 @@ export type BdsRichTextEvents = {
     onBdsFocus: EventName<CustomEvent<void>>;
 };
 export declare const BdsRichText: StencilReactComponent<BdsRichTextElement, BdsRichTextEvents>;
+export type BdsSearchAnywhereEvents = {
+    onBdsSearchChange: EventName<BdsSearchAnywhereCustomEvent<SearchAnywhereChangeEventDetail>>;
+    onBdsSearchSelect: EventName<BdsSearchAnywhereCustomEvent<SearchAnywhereSelectEventDetail>>;
+    onBdsSearchOpen: EventName<CustomEvent<any>>;
+    onBdsSearchClose: EventName<CustomEvent<any>>;
+};
+export declare const BdsSearchAnywhere: StencilReactComponent<BdsSearchAnywhereElement, BdsSearchAnywhereEvents>;
 export type BdsSelectEvents = {
     onBdsChange: EventName<BdsSelectCustomEvent<SelectChangeEventDetail>>;
     onBdsCancel: EventName<CustomEvent<void>>;
