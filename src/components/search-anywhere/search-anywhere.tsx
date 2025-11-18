@@ -225,10 +225,14 @@ export class SearchAnywhere {
 
       case 'Enter':
         event.preventDefault();
-        if (resultsCount > 0 && this.selectedIndex >= 0 && this.selectedIndex < resultsCount) {
-          const option = this.filteredOptions[this.selectedIndex];
-          const newTab = event.ctrlKey || event.metaKey;
-          this.selectOption(option, newTab);
+        if (resultsCount > 0) {
+          // If no item is selected, select the first one
+          const indexToSelect = this.selectedIndex === -1 ? 0 : this.selectedIndex;
+          if (indexToSelect < resultsCount) {
+            const option = this.filteredOptions[indexToSelect];
+            const newTab = event.ctrlKey || event.metaKey;
+            this.selectOption(option, newTab);
+          }
         }
         break;
     }

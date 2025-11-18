@@ -491,6 +491,29 @@ describe('bds-search-anywhere e2e', () => {
 
       expect(spy).toHaveReceivedEventTimes(1);
     });
+
+    it('should select first option when pressing Enter without selection', async () => {
+      const page = await newE2EPage();
+      await page.setContent('<bds-search-anywhere></bds-search-anywhere>');
+      await page.waitForChanges();
+
+      const element = await page.find('bds-search-anywhere');
+      element.setProperty('options', options);
+      await page.waitForChanges();
+
+      const spy = await element.spyOnEvent('bdsSearchSelect');
+
+      await element.callMethod('open');
+      await page.waitForChanges();
+
+      // Press Enter without selecting any item first
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+
+      expect(spy).toHaveReceivedEventTimes(1);
+      const eventDetail = spy.firstEvent.detail;
+      expect(eventDetail.option.value).toBe('1'); // Should select first option
+    });
   });
 
   describe('Result Display', () => {
