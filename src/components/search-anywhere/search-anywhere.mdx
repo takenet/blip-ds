@@ -1,0 +1,116 @@
+import { Meta, Canvas, Controls, Source } from '@storybook/addon-docs/blocks';
+import * as SearchStories from './search-anywhere.stories';
+
+# Search Anywhere
+
+Um sistema de navegação global que fornece uma experiência de busca rápida e amigável ao teclado, semelhante ao Notion ou Linear. Os usuários podem navegar rapidamente por qualquer página ou item usando o modal de busca.
+
+## Funcionalidades
+
+- **Atalhos de Teclado**: Pressione `Ctrl+K` (ou `⌘K` no Mac) para abrir o modal de busca
+- **Navegação por Teclado**: Navegue pelos resultados com as setas ↑↓, selecione com Enter
+- **Busca Rápida**: Filtragem em tempo real dos resultados conforme você digita
+- **Flexível**: Suporta opções personalizadas com título, descrição, ícone, URL e metadados
+- **Eventos**: Emite eventos para mudanças de busca e seleção de opções
+- **Acessível**: Totalmente acessível por teclado com conformidade WCAG AA
+
+## Quando Usar
+
+- **Navegação Global**: Fornecer uma experiência de busca/navegação universal em toda a aplicação
+- **Acesso Rápido**: Permitir que os usuários pulem rapidamente para qualquer página ou funcionalidade
+- **Paleta de Comandos**: Implementar uma interface estilo paleta de comandos
+- **Aplicações Grandes**: Quando você tem muitas páginas/funcionalidades e precisa de melhor descoberta
+
+## Visão Geral
+
+Aqui está um exemplo básico do componente Search Anywhere. Clique no campo ou pressione `Ctrl+K` para abrir o modal de busca.
+
+<Canvas of={SearchStories.Properties} story={{ height: '800px' }}></Canvas>
+
+<Meta isTemplate />
+
+<br></br>
+
+As seguintes propriedades estão disponíveis para o componente Search Anywhere.
+
+<Controls />
+
+<br></br>
+
+## Filtragem Dinâmica
+
+Exemplo mostrando como filtrar dinamicamente as opções com base na entrada de busca.
+
+<Canvas of={SearchStories.DynamicFiltering}></Canvas>
+
+<br></br>
+
+## Eventos
+
+Exemplos de eventos do Search Anywhere.
+
+<Canvas of={SearchStories.Events}></Canvas>
+
+<br></br>
+
+## Métodos
+
+Exemplos de métodos do Search Anywhere.
+
+<Canvas of={SearchStories.Methods}></Canvas>
+
+<br></br>
+
+## Variações
+
+### Sem Ícones
+
+<Canvas of={SearchStories.WithoutIcons}></Canvas>
+
+<br></br>
+
+### Sem Descrições
+
+<Canvas of={SearchStories.WithoutDescriptions}></Canvas>
+
+<br></br>
+
+### Opções Mínimas
+
+<Canvas of={SearchStories.MinimalOptions}></Canvas>
+
+<br></br>
+
+## Usando no React
+
+<Canvas of={SearchStories.FrameworkReact}></Canvas>
+
+<br></br>
+
+## Interface SearchAnywhereOption
+
+```typescript
+interface SearchAnywhereOption {
+  value: string;           // Identificador único
+  title: string;           // Texto principal exibido
+  description?: string;    // Texto secundário (opcional)
+  icon?: string;          // Nome do ícone do bds-icon (opcional)
+  url?: string;           // URL para navegação (opcional)
+  metadata?: any;         // Dados personalizados (opcional)
+}
+```
+
+## Atalhos de Teclado
+
+- `Ctrl+K` ou `⌘K`: Abrir modal de busca
+- `↑` / `↓`: Navegar pelos resultados
+- `Enter`: Selecionar resultado destacado
+- `Ctrl+Enter` ou `⌘+Enter`: Abrir resultado em nova aba
+- `Escape`: Fechar modal
+
+## Acessibilidade
+
+- Suporte completo à navegação por teclado
+- Labels ARIA para leitores de tela
+- Gerenciamento de foco
+- Suporte ao modo de alto contraste
