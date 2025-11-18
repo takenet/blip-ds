@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { SearchAnywhereOption, SearchAnywhereChangeEventDetail, SearchAnywhereSelectEventDetail } from './search-anywhere-interface';
+import { languages } from './languages';
 export declare class SearchAnywhere {
     private inputElement?;
     private resultsContainerElement?;
@@ -13,7 +14,7 @@ export declare class SearchAnywhere {
      */
     searchText: string;
     /**
-     * Current selected index for keyboard navigation
+     * Current selected index for keyboard navigation (-1 means no selection)
      */
     selectedIndex: number;
     /**
@@ -26,11 +27,17 @@ export declare class SearchAnywhere {
      */
     options?: string | SearchAnywhereOption[];
     /**
+     * Language for UI text translations (pt_BR, en_US, es_ES)
+     */
+    language?: languages;
+    /**
      * Placeholder text for the search input (when modal is open)
+     * If not provided, uses translated default based on language prop
      */
     placeholder?: string;
     /**
      * Placeholder text for the trigger input (before modal opens)
+     * If not provided, uses translated default based on language prop
      */
     triggerPlaceholder?: string;
     /**
@@ -87,6 +94,10 @@ export declare class SearchAnywhere {
     private handleModalKeydown;
     private scrollToSelectedOption;
     private updateFilteredOptions;
+    /**
+     * Performs accent-insensitive substring matching using Intl.Collator
+     */
+    private fuzzyMatch;
     private handleInputChange;
     private handleTriggerClick;
     private selectOption;

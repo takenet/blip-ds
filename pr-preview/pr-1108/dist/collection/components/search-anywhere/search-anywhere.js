@@ -1,4 +1,5 @@
 import { h, Host, } from "@stencil/core";
+import { termTranslate } from "./languages";
 export class SearchAnywhere {
     constructor() {
         /**
@@ -10,9 +11,9 @@ export class SearchAnywhere {
          */
         this.searchText = '';
         /**
-         * Current selected index for keyboard navigation
+         * Current selected index for keyboard navigation (-1 means no selection)
          */
-        this.selectedIndex = 0;
+        this.selectedIndex = -1;
         /**
          * Internal filtered options for display
          */
@@ -23,13 +24,9 @@ export class SearchAnywhere {
          */
         this.options = [];
         /**
-         * Placeholder text for the search input (when modal is open)
+         * Language for UI text translations (pt_BR, en_US, es_ES)
          */
-        this.placeholder = 'Search...';
-        /**
-         * Placeholder text for the trigger input (before modal opens)
-         */
-        this.triggerPlaceholder = 'Search or press Ctrl+K';
+        this.language = 'pt_BR';
         /**
          * If true, displays the keyboard shortcut hint on the trigger
          */
@@ -55,20 +52,32 @@ export class SearchAnywhere {
                 case 'ArrowDown':
                     event.preventDefault();
                     if (resultsCount > 0) {
-                        this.selectedIndex = (this.selectedIndex + 1) % resultsCount;
+                        // If no selection, start at 0, otherwise move to next
+                        if (this.selectedIndex === -1) {
+                            this.selectedIndex = 0;
+                        }
+                        else {
+                            this.selectedIndex = (this.selectedIndex + 1) % resultsCount;
+                        }
                         this.scrollToSelectedOption();
                     }
                     break;
                 case 'ArrowUp':
                     event.preventDefault();
                     if (resultsCount > 0) {
-                        this.selectedIndex = (this.selectedIndex - 1 + resultsCount) % resultsCount;
+                        // If no selection, start at last item, otherwise move to previous
+                        if (this.selectedIndex === -1) {
+                            this.selectedIndex = resultsCount - 1;
+                        }
+                        else {
+                            this.selectedIndex = (this.selectedIndex - 1 + resultsCount) % resultsCount;
+                        }
                         this.scrollToSelectedOption();
                     }
                     break;
                 case 'Enter':
                     event.preventDefault();
-                    if (resultsCount > 0 && this.selectedIndex < resultsCount) {
+                    if (resultsCount > 0 && this.selectedIndex >= 0 && this.selectedIndex < resultsCount) {
                         const option = this.filteredOptions[this.selectedIndex];
                         const newTab = event.ctrlKey || event.metaKey;
                         this.selectOption(option, newTab);
@@ -120,7 +129,7 @@ export class SearchAnywhere {
     async close() {
         this.isOpen = false;
         this.searchText = '';
-        this.selectedIndex = 0;
+        this.selectedIndex = -1;
         this.bdsSearchClose.emit();
     }
     /**
@@ -155,7 +164,7 @@ export class SearchAnywhere {
         this.updateFilteredOptions();
     }
     onSearchTextChange() {
-        this.selectedIndex = 0;
+        this.selectedIndex = -1;
         this.bdsSearchChange.emit({ searchText: this.searchText });
         this.updateFilteredOptions();
     }
@@ -203,22 +212,46 @@ export class SearchAnywhere {
             this.filteredOptions = parsedOptions;
         }
         else {
+            // Use Intl.Collator for case and accent-insensitive search
+            const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
             const searchLower = this.searchText.toLowerCase();
             this.filteredOptions = parsedOptions.filter((option) => {
-                var _a, _b;
-                const titleMatch = (_a = option.title) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes(searchLower);
-                const descriptionMatch = (_b = option.description) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes(searchLower);
-                return titleMatch || descriptionMatch;
+                const title = (option.title || '').toLowerCase();
+                const description = (option.description || '').toLowerCase();
+                // Check if search text is contained in title or description
+                // We need to check substring matching, not just equality
+                return title.includes(searchLower) || description.includes(searchLower) ||
+                    this.fuzzyMatch(title, searchLower, collator) ||
+                    this.fuzzyMatch(description, searchLower, collator);
             });
         }
     }
+    /**
+     * Performs accent-insensitive substring matching using Intl.Collator
+     */
+    fuzzyMatch(text, search, collator) {
+        if (!text || !search)
+            return false;
+        // Try to find the search string within the text using accent-insensitive comparison
+        for (let i = 0; i <= text.length - search.length; i++) {
+            const substring = text.substring(i, i + search.length);
+            if (collator.compare(substring, search) === 0) {
+                return true;
+            }
+        }
+        return false;
+    }
     renderTrigger() {
-        return (h("div", { class: "search-trigger", onClick: this.handleTriggerClick }, h("bds-input", { icon: "search", placeholder: this.triggerPlaceholder, readonly: true, dataTest: "search-anywhere-trigger" }, this.showShortcut && (h("div", { slot: "input-right", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
+        const placeholderText = this.triggerPlaceholder || termTranslate(this.language, 'trigger_placeholder');
+        return (h("div", { class: "search-trigger", onClick: this.handleTriggerClick }, h("bds-input", { icon: "search", placeholder: placeholderText, readonly: true, dataTest: "search-anywhere-trigger" }, this.showShortcut && (h("div", { slot: "input-right", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
     }
     renderResults() {
         const displayOptions = this.filteredOptions.slice(0, this.maxResults);
         if (displayOptions.length === 0) {
-            return (h("div", { class: "no-results" }, h("bds-typo", { variant: "fs-14", bold: "regular" }, this.searchText.trim() === '' ? 'Start typing to search...' : 'No results found')));
+            const message = this.searchText.trim() === ''
+                ? termTranslate(this.language, 'start_typing')
+                : termTranslate(this.language, 'no_results');
+            return (h("div", { class: "no-results" }, h("bds-typo", { variant: "fs-14", bold: "regular" }, message)));
         }
         return displayOptions.map((option, index) => (h("div", { key: option.value, "data-index": index, class: {
                 'search-result-item': true,
@@ -229,10 +262,11 @@ export class SearchAnywhere {
         if (!this.isOpen) {
             return null;
         }
-        return (h("div", { class: "search-modal-overlay", onClick: this.handleModalClick }, h("div", { class: "search-modal", onKeyDown: this.handleModalKeydown }, h("div", { class: "search-modal-header" }, h("div", { class: "search-input-wrapper" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("input", { ref: (el) => (this.inputElement = el), type: "text", class: "search-input", placeholder: this.placeholder, value: this.searchText, onInput: this.handleInputChange, "data-test": "search-anywhere-input" }))), h("div", { class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("div", { class: "search-modal-footer" }, h("div", { class: "keyboard-hints" }, h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 to navigate")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 to select")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 for new tab")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc to close")))))));
+        const placeholderText = this.placeholder || termTranslate(this.language, 'search_placeholder');
+        return (h("div", { class: "search-modal-overlay", onClick: this.handleModalClick }, h("div", { class: "search-modal", onKeyDown: this.handleModalKeydown }, h("div", { class: "search-modal-header" }, h("div", { class: "search-input-wrapper" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("input", { ref: (el) => (this.inputElement = el), type: "text", class: "search-input", placeholder: placeholderText, value: this.searchText, onInput: this.handleInputChange, "data-test": "search-anywhere-input" }))), h("div", { class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("div", { class: "search-modal-footer" }, h("div", { class: "keyboard-hints" }, h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 ", termTranslate(this.language, 'to_navigate'))), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 ", termTranslate(this.language, 'to_select'))), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 ", termTranslate(this.language, 'for_new_tab'))), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc ", termTranslate(this.language, 'to_close'))))))));
     }
     render() {
-        return (h(Host, { key: '6cf2a68a9d8dbd04a849b6ba09c407c3424c762c' }, this.renderTrigger(), this.renderModal()));
+        return (h(Host, { key: 'b979d1cb7d109e74598af428d4e1036847963e5a' }, this.renderTrigger(), this.renderModal()));
     }
     static get is() { return "bds-search-anywhere"; }
     static get encapsulation() { return "shadow"; }
@@ -274,6 +308,32 @@ export class SearchAnywhere {
                 "reflect": false,
                 "defaultValue": "[]"
             },
+            "language": {
+                "type": "string",
+                "attribute": "language",
+                "mutable": false,
+                "complexType": {
+                    "original": "languages",
+                    "resolved": "\"en_US\" | \"es_ES\" | \"pt_BR\"",
+                    "references": {
+                        "languages": {
+                            "location": "import",
+                            "path": "./languages",
+                            "id": "src/components/search-anywhere/languages/index.ts::languages"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Language for UI text translations (pt_BR, en_US, es_ES)"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'pt_BR'"
+            },
             "placeholder": {
                 "type": "string",
                 "attribute": "placeholder",
@@ -287,12 +347,11 @@ export class SearchAnywhere {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Placeholder text for the search input (when modal is open)"
+                    "text": "Placeholder text for the search input (when modal is open)\nIf not provided, uses translated default based on language prop"
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "defaultValue": "'Search...'"
+                "reflect": false
             },
             "triggerPlaceholder": {
                 "type": "string",
@@ -307,12 +366,11 @@ export class SearchAnywhere {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Placeholder text for the trigger input (before modal opens)"
+                    "text": "Placeholder text for the trigger input (before modal opens)\nIf not provided, uses translated default based on language prop"
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
-                "defaultValue": "'Search or press Ctrl+K'"
+                "reflect": false
             },
             "showShortcut": {
                 "type": "boolean",

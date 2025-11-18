@@ -4,6 +4,63 @@ import { d as defineCustomElement$4 } from './p-19uyXyEx.js';
 import { d as defineCustomElement$3 } from './p-Cd70o7AT.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
+const ptTerms = [
+    {
+        search_placeholder: 'Buscar...',
+        trigger_placeholder: 'Buscar ou pressione Ctrl+K',
+        no_results: 'Nenhum resultado encontrado',
+        start_typing: 'Comece a digitar para buscar...',
+        to_navigate: 'para navegar',
+        to_select: 'para selecionar',
+        for_new_tab: 'para nova aba',
+        to_close: 'para fechar',
+    },
+];
+
+const esTerms = [
+    {
+        search_placeholder: 'Buscar...',
+        trigger_placeholder: 'Buscar o presione Ctrl+K',
+        no_results: 'No se encontraron resultados',
+        start_typing: 'Empiece a escribir para buscar...',
+        to_navigate: 'para navegar',
+        to_select: 'para seleccionar',
+        for_new_tab: 'para nueva pestaña',
+        to_close: 'para cerrar',
+    },
+];
+
+const enTerms = [
+    {
+        search_placeholder: 'Search...',
+        trigger_placeholder: 'Search or press Ctrl+K',
+        no_results: 'No results found',
+        start_typing: 'Start typing to search...',
+        to_navigate: 'to navigate',
+        to_select: 'to select',
+        for_new_tab: 'for new tab',
+        to_close: 'to close',
+    },
+];
+
+const termTranslate = (lang, string) => {
+    let translate;
+    switch (lang) {
+        case 'pt_BR':
+            translate = ptTerms.map((term) => term[string]);
+            break;
+        case 'es_ES':
+            translate = esTerms.map((term) => term[string]);
+            break;
+        case 'en_US':
+            translate = enTerms.map((term) => term[string]);
+            break;
+        default:
+            translate = ptTerms.map((term) => term[string]);
+    }
+    return translate;
+};
+
 const searchAnywhereCss = ":host{display:block;width:100%}.search-trigger{width:100%;cursor:pointer}.search-trigger bds-input{cursor:pointer;pointer-events:none}.search-trigger bds-input ::part(native){cursor:pointer}.search-trigger .keyboard-shortcut{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:0 8px;background-color:var(--color-surface-2, rgb(237, 237, 237));border-radius:4px;height:24px;border:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}.search-trigger .keyboard-shortcut bds-typo{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0, 0, 0, 0.5);display:-ms-flexbox;display:flex;-ms-flex-align:start;align-items:flex-start;-ms-flex-pack:center;justify-content:center;padding-top:10vh;z-index:80000;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}.search-modal{background-color:var(--color-surface-0, rgb(255, 255, 255));border-radius:8px;-webkit-box-shadow:0px 4px 10px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 4px 10px var(--color-shadow-1, rgba(0, 0, 0, 0.16));width:90%;max-width:640px;max-height:70vh;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;overflow:hidden;border:1px solid var(--color-border-2, rgba(0, 0, 0, 0.16))}.search-modal-header{padding:16px;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}.search-modal-header .search-input-wrapper{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:12px}.search-modal-header .search-input-wrapper .search-icon{color:var(--color-content-ghost, rgb(140, 140, 140));-ms-flex-negative:0;flex-shrink:0}.search-modal-header .search-input-wrapper .search-input{-ms-flex:1;flex:1;border:none;outline:none;background:transparent;font-size:1rem;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;color:var(--color-content-default, rgb(40, 40, 40));padding:0}.search-modal-header .search-input-wrapper .search-input::-webkit-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-header .search-input-wrapper .search-input::-moz-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-header .search-input-wrapper .search-input:-ms-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-header .search-input-wrapper .search-input::-ms-input-placeholder{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-header .search-input-wrapper .search-input::placeholder{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-results{-ms-flex:1;flex:1;overflow-y:auto;padding:8px}.search-modal-results .search-result-item{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;cursor:pointer;-webkit-transition:all 0.2s ease;transition:all 0.2s ease;border:1px solid transparent}.search-modal-results .search-result-item:hover{background-color:var(--color-surface-1, rgb(246, 246, 246))}.search-modal-results .search-result-item--selected{background-color:var(--color-surface-2, rgb(237, 237, 237));border-color:var(--color-primary, rgb(30, 107, 241))}.search-modal-results .search-result-item .search-result-icon{-ms-flex-negative:0;flex-shrink:0;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:32px;height:32px;border-radius:8px;background-color:var(--color-surface-1, rgb(246, 246, 246))}.search-modal-results .search-result-item .search-result-icon bds-icon{color:var(--color-content-default, rgb(40, 40, 40))}.search-modal-results .search-result-item .search-result-content{-ms-flex:1;flex:1;min-width:0;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;gap:4px}.search-modal-results .search-result-item .search-result-content .search-result-title{color:var(--color-content-default, rgb(40, 40, 40));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-modal-results .search-result-item .search-result-content .search-result-description{color:var(--color-content-ghost, rgb(140, 140, 140));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-modal-results .search-result-item .search-result-hint{-ms-flex-negative:0;flex-shrink:0;min-width:80px;text-align:right}.search-modal-results .search-result-item .search-result-hint .keyboard-hint{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-results .no-results{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;padding:24px;text-align:center}.search-modal-results .no-results bds-typo{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-footer{padding:12px 16px;border-top:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));background-color:var(--color-surface-1, rgb(246, 246, 246))}.search-modal-footer .keyboard-hints{display:-ms-flexbox;display:flex;gap:16px;-ms-flex-pack:end;justify-content:flex-end;-ms-flex-wrap:wrap;flex-wrap:wrap}.search-modal-footer .keyboard-hints .hint{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.search-modal-footer .keyboard-hints .hint bds-typo{color:var(--color-content-ghost, rgb(140, 140, 140))}.search-modal-results::-webkit-scrollbar{width:8px}.search-modal-results::-webkit-scrollbar-track{background:transparent}.search-modal-results::-webkit-scrollbar-thumb{background:var(--color-border-2, rgba(0, 0, 0, 0.16));border-radius:4px}.search-modal-results::-webkit-scrollbar-thumb:hover{background:var(--color-border-3, rgba(0, 0, 0, 0.06))}@media (max-width: 768px){.search-modal{width:95%;max-height:80vh}.search-modal-overlay{padding-top:5vh}.search-result-hint{display:none}.keyboard-hints{-ms-flex-pack:center !important;justify-content:center !important}}";
 
 const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere extends H {
@@ -24,9 +81,9 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
          */
         this.searchText = '';
         /**
-         * Current selected index for keyboard navigation
+         * Current selected index for keyboard navigation (-1 means no selection)
          */
-        this.selectedIndex = 0;
+        this.selectedIndex = -1;
         /**
          * Internal filtered options for display
          */
@@ -37,13 +94,9 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
          */
         this.options = [];
         /**
-         * Placeholder text for the search input (when modal is open)
+         * Language for UI text translations (pt_BR, en_US, es_ES)
          */
-        this.placeholder = 'Search...';
-        /**
-         * Placeholder text for the trigger input (before modal opens)
-         */
-        this.triggerPlaceholder = 'Search or press Ctrl+K';
+        this.language = 'pt_BR';
         /**
          * If true, displays the keyboard shortcut hint on the trigger
          */
@@ -69,20 +122,32 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
                 case 'ArrowDown':
                     event.preventDefault();
                     if (resultsCount > 0) {
-                        this.selectedIndex = (this.selectedIndex + 1) % resultsCount;
+                        // If no selection, start at 0, otherwise move to next
+                        if (this.selectedIndex === -1) {
+                            this.selectedIndex = 0;
+                        }
+                        else {
+                            this.selectedIndex = (this.selectedIndex + 1) % resultsCount;
+                        }
                         this.scrollToSelectedOption();
                     }
                     break;
                 case 'ArrowUp':
                     event.preventDefault();
                     if (resultsCount > 0) {
-                        this.selectedIndex = (this.selectedIndex - 1 + resultsCount) % resultsCount;
+                        // If no selection, start at last item, otherwise move to previous
+                        if (this.selectedIndex === -1) {
+                            this.selectedIndex = resultsCount - 1;
+                        }
+                        else {
+                            this.selectedIndex = (this.selectedIndex - 1 + resultsCount) % resultsCount;
+                        }
                         this.scrollToSelectedOption();
                     }
                     break;
                 case 'Enter':
                     event.preventDefault();
-                    if (resultsCount > 0 && this.selectedIndex < resultsCount) {
+                    if (resultsCount > 0 && this.selectedIndex >= 0 && this.selectedIndex < resultsCount) {
                         const option = this.filteredOptions[this.selectedIndex];
                         const newTab = event.ctrlKey || event.metaKey;
                         this.selectOption(option, newTab);
@@ -134,7 +199,7 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
     async close() {
         this.isOpen = false;
         this.searchText = '';
-        this.selectedIndex = 0;
+        this.selectedIndex = -1;
         this.bdsSearchClose.emit();
     }
     /**
@@ -169,7 +234,7 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
         this.updateFilteredOptions();
     }
     onSearchTextChange() {
-        this.selectedIndex = 0;
+        this.selectedIndex = -1;
         this.bdsSearchChange.emit({ searchText: this.searchText });
         this.updateFilteredOptions();
     }
@@ -217,22 +282,46 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
             this.filteredOptions = parsedOptions;
         }
         else {
+            // Use Intl.Collator for case and accent-insensitive search
+            const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
             const searchLower = this.searchText.toLowerCase();
             this.filteredOptions = parsedOptions.filter((option) => {
-                var _a, _b;
-                const titleMatch = (_a = option.title) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes(searchLower);
-                const descriptionMatch = (_b = option.description) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes(searchLower);
-                return titleMatch || descriptionMatch;
+                const title = (option.title || '').toLowerCase();
+                const description = (option.description || '').toLowerCase();
+                // Check if search text is contained in title or description
+                // We need to check substring matching, not just equality
+                return title.includes(searchLower) || description.includes(searchLower) ||
+                    this.fuzzyMatch(title, searchLower, collator) ||
+                    this.fuzzyMatch(description, searchLower, collator);
             });
         }
     }
+    /**
+     * Performs accent-insensitive substring matching using Intl.Collator
+     */
+    fuzzyMatch(text, search, collator) {
+        if (!text || !search)
+            return false;
+        // Try to find the search string within the text using accent-insensitive comparison
+        for (let i = 0; i <= text.length - search.length; i++) {
+            const substring = text.substring(i, i + search.length);
+            if (collator.compare(substring, search) === 0) {
+                return true;
+            }
+        }
+        return false;
+    }
     renderTrigger() {
-        return (h("div", { class: "search-trigger", onClick: this.handleTriggerClick }, h("bds-input", { icon: "search", placeholder: this.triggerPlaceholder, readonly: true, dataTest: "search-anywhere-trigger" }, this.showShortcut && (h("div", { slot: "input-right", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
+        const placeholderText = this.triggerPlaceholder || termTranslate(this.language, 'trigger_placeholder');
+        return (h("div", { class: "search-trigger", onClick: this.handleTriggerClick }, h("bds-input", { icon: "search", placeholder: placeholderText, readonly: true, dataTest: "search-anywhere-trigger" }, this.showShortcut && (h("div", { slot: "input-right", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
     }
     renderResults() {
         const displayOptions = this.filteredOptions.slice(0, this.maxResults);
         if (displayOptions.length === 0) {
-            return (h("div", { class: "no-results" }, h("bds-typo", { variant: "fs-14", bold: "regular" }, this.searchText.trim() === '' ? 'Start typing to search...' : 'No results found')));
+            const message = this.searchText.trim() === ''
+                ? termTranslate(this.language, 'start_typing')
+                : termTranslate(this.language, 'no_results');
+            return (h("div", { class: "no-results" }, h("bds-typo", { variant: "fs-14", bold: "regular" }, message)));
         }
         return displayOptions.map((option, index) => (h("div", { key: option.value, "data-index": index, class: {
                 'search-result-item': true,
@@ -243,10 +332,11 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
         if (!this.isOpen) {
             return null;
         }
-        return (h("div", { class: "search-modal-overlay", onClick: this.handleModalClick }, h("div", { class: "search-modal", onKeyDown: this.handleModalKeydown }, h("div", { class: "search-modal-header" }, h("div", { class: "search-input-wrapper" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("input", { ref: (el) => (this.inputElement = el), type: "text", class: "search-input", placeholder: this.placeholder, value: this.searchText, onInput: this.handleInputChange, "data-test": "search-anywhere-input" }))), h("div", { class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("div", { class: "search-modal-footer" }, h("div", { class: "keyboard-hints" }, h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 to navigate")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 to select")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 for new tab")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc to close")))))));
+        const placeholderText = this.placeholder || termTranslate(this.language, 'search_placeholder');
+        return (h("div", { class: "search-modal-overlay", onClick: this.handleModalClick }, h("div", { class: "search-modal", onKeyDown: this.handleModalKeydown }, h("div", { class: "search-modal-header" }, h("div", { class: "search-input-wrapper" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("input", { ref: (el) => (this.inputElement = el), type: "text", class: "search-input", placeholder: placeholderText, value: this.searchText, onInput: this.handleInputChange, "data-test": "search-anywhere-input" }))), h("div", { class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("div", { class: "search-modal-footer" }, h("div", { class: "keyboard-hints" }, h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 ", termTranslate(this.language, 'to_navigate'))), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 ", termTranslate(this.language, 'to_select'))), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 ", termTranslate(this.language, 'for_new_tab'))), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc ", termTranslate(this.language, 'to_close'))))))));
     }
     render() {
-        return (h(Host, { key: '6cf2a68a9d8dbd04a849b6ba09c407c3424c762c' }, this.renderTrigger(), this.renderModal()));
+        return (h(Host, { key: 'b979d1cb7d109e74598af428d4e1036847963e5a' }, this.renderTrigger(), this.renderModal()));
     }
     get el() { return this; }
     static get watchers() { return {
@@ -257,6 +347,7 @@ const SearchAnywhere = /*@__PURE__*/ proxyCustomElement(class SearchAnywhere ext
     static get style() { return searchAnywhereCss; }
 }, [1, "bds-search-anywhere", {
         "options": [1],
+        "language": [1],
         "placeholder": [1],
         "triggerPlaceholder": [1, "trigger-placeholder"],
         "showShortcut": [4, "show-shortcut"],

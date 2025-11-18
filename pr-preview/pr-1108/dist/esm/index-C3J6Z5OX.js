@@ -274,10 +274,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-progress-bar.entry.js').then(processMod, consoleError);
-                case 'bds-search-anywhere':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-search-anywhere.entry.js').then(processMod, consoleError);
                 case 'bds-select-chips':
                     return import(
                       /* webpackMode: "lazy" */
@@ -438,6 +434,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-rich-text.entry.js').then(processMod, consoleError);
+                case 'bds-search-anywhere':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-search-anywhere.entry.js').then(processMod, consoleError);
                 case 'bds-icon':
                     return import(
                       /* webpackMode: "lazy" */

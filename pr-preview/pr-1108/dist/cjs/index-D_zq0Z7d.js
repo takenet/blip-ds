@@ -294,10 +294,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-progress-bar.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-search-anywhere.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-search-anywhere.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-select-chips.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -458,6 +454,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-rich-text.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-search-anywhere.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-search-anywhere.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-icon.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

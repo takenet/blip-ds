@@ -63,6 +63,7 @@ import { progressBarColor, progressBarSize } from "./components/progress-bar/pro
 import { languages as languages2 } from "./components/rict-text/rich-text-interface";
 import { positionBar } from "./components/rict-text/rich-text";
 import { SearchAnywhereChangeEventDetail, SearchAnywhereOption, SearchAnywhereSelectEventDetail } from "./components/search-anywhere/search-anywhere-interface";
+import { languages as languages3 } from "./components/search-anywhere/languages";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -75,7 +76,7 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages3 } from "./components/upload/languages";
+import { languages as languages4 } from "./components/upload/languages";
 export { collapses } from "./components/accordion/accordion-group";
 export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 export { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
@@ -134,6 +135,7 @@ export { progressBarColor, progressBarSize } from "./components/progress-bar/pro
 export { languages as languages2 } from "./components/rict-text/rich-text-interface";
 export { positionBar } from "./components/rict-text/rich-text";
 export { SearchAnywhereChangeEventDetail, SearchAnywhereOption, SearchAnywhereSelectEventDetail } from "./components/search-anywhere/search-anywhere-interface";
+export { languages as languages3 } from "./components/search-anywhere/languages";
 export { TypeOption } from "./components/select-option/select-option";
 export { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 export { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -146,7 +148,7 @@ export { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-export { languages as languages3 } from "./components/upload/languages";
+export { languages as languages4 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -2747,6 +2749,11 @@ export namespace Components {
          */
         "getSelectedIndex": () => Promise<number>;
         /**
+          * Language for UI text translations (pt_BR, en_US, es_ES)
+          * @default 'pt_BR'
+         */
+        "language"?: languages3;
+        /**
           * Maximum number of results to display
           * @default 10
          */
@@ -2761,8 +2768,7 @@ export namespace Components {
          */
         "options"?: string | SearchAnywhereOption[];
         /**
-          * Placeholder text for the search input (when modal is open)
-          * @default 'Search...'
+          * Placeholder text for the search input (when modal is open) If not provided, uses translated default based on language prop
          */
         "placeholder"?: string;
         /**
@@ -2771,8 +2777,7 @@ export namespace Components {
          */
         "showShortcut"?: boolean;
         /**
-          * Placeholder text for the trigger input (before modal opens)
-          * @default 'Search or press Ctrl+K'
+          * Placeholder text for the trigger input (before modal opens) If not provided, uses translated default based on language prop
          */
         "triggerPlaceholder"?: string;
     }
@@ -3647,7 +3652,7 @@ export namespace Components {
           * Set the language for fixed texts.
           * @default 'pt_BR'
          */
-        "language"?: languages3;
+        "language"?: languages4;
         /**
           * Used to allow upload multiple files.
          */
@@ -8146,6 +8151,11 @@ declare namespace LocalJSX {
     }
     interface BdsSearchAnywhere {
         /**
+          * Language for UI text translations (pt_BR, en_US, es_ES)
+          * @default 'pt_BR'
+         */
+        "language"?: languages3;
+        /**
           * Maximum number of results to display
           * @default 10
          */
@@ -8172,8 +8182,7 @@ declare namespace LocalJSX {
          */
         "options"?: string | SearchAnywhereOption[];
         /**
-          * Placeholder text for the search input (when modal is open)
-          * @default 'Search...'
+          * Placeholder text for the search input (when modal is open) If not provided, uses translated default based on language prop
          */
         "placeholder"?: string;
         /**
@@ -8182,8 +8191,7 @@ declare namespace LocalJSX {
          */
         "showShortcut"?: boolean;
         /**
-          * Placeholder text for the trigger input (before modal opens)
-          * @default 'Search or press Ctrl+K'
+          * Placeholder text for the trigger input (before modal opens) If not provided, uses translated default based on language prop
          */
         "triggerPlaceholder"?: string;
     }
@@ -9062,7 +9070,7 @@ declare namespace LocalJSX {
           * Set the language for fixed texts.
           * @default 'pt_BR'
          */
-        "language"?: languages3;
+        "language"?: languages4;
         /**
           * Used to allow upload multiple files.
          */
