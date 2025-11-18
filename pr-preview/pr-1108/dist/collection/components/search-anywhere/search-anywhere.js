@@ -77,8 +77,7 @@ export class SearchAnywhere {
             }
         };
         this.handleInputChange = (event) => {
-            const target = event.target;
-            this.searchText = target.value;
+            this.searchText = event.detail.value || '';
         };
         this.handleTriggerClick = () => {
             this.open();
@@ -100,9 +99,8 @@ export class SearchAnywhere {
             const newTab = event.ctrlKey || event.metaKey;
             this.selectOption(option, newTab);
         };
-        this.handleModalClick = (event) => {
-            // Close modal when clicking the backdrop
-            if (event.target === event.currentTarget) {
+        this.handleModalChanged = (event) => {
+            if (event.detail.modalStatus === 'closed' && this.isOpen) {
                 this.close();
             }
         };
@@ -112,13 +110,40 @@ export class SearchAnywhere {
      */
     async open() {
         this.isOpen = true;
+        if (this.modalComponent && typeof this.modalComponent.toggle === 'function') {
+            try {
+                await this.modalComponent.toggle();
+            }
+            catch (e) {
+                // Silently fail if toggle is not available (e.g., in tests)
+            }
+        }
         this.bdsSearchOpen.emit();
+        // Focus input after modal opens
+        setTimeout(async () => {
+            if (this.searchInputComponent && typeof this.searchInputComponent.setFocus === 'function') {
+                try {
+                    await this.searchInputComponent.setFocus();
+                }
+                catch (e) {
+                    // Silently fail if setFocus is not available (e.g., in tests)
+                }
+            }
+        }, 100);
     }
     /**
      * Closes the search modal programmatically
      */
     async close() {
         this.isOpen = false;
+        if (this.modalComponent && this.isOpen && typeof this.modalComponent.toggle === 'function') {
+            try {
+                await this.modalComponent.toggle();
+            }
+            catch (e) {
+                // Silently fail if toggle is not available (e.g., in tests)
+            }
+        }
         this.searchText = '';
         this.selectedIndex = 0;
         this.bdsSearchClose.emit();
@@ -162,9 +187,15 @@ export class SearchAnywhere {
     onIsOpenChange() {
         if (this.isOpen) {
             // Focus input when modal opens
-            setTimeout(() => {
-                var _a;
-                (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.focus();
+            setTimeout(async () => {
+                if (this.searchInputComponent && typeof this.searchInputComponent.setFocus === 'function') {
+                    try {
+                        await this.searchInputComponent.setFocus();
+                    }
+                    catch (e) {
+                        // Silently fail if setFocus is not available (e.g., in tests)
+                    }
+                }
             }, 100);
         }
     }
@@ -213,26 +244,23 @@ export class SearchAnywhere {
         }
     }
     renderTrigger() {
-        return (h("div", { class: "search-trigger", onClick: this.handleTriggerClick }, h("bds-input", { icon: "search", placeholder: this.triggerPlaceholder, readonly: true, dataTest: "search-anywhere-trigger" }, this.showShortcut && (h("div", { slot: "input-right", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
+        return (h("bds-paper", { elevation: "static", "bg-color": "surface-1" }, h("bds-input", { icon: "search", placeholder: this.triggerPlaceholder, readonly: true, dataTest: "search-anywhere-trigger", onClick: this.handleTriggerClick }, this.showShortcut && (h("bds-grid", { slot: "input-right", padding: "x-half", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
     }
     renderResults() {
         const displayOptions = this.filteredOptions.slice(0, this.maxResults);
         if (displayOptions.length === 0) {
-            return (h("div", { class: "no-results" }, h("bds-typo", { variant: "fs-14", bold: "regular" }, this.searchText.trim() === '' ? 'Start typing to search...' : 'No results found')));
+            return (h("bds-grid", { direction: "column", "align-items": "center", padding: "4" }, h("bds-typo", { variant: "fs-14", bold: "regular" }, this.searchText.trim() === '' ? 'Start typing to search...' : 'No results found')));
         }
-        return displayOptions.map((option, index) => (h("div", { key: option.value, "data-index": index, class: {
+        return displayOptions.map((option, index) => (h("bds-paper", { key: option.value, "data-index": index, elevation: "static", "bg-color": index === this.selectedIndex ? 'surface-2' : 'surface-0', class: {
                 'search-result-item': true,
                 'search-result-item--selected': index === this.selectedIndex,
-            }, onClick: (event) => this.handleResultClick(option, event) }, option.icon && (h("div", { class: "search-result-icon" }, h("bds-icon", { name: option.icon, size: "medium" }))), h("div", { class: "search-result-content" }, h("bds-typo", { variant: "fs-16", bold: index === this.selectedIndex ? 'bold' : 'regular', class: "search-result-title" }, option.title), option.description && (h("bds-typo", { variant: "fs-12", class: "search-result-description" }, option.description))), h("div", { class: "search-result-hint" }, h("bds-typo", { variant: "fs-10", class: "keyboard-hint" }, index === this.selectedIndex ? '↵ to select' : '')))));
+            }, onClick: (event) => this.handleResultClick(option, event) }, h("bds-grid", { direction: "row", "align-items": "center", gap: "2", padding: "2" }, option.icon && (h("bds-grid", { class: "search-result-icon" }, h("bds-icon", { name: option.icon, size: "medium" }))), h("bds-grid", { direction: "column", gap: "half", class: "search-result-content" }, h("bds-typo", { variant: "fs-16", bold: index === this.selectedIndex ? 'bold' : 'regular', class: "search-result-title" }, option.title), option.description && (h("bds-typo", { variant: "fs-12", class: "search-result-description" }, option.description))), h("bds-grid", { class: "search-result-hint" }, h("bds-typo", { variant: "fs-10", class: "keyboard-hint" }, index === this.selectedIndex ? '↵ to select' : ''))))));
     }
     renderModal() {
-        if (!this.isOpen) {
-            return null;
-        }
-        return (h("div", { class: "search-modal-overlay", onClick: this.handleModalClick }, h("div", { class: "search-modal", onKeyDown: this.handleModalKeydown }, h("div", { class: "search-modal-header" }, h("div", { class: "search-input-wrapper" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("input", { ref: (el) => (this.inputElement = el), type: "text", class: "search-input", placeholder: this.placeholder, value: this.searchText, onInput: this.handleInputChange, "data-test": "search-anywhere-input" }))), h("div", { class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("div", { class: "search-modal-footer" }, h("div", { class: "keyboard-hints" }, h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 to navigate")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 to select")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 for new tab")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc to close")))))));
+        return (h("bds-modal", { ref: (el) => (this.modalComponent = el), open: this.isOpen, "close-button": false, "outzone-close": true, size: "dynamic", onBdsModalChanged: this.handleModalChanged }, h("bds-grid", { direction: "column", gap: "none", class: "search-modal-content", onKeyDown: this.handleModalKeydown }, h("bds-grid", { direction: "row", "align-items": "center", padding: "3", gap: "2", class: "search-modal-header" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("bds-input", { ref: (el) => (this.searchInputComponent = el), type: "text", placeholder: this.placeholder, value: this.searchText, onBdsChange: this.handleInputChange, dataTest: "search-anywhere-input" })), h("bds-grid", { direction: "column", gap: "none", class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("bds-grid", { direction: "row", "justify-content": "center", gap: "3", padding: "2", class: "search-modal-footer" }, h("bds-grid", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 to navigate")), h("bds-grid", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 to select")), h("bds-grid", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 for new tab")), h("bds-grid", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc to close"))))));
     }
     render() {
-        return (h(Host, { key: '6cf2a68a9d8dbd04a849b6ba09c407c3424c762c' }, this.renderTrigger(), this.renderModal()));
+        return (h(Host, { key: 'f909a5d748f07770c60fe43bcfcce987e264a514' }, this.renderTrigger(), this.renderModal()));
     }
     static get is() { return "bds-search-anywhere"; }
     static get encapsulation() { return "shadow"; }

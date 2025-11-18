@@ -238,10 +238,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-menu-separation.entry.js').then(processMod, consoleError);
-                case 'bds-modal':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-modal.entry.js').then(processMod, consoleError);
                 case 'bds-modal-action':
                     return import(
                       /* webpackMode: "lazy" */
@@ -362,6 +358,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-list-item.entry.js').then(processMod, consoleError);
+                case 'bds-modal':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-modal.entry.js').then(processMod, consoleError);
                 case 'bds-select':
                     return import(
                       /* webpackMode: "lazy" */
