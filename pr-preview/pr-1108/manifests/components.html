@@ -22409,6 +22409,7 @@ export const Properties = (args) =&gt; {
         trigger-placeholder={args.triggerPlaceholder}
         show-shortcut={args.showShortcut}
         max-results={args.maxResults}
+        language={args.language}
       /&gt;
       
       &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; margin=&quot;t-4&quot;&gt;
@@ -22430,9 +22431,15 @@ Properties.args = {
   triggerPlaceholder: &#39;Buscar ou pressione Ctrl+K&#39;,
   showShortcut: true,
   maxResults: 10,
+  language: &#39;pt_BR&#39;,
 };
 
 Properties.argTypes = {
+  language: {
+    control: { type: &#39;select&#39; },
+    options: [&#39;pt_BR&#39;, &#39;en_US&#39;, &#39;es_ES&#39;],
+    description: &#39;Idioma para textos da interface (pt_BR, en_US, es_ES)&#39;,
+  },
   placeholder: {
     control: &#39;text&#39;,
     description: &#39;Texto placeholder para o input de busca no modal&#39;,
@@ -22768,7 +22775,8 @@ export const FrameworkReact = () =&gt; {
                 placeholder=&quot;Buscar...&quot;
                 trigger-placeholder=&quot;Buscar ou pressione Ctrl+K&quot;
                 show-shortcut
-                max-results={10} /&gt;
+                max-results={10}
+                language=&quot;pt_BR&quot; /&gt;
             &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; margin=&quot;t-4&quot;&gt;
                 &lt;bds-typo variant=&quot;fs-14&quot; bold=&quot;bold&quot;&gt;Última Busca:&lt;/bds-typo&gt;
                 &lt;bds-typo variant=&quot;fs-14&quot;&gt;{lastSearch || &#39;(nenhuma)&#39;}&lt;/bds-typo&gt;
@@ -52063,6 +52071,7 @@ export const Properties = (args) =&gt; {
         trigger-placeholder={args.triggerPlaceholder}
         show-shortcut={args.showShortcut}
         max-results={args.maxResults}
+        language={args.language}
       /&gt;
       
       &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; margin=&quot;t-4&quot;&gt;
@@ -52084,9 +52093,15 @@ Properties.args = {
   triggerPlaceholder: &#39;Buscar ou pressione Ctrl+K&#39;,
   showShortcut: true,
   maxResults: 10,
+  language: &#39;pt_BR&#39;,
 };
 
 Properties.argTypes = {
+  language: {
+    control: { type: &#39;select&#39; },
+    options: [&#39;pt_BR&#39;, &#39;en_US&#39;, &#39;es_ES&#39;],
+    description: &#39;Idioma para textos da interface (pt_BR, en_US, es_ES)&#39;,
+  },
   placeholder: {
     control: &#39;text&#39;,
     description: &#39;Texto placeholder para o input de busca no modal&#39;,
@@ -52422,7 +52437,8 @@ export const FrameworkReact = () =&gt; {
                 placeholder=&quot;Buscar...&quot;
                 trigger-placeholder=&quot;Buscar ou pressione Ctrl+K&quot;
                 show-shortcut
-                max-results={10} /&gt;
+                max-results={10}
+                language=&quot;pt_BR&quot; /&gt;
             &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; margin=&quot;t-4&quot;&gt;
                 &lt;bds-typo variant=&quot;fs-14&quot; bold=&quot;bold&quot;&gt;Última Busca:&lt;/bds-typo&gt;
                 &lt;bds-typo variant=&quot;fs-14&quot;&gt;{lastSearch || &#39;(nenhuma)&#39;}&lt;/bds-typo&gt;
