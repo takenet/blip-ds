@@ -2,7 +2,6 @@ import { EventEmitter } from '../../stencil-public-runtime';
 import { SearchAnywhereOption, SearchAnywhereChangeEventDetail, SearchAnywhereSelectEventDetail } from './search-anywhere-interface';
 export declare class SearchAnywhere {
     private searchInputComponent?;
-    private modalComponent?;
     private resultsContainerElement?;
     el: HTMLElement;
     /**
@@ -95,6 +94,5 @@ export declare class SearchAnywhere {
     private renderTrigger;
     private renderResults;
     private renderModal;
-    private handleModalChanged;
     render(): any;
 }

@@ -258,6 +258,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-menu-separation.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-modal.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-modal.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-modal-action.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -378,10 +382,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-list-item.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-modal.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-modal.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-select.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
