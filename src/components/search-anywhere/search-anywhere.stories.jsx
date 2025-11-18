@@ -96,6 +96,7 @@ export const Properties = (args) => {
         trigger-placeholder={args.triggerPlaceholder}
         show-shortcut={args.showShortcut}
         max-results={args.maxResults}
+        language={args.language}
       />
       
       <bds-grid direction="column" gap="2" margin="t-4">
@@ -117,9 +118,15 @@ Properties.args = {
   triggerPlaceholder: 'Buscar ou pressione Ctrl+K',
   showShortcut: true,
   maxResults: 10,
+  language: 'pt_BR',
 };
 
 Properties.argTypes = {
+  language: {
+    control: { type: 'select' },
+    options: ['pt_BR', 'en_US', 'es_ES'],
+    description: 'Idioma para textos da interface (pt_BR, en_US, es_ES)',
+  },
   placeholder: {
     control: 'text',
     description: 'Texto placeholder para o input de busca no modal',
