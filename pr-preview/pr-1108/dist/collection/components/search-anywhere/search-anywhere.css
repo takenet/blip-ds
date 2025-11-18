@@ -66,17 +66,16 @@
 }
 
 .search-modal {
+  background-color: var(--color-surface-0, rgb(255, 255, 255));
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px var(--color-shadow-1, rgba(0, 0, 0, 0.16));
   width: 90%;
   max-width: 640px;
   max-height: 70vh;
-  border-radius: 8px;
-}
-
-.search-modal-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-height: 70vh;
+  overflow: hidden;
+  border: 1px solid var(--color-border-2, rgba(0, 0, 0, 0.16));
 }
 
 .search-modal-header {
@@ -92,16 +91,18 @@
   color: var(--color-content-ghost, rgb(140, 140, 140));
   flex-shrink: 0;
 }
-.search-modal-header .search-input-wrapper bds-input {
+.search-modal-header .search-input-wrapper .search-input {
   flex: 1;
-}
-.search-modal-header .search-input-wrapper bds-input ::part(input-container) {
   border: none;
+  outline: none;
   background: transparent;
-}
-.search-modal-header .search-input-wrapper bds-input ::part(native) {
   font-size: 1rem;
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  color: var(--color-content-default, rgb(40, 40, 40));
   padding: 0;
+}
+.search-modal-header .search-input-wrapper .search-input::placeholder {
+  color: var(--color-content-ghost, rgb(140, 140, 140));
 }
 
 .search-modal-results {

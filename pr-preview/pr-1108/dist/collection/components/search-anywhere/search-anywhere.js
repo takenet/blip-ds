@@ -77,7 +77,8 @@ export class SearchAnywhere {
             }
         };
         this.handleInputChange = (event) => {
-            this.searchText = event.detail.value || '';
+            const target = event.target;
+            this.searchText = target.value;
         };
         this.handleTriggerClick = () => {
             this.open();
@@ -99,6 +100,12 @@ export class SearchAnywhere {
             const newTab = event.ctrlKey || event.metaKey;
             this.selectOption(option, newTab);
         };
+        this.handleModalClick = (event) => {
+            // Close modal when clicking the backdrop
+            if (event.target === event.currentTarget) {
+                this.close();
+            }
+        };
     }
     /**
      * Opens the search modal programmatically
@@ -106,17 +113,6 @@ export class SearchAnywhere {
     async open() {
         this.isOpen = true;
         this.bdsSearchOpen.emit();
-        // Focus input after modal opens
-        setTimeout(async () => {
-            if (this.searchInputComponent && typeof this.searchInputComponent.setFocus === 'function') {
-                try {
-                    await this.searchInputComponent.setFocus();
-                }
-                catch (e) {
-                    // Silently fail if setFocus is not available (e.g., in tests)
-                }
-            }
-        }, 100);
     }
     /**
      * Closes the search modal programmatically
@@ -166,15 +162,9 @@ export class SearchAnywhere {
     onIsOpenChange() {
         if (this.isOpen) {
             // Focus input when modal opens
-            setTimeout(async () => {
-                if (this.searchInputComponent && typeof this.searchInputComponent.setFocus === 'function') {
-                    try {
-                        await this.searchInputComponent.setFocus();
-                    }
-                    catch (e) {
-                        // Silently fail if setFocus is not available (e.g., in tests)
-                    }
-                }
+            setTimeout(() => {
+                var _a;
+                (_a = this.inputElement) === null || _a === void 0 ? void 0 : _a.focus();
             }, 100);
         }
     }
@@ -223,7 +213,7 @@ export class SearchAnywhere {
         }
     }
     renderTrigger() {
-        return (h("div", { class: "search-trigger" }, h("bds-input", { icon: "search", placeholder: this.triggerPlaceholder, readonly: true, dataTest: "search-anywhere-trigger", onClick: this.handleTriggerClick }, this.showShortcut && (h("div", { slot: "input-right", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
+        return (h("div", { class: "search-trigger", onClick: this.handleTriggerClick }, h("bds-input", { icon: "search", placeholder: this.triggerPlaceholder, readonly: true, dataTest: "search-anywhere-trigger" }, this.showShortcut && (h("div", { slot: "input-right", class: "keyboard-shortcut" }, h("bds-typo", { variant: "fs-12", bold: "regular" }, "\u2318K"))))));
     }
     renderResults() {
         const displayOptions = this.filteredOptions.slice(0, this.maxResults);
@@ -239,10 +229,10 @@ export class SearchAnywhere {
         if (!this.isOpen) {
             return null;
         }
-        return (h("div", { class: "search-modal-overlay", onClick: (e) => e.target === e.currentTarget && this.close() }, h("bds-paper", { elevation: "primary", class: "search-modal" }, h("div", { class: "search-modal-content", onKeyDown: this.handleModalKeydown }, h("div", { class: "search-modal-header" }, h("div", { class: "search-input-wrapper" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("bds-input", { ref: (el) => (this.searchInputComponent = el), type: "text", placeholder: this.placeholder, value: this.searchText, onBdsChange: this.handleInputChange, dataTest: "search-anywhere-input" }))), h("div", { class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("div", { class: "search-modal-footer" }, h("div", { class: "keyboard-hints" }, h("div", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 to navigate")), h("div", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 to select")), h("div", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 for new tab")), h("div", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc to close"))))))));
+        return (h("div", { class: "search-modal-overlay", onClick: this.handleModalClick }, h("div", { class: "search-modal", onKeyDown: this.handleModalKeydown }, h("div", { class: "search-modal-header" }, h("div", { class: "search-input-wrapper" }, h("bds-icon", { name: "search", size: "medium", class: "search-icon" }), h("input", { ref: (el) => (this.inputElement = el), type: "text", class: "search-input", placeholder: this.placeholder, value: this.searchText, onInput: this.handleInputChange, "data-test": "search-anywhere-input" }))), h("div", { class: "search-modal-results", ref: (el) => (this.resultsContainerElement = el) }, this.renderResults()), h("div", { class: "search-modal-footer" }, h("div", { class: "keyboard-hints" }, h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2191\u2193 to navigate")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u21B5 to select")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "\u2318+\u21B5 for new tab")), h("span", { class: "hint" }, h("bds-typo", { variant: "fs-10" }, "esc to close")))))));
     }
     render() {
-        return (h(Host, { key: '6e15874aaa08b7d2709e0899ed30499363e85243' }, this.renderTrigger(), this.renderModal()));
+        return (h(Host, { key: '6cf2a68a9d8dbd04a849b6ba09c407c3424c762c' }, this.renderTrigger(), this.renderModal()));
     }
     static get is() { return "bds-search-anywhere"; }
     static get encapsulation() { return "shadow"; }
