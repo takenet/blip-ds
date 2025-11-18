@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property             | Attribute             | Description                                                                                                           | Type                               | Default                    |
-| -------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | -------------------------- |
-| `maxResults`         | `max-results`         | Maximum number of results to display                                                                                  | `number`                           | `10`                       |
-| `options`            | `options`             | Options to be displayed in the search results. Can be passed as JSON string or array of SearchAnywhereOption objects. | `SearchAnywhereOption[] \| string` | `[]`                       |
-| `placeholder`        | `placeholder`         | Placeholder text for the search input (when modal is open)                                                            | `string`                           | `'Search...'`              |
-| `showShortcut`       | `show-shortcut`       | If true, displays the keyboard shortcut hint on the trigger                                                           | `boolean`                          | `true`                     |
-| `triggerPlaceholder` | `trigger-placeholder` | Placeholder text for the trigger input (before modal opens)                                                           | `string`                           | `'Search or press Ctrl+K'` |
+| Property             | Attribute             | Description                                                                                                                 | Type                               | Default     |
+| -------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
+| `language`           | `language`            | Language for UI text translations (pt_BR, en_US, es_ES)                                                                     | `"en_US" \| "es_ES" \| "pt_BR"`    | `'pt_BR'`   |
+| `maxResults`         | `max-results`         | Maximum number of results to display                                                                                        | `number`                           | `10`        |
+| `options`            | `options`             | Options to be displayed in the search results. Can be passed as JSON string or array of SearchAnywhereOption objects.       | `SearchAnywhereOption[] \| string` | `[]`        |
+| `placeholder`        | `placeholder`         | Placeholder text for the search input (when modal is open) If not provided, uses translated default based on language prop  | `string`                           | `undefined` |
+| `showShortcut`       | `show-shortcut`       | If true, displays the keyboard shortcut hint on the trigger                                                                 | `boolean`                          | `true`      |
+| `triggerPlaceholder` | `trigger-placeholder` | Placeholder text for the trigger input (before modal opens) If not provided, uses translated default based on language prop | `string`                           | `undefined` |
 
 
 ## Events

@@ -15,6 +15,7 @@ import {
   SearchAnywhereChangeEventDetail,
   SearchAnywhereSelectEventDetail,
 } from './search-anywhere-interface';
+import { termTranslate, languages } from './languages';
 
 @Component({
   tag: 'bds-search-anywhere',
@@ -38,9 +39,9 @@ export class SearchAnywhere {
   @State() searchText: string = '';
 
   /**
-   * Current selected index for keyboard navigation
+   * Current selected index for keyboard navigation (-1 means no selection)
    */
-  @State() selectedIndex: number = 0;
+  @State() selectedIndex: number = -1;
 
   /**
    * Internal filtered options for display
@@ -54,14 +55,21 @@ export class SearchAnywhere {
   @Prop() options?: string | SearchAnywhereOption[] = [];
 
   /**
-   * Placeholder text for the search input (when modal is open)
+   * Language for UI text translations (pt_BR, en_US, es_ES)
    */
-  @Prop() placeholder?: string = 'Search...';
+  @Prop() language?: languages = 'pt_BR';
+
+  /**
+   * Placeholder text for the search input (when modal is open)
+   * If not provided, uses translated default based on language prop
+   */
+  @Prop() placeholder?: string;
 
   /**
    * Placeholder text for the trigger input (before modal opens)
+   * If not provided, uses translated default based on language prop
    */
-  @Prop() triggerPlaceholder?: string = 'Search or press Ctrl+K';
+  @Prop() triggerPlaceholder?: string;
 
   /**
    * If true, displays the keyboard shortcut hint on the trigger
@@ -109,7 +117,7 @@ export class SearchAnywhere {
   async close() {
     this.isOpen = false;
     this.searchText = '';
-    this.selectedIndex = 0;
+    this.selectedIndex = -1;
     this.bdsSearchClose.emit();
   }
 
@@ -157,7 +165,7 @@ export class SearchAnywhere {
 
   @Watch('searchText')
   onSearchTextChange() {
-    this.selectedIndex = 0;
+    this.selectedIndex = -1;
     this.bdsSearchChange.emit({ searchText: this.searchText });
     this.updateFilteredOptions();
   }
@@ -192,7 +200,12 @@ export class SearchAnywhere {
       case 'ArrowDown':
         event.preventDefault();
         if (resultsCount > 0) {
-          this.selectedIndex = (this.selectedIndex + 1) % resultsCount;
+          // If no selection, start at 0, otherwise move to next
+          if (this.selectedIndex === -1) {
+            this.selectedIndex = 0;
+          } else {
+            this.selectedIndex = (this.selectedIndex + 1) % resultsCount;
+          }
           this.scrollToSelectedOption();
         }
         break;
@@ -200,14 +213,19 @@ export class SearchAnywhere {
       case 'ArrowUp':
         event.preventDefault();
         if (resultsCount > 0) {
-          this.selectedIndex = (this.selectedIndex - 1 + resultsCount) % resultsCount;
+          // If no selection, start at last item, otherwise move to previous
+          if (this.selectedIndex === -1) {
+            this.selectedIndex = resultsCount - 1;
+          } else {
+            this.selectedIndex = (this.selectedIndex - 1 + resultsCount) % resultsCount;
+          }
           this.scrollToSelectedOption();
         }
         break;
 
       case 'Enter':
         event.preventDefault();
-        if (resultsCount > 0 && this.selectedIndex < resultsCount) {
+        if (resultsCount > 0 && this.selectedIndex >= 0 && this.selectedIndex < resultsCount) {
           const option = this.filteredOptions[this.selectedIndex];
           const newTab = event.ctrlKey || event.metaKey;
           this.selectOption(option, newTab);
@@ -253,13 +271,37 @@ export class SearchAnywhere {
     if (this.searchText.trim() === '') {
       this.filteredOptions = parsedOptions;
     } else {
+      // Use Intl.Collator for case and accent-insensitive search
+      const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
       const searchLower = this.searchText.toLowerCase();
+      
       this.filteredOptions = parsedOptions.filter((option) => {
-        const titleMatch = option.title?.toLowerCase().includes(searchLower);
-        const descriptionMatch = option.description?.toLowerCase().includes(searchLower);
-        return titleMatch || descriptionMatch;
+        const title = (option.title || '').toLowerCase();
+        const description = (option.description || '').toLowerCase();
+        
+        // Check if search text is contained in title or description
+        // We need to check substring matching, not just equality
+        return title.includes(searchLower) || description.includes(searchLower) ||
+               this.fuzzyMatch(title, searchLower, collator) || 
+               this.fuzzyMatch(description, searchLower, collator);
       });
     }
+  }
+
+  /**
+   * Performs accent-insensitive substring matching using Intl.Collator
+   */
+  private fuzzyMatch(text: string, search: string, collator: Intl.Collator): boolean {
+    if (!text || !search) return false;
+    
+    // Try to find the search string within the text using accent-insensitive comparison
+    for (let i = 0; i <= text.length - search.length; i++) {
+      const substring = text.substring(i, i + search.length);
+      if (collator.compare(substring, search) === 0) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private handleInputChange = (event: Event) => {
@@ -299,11 +341,12 @@ export class SearchAnywhere {
   };
 
   private renderTrigger() {
+    const placeholderText = this.triggerPlaceholder || termTranslate(this.language, 'trigger_placeholder');
     return (
       <div class="search-trigger" onClick={this.handleTriggerClick}>
         <bds-input
           icon="search"
-          placeholder={this.triggerPlaceholder}
+          placeholder={placeholderText}
           readonly={true}
           dataTest="search-anywhere-trigger"
         >
@@ -323,10 +366,13 @@ export class SearchAnywhere {
     const displayOptions = this.filteredOptions.slice(0, this.maxResults);
 
     if (displayOptions.length === 0) {
+      const message = this.searchText.trim() === '' 
+        ? termTranslate(this.language, 'start_typing')
+        : termTranslate(this.language, 'no_results');
       return (
         <div class="no-results">
           <bds-typo variant="fs-14" bold="regular">
-            {this.searchText.trim() === '' ? 'Start typing to search...' : 'No results found'}
+            {message}
           </bds-typo>
         </div>
       );
@@ -375,6 +421,8 @@ export class SearchAnywhere {
       return null;
     }
 
+    const placeholderText = this.placeholder || termTranslate(this.language, 'search_placeholder');
+
     return (
       <div class="search-modal-overlay" onClick={this.handleModalClick}>
         <div class="search-modal" onKeyDown={this.handleModalKeydown}>
@@ -385,7 +433,7 @@ export class SearchAnywhere {
                 ref={(el) => (this.inputElement = el)}
                 type="text"
                 class="search-input"
-                placeholder={this.placeholder}
+                placeholder={placeholderText}
                 value={this.searchText}
                 onInput={this.handleInputChange}
                 data-test="search-anywhere-input"
@@ -398,16 +446,16 @@ export class SearchAnywhere {
           <div class="search-modal-footer">
             <div class="keyboard-hints">
               <span class="hint">
-                <bds-typo variant="fs-10">↑↓ to navigate</bds-typo>
+                <bds-typo variant="fs-10">↑↓ {termTranslate(this.language, 'to_navigate')}</bds-typo>
               </span>
               <span class="hint">
-                <bds-typo variant="fs-10">↵ to select</bds-typo>
+                <bds-typo variant="fs-10">↵ {termTranslate(this.language, 'to_select')}</bds-typo>
               </span>
               <span class="hint">
-                <bds-typo variant="fs-10">⌘+↵ for new tab</bds-typo>
+                <bds-typo variant="fs-10">⌘+↵ {termTranslate(this.language, 'for_new_tab')}</bds-typo>
               </span>
               <span class="hint">
-                <bds-typo variant="fs-10">esc to close</bds-typo>
+                <bds-typo variant="fs-10">esc {termTranslate(this.language, 'to_close')}</bds-typo>
               </span>
             </div>
           </div>

@@ -348,6 +348,22 @@ describe('bds-search-anywhere e2e', () => {
       { value: '3', title: 'Option 3' },
     ];
 
+    it('should have no selection initially when modal opens', async () => {
+      const page = await newE2EPage();
+      await page.setContent('<bds-search-anywhere></bds-search-anywhere>');
+      await page.waitForChanges();
+
+      const element = await page.find('bds-search-anywhere');
+      element.setProperty('options', options);
+      await page.waitForChanges();
+
+      await element.callMethod('open');
+      await page.waitForChanges();
+
+      const selectedIndex = await element.callMethod('getSelectedIndex');
+      expect(selectedIndex).toBe(-1);
+    });
+
     it('should navigate down with ArrowDown key', async () => {
       const page = await newE2EPage();
       await page.setContent('<bds-search-anywhere></bds-search-anywhere>');
@@ -360,12 +376,32 @@ describe('bds-search-anywhere e2e', () => {
       await element.callMethod('open');
       await page.waitForChanges();
 
-      // Press ArrowDown
+      // Press ArrowDown - should select first item (index 0)
       await page.keyboard.press('ArrowDown');
       await page.waitForChanges();
 
       const selectedIndex = await element.callMethod('getSelectedIndex');
-      expect(selectedIndex).toBe(1);
+      expect(selectedIndex).toBe(0);
+    });
+
+    it('should start at last item when pressing ArrowUp from no selection', async () => {
+      const page = await newE2EPage();
+      await page.setContent('<bds-search-anywhere></bds-search-anywhere>');
+      await page.waitForChanges();
+
+      const element = await page.find('bds-search-anywhere');
+      element.setProperty('options', options);
+      await page.waitForChanges();
+
+      await element.callMethod('open');
+      await page.waitForChanges();
+
+      // Press ArrowUp from no selection - should go to last item
+      await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
+
+      const selectedIndex = await element.callMethod('getSelectedIndex');
+      expect(selectedIndex).toBe(2);
     });
 
     it('should navigate up with ArrowUp key', async () => {
@@ -380,16 +416,16 @@ describe('bds-search-anywhere e2e', () => {
       await element.callMethod('open');
       await page.waitForChanges();
 
-      // Navigate down first
+      // Navigate down first to index 0
       await page.keyboard.press('ArrowDown');
       await page.waitForChanges();
 
-      // Then up
+      // Then up - should wrap to last item (index 2)
       await page.keyboard.press('ArrowUp');
       await page.waitForChanges();
 
       const selectedIndex = await element.callMethod('getSelectedIndex');
-      expect(selectedIndex).toBe(0);
+      expect(selectedIndex).toBe(2);
     });
 
     it('should wrap around when navigating past end', async () => {
@@ -404,10 +440,11 @@ describe('bds-search-anywhere e2e', () => {
       await element.callMethod('open');
       await page.waitForChanges();
 
-      // Navigate down 3 times (should wrap to first)
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
+      // Navigate down 4 times (0 -> 1 -> 2 -> 0, wraps to first)
+      await page.keyboard.press('ArrowDown'); // 0
+      await page.keyboard.press('ArrowDown'); // 1
+      await page.keyboard.press('ArrowDown'); // 2
+      await page.keyboard.press('ArrowDown'); // wraps to 0
       await page.waitForChanges();
 
       const selectedIndex = await element.callMethod('getSelectedIndex');
@@ -444,6 +481,11 @@ describe('bds-search-anywhere e2e', () => {
       await element.callMethod('open');
       await page.waitForChanges();
 
+      // Press ArrowDown to select first item
+      await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
+
+      // Then press Enter
       await page.keyboard.press('Enter');
       await page.waitForChanges();
 
@@ -523,6 +565,10 @@ describe('bds-search-anywhere e2e', () => {
       await element.callMethod('open');
       await page.waitForChanges();
 
+      // Press ArrowDown to select first item
+      await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
+
       const firstResult = await page.find('bds-search-anywhere >>> .search-result-item');
       expect(firstResult).toHaveClass('search-result-item--selected');
     });
@@ -556,7 +602,11 @@ describe('bds-search-anywhere e2e', () => {
       const resultItems = await page.findAll('bds-search-anywhere >>> .search-result-item');
       expect(resultItems.length).toBe(1);
 
-      // Select result
+      // Press ArrowDown to select the filtered result
+      await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
+
+      // Select result with Enter
       await page.keyboard.press('Enter');
       await page.waitForChanges();
 

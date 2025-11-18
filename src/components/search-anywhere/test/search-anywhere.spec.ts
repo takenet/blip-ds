@@ -25,8 +25,9 @@ describe('bds-search-anywhere', () => {
       const component = new SearchAnywhere();
       expect(component.isOpen).toBe(false);
       expect(component.searchText).toBe('');
-      expect(component.placeholder).toBe('Search...');
-      expect(component.triggerPlaceholder).toBe('Search or press Ctrl+K');
+      expect(component.placeholder).toBeUndefined(); // Uses translation based on language
+      expect(component.triggerPlaceholder).toBeUndefined(); // Uses translation based on language
+      expect(component.language).toBe('pt_BR'); // Default language
       expect(component.showShortcut).toBe(true);
       expect(component.maxResults).toBe(10);
     });
@@ -371,7 +372,7 @@ describe('bds-search-anywhere', () => {
       await component.close();
       await page.waitForChanges();
 
-      expect(instance.selectedIndex).toBe(0);
+      expect(instance.selectedIndex).toBe(-1);
     });
   });
 
