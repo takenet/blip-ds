@@ -135,6 +135,9 @@ const BdsAutocomplete = class {
       }
       this.bdsInput.emit(ev);
       if (this.nativeInput.value) {
+        if (!this.disabled && !this.isOpen) {
+          this.isOpen = true;
+        }
         await this.filterOptions(this.nativeInput.value);
       }
       else {
@@ -145,10 +148,6 @@ const BdsAutocomplete = class {
         else {
           this.setTimeoutFilter();
         }
-      }
-      if (this.isOpen === false) {
-        this.value = this.getSelectedValue();
-        this.setTimeoutFilter();
       }
     };
     this.intoView = null;
@@ -378,9 +377,6 @@ const BdsAutocomplete = class {
     for (const option of childOptions) {
       option.removeAttribute('invisible');
     }
-  }
-  getSelectedValue() {
-    return this.childOptionSelected?.value;
   }
   renderIcon() {
     return (this.icon && (index.h("div", { class: {
