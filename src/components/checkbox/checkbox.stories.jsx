@@ -12,7 +12,7 @@ export default {
 };
 
 export const Properties = (args) => (
-    <bds-checkbox label={args.label} name={args.name} disabled={args.disabled} checked={args.checked}></bds-checkbox>
+    <bds-checkbox label={args.label} name={args.name} disabled={args.disabled} checked={args.checked} indeterminate={args.indeterminate}></bds-checkbox>
 );
 
 
@@ -41,20 +41,127 @@ Properties.argTypes = {
     },
     control: 'boolean',
   },
+  indeterminate: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'When true, displays the checkbox in an indeterminate state (partial selection). Clicking will transition to checked state.',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
   label: 'Opção do checkbox',
   name: 'check',
   disabled: false,
-  checked: true
+  checked: true,
+  indeterminate: false
+};
+
+export const AllStates = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div>
+        <h4>Unchecked (Enabled)</h4>
+        <bds-checkbox label="Unchecked checkbox" name="unchecked"></bds-checkbox>
+      </div>
+      <div>
+        <h4>Checked (Enabled)</h4>
+        <bds-checkbox label="Checked checkbox" name="checked" checked></bds-checkbox>
+      </div>
+      <div>
+        <h4>Indeterminate (Enabled)</h4>
+        <bds-checkbox label="Indeterminate checkbox" name="indeterminate" indeterminate></bds-checkbox>
+      </div>
+      <div>
+        <h4>Unchecked (Disabled)</h4>
+        <bds-checkbox label="Unchecked disabled checkbox" name="unchecked-disabled" disabled></bds-checkbox>
+      </div>
+      <div>
+        <h4>Checked (Disabled)</h4>
+        <bds-checkbox label="Checked disabled checkbox" name="checked-disabled" checked disabled></bds-checkbox>
+      </div>
+      <div>
+        <h4>Indeterminate (Disabled)</h4>
+        <bds-checkbox label="Indeterminate disabled checkbox" name="indeterminate-disabled" indeterminate disabled></bds-checkbox>
+      </div>
+    </div>
+  )
+}
+
+AllStates.parameters = {
+  docs: {
+    description: {
+      story: 'Displays all possible states of the checkbox component: unchecked, checked, and indeterminate in both enabled and disabled variants.'
+    }
+  }
+};
+
+export const IndeterminateExample = () => {
+  useEffect(() => {
+    const parentCheckbox = document.getElementById('parent-checkbox');
+    const childCheckboxes = [
+      document.getElementById('child1'),
+      document.getElementById('child2'),
+      document.getElementById('child3')
+    ];
+
+    const updateParentState = () => {
+      const checkedCount = childCheckboxes.filter(cb => cb.checked).length;
+      
+      if (checkedCount === 0) {
+        parentCheckbox.checked = false;
+        parentCheckbox.indeterminate = false;
+      } else if (checkedCount === childCheckboxes.length) {
+        parentCheckbox.checked = true;
+        parentCheckbox.indeterminate = false;
+      } else {
+        parentCheckbox.indeterminate = true;
+      }
+    };
+
+    parentCheckbox.addEventListener('bdsChange', (e) => {
+      // When parent is clicked (from indeterminate), it becomes checked
+      // and all children should be checked
+      const isChecked = e.detail.checked;
+      childCheckboxes.forEach(cb => {
+        cb.checked = isChecked;
+      });
+      console.log('Parent changed:', e.detail);
+    });
+
+    childCheckboxes.forEach(cb => {
+      cb.addEventListener('bdsChange', () => {
+        updateParentState();
+      });
+    });
+  });
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <bds-checkbox id="parent-checkbox" label="Select all items" name="parent" indeterminate></bds-checkbox>
+      <div style={{ marginLeft: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <bds-checkbox id="child1" label="Item 1" name="child1" checked></bds-checkbox>
+        <bds-checkbox id="child2" label="Item 2" name="child2"></bds-checkbox>
+        <bds-checkbox id="child3" label="Item 3" name="child3" checked></bds-checkbox>
+      </div>
+    </div>
+  )
+}
+
+IndeterminateExample.parameters = {
+  docs: {
+    description: {
+      story: 'Demonstrates the indeterminate state usage with a parent-child checkbox relationship. When some (but not all) children are selected, the parent shows the indeterminate state. Clicking the parent when indeterminate will select all children.'
+    }
+  }
 };
 
 export const Events = () => {
   useEffect(() => {
     const checkbox = document.getElementById('check1');
     checkbox.addEventListener('bdsChange', (e) => {
-      console.log('Checked: ', e.detail.checked);
+      console.log('Checked: ', e.detail.checked, 'Indeterminate:', e.detail.indeterminate);
     });
   });
   return (

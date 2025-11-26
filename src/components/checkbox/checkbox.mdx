@@ -20,6 +20,22 @@ As seguintes propriedades são compartilhadas pelo Checkbox.
 
 <Controls />
 <br></br>
+
+## Todos os Estados
+
+O Checkbox possui três estados visuais: desmarcado (unchecked), marcado (checked) e indeterminado (indeterminate). Cada um pode ser combinado com o estado habilitado ou desabilitado.
+
+<Canvas of={CheckboxStories.AllStates}></Canvas>
+
+<br></br>
+
+## Estado Indeterminado
+
+O estado indeterminado é utilizado quando o checkbox é um controle pai de uma lista de checkboxes filhos e alguns (mas não todos) dos sub-itens estão selecionados. Ao clicar no checkbox em estado indeterminado, ele transiciona para o estado marcado (selecionando todos os itens).
+
+<Canvas of={CheckboxStories.IndeterminateExample}></Canvas>
+
+<br></br>
 ## Eventos
 
 Alguns exemplos de Eventos do Checkbox.
@@ -34,8 +50,8 @@ Alguns exemplos de Eventos do Checkbox.
   <tbody>
     <tr>
       <td>bdsChange</td>
-      <td>Emite um evento quando o valor muda.</td>
-      <td>CustomEvent&lt;KeyboardEvent&gt;</td>
+      <td>Emite um evento quando o valor muda. Inclui as propriedades checked e indeterminate.</td>
+      <td>CustomEvent&lt;&#123; checked: boolean, indeterminate: boolean &#125;&gt;</td>
     </tr>
   </tbody>
 </table>

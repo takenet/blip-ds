@@ -648,6 +648,10 @@ export namespace Components {
         "disabled": boolean;
         "getInputElement": () => Promise<HTMLInputElement>;
         "getValue": () => Promise<boolean>;
+        /**
+          * If `true`, the checkbox is in an indeterminate state. This is used when the checkbox is a parent of a list of checkboxes and some (but not all) of the child checkboxes are selected. Clicking when indeterminate will set the checkbox to checked.
+         */
+        "indeterminate": boolean;
         "label": string;
         /**
           * The name of the control, which is submitted with the form data.
@@ -4485,6 +4489,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the checkbox.
          */
         "disabled"?: boolean;
+        /**
+          * If `true`, the checkbox is in an indeterminate state. This is used when the checkbox is a parent of a list of checkboxes and some (but not all) of the child checkboxes are selected. Clicking when indeterminate will set the checkbox to checked.
+         */
+        "indeterminate"?: boolean;
         "label": string;
         /**
           * The name of the control, which is submitted with the form data.

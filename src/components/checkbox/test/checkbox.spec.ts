@@ -26,6 +26,7 @@ describe('bds-checkbox', () => {
     it('should have default values', () => {
       const component = new Checkbox();
       expect(component.checked).toBe(false);
+      expect(component.indeterminate).toBe(false);
       expect(component.disabled).toBe(false);
       expect(component.dataTest).toBe(null);
     });
@@ -49,6 +50,9 @@ describe('bds-checkbox', () => {
       
       component.disabled = true;
       expect(component.disabled).toBe(true);
+
+      component.indeterminate = true;
+      expect(component.indeterminate).toBe(true);
     });
 
     it('should accept dataTest string', () => {
@@ -195,6 +199,26 @@ describe('bds-checkbox', () => {
       const container = page.root.shadowRoot.querySelector('.checkbox');
       expect(container.classList.contains('checkbox--deselected-disabled')).toBe(true);
     });
+
+    it('should apply indeterminate class when indeterminate', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.classList.contains('checkbox--indeterminate')).toBe(true);
+    });
+
+    it('should apply indeterminate-disabled class when indeterminate and disabled', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate disabled></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.classList.contains('checkbox--indeterminate-disabled')).toBe(true);
+    });
   });
 
   describe('Accessibility', () => {
@@ -241,6 +265,116 @@ describe('bds-checkbox', () => {
       const result = component.render();
       expect(result).toBeTruthy();
       expect(typeof result).toBe('object');
+    });
+  });
+
+  describe('Indeterminate State', () => {
+    it('should render with indeterminate state', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.classList.contains('checkbox--indeterminate')).toBe(true);
+    });
+
+    it('should show less icon when indeterminate', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate></bds-checkbox>`,
+      });
+      
+      const icon = page.root.shadowRoot.querySelector('bds-icon');
+      expect(icon.getAttribute('name')).toBe('less');
+    });
+
+    it('should show true icon when checked', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" checked></bds-checkbox>`,
+      });
+      
+      const icon = page.root.shadowRoot.querySelector('bds-icon');
+      expect(icon.getAttribute('name')).toBe('true');
+    });
+
+    it('should transition from indeterminate to checked on click', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate></bds-checkbox>`,
+      });
+      
+      const changeSpy = jest.fn();
+      page.root.addEventListener('bdsChange', changeSpy);
+      
+      const input = page.root.shadowRoot.querySelector('input[type="checkbox"]') as HTMLInputElement;
+      input.click();
+      
+      await page.waitForChanges();
+      
+      expect(page.root.indeterminate).toBe(false);
+      expect(page.root.checked).toBe(true);
+      expect(changeSpy).toHaveBeenCalledWith(expect.objectContaining({
+        detail: { checked: true, indeterminate: false }
+      }));
+    });
+
+    it('should transition from indeterminate to checked on Enter key', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate></bds-checkbox>`,
+      });
+      
+      const changeSpy = jest.fn();
+      page.root.addEventListener('bdsChange', changeSpy);
+      
+      const checkboxIcon = page.root.shadowRoot.querySelector('.checkbox__icon') as HTMLElement;
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      checkboxIcon.dispatchEvent(event);
+      
+      await page.waitForChanges();
+      
+      expect(page.root.indeterminate).toBe(false);
+      expect(page.root.checked).toBe(true);
+    });
+
+    it('should transition from indeterminate to checked when toggle method is called', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate></bds-checkbox>`,
+      });
+      
+      const changeSpy = jest.fn();
+      page.root.addEventListener('bdsChange', changeSpy);
+      
+      await page.root.toggle();
+      await page.waitForChanges();
+      
+      expect(page.root.indeterminate).toBe(false);
+      expect(page.root.checked).toBe(true);
+    });
+
+    it('should prioritize indeterminate over checked in style state', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate checked></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      // Indeterminate takes priority
+      expect(container.classList.contains('checkbox--indeterminate')).toBe(true);
+      expect(container.classList.contains('checkbox--selected')).toBe(false);
+    });
+
+    it('should apply indeterminate-disabled class when indeterminate and disabled', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" indeterminate disabled></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.classList.contains('checkbox--indeterminate-disabled')).toBe(true);
     });
   });
 
