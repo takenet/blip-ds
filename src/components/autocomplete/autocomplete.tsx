@@ -512,6 +512,9 @@ export class BdsAutocomplete {
     }
     this.bdsInput.emit(ev as KeyboardEvent);
     if (this.nativeInput.value) {
+      if (!this.disabled && !this.isOpen) {
+        this.isOpen = true;
+      }
       await this.filterOptions(this.nativeInput.value);
     } else {
       this.value = '';
@@ -520,11 +523,6 @@ export class BdsAutocomplete {
       } else {
         this.setTimeoutFilter();
       }
-    }
-
-    if (this.isOpen === false) {
-      this.value = this.getSelectedValue();
-      this.setTimeoutFilter();
     }
   };
 
@@ -557,10 +555,6 @@ export class BdsAutocomplete {
     for (const option of childOptions) {
       option.removeAttribute('invisible');
     }
-  }
-
-  private getSelectedValue() {
-    return this.childOptionSelected?.value;
   }
 
   private renderIcon(): HTMLElement {
