@@ -378,6 +378,71 @@ describe('bds-checkbox', () => {
     });
   });
 
+  describe('Backwards Compatibility', () => {
+    it('should work without indeterminate prop (default behavior)', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test"></bds-checkbox>`,
+      });
+      
+      // Component should start unchecked with no indeterminate state
+      expect(page.root.checked).toBe(false);
+      expect(page.root.indeterminate).toBe(false);
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.classList.contains('checkbox--deselected')).toBe(true);
+      
+      // Click should toggle to checked
+      const input = page.root.shadowRoot.querySelector('input[type="checkbox"]') as HTMLInputElement;
+      input.click();
+      await page.waitForChanges();
+      
+      expect(page.root.checked).toBe(true);
+      expect(page.root.indeterminate).toBe(false);
+      expect(container.classList.contains('checkbox--selected')).toBe(true);
+      
+      // Click again should toggle back to unchecked
+      input.click();
+      await page.waitForChanges();
+      
+      expect(page.root.checked).toBe(false);
+      expect(page.root.indeterminate).toBe(false);
+      expect(container.classList.contains('checkbox--deselected')).toBe(true);
+    });
+
+    it('should emit bdsChange with only checked property when indeterminate is false', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test"></bds-checkbox>`,
+      });
+      
+      const changeSpy = jest.fn();
+      page.root.addEventListener('bdsChange', changeSpy);
+      
+      const input = page.root.shadowRoot.querySelector('input[type="checkbox"]') as HTMLInputElement;
+      input.click();
+      await page.waitForChanges();
+      
+      // Event should include both checked and indeterminate for consistency
+      expect(changeSpy).toHaveBeenCalledWith(expect.objectContaining({
+        detail: { checked: true, indeterminate: false }
+      }));
+    });
+
+    it('should maintain original visual behavior without indeterminate prop', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" checked></bds-checkbox>`,
+      });
+      
+      const icon = page.root.shadowRoot.querySelector('bds-icon');
+      expect(icon.getAttribute('name')).toBe('true');
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.classList.contains('checkbox--selected')).toBe(true);
+    });
+  });
+
   describe('Edge Cases', () => {
     it('should handle missing required props gracefully', async () => {
       const page = await newSpecPage({

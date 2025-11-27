@@ -60,32 +60,32 @@ Properties.args = {
 
 export const AllStates = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <div>
-        <h4>Unchecked (Enabled)</h4>
+    <bds-grid direction="column" gap="2">
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-14" bold="bold">Unchecked (Enabled)</bds-typo>
         <bds-checkbox label="Unchecked checkbox" name="unchecked"></bds-checkbox>
-      </div>
-      <div>
-        <h4>Checked (Enabled)</h4>
+      </bds-grid>
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-14" bold="bold">Checked (Enabled)</bds-typo>
         <bds-checkbox label="Checked checkbox" name="checked" checked></bds-checkbox>
-      </div>
-      <div>
-        <h4>Indeterminate (Enabled)</h4>
+      </bds-grid>
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-14" bold="bold">Indeterminate (Enabled)</bds-typo>
         <bds-checkbox label="Indeterminate checkbox" name="indeterminate" indeterminate></bds-checkbox>
-      </div>
-      <div>
-        <h4>Unchecked (Disabled)</h4>
+      </bds-grid>
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-14" bold="bold">Unchecked (Disabled)</bds-typo>
         <bds-checkbox label="Unchecked disabled checkbox" name="unchecked-disabled" disabled></bds-checkbox>
-      </div>
-      <div>
-        <h4>Checked (Disabled)</h4>
+      </bds-grid>
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-14" bold="bold">Checked (Disabled)</bds-typo>
         <bds-checkbox label="Checked disabled checkbox" name="checked-disabled" checked disabled></bds-checkbox>
-      </div>
-      <div>
-        <h4>Indeterminate (Disabled)</h4>
+      </bds-grid>
+      <bds-grid direction="column" gap="1">
+        <bds-typo variant="fs-14" bold="bold">Indeterminate (Disabled)</bds-typo>
         <bds-checkbox label="Indeterminate disabled checkbox" name="indeterminate-disabled" indeterminate disabled></bds-checkbox>
-      </div>
-    </div>
+      </bds-grid>
+    </bds-grid>
   )
 }
 
@@ -138,14 +138,14 @@ export const IndeterminateExample = () => {
   });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <bds-grid direction="column" gap="1">
       <bds-checkbox id="parent-checkbox" label="Select all items" name="parent" indeterminate></bds-checkbox>
-      <div style={{ marginLeft: '24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <bds-grid direction="column" gap="1" margin="l-3">
         <bds-checkbox id="child1" label="Item 1" name="child1" checked></bds-checkbox>
         <bds-checkbox id="child2" label="Item 2" name="child2"></bds-checkbox>
         <bds-checkbox id="child3" label="Item 3" name="child3" checked></bds-checkbox>
-      </div>
-    </div>
+      </bds-grid>
+    </bds-grid>
   )
 }
 
