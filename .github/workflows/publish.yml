@@ -45,8 +45,8 @@ jobs:
           folder: ./storybook-static
           clean: true
           clean-exclude: |
-            'pr-preview/**'
-            'v2/**'
+            pr-preview
+            v2
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
