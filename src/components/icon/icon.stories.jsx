@@ -181,7 +181,7 @@ Properties.argTypes = {
   },
   type: {
     table: {
-      defaultValue: { summary: 'emoji|logo' },
+      defaultValue: { summary: 'icon' },
     },
     description: 'Define o tipo do ícone como emoji ou logo. (opcional)',
     control: 'text',
