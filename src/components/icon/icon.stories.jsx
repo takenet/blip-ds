@@ -136,12 +136,16 @@ const iconWrapperStyles = {
 };
 
 export const Properties = (args) => {
-  return <bds-icon theme="outline" size={args.size} name={args.name}></bds-icon>;
+  // Filter out undefined, null, and empty string values to prevent them from being passed as props,
+  // which avoids rendering unwanted or invalid attributes on the component.
+  const iconProps = Object.fromEntries(Object.entries(args).filter(([, value]) => value !== undefined && value !== null && value !== ''));
+  return <bds-icon {...iconProps}></bds-icon>;
 };
 
 Properties.args = {
   size: 'medium',
   name: 'info',
+  theme: 'outline',
 };
 
 Properties.argTypes = {
@@ -164,10 +168,24 @@ Properties.argTypes = {
     ],
     control: 'select',
   },
+  theme: {
+    table: {
+      defaultValue: { summary: 'outline' },
+    },
+    options: ['outline', 'solid'],
+    control: 'select',
+  },
   name: {
     table: {
-      defaultValue: { summary: 'vazio' },
+      defaultValue: { summary: 'info' },
     },
+    control: 'text',
+  },
+  type: {
+    table: {
+      defaultValue: { summary: 'icon' },
+    },
+    description: 'Define o tipo do ícone como emoji ou logo. (opcional)',
     control: 'text',
   },
 };
