@@ -281,15 +281,21 @@ export class InputChips {
   };
 
   private handleOnBlur(): void {
-    this.bdsBlur.emit(this.internalChips);
-    if (this.internalChips.length > 0) {
-      this.bdsSubmit.emit({ value: this.internalChips });
-    }
     this.handleDelimiters();
     this.isPressed = false;
     if (this.blurCreation) {
+      const initialChipsLength = this.internalChips.length;
       this.setChip(this.value);
       this.value = '';
+      // Emit change events if a chip was actually added
+      if (this.internalChips.length > initialChipsLength) {
+        this.bdsChange.emit({ data: this.internalChips, value: this.getLastChip() });
+        this.bdsChangeChips.emit({ data: this.internalChips, value: this.getLastChip() });
+      }
+    }
+    this.bdsBlur.emit(this.internalChips);
+    if (this.internalChips.length > 0) {
+      this.bdsSubmit.emit({ value: this.internalChips });
     }
   }
 
