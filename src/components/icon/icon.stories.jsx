@@ -136,6 +136,8 @@ const iconWrapperStyles = {
 };
 
 export const Properties = (args) => {
+  // Filter out undefined, null, and empty string values to prevent them from being passed as props,
+  // which avoids rendering unwanted or invalid attributes on the component.
   const iconProps = Object.fromEntries(Object.entries(args).filter(([, value]) => value !== undefined && value !== null && value !== ''));
   return <bds-icon {...iconProps}></bds-icon>;
 };
