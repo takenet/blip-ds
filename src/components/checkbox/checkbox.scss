@@ -81,6 +81,37 @@ $checkbox-spacing-text: 8px;
     }
   }
 
+  &--indeterminate {
+    .checkbox__icon {
+      background-color: $color-surface-primary;
+      border-color: $color-surface-primary;
+
+      &__svg {
+        color: $color-content-bright;
+      }
+
+      &:hover {
+        background-color: $color-brand;
+      }
+    }
+  }
+
+  &--indeterminate-disabled {
+    .checkbox__label {
+      cursor: not-allowed;
+    }
+
+    .checkbox__icon {
+      color: $color-content-default;
+      border-color: $color-content-default;
+      background-color: $color-surface-3;
+      opacity: 50%;
+    }
+    .checkbox__text {
+      opacity: 50%;
+    }
+  }
+
   &--deselected-disabled {
     .checkbox__label {
       cursor: not-allowed;
