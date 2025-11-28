@@ -583,5 +583,53 @@ describe('bds-autocomplete', () => {
 
       expect(blurHandler).toHaveBeenCalled();
     });
+
+    it('should open dropdown when typing and dropdown is closed', async () => {
+      const optionsString = JSON.stringify([
+        { value: 'option1', label: 'Option 1' },
+        { value: 'option2', label: 'Option 2' }
+      ]);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}'></bds-autocomplete>`,
+      });
+
+      // Ensure dropdown is initially closed
+      expect(page.rootInstance.isOpen).toBe(false);
+
+      const nativeInput = page.root.shadowRoot.querySelector('input');
+      nativeInput.value = 'test';
+      const inputEvent = new Event('input', { bubbles: true });
+      Object.defineProperty(inputEvent, 'target', { value: { value: 'test' } });
+
+      nativeInput.dispatchEvent(inputEvent);
+      await page.waitForChanges();
+
+      // Dropdown should now be open after typing
+      expect(page.rootInstance.isOpen).toBe(true);
+    });
+
+    it('should not open dropdown when typing if component is disabled', async () => {
+      const optionsString = JSON.stringify([
+        { value: 'option1', label: 'Option 1' }
+      ]);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}' disabled="true"></bds-autocomplete>`,
+      });
+
+      expect(page.rootInstance.isOpen).toBe(false);
+
+      const nativeInput = page.root.shadowRoot.querySelector('input');
+      nativeInput.value = 'test';
+      const inputEvent = new Event('input', { bubbles: true });
+      Object.defineProperty(inputEvent, 'target', { value: { value: 'test' } });
+
+      nativeInput.dispatchEvent(inputEvent);
+      await page.waitForChanges();
+
+      // Dropdown should remain closed when component is disabled
+      expect(page.rootInstance.isOpen).toBe(false);
+    });
   });
 });
