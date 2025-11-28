@@ -408,6 +408,36 @@ describe('bds-button', () => {
       const button = page.root.shadowRoot.querySelector('button');
       expect(button.getAttribute('aria-disabled')).toBe('true');
     });
+
+    it('should have aria-disabled false when not disabled', async () => {
+      const page = await newSpecPage({
+        components: [Button],
+        html: `<bds-button>Enabled Button</bds-button>`,
+      });
+      
+      const button = page.root.shadowRoot.querySelector('button');
+      expect(button.getAttribute('aria-disabled')).toBe('false');
+    });
+
+    it('should have aria-live attribute for dynamic content updates', async () => {
+      const page = await newSpecPage({
+        components: [Button],
+        html: `<bds-button>Button</bds-button>`,
+      });
+      
+      const button = page.root.shadowRoot.querySelector('button');
+      expect(button.getAttribute('aria-live')).toBe('assertive');
+    });
+
+    it('should have focusable div for keyboard navigation', async () => {
+      const page = await newSpecPage({
+        components: [Button],
+        html: `<bds-button>Button</bds-button>`,
+      });
+      
+      const focusDiv = page.root.shadowRoot.querySelector('.focus');
+      expect(focusDiv.getAttribute('tabindex')).toBe('0');
+    });
   });
 
   describe('Edge Cases', () => {
