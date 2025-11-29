@@ -59,6 +59,31 @@ Exemplos de eventos disponíveis no Button.
 
 <br></br>
 
+## Acessibilidade
+
+O componente Button segue as diretrizes WCAG 2.1 para garantir acessibilidade completa.
+
+### Navegação por Teclado
+
+| Tecla | Ação |
+|-------|------|
+| `Tab` | Move o foco para o botão |
+| `Enter` | Ativa o botão |
+| `Space` | Ativa o botão |
+
+### Atributos ARIA
+
+- `aria-disabled`: Indica quando o botão está desabilitado
+- `aria-live="assertive"`: Anuncia mudanças de estado dinâmicas para leitores de tela
+
+### Boas Práticas
+
+- Use texto descritivo no botão que indique claramente a ação
+- Mantenha o estado `disabled` para ações indisponíveis
+- Evite usar apenas ícones sem texto; quando necessário, adicione `aria-label`
+
+<br></br>
+
 ## Usando em React
 
 <Source of={ButtonStories.FrameworkReact} />

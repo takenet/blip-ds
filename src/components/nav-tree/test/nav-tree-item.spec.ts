@@ -24,7 +24,7 @@ describe('bds-nav-tree-item', () => {
     expect(page.root).toEqualHtml(`
       <bds-nav-tree-item text="Test Item">
         <mock:shadow-root>
-          <div tabindex="0" class="focus">
+          <div tabindex="0" class="focus" role="treeitem">
             <div class="nav_tree_item nav_tree_item_button" aria-label="Test Itemnull">
               <div class="nav_tree_item_content">
                 <bds-typo class="title-item" variant="fs-14" tag="span" line-height="small" bold="semi-bold">

@@ -198,17 +198,46 @@ describe('bds-checkbox', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have correct ARIA attributes', async () => {
+    it('should have correct ARIA attributes on container', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" checked></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.getAttribute('role')).toBe('checkbox');
+      expect(container.getAttribute('aria-checked')).toBe('true');
+      expect(container.getAttribute('aria-label')).toBe('Test');
+    });
+
+    it('should have correct ARIA attributes when unchecked', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test"></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.getAttribute('aria-checked')).toBe('false');
+    });
+
+    it('should have aria-disabled when disabled', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test" disabled></bds-checkbox>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.checkbox');
+      expect(container.getAttribute('aria-disabled')).toBe('true');
+    });
+
+    it('should have aria-checked on the input element', async () => {
       const page = await newSpecPage({
         components: [Checkbox],
         html: `<bds-checkbox name="test" label="Test" checked></bds-checkbox>`,
       });
       
       const input = page.root.shadowRoot.querySelector('input[type="checkbox"]') as HTMLInputElement;
-      // The component doesn't set role="checkbox" or aria-checked attributes
-      // Standard checkbox inputs don't need explicit role="checkbox" 
-      expect(input.type).toBe('checkbox');
-      expect(input.checked).toBe(true);
+      expect(input.getAttribute('aria-checked')).toBe('true');
     });
 
     it('should associate label with input', async () => {
@@ -232,6 +261,27 @@ describe('bds-checkbox', () => {
       
       const input = page.root.shadowRoot.querySelector('input[type="checkbox"]');
       expect(input.getAttribute('name')).toBe('test-name');
+    });
+
+    it('should have keyboard accessible icon with role presentation', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test"></bds-checkbox>`,
+      });
+      
+      const icon = page.root.shadowRoot.querySelector('.checkbox__icon');
+      expect(icon.getAttribute('tabindex')).toBe('0');
+      expect(icon.getAttribute('role')).toBe('presentation');
+    });
+
+    it('should hide icon from screen readers', async () => {
+      const page = await newSpecPage({
+        components: [Checkbox],
+        html: `<bds-checkbox name="test" label="Test"></bds-checkbox>`,
+      });
+      
+      const iconSvg = page.root.shadowRoot.querySelector('.checkbox__icon__svg');
+      expect(iconSvg.getAttribute('aria-hidden')).toBe('true');
     });
   });
 

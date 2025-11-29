@@ -18,9 +18,9 @@ describe('bds-accordion-header', () => {
     expect(page.root).toEqualHtml(`
       <bds-accordion-header>
         <mock:shadow-root>
-          <div class="accordion_header">
+          <div class="accordion_header" role="button" aria-expanded="false" tabindex="0">
             <slot></slot>
-            <bds-icon class="accButton" color="inherit" name="arrow-down" size="x-large" tabindex="0"></bds-icon>
+            <bds-icon aria-hidden="true" class="accButton" color="inherit" name="arrow-down" size="x-large"></bds-icon>
           </div>
         </mock:shadow-root>
       </bds-accordion-header>
@@ -229,9 +229,9 @@ describe('bds-accordion-header', () => {
     expect(page.root).toEqualHtml(`
       <bds-accordion-header>
         <mock:shadow-root>
-          <div class="accordion_header">
+          <div class="accordion_header" role="button" aria-expanded="false" tabindex="0">
             <slot></slot>
-            <bds-icon class="accButton" color="inherit" name="arrow-down" size="x-large" tabindex="0"></bds-icon>
+            <bds-icon aria-hidden="true" class="accButton" color="inherit" name="arrow-down" size="x-large"></bds-icon>
           </div>
         </mock:shadow-root>
         <div class="test-content">Test Content</div>
@@ -287,5 +287,61 @@ describe('bds-accordion-header', () => {
     expect(typoElement).toBeTruthy();
     expect(toggleButton).toBeTruthy();
     expect(headerDiv.getAttribute('data-test')).toBe('complete-header');
+  });
+
+  describe('Accessibility', () => {
+    it('should have role button on header', async () => {
+      const headerDiv = page.root.shadowRoot.querySelector('.accordion_header');
+      expect(headerDiv.getAttribute('role')).toBe('button');
+    });
+
+    it('should have aria-expanded false when closed', async () => {
+      expect(component.isOpen).toBe(false);
+      const headerDiv = page.root.shadowRoot.querySelector('.accordion_header');
+      expect(headerDiv.getAttribute('aria-expanded')).toBe('false');
+    });
+
+    it('should have aria-expanded true when open', async () => {
+      await component.open();
+      await page.waitForChanges();
+      
+      const headerDiv = page.root.shadowRoot.querySelector('.accordion_header');
+      expect(headerDiv.getAttribute('aria-expanded')).toBe('true');
+    });
+
+    it('should have tabindex 0 for keyboard navigation', async () => {
+      const headerDiv = page.root.shadowRoot.querySelector('.accordion_header');
+      expect(headerDiv.getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should have aria-hidden on decorative icons', async () => {
+      page = await newSpecPage({
+        components: [AccordionHeader],
+        html: `<bds-accordion-header icon="user"></bds-accordion-header>`,
+      });
+      
+      const iconElement = page.root.shadowRoot.querySelector('bds-icon[name="user"]');
+      expect(iconElement.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('should have aria-hidden on arrow toggle icon', async () => {
+      const toggleButton = page.root.shadowRoot.querySelector('.accButton');
+      expect(toggleButton.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('should toggle when Enter key is pressed on header', async () => {
+      const mockAccordion = {
+        open: jest.fn(),
+        close: jest.fn()
+      };
+      component.accordionElement = mockAccordion;
+      component.isOpen = false;
+
+      const headerDiv = page.root.shadowRoot.querySelector('.accordion_header') as HTMLElement;
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      headerDiv.dispatchEvent(event);
+      
+      expect(mockAccordion.open).toHaveBeenCalled();
+    });
   });
 });

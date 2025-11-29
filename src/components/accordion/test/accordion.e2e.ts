@@ -143,31 +143,58 @@ describe('bds-accordion e2e tests', () => {
   });
 
   describe('Accessibility', () => {
-    it('should be focusable', async () => {
-      // The focusable element is the bds-icon button inside the accordion header's shadow DOM
-      const iconButton = await page.find('bds-accordion-header >>> bds-icon.accButton');
+    it('should be focusable via header element', async () => {
+      // The focusable element is now the accordion_header div
+      const headerElement = await page.find('bds-accordion-header >>> .accordion_header');
       
-      await iconButton.focus();
+      await headerElement.focus();
       await page.waitForChanges();
       
-      // Check if the icon button is focused
-      const isFocused = await iconButton.getProperty('tabIndex');
-      expect(isFocused).toBe(0);
+      // Check if the header element has tabIndex 0 for keyboard navigation
+      const tabIndex = await headerElement.getAttribute('tabindex');
+      expect(tabIndex).toBe('0');
+    });
+
+    it('should have aria-expanded attribute', async () => {
+      const headerElement = await page.find('bds-accordion-header >>> .accordion_header');
+      
+      // Initially closed
+      const ariaExpanded = await headerElement.getAttribute('aria-expanded');
+      expect(ariaExpanded).toBe('false');
+    });
+
+    it('should have role button', async () => {
+      const headerElement = await page.find('bds-accordion-header >>> .accordion_header');
+      
+      const role = await headerElement.getAttribute('role');
+      expect(role).toBe('button');
     });
 
     it('should toggle on Enter key press from header', async () => {
       const accordion = await page.find('bds-accordion');
       const bdsAccordionOpenEvent = await accordion.spyOnEvent('bdsAccordionOpen');
 
-      // Focus the icon button inside the header and press Enter
-      const iconButton = await page.find('bds-accordion-header >>> bds-icon.accButton');
+      // Focus the header element and press Enter
+      const headerElement = await page.find('bds-accordion-header >>> .accordion_header');
       
-      await iconButton.focus();
+      await headerElement.focus();
       await page.keyboard.press('Enter');
       await page.waitForChanges();
 
       // The component should open when Enter is pressed (since it starts closed)
       expect(bdsAccordionOpenEvent).toHaveReceivedEvent();
+    });
+
+    it('should update aria-expanded when opened', async () => {
+      const accordion = await page.find('bds-accordion');
+      const headerElement = await page.find('bds-accordion-header >>> .accordion_header');
+
+      // Open the accordion
+      await accordion.callMethod('open');
+      await page.waitForChanges();
+
+      const ariaExpanded = await headerElement.getAttribute('aria-expanded');
+      expect(ariaExpanded).toBe('true');
     });
   });
 });

@@ -108,8 +108,11 @@ export class BdsModal implements ComponentInterface {
           'modal__dialog--open': this.open,
           [`modal__dialog--${this.size}`]: true,
         }}
+        role="dialog"
+        aria-modal={this.open ? 'true' : null}
+        aria-hidden={!this.open ? 'true' : null}
       >
-        <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone}></div>
+        <div class={{ outzone: true }} onClick={() => this.onClickCloseButtom()} data-test={this.dtOutzone} aria-hidden="true"></div>
         <div class={{ modal: true, [`modal--${this.size}`]: true }}>
           {this.closeButton && (
             <bds-icon
@@ -119,6 +122,8 @@ export class BdsModal implements ComponentInterface {
               tabindex="0"
               onClick={this.handleMouseClick}
               dataTest={this.dtButtonClose}
+              role="button"
+              aria-label="Close modal"
             />
           )}
           {this.size == 'fixed' && <slot></slot>}

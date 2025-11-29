@@ -247,18 +247,18 @@ export class Pagination {
     const { currentLanguage } = this;
     return (
       <Host class={{ full_width: this.pageCounter }}>
-        <bds-grid justify-content="space-between">
+        <bds-grid justify-content="space-between" role="navigation" aria-label="Pagination">
           {this.itemsPerPage && this.itemsPage && (
             <bds-grid gap="1" align-items="center" class="items_per_page">
               <bds-typo variant="fs-14">{currentLanguage.itemsPerPage}:</bds-typo>
-              <bds-select class="actions_select" value={this.itemValue} options-position={this.optionsPosition}>
+              <bds-select class="actions_select" value={this.itemValue} options-position={this.optionsPosition} aria-label={currentLanguage.itemsPerPage}>
                 {this.itemsPage?.map((el, index) => (
                   <bds-select-option key={index} value={el} onClick={() => this.itemSelected(el)}>
                     {el}
                   </bds-select-option>
                 ))}
               </bds-select>
-              <bds-typo variant="fs-14" no-wrap="true">
+              <bds-typo variant="fs-14" no-wrap="true" aria-live="polite">
                 {this.startItem}-{this.endItem} {currentLanguage.of} {this.numberItems}
               </bds-typo>
             </bds-grid>
@@ -271,6 +271,8 @@ export class Pagination {
               variant="secondary"
               icon="arrow-first"
               dataTest={this.dtButtonInitial}
+              aria-label={currentLanguage.firstPage || 'First page'}
+              disabled={this.value <= 1}
             ></bds-button-icon>
             <bds-button-icon
               onBdsClick={(ev) => this.previewPage(ev)}
@@ -278,9 +280,11 @@ export class Pagination {
               variant="secondary"
               icon="arrow-left"
               dataTest={this.dtButtonPrev}
+              aria-label={currentLanguage.previousPage || 'Previous page'}
+              disabled={this.value <= 1}
             ></bds-button-icon>
 
-            <bds-select class="actions_select" value={this.value} options-position={this.optionsPosition}>
+            <bds-select class="actions_select" value={this.value} options-position={this.optionsPosition} aria-label="Select page">
               {this.paginationNumbers.map((el, index) => (
                 <bds-select-option key={index} value={el} onClick={() => this.optionSelected(el)}>
                   {el}
@@ -288,7 +292,7 @@ export class Pagination {
               ))}
             </bds-select>
             {this.pageCounter && (
-              <bds-typo class="actions--text" variant="fs-14" no-wrap="true">
+              <bds-typo class="actions--text" variant="fs-14" no-wrap="true" aria-live="polite">
                 {currentLanguage.of} {this.pages} {currentLanguage.pages}
               </bds-typo>
             )}
@@ -298,6 +302,8 @@ export class Pagination {
               variant="secondary"
               icon="arrow-right"
               dataTest={this.dtButtonNext}
+              aria-label={currentLanguage.nextPage || 'Next page'}
+              disabled={this.value >= this.pages}
             ></bds-button-icon>
             <bds-button-icon
               onBdsClick={(ev) => this.lastPage(ev)}
@@ -305,6 +311,8 @@ export class Pagination {
               variant="secondary"
               icon="arrow-last"
               dataTest={this.dtButtonEnd}
+              aria-label={currentLanguage.lastPage || 'Last page'}
+              disabled={this.value >= this.pages}
             ></bds-button-icon>
           </bds-grid>
         </bds-grid>

@@ -433,4 +433,63 @@ describe('bds-nav-tree', () => {
     expect(navMain).toBeTruthy();
     expect(accordion).toBeTruthy();
   });
+
+  describe('Accessibility', () => {
+    it('should have role treeitem on focus element', async () => {
+      const page = await createNavTreePage({ text: 'Test' });
+      
+      const focusElement = page.root.shadowRoot.querySelector('.focus');
+      expect(focusElement.getAttribute('role')).toBe('treeitem');
+    });
+
+    it('should have aria-expanded when has children', async () => {
+      const page = await createNavTreePage({ text: 'Test' });
+      
+      // Mock navTreeChild state
+      page.rootInstance.navTreeChild = true;
+      await page.waitForChanges();
+      
+      const focusElement = page.root.shadowRoot.querySelector('.focus');
+      expect(focusElement.getAttribute('aria-expanded')).toBe('false');
+    });
+
+    it('should update aria-expanded when opened', async () => {
+      const page = await createNavTreePage({ text: 'Test', isOpen: true });
+      
+      // Mock navTreeChild state
+      page.rootInstance.navTreeChild = true;
+      await page.waitForChanges();
+      
+      const focusElement = page.root.shadowRoot.querySelector('.focus');
+      expect(focusElement.getAttribute('aria-expanded')).toBe('true');
+    });
+
+    it('should have aria-disabled when disabled', async () => {
+      const page = await createNavTreePage({ text: 'Test', disable: true });
+      
+      const focusElement = page.root.shadowRoot.querySelector('.focus');
+      expect(focusElement.getAttribute('aria-disabled')).toBe('true');
+    });
+
+    it('should have negative tabindex when disabled', async () => {
+      const page = await createNavTreePage({ text: 'Test', disable: true });
+      
+      const focusElement = page.root.shadowRoot.querySelector('.focus');
+      expect(focusElement.getAttribute('tabindex')).toBe('-1');
+    });
+
+    it('should have aria-hidden on decorative icons', async () => {
+      const page = await createNavTreePage({ text: 'Test', icon: 'home' });
+      
+      const iconElement = page.root.shadowRoot.querySelector('bds-icon[name="home"]');
+      expect(iconElement.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('should have role group on accordion container', async () => {
+      const page = await createNavTreePage({ text: 'Test' });
+      
+      const accordion = page.root.shadowRoot.querySelector('.accordion');
+      expect(accordion.getAttribute('role')).toBe('group');
+    });
+  });
 });

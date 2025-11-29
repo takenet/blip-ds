@@ -117,6 +117,10 @@ export class Checkbox {
           checkbox: true,
           [styleState]: true,
         }}
+        role="checkbox"
+        aria-checked={this.checked ? 'true' : 'false'}
+        aria-disabled={this.disabled ? 'true' : null}
+        aria-label={this.label}
       >
         <input
           type="checkbox"
@@ -127,10 +131,11 @@ export class Checkbox {
           checked={this.checked}
           disabled={this.disabled}
           data-test={this.dataTest}
+          aria-checked={this.checked ? 'true' : 'false'}
         ></input>
         <label class="checkbox__label" htmlFor={this.checkBoxId}>
-          <div class="checkbox__icon" tabindex="0" onKeyDown={this.handleKeyDown.bind(this)}>
-            <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit"></bds-icon>
+          <div class="checkbox__icon" tabindex="0" onKeyDown={this.handleKeyDown.bind(this)} role="presentation">
+            <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit" aria-hidden="true"></bds-icon>
           </div>
           {this.label && (
             <bds-typo class="checkbox__text" variant="fs-14" tag="span">

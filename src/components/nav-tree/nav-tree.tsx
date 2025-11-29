@@ -106,7 +106,14 @@ export class NavTree {
   render() {
     return (
       <Host>
-        <div tabindex="0" onKeyDown={this.handleKeyDown.bind(this)} class="focus">
+        <div 
+          tabindex={this.disable ? '-1' : '0'} 
+          onKeyDown={this.handleKeyDown.bind(this)} 
+          class="focus"
+          role="treeitem"
+          aria-expanded={this.navTreeChild ? (this.isOpen ? 'true' : 'false') : null}
+          aria-disabled={this.disable ? 'true' : null}
+        >
           <div
             class={{
               [`nav_main--disable`]: this.disable,
@@ -124,7 +131,7 @@ export class NavTree {
               aria-label={this.text + (this.secondaryText && `: ${this.secondaryText}`)}
             >
               {this.loading ? (
-                <bds-loading-spinner size="extra-small"></bds-loading-spinner>
+                <bds-loading-spinner size="extra-small" aria-label="Loading"></bds-loading-spinner>
               ) : this.icon ? (
                 <bds-icon
                   class={{
@@ -135,6 +142,7 @@ export class NavTree {
                   name={this.icon}
                   color="inherit"
                   theme="outline"
+                  aria-hidden="true"
                 ></bds-icon>
               ) : (
                 ''
@@ -174,6 +182,7 @@ export class NavTree {
                     [`nav_main_arrow_active`]: this.isOpen,
                     [`nav_main_arrow--loading`]: this.loading,
                   }}
+                  aria-hidden="true"
                 ></bds-icon>
               )}
             </div>
@@ -184,6 +193,7 @@ export class NavTree {
             accordion: true,
             accordion_open: this.isOpen && this.navTreeChild,
           }}
+          role="group"
         >
           <div class={{ ['container']: true, [`container--disable`]: this.disable }}>
             <slot></slot>

@@ -64,5 +64,43 @@ describe('bds-checkbox e2e tests', () => {
       const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
       expect(focusedElement).toBe('BDS-CHECKBOX');
     });
+
+    it('should have role checkbox on container', async () => {
+      const checkboxContainer = await page.find('bds-checkbox >>> .checkbox');
+      const role = await checkboxContainer.getAttribute('role');
+      expect(role).toBe('checkbox');
+    });
+
+    it('should have aria-checked false when unchecked', async () => {
+      const checkboxContainer = await page.find('bds-checkbox >>> .checkbox');
+      const ariaChecked = await checkboxContainer.getAttribute('aria-checked');
+      expect(ariaChecked).toBe('false');
+    });
+
+    it('should have aria-checked true when checked', async () => {
+      const checkbox = await page.find('bds-checkbox');
+      await checkbox.callMethod('toggle');
+      await page.waitForChanges();
+
+      const checkboxContainer = await page.find('bds-checkbox >>> .checkbox');
+      const ariaChecked = await checkboxContainer.getAttribute('aria-checked');
+      expect(ariaChecked).toBe('true');
+    });
+
+    it('should toggle state when Enter key is pressed on icon', async () => {
+      const checkboxIcon = await page.find('bds-checkbox >>> .checkbox__icon');
+      await checkboxIcon.focus();
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+
+      const checkboxContainer = await page.find('bds-checkbox >>> .checkbox');
+      expect(checkboxContainer).toHaveClass('checkbox--selected');
+    });
+
+    it('should have aria-label matching label prop', async () => {
+      const checkboxContainer = await page.find('bds-checkbox >>> .checkbox');
+      const ariaLabel = await checkboxContainer.getAttribute('aria-label');
+      expect(ariaLabel).toBe('Opcao do checkbox');
+    });
   });
 });
