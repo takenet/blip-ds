@@ -94,7 +94,14 @@ export class NavTreeItem {
   render() {
     return (
       <Host>
-        <div tabindex="0" onKeyDown={this.handleKeyDown.bind(this)} class="focus">
+        <div 
+          tabindex={this.disable ? '-1' : '0'} 
+          onKeyDown={this.handleKeyDown.bind(this)} 
+          class="focus"
+          role="treeitem"
+          aria-expanded={this.navTreeChild ? (this.isOpen ? 'true' : 'false') : null}
+          aria-disabled={this.disable ? 'true' : null}
+        >
           <div
             class={{
               nav_tree_item: true,
@@ -109,7 +116,7 @@ export class NavTreeItem {
             aria-label={this.text + (this.secondaryText && `: ${this.secondaryText}`)}
           >
             {this.loading ? (
-              <bds-loading-spinner size="extra-small"></bds-loading-spinner>
+              <bds-loading-spinner size="extra-small" aria-label="Loading"></bds-loading-spinner>
             ) : this.icon ? (
               <bds-icon
                 class={{
@@ -120,6 +127,7 @@ export class NavTreeItem {
                 name={this.icon}
                 color="inherit"
                 theme="outline"
+                aria-hidden="true"
               ></bds-icon>
             ) : (
               ''
@@ -159,6 +167,7 @@ export class NavTreeItem {
                   [`nav_main_arrow--loading`]: this.loading,
                 }}
                 name="arrow-down"
+                aria-hidden="true"
               ></bds-icon>
             )}
           </div>
@@ -169,6 +178,7 @@ export class NavTreeItem {
               accordion: true,
               accordion_open: this.isOpen,
             }}
+            role="group"
           >
             <div class="container">
               <slot></slot>

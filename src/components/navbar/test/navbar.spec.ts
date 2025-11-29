@@ -24,9 +24,9 @@ describe('bds-navbar', () => {
     expect(page.root).toEqualHtml(`
       <bds-navbar class="vertical">
         <mock:shadow-root>
-          <div class="navbar navbar__justify-content__space-between navbar__orientation__vertical navbar__background-color__surface-1">
+          <nav aria-label="Navigation bar" class="navbar navbar__justify-content__space-between navbar__orientation__vertical navbar__background-color__surface-1" role="navigation">
             <slot></slot>
-          </div>
+          </nav>
         </mock:shadow-root>
       </bds-navbar>
     `);
@@ -184,5 +184,23 @@ describe('bds-navbar', () => {
     expect(navbar).toHaveClass('navbar__background-color__surface-2');
     expect(navbar).toHaveClass('navbar__justify-content__space-evenly');
     expect(navbar.getAttribute('data-test')).toBe('edge-case');
+  });
+
+  describe('Accessibility', () => {
+    it('should have navigation role', async () => {
+      const navbar = page.root.shadowRoot.querySelector('.navbar');
+      expect(navbar.getAttribute('role')).toBe('navigation');
+    });
+
+    it('should have aria-label for navigation', async () => {
+      const navbar = page.root.shadowRoot.querySelector('.navbar');
+      expect(navbar.getAttribute('aria-label')).toBe('Navigation bar');
+    });
+
+    it('should use semantic nav element', async () => {
+      const navbar = page.root.shadowRoot.querySelector('nav');
+      expect(navbar).toBeTruthy();
+      expect(navbar.tagName.toLowerCase()).toBe('nav');
+    });
   });
 });

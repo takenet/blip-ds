@@ -75,6 +75,31 @@ Os componentes do Blip DS suportam navegação completa por teclado:
 - `aria-controls`: Referencia o painel correspondente
 - `role="tabpanel"`: Identifica o conteúdo da aba
 
+#### Input (`bds-input`)
+- `role="group"`: Agrupa o campo de entrada com seus elementos relacionados
+- `aria-label`: Fornece descrição acessível baseada na prop `label`
+- `aria-required`: Indica campos obrigatórios
+- `aria-invalid`: Indica estado de erro na validação
+- `aria-describedby`: Conecta o campo à mensagem de ajuda/erro
+- `role="alert"`: Na mensagem de erro/sucesso para notificar leitores de tela
+
+#### Navbar (`bds-navbar`)
+- `role="navigation"`: Identifica o elemento como área de navegação
+- `aria-label`: Fornece descrição "Navigation bar"
+- Utiliza elemento semântico `<nav>` em vez de `<div>`
+
+#### Nav Tree (`bds-nav-tree`, `bds-nav-tree-item`)
+- `role="treeitem"`: Identifica cada item da árvore
+- `aria-expanded`: Indica se o item está expandido (quando tem filhos)
+- `aria-disabled`: Indica quando o item está desabilitado
+- `aria-hidden`: Esconde ícones decorativos de leitores de tela
+- `role="group"`: Agrupa os itens filhos
+
+#### Pagination (`bds-pagination`)
+- `role="navigation"`: Identifica a área de paginação
+- `aria-label`: Fornece rótulos descritivos para botões ("Ir para primeira página", etc.)
+- `aria-live="polite"`: Anuncia mudanças na página atual
+
 ---
 
 ## Testando Acessibilidade

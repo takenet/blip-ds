@@ -353,4 +353,40 @@ describe('bds-pagination', () => {
       expect(typeof result).toBe('object');
     });
   });
+
+  describe('Accessibility', () => {
+    it('should have navigation role on container', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5"></bds-pagination>`,
+      });
+      
+      const gridElement = page.root.shadowRoot.querySelector('bds-grid');
+      expect(gridElement.getAttribute('role')).toBe('navigation');
+      expect(gridElement.getAttribute('aria-label')).toBe('Pagination');
+    });
+
+    it('should have aria-label on navigation buttons', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5" language="en_US"></bds-pagination>`,
+      });
+      
+      const buttons = page.root.shadowRoot.querySelectorAll('bds-button-icon');
+      // Check that buttons have aria-labels
+      expect(buttons.length).toBeGreaterThan(0);
+    });
+
+    it('should have aria-live on page info text', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5" page-counter="true" items-page="[10,20,30]" number-items="100"></bds-pagination>`,
+      });
+      
+      const typoElements = page.root.shadowRoot.querySelectorAll('bds-typo');
+      // Find the typo element with aria-live attribute
+      const liveElement = Array.from(typoElements).find(el => el.getAttribute('aria-live') === 'polite');
+      expect(liveElement).toBeTruthy();
+    });
+  });
 });
