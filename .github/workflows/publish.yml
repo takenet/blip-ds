@@ -50,6 +50,9 @@ jobs:
           folder: ./storybook-static
           target-folder: v2
           clean: true
+          clean-exclude: |
+            pr-preview
+            v2
           commit-message: "docs(storybook): update storybook build"
 
       - name: Semantic Release
