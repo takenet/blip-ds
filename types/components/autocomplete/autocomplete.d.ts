@@ -175,7 +175,6 @@ export declare class BdsAutocomplete {
   private setTimeoutFilter;
   private filterOptions;
   private resetFilterOptions;
-  private getSelectedValue;
   private renderIcon;
   private renderLabel;
   private renderMessage;
