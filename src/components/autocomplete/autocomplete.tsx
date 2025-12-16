@@ -512,7 +512,6 @@ export class BdsAutocomplete {
     }
     this.bdsInput.emit(ev as KeyboardEvent);
     if (this.nativeInput.value) {
-      // Open dropdown when typing to show filtered options
       if (!this.disabled && !this.isOpen) {
         this.isOpen = true;
       }
