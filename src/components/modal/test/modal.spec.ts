@@ -231,6 +231,57 @@ describe('bds-modal', () => {
       const closeButton = page.root.shadowRoot.querySelector('bds-icon.close-button');
       expect(closeButton.getAttribute('tabindex')).toBe('0');
     });
+
+    it('should have role dialog attribute', async () => {
+      const page = await newSpecPage({
+        components: [BdsModal],
+        html: `<bds-modal open="true"></bds-modal>`,
+      });
+      
+      const dialog = page.root.shadowRoot.querySelector('.modal__dialog');
+      expect(dialog.getAttribute('role')).toBe('dialog');
+    });
+
+    it('should have aria-modal true when open', async () => {
+      const page = await newSpecPage({
+        components: [BdsModal],
+        html: `<bds-modal open="true"></bds-modal>`,
+      });
+      
+      const dialog = page.root.shadowRoot.querySelector('.modal__dialog');
+      expect(dialog.getAttribute('aria-modal')).toBe('true');
+    });
+
+    it('should have aria-hidden true when closed', async () => {
+      const page = await newSpecPage({
+        components: [BdsModal],
+        html: `<bds-modal open="false"></bds-modal>`,
+      });
+      
+      const dialog = page.root.shadowRoot.querySelector('.modal__dialog');
+      expect(dialog.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('should have close button with role and aria-label', async () => {
+      const page = await newSpecPage({
+        components: [BdsModal],
+        html: `<bds-modal open="true"></bds-modal>`,
+      });
+      
+      const closeButton = page.root.shadowRoot.querySelector('bds-icon.close-button');
+      expect(closeButton.getAttribute('role')).toBe('button');
+      expect(closeButton.getAttribute('aria-label')).toBe('Close modal');
+    });
+
+    it('should have aria-hidden on outzone backdrop', async () => {
+      const page = await newSpecPage({
+        components: [BdsModal],
+        html: `<bds-modal open="true"></bds-modal>`,
+      });
+      
+      const outzone = page.root.shadowRoot.querySelector('.outzone');
+      expect(outzone.getAttribute('aria-hidden')).toBe('true');
+    });
   });
 
   describe('Content Rendering', () => {

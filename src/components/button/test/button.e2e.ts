@@ -138,5 +138,50 @@ describe('bds-button e2e tests', () => {
       // Check if the button element exists and can be focused
       expect(buttonElement).toBeTruthy();
     });
+
+    it('should have aria-disabled attribute when disabled', async () => {
+      page = await newE2EPage({
+        html: `<bds-button disabled>Disabled Button</bds-button>`,
+      });
+
+      const button = await page.find('bds-button >>> button');
+      const ariaDisabled = await button.getAttribute('aria-disabled');
+      expect(ariaDisabled).toBe('true');
+    });
+
+    it('should have aria-live for dynamic content updates', async () => {
+      const button = await page.find('bds-button >>> button');
+      const ariaLive = await button.getAttribute('aria-live');
+      expect(ariaLive).toBe('assertive');
+    });
+
+    it('should emit bdsClick event when Enter key is pressed', async () => {
+      const button = await page.find('bds-button');
+      const bdsClickEvent = await button.spyOnEvent('bdsClick');
+
+      // Focus the button wrapper and press Enter
+      const focusDiv = await page.find('bds-button >>> .focus');
+      await focusDiv.focus();
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+
+      expect(bdsClickEvent).toHaveReceivedEvent();
+    });
+
+    it('should be accessible via Tab navigation', async () => {
+      page = await newE2EPage({
+        html: `
+          <button id="prev">Previous button</button>
+          <bds-button>Target Button</bds-button>
+        `,
+      });
+
+      await page.focus('#prev');
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+
+      const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
+      expect(focusedElement).toBe('BDS-BUTTON');
+    });
   });
 });

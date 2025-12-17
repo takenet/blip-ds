@@ -524,8 +524,8 @@ if(!this.encode) return value;
 
     if (message) {
       return (
-        <div class={styles} part="input__message">
-          <div class="input__message__icon">
+        <div class={styles} part="input__message" id="input-message" role="alert" aria-live="polite">
+          <div class="input__message__icon" aria-hidden="true">
             <bds-icon size="x-small" name={icon} theme="outline" color="inherit"></bds-icon>
           </div>
           <bds-typo class="input__message__text" variant="fs-12">
@@ -670,6 +670,7 @@ if(!this.encode) return value;
   render(): HTMLElement {
     const isPressed = this.isPressed && !this.disabled;
     const Element = this.isTextarea ? 'textarea' : 'input';
+    const hasError = this.danger || this.validationDanger;
 
     return (
       <Host aria-disabled={this.disabled ? 'true' : null}>
@@ -687,6 +688,8 @@ if(!this.encode) return value;
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}
           part="input-container"
+          role="group"
+          aria-invalid={hasError ? 'true' : null}
         >
           {this.renderIcon()}
           <slot name="input-left"></slot>
@@ -726,6 +729,10 @@ if(!this.encode) return value;
                 required={this.required}
                 part="input"
                 data-test={this.dataTest}
+                aria-label={this.label || null}
+                aria-required={this.required ? 'true' : null}
+                aria-invalid={hasError ? 'true' : null}
+                aria-describedby={this.helperMessage || this.errorMessage || this.successMessage ? 'input-message' : null}
                 style={this.isTextarea ? {
                   minHeight: `${this.minHeight || 60}px`,
                   maxHeight: `${this.maxHeight || 200}px`,

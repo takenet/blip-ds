@@ -258,6 +258,7 @@ export class BdsTabGroup {
               onClick={() => this.prevSlide()}
               dataTest={this.dtButtonPrev}
               variant="secondary"
+              aria-label="Previous tab"
             ></bds-button-icon>
           )}
           <div 
@@ -273,6 +274,7 @@ export class BdsTabGroup {
               }}
               ref={this.refHeaderSlideElement}
               style={slidePosition}
+              role="tablist"
             >
               {this.internalItens &&
                 this.internalItens.map((item, index) => {
@@ -285,7 +287,11 @@ export class BdsTabGroup {
                         tab_group__header__itens__item__disable: item.disable,
                       }}
                       key={index}
-                      tabindex="0"
+                      tabindex={item.disable ? '-1' : '0'}
+                      role="tab"
+                      aria-selected={item.open ? 'true' : 'false'}
+                      aria-disabled={item.disable ? 'true' : null}
+                      aria-controls={`tab-panel-${index}`}
                       onClick={() =>
                         item.disable ? this.handleDisabled(item.numberElement) : this.handleClick(item.numberElement)
                       }
@@ -339,11 +345,13 @@ export class BdsTabGroup {
               onClick={() => this.nextSlide()}
               dataTest={this.dtButtonNext}
               variant="secondary"
+              aria-label="Next tab"
             ></bds-button-icon>
           )}
           <div 
             class={{ tab_group__content: true, tab_group__scrolled: this.contentScrollable }}
             style={contentStyle}
+            role="tabpanel"
           >
             <slot></slot>
           </div>
