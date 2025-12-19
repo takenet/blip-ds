@@ -1,5 +1,7 @@
 .upload {
   min-width: 400px;
+  width: 100%; /* Ensure consistent width behavior */
+  max-width: 100%; /* Prevent expansion beyond parent */
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -31,6 +33,7 @@
   box-sizing: border-box;
   padding: 23px 16px;
   position: relative;
+  min-height: 88px; /* Fixed height to prevent flickering when text changes */
 
   &::before {
     content: '';
@@ -64,10 +67,15 @@
     width: 100%;
     text-align: center;
     z-index: 2;
+    min-width: 0; /* Ensure flex item can shrink but maintain layout */
+    flex: 1; /* Take full available space */
     .text {
       color: $color-content-default;
       width: 100%;
       flex-wrap: wrap;
+      word-wrap: break-word; /* Ensure consistent text wrapping */
+      hyphens: auto; /* Allow hyphenation for long words */
+      min-width: 0; /* Allow text to wrap properly */
     }
   }
   .text-box--hover {
@@ -86,6 +94,7 @@
   cursor: pointer;
   text-decoration: underline $color-primary;
   color: $color-brand;
+  min-height: 88px; /* Maintain consistent height */
 
   .text {
     color: $color-primary;
@@ -98,6 +107,7 @@
   color: $color-primary;
   font-weight: bold;
   border-radius: 8px;
+  min-height: 88px; /* Maintain consistent height during drag hover */
 }
 
 .upload__img--invisible {
