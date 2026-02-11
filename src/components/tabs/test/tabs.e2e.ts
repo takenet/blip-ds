@@ -91,4 +91,45 @@ describe('bds-tab-group e2e tests', () => {
       expect(contentScrollable).toBe(true);
     });
   });
+
+  describe('Overflow Behavior', () => {
+    it('should apply overflow auto when contentScrollable is true', async () => {
+      const page = await newE2EPage({
+        html: `
+          <bds-tab-group content-scrollable="true">
+            <bds-tab-item tab="tab1" tab-title="Tab 1">Content 1</bds-tab-item>
+          </bds-tab-group>
+        `,
+      });
+      
+      const tabGroup = await page.find('bds-tab-group');
+      const contentScrollable = await tabGroup.getProperty('contentScrollable');
+      expect(contentScrollable).toBe(true);
+      
+      // Verify the content container gets the scrolled class
+      const contentElement = await page.find('bds-tab-group >>> .tab_group__content.tab_group__scrolled');
+      expect(contentElement).toBeTruthy();
+    });
+
+    it('should not apply scrolled class when contentScrollable is false', async () => {
+      const page = await newE2EPage({
+        html: `
+          <bds-tab-group content-scrollable="false">
+            <bds-tab-item tab="tab1" tab-title="Tab 1">Content 1</bds-tab-item>
+          </bds-tab-group>
+        `,
+      });
+      
+      const tabGroup = await page.find('bds-tab-group');
+      const contentScrollable = await tabGroup.getProperty('contentScrollable');
+      expect(contentScrollable).toBe(false);
+      
+      // Verify the content container does NOT get the scrolled class
+      const contentElement = await page.find('bds-tab-group >>> .tab_group__content');
+      const contentWithScrolled = await page.find('bds-tab-group >>> .tab_group__content.tab_group__scrolled');
+      
+      expect(contentElement).toBeTruthy();
+      expect(contentWithScrolled).toBeNull();
+    });
+  });
 });
