@@ -93,7 +93,7 @@ describe('bds-tab-group e2e tests', () => {
   });
 
   describe('Overflow Behavior', () => {
-    it('should apply overflow auto when contentScrollable is true', async () => {
+    it('should apply scrolled class when contentScrollable is true', async () => {
       const page = await newE2EPage({
         html: `
           <bds-tab-group content-scrollable="true">
