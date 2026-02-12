@@ -8,6 +8,7 @@ import {
 } from './autocomplete-select-interface';
 import { SelectOptionsPositionType } from '../selects/select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
+import { languages, termTranslate } from './languages';
 
 export type SelectionType = 'single' | 'multiple';
 
@@ -136,6 +137,12 @@ export class BdsAutocomplete {
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
+
+  /**
+   * Language, Entered as one of the languages. Can be one of:
+   * 'pt_BR', 'es_ES', 'en_US'.
+   */
+  @Prop() language?: languages = 'pt_BR';
 
   /**
    * Is Loading, is the prop to enable that the component is loading.
@@ -400,7 +407,7 @@ export class BdsAutocomplete {
   };
 
   private getTextMultiselect = (data): void => {
-    const valueInput = data?.length > 0 && `${data?.length} selecionados`;
+    const valueInput = data?.length > 0 && `${data?.length} ${termTranslate(this.language, 'selected')}`;
     this.textMultiselect = valueInput;
   };
 
@@ -699,7 +706,7 @@ export class BdsAutocomplete {
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}
-                label={`Selecionar Todos`}
+                label={termTranslate(this.language, 'allSelected')}
                 name="chack-all"
                 class="select-all"
                 onBdsChange={(ev) => this.handleCheckAll(ev)}
