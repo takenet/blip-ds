@@ -80,11 +80,19 @@ export class AccordionHeader {
 
   render() {
     return (
-      <div onClick={this.toggleHeader} class={{ accordion_header: true }} data-test={this.dataTest}>
+      <div 
+        onClick={this.toggleHeader} 
+        class={{ accordion_header: true }} 
+        data-test={this.dataTest}
+        role="button"
+        aria-expanded={this.isOpen ? 'true' : 'false'}
+        tabindex="0"
+        onKeyDown={this.handleKeyDown.bind(this)}
+      >
         {this.avatarName || this.avatarThumb ? (
           <bds-avatar name={this.avatarName} thumbnail={this.avatarThumb} size="extra-small"></bds-avatar>
         ) : (
-          this.icon && <bds-icon size="x-large" name={this.icon} color="inherit"></bds-icon>
+          this.icon && <bds-icon size="x-large" name={this.icon} color="inherit" aria-hidden="true"></bds-icon>
         )}
         {this.accordionTitle && (
           <bds-typo bold="bold" variant="fs-16" line-height="double">
@@ -101,8 +109,7 @@ export class AccordionHeader {
           size="x-large"
           name="arrow-down"
           color="inherit"
-          tabindex="0"
-          onKeyDown={this.handleKeyDown.bind(this)}
+          aria-hidden="true"
         ></bds-icon>
       </div>
     );

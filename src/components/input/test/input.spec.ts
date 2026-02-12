@@ -344,6 +344,66 @@ describe('bds-input', () => {
       const label = page.root.shadowRoot.querySelector('.input__container__label');
       expect(label).toBeTruthy();
     });
+
+    it('should have aria-label when label is provided', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input label="Test Label"></bds-input>`,
+      });
+      
+      const input = page.root.shadowRoot.querySelector('input') as HTMLInputElement;
+      expect(input.getAttribute('aria-label')).toBe('Test Label');
+    });
+
+    it('should have aria-required when required', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input label="Test" required></bds-input>`,
+      });
+      
+      const input = page.root.shadowRoot.querySelector('input') as HTMLInputElement;
+      expect(input.getAttribute('aria-required')).toBe('true');
+    });
+
+    it('should have aria-invalid when in error state', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input danger error-message="Error occurred"></bds-input>`,
+      });
+      
+      const input = page.root.shadowRoot.querySelector('input') as HTMLInputElement;
+      expect(input.getAttribute('aria-invalid')).toBe('true');
+    });
+
+    it('should have role group on container', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input label="Test"></bds-input>`,
+      });
+      
+      const container = page.root.shadowRoot.querySelector('.input');
+      expect(container.getAttribute('role')).toBe('group');
+    });
+
+    it('should have message with role alert when helper message is present', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input helper-message="Helper text"></bds-input>`,
+      });
+      
+      const message = page.root.shadowRoot.querySelector('.input__message');
+      expect(message.getAttribute('role')).toBe('alert');
+      expect(message.getAttribute('aria-live')).toBe('polite');
+    });
+
+    it('should have aria-disabled on host when disabled', async () => {
+      const page = await newSpecPage({
+        components: [Input],
+        html: `<bds-input disabled label="Test"></bds-input>`,
+      });
+      
+      expect(page.root.getAttribute('aria-disabled')).toBe('true');
+    });
   });
 
   describe('Edge Cases', () => {

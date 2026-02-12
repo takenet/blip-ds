@@ -1,0 +1,140 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Vamos Começar/Acessibilidade" />
+
+# Acessibilidade
+
+O Blip Design System segue as diretrizes WCAG 2.1 nível AA para garantir que todos os componentes sejam acessíveis para usuários com diferentes necessidades.
+
+## Princípios de Acessibilidade
+
+### Perceptível
+- Todos os componentes incluem texto alternativo ou rótulos apropriados
+- O contraste de cores atende aos requisitos mínimos de 4.5:1
+- O conteúdo pode ser apresentado de diferentes formas sem perder informações
+
+### Operável
+- Todos os componentes interativos são acessíveis por teclado
+- O foco é claramente visível
+- Não há armadilhas de foco nos componentes
+
+### Compreensível
+- Os rótulos e instruções são claros
+- Os componentes se comportam de maneira previsível
+- As mensagens de erro são identificáveis e descritivas
+
+### Robusto
+- Os componentes são compatíveis com tecnologias assistivas
+- O HTML semântico é utilizado corretamente
+- Os atributos ARIA são implementados quando necessário
+
+---
+
+## Navegação por Teclado
+
+Os componentes do Blip DS suportam navegação completa por teclado:
+
+| Tecla | Ação |
+|-------|------|
+| `Tab` | Navegar entre elementos focáveis |
+| `Shift + Tab` | Navegar para o elemento anterior |
+| `Enter` | Ativar botões e links, abrir/fechar acordeões |
+| `Space` | Ativar checkboxes e botões |
+| `Escape` | Fechar modais e dropdowns |
+| `Arrow Keys` | Navegar em menus, tabs e listas |
+
+---
+
+## Atributos ARIA Utilizados
+
+### Componentes Interativos
+
+#### Button (`bds-button`)
+- `aria-disabled`: Indica se o botão está desabilitado
+- `aria-live="assertive"`: Anuncia mudanças de estado dinâmicas
+
+#### Checkbox (`bds-checkbox`)
+- `role="checkbox"`: Identifica o elemento como checkbox
+- `aria-checked`: Indica o estado de seleção
+- `aria-disabled`: Indica se está desabilitado
+- `aria-label`: Fornece descrição acessível
+
+#### Modal (`bds-modal`)
+- `role="dialog"`: Identifica o modal como diálogo
+- `aria-modal`: Indica que é um modal
+- `aria-hidden`: Oculta o modal quando fechado
+
+#### Accordion (`bds-accordion-header`)
+- `role="button"`: Identifica o cabeçalho como botão
+- `aria-expanded`: Indica se o acordeão está aberto ou fechado
+
+#### Tabs (`bds-tab-group`)
+- `role="tablist"`: Identifica o container das abas
+- `role="tab"`: Identifica cada aba
+- `aria-selected`: Indica a aba ativa
+- `aria-controls`: Referencia o painel correspondente
+- `role="tabpanel"`: Identifica o conteúdo da aba
+
+#### Input (`bds-input`)
+- `role="group"`: Agrupa o campo de entrada com seus elementos relacionados
+- `aria-label`: Fornece descrição acessível baseada na prop `label`
+- `aria-required`: Indica campos obrigatórios
+- `aria-invalid`: Indica estado de erro na validação
+- `aria-describedby`: Conecta o campo à mensagem de ajuda/erro
+- `role="alert"`: Na mensagem de erro/sucesso para notificar leitores de tela
+
+#### Navbar (`bds-navbar`)
+- `role="navigation"`: Identifica o elemento como área de navegação
+- `aria-label`: Fornece descrição "Navigation bar"
+- Utiliza elemento semântico `<nav>` em vez de `<div>`
+
+#### Nav Tree (`bds-nav-tree`, `bds-nav-tree-item`)
+- `role="treeitem"`: Identifica cada item da árvore
+- `aria-expanded`: Indica se o item está expandido (quando tem filhos)
+- `aria-disabled`: Indica quando o item está desabilitado
+- `aria-hidden`: Esconde ícones decorativos de leitores de tela
+- `role="group"`: Agrupa os itens filhos
+
+#### Pagination (`bds-pagination`)
+- `role="navigation"`: Identifica a área de paginação
+- `aria-label`: Fornece rótulos descritivos para botões ("Ir para primeira página", etc.)
+- `aria-live="polite"`: Anuncia mudanças na página atual
+
+---
+
+## Testando Acessibilidade
+
+### Addon A11y no Storybook
+
+O Storybook inclui o addon `@storybook/addon-a11y` que permite verificar problemas de acessibilidade em tempo real. Para usar:
+
+1. Navegue até qualquer story de componente
+2. Clique na aba "Accessibility" no painel inferior
+3. Revise os resultados organizados por:
+   - **Violations**: Problemas que precisam ser corrigidos
+   - **Passes**: Regras que estão sendo seguidas
+   - **Incomplete**: Itens que requerem verificação manual
+
+### Ferramentas Recomendadas
+
+- **axe DevTools**: Extensão de navegador para auditorias de acessibilidade
+- **NVDA/VoiceOver**: Leitores de tela para testes manuais
+- **Lighthouse**: Auditorias automatizadas de acessibilidade
+
+---
+
+## Boas Práticas
+
+1. **Sempre forneça labels**: Use a prop `label` ou `aria-label` para elementos interativos
+2. **Mantenha o foco visível**: Não remova os indicadores de foco padrão
+3. **Use HTML semântico**: Prefira elementos nativos quando possível
+4. **Teste com tecnologias assistivas**: Valide com leitores de tela reais
+5. **Forneça textos alternativos**: Para ícones e imagens informativas
+
+---
+
+## Recursos Adicionais
+
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [WAI-ARIA Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [MDN Accessibility Guide](https://developer.mozilla.org/en-US/docs/Web/Accessibility)

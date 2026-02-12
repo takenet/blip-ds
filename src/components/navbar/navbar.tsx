@@ -34,7 +34,7 @@ export class Navbar {
   render() {
     return (
       <Host class={{ [`${this.orientation}`]: true }}>
-        <div
+        <nav
           class={{
             navbar: true,
             [`navbar__justify-content__${this.justifyContent}`]: true,
@@ -42,9 +42,11 @@ export class Navbar {
             [`navbar__background-color__${this.backgroundColor}`]: true,
           }}
           data-test={this.dataTest}
+          role="navigation"
+          aria-label="Navigation bar"
         >
           <slot />
-        </div>
+        </nav>
       </Host>
     );
   }

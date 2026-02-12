@@ -6,6 +6,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-docs',
     '@storybook/addon-console',
+    '@storybook/addon-a11y',
     // '@storybook/addon-notes', // Remove this as it's causing compatibility issues
     '@storybook/preset-create-react-app',
   ],
