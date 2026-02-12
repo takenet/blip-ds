@@ -34,10 +34,10 @@ export const config: Config = {
   ],
   buildEs5: true,
   extras: {
-    appendChildSlotFix: true,
+    appendChildSlotFix: false,
     scriptDataOpts: true,
     cloneNodeFix: false,
-    slotChildNodesFix: true,
+    slotChildNodesFix: false,
     experimentalImportInjection: true,
   },
   testing: {
