@@ -784,44 +784,58 @@ const logo = {
 	"asset-logo-zapier": "PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQ4LjE4MTggNDAuMDEzOUM0OC4xODAyIDQyLjM5MTggNDcuNzM1NiA0NC42NjgzIDQ2LjkyNTEgNDYuNzY5OEM0NC43NzYyIDQ3LjU2MjkgNDIuNDQ3IDQ3Ljk5ODYgNDAuMDE0IDQ4LjAwMDJIMzkuOTg1OUMzNy41NTQzIDQ3Ljk5ODYgMzUuMjI1NyA0Ny41NjQyIDMzLjA3NjggNDYuNzcxNEMzMi4yNjYyIDQ0LjY3MDYgMzEuODE5OCA0Mi4zOTMxIDMxLjgxODIgNDAuMDE0NlYzOS45ODY5QzMxLjgxOTggMzcuNjA5IDMyLjI2NTIgMzUuMzMyNSAzMy4wNzQ2IDMzLjIzMTJDMzUuMjI0NCAzMi40Mzg2IDM3LjU1MzMgMzIuMDAyNCAzOS45ODU5IDMyLjAwMDhINDAuMDE0QzQyLjQ0NyAzMi4wMDI0IDQ0Ljc3NjIgMzIuNDM4NiA0Ni45MjQ5IDMzLjIzMTJDNDcuNzM0OSAzNS4zMzI2IDQ4LjE4IDM3LjYwOTEgNDguMTgxNiAzOS45ODdWNDAuMDE0N1Y0MC4wMTQ0TDQ4LjE4MTggNDAuMDEzOVpNNzIuMjcyMyAzNC42NjY3SDUzLjE2ODRMNjYuNjc2NiAyMS40NTg3QzY1LjYxNjEgMjAuMDAyNCA2NC40MzMyIDE4LjYzNTEgNjMuMTQwMSAxNy4zNzFMNjMuMTM5NSAxNy4zNjk4QzYxLjg0NzcgMTYuMTA2OSA2MC40NTA3IDE0Ljk1MTUgNTguOTYyOCAxMy45MTU0TDQ1LjQ1NDYgMjcuMTIzNFY4LjQ0NTEyQzQzLjY1NzggOC4xNDk5MSA0MS44MzkgOC4wMDEwMiA0MC4wMTcgOEwzOS45ODIzIDhDMzguMTYwNSA4LjAwMDk1IDM2LjM0MTkgOC4xNDk3MyAzNC41NDUzIDguNDQ0OFYyNy4xMjQzTDIxLjAzNzEgMTMuOTE2M0MxOS41NDg1IDE0Ljk1MjggMTguMTUwOSAxNi4xMDg4IDE2Ljg1ODcgMTcuMzcyM0wxNi44NTM4IDE3LjM3NjZDMTUuNTYzNCAxOC42MzkyIDE0LjM4MjcgMjAuMDA0NSAxMy4zMjQgMjEuNDU4NkwyNi44MzIyIDM0LjY2NjZINy43Mjc2MUM3LjcyNzYxIDM0LjY2NjYgNy4yNzMzNiAzOC4xNzU0IDcuMjcyNzEgMzkuOTg4MlY0MC4wMTE0QzcuMjczMzkgNDEuNzk0OCA3LjQyNTU1IDQzLjU3NTEgNy43Mjc2MSA0NS4zMzM5SDI2LjgzMTVMMTMuMzIzMyA1OC41NDE5QzE1LjQ0NzYgNjEuNDU4MSAxOC4wNTQ3IDY0LjAwNzIgMjEuMDM3MSA2Ni4wODQzTDM0LjU0NTMgNTIuODc2NlY3MS41NTUyQzM2LjM0MDIgNzEuODQ5OSAzOC4xNTcgNzEuOTk4NyAzOS45NzcxIDcySDQwLjAyMzlDNDEuODQzNyA3MS45OTg2IDQzLjY2MDMgNzEuODQ5OCA0NS40NTUgNzEuNTU1MlY1Mi44NzU3TDU4Ljk2MzEgNjYuMDgzN0M2MC40NTEzIDY1LjA0NzUgNjEuODQ4NSA2My44OTE5IDYzLjE0MDQgNjIuNjI5TDYzLjE0MzcgNjIuNjI2NkM2NC40MzUyIDYxLjM2MzMgNjUuNjE2OSA1OS45OTcyIDY2LjY3NjYgNTguNTQyMkw1My4xNjg0IDQ1LjMzMzlINzIuMjcyM0M3Mi41NzM3IDQzLjU3OTEgNzIuNzI1OSA0MS44MDI5IDcyLjcyNzIgNDAuMDIzNVYzOS45Nzc2QzcyLjcyNTggMzguMTk4MiA3Mi41NzM2IDM2LjQyMiA3Mi4yNzIzIDM0LjY2NzJWMzQuNjY2N1oiIGZpbGw9IiNGRjRBMDAiLz4KPC9zdmc+Cg=="
 };
 
-const clearPathsAndFillColor = (svg, color) => {
-  const paths = svg.getElementsByTagName('path');
-  for (let i = 0; i < paths.length; i++) {
-    paths[i].setAttribute('fill', color);
+const FILL_ELEMENTS = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'line'];
+const getFilledElements = (svg) => {
+  const elements = [];
+  for (const tag of FILL_ELEMENTS) {
+    const found = svg.getElementsByTagName(tag);
+    for (let i = 0; i < found.length; i++) {
+      elements.push(found[i]);
+    }
+  }
+  return elements;
+};
+const clearAllFillColors = (svg, color) => {
+  const elements = getFilledElements(svg);
+  for (const el of elements) {
+    el.setAttribute('fill', color);
   }
   svg.setAttribute('fill', color);
 };
 const isMultiColorIcon = (svg) => {
-  const paths = svg.getElementsByTagName('path');
+  const elements = getFilledElements(svg);
   const fills = new Set();
-  for (let i = 0; i < paths.length; i++) {
-    const fill = paths[i].getAttribute('fill');
+  for (const el of elements) {
+    const fill = el.getAttribute('fill');
     if (fill && fill !== 'none' && fill !== 'currentColor') {
-      fills.add(fill);
+      fills.add(fill.toLowerCase());
     }
   }
   return fills.size > 1;
 };
 const applyColorVariables = (svg) => {
-  const paths = svg.getElementsByTagName('path');
+  const elements = getFilledElements(svg);
   // First pass: identify unique fill colors and assign layer indices
   const colorToLayerIndex = new Map();
   let layerIndex = 0;
-  for (let i = 0; i < paths.length; i++) {
-    const fill = paths[i].getAttribute('fill');
-    if (fill && fill !== 'none' && fill !== 'currentColor' && !colorToLayerIndex.has(fill)) {
-      colorToLayerIndex.set(fill, layerIndex);
-      layerIndex++;
+  for (const el of elements) {
+    const fill = el.getAttribute('fill');
+    if (fill && fill !== 'none' && fill !== 'currentColor') {
+      const normalizedFill = fill.toLowerCase();
+      if (!colorToLayerIndex.has(normalizedFill)) {
+        colorToLayerIndex.set(normalizedFill, layerIndex);
+        layerIndex++;
+      }
     }
   }
   // Second pass: apply CSS variables using the color-to-layer mapping
-  for (let i = 0; i < paths.length; i++) {
-    const path = paths[i];
-    const currentFill = path.getAttribute('fill');
+  for (const el of elements) {
+    const currentFill = el.getAttribute('fill');
     if (currentFill && currentFill !== 'none' && currentFill !== 'currentColor') {
-      const layer = colorToLayerIndex.get(currentFill);
-      path.style.fill = `var(--icon-layer-${layer}, ${currentFill})`;
-      path.setAttribute('data-customizable', 'true');
+      const normalizedFill = currentFill.toLowerCase();
+      const layer = colorToLayerIndex.get(normalizedFill);
+      el.style.fill = `var(--icon-layer-${layer}, ${currentFill})`;
+      el.setAttribute('data-customizable', 'true');
     }
   }
 };
@@ -837,16 +851,13 @@ const formatSvg = (svgContent, color, emoji = false) => {
     svgElm.removeAttribute('height');
     if (!emoji) {
       if (color) {
-        // Outline or force a single color
-        clearPathsAndFillColor(svgElm, color);
+        clearAllFillColors(svgElm, color);
       }
       else if (isMultiColorIcon(svgElm)) {
-        // Multi-color: enable CSS variables
         applyColorVariables(svgElm);
       }
       else {
-        // Mono-color: use currentColor on SVG and all paths
-        clearPathsAndFillColor(svgElm, 'currentColor');
+        clearAllFillColors(svgElm, 'currentColor');
       }
     }
     return div.innerHTML;
