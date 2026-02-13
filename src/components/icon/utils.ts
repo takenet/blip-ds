@@ -27,12 +27,26 @@ const isMultiColorIcon = (svg: Element): boolean => {
 const applyColorVariables = (svg: Element): void => {
   const paths = svg.getElementsByTagName('path');
 
+  // First pass: identify unique fill colors and assign layer indices
+  const colorToLayerIndex = new Map<string, number>();
+  let layerIndex = 0;
+
+  for (let i = 0; i < paths.length; i++) {
+    const fill = paths[i].getAttribute('fill');
+    if (fill && fill !== 'none' && fill !== 'currentColor' && !colorToLayerIndex.has(fill)) {
+      colorToLayerIndex.set(fill, layerIndex);
+      layerIndex++;
+    }
+  }
+
+  // Second pass: apply CSS variables using the color-to-layer mapping
   for (let i = 0; i < paths.length; i++) {
     const path = paths[i];
     const currentFill = path.getAttribute('fill');
 
     if (currentFill && currentFill !== 'none' && currentFill !== 'currentColor') {
-      path.style.fill = `var(--icon-layer-${i}, ${currentFill})`;
+      const layer = colorToLayerIndex.get(currentFill);
+      path.style.fill = `var(--icon-layer-${layer}, ${currentFill})`;
       path.setAttribute('data-customizable', 'true');
     }
   }
@@ -44,6 +58,9 @@ export const formatSvg = (svgContent: string | null, color: string | null, emoji
     div.innerHTML = svgContent;
 
     const svgElm = div.firstElementChild as SVGElement;
+    if (!svgElm) {
+      return '';
+    }
 
     svgElm.removeAttribute('width');
     svgElm.removeAttribute('height');
@@ -56,8 +73,8 @@ export const formatSvg = (svgContent: string | null, color: string | null, emoji
         // Multi-color: enable CSS variables
         applyColorVariables(svgElm);
       } else {
-        // Mono-color: use currentColor
-        svgElm.setAttribute('fill', 'currentColor');
+        // Mono-color: use currentColor on SVG and all paths
+        clearPathsAndFillColor(svgElm, 'currentColor');
       }
     }
 
