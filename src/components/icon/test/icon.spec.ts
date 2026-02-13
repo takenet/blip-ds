@@ -335,7 +335,7 @@ describe('bds-icon', () => {
       });
 
       page.rootInstance.isVisible = true;
-      page.rootInstance.loadIcon();
+      (page.rootInstance as unknown as { loadIcon: () => void }).loadIcon();
 
       expect(page.rootInstance.svgContent).toBeUndefined();
     });
@@ -364,7 +364,7 @@ describe('bds-icon', () => {
       (Build as any).isBrowser = true;
 
       // Call setSvgContent directly to trigger the error
-      (page.rootInstance as any).setSvgContent();
+      (page.rootInstance as unknown as { setSvgContent: () => void }).setSvgContent();
 
       expect(consoleWarnSpy).toHaveBeenCalledWith('[Warning]: Failed to setSvgContent to', 'invalid-icon');
 
