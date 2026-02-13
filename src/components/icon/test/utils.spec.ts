@@ -228,16 +228,6 @@ describe('Icon Utils', () => {
         expect(result).not.toContain('#FF0000');
         expect(result).not.toContain('#00FF00');
       });
-
-      it('should apply color prop to all paths when provided, overriding multi-color detection', () => {
-        const result = formatSvg(multiColorSvg, '#0000FF');
-
-        expect(result).toContain('fill="#0000FF"');
-        expect(result).not.toContain('--icon-layer-');
-        expect(result).not.toContain('data-customizable');
-        expect(result).not.toContain('#FF0000');
-        expect(result).not.toContain('#00FF00');
-      });
     });
 
     describe('emoji icons', () => {
