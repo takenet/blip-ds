@@ -252,7 +252,7 @@ export class Button {
   render(): HTMLElement {
     return (
       <Host class={{ host: true, block: this.block || this.fullWidth, group: this.group }}>
-        <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
+        <div tabindex={this.disabled ? '-1' : '0'} onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
         <button
           onClick={(ev) => this.handleClick(ev)}
           disabled={this.disabled}
