@@ -280,7 +280,7 @@ describe('bds-icon', () => {
       // Ensure component is visible and browser environment is mocked
       (page.rootInstance as any).isVisible = true;
       (Build as any).isBrowser = true;
-      
+
       // Call setSvgContent directly to test the logic
       (page.rootInstance as any).setSvgContent();
 
@@ -299,7 +299,7 @@ describe('bds-icon', () => {
       // Ensure component is visible and browser environment is mocked
       (page.rootInstance as any).isVisible = true;
       (Build as any).isBrowser = true;
-      
+
       // Call setSvgContent directly to test the logic
       (page.rootInstance as any).setSvgContent();
 
@@ -318,7 +318,7 @@ describe('bds-icon', () => {
       // Ensure component is visible and browser environment is mocked
       (page.rootInstance as any).isVisible = true;
       (Build as any).isBrowser = true;
-      
+
       // Call setSvgContent directly to test the logic
       (page.rootInstance as any).setSvgContent();
 
@@ -362,7 +362,7 @@ describe('bds-icon', () => {
       // Ensure component is visible and browser environment is mocked
       (page.rootInstance as any).isVisible = true;
       (Build as any).isBrowser = true;
-      
+
       // Call setSvgContent directly to trigger the error
       (page.rootInstance as any).setSvgContent();
 
@@ -574,16 +574,16 @@ describe('bds-icon', () => {
       // Set component as not visible but browser is available
       (page.rootInstance as any).isVisible = false;
       (Build as any).isBrowser = true;
-      
+
       // Reset svgContent to ensure it starts as undefined
       (page.rootInstance as any).svgContent = undefined;
-      
+
       page.rootInstance.loadIcon();
 
       // Since loadIcon checks both Build.isBrowser AND isVisible, 
       // setSvgContent should not be called when isVisible is false
       expect(page.rootInstance.svgContent).toBeUndefined();
-      
+
       // But ariaLabel should still be set since that happens regardless of visibility
       expect(page.rootInstance.ariaLabel).toBe('edit');
     });
@@ -599,6 +599,102 @@ describe('bds-icon', () => {
       expect(page.rootInstance.dataTest).toBeNull();
       const iconInner = page.root.querySelector('.icon-inner');
       expect(iconInner.getAttribute('data-test')).toBeNull();
+    });
+  });
+
+  describe('Multi-Color Icon Customization', () => {
+    it('should render multi-color icon with CSS variables', async () => {
+      const page = await newSpecPage({
+        components: [Icon],
+        html: `<bds-icon name="folder" theme="solid"></bds-icon>`,
+        supportsShadowDom: false,
+        autoApplyChanges: false,
+      });
+
+      page.rootInstance.svgContent = `<svg>
+        <path style="fill: var(--icon-layer-0, #333333)" data-customizable="true" d="M10 10"/>
+        <path style="fill: var(--icon-layer-1, #CCCCCC)" data-customizable="true" d="M20 20"/>
+      </svg>`;
+      await page.waitForChanges();
+
+      const iconInner = page.root.querySelector('.icon-inner');
+      expect(iconInner).toBeTruthy();
+      expect(iconInner.innerHTML).toContain('--icon-layer-0');
+      expect(iconInner.innerHTML).toContain('--icon-layer-1');
+      expect(iconInner.innerHTML).toContain('data-customizable="true"');
+    });
+
+    it('should allow CSS variable override on multi-color icons', async () => {
+      const page = await newSpecPage({
+        components: [Icon],
+        html: `<bds-icon
+          name="folder-open"
+          theme="solid"
+          style="--icon-layer-0: #FFD700; --icon-layer-1: #FFA500;"
+        ></bds-icon>`,
+        supportsShadowDom: false,
+        autoApplyChanges: false,
+      });
+
+      const root = page.root as HTMLElement;
+      expect(root.style.getPropertyValue('--icon-layer-0')).toBe('#FFD700');
+      expect(root.style.getPropertyValue('--icon-layer-1')).toBe('#FFA500');
+    });
+
+    it('should preserve original colors as fallback in CSS variables', async () => {
+      const page = await newSpecPage({
+        components: [Icon],
+        html: `<bds-icon name="folder-open" theme="solid"></bds-icon>`,
+        supportsShadowDom: false,
+        autoApplyChanges: false,
+      });
+
+      page.rootInstance.svgContent = `<svg>
+        <path style="fill: var(--icon-layer-0, #333333)" data-customizable="true" d="M10 10"/>
+      </svg>`;
+      await page.waitForChanges();
+
+      const iconInner = page.root.querySelector('.icon-inner');
+      expect(iconInner.innerHTML).toContain('var(--icon-layer-0, #333333)');
+    });
+  });
+
+  describe('Single vs Multi-Color Detection', () => {
+    it('should use currentColor for single-color icons without color prop', async () => {
+      const page = await newSpecPage({
+        components: [Icon],
+        html: `<bds-icon name="folder-open" theme="outline"></bds-icon>`,
+        supportsShadowDom: false,
+        autoApplyChanges: false,
+      });
+
+      page.rootInstance.svgContent = `<svg fill="currentColor">
+        <path fill="currentColor" d="M10 10"/>
+      </svg>`;
+      await page.waitForChanges();
+
+      const iconInner = page.root.querySelector('.icon-inner');
+      expect(iconInner.innerHTML).toContain('fill="currentColor"');
+      expect(iconInner.innerHTML).not.toContain('data-customizable');
+    });
+
+    it('should use CSS variables for multi-color icons', async () => {
+      const page = await newSpecPage({
+        components: [Icon],
+        html: `<bds-icon name="folder-open" theme="solid"></bds-icon>`,
+        supportsShadowDom: false,
+        autoApplyChanges: false,
+      });
+
+      page.rootInstance.svgContent = `<svg>
+        <path style="fill: var(--icon-layer-0, #333333)" data-customizable="true" d="M10 10"/>
+        <path style="fill: var(--icon-layer-1, #CCCCCC)" data-customizable="true" d="M20 20"/>
+      </svg>`;
+      await page.waitForChanges();
+
+      const iconInner = page.root.querySelector('.icon-inner');
+      expect(iconInner.innerHTML).toContain('--icon-layer-');
+      expect(iconInner.innerHTML).toContain('data-customizable');
     });
   });
 });
