@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                                                                                                           | Type                                                                                                                            | Default     |
@@ -18,63 +19,6 @@
 | `theme`     | `theme`      | Specifies the theme to use outline or solid icons. Defaults to outline.                                                                                                               | `"outline" \| "solid"`                                                                                                          | `'outline'` |
 | `type`      | `type`       | Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.                                                                    | `"emoji" \| "icon" \| "logo"`                                                                                                   | `'icon'`    |
 
-## CSS Custom Properties
-
-Multi-color solid icons support CSS custom properties for layer-by-layer color customization. This feature is automatically detected and applied when an icon has multiple distinct fill colors.
-
-| Name               | Description                                                                 |
-| ------------------ | --------------------------------------------------------------------------- |
-| `--icon-layer-0`   | Color of the first layer (typically the background or base layer)           |
-| `--icon-layer-1`   | Color of the second layer                                                   |
-| `--icon-layer-2`   | Color of the third layer (if present)                                       |
-| `--icon-layer-N`   | Color of the Nth layer (continues for each additional layer in the icon)   |
-
-### Usage Example
-
-```html
-<!-- Using inline styles -->
-<bds-icon 
-  name="folder-open" 
-  theme="solid" 
-  style="--icon-layer-0: #FFD700; --icon-layer-1: #FFA500;"
-></bds-icon>
-
-<!-- Using CSS classes -->
-<style>
-  .custom-folder {
-    --icon-layer-0: #FFD700;  /* Gold */
-    --icon-layer-1: #FFA500;  /* Orange */
-  }
-</style>
-
-<bds-icon name="folder-open" theme="solid" class="custom-folder"></bds-icon>
-
-<!-- Using CSS selectors -->
-<style>
-  bds-icon[name="folder-open"] {
-    --icon-layer-0: #9370DB;  /* Purple */
-    --icon-layer-1: #FF69B4;  /* Pink */
-  }
-</style>
-
-<bds-icon name="folder-open" theme="solid"></bds-icon>
-```
-
-### Backward Compatibility
-
-This feature is 100% backward compatible:
-- **Single-color icons**: Continue to use `color` prop or `currentColor` as before
-- **Outline icons**: Not affected, continue to inherit color from parent or use `color` prop
-- **Multi-color icons without CSS variables**: Display with their original colors
-- **Emoji icons**: Always use `currentColor`, CSS variables are ignored
-
-### How It Works
-
-1. The component automatically detects multi-color solid icons by analyzing fill colors
-2. Each unique color is assigned to a CSS variable (`--icon-layer-0`, `--icon-layer-1`, etc.)
-3. Original colors are preserved as fallback values
-4. The icon is marked with `data-customizable="true"` attribute for easy identification
-5. You can override any layer color using CSS custom properties
 
 ## Dependencies
 
