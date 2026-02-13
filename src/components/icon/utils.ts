@@ -50,13 +50,13 @@ export const formatSvg = (svgContent: string | null, color: string | null, emoji
 
     if (!emoji) {
       if (color) {
-        // Outline ou força uma cor única
+        // Outline or force a single color
         clearPathsAndFillColor(svgElm, color);
       } else if (isMultiColorIcon(svgElm)) {
-        // Multi-color: ativa CSS variables
+        // Multi-color: enable CSS variables
         applyColorVariables(svgElm);
       } else {
-        // Mono-color: usa currentColor
+        // Mono-color: use currentColor
         svgElm.setAttribute('fill', 'currentColor');
       }
     }
