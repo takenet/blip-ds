@@ -350,12 +350,10 @@ export const AllLogos = () => {
 
 export const SolidIconCustomization = () => {
   const [layer0Color, setLayer0Color] = useState('#333333');
-  const [layer1Color, setLayer1Color] = useState('#CCCCCC');
 
   const folderPreviewStyle = {
     fontSize: '4rem',
     '--icon-layer-0': layer0Color,
-    '--icon-layer-1': layer1Color,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -389,7 +387,7 @@ export const SolidIconCustomization = () => {
         </bds-typo>
         <bds-typo variant="fs-14">
           Multi-color solid icons can be customized using CSS custom properties. Each layer is assigned a variable{' '}
-          <code style={{ background: '#f5f5f5', padding: '2px 6px' }}>--icon-layer-N</code> where N is the layer index.
+          <code style={{ background: '#f5f5f5', padding: '2px 6px' }}> --icon-layer-N</code> where N is the layer index.
         </bds-typo>
       </bds-grid>
 
@@ -413,14 +411,13 @@ export const SolidIconCustomization = () => {
             style={{
               fontSize: '3rem',
               '--icon-layer-0': '#FFD700',
-              '--icon-layer-1': '#FFA500',
             }}
           >
             <bds-icon name="folder-open" theme="solid" size="xxx-large"></bds-icon>
           </div>
           <bds-typo variant="fs-10" color="on-surface-variant">
             <code style={{ background: '#f5f5f5', padding: '4px 8px', borderRadius: '4px' }}>
-              --icon-layer-0: #FFD700; --icon-layer-1: #FFA500;
+              --icon-layer-0: #FFD700
             </code>
           </bds-typo>
         </bds-grid>
@@ -446,7 +443,6 @@ export const SolidIconCustomization = () => {
                 style={{
                   fontSize: '2.5rem',
                   '--icon-layer-0': '#9370DB',
-                  '--icon-layer-1': '#FF69B4',
                 }}
               >
                 <bds-icon name="folder-open" theme="solid" size="xxx-large"></bds-icon>
@@ -466,7 +462,6 @@ export const SolidIconCustomization = () => {
                 style={{
                   fontSize: '2.5rem',
                   '--icon-layer-0': '#228B22',
-                  '--icon-layer-1': '#32CD32',
                 }}
               >
                 <bds-icon name="folder-open" theme="solid" size="xxx-large"></bds-icon>
@@ -486,7 +481,6 @@ export const SolidIconCustomization = () => {
                 style={{
                   fontSize: '2.5rem',
                   '--icon-layer-0': '#FF6B6B',
-                  '--icon-layer-1': '#FFB3B3',
                 }}
               >
                 <bds-icon name="folder-open" theme="solid" size="xxx-large"></bds-icon>
@@ -521,19 +515,6 @@ export const SolidIconCustomization = () => {
           />
           <bds-typo variant="fs-12">{layer0Color}</bds-typo>
         </bds-grid>
-
-        <bds-grid direction="column" gap="2" sm="6">
-          <bds-typo variant="fs-14" weight="700">
-            Layer 1 (Front)
-          </bds-typo>
-          <input
-            type="color"
-            value={layer1Color}
-            onChange={(e) => setLayer1Color(e.target.value)}
-            style={colorInputStyle}
-          />
-          <bds-typo variant="fs-12">{layer1Color}</bds-typo>
-        </bds-grid>
       </bds-grid>
 
       <bds-grid direction="column" gap="2">
@@ -549,11 +530,7 @@ export const SolidIconCustomization = () => {
         <bds-typo variant="fs-12" color="on-surface-variant">
           <strong>CSS Applied:</strong>
           <br />
-          <code style={codeBlockStyle}>
-            --icon-layer-0: {layer0Color};
-            <br />
-            --icon-layer-1: {layer1Color};
-          </code>
+          <code style={codeBlockStyle}>--icon-layer-0: {layer0Color};</code>
         </bds-typo>
       </bds-card>
 
@@ -576,9 +553,7 @@ export const SolidIconCustomization = () => {
           <bds-typo variant="fs-12" color="on-surface-variant">
             Original behavior preserved
           </bds-typo>
-          <div style={{ fontSize: '2rem', color: '#FF6B6B' }}>
-            <bds-icon name="folder-open" theme="outline" size="xxx-large"></bds-icon>
-          </div>
+          <bds-icon name="folder-open" theme="outline" size="xxx-large"></bds-icon>
         </bds-grid>
 
         <bds-grid direction="column" gap="2" sm="6" md="3">
@@ -588,9 +563,7 @@ export const SolidIconCustomization = () => {
           <bds-typo variant="fs-12" color="on-surface-variant">
             Uses currentColor
           </bds-typo>
-          <div style={{ fontSize: '2rem', color: '#00B8FF' }}>
-            <bds-icon name="folder-open" theme="outline" size="xxx-large"></bds-icon>
-          </div>
+          <bds-icon color="#FF6B6B" name="folder-open" theme="outline" size="xxx-large"></bds-icon>
         </bds-grid>
 
         <bds-grid direction="column" gap="2" sm="6" md="3">
@@ -600,9 +573,7 @@ export const SolidIconCustomization = () => {
           <bds-typo variant="fs-12" color="on-surface-variant">
             Uses currentColor
           </bds-typo>
-          <div style={{ fontSize: '2rem', color: '#4CAF50' }}>
-            <bds-icon name="folder-open" theme="solid" size="xxx-large"></bds-icon>
-          </div>
+          <bds-icon name="folder-open" theme="solid" size="xxx-large"></bds-icon>
         </bds-grid>
 
         <bds-grid direction="column" gap="2" sm="6" md="3">
@@ -616,7 +587,6 @@ export const SolidIconCustomization = () => {
             style={{
               fontSize: '2rem',
               '--icon-layer-0': '#FFD700',
-              '--icon-layer-1': '#FFA500',
             }}
           >
             <bds-icon name="folder-open" theme="solid" size="xxx-large"></bds-icon>
