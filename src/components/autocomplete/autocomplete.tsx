@@ -139,8 +139,7 @@ export class BdsAutocomplete {
   @Prop() dataTest?: string = null;
 
   /**
-   * Language, Entered as one of the languages. Can be one of:
-   * 'pt_BR', 'es_ES', 'en_US'.
+   * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
    */
   @Prop() language?: languages = 'pt_BR';
 
@@ -407,7 +406,7 @@ export class BdsAutocomplete {
   };
 
   private getTextMultiselect = (data): void => {
-    const valueInput = data?.length > 0 && `${data?.length} ${termTranslate(this.language, 'selected')}`;
+    const valueInput = data?.length > 0 ? `${data?.length} ${termTranslate(this.language, 'selected')}` : '';
     this.textMultiselect = valueInput;
   };
 

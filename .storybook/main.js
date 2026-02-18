@@ -29,8 +29,11 @@ module.exports = {
   },
   webpackFinal: async (config) => {
     // Disable react-refresh to avoid source map issues with jsx files
-    config.plugins = config.plugins.filter(
-      (plugin) => plugin.constructor.name !== 'ReactRefreshPlugin'
+    config.plugins = (config.plugins || []).filter(
+      (plugin) => 
+        plugin &&
+        plugin.constructor &&
+        plugin.constructor.name !== 'ReactRefreshWebpackPlugin'
     );
     return config;
   },

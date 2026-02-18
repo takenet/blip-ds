@@ -196,7 +196,7 @@ describe('bds-autocomplete', () => {
       const optionsString = JSON.stringify(defaultOptions);
       const page = await newSpecPage({
         components: [BdsAutocomplete],
-        html: `<bds-autocomplete options='${optionsString}' selection-type="multiple" selected-all="true" options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' language="es_ES"></bds-autocomplete>`,
+        html: `<bds-autocomplete options='${optionsString}' selection-type="multiple" selected-all="true" language="es_ES"></bds-autocomplete>`,
       });
 
       page.rootInstance.isOpen = true;

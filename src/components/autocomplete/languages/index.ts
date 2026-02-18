@@ -4,7 +4,7 @@ import { enTerms } from './en_US';
 
 export type languages = 'pt_BR' | 'es_ES' | 'en_US';
 
-export const termTranslate = (lang: languages, key: string): string => {
+export const termTranslate = (lang: languages, key: string): string | undefined => {
   const terms =
     lang === 'en_US' ? enTerms :
     lang === 'es_ES' ? esTerms :
