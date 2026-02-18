@@ -24,7 +24,7 @@ import { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components
 import { BorderColor, PaperBackground, PaperElevation } from "./components/paper/paper-interface";
 import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
-import { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
+import { arrows, bullets, bulletsPositions, gap } from "./components/carousel/carousel-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
@@ -76,90 +76,13 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
-export { collapses } from "./components/accordion/accordion-group";
-export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
-export { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
-export { languages } from "./components/autocomplete/languages";
-export { SelectionType } from "./components/autocomplete/autocomplete";
-export { avatarSize, colors } from "./components/avatar/avatar";
-export { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
-export { AvatarDataList } from "./components/avatar-group/avatar-group-interface";
-export { Shape } from "./components/badge/badge";
-export { BannerAlign, BannerVariant, ButtonClose, Context } from "./components/banner/banner";
-export { targets } from "./components/banner/banner-link/banner-link";
-export { ButtonJustifyContent, ButtonSize, ButtonType, ButtonVariant, IconTheme, IconType } from "./components/button/button";
-export { colorsVariants, LoadingSpinnerVariant } from "./components/loading-spinner/loading-spinner";
-export { ButtonSize as ButtonSize1 } from "./components/button/button";
-export { alignItems, breakpoint, direction, flexWrap, gap as gap1, justifyContent as justifyContent2, margin, padding } from "./components/grid/grid-interface";
-export { ButtonIconTheme, IconButtonSize, IconButtonVariant } from "./components/icon-button/icon-button";
-export { BorderColor, PaperBackground, PaperElevation } from "./components/paper/paper-interface";
-export { justifyContent } from "./components/card/card-footer/card-footer";
-export { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
-export { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
-export { Themes } from "./components/theme-provider/theme-provider";
-export { ChipSize, ChipVariant } from "./components/chip/chip";
-export { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
-export { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
-export { ColorChipTag } from "./components/chip-tag/chip-tag";
-export { CounterTextRule } from "./components/counter-text/counter-text-interface";
-export { DropdownPostionType, typeDate } from "./components/datepicker/datepicker";
-export { BannerVariant as BannerVariant1 } from "./components/banner/banner";
-export { languages as languages1 } from "./utils/languages";
-export { DaysList } from "./components/datepicker/datepicker-interface";
-export { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
-export { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
-export { Color } from "./components/grid/color-grid-interface";
-export { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
-export { IllustrationType } from "./components/illustration/illustration-interface";
-export { ObjectFitValue } from "./components/image/image";
-export { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
-export { InputChipsTypes } from "./components/input-chips/input-chips-interface";
-export { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
-export { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
-export { languages as languages2 } from "./components/input-phone-number/input-phone-number";
-export { TypeList } from "./components/list/list";
-export { Data } from "./components/list/list-interface";
-export { TypeList as TypeList1 } from "./components/list/list";
-export { ItemSize } from "./components/list/list-item";
-export { loadingBarSize } from "./components/loading-bar/loading-bar";
-export { colorsVariants as colorsVariants1, loadingSize, LoadingSpinnerVariant as LoadingSpinnerVariant1 } from "./components/loading-spinner/loading-spinner";
-export { menuPosition } from "./components/menu/menu";
-export { avatarSize as avatarSize2 } from "./components/menu/menu-exibition/menu-exibition";
-export { sizes } from "./components/modal/modal";
-export { collapses as collapses1 } from "./components/nav-tree/nav-tree";
-export { collapses as collapses2 } from "./components/nav-tree/nav-tree-group";
-export { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
-export { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
-export { PaginationOptionsPositionType } from "./components/pagination/pagination";
-export { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-export { languages as languages3 } from "./components/rict-text/rich-text-interface";
-export { positionBar } from "./components/rict-text/rich-text";
-export { TypeOption } from "./components/select-option/select-option";
-export { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
-export { Shape as Shape1 } from "./components/skeleton/skeleton";
-export { StepOption, typeRange } from "./components/slider/slider-interface";
-export { SwitchSize } from "./components/switch/switch";
-export { JustifyContent } from "./components/table/table-cell/table-cell";
-export { JustifyContent as JustifyContent1 } from "./components/table/table-header-cell/table-header-cell";
-export { Overflow } from "./components/tabs/tab (depreciated)/tabs-interface";
-export { Themes as Themes1 } from "./components/theme-provider/theme-provider";
-export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
-export { TooltipPostionType } from "./components/tooltip/tooltip";
-export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-export { languages as languages4 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
-        /**
-          * @default true
-         */
         "divisor"?: boolean;
         "notStart": () => Promise<void>;
         "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
-        /**
-          * @default false
-         */
         "startOpen"?: boolean;
         "toggle": () => Promise<void>;
     }
@@ -167,7 +90,6 @@ export namespace Components {
         "close": () => Promise<void>;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         "divisor": (valor: any) => Promise<void>;
@@ -176,65 +98,46 @@ export namespace Components {
     }
     interface BdsAccordionGroup {
         "closeAll": (actNumber?: any) => Promise<void>;
-        /**
-          * @default 'single'
-         */
         "collapse"?: collapses;
-        /**
-          * @default true
-         */
         "divisor"?: boolean;
         "openAll": (actNumber?: any) => Promise<void>;
     }
     interface BdsAccordionHeader {
         /**
           * Accordion Title. Used to add title in header accordion.
-          * @default null
          */
         "accordionTitle"?: string;
         /**
           * Avatar Name. Used to add avatar in header accordion.
-          * @default null
          */
         "avatarName"?: string;
         /**
           * Avatar Thumb. Used to add avatar in header accordion.
-          * @default null
          */
         "avatarThumb"?: string;
         "close": () => Promise<void>;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Icon. Used to add icon in header accordion.
-          * @default null
          */
         "icon"?: string;
-        /**
-          * Icon color for the accordion header icons.
-          * @default 'inherit'
-         */
-        "iconColor"?: string;
         "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
     interface BdsAlert {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Used to open/close the alert
-          * @default false
          */
         "open"?: boolean;
         /**
           * Define whether the component will occupy the entire screen or just the parent.
-          * @default 'fixed'
          */
         "position"?: string;
         /**
@@ -249,12 +152,10 @@ export namespace Components {
     interface BdsAlertHeader {
         /**
           * used for add icon the header. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
-          * @default 'system'
          */
         "variant"?: AlertHeaderVariannt;
     }
@@ -262,52 +163,42 @@ export namespace Components {
         "cleanMultipleSelection": () => Promise<void>;
         /**
           * If true, the X icon will appear only when component is focused.
-          * @default false
          */
         "clearIconOnFocus"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
           * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages;
         /**
           * Is Loading, is the prop to enable that the component is loading.
-          * @default false
          */
         "loading"?: boolean;
         /**
@@ -316,17 +207,14 @@ export namespace Components {
         "options"?: string | AutocompleteOption[];
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
-          * @default 'auto'
          */
         "optionsPosition"?: AutocompleteOptionsPositionType;
         /**
           * Placeholder for native input element.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Search only the title property
-          * @default true
          */
         "searchOnlyTitle"?: boolean;
         /**
@@ -335,27 +223,22 @@ export namespace Components {
         "selected"?: HTMLBdsSelectOptionElement | null;
         /**
           * Selection Title, Prop to enable title to select.
-          * @default true
          */
         "selectedAll"?: boolean;
         /**
           * Selection Title, Prop to enable title to select.
-          * @default ''
          */
         "selectionTitle"?: string;
         /**
           * Multiselect, Prop to enable multi selections.
-          * @default 'single'
          */
         "selectionType"?: SelectionType;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
@@ -366,42 +249,34 @@ export namespace Components {
     interface BdsAvatar {
         /**
           * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
-          * @default 'colorLetter'
          */
         "color"?: colors;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Ellipses, serves to indicate the user number in the listing.
-          * @default null
          */
         "ellipsis"?: number;
         /**
           * Name, Inserted for highlighted osuary name. Enter the full name.
-          * @default null
          */
         "name"?: string;
         /**
           * When set to true, allows the avatar to be clicked to select and upload an image.
-          * @default false
          */
         "openUpload"?: boolean;
         /**
           * Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
-          * @default 'standard'
          */
         "size"?: avatarSize;
         /**
           * Thumbnail, Inserted to highlight user image. Url field.
-          * @default null
          */
         "thumbnail"?: string;
         /**
           * Upload, Serve to enable upload function on avatar.
-          * @default false
          */
         "upload"?: boolean;
     }
@@ -409,9 +284,8 @@ export namespace Components {
         "canClick"?: boolean;
         /**
           * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
-          * @default 'standard'
          */
-        "size"?: avatarSize1;
+        "size"?: avatarSize;
         /**
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -420,22 +294,18 @@ export namespace Components {
     interface BdsBadge {
         /**
           * If true, actived the pulse animation.
-          * @default false
          */
         "animation"?: boolean;
         /**
           * Set the color of the component.
-          * @default 'system'
          */
         "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Set witch icon will be render inside the component.
-          * @default null
          */
         "icon"?: string;
         /**
@@ -444,42 +314,35 @@ export namespace Components {
         "number"?: number;
         /**
           * Set the shape of the component.
-          * @default 'circle'
          */
         "shape"?: Shape;
     }
     interface BdsBanner {
         /**
           * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
-          * @default 'center'
          */
         "bannerAlign"?: BannerAlign;
         /**
           * Set if show up the close button.
-          * @default 'false'
          */
         "buttonClose"?: ButtonClose;
         /**
           * Set if the banner is external or internal.
-          * @default 'outside'
          */
         "context"?: Context;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         "toggle": () => Promise<void>;
         /**
           * Set the banner varient, it can be 'system' or 'warning'.
-          * @default 'system'
          */
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -488,115 +351,90 @@ export namespace Components {
         "link": string;
         /**
           * Set the link pass.
-          * @default 'blank'
          */
         "target": targets;
     }
     interface BdsBreadcrumb {
-        /**
-          * @default []
-         */
         "items": string | Array<{ label: string; href?: string }>;
     }
     interface BdsButton {
         /**
           * The arrow button
-          * @default false
          */
         "arrow"?: boolean;
         /**
           * If true, shows the loading spinner
-          * @default false
          */
         "bdsLoading"?: boolean;
         /**
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
-          * @default 'main'
          */
         "bdsLoadingColor"?: colorsVariants;
         /**
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
-          * @default 'primary'
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
         /**
           * If true, the base button will be disabled.
-          * @default false
          */
         "block"?: boolean;
-        /**
-          * @default 'primary'
-         */
         "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If true, the base button will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * If true, the button will occupy 100% width with centered content.
-          * @default false
          */
         "fullWidth"?: boolean;
         /**
           * If true, groups the left icon with the label when justifyContent is 'space-between'. This keeps the left icon and text together as a single visual unit on the left side.
-          * @default false
          */
         "groupIcon"?: boolean;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "iconLeft"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "iconRight"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
-          * @default 'outline'
          */
         "iconTheme": IconTheme;
         "isActive": (value: any) => Promise<void>;
         /**
           * Controls the horizontal alignment of button content. 'center' - content is centered (default) 'space-between' - left content aligned left, right content aligned right
-          * @default 'center'
          */
         "justifyContent"?: ButtonJustifyContent;
-        "setColor": (color: "primary" | "content" | "negative" | "positive") => Promise<void>;
-        "setDirection": (direction: "row" | "column") => Promise<void>;
-        "setPosition": (position: "first" | "last" | "middle") => Promise<void>;
+        "setColor": (color: 'primary' | 'content' | 'negative' | 'positive') => Promise<void>;
+        "setDirection": (direction: 'row' | 'column') => Promise<void>;
+        "setPosition": (position: 'first' | 'last' | 'middle') => Promise<void>;
         "setSize": (size: ButtonSize) => Promise<void>;
         "setVariant": (variant: ButtonVariant) => Promise<void>;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'medium'
          */
         "size"?: ButtonSize;
         /**
           * The type of the button. Can be one of: 'button', 'submit', 'reset';
-          * @default 'button'
          */
         "type": ButtonType;
         /**
           * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
-          * @default 'icon'
          */
         "typeIcon": IconType;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-          * @default 'solid'
          */
         "variant"?: ButtonVariant;
     }
@@ -604,91 +442,74 @@ export namespace Components {
         "activateButton": (index: number) => Promise<void>;
         /**
           * Color scheme for the buttons. Default is 'primary'.
-          * @default 'primary'
          */
         "color"?: string;
         /**
           * Direction of the button group layout. Can be one of: 'row', 'column'.
-          * @default 'row'
          */
         "direction"?: direction;
         /**
           * Allows multiple buttons to be selected simultaneously if true.
-          * @default false
          */
         "multiple"?: boolean;
         /**
           * Size of the buttons. Can be one of: 'medium', 'large'.
-          * @default 'medium'
          */
         "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If true, the base button will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
-          * @default 'outline'
          */
         "iconTheme": ButtonIconTheme;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'standard'
          */
         "size"?: IconButtonSize;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-          * @default 'primary'
          */
         "variant"?: IconButtonVariant;
     }
     interface BdsCard {
         /**
           * Prop for set the background color.
-          * @default 'surface-1'
          */
         "bgColor"?: PaperBackground;
         /**
           * Prop for set the border color.
-          * @default null
          */
         "borderColor"?: BorderColor;
         /**
           * If the prop is true, the component will be clickable.
-          * @default false
          */
         "clickable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Prop for set the height of the component.
-          * @default null
          */
         "height"?: string;
         /**
           * Prop for set the background color.
-          * @default false
          */
         "selectable"?: boolean;
         /**
           * Prop for set the width of the component.
-          * @default 'fit-content'
          */
         "width"?: string;
     }
@@ -697,7 +518,6 @@ export namespace Components {
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
-          * @default false
          */
         "gradient": boolean;
         /**
@@ -706,7 +526,6 @@ export namespace Components {
         "hex"?: string;
         /**
           * If true, the text will be white
-          * @default false
          */
         "lightText": boolean;
         /**
@@ -721,16 +540,14 @@ export namespace Components {
     interface BdsCardFooter {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
-          * @default 'flex-end'
          */
         "align"?: justifyContent;
     }
     interface BdsCardHeader {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
-          * @default 'space-between'
          */
-        "align"?: justifyContent1;
+        "align"?: justifyContent;
     }
     interface BdsCardSubtitle {
         /**
@@ -747,73 +564,59 @@ export namespace Components {
     interface BdsCarousel {
         /**
           * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
-          * @default 'outside'
          */
         "arrows"?: arrows;
         /**
           * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
-          * @default false
          */
         "autoHeight"?: boolean;
         /**
           * Autoplay. Prop to Enable component autoplay.
-          * @default false
          */
         "autoplay"?: boolean;
         /**
           * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
-          * @default false
          */
         "autoplayHoverPause"?: boolean;
         /**
           * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
-          * @default 5000
          */
         "autoplayTimeout"?: number;
         "buildCarousel": () => Promise<void>;
         /**
           * Bullet. Prop to Enable component bullets navigation.
-          * @default 'outside'
          */
         "bullets"?: boolean | bullets;
         /**
           * Bullet. Prop to Enable component bullets navigation.
-          * @default 'center'
          */
         "bulletsPosition"?: bulletsPositions;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSlideContent is the data-test to slide action.
-          * @default null
          */
         "dtSlideContent"?: string;
         /**
           * Gap. Prop to Select the gap distance between items.
-          * @default 'none'
          */
         "gap"?: gap;
         /**
           * Grab. Prop to enable function of grab in carousel.
-          * @default true
          */
         "grab"?: boolean;
         /**
           * InfiniteLoop. Prop to Enable if the component will have infinite loop.
-          * @default false
          */
         "infiniteLoop"?: boolean;
         /**
           * Loading state. Indicates if the component is in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         "nextSlide": () => Promise<void>;
@@ -823,46 +626,33 @@ export namespace Components {
         "setActivated": (item: number) => Promise<void>;
         /**
           * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
-          * @default 1
          */
         "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
         "bgColor"?: string;
         "bgImage"?: string;
-        /**
-          * @default 1
-         */
         "bgImageBrightness"?: number;
         /**
           * Set what theme will be aplyed inside the component. 'light', 'dark';
-          * @default 'light'
          */
         "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
           * If `true`, the checkbox is selected.
-          * @default false
          */
         "checked": boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the checkbox.
-          * @default false
          */
         "disabled": boolean;
         "getInputElement": () => Promise<HTMLInputElement>;
         "getValue": () => Promise<boolean>;
-        /**
-          * If `true`, the checkbox is in an indeterminate state. This is used when the checkbox is a parent of a list of checkboxes and some (but not all) of the child checkboxes are selected. Clicking when indeterminate will set the checkbox to checked.
-          * @default false
-         */
-        "indeterminate": boolean;
         "label": string;
         /**
           * The name of the control, which is submitted with the form data.
@@ -874,27 +664,22 @@ export namespace Components {
     interface BdsChip {
         /**
           * When 'true' and the component is using the primary variant, a hover is added
-          * @default false
          */
         "clickable": boolean;
         /**
           * Add state danger on chip, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * When 'true', the component recive remove button and dispach event onBdsDelete
-          * @default false
          */
         "deletable": boolean;
         /**
           * When 'true', no events will be dispatched
-          * @default false
          */
         "disabled": boolean;
         /**
           * Add state filter on chip whith specific color.
-          * @default false
          */
         "filter": boolean;
         /**
@@ -903,12 +688,10 @@ export namespace Components {
         "icon"?: string;
         /**
           * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
-          * @default 'standard'
          */
         "size"?: ChipSize;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
-          * @default 'default'
          */
         "variant"?: ChipVariant;
     }
@@ -919,32 +702,26 @@ export namespace Components {
         "avatar"?: string;
         /**
           * it makes the chip clickable.
-          * @default false
          */
         "clickable"?: boolean;
         /**
           * used for delete the chip.
-          * @default false
          */
         "close"?: boolean;
         /**
           * used for change the color. Uses one of them.
-          * @default 'default'
          */
         "color"?: ColorChipClickable;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * the chip gone stay disabled while this prop be true.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
@@ -953,24 +730,20 @@ export namespace Components {
         "icon"?: string;
         /**
           * used for change the size chip. Uses one of them.
-          * @default 'standard'
          */
         "size"?: Size;
     }
     interface BdsChipSelected {
         /**
           * used for change the color. Uses one of them.
-          * @default 'default'
          */
         "color"?: ColorChipSelected;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * When 'true', no events will be dispatched
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -979,24 +752,20 @@ export namespace Components {
         "icon"?: string;
         /**
           * used for set the initial setup for true;
-          * @default false
          */
         "selected"?: boolean;
         /**
           * used for change the chip size. Use one of them;
-          * @default 'standard'
          */
-        "size"?: Size1;
+        "size"?: Size;
     }
     interface BdsChipTag {
         /**
           * used for change the color. Uses one of them.
-          * @default 'default'
          */
         "color"?: ColorChipTag;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -1005,19 +774,10 @@ export namespace Components {
         "icon"?: string;
     }
     interface BdsCounterText {
-        /**
-          * @default false
-         */
         "active"?: boolean;
-        /**
-          * @default { max: 1, min: 0 }
-         */
         "delete"?: CounterTextRule;
         "length": number;
         "max"?: number;
-        /**
-          * @default { max: 20, min: 2 }
-         */
         "warning"?: CounterTextRule;
     }
     interface BdsDataTable {
@@ -1027,12 +787,10 @@ export namespace Components {
         "actionArea"?: boolean;
         /**
           * Prop to activate the possibility of use avatar in any column.
-          * @default false
          */
         "avatar"?: boolean;
         /**
           * Prop to activate the possibility of use chip in any column.
-          * @default false
          */
         "chips"?: boolean;
         /**
@@ -1046,109 +804,88 @@ export namespace Components {
         "options"?: string;
         /**
           * Prop to activate the sorting.
-          * @default false
          */
         "sorting"?: boolean;
     }
     interface BdsDatepicker {
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClear is the data-test to button clear.
-          * @default null
          */
         "dtButtonClear"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
-          * @default null
          */
         "dtButtonConfirm"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtInputEnd is the data-test to input end.
-          * @default null
          */
         "dtInputEnd"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtInputStart is the data-test to input start.
-          * @default null
          */
         "dtInputStart"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to outzone.
-          * @default null
          */
         "dtOutzone"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
-          * @default null
          */
         "dtSelectMonth"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
-          * @default null
          */
         "dtSelectYear"?: string;
         /**
           * EndDateLimit. Insert a limiter to select the date period.
-          * @default defaultEndDate
          */
         "endDateLimit"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages1;
         /**
           * Message. Select type of date.
-          * @default null
          */
         "message"?: string;
         /**
           * Used to set drop position
-          * @default 'auto'
          */
         "positionOptions"?: DropdownPostionType;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
-          * @default defaultStartDate
          */
         "startDateLimit"?: string;
         /**
           * TypeOfDate. Select type of date.
-          * @default 'single'
          */
         "typeOfDate"?: typeDate;
         /**
           * Default value input.
-          * @default null
          */
         "valueDateSelected"?: string;
         /**
           * Default value input.
-          * @default null
          */
         "valueEndDateSelected"?: string;
         /**
           * Message. Select type of date.
-          * @default 'warning'
          */
         "variantBanner"?: BannerVariant1;
     }
@@ -1159,52 +896,42 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
-          * @default null
          */
         "dtSelectMonth"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
-          * @default null
          */
         "dtSelectYear"?: string;
         /**
           * EndDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultEndDate)
          */
         "endDate"?: DaysList;
         /**
           * EndDateSelect. Insert a limiter to select the date period.
-          * @default null
          */
         "endDateSelect"?: Date;
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages1;
         /**
           * StartDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultStartDate)
          */
         "startDate"?: DaysList;
         /**
           * StartDateSelect. Insert a limiter to select the date period.
-          * @default null
          */
         "startDateSelect"?: Date;
         /**
           * EndDateSelect. Insert a limiter to select the date period.
-          * @default 'start'
          */
         "stateSelect"?: stateSelect;
     }
@@ -1215,83 +942,68 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * dateSelect. Insert a limiter to select the date period.
-          * @default null
          */
         "dateSelect"?: Date;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
-          * @default null
          */
         "dtSelectMonth"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
-          * @default null
          */
         "dtSelectYear"?: string;
         /**
           * EndDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultEndDate)
          */
         "endDate"?: DaysList;
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages1;
         /**
           * StartDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultStartDate)
          */
         "startDate"?: DaysList;
     }
     interface BdsDivider {
         /**
           * Cor da linha, aceitando qualquer valor válido em CSS (hex, rgb, nome da cor)
-          * @default 'divider-1'
          */
         "color": 'divider-1' | 'divider-2' | 'divider-3';
         /**
           * Define se o divider deve ser exibido horizontalmente ou verticalmente
-          * @default 'horizontal'
          */
         "orientation": 'horizontal' | 'vertical';
         /**
           * O tipo de estilo da linha: sólida, pontilhada, tracejada
-          * @default 'solid'
          */
         "styleType": 'solid' | 'dotted' | 'dashed';
     }
     interface BdsDropdown {
         /**
           * Open. Used to open/close the dropdown.
-          * @default 'click'
          */
         "activeMode"?: activeMode;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Open. Used to open/close the dropdown.
-          * @default false
          */
         "open"?: boolean;
         /**
           * Used to set drop position
-          * @default 'auto'
          */
-        "position"?: DropdownPostionType1;
+        "position"?: DropdownPostionType;
         "setClose": () => Promise<void>;
         "setOpen": () => Promise<void>;
         "toggle": () => Promise<void>;
@@ -1299,13 +1011,7 @@ export namespace Components {
     interface BdsExpansionPanel {
     }
     interface BdsExpansionPanelBody {
-        /**
-          * @default false
-         */
         "open"?: boolean;
-        /**
-          * @default null
-         */
         "text"?: string;
     }
     interface BdsExpansionPanelHeader {
@@ -1347,7 +1053,6 @@ export namespace Components {
         "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -1360,7 +1065,6 @@ export namespace Components {
         "icon"?: any;
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
-          * @default false
          */
         "lazy": boolean;
         /**
@@ -1369,7 +1073,6 @@ export namespace Components {
         "name"?: string;
         /**
           * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large", "brand".
-          * @default 'medium'
          */
         "size"?: IconSize;
         /**
@@ -1378,12 +1081,10 @@ export namespace Components {
         "src"?: string;
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
-          * @default 'outline'
          */
         "theme": IconTheme1;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
-          * @default 'icon'
          */
         "type": IconType1;
     }
@@ -1394,7 +1095,6 @@ export namespace Components {
         "alt"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -1403,7 +1103,6 @@ export namespace Components {
         "name": string;
         /**
           * Specifies the type to use. Can be: 'default'.
-          * @default 'default'
          */
         "type": IllustrationType;
     }
@@ -1418,7 +1117,6 @@ export namespace Components {
         "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -1428,7 +1126,6 @@ export namespace Components {
         "loadImage": () => Promise<void>;
         /**
           * Specifies the object-fit style for the image. Can be: 'fill', 'contain', 'cover', 'none', 'scale-down'.
-          * @default 'cover'
          */
         "objectFit"?: ObjectFitValue;
         /**
@@ -1443,17 +1140,14 @@ export namespace Components {
     interface BdsInput {
         /**
           * Defines automatic text capitalization (possible values: `on`, `off`).
-          * @default 'off'
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
           * Defines browser autocomplete behavior (possible values: `on`, `off`).
-          * @default 'off'
          */
         "autoComplete"?: InputAutoComplete;
         /**
           * Defines whether the textarea should automatically resize based on content.
-          * @default true
          */
         "autoResize": boolean;
         /**
@@ -1466,50 +1160,39 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Defines the number of columns for the textarea (if `textarea`).
-          * @default 0
          */
         "cols"?: number;
         /**
           * Defines whether a character length counter will be displayed.
-          * @default false
          */
         "counterLength"?: boolean;
         /**
           * Defines the character length counter rule (min, max, etc).
-          * @default null
          */
         "counterLengthRule"?: InputCounterLengthRules;
         /**
           * Defines if the input is in error state.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Defines the debounce delay in milliseconds for textarea auto-resize.
-          * @default 100
          */
         "debounceDelay"?: number;
         /**
           * Defines if the input is disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Error message displayed when the input value is not a valid email.
          */
         "emailErrorMessage": string;
-        /**
-          * @default false
-         */
         "encode"?: boolean;
         /**
           * Error message displayed when the input value is invalid.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
@@ -1518,32 +1201,26 @@ export namespace Components {
         "getInputElement": () => Promise<HTMLInputElement | HTMLTextAreaElement>;
         /**
           * Help message displayed below the input.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * Name of the icon to be displayed inside the input.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Defines the icon size (small or medium).
-          * @default 'small'
          */
         "iconSize"?: 'small' | 'medium';
         /**
           * Input name, used for form identification.
-          * @default ''
          */
         "inputName"?: string;
         /**
           * Defines whether the input will be submitted when pressing Enter.
-          * @default false
          */
         "isSubmit": boolean;
         /**
           * Defines whether the input is a textarea.
-          * @default false
          */
         "isTextarea": boolean;
         /**
@@ -1552,7 +1229,6 @@ export namespace Components {
         "isValid": () => Promise<boolean>;
         /**
           * Label to be displayed above the input.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -1565,7 +1241,6 @@ export namespace Components {
         "maxErrorMessage": string;
         /**
           * Defines the maximum height of the textarea in pixels.
-          * @default 200
          */
         "maxHeight"?: number;
         /**
@@ -1582,7 +1257,6 @@ export namespace Components {
         "minErrorMessage": string;
         /**
           * Defines the minimum height of the textarea in pixels.
-          * @default 60
          */
         "minHeight"?: number;
         /**
@@ -1603,12 +1277,10 @@ export namespace Components {
         "pattern"?: string;
         /**
           * Text to be displayed as a hint or placeholder in the input.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Makes the input read-only.
-          * @default false
          */
         "readonly": boolean;
         /**
@@ -1625,12 +1297,10 @@ export namespace Components {
         "requiredErrorMessage": string;
         /**
           * Defines whether the textarea can be manually resized by the user.
-          * @default false
          */
         "resizable": boolean;
         /**
           * Defines the number of lines for the textarea (if `textarea`).
-          * @default 3
          */
         "rows"?: number;
         /**
@@ -1639,22 +1309,18 @@ export namespace Components {
         "setFocus": () => Promise<void>;
         /**
           * Defines if the input is in success state.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Message displayed when the input value is valid.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Defines the input type (e.g., `text`, `password`, etc).
-          * @default 'text'
          */
         "type"?: InputType;
         /**
           * The current value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
@@ -1662,12 +1328,10 @@ export namespace Components {
         "add": (value: string) => Promise<void>;
         /**
           * When true, the press enter will be simulated on blur event.
-          * @default false
          */
         "blurCreation": boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
-          * @default []
          */
         "chips": string[] | string;
         /**
@@ -1676,47 +1340,38 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
-          * @default false
          */
         "counterLength"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * The delimiter is used to add multiple chips in the same string.
-          * @default /,|;/
          */
         "delimiters"?: RegExp;
         /**
           * If `true`, the user cannot modify the value.
-          * @default false
          */
         "disableSubmit": boolean;
         /**
           * Disabled input
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Do not accept duplicate chip elements.
-          * @default false
          */
         "duplicated"?: boolean;
         /**
           * Indicated to pass an feedback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
@@ -1729,17 +1384,14 @@ export namespace Components {
         "height"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Prop to insert the name of the input
-          * @default ''
          */
         "inputName"?: string;
         /**
@@ -1748,7 +1400,6 @@ export namespace Components {
         "isValid": () => Promise<boolean>;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -1765,76 +1416,62 @@ export namespace Components {
         "maxlength"?: number;
         /**
           * A tip for the user who can enter no controls.
-          * @default ''
          */
         "placeholder"?: string;
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
-          * @default 'text'
          */
         "type": InputChipsTypes;
         /**
           * The value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsInputEditable {
         /**
           * Add state danger on input, use for use feedback. If true avoid save confirmation.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
-          * @default null
          */
         "dtButtonConfirm"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonEdit is the data-test to button edit.
-          * @default null
          */
         "dtButtonEdit"?: string;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Defines whether the component will be expandable
-          * @default false
          */
         "expand"?: boolean;
         /**
           * Indicated to pass a help to the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * Input Name
-          * @default ''
          */
         "inputName"?: string;
         /**
@@ -1843,7 +1480,6 @@ export namespace Components {
         "maxlength"?: number;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-          * @default 0
          */
         "minlength"?: number;
         /**
@@ -1852,7 +1488,6 @@ export namespace Components {
         "minlengthErrorMessage": string;
         /**
           * Placeholder for native input element.
-          * @default ''
          */
         "placeholder"?: string;
         /**
@@ -1861,74 +1496,60 @@ export namespace Components {
         "requiredErrorMessage": string;
         /**
           * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
-          * @default 'standard'
          */
         "size"?: SizeInputEditable;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * The value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
-          * @default 'off'
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
           * Hint for form autofill feature
-          * @default 'off'
          */
         "autoComplete"?: InputAutoComplete;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Input Name
-          * @default ''
          */
         "inputName"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -1947,33 +1568,25 @@ export namespace Components {
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
          */
         "minlength"?: number;
-        /**
-          * @default false
-         */
         "openEyes"?: boolean;
         /**
           * A tip for the user who can enter no controls.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
-          * @default false
          */
         "readonly": boolean;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * The value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
@@ -1981,56 +1594,46 @@ export namespace Components {
         "changeCountry": (code: any, isoCode: any, flag: any) => Promise<void>;
         /**
           * Habilita o estado "danger" no input.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data-test para identificar o componente.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Desabilita o input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data-test para o botão de seleção de bandeira.
-          * @default null
          */
         "dtSelectFlag"?: string;
         /**
           * Mensagem de erro a ser exibida.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Mensagem de ajuda para o usuário.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * Ícone à esquerda do input.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Label do input.
-          * @default 'Phone number'
          */
         "label"?: string;
         /**
           * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
-          * @default 'pt_BR'
          */
-        "language"?: languages2;
+        "language"?: languages;
         /**
           * Mensagem de erro para validação numérica.
          */
         "numberErrorMessage": string;
         /**
           * Lista de opções do select.
-          * @default []
          */
         "options"?: Array<Option>;
         "removeFocus": () => Promise<void>;
@@ -2044,22 +1647,18 @@ export namespace Components {
         "requiredErrorMessage": string;
         /**
           * Habilita o estado "success" no input.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Mensagem de sucesso a ser exibida.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Valor do input de telefone.
-          * @default ''
          */
         "text"?: string;
         /**
           * Valor do select.
-          * @default '+55'
          */
         "value"?: string | null;
     }
@@ -2070,7 +1669,6 @@ export namespace Components {
         "data"?: string | Data[];
         /**
           * Typelist. Used to .
-          * @default null
          */
         "typeList"?: TypeList;
         /**
@@ -2081,163 +1679,122 @@ export namespace Components {
     interface BdsListItem {
         /**
           * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
-          * @default []
          */
         "actionsButtons": string | string[];
         /**
           * Active. Used to define when the item is highlighted.
-          * @default false
          */
         "active"?: boolean;
         /**
           * AvatarName. Used to enter the avatar name.
-          * @default null
          */
         "avatarName"?: string;
         /**
           * AvatarThumbnail. Used to insert the avatar photo.
-          * @default null
          */
         "avatarThumbnail"?: string;
         /**
           * Enable rounded border on item
-          * @default false
          */
         "borderRadius"?: boolean;
-        /**
-          * @default false
-         */
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
-          * @default []
          */
         "chips": string | string[];
         /**
           * Clickable. Used to define if the item is clickable or not.
-          * @default false
          */
         "clickable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Icon. Used to add icon in list item.
-          * @default null
          */
         "icon"?: string;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
-          * @default null
          */
         "secondaryText"?: string;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'standard'
          */
         "size"?: ItemSize;
         /**
           * Text. Used to insert a text in the display item.
-          * @default null
          */
         "text"?: string;
         /**
           * Typelis. Used toselect type of item list.
-          * @default null
          */
         "typeList"?: TypeList1;
         /**
           * Value. Used to insert a value in list item.
-          * @default null
          */
         "value": string;
     }
     interface BdsListItemContent {
-        /**
-          * @default 'flex-start'
-         */
         "alignItems"?: alignItems;
-        /**
-          * @default 'column'
-         */
         "direction"?: direction;
-        /**
-          * @default 'wrap'
-         */
         "flexWrap"?: flexWrap;
         "gap"?: gap1;
-        /**
-          * @default 'flex-start'
-         */
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Percent, property to enter the loading bar status percentage value.
-          * @default 0
          */
         "percent"?: number;
         /**
           * Size, property to define size of component.
-          * @default 'default'
          */
         "size"?: loadingBarSize;
         /**
           * Text, property to enable the bar info text.
-          * @default ''
          */
         "text"?: string;
     }
     interface BdsLoadingPage {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
     }
     interface BdsLoadingSpinner {
         /**
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
-          * @default 'main'
          */
-        "color"?: colorsVariants1;
+        "color"?: colorsVariants;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
-          * @default 'standard'
          */
         "size"?: loadingSize;
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
-          * @default 'primary'
          */
-        "variant": LoadingSpinnerVariant1;
+        "variant": LoadingSpinnerVariant;
     }
     interface BdsMenu {
         /**
           * Menu. Used to link the minus with the action button.
-          * @default null
          */
         "menu"?: string;
         /**
           * Open. Used to open/close the menu.
-          * @default false
          */
         "open"?: boolean;
         /**
           * Position. Used to position the Menu. Either on the left or on the bottom.
-          * @default 'right'
          */
         "position"?: menuPosition;
         "toggle": () => Promise<void>;
@@ -2245,74 +1802,60 @@ export namespace Components {
     interface BdsMenuAction {
         /**
           * ButtonText. Used to enter the display text for the item.
-          * @default ''
          */
         "buttonText"?: string;
         /**
           * Description. Used to insert a subtitle in the display item.
-          * @default null
          */
         "description"?: string;
         /**
           * Disabled. Used to declare that the item will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
-          * @default null
          */
         "iconLeft"?: string;
         /**
           * Lipstick. Used to declare that the item will be a negative/error action.
-          * @default false
          */
         "lipstick"?: boolean;
         /**
           * SubMenu. Used to declare that the button will have a submenu.
-          * @default false
          */
         "subMenu"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
-          * @default null
          */
         "subtitle"?: string;
     }
     interface BdsMenuExibition {
         /**
           * AvatarName. Used to enter the avatar name.
-          * @default null
          */
         "avatarName"?: string;
         /**
           * AvatarSize. Used to set avatar size.
-          * @default 'standard'
          */
-        "avatarSize"?: avatarSize2;
+        "avatarSize"?: avatarSize;
         /**
           * AvatarThumbnail. Used to insert the avatar photo.
-          * @default null
          */
         "avatarThumbnail"?: string;
         /**
           * Description. Used to insert a subtitle in the display item.
-          * @default null
          */
         "description"?: string;
         /**
           * Disabled. Used to declare that the item will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
-          * @default null
          */
         "subtitle"?: string;
         /**
           * Value. Used to insert a title in the display item.
-          * @default null
          */
         "value"?: string;
     }
@@ -2328,49 +1871,40 @@ export namespace Components {
     interface BdsMenuSeparation {
         /**
           * Size. Used to set the size of the divider.
-          * @default null
          */
         "size"?: string;
         /**
           * Value. Used to insert a title to the divider.
-          * @default null
          */
         "value"?: string;
     }
     interface BdsModal {
         /**
           * Used to hide or show the close button
-          * @default true
          */
         "closeButton"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
-          * @default null
          */
         "dtOutzone"?: string;
         /**
           * If true, the modal will close keydown Enter.
-          * @default true
          */
         "enterClose"?: boolean;
         /**
           * Used to open/close the modal
-          * @default false
          */
         "open"?: boolean;
         /**
           * If true, the modal will close clicking outside the component.
-          * @default true
          */
         "outzoneClose"?: boolean;
         /**
           * Used to change the modal heights.
-          * @default 'fixed'
          */
         "size"?: sizes;
         /**
@@ -2383,7 +1917,6 @@ export namespace Components {
     interface BdsModalCloseButton {
         /**
           * Used to hide or show the close button
-          * @default true
          */
         "active"?: boolean;
     }
@@ -2391,39 +1924,32 @@ export namespace Components {
         "close": () => Promise<void>;
         /**
           * Focus Selected. Used to add title in header accordion.
-          * @default 'single'
          */
-        "collapse"?: collapses1;
+        "collapse"?: collapses;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disable state. Indicates if the component is disabled.
-          * @default false
          */
         "disable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
-          * @default null
          */
         "icon"?: string;
         /**
           * A prop for make the nav open.
-          * @default false
          */
         "isOpen"?: boolean;
         /**
           * Loading state. Indicates if the component is in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         "open": () => Promise<void>;
         "reciveNumber": (number: any) => Promise<void>;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
-          * @default null
          */
         "secondaryText"?: string;
         /**
@@ -2436,45 +1962,37 @@ export namespace Components {
         "closeAll": (actNumber?: any) => Promise<void>;
         /**
           * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
-          * @default 'single'
          */
-        "collapse"?: collapses2;
+        "collapse"?: collapses;
         "openAll": (actNumber?: any) => Promise<void>;
     }
     interface BdsNavTreeItem {
         /**
           * Focus Selected. Used to add title in header accordion.
-          * @default 'single'
          */
-        "collapse"?: collapses3;
+        "collapse"?: collapses;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disable state. Indicates if the component is disabled.
-          * @default false
          */
         "disable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
-          * @default null
          */
         "icon"?: string;
         /**
           * Active. Used to define when the item is highlighted.
-          * @default false
          */
         "isOpen"?: boolean;
         /**
           * Loading state. Indicates if the component is in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
-          * @default null
          */
         "secondaryText"?: string;
         /**
@@ -2486,22 +2004,18 @@ export namespace Components {
     interface BdsNavbar {
         /**
           * Width, number to define navbar width.
-          * @default 'surface-1'
          */
         "backgroundColor"?: navbarBackground;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Justify Content. Used to align itens in navbar.
-          * @default 'space-between'
          */
-        "justifyContent"?: justifyContent3;
+        "justifyContent"?: justifyContent;
         /**
           * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
-          * @default 'vertical'
          */
         "orientation"?: orientation;
     }
@@ -2510,43 +2024,31 @@ export namespace Components {
     interface BdsPagination {
         /**
           * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
-          * @default null
          */
         "dtButtonEnd"?: string;
         /**
           * Propriedade de teste para especificamente testar a ação do botão inicial. dtButtonInitial é o data-test para o botão inicial.
-          * @default null
          */
         "dtButtonInitial"?: string;
         /**
           * Propriedade de teste para especificamente testar a ação do botão de próxima página. dtButtonNext é o data-test para o botão próximo.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Propriedade de teste para especificamente testar a ação do botão de página anterior. dtButtonPrev é o data-test para o botão anterior.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Propriedade de teste para especificamente testar o seletor de número de páginas. dtSelectNumber é o data-test para o seletor de número de páginas.
-          * @default null
          */
         "dtSelectNumber"?: string;
         "itemsPage"?: any;
-        /**
-          * @default 'pt_BR'
-         */
         "language"?: string;
         "numberItems"?: number;
         /**
           * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
-          * @default 'auto'
          */
         "optionsPosition"?: PaginationOptionsPositionType;
-        /**
-          * @default false
-         */
         "pageCounter"?: boolean;
         /**
           * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
@@ -2560,81 +2062,66 @@ export namespace Components {
     interface BdsPaper {
         /**
           * Prop for set the background color.
-          * @default 'surface-1'
          */
         "bgColor"?: PaperBackground;
         /**
           * Prop for set the border of the component.
-          * @default false
          */
         "border"?: boolean;
         /**
           * Prop for set the border color.
-          * @default null
          */
         "borderColor"?: BorderColor;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
-          * @default 'static'
          */
         "elevation"?: PaperElevation;
         /**
           * Prop for set the height of the component.
-          * @default null
          */
         "height"?: string;
         /**
           * Prop for set the width of the component.
-          * @default null
          */
         "width"?: string;
     }
     interface BdsProgressBar {
         /**
           * Text, property to define status of component.
-          * @default 'default'
          */
         "color"?: progressBarColor;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Percent, property to enter the progress bar status percentage value.
-          * @default 0
          */
         "percent"?: number;
         /**
           * Size, property to define size of component.
-          * @default 'default'
          */
         "size"?: progressBarSize;
         /**
           * Text, property to enable the bar info text.
-          * @default ''
          */
         "text"?: string;
     }
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the checkbox.
-          * @default false
          */
         "disabled"?: boolean;
         "getInputElement": () => Promise<HTMLInputElement>;
@@ -2665,119 +2152,96 @@ export namespace Components {
     interface BdsRichText {
         /**
           * alignmentButtons to define if component has TextAlign Control.
-          * @default true
          */
         "alignmentButtons"?: boolean;
         /**
           * codeButton to define if component has Code Control.
-          * @default true
          */
         "codeButton"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * headingButtons to define if component has Heading Control.
-          * @default true
          */
         "headingButtons"?: boolean;
         /**
           * height is the prop to define height of component.
-          * @default null
          */
         "height"?: string;
         /**
           * italicButton to define if component has Italic Control.
-          * @default true
          */
         "italicButton"?: boolean;
         /**
           * Set the language for fixed texts.
-          * @default 'pt_BR'
          */
         "language"?: languages3;
         /**
           * linkButton to define if component has Link Control.
-          * @default true
          */
         "linkButton"?: boolean;
         /**
           * listButtons to define if component has List Control.
-          * @default true
          */
         "listButtons"?: boolean;
         /**
           * maxHeight is the prop to define max height of component.
-          * @default null
          */
         "maxHeight"?: string;
         /**
           * positionBar is the prop to define max height of component.
-          * @default 'top'
          */
         "positionBar"?: positionBar;
         /**
           * quoteButton to define if component has Quote Control.
-          * @default true
          */
         "quoteButton"?: boolean;
         /**
           * strikeThroughbutton to define if component has Strike Control.
-          * @default true
          */
         "strikeThroughButton"?: boolean;
         /**
           * underlineButton to define if component has Underline Control.
-          * @default true
          */
         "underlineButton"?: boolean;
         /**
           * unstyledButton to define if component has Unstyled Control.
-          * @default true
          */
         "unstyledButton"?: boolean;
         /**
           * weightButton to define if component has Bold Control.
-          * @default true
          */
         "weightButton"?: boolean;
     }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -2786,22 +2250,18 @@ export namespace Components {
         "options"?: string | Option[];
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
-          * @default 'auto'
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
           * Placeholder for native input element.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
@@ -2813,12 +2273,10 @@ export namespace Components {
         "add": (value: string) => Promise<void>;
         /**
           * Specify if is possible to create a new tag that is not on the options.
-          * @default true
          */
         "canAddNew"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
-          * @default []
          */
         "chips": string | string[];
         /**
@@ -2827,37 +2285,30 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * The delimiter is used to add multiple chips in the same string.
-          * @default /,|;/
          */
         "delimiters"?: RegExp;
         /**
           * If `true`, the user cannot modify the value.
-          * @default false
          */
         "disableSubmit": boolean;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Do not accept duplicate chip elements.
-          * @default false
          */
         "duplicated"?: boolean;
         /**
           * Indicated to pass an feedback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
@@ -2870,17 +2321,14 @@ export namespace Components {
         "height"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Prop to insert the name of the input
-          * @default ''
          */
         "inputName"?: string;
         /**
@@ -2889,7 +2337,6 @@ export namespace Components {
         "isValid": () => Promise<boolean>;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -2902,12 +2349,10 @@ export namespace Components {
         "maxlength"?: number;
         /**
           * Used for add prefix on new option select.
-          * @default ''
          */
         "newPrefix"?: string;
         /**
           * Specify if is possible to create a new tag that is not on the options.
-          * @default 'No results found'
          */
         "notFoundMessage"?: string;
         /**
@@ -2916,77 +2361,63 @@ export namespace Components {
         "options"?: string | Option[];
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
-          * @default 'auto'
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
           * A tip for the user who can enter no controls.
-          * @default ''
          */
         "placeholder"?: string;
         "removeFocus": () => Promise<void>;
         "setFocus": () => Promise<void>;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
-          * @default 'text'
          */
         "type": InputChipsTypes;
         /**
           * the value of the select.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsSelectOption {
         /**
           * Quantity Description on option value, this item is locate to rigth in component.
-          * @default ''
          */
         "bulkOption"?: string;
         /**
           * If `true`, the checkbox is selected.
-          * @default false
          */
         "checked": boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the select option.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "invisible"?: boolean;
         "markOff": () => Promise<void>;
         /**
           * The text value of the option.
-          * @default false
          */
         "selected"?: boolean;
         /**
           * Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
-          * @default 'center'
          */
         "slotAlign"?: string;
         /**
@@ -3001,7 +2432,6 @@ export namespace Components {
         "toggle": () => Promise<void>;
         /**
           * Type Option. Used toselect type of item list.
-          * @default 'default'
          */
         "typeOption"?: TypeOption;
         "value": any;
@@ -3009,63 +2439,45 @@ export namespace Components {
     interface BdsSidebar {
         /**
           * Width, number to define sidebar width.
-          * @default 'surface-2'
          */
         "background"?: sidebarBackground;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
-          * @default null
          */
         "dtOutzone"?: string;
         /**
           * ; isOpen. Used to open sidebar.
-          * @default this.type === 'fixed' ? true : false
          */
         "isOpen"?: boolean;
         /**
           * If true, a lateral margin will apear in the content.
-          * @default true
          */
         "margin"?: boolean;
         /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
-          * @default 'left'
          */
         "sidebarPosition"?: sidebarPosition;
         "toggle": () => Promise<void>;
         /**
           * sidebar type. Used to define how open.
-          * @default 'over'
          */
         "type"?: sidebarType;
         /**
           * Width, number to define sidebar width.
-          * @default 360
          */
         "width"?: number;
     }
     interface BdsSkeleton {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
-        /**
-          * @default '50px'
-         */
         "height"?: string;
-        /**
-          * @default 'square'
-         */
-        "shape"?: Shape1;
-        /**
-          * @default '100%'
-         */
+        "shape"?: Shape;
         "width"?: string;
     }
     interface BdsSlider {
@@ -3075,17 +2487,14 @@ export namespace Components {
         "dataMarkers"?: string | StepOption[];
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Label, Prop to enable Label.
-          * @default false
          */
         "label"?: boolean;
         /**
           * Markers, Prop to enable markers.
-          * @default false
          */
         "markers"?: boolean;
         /**
@@ -3102,49 +2511,40 @@ export namespace Components {
         "step"?: number;
         /**
           * Type, prop to select type of slider.
-          * @default 'fill'
          */
         "type"?: typeRange;
         /**
           * Value, prop to define value of input.
-          * @default this.min ? this.min : 0
          */
         "value"?: number;
     }
     interface BdsStep {
         /**
           * Used to set the step as active
-          * @default false
          */
         "active"?: boolean;
         /**
           * Used to complete the step
-          * @default false
          */
         "completed"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Used to set the step as disabled
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Used to set the index of the steps
-          * @default 0
          */
         "index"?: number;
         /**
           * Used to define the last step component on the list
-          * @default false
          */
         "last"?: boolean;
         /**
           * Used to set cursor pointer on the step (useful to allow clicks on the steps)
-          * @default false
          */
         "pointer"?: boolean;
     }
@@ -3180,17 +2580,14 @@ export namespace Components {
     interface BdsSwitch {
         /**
           * If `true`, the switch is selected.
-          * @default false
          */
         "checked": boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the switch.
-          * @default false
          */
         "disabled": boolean;
         "getInputElement": () => Promise<HTMLInputElement>;
@@ -3205,14 +2602,12 @@ export namespace Components {
         "refer": string;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'standard'
          */
         "size"?: SwitchSize;
     }
     interface BdsTab {
         /**
           * Prop to control externally if a tab will be active by default
-          * @default false
          */
         "active": boolean;
         /**
@@ -3225,114 +2620,88 @@ export namespace Components {
         "label": string;
     }
     interface BdsTabGroup {
-        /**
-          * @default 'center'
-         */
         "align": 'left' | 'center' | 'right';
-        /**
-          * @default true
-         */
         "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
     }
     interface BdsTabItem {
         /**
           * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
-          * @default false
          */
         "badge"?: boolean;
         /**
           * The animation of the badge to be shown at the Tab item.
-          * @default false
          */
         "badgeAnimation"?: boolean;
         /**
           * The color of the badge to be shown at the Tab item.
-          * @default 'system'
          */
         "badgeColor"?: string;
         /**
           * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
-          * @default null
          */
         "badgeIcon"?: string;
         /**
           * The number to be shown inside the badge at the Tab item.
-          * @default null
          */
         "badgeNumber"?: number;
         /**
           * The animation of the badge to be shown at the Tab item.
-          * @default 'left'
          */
         "badgePosition"?: string;
         /**
           * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
-          * @default 'circle'
          */
         "badgeShape"?: string;
         /**
           * Inline styles to be applied to the tab group content element.
-          * @default null
          */
         "contentStyle"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Prop for disable the especific tab.
-          * @default false
          */
         "disable"?: boolean;
         /**
           * Prop to indicate an error state for the tab.
-          * @default false
          */
         "error"?: boolean;
         /**
           * Inline styles to be applied to the tab group header element.
-          * @default null
          */
         "headerStyle"?: string;
         /**
           * The icon to be shown at the Tab item.
-          * @default null
          */
         "icon"?: string;
         /**
           * The position of the icon at the Tab item ('left', 'right').
-          * @default 'left'
          */
         "iconPosition"?: string;
         /**
           * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
-          * @default 'outline'
          */
         "iconTheme"?: string;
         /**
           * The text to be shown at the Tab item.
-          * @default null
          */
         "label"?: string;
         /**
           * Use to set number of tabItem.
-          * @default null
          */
         "numberElement"?: number;
         /**
           * Used to open/close the Tab item.
-          * @default false
          */
         "open"?: boolean;
         "reciveNumber": (number: any) => Promise<void>;
@@ -3360,17 +2729,8 @@ export namespace Components {
     interface BdsTableBody {
     }
     interface BdsTableCell {
-        /**
-          * @default 'left'
-         */
         "justifyContent": JustifyContent;
-        /**
-          * @default false
-         */
         "sortable": boolean;
-        /**
-          * @default 'text'
-         */
         "type"?: string;
     }
     interface BdsTableHeader {
@@ -3379,34 +2739,20 @@ export namespace Components {
         "bodyCollapse"?: string;
         /**
           * Prop to make hover animation.
-          * @default false
          */
         "clickable"?: boolean;
         "dataTarget"?: string;
         /**
           * Prop to highlight the row selected.
-          * @default false
          */
         "selected"?: boolean;
     }
     interface BdsTableTh {
-        /**
-          * @default ''
-         */
         "arrow": string;
-        /**
-          * @default 'left'
-         */
-        "justifyContent": JustifyContent1;
-        /**
-          * @default false
-         */
+        "justifyContent": JustifyContent;
         "sortable": boolean;
     }
     interface BdsTabs {
-        /**
-          * @default 'center'
-         */
         "align": 'left' | 'center' | 'right';
     }
     interface BdsTestComponent {
@@ -3414,19 +2760,16 @@ export namespace Components {
     interface BdsThemeProvider {
         /**
           * Set what theme will be aplyed inside the component. 'light', 'dark';
-          * @default 'light'
          */
-        "theme"?: Themes1;
+        "theme"?: Themes;
     }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
-          * @default 'button'
          */
         "actionType": ActionType;
         /**
           * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
-          * @default 'close'
          */
         "buttonAction": ButtonActionType;
         /**
@@ -3443,37 +2786,30 @@ export namespace Components {
         "create": ({ actionType, buttonAction, buttonText, icon, toastText, toastTitle, variant, duration, }: CreateToastType) => Promise<void>;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonAction is the data-test to button action.
-          * @default null
          */
         "dtButtonAction"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
-          * @default 0
          */
         "duration": number;
         /**
           * Controls the hide event of the component:
-          * @default false
          */
         "hide": boolean;
         /**
           * used for add the icon. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
-          * @default 'bottom-left'
          */
         "position": PositionType;
         /**
           * Controls the open event of the component:
-          * @default false
          */
         "show": boolean;
         /**
@@ -3486,7 +2822,6 @@ export namespace Components {
         "toastTitle": string;
         /**
           * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning', 'undo', 'redo';
-          * @default 'system'
          */
         "variant": VariantType;
     }
@@ -3495,12 +2830,10 @@ export namespace Components {
     interface BdsTooltip {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Used to disable tooltip when the button are avalible
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3509,17 +2842,14 @@ export namespace Components {
         "invisible": () => Promise<void>;
         /**
           * Used to set tooltip max width
-          * @default '320px'
          */
         "maxWidth"?: string;
         /**
           * Used to set tooltip position
-          * @default 'left-center'
          */
         "position": TooltipPostionType;
         /**
           * Used to set tooltip text
-          * @default 'Tooltip'
          */
         "tooltipText": string;
         /**
@@ -3530,47 +2860,38 @@ export namespace Components {
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
-          * @default null
          */
         "bold"?: Bold;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Added font style italic
-          * @default false
          */
         "italic"?: boolean;
         /**
           * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
-          * @default null
          */
         "lineHeight"?: FontLineHeight;
         /**
           * If true, adds default margin values
-          * @default true
          */
         "margin"?: boolean;
         /**
           * Added style no wrap
-          * @default false
          */
         "noWrap"?: boolean;
         /**
           * Tranform text in paragraph
-          * @default false
          */
         "paragraph"?: boolean;
         /**
           * Define element tag, must be used for acessibilty
-          * @default 'p'
          */
         "tag"?: Tag;
         /**
           * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
-          * @default 'fs-16'
          */
         "variant"?: FontSize;
     }
@@ -3581,7 +2902,6 @@ export namespace Components {
         "accept": string;
         /**
           * Used to accept a especific type of file.
-          * @default []
          */
         "dataAccept": string[] | string;
         /**
@@ -3594,17 +2914,14 @@ export namespace Components {
         "deleteFile": (index: any) => Promise<void>;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
-          * @default null
          */
         "dtButtonDelete"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtInputFiles is the data-test to button clear.
-          * @default null
          */
         "dtInputFiles"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtLabelAddFile is the data-test to button clear.
-          * @default null
          */
         "dtLabelAddFile"?: string;
         /**
@@ -3613,18 +2930,12 @@ export namespace Components {
         "error": string;
         /**
           * Set the language for fixed texts.
-          * @default 'pt_BR'
          */
         "language"?: languages4;
         /**
           * Used to allow upload multiple files.
          */
         "multiple": boolean;
-        /**
-          * Used to show or hide the file list preview.
-          * @default true
-         */
-        "showListPreview"?: boolean;
         /**
           * Used for add a text on subtitle.
          */
@@ -3838,20 +3149,7 @@ export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
     target: HTMLBdsUploadElement;
 }
 declare global {
-    interface HTMLBdsAccordionElementEventMap {
-        "bdsToggle": { value: boolean };
-        "bdsAccordionOpen": void;
-        "bdsAccordionClose": void;
-    }
     interface HTMLBdsAccordionElement extends Components.BdsAccordion, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAccordionElementEventMap>(type: K, listener: (this: HTMLBdsAccordionElement, ev: BdsAccordionCustomEvent<HTMLBdsAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAccordionElementEventMap>(type: K, listener: (this: HTMLBdsAccordionElement, ev: BdsAccordionCustomEvent<HTMLBdsAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAccordionElement: {
         prototype: HTMLBdsAccordionElement;
@@ -3863,19 +3161,7 @@ declare global {
         prototype: HTMLBdsAccordionBodyElement;
         new (): HTMLBdsAccordionBodyElement;
     };
-    interface HTMLBdsAccordionGroupElementEventMap {
-        "bdsAccordionCloseAll": void;
-        "bdsAccordionOpenAll": void;
-    }
     interface HTMLBdsAccordionGroupElement extends Components.BdsAccordionGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAccordionGroupElementEventMap>(type: K, listener: (this: HTMLBdsAccordionGroupElement, ev: BdsAccordionGroupCustomEvent<HTMLBdsAccordionGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAccordionGroupElementEventMap>(type: K, listener: (this: HTMLBdsAccordionGroupElement, ev: BdsAccordionGroupCustomEvent<HTMLBdsAccordionGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAccordionGroupElement: {
         prototype: HTMLBdsAccordionGroupElement;
@@ -3887,18 +3173,7 @@ declare global {
         prototype: HTMLBdsAccordionHeaderElement;
         new (): HTMLBdsAccordionHeaderElement;
     };
-    interface HTMLBdsAlertElementEventMap {
-        "bdsAlertChanged": { alertStatus: string };
-    }
     interface HTMLBdsAlertElement extends Components.BdsAlert, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAlertElementEventMap>(type: K, listener: (this: HTMLBdsAlertElement, ev: BdsAlertCustomEvent<HTMLBdsAlertElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAlertElementEventMap>(type: K, listener: (this: HTMLBdsAlertElement, ev: BdsAlertCustomEvent<HTMLBdsAlertElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAlertElement: {
         prototype: HTMLBdsAlertElement;
@@ -3922,59 +3197,19 @@ declare global {
         prototype: HTMLBdsAlertHeaderElement;
         new (): HTMLBdsAlertHeaderElement;
     };
-    interface HTMLBdsAutocompleteElementEventMap {
-        "bdsChange": AutocompleteChangeEventDetail;
-        "bdsSelectedChange": AutocompleteSelectedChangeEventDetail;
-        "bdsMultiselectedChange": AutocompleteMultiSelectedChangeEventDetail;
-        "bdsInput": KeyboardEvent;
-        "bdsCancel": AutocompleteChangeEventDetail;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsAutocompleteElement extends Components.BdsAutocomplete, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAutocompleteElementEventMap>(type: K, listener: (this: HTMLBdsAutocompleteElement, ev: BdsAutocompleteCustomEvent<HTMLBdsAutocompleteElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAutocompleteElementEventMap>(type: K, listener: (this: HTMLBdsAutocompleteElement, ev: BdsAutocompleteCustomEvent<HTMLBdsAutocompleteElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAutocompleteElement: {
         prototype: HTMLBdsAutocompleteElement;
         new (): HTMLBdsAutocompleteElement;
     };
-    interface HTMLBdsAvatarElementEventMap {
-        "bdsClickAvatar": PointerEvent;
-        "bdsImageUpload": string;
-    }
     interface HTMLBdsAvatarElement extends Components.BdsAvatar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAvatarElementEventMap>(type: K, listener: (this: HTMLBdsAvatarElement, ev: BdsAvatarCustomEvent<HTMLBdsAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAvatarElementEventMap>(type: K, listener: (this: HTMLBdsAvatarElement, ev: BdsAvatarCustomEvent<HTMLBdsAvatarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAvatarElement: {
         prototype: HTMLBdsAvatarElement;
         new (): HTMLBdsAvatarElement;
     };
-    interface HTMLBdsAvatarGroupElementEventMap {
-        "bdsClickAvatarGroup": PointerEvent;
-    }
     interface HTMLBdsAvatarGroupElement extends Components.BdsAvatarGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsAvatarGroupElementEventMap>(type: K, listener: (this: HTMLBdsAvatarGroupElement, ev: BdsAvatarGroupCustomEvent<HTMLBdsAvatarGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsAvatarGroupElementEventMap>(type: K, listener: (this: HTMLBdsAvatarGroupElement, ev: BdsAvatarGroupCustomEvent<HTMLBdsAvatarGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsAvatarGroupElement: {
         prototype: HTMLBdsAvatarGroupElement;
@@ -3986,35 +3221,13 @@ declare global {
         prototype: HTMLBdsBadgeElement;
         new (): HTMLBdsBadgeElement;
     };
-    interface HTMLBdsBannerElementEventMap {
-        "bdsBannerClose": void;
-    }
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsBannerElementEventMap>(type: K, listener: (this: HTMLBdsBannerElement, ev: BdsBannerCustomEvent<HTMLBdsBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsBannerElementEventMap>(type: K, listener: (this: HTMLBdsBannerElement, ev: BdsBannerCustomEvent<HTMLBdsBannerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsBannerElement: {
         prototype: HTMLBdsBannerElement;
         new (): HTMLBdsBannerElement;
     };
-    interface HTMLBdsBannerLinkElementEventMap {
-        "bdsBannerLink": HTMLBdsBannerElement;
-    }
     interface HTMLBdsBannerLinkElement extends Components.BdsBannerLink, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsBannerLinkElementEventMap>(type: K, listener: (this: HTMLBdsBannerLinkElement, ev: BdsBannerLinkCustomEvent<HTMLBdsBannerLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsBannerLinkElementEventMap>(type: K, listener: (this: HTMLBdsBannerLinkElement, ev: BdsBannerLinkCustomEvent<HTMLBdsBannerLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsBannerLinkElement: {
         prototype: HTMLBdsBannerLinkElement;
@@ -4026,69 +3239,25 @@ declare global {
         prototype: HTMLBdsBreadcrumbElement;
         new (): HTMLBdsBreadcrumbElement;
     };
-    interface HTMLBdsButtonElementEventMap {
-        "bdsClick": PointerEvent|KeyboardEvent;
-    }
     interface HTMLBdsButtonElement extends Components.BdsButton, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsButtonElementEventMap>(type: K, listener: (this: HTMLBdsButtonElement, ev: BdsButtonCustomEvent<HTMLBdsButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsButtonElementEventMap>(type: K, listener: (this: HTMLBdsButtonElement, ev: BdsButtonCustomEvent<HTMLBdsButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsButtonElement: {
         prototype: HTMLBdsButtonElement;
         new (): HTMLBdsButtonElement;
     };
-    interface HTMLBdsButtonGroupElementEventMap {
-        "buttonSelected": string;
-    }
     interface HTMLBdsButtonGroupElement extends Components.BdsButtonGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsButtonGroupElementEventMap>(type: K, listener: (this: HTMLBdsButtonGroupElement, ev: BdsButtonGroupCustomEvent<HTMLBdsButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsButtonGroupElementEventMap>(type: K, listener: (this: HTMLBdsButtonGroupElement, ev: BdsButtonGroupCustomEvent<HTMLBdsButtonGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsButtonGroupElement: {
         prototype: HTMLBdsButtonGroupElement;
         new (): HTMLBdsButtonGroupElement;
     };
-    interface HTMLBdsButtonIconElementEventMap {
-        "bdsClick": PointerEvent;
-    }
     interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsButtonIconElementEventMap>(type: K, listener: (this: HTMLBdsButtonIconElement, ev: BdsButtonIconCustomEvent<HTMLBdsButtonIconElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsButtonIconElementEventMap>(type: K, listener: (this: HTMLBdsButtonIconElement, ev: BdsButtonIconCustomEvent<HTMLBdsButtonIconElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsButtonIconElement: {
         prototype: HTMLBdsButtonIconElement;
         new (): HTMLBdsButtonIconElement;
     };
-    interface HTMLBdsCardElementEventMap {
-        "bdsClick": PointerEvent | KeyboardEvent;
-    }
     interface HTMLBdsCardElement extends Components.BdsCard, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsCardElementEventMap>(type: K, listener: (this: HTMLBdsCardElement, ev: BdsCardCustomEvent<HTMLBdsCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsCardElementEventMap>(type: K, listener: (this: HTMLBdsCardElement, ev: BdsCardCustomEvent<HTMLBdsCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsCardElement: {
         prototype: HTMLBdsCardElement;
@@ -4130,18 +3299,7 @@ declare global {
         prototype: HTMLBdsCardTitleElement;
         new (): HTMLBdsCardTitleElement;
     };
-    interface HTMLBdsCarouselElementEventMap {
-        "bdsChangeCarousel": { value: Itens };
-    }
     interface HTMLBdsCarouselElement extends Components.BdsCarousel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsCarouselElementEventMap>(type: K, listener: (this: HTMLBdsCarouselElement, ev: BdsCarouselCustomEvent<HTMLBdsCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsCarouselElementEventMap>(type: K, listener: (this: HTMLBdsCarouselElement, ev: BdsCarouselCustomEvent<HTMLBdsCarouselElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsCarouselElement: {
         prototype: HTMLBdsCarouselElement;
@@ -4153,71 +3311,25 @@ declare global {
         prototype: HTMLBdsCarouselItemElement;
         new (): HTMLBdsCarouselItemElement;
     };
-    interface HTMLBdsCheckboxElementEventMap {
-        "bdsChange": any;
-        "bdsInput": KeyboardEvent;
-    }
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsCheckboxElementEventMap>(type: K, listener: (this: HTMLBdsCheckboxElement, ev: BdsCheckboxCustomEvent<HTMLBdsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsCheckboxElementEventMap>(type: K, listener: (this: HTMLBdsCheckboxElement, ev: BdsCheckboxCustomEvent<HTMLBdsCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsCheckboxElement: {
         prototype: HTMLBdsCheckboxElement;
         new (): HTMLBdsCheckboxElement;
     };
-    interface HTMLBdsChipElementEventMap {
-        "bdsDelete": { id: string };
-    }
     interface HTMLBdsChipElement extends Components.BdsChip, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsChipElementEventMap>(type: K, listener: (this: HTMLBdsChipElement, ev: BdsChipCustomEvent<HTMLBdsChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsChipElementEventMap>(type: K, listener: (this: HTMLBdsChipElement, ev: BdsChipCustomEvent<HTMLBdsChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsChipElement: {
         prototype: HTMLBdsChipElement;
         new (): HTMLBdsChipElement;
     };
-    interface HTMLBdsChipClickableElementEventMap {
-        "chipClickableClose": { id: string };
-        "chipClickableClick": void;
-    }
     interface HTMLBdsChipClickableElement extends Components.BdsChipClickable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsChipClickableElementEventMap>(type: K, listener: (this: HTMLBdsChipClickableElement, ev: BdsChipClickableCustomEvent<HTMLBdsChipClickableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsChipClickableElementEventMap>(type: K, listener: (this: HTMLBdsChipClickableElement, ev: BdsChipClickableCustomEvent<HTMLBdsChipClickableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsChipClickableElement: {
         prototype: HTMLBdsChipClickableElement;
         new (): HTMLBdsChipClickableElement;
     };
-    interface HTMLBdsChipSelectedElementEventMap {
-        "chipClick": { selected: boolean };
-    }
     interface HTMLBdsChipSelectedElement extends Components.BdsChipSelected, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsChipSelectedElementEventMap>(type: K, listener: (this: HTMLBdsChipSelectedElement, ev: BdsChipSelectedCustomEvent<HTMLBdsChipSelectedElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsChipSelectedElementEventMap>(type: K, listener: (this: HTMLBdsChipSelectedElement, ev: BdsChipSelectedCustomEvent<HTMLBdsChipSelectedElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsChipSelectedElement: {
         prototype: HTMLBdsChipSelectedElement;
@@ -4235,84 +3347,25 @@ declare global {
         prototype: HTMLBdsCounterTextElement;
         new (): HTMLBdsCounterTextElement;
     };
-    interface HTMLBdsDataTableElementEventMap {
-        "bdsTableClick": {
-    item: {
-      [key: string]: any;
-    }; index: number; nameButton: string
-  };
-        "bdsTableDelete": {
-    [key: string]: any;
-  };
-        "bdsTableChange": {
-    [key: string]: any;
-  }[];
-    }
     interface HTMLBdsDataTableElement extends Components.BdsDataTable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDataTableElementEventMap>(type: K, listener: (this: HTMLBdsDataTableElement, ev: BdsDataTableCustomEvent<HTMLBdsDataTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDataTableElementEventMap>(type: K, listener: (this: HTMLBdsDataTableElement, ev: BdsDataTableCustomEvent<HTMLBdsDataTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDataTableElement: {
         prototype: HTMLBdsDataTableElement;
         new (): HTMLBdsDataTableElement;
     };
-    interface HTMLBdsDatepickerElementEventMap {
-        "bdsStartDate": { value: Date | null };
-        "bdsEndDate": { value: Date | null };
-        "concludeDatepicker": { startDate: string; endDate?: string } | { startDate: string } | any;
-        "emptyConcludeDatepicker": void;
-    }
     interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDatepickerElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerElement, ev: BdsDatepickerCustomEvent<HTMLBdsDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDatepickerElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerElement, ev: BdsDatepickerCustomEvent<HTMLBdsDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDatepickerElement: {
         prototype: HTMLBdsDatepickerElement;
         new (): HTMLBdsDatepickerElement;
     };
-    interface HTMLBdsDatepickerPeriodElementEventMap {
-        "bdsStartDate": { value: Date | null };
-        "bdsEndDate": { value: Date | null };
-        "bdsClickDayButton": { state?: stateSelect };
-    }
     interface HTMLBdsDatepickerPeriodElement extends Components.BdsDatepickerPeriod, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDatepickerPeriodElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerPeriodElement, ev: BdsDatepickerPeriodCustomEvent<HTMLBdsDatepickerPeriodElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDatepickerPeriodElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerPeriodElement, ev: BdsDatepickerPeriodCustomEvent<HTMLBdsDatepickerPeriodElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDatepickerPeriodElement: {
         prototype: HTMLBdsDatepickerPeriodElement;
         new (): HTMLBdsDatepickerPeriodElement;
     };
-    interface HTMLBdsDatepickerSingleElementEventMap {
-        "bdsDateSelected": { value: Date | null };
-    }
     interface HTMLBdsDatepickerSingleElement extends Components.BdsDatepickerSingle, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDatepickerSingleElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerSingleElement, ev: BdsDatepickerSingleCustomEvent<HTMLBdsDatepickerSingleElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDatepickerSingleElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerSingleElement, ev: BdsDatepickerSingleCustomEvent<HTMLBdsDatepickerSingleElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDatepickerSingleElement: {
         prototype: HTMLBdsDatepickerSingleElement;
@@ -4324,18 +3377,7 @@ declare global {
         prototype: HTMLBdsDividerElement;
         new (): HTMLBdsDividerElement;
     };
-    interface HTMLBdsDropdownElementEventMap {
-        "bdsToggle": { value: boolean };
-    }
     interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsDropdownElementEventMap>(type: K, listener: (this: HTMLBdsDropdownElement, ev: BdsDropdownCustomEvent<HTMLBdsDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsDropdownElementEventMap>(type: K, listener: (this: HTMLBdsDropdownElement, ev: BdsDropdownCustomEvent<HTMLBdsDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsDropdownElement: {
         prototype: HTMLBdsDropdownElement;
@@ -4383,186 +3425,43 @@ declare global {
         prototype: HTMLBdsImageElement;
         new (): HTMLBdsImageElement;
     };
-    interface HTMLBdsInputElementEventMap {
-        "bdsChange": { value: string };
-        "bdsInput": InputEvent;
-        "bdsOnBlur": void;
-        "bdsFocus": void;
-        "bdsSubmit": { event: KeyboardEvent; value: string };
-        "bdsPatternValidation": boolean;
-        "bdsKeyDownBackspace": { event: KeyboardEvent; value: string };
-    }
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputElementEventMap>(type: K, listener: (this: HTMLBdsInputElement, ev: BdsInputCustomEvent<HTMLBdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputElementEventMap>(type: K, listener: (this: HTMLBdsInputElement, ev: BdsInputCustomEvent<HTMLBdsInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputElement: {
         prototype: HTMLBdsInputElement;
         new (): HTMLBdsInputElement;
     };
-    interface HTMLBdsInputChipsElementEventMap {
-        "bdsChange": { data: string[]; value: string };
-        "bdsChangeChips": { data: string[]; value: string };
-        "bdsInputChipsFocus": void;
-        "bdsBlur": string[];
-        "bdsInputChipsInput": InputEvent;
-        "bdsExtendedQuantityInput": { value: boolean };
-        "bdsSubmit": { value: string[] };
-    }
     interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputChipsElementEventMap>(type: K, listener: (this: HTMLBdsInputChipsElement, ev: BdsInputChipsCustomEvent<HTMLBdsInputChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputChipsElementEventMap>(type: K, listener: (this: HTMLBdsInputChipsElement, ev: BdsInputChipsCustomEvent<HTMLBdsInputChipsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputChipsElement: {
         prototype: HTMLBdsInputChipsElement;
         new (): HTMLBdsInputChipsElement;
     };
-    interface HTMLBdsInputEditableElementEventMap {
-        "bdsInputEditableSave": InputEditableEventDetail;
-        "bdsChange": InputEditableEventDetail;
-        "bdsInput": InputEvent;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsInputEditableElement extends Components.BdsInputEditable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputEditableElementEventMap>(type: K, listener: (this: HTMLBdsInputEditableElement, ev: BdsInputEditableCustomEvent<HTMLBdsInputEditableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputEditableElementEventMap>(type: K, listener: (this: HTMLBdsInputEditableElement, ev: BdsInputEditableCustomEvent<HTMLBdsInputEditableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputEditableElement: {
         prototype: HTMLBdsInputEditableElement;
         new (): HTMLBdsInputEditableElement;
     };
-    interface HTMLBdsInputPasswordElementEventMap {
-        "bdsInputPasswordChange": { value: string | null };
-        "bdsInputPasswordInput": InputEvent;
-        "bdsInputPasswordBlur": void;
-        "bdsInputPasswordFocus": void;
-        "bdsInputPasswordSubmit": { event: KeyboardEvent; value: string | null } | void;
-        "bdsKeyDownBackspace": { event: KeyboardEvent; value: string | null };
-    }
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputPasswordElementEventMap>(type: K, listener: (this: HTMLBdsInputPasswordElement, ev: BdsInputPasswordCustomEvent<HTMLBdsInputPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputPasswordElementEventMap>(type: K, listener: (this: HTMLBdsInputPasswordElement, ev: BdsInputPasswordCustomEvent<HTMLBdsInputPasswordElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputPasswordElement: {
         prototype: HTMLBdsInputPasswordElement;
         new (): HTMLBdsInputPasswordElement;
     };
-    interface HTMLBdsInputPhoneNumberElementEventMap {
-        "bdsPhoneNumberChange": {
-    value: string | null;
-    code: string | null;
-    isoCode: string | null;
-    country: string | null;
-  };
-        "bdsInput": InputEvent;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsInputPhoneNumberElement extends Components.BdsInputPhoneNumber, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsInputPhoneNumberElementEventMap>(type: K, listener: (this: HTMLBdsInputPhoneNumberElement, ev: BdsInputPhoneNumberCustomEvent<HTMLBdsInputPhoneNumberElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsInputPhoneNumberElementEventMap>(type: K, listener: (this: HTMLBdsInputPhoneNumberElement, ev: BdsInputPhoneNumberCustomEvent<HTMLBdsInputPhoneNumberElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsInputPhoneNumberElement: {
         prototype: HTMLBdsInputPhoneNumberElement;
         new (): HTMLBdsInputPhoneNumberElement;
     };
-    interface HTMLBdsListElementEventMap {
-        "bdsListCheckboxChange": {
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    avatarName: string | null;
-    avatarThumbnail: string | null;
-    typeList: TypeList | null;
-  }[];
-        "bdsListRadioChange": {
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    avatarName: string | null;
-    avatarThumbnail: string | null;
-    typeList: TypeList | null;
-  };
-        "bdsListSwitchChange": {
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    avatarName: string | null;
-    avatarThumbnail: string | null;
-    typeList: TypeList | null;
-  }[];
-        "bdsClickActionsButtons": any;
-    }
     interface HTMLBdsListElement extends Components.BdsList, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsListElementEventMap>(type: K, listener: (this: HTMLBdsListElement, ev: BdsListCustomEvent<HTMLBdsListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsListElementEventMap>(type: K, listener: (this: HTMLBdsListElement, ev: BdsListCustomEvent<HTMLBdsListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsListElement: {
         prototype: HTMLBdsListElement;
         new (): HTMLBdsListElement;
     };
-    interface HTMLBdsListItemElementEventMap {
-        "bdsChecked": {
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    typeList: TypeList1 | null;
-    checked: boolean | null;
-  };
-        "bdsClickActionButtom": {
-    value: string | null;
-    icon: string;
-    elementButton: EventTarget;
-  };
-    }
     interface HTMLBdsListItemElement extends Components.BdsListItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsListItemElementEventMap>(type: K, listener: (this: HTMLBdsListItemElement, ev: BdsListItemCustomEvent<HTMLBdsListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsListItemElementEventMap>(type: K, listener: (this: HTMLBdsListItemElement, ev: BdsListItemCustomEvent<HTMLBdsListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsListItemElement: {
         prototype: HTMLBdsListItemElement;
@@ -4592,18 +3491,7 @@ declare global {
         prototype: HTMLBdsLoadingSpinnerElement;
         new (): HTMLBdsLoadingSpinnerElement;
     };
-    interface HTMLBdsMenuElementEventMap {
-        "bdsToggle": { value?: boolean };
-    }
     interface HTMLBdsMenuElement extends Components.BdsMenu, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsMenuElementEventMap>(type: K, listener: (this: HTMLBdsMenuElement, ev: BdsMenuCustomEvent<HTMLBdsMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsMenuElementEventMap>(type: K, listener: (this: HTMLBdsMenuElement, ev: BdsMenuCustomEvent<HTMLBdsMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsMenuElement: {
         prototype: HTMLBdsMenuElement;
@@ -4639,18 +3527,7 @@ declare global {
         prototype: HTMLBdsMenuSeparationElement;
         new (): HTMLBdsMenuSeparationElement;
     };
-    interface HTMLBdsModalElementEventMap {
-        "bdsModalChanged": { modalStatus: 'opened' | 'closed' };
-    }
     interface HTMLBdsModalElement extends Components.BdsModal, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsModalElementEventMap>(type: K, listener: (this: HTMLBdsModalElement, ev: BdsModalCustomEvent<HTMLBdsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsModalElementEventMap>(type: K, listener: (this: HTMLBdsModalElement, ev: BdsModalCustomEvent<HTMLBdsModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsModalElement: {
         prototype: HTMLBdsModalElement;
@@ -4668,53 +3545,19 @@ declare global {
         prototype: HTMLBdsModalCloseButtonElement;
         new (): HTMLBdsModalCloseButtonElement;
     };
-    interface HTMLBdsNavTreeElementEventMap {
-        "bdsToogleChange": { value?: boolean; element: HTMLElement };
-    }
     interface HTMLBdsNavTreeElement extends Components.BdsNavTree, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsNavTreeElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeElement, ev: BdsNavTreeCustomEvent<HTMLBdsNavTreeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsNavTreeElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeElement, ev: BdsNavTreeCustomEvent<HTMLBdsNavTreeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsNavTreeElement: {
         prototype: HTMLBdsNavTreeElement;
         new (): HTMLBdsNavTreeElement;
     };
-    interface HTMLBdsNavTreeGroupElementEventMap {
-        "bdsNavTreeGroupCloseAll": void;
-        "bdsNavTreeGroupOpenAll": void;
-    }
     interface HTMLBdsNavTreeGroupElement extends Components.BdsNavTreeGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsNavTreeGroupElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeGroupElement, ev: BdsNavTreeGroupCustomEvent<HTMLBdsNavTreeGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsNavTreeGroupElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeGroupElement, ev: BdsNavTreeGroupCustomEvent<HTMLBdsNavTreeGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsNavTreeGroupElement: {
         prototype: HTMLBdsNavTreeGroupElement;
         new (): HTMLBdsNavTreeGroupElement;
     };
-    interface HTMLBdsNavTreeItemElementEventMap {
-        "bdsToogleChange": { value?: boolean; element: HTMLElement };
-    }
     interface HTMLBdsNavTreeItemElement extends Components.BdsNavTreeItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsNavTreeItemElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeItemElement, ev: BdsNavTreeItemCustomEvent<HTMLBdsNavTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsNavTreeItemElementEventMap>(type: K, listener: (this: HTMLBdsNavTreeItemElement, ev: BdsNavTreeItemCustomEvent<HTMLBdsNavTreeItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsNavTreeItemElement: {
         prototype: HTMLBdsNavTreeItemElement;
@@ -4732,19 +3575,7 @@ declare global {
         prototype: HTMLBdsNavbarContentElement;
         new (): HTMLBdsNavbarContentElement;
     };
-    interface HTMLBdsPaginationElementEventMap {
-        "bdsPaginationChange": number;
-        "bdsItemsPerPageChange": number;
-    }
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsPaginationElementEventMap>(type: K, listener: (this: HTMLBdsPaginationElement, ev: BdsPaginationCustomEvent<HTMLBdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsPaginationElementEventMap>(type: K, listener: (this: HTMLBdsPaginationElement, ev: BdsPaginationCustomEvent<HTMLBdsPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsPaginationElement: {
         prototype: HTMLBdsPaginationElement;
@@ -4762,134 +3593,43 @@ declare global {
         prototype: HTMLBdsProgressBarElement;
         new (): HTMLBdsProgressBarElement;
     };
-    interface HTMLBdsRadioElementEventMap {
-        "bdsChange": { checked: boolean };
-        "bdsClickChange": { checked: boolean };
-    }
     interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsRadioElementEventMap>(type: K, listener: (this: HTMLBdsRadioElement, ev: BdsRadioCustomEvent<HTMLBdsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsRadioElementEventMap>(type: K, listener: (this: HTMLBdsRadioElement, ev: BdsRadioCustomEvent<HTMLBdsRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsRadioElement: {
         prototype: HTMLBdsRadioElement;
         new (): HTMLBdsRadioElement;
     };
-    interface HTMLBdsRadioGroupElementEventMap {
-        "bdsRadioGroupChange": { value?: string };
-    }
     interface HTMLBdsRadioGroupElement extends Components.BdsRadioGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLBdsRadioGroupElement, ev: BdsRadioGroupCustomEvent<HTMLBdsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLBdsRadioGroupElement, ev: BdsRadioGroupCustomEvent<HTMLBdsRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsRadioGroupElement: {
         prototype: HTMLBdsRadioGroupElement;
         new (): HTMLBdsRadioGroupElement;
     };
-    interface HTMLBdsRichTextElementEventMap {
-        "bdsRichTextChange": { value: string };
-        "bdsRichTextInput": InputEvent;
-        "bdsBlur": void;
-        "bdsFocus": void;
-    }
     interface HTMLBdsRichTextElement extends Components.BdsRichText, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsRichTextElementEventMap>(type: K, listener: (this: HTMLBdsRichTextElement, ev: BdsRichTextCustomEvent<HTMLBdsRichTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsRichTextElementEventMap>(type: K, listener: (this: HTMLBdsRichTextElement, ev: BdsRichTextCustomEvent<HTMLBdsRichTextElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsRichTextElement: {
         prototype: HTMLBdsRichTextElement;
         new (): HTMLBdsRichTextElement;
     };
-    interface HTMLBdsSelectElementEventMap {
-        "bdsChange": SelectChangeEventDetail;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-    }
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSelectElementEventMap>(type: K, listener: (this: HTMLBdsSelectElement, ev: BdsSelectCustomEvent<HTMLBdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSelectElementEventMap>(type: K, listener: (this: HTMLBdsSelectElement, ev: BdsSelectCustomEvent<HTMLBdsSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSelectElement: {
         prototype: HTMLBdsSelectElement;
         new (): HTMLBdsSelectElement;
     };
-    interface HTMLBdsSelectChipsElementEventMap {
-        "bdsChange": SelectChangeEvent;
-        "bdsCancel": void;
-        "bdsFocus": void;
-        "bdsBlur": void;
-        "bdsChangeChips": { data: string[]; value: number };
-        "bdsSelectChipsInput": InputEvent;
-        "bdsSubmit": void;
-    }
     interface HTMLBdsSelectChipsElement extends Components.BdsSelectChips, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSelectChipsElementEventMap>(type: K, listener: (this: HTMLBdsSelectChipsElement, ev: BdsSelectChipsCustomEvent<HTMLBdsSelectChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSelectChipsElementEventMap>(type: K, listener: (this: HTMLBdsSelectChipsElement, ev: BdsSelectChipsCustomEvent<HTMLBdsSelectChipsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSelectChipsElement: {
         prototype: HTMLBdsSelectChipsElement;
         new (): HTMLBdsSelectChipsElement;
     };
-    interface HTMLBdsSelectOptionElementEventMap {
-        "optionSelected": { value: any; label: string };
-        "optionChecked": { value: string; label: string; checked: boolean };
-    }
     interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSelectOptionElementEventMap>(type: K, listener: (this: HTMLBdsSelectOptionElement, ev: BdsSelectOptionCustomEvent<HTMLBdsSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSelectOptionElementEventMap>(type: K, listener: (this: HTMLBdsSelectOptionElement, ev: BdsSelectOptionCustomEvent<HTMLBdsSelectOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSelectOptionElement: {
         prototype: HTMLBdsSelectOptionElement;
         new (): HTMLBdsSelectOptionElement;
     };
-    interface HTMLBdsSidebarElementEventMap {
-        "bdsToggle": { value: boolean };
-    }
     interface HTMLBdsSidebarElement extends Components.BdsSidebar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSidebarElementEventMap>(type: K, listener: (this: HTMLBdsSidebarElement, ev: BdsSidebarCustomEvent<HTMLBdsSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSidebarElementEventMap>(type: K, listener: (this: HTMLBdsSidebarElement, ev: BdsSidebarCustomEvent<HTMLBdsSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSidebarElement: {
         prototype: HTMLBdsSidebarElement;
@@ -4901,18 +3641,7 @@ declare global {
         prototype: HTMLBdsSkeletonElement;
         new (): HTMLBdsSkeletonElement;
     };
-    interface HTMLBdsSliderElementEventMap {
-        "bdsChange": StepOption;
-    }
     interface HTMLBdsSliderElement extends Components.BdsSlider, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSliderElementEventMap>(type: K, listener: (this: HTMLBdsSliderElement, ev: BdsSliderCustomEvent<HTMLBdsSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSliderElementEventMap>(type: K, listener: (this: HTMLBdsSliderElement, ev: BdsSliderCustomEvent<HTMLBdsSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSliderElement: {
         prototype: HTMLBdsSliderElement;
@@ -4930,70 +3659,25 @@ declare global {
         prototype: HTMLBdsStepperElement;
         new (): HTMLBdsStepperElement;
     };
-    interface HTMLBdsSwitchElementEventMap {
-        "bdsChange": { checked: boolean };
-    }
     interface HTMLBdsSwitchElement extends Components.BdsSwitch, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsSwitchElementEventMap>(type: K, listener: (this: HTMLBdsSwitchElement, ev: BdsSwitchCustomEvent<HTMLBdsSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsSwitchElementEventMap>(type: K, listener: (this: HTMLBdsSwitchElement, ev: BdsSwitchCustomEvent<HTMLBdsSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsSwitchElement: {
         prototype: HTMLBdsSwitchElement;
         new (): HTMLBdsSwitchElement;
     };
-    interface HTMLBdsTabElementEventMap {
-        "bdsTabChange": string;
-    }
     interface HTMLBdsTabElement extends Components.BdsTab, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabElementEventMap>(type: K, listener: (this: HTMLBdsTabElement, ev: BdsTabCustomEvent<HTMLBdsTabElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabElementEventMap>(type: K, listener: (this: HTMLBdsTabElement, ev: BdsTabCustomEvent<HTMLBdsTabElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabElement: {
         prototype: HTMLBdsTabElement;
         new (): HTMLBdsTabElement;
     };
-    interface HTMLBdsTabGroupElementEventMap {
-        "bdsTabChange": HTMLBdsTabItemElement;
-        "bdsTabDisabled": HTMLBdsTabItemElement;
-    }
     interface HTMLBdsTabGroupElement extends Components.BdsTabGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabGroupElementEventMap>(type: K, listener: (this: HTMLBdsTabGroupElement, ev: BdsTabGroupCustomEvent<HTMLBdsTabGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabGroupElementEventMap>(type: K, listener: (this: HTMLBdsTabGroupElement, ev: BdsTabGroupCustomEvent<HTMLBdsTabGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabGroupElement: {
         prototype: HTMLBdsTabGroupElement;
         new (): HTMLBdsTabGroupElement;
     };
-    interface HTMLBdsTabItemElementEventMap {
-        "tabDisabled": { item: number; disable: boolean };
-    }
     interface HTMLBdsTabItemElement extends Components.BdsTabItem, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabItemElementEventMap>(type: K, listener: (this: HTMLBdsTabItemElement, ev: BdsTabItemCustomEvent<HTMLBdsTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabItemElementEventMap>(type: K, listener: (this: HTMLBdsTabItemElement, ev: BdsTabItemCustomEvent<HTMLBdsTabItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabItemElement: {
         prototype: HTMLBdsTabItemElement;
@@ -5041,19 +3725,7 @@ declare global {
         prototype: HTMLBdsTableThElement;
         new (): HTMLBdsTableThElement;
     };
-    interface HTMLBdsTabsElementEventMap {
-        "scrollButtonClick": Overflow;
-        "bdsTabInit": string;
-    }
     interface HTMLBdsTabsElement extends Components.BdsTabs, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsTabsElementEventMap>(type: K, listener: (this: HTMLBdsTabsElement, ev: BdsTabsCustomEvent<HTMLBdsTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsTabsElementEventMap>(type: K, listener: (this: HTMLBdsTabsElement, ev: BdsTabsCustomEvent<HTMLBdsTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsTabsElement: {
         prototype: HTMLBdsTabsElement;
@@ -5071,18 +3743,7 @@ declare global {
         prototype: HTMLBdsThemeProviderElement;
         new (): HTMLBdsThemeProviderElement;
     };
-    interface HTMLBdsToastElementEventMap {
-        "toastButtonClick": HTMLBdsToastElement;
-    }
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsToastElementEventMap>(type: K, listener: (this: HTMLBdsToastElement, ev: BdsToastCustomEvent<HTMLBdsToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsToastElementEventMap>(type: K, listener: (this: HTMLBdsToastElement, ev: BdsToastCustomEvent<HTMLBdsToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsToastElement: {
         prototype: HTMLBdsToastElement;
@@ -5106,19 +3767,7 @@ declare global {
         prototype: HTMLBdsTypoElement;
         new (): HTMLBdsTypoElement;
     };
-    interface HTMLBdsUploadElementEventMap {
-        "bdsUploadDelete": { value: File[] };
-        "bdsUploadChange": { value: File[] };
-    }
     interface HTMLBdsUploadElement extends Components.BdsUpload, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLBdsUploadElementEventMap>(type: K, listener: (this: HTMLBdsUploadElement, ev: BdsUploadCustomEvent<HTMLBdsUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLBdsUploadElementEventMap>(type: K, listener: (this: HTMLBdsUploadElement, ev: BdsUploadCustomEvent<HTMLBdsUploadElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsUploadElement: {
         prototype: HTMLBdsUploadElement;
@@ -5240,87 +3889,61 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BdsAccordion {
-        /**
-          * @default true
-         */
         "divisor"?: boolean;
-        "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<void>) => void;
-        "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<void>) => void;
-        "onBdsToggle"?: (event: BdsAccordionCustomEvent<{ value: boolean }>) => void;
-        /**
-          * @default false
-         */
+        "onBdsAccordionClose"?: (event: BdsAccordionCustomEvent<any>) => void;
+        "onBdsAccordionOpen"?: (event: BdsAccordionCustomEvent<any>) => void;
+        "onBdsToggle"?: (event: BdsAccordionCustomEvent<any>) => void;
         "startOpen"?: boolean;
     }
     interface BdsAccordionBody {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
     }
     interface BdsAccordionGroup {
-        /**
-          * @default 'single'
-         */
         "collapse"?: collapses;
-        /**
-          * @default true
-         */
         "divisor"?: boolean;
-        "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<void>) => void;
-        "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<void>) => void;
+        "onBdsAccordionCloseAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
+        "onBdsAccordionOpenAll"?: (event: BdsAccordionGroupCustomEvent<any>) => void;
     }
     interface BdsAccordionHeader {
         /**
           * Accordion Title. Used to add title in header accordion.
-          * @default null
          */
         "accordionTitle"?: string;
         /**
           * Avatar Name. Used to add avatar in header accordion.
-          * @default null
          */
         "avatarName"?: string;
         /**
           * Avatar Thumb. Used to add avatar in header accordion.
-          * @default null
          */
         "avatarThumb"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Icon. Used to add icon in header accordion.
-          * @default null
          */
         "icon"?: string;
-        /**
-          * Icon color for the accordion header icons.
-          * @default 'inherit'
-         */
-        "iconColor"?: string;
     }
     interface BdsAlert {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Emitted when modal status has changed.
          */
-        "onBdsAlertChanged"?: (event: BdsAlertCustomEvent<{ alertStatus: string }>) => void;
+        "onBdsAlertChanged"?: (event: BdsAlertCustomEvent<any>) => void;
         /**
           * Used to open/close the alert
-          * @default false
          */
         "open"?: boolean;
         /**
           * Define whether the component will occupy the entire screen or just the parent.
-          * @default 'fixed'
          */
         "position"?: string;
     }
@@ -5331,64 +3954,52 @@ declare namespace LocalJSX {
     interface BdsAlertHeader {
         /**
           * used for add icon the header. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete';
-          * @default 'system'
          */
         "variant"?: AlertHeaderVariannt;
     }
     interface BdsAutocomplete {
         /**
           * If true, the X icon will appear only when component is focused.
-          * @default false
          */
         "clearIconOnFocus"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
           * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages;
         /**
           * Is Loading, is the prop to enable that the component is loading.
-          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5425,17 +4036,14 @@ declare namespace LocalJSX {
         "options"?: string | AutocompleteOption[];
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
-          * @default 'auto'
          */
         "optionsPosition"?: AutocompleteOptionsPositionType;
         /**
           * Placeholder for native input element.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Search only the title property
-          * @default true
          */
         "searchOnlyTitle"?: boolean;
         /**
@@ -5444,27 +4052,22 @@ declare namespace LocalJSX {
         "selected"?: HTMLBdsSelectOptionElement | null;
         /**
           * Selection Title, Prop to enable title to select.
-          * @default true
          */
         "selectedAll"?: boolean;
         /**
           * Selection Title, Prop to enable title to select.
-          * @default ''
          */
         "selectionTitle"?: string;
         /**
           * Multiselect, Prop to enable multi selections.
-          * @default 'single'
          */
         "selectionType"?: SelectionType;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
@@ -5475,55 +4078,46 @@ declare namespace LocalJSX {
     interface BdsAvatar {
         /**
           * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
-          * @default 'colorLetter'
          */
         "color"?: colors;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Ellipses, serves to indicate the user number in the listing.
-          * @default null
          */
         "ellipsis"?: number;
         /**
           * Name, Inserted for highlighted osuary name. Enter the full name.
-          * @default null
          */
         "name"?: string;
-        "onBdsClickAvatar"?: (event: BdsAvatarCustomEvent<PointerEvent>) => void;
-        "onBdsImageUpload"?: (event: BdsAvatarCustomEvent<string>) => void;
+        "onBdsClickAvatar"?: (event: BdsAvatarCustomEvent<any>) => void;
+        "onBdsImageUpload"?: (event: BdsAvatarCustomEvent<any>) => void;
         /**
           * When set to true, allows the avatar to be clicked to select and upload an image.
-          * @default false
          */
         "openUpload"?: boolean;
         /**
           * Size, Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
-          * @default 'standard'
          */
         "size"?: avatarSize;
         /**
           * Thumbnail, Inserted to highlight user image. Url field.
-          * @default null
          */
         "thumbnail"?: string;
         /**
           * Upload, Serve to enable upload function on avatar.
-          * @default false
          */
         "upload"?: boolean;
     }
     interface BdsAvatarGroup {
         "canClick"?: boolean;
-        "onBdsClickAvatarGroup"?: (event: BdsAvatarGroupCustomEvent<PointerEvent>) => void;
+        "onBdsClickAvatarGroup"?: (event: BdsAvatarGroupCustomEvent<any>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'extra-small', 'small', 'standard', 'large', 'extra-large'.
-          * @default 'standard'
          */
-        "size"?: avatarSize1;
+        "size"?: avatarSize;
         /**
           * The users of the select Should be passed this way: users='[   {"id": "1", "name": "Michael Scott", "thumbnail": "https://gcdn.pbrd.co/images/9Kt8iMvR10Lf.jpg?o=1"},   {"id": "2", "name": "Dwight Schrute", "thumbnail": "https://gcdn.pbrd.co/images/XAlbTPDwjZ2d.jpg?o=1"},   {"id": "3", "name": "Jim Halpert", "thumbnail": "https://gcdn.pbrd.co/images/tK0Ygb0KAHUm.jpg?o=1"},   {"id": "4", "name": "Pam Beesly", "thumbnail": "https://gcdn.pbrd.co/images/8NZSnCGfB9BD.jpg?o=1"},   {"id": "5", "name": "Ryan Howard", "thumbnail": "https://gcdn.pbrd.co/images/6wwIWI1EzzVq.jpg?o=1"},   {"id": "6", "name": "Andy Bernard", "thumbnail": "https://gcdn.pbrd.co/images/5dPYFWixftY4.jpg?o=1"} ]' users can also be passed as child by using bds-avatar-group component, but passing as a child you may have some compatibility problems with Angular.
          */
@@ -5532,22 +4126,18 @@ declare namespace LocalJSX {
     interface BdsBadge {
         /**
           * If true, actived the pulse animation.
-          * @default false
          */
         "animation"?: boolean;
         /**
           * Set the color of the component.
-          * @default 'system'
          */
         "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Set witch icon will be render inside the component.
-          * @default null
          */
         "icon"?: string;
         /**
@@ -5556,45 +4146,38 @@ declare namespace LocalJSX {
         "number"?: number;
         /**
           * Set the shape of the component.
-          * @default 'circle'
          */
         "shape"?: Shape;
     }
     interface BdsBanner {
         /**
           * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
-          * @default 'center'
          */
         "bannerAlign"?: BannerAlign;
         /**
           * Set if show up the close button.
-          * @default 'false'
          */
         "buttonClose"?: ButtonClose;
         /**
           * Set if the banner is external or internal.
-          * @default 'outside'
          */
         "context"?: Context;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Emitted when the banner is closed.
          */
-        "onBdsBannerClose"?: (event: BdsBannerCustomEvent<void>) => void;
+        "onBdsBannerClose"?: (event: BdsBannerCustomEvent<any>) => void;
         /**
           * Set the banner varient, it can be 'system' or 'warning'.
-          * @default 'system'
          */
         "variant"?: BannerVariant;
     }
     interface BdsBannerLink {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -5604,216 +4187,174 @@ declare namespace LocalJSX {
         /**
           * Emitted when the link is clicked.
          */
-        "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<HTMLBdsBannerElement>) => void;
+        "onBdsBannerLink"?: (event: BdsBannerLinkCustomEvent<any>) => void;
         /**
           * Set the link pass.
-          * @default 'blank'
          */
         "target"?: targets;
     }
     interface BdsBreadcrumb {
-        /**
-          * @default []
-         */
         "items"?: string | Array<{ label: string; href?: string }>;
     }
     interface BdsButton {
         /**
           * The arrow button
-          * @default false
          */
         "arrow"?: boolean;
         /**
           * If true, shows the loading spinner
-          * @default false
          */
         "bdsLoading"?: boolean;
         /**
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
-          * @default 'main'
          */
         "bdsLoadingColor"?: colorsVariants;
         /**
           * If not empty, Sets the color of the spinner, can be 'primary','secondary' or 'ghost'
-          * @default 'primary'
          */
         "bdsLoadingVariant"?: LoadingSpinnerVariant;
         /**
           * If true, the base button will be disabled.
-          * @default false
          */
         "block"?: boolean;
-        /**
-          * @default 'primary'
-         */
         "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If true, the base button will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * If true, the button will occupy 100% width with centered content.
-          * @default false
          */
         "fullWidth"?: boolean;
         /**
           * If true, groups the left icon with the label when justifyContent is 'space-between'. This keeps the left icon and text together as a single visual unit on the left side.
-          * @default false
          */
         "groupIcon"?: boolean;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "iconLeft"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "iconRight"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
-          * @default 'outline'
          */
         "iconTheme"?: IconTheme;
         /**
           * Controls the horizontal alignment of button content. 'center' - content is centered (default) 'space-between' - left content aligned left, right content aligned right
-          * @default 'center'
          */
         "justifyContent"?: ButtonJustifyContent;
         /**
           * Event buttom onClick.
          */
-        "onBdsClick"?: (event: BdsButtonCustomEvent<PointerEvent|KeyboardEvent>) => void;
+        "onBdsClick"?: (event: BdsButtonCustomEvent<any>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'medium'
          */
         "size"?: ButtonSize;
         /**
           * The type of the button. Can be one of: 'button', 'submit', 'reset';
-          * @default 'button'
          */
         "type"?: ButtonType;
         /**
           * The type of the icon. Can be one of: 'icon', 'logo', 'emoji';
-          * @default 'icon'
          */
         "typeIcon"?: IconType;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-          * @default 'solid'
          */
         "variant"?: ButtonVariant;
     }
     interface BdsButtonGroup {
         /**
           * Color scheme for the buttons. Default is 'primary'.
-          * @default 'primary'
          */
         "color"?: string;
         /**
           * Direction of the button group layout. Can be one of: 'row', 'column'.
-          * @default 'row'
          */
         "direction"?: direction;
         /**
           * Allows multiple buttons to be selected simultaneously if true.
-          * @default false
          */
         "multiple"?: boolean;
-        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<string>) => void;
+        "onButtonSelected"?: (event: BdsButtonGroupCustomEvent<any>) => void;
         /**
           * Size of the buttons. Can be one of: 'medium', 'large'.
-          * @default 'medium'
          */
         "size"?: ButtonSize1;
     }
     interface BdsButtonIcon {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If true, the base button will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * The theme of the icon. Can be one of: 'outline', 'solid';
-          * @default 'outline'
          */
         "iconTheme"?: ButtonIconTheme;
         /**
           * Event buttom onClick.
          */
-        "onBdsClick"?: (event: BdsButtonIconCustomEvent<PointerEvent>) => void;
+        "onBdsClick"?: (event: BdsButtonIconCustomEvent<any>) => void;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'standard'
          */
         "size"?: IconButtonSize;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'secondary', 'ghost', 'dashed';
-          * @default 'primary'
          */
         "variant"?: IconButtonVariant;
     }
     interface BdsCard {
         /**
           * Prop for set the background color.
-          * @default 'surface-1'
          */
         "bgColor"?: PaperBackground;
         /**
           * Prop for set the border color.
-          * @default null
          */
         "borderColor"?: BorderColor;
         /**
           * If the prop is true, the component will be clickable.
-          * @default false
          */
         "clickable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Prop for set the height of the component.
-          * @default null
          */
         "height"?: string;
         /**
           * This event will be dispatch when click on the component.
          */
-        "onBdsClick"?: (event: BdsCardCustomEvent<PointerEvent | KeyboardEvent>) => void;
+        "onBdsClick"?: (event: BdsCardCustomEvent<any>) => void;
         /**
           * Prop for set the background color.
-          * @default false
          */
         "selectable"?: boolean;
         /**
           * Prop for set the width of the component.
-          * @default 'fit-content'
          */
         "width"?: string;
     }
@@ -5822,7 +4363,6 @@ declare namespace LocalJSX {
     interface BdsCardColor {
         /**
           * Specifies if the hex is a linear gradient
-          * @default false
          */
         "gradient"?: boolean;
         /**
@@ -5831,7 +4371,6 @@ declare namespace LocalJSX {
         "hex"?: string;
         /**
           * If true, the text will be white
-          * @default false
          */
         "lightText"?: boolean;
         /**
@@ -5846,16 +4385,14 @@ declare namespace LocalJSX {
     interface BdsCardFooter {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
-          * @default 'flex-end'
          */
         "align"?: justifyContent;
     }
     interface BdsCardHeader {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
-          * @default 'space-between'
          */
-        "align"?: justifyContent1;
+        "align"?: justifyContent;
     }
     interface BdsCardSubtitle {
         /**
@@ -5872,118 +4409,91 @@ declare namespace LocalJSX {
     interface BdsCarousel {
         /**
           * arrows. Prop to select type of arrows in component. Are available "outside" | "inside" | "none".
-          * @default 'outside'
          */
         "arrows"?: arrows;
         /**
           * autoHeight. Prop to Enable it if you want the component to adjust its height relative to the active items..
-          * @default false
          */
         "autoHeight"?: boolean;
         /**
           * Autoplay. Prop to Enable component autoplay.
-          * @default false
          */
         "autoplay"?: boolean;
         /**
           * AutoplayHoverPause. Prop to Enable it if you will have the function to pause autoplay when on hover.
-          * @default false
          */
         "autoplayHoverPause"?: boolean;
         /**
           * AutoplayTimeout. Prop to Choose the Autoplay time in milliseconds, ex: 5000.
-          * @default 5000
          */
         "autoplayTimeout"?: number;
         /**
           * Bullet. Prop to Enable component bullets navigation.
-          * @default 'outside'
          */
         "bullets"?: boolean | bullets;
         /**
           * Bullet. Prop to Enable component bullets navigation.
-          * @default 'center'
          */
         "bulletsPosition"?: bulletsPositions;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSlideContent is the data-test to slide action.
-          * @default null
          */
         "dtSlideContent"?: string;
         /**
           * Gap. Prop to Select the gap distance between items.
-          * @default 'none'
          */
         "gap"?: gap;
         /**
           * Grab. Prop to enable function of grab in carousel.
-          * @default true
          */
         "grab"?: boolean;
         /**
           * InfiniteLoop. Prop to Enable if the component will have infinite loop.
-          * @default false
          */
         "infiniteLoop"?: boolean;
         /**
           * Loading state. Indicates if the component is in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         /**
           * Emitted when active frame value.
          */
-        "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<{ value: Itens }>) => void;
+        "onBdsChangeCarousel"?: (event: BdsCarouselCustomEvent<any>) => void;
         /**
           * SlidePerPage. Prop to Choose the number of slide per page you will have available in the carousel.
-          * @default 1
          */
         "slidePerPage"?: number;
     }
     interface BdsCarouselItem {
         "bgColor"?: string;
         "bgImage"?: string;
-        /**
-          * @default 1
-         */
         "bgImageBrightness"?: number;
         /**
           * Set what theme will be aplyed inside the component. 'light', 'dark';
-          * @default 'light'
          */
         "theme"?: Themes;
     }
     interface BdsCheckbox {
         /**
           * If `true`, the checkbox is selected.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the checkbox.
-          * @default false
          */
         "disabled"?: boolean;
-        /**
-          * If `true`, the checkbox is in an indeterminate state. This is used when the checkbox is a parent of a list of checkboxes and some (but not all) of the child checkboxes are selected. Clicking when indeterminate will set the checkbox to checked.
-          * @default false
-         */
-        "indeterminate"?: boolean;
         "label": string;
         /**
           * The name of the control, which is submitted with the form data.
@@ -6002,27 +4512,22 @@ declare namespace LocalJSX {
     interface BdsChip {
         /**
           * When 'true' and the component is using the primary variant, a hover is added
-          * @default false
          */
         "clickable"?: boolean;
         /**
           * Add state danger on chip, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * When 'true', the component recive remove button and dispach event onBdsDelete
-          * @default false
          */
         "deletable"?: boolean;
         /**
           * When 'true', no events will be dispatched
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Add state filter on chip whith specific color.
-          * @default false
          */
         "filter"?: boolean;
         /**
@@ -6032,15 +4537,13 @@ declare namespace LocalJSX {
         /**
           * Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true.
          */
-        "onBdsDelete"?: (event: BdsChipCustomEvent<{ id: string }>) => void;
+        "onBdsDelete"?: (event: BdsChipCustomEvent<any>) => void;
         /**
           * Chip size. Entered as one of the size design tokens. Can be one of: "standard" and "tall"
-          * @default 'standard'
          */
         "size"?: ChipSize;
         /**
           * Variant. Entered as one of the variant. Can be one of: 'primary', 'default';
-          * @default 'default'
          */
         "variant"?: ChipVariant;
     }
@@ -6051,90 +4554,76 @@ declare namespace LocalJSX {
         "avatar"?: string;
         /**
           * it makes the chip clickable.
-          * @default false
          */
         "clickable"?: boolean;
         /**
           * used for delete the chip.
-          * @default false
          */
         "close"?: boolean;
         /**
           * used for change the color. Uses one of them.
-          * @default 'default'
          */
         "color"?: ColorChipClickable;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * the chip gone stay disabled while this prop be true.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
-        "onChipClickableClick"?: (event: BdsChipClickableCustomEvent<void>) => void;
+        "onChipClickableClick"?: (event: BdsChipClickableCustomEvent<any>) => void;
         /**
           * Triggered after a mouse click on close icon, return id element. Only fired when close is true.
          */
-        "onChipClickableClose"?: (event: BdsChipClickableCustomEvent<{ id: string }>) => void;
+        "onChipClickableClose"?: (event: BdsChipClickableCustomEvent<any>) => void;
         /**
           * used for change the size chip. Uses one of them.
-          * @default 'standard'
          */
         "size"?: Size;
     }
     interface BdsChipSelected {
         /**
           * used for change the color. Uses one of them.
-          * @default 'default'
          */
         "color"?: ColorChipSelected;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * When 'true', no events will be dispatched
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * used for add icon in left container. Uses the bds-icon component.
          */
         "icon"?: string;
-        "onChipClick"?: (event: BdsChipSelectedCustomEvent<{ selected: boolean }>) => void;
+        "onChipClick"?: (event: BdsChipSelectedCustomEvent<any>) => void;
         /**
           * used for set the initial setup for true;
-          * @default false
          */
         "selected"?: boolean;
         /**
           * used for change the chip size. Use one of them;
-          * @default 'standard'
          */
-        "size"?: Size1;
+        "size"?: Size;
     }
     interface BdsChipTag {
         /**
           * used for change the color. Uses one of them.
-          * @default 'default'
          */
         "color"?: ColorChipTag;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -6143,19 +4632,10 @@ declare namespace LocalJSX {
         "icon"?: string;
     }
     interface BdsCounterText {
-        /**
-          * @default false
-         */
         "active"?: boolean;
-        /**
-          * @default { max: 1, min: 0 }
-         */
         "delete"?: CounterTextRule;
         "length": number;
         "max"?: number;
-        /**
-          * @default { max: 20, min: 2 }
-         */
         "warning"?: CounterTextRule;
     }
     interface BdsDataTable {
@@ -6165,320 +4645,258 @@ declare namespace LocalJSX {
         "actionArea"?: boolean;
         /**
           * Prop to activate the possibility of use avatar in any column.
-          * @default false
          */
         "avatar"?: boolean;
         /**
           * Prop to activate the possibility of use chip in any column.
-          * @default false
          */
         "chips"?: boolean;
         /**
           * Prop to recive the header and configuration of table.
          */
         "column"?: string;
-        "onBdsTableChange"?: (event: BdsDataTableCustomEvent<{
-    [key: string]: any;
-  }[]>) => void;
-        "onBdsTableClick"?: (event: BdsDataTableCustomEvent<{
-    item: {
-      [key: string]: any;
-    }; index: number; nameButton: string
-  }>) => void;
-        "onBdsTableDelete"?: (event: BdsDataTableCustomEvent<{
-    [key: string]: any;
-  }>) => void;
+        "onBdsTableChange"?: (event: BdsDataTableCustomEvent<any>) => void;
+        "onBdsTableClick"?: (event: BdsDataTableCustomEvent<any>) => void;
+        "onBdsTableDelete"?: (event: BdsDataTableCustomEvent<any>) => void;
         /**
           * Prop to recive the content of the table.
          */
         "options"?: string;
         /**
           * Prop to activate the sorting.
-          * @default false
          */
         "sorting"?: boolean;
     }
     interface BdsDatepicker {
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClear is the data-test to button clear.
-          * @default null
          */
         "dtButtonClear"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
-          * @default null
          */
         "dtButtonConfirm"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtInputEnd is the data-test to input end.
-          * @default null
          */
         "dtInputEnd"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtInputStart is the data-test to input start.
-          * @default null
          */
         "dtInputStart"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to outzone.
-          * @default null
          */
         "dtOutzone"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
-          * @default null
          */
         "dtSelectMonth"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
-          * @default null
          */
         "dtSelectYear"?: string;
         /**
           * EndDateLimit. Insert a limiter to select the date period.
-          * @default defaultEndDate
          */
         "endDateLimit"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages1;
         /**
           * Message. Select type of date.
-          * @default null
          */
         "message"?: string;
         /**
           * bdsStartDate. Event to return selected end date value.
          */
-        "onBdsEndDate"?: (event: BdsDatepickerCustomEvent<{ value: Date | null }>) => void;
+        "onBdsEndDate"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
           * bdsStartDate. Event to return selected date value.
          */
-        "onBdsStartDate"?: (event: BdsDatepickerCustomEvent<{ value: Date | null }>) => void;
+        "onBdsStartDate"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
           * bdsStartDate. Event to return selected end date value.
          */
-        "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<{ startDate: string; endDate?: string } | { startDate: string } | any>) => void;
+        "onConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
           * emptyConcludeDatepicker. Event to emit when the datepicker is concluded without any date selected.
          */
-        "onEmptyConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<void>) => void;
+        "onEmptyConcludeDatepicker"?: (event: BdsDatepickerCustomEvent<any>) => void;
         /**
           * Used to set drop position
-          * @default 'auto'
          */
         "positionOptions"?: DropdownPostionType;
         /**
           * StartDateLimit. Insert a limiter to select the date period.
-          * @default defaultStartDate
          */
         "startDateLimit"?: string;
         /**
           * TypeOfDate. Select type of date.
-          * @default 'single'
          */
         "typeOfDate"?: typeDate;
         /**
           * Default value input.
-          * @default null
          */
         "valueDateSelected"?: string;
         /**
           * Default value input.
-          * @default null
          */
         "valueEndDateSelected"?: string;
         /**
           * Message. Select type of date.
-          * @default 'warning'
          */
         "variantBanner"?: BannerVariant1;
     }
     interface BdsDatepickerPeriod {
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
-          * @default null
          */
         "dtSelectMonth"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
-          * @default null
          */
         "dtSelectYear"?: string;
         /**
           * EndDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultEndDate)
          */
         "endDate"?: DaysList;
         /**
           * EndDateSelect. Insert a limiter to select the date period.
-          * @default null
          */
         "endDateSelect"?: Date;
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages1;
         /**
           * bdsClickDayButton. Event to return when click on day button.
          */
-        "onBdsClickDayButton"?: (event: BdsDatepickerPeriodCustomEvent<{ state?: stateSelect }>) => void;
+        "onBdsClickDayButton"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
         /**
           * bdsEndDate. Event to return selected end date value.
          */
-        "onBdsEndDate"?: (event: BdsDatepickerPeriodCustomEvent<{ value: Date | null }>) => void;
+        "onBdsEndDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
         /**
           * bdsStartDate. Event to return selected date value.
          */
-        "onBdsStartDate"?: (event: BdsDatepickerPeriodCustomEvent<{ value: Date | null }>) => void;
+        "onBdsStartDate"?: (event: BdsDatepickerPeriodCustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultStartDate)
          */
         "startDate"?: DaysList;
         /**
           * StartDateSelect. Insert a limiter to select the date period.
-          * @default null
          */
         "startDateSelect"?: Date;
         /**
           * EndDateSelect. Insert a limiter to select the date period.
-          * @default 'start'
          */
         "stateSelect"?: stateSelect;
     }
     interface BdsDatepickerSingle {
         /**
           * dateSelect. Insert a limiter to select the date period.
-          * @default null
          */
         "dateSelect"?: Date;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectMonth is the data-test to select month.
-          * @default null
          */
         "dtSelectMonth"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtSelectYear is the data-test to select year.
-          * @default null
          */
         "dtSelectYear"?: string;
         /**
           * EndDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultEndDate)
          */
         "endDate"?: DaysList;
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
-          * @default 'pt_BR'
          */
         "language"?: languages1;
         /**
           * bdsDateSelected. Event to return selected date value.
          */
-        "onBdsDateSelected"?: (event: BdsDatepickerSingleCustomEvent<{ value: Date | null }>) => void;
+        "onBdsDateSelected"?: (event: BdsDatepickerSingleCustomEvent<any>) => void;
         /**
           * StartDate. Insert a limiter to select the date period.
-          * @default dateToDayList(defaultStartDate)
          */
         "startDate"?: DaysList;
     }
     interface BdsDivider {
         /**
           * Cor da linha, aceitando qualquer valor válido em CSS (hex, rgb, nome da cor)
-          * @default 'divider-1'
          */
         "color"?: 'divider-1' | 'divider-2' | 'divider-3';
         /**
           * Define se o divider deve ser exibido horizontalmente ou verticalmente
-          * @default 'horizontal'
          */
         "orientation"?: 'horizontal' | 'vertical';
         /**
           * O tipo de estilo da linha: sólida, pontilhada, tracejada
-          * @default 'solid'
          */
         "styleType"?: 'solid' | 'dotted' | 'dashed';
     }
     interface BdsDropdown {
         /**
           * Open. Used to open/close the dropdown.
-          * @default 'click'
          */
         "activeMode"?: activeMode;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * bdsToggle. Event to return selected date value.
          */
-        "onBdsToggle"?: (event: BdsDropdownCustomEvent<{ value: boolean }>) => void;
+        "onBdsToggle"?: (event: BdsDropdownCustomEvent<any>) => void;
         /**
           * Open. Used to open/close the dropdown.
-          * @default false
          */
         "open"?: boolean;
         /**
           * Used to set drop position
-          * @default 'auto'
          */
-        "position"?: DropdownPostionType1;
+        "position"?: DropdownPostionType;
     }
     interface BdsExpansionPanel {
     }
     interface BdsExpansionPanelBody {
-        /**
-          * @default false
-         */
         "open"?: boolean;
-        /**
-          * @default null
-         */
         "text"?: string;
     }
     interface BdsExpansionPanelHeader {
@@ -6520,7 +4938,6 @@ declare namespace LocalJSX {
         "color"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -6533,7 +4950,6 @@ declare namespace LocalJSX {
         "icon"?: any;
         /**
           * If enabled, ion-icon will be loaded lazily when it's visible in the viewport. Default, `false`.
-          * @default false
          */
         "lazy"?: boolean;
         /**
@@ -6542,7 +4958,6 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Icon size. Entered as one of the icon size design tokens. Can be one of: "xxx-small", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "xxx-large", "brand".
-          * @default 'medium'
          */
         "size"?: IconSize;
         /**
@@ -6551,12 +4966,10 @@ declare namespace LocalJSX {
         "src"?: string;
         /**
           * Specifies the theme to use outline or solid icons. Defaults to outline.
-          * @default 'outline'
          */
         "theme"?: IconTheme1;
         /**
           * Specifies the type of icon. If type is set to emoji, it will be able to set only emoji names on the name property.
-          * @default 'icon'
          */
         "type"?: IconType1;
     }
@@ -6567,7 +4980,6 @@ declare namespace LocalJSX {
         "alt"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -6576,7 +4988,6 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Specifies the type to use. Can be: 'default'.
-          * @default 'default'
          */
         "type"?: IllustrationType;
     }
@@ -6591,7 +5002,6 @@ declare namespace LocalJSX {
         "brightness"?: number;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
@@ -6600,7 +5010,6 @@ declare namespace LocalJSX {
         "height"?: string;
         /**
           * Specifies the object-fit style for the image. Can be: 'fill', 'contain', 'cover', 'none', 'scale-down'.
-          * @default 'cover'
          */
         "objectFit"?: ObjectFitValue;
         /**
@@ -6615,17 +5024,14 @@ declare namespace LocalJSX {
     interface BdsInput {
         /**
           * Defines automatic text capitalization (possible values: `on`, `off`).
-          * @default 'off'
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
           * Defines browser autocomplete behavior (possible values: `on`, `off`).
-          * @default 'off'
          */
         "autoComplete"?: InputAutoComplete;
         /**
           * Defines whether the textarea should automatically resize based on content.
-          * @default true
          */
         "autoResize"?: boolean;
         /**
@@ -6634,85 +5040,67 @@ declare namespace LocalJSX {
         "chips"?: boolean;
         /**
           * Defines the number of columns for the textarea (if `textarea`).
-          * @default 0
          */
         "cols"?: number;
         /**
           * Defines whether a character length counter will be displayed.
-          * @default false
          */
         "counterLength"?: boolean;
         /**
           * Defines the character length counter rule (min, max, etc).
-          * @default null
          */
         "counterLengthRule"?: InputCounterLengthRules;
         /**
           * Defines if the input is in error state.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Defines the debounce delay in milliseconds for textarea auto-resize.
-          * @default 100
          */
         "debounceDelay"?: number;
         /**
           * Defines if the input is disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Error message displayed when the input value is not a valid email.
          */
         "emailErrorMessage"?: string;
-        /**
-          * @default false
-         */
         "encode"?: boolean;
         /**
           * Error message displayed when the input value is invalid.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Help message displayed below the input.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * Name of the icon to be displayed inside the input.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Defines the icon size (small or medium).
-          * @default 'small'
          */
         "iconSize"?: 'small' | 'medium';
         /**
           * Input name, used for form identification.
-          * @default ''
          */
         "inputName"?: string;
         /**
           * Defines whether the input will be submitted when pressing Enter.
-          * @default false
          */
         "isSubmit"?: boolean;
         /**
           * Defines whether the input is a textarea.
-          * @default false
          */
         "isTextarea"?: boolean;
         /**
           * Label to be displayed above the input.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -6725,7 +5113,6 @@ declare namespace LocalJSX {
         "maxErrorMessage"?: string;
         /**
           * Defines the maximum height of the textarea in pixels.
-          * @default 200
          */
         "maxHeight"?: number;
         /**
@@ -6742,7 +5129,6 @@ declare namespace LocalJSX {
         "minErrorMessage"?: string;
         /**
           * Defines the minimum height of the textarea in pixels.
-          * @default 60
          */
         "minHeight"?: number;
         /**
@@ -6760,43 +5146,41 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the input value changes.
          */
-        "onBdsChange"?: (event: BdsInputCustomEvent<{ value: string }>) => void;
+        "onBdsChange"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event emitted when the input gains focus.
          */
-        "onBdsFocus"?: (event: BdsInputCustomEvent<void>) => void;
+        "onBdsFocus"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event emitted when the input receives input (typing).
          */
-        "onBdsInput"?: (event: BdsInputCustomEvent<InputEvent>) => void;
+        "onBdsInput"?: (event: BdsInputCustomEvent<KeyboardEvent>) => void;
         /**
           * Event emitted when the "Backspace" key is pressed.
          */
-        "onBdsKeyDownBackspace"?: (event: BdsInputCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
+        "onBdsKeyDownBackspace"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event emitted when the input loses focus.
          */
-        "onBdsOnBlur"?: (event: BdsInputCustomEvent<void>) => void;
+        "onBdsOnBlur"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event emitted for regex pattern validation.
          */
-        "onBdsPatternValidation"?: (event: BdsInputCustomEvent<boolean>) => void;
+        "onBdsPatternValidation"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Event emitted when the form is submitted.
          */
-        "onBdsSubmit"?: (event: BdsInputCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
+        "onBdsSubmit"?: (event: BdsInputCustomEvent<any>) => void;
         /**
           * Defines a regex pattern that the input value must follow.
          */
         "pattern"?: string;
         /**
           * Text to be displayed as a hint or placeholder in the input.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Makes the input read-only.
-          * @default false
          */
         "readonly"?: boolean;
         /**
@@ -6809,89 +5193,72 @@ declare namespace LocalJSX {
         "requiredErrorMessage"?: string;
         /**
           * Defines whether the textarea can be manually resized by the user.
-          * @default false
          */
         "resizable"?: boolean;
         /**
           * Defines the number of lines for the textarea (if `textarea`).
-          * @default 3
          */
         "rows"?: number;
         /**
           * Defines if the input is in success state.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Message displayed when the input value is valid.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Defines the input type (e.g., `text`, `password`, etc).
-          * @default 'text'
          */
         "type"?: InputType;
         /**
           * The current value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsInputChips {
         /**
           * When true, the press enter will be simulated on blur event.
-          * @default false
          */
         "blurCreation"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
-          * @default []
          */
         "chips"?: string[] | string;
         /**
           * Passing true to display a counter of available size, it is necessary to pass another maxlength property.
-          * @default false
          */
         "counterLength"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * The delimiter is used to add multiple chips in the same string.
-          * @default /,|;/
          */
         "delimiters"?: RegExp;
         /**
           * If `true`, the user cannot modify the value.
-          * @default false
          */
         "disableSubmit"?: boolean;
         /**
           * Disabled input
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Do not accept duplicate chip elements.
-          * @default false
          */
         "duplicated"?: boolean;
         /**
           * Indicated to pass an feedback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
@@ -6900,22 +5267,18 @@ declare namespace LocalJSX {
         "height"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Prop to insert the name of the input
-          * @default ''
          */
         "inputName"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -6933,101 +5296,87 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsBlur"?: (event: BdsInputChipsCustomEvent<string[]>) => void;
+        "onBdsBlur"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChange"?: (event: BdsInputChipsCustomEvent<{ data: string[]; value: string }>) => void;
+        "onBdsChange"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<{ data: string[]; value: string }>) => void;
+        "onBdsChangeChips"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when a maximum value defined by the "max-chips-length" prop is entered
          */
-        "onBdsExtendedQuantityInput"?: (event: BdsInputChipsCustomEvent<{ value: boolean }>) => void;
+        "onBdsExtendedQuantityInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<void>) => void;
+        "onBdsInputChipsFocus"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsInputChipsInput"?: (event: BdsInputChipsCustomEvent<InputEvent>) => void;
+        "onBdsInputChipsInput"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsSubmit"?: (event: BdsInputChipsCustomEvent<{ value: string[] }>) => void;
+        "onBdsSubmit"?: (event: BdsInputChipsCustomEvent<any>) => void;
         /**
           * A tip for the user who can enter no controls.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
-          * @default 'text'
          */
         "type"?: InputChipsTypes;
         /**
           * The value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsInputEditable {
         /**
           * Add state danger on input, use for use feedback. If true avoid save confirmation.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonConfirm is the data-test to button confirm.
-          * @default null
          */
         "dtButtonConfirm"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonEdit is the data-test to button edit.
-          * @default null
          */
         "dtButtonEdit"?: string;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Defines whether the component will be expandable
-          * @default false
          */
         "expand"?: boolean;
         /**
           * Indicated to pass a help to the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * Input Name
-          * @default ''
          */
         "inputName"?: string;
         /**
@@ -7036,7 +5385,6 @@ declare namespace LocalJSX {
         "maxlength"?: number;
         /**
           * If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.
-          * @default 0
          */
         "minlength"?: number;
         /**
@@ -7062,14 +5410,13 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: BdsInputEditableCustomEvent<InputEvent>) => void;
+        "onBdsInput"?: (event: BdsInputEditableCustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when input text confirm.
          */
         "onBdsInputEditableSave"?: (event: BdsInputEditableCustomEvent<InputEditableEventDetail>) => void;
         /**
           * Placeholder for native input element.
-          * @default ''
          */
         "placeholder"?: string;
         /**
@@ -7078,74 +5425,60 @@ declare namespace LocalJSX {
         "requiredErrorMessage"?: string;
         /**
           * Set the component size. Can be one of: 'short' | 'standard' | 'tall';
-          * @default 'standard'
          */
         "size"?: SizeInputEditable;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * The value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
-          * @default 'off'
          */
         "autoCapitalize"?: InputAutocapitalize;
         /**
           * Hint for form autofill feature
-          * @default 'off'
          */
         "autoComplete"?: InputAutoComplete;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Input Name
-          * @default ''
          */
         "inputName"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -7167,103 +5500,86 @@ declare namespace LocalJSX {
         /**
           * Event input onblur.
          */
-        "onBdsInputPasswordBlur"?: (event: BdsInputPasswordCustomEvent<void>) => void;
+        "onBdsInputPasswordBlur"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsInputPasswordChange"?: (event: BdsInputPasswordCustomEvent<{ value: string | null }>) => void;
+        "onBdsInputPasswordChange"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         /**
           * Event input focus.
          */
-        "onBdsInputPasswordFocus"?: (event: BdsInputPasswordCustomEvent<void>) => void;
+        "onBdsInputPasswordFocus"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInputPasswordInput"?: (event: BdsInputPasswordCustomEvent<InputEvent>) => void;
+        "onBdsInputPasswordInput"?: (event: BdsInputPasswordCustomEvent<KeyboardEvent>) => void;
         /**
           * Event input enter.
          */
-        "onBdsInputPasswordSubmit"?: (event: BdsInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null } | void>) => void;
+        "onBdsInputPasswordSubmit"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         /**
           * Event input key down backspace.
          */
-        "onBdsKeyDownBackspace"?: (event: BdsInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null }>) => void;
-        /**
-          * @default false
-         */
+        "onBdsKeyDownBackspace"?: (event: BdsInputPasswordCustomEvent<any>) => void;
         "openEyes"?: boolean;
         /**
           * A tip for the user who can enter no controls.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * If `true`, the user cannot modify the value.
-          * @default false
          */
         "readonly"?: boolean;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * The value of the input.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsInputPhoneNumber {
         /**
           * Habilita o estado "danger" no input.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data-test para identificar o componente.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Desabilita o input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Data-test para o botão de seleção de bandeira.
-          * @default null
          */
         "dtSelectFlag"?: string;
         /**
           * Mensagem de erro a ser exibida.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Mensagem de ajuda para o usuário.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * Ícone à esquerda do input.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Label do input.
-          * @default 'Phone number'
          */
         "label"?: string;
         /**
           * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
-          * @default 'pt_BR'
          */
-        "language"?: languages2;
+        "language"?: languages;
         /**
           * Mensagem de erro para validação numérica.
          */
@@ -7283,19 +5599,13 @@ declare namespace LocalJSX {
         /**
           * Evento disparado quando o input sofre alteração.
          */
-        "onBdsInput"?: (event: BdsInputPhoneNumberCustomEvent<InputEvent>) => void;
+        "onBdsInput"?: (event: BdsInputPhoneNumberCustomEvent<KeyboardEvent>) => void;
         /**
           * Evento disparado quando o valor é alterado.
          */
-        "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<{
-    value: string | null;
-    code: string | null;
-    isoCode: string | null;
-    country: string | null;
-  }>) => void;
+        "onBdsPhoneNumberChange"?: (event: BdsInputPhoneNumberCustomEvent<any>) => void;
         /**
           * Lista de opções do select.
-          * @default []
          */
         "options"?: Array<Option>;
         /**
@@ -7308,22 +5618,18 @@ declare namespace LocalJSX {
         "requiredErrorMessage"?: string;
         /**
           * Habilita o estado "success" no input.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Mensagem de sucesso a ser exibida.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Valor do input de telefone.
-          * @default ''
          */
         "text"?: string;
         /**
           * Valor do select.
-          * @default '+55'
          */
         "value"?: string | null;
     }
@@ -7339,39 +5645,17 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value checkboxes has changed because of a click event.
          */
-        "onBdsListCheckboxChange"?: (event: BdsListCustomEvent<{
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    avatarName: string | null;
-    avatarThumbnail: string | null;
-    typeList: TypeList | null;
-  }[]>) => void;
+        "onBdsListCheckboxChange"?: (event: BdsListCustomEvent<any>) => void;
         /**
           * Emitted when the value radios has changed because of a click event.
          */
-        "onBdsListRadioChange"?: (event: BdsListCustomEvent<{
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    avatarName: string | null;
-    avatarThumbnail: string | null;
-    typeList: TypeList | null;
-  }>) => void;
+        "onBdsListRadioChange"?: (event: BdsListCustomEvent<any>) => void;
         /**
           * Emitted when the value switches has changed because of a click event.
          */
-        "onBdsListSwitchChange"?: (event: BdsListCustomEvent<{
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    avatarName: string | null;
-    avatarThumbnail: string | null;
-    typeList: TypeList | null;
-  }[]>) => void;
+        "onBdsListSwitchChange"?: (event: BdsListCustomEvent<any>) => void;
         /**
           * Typelist. Used to .
-          * @default null
          */
         "typeList"?: TypeList;
         /**
@@ -7382,259 +5666,194 @@ declare namespace LocalJSX {
     interface BdsListItem {
         /**
           * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
-          * @default []
          */
         "actionsButtons"?: string | string[];
         /**
           * Active. Used to define when the item is highlighted.
-          * @default false
          */
         "active"?: boolean;
         /**
           * AvatarName. Used to enter the avatar name.
-          * @default null
          */
         "avatarName"?: string;
         /**
           * AvatarThumbnail. Used to insert the avatar photo.
-          * @default null
          */
         "avatarThumbnail"?: string;
         /**
           * Enable rounded border on item
-          * @default false
          */
         "borderRadius"?: boolean;
-        /**
-          * @default false
-         */
         "checked"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
-          * @default []
          */
         "chips"?: string | string[];
         /**
           * Clickable. Used to define if the item is clickable or not.
-          * @default false
          */
         "clickable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Icon. Used to add icon in list item.
-          * @default null
          */
         "icon"?: string;
         /**
           * Emitted when the value has changed because of a click event.
          */
-        "onBdsChecked"?: (event: BdsListItemCustomEvent<{
-    value: string | null;
-    text: string | null;
-    secondaryText: string | null;
-    typeList: TypeList1 | null;
-    checked: boolean | null;
-  }>) => void;
+        "onBdsChecked"?: (event: BdsListItemCustomEvent<any>) => void;
         /**
           * Emitted when click in someone actions buttom insert in data.
          */
-        "onBdsClickActionButtom"?: (event: BdsListItemCustomEvent<{
-    value: string | null;
-    icon: string;
-    elementButton: EventTarget;
-  }>) => void;
+        "onBdsClickActionButtom"?: (event: BdsListItemCustomEvent<any>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
-          * @default null
          */
         "secondaryText"?: string;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'standard'
          */
         "size"?: ItemSize;
         /**
           * Text. Used to insert a text in the display item.
-          * @default null
          */
         "text"?: string;
         /**
           * Typelis. Used toselect type of item list.
-          * @default null
          */
         "typeList"?: TypeList1;
         /**
           * Value. Used to insert a value in list item.
-          * @default null
          */
         "value"?: string;
     }
     interface BdsListItemContent {
-        /**
-          * @default 'flex-start'
-         */
         "alignItems"?: alignItems;
-        /**
-          * @default 'column'
-         */
         "direction"?: direction;
-        /**
-          * @default 'wrap'
-         */
         "flexWrap"?: flexWrap;
         "gap"?: gap1;
-        /**
-          * @default 'flex-start'
-         */
         "justifyContent"?: justifyContent2;
     }
     interface BdsLoadingBar {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Percent, property to enter the loading bar status percentage value.
-          * @default 0
          */
         "percent"?: number;
         /**
           * Size, property to define size of component.
-          * @default 'default'
          */
         "size"?: loadingBarSize;
         /**
           * Text, property to enable the bar info text.
-          * @default ''
          */
         "text"?: string;
     }
     interface BdsLoadingPage {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
     }
     interface BdsLoadingSpinner {
         /**
           * Color, Entered as one of the color. Can be one of: 'default', 'white'.
-          * @default 'main'
          */
-        "color"?: colorsVariants1;
+        "color"?: colorsVariants;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Size, Entered as one of the size. Can be one of: 'small', 'standard', 'large'.
-          * @default 'standard'
          */
         "size"?: loadingSize;
         /**
           * Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
-          * @default 'primary'
          */
-        "variant"?: LoadingSpinnerVariant1;
+        "variant"?: LoadingSpinnerVariant;
     }
     interface BdsMenu {
         /**
           * Menu. Used to link the minus with the action button.
-          * @default null
          */
         "menu"?: string;
         /**
           * bdsToggle. Event to return selected date value.
          */
-        "onBdsToggle"?: (event: BdsMenuCustomEvent<{ value?: boolean }>) => void;
+        "onBdsToggle"?: (event: BdsMenuCustomEvent<any>) => void;
         /**
           * Open. Used to open/close the menu.
-          * @default false
          */
         "open"?: boolean;
         /**
           * Position. Used to position the Menu. Either on the left or on the bottom.
-          * @default 'right'
          */
         "position"?: menuPosition;
     }
     interface BdsMenuAction {
         /**
           * ButtonText. Used to enter the display text for the item.
-          * @default ''
          */
         "buttonText"?: string;
         /**
           * Description. Used to insert a subtitle in the display item.
-          * @default null
          */
         "description"?: string;
         /**
           * Disabled. Used to declare that the item will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Iconleft. Used to insert the string icon and make the icon available to the left of the item.
-          * @default null
          */
         "iconLeft"?: string;
         /**
           * Lipstick. Used to declare that the item will be a negative/error action.
-          * @default false
          */
         "lipstick"?: boolean;
         /**
           * SubMenu. Used to declare that the button will have a submenu.
-          * @default false
          */
         "subMenu"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
-          * @default null
          */
         "subtitle"?: string;
     }
     interface BdsMenuExibition {
         /**
           * AvatarName. Used to enter the avatar name.
-          * @default null
          */
         "avatarName"?: string;
         /**
           * AvatarSize. Used to set avatar size.
-          * @default 'standard'
          */
-        "avatarSize"?: avatarSize2;
+        "avatarSize"?: avatarSize;
         /**
           * AvatarThumbnail. Used to insert the avatar photo.
-          * @default null
          */
         "avatarThumbnail"?: string;
         /**
           * Description. Used to insert a subtitle in the display item.
-          * @default null
          */
         "description"?: string;
         /**
           * Disabled. Used to declare that the item will be disabled.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Subtitle. Used to insert a subtitle in the display item.
-          * @default null
          */
         "subtitle"?: string;
         /**
           * Value. Used to insert a title in the display item.
-          * @default null
          */
         "value"?: string;
     }
@@ -7650,53 +5869,44 @@ declare namespace LocalJSX {
     interface BdsMenuSeparation {
         /**
           * Size. Used to set the size of the divider.
-          * @default null
          */
         "size"?: string;
         /**
           * Value. Used to insert a title to the divider.
-          * @default null
          */
         "value"?: string;
     }
     interface BdsModal {
         /**
           * Used to hide or show the close button
-          * @default true
          */
         "closeButton"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
-          * @default null
          */
         "dtOutzone"?: string;
         /**
           * If true, the modal will close keydown Enter.
-          * @default true
          */
         "enterClose"?: boolean;
         /**
           * Emitted when modal status has changed.
          */
-        "onBdsModalChanged"?: (event: BdsModalCustomEvent<{ modalStatus: 'opened' | 'closed' }>) => void;
+        "onBdsModalChanged"?: (event: BdsModalCustomEvent<any>) => void;
         /**
           * Used to open/close the modal
-          * @default false
          */
         "open"?: boolean;
         /**
           * If true, the modal will close clicking outside the component.
-          * @default true
          */
         "outzoneClose"?: boolean;
         /**
           * Used to change the modal heights.
-          * @default 'fixed'
          */
         "size"?: sizes;
     }
@@ -7705,48 +5915,40 @@ declare namespace LocalJSX {
     interface BdsModalCloseButton {
         /**
           * Used to hide or show the close button
-          * @default true
          */
         "active"?: boolean;
     }
     interface BdsNavTree {
         /**
           * Focus Selected. Used to add title in header accordion.
-          * @default 'single'
          */
-        "collapse"?: collapses1;
+        "collapse"?: collapses;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disable state. Indicates if the component is disabled.
-          * @default false
          */
         "disable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
-          * @default null
          */
         "icon"?: string;
         /**
           * A prop for make the nav open.
-          * @default false
          */
         "isOpen"?: boolean;
         /**
           * Loading state. Indicates if the component is in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         /**
           * When de open or close of component change, the event are dispache.
          */
-        "onBdsToogleChange"?: (event: BdsNavTreeCustomEvent<{ value?: boolean; element: HTMLElement }>) => void;
+        "onBdsToogleChange"?: (event: BdsNavTreeCustomEvent<any>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
-          * @default null
          */
         "secondaryText"?: string;
         /**
@@ -7757,50 +5959,42 @@ declare namespace LocalJSX {
     interface BdsNavTreeGroup {
         /**
           * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
-          * @default 'single'
          */
-        "collapse"?: collapses2;
-        "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<void>) => void;
-        "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<void>) => void;
+        "collapse"?: collapses;
+        "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
+        "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
     }
     interface BdsNavTreeItem {
         /**
           * Focus Selected. Used to add title in header accordion.
-          * @default 'single'
          */
-        "collapse"?: collapses3;
+        "collapse"?: collapses;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disable state. Indicates if the component is disabled.
-          * @default false
          */
         "disable"?: boolean;
         /**
           * Icon. Used to add icon in list item.
-          * @default null
          */
         "icon"?: string;
         /**
           * Active. Used to define when the item is highlighted.
-          * @default false
          */
         "isOpen"?: boolean;
         /**
           * Loading state. Indicates if the component is in a loading state.
-          * @default false
          */
         "loading"?: boolean;
         /**
           * When de activation of component change, the event are dispache.
          */
-        "onBdsToogleChange"?: (event: BdsNavTreeItemCustomEvent<{ value?: boolean; element: HTMLElement }>) => void;
+        "onBdsToogleChange"?: (event: BdsNavTreeItemCustomEvent<any>) => void;
         /**
           * SecondaryText. Used to insert a secondaryText in the display item.
-          * @default null
          */
         "secondaryText"?: string;
         /**
@@ -7811,22 +6005,18 @@ declare namespace LocalJSX {
     interface BdsNavbar {
         /**
           * Width, number to define navbar width.
-          * @default 'surface-1'
          */
         "backgroundColor"?: navbarBackground;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Justify Content. Used to align itens in navbar.
-          * @default 'space-between'
          */
-        "justifyContent"?: justifyContent3;
+        "justifyContent"?: justifyContent;
         /**
           * Navbar orientation. Used to orientation the navbar. Either on the left or on the right.
-          * @default 'vertical'
          */
         "orientation"?: orientation;
     }
@@ -7835,51 +6025,39 @@ declare namespace LocalJSX {
     interface BdsPagination {
         /**
           * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
-          * @default null
          */
         "dtButtonEnd"?: string;
         /**
           * Propriedade de teste para especificamente testar a ação do botão inicial. dtButtonInitial é o data-test para o botão inicial.
-          * @default null
          */
         "dtButtonInitial"?: string;
         /**
           * Propriedade de teste para especificamente testar a ação do botão de próxima página. dtButtonNext é o data-test para o botão próximo.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Propriedade de teste para especificamente testar a ação do botão de página anterior. dtButtonPrev é o data-test para o botão anterior.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * Propriedade de teste para especificamente testar o seletor de número de páginas. dtSelectNumber é o data-test para o seletor de número de páginas.
-          * @default null
          */
         "dtSelectNumber"?: string;
         "itemsPage"?: any;
-        /**
-          * @default 'pt_BR'
-         */
         "language"?: string;
         "numberItems"?: number;
         /**
           * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
          */
-        "onBdsItemsPerPageChange"?: (event: BdsPaginationCustomEvent<number>) => void;
+        "onBdsItemsPerPageChange"?: (event: BdsPaginationCustomEvent<any>) => void;
         /**
           * Evento emitido quando o valor da página atual é alterado. Pode ser escutado para realizar ações específicas ao mudar de página.
          */
-        "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<number>) => void;
+        "onBdsPaginationChange"?: (event: BdsPaginationCustomEvent<any>) => void;
         /**
           * Define a posição do menu de opções. Pode ser 'bottom' ou 'top'. Padrão é 'auto', que ajusta automaticamente a posição.
-          * @default 'auto'
          */
         "optionsPosition"?: PaginationOptionsPositionType;
-        /**
-          * @default false
-         */
         "pageCounter"?: boolean;
         /**
           * Propriedade para receber o número total de páginas, baseado no total de itens e itens por página.
@@ -7893,81 +6071,66 @@ declare namespace LocalJSX {
     interface BdsPaper {
         /**
           * Prop for set the background color.
-          * @default 'surface-1'
          */
         "bgColor"?: PaperBackground;
         /**
           * Prop for set the border of the component.
-          * @default false
          */
         "border"?: boolean;
         /**
           * Prop for set the border color.
-          * @default null
          */
         "borderColor"?: BorderColor;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
-          * @default 'static'
          */
         "elevation"?: PaperElevation;
         /**
           * Prop for set the height of the component.
-          * @default null
          */
         "height"?: string;
         /**
           * Prop for set the width of the component.
-          * @default null
          */
         "width"?: string;
     }
     interface BdsProgressBar {
         /**
           * Text, property to define status of component.
-          * @default 'default'
          */
         "color"?: progressBarColor;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Percent, property to enter the progress bar status percentage value.
-          * @default 0
          */
         "percent"?: number;
         /**
           * Size, property to define size of component.
-          * @default 'default'
          */
         "size"?: progressBarSize;
         /**
           * Text, property to enable the bar info text.
-          * @default ''
          */
         "text"?: string;
     }
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the checkbox.
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -7981,11 +6144,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsRadioCustomEvent<{ checked: boolean }>) => void;
+        "onBdsChange"?: (event: BdsRadioCustomEvent<any>) => void;
         /**
           * Emitted when the value has changed because of a click event.
          */
-        "onBdsClickChange"?: (event: BdsRadioCustomEvent<{ checked: boolean }>) => void;
+        "onBdsClickChange"?: (event: BdsRadioCustomEvent<any>) => void;
         /**
           * Refer. Field to add refer in radio buttom.
          */
@@ -7999,7 +6162,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed due to a click event.
          */
-        "onBdsRadioGroupChange"?: (event: BdsRadioGroupCustomEvent<{ value?: string }>) => void;
+        "onBdsRadioGroupChange"?: (event: BdsRadioGroupCustomEvent<any>) => void;
         /**
           * The value of the selected radio
          */
@@ -8008,135 +6171,112 @@ declare namespace LocalJSX {
     interface BdsRichText {
         /**
           * alignmentButtons to define if component has TextAlign Control.
-          * @default true
          */
         "alignmentButtons"?: boolean;
         /**
           * codeButton to define if component has Code Control.
-          * @default true
          */
         "codeButton"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * headingButtons to define if component has Heading Control.
-          * @default true
          */
         "headingButtons"?: boolean;
         /**
           * height is the prop to define height of component.
-          * @default null
          */
         "height"?: string;
         /**
           * italicButton to define if component has Italic Control.
-          * @default true
          */
         "italicButton"?: boolean;
         /**
           * Set the language for fixed texts.
-          * @default 'pt_BR'
          */
         "language"?: languages3;
         /**
           * linkButton to define if component has Link Control.
-          * @default true
          */
         "linkButton"?: boolean;
         /**
           * listButtons to define if component has List Control.
-          * @default true
          */
         "listButtons"?: boolean;
         /**
           * maxHeight is the prop to define max height of component.
-          * @default null
          */
         "maxHeight"?: string;
         /**
           * Event input onblur.
          */
-        "onBdsBlur"?: (event: BdsRichTextCustomEvent<void>) => void;
+        "onBdsBlur"?: (event: BdsRichTextCustomEvent<any>) => void;
         /**
           * Event input focus.
          */
-        "onBdsFocus"?: (event: BdsRichTextCustomEvent<void>) => void;
+        "onBdsFocus"?: (event: BdsRichTextCustomEvent<any>) => void;
         /**
           * Emitted when the value has changed.
          */
-        "onBdsRichTextChange"?: (event: BdsRichTextCustomEvent<{ value: string }>) => void;
+        "onBdsRichTextChange"?: (event: BdsRichTextCustomEvent<any>) => void;
         /**
           * Emitted when the input has changed.
          */
-        "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<InputEvent>) => void;
+        "onBdsRichTextInput"?: (event: BdsRichTextCustomEvent<KeyboardEvent>) => void;
         /**
           * positionBar is the prop to define max height of component.
-          * @default 'top'
          */
         "positionBar"?: positionBar;
         /**
           * quoteButton to define if component has Quote Control.
-          * @default true
          */
         "quoteButton"?: boolean;
         /**
           * strikeThroughbutton to define if component has Strike Control.
-          * @default true
          */
         "strikeThroughButton"?: boolean;
         /**
           * underlineButton to define if component has Underline Control.
-          * @default true
          */
         "underlineButton"?: boolean;
         /**
           * unstyledButton to define if component has Unstyled Control.
-          * @default true
          */
         "unstyledButton"?: boolean;
         /**
           * weightButton to define if component has Bold Control.
-          * @default true
          */
         "weightButton"?: boolean;
     }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -8161,22 +6301,18 @@ declare namespace LocalJSX {
         "options"?: string | Option[];
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
-          * @default 'auto'
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
           * Placeholder for native input element.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
@@ -8187,47 +6323,38 @@ declare namespace LocalJSX {
     interface BdsSelectChips {
         /**
           * Specify if is possible to create a new tag that is not on the options.
-          * @default true
          */
         "canAddNew"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
-          * @default []
          */
         "chips"?: string | string[];
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * The delimiter is used to add multiple chips in the same string.
-          * @default /,|;/
          */
         "delimiters"?: RegExp;
         /**
           * If `true`, the user cannot modify the value.
-          * @default false
          */
         "disableSubmit"?: boolean;
         /**
           * Disabled input.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Do not accept duplicate chip elements.
-          * @default false
          */
         "duplicated"?: boolean;
         /**
           * Indicated to pass an feedback to user.
-          * @default ''
          */
         "errorMessage"?: string;
         /**
@@ -8236,22 +6363,18 @@ declare namespace LocalJSX {
         "height"?: string;
         /**
           * Indicated to pass a help the user in complex filling.
-          * @default ''
          */
         "helperMessage"?: string;
         /**
           * used for add icon in input left. Uses the bds-icon component.
-          * @default ''
          */
         "icon"?: string;
         /**
           * Prop to insert the name of the input
-          * @default ''
          */
         "inputName"?: string;
         /**
           * label in input, with he the input size increases.
-          * @default ''
          */
         "label"?: string;
         /**
@@ -8264,12 +6387,10 @@ declare namespace LocalJSX {
         "maxlength"?: number;
         /**
           * Used for add prefix on new option select.
-          * @default ''
          */
         "newPrefix"?: string;
         /**
           * Specify if is possible to create a new tag that is not on the options.
-          * @default 'No results found'
          */
         "notFoundMessage"?: string;
         /**
@@ -8287,7 +6408,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsChangeChips"?: (event: BdsSelectChipsCustomEvent<{ data: string[]; value: number }>) => void;
+        "onBdsChangeChips"?: (event: BdsSelectChipsCustomEvent<any>) => void;
         /**
           * Emitted when the select loses focus.
          */
@@ -8295,87 +6416,73 @@ declare namespace LocalJSX {
         /**
           * Emitted when the chip has added.
          */
-        "onBdsSelectChipsInput"?: (event: BdsSelectChipsCustomEvent<InputEvent>) => void;
+        "onBdsSelectChipsInput"?: (event: BdsSelectChipsCustomEvent<any>) => void;
         /**
           * Emitted when the chip has added.
          */
-        "onBdsSubmit"?: (event: BdsSelectChipsCustomEvent<void>) => void;
+        "onBdsSubmit"?: (event: BdsSelectChipsCustomEvent<any>) => void;
         /**
           * The options of the select Should be passed this way: options='[{"value": "Cat", "label": "Meow"}, {"value": "Dog", "label": "Woof"}]' Options can also be passed as child by using bds-select-option component, but passing as a child you may have some compatibility problems with Angular.
          */
         "options"?: string | Option[];
         /**
           * Set the placement of the options menu. Can be 'bottom' or 'top'.
-          * @default 'auto'
          */
         "optionsPosition"?: SelectOptionsPositionType;
         /**
           * A tip for the user who can enter no controls.
-          * @default ''
          */
         "placeholder"?: string;
         /**
           * Add state success on input, use for use feedback.
-          * @default false
          */
         "success"?: boolean;
         /**
           * Indicated to pass an feeback to user.
-          * @default ''
          */
         "successMessage"?: string;
         /**
           * Defining the type is important so that it is possible to carry out validations. Can be one of: 'text' and 'email;
-          * @default 'text'
          */
         "type"?: InputChipsTypes;
         /**
           * the value of the select.
-          * @default ''
          */
         "value"?: string | null;
     }
     interface BdsSelectOption {
         /**
           * Quantity Description on option value, this item is locate to rigth in component.
-          * @default ''
          */
         "bulkOption"?: string;
         /**
           * If `true`, the checkbox is selected.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "danger"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the select option.
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Add state danger on input, use for use feedback.
-          * @default false
          */
         "invisible"?: boolean;
-        "onOptionChecked"?: (event: BdsSelectOptionCustomEvent<{ value: string; label: string; checked: boolean }>) => void;
-        "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<{ value: any; label: string }>) => void;
+        "onOptionChecked"?: (event: BdsSelectOptionCustomEvent<any>) => void;
+        "onOptionSelected"?: (event: BdsSelectOptionCustomEvent<any>) => void;
         /**
           * The text value of the option.
-          * @default false
          */
         "selected"?: boolean;
         /**
           * Alignment of input-left slot. The value need to be one of the values used on flexbox align-self property.
-          * @default 'center'
          */
         "slotAlign"?: string;
         /**
@@ -8388,7 +6495,6 @@ declare namespace LocalJSX {
         "titleText"?: string;
         /**
           * Type Option. Used toselect type of item list.
-          * @default 'default'
          */
         "typeOption"?: TypeOption;
         "value": any;
@@ -8396,66 +6502,48 @@ declare namespace LocalJSX {
     interface BdsSidebar {
         /**
           * Width, number to define sidebar width.
-          * @default 'surface-2'
          */
         "background"?: sidebarBackground;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtOutzone is the data-test to button close.
-          * @default null
          */
         "dtOutzone"?: string;
         /**
           * ; isOpen. Used to open sidebar.
-          * @default this.type === 'fixed' ? true : false
          */
         "isOpen"?: boolean;
         /**
           * If true, a lateral margin will apear in the content.
-          * @default true
          */
         "margin"?: boolean;
         /**
           * Emitted when the isOpen has changed.
          */
-        "onBdsToggle"?: (event: BdsSidebarCustomEvent<{ value: boolean }>) => void;
+        "onBdsToggle"?: (event: BdsSidebarCustomEvent<any>) => void;
         /**
           * sidebar position. Used to position the sidebar. Either on the left or on the right.
-          * @default 'left'
          */
         "sidebarPosition"?: sidebarPosition;
         /**
           * sidebar type. Used to define how open.
-          * @default 'over'
          */
         "type"?: sidebarType;
         /**
           * Width, number to define sidebar width.
-          * @default 360
          */
         "width"?: number;
     }
     interface BdsSkeleton {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
-        /**
-          * @default '50px'
-         */
         "height"?: string;
-        /**
-          * @default 'square'
-         */
-        "shape"?: Shape1;
-        /**
-          * @default '100%'
-         */
+        "shape"?: Shape;
         "width"?: string;
     }
     interface BdsSlider {
@@ -8465,17 +6553,14 @@ declare namespace LocalJSX {
         "dataMarkers"?: string | StepOption[];
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Label, Prop to enable Label.
-          * @default false
          */
         "label"?: boolean;
         /**
           * Markers, Prop to enable markers.
-          * @default false
          */
         "markers"?: boolean;
         /**
@@ -8489,56 +6574,47 @@ declare namespace LocalJSX {
         /**
           * bdsChange. Event to return selected date value.
          */
-        "onBdsChange"?: (event: BdsSliderCustomEvent<StepOption>) => void;
+        "onBdsChange"?: (event: BdsSliderCustomEvent<any>) => void;
         /**
           * Step, property to insert steps into the input range.
          */
         "step"?: number;
         /**
           * Type, prop to select type of slider.
-          * @default 'fill'
          */
         "type"?: typeRange;
         /**
           * Value, prop to define value of input.
-          * @default this.min ? this.min : 0
          */
         "value"?: number;
     }
     interface BdsStep {
         /**
           * Used to set the step as active
-          * @default false
          */
         "active"?: boolean;
         /**
           * Used to complete the step
-          * @default false
          */
         "completed"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Used to set the step as disabled
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Used to set the index of the steps
-          * @default 0
          */
         "index"?: number;
         /**
           * Used to define the last step component on the list
-          * @default false
          */
         "last"?: boolean;
         /**
           * Used to set cursor pointer on the step (useful to allow clicks on the steps)
-          * @default false
          */
         "pointer"?: boolean;
     }
@@ -8547,17 +6623,14 @@ declare namespace LocalJSX {
     interface BdsSwitch {
         /**
           * If `true`, the switch is selected.
-          * @default false
          */
         "checked"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * If `true`, the user cannot interact with the switch.
-          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -8567,21 +6640,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsSwitchCustomEvent<{ checked: boolean }>) => void;
+        "onBdsChange"?: (event: BdsSwitchCustomEvent<any>) => void;
         /**
           * The refer of the control.
          */
         "refer": string;
         /**
           * Size. Entered as one of the size. Can be one of: 'tall', 'standard', 'short';
-          * @default 'standard'
          */
         "size"?: SwitchSize;
     }
     interface BdsTab {
         /**
           * Prop to control externally if a tab will be active by default
-          * @default false
          */
         "active"?: boolean;
         /**
@@ -8595,126 +6666,100 @@ declare namespace LocalJSX {
         /**
           * Event to emmit when the active tab should be updated
          */
-        "onBdsTabChange"?: (event: BdsTabCustomEvent<string>) => void;
+        "onBdsTabChange"?: (event: BdsTabCustomEvent<any>) => void;
     }
     interface BdsTabGroup {
-        /**
-          * @default 'center'
-         */
         "align"?: 'left' | 'center' | 'right';
-        /**
-          * @default true
-         */
         "contentScrollable"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonNext is the data-test to button next.
-          * @default null
          */
         "dtButtonNext"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonPrev is the data-test to button prev.
-          * @default null
          */
         "dtButtonPrev"?: string;
         /**
           * bdsTabChange. Event to return value when Tabs is change.
          */
-        "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<HTMLBdsTabItemElement>) => void;
+        "onBdsTabChange"?: (event: BdsTabGroupCustomEvent<any>) => void;
         /**
           * bdsTabDisabled. Event to return value when Tabs disable is change.
          */
-        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<HTMLBdsTabItemElement>) => void;
+        "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<any>) => void;
     }
     interface BdsTabItem {
         /**
           * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
-          * @default false
          */
         "badge"?: boolean;
         /**
           * The animation of the badge to be shown at the Tab item.
-          * @default false
          */
         "badgeAnimation"?: boolean;
         /**
           * The color of the badge to be shown at the Tab item.
-          * @default 'system'
          */
         "badgeColor"?: string;
         /**
           * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
-          * @default null
          */
         "badgeIcon"?: string;
         /**
           * The number to be shown inside the badge at the Tab item.
-          * @default null
          */
         "badgeNumber"?: number;
         /**
           * The animation of the badge to be shown at the Tab item.
-          * @default 'left'
          */
         "badgePosition"?: string;
         /**
           * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
-          * @default 'circle'
          */
         "badgeShape"?: string;
         /**
           * Inline styles to be applied to the tab group content element.
-          * @default null
          */
         "contentStyle"?: string;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Prop for disable the especific tab.
-          * @default false
          */
         "disable"?: boolean;
         /**
           * Prop to indicate an error state for the tab.
-          * @default false
          */
         "error"?: boolean;
         /**
           * Inline styles to be applied to the tab group header element.
-          * @default null
          */
         "headerStyle"?: string;
         /**
           * The icon to be shown at the Tab item.
-          * @default null
          */
         "icon"?: string;
         /**
           * The position of the icon at the Tab item ('left', 'right').
-          * @default 'left'
          */
         "iconPosition"?: string;
         /**
           * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
-          * @default 'outline'
          */
         "iconTheme"?: string;
         /**
           * The text to be shown at the Tab item.
-          * @default null
          */
         "label"?: string;
         /**
           * Use to set number of tabItem.
-          * @default null
          */
         "numberElement"?: number;
-        "onTabDisabled"?: (event: BdsTabItemCustomEvent<{ item: number; disable: boolean }>) => void;
+        "onTabDisabled"?: (event: BdsTabItemCustomEvent<any>) => void;
         /**
           * Used to open/close the Tab item.
-          * @default false
          */
         "open"?: boolean;
     }
@@ -8741,17 +6786,8 @@ declare namespace LocalJSX {
     interface BdsTableBody {
     }
     interface BdsTableCell {
-        /**
-          * @default 'left'
-         */
         "justifyContent"?: JustifyContent;
-        /**
-          * @default false
-         */
         "sortable"?: boolean;
-        /**
-          * @default 'text'
-         */
         "type"?: string;
     }
     interface BdsTableHeader {
@@ -8760,36 +6796,22 @@ declare namespace LocalJSX {
         "bodyCollapse"?: string;
         /**
           * Prop to make hover animation.
-          * @default false
          */
         "clickable"?: boolean;
         "dataTarget"?: string;
         /**
           * Prop to highlight the row selected.
-          * @default false
          */
         "selected"?: boolean;
     }
     interface BdsTableTh {
-        /**
-          * @default ''
-         */
         "arrow"?: string;
-        /**
-          * @default 'left'
-         */
-        "justifyContent"?: JustifyContent1;
-        /**
-          * @default false
-         */
+        "justifyContent"?: JustifyContent;
         "sortable"?: boolean;
     }
     interface BdsTabs {
-        /**
-          * @default 'center'
-         */
         "align"?: 'left' | 'center' | 'right';
-        "onBdsTabInit"?: (event: BdsTabsCustomEvent<string>) => void;
+        "onBdsTabInit"?: (event: BdsTabsCustomEvent<any>) => void;
         "onScrollButtonClick"?: (event: BdsTabsCustomEvent<Overflow>) => void;
     }
     interface BdsTestComponent {
@@ -8797,19 +6819,16 @@ declare namespace LocalJSX {
     interface BdsThemeProvider {
         /**
           * Set what theme will be aplyed inside the component. 'light', 'dark';
-          * @default 'light'
          */
-        "theme"?: Themes1;
+        "theme"?: Themes;
     }
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
-          * @default 'button'
          */
         "actionType"?: ActionType;
         /**
           * Define an action to the button toast. Can be one of: 'close', 'custom'; if the action type is set to close, the button will close automatically. if the action type is set to custom, a function need to be passed when the toastButtonClick is emitted.
-          * @default 'close'
          */
         "buttonAction"?: ButtonActionType;
         /**
@@ -8818,41 +6837,34 @@ declare namespace LocalJSX {
         "buttonText"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonAction is the data-test to button action.
-          * @default null
          */
         "dtButtonAction"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonClose is the data-test to button close.
-          * @default null
          */
         "dtButtonClose"?: string;
         /**
           * Time to close the toast in seconds 0 = never close automatically (default value)
-          * @default 0
          */
         "duration"?: number;
         /**
           * Controls the hide event of the component:
-          * @default false
          */
         "hide"?: boolean;
         /**
           * used for add the icon. Uses the bds-icon component.
-          * @default null
          */
         "icon"?: string;
         /**
           * Event used to execute some action when the action button on the toast is clicked
          */
-        "onToastButtonClick"?: (event: BdsToastCustomEvent<HTMLBdsToastElement>) => void;
+        "onToastButtonClick"?: (event: BdsToastCustomEvent<any>) => void;
         /**
           * The toast position on the screen. Can be one of: 'top-right', 'top-left', 'bottom-right', 'bottom-left' (default value);
-          * @default 'bottom-left'
          */
         "position"?: PositionType;
         /**
           * Controls the open event of the component:
-          * @default false
          */
         "show"?: boolean;
         /**
@@ -8865,7 +6877,6 @@ declare namespace LocalJSX {
         "toastTitle"?: string;
         /**
           * Variant. Defines the color of the toast. Can be one of: 'system', 'error', 'success', 'warning', 'undo', 'redo';
-          * @default 'system'
          */
         "variant"?: VariantType;
     }
@@ -8874,74 +6885,60 @@ declare namespace LocalJSX {
     interface BdsTooltip {
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Used to disable tooltip when the button are avalible
-          * @default false
          */
         "disabled"?: boolean;
         /**
           * Used to set tooltip max width
-          * @default '320px'
          */
         "maxWidth"?: string;
         /**
           * Used to set tooltip position
-          * @default 'left-center'
          */
         "position"?: TooltipPostionType;
         /**
           * Used to set tooltip text
-          * @default 'Tooltip'
          */
         "tooltipText"?: string;
     }
     interface BdsTypo {
         /**
           * Bold. Entered as one of the bold. Can be one of: 'regular', 'semi-bold', 'bold', 'extra-bold';
-          * @default null
          */
         "bold"?: Bold;
         /**
           * Data test is the prop to specifically test the component action object.
-          * @default null
          */
         "dataTest"?: string;
         /**
           * Added font style italic
-          * @default false
          */
         "italic"?: boolean;
         /**
           * Line Height. Entered as one of the line hieght. Can be one of: 'none', 'small', 'simple', 'plus', 'double'
-          * @default null
          */
         "lineHeight"?: FontLineHeight;
         /**
           * If true, adds default margin values
-          * @default true
          */
         "margin"?: boolean;
         /**
           * Added style no wrap
-          * @default false
          */
         "noWrap"?: boolean;
         /**
           * Tranform text in paragraph
-          * @default false
          */
         "paragraph"?: boolean;
         /**
           * Define element tag, must be used for acessibilty
-          * @default 'p'
          */
         "tag"?: Tag;
         /**
           * Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40';
-          * @default 'fs-16'
          */
         "variant"?: FontSize;
     }
@@ -8952,22 +6949,18 @@ declare namespace LocalJSX {
         "accept"?: string;
         /**
           * Used to accept a especific type of file.
-          * @default []
          */
         "dataAccept"?: string[] | string;
         /**
           * Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear.
-          * @default null
          */
         "dtButtonDelete"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtInputFiles is the data-test to button clear.
-          * @default null
          */
         "dtInputFiles"?: string;
         /**
           * Data test is the prop to specifically test the component action object. dtLabelAddFile is the data-test to button clear.
-          * @default null
          */
         "dtLabelAddFile"?: string;
         /**
@@ -8976,7 +6969,6 @@ declare namespace LocalJSX {
         "error"?: string;
         /**
           * Set the language for fixed texts.
-          * @default 'pt_BR'
          */
         "language"?: languages4;
         /**
@@ -8986,16 +6978,11 @@ declare namespace LocalJSX {
         /**
           * Event emited when change the value of Upload.
          */
-        "onBdsUploadChange"?: (event: BdsUploadCustomEvent<{ value: File[] }>) => void;
+        "onBdsUploadChange"?: (event: BdsUploadCustomEvent<any>) => void;
         /**
           * Event emited when delete a item from the list.
          */
-        "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<{ value: File[] }>) => void;
-        /**
-          * Used to show or hide the file list preview.
-          * @default true
-         */
-        "showListPreview"?: boolean;
+        "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<any>) => void;
         /**
           * Used for add a text on subtitle.
          */
