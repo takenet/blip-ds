@@ -60,7 +60,7 @@ export class BdsAutocomplete {
       return this.getTextFromOption(opt);
     };
     this.getTextMultiselect = (data) => {
-      const valueInput = data?.length > 0 && `${data?.length} ${termTranslate(this.language, 'selected')}`;
+      const valueInput = data?.length > 0 ? `${data?.length} ${termTranslate(this.language, 'selected')}` : '';
       this.textMultiselect = valueInput;
     };
     this.handlerMultiselect = () => {
@@ -740,7 +740,7 @@ export class BdsAutocomplete {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Language, Entered as one of the languages. Can be one of:\n'pt_BR', 'es_ES', 'en_US'."
+          "text": "Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'."
         },
         "attribute": "language",
         "reflect": false,

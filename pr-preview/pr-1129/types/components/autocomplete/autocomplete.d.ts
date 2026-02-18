@@ -98,8 +98,7 @@ export declare class BdsAutocomplete {
    */
   dataTest?: string;
   /**
-   * Language, Entered as one of the languages. Can be one of:
-   * 'pt_BR', 'es_ES', 'en_US'.
+   * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
    */
   language?: languages;
   /**

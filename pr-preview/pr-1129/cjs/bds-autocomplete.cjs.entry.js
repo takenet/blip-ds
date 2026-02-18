@@ -96,7 +96,7 @@ const BdsAutocomplete = class {
       return this.getTextFromOption(opt);
     };
     this.getTextMultiselect = (data) => {
-      const valueInput = data?.length > 0 && `${data?.length} ${termTranslate(this.language, 'selected')}`;
+      const valueInput = data?.length > 0 ? `${data?.length} ${termTranslate(this.language, 'selected')}` : '';
       this.textMultiselect = valueInput;
     };
     this.handlerMultiselect = () => {

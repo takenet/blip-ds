@@ -1,2 +1,2 @@
 export type languages = 'pt_BR' | 'es_ES' | 'en_US';
-export declare const termTranslate: (lang: languages, key: string) => string;
+export declare const termTranslate: (lang: languages, key: string) => string | undefined;
