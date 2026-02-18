@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
+import { languages } from "./components/autocomplete/languages";
 import { SelectionType } from "./components/autocomplete/autocomplete";
 import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
@@ -32,7 +33,7 @@ import { ColorChipTag } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { DropdownPostionType, typeDate } from "./components/datepicker/datepicker";
 import { BannerVariant as BannerVariant1 } from "./components/banner/banner";
-import { languages } from "./utils/languages";
+import { languages as languages1 } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
@@ -44,7 +45,7 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
-import { languages as languages1 } from "./components/input-phone-number/input-phone-number";
+import { languages as languages2 } from "./components/input-phone-number/input-phone-number";
 import { TypeList } from "./components/list/list";
 import { Data } from "./components/list/list-interface";
 import { TypeList as TypeList1 } from "./components/list/list";
@@ -60,7 +61,7 @@ import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { languages as languages2 } from "./components/rict-text/rich-text-interface";
+import { languages as languages3 } from "./components/rict-text/rich-text-interface";
 import { positionBar } from "./components/rict-text/rich-text";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
@@ -74,7 +75,7 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages3 } from "./components/upload/languages";
+import { languages as languages4 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -192,6 +193,10 @@ export namespace Components {
           * label in input, with he the input size increases.
          */
         "label"?: string;
+        /**
+          * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
         /**
           * Is Loading, is the prop to enable that the component is loading.
          */
@@ -854,7 +859,7 @@ export namespace Components {
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * Message. Select type of date.
          */
@@ -916,7 +921,7 @@ export namespace Components {
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * StartDate. Insert a limiter to select the date period.
          */
@@ -962,7 +967,7 @@ export namespace Components {
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * StartDate. Insert a limiter to select the date period.
          */
@@ -2172,7 +2177,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * linkButton to define if component has Link Control.
          */
@@ -2926,7 +2931,7 @@ export namespace Components {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages3;
+        "language"?: languages4;
         /**
           * Used to allow upload multiple files.
          */
@@ -3990,6 +3995,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        "language"?: languages;
+        /**
           * Is Loading, is the prop to enable that the component is loading.
          */
         "loading"?: boolean;
@@ -4710,7 +4719,7 @@ declare namespace LocalJSX {
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * Message. Select type of date.
          */
@@ -4784,7 +4793,7 @@ declare namespace LocalJSX {
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * bdsClickDayButton. Event to return when click on day button.
          */
@@ -4838,7 +4847,7 @@ declare namespace LocalJSX {
         /**
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * bdsDateSelected. Event to return selected date value.
          */
@@ -6187,7 +6196,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * linkButton to define if component has Link Control.
          */
@@ -6961,7 +6970,7 @@ declare namespace LocalJSX {
         /**
           * Set the language for fixed texts.
          */
-        "language"?: languages3;
+        "language"?: languages4;
         /**
           * Used to allow upload multiple files.
          */

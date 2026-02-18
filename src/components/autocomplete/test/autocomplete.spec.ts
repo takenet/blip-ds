@@ -191,6 +191,38 @@ describe('bds-autocomplete', () => {
     });
   });
 
+  describe('language translations', () => {
+    it('should render the select-all label in Spanish', async () => {
+      const optionsString = JSON.stringify(defaultOptions);
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: `<bds-autocomplete options='${optionsString}' selection-type="multiple" selected-all="true" language="es_ES"></bds-autocomplete>`,
+      });
+
+      page.rootInstance.isOpen = true;
+      await page.waitForChanges();
+
+      const selectAllCheckbox = page.root.shadowRoot.querySelector('bds-checkbox.select-all');
+      expect(selectAllCheckbox).toBeTruthy();
+      expect(selectAllCheckbox.getAttribute('label')).toBe('Seleccionar todos');
+    });
+
+    it('should use English term for multiselect summary', async () => {
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: '<bds-autocomplete selection-type="multiple" language="en_US"></bds-autocomplete>',
+      });
+
+      page.rootInstance.checkedOptions = [
+        { value: 'opt-1', label: 'Option 1' },
+        { value: 'opt-2', label: 'Option 2' },
+      ];
+      await page.waitForChanges();
+
+      expect(page.rootInstance.textMultiselect).toBe('2 selected');
+    });
+  });
+
   describe('input states and styling', () => {
     it('should apply danger state correctly', async () => {
       const page = await newSpecPage({

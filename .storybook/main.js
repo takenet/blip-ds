@@ -6,8 +6,6 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-docs',
     '@storybook/addon-console',
-    // '@storybook/addon-notes', // Remove this as it's causing compatibility issues
-    '@storybook/preset-create-react-app',
   ],
   typescript: {
     reactDocgen: false,
@@ -27,6 +25,16 @@ module.exports = {
       config.output = config.output || {};
       config.output.publicPath = process.env.STORYBOOK_BASE_PATH;
     }
+    return config;
+  },
+  webpackFinal: async (config) => {
+    // Disable react-refresh to avoid source map issues with jsx files
+    config.plugins = (config.plugins || []).filter(
+      (plugin) => 
+        plugin &&
+        plugin.constructor &&
+        plugin.constructor.name !== 'ReactRefreshWebpackPlugin'
+    );
     return config;
   },
 };
