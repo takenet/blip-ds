@@ -89,6 +89,15 @@ export class Icon {
     });
   }
 
+  componentDidLoad(): void {
+    // Safety net: if the 'name' attribute was set after connectedCallback
+    // but before @Watch became active (e.g. AngularJS ng-attr-name), the
+    // watcher won't fire. Re-check here to ensure the icon loads.
+    if (this.name && !this.svgContent) {
+      this.loadIcon();
+    }
+  }
+
   disconnectedCallback(): void {
     if (this.io) {
       this.io.disconnect();
