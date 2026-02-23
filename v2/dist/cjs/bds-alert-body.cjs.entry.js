@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D_zq0Z7d.js');
+var index = require('./index-DQyYkciT.js');
 
 const alertBodyCss = ".alert__body{position:relative;width:100%;padding:12px 16px;margin-bottom:8px;-webkit-box-sizing:border-box;box-sizing:border-box}";
 

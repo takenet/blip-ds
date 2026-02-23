@@ -1,4 +1,4 @@
-import { S as SelectOption, d as defineCustomElement$1 } from './p-LlYRtKgT.js';
+import { S as SelectOption, d as defineCustomElement$1 } from './p-Ceztw2dC.js';
 
 const BdsSelectOption = SelectOption;
 const defineCustomElement = defineCustomElement$1;

@@ -1,5 +1,5 @@
-import { w as win, N as NAMESPACE, p as promiseResolve, g as globalScripts, b as bootstrapLazy } from './index-C3J6Z5OX.js';
-export { s as setNonce } from './index-C3J6Z5OX.js';
+import { w as win, N as NAMESPACE, p as promiseResolve, g as globalScripts, b as bootstrapLazy } from './index-gowA9FoV.js';
+export { s as setNonce } from './index-gowA9FoV.js';
 
 /*
  Stencil Client Patch Browser v4.35.1 | MIT Licensed | https://stenciljs.com

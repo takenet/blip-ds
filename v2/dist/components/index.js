@@ -234,9 +234,8 @@ function getHostSlotNodes(childNodes, hostName, slotName) {
   let childNode;
   for (; i2 < childNodes.length; i2++) {
     childNode = childNodes[i2];
-    if (childNode["s-sr"] && (!hostName || childNode["s-hn"] === hostName) && (slotName === void 0 || getSlotName(childNode) === slotName)) {
+    if (childNode["s-sr"] && (!hostName || childNode["s-hn"] === hostName) && (slotName === void 0)) {
       slottedNodes.push(childNode);
-      if (typeof slotName !== "undefined") return slottedNodes;
     }
     slottedNodes = [...slottedNodes, ...getHostSlotNodes(childNode.childNodes, hostName, slotName)];
   }
@@ -266,21 +265,6 @@ var isNodeLocatedInSlot = (nodeToRelocate, slotName) => {
   }
   return slotName === "";
 };
-var addSlotRelocateNode = (newChild, slotNode, prepend, position) => {
-  if (newChild["s-ol"] && newChild["s-ol"].isConnected) {
-    return;
-  }
-  const slottedNodeLocation = document.createTextNode("");
-  slottedNodeLocation["s-nr"] = newChild;
-  if (!slotNode["s-cr"] || !slotNode["s-cr"].parentNode) return;
-  const parent = slotNode["s-cr"].parentNode;
-  const appendMethod = internalCall(parent, "appendChild");
-  {
-    appendMethod.call(parent, slottedNodeLocation);
-  }
-  newChild["s-ol"] = slottedNodeLocation;
-  newChild["s-sh"] = slotNode["s-hn"];
-};
 var getSlotName = (node) => typeof node["s-sn"] === "string" ? node["s-sn"] : node.nodeType === 1 && node.getAttribute("slot") || void 0;
 function patchSlotNode(node) {
   if (node.assignedElements || node.assignedNodes || !node["s-sr"]) return;
@@ -308,95 +292,6 @@ function patchSlotNode(node) {
   }).bind(node);
   node.assignedElements = assignedFactory(true);
   node.assignedNodes = assignedFactory(false);
-}
-function dispatchSlotChangeEvent(elm) {
-  elm.dispatchEvent(new CustomEvent("slotchange", { bubbles: false, cancelable: false, composed: false }));
-}
-function findSlotFromSlottedNode(slottedNode, parentHost) {
-  var _a;
-  parentHost = parentHost || ((_a = slottedNode["s-ol"]) == null ? void 0 : _a.parentElement);
-  if (!parentHost) return { slotNode: null, slotName: "" };
-  const slotName = slottedNode["s-sn"] = getSlotName(slottedNode) || "";
-  const childNodes = internalCall(parentHost, "childNodes");
-  const slotNode = getHostSlotNodes(childNodes, parentHost.tagName, slotName)[0];
-  return { slotNode, slotName };
-}
-var patchSlotAppendChild = (HostElementPrototype) => {
-  HostElementPrototype.__appendChild = HostElementPrototype.appendChild;
-  HostElementPrototype.appendChild = function(newChild) {
-    const { slotName, slotNode } = findSlotFromSlottedNode(newChild, this);
-    if (slotNode) {
-      addSlotRelocateNode(newChild, slotNode);
-      const slotChildNodes = getSlotChildSiblings(slotNode, slotName);
-      const appendAfter = slotChildNodes[slotChildNodes.length - 1];
-      const parent = internalCall(appendAfter, "parentNode");
-      const insertedNode = internalCall(parent, "insertBefore")(newChild, appendAfter.nextSibling);
-      dispatchSlotChangeEvent(slotNode);
-      updateFallbackSlotVisibility(this);
-      return insertedNode;
-    }
-    return this.__appendChild(newChild);
-  };
-};
-var patchChildSlotNodes = (elm) => {
-  class FakeNodeList extends Array {
-    item(n) {
-      return this[n];
-    }
-  }
-  patchHostOriginalAccessor("children", elm);
-  Object.defineProperty(elm, "children", {
-    get() {
-      return this.childNodes.filter((n) => n.nodeType === 1);
-    }
-  });
-  Object.defineProperty(elm, "childElementCount", {
-    get() {
-      return this.children.length;
-    }
-  });
-  patchHostOriginalAccessor("firstChild", elm);
-  Object.defineProperty(elm, "firstChild", {
-    get() {
-      return this.childNodes[0];
-    }
-  });
-  patchHostOriginalAccessor("lastChild", elm);
-  Object.defineProperty(elm, "lastChild", {
-    get() {
-      return this.childNodes[this.childNodes.length - 1];
-    }
-  });
-  patchHostOriginalAccessor("childNodes", elm);
-  Object.defineProperty(elm, "childNodes", {
-    get() {
-      const result = new FakeNodeList();
-      result.push(...getSlottedChildNodes(this.__childNodes));
-      return result;
-    }
-  });
-};
-var validElementPatches = ["children", "nextElementSibling", "previousElementSibling"];
-var validNodesPatches = [
-  "childNodes",
-  "firstChild",
-  "lastChild",
-  "nextSibling",
-  "previousSibling",
-  "textContent",
-  "parentNode"
-];
-function patchHostOriginalAccessor(accessorName, node) {
-  let accessor;
-  if (validElementPatches.includes(accessorName)) {
-    accessor = Object.getOwnPropertyDescriptor(Element.prototype, accessorName);
-  } else if (validNodesPatches.includes(accessorName)) {
-    accessor = Object.getOwnPropertyDescriptor(Node.prototype, accessorName);
-  }
-  if (!accessor) {
-    accessor = Object.getOwnPropertyDescriptor(node, accessorName);
-  }
-  if (accessor) Object.defineProperty(node, "__" + accessorName, accessor);
 }
 function internalCall(node, method) {
   if ("__" + method in node) {
@@ -1706,14 +1601,6 @@ var proxyCustomElement = (Cstr, compactMeta) => {
   }
   {
     cmpMeta.$attrsToReflect$ = [];
-  }
-  {
-    {
-      patchChildSlotNodes(Cstr.prototype);
-    }
-    {
-      patchSlotAppendChild(Cstr.prototype);
-    }
   }
   const originalConnectedCallback = Cstr.prototype.connectedCallback;
   const originalDisconnectedCallback = Cstr.prototype.disconnectedCallback;

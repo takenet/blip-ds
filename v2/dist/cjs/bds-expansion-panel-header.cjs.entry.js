@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D_zq0Z7d.js');
+var index = require('./index-DQyYkciT.js');
 
 const expansionPanelHeaderCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.header{width:70px;padding-right:6px}";
 

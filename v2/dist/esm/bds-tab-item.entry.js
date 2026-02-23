@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-C3J6Z5OX.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-gowA9FoV.js';
 
 const tabItemCss = ":host{display:none}:host(.is-open){display:block;height:100%}.tab_item{height:100%}.tab_item_content{display:none;height:100%}.tab_item_content--open{display:block}";
 

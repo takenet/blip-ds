@@ -53,6 +53,7 @@ export declare class Icon {
      */
     dataTest?: string;
     connectedCallback(): void;
+    componentDidLoad(): void;
     disconnectedCallback(): void;
     private waitUntilVisible;
     loadIcon(): void;

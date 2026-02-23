@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-C3J6Z5OX.js';
+import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-gowA9FoV.js';
 import { g as getScrollParent } from './position-element-BNEKIkjk.js';
 
 const en_US = {

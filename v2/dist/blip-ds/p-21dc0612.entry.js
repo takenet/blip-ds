@@ -1,2 +1,0 @@
-import{r as a,h as r,H as e}from"./p-C3J6Z5OX.js";const d=".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}";const b=class{constructor(r){a(this,r)}render(){return r(e,{key:"0d9f9d4edd7a5bcc9841762b88d90db8e97bd1ea"},r("slot",{key:"1bc9ca332c14b831b7a4ab96249436dad9acc6a6"}))}};b.style=d;export{b as bds_table_header};
-//# sourceMappingURL=p-21dc0612.entry.js.map

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D_zq0Z7d.js');
+var index = require('./index-DQyYkciT.js');
 
 const dependencies = {
 	"blip-tokens": "^1.95.0"};

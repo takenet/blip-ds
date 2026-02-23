@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-C3J6Z5OX.js';
+import { r as registerInstance, h, H as Host } from './index-gowA9FoV.js';
 
 const dependencies = {
 	"blip-tokens": "^1.95.0"};

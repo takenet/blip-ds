@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-D_zq0Z7d.js');
+var index = require('./index-DQyYkciT.js');
 
 const modalActionCss = ".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";
 

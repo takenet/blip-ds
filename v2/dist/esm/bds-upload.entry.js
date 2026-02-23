@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, a as getElement } from './index-C3J6Z5OX.js';
+import { r as registerInstance, c as createEvent, h, a as getElement } from './index-gowA9FoV.js';
 
 const ptTerms = [
     {
