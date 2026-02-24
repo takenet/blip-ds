@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { AutocompleteOption, AutocompleteChangeEventDetail, AutocompleteSelectedChangeEventDetail, AutocompleteOptionsPositionType, AutocompleteMultiSelectedChangeEventDetail } from './autocomplete-select-interface';
+import { languages } from './languages';
 export type SelectionType = 'single' | 'multiple';
 export declare class BdsAutocomplete {
   private checkAllInput?;
@@ -96,6 +97,10 @@ export declare class BdsAutocomplete {
    * Data test is the prop to specifically test the component action object.
    */
   dataTest?: string;
+  /**
+   * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+   */
+  language?: languages;
   /**
    * Is Loading, is the prop to enable that the component is loading.
    */

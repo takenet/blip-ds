@@ -1,5 +1,6 @@
 import { h, Host } from '@stencil/core';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
+import { termTranslate } from './languages';
 export class BdsAutocomplete {
   constructor() {
     this.refDropdown = (el) => {
@@ -59,7 +60,7 @@ export class BdsAutocomplete {
       return this.getTextFromOption(opt);
     };
     this.getTextMultiselect = (data) => {
-      const valueInput = data?.length > 0 && `${data?.length} selecionados`;
+      const valueInput = data?.length > 0 ? `${data?.length} ${termTranslate(this.language, 'selected')}` : '';
       this.textMultiselect = valueInput;
     };
     this.handlerMultiselect = () => {
@@ -163,6 +164,7 @@ export class BdsAutocomplete {
     this.optionsPosition = 'auto';
     this.clearIconOnFocus = false;
     this.dataTest = null;
+    this.language = 'pt_BR';
     this.loading = false;
     this.selectionType = 'single';
     this.selectionTitle = '';
@@ -408,7 +410,7 @@ export class BdsAutocomplete {
       } }, h("bds-loading-spinner", { class: "load-spinner", size: "small" }))) : (h("div", { ref: (el) => this.refDropdown(el), class: {
         select__options: true,
         'select__options--open': this.isOpen,
-      } }, this.selectionTitle && this.selectionType == 'multiple' && (h("bds-typo", { class: "selection-title", variant: "fs-10", bold: "bold" }, this.selectionTitle)), this.selectionType == 'multiple' && this.selectedAll && (h("bds-checkbox", { ref: this.refCheckAllInput, refer: `refer-multiselect`, label: `Selecionar Todos`, name: "chack-all", class: "select-all", onBdsChange: (ev) => this.handleCheckAll(ev) })), this.checkedOptions?.length > 0 && (h("span", { class: "content-divisor" }, h("span", { class: "divisor" }))), this.internalOptions ? (this.internalOptions.map((option, idx) => (h("bds-select-option", { onOptionSelected: this.handler, onOptionChecked: this.handlerMultiselect, selected: this.value === option.value, value: option.value, key: idx, bulkOption: option.bulkOption, status: option.status, "type-option": this.selectionType == 'multiple' ? 'checkbox' : 'default' }, option.label)))) : (h("slot", null))))));
+      } }, this.selectionTitle && this.selectionType == 'multiple' && (h("bds-typo", { class: "selection-title", variant: "fs-10", bold: "bold" }, this.selectionTitle)), this.selectionType == 'multiple' && this.selectedAll && (h("bds-checkbox", { ref: this.refCheckAllInput, refer: `refer-multiselect`, label: termTranslate(this.language, 'allSelected'), name: "chack-all", class: "select-all", onBdsChange: (ev) => this.handleCheckAll(ev) })), this.checkedOptions?.length > 0 && (h("span", { class: "content-divisor" }, h("span", { class: "divisor" }))), this.internalOptions ? (this.internalOptions.map((option, idx) => (h("bds-select-option", { onOptionSelected: this.handler, onOptionChecked: this.handlerMultiselect, selected: this.value === option.value, value: option.value, key: idx, bulkOption: option.bulkOption, status: option.status, "type-option": this.selectionType == 'multiple' ? 'checkbox' : 'default' }, option.label)))) : (h("slot", null))))));
   }
   static get is() { return "bds-autocomplete"; }
   static get encapsulation() { return "shadow"; }
@@ -720,6 +722,29 @@ export class BdsAutocomplete {
         "attribute": "data-test",
         "reflect": false,
         "defaultValue": "null"
+      },
+      "language": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "languages",
+          "resolved": "\"en_US\" | \"es_ES\" | \"pt_BR\"",
+          "references": {
+            "languages": {
+              "location": "import",
+              "path": "./languages"
+            }
+          }
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'."
+        },
+        "attribute": "language",
+        "reflect": false,
+        "defaultValue": "'pt_BR'"
       },
       "loading": {
         "type": "boolean",
