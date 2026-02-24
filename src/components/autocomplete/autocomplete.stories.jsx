@@ -40,6 +40,7 @@ export const Properties = (args) => {
       clear-icon-on-focus={args.clearIconOnFocus}
       data-test={args.dataTest}
       loading={args.loading}
+      language={args.language}
     >
       <bds-select-option value="1">Millie Bobby</bds-select-option>
       <bds-select-option value="2">Finn Wolfhard</bds-select-option>
@@ -172,6 +173,14 @@ Properties.argTypes = {
     description: 'Define se o componente está em estado de carregamento.',
     control: 'boolean',
   },
+  language: {
+    table: {
+      defaultValue: { summary: 'pt_BR' },
+    },
+    description: 'Define o idioma do componente, afetando mensagens e formatação.',
+    options: ['pt_BR', 'en_US', 'es_ES'],
+    control: 'select',
+  },
 };
 
 Properties.args = {
@@ -192,6 +201,7 @@ Properties.args = {
   clearIconOnFocus: false,
   dataTest: '',
   loading: false,
+  language: 'pt_BR',
 };
 
 
