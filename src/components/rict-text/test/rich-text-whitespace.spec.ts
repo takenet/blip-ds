@@ -329,10 +329,7 @@ describe('bds-rich-text whitespace preservation', () => {
   });
 
   describe('Clear formatting with whitespace', () => {
-    // TODO: This test documents a known bug - clearFormatting removes leading/trailing spaces
-    // See issue: RichText component removes spaces when clearing formatting
-    // Related code: rich-text.tsx line 838 - line.innerHTML = line.textContent
-    it.skip('should preserve whitespace when clearing formatting - KNOWN BUG', async () => {
+    it('should preserve whitespace when clearing formatting', async () => {
       const component = page.rootInstance as RichText;
       const editor = page.root.querySelector('.editor-uai-design-system') as HTMLElement;
       component['editor'] = editor;
@@ -355,36 +352,9 @@ describe('bds-rich-text whitespace preservation', () => {
 
       // Check that spaces are preserved after clearing
       const textContent = p.textContent;
-      // BUG: Currently returns "text with spaces" instead of " text with spaces "
       expect(textContent).toBe(' text with spaces ');
     });
 
-    it('documents current behavior: clearFormatting removes leading/trailing spaces', async () => {
-      const component = page.rootInstance as RichText;
-      const editor = page.root.querySelector('.editor-uai-design-system') as HTMLElement;
-      component['editor'] = editor;
-
-      // Setup editor content with formatted text and spaces
-      const p = document.createElement('p');
-      p.className = 'line';
-      const boldText = document.createElement('b');
-      boldText.textContent = ' text with spaces ';
-      p.appendChild(boldText);
-      editor.appendChild(p);
-
-      // Mock selection to include the formatted text
-      mockRange.startContainer = p;
-      mockRange.endContainer = p;
-
-      // Clear formatting
-      const customEvent = new CustomEvent('test');
-      component['clearFormatting'](customEvent);
-
-      // Documents CURRENT (buggy) behavior - spaces are removed
-      const textContent = p.textContent;
-      expect(textContent).toBe('text with spaces'); // This is the BUG - spaces removed!
-      expect(textContent).not.toBe(' text with spaces '); // Should be this but isn't
-    });
 
     it('should preserve multiple spaces when clearing formatting', async () => {
       const component = page.rootInstance as RichText;
