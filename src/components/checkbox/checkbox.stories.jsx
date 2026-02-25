@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import DocumentationTemplate from './checkbox.mdx';
 import { BdsCheckbox } from '../../../blip-ds-react/dist/components';
 
@@ -6,15 +6,20 @@ export default {
   title: 'Components/Checkbox',
   parameters: {
     docs: {
-      page: DocumentationTemplate
-    }
+      page: DocumentationTemplate,
+    },
   },
 };
 
 export const Properties = (args) => (
-    <bds-checkbox label={args.label} name={args.name} disabled={args.disabled} checked={args.checked} indeterminate={args.indeterminate}></bds-checkbox>
+  <bds-checkbox
+    label={args.label}
+    name={args.name}
+    disabled={args.disabled}
+    checked={args.checked}
+    indeterminate={args.indeterminate}
+  ></bds-checkbox>
 );
-
 
 Properties.argTypes = {
   label: {
@@ -45,7 +50,8 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'false' },
     },
-    description: 'When true, displays the checkbox in an indeterminate state (partial selection). Clicking will transition to checked state.',
+    description:
+      'When true, displays the checkbox in an indeterminate state (partial selection). Clicking will transition to checked state.',
     control: 'boolean',
   },
 };
@@ -55,46 +61,64 @@ Properties.args = {
   name: 'check',
   disabled: false,
   checked: true,
-  indeterminate: false
+  indeterminate: false,
 };
 
 export const AllStates = () => {
   return (
     <bds-grid direction="column" gap="2">
       <bds-grid direction="column" gap="1">
-        <bds-typo variant="fs-14" bold="bold">Unchecked (Enabled)</bds-typo>
+        <bds-typo variant="fs-14" bold="bold">
+          Unchecked (Enabled)
+        </bds-typo>
         <bds-checkbox label="Unchecked checkbox" name="unchecked"></bds-checkbox>
       </bds-grid>
       <bds-grid direction="column" gap="1">
-        <bds-typo variant="fs-14" bold="bold">Checked (Enabled)</bds-typo>
+        <bds-typo variant="fs-14" bold="bold">
+          Checked (Enabled)
+        </bds-typo>
         <bds-checkbox label="Checked checkbox" name="checked" checked></bds-checkbox>
       </bds-grid>
       <bds-grid direction="column" gap="1">
-        <bds-typo variant="fs-14" bold="bold">Indeterminate (Enabled)</bds-typo>
+        <bds-typo variant="fs-14" bold="bold">
+          Indeterminate (Enabled)
+        </bds-typo>
         <bds-checkbox label="Indeterminate checkbox" name="indeterminate" indeterminate></bds-checkbox>
       </bds-grid>
       <bds-grid direction="column" gap="1">
-        <bds-typo variant="fs-14" bold="bold">Unchecked (Disabled)</bds-typo>
+        <bds-typo variant="fs-14" bold="bold">
+          Unchecked (Disabled)
+        </bds-typo>
         <bds-checkbox label="Unchecked disabled checkbox" name="unchecked-disabled" disabled></bds-checkbox>
       </bds-grid>
       <bds-grid direction="column" gap="1">
-        <bds-typo variant="fs-14" bold="bold">Checked (Disabled)</bds-typo>
+        <bds-typo variant="fs-14" bold="bold">
+          Checked (Disabled)
+        </bds-typo>
         <bds-checkbox label="Checked disabled checkbox" name="checked-disabled" checked disabled></bds-checkbox>
       </bds-grid>
       <bds-grid direction="column" gap="1">
-        <bds-typo variant="fs-14" bold="bold">Indeterminate (Disabled)</bds-typo>
-        <bds-checkbox label="Indeterminate disabled checkbox" name="indeterminate-disabled" indeterminate disabled></bds-checkbox>
+        <bds-typo variant="fs-14" bold="bold">
+          Indeterminate (Disabled)
+        </bds-typo>
+        <bds-checkbox
+          label="Indeterminate disabled checkbox"
+          name="indeterminate-disabled"
+          indeterminate
+          disabled
+        ></bds-checkbox>
       </bds-grid>
     </bds-grid>
-  )
-}
+  );
+};
 
 AllStates.parameters = {
   docs: {
     description: {
-      story: 'Displays all possible states of the checkbox component: unchecked, checked, and indeterminate in both enabled and disabled variants.'
-    }
-  }
+      story:
+        'Displays all possible states of the checkbox component: unchecked, checked, and indeterminate in both enabled and disabled variants.',
+    },
+  },
 };
 
 export const IndeterminateExample = () => {
@@ -103,12 +127,12 @@ export const IndeterminateExample = () => {
     const childCheckboxes = [
       document.getElementById('child1'),
       document.getElementById('child2'),
-      document.getElementById('child3')
+      document.getElementById('child3'),
     ];
 
     const updateParentState = () => {
-      const checkedCount = childCheckboxes.filter(cb => cb.checked).length;
-      
+      const checkedCount = childCheckboxes.filter((cb) => cb.checked).length;
+
       if (checkedCount === 0) {
         parentCheckbox.checked = false;
         parentCheckbox.indeterminate = false;
@@ -120,22 +144,31 @@ export const IndeterminateExample = () => {
       }
     };
 
-    parentCheckbox.addEventListener('bdsChange', (e) => {
-      // When parent is clicked (from indeterminate), it becomes checked
-      // and all children should be checked
+    const parentHandler = (e) => {
       const isChecked = e.detail.checked;
-      childCheckboxes.forEach(cb => {
+      childCheckboxes.forEach((cb) => {
         cb.checked = isChecked;
       });
       console.log('Parent changed:', e.detail);
+    };
+
+    const childHandler = () => {
+      updateParentState();
+    };
+
+    parentCheckbox.addEventListener('bdsChange', parentHandler);
+    childCheckboxes.forEach((cb) => {
+      cb.addEventListener('bdsChange', childHandler);
     });
 
-    childCheckboxes.forEach(cb => {
-      cb.addEventListener('bdsChange', () => {
-        updateParentState();
+    // Cleanup function
+    return () => {
+      parentCheckbox.removeEventListener('bdsChange', parentHandler);
+      childCheckboxes.forEach((cb) => {
+        cb.removeEventListener('bdsChange', childHandler);
       });
-    });
-  });
+    };
+  }, []);
 
   return (
     <bds-grid direction="column" gap="1">
@@ -146,15 +179,16 @@ export const IndeterminateExample = () => {
         <bds-checkbox id="child3" label="Item 3" name="child3" checked></bds-checkbox>
       </bds-grid>
     </bds-grid>
-  )
-}
+  );
+};
 
 IndeterminateExample.parameters = {
   docs: {
     description: {
-      story: 'Demonstrates the indeterminate state usage with a parent-child checkbox relationship. When some (but not all) children are selected, the parent shows the indeterminate state. Clicking the parent when indeterminate will select all children.'
-    }
-  }
+      story:
+        'Demonstrates the indeterminate state usage with a parent-child checkbox relationship. When some (but not all) children are selected, the parent shows the indeterminate state. Clicking the parent when indeterminate will select all children.',
+    },
+  },
 };
 
 export const Events = () => {
@@ -164,13 +198,9 @@ export const Events = () => {
       console.log('Checked: ', e.detail.checked, 'Indeterminate:', e.detail.indeterminate);
     });
   });
-  return (
-    <bds-checkbox id="check1" label="Selected" checked></bds-checkbox>
-  )
-}
+  return <bds-checkbox id="check1" label="Selected" checked></bds-checkbox>;
+};
 
 export const FrameworkReact = () => {
-  return (
-    <BdsCheckbox id="check1" label="Selected" checked></BdsCheckbox>
-  )
-}
+  return <BdsCheckbox id="check1" label="Selected" checked></BdsCheckbox>;
+};

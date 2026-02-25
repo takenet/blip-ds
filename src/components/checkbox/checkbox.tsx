@@ -129,8 +129,8 @@ export class Checkbox {
     return '';
   };
 
-  private handleKeyDown(event) {
-    if (event.key == 'Enter') {
+  private handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
       // When pressing Enter from indeterminate state, set to checked
       if (this.indeterminate) {
         this.indeterminate = false;
