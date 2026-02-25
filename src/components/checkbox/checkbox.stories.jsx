@@ -149,6 +149,7 @@ export const IndeterminateExample = () => {
       childCheckboxes.forEach((cb) => {
         cb.checked = isChecked;
       });
+      console.log('Parent changed:', e.detail);
     };
 
     const childHandler = () => {
@@ -160,6 +161,7 @@ export const IndeterminateExample = () => {
       cb.addEventListener('bdsChange', childHandler);
     });
 
+    // Cleanup function
     return () => {
       parentCheckbox.removeEventListener('bdsChange', parentHandler);
       childCheckboxes.forEach((cb) => {
