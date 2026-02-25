@@ -360,8 +360,8 @@ describe('bds-icon', () => {
       });
 
       // Ensure component is visible and browser environment is mocked
-      (page.rootInstance as any).isVisible = true;
-      (Build as any).isBrowser = true;
+      (page.rootInstance as { isVisible: boolean }).isVisible = true;
+      (Build as unknown as { isBrowser: boolean }).isBrowser = true;
 
       // Call setSvgContent directly to trigger the error
       (page.rootInstance as unknown as { setSvgContent: () => void }).setSvgContent();
@@ -572,15 +572,16 @@ describe('bds-icon', () => {
       });
 
       // Set component as not visible but browser is available
-      (page.rootInstance as any).isVisible = false;
-      (Build as any).isBrowser = true;
+      (page.rootInstance as unknown as { isVisible: boolean }).isVisible = false;
+      (Build as unknown as { isBrowser: boolean }).isBrowser = true;
 
       // Reset svgContent to ensure it starts as undefined
-      (page.rootInstance as any).svgContent = undefined;
+      const iconInstance = page.rootInstance as { svgContent?: string | undefined };
+      iconInstance.svgContent = undefined;
 
       page.rootInstance.loadIcon();
 
-      // Since loadIcon checks both Build.isBrowser AND isVisible, 
+      // Since loadIcon checks both Build.isBrowser AND isVisible,
       // setSvgContent should not be called when isVisible is false
       expect(page.rootInstance.svgContent).toBeUndefined();
 
