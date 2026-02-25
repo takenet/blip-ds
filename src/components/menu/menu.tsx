@@ -86,6 +86,7 @@ export class BdsMenu implements ComponentInterface {
             [`menu__open`]: this.open,
           }}
           style={menuPosition}
+          part="bds-menu__container"
         >
           <slot></slot>
         </div>
