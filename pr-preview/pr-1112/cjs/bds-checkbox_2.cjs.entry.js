@@ -87,7 +87,7 @@ const Checkbox = class {
     });
   }
   handleKeyDown(event) {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       // When pressing Enter from indeterminate state, set to checked
       if (this.indeterminate) {
         this.indeterminate = false;
