@@ -77,6 +77,9 @@ export class Checkbox {
     });
   }
   handleKeyDown(event) {
+    if (this.disabled) {
+      return;
+    }
     if (event.key === 'Enter') {
       // When pressing Enter from indeterminate state, set to checked
       if (this.indeterminate) {
