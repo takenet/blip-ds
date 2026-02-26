@@ -66,6 +66,10 @@ export class BdsUpload {
    */
   @Prop() dtButtonDelete?: string = null;
   /**
+   * Used to show or hide the list preview of uploaded files.
+   */
+  @Prop() showListPreview?: boolean = true;
+  /**
    * Event emited when delete a item from the list.
    */
   @Event() bdsUploadDelete: EventEmitter;
@@ -266,7 +270,7 @@ export class BdsUpload {
         ) : (
           ''
         )}
-        {this.haveFiles ? (
+        {this.haveFiles && this.showListPreview ? (
           <div>
             <div class="list-preview">
               {this.files.map((names: any, index) => (

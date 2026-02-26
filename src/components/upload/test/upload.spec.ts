@@ -466,4 +466,66 @@ describe('bds-upload', () => {
     const upload = page.rootInstance;
     expect(upload.language).toBe('en_US');
   });
+
+  it('should have showListPreview default as true', async () => {
+    const page = await newSpecPage({
+      components: [BdsUpload],
+      html: `<bds-upload></bds-upload>`,
+    });
+
+    const upload = page.rootInstance;
+    expect(upload.showListPreview).toBe(true);
+  });
+
+  it('should render list-preview when showListPreview is true and files are uploaded', async () => {
+    const page = await newSpecPage({
+      components: [BdsUpload],
+      html: `<bds-upload show-list-preview="true"></bds-upload>`,
+    });
+
+    const upload = page.rootInstance;
+    const mockFile = new File(['content'], 'test.txt', { type: 'text/plain' });
+
+    upload.files = [mockFile];
+    upload.haveFiles = true;
+    await page.waitForChanges();
+
+    const listPreview = page.root.shadowRoot.querySelector('.list-preview');
+    expect(listPreview).toBeTruthy();
+  });
+
+  it('should not render list-preview when showListPreview is false', async () => {
+    const page = await newSpecPage({
+      components: [BdsUpload],
+      html: `<bds-upload show-list-preview="false"></bds-upload>`,
+    });
+
+    const upload = page.rootInstance;
+    const mockFile = new File(['content'], 'test.txt', { type: 'text/plain' });
+
+    upload.files = [mockFile];
+    upload.haveFiles = true;
+    await page.waitForChanges();
+
+    const listPreview = page.root.shadowRoot.querySelector('.list-preview');
+    expect(listPreview).toBeFalsy();
+  });
+
+  it('should still track files internally when showListPreview is false', async () => {
+    const page = await newSpecPage({
+      components: [BdsUpload],
+      html: `<bds-upload show-list-preview="false"></bds-upload>`,
+    });
+
+    const upload = page.rootInstance;
+    const mockFile = new File(['content'], 'test.txt', { type: 'text/plain' });
+
+    upload.onUploadClick([mockFile]);
+    await page.waitForChanges();
+
+    expect(upload.files).toEqual([mockFile]);
+    expect(upload.haveFiles).toBe(true);
+    const listPreview = page.root.shadowRoot.querySelector('.list-preview');
+    expect(listPreview).toBeFalsy();
+  });
 });
