@@ -117,6 +117,7 @@ export class Icon {
   @Watch('name')
   @Watch('src')
   @Watch('icon')
+  @Watch('color')
   @Watch('theme')
   loadIcon(): void {
     if (!this.name) return;

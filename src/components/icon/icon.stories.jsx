@@ -148,6 +148,7 @@ Properties.args = {
   size: 'medium',
   name: 'info',
   theme: 'outline',
+  color: '',
 };
 
 Properties.argTypes = {
@@ -176,6 +177,12 @@ Properties.argTypes = {
     },
     options: ['outline', 'solid'],
     control: 'select',
+  },
+  color: {
+    table: {
+      defaultValue: { summary: 'primary' },
+    },
+    control: 'text',
   },
   name: {
     table: {
