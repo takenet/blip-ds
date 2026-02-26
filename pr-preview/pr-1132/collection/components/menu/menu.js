@@ -45,7 +45,7 @@ export class BdsMenu {
         menu: true,
         [`menu__${this.position}`]: true,
         [`menu__open`]: this.open,
-      }, style: menuPosition }, h("slot", null)), this.open && h("div", { class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
+      }, style: menuPosition, part: "bds-menu__container" }, h("slot", null)), this.open && h("div", { class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
   }
   static get is() { return "bds-menu"; }
   static get encapsulation() { return "shadow"; }

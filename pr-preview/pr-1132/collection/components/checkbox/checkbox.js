@@ -4,15 +4,29 @@ export class Checkbox {
   constructor() {
     this.onClick = (ev) => {
       ev.stopPropagation();
-      this.checked = !this.checked;
+      // When clicking from indeterminate state, set to checked
+      if (this.indeterminate) {
+        this.indeterminate = false;
+        this.checked = true;
+      }
+      else {
+        this.checked = !this.checked;
+      }
       this.bdsChange.emit({
         checked: this.checked,
+        indeterminate: this.indeterminate,
       });
     };
     this.refNativeInput = (input) => {
       this.nativeInput = input;
     };
     this.getStyleState = () => {
+      if (this.indeterminate && !this.disabled) {
+        return 'checkbox--indeterminate';
+      }
+      if (this.indeterminate && this.disabled) {
+        return 'checkbox--indeterminate-disabled';
+      }
       if (this.checked && !this.disabled) {
         return 'checkbox--selected';
       }
@@ -27,11 +41,15 @@ export class Checkbox {
       }
       return '';
     };
+    this.getIconName = () => {
+      return this.indeterminate ? 'less' : 'true';
+    };
     this.checkBoxId = undefined;
     this.refer = undefined;
     this.label = undefined;
     this.name = undefined;
     this.checked = false;
+    this.indeterminate = false;
     this.disabled = false;
     this.dataTest = null;
   }
@@ -45,16 +63,35 @@ export class Checkbox {
     return Promise.resolve(this.nativeInput.checked);
   }
   async toggle() {
-    this.checked = !this.checked;
+    // When toggling from indeterminate, always set to checked
+    if (this.indeterminate) {
+      this.indeterminate = false;
+      this.checked = true;
+    }
+    else {
+      this.checked = !this.checked;
+    }
     this.bdsChange.emit({
       checked: this.checked,
+      indeterminate: this.indeterminate,
     });
   }
   handleKeyDown(event) {
-    if (event.key == 'Enter') {
-      this.checked = !this.checked;
+    if (this.disabled) {
+      return;
+    }
+    if (event.key === 'Enter') {
+      // When pressing Enter from indeterminate state, set to checked
+      if (this.indeterminate) {
+        this.indeterminate = false;
+        this.checked = true;
+      }
+      else {
+        this.checked = !this.checked;
+      }
       this.bdsChange.emit({
         checked: this.checked,
+        indeterminate: this.indeterminate,
       });
     }
   }
@@ -63,7 +100,7 @@ export class Checkbox {
     return (h("div", { class: {
         checkbox: true,
         [styleState]: true,
-      } }, h("input", { type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { class: "checkbox__icon__svg", size: "x-small", name: "true", color: "inherit" })), this.label && (h("bds-typo", { class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+      } }, h("input", { type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
   }
   static get is() { return "bds-checkbox"; }
   static get encapsulation() { return "shadow"; }
@@ -145,6 +182,24 @@ export class Checkbox {
           "text": "If `true`, the checkbox is selected."
         },
         "attribute": "checked",
+        "reflect": true,
+        "defaultValue": "false"
+      },
+      "indeterminate": {
+        "type": "boolean",
+        "mutable": true,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": false,
+        "docs": {
+          "tags": [],
+          "text": "If `true`, the checkbox is in an indeterminate state.\nThis is used when the checkbox is a parent of a list of checkboxes\nand some (but not all) of the child checkboxes are selected.\nClicking when indeterminate will set the checkbox to checked."
+        },
+        "attribute": "indeterminate",
         "reflect": true,
         "defaultValue": "false"
       },

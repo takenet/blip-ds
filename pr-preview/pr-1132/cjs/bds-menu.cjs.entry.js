@@ -54,7 +54,7 @@ const BdsMenu = class {
         menu: true,
         [`menu__${this.position}`]: true,
         [`menu__open`]: this.open,
-      }, style: menuPosition }, index.h("slot", null)), this.open && index.h("div", { class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
+      }, style: menuPosition, part: "bds-menu__container" }, index.h("slot", null)), this.open && index.h("div", { class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
   }
   static get watchers() { return {
     "open": ["openMenu"]
