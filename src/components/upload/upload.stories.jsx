@@ -20,6 +20,7 @@ export const Properties = (args) => {
       error={args.error}
       language={args.language}
       multiple={args.multiple}
+      show-list-preview={args.showListPreview}
     ></bds-upload>
   );
 };
@@ -28,6 +29,7 @@ Properties.args = {
   error: '',
   language: 'pt_BR',
   multiple: false,
+  showListPreview: true,
   subtitle: 'Description uploades, only one file',
   titleName: 'Title uploader',
 };
