@@ -180,7 +180,7 @@ Properties.argTypes = {
   },
   color: {
     table: {
-      defaultValue: { summary: 'primary' },
+      defaultValue: { summary: '' },
     },
     control: 'text',
   },
