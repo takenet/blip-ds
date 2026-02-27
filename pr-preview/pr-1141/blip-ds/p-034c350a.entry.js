@@ -1,0 +1,1 @@
+import{r,h as s}from"./p-93b809e8.js";const o=class{constructor(s){r(this,s)}render(){return s("bds-grid",null,s("slot",null))}};export{o as bds_card_body}
