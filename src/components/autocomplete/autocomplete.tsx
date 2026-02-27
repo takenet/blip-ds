@@ -269,7 +269,13 @@ export class BdsAutocomplete {
     }
   }
 
+  @Watch('placeholder')
+  protected changePlaceholder() {
+    this.placeholderState = this.placeholder;
+  }
+
   componentWillLoad() {
+    this.placeholderState = this.placeholder;
     this.intoView = getScrollParent(this.el);
     this.options && this.parseOptions();
   }
