@@ -1,0 +1,1 @@
+{"version":3,"file":"slider-interface.js","sourceRoot":"","sources":["../../../../src/components/slider/slider-interface.ts"],"names":[],"mappings":"","sourcesContent":["export type typeRange = 'fill' | 'no-linear';\n\nexport type typeMarkers = 'default' | 'markers' | 'without-subtitle';\n\nexport interface StepOption {\n  value: number;\n  name: string;\n}\n"]}
