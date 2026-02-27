@@ -311,7 +311,11 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
             }
         }
     }
+    changePlaceholder() {
+        this.placeholderState = this.placeholder;
+    }
     componentWillLoad() {
+        this.placeholderState = this.placeholder;
         this.intoView = getScrollParent(this.el);
         this.options && this.parseOptions();
     }
@@ -474,7 +478,7 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: '47da2306938ead7f3213d58f83e97de5151ca080', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '2f41a9eecd8d97614d55664ea7303a7e6b08df3c', class: {
+        return (h(Host, { key: 'f226d3800c5cecbc67a00f83674b34d48361be7d', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '6456a23accb7adef88832dd37df16a2db69cbecf', class: {
                 input: true,
                 select: true,
                 'input--state-primary': !this.danger,
@@ -483,9 +487,9 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': this.isPressed,
-            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: 'd4a2d0601d51d230890b4d174b7528a957f8b983', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: '143fc2050114825c17c17a4b8ccb5a7f61e27390', class: { input__container__wrapper: true } }, ((_a = this.textMultiselect) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("bds-typo", { key: 'f5e0c78723a41d3062d0aaa499b2325ae11ab024', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '945e986b720854b838f86e4ea1ff55e1b4e729a0', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '312eaafa0abf780aba1bed1d168dd9cc34ad6d60', class: "select__icon" }, h("bds-icon", { key: 'ce8c766e9407b13c84270a20ee11017ea3cde6fc', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
+            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: '2b7cb3428fe0173b1f01dbd1d09cf5f611085d3e', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: '248ee75d064b64772c5a8ebd46137834fc577456', class: { input__container__wrapper: true } }, ((_a = this.textMultiselect) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("bds-typo", { key: '04a95ae0b3023df04e2e9509c386765898ebfaf4', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '958a00b4bacc0f025d7431e2dd346b09ce646b1a', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '0e845f5f4cc54f4bdb48188b3def7f9c9ffca073', class: "select__icon" }, h("bds-icon", { key: 'cd2bbeef646450a3555453e2f6093b8690740240', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
                 'icon-hidden': (this.clearIconOnFocus && (!this.isFocused || !this.isOpen)) || !this.value,
-            } }), h("bds-icon", { key: '7f9bb1b87a173c68fac35d444abeb6bf5efeca36', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" }))), this.renderMessage(), this.loading ? (h("div", { ref: (el) => this.refDropdown(el), class: {
+            } }), h("bds-icon", { key: '34fd2b6e2569890588bad00f4bccf8aa53299973', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" }))), this.renderMessage(), this.loading ? (h("div", { ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
             } }, h("bds-loading-spinner", { class: "load-spinner", size: "small" }))) : (h("div", { ref: (el) => this.refDropdown(el), class: {
@@ -500,7 +504,8 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
         "value": ["valueChanged"],
         "checkedOptions": ["changeCheckedOptions"],
         "options": ["parseOptions"],
-        "selectionType": ["changeSelectionType"]
+        "selectionType": ["changeSelectionType"],
+        "placeholder": ["changePlaceholder"]
     }; }
     static get style() { return autocompleteCss; }
 }, [1, "bds-autocomplete", {
@@ -543,7 +548,8 @@ const BdsAutocomplete$1 = /*@__PURE__*/ proxyCustomElement(class BdsAutocomplete
         "value": ["valueChanged"],
         "checkedOptions": ["changeCheckedOptions"],
         "options": ["parseOptions"],
-        "selectionType": ["changeSelectionType"]
+        "selectionType": ["changeSelectionType"],
+        "placeholder": ["changePlaceholder"]
     }]);
 function defineCustomElement$1() {
     if (typeof customElements === "undefined") {

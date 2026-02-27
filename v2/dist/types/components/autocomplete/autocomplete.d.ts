@@ -147,6 +147,7 @@ export declare class BdsAutocomplete {
     protected changeCheckedOptions(): void;
     parseOptions(): void;
     protected changeSelectionType(): void;
+    protected changePlaceholder(): void;
     componentWillLoad(): void;
     componentDidLoad(): void;
     private setDefaultPlacement;
