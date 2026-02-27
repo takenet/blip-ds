@@ -2941,6 +2941,10 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
+          * Used to show or hide the list preview of uploaded files.
+         */
+        "showListPreview"?: boolean;
+        /**
           * Used for add a text on subtitle.
          */
         "subtitle": string;
@@ -6991,6 +6995,10 @@ declare namespace LocalJSX {
           * Event emited when delete a item from the list.
          */
         "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<any>) => void;
+        /**
+          * Used to show or hide the list preview of uploaded files.
+         */
+        "showListPreview"?: boolean;
         /**
           * Used for add a text on subtitle.
          */
