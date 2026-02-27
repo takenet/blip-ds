@@ -1,1 +1,0 @@
-{"version":3,"file":"input-chips-interface.js","sourceRoot":"","sources":["../../../../src/components/input-chips/input-chips-interface.ts"],"names":[],"mappings":"","sourcesContent":["export type InputChipsTypes = 'text' | 'email';\n"]}
