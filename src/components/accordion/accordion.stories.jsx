@@ -50,7 +50,7 @@ Properties.argTypes = {
   },
   iconColor: {
     table: {
-      defaultValue: { summary: 'vazio' },
+      defaultValue: { summary: 'inherit' },
     },
     description: 'Defina a cor do ícone que será utilizado no botão (Apenas outline).',
     control: 'text',
