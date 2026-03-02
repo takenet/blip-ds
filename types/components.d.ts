@@ -124,6 +124,10 @@ export namespace Components {
           * Icon. Used to add icon in header accordion.
          */
         "icon"?: string;
+        /**
+          * Icon color. Used to set the color of icons in the accordion header.
+         */
+        "iconColor"?: string;
         "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
@@ -3936,6 +3940,10 @@ declare namespace LocalJSX {
           * Icon. Used to add icon in header accordion.
          */
         "icon"?: string;
+        /**
+          * Icon color. Used to set the color of icons in the accordion header.
+         */
+        "iconColor"?: string;
     }
     interface BdsAlert {
         /**

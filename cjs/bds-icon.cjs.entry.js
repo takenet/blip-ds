@@ -990,6 +990,7 @@ const Icon = class {
     "name": ["loadIcon"],
     "src": ["loadIcon"],
     "icon": ["loadIcon"],
+    "color": ["loadIcon"],
     "theme": ["loadIcon"]
   }; }
 };

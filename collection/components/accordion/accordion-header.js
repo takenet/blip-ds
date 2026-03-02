@@ -15,6 +15,7 @@ export class AccordionHeader {
     this.numberElement = null;
     this.accordionTitle = null;
     this.icon = null;
+    this.iconColor = 'inherit';
     this.avatarName = null;
     this.avatarThumb = null;
     this.dataTest = null;
@@ -42,11 +43,11 @@ export class AccordionHeader {
     }
   }
   render() {
-    return (h("div", { onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && h("bds-icon", { size: "x-large", name: this.icon, color: "inherit" })), this.accordionTitle && (h("bds-typo", { bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), h("slot", null), h("bds-icon", { class: {
+    return (h("div", { onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && h("bds-icon", { size: "x-large", name: this.icon, color: this.iconColor })), this.accordionTitle && (h("bds-typo", { bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), h("slot", null), h("bds-icon", { class: {
         accButton: true,
         accButton__isopen: this.isOpen,
         accButton__isfocus: this.btToggleIsfocus,
-      }, size: "x-large", name: "arrow-down", color: "inherit", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) })));
+      }, size: "x-large", name: "arrow-down", color: this.iconColor, tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) })));
   }
   static get is() { return "bds-accordion-header"; }
   static get encapsulation() { return "shadow"; }
@@ -97,6 +98,24 @@ export class AccordionHeader {
         "attribute": "icon",
         "reflect": false,
         "defaultValue": "null"
+      },
+      "iconColor": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string",
+          "resolved": "string",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Icon color. Used to set the color of icons in the accordion header."
+        },
+        "attribute": "icon-color",
+        "reflect": false,
+        "defaultValue": "'inherit'"
       },
       "avatarName": {
         "type": "string",

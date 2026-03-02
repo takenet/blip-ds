@@ -23,6 +23,7 @@ const AccordionHeader = class {
     this.numberElement = null;
     this.accordionTitle = null;
     this.icon = null;
+    this.iconColor = 'inherit';
     this.avatarName = null;
     this.avatarThumb = null;
     this.dataTest = null;
@@ -50,11 +51,11 @@ const AccordionHeader = class {
     }
   }
   render() {
-    return (index.h("div", { onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (index.h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && index.h("bds-icon", { size: "x-large", name: this.icon, color: "inherit" })), this.accordionTitle && (index.h("bds-typo", { bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), index.h("slot", null), index.h("bds-icon", { class: {
+    return (index.h("div", { onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (index.h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && index.h("bds-icon", { size: "x-large", name: this.icon, color: this.iconColor })), this.accordionTitle && (index.h("bds-typo", { bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), index.h("slot", null), index.h("bds-icon", { class: {
         accButton: true,
         accButton__isopen: this.isOpen,
         accButton__isfocus: this.btToggleIsfocus,
-      }, size: "x-large", name: "arrow-down", color: "inherit", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) })));
+      }, size: "x-large", name: "arrow-down", color: this.iconColor, tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) })));
   }
   get element() { return index.getElement(this); }
 };

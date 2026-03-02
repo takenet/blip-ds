@@ -341,6 +341,9 @@ export class Icon {
         "propName": "icon",
         "methodName": "loadIcon"
       }, {
+        "propName": "color",
+        "methodName": "loadIcon"
+      }, {
         "propName": "theme",
         "methodName": "loadIcon"
       }];
