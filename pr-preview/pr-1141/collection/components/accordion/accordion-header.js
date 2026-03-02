@@ -111,7 +111,7 @@ export class AccordionHeader {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Icon. Used to add icon color in header accordion."
+          "text": "Icon color. Used to set the color of icons in the accordion header."
         },
         "attribute": "icon-color",
         "reflect": false,

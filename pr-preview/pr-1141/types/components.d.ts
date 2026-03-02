@@ -125,7 +125,7 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Icon. Used to add icon color in header accordion.
+          * Icon color. Used to set the color of icons in the accordion header.
          */
         "iconColor"?: string;
         "open": () => Promise<void>;
@@ -3941,7 +3941,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Icon. Used to add icon color in header accordion.
+          * Icon color. Used to set the color of icons in the accordion header.
          */
         "iconColor"?: string;
     }

@@ -13,7 +13,7 @@ export declare class AccordionHeader {
    */
   icon?: string;
   /**
-   * Icon. Used to add icon color in header accordion.
+   * Icon color. Used to set the color of icons in the accordion header.
    */
   iconColor?: string;
   /**
