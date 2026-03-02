@@ -27,6 +27,11 @@ export class AccordionHeader {
   @Prop() icon?: string = null;
 
   /**
+   * Icon color. Used to set the color of icons in the accordion header.
+   */
+  @Prop() iconColor?: string = 'inherit';
+
+  /**
    * Avatar Name. Used to add avatar in header accordion.
    */
   @Prop() avatarName?: string = null;
@@ -78,13 +83,15 @@ export class AccordionHeader {
     }
   }
 
+  
+
   render() {
     return (
       <div onClick={this.toggleHeader} class={{ accordion_header: true }} data-test={this.dataTest}>
         {this.avatarName || this.avatarThumb ? (
           <bds-avatar name={this.avatarName} thumbnail={this.avatarThumb} size="extra-small"></bds-avatar>
         ) : (
-          this.icon && <bds-icon size="x-large" name={this.icon} color="inherit"></bds-icon>
+          this.icon && <bds-icon size="x-large" name={this.icon} color={this.iconColor}></bds-icon>
         )}
         {this.accordionTitle && (
           <bds-typo bold="bold" variant="fs-16" line-height="double">
@@ -100,7 +107,7 @@ export class AccordionHeader {
           }}
           size="x-large"
           name="arrow-down"
-          color="inherit"
+          color={this.iconColor}
           tabindex="0"
           onKeyDown={this.handleKeyDown.bind(this)}
         ></bds-icon>

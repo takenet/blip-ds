@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property         | Attribute         | Description                                                             | Type     | Default |
-| ---------------- | ----------------- | ----------------------------------------------------------------------- | -------- | ------- |
-| `accordionTitle` | `accordion-title` | Accordion Title. Used to add title in header accordion.                 | `string` | `null`  |
-| `avatarName`     | `avatar-name`     | Avatar Name. Used to add avatar in header accordion.                    | `string` | `null`  |
-| `avatarThumb`    | `avatar-thumb`    | Avatar Thumb. Used to add avatar in header accordion.                   | `string` | `null`  |
-| `dataTest`       | `data-test`       | Data test is the prop to specifically test the component action object. | `string` | `null`  |
-| `icon`           | `icon`            | Icon. Used to add icon in header accordion.                             | `string` | `null`  |
+| Property         | Attribute         | Description                                                             | Type     | Default     |
+| ---------------- | ----------------- | ----------------------------------------------------------------------- | -------- | ----------- |
+| `accordionTitle` | `accordion-title` | Accordion Title. Used to add title in header accordion.                 | `string` | `null`      |
+| `avatarName`     | `avatar-name`     | Avatar Name. Used to add avatar in header accordion.                    | `string` | `null`      |
+| `avatarThumb`    | `avatar-thumb`    | Avatar Thumb. Used to add avatar in header accordion.                   | `string` | `null`      |
+| `dataTest`       | `data-test`       | Data test is the prop to specifically test the component action object. | `string` | `null`      |
+| `icon`           | `icon`            | Icon. Used to add icon in header accordion.                             | `string` | `null`      |
+| `iconColor`      | `icon-color`      | Icon color. Used to set the color of icons in the accordion header.     | `string` | `'inherit'` |
 
 
 ## Methods
