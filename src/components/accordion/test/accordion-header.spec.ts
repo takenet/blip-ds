@@ -63,6 +63,41 @@ describe('bds-accordion-header', () => {
     expect(iconElement).toBeTruthy();
   });
 
+  it('should apply iconColor to custom icon and toggle icon', async () => {
+    page = await newSpecPage({
+      components: [AccordionHeader],
+      html: `<bds-accordion-header icon="user" icon-color="red"></bds-accordion-header>`,
+    });
+    component = page.rootInstance;
+
+    expect(component.iconColor).toBe('red');
+
+    const customIcon = page.root.shadowRoot.querySelector('bds-icon[name="user"]');
+    const toggleIcon = page.root.shadowRoot.querySelector('bds-icon[name="arrow-down"]');
+
+    expect(customIcon).toBeTruthy();
+    expect(customIcon.getAttribute('color')).toBe('red');
+    expect(toggleIcon).toBeTruthy();
+    expect(toggleIcon.getAttribute('color')).toBe('red');
+  });
+
+  it('should keep default iconColor when not provided', async () => {
+    page = await newSpecPage({
+      components: [AccordionHeader],
+      html: `<bds-accordion-header icon="user"></bds-accordion-header>`,
+    });
+    component = page.rootInstance;
+
+    expect(component.iconColor).toBe('inherit');
+
+    const customIcon = page.root.shadowRoot.querySelector('bds-icon[name="user"]');
+    const toggleIcon = page.root.shadowRoot.querySelector('bds-icon[name="arrow-down"]');
+
+    expect(customIcon.getAttribute('color')).toBe('inherit');
+    expect(toggleIcon.getAttribute('color')).toBe('inherit');
+  });
+
+
   it('should render with avatar properties', async () => {
     page = await newSpecPage({
       components: [AccordionHeader],
