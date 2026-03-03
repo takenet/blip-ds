@@ -203,7 +203,7 @@ export class Sidebar {
         "mutable": false,
         "complexType": {
           "original": "sidebarBackground",
-          "resolved": "\"surface-1\" | \"surface-2\" | \"surface-3\" | \"surface-4\"",
+          "resolved": "\"surface-0\" | \"surface-1\" | \"surface-2\" | \"surface-3\" | \"surface-4\"",
           "references": {
             "sidebarBackground": {
               "location": "local"

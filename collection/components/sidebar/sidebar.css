@@ -70,6 +70,9 @@
 .sidebar_dialog .sidebar.position_right {
   order: 3;
 }
+.sidebar_dialog .sidebar.background_surface-0 {
+  background-color: var(--color-surface-0, white);
+}
 .sidebar_dialog .sidebar.background_surface-1 {
   background-color: var(--color-surface-1, #f6f6f6);
 }
