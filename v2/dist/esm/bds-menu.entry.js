@@ -55,11 +55,11 @@ const BdsMenu = class {
             top: `${this.menupositionTop}px`,
             left: `${this.menupositionLeft}px`,
         };
-        return (h(Host, { key: 'eefbfe9249b8945ad1e392e8da192200305edaf9' }, h("div", { key: '821d54c12f2423038ca4a7839f3d4ccd461abe8b', ref: this.refMenuElement, class: {
+        return (h(Host, { key: 'eefbfe9249b8945ad1e392e8da192200305edaf9' }, h("div", { key: '141d2c3c12809030a7dea5b59cce43354e61d792', ref: this.refMenuElement, class: {
                 menu: true,
                 [`menu__${this.position}`]: true,
                 [`menu__open`]: this.open,
-            }, style: menuPosition }, h("slot", { key: 'c438056f6c5666f46ce5afe2618a31eec5260581' })), this.open && h("div", { key: '01c609f2b5b8bd3425c30543aa607188ed0d2e4c', class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
+            }, style: menuPosition, part: "bds-menu__container" }, h("slot", { key: '82d80465f1ccb1e069adab0cd82efe264ac37250' })), this.open && h("div", { key: 'd7d25cc4a82bccff8dca51679740908beb54fed2', class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
     }
     static get watchers() { return {
         "open": ["openMenu"]
