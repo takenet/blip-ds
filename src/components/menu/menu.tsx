@@ -35,7 +35,7 @@ export class BdsMenu implements ComponentInterface {
   /**
    * bdsToggle. Event to return selected date value.
    */
-  @Event() bdsToggle?: EventEmitter<{ value?: boolean }>;
+  @Event() bdsToggle?: EventEmitter;
 
   componentWillLoad() {
     this.refElement = document.getElementById(this.menu);
@@ -86,6 +86,7 @@ export class BdsMenu implements ComponentInterface {
             [`menu__open`]: this.open,
           }}
           style={menuPosition}
+          part="bds-menu__container"
         >
           <slot></slot>
         </div>
