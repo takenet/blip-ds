@@ -55,11 +55,11 @@ const BdsMenu = class {
             top: `${this.menupositionTop}px`,
             left: `${this.menupositionLeft}px`,
         };
-        return (h(Host, { key: '4f7c34c68dd427bfd59e014c4f4ff610e98e359c' }, h("div", { key: 'dd7e5c5f09a0df133458f2c76984bcf5e8d1c08c', ref: this.refMenuElement, class: {
+        return (h(Host, { key: 'eefbfe9249b8945ad1e392e8da192200305edaf9' }, h("div", { key: '141d2c3c12809030a7dea5b59cce43354e61d792', ref: this.refMenuElement, class: {
                 menu: true,
                 [`menu__${this.position}`]: true,
                 [`menu__open`]: this.open,
-            }, style: menuPosition, part: "bds-menu__container" }, h("slot", { key: '9d4b91e84f9ce6c4b298cd0bc91059ae91b66613' })), this.open && h("div", { key: '63117e957ae3da41519ee5ea67b1cfbe888129ea', class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
+            }, style: menuPosition, part: "bds-menu__container" }, h("slot", { key: '82d80465f1ccb1e069adab0cd82efe264ac37250' })), this.open && h("div", { key: 'd7d25cc4a82bccff8dca51679740908beb54fed2', class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
     }
     static get watchers() { return {
         "open": ["openMenu"]

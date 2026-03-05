@@ -4573,7 +4573,7 @@ declare global {
         new (): HTMLBdsLoadingSpinnerElement;
     };
     interface HTMLBdsMenuElementEventMap {
-        "bdsToggle": any;
+        "bdsToggle": { value?: boolean };
     }
     interface HTMLBdsMenuElement extends Components.BdsMenu, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsMenuElementEventMap>(type: K, listener: (this: HTMLBdsMenuElement, ev: BdsMenuCustomEvent<HTMLBdsMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7519,7 +7519,7 @@ declare namespace LocalJSX {
         /**
           * bdsToggle. Event to return selected date value.
          */
-        "onBdsToggle"?: (event: BdsMenuCustomEvent<any>) => void;
+        "onBdsToggle"?: (event: BdsMenuCustomEvent<{ value?: boolean }>) => void;
         /**
           * Open. Used to open/close the menu.
           * @default false

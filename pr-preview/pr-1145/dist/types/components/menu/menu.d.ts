@@ -21,7 +21,9 @@ export declare class BdsMenu implements ComponentInterface {
     /**
      * bdsToggle. Event to return selected date value.
      */
-    bdsToggle?: EventEmitter;
+    bdsToggle?: EventEmitter<{
+        value?: boolean;
+    }>;
     componentWillLoad(): void;
     toggle(): Promise<void>;
     protected openMenu(): void;
