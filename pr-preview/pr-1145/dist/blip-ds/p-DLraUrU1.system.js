@@ -1,0 +1,2 @@
+System.register([],(function(r){"use strict";return{execute:function(){var n=/^\w+([.+,-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;var t=/\S/;var u=/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;var e=/^((0?[1-9]|[12][0-9]|3[01])[- /.](0?[1-9]|1[012])[- /.](19|20|21)?[0-9]{2})*$/;var i=r("e",(function(r){if(r&&!n.test(r)){return true}}));var a=r("n",(function(r){if(r&&!u.test(r)){return true}}));var c=r("w",(function(r){return t.test(r)}));var f=r("d",(function(r){return e.test(r)}))}}}));
+//# sourceMappingURL=p-DLraUrU1.system.js.map

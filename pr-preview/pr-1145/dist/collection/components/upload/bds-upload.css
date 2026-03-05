@@ -1,0 +1,177 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+.upload {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.upload .upload-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-content-default, rgb(40, 40, 40));
+}
+.upload .upload-header_text {
+  color: var(--color-content-default, rgb(40, 40, 40));
+  display: flex;
+  flex-direction: column;
+}
+
+.upload__edit--label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: normal;
+  box-sizing: border-box;
+  padding: 23px 16px;
+  position: relative;
+}
+.upload__edit--label::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+.upload__edit--label:focus-visible {
+  outline: none;
+}
+.upload__edit--label:focus-visible::before {
+  border-color: var(--color-focus, rgb(194, 38, 251));
+}
+.upload__edit--label .upload__img--visible {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  position: absolute;
+  background-color: var(--color-surface-2, rgb(237, 237, 237));
+  z-index: 1;
+}
+.upload__edit--label .text-box {
+  display: flex;
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+.upload__edit--label .text-box .text {
+  color: var(--color-content-default, rgb(40, 40, 40));
+  width: 100%;
+  flex-wrap: wrap;
+}
+.upload__edit--label .text-box--hover {
+  background-color: var(--color-surface-2, rgb(237, 237, 237));
+}
+.upload__edit--label .text-box--hover .text {
+  color: var(--color-primary, rgb(30, 107, 241));
+}
+
+.upload__edit--label:hover {
+  border: 2px solid var(--color-primary, rgb(30, 107, 241));
+  box-sizing: border-box;
+  padding: 22px 16px;
+  cursor: pointer;
+  text-decoration: underline var(--color-primary, rgb(30, 107, 241));
+  color: var(--color-brand, rgb(0, 150, 250));
+}
+.upload__edit--label:hover .text {
+  color: var(--color-primary, rgb(30, 107, 241));
+}
+
+.upload__edit--hover {
+  background-size: cover;
+  border: 1px dashed var(--color-surface-4, rgb(20, 20, 20));
+  color: var(--color-primary, rgb(30, 107, 241));
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.upload__img--invisible {
+  display: none;
+}
+
+.list-preview {
+  border-top: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  border-bottom: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.upload__preview {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 0;
+}
+.upload__preview .preview {
+  display: flex;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+.upload__preview .preview-text {
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  color: var(--color-content-default, rgb(40, 40, 40));
+}
+.upload__preview .preview-icon {
+  color: var(--color-content-default, rgb(40, 40, 40));
+}
+.upload__preview .preview-icon:hover {
+  cursor: pointer;
+}
+
+.preview-length {
+  display: flex;
+  justify-content: end;
+  padding-top: 16px;
+  text-align: end;
+}
+
+.upload__edit input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 0;
+  height: 100%;
+}
