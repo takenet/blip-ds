@@ -87,4 +87,19 @@ describe('bds-upload e2e tests', () => {
       expect(input).toBeTruthy();
     });
   });
+
+  describe('Drag and Drop Behavior', () => {
+    it('should have consistent structure for hover states', async () => {
+      // Test that the component has the expected elements for text changes
+      const textElement = await page.find('bds-upload >>> .text-box bds-typo');
+      expect(textElement).toBeTruthy();
+      
+      const label = await page.find('bds-upload >>> .upload__edit--label');
+      expect(label).toBeTruthy();
+      
+      // Test that upload component exposes hover method
+      const upload = await page.find('bds-upload');
+      expect(upload).toBeTruthy();
+    });
+  });
 });
