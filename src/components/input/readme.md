@@ -132,6 +132,7 @@ Type: `Promise<void>`
 
  - [bds-datepicker](../datepicker)
  - [bds-rich-text](../rict-text)
+ - [bds-search-anywhere](../search-anywhere)
 
 ### Depends on
 
@@ -148,6 +149,7 @@ graph TD;
   bds-counter-text --> bds-typo
   bds-datepicker --> bds-input
   bds-rich-text --> bds-input
+  bds-search-anywhere --> bds-input
   style bds-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
