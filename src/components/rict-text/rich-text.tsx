@@ -483,9 +483,10 @@ export class RichText {
     wrapper.appendChild(content);
     range.insertNode(wrapper);
 
-    // Remove tags vazias no editor
+    // Remove tags vazias no editor (but preserve whitespace-only elements)
     this.editor.querySelectorAll('*').forEach((el) => {
-      if (!el.textContent.trim() && el.children.length === 0) {
+      // Only remove if completely empty (no text at all) and no children
+      if (!el.textContent && el.children.length === 0 && el.tagName !== 'BR') {
         el.remove();
       }
     });
@@ -781,11 +782,13 @@ export class RichText {
 
     // Converte cada linha do texto colado em <p class="line">
     const fragment = document.createDocumentFragment();
-    plainText.split('\n').forEach((line) => {
-      if (line.trim()) {
+    plainText.split('\n').forEach((line, index) => {
+      // Preserve all lines including those with only whitespace
+      // Only skip completely empty lines (but keep the first line even if empty)
+      if (line.length > 0 || index === 0) {
         const p = document.createElement('p');
         p.classList.add('line');
-        p.textContent = line.trim();
+        p.textContent = line; // Preserve all whitespace
         fragment.appendChild(p);
       }
     });
@@ -833,9 +836,34 @@ export class RichText {
       selectedLines.add(endElement);
     }
 
-    // Remove a formatação de cada linha
+    // Remove a formatação de cada linha preservando whitespace
     selectedLines.forEach((line) => {
-      line.innerHTML = line.textContent; // Remove todas as tags HTML
+      // Check if we have proper DOM node methods
+      if (line.childNodes && typeof line.removeChild === 'function' && typeof line.appendChild === 'function') {
+        // Preserve text nodes and whitespace by unwrapping formatting tags
+        const textNodes: Node[] = [];
+        const collectTextNodes = (node: Node) => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            textNodes.push(node);
+          } else if (node.nodeType === Node.ELEMENT_NODE && node.childNodes) {
+            Array.from(node.childNodes).forEach(collectTextNodes);
+          }
+        };
+        
+        Array.from(line.childNodes).forEach(collectTextNodes);
+        
+        // Clear the line and add back only text nodes
+        while (line.firstChild) {
+          line.removeChild(line.firstChild);
+        }
+        textNodes.forEach((textNode) => {
+          line.appendChild(textNode.cloneNode(true));
+        });
+      } else {
+        // Fallback for mock objects or incomplete DOM nodes
+        line.innerHTML = line.textContent;
+      }
+      
       line.style.textAlign = ''; // Remove o alinhamento
     });
 
