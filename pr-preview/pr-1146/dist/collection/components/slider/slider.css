@@ -1,0 +1,164 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 32px;
+}
+
+.track-bg {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  inset: 0 8px;
+  pointer-events: none;
+}
+.track-bg .progress-bar {
+  position: absolute;
+  height: 4px;
+  border-radius: 1rem;
+  z-index: 2;
+}
+.track-bg .progress-bar-liner {
+  background-color: var(--color-primary, rgb(30, 107, 241));
+}
+.track-bg .progress-bar-tooltip {
+  position: absolute;
+  top: -6px;
+  right: -0.5rem;
+}
+.track-bg .progress-bar-thumb {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color-primary, rgb(30, 107, 241));
+  z-index: 0;
+}
+.track-bg .progress-bar-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-hover, rgba(0, 0, 0, 0.08));
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+.track-bg .progress-bar-hover .progress-bar-thumb::before {
+  transform: scale(2);
+}
+.track-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 4px;
+  background-color: var(--color-content-default, rgb(40, 40, 40));
+  opacity: 0.16;
+  border-radius: 1rem;
+}
+.track-bg .step {
+  position: relative;
+  width: 2px;
+  height: 8px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-content-disable, rgb(89, 89, 89));
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.track-bg .step .label-step {
+  margin-top: 1rem;
+}
+
+.element-min {
+  position: relative;
+  height: 4px;
+  background-color: var(--color-primary, rgb(30, 107, 241));
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.element-max {
+  position: relative;
+  height: 4px;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.input_slide {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  height: 4px;
+  position: relative;
+  border-radius: 1rem;
+  background: transparent;
+  color: -internal-light-dark(transparent, transparent);
+}
+.input_slide.has_min {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 0;
+}
+.input_slide.has_max {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input_slide:hover .input_slide::-webkit-slider-thumb,
+.input_slide:hover .input_slide::-moz-range-thumb {
+  -webkit-appearance: none;
+}
+
+/* Thumb: webkit */
+.input_slide::-webkit-slider-thumb,
+.input_slide::-moz-range-thumb {
+  -webkit-appearance: none;
+  position: relative;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: none;
+}
+
+.group_slide {
+  position: relative;
+  width: 100%;
+}
+.group_slide .input_slide {
+  width: inherit;
+  position: absolute;
+}
+.group_slide .input_slide_start {
+  left: 0;
+}
+.group_slide .input_slide_end {
+  right: 0;
+}
+.group_slide .input_slide::-webkit-slider-thumb,
+.group_slide .input_slide::-moz-range-thumb {
+  -webkit-appearance: none;
+}
