@@ -90,6 +90,16 @@ describe('bds-menu', () => {
     expect(outzone).toBeNull();
   });
 
+  it('should apply part attribute for styling', async () => {
+    const page = await newSpecPage({
+      components: [BdsMenu],
+      html: `<bds-menu></bds-menu>`,
+    });
+
+    const element = page.root.shadowRoot.querySelector('[part="bds-menu__container"]');
+    expect(element).toBeTruthy();
+  });
+
   describe('position variants', () => {
     it('should render with right position', async () => {
       const page = await newSpecPage({
@@ -327,7 +337,7 @@ describe('bds-menu', () => {
       expect(page.root).toEqualHtml(`
         <bds-menu>
           <mock:shadow-root>
-            <div class="menu menu__right" style="top: 0px; left: 0px;">
+            <div class="menu menu__right" part="bds-menu__container" style="top: 0px; left: 0px;">
               <slot></slot>
             </div>
           </mock:shadow-root>
