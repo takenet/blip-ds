@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch, Listen } from '@stencil/core';
+import { Component, Prop, Element, Event, EventEmitter, h, Host, State, Method, Watch } from '@stencil/core';
 import { LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { colorsVariants } from '../loading-spinner/loading-spinner';
 
@@ -227,7 +227,6 @@ export class Button {
     return <bds-loading-spinner size="extra-small" color={this.loadingColor}></bds-loading-spinner>;
   }
 
-  @Listen('click', { capture: true })
   handleClick(ev: PointerEvent | KeyboardEvent): void {
     if (!this.disabled) {
       this.bdsClick.emit(ev);
