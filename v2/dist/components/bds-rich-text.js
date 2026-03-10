@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
 import { e as getParentsUntil } from './p-BNEKIkjk.js';
-import { d as defineCustomElement$a } from './p-BOnbJ0j9.js';
+import { d as defineCustomElement$a } from './p-IFUPX8tC.js';
 import { d as defineCustomElement$9 } from './p-B97ExyrQ.js';
 import { d as defineCustomElement$8 } from './p-BekRLR1J.js';
 import { d as defineCustomElement$7 } from './p-mCuNr11T.js';

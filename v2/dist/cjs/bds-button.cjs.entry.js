@@ -175,7 +175,7 @@ const Button = class {
     }
     ;
     render() {
-        return (index.h(index.Host, { key: '7339c555922e55b122fc2c081200798e0409393d', class: { host: true, block: this.block || this.fullWidth, group: this.group } }, index.h("div", { key: 'b4944f21815aa4ea5ab836ed3781b27047406beb', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), index.h("button", { key: '2d094768de21e406dbb5bafef56ae628af980719', onClick: (ev) => this.handleClick(ev), disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
+        return (index.h(index.Host, { key: '7339c555922e55b122fc2c081200798e0409393d', class: { host: true, block: this.block || this.fullWidth, group: this.group } }, index.h("div", { key: 'b4944f21815aa4ea5ab836ed3781b27047406beb', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), index.h("button", { key: '17e1f11be43cf46d7a823a08a4cae74177de3b0f', disabled: this.disabled, tabindex: "-1", "aria-disabled": this.disabled ? 'true' : 'false', "aria-live": "assertive", type: this.type, class: {
                 button: true,
                 'button--block': this.block,
                 'button--full-width': this.fullWidth,
