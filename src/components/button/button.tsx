@@ -250,7 +250,6 @@ export class Button {
       <Host class={{ host: true, block: this.block || this.fullWidth, group: this.group }}>
         <div tabindex="0" onKeyDown={(ev) => this.handleClick(ev)} class="focus"></div>
         <button
-          onClick={(ev) => this.handleClick(ev)}
           disabled={this.disabled}
           tabindex="-1"
           aria-disabled={this.disabled ? 'true' : 'false'}
