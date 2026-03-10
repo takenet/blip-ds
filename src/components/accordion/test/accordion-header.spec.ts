@@ -288,4 +288,21 @@ describe('bds-accordion-header', () => {
     expect(toggleButton).toBeTruthy();
     expect(headerDiv.getAttribute('data-test')).toBe('complete-header');
   });
+
+  it('should default iconColor to inherit', () => {
+    expect(component.iconColor).toBe('inherit');
+  });
+
+  it('should render with custom iconColor', async () => {
+    page = await newSpecPage({
+      components: [AccordionHeader],
+      html: `<bds-accordion-header icon="user" icon-color="primary"></bds-accordion-header>`,
+    });
+
+    const iconElement = page.root.shadowRoot.querySelector('bds-icon[name="user"]');
+    expect(iconElement.getAttribute('color')).toBe('primary');
+
+    const arrowIcon = page.root.shadowRoot.querySelector('bds-icon[name="arrow-down"]');
+    expect(arrowIcon.getAttribute('color')).toBe('primary');
+  });
 });

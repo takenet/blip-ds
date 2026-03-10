@@ -87,4 +87,31 @@ describe('bds-upload e2e tests', () => {
       expect(input).toBeTruthy();
     });
   });
+
+  describe('showListPreview', () => {
+    it('should default showListPreview to true', async () => {
+      const upload = await page.find('bds-upload');
+      const showListPreview = await upload.getProperty('showListPreview');
+      expect(showListPreview).toBe(true);
+    });
+
+    it('should accept showListPreview false', async () => {
+      const page = await newE2EPage({
+        html: `<bds-upload show-list-preview="false"></bds-upload>`,
+      });
+
+      const upload = await page.find('bds-upload');
+      const showListPreview = await upload.getProperty('showListPreview');
+      expect(showListPreview).toBe(false);
+    });
+
+    it('should update showListPreview dynamically', async () => {
+      const upload = await page.find('bds-upload');
+      await upload.setProperty('showListPreview', false);
+      await page.waitForChanges();
+
+      const showListPreview = await upload.getProperty('showListPreview');
+      expect(showListPreview).toBe(false);
+    });
+  });
 });

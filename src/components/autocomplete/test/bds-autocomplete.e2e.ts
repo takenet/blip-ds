@@ -214,4 +214,96 @@ describe('bds-autocomplete e2e tests', () => {
       expect(focusedElement).toBe('BDS-AUTOCOMPLETE');
     });
   });
+
+  describe('Language (i18n)', () => {
+    it('should default language to pt_BR', async () => {
+      const autocomplete = await page.find('bds-autocomplete');
+      const language = await autocomplete.getProperty('language');
+      expect(language).toBe('pt_BR');
+    });
+
+    it('should accept en_US language', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-autocomplete language="en_US" selection-type="multiple">
+            <bds-select-option value="1">Option 1</bds-select-option>
+            <bds-select-option value="2">Option 2</bds-select-option>
+          </bds-autocomplete>
+        `,
+      });
+
+      const autocomplete = await page.find('bds-autocomplete');
+      const language = await autocomplete.getProperty('language');
+      expect(language).toBe('en_US');
+    });
+
+    it('should accept es_ES language', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-autocomplete language="es_ES" selection-type="multiple">
+            <bds-select-option value="1">Option 1</bds-select-option>
+          </bds-autocomplete>
+        `,
+      });
+
+      const autocomplete = await page.find('bds-autocomplete');
+      const language = await autocomplete.getProperty('language');
+      expect(language).toBe('es_ES');
+    });
+
+    it('should update language dynamically', async () => {
+      const autocomplete = await page.find('bds-autocomplete');
+      await autocomplete.setProperty('language', 'en_US');
+      await page.waitForChanges();
+
+      const language = await autocomplete.getProperty('language');
+      expect(language).toBe('en_US');
+    });
+  });
+
+  describe('Dropdown Reopen', () => {
+    it('should reopen dropdown when typing while closed', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-autocomplete data-test="bds-autocomplete">
+            <bds-select-option value="1">Millie</bds-select-option>
+            <bds-select-option value="2">Finn</bds-select-option>
+          </bds-autocomplete>
+        `,
+      });
+
+      const autocomplete = await page.find('bds-autocomplete');
+
+      // Open the dropdown
+      await autocomplete.click();
+      await page.waitForChanges();
+
+      // Select an option to close the dropdown
+      const option = await page.find('bds-select-option[value="1"]');
+      await option.click();
+      await page.waitForChanges();
+
+      // Type again — dropdown should reopen
+      const inputElement = await page.find('bds-autocomplete >>> [data-test="bds-autocomplete"]');
+      await inputElement.type('m');
+      await page.waitForChanges();
+
+      const isOpen = await autocomplete.getProperty('isOpen');
+      expect(isOpen).toBe(true);
+    });
+
+    it('should not reopen dropdown when disabled and typing', async () => {
+      page = await newE2EPage({
+        html: `
+          <bds-autocomplete disabled="true" data-test="bds-autocomplete">
+            <bds-select-option value="1">Option 1</bds-select-option>
+          </bds-autocomplete>
+        `,
+      });
+
+      const autocomplete = await page.find('bds-autocomplete');
+      const isOpen = await autocomplete.getProperty('isOpen');
+      expect(isOpen).toBe(false);
+    });
+  });
 });

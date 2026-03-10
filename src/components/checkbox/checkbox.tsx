@@ -26,6 +26,14 @@ export class Checkbox {
   @Prop({ mutable: true, reflect: true }) checked = false;
 
   /**
+   * If `true`, the checkbox is in an indeterminate state.
+   * This is used when the checkbox is a parent of a list of checkboxes
+   * and some (but not all) of the child checkboxes are selected.
+   * Clicking when indeterminate will set the checkbox to checked.
+   */
+  @Prop({ mutable: true, reflect: true }) indeterminate = false;
+
+  /**
    * If `true`, the user cannot interact with the checkbox.
    */
   @Prop() disabled = false;
@@ -42,9 +50,7 @@ export class Checkbox {
   /**
    * Emitted when the value has changed.
    */
-  @Event() bdsChange!: EventEmitter<{
-    checked: boolean;
-  }>;
+  @Event() bdsChange!: EventEmitter;
 
   /**
    * Emitted when the input has changed.
@@ -63,17 +69,29 @@ export class Checkbox {
 
   @Method()
   async toggle() {
-    this.checked = !this.checked;
+    if (this.indeterminate) {
+      this.indeterminate = false;
+      this.checked = true;
+    } else {
+      this.checked = !this.checked;
+    }
     this.bdsChange.emit({
       checked: this.checked,
+      indeterminate: this.indeterminate,
     });
   }
 
   private onClick = (ev: Event): void => {
     ev.stopPropagation();
-    this.checked = !this.checked;
+    if (this.indeterminate) {
+      this.indeterminate = false;
+      this.checked = true;
+    } else {
+      this.checked = !this.checked;
+    }
     this.bdsChange.emit({
       checked: this.checked,
+      indeterminate: this.indeterminate,
     });
   };
 
@@ -82,6 +100,14 @@ export class Checkbox {
   };
 
   private getStyleState = (): string => {
+    if (this.indeterminate && !this.disabled) {
+      return 'checkbox--indeterminate';
+    }
+
+    if (this.indeterminate && this.disabled) {
+      return 'checkbox--indeterminate-disabled';
+    }
+
     if (this.checked && !this.disabled) {
       return 'checkbox--selected';
     }
@@ -101,14 +127,28 @@ export class Checkbox {
     return '';
   };
 
-  private handleKeyDown(event) {
-    if (event.key == 'Enter') {
-      this.checked = !this.checked;
+  private handleKeyDown(event: KeyboardEvent): void {
+    if (this.disabled) {
+      return;
+    }
+
+    if (event.key === 'Enter') {
+      if (this.indeterminate) {
+        this.indeterminate = false;
+        this.checked = true;
+      } else {
+        this.checked = !this.checked;
+      }
       this.bdsChange.emit({
         checked: this.checked,
+        indeterminate: this.indeterminate,
       });
     }
   }
+
+  private getIconName = (): string => {
+    return this.indeterminate ? 'less' : 'true';
+  };
 
   render(): HTMLElement {
     const styleState = this.getStyleState();
@@ -132,7 +172,7 @@ export class Checkbox {
         ></input>
         <label class="checkbox__label" htmlFor={this.checkBoxId}>
           <div class="checkbox__icon" tabindex="0" onKeyDown={this.handleKeyDown.bind(this)}>
-            <bds-icon class="checkbox__icon__svg" size="x-small" name="true" color="inherit"></bds-icon>
+            <bds-icon class="checkbox__icon__svg" size="x-small" name={this.getIconName()} color="inherit"></bds-icon>
           </div>
           {this.label && (
             <bds-typo class="checkbox__text" variant="fs-14" tag="span">

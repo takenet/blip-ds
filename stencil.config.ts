@@ -52,6 +52,9 @@ export const config: Config = {
     transform: {
       '^.+\\.svg$': '<rootDir>/jest.svg-transform.js',
     },
+    moduleNameMapper: {
+      '^blip-tokens/build/json/(.+)$': '<rootDir>/node_modules/blip-tokens/build/json/$1',
+    },
   },
   devServer: {
     reloadStrategy: 'pageReload',

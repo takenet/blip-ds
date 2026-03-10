@@ -86,4 +86,37 @@ describe('bds-sidebar e2e tests', () => {
       expect(sidebarPosition).toBe('left');
     });
   });
+
+  describe('Background', () => {
+    it('should apply surface-0 background class', async () => {
+      const page = await newE2EPage({
+        html: `<bds-sidebar background="surface-0" is-open="true"></bds-sidebar>`,
+      });
+
+      const sidebar = await page.find('bds-sidebar >>> .sidebar');
+      expect(sidebar).toHaveClass('background_surface-0');
+    });
+
+    it('should default to surface-1 background when not specified', async () => {
+      const page = await newE2EPage({
+        html: `<bds-sidebar is-open="true"></bds-sidebar>`,
+      });
+
+      const sidebar = await page.find('bds-sidebar >>> .sidebar');
+      expect(sidebar).toHaveClass('background_surface-1');
+    });
+
+    it('should update background property dynamically', async () => {
+      const page = await newE2EPage({
+        html: `<bds-sidebar background="surface-1" is-open="true"></bds-sidebar>`,
+      });
+
+      const sidebarEl = await page.find('bds-sidebar');
+      await sidebarEl.setProperty('background', 'surface-0');
+      await page.waitForChanges();
+
+      const background = await sidebarEl.getProperty('background');
+      expect(background).toBe('surface-0');
+    });
+  });
 });
