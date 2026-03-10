@@ -372,6 +372,8 @@ describe('bds-button', () => {
       // Regression test: before the fix, @Listen('click', { capture: true }) on the host
       // combined with onClick on the inner <button> caused handleClick() to run twice,
       // emitting bdsClick twice per user click.
+      // Fix: keep @Listen(capture) on host but remove onClick from inner <button> so
+      // handleClick fires exactly once via the capture listener.
       const page = await newSpecPage({
         components: [Button, MockLoadingSpinner, MockIcon],
         html: `<bds-button>Click Me</bds-button>`,
@@ -386,10 +388,9 @@ describe('bds-button', () => {
       expect(clickSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should not emit bdsClick when clicking the host element directly', async () => {
-      // The @Listen('click', { capture: true }) decorator was removed so that
-      // only the inner <button>'s onClick handler emits bdsClick.
-      // A programmatic click on the host should not trigger bdsClick.
+    it('should emit bdsClick when clicking the host element directly', async () => {
+      // The @Listen('click', { capture: true }) decorator on the host means that
+      // any click on bds-button (host or shadow children) emits bdsClick exactly once.
       const page = await newSpecPage({
         components: [Button, MockLoadingSpinner, MockIcon],
         html: `<bds-button>Click Me</bds-button>`,
@@ -398,10 +399,10 @@ describe('bds-button', () => {
       const clickSpy = jest.fn();
       page.root.addEventListener('bdsClick', clickSpy);
 
-      // Dispatch a click event directly on the host (not on the inner button)
+      // Dispatch a click event directly on the host
       page.root.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
 
-      expect(clickSpy).not.toHaveBeenCalled();
+      expect(clickSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should not emit click event when disabled', async () => {
