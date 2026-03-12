@@ -31,14 +31,14 @@
 
 ### Depends on
 
-- [bds-tooltip](../tooltip)
 - [bds-typo](../typo)
+- [bds-tooltip](../tooltip)
 
 ### Graph
 ```mermaid
 graph TD;
-  bds-slider --> bds-tooltip
   bds-slider --> bds-typo
+  bds-slider --> bds-tooltip
   bds-tooltip --> bds-typo
   style bds-slider fill:#f9f,stroke:#333,stroke-width:4px
 ```
