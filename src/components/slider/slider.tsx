@@ -99,7 +99,7 @@ export class Slider {
   componentDidUpdate() {
     this.progressBar.style.width = `${this.valuePercent(this.inputSlide)}%`;
     const valueName = this.emiterChange(parseInt(this.inputSlide.value));
-    this.inputValue = this.stepArray.length > 0 ? valueName.name : this.inputSlide.value;
+    this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : this.inputSlide.value;
   }
 
   private refInputSlide = (el: HTMLInputElement): void => {
@@ -123,11 +123,15 @@ export class Slider {
     return percentage;
   };
 
+  private getTooltipText = (item: StepOption): string => {
+    return item.tooltip !== undefined ? item.tooltip : item.name.toString();
+  };
+
   private onInputSlide = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.progressBar.style.width = `${this.valuePercent(input)}%`;
     const valueName = this.emiterChange(parseInt(input.value));
-    this.inputValue = this.stepArray.length > 0 ? valueName.name : input.value;
+    this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : input.value;
     this.bdsChange.emit(valueName);
   };
 

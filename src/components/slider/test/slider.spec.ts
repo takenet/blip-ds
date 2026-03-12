@@ -312,6 +312,61 @@ describe('bds-slider', () => {
     expect(result).toEqual({ value: 1, name: 'High' });
   });
 
+  it('should use tooltip text when tooltip property is provided in dataMarkers', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider></bds-slider>',
+    });
+
+    page.rootInstance.dataMarkers = [
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold', tooltip: 'Melhor custo-benefício' },
+    ];
+
+    page.rootInstance.componentWillLoad();
+    await page.waitForChanges();
+
+    expect(page.rootInstance.getTooltipText({ value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' }))
+      .toBe('Plano básico com recursos limitados');
+  });
+
+  it('should fallback to name when tooltip property is not provided in dataMarkers', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider></bds-slider>',
+    });
+
+    page.rootInstance.dataMarkers = [
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+    ];
+
+    page.rootInstance.componentWillLoad();
+    await page.waitForChanges();
+
+    expect(page.rootInstance.getTooltipText({ value: 1, name: 'plus' })).toBe('plus');
+  });
+
+  it('should parse dataMarkers string with tooltip property', async () => {
+    const dataMarkers = JSON.stringify([
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold', tooltip: 'Melhor custo-benefício' },
+    ]);
+
+    const page = await newSpecPage({
+      components: [Slider],
+      html: `<bds-slider data-markers='${dataMarkers}'></bds-slider>`,
+    });
+
+    expect(page.rootInstance.internalOptions).toEqual([
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold', tooltip: 'Melhor custo-benefício' },
+    ]);
+  });
+
   it('should emit correct value for numeric steps', async () => {
     const page = await newSpecPage({
       components: [Slider],
