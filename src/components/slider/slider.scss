@@ -16,7 +16,6 @@
     position: absolute;
     height: 4px;
     border-radius: 1rem;
-    z-index: 2;
     &-liner {
       background-color: $color-primary;
     }
@@ -31,7 +30,6 @@
       height: 1rem;
       border-radius: 1rem;
       background-color: $color-primary;
-      z-index: 0;
 
       &::before {
         content: '';
@@ -75,6 +73,17 @@
     border-bottom-right-radius: 1rem;
     & .label-step {
       margin-top: 1rem;
+      white-space: nowrap;
+    }
+    &.step--first {
+      justify-content: flex-start;
+    }
+    &.step--last {
+      & .label-step {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
     }
   }
 }

@@ -34,6 +34,13 @@ Type: `Promise<void>`
 
 
 
+## Shadow Parts
+
+| Part                    | Description |
+| ----------------------- | ----------- |
+| `"bds-menu__container"` |             |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

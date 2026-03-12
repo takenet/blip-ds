@@ -174,6 +174,12 @@ export class Slider {
           data-test={this.dataTest}
         />
         <div class="track-bg">
+          {this.markers &&
+            this.stepArray.map((item, index) => (
+              <div key={index} class={{ step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 }}>
+                {this.label && <bds-typo class="label-step" variant="fs-10">{`${item.name}`}</bds-typo>}
+              </div>
+            ))}
           <div
             class={{ [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }}
             ref={this.refProgressBar}
@@ -187,12 +193,6 @@ export class Slider {
               <div class={{ [`progress-bar-thumb`]: true }}></div>
             </bds-tooltip>
           </div>
-          {this.markers &&
-            this.stepArray.map((item, index) => (
-              <div key={index} class={`step`}>
-                {this.label && <bds-typo class="label-step" variant="fs-10">{`${item.name}`}</bds-typo>}
-              </div>
-            ))}
         </div>
       </Host>
     );
