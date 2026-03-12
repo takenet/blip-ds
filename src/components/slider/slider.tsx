@@ -14,6 +14,7 @@ export class Slider {
   @State() stepArray?: StepOption[];
   @State() internalOptions?: StepOption[];
   @State() inputValue?: string = this.value?.toString() ?? (this.min ? this.min.toString() : '0');
+  @State() tooltipPosition: 'top-center' | 'top-left' | 'top-right' = 'top-center';
 
   /**
    * Step, property to insert steps into the input range.
@@ -73,11 +74,23 @@ export class Slider {
         this.internalOptions = this.dataMarkers;
         this.stepArray = this.internalOptions;
       }
+      const initialIndex = this.value ?? 0;
+      const initialItem = this.stepArray[initialIndex];
+      if (initialItem) {
+        this.inputValue = this.getTooltipText(initialItem);
+      }
+      const percent = this.stepArray.length > 1 ? (initialIndex / (this.stepArray.length - 1)) * 100 : 50;
+      this.tooltipPosition = this.computeTooltipPosition(percent);
     } else {
       this.stepArray = this.arrayToSteps(
         (this.max - this.min) / this.step,
         Number.isInteger((this.max - this.min) / this.step),
       ) as StepOption[];
+      const min = this.min ?? 0;
+      const max = this.max ?? 100;
+      const value = this.value ?? min;
+      const percent = max !== min ? ((value - min) * 100) / (max - min) : 50;
+      this.tooltipPosition = this.computeTooltipPosition(percent);
     }
   }
 
@@ -99,7 +112,8 @@ export class Slider {
   componentDidUpdate() {
     this.progressBar.style.width = `${this.valuePercent(this.inputSlide)}%`;
     const valueName = this.emiterChange(parseInt(this.inputSlide.value));
-    this.inputValue = this.stepArray.length > 0 ? valueName.name : this.inputSlide.value;
+    this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : this.inputSlide.value;
+    this.tooltipPosition = this.computeTooltipPosition(this.valuePercent(this.inputSlide));
   }
 
   private refInputSlide = (el: HTMLInputElement): void => {
@@ -123,11 +137,22 @@ export class Slider {
     return percentage;
   };
 
+  private computeTooltipPosition = (percent: number): 'top-center' | 'top-left' | 'top-right' => {
+    if (percent <= 0) return 'top-right';
+    if (percent >= 100) return 'top-left';
+    return 'top-center';
+  };
+
+  private getTooltipText = (item: StepOption): string => {
+    return item.tooltip !== undefined ? item.tooltip : item.name.toString();
+  };
+
   private onInputSlide = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     this.progressBar.style.width = `${this.valuePercent(input)}%`;
     const valueName = this.emiterChange(parseInt(input.value));
-    this.inputValue = this.stepArray.length > 0 ? valueName.name : input.value;
+    this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : input.value;
+    this.tooltipPosition = this.computeTooltipPosition(this.valuePercent(input));
     this.bdsChange.emit(valueName);
   };
 
@@ -187,7 +212,7 @@ export class Slider {
             <bds-tooltip
               ref={this.refBdsTooltip}
               class={{ [`progress-bar-tooltip`]: true }}
-              position="top-center"
+              position={this.tooltipPosition}
               tooltip-text={this.inputValue}
             >
               <div class={{ [`progress-bar-thumb`]: true }}></div>
