@@ -7,18 +7,19 @@
 
 ## Properties
 
-| Property         | Attribute           | Description                                                                                                              | Type                            | Default     |
-| ---------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ----------- |
-| `accept`         | `accept`            | Used to accept a especific type of file.                                                                                 | `string`                        | `undefined` |
-| `dataAccept`     | `data-accept`       | Used to accept a especific type of file.                                                                                 | `string \| string[]`            | `[]`        |
-| `dtButtonDelete` | `dt-button-delete`  | Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear. | `string`                        | `null`      |
-| `dtInputFiles`   | `dt-input-files`    | Data test is the prop to specifically test the component action object. dtInputFiles is the data-test to button clear.   | `string`                        | `null`      |
-| `dtLabelAddFile` | `dt-label-add-file` | Data test is the prop to specifically test the component action object. dtLabelAddFile is the data-test to button clear. | `string`                        | `null`      |
-| `error`          | `error`             | Used for add a error message. In case a verify.                                                                          | `string`                        | `undefined` |
-| `language`       | `language`          | Set the language for fixed texts.                                                                                        | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`   |
-| `multiple`       | `multiple`          | Used to allow upload multiple files.                                                                                     | `boolean`                       | `undefined` |
-| `subtitle`       | `subtitle`          | Used for add a text on subtitle.                                                                                         | `string`                        | `undefined` |
-| `titleName`      | `title-name`        | Used for add a text on title.                                                                                            | `string`                        | `undefined` |
+| Property          | Attribute           | Description                                                                                                              | Type                            | Default     |
+| ----------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ----------- |
+| `accept`          | `accept`            | Used to accept a especific type of file.                                                                                 | `string`                        | `undefined` |
+| `dataAccept`      | `data-accept`       | Used to accept a especific type of file.                                                                                 | `string \| string[]`            | `[]`        |
+| `dtButtonDelete`  | `dt-button-delete`  | Data test is the prop to specifically test the component action object. dtButtonDelete is the data-test to button clear. | `string`                        | `null`      |
+| `dtInputFiles`    | `dt-input-files`    | Data test is the prop to specifically test the component action object. dtInputFiles is the data-test to button clear.   | `string`                        | `null`      |
+| `dtLabelAddFile`  | `dt-label-add-file` | Data test is the prop to specifically test the component action object. dtLabelAddFile is the data-test to button clear. | `string`                        | `null`      |
+| `error`           | `error`             | Used for add a error message. In case a verify.                                                                          | `string`                        | `undefined` |
+| `language`        | `language`          | Set the language for fixed texts.                                                                                        | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`   |
+| `multiple`        | `multiple`          | Used to allow upload multiple files.                                                                                     | `boolean`                       | `undefined` |
+| `showListPreview` | `show-list-preview` | Used to show or hide the list preview of uploaded files.                                                                 | `boolean`                       | `true`      |
+| `subtitle`        | `subtitle`          | Used for add a text on subtitle.                                                                                         | `string`                        | `undefined` |
+| `titleName`       | `title-name`        | Used for add a text on title.                                                                                            | `string`                        | `undefined` |
 
 
 ## Events

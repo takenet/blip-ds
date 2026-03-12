@@ -48,6 +48,29 @@ describe('bds-slider', () => {
     expect(steps.length).toBeGreaterThan(0);
   });
 
+  it('should apply step--first class to the first step and step--last class to the last step', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider min="0" max="10" step="2" markers="true"></bds-slider>',
+    });
+
+    const steps = page.root.shadowRoot.querySelectorAll('.step');
+    expect(steps.length).toBeGreaterThan(1);
+
+    const firstStep = steps[0];
+    const lastStep = steps[steps.length - 1];
+
+    expect(firstStep).toHaveClass('step--first');
+    expect(lastStep).toHaveClass('step--last');
+
+    // Middle steps should not have first/last classes
+    if (steps.length > 2) {
+      const middleStep = steps[1];
+      expect(middleStep).not.toHaveClass('step--first');
+      expect(middleStep).not.toHaveClass('step--last');
+    }
+  });
+
   it('should render with labels when both markers and label are enabled', async () => {
     const page = await newSpecPage({
       components: [Slider],

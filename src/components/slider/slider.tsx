@@ -189,7 +189,7 @@ export class Slider {
           </div>
           {this.markers &&
             this.stepArray.map((item, index) => (
-              <div key={index} class={`step`}>
+              <div key={index} class={{ step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 }}>
                 {this.label && <bds-typo class="label-step" variant="fs-10">{`${item.name}`}</bds-typo>}
               </div>
             ))}
