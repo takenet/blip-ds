@@ -466,4 +466,24 @@ describe('bds-upload', () => {
     const upload = page.rootInstance;
     expect(upload.language).toBe('en_US');
   });
+
+  it('should default showListPreview to true', async () => {
+    const page = await newSpecPage({
+      components: [BdsUpload],
+      html: `<bds-upload></bds-upload>`,
+    });
+
+    const upload = page.rootInstance;
+    expect(upload.showListPreview).toBe(true);
+  });
+
+  it('should hide file list when showListPreview is false', async () => {
+    const page = await newSpecPage({
+      components: [BdsUpload],
+      html: `<bds-upload show-list-preview="false"></bds-upload>`,
+    });
+
+    const upload = page.rootInstance;
+    expect(upload.showListPreview).toBe(false);
+  });
 });

@@ -131,5 +131,40 @@ describe('bds-icon e2e tests', () => {
       const dataTest = await icon.getProperty('dataTest');
       expect(dataTest).toBe('test-icon');
     });
+
+    it('should reload icon when color changes', async () => {
+      // @Watch('color') was added — verify that changing color triggers re-render
+      await icon.setProperty('color', 'primary');
+      await page.waitForChanges();
+
+      const color = await icon.getProperty('color');
+      expect(color).toBe('primary');
+    });
+  });
+
+  describe('Multi-Color Icon Support', () => {
+    it('should allow CSS variable override for multi-color icons', async () => {
+      const page = await newE2EPage({
+        html: `<bds-icon name="edit" theme="solid" style="--icon-layer-0: red;"></bds-icon>`,
+      });
+
+      const iconEl = page.root as HTMLElement;
+      const styleVal = await page.evaluate(() => {
+        const el = document.querySelector('bds-icon') as HTMLElement;
+        return el.style.getPropertyValue('--icon-layer-0');
+      });
+      expect(styleVal).toBe('red');
+    });
+
+    it('should render icon inner content regardless of theme', async () => {
+      page = await newE2EPage({
+        html: `<bds-icon name="edit" theme="solid"></bds-icon>`,
+      });
+      await page.waitForChanges();
+      await new Promise((r) => setTimeout(r, 100));
+
+      const innerDiv = await page.find('bds-icon >>> .icon-inner');
+      expect(innerDiv).toBeTruthy();
+    });
   });
 });

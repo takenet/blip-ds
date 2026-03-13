@@ -86,6 +86,16 @@ describe('bds-sidebar', () => {
     expect(sidebar.classList.contains('background_surface-4')).toBe(true);
   });
 
+  it('should render with surface-0 background', async () => {
+    const page = await newSpecPage({
+      components: [Sidebar],
+      html: '<bds-sidebar background="surface-0"></bds-sidebar>',
+    });
+
+    const sidebar = page.root.shadowRoot.querySelector('.sidebar');
+    expect(sidebar.classList.contains('background_surface-0')).toBe(true);
+  });
+
   it('should render without margin when specified', async () => {
     const page = await newSpecPage({
       components: [Sidebar],

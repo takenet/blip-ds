@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { collapses } from "./components/accordion/accordion-group";
 import { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 import { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
+import { languages } from "./components/autocomplete/languages";
 import { SelectionType } from "./components/autocomplete/autocomplete";
 import { avatarSize, colors } from "./components/avatar/avatar";
 import { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
@@ -32,7 +33,7 @@ import { ColorChipTag } from "./components/chip-tag/chip-tag";
 import { CounterTextRule } from "./components/counter-text/counter-text-interface";
 import { DropdownPostionType, typeDate } from "./components/datepicker/datepicker";
 import { BannerVariant as BannerVariant1 } from "./components/banner/banner";
-import { languages } from "./utils/languages";
+import { languages as languages1 } from "./utils/languages";
 import { DaysList } from "./components/datepicker/datepicker-interface";
 import { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 import { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
@@ -44,7 +45,7 @@ import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
-import { languages as languages1 } from "./components/input-phone-number/input-phone-number";
+import { languages as languages2 } from "./components/input-phone-number/input-phone-number";
 import { TypeList } from "./components/list/list";
 import { Data } from "./components/list/list-interface";
 import { TypeList as TypeList1 } from "./components/list/list";
@@ -60,7 +61,7 @@ import { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 import { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 import { PaginationOptionsPositionType } from "./components/pagination/pagination";
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-import { languages as languages2 } from "./components/rict-text/rich-text-interface";
+import { languages as languages3 } from "./components/rict-text/rich-text-interface";
 import { positionBar } from "./components/rict-text/rich-text";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
@@ -74,10 +75,11 @@ import { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-import { languages as languages3 } from "./components/upload/languages";
+import { languages as languages4 } from "./components/upload/languages";
 export { collapses } from "./components/accordion/accordion-group";
 export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 export { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
+export { languages } from "./components/autocomplete/languages";
 export { SelectionType } from "./components/autocomplete/autocomplete";
 export { avatarSize, colors } from "./components/avatar/avatar";
 export { avatarSize as avatarSize1 } from "./components/avatar-group/avatar-group";
@@ -102,7 +104,7 @@ export { ColorChipTag } from "./components/chip-tag/chip-tag";
 export { CounterTextRule } from "./components/counter-text/counter-text-interface";
 export { DropdownPostionType, typeDate } from "./components/datepicker/datepicker";
 export { BannerVariant as BannerVariant1 } from "./components/banner/banner";
-export { languages } from "./utils/languages";
+export { languages as languages1 } from "./utils/languages";
 export { DaysList } from "./components/datepicker/datepicker-interface";
 export { stateSelect } from "./components/datepicker/datepicker-period/datepicker-period";
 export { activeMode, DropdownPostionType as DropdownPostionType1 } from "./components/dropdown/dropdown";
@@ -114,7 +116,7 @@ export { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputT
 export { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 export { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 export { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
-export { languages as languages1 } from "./components/input-phone-number/input-phone-number";
+export { languages as languages2 } from "./components/input-phone-number/input-phone-number";
 export { TypeList } from "./components/list/list";
 export { Data } from "./components/list/list-interface";
 export { TypeList as TypeList1 } from "./components/list/list";
@@ -130,7 +132,7 @@ export { collapses as collapses3 } from "./components/nav-tree/nav-tree-item";
 export { justifyContent as justifyContent3, navbarBackground, orientation } from "./components/navbar/navbar";
 export { PaginationOptionsPositionType } from "./components/pagination/pagination";
 export { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
-export { languages as languages2 } from "./components/rict-text/rich-text-interface";
+export { languages as languages3 } from "./components/rict-text/rich-text-interface";
 export { positionBar } from "./components/rict-text/rich-text";
 export { TypeOption } from "./components/select-option/select-option";
 export { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
@@ -144,7 +146,7 @@ export { Themes as Themes1 } from "./components/theme-provider/theme-provider";
 export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantType } from "./components/toast/toast-interface";
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
-export { languages as languages3 } from "./components/upload/languages";
+export { languages as languages4 } from "./components/upload/languages";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -211,6 +213,11 @@ export namespace Components {
           * @default null
          */
         "icon"?: string;
+        /**
+          * Icon color for the accordion header icons.
+          * @default 'inherit'
+         */
+        "iconColor"?: string;
         "open": () => Promise<void>;
         "toggle": () => Promise<void>;
     }
@@ -293,6 +300,11 @@ export namespace Components {
           * @default ''
          */
         "label"?: string;
+        /**
+          * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+          * @default 'pt_BR'
+         */
+        "language"?: languages;
         /**
           * Is Loading, is the prop to enable that the component is loading.
           * @default false
@@ -846,6 +858,11 @@ export namespace Components {
         "disabled": boolean;
         "getInputElement": () => Promise<HTMLInputElement>;
         "getValue": () => Promise<boolean>;
+        /**
+          * If `true`, the checkbox is in an indeterminate state. This is used when the checkbox is a parent of a list of checkboxes and some (but not all) of the child checkboxes are selected. Clicking when indeterminate will set the checkbox to checked.
+          * @default false
+         */
+        "indeterminate": boolean;
         "label": string;
         /**
           * The name of the control, which is submitted with the form data.
@@ -1098,7 +1115,7 @@ export namespace Components {
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
           * @default 'pt_BR'
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * Message. Select type of date.
           * @default null
@@ -1174,7 +1191,7 @@ export namespace Components {
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
           * @default 'pt_BR'
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * StartDate. Insert a limiter to select the date period.
           * @default dateToDayList(defaultStartDate)
@@ -1230,7 +1247,7 @@ export namespace Components {
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
           * @default 'pt_BR'
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * StartDate. Insert a limiter to select the date period.
           * @default dateToDayList(defaultStartDate)
@@ -2006,7 +2023,7 @@ export namespace Components {
           * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
           * @default 'pt_BR'
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Mensagem de erro para validação numérica.
          */
@@ -2680,7 +2697,7 @@ export namespace Components {
           * Set the language for fixed texts.
           * @default 'pt_BR'
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * linkButton to define if component has Link Control.
           * @default true
@@ -3598,11 +3615,16 @@ export namespace Components {
           * Set the language for fixed texts.
           * @default 'pt_BR'
          */
-        "language"?: languages3;
+        "language"?: languages4;
         /**
           * Used to allow upload multiple files.
          */
         "multiple": boolean;
+        /**
+          * Used to show or hide the file list preview.
+          * @default true
+         */
+        "showListPreview"?: boolean;
         /**
           * Used for add a text on subtitle.
          */
@@ -3904,7 +3926,7 @@ declare global {
         "bdsChange": AutocompleteChangeEventDetail;
         "bdsSelectedChange": AutocompleteSelectedChangeEventDetail;
         "bdsMultiselectedChange": AutocompleteMultiSelectedChangeEventDetail;
-        "bdsInput": InputEvent;
+        "bdsInput": KeyboardEvent;
         "bdsCancel": AutocompleteChangeEventDetail;
         "bdsFocus": void;
         "bdsBlur": void;
@@ -4132,9 +4154,7 @@ declare global {
         new (): HTMLBdsCarouselItemElement;
     };
     interface HTMLBdsCheckboxElementEventMap {
-        "bdsChange": {
-    checked: boolean;
-  };
+        "bdsChange": any;
         "bdsInput": KeyboardEvent;
     }
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
@@ -5277,6 +5297,11 @@ declare namespace LocalJSX {
           * @default null
          */
         "icon"?: string;
+        /**
+          * Icon color for the accordion header icons.
+          * @default 'inherit'
+         */
+        "iconColor"?: string;
     }
     interface BdsAlert {
         /**
@@ -5357,6 +5382,11 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+          * @default 'pt_BR'
+         */
+        "language"?: languages;
+        /**
           * Is Loading, is the prop to enable that the component is loading.
           * @default false
          */
@@ -5380,7 +5410,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the input has changed.
          */
-        "onBdsInput"?: (event: BdsAutocompleteCustomEvent<InputEvent>) => void;
+        "onBdsInput"?: (event: BdsAutocompleteCustomEvent<KeyboardEvent>) => void;
         /**
           * Emitted when the selected value has changed.
          */
@@ -5949,6 +5979,11 @@ declare namespace LocalJSX {
           * @default false
          */
         "disabled"?: boolean;
+        /**
+          * If `true`, the checkbox is in an indeterminate state. This is used when the checkbox is a parent of a list of checkboxes and some (but not all) of the child checkboxes are selected. Clicking when indeterminate will set the checkbox to checked.
+          * @default false
+         */
+        "indeterminate"?: boolean;
         "label": string;
         /**
           * The name of the control, which is submitted with the form data.
@@ -5957,9 +5992,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onBdsChange"?: (event: BdsCheckboxCustomEvent<{
-    checked: boolean;
-  }>) => void;
+        "onBdsChange"?: (event: BdsCheckboxCustomEvent<any>) => void;
         /**
           * Emitted when the input has changed.
          */
@@ -6230,7 +6263,7 @@ declare namespace LocalJSX {
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
           * @default 'pt_BR'
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * Message. Select type of date.
           * @default null
@@ -6318,7 +6351,7 @@ declare namespace LocalJSX {
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
           * @default 'pt_BR'
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * bdsClickDayButton. Event to return when click on day button.
          */
@@ -6382,7 +6415,7 @@ declare namespace LocalJSX {
           * Language, Entered as one of the languages. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
           * @default 'pt_BR'
          */
-        "language"?: languages;
+        "language"?: languages1;
         /**
           * bdsDateSelected. Event to return selected date value.
          */
@@ -7230,7 +7263,7 @@ declare namespace LocalJSX {
           * Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json).
           * @default 'pt_BR'
          */
-        "language"?: languages1;
+        "language"?: languages2;
         /**
           * Mensagem de erro para validação numérica.
          */
@@ -8007,7 +8040,7 @@ declare namespace LocalJSX {
           * Set the language for fixed texts.
           * @default 'pt_BR'
          */
-        "language"?: languages2;
+        "language"?: languages3;
         /**
           * linkButton to define if component has Link Control.
           * @default true
@@ -8945,7 +8978,7 @@ declare namespace LocalJSX {
           * Set the language for fixed texts.
           * @default 'pt_BR'
          */
-        "language"?: languages3;
+        "language"?: languages4;
         /**
           * Used to allow upload multiple files.
          */
@@ -8958,6 +8991,11 @@ declare namespace LocalJSX {
           * Event emited when delete a item from the list.
          */
         "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<{ value: File[] }>) => void;
+        /**
+          * Used to show or hide the file list preview.
+          * @default true
+         */
+        "showListPreview"?: boolean;
         /**
           * Used for add a text on subtitle.
          */
