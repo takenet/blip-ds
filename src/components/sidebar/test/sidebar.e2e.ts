@@ -97,13 +97,13 @@ describe('bds-sidebar e2e tests', () => {
       expect(sidebar).toHaveClass('background_surface-0');
     });
 
-    it('should default to surface-1 background when not specified', async () => {
+    it('should default to surface-2 background when not specified', async () => {
       const page = await newE2EPage({
         html: `<bds-sidebar is-open="true"></bds-sidebar>`,
       });
 
       const sidebar = await page.find('bds-sidebar >>> .sidebar');
-      expect(sidebar).toHaveClass('background_surface-1');
+      expect(sidebar).toHaveClass('background_surface-2');
     });
 
     it('should update background property dynamically', async () => {

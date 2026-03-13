@@ -288,8 +288,8 @@ describe('bds-autocomplete e2e tests', () => {
       await inputElement.type('m');
       await page.waitForChanges();
 
-      const isOpen = await autocomplete.getProperty('isOpen');
-      expect(isOpen).toBe(true);
+      const openOptions = await page.find('bds-autocomplete >>> .select__options--open');
+      expect(openOptions).toBeTruthy();
     });
 
     it('should not reopen dropdown when disabled and typing', async () => {
@@ -301,9 +301,8 @@ describe('bds-autocomplete e2e tests', () => {
         `,
       });
 
-      const autocomplete = await page.find('bds-autocomplete');
-      const isOpen = await autocomplete.getProperty('isOpen');
-      expect(isOpen).toBe(false);
+      const openOptions = await page.find('bds-autocomplete >>> .select__options--open');
+      expect(openOptions).toBeNull();
     });
   });
 });
