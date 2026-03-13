@@ -18,6 +18,13 @@ export class Slider {
       const percentage = ((val - min) * 100) / (max - min);
       return percentage;
     };
+    this.computeTooltipPosition = (percent) => {
+      if (percent <= 0)
+        return 'top-right';
+      if (percent >= 100)
+        return 'top-left';
+      return 'top-center';
+    };
     this.getTooltipText = (item) => {
       return item.tooltip !== undefined ? item.tooltip : item.name.toString();
     };
@@ -26,6 +33,7 @@ export class Slider {
       this.progressBar.style.width = `${this.valuePercent(input)}%`;
       const valueName = this.emiterChange(parseInt(input.value));
       this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : input.value;
+      this.tooltipPosition = this.computeTooltipPosition(this.valuePercent(input));
       this.bdsChange.emit(valueName);
     };
     this.onInputMouseEnter = () => {
@@ -47,6 +55,7 @@ export class Slider {
     this.stepArray = undefined;
     this.internalOptions = undefined;
     this.inputValue = this.value?.toString() ?? (this.min ? this.min.toString() : '0');
+    this.tooltipPosition = 'top-center';
     this.step = undefined;
     this.min = undefined;
     this.max = undefined;
@@ -67,9 +76,21 @@ export class Slider {
         this.internalOptions = this.dataMarkers;
         this.stepArray = this.internalOptions;
       }
+      const initialIndex = this.value ?? 0;
+      const initialItem = this.stepArray[initialIndex];
+      if (initialItem) {
+        this.inputValue = this.getTooltipText(initialItem);
+      }
+      const percent = this.stepArray.length > 1 ? (initialIndex / (this.stepArray.length - 1)) * 100 : 50;
+      this.tooltipPosition = this.computeTooltipPosition(percent);
     }
     else {
       this.stepArray = this.arrayToSteps((this.max - this.min) / this.step, Number.isInteger((this.max - this.min) / this.step));
+      const min = this.min ?? 0;
+      const max = this.max ?? 100;
+      const value = this.value ?? min;
+      const percent = max !== min ? ((value - min) * 100) / (max - min) : 50;
+      this.tooltipPosition = this.computeTooltipPosition(percent);
     }
   }
   componentDidLoad() {
@@ -91,6 +112,7 @@ export class Slider {
     this.progressBar.style.width = `${this.valuePercent(this.inputSlide)}%`;
     const valueName = this.emiterChange(parseInt(this.inputSlide.value));
     this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : this.inputSlide.value;
+    this.tooltipPosition = this.computeTooltipPosition(this.valuePercent(this.inputSlide));
   }
   arrayToSteps(value, int) {
     const numberToCalc = int ? value + 1 : value;
@@ -104,7 +126,7 @@ export class Slider {
     return (h(Host, null, h("input", { ref: this.refInputSlide, type: "range", class: {
         input_slide: true,
       }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { class: "track-bg" }, this.markers &&
-      this.stepArray.map((item, index) => (h("div", { key: index, class: { step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 } }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: "top-center", "tooltip-text": this.inputValue }, h("div", { class: { [`progress-bar-thumb`]: true } }))))));
+      this.stepArray.map((item, index) => (h("div", { key: index, class: { step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 } }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { class: { [`progress-bar-thumb`]: true } }))))));
   }
   static get is() { return "bds-slider"; }
   static get encapsulation() { return "shadow"; }
@@ -294,7 +316,8 @@ export class Slider {
     return {
       "stepArray": {},
       "internalOptions": {},
-      "inputValue": {}
+      "inputValue": {},
+      "tooltipPosition": {}
     };
   }
   static get events() {
