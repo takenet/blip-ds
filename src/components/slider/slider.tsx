@@ -138,8 +138,8 @@ export class Slider {
   };
 
   private computeTooltipPosition = (percent: number): 'top-center' | 'top-left' | 'top-right' => {
-    if (percent <= 0) return 'top-right';
-    if (percent >= 100) return 'top-left';
+    if (percent <= 0) return 'top-left';
+    if (percent >= 100) return 'top-right';
     return 'top-center';
   };
 
