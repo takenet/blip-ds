@@ -20,9 +20,9 @@ export class Slider {
     };
     this.computeTooltipPosition = (percent) => {
       if (percent <= 0)
-        return 'top-right';
-      if (percent >= 100)
         return 'top-left';
+      if (percent >= 100)
+        return 'top-right';
       return 'top-center';
     };
     this.getTooltipText = (item) => {
