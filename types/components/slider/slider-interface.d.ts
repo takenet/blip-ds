@@ -3,4 +3,5 @@ export type typeMarkers = 'default' | 'markers' | 'without-subtitle';
 export interface StepOption {
   value: number;
   name: string;
+  tooltip?: string;
 }
