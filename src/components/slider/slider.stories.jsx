@@ -98,6 +98,16 @@ Properties.argTypes = {
   },
 };
 
+export const WithCustomTooltip = () => (
+  <bds-grid padding="t-6" xxs={12}>
+    <bds-slider
+      markers
+      label
+      data-markers='[{"value": 0, "name": "standard", "tooltip": "Plano básico com recursos limitados"}, {"value": 1, "name": "plus"}, {"value": 2, "name": "gold", "tooltip": "Melhor custo-benefício"}, {"value": 3, "name": "platinum", "tooltip": "Plano completo premium"}]'
+    ></bds-slider>
+  </bds-grid>
+);
+
 export const Events = () => {
   useEffect(() => {
     const slider = document.getElementById('slider');
