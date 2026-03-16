@@ -14,7 +14,7 @@ describe('bds-slider', () => {
           <input class="input_slide" max="100" min="" step="10" type="range" value="0">
           <div class="track-bg">
             <div class="progress-bar progress-bar-liner" style="width: 0%;">
-              <bds-tooltip class="progress-bar-tooltip" position="top-center" tooltip-text="0">
+              <bds-tooltip class="progress-bar-tooltip" position="top-left" tooltip-text="0">
                 <div class="progress-bar-thumb"></div>
               </bds-tooltip>
             </div>
@@ -312,6 +312,61 @@ describe('bds-slider', () => {
     expect(result).toEqual({ value: 1, name: 'High' });
   });
 
+  it('should use tooltip text when tooltip property is provided in dataMarkers', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider></bds-slider>',
+    });
+
+    page.rootInstance.dataMarkers = [
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold', tooltip: 'Melhor custo-benefício' },
+    ];
+
+    page.rootInstance.componentWillLoad();
+    await page.waitForChanges();
+
+    expect(page.rootInstance.getTooltipText({ value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' }))
+      .toBe('Plano básico com recursos limitados');
+  });
+
+  it('should fallback to name when tooltip property is not provided in dataMarkers', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider></bds-slider>',
+    });
+
+    page.rootInstance.dataMarkers = [
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+    ];
+
+    page.rootInstance.componentWillLoad();
+    await page.waitForChanges();
+
+    expect(page.rootInstance.getTooltipText({ value: 1, name: 'plus' })).toBe('plus');
+  });
+
+  it('should parse dataMarkers string with tooltip property', async () => {
+    const dataMarkers = JSON.stringify([
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold', tooltip: 'Melhor custo-benefício' },
+    ]);
+
+    const page = await newSpecPage({
+      components: [Slider],
+      html: `<bds-slider data-markers='${dataMarkers}'></bds-slider>`,
+    });
+
+    expect(page.rootInstance.internalOptions).toEqual([
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold', tooltip: 'Melhor custo-benefício' },
+    ]);
+  });
+
   it('should emit correct value for numeric steps', async () => {
     const page = await newSpecPage({
       components: [Slider],
@@ -342,5 +397,76 @@ describe('bds-slider', () => {
       { value: 2, name: 8 },
       { value: 3, name: 12 }
     ]);
+  });
+
+  it('should initialize inputValue from marker name when dataMarkers are used', async () => {
+    const dataMarkers = JSON.stringify([
+      { value: 0, name: 'standard' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold' },
+    ]);
+
+    const page = await newSpecPage({
+      components: [Slider],
+      html: `<bds-slider data-markers='${dataMarkers}'></bds-slider>`,
+    });
+
+    expect(page.rootInstance.inputValue).toBe('standard');
+  });
+
+  it('should initialize inputValue from marker tooltip when tooltip is provided in dataMarkers', async () => {
+    const dataMarkers = JSON.stringify([
+      { value: 0, name: 'standard', tooltip: 'Plano básico com recursos limitados' },
+      { value: 1, name: 'plus' },
+    ]);
+
+    const page = await newSpecPage({
+      components: [Slider],
+      html: `<bds-slider data-markers='${dataMarkers}'></bds-slider>`,
+    });
+
+    expect(page.rootInstance.inputValue).toBe('Plano básico com recursos limitados');
+  });
+
+  it('should return top-left position at 0% progress', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider min="0" max="100" step="10"></bds-slider>',
+    });
+
+    expect(page.rootInstance.computeTooltipPosition(0)).toBe('top-left');
+  });
+
+  it('should return top-right position at 100% progress', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider min="0" max="100" step="10"></bds-slider>',
+    });
+
+    expect(page.rootInstance.computeTooltipPosition(100)).toBe('top-right');
+  });
+
+  it('should return top-center position for intermediate progress', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider min="0" max="100" step="10"></bds-slider>',
+    });
+
+    expect(page.rootInstance.computeTooltipPosition(50)).toBe('top-center');
+  });
+
+  it('should initialize tooltipPosition to top-left when initial value is at minimum with dataMarkers', async () => {
+    const dataMarkers = JSON.stringify([
+      { value: 0, name: 'standard' },
+      { value: 1, name: 'plus' },
+      { value: 2, name: 'gold' },
+    ]);
+
+    const page = await newSpecPage({
+      components: [Slider],
+      html: `<bds-slider data-markers='${dataMarkers}'></bds-slider>`,
+    });
+
+    expect(page.rootInstance.tooltipPosition).toBe('top-left');
   });
 });
