@@ -1,19 +1,5 @@
 import { formatSvg, getIconName, getEmojiName, getLogoName } from '../utils';
 
-// Mock DOM methods for testing
-Object.defineProperty(global, 'document', {
-  value: {
-    createElement: jest.fn(() => ({
-      innerHTML: '',
-      firstElementChild: {
-        removeAttribute: jest.fn(),
-        setAttribute: jest.fn(),
-        getElementsByTagName: jest.fn(() => []),
-      },
-    })),
-  },
-});
-
 describe('Icon Utils', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -71,99 +57,200 @@ describe('Icon Utils', () => {
   });
 
   describe('formatSvg', () => {
-    let mockDiv: any;
-    let mockSvgElement: any;
-    let mockPath: any;
+    const simpleSvg = `<svg xmlns="http://www.w3.org/2000/svg">
+      <path fill="#000000" d="M10 10 L20 20"/>
+    </svg>`;
 
-    beforeEach(() => {
-      mockPath = {
-        setAttribute: jest.fn(),
-      };
+    const multiColorSvg = `<svg xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FF0000" d="M10 10 L20 20"/>
+      <path fill="#00FF00" d="M30 30 L40 40"/>
+    </svg>`;
 
-      mockSvgElement = {
-        removeAttribute: jest.fn(),
-        setAttribute: jest.fn(),
-        getElementsByTagName: jest.fn(() => [mockPath]),
-      };
+    describe('null and empty content', () => {
+      it('should return empty string when svgContent is null', () => {
+        const result = formatSvg(null, '#ff0000');
+        expect(result).toBe('');
+      });
 
-      mockDiv = {
-        innerHTML: '',
-        firstElementChild: mockSvgElement,
-      };
-
-      (document.createElement as jest.Mock).mockReturnValue(mockDiv);
+      it('should return empty string when svgContent is empty', () => {
+        const result = formatSvg('', '#ff0000');
+        expect(result).toBe('');
+      });
     });
 
-    it('should return empty string when svgContent is null', () => {
-      const result = formatSvg(null, '#ff0000');
-      expect(result).toBe('');
+    describe('single color icons', () => {
+      it('should apply currentColor to mono-color icons without color prop', () => {
+        const result = formatSvg(simpleSvg, null);
+
+        expect(result).toContain('fill="currentColor"');
+        expect(result).not.toContain('fill="#000000"');
+        expect(result).not.toContain('data-customizable');
+      });
+
+      it('should apply provided color to mono-color icons with color prop', () => {
+        const result = formatSvg(simpleSvg, '#FF0000');
+
+        expect(result).toContain('fill="#FF0000"');
+        expect(result).not.toContain('fill="#000000"');
+      });
+
+      it('should apply color without hash symbol', () => {
+        const result = formatSvg(simpleSvg, 'FF5733');
+
+        expect(result).toContain('FF5733');
+        expect(result).not.toContain('fill="#000000"');
+      });
+
+      it('should remove width and height attributes', () => {
+        const svgWithDimensions = `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#000000" d="M10 10 L20 20"/>
+        </svg>`;
+
+        const result = formatSvg(svgWithDimensions, null);
+
+        expect(result).not.toContain('width="24"');
+        expect(result).not.toContain('height="24"');
+      });
+
+      it('should handle outline icons with hardcoded fill on path', () => {
+        const outlineIcon = `<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#454545" d="M10 10 L20 20"/>
+        </svg>`;
+
+        const result = formatSvg(outlineIcon, null);
+
+        expect(result).not.toContain('fill="#454545"');
+        expect(result).toContain('fill="currentColor"');
+      });
+
+      it('should treat single valid fill with fill="none" paths as mono-color', () => {
+        const svgWithNone = `<svg xmlns="http://www.w3.org/2000/svg">
+          <path fill="none" d="M10 10 L20 20"/>
+          <path fill="#FF0000" d="M30 30 L40 40"/>
+        </svg>`;
+
+        const result = formatSvg(svgWithNone, null);
+
+        expect(result).toContain('fill="currentColor"');
+        expect(result).not.toContain('data-customizable');
+        expect(result).not.toContain('--icon-layer-');
+      });
+
+      it('should apply currentColor to svg with no paths', () => {
+        const svgNoPaths = `<svg xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="5"/>
+        </svg>`;
+
+        const result = formatSvg(svgNoPaths, null);
+
+        expect(result).toContain('fill="currentColor"');
+      });
+
+      it('should apply currentColor when all paths have fill="none"', () => {
+        const svgOnlyNone = `<svg xmlns="http://www.w3.org/2000/svg">
+          <path fill="none" d="M10 10 L20 20"/>
+          <path fill="none" d="M30 30 L40 40"/>
+        </svg>`;
+
+        const result = formatSvg(svgOnlyNone, null);
+
+        expect(result).toContain('fill="currentColor"');
+        expect(result).not.toContain('data-customizable');
+      });
     });
 
-    it('should return empty string when svgContent is empty', () => {
-      const result = formatSvg('', '#ff0000');
-      expect(result).toBe('');
+    describe('multi color icons (solid)', () => {
+      it('should detect multi-color and apply CSS variables', () => {
+        const result = formatSvg(multiColorSvg, null);
+
+        expect(result).toContain('data-customizable="true"');
+        expect(result).toContain('--icon-layer-0');
+        expect(result).toContain('--icon-layer-1');
+        expect(result).toContain('FF0000');
+        expect(result).toContain('00FF00');
+      });
+
+      it('should apply inline styles with CSS variable fallbacks', () => {
+        const result = formatSvg(multiColorSvg, null);
+
+        expect(result).toContain('style="fill: var(--icon-layer-');
+        expect(result).toContain('var(--icon-layer-0, #FF0000)');
+        expect(result).toContain('var(--icon-layer-1, #00FF00)');
+      });
+
+      it('should map same fill color to same layer variable', () => {
+        const repeatedColorSvg = `<svg xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FF0000" d="M10 10 L20 20"/>
+          <path fill="#00FF00" d="M30 30 L40 40"/>
+          <path fill="#FF0000" d="M50 50 L60 60"/>
+        </svg>`;
+
+        const result = formatSvg(repeatedColorSvg, null);
+
+        expect(result).toContain('--icon-layer-0');
+        expect(result).toContain('--icon-layer-1');
+        expect(result).not.toContain('--icon-layer-2');
+      });
+
+      it('should skip paths with fill="none" in layer assignment', () => {
+        const svgWithNoneInMiddle = `<svg xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FF0000" d="M10 10 L20 20"/>
+          <path fill="none" d="M20 20 L30 30"/>
+          <path fill="#00FF00" d="M30 30 L40 40"/>
+        </svg>`;
+
+        const result = formatSvg(svgWithNoneInMiddle, null);
+
+        expect(result).toContain('--icon-layer-0');
+        expect(result).toContain('--icon-layer-1');
+      });
+
+      it('should preserve opacity attribute on paths', () => {
+        const multiColorWithOpacity = `<svg xmlns="http://www.w3.org/2000/svg">
+          <path fill="#333333" d="M10 10 L20 20"/>
+          <path fill="#CCCCCC" opacity="0.5" d="M30 30 L40 40"/>
+        </svg>`;
+
+        const result = formatSvg(multiColorWithOpacity, null);
+
+        expect(result).toContain('data-customizable="true"');
+        expect(result).toContain('opacity="0.5"');
+        expect(result).toContain('--icon-layer-0');
+        expect(result).toContain('--icon-layer-1');
+      });
+
+      it('should apply color prop to all paths when provided, overriding multi-color detection', () => {
+        const result = formatSvg(multiColorSvg, '#0000FF');
+
+        expect(result).toContain('fill="#0000FF"');
+        expect(result).not.toContain('--icon-layer-');
+        expect(result).not.toContain('data-customizable');
+        expect(result).not.toContain('#FF0000');
+        expect(result).not.toContain('#00FF00');
+      });
     });
 
-    it('should format SVG content for regular icons', () => {
-      const svgContent = '<svg><path d="M0,0"></path></svg>';
-      mockDiv.innerHTML = svgContent;
+    describe('emoji icons', () => {
+      it('should not apply CSS variables to emoji icons', () => {
+        const result = formatSvg(multiColorSvg, null, true);
 
-      const result = formatSvg(svgContent, '#ff0000', false);
+        expect(result).not.toContain('data-customizable');
+        expect(result).not.toContain('--icon-layer-');
+      });
 
-      expect(document.createElement).toHaveBeenCalledWith('div');
-      expect(mockSvgElement.removeAttribute).toHaveBeenCalledWith('width');
-      expect(mockSvgElement.removeAttribute).toHaveBeenCalledWith('height');
-      expect(mockSvgElement.setAttribute).toHaveBeenCalledWith('fill', 'currentColor');
-      expect(mockPath.setAttribute).toHaveBeenCalledWith('fill', '#ff0000');
-      expect(mockSvgElement.setAttribute).toHaveBeenCalledWith('fill', '#ff0000');
-      expect(result).toBe(svgContent);
-    });
+      it('should preserve original SVG content for emoji icons', () => {
+        const result = formatSvg(multiColorSvg, null, true);
 
-    it('should format SVG content for emojis without clearing paths', () => {
-      const svgContent = '<svg><path d="M0,0"></path></svg>';
-      mockDiv.innerHTML = svgContent;
+        expect(result).toContain('#FF0000');
+        expect(result).toContain('#00FF00');
+      });
 
-      const result = formatSvg(svgContent, '#ff0000', true);
+      it('should ignore color prop for emoji icons', () => {
+        const result = formatSvg(multiColorSvg, '#0000FF', true);
 
-      expect(mockSvgElement.removeAttribute).toHaveBeenCalledWith('width');
-      expect(mockSvgElement.removeAttribute).toHaveBeenCalledWith('height');
-      expect(mockSvgElement.setAttribute).toHaveBeenCalledWith('fill', 'currentColor');
-      expect(mockPath.setAttribute).not.toHaveBeenCalled();
-      expect(result).toBe(svgContent);
-    });
-
-    it('should use currentColor when color is null', () => {
-      const svgContent = '<svg><path d="M0,0"></path></svg>';
-      mockDiv.innerHTML = svgContent;
-
-      formatSvg(svgContent, null, false);
-
-      expect(mockPath.setAttribute).toHaveBeenCalledWith('fill', 'currentColor');
-      expect(mockSvgElement.setAttribute).toHaveBeenCalledWith('fill', 'currentColor');
-    });
-
-    it('should handle SVG with multiple paths', () => {
-      const svgContent = '<svg><path d="M0,0"></path></svg>';
-      mockDiv.innerHTML = svgContent;
-      
-      const mockPath2 = { setAttribute: jest.fn() };
-      mockSvgElement.getElementsByTagName.mockReturnValue([mockPath, mockPath2]);
-
-      formatSvg(svgContent, '#00ff00', false);
-
-      expect(mockPath.setAttribute).toHaveBeenCalledWith('fill', '#00ff00');
-      expect(mockPath2.setAttribute).toHaveBeenCalledWith('fill', '#00ff00');
-    });
-
-    it('should handle SVG with no paths', () => {
-      const svgContent = '<svg></svg>';
-      mockDiv.innerHTML = svgContent;
-      mockSvgElement.getElementsByTagName.mockReturnValue([]);
-
-      const result = formatSvg(svgContent, '#ff0000', false);
-
-      expect(mockSvgElement.setAttribute).toHaveBeenCalledWith('fill', '#ff0000');
-      expect(result).toBe(svgContent);
+        expect(result).not.toContain('data-customizable');
+        expect(result).not.toContain('#0000FF');
+      });
     });
   });
 });

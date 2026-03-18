@@ -65,4 +65,76 @@ describe('bds-checkbox e2e tests', () => {
       expect(focusedElement).toBe('BDS-CHECKBOX');
     });
   });
+
+  describe('Indeterminate State', () => {
+    it('should default indeterminate to false', async () => {
+      const checkbox = await page.find('bds-checkbox');
+      const indeterminate = await checkbox.getProperty('indeterminate');
+      expect(indeterminate).toBe(false);
+    });
+
+    it('should render indeterminate state when prop is set', async () => {
+      page = await newE2EPage({
+        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
+      });
+
+      const checkbox = await page.find('bds-checkbox');
+      const indeterminate = await checkbox.getProperty('indeterminate');
+      expect(indeterminate).toBe(true);
+
+      const checkboxEl = await page.find('bds-checkbox >>> .checkbox');
+      expect(checkboxEl).toHaveClass('checkbox--indeterminate');
+    });
+
+    it('should show less icon when indeterminate', async () => {
+      page = await newE2EPage({
+        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
+      });
+
+      const icon = await page.find('bds-checkbox >>> bds-icon');
+      const iconName = await icon.getProperty('name');
+      expect(iconName).toBe('less');
+    });
+
+    it('should transition from indeterminate to checked on click', async () => {
+      page = await newE2EPage({
+        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
+      });
+
+      const checkbox = await page.find('bds-checkbox');
+      const labelElement = await page.find('bds-checkbox >>> label');
+      await labelElement.click();
+      await page.waitForChanges();
+
+      // After click: indeterminate becomes false, checked becomes true
+      const indeterminate = await checkbox.getProperty('indeterminate');
+      const checked = await checkbox.getProperty('checked');
+      expect(indeterminate).toBe(false);
+      expect(checked).toBe(true);
+    });
+
+    it('should emit bdsChange event with indeterminate info when clicked', async () => {
+      page = await newE2EPage({
+        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
+      });
+
+      const checkbox = await page.find('bds-checkbox');
+      const bdsChangeEvent = await checkbox.spyOnEvent('bdsChange');
+
+      const labelElement = await page.find('bds-checkbox >>> label');
+      await labelElement.click();
+      await page.waitForChanges();
+
+      expect(bdsChangeEvent).toHaveReceivedEvent();
+    });
+
+    it('should apply indeterminate-disabled class when disabled and indeterminate', async () => {
+      page = await newE2EPage({
+        html: `<bds-checkbox label="Test" indeterminate="true" disabled="true"></bds-checkbox>`,
+      });
+
+      const checkboxEl = await page.find('bds-checkbox >>> .checkbox');
+      expect(checkboxEl).toHaveClass('checkbox--indeterminate-disabled');
+    });
+  });
 });

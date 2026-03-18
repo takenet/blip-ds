@@ -8,6 +8,7 @@ import {
 } from './autocomplete-select-interface';
 import { SelectOptionsPositionType } from '../selects/select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../utils/position-element';
+import { languages, termTranslate } from './languages';
 
 export type SelectionType = 'single' | 'multiple';
 
@@ -138,6 +139,11 @@ export class BdsAutocomplete {
   @Prop() dataTest?: string = null;
 
   /**
+   * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+   */
+  @Prop() language?: languages = 'pt_BR';
+
+  /**
    * Is Loading, is the prop to enable that the component is loading.
    */
   @Prop() loading?: boolean = false;
@@ -175,7 +181,7 @@ export class BdsAutocomplete {
   /**
    * Emitted when the input has changed.
    */
-  @Event() bdsInput!: EventEmitter<InputEvent>;
+  @Event() bdsInput!: EventEmitter<KeyboardEvent>;
 
   /**
    * Emitted when the selection is cancelled.
@@ -269,13 +275,7 @@ export class BdsAutocomplete {
     }
   }
 
-  @Watch('placeholder')
-  protected changePlaceholder() {
-    this.placeholderState = this.placeholder;
-  }
-
   componentWillLoad() {
-    this.placeholderState = this.placeholder;
     this.intoView = getScrollParent(this.el);
     this.options && this.parseOptions();
   }
@@ -406,7 +406,7 @@ export class BdsAutocomplete {
   };
 
   private getTextMultiselect = (data): void => {
-    const valueInput = data?.length > 0 && `${data?.length} selecionados`;
+    const valueInput = data?.length > 0 ? `${data?.length} ${termTranslate(this.language, 'selected')}` : '';
     this.textMultiselect = valueInput;
   };
 
@@ -511,13 +511,16 @@ export class BdsAutocomplete {
     }
   };
 
-  private changedInputValue = async (ev: InputEvent) => {
+  private changedInputValue = async (ev: Event) => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
       this.value = input.value || '';
     }
-    this.bdsInput.emit(ev);
+    this.bdsInput.emit(ev as KeyboardEvent);
     if (this.nativeInput.value) {
+      if (!this.disabled && !this.isOpen) {
+        this.isOpen = true;
+      }
       await this.filterOptions(this.nativeInput.value);
     } else {
       this.value = '';
@@ -526,11 +529,6 @@ export class BdsAutocomplete {
       } else {
         this.setTimeoutFilter();
       }
-    }
-
-    if (this.isOpen === false) {
-      this.value = this.getSelectedValue();
-      this.setTimeoutFilter();
     }
   };
 
@@ -563,10 +561,6 @@ export class BdsAutocomplete {
     for (const option of childOptions) {
       option.removeAttribute('invisible');
     }
-  }
-
-  private getSelectedValue() {
-    return this.childOptionSelected?.value;
   }
 
   private renderIcon(): HTMLElement {
@@ -711,7 +705,7 @@ export class BdsAutocomplete {
               <bds-checkbox
                 ref={this.refCheckAllInput}
                 refer={`refer-multiselect`}
-                label={`Selecionar Todos`}
+                label={termTranslate(this.language, 'allSelected')}
                 name="chack-all"
                 class="select-all"
                 onBdsChange={(ev) => this.handleCheckAll(ev)}

@@ -89,15 +89,6 @@ export class Icon {
     });
   }
 
-  componentDidLoad(): void {
-    // Safety net: if the 'name' attribute was set after connectedCallback
-    // but before @Watch became active (e.g. AngularJS ng-attr-name), the
-    // watcher won't fire. Re-check here to ensure the icon loads.
-    if (this.name && !this.svgContent) {
-      this.loadIcon();
-    }
-  }
-
   disconnectedCallback(): void {
     if (this.io) {
       this.io.disconnect();
@@ -126,11 +117,12 @@ export class Icon {
   @Watch('name')
   @Watch('src')
   @Watch('icon')
+  @Watch('color')
   @Watch('theme')
   loadIcon(): void {
     if (!this.name) return;
 
-    if (Build.isBrowser && (!this.lazy || this.isVisible)) {
+    if (Build.isBrowser && this.isVisible) {
       this.setSvgContent();
     }
 

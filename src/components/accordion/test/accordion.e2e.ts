@@ -221,4 +221,54 @@ describe('bds-accordion e2e tests', () => {
       }
     });
   });
+
+  describe('iconColor', () => {
+    it('should default iconColor to inherit', async () => {
+      const page = await newE2EPage({
+        html: `
+          <bds-accordion>
+            <bds-accordion-header accordion-title="Test"></bds-accordion-header>
+            <bds-accordion-body><p>Content</p></bds-accordion-body>
+          </bds-accordion>
+        `,
+      });
+
+      const header = await page.find('bds-accordion-header');
+      const iconColor = await header.getProperty('iconColor');
+      expect(iconColor).toBe('inherit');
+    });
+
+    it('should accept custom iconColor prop', async () => {
+      const page = await newE2EPage({
+        html: `
+          <bds-accordion>
+            <bds-accordion-header accordion-title="Test" icon-color="primary"></bds-accordion-header>
+            <bds-accordion-body><p>Content</p></bds-accordion-body>
+          </bds-accordion>
+        `,
+      });
+
+      const header = await page.find('bds-accordion-header');
+      const iconColor = await header.getProperty('iconColor');
+      expect(iconColor).toBe('primary');
+    });
+
+    it('should update iconColor dynamically', async () => {
+      const page = await newE2EPage({
+        html: `
+          <bds-accordion>
+            <bds-accordion-header accordion-title="Test"></bds-accordion-header>
+            <bds-accordion-body><p>Content</p></bds-accordion-body>
+          </bds-accordion>
+        `,
+      });
+
+      const header = await page.find('bds-accordion-header');
+      await header.setProperty('iconColor', 'negative');
+      await page.waitForChanges();
+
+      const iconColor = await header.getProperty('iconColor');
+      expect(iconColor).toBe('negative');
+    });
+  });
 });

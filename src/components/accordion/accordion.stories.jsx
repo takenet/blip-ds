@@ -22,6 +22,7 @@ export const Properties = (args) => {
       <bds-accordion-header
         accordion-title={args.accordionTitle}
         icon={args.icon}
+        icon-color={args.iconColor}
         avatar-name={args.avatarName}
         avatar-thumb={args.avatarThumb}
       ></bds-accordion-header>
@@ -45,6 +46,13 @@ Properties.argTypes = {
       defaultValue: { summary: 'vazio' },
     },
     description: 'Defina o ícone que será utilizado no botão (Apenas outline).',
+    control: 'text',
+  },
+  iconColor: {
+    table: {
+      defaultValue: { summary: 'inherit' },
+    },
+    description: 'Defina a cor do ícone no cabeçalho do accordion.',
     control: 'text',
   },
   avatarName: {
@@ -82,6 +90,7 @@ Properties.args = {
   avatarName: '',
   avatarThumb: '',
   icon: '',
+  iconColor: 'inherit',
   startOpen: false,
   divisor: true,
 };

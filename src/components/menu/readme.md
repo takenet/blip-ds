@@ -1,3 +1,10 @@
+## Shadow Parts
+
+The `bds-menu` component exposes the following shadow parts for custom styling:
+
+| Part                | Description                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------------- |
+| `bds-menu__container` | Positioned menu container element that wraps the menu content and controls menu box styling and positioning. |
 # bds-menu
 
 
@@ -32,6 +39,13 @@
 Type: `Promise<void>`
 
 
+
+
+## Shadow Parts
+
+| Part                    | Description |
+| ----------------------- | ----------- |
+| `"bds-menu__container"` |             |
 
 
 ----------------------------------------------

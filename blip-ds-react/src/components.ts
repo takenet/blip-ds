@@ -223,7 +223,7 @@ export type BdsAutocompleteEvents = {
     onBdsChange: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>,
     onBdsSelectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteSelectedChangeEventDetail>>,
     onBdsMultiselectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteMultiSelectedChangeEventDetail>>,
-    onBdsInput: EventName<BdsAutocompleteCustomEvent<InputEvent>>,
+    onBdsInput: EventName<BdsAutocompleteCustomEvent<KeyboardEvent>>,
     onBdsCancel: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>,
     onBdsFocus: EventName<CustomEvent<void>>,
     onBdsBlur: EventName<CustomEvent<void>>
@@ -451,9 +451,7 @@ export const BdsCarouselItem: StencilReactComponent<BdsCarouselItemElement, BdsC
 });
 
 export type BdsCheckboxEvents = {
-    onBdsChange: EventName<CustomEvent<{
-        checked: boolean;
-    }>>,
+    onBdsChange: EventName<CustomEvent<any>>,
     onBdsInput: EventName<BdsCheckboxCustomEvent<KeyboardEvent>>
 };
 
