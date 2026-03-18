@@ -1,5 +1,6 @@
 import { h, Host } from "@stencil/core";
 import { getScrollParent, positionAbsoluteElement } from "../../utils/position-element";
+import { termTranslate } from "./languages";
 export class BdsAutocomplete {
     constructor() {
         /**
@@ -72,6 +73,10 @@ export class BdsAutocomplete {
          * Data test is the prop to specifically test the component action object.
          */
         this.dataTest = null;
+        /**
+         * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+         */
+        this.language = 'pt_BR';
         /**
          * Is Loading, is the prop to enable that the component is loading.
          */
@@ -147,7 +152,7 @@ export class BdsAutocomplete {
             return this.getTextFromOption(opt);
         };
         this.getTextMultiselect = (data) => {
-            const valueInput = (data === null || data === void 0 ? void 0 : data.length) > 0 && `${data === null || data === void 0 ? void 0 : data.length} selecionados`;
+            const valueInput = (data === null || data === void 0 ? void 0 : data.length) > 0 ? `${data === null || data === void 0 ? void 0 : data.length} ${termTranslate(this.language, 'selected')}` : '';
             this.textMultiselect = valueInput;
         };
         this.handlerMultiselect = () => {
@@ -208,6 +213,9 @@ export class BdsAutocomplete {
             }
             this.bdsInput.emit(ev);
             if (this.nativeInput.value) {
+                if (!this.disabled && !this.isOpen) {
+                    this.isOpen = true;
+                }
                 await this.filterOptions(this.nativeInput.value);
             }
             else {
@@ -218,10 +226,6 @@ export class BdsAutocomplete {
                 else {
                     this.setTimeoutFilter();
                 }
-            }
-            if (this.isOpen === false) {
-                this.value = this.getSelectedValue();
-                this.setTimeoutFilter();
             }
         };
     }
@@ -293,11 +297,7 @@ export class BdsAutocomplete {
             }
         }
     }
-    changePlaceholder() {
-        this.placeholderState = this.placeholder;
-    }
     componentWillLoad() {
-        this.placeholderState = this.placeholder;
         this.intoView = getScrollParent(this.el);
         this.options && this.parseOptions();
     }
@@ -427,10 +427,6 @@ export class BdsAutocomplete {
             option.removeAttribute('invisible');
         }
     }
-    getSelectedValue() {
-        var _a;
-        return (_a = this.childOptionSelected) === null || _a === void 0 ? void 0 : _a.value;
-    }
     renderIcon() {
         return (this.icon && (h("div", { class: {
                 input__icon: true,
@@ -460,7 +456,7 @@ export class BdsAutocomplete {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: 'f226d3800c5cecbc67a00f83674b34d48361be7d', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '6456a23accb7adef88832dd37df16a2db69cbecf', class: {
+        return (h(Host, { key: '5c38016eea67629b0f0e21a583ee1070e6abf32e', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'e984282d15c02248116ca226c05b5c8515831446', class: {
                 input: true,
                 select: true,
                 'input--state-primary': !this.danger,
@@ -469,15 +465,15 @@ export class BdsAutocomplete {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': this.isPressed,
-            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: '2b7cb3428fe0173b1f01dbd1d09cf5f611085d3e', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: '248ee75d064b64772c5a8ebd46137834fc577456', class: { input__container__wrapper: true } }, ((_a = this.textMultiselect) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("bds-typo", { key: '04a95ae0b3023df04e2e9509c386765898ebfaf4', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '958a00b4bacc0f025d7431e2dd346b09ce646b1a', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '0e845f5f4cc54f4bdb48188b3def7f9c9ffca073', class: "select__icon" }, h("bds-icon", { key: 'cd2bbeef646450a3555453e2f6093b8690740240', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
+            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: '927fa100058c26da3d666d0877ec0d4c1a2e20cb', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: '8ee55cc944d8a802e8b0de67a46d964c029d6176', class: { input__container__wrapper: true } }, ((_a = this.textMultiselect) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("bds-typo", { key: '3f9a432f8ea8aaa7b86d9aa66b024eaaabf48bac', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '0ed161498e50f7aabee064293c3564b55e2d4d7f', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '8be191bbc465cc913c2798ea433d735068ebba69', class: "select__icon" }, h("bds-icon", { key: '0612bde2939b7a408b2f4653b30b17e80af92ca6', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
                 'icon-hidden': (this.clearIconOnFocus && (!this.isFocused || !this.isOpen)) || !this.value,
-            } }), h("bds-icon", { key: '34fd2b6e2569890588bad00f4bccf8aa53299973', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" }))), this.renderMessage(), this.loading ? (h("div", { ref: (el) => this.refDropdown(el), class: {
+            } }), h("bds-icon", { key: 'dfee3c2494b1e9cb905a864c269332e24c3fc836', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" }))), this.renderMessage(), this.loading ? (h("div", { ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
             } }, h("bds-loading-spinner", { class: "load-spinner", size: "small" }))) : (h("div", { ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
-            } }, this.selectionTitle && this.selectionType == 'multiple' && (h("bds-typo", { class: "selection-title", variant: "fs-10", bold: "bold" }, this.selectionTitle)), this.selectionType == 'multiple' && this.selectedAll && (h("bds-checkbox", { ref: this.refCheckAllInput, refer: `refer-multiselect`, label: `Selecionar Todos`, name: "chack-all", class: "select-all", onBdsChange: (ev) => this.handleCheckAll(ev) })), ((_b = this.checkedOptions) === null || _b === void 0 ? void 0 : _b.length) > 0 && (h("span", { class: "content-divisor" }, h("span", { class: "divisor" }))), this.internalOptions ? (this.internalOptions.map((option, idx) => (h("bds-select-option", { onOptionSelected: this.handler, onOptionChecked: this.handlerMultiselect, selected: this.value === option.value, value: option.value, key: idx, bulkOption: option.bulkOption, status: option.status, "type-option": this.selectionType == 'multiple' ? 'checkbox' : 'default' }, option.label)))) : (h("slot", null))))));
+            } }, this.selectionTitle && this.selectionType == 'multiple' && (h("bds-typo", { class: "selection-title", variant: "fs-10", bold: "bold" }, this.selectionTitle)), this.selectionType == 'multiple' && this.selectedAll && (h("bds-checkbox", { ref: this.refCheckAllInput, refer: `refer-multiselect`, label: termTranslate(this.language, 'allSelected'), name: "chack-all", class: "select-all", onBdsChange: (ev) => this.handleCheckAll(ev) })), ((_b = this.checkedOptions) === null || _b === void 0 ? void 0 : _b.length) > 0 && (h("span", { class: "content-divisor" }, h("span", { class: "divisor" }))), this.internalOptions ? (this.internalOptions.map((option, idx) => (h("bds-select-option", { onOptionSelected: this.handler, onOptionChecked: this.handlerMultiselect, selected: this.value === option.value, value: option.value, key: idx, bulkOption: option.bulkOption, status: option.status, "type-option": this.selectionType == 'multiple' ? 'checkbox' : 'default' }, option.label)))) : (h("slot", null))))));
     }
     static get is() { return "bds-autocomplete"; }
     static get encapsulation() { return "shadow"; }
@@ -826,6 +822,32 @@ export class BdsAutocomplete {
                 "reflect": false,
                 "defaultValue": "null"
             },
+            "language": {
+                "type": "string",
+                "attribute": "language",
+                "mutable": false,
+                "complexType": {
+                    "original": "languages",
+                    "resolved": "\"en_US\" | \"es_ES\" | \"pt_BR\"",
+                    "references": {
+                        "languages": {
+                            "location": "import",
+                            "path": "./languages",
+                            "id": "src/components/autocomplete/languages/index.ts::languages"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "defaultValue": "'pt_BR'"
+            },
             "loading": {
                 "type": "boolean",
                 "attribute": "loading",
@@ -1005,12 +1027,12 @@ export class BdsAutocomplete {
                     "text": "Emitted when the input has changed."
                 },
                 "complexType": {
-                    "original": "InputEvent",
-                    "resolved": "InputEvent",
+                    "original": "KeyboardEvent",
+                    "resolved": "KeyboardEvent",
                     "references": {
-                        "InputEvent": {
+                        "KeyboardEvent": {
                             "location": "global",
-                            "id": "global::InputEvent"
+                            "id": "global::KeyboardEvent"
                         }
                     }
                 }
@@ -1108,9 +1130,6 @@ export class BdsAutocomplete {
             }, {
                 "propName": "selectionType",
                 "methodName": "changeSelectionType"
-            }, {
-                "propName": "placeholder",
-                "methodName": "changePlaceholder"
             }];
     }
     static get listeners() {

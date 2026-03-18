@@ -130,10 +130,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-alert-header.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-autocomplete.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-autocomplete.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-avatar-group.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -450,6 +446,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-loading-spinner.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-autocomplete.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-autocomplete.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-input-phone-number.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

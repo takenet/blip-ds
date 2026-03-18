@@ -133,7 +133,7 @@
 }
 .tab_group__scrolled {
   flex-shrink: 999;
-  overflow: none;
+  overflow: auto;
 }
 .tab_group__scrolled::-webkit-scrollbar {
   width: 16px;

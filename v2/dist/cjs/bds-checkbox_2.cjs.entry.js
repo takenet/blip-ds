@@ -2,7 +2,7 @@
 
 var index = require('./index-DQyYkciT.js');
 
-const checkboxCss = ".checkbox{display:inline}.checkbox input[type=checkbox]{display:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;cursor:pointer;margin:0}.checkbox input[type=checkbox]:focus{outline:0}.checkbox__icon{position:relative}.checkbox__icon::before{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.checkbox__icon:focus-visible{outline:none}.checkbox__icon:focus-visible::before{border-color:var(--color-focus, rgb(194, 38, 251))}.checkbox__icon:hover{border-color:var(--color-brand, rgb(0, 150, 250))}.checkbox--selected .checkbox__icon{background-color:var(--color-surface-primary, rgb(30, 107, 241));border-color:var(--color-surface-primary, rgb(30, 107, 241))}.checkbox--selected .checkbox__icon__svg{color:var(--color-content-bright, rgb(255, 255, 255))}.checkbox--selected .checkbox__icon:hover{background-color:var(--color-brand, rgb(0, 150, 250))}.checkbox--selected-disabled .checkbox__label{cursor:not-allowed}.checkbox--selected-disabled .checkbox__icon{color:var(--color-content-default, rgb(40, 40, 40));border-color:var(--color-content-default, rgb(40, 40, 40));background-color:var(--color-surface-3, rgb(227, 227, 227));opacity:50%}.checkbox--selected-disabled .checkbox__text{opacity:50%}.checkbox--deselected .checkbox__icon__svg{display:none}.checkbox--deselected-disabled .checkbox__label{cursor:not-allowed}.checkbox--deselected-disabled .checkbox__icon{opacity:50%;background-color:var(--color-surface-1, rgb(246, 246, 246));border:1px solid var(--color-brand, rgb(0, 150, 250))}.checkbox--deselected-disabled .checkbox__icon__svg{display:none}.checkbox__label{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;cursor:pointer;max-width:-webkit-fit-content;max-width:-moz-fit-content;max-width:fit-content}.checkbox__icon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:18px;width:18px;min-width:18px;border-radius:4px;color:var(--color-surface-1, rgb(246, 246, 246));border:1px solid var(--color-content-default, rgb(40, 40, 40));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:4px;-webkit-transition:all 0.3s;transition:all 0.3s;-webkit-transition-property:all;transition-property:all;-webkit-transition-duration:0.3s;transition-duration:0.3s;-webkit-transition-timing-function:ease;transition-timing-function:ease;-webkit-transition-delay:0s;transition-delay:0s}.checkbox__text{margin-left:8px;color:var(--color-content-default, rgb(40, 40, 40))}";
+const checkboxCss = ".checkbox{display:inline}.checkbox input[type=checkbox]{display:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;cursor:pointer;margin:0}.checkbox input[type=checkbox]:focus{outline:0}.checkbox__icon{position:relative}.checkbox__icon::before{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.checkbox__icon:focus-visible{outline:none}.checkbox__icon:focus-visible::before{border-color:var(--color-focus, rgb(194, 38, 251))}.checkbox__icon:hover{border-color:var(--color-brand, rgb(0, 150, 250))}.checkbox--selected .checkbox__icon{background-color:var(--color-surface-primary, rgb(30, 107, 241));border-color:var(--color-surface-primary, rgb(30, 107, 241))}.checkbox--selected .checkbox__icon__svg{color:var(--color-content-bright, rgb(255, 255, 255))}.checkbox--selected .checkbox__icon:hover{background-color:var(--color-brand, rgb(0, 150, 250))}.checkbox--selected-disabled .checkbox__label{cursor:not-allowed}.checkbox--selected-disabled .checkbox__icon{color:var(--color-content-default, rgb(40, 40, 40));border-color:var(--color-content-default, rgb(40, 40, 40));background-color:var(--color-surface-3, rgb(227, 227, 227));opacity:50%}.checkbox--selected-disabled .checkbox__text{opacity:50%}.checkbox--deselected .checkbox__icon__svg{display:none}.checkbox--indeterminate .checkbox__icon{background-color:var(--color-surface-primary, rgb(30, 107, 241));border-color:var(--color-surface-primary, rgb(30, 107, 241))}.checkbox--indeterminate .checkbox__icon__svg{color:var(--color-content-bright, rgb(255, 255, 255))}.checkbox--indeterminate .checkbox__icon:hover{background-color:var(--color-brand, rgb(0, 150, 250))}.checkbox--indeterminate-disabled .checkbox__label{cursor:not-allowed}.checkbox--indeterminate-disabled .checkbox__icon{color:var(--color-content-default, rgb(40, 40, 40));border-color:var(--color-content-default, rgb(40, 40, 40));background-color:var(--color-surface-3, rgb(227, 227, 227));opacity:50%}.checkbox--indeterminate-disabled .checkbox__text{opacity:50%}.checkbox--deselected-disabled .checkbox__label{cursor:not-allowed}.checkbox--deselected-disabled .checkbox__icon{opacity:50%;background-color:var(--color-surface-1, rgb(246, 246, 246));border:1px solid var(--color-brand, rgb(0, 150, 250))}.checkbox--deselected-disabled .checkbox__icon__svg{display:none}.checkbox__label{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;cursor:pointer;max-width:-webkit-fit-content;max-width:-moz-fit-content;max-width:fit-content}.checkbox__icon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:18px;width:18px;min-width:18px;border-radius:4px;color:var(--color-surface-1, rgb(246, 246, 246));border:1px solid var(--color-content-default, rgb(40, 40, 40));-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:4px;-webkit-transition:all 0.3s;transition:all 0.3s;-webkit-transition-property:all;transition-property:all;-webkit-transition-duration:0.3s;transition-duration:0.3s;-webkit-transition-timing-function:ease;transition-timing-function:ease;-webkit-transition-delay:0s;transition-delay:0s}.checkbox__text{margin-left:8px;color:var(--color-content-default, rgb(40, 40, 40))}";
 
 let checkBoxIds = 0;
 const Checkbox = class {
@@ -15,6 +15,13 @@ const Checkbox = class {
          */
         this.checked = false;
         /**
+         * If `true`, the checkbox is in an indeterminate state.
+         * This is used when the checkbox is a parent of a list of checkboxes
+         * and some (but not all) of the child checkboxes are selected.
+         * Clicking when indeterminate will set the checkbox to checked.
+         */
+        this.indeterminate = false;
+        /**
          * If `true`, the user cannot interact with the checkbox.
          */
         this.disabled = false;
@@ -24,15 +31,28 @@ const Checkbox = class {
         this.dataTest = null;
         this.onClick = (ev) => {
             ev.stopPropagation();
-            this.checked = !this.checked;
+            if (this.indeterminate) {
+                this.indeterminate = false;
+                this.checked = true;
+            }
+            else {
+                this.checked = !this.checked;
+            }
             this.bdsChange.emit({
                 checked: this.checked,
+                indeterminate: this.indeterminate,
             });
         };
         this.refNativeInput = (input) => {
             this.nativeInput = input;
         };
         this.getStyleState = () => {
+            if (this.indeterminate && !this.disabled) {
+                return 'checkbox--indeterminate';
+            }
+            if (this.indeterminate && this.disabled) {
+                return 'checkbox--indeterminate-disabled';
+            }
             if (this.checked && !this.disabled) {
                 return 'checkbox--selected';
             }
@@ -47,6 +67,9 @@ const Checkbox = class {
             }
             return '';
         };
+        this.getIconName = () => {
+            return this.indeterminate ? 'less' : 'true';
+        };
     }
     connectedCallback() {
         this.checkBoxId = this.refer || `bds-checkbox-${checkBoxIds++}`;
@@ -58,25 +81,42 @@ const Checkbox = class {
         return Promise.resolve(this.nativeInput.checked);
     }
     async toggle() {
-        this.checked = !this.checked;
+        if (this.indeterminate) {
+            this.indeterminate = false;
+            this.checked = true;
+        }
+        else {
+            this.checked = !this.checked;
+        }
         this.bdsChange.emit({
             checked: this.checked,
+            indeterminate: this.indeterminate,
         });
     }
     handleKeyDown(event) {
-        if (event.key == 'Enter') {
-            this.checked = !this.checked;
+        if (this.disabled) {
+            return;
+        }
+        if (event.key === 'Enter') {
+            if (this.indeterminate) {
+                this.indeterminate = false;
+                this.checked = true;
+            }
+            else {
+                this.checked = !this.checked;
+            }
             this.bdsChange.emit({
                 checked: this.checked,
+                indeterminate: this.indeterminate,
             });
         }
     }
     render() {
         const styleState = this.getStyleState();
-        return (index.h("div", { key: '5d189c41e08a759332fb372dd32814d1f568ee6d', class: {
+        return (index.h("div", { key: 'e8393dc51b1d3bdbcfb88e2461958ba8be6ece2e', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, index.h("input", { key: '5ce44f6d46d421f333b4f6067fe05d079e65769c', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), index.h("label", { key: 'ba6392bc29b7cf261236014cb2efc4b0fab7d1af', class: "checkbox__label", htmlFor: this.checkBoxId }, index.h("div", { key: '1d2e679e7b06e235fc8076f8210014f734c9f5c4', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, index.h("bds-icon", { key: '693030518309efde0db4a07d8d4aaf2f3b6975a7', class: "checkbox__icon__svg", size: "x-small", name: "true", color: "inherit" })), this.label && (index.h("bds-typo", { key: '73635d43f719451ed7acb1e2b7d76f508c3da612', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, index.h("input", { key: 'b97b37146df694a4db9b3b974e9ba99497b09c12', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), index.h("label", { key: '7a395c45fd78ea969bc005ac160f42a455f82c4d', class: "checkbox__label", htmlFor: this.checkBoxId }, index.h("div", { key: 'bac243d4b79b8fc80b741e3f7a57987ef9afbadf', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, index.h("bds-icon", { key: 'a866696637bcf8031eee4fd28a70211206c18237', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (index.h("bds-typo", { key: 'a38c8185f5c879409dc69c7db0903fda3f4e2db1', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
 };
 Checkbox.style = checkboxCss;

@@ -62,19 +62,19 @@ export class Sidebar {
         this.hasHeaderSlot = !!this.hostElement.querySelector('[slot="header"]');
     }
     render() {
-        return (h("div", { key: '6a28b23936d194ff0e9b85a67a9ed6929d8a6eae', class: {
+        return (h("div", { key: 'dc07bf50f1abda5223e611167fba96d6436eb797', class: {
                 sidebar_dialog: true,
                 is_open: this.isOpen,
                 [`type_${this.type}`]: true,
-            } }, this.type === 'over' ? (h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone })) : (''), h("div", { key: 'fbe30dcc8f4b4edf4974d3ca5e9f2dd7b3af19c5', class: {
+            } }, this.type === 'over' ? (h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone })) : (''), h("div", { key: '279f833e63e0ec799101259fee1f4b4cace10363', class: {
                 sidebar: true,
                 is_open: this.isOpen,
                 [`type_${this.type}`]: true,
                 [`position_${this.sidebarPosition}`]: true,
                 [`background_${this.background}`]: true,
-            }, style: { width: `${this.width < 144 ? 144 : this.width}px` } }, this.hasHeaderSlot && (h("div", { key: '4986a151f22653b354c7067d0d8c8fb47f4d1075', class: { header: true } }, h("div", { key: 'e6ca184aafa3b030c7092ad93a36a959ad42f4c8', class: { content: true } }, h("slot", { key: 'df771cc232129a7920cdd02236d62eb16b96b9b7', name: "header" })), this.type === 'fixed' ? ('') : (h("bds-button-icon", { class: {
+            }, style: { width: `${this.width < 144 ? 144 : this.width}px` } }, this.hasHeaderSlot && (h("div", { key: 'e02a6f98a5d39afe207f767449c5437efe93e2c2', class: { header: true } }, h("div", { key: '4087e40497b17dd0c0818a7bdbd4a8a03015c126', class: { content: true } }, h("slot", { key: 'd123a6196493beb1e1319fd9b223cc9376e2562b', name: "header" })), this.type === 'fixed' ? ('') : (h("bds-button-icon", { class: {
                 closeButton: true,
-            }, icon: "close", size: "short", variant: "secondary", onClick: () => this.onClickCloseButtom(), dataTest: this.dtButtonClose })))), h("div", { key: '4af832ac6385607998d02bd2b6bc0c9adb084aee', class: { body: true } }, h("div", { key: 'c50c703d56a9c368093e977a52062c94a7c4bf2c', class: { content: true, element_scrolled: true, margin: this.margin } }, h("slot", { key: 'c1bd9e729bd4d857d0da69e300301b1b3929c321', name: "body" }))), this.hasFooterSlot && (h("div", { key: '4123cbb084466f2eef25423b47acef6f09ce3c40', class: { footer: true } }, h("div", { key: '2d10d1921041a202770eb7e9cd126a7cb446f019', class: { content: true } }, h("slot", { key: 'c2fb737665f52abc3a1c0523014c9d1ead74a320', name: "footer" })))))));
+            }, icon: "close", size: "short", variant: "secondary", onClick: () => this.onClickCloseButtom(), dataTest: this.dtButtonClose })))), h("div", { key: 'c01a4e91490908af75b64f7a25ac149ddabda9aa', class: { body: true } }, h("div", { key: 'cb7348c218f17e3f61f40bc969c83a48654cdbef', class: { content: true, element_scrolled: true, margin: this.margin } }, h("slot", { key: '59d340a9f35fcec7c46d4246e70d59e6fa5561d5', name: "body" }))), this.hasFooterSlot && (h("div", { key: '567471bd57fc44901b5253cfa7bb47c397a2699c', class: { footer: true } }, h("div", { key: 'a80389443ef3461858c399daf8554a7b1a030762', class: { content: true } }, h("slot", { key: 'e1509d3c597eae64b5fa22892c38edf28f5361f8', name: "footer" })))))));
     }
     static get is() { return "bds-sidebar"; }
     static get encapsulation() { return "shadow"; }
@@ -248,7 +248,7 @@ export class Sidebar {
                 "mutable": false,
                 "complexType": {
                     "original": "sidebarBackground",
-                    "resolved": "\"surface-1\" | \"surface-2\" | \"surface-3\" | \"surface-4\"",
+                    "resolved": "\"surface-0\" | \"surface-1\" | \"surface-2\" | \"surface-3\" | \"surface-4\"",
                     "references": {
                         "sidebarBackground": {
                             "location": "local",

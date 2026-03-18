@@ -63,14 +63,6 @@ export class Icon {
             this.loadIcon();
         });
     }
-    componentDidLoad() {
-        // Safety net: if the 'name' attribute was set after connectedCallback
-        // but before @Watch became active (e.g. AngularJS ng-attr-name), the
-        // watcher won't fire. Re-check here to ensure the icon loads.
-        if (this.name && !this.svgContent) {
-            this.loadIcon();
-        }
-    }
     disconnectedCallback() {
         if (this.io) {
             this.io.disconnect();
@@ -97,7 +89,7 @@ export class Icon {
     loadIcon() {
         if (!this.name)
             return;
-        if (Build.isBrowser && (!this.lazy || this.isVisible)) {
+        if (Build.isBrowser && this.isVisible) {
             this.setSvgContent();
         }
         if (!this.ariaLabel) {
@@ -108,7 +100,7 @@ export class Icon {
         }
     }
     render() {
-        return (h(Host, { key: 'f6c03764772f5b16820c44a73d82024e95300d81', role: "img", class: {
+        return (h(Host, { key: 'e9180dc0ce13fe163c2e7b717d5d26f7259a14b6', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (h("div", { class: {
@@ -382,6 +374,9 @@ export class Icon {
                 "methodName": "loadIcon"
             }, {
                 "propName": "icon",
+                "methodName": "loadIcon"
+            }, {
+                "propName": "color",
                 "methodName": "loadIcon"
             }, {
                 "propName": "theme",

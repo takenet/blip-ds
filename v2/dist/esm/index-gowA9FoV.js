@@ -110,10 +110,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-alert-header.entry.js').then(processMod, consoleError);
-                case 'bds-autocomplete':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-autocomplete.entry.js').then(processMod, consoleError);
                 case 'bds-avatar-group':
                     return import(
                       /* webpackMode: "lazy" */
@@ -430,6 +426,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-loading-spinner.entry.js').then(processMod, consoleError);
+                case 'bds-autocomplete':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-autocomplete.entry.js').then(processMod, consoleError);
                 case 'bds-input-phone-number':
                     return import(
                       /* webpackMode: "lazy" */

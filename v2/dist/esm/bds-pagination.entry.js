@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-gowA9FoV.js';
-import { g as getScrollParent } from './position-element-BNEKIkjk.js';
+import { c as getScrollParent } from './position-element-CyGI72Zy.js';
 
 const en_US = {
     itemsPerPage: 'Items per page',

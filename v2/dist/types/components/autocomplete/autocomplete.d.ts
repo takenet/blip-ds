@@ -1,5 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { AutocompleteOption, AutocompleteChangeEventDetail, AutocompleteSelectedChangeEventDetail, AutocompleteOptionsPositionType, AutocompleteMultiSelectedChangeEventDetail } from './autocomplete-select-interface';
+import { languages } from './languages';
 export type SelectionType = 'single' | 'multiple';
 export declare class BdsAutocomplete {
     private checkAllInput?;
@@ -97,6 +98,10 @@ export declare class BdsAutocomplete {
      */
     dataTest?: string;
     /**
+     * Language. Can be one of: 'pt_BR', 'es_ES', 'en_US'.
+     */
+    language?: languages;
+    /**
      * Is Loading, is the prop to enable that the component is loading.
      */
     loading?: boolean;
@@ -127,7 +132,7 @@ export declare class BdsAutocomplete {
     /**
      * Emitted when the input has changed.
      */
-    bdsInput: EventEmitter<InputEvent>;
+    bdsInput: EventEmitter<KeyboardEvent>;
     /**
      * Emitted when the selection is cancelled.
      */
@@ -147,7 +152,6 @@ export declare class BdsAutocomplete {
     protected changeCheckedOptions(): void;
     parseOptions(): void;
     protected changeSelectionType(): void;
-    protected changePlaceholder(): void;
     componentWillLoad(): void;
     componentDidLoad(): void;
     private setDefaultPlacement;
@@ -176,7 +180,6 @@ export declare class BdsAutocomplete {
     private setTimeoutFilter;
     private filterOptions;
     private resetFilterOptions;
-    private getSelectedValue;
     private renderIcon;
     private renderLabel;
     private renderMessage;

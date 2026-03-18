@@ -1,0 +1,1 @@
+{"version":3,"file":"pt_BR.js","sourceRoot":"","sources":["../../../../../src/components/autocomplete/languages/pt_BR.tsx"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,OAAO,GAAG;IACrB,QAAQ,EAAE,cAAc;IACxB,WAAW,EAAE,kBAAkB;CAChC,CAAC","sourcesContent":["export const ptTerms = {\n  selected: 'selecionados',\n  allSelected: 'Selecionar Todos',\n};\n"]}

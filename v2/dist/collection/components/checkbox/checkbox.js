@@ -7,6 +7,13 @@ export class Checkbox {
          */
         this.checked = false;
         /**
+         * If `true`, the checkbox is in an indeterminate state.
+         * This is used when the checkbox is a parent of a list of checkboxes
+         * and some (but not all) of the child checkboxes are selected.
+         * Clicking when indeterminate will set the checkbox to checked.
+         */
+        this.indeterminate = false;
+        /**
          * If `true`, the user cannot interact with the checkbox.
          */
         this.disabled = false;
@@ -16,15 +23,28 @@ export class Checkbox {
         this.dataTest = null;
         this.onClick = (ev) => {
             ev.stopPropagation();
-            this.checked = !this.checked;
+            if (this.indeterminate) {
+                this.indeterminate = false;
+                this.checked = true;
+            }
+            else {
+                this.checked = !this.checked;
+            }
             this.bdsChange.emit({
                 checked: this.checked,
+                indeterminate: this.indeterminate,
             });
         };
         this.refNativeInput = (input) => {
             this.nativeInput = input;
         };
         this.getStyleState = () => {
+            if (this.indeterminate && !this.disabled) {
+                return 'checkbox--indeterminate';
+            }
+            if (this.indeterminate && this.disabled) {
+                return 'checkbox--indeterminate-disabled';
+            }
             if (this.checked && !this.disabled) {
                 return 'checkbox--selected';
             }
@@ -39,6 +59,9 @@ export class Checkbox {
             }
             return '';
         };
+        this.getIconName = () => {
+            return this.indeterminate ? 'less' : 'true';
+        };
     }
     connectedCallback() {
         this.checkBoxId = this.refer || `bds-checkbox-${checkBoxIds++}`;
@@ -50,25 +73,42 @@ export class Checkbox {
         return Promise.resolve(this.nativeInput.checked);
     }
     async toggle() {
-        this.checked = !this.checked;
+        if (this.indeterminate) {
+            this.indeterminate = false;
+            this.checked = true;
+        }
+        else {
+            this.checked = !this.checked;
+        }
         this.bdsChange.emit({
             checked: this.checked,
+            indeterminate: this.indeterminate,
         });
     }
     handleKeyDown(event) {
-        if (event.key == 'Enter') {
-            this.checked = !this.checked;
+        if (this.disabled) {
+            return;
+        }
+        if (event.key === 'Enter') {
+            if (this.indeterminate) {
+                this.indeterminate = false;
+                this.checked = true;
+            }
+            else {
+                this.checked = !this.checked;
+            }
             this.bdsChange.emit({
                 checked: this.checked,
+                indeterminate: this.indeterminate,
             });
         }
     }
     render() {
         const styleState = this.getStyleState();
-        return (h("div", { key: '5d189c41e08a759332fb372dd32814d1f568ee6d', class: {
+        return (h("div", { key: 'e8393dc51b1d3bdbcfb88e2461958ba8be6ece2e', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, h("input", { key: '5ce44f6d46d421f333b4f6067fe05d079e65769c', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'ba6392bc29b7cf261236014cb2efc4b0fab7d1af', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: '1d2e679e7b06e235fc8076f8210014f734c9f5c4', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '693030518309efde0db4a07d8d4aaf2f3b6975a7', class: "checkbox__icon__svg", size: "x-small", name: "true", color: "inherit" })), this.label && (h("bds-typo", { key: '73635d43f719451ed7acb1e2b7d76f508c3da612', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, h("input", { key: 'b97b37146df694a4db9b3b974e9ba99497b09c12', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: '7a395c45fd78ea969bc005ac160f42a455f82c4d', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: 'bac243d4b79b8fc80b741e3f7a57987ef9afbadf', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: 'a866696637bcf8031eee4fd28a70211206c18237', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: 'a38c8185f5c879409dc69c7db0903fda3f4e2db1', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
     static get is() { return "bds-checkbox"; }
     static get encapsulation() { return "shadow"; }
@@ -161,6 +201,26 @@ export class Checkbox {
                 "reflect": true,
                 "defaultValue": "false"
             },
+            "indeterminate": {
+                "type": "boolean",
+                "attribute": "indeterminate",
+                "mutable": true,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "If `true`, the checkbox is in an indeterminate state.\nThis is used when the checkbox is a parent of a list of checkboxes\nand some (but not all) of the child checkboxes are selected.\nClicking when indeterminate will set the checkbox to checked."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": true,
+                "defaultValue": "false"
+            },
             "disabled": {
                 "type": "boolean",
                 "attribute": "disabled",
@@ -220,8 +280,8 @@ export class Checkbox {
                     "text": "Emitted when the value has changed."
                 },
                 "complexType": {
-                    "original": "{\n    checked: boolean;\n  }",
-                    "resolved": "{ checked: boolean; }",
+                    "original": "any",
+                    "resolved": "any",
                     "references": {}
                 }
             }, {

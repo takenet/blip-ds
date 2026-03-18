@@ -80,6 +80,28 @@
 .checkbox--deselected .checkbox__icon__svg {
   display: none;
 }
+.checkbox--indeterminate .checkbox__icon {
+  background-color: var(--color-surface-primary, rgb(30, 107, 241));
+  border-color: var(--color-surface-primary, rgb(30, 107, 241));
+}
+.checkbox--indeterminate .checkbox__icon__svg {
+  color: var(--color-content-bright, rgb(255, 255, 255));
+}
+.checkbox--indeterminate .checkbox__icon:hover {
+  background-color: var(--color-brand, rgb(0, 150, 250));
+}
+.checkbox--indeterminate-disabled .checkbox__label {
+  cursor: not-allowed;
+}
+.checkbox--indeterminate-disabled .checkbox__icon {
+  color: var(--color-content-default, rgb(40, 40, 40));
+  border-color: var(--color-content-default, rgb(40, 40, 40));
+  background-color: var(--color-surface-3, rgb(227, 227, 227));
+  opacity: 50%;
+}
+.checkbox--indeterminate-disabled .checkbox__text {
+  opacity: 50%;
+}
 .checkbox--deselected-disabled .checkbox__label {
   cursor: not-allowed;
 }

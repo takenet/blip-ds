@@ -1,7 +1,7 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export type sidebarPosition = 'left' | 'right';
 export type sidebarType = 'over' | 'fixed';
-export type sidebarBackground = 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
+export type sidebarBackground = 'surface-0' | 'surface-1' | 'surface-2' | 'surface-3' | 'surface-4';
 export declare class Sidebar {
     private hasFooterSlot;
     private hasHeaderSlot;
