@@ -63,6 +63,8 @@ import { PaginationOptionsPositionType } from "./components/pagination/paginatio
 import { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 import { languages as languages3 } from "./components/rict-text/rich-text-interface";
 import { positionBar } from "./components/rict-text/rich-text";
+import { SearchAnywhereChangeEventDetail, SearchAnywhereOption, SearchAnywhereSelectEventDetail } from "./components/search-anywhere/search-anywhere-interface";
+import { languages as languages3 } from "./components/search-anywhere/languages";
 import { TypeOption } from "./components/select-option/select-option";
 import { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 import { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -134,6 +136,8 @@ export { PaginationOptionsPositionType } from "./components/pagination/paginatio
 export { progressBarColor, progressBarSize } from "./components/progress-bar/progress-bar";
 export { languages as languages3 } from "./components/rict-text/rich-text-interface";
 export { positionBar } from "./components/rict-text/rich-text";
+export { SearchAnywhereChangeEventDetail, SearchAnywhereOption, SearchAnywhereSelectEventDetail } from "./components/search-anywhere/search-anywhere-interface";
+export { languages as languages3 } from "./components/search-anywhere/languages";
 export { TypeOption } from "./components/select-option/select-option";
 export { sidebarBackground, sidebarPosition, sidebarType } from "./components/sidebar/sidebar";
 export { Shape as Shape1 } from "./components/skeleton/skeleton";
@@ -2744,6 +2748,56 @@ export namespace Components {
          */
         "weightButton"?: boolean;
     }
+    interface BdsSearchAnywhere {
+        /**
+          * Closes the search modal programmatically
+         */
+        "close": () => Promise<void>;
+        /**
+          * Gets the current open state (for testing)
+         */
+        "getIsOpen": () => Promise<boolean>;
+        /**
+          * Gets the current search text (for testing)
+         */
+        "getSearchText": () => Promise<string>;
+        /**
+          * Gets the current selected index (for testing)
+         */
+        "getSelectedIndex": () => Promise<number>;
+        /**
+          * Language for UI text translations (pt_BR, en_US, es_ES)
+          * @default 'pt_BR'
+         */
+        "language"?: languages3;
+        /**
+          * Maximum number of results to display
+          * @default 10
+         */
+        "maxResults"?: number;
+        /**
+          * Opens the search modal programmatically
+         */
+        "open": () => Promise<void>;
+        /**
+          * Options to be displayed in the search results. Can be passed as JSON string or array of SearchAnywhereOption objects.
+          * @default []
+         */
+        "options"?: string | SearchAnywhereOption[];
+        /**
+          * Placeholder text for the search input (when modal is open) If not provided, uses translated default based on language prop
+         */
+        "placeholder"?: string;
+        /**
+          * If true, displays the keyboard shortcut hint on the trigger
+          * @default true
+         */
+        "showShortcut"?: boolean;
+        /**
+          * Placeholder text for the trigger input (before modal opens) If not provided, uses translated default based on language prop
+         */
+        "triggerPlaceholder"?: string;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -3789,6 +3843,10 @@ export interface BdsRichTextCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsRichTextElement;
 }
+export interface BdsSearchAnywhereCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsSearchAnywhereElement;
+}
 export interface BdsSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsSelectElement;
@@ -4817,6 +4875,26 @@ declare global {
         prototype: HTMLBdsRichTextElement;
         new (): HTMLBdsRichTextElement;
     };
+    interface HTMLBdsSearchAnywhereElementEventMap {
+        "bdsSearchChange": SearchAnywhereChangeEventDetail;
+        "bdsSearchSelect": SearchAnywhereSelectEventDetail;
+        "bdsSearchOpen": any;
+        "bdsSearchClose": any;
+    }
+    interface HTMLBdsSearchAnywhereElement extends Components.BdsSearchAnywhere, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBdsSearchAnywhereElementEventMap>(type: K, listener: (this: HTMLBdsSearchAnywhereElement, ev: BdsSearchAnywhereCustomEvent<HTMLBdsSearchAnywhereElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBdsSearchAnywhereElementEventMap>(type: K, listener: (this: HTMLBdsSearchAnywhereElement, ev: BdsSearchAnywhereCustomEvent<HTMLBdsSearchAnywhereElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBdsSearchAnywhereElement: {
+        prototype: HTMLBdsSearchAnywhereElement;
+        new (): HTMLBdsSearchAnywhereElement;
+    };
     interface HTMLBdsSelectElementEventMap {
         "bdsChange": SelectChangeEventDetail;
         "bdsCancel": void;
@@ -5208,6 +5286,7 @@ declare global {
         "bds-radio": HTMLBdsRadioElement;
         "bds-radio-group": HTMLBdsRadioGroupElement;
         "bds-rich-text": HTMLBdsRichTextElement;
+        "bds-search-anywhere": HTMLBdsSearchAnywhereElement;
         "bds-select": HTMLBdsSelectElement;
         "bds-select-chips": HTMLBdsSelectChipsElement;
         "bds-select-option": HTMLBdsSelectOptionElement;
@@ -8103,6 +8182,52 @@ declare namespace LocalJSX {
          */
         "weightButton"?: boolean;
     }
+    interface BdsSearchAnywhere {
+        /**
+          * Language for UI text translations (pt_BR, en_US, es_ES)
+          * @default 'pt_BR'
+         */
+        "language"?: languages3;
+        /**
+          * Maximum number of results to display
+          * @default 10
+         */
+        "maxResults"?: number;
+        /**
+          * Emitted when the search text changes
+         */
+        "onBdsSearchChange"?: (event: BdsSearchAnywhereCustomEvent<SearchAnywhereChangeEventDetail>) => void;
+        /**
+          * Emitted when the modal closes
+         */
+        "onBdsSearchClose"?: (event: BdsSearchAnywhereCustomEvent<any>) => void;
+        /**
+          * Emitted when the modal opens
+         */
+        "onBdsSearchOpen"?: (event: BdsSearchAnywhereCustomEvent<any>) => void;
+        /**
+          * Emitted when an option is selected
+         */
+        "onBdsSearchSelect"?: (event: BdsSearchAnywhereCustomEvent<SearchAnywhereSelectEventDetail>) => void;
+        /**
+          * Options to be displayed in the search results. Can be passed as JSON string or array of SearchAnywhereOption objects.
+          * @default []
+         */
+        "options"?: string | SearchAnywhereOption[];
+        /**
+          * Placeholder text for the search input (when modal is open) If not provided, uses translated default based on language prop
+         */
+        "placeholder"?: string;
+        /**
+          * If true, displays the keyboard shortcut hint on the trigger
+          * @default true
+         */
+        "showShortcut"?: boolean;
+        /**
+          * Placeholder text for the trigger input (before modal opens) If not provided, uses translated default based on language prop
+         */
+        "triggerPlaceholder"?: string;
+    }
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -9085,6 +9210,7 @@ declare namespace LocalJSX {
         "bds-radio": BdsRadio;
         "bds-radio-group": BdsRadioGroup;
         "bds-rich-text": BdsRichText;
+        "bds-search-anywhere": BdsSearchAnywhere;
         "bds-select": BdsSelect;
         "bds-select-chips": BdsSelectChips;
         "bds-select-option": BdsSelectOption;
@@ -9196,6 +9322,7 @@ declare module "@stencil/core" {
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
             "bds-rich-text": LocalJSX.BdsRichText & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
+            "bds-search-anywhere": LocalJSX.BdsSearchAnywhere & JSXBase.HTMLAttributes<HTMLBdsSearchAnywhereElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
             "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;

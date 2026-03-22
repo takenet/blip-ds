@@ -77,6 +77,7 @@ import { BdsProgressBar as BdsProgressBarElement, defineCustomElement as defineB
 import { BdsRadioGroup as BdsRadioGroupElement, defineCustomElement as defineBdsRadioGroup } from "blip-ds/dist/components/bds-radio-group.js";
 import { BdsRadio as BdsRadioElement, defineCustomElement as defineBdsRadio } from "blip-ds/dist/components/bds-radio.js";
 import { BdsRichText as BdsRichTextElement, defineCustomElement as defineBdsRichText } from "blip-ds/dist/components/bds-rich-text.js";
+import { BdsSearchAnywhere as BdsSearchAnywhereElement, defineCustomElement as defineBdsSearchAnywhere } from "blip-ds/dist/components/bds-search-anywhere.js";
 import { BdsSelectChips as BdsSelectChipsElement, defineCustomElement as defineBdsSelectChips } from "blip-ds/dist/components/bds-select-chips.js";
 import { BdsSelectOption as BdsSelectOptionElement, defineCustomElement as defineBdsSelectOption } from "blip-ds/dist/components/bds-select-option.js";
 import { BdsSelect as BdsSelectElement, defineCustomElement as defineBdsSelect } from "blip-ds/dist/components/bds-select.js";
@@ -739,6 +740,18 @@ export const BdsRichText = createComponent({
         onBdsFocus: 'bdsFocus'
     },
     defineCustomElement: defineBdsRichText
+});
+export const BdsSearchAnywhere = createComponent({
+    tagName: 'bds-search-anywhere',
+    elementClass: BdsSearchAnywhereElement,
+    react: React,
+    events: {
+        onBdsSearchChange: 'bdsSearchChange',
+        onBdsSearchSelect: 'bdsSearchSelect',
+        onBdsSearchOpen: 'bdsSearchOpen',
+        onBdsSearchClose: 'bdsSearchClose'
+    },
+    defineCustomElement: defineBdsSearchAnywhere
 });
 export const BdsSelect = createComponent({
     tagName: 'bds-select',
