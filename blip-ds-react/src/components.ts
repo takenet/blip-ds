@@ -9,7 +9,7 @@
 
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeItemCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSliderCustomEvent, type BdsTabGroupCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type StepOption, type TypeList, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeItemCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsTabGroupCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type stateSelect } from "blip-ds";
 import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from "blip-ds/dist/components/bds-accordion-group.js";
 import { BdsAccordionHeader as BdsAccordionHeaderElement, defineCustomElement as defineBdsAccordionHeader } from "blip-ds/dist/components/bds-accordion-header.js";
@@ -1285,7 +1285,7 @@ export const BdsSkeleton: StencilReactComponent<BdsSkeletonElement, BdsSkeletonE
     defineCustomElement: defineBdsSkeleton
 });
 
-export type BdsSliderEvents = { onBdsChange: EventName<BdsSliderCustomEvent<StepOption>> };
+export type BdsSliderEvents = { onBdsChange: EventName<CustomEvent<any>> };
 
 export const BdsSlider: StencilReactComponent<BdsSliderElement, BdsSliderEvents> = /*@__PURE__*/ createComponent<BdsSliderElement, BdsSliderEvents>({
     tagName: 'bds-slider',
@@ -1529,8 +1529,8 @@ export const BdsTypo: StencilReactComponent<BdsTypoElement, BdsTypoEvents> = /*@
 });
 
 export type BdsUploadEvents = {
-    onBdsUploadDelete: EventName<BdsUploadCustomEvent<{ value: File[] }>>,
-    onBdsUploadChange: EventName<BdsUploadCustomEvent<{ value: File[] }>>
+    onBdsUploadDelete: EventName<CustomEvent<any>>,
+    onBdsUploadChange: EventName<CustomEvent<any>>
 };
 
 export const BdsUpload: StencilReactComponent<BdsUploadElement, BdsUploadEvents> = /*@__PURE__*/ createComponent<BdsUploadElement, BdsUploadEvents>({

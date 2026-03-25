@@ -26,11 +26,6 @@ export class AccordionHeader {
    */
   @Prop() icon?: string = null;
   /**
-   * Icon color for the accordion header icons.
-   */
-  @Prop() iconColor?: string = 'inherit';
-
-  /**
    * Icon color. Used to set the color of icons in the accordion header.
    */
   @Prop() iconColor?: string = 'inherit';
