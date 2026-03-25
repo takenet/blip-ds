@@ -74,7 +74,9 @@ export default [
       'src/**',
       "storybook-static",
       "jest.setup.ts",
-      "jest.svg-transform.js"
+      "jest.svg-transform.js",
+      "tests/playwright/**",
+      "playwright.config.ts"
     ],
   },
 ];
