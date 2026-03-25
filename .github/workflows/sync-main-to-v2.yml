@@ -1,0 +1,149 @@
+name: Sync main → v2
+
+on:
+  push:
+    branches:
+      - chore/test-sync-workflow  # TODO: change to 'main' after validation
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Check for existing open sync PR
+        id: check_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING_PR=$(gh pr list --base v2 --search "sync main" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING_PR" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "pr_number=$EXISTING_PR" >> "$GITHUB_OUTPUT"
+            echo "::notice::Sync PR #$EXISTING_PR already open for v2. Skipping."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create sync branch and attempt merge
+        if: steps.check_pr.outputs.exists == 'false'
+        id: merge
+        run: |
+          BRANCH="auto/sync-main-to-v2-$(date +%Y%m%d-%H%M%S)"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+          git fetch origin v2 main
+          git checkout -B "$BRANCH" origin/v2
+
+          if git merge origin/main --no-edit; then
+            echo "conflict=false" >> "$GITHUB_OUTPUT"
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            # Abort the dirty merge — don't commit conflict markers
+            git merge --abort
+            echo "conflict=true" >> "$GITHUB_OUTPUT"
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          # Only push if there are actual changes vs v2
+          if git diff --quiet origin/v2; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No new changes to sync."
+          else
+            git push origin "$BRANCH"
+          fi
+
+      - name: Get new commits summary
+        if: steps.check_pr.outputs.exists == 'false' && steps.merge.outputs.has_changes == 'true'
+        id: summary
+        run: |
+          COMMITS=$(git log --oneline origin/v2..origin/main | head -20)
+          COUNT=$(git log --oneline origin/v2..origin/main | wc -l)
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "commits<<$EOF" >> "$GITHUB_OUTPUT"
+          echo "$COMMITS" >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+
+      - name: Create PR (clean merge)
+        if: steps.check_pr.outputs.exists == 'false' && steps.merge.outputs.conflict == 'false' && steps.merge.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base v2 \
+            --head "${{ steps.merge.outputs.branch }}" \
+            --title "chore: sync main → v2 ($(date +%Y-%m-%d))" \
+            --body "$(cat <<BODY
+          ## Auto-sync from main
+
+          This PR was automatically created to keep \`v2\` in sync with \`main\`.
+
+          ### Commits included (${{ steps.summary.outputs.count }})
+          \`\`\`
+          ${{ steps.summary.outputs.commits }}
+          \`\`\`
+
+          ### Status
+          ✅ **Clean merge** — no conflicts detected.
+
+          > Review the changes and run tests before merging.
+          > Once \`v2\` becomes the main branch, this workflow can be removed.
+          BODY
+          )"
+
+      - name: Create PR (with conflicts)
+        if: steps.check_pr.outputs.exists == 'false' && steps.merge.outputs.conflict == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Push the clean v2 base (no conflict markers) so PR is visible
+          git push origin "${{ steps.merge.outputs.branch }}"
+
+          gh pr create \
+            --base v2 \
+            --head "${{ steps.merge.outputs.branch }}" \
+            --title "⚠️ chore: sync main → v2 (conflicts — $(date +%Y-%m-%d))" \
+            --body "$(cat <<BODY
+          ## Auto-sync from main (conflicts detected)
+
+          This PR was automatically created but \`main\` has changes that **conflict** with \`v2\`.
+          The branch is clean (no conflict markers) — you need to manually merge.
+
+          ### Commits to sync (${{ steps.summary.outputs.count }})
+          \`\`\`
+          ${{ steps.summary.outputs.commits }}
+          \`\`\`
+
+          ### How to resolve
+          \`\`\`bash
+          git fetch origin
+          # -B forces a clean reset if you already have this branch locally
+          git checkout -B ${{ steps.merge.outputs.branch }} origin/${{ steps.merge.outputs.branch }}
+          git merge origin/main
+          # Fix conflicts in your editor, then:
+          git add -A && git commit
+          git push
+          \`\`\`
+
+          ### Status
+          ⚠️ **Conflicts detected** — manual resolution required before merging.
+
+          > Once \`v2\` becomes the main branch, this workflow can be removed.
+          BODY
+          )"
