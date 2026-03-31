@@ -46,8 +46,21 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'solid' },
     },
-    description: 'Escolha o estilo visual do botão.',
-    options: ['solid', 'outline', 'text'],
+    description:
+      'Escolha o estilo visual do botão. Variantes modernas: solid, outline, text. Variante especial: delete (solid + cor negativa). Variantes legadas: primary, secondary, tertiary, ghost, dashed, secondary--white, facebook.',
+    options: [
+      'solid',
+      'outline',
+      'text',
+      'ghost',
+      'dashed',
+      'delete',
+      'primary',
+      'secondary',
+      'tertiary',
+      'secondary--white',
+      'facebook',
+    ],
     control: { type: 'select' },
   },
   color: {
@@ -151,7 +164,7 @@ Properties.argTypes = {
       defaultValue: { summary: 'primary' },
     },
     description: 'Define a variante do spinner de carregamento.',
-    options: ['primary', 'secondary', 'ghost'],
+    options: ['primary', 'secondary', 'tertiary', 'ghost', 'delete'],
     control: { type: 'select' },
   },
   loadingColor: {
@@ -217,20 +230,53 @@ Properties.args = {
 };
 
 export const Variants = () => (
-  <bds-grid direction="column" gap="3" padding="3">
-    <bds-typo variant="fs-20" bold="bold">
-      Variantes
-    </bds-typo>
-    <bds-grid direction="row" gap="2" align-items="center">
-      <bds-button variant="solid" color="primary">
-        Solid
-      </bds-button>
-      <bds-button variant="outline" color="primary">
-        Outline
-      </bds-button>
-      <bds-button variant="text" color="primary">
-        Text
-      </bds-button>
+  <bds-grid direction="column" gap="4" padding="3">
+    <bds-grid direction="column" gap="2">
+      <bds-typo variant="fs-20" bold="bold">
+        Variantes Modernas
+      </bds-typo>
+      <bds-typo variant="fs-14">As variantes recomendadas para uso no design system.</bds-typo>
+      <bds-grid direction="row" gap="2" align-items="center">
+        <bds-button variant="solid" color="primary">
+          solid
+        </bds-button>
+        <bds-button variant="outline" color="primary">
+          outline
+        </bds-button>
+        <bds-button variant="text" color="primary">
+          text
+        </bds-button>
+      </bds-grid>
+    </bds-grid>
+
+    <bds-grid direction="column" gap="2">
+      <bds-typo variant="fs-20" bold="bold">
+        Variante Especial: delete
+      </bds-typo>
+      <bds-typo variant="fs-14">
+        Atalho semântico: equivale a variant=&quot;solid&quot; color=&quot;negative&quot;. Use para ações destrutivas.
+      </bds-typo>
+      <bds-grid direction="row" gap="2" align-items="center">
+        <bds-button variant="delete">delete</bds-button>
+      </bds-grid>
+    </bds-grid>
+
+    <bds-grid direction="column" gap="2">
+      <bds-typo variant="fs-20" bold="bold">
+        Variantes Legadas
+      </bds-typo>
+      <bds-typo variant="fs-14">
+        Mantidas para retrocompatibilidade. Prefira as variantes modernas quando possível.
+      </bds-typo>
+      <bds-grid direction="row" gap="2" align-items="center" flex-wrap="wrap">
+        <bds-button variant="ghost">ghost</bds-button>
+        <bds-button variant="dashed">dashed</bds-button>
+        <bds-button variant="primary">primary</bds-button>
+        <bds-button variant="secondary">secondary</bds-button>
+        <bds-button variant="tertiary">tertiary</bds-button>
+        <bds-button variant="secondary--white">secondary--white</bds-button>
+        <bds-button variant="facebook">facebook</bds-button>
+      </bds-grid>
     </bds-grid>
   </bds-grid>
 );
