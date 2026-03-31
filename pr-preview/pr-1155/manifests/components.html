@@ -3432,8 +3432,21 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: &#39;solid&#39; },
     },
-    description: &#39;Escolha o estilo visual do botão.&#39;,
-    options: [&#39;solid&#39;, &#39;outline&#39;, &#39;text&#39;],
+    description:
+      &#39;Escolha o estilo visual do botão. Variantes modernas: solid, outline, text. Variante especial: delete (solid + cor negativa). Variantes legadas: primary, secondary, tertiary, ghost, dashed, secondary--white, facebook.&#39;,
+    options: [
+      &#39;solid&#39;,
+      &#39;outline&#39;,
+      &#39;text&#39;,
+      &#39;ghost&#39;,
+      &#39;dashed&#39;,
+      &#39;delete&#39;,
+      &#39;primary&#39;,
+      &#39;secondary&#39;,
+      &#39;tertiary&#39;,
+      &#39;secondary--white&#39;,
+      &#39;facebook&#39;,
+    ],
     control: { type: &#39;select&#39; },
   },
   color: {
@@ -3537,7 +3550,7 @@ Properties.argTypes = {
       defaultValue: { summary: &#39;primary&#39; },
     },
     description: &#39;Define a variante do spinner de carregamento.&#39;,
-    options: [&#39;primary&#39;, &#39;secondary&#39;, &#39;ghost&#39;],
+    options: [&#39;primary&#39;, &#39;secondary&#39;, &#39;tertiary&#39;, &#39;ghost&#39;, &#39;delete&#39;],
     control: { type: &#39;select&#39; },
   },
   loadingColor: {
@@ -3603,20 +3616,53 @@ Properties.args = {
 };
 
 export const Variants = () =&gt; (
-  &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot; padding=&quot;3&quot;&gt;
-    &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
-      Variantes
-    &lt;/bds-typo&gt;
-    &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
-      &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
-        Solid
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
-        Outline
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
-        Text
-      &lt;/bds-button&gt;
+  &lt;bds-grid direction=&quot;column&quot; gap=&quot;4&quot; padding=&quot;3&quot;&gt;
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Modernas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;As variantes recomendadas para uso no design system.&lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
+          solid
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
+          outline
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
+          text
+        &lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variante Especial: delete
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Atalho semântico: equivale a variant=&amp;quot;solid&amp;quot; color=&amp;quot;negative&amp;quot;. Use para ações destrutivas.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;delete&quot;&gt;delete&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Legadas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Mantidas para retrocompatibilidade. Prefira as variantes modernas quando possível.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot; flex-wrap=&quot;wrap&quot;&gt;
+        &lt;bds-button variant=&quot;ghost&quot;&gt;ghost&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;dashed&quot;&gt;dashed&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;primary&quot;&gt;primary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary&quot;&gt;secondary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;tertiary&quot;&gt;tertiary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary--white&quot;&gt;secondary--white&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;facebook&quot;&gt;facebook&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
     &lt;/bds-grid&gt;
   &lt;/bds-grid&gt;
 );
@@ -4034,20 +4080,53 @@ export const FrameworkReact = () =&gt; {
               
               
               <pre><code>const Variants = () =&gt; (
-  &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot; padding=&quot;3&quot;&gt;
-    &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
-      Variantes
-    &lt;/bds-typo&gt;
-    &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
-      &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
-        Solid
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
-        Outline
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
-        Text
-      &lt;/bds-button&gt;
+  &lt;bds-grid direction=&quot;column&quot; gap=&quot;4&quot; padding=&quot;3&quot;&gt;
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Modernas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;As variantes recomendadas para uso no design system.&lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
+          solid
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
+          outline
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
+          text
+        &lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variante Especial: delete
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Atalho semântico: equivale a variant=&amp;quot;solid&amp;quot; color=&amp;quot;negative&amp;quot;. Use para ações destrutivas.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;delete&quot;&gt;delete&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Legadas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Mantidas para retrocompatibilidade. Prefira as variantes modernas quando possível.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot; flex-wrap=&quot;wrap&quot;&gt;
+        &lt;bds-button variant=&quot;ghost&quot;&gt;ghost&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;dashed&quot;&gt;dashed&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;primary&quot;&gt;primary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary&quot;&gt;secondary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;tertiary&quot;&gt;tertiary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary--white&quot;&gt;secondary--white&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;facebook&quot;&gt;facebook&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
     &lt;/bds-grid&gt;
   &lt;/bds-grid&gt;
 );</code></pre>
@@ -32887,8 +32966,21 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: &#39;solid&#39; },
     },
-    description: &#39;Escolha o estilo visual do botão.&#39;,
-    options: [&#39;solid&#39;, &#39;outline&#39;, &#39;text&#39;],
+    description:
+      &#39;Escolha o estilo visual do botão. Variantes modernas: solid, outline, text. Variante especial: delete (solid + cor negativa). Variantes legadas: primary, secondary, tertiary, ghost, dashed, secondary--white, facebook.&#39;,
+    options: [
+      &#39;solid&#39;,
+      &#39;outline&#39;,
+      &#39;text&#39;,
+      &#39;ghost&#39;,
+      &#39;dashed&#39;,
+      &#39;delete&#39;,
+      &#39;primary&#39;,
+      &#39;secondary&#39;,
+      &#39;tertiary&#39;,
+      &#39;secondary--white&#39;,
+      &#39;facebook&#39;,
+    ],
     control: { type: &#39;select&#39; },
   },
   color: {
@@ -32992,7 +33084,7 @@ Properties.argTypes = {
       defaultValue: { summary: &#39;primary&#39; },
     },
     description: &#39;Define a variante do spinner de carregamento.&#39;,
-    options: [&#39;primary&#39;, &#39;secondary&#39;, &#39;ghost&#39;],
+    options: [&#39;primary&#39;, &#39;secondary&#39;, &#39;tertiary&#39;, &#39;ghost&#39;, &#39;delete&#39;],
     control: { type: &#39;select&#39; },
   },
   loadingColor: {
@@ -33058,20 +33150,53 @@ Properties.args = {
 };
 
 export const Variants = () =&gt; (
-  &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot; padding=&quot;3&quot;&gt;
-    &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
-      Variantes
-    &lt;/bds-typo&gt;
-    &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
-      &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
-        Solid
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
-        Outline
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
-        Text
-      &lt;/bds-button&gt;
+  &lt;bds-grid direction=&quot;column&quot; gap=&quot;4&quot; padding=&quot;3&quot;&gt;
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Modernas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;As variantes recomendadas para uso no design system.&lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
+          solid
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
+          outline
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
+          text
+        &lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variante Especial: delete
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Atalho semântico: equivale a variant=&amp;quot;solid&amp;quot; color=&amp;quot;negative&amp;quot;. Use para ações destrutivas.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;delete&quot;&gt;delete&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Legadas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Mantidas para retrocompatibilidade. Prefira as variantes modernas quando possível.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot; flex-wrap=&quot;wrap&quot;&gt;
+        &lt;bds-button variant=&quot;ghost&quot;&gt;ghost&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;dashed&quot;&gt;dashed&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;primary&quot;&gt;primary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary&quot;&gt;secondary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;tertiary&quot;&gt;tertiary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary--white&quot;&gt;secondary--white&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;facebook&quot;&gt;facebook&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
     &lt;/bds-grid&gt;
   &lt;/bds-grid&gt;
 );
@@ -33489,20 +33614,53 @@ export const FrameworkReact = () =&gt; {
               
               
               <pre><code>const Variants = () =&gt; (
-  &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot; padding=&quot;3&quot;&gt;
-    &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
-      Variantes
-    &lt;/bds-typo&gt;
-    &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
-      &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
-        Solid
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
-        Outline
-      &lt;/bds-button&gt;
-      &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
-        Text
-      &lt;/bds-button&gt;
+  &lt;bds-grid direction=&quot;column&quot; gap=&quot;4&quot; padding=&quot;3&quot;&gt;
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Modernas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;As variantes recomendadas para uso no design system.&lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;solid&quot; color=&quot;primary&quot;&gt;
+          solid
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;outline&quot; color=&quot;primary&quot;&gt;
+          outline
+        &lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;text&quot; color=&quot;primary&quot;&gt;
+          text
+        &lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variante Especial: delete
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Atalho semântico: equivale a variant=&amp;quot;solid&amp;quot; color=&amp;quot;negative&amp;quot;. Use para ações destrutivas.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot;&gt;
+        &lt;bds-button variant=&quot;delete&quot;&gt;delete&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+      &lt;bds-typo variant=&quot;fs-20&quot; bold=&quot;bold&quot;&gt;
+        Variantes Legadas
+      &lt;/bds-typo&gt;
+      &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+        Mantidas para retrocompatibilidade. Prefira as variantes modernas quando possível.
+      &lt;/bds-typo&gt;
+      &lt;bds-grid direction=&quot;row&quot; gap=&quot;2&quot; align-items=&quot;center&quot; flex-wrap=&quot;wrap&quot;&gt;
+        &lt;bds-button variant=&quot;ghost&quot;&gt;ghost&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;dashed&quot;&gt;dashed&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;primary&quot;&gt;primary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary&quot;&gt;secondary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;tertiary&quot;&gt;tertiary&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;secondary--white&quot;&gt;secondary--white&lt;/bds-button&gt;
+        &lt;bds-button variant=&quot;facebook&quot;&gt;facebook&lt;/bds-button&gt;
+      &lt;/bds-grid&gt;
     &lt;/bds-grid&gt;
   &lt;/bds-grid&gt;
 );</code></pre>
