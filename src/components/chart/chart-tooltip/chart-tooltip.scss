@@ -1,0 +1,100 @@
+bds-chart-tooltip {
+  display: none;
+}
+
+#bds-chart-tooltip-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.bds-chart-tooltip-wrapper {
+  position: fixed;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.bds-chart-tooltip-wrapper.visible {
+  pointer-events: auto;
+}
+
+.chart-tooltip {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #333333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+  transform: translate(-50%, -130%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 32px;
+  min-width: 80px;
+  width: auto;
+  height: auto;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 2px;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.entry-name {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.entry-value {
+  font-weight: 600;
+  margin-left: auto;
+  padding-left: 12px;
+}
+
+.content {
+  margin-left: 2px;
+}
+
+.indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.indicator-dot {
+  border-radius: 50%;
+}
+
+.indicator-line {
+  width: 3px;
+  height: 14px;
+  border-radius: 1px;
+}
+
+.indicator-dashed {
+  width: 10px;
+  height: 3px;
+  border-radius: 1px;
+}

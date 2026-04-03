@@ -1,0 +1,639 @@
+import { ChartDatum, Scale, Margin, DEFAULT_CHART_MARGIN, HeatmapLayout } from './chart.types';
+
+export const DEFAULT_LEGEND_PALETTE = [
+  '#0d6efd', '#05b96c', '#ff6b6b', '#ffc107', '#9c27b0',
+  '#00bcd4', '#ff9800', '#4caf50', '#e91e63', '#607d8b',
+];
+
+/**
+ * Builds a Map from unique category string values to palette colors.
+ * Cycles through palette if categories exceed palette size.
+ */
+export function buildCategoryColorMap(
+  data: ChartDatum[] | string,
+  categoryKey: string,
+  palette: string[] = DEFAULT_LEGEND_PALETTE
+): Map<string, string> {
+  const points = normalizeChartData(data);
+  const seen = new Set<string>();
+  const ordered: string[] = [];
+  for (const p of points) {
+    const val = String(p[categoryKey]);
+    if (!seen.has(val)) {
+      seen.add(val);
+      ordered.push(val);
+    }
+  }
+  const map = new Map<string, string>();
+  if (!palette.length) return map;
+  ordered.forEach((cat, i) => {
+    map.set(cat, palette[i % palette.length]);
+  });
+  return map;
+}
+
+/**
+ * Format a value using tickFormatter string.
+ * Examples: "toFixed,2" | "uppercase" | "slice,0,3" | "round,1"
+ */
+export function formatTick(value: string | number, formatter?: string): string {
+  if (!formatter) return String(value);
+
+  const parts = formatter.split(',').map(s => s.trim());
+  const fn = parts[0];
+  const args = parts.slice(1);
+
+  let result = String(value);
+
+  switch (fn) {
+    case 'toFixed': {
+      const decimals = parseInt(args[0] || '0', 10);
+      return Number(value).toFixed(decimals);
+    }
+    case 'round': {
+      const decimals = parseInt(args[0] || '0', 10);
+      const factor = Math.pow(10, decimals);
+      return (Math.round(Number(value) * factor) / factor).toString();
+    }
+    case 'uppercase':
+      return result.toUpperCase();
+    case 'lowercase':
+      return result.toLowerCase();
+    case 'slice': {
+      const start = parseInt(args[0] || '0', 10);
+      const end = args[1] ? parseInt(args[1], 10) : undefined;
+      return result.slice(start, end);
+    }
+    default:
+      return result;
+  }
+}
+
+/**
+ * Linear scale: maps domain to range linearly
+ */
+export function createLinearScale(domain: number[], range: [number, number]): Scale {
+  const [minDomain, maxDomain] = [Math.min(...domain), Math.max(...domain)];
+  const [minRange, maxRange] = range;
+
+  return (value: number) => {
+    if (maxDomain === minDomain) return (minRange + maxRange) / 2;
+    return minRange + ((value - minDomain) / (maxDomain - minDomain)) * (maxRange - minRange);
+  };
+}
+
+/**
+ * Band scale: maps categorical values to fixed-width bands
+ */
+export function createBandScale(domain: string[], range: [number, number], padding = 0.5): Scale {
+  const [minRange, maxRange] = range;
+  const totalWidth = maxRange - minRange;
+  const bandCount = domain.length;
+  const bandWidth = totalWidth / (bandCount + padding * (bandCount - 1));
+  const paddingWidth = bandWidth * padding;
+
+  return (value: string | number) => {
+    const index = domain.indexOf(String(value));
+    if (index === -1) return minRange;
+    return minRange + index * (bandWidth + paddingWidth);
+  };
+}
+
+export function getBandWidth(domain: string[], range: [number, number], padding = 0.5): number {
+  const [minRange, maxRange] = range;
+  const totalWidth = maxRange - minRange;
+  const bandCount = domain.length;
+  return totalWidth / (bandCount + padding * (bandCount - 1));
+}
+
+/**
+ * Generate SVG path string for a line chart (monotone curve)
+ */
+export function generateLinePathMonotone(
+  points: Array<{ x: number; y: number }>,
+  tension = 0.4
+): string {
+  if (points.length === 0) return '';
+  if (points.length === 1) {
+    const p = points[0];
+    return `M${p.x},${p.y}`;
+  }
+
+  let path = `M${points[0].x},${points[0].y}`;
+
+  for (let i = 1; i < points.length; i++) {
+    const p0 = points[i - 1];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+
+    // Catmull-Rom tangent approximation
+    const t1x = p2 ? (p2.x - p0.x) / 2 : 0;
+    const t1y = p2 ? (p2.y - p0.y) / 2 : 0;
+
+    // Control points
+    const c1x = p0.x + t1x * tension;
+    const c1y = p0.y + t1y * tension;
+    const c2x = p1.x - t1x * tension;
+    const c2y = p1.y - t1y * tension;
+
+    path += `C${c1x},${c1y},${c2x},${c2y},${p1.x},${p1.y}`;
+  }
+
+  return path;
+}
+
+/**
+ * Generate SVG path string for a line chart (linear)
+ */
+export function generateLinePathLinear(points: Array<{ x: number; y: number }>): string {
+  if (points.length === 0) return '';
+  let path = `M${points[0].x},${points[0].y}`;
+  for (let i = 1; i < points.length; i++) {
+    path += `L${points[i].x},${points[i].y}`;
+  }
+  return path;
+}
+
+export function normalizeChartData(data: any[] | string): ChartDatum[] {
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (typeof data === 'string' && data.trim().length > 0) {
+    try {
+      const parsed = JSON.parse(data);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  return [];
+}
+
+export interface LineChartLayout {
+  margin: Margin;
+  innerWidth: number;
+  innerHeight: number;
+  path: string;
+  dots: Array<{ x: number; y: number; datum: ChartDatum }>;
+  xLabels: Array<{ x: number; label: string }>;
+  yLabels: Array<{ y: number; label: string }>;
+  yGridLines: number[];
+  xGridLines: Array<{ x: number }>;
+}
+
+/**
+ * Returns a "nice" round tick step >= rawStep.
+ * e.g. rawStep=35.75 → 50, rawStep=12 → 20, rawStep=7 → 10
+ */
+export function niceTickStep(rawStep: number): number {
+  if (rawStep <= 0) return 1;
+  const magnitude = Math.pow(10, Math.floor(Math.log10(rawStep)));
+  const normalized = rawStep / magnitude; // value between 1 and 10
+  let nice: number;
+  if (normalized <= 1) nice = 1;
+  else if (normalized <= 2) nice = 2;
+  else if (normalized <= 5) nice = 5;
+  else nice = 10;
+  return nice * magnitude;
+}
+
+export function calculateLineChartLayout(
+  data: ChartDatum[] | string,
+  xKey: string,
+  yKey: string,
+  width: number,
+  height: number,
+  curve: 'linear' | 'monotone' = 'monotone',
+  margin: Margin = DEFAULT_CHART_MARGIN,
+  tickCount: number = 5
+): LineChartLayout {
+  const innerWidth = Math.max(0, width - margin.left - margin.right);
+  const innerHeight = Math.max(0, height - margin.top - margin.bottom);
+
+  const points = normalizeChartData(data);
+  if (points.length === 0) {
+    return { margin, innerWidth, innerHeight, path: '', dots: [], xLabels: [], yLabels: [], yGridLines: [], xGridLines: [] };
+  }
+
+  const xDomain = points.map((p) => String(p[xKey]));
+  const yValues = points.map((p) => Number(p[yKey]) ?? 0);
+  const yMin = 0;
+  const yMax = Math.max(...yValues, 1);
+
+  // Compute nice tick step so the domain always covers yMax and ticks are round numbers.
+  // e.g. yMax=143 → rawStep=35.75 → niceStep=50 → niceMax=200, ticks: 0,50,100,150,200
+  const rawTickStep = yMax / (tickCount - 1);
+  const tickStep = niceTickStep(rawTickStep);
+  const niceMax = tickStep * (tickCount - 1);
+
+  // Use niceMax as scale domain so the top tick aligns with the top of the chart area
+  const xScale = createBandScale(xDomain, [0, innerWidth], 0.5);
+  const yScale = createLinearScale([yMin, niceMax], [innerHeight, 0]);
+
+  // Get band width for positioning points at center
+  const bandWidth = getBandWidth(xDomain, [0, innerWidth], 0.5);
+
+  // Convert points to coordinates
+  const coordinates = points.map((p) => ({
+    x: xScale(String(p[xKey])) + bandWidth / 2,
+    y: yScale(Number(p[yKey]) ?? 0),
+    datum: p,
+  }));
+
+  // Generate path
+  const pathFn = curve === 'linear' ? generateLinePathLinear : generateLinePathMonotone;
+  const path = pathFn(coordinates.map((c) => ({ x: c.x, y: c.y })));
+
+  // Generate X labels and grid lines (at band centers)
+  const xLabels = xDomain.map((label) => ({
+    x: xScale(label) + bandWidth / 2,
+    label,
+  }));
+
+  const xGridLines = xDomain.map((label) => ({
+    x: xScale(label) + bandWidth / 2,
+  }));
+
+  // Generate Y labels and grid lines — all tickCount ticks, always including niceMax
+  const yLabels: Array<{ y: number; label: string }> = [];
+  const yGridLines: number[] = [];
+
+  for (let i = 0; i < tickCount; i++) {
+    const value = i * tickStep;
+    const y = yScale(value);
+    yLabels.push({ y, label: String(value) });
+    yGridLines.push(y);
+  }
+
+  return { margin, innerWidth, innerHeight, path, dots: coordinates, xLabels, yLabels, yGridLines, xGridLines };
+}
+
+export interface BarSeriesConfig {
+  dataKey: string;
+  stackId?: string;
+}
+
+export interface BarChartLayout {
+  margin: Margin;
+  innerWidth: number;
+  innerHeight: number;
+  vertical: boolean;
+  bars: Array<{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    datum: ChartDatum;
+    dataKey: string;
+    groupIndex: number;
+  }>;
+  groups: Array<{ centerX: number; centerY: number; datum: ChartDatum }>;
+  xLabels: Array<{ x: number; label: string }>;
+  yLabels: Array<{ y: number; label: string }>;
+  yGridLines: number[];
+  xGridLines: Array<{ x: number }>;
+}
+
+export function calculateBarChartLayout(
+  data: ChartDatum[] | string,
+  xKey: string,
+  series: BarSeriesConfig[],
+  width: number,
+  height: number,
+  margin: Margin = DEFAULT_CHART_MARGIN,
+  tickCount: number = 5,
+  vertical: boolean = false,
+  align: 'left' | 'center' | 'right' = 'left'
+): BarChartLayout {
+  const innerWidth = Math.max(0, width - margin.left - margin.right);
+  const innerHeight = Math.max(0, height - margin.top - margin.bottom);
+
+  const points = normalizeChartData(data);
+  if (points.length === 0) {
+    return { margin, innerWidth, innerHeight, vertical, bars: [], groups: [], xLabels: [], yLabels: [], yGridLines: [], xGridLines: [] };
+  }
+
+  // Group series into columns: series with the same stackId share a column,
+  // series without stackId each get their own column.
+  type Column = { stackId: string | null; series: BarSeriesConfig[] };
+  const columns: Column[] = [];
+  const stackIndex = new Map<string, number>();
+  for (const s of series) {
+    if (s.stackId) {
+      if (!stackIndex.has(s.stackId)) {
+        stackIndex.set(s.stackId, columns.length);
+        columns.push({ stackId: s.stackId, series: [s] });
+      } else {
+        columns[stackIndex.get(s.stackId)].series.push(s);
+      }
+    } else {
+      columns.push({ stackId: null, series: [s] });
+    }
+  }
+
+  const xDomain = points.map((p) => String(p[xKey]));
+
+  const valueMax = Math.max(
+    ...points.map(p =>
+      Math.max(...columns.map(col =>
+        Math.max(...col.series.map(s => Number(p[s.dataKey]) || 0))
+      ))
+    ),
+    1
+  );
+
+  const rawTickStep = valueMax / (tickCount - 1);
+  const tickStep = niceTickStep(rawTickStep);
+  const niceMax = tickStep * (tickCount - 1);
+
+  if (vertical) {
+    // Horizontal bar chart: categories on Y axis, values on X axis
+    const bandScale = createBandScale(xDomain, [0, innerHeight], 0.3);
+    const valueScale = createLinearScale([0, niceMax], [0, innerWidth]);
+    const bandWidth = getBandWidth(xDomain, [0, innerHeight], 0.3);
+
+    const N = columns.length;
+    const gapBetween = N > 1 ? 8 : 0;
+    const totalInnerGap = gapBetween * (N - 1);
+    const colHeight = (bandWidth - totalInnerGap) / N;
+
+    const bars = points.flatMap((p, groupIndex) => {
+      const bandStart = bandScale(String(p[xKey]));
+      return columns.flatMap((col, ci) => {
+        const colY = bandStart + ci * (colHeight + gapBetween);
+        const sorted = [...col.series].sort(
+          (a, b) => (Number(p[b.dataKey]) || 0) - (Number(p[a.dataKey]) || 0)
+        );
+        return sorted.map(s => {
+          const value = Number(p[s.dataKey]) || 0;
+          const barWidth = Math.max(0, valueScale(value));
+          const x = align === 'right'
+            ? innerWidth - barWidth
+            : align === 'center'
+              ? (innerWidth - barWidth) / 2
+              : 0; // left
+          return {
+            x,
+            y: colY,
+            width: barWidth,
+            height: colHeight,
+            datum: p,
+            dataKey: s.dataKey,
+            groupIndex,
+          };
+        });
+      });
+    });
+
+    const groups = points.map(p => ({
+      centerX: innerWidth / 2,
+      centerY: bandScale(String(p[xKey])) + bandWidth / 2,
+      datum: p,
+    }));
+
+    // xLabels: category labels rendered on Y axis (x field = band center on Y)
+    const xLabels = xDomain.map(label => ({
+      x: bandScale(label) + bandWidth / 2,
+      label,
+    }));
+
+    // yLabels: value ticks rendered on X axis (y field = X position)
+    const yLabels: Array<{ y: number; label: string }> = [];
+    const yGridLines: number[] = [];
+    for (let i = 0; i < tickCount; i++) {
+      const value = i * tickStep;
+      const pos = valueScale(value);
+      yLabels.push({ y: pos, label: String(value) });
+      yGridLines.push(pos);
+    }
+
+    // xGridLines: horizontal lines at each category center
+    const xGridLines = xDomain.map(label => ({
+      x: bandScale(label) + bandWidth / 2,
+    }));
+
+    return { margin, innerWidth, innerHeight, vertical, bars, groups, xLabels, yLabels, yGridLines, xGridLines };
+  }
+
+  // Default: column chart (categories on X, values on Y)
+  const xScale = createBandScale(xDomain, [0, innerWidth], 0.3);
+  const yScale = createLinearScale([0, niceMax], [innerHeight, 0]);
+  const bandWidth = getBandWidth(xDomain, [0, innerWidth], 0.3);
+
+  const N = columns.length;
+  const gapBetween = N > 1 ? 8 : 0;
+  const totalInnerGap = gapBetween * (N - 1);
+  const colWidth = (bandWidth - totalInnerGap) / N;
+
+  const bars = points.flatMap((p, groupIndex) => {
+    const bandStart = xScale(String(p[xKey]));
+    const totalGroupWidth = N * colWidth + (N - 1) * gapBetween;
+    const bandOffset = align === 'center'
+      ? (bandWidth - totalGroupWidth) / 2
+      : align === 'right'
+        ? bandWidth - totalGroupWidth
+        : 0; // left
+    return columns.flatMap((col, ci) => {
+      const colX = bandStart + bandOffset + ci * (colWidth + gapBetween);
+      const sorted = [...col.series].sort(
+        (a, b) => (Number(p[b.dataKey]) || 0) - (Number(p[a.dataKey]) || 0)
+      );
+      return sorted.map(s => {
+        const value = Number(p[s.dataKey]) || 0;
+        const yTop = yScale(value);
+        const yBottom = yScale(0);
+        return {
+          x: colX,
+          y: yTop,
+          width: colWidth,
+          height: Math.max(0, yBottom - yTop),
+          datum: p,
+          dataKey: s.dataKey,
+          groupIndex,
+        };
+      });
+    });
+  });
+
+  const groups = points.map((p) => ({
+    centerX: xScale(String(p[xKey])) + bandWidth / 2,
+    centerY: innerHeight / 2,
+    datum: p,
+  }));
+
+  const xLabels = xDomain.map((label) => ({
+    x: xScale(label) + bandWidth / 2,
+    label,
+  }));
+
+  const xGridLines = xDomain.map((label) => ({
+    x: xScale(label) + bandWidth / 2,
+  }));
+
+  const yLabels: Array<{ y: number; label: string }> = [];
+  const yGridLines: number[] = [];
+
+  for (let i = 0; i < tickCount; i++) {
+    const value = i * tickStep;
+    const y = yScale(value);
+    yLabels.push({ y, label: String(value) });
+    yGridLines.push(y);
+  }
+
+  return { margin, innerWidth, innerHeight, vertical, bars, groups, xLabels, yLabels, yGridLines, xGridLines };
+}
+
+/**
+ * Calculate grid lines and labels for independent grid component
+ * Returns positions for rendering grids and labels separately
+ */
+export interface GridAndLabelsData {
+  xGridLines: Array<{ x: number; label: string }>;
+  yGridLines: Array<{ y: number; label: string }>;
+  margin: Margin;
+}
+
+export function calculateGridsAndLabels(
+  data: any[] | string,
+  xKey: string,
+  yKey: string,
+  width: number,
+  height: number
+): GridAndLabelsData {
+  const points = normalizeChartData(data);
+  const margin = DEFAULT_CHART_MARGIN;
+  const innerWidth = Math.max(0, width - margin.left - margin.right);
+  const innerHeight = Math.max(0, height - margin.top - margin.bottom);
+
+  if (points.length === 0) {
+    return { xGridLines: [], yGridLines: [], margin };
+  }
+
+  const xDomain = points.map((p) => String(p[xKey]));
+  const yValues = points.map((p) => Number(p[yKey]) ?? 0);
+  const yMin = 0;
+  const yMax = Math.max(...yValues, 1);
+
+  // Create scales
+  const xScale = createBandScale(xDomain, [0, innerWidth], 0.5);
+  const yScale = createLinearScale([yMin, yMax], [innerHeight, 0]);
+
+  // Get band width for positioning points at center
+  const bandWidth = getBandWidth(xDomain, [0, innerWidth], 0.5);
+
+  // X grid lines (vertical) - one for each category at the center
+  const xGridLines = xDomain.map((label) => {
+    const x = xScale(label) + bandWidth / 2;
+    return { x, label };
+  });
+
+  // Y grid lines (horizontal) - auto-ticked values
+  const tickCount = Math.min(5, Math.max(3, Math.ceil(yMax / 20)));
+  const tickStep = Math.ceil(yMax / (tickCount - 1));
+  const yGridLines: Array<{ y: number; label: string }> = [];
+
+  for (let i = 0; i < tickCount; i++) {
+    const value = i * tickStep;
+    if (value <= yMax) {
+      const y = yScale(value);
+      yGridLines.push({ y, label: String(value) });
+    }
+  }
+
+  return { xGridLines, yGridLines, margin };
+}
+
+/**
+ * Calculates cell positions, sizes, and opacity for a heatmap/matrix chart.
+ *
+ * - X axis = columns (unique xKey values, ordered by first appearance)
+ * - Y axis = rows    (unique yKey values, ordered by first appearance)
+ * - Opacity = linear scale: min value → 0.1, max value → 1.0
+ * - Duplicate (x, y) pairs: last entry in data wins
+ */
+export function calculateHeatmapLayout(
+  data: ChartDatum[] | string,
+  xKey: string,
+  yKey: string,
+  valueKey: string,
+  width: number,
+  height: number,
+  margin: Margin = DEFAULT_CHART_MARGIN,
+  cellPadding: number = 2
+): HeatmapLayout {
+  const points = normalizeChartData(data);
+  if (points.length === 0) {
+    return { cells: [], xLabels: [], yLabels: [] };
+  }
+
+  // Extract unique domains ordered by first appearance
+  const xSeen = new Set<string>();
+  const ySeen = new Set<string>();
+  const xDomain: string[] = [];
+  const yDomain: string[] = [];
+  for (const p of points) {
+    const xVal = String(p[xKey]);
+    const yVal = String(p[yKey]);
+    if (!xSeen.has(xVal)) { xSeen.add(xVal); xDomain.push(xVal); }
+    if (!ySeen.has(yVal)) { ySeen.add(yVal); yDomain.push(yVal); }
+  }
+
+  const innerWidth = Math.max(0, width - margin.left - margin.right);
+  const innerHeight = Math.max(0, height - margin.top - margin.bottom);
+  const cellWidth = xDomain.length > 0
+    ? (innerWidth - cellPadding * (xDomain.length - 1)) / xDomain.length
+    : 0;
+  const cellHeight = yDomain.length > 0
+    ? (innerHeight - cellPadding * (yDomain.length - 1)) / yDomain.length
+    : 0;
+
+  // Build value map — last entry wins for duplicates
+  const valueMap = new Map<string, number>();
+  const datumMap = new Map<string, ChartDatum>();
+  for (const p of points) {
+    const key = `${String(p[xKey])}::${String(p[yKey])}`;
+    valueMap.set(key, Number(p[valueKey]) || 0);
+    datumMap.set(key, p);
+  }
+
+  // Opacity scale: min → 0.1, max → 1.0
+  const allValues = Array.from(valueMap.values());
+  const minVal = Math.min(...allValues);
+  const maxVal = Math.max(...allValues);
+  const range = maxVal - minVal;
+  const getOpacity = (value: number): number => {
+    if (range === 0) return 1.0;
+    return (value - minVal) / range * 0.9 + 0.1;
+  };
+
+  // Generate one cell per (x, y) combination
+  const cells: HeatmapLayout['cells'] = xDomain.flatMap((xCat, xi) =>
+    yDomain.map((yCat, yi) => {
+      const key = `${xCat}::${yCat}`;
+      const value = valueMap.get(key) ?? 0;
+      const datum = datumMap.get(key) ?? { [xKey]: xCat, [yKey]: yCat, [valueKey]: value };
+      return {
+        x: xi * (cellWidth + cellPadding),
+        y: yi * (cellHeight + cellPadding),
+        width: Math.max(0, cellWidth),
+        height: Math.max(0, cellHeight),
+        opacity: getOpacity(value),
+        datum,
+      };
+    })
+  );
+
+  const xLabels = xDomain.map((label, xi) => ({
+    x: xi * (cellWidth + cellPadding) + cellWidth / 2,
+    label,
+  }));
+
+  const yLabels = yDomain.map((label, yi) => ({
+    y: yi * (cellHeight + cellPadding) + cellHeight / 2,
+    label,
+  }));
+
+  return { cells, xLabels, yLabels };
+}

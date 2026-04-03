@@ -1,0 +1,283 @@
+import { Canvas, Meta, Controls, Source } from '@storybook/addon-docs/blocks';
+import * as ChartStories from './chart.stories';
+
+# Chart
+
+[Design e Acessibilidade](https://www.figma.com/design/2bBnJVKkG09JPWCFBIcD1y/%5BDS%5D-Components?m=auto&node-id=20478-9047&t=TyXNmrAZbhl7DmWw-1)
+
+<br></br>
+
+# Chart
+
+[Design e Acessibilidade](https://www.figma.com/design/2bBnJVKkG09JPWCFBIcD1y/%5BDS%5D-Components?m=auto&node-id=20478-9047&t=TyXNmrAZbhl7DmWw-1)
+
+<br></br>
+
+## Visão Geral
+
+O componente Chart oferece uma forma modular e composável de renderizar gráficos, seguindo o padrão de composição do shadcn/ui. A arquitetura é simples e explícita:
+
+- **bds-chart-container**: Wrapper responsivo que ocupa 100% do width e height do pai
+- **bds-chart-line** / **bds-chart-bar**: Renderizam gráficos, auto-dimensionados ao container
+- **bds-chart-grid**: Componente filho configurador de grid (display: none)
+- **bds-x-axis** / **bds-y-axis**: Componentes filhos configuradores de eixos (display: none)
+- **bds-line** / **bds-bar**: Componentes filhos configuradores de série (display: none)
+- **bds-chart-tooltip**: Componente filho que exibe tooltip com dados interativos
+
+O sistema utiliza SVG puro para máxima compatibilidade e desempenho.
+
+<Canvas of={ChartStories.Properties}></Canvas>
+
+<Meta isTemplate />
+
+<br></br>
+
+## Propriedades
+
+As propriedades abaixo estão disponíveis para o componente Chart.
+
+<Controls />
+
+### bds-chart-container
+
+Wrapper responsivo que ocupa 100% do width e height do pai.
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| Nenhuma | — | Container é um wrapper puro sem props |
+
+**Uso com style inline:**
+```jsx
+<bds-chart-container style="width: 600px; height: 400px">
+  {/* chart */}
+</bds-chart-container>
+```
+
+O container se adapta automaticamente ao tamanho do pai.
+
+### bds-chart-line
+
+Renderiza gráficos de linha, auto-dimensionados ao container pai.
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `data` | `string \| ChartDatum[]` | Dados do gráfico em formato JSON ou array |
+| `color` | `string` | Cor da linha (padrão: '#0d66f4') |
+| `strokeWidth` | `number` | Espessura da linha (padrão: 2) |
+| `curve` | `'linear' \| 'monotone'` | Tipo de interpolação (padrão: 'monotone') |
+| `circleRadius` | `number` | Raio dos pontos (padrão: 4) |
+
+**Notas:**
+- `xKey` e `yKey` usam valores padrão 'label' e 'value' (não configuráveis)
+- Largura e altura são determinadas pelo container pai
+
+### bds-chart-bar
+
+Renderiza gráficos de barras, auto-dimensionados ao container pai.
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `data` | `string \| ChartDatum[]` | Dados do gráfico em formato JSON ou array |
+| `color` | `string` | Cor das barras (padrão: '#0d66f4') |
+| `barRadius` | `number` | Raio das bordas das barras (padrão: 4) |
+
+**Notas:**
+- `xKey` e `yKey` usam valores padrão 'label' e 'value' (não configuráveis)
+- Largura e altura são determinadas pelo container pai
+
+### bds-chart-grid
+
+Componente configurador de grid. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.** Não renderiza nada, apenas passa configuração.
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `vertical` | `boolean` | Mostra linhas verticais (eixo X) (padrão: false) |
+| `horizontal` | `boolean` | Mostra linhas horizontais (eixo Y) (padrão: true) |
+| `strokeStyle` | `'solid' \| 'dashed' \| 'dotted'` | Estilo das linhas (padrão: 'solid') |
+
+### bds-x-axis
+
+Componente configurador de eixo X. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.**
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `dataKey` | `string` | Chave dos dados do eixo X |
+| `tickLine` | `boolean` | Mostra as linhas dos ticks (padrão: true) |
+| `tickMargin` | `number` | Margem dos ticks em pixels (padrão: 10) |
+| `axisLine` | `boolean` | Mostra a linha do eixo (padrão: true) |
+| `tickFormatter` | `string` | Função para formatar ticks (padrão: undefined) |
+| `show` | `boolean` | Mostra os labels do eixo X (padrão: true) |
+
+### bds-y-axis
+
+Componente configurador de eixo Y. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.**
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `dataKey` | `string` | Chave dos dados do eixo Y |
+| `tickLine` | `boolean` | Mostra as linhas dos ticks (padrão: true) |
+| `tickMargin` | `number` | Margem dos ticks em pixels (padrão: 10) |
+| `axisLine` | `boolean` | Mostra a linha do eixo (padrão: true) |
+| `tickFormatter` | `string` | Função para formatar ticks (padrão: undefined) |
+| `show` | `boolean` | Mostra os labels do eixo Y (padrão: true) |
+
+### bds-line
+
+Componente configurador de série de linha. **Deve ser usado como filho direto de `bds-chart-line`.** Não renderiza nada, apenas passa configuração.
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `dataKey` | `string` | Chave dos dados da série |
+| `color` | `string` | Cor da linha (padrão: '#0d6efd') |
+| `strokeWidth` | `number` | Espessura da linha (padrão: 2) |
+| `curve` | `'linear' \| 'monotone'` | Tipo de interpolação (padrão: 'monotone') |
+| `radius` | `number` | Raio dos pontos (padrão: 4) |
+
+### bds-bar
+
+Componente configurador de série de barras. **Deve ser usado como filho direto de `bds-chart-bar`.** Não renderiza nada, apenas passa configuração.
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `dataKey` | `string` | Chave dos dados da série |
+| `color` | `string` | Cor das barras (padrão: '#0d6efd') |
+| `radius` | `number` | Raio das bordas das barras (padrão: 4) |
+| `width` | `number` | Largura do SVG (padrão: 720) |
+| `height` | `number` | Altura do SVG (padrão: 320) |
+
+### bds-chart-tooltip
+
+Componente que exibe tooltip com dados interativos. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.**
+
+| Propriedade | Tipo | Descrição |
+|------------|------|-----------|
+| `labelKey` | `string` | Chave dos dados para o label do tooltip (padrão: undefined) |
+| `nameKey` | `string` | Chave dos dados para o nome/título do tooltip (padrão: undefined) |
+| `indicator` | `'dot' \| 'line' \| 'dashed'` | Estilo do indicador (padrão: 'dot') |
+| `hideLabel` | `boolean` | Oculta o label (padrão: false) |
+| `hideIndicator` | `boolean` | Oculta o indicador (padrão: false) |
+
+**Notas:**
+- O tooltip mostra automaticamente ao passar o mouse sobre dados
+- Use apenas um `bds-chart-tooltip` por chart
+
+<br></br>
+
+## Eventos
+
+Eventos disponíveis nos componentes de chart.
+
+| Evento | Descrição | Tipo de Dado |
+|--------|-----------|--------------|
+| `bdsChartHover` | Disparado ao passar o mouse sobre um ponto/barra | `ChartHoverPayload` |
+| `bdsChartLeave` | Disparado ao sair do mouse de um ponto/barra | `void` |
+
+### Formato ChartHoverPayload
+
+```typescript
+interface ChartHoverPayload {
+  datum: ChartDatum;           // Dado do item hovereado
+  tooltip: string;             // Texto do tooltip
+  clientX: number;             // Posição X do mouse
+  clientY: number;             // Posição Y do mouse
+}
+```
+
+<Canvas of={ChartStories.Events}></Canvas>
+
+<br></br>
+
+## Exemplo de Uso Completo
+
+```jsx
+<bds-chart-container style="width: 100%; height: 400px">
+  <bds-chart-line data={data}>
+    <bds-chart-grid 
+      vertical={false} 
+      horizontal={true} 
+      strokeStyle="solid" 
+    />
+    <bds-x-axis 
+      dataKey="label" 
+      tickLine={true} 
+      tickMargin={10} 
+      axisLine={true}
+      show={true}
+    />
+    <bds-y-axis 
+      dataKey="value" 
+      tickLine={true} 
+      tickMargin={10} 
+      axisLine={true}
+      show={true}
+    />
+    <bds-line 
+      dataKey="value" 
+      color="#0d6efd" 
+      strokeWidth={2} 
+      curve="monotone" 
+    />
+    <bds-chart-tooltip 
+      labelKey="label" 
+      nameKey="value" 
+      indicator="dot" 
+    />
+  </bds-chart-line>
+</bds-chart-container>
+```
+
+## Exemplos de Uso
+
+### Gráfico de Linha Simples
+
+```jsx
+<bds-chart-container heading="Vendas Semanais">
+  <bds-chart-line
+    data={JSON.stringify([
+      { label: 'Seg', value: 100 },
+      { label: 'Ter', value: 120 },
+      { label: 'Qua', value: 110 },
+    ])}
+    xkey="label"
+    ykey="value"
+    width="720"
+    height="320"
+    color="#0d6efd"
+  />
+</bds-chart-container>
+```
+
+### Gráfico com Grid Customizado
+
+```jsx
+<bds-chart-container heading="Engajamento">
+  <bds-chart-line
+    data={JSON.stringify(data)}
+    xkey="label"
+    ykey="value"
+    width="720"
+    height="320"
+    color="#0d6efd"
+  >
+    <bds-chart-grid
+      vertical={true}
+      horizontal={true}
+      strokeStyle="dashed"
+    />
+  </bds-chart-line>
+</bds-chart-container>
+```
+
+### Escutando Eventos
+
+```jsx
+const container = document.querySelector('bds-chart-container');
+
+container.addEventListener('bdsChartHover', (event) => {
+  console.log('Hoverou:', event.detail);
+});
+
+container.addEventListener('bdsChartLeave', () => {
+  console.log('Saiu do hover');
+});
+```
