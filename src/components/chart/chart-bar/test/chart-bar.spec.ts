@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { ChartBar } from '../chart-bar';
-import { ChartBar as ChartBarItem } from '../chart-bar-item';
+import { ChartBar as ChartBarItem } from '../../chart-bar-item/chart-bar-item';
 
 const sampleData = [
   { label: 'Jan', value: 10 },
