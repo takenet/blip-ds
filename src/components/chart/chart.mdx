@@ -1,11 +1,5 @@
-import { Canvas, Meta, Controls, Source } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
 import * as ChartStories from './chart.stories';
-
-# Chart
-
-[Design e Acessibilidade](https://www.figma.com/design/2bBnJVKkG09JPWCFBIcD1y/%5BDS%5D-Components?m=auto&node-id=20478-9047&t=TyXNmrAZbhl7DmWw-1)
-
-<br></br>
 
 # Chart
 
@@ -15,269 +9,309 @@ import * as ChartStories from './chart.stories';
 
 ## Visão Geral
 
-O componente Chart oferece uma forma modular e composável de renderizar gráficos, seguindo o padrão de composição do shadcn/ui. A arquitetura é simples e explícita:
+O sistema de charts do Blip DS segue um padrão de **composição declarativa**: cada gráfico é montado combinando um componente de container, um componente de tipo de gráfico e componentes filhos de configuração. Nenhum filho renderiza algo visível — eles apenas passam configuração ao pai via `querySelector`.
 
-- **bds-chart-container**: Wrapper responsivo que ocupa 100% do width e height do pai
-- **bds-chart-line** / **bds-chart-bar**: Renderizam gráficos, auto-dimensionados ao container
-- **bds-chart-grid**: Componente filho configurador de grid (display: none)
-- **bds-x-axis** / **bds-y-axis**: Componentes filhos configuradores de eixos (display: none)
-- **bds-line** / **bds-bar**: Componentes filhos configuradores de série (display: none)
-- **bds-chart-tooltip**: Componente filho que exibe tooltip com dados interativos
+```
+bds-chart-container          ← wrapper responsivo
+  └── bds-chart-bar          ← tipo do gráfico
+        ├── bds-bar          ← define uma série de barras
+        ├── bds-x-axis       ← configura o eixo X
+        ├── bds-y-axis       ← configura o eixo Y
+        ├── bds-chart-grid   ← configura o grid
+        ├── bds-chart-legend ← configura a legenda
+        └── bds-chart-tooltip← configura o tooltip
+```
 
-O sistema utiliza SVG puro para máxima compatibilidade e desempenho.
-
-<Canvas of={ChartStories.Properties}></Canvas>
+<Canvas of={ChartStories.BarChartSimple}></Canvas>
 
 <Meta isTemplate />
 
 <br></br>
 
-## Propriedades
+---
 
-As propriedades abaixo estão disponíveis para o componente Chart.
+## bds-chart-bar — Gráfico de Barras
 
-<Controls />
+### Propriedades
 
-### bds-chart-container
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`data`</td><td>`ChartDatum[] | string`</td><td>`[]`</td><td>Array de dados ou string JSON. Cada item deve conter uma chave para label (padrão: `"label"`) e uma para valor (padrão: `"value"`)</td></tr>
+    <tr><td>`vertical`</td><td>`boolean`</td><td>`false`</td><td>Quando `true`, as barras ficam horizontais (orientação funil)</td></tr>
+    <tr><td>`align`</td><td>`'left' | 'center' | 'right'`</td><td>`'left'`</td><td>Alinhamento das barras quando `vertical=true`. `left` arredonda à direita, `right` arredonda à esquerda, `center` arredonda todos os cantos</td></tr>
+    <tr><td>`color`</td><td>`string`</td><td>`var(--color-extended-green)`</td><td>Cor padrão das barras (usada quando não há `bds-bar` filho)</td></tr>
+    <tr><td>`barRadius`</td><td>`number`</td><td>`6`</td><td>Raio do arredondamento das pontas das barras em pixels</td></tr>
+  </tbody>
+</table>
 
-Wrapper responsivo que ocupa 100% do width e height do pai.
+### Exemplo Simples
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| Nenhuma | — | Container é um wrapper puro sem props |
+<Canvas of={ChartStories.BarChartSimple}></Canvas>
 
-**Uso com style inline:**
-```jsx
-<bds-chart-container style="width: 600px; height: 400px">
-  {/* chart */}
-</bds-chart-container>
-```
+### Barras Agrupadas (multi-série)
 
-O container se adapta automaticamente ao tamanho do pai.
+Use múltiplos `bds-bar` com `dataKey` diferentes para agrupar series lado a lado.
 
-### bds-chart-line
+<Canvas of={ChartStories.BarChartGrouped}></Canvas>
 
-Renderiza gráficos de linha, auto-dimensionados ao container pai.
+### Barras Empilhadas (`stackId`)
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `data` | `string \| ChartDatum[]` | Dados do gráfico em formato JSON ou array |
-| `color` | `string` | Cor da linha (padrão: '#0d66f4') |
-| `strokeWidth` | `number` | Espessura da linha (padrão: 2) |
-| `curve` | `'linear' \| 'monotone'` | Tipo de interpolação (padrão: 'monotone') |
-| `circleRadius` | `number` | Raio dos pontos (padrão: 4) |
+Barras com o mesmo `stackId` são empilhadas. Barras com `stackId` diferentes ficam lado a lado.
 
-**Notas:**
-- `xKey` e `yKey` usam valores padrão 'label' e 'value' (não configuráveis)
-- Largura e altura são determinadas pelo container pai
+<Canvas of={ChartStories.BarChartStacked}></Canvas>
 
-### bds-chart-bar
+### Orientação Vertical (`vertical=true`)
 
-Renderiza gráficos de barras, auto-dimensionados ao container pai.
+Quando `vertical="true"`, o eixo X vira o eixo de valores e o Y vira o de categorias.
+Use `bds-y-axis` para os labels de categoria e `bds-x-axis` para os valores numéricos.
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `data` | `string \| ChartDatum[]` | Dados do gráfico em formato JSON ou array |
-| `color` | `string` | Cor das barras (padrão: '#0d66f4') |
-| `barRadius` | `number` | Raio das bordas das barras (padrão: 4) |
+<Canvas of={ChartStories.BarChartVertical}></Canvas>
 
-**Notas:**
-- `xKey` e `yKey` usam valores padrão 'label' e 'value' (não configuráveis)
-- Largura e altura são determinadas pelo container pai
+### Gráfico Funil (`vertical + align`)
 
-### bds-chart-grid
+Combine `vertical="true"` com `align="center"` para um visual de funil com barras centralizadas e arredondamento em todos os lados.
 
-Componente configurador de grid. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.** Não renderiza nada, apenas passa configuração.
+<Canvas of={ChartStories.BarChartFunnel}></Canvas>
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `vertical` | `boolean` | Mostra linhas verticais (eixo X) (padrão: false) |
-| `horizontal` | `boolean` | Mostra linhas horizontais (eixo Y) (padrão: true) |
-| `strokeStyle` | `'solid' \| 'dashed' \| 'dotted'` | Estilo das linhas (padrão: 'solid') |
+### Com Legenda
 
-### bds-x-axis
+Use `bds-chart-legend` para exibir a legenda das séries. Clique nos itens da legenda para filtrar series.
 
-Componente configurador de eixo X. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.**
+<Canvas of={ChartStories.BarChartWithLegend}></Canvas>
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `dataKey` | `string` | Chave dos dados do eixo X |
-| `tickLine` | `boolean` | Mostra as linhas dos ticks (padrão: true) |
-| `tickMargin` | `number` | Margem dos ticks em pixels (padrão: 10) |
-| `axisLine` | `boolean` | Mostra a linha do eixo (padrão: true) |
-| `tickFormatter` | `string` | Função para formatar ticks (padrão: undefined) |
-| `show` | `boolean` | Mostra os labels do eixo X (padrão: true) |
+---
 
-### bds-y-axis
+## bds-chart-line — Gráfico de Linhas
 
-Componente configurador de eixo Y. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.**
+### Propriedades
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `dataKey` | `string` | Chave dos dados do eixo Y |
-| `tickLine` | `boolean` | Mostra as linhas dos ticks (padrão: true) |
-| `tickMargin` | `number` | Margem dos ticks em pixels (padrão: 10) |
-| `axisLine` | `boolean` | Mostra a linha do eixo (padrão: true) |
-| `tickFormatter` | `string` | Função para formatar ticks (padrão: undefined) |
-| `show` | `boolean` | Mostra os labels do eixo Y (padrão: true) |
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`data`</td><td>`ChartDatum[] | string`</td><td>`[]`</td><td>Array de dados ou string JSON</td></tr>
+    <tr><td>`color`</td><td>`string`</td><td>`var(--color-extended-blue)`</td><td>Cor padrão da linha (usada quando não há `bds-line` filho)</td></tr>
+    <tr><td>`strokeWidth`</td><td>`number`</td><td>`2`</td><td>Espessura da linha em pixels</td></tr>
+    <tr><td>`curve`</td><td>`'linear' | 'monotone'`</td><td>`'monotone'`</td><td>Tipo de interpolação: `linear` para retas, `monotone` para curvas suaves</td></tr>
+    <tr><td>`circleRadius`</td><td>`number`</td><td>`4`</td><td>Raio dos pontos de dados em pixels</td></tr>
+  </tbody>
+</table>
 
-### bds-line
+### Exemplo Simples
 
-Componente configurador de série de linha. **Deve ser usado como filho direto de `bds-chart-line`.** Não renderiza nada, apenas passa configuração.
+<Canvas of={ChartStories.LineChartSimple}></Canvas>
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `dataKey` | `string` | Chave dos dados da série |
-| `color` | `string` | Cor da linha (padrão: '#0d6efd') |
-| `strokeWidth` | `number` | Espessura da linha (padrão: 2) |
-| `curve` | `'linear' \| 'monotone'` | Tipo de interpolação (padrão: 'monotone') |
-| `radius` | `number` | Raio dos pontos (padrão: 4) |
+### Multi-série
+
+Use múltiplos `bds-line` com `dataKey` diferentes para exibir múltiplas linhas.
+
+<Canvas of={ChartStories.LineChartMultiSeries}></Canvas>
+
+### Sem Pontos (`dot=false`)
+
+Use `dot="false"` no `bds-line` para ocultar os pontos de dados. O hover ainda exibe o ponto com borda branca.
+
+<Canvas of={ChartStories.LineChartNoDots}></Canvas>
+
+### Curva Linear
+
+Use `curve="linear"` para linhas retas entre os pontos.
+
+<Canvas of={ChartStories.LineChartLinear}></Canvas>
+
+### Com Legenda
+
+<Canvas of={ChartStories.LineChartWithLegend}></Canvas>
+
+---
+
+## bds-chart-heatmap — Mapa de Calor
+
+Ideal para visualizar densidade ou frequência em uma grade bidimensional (ex: hora × dia da semana).
+
+### Propriedades
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`data`</td><td>`ChartDatum[] | string`</td><td>`[]`</td><td>Array de dados. Cada item precisa de três chaves: para X, para Y e para o valor</td></tr>
+    <tr><td>`x-key`</td><td>`string`</td><td>`'x'`</td><td>Chave do campo que define o eixo X (ex: dia da semana)</td></tr>
+    <tr><td>`y-key`</td><td>`string`</td><td>`'y'`</td><td>Chave do campo que define o eixo Y (ex: hora do dia)</td></tr>
+    <tr><td>`value-key`</td><td>`string`</td><td>`'value'`</td><td>Chave do campo numérico que determina a intensidade de cor</td></tr>
+    <tr><td>`color`</td><td>`string`</td><td>`var(--color-extended-blue)`</td><td>Cor base das células (opacidade varia de 0.1 a 1.0 conforme o valor)</td></tr>
+    <tr><td>`cell-radius`</td><td>`number`</td><td>`4`</td><td>Raio do arredondamento das células em pixels</td></tr>
+    <tr><td>`cell-padding`</td><td>`number`</td><td>`2`</td><td>Espaçamento entre células em pixels</td></tr>
+  </tbody>
+</table>
+
+### Escala de Opacidade
+
+O heatmap usa uma escala de opacidade linear: o valor mínimo recebe opacidade `0.1` e o máximo recebe `1.0`. Valores intermediários são interpolados. Quando todos os valores são iguais, todas as células recebem opacidade `1.0`.
+
+### Exemplo: Frequência por Hora e Dia
+
+<Canvas of={ChartStories.HeatmapWeekly}></Canvas>
+
+### Cor Customizada via `bds-heatmap-cell`
+
+Use `bds-heatmap-cell` para configurar cor e raio sem passar props diretamente no container.
+
+<Canvas of={ChartStories.HeatmapCustomColor}></Canvas>
+
+---
+
+## Componentes Filhos de Configuração
+
+Estes componentes são invisíveis no DOM (sem `shadow: true` e sem conteúdo visual). Eles apenas expõem atributos que os charts pai leem via `querySelector`.
 
 ### bds-bar
 
-Componente configurador de série de barras. **Deve ser usado como filho direto de `bds-chart-bar`.** Não renderiza nada, apenas passa configuração.
+Configura uma série de barras. Use como filho de `bds-chart-bar`.
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `dataKey` | `string` | Chave dos dados da série |
-| `color` | `string` | Cor das barras (padrão: '#0d6efd') |
-| `radius` | `number` | Raio das bordas das barras (padrão: 4) |
-| `width` | `number` | Largura do SVG (padrão: 720) |
-| `height` | `number` | Altura do SVG (padrão: 320) |
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`data-key`</td><td>`string`</td><td>—</td><td>**Obrigatório.** Chave do campo numérico nos dados (ex: `"value"`, `"vendas"`)</td></tr>
+    <tr><td>`color`</td><td>`string`</td><td>`#0d6efd`</td><td>Cor das barras desta série</td></tr>
+    <tr><td>`radius`</td><td>`number`</td><td>`4`</td><td>Raio de arredondamento das pontas</td></tr>
+    <tr><td>`stack-id`</td><td>`string`</td><td>—</td><td>ID de empilhamento. Barras com o mesmo `stackId` são empilhadas</td></tr>
+  </tbody>
+</table>
+
+### bds-line
+
+Configura uma série de linhas. Use como filho de `bds-chart-line`.
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`data-key`</td><td>`string`</td><td>—</td><td>**Obrigatório.** Chave do campo numérico nos dados</td></tr>
+    <tr><td>`color`</td><td>`string`</td><td>`#0d6efd`</td><td>Cor da linha</td></tr>
+    <tr><td>`stroke-width`</td><td>`number`</td><td>`2`</td><td>Espessura da linha em pixels</td></tr>
+    <tr><td>`curve`</td><td>`'linear' | 'monotone'`</td><td>`'monotone'`</td><td>Tipo de interpolação</td></tr>
+    <tr><td>`radius`</td><td>`number`</td><td>`4`</td><td>Raio dos pontos de dados</td></tr>
+    <tr><td>`dot`</td><td>`boolean`</td><td>`true`</td><td>Exibe pontos nos dados. Mesmo com `false`, o hover exibe um ponto com borda branca</td></tr>
+  </tbody>
+</table>
+
+### bds-heatmap-cell
+
+Configura a aparência das células do heatmap. Use como filho de `bds-chart-heatmap`.
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`color`</td><td>`string`</td><td>—</td><td>Cor base das células (sobrescreve o `color` do heatmap)</td></tr>
+    <tr><td>`radius`</td><td>`number`</td><td>—</td><td>Raio de arredondamento (sobrescreve o `cell-radius` do heatmap)</td></tr>
+    <tr><td>`value-key`</td><td>`string`</td><td>—</td><td>Chave do valor (sobrescreve o `value-key` do heatmap)</td></tr>
+  </tbody>
+</table>
+
+### bds-x-axis / bds-y-axis
+
+Configuram os eixos do gráfico. Use como filhos de `bds-chart-bar`, `bds-chart-line` ou `bds-chart-heatmap`.
+
+> **Nota sobre `bds-chart-bar` vertical:** Quando `vertical="true"`, o eixo semântico inverte: `bds-y-axis` controla o eixo esquerdo (categorias) e `bds-x-axis` controla o eixo inferior (valores numéricos).
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`show`</td><td>`boolean`</td><td>`true`</td><td>Exibe ou oculta os labels do eixo</td></tr>
+    <tr><td>`data-key`</td><td>`string`</td><td>`'label'` / `'value'`</td><td>Chave dos dados do eixo</td></tr>
+    <tr><td>`tick-line`</td><td>`boolean`</td><td>`true`</td><td>Exibe as linhas de tick</td></tr>
+    <tr><td>`tick-margin`</td><td>`number`</td><td>`10`</td><td>Margem entre o tick e o label em pixels</td></tr>
+    <tr><td>`axis-line`</td><td>`boolean`</td><td>`true`</td><td>Exibe a linha do eixo</td></tr>
+    <tr><td>`tick-count`</td><td>`number`</td><td>`5`</td><td>Número de ticks no eixo numérico</td></tr>
+    <tr><td>`tick-formatter`</td><td>`string`</td><td>—</td><td>Função JS em string para formatar os ticks. Ex: `"(v) => v + 'k'"`</td></tr>
+  </tbody>
+</table>
+
+### bds-chart-grid
+
+Configura o grid de fundo. Use como filho de `bds-chart-bar` ou `bds-chart-line`. **Se ausente, nenhum grid é exibido.**
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`horizontal`</td><td>`boolean`</td><td>`true`</td><td>Exibe linhas horizontais</td></tr>
+    <tr><td>`vertical`</td><td>`boolean`</td><td>`false`</td><td>Exibe linhas verticais</td></tr>
+    <tr><td>`stroke-style`</td><td>`'solid' | 'dashed'`</td><td>`'solid'`</td><td>Estilo das linhas do grid</td></tr>
+  </tbody>
+</table>
+
+### bds-chart-legend
+
+Exibe a legenda das séries fora do SVG. Clique em um item para mostrar/ocultar aquela série.
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`data-key`</td><td>`string`</td><td>—</td><td>Chave de agrupamento dos dados (para heatmap/categorias)</td></tr>
+    <tr><td>`align`</td><td>`'left' | 'center' | 'right'`</td><td>`'center'`</td><td>Alinhamento horizontal dos itens da legenda</td></tr>
+  </tbody>
+</table>
 
 ### bds-chart-tooltip
 
-Componente que exibe tooltip com dados interativos. **Deve ser usado como filho direto de `bds-chart-line` ou `bds-chart-bar`.**
+Exibe um tooltip ao passar o mouse sobre pontos ou barras.
 
-| Propriedade | Tipo | Descrição |
-|------------|------|-----------|
-| `labelKey` | `string` | Chave dos dados para o label do tooltip (padrão: undefined) |
-| `nameKey` | `string` | Chave dos dados para o nome/título do tooltip (padrão: undefined) |
-| `indicator` | `'dot' \| 'line' \| 'dashed'` | Estilo do indicador (padrão: 'dot') |
-| `hideLabel` | `boolean` | Oculta o label (padrão: false) |
-| `hideIndicator` | `boolean` | Oculta o indicador (padrão: false) |
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`label-key`</td><td>`string`</td><td>—</td><td>Chave dos dados para o label do tooltip (ex: `"label"` → mostra o mês)</td></tr>
+    <tr><td>`name-key`</td><td>`string`</td><td>—</td><td>Chave dos dados para o nome/valor do tooltip</td></tr>
+    <tr><td>`indicator`</td><td>`'dot' | 'line' | 'dashed'`</td><td>`'dot'`</td><td>Estilo do indicador colorido ao lado do valor</td></tr>
+    <tr><td>`hide-label`</td><td>`boolean`</td><td>`false`</td><td>Oculta o label do tooltip</td></tr>
+    <tr><td>`hide-indicator`</td><td>`boolean`</td><td>`false`</td><td>Oculta o indicador colorido</td></tr>
+  </tbody>
+</table>
 
-**Notas:**
-- O tooltip mostra automaticamente ao passar o mouse sobre dados
-- Use apenas um `bds-chart-tooltip` por chart
+---
 
-<br></br>
+## Playground — Controles Interativos
 
-## Eventos
+Use os controles abaixo para explorar as opções disponíveis.
 
-Eventos disponíveis nos componentes de chart.
+<Canvas of={ChartStories.Properties}></Canvas>
 
-| Evento | Descrição | Tipo de Dado |
-|--------|-----------|--------------|
-| `bdsChartHover` | Disparado ao passar o mouse sobre um ponto/barra | `ChartHoverPayload` |
-| `bdsChartLeave` | Disparado ao sair do mouse de um ponto/barra | `void` |
+<Controls />
 
-### Formato ChartHoverPayload
+---
 
-```typescript
-interface ChartHoverPayload {
-  datum: ChartDatum;           // Dado do item hovereado
-  tooltip: string;             // Texto do tooltip
-  clientX: number;             // Posição X do mouse
-  clientY: number;             // Posição Y do mouse
-}
+## Estrutura de Dados
+
+Todos os charts aceitam dados como array de objetos (`ChartDatum[]`) ou string JSON. As chaves padrão são `label` (eixo X) e `value` (eixo Y), mas podem ser customizadas.
+
+```js
+// Série única — chaves padrão
+const data = [
+  { label: 'Jan', value: 100 },
+  { label: 'Fev', value: 120 },
+  { label: 'Mar', value: 95 },
+];
+
+// Multi-série — múltiplos valores por ponto
+const multiData = [
+  { mes: 'Jan', vendas: 100, meta: 90 },
+  { mes: 'Fev', vendas: 120, meta: 110 },
+  { mes: 'Mar', vendas: 95,  meta: 100 },
+];
+
+// Heatmap — exige x, y e value
+const heatData = [
+  { dia: 'Seg', hora: '9h',  total: 42 },
+  { dia: 'Seg', hora: '10h', total: 78 },
+  { dia: 'Ter', hora: '9h',  total: 31 },
+];
 ```
 
-<Canvas of={ChartStories.Events}></Canvas>
+---
 
-<br></br>
+## Referência de Composição
 
-## Exemplo de Uso Completo
-
-```jsx
-<bds-chart-container style="width: 100%; height: 400px">
-  <bds-chart-line data={data}>
-    <bds-chart-grid 
-      vertical={false} 
-      horizontal={true} 
-      strokeStyle="solid" 
-    />
-    <bds-x-axis 
-      dataKey="label" 
-      tickLine={true} 
-      tickMargin={10} 
-      axisLine={true}
-      show={true}
-    />
-    <bds-y-axis 
-      dataKey="value" 
-      tickLine={true} 
-      tickMargin={10} 
-      axisLine={true}
-      show={true}
-    />
-    <bds-line 
-      dataKey="value" 
-      color="#0d6efd" 
-      strokeWidth={2} 
-      curve="monotone" 
-    />
-    <bds-chart-tooltip 
-      labelKey="label" 
-      nameKey="value" 
-      indicator="dot" 
-    />
-  </bds-chart-line>
-</bds-chart-container>
-```
-
-## Exemplos de Uso
-
-### Gráfico de Linha Simples
-
-```jsx
-<bds-chart-container heading="Vendas Semanais">
-  <bds-chart-line
-    data={JSON.stringify([
-      { label: 'Seg', value: 100 },
-      { label: 'Ter', value: 120 },
-      { label: 'Qua', value: 110 },
-    ])}
-    xkey="label"
-    ykey="value"
-    width="720"
-    height="320"
-    color="#0d6efd"
-  />
-</bds-chart-container>
-```
-
-### Gráfico com Grid Customizado
-
-```jsx
-<bds-chart-container heading="Engajamento">
-  <bds-chart-line
-    data={JSON.stringify(data)}
-    xkey="label"
-    ykey="value"
-    width="720"
-    height="320"
-    color="#0d6efd"
-  >
-    <bds-chart-grid
-      vertical={true}
-      horizontal={true}
-      strokeStyle="dashed"
-    />
-  </bds-chart-line>
-</bds-chart-container>
-```
-
-### Escutando Eventos
-
-```jsx
-const container = document.querySelector('bds-chart-container');
-
-container.addEventListener('bdsChartHover', (event) => {
-  console.log('Hoverou:', event.detail);
-});
-
-container.addEventListener('bdsChartLeave', () => {
-  console.log('Saiu do hover');
-});
-```
+| Componente pai | Filhos suportados |
+|---|---|
+| `bds-chart-bar` | `bds-bar`, `bds-x-axis`, `bds-y-axis`, `bds-chart-grid`, `bds-chart-legend`, `bds-chart-tooltip` |
+| `bds-chart-line` | `bds-line`, `bds-x-axis`, `bds-y-axis`, `bds-chart-grid`, `bds-chart-legend`, `bds-chart-tooltip` |
+| `bds-chart-heatmap` | `bds-heatmap-cell`, `bds-x-axis`, `bds-y-axis`, `bds-chart-tooltip` |
+| `bds-chart-container` | qualquer chart acima |
