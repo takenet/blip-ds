@@ -1,5 +1,5 @@
 import { Component, Element, Host, h, Prop } from '@stencil/core';
-import { calculateGridsAndLabels, GridAndLabelsData } from './chart-math';
+import { calculateGridsAndLabels, GridAndLabelsData } from '../utils/chart-math';
 
 @Component({
   tag: 'bds-chart-labels',

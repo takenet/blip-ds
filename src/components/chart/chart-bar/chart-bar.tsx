@@ -1,6 +1,6 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
-import { ChartDatum, Margin } from './chart.types';
-import { calculateBarChartLayout, formatTick, buildCategoryColorMap, BarSeriesConfig } from './chart-math';
+import { ChartDatum, Margin } from '../utils/chart.types';
+import { calculateBarChartLayout, formatTick, buildCategoryColorMap, BarSeriesConfig } from '../utils/chart-math';
 
 type BarConfig = BarSeriesConfig & { color: string; radius: number };
 

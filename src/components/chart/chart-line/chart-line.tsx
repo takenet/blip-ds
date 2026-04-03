@@ -1,6 +1,6 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
-import { ChartDatum, Margin } from './chart.types';
-import { calculateLineChartLayout, formatTick, buildCategoryColorMap, DEFAULT_LEGEND_PALETTE } from './chart-math';
+import { ChartDatum, Margin } from '../utils/chart.types';
+import { calculateLineChartLayout, formatTick, buildCategoryColorMap, DEFAULT_LEGEND_PALETTE } from '../utils/chart-math';
 
 // Pixel constants used for dynamic margin computation
 const TICK_LENGTH = 6;    // length of tick mark line
