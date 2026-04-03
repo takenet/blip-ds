@@ -7,9 +7,10 @@
 
 ## Overview
 
-ChartLegend — Configuration component for chart legends.
+ChartLegend — Renders the interactive legend for chart components.
 
 Must be used as a child of bds-chart-line or bds-chart-bar.
+The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
 
 Modes:
  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
@@ -18,10 +19,36 @@ Modes:
 
 ## Properties
 
-| Property  | Attribute  | Description                                                                                                                                         | Type                            | Default     |
-| --------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------- |
-| `align`   | `align`    | Horizontal alignment of legend items inside the chart.                                                                                              | `"center" \| "left" \| "right"` | `'center'`  |
-| `dataKey` | `data-key` | Key from data objects to use as category labels (activates category mode). Example: dataKey="label" reads "Product A", "Product B", etc. from data. | `string`                        | `undefined` |
+| Property  | Attribute  | Description | Type                            | Default     |
+| --------- | ---------- | ----------- | ------------------------------- | ----------- |
+| `align`   | `align`    |             | `"center" \| "left" \| "right"` | `'center'`  |
+| `dataKey` | `data-key` |             | `string`                        | `undefined` |
+
+
+## Events
+
+| Event                | Description | Type                  |
+| -------------------- | ----------- | --------------------- |
+| `bdsLegendItemClick` |             | `CustomEvent<string>` |
+
+
+## Methods
+
+### `setLegendState(state: LegendState) => Promise<void>`
+
+
+
+#### Parameters
+
+| Name    | Type          | Description |
+| ------- | ------------- | ----------- |
+| `state` | `LegendState` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies

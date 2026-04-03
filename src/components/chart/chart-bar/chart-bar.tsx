@@ -34,14 +34,36 @@ export class ChartBar {
 
   componentDidLoad() {
     this.calculateActualDimensions();
-    
-    // Setup ResizeObserver for responsive sizing
+
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver(() => {
         this.calculateActualDimensions();
       });
       this.resizeObserver.observe(this.host);
     }
+
+    this.host.addEventListener('bdsLegendItemClick', (e: Event) => {
+      this.handleLegendClick((e as CustomEvent<string>).detail);
+    });
+  }
+
+  componentDidRender() {
+    const legendElement = this.host.querySelector('bds-chart-legend') as any;
+    if (!legendElement) return;
+
+    const config = this.readAxisConfig();
+    const { series, showLegend, legendDataKey, legendAlign } = config;
+    if (!showLegend) return;
+
+    const categoryColorMap = legendDataKey
+      ? buildCategoryColorMap(this.data, legendDataKey)
+      : null;
+
+    const items = categoryColorMap
+      ? Array.from(categoryColorMap.entries()).map(([label, color]) => ({ label, color }))
+      : series.map(s => ({ label: s.dataKey, color: s.color }));
+
+    legendElement.setLegendState?.({ items, align: legendAlign, activeItem: this.activeLegendItem });
   }
 
   disconnectedCallback() {
@@ -202,7 +224,7 @@ export class ChartBar {
       showXLabels, showXTickLine, xTickMargin, xTickFormatter,
       showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter, yTickCount,
       series,
-      showLegend, legendDataKey, legendAlign,
+      showLegend, legendDataKey,
     } = config;
 
     const margin = this.computeMargin(config);
@@ -213,12 +235,6 @@ export class ChartBar {
     const categoryColorMap: Map<string, string> | null = (showLegend && legendDataKey)
       ? buildCategoryColorMap(this.data, legendDataKey)
       : null;
-
-    const legendItems: Array<{ label: string; color: string }> = showLegend
-      ? (categoryColorMap
-          ? Array.from(categoryColorMap.entries()).map(([label, color]) => ({ label, color }))
-          : series.map(s => ({ label: s.dataKey, color: s.color })))
-      : [];
 
     const getStrokeDasharray = (style: string): string => {
       switch (style) {
@@ -362,7 +378,7 @@ export class ChartBar {
                       fill="rgba(0,0,0,0.6)"
                       x={margin.left - 8}
                       y={margin.top + label.x + 4}
-                      class="chart-bar__x-label"
+                      class="chart__x-label"
                     >
                       {formatTick(label.label, xTickFormatter)}
                     </text>
@@ -385,7 +401,7 @@ export class ChartBar {
                         fill="rgba(0,0,0,0.6)"
                         x={margin.left + label.x}
                         y={this.actualHeight - margin.bottom + 6 + xTickMargin}
-                        class="chart-bar__x-label"
+                        class="chart__x-label"
                       >
                         {formatTick(label.label, xTickFormatter)}
                       </text>
@@ -420,7 +436,7 @@ export class ChartBar {
                         fill="rgba(0,0,0,0.6)"
                         x={margin.left + label.y}
                         y={this.actualHeight - margin.bottom + 6 + yTickMargin}
-                        class="chart-bar__y-label"
+                        class="chart__y-label"
                       >
                         {formatTick(label.label, yTickFormatter)}
                       </text>
@@ -444,7 +460,7 @@ export class ChartBar {
                         fill="rgba(0,0,0,0.6)"
                         x={margin.left - 6 - yTickMargin}
                         y={margin.top + label.y + 4}
-                        class="chart-bar__y-label"
+                        class="chart__y-label"
                       >
                         {formatTick(label.label, yTickFormatter)}
                       </text>
@@ -468,25 +484,6 @@ export class ChartBar {
             onMouseLeave={() => this.emitLeave()}
           />
         </svg>
-        {showLegend && legendItems.length > 0 && (
-          <div class="chart__legend">
-            <ul
-              class="chart__legend-list"
-              style={{ justifyContent: legendAlign === 'left' ? 'flex-start' : legendAlign === 'right' ? 'flex-end' : 'center' }}
-            >
-              {legendItems.map((item) => (
-                <li
-                  key={`legend-${item.label}`}
-                  class={`chart__legend-item${this.activeLegendItem && this.activeLegendItem !== item.label ? ' chart__legend-item--inactive' : ''}`}
-                  onClick={() => this.handleLegendClick(item.label)}
-                >
-                  <span class="chart__legend-item-color" style={{ background: item.color }}></span>
-                  <span class="chart__legend-item-label">{item.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
         <slot></slot>
       </Host>
     );

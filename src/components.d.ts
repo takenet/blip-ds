@@ -27,6 +27,7 @@ import { justifyContent as justifyContent1 } from "./components/card/card-header
 import { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
 import { ChartDatum } from "./components/chart/utils/chart.types";
+import { LegendState } from "./components/chart/chart-legend/chart-legend";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -99,6 +100,7 @@ export { justifyContent as justifyContent1 } from "./components/card/card-header
 export { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
 export { Themes } from "./components/theme-provider/theme-provider";
 export { ChartDatum } from "./components/chart/utils/chart.types";
+export { LegendState } from "./components/chart/chart-legend/chart-legend";
 export { ChipSize, ChipVariant } from "./components/chip/chip";
 export { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 export { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -995,8 +997,9 @@ export namespace Components {
         "ykey": string;
     }
     /**
-     * ChartLegend — Configuration component for chart legends.
+     * ChartLegend — Renders the interactive legend for chart components.
      * Must be used as a child of bds-chart-line or bds-chart-bar.
+     * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
      * Modes:
      *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
      *  - Category mode (dataKey set): reads unique values of dataKey from data,
@@ -1004,14 +1007,11 @@ export namespace Components {
      */
     interface BdsChartLegend {
         /**
-          * Horizontal alignment of legend items inside the chart.
           * @default 'center'
          */
         "align": 'left' | 'center' | 'right';
-        /**
-          * Key from data objects to use as category labels (activates category mode). Example: dataKey="label" reads "Product A", "Product B", etc. from data.
-         */
         "dataKey"?: string;
+        "setLegendState": (state: LegendState) => Promise<void>;
     }
     interface BdsChartLine {
         /**
@@ -4038,6 +4038,10 @@ export interface BdsCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCarouselElement;
 }
+export interface BdsChartLegendCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsChartLegendElement;
+}
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCheckboxElement;
@@ -4570,15 +4574,27 @@ declare global {
         prototype: HTMLBdsChartLabelsElement;
         new (): HTMLBdsChartLabelsElement;
     };
+    interface HTMLBdsChartLegendElementEventMap {
+        "bdsLegendItemClick": string;
+    }
     /**
-     * ChartLegend — Configuration component for chart legends.
+     * ChartLegend — Renders the interactive legend for chart components.
      * Must be used as a child of bds-chart-line or bds-chart-bar.
+     * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
      * Modes:
      *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
      *  - Category mode (dataKey set): reads unique values of dataKey from data,
      *    assigns palette colors to each category, and recolors bars/dots accordingly.
      */
     interface HTMLBdsChartLegendElement extends Components.BdsChartLegend, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBdsChartLegendElementEventMap>(type: K, listener: (this: HTMLBdsChartLegendElement, ev: BdsChartLegendCustomEvent<HTMLBdsChartLegendElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBdsChartLegendElementEventMap>(type: K, listener: (this: HTMLBdsChartLegendElement, ev: BdsChartLegendCustomEvent<HTMLBdsChartLegendElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLBdsChartLegendElement: {
         prototype: HTMLBdsChartLegendElement;
@@ -6616,8 +6632,9 @@ declare namespace LocalJSX {
         "ykey"?: string;
     }
     /**
-     * ChartLegend — Configuration component for chart legends.
+     * ChartLegend — Renders the interactive legend for chart components.
      * Must be used as a child of bds-chart-line or bds-chart-bar.
+     * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
      * Modes:
      *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
      *  - Category mode (dataKey set): reads unique values of dataKey from data,
@@ -6625,14 +6642,11 @@ declare namespace LocalJSX {
      */
     interface BdsChartLegend {
         /**
-          * Horizontal alignment of legend items inside the chart.
           * @default 'center'
          */
         "align"?: 'left' | 'center' | 'right';
-        /**
-          * Key from data objects to use as category labels (activates category mode). Example: dataKey="label" reads "Product A", "Product B", etc. from data.
-         */
         "dataKey"?: string;
+        "onBdsLegendItemClick"?: (event: BdsChartLegendCustomEvent<string>) => void;
     }
     interface BdsChartLine {
         /**
@@ -10044,8 +10058,9 @@ declare module "@stencil/core" {
             "bds-chart-heatmap": LocalJSX.BdsChartHeatmap & JSXBase.HTMLAttributes<HTMLBdsChartHeatmapElement>;
             "bds-chart-labels": LocalJSX.BdsChartLabels & JSXBase.HTMLAttributes<HTMLBdsChartLabelsElement>;
             /**
-             * ChartLegend — Configuration component for chart legends.
+             * ChartLegend — Renders the interactive legend for chart components.
              * Must be used as a child of bds-chart-line or bds-chart-bar.
+             * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
              * Modes:
              *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
              *  - Category mode (dataKey set): reads unique values of dataKey from data,

@@ -1,6 +1,6 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
 import { ChartDatum, Margin } from '../utils/chart.types';
-import { calculateLineChartLayout, formatTick, buildCategoryColorMap, DEFAULT_LEGEND_PALETTE } from '../utils/chart-math';
+import { calculateLineChartLayout, formatTick, buildCategoryColorMap } from '../utils/chart-math';
 
 // Pixel constants used for dynamic margin computation
 const TICK_LENGTH = 6;    // length of tick mark line
@@ -32,14 +32,36 @@ export class ChartLine {
 
   componentDidLoad() {
     this.calculateActualDimensions();
-    
-    // Setup ResizeObserver for responsive sizing
+
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver(() => {
         this.calculateActualDimensions();
       });
       this.resizeObserver.observe(this.host);
     }
+
+    this.host.addEventListener('bdsLegendItemClick', (e: Event) => {
+      this.handleLegendClick((e as CustomEvent<string>).detail);
+    });
+  }
+
+  componentDidRender() {
+    const legendElement = this.host.querySelector('bds-chart-legend') as any;
+    if (!legendElement) return;
+
+    const config = this.readAxisConfig();
+    const { lines, showLegend, legendDataKey, legendAlign } = config;
+    if (!showLegend) return;
+
+    const categoryColorMap = legendDataKey
+      ? buildCategoryColorMap(this.data, legendDataKey)
+      : null;
+
+    const items = categoryColorMap
+      ? Array.from(categoryColorMap.entries()).map(([label, color]) => ({ label, color }))
+      : lines.map(s => ({ label: s.dataKey, color: s.color }));
+
+    legendElement.setLegendState?.({ items, align: legendAlign, activeItem: this.activeLegendItem });
   }
 
   disconnectedCallback() {
@@ -194,7 +216,7 @@ export class ChartLine {
       showXLabels, showXTickLine, xTickMargin, xTickFormatter,
       showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter, yTickCount,
       lines,
-      showLegend, legendDataKey, legendAlign,
+      showLegend, legendDataKey,
     } = config;
 
     const margin = this.computeMargin(config);
@@ -202,12 +224,6 @@ export class ChartLine {
     const categoryColorMap: Map<string, string> | null = (showLegend && legendDataKey)
       ? buildCategoryColorMap(this.data, legendDataKey)
       : null;
-
-    const legendItems: Array<{ label: string; color: string }> = showLegend
-      ? (categoryColorMap
-          ? Array.from(categoryColorMap.entries()).map(([label, color]) => ({ label, color }))
-          : lines.map(line => ({ label: line.dataKey, color: line.color ?? DEFAULT_LEGEND_PALETTE[0] })))
-      : [];
     
     // Prepare layout for all lines
     const lineLayouts = lines.map(line => 
@@ -366,7 +382,7 @@ export class ChartLine {
                     fill="rgba(0,0,0,0.6)"
                     x={margin.left + label.x}
                     y={this.actualHeight - margin.bottom + 6 + xTickMargin}
-                    class="chart-line__x-label"
+                    class="chart__x-label"
                   >
                     {formatTick(label.label, xTickFormatter)}
                   </text>
@@ -396,7 +412,7 @@ export class ChartLine {
                     fill="rgba(0,0,0,0.6)"
                     x={margin.left - 6 - yTickMargin}
                     y={margin.top + label.y + 4}
-                    class="chart-line__y-label"
+                    class="chart__y-label"
                   >
                     {formatTick(label.label, yTickFormatter)}
                   </text>
@@ -419,25 +435,6 @@ export class ChartLine {
             onMouseLeave={() => this.emitLeave()}
           />
         </svg>
-        {showLegend && legendItems.length > 0 && (
-          <div class="chart__legend">
-            <ul
-              class="chart__legend-list"
-              style={{ justifyContent: legendAlign === 'left' ? 'flex-start' : legendAlign === 'right' ? 'flex-end' : 'center' }}
-            >
-              {legendItems.map((item) => (
-                <li
-                  key={`legend-${item.label}`}
-                  class={`chart__legend-item${this.activeLegendItem && this.activeLegendItem !== item.label ? ' chart__legend-item--inactive' : ''}`}
-                  onClick={() => this.handleLegendClick(item.label)}
-                >
-                  <span class="chart__legend-item-color" style={{ background: item.color }}></span>
-                  <span class="chart__legend-item-label">{item.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
         <slot></slot>
       </Host>
     );

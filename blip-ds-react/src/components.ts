@@ -529,14 +529,14 @@ export const BdsChartLabels: StencilReactComponent<BdsChartLabelsElement, BdsCha
     defineCustomElement: defineBdsChartLabels
 });
 
-export type BdsChartLegendEvents = NonNullable<unknown>;
+export type BdsChartLegendEvents = { onBdsLegendItemClick: EventName<CustomEvent<string>> };
 
 export const BdsChartLegend: StencilReactComponent<BdsChartLegendElement, BdsChartLegendEvents> = /*@__PURE__*/ createComponent<BdsChartLegendElement, BdsChartLegendEvents>({
     tagName: 'bds-chart-legend',
     elementClass: BdsChartLegendElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {} as BdsChartLegendEvents,
+    events: { onBdsLegendItemClick: 'bdsLegendItemClick' } as BdsChartLegendEvents,
     defineCustomElement: defineBdsChartLegend
 });
 
