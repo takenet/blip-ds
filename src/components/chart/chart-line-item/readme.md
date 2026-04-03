@@ -23,19 +23,6 @@ Must be used as a child of bds-chart-line
 | `strokeWidth` | `stroke-width` | Width of the line stroke (in pixels)               | `number`                 | `2`          |
 
 
-## Dependencies
-
-### Used by
-
- - [bds-test-component](../../test-component)
-
-### Graph
-```mermaid
-graph TD;
-  bds-test-component --> bds-line
-  style bds-line fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
