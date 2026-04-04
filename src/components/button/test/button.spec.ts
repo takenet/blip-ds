@@ -408,6 +408,26 @@ describe('bds-button', () => {
       const button = page.root.shadowRoot.querySelector('button');
       expect(button.getAttribute('aria-disabled')).toBe('true');
     });
+
+    it('should set tabindex="-1" on focus div when disabled', async () => {
+      const page = await newSpecPage({
+        components: [Button],
+        html: `<bds-button disabled>Disabled Button</bds-button>`,
+      });
+      
+      const focusDiv = page.root.shadowRoot.querySelector('.focus');
+      expect(focusDiv.getAttribute('tabindex')).toBe('-1');
+    });
+
+    it('should set tabindex="0" on focus div when not disabled', async () => {
+      const page = await newSpecPage({
+        components: [Button],
+        html: `<bds-button>Enabled Button</bds-button>`,
+      });
+      
+      const focusDiv = page.root.shadowRoot.querySelector('.focus');
+      expect(focusDiv.getAttribute('tabindex')).toBe('0');
+    });
   });
 
   describe('Edge Cases', () => {
