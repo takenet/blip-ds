@@ -1,4 +1,4 @@
-import { ChartDatum, Scale, Margin, DEFAULT_CHART_MARGIN, HeatmapLayout } from './chart.types';
+import { ChartDatum, Scale, Margin, DEFAULT_CHART_MARGIN, HeatmapLayout, PieSlice, PieLayout } from './chart.types';
 
 export const DEFAULT_LEGEND_PALETTE = [
   '#0d6efd', '#05b96c', '#ff6b6b', '#ffc107', '#9c27b0',
@@ -636,4 +636,112 @@ export function calculateHeatmapLayout(
   }));
 
   return { cells, xLabels, yLabels };
+}
+
+/**
+ * Generates the SVG `d` attribute for a single donut/pie slice.
+ *
+ * @param startAngle  - Start angle in radians (−π/2 = 12 o'clock)
+ * @param endAngle    - End angle in radians
+ * @param outerRadius - Outer arc radius in pixels
+ * @param innerRadius - Inner arc radius in pixels (0 = full wedge / pie)
+ * @param padAngle    - Gap between slices in radians (split evenly on each side)
+ */
+export function generateDonutPath(
+  startAngle: number,
+  endAngle: number,
+  outerRadius: number,
+  innerRadius: number,
+  padAngle: number = 0.02,
+): string {
+  const halfPad = padAngle / 2;
+  const adjStart = startAngle + halfPad;
+  const adjEnd = endAngle - halfPad;
+
+  if (adjEnd <= adjStart) return '';
+
+  const largeArc = (adjEnd - adjStart) > Math.PI ? 1 : 0;
+
+  const ox1 = outerRadius * Math.cos(adjStart);
+  const oy1 = outerRadius * Math.sin(adjStart);
+  const ox2 = outerRadius * Math.cos(adjEnd);
+  const oy2 = outerRadius * Math.sin(adjEnd);
+
+  if (innerRadius <= 0) {
+    return [
+      `M 0 0`,
+      `L ${ox1} ${oy1}`,
+      `A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${ox2} ${oy2}`,
+      'Z',
+    ].join(' ');
+  }
+
+  const ix1 = innerRadius * Math.cos(adjEnd);
+  const iy1 = innerRadius * Math.sin(adjEnd);
+  const ix2 = innerRadius * Math.cos(adjStart);
+  const iy2 = innerRadius * Math.sin(adjStart);
+
+  return [
+    `M ${ox1} ${oy1}`,
+    `A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${ox2} ${oy2}`,
+    `L ${ix1} ${iy1}`,
+    `A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${ix2} ${iy2}`,
+    'Z',
+  ].join(' ');
+}
+
+/**
+ * Calculates the full layout for a pie or donut chart.
+ *
+ * @param data           - Array of data objects or JSON string
+ * @param labelKey       - Field name for slice labels (e.g., "label")
+ * @param valueKey       - Field name for slice values (e.g., "value")
+ * @param width          - Available width in pixels
+ * @param height         - Available height in pixels
+ * @param innerRadiusPct - Inner radius as % of outer (0 = pie, 60 = donut)
+ * @param palette        - Color palette for slices
+ */
+export function calculatePieLayout(
+  data: ChartDatum[] | string,
+  labelKey: string,
+  valueKey: string,
+  width: number,
+  height: number,
+  innerRadiusPct: number = 60,
+  palette: string[] = DEFAULT_LEGEND_PALETTE,
+): PieLayout {
+  const points = normalizeChartData(data);
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  if (points.length === 0) {
+    return { slices: [], outerRadius: 0, innerRadius: 0, centerX, centerY };
+  }
+
+  const outerRadius = Math.min(width, height) / 2 * 0.85;
+  const innerRadius = outerRadius * (innerRadiusPct / 100);
+  const total = points.reduce((sum, p) => sum + (Number(p[valueKey]) || 0), 0);
+
+  let currentAngle = -Math.PI / 2; // start at 12 o'clock
+
+  const slices: PieSlice[] = points.map((p, i) => {
+    const value = Number(p[valueKey]) || 0;
+    const percentage = total > 0 ? (value / total) * 100 : 0;
+    const sliceAngle = total > 0 ? (value / total) * 2 * Math.PI : 0;
+    const startAngle = currentAngle;
+    const endAngle = currentAngle + sliceAngle;
+    currentAngle = endAngle;
+
+    return {
+      label: String(p[labelKey] ?? ''),
+      value,
+      percentage,
+      startAngle,
+      endAngle,
+      color: palette[i % palette.length],
+      datum: p,
+    };
+  });
+
+  return { slices, outerRadius, innerRadius, centerX, centerY };
 }

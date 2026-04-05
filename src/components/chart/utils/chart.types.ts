@@ -49,3 +49,21 @@ export interface HeatmapLayout {
   xLabels: Array<{ x: number; label: string }>;
   yLabels: Array<{ y: number; label: string }>;
 }
+
+export interface PieSlice {
+  label: string;
+  value: number;
+  percentage: number;
+  startAngle: number;
+  endAngle: number;
+  color: string;
+  datum: ChartDatum;
+}
+
+export interface PieLayout {
+  slices: PieSlice[];
+  outerRadius: number;
+  innerRadius: number;
+  centerX: number;
+  centerY: number;
+}

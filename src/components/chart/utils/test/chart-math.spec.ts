@@ -1,4 +1,4 @@
-import { buildCategoryColorMap, DEFAULT_LEGEND_PALETTE, calculateHeatmapLayout } from '../chart-math';
+import { buildCategoryColorMap, DEFAULT_LEGEND_PALETTE, calculateHeatmapLayout, calculatePieLayout, generateDonutPath } from '../chart-math';
 
 describe('buildCategoryColorMap', () => {
   const data = [
@@ -105,5 +105,80 @@ describe('calculateHeatmapLayout', () => {
   it('yLabels length equals unique y values count', () => {
     const layout = calculateHeatmapLayout(data, 'x', 'y', 'value', 400, 300, margin, 2);
     expect(layout.yLabels).toHaveLength(2);
+  });
+});
+
+// ─── PIE LAYOUT ──────────────────────────────────────────────────────────────
+
+describe('calculatePieLayout', () => {
+  const data = [
+    { label: 'A', value: 50 },
+    { label: 'B', value: 30 },
+    { label: 'C', value: 20 },
+  ];
+
+  it('returns one slice per data point', () => {
+    const layout = calculatePieLayout(data, 'label', 'value', 400, 300);
+    expect(layout.slices.length).toBe(3);
+  });
+
+  it('calculates percentages correctly', () => {
+    const layout = calculatePieLayout(data, 'label', 'value', 400, 300);
+    expect(layout.slices[0].percentage).toBeCloseTo(50);
+    expect(layout.slices[1].percentage).toBeCloseTo(30);
+    expect(layout.slices[2].percentage).toBeCloseTo(20);
+  });
+
+  it('slices cover full circle (2π radians)', () => {
+    const layout = calculatePieLayout(data, 'label', 'value', 400, 300);
+    const lastSlice = layout.slices[layout.slices.length - 1];
+    const firstSlice = layout.slices[0];
+    const totalAngle = lastSlice.endAngle - firstSlice.startAngle;
+    expect(totalAngle).toBeCloseTo(2 * Math.PI);
+  });
+
+  it('uses DEFAULT_LEGEND_PALETTE for slice colors', () => {
+    const layout = calculatePieLayout(data, 'label', 'value', 400, 300);
+    expect(layout.slices[0].color).toBe(DEFAULT_LEGEND_PALETTE[0]);
+    expect(layout.slices[1].color).toBe(DEFAULT_LEGEND_PALETTE[1]);
+  });
+
+  it('returns empty slices for empty data', () => {
+    const layout = calculatePieLayout([], 'label', 'value', 400, 300);
+    expect(layout.slices).toHaveLength(0);
+  });
+
+  it('innerRadius respects innerRadiusPct', () => {
+    const layout = calculatePieLayout(data, 'label', 'value', 400, 300, 60);
+    expect(layout.innerRadius).toBeCloseTo(layout.outerRadius * 0.6);
+  });
+
+  it('centerX and centerY are half of width/height', () => {
+    const layout = calculatePieLayout(data, 'label', 'value', 400, 300);
+    expect(layout.centerX).toBe(200);
+    expect(layout.centerY).toBe(150);
+  });
+});
+
+describe('generateDonutPath', () => {
+  it('returns a non-empty string for a valid slice', () => {
+    const path = generateDonutPath(0, Math.PI / 2, 100, 60, 0.02);
+    expect(typeof path).toBe('string');
+    expect(path.length).toBeGreaterThan(0);
+  });
+
+  it('returns empty string when adjustedEnd <= adjustedStart (too thin)', () => {
+    const path = generateDonutPath(0, 0.01, 100, 60, 1);
+    expect(path).toBe('');
+  });
+
+  it('uses large-arc flag for slices > 180°', () => {
+    const path = generateDonutPath(0, Math.PI * 1.5, 100, 60, 0);
+    expect(path).toContain(' 1 ');
+  });
+
+  it('does NOT use large-arc flag for slices < 180°', () => {
+    const path = generateDonutPath(0, Math.PI * 0.5, 100, 60, 0);
+    expect(path).toMatch(/A \S+ \S+ 0 0 1/);
   });
 });
