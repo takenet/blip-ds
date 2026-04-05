@@ -907,6 +907,11 @@ export namespace Components {
          */
         "horizontal": boolean | string;
         /**
+          * Grid line color
+          * @default 'var(--color-border-1)'
+         */
+        "strokeColor": string;
+        /**
           * Grid line style: solid or dashed
           * @default 'solid'
          */
@@ -3921,6 +3926,16 @@ export namespace Components {
          */
         "dataKey": string;
         /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor": string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor": string;
+        /**
           * Show X-axis labels
           * @default true
          */
@@ -3960,6 +3975,16 @@ export namespace Components {
           * @default 'value'
          */
         "dataKey": string;
+        /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor": string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor": string;
         /**
           * Show Y-axis labels
           * @default true
@@ -6541,6 +6566,11 @@ declare namespace LocalJSX {
           * @default true
          */
         "horizontal"?: boolean | string;
+        /**
+          * Grid line color
+          * @default 'var(--color-border-1)'
+         */
+        "strokeColor"?: string;
         /**
           * Grid line style: solid or dashed
           * @default 'solid'
@@ -9803,6 +9833,16 @@ declare namespace LocalJSX {
          */
         "dataKey"?: string;
         /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor"?: string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor"?: string;
+        /**
           * Show X-axis labels
           * @default true
          */
@@ -9842,6 +9882,16 @@ declare namespace LocalJSX {
           * @default 'value'
          */
         "dataKey"?: string;
+        /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor"?: string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor"?: string;
         /**
           * Show Y-axis labels
           * @default true

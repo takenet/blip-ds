@@ -67,21 +67,23 @@ export class ChartTooltip {
     let innerHtml: string;
 
     if (this.entries.length > 0) {
-      const labelHtml = this.label ? `<span class="label">${this.label}</span>` : '';
+      const labelHtml = this.label
+        ? `<bds-typo class="label" variant="fs-12" bold="bold" margin="false">${this.label}</bds-typo>`
+        : '';
       const entriesHtml = this.entries.map(entry => {
         const indicatorStyle = `background:${entry.color};`;
         const indicatorHtml = this.hideIndicator
           ? ''
           : `<span class="indicator indicator-${this.indicator}" style="${indicatorStyle}"></span>`;
-        return `<div class="entry">${indicatorHtml}<span class="entry-name">${entry.name}</span><span class="entry-value">${entry.value}</span></div>`;
+        return `<div class="entry">${indicatorHtml}<bds-typo class="entry-name" variant="fs-12" bold="regular" margin="false">${entry.name}</bds-typo><bds-typo class="entry-value" variant="fs-12" bold="bold" margin="false">${entry.value}</bds-typo></div>`;
       }).join('');
       innerHtml = `${labelHtml}<div class="entries">${entriesHtml}</div>`;
     } else {
       // Legacy single-content fallback
       const parts: string[] = [];
-      if (this.label) parts.push(`<span class="label">${this.label}</span>`);
+      if (this.label) parts.push(`<bds-typo class="label" variant="fs-12" bold="bold" margin="false">${this.label}</bds-typo>`);
       if (!this.hideIndicator) parts.push(`<span class="indicator indicator-${this.indicator}"></span>`);
-      if (this.content) parts.push(`<span class="content">${this.content}</span>`);
+      if (this.content) parts.push(`<bds-typo class="content" variant="fs-12" bold="regular" margin="false">${this.content}</bds-typo>`);
       innerHtml = parts.join('');
     }
 

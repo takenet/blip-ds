@@ -63,7 +63,7 @@ export class ChartLegend {
               onClick={() => this.bdsLegendItemClick.emit(item.label)}
             >
               <span class="chart__legend-item-color" style={{ background: item.color }}></span>
-              <span class="chart__legend-item-label">{item.label}</span>
+              <bds-typo variant="fs-12" tag="span">{item.label}</bds-typo>
             </li>
           ))}
         </ul>

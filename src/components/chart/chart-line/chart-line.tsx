@@ -26,8 +26,6 @@ export class ChartLine {
   @State() private hoveredIndex: number = -1;
   @State() private activeLegendItem: string | null = null;
 
-  private xKey = 'label';
-  private yKey = 'value';
   private resizeObserver: ResizeObserver | null = null;
 
   componentDidLoad() {
@@ -87,16 +85,25 @@ export class ChartLine {
     const showVerticalGrid = parseBoolean(gridElement?.getAttribute('vertical') ?? gridElement?.vertical ?? 'false');
     const showHorizontalGrid = parseBoolean(gridElement?.getAttribute('horizontal') ?? gridElement?.horizontal ?? 'true');
     const gridStrokeStyle = gridElement?.getAttribute('strokeStyle') ?? gridElement?.strokeStyle ?? 'solid';
+    const gridStrokeColor = gridElement?.getAttribute('stroke-color') ?? gridElement?.strokeColor ?? 'var(--color-border-1)';
 
-     const xAxisElement = this.host.querySelector('bds-x-axis') as any;
+    const xAxisElement = this.host.querySelector('bds-x-axis') as any;
     const showXLabels = parseBoolean(xAxisElement?.getAttribute('show') ?? xAxisElement?.show ?? 'true');
+    const xDataKey: string = xAxisElement?.getAttribute('data-key') ?? xAxisElement?.getAttribute('dataKey') ?? xAxisElement?.dataKey ?? 'label';
     const showXTickLine = parseBoolean(xAxisElement?.getAttribute('tickLine') ?? xAxisElement?.tickLine ?? 'true');
+    const showXAxisLine = parseBoolean(xAxisElement?.getAttribute('axis-line') ?? xAxisElement?.axisLine ?? 'true');
+    const xLineColor: string = xAxisElement?.getAttribute('line-color') ?? xAxisElement?.lineColor ?? 'var(--color-border-1)';
+    const xLabelColor: string = xAxisElement?.getAttribute('label-color') ?? xAxisElement?.labelColor ?? 'var(--color-content-default)';
     const xTickMargin = Number(xAxisElement?.getAttribute('tickMargin') ?? xAxisElement?.tickMargin ?? 10);
     const xTickFormatter = xAxisElement?.getAttribute('data-tick-formatter') ?? xAxisElement?.tickFormatter;
 
     const yAxisElement = this.host.querySelector('bds-y-axis') as any;
     const showYAxisLabels = parseBoolean(yAxisElement?.getAttribute('show') ?? yAxisElement?.show ?? 'true');
+    const yDataKey: string = yAxisElement?.getAttribute('data-key') ?? yAxisElement?.getAttribute('dataKey') ?? yAxisElement?.dataKey ?? 'value';
     const showYTickLine = parseBoolean(yAxisElement?.getAttribute('tickLine') ?? yAxisElement?.tickLine ?? 'true');
+    const showYAxisLine = parseBoolean(yAxisElement?.getAttribute('axis-line') ?? yAxisElement?.axisLine ?? 'true');
+    const yLineColor: string = yAxisElement?.getAttribute('line-color') ?? yAxisElement?.lineColor ?? 'var(--color-border-1)';
+    const yLabelColor: string = yAxisElement?.getAttribute('label-color') ?? yAxisElement?.labelColor ?? 'var(--color-content-default)';
     const yTickMargin = Number(yAxisElement?.getAttribute('tickMargin') ?? yAxisElement?.tickMargin ?? 10);
     const yTickFormatter = yAxisElement?.getAttribute('data-tick-formatter') ?? yAxisElement?.tickFormatter;
     const yTickCount = Number(yAxisElement?.getAttribute('tickCount') ?? yAxisElement?.tickCount ?? 5);
@@ -118,10 +125,10 @@ export class ChartLine {
     const legendAlign = (legendElement?.getAttribute('align') ?? legendElement?.align ?? 'center') as 'left' | 'center' | 'right';
 
     return {
-      showVerticalGrid, showHorizontalGrid, gridStrokeStyle,
-      showXLabels, showXTickLine, xTickMargin, xTickFormatter,
-      showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter, yTickCount,
-      lines: lines.length > 0 ? lines : [{ dataKey: this.yKey, color: this.color, strokeWidth: this.strokeWidth, curve: this.curve, radius: this.circleRadius, dot: true }],
+      showVerticalGrid, showHorizontalGrid, gridStrokeStyle, gridStrokeColor,
+      showXLabels, showXTickLine, showXAxisLine, xDataKey, xLineColor, xLabelColor, xTickMargin, xTickFormatter,
+      showYAxisLabels, showYTickLine, showYAxisLine, yDataKey, yLineColor, yLabelColor, yTickMargin, yTickFormatter, yTickCount,
+      lines: lines.length > 0 ? lines : [{ dataKey: yDataKey, color: this.color, strokeWidth: this.strokeWidth, curve: this.curve, radius: this.circleRadius, dot: true }],
       showLegend, legendDataKey, legendAlign,
     };
   }
@@ -141,8 +148,8 @@ export class ChartLine {
     this.activeLegendItem = this.activeLegendItem === label ? null : label;
   }
 
-  private prepareLine(margin: Margin, tickCount: number = 5) {
-    return calculateLineChartLayout(this.data, this.xKey, this.yKey, this.actualWidth, this.actualHeight, this.curve, margin, tickCount);
+  private prepareLine(margin: Margin, xKey: string, yKey: string, tickCount: number = 5) {
+    return calculateLineChartLayout(this.data, xKey, yKey, this.actualWidth, this.actualHeight, this.curve, margin, tickCount);
   }
 
   private emitLeave() {
@@ -164,7 +171,7 @@ export class ChartLine {
 
     const config = this.readAxisConfig();
     const margin = this.computeMargin(config);
-    const { dots } = this.prepareLine(margin, config.yTickCount);
+    const { dots } = this.prepareLine(margin, config.xDataKey, config.yDataKey, config.yTickCount);
     if (dots.length === 0) return;
 
     // Find the closest dot by X position
@@ -193,7 +200,7 @@ export class ChartLine {
       const colorMap = new Map(config.lines.map(l => [l.dataKey, l.color]));
 
       const entries = keys.map((key: string) => ({
-        color: colorMap.get(key) ?? '#0d6efd',
+        color: colorMap.get(key) ?? this.color,
         name: key,
         value: datum[key] ?? '',
       }));
@@ -202,7 +209,7 @@ export class ChartLine {
         visible: true,
         x: event.clientX,
         y: event.clientY,
-        label: datum[this.xKey],
+        label: datum[config.xDataKey],
         entries,
       });
     }
@@ -212,9 +219,9 @@ export class ChartLine {
     // Read all child config FIRST so margin can be derived from it
     const config = this.readAxisConfig();
     const {
-      showVerticalGrid, showHorizontalGrid, gridStrokeStyle,
-      showXLabels, showXTickLine, xTickMargin, xTickFormatter,
-      showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter, yTickCount,
+      showVerticalGrid, showHorizontalGrid, gridStrokeStyle, gridStrokeColor,
+      showXLabels, showXTickLine, showXAxisLine, xDataKey, xLineColor, xLabelColor, xTickMargin, xTickFormatter,
+      showYAxisLabels, showYTickLine, showYAxisLine, yLineColor, yLabelColor, yTickMargin, yTickFormatter, yTickCount,
       lines,
       showLegend, legendDataKey,
     } = config;
@@ -227,7 +234,7 @@ export class ChartLine {
     
     // Prepare layout for all lines
     const lineLayouts = lines.map(line => 
-      calculateLineChartLayout(this.data, this.xKey, line.dataKey, this.actualWidth, this.actualHeight, line.curve, margin, yTickCount)
+      calculateLineChartLayout(this.data, xDataKey, line.dataKey, this.actualWidth, this.actualHeight, line.curve, margin, yTickCount)
     );
 
     // Use the first line's labels (X/Y labels are the same for all lines since same X-axis and Y-scale)
@@ -259,7 +266,7 @@ export class ChartLine {
                   y1={margin.top + y}
                   x2={this.actualWidth - margin.right}
                   y2={margin.top + y}
-                  stroke="rgba(0,0,0,0.05)"
+                  stroke={gridStrokeColor}
                   stroke-width="1"
                 />
               ))}
@@ -276,7 +283,7 @@ export class ChartLine {
                   y1={margin.top}
                   x2={margin.left + gridLine.x}
                   y2={this.actualHeight - margin.bottom}
-                  stroke="rgba(0,0,0,0.05)"
+                  stroke={gridStrokeColor}
                   stroke-width="1"
                 />
               ))}
@@ -334,16 +341,14 @@ export class ChartLine {
                 y1={0}
                 x2={this.hoveredIndex >= 0 && lineLayouts[0].dots[this.hoveredIndex] ? lineLayouts[0].dots[this.hoveredIndex].x : 0}
                 y2={this.actualHeight - margin.top - margin.bottom}
-                stroke="rgba(0,0,0,0.15)"
+                style={{ stroke: 'var(--chart-hover-line-color)', opacity: this.hoveredIndex >= 0 ? '1' : '0', pointerEvents: 'none' }}
                 stroke-width="1"
                 stroke-dasharray="4,4"
-                style={{ opacity: this.hoveredIndex >= 0 ? '1' : '0', pointerEvents: 'none' }}
               />
             )}
 
-            {/* Hover dots for lines with dot=false */}
+            {/* Hover dots — visible for all lines at the hovered index */}
             {this.hoveredIndex >= 0 && lineLayouts.map((layout, lineIdx) => {
-              if (lines[lineIdx].dot) return null;
               const dot = layout.dots[this.hoveredIndex];
               if (!dot) return null;
               return (
@@ -353,13 +358,38 @@ export class ChartLine {
                   cy={dot.y}
                   r={lines[lineIdx].radius}
                   fill={lines[lineIdx].color}
-                  stroke="white"
+                  style={{ stroke: 'var(--chart-hover-dot-stroke)', pointerEvents: 'none' }}
                   stroke-width="2"
-                  style={{ pointerEvents: 'none' }}
                 />
               );
             })}
           </g>
+
+          {/* X-axis line (full-width delimiter) */}
+          {showXAxisLine && (
+            <line
+              class="chart-line__x-axis-line"
+              x1={margin.left}
+              y1={this.actualHeight - margin.bottom}
+              x2={this.actualWidth - margin.right}
+              y2={this.actualHeight - margin.bottom}
+              stroke={xLineColor}
+              stroke-width="1"
+            />
+          )}
+
+          {/* Y-axis line (full-height delimiter) */}
+          {showYAxisLine && (
+            <line
+              class="chart-line__y-axis-line"
+              x1={margin.left}
+              y1={margin.top}
+              x2={margin.left}
+              y2={this.actualHeight - margin.bottom}
+              stroke={yLineColor}
+              stroke-width="1"
+            />
+          )}
 
           {/* X-axis ticks and labels */}
           {showXLabels && (
@@ -372,14 +402,14 @@ export class ChartLine {
                       y1={this.actualHeight - margin.bottom}
                       x2={margin.left + label.x}
                       y2={this.actualHeight - margin.bottom + 6}
-                      stroke="rgba(0,0,0,0.3)"
+                      stroke={xLineColor}
                       stroke-width="1"
                     />
                   )}
                   <text
                     text-anchor="middle"
-                    font-size="12"
-                    fill="rgba(0,0,0,0.6)"
+                    fill={xLabelColor}
+                    font-weight={idx === this.hoveredIndex ? 'bold' : 'normal'}
                     x={margin.left + label.x}
                     y={this.actualHeight - margin.bottom + 6 + xTickMargin}
                     class="chart__x-label"
@@ -402,14 +432,13 @@ export class ChartLine {
                       y1={margin.top + label.y}
                       x2={margin.left}
                       y2={margin.top + label.y}
-                      stroke="rgba(0,0,0,0.3)"
+                      stroke={yLineColor}
                       stroke-width="1"
                     />
                   )}
                   <text
                     text-anchor="end"
-                    font-size="12"
-                    fill="rgba(0,0,0,0.6)"
+                    fill={yLabelColor}
                     x={margin.left - 6 - yTickMargin}
                     y={margin.top + label.y + 4}
                     class="chart__y-label"

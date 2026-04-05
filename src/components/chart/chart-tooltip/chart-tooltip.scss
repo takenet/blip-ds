@@ -1,3 +1,5 @@
+@use '../globals/helpers' as *;
+
 bds-chart-tooltip {
   display: none;
 }
@@ -23,14 +25,11 @@ bds-chart-tooltip {
 }
 
 .chart-tooltip {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #333333;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  background: $color-surface-1;
+  border: 1px solid $color-border-1;
+  border-radius: $border-radius;
+  padding: 16px;
+  color: $color-content-default;
   white-space: nowrap;
   transform: translate(-50%, -130%);
   display: flex;
@@ -43,9 +42,7 @@ bds-chart-tooltip {
 }
 
 .label {
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.5);
+  color: $color-content-default;
   margin-bottom: 2px;
 }
 
@@ -62,11 +59,10 @@ bds-chart-tooltip {
 }
 
 .entry-name {
-  color: rgba(0, 0, 0, 0.6);
+  color: $color-content-default;
 }
 
 .entry-value {
-  font-weight: 600;
   margin-left: auto;
   padding-left: 12px;
 }

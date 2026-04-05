@@ -16,6 +16,13 @@
 | `vertical`  | `vertical`   |             | `boolean`                       | `false`                                  |
 
 
+## CSS Custom Properties
+
+| Name                            | Description                                  |
+| ------------------------------- | -------------------------------------------- |
+| `--chart-hover-highlight-color` | Background color of the bar hover highlight. |
+
+
 ## Dependencies
 
 ### Used by

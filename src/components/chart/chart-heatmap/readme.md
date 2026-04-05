@@ -32,6 +32,19 @@ Slot children (all optional):
 | `yKey`        | `y-key`        | Data field used for Y-axis (row) categories.                                                 | `string`                 | `'y'`                                   |
 
 
+## Dependencies
+
+### Used by
+
+ - [bds-test-component](../../test-component)
+
+### Graph
+```mermaid
+graph TD;
+  bds-test-component --> bds-chart-heatmap
+  style bds-chart-heatmap fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

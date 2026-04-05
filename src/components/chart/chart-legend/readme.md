@@ -57,9 +57,14 @@ Type: `Promise<void>`
 
  - [bds-test-component](../../test-component)
 
+### Depends on
+
+- [bds-typo](../../typo)
+
 ### Graph
 ```mermaid
 graph TD;
+  bds-chart-legend --> bds-typo
   bds-test-component --> bds-chart-legend
   style bds-chart-legend fill:#f9f,stroke:#333,stroke-width:4px
 ```

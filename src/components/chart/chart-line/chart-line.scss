@@ -1,3 +1,7 @@
+@use '../chart-x-axis/chart-x-axis';
+@use '../chart-y-axis/chart-y-axis';
+@use '../globals/helpers' as *;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -6,6 +10,23 @@
   min-height: 400px;
   max-width: 1920px;
   max-height: 1080px;
+
+  /**
+   * @prop --chart-hover-line-color: Color of the vertical hover indicator line.
+   */
+  --chart-hover-line-color: var(--color-content-ghost, rgba(0, 0, 0, 0.35));
+
+  /**
+   * @prop --chart-hover-dot-stroke: Stroke color of the dot shown on hover for lines with dot=false.
+   */
+  --chart-hover-dot-stroke: white;
+}
+
+.chart__x-label,
+.chart__y-label {
+  font-family: $font-family;
+  font-size: $fs-12;
+  font-weight: $font-weight-regular;
 }
 
 svg {
@@ -31,6 +52,3 @@ svg {
 .chart-line__point:hover {
   transform: translateY(-2px);
 }
-
-@import '../chart-x-axis/chart-x-axis';
-@import '../chart-y-axis/chart-y-axis';

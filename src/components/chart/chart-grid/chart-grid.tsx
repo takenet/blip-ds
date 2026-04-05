@@ -11,8 +11,7 @@ import { Component, Host, h, Prop, Watch } from '@stencil/core';
  * Usage: Pass gridLines data via context or parent coordination
  */
 @Component({
-  tag: 'bds-chart-grid',
-  styleUrl: 'chart-grid.scss',
+  tag: 'bds-chart-grid'
 })
 export class ChartGrid {
   /**
@@ -29,6 +28,11 @@ export class ChartGrid {
    * Grid line style: solid or dashed
    */
   @Prop() strokeStyle: 'solid' | 'dashed' = 'solid';
+
+  /**
+   * Grid line color
+   */
+  @Prop() strokeColor: string = 'var(--color-border-1)';
 
   private isVertical: boolean = false;
   private isHorizontal: boolean = true;
@@ -70,6 +74,7 @@ export class ChartGrid {
             --chart-grid-horizontal: ${this.isHorizontal ? '1' : '0'};
             --chart-grid-stroke-style: ${this.strokeStyle};
             --chart-grid-dasharray: ${this.getStrokeDasharray()};
+            --chart-grid-stroke-color: ${this.strokeColor};
           }
         `}</style>
       </Host>

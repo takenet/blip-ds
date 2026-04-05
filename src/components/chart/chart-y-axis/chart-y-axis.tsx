@@ -20,6 +20,16 @@ export class ChartYAxis {
   @Prop() tickLine: boolean = true;
 
   /**
+   * Color of tick lines and axis line
+   */
+  @Prop() lineColor: string = 'var(--color-border-1)';
+
+  /**
+   * Color of axis labels
+   */
+  @Prop() labelColor: string = 'var(--color-content-default)';
+
+  /**
    * Margin between tick and label (in pixels)
    */
   @Prop() tickMargin: number = 10;
@@ -51,6 +61,8 @@ export class ChartYAxis {
         data-y-axis={true}
         data-data-key={this.dataKey}
         data-tick-line={this.tickLine}
+        data-line-color={this.lineColor}
+        data-label-color={this.labelColor}
         data-tick-margin={this.tickMargin}
         data-axis-line={this.axisLine}
         data-tick-formatter={this.tickFormatter}
