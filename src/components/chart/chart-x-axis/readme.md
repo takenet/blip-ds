@@ -1,0 +1,31 @@
+# bds-x-axis
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Overview
+
+XAxis Component - Configuration for X-axis
+
+Must be used as a child of bds-chart-line or bds-chart-bar
+
+## Properties
+
+| Property        | Attribute        | Description                                                                                                                                                                                               | Type      | Default                          |
+| --------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------------------- |
+| `axisLine`      | `axis-line`      | Show axis line                                                                                                                                                                                            | `boolean` | `true`                           |
+| `dataKey`       | `data-key`       | Key from data object to use for X-axis labels                                                                                                                                                             | `string`  | `'label'`                        |
+| `labelColor`    | `label-color`    | Color of axis labels                                                                                                                                                                                      | `string`  | `'var(--color-content-default)'` |
+| `lineColor`     | `line-color`     | Color of tick lines and axis line                                                                                                                                                                         | `string`  | `'var(--color-border-1)'`        |
+| `show`          | `show`           | Show X-axis labels                                                                                                                                                                                        | `boolean` | `true`                           |
+| `tickCount`     | `tick-count`     | Number of ticks to display on the Y-axis (default: 5) Note: This applies only to numeric axes with calculated scales                                                                                      | `number`  | `5`                              |
+| `tickFormatter` | `tick-formatter` | Format function for tick labels (receives value, returns formatted string) Note: In HTML attributes, use comma-separated string for simple transformations Example: "slice,0,3" to get first 3 characters | `string`  | `undefined`                      |
+| `tickLine`      | `tick-line`      | Show tick lines                                                                                                                                                                                           | `boolean` | `true`                           |
+| `tickMargin`    | `tick-margin`    | Margin between tick and label (in pixels)                                                                                                                                                                 | `number`  | `10`                             |
+
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

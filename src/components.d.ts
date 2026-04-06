@@ -26,6 +26,8 @@ import { justifyContent } from "./components/card/card-footer/card-footer";
 import { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 import { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
 import { Themes } from "./components/theme-provider/theme-provider";
+import { ChartDatum } from "./components/chart/utils/chart.types";
+import { LegendState } from "./components/chart/chart-legend/chart-legend";
 import { ChipSize, ChipVariant } from "./components/chip/chip";
 import { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 import { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -97,6 +99,8 @@ export { justifyContent } from "./components/card/card-footer/card-footer";
 export { justifyContent as justifyContent1 } from "./components/card/card-header/card-header";
 export { arrows, bullets, bulletsPositions, gap, Itens } from "./components/carousel/carousel-interface";
 export { Themes } from "./components/theme-provider/theme-provider";
+export { ChartDatum } from "./components/chart/utils/chart.types";
+export { LegendState } from "./components/chart/chart-legend/chart-legend";
 export { ChipSize, ChipVariant } from "./components/chip/chip";
 export { ColorChipClickable, Size } from "./components/chip-clickable/chip-clickable";
 export { ColorChipSelected, Size as Size1 } from "./components/chip-selected/chip-selected";
@@ -492,6 +496,30 @@ export namespace Components {
          */
         "target": targets;
     }
+    /**
+     * Bar Component - Configuration for bar in chart
+     * Must be used as a child of bds-chart-bar
+     */
+    interface BdsBar {
+        /**
+          * Color of the bar (hex, rgb, or CSS variable)
+          * @default '#0d6efd'
+         */
+        "color": string;
+        /**
+          * Key from data object to use for bar values
+         */
+        "dataKey": string;
+        /**
+          * Border radius of bar corners (in pixels)
+          * @default 4
+         */
+        "radius": number;
+        /**
+          * Stack identifier. Bars with the same stackId are stacked on top of each other. Bars with different (or no) stackId are placed side-by-side.
+         */
+        "stackId"?: string;
+    }
     interface BdsBreadcrumb {
         /**
           * @default []
@@ -839,6 +867,232 @@ export namespace Components {
           * @default 'light'
          */
         "theme"?: Themes;
+    }
+    interface BdsChartBar {
+        /**
+          * @default 'left'
+         */
+        "align": 'left' | 'center' | 'right';
+        /**
+          * @default 6
+         */
+        "barRadius": number;
+        /**
+          * @default 'var(--color-extended-green, #05b96c)'
+         */
+        "color": string;
+        /**
+          * @default []
+         */
+        "data": ChartDatum[] | string;
+        /**
+          * @default false
+         */
+        "vertical": boolean;
+    }
+    interface BdsChartContainer {
+    }
+    /**
+     * CartesianGrid - Simple grid line renderer
+     * Props:
+     * - vertical: boolean - Show vertical grid lines
+     * - horizontal: boolean - Show horizontal grid lines
+     * - strokeStyle: 'solid' | 'dashed' - Line style
+     * Usage: Pass gridLines data via context or parent coordination
+     */
+    interface BdsChartGrid {
+        /**
+          * Show horizontal grid lines (Y-axis)
+          * @default true
+         */
+        "horizontal": boolean | string;
+        /**
+          * Grid line color
+          * @default 'var(--color-border-1)'
+         */
+        "strokeColor": string;
+        /**
+          * Grid line style: solid or dashed
+          * @default 'solid'
+         */
+        "strokeStyle": 'solid' | 'dashed';
+        /**
+          * Show vertical grid lines (X-axis)
+          * @default false
+         */
+        "vertical": boolean | string;
+    }
+    /**
+     * ChartHeatmap — Grid/matrix heatmap chart.
+     * Renders two-dimensional categorical data as a grid of colored cells.
+     * Cell intensity is determined by a numeric value field mapped to opacity (0.1–1.0).
+     * Slot children (all optional):
+     *   - <bds-heatmap-cell>  override cell color, radius, valueKey
+     *   - <bds-x-axis>        configure bottom axis labels
+     *   - <bds-y-axis>        configure left axis labels
+     *   - <bds-chart-grid>    show grid lines
+     *   - <bds-chart-tooltip> enable hover tooltip
+     * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+     *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+     *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+     *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-heatmap>
+     */
+    interface BdsChartHeatmap {
+        /**
+          * Gap between cells in pixels.
+          * @default 4
+         */
+        "cellPadding": number;
+        /**
+          * Border-radius of each cell in pixels.
+          * @default 4
+         */
+        "cellRadius": number;
+        /**
+          * Base fill color of cells. Can be overridden by <bds-heatmap-cell color="...">.
+          * @default 'var(--color-extended-blue, #0d6efd)'
+         */
+        "color": string;
+        /**
+          * Array of data objects or JSON string. Each object must have xKey, yKey, and valueKey fields.
+          * @default []
+         */
+        "data": ChartDatum[] | string;
+        /**
+          * Data field whose numeric value drives cell opacity (min → 0.1, max → 1.0).
+          * @default 'value'
+         */
+        "valueKey": string;
+        /**
+          * Data field used for X-axis (column) categories.
+          * @default 'x'
+         */
+        "xKey": string;
+        /**
+          * Data field used for Y-axis (row) categories.
+          * @default 'y'
+         */
+        "yKey": string;
+    }
+    interface BdsChartLabels {
+        /**
+          * @default '[]'
+         */
+        "data": string | object[];
+        /**
+          * @default 320
+         */
+        "height": number;
+        /**
+          * @default 720
+         */
+        "width": number;
+        /**
+          * @default 'label'
+         */
+        "xkey": string;
+        /**
+          * @default 'value'
+         */
+        "ykey": string;
+    }
+    /**
+     * ChartLegend — Renders the interactive legend for chart components.
+     * Must be used as a child of bds-chart-line or bds-chart-bar.
+     * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
+     * Modes:
+     *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
+     *  - Category mode (dataKey set): reads unique values of dataKey from data,
+     *    assigns palette colors to each category, and recolors bars/dots accordingly.
+     */
+    interface BdsChartLegend {
+        /**
+          * @default 'center'
+         */
+        "align": 'left' | 'center' | 'right';
+        "dataKey"?: string;
+        "setLegendState": (state: LegendState) => Promise<void>;
+    }
+    interface BdsChartLine {
+        /**
+          * @default 4
+         */
+        "circleRadius": number;
+        /**
+          * @default 'var(--color-extended-blue, #0d66f4)'
+         */
+        "color": string;
+        /**
+          * @default 'monotone'
+         */
+        "curve": 'linear' | 'monotone';
+        /**
+          * @default []
+         */
+        "data": ChartDatum[] | string;
+        /**
+          * @default 2
+         */
+        "strokeWidth": number;
+    }
+    /**
+     * ChartPie — Donut/pie chart component.
+     * Renders categorical data as a donut chart. Each datum becomes one slice.
+     * Colors are assigned automatically from the design-system palette.
+     * Slot children (all optional):
+     *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+     *   - <bds-chart-legend>    enable clickable legend
+     *   - <bds-chart-tooltip>   enable hover tooltip
+     * @example <bds-chart-pie
+     *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+     *   label-key="label"
+     *   value-key="value"
+     * >
+     *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+     *   <bds-chart-legend align="center"></bds-chart-legend>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-pie>
+     */
+    interface BdsChartPie {
+        /**
+          * Fallback color (palette is used automatically; this is a last-resort override).
+          * @default 'var(--color-extended-blue, #0d6efd)'
+         */
+        "color": string;
+        /**
+          * Array of data objects or JSON string. Each object must have labelKey and valueKey fields.
+          * @default []
+         */
+        "data": ChartDatum[] | string;
+        /**
+          * Field name used for slice labels.
+          * @default 'label'
+         */
+        "labelKey": string;
+        /**
+          * Field name whose numeric value determines each slice size.
+          * @default 'value'
+         */
+        "valueKey": string;
+    }
+    interface BdsChartTooltip {
+        /**
+          * @default false
+         */
+        "hideIndicator": boolean;
+        /**
+          * @default false
+         */
+        "hideLabel": boolean;
+        /**
+          * @default 'dot'
+         */
+        "indicator": 'dot' | 'line' | 'dashed';
+        "labelKey"?: string;
+        "nameKey"?: string;
+        "setTooltipState": (state: { visible?: boolean; x?: number; y?: number; label?: string; content?: string; entries?: TooltipEntry[]; }) => Promise<void>;
     }
     interface BdsCheckbox {
         /**
@@ -1335,6 +1589,28 @@ export namespace Components {
         "xsOffset"?: breakpoint;
         "xxs"?: breakpoint;
         "xxsOffset"?: breakpoint;
+    }
+    /**
+     * HeatmapCell — Configuration slot for bds-chart-heatmap.
+     * Place as a child of <bds-chart-heatmap> to override cell appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-heatmap data="...">
+     *   <bds-heatmap-cell color="#0d6efd" radius="6"></bds-heatmap-cell>
+     * </bds-chart-heatmap>
+     */
+    interface BdsHeatmapCell {
+        /**
+          * Base fill color of the cells. Overrides bds-chart-heatmap color prop.
+         */
+        "color": string;
+        /**
+          * Border-radius of cells in pixels. Overrides bds-chart-heatmap cellRadius prop.
+         */
+        "radius": number;
+        /**
+          * Data field key for intensity value. Overrides bds-chart-heatmap valueKey prop.
+         */
+        "valueKey": string;
     }
     interface BdsIcon {
         /**
@@ -2063,6 +2339,41 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * Line Component - Configuration for line in chart
+     * Must be used as a child of bds-chart-line
+     */
+    interface BdsLine {
+        /**
+          * Color of the line (hex, rgb, or CSS variable)
+          * @default '#0d6efd'
+         */
+        "color": string;
+        /**
+          * Type of interpolation: linear or monotone (smooth)
+          * @default 'monotone'
+         */
+        "curve": 'linear' | 'monotone';
+        /**
+          * Key from data object to use for line values
+         */
+        "dataKey": string;
+        /**
+          * Whether to show dots on data points
+          * @default true
+         */
+        "dot": boolean;
+        /**
+          * Radius of data point circles (in pixels)
+          * @default 4
+         */
+        "radius": number;
+        /**
+          * Width of the line stroke (in pixels)
+          * @default 2
+         */
+        "strokeWidth": number;
+    }
     interface BdsList {
         /**
           * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
@@ -2593,6 +2904,31 @@ export namespace Components {
           * @default null
          */
         "width"?: string;
+    }
+    /**
+     * PieConfig — Visual configuration slot for bds-chart-pie.
+     * Place as a child of <bds-chart-pie> to override default appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-pie data="...">
+     *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+     * </bds-chart-pie>
+     */
+    interface BdsPieConfig {
+        /**
+          * Corner radius of each slice end-cap in pixels (0 = sharp corners). Default: 3
+          * @default 3
+         */
+        "cornerRadius": number;
+        /**
+          * Inner radius as a percentage of the outer radius (0 = pie, 60 = donut). Default: 60
+          * @default 60
+         */
+        "innerRadius": number;
+        /**
+          * Gap between slices in radians. Default: 0.02
+          * @default 0.02
+         */
+        "padAngle": number;
     }
     interface BdsProgressBar {
         /**
@@ -3636,6 +3972,106 @@ export namespace Components {
     }
     interface BdsWarning {
     }
+    /**
+     * XAxis Component - Configuration for X-axis
+     * Must be used as a child of bds-chart-line or bds-chart-bar
+     */
+    interface BdsXAxis {
+        /**
+          * Show axis line
+          * @default true
+         */
+        "axisLine": boolean;
+        /**
+          * Key from data object to use for X-axis labels
+          * @default 'label'
+         */
+        "dataKey": string;
+        /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor": string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor": string;
+        /**
+          * Show X-axis labels
+          * @default true
+         */
+        "show": boolean;
+        /**
+          * Number of ticks to display on the Y-axis (default: 5) Note: This applies only to numeric axes with calculated scales
+          * @default 5
+         */
+        "tickCount": number;
+        /**
+          * Format function for tick labels (receives value, returns formatted string) Note: In HTML attributes, use comma-separated string for simple transformations Example: "slice,0,3" to get first 3 characters
+         */
+        "tickFormatter"?: string;
+        /**
+          * Show tick lines
+          * @default true
+         */
+        "tickLine": boolean;
+        /**
+          * Margin between tick and label (in pixels)
+          * @default 10
+         */
+        "tickMargin": number;
+    }
+    /**
+     * YAxis Component - Configuration for Y-axis
+     * Must be used as a child of bds-chart-line or bds-chart-bar
+     */
+    interface BdsYAxis {
+        /**
+          * Show axis line
+          * @default true
+         */
+        "axisLine": boolean;
+        /**
+          * Key from data object to use for Y-axis scale
+          * @default 'value'
+         */
+        "dataKey": string;
+        /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor": string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor": string;
+        /**
+          * Show Y-axis labels
+          * @default true
+         */
+        "show": boolean;
+        /**
+          * Number of ticks to display on the Y-axis (default: 5) Increase to show more ticks (e.g., 10 for 20, 25, 30, 35, 40...)
+          * @default 5
+         */
+        "tickCount": number;
+        /**
+          * Format function for tick labels (receives value, returns formatted string)
+         */
+        "tickFormatter"?: string;
+        /**
+          * Show tick lines
+          * @default true
+         */
+        "tickLine": boolean;
+        /**
+          * Margin between tick and label (in pixels)
+          * @default 10
+         */
+        "tickMargin": number;
+    }
 }
 export interface BdsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3688,6 +4124,10 @@ export interface BdsCardCustomEvent<T> extends CustomEvent<T> {
 export interface BdsCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsCarouselElement;
+}
+export interface BdsChartLegendCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBdsChartLegendElement;
 }
 export interface BdsCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -4020,6 +4460,16 @@ declare global {
         prototype: HTMLBdsBannerLinkElement;
         new (): HTMLBdsBannerLinkElement;
     };
+    /**
+     * Bar Component - Configuration for bar in chart
+     * Must be used as a child of bds-chart-bar
+     */
+    interface HTMLBdsBarElement extends Components.BdsBar, HTMLStencilElement {
+    }
+    var HTMLBdsBarElement: {
+        prototype: HTMLBdsBarElement;
+        new (): HTMLBdsBarElement;
+    };
     interface HTMLBdsBreadcrumbElement extends Components.BdsBreadcrumb, HTMLStencilElement {
     }
     var HTMLBdsBreadcrumbElement: {
@@ -4152,6 +4602,123 @@ declare global {
     var HTMLBdsCarouselItemElement: {
         prototype: HTMLBdsCarouselItemElement;
         new (): HTMLBdsCarouselItemElement;
+    };
+    interface HTMLBdsChartBarElement extends Components.BdsChartBar, HTMLStencilElement {
+    }
+    var HTMLBdsChartBarElement: {
+        prototype: HTMLBdsChartBarElement;
+        new (): HTMLBdsChartBarElement;
+    };
+    interface HTMLBdsChartContainerElement extends Components.BdsChartContainer, HTMLStencilElement {
+    }
+    var HTMLBdsChartContainerElement: {
+        prototype: HTMLBdsChartContainerElement;
+        new (): HTMLBdsChartContainerElement;
+    };
+    /**
+     * CartesianGrid - Simple grid line renderer
+     * Props:
+     * - vertical: boolean - Show vertical grid lines
+     * - horizontal: boolean - Show horizontal grid lines
+     * - strokeStyle: 'solid' | 'dashed' - Line style
+     * Usage: Pass gridLines data via context or parent coordination
+     */
+    interface HTMLBdsChartGridElement extends Components.BdsChartGrid, HTMLStencilElement {
+    }
+    var HTMLBdsChartGridElement: {
+        prototype: HTMLBdsChartGridElement;
+        new (): HTMLBdsChartGridElement;
+    };
+    /**
+     * ChartHeatmap — Grid/matrix heatmap chart.
+     * Renders two-dimensional categorical data as a grid of colored cells.
+     * Cell intensity is determined by a numeric value field mapped to opacity (0.1–1.0).
+     * Slot children (all optional):
+     *   - <bds-heatmap-cell>  override cell color, radius, valueKey
+     *   - <bds-x-axis>        configure bottom axis labels
+     *   - <bds-y-axis>        configure left axis labels
+     *   - <bds-chart-grid>    show grid lines
+     *   - <bds-chart-tooltip> enable hover tooltip
+     * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+     *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+     *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+     *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-heatmap>
+     */
+    interface HTMLBdsChartHeatmapElement extends Components.BdsChartHeatmap, HTMLStencilElement {
+    }
+    var HTMLBdsChartHeatmapElement: {
+        prototype: HTMLBdsChartHeatmapElement;
+        new (): HTMLBdsChartHeatmapElement;
+    };
+    interface HTMLBdsChartLabelsElement extends Components.BdsChartLabels, HTMLStencilElement {
+    }
+    var HTMLBdsChartLabelsElement: {
+        prototype: HTMLBdsChartLabelsElement;
+        new (): HTMLBdsChartLabelsElement;
+    };
+    interface HTMLBdsChartLegendElementEventMap {
+        "bdsLegendItemClick": string;
+    }
+    /**
+     * ChartLegend — Renders the interactive legend for chart components.
+     * Must be used as a child of bds-chart-line or bds-chart-bar.
+     * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
+     * Modes:
+     *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
+     *  - Category mode (dataKey set): reads unique values of dataKey from data,
+     *    assigns palette colors to each category, and recolors bars/dots accordingly.
+     */
+    interface HTMLBdsChartLegendElement extends Components.BdsChartLegend, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBdsChartLegendElementEventMap>(type: K, listener: (this: HTMLBdsChartLegendElement, ev: BdsChartLegendCustomEvent<HTMLBdsChartLegendElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBdsChartLegendElementEventMap>(type: K, listener: (this: HTMLBdsChartLegendElement, ev: BdsChartLegendCustomEvent<HTMLBdsChartLegendElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBdsChartLegendElement: {
+        prototype: HTMLBdsChartLegendElement;
+        new (): HTMLBdsChartLegendElement;
+    };
+    interface HTMLBdsChartLineElement extends Components.BdsChartLine, HTMLStencilElement {
+    }
+    var HTMLBdsChartLineElement: {
+        prototype: HTMLBdsChartLineElement;
+        new (): HTMLBdsChartLineElement;
+    };
+    /**
+     * ChartPie — Donut/pie chart component.
+     * Renders categorical data as a donut chart. Each datum becomes one slice.
+     * Colors are assigned automatically from the design-system palette.
+     * Slot children (all optional):
+     *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+     *   - <bds-chart-legend>    enable clickable legend
+     *   - <bds-chart-tooltip>   enable hover tooltip
+     * @example <bds-chart-pie
+     *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+     *   label-key="label"
+     *   value-key="value"
+     * >
+     *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+     *   <bds-chart-legend align="center"></bds-chart-legend>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-pie>
+     */
+    interface HTMLBdsChartPieElement extends Components.BdsChartPie, HTMLStencilElement {
+    }
+    var HTMLBdsChartPieElement: {
+        prototype: HTMLBdsChartPieElement;
+        new (): HTMLBdsChartPieElement;
+    };
+    interface HTMLBdsChartTooltipElement extends Components.BdsChartTooltip, HTMLStencilElement {
+    }
+    var HTMLBdsChartTooltipElement: {
+        prototype: HTMLBdsChartTooltipElement;
+        new (): HTMLBdsChartTooltipElement;
     };
     interface HTMLBdsCheckboxElementEventMap {
         "bdsChange": any;
@@ -4365,6 +4932,20 @@ declare global {
         prototype: HTMLBdsGridElement;
         new (): HTMLBdsGridElement;
     };
+    /**
+     * HeatmapCell — Configuration slot for bds-chart-heatmap.
+     * Place as a child of <bds-chart-heatmap> to override cell appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-heatmap data="...">
+     *   <bds-heatmap-cell color="#0d6efd" radius="6"></bds-heatmap-cell>
+     * </bds-chart-heatmap>
+     */
+    interface HTMLBdsHeatmapCellElement extends Components.BdsHeatmapCell, HTMLStencilElement {
+    }
+    var HTMLBdsHeatmapCellElement: {
+        prototype: HTMLBdsHeatmapCellElement;
+        new (): HTMLBdsHeatmapCellElement;
+    };
     interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
     }
     var HTMLBdsIconElement: {
@@ -4498,6 +5079,16 @@ declare global {
     var HTMLBdsInputPhoneNumberElement: {
         prototype: HTMLBdsInputPhoneNumberElement;
         new (): HTMLBdsInputPhoneNumberElement;
+    };
+    /**
+     * Line Component - Configuration for line in chart
+     * Must be used as a child of bds-chart-line
+     */
+    interface HTMLBdsLineElement extends Components.BdsLine, HTMLStencilElement {
+    }
+    var HTMLBdsLineElement: {
+        prototype: HTMLBdsLineElement;
+        new (): HTMLBdsLineElement;
     };
     interface HTMLBdsListElementEventMap {
         "bdsListCheckboxChange": {
@@ -4755,6 +5346,20 @@ declare global {
     var HTMLBdsPaperElement: {
         prototype: HTMLBdsPaperElement;
         new (): HTMLBdsPaperElement;
+    };
+    /**
+     * PieConfig — Visual configuration slot for bds-chart-pie.
+     * Place as a child of <bds-chart-pie> to override default appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-pie data="...">
+     *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+     * </bds-chart-pie>
+     */
+    interface HTMLBdsPieConfigElement extends Components.BdsPieConfig, HTMLStencilElement {
+    }
+    var HTMLBdsPieConfigElement: {
+        prototype: HTMLBdsPieConfigElement;
+        new (): HTMLBdsPieConfigElement;
     };
     interface HTMLBdsProgressBarElement extends Components.BdsProgressBar, HTMLStencilElement {
     }
@@ -5130,6 +5735,26 @@ declare global {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
     };
+    /**
+     * XAxis Component - Configuration for X-axis
+     * Must be used as a child of bds-chart-line or bds-chart-bar
+     */
+    interface HTMLBdsXAxisElement extends Components.BdsXAxis, HTMLStencilElement {
+    }
+    var HTMLBdsXAxisElement: {
+        prototype: HTMLBdsXAxisElement;
+        new (): HTMLBdsXAxisElement;
+    };
+    /**
+     * YAxis Component - Configuration for Y-axis
+     * Must be used as a child of bds-chart-line or bds-chart-bar
+     */
+    interface HTMLBdsYAxisElement extends Components.BdsYAxis, HTMLStencilElement {
+    }
+    var HTMLBdsYAxisElement: {
+        prototype: HTMLBdsYAxisElement;
+        new (): HTMLBdsYAxisElement;
+    };
     interface HTMLElementTagNameMap {
         "bds-accordion": HTMLBdsAccordionElement;
         "bds-accordion-body": HTMLBdsAccordionBodyElement;
@@ -5145,6 +5770,7 @@ declare global {
         "bds-badge": HTMLBdsBadgeElement;
         "bds-banner": HTMLBdsBannerElement;
         "bds-banner-link": HTMLBdsBannerLinkElement;
+        "bds-bar": HTMLBdsBarElement;
         "bds-breadcrumb": HTMLBdsBreadcrumbElement;
         "bds-button": HTMLBdsButtonElement;
         "bds-button-group": HTMLBdsButtonGroupElement;
@@ -5158,6 +5784,15 @@ declare global {
         "bds-card-title": HTMLBdsCardTitleElement;
         "bds-carousel": HTMLBdsCarouselElement;
         "bds-carousel-item": HTMLBdsCarouselItemElement;
+        "bds-chart-bar": HTMLBdsChartBarElement;
+        "bds-chart-container": HTMLBdsChartContainerElement;
+        "bds-chart-grid": HTMLBdsChartGridElement;
+        "bds-chart-heatmap": HTMLBdsChartHeatmapElement;
+        "bds-chart-labels": HTMLBdsChartLabelsElement;
+        "bds-chart-legend": HTMLBdsChartLegendElement;
+        "bds-chart-line": HTMLBdsChartLineElement;
+        "bds-chart-pie": HTMLBdsChartPieElement;
+        "bds-chart-tooltip": HTMLBdsChartTooltipElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
         "bds-chip-clickable": HTMLBdsChipClickableElement;
@@ -5174,6 +5809,7 @@ declare global {
         "bds-expansion-panel-body": HTMLBdsExpansionPanelBodyElement;
         "bds-expansion-panel-header": HTMLBdsExpansionPanelHeaderElement;
         "bds-grid": HTMLBdsGridElement;
+        "bds-heatmap-cell": HTMLBdsHeatmapCellElement;
         "bds-icon": HTMLBdsIconElement;
         "bds-illustration": HTMLBdsIllustrationElement;
         "bds-image": HTMLBdsImageElement;
@@ -5182,6 +5818,7 @@ declare global {
         "bds-input-editable": HTMLBdsInputEditableElement;
         "bds-input-password": HTMLBdsInputPasswordElement;
         "bds-input-phone-number": HTMLBdsInputPhoneNumberElement;
+        "bds-line": HTMLBdsLineElement;
         "bds-list": HTMLBdsListElement;
         "bds-list-item": HTMLBdsListItemElement;
         "bds-list-item-content": HTMLBdsListItemContentElement;
@@ -5204,6 +5841,7 @@ declare global {
         "bds-navbar-content": HTMLBdsNavbarContentElement;
         "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
+        "bds-pie-config": HTMLBdsPieConfigElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-radio-group": HTMLBdsRadioGroupElement;
@@ -5236,6 +5874,8 @@ declare global {
         "bds-typo": HTMLBdsTypoElement;
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
+        "bds-x-axis": HTMLBdsXAxisElement;
+        "bds-y-axis": HTMLBdsYAxisElement;
     }
 }
 declare namespace LocalJSX {
@@ -5611,6 +6251,30 @@ declare namespace LocalJSX {
          */
         "target"?: targets;
     }
+    /**
+     * Bar Component - Configuration for bar in chart
+     * Must be used as a child of bds-chart-bar
+     */
+    interface BdsBar {
+        /**
+          * Color of the bar (hex, rgb, or CSS variable)
+          * @default '#0d6efd'
+         */
+        "color"?: string;
+        /**
+          * Key from data object to use for bar values
+         */
+        "dataKey"?: string;
+        /**
+          * Border radius of bar corners (in pixels)
+          * @default 4
+         */
+        "radius"?: number;
+        /**
+          * Stack identifier. Bars with the same stackId are stacked on top of each other. Bars with different (or no) stackId are placed side-by-side.
+         */
+        "stackId"?: string;
+    }
     interface BdsBreadcrumb {
         /**
           * @default []
@@ -5962,6 +6626,231 @@ declare namespace LocalJSX {
           * @default 'light'
          */
         "theme"?: Themes;
+    }
+    interface BdsChartBar {
+        /**
+          * @default 'left'
+         */
+        "align"?: 'left' | 'center' | 'right';
+        /**
+          * @default 6
+         */
+        "barRadius"?: number;
+        /**
+          * @default 'var(--color-extended-green, #05b96c)'
+         */
+        "color"?: string;
+        /**
+          * @default []
+         */
+        "data"?: ChartDatum[] | string;
+        /**
+          * @default false
+         */
+        "vertical"?: boolean;
+    }
+    interface BdsChartContainer {
+    }
+    /**
+     * CartesianGrid - Simple grid line renderer
+     * Props:
+     * - vertical: boolean - Show vertical grid lines
+     * - horizontal: boolean - Show horizontal grid lines
+     * - strokeStyle: 'solid' | 'dashed' - Line style
+     * Usage: Pass gridLines data via context or parent coordination
+     */
+    interface BdsChartGrid {
+        /**
+          * Show horizontal grid lines (Y-axis)
+          * @default true
+         */
+        "horizontal"?: boolean | string;
+        /**
+          * Grid line color
+          * @default 'var(--color-border-1)'
+         */
+        "strokeColor"?: string;
+        /**
+          * Grid line style: solid or dashed
+          * @default 'solid'
+         */
+        "strokeStyle"?: 'solid' | 'dashed';
+        /**
+          * Show vertical grid lines (X-axis)
+          * @default false
+         */
+        "vertical"?: boolean | string;
+    }
+    /**
+     * ChartHeatmap — Grid/matrix heatmap chart.
+     * Renders two-dimensional categorical data as a grid of colored cells.
+     * Cell intensity is determined by a numeric value field mapped to opacity (0.1–1.0).
+     * Slot children (all optional):
+     *   - <bds-heatmap-cell>  override cell color, radius, valueKey
+     *   - <bds-x-axis>        configure bottom axis labels
+     *   - <bds-y-axis>        configure left axis labels
+     *   - <bds-chart-grid>    show grid lines
+     *   - <bds-chart-tooltip> enable hover tooltip
+     * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+     *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+     *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+     *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-heatmap>
+     */
+    interface BdsChartHeatmap {
+        /**
+          * Gap between cells in pixels.
+          * @default 4
+         */
+        "cellPadding"?: number;
+        /**
+          * Border-radius of each cell in pixels.
+          * @default 4
+         */
+        "cellRadius"?: number;
+        /**
+          * Base fill color of cells. Can be overridden by <bds-heatmap-cell color="...">.
+          * @default 'var(--color-extended-blue, #0d6efd)'
+         */
+        "color"?: string;
+        /**
+          * Array of data objects or JSON string. Each object must have xKey, yKey, and valueKey fields.
+          * @default []
+         */
+        "data"?: ChartDatum[] | string;
+        /**
+          * Data field whose numeric value drives cell opacity (min → 0.1, max → 1.0).
+          * @default 'value'
+         */
+        "valueKey"?: string;
+        /**
+          * Data field used for X-axis (column) categories.
+          * @default 'x'
+         */
+        "xKey"?: string;
+        /**
+          * Data field used for Y-axis (row) categories.
+          * @default 'y'
+         */
+        "yKey"?: string;
+    }
+    interface BdsChartLabels {
+        /**
+          * @default '[]'
+         */
+        "data"?: string | object[];
+        /**
+          * @default 320
+         */
+        "height"?: number;
+        /**
+          * @default 720
+         */
+        "width"?: number;
+        /**
+          * @default 'label'
+         */
+        "xkey"?: string;
+        /**
+          * @default 'value'
+         */
+        "ykey"?: string;
+    }
+    /**
+     * ChartLegend — Renders the interactive legend for chart components.
+     * Must be used as a child of bds-chart-line or bds-chart-bar.
+     * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
+     * Modes:
+     *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
+     *  - Category mode (dataKey set): reads unique values of dataKey from data,
+     *    assigns palette colors to each category, and recolors bars/dots accordingly.
+     */
+    interface BdsChartLegend {
+        /**
+          * @default 'center'
+         */
+        "align"?: 'left' | 'center' | 'right';
+        "dataKey"?: string;
+        "onBdsLegendItemClick"?: (event: BdsChartLegendCustomEvent<string>) => void;
+    }
+    interface BdsChartLine {
+        /**
+          * @default 4
+         */
+        "circleRadius"?: number;
+        /**
+          * @default 'var(--color-extended-blue, #0d66f4)'
+         */
+        "color"?: string;
+        /**
+          * @default 'monotone'
+         */
+        "curve"?: 'linear' | 'monotone';
+        /**
+          * @default []
+         */
+        "data"?: ChartDatum[] | string;
+        /**
+          * @default 2
+         */
+        "strokeWidth"?: number;
+    }
+    /**
+     * ChartPie — Donut/pie chart component.
+     * Renders categorical data as a donut chart. Each datum becomes one slice.
+     * Colors are assigned automatically from the design-system palette.
+     * Slot children (all optional):
+     *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+     *   - <bds-chart-legend>    enable clickable legend
+     *   - <bds-chart-tooltip>   enable hover tooltip
+     * @example <bds-chart-pie
+     *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+     *   label-key="label"
+     *   value-key="value"
+     * >
+     *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+     *   <bds-chart-legend align="center"></bds-chart-legend>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-pie>
+     */
+    interface BdsChartPie {
+        /**
+          * Fallback color (palette is used automatically; this is a last-resort override).
+          * @default 'var(--color-extended-blue, #0d6efd)'
+         */
+        "color"?: string;
+        /**
+          * Array of data objects or JSON string. Each object must have labelKey and valueKey fields.
+          * @default []
+         */
+        "data"?: ChartDatum[] | string;
+        /**
+          * Field name used for slice labels.
+          * @default 'label'
+         */
+        "labelKey"?: string;
+        /**
+          * Field name whose numeric value determines each slice size.
+          * @default 'value'
+         */
+        "valueKey"?: string;
+    }
+    interface BdsChartTooltip {
+        /**
+          * @default false
+         */
+        "hideIndicator"?: boolean;
+        /**
+          * @default false
+         */
+        "hideLabel"?: boolean;
+        /**
+          * @default 'dot'
+         */
+        "indicator"?: 'dot' | 'line' | 'dashed';
+        "labelKey"?: string;
+        "nameKey"?: string;
     }
     interface BdsCheckbox {
         /**
@@ -6508,6 +7397,28 @@ declare namespace LocalJSX {
         "xsOffset"?: breakpoint;
         "xxs"?: breakpoint;
         "xxsOffset"?: breakpoint;
+    }
+    /**
+     * HeatmapCell — Configuration slot for bds-chart-heatmap.
+     * Place as a child of <bds-chart-heatmap> to override cell appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-heatmap data="...">
+     *   <bds-heatmap-cell color="#0d6efd" radius="6"></bds-heatmap-cell>
+     * </bds-chart-heatmap>
+     */
+    interface BdsHeatmapCell {
+        /**
+          * Base fill color of the cells. Overrides bds-chart-heatmap color prop.
+         */
+        "color"?: string;
+        /**
+          * Border-radius of cells in pixels. Overrides bds-chart-heatmap cellRadius prop.
+         */
+        "radius"?: number;
+        /**
+          * Data field key for intensity value. Overrides bds-chart-heatmap valueKey prop.
+         */
+        "valueKey"?: string;
     }
     interface BdsIcon {
         /**
@@ -7327,6 +8238,41 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * Line Component - Configuration for line in chart
+     * Must be used as a child of bds-chart-line
+     */
+    interface BdsLine {
+        /**
+          * Color of the line (hex, rgb, or CSS variable)
+          * @default '#0d6efd'
+         */
+        "color"?: string;
+        /**
+          * Type of interpolation: linear or monotone (smooth)
+          * @default 'monotone'
+         */
+        "curve"?: 'linear' | 'monotone';
+        /**
+          * Key from data object to use for line values
+         */
+        "dataKey"?: string;
+        /**
+          * Whether to show dots on data points
+          * @default true
+         */
+        "dot"?: boolean;
+        /**
+          * Radius of data point circles (in pixels)
+          * @default 4
+         */
+        "radius"?: number;
+        /**
+          * Width of the line stroke (in pixels)
+          * @default 2
+         */
+        "strokeWidth"?: number;
+    }
     interface BdsList {
         /**
           * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
@@ -7926,6 +8872,31 @@ declare namespace LocalJSX {
           * @default null
          */
         "width"?: string;
+    }
+    /**
+     * PieConfig — Visual configuration slot for bds-chart-pie.
+     * Place as a child of <bds-chart-pie> to override default appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-pie data="...">
+     *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+     * </bds-chart-pie>
+     */
+    interface BdsPieConfig {
+        /**
+          * Corner radius of each slice end-cap in pixels (0 = sharp corners). Default: 3
+          * @default 3
+         */
+        "cornerRadius"?: number;
+        /**
+          * Inner radius as a percentage of the outer radius (0 = pie, 60 = donut). Default: 60
+          * @default 60
+         */
+        "innerRadius"?: number;
+        /**
+          * Gap between slices in radians. Default: 0.02
+          * @default 0.02
+         */
+        "padAngle"?: number;
     }
     interface BdsProgressBar {
         /**
@@ -9007,6 +9978,106 @@ declare namespace LocalJSX {
     }
     interface BdsWarning {
     }
+    /**
+     * XAxis Component - Configuration for X-axis
+     * Must be used as a child of bds-chart-line or bds-chart-bar
+     */
+    interface BdsXAxis {
+        /**
+          * Show axis line
+          * @default true
+         */
+        "axisLine"?: boolean;
+        /**
+          * Key from data object to use for X-axis labels
+          * @default 'label'
+         */
+        "dataKey"?: string;
+        /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor"?: string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor"?: string;
+        /**
+          * Show X-axis labels
+          * @default true
+         */
+        "show"?: boolean;
+        /**
+          * Number of ticks to display on the Y-axis (default: 5) Note: This applies only to numeric axes with calculated scales
+          * @default 5
+         */
+        "tickCount"?: number;
+        /**
+          * Format function for tick labels (receives value, returns formatted string) Note: In HTML attributes, use comma-separated string for simple transformations Example: "slice,0,3" to get first 3 characters
+         */
+        "tickFormatter"?: string;
+        /**
+          * Show tick lines
+          * @default true
+         */
+        "tickLine"?: boolean;
+        /**
+          * Margin between tick and label (in pixels)
+          * @default 10
+         */
+        "tickMargin"?: number;
+    }
+    /**
+     * YAxis Component - Configuration for Y-axis
+     * Must be used as a child of bds-chart-line or bds-chart-bar
+     */
+    interface BdsYAxis {
+        /**
+          * Show axis line
+          * @default true
+         */
+        "axisLine"?: boolean;
+        /**
+          * Key from data object to use for Y-axis scale
+          * @default 'value'
+         */
+        "dataKey"?: string;
+        /**
+          * Color of axis labels
+          * @default 'var(--color-content-default)'
+         */
+        "labelColor"?: string;
+        /**
+          * Color of tick lines and axis line
+          * @default 'var(--color-border-1)'
+         */
+        "lineColor"?: string;
+        /**
+          * Show Y-axis labels
+          * @default true
+         */
+        "show"?: boolean;
+        /**
+          * Number of ticks to display on the Y-axis (default: 5) Increase to show more ticks (e.g., 10 for 20, 25, 30, 35, 40...)
+          * @default 5
+         */
+        "tickCount"?: number;
+        /**
+          * Format function for tick labels (receives value, returns formatted string)
+         */
+        "tickFormatter"?: string;
+        /**
+          * Show tick lines
+          * @default true
+         */
+        "tickLine"?: boolean;
+        /**
+          * Margin between tick and label (in pixels)
+          * @default 10
+         */
+        "tickMargin"?: number;
+    }
     interface IntrinsicElements {
         "bds-accordion": BdsAccordion;
         "bds-accordion-body": BdsAccordionBody;
@@ -9022,6 +10093,7 @@ declare namespace LocalJSX {
         "bds-badge": BdsBadge;
         "bds-banner": BdsBanner;
         "bds-banner-link": BdsBannerLink;
+        "bds-bar": BdsBar;
         "bds-breadcrumb": BdsBreadcrumb;
         "bds-button": BdsButton;
         "bds-button-group": BdsButtonGroup;
@@ -9035,6 +10107,15 @@ declare namespace LocalJSX {
         "bds-card-title": BdsCardTitle;
         "bds-carousel": BdsCarousel;
         "bds-carousel-item": BdsCarouselItem;
+        "bds-chart-bar": BdsChartBar;
+        "bds-chart-container": BdsChartContainer;
+        "bds-chart-grid": BdsChartGrid;
+        "bds-chart-heatmap": BdsChartHeatmap;
+        "bds-chart-labels": BdsChartLabels;
+        "bds-chart-legend": BdsChartLegend;
+        "bds-chart-line": BdsChartLine;
+        "bds-chart-pie": BdsChartPie;
+        "bds-chart-tooltip": BdsChartTooltip;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
         "bds-chip-clickable": BdsChipClickable;
@@ -9051,6 +10132,7 @@ declare namespace LocalJSX {
         "bds-expansion-panel-body": BdsExpansionPanelBody;
         "bds-expansion-panel-header": BdsExpansionPanelHeader;
         "bds-grid": BdsGrid;
+        "bds-heatmap-cell": BdsHeatmapCell;
         "bds-icon": BdsIcon;
         "bds-illustration": BdsIllustration;
         "bds-image": BdsImage;
@@ -9059,6 +10141,7 @@ declare namespace LocalJSX {
         "bds-input-editable": BdsInputEditable;
         "bds-input-password": BdsInputPassword;
         "bds-input-phone-number": BdsInputPhoneNumber;
+        "bds-line": BdsLine;
         "bds-list": BdsList;
         "bds-list-item": BdsListItem;
         "bds-list-item-content": BdsListItemContent;
@@ -9081,6 +10164,7 @@ declare namespace LocalJSX {
         "bds-navbar-content": BdsNavbarContent;
         "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
+        "bds-pie-config": BdsPieConfig;
         "bds-progress-bar": BdsProgressBar;
         "bds-radio": BdsRadio;
         "bds-radio-group": BdsRadioGroup;
@@ -9113,6 +10197,8 @@ declare namespace LocalJSX {
         "bds-typo": BdsTypo;
         "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
+        "bds-x-axis": BdsXAxis;
+        "bds-y-axis": BdsYAxis;
     }
 }
 export { LocalJSX as JSX };
@@ -9133,6 +10219,11 @@ declare module "@stencil/core" {
             "bds-badge": LocalJSX.BdsBadge & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
             "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
+            /**
+             * Bar Component - Configuration for bar in chart
+             * Must be used as a child of bds-chart-bar
+             */
+            "bds-bar": LocalJSX.BdsBar & JSXBase.HTMLAttributes<HTMLBdsBarElement>;
             "bds-breadcrumb": LocalJSX.BdsBreadcrumb & JSXBase.HTMLAttributes<HTMLBdsBreadcrumbElement>;
             "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-group": LocalJSX.BdsButtonGroup & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
@@ -9146,6 +10237,67 @@ declare module "@stencil/core" {
             "bds-card-title": LocalJSX.BdsCardTitle & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
             "bds-carousel": LocalJSX.BdsCarousel & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
             "bds-carousel-item": LocalJSX.BdsCarouselItem & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
+            "bds-chart-bar": LocalJSX.BdsChartBar & JSXBase.HTMLAttributes<HTMLBdsChartBarElement>;
+            "bds-chart-container": LocalJSX.BdsChartContainer & JSXBase.HTMLAttributes<HTMLBdsChartContainerElement>;
+            /**
+             * CartesianGrid - Simple grid line renderer
+             * Props:
+             * - vertical: boolean - Show vertical grid lines
+             * - horizontal: boolean - Show horizontal grid lines
+             * - strokeStyle: 'solid' | 'dashed' - Line style
+             * Usage: Pass gridLines data via context or parent coordination
+             */
+            "bds-chart-grid": LocalJSX.BdsChartGrid & JSXBase.HTMLAttributes<HTMLBdsChartGridElement>;
+            /**
+             * ChartHeatmap — Grid/matrix heatmap chart.
+             * Renders two-dimensional categorical data as a grid of colored cells.
+             * Cell intensity is determined by a numeric value field mapped to opacity (0.1–1.0).
+             * Slot children (all optional):
+             *   - <bds-heatmap-cell>  override cell color, radius, valueKey
+             *   - <bds-x-axis>        configure bottom axis labels
+             *   - <bds-y-axis>        configure left axis labels
+             *   - <bds-chart-grid>    show grid lines
+             *   - <bds-chart-tooltip> enable hover tooltip
+             * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+             *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+             *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+             *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
+             *   <bds-chart-tooltip></bds-chart-tooltip>
+             * </bds-chart-heatmap>
+             */
+            "bds-chart-heatmap": LocalJSX.BdsChartHeatmap & JSXBase.HTMLAttributes<HTMLBdsChartHeatmapElement>;
+            "bds-chart-labels": LocalJSX.BdsChartLabels & JSXBase.HTMLAttributes<HTMLBdsChartLabelsElement>;
+            /**
+             * ChartLegend — Renders the interactive legend for chart components.
+             * Must be used as a child of bds-chart-line or bds-chart-bar.
+             * The parent chart pushes data via setLegendState() and listens to bdsLegendItemClick.
+             * Modes:
+             *  - Series mode (no dataKey): reads bds-line/bds-bar siblings for color + label.
+             *  - Category mode (dataKey set): reads unique values of dataKey from data,
+             *    assigns palette colors to each category, and recolors bars/dots accordingly.
+             */
+            "bds-chart-legend": LocalJSX.BdsChartLegend & JSXBase.HTMLAttributes<HTMLBdsChartLegendElement>;
+            "bds-chart-line": LocalJSX.BdsChartLine & JSXBase.HTMLAttributes<HTMLBdsChartLineElement>;
+            /**
+             * ChartPie — Donut/pie chart component.
+             * Renders categorical data as a donut chart. Each datum becomes one slice.
+             * Colors are assigned automatically from the design-system palette.
+             * Slot children (all optional):
+             *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+             *   - <bds-chart-legend>    enable clickable legend
+             *   - <bds-chart-tooltip>   enable hover tooltip
+             * @example <bds-chart-pie
+             *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+             *   label-key="label"
+             *   value-key="value"
+             * >
+             *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+             *   <bds-chart-legend align="center"></bds-chart-legend>
+             *   <bds-chart-tooltip></bds-chart-tooltip>
+             * </bds-chart-pie>
+             */
+            "bds-chart-pie": LocalJSX.BdsChartPie & JSXBase.HTMLAttributes<HTMLBdsChartPieElement>;
+            "bds-chart-tooltip": LocalJSX.BdsChartTooltip & JSXBase.HTMLAttributes<HTMLBdsChartTooltipElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
@@ -9162,6 +10314,15 @@ declare module "@stencil/core" {
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
             "bds-grid": LocalJSX.BdsGrid & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
+            /**
+             * HeatmapCell — Configuration slot for bds-chart-heatmap.
+             * Place as a child of <bds-chart-heatmap> to override cell appearance.
+             * Renders as display:none — parent reads props via getAttribute().
+             * @example <bds-chart-heatmap data="...">
+             *   <bds-heatmap-cell color="#0d6efd" radius="6"></bds-heatmap-cell>
+             * </bds-chart-heatmap>
+             */
+            "bds-heatmap-cell": LocalJSX.BdsHeatmapCell & JSXBase.HTMLAttributes<HTMLBdsHeatmapCellElement>;
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.BdsIllustration & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
             "bds-image": LocalJSX.BdsImage & JSXBase.HTMLAttributes<HTMLBdsImageElement>;
@@ -9170,6 +10331,11 @@ declare module "@stencil/core" {
             "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
+            /**
+             * Line Component - Configuration for line in chart
+             * Must be used as a child of bds-chart-line
+             */
+            "bds-line": LocalJSX.BdsLine & JSXBase.HTMLAttributes<HTMLBdsLineElement>;
             "bds-list": LocalJSX.BdsList & JSXBase.HTMLAttributes<HTMLBdsListElement>;
             "bds-list-item": LocalJSX.BdsListItem & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
             "bds-list-item-content": LocalJSX.BdsListItemContent & JSXBase.HTMLAttributes<HTMLBdsListItemContentElement>;
@@ -9192,6 +10358,15 @@ declare module "@stencil/core" {
             "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
+            /**
+             * PieConfig — Visual configuration slot for bds-chart-pie.
+             * Place as a child of <bds-chart-pie> to override default appearance.
+             * Renders as display:none — parent reads props via getAttribute().
+             * @example <bds-chart-pie data="...">
+             *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+             * </bds-chart-pie>
+             */
+            "bds-pie-config": LocalJSX.BdsPieConfig & JSXBase.HTMLAttributes<HTMLBdsPieConfigElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
@@ -9224,6 +10399,16 @@ declare module "@stencil/core" {
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+            /**
+             * XAxis Component - Configuration for X-axis
+             * Must be used as a child of bds-chart-line or bds-chart-bar
+             */
+            "bds-x-axis": LocalJSX.BdsXAxis & JSXBase.HTMLAttributes<HTMLBdsXAxisElement>;
+            /**
+             * YAxis Component - Configuration for Y-axis
+             * Must be used as a child of bds-chart-line or bds-chart-bar
+             */
+            "bds-y-axis": LocalJSX.BdsYAxis & JSXBase.HTMLAttributes<HTMLBdsYAxisElement>;
         }
     }
 }

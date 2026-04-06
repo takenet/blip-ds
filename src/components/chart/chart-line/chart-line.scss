@@ -1,0 +1,47 @@
+@use '../chart-x-axis/chart-x-axis';
+@use '../chart-y-axis/chart-y-axis';
+@use '../globals/helpers' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  max-width: 1920px;
+  max-height: 1080px;
+
+  /**
+   * @prop --chart-hover-line-color: Color of the vertical hover indicator line.
+   */
+  --chart-hover-line-color: var(--color-content-ghost, rgba(0, 0, 0, 0.35));
+
+  /**
+   * @prop --chart-hover-dot-stroke: Stroke color of the dot shown on hover for lines with dot=false.
+   */
+  --chart-hover-dot-stroke: white;
+}
+
+svg {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+}
+
+.chart-line__grid {
+  pointer-events: none;
+}
+
+.chart-line__path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-line__point {
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+.chart-line__point:hover {
+  transform: translateY(-2px);
+}

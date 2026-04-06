@@ -1,0 +1,27 @@
+@use '../chart-x-axis/chart-x-axis';
+@use '../chart-y-axis/chart-y-axis';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  max-width: 1920px;
+  max-height: 1080px;
+}
+
+svg {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+}
+
+.chart-heatmap__cell {
+  cursor: default;
+}
+
+.chart-heatmap__x-label,
+.chart-heatmap__y-label {
+  user-select: none;
+}

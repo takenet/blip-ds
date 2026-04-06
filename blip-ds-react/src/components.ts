@@ -24,6 +24,7 @@ import { BdsAvatar as BdsAvatarElement, defineCustomElement as defineBdsAvatar }
 import { BdsBadge as BdsBadgeElement, defineCustomElement as defineBdsBadge } from "blip-ds/dist/components/bds-badge.js";
 import { BdsBannerLink as BdsBannerLinkElement, defineCustomElement as defineBdsBannerLink } from "blip-ds/dist/components/bds-banner-link.js";
 import { BdsBanner as BdsBannerElement, defineCustomElement as defineBdsBanner } from "blip-ds/dist/components/bds-banner.js";
+import { BdsBar as BdsBarElement, defineCustomElement as defineBdsBar } from "blip-ds/dist/components/bds-bar.js";
 import { BdsBreadcrumb as BdsBreadcrumbElement, defineCustomElement as defineBdsBreadcrumb } from "blip-ds/dist/components/bds-breadcrumb.js";
 import { BdsButtonGroup as BdsButtonGroupElement, defineCustomElement as defineBdsButtonGroup } from "blip-ds/dist/components/bds-button-group.js";
 import { BdsButtonIcon as BdsButtonIconElement, defineCustomElement as defineBdsButtonIcon } from "blip-ds/dist/components/bds-button-icon.js";
@@ -37,6 +38,15 @@ import { BdsCardTitle as BdsCardTitleElement, defineCustomElement as defineBdsCa
 import { BdsCard as BdsCardElement, defineCustomElement as defineBdsCard } from "blip-ds/dist/components/bds-card.js";
 import { BdsCarouselItem as BdsCarouselItemElement, defineCustomElement as defineBdsCarouselItem } from "blip-ds/dist/components/bds-carousel-item.js";
 import { BdsCarousel as BdsCarouselElement, defineCustomElement as defineBdsCarousel } from "blip-ds/dist/components/bds-carousel.js";
+import { BdsChartBar as BdsChartBarElement, defineCustomElement as defineBdsChartBar } from "blip-ds/dist/components/bds-chart-bar.js";
+import { BdsChartContainer as BdsChartContainerElement, defineCustomElement as defineBdsChartContainer } from "blip-ds/dist/components/bds-chart-container.js";
+import { BdsChartGrid as BdsChartGridElement, defineCustomElement as defineBdsChartGrid } from "blip-ds/dist/components/bds-chart-grid.js";
+import { BdsChartHeatmap as BdsChartHeatmapElement, defineCustomElement as defineBdsChartHeatmap } from "blip-ds/dist/components/bds-chart-heatmap.js";
+import { BdsChartLabels as BdsChartLabelsElement, defineCustomElement as defineBdsChartLabels } from "blip-ds/dist/components/bds-chart-labels.js";
+import { BdsChartLegend as BdsChartLegendElement, defineCustomElement as defineBdsChartLegend } from "blip-ds/dist/components/bds-chart-legend.js";
+import { BdsChartLine as BdsChartLineElement, defineCustomElement as defineBdsChartLine } from "blip-ds/dist/components/bds-chart-line.js";
+import { BdsChartPie as BdsChartPieElement, defineCustomElement as defineBdsChartPie } from "blip-ds/dist/components/bds-chart-pie.js";
+import { BdsChartTooltip as BdsChartTooltipElement, defineCustomElement as defineBdsChartTooltip } from "blip-ds/dist/components/bds-chart-tooltip.js";
 import { BdsCheckbox as BdsCheckboxElement, defineCustomElement as defineBdsCheckbox } from "blip-ds/dist/components/bds-checkbox.js";
 import { BdsChipClickable as BdsChipClickableElement, defineCustomElement as defineBdsChipClickable } from "blip-ds/dist/components/bds-chip-clickable.js";
 import { BdsChipSelected as BdsChipSelectedElement, defineCustomElement as defineBdsChipSelected } from "blip-ds/dist/components/bds-chip-selected.js";
@@ -53,6 +63,7 @@ import { BdsExpansionPanelBody as BdsExpansionPanelBodyElement, defineCustomElem
 import { BdsExpansionPanelHeader as BdsExpansionPanelHeaderElement, defineCustomElement as defineBdsExpansionPanelHeader } from "blip-ds/dist/components/bds-expansion-panel-header.js";
 import { BdsExpansionPanel as BdsExpansionPanelElement, defineCustomElement as defineBdsExpansionPanel } from "blip-ds/dist/components/bds-expansion-panel.js";
 import { BdsGrid as BdsGridElement, defineCustomElement as defineBdsGrid } from "blip-ds/dist/components/bds-grid.js";
+import { BdsHeatmapCell as BdsHeatmapCellElement, defineCustomElement as defineBdsHeatmapCell } from "blip-ds/dist/components/bds-heatmap-cell.js";
 import { BdsIcon as BdsIconElement, defineCustomElement as defineBdsIcon } from "blip-ds/dist/components/bds-icon.js";
 import { BdsIllustration as BdsIllustrationElement, defineCustomElement as defineBdsIllustration } from "blip-ds/dist/components/bds-illustration.js";
 import { BdsImage as BdsImageElement, defineCustomElement as defineBdsImage } from "blip-ds/dist/components/bds-image.js";
@@ -61,6 +72,7 @@ import { BdsInputEditable as BdsInputEditableElement, defineCustomElement as def
 import { BdsInputPassword as BdsInputPasswordElement, defineCustomElement as defineBdsInputPassword } from "blip-ds/dist/components/bds-input-password.js";
 import { BdsInputPhoneNumber as BdsInputPhoneNumberElement, defineCustomElement as defineBdsInputPhoneNumber } from "blip-ds/dist/components/bds-input-phone-number.js";
 import { BdsInput as BdsInputElement, defineCustomElement as defineBdsInput } from "blip-ds/dist/components/bds-input.js";
+import { BdsLine as BdsLineElement, defineCustomElement as defineBdsLine } from "blip-ds/dist/components/bds-line.js";
 import { BdsListItemContent as BdsListItemContentElement, defineCustomElement as defineBdsListItemContent } from "blip-ds/dist/components/bds-list-item-content.js";
 import { BdsListItem as BdsListItemElement, defineCustomElement as defineBdsListItem } from "blip-ds/dist/components/bds-list-item.js";
 import { BdsList as BdsListElement, defineCustomElement as defineBdsList } from "blip-ds/dist/components/bds-list.js";
@@ -83,6 +95,7 @@ import { BdsNavbarContent as BdsNavbarContentElement, defineCustomElement as def
 import { BdsNavbar as BdsNavbarElement, defineCustomElement as defineBdsNavbar } from "blip-ds/dist/components/bds-navbar.js";
 import { BdsPagination as BdsPaginationElement, defineCustomElement as defineBdsPagination } from "blip-ds/dist/components/bds-pagination.js";
 import { BdsPaper as BdsPaperElement, defineCustomElement as defineBdsPaper } from "blip-ds/dist/components/bds-paper.js";
+import { BdsPieConfig as BdsPieConfigElement, defineCustomElement as defineBdsPieConfig } from "blip-ds/dist/components/bds-pie-config.js";
 import { BdsProgressBar as BdsProgressBarElement, defineCustomElement as defineBdsProgressBar } from "blip-ds/dist/components/bds-progress-bar.js";
 import { BdsRadioGroup as BdsRadioGroupElement, defineCustomElement as defineBdsRadioGroup } from "blip-ds/dist/components/bds-radio-group.js";
 import { BdsRadio as BdsRadioElement, defineCustomElement as defineBdsRadio } from "blip-ds/dist/components/bds-radio.js";
@@ -115,6 +128,8 @@ import { BdsTooltip as BdsTooltipElement, defineCustomElement as defineBdsToolti
 import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
+import { BdsXAxis as BdsXAxisElement, defineCustomElement as defineBdsXAxis } from "blip-ds/dist/components/bds-x-axis.js";
+import { BdsYAxis as BdsYAxisElement, defineCustomElement as defineBdsYAxis } from "blip-ds/dist/components/bds-y-axis.js";
 import React from 'react';
 
 export type BdsAccordionEvents = {
@@ -307,6 +322,17 @@ export const BdsBannerLink: StencilReactComponent<BdsBannerLinkElement, BdsBanne
     defineCustomElement: defineBdsBannerLink
 });
 
+export type BdsBarEvents = NonNullable<unknown>;
+
+export const BdsBar: StencilReactComponent<BdsBarElement, BdsBarEvents> = /*@__PURE__*/ createComponent<BdsBarElement, BdsBarEvents>({
+    tagName: 'bds-bar',
+    elementClass: BdsBarElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsBarEvents,
+    defineCustomElement: defineBdsBar
+});
+
 export type BdsBreadcrumbEvents = NonNullable<unknown>;
 
 export const BdsBreadcrumb: StencilReactComponent<BdsBreadcrumbElement, BdsBreadcrumbEvents> = /*@__PURE__*/ createComponent<BdsBreadcrumbElement, BdsBreadcrumbEvents>({
@@ -448,6 +474,105 @@ export const BdsCarouselItem: StencilReactComponent<BdsCarouselItemElement, BdsC
     react: React,
     events: {} as BdsCarouselItemEvents,
     defineCustomElement: defineBdsCarouselItem
+});
+
+export type BdsChartBarEvents = NonNullable<unknown>;
+
+export const BdsChartBar: StencilReactComponent<BdsChartBarElement, BdsChartBarEvents> = /*@__PURE__*/ createComponent<BdsChartBarElement, BdsChartBarEvents>({
+    tagName: 'bds-chart-bar',
+    elementClass: BdsChartBarElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartBarEvents,
+    defineCustomElement: defineBdsChartBar
+});
+
+export type BdsChartContainerEvents = NonNullable<unknown>;
+
+export const BdsChartContainer: StencilReactComponent<BdsChartContainerElement, BdsChartContainerEvents> = /*@__PURE__*/ createComponent<BdsChartContainerElement, BdsChartContainerEvents>({
+    tagName: 'bds-chart-container',
+    elementClass: BdsChartContainerElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartContainerEvents,
+    defineCustomElement: defineBdsChartContainer
+});
+
+export type BdsChartGridEvents = NonNullable<unknown>;
+
+export const BdsChartGrid: StencilReactComponent<BdsChartGridElement, BdsChartGridEvents> = /*@__PURE__*/ createComponent<BdsChartGridElement, BdsChartGridEvents>({
+    tagName: 'bds-chart-grid',
+    elementClass: BdsChartGridElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartGridEvents,
+    defineCustomElement: defineBdsChartGrid
+});
+
+export type BdsChartHeatmapEvents = NonNullable<unknown>;
+
+export const BdsChartHeatmap: StencilReactComponent<BdsChartHeatmapElement, BdsChartHeatmapEvents> = /*@__PURE__*/ createComponent<BdsChartHeatmapElement, BdsChartHeatmapEvents>({
+    tagName: 'bds-chart-heatmap',
+    elementClass: BdsChartHeatmapElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartHeatmapEvents,
+    defineCustomElement: defineBdsChartHeatmap
+});
+
+export type BdsChartLabelsEvents = NonNullable<unknown>;
+
+export const BdsChartLabels: StencilReactComponent<BdsChartLabelsElement, BdsChartLabelsEvents> = /*@__PURE__*/ createComponent<BdsChartLabelsElement, BdsChartLabelsEvents>({
+    tagName: 'bds-chart-labels',
+    elementClass: BdsChartLabelsElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartLabelsEvents,
+    defineCustomElement: defineBdsChartLabels
+});
+
+export type BdsChartLegendEvents = { onBdsLegendItemClick: EventName<CustomEvent<string>> };
+
+export const BdsChartLegend: StencilReactComponent<BdsChartLegendElement, BdsChartLegendEvents> = /*@__PURE__*/ createComponent<BdsChartLegendElement, BdsChartLegendEvents>({
+    tagName: 'bds-chart-legend',
+    elementClass: BdsChartLegendElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onBdsLegendItemClick: 'bdsLegendItemClick' } as BdsChartLegendEvents,
+    defineCustomElement: defineBdsChartLegend
+});
+
+export type BdsChartLineEvents = NonNullable<unknown>;
+
+export const BdsChartLine: StencilReactComponent<BdsChartLineElement, BdsChartLineEvents> = /*@__PURE__*/ createComponent<BdsChartLineElement, BdsChartLineEvents>({
+    tagName: 'bds-chart-line',
+    elementClass: BdsChartLineElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartLineEvents,
+    defineCustomElement: defineBdsChartLine
+});
+
+export type BdsChartPieEvents = NonNullable<unknown>;
+
+export const BdsChartPie: StencilReactComponent<BdsChartPieElement, BdsChartPieEvents> = /*@__PURE__*/ createComponent<BdsChartPieElement, BdsChartPieEvents>({
+    tagName: 'bds-chart-pie',
+    elementClass: BdsChartPieElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartPieEvents,
+    defineCustomElement: defineBdsChartPie
+});
+
+export type BdsChartTooltipEvents = NonNullable<unknown>;
+
+export const BdsChartTooltip: StencilReactComponent<BdsChartTooltipElement, BdsChartTooltipEvents> = /*@__PURE__*/ createComponent<BdsChartTooltipElement, BdsChartTooltipEvents>({
+    tagName: 'bds-chart-tooltip',
+    elementClass: BdsChartTooltipElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartTooltipEvents,
+    defineCustomElement: defineBdsChartTooltip
 });
 
 export type BdsCheckboxEvents = {
@@ -672,6 +797,17 @@ export const BdsGrid: StencilReactComponent<BdsGridElement, BdsGridEvents> = /*@
     defineCustomElement: defineBdsGrid
 });
 
+export type BdsHeatmapCellEvents = NonNullable<unknown>;
+
+export const BdsHeatmapCell: StencilReactComponent<BdsHeatmapCellElement, BdsHeatmapCellEvents> = /*@__PURE__*/ createComponent<BdsHeatmapCellElement, BdsHeatmapCellEvents>({
+    tagName: 'bds-heatmap-cell',
+    elementClass: BdsHeatmapCellElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsHeatmapCellEvents,
+    defineCustomElement: defineBdsHeatmapCell
+});
+
 export type BdsIconEvents = NonNullable<unknown>;
 
 export const BdsIcon: StencilReactComponent<BdsIconElement, BdsIconEvents> = /*@__PURE__*/ createComponent<BdsIconElement, BdsIconEvents>({
@@ -835,6 +971,17 @@ export const BdsInputPhoneNumber: StencilReactComponent<BdsInputPhoneNumberEleme
         onBdsBlur: 'bdsBlur'
     } as BdsInputPhoneNumberEvents,
     defineCustomElement: defineBdsInputPhoneNumber
+});
+
+export type BdsLineEvents = NonNullable<unknown>;
+
+export const BdsLine: StencilReactComponent<BdsLineElement, BdsLineEvents> = /*@__PURE__*/ createComponent<BdsLineElement, BdsLineEvents>({
+    tagName: 'bds-line',
+    elementClass: BdsLineElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsLineEvents,
+    defineCustomElement: defineBdsLine
 });
 
 export type BdsListEvents = {
@@ -1136,6 +1283,17 @@ export const BdsPaper: StencilReactComponent<BdsPaperElement, BdsPaperEvents> = 
     react: React,
     events: {} as BdsPaperEvents,
     defineCustomElement: defineBdsPaper
+});
+
+export type BdsPieConfigEvents = NonNullable<unknown>;
+
+export const BdsPieConfig: StencilReactComponent<BdsPieConfigElement, BdsPieConfigEvents> = /*@__PURE__*/ createComponent<BdsPieConfigElement, BdsPieConfigEvents>({
+    tagName: 'bds-pie-config',
+    elementClass: BdsPieConfigElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsPieConfigEvents,
+    defineCustomElement: defineBdsPieConfig
 });
 
 export type BdsProgressBarEvents = NonNullable<unknown>;
@@ -1554,4 +1712,26 @@ export const BdsWarning: StencilReactComponent<BdsWarningElement, BdsWarningEven
     react: React,
     events: {} as BdsWarningEvents,
     defineCustomElement: defineBdsWarning
+});
+
+export type BdsXAxisEvents = NonNullable<unknown>;
+
+export const BdsXAxis: StencilReactComponent<BdsXAxisElement, BdsXAxisEvents> = /*@__PURE__*/ createComponent<BdsXAxisElement, BdsXAxisEvents>({
+    tagName: 'bds-x-axis',
+    elementClass: BdsXAxisElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsXAxisEvents,
+    defineCustomElement: defineBdsXAxis
+});
+
+export type BdsYAxisEvents = NonNullable<unknown>;
+
+export const BdsYAxis: StencilReactComponent<BdsYAxisElement, BdsYAxisEvents> = /*@__PURE__*/ createComponent<BdsYAxisElement, BdsYAxisEvents>({
+    tagName: 'bds-y-axis',
+    elementClass: BdsYAxisElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsYAxisEvents,
+    defineCustomElement: defineBdsYAxis
 });
