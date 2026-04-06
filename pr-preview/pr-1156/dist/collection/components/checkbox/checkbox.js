@@ -23,6 +23,7 @@ export class Checkbox {
         this.dataTest = null;
         this.onClick = (ev) => {
             ev.stopPropagation();
+            // When clicking from indeterminate state, set to checked
             if (this.indeterminate) {
                 this.indeterminate = false;
                 this.checked = true;
@@ -73,6 +74,7 @@ export class Checkbox {
         return Promise.resolve(this.nativeInput.checked);
     }
     async toggle() {
+        // When toggling from indeterminate, always set to checked
         if (this.indeterminate) {
             this.indeterminate = false;
             this.checked = true;
@@ -90,6 +92,7 @@ export class Checkbox {
             return;
         }
         if (event.key === 'Enter') {
+            // When pressing Enter from indeterminate state, set to checked
             if (this.indeterminate) {
                 this.indeterminate = false;
                 this.checked = true;
@@ -105,10 +108,10 @@ export class Checkbox {
     }
     render() {
         const styleState = this.getStyleState();
-        return (h("div", { key: '9a2098ff461b358fd909876efdf31f2de3983611', class: {
+        return (h("div", { key: '226c83b0c6d549595a5586330ded82ef17937ecb', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, h("input", { key: '46a9775a2f2164662034065de899a3bddaa4ecfe', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'f45bcfdfd3e1272ea78e9bb461b4133b0602762c', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: '7e3875c7a6e9092363be1d28170fb753d19e4eb7', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: 'fc8f8ba3bc7fde7bed9dff910afddfc2fc6aba3e', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: '38ae7f8fb6460f329a7811d71f6cf3d722471c3e', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, h("input", { key: '49ee1c9118e8fa4fa921d24416d87e43619dcac9', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: '00a0b25fac0e91a1b14098ab41bcc931a7dee128', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: '13c903a3636cfcfaaa7bb88eafd5dd1e74a1e7b6', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: 'b48463bedb1fcdc15bb93f49ecc180aa0147ba4d', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: '8ccca67425ccd8de11a566fde9782cea81da0487', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
     static get is() { return "bds-checkbox"; }
     static get encapsulation() { return "shadow"; }

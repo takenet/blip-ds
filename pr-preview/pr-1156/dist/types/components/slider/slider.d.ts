@@ -7,6 +7,7 @@ export declare class Slider {
     stepArray?: StepOption[];
     internalOptions?: StepOption[];
     inputValue?: string;
+    tooltipPosition: 'top-center' | 'top-left' | 'top-right';
     /**
      * Step, property to insert steps into the input range.
      */
@@ -46,7 +47,7 @@ export declare class Slider {
     /**
      * bdsChange. Event to return selected date value.
      */
-    bdsChange?: EventEmitter<StepOption>;
+    bdsChange?: EventEmitter;
     componentWillLoad(): void;
     componentDidLoad(): void;
     componentDidRender(): void;
@@ -55,6 +56,8 @@ export declare class Slider {
     private refBdsTooltip;
     private refProgressBar;
     private valuePercent;
+    private computeTooltipPosition;
+    private getTooltipText;
     private onInputSlide;
     private onInputMouseEnter;
     private onInputMouseLeave;

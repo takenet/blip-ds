@@ -509,7 +509,7 @@
 <header>
   <div class="wrap">
     <h1>Components Manifest</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">69/69 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">69/69 infos</a><span class="filter-pill ok" aria-disabled="true">276 stories ok</span></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">69/69 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">69/69 infos</a><span class="filter-pill ok" aria-disabled="true">278 stories ok</span></div>
   </div>
 </header>
 <main>
@@ -614,7 +614,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: &#39;inherit&#39; },
     },
-    description: &#39;Defina a cor do ícone no cabeçalho do accordion.&#39;,
+    description: &#39;Defina a cor do ícone que será utilizado no botão (Apenas outline).&#39;,
     control: &#39;text&#39;,
   },
   avatarName: {
@@ -652,7 +652,7 @@ Properties.args = {
   avatarName: &#39;&#39;,
   avatarThumb: &#39;&#39;,
   icon: &#39;&#39;,
-  iconColor: &#39;inherit&#39;,
+  iconColor: &#39;&#39;,
   startOpen: false,
   divisor: true,
 };
@@ -687,6 +687,7 @@ export const Methods = () =&gt; {
         &lt;bds-accordion-header
           accordion-title=&quot;Título do accordion&quot;
           icon=&quot;&quot;
+          icon-color=&quot;&quot;
           avatar-name=&quot;&quot;
           avatar-thumb=&quot;&quot;
         &gt;&lt;/bds-accordion-header&gt;
@@ -715,7 +716,7 @@ export const Events = () =&gt; {
   });
   return (
     &lt;bds-accordion id=&quot;accEvent&quot;&gt;
-      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot;&gt;&lt;/bds-accordion-header&gt;
+      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot; icon=&quot;info&quot; icon-color=&quot;green&quot; &gt;&lt;/bds-accordion-header&gt;
       &lt;bds-accordion-body&gt;
         &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
       &lt;/bds-accordion-body&gt;
@@ -726,7 +727,7 @@ export const Events = () =&gt; {
 export const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordion&gt;
-      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
       &lt;BdsAccordionBody&gt;
         &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
       &lt;/BdsAccordionBody&gt;
@@ -771,7 +772,7 @@ export const FrameworkReact = () =&gt; {
             &lt;bds-accordion-header
                 accordion-title=&quot;Título do accordion&quot;
                 icon=&quot;&quot;
-                icon-color=&quot;inherit&quot;
+                icon-color=&quot;&quot;
                 avatar-name=&quot;&quot;
                 avatar-thumb=&quot;&quot; /&gt;
             &lt;bds-accordion-body&gt;
@@ -818,6 +819,7 @@ export const FrameworkReact = () =&gt; {
         &lt;bds-accordion-header
           accordion-title=&quot;Título do accordion&quot;
           icon=&quot;&quot;
+          icon-color=&quot;&quot;
           avatar-name=&quot;&quot;
           avatar-thumb=&quot;&quot;
         &gt;&lt;/bds-accordion-header&gt;
@@ -853,7 +855,7 @@ export const FrameworkReact = () =&gt; {
   });
   return (
     &lt;bds-accordion id=&quot;accEvent&quot;&gt;
-      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot;&gt;&lt;/bds-accordion-header&gt;
+      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot; icon=&quot;info&quot; icon-color=&quot;green&quot; &gt;&lt;/bds-accordion-header&gt;
       &lt;bds-accordion-body&gt;
         &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
       &lt;/bds-accordion-body&gt;
@@ -871,7 +873,7 @@ export const FrameworkReact = () =&gt; {
               <pre><code>const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordion&gt;
-      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
       &lt;BdsAccordionBody&gt;
         &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
       &lt;/BdsAccordionBody&gt;
@@ -956,6 +958,8 @@ export const Properties = (args) =&gt; {
       &lt;bds-accordion start-open={args.startOpen}&gt;
         &lt;bds-accordion-header
           accordion-title=&quot;Titulo do accordion&quot;
+          icon={args.icon}
+          icon-color={args.iconColor}
         &gt;&lt;/bds-accordion-header&gt;
         &lt;bds-accordion-body&gt;
           &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
@@ -964,6 +968,8 @@ export const Properties = (args) =&gt; {
       &lt;bds-accordion start-open={args.startOpen}&gt;
         &lt;bds-accordion-header
           accordion-title=&quot;Titulo do accordion&quot;
+          icon={args.icon}
+          icon-color={args.iconColor}
         &gt;&lt;/bds-accordion-header&gt;
         &lt;bds-accordion-body&gt;
           &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
@@ -988,11 +994,21 @@ Properties.argTypes = {
     description: &#39;Escolha se o accordion terá um linha dividindo os accordions.&#39;,
     control: &#39;boolean&#39;,
   },
+  icon: {
+    description: &#39;Escolha o ícone do header do accordion.&#39;,
+    control: &#39;text&#39;,
+  },
+  iconColor: {
+    description: &#39;Escolha a cor do ícone do header do accordion.&#39;,
+    control: &#39;text&#39;,
+  },
 };
 
 Properties.args = {
   collapse: &#39;single&#39;,
   divisor: true,
+  icon: &#39;&#39;,
+  iconColor: &#39;&#39;,
 };
 
 export const Methods = () =&gt; {
@@ -1019,7 +1035,7 @@ export const Methods = () =&gt; {
         &lt;/bds-grid&gt;
         &lt;bds-accordion-group id=&quot;gp&quot; collapse=&quot;multiple&quot;&gt;
           &lt;bds-accordion id=&quot;primeiro-accordion&quot;&gt;
-            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
             &lt;bds-accordion-body&gt;
               &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
             &lt;/bds-accordion-body&gt;
@@ -1054,7 +1070,7 @@ export const Events = () =&gt; {
       &lt;/bds-button&gt;
       &lt;bds-accordion-group id=&quot;accGroupEvent&quot; collapse=&quot;multiple&quot;&gt;
         &lt;bds-accordion&gt;
-          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
           &lt;bds-accordion-body&gt;
             &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
           &lt;/bds-accordion-body&gt;
@@ -1074,7 +1090,7 @@ export const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordionGroup collapse=&quot;multiple&quot;&gt;
       &lt;BdsAccordion&gt;
-        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
         &lt;BdsAccordionBody&gt;
           &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
         &lt;/BdsAccordionBody&gt;
@@ -1130,13 +1146,13 @@ export const FrameworkReact = () =&gt; {
     return (
         &lt;bds-accordion-group collapse=&quot;single&quot; divisor&gt;
             &lt;bds-accordion start-open={args.startOpen}&gt;
-                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; /&gt;
+                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; icon=&quot;&quot; icon-color=&quot;&quot; /&gt;
                 &lt;bds-accordion-body&gt;
                     &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
                 &lt;/bds-accordion-body&gt;
             &lt;/bds-accordion&gt;
             &lt;bds-accordion start-open={args.startOpen}&gt;
-                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; /&gt;
+                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; icon=&quot;&quot; icon-color=&quot;&quot; /&gt;
                 &lt;bds-accordion-body&gt;
                     &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
                 &lt;/bds-accordion-body&gt;
@@ -1176,7 +1192,7 @@ export const FrameworkReact = () =&gt; {
         &lt;/bds-grid&gt;
         &lt;bds-accordion-group id=&quot;gp&quot; collapse=&quot;multiple&quot;&gt;
           &lt;bds-accordion id=&quot;primeiro-accordion&quot;&gt;
-            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
             &lt;bds-accordion-body&gt;
               &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
             &lt;/bds-accordion-body&gt;
@@ -1218,7 +1234,7 @@ export const FrameworkReact = () =&gt; {
       &lt;/bds-button&gt;
       &lt;bds-accordion-group id=&quot;accGroupEvent&quot; collapse=&quot;multiple&quot;&gt;
         &lt;bds-accordion&gt;
-          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
           &lt;bds-accordion-body&gt;
             &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
           &lt;/bds-accordion-body&gt;
@@ -1245,7 +1261,7 @@ export const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordionGroup collapse=&quot;multiple&quot;&gt;
       &lt;BdsAccordion&gt;
-        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
         &lt;BdsAccordionBody&gt;
           &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
         &lt;/BdsAccordionBody&gt;
@@ -10492,6 +10508,7 @@ export const IndeterminateExample = () =&gt; {
       childCheckboxes.forEach((cb) =&gt; {
         cb.checked = isChecked;
       });
+      console.log(&#39;Parent changed:&#39;, e.detail);
     };
 
     const childHandler = () =&gt; {
@@ -10503,6 +10520,7 @@ export const IndeterminateExample = () =&gt; {
       cb.addEventListener(&#39;bdsChange&#39;, childHandler);
     });
 
+    // Cleanup function
     return () =&gt; {
       parentCheckbox.removeEventListener(&#39;bdsChange&#39;, parentHandler);
       childCheckboxes.forEach((cb) =&gt; {
@@ -10544,7 +10562,8 @@ export const Events = () =&gt; {
 
 export const FrameworkReact = () =&gt; {
   return &lt;BdsCheckbox id=&quot;check1&quot; label=&quot;Selected&quot; checked&gt;&lt;/BdsCheckbox&gt;;
-};</code></pre></div>
+};
+</code></pre></div>
     </div>
         </div>
     
@@ -10673,6 +10692,7 @@ export const FrameworkReact = () =&gt; {
       childCheckboxes.forEach((cb) =&gt; {
         cb.checked = isChecked;
       });
+      console.log(&#39;Parent changed:&#39;, e.detail);
     };
 
     const childHandler = () =&gt; {
@@ -10684,6 +10704,7 @@ export const FrameworkReact = () =&gt; {
       cb.addEventListener(&#39;bdsChange&#39;, childHandler);
     });
 
+    // Cleanup function
     return () =&gt; {
       parentCheckbox.removeEventListener(&#39;bdsChange&#39;, parentHandler);
       childCheckboxes.forEach((cb) =&gt; {
@@ -14328,7 +14349,7 @@ export const examplePageGrid = () =&gt; (
       <div class="badges">
         <label for="c-29-components-icon-err" class="badge err as-toggle">prop type error</label>
         <label for="c-29-components-icon-info" class="badge info as-toggle">1 info</label>
-        <label for="c-29-components-icon-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-29-components-icon-stories" class="badge ok as-toggle">7 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/icon/icon.stories.jsx">components-icon · ./src/components/icon/icon.stories.jsx</div>
@@ -14497,12 +14518,19 @@ const iconWrapperStyles = {
 };
 
 export const Properties = (args) =&gt; {
-  return &lt;bds-icon theme=&quot;outline&quot; size={args.size} name={args.name}&gt;&lt;/bds-icon&gt;;
+  // Filter out undefined, null, and empty string values to prevent them from being passed as props,
+  // which avoids rendering unwanted or invalid attributes on the component.
+  const iconProps = Object.fromEntries(
+    Object.entries(args).filter(([, value]) =&gt; value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &#39;&#39;),
+  );
+  return &lt;bds-icon {...iconProps}&gt;&lt;/bds-icon&gt;;
 };
 
 Properties.args = {
   size: &#39;medium&#39;,
   name: &#39;info&#39;,
+  theme: &#39;outline&#39;,
+  color: &#39;&#39;,
 };
 
 Properties.argTypes = {
@@ -14525,10 +14553,30 @@ Properties.argTypes = {
     ],
     control: &#39;select&#39;,
   },
+  theme: {
+    table: {
+      defaultValue: { summary: &#39;outline&#39; },
+    },
+    options: [&#39;outline&#39;, &#39;solid&#39;],
+    control: &#39;select&#39;,
+  },
+  color: {
+    table: {
+      defaultValue: { summary: &#39;&#39; },
+    },
+    control: &#39;text&#39;,
+  },
   name: {
     table: {
-      defaultValue: { summary: &#39;vazio&#39; },
+      defaultValue: { summary: &#39;info&#39; },
     },
+    control: &#39;text&#39;,
+  },
+  type: {
+    table: {
+      defaultValue: { summary: &#39;icon&#39; },
+    },
+    description: &#39;Define o tipo do ícone como emoji ou logo. (opcional)&#39;,
     control: &#39;text&#39;,
   },
 };
@@ -14688,6 +14736,264 @@ export const AllLogos = () =&gt; {
     &lt;/bds-grid&gt;
   );
 };
+
+export const SolidIconCustomization = () =&gt; {
+  const [layer0Color, setLayer0Color] = useState(&#39;#333333&#39;);
+
+  const folderPreviewStyle = {
+    fontSize: &#39;4rem&#39;,
+    &#39;--icon-layer-0&#39;: layer0Color,
+    display: &#39;flex&#39;,
+    alignItems: &#39;center&#39;,
+    justifyContent: &#39;center&#39;,
+    minHeight: &#39;120px&#39;,
+    border: &#39;1px solid #e0e0e0&#39;,
+    borderRadius: &#39;4px&#39;,
+    padding: &#39;1rem&#39;,
+  };
+
+  const colorInputStyle = {
+    height: &#39;60px&#39;,
+    width: &#39;100%&#39;,
+    cursor: &#39;pointer&#39;,
+  };
+
+  const codeBlockStyle = {
+    background: &#39;#f5f5f5&#39;,
+    padding: &#39;8px&#39;,
+    display: &#39;block&#39;,
+    marginTop: &#39;8px&#39;,
+    borderRadius: &#39;4px&#39;,
+    fontFamily: &#39;monospace&#39;,
+    fontSize: &#39;12px&#39;,
+  };
+
+  return (
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Solid Icon Customization with CSS Variables
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          Multi-color solid icons can be customized using CSS custom properties. Each layer is assigned a variable{&#39; &#39;}
+          &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;2px 6px&#39; }}&gt; --icon-layer-N&lt;/code&gt; where N is the layer index.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Default Folder Icon
+          &lt;/bds-typo&gt;
+          &lt;div style={{ fontSize: &#39;3rem&#39; }}&gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Customized Colors (Gold &amp; Orange)
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;3rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+          &lt;bds-typo variant=&quot;fs-10&quot; color=&quot;on-surface-variant&quot;&gt;
+            &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;4px 8px&#39;, borderRadius: &#39;4px&#39; }}&gt;
+              --icon-layer-0: #FFD700
+            &lt;/code&gt;
+          &lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Color Variations
+        &lt;/bds-typo&gt;
+        &lt;bds-grid gap=&quot;2&quot;&gt;
+          &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#9370DB&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Purple &amp; Pink&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#228B22&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Green &amp; Lime&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#FF6B6B&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Red &amp; Light Red&lt;/bds-typo&gt;
+            &lt;/div&gt;
+          &lt;/bds-grid&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Interactive Color Customization
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          Adjust the colors below to customize each layer of the icon in real-time.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Layer 0 (Back)
+          &lt;/bds-typo&gt;
+          &lt;input
+            type=&quot;color&quot;
+            value={layer0Color}
+            onChange={(e) =&gt; setLayer0Color(e.target.value)}
+            style={colorInputStyle}
+          /&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot;&gt;{layer0Color}&lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Preview
+        &lt;/bds-typo&gt;
+        &lt;div style={folderPreviewStyle}&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/div&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-card&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          &lt;strong&gt;CSS Applied:&lt;/strong&gt;
+          &lt;br /&gt;
+          &lt;code style={codeBlockStyle}&gt;--icon-layer-0: {layer0Color};&lt;/code&gt;
+        &lt;/bds-typo&gt;
+      &lt;/bds-card&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Backward Compatibility
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          This feature is 100% backward compatible. All existing icon usage patterns continue to work exactly as before.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon with Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Original behavior preserved
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon Inherits Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon color=&quot;#FF6B6B&quot; name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Single-Color Solid
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Multi-Color Solid (NEW)
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            CSS variable customizable
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;2rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+  );
+};
+
+SolidIconCustomization.parameters = {
+  docs: {
+    description: {
+      story:
+        &#39;Learn how to customize multi-color solid icons using CSS custom properties. This feature allows you to override individual layers of an icon while maintaining backward compatibility.&#39;,
+    },
+  },
+};
 </code></pre></div>
     </div>
         </div>
@@ -14720,8 +15026,13 @@ export const AllLogos = () =&gt; {
               </div>
               
               
-              <pre><code>const Properties = () =&gt; {
-    return &lt;bds-icon theme=&quot;outline&quot; size=&quot;medium&quot; name=&quot;info&quot; /&gt;;
+              <pre><code>const Properties = (args) =&gt; {
+  // Filter out undefined, null, and empty string values to prevent them from being passed as props,
+  // which avoids rendering unwanted or invalid attributes on the component.
+  const iconProps = Object.fromEntries(
+    Object.entries(args).filter(([, value]) =&gt; value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &#39;&#39;),
+  );
+  return &lt;bds-icon {...iconProps}&gt;&lt;/bds-icon&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -14915,6 +15226,262 @@ export const AllLogos = () =&gt; {
   );
 };</code></pre>
             </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">SolidIconCustomization</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SolidIconCustomization = () =&gt; {
+  const [layer0Color, setLayer0Color] = useState(&#39;#333333&#39;);
+
+  const folderPreviewStyle = {
+    fontSize: &#39;4rem&#39;,
+    &#39;--icon-layer-0&#39;: layer0Color,
+    display: &#39;flex&#39;,
+    alignItems: &#39;center&#39;,
+    justifyContent: &#39;center&#39;,
+    minHeight: &#39;120px&#39;,
+    border: &#39;1px solid #e0e0e0&#39;,
+    borderRadius: &#39;4px&#39;,
+    padding: &#39;1rem&#39;,
+  };
+
+  const colorInputStyle = {
+    height: &#39;60px&#39;,
+    width: &#39;100%&#39;,
+    cursor: &#39;pointer&#39;,
+  };
+
+  const codeBlockStyle = {
+    background: &#39;#f5f5f5&#39;,
+    padding: &#39;8px&#39;,
+    display: &#39;block&#39;,
+    marginTop: &#39;8px&#39;,
+    borderRadius: &#39;4px&#39;,
+    fontFamily: &#39;monospace&#39;,
+    fontSize: &#39;12px&#39;,
+  };
+
+  return (
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Solid Icon Customization with CSS Variables
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          Multi-color solid icons can be customized using CSS custom properties. Each layer is assigned a variable{&#39; &#39;}
+          &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;2px 6px&#39; }}&gt; --icon-layer-N&lt;/code&gt; where N is the layer index.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Default Folder Icon
+          &lt;/bds-typo&gt;
+          &lt;div style={{ fontSize: &#39;3rem&#39; }}&gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Customized Colors (Gold &amp; Orange)
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;3rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+          &lt;bds-typo variant=&quot;fs-10&quot; color=&quot;on-surface-variant&quot;&gt;
+            &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;4px 8px&#39;, borderRadius: &#39;4px&#39; }}&gt;
+              --icon-layer-0: #FFD700
+            &lt;/code&gt;
+          &lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Color Variations
+        &lt;/bds-typo&gt;
+        &lt;bds-grid gap=&quot;2&quot;&gt;
+          &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#9370DB&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Purple &amp; Pink&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#228B22&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Green &amp; Lime&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#FF6B6B&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Red &amp; Light Red&lt;/bds-typo&gt;
+            &lt;/div&gt;
+          &lt;/bds-grid&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Interactive Color Customization
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          Adjust the colors below to customize each layer of the icon in real-time.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Layer 0 (Back)
+          &lt;/bds-typo&gt;
+          &lt;input
+            type=&quot;color&quot;
+            value={layer0Color}
+            onChange={(e) =&gt; setLayer0Color(e.target.value)}
+            style={colorInputStyle}
+          /&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot;&gt;{layer0Color}&lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Preview
+        &lt;/bds-typo&gt;
+        &lt;div style={folderPreviewStyle}&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/div&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-card&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          &lt;strong&gt;CSS Applied:&lt;/strong&gt;
+          &lt;br /&gt;
+          &lt;code style={codeBlockStyle}&gt;--icon-layer-0: {layer0Color};&lt;/code&gt;
+        &lt;/bds-typo&gt;
+      &lt;/bds-card&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Backward Compatibility
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          This feature is 100% backward compatible. All existing icon usage patterns continue to work exactly as before.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon with Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Original behavior preserved
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon Inherits Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon color=&quot;#FF6B6B&quot; name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Single-Color Solid
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Multi-Color Solid (NEW)
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            CSS variable customizable
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;2rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+  );
+};</code></pre>
+            </div>
         </div>
   </div>
 </article>
@@ -14924,10 +15491,10 @@ export const AllLogos = () =&gt; {
   has-info 
   no-story-error"
   role="listitem"
-  aria-label="illustration">
+  aria-label="Illustration">
   <div class="head">
     <div class="title">
-      <h2><span class="status-dot dot-err"></span> illustration</h2>
+      <h2><span class="status-dot dot-err"></span> Illustration</h2>
       <div class="badges">
         <label for="c-30-components-illustration-err" class="badge err as-toggle">prop type error</label>
         <label for="c-30-components-illustration-info" class="badge info as-toggle">1 info</label>
@@ -14957,7 +15524,7 @@ export const AllLogos = () =&gt; {
   4 |
 &gt; 5 | export default {
     | ^
-  6 |   title: &#39;Components/illustration&#39;,
+  6 |   title: &#39;Components/Illustration&#39;,
   7 |   parameters: {
   8 |     docs: {
 
@@ -14967,7 +15534,7 @@ import { BdsIllustration } from &#39;../../../blip-ds-react/dist/components&#39;
 import DocumentationTemplate from &#39;./illustration.mdx&#39;;
 
 export default {
-  title: &#39;Components/illustration&#39;,
+  title: &#39;Components/Illustration&#39;,
   parameters: {
     docs: {
       page: DocumentationTemplate,
@@ -25029,7 +25596,7 @@ export const FrameworkReact = () =&gt; {
       <div class="badges">
         <label for="c-58-components-slider-err" class="badge err as-toggle">prop type error</label>
         <label for="c-58-components-slider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-58-components-slider-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-58-components-slider-stories" class="badge ok as-toggle">4 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/slider/slider.stories.jsx">components-slider · ./src/components/slider/slider.stories.jsx</div>
@@ -25160,6 +25727,16 @@ Properties.argTypes = {
   },
 };
 
+export const WithCustomTooltip = () =&gt; (
+  &lt;bds-grid padding=&quot;t-6&quot; xxs={12}&gt;
+    &lt;bds-slider
+      markers
+      label
+      data-markers=&#39;[{&quot;value&quot;: 0, &quot;name&quot;: &quot;standard&quot;, &quot;tooltip&quot;: &quot;Plano básico com recursos limitados&quot;}, {&quot;value&quot;: 1, &quot;name&quot;: &quot;plus&quot;}, {&quot;value&quot;: 2, &quot;name&quot;: &quot;gold&quot;, &quot;tooltip&quot;: &quot;Melhor custo-benefício&quot;}, {&quot;value&quot;: 3, &quot;name&quot;: &quot;platinum&quot;, &quot;tooltip&quot;: &quot;Plano completo premium&quot;}]&#39;
+    &gt;&lt;/bds-slider&gt;
+  &lt;/bds-grid&gt;
+);
+
 export const Events = () =&gt; {
   useEffect(() =&gt; {
     const slider = document.getElementById(&#39;slider&#39;);
@@ -25231,6 +25808,23 @@ export const FrameworkReact = () =&gt; (
         &lt;/bds-grid&gt;
     );
 };</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">WithCustomTooltip</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithCustomTooltip = () =&gt; (
+  &lt;bds-grid padding=&quot;t-6&quot; xxs={12}&gt;
+    &lt;bds-slider
+      markers
+      label
+      data-markers=&#39;[{&quot;value&quot;: 0, &quot;name&quot;: &quot;standard&quot;, &quot;tooltip&quot;: &quot;Plano básico com recursos limitados&quot;}, {&quot;value&quot;: 1, &quot;name&quot;: &quot;plus&quot;}, {&quot;value&quot;: 2, &quot;name&quot;: &quot;gold&quot;, &quot;tooltip&quot;: &quot;Melhor custo-benefício&quot;}, {&quot;value&quot;: 3, &quot;name&quot;: &quot;platinum&quot;, &quot;tooltip&quot;: &quot;Plano completo premium&quot;}]&#39;
+    &gt;&lt;/bds-slider&gt;
+  &lt;/bds-grid&gt;
+);</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
@@ -30377,7 +30971,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: &#39;inherit&#39; },
     },
-    description: &#39;Defina a cor do ícone no cabeçalho do accordion.&#39;,
+    description: &#39;Defina a cor do ícone que será utilizado no botão (Apenas outline).&#39;,
     control: &#39;text&#39;,
   },
   avatarName: {
@@ -30415,7 +31009,7 @@ Properties.args = {
   avatarName: &#39;&#39;,
   avatarThumb: &#39;&#39;,
   icon: &#39;&#39;,
-  iconColor: &#39;inherit&#39;,
+  iconColor: &#39;&#39;,
   startOpen: false,
   divisor: true,
 };
@@ -30450,6 +31044,7 @@ export const Methods = () =&gt; {
         &lt;bds-accordion-header
           accordion-title=&quot;Título do accordion&quot;
           icon=&quot;&quot;
+          icon-color=&quot;&quot;
           avatar-name=&quot;&quot;
           avatar-thumb=&quot;&quot;
         &gt;&lt;/bds-accordion-header&gt;
@@ -30478,7 +31073,7 @@ export const Events = () =&gt; {
   });
   return (
     &lt;bds-accordion id=&quot;accEvent&quot;&gt;
-      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot;&gt;&lt;/bds-accordion-header&gt;
+      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot; icon=&quot;info&quot; icon-color=&quot;green&quot; &gt;&lt;/bds-accordion-header&gt;
       &lt;bds-accordion-body&gt;
         &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
       &lt;/bds-accordion-body&gt;
@@ -30489,7 +31084,7 @@ export const Events = () =&gt; {
 export const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordion&gt;
-      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
       &lt;BdsAccordionBody&gt;
         &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
       &lt;/BdsAccordionBody&gt;
@@ -30534,7 +31129,7 @@ export const FrameworkReact = () =&gt; {
             &lt;bds-accordion-header
                 accordion-title=&quot;Título do accordion&quot;
                 icon=&quot;&quot;
-                icon-color=&quot;inherit&quot;
+                icon-color=&quot;&quot;
                 avatar-name=&quot;&quot;
                 avatar-thumb=&quot;&quot; /&gt;
             &lt;bds-accordion-body&gt;
@@ -30581,6 +31176,7 @@ export const FrameworkReact = () =&gt; {
         &lt;bds-accordion-header
           accordion-title=&quot;Título do accordion&quot;
           icon=&quot;&quot;
+          icon-color=&quot;&quot;
           avatar-name=&quot;&quot;
           avatar-thumb=&quot;&quot;
         &gt;&lt;/bds-accordion-header&gt;
@@ -30616,7 +31212,7 @@ export const FrameworkReact = () =&gt; {
   });
   return (
     &lt;bds-accordion id=&quot;accEvent&quot;&gt;
-      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot;&gt;&lt;/bds-accordion-header&gt;
+      &lt;bds-accordion-header accordion-title=&quot;Título do accordion (Veja o resultado do evento na aba Actions)&quot; icon=&quot;info&quot; icon-color=&quot;green&quot; &gt;&lt;/bds-accordion-header&gt;
       &lt;bds-accordion-body&gt;
         &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
       &lt;/bds-accordion-body&gt;
@@ -30634,7 +31230,7 @@ export const FrameworkReact = () =&gt; {
               <pre><code>const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordion&gt;
-      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+      &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
       &lt;BdsAccordionBody&gt;
         &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
       &lt;/BdsAccordionBody&gt;
@@ -30719,6 +31315,8 @@ export const Properties = (args) =&gt; {
       &lt;bds-accordion start-open={args.startOpen}&gt;
         &lt;bds-accordion-header
           accordion-title=&quot;Titulo do accordion&quot;
+          icon={args.icon}
+          icon-color={args.iconColor}
         &gt;&lt;/bds-accordion-header&gt;
         &lt;bds-accordion-body&gt;
           &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
@@ -30727,6 +31325,8 @@ export const Properties = (args) =&gt; {
       &lt;bds-accordion start-open={args.startOpen}&gt;
         &lt;bds-accordion-header
           accordion-title=&quot;Titulo do accordion&quot;
+          icon={args.icon}
+          icon-color={args.iconColor}
         &gt;&lt;/bds-accordion-header&gt;
         &lt;bds-accordion-body&gt;
           &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
@@ -30751,11 +31351,21 @@ Properties.argTypes = {
     description: &#39;Escolha se o accordion terá um linha dividindo os accordions.&#39;,
     control: &#39;boolean&#39;,
   },
+  icon: {
+    description: &#39;Escolha o ícone do header do accordion.&#39;,
+    control: &#39;text&#39;,
+  },
+  iconColor: {
+    description: &#39;Escolha a cor do ícone do header do accordion.&#39;,
+    control: &#39;text&#39;,
+  },
 };
 
 Properties.args = {
   collapse: &#39;single&#39;,
   divisor: true,
+  icon: &#39;&#39;,
+  iconColor: &#39;&#39;,
 };
 
 export const Methods = () =&gt; {
@@ -30782,7 +31392,7 @@ export const Methods = () =&gt; {
         &lt;/bds-grid&gt;
         &lt;bds-accordion-group id=&quot;gp&quot; collapse=&quot;multiple&quot;&gt;
           &lt;bds-accordion id=&quot;primeiro-accordion&quot;&gt;
-            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
             &lt;bds-accordion-body&gt;
               &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
             &lt;/bds-accordion-body&gt;
@@ -30817,7 +31427,7 @@ export const Events = () =&gt; {
       &lt;/bds-button&gt;
       &lt;bds-accordion-group id=&quot;accGroupEvent&quot; collapse=&quot;multiple&quot;&gt;
         &lt;bds-accordion&gt;
-          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
           &lt;bds-accordion-body&gt;
             &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
           &lt;/bds-accordion-body&gt;
@@ -30837,7 +31447,7 @@ export const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordionGroup collapse=&quot;multiple&quot;&gt;
       &lt;BdsAccordion&gt;
-        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
         &lt;BdsAccordionBody&gt;
           &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
         &lt;/BdsAccordionBody&gt;
@@ -30893,13 +31503,13 @@ export const FrameworkReact = () =&gt; {
     return (
         &lt;bds-accordion-group collapse=&quot;single&quot; divisor&gt;
             &lt;bds-accordion start-open={args.startOpen}&gt;
-                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; /&gt;
+                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; icon=&quot;&quot; icon-color=&quot;&quot; /&gt;
                 &lt;bds-accordion-body&gt;
                     &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
                 &lt;/bds-accordion-body&gt;
             &lt;/bds-accordion&gt;
             &lt;bds-accordion start-open={args.startOpen}&gt;
-                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; /&gt;
+                &lt;bds-accordion-header accordion-title=&quot;Titulo do accordion&quot; icon=&quot;&quot; icon-color=&quot;&quot; /&gt;
                 &lt;bds-accordion-body&gt;
                     &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
                 &lt;/bds-accordion-body&gt;
@@ -30939,7 +31549,7 @@ export const FrameworkReact = () =&gt; {
         &lt;/bds-grid&gt;
         &lt;bds-accordion-group id=&quot;gp&quot; collapse=&quot;multiple&quot;&gt;
           &lt;bds-accordion id=&quot;primeiro-accordion&quot;&gt;
-            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+            &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
             &lt;bds-accordion-body&gt;
               &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
             &lt;/bds-accordion-body&gt;
@@ -30981,7 +31591,7 @@ export const FrameworkReact = () =&gt; {
       &lt;/bds-button&gt;
       &lt;bds-accordion-group id=&quot;accGroupEvent&quot; collapse=&quot;multiple&quot;&gt;
         &lt;bds-accordion&gt;
-          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot;&gt;&lt;/bds-accordion-header&gt;
+          &lt;bds-accordion-header accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/bds-accordion-header&gt;
           &lt;bds-accordion-body&gt;
             &lt;bds-typo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/bds-typo&gt;
           &lt;/bds-accordion-body&gt;
@@ -31008,7 +31618,7 @@ export const FrameworkReact = () =&gt; {
   return (
     &lt;BdsAccordionGroup collapse=&quot;multiple&quot;&gt;
       &lt;BdsAccordion&gt;
-        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot;&gt;&lt;/BdsAccordionHeader&gt;
+        &lt;BdsAccordionHeader accordion-title=&quot;Título do accordion&quot; icon=&quot;info&quot; icon-color=&quot;green&quot;&gt;&lt;/BdsAccordionHeader&gt;
         &lt;BdsAccordionBody&gt;
           &lt;BdsTypo variant=&quot;fs-16&quot;&gt;{paragraph}&lt;/BdsTypo&gt;
         &lt;/BdsAccordionBody&gt;
@@ -40255,6 +40865,7 @@ export const IndeterminateExample = () =&gt; {
       childCheckboxes.forEach((cb) =&gt; {
         cb.checked = isChecked;
       });
+      console.log(&#39;Parent changed:&#39;, e.detail);
     };
 
     const childHandler = () =&gt; {
@@ -40266,6 +40877,7 @@ export const IndeterminateExample = () =&gt; {
       cb.addEventListener(&#39;bdsChange&#39;, childHandler);
     });
 
+    // Cleanup function
     return () =&gt; {
       parentCheckbox.removeEventListener(&#39;bdsChange&#39;, parentHandler);
       childCheckboxes.forEach((cb) =&gt; {
@@ -40307,7 +40919,8 @@ export const Events = () =&gt; {
 
 export const FrameworkReact = () =&gt; {
   return &lt;BdsCheckbox id=&quot;check1&quot; label=&quot;Selected&quot; checked&gt;&lt;/BdsCheckbox&gt;;
-};</code></pre></div>
+};
+</code></pre></div>
     </div>
         </div>
     
@@ -40436,6 +41049,7 @@ export const FrameworkReact = () =&gt; {
       childCheckboxes.forEach((cb) =&gt; {
         cb.checked = isChecked;
       });
+      console.log(&#39;Parent changed:&#39;, e.detail);
     };
 
     const childHandler = () =&gt; {
@@ -40447,6 +41061,7 @@ export const FrameworkReact = () =&gt; {
       cb.addEventListener(&#39;bdsChange&#39;, childHandler);
     });
 
+    // Cleanup function
     return () =&gt; {
       parentCheckbox.removeEventListener(&#39;bdsChange&#39;, parentHandler);
       childCheckboxes.forEach((cb) =&gt; {
@@ -44091,7 +44706,7 @@ export const examplePageGrid = () =&gt; (
       <div class="badges">
         <label for="c-error-29-components-icon-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-29-components-icon-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-29-components-icon-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-29-components-icon-stories" class="badge ok as-toggle">7 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/icon/icon.stories.jsx">components-icon · ./src/components/icon/icon.stories.jsx</div>
@@ -44260,12 +44875,19 @@ const iconWrapperStyles = {
 };
 
 export const Properties = (args) =&gt; {
-  return &lt;bds-icon theme=&quot;outline&quot; size={args.size} name={args.name}&gt;&lt;/bds-icon&gt;;
+  // Filter out undefined, null, and empty string values to prevent them from being passed as props,
+  // which avoids rendering unwanted or invalid attributes on the component.
+  const iconProps = Object.fromEntries(
+    Object.entries(args).filter(([, value]) =&gt; value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &#39;&#39;),
+  );
+  return &lt;bds-icon {...iconProps}&gt;&lt;/bds-icon&gt;;
 };
 
 Properties.args = {
   size: &#39;medium&#39;,
   name: &#39;info&#39;,
+  theme: &#39;outline&#39;,
+  color: &#39;&#39;,
 };
 
 Properties.argTypes = {
@@ -44288,10 +44910,30 @@ Properties.argTypes = {
     ],
     control: &#39;select&#39;,
   },
+  theme: {
+    table: {
+      defaultValue: { summary: &#39;outline&#39; },
+    },
+    options: [&#39;outline&#39;, &#39;solid&#39;],
+    control: &#39;select&#39;,
+  },
+  color: {
+    table: {
+      defaultValue: { summary: &#39;&#39; },
+    },
+    control: &#39;text&#39;,
+  },
   name: {
     table: {
-      defaultValue: { summary: &#39;vazio&#39; },
+      defaultValue: { summary: &#39;info&#39; },
     },
+    control: &#39;text&#39;,
+  },
+  type: {
+    table: {
+      defaultValue: { summary: &#39;icon&#39; },
+    },
+    description: &#39;Define o tipo do ícone como emoji ou logo. (opcional)&#39;,
     control: &#39;text&#39;,
   },
 };
@@ -44451,6 +45093,264 @@ export const AllLogos = () =&gt; {
     &lt;/bds-grid&gt;
   );
 };
+
+export const SolidIconCustomization = () =&gt; {
+  const [layer0Color, setLayer0Color] = useState(&#39;#333333&#39;);
+
+  const folderPreviewStyle = {
+    fontSize: &#39;4rem&#39;,
+    &#39;--icon-layer-0&#39;: layer0Color,
+    display: &#39;flex&#39;,
+    alignItems: &#39;center&#39;,
+    justifyContent: &#39;center&#39;,
+    minHeight: &#39;120px&#39;,
+    border: &#39;1px solid #e0e0e0&#39;,
+    borderRadius: &#39;4px&#39;,
+    padding: &#39;1rem&#39;,
+  };
+
+  const colorInputStyle = {
+    height: &#39;60px&#39;,
+    width: &#39;100%&#39;,
+    cursor: &#39;pointer&#39;,
+  };
+
+  const codeBlockStyle = {
+    background: &#39;#f5f5f5&#39;,
+    padding: &#39;8px&#39;,
+    display: &#39;block&#39;,
+    marginTop: &#39;8px&#39;,
+    borderRadius: &#39;4px&#39;,
+    fontFamily: &#39;monospace&#39;,
+    fontSize: &#39;12px&#39;,
+  };
+
+  return (
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Solid Icon Customization with CSS Variables
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          Multi-color solid icons can be customized using CSS custom properties. Each layer is assigned a variable{&#39; &#39;}
+          &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;2px 6px&#39; }}&gt; --icon-layer-N&lt;/code&gt; where N is the layer index.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Default Folder Icon
+          &lt;/bds-typo&gt;
+          &lt;div style={{ fontSize: &#39;3rem&#39; }}&gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Customized Colors (Gold &amp; Orange)
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;3rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+          &lt;bds-typo variant=&quot;fs-10&quot; color=&quot;on-surface-variant&quot;&gt;
+            &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;4px 8px&#39;, borderRadius: &#39;4px&#39; }}&gt;
+              --icon-layer-0: #FFD700
+            &lt;/code&gt;
+          &lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Color Variations
+        &lt;/bds-typo&gt;
+        &lt;bds-grid gap=&quot;2&quot;&gt;
+          &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#9370DB&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Purple &amp; Pink&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#228B22&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Green &amp; Lime&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#FF6B6B&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Red &amp; Light Red&lt;/bds-typo&gt;
+            &lt;/div&gt;
+          &lt;/bds-grid&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Interactive Color Customization
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          Adjust the colors below to customize each layer of the icon in real-time.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Layer 0 (Back)
+          &lt;/bds-typo&gt;
+          &lt;input
+            type=&quot;color&quot;
+            value={layer0Color}
+            onChange={(e) =&gt; setLayer0Color(e.target.value)}
+            style={colorInputStyle}
+          /&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot;&gt;{layer0Color}&lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Preview
+        &lt;/bds-typo&gt;
+        &lt;div style={folderPreviewStyle}&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/div&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-card&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          &lt;strong&gt;CSS Applied:&lt;/strong&gt;
+          &lt;br /&gt;
+          &lt;code style={codeBlockStyle}&gt;--icon-layer-0: {layer0Color};&lt;/code&gt;
+        &lt;/bds-typo&gt;
+      &lt;/bds-card&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Backward Compatibility
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          This feature is 100% backward compatible. All existing icon usage patterns continue to work exactly as before.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon with Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Original behavior preserved
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon Inherits Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon color=&quot;#FF6B6B&quot; name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Single-Color Solid
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Multi-Color Solid (NEW)
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            CSS variable customizable
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;2rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+  );
+};
+
+SolidIconCustomization.parameters = {
+  docs: {
+    description: {
+      story:
+        &#39;Learn how to customize multi-color solid icons using CSS custom properties. This feature allows you to override individual layers of an icon while maintaining backward compatibility.&#39;,
+    },
+  },
+};
 </code></pre></div>
     </div>
         </div>
@@ -44483,8 +45383,13 @@ export const AllLogos = () =&gt; {
               </div>
               
               
-              <pre><code>const Properties = () =&gt; {
-    return &lt;bds-icon theme=&quot;outline&quot; size=&quot;medium&quot; name=&quot;info&quot; /&gt;;
+              <pre><code>const Properties = (args) =&gt; {
+  // Filter out undefined, null, and empty string values to prevent them from being passed as props,
+  // which avoids rendering unwanted or invalid attributes on the component.
+  const iconProps = Object.fromEntries(
+    Object.entries(args).filter(([, value]) =&gt; value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &#39;&#39;),
+  );
+  return &lt;bds-icon {...iconProps}&gt;&lt;/bds-icon&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -44678,6 +45583,262 @@ export const AllLogos = () =&gt; {
   );
 };</code></pre>
             </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">SolidIconCustomization</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SolidIconCustomization = () =&gt; {
+  const [layer0Color, setLayer0Color] = useState(&#39;#333333&#39;);
+
+  const folderPreviewStyle = {
+    fontSize: &#39;4rem&#39;,
+    &#39;--icon-layer-0&#39;: layer0Color,
+    display: &#39;flex&#39;,
+    alignItems: &#39;center&#39;,
+    justifyContent: &#39;center&#39;,
+    minHeight: &#39;120px&#39;,
+    border: &#39;1px solid #e0e0e0&#39;,
+    borderRadius: &#39;4px&#39;,
+    padding: &#39;1rem&#39;,
+  };
+
+  const colorInputStyle = {
+    height: &#39;60px&#39;,
+    width: &#39;100%&#39;,
+    cursor: &#39;pointer&#39;,
+  };
+
+  const codeBlockStyle = {
+    background: &#39;#f5f5f5&#39;,
+    padding: &#39;8px&#39;,
+    display: &#39;block&#39;,
+    marginTop: &#39;8px&#39;,
+    borderRadius: &#39;4px&#39;,
+    fontFamily: &#39;monospace&#39;,
+    fontSize: &#39;12px&#39;,
+  };
+
+  return (
+    &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Solid Icon Customization with CSS Variables
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          Multi-color solid icons can be customized using CSS custom properties. Each layer is assigned a variable{&#39; &#39;}
+          &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;2px 6px&#39; }}&gt; --icon-layer-N&lt;/code&gt; where N is the layer index.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Default Folder Icon
+          &lt;/bds-typo&gt;
+          &lt;div style={{ fontSize: &#39;3rem&#39; }}&gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Customized Colors (Gold &amp; Orange)
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;3rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+          &lt;bds-typo variant=&quot;fs-10&quot; color=&quot;on-surface-variant&quot;&gt;
+            &lt;code style={{ background: &#39;#f5f5f5&#39;, padding: &#39;4px 8px&#39;, borderRadius: &#39;4px&#39; }}&gt;
+              --icon-layer-0: #FFD700
+            &lt;/code&gt;
+          &lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Color Variations
+        &lt;/bds-typo&gt;
+        &lt;bds-grid gap=&quot;2&quot;&gt;
+          &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#9370DB&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Purple &amp; Pink&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#228B22&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Green &amp; Lime&lt;/bds-typo&gt;
+            &lt;/div&gt;
+
+            &lt;div
+              style={{
+                display: &#39;flex&#39;,
+                flexDirection: &#39;column&#39;,
+                alignItems: &#39;center&#39;,
+                gap: &#39;1rem&#39;,
+              }}
+            &gt;
+              &lt;div
+                style={{
+                  fontSize: &#39;2.5rem&#39;,
+                  &#39;--icon-layer-0&#39;: &#39;#FF6B6B&#39;,
+                }}
+              &gt;
+                &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+              &lt;/div&gt;
+              &lt;bds-typo variant=&quot;fs-10&quot;&gt;Red &amp; Light Red&lt;/bds-typo&gt;
+            &lt;/div&gt;
+          &lt;/bds-grid&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Interactive Color Customization
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          Adjust the colors below to customize each layer of the icon in real-time.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Layer 0 (Back)
+          &lt;/bds-typo&gt;
+          &lt;input
+            type=&quot;color&quot;
+            value={layer0Color}
+            onChange={(e) =&gt; setLayer0Color(e.target.value)}
+            style={colorInputStyle}
+          /&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot;&gt;{layer0Color}&lt;/bds-typo&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+          Preview
+        &lt;/bds-typo&gt;
+        &lt;div style={folderPreviewStyle}&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/div&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-card&gt;
+        &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+          &lt;strong&gt;CSS Applied:&lt;/strong&gt;
+          &lt;br /&gt;
+          &lt;code style={codeBlockStyle}&gt;--icon-layer-0: {layer0Color};&lt;/code&gt;
+        &lt;/bds-typo&gt;
+      &lt;/bds-card&gt;
+
+      &lt;bds-divider&gt;&lt;/bds-divider&gt;
+
+      &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot;&gt;
+        &lt;bds-typo variant=&quot;fs-16&quot; weight=&quot;700&quot;&gt;
+          Backward Compatibility
+        &lt;/bds-typo&gt;
+        &lt;bds-typo variant=&quot;fs-14&quot;&gt;
+          This feature is 100% backward compatible. All existing icon usage patterns continue to work exactly as before.
+        &lt;/bds-typo&gt;
+      &lt;/bds-grid&gt;
+
+      &lt;bds-grid gap=&quot;3&quot;&gt;
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon with Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Original behavior preserved
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Outline Icon Inherits Color
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon color=&quot;#FF6B6B&quot; name=&quot;folder-open&quot; theme=&quot;outline&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Single-Color Solid
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            Uses currentColor
+          &lt;/bds-typo&gt;
+          &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+        &lt;/bds-grid&gt;
+
+        &lt;bds-grid direction=&quot;column&quot; gap=&quot;2&quot; sm=&quot;6&quot; md=&quot;3&quot;&gt;
+          &lt;bds-typo variant=&quot;fs-14&quot; weight=&quot;700&quot;&gt;
+            Multi-Color Solid (NEW)
+          &lt;/bds-typo&gt;
+          &lt;bds-typo variant=&quot;fs-12&quot; color=&quot;on-surface-variant&quot;&gt;
+            CSS variable customizable
+          &lt;/bds-typo&gt;
+          &lt;div
+            style={{
+              fontSize: &#39;2rem&#39;,
+              &#39;--icon-layer-0&#39;: &#39;#FFD700&#39;,
+            }}
+          &gt;
+            &lt;bds-icon name=&quot;folder-open&quot; theme=&quot;solid&quot; size=&quot;xxx-large&quot;&gt;&lt;/bds-icon&gt;
+          &lt;/div&gt;
+        &lt;/bds-grid&gt;
+      &lt;/bds-grid&gt;
+    &lt;/bds-grid&gt;
+  );
+};</code></pre>
+            </div>
         </div>
   </div>
 </article>
@@ -44687,10 +45848,10 @@ export const AllLogos = () =&gt; {
   has-info 
   no-story-error"
   role="listitem"
-  aria-label="illustration">
+  aria-label="Illustration">
   <div class="head">
     <div class="title">
-      <h2><span class="status-dot dot-err"></span> illustration</h2>
+      <h2><span class="status-dot dot-err"></span> Illustration</h2>
       <div class="badges">
         <label for="c-error-30-components-illustration-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-30-components-illustration-info" class="badge info as-toggle">1 info</label>
@@ -44720,7 +45881,7 @@ export const AllLogos = () =&gt; {
   4 |
 &gt; 5 | export default {
     | ^
-  6 |   title: &#39;Components/illustration&#39;,
+  6 |   title: &#39;Components/Illustration&#39;,
   7 |   parameters: {
   8 |     docs: {
 
@@ -44730,7 +45891,7 @@ import { BdsIllustration } from &#39;../../../blip-ds-react/dist/components&#39;
 import DocumentationTemplate from &#39;./illustration.mdx&#39;;
 
 export default {
-  title: &#39;Components/illustration&#39;,
+  title: &#39;Components/Illustration&#39;,
   parameters: {
     docs: {
       page: DocumentationTemplate,
@@ -54792,7 +55953,7 @@ export const FrameworkReact = () =&gt; {
       <div class="badges">
         <label for="c-error-58-components-slider-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-58-components-slider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-58-components-slider-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-58-components-slider-stories" class="badge ok as-toggle">4 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/slider/slider.stories.jsx">components-slider · ./src/components/slider/slider.stories.jsx</div>
@@ -54923,6 +56084,16 @@ Properties.argTypes = {
   },
 };
 
+export const WithCustomTooltip = () =&gt; (
+  &lt;bds-grid padding=&quot;t-6&quot; xxs={12}&gt;
+    &lt;bds-slider
+      markers
+      label
+      data-markers=&#39;[{&quot;value&quot;: 0, &quot;name&quot;: &quot;standard&quot;, &quot;tooltip&quot;: &quot;Plano básico com recursos limitados&quot;}, {&quot;value&quot;: 1, &quot;name&quot;: &quot;plus&quot;}, {&quot;value&quot;: 2, &quot;name&quot;: &quot;gold&quot;, &quot;tooltip&quot;: &quot;Melhor custo-benefício&quot;}, {&quot;value&quot;: 3, &quot;name&quot;: &quot;platinum&quot;, &quot;tooltip&quot;: &quot;Plano completo premium&quot;}]&#39;
+    &gt;&lt;/bds-slider&gt;
+  &lt;/bds-grid&gt;
+);
+
 export const Events = () =&gt; {
   useEffect(() =&gt; {
     const slider = document.getElementById(&#39;slider&#39;);
@@ -54994,6 +56165,23 @@ export const FrameworkReact = () =&gt; (
         &lt;/bds-grid&gt;
     );
 };</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">WithCustomTooltip</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithCustomTooltip = () =&gt; (
+  &lt;bds-grid padding=&quot;t-6&quot; xxs={12}&gt;
+    &lt;bds-slider
+      markers
+      label
+      data-markers=&#39;[{&quot;value&quot;: 0, &quot;name&quot;: &quot;standard&quot;, &quot;tooltip&quot;: &quot;Plano básico com recursos limitados&quot;}, {&quot;value&quot;: 1, &quot;name&quot;: &quot;plus&quot;}, {&quot;value&quot;: 2, &quot;name&quot;: &quot;gold&quot;, &quot;tooltip&quot;: &quot;Melhor custo-benefício&quot;}, {&quot;value&quot;: 3, &quot;name&quot;: &quot;platinum&quot;, &quot;tooltip&quot;: &quot;Plano completo premium&quot;}]&#39;
+    &gt;&lt;/bds-slider&gt;
+  &lt;/bds-grid&gt;
+);</code></pre>
             </div>
             <div class="note ok">
               <div class="row">

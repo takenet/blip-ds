@@ -3,6 +3,7 @@ export class Slider {
     constructor() {
         var _a, _b;
         this.inputValue = (_b = (_a = this.value) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : (this.min ? this.min.toString() : '0');
+        this.tooltipPosition = 'top-center';
         /**
          * Value, prop to define value of input.
          */
@@ -40,11 +41,22 @@ export class Slider {
             const percentage = ((val - min) * 100) / (max - min);
             return percentage;
         };
+        this.computeTooltipPosition = (percent) => {
+            if (percent <= 0)
+                return 'top-left';
+            if (percent >= 100)
+                return 'top-right';
+            return 'top-center';
+        };
+        this.getTooltipText = (item) => {
+            return item.tooltip !== undefined ? item.tooltip : item.name.toString();
+        };
         this.onInputSlide = (ev) => {
             const input = ev.target;
             this.progressBar.style.width = `${this.valuePercent(input)}%`;
             const valueName = this.emiterChange(parseInt(input.value));
-            this.inputValue = this.stepArray.length > 0 ? valueName.name : input.value;
+            this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : input.value;
+            this.tooltipPosition = this.computeTooltipPosition(this.valuePercent(input));
             this.bdsChange.emit(valueName);
         };
         this.onInputMouseEnter = () => {
@@ -65,6 +77,7 @@ export class Slider {
         };
     }
     componentWillLoad() {
+        var _a, _b, _c, _d;
         if (this.dataMarkers) {
             if (typeof this.dataMarkers === 'string') {
                 this.internalOptions = JSON.parse(this.dataMarkers);
@@ -74,9 +87,21 @@ export class Slider {
                 this.internalOptions = this.dataMarkers;
                 this.stepArray = this.internalOptions;
             }
+            const initialIndex = (_a = this.value) !== null && _a !== void 0 ? _a : 0;
+            const initialItem = this.stepArray[initialIndex];
+            if (initialItem) {
+                this.inputValue = this.getTooltipText(initialItem);
+            }
+            const percent = this.stepArray.length > 1 ? (initialIndex / (this.stepArray.length - 1)) * 100 : 50;
+            this.tooltipPosition = this.computeTooltipPosition(percent);
         }
         else {
             this.stepArray = this.arrayToSteps((this.max - this.min) / this.step, Number.isInteger((this.max - this.min) / this.step));
+            const min = (_b = this.min) !== null && _b !== void 0 ? _b : 0;
+            const max = (_c = this.max) !== null && _c !== void 0 ? _c : 100;
+            const value = (_d = this.value) !== null && _d !== void 0 ? _d : min;
+            const percent = max !== min ? ((value - min) * 100) / (max - min) : 50;
+            this.tooltipPosition = this.computeTooltipPosition(percent);
         }
     }
     componentDidLoad() {
@@ -97,7 +122,8 @@ export class Slider {
     componentDidUpdate() {
         this.progressBar.style.width = `${this.valuePercent(this.inputSlide)}%`;
         const valueName = this.emiterChange(parseInt(this.inputSlide.value));
-        this.inputValue = this.stepArray.length > 0 ? valueName.name : this.inputSlide.value;
+        this.inputValue = this.stepArray.length > 0 ? this.getTooltipText(valueName) : this.inputSlide.value;
+        this.tooltipPosition = this.computeTooltipPosition(this.valuePercent(this.inputSlide));
     }
     arrayToSteps(value, int) {
         const numberToCalc = int ? value + 1 : value;
@@ -108,10 +134,10 @@ export class Slider {
         return valueSteps.map((term) => ({ value: term, name: term * this.step + this.min }));
     }
     render() {
-        return (h(Host, { key: '581564601404e1f2586730fc5dd598f45b82e3a2' }, h("input", { key: 'a9949113fed2652a6be8c7dad41a9c5dbdebe711', ref: this.refInputSlide, type: "range", class: {
+        return (h(Host, { key: '678fe208fcc443cb4c1047859bb522c618a17b27' }, h("input", { key: 'd09f10fd7e6f9fcb13a948bfecb30b0aa174d925', ref: this.refInputSlide, type: "range", class: {
                 input_slide: true,
-            }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { key: '3de724dafdc5e81f7ce0010a33d8b7c624cda8a6', class: "track-bg" }, h("div", { key: 'f05a35f9be9ad2d633688947cc31574891493790', class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { key: 'ae2b2ed2f57e81c8ca736f53a0b51d8dc430d0c1', ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: "top-center", "tooltip-text": this.inputValue }, h("div", { key: 'f5ca061d25d63888e54b107bb295c522dc2b2646', class: { [`progress-bar-thumb`]: true } }))), this.markers &&
-            this.stepArray.map((item, index) => (h("div", { key: index, class: `step` }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))))));
+            }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { key: '18b31a7c732c40d25f2cc3b1c72ec60dca0bfe66', class: "track-bg" }, this.markers &&
+            this.stepArray.map((item, index) => (h("div", { key: index, class: { step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 } }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { key: 'fcab9edc53784c1d3a16786cd14aa4b8d2dfcec6', class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { key: '2836b17d740b5b4280a99b31bf15f21a3b4e918e', ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { key: '669b6a5af3a8fe6f7657829b067eeb030b9ea5b8', class: { [`progress-bar-thumb`]: true } }))))));
     }
     static get is() { return "bds-slider"; }
     static get encapsulation() { return "shadow"; }
@@ -321,7 +347,8 @@ export class Slider {
         return {
             "stepArray": {},
             "internalOptions": {},
-            "inputValue": {}
+            "inputValue": {},
+            "tooltipPosition": {}
         };
     }
     static get events() {
@@ -336,15 +363,9 @@ export class Slider {
                     "text": "bdsChange. Event to return selected date value."
                 },
                 "complexType": {
-                    "original": "StepOption",
-                    "resolved": "StepOption",
-                    "references": {
-                        "StepOption": {
-                            "location": "import",
-                            "path": "./slider-interface",
-                            "id": "src/components/slider/slider-interface.ts::StepOption"
-                        }
-                    }
+                    "original": "any",
+                    "resolved": "any",
+                    "references": {}
                 }
             }];
     }

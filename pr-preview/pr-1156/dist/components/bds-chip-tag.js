@@ -1,4 +1,4 @@
-import { C as ChipTag, d as defineCustomElement$1 } from './p-DiQipkQM.js';
+import { C as ChipTag, d as defineCustomElement$1 } from './p-CQBzl9Qi.js';
 
 const BdsChipTag = ChipTag;
 const defineCustomElement = defineCustomElement$1;

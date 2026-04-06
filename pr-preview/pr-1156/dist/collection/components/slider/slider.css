@@ -39,7 +39,6 @@
   position: absolute;
   height: 4px;
   border-radius: 1rem;
-  z-index: 2;
 }
 .track-bg .progress-bar-liner {
   background-color: var(--color-primary, rgb(30, 107, 241));
@@ -55,7 +54,6 @@
   height: 1rem;
   border-radius: 1rem;
   background-color: var(--color-primary, rgb(30, 107, 241));
-  z-index: 0;
 }
 .track-bg .progress-bar-thumb::before {
   content: "";
@@ -89,6 +87,15 @@
 }
 .track-bg .step .label-step {
   margin-top: 1rem;
+  white-space: nowrap;
+}
+.track-bg .step.step--first {
+  justify-content: flex-start;
+}
+.track-bg .step.step--last .label-step {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .element-min {

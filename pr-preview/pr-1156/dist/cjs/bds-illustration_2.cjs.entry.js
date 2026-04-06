@@ -3,7 +3,7 @@
 var index = require('./index-t1DDWEYz.js');
 
 const dependencies = {
-	"blip-tokens": "^1.102.1"};
+	"blip-tokens": "^1.103.0"};
 var packageJson = {
 	dependencies: dependencies};
 
