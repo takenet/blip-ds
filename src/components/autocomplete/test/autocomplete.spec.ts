@@ -626,6 +626,7 @@ describe('bds-autocomplete', () => {
         html: `<bds-autocomplete options='${optionsString}'></bds-autocomplete>`,
       });
 
+      // Ensure dropdown is initially closed
       expect(page.rootInstance.isOpen).toBe(false);
 
       const nativeInput = page.root.shadowRoot.querySelector('input');
@@ -636,6 +637,7 @@ describe('bds-autocomplete', () => {
       nativeInput.dispatchEvent(inputEvent);
       await page.waitForChanges();
 
+      // Dropdown should now be open after typing
       expect(page.rootInstance.isOpen).toBe(true);
     });
 
@@ -658,6 +660,7 @@ describe('bds-autocomplete', () => {
       nativeInput.dispatchEvent(inputEvent);
       await page.waitForChanges();
 
+      // Dropdown should remain closed when component is disabled
       expect(page.rootInstance.isOpen).toBe(false);
     });
   });

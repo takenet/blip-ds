@@ -3,7 +3,7 @@ import { BdsIllustration } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './illustration.mdx';
 
 export default {
-  title: 'Components/illustration',
+  title: 'Components/Illustration',
   parameters: {
     docs: {
       page: DocumentationTemplate,

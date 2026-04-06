@@ -69,6 +69,7 @@ export class Checkbox {
 
   @Method()
   async toggle() {
+    // When toggling from indeterminate, always set to checked
     if (this.indeterminate) {
       this.indeterminate = false;
       this.checked = true;
@@ -83,6 +84,7 @@ export class Checkbox {
 
   private onClick = (ev: Event): void => {
     ev.stopPropagation();
+    // When clicking from indeterminate state, set to checked
     if (this.indeterminate) {
       this.indeterminate = false;
       this.checked = true;
@@ -133,6 +135,7 @@ export class Checkbox {
     }
 
     if (event.key === 'Enter') {
+      // When pressing Enter from indeterminate state, set to checked
       if (this.indeterminate) {
         this.indeterminate = false;
         this.checked = true;

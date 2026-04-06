@@ -67,55 +67,22 @@ describe('bds-checkbox e2e tests', () => {
   });
 
   describe('Indeterminate State', () => {
-    it('should default indeterminate to false', async () => {
-      const checkbox = await page.find('bds-checkbox');
-      const indeterminate = await checkbox.getProperty('indeterminate');
-      expect(indeterminate).toBe(false);
-    });
-
-    it('should render indeterminate state when prop is set', async () => {
+    it('should render checkbox with indeterminate state', async () => {
       page = await newE2EPage({
-        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
+        html: `<bds-checkbox label="Opcao do checkbox" name="check" indeterminate>Checkbox</bds-checkbox>`,
       });
 
       const checkbox = await page.find('bds-checkbox');
       const indeterminate = await checkbox.getProperty('indeterminate');
       expect(indeterminate).toBe(true);
 
-      const checkboxEl = await page.find('bds-checkbox >>> .checkbox');
-      expect(checkboxEl).toHaveClass('checkbox--indeterminate');
+      const checkboxElement = await page.find('bds-checkbox >>> .checkbox');
+      expect(checkboxElement).toHaveClass('checkbox--indeterminate');
     });
 
-    it('should show less icon when indeterminate', async () => {
+    it('should transition from indeterminate to checked when clicked', async () => {
       page = await newE2EPage({
-        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
-      });
-
-      const icon = await page.find('bds-checkbox >>> bds-icon');
-      const iconName = await icon.getProperty('name');
-      expect(iconName).toBe('less');
-    });
-
-    it('should transition from indeterminate to checked on click', async () => {
-      page = await newE2EPage({
-        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
-      });
-
-      const checkbox = await page.find('bds-checkbox');
-      const labelElement = await page.find('bds-checkbox >>> label');
-      await labelElement.click();
-      await page.waitForChanges();
-
-      // After click: indeterminate becomes false, checked becomes true
-      const indeterminate = await checkbox.getProperty('indeterminate');
-      const checked = await checkbox.getProperty('checked');
-      expect(indeterminate).toBe(false);
-      expect(checked).toBe(true);
-    });
-
-    it('should emit bdsChange event with indeterminate info when clicked', async () => {
-      page = await newE2EPage({
-        html: `<bds-checkbox label="Test" indeterminate="true"></bds-checkbox>`,
+        html: `<bds-checkbox label="Opcao do checkbox" name="check" indeterminate>Checkbox</bds-checkbox>`,
       });
 
       const checkbox = await page.find('bds-checkbox');
@@ -125,16 +92,50 @@ describe('bds-checkbox e2e tests', () => {
       await labelElement.click();
       await page.waitForChanges();
 
-      expect(bdsChangeEvent).toHaveReceivedEvent();
+      const indeterminate = await checkbox.getProperty('indeterminate');
+      const checked = await checkbox.getProperty('checked');
+
+      expect(indeterminate).toBe(false);
+      expect(checked).toBe(true);
+      expect(bdsChangeEvent).toHaveReceivedEventDetail({ checked: true, indeterminate: false });
     });
 
-    it('should apply indeterminate-disabled class when disabled and indeterminate', async () => {
+    it('should transition from indeterminate to checked when toggle method is called', async () => {
       page = await newE2EPage({
-        html: `<bds-checkbox label="Test" indeterminate="true" disabled="true"></bds-checkbox>`,
+        html: `<bds-checkbox label="Opcao do checkbox" name="check" indeterminate>Checkbox</bds-checkbox>`,
       });
 
-      const checkboxEl = await page.find('bds-checkbox >>> .checkbox');
-      expect(checkboxEl).toHaveClass('checkbox--indeterminate-disabled');
+      const checkbox = await page.find('bds-checkbox');
+      await checkbox.callMethod('toggle');
+      await page.waitForChanges();
+
+      const indeterminate = await checkbox.getProperty('indeterminate');
+      const checked = await checkbox.getProperty('checked');
+
+      expect(indeterminate).toBe(false);
+      expect(checked).toBe(true);
+
+      const checkboxElement = await page.find('bds-checkbox >>> .checkbox');
+      expect(checkboxElement).toHaveClass('checkbox--selected');
+    });
+
+    it('should display minus icon when indeterminate', async () => {
+      page = await newE2EPage({
+        html: `<bds-checkbox label="Opcao do checkbox" name="check" indeterminate>Checkbox</bds-checkbox>`,
+      });
+
+      const icon = await page.find('bds-checkbox >>> bds-icon');
+      const iconName = await icon.getProperty('name');
+      expect(iconName).toBe('less');
+    });
+
+    it('should render indeterminate-disabled style when both indeterminate and disabled', async () => {
+      page = await newE2EPage({
+        html: `<bds-checkbox label="Opcao do checkbox" name="check" indeterminate disabled>Checkbox</bds-checkbox>`,
+      });
+
+      const checkboxElement = await page.find('bds-checkbox >>> .checkbox');
+      expect(checkboxElement).toHaveClass('checkbox--indeterminate-disabled');
     });
   });
 });

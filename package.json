@@ -28,15 +28,22 @@
     "test:watch": "stencil test --spec --e2e --screenshot --watch",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
+    "test:playwright": "npx playwright test",
+    "test:playwright:visual": "npx playwright test tests/playwright/visual/",
+    "test:playwright:functional": "npx playwright test tests/playwright/functional/",
+    "test:playwright:update": "npx playwright test --update-snapshots",
+    "test:playwright:report": "npx playwright show-report",
     "eslint": "eslint . --ext .jsx,.ts,.tsx --fix",
     "semantic-release": "semantic-release",
     "commit": "git-cz",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
     "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
+    "@playwright/test": "^1.58.2",
     "@stencil/core": "^4.35.1",
     "@stencil/react-output-target": "^1.1.1",
     "@stencil/sass": "^3.2.1",
@@ -87,7 +94,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
-    "blip-tokens": "^1.102.1",
+    "blip-tokens": "^1.103.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

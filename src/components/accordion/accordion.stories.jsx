@@ -52,7 +52,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'inherit' },
     },
-    description: 'Defina a cor do ícone no cabeçalho do accordion.',
+    description: 'Defina a cor do ícone que será utilizado no botão (Apenas outline).',
     control: 'text',
   },
   avatarName: {
@@ -90,7 +90,7 @@ Properties.args = {
   avatarName: '',
   avatarThumb: '',
   icon: '',
-  iconColor: 'inherit',
+  iconColor: '',
   startOpen: false,
   divisor: true,
 };
@@ -125,6 +125,7 @@ export const Methods = () => {
         <bds-accordion-header
           accordion-title="Título do accordion"
           icon=""
+          icon-color=""
           avatar-name=""
           avatar-thumb=""
         ></bds-accordion-header>
@@ -153,7 +154,7 @@ export const Events = () => {
   });
   return (
     <bds-accordion id="accEvent">
-      <bds-accordion-header accordion-title="Título do accordion (Veja o resultado do evento na aba Actions)"></bds-accordion-header>
+      <bds-accordion-header accordion-title="Título do accordion (Veja o resultado do evento na aba Actions)" icon="info" icon-color="green" ></bds-accordion-header>
       <bds-accordion-body>
         <bds-typo variant="fs-16">{paragraph}</bds-typo>
       </bds-accordion-body>
@@ -164,7 +165,7 @@ export const Events = () => {
 export const FrameworkReact = () => {
   return (
     <BdsAccordion>
-      <BdsAccordionHeader accordion-title="Título do accordion"></BdsAccordionHeader>
+      <BdsAccordionHeader accordion-title="Título do accordion" icon="info" icon-color="green"></BdsAccordionHeader>
       <BdsAccordionBody>
         <BdsTypo variant="fs-16">{paragraph}</BdsTypo>
       </BdsAccordionBody>

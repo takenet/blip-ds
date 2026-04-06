@@ -33,3 +33,9 @@ icons/
 scripts/*.js
 
 /screenshot
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

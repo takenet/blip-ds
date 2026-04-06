@@ -66,17 +66,17 @@ export class BdsUpload {
    */
   @Prop() dtButtonDelete?: string = null;
   /**
-   * Used to show or hide the file list preview.
+   * Used to show or hide the list preview of uploaded files.
    */
   @Prop() showListPreview?: boolean = true;
   /**
    * Event emited when delete a item from the list.
    */
-  @Event() bdsUploadDelete: EventEmitter<{ value: File[] }>;
+  @Event() bdsUploadDelete: EventEmitter;
   /**
    * Event emited when change the value of Upload.
    */
-  @Event() bdsUploadChange: EventEmitter<{ value: File[] }>;
+  @Event() bdsUploadChange: EventEmitter;
 
   @Watch('dataAccept')
   protected dataAcceptChanged(): void {
