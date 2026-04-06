@@ -27,6 +27,13 @@ const funnelData = [
   { label: 'Fechados',    value: 150 },
 ];
 
+const pieData = [
+  { label: 'Atendimentos',  value: 38 },
+  { label: 'Em espera',     value: 22 },
+  { label: 'Encerrados',    value: 30 },
+  { label: 'Transferidos',  value: 10 },
+];
+
 const heatmapData = [
   { dia: 'Seg', hora: '9h',  total: 12 },  { dia: 'Seg', hora: '10h', total: 45 },
   { dia: 'Seg', hora: '11h', total: 78 },  { dia: 'Seg', hora: '14h', total: 55 },
@@ -406,19 +413,64 @@ export const LineChartTickFormatter = {
 
 // ─── HEATMAP STORIES ─────────────────────────────────────────────────────────
 
+// ─── PIE / DONUT STORIES ─────────────────────────────────────────────────────
+
+export const PieChartSimple = {
+  name: 'Pie — Donut Simples',
+  render: () => (
+    <bds-chart-container style={{ height: '320px' }}>
+      <bds-chart-pie data={JSON.stringify(pieData)}>
+        <bds-chart-tooltip></bds-chart-tooltip>
+      </bds-chart-pie>
+    </bds-chart-container>
+  ),
+};
+
+export const PieChartWithLegend = {
+  name: 'Pie — Com Legenda',
+  render: () => (
+    <bds-chart-container style={{ height: '360px' }}>
+      <bds-chart-pie data={JSON.stringify(pieData)}>
+        <bds-chart-legend align="center"></bds-chart-legend>
+        <bds-chart-tooltip></bds-chart-tooltip>
+      </bds-chart-pie>
+    </bds-chart-container>
+  ),
+};
+
+export const PieChartFullPie = {
+  name: 'Pie — Gráfico Pizza (sem furo)',
+  render: () => (
+    <bds-chart-container style={{ height: '320px' }}>
+      <bds-chart-pie data={JSON.stringify(pieData)}>
+        <bds-pie-config inner-radius="0" pad-angle="0.01"></bds-pie-config>
+        <bds-chart-tooltip></bds-chart-tooltip>
+      </bds-chart-pie>
+    </bds-chart-container>
+  ),
+};
+
+export const PieChartCustomRadius = {
+  name: 'Pie — Donut Fino',
+  render: () => (
+    <bds-chart-container style={{ height: '320px' }}>
+      <bds-chart-pie data={JSON.stringify(pieData)}>
+        <bds-pie-config inner-radius="80" pad-angle="0.03"></bds-pie-config>
+        <bds-chart-legend align="center"></bds-chart-legend>
+        <bds-chart-tooltip></bds-chart-tooltip>
+      </bds-chart-pie>
+    </bds-chart-container>
+  ),
+};
+
 export const HeatmapWeekly = {
   name: 'Heatmap — Frequência Semanal',
   render: () => (
     <bds-chart-container>
-      <bds-chart-heatmap
-        data={JSON.stringify(heatmapData)}
-        x-key="dia"
-        y-key="hora"
-        value-key="total"
-      >
-        <bds-heatmap-cell color="#0d6efd" radius="6" />
-        <bds-x-axis show="true" tick-line="true" tick-margin="10" />
-        <bds-y-axis show="true" tick-line="true" tick-margin="10" />
+      <bds-chart-heatmap data={JSON.stringify(heatmapData)}>
+        <bds-heatmap-cell color="#0d6efd" radius="6" value-key="total" />
+        <bds-x-axis data-key="dia" show="true" tick-line="true" tick-margin="10" />
+        <bds-y-axis data-key="hora" show="true" tick-line="true" tick-margin="10" />
         <bds-chart-tooltip label-key="dia" name-key="total" />
       </bds-chart-heatmap>
     </bds-chart-container>
@@ -432,10 +484,10 @@ export const HeatmapCustomColor = {
       <div>
         <p style={{ marginBottom: '8px', fontWeight: 600 }}>Verde (#05b96c)</p>
         <bds-chart-container>
-          <bds-chart-heatmap data={JSON.stringify(heatmapData)} x-key="dia" y-key="hora" value-key="total">
-            <bds-heatmap-cell color="#05b96c" radius="4" />
-            <bds-x-axis show="true" tick-margin="10" />
-            <bds-y-axis show="true" tick-margin="10" />
+          <bds-chart-heatmap data={JSON.stringify(heatmapData)}>
+            <bds-heatmap-cell color="#05b96c" radius="4" value-key="total" />
+            <bds-x-axis data-key="dia" show="true" tick-margin="10" />
+            <bds-y-axis data-key="hora" show="true" tick-margin="10" />
             <bds-chart-tooltip label-key="dia" name-key="total" />
           </bds-chart-heatmap>
         </bds-chart-container>
@@ -443,10 +495,10 @@ export const HeatmapCustomColor = {
       <div>
         <p style={{ marginBottom: '8px', fontWeight: 600 }}>Laranja (#f7a400)</p>
         <bds-chart-container>
-          <bds-chart-heatmap data={JSON.stringify(heatmapData)} x-key="dia" y-key="hora" value-key="total">
-            <bds-heatmap-cell color="#f7a400" radius="4" />
-            <bds-x-axis show="true" tick-margin="10" />
-            <bds-y-axis show="true" tick-margin="10" />
+          <bds-chart-heatmap data={JSON.stringify(heatmapData)}>
+            <bds-heatmap-cell color="#f7a400" radius="4" value-key="total" />
+            <bds-x-axis data-key="dia" show="true" tick-margin="10" />
+            <bds-y-axis data-key="hora" show="true" tick-margin="10" />
             <bds-chart-tooltip label-key="dia" name-key="total" />
           </bds-chart-heatmap>
         </bds-chart-container>
@@ -454,10 +506,10 @@ export const HeatmapCustomColor = {
       <div>
         <p style={{ marginBottom: '8px', fontWeight: 600 }}>Vermelho (#e74c3c)</p>
         <bds-chart-container>
-          <bds-chart-heatmap data={JSON.stringify(heatmapData)} x-key="dia" y-key="hora" value-key="total">
-            <bds-heatmap-cell color="#e74c3c" radius="2" />
-            <bds-x-axis show="true" tick-margin="10" />
-            <bds-y-axis show="true" tick-margin="10" />
+          <bds-chart-heatmap data={JSON.stringify(heatmapData)}>
+            <bds-heatmap-cell color="#e74c3c" radius="2" value-key="total" />
+            <bds-x-axis data-key="dia" show="true" tick-margin="10" />
+            <bds-y-axis data-key="hora" show="true" tick-margin="10" />
             <bds-chart-tooltip label-key="dia" name-key="total" />
           </bds-chart-heatmap>
         </bds-chart-container>

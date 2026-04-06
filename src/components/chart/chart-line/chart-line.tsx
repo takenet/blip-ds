@@ -1,6 +1,7 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
 import { ChartDatum, Margin } from '../utils/chart.types';
-import { calculateLineChartLayout, formatTick, buildCategoryColorMap } from '../utils/chart-math';
+import { calculateLineChartLayout, buildCategoryColorMap } from '../utils/chart-math';
+import { renderXAxisLabels, renderYAxisLabels } from '../utils/chart-axis-render';
 
 // Pixel constants used for dynamic margin computation
 const TICK_LENGTH = 6;    // length of tick mark line
@@ -392,63 +393,28 @@ export class ChartLine {
           )}
 
           {/* X-axis ticks and labels */}
-          {showXLabels && (
-            <g class="chart-line__x-axis" style={{ pointerEvents: 'none' }}>
-              {xLabels.map((label, idx) => (
-                <g key={`x-axis-${idx}`}>
-                  {showXTickLine && (
-                    <line
-                      x1={margin.left + label.x}
-                      y1={this.actualHeight - margin.bottom}
-                      x2={margin.left + label.x}
-                      y2={this.actualHeight - margin.bottom + 6}
-                      stroke={xLineColor}
-                      stroke-width="1"
-                    />
-                  )}
-                  <text
-                    text-anchor="middle"
-                    fill={xLabelColor}
-                    font-weight={idx === this.hoveredIndex ? 'bold' : 'normal'}
-                    x={margin.left + label.x}
-                    y={this.actualHeight - margin.bottom + 6 + xTickMargin}
-                    class="chart__x-label"
-                  >
-                    {formatTick(label.label, xTickFormatter)}
-                  </text>
-                </g>
-              ))}
-            </g>
-          )}
+          {showXLabels && renderXAxisLabels({
+            xLabels,
+            margin,
+            actualHeight: this.actualHeight,
+            showTickLine: showXTickLine,
+            tickMargin: xTickMargin,
+            tickFormatter: xTickFormatter,
+            lineColor: xLineColor,
+            labelColor: xLabelColor,
+            hoveredIndex: this.hoveredIndex,
+          })}
 
           {/* Y-axis ticks and labels */}
-          {showYAxisLabels && (
-            <g class="chart-line__y-axis" style={{ pointerEvents: 'none' }}>
-              {yLabels.map((label, idx) => (
-                <g key={`y-axis-${idx}`}>
-                  {showYTickLine && (
-                    <line
-                      x1={margin.left - 6}
-                      y1={margin.top + label.y}
-                      x2={margin.left}
-                      y2={margin.top + label.y}
-                      stroke={yLineColor}
-                      stroke-width="1"
-                    />
-                  )}
-                  <text
-                    text-anchor="end"
-                    fill={yLabelColor}
-                    x={margin.left - 6 - yTickMargin}
-                    y={margin.top + label.y + 4}
-                    class="chart__y-label"
-                  >
-                    {formatTick(label.label, yTickFormatter)}
-                  </text>
-                </g>
-              ))}
-            </g>
-          )}
+          {showYAxisLabels && renderYAxisLabels({
+            yLabels,
+            margin,
+            showTickLine: showYTickLine,
+            tickMargin: yTickMargin,
+            tickFormatter: yTickFormatter,
+            lineColor: yLineColor,
+            labelColor: yLabelColor,
+          })}
           {/* Invisible overlay rect — MUST be last, topmost element. Has a stable key
               so Stencil always reuses this exact DOM node across re-renders, preventing
               spurious mouseleave events when hoveredIndex state changes. */}

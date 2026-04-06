@@ -125,6 +125,43 @@ Use `curve="linear"` para linhas retas entre os pontos.
 
 ---
 
+## bds-chart-pie — Gráfico de Pizza / Donut
+
+Ideal para visualizar distribuição proporcional de categorias. Por padrão renderiza um donut (com furo central); defina `inner-radius="0"` em `bds-pie-config` para um gráfico pizza tradicional.
+
+### Propriedades
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`data`</td><td>`ChartDatum[] | string`</td><td>`[]`</td><td>Array de dados ou string JSON. Cada item deve ter os campos definidos em `label-key` e `value-key`</td></tr>
+    <tr><td>`label-key`</td><td>`string`</td><td>`'label'`</td><td>Campo usado como rótulo de cada fatia</td></tr>
+    <tr><td>`value-key`</td><td>`string`</td><td>`'value'`</td><td>Campo numérico que determina o tamanho de cada fatia</td></tr>
+  </tbody>
+</table>
+
+### Exemplo Simples (Donut)
+
+<Canvas of={ChartStories.PieChartSimple}></Canvas>
+
+### Com Legenda
+
+<Canvas of={ChartStories.PieChartWithLegend}></Canvas>
+
+### Gráfico Pizza (`inner-radius="0"`)
+
+Use `bds-pie-config` com `inner-radius="0"` para remover o furo central.
+
+<Canvas of={ChartStories.PieChartFullPie}></Canvas>
+
+### Donut Fino (`inner-radius="80"`)
+
+Aumente o `inner-radius` para um donut mais fino.
+
+<Canvas of={ChartStories.PieChartCustomRadius}></Canvas>
+
+---
+
 ## bds-chart-heatmap — Mapa de Calor
 
 Ideal para visualizar densidade ou frequência em uma grade bidimensional (ex: hora × dia da semana).
@@ -135,10 +172,7 @@ Ideal para visualizar densidade ou frequência em uma grade bidimensional (ex: h
   <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
   <tbody>
     <tr><td>`data`</td><td>`ChartDatum[] | string`</td><td>`[]`</td><td>Array de dados. Cada item precisa de três chaves: para X, para Y e para o valor</td></tr>
-    <tr><td>`x-key`</td><td>`string`</td><td>`'x'`</td><td>Chave do campo que define o eixo X (ex: dia da semana)</td></tr>
-    <tr><td>`y-key`</td><td>`string`</td><td>`'y'`</td><td>Chave do campo que define o eixo Y (ex: hora do dia)</td></tr>
-    <tr><td>`value-key`</td><td>`string`</td><td>`'value'`</td><td>Chave do campo numérico que determina a intensidade de cor</td></tr>
-    <tr><td>`color`</td><td>`string`</td><td>`var(--color-extended-blue)`</td><td>Cor base das células (opacidade varia de 0.1 a 1.0 conforme o valor)</td></tr>
+    <tr><td>`color`</td><td>`string`</td><td>`var(--color-extended-blue)`</td><td>Cor base das células (opacidade varia de 0.1 a 1.0 conforme o valor). Pode ser sobrescrita por `bds-heatmap-cell`</td></tr>
     <tr><td>`cell-radius`</td><td>`number`</td><td>`4`</td><td>Raio do arredondamento das células em pixels</td></tr>
     <tr><td>`cell-padding`</td><td>`number`</td><td>`2`</td><td>Espaçamento entre células em pixels</td></tr>
   </tbody>
@@ -163,6 +197,19 @@ Use `bds-heatmap-cell` para configurar cor e raio sem passar props diretamente n
 ## Componentes Filhos de Configuração
 
 Estes componentes são invisíveis no DOM (sem `shadow: true` e sem conteúdo visual). Eles apenas expõem atributos que os charts pai leem via `querySelector`.
+
+### bds-pie-config
+
+Configura a aparência visual do donut/pizza. Use como filho de `bds-chart-pie`.
+
+<table>
+  <thead><tr><th>Propriedade</th><th>Tipo</th><th>Padrão</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>`inner-radius`</td><td>`number`</td><td>`60`</td><td>Raio interno como percentual do raio externo. `0` = pizza sólida, `60` = donut padrão</td></tr>
+    <tr><td>`pad-angle`</td><td>`number`</td><td>`0.02`</td><td>Espaço entre fatias em radianos</td></tr>
+    <tr><td>`corner-radius`</td><td>`number`</td><td>`3`</td><td>Raio de arredondamento das extremidades de cada fatia em pixels</td></tr>
+  </tbody>
+</table>
 
 ### bds-bar
 
@@ -203,7 +250,7 @@ Configura a aparência das células do heatmap. Use como filho de `bds-chart-hea
   <tbody>
     <tr><td>`color`</td><td>`string`</td><td>—</td><td>Cor base das células (sobrescreve o `color` do heatmap)</td></tr>
     <tr><td>`radius`</td><td>`number`</td><td>—</td><td>Raio de arredondamento (sobrescreve o `cell-radius` do heatmap)</td></tr>
-    <tr><td>`value-key`</td><td>`string`</td><td>—</td><td>Chave do valor (sobrescreve o `value-key` do heatmap)</td></tr>
+    <tr><td>`value-key`</td><td>`string`</td><td>`'value'`</td><td>**Obrigatório.** Chave do campo numérico que determina a intensidade de cor (ex: `"total"`)</td></tr>
   </tbody>
 </table>
 
@@ -311,6 +358,7 @@ const heatData = [
 
 | Componente pai | Filhos suportados |
 |---|---|
+| `bds-chart-pie` | `bds-pie-config`, `bds-chart-legend`, `bds-chart-tooltip` |
 | `bds-chart-bar` | `bds-bar`, `bds-x-axis`, `bds-y-axis`, `bds-chart-grid`, `bds-chart-legend`, `bds-chart-tooltip` |
 | `bds-chart-line` | `bds-line`, `bds-x-axis`, `bds-y-axis`, `bds-chart-grid`, `bds-chart-legend`, `bds-chart-tooltip` |
 | `bds-chart-heatmap` | `bds-heatmap-cell`, `bds-x-axis`, `bds-y-axis`, `bds-chart-tooltip` |

@@ -22,13 +22,6 @@
   --chart-hover-dot-stroke: white;
 }
 
-.chart__x-label,
-.chart__y-label {
-  font-family: $font-family;
-  font-size: $fs-12;
-  font-weight: $font-weight-regular;
-}
-
 svg {
   flex: 1 1 0;
   min-height: 0;

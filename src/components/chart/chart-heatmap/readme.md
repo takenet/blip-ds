@@ -23,7 +23,7 @@ Slot children (all optional):
 
 | Property      | Attribute      | Description                                                                                  | Type                     | Default                                 |
 | ------------- | -------------- | -------------------------------------------------------------------------------------------- | ------------------------ | --------------------------------------- |
-| `cellPadding` | `cell-padding` | Gap between cells in pixels.                                                                 | `number`                 | `2`                                     |
+| `cellPadding` | `cell-padding` | Gap between cells in pixels.                                                                 | `number`                 | `4`                                     |
 | `cellRadius`  | `cell-radius`  | Border-radius of each cell in pixels.                                                        | `number`                 | `4`                                     |
 | `color`       | `color`        | Base fill color of cells. Can be overridden by <bds-heatmap-cell color="...">.               | `string`                 | `'var(--color-extended-blue, #0d6efd)'` |
 | `data`        | `data`         | Array of data objects or JSON string. Each object must have xKey, yKey, and valueKey fields. | `ChartDatum[] \| string` | `[]`                                    |

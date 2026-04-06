@@ -1,8 +1,8 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
 import { ChartDatum, Margin } from '../utils/chart.types';
-import { calculateHeatmapLayout, formatTick } from '../utils/chart-math';
+import { calculateHeatmapLayout } from '../utils/chart-math';
+import { renderXAxisLabels, renderYAxisLabels, TICK_LENGTH } from '../utils/chart-axis-render';
 
-const TICK_LENGTH = 6;
 const FONT_SIZE = 12;
 const FONT_BASELINE = 4;
 
@@ -20,13 +20,10 @@ const FONT_BASELINE = 4;
  *   - <bds-chart-tooltip> enable hover tooltip
  *
  * @example
- * <bds-chart-heatmap
- *   data='[{"x":"Seg","y":"9h","value":42}]'
- *   x-key="x" y-key="y" value-key="value"
- * >
- *   <bds-heatmap-cell color="#0d6efd" radius="4"></bds-heatmap-cell>
- *   <bds-x-axis show="true"></bds-x-axis>
- *   <bds-y-axis show="true"></bds-y-axis>
+ * <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+ *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+ *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+ *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
  *   <bds-chart-tooltip></bds-chart-tooltip>
  * </bds-chart-heatmap>
  */
@@ -51,7 +48,7 @@ export class ChartHeatmap {
   /** Border-radius of each cell in pixels. */
   @Prop() cellRadius: number = 4;
   /** Gap between cells in pixels. */
-  @Prop() cellPadding: number = 2;
+  @Prop() cellPadding: number = 4;
 
   @State() private actualWidth: number = 640;
   @State() private actualHeight: number = 280;
@@ -102,12 +99,18 @@ export class ChartHeatmap {
     const showXTickLine = parseBoolean(xAxisElement?.getAttribute('tickLine') ?? xAxisElement?.tickLine ?? 'true');
     const xTickMargin = Number(xAxisElement?.getAttribute('tickMargin') ?? xAxisElement?.tickMargin ?? 10);
     const xTickFormatter = xAxisElement?.getAttribute('data-tick-formatter') ?? xAxisElement?.tickFormatter;
+    const xKey: string = xAxisElement?.getAttribute('data-key') ?? xAxisElement?.getAttribute('dataKey') ?? xAxisElement?.dataKey ?? this.xKey;
+    const xLineColor: string = xAxisElement?.getAttribute('line-color') ?? xAxisElement?.lineColor ?? 'var(--color-border-1)';
+    const xLabelColor: string = xAxisElement?.getAttribute('label-color') ?? xAxisElement?.labelColor ?? 'var(--color-content-default)';
 
     const yAxisElement = this.host.querySelector('bds-y-axis') as any;
     const showYAxisLabels = parseBoolean(yAxisElement?.getAttribute('show') ?? yAxisElement?.show ?? 'true');
     const showYTickLine = parseBoolean(yAxisElement?.getAttribute('tickLine') ?? yAxisElement?.tickLine ?? 'true');
     const yTickMargin = Number(yAxisElement?.getAttribute('tickMargin') ?? yAxisElement?.tickMargin ?? 10);
     const yTickFormatter = yAxisElement?.getAttribute('data-tick-formatter') ?? yAxisElement?.tickFormatter;
+    const yKey: string = yAxisElement?.getAttribute('data-key') ?? yAxisElement?.getAttribute('dataKey') ?? yAxisElement?.dataKey ?? this.yKey;
+    const yLineColor: string = yAxisElement?.getAttribute('line-color') ?? yAxisElement?.lineColor ?? 'var(--color-border-1)';
+    const yLabelColor: string = yAxisElement?.getAttribute('label-color') ?? yAxisElement?.labelColor ?? 'var(--color-content-default)';
 
     // bds-heatmap-cell overrides
     const cellEl = this.host.querySelector('bds-heatmap-cell') as any;
@@ -117,8 +120,8 @@ export class ChartHeatmap {
 
     return {
       showHorizontalGrid, showVerticalGrid, gridStrokeStyle,
-      showXLabels, showXTickLine, xTickMargin, xTickFormatter,
-      showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter,
+      showXLabels, showXTickLine, xTickMargin, xTickFormatter, xKey, xLineColor, xLabelColor,
+      showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter, yKey, yLineColor, yLabelColor,
       color, cellRadius, valueKey,
     };
   }
@@ -153,7 +156,7 @@ export class ChartHeatmap {
     const config = this.readConfig();
     const margin = this.computeMargin(config);
     const { cells } = calculateHeatmapLayout(
-      this.data, this.xKey, this.yKey, config.valueKey,
+      this.data, config.xKey, config.yKey, config.valueKey,
       this.actualWidth, this.actualHeight, margin, this.cellPadding
     );
     if (cells.length === 0) return;
@@ -179,7 +182,7 @@ export class ChartHeatmap {
         visible: true,
         x: event.clientX,
         y: event.clientY,
-        label: `${datum[this.xKey]} × ${datum[this.yKey]}`,
+        label: `${datum[config.xKey]} × ${datum[config.yKey]}`,
         entries: [{ color: config.color, name: config.valueKey, value: datum[config.valueKey] ?? '' }],
       });
     }
@@ -189,14 +192,14 @@ export class ChartHeatmap {
     const config = this.readConfig();
     const {
       showHorizontalGrid, showVerticalGrid, gridStrokeStyle,
-      showXLabels, showXTickLine, xTickMargin, xTickFormatter,
-      showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter,
+      showXLabels, showXTickLine, xTickMargin, xTickFormatter, xKey, xLineColor, xLabelColor,
+      showYAxisLabels, showYTickLine, yTickMargin, yTickFormatter, yKey, yLineColor, yLabelColor,
       color, cellRadius, valueKey,
     } = config;
 
     const margin = this.computeMargin(config);
     const { cells, xLabels, yLabels } = calculateHeatmapLayout(
-      this.data, this.xKey, this.yKey, valueKey,
+      this.data, xKey, yKey, valueKey,
       this.actualWidth, this.actualHeight, margin, this.cellPadding
     );
 
@@ -284,64 +287,27 @@ export class ChartHeatmap {
           </g>
 
           {/* X-axis labels (column categories at bottom) */}
-          {showXLabels && (
-            <g class="chart-heatmap__x-axis" style={{ pointerEvents: 'none' }}>
-              {xLabels.map((label, idx) => (
-                <g key={`x-${idx}`}>
-                  {showXTickLine && (
-                    <line
-                      x1={margin.left + label.x}
-                      y1={this.actualHeight - margin.bottom}
-                      x2={margin.left + label.x}
-                      y2={this.actualHeight - margin.bottom + TICK_LENGTH}
-                      stroke="rgba(0,0,0,0.3)"
-                      stroke-width="1"
-                    />
-                  )}
-                  <text
-                    text-anchor="middle"
-                    font-size="12"
-                    fill="rgba(0,0,0,0.6)"
-                    x={margin.left + label.x}
-                    y={this.actualHeight - margin.bottom + TICK_LENGTH + xTickMargin}
-                    class="chart-heatmap__x-label"
-                  >
-                    {formatTick(label.label, xTickFormatter)}
-                  </text>
-                </g>
-              ))}
-            </g>
-          )}
+          {showXLabels && renderXAxisLabels({
+            xLabels,
+            margin,
+            actualHeight: this.actualHeight,
+            showTickLine: showXTickLine,
+            tickMargin: xTickMargin,
+            tickFormatter: xTickFormatter,
+            lineColor: xLineColor,
+            labelColor: xLabelColor,
+          })}
 
           {/* Y-axis labels (row categories on left) */}
-          {showYAxisLabels && (
-            <g class="chart-heatmap__y-axis" style={{ pointerEvents: 'none' }}>
-              {yLabels.map((label, idx) => (
-                <g key={`y-${idx}`}>
-                  {showYTickLine && (
-                    <line
-                      x1={margin.left - TICK_LENGTH}
-                      y1={margin.top + label.y}
-                      x2={margin.left}
-                      y2={margin.top + label.y}
-                      stroke="rgba(0,0,0,0.3)"
-                      stroke-width="1"
-                    />
-                  )}
-                  <text
-                    text-anchor="end"
-                    font-size="12"
-                    fill="rgba(0,0,0,0.6)"
-                    x={margin.left - (showYTickLine ? TICK_LENGTH : 0) - yTickMargin}
-                    y={margin.top + label.y + 4}
-                    class="chart-heatmap__y-label"
-                  >
-                    {formatTick(label.label, yTickFormatter)}
-                  </text>
-                </g>
-              ))}
-            </g>
-          )}
+          {showYAxisLabels && renderYAxisLabels({
+            yLabels,
+            margin,
+            showTickLine: showYTickLine,
+            tickMargin: yTickMargin,
+            tickFormatter: yTickFormatter,
+            lineColor: yLineColor,
+            labelColor: yLabelColor,
+          })}
 
           {/* Invisible overlay for mouse events — must be topmost */}
           <rect

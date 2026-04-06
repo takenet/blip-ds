@@ -21,13 +21,14 @@ describe('bds-chart-container', () => {
     expect(slot).toBeTruthy();
   });
 
-  it('accepts max-width and max-height props', async () => {
+  it('projects slotted children', async () => {
     const page = await newSpecPage({
       components: [ChartContainer],
-      html: '<bds-chart-container max-width="1920px" max-height="1080px"></bds-chart-container>',
+      html: '<bds-chart-container><span id="child">hello</span></bds-chart-container>',
     });
 
-    expect(page.root.getAttribute('max-width')).toBe('1920px');
-    expect(page.root.getAttribute('max-height')).toBe('1080px');
+    const child = page.root.querySelector('#child');
+    expect(child).toBeTruthy();
+    expect(child.textContent).toBe('hello');
   });
 });

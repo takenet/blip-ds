@@ -1,3 +1,6 @@
+@use '../chart-x-axis/chart-x-axis';
+@use '../chart-y-axis/chart-y-axis';
+
 :host {
   display: flex;
   flex-direction: column;

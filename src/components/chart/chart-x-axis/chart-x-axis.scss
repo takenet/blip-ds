@@ -1,8 +1,13 @@
+@use '../../../globals/helpers.scss' as *;
+
 .chart__x-labels {
   font-family: inherit;
   pointer-events: none;
 }
 
 .chart__x-label {
+  font-family: $font-family;
+  font-size: $fs-12;
+  font-weight: $font-weight-regular;
   user-select: none;
 }

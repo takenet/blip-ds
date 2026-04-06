@@ -16,6 +16,14 @@
 | `strokeWidth`  | `stroke-width`  |             | `number`                 | `2`                                     |
 
 
+## CSS Custom Properties
+
+| Name                       | Description                                                      |
+| -------------------------- | ---------------------------------------------------------------- |
+| `--chart-hover-dot-stroke` | Stroke color of the dot shown on hover for lines with dot=false. |
+| `--chart-hover-line-color` | Color of the vertical hover indicator line.                      |
+
+
 ## Dependencies
 
 ### Used by

@@ -1,6 +1,7 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
 import { ChartDatum, Margin } from '../utils/chart.types';
 import { calculateBarChartLayout, formatTick, buildCategoryColorMap, BarSeriesConfig } from '../utils/chart-math';
+import { renderXAxisLabels, renderYAxisLabels } from '../utils/chart-axis-render';
 
 type BarConfig = BarSeriesConfig & { color: string; radius: number };
 
@@ -398,106 +399,74 @@ export class ChartBar {
 
           {/* X-axis (categories at bottom in default; categories on left in vertical) */}
           {showXLabels && (
-            <g class="chart-bar__x-axis" style={{ pointerEvents: 'none' }}>
-              {xLabels.map((label, idx) => (
-                <g key={`x-axis-${idx}`}>
-                  {this.vertical ? (
-                    // Vertical mode: category label on Y axis (left)
-                    <text
-                      text-anchor="end"
-                      fill={xLabelColor}
-                      font-weight={idx === this.hoveredIndex ? 'bold' : 'normal'}
-                      x={margin.left - 8}
-                      y={margin.top + label.x + 4}
-                      class="chart__x-label"
-                    >
-                      {formatTick(label.label, xTickFormatter)}
-                    </text>
-                  ) : (
-                    // Default: category label on X axis (bottom)
-                    <g>
-                      {showXTickLine && (
-                        <line
-                          x1={margin.left + label.x}
-                          y1={this.actualHeight - margin.bottom}
-                          x2={margin.left + label.x}
-                          y2={this.actualHeight - margin.bottom + 6}
-                          stroke={xLineColor}
-                          stroke-width="1"
-                        />
-                      )}
-                      <text
-                        text-anchor="middle"
-                        fill={xLabelColor}
-                        font-weight={idx === this.hoveredIndex ? 'bold' : 'normal'}
-                        x={margin.left + label.x}
-                        y={this.actualHeight - margin.bottom + 6 + xTickMargin}
-                        class="chart__x-label"
-                      >
-                        {formatTick(label.label, xTickFormatter)}
-                      </text>
-                    </g>
-                  )}
-                </g>
-              ))}
-            </g>
+            this.vertical ? (
+              // Vertical mode: category labels on left — unique layout, rendered inline
+              <g class="chart-bar__x-axis" style={{ pointerEvents: 'none' }}>
+                {xLabels.map((label, idx) => (
+                  <text
+                    key={`x-axis-${idx}`}
+                    text-anchor="end"
+                    fill={xLabelColor}
+                    font-weight={idx === this.hoveredIndex ? 'bold' : 'normal'}
+                    x={margin.left - 8}
+                    y={margin.top + label.x + 4}
+                    class="chart__x-label"
+                  >
+                    {formatTick(label.label, xTickFormatter)}
+                  </text>
+                ))}
+              </g>
+            ) : renderXAxisLabels({
+              xLabels,
+              margin,
+              actualHeight: this.actualHeight,
+              showTickLine: showXTickLine,
+              tickMargin: xTickMargin,
+              tickFormatter: xTickFormatter,
+              lineColor: xLineColor,
+              labelColor: xLabelColor,
+              hoveredIndex: this.hoveredIndex,
+            })
           )}
 
           {/* Y-axis (values on left in default; values at bottom in vertical) */}
           {showYAxisLabels && (
-            <g class="chart-bar__y-axis" style={{ pointerEvents: 'none' }}>
-              {yLabels.map((label, idx) => (
-                <g key={`y-axis-${idx}`}>
-                  {this.vertical ? (
-                    // Vertical mode: value tick on X axis (bottom)
-                    <g>
-                      {showYTickLine && (
-                        <line
-                          x1={margin.left + label.y}
-                          y1={this.actualHeight - margin.bottom}
-                          x2={margin.left + label.y}
-                          y2={this.actualHeight - margin.bottom + 6}
-                          stroke={yLineColor}
-                          stroke-width="1"
-                        />
-                      )}
-                      <text
-                        text-anchor="middle"
-                        fill={yLabelColor}
-                        x={margin.left + label.y}
-                        y={this.actualHeight - margin.bottom + 6 + yTickMargin}
-                        class="chart__y-label"
-                      >
-                        {formatTick(label.label, yTickFormatter)}
-                      </text>
-                    </g>
-                  ) : (
-                    // Default: value tick on Y axis (left)
-                    <g>
-                      {showYTickLine && (
-                        <line
-                          x1={margin.left - 6}
-                          y1={margin.top + label.y}
-                          x2={margin.left}
-                          y2={margin.top + label.y}
-                          stroke={yLineColor}
-                          stroke-width="1"
-                        />
-                      )}
-                      <text
-                        text-anchor="end"
-                        fill={yLabelColor}
-                        x={margin.left - 6 - yTickMargin}
-                        y={margin.top + label.y + 4}
-                        class="chart__y-label"
-                      >
-                        {formatTick(label.label, yTickFormatter)}
-                      </text>
-                    </g>
-                  )}
-                </g>
-              ))}
-            </g>
+            this.vertical ? (
+              // Vertical mode: value ticks at bottom — unique layout, rendered inline
+              <g class="chart-bar__y-axis" style={{ pointerEvents: 'none' }}>
+                {yLabels.map((label, idx) => (
+                  <g key={`y-axis-${idx}`}>
+                    {showYTickLine && (
+                      <line
+                        x1={margin.left + label.y}
+                        y1={this.actualHeight - margin.bottom}
+                        x2={margin.left + label.y}
+                        y2={this.actualHeight - margin.bottom + 6}
+                        stroke={yLineColor}
+                        stroke-width="1"
+                      />
+                    )}
+                    <text
+                      text-anchor="middle"
+                      fill={yLabelColor}
+                      x={margin.left + label.y}
+                      y={this.actualHeight - margin.bottom + 6 + yTickMargin}
+                      class="chart__y-label"
+                    >
+                      {formatTick(label.label, yTickFormatter)}
+                    </text>
+                  </g>
+                ))}
+              </g>
+            ) : renderYAxisLabels({
+              yLabels,
+              margin,
+              showTickLine: showYTickLine,
+              tickMargin: yTickMargin,
+              tickFormatter: yTickFormatter,
+              lineColor: yLineColor,
+              labelColor: yLabelColor,
+            })
           )}
 
           {/* Invisible overlay rect for mouse events */}

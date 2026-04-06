@@ -17,13 +17,6 @@
   --chart-hover-highlight-color: rgba(0, 0, 0, 0.08);
 }
 
-.chart__x-label,
-.chart__y-label {
-  font-family: $font-family;
-  font-size: $fs-12;
-  font-weight: $font-weight-regular;
-}
-
 svg {
   flex: 1 1 0;
   min-height: 0;
@@ -43,3 +36,4 @@ svg {
   transform: translateY(-4px);
   opacity: 0.9;
 }
+
