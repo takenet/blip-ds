@@ -28,6 +28,8 @@ export const Properties = (args) => {
       <bds-accordion start-open={args.startOpen}>
         <bds-accordion-header
           accordion-title="Titulo do accordion"
+          icon={args.icon}
+          icon-color={args.iconColor}
         ></bds-accordion-header>
         <bds-accordion-body>
           <bds-typo variant="fs-16">{paragraph}</bds-typo>
@@ -36,6 +38,8 @@ export const Properties = (args) => {
       <bds-accordion start-open={args.startOpen}>
         <bds-accordion-header
           accordion-title="Titulo do accordion"
+          icon={args.icon}
+          icon-color={args.iconColor}
         ></bds-accordion-header>
         <bds-accordion-body>
           <bds-typo variant="fs-16">{paragraph}</bds-typo>
@@ -60,11 +64,21 @@ Properties.argTypes = {
     description: 'Escolha se o accordion terá um linha dividindo os accordions.',
     control: 'boolean',
   },
+  icon: {
+    description: 'Escolha o ícone do header do accordion.',
+    control: 'text',
+  },
+  iconColor: {
+    description: 'Escolha a cor do ícone do header do accordion.',
+    control: 'text',
+  },
 };
 
 Properties.args = {
   collapse: 'single',
   divisor: true,
+  icon: '',
+  iconColor: '',
 };
 
 export const Methods = () => {
@@ -91,7 +105,7 @@ export const Methods = () => {
         </bds-grid>
         <bds-accordion-group id="gp" collapse="multiple">
           <bds-accordion id="primeiro-accordion">
-            <bds-accordion-header accordion-title="Título do accordion"></bds-accordion-header>
+            <bds-accordion-header accordion-title="Título do accordion" icon="info" icon-color="green"></bds-accordion-header>
             <bds-accordion-body>
               <bds-typo variant="fs-16">{paragraph}</bds-typo>
             </bds-accordion-body>
@@ -126,7 +140,7 @@ export const Events = () => {
       </bds-button>
       <bds-accordion-group id="accGroupEvent" collapse="multiple">
         <bds-accordion>
-          <bds-accordion-header accordion-title="Título do accordion"></bds-accordion-header>
+          <bds-accordion-header accordion-title="Título do accordion" icon="info" icon-color="green"></bds-accordion-header>
           <bds-accordion-body>
             <bds-typo variant="fs-16">{paragraph}</bds-typo>
           </bds-accordion-body>
@@ -146,7 +160,7 @@ export const FrameworkReact = () => {
   return (
     <BdsAccordionGroup collapse="multiple">
       <BdsAccordion>
-        <BdsAccordionHeader accordion-title="Título do accordion"></BdsAccordionHeader>
+        <BdsAccordionHeader accordion-title="Título do accordion" icon="info" icon-color="green"></BdsAccordionHeader>
         <BdsAccordionBody>
           <BdsTypo variant="fs-16">{paragraph}</BdsTypo>
         </BdsAccordionBody>

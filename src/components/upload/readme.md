@@ -17,17 +17,17 @@
 | `error`           | `error`             | Used for add a error message. In case a verify.                                                                          | `string`                        | `undefined` |
 | `language`        | `language`          | Set the language for fixed texts.                                                                                        | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`   |
 | `multiple`        | `multiple`          | Used to allow upload multiple files.                                                                                     | `boolean`                       | `undefined` |
-| `showListPreview` | `show-list-preview` | Used to show or hide the file list preview.                                                                              | `boolean`                       | `true`      |
+| `showListPreview` | `show-list-preview` | Used to show or hide the list preview of uploaded files.                                                                 | `boolean`                       | `true`      |
 | `subtitle`        | `subtitle`          | Used for add a text on subtitle.                                                                                         | `string`                        | `undefined` |
 | `titleName`       | `title-name`        | Used for add a text on title.                                                                                            | `string`                        | `undefined` |
 
 
 ## Events
 
-| Event             | Description                                    | Type                              |
-| ----------------- | ---------------------------------------------- | --------------------------------- |
-| `bdsUploadChange` | Event emited when change the value of Upload.  | `CustomEvent<{ value: File[]; }>` |
-| `bdsUploadDelete` | Event emited when delete a item from the list. | `CustomEvent<{ value: File[]; }>` |
+| Event             | Description                                    | Type               |
+| ----------------- | ---------------------------------------------- | ------------------ |
+| `bdsUploadChange` | Event emited when change the value of Upload.  | `CustomEvent<any>` |
+| `bdsUploadDelete` | Event emited when delete a item from the list. | `CustomEvent<any>` |
 
 
 ## Methods

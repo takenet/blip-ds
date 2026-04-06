@@ -26,7 +26,7 @@ export class AccordionHeader {
    */
   @Prop() icon?: string = null;
   /**
-   * Icon color for the accordion header icons.
+   * Icon color. Used to set the color of icons in the accordion header.
    */
   @Prop() iconColor?: string = 'inherit';
 
@@ -81,6 +81,8 @@ export class AccordionHeader {
       }
     }
   }
+
+  
 
   render() {
     return (
