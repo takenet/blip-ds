@@ -1,7 +1,7 @@
 import { r as registerInstance, h, H as Host } from './index-gowA9FoV.js';
 
 const dependencies = {
-	"blip-tokens": "^1.102.1"};
+	"blip-tokens": "^1.103.0"};
 var packageJson = {
 	dependencies: dependencies};
 

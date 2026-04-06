@@ -214,7 +214,7 @@ export namespace Components {
          */
         "icon"?: string;
         /**
-          * Icon color for the accordion header icons.
+          * Icon color. Used to set the color of icons in the accordion header.
           * @default 'inherit'
          */
         "iconColor"?: string;
@@ -3621,7 +3621,7 @@ export namespace Components {
          */
         "multiple": boolean;
         /**
-          * Used to show or hide the file list preview.
+          * Used to show or hide the list preview of uploaded files.
           * @default true
          */
         "showListPreview"?: boolean;
@@ -4902,7 +4902,7 @@ declare global {
         new (): HTMLBdsSkeletonElement;
     };
     interface HTMLBdsSliderElementEventMap {
-        "bdsChange": StepOption;
+        "bdsChange": any;
     }
     interface HTMLBdsSliderElement extends Components.BdsSlider, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSliderElementEventMap>(type: K, listener: (this: HTMLBdsSliderElement, ev: BdsSliderCustomEvent<HTMLBdsSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5107,8 +5107,8 @@ declare global {
         new (): HTMLBdsTypoElement;
     };
     interface HTMLBdsUploadElementEventMap {
-        "bdsUploadDelete": { value: File[] };
-        "bdsUploadChange": { value: File[] };
+        "bdsUploadDelete": any;
+        "bdsUploadChange": any;
     }
     interface HTMLBdsUploadElement extends Components.BdsUpload, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsUploadElementEventMap>(type: K, listener: (this: HTMLBdsUploadElement, ev: BdsUploadCustomEvent<HTMLBdsUploadElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5298,7 +5298,7 @@ declare namespace LocalJSX {
          */
         "icon"?: string;
         /**
-          * Icon color for the accordion header icons.
+          * Icon color. Used to set the color of icons in the accordion header.
           * @default 'inherit'
          */
         "iconColor"?: string;
@@ -8489,7 +8489,7 @@ declare namespace LocalJSX {
         /**
           * bdsChange. Event to return selected date value.
          */
-        "onBdsChange"?: (event: BdsSliderCustomEvent<StepOption>) => void;
+        "onBdsChange"?: (event: BdsSliderCustomEvent<any>) => void;
         /**
           * Step, property to insert steps into the input range.
          */
@@ -8986,13 +8986,13 @@ declare namespace LocalJSX {
         /**
           * Event emited when change the value of Upload.
          */
-        "onBdsUploadChange"?: (event: BdsUploadCustomEvent<{ value: File[] }>) => void;
+        "onBdsUploadChange"?: (event: BdsUploadCustomEvent<any>) => void;
         /**
           * Event emited when delete a item from the list.
          */
-        "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<{ value: File[] }>) => void;
+        "onBdsUploadDelete"?: (event: BdsUploadCustomEvent<any>) => void;
         /**
-          * Used to show or hide the file list preview.
+          * Used to show or hide the list preview of uploaded files.
           * @default true
          */
         "showListPreview"?: boolean;

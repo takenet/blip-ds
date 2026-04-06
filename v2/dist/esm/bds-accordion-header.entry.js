@@ -18,7 +18,7 @@ const AccordionHeader = class {
          */
         this.icon = null;
         /**
-         * Icon color for the accordion header icons.
+         * Icon color. Used to set the color of icons in the accordion header.
          */
         this.iconColor = 'inherit';
         /**
@@ -67,7 +67,7 @@ const AccordionHeader = class {
         }
     }
     render() {
-        return (h("div", { key: '92e0168a6a0da9757332915b48f52a08cfbd5cc3', onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && h("bds-icon", { size: "x-large", name: this.icon, color: this.iconColor })), this.accordionTitle && (h("bds-typo", { key: '9181738eddc57a5c4213bf5b9e514064903c184e', bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), h("slot", { key: 'be6bedd19deb18f84bb82266f1755c50f3825531' }), h("bds-icon", { key: '7d3c066b97df4594da86327f391d04f884da42d8', class: {
+        return (h("div", { key: 'ce1e555024222413f950ffe6a0e03987daf24f1f', onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && h("bds-icon", { size: "x-large", name: this.icon, color: this.iconColor })), this.accordionTitle && (h("bds-typo", { key: '5537dfd470cc865b7865a5a0f7419b249550ebbb', bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), h("slot", { key: '544100fa56e20a4ea7b7284f7d1ec78df8ee4dde' }), h("bds-icon", { key: 'ee71dd5c35c84c817cf05f8642e03772612450ad', class: {
                 accButton: true,
                 accButton__isopen: this.isOpen,
                 accButton__isfocus: this.btToggleIsfocus,
