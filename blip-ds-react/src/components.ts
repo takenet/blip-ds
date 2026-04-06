@@ -45,6 +45,7 @@ import { BdsChartHeatmap as BdsChartHeatmapElement, defineCustomElement as defin
 import { BdsChartLabels as BdsChartLabelsElement, defineCustomElement as defineBdsChartLabels } from "blip-ds/dist/components/bds-chart-labels.js";
 import { BdsChartLegend as BdsChartLegendElement, defineCustomElement as defineBdsChartLegend } from "blip-ds/dist/components/bds-chart-legend.js";
 import { BdsChartLine as BdsChartLineElement, defineCustomElement as defineBdsChartLine } from "blip-ds/dist/components/bds-chart-line.js";
+import { BdsChartPie as BdsChartPieElement, defineCustomElement as defineBdsChartPie } from "blip-ds/dist/components/bds-chart-pie.js";
 import { BdsChartTooltip as BdsChartTooltipElement, defineCustomElement as defineBdsChartTooltip } from "blip-ds/dist/components/bds-chart-tooltip.js";
 import { BdsCheckbox as BdsCheckboxElement, defineCustomElement as defineBdsCheckbox } from "blip-ds/dist/components/bds-checkbox.js";
 import { BdsChipClickable as BdsChipClickableElement, defineCustomElement as defineBdsChipClickable } from "blip-ds/dist/components/bds-chip-clickable.js";
@@ -94,6 +95,7 @@ import { BdsNavbarContent as BdsNavbarContentElement, defineCustomElement as def
 import { BdsNavbar as BdsNavbarElement, defineCustomElement as defineBdsNavbar } from "blip-ds/dist/components/bds-navbar.js";
 import { BdsPagination as BdsPaginationElement, defineCustomElement as defineBdsPagination } from "blip-ds/dist/components/bds-pagination.js";
 import { BdsPaper as BdsPaperElement, defineCustomElement as defineBdsPaper } from "blip-ds/dist/components/bds-paper.js";
+import { BdsPieConfig as BdsPieConfigElement, defineCustomElement as defineBdsPieConfig } from "blip-ds/dist/components/bds-pie-config.js";
 import { BdsProgressBar as BdsProgressBarElement, defineCustomElement as defineBdsProgressBar } from "blip-ds/dist/components/bds-progress-bar.js";
 import { BdsRadioGroup as BdsRadioGroupElement, defineCustomElement as defineBdsRadioGroup } from "blip-ds/dist/components/bds-radio-group.js";
 import { BdsRadio as BdsRadioElement, defineCustomElement as defineBdsRadio } from "blip-ds/dist/components/bds-radio.js";
@@ -549,6 +551,17 @@ export const BdsChartLine: StencilReactComponent<BdsChartLineElement, BdsChartLi
     react: React,
     events: {} as BdsChartLineEvents,
     defineCustomElement: defineBdsChartLine
+});
+
+export type BdsChartPieEvents = NonNullable<unknown>;
+
+export const BdsChartPie: StencilReactComponent<BdsChartPieElement, BdsChartPieEvents> = /*@__PURE__*/ createComponent<BdsChartPieElement, BdsChartPieEvents>({
+    tagName: 'bds-chart-pie',
+    elementClass: BdsChartPieElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsChartPieEvents,
+    defineCustomElement: defineBdsChartPie
 });
 
 export type BdsChartTooltipEvents = NonNullable<unknown>;
@@ -1270,6 +1283,17 @@ export const BdsPaper: StencilReactComponent<BdsPaperElement, BdsPaperEvents> = 
     react: React,
     events: {} as BdsPaperEvents,
     defineCustomElement: defineBdsPaper
+});
+
+export type BdsPieConfigEvents = NonNullable<unknown>;
+
+export const BdsPieConfig: StencilReactComponent<BdsPieConfigElement, BdsPieConfigEvents> = /*@__PURE__*/ createComponent<BdsPieConfigElement, BdsPieConfigEvents>({
+    tagName: 'bds-pie-config',
+    elementClass: BdsPieConfigElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as BdsPieConfigEvents,
+    defineCustomElement: defineBdsPieConfig
 });
 
 export type BdsProgressBarEvents = NonNullable<unknown>;
