@@ -26,19 +26,6 @@ Usage: Pass gridLines data via context or parent coordination
 | `vertical`    | `vertical`     | Show vertical grid lines (X-axis)   | `boolean \| string`   | `false`                   |
 
 
-## Dependencies
-
-### Used by
-
- - [bds-test-component](../../test-component)
-
-### Graph
-```mermaid
-graph TD;
-  bds-test-component --> bds-chart-grid
-  style bds-chart-grid fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

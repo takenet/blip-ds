@@ -26,19 +26,6 @@ Must be used as a child of bds-chart-line or bds-chart-bar
 | `tickMargin`    | `tick-margin`    | Margin between tick and label (in pixels)                                                                              | `number`  | `10`                             |
 
 
-## Dependencies
-
-### Used by
-
- - [bds-test-component](../../test-component)
-
-### Graph
-```mermaid
-graph TD;
-  bds-test-component --> bds-y-axis
-  style bds-y-axis fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

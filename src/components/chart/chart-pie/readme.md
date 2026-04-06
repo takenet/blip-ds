@@ -27,26 +27,6 @@ Slot children (all optional):
 | `valueKey` | `value-key` | Field name whose numeric value determines each slice size.                                | `string`                 | `'value'`                               |
 
 
-## CSS Custom Properties
-
-| Name                           | Description                      |
-| ------------------------------ | -------------------------------- |
-| `--chart-pie-hover-brightness` | Filter applied to hovered slice. |
-
-
-## Dependencies
-
-### Used by
-
- - [bds-test-component](../../test-component)
-
-### Graph
-```mermaid
-graph TD;
-  bds-test-component --> bds-chart-pie
-  style bds-chart-pie fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

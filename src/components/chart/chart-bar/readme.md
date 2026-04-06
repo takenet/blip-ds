@@ -16,26 +16,6 @@
 | `vertical`  | `vertical`   |             | `boolean`                       | `false`                                  |
 
 
-## CSS Custom Properties
-
-| Name                            | Description                                  |
-| ------------------------------- | -------------------------------------------- |
-| `--chart-hover-highlight-color` | Background color of the bar hover highlight. |
-
-
-## Dependencies
-
-### Used by
-
- - [bds-test-component](../../test-component)
-
-### Graph
-```mermaid
-graph TD;
-  bds-test-component --> bds-chart-bar
-  style bds-chart-bar fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
