@@ -932,20 +932,17 @@ export namespace Components {
      *   - <bds-y-axis>        configure left axis labels
      *   - <bds-chart-grid>    show grid lines
      *   - <bds-chart-tooltip> enable hover tooltip
-     * @example <bds-chart-heatmap
-     *   data='[{"x":"Seg","y":"9h","value":42}]'
-     *   x-key="x" y-key="y" value-key="value"
-     * >
-     *   <bds-heatmap-cell color="#0d6efd" radius="4"></bds-heatmap-cell>
-     *   <bds-x-axis show="true"></bds-x-axis>
-     *   <bds-y-axis show="true"></bds-y-axis>
+     * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+     *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+     *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+     *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
      *   <bds-chart-tooltip></bds-chart-tooltip>
      * </bds-chart-heatmap>
      */
     interface BdsChartHeatmap {
         /**
           * Gap between cells in pixels.
-          * @default 2
+          * @default 4
          */
         "cellPadding": number;
         /**
@@ -1039,6 +1036,46 @@ export namespace Components {
           * @default 2
          */
         "strokeWidth": number;
+    }
+    /**
+     * ChartPie — Donut/pie chart component.
+     * Renders categorical data as a donut chart. Each datum becomes one slice.
+     * Colors are assigned automatically from the design-system palette.
+     * Slot children (all optional):
+     *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+     *   - <bds-chart-legend>    enable clickable legend
+     *   - <bds-chart-tooltip>   enable hover tooltip
+     * @example <bds-chart-pie
+     *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+     *   label-key="label"
+     *   value-key="value"
+     * >
+     *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+     *   <bds-chart-legend align="center"></bds-chart-legend>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-pie>
+     */
+    interface BdsChartPie {
+        /**
+          * Fallback color (palette is used automatically; this is a last-resort override).
+          * @default 'var(--color-extended-blue, #0d6efd)'
+         */
+        "color": string;
+        /**
+          * Array of data objects or JSON string. Each object must have labelKey and valueKey fields.
+          * @default []
+         */
+        "data": ChartDatum[] | string;
+        /**
+          * Field name used for slice labels.
+          * @default 'label'
+         */
+        "labelKey": string;
+        /**
+          * Field name whose numeric value determines each slice size.
+          * @default 'value'
+         */
+        "valueKey": string;
     }
     interface BdsChartTooltip {
         /**
@@ -2868,6 +2905,31 @@ export namespace Components {
          */
         "width"?: string;
     }
+    /**
+     * PieConfig — Visual configuration slot for bds-chart-pie.
+     * Place as a child of <bds-chart-pie> to override default appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-pie data="...">
+     *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+     * </bds-chart-pie>
+     */
+    interface BdsPieConfig {
+        /**
+          * Corner radius of each slice end-cap in pixels (0 = sharp corners). Default: 3
+          * @default 3
+         */
+        "cornerRadius": number;
+        /**
+          * Inner radius as a percentage of the outer radius (0 = pie, 60 = donut). Default: 60
+          * @default 60
+         */
+        "innerRadius": number;
+        /**
+          * Gap between slices in radians. Default: 0.02
+          * @default 0.02
+         */
+        "padAngle": number;
+    }
     interface BdsProgressBar {
         /**
           * Text, property to define status of component.
@@ -4577,13 +4639,10 @@ declare global {
      *   - <bds-y-axis>        configure left axis labels
      *   - <bds-chart-grid>    show grid lines
      *   - <bds-chart-tooltip> enable hover tooltip
-     * @example <bds-chart-heatmap
-     *   data='[{"x":"Seg","y":"9h","value":42}]'
-     *   x-key="x" y-key="y" value-key="value"
-     * >
-     *   <bds-heatmap-cell color="#0d6efd" radius="4"></bds-heatmap-cell>
-     *   <bds-x-axis show="true"></bds-x-axis>
-     *   <bds-y-axis show="true"></bds-y-axis>
+     * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+     *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+     *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+     *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
      *   <bds-chart-tooltip></bds-chart-tooltip>
      * </bds-chart-heatmap>
      */
@@ -4630,6 +4689,30 @@ declare global {
     var HTMLBdsChartLineElement: {
         prototype: HTMLBdsChartLineElement;
         new (): HTMLBdsChartLineElement;
+    };
+    /**
+     * ChartPie — Donut/pie chart component.
+     * Renders categorical data as a donut chart. Each datum becomes one slice.
+     * Colors are assigned automatically from the design-system palette.
+     * Slot children (all optional):
+     *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+     *   - <bds-chart-legend>    enable clickable legend
+     *   - <bds-chart-tooltip>   enable hover tooltip
+     * @example <bds-chart-pie
+     *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+     *   label-key="label"
+     *   value-key="value"
+     * >
+     *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+     *   <bds-chart-legend align="center"></bds-chart-legend>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-pie>
+     */
+    interface HTMLBdsChartPieElement extends Components.BdsChartPie, HTMLStencilElement {
+    }
+    var HTMLBdsChartPieElement: {
+        prototype: HTMLBdsChartPieElement;
+        new (): HTMLBdsChartPieElement;
     };
     interface HTMLBdsChartTooltipElement extends Components.BdsChartTooltip, HTMLStencilElement {
     }
@@ -5264,6 +5347,20 @@ declare global {
         prototype: HTMLBdsPaperElement;
         new (): HTMLBdsPaperElement;
     };
+    /**
+     * PieConfig — Visual configuration slot for bds-chart-pie.
+     * Place as a child of <bds-chart-pie> to override default appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-pie data="...">
+     *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+     * </bds-chart-pie>
+     */
+    interface HTMLBdsPieConfigElement extends Components.BdsPieConfig, HTMLStencilElement {
+    }
+    var HTMLBdsPieConfigElement: {
+        prototype: HTMLBdsPieConfigElement;
+        new (): HTMLBdsPieConfigElement;
+    };
     interface HTMLBdsProgressBarElement extends Components.BdsProgressBar, HTMLStencilElement {
     }
     var HTMLBdsProgressBarElement: {
@@ -5694,6 +5791,7 @@ declare global {
         "bds-chart-labels": HTMLBdsChartLabelsElement;
         "bds-chart-legend": HTMLBdsChartLegendElement;
         "bds-chart-line": HTMLBdsChartLineElement;
+        "bds-chart-pie": HTMLBdsChartPieElement;
         "bds-chart-tooltip": HTMLBdsChartTooltipElement;
         "bds-checkbox": HTMLBdsCheckboxElement;
         "bds-chip": HTMLBdsChipElement;
@@ -5743,6 +5841,7 @@ declare global {
         "bds-navbar-content": HTMLBdsNavbarContentElement;
         "bds-pagination": HTMLBdsPaginationElement;
         "bds-paper": HTMLBdsPaperElement;
+        "bds-pie-config": HTMLBdsPieConfigElement;
         "bds-progress-bar": HTMLBdsProgressBarElement;
         "bds-radio": HTMLBdsRadioElement;
         "bds-radio-group": HTMLBdsRadioGroupElement;
@@ -6592,20 +6691,17 @@ declare namespace LocalJSX {
      *   - <bds-y-axis>        configure left axis labels
      *   - <bds-chart-grid>    show grid lines
      *   - <bds-chart-tooltip> enable hover tooltip
-     * @example <bds-chart-heatmap
-     *   data='[{"x":"Seg","y":"9h","value":42}]'
-     *   x-key="x" y-key="y" value-key="value"
-     * >
-     *   <bds-heatmap-cell color="#0d6efd" radius="4"></bds-heatmap-cell>
-     *   <bds-x-axis show="true"></bds-x-axis>
-     *   <bds-y-axis show="true"></bds-y-axis>
+     * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+     *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+     *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+     *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
      *   <bds-chart-tooltip></bds-chart-tooltip>
      * </bds-chart-heatmap>
      */
     interface BdsChartHeatmap {
         /**
           * Gap between cells in pixels.
-          * @default 2
+          * @default 4
          */
         "cellPadding"?: number;
         /**
@@ -6699,6 +6795,46 @@ declare namespace LocalJSX {
           * @default 2
          */
         "strokeWidth"?: number;
+    }
+    /**
+     * ChartPie — Donut/pie chart component.
+     * Renders categorical data as a donut chart. Each datum becomes one slice.
+     * Colors are assigned automatically from the design-system palette.
+     * Slot children (all optional):
+     *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+     *   - <bds-chart-legend>    enable clickable legend
+     *   - <bds-chart-tooltip>   enable hover tooltip
+     * @example <bds-chart-pie
+     *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+     *   label-key="label"
+     *   value-key="value"
+     * >
+     *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+     *   <bds-chart-legend align="center"></bds-chart-legend>
+     *   <bds-chart-tooltip></bds-chart-tooltip>
+     * </bds-chart-pie>
+     */
+    interface BdsChartPie {
+        /**
+          * Fallback color (palette is used automatically; this is a last-resort override).
+          * @default 'var(--color-extended-blue, #0d6efd)'
+         */
+        "color"?: string;
+        /**
+          * Array of data objects or JSON string. Each object must have labelKey and valueKey fields.
+          * @default []
+         */
+        "data"?: ChartDatum[] | string;
+        /**
+          * Field name used for slice labels.
+          * @default 'label'
+         */
+        "labelKey"?: string;
+        /**
+          * Field name whose numeric value determines each slice size.
+          * @default 'value'
+         */
+        "valueKey"?: string;
     }
     interface BdsChartTooltip {
         /**
@@ -8737,6 +8873,31 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
+    /**
+     * PieConfig — Visual configuration slot for bds-chart-pie.
+     * Place as a child of <bds-chart-pie> to override default appearance.
+     * Renders as display:none — parent reads props via getAttribute().
+     * @example <bds-chart-pie data="...">
+     *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+     * </bds-chart-pie>
+     */
+    interface BdsPieConfig {
+        /**
+          * Corner radius of each slice end-cap in pixels (0 = sharp corners). Default: 3
+          * @default 3
+         */
+        "cornerRadius"?: number;
+        /**
+          * Inner radius as a percentage of the outer radius (0 = pie, 60 = donut). Default: 60
+          * @default 60
+         */
+        "innerRadius"?: number;
+        /**
+          * Gap between slices in radians. Default: 0.02
+          * @default 0.02
+         */
+        "padAngle"?: number;
+    }
     interface BdsProgressBar {
         /**
           * Text, property to define status of component.
@@ -9953,6 +10114,7 @@ declare namespace LocalJSX {
         "bds-chart-labels": BdsChartLabels;
         "bds-chart-legend": BdsChartLegend;
         "bds-chart-line": BdsChartLine;
+        "bds-chart-pie": BdsChartPie;
         "bds-chart-tooltip": BdsChartTooltip;
         "bds-checkbox": BdsCheckbox;
         "bds-chip": BdsChip;
@@ -10002,6 +10164,7 @@ declare namespace LocalJSX {
         "bds-navbar-content": BdsNavbarContent;
         "bds-pagination": BdsPagination;
         "bds-paper": BdsPaper;
+        "bds-pie-config": BdsPieConfig;
         "bds-progress-bar": BdsProgressBar;
         "bds-radio": BdsRadio;
         "bds-radio-group": BdsRadioGroup;
@@ -10095,13 +10258,10 @@ declare module "@stencil/core" {
              *   - <bds-y-axis>        configure left axis labels
              *   - <bds-chart-grid>    show grid lines
              *   - <bds-chart-tooltip> enable hover tooltip
-             * @example <bds-chart-heatmap
-             *   data='[{"x":"Seg","y":"9h","value":42}]'
-             *   x-key="x" y-key="y" value-key="value"
-             * >
-             *   <bds-heatmap-cell color="#0d6efd" radius="4"></bds-heatmap-cell>
-             *   <bds-x-axis show="true"></bds-x-axis>
-             *   <bds-y-axis show="true"></bds-y-axis>
+             * @example <bds-chart-heatmap data='[{"x":"Seg","y":"9h","value":42}]'>
+             *   <bds-x-axis data-key="x" show="true"></bds-x-axis>
+             *   <bds-y-axis data-key="y" show="true"></bds-y-axis>
+             *   <bds-heatmap-cell color="#0d6efd" radius="4" value-key="value"></bds-heatmap-cell>
              *   <bds-chart-tooltip></bds-chart-tooltip>
              * </bds-chart-heatmap>
              */
@@ -10118,6 +10278,25 @@ declare module "@stencil/core" {
              */
             "bds-chart-legend": LocalJSX.BdsChartLegend & JSXBase.HTMLAttributes<HTMLBdsChartLegendElement>;
             "bds-chart-line": LocalJSX.BdsChartLine & JSXBase.HTMLAttributes<HTMLBdsChartLineElement>;
+            /**
+             * ChartPie — Donut/pie chart component.
+             * Renders categorical data as a donut chart. Each datum becomes one slice.
+             * Colors are assigned automatically from the design-system palette.
+             * Slot children (all optional):
+             *   - <bds-pie-config>      override innerRadius, padAngle, cornerRadius
+             *   - <bds-chart-legend>    enable clickable legend
+             *   - <bds-chart-tooltip>   enable hover tooltip
+             * @example <bds-chart-pie
+             *   data='[{"label":"A","value":50},{"label":"B","value":30}]'
+             *   label-key="label"
+             *   value-key="value"
+             * >
+             *   <bds-pie-config inner-radius="60" pad-angle="0.02"></bds-pie-config>
+             *   <bds-chart-legend align="center"></bds-chart-legend>
+             *   <bds-chart-tooltip></bds-chart-tooltip>
+             * </bds-chart-pie>
+             */
+            "bds-chart-pie": LocalJSX.BdsChartPie & JSXBase.HTMLAttributes<HTMLBdsChartPieElement>;
             "bds-chart-tooltip": LocalJSX.BdsChartTooltip & JSXBase.HTMLAttributes<HTMLBdsChartTooltipElement>;
             "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
@@ -10179,6 +10358,15 @@ declare module "@stencil/core" {
             "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
             "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
+            /**
+             * PieConfig — Visual configuration slot for bds-chart-pie.
+             * Place as a child of <bds-chart-pie> to override default appearance.
+             * Renders as display:none — parent reads props via getAttribute().
+             * @example <bds-chart-pie data="...">
+             *   <bds-pie-config inner-radius="70" pad-angle="0.03"></bds-pie-config>
+             * </bds-chart-pie>
+             */
+            "bds-pie-config": LocalJSX.BdsPieConfig & JSXBase.HTMLAttributes<HTMLBdsPieConfigElement>;
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
