@@ -1,0 +1,2 @@
+import{r as registerInstance,h,H as Host}from"./index-BALoTlPi.js";var ChartPieConfig=function(){function t(t){registerInstance(this,t);this.innerRadius=60;this.padAngle=.02;this.cornerRadius=3}t.prototype.render=function(){return h(Host,{key:"5c897dc10930fc0aee1b561537c108fc87080655","data-pie-config":true,"data-inner-radius":this.innerRadius,"data-pad-angle":this.padAngle,"data-corner-radius":this.cornerRadius,style:{display:"none"}})};return t}();export{ChartPieConfig as bds_pie_config};
+//# sourceMappingURL=bds-pie-config.entry.js.map

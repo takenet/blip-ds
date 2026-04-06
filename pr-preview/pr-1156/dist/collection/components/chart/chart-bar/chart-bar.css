@@ -1,0 +1,80 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+.chart__x-labels {
+  font-family: inherit;
+  pointer-events: none;
+}
+
+.chart__x-label {
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  user-select: none;
+}
+
+.chart__y-labels {
+  font-family: inherit;
+  pointer-events: none;
+}
+
+.chart__y-label {
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  user-select: none;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  max-width: 1920px;
+  max-height: 1080px;
+  /**
+   * @prop --chart-hover-highlight-color: Background color of the bar hover highlight.
+   */
+  --chart-hover-highlight-color: rgba(0, 0, 0, 0.08);
+}
+
+svg {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+}
+
+.chart-bar__grid {
+  pointer-events: none;
+}
+
+.chart-bar__rect {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  cursor: default;
+}
+
+.chart-bar__rect:hover {
+  transform: translateY(-4px);
+  opacity: 0.9;
+}

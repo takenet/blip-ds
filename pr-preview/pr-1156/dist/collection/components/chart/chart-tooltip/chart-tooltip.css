@@ -1,0 +1,117 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+bds-chart-tooltip {
+  display: none;
+}
+
+#bds-chart-tooltip-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.bds-chart-tooltip-wrapper {
+  position: fixed;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.bds-chart-tooltip-wrapper.visible {
+  pointer-events: auto;
+}
+
+.chart-tooltip {
+  background: var(--color-surface-1, rgb(246, 246, 246));
+  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  border-radius: 8px;
+  padding: 16px;
+  color: var(--color-content-default, rgb(40, 40, 40));
+  white-space: nowrap;
+  transform: translate(-50%, -130%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 32px;
+  min-width: 80px;
+  width: auto;
+  height: auto;
+}
+
+.label {
+  color: var(--color-content-default, rgb(40, 40, 40));
+  margin-bottom: 2px;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.entry-name {
+  color: var(--color-content-default, rgb(40, 40, 40));
+}
+
+.entry-value {
+  margin-left: auto;
+  padding-left: 12px;
+}
+
+.content {
+  margin-left: 2px;
+}
+
+.indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.indicator-dot {
+  border-radius: 50%;
+}
+
+.indicator-line {
+  width: 3px;
+  height: 14px;
+  border-radius: 1px;
+}
+
+.indicator-dashed {
+  width: 10px;
+  height: 3px;
+  border-radius: 1px;
+}

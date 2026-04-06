@@ -1,0 +1,2 @@
+import{r as registerInstance,h,H as Host}from"./index-BALoTlPi.js";var ChartHeatmapCell=function(){function a(a){registerInstance(this,a)}a.prototype.render=function(){return h(Host,{key:"f0e5a1ff8d31bcef0c54f0023a5f15a31f31263a","data-heatmap-cell":true,"data-color":this.color,"data-radius":this.radius,"data-value-key":this.valueKey,style:{display:"none"}})};return a}();export{ChartHeatmapCell as bds_heatmap_cell};
+//# sourceMappingURL=bds-heatmap-cell.entry.js.map

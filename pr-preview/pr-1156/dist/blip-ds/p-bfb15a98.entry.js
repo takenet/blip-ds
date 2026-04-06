@@ -1,0 +1,2 @@
+import{r as t,h as s,H as a}from"./p-BALoTlPi.js";const i=class{constructor(s){t(this,s);this.color="#0d6efd";this.strokeWidth=2;this.curve="monotone";this.radius=4;this.dot=true}render(){return s(a,{key:"1d4717f65019f54267e390174fd06790e7bf6fc4","data-line":true,"data-data-key":this.dataKey,"data-color":this.color,"data-stroke-width":this.strokeWidth,"data-curve":this.curve,"data-radius":this.radius,"data-dot":String(this.dot),style:{display:"none"}})}};export{i as bds_line};
+//# sourceMappingURL=p-bfb15a98.entry.js.map

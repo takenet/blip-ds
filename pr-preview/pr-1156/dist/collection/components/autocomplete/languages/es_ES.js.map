@@ -1,0 +1,1 @@
+{"version":3,"file":"es_ES.js","sourceRoot":"","sources":["../../../../../src/components/autocomplete/languages/es_ES.tsx"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,OAAO,GAAG;IACrB,QAAQ,EAAE,eAAe;IACzB,WAAW,EAAE,mBAAmB;CACjC,CAAC","sourcesContent":["export const esTerms = {\n  selected: 'seleccionados',\n  allSelected: 'Seleccionar todos',\n};\n"]}

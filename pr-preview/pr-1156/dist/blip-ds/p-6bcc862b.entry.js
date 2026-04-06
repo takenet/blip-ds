@@ -1,0 +1,2 @@
+import{r as o,h as a}from"./p-BALoTlPi.js";const d=".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";const s=class{constructor(a){o(this,a)}render(){return a("div",{key:"ebe79c0f5e218d99d6d66bee77b445f8f676dba6",class:"modal__action"},a("slot",{key:"97ae98d57d4d9735bb404ad3baf75fabf9067c3f"}))}};s.style=d;export{s as bds_modal_action};
+//# sourceMappingURL=p-6bcc862b.entry.js.map

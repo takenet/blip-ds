@@ -1,0 +1,2 @@
+import{r as e,h as o,H as r}from"./p-BALoTlPi.js";const s=":host{display:block;width:100%;height:100%;-webkit-box-sizing:border-box;box-sizing:border-box}";const b=class{constructor(o){e(this,o)}render(){return o(r,{key:"bb90810b2f222322e2bd56e09d8be754176fb5ca"},o("slot",{key:"0ac289e948a70f0cdec975ee473e974aa1e50050"}))}};b.style=s;export{b as bds_chart_container};
+//# sourceMappingURL=p-06c2f994.entry.js.map

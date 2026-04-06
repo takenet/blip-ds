@@ -1,0 +1,2 @@
+import{r as s,h as t,H as a}from"./p-BALoTlPi.js";const i=class{constructor(t){s(this,t);this.innerRadius=60;this.padAngle=.02;this.cornerRadius=3}render(){return t(a,{key:"5c897dc10930fc0aee1b561537c108fc87080655","data-pie-config":true,"data-inner-radius":this.innerRadius,"data-pad-angle":this.padAngle,"data-corner-radius":this.cornerRadius,style:{display:"none"}})}};export{i as bds_pie_config};
+//# sourceMappingURL=p-96f590ed.entry.js.map

@@ -1,0 +1,2 @@
+import{r as registerInstance,h,H as Host}from"./index-BALoTlPi.js";var ChartBar=function(){function t(t){registerInstance(this,t);this.color="#0d6efd";this.radius=4}t.prototype.render=function(){return h(Host,{key:"8ae07d370b82ec95ffeb3c300d4935e259b09a66","data-bar":true,"data-data-key":this.dataKey,"data-color":this.color,"data-radius":this.radius,"data-stack-id":this.stackId,style:{display:"none"}})};return t}();export{ChartBar as bds_bar};
+//# sourceMappingURL=bds-bar.entry.js.map

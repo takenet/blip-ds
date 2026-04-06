@@ -1,0 +1,2 @@
+import{r,h as e,H as a}from"./p-BALoTlPi.js";const d=".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}";const o=class{constructor(e){r(this,e)}render(){return e(a,{key:"7b5161825754a09d0ed81913176b57687fbb3e79"},e("slot",{key:"2e56df889f2dc5557a4c98ba7cc77bdc8548dd3a"}))}};o.style=d;export{o as bds_table_header};
+//# sourceMappingURL=p-1777797f.entry.js.map

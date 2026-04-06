@@ -1,0 +1,2 @@
+System.register(["./p-wz5vqrgF.system.js"],(function(t){"use strict";var a,e,s;return{setters:[function(t){a=t.r;e=t.h;s=t.H}],execute:function(){var i=t("bds_bar",function(){function t(t){a(this,t);this.color="#0d6efd";this.radius=4}t.prototype.render=function(){return e(s,{key:"8ae07d370b82ec95ffeb3c300d4935e259b09a66","data-bar":true,"data-data-key":this.dataKey,"data-color":this.color,"data-radius":this.radius,"data-stack-id":this.stackId,style:{display:"none"}})};return t}())}}}));
+//# sourceMappingURL=p-5b5fa556.system.entry.js.map
