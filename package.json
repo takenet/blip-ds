@@ -94,7 +94,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
-    "blip-tokens": "^1.102.1",
+    "blip-tokens": "^1.103.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
