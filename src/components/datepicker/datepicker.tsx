@@ -13,7 +13,7 @@ import { getScrollParent, positionAbsoluteElement } from '../../utils/position-e
 import { termTranslate, messageTranslate, languages } from '../../utils/languages';
 import { BannerVariant } from '../banner/banner';
 
-export type typeDate = 'single' | 'period';
+export type typeDate = 'single' | 'period' | 'period-time';
 export type stateSelect = 'start' | 'end';
 export type DropdownPostionType =
   | 'auto'
@@ -54,6 +54,8 @@ export class DatePicker {
   @State() scrollingTop?: number = 0;
   @State() valueDate?: string;
   @State() valueEndDate?: string;
+  @State() startTime?: string = '00:00';
+  @State() endTime?: string = '23:59';
   /**
    * TypeOfDate. Select type of date.
    */
@@ -330,6 +332,10 @@ export class DatePicker {
       this.datepickerPeriod.clear();
       this.valueEndDate = null;
       this.bdsEndDate.emit({ value: null });
+      if (this.typeOfDate == 'period-time') {
+        this.startTime = '00:00';
+        this.endTime = '23:59';
+      }
       setTimeout(() => {
         this.inputSetDate?.setFocus();
       }, 10);
@@ -406,12 +412,16 @@ export class DatePicker {
   };
 
   private clickConcludeDatepicker = () => {
-    if (this.typeOfDate == 'period') {
+    if (this.typeOfDate == 'period' || this.typeOfDate == 'period-time') {
       if (this.valueEndDate) {
-        const data = {
+        const data: Record<string, string> = {
           startDate: typeDateToStringDate(this.valueDate),
           endDate: typeDateToStringDate(this.valueEndDate),
         };
+        if (this.typeOfDate == 'period-time') {
+          data.startTime = this.startTime;
+          data.endTime = this.endTime;
+        }
         this.open = false;
         this.concludeDatepicker.emit(data);
         this.inputSetEndDate.removeFocus();
@@ -444,6 +454,16 @@ export class DatePicker {
     this.stateSelect = 'end';
   };
 
+  private onInputStartTimeSelected = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    this.startTime = input.value;
+  };
+
+  private onInputEndTimeSelected = (ev: Event): void => {
+    const input = ev.target as HTMLInputElement | null;
+    this.endTime = input.value;
+  };
+
   render() {
     return (
       <Host class={{ datepicker: true }}>
@@ -474,7 +494,7 @@ export class DatePicker {
           <div
             class={{
               datepicker__inputs: true,
-              [`datepicker__inputs__${this.typeOfDate}`]: true,
+              datepicker__inputs__period: true,
               datepicker__inputs__open: this.open,
             }}
           >
@@ -556,6 +576,24 @@ export class DatePicker {
               dtSelectMonth={this.dtSelectMonth}
               dtSelectYear={this.dtSelectYear}
             ></bds-datepicker-period>
+          )}
+          {this.typeOfDate == 'period-time' && (
+            <div class={{ 'datepicker__menu__time-inputs': true }}>
+              <bds-input
+                label={termTranslate(this.language, 'startTime')}
+                value={this.startTime}
+                type="time"
+                icon="clock"
+                onBdsInput={(ev) => this.onInputStartTimeSelected(ev)}
+              ></bds-input>
+              <bds-input
+                label={termTranslate(this.language, 'endTime')}
+                value={this.endTime}
+                type="time"
+                icon="clock"
+                onBdsInput={(ev) => this.onInputEndTimeSelected(ev)}
+              ></bds-input>
+            </div>
           )}
           <div class={{ datepicker__menu__footer: true }}>
             <bds-button

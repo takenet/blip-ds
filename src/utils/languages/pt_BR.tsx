@@ -1,9 +1,11 @@
 export const ptTerms = [
   {
     conclude: 'Concluir',
+    endTime: 'Hora final',
     from: 'De',
     reset: 'Redefinir',
     setTheDate: 'Definir a data',
+    startTime: 'Hora inicial',
     to: 'Até',
   },
 ];

@@ -53,7 +53,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'single' },
     },
-    options: ['single', 'period'],
+    options: ['single', 'period', 'period-time'],
     control: 'select',
   },
   startDateLimit: {
@@ -155,6 +155,36 @@ export const Events = () => {
 
   return (
     <bds-datepicker id="datepicker" type-of-date="period" start-date-limit="31/12/2022" end-date-limit="01/01/2027" />
+  );
+};
+
+export const PeriodTime = () => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '550px';
+    el[0].style.position = 'relative';
+  }
+
+  useEffect(() => {
+    const datepicker = document.getElementById('datepicker-period-time');
+    datepicker.addEventListener('concludeDatepicker', (event) => {
+      console.log('Conclude com hora:', event.detail);
+    });
+    datepicker.addEventListener('bdsStartDate', (event) => {
+      console.log('Data inicial selecionada:', event.detail);
+    });
+    datepicker.addEventListener('bdsEndDate', (event) => {
+      console.log('Data final selecionada:', event.detail);
+    });
+  });
+
+  return (
+    <bds-datepicker
+      id="datepicker-period-time"
+      type-of-date="period-time"
+      start-date-limit="31/12/2022"
+      end-date-limit="01/01/2027"
+    />
   );
 };
 
