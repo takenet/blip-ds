@@ -454,17 +454,25 @@ export class DatePicker {
     this.stateSelect = 'end';
   };
 
+  private formatTimeInput = (raw: string): string => {
+    const digits = raw.replace(/\D/g, '').slice(0, 4);
+    if (digits.length >= 3) {
+      return `${digits.slice(0, 2)}:${digits.slice(2)}`;
+    }
+    return digits;
+  };
+
   private onInputStartTimeSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
-      this.startTime = input.value;
+      this.startTime = this.formatTimeInput(input.value);
     }
   };
 
   private onInputEndTimeSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
-      this.endTime = input.value;
+      this.endTime = this.formatTimeInput(input.value);
     }
   };
 
@@ -586,14 +594,20 @@ export class DatePicker {
               <bds-input
                 label={termTranslate(this.language, 'startTime')}
                 value={this.startTime}
-                type="time"
+                type="text"
+                placeholder="HH:MM"
+                maxlength={5}
+                pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
                 icon="clock"
                 onBdsInput={(ev) => this.onInputStartTimeSelected(ev)}
               ></bds-input>
               <bds-input
                 label={termTranslate(this.language, 'endTime')}
                 value={this.endTime}
-                type="time"
+                type="text"
+                placeholder="HH:MM"
+                maxlength={5}
+                pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
                 icon="clock"
                 onBdsInput={(ev) => this.onInputEndTimeSelected(ev)}
               ></bds-input>
