@@ -1935,6 +1935,10 @@ export namespace Components {
          */
         "collapse"?: collapses;
         /**
+          * Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered. Useful for icon-only sidebar modes.
+         */
+        "collapsed"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -1972,6 +1976,10 @@ export namespace Components {
           * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
          */
         "collapse"?: collapses;
+        /**
+          * Collapsed state. When true, propagates collapsed=true to all bds-nav-tree children, hiding their text, arrow and header-content, showing only icons.
+         */
+        "collapsed"?: boolean;
         "openAll": (actNumber?: any) => Promise<void>;
     }
     interface BdsNavTreeItem {
@@ -1979,6 +1987,10 @@ export namespace Components {
           * Focus Selected. Used to add title in header accordion.
          */
         "collapse"?: collapses;
+        /**
+          * Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered. Useful for icon-only sidebar modes.
+         */
+        "collapsed"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */
@@ -5944,6 +5956,10 @@ declare namespace LocalJSX {
          */
         "collapse"?: collapses;
         /**
+          * Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered. Useful for icon-only sidebar modes.
+         */
+        "collapsed"?: boolean;
+        /**
           * Data test is the prop to specifically test the component action object.
          */
         "dataTest"?: string;
@@ -5981,6 +5997,10 @@ declare namespace LocalJSX {
           * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
          */
         "collapse"?: collapses;
+        /**
+          * Collapsed state. When true, propagates collapsed=true to all bds-nav-tree children, hiding their text, arrow and header-content, showing only icons.
+         */
+        "collapsed"?: boolean;
         "onBdsNavTreeGroupCloseAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
         "onBdsNavTreeGroupOpenAll"?: (event: BdsNavTreeGroupCustomEvent<any>) => void;
     }
@@ -5989,6 +6009,10 @@ declare namespace LocalJSX {
           * Focus Selected. Used to add title in header accordion.
          */
         "collapse"?: collapses;
+        /**
+          * Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered. Useful for icon-only sidebar modes.
+         */
+        "collapsed"?: boolean;
         /**
           * Data test is the prop to specifically test the component action object.
          */

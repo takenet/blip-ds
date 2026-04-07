@@ -433,4 +433,71 @@ describe('bds-nav-tree', () => {
     expect(navMain).toBeTruthy();
     expect(accordion).toBeTruthy();
   });
+
+  describe('collapsed prop', () => {
+    it('should have default collapsed=false', async () => {
+      const page = await createNavTreePage({ text: 'Test' });
+      expect(page.root.collapsed).toBe(false);
+    });
+
+    it('should apply nav_main--collapsed class when collapsed=true', async () => {
+      const page = await createNavTreePage({ text: 'Test', collapsed: true });
+      const navMain = page.root.shadowRoot.querySelector('.nav_main');
+      expect(navMain.classList.contains('nav_main--collapsed')).toBe(true);
+    });
+
+    it('should not apply nav_main--collapsed class when collapsed=false', async () => {
+      const page = await createNavTreePage({ text: 'Test', collapsed: false });
+      const navMain = page.root.shadowRoot.querySelector('.nav_main');
+      expect(navMain.classList.contains('nav_main--collapsed')).toBe(false);
+    });
+
+    it('should apply nav_main_text--collapsed class when collapsed=true', async () => {
+      const page = await createNavTreePage({ text: 'Test', collapsed: true });
+      const textDiv = page.root.shadowRoot.querySelector('.nav_main_text');
+      expect(textDiv.classList.contains('nav_main_text--collapsed')).toBe(true);
+    });
+
+    it('should apply nav_main_content--collapsed class when collapsed=true', async () => {
+      const page = await createNavTreePage({ text: 'Test', collapsed: true });
+      const contentDiv = page.root.shadowRoot.querySelector('.nav_main_content');
+      expect(contentDiv.classList.contains('nav_main_content--collapsed')).toBe(true);
+    });
+
+    it('should apply nav_main_arrow--collapsed class when collapsed=true and has children', async () => {
+      const page = await createNavTreePage({ text: 'Test', collapsed: true });
+      page.rootInstance.navTreeChild = true;
+      await page.waitForChanges();
+      const arrowIcon = page.root.shadowRoot.querySelector('.nav_main_arrow');
+      expect(arrowIcon.classList.contains('nav_main_arrow--collapsed')).toBe(true);
+    });
+
+    it('should not open accordion when collapsed=true even if isOpen=true', async () => {
+      const page = await createNavTreePage({ text: 'Test', isOpen: true, collapsed: true });
+      page.rootInstance.navTreeChild = true;
+      await page.waitForChanges();
+      const accordion = page.root.shadowRoot.querySelector('.accordion');
+      expect(accordion.classList.contains('accordion_open')).toBe(false);
+    });
+
+    it('should open accordion when collapsed=false and isOpen=true', async () => {
+      const page = await createNavTreePage({ text: 'Test', isOpen: true });
+      page.rootInstance.navTreeChild = true;
+      await page.waitForChanges();
+      const accordion = page.root.shadowRoot.querySelector('.accordion');
+      expect(accordion.classList.contains('accordion_open')).toBe(true);
+    });
+
+    it('should reflect collapsed as attribute', async () => {
+      const page = await createNavTreePage({ text: 'Test', collapsed: true });
+      // Stencil reflects boolean true as empty string attribute
+      expect(page.root.getAttribute('collapsed')).toBe('');
+    });
+
+    it('should still show icon when collapsed=true', async () => {
+      const page = await createNavTreePage({ text: 'Test', icon: 'home', collapsed: true });
+      const iconElement = page.root.shadowRoot.querySelector('bds-icon[name="home"]');
+      expect(iconElement).toBeTruthy();
+    });
+  });
 });

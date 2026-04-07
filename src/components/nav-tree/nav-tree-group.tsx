@@ -1,4 +1,4 @@
-import { Component, Host, Element, State, Prop, h, EventEmitter, Event, Method } from '@stencil/core';
+import { Component, Host, Element, State, Prop, h, EventEmitter, Event, Method, Watch } from '@stencil/core';
 
 export type collapses = 'single' | 'multiple';
 
@@ -17,14 +17,32 @@ export class NavTreeGroup {
    * Collapse. Used to set mode of iteraction of componente when navigate with menu. You can choose a option single or multiple.
    */
   @Prop() collapse?: collapses = 'single';
+  /**
+   * Collapsed state. When true, propagates collapsed=true to all bds-nav-tree children,
+   * hiding their text, arrow and header-content, showing only icons.
+   */
+  @Prop({ mutable: true, reflect: true }) collapsed?: boolean = false;
 
   @Event() bdsNavTreeGroupCloseAll?: EventEmitter;
   @Event() bdsNavTreeGroupOpenAll?: EventEmitter;
+
+  @Watch('collapsed')
+  protected collapsedChanged(value: boolean): void {
+    this.propagateCollapsed(value);
+  }
+
+  private propagateCollapsed(value: boolean): void {
+    const items = this.element.getElementsByTagName('bds-nav-tree') as HTMLCollectionOf<HTMLBdsNavTreeElement>;
+    for (let i = 0; i < items.length; i++) {
+      items[i].collapsed = value;
+    }
+  }
 
   componentWillRender() {
     this.itemsElement = this.element.getElementsByTagName('bds-nav-tree') as HTMLCollectionOf<HTMLBdsNavTreeElement>;
     for (let i = 0; i < this.itemsElement.length; i++) {
       this.itemsElement[i].reciveNumber(i);
+      this.itemsElement[i].collapsed = this.collapsed;
     }
   }
 

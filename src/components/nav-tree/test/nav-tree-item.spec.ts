@@ -369,5 +369,70 @@ describe('bds-nav-tree-item', () => {
     expect(component.loading).toBe(false);
     expect(component.disable).toBe(false);
     expect(component.dataTest).toBe(null);
+    expect(component.collapsed).toBe(false);
+  });
+
+  describe('collapsed prop', () => {
+    it('should have default collapsed=false', async () => {
+      const page = await newSpecPage({
+        components: [NavTreeItem],
+        html: `<bds-nav-tree-item text="Test"></bds-nav-tree-item>`,
+      });
+      expect(page.rootInstance.collapsed).toBe(false);
+    });
+
+    it('should apply nav_tree_item--collapsed class when collapsed=true', async () => {
+      const page = await newSpecPage({
+        components: [NavTreeItem],
+        html: `<bds-nav-tree-item text="Test" collapsed="true"></bds-nav-tree-item>`,
+      });
+      const navTreeItem = page.root.shadowRoot.querySelector('.nav_tree_item');
+      expect(navTreeItem.classList.contains('nav_tree_item--collapsed')).toBe(true);
+    });
+
+    it('should not apply nav_tree_item--collapsed class when collapsed=false', async () => {
+      const page = await newSpecPage({
+        components: [NavTreeItem],
+        html: `<bds-nav-tree-item text="Test"></bds-nav-tree-item>`,
+      });
+      const navTreeItem = page.root.shadowRoot.querySelector('.nav_tree_item');
+      expect(navTreeItem.classList.contains('nav_tree_item--collapsed')).toBe(false);
+    });
+
+    it('should apply nav_tree_item_content--collapsed class when collapsed=true', async () => {
+      const page = await newSpecPage({
+        components: [NavTreeItem],
+        html: `<bds-nav-tree-item text="Test" collapsed="true"></bds-nav-tree-item>`,
+      });
+      const contentDiv = page.root.shadowRoot.querySelector('.nav_tree_item_content');
+      expect(contentDiv.classList.contains('nav_tree_item_content--collapsed')).toBe(true);
+    });
+
+    it('should apply nav_tree_item_slot--collapsed class when collapsed=true', async () => {
+      const page = await newSpecPage({
+        components: [NavTreeItem],
+        html: `<bds-nav-tree-item text="Test" collapsed="true"></bds-nav-tree-item>`,
+      });
+      const slotDiv = page.root.shadowRoot.querySelector('.nav_tree_item_slot');
+      expect(slotDiv.classList.contains('nav_tree_item_slot--collapsed')).toBe(true);
+    });
+
+    it('should still render icon when collapsed=true', async () => {
+      const page = await newSpecPage({
+        components: [NavTreeItem],
+        html: `<bds-nav-tree-item text="Test" icon="heart" collapsed="true"></bds-nav-tree-item>`,
+      });
+      const iconElement = page.root.shadowRoot.querySelector('bds-icon[name="heart"]');
+      expect(iconElement).toBeTruthy();
+    });
+
+    it('should reflect collapsed as attribute', async () => {
+      const page = await newSpecPage({
+        components: [NavTreeItem],
+        html: `<bds-nav-tree-item text="Test" collapsed="true"></bds-nav-tree-item>`,
+      });
+      // Stencil reflects boolean true as empty string attribute
+      expect(page.root.getAttribute('collapsed')).toBe('');
+    });
   });
 });

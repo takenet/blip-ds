@@ -49,6 +49,11 @@ export class NavTree {
    */
   @Prop() disable?: boolean = false;
   /**
+   * Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered.
+   * Useful for icon-only sidebar modes.
+   */
+  @Prop({ mutable: true, reflect: true }) collapsed?: boolean = false;
+  /**
    * When de open or close of component change, the event are dispache.
    */
   @Event() bdsToogleChange: EventEmitter;
@@ -119,6 +124,7 @@ export class NavTree {
                 nav_main_active: this.isOpen,
                 [`nav_main--loading`]: this.loading,
                 [`nav_main--disable`]: this.disable,
+                [`nav_main--collapsed`]: this.collapsed,
               }}
               data-test={this.dataTest}
               aria-label={this.text + (this.secondaryText && `: ${this.secondaryText}`)}
@@ -139,7 +145,7 @@ export class NavTree {
               ) : (
                 ''
               )}
-              <div class="nav_main_text">
+              <div class={{ nav_main_text: true, [`nav_main_text--collapsed`]: this.collapsed }}>
                 {this.text && (
                   <bds-typo
                     class={{ ['title-item']: true, [`title-item--loading`]: this.loading }}
@@ -163,7 +169,7 @@ export class NavTree {
                   </bds-typo>
                 )}
               </div>
-              <div class="nav_main_content">
+              <div class={{ nav_main_content: true, [`nav_main_content--collapsed`]: this.collapsed }}>
                 <slot name="header-content"></slot>
               </div>
               {this.navTreeChild && (
@@ -173,6 +179,7 @@ export class NavTree {
                     [`nav_main_arrow`]: true,
                     [`nav_main_arrow_active`]: this.isOpen,
                     [`nav_main_arrow--loading`]: this.loading,
+                    [`nav_main_arrow--collapsed`]: this.collapsed,
                   }}
                 ></bds-icon>
               )}
@@ -182,7 +189,7 @@ export class NavTree {
         <div
           class={{
             accordion: true,
-            accordion_open: this.isOpen && this.navTreeChild,
+            accordion_open: this.isOpen && this.navTreeChild && !this.collapsed,
           }}
         >
           <div class={{ ['container']: true, [`container--disable`]: this.disable }}>

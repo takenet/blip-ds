@@ -239,4 +239,50 @@ describe('bds-nav-tree-group', () => {
     expect(typeof page.root.closeAll).toBe('function');
     expect(typeof page.root.openAll).toBe('function');
   });
+
+  describe('collapsed prop', () => {
+    it('should have default collapsed=false', async () => {
+      const page = await createNavTreeGroupPage();
+      expect(page.root.collapsed).toBe(false);
+    });
+
+    it('should accept collapsed=true prop', async () => {
+      const page = await createNavTreeGroupPage({ collapsed: true });
+      expect(page.root.collapsed).toBe(true);
+    });
+
+    it('should reflect collapsed as attribute', async () => {
+      const page = await createNavTreeGroupPage({ collapsed: true });
+      // Stencil reflects boolean true as empty string attribute
+      expect(page.root.getAttribute('collapsed')).toBe('');
+    });
+
+    it('should propagate collapsed=true to bds-nav-tree children via componentWillRender', async () => {
+      const content = `
+        <bds-nav-tree text="Item 1" icon="heart"></bds-nav-tree>
+        <bds-nav-tree text="Item 2" icon="star"></bds-nav-tree>
+      `;
+      const page = await createNavTreeGroupPage({ collapsed: true }, content);
+      await page.waitForChanges();
+
+      const navTrees = page.root.querySelectorAll('bds-nav-tree');
+      for (let i = 0; i < navTrees.length; i++) {
+        expect((navTrees[i] as HTMLBdsNavTreeElement).collapsed).toBe(true);
+      }
+    });
+
+    it('should propagate collapsed=false to bds-nav-tree children', async () => {
+      const content = `
+        <bds-nav-tree text="Item 1" icon="heart"></bds-nav-tree>
+        <bds-nav-tree text="Item 2" icon="star"></bds-nav-tree>
+      `;
+      const page = await createNavTreeGroupPage({ collapsed: false }, content);
+      await page.waitForChanges();
+
+      const navTrees = page.root.querySelectorAll('bds-nav-tree');
+      for (let i = 0; i < navTrees.length; i++) {
+        expect((navTrees[i] as HTMLBdsNavTreeElement).collapsed).toBe(false);
+      }
+    });
+  });
 });

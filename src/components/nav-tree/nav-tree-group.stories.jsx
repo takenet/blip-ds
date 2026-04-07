@@ -13,7 +13,7 @@ export default {
 
 export const Properties = (args) => {
   return (
-    <bds-nav-tree-group collapse={args.colapse}>
+    <bds-nav-tree-group collapse={args.colapse} collapsed={args.collapsed}>
       <bds-nav-tree id="nav-tree" icon="heart" text="Título" secondary-text="Breve Descrição">
         <bds-nav-tree-item icon="heart" text="Título"></bds-nav-tree-item>
         <bds-nav-tree-item text="Título" secondary-text="Breve Descrição">
@@ -69,7 +69,7 @@ export const Properties = (args) => {
     </bds-nav-tree-group>
   );
 };
-Properties.args = { colapse: 'single' };
+Properties.args = { colapse: 'single', collapsed: false };
 
 Properties.argTypes = {
   colapse: {
@@ -79,6 +79,13 @@ Properties.argTypes = {
     description: 'Selecione a regra de comportamento de abrir e fechar as opções.',
     control: 'select',
     options: ['single', 'multiple'],
+  },
+  collapsed: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+    description: 'When true, propagates collapsed mode to all child bds-nav-tree elements (icon-only mode).',
+    control: 'boolean',
   },
 };
 
