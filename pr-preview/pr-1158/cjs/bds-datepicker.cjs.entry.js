@@ -163,16 +163,23 @@ const DatePicker = class {
     this.onFocusEndDateSelect = () => {
       this.stateSelect = 'end';
     };
+    this.formatTimeInput = (raw) => {
+      const digits = raw.replace(/\D/g, '').slice(0, 4);
+      if (digits.length >= 3) {
+        return `${digits.slice(0, 2)}:${digits.slice(2)}`;
+      }
+      return digits;
+    };
     this.onInputStartTimeSelected = (ev) => {
       const input = ev.target;
       if (input) {
-        this.startTime = input.value;
+        this.startTime = this.formatTimeInput(input.value);
       }
     };
     this.onInputEndTimeSelected = (ev) => {
       const input = ev.target;
       if (input) {
-        this.endTime = input.value;
+        this.endTime = this.formatTimeInput(input.value);
       }
     };
     this.open = false;
@@ -326,7 +333,7 @@ const DatePicker = class {
       } }, index.h("bds-input", { class: "input-start", ref: this.refInputSetDate, label: calendar.termTranslate(this.language, 'from'), value: this.valueDate, disabled: this.disabled, type: "date", maxlength: 10, icon: "calendar", onClick: () => this.openDatepicker(), onFocus: () => this.onFocusDateSelect(), onBdsInput: (ev) => this.onInputDateSelected(ev), danger: this.errorMsgDate ? true : false, errorMessage: this.errorMsgDate, dataTest: this.dtInputStart }), index.h("bds-input", { class: "input-end", ref: this.refInputSetEndDate, label: calendar.termTranslate(this.language, 'to'), value: this.valueEndDate, disabled: this.disabled || this.errorMsgDate ? true : !this.dateSelected, type: "date", maxlength: 10, icon: "calendar", onClick: () => this.openDatepicker(), onFocus: () => this.onFocusEndDateSelect(), onBdsInput: (ev) => this.onInputEndDateSelected(ev), danger: this.errorMsgEndDate ? true : false, errorMessage: this.errorMsgEndDate, dataTest: this.dtInputEnd }))), index.h("div", { ref: this.refMenuElement, class: {
         datepicker__menu: true,
         datepicker__menu__open: this.open,
-      } }, this.message && (index.h("bds-grid", { margin: "b-2" }, index.h("bds-banner", { variant: this.variantBanner, context: "inside" }, this.message))), this.typeOfDate == 'single' ? (index.h("bds-datepicker-single", { ref: this.refDatepickerSingle, startDate: this.startDateLimit && calendar.dateToDayList(this.startDateLimit), endDate: this.endDateLimit && calendar.dateToDayList(this.endDateLimit), dateSelect: this.dateSelected, onBdsDateSelected: (event) => this.selectDate(event), language: this.language, dtButtonPrev: this.dtButtonPrev, dtButtonNext: this.dtButtonNext, dtSelectMonth: this.dtSelectMonth, dtSelectYear: this.dtSelectYear })) : (index.h("bds-datepicker-period", { ref: this.refDatepickerPeriod, startDate: this.startDateLimit && calendar.dateToDayList(this.startDateLimit), endDate: this.endDateLimit && calendar.dateToDayList(this.endDateLimit), startDateSelect: this.dateSelected, stateSelect: this.stateSelect, endDateSelect: this.endDateSelected, onBdsStartDate: (event) => this.selectDate(event), onBdsEndDate: (event) => this.selectEndDate(event), onBdsClickDayButton: (event) => this.whenClickCalendar(event), language: this.language, dtButtonPrev: this.dtButtonPrev, dtButtonNext: this.dtButtonNext, dtSelectMonth: this.dtSelectMonth, dtSelectYear: this.dtSelectYear })), this.typeOfDate == 'period-time' && (index.h("div", { class: { 'datepicker__menu__time-inputs': true } }, index.h("bds-input", { label: calendar.termTranslate(this.language, 'startTime'), value: this.startTime, type: "time", icon: "clock", onBdsInput: (ev) => this.onInputStartTimeSelected(ev) }), index.h("bds-input", { label: calendar.termTranslate(this.language, 'endTime'), value: this.endTime, type: "time", icon: "clock", onBdsInput: (ev) => this.onInputEndTimeSelected(ev) }))), index.h("div", { class: { datepicker__menu__footer: true } }, index.h("bds-button", { class: "bt-reset", size: "short", variant: "secondary", onClick: () => this.clearDate(), dataTest: this.dtButtonClear }, calendar.termTranslate(this.language, 'reset')), index.h("bds-button", { class: "bt-conclude", size: "short", onClick: this.clickConcludeDatepicker, dataTest: this.dtButtonConfirm }, calendar.termTranslate(this.language, 'conclude')))), this.open && (index.h("div", { class: { outzone: true }, onClick: () => this.clickConcludeDatepicker(), "data-test": this.dtOutzone }))));
+      } }, this.message && (index.h("bds-grid", { margin: "b-2" }, index.h("bds-banner", { variant: this.variantBanner, context: "inside" }, this.message))), this.typeOfDate == 'single' ? (index.h("bds-datepicker-single", { ref: this.refDatepickerSingle, startDate: this.startDateLimit && calendar.dateToDayList(this.startDateLimit), endDate: this.endDateLimit && calendar.dateToDayList(this.endDateLimit), dateSelect: this.dateSelected, onBdsDateSelected: (event) => this.selectDate(event), language: this.language, dtButtonPrev: this.dtButtonPrev, dtButtonNext: this.dtButtonNext, dtSelectMonth: this.dtSelectMonth, dtSelectYear: this.dtSelectYear })) : (index.h("bds-datepicker-period", { ref: this.refDatepickerPeriod, startDate: this.startDateLimit && calendar.dateToDayList(this.startDateLimit), endDate: this.endDateLimit && calendar.dateToDayList(this.endDateLimit), startDateSelect: this.dateSelected, stateSelect: this.stateSelect, endDateSelect: this.endDateSelected, onBdsStartDate: (event) => this.selectDate(event), onBdsEndDate: (event) => this.selectEndDate(event), onBdsClickDayButton: (event) => this.whenClickCalendar(event), language: this.language, dtButtonPrev: this.dtButtonPrev, dtButtonNext: this.dtButtonNext, dtSelectMonth: this.dtSelectMonth, dtSelectYear: this.dtSelectYear })), this.typeOfDate == 'period-time' && (index.h("div", { class: { 'datepicker__menu__time-inputs': true } }, index.h("bds-input", { label: calendar.termTranslate(this.language, 'startTime'), value: this.startTime, type: "text", placeholder: "HH:MM", maxlength: 5, pattern: "([01][0-9]|2[0-3]):[0-5][0-9]", icon: "clock", onBdsInput: (ev) => this.onInputStartTimeSelected(ev) }), index.h("bds-input", { label: calendar.termTranslate(this.language, 'endTime'), value: this.endTime, type: "text", placeholder: "HH:MM", maxlength: 5, pattern: "([01][0-9]|2[0-3]):[0-5][0-9]", icon: "clock", onBdsInput: (ev) => this.onInputEndTimeSelected(ev) }))), index.h("div", { class: { datepicker__menu__footer: true } }, index.h("bds-button", { class: "bt-reset", size: "short", variant: "secondary", onClick: () => this.clearDate(), dataTest: this.dtButtonClear }, calendar.termTranslate(this.language, 'reset')), index.h("bds-button", { class: "bt-conclude", size: "short", onClick: this.clickConcludeDatepicker, dataTest: this.dtButtonConfirm }, calendar.termTranslate(this.language, 'conclude')))), this.open && (index.h("div", { class: { outzone: true }, onClick: () => this.clickConcludeDatepicker(), "data-test": this.dtOutzone }))));
   }
   get element() { return index.getElement(this); }
   static get watchers() { return {

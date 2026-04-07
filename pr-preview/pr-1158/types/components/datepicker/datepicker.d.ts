@@ -180,6 +180,7 @@ export declare class DatePicker {
   private clickConcludeDatepicker;
   private onFocusDateSelect;
   private onFocusEndDateSelect;
+  private formatTimeInput;
   private onInputStartTimeSelected;
   private onInputEndTimeSelected;
   render(): any;
