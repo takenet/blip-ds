@@ -456,12 +456,16 @@ export class DatePicker {
 
   private onInputStartTimeSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
-    this.startTime = input.value;
+    if (input) {
+      this.startTime = input.value;
+    }
   };
 
   private onInputEndTimeSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
-    this.endTime = input.value;
+    if (input) {
+      this.endTime = input.value;
+    }
   };
 
   render() {
@@ -494,7 +498,7 @@ export class DatePicker {
           <div
             class={{
               datepicker__inputs: true,
-              datepicker__inputs__period: true,
+              datepicker__inputs__period: this.typeOfDate !== 'single',
               datepicker__inputs__open: this.open,
             }}
           >
