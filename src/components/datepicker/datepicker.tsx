@@ -498,7 +498,7 @@ export class DatePicker {
           <div
             class={{
               datepicker__inputs: true,
-              datepicker__inputs__period: this.typeOfDate !== 'single',
+              datepicker__inputs__period: true,
               datepicker__inputs__open: this.open,
             }}
           >
