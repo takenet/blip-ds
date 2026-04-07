@@ -5,11 +5,22 @@ export class NavTreeGroup {
     this.isOpenAftAnimation = false;
     this.navTreeChild = null;
     this.collapse = 'single';
+    this.collapsed = false;
+  }
+  collapsedChanged(value) {
+    this.propagateCollapsed(value);
+  }
+  propagateCollapsed(value) {
+    const items = this.element.getElementsByTagName('bds-nav-tree');
+    for (let i = 0; i < items.length; i++) {
+      items[i].collapsed = value;
+    }
   }
   componentWillRender() {
     this.itemsElement = this.element.getElementsByTagName('bds-nav-tree');
     for (let i = 0; i < this.itemsElement.length; i++) {
       this.itemsElement[i].reciveNumber(i);
+      this.itemsElement[i].collapsed = this.collapsed;
     }
   }
   async closeAll(actNumber) {
@@ -74,6 +85,24 @@ export class NavTreeGroup {
         "attribute": "collapse",
         "reflect": false,
         "defaultValue": "'single'"
+      },
+      "collapsed": {
+        "type": "boolean",
+        "mutable": true,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Collapsed state. When true, propagates collapsed=true to all bds-nav-tree children,\nhiding their text, arrow and header-content, showing only icons."
+        },
+        "attribute": "collapsed",
+        "reflect": true,
+        "defaultValue": "false"
       }
     };
   }
@@ -159,4 +188,10 @@ export class NavTreeGroup {
     };
   }
   static get elementRef() { return "element"; }
+  static get watchers() {
+    return [{
+        "propName": "collapsed",
+        "methodName": "collapsedChanged"
+      }];
+  }
 }

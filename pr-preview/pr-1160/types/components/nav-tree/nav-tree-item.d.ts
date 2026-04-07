@@ -38,6 +38,11 @@ export declare class NavTreeItem {
    */
   dataTest?: string;
   /**
+   * Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered.
+   * Useful for icon-only sidebar modes.
+   */
+  collapsed?: boolean;
+  /**
    * When de activation of component change, the event are dispache.
    */
   bdsToogleChange: EventEmitter;

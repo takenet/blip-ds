@@ -18,6 +18,7 @@ export class NavTree {
     this.dataTest = null;
     this.loading = false;
     this.disable = false;
+    this.collapsed = false;
   }
   async toggle() {
     if (!this.disable) {
@@ -60,16 +61,18 @@ export class NavTree {
         nav_main_active: this.isOpen,
         [`nav_main--loading`]: this.loading,
         [`nav_main--disable`]: this.disable,
+        [`nav_main--collapsed`]: this.collapsed,
       }, "data-test": this.dataTest, "aria-label": this.text + (this.secondaryText && `: ${this.secondaryText}`) }, this.loading ? (h("bds-loading-spinner", { size: "extra-small" })) : this.icon ? (h("bds-icon", { class: {
         [`icon-item`]: true,
         [`icon-item-active`]: this.isOpen,
-      }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { class: "nav_main_text" }, this.text && (h("bds-typo", { class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { class: "nav_main_content" }, h("slot", { name: "header-content" })), this.navTreeChild && (h("bds-icon", { name: "arrow-down", class: {
+      }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { class: { nav_main_text: true, [`nav_main_text--collapsed`]: this.collapsed } }, this.text && (h("bds-typo", { class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { class: { nav_main_content: true, [`nav_main_content--collapsed`]: this.collapsed } }, h("slot", { name: "header-content" })), this.navTreeChild && (h("bds-icon", { name: "arrow-down", class: {
         [`nav_main_arrow`]: true,
         [`nav_main_arrow_active`]: this.isOpen,
         [`nav_main_arrow--loading`]: this.loading,
+        [`nav_main_arrow--collapsed`]: this.collapsed,
       } }))))), h("div", { class: {
         accordion: true,
-        accordion_open: this.isOpen && this.navTreeChild,
+        accordion_open: this.isOpen && this.navTreeChild && !this.collapsed,
       } }, h("div", { class: { ['container']: true, [`container--disable`]: this.disable } }, h("slot", null)))));
   }
   static get is() { return "bds-nav-tree"; }
@@ -231,6 +234,24 @@ export class NavTree {
         },
         "attribute": "disable",
         "reflect": false,
+        "defaultValue": "false"
+      },
+      "collapsed": {
+        "type": "boolean",
+        "mutable": true,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered.\nUseful for icon-only sidebar modes."
+        },
+        "attribute": "collapsed",
+        "reflect": true,
         "defaultValue": "false"
       }
     };
