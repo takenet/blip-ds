@@ -462,6 +462,14 @@ export class DatePicker {
     return digits;
   };
 
+  private selectTimeInputOnFocus = (ev: Event): void => {
+    const bdsInput = ev.target as HTMLElement | null;
+    const nativeInput = bdsInput?.shadowRoot?.querySelector('input');
+    if (nativeInput) {
+      nativeInput.select();
+    }
+  };
+
   private onInputStartTimeSelected = (ev: Event): void => {
     const input = ev.target as HTMLInputElement | null;
     if (input) {
@@ -615,6 +623,7 @@ export class DatePicker {
                 maxlength={5}
                 pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
                 icon="clock"
+                onBdsFocus={(ev) => this.selectTimeInputOnFocus(ev)}
                 onBdsInput={(ev) => this.onInputStartTimeSelected(ev)}
               ></bds-input>
               <bds-input
@@ -625,6 +634,7 @@ export class DatePicker {
                 maxlength={5}
                 pattern="([01][0-9]|2[0-3]):[0-5][0-9]"
                 icon="clock"
+                onBdsFocus={(ev) => this.selectTimeInputOnFocus(ev)}
                 onBdsInput={(ev) => this.onInputEndTimeSelected(ev)}
               ></bds-input>
             </div>
