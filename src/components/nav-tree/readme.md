@@ -7,16 +7,17 @@
 
 ## Properties
 
-| Property            | Attribute        | Description                                                             | Type                     | Default     |
-| ------------------- | ---------------- | ----------------------------------------------------------------------- | ------------------------ | ----------- |
-| `collapse`          | `collapse`       | Focus Selected. Used to add title in header accordion.                  | `"multiple" \| "single"` | `'single'`  |
-| `dataTest`          | `data-test`      | Data test is the prop to specifically test the component action object. | `string`                 | `null`      |
-| `disable`           | `disable`        | Disable state. Indicates if the component is disabled.                  | `boolean`                | `false`     |
-| `icon`              | `icon`           | Icon. Used to add icon in list item.                                    | `string`                 | `null`      |
-| `isOpen`            | `is-open`        | Active. Used to define when the item is highlighted.                    | `boolean`                | `false`     |
-| `loading`           | `loading`        | Loading state. Indicates if the component is in a loading state.        | `boolean`                | `false`     |
-| `secondaryText`     | `secondary-text` | SecondaryText. Used to insert a secondaryText in the display item.      | `string`                 | `null`      |
-| `text` _(required)_ | `text`           | Text. Used to insert a text in the display item.                        | `string`                 | `undefined` |
+| Property            | Attribute        | Description                                                                                                                                | Type                     | Default     |
+| ------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ----------- |
+| `collapse`          | `collapse`       | Focus Selected. Used to add title in header accordion.                                                                                     | `"multiple" \| "single"` | `'single'`  |
+| `collapsed`         | `collapsed`      | Collapsed state. When true, hides text, arrow and header-content slot, keeping only the icon centered. Useful for icon-only sidebar modes. | `boolean`                | `false`     |
+| `dataTest`          | `data-test`      | Data test is the prop to specifically test the component action object.                                                                    | `string`                 | `null`      |
+| `disable`           | `disable`        | Disable state. Indicates if the component is disabled.                                                                                     | `boolean`                | `false`     |
+| `icon`              | `icon`           | Icon. Used to add icon in list item.                                                                                                       | `string`                 | `null`      |
+| `isOpen`            | `is-open`        | Active. Used to define when the item is highlighted.                                                                                       | `boolean`                | `false`     |
+| `loading`           | `loading`        | Loading state. Indicates if the component is in a loading state.                                                                           | `boolean`                | `false`     |
+| `secondaryText`     | `secondary-text` | SecondaryText. Used to insert a secondaryText in the display item.                                                                         | `string`                 | `null`      |
+| `text` _(required)_ | `text`           | Text. Used to insert a text in the display item.                                                                                           | `string`                 | `undefined` |
 
 
 ## Events
