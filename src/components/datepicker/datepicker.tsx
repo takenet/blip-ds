@@ -54,8 +54,8 @@ export class DatePicker {
   @State() scrollingTop?: number = 0;
   @State() valueDate?: string;
   @State() valueEndDate?: string;
-  @State() startTime?: string = '00:00';
-  @State() endTime?: string = '23:59';
+  @State() startTime: string = '00:00';
+  @State() endTime: string = '23:59';
   /**
    * TypeOfDate. Select type of date.
    */
@@ -419,6 +419,8 @@ export class DatePicker {
           endDate: typeDateToStringDate(this.valueEndDate),
         };
         if (this.typeOfDate == 'period-time') {
+          this.startTime = this.normalizeTime(this.startTime);
+          this.endTime = this.normalizeTime(this.endTime);
           data.startTime = this.startTime;
           data.endTime = this.endTime;
         }
@@ -452,6 +454,14 @@ export class DatePicker {
 
   private onFocusEndDateSelect = () => {
     this.stateSelect = 'end';
+  };
+
+  private normalizeTime = (time: string): string => {
+    const match = time.match(/^(\d{1,2})(?::(\d{1,2}))?$/);
+    if (!match) return '00:00';
+    const h = match[1].padStart(2, '0');
+    const m = (match[2] ?? '0').padStart(2, '0');
+    return `${h}:${m}`;
   };
 
   private formatTimeInput = (raw: string): string => {
@@ -491,16 +501,16 @@ export class DatePicker {
   };
 
   private onInputStartTimeSelected = (ev: Event): void => {
-    const input = ev.target as HTMLInputElement | null;
+    const input = ev.target as HTMLBdsInputElement | null;
     if (input) {
-      this.startTime = this.formatTimeInput(input.value);
+      this.startTime = this.formatTimeInput(input.value ?? '');
     }
   };
 
   private onInputEndTimeSelected = (ev: Event): void => {
-    const input = ev.target as HTMLInputElement | null;
+    const input = ev.target as HTMLBdsInputElement | null;
     if (input) {
-      this.endTime = this.formatTimeInput(input.value);
+      this.endTime = this.formatTimeInput(input.value ?? '');
     }
   };
 

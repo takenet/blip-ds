@@ -681,4 +681,76 @@ describe('bds-datepicker', () => {
       expect(spy).toHaveBeenCalled();
     });
   });
+
+  describe('formatTimeInput', () => {
+    it('should return empty string for empty input', () => {
+      expect(component['formatTimeInput']('')).toBe('');
+    });
+
+    it('should strip non-digit characters', () => {
+      expect(component['formatTimeInput']('ab:cd')).toBe('');
+    });
+
+    it('should format 4 digits with colon', () => {
+      expect(component['formatTimeInput']('1200')).toBe('12:00');
+    });
+
+    it('should format partial 3 digits with colon', () => {
+      expect(component['formatTimeInput']('123')).toBe('12:3');
+    });
+
+    it('should return 2 digits without colon', () => {
+      expect(component['formatTimeInput']('09')).toBe('09');
+    });
+
+    it('should clamp hours first digit above 2 to 2', () => {
+      expect(component['formatTimeInput']('4599')).toBe('23:59');
+    });
+
+    it('should clamp hours value above 23 to 23', () => {
+      expect(component['formatTimeInput']('2900')).toBe('23:00');
+    });
+
+    it('should clamp minutes first digit above 5 to 5', () => {
+      expect(component['formatTimeInput']('1273')).toBe('12:53');
+    });
+
+    it('should clamp minutes value above 59 to 59', () => {
+      expect(component['formatTimeInput']('1080')).toBe('10:50');
+    });
+
+    it('should handle valid max time 23:59', () => {
+      expect(component['formatTimeInput']('2359')).toBe('23:59');
+    });
+
+    it('should handle valid min time 00:00', () => {
+      expect(component['formatTimeInput']('0000')).toBe('00:00');
+    });
+  });
+
+  describe('normalizeTime', () => {
+    it('should return 00:00 for empty string', () => {
+      expect(component['normalizeTime']('')).toBe('00:00');
+    });
+
+    it('should pad a single digit hour', () => {
+      expect(component['normalizeTime']('9')).toBe('09:00');
+    });
+
+    it('should pad a two digit hour without minutes', () => {
+      expect(component['normalizeTime']('12')).toBe('12:00');
+    });
+
+    it('should pad a single digit minute', () => {
+      expect(component['normalizeTime']('12:3')).toBe('12:03');
+    });
+
+    it('should leave a complete HH:MM unchanged', () => {
+      expect(component['normalizeTime']('08:30')).toBe('08:30');
+    });
+
+    it('should return 00:00 for invalid input', () => {
+      expect(component['normalizeTime']('abc')).toBe('00:00');
+    });
+  });
 });

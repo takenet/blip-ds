@@ -167,16 +167,22 @@ export const PeriodTime = () => {
 
   useEffect(() => {
     const datepicker = document.getElementById('datepicker-period-time');
-    datepicker.addEventListener('concludeDatepicker', (event) => {
-      console.log('Conclude com hora:', event.detail);
-    });
-    datepicker.addEventListener('bdsStartDate', (event) => {
-      console.log('Data inicial selecionada:', event.detail);
-    });
-    datepicker.addEventListener('bdsEndDate', (event) => {
-      console.log('Data final selecionada:', event.detail);
-    });
-  });
+    if (!datepicker) return;
+
+    const onConclude = (event) => console.log('Conclude com hora:', event.detail);
+    const onStartDate = (event) => console.log('Data inicial selecionada:', event.detail);
+    const onEndDate = (event) => console.log('Data final selecionada:', event.detail);
+
+    datepicker.addEventListener('concludeDatepicker', onConclude);
+    datepicker.addEventListener('bdsStartDate', onStartDate);
+    datepicker.addEventListener('bdsEndDate', onEndDate);
+
+    return () => {
+      datepicker.removeEventListener('concludeDatepicker', onConclude);
+      datepicker.removeEventListener('bdsStartDate', onStartDate);
+      datepicker.removeEventListener('bdsEndDate', onEndDate);
+    };
+  }, []);
 
   return (
     <bds-datepicker
