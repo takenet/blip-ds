@@ -181,6 +181,7 @@ export declare class DatePicker {
   private onFocusDateSelect;
   private onFocusEndDateSelect;
   private formatTimeInput;
+  private selectTimeInputOnFocus;
   private onInputStartTimeSelected;
   private onInputEndTimeSelected;
   render(): any;
