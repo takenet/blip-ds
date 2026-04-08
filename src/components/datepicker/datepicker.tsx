@@ -521,6 +521,7 @@ export class DatePicker {
                     : ''
                   : this.valueDate
               }
+              placeholder={this.typeOfDate === 'period-time' ? 'dd/mm/aaaa HH:MM' : undefined}
               disabled={this.disabled}
               type={this.typeOfDate === 'period-time' ? 'text' : 'date'}
               readonly={this.typeOfDate === 'period-time'}
@@ -544,6 +545,7 @@ export class DatePicker {
                     : ''
                   : this.valueEndDate
               }
+              placeholder={this.typeOfDate === 'period-time' ? 'dd/mm/aaaa HH:MM' : undefined}
               disabled={this.disabled || this.errorMsgDate ? true : false || !this.dateSelected}
               type={this.typeOfDate === 'period-time' ? 'text' : 'date'}
               readonly={this.typeOfDate === 'period-time'}
