@@ -21,8 +21,8 @@ export declare class DatePicker {
   scrollingTop?: number;
   valueDate?: string;
   valueEndDate?: string;
-  startTime?: string;
-  endTime?: string;
+  startTime: string;
+  endTime: string;
   /**
    * TypeOfDate. Select type of date.
    */
@@ -180,6 +180,7 @@ export declare class DatePicker {
   private clickConcludeDatepicker;
   private onFocusDateSelect;
   private onFocusEndDateSelect;
+  private normalizeTime;
   private formatTimeInput;
   private selectTimeInputOnFocus;
   private onInputStartTimeSelected;

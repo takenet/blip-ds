@@ -117,6 +117,8 @@ export class DatePicker {
             endDate: typeDateToStringDate(this.valueEndDate),
           };
           if (this.typeOfDate == 'period-time') {
+            this.startTime = this.normalizeTime(this.startTime);
+            this.endTime = this.normalizeTime(this.endTime);
             data.startTime = this.startTime;
             data.endTime = this.endTime;
           }
@@ -152,6 +154,14 @@ export class DatePicker {
     this.onFocusEndDateSelect = () => {
       this.stateSelect = 'end';
     };
+    this.normalizeTime = (time) => {
+      const match = time.match(/^(\d{1,2})(?::(\d{1,2}))?$/);
+      if (!match)
+        return '00:00';
+      const h = match[1].padStart(2, '0');
+      const m = (match[2] ?? '0').padStart(2, '0');
+      return `${h}:${m}`;
+    };
     this.formatTimeInput = (raw) => {
       const digits = raw.replace(/\D/g, '').slice(0, 4);
       let h = digits.slice(0, 2);
@@ -186,13 +196,13 @@ export class DatePicker {
     this.onInputStartTimeSelected = (ev) => {
       const input = ev.target;
       if (input) {
-        this.startTime = this.formatTimeInput(input.value);
+        this.startTime = this.formatTimeInput(input.value ?? '');
       }
     };
     this.onInputEndTimeSelected = (ev) => {
       const input = ev.target;
       if (input) {
-        this.endTime = this.formatTimeInput(input.value);
+        this.endTime = this.formatTimeInput(input.value ?? '');
       }
     };
     this.open = false;
