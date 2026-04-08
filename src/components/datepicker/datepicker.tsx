@@ -514,10 +514,17 @@ export class DatePicker {
               class="input-start"
               ref={this.refInputSetDate}
               label={termTranslate(this.language, 'from')}
-              value={this.valueDate}
+              value={
+                this.typeOfDate === 'period-time'
+                  ? this.valueDate
+                    ? `${typeDateToStringDate(this.valueDate)} ${this.startTime}`
+                    : ''
+                  : this.valueDate
+              }
               disabled={this.disabled}
-              type="date"
-              maxlength={10}
+              type={this.typeOfDate === 'period-time' ? 'text' : 'date'}
+              readonly={this.typeOfDate === 'period-time'}
+              maxlength={this.typeOfDate === 'period-time' ? 16 : 10}
               icon="calendar"
               onClick={() => this.openDatepicker()}
               onFocus={() => this.onFocusDateSelect()}
@@ -530,10 +537,17 @@ export class DatePicker {
               class="input-end"
               ref={this.refInputSetEndDate}
               label={termTranslate(this.language, 'to')}
-              value={this.valueEndDate}
+              value={
+                this.typeOfDate === 'period-time'
+                  ? this.valueEndDate
+                    ? `${typeDateToStringDate(this.valueEndDate)} ${this.endTime}`
+                    : ''
+                  : this.valueEndDate
+              }
               disabled={this.disabled || this.errorMsgDate ? true : false || !this.dateSelected}
-              type="date"
-              maxlength={10}
+              type={this.typeOfDate === 'period-time' ? 'text' : 'date'}
+              readonly={this.typeOfDate === 'period-time'}
+              maxlength={this.typeOfDate === 'period-time' ? 16 : 10}
               icon="calendar"
               onClick={() => this.openDatepicker()}
               onFocus={() => this.onFocusEndDateSelect()}
