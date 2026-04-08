@@ -456,10 +456,30 @@ export class DatePicker {
 
   private formatTimeInput = (raw: string): string => {
     const digits = raw.replace(/\D/g, '').slice(0, 4);
-    if (digits.length >= 3) {
-      return `${digits.slice(0, 2)}:${digits.slice(2)}`;
+    let h = digits.slice(0, 2);
+    let m = digits.slice(2);
+
+    // Clamp hours: first digit max 2; two-digit value max 23
+    if (h.length >= 1 && parseInt(h[0]) > 2) {
+      h = '2' + h.slice(1);
     }
-    return digits;
+    if (h.length === 2 && parseInt(h) > 23) {
+      h = '23';
+    }
+
+    // Clamp minutes: first digit max 5; two-digit value max 59
+    if (m.length >= 1 && parseInt(m[0]) > 5) {
+      m = '5' + m.slice(1);
+    }
+    if (m.length === 2 && parseInt(m) > 59) {
+      m = '59';
+    }
+
+    const result = h + m;
+    if (result.length >= 3) {
+      return `${result.slice(0, 2)}:${result.slice(2)}`;
+    }
+    return result;
   };
 
   private selectTimeInputOnFocus = (ev: Event): void => {
