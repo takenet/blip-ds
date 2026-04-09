@@ -328,6 +328,7 @@ export class DatePicker {
    * selectDate. Function to output selected date.
    */
   selectDate(event) {
+    event.stopPropagation();
     const { detail: { value }, } = event;
     this.dateSelected = value;
     this.bdsStartDate.emit({ value: value ? dateToString(value) : null });
@@ -338,6 +339,7 @@ export class DatePicker {
    * selectEndDate. Function to issue selected end date..
    */
   selectEndDate(event) {
+    event.stopPropagation();
     const { detail: { value }, } = event;
     this.endDateSelected = value;
     this.bdsEndDate.emit({ value: value ? dateToString(value) : null });
