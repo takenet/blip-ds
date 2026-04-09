@@ -193,7 +193,7 @@ describe('bds-datepicker', () => {
       const spy = jest.spyOn(component.bdsStartDate, 'emit');
       const testDate = new Date('2023-06-15');
       
-      component['selectDate']({ detail: { value: testDate } } as any);
+      component['selectDate']({ detail: { value: testDate }, stopPropagation: jest.fn() } as any);
       
       expect(spy).toHaveBeenCalledWith({ value: '15/06/2023' });
       expect(component.dateSelected).toEqual(testDate);
@@ -203,7 +203,7 @@ describe('bds-datepicker', () => {
       const spy = jest.spyOn(component.bdsEndDate, 'emit');
       const testDate = new Date('2023-06-20');
       
-      component['selectEndDate']({ detail: { value: testDate } } as any);
+      component['selectEndDate']({ detail: { value: testDate }, stopPropagation: jest.fn() } as any);
       
       expect(spy).toHaveBeenCalledWith({ value: '20/06/2023' });
       expect(component.endDateSelected).toEqual(testDate);

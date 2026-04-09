@@ -300,6 +300,7 @@ export class DatePicker {
    * selectDate. Function to output selected date.
    */
   private selectDate(event: CustomEvent<{ value: Date }>) {
+    event.stopPropagation();
     const {
       detail: { value },
     } = event;
@@ -312,6 +313,7 @@ export class DatePicker {
    * selectEndDate. Function to issue selected end date..
    */
   private selectEndDate(event: CustomEvent<{ value: Date }>) {
+    event.stopPropagation();
     const {
       detail: { value },
     } = event;
