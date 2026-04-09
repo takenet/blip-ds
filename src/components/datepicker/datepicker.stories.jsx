@@ -197,3 +197,44 @@ export const PeriodTime = () => {
 export const FrameworkReact = () => {
   return <BdsDatepicker type-of-date="single" start-date-limit="31/12/2022" end-date-limit="01/01/2027" />;
 };
+
+export const FrameworkReactPeriodTime = () => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '550px';
+    el[0].style.position = 'relative';
+  }
+
+  const handleConclude = (event) => {
+    const { startDate, startTime, endDate, endTime } = event.detail;
+    // startDate / endDate → "dd/mm/yyyy"
+    // startTime / endTime → "HH:MM"
+    console.log('Conclude com hora:', { startDate, startTime, endDate, endTime });
+  };
+
+  const handleStartDate = (event) => {
+    // value → "dd/mm/yyyy"
+    console.log('Data inicial selecionada:', event.detail);
+  };
+
+  const handleEndDate = (event) => {
+    // value → "dd/mm/yyyy"
+    console.log('Data final selecionada:', event.detail);
+  };
+
+  const handleEmpty = () => {
+    console.log('Datepicker concluído sem datas selecionadas');
+  };
+
+  return (
+    <BdsDatepicker
+      typeOfDate="period-time"
+      startDateLimit="31/12/2022"
+      endDateLimit="01/01/2027"
+      onConcludeDatepicker={handleConclude}
+      onBdsStartDate={handleStartDate}
+      onBdsEndDate={handleEndDate}
+      onEmptyConcludeDatepicker={handleEmpty}
+    />
+  );
+};
