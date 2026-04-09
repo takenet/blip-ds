@@ -1,5 +1,3 @@
-'use strict';
-
 const ptTerms = [
   {
     conclude: 'Concluir',
@@ -391,6 +389,11 @@ const dateToInputDate = (value) => {
   const splitDate = value.split('/');
   return `${parseFloat(splitDate[2])}-${parseFloat(splitDate[1]).toString().padStart(2, '0')}-${parseFloat(splitDate[0]).toString().padStart(2, '0')}`;
 };
+const dateToString = (value) => {
+  return `${value.getDate().toString().padStart(2, '0')}/${(value.getMonth() + 1)
+    .toString()
+    .padStart(2, '0')}/${value.getFullYear()}`;
+};
 const typeDateToStringDate = (value) => {
   const splitDate = value.split('-');
   return `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
@@ -401,19 +404,4 @@ const dateToTypeDate = (value) => {
     .padStart(2, '0')}-${value.getDate().toString().padStart(2, '0')}`;
 };
 
-exports.THIS_DAY = THIS_DAY;
-exports.changeMonths = changeMonths;
-exports.dateToDayList = dateToDayList;
-exports.dateToInputDate = dateToInputDate;
-exports.dateToTypeDate = dateToTypeDate;
-exports.defaultEndDate = defaultEndDate;
-exports.defaultStartDate = defaultStartDate;
-exports.fillDate = fillDate;
-exports.fillDayList = fillDayList;
-exports.getMonths = getMonths;
-exports.getMonthsSlide = getMonthsSlide;
-exports.getYears = getYears;
-exports.messageTranslate = messageTranslate;
-exports.termTranslate = termTranslate;
-exports.typeDateToStringDate = typeDateToStringDate;
-exports.weekDays = weekDays;
+export { THIS_DAY as T, defaultStartDate as a, defaultEndDate as b, dateToInputDate as c, dateToDayList as d, dateToString as e, fillDayList as f, dateToTypeDate as g, termTranslate as h, fillDate as i, getMonthsSlide as j, getYears as k, getMonths as l, messageTranslate as m, changeMonths as n, typeDateToStringDate as t, weekDays as w };

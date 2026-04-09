@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-611fd21e.js';
-import { t as typeDateToStringDate, d as dateToDayList, m as messageTranslate, f as fillDayList, a as defaultStartDate, b as defaultEndDate, c as dateToInputDate, e as dateToTypeDate, g as termTranslate } from './calendar-3f551809.js';
+import { t as typeDateToStringDate, d as dateToDayList, m as messageTranslate, f as fillDayList, a as defaultStartDate, b as defaultEndDate, c as dateToInputDate, e as dateToString, g as dateToTypeDate, h as termTranslate } from './calendar-5a4ae661.js';
 import { d as dateValidation } from './validations-e4c049e4.js';
 import { g as getScrollParent, p as positionAbsoluteElement } from './position-element-d853cc63.js';
 
@@ -337,7 +337,7 @@ const DatePicker = class {
   selectDate(event) {
     const { detail: { value }, } = event;
     this.dateSelected = value;
-    this.bdsStartDate.emit({ value: this.dateSelected });
+    this.bdsStartDate.emit({ value: value ? dateToString(value) : null });
     this.valueDate = this.dateSelected && dateToTypeDate(this.dateSelected);
     this.errorMsgDate = null;
   }
@@ -347,7 +347,7 @@ const DatePicker = class {
   selectEndDate(event) {
     const { detail: { value }, } = event;
     this.endDateSelected = value;
-    this.bdsEndDate.emit({ value: this.endDateSelected });
+    this.bdsEndDate.emit({ value: value ? dateToString(value) : null });
     this.valueEndDate = this.endDateSelected && dateToTypeDate(this.endDateSelected);
     this.errorMsgEndDate = null;
   }

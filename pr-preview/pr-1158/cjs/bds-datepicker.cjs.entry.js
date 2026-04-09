@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-6a53aecf.js');
-const calendar = require('./calendar-ad7a84a1.js');
+const calendar = require('./calendar-c8da04e5.js');
 const validations = require('./validations-d525e60d.js');
 const positionElement = require('./position-element-dc48e4da.js');
 
@@ -341,7 +341,7 @@ const DatePicker = class {
   selectDate(event) {
     const { detail: { value }, } = event;
     this.dateSelected = value;
-    this.bdsStartDate.emit({ value: this.dateSelected });
+    this.bdsStartDate.emit({ value: value ? calendar.dateToString(value) : null });
     this.valueDate = this.dateSelected && calendar.dateToTypeDate(this.dateSelected);
     this.errorMsgDate = null;
   }
@@ -351,7 +351,7 @@ const DatePicker = class {
   selectEndDate(event) {
     const { detail: { value }, } = event;
     this.endDateSelected = value;
-    this.bdsEndDate.emit({ value: this.endDateSelected });
+    this.bdsEndDate.emit({ value: value ? calendar.dateToString(value) : null });
     this.valueEndDate = this.endDateSelected && calendar.dateToTypeDate(this.endDateSelected);
     this.errorMsgEndDate = null;
   }
