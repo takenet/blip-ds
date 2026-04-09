@@ -6,6 +6,7 @@ import {
   dateToDayList,
   dateToInputDate,
   dateToTypeDate,
+  dateToString,
   typeDateToStringDate,
 } from '../../utils/calendar';
 import { dateValidation } from '../../utils/validations';
@@ -303,7 +304,7 @@ export class DatePicker {
       detail: { value },
     } = event;
     this.dateSelected = value;
-    this.bdsStartDate.emit({ value: this.dateSelected });
+    this.bdsStartDate.emit({ value: value ? dateToString(value) : null });
     this.valueDate = this.dateSelected && dateToTypeDate(this.dateSelected);
     this.errorMsgDate = null;
   }
@@ -315,7 +316,7 @@ export class DatePicker {
       detail: { value },
     } = event;
     this.endDateSelected = value;
-    this.bdsEndDate.emit({ value: this.endDateSelected });
+    this.bdsEndDate.emit({ value: value ? dateToString(value) : null });
     this.valueEndDate = this.endDateSelected && dateToTypeDate(this.endDateSelected);
     this.errorMsgEndDate = null;
   }

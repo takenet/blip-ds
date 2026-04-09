@@ -24,6 +24,11 @@ jest.mock('../../../utils/calendar', () => ({
     const d = new Date(date);
     return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
   }),
+  dateToString: jest.fn((date) => {
+    if (!date) return null;
+    const d = new Date(date);
+    return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
+  }),
   dateToTypeDate: jest.fn((date) => {
     if (!date) return null;
     const d = new Date(date);
@@ -190,7 +195,7 @@ describe('bds-datepicker', () => {
       
       component['selectDate']({ detail: { value: testDate } } as any);
       
-      expect(spy).toHaveBeenCalledWith({ value: testDate });
+      expect(spy).toHaveBeenCalledWith({ value: '15/06/2023' });
       expect(component.dateSelected).toEqual(testDate);
     });
 
@@ -200,7 +205,7 @@ describe('bds-datepicker', () => {
       
       component['selectEndDate']({ detail: { value: testDate } } as any);
       
-      expect(spy).toHaveBeenCalledWith({ value: testDate });
+      expect(spy).toHaveBeenCalledWith({ value: '20/06/2023' });
       expect(component.endDateSelected).toEqual(testDate);
     });
   });
