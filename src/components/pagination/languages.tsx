@@ -18,9 +18,12 @@ export const pt_BR =
 
 export const es_MX = 
     {
-        itemsPerPage: 'Itens por página',
+        itemsPerPage: 'Artículos por página',
         of: 'de',
-        items: 'itens',
+        items: 'artículos',
         pages: 'páginas'
     }
 ;
+
+/** Canonical Spanish locale – kept in sync with es_MX for backward compatibility. */
+export const es_ES = es_MX;
