@@ -1,1 +1,0 @@
-import{r as o,h as r}from"./p-93b809e8.js";const t=class{constructor(r){o(this,r)}render(){return r("div",{class:"alert__body"},r("bds-typo",{variant:"fs-14",bold:"regular",slot:"body"},r("slot",null)))}};t.style=".alert__body{position:relative;width:100%;padding:12px 16px;margin-bottom:8px;-webkit-box-sizing:border-box;box-sizing:border-box}";export{t as bds_alert_body}
