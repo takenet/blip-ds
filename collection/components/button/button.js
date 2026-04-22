@@ -128,10 +128,10 @@ export class Button {
         [`button__color--${this.variant === 'delete' ? 'negative' : this.color}`]: true,
         [`button__variant--${this.variant}--disabled`]: this.disabled,
         [`button__size--${this.size}`]: true,
-      }, part: "button", "data-test": this.dataTest }, this.bdsLoading ? this.renderLoadingSpinner() : '', this.groupIcon && (this.iconLeft || this.icon) ? (h("div", { class: "button__group-content" }, h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: 'medium' }), h("bds-typo", { class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, h("slot", null)))) : ([
-      this.iconLeft || this.icon ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: 'medium' })) : null,
+      }, part: "button", "data-test": this.dataTest }, this.bdsLoading ? this.renderLoadingSpinner() : '', this.groupIcon && (this.iconLeft || this.icon) ? (h("div", { class: "button__group-content" }, h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, size: 'medium' }), h("bds-typo", { class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, h("slot", null)))) : ([
+      this.iconLeft || this.icon ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.icon ? this.icon : this.iconLeft, theme: this.iconTheme, type: this.typeIcon, size: 'medium' })) : null,
       h("bds-typo", { class: { typo_buttom: true, button__content: true, hide: this.bdsLoading }, variant: "fs-14", lineHeight: "simple", bold: "bold" }, h("slot", null))
-    ]), this.iconRight || this.arrow ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.arrow ? 'arrow-right' : this.iconRight, color: "inherit", theme: this.iconTheme, type: this.typeIcon })) : (''))));
+    ]), this.iconRight || this.arrow ? (h("bds-icon", { class: { icon_buttom: true, hide: this.bdsLoading }, name: this.arrow ? 'arrow-right' : this.iconRight, theme: this.iconTheme, type: this.typeIcon })) : (''))));
   }
   static get is() { return "bds-button"; }
   static get encapsulation() { return "shadow"; }
@@ -199,7 +199,7 @@ export class Button {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "Controls the horizontal alignment of button content.\n'center' - content is centered (default)\n'space-between' - left content aligned left, right content aligned right"
+          "text": "Controls the horizontal alignment of button content.\r\n'center' - content is centered (default)\r\n'space-between' - left content aligned left, right content aligned right"
         },
         "attribute": "justify-content",
         "reflect": false,
@@ -217,7 +217,7 @@ export class Button {
         "optional": true,
         "docs": {
           "tags": [],
-          "text": "If true, groups the left icon with the label when justifyContent is 'space-between'.\nThis keeps the left icon and text together as a single visual unit on the left side."
+          "text": "If true, groups the left icon with the label when justifyContent is 'space-between'.\r\nThis keeps the left icon and text together as a single visual unit on the left side."
         },
         "attribute": "group-icon",
         "reflect": false,
