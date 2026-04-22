@@ -285,7 +285,6 @@ export class Button {
                 name={this.icon ? this.icon : this.iconLeft}
                 theme={this.iconTheme}
                 type={this.typeIcon}
-                color="inherit"
                 size={'medium'}
               ></bds-icon>
               <bds-typo
@@ -305,7 +304,6 @@ export class Button {
                   name={this.icon ? this.icon : this.iconLeft}
                   theme={this.iconTheme}
                   type={this.typeIcon}
-                  color="inherit"
                   size={'medium'}
                 ></bds-icon>
               ) : null,
@@ -323,7 +321,6 @@ export class Button {
             <bds-icon
               class={{ icon_buttom: true, hide: this.bdsLoading }}
               name={this.arrow ? 'arrow-right' : this.iconRight}
-              color="inherit"
               theme={this.iconTheme}
               type={this.typeIcon}
             ></bds-icon>
