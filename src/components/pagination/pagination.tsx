@@ -1,6 +1,7 @@
 import { Component, Host, h, Element, Prop, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { getScrollParent } from '../../utils/position-element';
-import { pt_BR, en_US, es_MX } from './languages';
+import { pt_BR, en_US, es_MX, es_ES } from './languages';
+import { languages, normalizeLanguage } from '../../utils/languages';
 
 export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
 @Component({
@@ -63,7 +64,7 @@ export class Pagination {
   @Prop() numberItems?: number;
 
   // Propriedade para definir o idioma do componente (opcional)
-  @Prop() language?: string = 'pt_BR';
+  @Prop() language?: languages = 'pt_BR';
 
   /**
    * Propriedade de teste para especificamente testar a ação do botão inicial.
@@ -233,11 +234,11 @@ export class Pagination {
   }
 
   get currentLanguage() {
-    switch (this.language) {
+    switch (normalizeLanguage(this.language)) {
       case 'en_US':
         return en_US;
-      case 'es_MX':
-        return es_MX;
+      case 'es_ES':
+        return es_ES;
       default:
         return pt_BR;
     }
