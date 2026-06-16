@@ -709,7 +709,7 @@ const text = {
 };
 
 export const examplePageGrid = () => (
-  <bds-grid xxs="11">
+  <bds-grid xxs="12">
 
     <bds-grid xxs="12" direction="column" wrap="no-wrap" style={page}>
 

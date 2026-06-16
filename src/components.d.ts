@@ -497,6 +497,10 @@ export namespace Components {
           * @default []
          */
         "items": string | Array<{ label: string; href?: string }>;
+        /**
+          * @default true
+         */
+        "wrapItems": boolean | string;
     }
     interface BdsButton {
         /**
@@ -5616,6 +5620,10 @@ declare namespace LocalJSX {
           * @default []
          */
         "items"?: string | Array<{ label: string; href?: string }>;
+        /**
+          * @default true
+         */
+        "wrapItems"?: boolean | string;
     }
     interface BdsButton {
         /**
