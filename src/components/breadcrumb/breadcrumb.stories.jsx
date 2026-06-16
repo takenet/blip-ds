@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import DocumentationTemplate from './breadcrumb.mdx';
 import { BdsBreadcrumb } from '../../../blip-ds-react/dist/components';
 
@@ -13,11 +13,17 @@ export default {
 };
 
 export const Properties = (args) => {
-  return (
-    <bds-breadcrumb
-      items={args.items}
-    ></bds-breadcrumb>
-  );
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // ensure items is passed as the expected type (string or array) and wrapItems as boolean
+    el.items = args.items;
+    el.wrapItems = !!args.wrapItems;
+  }, [args.items, args.wrapItems]);
+
+  return <bds-breadcrumb ref={ref}></bds-breadcrumb>;
 };
 
 Properties.argTypes = {
@@ -28,6 +34,13 @@ Properties.argTypes = {
     description: 'Define the labels and hrefs for the breadcrumb items.',
     control: { type: 'text' },
   },
+  wrapItems: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    description: 'Determines if breadcrumb items should wrap to the next line when they exceed the container width.',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -35,7 +48,7 @@ Properties.args = {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Current Page' },
+    { label: 'Current Page', href: '/current' },
   ]),
 };
 
@@ -58,6 +71,7 @@ export const Events = () => {
           { label: 'Documentation' },
         ])}
         onBreadcrumbItemClick={(event) => handleBreadcrumbClick(event)}
+        wrap-items={true}
       ></bds-breadcrumb>
       {clickedItem && (
         <div>
@@ -85,6 +99,7 @@ export const FrameworkReact = () => {
         { label: 'Pricing', href: '/pricing' },
         { label: 'Documentation' },
       ]}
+      wrapItems={true}
     />
   );
 };
