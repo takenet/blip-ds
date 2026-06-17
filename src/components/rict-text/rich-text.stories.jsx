@@ -169,6 +169,8 @@ export const CustomStyles = () => {
       style={{
         '--bds-rich-text-background': '#2f3239',
         '--bds-rich-text-toolbar-background': '#ffffff',
+        '--bds-rich-text-toolbar-button-color': '#3548cb',
+        '--bds-rich-text-toolbar-button-border-color': '#d5dcff',
         '--bds-rich-text-editor-background': '#243544',
         '--bds-rich-text-editor-color': '#f6fbff',
         '--bds-rich-text-link-color': '#80cfff',

@@ -2157,6 +2157,18 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @cssprop --bds-rich-text-background - Background color of the rich text root container.
+     * @cssprop --bds-rich-text-toolbar-background - Background color of the toolbar container.
+     * @cssprop --bds-rich-text-toolbar-border-color - Border color of the toolbar container.
+     * @cssprop --bds-rich-text-toolbar-hover-background - Background color of the toolbar hover helper.
+     * @cssprop --bds-rich-text-toolbar-button-color - Text/icon color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-toolbar-button-background - Background color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-toolbar-button-border-color - Border color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-editor-background - Background color of the editable region.
+     * @cssprop --bds-rich-text-editor-color - Text color of the editable region.
+     * @cssprop --bds-rich-text-link-color - Link color inside editable content.
+     */
     interface BdsRichText {
         /**
           * alignmentButtons to define if component has TextAlign Control.
@@ -3617,6 +3629,18 @@ declare global {
         prototype: HTMLBdsRadioGroupElement;
         new (): HTMLBdsRadioGroupElement;
     };
+    /**
+     * @cssprop --bds-rich-text-background - Background color of the rich text root container.
+     * @cssprop --bds-rich-text-toolbar-background - Background color of the toolbar container.
+     * @cssprop --bds-rich-text-toolbar-border-color - Border color of the toolbar container.
+     * @cssprop --bds-rich-text-toolbar-hover-background - Background color of the toolbar hover helper.
+     * @cssprop --bds-rich-text-toolbar-button-color - Text/icon color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-toolbar-button-background - Background color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-toolbar-button-border-color - Border color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-editor-background - Background color of the editable region.
+     * @cssprop --bds-rich-text-editor-color - Text color of the editable region.
+     * @cssprop --bds-rich-text-link-color - Link color inside editable content.
+     */
     interface HTMLBdsRichTextElement extends Components.BdsRichText, HTMLStencilElement {
     }
     var HTMLBdsRichTextElement: {
@@ -6188,6 +6212,18 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @cssprop --bds-rich-text-background - Background color of the rich text root container.
+     * @cssprop --bds-rich-text-toolbar-background - Background color of the toolbar container.
+     * @cssprop --bds-rich-text-toolbar-border-color - Border color of the toolbar container.
+     * @cssprop --bds-rich-text-toolbar-hover-background - Background color of the toolbar hover helper.
+     * @cssprop --bds-rich-text-toolbar-button-color - Text/icon color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-toolbar-button-background - Background color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-toolbar-button-border-color - Border color applied to toolbar buttons.
+     * @cssprop --bds-rich-text-editor-background - Background color of the editable region.
+     * @cssprop --bds-rich-text-editor-color - Text color of the editable region.
+     * @cssprop --bds-rich-text-link-color - Link color inside editable content.
+     */
     interface BdsRichText {
         /**
           * alignmentButtons to define if component has TextAlign Control.
@@ -7206,6 +7242,18 @@ declare module "@stencil/core" {
             "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
             "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
+            /**
+             * @cssprop --bds-rich-text-background - Background color of the rich text root container.
+             * @cssprop --bds-rich-text-toolbar-background - Background color of the toolbar container.
+             * @cssprop --bds-rich-text-toolbar-border-color - Border color of the toolbar container.
+             * @cssprop --bds-rich-text-toolbar-hover-background - Background color of the toolbar hover helper.
+             * @cssprop --bds-rich-text-toolbar-button-color - Text/icon color applied to toolbar buttons.
+             * @cssprop --bds-rich-text-toolbar-button-background - Background color applied to toolbar buttons.
+             * @cssprop --bds-rich-text-toolbar-button-border-color - Border color applied to toolbar buttons.
+             * @cssprop --bds-rich-text-editor-background - Background color of the editable region.
+             * @cssprop --bds-rich-text-editor-color - Text color of the editable region.
+             * @cssprop --bds-rich-text-link-color - Link color inside editable content.
+             */
             "bds-rich-text": LocalJSX.BdsRichText & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
             "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;

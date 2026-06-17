@@ -180,12 +180,13 @@ describe('bds-rich-text', () => {
     expect(editor.getAttribute('contentEditable')).toBe('true');
   });
 
-  it('should expose editable sections through part attributes', async () => {
+  it('should expose styling parts through part attributes', async () => {
     expect(page.root.querySelector('.preview')?.getAttribute('part')).toBe('preview');
     expect(page.root.querySelector('.editor-uai-design-system')?.getAttribute('part')).toBe('editor');
     expect(page.root.querySelector('.format-buttons')?.getAttribute('part')).toBe('toolbar');
     expect(page.root.querySelector('.accordion-header')?.getAttribute('part')).toBe('toolbar-header');
     expect(page.root.querySelector('.buttons-list')?.getAttribute('part')).toBe('toolbar-buttons');
+    expect(page.root.querySelector('.arrow-down')?.getAttribute('part')).toBe('toolbar-accordion-button');
   });
 
   it('should render format buttons when enabled', async () => {

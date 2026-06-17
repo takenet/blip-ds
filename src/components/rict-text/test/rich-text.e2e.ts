@@ -52,12 +52,28 @@ describe('bds-rich-text e2e tests', () => {
       const toolbar = await page.find('bds-rich-text .format-buttons');
       const toolbarHeader = await page.find('bds-rich-text .accordion-header');
       const toolbarButtons = await page.find('bds-rich-text .buttons-list');
+      const accordionButton = await page.find('bds-rich-text #buttonAccordion');
 
       expect(preview.getAttribute('part')).toBe('preview');
       expect(editor.getAttribute('part')).toBe('editor');
       expect(toolbar.getAttribute('part')).toBe('toolbar');
       expect(toolbarHeader.getAttribute('part')).toBe('toolbar-header');
       expect(toolbarButtons.getAttribute('part')).toBe('toolbar-buttons');
+      expect(accordionButton.getAttribute('part')).toBe('toolbar-accordion-button');
+    });
+
+    it('should allow styling toolbar via exposed part attribute', async () => {
+      await page.evaluate(() => {
+        const style = document.createElement('style');
+        style.innerHTML = "bds-rich-text [part='toolbar'] { background-color: rgb(255, 0, 0) !important; }";
+        document.head.appendChild(style);
+      });
+      await page.waitForChanges();
+
+      const toolbar = await page.find('bds-rich-text .format-buttons');
+      const toolbarStyle = await toolbar.getComputedStyle();
+
+      expect(toolbarStyle.backgroundColor).toBe('rgb(255, 0, 0)');
     });
   });
 

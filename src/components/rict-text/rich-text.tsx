@@ -5,6 +5,25 @@ import { termTranslate } from './languages';
 
 export type positionBar = 'top' | 'bottom';
 
+/**
+ * @part preview - Container that wraps the editable content area.
+ * @part editor - Editable region where rich text content is typed.
+ * @part toolbar - Toolbar wrapper that contains formatting actions.
+ * @part toolbar-header - Header region that groups toolbar controls.
+ * @part toolbar-buttons - Container with the toolbar action buttons.
+ * @part toolbar-accordion-button - Toggle button that expands/collapses toolbar actions.
+ *
+ * @cssprop --bds-rich-text-background - Background color of the rich text root container.
+ * @cssprop --bds-rich-text-toolbar-background - Background color of the toolbar container.
+ * @cssprop --bds-rich-text-toolbar-border-color - Border color of the toolbar container.
+ * @cssprop --bds-rich-text-toolbar-hover-background - Background color of the toolbar hover helper.
+ * @cssprop --bds-rich-text-toolbar-button-color - Text/icon color applied to toolbar buttons.
+ * @cssprop --bds-rich-text-toolbar-button-background - Background color applied to toolbar buttons.
+ * @cssprop --bds-rich-text-toolbar-button-border-color - Border color applied to toolbar buttons.
+ * @cssprop --bds-rich-text-editor-background - Background color of the editable region.
+ * @cssprop --bds-rich-text-editor-color - Text color of the editable region.
+ * @cssprop --bds-rich-text-link-color - Link color inside editable content.
+ */
 @Component({
   tag: 'bds-rich-text',
   styleUrl: 'rich-text.scss',
