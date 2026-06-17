@@ -155,3 +155,24 @@ export const Events = () => {
 export const FrameworkReact = () => {
   return <BdsRichText id="rich-text" height="280px" language="pt_BR"></BdsRichText>;
 };
+
+export const CustomStyles = () => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.width = '560px';
+  }
+
+  return (
+    <bds-rich-text
+      height="280px"
+      language="pt_BR"
+      style={{
+        '--bds-rich-text-background': '#2f3239',
+        '--bds-rich-text-toolbar-background': '#ffffff',
+        '--bds-rich-text-editor-background': '#243544',
+        '--bds-rich-text-editor-color': '#f6fbff',
+        '--bds-rich-text-link-color': '#80cfff',
+      }}
+    ></bds-rich-text>
+  );
+};

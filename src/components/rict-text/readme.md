@@ -37,6 +37,18 @@
 | `bdsRichTextInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
 
 
+## Shadow Parts
+
+| Part                         | Description |
+| ---------------------------- | ----------- |
+| `"editor"`                   |             |
+| `"preview"`                  |             |
+| `"toolbar"`                  |             |
+| `"toolbar-accordion-button"` |             |
+| `"toolbar-buttons"`          |             |
+| `"toolbar-header"`           |             |
+
+
 ## Dependencies
 
 ### Depends on

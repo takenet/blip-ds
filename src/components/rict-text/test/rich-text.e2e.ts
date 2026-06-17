@@ -45,6 +45,20 @@ describe('bds-rich-text e2e tests', () => {
       const richText = await page.find('bds-rich-text');
       expect(richText.shadowRoot).toBeNull();
     });
+
+    it('should expose part attributes for style customization', async () => {
+      const preview = await page.find('bds-rich-text .preview');
+      const editor = await page.find('bds-rich-text .editor-uai-design-system');
+      const toolbar = await page.find('bds-rich-text .format-buttons');
+      const toolbarHeader = await page.find('bds-rich-text .accordion-header');
+      const toolbarButtons = await page.find('bds-rich-text .buttons-list');
+
+      expect(preview.getAttribute('part')).toBe('preview');
+      expect(editor.getAttribute('part')).toBe('editor');
+      expect(toolbar.getAttribute('part')).toBe('toolbar');
+      expect(toolbarHeader.getAttribute('part')).toBe('toolbar-header');
+      expect(toolbarButtons.getAttribute('part')).toBe('toolbar-buttons');
+    });
   });
 
   describe('Property Changes', () => {

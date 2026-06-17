@@ -858,12 +858,13 @@ export class RichText {
         onMouseEnter={() => (this.insideComponent = true)}
         onMouseLeave={() => (this.insideComponent = false)}
       >
-        <div class="preview">
+        <div class="preview" part="preview">
           <div
             data-test={this.dataTest}
             ref={(el) => this.refeditorElement(el)}
             contentEditable="true"
             class="editor-uai-design-system"
+            part="editor"
             tabindex="0"
             onBlur={this.onBlur}
             onFocus={this.onFocus}
@@ -891,9 +892,10 @@ export class RichText {
               this.headingButtons ||
               this.unstyledButton,
           }}
+          part="toolbar"
         >
-          <div class="accordion-header">
-            <bds-grid ref={(el) => this.refButtonsListElement(el)} class="buttons-list" flex-wrap="wrap">
+          <div class="accordion-header" part="toolbar-header">
+            <bds-grid ref={(el) => this.refButtonsListElement(el)} class="buttons-list" flex-wrap="wrap" part="toolbar-buttons">
               <div onFocus={(ev) => this.onFocusEditorBar(ev)} tabindex="1" class="editor-bar"></div>
               {this.weightButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'bold')}`} position="top-center">
@@ -1165,6 +1167,7 @@ export class RichText {
               id="buttonAccordion"
               variant={this.buttomAccordionActive ? 'solid' : 'text'}
               class="arrow-down"
+              part="toolbar-accordion-button"
               color="content"
               size="short"
               onBdsClick={() => this.setheaderHeight()}
