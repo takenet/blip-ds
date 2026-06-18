@@ -2171,6 +2171,10 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
+          * Returns the current HTML content of the editor.
+         */
+        "getValue": () => Promise<string>;
+        /**
           * headingButtons to define if component has Heading Control.
          */
         "headingButtons"?: boolean;
@@ -2218,6 +2222,10 @@ export namespace Components {
           * unstyledButton to define if component has Unstyled Control.
          */
         "unstyledButton"?: boolean;
+        /**
+          * value is the prop to set the initial content of the editor. Accepts plain text (converted to paragraph lines) or an HTML string used directly.
+         */
+        "value"?: string;
         /**
           * weightButton to define if component has Bold Control.
          */
@@ -6265,6 +6273,10 @@ declare namespace LocalJSX {
           * unstyledButton to define if component has Unstyled Control.
          */
         "unstyledButton"?: boolean;
+        /**
+          * value is the prop to set the initial content of the editor. Accepts plain text (converted to paragraph lines) or an HTML string used directly.
+         */
+        "value"?: string;
         /**
           * weightButton to define if component has Bold Control.
          */
