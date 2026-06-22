@@ -1,0 +1,54 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+:host {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 110000;
+  width: 456px;
+}
+:host.bottom-right {
+  bottom: 48px;
+  right: 48px;
+}
+:host.bottom-left {
+  bottom: 48px;
+  left: 48px;
+}
+:host.top-right {
+  top: 24px;
+  right: 24px;
+}
+:host.top-left {
+  top: 48px;
+  left: 48px;
+}
+@media (max-width: 780px) {
+  :host {
+    right: 0px;
+    left: 0px;
+    width: 100%;
+  }
+  :host.top-left, :host.top-right {
+    top: 20px;
+  }
+  :host.bottom-left, :host.bottom-right {
+    bottom: 20px;
+  }
+}
