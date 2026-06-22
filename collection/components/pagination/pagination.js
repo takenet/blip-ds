@@ -5,7 +5,8 @@ export class Pagination {
   constructor() {
     this.nextPage = (event) => {
       const el = this.value;
-      if (el < this.pages) {
+      const totalPages = this.pages || 0;
+      if (el < totalPages) {
         event.preventDefault();
         this.value = this.value + 1;
         this.updateItemRange();
@@ -29,9 +30,10 @@ export class Pagination {
     };
     this.lastPage = (event) => {
       const el = this.value;
-      if (el < this.pages) {
+      const totalPages = this.pages || 0;
+      if (el < totalPages) {
         event.preventDefault();
-        this.value = this.pages;
+        this.value = totalPages;
         this.updateItemRange();
       }
     };
@@ -93,15 +95,17 @@ export class Pagination {
     }
   }
   countPage() {
+    const totalPages = this.pages || 0;
     if (this.paginationNumbers.length !== 0) {
       this.paginationNumbers = [];
     }
     if (this.paginationNumbers.length === 0) {
-      for (let i = 1; i <= this.pages; i++) {
+      for (let i = 1; i <= totalPages; i++) {
         this.paginationNumbers.push(i);
       }
-      if (this.startedPage && this.startedPage < this.pages) {
-        this.value = this.startedPage;
+      if (Number.isFinite(this.startedPage) && totalPages > 0) {
+        const normalizedStartedPage = Math.min(totalPages, Math.max(1, Math.trunc(this.startedPage)));
+        this.value = normalizedStartedPage;
       }
       else {
         this.value = this.paginationNumbers[0];
@@ -137,7 +141,13 @@ export class Pagination {
   }
   render() {
     const { currentLanguage } = this;
-    return (h(Host, { class: { full_width: this.pageCounter } }, h("bds-grid", { "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (h("bds-grid", { gap: "1", "align-items": "center", class: "items_per_page" }, h("bds-typo", { variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), h("bds-select", { class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, this.itemsPage?.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.itemSelected(el) }, el)))), h("bds-typo", { variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), h("bds-grid", { gap: "1", "align-items": "center", class: "actions" }, h("bds-button-icon", { onBdsClick: (ev) => this.firstPage(ev), size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), h("bds-button-icon", { onBdsClick: (ev) => this.previewPage(ev), size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), h("bds-select", { class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.paginationNumbers.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (h("bds-typo", { class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), h("bds-button-icon", { onBdsClick: (ev) => this.nextPage(ev), size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), h("bds-button-icon", { onBdsClick: (ev) => this.lastPage(ev), size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
+    const totalPages = this.pages || 0;
+    const isFirstPage = this.value <= 1;
+    const isLastPage = this.value >= totalPages;
+    const isSinglePage = totalPages <= 1;
+    const disableBackActions = isSinglePage || isFirstPage;
+    const disableForwardActions = isSinglePage || isLastPage;
+    return (h(Host, { class: { full_width: this.pageCounter } }, h("bds-grid", { "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (h("bds-grid", { gap: "1", "align-items": "center", class: "items_per_page" }, h("bds-typo", { variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), h("bds-select", { class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, this.itemsPage?.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.itemSelected(el) }, el)))), h("bds-typo", { variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), h("bds-grid", { gap: "1", "align-items": "center", class: "actions" }, h("bds-button-icon", { onBdsClick: (ev) => this.firstPage(ev), disabled: disableBackActions, size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), h("bds-button-icon", { onBdsClick: (ev) => this.previewPage(ev), disabled: disableBackActions, size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), h("bds-select", { class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.paginationNumbers.map((el, index) => (h("bds-select-option", { key: index, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (h("bds-typo", { class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), h("bds-button-icon", { onBdsClick: (ev) => this.nextPage(ev), disabled: disableForwardActions, size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), h("bds-button-icon", { onBdsClick: (ev) => this.lastPage(ev), disabled: disableForwardActions, size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
   }
   static get is() { return "bds-pagination"; }
   static get encapsulation() { return "shadow"; }
