@@ -86,7 +86,7 @@ export class Breadcrumb {
 
         if (item.label === '...') {
           return (
-            <bds-dropdown active-mode="click" position="auto">
+            <bds-dropdown active-mode="click" position="auto" open={this.isDropdownOpen}>
               <bds-grid slot="dropdown-content">
                 <bds-grid direction="column" padding="1" gap="half">
                   {this.parsedItems.slice(1, -1).map((subItem, idx) => (
