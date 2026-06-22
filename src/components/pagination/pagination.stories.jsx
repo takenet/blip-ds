@@ -47,3 +47,15 @@ export const FrameworkReact = () => {
     );
   };
 
+export const OnFirstPage = () => {
+  return <bds-pagination pages="10" started-page="1"></bds-pagination>;
+};
+
+export const OnLastPage = () => {
+  return <bds-pagination pages="10" started-page="10"></bds-pagination>;
+};
+
+export const SinglePage = () => {
+  return <bds-pagination pages="1" started-page="1"></bds-pagination>;
+};
+
