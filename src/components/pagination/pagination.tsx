@@ -161,7 +161,7 @@ export class Pagination {
       for (let i = 1; i <= totalPages; i++) {
         this.paginationNumbers.push(i);
       }
-      if (this.startedPage && this.startedPage <= totalPages) {
+      if (this.startedPage >= 1 && this.startedPage <= totalPages) {
         this.value = this.startedPage;
       } else {
         this.value = this.paginationNumbers[0];
