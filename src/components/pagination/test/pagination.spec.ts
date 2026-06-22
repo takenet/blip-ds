@@ -130,13 +130,13 @@ describe('bds-pagination', () => {
       expect(page.rootInstance.value).toBe(1);
     });
 
-    it('should fallback to first page when startedPage is greater than total pages', async () => {
+    it('should clamp startedPage to the last page when startedPage is greater than total pages', async () => {
       const page = await newSpecPage({
         components: [Pagination],
         html: `<bds-pagination pages="5" started-page="9"></bds-pagination>`,
       });
 
-      expect(page.rootInstance.value).toBe(1);
+      expect(page.rootInstance.value).toBe(5);
     });
 
     it('should render with page counter when enabled', async () => {
