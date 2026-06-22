@@ -15,6 +15,10 @@ jest.mock('../../../utils/position-element', () => ({
 
 import { Pagination } from '../pagination';
 
+const isButtonIconDisabled = (button: HTMLElement): boolean => {
+  return button.hasAttribute('disabled') || Boolean((button as HTMLButtonElement & { disabled?: boolean }).disabled);
+};
+
 describe('bds-pagination', () => {
   describe('Component Creation', () => {
     it('should create component', () => {
@@ -236,10 +240,10 @@ describe('bds-pagination', () => {
       const nextButton = buttons[2] as HTMLElement;
       const lastButton = buttons[3] as HTMLElement;
 
-      expect(firstButton.hasAttribute('disabled')).toBe(true);
-      expect(prevButton.hasAttribute('disabled')).toBe(true);
-      expect(nextButton.getAttribute('disabled')).toBeNull();
-      expect(lastButton.getAttribute('disabled')).toBeNull();
+      expect(isButtonIconDisabled(firstButton)).toBe(true);
+      expect(isButtonIconDisabled(prevButton)).toBe(true);
+      expect(isButtonIconDisabled(nextButton)).toBe(false);
+      expect(isButtonIconDisabled(lastButton)).toBe(false);
     });
 
     it('should disable forward actions when on last page', async () => {
@@ -256,10 +260,10 @@ describe('bds-pagination', () => {
       const nextButton = buttons[2] as HTMLElement;
       const lastButton = buttons[3] as HTMLElement;
 
-      expect(firstButton.getAttribute('disabled')).toBeNull();
-      expect(prevButton.getAttribute('disabled')).toBeNull();
-      expect(nextButton.hasAttribute('disabled')).toBe(true);
-      expect(lastButton.hasAttribute('disabled')).toBe(true);
+      expect(isButtonIconDisabled(firstButton)).toBe(false);
+      expect(isButtonIconDisabled(prevButton)).toBe(false);
+      expect(isButtonIconDisabled(nextButton)).toBe(true);
+      expect(isButtonIconDisabled(lastButton)).toBe(true);
     });
 
     it('should disable all actions when there is only one page', async () => {
@@ -276,10 +280,10 @@ describe('bds-pagination', () => {
       const nextButton = buttons[2] as HTMLElement;
       const lastButton = buttons[3] as HTMLElement;
 
-      expect(firstButton.hasAttribute('disabled')).toBe(true);
-      expect(prevButton.hasAttribute('disabled')).toBe(true);
-      expect(nextButton.hasAttribute('disabled')).toBe(true);
-      expect(lastButton.hasAttribute('disabled')).toBe(true);
+      expect(isButtonIconDisabled(firstButton)).toBe(true);
+      expect(isButtonIconDisabled(prevButton)).toBe(true);
+      expect(isButtonIconDisabled(nextButton)).toBe(true);
+      expect(isButtonIconDisabled(lastButton)).toBe(true);
     });
   });
 
