@@ -203,6 +203,66 @@ describe('bds-pagination', () => {
         expect(changeSpy).toHaveBeenCalled();
       }
     });
+
+    it('should disable back actions when on first page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="10" started-page="1"></bds-pagination>`,
+      });
+
+      await page.waitForChanges();
+
+      const buttons = page.root.shadowRoot.querySelectorAll('bds-button-icon');
+      const firstButton = buttons[0] as HTMLElement;
+      const prevButton = buttons[1] as HTMLElement;
+      const nextButton = buttons[2] as HTMLElement;
+      const lastButton = buttons[3] as HTMLElement;
+
+      expect(firstButton.hasAttribute('disabled')).toBe(true);
+      expect(prevButton.hasAttribute('disabled')).toBe(true);
+      expect(nextButton.getAttribute('disabled')).toBeNull();
+      expect(lastButton.getAttribute('disabled')).toBeNull();
+    });
+
+    it('should disable forward actions when on last page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="10" started-page="10"></bds-pagination>`,
+      });
+
+      await page.waitForChanges();
+
+      const buttons = page.root.shadowRoot.querySelectorAll('bds-button-icon');
+      const firstButton = buttons[0] as HTMLElement;
+      const prevButton = buttons[1] as HTMLElement;
+      const nextButton = buttons[2] as HTMLElement;
+      const lastButton = buttons[3] as HTMLElement;
+
+      expect(firstButton.getAttribute('disabled')).toBeNull();
+      expect(prevButton.getAttribute('disabled')).toBeNull();
+      expect(nextButton.hasAttribute('disabled')).toBe(true);
+      expect(lastButton.hasAttribute('disabled')).toBe(true);
+    });
+
+    it('should disable all actions when there is only one page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1" started-page="1"></bds-pagination>`,
+      });
+
+      await page.waitForChanges();
+
+      const buttons = page.root.shadowRoot.querySelectorAll('bds-button-icon');
+      const firstButton = buttons[0] as HTMLElement;
+      const prevButton = buttons[1] as HTMLElement;
+      const nextButton = buttons[2] as HTMLElement;
+      const lastButton = buttons[3] as HTMLElement;
+
+      expect(firstButton.hasAttribute('disabled')).toBe(true);
+      expect(prevButton.hasAttribute('disabled')).toBe(true);
+      expect(nextButton.hasAttribute('disabled')).toBe(true);
+      expect(lastButton.hasAttribute('disabled')).toBe(true);
+    });
   });
 
   describe('Event Handling', () => {
