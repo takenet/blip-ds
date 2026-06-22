@@ -127,8 +127,9 @@ const Pagination = class {
       for (let i = 1; i <= totalPages; i++) {
         this.paginationNumbers.push(i);
       }
-      if (this.startedPage && this.startedPage <= totalPages) {
-        this.value = this.startedPage;
+      if (Number.isFinite(this.startedPage) && totalPages > 0) {
+        const normalizedStartedPage = Math.min(totalPages, Math.max(1, Math.trunc(this.startedPage)));
+        this.value = normalizedStartedPage;
       }
       else {
         this.value = this.paginationNumbers[0];
