@@ -308,6 +308,33 @@ describe('bds-breadcrumb', () => {
       const dropdown = sr.querySelector('bds-dropdown');
       expect(dropdown).toBeTruthy();
     });
+
+    it('should bind dropdown open state correctly', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Level1', href: '/level1' },
+        { label: 'Level2', href: '/level2' },
+        { label: 'Level3', href: '/level3' },
+        { label: 'Current' }
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      // Initial state: dropdown should be closed
+      expect(page.rootInstance.isDropdownOpen).toBe(false);
+      
+      // Toggle dropdown open
+      page.rootInstance.toggleDropdown();
+      await page.waitForChanges();
+      expect(page.rootInstance.isDropdownOpen).toBe(true);
+      
+      // Toggle dropdown closed
+      page.rootInstance.toggleDropdown();
+      await page.waitForChanges();
+      expect(page.rootInstance.isDropdownOpen).toBe(false);
+    });
   });
 
   describe('Link Rendering', () => {
