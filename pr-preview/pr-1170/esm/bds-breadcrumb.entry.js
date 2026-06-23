@@ -7,6 +7,15 @@ const Breadcrumb = class {
     registerInstance(this, hostRef);
     // internal normalized boolean value to avoid re-assigning the prop inside its watcher
     this.wrapItemsBool = true;
+    this.handleDropdownToggle = (event) => {
+      const nextOpen = !!event?.detail?.value;
+      if (nextOpen === this.isDropdownOpen)
+        return;
+      this.isDropdownOpen = nextOpen;
+    };
+    this.handleActivatorPointer = (event) => {
+      event.stopPropagation();
+    };
     this.items = [];
     this.wrapItems = true;
     this.parsedItems = [];
@@ -62,9 +71,6 @@ const Breadcrumb = class {
       this.wrapItemsBool = !!attr;
     }
   }
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
   render() {
     if (!this.parsedItems || this.parsedItems.length === 0) {
       return h("p", null, "Sem itens para exibir no Breadcrumb.");
@@ -80,7 +86,7 @@ const Breadcrumb = class {
       const isLastItem = index === visibleItems.length - 1;
       const renderBasedOnLabel = (item) => {
         if (item.label === '...') {
-          return (h("bds-dropdown", { "active-mode": "click", position: "auto", open: this.isDropdownOpen }, h("bds-grid", { slot: "dropdown-content" }, h("bds-grid", { direction: "column", padding: "1", gap: "half" }, this.parsedItems.slice(1, -1).map((subItem, idx) => (h("bds-grid", { class: `breadcrumb__button--${idx}`, key: subItem.label + idx }, subItem.href ? (h("a", { href: subItem.href, class: `breadcrumb__link breadcrumb__button--${idx}` }, h("bds-grid", { "align-items": "center", gap: "half" }, h("bds-icon", { name: "reply", theme: "outline", class: "button--icon", size: "x-small" }), h("bds-button", { variant: "text", color: "content", size: "short" }, subItem.label)))) : (h("span", null, subItem.label))))))), h("bds-grid", { slot: "dropdown-activator", "align-items": "center" }, h("bds-button", { variant: "text", color: "content", size: "short", onClick: () => this.toggleDropdown(), "icon-left": "more-options-horizontal" }))));
+          return (h("bds-dropdown", { position: "auto", open: this.isDropdownOpen, onBdsToggle: this.handleDropdownToggle }, h("bds-grid", { slot: "dropdown-content" }, h("bds-grid", { direction: "column", padding: "1", gap: "half" }, this.parsedItems.slice(1, -1).map((subItem, idx) => (h("bds-grid", { class: `breadcrumb__button--${idx}`, key: subItem.label + idx }, subItem.href ? (h("a", { href: subItem.href, style: { textDecoration: 'none' } }, h("bds-grid", { "align-items": "center", gap: "half" }, h("bds-icon", { name: "reply", theme: "outline", class: "button--icon", size: "x-small" }), h("bds-typo", { variant: "fs-16", margin: false, class: "breadcrumb__text" }, subItem.label)))) : (h("span", null, subItem.label))))))), h("bds-grid", { slot: "dropdown-activator", "align-items": "center" }, h("bds-button", { variant: "text", color: "content", size: "short", "icon-left": "more-options-horizontal", onMouseDown: this.handleActivatorPointer, onClick: this.handleActivatorPointer }))));
         }
         if (item.href) {
           return (h("bds-typo", { variant: "fs-20", margin: false, class: "breadcrumb__link--text" }, h("a", { href: item.href, class: "breadcrumb__link breadcrumb__text" }, item.label)));

@@ -12,11 +12,12 @@ export declare class Breadcrumb {
     href?: string;
   }>;
   isDropdownOpen: boolean;
+  private handleDropdownToggle;
+  private handleActivatorPointer;
   parseItems(newValue: string | Array<{
     label: string;
     href?: string;
   }>): void;
   componentWillLoad(): void;
-  toggleDropdown(): void;
   render(): any;
 }
