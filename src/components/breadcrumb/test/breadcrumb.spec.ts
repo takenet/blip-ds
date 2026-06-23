@@ -277,16 +277,29 @@ describe('bds-breadcrumb', () => {
   });
 
   describe('Dropdown Functionality', () => {
-    it('should toggle dropdown state', async () => {
+    it('should update dropdown state from bdsToggle event', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Level1', href: '/level1' },
+        { label: 'Level2', href: '/level2' },
+        { label: 'Level3', href: '/level3' },
+        { label: 'Current' }
+      ];
       const page = await newSpecPage({
         components: [Breadcrumb],
-        html: `<bds-breadcrumb></bds-breadcrumb>`,
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
-      
+
+      const sr = getShadowRoot(page);
+      const dropdown = sr.querySelector('bds-dropdown') as HTMLElement;
       expect(page.rootInstance.isDropdownOpen).toBe(false);
-      page.rootInstance.toggleDropdown();
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: true } }));
+      await page.waitForChanges();
       expect(page.rootInstance.isDropdownOpen).toBe(true);
-      page.rootInstance.toggleDropdown();
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: false } }));
+      await page.waitForChanges();
       expect(page.rootInstance.isDropdownOpen).toBe(false);
     });
 
@@ -321,19 +334,22 @@ describe('bds-breadcrumb', () => {
         components: [Breadcrumb],
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
-      
-      // Initial state: dropdown should be closed
+
+      const sr = getShadowRoot(page);
+      const dropdown = sr.querySelector('bds-dropdown') as HTMLElement;
+
       expect(page.rootInstance.isDropdownOpen).toBe(false);
-      
-      // Toggle dropdown open
-      page.rootInstance.toggleDropdown();
+      expect(dropdown.hasAttribute('open')).toBe(false);
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: true } }));
       await page.waitForChanges();
       expect(page.rootInstance.isDropdownOpen).toBe(true);
-      
-      // Toggle dropdown closed
-      page.rootInstance.toggleDropdown();
+      expect(dropdown.hasAttribute('open')).toBe(true);
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: false } }));
       await page.waitForChanges();
       expect(page.rootInstance.isDropdownOpen).toBe(false);
+      expect(dropdown.hasAttribute('open')).toBe(false);
     });
   });
 

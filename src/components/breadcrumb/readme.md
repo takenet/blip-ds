@@ -20,8 +20,8 @@
 - [bds-dropdown](../dropdown)
 - [bds-grid](../grid)
 - [bds-icon](../icon)
-- [bds-button](../button)
 - [bds-typo](../typo)
+- [bds-button](../button)
 
 ### Graph
 ```mermaid
@@ -29,8 +29,8 @@ graph TD;
   bds-breadcrumb --> bds-dropdown
   bds-breadcrumb --> bds-grid
   bds-breadcrumb --> bds-icon
-  bds-breadcrumb --> bds-button
   bds-breadcrumb --> bds-typo
+  bds-breadcrumb --> bds-button
   bds-button --> bds-loading-spinner
   bds-button --> bds-icon
   bds-button --> bds-typo

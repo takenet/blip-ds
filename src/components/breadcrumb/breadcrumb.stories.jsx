@@ -18,9 +18,11 @@ export const Properties = (args) => {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // ensure items is passed as the expected type (string or array) and wrapItems as boolean
+    // keep component defaults unless args explicitly provides a wrapItems value
     el.items = args.items;
-    el.wrapItems = !!args.wrapItems;
+    if (args.wrapItems !== undefined) {
+      el.wrapItems = args.wrapItems;
+    }
   }, [args.items, args.wrapItems]);
 
   return <bds-breadcrumb ref={ref}></bds-breadcrumb>;
@@ -38,7 +40,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'true' },
     },
-    description: 'Determines if breadcrumb items should wrap to the next line when they exceed the container width.',
+    description: 'Determines if middle items collapse into a dropdown when there are more than 3 breadcrumb items.',
     control: 'boolean',
   },
 };

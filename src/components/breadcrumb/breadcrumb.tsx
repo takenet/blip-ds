@@ -6,7 +6,7 @@ import { Component, h, Prop, State, Watch, Element } from '@stencil/core';
   shadow: true,
 })
 export class Breadcrumb {
-  @Element() hostElement: HTMLElement;
+  @Element() hostElement!: HTMLElement;
   @Prop() items: string | Array<{ label: string; href?: string }> = [];
 
   @Prop() wrapItems: boolean | string = true;
@@ -29,6 +29,16 @@ export class Breadcrumb {
   @State() parsedItems: Array<{ label: string; href?: string }> = [];
 
   @State() isDropdownOpen: boolean = false;
+
+  private handleDropdownToggle = (event: CustomEvent<{ value: boolean }>) => {
+    const nextOpen = !!event?.detail?.value;
+    if (nextOpen === this.isDropdownOpen) return;
+    this.isDropdownOpen = nextOpen;
+  };
+
+  private handleActivatorPointer = (event: MouseEvent) => {
+    event.stopPropagation();
+  };
 
   @Watch('items')
   parseItems(newValue: string | Array<{ label: string; href?: string }>) {
@@ -62,10 +72,6 @@ export class Breadcrumb {
     }
   }
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
   render() {
     if (!this.parsedItems || this.parsedItems.length === 0) {
       return <p>Sem itens para exibir no Breadcrumb.</p>;
@@ -86,7 +92,11 @@ export class Breadcrumb {
 
         if (item.label === '...') {
           return (
-            <bds-dropdown active-mode="click" position="auto" open={this.isDropdownOpen}>
+            <bds-dropdown
+              position="auto"
+              open={this.isDropdownOpen}
+              onBdsToggle={this.handleDropdownToggle}
+            >
               <bds-grid slot="dropdown-content">
                 <bds-grid direction="column" padding="1" gap="half">
                   {this.parsedItems.slice(1, -1).map((subItem, idx) => (
@@ -94,7 +104,7 @@ export class Breadcrumb {
                       {subItem.href ? (
                         <a
                           href={subItem.href}
-                          class={`breadcrumb__link breadcrumb__button--${idx}`}
+                          style={{ textDecoration: 'none' }}
                         >
                           <bds-grid align-items="center" gap="half">
                             <bds-icon
@@ -103,13 +113,9 @@ export class Breadcrumb {
                               class="button--icon"
                               size="x-small"
                             ></bds-icon>
-                            <bds-button
-                              variant="text"
-                              color="content"
-                              size="short"
-                            >
+                            <bds-typo variant="fs-16" margin={false} class="breadcrumb__text">
                               {subItem.label}
-                            </bds-button>
+                            </bds-typo>
                           </bds-grid>
                         </a>
                       ) : (
@@ -124,8 +130,9 @@ export class Breadcrumb {
                   variant="text"
                   color="content"
                   size="short"
-                  onClick={() => this.toggleDropdown()}
                   icon-left="more-options-horizontal"
+                  onMouseDown={this.handleActivatorPointer}
+                  onClick={this.handleActivatorPointer}
                 ></bds-button>
               </bds-grid>
             </bds-dropdown>
