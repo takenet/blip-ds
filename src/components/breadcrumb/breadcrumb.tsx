@@ -30,6 +30,7 @@ export class Breadcrumb {
       try {
         this.parsedItems = JSON.parse(newValue);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.warn('[bds-breadcrumb] Failed to parse items:', error);
         this.parsedItems = [];
       }
@@ -121,7 +122,7 @@ export class Breadcrumb {
       >
         {item.label}
       </bds-typo>
-    )
+    );
   }
 
   private renderBreadcrumbItem(item: { label: string; href?: string | null }, index: number, items: Array<{ label: string; href?: string | null }>) {
@@ -143,7 +144,7 @@ export class Breadcrumb {
         </bds-grid>
         {!isLastItem && <bds-icon name="arrow-right" size="medium" class="breadcrumb__text"></bds-icon>}
       </bds-grid>
-    )
+    );
   }
 
   componentWillLoad() {
