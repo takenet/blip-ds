@@ -21,6 +21,7 @@ export class Breadcrumb {
         this.parsedItems = JSON.parse(newValue);
       }
       catch (error) {
+        // eslint-disable-next-line no-console
         console.warn('[bds-breadcrumb] Failed to parse items:', error);
         this.parsedItems = [];
       }
