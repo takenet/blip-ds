@@ -162,7 +162,23 @@ describe('bds-breadcrumb', () => {
       expect(nav).toBeTruthy();
     });
 
-    it('collapses items when wrap-items is present (true)', async () => {
+    it('should not collapse when there are exactly 3 items and wrap-items is true', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Category', href: '/category' },
+        { label: 'Current Page' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}' wrap-items="true"></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('bds-dropdown')).toBeNull();
+      expect(sr.querySelectorAll('.breadcrumb__item').length).toBe(3);
+    });
+
+    it('should collapse when there are exactly 4 items and wrap-items is true', async () => {
       const items = [
         { label: 'Home', href: '/' },
         { label: 'About', href: '/about' },
@@ -172,6 +188,23 @@ describe('bds-breadcrumb', () => {
       const page = await newSpecPage({
         components: [Breadcrumb],
         html: `<bds-breadcrumb items='${JSON.stringify(items)}' wrap-items="true"></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('bds-dropdown')).toBeTruthy();
+      expect(sr.querySelectorAll('.breadcrumb__item').length).toBe(3);
+    });
+
+    it('collapses items when wrap-items attribute is present without an explicit value', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Current Page' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}' wrap-items></bds-breadcrumb>`,
       });
 
       const sr = getShadowRoot(page);
@@ -230,7 +263,24 @@ describe('bds-breadcrumb', () => {
       expect(nav!.getAttribute('aria-label')).toBe('breadcrumb');
     });
 
-    it('should set aria-current="page" on last item', async () => {
+    it('should set aria-current on the final breadcrumb link instead of the wrapper', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Current', href: '/current' }
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('.breadcrumb__item[aria-current]')).toBeNull();
+      const currentLink = sr.querySelector('a.breadcrumb__link[aria-current="page"]');
+      expect(currentLink).toBeTruthy();
+      expect(currentLink?.getAttribute('href')).toBe('/current');
+    });
+
+    it('should set aria-current on final breadcrumb text when item has no href', async () => {
       const items = [
         { label: 'Home', href: '/' },
         { label: 'Current' }
@@ -239,11 +289,32 @@ describe('bds-breadcrumb', () => {
         components: [Breadcrumb],
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
-      
-      // Check for elements with aria-current
+
       const sr = getShadowRoot(page);
-      const elementsWithAriaCurrent = sr.querySelectorAll('[aria-current]');
-      expect(elementsWithAriaCurrent.length).toBeGreaterThan(0);
+      expect(sr.querySelector('.breadcrumb__item[aria-current]')).toBeNull();
+      expect(sr.querySelector('a.breadcrumb__link[aria-current="page"]')).toBeNull();
+
+      const currentText = sr.querySelector('bds-typo.breadcrumb__text[aria-current="page"]');
+      expect(currentText).toBeTruthy();
+      expect(currentText?.textContent?.trim()).toBe('Current');
+    });
+
+    it('should add an accessible label to the dropdown activator button', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Level1', href: '/level1' },
+        { label: 'Level2', href: '/level2' },
+        { label: 'Level3', href: '/level3' },
+        { label: 'Current' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      const activator = sr.querySelector('bds-button');
+      expect(activator?.getAttribute('aria-label')).toBe('Mostrar itens ocultos do breadcrumb');
     });
   });
 

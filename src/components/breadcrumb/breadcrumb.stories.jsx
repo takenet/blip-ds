@@ -56,6 +56,21 @@ Properties.args = {
 
 export const Events = () => {
   const [clickedItem, setClickedItem] = useState(null);
+  const ref = useRef(null);
+
+  const items = [
+    { label: 'Home', href: '/' },
+    { label: 'Features', href: '/features' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'Documentation' },
+  ];
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.items = JSON.stringify(items);
+    el.wrapItems = true;
+  }, []);
 
   const handleBreadcrumbClick = (event) => {
     const detail = event.detail;
@@ -66,14 +81,8 @@ export const Events = () => {
   return (
     <div>
       <bds-breadcrumb
-        items={JSON.stringify([
-          { label: 'Home', href: '/' },
-          { label: 'Features', href: '/features' },
-          { label: 'Pricing', href: '/pricing' },
-          { label: 'Documentation' },
-        ])}
+        ref={ref}
         onBreadcrumbItemClick={(event) => handleBreadcrumbClick(event)}
-        wrap-items={true}
       ></bds-breadcrumb>
       {clickedItem && (
         <div>

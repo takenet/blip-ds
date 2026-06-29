@@ -10,7 +10,7 @@
 | Property    | Attribute    | Description | Type                                            | Default |
 | ----------- | ------------ | ----------- | ----------------------------------------------- | ------- |
 | `items`     | `items`      |             | `string \| { label: string; href?: string; }[]` | `[]`    |
-| `wrapItems` | `wrap-items` |             | `boolean \| string`                             | `true`  |
+| `wrapItems` | `wrap-items` |             | `boolean`                                       | `true`  |
 
 
 ## Dependencies
