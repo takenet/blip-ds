@@ -1,12 +1,9 @@
 export declare class Breadcrumb {
-  hostElement: HTMLElement;
   items: string | Array<{
     label: string;
     href?: string;
   }>;
-  wrapItems: boolean | string;
-  private wrapItemsBool;
-  handleWrapItemsChange(newValue: boolean | string): void;
+  wrapItems: boolean;
   parsedItems: Array<{
     label: string;
     href?: string;
@@ -18,6 +15,9 @@ export declare class Breadcrumb {
     label: string;
     href?: string;
   }>): void;
+  private renderCollapsedDropdown;
+  private renderItemContent;
+  private renderBreadcrumbItem;
   componentWillLoad(): void;
   render(): any;
 }
