@@ -360,6 +360,7 @@ export namespace Components {
     }
     interface BdsBreadcrumb {
         "items": string | Array<{ label: string; href?: string }>;
+        "wrapItems": boolean;
     }
     interface BdsButton {
         /**
@@ -4211,6 +4212,7 @@ declare namespace LocalJSX {
     }
     interface BdsBreadcrumb {
         "items"?: string | Array<{ label: string; href?: string }>;
+        "wrapItems"?: boolean;
     }
     interface BdsButton {
         /**

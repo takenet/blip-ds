@@ -1,5 +1,13 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { Breadcrumb } from '../breadcrumb';
+
+function getShadowRoot(page: SpecPage): ShadowRoot {
+  const root = page.root as HTMLElement | undefined;
+  if (!root || !root.shadowRoot) {
+    throw new Error('SpecPage root or shadowRoot missing');
+  }
+  return root.shadowRoot as ShadowRoot;
+}
 
 describe('bds-breadcrumb', () => {
   describe('Component Creation', () => {
@@ -17,8 +25,9 @@ describe('bds-breadcrumb', () => {
         components: [Breadcrumb],
         html: `<bds-breadcrumb></bds-breadcrumb>`,
       });
-      expect(page.root.shadowRoot.querySelector('p')).toBeTruthy();
-      expect(page.root.shadowRoot.textContent).toContain('Sem itens para exibir no Breadcrumb.');
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('p')).toBeTruthy();
+      expect(sr.textContent).toContain('Sem itens para exibir no Breadcrumb.');
     });
   });
 
@@ -29,7 +38,8 @@ describe('bds-breadcrumb', () => {
         html: `<bds-breadcrumb items="[]"></bds-breadcrumb>`,
       });
       expect(page.rootInstance.parsedItems).toEqual([]);
-      expect(page.root.shadowRoot.textContent).toContain('Sem itens para exibir no Breadcrumb.');
+      const sr = getShadowRoot(page);
+      expect(sr.textContent).toContain('Sem itens para exibir no Breadcrumb.');
     });
 
     it('should handle items prop as JSON string', async () => {
@@ -109,9 +119,10 @@ describe('bds-breadcrumb', () => {
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
       
-      const nav = page.root.shadowRoot.querySelector('nav');
+      const sr = getShadowRoot(page);
+      const nav = sr.querySelector('nav');
       expect(nav).toBeTruthy();
-      expect(nav.getAttribute('aria-label')).toBe('breadcrumb');
+      expect(nav?.getAttribute('aria-label')).toBe('breadcrumb');
     });
 
     it('should render simple breadcrumb with 3 items', async () => {
@@ -126,7 +137,8 @@ describe('bds-breadcrumb', () => {
       });
       
       expect(page.rootInstance.parsedItems).toEqual(items);
-      const nav = page.root.shadowRoot.querySelector('nav');
+      const sr = getShadowRoot(page);
+      const nav = sr.querySelector('nav');
       expect(nav).toBeTruthy();
     });
 
@@ -145,8 +157,80 @@ describe('bds-breadcrumb', () => {
       
       expect(page.rootInstance.parsedItems).toEqual(items);
       // Should show: Home ... Current (3 visible items)
-      const nav = page.root.shadowRoot.querySelector('nav');
+      const sr = getShadowRoot(page);
+      const nav = sr.querySelector('nav');
       expect(nav).toBeTruthy();
+    });
+
+    it('should not collapse when there are exactly 3 items and wrap-items is true', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Category', href: '/category' },
+        { label: 'Current Page' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}' wrap-items="true"></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('bds-dropdown')).toBeNull();
+      expect(sr.querySelectorAll('.breadcrumb__item').length).toBe(3);
+    });
+
+    it('should collapse when there are exactly 4 items and wrap-items is true', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Current Page' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}' wrap-items="true"></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('bds-dropdown')).toBeTruthy();
+      expect(sr.querySelectorAll('.breadcrumb__item').length).toBe(3);
+    });
+
+    it('collapses items when wrap-items attribute is present without an explicit value', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Current Page' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}' wrap-items></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      const breadcrumbItems = sr.querySelectorAll('.breadcrumb__item');
+      expect(breadcrumbItems.length).toBe(3);
+
+      // The collapsed item is represented by a dropdown activator (icon button), not literal '...'
+      expect(sr.querySelector('bds-dropdown')).toBeTruthy();
+    });
+
+    it('shows all items when wrap-items is false', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Current Page' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}' wrap-items="false"></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      const breadcrumbItems = sr.querySelectorAll('.breadcrumb__item');
+      expect(breadcrumbItems.length).toBe(4);
+      expect(sr.querySelector('bds-dropdown')).toBeNull();
     });
 
     it('should handle items without href (span elements)', async () => {
@@ -160,7 +244,8 @@ describe('bds-breadcrumb', () => {
       });
       
       expect(page.rootInstance.parsedItems).toEqual(items);
-      const nav = page.root.shadowRoot.querySelector('nav');
+      const sr = getShadowRoot(page);
+      const nav = sr.querySelector('nav');
       expect(nav).toBeTruthy();
     });
   });
@@ -173,11 +258,29 @@ describe('bds-breadcrumb', () => {
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
       
-      const nav = page.root.shadowRoot.querySelector('nav');
-      expect(nav.getAttribute('aria-label')).toBe('breadcrumb');
+      const sr = getShadowRoot(page);
+      const nav = sr!.querySelector('nav');
+      expect(nav!.getAttribute('aria-label')).toBe('breadcrumb');
     });
 
-    it('should set aria-current="page" on last item', async () => {
+    it('should set aria-current on the final breadcrumb link instead of the wrapper', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Current', href: '/current' }
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+      
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('.breadcrumb__item[aria-current]')).toBeNull();
+      const currentLink = sr.querySelector('a.breadcrumb__link[aria-current="page"]');
+      expect(currentLink).toBeTruthy();
+      expect(currentLink?.getAttribute('href')).toBe('/current');
+    });
+
+    it('should set aria-current on final breadcrumb text when item has no href', async () => {
       const items = [
         { label: 'Home', href: '/' },
         { label: 'Current' }
@@ -186,10 +289,32 @@ describe('bds-breadcrumb', () => {
         components: [Breadcrumb],
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
-      
-      // Check for elements with aria-current
-      const elementsWithAriaCurrent = page.root.shadowRoot.querySelectorAll('[aria-current]');
-      expect(elementsWithAriaCurrent.length).toBeGreaterThan(0);
+
+      const sr = getShadowRoot(page);
+      expect(sr.querySelector('.breadcrumb__item[aria-current]')).toBeNull();
+      expect(sr.querySelector('a.breadcrumb__link[aria-current="page"]')).toBeNull();
+
+      const currentText = sr.querySelector('bds-typo.breadcrumb__text[aria-current="page"]');
+      expect(currentText).toBeTruthy();
+      expect(currentText?.textContent?.trim()).toBe('Current');
+    });
+
+    it('should add an accessible label to the dropdown activator button', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Level1', href: '/level1' },
+        { label: 'Level2', href: '/level2' },
+        { label: 'Level3', href: '/level3' },
+        { label: 'Current' },
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      const activator = sr.querySelector('bds-button');
+      expect(activator?.getAttribute('aria-label')).toBe('Mostrar itens ocultos do breadcrumb');
     });
   });
 
@@ -201,7 +326,8 @@ describe('bds-breadcrumb', () => {
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
       
-      const itemElements = page.root.shadowRoot.querySelectorAll('.breadcrumb__item');
+      const sr = getShadowRoot(page);
+      const itemElements = sr.querySelectorAll('.breadcrumb__item');
       expect(itemElements.length).toBeGreaterThan(0);
     });
 
@@ -215,22 +341,36 @@ describe('bds-breadcrumb', () => {
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
       
-      const activeElements = page.root.shadowRoot.querySelectorAll('.breadcrumb__item--active');
+      const sr = getShadowRoot(page);
+      const activeElements = sr.querySelectorAll('.breadcrumb__item--active');
       expect(activeElements.length).toBeGreaterThan(0);
     });
   });
 
   describe('Dropdown Functionality', () => {
-    it('should toggle dropdown state', async () => {
+    it('should update dropdown state from bdsToggle event', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Level1', href: '/level1' },
+        { label: 'Level2', href: '/level2' },
+        { label: 'Level3', href: '/level3' },
+        { label: 'Current' }
+      ];
       const page = await newSpecPage({
         components: [Breadcrumb],
-        html: `<bds-breadcrumb></bds-breadcrumb>`,
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
-      
+
+      const sr = getShadowRoot(page);
+      const dropdown = sr.querySelector('bds-dropdown') as HTMLElement;
       expect(page.rootInstance.isDropdownOpen).toBe(false);
-      page.rootInstance.toggleDropdown();
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: true } }));
+      await page.waitForChanges();
       expect(page.rootInstance.isDropdownOpen).toBe(true);
-      page.rootInstance.toggleDropdown();
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: false } }));
+      await page.waitForChanges();
       expect(page.rootInstance.isDropdownOpen).toBe(false);
     });
 
@@ -248,8 +388,39 @@ describe('bds-breadcrumb', () => {
       });
       
       // Should contain dropdown for middle items
-      const dropdown = page.root.shadowRoot.querySelector('bds-dropdown');
+      const sr = getShadowRoot(page);
+      const dropdown = sr.querySelector('bds-dropdown');
       expect(dropdown).toBeTruthy();
+    });
+
+    it('should bind dropdown open state correctly', async () => {
+      const items = [
+        { label: 'Home', href: '/' },
+        { label: 'Level1', href: '/level1' },
+        { label: 'Level2', href: '/level2' },
+        { label: 'Level3', href: '/level3' },
+        { label: 'Current' }
+      ];
+      const page = await newSpecPage({
+        components: [Breadcrumb],
+        html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
+      });
+
+      const sr = getShadowRoot(page);
+      const dropdown = sr.querySelector('bds-dropdown') as HTMLElement;
+
+      expect(page.rootInstance.isDropdownOpen).toBe(false);
+      expect(dropdown.hasAttribute('open')).toBe(false);
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: true } }));
+      await page.waitForChanges();
+      expect(page.rootInstance.isDropdownOpen).toBe(true);
+      expect(dropdown.hasAttribute('open')).toBe(true);
+
+      dropdown.dispatchEvent(new CustomEvent('bdsToggle', { detail: { value: false } }));
+      await page.waitForChanges();
+      expect(page.rootInstance.isDropdownOpen).toBe(false);
+      expect(dropdown.hasAttribute('open')).toBe(false);
     });
   });
 
@@ -264,7 +435,8 @@ describe('bds-breadcrumb', () => {
         html: `<bds-breadcrumb items='${JSON.stringify(items)}'></bds-breadcrumb>`,
       });
       
-      const links = page.root.shadowRoot.querySelectorAll('a.breadcrumb__link');
+      const sr = getShadowRoot(page);
+      const links = sr.querySelectorAll('a.breadcrumb__link');
       expect(links.length).toBeGreaterThan(0);
     });
 
@@ -292,7 +464,8 @@ describe('bds-breadcrumb', () => {
       });
       
       expect(page.rootInstance.parsedItems).toEqual(items);
-      const nav = page.root.shadowRoot.querySelector('nav');
+      const sr = getShadowRoot(page);
+      const nav = sr.querySelector('nav');
       expect(nav).toBeTruthy();
     });
 

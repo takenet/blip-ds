@@ -44,3 +44,28 @@
 .breadcrumb__link {
   text-decoration: none;
 }
+
+.breadcrumb__item {
+  transition: color 0.15s, background-color 0.15s;
+
+  bds-typo, bds-icon, .breadcrumb__text {
+    color: $color-content-ghost;
+
+  }
+
+  bds-typo:hover, .breadcrumb__text:hover {
+    color: $color-content-default;
+  }
+
+  &--active {
+    border-radius: 12px;
+
+    &:hover {
+      background-color: $color-surface-3;
+    }
+
+    bds-typo, bds-icon, .breadcrumb__text {
+      color: $color-content-default;
+    }
+  }
+}
