@@ -54,3 +54,22 @@
 .breadcrumb__link {
   text-decoration: none;
 }
+
+.breadcrumb__item {
+  transition: color 0.15s, background-color 0.15s;
+}
+.breadcrumb__item bds-typo, .breadcrumb__item bds-icon, .breadcrumb__item .breadcrumb__text {
+  color: var(--color-content-ghost, #8c8c8c);
+}
+.breadcrumb__item bds-typo:hover, .breadcrumb__item .breadcrumb__text:hover {
+  color: var(--color-content-default, #282828);
+}
+.breadcrumb__item--active {
+  border-radius: 12px;
+}
+.breadcrumb__item--active:hover {
+  background-color: var(--color-surface-3, #e3e3e3);
+}
+.breadcrumb__item--active bds-typo, .breadcrumb__item--active bds-icon, .breadcrumb__item--active .breadcrumb__text {
+  color: var(--color-content-default, #282828);
+}
