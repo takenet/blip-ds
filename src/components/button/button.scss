@@ -205,11 +205,11 @@ $button-border-radius: 8px;
     &--primary.button__variant--solid,
     &--primary.button__variant--primary {
       @include button-variant(
-        $color-surface-primary,
+        $color-semantic-action-primary-default,
         transparent,
         $color-content-bright,
-        $color-surface-primary,
-        $color-surface-primary,
+        $color-semantic-action-primary-default,
+        $color-semantic-action-primary-default,
         true
       );
     }
@@ -218,26 +218,32 @@ $button-border-radius: 8px;
     &--primary.button__variant--tertiary {
       @include button-variant(
         transparent,
-        $color-primary,
-        $color-primary,
-        $color-surface-primary,
-        $color-surface-primary
+        $color-semantic-action-primary-default,
+        $color-semantic-action-primary-default,
+        $color-semantic-action-primary-default,
+        $color-semantic-action-primary-default
       );
     }
 
     &--primary.button__variant--text,
     &--primary.button__variant--secondary {
-      @include button-variant(transparent, transparent, $color-primary, $color-primary, $color-primary);
+      @include button-variant(
+        transparent,
+        transparent,
+        $color-semantic-action-primary-default,
+        $color-semantic-action-primary-default,
+        $color-semantic-action-primary-default
+      );
     }
 
     &--content.button__variant--solid,
     &--content.button__variant--primary {
       @include button-variant(
-        $color-content-default,
+        $color-semantic-content-primary,
         transparent,
         $color-surface-0,
-        $color-content-default,
-        $color-content-default,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
         true
       );
     }
@@ -246,10 +252,10 @@ $button-border-radius: 8px;
     &--content.button__variant--tertiary {
       @include button-variant(
         transparent,
-        $color-content-default,
-        $color-content-default,
-        $color-content-default,
-        $color-content-default
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary
       );
     }
 
@@ -258,9 +264,9 @@ $button-border-radius: 8px;
       @include button-variant(
         transparent,
         transparent,
-        $color-content-default,
-        $color-content-default,
-        $color-content-default
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary
       );
     }
 
@@ -282,8 +288,8 @@ $button-border-radius: 8px;
     &--negative.button__variant--delete {
       @include button-variant(
         transparent,
-        $color-negative,
-        $color-negative,
+        $color-semantic-feedback-negative,
+        $color-semantic-feedback-negative,
         $color-surface-negative,
         $color-surface-negative
       );
@@ -292,7 +298,13 @@ $button-border-radius: 8px;
     &--negative.button__variant--text,
     &--negative.button__variant--secondary,
     &--negative.button__variant--delete {
-      @include button-variant(transparent, transparent, $color-negative, $color-negative, $color-surface-negative);
+      @include button-variant(
+        transparent,
+        transparent,
+        $color-semantic-feedback-negative,
+        $color-semantic-feedback-negative,
+        $color-surface-negative
+      );
     }
 
     &--positive.button__variant--solid,

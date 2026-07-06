@@ -10,7 +10,7 @@
   padding: 24px;
   padding-right: 56px;
   position: relative;
-  color: $color-content-default;
+  color: $color-semantic-content-primary;
   cursor: pointer;
 
   &::before {
@@ -33,7 +33,7 @@
 
   &:hover {
     &::before {
-      background-color: $color-content-default;
+      background-color: $color-semantic-content-primary;
       opacity: 0.08;
     }
   }
@@ -98,12 +98,12 @@
   }
 
   &_divisor {
-    border-bottom: 1px solid $color-border-1;
+    border-bottom: 1px solid $color-semantic-border-actions;
   }
 
   & .container {
     padding: 8px 24px 48px;
     position: relative;
-    color: $color-content-default;
+    color: $color-semantic-content-primary;
   }
 }

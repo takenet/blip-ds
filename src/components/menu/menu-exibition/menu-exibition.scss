@@ -19,7 +19,7 @@
     flex-direction: column;
 
     & .title-item {
-      color: $color-content-default;
+      color: $color-semantic-content-primary;
     }
 
     & .subtitle-item {
@@ -27,7 +27,7 @@
     }
 
     & .description-item {
-      color: $color-content-default;
+      color: $color-semantic-content-primary;
     }
   }
 }
