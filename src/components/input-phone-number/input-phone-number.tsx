@@ -5,8 +5,7 @@ import * as countriesDefault from './countries.json';
 import * as countriesPtBR from './countries-pt_BR.json';
 import * as countriesEnUS from './countries-en_US.json';
 import * as countriesEsES from './countries-es_ES.json';
-
-export type languages = 'pt_BR' | 'es_ES' | 'en_US';
+import { languages, normalizeLanguage } from '../../utils/languages';
 @Component({
   tag: 'bds-input-phone-number',
   styleUrl: 'input-phone-number.scss',
@@ -150,7 +149,7 @@ export class InputPhoneNumber {
   }
 
   private updateCountries() {
-    switch (this.language) {
+    switch (normalizeLanguage(this.language)) {
       case 'pt_BR':
         this.countries = countriesPtBR['default'];
         break;
