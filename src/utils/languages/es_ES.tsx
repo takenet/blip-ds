@@ -1,9 +1,11 @@
 export const esTerms = [
   {
     conclude: 'Finalizar',
+    endTime: 'Hora de fin',
     from: 'Desde',
     reset: 'Reiniciar',
     setTheDate: 'Establecer la fecha',
+    startTime: 'Hora de inicio',
     to: 'Hasta',
   },
 ];
