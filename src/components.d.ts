@@ -1339,6 +1339,10 @@ export namespace Components {
          */
         "blurCreation": boolean;
         /**
+          * When true, removes the border from the input component.
+         */
+        "borderless"?: boolean;
+        /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
         "chips": string[] | string;
@@ -5241,6 +5245,10 @@ declare namespace LocalJSX {
           * When true, the press enter will be simulated on blur event.
          */
         "blurCreation"?: boolean;
+        /**
+          * When true, removes the border from the input component.
+         */
+        "borderless"?: boolean;
         /**
           * The chips on the component Should be passed this way: chips='["chip1", "chip2"]'
          */
