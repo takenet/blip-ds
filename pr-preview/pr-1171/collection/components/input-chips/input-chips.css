@@ -223,6 +223,17 @@
 .input--label {
   padding: 7px 4px 8px 12px;
 }
+.input--borderless {
+  border: none !important;
+  box-shadow: none !important;
+}
+.input--borderless:hover {
+  border: none !important;
+}
+.input--borderless.input--pressed {
+  border: none !important;
+  box-shadow: none !important;
+}
 .input__icon {
   cursor: inherit;
   display: flex;

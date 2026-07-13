@@ -67,6 +67,7 @@ export class InputChips {
     this.maxHeight = undefined;
     this.dataTest = null;
     this.dtButtonClose = null;
+    this.borderless = false;
   }
   /**
    * Call change event before alter chips values.
@@ -305,6 +306,7 @@ export class InputChips {
         'input--state-disabled': this.disabled,
         'input--label': !!this.label,
         'input--pressed': isPressed,
+        'input--borderless': this.borderless,
       }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { class: "input__container" }, this.renderLabel(), h("div", { class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { name: "input-right" })), this.renderMessage()));
   }
   static get is() { return "bds-input-chips"; }
@@ -751,6 +753,24 @@ export class InputChips {
         "attribute": "dt-button-close",
         "reflect": false,
         "defaultValue": "null"
+      },
+      "borderless": {
+        "type": "boolean",
+        "mutable": false,
+        "complexType": {
+          "original": "boolean",
+          "resolved": "boolean",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "When true, removes the border from the input component."
+        },
+        "attribute": "borderless",
+        "reflect": false,
+        "defaultValue": "false"
       }
     };
   }

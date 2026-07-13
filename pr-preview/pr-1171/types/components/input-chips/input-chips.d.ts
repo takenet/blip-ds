@@ -122,6 +122,10 @@ export declare class InputChips {
    */
   dtButtonClose?: string;
   /**
+   * When true, removes the border from the input component.
+   */
+  borderless?: boolean;
+  /**
    * Emitted when the chip has added.
    */
   bdsChange: EventEmitter;
