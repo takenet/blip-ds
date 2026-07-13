@@ -22,6 +22,7 @@ export const Properties = (args) => {
         blur-creation={args.blurCreation}
         disable-submit={args.disableSubmit}
         disabled={args.disabled}
+        borderless={args.borderless}
       ></bds-input-chips>
     </bds-grid>
   );
@@ -36,6 +37,7 @@ Properties.args = {
   blurCreation: false,
   disableSubmit: false,
   disabled: false,
+  borderless: false,
 };
 
 Properties.argTypes = {
@@ -90,6 +92,13 @@ Properties.argTypes = {
     control: 'boolean',
   },
   disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+
+    control: 'boolean',
+  },
+  borderless: {
     table: {
       defaultValue: { summary: 'false' },
     },
@@ -190,24 +199,20 @@ export const FrameworkReact = () => {
 export const StyledChips = () => {
   const styles = `
     bds-input-chips::part(chip) {
-      background-color: #1976D2;
-      border-color: #1976D2;
-      border-radius: 16px;
-      color: #ffffff;
-      font-weight: 600;
+      background-color: #1976D2 !important;
+      border-color: #1976D2 !important;
+      border-radius: 16px !important;
+      color: #ffffff !important;
+      font-weight: 600 !important;
     }
 
     bds-input-chips::part(chip):hover {
-      background-color: #1565C0;
-      border-color: #1565C0;
+      background-color: #1565C0 !important;
+      border-color: #1565C0 !important;
     }
 
     /* Apply color to text and delete icon inside the chip */
-    bds-input-chips::part(chip) bds-typo {
-      color: #ffffff !important;
-    }
-
-    bds-input-chips::part(chip) bds-icon {
+    bds-input-chips::part(chip) * {
       color: #ffffff !important;
     }
   `;
