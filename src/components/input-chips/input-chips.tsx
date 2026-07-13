@@ -148,6 +148,10 @@ export class InputChips {
    */
   @Prop() dtButtonClose?: string = null;
   /**
+   * When true, removes the border from the input component.
+   */
+  @Prop() borderless?: boolean = false;
+  /**
    * Emitted when the chip has added.
    */
   @Event() bdsChange!: EventEmitter;
@@ -562,6 +566,7 @@ export class InputChips {
             'input--state-disabled': this.disabled,
             'input--label': !!this.label,
             'input--pressed': isPressed,
+            'input--borderless': this.borderless,
           }}
           onClick={this.onClickWrapper}
           onKeyDown={this.keyPressWrapper}

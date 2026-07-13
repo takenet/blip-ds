@@ -192,6 +192,7 @@ export const StyledChips = () => {
     bds-input-chips::part(chip) {
       background-color: #1976D2;
       border-color: #1976D2;
+      border-radius: 16px;
       color: #ffffff;
       font-weight: 600;
     }
@@ -199,6 +200,15 @@ export const StyledChips = () => {
     bds-input-chips::part(chip):hover {
       background-color: #1565C0;
       border-color: #1565C0;
+    }
+
+    /* Apply color to text and delete icon inside the chip */
+    bds-input-chips::part(chip) bds-typo {
+      color: #ffffff !important;
+    }
+
+    bds-input-chips::part(chip) bds-icon {
+      color: #ffffff !important;
     }
   `;
 
