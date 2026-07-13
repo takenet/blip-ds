@@ -187,3 +187,37 @@ export const Methods = () => {
 export const FrameworkReact = () => {
   return <BdsInputChips id="input-chips" label="input chips" chips='["chip1", "chip2"]'></BdsInputChips>;
 };
+export const StyledChips = () => {
+  const styles = `
+    bds-input-chips::part(chip) {
+      background-color: #1976D2;
+      border-color: #1976D2;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    bds-input-chips::part(chip):hover {
+      background-color: #1565C0;
+      border-color: #1565C0;
+    }
+  `;
+
+  return (
+    <>
+      <style>{styles}</style>
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-16" bold="semi-bold">
+          Chips with Custom Styling
+        </bds-typo>
+        <bds-typo variant="fs-12">
+          This example demonstrates how to style chips using the ::part(chip) CSS selector
+        </bds-typo>
+        <bds-input-chips 
+          label="Add custom styled chips" 
+          chips='{"Primary", "Styled", "Chips"}'
+          placeholder="Type and press Enter"
+        ></bds-input-chips>
+      </bds-grid>
+    </>
+  );
+};

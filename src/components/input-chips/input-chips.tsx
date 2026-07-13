@@ -460,6 +460,7 @@ export class InputChips {
             close={!this.disabled}
             onChipClickableClose={(event) => this.removeChip(event)}
             dtButtonClose={this.dtButtonClose}
+            part="chip"
           >
             {chip}
           </bds-chip-clickable>
@@ -474,6 +475,7 @@ export class InputChips {
               close={!this.disabled}
               onChipClickableClose={(event) => this.removeChip(event)}
               dtButtonClose={this.dtButtonClose}
+              part="chip"
             >
               {`${chip.slice(0, limit)}...`}
             </bds-chip-clickable>
