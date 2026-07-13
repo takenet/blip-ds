@@ -34,7 +34,7 @@
   width: 100%;
   padding: 8px 16px;
   min-height: 40px;
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 :host .banner__holder--context--inside {
   border-radius: 8px;
@@ -79,7 +79,7 @@
   justify-content: space-between;
   margin-left: 8px;
   width: 100%;
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 :host .banner__action {
   display: inline-flex;

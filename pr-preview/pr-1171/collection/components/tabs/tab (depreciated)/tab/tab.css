@@ -34,7 +34,7 @@
   margin-right: 32px;
 }
 .bds-tab:hover {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .bds-tab--selected {
   animation-name: selectFade;
@@ -48,11 +48,11 @@
 @keyframes selectFade {
   from {
     border-bottom: 2px solid transparent;
-    color: var(--contents-content-primary, var(--color-content-default, #282828));
+    color: var(--color-content-default, #282828);
   }
   to {
-    border-bottom: 2px solid var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
-    color: var(--contents-content-primary, var(--color-content-default, #282828));
+    border-bottom: 2px solid var(--color-brand, #0096fa);
+    color: var(--color-content-default, #282828);
   }
 }
 

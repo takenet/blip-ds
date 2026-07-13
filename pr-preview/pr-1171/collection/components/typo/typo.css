@@ -23,7 +23,7 @@
   Font sizes have been converted to rem considering a base size of 16px.
 */
 :host {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 
 .typo {

@@ -1,6 +1,6 @@
 import { r as registerInstance, h } from './index-611fd21e.js';
 
-const menuExibitionCss = ".menuexibition{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:16px}.menuexibition__disabled{opacity:0.5;cursor:no-drop}.menuexibition .avatar-item{display:block;margin-right:8px}.menuexibition .content-item{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.menuexibition .content-item .title-item{color:var(--contents-content-primary, var(--color-content-default, #282828))}.menuexibition .content-item .subtitle-item{color:var(--color-content-disable, #595959)}.menuexibition .content-item .description-item{color:var(--contents-content-primary, var(--color-content-default, #282828))}";
+const menuExibitionCss = ".menuexibition{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:16px}.menuexibition__disabled{opacity:0.5;cursor:no-drop}.menuexibition .avatar-item{display:block;margin-right:8px}.menuexibition .content-item{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.menuexibition .content-item .title-item{color:var(--color-content-default, #282828)}.menuexibition .content-item .subtitle-item{color:var(--color-content-disable, #595959)}.menuexibition .content-item .description-item{color:var(--color-content-default, #282828)}";
 
 const BdsMenuExibition = class {
   constructor(hostRef) {

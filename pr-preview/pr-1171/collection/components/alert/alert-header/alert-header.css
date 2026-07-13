@@ -35,28 +35,28 @@
   background: var(--color-system, #b2dffd);
 }
 .alert__header--system bds-typo {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .alert__header--system .color-icon {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .alert__header--error {
   background: var(--color-error, #fabebe);
 }
 .alert__header--error bds-typo {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .alert__header--error .color-icon {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .alert__header--warning {
   background: var(--color-warning, #fde99b);
 }
 .alert__header--warning bds-typo {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .alert__header--warning .color-icon {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .alert__header--delete {
   background: var(--color-delete, #e60f0f);

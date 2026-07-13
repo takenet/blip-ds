@@ -99,7 +99,7 @@
   width: 100%;
   align-items: center;
   position: relative;
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .sidebar_dialog .sidebar .header .content ::slotted(*) {
   width: 100%;
@@ -112,7 +112,7 @@
   transition: height 0.5s, all 0.3s;
   z-index: 1;
   cursor: pointer;
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .sidebar_dialog .sidebar .body {
   position: relative;

@@ -56,8 +56,8 @@
   border-color: var(--color-brand, #0096fa);
 }
 .checkbox--selected .checkbox__icon {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
-  border-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-surface-primary, #1e6bf1);
+  border-color: var(--color-surface-primary, #1e6bf1);
 }
 .checkbox--selected .checkbox__icon__svg {
   color: var(--color-content-bright, white);
@@ -69,8 +69,8 @@
   cursor: not-allowed;
 }
 .checkbox--selected-disabled .checkbox__icon {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
-  border-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
+  border-color: var(--color-content-default, #282828);
   background-color: var(--color-surface-3, #e3e3e3);
   opacity: 50%;
 }
@@ -81,8 +81,8 @@
   display: none;
 }
 .checkbox--indeterminate .checkbox__icon {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
-  border-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-surface-primary, #1e6bf1);
+  border-color: var(--color-surface-primary, #1e6bf1);
 }
 .checkbox--indeterminate .checkbox__icon__svg {
   color: var(--color-content-bright, white);
@@ -94,8 +94,8 @@
   cursor: not-allowed;
 }
 .checkbox--indeterminate-disabled .checkbox__icon {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
-  border-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
+  border-color: var(--color-content-default, #282828);
   background-color: var(--color-surface-3, #e3e3e3);
   opacity: 50%;
 }
@@ -108,7 +108,7 @@
 .checkbox--deselected-disabled .checkbox__icon {
   opacity: 50%;
   background-color: var(--color-surface-1, #f6f6f6);
-  border: 1px solid var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  border: 1px solid var(--color-brand, #0096fa);
 }
 .checkbox--deselected-disabled .checkbox__icon__svg {
   display: none;
@@ -133,7 +133,7 @@
   min-width: 18px;
   border-radius: 4px;
   color: var(--color-surface-1, #f6f6f6);
-  border: 1px solid var(--contents-content-primary, var(--color-content-default, #282828));
+  border: 1px solid var(--color-content-default, #282828);
   box-sizing: border-box;
   border-radius: 4px;
   transition: all 0.3s;
@@ -144,5 +144,5 @@
 }
 .checkbox__text {
   margin-left: 8px;
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }

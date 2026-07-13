@@ -73,7 +73,7 @@
   color: var(--color-content-ghost, #8c8c8c);
 }
 .tab_group__header__itens__item__typo__error {
-  color: var(--feedback-negative, var(--color-negative, #e60f0f));
+  color: var(--color-surface-negative, #8a0000);
 }
 .tab_group__header__itens__item::before {
   content: "";
@@ -89,8 +89,8 @@
   border-color: var(--color-focus, #c226fb);
 }
 .tab_group__header__itens__item__open {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
-  border-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  color: var(--color-content-default, #282828);
+  border-color: var(--color-primary, #1e6bf1);
 }
 .tab_group__header__itens__item__disable {
   cursor: no-drop;

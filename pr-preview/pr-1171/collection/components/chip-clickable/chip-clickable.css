@@ -167,8 +167,8 @@
   color: var(--color-content-din, black);
 }
 :host .chip_clickable--outline {
-  border: 1px solid var(--borders-border-actions, var(--color-border-2, rgba(0, 0, 0, 0.16)));
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  color: var(--color-content-default, #282828);
 }
 :host .chip_clickable:focus-visible {
   outline: none;

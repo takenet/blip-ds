@@ -35,11 +35,11 @@
   flex-direction: column;
 }
 .menuexibition .content-item .title-item {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .menuexibition .content-item .subtitle-item {
   color: var(--color-content-disable, #595959);
 }
 .menuexibition .content-item .description-item {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }

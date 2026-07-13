@@ -125,7 +125,7 @@
   pointer-events: none;
 }
 .button__color--primary.button__variant--solid, .button__color--primary.button__variant--primary {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-surface-primary, #1e6bf1);
   border-color: transparent;
 }
 .button__color--primary.button__variant--solid .typo_buttom,
@@ -139,7 +139,7 @@
   pointer-events: none;
 }
 .button__color--primary.button__variant--solid:hover::before, .button__color--primary.button__variant--primary:hover::before {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-surface-primary, #1e6bf1);
   transition: background-color 0.3s ease;
   filter: brightness(0.88);
 }
@@ -148,12 +148,12 @@
 }
 .button__color--primary.button__variant--outline, .button__color--primary.button__variant--tertiary {
   background-color: transparent;
-  border-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  border-color: var(--color-primary, #1e6bf1);
 }
 .button__color--primary.button__variant--outline .typo_buttom,
 .button__color--primary.button__variant--outline .icon_buttom, .button__color--primary.button__variant--tertiary .typo_buttom,
 .button__color--primary.button__variant--tertiary .icon_buttom {
-  color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  color: var(--color-primary, #1e6bf1);
   z-index: 1;
 }
 .button__color--primary.button__variant--outline--disabled, .button__color--primary.button__variant--tertiary--disabled {
@@ -161,7 +161,7 @@
   pointer-events: none;
 }
 .button__color--primary.button__variant--outline:hover::before, .button__color--primary.button__variant--tertiary:hover::before {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-surface-primary, #1e6bf1);
   transition: background-color 0.3s ease;
   opacity: 0.08;
 }
@@ -175,7 +175,7 @@
 .button__color--primary.button__variant--text .typo_buttom,
 .button__color--primary.button__variant--text .icon_buttom, .button__color--primary.button__variant--secondary .typo_buttom,
 .button__color--primary.button__variant--secondary .icon_buttom {
-  color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  color: var(--color-primary, #1e6bf1);
   z-index: 1;
 }
 .button__color--primary.button__variant--text--disabled, .button__color--primary.button__variant--secondary--disabled {
@@ -183,7 +183,7 @@
   pointer-events: none;
 }
 .button__color--primary.button__variant--text:hover::before, .button__color--primary.button__variant--secondary:hover::before {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-primary, #1e6bf1);
   transition: background-color 0.3s ease;
   opacity: 0.08;
 }
@@ -191,7 +191,7 @@
   opacity: 0.24;
 }
 .button__color--content.button__variant--solid, .button__color--content.button__variant--primary {
-  background-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  background-color: var(--color-content-default, #282828);
   border-color: transparent;
 }
 .button__color--content.button__variant--solid .typo_buttom,
@@ -205,7 +205,7 @@
   pointer-events: none;
 }
 .button__color--content.button__variant--solid:hover::before, .button__color--content.button__variant--primary:hover::before {
-  background-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  background-color: var(--color-content-default, #282828);
   transition: background-color 0.3s ease;
   filter: brightness(0.88);
 }
@@ -214,12 +214,12 @@
 }
 .button__color--content.button__variant--outline, .button__color--content.button__variant--tertiary {
   background-color: transparent;
-  border-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border-color: var(--color-content-default, #282828);
 }
 .button__color--content.button__variant--outline .typo_buttom,
 .button__color--content.button__variant--outline .icon_buttom, .button__color--content.button__variant--tertiary .typo_buttom,
 .button__color--content.button__variant--tertiary .icon_buttom {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
   z-index: 1;
 }
 .button__color--content.button__variant--outline--disabled, .button__color--content.button__variant--tertiary--disabled {
@@ -227,7 +227,7 @@
   pointer-events: none;
 }
 .button__color--content.button__variant--outline:hover::before, .button__color--content.button__variant--tertiary:hover::before {
-  background-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  background-color: var(--color-content-default, #282828);
   transition: background-color 0.3s ease;
   opacity: 0.08;
 }
@@ -241,7 +241,7 @@
 .button__color--content.button__variant--text .typo_buttom,
 .button__color--content.button__variant--text .icon_buttom, .button__color--content.button__variant--secondary .typo_buttom,
 .button__color--content.button__variant--secondary .icon_buttom {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
   z-index: 1;
 }
 .button__color--content.button__variant--text--disabled, .button__color--content.button__variant--secondary--disabled {
@@ -249,7 +249,7 @@
   pointer-events: none;
 }
 .button__color--content.button__variant--text:hover::before, .button__color--content.button__variant--secondary:hover::before {
-  background-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  background-color: var(--color-content-default, #282828);
   transition: background-color 0.3s ease;
   opacity: 0.08;
 }
@@ -281,13 +281,13 @@
 }
 .button__color--negative.button__variant--outline, .button__color--negative.button__variant--tertiary, .button__color--negative.button__variant--delete {
   background-color: transparent;
-  border-color: var(--feedback-negative, var(--color-negative, #e60f0f));
+  border-color: var(--color-negative, #e60f0f);
 }
 .button__color--negative.button__variant--outline .typo_buttom,
 .button__color--negative.button__variant--outline .icon_buttom, .button__color--negative.button__variant--tertiary .typo_buttom,
 .button__color--negative.button__variant--tertiary .icon_buttom, .button__color--negative.button__variant--delete .typo_buttom,
 .button__color--negative.button__variant--delete .icon_buttom {
-  color: var(--feedback-negative, var(--color-negative, #e60f0f));
+  color: var(--color-negative, #e60f0f);
   z-index: 1;
 }
 .button__color--negative.button__variant--outline--disabled, .button__color--negative.button__variant--tertiary--disabled, .button__color--negative.button__variant--delete--disabled {
@@ -310,7 +310,7 @@
 .button__color--negative.button__variant--text .icon_buttom, .button__color--negative.button__variant--secondary .typo_buttom,
 .button__color--negative.button__variant--secondary .icon_buttom, .button__color--negative.button__variant--delete .typo_buttom,
 .button__color--negative.button__variant--delete .icon_buttom {
-  color: var(--feedback-negative, var(--color-negative, #e60f0f));
+  color: var(--color-negative, #e60f0f);
   z-index: 1;
 }
 .button__color--negative.button__variant--text--disabled, .button__color--negative.button__variant--secondary--disabled, .button__color--negative.button__variant--delete--disabled {
@@ -318,7 +318,7 @@
   pointer-events: none;
 }
 .button__color--negative.button__variant--text:hover::before, .button__color--negative.button__variant--secondary:hover::before, .button__color--negative.button__variant--delete:hover::before {
-  background-color: var(--feedback-negative, var(--color-negative, #e60f0f));
+  background-color: var(--color-negative, #e60f0f);
   transition: background-color 0.3s ease;
   opacity: 0.08;
 }

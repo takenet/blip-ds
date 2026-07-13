@@ -52,7 +52,7 @@
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  border: 2px solid var(--contents-content-primary, var(--color-content-default, #282828));
+  border: 2px solid var(--color-content-default, #282828);
   padding: 4px;
   border-radius: 100%;
   box-sizing: border-box;
@@ -105,20 +105,20 @@
   -o-user-select: none;
   user-select: none;
   padding-left: 8px;
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
 }
 .radio__input[type=radio]:checked ~ .radio__circle {
   background: transparent;
-  border-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border-color: var(--color-content-default, #282828);
 }
 .radio__input[type=radio]:checked ~ .radio__circle .radio__circle__pointer {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-primary, #1e6bf1);
 }
 .radio__input[type=radio]:checked ~ .radio__circle:hover {
-  border-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border-color: var(--color-content-default, #282828);
 }
 .radio__input[type=radio]:checked ~ .radio__circle:hover .radio__circle__pointer {
-  background-color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  background-color: var(--color-primary, #1e6bf1);
 }
 .radio__input[type=radio]:disabled ~ .radio__circle {
   border-color: var(--color-content-disable, #595959);
@@ -139,14 +139,14 @@
   background-color: var(--color-surface-3, #e3e3e3);
 }
 .radio__input[type=radio]:disabled:checked ~ .radio__circle .radio__circle__pointer {
-  background-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  background-color: var(--color-content-default, #282828);
 }
 .radio__input[type=radio]:disabled:checked:hover ~ .radio__circle {
   border-color: var(--color-content-disable, #595959);
   background-color: var(--color-surface-3, #e3e3e3);
 }
 .radio__input[type=radio]:disabled:checked:hover ~ .radio__circle .radio__circle__pointer {
-  background-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  background-color: var(--color-content-default, #282828);
 }
 .radio__input[type=radio]:disabled ~ .radio__text {
   color: var(--color-content-disable, #595959);

@@ -49,7 +49,7 @@
   order: 1;
 }
 .select-option--selected .select-option__container--value {
-  color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  color: var(--color-primary, #1e6bf1);
 }
 .select-option--disabled .select-option__container--value,
 .select-option--disabled .select-option__container--bulk {
@@ -64,7 +64,7 @@
   margin-right: 10px;
 }
 .select-option__container {
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
   display: flex;
   flex-direction: column;
 }
@@ -96,17 +96,17 @@
   padding-right: 16px;
 }
 .select-option__container:hover > .select-option__container--value, .select-option__container:hover > .select-option__container--bulk, .select-option__container:hover > .select-option__container--status {
-  color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  color: var(--color-primary, #1e6bf1);
 }
 .select-option__container:active > .select-option__container--value, .select-option__container:active > .select-option__container--bulk, .select-option__container:active > .select-option__container--status {
-  color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  color: var(--color-primary, #1e6bf1);
 }
 .select-option:hover {
   background-color: var(--color-surface-1, #f6f6f6);
 }
 .select-option:focus {
   background-color: var(--color-surface-1, #f6f6f6);
-  color: var(--actions-action-primary-default, var(--color-primary, #1e6bf1));
+  color: #3f7de8;
 }
 .select-option--selected {
   background-color: var(--color-surface-1, #f6f6f6);

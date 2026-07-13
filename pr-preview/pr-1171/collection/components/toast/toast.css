@@ -40,7 +40,7 @@
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: 0px 8px 4px -4px var(--color-shadow-0, rgba(0, 0, 0, 0.04)), 0px 12px 12px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));
-  color: var(--contents-content-primary, var(--color-content-default, #282828));
+  color: var(--color-content-default, #282828);
   opacity: 0;
   margin-top: 16px;
   overflow: hidden;

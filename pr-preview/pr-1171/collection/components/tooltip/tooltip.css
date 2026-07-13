@@ -25,7 +25,7 @@
   left: 50%;
   border-radius: 8px;
   padding: 8px;
-  background: var(--contents-content-primary, var(--color-content-default, #282828));
+  background: var(--color-content-default, #282828);
   z-index: 90000;
   white-space: normal;
   width: max-content;
@@ -56,7 +56,7 @@
 }
 .tooltip__tip--top-center::before, .tooltip__tip--top-left::before, .tooltip__tip--top-right::before {
   top: 100%;
-  border-top-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border-top-color: var(--color-content-default, #282828);
 }
 .tooltip__tip--top-left {
   left: 0;
@@ -87,7 +87,7 @@
   left: -5px;
   top: 50%;
   transform: translateX(0) translateY(-50%);
-  border-right-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border-right-color: var(--color-content-default, #282828);
 }
 .tooltip__tip--right-top {
   top: 0;
@@ -107,7 +107,7 @@
 }
 .tooltip__tip--bottom-center::before, .tooltip__tip--bottom-right::before, .tooltip__tip--bottom-left::before {
   bottom: 100%;
-  border-bottom-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border-bottom-color: var(--color-content-default, #282828);
 }
 .tooltip__tip--bottom-right {
   left: initial;
@@ -134,7 +134,7 @@
   right: -11px;
   top: 50%;
   transform: translateX(0) translateY(-50%);
-  border-left-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  border-left-color: var(--color-content-default, #282828);
 }
 .tooltip__tip--left-top {
   top: 0;

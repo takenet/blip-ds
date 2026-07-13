@@ -19,7 +19,7 @@
 .skeleton {
   min-width: 8px;
   min-height: 8px;
-  background-color: var(--contents-content-primary, var(--color-content-default, #282828));
+  background-color: var(--color-content-default, #282828);
   opacity: 0.16;
   overflow: hidden;
 }
