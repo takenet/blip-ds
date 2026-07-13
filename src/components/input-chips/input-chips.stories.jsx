@@ -210,12 +210,7 @@ export const StyledChips = () => {
       background-color: #1565C0 !important;
       border-color: #1565C0 !important;
     }
-
-    /* Apply color to text and delete icon inside the chip */
-    bds-input-chips::part(chip) * {
-      color: #ffffff !important;
-    }
-  `;
+`;
 
   return (
     <>
@@ -229,7 +224,7 @@ export const StyledChips = () => {
         </bds-typo>
         <bds-input-chips 
           label="Add custom styled chips" 
-          chips='{"Primary", "Styled", "Chips"}'
+          chips='["Primary", "Styled", "Chips"]'
           placeholder="Type and press Enter"
         ></bds-input-chips>
       </bds-grid>
