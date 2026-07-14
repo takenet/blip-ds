@@ -146,4 +146,60 @@ describe('bds-input-chips e2e tests', () => {
       expect(focusedElement).toBe('BDS-INPUT-CHIPS');
     });
   });
+
+  describe('Shadow Parts and Styling', () => {
+    it('should expose part="chip" attribute on rendered chips for external styling', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-chips chips='["tag1", "tag2"]'></bds-input-chips>`,
+      });
+
+      const inputChips = await page.find('bds-input-chips');
+      const chips = await inputChips.findAll('bds-chip-clickable');
+      
+      expect(chips.length).toBe(2);
+      
+      for (const chip of chips) {
+        const part = await chip.getAttribute('part');
+        expect(part).toBe('chip');
+      }
+    });
+
+    it('should apply borderless styling when borderless prop is true', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-chips borderless></bds-input-chips>`,
+      });
+
+      const inputChips = await page.find('bds-input-chips');
+      const inputContainer = await inputChips.find('>>> .input');
+      const borderlessClass = await inputContainer.getAttribute('class');
+      
+      expect(borderlessClass).toContain('input--borderless');
+    });
+
+    it('should maintain focus ring visibility in borderless mode', async () => {
+      page = await newE2EPage({
+        html: `
+          <style>
+            bds-input-chips.test-borderless {
+              --focus-shadow: 0 0 0 2px #0066ff;
+            }
+          </style>
+          <bds-input-chips borderless class="test-borderless"></bds-input-chips>
+        `,
+      });
+
+      const inputElement = await page.find('bds-input-chips >>> input');
+      await inputElement.focus();
+      await page.waitForChanges();
+
+      const computedBoxShadow = await page.evaluate(() => {
+        const input = document.querySelector('bds-input-chips')?.shadowRoot?.querySelector('input');
+        return window.getComputedStyle(input).boxShadow;
+      });
+
+      // The borderless modifier should not remove box-shadow entirely
+      // (the focus ring from state selectors should be preserved)
+      expect(computedBoxShadow).not.toBe('none');
+    });
+  });
 });

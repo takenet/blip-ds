@@ -10,6 +10,7 @@
 | Property         | Attribute          | Description                                                                                                             | Type                 | Default     |
 | ---------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `blurCreation`   | `blur-creation`    | When true, the press enter will be simulated on blur event.                                                             | `boolean`            | `false`     |
+| `borderless`     | `borderless`       | When true, removes the border from the input component.                                                                 | `boolean`            | `false`     |
 | `chips`          | `chips`            | The chips on the component Should be passed this way: chips='["chip1", "chip2"]'                                        | `string \| string[]` | `[]`        |
 | `counterLength`  | `counter-length`   | Passing true to display a counter of available size, it is necessary to pass another maxlength property.                | `boolean`            | `false`     |
 | `danger`         | `danger`           | Add state danger on input, use for use feedback.                                                                        | `boolean`            | `false`     |
@@ -115,8 +116,9 @@ Type: `Promise<void>`
 
 | Part                | Description |
 | ------------------- | ----------- |
-| `"input-container"` |             |
-| `"input__message"`  |             |
+| `"chip"`            | The `<bds-chip-clickable>` host element that wraps each rendered chip. Can be used to apply global styles to all chips (e.g., `bds-input-chips::part(chip) { ... }`). Note: styling of internal chip elements (text, icon) requires CSS custom properties (--bds-chip-text-color, --bds-chip-icon-color) on the `bds-input-chips` component, as the ::part() pseudo-element cannot target descendants across shadow DOM boundaries. |
+| `"input-container"` | The main input container that holds the chips and text input field. |
+| `"input__message"`  | The feedback message container that displays error, success, or helper text. |
 
 
 ## Dependencies

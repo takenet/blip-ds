@@ -247,6 +247,18 @@ $input_fixed: 140px;
     padding: $input-padding-label;
   }
 
+  &--borderless {
+    border: none !important;
+
+    &:hover {
+      border: none !important;
+    }
+
+    &.input--pressed {
+      border: none !important;
+    }
+  }
+
   &__icon {
     cursor: inherit;
     display: flex;

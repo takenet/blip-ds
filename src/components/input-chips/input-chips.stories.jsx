@@ -22,6 +22,7 @@ export const Properties = (args) => {
         blur-creation={args.blurCreation}
         disable-submit={args.disableSubmit}
         disabled={args.disabled}
+        borderless={args.borderless}
       ></bds-input-chips>
     </bds-grid>
   );
@@ -36,6 +37,7 @@ Properties.args = {
   blurCreation: false,
   disableSubmit: false,
   disabled: false,
+  borderless: false,
 };
 
 Properties.argTypes = {
@@ -90,6 +92,13 @@ Properties.argTypes = {
     control: 'boolean',
   },
   disabled: {
+    table: {
+      defaultValue: { summary: 'false' },
+    },
+
+    control: 'boolean',
+  },
+  borderless: {
     table: {
       defaultValue: { summary: 'false' },
     },
@@ -186,4 +195,209 @@ export const Methods = () => {
 
 export const FrameworkReact = () => {
   return <BdsInputChips id="input-chips" label="input chips" chips='["chip1", "chip2"]'></BdsInputChips>;
+};
+export const StyledChips = () => {
+  const styles = `
+    /* Note: ::part(chip) can style the chip container element itself and pseudo-classes like :hover,
+     * but cannot target internal descendants (bds-typo, bds-icon) across the shadow DOM.
+     * For text/icon color, use CSS custom properties (--bds-chip-text-color, --bds-chip-icon-color)
+     * exported by the chip-clickable component. */
+    bds-input-chips::part(chip) {
+      background-color: #1976D2 !important;
+      border-radius: 16px !important;
+    }
+
+    bds-input-chips::part(chip):hover {
+      background-color: #1565C0 !important;
+    }
+    
+    bds-input-chips {
+      --bds-chip-text-color: #ffffff;
+      --bds-chip-icon-color: #ffffff;
+
+  return (
+    <>
+      <style>{styles}</style>
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-16" bold="semi-bold">
+          Chips with Custom Styling
+        </bds-typo>
+        <bds-typo variant="fs-12">
+          This example demonstrates how to style chips using the ::part(chip) CSS selector
+        </bds-typo>
+        <bds-input-chips 
+          label="Add custom styled chips" 
+          chips='["Primary", "Styled", "Chips"]'
+          placeholder="Type and press Enter"
+        ></bds-input-chips>
+      </bds-grid>
+    </>
+  );
+};
+
+export const StyledChipsWithCustomColors = () => {
+  const styles = `
+    /* Option 2: Override text color when needed */
+    .blue-chips bds-input-chips {
+      --bds-chip-text-color: #ffffff;
+      --bds-chip-icon-color: #ffffff;
+    }
+
+    .blue-chips bds-input-chips::part(chip) {
+      background-color: #1976D2;
+      border-radius: 16px;
+    }
+
+    .green-chips bds-input-chips {
+      --bds-chip-text-color: #ffffff;
+      --bds-chip-icon-color: #ffffff;
+    }
+
+    .green-chips bds-input-chips::part(chip) {
+      background-color: #059669;
+      border-radius: 16px;
+    }
+
+    .orange-chips bds-input-chips {
+      --bds-chip-text-color: #000000;
+      --bds-chip-icon-color: #000000;
+    }
+
+    .orange-chips bds-input-chips::part(chip) {
+      background-color: #D97706;
+      border-radius: 16px;
+    }
+  `;
+
+  return (
+    <>
+      <style>{styles}</style>
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-16" bold="semi-bold">
+          Chips with Custom Colors - Override per Group
+        </bds-typo>
+        <bds-typo variant="fs-12">
+          Each chip group can have its own text and background colors via custom properties.
+        </bds-typo>
+        
+        <div className="blue-chips">
+          <bds-typo variant="fs-12" bold="semi-bold">Blue Chips (White text)</bds-typo>
+          <bds-input-chips 
+            label="Blue chips" 
+            chips='["Feature", "Active"]'
+            placeholder="Type and press Enter"
+          ></bds-input-chips>
+        </div>
+
+        <div className="green-chips">
+          <bds-typo variant="fs-12" bold="semi-bold">Green Chips (White text)</bds-typo>
+          <bds-input-chips 
+            label="Green chips" 
+            chips='["Success", "Complete"]'
+            placeholder="Type and press Enter"
+          ></bds-input-chips>
+        </div>
+
+        <div className="orange-chips">
+          <bds-typo variant="fs-12" bold="semi-bold">Orange Chips (Black text)</bds-typo>
+          <bds-input-chips 
+            label="Orange chips" 
+            chips='["Warning", "Attention"]'
+            placeholder="Type and press Enter"
+          ></bds-input-chips>
+        </div>
+      </bds-grid>
+    </>
+  );
+};
+
+export const OutlinedChipStyle = () => {
+  const styles = `
+    bds-input-chips {
+      --bds-chip-text-color: #1E6BF1;
+      --bds-chip-icon-color: #1E6BF1;
+      --bds-chip-border: 1.5px solid #1E6BF1;
+    }
+
+    bds-input-chips::part(chip) {
+      background-color: #1E6BF118;
+      border-radius: 16px;
+    }
+
+    bds-input-chips::part(chip):hover {
+      background-color: #1E6BF128;
+    }
+  `;
+
+  return (
+    <>
+      <style>{styles}</style>
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-16" bold="semi-bold">
+          Outlined Chip Style
+        </bds-typo>
+        <bds-typo variant="fs-12">
+          Border-based styling with light background fill using custom properties
+        </bds-typo>
+        <bds-input-chips 
+          label="Add outlined chips" 
+          chips='["Design", "System", "Component"]'
+          placeholder="Type and press Enter"
+        ></bds-input-chips>
+      </bds-grid>
+    </>
+  );
+};
+
+export const OutlineChipVariant = () => {
+  const styles = `
+    /* Option 1: Use CSS custom property (recommended) - no !important needed */
+    .no-border-custom-prop bds-input-chips {
+      --bds-chip-border: none;
+      --bds-chip-text-color: #282828;
+      --bds-chip-icon-color: #282828;
+    }
+
+    /* Option 2: Override using ::part() with !important (works but less clean) */
+    .no-border-override bds-input-chips::part(chip) {
+      border: none !important;
+    }
+
+    .no-border-override bds-input-chips {
+      --bds-chip-text-color: #282828;
+      --bds-chip-icon-color: #282828;
+    }
+  `;
+
+  return (
+    <>
+      <style>{styles}</style>
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-16" bold="semi-bold">
+          Outline Chip Variant - Remove Border
+        </bds-typo>
+        <bds-typo variant="fs-12">
+          Two approaches: using CSS custom property (recommended) or ::part() override
+        </bds-typo>
+
+        <bds-typo variant="fs-13" bold="semi-bold">Option 1: Custom Property (Recommended)</bds-typo>
+        <div className="no-border-custom-prop">
+          <bds-input-chips 
+            label="Borderless via custom property" 
+            chips='["Tag", "Label", "Category"]'
+            placeholder="Type and press Enter"
+          ></bds-input-chips>
+        </div>
+
+        <bds-typo variant="fs-13" bold="semi-bold">Option 2: ::part() Override</bds-typo>
+        <div className="no-border-override">
+          <bds-input-chips 
+            label="Borderless via ::part()" 
+            chips='["Tag", "Label", "Category"]'
+            placeholder="Type and press Enter"
+          ></bds-input-chips>
+        </div>
+      </bds-grid>
+    </>
+  );
 };

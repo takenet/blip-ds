@@ -45,6 +45,29 @@ Alguns exemplos de Eventos do Chip Clickable.
 
 <Source of={ChipClickableStories.Events} />
 <br></br>
+
+## CSS Custom Properties
+
+O componente expõe as seguintes propriedades CSS customizáveis para permitir que componentes pai (como `bds-input-chips`) estilizem seus chips filhos:
+
+| Propriedade CSS | Descrição | Valor padrão |
+| --- | --- | --- |
+| `--bds-chip-text-color` | Controla a cor do texto e ícones do chip | `inherit` |
+| `--bds-chip-icon-color` | Controla a cor específica dos ícones | `inherit` |
+| `--bds-chip-border` | Controla o estilo da borda no modo outline | `1px solid var(--color-border-1)` |
+
+Essas propriedades permitem que componentes pai customize a aparência dos chips sem quebrar o encapsulamento do Shadow DOM. Exemplo de uso:
+
+```css
+bds-chip-clickable {
+  --bds-chip-text-color: #fff;
+  --bds-chip-icon-color: #fff;
+  --bds-chip-border: 2px solid #007bff;
+}
+```
+
+<br></br>
+
 ## Usando em React
 
 <Source of={ChipClickableStories.FrameworkReact} />

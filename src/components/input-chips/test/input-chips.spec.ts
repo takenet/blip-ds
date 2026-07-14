@@ -618,4 +618,41 @@ describe('bds-input-chips', () => {
     
     expect(component.internalChips).toEqual(['chip1', 'chip2']);
   });
+
+  // New feature tests for part attribute and borderless prop
+  it('should render chips with part="chip" attribute for external styling', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips chips=\'["tag1", "tag2"]\'></bds-input-chips>',
+    });
+
+    await page.waitForChanges();
+    
+    const chips = page.root.shadowRoot.querySelectorAll('bds-chip-clickable');
+    expect(chips.length).toBe(2);
+    
+    chips.forEach((chip) => {
+      expect(chip.getAttribute('part')).toBe('chip');
+    });
+  });
+
+  it('should apply input--borderless class when borderless prop is true', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips borderless></bds-input-chips>',
+    });
+
+    const inputElement = page.root.shadowRoot.querySelector('.input');
+    expect(inputElement).toHaveClass('input--borderless');
+  });
+
+  it('should not apply input--borderless class when borderless prop is false', async () => {
+    const page = await newSpecPage({
+      components: [InputChips],
+      html: '<bds-input-chips></bds-input-chips>',
+    });
+
+    const inputElement = page.root.shadowRoot.querySelector('.input');
+    expect(inputElement).not.toHaveClass('input--borderless');
+  });
 });
