@@ -198,19 +198,22 @@ export const FrameworkReact = () => {
 };
 export const StyledChips = () => {
   const styles = `
+    /* Note: ::part(chip) can style the chip container element itself and pseudo-classes like :hover,
+     * but cannot target internal descendants (bds-typo, bds-icon) across the shadow DOM.
+     * For text/icon color, use CSS custom properties (--bds-chip-text-color, --bds-chip-icon-color)
+     * exported by the chip-clickable component. */
     bds-input-chips::part(chip) {
       background-color: #1976D2 !important;
-      border-color: #1976D2 !important;
       border-radius: 16px !important;
-      color: #ffffff !important;
-      font-weight: 600 !important;
     }
 
     bds-input-chips::part(chip):hover {
       background-color: #1565C0 !important;
-      border-color: #1565C0 !important;
     }
-`;
+    
+    bds-input-chips {
+      --bds-chip-text-color: #ffffff;
+      --bds-chip-icon-color: #ffffff;
 
   return (
     <>

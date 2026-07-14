@@ -249,7 +249,6 @@ $input_fixed: 140px;
 
   &--borderless {
     border: none !important;
-    box-shadow: none !important;
 
     &:hover {
       border: none !important;
@@ -257,7 +256,6 @@ $input_fixed: 140px;
 
     &.input--pressed {
       border: none !important;
-      box-shadow: none !important;
     }
   }
 
