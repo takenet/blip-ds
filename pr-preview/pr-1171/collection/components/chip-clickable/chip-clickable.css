@@ -102,6 +102,7 @@
   z-index: 2;
   font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
   line-height: 1;
+  color: var(--bds-chip-text-color, inherit);
 }
 :host .chip_clickable--icon {
   display: flex;
@@ -109,6 +110,7 @@
   height: 16px;
   padding-right: 2px;
   z-index: 2;
+  color: var(--bds-chip-icon-color, inherit);
 }
 :host .chip_clickable--close {
   display: flex;
@@ -120,6 +122,7 @@
   z-index: 2;
   position: relative;
   cursor: pointer;
+  color: var(--bds-chip-icon-color, inherit);
 }
 :host .chip_clickable--close .close_focus:focus {
   position: absolute;
@@ -167,7 +170,7 @@
   color: var(--color-content-din, black);
 }
 :host .chip_clickable--outline {
-  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  border: var(--bds-chip-border, 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2)));
   color: var(--color-content-default, #282828);
 }
 :host .chip_clickable:focus-visible {
