@@ -422,6 +422,35 @@ describe('bds-select-chips', () => {
     expect(emittedData.data).toEqual(['tag1']);
   });
 
+  it('should emit bdsChange and bdsChangeChips when adding a new option', async () => {
+    const page = await newSpecPage({
+      components: [SelectChips],
+      html: '<bds-select-chips></bds-select-chips>',
+    });
+
+    const component = page.rootInstance;
+    component.isOpen = true;
+
+    let changeChipsDetail = null;
+    let changeDetail = null;
+
+    page.root.addEventListener('bdsChangeChips', (event: CustomEvent) => {
+      changeChipsDetail = event.detail;
+    });
+
+    page.root.addEventListener('bdsChange', (event: CustomEvent) => {
+      changeDetail = event.detail;
+    });
+
+    await component.handlerNewOption('new option');
+    await page.waitForChanges();
+
+    expect(component.internalChips).toEqual(['new option']);
+    expect(component.isOpen).toBe(false);
+    expect(changeChipsDetail).toEqual({ data: ['new option'], value: undefined });
+    expect(changeDetail).toEqual({ data: [{ label: 'new option', value: 'new option' }] });
+  });
+
   it('should emit bdsFocus event on focus', async () => {
     const page = await newSpecPage({
       components: [SelectChips],
