@@ -56,7 +56,7 @@ export class ChipClickable {
         'chip_clickable--hide': !this.visible,
         'chip_clickable--click': this.clickable,
         'chip_clickable--disabled': this.disabled,
-      }, onClick: this.handleClick.bind(this), "data-test": this.dataTest }, this.clickable && !this.disabled && (h("div", { class: "chip_focus", onKeyDown: this.handleClickKey.bind(this), tabindex: "0" })), this.clickable && !this.disabled && h("div", { class: "chip_darker" }), this.icon && !this.avatar && (h("div", { class: "chip_clickable--icon" }, h("bds-icon", { size: this.getSizeIconChip(), name: this.icon }))), this.avatar && (h("div", { class: "chip_clickable--avatar" }, h("bds-avatar", { size: this.getSizeAvatarChip(), thumbnail: this.avatar }))), h("div", { class: this.close && (this.icon || this.avatar)
+      }, onClick: this.handleClick.bind(this), "data-test": this.dataTest, part: "chip" }, this.clickable && !this.disabled && (h("div", { class: "chip_focus", onKeyDown: this.handleClickKey.bind(this), tabindex: "0" })), this.clickable && !this.disabled && h("div", { class: "chip_darker" }), this.icon && !this.avatar && (h("div", { class: "chip_clickable--icon" }, h("bds-icon", { size: this.getSizeIconChip(), name: this.icon }))), this.avatar && (h("div", { class: "chip_clickable--avatar" }, h("bds-avatar", { size: this.getSizeAvatarChip(), thumbnail: this.avatar }))), h("div", { class: this.close && (this.icon || this.avatar)
         ? `chip_clickable--container-text--min`
         : !this.close && !this.icon && !this.avatar
           ? `chip_clickable--container-text--full`

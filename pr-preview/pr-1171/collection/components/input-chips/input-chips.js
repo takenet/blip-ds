@@ -260,10 +260,10 @@ export class InputChips {
       // Reduce the limit to prevent chips from being too wide and causing scroll issues
       const limit = 20;
       if (chip.length <= limit) {
-        return (h("bds-chip-clickable", { id: id, key: id, color: "outline", close: !this.disabled, onChipClickableClose: (event) => this.removeChip(event), dtButtonClose: this.dtButtonClose, part: "chip" }, chip));
+        return (h("bds-chip-clickable", { id: id, key: id, color: "outline", close: !this.disabled, onChipClickableClose: (event) => this.removeChip(event), dtButtonClose: this.dtButtonClose, exportparts: "chip" }, chip));
       }
       else {
-        return (h("bds-tooltip", { key: id, position: "top-center", "tooltip-text": chip }, h("bds-chip-clickable", { id: id, key: id, color: "outline", close: !this.disabled, onChipClickableClose: (event) => this.removeChip(event), dtButtonClose: this.dtButtonClose, part: "chip" }, `${chip.slice(0, limit)}...`)));
+        return (h("bds-tooltip", { key: id, position: "top-center", "tooltip-text": chip, exportparts: "chip" }, h("bds-chip-clickable", { id: id, key: id, color: "outline", close: !this.disabled, onChipClickableClose: (event) => this.removeChip(event), dtButtonClose: this.dtButtonClose, exportparts: "chip" }, `${chip.slice(0, limit)}...`)));
       }
     });
   }
