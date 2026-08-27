@@ -149,12 +149,12 @@ $select-options-max-height: 200px;
       }
       @include input-theme(
         'primary',
-        $color-primary,
+        $color-semantic-action-primary-default,
         $color-surface-1,
-        $color-content-default,
-        $color-content-default,
-        $color-border-1,
-        $color-primary,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
+        $color-semantic-border-actions,
+        $color-semantic-action-primary-default,
         $color-info
       );
     }
@@ -177,10 +177,10 @@ $select-options-max-height: 200px;
       }
       @include input-theme(
         'danger',
-        $color-negative,
+        $color-semantic-feedback-negative,
         $color-error,
         $color-delete,
-        $color-content-default,
+        $color-semantic-content-primary,
         $color-delete,
         $color-delete,
         $color-error
@@ -206,10 +206,10 @@ $select-options-max-height: 200px;
         'success',
         $color-positive,
         $color-success,
-        $color-content-default,
-        $color-content-default,
-        $color-border-1,
-        $color-content-default,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
+        $color-semantic-border-actions,
+        $color-semantic-content-primary,
         $color-success
       );
     }
@@ -313,10 +313,10 @@ $select-options-max-height: 200px;
 
     &--danger {
       .bds-icon {
-        color: $color-negative;
+        color: $color-semantic-feedback-negative;
       }
       .input__message__text {
-        color: $color-negative;
+        color: $color-semantic-feedback-negative;
       }
     }
     &--success {
@@ -326,7 +326,7 @@ $select-options-max-height: 200px;
         }
       }
       .input__message__text {
-        color: $color-content-default;
+        color: $color-semantic-content-primary;
       }
     }
   }

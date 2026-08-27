@@ -53,6 +53,13 @@
   --color-pressed: #{$color-light-pressed};
   --color-shadow-0: rgba(0, 0, 0, 0.04);
   --color-shadow-1: rgba(0, 0, 0, 0.16);
+
+  // Semantic aliases for gradual migration from legacy token names.
+  --contents-content-primary: var(--color-content-default);
+  --actions-action-primary-default: var(--color-primary);
+  --feedback-negative: var(--color-negative);
+  --borders-border-actions: var(--color-border-2);
+  --surfaces-surface-papers: var(--color-surface-0);
 }
 
 :host(.theme--dark) {
@@ -107,6 +114,13 @@
   --color-pressed: #{$color-dark-pressed};
   --color-shadow-0: #{$color-shadow-0};
   --color-shadow-1: #{$color-shadow-1};
+
+  // Semantic aliases for gradual migration from legacy token names.
+  --contents-content-primary: var(--color-content-default);
+  --actions-action-primary-default: var(--color-primary);
+  --feedback-negative: var(--color-negative);
+  --borders-border-actions: var(--color-border-2);
+  --surfaces-surface-papers: var(--color-surface-0);
 }
 
 :host(.theme--high-contrast) {
@@ -146,4 +160,11 @@
   --color-shadow-1: rgba(0, 0, 0, 0.16);
   --color-positive: #10603b;
   --color-negative: #e60f0f;
+
+  // Semantic aliases for gradual migration from legacy token names.
+  --contents-content-primary: var(--color-content-default);
+  --actions-action-primary-default: var(--color-primary);
+  --feedback-negative: var(--color-negative);
+  --borders-border-actions: var(--color-border-1);
+  --surfaces-surface-papers: var(--color-surface-1);
 }

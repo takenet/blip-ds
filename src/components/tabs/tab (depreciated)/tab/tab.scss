@@ -19,7 +19,7 @@
   }
 
   &:hover {
-    color: $color-content-default;
+    color: $color-semantic-content-primary;
   }
 
   &--selected {
@@ -36,11 +36,11 @@
   @keyframes selectFade {
     from{
        border-bottom: 2px solid transparent;
-       color: $color-content-default;
+       color: $color-semantic-content-primary;
     }
     to{
-       border-bottom: 2px solid $color-brand;
-      color: $color-content-default;
+       border-bottom: 2px solid $color-semantic-action-primary-default;
+      color: $color-semantic-content-primary;
     }
   }
 }
