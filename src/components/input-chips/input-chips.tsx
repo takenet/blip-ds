@@ -464,14 +464,14 @@ export class InputChips {
             close={!this.disabled}
             onChipClickableClose={(event) => this.removeChip(event)}
             dtButtonClose={this.dtButtonClose}
-            part="chip"
+            exportparts="chip"
           >
             {chip}
           </bds-chip-clickable>
         );
       } else {
         return (
-          <bds-tooltip key={id} position="top-center" tooltip-text={chip}>
+          <bds-tooltip key={id} position="top-center" tooltip-text={chip} exportparts="chip">
             <bds-chip-clickable
               id={id}
               key={id}
@@ -479,7 +479,7 @@ export class InputChips {
               close={!this.disabled}
               onChipClickableClose={(event) => this.removeChip(event)}
               dtButtonClose={this.dtButtonClose}
-              part="chip"
+              exportparts="chip"
             >
               {`${chip.slice(0, limit)}...`}
             </bds-chip-clickable>

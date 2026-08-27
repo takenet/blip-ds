@@ -619,8 +619,8 @@ describe('bds-input-chips', () => {
     expect(component.internalChips).toEqual(['chip1', 'chip2']);
   });
 
-  // New feature tests for part attribute and borderless prop
-  it('should render chips with part="chip" attribute for external styling', async () => {
+  // New feature tests for part forwarding and borderless prop
+  it('should render chips with exportparts="chip" for external styling', async () => {
     const page = await newSpecPage({
       components: [InputChips],
       html: '<bds-input-chips chips=\'["tag1", "tag2"]\'></bds-input-chips>',
@@ -632,7 +632,7 @@ describe('bds-input-chips', () => {
     expect(chips.length).toBe(2);
     
     chips.forEach((chip) => {
-      expect(chip.getAttribute('part')).toBe('chip');
+      expect(chip.getAttribute('exportparts')).toBe('chip');
     });
   });
 

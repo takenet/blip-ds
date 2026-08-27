@@ -116,7 +116,7 @@ Type: `Promise<void>`
 
 | Part                | Description |
 | ------------------- | ----------- |
-| `"chip"`            | The `<bds-chip-clickable>` host element that wraps each rendered chip. Can be used to apply global styles to all chips (e.g., `bds-input-chips::part(chip) { ... }`). Note: styling of internal chip elements (text, icon) requires CSS custom properties (--bds-chip-text-color, --bds-chip-icon-color) on the `bds-input-chips` component, as the ::part() pseudo-element cannot target descendants across shadow DOM boundaries. |
+| `"chip"`            | The internal visual container of each `<bds-chip-clickable>`, forwarded through the nested Shadow DOM boundaries. Use `bds-input-chips::part(chip) { ... }` to style the chip surface; use `--bds-chip-text-color` and `--bds-chip-icon-color` on `bds-input-chips` for text and icon colors. |
 | `"input-container"` | The main input container that holds the chips and text input field. |
 | `"input__message"`  | The feedback message container that displays error, success, or helper text. |
 

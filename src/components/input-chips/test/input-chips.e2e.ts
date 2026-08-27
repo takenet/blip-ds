@@ -148,7 +148,7 @@ describe('bds-input-chips e2e tests', () => {
   });
 
   describe('Shadow Parts and Styling', () => {
-    it('should expose part="chip" attribute on rendered chips for external styling', async () => {
+    it('should forward the chip part from rendered chips for external styling', async () => {
       page = await newE2EPage({
         html: `<bds-input-chips chips='["tag1", "tag2"]'></bds-input-chips>`,
       });
@@ -158,9 +158,65 @@ describe('bds-input-chips e2e tests', () => {
       expect(chips.length).toBe(2);
       
       for (const chip of chips) {
-        const part = await chip.getAttribute('part');
-        expect(part).toBe('chip');
+        const exportedParts = await chip.getAttribute('exportparts');
+        expect(exportedParts).toBe('chip');
       }
+    });
+
+    it('should apply external styles to the visual chip container', async () => {
+      page = await newE2EPage({
+        html: `
+          <style>
+            bds-input-chips::part(chip) {
+              background-color: #1976d2;
+              border-radius: 16px;
+            }
+          </style>
+          <bds-input-chips chips='["tag", "a chip value that is longer than twenty characters"]'></bds-input-chips>
+        `,
+      });
+
+      const chipStyles = await page.evaluate(() => {
+        const inputChips = document.querySelector('bds-input-chips');
+        const shortChip = inputChips?.shadowRoot?.querySelector('bds-chip-clickable');
+        const tooltip = inputChips?.shadowRoot?.querySelector('bds-tooltip');
+        const longChip = tooltip?.querySelector('bds-chip-clickable');
+
+        return [shortChip, longChip].map((chip) => {
+          const container = chip?.shadowRoot?.querySelector('.chip_clickable');
+          const styles = container && window.getComputedStyle(container);
+
+          return {
+            backgroundColor: styles?.backgroundColor,
+            borderRadius: styles?.borderRadius,
+          };
+        });
+      });
+
+      expect(chipStyles).toEqual([
+        { backgroundColor: 'rgb(25, 118, 210)', borderRadius: '16px' },
+        { backgroundColor: 'rgb(25, 118, 210)', borderRadius: '16px' },
+      ]);
+    });
+
+    it('should forward the chip part through the tooltip for long chips', async () => {
+      page = await newE2EPage({
+        html: `<bds-input-chips chips='["a chip value that is longer than twenty characters"]'></bds-input-chips>`,
+      });
+
+      const exportedParts = await page.evaluate(() => {
+        const inputChips = document.querySelector('bds-input-chips');
+        const tooltip = inputChips?.shadowRoot?.querySelector('bds-tooltip');
+        const chip = tooltip?.querySelector('bds-chip-clickable');
+
+        return {
+          tooltip: tooltip?.getAttribute('exportparts'),
+          chip: chip?.getAttribute('exportparts'),
+        };
+      });
+
+      expect(exportedParts.tooltip).toBe('chip');
+      expect(exportedParts.chip).toBe('chip');
     });
 
     it('should apply borderless styling when borderless prop is true', async () => {
@@ -176,14 +232,7 @@ describe('bds-input-chips e2e tests', () => {
 
     it('should maintain focus ring visibility in borderless mode', async () => {
       page = await newE2EPage({
-        html: `
-          <style>
-            bds-input-chips.test-borderless {
-              --focus-shadow: 0 0 0 2px #0066ff;
-            }
-          </style>
-          <bds-input-chips borderless class="test-borderless"></bds-input-chips>
-        `,
+        html: `<bds-input-chips borderless></bds-input-chips>`,
       });
 
       const inputElement = await page.find('bds-input-chips >>> input');

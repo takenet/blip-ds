@@ -248,14 +248,14 @@ $input_fixed: 140px;
   }
 
   &--borderless {
-    border: none !important;
+    border: none;
 
     &:hover {
-      border: none !important;
+      border: none;
     }
 
     &.input--pressed {
-      border: none !important;
+      border: none;
     }
   }
 
