@@ -214,6 +214,8 @@ export const StyledChips = () => {
     bds-input-chips {
       --bds-chip-text-color: #ffffff;
       --bds-chip-icon-color: #ffffff;
+    }
+  `;
 
   return (
     <>

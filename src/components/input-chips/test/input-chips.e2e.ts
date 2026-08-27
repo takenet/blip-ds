@@ -153,8 +153,7 @@ describe('bds-input-chips e2e tests', () => {
         html: `<bds-input-chips chips='["tag1", "tag2"]'></bds-input-chips>`,
       });
 
-      const inputChips = await page.find('bds-input-chips');
-      const chips = await inputChips.findAll('bds-chip-clickable');
+      const chips = await page.findAll('bds-input-chips >>> bds-chip-clickable');
       
       expect(chips.length).toBe(2);
       
@@ -169,8 +168,7 @@ describe('bds-input-chips e2e tests', () => {
         html: `<bds-input-chips borderless></bds-input-chips>`,
       });
 
-      const inputChips = await page.find('bds-input-chips');
-      const inputContainer = await inputChips.find('>>> .input');
+      const inputContainer = await page.find('bds-input-chips >>> .input');
       const borderlessClass = await inputContainer.getAttribute('class');
       
       expect(borderlessClass).toContain('input--borderless');
@@ -189,13 +187,11 @@ describe('bds-input-chips e2e tests', () => {
       });
 
       const inputElement = await page.find('bds-input-chips >>> input');
+      const inputContainer = await page.find('bds-input-chips >>> .input');
       await inputElement.focus();
       await page.waitForChanges();
 
-      const computedBoxShadow = await page.evaluate(() => {
-        const input = document.querySelector('bds-input-chips')?.shadowRoot?.querySelector('input');
-        return window.getComputedStyle(input).boxShadow;
-      });
+      const computedBoxShadow = await inputContainer.getComputedStyle().then((style) => style.boxShadow);
 
       // The borderless modifier should not remove box-shadow entirely
       // (the focus ring from state selectors should be preserved)
