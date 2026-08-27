@@ -28,6 +28,8 @@ export class SelectChips {
     };
     this.handlerNewOption = async (text) => {
       await this.addChip(text);
+      this.bdsChangeChips.emit({ data: this.internalChips, value: this.selectedOption });
+      this.bdsChange.emit({ data: this.selectedOptions });
       this.toggle();
     };
     this.getText = (value) => {

@@ -225,14 +225,12 @@
 }
 .input--borderless {
   border: none !important;
-  box-shadow: none !important;
 }
 .input--borderless:hover {
   border: none !important;
 }
 .input--borderless.input--pressed {
   border: none !important;
-  box-shadow: none !important;
 }
 .input__icon {
   cursor: inherit;

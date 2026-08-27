@@ -1,5 +1,5 @@
 import { Host, h } from '@stencil/core';
-import messageBallon from '../../assets/svg/message-ballon.svg';
+import blipBallonWhite from 'blip-tokens/build/json/illustrations/brand/blip-ballon-white.json';
 export class BdsLoading {
   constructor() {
     /**Function to transform the svg in a div element. */
@@ -12,8 +12,8 @@ export class BdsLoading {
       return div.innerHTML;
     };
     this.setSvgContent = () => {
-      const innerHTML = messageBallon;
-      const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
+      const innerHTML = blipBallonWhite['asset-brand-blip-ballon-white-svg'];
+      const svg = atob(innerHTML);
       this.svgContent = this.formatSvg(svg);
     };
     this.svgContent = undefined;

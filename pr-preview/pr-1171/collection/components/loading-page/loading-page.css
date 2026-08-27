@@ -44,8 +44,8 @@
 
 .page_loading {
   animation: growUp 0.8s ease-in-out infinite;
-  width: 116px;
-  height: 128px;
+  width: 90px;
+  height: 90px;
   color: var(--color-surface-1, #f6f6f6);
 }
 
