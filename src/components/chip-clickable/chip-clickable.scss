@@ -94,6 +94,7 @@
       z-index: 2;
       font-family: $font-family;
       line-height: 1;
+      color: var(--bds-chip-text-color, inherit);
     }
     &--icon {
       display: flex;
@@ -101,6 +102,7 @@
       height: 16px;
       padding-right: 2px;
       z-index: 2;
+      color: var(--bds-chip-icon-color, inherit);
     }
     &--close {
       display: flex;
@@ -112,6 +114,7 @@
       z-index: 2;
       position: relative;
       cursor: pointer;
+      color: var(--bds-chip-icon-color, inherit);
 
       .close_focus:focus {
         position: absolute;
@@ -161,7 +164,7 @@
       color: $color-content-din;
     }
     &--outline {
-      border: 1px solid $color-border-1;
+      border: var(--bds-chip-border, 1px solid #{$color-border-1});
       color: $color-content-default;
     }
     &:focus-visible {
