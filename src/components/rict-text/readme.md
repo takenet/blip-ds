@@ -37,6 +37,18 @@
 | `bdsRichTextInput`  | Emitted when the input has changed. | `CustomEvent<KeyboardEvent>` |
 
 
+## Shadow Parts
+
+| Part                         | Description                                           |
+| ---------------------------- | ----------------------------------------------------- |
+| `"editor"`                   | Editable region where rich text content is typed.     |
+| `"preview"`                  | Container that wraps the editable content area.       |
+| `"toolbar"`                  | Toolbar wrapper that contains formatting actions.     |
+| `"toolbar-accordion-button"` | Toggle button that expands/collapses toolbar actions. |
+| `"toolbar-buttons"`          | Container with the toolbar action buttons.            |
+| `"toolbar-header"`           | Header region that groups toolbar controls.           |
+
+
 ## Dependencies
 
 ### Depends on
