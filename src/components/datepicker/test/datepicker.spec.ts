@@ -24,6 +24,11 @@ jest.mock('../../../utils/calendar', () => ({
     const d = new Date(date);
     return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
   }),
+  dateToString: jest.fn((date) => {
+    if (!date) return null;
+    const d = new Date(date);
+    return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
+  }),
   dateToTypeDate: jest.fn((date) => {
     if (!date) return null;
     const d = new Date(date);
@@ -47,7 +52,9 @@ jest.mock('../../../utils/languages', () => ({
       'from': 'From',
       'to': 'To',
       'reset': 'Reset',
-      'conclude': 'Conclude'
+      'conclude': 'Conclude',
+      'startTime': 'Start time',
+      'endTime': 'End time',
     };
     return translations[term] || term;
   }),
@@ -109,6 +116,16 @@ describe('bds-datepicker', () => {
       expect(component.typeOfDate).toBe('period');
       expect(component.language).toBe('en_US');
       expect(component.disabled).toBe(true);
+    });
+
+    it('should render with period-time type', async () => {
+      page = await newSpecPage({
+        components: [DatePicker],
+        html: '<bds-datepicker type-of-date="period-time"></bds-datepicker>',
+      });
+      component = page.rootInstance;
+
+      expect(component.typeOfDate).toBe('period-time');
     });
 
     it('should render with position and variant props', async () => {
@@ -176,9 +193,9 @@ describe('bds-datepicker', () => {
       const spy = jest.spyOn(component.bdsStartDate, 'emit');
       const testDate = new Date('2023-06-15');
       
-      component['selectDate']({ detail: { value: testDate } } as any);
+      component['selectDate']({ detail: { value: testDate }, stopPropagation: jest.fn() } as any);
       
-      expect(spy).toHaveBeenCalledWith({ value: testDate });
+      expect(spy).toHaveBeenCalledWith({ value: '15/06/2023' });
       expect(component.dateSelected).toEqual(testDate);
     });
 
@@ -186,9 +203,9 @@ describe('bds-datepicker', () => {
       const spy = jest.spyOn(component.bdsEndDate, 'emit');
       const testDate = new Date('2023-06-20');
       
-      component['selectEndDate']({ detail: { value: testDate } } as any);
+      component['selectEndDate']({ detail: { value: testDate }, stopPropagation: jest.fn() } as any);
       
-      expect(spy).toHaveBeenCalledWith({ value: testDate });
+      expect(spy).toHaveBeenCalledWith({ value: '20/06/2023' });
       expect(component.endDateSelected).toEqual(testDate);
     });
   });
@@ -228,6 +245,24 @@ describe('bds-datepicker', () => {
   });
 
   describe('State Management', () => {
+    it('should have default properties', () => {
+      expect(component.open).toBe(false);
+      expect(component.stateSelect).toBe('start');
+      expect(component.dateSelected).toBe(null);
+      expect(component.endDateSelected).toBe(null);
+    });
+
+    it('should have default time values in period-time mode', async () => {
+      page = await newSpecPage({
+        components: [DatePicker],
+        html: '<bds-datepicker type-of-date="period-time"></bds-datepicker>',
+      });
+      component = page.rootInstance;
+
+      expect(component['startTime']).toBe('00:00');
+      expect(component['endTime']).toBe('23:59');
+    });
+
     it('should handle open/close state', () => {
       expect(component.open).toBe(false);
       
@@ -257,6 +292,24 @@ describe('bds-datepicker', () => {
       
       component['onFocusEndDateSelect']();
       expect(component.stateSelect).toBe('end');
+    });
+
+    it('should update startTime when time input changes', () => {
+      const mockEvent = {
+        target: { value: '09:00' }
+      } as any;
+
+      component['onInputStartTimeSelected'](mockEvent);
+      expect(component['startTime']).toBe('09:00');
+    });
+
+    it('should update endTime when time input changes', () => {
+      const mockEvent = {
+        target: { value: '18:30' }
+      } as any;
+
+      component['onInputEndTimeSelected'](mockEvent);
+      expect(component['endTime']).toBe('18:30');
     });
   });
 
@@ -340,6 +393,33 @@ describe('bds-datepicker', () => {
       expect(bdsEndDateSpy).toHaveBeenCalledWith({ value: null });
       expect(component['datepickerPeriod'].clear).toHaveBeenCalled();
     });
+
+    it('should clear period-time dates and reset times', async () => {
+      page = await newSpecPage({
+        components: [DatePicker],
+        html: '<bds-datepicker type-of-date="period-time"></bds-datepicker>',
+      });
+      component = page.rootInstance;
+
+      component['valueDate'] = '15/06/2023';
+      component['valueEndDate'] = '20/06/2023';
+      component['startTime'] = '08:30';
+      component['endTime'] = '17:00';
+
+      component['datepickerPeriod'] = {
+        clear: jest.fn()
+      } as any;
+      component['inputSetDate'] = {
+        setFocus: jest.fn()
+      } as any;
+
+      component['clearDate']();
+
+      expect(component['valueDate']).toBe(null);
+      expect(component['valueEndDate']).toBe(null);
+      expect(component['startTime']).toBe('00:00');
+      expect(component['endTime']).toBe('23:59');
+    });
   });
 
   describe('Conclude Functionality', () => {
@@ -420,6 +500,53 @@ describe('bds-datepicker', () => {
       expect(component.open).toBe(true);
       expect(component['errorMsgEndDate']).toBe('End date is empty');
     });
+
+    it('should conclude period-time date picker with dates and times', async () => {
+      page = await newSpecPage({
+        components: [DatePicker],
+        html: '<bds-datepicker type-of-date="period-time"></bds-datepicker>',
+      });
+      component = page.rootInstance;
+
+      component['valueDate'] = '15/06/2023';
+      component['valueEndDate'] = '20/06/2023';
+      component['startTime'] = '08:30';
+      component['endTime'] = '17:00';
+
+      component['inputSetEndDate'] = {
+        removeFocus: jest.fn()
+      } as any;
+
+      const concludeSpy = jest.spyOn(component.concludeDatepicker, 'emit');
+
+      component['clickConcludeDatepicker']();
+
+      expect(component.open).toBe(false);
+      expect(concludeSpy).toHaveBeenCalledWith({
+        startDate: '15/06/2023',
+        endDate: '20/06/2023',
+        startTime: '08:30',
+        endTime: '17:00',
+      });
+    });
+
+    it('should emit empty conclude when period-time has no dates', async () => {
+      page = await newSpecPage({
+        components: [DatePicker],
+        html: '<bds-datepicker type-of-date="period-time"></bds-datepicker>',
+      });
+      component = page.rootInstance;
+
+      component['valueDate'] = null;
+      component['valueEndDate'] = null;
+
+      const emptyConcludeSpy = jest.spyOn(component.emptyConcludeDatepicker, 'emit');
+
+      component['clickConcludeDatepicker']();
+
+      expect(component.open).toBe(false);
+      expect(emptyConcludeSpy).toHaveBeenCalled();
+    });
   });
 
   describe('Calendar Events', () => {
@@ -465,6 +592,22 @@ describe('bds-datepicker', () => {
       
       const inputsDiv = element.shadowRoot.querySelector('.datepicker__inputs');
       expect(inputsDiv).toHaveClass('datepicker__inputs__period');
+    });
+
+    it('should render period-time date picker', async () => {
+      page = await newSpecPage({
+        components: [DatePicker],
+        html: '<bds-datepicker type-of-date="period-time"></bds-datepicker>',
+      });
+
+      const element = page.root;
+      expect(element).toHaveClass('datepicker');
+
+      const inputsDiv = element.shadowRoot.querySelector('.datepicker__inputs');
+      expect(inputsDiv).toHaveClass('datepicker__inputs__period');
+
+      const timeInputs = element.shadowRoot.querySelector('.datepicker__menu__time-inputs');
+      expect(timeInputs).not.toBeNull();
     });
 
     it('should render with banner when message is provided', async () => {
@@ -541,6 +684,78 @@ describe('bds-datepicker', () => {
       component['valueEndDateSelectedChanged']();
       
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('formatTimeInput', () => {
+    it('should return empty string for empty input', () => {
+      expect(component['formatTimeInput']('')).toBe('');
+    });
+
+    it('should strip non-digit characters', () => {
+      expect(component['formatTimeInput']('ab:cd')).toBe('');
+    });
+
+    it('should format 4 digits with colon', () => {
+      expect(component['formatTimeInput']('1200')).toBe('12:00');
+    });
+
+    it('should format partial 3 digits with colon', () => {
+      expect(component['formatTimeInput']('123')).toBe('12:3');
+    });
+
+    it('should return 2 digits without colon', () => {
+      expect(component['formatTimeInput']('09')).toBe('09');
+    });
+
+    it('should clamp hours first digit above 2 to 2', () => {
+      expect(component['formatTimeInput']('4599')).toBe('23:59');
+    });
+
+    it('should clamp hours value above 23 to 23', () => {
+      expect(component['formatTimeInput']('2900')).toBe('23:00');
+    });
+
+    it('should clamp minutes first digit above 5 to 5', () => {
+      expect(component['formatTimeInput']('1273')).toBe('12:53');
+    });
+
+    it('should clamp minutes value above 59 to 59', () => {
+      expect(component['formatTimeInput']('1080')).toBe('10:50');
+    });
+
+    it('should handle valid max time 23:59', () => {
+      expect(component['formatTimeInput']('2359')).toBe('23:59');
+    });
+
+    it('should handle valid min time 00:00', () => {
+      expect(component['formatTimeInput']('0000')).toBe('00:00');
+    });
+  });
+
+  describe('normalizeTime', () => {
+    it('should return 00:00 for empty string', () => {
+      expect(component['normalizeTime']('')).toBe('00:00');
+    });
+
+    it('should pad a single digit hour', () => {
+      expect(component['normalizeTime']('9')).toBe('09:00');
+    });
+
+    it('should pad a two digit hour without minutes', () => {
+      expect(component['normalizeTime']('12')).toBe('12:00');
+    });
+
+    it('should pad a single digit minute', () => {
+      expect(component['normalizeTime']('12:3')).toBe('12:03');
+    });
+
+    it('should leave a complete HH:MM unchanged', () => {
+      expect(component['normalizeTime']('08:30')).toBe('08:30');
+    });
+
+    it('should return 00:00 for invalid input', () => {
+      expect(component['normalizeTime']('abc')).toBe('00:00');
     });
   });
 });
