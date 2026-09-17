@@ -372,6 +372,25 @@ describe('bds-icon', () => {
       global.atob = originalAtob;
       consoleWarnSpy.mockRestore();
     });
+
+    it('should load the local "meta" outline icon that is not present in blip-tokens', async () => {
+      const page = await newSpecPage({
+        components: [Icon],
+        html: `<bds-icon name="meta" type="icon" theme="outline"></bds-icon>`,
+        supportsShadowDom: false,
+        autoApplyChanges: false,
+      });
+
+      // Ensure component is visible and browser environment is mocked
+      (page.rootInstance as any).isVisible = true;
+      (Build as any).isBrowser = true;
+
+      // Call setSvgContent directly to test the logic
+      (page.rootInstance as any).setSvgContent();
+
+      expect(page.rootInstance.svgContent).toBeDefined();
+      expect(page.rootInstance.svgContent).toContain('<svg');
+    });
   });
 
   describe('Lifecycle Methods', () => {

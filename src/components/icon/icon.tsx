@@ -5,6 +5,7 @@ import emojis from 'blip-tokens/build/json/assets_emojis.json';
 import logo from 'blip-tokens/build/json/assets_logos.json';
 import { IconSize, IconTheme, IconType } from './icon-interface';
 import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
+import { LOCAL_ICONS } from './local-icons';
 
 @Component({
   tag: 'bds-icon',
@@ -139,7 +140,13 @@ export class Icon {
     try {
       if (this.type === 'icon') {
         const key = getIconName(this.name, this.theme);
-        svg = atob(icons[key]);
+        if (icons[key]) {
+          svg = atob(icons[key]);
+        } else if (LOCAL_ICONS[key]) {
+          svg = LOCAL_ICONS[key];
+        } else {
+          throw new Error(`Icon "${this.name}" not found for theme "${this.theme}"`);
+        }
         this.svgContent = formatSvg(svg, this.color);
       } else if (this.type === 'emoji') {
         const key = getEmojiName(this.name);

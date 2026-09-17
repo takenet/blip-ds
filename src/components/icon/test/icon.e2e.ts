@@ -115,6 +115,21 @@ describe('bds-icon e2e tests', () => {
     });
   });
 
+  describe('Meta brand icon', () => {
+    it('should render the local "meta" outline icon', async () => {
+      const metaPage = await newE2EPage({
+        html: `<bds-icon name="meta" size="medium" theme="outline"></bds-icon>`,
+      });
+
+      await metaPage.waitForChanges();
+      await metaPage.waitForTimeout(100);
+
+      const innerDiv = await metaPage.find('bds-icon >>> .icon-inner');
+      expect(innerDiv).toBeTruthy();
+      expect(innerDiv.innerHTML).toContain('<svg');
+    });
+  });
+
   describe('Color and Styling', () => {
     it('should accept color property', async () => {
       await icon.setProperty('color', '#ff0000');

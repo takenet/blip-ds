@@ -14,7 +14,8 @@ export default {
 
 const solidIconsName = SolidIcons;
 
-const outlineIconsName = OutlineIcons;
+// TODO: Remove 'meta' once it is published in the `blip-tokens` package.
+const outlineIconsName = OutlineIcons.includes('meta') ? OutlineIcons : [...OutlineIcons, 'meta'];
 
 const emojiNames = [
   'beaming-face',
@@ -609,6 +610,66 @@ SolidIconCustomization.parameters = {
     description: {
       story:
         'Learn how to customize multi-color solid icons using CSS custom properties. This feature allows you to override individual layers of an icon while maintaining backward compatibility.',
+    },
+  },
+};
+
+const metaSizes = ['xxx-small', 'xx-small', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large', 'xxx-large'];
+
+const metaColors = ['', '#1877F2', '#0091FF', '#8A3FFC'];
+
+export const MetaIcon = () => {
+  return (
+    <bds-grid direction="column" gap="3">
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-16" weight="700">
+          Meta Brand Icon (Outline)
+        </bds-typo>
+        <bds-typo variant="fs-14">
+          The `meta` icon is available in the outline theme and supports the same size and color props as any other
+          icon in the library.
+        </bds-typo>
+      </bds-grid>
+
+      <bds-divider></bds-divider>
+
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-14" weight="700">
+          Sizes
+        </bds-typo>
+        <div style={iconWrapperStyles}>
+          {metaSizes.map((size) => (
+            <div key={size} style={iconStyles}>
+              <bds-icon name="meta" theme="outline" size={size}></bds-icon>
+              <bds-typo variant="fs-10">{size}</bds-typo>
+            </div>
+          ))}
+        </div>
+      </bds-grid>
+
+      <bds-divider></bds-divider>
+
+      <bds-grid direction="column" gap="2">
+        <bds-typo variant="fs-14" weight="700">
+          Color inheritance
+        </bds-typo>
+        <div style={iconWrapperStyles}>
+          {metaColors.map((color) => (
+            <div key={color || 'default'} style={iconStyles}>
+              <bds-icon name="meta" theme="outline" size="xxx-large" color={color || undefined}></bds-icon>
+              <bds-typo variant="fs-10">{color || 'default'}</bds-typo>
+            </div>
+          ))}
+        </div>
+      </bds-grid>
+    </bds-grid>
+  );
+};
+
+MetaIcon.parameters = {
+  docs: {
+    description: {
+      story: 'Demonstrates the `meta` outline icon across all available sizes and with custom colors.',
     },
   },
 };
