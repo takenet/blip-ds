@@ -31,6 +31,7 @@ export const Properties = (args) => {
       unstyled-button={args.unstyledButton}
       height={args.height}
       language={args.language}
+      value={args.value}
     ></bds-rich-text>
   );
 };
@@ -115,6 +116,12 @@ Properties.argTypes = {
     options: ['pt_BR', 'es_ES', 'en_US'],
     control: 'select',
   },
+  value: {
+    table: {
+      defaultValue: { summary: 'vazio' },
+    },
+    control: 'text',
+  },
 };
 
 Properties.args = {
@@ -131,6 +138,7 @@ Properties.args = {
   unstyledButton: true,
   height: '280px',
   language: 'pt_BR',
+  value: '',
 };
 
 export const Events = () => {
