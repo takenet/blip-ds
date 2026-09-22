@@ -10,7 +10,7 @@
   gap: 8px;
   border: 1px solid $color-border-1;
   border-radius: 16px;
-  background-color: $color-surface-1;
+  background-color: var(--bds-rich-text-background, $color-surface-1);
 
   &-top {
     .format-buttons {
@@ -41,15 +41,15 @@
     &-active {
       display: flex !important;
       position: relative;
-      background-color: $color-surface-0;
-      border: 1px solid $color-border-1;
+      background-color: var(--bds-rich-text-toolbar-background, $color-surface-0);
+      border: 1px solid var(--bds-rich-text-toolbar-border-color, $color-border-1);
       border-radius: 16px;
       padding: 8px;
     }
 
     .style-onhover {
       position: absolute;
-      background-color: $color-surface-1;
+      background-color: var(--bds-rich-text-toolbar-hover-background, $color-surface-1);
       border-radius: 32px;
       bottom: -32px;
       right: 0;
@@ -68,6 +68,12 @@
       width: 100%;
       position: relative;
       padding-right: 40px;
+
+      bds-button::part(button) {
+        color: var(--bds-rich-text-toolbar-button-color, inherit);
+        background-color: var(--bds-rich-text-toolbar-button-background, inherit);
+        border-color: var(--bds-rich-text-toolbar-button-border-color, transparent);
+      }
 
       .buttons-list {
         column-gap: 8px;
@@ -136,7 +142,7 @@
     .editor-uai-design-system {
       min-height: 48px;
       height: 100%;
-      background-color: transparent;
+      background-color: var(--bds-rich-text-editor-background, transparent);
       font-size: 1rem;
       line-height: 1.5;
       overflow-y: auto;
@@ -144,7 +150,7 @@
       font-family: $font-family;
       font-style: normal;
       font-weight: normal;
-      color: $color-content-default;
+      color: var(--bds-rich-text-editor-color, $color-content-default);
       @include custom-scroll;
 
       p,
@@ -187,7 +193,7 @@
 
       a {
         text-decoration: none;
-        color: $color-primary;
+        color: var(--bds-rich-text-link-color, $color-primary);
       }
 
       blockquote {
