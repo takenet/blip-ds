@@ -53,7 +53,7 @@ Properties.argTypes = {
     table: {
       defaultValue: { summary: 'single' },
     },
-    options: ['single', 'period'],
+    options: ['single', 'period', 'period-time'],
     control: 'select',
   },
   startDateLimit: {
@@ -158,6 +158,83 @@ export const Events = () => {
   );
 };
 
+export const PeriodTime = () => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '550px';
+    el[0].style.position = 'relative';
+  }
+
+  useEffect(() => {
+    const datepicker = document.getElementById('datepicker-period-time');
+    if (!datepicker) return;
+
+    const onConclude = (event) => console.log('Conclude com hora:', event.detail);
+    const onStartDate = (event) => console.log('Data inicial selecionada:', event.detail);
+    const onEndDate = (event) => console.log('Data final selecionada:', event.detail);
+
+    datepicker.addEventListener('concludeDatepicker', onConclude);
+    datepicker.addEventListener('bdsStartDate', onStartDate);
+    datepicker.addEventListener('bdsEndDate', onEndDate);
+
+    return () => {
+      datepicker.removeEventListener('concludeDatepicker', onConclude);
+      datepicker.removeEventListener('bdsStartDate', onStartDate);
+      datepicker.removeEventListener('bdsEndDate', onEndDate);
+    };
+  }, []);
+
+  return (
+    <bds-datepicker
+      id="datepicker-period-time"
+      type-of-date="period-time"
+      start-date-limit="31/12/2022"
+      end-date-limit="01/01/2027"
+    />
+  );
+};
+
 export const FrameworkReact = () => {
   return <BdsDatepicker type-of-date="single" start-date-limit="31/12/2022" end-date-limit="01/01/2027" />;
+};
+
+export const FrameworkReactPeriodTime = () => {
+  const el = document.getElementsByClassName('sb-story');
+  if (el.length !== 0) {
+    el[0].style.height = '550px';
+    el[0].style.position = 'relative';
+  }
+
+  const handleConclude = (event) => {
+    const { startDate, startTime, endDate, endTime } = event.detail;
+    // startDate / endDate → "dd/mm/yyyy"
+    // startTime / endTime → "HH:MM"
+    console.log('Conclude com hora:', { startDate, startTime, endDate, endTime });
+  };
+
+  const handleStartDate = (event) => {
+    // value → "dd/mm/yyyy"
+    console.log('Data inicial selecionada:', event.detail);
+  };
+
+  const handleEndDate = (event) => {
+    // value → "dd/mm/yyyy"
+    console.log('Data final selecionada:', event.detail);
+  };
+
+  const handleEmpty = () => {
+    console.log('Datepicker concluído sem datas selecionadas');
+  };
+
+  return (
+    <BdsDatepicker
+      typeOfDate="period-time"
+      startDateLimit="31/12/2022"
+      endDateLimit="01/01/2027"
+      onConcludeDatepicker={handleConclude}
+      onBdsStartDate={handleStartDate}
+      onBdsEndDate={handleEndDate}
+      onEmptyConcludeDatepicker={handleEmpty}
+    />
+  );
 };
