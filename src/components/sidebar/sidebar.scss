@@ -85,7 +85,7 @@
         width: 100%;
         align-items: center;
         position: relative;
-        color: $color-content-default;
+        color: $color-semantic-content-primary;
 
         ::slotted(*) {
           width: 100%;
@@ -105,7 +105,7 @@
           all 0.3s;
         z-index: 1;
         cursor: pointer;
-        color: $color-content-default;
+        color: $color-semantic-content-primary;
       }
     }
 

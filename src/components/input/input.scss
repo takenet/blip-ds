@@ -148,12 +148,12 @@ $input-width: 100%;
       }
       @include input-theme(
         'primary',
-        $color-primary,
+        $color-semantic-action-primary-default,
         $color-surface-1,
-        $color-content-default,
-        $color-content-default,
-        $color-border-1,
-        $color-primary,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
+        $color-semantic-border-actions,
+        $color-semantic-action-primary-default,
         $color-info
       );
     }
@@ -176,10 +176,10 @@ $input-width: 100%;
       }
       @include input-theme(
         'danger',
-        $color-negative,
+        $color-semantic-feedback-negative,
         $color-error,
         $color-delete,
-        $color-content-default,
+        $color-semantic-content-primary,
         $color-delete,
         $color-delete,
         $color-error
@@ -205,10 +205,10 @@ $input-width: 100%;
         'success',
         $color-positive,
         $color-success,
-        $color-content-default,
-        $color-content-default,
-        $color-border-1,
-        $color-content-default,
+        $color-semantic-content-primary,
+        $color-semantic-content-primary,
+        $color-semantic-border-actions,
+        $color-semantic-content-primary,
         $color-success
       );
     }

@@ -54,7 +54,7 @@
             color: $color-content-ghost;
           }
           &__error {
-            color: $color-surface-negative;
+            color: $color-semantic-feedback-negative;
           }
         }
 
@@ -75,8 +75,8 @@
         }
 
         &__open {
-          color: $color-content-default;
-          border-color: $color-primary;
+          color: $color-semantic-content-primary;
+          border-color: $color-semantic-action-primary-default;
         }
         &__disable {
           cursor: no-drop;

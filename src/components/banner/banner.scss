@@ -18,7 +18,7 @@
       width: 100%;
       padding: 8px 16px;
       min-height: 40px;
-      color: $color-content-default;
+      color: $color-semantic-content-primary;
 
       &--context--inside {
         border-radius: 8px;
@@ -74,7 +74,7 @@
         justify-content: space-between;
         margin-left: 8px;
         width: 100%;
-        color: $color-content-default;
+        color: $color-semantic-content-primary;
       }
     }
 
