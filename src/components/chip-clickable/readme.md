@@ -28,6 +28,13 @@
 | `chipClickableClose` | Triggered after a mouse click on close icon, return id element. Only fired when close is true. | `CustomEvent<any>` |
 
 
+## Shadow Parts
+
+| Part     | Description |
+| -------- | ----------- |
+| `"chip"` | The internal chip container, including its surface and outline styles. |
+
+
 ## Dependencies
 
 ### Used by
