@@ -185,6 +185,15 @@
       }
     }
 
+    &__time-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding-top: 8px;
+      margin-top: 8px;
+      border-top: 1px solid $color-border-2;
+    }
+
     &__footer {
       display: flex;
       align-items: center;
