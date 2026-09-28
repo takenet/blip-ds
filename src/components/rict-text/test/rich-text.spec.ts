@@ -133,6 +133,7 @@ describe('bds-rich-text', () => {
     expect(component.height).toBe(null);
     expect(component.maxHeight).toBe(null);
     expect(component.dataTest).toBe(null);
+    expect(component.value).toBeNull();
   });
 
   it('should apply custom props correctly', async () => {
@@ -1556,5 +1557,100 @@ describe('bds-rich-text', () => {
 
     expect(editor.contains).toHaveBeenCalled();
     // Should exit early
+  });
+
+  describe('value prop', () => {
+    it('should have null as default value prop', async () => {
+      const component = page.rootInstance as RichText;
+      expect(component.value).toBeNull();
+    });
+
+    it('should accept value prop via attribute', async () => {
+      const valuePage = await newSpecPage({
+        components: [RichText],
+        html: `<bds-rich-text value="Hello world"></bds-rich-text>`,
+      });
+      const component = valuePage.rootInstance as RichText;
+      expect(component.value).toBe('Hello world');
+    });
+
+    it('should populate editor with plain text value on load', async () => {
+      const valuePage = await newSpecPage({
+        components: [RichText],
+        html: `<bds-rich-text value="Hello world"></bds-rich-text>`,
+      });
+      const editor = valuePage.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      expect(editor.innerHTML).toContain('Hello world');
+    });
+
+    it('should wrap plain text value in paragraph lines', async () => {
+      const valuePage = await newSpecPage({
+        components: [RichText],
+        html: `<bds-rich-text value="Hello world"></bds-rich-text>`,
+      });
+      const editor = valuePage.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      expect(editor.innerHTML).toContain('<p class="line">');
+    });
+
+    it('should populate editor directly with HTML value on load', async () => {
+      const htmlValue = '<p class="line"><b>Bold text</b></p>';
+      const valuePage = await newSpecPage({
+        components: [RichText],
+        html: `<bds-rich-text value='${htmlValue}'></bds-rich-text>`,
+      });
+      const editor = valuePage.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      expect(editor.innerHTML).toBe(htmlValue);
+    });
+
+    it('should convert multiline plain text into multiple paragraph lines', async () => {
+      const component = page.rootInstance as RichText;
+      const editor = page.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      component['editor'] = editor;
+
+      component['setEditorContent']('Line one\nLine two');
+
+      expect(editor.innerHTML).toContain('<p class="line">Line one</p>');
+      expect(editor.innerHTML).toContain('<p class="line">Line two</p>');
+    });
+
+    it('should use <br> for empty lines in plain text value', async () => {
+      const component = page.rootInstance as RichText;
+      const editor = page.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      component['editor'] = editor;
+
+      component['setEditorContent']('Line one\n\nLine three');
+
+      expect(editor.innerHTML).toContain('<p class="line"><br></p>');
+    });
+
+    it('should update editor when value prop changes', async () => {
+      const component = page.rootInstance as RichText;
+      const editor = page.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      component['editor'] = editor;
+
+      component['valueChanged']('Updated content');
+
+      expect(editor.innerHTML).toContain('Updated content');
+    });
+
+    it('should reset editor to default paragraph when value is set to empty string', async () => {
+      const component = page.rootInstance as RichText;
+      const editor = page.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      component['editor'] = editor;
+
+      component['valueChanged']('');
+
+      expect(editor.innerHTML).toBe('<p class="line"><br></p>');
+    });
+
+    it('should return editor content via getValue method', async () => {
+      const component = page.rootInstance as RichText;
+      const editor = page.root.querySelector('.editor-uai-design-system') as HTMLElement;
+      component['editor'] = editor;
+      editor.innerHTML = '<p class="line">Test content</p>';
+
+      const result = await component.getValue();
+      expect(result).toBe('<p class="line">Test content</p>');
+    });
   });
 });

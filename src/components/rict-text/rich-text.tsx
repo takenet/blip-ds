@@ -1,4 +1,4 @@
-import { Element, Component, h, Host, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
+import { Element, Component, h, Host, Method, Prop, State, Watch, Event, EventEmitter } from '@stencil/core';
 import { getParentsUntil } from '../../utils/position-element';
 import { languages } from './rich-text-interface';
 import { termTranslate } from './languages';
@@ -114,6 +114,12 @@ export class RichText {
   @Prop() dataTest?: string = null;
 
   /**
+   * value is the prop to set the initial content of the editor.
+   * Accepts plain text (converted to paragraph lines) or an HTML string used directly.
+   */
+  @Prop({ mutable: true }) value?: string = null;
+
+  /**
    * Emitted when the value has changed.
    */
   @Event({ bubbles: true, composed: true }) bdsRichTextChange!: EventEmitter;
@@ -134,7 +140,9 @@ export class RichText {
   @Event() bdsFocus: EventEmitter;
 
   componentDidLoad() {
-    if (this.editor.innerHTML.trim() === '') {
+    if (this.value) {
+      this.setEditorContent(this.value);
+    } else if (this.editor.innerHTML.trim() === '') {
       this.editor.innerHTML = '<p class="line"><br></p>';
     }
     if (
@@ -178,6 +186,35 @@ export class RichText {
   @Watch('buttomAccordionActive')
   protected buttomAccordionActiveChanged(): void {
     this.accordionHeader(this.buttomAccordionActive);
+  }
+
+  @Watch('value')
+  protected valueChanged(newValue: string): void {
+    if (this.editor) {
+      if (newValue) {
+        this.setEditorContent(newValue);
+      } else {
+        this.editor.innerHTML = '<p class="line"><br></p>';
+      }
+    }
+  }
+
+  /**
+   * Returns the current HTML content of the editor.
+   */
+  @Method()
+  async getValue(): Promise<string> {
+    return this.editor?.innerHTML || '';
+  }
+
+  private setEditorContent(value: string): void {
+    const containsHtml = /<[a-z][\s\S]*>/i.test(value);
+    if (containsHtml) {
+      this.editor.innerHTML = value;
+    } else {
+      const lines = value.split('\n');
+      this.editor.innerHTML = lines.map((line) => `<p class="line">${line || '<br>'}</p>`).join('');
+    }
   }
 
   private updateToolbarState() {
