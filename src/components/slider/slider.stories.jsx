@@ -42,7 +42,7 @@ Properties.args = {
   label: false,
   type: 'fill',
   dataMarkers: '',
-  markerValues: '',
+  markerValues: '[1, 100]',
 };
 
 Properties.argTypes = {
@@ -100,6 +100,9 @@ Properties.argTypes = {
   },
   markerValues: {
     description: 'Numeric values to display as markers, e.g. [1, 500000].',
+    table: {
+      defaultValue: { summary: '[1, 100]' },
+    },
     control: 'text',
   },
 };
