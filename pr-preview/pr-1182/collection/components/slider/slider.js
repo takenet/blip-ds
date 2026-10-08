@@ -1,4 +1,5 @@
 import { Host, h } from '@stencil/core';
+const MAX_MARKERS = 100;
 export class Slider {
   constructor() {
     this.refInputSlide = (el) => {
@@ -49,8 +50,15 @@ export class Slider {
         return this.stepArray[value];
       }
       else {
-        return this.stepArray.find((item) => parseInt(item.name) === value);
+        const min = this.min ?? 0;
+        const step = this.step ?? 1;
+        return { value: (value - min) / step, name: value };
       }
+    };
+    this.markerPosition = (item) => {
+      const min = this.min ?? 0;
+      const max = this.max ?? 100;
+      return max !== min ? ((Number(item.name) - min) * 100) / (max - min) : 50;
     };
     this.stepArray = undefined;
     this.internalOptions = undefined;
@@ -64,6 +72,7 @@ export class Slider {
     this.label = false;
     this.type = 'fill';
     this.dataMarkers = undefined;
+    this.markerValues = undefined;
     this.dataTest = null;
   }
   componentWillLoad() {
@@ -85,7 +94,21 @@ export class Slider {
       this.tooltipPosition = this.computeTooltipPosition(percent);
     }
     else {
-      this.stepArray = this.arrayToSteps((this.max - this.min) / this.step, Number.isInteger((this.max - this.min) / this.step));
+      if (this.markerValues) {
+        const markerValues = typeof this.markerValues === 'string' ? JSON.parse(this.markerValues) : this.markerValues;
+        const min = this.min ?? 0;
+        const max = this.max ?? 100;
+        this.stepArray = Array.from(new Set(markerValues.filter((value) => Number.isFinite(value) && value >= min && value <= max)))
+          .sort((first, second) => first - second)
+          .map((value) => ({ value: (value - min) / (this.step ?? 1), name: value }));
+      }
+      else {
+        const min = this.min ?? 0;
+        const max = this.max ?? 100;
+        const step = this.step ?? 1;
+        const numberOfSteps = (max - min) / step;
+        this.stepArray = this.arrayToSteps(numberOfSteps, Number.isInteger(numberOfSteps));
+      }
       const min = this.min ?? 0;
       const max = this.max ?? 100;
       const value = this.value ?? min;
@@ -116,17 +139,27 @@ export class Slider {
   }
   arrayToSteps(value, int) {
     const numberToCalc = int ? value + 1 : value;
+    const stepCount = Math.ceil(numberToCalc);
+    const markerInterval = Math.max(1, Math.ceil((stepCount - 1) / (MAX_MARKERS - 1)));
     const valueSteps = [];
-    for (let i = 0; i < numberToCalc; i++) {
+    for (let i = 0; i < stepCount; i += markerInterval) {
       valueSteps.push(i);
     }
-    return valueSteps.map((term) => ({ value: term, name: term * this.step + this.min }));
+    if (stepCount > 0 && valueSteps[valueSteps.length - 1] !== stepCount - 1) {
+      valueSteps.push(stepCount - 1);
+    }
+    return valueSteps.map((term) => ({ value: term, name: term * (this.step ?? 1) + (this.min ?? 0) }));
   }
   render() {
     return (h(Host, null, h("input", { ref: this.refInputSlide, type: "range", class: {
         input_slide: true,
       }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { class: "track-bg" }, this.markers &&
-      this.stepArray.map((item, index) => (h("div", { key: index, class: { step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 } }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { class: { [`progress-bar-thumb`]: true } }))))));
+      this.stepArray.map((item, index) => (h("div", { key: index, class: {
+          step: true,
+          'step--first': index === 0,
+          'step--last': index === this.stepArray.length - 1,
+          'step--custom': Boolean(this.markerValues),
+        }, style: this.markerValues ? { left: `${this.markerPosition(item)}%` } : undefined }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { class: { [`progress-bar-thumb`]: true } }))))));
   }
   static get is() { return "bds-slider"; }
   static get encapsulation() { return "shadow"; }
@@ -290,6 +323,23 @@ export class Slider {
           "text": "Data Markers, prop to select ype of markers."
         },
         "attribute": "data-markers",
+        "reflect": false
+      },
+      "markerValues": {
+        "type": "string",
+        "mutable": false,
+        "complexType": {
+          "original": "string | number[]",
+          "resolved": "number[] | string",
+          "references": {}
+        },
+        "required": false,
+        "optional": true,
+        "docs": {
+          "tags": [],
+          "text": "Marker values to render for numeric ranges."
+        },
+        "attribute": "marker-values",
         "reflect": false
       },
       "dataTest": {

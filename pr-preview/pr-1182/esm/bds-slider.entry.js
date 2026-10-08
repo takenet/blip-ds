@@ -1,7 +1,8 @@
 import { r as registerInstance, c as createEvent, h, H as Host } from './index-611fd21e.js';
 
-const sliderCss = ":host{position:relative;display:-ms-flexbox;display:flex;width:100%;height:32px}.track-bg{position:absolute;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;inset:0 8px;pointer-events:none}.track-bg .progress-bar{position:absolute;height:4px;border-radius:1rem}.track-bg .progress-bar-liner{background-color:var(--color-primary, #1e6bf1)}.track-bg .progress-bar-tooltip{position:absolute;top:-6px;right:-0.5rem}.track-bg .progress-bar-thumb{position:relative;width:1rem;height:1rem;border-radius:1rem;background-color:var(--color-primary, #1e6bf1)}.track-bg .progress-bar-thumb::before{content:\"\";position:absolute;inset:0;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));border-radius:1rem;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}.track-bg .progress-bar-hover .progress-bar-thumb::before{-webkit-transform:scale(2);transform:scale(2)}.track-bg::before{content:\"\";position:absolute;inset:0;height:4px;background-color:var(--color-content-default, #282828);opacity:0.16;border-radius:1rem}.track-bg .step{position:relative;width:2px;height:8px;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;background-color:var(--color-content-disable, #595959);border-bottom-left-radius:1rem;border-bottom-right-radius:1rem}.track-bg .step .label-step{margin-top:1rem;white-space:nowrap}.track-bg .step.step--first{-ms-flex-pack:start;justify-content:flex-start}.track-bg .step.step--last .label-step{position:absolute;right:0;top:0}.element-min{position:relative;height:4px;background-color:var(--color-primary, #1e6bf1);border-top-left-radius:1rem;border-bottom-left-radius:1rem}.element-max{position:relative;height:4px;border-top-right-radius:1rem;border-bottom-right-radius:1rem}.input_slide{-webkit-appearance:none;-moz-appearance:none;appearance:none;margin:0;background:transparent;cursor:pointer;width:100%;height:4px;position:relative;border-radius:1rem;background:transparent;color:-internal-light-dark(transparent, transparent)}.input_slide.has_min{border-top-left-radius:0;border-bottom-left-radius:0;margin-left:0}.input_slide.has_max{border-top-right-radius:0;border-bottom-right-radius:0}.input_slide:hover .input_slide::-webkit-slider-thumb,.input_slide:hover .input_slide::-moz-range-thumb{-webkit-appearance:none}.input_slide::-webkit-slider-thumb,.input_slide::-moz-range-thumb{-webkit-appearance:none;position:relative;height:16px;width:16px;border-radius:50%;border:none}.group_slide{position:relative;width:100%}.group_slide .input_slide{width:inherit;position:absolute}.group_slide .input_slide_start{left:0}.group_slide .input_slide_end{right:0}.group_slide .input_slide::-webkit-slider-thumb,.group_slide .input_slide::-moz-range-thumb{-webkit-appearance:none}";
+const sliderCss = ":host{position:relative;display:-ms-flexbox;display:flex;width:100%;height:32px}.track-bg{position:absolute;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;inset:0 8px;pointer-events:none}.track-bg .progress-bar{position:absolute;height:4px;border-radius:1rem}.track-bg .progress-bar-liner{background-color:var(--color-primary, #1e6bf1)}.track-bg .progress-bar-tooltip{position:absolute;top:-6px;right:-0.5rem}.track-bg .progress-bar-thumb{position:relative;width:1rem;height:1rem;border-radius:1rem;background-color:var(--color-primary, #1e6bf1)}.track-bg .progress-bar-thumb::before{content:\"\";position:absolute;inset:0;background-color:var(--color-hover, rgba(0, 0, 0, 0.08));border-radius:1rem;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}.track-bg .progress-bar-hover .progress-bar-thumb::before{-webkit-transform:scale(2);transform:scale(2)}.track-bg::before{content:\"\";position:absolute;inset:0;height:4px;background-color:var(--color-content-default, #282828);opacity:0.16;border-radius:1rem}.track-bg .step{position:relative;width:2px;height:8px;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;background-color:var(--color-content-disable, #595959);border-bottom-left-radius:1rem;border-bottom-right-radius:1rem}.track-bg .step .label-step{margin-top:1rem;white-space:nowrap}.track-bg .step.step--first{-ms-flex-pack:start;justify-content:flex-start}.track-bg .step.step--custom{position:absolute;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.track-bg .step.step--custom.step--first:not(.step--last){-webkit-transform:none;transform:none}.track-bg .step.step--custom.step--last:not(.step--first){-webkit-transform:translateX(-100%);transform:translateX(-100%)}.track-bg .step.step--last .label-step{position:absolute;right:0;top:0}.element-min{position:relative;height:4px;background-color:var(--color-primary, #1e6bf1);border-top-left-radius:1rem;border-bottom-left-radius:1rem}.element-max{position:relative;height:4px;border-top-right-radius:1rem;border-bottom-right-radius:1rem}.input_slide{-webkit-appearance:none;-moz-appearance:none;appearance:none;margin:0;background:transparent;cursor:pointer;width:100%;height:4px;position:relative;border-radius:1rem;background:transparent;color:-internal-light-dark(transparent, transparent)}.input_slide.has_min{border-top-left-radius:0;border-bottom-left-radius:0;margin-left:0}.input_slide.has_max{border-top-right-radius:0;border-bottom-right-radius:0}.input_slide:hover .input_slide::-webkit-slider-thumb,.input_slide:hover .input_slide::-moz-range-thumb{-webkit-appearance:none}.input_slide::-webkit-slider-thumb,.input_slide::-moz-range-thumb{-webkit-appearance:none;position:relative;height:16px;width:16px;border-radius:50%;border:none}.group_slide{position:relative;width:100%}.group_slide .input_slide{width:inherit;position:absolute}.group_slide .input_slide_start{left:0}.group_slide .input_slide_end{right:0}.group_slide .input_slide::-webkit-slider-thumb,.group_slide .input_slide::-moz-range-thumb{-webkit-appearance:none}";
 
+const MAX_MARKERS = 100;
 const Slider = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
@@ -54,8 +55,15 @@ const Slider = class {
         return this.stepArray[value];
       }
       else {
-        return this.stepArray.find((item) => parseInt(item.name) === value);
+        const min = this.min ?? 0;
+        const step = this.step ?? 1;
+        return { value: (value - min) / step, name: value };
       }
+    };
+    this.markerPosition = (item) => {
+      const min = this.min ?? 0;
+      const max = this.max ?? 100;
+      return max !== min ? ((Number(item.name) - min) * 100) / (max - min) : 50;
     };
     this.stepArray = undefined;
     this.internalOptions = undefined;
@@ -69,6 +77,7 @@ const Slider = class {
     this.label = false;
     this.type = 'fill';
     this.dataMarkers = undefined;
+    this.markerValues = undefined;
     this.dataTest = null;
   }
   componentWillLoad() {
@@ -90,7 +99,21 @@ const Slider = class {
       this.tooltipPosition = this.computeTooltipPosition(percent);
     }
     else {
-      this.stepArray = this.arrayToSteps((this.max - this.min) / this.step, Number.isInteger((this.max - this.min) / this.step));
+      if (this.markerValues) {
+        const markerValues = typeof this.markerValues === 'string' ? JSON.parse(this.markerValues) : this.markerValues;
+        const min = this.min ?? 0;
+        const max = this.max ?? 100;
+        this.stepArray = Array.from(new Set(markerValues.filter((value) => Number.isFinite(value) && value >= min && value <= max)))
+          .sort((first, second) => first - second)
+          .map((value) => ({ value: (value - min) / (this.step ?? 1), name: value }));
+      }
+      else {
+        const min = this.min ?? 0;
+        const max = this.max ?? 100;
+        const step = this.step ?? 1;
+        const numberOfSteps = (max - min) / step;
+        this.stepArray = this.arrayToSteps(numberOfSteps, Number.isInteger(numberOfSteps));
+      }
       const min = this.min ?? 0;
       const max = this.max ?? 100;
       const value = this.value ?? min;
@@ -121,17 +144,27 @@ const Slider = class {
   }
   arrayToSteps(value, int) {
     const numberToCalc = int ? value + 1 : value;
+    const stepCount = Math.ceil(numberToCalc);
+    const markerInterval = Math.max(1, Math.ceil((stepCount - 1) / (MAX_MARKERS - 1)));
     const valueSteps = [];
-    for (let i = 0; i < numberToCalc; i++) {
+    for (let i = 0; i < stepCount; i += markerInterval) {
       valueSteps.push(i);
     }
-    return valueSteps.map((term) => ({ value: term, name: term * this.step + this.min }));
+    if (stepCount > 0 && valueSteps[valueSteps.length - 1] !== stepCount - 1) {
+      valueSteps.push(stepCount - 1);
+    }
+    return valueSteps.map((term) => ({ value: term, name: term * (this.step ?? 1) + (this.min ?? 0) }));
   }
   render() {
     return (h(Host, null, h("input", { ref: this.refInputSlide, type: "range", class: {
         input_slide: true,
       }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { class: "track-bg" }, this.markers &&
-      this.stepArray.map((item, index) => (h("div", { key: index, class: { step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 } }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { class: { [`progress-bar-thumb`]: true } }))))));
+      this.stepArray.map((item, index) => (h("div", { key: index, class: {
+          step: true,
+          'step--first': index === 0,
+          'step--last': index === this.stepArray.length - 1,
+          'step--custom': Boolean(this.markerValues),
+        }, style: this.markerValues ? { left: `${this.markerPosition(item)}%` } : undefined }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { class: { [`progress-bar-thumb`]: true } }))))));
   }
 };
 Slider.style = sliderCss;

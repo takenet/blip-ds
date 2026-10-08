@@ -41,6 +41,10 @@ export declare class Slider {
    */
   dataMarkers?: string | StepOption[];
   /**
+   * Marker values to render for numeric ranges.
+   */
+  markerValues?: string | number[];
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   dataTest?: string;
@@ -63,5 +67,6 @@ export declare class Slider {
   private onInputMouseLeave;
   private emiterChange;
   private arrayToSteps;
+  private markerPosition;
   render(): any;
 }

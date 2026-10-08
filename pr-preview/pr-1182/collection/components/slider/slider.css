@@ -87,6 +87,16 @@
 .track-bg .step.step--first {
   justify-content: flex-start;
 }
+.track-bg .step.step--custom {
+  position: absolute;
+  transform: translateX(-50%);
+}
+.track-bg .step.step--custom.step--first:not(.step--last) {
+  transform: none;
+}
+.track-bg .step.step--custom.step--last:not(.step--first) {
+  transform: translateX(-100%);
+}
 .track-bg .step.step--last .label-step {
   position: absolute;
   right: 0;
