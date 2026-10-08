@@ -27,6 +27,7 @@ export const Properties = (args) => {
         label={args.label}
         type={args.type}
         data-markers={args.dataMarkers}
+        marker-values={args.markerValues}
       ></bds-slider>
     </bds-grid>
   );
@@ -41,6 +42,7 @@ Properties.args = {
   label: false,
   type: 'fill',
   dataMarkers: '',
+  markerValues: '[1, 100]',
 };
 
 Properties.argTypes = {
@@ -93,6 +95,13 @@ Properties.argTypes = {
         summary:
           '[{"value": 0, "name": "standard"}, {"value": 1, "name": "plus"}, {"value": 2, "name": "gold"}, {"value": 3, "name": "platinum"}]',
       },
+    },
+    control: 'text',
+  },
+  markerValues: {
+    description: 'Numeric values to display as markers, e.g. [1, 500000].',
+    table: {
+      defaultValue: { summary: '[1, 100]' },
     },
     control: 'text',
   },
