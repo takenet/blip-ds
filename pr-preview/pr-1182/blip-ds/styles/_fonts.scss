@@ -1,0 +1,33 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+
+$font-family: 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
+
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+
+$fs-40: 2.5rem; // 40px
+$fs-32: 2rem; // 32px
+$fs-24: 1.5rem; // 24px
+$fs-20: 1.25rem; // 20px
+$fs-16: 1rem; // 16px
+$fs-14: 0.875rem; // 14px
+$fs-12: 0.75rem; // 12px
+$fs-10: 0.625rem; // 10px
+
+$line-hight-none: 0%;
+$line-hight-small: 5%;
+$line-hight-simple: 100%;
+$line-hight-plus: 150%;
+$line-hight-double: 200%;
+
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+$paragraph-margin: 16px;
+$title-margin-medium: 20px;
+$title-margin-large: 22px;

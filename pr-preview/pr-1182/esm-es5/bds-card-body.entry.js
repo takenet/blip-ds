@@ -1,0 +1,1 @@
+import{r as registerInstance,h}from"./index-611fd21e.js";var CardBody=function(){function r(r){registerInstance(this,r)}r.prototype.render=function(){return h("bds-grid",null,h("slot",null))};return r}();export{CardBody as bds_card_body};

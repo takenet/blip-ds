@@ -1,0 +1,94 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+:host {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
+}
+
+:host(.chip) {
+  border-radius: 8px;
+  padding: 3px 8px;
+}
+
+:host(.chip--primary) {
+  background: #e8f2ff;
+  color: #3f7de8;
+}
+
+:host(.chip--click.chip--primary:hover) {
+  background: #d1e3fa;
+  color: #125ad5;
+}
+
+:host(.chip--watermelon) {
+  background: #fb5a8b;
+  color: #ffffff;
+}
+
+:host(.chip--default) {
+  background: #f8fbfb;
+  color: #8ca0b3;
+}
+
+:host(.chip--danger) {
+  background: #ffa5a5;
+  color: #ff4c4c;
+}
+
+:host(.chip--click.chip--danger:hover) {
+  background: #fccccc;
+  color: #6a2026;
+}
+
+:host(.chip--filter) {
+  background: #125ad5;
+  color: #ffffff;
+}
+
+:host(.chip--click.chip--filter:hover) {
+  background: #0747a6;
+  color: #ffffff;
+}
+
+:host(.chip--standard) {
+  height: 24px;
+  font-size: 0.75rem;
+}
+
+:host(.chip--tall) {
+  height: 32px;
+  font-size: 0.875rem;
+}
+
+.chip__delete {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 6px;
+  cursor: pointer;
+}
+
+.chip__icon {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 4px;
+}

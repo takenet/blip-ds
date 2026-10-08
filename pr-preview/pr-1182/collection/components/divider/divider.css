@@ -1,0 +1,251 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+ * Define media query values
+ */
+:host(.horizontal) {
+  width: 100%;
+}
+
+:host(.vertical) {
+  height: 100%;
+}
+
+hr {
+  border: none;
+  /* Cores */
+  /* Margens */
+}
+hr.horizontal {
+  width: 100%;
+  border-top-width: 1px;
+  margin: 16px 0;
+}
+hr.horizontal.solid {
+  border-top-style: solid;
+}
+hr.horizontal.dotted {
+  border-top-style: dotted;
+}
+hr.horizontal.dashed {
+  border-top-style: dashed;
+}
+hr.vertical {
+  height: 100%;
+  border-left-width: 1px;
+  margin: 0 16px;
+}
+hr.vertical.solid {
+  border-left-style: solid;
+}
+hr.vertical.dotted {
+  border-left-style: dotted;
+}
+hr.vertical.dashed {
+  border-left-style: dashed;
+}
+hr.color-divider-1 {
+  border-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
+}
+hr.color-divider-2 {
+  border-color: var(--color-border-2, rgba(0, 0, 0, 0.16));
+}
+hr.color-divider-3 {
+  border-color: var(--color-border-3, rgba(0, 0, 0, 0.06));
+}
+hr.margin-4 {
+  margin: 4px;
+}
+hr.margin-5 {
+  margin: 5px;
+}
+hr.margin-6 {
+  margin: 6px;
+}
+hr.margin-7 {
+  margin: 7px;
+}
+hr.margin-8 {
+  margin: 8px;
+}
+hr.margin-9 {
+  margin: 9px;
+}
+hr.margin-10 {
+  margin: 10px;
+}
+hr.margin-11 {
+  margin: 11px;
+}
+hr.margin-12 {
+  margin: 12px;
+}
+hr.margin-13 {
+  margin: 13px;
+}
+hr.margin-14 {
+  margin: 14px;
+}
+hr.margin-15 {
+  margin: 15px;
+}
+hr.margin-16 {
+  margin: 16px;
+}
+hr.margin-17 {
+  margin: 17px;
+}
+hr.margin-18 {
+  margin: 18px;
+}
+hr.margin-19 {
+  margin: 19px;
+}
+hr.margin-20 {
+  margin: 20px;
+}
+hr.margin-21 {
+  margin: 21px;
+}
+hr.margin-22 {
+  margin: 22px;
+}
+hr.margin-23 {
+  margin: 23px;
+}
+hr.margin-24 {
+  margin: 24px;
+}
+hr.margin-25 {
+  margin: 25px;
+}
+hr.margin-26 {
+  margin: 26px;
+}
+hr.margin-27 {
+  margin: 27px;
+}
+hr.margin-28 {
+  margin: 28px;
+}
+hr.margin-29 {
+  margin: 29px;
+}
+hr.margin-30 {
+  margin: 30px;
+}
+hr.margin-31 {
+  margin: 31px;
+}
+hr.margin-32 {
+  margin: 32px;
+}
+hr.margin-33 {
+  margin: 33px;
+}
+hr.margin-34 {
+  margin: 34px;
+}
+hr.margin-35 {
+  margin: 35px;
+}
+hr.margin-36 {
+  margin: 36px;
+}
+hr.margin-37 {
+  margin: 37px;
+}
+hr.margin-38 {
+  margin: 38px;
+}
+hr.margin-39 {
+  margin: 39px;
+}
+hr.margin-40 {
+  margin: 40px;
+}
+hr.margin-41 {
+  margin: 41px;
+}
+hr.margin-42 {
+  margin: 42px;
+}
+hr.margin-43 {
+  margin: 43px;
+}
+hr.margin-44 {
+  margin: 44px;
+}
+hr.margin-45 {
+  margin: 45px;
+}
+hr.margin-46 {
+  margin: 46px;
+}
+hr.margin-47 {
+  margin: 47px;
+}
+hr.margin-48 {
+  margin: 48px;
+}
+hr.margin-49 {
+  margin: 49px;
+}
+hr.margin-50 {
+  margin: 50px;
+}
+hr.margin-51 {
+  margin: 51px;
+}
+hr.margin-52 {
+  margin: 52px;
+}
+hr.margin-53 {
+  margin: 53px;
+}
+hr.margin-54 {
+  margin: 54px;
+}
+hr.margin-55 {
+  margin: 55px;
+}
+hr.margin-56 {
+  margin: 56px;
+}
+hr.margin-57 {
+  margin: 57px;
+}
+hr.margin-58 {
+  margin: 58px;
+}
+hr.margin-59 {
+  margin: 59px;
+}
+hr.margin-60 {
+  margin: 60px;
+}
+hr.margin-61 {
+  margin: 61px;
+}
+hr.margin-62 {
+  margin: 62px;
+}
+hr.margin-63 {
+  margin: 63px;
+}
+hr.margin-64 {
+  margin: 64px;
+}

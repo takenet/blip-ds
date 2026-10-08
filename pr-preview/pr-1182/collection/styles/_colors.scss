@@ -1,0 +1,87 @@
+@import './theme/color-legacy.scss';
+@import './theme/theme-light.scss';
+@import './theme/theme-dark.scss';
+
+$color-brand: var(--color-brand, $color-light-brand);
+$color-primary: var(--color-primary, $color-light-primary);
+$color-secondary: var(--color-secondary, $color-light-secondary);
+$color-surface-0: var(--color-surface-0, $color-light-surface-0);
+$color-surface-1: var(--color-surface-1, $color-light-surface-1);
+$color-surface-2: var(--color-surface-2, $color-light-surface-2);
+$color-surface-3: var(--color-surface-3, $color-light-surface-3);
+$color-surface-4: var(--color-surface-4, $color-light-surface-4);
+$color-surface-positive: var(--color-surface-positive, $color-light-surface-positive);
+$color-surface-negative: var(--color-surface-negative, $color-light-surface-negative);
+$color-surface-primary: var(--color-surface-primary, $color-light-surface-primary);
+$color-content-default: var(--color-content-default, $color-light-content-default);
+$color-content-disable: var(--color-content-disable, $color-light-content-disable);
+$color-content-ghost: var(--color-content-ghost, $color-light-content-ghost);
+$color-content-bright: var(--color-content-bright, $color-light-content-bright);
+$color-content-din: var(--color-content-din, $color-light-content-din);
+$color-border-1: var(--color-border-1, $color-light-border-1);
+$color-border-2: var(--color-border-2, $color-light-border-2);
+$color-border-3: var(--color-border-3, $color-light-border-3);
+$color-info: var(--color-info, $color-light-info);
+$color-system: var(--color-system, $color-light-system);
+$color-focus: var(--color-focus, $color-light-focus);
+$color-success: var(--color-success, $color-light-success);
+$color-warning: var(--color-warning, $color-light-warning);
+$color-error: var(--color-error, $color-light-error);
+$color-delete: var(--color-delete, $color-light-delete);
+$color-shadow-0: var(--color-shadow-0, rgba(0, 0, 0, 0.04));
+$color-shadow-1: var(--color-shadow-1, rgba(0, 0, 0, 0.16));
+
+//Actions
+$color-hover: var(--color-hover, rgba(0, 0, 0, 0.08));
+$color-pressed: var(--color-pressed, rgba(0, 0, 0, 0.16));
+$color-positive: var(--color-positive, #10603b);
+$color-negative: var(--color-negative, #e60f0f);
+
+//Extended
+$color-extended-blue: var(--color-extended-blue, $color-light-extended-blue);
+$color-extended-blue-bright: var(--color-extended-blue-bright, $color-light-extended-blue-bright);
+$color-extended-ocean: var(--color-extended-ocean, $color-light-extended-ocean);
+$color-extended-ocean-bright: var(--color-extended-ocean-bright, $color-light-extended-ocean-bright);
+$color-extended-green: var(--color-extended-green, $color-light-extended-green);
+$color-extended-green-bright: var(--color-extended-green-bright, $color-light-extended-green-bright);
+$color-extended-yellow: var(--color-extended-yellow, $color-light-extended-yellow);
+$color-extended-yellow-bright: var(--color-extended-yellow-bright, $color-light-extended-yellow-bright);
+$color-extended-orange: var(--color-extended-orange, $color-light-extended-orange);
+$color-extended-orange-bright: var(--color-extended-orange-bright, $color-light-extended-orange-bright);
+$color-extended-red: var(--color-extended-red, $color-light-extended-red);
+$color-extended-red-bright: var(--color-extended-red-bright, $color-light-extended-red-bright);
+$color-extended-pink: var(--color-extended-pink, $color-light-extended-pink);
+$color-extended-pink-bright: var(--color-extended-pink-bright, $color-light-extended-pink-bright);
+$color-extended-gray: var(--color-extended-gray, $color-light-extended-gray);
+$color-extended-gray-bright: var(--color-extended-gray-bright, $color-light-extended-gray-bright);
+
+// Shadows
+$shadow-drop: 0 2px 8px $color-shadow-1;
+$shadow-box: 0px 4px 10px $color-shadow-1;
+$shadow-toast:
+  0px 8px 12px $color-shadow-1,
+  0px 0px 4px $color-shadow-1;
+$light-drop: 0px 2px 8px $color-shadow-1;
+
+//Elevations
+$shadow-1: 0px 2px 8px -2px $color-shadow-1;
+$shadow-2: 0px 6px 16px -4px $color-shadow-1;
+$shadow-3:
+  0px 8px 4px -4px $color-shadow-0,
+  0px 12px 12px -4px $color-shadow-1;
+
+//Custom Colors
+$color-secondary-undo: #485c73;
+$color-secondary-redo: #485c73;
+$color-facebook-main: #1877f2;
+$color-facebook-dark: #1771e6;
+$color-gradient-rose: linear-gradient(213.89deg, #ff4c4c 7.75%, #821a67 135.08%);
+$color-gradient-phoenix: linear-gradient(213.98deg, #f6a721 7.74%, #fb5a8b 111.22%);
+$color-gradient-cactus: linear-gradient(215.84deg, #bed42b 24.15%, #167491 143.37%);
+$color-gradient-tree: linear-gradient(213.19deg, #21cc79 26.38%, #167491 113.59%);
+$color-gradient-ocean: linear-gradient(206.67deg, #4786f1 25.46%, #4f0e87 187.1%);
+$color-gradient-smurf: linear-gradient(213.61deg, #00c6d7 26.39%, #4786f1 100%);
+$color-gradient-grape: linear-gradient(214.56deg, #c226fb 0%, #0052cc 174.21%);
+$color-gradient-fabulous: linear-gradient(212.75deg, #fb5a8b 37.1%, #9933cc 171.27%);
+$color-gradient-street: linear-gradient(213.69deg, #6e7b91 25.43%, #233049 147.21%);
+$color-gradient-universe: linear-gradient(213.69deg, #202c44 25.43%, #000000 147.21%);

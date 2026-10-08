@@ -1,0 +1,1 @@
+System.register(["./p-d105fb25.system.js"],(function(t){"use strict";var e,n;return{setters:[function(t){e=t.r;n=t.h}],execute:function(){var r="";var s=t("bds_card_title",function(){function t(t){e(this,t);this.text=undefined}t.prototype.render=function(){return n("bds-typo",{variant:"fs-20",tag:"h4",margin:false,bold:"bold"},this.text)};return t}());s.style=r}}}));
