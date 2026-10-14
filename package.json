@@ -39,15 +39,15 @@
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "1.5.2",
     "@storybook/addon-actions": "7.0.22",
+    "@storybook/addon-console": "^2.0.0",
+    "@storybook/addon-docs": "^7.6.20",
     "@storybook/addon-essentials": "^7.0.22",
     "@storybook/addon-interactions": "^7.0.22",
     "@storybook/addon-links": "^7.0.22",
-    "@storybook/addon-notes": "^5.3.21",
     "@storybook/global": "5.0.0",
     "@storybook/manager-api": "^7.4.1",
     "@storybook/react": "^7.0.22",
     "@storybook/react-webpack5": "^7.0.22",
-    "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/testing-library": "^0.2.0",
     "@storybook/theming": "^7.4.1",
     "@types/color": "^3.0.3",
@@ -56,6 +56,7 @@
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.23.0",
+    "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
     "babel-preset-react-app": "^10.0.1",
     "color": "^4.2.3",
@@ -74,25 +75,38 @@
     "husky": "^8.0.3",
     "jest": "27.4.5",
     "jest-cli": "27.4.5",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "puppeteer": "^14.0.0",
-    "react-scripts": "^5.0.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "rimraf": "^6.0.1",
     "semantic-release": "^23.0.8",
     "storybook": "^7.0.22",
     "ts-node": "^10.7.0",
     "types-ramda": "0.29.4",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.2",
+    "yargs": "^16.2.2"
   },
   "dependencies": {
-    "@storybook/addon-console": "^2.0.0",
-    "@storybook/addon-docs": "^7.6.20",
-    "@storybook/preset-create-react-app": "^7.6.20",
-    "autoprefixer": "^10.4.7",
-    "blip-tokens": "^1.106.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "blip-tokens": "^1.106.0"
+  },
+  "overrides": {
+    "giget": {
+      "tar": "^7.5.22"
+    },
+    "tar-fs": "^2.1.5",
+    "puppeteer": {
+      "ws": "^8.22.0"
+    },
+    "copy-webpack-plugin": {
+      "serialize-javascript": "^7.1.2"
+    },
+    "external-editor": {
+      "tmp": "^0.2.7"
+    },
+    "@storybook/builder-webpack5": {
+      "webpack-dev-middleware": "^7.4.5"
+    }
   },
   "repository": {
     "type": "git",
