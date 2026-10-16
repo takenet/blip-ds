@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-import icons from 'blip-tokens/build/json/assets_icons.json';
-import emojis from 'blip-tokens/build/json/assets_emojis.json';
-import logo from 'blip-tokens/build/json/assets_logos.json';
+import { loadAssetSvg } from '../../utils/asset-loader';
 import { IconSize, IconTheme, IconType } from './icon-interface';
 import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
 
@@ -14,6 +12,7 @@ import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
 })
 export class Icon {
   private io?: IntersectionObserver;
+  private requestVersion = 0;
 
   @Element() el!: HTMLElement;
 
@@ -90,6 +89,7 @@ export class Icon {
   }
 
   disconnectedCallback(): void {
+    this.requestVersion++;
     if (this.io) {
       this.io.disconnect();
       this.io = undefined;
@@ -119,8 +119,13 @@ export class Icon {
   @Watch('icon')
   @Watch('color')
   @Watch('theme')
+  @Watch('type')
   loadIcon(): void {
-    if (!this.name) return;
+    if (!this.name) {
+      this.requestVersion++;
+      this.svgContent = undefined;
+      return;
+    }
 
     if (Build.isBrowser && this.isVisible) {
       this.setSvgContent();
@@ -134,23 +139,15 @@ export class Icon {
     }
   }
 
-  setSvgContent = () => {
-    let svg;
+  setSvgContent = async (): Promise<void> => {
+    const version = ++this.requestVersion;
     try {
-      if (this.type === 'icon') {
-        const key = getIconName(this.name, this.theme);
-        svg = atob(icons[key]);
-        this.svgContent = formatSvg(svg, this.color);
-      } else if (this.type === 'emoji') {
-        const key = getEmojiName(this.name);
-        svg = atob(emojis[key]);
-        this.svgContent = formatSvg(svg, this.color, true);
-      } else if (this.type === 'logo') {
-        const key = getLogoName(this.name);
-        svg = atob(logo[key]);
-        this.svgContent = formatSvg(svg, this.color, true);
-      }
+      const key = this.type === 'icon' ? getIconName(this.name, this.theme) : this.type === 'emoji' ? getEmojiName(this.name) : getLogoName(this.name);
+      const svg = await loadAssetSvg(key);
+      if (version === this.requestVersion) this.svgContent = formatSvg(svg, this.color, this.type !== 'icon');
     } catch (err) {
+      if (version !== this.requestVersion) return;
+      this.svgContent = undefined;
       // eslint-disable-next-line no-console
       console.warn('[Warning]: Failed to setSvgContent to', this.name);
     }

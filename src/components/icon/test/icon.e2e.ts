@@ -65,6 +65,12 @@ describe('bds-icon e2e tests', () => {
   });
 
   describe('Structure', () => {
+    it('renders CDN SVG fixtures without requiring the public CDN', async () => {
+      await page.waitForFunction(() => !!document.querySelector('bds-icon')?.shadowRoot?.querySelector('svg'));
+      const svg = await page.find('bds-icon >>> svg');
+      expect(svg).toBeTruthy();
+    });
+
     it('should render with proper role', async () => {
       const role = await icon.getAttribute('role');
       expect(role).toBe('img');

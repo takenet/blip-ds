@@ -1,5 +1,15 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage as createSpecPage } from '@stencil/core/testing';
+
+jest.mock('../../../utils/asset-loader', () => ({ loadAssetSvg: jest.fn(async () => '<svg width="64" height="64"><path fill="currentColor"/></svg>') }));
+
 import { BdsLoadingSpinner } from '../loading-spinner';
+
+async function newSpecPage(options: Parameters<typeof createSpecPage>[0]) {
+    const page = await createSpecPage(options);
+    await page.rootInstance.setSvgContent();
+    await page.waitForChanges();
+    return page;
+}
 
 describe('bds-loading-spinner', () => {
     it('should render with default props', async () => {

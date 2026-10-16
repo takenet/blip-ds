@@ -7,6 +7,26 @@
 
 BliP Design System is a comprehensive component library built with Web Components using StencilJS, providing a consistent and scalable UI foundation for BliP applications. The design system includes reusable components, design tokens, and guidelines that follow BliP's design principles.
 
+## Asset Delivery
+
+Artwork is delivered from exact-version global CDN URLs, not application clusters. Images use browser-native URLs; SVG fetching is reserved for inline rendering that preserves inherited colors and icon color props.
+
+`blip-tokens` 2.x provides token values, icon types, and a path/hash manifest. Artwork JSON catalogs, base64 payloads, and SVG files are not required in the npm package. `npm run assets:prepare` reads the installed manifest and generates path metadata only. The build, development, and test scripts run this preparation automatically, without fetching the public CDN or requiring `CDN_ASSETS_VERSION`.
+
+Styles consume the token SCSS files, and extended colors consume their theme JSON. Components do not read `variables.json` or its former `asset-*` source-path entries. Those entries do not need CDN URLs: icons, emojis, logos, illustrations, and loading/upload artwork resolve through the installed manifest instead. Inline SVG rendering preserves icon color controls; illustrations and upload images use native image URLs.
+
+Playwright intercepts the manifest's CDN origin in the shared browser-context fixture before navigation. Known artwork URLs receive a deterministic local SVG; unknown paths receive a local 404, without contacting the CDN. Service workers are blocked so they cannot bypass interception. These tests exercise component rendering and behavior with mocked artwork, not production artwork fidelity or CDN availability. Stencil E2E tests also use local SVG responses.
+
+Released packages use `https://cdn.blip.ai/blip-tokens/<exact-version>/<asset-path>`. The package and manifest versions must match. Local token builds use `unreleased`; ordinary token CI builds require the conventions version, while semantic-release supplies the upcoming exact release version internally. A local token build does not publish its corresponding CDN directory.
+
+### Deployment Requirements
+
+- Publish each release's SVGs and manifest before publishing its npm package. Keep older version directories available for existing consumers.
+- Configure working CDN DNS and HTTPS, wildcard CORS, `image/svg+xml` for SVGs, `application/json` for the manifest, and immutable caching on released version paths.
+- Applications with a Content Security Policy must allow `https://cdn.blip.ai` in both `connect-src` and `img-src`. Native images do not require `blob:` URLs.
+- Install dependencies with `npm ci --legacy-peer-deps`. CI uses the lockfile and offline asset checks, not automatic token upgrades or live-CDN verification.
+- After deploying the CDN, run `npm run assets:verify` manually outside CI to check the installed version's manifest and asset families. This checks availability, hashes, MIME types, CORS, and immutable caching. Do not enable production consumers until this succeeds.
+
 ## 📦 Packages
 
 This monorepo contains two main packages:
@@ -114,6 +134,8 @@ The project uses StencilJS's built-in testing utilities:
 
 - **Unit Tests**: Component logic and functionality
 - **E2E Tests**: Integration and user interaction scenarios
+
+Stencil e2e tests intercept design-CDN requests before navigation and serve local SVG fixtures. They test component loading without contacting the public CDN; real deployment readiness is checked separately with `npm run assets:verify` outside CI.
 
 ```bash
 # Run all tests

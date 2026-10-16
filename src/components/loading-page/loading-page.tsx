@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
-import messageBallon from '../../assets/svg/message-ballon.svg';
+import { loadAssetSvg } from '../../utils/asset-loader';
 
 @Component({
   tag: 'bds-loading-page',
@@ -29,11 +29,13 @@ export class BdsLoading {
     return div.innerHTML;
   };
 
-  setSvgContent = () => {
-    const innerHTML = messageBallon;
-
-    const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
-    this.svgContent = this.formatSvg(svg);
+  setSvgContent = async (): Promise<void> => {
+    try {
+      const svg = await loadAssetSvg('asset-component-loading-page');
+      this.svgContent = this.formatSvg(svg);
+    } catch {
+      this.svgContent = undefined;
+    }
   };
 
   render() {
