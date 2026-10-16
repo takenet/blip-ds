@@ -3,15 +3,18 @@ import test from 'node:test';
 import { enrichManifest } from '../prepare-manifest.mjs';
 import { createReleaseValues } from '../release-values.mjs';
 
-test('pins a validated release to its source revision and image digest', () => {
+test('uses the release version for the image tag and Kubernetes version labels', () => {
   const revision = 'a'.repeat(40);
   const digest = `sha256:${'b'.repeat(64)}`;
   const values = createReleaseValues({ version: '2.0.0-rc.1', revision, digest });
   assert.deepEqual(Object.keys(values).sort(), ['env', 'image']);
-  assert.equal(values.image.tag, `sha-${revision}@${digest}`);
+  assert.equal(values.image.tag, '2.0.0-rc.1');
+  assert.ok(values.image.tag.length <= 63);
+  assert.match(values.image.tag, /^[A-Za-z0-9][-A-Za-z0-9_.]*[A-Za-z0-9]$/);
   assert.equal(values.env.RELEASE_VERSION, '2.0.0-rc.1');
   assert.equal(values.env.RELEASE_REVISION, revision);
   assert.throws(() => createReleaseValues({ version: 'latest', revision, digest }));
+  assert.throws(() => createReleaseValues({ version: `2.0.0-${'a'.repeat(58)}`, revision, digest }));
   assert.throws(() => createReleaseValues({ version: '2.0.0', revision: 'v2', digest }));
   assert.throws(() => createReleaseValues({ version: '2.0.0', revision, digest: 'latest' }));
 });
