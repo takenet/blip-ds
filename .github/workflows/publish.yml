@@ -142,8 +142,17 @@ jobs:
           DIGEST: ${{ steps.image.outputs.digest }}
         run: |
           mkdir -p "$RUNNER_TEMP/anonymous-docker"
-          docker --config "$RUNNER_TEMP/anonymous-docker" manifest inspect \
-            "ghcr.io/takenet/blip-ds-storybook@$DIGEST" > /dev/null
+          if ! docker --config "$RUNNER_TEMP/anonymous-docker" manifest inspect \
+            "ghcr.io/takenet/blip-ds-storybook@$DIGEST" > /dev/null; then
+            echo '::error::Anonymous GHCR pull failed. Ensure takenet/blip-ds-storybook allows public pulls in Package settings > Change visibility. The release pointer was not updated.'
+            printf '%s\n' \
+              '### Storybook image is not anonymously accessible' \
+              "Image: \`ghcr.io/takenet/blip-ds-storybook@$DIGEST\`" \
+              'Check [package settings](https://github.com/orgs/takenet/packages/container/blip-ds-storybook/settings) and allow public pulls before retrying this publication job.' \
+              'The release pointer was not updated. Do not rerun semantic-release to recover this publication.' \
+              >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
       - name: Update Argo release pointer
         env:
           RELEASE_VERSION: ${{ needs.build.outputs.version }}
