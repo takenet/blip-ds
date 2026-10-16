@@ -1,0 +1,9 @@
+{
+  "image": {
+    "tag": "sha-bf376025ee8787fd4e064a016487d9ac5e59c5ab@sha256:fe755fac32b40a4df9e081f10aca7707868bf5c9e63cf0ee1e4368681593ef8f"
+  },
+  "env": {
+    "RELEASE_VERSION": "2.0.0-rc.18",
+    "RELEASE_REVISION": "bf376025ee8787fd4e064a016487d9ac5e59c5ab"
+  }
+}
