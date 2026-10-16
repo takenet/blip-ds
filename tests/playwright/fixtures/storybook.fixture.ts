@@ -1,4 +1,9 @@
 import { test as base, expect, Page } from '@playwright/test';
+import assetConfig from '../../../src/utils/asset-config.json';
+
+const assetOrigin = new URL(assetConfig.assetRoot).origin;
+const assetUrls = new Set(Object.values(assetConfig.assets).map(assetPath => new URL(assetPath, assetConfig.assetRoot).href));
+const assetSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 2h8v8H2z"/><path fill="#006eff" d="M12 12h8v8h-8z"/></svg>';
 
 /**
  * Navigates to a Storybook story iframe and waits for the component to render.
@@ -48,6 +53,22 @@ export const test = base.extend<{
     screenshotStory: (storyId: string, name: string) => Promise<void>;
   };
 }>({
+  context: async ({ context }, use) => {
+    await context.route(url => url.origin === assetOrigin, async route => {
+      const knownAsset = assetUrls.has(route.request().url());
+      await route.fulfill({
+        status: knownAsset ? 200 : 404,
+        headers: {
+          'content-type': 'image/svg+xml',
+          'access-control-allow-origin': '*',
+          'access-control-expose-headers': 'x-blip-asset-fixture',
+          'x-blip-asset-fixture': 'local',
+        },
+        body: knownAsset ? assetSvg : '',
+      });
+    });
+    await use(context);
+  },
   storybook: async ({ page }, use) => {
     await use({
       goto: (storyId: string) => gotoStory(page, storyId),

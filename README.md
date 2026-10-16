@@ -15,6 +15,8 @@ Artwork is delivered from exact-version global CDN URLs, not application cluster
 
 Styles consume the token SCSS files, and extended colors consume their theme JSON. Components do not read `variables.json` or its former `asset-*` source-path entries. Those entries do not need CDN URLs: icons, emojis, logos, illustrations, and loading/upload artwork resolve through the installed manifest instead. Inline SVG rendering preserves icon color controls; illustrations and upload images use native image URLs.
 
+Playwright intercepts the manifest's CDN origin in the shared browser-context fixture before navigation. Known artwork URLs receive a deterministic local SVG; unknown paths receive a local 404, without contacting the CDN. Service workers are blocked so they cannot bypass interception. These tests exercise component rendering and behavior with mocked artwork, not production artwork fidelity or CDN availability. Stencil E2E tests also use local SVG responses.
+
 Released packages use `https://cdn.blip.ai/blip-tokens/<exact-version>/<asset-path>`. The package and manifest versions must match. Local token builds use `unreleased`; ordinary token CI builds require the conventions version, while semantic-release supplies the upcoming exact release version internally. A local token build does not publish its corresponding CDN directory.
 
 ### Deployment Requirements
