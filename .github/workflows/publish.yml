@@ -9,9 +9,16 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      published: ${{ steps.semantic.outputs.new_release_published }}
+      version: ${{ steps.semantic.outputs.new_release_version }}
 
     steps:
       - name: Checkout
@@ -42,6 +49,28 @@ jobs:
         env:
           HUSKY: 0
 
+      - name: Setup production MCP runtime
+        if: github.ref == 'refs/heads/v2'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Validate production Storybook and MCP
+        if: github.ref == 'refs/heads/v2'
+        run: |
+          npm ci --prefix storybook-server --ignore-scripts
+          npm --prefix storybook-server test
+          node storybook-server/prepare-manifest.mjs
+          node storybook-server/smoke.mjs
+
+      - name: Save tested v2 Storybook
+        if: github.ref == 'refs/heads/v2'
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-v2
+          path: storybook-static
+          retention-days: 2
+
       - name: Deploy Storybook to Root (preserving previews)
         uses: JamesIves/github-pages-deploy-action@v4
         env:
@@ -69,3 +98,73 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-storybook:
+    needs: build
+    if: always() && github.ref == 'refs/heads/v2' && needs.build.outputs.published == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          name: storybook-v2
+          path: storybook-static
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish immutable release image
+        id: image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: storybook-server/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/takenet/blip-ds-storybook:sha-${{ github.sha }}
+            ghcr.io/takenet/blip-ds-storybook:${{ needs.build.outputs.version }}
+          build-args: |
+            RELEASE_VERSION=${{ needs.build.outputs.version }}
+            RELEASE_REVISION=${{ github.sha }}
+      - name: Require anonymous image pull
+        env:
+          DIGEST: ${{ steps.image.outputs.digest }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/anonymous-docker"
+          docker --config "$RUNNER_TEMP/anonymous-docker" manifest inspect \
+            "ghcr.io/takenet/blip-ds-storybook@$DIGEST" > /dev/null
+      - name: Update Argo release pointer
+        env:
+          RELEASE_VERSION: ${{ needs.build.outputs.version }}
+          RELEASE_REVISION: ${{ github.sha }}
+          RELEASE_DIGEST: ${{ steps.image.outputs.digest }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git ls-remote --exit-code origin refs/heads/storybook-v2 > /dev/null; then
+            git fetch origin storybook-v2
+            git worktree add "$RUNNER_TEMP/storybook-release" FETCH_HEAD
+            previous_revision=$(node -p "require('$RUNNER_TEMP/storybook-release/release-values.json')['blip-default-chart'].env.RELEASE_REVISION")
+            git merge-base --is-ancestor "$previous_revision" "$RELEASE_REVISION"
+          else
+            git worktree add --detach "$RUNNER_TEMP/storybook-release"
+            git -C "$RUNNER_TEMP/storybook-release" checkout --orphan storybook-v2
+            git -C "$RUNNER_TEMP/storybook-release" rm -rf .
+          fi
+          node storybook-server/release-values.mjs "$RUNNER_TEMP/storybook-release/release-values.json"
+          git -C "$RUNNER_TEMP/storybook-release" add release-values.json
+          if ! git -C "$RUNNER_TEMP/storybook-release" diff --cached --quiet; then
+            git -C "$RUNNER_TEMP/storybook-release" commit -m "chore(storybook): publish $RELEASE_VERSION"
+            git -C "$RUNNER_TEMP/storybook-release" push origin HEAD:refs/heads/storybook-v2
+          fi

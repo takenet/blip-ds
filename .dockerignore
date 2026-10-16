@@ -1,0 +1,7 @@
+**
+!storybook-server/
+!storybook-server/package.json
+!storybook-server/package-lock.json
+!storybook-server/server.mjs
+!storybook-static/
+!storybook-static/**

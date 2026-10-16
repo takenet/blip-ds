@@ -8,6 +8,18 @@ import storybook from 'eslint-plugin-storybook';
 export default [
   // Base configuration for all files
   js.configs.recommended,
+
+  {
+    files: ['storybook-server/**/*.mjs'],
+    languageOptions: {
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        URL: 'readonly',
+        Request: 'readonly',
+      },
+    },
+  },
   
   // TypeScript and React configuration
   {

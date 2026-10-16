@@ -1,0 +1,18 @@
+{
+  "name": "blip-ds-storybook-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.0",
+    "@storybook/mcp": "10.6.2",
+    "hono": "^4.10.0"
+  }
+}
