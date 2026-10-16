@@ -142,8 +142,17 @@ jobs:
           DIGEST: ${{ steps.image.outputs.digest }}
         run: |
           mkdir -p "$RUNNER_TEMP/anonymous-docker"
-          docker --config "$RUNNER_TEMP/anonymous-docker" manifest inspect \
-            "ghcr.io/takenet/blip-ds-storybook@$DIGEST" > /dev/null
+          if ! docker --config "$RUNNER_TEMP/anonymous-docker" manifest inspect \
+            "ghcr.io/takenet/blip-ds-storybook@$DIGEST" > /dev/null; then
+            echo '::error::Anonymous GHCR pull failed. Ensure takenet/blip-ds-storybook allows public pulls in Package settings > Change visibility. The release pointer was not updated.'
+            printf '%s\n' \
+              '### Storybook image is not anonymously accessible' \
+              "Image: \`ghcr.io/takenet/blip-ds-storybook@$DIGEST\`" \
+              'Check [package settings](https://github.com/orgs/takenet/packages/container/blip-ds-storybook/settings) and allow public pulls before retrying this publication job.' \
+              'The release pointer was not updated. Do not rerun semantic-release to recover this publication.' \
+              >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
       - name: Update Argo release pointer
         env:
           RELEASE_VERSION: ${{ needs.build.outputs.version }}
@@ -155,7 +164,7 @@ jobs:
           if git ls-remote --exit-code origin refs/heads/storybook-v2 > /dev/null; then
             git fetch origin storybook-v2
             git worktree add "$RUNNER_TEMP/storybook-release" FETCH_HEAD
-            previous_revision=$(node -p "require('$RUNNER_TEMP/storybook-release/release-values.json')['blip-default-chart'].env.RELEASE_REVISION")
+            previous_revision=$(node -p "const values = require('$RUNNER_TEMP/storybook-release/release-values.json'); (values.env ?? values['blip-default-chart']?.env).RELEASE_REVISION")
             git merge-base --is-ancestor "$previous_revision" "$RELEASE_REVISION"
           else
             git worktree add --detach "$RUNNER_TEMP/storybook-release"

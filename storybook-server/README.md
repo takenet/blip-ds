@@ -74,8 +74,12 @@ deployment pointer backward. Do not edit the generated branch manually.
 The GHCR package must allow public pulls. Newly created GHCR packages can be
 private even when their source repository is public. The workflow checks an
 anonymous pull before advancing the deployment pointer. Package visibility is
-managed in GitHub package settings. Repository rules must allow the publishing
-workflow to write the `storybook-v2` branch. No GitHub App credentials,
-cross-repository write token or Kubernetes credentials are required. Failed
-publication jobs can be rerun after fixing their prerequisite without rerunning
-semantic-release.
+managed in [GitHub package settings](https://github.com/orgs/takenet/packages/container/blip-ds-storybook/settings):
+an administrator must select **Change visibility > Public**. Making the source
+repository public does not change an existing package's visibility. Repository
+rules must allow the publishing workflow to write the `storybook-v2` branch. No
+GitHub App credentials, cross-repository write token or Kubernetes credentials
+are required. If the anonymous check fails after the image was published, fix
+the package visibility and rerun only the failed `publish-storybook` job in
+GitHub Actions. Do not rerun semantic-release or create another release solely
+to recover the image publication.
