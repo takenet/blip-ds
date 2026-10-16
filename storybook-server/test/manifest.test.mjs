@@ -6,7 +6,8 @@ import { createReleaseValues } from '../release-values.mjs';
 test('pins a validated release to its source revision and image digest', () => {
   const revision = 'a'.repeat(40);
   const digest = `sha256:${'b'.repeat(64)}`;
-  const values = createReleaseValues({ version: '2.0.0-rc.1', revision, digest })['blip-default-chart'];
+  const values = createReleaseValues({ version: '2.0.0-rc.1', revision, digest });
+  assert.deepEqual(Object.keys(values).sort(), ['env', 'image']);
   assert.equal(values.image.tag, `sha-${revision}@${digest}`);
   assert.equal(values.env.RELEASE_VERSION, '2.0.0-rc.1');
   assert.equal(values.env.RELEASE_REVISION, revision);

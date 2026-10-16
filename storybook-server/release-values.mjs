@@ -6,10 +6,8 @@ export function createReleaseValues({ version, revision, digest }) {
   if (!/^[a-f0-9]{40}$/.test(revision || '')) throw new Error('Invalid source revision.');
   if (!/^sha256:[a-f0-9]{64}$/.test(digest || '')) throw new Error('Invalid image digest.');
   return {
-    'blip-default-chart': {
-      image: { tag: `sha-${revision}@${digest}` },
-      env: { RELEASE_VERSION: version, RELEASE_REVISION: revision },
-    },
+    image: { tag: `sha-${revision}@${digest}` },
+    env: { RELEASE_VERSION: version, RELEASE_REVISION: revision },
   };
 }
 
