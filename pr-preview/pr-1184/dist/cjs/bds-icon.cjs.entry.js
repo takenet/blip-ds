@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-DQyYkciT.js');
-var assetLoader = require('./asset-loader-CZMiqXjA.js');
+var assetLoader = require('./asset-loader-CLpR4LMY.js');
 
 const FILL_ELEMENTS = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'line'];
 const getFilledElements = (svg) => {

@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-DQyYkciT.js');
-var assetLoader = require('./asset-loader-CZMiqXjA.js');
+var assetLoader = require('./asset-loader-CLpR4LMY.js');
 
 const illustrationCss = ":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}";
 

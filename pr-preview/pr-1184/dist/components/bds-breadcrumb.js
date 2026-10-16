@@ -1,9 +1,9 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$7 } from './p-BLTlqx0i.js';
+import { d as defineCustomElement$7 } from './p-DldyKUdH.js';
 import { d as defineCustomElement$6 } from './p-BekRLR1J.js';
 import { d as defineCustomElement$5 } from './p-Cje8yEpK.js';
-import { d as defineCustomElement$4 } from './p-BlBqjUGY.js';
-import { d as defineCustomElement$3 } from './p-Dd6MtaVG.js';
+import { d as defineCustomElement$4 } from './p-zHA5tVzD.js';
+import { d as defineCustomElement$3 } from './p-C4tcTFeO.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 const breadcrumbCss = ":host{display:block}:host *{color:var(--color-content-default, rgb(40, 40, 40))}.button--icon{-webkit-transform:rotate(180deg);transform:rotate(180deg);color:var(--color-content-ghost, rgb(140, 140, 140))}.breadcrumb__button--0{padding-left:0}.breadcrumb__button--0 .button--icon{display:none}.breadcrumb__button--1{padding-left:8px}.breadcrumb__button--2{padding-left:16px}.breadcrumb__button--3{padding-left:24px}.breadcrumb__button--4{padding-left:32px}.breadcrumb__link--text{color:var(--color-content-disable, rgb(89, 89, 89))}.breadcrumb__link{text-decoration:none}";

@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-DQyYkciT.js');
-var assetLoader = require('./asset-loader-CZMiqXjA.js');
+var assetLoader = require('./asset-loader-CLpR4LMY.js');
 
 const ptTerms = [
     {

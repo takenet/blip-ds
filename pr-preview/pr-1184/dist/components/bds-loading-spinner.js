@@ -1,4 +1,4 @@
-import { B as BdsLoadingSpinner$1, d as defineCustomElement$1 } from './p-Dd6MtaVG.js';
+import { B as BdsLoadingSpinner$1, d as defineCustomElement$1 } from './p-C4tcTFeO.js';
 
 const BdsLoadingSpinner = BdsLoadingSpinner$1;
 const defineCustomElement = defineCustomElement$1;
