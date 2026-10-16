@@ -9,20 +9,31 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    outputs:
+      version: ${{ steps.semantic.outputs.new_release_version }}
+      digest: ${{ steps.image.outcome == 'success' && steps.public-pull.outcome == 'success' && steps.image.outputs.docker-digest || '' }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: stilingue-inteligencia-artificial/github-actions/ci/utils/checkout@v0
         with:
+          ref: ${{ github.sha }}
           fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ github.ref == 'refs/heads/v2' && '24' || '20' }}
           cache: 'npm'
 
       # --legacy-peer-deps temporarily added until storybook MCP addon is supported by latest storybook version
@@ -41,6 +52,14 @@ jobs:
           npm run storybook:build -- --output-dir ./storybook-static
         env:
           HUSKY: 0
+
+      - name: Validate production Storybook and MCP
+        if: github.ref == 'refs/heads/v2'
+        run: |
+          npm ci --prefix storybook-server --ignore-scripts
+          npm --prefix storybook-server test
+          node storybook-server/prepare-manifest.mjs
+          node storybook-server/smoke.mjs
 
       - name: Deploy Storybook to Root (preserving previews)
         uses: JamesIves/github-pages-deploy-action@v4
@@ -69,3 +88,54 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish immutable release image
+        id: image
+        if: always() && github.ref == 'refs/heads/v2' && steps.semantic.outputs.new_release_published == 'true'
+        uses: stilingue-inteligencia-artificial/github-actions/external/docker/build@v0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          language: node
+          node-version: '24'
+          project-version: ${{ steps.semantic.outputs.new_release_version }}
+          docker-image-name: takenet/blip-ds-storybook
+          docker-context: .
+          docker-file: storybook-server/Dockerfile
+          docker-registry-name: GHCR
+          docker-registry-url: ghcr.io
+          docker-registry-username: ${{ github.actor }}
+          docker-registry-password: ${{ secrets.GITHUB_TOKEN }}
+          docker-build-args: |
+            RELEASE_VERSION=${{ steps.semantic.outputs.new_release_version }}
+            RELEASE_REVISION=${{ github.sha }}
+      - name: Require anonymous image pull
+        id: public-pull
+        if: always() && steps.image.outcome == 'success'
+        env:
+          DIGEST: ${{ steps.image.outputs.docker-digest }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/anonymous-docker"
+          docker --config "$RUNNER_TEMP/anonymous-docker" manifest inspect \
+            "ghcr.io/takenet/blip-ds-storybook@$DIGEST" > /dev/null
+
+  deploy-storybook:
+    needs: build
+    if: always() && github.ref == 'refs/heads/v2' && needs.build.outputs.digest != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Update production Storybook image in Argo
+        uses: stilingue-inteligencia-artificial/github-actions/external/argocd/deploy@v0
+        with:
+          client-id: ${{ vars.CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          argo-repo: blip-ai/argo-apps-sre
+          application-name: blip-ds
+          version: ${{ needs.build.outputs.version }}@${{ needs.build.outputs.digest }}
+          version-path: .blip-default-chart.image.tag
+          is-pre-release: ${{ contains(needs.build.outputs.version, '-') }}
+          targets-pre-release: |
+            env=prod,cluster=tool,type=commit
+          targets-release: |
+            env=prod,cluster=tool,type=commit
