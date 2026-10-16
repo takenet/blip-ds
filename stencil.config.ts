@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
-const { createAssetGuard } = require('./scripts/check_asset_bundle.cjs');
+import { createAssetGuard } from './scripts/check_asset_bundle.cjs';
 
 export const config: Config = {
   namespace: 'blip-ds',

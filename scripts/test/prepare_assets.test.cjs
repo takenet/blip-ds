@@ -111,10 +111,10 @@ test('CDN failures block config creation', async context => {
 });
 
 test('CI workflows use locked tokens and never fetch public CDN assets', () => {
-  for (const name of ['test', 'publish', 'pr-storybook']) {
+  for (const name of ['test', 'publish', 'pr-storybook', 'playwright']) {
     const workflow = fs.readFileSync(path.resolve(__dirname, `../../.github/workflows/${name}.yml`), 'utf8');
     assert.ok(workflow.includes('npm ci --legacy-peer-deps'));
-    assert.ok(workflow.includes('npm run assets:prepare'));
+    assert.ok(workflow.includes('npm run assets:prepare') || workflow.includes('npm run build'));
     assert.ok(!/assets:verify|assets:update-tokens/.test(workflow));
   }
 });
