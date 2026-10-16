@@ -155,7 +155,7 @@ jobs:
           if git ls-remote --exit-code origin refs/heads/storybook-v2 > /dev/null; then
             git fetch origin storybook-v2
             git worktree add "$RUNNER_TEMP/storybook-release" FETCH_HEAD
-            previous_revision=$(node -p "require('$RUNNER_TEMP/storybook-release/release-values.json').env.RELEASE_REVISION")
+            previous_revision=$(node -p "const values = require('$RUNNER_TEMP/storybook-release/release-values.json'); (values.env ?? values['blip-default-chart']?.env).RELEASE_REVISION")
             git merge-base --is-ancestor "$previous_revision" "$RELEASE_REVISION"
           else
             git worktree add --detach "$RUNNER_TEMP/storybook-release"
