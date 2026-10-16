@@ -1,4 +1,4 @@
-import { Element, Component, Prop, Method, State, h, Host } from '@stencil/core';
+import { Element, Component, Prop, Method, State, Watch, h, Host } from '@stencil/core';
 
 export type ObjectFitValue = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
 
@@ -8,7 +8,7 @@ export type ObjectFitValue = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down
   shadow: true,
 })
 export class Image {
-  private imageHasLoading: boolean = false;
+  @State() private imageHasLoading = false;
 
   @Element() element: HTMLElement;
   /**
@@ -61,54 +61,51 @@ export class Image {
    */
   @State() currentSrc: string;
 
+  componentWillLoad() {
+    this.loadImage();
+  }
+
   componentDidLoad() {
     this.element.style.width = this.width ? this.width : 'auto';
     this.element.style.height = this.height?.length > 0 ? this.height : 'auto';
   }
 
   @Method()
+  @Watch('src')
   async loadImage(): Promise<void> {
-    if (this.src) {
-      this.imageHasLoading = true;
-      try {
-        const response = await fetch(this.src);
-        if (response.ok) {
-          const blob = await response.blob();
-          const objectURL = URL.createObjectURL(blob);
-          this.currentSrc = objectURL;
-          this.imageLoaded = true;
-          this.imageHasLoading = false;
-        } else {
-          this.loadError = true;
-        }
-      } catch {
-        this.imageHasLoading = false;
-        this.loadError = true;
-      }
-    }
+    this.imageLoaded = false;
+    this.loadError = false;
+    this.currentSrc = this.src || undefined;
+    this.imageHasLoading = !!this.currentSrc;
   }
 
   render(): JSX.Element {
-    if (!this.imageLoaded && !this.loadError) {
-      // Se a imagem ainda não foi carregada, chame o método loadImage
-      this.loadImage();
-    }
     return (
       <Host class={{ empty_img: !this.imageLoaded }}>
-        {this.imageLoaded ? (
+        {this.currentSrc && !this.loadError && (
           <img
             src={this.currentSrc}
             alt={this.alt}
+            hidden={!this.imageLoaded}
+            onLoad={() => {
+              this.imageLoaded = true;
+              this.imageHasLoading = false;
+            }}
+            onError={() => {
+              this.loadError = true;
+              this.imageHasLoading = false;
+            }}
             style={{
               objectFit: this.objectFit,
               width: '100%',
               height: '100%',
-              filter: `brightness(${this.brightness})`,
+              filter: `brightness(${this.brightness ?? 1})`,
             }}
             data-test={this.dataTest}
             draggable={false}
           />
-        ) : this.imageHasLoading ? (
+        )}
+        {!this.imageLoaded && (this.imageHasLoading ? (
           <bds-skeleton shape="square" width="100%" height="100%"></bds-skeleton>
         ) : (
           <bds-illustration
@@ -118,7 +115,7 @@ export class Image {
             alt={this.alt}
             data-test={this.dataTest}
           ></bds-illustration>
-        )}
+        ))}
       </Host>
     );
   }

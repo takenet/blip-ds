@@ -4,22 +4,8 @@ import { Build } from '@stencil/core';
 // Mock Build.isBrowser
 (Build as any).isBrowser = true;
 
-// Mock the blip-tokens imports
-jest.mock('blip-tokens/build/json/assets_icons.json', () => ({
-  'asset-icon-edit-outline':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTMgMTdWMjFIMTBWMTlINVYxN0gzWiIgZmlsbD0iIzMzMzMzMyIvPjwvc3ZnPg==',
-  'asset-icon-edit-solid':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTMgMTdWMjFIMTBWMTlINVYxN0gzWiIgZmlsbD0iIzMzMzMzMyIvPjwvc3ZnPg==',
-}));
-
-jest.mock('blip-tokens/build/json/assets_emojis.json', () => ({
-  'asset-emoji-smile':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiNGRkQ1NEYiLz48L3N2Zz4=',
-}));
-
-jest.mock('blip-tokens/build/json/assets_logos.json', () => ({
-  'asset-logo-brand':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiNGRkQ1NEYiLz48L3N2Zz4=',
+jest.mock('../../../utils/asset-loader', () => ({
+  loadAssetSvg: jest.fn((key: string) => key.includes('invalid-icon') ? Promise.reject(new Error('Unknown asset')) : Promise.resolve('<svg width="24" height="24"><path fill="currentColor"/></svg>')),
 }));
 
 // Mock DOM methods
@@ -40,10 +26,36 @@ Object.defineProperty(global, 'document', {
 global.atob = jest.fn((str) => str);
 
 import { Icon } from '../icon';
+import { loadAssetSvg } from '../../../utils/asset-loader';
 
 describe('bds-icon', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    (loadAssetSvg as jest.Mock).mockImplementation((key: string) => key.includes('invalid-icon') ? Promise.reject(new Error('Unknown asset')) : Promise.resolve('<svg width="24" height="24"><path fill="currentColor"/></svg>'));
+  });
+
+  it('does not replace a newer icon with a delayed earlier response', async () => {
+    const page = await newSpecPage({ components: [Icon], html: '<bds-icon name="edit"></bds-icon>' });
+    let resolveEarlier: (svg: string) => void;
+    (loadAssetSvg as jest.Mock).mockImplementationOnce(() => new Promise(resolve => { resolveEarlier = resolve; }));
+    const earlier = page.rootInstance.setSvgContent();
+    (loadAssetSvg as jest.Mock).mockResolvedValue('<svg data-response="new"><path/></svg>');
+    await page.rootInstance.setSvgContent();
+    resolveEarlier('<svg data-response="old"><path/></svg>');
+    await earlier;
+    expect(page.rootInstance.svgContent).toContain('data-response="new"');
+  });
+
+  it('ignores a pending response after disconnection', async () => {
+    const page = await newSpecPage({ components: [Icon], html: '<bds-icon name="edit"></bds-icon>' });
+    let resolvePending: (svg: string) => void;
+    (loadAssetSvg as jest.Mock).mockImplementationOnce(() => new Promise(resolve => { resolvePending = resolve; }));
+    const previous = page.rootInstance.svgContent;
+    const pending = page.rootInstance.setSvgContent();
+    page.rootInstance.disconnectedCallback();
+    resolvePending('<svg data-response="disconnected"><path/></svg>');
+    await pending;
+    expect(page.rootInstance.svgContent).toBe(previous);
   });
 
   describe('Component Class Logic', () => {
@@ -282,10 +294,10 @@ describe('bds-icon', () => {
       (Build as any).isBrowser = true;
 
       // Call setSvgContent directly to test the logic
-      (page.rootInstance as any).setSvgContent();
+      await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(page.rootInstance.svgContent).toContain('PHN2ZyB3aWR0aD0i');
+      expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
     it('should load SVG content for emoji type', async () => {
@@ -301,10 +313,10 @@ describe('bds-icon', () => {
       (Build as any).isBrowser = true;
 
       // Call setSvgContent directly to test the logic
-      (page.rootInstance as any).setSvgContent();
+      await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(page.rootInstance.svgContent).toContain('PHN2ZyB3aWR0aD0i');
+      expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
     it('should load SVG content for logo type', async () => {
@@ -320,10 +332,10 @@ describe('bds-icon', () => {
       (Build as any).isBrowser = true;
 
       // Call setSvgContent directly to test the logic
-      (page.rootInstance as any).setSvgContent();
+      await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(page.rootInstance.svgContent).toContain('PHN2ZyB3aWR0aD0i');
+      expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
     it('should not load SVG content when name is not provided', async () => {
@@ -364,7 +376,7 @@ describe('bds-icon', () => {
       (Build as unknown as { isBrowser: boolean }).isBrowser = true;
 
       // Call setSvgContent directly to trigger the error
-      (page.rootInstance as unknown as { setSvgContent: () => void }).setSvgContent();
+      await (page.rootInstance as unknown as { setSvgContent: () => Promise<void> }).setSvgContent();
 
       expect(consoleWarnSpy).toHaveBeenCalledWith('[Warning]: Failed to setSvgContent to', 'invalid-icon');
 

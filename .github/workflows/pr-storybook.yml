@@ -35,6 +35,7 @@ jobs:
         if: github.event.action != 'closed'
         run: |
           npm ci --legacy-peer-deps
+          npm run assets:prepare
           npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

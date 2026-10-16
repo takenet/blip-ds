@@ -1,6 +1,6 @@
 import { Component, h, Element, State, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { termTranslate, languages } from './languages';
-import background from '../../assets/svg/pattern.svg';
+import { getAssetUrl } from '../../utils/asset-loader';
 
 @Component({
   tag: 'bds-upload',
@@ -339,7 +339,7 @@ export class BdsUpload {
                 </bds-typo>
               )}
             </div>
-            <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={background} />
+            <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={getAssetUrl('asset-component-upload-pattern')} />
           </label>
           <input
             ref={this.refInputElement}

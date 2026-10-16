@@ -39,3 +39,4 @@ scripts/*.js
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/src/utils/asset-config.json
