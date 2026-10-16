@@ -63,21 +63,19 @@ is reused rather than rebuilt after release. Releases from `main` do not change
 this service. Existing GitHub Pages publication remains supported.
 
 The workflow publishes `ghcr.io/takenet/blip-ds-storybook` with release and commit
-metadata using the shared `external/docker/build@v0` action. The shared
-`external/argocd/deploy@v0` action then commits the release version and immutable
-digest to `.blip-default-chart.image.tag` in
-`applications/blip-ds/prod/tool/values.yaml` in `blip-ai/argo-apps-sre`.
-Argo reads only that repository. Publishing runs are serialized per branch.
-
-The deployment action requires `vars.CLIENT_ID` and `secrets.APP_PRIVATE_KEY`
-for a GitHub App installed on both the source repository and `argo-apps-sre`.
-Its target-repository installation must allow contents write for the automatic
-image-tag commit. No Kubernetes credentials are used by the release workflow.
+tags using public GitHub and Docker actions. It records the immutable image
+digest and source metadata in `release-values.json` on the generated
+`storybook-v2` branch. A downstream GitOps deployment can consume that public
+file without this repository requiring access to private infrastructure or
+internal actions. Publishing runs are serialized per branch. A previous source
+commit must be an ancestor of the new release; a stale run cannot roll the
+deployment pointer backward. Do not edit the generated branch manually.
 
 The GHCR package must allow public pulls. Newly created GHCR packages can be
 private even when their source repository is public. The workflow checks an
 anonymous pull before advancing the deployment pointer. Package visibility is
-managed in GitHub package settings; no registry credentials are stored in the
-cluster for this service. Repository rules must allow the deployment GitHub App
-to update the target repository. Failed jobs can be rerun after fixing their
-prerequisite without rerunning semantic-release.
+managed in GitHub package settings. Repository rules must allow the publishing
+workflow to write the `storybook-v2` branch. No GitHub App credentials,
+cross-repository write token or Kubernetes credentials are required. Failed
+publication jobs can be rerun after fixing their prerequisite without rerunning
+semantic-release.

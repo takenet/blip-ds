@@ -11,7 +11,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: stilingue-inteligencia-artificial/github-actions/ci/utils/checkout@v0
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -35,18 +35,11 @@ jobs:
           HUSKY: 0
           STORYBOOK_DISABLE_TELEMETRY: '1'
       - name: Build production image without publishing
-        uses: stilingue-inteligencia-artificial/github-actions/external/docker/build@v0
+        uses: docker/build-push-action@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          language: node
-          node-version: '24'
-          project-version: 0.0.0-pr-${{ github.event.pull_request.number }}
-          docker-image-name: takenet/blip-ds-storybook
-          docker-context: .
-          docker-file: storybook-server/Dockerfile
-          docker-registry-name: GHCR
-          docker-registry-url: ghcr.io
-          push: 'false'
-          docker-build-args: |
+          context: .
+          file: storybook-server/Dockerfile
+          push: false
+          build-args: |
             RELEASE_VERSION=0.0.0-pr-${{ github.event.pull_request.number }}
             RELEASE_REVISION=${{ github.event.pull_request.head.sha }}
