@@ -1,0 +1,1 @@
+{"version":3,"file":"rich-text-interface.js","sourceRoot":"","sources":["../../../../src/components/rict-text/rich-text-interface.ts"],"names":[],"mappings":"","sourcesContent":["export type languages = 'pt_BR' | 'es_ES' | 'en_US';\n"]}
