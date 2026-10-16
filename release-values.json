@@ -1,6 +1,6 @@
 {
   "image": {
-    "tag": "sha-bf376025ee8787fd4e064a016487d9ac5e59c5ab@sha256:a6cbba9767c9d8ff7a4af2d42a4e2964cbb080b98e647cf5a0f806972ad6a342"
+    "tag": "2.0.0-rc.18"
   },
   "env": {
     "RELEASE_VERSION": "2.0.0-rc.18",
