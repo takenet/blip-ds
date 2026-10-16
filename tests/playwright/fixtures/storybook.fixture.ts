@@ -1,9 +1,14 @@
 import { test as base, expect, Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import assetConfig from '../../../src/utils/asset-config.json';
 
 const assetOrigin = new URL(assetConfig.assetRoot).origin;
 const assetUrls = new Set(Object.values(assetConfig.assets).map(assetPath => new URL(assetPath, assetConfig.assetRoot).href));
 const assetSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 2h8v8H2z"/><path fill="#006eff" d="M12 12h8v8h-8z"/></svg>';
+const visualAssets = new Map([
+  [new URL(assetConfig.assets['illustration/spots/star'], assetConfig.assetRoot).href, readFileSync(join(__dirname, 'assets/star.svg'), 'utf8')],
+]);
 
 /**
  * Navigates to a Storybook story iframe and waits for the component to render.
@@ -64,7 +69,7 @@ export const test = base.extend<{
           'access-control-expose-headers': 'x-blip-asset-fixture',
           'x-blip-asset-fixture': 'local',
         },
-        body: knownAsset ? assetSvg : '',
+        body: knownAsset ? visualAssets.get(route.request().url()) || assetSvg : '',
       });
     });
     await use(context);
