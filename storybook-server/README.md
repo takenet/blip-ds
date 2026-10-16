@@ -63,9 +63,12 @@ is reused rather than rebuilt after release. Releases from `main` do not change
 this service. Existing GitHub Pages publication remains supported.
 
 The workflow publishes `ghcr.io/takenet/blip-ds-storybook` with release and commit
-tags using public GitHub and Docker actions. It records the immutable image
-digest and source metadata in `release-values.json` on the generated
-`storybook-v2` branch. A downstream GitOps deployment can consume that public
+tags using public GitHub and Docker actions. It records the release version
+tag and source metadata in `release-values.json` on the generated
+`storybook-v2` branch. The file uses the published version as `image.tag`,
+keeping container images readable and compatible with Kubernetes version
+labels. Release versions must fit the 63-character Kubernetes label limit.
+A downstream GitOps deployment can consume that public
 file without this repository requiring access to private infrastructure or
 internal actions. Publishing runs are serialized per branch. A previous source
 commit must be an ancestor of the new release; a stale run cannot roll the
