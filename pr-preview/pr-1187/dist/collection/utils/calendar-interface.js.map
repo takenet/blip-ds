@@ -1,0 +1,1 @@
+{"version":3,"file":"calendar-interface.js","sourceRoot":"","sources":["../../../src/utils/calendar-interface.ts"],"names":[],"mappings":"","sourcesContent":["/* eslint-disable @typescript-eslint/no-explicit-any */\nexport interface MonthsList {\n  value: number;\n  label: string;\n}\n"]}
