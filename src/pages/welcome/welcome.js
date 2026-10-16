@@ -98,17 +98,6 @@ export const Welcome = () => {
               <bds-grid padding="t-2" gap="1">
                 <a
                   style={{ color: '#B2DFFD', textDecoration: 'none', fontFamily: 'Nunito Sans', fontSize: '16px' }}
-                  href="https://design.blip.ai/d/UbKsV1JhXTK4/componentes-desenvolvimento#/visao-geral/todos-os-componentes"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Uai Design System
-                </a>
-                <bds-icon style={{ color: '#B2DFFD' }} name="arrow-right"></bds-icon>
-              </bds-grid>
-              <bds-grid padding="t-2" gap="1">
-                <a
-                  style={{ color: '#B2DFFD', textDecoration: 'none', fontFamily: 'Nunito Sans', fontSize: '16px' }}
                   href="https://github.com/takenet/blip-ds"
                   target="_blank"
                   rel="noopener noreferrer"
