@@ -1,11 +1,19 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { BdsLoading } from '../loading-page';
 
+const mockFetch = jest.fn();
+global.fetch = mockFetch;
+
 describe('bds-loading-page', () => {
   let page;
   let component;
 
   beforeEach(async () => {
+    mockFetch.mockReset();
+    mockFetch.mockResolvedValue({
+      ok: true,
+      text: jest.fn().mockResolvedValue('<svg width="24" height="24"><path fill="white" /></svg>'),
+    });
     page = await newSpecPage({
       components: [BdsLoading],
       html: '<bds-loading-page></bds-loading-page>',
@@ -75,8 +83,14 @@ describe('bds-loading-page', () => {
       expect(pageLoading.innerHTML).toContain('svg');
     });
 
-    it('should render the white Blip ballon logo', async () => {
+    it('should render the white Blip ballon logo from the tokens CDN', async () => {
       const pageLoading = page.root.shadowRoot.querySelector('.page_loading');
+      await component.setSvgContent();
+      await page.waitForChanges();
+
+      expect(mockFetch).toHaveBeenCalledWith(
+        'https://cdn.blip.ai/blip-tokens/2.0.2/illustrations/brand/blip-ballon-white.svg',
+      );
       expect(pageLoading.innerHTML).toContain('fill="white"');
     });
 
@@ -238,8 +252,9 @@ describe('bds-loading-page', () => {
 
     it('should render content after componentWillLoad', async () => {
       const component = new BdsLoading();
-      
+      const setSvgContent = jest.spyOn(component, 'setSvgContent').mockResolvedValue(undefined);
       component.componentWillLoad();
+      expect(setSvgContent).toHaveBeenCalled();
       
       // After componentWillLoad, the component should be ready to render content
       const page = await newSpecPage({

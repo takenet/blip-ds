@@ -4,23 +4,8 @@ import { Build } from '@stencil/core';
 // Mock Build.isBrowser
 (Build as any).isBrowser = true;
 
-// Mock the blip-tokens imports
-jest.mock('blip-tokens/build/json/assets_icons.json', () => ({
-  'asset-icon-edit-outline':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTMgMTdWMjFIMTBWMTlINVYxN0gzWiIgZmlsbD0iIzMzMzMzMyIvPjwvc3ZnPg==',
-  'asset-icon-edit-solid':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTMgMTdWMjFIMTBWMTlINVYxN0gzWiIgZmlsbD0iIzMzMzMzMyIvPjwvc3ZnPg==',
-}));
-
-jest.mock('blip-tokens/build/json/assets_emojis.json', () => ({
-  'asset-emoji-smile':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiNGRkQ1NEYiLz48L3N2Zz4=',
-}));
-
-jest.mock('blip-tokens/build/json/assets_logos.json', () => ({
-  'asset-logo-brand':
-    'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiNGRkQ1NEYiLz48L3N2Zz4=',
-}));
+const mockFetch = jest.fn();
+global.fetch = mockFetch;
 
 // Mock DOM methods
 Object.defineProperty(global, 'document', {
@@ -44,6 +29,13 @@ import { Icon } from '../icon';
 describe('bds-icon', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    (Build as any).isBrowser = true;
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      text: jest.fn().mockResolvedValue('<svg width="24" height="24"><path /></svg>'),
+    });
+    (Build as any).isBrowser = true;
   });
 
   describe('Component Class Logic', () => {
@@ -269,7 +261,7 @@ describe('bds-icon', () => {
   });
 
   describe('SVG Content Loading', () => {
-    it('should load SVG content for icon type', async () => {
+    it('should load SVG content for icon type from the tokens CDN', async () => {
       const page = await newSpecPage({
         components: [Icon],
         html: `<bds-icon name="edit" type="icon" theme="outline"></bds-icon>`,
@@ -282,10 +274,11 @@ describe('bds-icon', () => {
       (Build as any).isBrowser = true;
 
       // Call setSvgContent directly to test the logic
-      (page.rootInstance as any).setSvgContent();
+      await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(page.rootInstance.svgContent).toContain('PHN2ZyB3aWR0aD0i');
+      expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/icons/edit-outline.svg');
+      expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
     it('should load SVG content for emoji type', async () => {
@@ -301,13 +294,14 @@ describe('bds-icon', () => {
       (Build as any).isBrowser = true;
 
       // Call setSvgContent directly to test the logic
-      (page.rootInstance as any).setSvgContent();
+      await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(page.rootInstance.svgContent).toContain('PHN2ZyB3aWR0aD0i');
+      expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/emojis/smiling-face.svg');
+      expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
-    it('should load SVG content for logo type', async () => {
+  it('should load SVG content for logo type', async () => {
       const page = await newSpecPage({
         components: [Icon],
         html: `<bds-icon name="brand" type="logo"></bds-icon>`,
@@ -320,10 +314,11 @@ describe('bds-icon', () => {
       (Build as any).isBrowser = true;
 
       // Call setSvgContent directly to test the logic
-      (page.rootInstance as any).setSvgContent();
+      await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(page.rootInstance.svgContent).toContain('PHN2ZyB3aWR0aD0i');
+      expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/logos/blip-chat.svg');
+      expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
     it('should not load SVG content when name is not provided', async () => {
@@ -343,14 +338,7 @@ describe('bds-icon', () => {
     it('should handle errors when loading invalid icon names', async () => {
       const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
 
-      // Mock atob to throw an error for invalid icons
-      const originalAtob = global.atob;
-      global.atob = jest.fn().mockImplementation((str) => {
-        if (str.includes('invalid-icon')) {
-          throw new Error('Invalid base64');
-        }
-        return str;
-      });
+      mockFetch.mockRejectedValueOnce(new Error('Not found'));
 
       const page = await newSpecPage({
         components: [Icon],
@@ -364,14 +352,32 @@ describe('bds-icon', () => {
       (Build as unknown as { isBrowser: boolean }).isBrowser = true;
 
       // Call setSvgContent directly to trigger the error
-      (page.rootInstance as unknown as { setSvgContent: () => void }).setSvgContent();
+      await (page.rootInstance as unknown as { setSvgContent: () => Promise<void> }).setSvgContent();
 
       expect(consoleWarnSpy).toHaveBeenCalledWith('[Warning]: Failed to setSvgContent to', 'invalid-icon');
 
-      // Restore mocks
-      global.atob = originalAtob;
       consoleWarnSpy.mockRestore();
     });
+  });
+
+  it('maps legacy smile and brand names to assets available in blip-tokens v2', async () => {
+    const emojiPage = await newSpecPage({
+      components: [Icon],
+      html: `<bds-icon name="smile" type="emoji"></bds-icon>`,
+      supportsShadowDom: false,
+      autoApplyChanges: false,
+    });
+    await (emojiPage.rootInstance as any).setSvgContent();
+    expect(mockFetch).toHaveBeenLastCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/emojis/smiling-face.svg');
+
+    const logoPage = await newSpecPage({
+      components: [Icon],
+      html: `<bds-icon name="brand" type="logo"></bds-icon>`,
+      supportsShadowDom: false,
+      autoApplyChanges: false,
+    });
+    await (logoPage.rootInstance as any).setSvgContent();
+    expect(mockFetch).toHaveBeenLastCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/logos/blip-chat.svg');
   });
 
   describe('Lifecycle Methods', () => {

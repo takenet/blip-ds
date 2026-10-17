@@ -1,10 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-import icons from 'blip-tokens/build/json/assets_icons.json';
-import emojis from 'blip-tokens/build/json/assets_emojis.json';
-import logo from 'blip-tokens/build/json/assets_logos.json';
+import packageJson from '../../../package.json';
 import { IconSize, IconTheme, IconType } from './icon-interface';
 import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
+
+const tokensVersion = packageJson.dependencies['blip-tokens'].replace(/^[~^]/, '');
+const tokensCdnUrl = `https://cdn.blip.ai/blip-tokens/${tokensVersion}`;
+const LEGACY_NAME_ALIASES: Record<string, string> = {
+  'emoji:smile': 'smiling-face',
+  'logo:brand': 'blip-chat',
+};
+
+const getAssetUrl = (type: IconType, name: string, theme: IconTheme): string => {
+  const legacyKey = `${type}:${name}`;
+  const canonicalName = LEGACY_NAME_ALIASES[legacyKey] || name;
+  const assetPath =
+    type === 'icon'
+      ? `icons/${encodeURIComponent(getIconName(canonicalName, theme).replace(/^asset-icon-/, ''))}`
+      : type === 'emoji'
+        ? `emojis/${encodeURIComponent(getEmojiName(canonicalName).replace(/^asset-emoji-/, ''))}`
+        : `logos/${encodeURIComponent(getLogoName(canonicalName).replace(/^asset-logo-/, ''))}`;
+
+  return `${tokensCdnUrl}/${assetPath}.svg`;
+};
 
 @Component({
   tag: 'bds-icon',
@@ -134,22 +152,13 @@ export class Icon {
     }
   }
 
-  setSvgContent = () => {
-    let svg;
+  setSvgContent = async () => {
     try {
-      if (this.type === 'icon') {
-        const key = getIconName(this.name, this.theme);
-        svg = atob(icons[key]);
-        this.svgContent = formatSvg(svg, this.color);
-      } else if (this.type === 'emoji') {
-        const key = getEmojiName(this.name);
-        svg = atob(emojis[key]);
-        this.svgContent = formatSvg(svg, this.color, true);
-      } else if (this.type === 'logo') {
-        const key = getLogoName(this.name);
-        svg = atob(logo[key]);
-        this.svgContent = formatSvg(svg, this.color, true);
-      }
+      const response = await fetch(getAssetUrl(this.type, this.name, this.theme));
+      if (!response.ok) throw new Error(`Failed to fetch icon: ${response.status}`);
+
+      const svg = await response.text();
+      this.svgContent = formatSvg(svg, this.color, this.type !== 'icon');
     } catch (err) {
       // eslint-disable-next-line no-console
       console.warn('[Warning]: Failed to setSvgContent to', this.name);

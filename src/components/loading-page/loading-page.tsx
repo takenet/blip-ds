@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
-import blipBallonWhite from 'blip-tokens/build/json/illustrations/brand/blip-ballon-white.json';
+import packageJson from '../../../package.json';
 
 @Component({
   tag: 'bds-loading-page',
@@ -14,8 +14,8 @@ export class BdsLoading {
    */
   @Prop() dataTest?: string = null;
 
-  componentWillLoad() {
-    this.setSvgContent();
+  async componentWillLoad() {
+    await this.setSvgContent();
   }
 
   /**Function to transform the svg in a div element. */
@@ -29,11 +29,18 @@ export class BdsLoading {
     return div.innerHTML;
   };
 
-  setSvgContent = () => {
-    const innerHTML = blipBallonWhite['asset-brand-blip-ballon-white-svg'];
+  setSvgContent = async () => {
+    const tokensVersion = packageJson.dependencies['blip-tokens'].replace(/^[~^]/, '');
+    const assetUrl = `https://cdn.blip.ai/blip-tokens/${tokensVersion}/illustrations/brand/blip-ballon-white.svg`;
 
-    const svg = atob(innerHTML);
-    this.svgContent = this.formatSvg(svg);
+    try {
+      const response = await fetch(assetUrl);
+      if (!response.ok) throw new Error(`Failed to fetch illustration: ${response.status}`);
+      const svg = this.formatSvg(await response.text());
+      this.svgContent = svg;
+    } catch (_error) {
+      this.svgContent = '';
+    }
   };
 
   render() {
