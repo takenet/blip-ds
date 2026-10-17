@@ -1,7 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { BdsLoadingSpinner } from '../loading-spinner';
 
+const mockFetch = jest.fn();
+global.fetch = mockFetch;
+
 describe('bds-loading-spinner', () => {
+    beforeEach(() => {
+        mockFetch.mockReset();
+        mockFetch.mockResolvedValue({
+            ok: true,
+            text: jest.fn().mockResolvedValue('<svg width="24" height="24"><path /></svg>'),
+        });
+    });
+
     it('should render with default props', async () => {
         const page = await newSpecPage({
             components: [BdsLoadingSpinner],
@@ -323,7 +334,7 @@ describe('bds-loading-spinner', () => {
     });
 
     describe('setSvgContent method', () => {
-        it('should set SVG content during component lifecycle', async () => {
+        it('should set SVG content from the versioned tokens CDN during component lifecycle', async () => {
             const page = await newSpecPage({
                 components: [BdsLoadingSpinner],
                 html: `<bds-loading-spinner></bds-loading-spinner>`,
@@ -332,6 +343,7 @@ describe('bds-loading-spinner', () => {
             const component = page.rootInstance;
             expect(component.svgContent).toBeTruthy();
             expect(component.svgContent).toContain('svg');
+            expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/components/loading-spinner-standard.svg');
         });
 
         it('should update SVG content when size changes', async () => {
@@ -345,10 +357,11 @@ describe('bds-loading-spinner', () => {
 
             // Change size and trigger setSvgContent
             component.size = 'standard';
-            component.setSvgContent();
+            await component.setSvgContent();
 
             expect(component.svgContent).toBeTruthy();
             expect(component.svgContent).toContain('svg');
+            expect(mockFetch).toHaveBeenLastCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/components/loading-spinner-standard.svg');
         });
     });
 

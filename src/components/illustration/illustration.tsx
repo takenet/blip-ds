@@ -36,13 +36,21 @@ export class BdsIllustration {
 
   /**Function to map the svg and call the "formatSvg" function */
   setIllustrationContent = () => {
-    const tokensVersion = packageJson.dependencies['blip-tokens'].replace('^', '');
-    const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/illustrations/${this.type}/${this.name}.json`;
-    fetch(apiUrl).then((response) =>
-      response.json().then((data) => {
-        this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
-      }),
-    );
+    const tokensVersion = packageJson.dependencies['blip-tokens'].replace(/^[~^]/, '');
+    const illustrationType = this.type === 'default' ? 'default' : this.type;
+    const apiUrl = `https://cdn.blip.ai/blip-tokens/${tokensVersion}/illustrations/${encodeURIComponent(illustrationType)}/${encodeURIComponent(this.name)}.svg`;
+    this.loadIllustration(apiUrl);
+  };
+
+  private async loadIllustration(apiUrl: string): Promise<void> {
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) throw new Error(`Failed to fetch illustration: ${response.status}`);
+      const svg = await response.text();
+      this.IllustrationContent = btoa(svg);
+    } catch (_error) {
+      // Keep the default placeholder when the CDN asset cannot be loaded.
+    }
   };
 
   render(): HTMLElement {

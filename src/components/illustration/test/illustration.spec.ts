@@ -10,10 +10,13 @@ describe('bds-illustration', () => {
   beforeEach(() => {
     mockFetch.mockClear();
     mockFetch.mockResolvedValue({
+      ok: true,
       json: jest.fn().mockResolvedValue({
         'asset-default-test-svg': 'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjwvc3ZnPg==',
       }),
+      text: jest.fn().mockResolvedValue('<svg width="24" height="24"></svg>'),
     });
+    (global as any).btoa = (value: string) => Buffer.from(value, 'binary').toString('base64');
   });
 
   afterEach(() => {
@@ -185,12 +188,11 @@ describe('bds-illustration', () => {
     });
 
     it('should set illustration content after successful fetch', async () => {
-      const mockSvgContent = 'PHN2ZyBmaWxsPSIjMDAwIj48L3N2Zz4=';
+      const mockSvg = '<svg fill="#000"></svg>';
       (fetch as jest.Mock).mockClear();
       (fetch as jest.Mock).mockResolvedValue({
-        json: jest.fn().mockResolvedValue({
-          'asset-default-test-svg': mockSvgContent,
-        }),
+        ok: true,
+        text: jest.fn().mockResolvedValue(mockSvg),
       });
 
       const page = await newSpecPage({
@@ -201,7 +203,7 @@ describe('bds-illustration', () => {
       // Wait for fetch to complete
       await page.waitForChanges();
 
-      expect(page.rootInstance.IllustrationContent).toBe(mockSvgContent);
+      expect(page.rootInstance.IllustrationContent).toBe(btoa(mockSvg));
     });
 
     it('should construct correct API URL for different types', async () => {
@@ -228,7 +230,7 @@ describe('bds-illustration', () => {
       expect(page.rootInstance.name).toBe('custom-illustration');
       expect(fetch).toHaveBeenCalled();
       const fetchCall = (fetch as jest.Mock).mock.calls[0];
-      expect(fetchCall[0]).toContain('custom-illustration.json');
+      expect(fetchCall[0]).toContain('custom-illustration.svg');
     });
 
     it('should accept alt property', async () => {
@@ -303,7 +305,7 @@ describe('bds-illustration', () => {
       expect(page.rootInstance.name).toBe('');
       expect(fetch).toHaveBeenCalled();
       const fetchCall = (fetch as jest.Mock).mock.calls[0];
-      expect(fetchCall[0]).toContain('.json');
+      expect(fetchCall[0]).toContain('.svg');
     });
 
     it('should not crash when no name is provided', async () => {
@@ -337,8 +339,8 @@ describe('bds-illustration', () => {
 
       expect(fetch).toHaveBeenCalled();
       const fetchCall = (fetch as jest.Mock).mock.calls[0];
-      expect(fetchCall[0]).toContain('blip-tokens@');
-      expect(fetchCall[0]).toMatch(/blip-tokens@[\d.]+/);
+      expect(fetchCall[0]).toContain('/blip-tokens/2.0.2/');
+      expect(fetchCall[0]).toMatch(/blip-tokens\/[\d.]+\//);
     });
   });
 });

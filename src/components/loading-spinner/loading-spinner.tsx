@@ -1,7 +1,5 @@
-import { Component, h, Host, Prop, State } from '@stencil/core';
-import loadExtraSmall from '../../assets/svg/load-extra-small.svg';
-import loadSmall from '../../assets/svg/load-small.svg';
-import loadStandard from '../../assets/svg/load-standard.svg';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import packageJson from '../../../package.json';
 
 export type LoadingSpinnerVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'delete';
 export type loadingSize = 'extra-small' | 'small' | 'standard';
@@ -16,6 +14,7 @@ export type LoadingSpinnerColorMap = { [key in LoadingSpinnerVariant]: string };
 })
 export class BdsLoadingSpinner {
   @State() private svgContent?: string;
+  private requestId = 0;
   /**
    * 	Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
    */
@@ -51,17 +50,22 @@ export class BdsLoadingSpinner {
     return div.innerHTML;
   };
 
-  setSvgContent = () => {
-    const innerHTML =
-      this.size == 'extra-small'
-        ? loadExtraSmall
-        : this.size == 'small'
-          ? loadSmall
-          : this.size == 'standard' && loadStandard;
+  @Watch('size')
+  async setSvgContent(): Promise<void> {
+    const requestId = ++this.requestId;
+    const tokensVersion = packageJson.dependencies['blip-tokens'].replace(/^[~^]/, '');
+    const assetName = this.size === 'extra-small' ? 'loading-spinner-extra-small' : `loading-spinner-${this.size}`;
+    const assetUrl = `https://cdn.blip.ai/blip-tokens/${tokensVersion}/components/${assetName}.svg`;
 
-    const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
-    this.svgContent = this.formatSvg(svg);
-  };
+    try {
+      const response = await fetch(assetUrl);
+      if (!response.ok) throw new Error(`Failed to fetch loading spinner: ${response.status}`);
+      const svg = this.formatSvg(await response.text());
+      if (requestId === this.requestId) this.svgContent = svg;
+    } catch (_error) {
+      if (requestId === this.requestId) this.svgContent = undefined;
+    }
+  }
 
   render() {
     return (

@@ -1,6 +1,6 @@
 import { Component, h, Element, State, Prop, Method, Event, EventEmitter, Watch } from '@stencil/core';
 import { termTranslate, languages } from './languages';
-import background from '../../assets/svg/pattern.svg';
+import packageJson from '../../../package.json';
 
 @Component({
   tag: 'bds-upload',
@@ -14,7 +14,7 @@ export class BdsUpload {
   @State() files: File[] = [];
   @State() haveFiles = false;
   @State() hover = false;
-  @State() background: string;
+  @State() background: string = `https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens'].replace(/^[~^]/, '')}/components/upload-pattern.svg`;
   @State() size: number[] = [];
   @State() internalAccepts: string[] = [];
   @State() formatError = false;
@@ -339,7 +339,7 @@ export class BdsUpload {
                 </bds-typo>
               )}
             </div>
-            <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={background} />
+            <img class={{ 'upload__img--invisible': true, 'upload__img--visible': this.hover }} src={this.background} />
           </label>
           <input
             ref={this.refInputElement}
