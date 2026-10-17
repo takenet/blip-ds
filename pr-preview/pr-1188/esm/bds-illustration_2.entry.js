@@ -1,0 +1,77 @@
+import { r as registerInstance, h, H as Host } from './index-611fd21e.js';
+import { p as packageJson } from './package-ded5d3e6.js';
+
+const illustrationCss = ":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}";
+
+const BdsIllustration = class {
+  constructor(hostRef) {
+    registerInstance(this, hostRef);
+    /**Function to map the svg and call the "formatSvg" function */
+    this.setIllustrationContent = () => {
+      const tokensVersion = packageJson.dependencies['blip-tokens'].replace(/^[~^]/, '');
+      const illustrationType = this.type === 'default' ? 'default' : this.type;
+      const apiUrl = `https://cdn.blip.ai/blip-tokens/${tokensVersion}/illustrations/${encodeURIComponent(illustrationType)}/${encodeURIComponent(this.name)}.svg`;
+      this.loadIllustration(apiUrl);
+    };
+    this.IllustrationContent = undefined;
+    this.type = 'default';
+    this.name = undefined;
+    this.alt = undefined;
+    this.dataTest = null;
+  }
+  componentWillLoad() {
+    this.setIllustrationContent();
+  }
+  async loadIllustration(apiUrl) {
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok)
+        throw new Error(`Failed to fetch illustration: ${response.status}`);
+      const svg = await response.text();
+      this.IllustrationContent = btoa(svg);
+    }
+    catch (_error) {
+      // Keep the default placeholder when the CDN asset cannot be loaded.
+    }
+  }
+  ;
+  render() {
+    return (h(Host, { role: "img", class: {
+        'bds-illustration': true,
+      } }, this.IllustrationContent ? (h("img", { draggable: false, src: `data:image/svg+xml;base64,${this.IllustrationContent}`, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
+  }
+  static get assetsDirs() { return ["svg"]; }
+};
+BdsIllustration.style = illustrationCss;
+
+const skeletonCss = ".skeleton{min-width:8px;min-height:8px;background-color:var(--color-content-default, #282828);opacity:0.16;overflow:hidden}.skeleton_shape--circle{border-radius:50%}.skeleton_shape--square{border-radius:8px}.animation{position:absolute;width:100%;height:100%;background:-webkit-gradient(linear, left top, right top, from(rgba(246, 246, 246, 0)), color-stop(50%, rgba(246, 246, 246, 0.56)), to(rgba(246, 246, 246, 0)));background:linear-gradient(90deg, rgba(246, 246, 246, 0) 0%, rgba(246, 246, 246, 0.56) 50%, rgba(246, 246, 246, 0) 100%);mix-blend-mode:overlay;-webkit-animation:2.5s ease-out infinite shine;animation:2.5s ease-out infinite shine}@-webkit-keyframes shine{0%{-webkit-transform:translateX(-100%);transform:translateX(-100%)}20%{-webkit-transform:translateX(100%);transform:translateX(100%)}100%{-webkit-transform:translateX(100%);transform:translateX(100%)}}@keyframes shine{0%{-webkit-transform:translateX(-100%);transform:translateX(-100%)}20%{-webkit-transform:translateX(100%);transform:translateX(100%)}100%{-webkit-transform:translateX(100%);transform:translateX(100%)}}";
+
+const Skeleton = class {
+  constructor(hostRef) {
+    registerInstance(this, hostRef);
+    this.shape = 'square';
+    this.height = '50px';
+    this.width = '100%';
+    this.dataTest = null;
+  }
+  render() {
+    return (h(Host, { style: {
+        display: 'flex',
+        position: 'relative',
+        overflow: 'hidden',
+        width: this.width,
+        height: this.height,
+        borderRadius: this.shape === 'circle' ? '50%' : '8px',
+      } }, h("bds-grid", { xxs: "12", class: { skeleton: true, [`skeleton_shape--${this.shape}`]: true } }), h("div", { style: {
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        borderRadius: this.shape === 'circle' ? '50%' : '8px',
+        overflow: 'hidden',
+      }, "data-test": this.dataTest }, h("div", { class: "animation" }))));
+  }
+};
+Skeleton.style = skeletonCss;
+
+export { BdsIllustration as bds_illustration, Skeleton as bds_skeleton };

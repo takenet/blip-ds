@@ -1,0 +1,1 @@
+System.register(["./p-d105fb25.system.js"],(function(t){"use strict";var n,r;return{setters:[function(t){n=t.r;r=t.h}],execute:function(){var e=t("bds_card_body",function(){function t(t){n(this,t)}t.prototype.render=function(){return r("bds-grid",null,r("slot",null))};return t}())}}}));
