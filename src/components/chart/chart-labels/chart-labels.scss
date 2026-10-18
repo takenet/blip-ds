@@ -1,0 +1,23 @@
+.chart-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+
+  &__x,
+  &__y {
+    text {
+      font-size: 12px;
+      fill: rgba(0, 0, 0, 0.6);
+      user-select: none;
+    }
+  }
+
+  &__x {
+    text-anchor: middle;
+  }
+
+  &__y {
+    text-anchor: end;
+  }
+}
