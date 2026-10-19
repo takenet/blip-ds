@@ -1,0 +1,1 @@
+{"version":3,"file":"en_US.js","sourceRoot":"","sources":["../../../../../src/components/autocomplete/languages/en_US.tsx"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,OAAO,GAAG;IACrB,QAAQ,EAAE,UAAU;IACpB,WAAW,EAAE,YAAY;CAC1B,CAAC","sourcesContent":["export const enTerms = {\n  selected: 'selected',\n  allSelected: 'Select all',\n};\n"]}
