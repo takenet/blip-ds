@@ -1,10 +1,11 @@
 import { h, Host } from '@stencil/core';
-import packageJson from '../../../package.json';
+// Named import lets Rollup tree-shake the manifest, so devDependencies are not shipped in dist (flagged by SCA scanners).
+import { dependencies } from '../../../package.json';
 export class BdsIllustration {
   constructor() {
     /**Function to map the svg and call the "formatSvg" function */
     this.setIllustrationContent = () => {
-      const tokensVersion = packageJson.dependencies['blip-tokens'].replace('^', '');
+      const tokensVersion = dependencies['blip-tokens'].replace('^', '');
       const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/illustrations/${this.type}/${this.name}.json`;
       fetch(apiUrl).then((response) => response.json().then((data) => {
         this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
