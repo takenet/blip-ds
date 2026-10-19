@@ -61,6 +61,7 @@
     "@types/react-dom": "^18.3.1",
     "@types/webpack": "^5.28.5",
     "@types/yargs": "^17.0.33",
+    "autoprefixer": "^10.4.21",
     "@typescript-eslint/eslint-plugin": "^8.35.1",
     "@typescript-eslint/parser": "^8.35.1",
     "babel-loader": "^10.0.0",
@@ -84,6 +85,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.6.2",
     "puppeteer": "^24.11.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rimraf": "^6.0.1",
     "semantic-release": "^24.2.6",
     "storybook": "^10.1.0-alpha.11",
@@ -93,10 +96,7 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.21",
-    "blip-tokens": "^1.103.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "blip-tokens": "^1.106.0"
   },
   "repository": {
     "type": "git",

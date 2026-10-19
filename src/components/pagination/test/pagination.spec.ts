@@ -15,6 +15,10 @@ jest.mock('../../../utils/position-element', () => ({
 
 import { Pagination } from '../pagination';
 
+const isButtonIconDisabled = (button: HTMLElement): boolean => {
+  return button.hasAttribute('disabled') || Boolean((button as HTMLButtonElement & { disabled?: boolean }).disabled);
+};
+
 describe('bds-pagination', () => {
   describe('Component Creation', () => {
     it('should create component', () => {
@@ -121,6 +125,24 @@ describe('bds-pagination', () => {
       expect(page.root.startedPage).toBe(3);
     });
 
+    it('should fallback to first page when startedPage is lower than 1', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5" started-page="-1"></bds-pagination>`,
+      });
+
+      expect(page.rootInstance.value).toBe(1);
+    });
+
+    it('should clamp startedPage to the last page when startedPage is greater than total pages', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="5" started-page="9"></bds-pagination>`,
+      });
+
+      expect(page.rootInstance.value).toBe(5);
+    });
+
     it('should render with page counter when enabled', async () => {
       const page = await newSpecPage({
         components: [Pagination],
@@ -202,6 +224,66 @@ describe('bds-pagination', () => {
         nextButton.click();
         expect(changeSpy).toHaveBeenCalled();
       }
+    });
+
+    it('should disable back actions when on first page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="10" started-page="1"></bds-pagination>`,
+      });
+
+      await page.waitForChanges();
+
+      const buttons = page.root.shadowRoot.querySelectorAll('bds-button-icon');
+      const firstButton = buttons[0] as HTMLElement;
+      const prevButton = buttons[1] as HTMLElement;
+      const nextButton = buttons[2] as HTMLElement;
+      const lastButton = buttons[3] as HTMLElement;
+
+      expect(isButtonIconDisabled(firstButton)).toBe(true);
+      expect(isButtonIconDisabled(prevButton)).toBe(true);
+      expect(isButtonIconDisabled(nextButton)).toBe(false);
+      expect(isButtonIconDisabled(lastButton)).toBe(false);
+    });
+
+    it('should disable forward actions when on last page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="10" started-page="10"></bds-pagination>`,
+      });
+
+      await page.waitForChanges();
+
+      const buttons = page.root.shadowRoot.querySelectorAll('bds-button-icon');
+      const firstButton = buttons[0] as HTMLElement;
+      const prevButton = buttons[1] as HTMLElement;
+      const nextButton = buttons[2] as HTMLElement;
+      const lastButton = buttons[3] as HTMLElement;
+
+      expect(isButtonIconDisabled(firstButton)).toBe(false);
+      expect(isButtonIconDisabled(prevButton)).toBe(false);
+      expect(isButtonIconDisabled(nextButton)).toBe(true);
+      expect(isButtonIconDisabled(lastButton)).toBe(true);
+    });
+
+    it('should disable all actions when there is only one page', async () => {
+      const page = await newSpecPage({
+        components: [Pagination],
+        html: `<bds-pagination pages="1" started-page="1"></bds-pagination>`,
+      });
+
+      await page.waitForChanges();
+
+      const buttons = page.root.shadowRoot.querySelectorAll('bds-button-icon');
+      const firstButton = buttons[0] as HTMLElement;
+      const prevButton = buttons[1] as HTMLElement;
+      const nextButton = buttons[2] as HTMLElement;
+      const lastButton = buttons[3] as HTMLElement;
+
+      expect(isButtonIconDisabled(firstButton)).toBe(true);
+      expect(isButtonIconDisabled(prevButton)).toBe(true);
+      expect(isButtonIconDisabled(nextButton)).toBe(true);
+      expect(isButtonIconDisabled(lastButton)).toBe(true);
     });
   });
 
