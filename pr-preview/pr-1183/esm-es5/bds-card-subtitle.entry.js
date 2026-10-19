@@ -1,1 +1,0 @@
-import{r as registerInstance,h}from"./index-611fd21e.js";var CardSubtitle=function(){function t(t){registerInstance(this,t);this.text=undefined}t.prototype.render=function(){return h("bds-typo",{variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)};return t}();export{CardSubtitle as bds_card_subtitle};
