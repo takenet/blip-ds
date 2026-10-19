@@ -10,6 +10,7 @@
 | Property         | Attribute          | Description                                                                                                             | Type                 | Default     |
 | ---------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------- |
 | `blurCreation`   | `blur-creation`    | When true, the press enter will be simulated on blur event.                                                             | `boolean`            | `false`     |
+| `borderless`     | `borderless`       | When true, removes the border from the input component.                                                                 | `boolean`            | `false`     |
 | `chips`          | `chips`            | The chips on the component Should be passed this way: chips='["chip1", "chip2"]'                                        | `string \| string[]` | `[]`        |
 | `counterLength`  | `counter-length`   | Passing true to display a counter of available size, it is necessary to pass another maxlength property.                | `boolean`            | `false`     |
 | `danger`         | `danger`           | Add state danger on input, use for use feedback.                                                                        | `boolean`            | `false`     |
@@ -115,8 +116,9 @@ Type: `Promise<void>`
 
 | Part                | Description |
 | ------------------- | ----------- |
-| `"input-container"` |             |
-| `"input__message"`  |             |
+| `"chip"`            | The internal visual container of each `<bds-chip-clickable>`, forwarded through the nested Shadow DOM boundaries. Use `bds-input-chips::part(chip) { ... }` to style the chip surface; use `--bds-chip-text-color` and `--bds-chip-icon-color` on `bds-input-chips` for text and icon colors. |
+| `"input-container"` | The main input container that holds the chips and text input field. |
+| `"input__message"`  | The feedback message container that displays error, success, or helper text. |
 
 
 ## Dependencies

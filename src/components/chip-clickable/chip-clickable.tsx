@@ -107,6 +107,7 @@ export class ChipClickable {
           }}
           onClick={this.handleClick.bind(this)}
           data-test={this.dataTest}
+          part="chip"
         >
           {this.clickable && !this.disabled && (
             <div class="chip_focus" onKeyDown={this.handleClickKey.bind(this)} tabindex="0"></div>

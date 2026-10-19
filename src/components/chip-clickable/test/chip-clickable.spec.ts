@@ -16,6 +16,12 @@ describe('bds-chip-clickable', () => {
     expect(page.root.shadowRoot.querySelector('.chip_clickable')).toBeTruthy();
   });
 
+  it('should expose the visual chip container as a shadow part', async () => {
+    const chipElement = page.root.shadowRoot.querySelector('.chip_clickable');
+
+    expect(chipElement.getAttribute('part')).toBe('chip');
+  });
+
   it('should render with default props', async () => {
     expect(page.rootInstance.color).toBe('default');
     expect(page.rootInstance.size).toBe('standard');
