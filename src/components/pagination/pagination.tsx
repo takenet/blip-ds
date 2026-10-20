@@ -152,15 +152,18 @@ export class Pagination {
   }
 
   countPage() {
+    const totalPages = this.pages || 0;
+
     if (this.paginationNumbers.length !== 0) {
       this.paginationNumbers = [];
     }
     if (this.paginationNumbers.length === 0) {
-      for (let i = 1; i <= this.pages; i++) {
+      for (let i = 1; i <= totalPages; i++) {
         this.paginationNumbers.push(i);
       }
-      if (this.startedPage && this.startedPage < this.pages) {
-        this.value = this.startedPage;
+      if (Number.isFinite(this.startedPage) && totalPages > 0) {
+        const normalizedStartedPage = Math.min(totalPages, Math.max(1, Math.trunc(this.startedPage)));
+        this.value = normalizedStartedPage;
       } else {
         this.value = this.paginationNumbers[0];
       }
@@ -169,7 +172,8 @@ export class Pagination {
 
   nextPage = (event: Event) => {
     const el = this.value;
-    if (el < this.pages) {
+    const totalPages = this.pages || 0;
+    if (el < totalPages) {
       event.preventDefault();
       this.value = this.value + 1;
       this.updateItemRange();
@@ -196,9 +200,10 @@ export class Pagination {
 
   lastPage = (event: Event) => {
     const el = this.value;
-    if (el < this.pages) {
+    const totalPages = this.pages || 0;
+    if (el < totalPages) {
       event.preventDefault();
-      this.value = this.pages;
+      this.value = totalPages;
       this.updateItemRange();
     }
   };
@@ -245,6 +250,14 @@ export class Pagination {
 
   render() {
     const { currentLanguage } = this;
+    const totalPages = this.pages || 0;
+    const isFirstPage = this.value <= 1;
+    const isLastPage = this.value >= totalPages;
+    const isSinglePage = totalPages <= 1;
+
+    const disableBackActions = isSinglePage || isFirstPage;
+    const disableForwardActions = isSinglePage || isLastPage;
+
     return (
       <Host class={{ full_width: this.pageCounter }}>
         <bds-grid justify-content="space-between">
@@ -267,6 +280,7 @@ export class Pagination {
           <bds-grid gap="1" align-items="center" class="actions">
             <bds-button-icon
               onBdsClick={(ev) => this.firstPage(ev)}
+              disabled={disableBackActions}
               size="short"
               variant="secondary"
               icon="arrow-first"
@@ -274,6 +288,7 @@ export class Pagination {
             ></bds-button-icon>
             <bds-button-icon
               onBdsClick={(ev) => this.previewPage(ev)}
+              disabled={disableBackActions}
               size="short"
               variant="secondary"
               icon="arrow-left"
@@ -294,6 +309,7 @@ export class Pagination {
             )}
             <bds-button-icon
               onBdsClick={(ev) => this.nextPage(ev)}
+              disabled={disableForwardActions}
               size="short"
               variant="secondary"
               icon="arrow-right"
@@ -301,6 +317,7 @@ export class Pagination {
             ></bds-button-icon>
             <bds-button-icon
               onBdsClick={(ev) => this.lastPage(ev)}
+              disabled={disableForwardActions}
               size="short"
               variant="secondary"
               icon="arrow-last"

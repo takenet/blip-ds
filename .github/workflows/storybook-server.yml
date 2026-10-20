@@ -1,0 +1,45 @@
+name: Production Storybook MCP
+
+on:
+  pull_request:
+    branches: [v2]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: |
+          npm ci --legacy-peer-deps
+          npm ci --prefix storybook-server --ignore-scripts
+        env:
+          HUSKY: 0
+      - name: Test runtime
+        run: npm --prefix storybook-server test
+      - name: Build and validate production documentation
+        run: |
+          npm run build
+          npm run build:react
+          npm run storybook:build
+          node storybook-server/prepare-manifest.mjs
+          node storybook-server/smoke.mjs
+        env:
+          HUSKY: 0
+          STORYBOOK_DISABLE_TELEMETRY: '1'
+      - name: Build production image without publishing
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: storybook-server/Dockerfile
+          push: false
+          build-args: |
+            RELEASE_VERSION=0.0.0-pr-${{ github.event.pull_request.number }}
+            RELEASE_REVISION=${{ github.event.pull_request.head.sha }}

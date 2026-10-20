@@ -25,6 +25,7 @@ module.exports = {
     defaultName: 'Visão Geral'
   },
   staticDirs: [
+    { from: './public', to: '/' },
     { from: '../dist', to: '/dist' },
     { from: '../src/assets', to: '/assets' }
   ],

@@ -43,7 +43,6 @@ export class BdsIllustration {
       this.IllustrationContent = undefined;
     }
   }
-
   render(): HTMLElement {
     return (
       <Host
