@@ -46,8 +46,8 @@ $checkbox-spacing-text: 8px;
 
   &--selected {
     .checkbox__icon {
-      background-color: $color-surface-primary;
-      border-color: $color-surface-primary;
+      background-color: $color-semantic-action-primary-default;
+      border-color: $color-semantic-action-primary-default;
 
       &__svg {
         color: $color-content-bright;
@@ -65,8 +65,8 @@ $checkbox-spacing-text: 8px;
     }
 
     .checkbox__icon {
-      color: $color-content-default;
-      border-color: $color-content-default;
+      color: $color-semantic-content-primary;
+      border-color: $color-semantic-content-primary;
       background-color: $color-surface-3;
       opacity: 50%;
     }
@@ -83,8 +83,8 @@ $checkbox-spacing-text: 8px;
 
   &--indeterminate {
     .checkbox__icon {
-      background-color: $color-surface-primary;
-      border-color: $color-surface-primary;
+      background-color: $color-semantic-action-primary-default;
+      border-color: $color-semantic-action-primary-default;
 
       &__svg {
         color: $color-content-bright;
@@ -102,8 +102,8 @@ $checkbox-spacing-text: 8px;
     }
 
     .checkbox__icon {
-      color: $color-content-default;
-      border-color: $color-content-default;
+      color: $color-semantic-content-primary;
+      border-color: $color-semantic-content-primary;
       background-color: $color-surface-3;
       opacity: 50%;
     }
@@ -120,7 +120,7 @@ $checkbox-spacing-text: 8px;
     .checkbox__icon {
       opacity: 50%;
       background-color: $color-surface-1;
-      border: 1px solid $color-brand;
+      border: 1px solid $color-semantic-action-primary-default;
     }
 
     .checkbox__icon__svg {
@@ -145,7 +145,7 @@ $checkbox-spacing-text: 8px;
     min-width: 18px;
     border-radius: $checkbox-icon-radius;
     color: $color-surface-1;
-    border: 1px solid $color-content-default;
+    border: 1px solid $color-semantic-content-primary;
     box-sizing: border-box;
     border-radius: 4px;
     @include animation();
@@ -153,6 +153,6 @@ $checkbox-spacing-text: 8px;
 
   &__text {
     margin-left: $checkbox-spacing-text;
-    color: $color-content-default;
+    color: $color-semantic-content-primary;
   }
 }

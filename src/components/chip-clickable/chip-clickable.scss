@@ -161,8 +161,8 @@
       color: $color-content-din;
     }
     &--outline {
-      border: 1px solid $color-border-1;
-      color: $color-content-default;
+      border: 1px solid $color-semantic-border-actions;
+      color: $color-semantic-content-primary;
     }
     &:focus-visible {
       outline: none;

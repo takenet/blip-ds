@@ -10,10 +10,10 @@
     flex-wrap: nowrap;
     align-items: center;
     gap: 8px;
-    color: $color-content-default;
+    color: $color-semantic-content-primary;
 
     &_text {
-      color: $color-content-default;
+      color: $color-semantic-content-primary;
       display: flex;
       flex-direction: column;
     }
@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid $color-border-1;
+  border: 1px solid $color-semantic-border-actions;
   border-radius: 8px;
   cursor: pointer;
   font-weight: normal;
@@ -65,7 +65,7 @@
     text-align: center;
     z-index: 2;
     .text {
-      color: $color-content-default;
+      color: $color-semantic-content-primary;
       width: 100%;
       flex-wrap: wrap;
     }
@@ -74,28 +74,28 @@
     background-color: $color-surface-2;
 
     .text {
-      color: $color-primary;
+      color: $color-semantic-action-primary-default;
     }
   }
 }
 
 .upload__edit--label:hover {
-  border: 2px solid $color-primary;
+  border: 2px solid $color-semantic-action-primary-default;
   box-sizing: border-box;
   padding: 22px 16px;
   cursor: pointer;
-  text-decoration: underline $color-primary;
+  text-decoration: underline $color-semantic-action-primary-default;
   color: $color-brand;
 
   .text {
-    color: $color-primary;
+    color: $color-semantic-action-primary-default;
   }
 }
 
 .upload__edit--hover {
   background-size: cover;
   border: 1px dashed $color-surface-4;
-  color: $color-primary;
+  color: $color-semantic-action-primary-default;
   font-weight: bold;
   border-radius: 8px;
 }
@@ -105,8 +105,8 @@
 }
 
 .list-preview {
-  border-top: 1px solid $color-border-1;
-  border-bottom: 1px solid $color-border-1;
+  border-top: 1px solid $color-semantic-border-actions;
+  border-bottom: 1px solid $color-semantic-border-actions;
   max-height: 200px;
   overflow-y: auto;
 }
@@ -136,10 +136,10 @@
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
-      color: $color-content-default;
+      color: $color-semantic-content-primary;
     }
     &-icon {
-      color: $color-content-default;
+      color: $color-semantic-content-primary;
     }
     &-icon:hover {
       cursor: pointer;
