@@ -5,6 +5,25 @@ import { termTranslate } from './languages';
 
 export type positionBar = 'top' | 'bottom';
 
+/**
+ * @part preview - Container that wraps the editable content area.
+ * @part editor - Editable region where rich text content is typed.
+ * @part toolbar - Toolbar wrapper that contains formatting actions.
+ * @part toolbar-header - Header region that groups toolbar controls.
+ * @part toolbar-buttons - Container with the toolbar action buttons.
+ * @part toolbar-accordion-button - Toggle button that expands/collapses toolbar actions.
+ *
+ * @cssprop --bds-rich-text-background - Background color of the rich text root container.
+ * @cssprop --bds-rich-text-toolbar-background - Background color of the toolbar container.
+ * @cssprop --bds-rich-text-toolbar-border-color - Border color of the toolbar container.
+ * @cssprop --bds-rich-text-toolbar-hover-background - Background color of the toolbar hover helper.
+ * @cssprop --bds-rich-text-toolbar-button-color - Text/icon color applied to toolbar buttons.
+ * @cssprop --bds-rich-text-toolbar-button-background - Background color applied to toolbar buttons.
+ * @cssprop --bds-rich-text-toolbar-button-border-color - Border color applied to toolbar buttons.
+ * @cssprop --bds-rich-text-editor-background - Background color of the editable region.
+ * @cssprop --bds-rich-text-editor-color - Text color of the editable region.
+ * @cssprop --bds-rich-text-link-color - Link color inside editable content.
+ */
 @Component({
   tag: 'bds-rich-text',
   styleUrl: 'rich-text.scss',
@@ -858,12 +877,13 @@ export class RichText {
         onMouseEnter={() => (this.insideComponent = true)}
         onMouseLeave={() => (this.insideComponent = false)}
       >
-        <div class="preview">
+        <div class="preview" part="preview">
           <div
             data-test={this.dataTest}
             ref={(el) => this.refeditorElement(el)}
             contentEditable="true"
             class="editor-uai-design-system"
+            part="editor"
             tabindex="0"
             onBlur={this.onBlur}
             onFocus={this.onFocus}
@@ -891,9 +911,10 @@ export class RichText {
               this.headingButtons ||
               this.unstyledButton,
           }}
+          part="toolbar"
         >
-          <div class="accordion-header">
-            <bds-grid ref={(el) => this.refButtonsListElement(el)} class="buttons-list" flex-wrap="wrap">
+          <div class="accordion-header" part="toolbar-header">
+            <bds-grid ref={(el) => this.refButtonsListElement(el)} class="buttons-list" flex-wrap="wrap" part="toolbar-buttons">
               <div onFocus={(ev) => this.onFocusEditorBar(ev)} tabindex="1" class="editor-bar"></div>
               {this.weightButton && (
                 <bds-tooltip tooltip-text={`${termTranslate(this.language, 'bold')}`} position="top-center">
@@ -1165,6 +1186,7 @@ export class RichText {
               id="buttonAccordion"
               variant={this.buttomAccordionActive ? 'solid' : 'text'}
               class="arrow-down"
+              part="toolbar-accordion-button"
               color="content"
               size="short"
               onBdsClick={() => this.setheaderHeight()}
