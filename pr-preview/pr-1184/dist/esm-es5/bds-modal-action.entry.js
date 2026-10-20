@@ -1,2 +1,0 @@
-import{r as registerInstance,h}from"./index-gowA9FoV.js";var modalActionCss=".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";var BdsModalAction=function(){function o(o){registerInstance(this,o)}o.prototype.render=function(){return h("div",{key:"1848e87dac84daf531a6cad1fe89e51588e360d3",class:"modal__action"},h("slot",{key:"c3231a296b5df6fdb78341a3f5d708ed9de43d05"}))};return o}();BdsModalAction.style=modalActionCss;export{BdsModalAction as bds_modal_action};
-//# sourceMappingURL=bds-modal-action.entry.js.map
