@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
-import messageBallon from '../../assets/svg/message-ballon.svg';
+import blipBallonWhite from 'blip-tokens/build/json/illustrations/brand/blip-ballon-white.json';
 
 @Component({
   tag: 'bds-loading-page',
@@ -30,9 +30,9 @@ export class BdsLoading {
   };
 
   setSvgContent = () => {
-    const innerHTML = messageBallon;
+    const innerHTML = blipBallonWhite['asset-brand-blip-ballon-white-svg'];
 
-    const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
+    const svg = atob(innerHTML);
     this.svgContent = this.formatSvg(svg);
   };
 

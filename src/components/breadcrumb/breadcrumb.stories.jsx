@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import DocumentationTemplate from './breadcrumb.mdx';
 import { BdsBreadcrumb } from '../../../blip-ds-react/dist/components';
 
@@ -13,11 +13,19 @@ export default {
 };
 
 export const Properties = (args) => {
-  return (
-    <bds-breadcrumb
-      items={args.items}
-    ></bds-breadcrumb>
-  );
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // keep component defaults unless args explicitly provides a wrapItems value
+    el.items = args.items;
+    if (args.wrapItems !== undefined) {
+      el.wrapItems = args.wrapItems;
+    }
+  }, [args.items, args.wrapItems]);
+
+  return <bds-breadcrumb ref={ref}></bds-breadcrumb>;
 };
 
 Properties.argTypes = {
@@ -28,6 +36,13 @@ Properties.argTypes = {
     description: 'Define the labels and hrefs for the breadcrumb items.',
     control: { type: 'text' },
   },
+  wrapItems: {
+    table: {
+      defaultValue: { summary: 'true' },
+    },
+    description: 'Determines if middle items collapse into a dropdown when there are more than 3 breadcrumb items.',
+    control: 'boolean',
+  },
 };
 
 Properties.args = {
@@ -35,12 +50,27 @@ Properties.args = {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Current Page' },
+    { label: 'Current Page', href: '/current' },
   ]),
 };
 
 export const Events = () => {
   const [clickedItem, setClickedItem] = useState(null);
+  const ref = useRef(null);
+
+  const items = [
+    { label: 'Home', href: '/' },
+    { label: 'Features', href: '/features' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'Documentation' },
+  ];
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.items = JSON.stringify(items);
+    el.wrapItems = true;
+  }, []);
 
   const handleBreadcrumbClick = (event) => {
     const detail = event.detail;
@@ -51,12 +81,7 @@ export const Events = () => {
   return (
     <div>
       <bds-breadcrumb
-        items={JSON.stringify([
-          { label: 'Home', href: '/' },
-          { label: 'Features', href: '/features' },
-          { label: 'Pricing', href: '/pricing' },
-          { label: 'Documentation' },
-        ])}
+        ref={ref}
         onBreadcrumbItemClick={(event) => handleBreadcrumbClick(event)}
       ></bds-breadcrumb>
       {clickedItem && (
@@ -85,6 +110,7 @@ export const FrameworkReact = () => {
         { label: 'Pricing', href: '/pricing' },
         { label: 'Documentation' },
       ]}
+      wrapItems={true}
     />
   );
 };

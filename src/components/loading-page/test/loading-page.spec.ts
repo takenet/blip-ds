@@ -75,6 +75,11 @@ describe('bds-loading-page', () => {
       expect(pageLoading.innerHTML).toContain('svg');
     });
 
+    it('should render the white Blip ballon logo', async () => {
+      const pageLoading = page.root.shadowRoot.querySelector('.page_loading');
+      expect(pageLoading.innerHTML).toContain('fill="white"');
+    });
+
     it('should call setSvgContent on componentWillLoad', async () => {
       const spy = jest.spyOn(component, 'setSvgContent');
       component.componentWillLoad();
