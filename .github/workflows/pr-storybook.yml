@@ -36,19 +36,15 @@ jobs:
           npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HUSKY: 0
 
       - name: Build Storybook for PR
         if: github.event.action != 'closed'
         run: |
           npm run storybook:build -- --output-dir ./storybook-static
         env:
-          STORYBOOK_BASE_PATH: /test-before-migrate/pr-preview/pr-${{ github.event.pull_request.number }}
-          HUSKY: 0
+          STORYBOOK_BASE_PATH: /pr-preview/pr-${{ github.event.pull_request.number }}
 
       - name: Deploy PR Preview (separate from main)
         uses: rossjrw/pr-preview-action@v1
-        env:
-          CI: true
         with:
           source-dir: ./storybook-static
