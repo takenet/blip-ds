@@ -2503,6 +2503,10 @@ export namespace Components {
          */
         "label"?: boolean;
         /**
+          * Marker values to render for numeric ranges.
+         */
+        "markerValues"?: string | number[];
+        /**
           * Markers, Prop to enable markers.
          */
         "markers"?: boolean;
@@ -6581,6 +6585,10 @@ declare namespace LocalJSX {
           * Label, Prop to enable Label.
          */
         "label"?: boolean;
+        /**
+          * Marker values to render for numeric ranges.
+         */
+        "markerValues"?: string | number[];
         /**
           * Markers, Prop to enable markers.
          */

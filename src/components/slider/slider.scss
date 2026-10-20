@@ -78,6 +78,16 @@
     &.step--first {
       justify-content: flex-start;
     }
+    &.step--custom {
+      position: absolute;
+      transform: translateX(-50%);
+      &.step--first:not(.step--last) {
+        transform: none;
+      }
+      &.step--last:not(.step--first) {
+        transform: translateX(-100%);
+      }
+    }
     &.step--last {
       & .label-step {
         position: absolute;

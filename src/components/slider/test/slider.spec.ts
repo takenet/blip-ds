@@ -48,6 +48,30 @@ describe('bds-slider', () => {
     expect(steps.length).toBeGreaterThan(0);
   });
 
+  it('should limit generated markers for large numeric ranges and emit values in constant time', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider min="0" max="500000" step="1" markers="true"></bds-slider>',
+    });
+
+    const steps = page.root.shadowRoot.querySelectorAll('.step');
+    expect(steps.length).toBeLessThanOrEqual(100);
+    expect(page.rootInstance.stepArray.length).toBeLessThanOrEqual(100);
+    expect(page.rootInstance.emiterChange(500000)).toEqual({ value: 500000, name: 500000 });
+  });
+
+  it('should render only the configured numeric marker values at their range positions', async () => {
+    const page = await newSpecPage({
+      components: [Slider],
+      html: '<bds-slider min="0" max="500000" step="1" markers="true" marker-values="[500000,1,1]"></bds-slider>',
+    });
+
+    const steps = page.root.shadowRoot.querySelectorAll('.step');
+    expect(steps).toHaveLength(2);
+    expect(steps[0].style.left).toBe('0.0002%');
+    expect(steps[1].style.left).toBe('100%');
+  });
+
   it('should apply step--first class to the first step and step--last class to the last step', async () => {
     const page = await newSpecPage({
       components: [Slider],

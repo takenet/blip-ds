@@ -1,6 +1,8 @@
 import { Component, Host, h, State, Prop, EventEmitter, Event } from '@stencil/core';
 import { typeRange, StepOption } from './slider-interface';
 
+const MAX_MARKERS = 100;
+
 @Component({
   tag: 'bds-slider',
   styleUrl: 'slider.scss',
@@ -56,6 +58,11 @@ export class Slider {
   @Prop() dataMarkers?: string | StepOption[];
 
   /**
+   * Marker values to render for numeric ranges.
+   */
+  @Prop() markerValues?: string | number[];
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -82,10 +89,23 @@ export class Slider {
       const percent = this.stepArray.length > 1 ? (initialIndex / (this.stepArray.length - 1)) * 100 : 50;
       this.tooltipPosition = this.computeTooltipPosition(percent);
     } else {
-      this.stepArray = this.arrayToSteps(
-        (this.max - this.min) / this.step,
-        Number.isInteger((this.max - this.min) / this.step),
-      ) as StepOption[];
+      if (this.markerValues) {
+        const markerValues: number[] =
+          typeof this.markerValues === 'string' ? JSON.parse(this.markerValues) : this.markerValues;
+        const min = this.min ?? 0;
+        const max = this.max ?? 100;
+        this.stepArray = Array.from(
+          new Set(markerValues.filter((value) => Number.isFinite(value) && value >= min && value <= max)),
+        )
+          .sort((first, second) => first - second)
+          .map((value) => ({ value: (value - min) / (this.step ?? 1), name: value }));
+      } else {
+        const min = this.min ?? 0;
+        const max = this.max ?? 100;
+        const step = this.step ?? 1;
+        const numberOfSteps = (max - min) / step;
+        this.stepArray = this.arrayToSteps(numberOfSteps, Number.isInteger(numberOfSteps)) as StepOption[];
+      }
       const min = this.min ?? 0;
       const max = this.max ?? 100;
       const value = this.value ?? min;
@@ -170,18 +190,31 @@ export class Slider {
     if (this.internalOptions) {
       return this.stepArray[value];
     } else {
-      return this.stepArray.find((item) => parseInt(item.name) === value);
+      const min = this.min ?? 0;
+      const step = this.step ?? 1;
+      return { value: (value - min) / step, name: value };
     }
   };
 
-  private arrayToSteps(value: number, int: boolean): unknown {
+  private arrayToSteps(value: number, int: boolean): StepOption[] {
     const numberToCalc = int ? value + 1 : value;
-    const valueSteps = [];
-    for (let i = 0; i < numberToCalc; i++) {
+    const stepCount = Math.ceil(numberToCalc);
+    const markerInterval = Math.max(1, Math.ceil((stepCount - 1) / (MAX_MARKERS - 1)));
+    const valueSteps: number[] = [];
+    for (let i = 0; i < stepCount; i += markerInterval) {
       valueSteps.push(i);
     }
-    return valueSteps.map((term) => ({ value: term, name: term * this.step + this.min }));
+    if (stepCount > 0 && valueSteps[valueSteps.length - 1] !== stepCount - 1) {
+      valueSteps.push(stepCount - 1);
+    }
+    return valueSteps.map((term) => ({ value: term, name: term * (this.step ?? 1) + (this.min ?? 0) }));
   }
+
+  private markerPosition = (item: StepOption): number => {
+    const min = this.min ?? 0;
+    const max = this.max ?? 100;
+    return max !== min ? ((Number(item.name) - min) * 100) / (max - min) : 50;
+  };
 
   render() {
     return (
@@ -201,7 +234,16 @@ export class Slider {
         <div class="track-bg">
           {this.markers &&
             this.stepArray.map((item, index) => (
-              <div key={index} class={{ step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 }}>
+              <div
+                key={index}
+                class={{
+                  step: true,
+                  'step--first': index === 0,
+                  'step--last': index === this.stepArray.length - 1,
+                  'step--custom': Boolean(this.markerValues),
+                }}
+                style={this.markerValues ? { left: `${this.markerPosition(item)}%` } : undefined}
+              >
                 {this.label && <bds-typo class="label-step" variant="fs-10">{`${item.name}`}</bds-typo>}
               </div>
             ))}
