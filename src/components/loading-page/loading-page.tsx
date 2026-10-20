@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
-import blipBallonWhite from 'blip-tokens/build/json/illustrations/brand/blip-ballon-white.json';
+import { loadAssetSvg } from '../../utils/asset-loader';
 
 @Component({
   tag: 'bds-loading-page',
@@ -29,11 +29,13 @@ export class BdsLoading {
     return div.innerHTML;
   };
 
-  setSvgContent = () => {
-    const innerHTML = blipBallonWhite['asset-brand-blip-ballon-white-svg'];
-
-    const svg = atob(innerHTML);
-    this.svgContent = this.formatSvg(svg);
+  setSvgContent = async (): Promise<void> => {
+    try {
+      const svg = await loadAssetSvg('asset-component-loading-page');
+      this.svgContent = this.formatSvg(svg);
+    } catch {
+      this.svgContent = undefined;
+    }
   };
 
   render() {

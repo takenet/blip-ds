@@ -25,7 +25,9 @@ jobs:
 
       - name: NPM Install and build
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
+          npm run assets:prepare
+          node --test scripts/test/*.test.cjs
 
       - name: Lint
         run: |

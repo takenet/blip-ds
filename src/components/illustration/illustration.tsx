@@ -1,7 +1,6 @@
-import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { IllustrationType } from './illustration-interface';
-// Named import lets Rollup tree-shake the manifest, so devDependencies are not shipped in dist (flagged by SCA scanners).
-import { dependencies } from '../../../package.json';
+import { getAssetUrl } from '../../utils/asset-loader';
 
 @Component({
   tag: 'bds-illustration',
@@ -35,17 +34,15 @@ export class BdsIllustration {
     this.setIllustrationContent();
   }
 
-  /**Function to map the svg and call the "formatSvg" function */
-  setIllustrationContent = () => {
-    const tokensVersion = dependencies['blip-tokens'].replace('^', '');
-    const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/illustrations/${this.type}/${this.name}.json`;
-    fetch(apiUrl).then((response) =>
-      response.json().then((data) => {
-        this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
-      }),
-    );
-  };
-
+  @Watch('name')
+  @Watch('type')
+  setIllustrationContent(): void {
+    try {
+      this.IllustrationContent = this.name ? getAssetUrl(`illustration/${this.type}/${this.name}`) : undefined;
+    } catch {
+      this.IllustrationContent = undefined;
+    }
+  }
   render(): HTMLElement {
     return (
       <Host
@@ -57,7 +54,8 @@ export class BdsIllustration {
         {this.IllustrationContent ? (
           <img
             draggable={false}
-            src={`data:image/svg+xml;base64,${this.IllustrationContent}`}
+            src={this.IllustrationContent}
+            onError={() => { this.IllustrationContent = undefined; }}
             alt={this.alt}
             data-test={this.dataTest}
           />

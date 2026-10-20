@@ -36,6 +36,8 @@ jobs:
       - name: NPM Install, build and test
         run: |
           npm ci --legacy-peer-deps
+          npm run assets:prepare
+          node --test scripts/test/*.test.cjs
           npm run test
           npm run build
           npm run build:react

@@ -9,6 +9,7 @@ export default defineConfig({
   reporter: [['html', { open: 'never' }], ['list']],
   use: {
     baseURL: 'http://localhost:6006',
+    serviceWorkers: 'block',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },

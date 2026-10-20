@@ -1,5 +1,15 @@
-import { newSpecPage } from '@stencil/core/testing';
+import { newSpecPage as createSpecPage } from '@stencil/core/testing';
+
+jest.mock('../../../utils/asset-loader', () => ({ loadAssetSvg: jest.fn(async () => '<svg width="290" height="293"><path fill="white"/></svg>') }));
+
 import { BdsLoading } from '../loading-page';
+
+async function newSpecPage(options: Parameters<typeof createSpecPage>[0]) {
+  const page = await createSpecPage(options);
+  await page.rootInstance.setSvgContent();
+  await page.waitForChanges();
+  return page;
+}
 
 describe('bds-loading-page', () => {
   let page;
@@ -11,6 +21,8 @@ describe('bds-loading-page', () => {
       html: '<bds-loading-page></bds-loading-page>',
     });
     component = page.rootInstance;
+    await component.setSvgContent();
+    await page.waitForChanges();
   });
 
   it('should create and render', async () => {
@@ -238,6 +250,7 @@ describe('bds-loading-page', () => {
 
     it('should render content after componentWillLoad', async () => {
       const component = new BdsLoading();
+      jest.spyOn(component, 'setSvgContent').mockResolvedValue(undefined);
       
       component.componentWillLoad();
       

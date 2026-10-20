@@ -3,17 +3,17 @@ import { newSpecPage } from '@stencil/core/testing';
 // Mock fetch globally
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
+const mockGetAssetUrl = jest.fn();
+
+jest.mock('../../../utils/asset-loader', () => ({ getAssetUrl: (key: string) => mockGetAssetUrl(key) }));
 
 import { BdsIllustration } from '../illustration';
 
 describe('bds-illustration', () => {
   beforeEach(() => {
     mockFetch.mockClear();
-    mockFetch.mockResolvedValue({
-      json: jest.fn().mockResolvedValue({
-        'asset-default-test-svg': 'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjwvc3ZnPg==',
-      }),
-    });
+    mockGetAssetUrl.mockReset();
+    mockGetAssetUrl.mockImplementation((key: string) => `https://assets.example.com/blip-tokens/1.2.3/illustrations/${key.slice('illustration/'.length)}.svg`);
   });
 
   afterEach(() => {
@@ -61,9 +61,7 @@ describe('bds-illustration', () => {
     it('should render default placeholder when no illustration content', async () => {
       // Mock fetch to return a never-resolving promise so we can check initial state
       mockFetch.mockClear();
-      mockFetch.mockImplementation(() => new Promise(() => {
-        // Promise never resolves
-      }));
+      mockGetAssetUrl.mockReturnValue(undefined);
 
       const page = await newSpecPage({
         components: [BdsIllustration],
@@ -88,7 +86,7 @@ describe('bds-illustration', () => {
       const img = page.root.shadowRoot.querySelector('img');
       expect(img).toBeTruthy();
       expect(img.getAttribute('src')).toBe(
-        'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjwvc3ZnPg=='
+        'PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjwvc3ZnPg=='
       );
       expect(img.getAttribute('draggable')).toBe('false');
     });
@@ -109,9 +107,7 @@ describe('bds-illustration', () => {
     it('should render with data-test attribute on default div', async () => {
       // Mock fetch to delay response so we can check initial state
       mockFetch.mockClear();
-      mockFetch.mockImplementation(() => new Promise(() => {
-        // Promise never resolves
-      }));
+      mockGetAssetUrl.mockReturnValue(undefined);
 
       const page = await newSpecPage({
         components: [BdsIllustration],
@@ -171,7 +167,7 @@ describe('bds-illustration', () => {
   });
 
   describe('Illustration Loading', () => {
-    it('should call fetch when component loads', async () => {
+    it('should resolve the image URL without fetching metadata', async () => {
       (fetch as jest.Mock).mockClear();
 
       const page = await newSpecPage({
@@ -179,19 +175,16 @@ describe('bds-illustration', () => {
         html: `<bds-illustration type="default" name="test"></bds-illustration>`,
       });
 
-      expect(fetch).toHaveBeenCalled();
+      expect(mockGetAssetUrl).toHaveBeenCalledWith('illustration/default/test');
+      expect(fetch).not.toHaveBeenCalled();
       expect(page.rootInstance.name).toBe('test');
       expect(page.rootInstance.type).toBe('default');
     });
 
-    it('should set illustration content after successful fetch', async () => {
-      const mockSvgContent = 'PHN2ZyBmaWxsPSIjMDAwIj48L3N2Zz4=';
+    it('should set the versioned illustration URL', async () => {
+      const mockSvgContent = 'https://assets.example.com/blip-tokens/1.2.3/illustrations/default/test.svg';
       (fetch as jest.Mock).mockClear();
-      (fetch as jest.Mock).mockResolvedValue({
-        json: jest.fn().mockResolvedValue({
-          'asset-default-test-svg': mockSvgContent,
-        }),
-      });
+      mockGetAssetUrl.mockReturnValue(mockSvgContent);
 
       const page = await newSpecPage({
         components: [BdsIllustration],
@@ -204,7 +197,7 @@ describe('bds-illustration', () => {
       expect(page.rootInstance.IllustrationContent).toBe(mockSvgContent);
     });
 
-    it('should construct correct API URL for different types', async () => {
+    it('should resolve the correct asset key for different types', async () => {
       (fetch as jest.Mock).mockClear();
 
       const page = await newSpecPage({
@@ -212,7 +205,7 @@ describe('bds-illustration', () => {
         html: `<bds-illustration type="screens" name="mobile"></bds-illustration>`,
       });
 
-      expect(fetch).toHaveBeenCalled();
+      expect(mockGetAssetUrl).toHaveBeenCalledWith('illustration/screens/mobile');
       expect(page.rootInstance.type).toBe('screens');
       expect(page.rootInstance.name).toBe('mobile');
     });
@@ -226,9 +219,7 @@ describe('bds-illustration', () => {
       });
 
       expect(page.rootInstance.name).toBe('custom-illustration');
-      expect(fetch).toHaveBeenCalled();
-      const fetchCall = (fetch as jest.Mock).mock.calls[0];
-      expect(fetchCall[0]).toContain('custom-illustration.json');
+      expect(page.rootInstance.IllustrationContent).toContain('custom-illustration.svg');
     });
 
     it('should accept alt property', async () => {
@@ -252,9 +243,7 @@ describe('bds-illustration', () => {
     it('should handle null dataTest gracefully', async () => {
       // Mock fetch to delay response so we can check initial state
       mockFetch.mockClear();
-      mockFetch.mockImplementation(() => new Promise(() => {
-        // Promise never resolves
-      }));
+      mockGetAssetUrl.mockReturnValue(undefined);
 
       const page = await newSpecPage({
         components: [BdsIllustration],
@@ -301,9 +290,8 @@ describe('bds-illustration', () => {
       });
 
       expect(page.rootInstance.name).toBe('');
-      expect(fetch).toHaveBeenCalled();
-      const fetchCall = (fetch as jest.Mock).mock.calls[0];
-      expect(fetchCall[0]).toContain('.json');
+      expect(mockGetAssetUrl).not.toHaveBeenCalled();
+      expect(page.rootInstance.IllustrationContent).toBeUndefined();
     });
 
     it('should not crash when no name is provided', async () => {
@@ -313,7 +301,7 @@ describe('bds-illustration', () => {
       });
 
       expect(page.root).toBeTruthy();
-      expect(fetch).toHaveBeenCalled();
+      expect(fetch).not.toHaveBeenCalled();
     });
 
     it('should handle special characters in name', async () => {
@@ -327,7 +315,7 @@ describe('bds-illustration', () => {
   });
 
   describe('Package Version', () => {
-    it('should use blip-tokens version from package.json in API URL', async () => {
+    it('should use the resolver exact version, not the application cluster', async () => {
       const page = await newSpecPage({
         components: [BdsIllustration],
         html: `<bds-illustration name="test"></bds-illustration>`,
@@ -335,10 +323,18 @@ describe('bds-illustration', () => {
 
       await page.waitForChanges();
 
-      expect(fetch).toHaveBeenCalled();
-      const fetchCall = (fetch as jest.Mock).mock.calls[0];
-      expect(fetchCall[0]).toContain('blip-tokens@');
-      expect(fetchCall[0]).toMatch(/blip-tokens@[\d.]+/);
+      expect(page.rootInstance.IllustrationContent).toContain('/blip-tokens/1.2.3/');
     });
+  });
+
+  it('updates the URL when name changes and handles unknown assets', async () => {
+    const page = await newSpecPage({ components: [BdsIllustration], html: '<bds-illustration name="test"></bds-illustration>' });
+    page.root.name = 'next';
+    await page.waitForChanges();
+    expect(page.rootInstance.IllustrationContent).toContain('/next.svg');
+    mockGetAssetUrl.mockImplementation(() => { throw new Error('Unknown asset'); });
+    page.root.name = 'unknown';
+    await page.waitForChanges();
+    expect(page.root.shadowRoot.querySelector('.default')).toBeTruthy();
   });
 });

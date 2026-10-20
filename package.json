@@ -19,7 +19,19 @@
     "clear": "rimraf dist/ && rimraf www/ && rimraf .stencil && rimraf screenshot && rimraf loader && rimraf coverage && rimraf storybook-static && rimraf blip-ds-react/node_modules && rimraf node_modules/",
     "dev": "stencil build --docs && concurrently \"npm:build:watch\" \"npm:storybook\"",
     "start": "stencil build --dev --watch --serve --docs",
-    "build": "stencil build --docs --prod",
+    "build": "npm run assets:prepare && stencil build --docs --prod && npm run assets:strip && npm run assets:check",
+    "assets:prepare": "node scripts/prepare_assets.cjs",
+    "assets:verify": "node scripts/prepare_assets.cjs --verify",
+    "assets:check": "node scripts/check_asset_bundle.cjs",
+    "assets:strip": "node scripts/check_asset_bundle.cjs --strip-copied",
+    "assets:update-tokens": "npm install --package-lock-only --save-exact --ignore-scripts --legacy-peer-deps blip-tokens@latest",
+    "prestart": "npm run assets:prepare",
+    "predev": "npm run assets:prepare",
+    "prebuild:watch": "npm run assets:prepare",
+    "pretest": "npm run assets:prepare",
+    "pretest:unit": "npm run assets:prepare",
+    "pretest:e2e": "npm run assets:prepare",
+    "pretest:watch": "npm run assets:prepare",
     "build:watch": "stencil build --watch",
     "build:react": "cd ./blip-ds-react && npm install && npm run build",
     "test": "stencil test --spec --e2e --screenshot --coverage --runInBand",
@@ -96,7 +108,7 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "blip-tokens": "^1.106.0"
+    "blip-tokens": "2.0.2"
   },
   "repository": {
     "type": "git",

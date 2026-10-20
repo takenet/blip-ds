@@ -10,6 +10,23 @@ export default [
   js.configs.recommended,
 
   {
+    files: ['scripts/**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        __dirname: 'readonly',
+        AbortSignal: 'readonly',
+        Buffer: 'readonly',
+        console: 'readonly',
+        fetch: 'readonly',
+        process: 'readonly',
+        Response: 'readonly',
+        URL: 'readonly',
+      },
+    },
+  },
+
+  {
     files: ['storybook-server/**/*.mjs'],
     languageOptions: {
       globals: {
