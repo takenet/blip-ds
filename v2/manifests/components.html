@@ -509,7 +509,7 @@
 <header>
   <div class="wrap">
     <h1>Components Manifest</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">68/68 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">68/68 infos</a><span class="filter-pill ok" aria-disabled="true">257 stories ok</span></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">68/68 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">68/68 infos</a><span class="filter-pill ok" aria-disabled="true">260 stories ok</span></div>
   </div>
 </header>
 <main>
@@ -3155,7 +3155,7 @@ export const FrameworkReact = () =&gt; (
   8 |   parameters: {
 
 ./src/components/breadcrumb/breadcrumb.stories.jsx:
-import { useState } from &#39;react&#39;;
+import { useState, useRef, useEffect } from &#39;react&#39;;
 import DocumentationTemplate from &#39;./breadcrumb.mdx&#39;;
 import { BdsBreadcrumb } from &#39;../../../blip-ds-react/dist/components&#39;;
 
@@ -3170,11 +3170,19 @@ export default {
 };
 
 export const Properties = (args) =&gt; {
-  return (
-    &lt;bds-breadcrumb
-      items={args.items}
-    &gt;&lt;/bds-breadcrumb&gt;
-  );
+  const ref = useRef(null);
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    // keep component defaults unless args explicitly provides a wrapItems value
+    el.items = args.items;
+    if (args.wrapItems !== undefined) {
+      el.wrapItems = args.wrapItems;
+    }
+  }, [args.items, args.wrapItems]);
+
+  return &lt;bds-breadcrumb ref={ref}&gt;&lt;/bds-breadcrumb&gt;;
 };
 
 Properties.argTypes = {
@@ -3185,6 +3193,13 @@ Properties.argTypes = {
     description: &#39;Define the labels and hrefs for the breadcrumb items.&#39;,
     control: { type: &#39;text&#39; },
   },
+  wrapItems: {
+    table: {
+      defaultValue: { summary: &#39;true&#39; },
+    },
+    description: &#39;Determines if middle items collapse into a dropdown when there are more than 3 breadcrumb items.&#39;,
+    control: &#39;boolean&#39;,
+  },
 };
 
 Properties.args = {
@@ -3192,12 +3207,27 @@ Properties.args = {
     { label: &#39;Home&#39;, href: &#39;/&#39; },
     { label: &#39;About&#39;, href: &#39;/about&#39; },
     { label: &#39;Contact&#39;, href: &#39;/contact&#39; },
-    { label: &#39;Current Page&#39; },
+    { label: &#39;Current Page&#39;, href: &#39;/current&#39; },
   ]),
 };
 
 export const Events = () =&gt; {
   const [clickedItem, setClickedItem] = useState(null);
+  const ref = useRef(null);
+
+  const items = [
+    { label: &#39;Home&#39;, href: &#39;/&#39; },
+    { label: &#39;Features&#39;, href: &#39;/features&#39; },
+    { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
+    { label: &#39;Documentation&#39; },
+  ];
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    el.items = JSON.stringify(items);
+    el.wrapItems = true;
+  }, []);
 
   const handleBreadcrumbClick = (event) =&gt; {
     const detail = event.detail;
@@ -3208,12 +3238,7 @@ export const Events = () =&gt; {
   return (
     &lt;div&gt;
       &lt;bds-breadcrumb
-        items={JSON.stringify([
-          { label: &#39;Home&#39;, href: &#39;/&#39; },
-          { label: &#39;Features&#39;, href: &#39;/features&#39; },
-          { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
-          { label: &#39;Documentation&#39; },
-        ])}
+        ref={ref}
         onBreadcrumbItemClick={(event) =&gt; handleBreadcrumbClick(event)}
       &gt;&lt;/bds-breadcrumb&gt;
       {clickedItem &amp;&amp; (
@@ -3242,6 +3267,7 @@ export const FrameworkReact = () =&gt; {
         { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
         { label: &#39;Documentation&#39; },
       ]}
+      wrapItems={true}
     /&gt;
   );
 };
@@ -3277,16 +3303,20 @@ export const FrameworkReact = () =&gt; {
               </div>
               
               
-              <pre><code>const Properties = () =&gt; {
-    return (
-        &lt;bds-breadcrumb
-            items={JSON.stringify([
-              { label: &#39;Home&#39;, href: &#39;/&#39; },
-              { label: &#39;About&#39;, href: &#39;/about&#39; },
-              { label: &#39;Contact&#39;, href: &#39;/contact&#39; },
-              { label: &#39;Current Page&#39; },
-            ])} /&gt;
-    );
+              <pre><code>const Properties = (args) =&gt; {
+  const ref = useRef(null);
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    // keep component defaults unless args explicitly provides a wrapItems value
+    el.items = args.items;
+    if (args.wrapItems !== undefined) {
+      el.wrapItems = args.wrapItems;
+    }
+  }, [args.items, args.wrapItems]);
+
+  return &lt;bds-breadcrumb ref={ref}&gt;&lt;/bds-breadcrumb&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -3298,6 +3328,21 @@ export const FrameworkReact = () =&gt; {
               
               <pre><code>const Events = () =&gt; {
   const [clickedItem, setClickedItem] = useState(null);
+  const ref = useRef(null);
+
+  const items = [
+    { label: &#39;Home&#39;, href: &#39;/&#39; },
+    { label: &#39;Features&#39;, href: &#39;/features&#39; },
+    { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
+    { label: &#39;Documentation&#39; },
+  ];
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    el.items = JSON.stringify(items);
+    el.wrapItems = true;
+  }, []);
 
   const handleBreadcrumbClick = (event) =&gt; {
     const detail = event.detail;
@@ -3308,12 +3353,7 @@ export const FrameworkReact = () =&gt; {
   return (
     &lt;div&gt;
       &lt;bds-breadcrumb
-        items={JSON.stringify([
-          { label: &#39;Home&#39;, href: &#39;/&#39; },
-          { label: &#39;Features&#39;, href: &#39;/features&#39; },
-          { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
-          { label: &#39;Documentation&#39; },
-        ])}
+        ref={ref}
         onBreadcrumbItemClick={(event) =&gt; handleBreadcrumbClick(event)}
       &gt;&lt;/bds-breadcrumb&gt;
       {clickedItem &amp;&amp; (
@@ -3349,6 +3389,7 @@ export const FrameworkReact = () =&gt; {
         { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
         { label: &#39;Documentation&#39; },
       ]}
+      wrapItems={true}
     /&gt;
   );
 };</code></pre>
@@ -12672,7 +12713,7 @@ const text = {
 };
 
 export const examplePageGrid = () =&gt; (
-  &lt;bds-grid xxs=&quot;11&quot;&gt;
+  &lt;bds-grid xxs=&quot;12&quot;&gt;
 
     &lt;bds-grid xxs=&quot;12&quot; direction=&quot;column&quot; wrap=&quot;no-wrap&quot; style={page}&gt;
 
@@ -13284,7 +13325,7 @@ export const examplePageGrid = () =&gt; (
               
               
               <pre><code>const examplePageGrid = () =&gt; (
-  &lt;bds-grid xxs=&quot;11&quot;&gt;
+  &lt;bds-grid xxs=&quot;12&quot;&gt;
 
     &lt;bds-grid xxs=&quot;12&quot; direction=&quot;column&quot; wrap=&quot;no-wrap&quot; style={page}&gt;
 
@@ -20322,7 +20363,7 @@ export const FrameworkReact = () =&gt; {
       <div class="badges">
         <label for="c-44-components-pagination-err" class="badge err as-toggle">prop type error</label>
         <label for="c-44-components-pagination-info" class="badge info as-toggle">1 info</label>
-        <label for="c-44-components-pagination-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-44-components-pagination-stories" class="badge ok as-toggle">5 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/pagination/pagination.stories.jsx">components-pagination · ./src/components/pagination/pagination.stories.jsx</div>
@@ -20402,6 +20443,18 @@ export const FrameworkReact = () =&gt; {
     );
   };
 
+export const OnFirstPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};
+
+export const OnLastPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;10&quot;&gt;&lt;/bds-pagination&gt;;
+};
+
+export const SinglePage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;1&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};
+
 </code></pre></div>
     </div>
         </div>
@@ -20454,6 +20507,39 @@ export const FrameworkReact = () =&gt; {
       &lt;BdsPagination started-page=&quot;20&quot; pages=&quot;30&quot;&gt;&lt;/BdsPagination&gt;
     );
   };</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">OnFirstPage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const OnFirstPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">OnLastPage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const OnLastPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;10&quot;&gt;&lt;/bds-pagination&gt;;
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">SinglePage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SinglePage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;1&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};</code></pre>
             </div>
         </div>
   </div>
@@ -32493,7 +32579,7 @@ export const FrameworkReact = () =&gt; (
   8 |   parameters: {
 
 ./src/components/breadcrumb/breadcrumb.stories.jsx:
-import { useState } from &#39;react&#39;;
+import { useState, useRef, useEffect } from &#39;react&#39;;
 import DocumentationTemplate from &#39;./breadcrumb.mdx&#39;;
 import { BdsBreadcrumb } from &#39;../../../blip-ds-react/dist/components&#39;;
 
@@ -32508,11 +32594,19 @@ export default {
 };
 
 export const Properties = (args) =&gt; {
-  return (
-    &lt;bds-breadcrumb
-      items={args.items}
-    &gt;&lt;/bds-breadcrumb&gt;
-  );
+  const ref = useRef(null);
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    // keep component defaults unless args explicitly provides a wrapItems value
+    el.items = args.items;
+    if (args.wrapItems !== undefined) {
+      el.wrapItems = args.wrapItems;
+    }
+  }, [args.items, args.wrapItems]);
+
+  return &lt;bds-breadcrumb ref={ref}&gt;&lt;/bds-breadcrumb&gt;;
 };
 
 Properties.argTypes = {
@@ -32523,6 +32617,13 @@ Properties.argTypes = {
     description: &#39;Define the labels and hrefs for the breadcrumb items.&#39;,
     control: { type: &#39;text&#39; },
   },
+  wrapItems: {
+    table: {
+      defaultValue: { summary: &#39;true&#39; },
+    },
+    description: &#39;Determines if middle items collapse into a dropdown when there are more than 3 breadcrumb items.&#39;,
+    control: &#39;boolean&#39;,
+  },
 };
 
 Properties.args = {
@@ -32530,12 +32631,27 @@ Properties.args = {
     { label: &#39;Home&#39;, href: &#39;/&#39; },
     { label: &#39;About&#39;, href: &#39;/about&#39; },
     { label: &#39;Contact&#39;, href: &#39;/contact&#39; },
-    { label: &#39;Current Page&#39; },
+    { label: &#39;Current Page&#39;, href: &#39;/current&#39; },
   ]),
 };
 
 export const Events = () =&gt; {
   const [clickedItem, setClickedItem] = useState(null);
+  const ref = useRef(null);
+
+  const items = [
+    { label: &#39;Home&#39;, href: &#39;/&#39; },
+    { label: &#39;Features&#39;, href: &#39;/features&#39; },
+    { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
+    { label: &#39;Documentation&#39; },
+  ];
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    el.items = JSON.stringify(items);
+    el.wrapItems = true;
+  }, []);
 
   const handleBreadcrumbClick = (event) =&gt; {
     const detail = event.detail;
@@ -32546,12 +32662,7 @@ export const Events = () =&gt; {
   return (
     &lt;div&gt;
       &lt;bds-breadcrumb
-        items={JSON.stringify([
-          { label: &#39;Home&#39;, href: &#39;/&#39; },
-          { label: &#39;Features&#39;, href: &#39;/features&#39; },
-          { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
-          { label: &#39;Documentation&#39; },
-        ])}
+        ref={ref}
         onBreadcrumbItemClick={(event) =&gt; handleBreadcrumbClick(event)}
       &gt;&lt;/bds-breadcrumb&gt;
       {clickedItem &amp;&amp; (
@@ -32580,6 +32691,7 @@ export const FrameworkReact = () =&gt; {
         { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
         { label: &#39;Documentation&#39; },
       ]}
+      wrapItems={true}
     /&gt;
   );
 };
@@ -32615,16 +32727,20 @@ export const FrameworkReact = () =&gt; {
               </div>
               
               
-              <pre><code>const Properties = () =&gt; {
-    return (
-        &lt;bds-breadcrumb
-            items={JSON.stringify([
-              { label: &#39;Home&#39;, href: &#39;/&#39; },
-              { label: &#39;About&#39;, href: &#39;/about&#39; },
-              { label: &#39;Contact&#39;, href: &#39;/contact&#39; },
-              { label: &#39;Current Page&#39; },
-            ])} /&gt;
-    );
+              <pre><code>const Properties = (args) =&gt; {
+  const ref = useRef(null);
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    // keep component defaults unless args explicitly provides a wrapItems value
+    el.items = args.items;
+    if (args.wrapItems !== undefined) {
+      el.wrapItems = args.wrapItems;
+    }
+  }, [args.items, args.wrapItems]);
+
+  return &lt;bds-breadcrumb ref={ref}&gt;&lt;/bds-breadcrumb&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -32636,6 +32752,21 @@ export const FrameworkReact = () =&gt; {
               
               <pre><code>const Events = () =&gt; {
   const [clickedItem, setClickedItem] = useState(null);
+  const ref = useRef(null);
+
+  const items = [
+    { label: &#39;Home&#39;, href: &#39;/&#39; },
+    { label: &#39;Features&#39;, href: &#39;/features&#39; },
+    { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
+    { label: &#39;Documentation&#39; },
+  ];
+
+  useEffect(() =&gt; {
+    const el = ref.current;
+    if (!el) return;
+    el.items = JSON.stringify(items);
+    el.wrapItems = true;
+  }, []);
 
   const handleBreadcrumbClick = (event) =&gt; {
     const detail = event.detail;
@@ -32646,12 +32777,7 @@ export const FrameworkReact = () =&gt; {
   return (
     &lt;div&gt;
       &lt;bds-breadcrumb
-        items={JSON.stringify([
-          { label: &#39;Home&#39;, href: &#39;/&#39; },
-          { label: &#39;Features&#39;, href: &#39;/features&#39; },
-          { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
-          { label: &#39;Documentation&#39; },
-        ])}
+        ref={ref}
         onBreadcrumbItemClick={(event) =&gt; handleBreadcrumbClick(event)}
       &gt;&lt;/bds-breadcrumb&gt;
       {clickedItem &amp;&amp; (
@@ -32687,6 +32813,7 @@ export const FrameworkReact = () =&gt; {
         { label: &#39;Pricing&#39;, href: &#39;/pricing&#39; },
         { label: &#39;Documentation&#39; },
       ]}
+      wrapItems={true}
     /&gt;
   );
 };</code></pre>
@@ -42010,7 +42137,7 @@ const text = {
 };
 
 export const examplePageGrid = () =&gt; (
-  &lt;bds-grid xxs=&quot;11&quot;&gt;
+  &lt;bds-grid xxs=&quot;12&quot;&gt;
 
     &lt;bds-grid xxs=&quot;12&quot; direction=&quot;column&quot; wrap=&quot;no-wrap&quot; style={page}&gt;
 
@@ -42622,7 +42749,7 @@ export const examplePageGrid = () =&gt; (
               
               
               <pre><code>const examplePageGrid = () =&gt; (
-  &lt;bds-grid xxs=&quot;11&quot;&gt;
+  &lt;bds-grid xxs=&quot;12&quot;&gt;
 
     &lt;bds-grid xxs=&quot;12&quot; direction=&quot;column&quot; wrap=&quot;no-wrap&quot; style={page}&gt;
 
@@ -49660,7 +49787,7 @@ export const FrameworkReact = () =&gt; {
       <div class="badges">
         <label for="c-error-44-components-pagination-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-44-components-pagination-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-44-components-pagination-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-44-components-pagination-stories" class="badge ok as-toggle">5 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/pagination/pagination.stories.jsx">components-pagination · ./src/components/pagination/pagination.stories.jsx</div>
@@ -49740,6 +49867,18 @@ export const FrameworkReact = () =&gt; {
     );
   };
 
+export const OnFirstPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};
+
+export const OnLastPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;10&quot;&gt;&lt;/bds-pagination&gt;;
+};
+
+export const SinglePage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;1&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};
+
 </code></pre></div>
     </div>
         </div>
@@ -49792,6 +49931,39 @@ export const FrameworkReact = () =&gt; {
       &lt;BdsPagination started-page=&quot;20&quot; pages=&quot;30&quot;&gt;&lt;/BdsPagination&gt;
     );
   };</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">OnFirstPage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const OnFirstPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">OnLastPage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const OnLastPage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;10&quot; started-page=&quot;10&quot;&gt;&lt;/bds-pagination&gt;;
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">SinglePage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const SinglePage = () =&gt; {
+  return &lt;bds-pagination pages=&quot;1&quot; started-page=&quot;1&quot;&gt;&lt;/bds-pagination&gt;;
+};</code></pre>
             </div>
         </div>
   </div>

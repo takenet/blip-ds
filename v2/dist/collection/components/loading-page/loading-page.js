@@ -1,5 +1,5 @@
 import { Host, h } from "@stencil/core";
-import messageBallon from "../../assets/svg/message-ballon.svg";
+import blipBallonWhite from "blip-tokens/build/json/illustrations/brand/blip-ballon-white.json";
 export class BdsLoading {
     constructor() {
         /**
@@ -16,8 +16,8 @@ export class BdsLoading {
             return div.innerHTML;
         };
         this.setSvgContent = () => {
-            const innerHTML = messageBallon;
-            const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
+            const innerHTML = blipBallonWhite['asset-brand-blip-ballon-white-svg'];
+            const svg = atob(innerHTML);
             this.svgContent = this.formatSvg(svg);
         };
     }
@@ -25,7 +25,7 @@ export class BdsLoading {
         this.setSvgContent();
     }
     render() {
-        return (h(Host, { key: '01c10373b36658a99c810fe6dcf7b9a40698f636' }, h("div", { key: '8fbf9a177462daaecec6f92f318d20a1a9906c3d', class: "loading-container", "data-test": this.dataTest }, h("div", { key: '48a7facd88861f573b09f408b1623408cd48300d', class: { page_loading: true }, innerHTML: this.svgContent }))));
+        return (h(Host, { key: '83dd8bdf5a8972f70bb1e726cd1ff46c36aa3b93' }, h("div", { key: 'f7968cfc8d45b0d5047ef05dd87b0a9a338cfa6c', class: "loading-container", "data-test": this.dataTest }, h("div", { key: '2a6adb55b0068b1cb1917b0893632b1c7b695c7a', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
     static get is() { return "bds-loading-page"; }
     static get encapsulation() { return "shadow"; }

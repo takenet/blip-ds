@@ -1,4 +1,4 @@
-import { C as Checkbox, d as defineCustomElement$1 } from './p-BdsKc65g.js';
+import { C as Checkbox, d as defineCustomElement$1 } from './p-CLcwiQ01.js';
 
 const BdsCheckbox = Checkbox;
 const defineCustomElement = defineCustomElement$1;

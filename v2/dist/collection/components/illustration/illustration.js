@@ -1,5 +1,6 @@
 import { h, Host } from "@stencil/core";
-import packageJson from "../../../package.json";
+// Named import lets Rollup tree-shake the manifest, so devDependencies are not shipped in dist (flagged by SCA scanners).
+import { dependencies } from "../../../package.json";
 export class BdsIllustration {
     constructor() {
         /**
@@ -12,7 +13,7 @@ export class BdsIllustration {
         this.dataTest = null;
         /**Function to map the svg and call the "formatSvg" function */
         this.setIllustrationContent = () => {
-            const tokensVersion = packageJson.dependencies['blip-tokens'].replace('^', '');
+            const tokensVersion = dependencies['blip-tokens'].replace('^', '');
             const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/illustrations/${this.type}/${this.name}.json`;
             fetch(apiUrl).then((response) => response.json().then((data) => {
                 this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
@@ -23,7 +24,7 @@ export class BdsIllustration {
         this.setIllustrationContent();
     }
     render() {
-        return (h(Host, { key: '068f8c950e40c190bc704ef26afba5a5a5ca0043', role: "img", class: {
+        return (h(Host, { key: 'bcda4398ff0666563e4a81ef72afdb4652e26269', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (h("img", { draggable: false, src: `data:image/svg+xml;base64,${this.IllustrationContent}`, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
     }

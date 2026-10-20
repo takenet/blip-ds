@@ -1,9 +1,8 @@
 import { r as registerInstance, h, H as Host } from './index-gowA9FoV.js';
 
 const dependencies = {
-	"blip-tokens": "^1.103.0"};
-var packageJson = {
-	dependencies: dependencies};
+	"blip-tokens": "^1.106.0"
+};
 
 const illustrationCss = ":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}";
 
@@ -20,7 +19,7 @@ const BdsIllustration = class {
         this.dataTest = null;
         /**Function to map the svg and call the "formatSvg" function */
         this.setIllustrationContent = () => {
-            const tokensVersion = packageJson.dependencies['blip-tokens'].replace('^', '');
+            const tokensVersion = dependencies['blip-tokens'].replace('^', '');
             const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/illustrations/${this.type}/${this.name}.json`;
             fetch(apiUrl).then((response) => response.json().then((data) => {
                 this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
@@ -31,7 +30,7 @@ const BdsIllustration = class {
         this.setIllustrationContent();
     }
     render() {
-        return (h(Host, { key: '068f8c950e40c190bc704ef26afba5a5a5ca0043', role: "img", class: {
+        return (h(Host, { key: 'bcda4398ff0666563e4a81ef72afdb4652e26269', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (h("img", { draggable: false, src: `data:image/svg+xml;base64,${this.IllustrationContent}`, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
     }

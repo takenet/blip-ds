@@ -1,4 +1,4 @@
-import { C as ChipClickable, d as defineCustomElement$1 } from './p-D_qbUKJS.js';
+import { C as ChipClickable, d as defineCustomElement$1 } from './p-Iz2TmIkq.js';
 
 const BdsChipClickable = ChipClickable;
 const defineCustomElement = defineCustomElement$1;
