@@ -1,9 +1,11 @@
 export const enTerms = [
   {
     conclude: 'Conclude',
+    endTime: 'End time',
     from: 'From',
     reset: 'Reset',
     setTheDate: 'Set the date',
+    startTime: 'Start time',
     to: 'To',
   },
 ];
