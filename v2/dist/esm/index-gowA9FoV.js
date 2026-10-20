@@ -210,6 +210,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-loading-bar.entry.js').then(processMod, consoleError);
+                case 'bds-loading-page':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-loading-page.entry.js').then(processMod, consoleError);
                 case 'bds-menu':
                     return import(
                       /* webpackMode: "lazy" */
@@ -382,14 +386,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-button.entry.js').then(processMod, consoleError);
+                case 'bds-loading-spinner':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-loading-spinner.entry.js').then(processMod, consoleError);
                 case 'bds-button-icon':
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-button-icon.entry.js').then(processMod, consoleError);
-                case 'bds-loading-page':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-loading-page.entry.js').then(processMod, consoleError);
                 case 'bds-pagination':
                     return import(
                       /* webpackMode: "lazy" */
@@ -402,10 +406,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-avatar.entry.js').then(processMod, consoleError);
+                case 'bds-icon':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-icon.entry.js').then(processMod, consoleError);
                 case 'bds-datepicker-period_2':
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-datepicker-period_2.entry.js').then(processMod, consoleError);
+                case 'bds-illustration_2':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-illustration_2.entry.js').then(processMod, consoleError);
                 case 'bds-radio_2':
                     return import(
                       /* webpackMode: "lazy" */
@@ -418,14 +430,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-checkbox_2.entry.js').then(processMod, consoleError);
-                case 'bds-illustration_2':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-illustration_2.entry.js').then(processMod, consoleError);
-                case 'bds-loading-spinner':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-loading-spinner.entry.js').then(processMod, consoleError);
                 case 'bds-autocomplete':
                     return import(
                       /* webpackMode: "lazy" */
@@ -438,10 +442,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-rich-text.entry.js').then(processMod, consoleError);
-                case 'bds-icon':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-icon.entry.js').then(processMod, consoleError);
                 case 'bds-upload':
                     return import(
                       /* webpackMode: "lazy" */

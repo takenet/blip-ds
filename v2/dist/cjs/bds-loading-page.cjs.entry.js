@@ -1,10 +1,7 @@
 'use strict';
 
 var index = require('./index-DQyYkciT.js');
-
-var blipBallonWhite = {
-	"asset-brand-blip-ballon-white-svg": "PHN2ZyB3aWR0aD0iMjkwIiBoZWlnaHQ9IjI5MyIgdmlld0JveD0iMCAwIDI5MCAyOTMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0yODkuNzU3IDEzNy4zMDVDMjg5LjgwNyAxMzYuMTc5IDI4OS44NDkgMTM1LjA0MiAyODkuODgxIDEzMy44OTdDMjg5Ljk0OSAxMzEuNjg2IDI4OS45OTcgMTI5LjQ2MiAyODkuOTk4IDEyNy4yMDJDMjg5Ljk5OCAxMjcuMTgyIDI5MCAxMjcuMTYyIDI5MCAxMjcuMTQxVjEyNy4xMDZDMjkwIDM1LjE3NjMgMjM5LjM3MSA4LjQ1MDY3ZS0wNiAxNDQuOTggOC40NTA2N2UtMDZDNTAuNjY1IDguNDUwNjdlLTA2IDAgMzUuMTc2MyAwIDEyNy4wNjhWMTI3LjEwNkMwIDIxOS4wMjYgNTAuNjIyNiAyNTQuMjA0IDE0NS4wMDEgMjU0LjIxTDE0NC45OTkgMjg5LjU0MkMxNDQuOTk5IDI5MS40NzUgMTQ2LjU4NSAyOTMuMDcyIDE0OC41MTkgMjkyLjk5N0MxOTYuMzA0IDI5MS4xNzUgMjY3Ljk4MSAyNTIuNTc1IDI4NS44NDQgMTY4LjE0M0MyODcuOSAxNTguOTkyIDI4OS4xOTEgMTQ5LjAxOSAyODkuNzA4IDEzOC4xOTFDMjg5LjcyMyAxMzcuODk1IDI4OS43NDQgMTM3LjYwMiAyODkuNzU3IDEzNy4zMDVaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K"
-};
+var assetLoader = require('./asset-loader-CLpR4LMY.js');
 
 const loadingPageCss = ":host{display:block;position:fixed;top:0;left:0;height:100vh;width:100vw;z-index:999}.loading-container{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;background-color:var(--color-surface-4, rgb(20, 20, 20));opacity:0.65;mix-blend-mode:multiply}.page_loading{-webkit-animation:growUp 0.8s ease-in-out infinite;animation:growUp 0.8s ease-in-out infinite;width:90px;height:90px;color:var(--color-surface-1, rgb(246, 246, 246))}@-webkit-keyframes growUp{from{opacity:0}10%{opacity:1}60%{opacity:1}to{-webkit-transform:scale(1.6);transform:scale(1.6);opacity:0}}@keyframes growUp{from{opacity:0}10%{opacity:1}60%{opacity:1}to{-webkit-transform:scale(1.6);transform:scale(1.6);opacity:0}}";
 
@@ -24,17 +21,21 @@ const BdsLoading = class {
             svgElm.removeAttribute('height');
             return div.innerHTML;
         };
-        this.setSvgContent = () => {
-            const innerHTML = blipBallonWhite['asset-brand-blip-ballon-white-svg'];
-            const svg = atob(innerHTML);
-            this.svgContent = this.formatSvg(svg);
+        this.setSvgContent = async () => {
+            try {
+                const svg = await assetLoader.loadAssetSvg('asset-component-loading-page');
+                this.svgContent = this.formatSvg(svg);
+            }
+            catch (_a) {
+                this.svgContent = undefined;
+            }
         };
     }
     componentWillLoad() {
         this.setSvgContent();
     }
     render() {
-        return (index.h(index.Host, { key: '83dd8bdf5a8972f70bb1e726cd1ff46c36aa3b93' }, index.h("div", { key: 'f7968cfc8d45b0d5047ef05dd87b0a9a338cfa6c', class: "loading-container", "data-test": this.dataTest }, index.h("div", { key: '2a6adb55b0068b1cb1917b0893632b1c7b695c7a', class: { page_loading: true }, innerHTML: this.svgContent }))));
+        return (index.h(index.Host, { key: '7a042cac4834149cff099a534cbfdba574ef3142' }, index.h("div", { key: '55a1566696bd5f4cad5d3ed2144bd35b29bbc685', class: "loading-container", "data-test": this.dataTest }, index.h("div", { key: '258bc7ed10b246183e8d83178cdab3fc2d515bb2', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
 };
 BdsLoading.style = loadingPageCss;

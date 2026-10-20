@@ -7,7 +7,7 @@ const CardBody = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h("bds-grid", { key: '2e7440e133b58fd676041f240bc74b0d7a718fa1' }, index.h("slot", { key: '2663966d4465b7f0067a28d4708a668f59f1a065' })));
+        return (index.h("bds-grid", { key: '3e1a1de6b8f4e7f323c91867666978771d077473' }, index.h("slot", { key: 'ef21d1953508449360c3283a57b49805207cfef0' })));
     }
 };
 

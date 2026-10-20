@@ -81,9 +81,9 @@ const NavTree = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'c3b83bc79738411d309fc031b8967cd559860685' }, index.h("div", { key: '1d5c99d78339a4a685d3bc3fe5d7ab1d6ea4b265', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, index.h("div", { key: 'a3c3232c515afc6ee51f253edc756421e464ae9d', class: {
+        return (index.h(index.Host, { key: '40c3107250ede06d79093c08ef072c9522aecffe' }, index.h("div", { key: 'dc856de58b0c5d56a06331eef84911e99732a1f7', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, index.h("div", { key: '986f1feb5adbe167833df4b3b00bffdbf1787322', class: {
                 [`nav_main--disable`]: this.disable,
-            } }, index.h("div", { key: '9b8b8025503db5afd800aa6d0764cd3bb28e45f7', onClick: this.handler, class: {
+            } }, index.h("div", { key: 'a75728cb72b16ed41468d17635eb7b25c537dbae', onClick: this.handler, class: {
                 nav_main: true,
                 nav_main_active: this.isOpen,
                 [`nav_main--loading`]: this.loading,
@@ -91,14 +91,14 @@ const NavTree = class {
             }, "data-test": this.dataTest, "aria-label": this.text + (this.secondaryText && `: ${this.secondaryText}`) }, this.loading ? (index.h("bds-loading-spinner", { size: "extra-small" })) : this.icon ? (index.h("bds-icon", { class: {
                 [`icon-item`]: true,
                 [`icon-item-active`]: this.isOpen,
-            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), index.h("div", { key: 'f74e3435801872bdb295c4dae49cc67570ff1ec6', class: "nav_main_text" }, this.text && (index.h("bds-typo", { key: '59acc4f6eeac7718d5ed43e218f53ef5e6327716', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (index.h("bds-typo", { key: 'b82578a514065a57a0d21accacb02287b1001fed', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), index.h("div", { key: '463a467bb7358e6e4fb5dcb3592d9d23531d8d0b', class: "nav_main_content" }, index.h("slot", { key: 'c62fc1631249715a74655f285bbcfcc90eceeeab', name: "header-content" })), this.navTreeChild && (index.h("bds-icon", { key: 'badd66942ffc608d2ff3fcda03e68a9c5f5c07ad', name: "arrow-down", class: {
+            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), index.h("div", { key: 'c4aaee2ef11d7bf0a7c53cf07f823caaef7b0bdb', class: "nav_main_text" }, this.text && (index.h("bds-typo", { key: 'a938f9a9042c2872f4b90d8628687583a1d24fa0', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (index.h("bds-typo", { key: 'd9807d5b489f1dd5209765521353e79bb7196180', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), index.h("div", { key: '90b97cd47cb522d6b318ca0b284fdb3058f9f97f', class: "nav_main_content" }, index.h("slot", { key: 'b3172b3f9e7806aa32fa19d7e2fe266617ff8246', name: "header-content" })), this.navTreeChild && (index.h("bds-icon", { key: 'efc743e3086fa0dbc74f20828419fcb7fec36b44', name: "arrow-down", class: {
                 [`nav_main_arrow`]: true,
                 [`nav_main_arrow_active`]: this.isOpen,
                 [`nav_main_arrow--loading`]: this.loading,
-            } }))))), index.h("div", { key: '94d3f177c5f38acf3c20deffa720c8e102514ace', class: {
+            } }))))), index.h("div", { key: '9a38c315edf51468e8664f2fe68119b6bd871fab', class: {
                 accordion: true,
                 accordion_open: this.isOpen && this.navTreeChild,
-            } }, index.h("div", { key: '436c06f2c9520de2b1c2c392f5ec6e4b50aa3431', class: { ['container']: true, [`container--disable`]: this.disable } }, index.h("slot", { key: '656f6ab4bf453b7cff42a5bed47275852a7c560c' })))));
+            } }, index.h("div", { key: '693153df871c2f6be9f14b3012b7e5ef55a0d60b', class: { ['container']: true, [`container--disable`]: this.disable } }, index.h("slot", { key: '5e044d00c5452cf52deb72cfc24e665ecbc28b69' })))));
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {

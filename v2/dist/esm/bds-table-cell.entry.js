@@ -20,7 +20,7 @@ const TableCell = class {
         }
     }
     render() {
-        return h(Host, { key: '308fc20da6c74c8808a4eca46cc3768985a73419' }, this.renderContent());
+        return h(Host, { key: 'ba735fa86a88afee2b1b000c424c61cee0ff38a5' }, this.renderContent());
     }
     get element() { return getElement(this); }
 };

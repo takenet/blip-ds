@@ -108,10 +108,10 @@ export class Checkbox {
     }
     render() {
         const styleState = this.getStyleState();
-        return (h("div", { key: 'b5eff7f49c1731925a8fd8840bed0ed79ca0c6e2', class: {
+        return (h("div", { key: 'dc8a8d4abdefc1e0c9a175b3b5edb4f2bf9163e8', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, h("input", { key: '33365b32e365f46dd274451d24fb5aa9ecdb8300', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'b51d9e4a6e1a44a8c12c0e39223853b4ae6828b8', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: '2befd42167012186594b2bd2cb637089d939b0fc', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '55ec34ab2856a8d794fbc1fa17668dfd8fecfd85', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: 'f7190532c58a01e9261b97dc68d98dbcb7d6f0d8', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, h("input", { key: '2a990a3817d3a356284aa2c140be04a9f910f48f', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'f9487ff888341f75a5e5e2f943157dd6f953b242', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: 'ac81f3d10310f7a3d48baf283a91f6b7b4ee6bc1', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: 'fee6fecc9f06a5cc0bda1921aea3083c393ff7fb', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: '602003141df42f14eddab23bf5479da7acb9fcf9', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
     static get is() { return "bds-checkbox"; }
     static get encapsulation() { return "shadow"; }

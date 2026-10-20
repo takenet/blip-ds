@@ -7,6 +7,6 @@ export declare class BdsLoading {
     componentWillLoad(): void;
     /**Function to transform the svg in a div element. */
     formatSvg: (svgContent: string) => string;
-    setSvgContent: () => void;
+    setSvgContent: () => Promise<void>;
     render(): any;
 }

@@ -26,7 +26,7 @@ const BdsloadingBar = /*@__PURE__*/ proxyCustomElement(class BdsloadingBar exten
     }
     render() {
         const styles = { width: `${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}%` };
-        return (h(Host, { key: '8a86c5318f8a942d8b731fa5309a966b3ca0aa5d' }, h("div", { key: '0d856fee61837d68be3c09c8949ec681f02ada3f', class: { loading_bar: true, [`size_${this.size}`]: true }, "data-test": this.dataTest }, h("div", { key: 'bf99e339fea96af7dbb1f3a8e481e889ca684911', class: { bar_behind: true } }, h("div", { key: '0985dc5a8733d096481d4945a5437406a65e716e', class: { loading: true }, style: styles }, h("div", { key: '9262f9c270bf6ed67a87c1d3c870d3862c5312e1', class: "loader" }))))));
+        return (h(Host, { key: 'acf50999b50326a9bb4ee43f9a7a63d23b7f0b21' }, h("div", { key: '6a6a2ef9b824f6c22e2eda1d5b71e07a0bbcec4d', class: { loading_bar: true, [`size_${this.size}`]: true }, "data-test": this.dataTest }, h("div", { key: '67d2a15016f5aad9dcb4d86ace562c95362ad4ba', class: { bar_behind: true } }, h("div", { key: 'be826a82995a31b03e64515de95a6eda1e7f3ab4', class: { loading: true }, style: styles }, h("div", { key: 'eeb6af21a18ce5434a5aec71131ab765059231a7', class: "loader" }))))));
     }
     static get style() { return loadingBarCss; }
 }, [1, "bds-loading-bar", {

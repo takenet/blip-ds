@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$3 } from './p-mCuNr11T.js';
-import { d as defineCustomElement$2 } from './p-BLWmqqxb.js';
+import { d as defineCustomElement$3 } from './p-Cje8yEpK.js';
+import { d as defineCustomElement$2 } from './p-Cr_YcLQM.js';
 
 const cardCss = ":host{display:-ms-flexbox;display:flex;position:relative}:host:focus-visible{outline:none}.card{display:-ms-flexbox;display:flex;width:100%}.card_hover:hover{-webkit-transform:scale(1.02);transform:scale(1.02);-webkit-transition:all 0.3s;transition:all 0.3s;cursor:pointer}.card_hover_selectable:hover{-webkit-box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.08);box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.08)}.card_hover_selectable:active{-webkit-box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.24);box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.24)}.focus:focus-visible{display:-ms-flexbox;display:flex;position:absolute;border:2px solid var(--color-focus, rgb(194, 38, 251));border-radius:4px;width:100%;height:100%;top:-4px;left:-4px;padding-right:4px;padding-bottom:4px;outline:none}";
 
@@ -89,12 +89,12 @@ const Card = /*@__PURE__*/ proxyCustomElement(class Card extends H {
         const styleHost = {
             width: this.width,
         };
-        return (h(Host, { key: '687351ef20eb5cc606beb8f79245038530592b35', style: styleHost }, h("bds-paper", { key: '4170263f939ecb713199955b9a4b24277f3c9122', border: this.clickable ? false : true, elevation: this.elevation, class: {
+        return (h(Host, { key: '2b91f04affac4a1e7f445c7a8a964cc2dce541ec', style: styleHost }, h("bds-paper", { key: '8820792d7f70ee791bb9776b89a9072e7e450964', border: this.clickable ? false : true, elevation: this.elevation, class: {
                 card: true,
                 card_hover: this.clickable,
                 card_hover_selectable: this.isHovered && this.selectable ? true : false,
                 card_hover_pressed: this.isHovered && this.selectable ? true : false
-            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, h("div", { key: '2d335525082502f9b7f549df33487a7860717c12', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), h("bds-grid", { key: '98ba4927febe56906ec7e6f8ed7688a40bae094b', xxs: "12", direction: "column", gap: "2", padding: "2" }, h("slot", { key: '61a1dab93bca0893b0f172a6985a25c7365bd35f' })))));
+            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, h("div", { key: '9514f95048f6bd9740c9f233fda60336a1047349', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), h("bds-grid", { key: 'ef8283eb024b5e563769734d5681140fc77ee0ae', xxs: "12", direction: "column", gap: "2", padding: "2" }, h("slot", { key: '38fec1ff8faffb953eecf9c25b4f94ec9c32a3b2' })))));
     }
     get element() { return this; }
     static get style() { return cardCss; }

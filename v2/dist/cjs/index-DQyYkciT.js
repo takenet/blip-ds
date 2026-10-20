@@ -230,6 +230,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-loading-bar.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-loading-page.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-loading-page.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-menu.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -402,14 +406,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-button.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-loading-spinner.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-loading-spinner.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-button-icon.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-button-icon.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-loading-page.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-loading-page.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-pagination.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -422,10 +426,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-avatar.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-icon.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-icon.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-datepicker-period_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-datepicker-period_2.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-illustration_2.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-illustration_2.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-radio_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -438,14 +450,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-checkbox_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-illustration_2.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-illustration_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-loading-spinner.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-loading-spinner.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-autocomplete.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -458,10 +462,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-rich-text.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-icon.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-icon.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-upload.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -18,7 +18,6 @@ export declare class BdsIllustration {
      */
     dataTest?: string;
     componentWillLoad(): void;
-    /**Function to map the svg and call the "formatSvg" function */
-    setIllustrationContent: () => void;
+    setIllustrationContent(): void;
     render(): HTMLElement;
 }

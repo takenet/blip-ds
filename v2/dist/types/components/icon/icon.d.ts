@@ -1,6 +1,7 @@
 import { IconSize, IconTheme, IconType } from './icon-interface';
 export declare class Icon {
     private io?;
+    private requestVersion;
     el: HTMLElement;
     private svgContent?;
     private isVisible;
@@ -56,6 +57,6 @@ export declare class Icon {
     disconnectedCallback(): void;
     private waitUntilVisible;
     loadIcon(): void;
-    setSvgContent: () => void;
+    setSvgContent: () => Promise<void>;
     render(): HTMLElement;
 }

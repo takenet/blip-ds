@@ -42,6 +42,7 @@ export declare class Image {
      * The current source URL of the image to be rendered.
      */
     currentSrc: string;
+    componentWillLoad(): void;
     componentDidLoad(): void;
     loadImage(): Promise<void>;
     render(): JSX.Element;

@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Build, Host, h } from "@stencil/core";
-import icons from "blip-tokens/build/json/assets_icons.json";
-import emojis from "blip-tokens/build/json/assets_emojis.json";
-import logo from "blip-tokens/build/json/assets_logos.json";
+import { loadAssetSvg } from "../../utils/asset-loader";
 import { formatSvg, getIconName, getEmojiName, getLogoName } from "./utils";
 export class Icon {
     constructor() {
+        this.requestVersion = 0;
         this.isVisible = false;
         /**
          * Icon size. Entered as one of the icon size design tokens. Can be one of:
@@ -29,26 +28,18 @@ export class Icon {
          * Data test is the prop to specifically test the component action object.
          */
         this.dataTest = null;
-        this.setSvgContent = () => {
-            let svg;
+        this.setSvgContent = async () => {
+            const version = ++this.requestVersion;
             try {
-                if (this.type === 'icon') {
-                    const key = getIconName(this.name, this.theme);
-                    svg = atob(icons[key]);
-                    this.svgContent = formatSvg(svg, this.color);
-                }
-                else if (this.type === 'emoji') {
-                    const key = getEmojiName(this.name);
-                    svg = atob(emojis[key]);
-                    this.svgContent = formatSvg(svg, this.color, true);
-                }
-                else if (this.type === 'logo') {
-                    const key = getLogoName(this.name);
-                    svg = atob(logo[key]);
-                    this.svgContent = formatSvg(svg, this.color, true);
-                }
+                const key = this.type === 'icon' ? getIconName(this.name, this.theme) : this.type === 'emoji' ? getEmojiName(this.name) : getLogoName(this.name);
+                const svg = await loadAssetSvg(key);
+                if (version === this.requestVersion)
+                    this.svgContent = formatSvg(svg, this.color, this.type !== 'icon');
             }
             catch (err) {
+                if (version !== this.requestVersion)
+                    return;
+                this.svgContent = undefined;
                 // eslint-disable-next-line no-console
                 console.warn('[Warning]: Failed to setSvgContent to', this.name);
             }
@@ -64,6 +55,7 @@ export class Icon {
         });
     }
     disconnectedCallback() {
+        this.requestVersion++;
         if (this.io) {
             this.io.disconnect();
             this.io = undefined;
@@ -87,8 +79,11 @@ export class Icon {
         }
     }
     loadIcon() {
-        if (!this.name)
+        if (!this.name) {
+            this.requestVersion++;
+            this.svgContent = undefined;
             return;
+        }
         if (Build.isBrowser && this.isVisible) {
             this.setSvgContent();
         }
@@ -100,7 +95,7 @@ export class Icon {
         }
     }
     render() {
-        return (h(Host, { key: 'e9180dc0ce13fe163c2e7b717d5d26f7259a14b6', role: "img", class: {
+        return (h(Host, { key: 'e285bf38968d128bf3fd8a0a90bb23183c72b781', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (h("div", { class: {
@@ -380,6 +375,9 @@ export class Icon {
                 "methodName": "loadIcon"
             }, {
                 "propName": "theme",
+                "methodName": "loadIcon"
+            }, {
+                "propName": "type",
                 "methodName": "loadIcon"
             }];
     }

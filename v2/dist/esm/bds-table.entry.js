@@ -7,7 +7,7 @@ const Table = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '1dafc43ed87db9fa30a52fc0b9ff83105ef4ae31', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: 'bfc3ab12650cc4e1f35d37c800d37677b842fbe3', class: "bds-table" }, h("slot", { key: '98966e37c74a8f656e0a15c9b617e3fb7fb5ebde' }))));
+        return (h(Host, { key: 'd351f748fc26b1acbf1c53b21766fb05da5043ec', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: 'bb082078440cae44e2e2064286cbc6f97b225854', class: "bds-table" }, h("slot", { key: '709ed0006d04ee0cd93b8d8d32c03e583ea54b5e' }))));
     }
 };
 Table.style = tableCss;

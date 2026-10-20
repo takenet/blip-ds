@@ -1,6 +1,5 @@
 import { h, Host } from "@stencil/core";
-// Named import lets Rollup tree-shake the manifest, so devDependencies are not shipped in dist (flagged by SCA scanners).
-import { dependencies } from "../../../package.json";
+import { getAssetUrl } from "../../utils/asset-loader";
 export class BdsIllustration {
     constructor() {
         /**
@@ -11,22 +10,22 @@ export class BdsIllustration {
          * Data test is the prop to specifically test the component action object.
          */
         this.dataTest = null;
-        /**Function to map the svg and call the "formatSvg" function */
-        this.setIllustrationContent = () => {
-            const tokensVersion = dependencies['blip-tokens'].replace('^', '');
-            const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/illustrations/${this.type}/${this.name}.json`;
-            fetch(apiUrl).then((response) => response.json().then((data) => {
-                this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
-            }));
-        };
     }
     componentWillLoad() {
         this.setIllustrationContent();
     }
+    setIllustrationContent() {
+        try {
+            this.IllustrationContent = this.name ? getAssetUrl(`illustration/${this.type}/${this.name}`) : undefined;
+        }
+        catch (_a) {
+            this.IllustrationContent = undefined;
+        }
+    }
     render() {
-        return (h(Host, { key: 'bcda4398ff0666563e4a81ef72afdb4652e26269', role: "img", class: {
+        return (h(Host, { key: '9735f7090b83434a6142d2e92776a3a4b67b52fb', role: "img", class: {
                 'bds-illustration': true,
-            } }, this.IllustrationContent ? (h("img", { draggable: false, src: `data:image/svg+xml;base64,${this.IllustrationContent}`, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
+            } }, this.IllustrationContent ? (h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
     }
     static get is() { return "bds-illustration"; }
     static get encapsulation() { return "shadow"; }
@@ -133,6 +132,15 @@ export class BdsIllustration {
         return {
             "IllustrationContent": {}
         };
+    }
+    static get watchers() {
+        return [{
+                "propName": "name",
+                "methodName": "setIllustrationContent"
+            }, {
+                "propName": "type",
+                "methodName": "setIllustrationContent"
+            }];
     }
 }
 //# sourceMappingURL=illustration.js.map

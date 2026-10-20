@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
-import { d as defineCustomElement$2 } from './p-DIYLAn6L.js';
+import { d as defineCustomElement$2 } from './p-zHA5tVzD.js';
 
 const modalCss = ".modal__dialog{opacity:0;visibility:hidden;width:100%;height:100%;position:fixed;top:0;left:0;-webkit-transition:opacity 0.3s ease-in-out;transition:opacity 0.3s ease-in-out;z-index:80000;display:none}.modal__dialog .outzone{position:absolute;inset:0;background-color:var(--color-content-din, rgb(0, 0, 0));opacity:0.7}.modal__dialog--dynamic{overflow-y:auto;padding-top:40px;padding-bottom:40px;height:-webkit-fill-available}.modal__dialog .modal{position:relative;margin:auto;width:592px;height:368px;border-radius:8px;background:var(--color-surface-1, rgb(246, 246, 246));-webkit-box-shadow:0px 8px 4px -4px var(--color-shadow-0, rgba(0, 0, 0, 0.04)), 0px 12px 12px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 8px 4px -4px var(--color-shadow-0, rgba(0, 0, 0, 0.04)), 0px 12px 12px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));padding:32px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between}.modal__dialog .modal--dynamic{height:auto;width:auto;max-width:1000px}.modal__dialog .modal .close-button{position:relative;color:var(--color-content-default, rgb(40, 40, 40));-ms-flex-item-align:end;align-self:flex-end;margin-bottom:16px;cursor:pointer}.modal__dialog .modal .close-button::before{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.modal__dialog .modal .close-button:focus-visible{outline:none}.modal__dialog .modal .close-button:focus-visible::before{border-color:var(--color-focus, rgb(194, 38, 251))}.modal__dialog .modal .slot--dynamic{-ms-flex:1 1 auto;flex:1 1 auto}.modal__dialog--open{opacity:1;visibility:visible;display:-ms-flexbox;display:flex}";
 
@@ -75,11 +75,11 @@ const BdsModal$1 = /*@__PURE__*/ proxyCustomElement(class BdsModal extends H {
             document.removeEventListener('keydown', this.listener, false);
     }
     render() {
-        return (h("div", { key: '7c2245485dc05607d6bf3abc4ba765dcc1a56c26', class: {
+        return (h("div", { key: '9ac394e64a529da3afcfa94697da6fbbfc50411e', class: {
                 modal__dialog: true,
                 'modal__dialog--open': this.open,
                 [`modal__dialog--${this.size}`]: true,
-            } }, h("div", { key: '5129cec6e970ab5688100a916e55b28f615208ac', class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone }), h("div", { key: '3ae0b0b3cdad6485c8cf435ed6fbf053435a8b82', class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (h("bds-icon", { key: 'a8907580ef453f5227559bbcdd5af19f5c82e2b2', size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && h("slot", { key: '96c3a2963b970ddd6a98c2905e6d5c5c58463828' }), this.size !== 'fixed' && (h("div", { key: '61969dce2b8f71df5295ebd738fab61c9d50d367', class: { slot: true, [`slot--${this.size}`]: true } }, h("slot", { key: '37d83792edd16c2ce7a7807dfcb722375fd98119' }))))));
+            } }, h("div", { key: '2c6527e438a5777a551c48ecd661c05875451ca0', class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone }), h("div", { key: 'cdafc1e745ba925b8b9710931b559b18be3fb8ac', class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (h("bds-icon", { key: '7ce6fae7c50c36815c85148acb0e913582f33847', size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && h("slot", { key: 'e2bdd4f67cc817c5a6cfee78bca306ca07184bba' }), this.size !== 'fixed' && (h("div", { key: '13c26695a6d65ce83b75fa4e0c6df1558da180bc', class: { slot: true, [`slot--${this.size}`]: true } }, h("slot", { key: '8118e76275e0e2f91a6a735a4c3c4b598998f17f' }))))));
     }
     static get watchers() { return {
         "open": ["isOpenChanged"]

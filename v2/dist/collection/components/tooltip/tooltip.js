@@ -59,11 +59,11 @@ export class Tooltip {
         const styleTooltip = {
             maxWidth: this.maxWidtTooltip,
         };
-        return (h("div", { key: '00b09b6886eb74ac91fbea2c9fbe3d792d5bd6cb', class: "tooltip__wrapper" }, h("div", { key: 'e5026004be5450694921a9741f070f620dab6924', onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), "data-test": this.dataTest }, h("slot", { key: 'ea0363fa79c3ab2ee36cc0d981025a9dc51cf403' })), h("div", { key: 'cb0da1586a8e66456295a212cfabb1e51831c123', class: {
+        return (h("div", { key: '6417012bb62f436fb71b641e014bc46c40beb012', class: "tooltip__wrapper" }, h("div", { key: '2050b0b4fb0c0091d1a8c2a38d6ace98eb65b5b9', onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), "data-test": this.dataTest }, h("slot", { key: '834979403c3d55ab5b812e293b2812e626a86ef9' })), h("div", { key: 'ef1c884a74c3a4952cb305fb51490b282d76a1a4', class: {
                 tooltip__tip: true,
                 [`tooltip__tip--${this.position}`]: true,
                 'tooltip__tip--visible': this.isMouseOver,
-            }, style: styleTooltip }, h("div", { key: '3c5bf7638affb6719452ed26d67675028cb39510', class: { tooltip__tip__text: true } }, h("pre", { key: 'd330774b5fd7140bf3f7ccb75dc096f33162d587' }, h("bds-typo", { key: 'df2356e9b99a38cb444ed77b283fdedd0c331770', class: "text", "no-wrap": "false", variant: "fs-12" }, this.textVerify))))));
+            }, style: styleTooltip }, h("div", { key: 'e614d1d03e302ada5841dc959f8714922ce4fb7a', class: { tooltip__tip__text: true } }, h("pre", { key: '861df4fa2f3532906dc3bab7708bba2717fd76d3' }, h("bds-typo", { key: 'e4e61e55bd1b7285948dd23791704f1ed5d1d6e7', class: "text", "no-wrap": "false", variant: "fs-12" }, this.textVerify))))));
     }
     static get is() { return "bds-tooltip"; }
     static get encapsulation() { return "shadow"; }

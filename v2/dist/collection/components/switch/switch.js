@@ -72,7 +72,7 @@ export class Switch {
         const sizeClass = this.getSizeClass();
         const sizeSliderClass = this.getSizeSliderClass();
         const styleState = this.getStyleState();
-        return (h("label", { key: '95d3b92232abd0273a9ae86320d4a2a41f09cdaa', class: { [sizeClass]: true } }, h("div", { key: '92cf268fc85154d8bd1975687ae1865fb70278d6', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("input", { key: '1374eac16eccccd6801dfe3345e3b75677d025fa', type: "checkbox", ref: this.refNativeInput, id: this.switchId, name: this.name, onClick: this.onClick, checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("span", { key: '24b47125aecef86886ece5536c1e639bf8665c03', class: { [sizeSliderClass]: true, [styleState]: true } })));
+        return (h("label", { key: '386962722fc475d36ce199a774abe18472bd2177', class: { [sizeClass]: true } }, h("div", { key: '0923ca851a54f552ab9ea2e491d18cb1524ec7d3', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("input", { key: '334fd8adc31c9661f890971f72cadcfcaef1cbf7', type: "checkbox", ref: this.refNativeInput, id: this.switchId, name: this.name, onClick: this.onClick, checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("span", { key: '2b51b12e18c3649a935919cb9627a63706da3e67', class: { [sizeSliderClass]: true, [styleState]: true } })));
     }
     static get is() { return "bds-switch"; }
     static get encapsulation() { return "shadow"; }

@@ -25,46 +25,39 @@ const Image = class {
          */
         this.loadError = false;
     }
+    componentWillLoad() {
+        this.loadImage();
+    }
     componentDidLoad() {
         var _a;
         this.element.style.width = this.width ? this.width : 'auto';
         this.element.style.height = ((_a = this.height) === null || _a === void 0 ? void 0 : _a.length) > 0 ? this.height : 'auto';
     }
     async loadImage() {
-        if (this.src) {
-            this.imageHasLoading = true;
-            try {
-                const response = await fetch(this.src);
-                if (response.ok) {
-                    const blob = await response.blob();
-                    const objectURL = URL.createObjectURL(blob);
-                    this.currentSrc = objectURL;
-                    this.imageLoaded = true;
-                    this.imageHasLoading = false;
-                }
-                else {
-                    this.loadError = true;
-                }
-            }
-            catch (_a) {
-                this.imageHasLoading = false;
-                this.loadError = true;
-            }
-        }
+        this.imageLoaded = false;
+        this.loadError = false;
+        this.currentSrc = this.src || undefined;
+        this.imageHasLoading = !!this.currentSrc;
     }
     render() {
-        if (!this.imageLoaded && !this.loadError) {
-            // Se a imagem ainda não foi carregada, chame o método loadImage
-            this.loadImage();
-        }
-        return (index.h(index.Host, { key: 'b7798d3abcb3fe0da3938b890b1abc6479aeccb0', class: { empty_img: !this.imageLoaded } }, this.imageLoaded ? (index.h("img", { src: this.currentSrc, alt: this.alt, style: {
+        var _a;
+        return (index.h(index.Host, { key: '3de2dfe02e30c64a7ca439bcf31e442e524c6a31', class: { empty_img: !this.imageLoaded } }, this.currentSrc && !this.loadError && (index.h("img", { key: 'eeecb765739c9756bd5da797d20e3dcde3e555cd', src: this.currentSrc, alt: this.alt, hidden: !this.imageLoaded, onLoad: () => {
+                this.imageLoaded = true;
+                this.imageHasLoading = false;
+            }, onError: () => {
+                this.loadError = true;
+                this.imageHasLoading = false;
+            }, style: {
                 objectFit: this.objectFit,
                 width: '100%',
                 height: '100%',
-                filter: `brightness(${this.brightness})`,
-            }, "data-test": this.dataTest, draggable: false })) : this.imageHasLoading ? (index.h("bds-skeleton", { shape: "square", width: "100%", height: "100%" })) : (index.h("bds-illustration", { class: "img-feedback", type: "empty-states", name: this.loadError ? 'broken-image' : 'image-not-found', alt: this.alt, "data-test": this.dataTest }))));
+                filter: `brightness(${(_a = this.brightness) !== null && _a !== void 0 ? _a : 1})`,
+            }, "data-test": this.dataTest, draggable: false })), !this.imageLoaded && (this.imageHasLoading ? (index.h("bds-skeleton", { shape: "square", width: "100%", height: "100%" })) : (index.h("bds-illustration", { class: "img-feedback", type: "empty-states", name: this.loadError ? 'broken-image' : 'image-not-found', alt: this.alt, "data-test": this.dataTest })))));
     }
     get element() { return index.getElement(this); }
+    static get watchers() { return {
+        "src": ["loadImage"]
+    }; }
 };
 Image.style = imageCss;
 

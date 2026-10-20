@@ -88,7 +88,7 @@ const BdsTabItem = class {
         this.tabDisabled.emit({ item: this.numberElement, disable: this.disable });
     }
     render() {
-        return (index.h(index.Host, { key: '930609a361acd0a316ab488e033e0bb377325a4b', class: { [`is-open`]: this.disable === true ? false : this.open } }, index.h("div", { key: '5f8dc94dfe92bd11a6b7837d46b0a0bd3fe2a091', class: { tab_item: true }, "data-test": this.dataTest }, index.h("div", { key: '7a4905605ee3bb88b350ac41b74df854ef9aa248', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, index.h("slot", { key: '46d22087a4b1682ac8f0db58f97c94461fe9ae35' })))));
+        return (index.h(index.Host, { key: 'd9873300253948c5ad103f81e69b3dc11a2887ba', class: { [`is-open`]: this.disable === true ? false : this.open } }, index.h("div", { key: '46d71ec4e53ad9af468c47609e39f7b9d1222f2d', class: { tab_item: true }, "data-test": this.dataTest }, index.h("div", { key: 'c7ed3ad0726297032cff3a1ade103c6f8a471d2b', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, index.h("slot", { key: '7a2aa454dc59046a992066526d1974d785cc76c1' })))));
     }
     static get watchers() { return {
         "disable": ["disableChanged"]

@@ -1,10 +1,7 @@
 'use strict';
 
 var index = require('./index-DQyYkciT.js');
-
-const dependencies = {
-	"blip-tokens": "^1.106.0"
-};
+var assetLoader = require('./asset-loader-CLpR4LMY.js');
 
 const illustrationCss = ":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}";
 
@@ -19,24 +16,28 @@ const BdsIllustration = class {
          * Data test is the prop to specifically test the component action object.
          */
         this.dataTest = null;
-        /**Function to map the svg and call the "formatSvg" function */
-        this.setIllustrationContent = () => {
-            const tokensVersion = dependencies['blip-tokens'].replace('^', '');
-            const apiUrl = `https://cdn.jsdelivr.net/npm/blip-tokens@${tokensVersion}/build/json/illustrations/${this.type}/${this.name}.json`;
-            fetch(apiUrl).then((response) => response.json().then((data) => {
-                this.IllustrationContent = data[`asset-${this.type}-${this.name}-svg`];
-            }));
-        };
     }
     componentWillLoad() {
         this.setIllustrationContent();
     }
+    setIllustrationContent() {
+        try {
+            this.IllustrationContent = this.name ? assetLoader.getAssetUrl(`illustration/${this.type}/${this.name}`) : undefined;
+        }
+        catch (_a) {
+            this.IllustrationContent = undefined;
+        }
+    }
     render() {
-        return (index.h(index.Host, { key: 'bcda4398ff0666563e4a81ef72afdb4652e26269', role: "img", class: {
+        return (index.h(index.Host, { key: '9735f7090b83434a6142d2e92776a3a4b67b52fb', role: "img", class: {
                 'bds-illustration': true,
-            } }, this.IllustrationContent ? (index.h("img", { draggable: false, src: `data:image/svg+xml;base64,${this.IllustrationContent}`, alt: this.alt, "data-test": this.dataTest })) : (index.h("div", { class: "default", "data-test": this.dataTest }))));
+            } }, this.IllustrationContent ? (index.h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (index.h("div", { class: "default", "data-test": this.dataTest }))));
     }
     static get assetsDirs() { return ["svg"]; }
+    static get watchers() { return {
+        "name": ["setIllustrationContent"],
+        "type": ["setIllustrationContent"]
+    }; }
 };
 BdsIllustration.style = illustrationCss;
 
@@ -54,21 +55,21 @@ const Skeleton = class {
         this.dataTest = null;
     }
     render() {
-        return (index.h(index.Host, { key: '096bd4a0d5488514a4e4175365b2cdc72b2f95be', style: {
+        return (index.h(index.Host, { key: '197291536f4f1040c6fb84d04de1eefb93bff169', style: {
                 display: 'flex',
                 position: 'relative',
                 overflow: 'hidden',
                 width: this.width,
                 height: this.height,
                 borderRadius: this.shape === 'circle' ? '50%' : '8px',
-            } }, index.h("bds-grid", { key: '065cfd3a18bfb3e5235eaa1ba7cb4551de1bbfcc', xxs: "12", class: { skeleton: true, [`skeleton_shape--${this.shape}`]: true } }), index.h("div", { key: '65afb39b74e9fd0a44e3b11c5b26d5726136eee2', style: {
+            } }, index.h("bds-grid", { key: '1b80d31d9e4e39c6f855662bcfced011523e1a91', xxs: "12", class: { skeleton: true, [`skeleton_shape--${this.shape}`]: true } }), index.h("div", { key: 'e92b287da270706d9d25efcde0fcf2da8af254b9', style: {
                 display: 'flex',
                 width: '100%',
                 height: '100%',
                 position: 'absolute',
                 borderRadius: this.shape === 'circle' ? '50%' : '8px',
                 overflow: 'hidden',
-            }, "data-test": this.dataTest }, index.h("div", { key: '6d1069c509fff8283cb7456a96cdd6d43fb83845', class: "animation" }))));
+            }, "data-test": this.dataTest }, index.h("div", { key: '174969e6c92034eab3e42afd40b5c199583c4413', class: "animation" }))));
     }
 };
 Skeleton.style = skeletonCss;

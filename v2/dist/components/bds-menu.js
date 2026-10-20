@@ -57,11 +57,11 @@ const BdsMenu$1 = /*@__PURE__*/ proxyCustomElement(class BdsMenu extends H {
             top: `${this.menupositionTop}px`,
             left: `${this.menupositionLeft}px`,
         };
-        return (h(Host, { key: 'eefbfe9249b8945ad1e392e8da192200305edaf9' }, h("div", { key: '141d2c3c12809030a7dea5b59cce43354e61d792', ref: this.refMenuElement, class: {
+        return (h(Host, { key: 'd57a296df046587e4620ac4994e18550bf8933ad' }, h("div", { key: '4593d958b5058b422f30d04da6ef613449238948', ref: this.refMenuElement, class: {
                 menu: true,
                 [`menu__${this.position}`]: true,
                 [`menu__open`]: this.open,
-            }, style: menuPosition, part: "bds-menu__container" }, h("slot", { key: '82d80465f1ccb1e069adab0cd82efe264ac37250' })), this.open && h("div", { key: 'd7d25cc4a82bccff8dca51679740908beb54fed2', class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
+            }, style: menuPosition, part: "bds-menu__container" }, h("slot", { key: '7e7fe200ec5ead5f60f7e01938f5ec19cedf6ff7' })), this.open && h("div", { key: '4278c4de9006197f145a93631ec7845d6bde0cd7', class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
     }
     static get watchers() { return {
         "open": ["openMenu"]

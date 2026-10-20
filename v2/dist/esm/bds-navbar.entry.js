@@ -23,12 +23,12 @@ const Navbar = class {
         this.dataTest = null;
     }
     render() {
-        return (h(Host, { key: '36cca0c4ec6ea545480f52e0270f437228782839', class: { [`${this.orientation}`]: true } }, h("div", { key: '8db37d28f331ab0cf9200397ba1a87ae89f4a335', class: {
+        return (h(Host, { key: '9efe8f0a55ecde67ca11308d0d9f7516faa77e6d', class: { [`${this.orientation}`]: true } }, h("div", { key: '2bef4726af5e77d999df84a451c44bc127d40c60', class: {
                 navbar: true,
                 [`navbar__justify-content__${this.justifyContent}`]: true,
                 [`navbar__orientation__${this.orientation}`]: true,
                 [`navbar__background-color__${this.backgroundColor}`]: true,
-            }, "data-test": this.dataTest }, h("slot", { key: 'ae02b5f18e593e465bc7997345c1c197f46038f7' }))));
+            }, "data-test": this.dataTest }, h("slot", { key: '86d9a991ca622c0ef04ea0b872e7c5ae48247edc' }))));
     }
     get hostElement() { return getElement(this); }
 };

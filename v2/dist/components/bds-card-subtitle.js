@@ -8,7 +8,7 @@ const CardSubtitle = /*@__PURE__*/ proxyCustomElement(class CardSubtitle extends
         this.__attachShadow();
     }
     render() {
-        return (h("bds-typo", { key: '730db62f0ca2e8cd88656774e315cb12012d2e8c', variant: "fs-12", tag: "p", bold: "regular", margin: false }, this.text));
+        return (h("bds-typo", { key: 'fbb8d9b876c08fc9be743e82fe1bbfcedc3119a3', variant: "fs-12", tag: "p", bold: "regular", margin: false }, this.text));
     }
 }, [1, "bds-card-subtitle", {
         "text": [1]

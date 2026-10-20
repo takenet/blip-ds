@@ -31,7 +31,7 @@ const BdsProgressBar$1 = /*@__PURE__*/ proxyCustomElement(class BdsProgressBar e
     }
     render() {
         const styles = { width: `${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}%` };
-        return (h(Host, { key: '45260bbac205b7cefca95e995efdb19dc7cf0591' }, h("div", { key: '69bb68554d05b6469af65023032ffb1660f57fcd', class: { progress_bar: true, [`size_${this.size}`]: true }, "data-test": this.dataTest }, h("div", { key: '99397107698489eaa05b238de95feea5db0a1250', class: { bar_behind: true } }, h("div", { key: 'a02424dbec319b1fa284a15f5808b892b63e46b2', class: { progress: true, [`color_${this.color}`]: true }, style: styles }))), this.text && (h("div", { key: '4e0e00f2703d7f80c97ad65ad665b9d402d66945', class: { typo_progress: true } }, h("bds-typo", { key: '7c099b19eeeebfbd70dde18a594299d6666f4509', variant: "fs-14" }, this.text)))));
+        return (h(Host, { key: '83a0dca9c5306c29fef89c394af061832bc8fb62' }, h("div", { key: 'c95357c03d71648179434121335f01b51ecada31', class: { progress_bar: true, [`size_${this.size}`]: true }, "data-test": this.dataTest }, h("div", { key: '60f0a1139d9ca107d02c2514feab63ce9a81493b', class: { bar_behind: true } }, h("div", { key: '0d6b5702d1c8bfc66845a558d0fa61763ed9acff', class: { progress: true, [`color_${this.color}`]: true }, style: styles }))), this.text && (h("div", { key: 'a558820f57d99b4a2aa6bebb35f018d985f70d40', class: { typo_progress: true } }, h("bds-typo", { key: 'e18e8633adc0068606fa38880dc583b07ffcd539', variant: "fs-14" }, this.text)))));
     }
     static get style() { return progressBarCss; }
 }, [1, "bds-progress-bar", {

@@ -19,12 +19,12 @@ const TableHeaderCell = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '09da6cc9fbdb19a0d8b92febe0c692ceb1ebc5d4' }, index.h("div", { key: '241b707372284075fd46bc1c16f036e2a87eaef9', class: {
+        return (index.h(index.Host, { key: 'a286b5a66d8d1e4dd575078f8fcdc83af79ab7f1' }, index.h("div", { key: 'c6119fde2c112323965af9699cbeca148395b48a', class: {
                 th_cell: true,
                 [`th_cell--sortable-${this.sortable}`]: true,
                 'dense-th': this.isDense,
                 [`justify--${this.justifyContent}`]: true
-            } }, index.h("bds-typo", { key: 'f28cbf94ace5351291094fe1e20e5813ade61341', bold: this.sortable ? 'bold' : 'semi-bold', variant: "fs-14" }, index.h("slot", { key: 'c802902e4344d0ae247eb8f3187f0a207ce0bcee' })), this.sortable ? (index.h("bds-icon", { size: "small", name: this.arrow === 'asc' ? 'arrow-down' : this.arrow === 'dsc' ? 'arrow-up' : '' })) : ''
+            } }, index.h("bds-typo", { key: '4bc06f86385f02e753ee782ed26e7e41757e52ec', bold: this.sortable ? 'bold' : 'semi-bold', variant: "fs-14" }, index.h("slot", { key: 'd29b72133c440bbf490de15901ded6b78b7aad09' })), this.sortable ? (index.h("bds-icon", { size: "small", name: this.arrow === 'asc' ? 'arrow-down' : this.arrow === 'dsc' ? 'arrow-up' : '' })) : ''
         // <div style={{ width: '20px' }}></div>
         )));
     }

@@ -5,6 +5,7 @@ export type LoadingSpinnerColorMap = {
     [key in LoadingSpinnerVariant]: string;
 };
 export declare class BdsLoadingSpinner {
+    private requestVersion;
     private svgContent?;
     /**
      * 	Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
@@ -27,6 +28,6 @@ export declare class BdsLoadingSpinner {
     componentWillLoad(): void;
     /**Function to transform the svg in a div element. */
     formatSvg: (svgContent: string) => string;
-    setSvgContent: () => void;
+    setSvgContent(): Promise<void>;
     render(): any;
 }

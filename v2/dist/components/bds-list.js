@@ -1,13 +1,13 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$b } from './p-DHRnAuoL.js';
-import { d as defineCustomElement$a } from './p-DVBdUxzU.js';
-import { d as defineCustomElement$9 } from './p-CLcwiQ01.js';
-import { d as defineCustomElement$8 } from './p-Iz2TmIkq.js';
-import { d as defineCustomElement$7 } from './p-DIYLAn6L.js';
-import { d as defineCustomElement$6 } from './p-C863l_ht.js';
-import { d as defineCustomElement$5 } from './p-DzNR1kSf.js';
-import { d as defineCustomElement$4 } from './p-mcLFs8cG.js';
-import { d as defineCustomElement$3 } from './p-IEiDdwGC.js';
+import { d as defineCustomElement$b } from './p-Dme1JQSZ.js';
+import { d as defineCustomElement$a } from './p-CDeshfPT.js';
+import { d as defineCustomElement$9 } from './p-aiItKd3O.js';
+import { d as defineCustomElement$8 } from './p-CAWPrne1.js';
+import { d as defineCustomElement$7 } from './p-zHA5tVzD.js';
+import { d as defineCustomElement$6 } from './p-KlkLJzsD.js';
+import { d as defineCustomElement$5 } from './p-CzSxkckL.js';
+import { d as defineCustomElement$4 } from './p-BUKGTfeg.js';
+import { d as defineCustomElement$3 } from './p-7wwi1guL.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 const listCss = ":host{display:block;width:100%}:host(.list_item_content){display:-ms-flexbox;display:flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.list_item{display:-ms-flexbox;display:flex;gap:16px;-ms-flex-align:center;align-items:center}.list_item_tall{padding:16px}.list_item_standard{padding:8px 16px}.list_item_short{padding:8px}.list_item .input_list{position:relative}.list_item .avatar-item{position:relative;display:block}.list_item .icon-item{position:relative;color:var(--color-content-default, rgb(40, 40, 40))}.list_item .icon-item-active{color:var(--color-primary, rgb(30, 107, 241))}.list_item .grow-up{position:relative;-ms-flex-positive:2;flex-grow:2}.list_item .content-slot{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:8px}.list_item .content-item{position:relative;display:-ms-flexbox;display:flex;gap:2px;-ms-flex-direction:column;flex-direction:column}.list_item .content-item .title-item{color:var(--color-content-default, rgb(40, 40, 40))}.list_item .content-item .subtitle-item{color:var(--color-content-default, rgb(40, 40, 40))}.list_item .content-area{position:relative;-ms-flex-positive:2;flex-grow:2}.list_item .content-area .internal-chips,.list_item .content-area ::slotted(*){display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;gap:8px}.list_item .action-area{position:relative}.list_item .action-area .internal-actions-buttons,.list_item .action-area ::slotted(*){display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;color:var(--color-content-default, rgb(40, 40, 40))}.list_item .icon-arrow{-webkit-transition:all ease 0.3s;-moz-transition:all ease 0.3s;transition:all ease 0.3s;-webkit-transform:rotate(0deg);transform:rotate(0deg)}.list_item .icon-arrow-active{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.border_radius{border-radius:8px}.border_radius:before,.border_radius:after,.border_radius .active{border-radius:8px}.active{position:absolute;background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.08;inset:0}.clickable{position:relative;cursor:pointer;gap:8px}.clickable:before{content:\"\";position:absolute;inset:0}.clickable:hover:before{background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.08}.clickable:active:before{background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.16}";
@@ -137,7 +137,7 @@ const List = /*@__PURE__*/ proxyCustomElement(class List extends H {
         this.bdsListSwitchChange.emit(result);
     }
     render() {
-        return (h(Host, { key: 'dcdf6ac9fbf6510d7ef1308d96c8514214008fd8' }, h("div", { key: '87a84c84e1750418a9a98398b3dc7afe5f1dc91f', class: {
+        return (h(Host, { key: '5152e56a0535ab14ac21a3ab99901d576adec70c' }, h("div", { key: '0a3d188f19396deb07fbd2bd8174a1a0386668a9', class: {
                 list: true,
             } }, this.internalData ? (this.internalData.map((item, idx) => (h("bds-list-item", { key: idx, value: item.value, text: item.text, "type-list": this.typeList ? this.typeList : item.typeList, "secondary-text": item.secondaryText, "avatar-name": item.avatarName, "avatar-thumbnail": item.avatarThumbnail, checked: item.checked, icon: item.icon, chips: item.chips, actionsButtons: item.actionsButtons, onBdsChecked: (ev) => this.chagedOptions(ev), onBdsClickActionButtom: (ev) => this.onClickActionsButtons(ev), dataTest: item.dataTest })))) : (h("slot", null)))));
     }

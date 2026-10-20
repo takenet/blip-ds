@@ -1,4 +1,4 @@
-import { S as Skeleton, d as defineCustomElement$1 } from './p-Cb-vaBHq.js';
+import { S as Skeleton, d as defineCustomElement$1 } from './p-DK_rZFKD.js';
 
 const BdsSkeleton = Skeleton;
 const defineCustomElement = defineCustomElement$1;

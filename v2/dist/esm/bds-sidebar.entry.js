@@ -67,19 +67,19 @@ const Sidebar = class {
         this.hasHeaderSlot = !!this.hostElement.querySelector('[slot="header"]');
     }
     render() {
-        return (h("div", { key: 'dc07bf50f1abda5223e611167fba96d6436eb797', class: {
+        return (h("div", { key: 'a8b5da86fc33713bf75b4ae95d573c6057390509', class: {
                 sidebar_dialog: true,
                 is_open: this.isOpen,
                 [`type_${this.type}`]: true,
-            } }, this.type === 'over' ? (h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone })) : (''), h("div", { key: '279f833e63e0ec799101259fee1f4b4cace10363', class: {
+            } }, this.type === 'over' ? (h("div", { class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone })) : (''), h("div", { key: '70c46adbe66f087380ae91d73a04122401b5bf15', class: {
                 sidebar: true,
                 is_open: this.isOpen,
                 [`type_${this.type}`]: true,
                 [`position_${this.sidebarPosition}`]: true,
                 [`background_${this.background}`]: true,
-            }, style: { width: `${this.width < 144 ? 144 : this.width}px` } }, this.hasHeaderSlot && (h("div", { key: 'e02a6f98a5d39afe207f767449c5437efe93e2c2', class: { header: true } }, h("div", { key: '4087e40497b17dd0c0818a7bdbd4a8a03015c126', class: { content: true } }, h("slot", { key: 'd123a6196493beb1e1319fd9b223cc9376e2562b', name: "header" })), this.type === 'fixed' ? ('') : (h("bds-button-icon", { class: {
+            }, style: { width: `${this.width < 144 ? 144 : this.width}px` } }, this.hasHeaderSlot && (h("div", { key: 'c83b837dedf202ae13a9c3a728b301a53b0dbb7a', class: { header: true } }, h("div", { key: 'b5d5ca5dc76fadd3e87037eab998f25fb57cd2aa', class: { content: true } }, h("slot", { key: '59e9b648415fdb638a61dc34794fb7095a069af2', name: "header" })), this.type === 'fixed' ? ('') : (h("bds-button-icon", { class: {
                 closeButton: true,
-            }, icon: "close", size: "short", variant: "secondary", onClick: () => this.onClickCloseButtom(), dataTest: this.dtButtonClose })))), h("div", { key: 'c01a4e91490908af75b64f7a25ac149ddabda9aa', class: { body: true } }, h("div", { key: 'cb7348c218f17e3f61f40bc969c83a48654cdbef', class: { content: true, element_scrolled: true, margin: this.margin } }, h("slot", { key: '59d340a9f35fcec7c46d4246e70d59e6fa5561d5', name: "body" }))), this.hasFooterSlot && (h("div", { key: '567471bd57fc44901b5253cfa7bb47c397a2699c', class: { footer: true } }, h("div", { key: 'a80389443ef3461858c399daf8554a7b1a030762', class: { content: true } }, h("slot", { key: 'e1509d3c597eae64b5fa22892c38edf28f5361f8', name: "footer" })))))));
+            }, icon: "close", size: "short", variant: "secondary", onClick: () => this.onClickCloseButtom(), dataTest: this.dtButtonClose })))), h("div", { key: 'c509f7d4fa94c9ce123fe2b1e5128638d8683854', class: { body: true } }, h("div", { key: 'aafcc892ea70b694e59dd79819e26f408d869540', class: { content: true, element_scrolled: true, margin: this.margin } }, h("slot", { key: '9a63a88bb5f487f6b7928d06300c812854eb57f4', name: "body" }))), this.hasFooterSlot && (h("div", { key: '71f2aa9822126a4bdae959d5a8b84b8ba100f442', class: { footer: true } }, h("div", { key: 'eb8666e480041b0282f22f112eb07da8a1fd8ede', class: { content: true } }, h("slot", { key: '873590e2d31d11d27a69036afddc05ee2e50df16', name: "footer" })))))));
     }
     get hostElement() { return getElement(this); }
     static get watchers() { return {

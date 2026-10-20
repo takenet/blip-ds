@@ -75,7 +75,7 @@ const NavTreeItem = class {
         }
     }
     render() {
-        return (h(Host, { key: 'e118bf10bd6864eb4a9dc5b67107ec56910d62ea' }, h("div", { key: 'a832a417ea8879d21d1f648c4cc760a420dc7626', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, h("div", { key: '6659deea843284153e031994f86ea8288f349258', class: {
+        return (h(Host, { key: 'ff6471545338c93b5172c0c8f136cb20ef69c984' }, h("div", { key: 'e375020aad3383a1089556dee9b39e6948101cb5', tabindex: "0", onKeyDown: this.handleKeyDown.bind(this), class: "focus" }, h("div", { key: '7544d4c0795e04c8a12413ada10e9fed04ebfa33', class: {
                 nav_tree_item: true,
                 nav_tree_item_active: this.isOpen,
                 nav_tree_item_button: !this.navTreeChild,
@@ -85,14 +85,14 @@ const NavTreeItem = class {
             }, onClick: () => this.handler(), "data-test": this.dataTest, "aria-label": this.text + (this.secondaryText && `: ${this.secondaryText}`) }, this.loading ? (h("bds-loading-spinner", { size: "extra-small" })) : this.icon ? (h("bds-icon", { class: {
                 [`icon-item`]: true,
                 [`icon-item-active`]: this.isOpen,
-            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { key: '1584948e66adf30b48c8c0e98e01ca8320db0e69', class: "nav_tree_item_content" }, this.text && (h("bds-typo", { key: 'ff7d580f9758aaf069e748a6db27d16e0c743f7f', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { key: '7ec40762f3ffdf24b7905a366d52c6dba30ecf8d', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { key: 'f575665cc68beb46a500cde8ef1ead79da69c5bd', class: "nav_tree_item_slot" }, h("slot", { key: '2791dffc6c055710d25c2755486dad8b3312fac6', name: "header-content" })), this.navTreeChild && (h("bds-icon", { key: 'dbd73505cc9598bced4ac1a64c0f76aa9201766c', class: {
+            }, size: "medium", name: this.icon, color: "inherit", theme: "outline" })) : (''), h("div", { key: '88c2177ff42e07d38677ee3d363456a752958dfe', class: "nav_tree_item_content" }, this.text && (h("bds-typo", { key: '8395f417521709a903467d7d2071b9f6e54f67a9', class: { ['title-item']: true, [`title-item--loading`]: this.loading }, variant: "fs-14", tag: "span", "line-height": "small", bold: this.isOpen ? 'bold' : 'semi-bold' }, this.text)), this.secondaryText && (h("bds-typo", { key: 'd3854210093cab8d7e16e5f1c101e78508c0a6cf', class: { ['subtitle-item']: true, [`subtitle-item--loading`]: this.loading }, variant: "fs-12", "line-height": "small", tag: "span", margin: false }, this.secondaryText))), h("div", { key: '245aeada7cee03d6d1ec98346fd964a70a627102', class: "nav_tree_item_slot" }, h("slot", { key: '1de952eb403578036dfad593ecb64b46692035eb', name: "header-content" })), this.navTreeChild && (h("bds-icon", { key: '27a2a33553bd6486d218e9ec437f35b2864e0424', class: {
                 [`nav_main_arrow`]: true,
                 [`nav_main_arrow_active`]: this.isOpen,
                 [`nav_main_arrow--loading`]: this.loading,
-            }, name: "arrow-down" })))), this.navTreeChild && (h("div", { key: '921344dcc511c31c2b1e44f65f3bc6a30e206a0b', class: {
+            }, name: "arrow-down" })))), this.navTreeChild && (h("div", { key: 'a804619b7296024a53dfd0a9a95c2acd8de409ee', class: {
                 accordion: true,
                 accordion_open: this.isOpen,
-            } }, h("div", { key: '249bce6e0c8442a0a7cbc0e2b073e2c14ad3faaa', class: "container" }, h("slot", { key: 'ad21aed4acd1dd754ecc2fc5a9d368dfdbda7f96' }))))));
+            } }, h("div", { key: 'd3b9e71983bef0b3718aa31b4d056781927dfbfa', class: "container" }, h("slot", { key: 'e4ea090933b6bdfe6c6426034c0583eab22fd1bc' }))))));
     }
     get element() { return getElement(this); }
     static get watchers() { return {

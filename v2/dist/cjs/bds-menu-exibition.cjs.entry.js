@@ -38,10 +38,10 @@ const BdsMenuExibition = class {
     }
     render() {
         const hasAvatar = this.avatarName || this.avatarThumbnail;
-        return (index.h("div", { key: '26f4d44f79e894f2221a77d4601d4fe3827a4df1', class: {
+        return (index.h("div", { key: '34c5a7e8e9b55d43c6309ad684fa7af359a11d23', class: {
                 menuexibition: true,
                 [`menuexibition__disabled`]: this.disabled,
-            } }, hasAvatar && (index.h("bds-avatar", { key: 'f472e20dcf583ecd9cd1c1b25b2ecb9420d568ff', class: "avatar-item", name: this.avatarName, thumbnail: this.avatarThumbnail, size: this.avatarSize })), index.h("div", { key: 'c03868ec242cdbaaf7f207d1b25dc1ed5ab1c4e3', class: "content-item" }, this.value && (index.h("bds-typo", { key: '5f6b4be0f567e01cd11aca057898da0314fd3507', class: "title-item", variant: "fs-16", tag: "span" }, this.value)), this.subtitle && (index.h("bds-typo", { key: '73daa9934056f64e320efd3665ebe2e636d915db', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (index.h("bds-typo", { key: '2c66e992d6d051de9582d927cbceeb1ffb9588cb', class: "description-item", variant: "fs-10", tag: "span" }, this.description)))));
+            } }, hasAvatar && (index.h("bds-avatar", { key: 'c485d7a4248a4a34553ef499ba60cabc6b580036', class: "avatar-item", name: this.avatarName, thumbnail: this.avatarThumbnail, size: this.avatarSize })), index.h("div", { key: '5b41a63882e63541b2315cba00ba981c2167e403', class: "content-item" }, this.value && (index.h("bds-typo", { key: '2214b9f2a065e365065e7beca3dfa7664dedcd59', class: "title-item", variant: "fs-16", tag: "span" }, this.value)), this.subtitle && (index.h("bds-typo", { key: 'fd08dfd0153a07bd3095ca258f5501fc92e28c67', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (index.h("bds-typo", { key: 'e607923f89a5b744d79b62ee220003f36ac2b3a8', class: "description-item", variant: "fs-10", tag: "span" }, this.description)))));
     }
 };
 BdsMenuExibition.style = menuExibitionCss;

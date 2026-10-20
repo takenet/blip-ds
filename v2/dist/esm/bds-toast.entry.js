@@ -138,13 +138,13 @@ const BdsToast = class {
         }, 400);
     }
     render() {
-        return (h("div", { key: '2196f1a7a0ee9ca2aa87095acb3c5da4746d6c7d', class: {
+        return (h("div", { key: 'f6c8c24afe9431b1e6d3a5b3ce46cc12eeda616f', class: {
                 toast: true,
                 [`toast--${this.variant}`]: true,
                 [`toast--action--${this.actionType}`]: true,
                 [`show show--${this.position}`]: this.show,
                 hide: this.hide,
-            } }, this.variant === 'notification' && (h("bds-icon", { key: 'f6ac304c504bbcc6d4a0969795cb2c589e870633', class: "toast__ballon", theme: "solid", name: "blip-chat", size: "brand" })), this.icon && h("bds-icon", { key: 'f20cf21397152dfb9a079e988eeb9d6c7d003d1c', class: "toast__icon", theme: "outline", size: "medium", name: this.icon }), h("div", { key: '40efb04f0f380908b991d45bd983b92d664e78ea', class: "toast__content" }, this.toastTitle && (h("bds-typo", { key: '3a77a0fb420f685040851db899bcc39b31a935d7', variant: "fs-14", bold: "bold" }, this.toastTitle)), this.toastText && h("bds-typo", { key: 'afb241f37594380cdaabb67b434b5636c3849e7f', variant: "fs-14", innerHTML: this.toastText })), h("div", { key: '615535d9c4e115d31105e648f4b509e27e52142a', class: {
+            } }, this.variant === 'notification' && (h("bds-icon", { key: 'ef075d22a21098c2ea489c9238fb11a572db6845', class: "toast__ballon", theme: "solid", name: "blip-chat", size: "brand" })), this.icon && h("bds-icon", { key: '42d2479c0b96abe8daa4290c1c7a92531e33d347', class: "toast__icon", theme: "outline", size: "medium", name: this.icon }), h("div", { key: 'e73125a60281ac426ee7b47b6076fe6c11a33d84', class: "toast__content" }, this.toastTitle && (h("bds-typo", { key: '0059a469e7886f86fd23f2ca9a3238b693c2b22d', variant: "fs-14", bold: "bold" }, this.toastTitle)), this.toastText && h("bds-typo", { key: 'b56c128d8461bdeb28e59202a082406f0264b46f', variant: "fs-14", innerHTML: this.toastText })), h("div", { key: '636c59bc25909fa6279e345ea070480f59cbd7dd', class: {
                 toast__action: true,
                 [`toast__action__${this.actionType}`]: true,
             } }, this.actionType === 'button' ? (h("bds-button", { onKeyDown: this._keyPressHandler.bind(this), tabindex: "0", onClick: () => this._buttonClickHandler(), variant: "secondary", size: "standard", dataTest: this.dtButtonAction }, this.buttonText)) : (h("bds-button-icon", { onClick: () => this._buttonClickHandler(), size: "short", onKeyDown: this._keyPressHandler.bind(this), tabindex: "0", variant: "secondary", icon: "close", dataTest: this.dtButtonClose })))));

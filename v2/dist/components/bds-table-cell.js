@@ -1,4 +1,4 @@
-import { T as TableCell, d as defineCustomElement$1 } from './p-DhTR1vXL.js';
+import { T as TableCell, d as defineCustomElement$1 } from './p-SgKTTlib.js';
 
 const BdsTableCell = TableCell;
 const defineCustomElement = defineCustomElement$1;

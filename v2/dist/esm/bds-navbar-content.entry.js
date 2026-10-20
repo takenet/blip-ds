@@ -7,7 +7,7 @@ const NavbarContent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '53da2440abb6c48340742929fa183e8923c448a2', class: { NavbarContent: true } }, h("slot", { key: '8302d02a83f1e485fda7c62db03494087f9e9ca1' })));
+        return (h(Host, { key: 'b825f8ba288eaeebc61953db273933c51856d6df', class: { NavbarContent: true } }, h("slot", { key: '79f83625e8e31ae01898e9f248bb54968da0d899' })));
     }
     get hostElement() { return getElement(this); }
 };

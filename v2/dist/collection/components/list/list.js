@@ -117,7 +117,7 @@ export class List {
         this.bdsListSwitchChange.emit(result);
     }
     render() {
-        return (h(Host, { key: 'dcdf6ac9fbf6510d7ef1308d96c8514214008fd8' }, h("div", { key: '87a84c84e1750418a9a98398b3dc7afe5f1dc91f', class: {
+        return (h(Host, { key: '5152e56a0535ab14ac21a3ab99901d576adec70c' }, h("div", { key: '0a3d188f19396deb07fbd2bd8174a1a0386668a9', class: {
                 list: true,
             } }, this.internalData ? (this.internalData.map((item, idx) => (h("bds-list-item", { key: idx, value: item.value, text: item.text, "type-list": this.typeList ? this.typeList : item.typeList, "secondary-text": item.secondaryText, "avatar-name": item.avatarName, "avatar-thumbnail": item.avatarThumbnail, checked: item.checked, icon: item.icon, chips: item.chips, actionsButtons: item.actionsButtons, onBdsChecked: (ev) => this.chagedOptions(ev), onBdsClickActionButtom: (ev) => this.onClickActionsButtons(ev), dataTest: item.dataTest })))) : (h("slot", null)))));
     }

@@ -1,9 +1,8 @@
 import { h, Host } from "@stencil/core";
-import loadExtraSmall from "../../assets/svg/load-extra-small.svg";
-import loadSmall from "../../assets/svg/load-small.svg";
-import loadStandard from "../../assets/svg/load-standard.svg";
+import { loadAssetSvg } from "../../utils/asset-loader";
 export class BdsLoadingSpinner {
     constructor() {
+        this.requestVersion = 0;
         /**
          * 	Sets the color of the spinner, can be 'primary', 'secondary' or 'ghost'
          */
@@ -31,28 +30,31 @@ export class BdsLoadingSpinner {
             svgElm.removeAttribute('height');
             return div.innerHTML;
         };
-        this.setSvgContent = () => {
-            const innerHTML = this.size == 'extra-small'
-                ? loadExtraSmall
-                : this.size == 'small'
-                    ? loadSmall
-                    : this.size == 'standard' && loadStandard;
-            const svg = atob(innerHTML.replace('data:image/svg+xml;base64,', ''));
-            this.svgContent = this.formatSvg(svg);
-        };
     }
     componentWillLoad() {
         this.setSvgContent();
     }
+    async setSvgContent() {
+        const version = ++this.requestVersion;
+        try {
+            const svg = await loadAssetSvg(`asset-component-loading-spinner-${this.size}`);
+            if (version === this.requestVersion)
+                this.svgContent = this.formatSvg(svg);
+        }
+        catch (_a) {
+            if (version === this.requestVersion)
+                this.svgContent = undefined;
+        }
+    }
     render() {
-        return (h(Host, { key: '45a1a1848ff530eb26d783587a08e97dc395cfe2' }, h("div", { key: 'c82ecf86bed59b078270a36d38ca57a85d3053b8', class: {
+        return (h(Host, { key: 'df0db60c7f6c8b924aed85e3d8799da9bbb922c9' }, h("div", { key: '675a8d2cb30efbc3d2d7bcbb3da1ad67586921f8', class: {
                 spinner_container: true,
                 [`spinner_background_${this.size}`]: true,
-            }, "data-test": this.dataTest }, h("div", { key: '98c3907f8e73206a8243565eeb06311ac7e2345c', class: {
+            }, "data-test": this.dataTest }, h("div", { key: 'd53ff0a9fae8da75e3b8e56e9712f4b251aeef23', class: {
                 spinner_background: true,
                 [`spinner_background_${this.size}`]: true,
                 [`spinner_background_${this.color}`]: true,
-            } }), h("div", { key: '8fe6324d3bafebf2f3d231f347bcad2a7940491a', class: {
+            } }), h("div", { key: 'cf636da92299f13b5d60b29347536aa4f00b3c5e', class: {
                 spinner_loading: true,
                 [`spinner_loading_${this.size}`]: true,
                 [`spinner_loading_${this.color}`]: true,
@@ -176,6 +178,12 @@ export class BdsLoadingSpinner {
         return {
             "svgContent": {}
         };
+    }
+    static get watchers() {
+        return [{
+                "propName": "size",
+                "methodName": "setSvgContent"
+            }];
     }
 }
 //# sourceMappingURL=loading-spinner.js.map

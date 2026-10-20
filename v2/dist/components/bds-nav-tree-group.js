@@ -48,7 +48,7 @@ const NavTreeGroup = /*@__PURE__*/ proxyCustomElement(class NavTreeGroup extends
         }
     }
     render() {
-        return (h(Host, { key: '2000d6225b5813ac275a1d8b77f1700f91f9336a' }, h("slot", { key: '79df764f1c04a93392a8d04155bb636f06275728' })));
+        return (h(Host, { key: 'ae54130d5b6d060f9617f94808b1674d0bb3a879' }, h("slot", { key: 'cfd373c2176dc112d38f18b1b90a8f56af92e020' })));
     }
     get element() { return this; }
     static get style() { return navTreeCss; }

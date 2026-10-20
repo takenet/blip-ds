@@ -46,11 +46,11 @@ const BdsAlert$1 = /*@__PURE__*/ proxyCustomElement(class BdsAlert extends H {
             document.removeEventListener('keydown', this.listener, false);
     }
     render() {
-        return (h("div", { key: '53b7fbb22a38788cd76b827ae5aaf29db20c4fbc', class: {
+        return (h("div", { key: 'b642b2d589d93996fce992120df6582b829527a4', class: {
                 alert__dialog: true,
                 'alert__dialog--open': this.open,
                 [`alert__dialog--${this.position}`]: true,
-            } }, h("div", { key: 'c076bd0a8626a1f3271bfe60f86a4e6e68c8993b', class: "alert", "data-test": this.dataTest }, h("slot", { key: 'e79559b82493e9efc52a221479c5c603a6b0a25a' }))));
+            } }, h("div", { key: '31388635af535c59aa530c63aa0d4742f3bfc4d8', class: "alert", "data-test": this.dataTest }, h("slot", { key: 'baec75c510a8fb3e840da43d1809ee96270aa1ff' }))));
     }
     static get watchers() { return {
         "open": ["isOpenChanged"]
