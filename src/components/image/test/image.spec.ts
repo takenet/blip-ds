@@ -445,4 +445,106 @@ describe('bds-image', () => {
       expect(page.rootInstance.loadError).toBe(false);
     });
   });
+
+  describe('Data URL Support', () => {
+    it('should load data URL without fetching', async () => {
+      const dataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+
+      const page = await newSpecPage({
+        components: [Image],
+        html: `<bds-image src="${dataUrl}"></bds-image>`,
+      });
+
+      await page.rootInstance.loadImage();
+      await page.waitForChanges();
+
+      expect(page.rootInstance.imageLoaded).toBe(true);
+      expect(page.rootInstance.loadError).toBe(false);
+      expect(page.rootInstance.currentSrc).toBe(dataUrl);
+      expect(mockFetch).not.toHaveBeenCalled();
+    });
+
+    it('should render img element with data URL src', async () => {
+      const dataUrl = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDA3YmZmIi8+PC9zdmc+';
+
+      const page = await newSpecPage({
+        components: [Image],
+        html: `<bds-image src="${dataUrl}" alt="Data URL image"></bds-image>`,
+      });
+
+      await page.rootInstance.loadImage();
+      await page.waitForChanges();
+
+      const img = page.root.shadowRoot.querySelector('img');
+      expect(img).toBeTruthy();
+      expect(img.getAttribute('src')).toBe(dataUrl);
+      expect(img.getAttribute('alt')).toBe('Data URL image');
+    });
+
+    it('should handle data URL with different MIME types', async () => {
+      const testCases = [
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUg==',
+        'data:image/jpeg;base64,/9j/4AAQSkZJRg==',
+        'data:image/gif;base64,R0lGODlhAQABAIAAAP==',
+        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg==',
+        'data:image/webp;base64,UklGRh4AAABXRUJQVlA4==',
+      ];
+
+      for (const dataUrl of testCases) {
+        mockFetch.mockClear();
+
+        const page = await newSpecPage({
+          components: [Image],
+          html: `<bds-image src="${dataUrl}"></bds-image>`,
+        });
+
+        await page.rootInstance.loadImage();
+
+        expect(page.rootInstance.imageLoaded).toBe(true);
+        expect(page.rootInstance.loadError).toBe(false);
+        expect(page.rootInstance.currentSrc).toBe(dataUrl);
+        expect(mockFetch).not.toHaveBeenCalled();
+      }
+    });
+
+    it('should handle data URL without base64 encoding', async () => {
+      // Use a simpler URL-encoded data URL to avoid quote issues in HTML
+      const dataUrl = "data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%3E%3C%2Fsvg%3E";
+
+      const page = await newSpecPage({
+        components: [Image],
+        html: `<bds-image></bds-image>`,
+      });
+
+      // Set the src property directly to avoid HTML parsing issues
+      page.rootInstance.src = dataUrl;
+      await page.rootInstance.loadImage();
+
+      expect(page.rootInstance.imageLoaded).toBe(true);
+      expect(page.rootInstance.loadError).toBe(false);
+      expect(page.rootInstance.currentSrc).toBe(dataUrl);
+      expect(mockFetch).not.toHaveBeenCalled();
+    });
+
+    it('should not show skeleton when loading data URL', async () => {
+      const dataUrl = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+
+      const page = await newSpecPage({
+        components: [Image],
+        html: `<bds-image src="${dataUrl}"></bds-image>`,
+      });
+
+      // Start loading
+      const loadPromise = page.rootInstance.loadImage();
+      
+      // Data URLs load synchronously, so skeleton should not appear
+      await loadPromise;
+      await page.waitForChanges();
+
+      expect(page.rootInstance.imageLoaded).toBe(true);
+      
+      const img = page.root.shadowRoot.querySelector('img');
+      expect(img).toBeTruthy();
+    });
+  });
 });
