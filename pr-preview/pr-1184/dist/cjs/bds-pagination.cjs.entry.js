@@ -76,7 +76,8 @@ const Pagination = class {
         this.dtButtonEnd = null;
         this.nextPage = (event) => {
             const el = this.value;
-            if (el < this.pages) {
+            const totalPages = this.pages || 0;
+            if (el < totalPages) {
                 event.preventDefault();
                 this.value = this.value + 1;
                 this.updateItemRange();
@@ -100,9 +101,10 @@ const Pagination = class {
         };
         this.lastPage = (event) => {
             const el = this.value;
-            if (el < this.pages) {
+            const totalPages = this.pages || 0;
+            if (el < totalPages) {
                 event.preventDefault();
-                this.value = this.pages;
+                this.value = totalPages;
                 this.updateItemRange();
             }
         };
@@ -146,15 +148,17 @@ const Pagination = class {
         }
     }
     countPage() {
+        const totalPages = this.pages || 0;
         if (this.paginationNumbers.length !== 0) {
             this.paginationNumbers = [];
         }
         if (this.paginationNumbers.length === 0) {
-            for (let i = 1; i <= this.pages; i++) {
+            for (let i = 1; i <= totalPages; i++) {
                 this.paginationNumbers.push(i);
             }
-            if (this.startedPage && this.startedPage < this.pages) {
-                this.value = this.startedPage;
+            if (Number.isFinite(this.startedPage) && totalPages > 0) {
+                const normalizedStartedPage = Math.min(totalPages, Math.max(1, Math.trunc(this.startedPage)));
+                this.value = normalizedStartedPage;
             }
             else {
                 this.value = this.paginationNumbers[0];
@@ -191,7 +195,13 @@ const Pagination = class {
     render() {
         var _a;
         const { currentLanguage } = this;
-        return (index.h(index.Host, { key: '29fc4c9befb21f1a8490c40c1c2f7837819d832d', class: { full_width: this.pageCounter } }, index.h("bds-grid", { key: '24a26addfe3bf18d19b86cc5b4b999e58a480d21', "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (index.h("bds-grid", { key: 'c2fd2c7a76519dd684f18eede0f6abe7e735336d', gap: "1", "align-items": "center", class: "items_per_page" }, index.h("bds-typo", { key: '0382e9f914c888aadb44d43a7a00e757585f1f61', variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), index.h("bds-select", { key: 'b04ec9eae1e40f98ff38d52d68fe0ae9ebeecb10', class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, (_a = this.itemsPage) === null || _a === void 0 ? void 0 : _a.map((el, index$1) => (index.h("bds-select-option", { key: index$1, value: el, onClick: () => this.itemSelected(el) }, el)))), index.h("bds-typo", { key: '0f1c63468acbb8f9a58dd02201c32a3c56309a25', variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), index.h("bds-grid", { key: '04a3311245aef58e2adb9e9d0851299d1aad8585', gap: "1", "align-items": "center", class: "actions" }, index.h("bds-button-icon", { key: '0fde259f9a0b530ab16f3298e7fb0b3d0044a07f', onBdsClick: (ev) => this.firstPage(ev), size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), index.h("bds-button-icon", { key: '8c525250b44e0a968378fe11e6a0963463d67875', onBdsClick: (ev) => this.previewPage(ev), size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), index.h("bds-select", { key: '90ac41d69854d962e27a65466e83825261100c03', class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.paginationNumbers.map((el, index$1) => (index.h("bds-select-option", { key: index$1, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (index.h("bds-typo", { key: 'ffac9437f92bcaa32f9c0226b90d3106c98446c4', class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), index.h("bds-button-icon", { key: '0ce00928b72b665c26f8340f9f639549c2e17086', onBdsClick: (ev) => this.nextPage(ev), size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), index.h("bds-button-icon", { key: '0175010a976e943a3b6408e2779e69f75ac43bfb', onBdsClick: (ev) => this.lastPage(ev), size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
+        const totalPages = this.pages || 0;
+        const isFirstPage = this.value <= 1;
+        const isLastPage = this.value >= totalPages;
+        const isSinglePage = totalPages <= 1;
+        const disableBackActions = isSinglePage || isFirstPage;
+        const disableForwardActions = isSinglePage || isLastPage;
+        return (index.h(index.Host, { key: '24ad185c75f9f4ddfa37bc2d75c444df6881adda', class: { full_width: this.pageCounter } }, index.h("bds-grid", { key: '14cd895c86fdddde9ec5a2d350ec7aee59109623', "justify-content": "space-between" }, this.itemsPerPage && this.itemsPage && (index.h("bds-grid", { key: '7586c50ebe8aab65b155e4ca82c4628d41a2f17b', gap: "1", "align-items": "center", class: "items_per_page" }, index.h("bds-typo", { key: 'ca5cfb2bcb327b41c5ff50c66a4a94ac8920ce0b', variant: "fs-14" }, currentLanguage.itemsPerPage, ":"), index.h("bds-select", { key: '70388802ebf6a11a05c32a66d0f82942dbe934bc', class: "actions_select", value: this.itemValue, "options-position": this.optionsPosition }, (_a = this.itemsPage) === null || _a === void 0 ? void 0 : _a.map((el, index$1) => (index.h("bds-select-option", { key: index$1, value: el, onClick: () => this.itemSelected(el) }, el)))), index.h("bds-typo", { key: '472205346d2a73f2b1d37f3f953c92f13f25a15b', variant: "fs-14", "no-wrap": "true" }, this.startItem, "-", this.endItem, " ", currentLanguage.of, " ", this.numberItems))), index.h("bds-grid", { key: 'd2dd290fe5d66bbc32a50131913db8bee116dc18', gap: "1", "align-items": "center", class: "actions" }, index.h("bds-button-icon", { key: '0ec9bcc8973db44fc6095275311cdf1470ddc63b', onBdsClick: (ev) => this.firstPage(ev), disabled: disableBackActions, size: "short", variant: "secondary", icon: "arrow-first", dataTest: this.dtButtonInitial }), index.h("bds-button-icon", { key: '494bc250888dea40794b3ef3e449e7e946d5a363', onBdsClick: (ev) => this.previewPage(ev), disabled: disableBackActions, size: "short", variant: "secondary", icon: "arrow-left", dataTest: this.dtButtonPrev }), index.h("bds-select", { key: '18591b25e7b10925f391fbc243646722efd982f4', class: "actions_select", value: this.value, "options-position": this.optionsPosition }, this.paginationNumbers.map((el, index$1) => (index.h("bds-select-option", { key: index$1, value: el, onClick: () => this.optionSelected(el) }, el)))), this.pageCounter && (index.h("bds-typo", { key: 'd5480f611e1a07dbaeee9b5fb33b7c002376af17', class: "actions--text", variant: "fs-14", "no-wrap": "true" }, currentLanguage.of, " ", this.pages, " ", currentLanguage.pages)), index.h("bds-button-icon", { key: '8dd40418c68a40e29f124f1c409d10a06d9413ae', onBdsClick: (ev) => this.nextPage(ev), disabled: disableForwardActions, size: "short", variant: "secondary", icon: "arrow-right", dataTest: this.dtButtonNext }), index.h("bds-button-icon", { key: 'bcf9f3f6c461fd5e9c5dfbd0270d3f241a574c8d', onBdsClick: (ev) => this.lastPage(ev), disabled: disableForwardActions, size: "short", variant: "secondary", icon: "arrow-last", dataTest: this.dtButtonEnd })))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

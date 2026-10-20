@@ -59,3 +59,22 @@
 .breadcrumb__link {
   text-decoration: none;
 }
+
+.breadcrumb__item {
+  transition: color 0.15s, background-color 0.15s;
+}
+.breadcrumb__item bds-typo, .breadcrumb__item bds-icon, .breadcrumb__item .breadcrumb__text {
+  color: var(--color-content-ghost, rgb(140, 140, 140));
+}
+.breadcrumb__item bds-typo:hover, .breadcrumb__item .breadcrumb__text:hover {
+  color: var(--color-content-default, rgb(40, 40, 40));
+}
+.breadcrumb__item--active {
+  border-radius: 12px;
+}
+.breadcrumb__item--active:hover {
+  background-color: var(--color-surface-3, rgb(227, 227, 227));
+}
+.breadcrumb__item--active bds-typo, .breadcrumb__item--active bds-icon, .breadcrumb__item--active .breadcrumb__text {
+  color: var(--color-content-default, rgb(40, 40, 40));
+}
