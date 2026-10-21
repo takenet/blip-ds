@@ -1,20 +1,30 @@
 import React from 'react';
+import { UaiButton, UaiThemeProvider } from '../../../blip-ds-react/dist/components';
 
 export default {
   title: 'UAI/Theme provider',
+  component: UaiThemeProvider,
   tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
-        component:
+        component: [
           'Raiz de tema dos componentes UAI. Coloca `data-uai-theme` no próprio elemento e declara os tokens `--uai-*` do blip-tokens para o conteúdo. Não altera o layout (`display: contents`).',
+          '',
+          '```jsx\nimport { UaiThemeProvider } from \'blip-ds-react/dist/components\';\n\n<UaiThemeProvider theme="light">\n  <App />\n</UaiThemeProvider>;\n```',
+          '',
+          'Use um provider na raiz da aplicação. Para uma área com outro tema, como um painel escuro, use um provider aninhado. Fora do React, use o custom element `<uai-theme-provider>`.',
+        ].join('\n'),
       },
     },
   },
 };
 
-export const Properties = (args) => (
-  <uai-theme-provider theme={args.theme}>
+/**
+ * Troque o tema para ver os mesmos componentes no tema claro e no escuro. Os componentes UAI dentro do provider leem os tokens do tema escolhido.
+ */
+export const Playground = (args) => (
+  <UaiThemeProvider {...args}>
     <div
       style={{
         display: 'flex',
@@ -25,18 +35,18 @@ export const Properties = (args) => (
         color: 'var(--uai-content-primary)',
       }}
     >
-      <uai-button>Solid</uai-button>
-      <uai-button variant="outline">Outline</uai-button>
-      <uai-button variant="text">Text</uai-button>
+      <UaiButton>Solid</UaiButton>
+      <UaiButton variant="outline">Outline</UaiButton>
+      <UaiButton variant="text">Text</UaiButton>
     </div>
-  </uai-theme-provider>
+  </UaiThemeProvider>
 );
 
-Properties.args = {
+Playground.args = {
   theme: 'light',
 };
 
-Properties.argTypes = {
+Playground.argTypes = {
   theme: {
     table: { defaultValue: { summary: 'light' } },
     description: 'Tema aplicado aos componentes UAI dentro do provider.',

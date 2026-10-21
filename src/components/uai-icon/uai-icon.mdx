@@ -1,0 +1,86 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiIconStories from './uai-icon.stories';
+
+<Meta isTemplate />
+
+# Icon
+
+Ícone de interface da fonte de ícones UAI do `blip-tokens`. Use ao lado de textos e dentro de controles para ajudar a reconhecer uma ação ou um status. Para logos e emojis, use o `bds-icon`.
+
+<Canvas of={UaiIconStories.Playground} />
+
+<Controls of={UaiIconStories.Playground} />
+
+## Como usar
+
+```jsx
+import { UaiIcon, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiIcon name="info" />
+  <UaiIcon name="warning" theme="solid" size="small" color="feedback-warning" aria-label="Atenção" />
+</UaiThemeProvider>;
+```
+
+- Carregue o CSS dos ícones (`blip-tokens/uai-icons/css`) uma vez na aplicação. Ele declara a fonte `uai-icon`, servida pelo CDN do `blip-tokens`.
+- O nome é o do ícone no Figma sem o prefixo do tema: `outline/message/info` é `name="info"`. Veja todos no [catálogo](#catálogo).
+- Fora do React, use o custom element `<uai-icon>`.
+
+## Tamanhos
+
+| `size` | Tamanho | Token |
+| --- | --- | --- |
+| `x-small` | 16px | `sizing-sm` |
+| `small` | 20px | `sizing-md` |
+| `medium` (padrão) | 24px | `sizing-lg` |
+
+<Canvas of={UaiIconStories.Sizes} />
+
+## Cores
+
+Sem `color`, o ícone usa a cor do texto em volta. Com `color`, ele usa o token UAI escolhido.
+
+<Canvas of={UaiIconStories.Colors} />
+
+## Outline e solid
+
+<Canvas of={UaiIconStories.Themes} />
+
+## Acessibilidade
+
+- Sem `aria-label`, o ícone é decorativo e fica oculto para leitores de tela.
+- Com `aria-label`, ele vira uma imagem com nome acessível. Use quando o ícone comunica algo que não está escrito ao lado.
+- Para ícones clicáveis, coloque o nome acessível no botão, não no ícone.
+
+<Canvas of={UaiIconStories.Accessibility} />
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Tamanho | `sizing-sm`, `sizing-md`, `sizing-lg` |
+| Cor | `content-primary`, `content-secondary`, `content-disabled`, `content-inverse`, `content-link`, `feedback-info`, `feedback-success`, `feedback-warning`, `feedback-error` |
+
+Componentes que usam o `UaiIcon` por dentro, como o `UaiButton`, mudam o tamanho com a variável CSS `--uai-icon-size`.
+
+## Migração do `bds-icon`
+
+| `BdsIcon` | `UaiIcon` |
+| --- | --- |
+| `size="x-small"`, `"small"`, `"medium"` | Os mesmos nomes e tamanhos (16, 20 e 24px) |
+| `size` `xxx-small`, `xx-small`, `large`, `x-large`, `xx-large`, `xxx-large`, `brand` | Não aceitos: use `x-small`, `small` ou `medium` |
+| `theme="outline"`, `"solid"` | Os mesmos valores |
+| `color` com qualquer cor CSS | `color` com um token UAI, ou nenhum para herdar a cor do texto |
+| `type="logo"`, `"emoji"` | Não aceitos: continue com o `BdsIcon` |
+| `name` | O mesmo, mas só nomes da fonte UAI |
+
+Valores não aceitos caem no padrão e avisam no console.
+
+## Catálogo
+
+<Canvas of={UaiIconStories.Catalog} />
+
+## Design
+
+[UaiIcon no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2171-239)

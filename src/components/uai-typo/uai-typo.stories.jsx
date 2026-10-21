@@ -4,6 +4,7 @@ import DocumentationTemplate from './uai-typo.mdx';
 
 export default {
   title: 'UAI/Typo',
+  component: UaiTypo,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -12,9 +13,9 @@ export default {
   },
   decorators: [
     (Story, context) => (
-      <uai-theme-provider theme={context.globals.hasTheme === 'dark' ? 'dark' : 'light'}>
+      <UaiThemeProvider theme={context.globals.hasTheme === 'dark' ? 'dark' : 'light'}>
         <Story />
-      </uai-theme-provider>
+      </UaiThemeProvider>
     ),
   ],
 };
@@ -39,38 +40,20 @@ const BOLDS = ['regular', 'medium', 'semibold', 'bold'];
 const column = { display: 'flex', flexDirection: 'column', gap: '16px' };
 const caption = { fontFamily: 'monospace', fontSize: '12px', color: 'var(--uai-content-secondary)' };
 
-export const Properties = (args) => (
-  <uai-typo
-    variant={args.variant}
-    bold={args.bold}
-    letter-spacing={args.letterSpacing}
-    tag={args.tag}
-    italic={args.italic}
-    no-wrap={args.noWrap}
-    paragraph={args.paragraph}
-    margin={args.margin}
-    data-test={args.dataTest}
-  >
-    {args.text}
-  </uai-typo>
-);
+/**
+ * Teste todas as propriedades. O texto é o children do UaiTypo.
+ */
+export const Playground = (args) => <UaiTypo {...args} />;
 
-Properties.args = {
-  text: 'A tipografia organiza a leitura da interface.',
+Playground.args = {
+  children: 'A tipografia organiza a leitura da interface.',
   variant: 'body-base',
   bold: 'regular',
-  letterSpacing: 'normal',
-  tag: 'p',
-  italic: false,
-  noWrap: false,
-  paragraph: false,
-  margin: true,
-  dataTest: '',
 };
 
-Properties.argTypes = {
-  text: {
-    description: 'Texto (conteúdo do slot, não é uma propriedade).',
+Playground.argTypes = {
+  children: {
+    description: 'Texto.',
     control: 'text',
   },
   variant: {
@@ -118,7 +101,7 @@ Properties.argTypes = {
     control: 'boolean',
   },
   dataTest: {
-    description: 'Valor do atributo data-test do elemento de texto.',
+    description: 'Valor do data-test do elemento de texto.',
     control: 'text',
   },
 };
@@ -131,6 +114,9 @@ const grid = {
   rowGap: '16px',
 };
 
+/**
+ * Cada estilo de texto do Figma é variant + bold. Use a combinação do Figma para o papel do texto: display e headings para títulos, title para títulos de card e navegação, body para texto corrido e caption e overline para apoio.
+ */
 export const TextStyles = () => (
   <div style={grid}>
     <span></span>
@@ -146,9 +132,9 @@ export const TextStyles = () => (
         </span>
         {BOLDS.map((bold) =>
           weights.includes(bold) ? (
-            <uai-typo key={bold} variant={variant} bold={bold} margin={false}>
+            <UaiTypo key={bold} variant={variant} bold={bold} margin={false}>
               Aa
-            </uai-typo>
+            </UaiTypo>
           ) : (
             <span key={bold}></span>
           ),
@@ -158,39 +144,31 @@ export const TextStyles = () => (
   </div>
 );
 
+/**
+ * Use expanded só onde o Figma pede o estilo body/base/regular-space, como rótulos em caixa alta.
+ */
 export const LetterSpacing = () => (
   <div style={column}>
-    <uai-typo variant="body-base">body-base · normal</uai-typo>
-    <uai-typo variant="body-base" letter-spacing="expanded">
+    <UaiTypo variant="body-base">body-base · normal</UaiTypo>
+    <UaiTypo variant="body-base" letterSpacing="expanded">
       body-base · expanded
-    </uai-typo>
+    </UaiTypo>
   </div>
 );
 
+/**
+ * variant define a aparência e tag define a semântica. Um título visual precisa de uma tag de heading, para leitores de tela e para a estrutura da página.
+ */
 export const Semantics = () => (
   <div style={{ maxWidth: '480px' }}>
-    <uai-typo variant="heading-lg" bold="semibold" tag="h2">
+    <UaiTypo variant="heading-lg" bold="semibold" tag="h2">
       Título da seção
-    </uai-typo>
-    <uai-typo variant="body-base" paragraph>
+    </UaiTypo>
+    <UaiTypo variant="body-base" paragraph>
       O variant define a aparência e o tag define a semântica. Um título visual deve usar uma tag de heading.
-    </uai-typo>
-    <uai-typo variant="caption" tag="span" style={{ color: 'var(--uai-content-secondary)' }}>
+    </UaiTypo>
+    <UaiTypo variant="caption" tag="span" style={{ color: 'var(--uai-content-secondary)' }}>
       Texto de apoio
-    </uai-typo>
+    </UaiTypo>
   </div>
-);
-
-export const FrameworkReact = () => (
-  <UaiThemeProvider theme="light">
-    <div style={column}>
-      <UaiTypo variant="heading-md" bold="semibold" tag="h3" margin={false}>
-        Título
-      </UaiTypo>
-      <UaiTypo variant="body-base">Texto padrão da aplicação.</UaiTypo>
-      <UaiTypo variant="caption" bold="medium">
-        Legenda
-      </UaiTypo>
-    </div>
-  </UaiThemeProvider>
 );

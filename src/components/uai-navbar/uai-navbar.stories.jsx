@@ -4,6 +4,8 @@ import { BdsAvatar, BdsButtonIcon, UaiNavbar, UaiNavbarContent } from '../../../
 
 export default {
   title: 'UAI/Navbar',
+  component: UaiNavbar,
+  subcomponents: { UaiNavbarContent },
   parameters: {
     docs: {
       page: DocumentationTemplate,
@@ -11,40 +13,11 @@ export default {
   },
 };
 
-const NavbarContent = () => (
-  <>
-    <uai-navbar-content>
-      <bds-button-icon size="short" variant="secondary" icon="home"></bds-button-icon>
-      <bds-button-icon size="short" variant="secondary" icon="store"></bds-button-icon>
-      <bds-button-icon size="short" variant="secondary" icon="team"></bds-button-icon>
-      <bds-button-icon size="short" variant="secondary" icon="cloud"></bds-button-icon>
-      <bds-button-icon size="short" variant="secondary" icon="integration"></bds-button-icon>
-    </uai-navbar-content>
-    <uai-navbar-content>
-      <bds-button-icon size="short" variant="secondary" icon="settings-general"></bds-button-icon>
-      <bds-button-icon size="short" variant="secondary" icon="question"></bds-button-icon>
-      <bds-button-icon size="short" variant="secondary" icon="bell"></bds-button-icon>
-      <bds-avatar name="Dwight Schrute" size="small"></bds-avatar>
-    </uai-navbar-content>
-  </>
-);
-
-export const WebComponent = (args) => (
-  <uai-navbar
-    orientation={args.orientation}
-    justify-content={args.justifyContent}
-    background-color={args.backgroundColor}
-  >
-    <NavbarContent />
-  </uai-navbar>
-);
-
-export const FrameworkReact = (args) => (
-  <UaiNavbar
-    orientation={args.orientation}
-    justifyContent={args.justifyContent}
-    backgroundColor={args.backgroundColor}
-  >
+/**
+ * Group navigation actions with UaiNavbarContent. Use horizontal at the top of a page and vertical as a side rail; space-between keeps the main actions at the start and the account actions at the end.
+ */
+export const Playground = (args) => (
+  <UaiNavbar {...args}>
     <UaiNavbarContent>
       <BdsButtonIcon size="short" variant="secondary" icon="home" />
       <BdsButtonIcon size="short" variant="secondary" icon="store" />
@@ -61,12 +34,11 @@ export const FrameworkReact = (args) => (
   </UaiNavbar>
 );
 
-WebComponent.args = { orientation: 'horizontal', justifyContent: 'space-between', backgroundColor: 'surface-paper' };
-FrameworkReact.args = WebComponent.args;
+Playground.args = { orientation: 'horizontal', justifyContent: 'space-between', backgroundColor: 'surface-paper' };
 
-const argTypes = {
+Playground.argTypes = {
   orientation: {
-    table: { defaultValue: { summary: 'horizontal' } },
+    table: { defaultValue: { summary: 'vertical' } },
     description: 'Main axis direction for the content groups.',
     control: 'select',
     options: ['horizontal', 'vertical'],
@@ -84,6 +56,3 @@ const argTypes = {
     options: ['surface-background', 'surface-contrast', 'surface-inverse', 'surface-muted', 'surface-paper'],
   },
 };
-
-WebComponent.argTypes = argTypes;
-FrameworkReact.argTypes = argTypes;

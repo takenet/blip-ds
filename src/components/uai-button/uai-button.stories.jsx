@@ -4,6 +4,7 @@ import DocumentationTemplate from './uai-button.mdx';
 
 export default {
   title: 'UAI/Button',
+  component: UaiButton,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -12,9 +13,9 @@ export default {
   },
   decorators: [
     (Story, context) => (
-      <uai-theme-provider theme={context.globals.hasTheme === 'dark' ? 'dark' : 'light'}>
+      <UaiThemeProvider theme={context.globals.hasTheme === 'dark' ? 'dark' : 'light'}>
         <Story />
-      </uai-theme-provider>
+      </UaiThemeProvider>
     ),
   ],
 };
@@ -27,48 +28,22 @@ const row = { display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wra
 const column = { display: 'flex', flexDirection: 'column', gap: '16px' };
 const caption = { fontFamily: 'monospace', fontSize: '12px', color: 'var(--uai-content-secondary)' };
 
-export const Properties = (args) => (
-  <uai-button
-    variant={args.variant}
-    color={args.color}
-    size={args.size}
-    disabled={args.disabled}
-    loading={args.loading}
-    full-width={args.fullWidth}
-    justify-content={args.justifyContent}
-    icon-left={args.iconLeft}
-    icon-right={args.iconRight}
-    arrow={args.arrow}
-    icon-theme={args.iconTheme}
-    type-icon={args.typeIcon}
-    type={args.type}
-    data-test={args.dataTest}
-  >
-    {args.text}
-  </uai-button>
-);
+/**
+ * Teste todas as propriedades. O texto do botão é o children do UaiButton.
+ */
+export const Playground = (args) => <UaiButton {...args} />;
 
-Properties.args = {
-  text: 'Verbo + complemento',
+Playground.args = {
+  children: 'Verbo + complemento',
   variant: 'solid',
   color: 'primary',
   size: 'medium',
-  disabled: false,
-  loading: false,
-  fullWidth: false,
-  justifyContent: 'center',
   iconLeft: 'info',
-  iconRight: '',
-  arrow: false,
-  iconTheme: 'outline',
-  typeIcon: 'icon',
-  type: 'button',
-  dataTest: '',
 };
 
-Properties.argTypes = {
-  text: {
-    description: 'Texto do botão (conteúdo do slot, não é uma propriedade).',
+Playground.argTypes = {
+  children: {
+    description: 'Texto do botão.',
     control: 'text',
   },
   variant: {
@@ -96,7 +71,7 @@ Properties.argTypes = {
   },
   loading: {
     table: { defaultValue: { summary: 'false' } },
-    description: 'Mostra o spinner no lugar do ícone da esquerda e bloqueia o uaiClick.',
+    description: 'Mostra o spinner no lugar do ícone da esquerda e bloqueia o onUaiClick.',
     control: 'boolean',
   },
   fullWidth: {
@@ -111,11 +86,11 @@ Properties.argTypes = {
     control: { type: 'select' },
   },
   iconLeft: {
-    description: 'Ícone antes do texto (nome do ícone UAI, ex.: `info`).',
+    description: 'Ícone antes do texto: nome de um ícone UAI, como `info`.',
     control: 'text',
   },
   iconRight: {
-    description: 'Ícone depois do texto (nome do ícone UAI, ex.: `arrow-right`).',
+    description: 'Ícone depois do texto: nome de um ícone UAI, como `arrow-right`.',
     control: 'text',
   },
   arrow: {
@@ -142,7 +117,7 @@ Properties.argTypes = {
     control: { type: 'select' },
   },
   dataTest: {
-    description: 'Valor do atributo data-test do botão nativo.',
+    description: 'Valor do data-test do botão nativo.',
     control: 'text',
   },
 };
@@ -154,6 +129,9 @@ const grid = {
   gap: '16px',
 };
 
+/**
+ * Escolha a variante pelo peso da ação: solid para a ação principal da tela, outline para ações secundárias e text para ações de pouco destaque. A cor diz o que a ação faz: content é neutra, positive confirma e negative destrói.
+ */
 export const VariantsAndColors = () => (
   <div style={grid}>
     <span></span>
@@ -166,99 +144,87 @@ export const VariantsAndColors = () => (
       <React.Fragment key={variant}>
         <span style={caption}>variant="{variant}"</span>
         {COLORS.map((color) => (
-          <uai-button key={color} variant={variant} color={color}>
+          <UaiButton key={color} variant={variant} color={color}>
             Verbo + complemento
-          </uai-button>
+          </UaiButton>
         ))}
       </React.Fragment>
     ))}
   </div>
 );
 
+/**
+ * Use medium por padrão. Large serve para ações de destaque; short e compact cabem em áreas densas, como tabelas, barras de ferramentas e cards.
+ */
 export const Sizes = () => (
   <div style={row}>
     {SIZES.map((size) => (
-      <uai-button key={size} size={size} icon-left="info">
+      <UaiButton key={size} size={size} iconLeft="info">
         {size}
-      </uai-button>
+      </UaiButton>
     ))}
   </div>
 );
 
+/**
+ * Use loading enquanto a ação roda, para a pessoa não acionar duas vezes. Use disabled só quando a ação ainda não está disponível, e explique o motivo perto do botão.
+ */
 export const States = () => (
   <div style={column}>
     {['solid', 'outline'].map((variant) => (
       <div key={variant} style={row}>
         <span style={caption}>variant="{variant}"</span>
-        <uai-button variant={variant} icon-left="info">
+        <UaiButton variant={variant} iconLeft="info">
           Default
-        </uai-button>
-        <uai-button variant={variant} icon-left="info" loading>
+        </UaiButton>
+        <UaiButton variant={variant} iconLeft="info" loading>
           Loading
-        </uai-button>
-        <uai-button variant={variant} icon-left="info" disabled>
+        </UaiButton>
+        <UaiButton variant={variant} iconLeft="info" disabled>
           Disabled
-        </uai-button>
+        </UaiButton>
       </div>
     ))}
   </div>
 );
 
+/**
+ * Use ícone quando ele ajuda a reconhecer a ação. Use arrow para ações que avançam. Botões só com ícone economizam espaço em barras de ferramentas e precisam de aria-label.
+ */
 export const Icons = () => (
   <div style={column}>
     <div style={row}>
-      <uai-button>Somente texto</uai-button>
-      <uai-button icon-left="info">Ícone à esquerda</uai-button>
-      <uai-button icon-right="external-file">Ícone à direita</uai-button>
-      <uai-button arrow>Seta</uai-button>
-      <uai-button icon-left="info" icon-right="arrow-down">
+      <UaiButton>Somente texto</UaiButton>
+      <UaiButton iconLeft="info">Ícone à esquerda</UaiButton>
+      <UaiButton iconRight="external-file">Ícone à direita</UaiButton>
+      <UaiButton arrow>Seta</UaiButton>
+      <UaiButton iconLeft="info" iconRight="arrow-down">
         Os dois
-      </uai-button>
+      </UaiButton>
     </div>
     <div style={row}>
       {SIZES.map((size) => (
-        <uai-button key={size} size={size} icon="add" aria-label={`Adicionar (${size})`}></uai-button>
+        <UaiButton key={size} size={size} icon="add" aria-label={`Adicionar (${size})`} />
       ))}
     </div>
     <div style={{ width: '320px' }}>
-      <uai-button full-width justify-content="space-between" icon-left="info" arrow>
+      <UaiButton fullWidth justifyContent="space-between" iconLeft="info" arrow>
         Conteúdo nas pontas
-      </uai-button>
+      </UaiButton>
     </div>
   </div>
 );
 
+/**
+ * Trate a ação com onUaiClick. Ele roda no clique, no Enter e no Space, e não roda com o botão disabled ou loading.
+ */
 export const Events = () => {
   const [count, setCount] = React.useState(0);
-  const ref = React.useRef(null);
-
-  React.useEffect(() => {
-    const button = ref.current;
-    const onClick = () => setCount((value) => value + 1);
-    button?.addEventListener('uaiClick', onClick);
-    return () => button?.removeEventListener('uaiClick', onClick);
-  }, []);
 
   return (
     <div style={row}>
-      <uai-button ref={ref}>Clique aqui</uai-button>
-      <span>uaiClick: {count}</span>
+      <UaiButton onUaiClick={() => setCount((value) => value + 1)}>Clique aqui</UaiButton>
+      <span>onUaiClick: {count}</span>
     </div>
   );
 };
-
-export const FrameworkReact = () => (
-  <UaiThemeProvider theme="light">
-    <div style={row}>
-      <UaiButton variant="solid" color="primary" onUaiClick={(event) => console.log(event.detail)}>
-        Solid
-      </UaiButton>
-      <UaiButton variant="outline" color="content" iconLeft="info">
-        Outline
-      </UaiButton>
-      <UaiButton variant="text" color="negative">
-        Text
-      </UaiButton>
-    </div>
-  </UaiThemeProvider>
-);

@@ -1,77 +1,20 @@
-import { Canvas, Controls, Meta, Source } from '@storybook/addon-docs/blocks';
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
 import * as UaiNavbarStories from './uai-navbar.stories';
-
-# Navbar
-
-`Navbar` groups navigation actions into one or more content groups. Use the Web Component as `<uai-navbar>` or the React wrapper as `UaiNavbar`.
-
-## Preview
-
-<Canvas of={UaiNavbarStories.WebComponent} />
 
 <Meta isTemplate />
 
-## API
+# Navbar
 
-| Property | Web Component attribute | React prop | Default | Description |
-| --- | --- | --- | --- | --- |
-| `orientation` | `orientation` | `orientation` | `vertical` | Main axis direction. `horizontal` lays groups out in a row; `vertical` lays them out in a column. |
-| `justifyContent` | `justify-content` | `justifyContent` | `space-between` | Distribution of content groups along the main axis. Options: `flex-start`, `center`, `flex-end`, `space-between`, `space-around`, `space-evenly`. |
-| `backgroundColor` | `background-color` | `backgroundColor` | `surface-paper` | UAI surface token: `surface-background`, `surface-contrast`, `surface-inverse`, `surface-muted`, or `surface-paper`. |
-| `dataTest` | `data-test` | `dataTest` | `null` | Optional selector for tests. |
+`Navbar` groups navigation actions into one or more content groups. Use it horizontally at the top of a page or vertically as a side rail.
 
-<Controls />
+<Canvas of={UaiNavbarStories.Playground} />
 
-## Layout and content groups
+<Controls of={UaiNavbarStories.Playground} />
 
-- Wrap each set of navigation items in `<uai-navbar-content>` / `UaiNavbarContent`.
-- Content groups follow the Navbar orientation. Items inside each group are vertically centered.
-- Items within a `<uai-navbar-content>` group use `$uai-spacing-xs` (8 px).
-- Separate content groups use `$uai-spacing-lg` (24 px).
-- Horizontal Navbar fills the available width and has `$uai-spacing-md` (16 px) vertical padding.
-- Vertical Navbar fits its content width, fills the available height, and has `$uai-spacing-md` (16 px) padding on each side.
-- The default background uses the UAI `surface-paper` token.
-- The component maps surface names to UAI Sass tokens. The current Sass color exports are the light palette; dark mode requires the consuming theme to provide its dark surface value.
-- `dataTest` is optional and adds a `data-test` attribute to the inner navbar element.
-
-### UAI theme setup
-
-To activate UAI CSS variables, load the token stylesheet and set `data-uai-theme` on an ancestor of the Navbar. Supported values are `light` and `dark`; the scoped variables inherit through the Navbar Shadow DOM.
-
-```html
-<link rel="stylesheet" href="node_modules/blip-tokens/build/css/uai.css" />
-
-<main data-uai-theme="light">
-  <uai-navbar background-color="surface-paper">...</uai-navbar>
-</main>
-```
-
-The component also has light-palette Sass fallbacks for each surface if the UAI stylesheet is not loaded.
-
-## Examples
-
-### Web Component
-
-```html
-<uai-navbar orientation="horizontal" justify-content="space-between" background-color="surface-paper">
-  <uai-navbar-content>
-    <bds-button-icon size="short" variant="secondary" icon="home"></bds-button-icon>
-    <bds-button-icon size="short" variant="secondary" icon="team"></bds-button-icon>
-  </uai-navbar-content>
-  <uai-navbar-content>
-    <bds-avatar name="Dwight Schrute" size="small"></bds-avatar>
-  </uai-navbar-content>
-</uai-navbar>
-```
-
-Use the `orientation`, `justify-content`, and `background-color` attributes. Each direct child group is styled by the Navbar's orientation.
-
-<Source of={UaiNavbarStories.WebComponent} />
-
-### React
+## Usage
 
 ```jsx
-import { UaiNavbar, UaiNavbarContent, BdsButtonIcon, BdsAvatar } from 'blip-ds-react';
+import { UaiNavbar, UaiNavbarContent, BdsButtonIcon, BdsAvatar } from 'blip-ds-react/dist/components';
 
 <UaiNavbar orientation="horizontal" justifyContent="space-between" backgroundColor="surface-paper">
   <UaiNavbarContent>
@@ -81,9 +24,41 @@ import { UaiNavbar, UaiNavbarContent, BdsButtonIcon, BdsAvatar } from 'blip-ds-r
   <UaiNavbarContent>
     <BdsAvatar name="Dwight Schrute" size="small" />
   </UaiNavbarContent>
-</UaiNavbar>
+</UaiNavbar>;
 ```
 
-In React, use camelCase props and the `UaiNavbarContent` wrapper for each group.
+- Wrap each set of navigation items in `UaiNavbarContent`. Content groups follow the Navbar orientation and center their items.
+- Load the UAI tokens and set the theme on an ancestor: wrap the page in `UaiThemeProvider`, or load `blip-tokens/build/css/uai.css` and set `data-uai-theme="light"` or `"dark"`. Without a theme, the Navbar uses the light surface values.
+- Outside React, use the `<uai-navbar>` and `<uai-navbar-content>` custom elements, with kebab-case attributes (`justify-content`, `background-color`).
 
-<Source of={UaiNavbarStories.FrameworkReact} />
+## API
+
+| React prop | Default | Description |
+| --- | --- | --- |
+| `orientation` | `vertical` | Main axis direction. `horizontal` lays groups out in a row; `vertical` lays them out in a column. |
+| `justifyContent` | `space-between` | Distribution of content groups along the main axis: `flex-start`, `center`, `flex-end`, `space-between`, `space-around` or `space-evenly`. |
+| `backgroundColor` | `surface-paper` | UAI surface token: `surface-background`, `surface-contrast`, `surface-inverse`, `surface-muted` or `surface-paper`. |
+| `dataTest` | `null` | Optional selector for tests, set on the inner navbar element. |
+
+## Layout
+
+- Items within a `UaiNavbarContent` group are 8px apart (`spacing-xs`).
+- Content groups are 24px apart (`spacing-lg`).
+- A horizontal Navbar fills the available width and has 16px vertical padding (`spacing-md`).
+- A vertical Navbar fits its content width, fills the available height and has 16px padding on each side (`spacing-md`).
+
+## Accessibility
+
+- Give every icon-only action an accessible name, such as `aria-label` on the button.
+- Keep the order of the groups the same as the reading order of the page: main navigation first, account actions last.
+
+## Tokens
+
+| Part | Tokens |
+| --- | --- |
+| Background | `surface-background`, `surface-contrast`, `surface-inverse`, `surface-muted`, `surface-paper` |
+| Spacing | `spacing-xs`, `spacing-md`, `spacing-lg` |
+
+## Migration from `bds-navbar`
+
+`BdsNavbar` is deprecated. Use `UaiNavbar` with `UaiNavbarContent` groups.
