@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/storybook.fixture';
 
 test.describe('Button - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-button--properties');
+    await storybook.goto('components-deprecated-button--properties');
   });
 
   test('emits bdsClick event on click', async ({ page }) => {
@@ -22,7 +22,7 @@ test.describe('Button - Functional Tests', () => {
   });
 
   test('does not emit click when disabled', async ({ storybook, page }) => {
-    await storybook.goto('components-button--properties');
+    await storybook.goto('components-deprecated-button--properties');
     // Set disabled via property
     await page.evaluate(() => {
       const btn = document.querySelector('bds-button') as any;

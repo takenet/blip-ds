@@ -3,7 +3,7 @@ import DocumentationTemplate from './uai-navbar.mdx';
 import { BdsAvatar, BdsButtonIcon, UaiNavbar, UaiNavbarContent } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Navigation/Navbar',
+  title: 'UAI/Navbar',
   parameters: {
     docs: {
       page: DocumentationTemplate,
