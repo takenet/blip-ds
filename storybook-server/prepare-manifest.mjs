@@ -49,13 +49,13 @@ const tokenLine = token =>
 /**
  * Manifest entry with every UAI design token, so agents pick tokens by role instead of hardcoding values.
  */
-export function uaiTokensEntry({ light, dark, shadows, textStyles }) {
-  const tokens = uaiTokens(light, dark);
+export function uaiTokensEntry({ light, dark, shadows, textStyles, usage = { tokens: {}, shadows: {}, textStyles: {} } }) {
+  const tokens = uaiTokens(light, dark, usage.tokens);
   const section = (title, list) => [`## ${title}`, ...list.map(tokenLine)];
   const styles = Object.values(textStyles).map(style => {
     const props = textStyleProps(style.name);
     const spacing = props.letterSpacing === 'expanded' ? ' letterSpacing="expanded"' : '';
-    return `- ${style.name}: <UaiTypo variant="${props.variant}" bold="${props.bold}"${spacing}>. ${style.description}`;
+    return `- ${style.name}: <UaiTypo variant="${props.variant}" bold="${props.bold}"${spacing}>. ${usage.textStyles[style.name] || style.description}`;
   });
   return {
     id: 'uai-tokens',
@@ -63,15 +63,15 @@ export function uaiTokensEntry({ light, dark, shadows, textStyles }) {
     path: './src/pages/uai-foundation/tokens.mdx',
     import: '',
     jsDocTags: {},
-    summary: 'UAI design tokens: colors, spacing, sizing, radius, borders, typography and elevation, for the light and dark themes.',
+    summary: 'Tokens de design UAI: cores, espaçamento, tamanhos, raios, bordas, tipografia e elevação, nos temas claro e escuro.',
     description: [
-      'Design tokens of the UAI visual language, from blip-tokens. Use them in CSS as var(--uai-<name>) inside a UaiThemeProvider (or an element with data-uai-theme="light" or "dark"). Pick a token by its role and description, never by its value. Colors change between the light and dark themes; the other tokens are the same in both. Prefer a UAI component when one exists.',
-      ...section('Colors', tokens.filter(token => token.category === 'color')),
-      ...section('Dimensions', tokens.filter(token => token.category === 'dimension')),
-      ...section('Typography', tokens.filter(token => token.category === 'typography')),
-      '## Elevation',
-      ...Object.entries(shadows).map(([name, shadow]) => `- --${name}: ${shadow.value}. ${shadow.description}`),
-      '## Text styles (Figma name: UaiTypo props)',
+      'Tokens de design da linguagem visual UAI, do blip-tokens. Use em CSS como var(--uai-<nome>) dentro de um UaiThemeProvider (ou de um elemento com data-uai-theme="light" ou "dark"). Escolha o token pelo papel e pelo uso, nunca pelo valor. As cores mudam entre os temas claro e escuro; os outros tokens são iguais nos dois. Se existe um componente UAI para o caso, use o componente.',
+      ...section('Cores', tokens.filter(token => token.category === 'color')),
+      ...section('Dimensões', tokens.filter(token => token.category === 'dimension')),
+      ...section('Tipografia', tokens.filter(token => token.category === 'typography')),
+      '## Elevação',
+      ...Object.entries(shadows).map(([name, shadow]) => `- --${name}: ${shadow.value}. ${usage.shadows[name] || shadow.description}`),
+      '## Estilos de texto (nome no Figma: props do UaiTypo)',
       ...styles,
     ].join('\n\n'),
     stories: [],
@@ -93,6 +93,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     dark: await readTokens('uai-dark.tokens.json'),
     shadows: await readTokens('uai-shadows.json'),
     textStyles: await readTokens('uai-text-styles.json'),
+    usage: JSON.parse(await readFile(new URL('../src/pages/uai-foundation/uai-token-usage.pt-BR.json', import.meta.url), 'utf8')),
   });
   await writeFile(filename, JSON.stringify(manifest));
 }

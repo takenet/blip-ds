@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 import { enrichManifest, uaiTokensEntry } from '../prepare-manifest.mjs';
+import { uaiTokens } from '../../src/pages/uai-foundation/uai-tokens.mjs';
 import { createReleaseValues } from '../release-values.mjs';
 
 test('uses the release version for the image tag and Kubernetes version labels', () => {
@@ -72,4 +74,23 @@ test('lists the UAI tokens with light and dark values, elevation and text styles
   assert.match(entry.description, /- --uai-spacing-md: 16px\. Spacing\. 16px\./);
   assert.match(entry.description, /- --uai-elevation-1: 0px 2px 8px black\. Cards\./);
   assert.match(entry.description, /body\/base\/regular-space: <UaiTypo variant="body-base" bold="regular" letterSpacing="expanded">/);
+});
+
+test('uses the translated usage text and sorts sizes from the smallest to the largest', () => {
+  const dimension = (value, description) => ({ $type: 'dimension', $description: description, $value: { value, unit: 'px' } });
+  const light = { dimension: { spacing: { md: dimension(16, 'Spacing. 16px.'), '2xs': dimension(4, 'Spacing. 4px.'), xl: dimension(32, 'Spacing. 32px.') } } };
+  const tokens = uaiTokens(light, {}, { 'uai-spacing-md': 'Espaçamento. 16px.' });
+  assert.deepEqual(tokens.map(token => token.name), ['uai-spacing-2xs', 'uai-spacing-md', 'uai-spacing-xl']);
+  assert.equal(tokens[1].description, 'Espaçamento. 16px.');
+  assert.equal(tokens[0].description, 'Spacing. 4px.');
+});
+
+test('has a pt-BR usage text for every published UAI token, shadow and text style', () => {
+  const read = file => JSON.parse(readFileSync(new URL(file, import.meta.url), 'utf8'));
+  const tokensDir = '../../node_modules/blip-tokens/build/json/';
+  const usage = read('../../src/pages/uai-foundation/uai-token-usage.pt-BR.json');
+  const tokens = uaiTokens(read(`${tokensDir}uai-light.tokens.json`), read(`${tokensDir}uai-dark.tokens.json`));
+  assert.deepEqual(tokens.map(token => token.name).filter(name => !usage.tokens[name]), []);
+  assert.deepEqual(Object.keys(read(`${tokensDir}uai-shadows.json`)).filter(name => !usage.shadows[name]), []);
+  assert.deepEqual(Object.values(read(`${tokensDir}uai-text-styles.json`)).map(style => style.name).filter(name => !usage.textStyles[name]), []);
 });

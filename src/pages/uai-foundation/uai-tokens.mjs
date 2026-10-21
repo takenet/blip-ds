@@ -25,13 +25,23 @@ function* walk(node, path) {
   }
 }
 
+const SCALE_TYPES = ['dimension', 'fontWeight'];
+
+// Sizes and weights read from the smallest to the largest; the other tokens keep the blip-tokens order.
+const byScale = (a, b) =>
+  a.group === b.group && SCALE_TYPES.includes(a.type) && SCALE_TYPES.includes(b.type)
+    ? parseFloat(a.light) - parseFloat(b.light)
+    : 0;
+
 /**
  * Returns every UAI token: name (uai-surface-paper), cssVar, category (color, dimension, typography),
  * group (surface, spacing, font-weight...), type, description and the light and dark values.
+ * `usage` replaces the blip-tokens descriptions (English) with the translated usage text, by token name.
+ * Within a group, sizes and weights are sorted from the smallest to the largest.
  */
-export const uaiTokens = (light, dark) => {
+export const uaiTokens = (light, dark, usage = {}) => {
   const darkTokens = new Map(Array.from(walk(dark, []), ([path, token]) => [path.join('.'), token]));
-  return Array.from(walk(light, []), ([path, token]) => {
+  const tokens = Array.from(walk(light, []), ([path, token]) => {
     const name = `uai-${path.slice(1).join('-')}`;
     const darkToken = darkTokens.get(path.join('.'));
     return {
@@ -40,11 +50,12 @@ export const uaiTokens = (light, dark) => {
       category: path[0],
       group: path[1],
       type: token.$type,
-      description: token.$description || '',
+      description: usage[name] || token.$description || '',
       light: formatValue(token.$type, token.$value),
       dark: darkToken ? formatValue(darkToken.$type, darkToken.$value) : undefined,
     };
   });
+  return tokens.sort(byScale);
 };
 
 /**

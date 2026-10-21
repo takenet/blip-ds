@@ -3,10 +3,11 @@ import light from 'blip-tokens/build/json/uai-light.tokens.json';
 import dark from 'blip-tokens/build/json/uai-dark.tokens.json';
 import shadows from 'blip-tokens/build/json/uai-shadows.json';
 import textStyles from 'blip-tokens/build/json/uai-text-styles.json';
+import usage from './uai-token-usage.pt-BR.json';
 import { UaiThemeProvider, UaiTypo } from '../../../blip-ds-react/dist/components';
 import { textStyleProps, uaiTokens } from './uai-tokens.mjs';
 
-const TOKENS = uaiTokens(light, dark);
+const TOKENS = uaiTokens(light, dark, usage.tokens);
 
 const mono = { fontFamily: 'monospace', fontSize: '12px' };
 const cell = { padding: '8px 12px', verticalAlign: 'middle', textAlign: 'left' };
@@ -138,7 +139,7 @@ export const TextStyles = () => {
                 {style.props.letterSpacing === 'expanded' ? ' letterSpacing="expanded"' : ''}
               </code>
             </td>
-            <td style={cell}>{style.description}</td>
+            <td style={cell}>{usage.textStyles[style.name] || style.description}</td>
           </tr>
         ))}
       </Table>
@@ -168,7 +169,7 @@ export const ElevationTokens = () => (
             }}
           />
           <code>--{name}</code>
-          <p style={{ margin: '4px 0 0' }}>{shadow.description}</p>
+          <p style={{ margin: '4px 0 0' }}>{usage.shadows[name] || shadow.description}</p>
         </div>
       ))}
   </div>

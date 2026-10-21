@@ -5,13 +5,13 @@ import * as UaiNavbarStories from './uai-navbar.stories';
 
 # Navbar
 
-`Navbar` groups navigation actions into one or more content groups. Use it horizontally at the top of a page or vertically as a side rail.
+Agrupa as ações de navegação em um ou mais grupos de conteúdo. Use na horizontal, no topo da página, ou na vertical, como barra lateral.
 
 <Canvas of={UaiNavbarStories.Playground} />
 
 <Controls of={UaiNavbarStories.Playground} />
 
-## Usage
+## Como usar
 
 ```jsx
 import { UaiNavbar, UaiNavbarContent, BdsButtonIcon, BdsAvatar } from 'blip-ds-react/dist/components';
@@ -27,38 +27,38 @@ import { UaiNavbar, UaiNavbarContent, BdsButtonIcon, BdsAvatar } from 'blip-ds-r
 </UaiNavbar>;
 ```
 
-- Wrap each set of navigation items in `UaiNavbarContent`. Content groups follow the Navbar orientation and center their items.
-- Load the UAI tokens and set the theme on an ancestor: wrap the page in `UaiThemeProvider`, or load `blip-tokens/build/css/uai.css` and set `data-uai-theme="light"` or `"dark"`. Without a theme, the Navbar uses the light surface values.
-- Outside React, use the `<uai-navbar>` and `<uai-navbar-content>` custom elements, with kebab-case attributes (`justify-content`, `background-color`).
+- Envolva cada conjunto de itens de navegação em um `UaiNavbarContent`. Os grupos seguem a orientação do Navbar e centralizam os itens.
+- Carregue os tokens UAI e defina o tema em um elemento acima: envolva a página em um `UaiThemeProvider`, ou carregue `blip-tokens/build/css/uai.css` e use `data-uai-theme="light"` ou `"dark"`. Sem tema, o Navbar usa os valores do tema claro.
+- Fora do React, use os custom elements `<uai-navbar>` e `<uai-navbar-content>`, com atributos em kebab-case (`justify-content`, `background-color`).
 
 ## API
 
-| React prop | Default | Description |
+| Prop React | Padrão | Descrição |
 | --- | --- | --- |
-| `orientation` | `vertical` | Main axis direction. `horizontal` lays groups out in a row; `vertical` lays them out in a column. |
-| `justifyContent` | `space-between` | Distribution of content groups along the main axis: `flex-start`, `center`, `flex-end`, `space-between`, `space-around` or `space-evenly`. |
-| `backgroundColor` | `surface-paper` | UAI surface token: `surface-background`, `surface-contrast`, `surface-inverse`, `surface-muted` or `surface-paper`. |
-| `dataTest` | `null` | Optional selector for tests, set on the inner navbar element. |
+| `orientation` | `vertical` | Direção do eixo principal. `horizontal` coloca os grupos em linha; `vertical`, em coluna. |
+| `justifyContent` | `space-between` | Distribuição dos grupos no eixo principal: `flex-start`, `center`, `flex-end`, `space-between`, `space-around` ou `space-evenly`. |
+| `backgroundColor` | `surface-paper` | Token de superfície UAI: `surface-background`, `surface-contrast`, `surface-inverse`, `surface-muted` ou `surface-paper`. |
+| `dataTest` | `null` | Seletor opcional para testes, aplicado no elemento interno do navbar. |
 
 ## Layout
 
-- Items within a `UaiNavbarContent` group are 8px apart (`spacing-xs`).
-- Content groups are 24px apart (`spacing-lg`).
-- A horizontal Navbar fills the available width and has 16px vertical padding (`spacing-md`).
-- A vertical Navbar fits its content width, fills the available height and has 16px padding on each side (`spacing-md`).
+- Os itens de um `UaiNavbarContent` ficam a 8px uns dos outros (`spacing-xs`).
+- Os grupos ficam a 24px uns dos outros (`spacing-lg`).
+- Na horizontal, o Navbar ocupa toda a largura e tem 16px de padding vertical (`spacing-md`).
+- Na vertical, o Navbar tem a largura do conteúdo, ocupa toda a altura e tem 16px de padding em cada lado (`spacing-md`).
 
-## Accessibility
+## Acessibilidade
 
-- Give every icon-only action an accessible name, such as `aria-label` on the button.
-- Keep the order of the groups the same as the reading order of the page: main navigation first, account actions last.
+- Toda ação só com ícone precisa de nome acessível, como `aria-label` no botão.
+- Mantenha a ordem dos grupos igual à ordem de leitura da página: navegação principal primeiro, ações da conta por último.
 
 ## Tokens
 
-| Part | Tokens |
+| Parte | Tokens |
 | --- | --- |
-| Background | `surface-background`, `surface-contrast`, `surface-inverse`, `surface-muted`, `surface-paper` |
-| Spacing | `spacing-xs`, `spacing-md`, `spacing-lg` |
+| Fundo | `surface-background`, `surface-contrast`, `surface-inverse`, `surface-muted`, `surface-paper` |
+| Espaçamento | `spacing-xs`, `spacing-md`, `spacing-lg` |
 
-## Migration from `bds-navbar`
+## Migração do `bds-navbar`
 
-`BdsNavbar` is deprecated. Use `UaiNavbar` with `UaiNavbarContent` groups.
+O `BdsNavbar` está deprecado. Use o `UaiNavbar` com grupos `UaiNavbarContent`.
