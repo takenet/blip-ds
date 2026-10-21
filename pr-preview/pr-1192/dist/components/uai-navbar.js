@@ -1,0 +1,55 @@
+import { p as proxyCustomElement, H, h, a as Host } from './index.js';
+
+const uaiNavbarCss = ":host{display:-ms-flexbox;display:flex}:host(.horizontal){width:100%;height:-webkit-fit-content;height:-moz-fit-content;height:fit-content}:host(.vertical){width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;height:100%}.navbar{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;display:-ms-flexbox;display:flex;gap:1.5rem;-webkit-box-sizing:border-box;box-sizing:border-box}.navbar ::slotted(*){display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.navbar__justify-content__flex-start{-ms-flex-pack:start;justify-content:flex-start}.navbar__justify-content__center{-ms-flex-pack:center;justify-content:center}.navbar__justify-content__flex-end{-ms-flex-pack:end;justify-content:flex-end}.navbar__justify-content__space-between{-ms-flex-pack:justify;justify-content:space-between}.navbar__justify-content__space-around{-ms-flex-pack:distribute;justify-content:space-around}.navbar__justify-content__space-evenly{-ms-flex-pack:space-evenly;justify-content:space-evenly}.navbar__orientation__horizontal{-ms-flex-direction:row;flex-direction:row;width:100%;padding:1rem}.navbar__orientation__horizontal ::slotted(*){-ms-flex-direction:row;flex-direction:row}.navbar__orientation__vertical{-ms-flex-direction:column;flex-direction:column;height:100%;padding:1rem 1rem}.navbar__orientation__vertical ::slotted(*){-ms-flex-direction:column;flex-direction:column}.navbar__background-color__surface-background{background-color:var(--uai-surface-background, #f2f3f3)}.navbar__background-color__surface-contrast{background-color:var(--uai-surface-contrast, #e4e6e7)}.navbar__background-color__surface-inverse{background-color:var(--uai-surface-inverse, #242729)}.navbar__background-color__surface-muted{background-color:var(--uai-surface-muted, #f2f3f3)}.navbar__background-color__surface-paper{background-color:var(--uai-surface-paper, #ffffff)}";
+
+const UaiNavbar$1 = /*@__PURE__*/ proxyCustomElement(class UaiNavbar extends H {
+    constructor() {
+        super();
+        this.__registerHost();
+        this.__attachShadow();
+        /** Navbar orientation: horizontal or vertical. */
+        this.orientation = 'vertical';
+        /** Background surface color. */
+        this.backgroundColor = 'surface-paper';
+        /** Alignment for navbar content. */
+        this.justifyContent = 'space-between';
+        /** Attribute used to identify the component in tests. */
+        this.dataTest = null;
+    }
+    render() {
+        return (h(Host, { key: '2ac5aa9d5aef347a045f08dc58af5bcd03ab83f5', class: { [`${this.orientation}`]: true } }, h("div", { key: '5a123b583b2c0e3bcb89aa676329354fda1fa75b', class: {
+                navbar: true,
+                [`navbar__justify-content__${this.justifyContent}`]: true,
+                [`navbar__orientation__${this.orientation}`]: true,
+                [`navbar__background-color__${this.backgroundColor}`]: true,
+            }, "data-test": this.dataTest }, h("slot", { key: 'fe602fc7a2fecb10671b684721db023cb808cc0c' }))));
+    }
+    get hostElement() { return this; }
+    static get style() { return uaiNavbarCss; }
+}, [1, "uai-navbar", {
+        "orientation": [1],
+        "backgroundColor": [1, "background-color"],
+        "justifyContent": [1, "justify-content"],
+        "dataTest": [1, "data-test"]
+    }]);
+function defineCustomElement$1() {
+    if (typeof customElements === "undefined") {
+        return;
+    }
+    const components = ["uai-navbar"];
+    components.forEach(tagName => { switch (tagName) {
+        case "uai-navbar":
+            if (!customElements.get(tagName)) {
+                customElements.define(tagName, UaiNavbar$1);
+            }
+            break;
+    } });
+}
+
+const UaiNavbar = UaiNavbar$1;
+const defineCustomElement = defineCustomElement$1;
+
+export { UaiNavbar, defineCustomElement };
+//# sourceMappingURL=uai-navbar.js.map
+
+//# sourceMappingURL=uai-navbar.js.map

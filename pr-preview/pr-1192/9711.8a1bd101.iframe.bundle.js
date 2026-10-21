@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblip_ds=self.webpackChunkblip_ds||[]).push([[9711],{"./dist/esm-es5/bds-card-footer.entry.js.map":(module,__unused_webpack_exports,__webpack_require__)=>{module.exports=__webpack_require__.p+"fe280dd5ee32c6a1cc06.map"}}]);

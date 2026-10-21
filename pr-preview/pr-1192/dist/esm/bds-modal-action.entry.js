@@ -1,0 +1,18 @@
+import { r as registerInstance, h } from './index-gowA9FoV.js';
+
+const modalActionCss = ".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";
+
+const BdsModalAction = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+    }
+    render() {
+        return (h("div", { key: '5c028f643e184b18f1885a3838348a6fd7474a0b', class: "modal__action" }, h("slot", { key: 'db6f0a9585b077ef973984df226c3ddc91c6d39f' })));
+    }
+};
+BdsModalAction.style = modalActionCss;
+
+export { BdsModalAction as bds_modal_action };
+//# sourceMappingURL=bds-modal-action.entry.js.map
+
+//# sourceMappingURL=bds-modal-action.entry.js.map
