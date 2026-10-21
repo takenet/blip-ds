@@ -6,8 +6,10 @@ import assetConfig from '../../../src/utils/asset-config.json';
 const assetOrigin = new URL(assetConfig.assetRoot).origin;
 const assetUrls = new Set(Object.values(assetConfig.assets).map(assetPath => new URL(assetPath, assetConfig.assetRoot).href));
 const assetSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2 2h8v8H2z"/><path fill="#006eff" d="M12 12h8v8h-8z"/></svg>';
-const visualAssets = new Map([
-  [new URL(assetConfig.assets['illustration/spots/star'], assetConfig.assetRoot).href, readFileSync(join(__dirname, 'assets/star.svg'), 'utf8')],
+const assetUrl = (key: string) => new URL(assetConfig.assets[key], assetConfig.assetRoot).href;
+const visualAssets = new Map<string, { body: string | Buffer; contentType: string }>([
+  [assetUrl('illustration/spots/star'), { body: readFileSync(join(__dirname, 'assets/star.svg'), 'utf8'), contentType: 'image/svg+xml' }],
+  [assetUrl('uai-icon-font'), { body: readFileSync(join(__dirname, 'assets/uai-icon.woff2')), contentType: 'font/woff2' }],
 ]);
 
 /**
@@ -26,7 +28,7 @@ async function gotoStory(page: Page, storyId: string) {
       const bdsElements = root.querySelectorAll('[class]');
       let hasBds = false;
       for (const el of bdsElements) {
-        if (el.tagName.startsWith('BDS-')) {
+        if (el.tagName.startsWith('BDS-') || el.tagName.startsWith('UAI-')) {
           hasBds = true;
           if (!el.classList.contains('hydrated')) {
             return false;
@@ -61,15 +63,16 @@ export const test = base.extend<{
   context: async ({ context }, use) => {
     await context.route(url => url.origin === assetOrigin, async route => {
       const knownAsset = assetUrls.has(route.request().url());
+      const visualAsset = visualAssets.get(route.request().url());
       await route.fulfill({
         status: knownAsset ? 200 : 404,
         headers: {
-          'content-type': 'image/svg+xml',
+          'content-type': visualAsset?.contentType || 'image/svg+xml',
           'access-control-allow-origin': '*',
           'access-control-expose-headers': 'x-blip-asset-fixture',
           'x-blip-asset-fixture': 'local',
         },
-        body: knownAsset ? visualAssets.get(route.request().url()) || assetSvg : '',
+        body: knownAsset ? visualAsset?.body || assetSvg : '',
       });
     });
     await use(context);
@@ -100,7 +103,7 @@ export async function gotoStoryUrl(page: Page, url: string) {
       const bdsElements = root.querySelectorAll('[class]');
       let hasBds = false;
       for (const el of bdsElements) {
-        if (el.tagName.startsWith('BDS-')) {
+        if (el.tagName.startsWith('BDS-') || el.tagName.startsWith('UAI-')) {
           hasBds = true;
           if (!el.classList.contains('hydrated')) return false;
         }

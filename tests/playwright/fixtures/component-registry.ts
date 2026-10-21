@@ -27,7 +27,7 @@ export interface ComponentEntry {
 export const WAVE_1: ComponentEntry[] = [
   {
     tag: 'bds-button',
-    name: 'Button',
+    name: '[deprecated] Button',
     primaryStory: 'components-deprecated-button--properties',
     stories: [
       { storyId: 'components-deprecated-button--properties', label: 'Properties' },
@@ -297,6 +297,32 @@ export const WAVE_4: ComponentEntry[] = [
     name: 'Navbar',
     primaryStory: 'uai-navbar--web-component',
     stories: [{ storyId: 'uai-navbar--web-component', label: 'Web Component' }],
+  },
+  {
+    tag: 'uai-button',
+    name: 'UaiButton',
+    primaryStory: 'uai-button--variants-and-colors',
+    stories: [
+      { storyId: 'uai-button--variants-and-colors', label: 'Variants and colors' },
+      { storyId: 'uai-button--sizes', label: 'Sizes' },
+      { storyId: 'uai-button--states', label: 'States' },
+      { storyId: 'uai-button--icons', label: 'Icons' },
+    ],
+  },
+  {
+    tag: 'uai-typo',
+    name: 'UaiTypo',
+    primaryStory: 'uai-typo--text-styles',
+    stories: [
+      { storyId: 'uai-typo--text-styles', label: 'Text styles' },
+      { storyId: 'uai-typo--letter-spacing', label: 'Letter spacing' },
+    ],
+  },
+  {
+    tag: 'uai-theme-provider',
+    name: 'UaiThemeProvider',
+    primaryStory: 'uai-theme-provider--properties',
+    stories: [{ storyId: 'uai-theme-provider--properties', label: 'Properties' }],
   },
   {
     tag: 'uai-navbar-content',
