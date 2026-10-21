@@ -1,0 +1,2 @@
+import{r as o,h as a}from"./p-gowA9FoV.js";const s=".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";const t=class{constructor(a){o(this,a)}render(){return a("div",{key:"4a2f8c4c19df041d27b135b8a6855d45834352b4",class:"modal__action"},a("slot",{key:"75faffd877ec7517b039f24395b2b7958cb4e848"}))}};t.style=s;export{t as bds_modal_action};
+//# sourceMappingURL=p-ef35ce60.entry.js.map
