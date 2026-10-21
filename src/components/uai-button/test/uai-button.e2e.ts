@@ -91,7 +91,7 @@ describe('uai-button e2e', () => {
 
   describe('visual recipe', () => {
     it.each([
-      ['compact', '24px', '8px', '8px', '12px', '600'],
+      ['compact', '24px', '8px', '8px', '12px', '500'],
       ['short', '32px', '12px', '12px', '14px', '500'],
       ['medium', '40px', '12px', '12px', '14px', '500'],
       ['large', '56px', '16px', '12px', '14px', '500'],
