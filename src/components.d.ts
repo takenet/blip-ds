@@ -3652,6 +3652,11 @@ export namespace Components {
     }
     interface BdsWarning {
     }
+    /**
+     * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+     * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+     * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+     */
     interface UaiButton {
         /**
           * Accessible name of the button. Required when the button has no visible label.
@@ -3835,6 +3840,10 @@ export namespace Components {
     }
     interface UaiNavbarContent {
     }
+    /**
+     * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
+     * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+     */
     interface UaiThemeProvider {
         /**
           * Theme applied to the UAI components inside the provider. Can be one of: 'light', 'dark'. Any other value falls back to 'light' with a console warning.
@@ -3842,6 +3851,10 @@ export namespace Components {
          */
         "theme"?: UaiTheme;
     }
+    /**
+     * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
+     * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+     */
     interface UaiTypo {
         /**
           * Font weight. Can be one of: 'regular', 'medium', 'semibold', 'bold'.
@@ -5394,6 +5407,11 @@ declare global {
     interface HTMLUaiButtonElementEventMap {
         "uaiClick": MouseEvent;
     }
+    /**
+     * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+     * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+     * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+     */
     interface HTMLUaiButtonElement extends Components.UaiButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLUaiButtonElementEventMap>(type: K, listener: (this: HTMLUaiButtonElement, ev: UaiButtonCustomEvent<HTMLUaiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5432,12 +5450,20 @@ declare global {
         prototype: HTMLUaiNavbarContentElement;
         new (): HTMLUaiNavbarContentElement;
     };
+    /**
+     * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
+     * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+     */
     interface HTMLUaiThemeProviderElement extends Components.UaiThemeProvider, HTMLStencilElement {
     }
     var HTMLUaiThemeProviderElement: {
         prototype: HTMLUaiThemeProviderElement;
         new (): HTMLUaiThemeProviderElement;
     };
+    /**
+     * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
+     * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+     */
     interface HTMLUaiTypoElement extends Components.UaiTypo, HTMLStencilElement {
     }
     var HTMLUaiTypoElement: {
@@ -9331,6 +9357,11 @@ declare namespace LocalJSX {
     }
     interface BdsWarning {
     }
+    /**
+     * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+     * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+     * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+     */
     interface UaiButton {
         /**
           * Accessible name of the button. Required when the button has no visible label.
@@ -9494,6 +9525,10 @@ declare namespace LocalJSX {
     }
     interface UaiNavbarContent {
     }
+    /**
+     * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
+     * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+     */
     interface UaiThemeProvider {
         /**
           * Theme applied to the UAI components inside the provider. Can be one of: 'light', 'dark'. Any other value falls back to 'light' with a console warning.
@@ -9501,6 +9536,10 @@ declare namespace LocalJSX {
          */
         "theme"?: UaiTheme;
     }
+    /**
+     * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
+     * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+     */
     interface UaiTypo {
         /**
           * Font weight. Can be one of: 'regular', 'medium', 'semibold', 'bold'.
@@ -9775,6 +9814,11 @@ declare module "@stencil/core" {
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+            /**
+             * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+             * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+             * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+             */
             "uai-button": LocalJSX.UaiButton & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
             /**
              * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
@@ -9785,7 +9829,15 @@ declare module "@stencil/core" {
             "uai-icon": LocalJSX.UaiIcon & JSXBase.HTMLAttributes<HTMLUaiIconElement>;
             "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
             "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
+            /**
+             * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
+             * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+             */
             "uai-theme-provider": LocalJSX.UaiThemeProvider & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
+            /**
+             * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
+             * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+             */
             "uai-typo": LocalJSX.UaiTypo & JSXBase.HTMLAttributes<HTMLUaiTypoElement>;
         }
     }

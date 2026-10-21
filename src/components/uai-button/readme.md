@@ -5,6 +5,12 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+
 ## Properties
 
 | Property            | Attribute             | Description                                                                                                                                                                                                                  | Type                                                            | Default     |
