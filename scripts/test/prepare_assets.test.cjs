@@ -30,6 +30,17 @@ test('generates only exact-version paths and ignores runtime cluster or root ove
   assert.equal(JSON.stringify(config).includes('<svg'), false);
 });
 
+test('supports safe external font paths from the token asset manifest', async context => {
+  const input = fixture(context);
+  input.manifest.assets['uai-icon-font'] = { path: 'uai-icon/font/uai-icon.woff2', bytes: 32, sha256: 'a'.repeat(64), contentType: 'font/woff2' };
+  fs.writeFileSync(input.manifestPath, JSON.stringify(input.manifest));
+
+  await prepareAssets(input);
+
+  const config = JSON.parse(fs.readFileSync(input.outputPath));
+  assert.equal(config.assets['uai-icon-font'], 'uai-icon/font/uai-icon.woff2');
+});
+
 test('installed tokens resolve every public icon and required component asset offline without legacy catalogs', async context => {
   const input = fixture(context);
   const manifestPath = require.resolve('blip-tokens/assets/manifest');

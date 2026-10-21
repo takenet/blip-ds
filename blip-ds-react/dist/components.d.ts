@@ -70,7 +70,9 @@ import { BdsNavTreeGroup as BdsNavTreeGroupElement } from "blip-ds/dist/componen
 import { BdsNavTreeItem as BdsNavTreeItemElement } from "blip-ds/dist/components/bds-nav-tree-item.js";
 import { BdsNavTree as BdsNavTreeElement } from "blip-ds/dist/components/bds-nav-tree.js";
 import { BdsNavbarContent as BdsNavbarContentElement } from "blip-ds/dist/components/bds-navbar-content.js";
+import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
 import { BdsNavbar as BdsNavbarElement } from "blip-ds/dist/components/bds-navbar.js";
+import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
 import { BdsPagination as BdsPaginationElement } from "blip-ds/dist/components/bds-pagination.js";
 import { BdsPaper as BdsPaperElement } from "blip-ds/dist/components/bds-paper.js";
 import { BdsProgressBar as BdsProgressBarElement } from "blip-ds/dist/components/bds-progress-bar.js";
@@ -480,6 +482,10 @@ export type BdsNavbarEvents = NonNullable<unknown>;
 export declare const BdsNavbar: StencilReactComponent<BdsNavbarElement, BdsNavbarEvents>;
 export type BdsNavbarContentEvents = NonNullable<unknown>;
 export declare const BdsNavbarContent: StencilReactComponent<BdsNavbarContentElement, BdsNavbarContentEvents>;
+export type UaiNavbarEvents = NonNullable<unknown>;
+export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents>;
+export type UaiNavbarContentEvents = NonNullable<unknown>;
+export declare const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, UaiNavbarContentEvents>;
 export type BdsPaginationEvents = {
     onBdsPaginationChange: EventName<CustomEvent<number>>;
     onBdsItemsPerPageChange: EventName<CustomEvent<number>>;

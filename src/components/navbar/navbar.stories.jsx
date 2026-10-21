@@ -3,7 +3,7 @@ import DocumentationTemplate from './navbar.mdx';
 import { BdsNavbar, BdsNavbarContent, BdsAvatar, BdsButtonIcon } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/NavBar',
+  title: 'Components/[deprecated] Navbar',
   parameters: {
     docs: {
       page: DocumentationTemplate,

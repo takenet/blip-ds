@@ -3,6 +3,7 @@ import { defineCustomElements } from '../loader/index.js';
 // https://github.com/storybookjs/storybook-addon-console/issues/86
 //import { withConsole } from '@storybook/addon-console';
 import './preview.css';
+import 'blip-tokens/build/css/uai.css';
 
 // Load the custom elements
 defineCustomElements();
@@ -28,7 +29,7 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "Components", "Snippets", "Templates"]
+      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "Navigation", "Components", ["[deprecated] Navbar", "NavTree", "*"], "Snippets", "Templates"]
     }
   },
   controls: {
@@ -70,7 +71,7 @@ export const decorators = [
       <bds-grid height="100%" direction="column">
         <bds-theme-provider theme={themeValue()}>
           <bds-grid style={(themeValue() === 'dark' ? {backgroundColor: '#292929', minHeight: '100%', width:'100%'} : {backgroundColor: '#f6f6f6', minHeight: '100%', width:'100%'})} justify-content="center">
-            <bds-grid xxs="12" direction="column" padding="2" style={{minHeight: '300px', minWidth: '300px'}}>
+            <bds-grid xxs="12" direction="column" padding="2" data-uai-theme={themeValue()} style={{minHeight: '300px', minWidth: '300px'}}>
               <Story {...context} />
             </bds-grid>
           </bds-grid>
