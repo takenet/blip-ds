@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$3 } from './p-BTJFi-RQ.js';
+import { d as defineCustomElement$3 } from './p-R_xz97kF.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 const stepCss = ":host{padding:8px}:host .step{width:100%;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}:host .step__content{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}:host .step__content--completed{color:var(--color-content-disable, rgb(89, 89, 89))}:host .step__content--active{color:var(--color-primary, rgb(30, 107, 241));font-weight:bold}:host .step__content--pointer{cursor:pointer}:host .step__content--disabled{cursor:no-drop}:host .step__content__ellipse{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-pack:center;justify-content:center;border-radius:50%;background:var(--color-content-default, rgb(40, 40, 40));margin-right:4px;min-width:24px;min-height:24px}:host .step__content__ellipse bds-typo,:host .step__content__ellipse bds-icon{color:var(--color-surface-0, rgb(255, 255, 255))}:host .step__content__ellipse--completed{background:var(--color-content-ghost, rgb(140, 140, 140))}:host .step__content__ellipse--completed bds-typo,:host .step__content__ellipse--completed bds-icon{color:var(--color-surface-0, rgb(255, 255, 255))}:host .step__content__ellipse--active{background:var(--color-surface-primary, rgb(30, 107, 241))}:host .step__content__ellipse--active bds-typo,:host .step__content__ellipse--active bds-icon{color:var(--color-content-bright, rgb(255, 255, 255))}:host .step__content__ellipse--disabled{background:var(--color-content-ghost, rgb(140, 140, 140))}:host .step__content__ellipse--disabled bds-typo,:host .step__content__ellipse--disabled bds-icon{color:var(--color-surface-0, rgb(255, 255, 255))}:host .step__content__text--completed{color:var(--color-content-ghost, rgb(140, 140, 140))}:host .step__content__text--active{color:var(--color-content-default, rgb(40, 40, 40))}:host .step__content__text--disabled{color:var(--color-content-ghost, rgb(140, 140, 140))}@media (max-width: 780px){:host{display:-ms-flexbox;display:flex;-ms-flex:inherit;flex:inherit}}";
@@ -39,24 +39,24 @@ const BdsStep$1 = /*@__PURE__*/ proxyCustomElement(class BdsStep extends H {
         this.dataTest = null;
     }
     render() {
-        return (h("div", { key: '664664195d700b5e07f1f81e50066445d53cc0ef', class: "step" }, h("div", { key: '612120d831983ed723707d4911cc190ad43671f4', class: {
+        return (h("div", { key: 'ee5e5cde8e4b9ad75513376567a907f40a7265f1', class: "step" }, h("div", { key: 'e4b9103a4982a3056919fbf5bf8740946cc3664f', class: {
                 step__content: true,
                 'step__content--active': this.active,
                 'step__content--completed': this.completed,
                 'step__content--disabled': this.disabled,
                 'step__content--pointer': this.pointer,
                 'step--last': this.last,
-            }, "data-test": this.dataTest }, h("div", { key: 'b3329ab7294cf15603e3fbe69bd2dd2eedcf26de', class: {
+            }, "data-test": this.dataTest }, h("div", { key: 'd3a4a4382a9f6e320f3f24c0e6828121a5edcdd4', class: {
                 step__content__ellipse: true,
                 'step__content__ellipse--active': this.active,
                 'step__content__ellipse--completed': this.completed,
                 'step__content__ellipse--disabled': this.disabled,
-            } }, this.completed && h("bds-icon", { key: 'd779499985d98beff3d1470766d3ef1a880e65e1', name: "true" }), !this.completed && h("bds-typo", { key: '5c3cb7fb668d1abb3a9fae27e7b441e3a2940e1f' }, this.index + 1)), h("bds-typo", { key: '88175f31bc34bc896f2492f2d1d968923ae504cd', variant: "fs-16", class: {
+            } }, this.completed && h("bds-icon", { key: 'e3e83486783d827c6f1b058839e865c0311df11d', name: "true" }), !this.completed && h("bds-typo", { key: 'bbef88115a542dcd81b6bbe80c3edb82ed9df88c' }, this.index + 1)), h("bds-typo", { key: '580f9bf9fdc37f44da9d7c0e4da5806cc41fe98f', variant: "fs-16", class: {
                 step__content__text: true,
                 'step__content__text--completed': this.completed && !this.active,
                 'step__content__text--active': this.active,
                 'step__content__text--disabled': this.disabled,
-            }, bold: this.active ? 'bold' : 'regular' }, h("slot", { key: '28fff5e33e3b6e8766585c838bb11bc6f54129d3' })))));
+            }, bold: this.active ? 'bold' : 'regular' }, h("slot", { key: 'b98fa9585814e7b475be1c8b91cb837edaba9ab8' })))));
     }
     get el() { return this; }
     static get style() { return stepCss; }

@@ -1,4 +1,4 @@
-import { C as CounterText, d as defineCustomElement$1 } from './p-CPmy_DYY.js';
+import { C as CounterText, d as defineCustomElement$1 } from './p-CJnjOgJU.js';
 
 const BdsCounterText = CounterText;
 const defineCustomElement = defineCustomElement$1;

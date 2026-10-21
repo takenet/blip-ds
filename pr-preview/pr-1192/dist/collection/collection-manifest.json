@@ -46,6 +46,7 @@
     "components/table/table-header-cell/table-header-cell.js",
     "components/tooltip/tooltip.js",
     "components/uai-button/uai-button.js",
+    "components/uai-navbar/uai-navbar.js",
     "components/uai-theme-provider/uai-theme-provider.js",
     "components/accordion/accordion-body.js",
     "components/accordion/accordion-header.js",
@@ -105,7 +106,6 @@
     "components/test-component/test-component.js",
     "components/toast/toast.js",
     "components/toast-container/toast-container.js",
-    "components/uai-navbar/uai-navbar.js",
     "components/uai-navbar-content/uai-navbar-content.js",
     "components/upload/bds-upload.js",
     "components/warning/warning.js"

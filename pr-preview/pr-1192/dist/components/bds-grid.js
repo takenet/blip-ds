@@ -1,4 +1,4 @@
-import { G as Grid, d as defineCustomElement$1 } from './p-BpDAPE4n.js';
+import { G as Grid, d as defineCustomElement$1 } from './p-XsZYgdgq.js';
 
 const BdsGrid = Grid;
 const defineCustomElement = defineCustomElement$1;

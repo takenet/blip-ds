@@ -1,4 +1,4 @@
-import { B as BdsdatepickerSingle, d as defineCustomElement$1 } from './p-SBF-FKTO.js';
+import { B as BdsdatepickerSingle, d as defineCustomElement$1 } from './p-DSnl6fAl.js';
 
 const BdsDatepickerSingle = BdsdatepickerSingle;
 const defineCustomElement = defineCustomElement$1;

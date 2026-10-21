@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$2 } from './p-BpDAPE4n.js';
+import { d as defineCustomElement$2 } from './p-XsZYgdgq.js';
 
 const buttonGroupCss = ":host{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}";
 
@@ -120,7 +120,7 @@ const ButtonGroup = /*@__PURE__*/ proxyCustomElement(class ButtonGroup extends H
         button.setColor(this.color);
     }
     render() {
-        return (h(Host, { key: '0e02964fe8ee0c72108ae7a0ee8e420fde4179b8', class: "button_group" }, h("bds-grid", { key: '8aa9a38a29dc6599d9b03d8ef3200cd3dddd4de5', direction: this.direction }, h("slot", { key: '685c356b26257180df0203848425a4ec07468f13' }))));
+        return (h(Host, { key: 'b007e012c09fc291e51e3c1ca1bd9c3c6a1b3f26', class: "button_group" }, h("bds-grid", { key: '4cca14362dbd2fd1124b956e4c998766824d282c', direction: this.direction }, h("slot", { key: '16d6595dbcda244737b4e43732069252f919f2eb' }))));
     }
     get el() { return this; }
     static get watchers() { return {

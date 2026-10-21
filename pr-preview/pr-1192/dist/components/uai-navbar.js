@@ -17,12 +17,12 @@ const UaiNavbar$1 = /*@__PURE__*/ proxyCustomElement(class UaiNavbar extends H {
         this.dataTest = null;
     }
     render() {
-        return (h(Host, { key: '2ac5aa9d5aef347a045f08dc58af5bcd03ab83f5', class: { [`${this.orientation}`]: true } }, h("div", { key: '5a123b583b2c0e3bcb89aa676329354fda1fa75b', class: {
+        return (h(Host, { key: '6c3ff7b769082698b1d9d13c0aa26071700ab173', class: { [`${this.orientation}`]: true } }, h("div", { key: '5cc54e2683358761de37fb37366d9be213c55cea', class: {
                 navbar: true,
                 [`navbar__justify-content__${this.justifyContent}`]: true,
                 [`navbar__orientation__${this.orientation}`]: true,
                 [`navbar__background-color__${this.backgroundColor}`]: true,
-            }, "data-test": this.dataTest }, h("slot", { key: 'fe602fc7a2fecb10671b684721db023cb808cc0c' }))));
+            }, "data-test": this.dataTest }, h("slot", { key: '5c692dcfbcb385baffc12305815870a3dec45bb4' }))));
     }
     get hostElement() { return this; }
     static get style() { return uaiNavbarCss; }

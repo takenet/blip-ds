@@ -1,7 +1,7 @@
 import { h } from "@stencil/core";
 export class AlertBody {
     render() {
-        return (h("div", { key: 'ff7a3036059d041c77c79a856bee1b846d878635', class: "alert__body" }, h("bds-typo", { key: 'cacb3dbb5d74c1600f5b1df30a54643e15ced6f9', variant: "fs-14", bold: "regular", slot: "body" }, h("slot", { key: '75417badf23c0feb5d0d99facf3f9d5c0b8d862f' }))));
+        return (h("div", { key: 'c69883a2888367226eaf2a0338b3ff4148d78aa1', class: "alert__body" }, h("bds-typo", { key: 'be66fa0eed3e67d0469c3510829c3ca0405ac7eb', variant: "fs-14", bold: "regular", slot: "body" }, h("slot", { key: 'ce5d1f231538c3eec5d0849468443b31d39b0f30' }))));
     }
     static get is() { return "bds-alert-body"; }
     static get encapsulation() { return "shadow"; }

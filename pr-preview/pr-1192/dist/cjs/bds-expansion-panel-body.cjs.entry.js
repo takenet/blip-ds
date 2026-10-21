@@ -11,7 +11,7 @@ const ExpansionPanelBody = class {
         this.text = null;
     }
     render() {
-        return (index.h(index.Host, { key: '569f97aa18a16220c3e83cd641316fdbc760d6e0' }, index.h("div", { key: '4ec5872314662bb72657377da856a55d35615823', class: "expansion-content", hidden: this.open }, index.h("div", { key: '3bdc1d8cc12ac8c20bbbae84a866e3c93332ac74', class: "with-line" }, index.h("slot", { key: '28d217ec8203dba9e76d1ab212a6167aa22a891c' }), this.text ? (index.h("div", { class: "text" }, index.h("p", null, this.text))) : (index.h("div", { class: "circle" }))))));
+        return (index.h(index.Host, { key: '09bbd38d3a4392f7825cbe7c86291d5d267bafbe' }, index.h("div", { key: '84ccce7f3c0290b91f214efa13d57a3426a642b2', class: "expansion-content", hidden: this.open }, index.h("div", { key: 'a135f926c679e1a8555a1b87396f807663ac1fcb', class: "with-line" }, index.h("slot", { key: 'bb74332b857860bd42f4b872b319e7db82be798b' }), this.text ? (index.h("div", { class: "text" }, index.h("p", null, this.text))) : (index.h("div", { class: "circle" }))))));
     }
 };
 ExpansionPanelBody.style = expansionPanelBodyCss;
