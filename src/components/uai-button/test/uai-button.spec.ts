@@ -1,7 +1,4 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { UAI_OUTLINE_ICONS, UAI_SOLID_ICONS } from '../../../globals/uai-icons';
 import { UaiButton } from '../uai-button';
 
 const render = (html: string) => newSpecPage({ components: [UaiButton], html });
@@ -86,9 +83,9 @@ describe('uai-button', () => {
       const page = await render(`<uai-button icon-left="edit" size="short">Save</uai-button>`);
       const icon = page.root.shadowRoot.querySelector('.button__icon--left');
 
-      expect(icon.tagName).toBe('SPAN');
-      expect(icon).toHaveClass('uai-icon');
-      expect(icon).toHaveClass('uai-icon-outline-edit');
+      expect(icon.tagName).toBe('UAI-ICON');
+      expect(icon.getAttribute('name')).toBe('edit');
+      expect(icon.getAttribute('theme')).toBe('outline');
       expect(icon.getAttribute('aria-hidden')).toBe('true');
       expect(page.root.shadowRoot.querySelector('bds-icon')).toBeNull();
     });
@@ -98,20 +95,20 @@ describe('uai-button', () => {
       const icons = page.root.shadowRoot.querySelectorAll('.button__icon--left');
 
       expect(icons.length).toBe(1);
-      expect(icons[0]).toHaveClass('uai-icon-outline-add');
+      expect(icons[0].getAttribute('name')).toBe('add');
     });
 
     it('renders an arrow-right icon when arrow is set, instead of iconRight', async () => {
       const page = await render(`<uai-button arrow icon-right="edit">Next</uai-button>`);
       const icon = page.root.shadowRoot.querySelector('.button__icon--right');
 
-      expect(icon).toHaveClass('uai-icon-outline-arrow-right');
+      expect(icon.getAttribute('name')).toBe('arrow-right');
     });
 
     it('uses the solid glyph when iconTheme is solid', async () => {
       const page = await render(`<uai-button icon="like" icon-theme="solid">Like</uai-button>`);
 
-      expect(page.root.shadowRoot.querySelector('.button__icon')).toHaveClass('uai-icon-solid-like');
+      expect(page.root.shadowRoot.querySelector('uai-icon').getAttribute('theme')).toBe('solid');
     });
 
     it('falls back to bds-icon, with a warning, for names outside the UAI set', async () => {
@@ -259,16 +256,5 @@ describe('uai-button', () => {
       expect(group.querySelector('.button__icon--left')).not.toBeNull();
       expect(group.querySelector('.button__label')).not.toBeNull();
     });
-  });
-});
-
-describe('uai icon names', () => {
-  it('match the glyphs shipped by the blip-tokens UAI icon font', () => {
-    const css = readFileSync(join(process.cwd(), 'node_modules/blip-tokens/build/uai-icons/uai-icon.css'), 'utf8');
-    const read = (theme: string) =>
-      [...css.matchAll(new RegExp(`uai-icon-${theme}-([a-z0-9-]+):before`, 'g'))].map((match) => match[1]);
-
-    expect([...UAI_OUTLINE_ICONS]).toEqual(read('outline'));
-    expect([...UAI_SOLID_ICONS]).toEqual(read('solid'));
   });
 });

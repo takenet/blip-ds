@@ -146,7 +146,7 @@ describe('uai-button e2e', () => {
         html: withTheme(`<uai-button size="${size}" icon-left="info" arrow>Save</uai-button>`),
       });
       const icons = await page.evaluate(() =>
-        Array.from(document.querySelector('uai-button').shadowRoot.querySelectorAll('.uai-icon')).map((icon) => {
+        Array.from(document.querySelector('uai-button').shadowRoot.querySelectorAll('uai-icon')).map((icon) => {
           const style = getComputedStyle(icon);
           return [style.width, style.height, style.fontSize];
         }),

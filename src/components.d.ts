@@ -77,6 +77,8 @@ import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+import { UaiIconTheme } from "./globals/uai-icons";
+import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 import { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
@@ -152,6 +154,8 @@ export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+export { UaiIconTheme } from "./globals/uai-icons";
+export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
@@ -3771,6 +3775,42 @@ export namespace Components {
          */
         "variant"?: UaiButtonVariant;
     }
+    /**
+     * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
+     * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+     * Without `color`, the icon takes the text color around it, so it matches the label next to it.
+     * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+     */
+    interface UaiIcon {
+        /**
+          * Accessible name. Set it when the icon conveys meaning on its own. Without it, the icon is decorative and hidden from assistive technology.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Icon color, as a UAI color token: content-primary, content-secondary, content-disabled, content-inverse, content-link, feedback-info, feedback-success, feedback-warning or feedback-error. Without it, the icon uses the surrounding text color.
+         */
+        "color"?: UaiIconColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Icon name, as in the Figma icon library without the theme prefix. For example "info" or "arrow-right".
+         */
+        "name": string;
+        /**
+          * Icon size: 'x-small' (16px), 'small' (20px) or 'medium' (24px, default).
+          * @default 'medium'
+         */
+        "size": UaiIconSize;
+        /**
+          * Icon style: 'outline' (default) or 'solid'.
+          * @default 'outline'
+         */
+        "theme": UaiIconTheme;
+    }
     interface UaiNavbar {
         /**
           * Background surface color.
@@ -5368,6 +5408,18 @@ declare global {
         prototype: HTMLUaiButtonElement;
         new (): HTMLUaiButtonElement;
     };
+    /**
+     * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
+     * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+     * Without `color`, the icon takes the text color around it, so it matches the label next to it.
+     * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+     */
+    interface HTMLUaiIconElement extends Components.UaiIcon, HTMLStencilElement {
+    }
+    var HTMLUaiIconElement: {
+        prototype: HTMLUaiIconElement;
+        new (): HTMLUaiIconElement;
+    };
     interface HTMLUaiNavbarElement extends Components.UaiNavbar, HTMLStencilElement {
     }
     var HTMLUaiNavbarElement: {
@@ -5499,6 +5551,7 @@ declare global {
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
         "uai-button": HTMLUaiButtonElement;
+        "uai-icon": HTMLUaiIconElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
@@ -9381,6 +9434,42 @@ declare namespace LocalJSX {
          */
         "variant"?: UaiButtonVariant;
     }
+    /**
+     * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
+     * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+     * Without `color`, the icon takes the text color around it, so it matches the label next to it.
+     * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+     */
+    interface UaiIcon {
+        /**
+          * Accessible name. Set it when the icon conveys meaning on its own. Without it, the icon is decorative and hidden from assistive technology.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Icon color, as a UAI color token: content-primary, content-secondary, content-disabled, content-inverse, content-link, feedback-info, feedback-success, feedback-warning or feedback-error. Without it, the icon uses the surrounding text color.
+         */
+        "color"?: UaiIconColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Icon name, as in the Figma icon library without the theme prefix. For example "info" or "arrow-right".
+         */
+        "name"?: string;
+        /**
+          * Icon size: 'x-small' (16px), 'small' (20px) or 'medium' (24px, default).
+          * @default 'medium'
+         */
+        "size"?: UaiIconSize;
+        /**
+          * Icon style: 'outline' (default) or 'solid'.
+          * @default 'outline'
+         */
+        "theme"?: UaiIconTheme;
+    }
     interface UaiNavbar {
         /**
           * Background surface color.
@@ -9570,6 +9659,7 @@ declare namespace LocalJSX {
         "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
         "uai-button": UaiButton;
+        "uai-icon": UaiIcon;
         "uai-navbar": UaiNavbar;
         "uai-navbar-content": UaiNavbarContent;
         "uai-theme-provider": UaiThemeProvider;
@@ -9686,6 +9776,13 @@ declare module "@stencil/core" {
             "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
             "uai-button": LocalJSX.UaiButton & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
+            /**
+             * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
+             * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+             * Without `color`, the icon takes the text color around it, so it matches the label next to it.
+             * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+             */
+            "uai-icon": LocalJSX.UaiIcon & JSXBase.HTMLAttributes<HTMLUaiIconElement>;
             "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
             "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
             "uai-theme-provider": LocalJSX.UaiThemeProvider & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;

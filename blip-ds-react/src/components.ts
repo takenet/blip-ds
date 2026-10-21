@@ -116,6 +116,7 @@ import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from 
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
+import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
@@ -1570,6 +1571,17 @@ export const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents>
     react: React,
     events: { onUaiClick: 'uaiClick' } as UaiButtonEvents,
     defineCustomElement: defineUaiButton
+});
+
+export type UaiIconEvents = NonNullable<unknown>;
+
+export const UaiIcon: StencilReactComponent<UaiIconElement, UaiIconEvents> = /*@__PURE__*/ createComponent<UaiIconElement, UaiIconEvents>({
+    tagName: 'uai-icon',
+    elementClass: UaiIconElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiIconEvents,
+    defineCustomElement: defineUaiIcon
 });
 
 export type UaiNavbarEvents = NonNullable<unknown>;
