@@ -1,11 +1,21 @@
-module.exports = {
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import remarkGfm from 'remark-gfm';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   core: {
     disableTelemetry: true,
   },
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-docs',
+    {
+      // GitHub-flavored Markdown, so tables in MDX docs render.
+      name: '@storybook/addon-docs',
+      options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } },
+    },
     'storybook/actions',
     '@storybook/addon-mcp'
   ],
@@ -34,8 +44,8 @@ module.exports = {
     // Add alias to resolve blip-ds imports to the dist directory
     config.resolve = config.resolve || {};
     config.resolve.alias = config.resolve.alias || {};
-    config.resolve.alias['blip-ds'] = require('path').resolve(__dirname, '../');
-    config.resolve.alias['blip-ds/dist'] = require('path').resolve(__dirname, '../dist');
+    config.resolve.alias['blip-ds'] = path.resolve(dirname, '../');
+    config.resolve.alias['blip-ds/dist'] = path.resolve(dirname, '../dist');
     
     // Remove TypeScript checker to avoid TypeScript errors during build
     config.plugins = config.plugins.filter(plugin => {
