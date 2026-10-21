@@ -28,6 +28,19 @@
 | `"uai-typo__text"` |             |
 
 
+## Dependencies
+
+### Used by
+
+ - [uai-button](../uai-button)
+
+### Graph
+```mermaid
+graph TD;
+  uai-button --> uai-typo
+  style uai-typo fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

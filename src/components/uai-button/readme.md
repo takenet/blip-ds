@@ -149,11 +149,13 @@ Type: `Promise<void>`
 ### Depends on
 
 - [bds-icon](../icon)
+- [uai-typo](../uai-typo)
 
 ### Graph
 ```mermaid
 graph TD;
   uai-button --> bds-icon
+  uai-button --> uai-typo
   style uai-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

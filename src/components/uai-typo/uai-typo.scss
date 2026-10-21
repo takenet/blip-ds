@@ -16,8 +16,9 @@ $weights: regular, medium, semibold, bold;
 
 $font-fallback: 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
 
+// Components that embed uai-typo can set --uai-typo-color to currentColor to inherit their own text color.
 :host {
-  color: var(--uai-content-primary);
+  color: var(--uai-typo-color, var(--uai-content-primary));
 }
 
 .typo {

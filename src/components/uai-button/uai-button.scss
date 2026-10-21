@@ -19,9 +19,6 @@
   --button-padding-x: var(--uai-spacing-sm);
   --button-radius: var(--uai-radius-lg);
   --button-icon-size: var(--uai-sizing-lg);
-  --button-font-size: var(--uai-body-base-font-size);
-  --button-line-height: var(--uai-body-base-line-height);
-  --button-font-weight: var(--uai-font-weight-medium);
   --button-bg: transparent;
   --button-bg-hover: var(--button-bg);
   --button-bg-pressed: var(--button-bg);
@@ -44,11 +41,6 @@
   border-radius: var(--button-radius);
   background-color: var(--button-bg);
   color: var(--button-fg);
-  font-family: var(--uai-font-family-sans), 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  line-height: var(--button-line-height);
-  letter-spacing: var(--uai-letter-spacing-normal);
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
@@ -115,9 +107,6 @@
     --button-padding-x: var(--uai-spacing-xs);
     --button-radius: var(--uai-radius-md);
     --button-icon-size: var(--uai-sizing-sm);
-    --button-font-size: var(--uai-caption-font-size);
-    --button-line-height: var(--uai-caption-line-height);
-    --button-font-weight: var(--uai-font-weight-medium);
   }
 
   &--size-short {
@@ -236,6 +225,10 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+}
+
+.button__typo {
+  --uai-typo-color: currentColor;
 }
 
 .button__label {

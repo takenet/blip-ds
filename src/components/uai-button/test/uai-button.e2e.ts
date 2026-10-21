@@ -14,6 +14,18 @@ const buttonStyle = (page: E2EPage, selector: string, props: string[]) =>
     props,
   );
 
+// The label text is rendered by the nested uai-typo, so its typography is read from there.
+const labelStyle = (page: E2EPage, selector: string, props: string[]) =>
+  page.evaluate(
+    (sel: string, keys: string[]) => {
+      const typo = document.querySelector(sel).shadowRoot.querySelector('uai-typo');
+      const style = getComputedStyle(typo.shadowRoot.querySelector('span'));
+      return Object.fromEntries(keys.map((key) => [key, style.getPropertyValue(key)]));
+    },
+    selector,
+    props,
+  );
+
 describe('uai-button e2e', () => {
   describe('form', () => {
     it('submits the enclosing form when type is submit', async () => {
@@ -101,19 +113,18 @@ describe('uai-button e2e', () => {
         'height',
         'padding-left',
         'border-top-left-radius',
-        'font-size',
-        'font-weight',
         'column-gap',
       ]);
+      const label = await labelStyle(page, 'uai-button', ['font-size', 'font-weight']);
 
       expect(style).toEqual({
         height,
         'padding-left': paddingX,
         'border-top-left-radius': radius,
-        'font-size': fontSize,
-        'font-weight': fontWeight,
         'column-gap': '8px',
       });
+      expect(label['font-size']).toBe(fontSize);
+      expect(label['font-weight']).toBe(fontWeight);
     });
 
     it('makes an icon-only button square', async () => {

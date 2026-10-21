@@ -109,6 +109,7 @@ import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton }
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 import React from 'react';
 export const BdsAccordion = createComponent({
     tagName: 'bds-accordion',
@@ -992,5 +993,12 @@ export const UaiThemeProvider = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiThemeProvider
+});
+export const UaiTypo = createComponent({
+    tagName: 'uai-typo',
+    elementClass: UaiTypoElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTypo
 });
 //# sourceMappingURL=components.js.map

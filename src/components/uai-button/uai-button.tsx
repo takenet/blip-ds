@@ -309,7 +309,16 @@ export class UaiButton {
     const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
     const label = (
       <span class={{ button__label: true, 'button__label--hidden': !this.hasLabel }}>
-        <slot onSlotchange={this.updateHasLabel}></slot>
+        <uai-typo
+          class="button__typo"
+          tag="span"
+          variant={size === 'compact' ? 'caption' : 'body-base'}
+          bold="medium"
+          margin={false}
+          noWrap
+        >
+          <slot onSlotchange={this.updateHasLabel}></slot>
+        </uai-typo>
       </span>
     );
     const grouped = this.groupIcon && justify === 'space-between' && left;
