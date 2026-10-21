@@ -10,7 +10,7 @@ export const glyphTemplate = (fileKey, nodeId, { name, theme }) =>
     'export default {',
     `  example: figma.code\`<UaiIcon name="${name}"${theme === 'solid' ? ' theme="solid"' : ''} />\`,`,
     `  imports: ['import { UaiIcon } from "blip-ds-react/dist/components"'],`,
-    `  id: 'uai-icon-${theme}-${name}',`,
+    `  id: 'uai-icon-${theme}-${name}-${nodeId.replace(':', '-')}',`,
     `  metadata: { nestable: true, props: { name: '${name}', theme: '${theme}' } },`,
     '};',
     '',
