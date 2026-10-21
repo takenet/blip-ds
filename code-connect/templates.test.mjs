@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
+import { URL } from 'node:url';
 import { runInNewContext } from 'node:vm';
 import ts from 'typescript';
 import { glyphTemplate } from './glyph-template.mjs';
