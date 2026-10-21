@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { textStyleProps, uaiTokens } from '../src/pages/uai-foundation/uai-tokens.mjs';
 
 export const REACT_IMPORT = 'blip-ds-react/dist/components';
 
@@ -42,6 +43,41 @@ export function enrichManifest(manifest, stencilDocs, storyIndex) {
   return manifest;
 }
 
+const tokenLine = token =>
+  `- ${token.cssVar}: ${token.light}${token.dark && token.dark !== token.light ? ` (dark: ${token.dark})` : ''}. ${token.description}`;
+
+/**
+ * Manifest entry with every UAI design token, so agents pick tokens by role instead of hardcoding values.
+ */
+export function uaiTokensEntry({ light, dark, shadows, textStyles }) {
+  const tokens = uaiTokens(light, dark);
+  const section = (title, list) => [`## ${title}`, ...list.map(tokenLine)];
+  const styles = Object.values(textStyles).map(style => {
+    const props = textStyleProps(style.name);
+    const spacing = props.letterSpacing === 'expanded' ? ' letterSpacing="expanded"' : '';
+    return `- ${style.name}: <UaiTypo variant="${props.variant}" bold="${props.bold}"${spacing}>. ${style.description}`;
+  });
+  return {
+    id: 'uai-tokens',
+    name: 'UAI Tokens',
+    path: './src/pages/uai-foundation/tokens.mdx',
+    import: '',
+    jsDocTags: {},
+    summary: 'UAI design tokens: colors, spacing, sizing, radius, borders, typography and elevation, for the light and dark themes.',
+    description: [
+      'Design tokens of the UAI visual language, from blip-tokens. Use them in CSS as var(--uai-<name>) inside a UaiThemeProvider (or an element with data-uai-theme="light" or "dark"). Pick a token by its role and description, never by its value. Colors change between the light and dark themes; the other tokens are the same in both. Prefer a UAI component when one exists.',
+      ...section('Colors', tokens.filter(token => token.category === 'color')),
+      ...section('Dimensions', tokens.filter(token => token.category === 'dimension')),
+      ...section('Typography', tokens.filter(token => token.category === 'typography')),
+      '## Elevation',
+      ...Object.entries(shadows).map(([name, shadow]) => `- --${name}: ${shadow.value}. ${shadow.description}`),
+      '## Text styles (Figma name: UaiTypo props)',
+      ...styles,
+    ].join('\n\n'),
+    stories: [],
+  };
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const directory = process.argv[2] || 'storybook-static';
   const filename = path.join(directory, 'manifests/components.json');
@@ -50,5 +86,13 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     JSON.parse(await readFile(new URL('./stencil-docs.json', import.meta.url), 'utf8')),
     JSON.parse(await readFile(path.join(directory, 'index.json'), 'utf8')),
   );
+  const tokensDirectory = new URL('../node_modules/blip-tokens/build/json/', import.meta.url);
+  const readTokens = async file => JSON.parse(await readFile(new URL(file, tokensDirectory), 'utf8'));
+  manifest.components['uai-tokens'] = uaiTokensEntry({
+    light: await readTokens('uai-light.tokens.json'),
+    dark: await readTokens('uai-dark.tokens.json'),
+    shadows: await readTokens('uai-shadows.json'),
+    textStyles: await readTokens('uai-text-styles.json'),
+  });
   await writeFile(filename, JSON.stringify(manifest));
 }

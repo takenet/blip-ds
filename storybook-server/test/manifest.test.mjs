@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { enrichManifest } from '../prepare-manifest.mjs';
+import { enrichManifest, uaiTokensEntry } from '../prepare-manifest.mjs';
 import { createReleaseValues } from '../release-values.mjs';
 
 test('uses the release version for the image tag and Kubernetes version labels', () => {
@@ -54,4 +54,22 @@ test('finds the API of uai components by their full tag and documents React usag
   assert.match(result.description, /- iconLeft: string/);
   assert.match(result.description, /- onUaiClick: MouseEvent/);
   assert.match(result.description, /default \(children\): Label/);
+});
+
+test('lists the UAI tokens with light and dark values, elevation and text styles', () => {
+  const color = (components, description) => ({ $type: 'color', $description: description, $value: { colorSpace: 'srgb', components, alpha: 1 } });
+  const light = {
+    color: { surface: { paper: color([1, 1, 1], 'Cards and modals.') } },
+    dimension: { spacing: { md: { $type: 'dimension', $description: 'Spacing. 16px.', $value: { value: 16, unit: 'px' } } } },
+  };
+  const dark = { color: { surface: { paper: color([0, 0, 0], 'Cards and modals.') } } };
+  const shadows = { 'uai-elevation-1': { value: '0px 2px 8px black', description: 'Cards.' } };
+  const textStyles = { a: { name: 'body/base/regular-space', description: 'Body with spacing.' } };
+  const entry = uaiTokensEntry({ light, dark, shadows, textStyles });
+  assert.equal(entry.id, 'uai-tokens');
+  assert.deepEqual(entry.stories, []);
+  assert.match(entry.description, /- --uai-surface-paper: #ffffff \(dark: #000000\)\. Cards and modals\./);
+  assert.match(entry.description, /- --uai-spacing-md: 16px\. Spacing\. 16px\./);
+  assert.match(entry.description, /- --uai-elevation-1: 0px 2px 8px black\. Cards\./);
+  assert.match(entry.description, /body\/base\/regular-space: <UaiTypo variant="body-base" bold="regular" letterSpacing="expanded">/);
 });

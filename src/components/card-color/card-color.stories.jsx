@@ -2,7 +2,9 @@ import React from 'react';
 import DocumentationTemplate from './card-color.mdx';
 
 export default {
-  title: 'Tokens/Colors',
+  title: 'Tokens/[deprecated] Colors',
+  // Deprecated: the UAI colors live in UAI/Foundation/Colors; kept out of the Storybook MCP manifest.
+  tags: ['!manifest'],
   parameters: {
     docs: {
       page: DocumentationTemplate,
