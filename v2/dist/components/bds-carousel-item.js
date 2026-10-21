@@ -1,8 +1,8 @@
 import { p as proxyCustomElement, H, h, a as Host } from './index.js';
-import { d as defineCustomElement$6 } from './p-Cje8yEpK.js';
-import { d as defineCustomElement$5 } from './p-DPaQoTij.js';
-import { d as defineCustomElement$4 } from './p-CoDpI-Bm.js';
-import { d as defineCustomElement$3 } from './p-DK_rZFKD.js';
+import { d as defineCustomElement$6 } from './p-D3lgj3w8.js';
+import { d as defineCustomElement$5 } from './p-Cqc3m7yw.js';
+import { d as defineCustomElement$4 } from './p-D0uXJx8T.js';
+import { d as defineCustomElement$3 } from './p-BvTvyag5.js';
 import { d as defineCustomElement$2 } from './p-HUbgptm9.js';
 
 const carouselItemCss = ":host{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;width:auto}.carrosel-item-frame{display:block;width:100%;height:100%;border-radius:8px;position:relative;overflow:hidden}.carrosel-item-frame ::slotted(*){position:relative}.image-bg{position:absolute;width:100%;height:100%}";
@@ -20,7 +20,7 @@ const BdsCarouselItem$1 = /*@__PURE__*/ proxyCustomElement(class BdsCarouselItem
         this.bgImageBrightness = 1;
     }
     render() {
-        return (h(Host, { key: 'b2f8cdc055d5de2543f9a6944a4b1041be114b1b', class: "carrosel-item" }, h("bds-theme-provider", { key: '9fdf9eba6c5e22051ab430d0143b0df99c98c489', theme: this.theme, class: "carrosel-item-frame", style: { background: this.bgColor } }, this.bgImage && (h("bds-image", { key: '0e95a72eaf02b289aa21c01950e22603e8229311', class: "image-bg", alt: "Example of a image", width: "100%", height: "100%", brightness: this.bgImageBrightness, "object-fit": "cover", src: this.bgImage })), h("slot", { key: '09142215709d9d3b320f70434215a52f2463929e' }))));
+        return (h(Host, { key: '4790642f490dd16a97e5459a565bda0977777b3b', class: "carrosel-item" }, h("bds-theme-provider", { key: '524a7e8f2998d4d6e7cc53e008e6520f72936e67', theme: this.theme, class: "carrosel-item-frame", style: { background: this.bgColor } }, this.bgImage && (h("bds-image", { key: '01c8c54cd5d682fba061710c3c3684fa6507e637', class: "image-bg", alt: "Example of a image", width: "100%", height: "100%", brightness: this.bgImageBrightness, "object-fit": "cover", src: this.bgImage })), h("slot", { key: 'aefee624ef00b5f497eaec54a58e730c29c8cef5' }))));
     }
     static get style() { return carouselItemCss; }
 }, [1, "bds-carousel-item", {

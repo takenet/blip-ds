@@ -79,7 +79,7 @@ const BdsStepper$1 = /*@__PURE__*/ proxyCustomElement(class BdsStepper extends H
         });
     }
     render() {
-        return (h(Host, { key: '2480a6b90548a4912b3c05cef6750ce17e0a71bc', class: "stepper__container" }, h("slot", { key: 'e0aac9f13f0ec9b7f35f895750cfa2d0d71f18c9' })));
+        return (h(Host, { key: '6ed80e71172963c63b0ea5be4099b6b76a07b050', class: "stepper__container" }, h("slot", { key: '772c97d4a699587c8a00b19c6bbcfe7ac3c4af93' })));
     }
     get el() { return this; }
     static get style() { return stepperCss; }

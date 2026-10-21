@@ -1,0 +1,2 @@
+import{r as e,h as t,H as s,a}from"./p-gowA9FoV.js";const r=":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:0.5rem}";const n=class{constructor(t){e(this,t)}render(){return t(s,{key:"ef889b213c2f4fdb101b90a23408177205c64dab",class:{NavbarContent:true}},t("slot",{key:"696a6c70d5a1111e8b65d1cb1e72277fc28d0811"}))}get hostElement(){return a(this)}};n.style=r;export{n as uai_navbar_content};
+//# sourceMappingURL=p-4bdcd951.entry.js.map

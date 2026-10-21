@@ -362,6 +362,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-warning.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-navbar.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-navbar.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-navbar-content.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-navbar-content.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-badge.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -81,7 +81,7 @@ const Accordion = /*@__PURE__*/ proxyCustomElement(class Accordion extends H {
         }
     }
     render() {
-        return (h("div", { key: '82fc80c952eb776a59a1cbe125adccd2048e0138', class: "accordion_group" }, h("slot", { key: '7dfc64ab8d121bbb85ce3e060cefd4637889fb91' })));
+        return (h("div", { key: '2349c8384f7a51c793d52b8ed6065dbcd3e1311c', class: "accordion_group" }, h("slot", { key: 'eee2a5226ddf30e464ed1d32d1b10ea8d9d5136d' })));
     }
     get element() { return this; }
     static get watchers() { return {

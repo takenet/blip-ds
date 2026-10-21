@@ -342,6 +342,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-warning.entry.js').then(processMod, consoleError);
+                case 'uai-navbar':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-navbar.entry.js').then(processMod, consoleError);
+                case 'uai-navbar-content':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-navbar-content.entry.js').then(processMod, consoleError);
                 case 'bds-badge':
                     return import(
                       /* webpackMode: "lazy" */

@@ -9,7 +9,7 @@ const NavbarContent = /*@__PURE__*/ proxyCustomElement(class NavbarContent exten
         this.__attachShadow();
     }
     render() {
-        return (h(Host, { key: 'b825f8ba288eaeebc61953db273933c51856d6df', class: { NavbarContent: true } }, h("slot", { key: '79f83625e8e31ae01898e9f248bb54968da0d899' })));
+        return (h(Host, { key: 'a2773fd49227d0c5bc4128e003c87ffba1115aa7', class: { NavbarContent: true } }, h("slot", { key: '507e3544caabfa5da551eb48330ada4e09c85494' })));
     }
     get hostElement() { return this; }
     static get style() { return navbarCss; }

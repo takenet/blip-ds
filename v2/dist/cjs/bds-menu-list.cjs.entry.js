@@ -9,7 +9,7 @@ const MenuList = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: 'fe25f090f037c13d25c2269eb90a426f37dc0263' }, index.h("div", { key: '1f134f1bf02e2f2009429c331041e062d1d9ba6e', class: "menu-list" }, index.h("div", { key: '1029c636eef1e5889bcc0e4c160f7ee5913a06db', class: "menu-list__left" }), index.h("slot", { key: 'ab82eaba4536c1f9276df81b0bba90215bbf7252' }), index.h("div", { key: 'a3bea88a6b53e83ed2b6d5dc948be2f0b3b768cd', class: "menu-list__right" }))));
+        return (index.h(index.Host, { key: '56e7f68f1a89f13ec1158370f2f83f7d3d9e9ecc' }, index.h("div", { key: '7b10c91d33b5dfd3fe809ae9e6cbd432585de931', class: "menu-list" }, index.h("div", { key: '1691379583cc1273664c65e898849970aabc2536', class: "menu-list__left" }), index.h("slot", { key: 'f075f5c9d85a9168ccdf0c90d00a828ce7ce468b' }), index.h("div", { key: '5292de99f5c5fe0656a31fbbd6f59153582ff8ac', class: "menu-list__right" }))));
     }
 };
 MenuList.style = menuListCss;

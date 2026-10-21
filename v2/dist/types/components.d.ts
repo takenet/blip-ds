@@ -76,6 +76,7 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
+import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { collapses } from "./components/accordion/accordion-group";
 export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 export { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
@@ -147,6 +148,7 @@ export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
+export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -3640,6 +3642,30 @@ export namespace Components {
     }
     interface BdsWarning {
     }
+    interface UaiNavbar {
+        /**
+          * Background surface color.
+          * @default 'surface-paper'
+         */
+        "backgroundColor"?: uaiNavbarBackground;
+        /**
+          * Attribute used to identify the component in tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Alignment for navbar content.
+          * @default 'space-between'
+         */
+        "justifyContent"?: uaiNavbarJustifyContent;
+        /**
+          * Navbar orientation: horizontal or vertical.
+          * @default 'vertical'
+         */
+        "orientation"?: uaiNavbarOrientation;
+    }
+    interface UaiNavbarContent {
+    }
 }
 export interface BdsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5134,6 +5160,18 @@ declare global {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
     };
+    interface HTMLUaiNavbarElement extends Components.UaiNavbar, HTMLStencilElement {
+    }
+    var HTMLUaiNavbarElement: {
+        prototype: HTMLUaiNavbarElement;
+        new (): HTMLUaiNavbarElement;
+    };
+    interface HTMLUaiNavbarContentElement extends Components.UaiNavbarContent, HTMLStencilElement {
+    }
+    var HTMLUaiNavbarContentElement: {
+        prototype: HTMLUaiNavbarContentElement;
+        new (): HTMLUaiNavbarContentElement;
+    };
     interface HTMLElementTagNameMap {
         "bds-accordion": HTMLBdsAccordionElement;
         "bds-accordion-body": HTMLBdsAccordionBodyElement;
@@ -5240,6 +5278,8 @@ declare global {
         "bds-typo": HTMLBdsTypoElement;
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
+        "uai-navbar": HTMLUaiNavbarElement;
+        "uai-navbar-content": HTMLUaiNavbarContentElement;
     }
 }
 declare namespace LocalJSX {
@@ -9015,6 +9055,30 @@ declare namespace LocalJSX {
     }
     interface BdsWarning {
     }
+    interface UaiNavbar {
+        /**
+          * Background surface color.
+          * @default 'surface-paper'
+         */
+        "backgroundColor"?: uaiNavbarBackground;
+        /**
+          * Attribute used to identify the component in tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Alignment for navbar content.
+          * @default 'space-between'
+         */
+        "justifyContent"?: uaiNavbarJustifyContent;
+        /**
+          * Navbar orientation: horizontal or vertical.
+          * @default 'vertical'
+         */
+        "orientation"?: uaiNavbarOrientation;
+    }
+    interface UaiNavbarContent {
+    }
     interface IntrinsicElements {
         "bds-accordion": BdsAccordion;
         "bds-accordion-body": BdsAccordionBody;
@@ -9121,6 +9185,8 @@ declare namespace LocalJSX {
         "bds-typo": BdsTypo;
         "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
+        "uai-navbar": UaiNavbar;
+        "uai-navbar-content": UaiNavbarContent;
     }
 }
 export { LocalJSX as JSX };
@@ -9232,6 +9298,8 @@ declare module "@stencil/core" {
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+            "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
+            "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
         }
     }
 }

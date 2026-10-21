@@ -11,7 +11,7 @@ const ExpansionPanelBody = /*@__PURE__*/ proxyCustomElement(class ExpansionPanel
         this.text = null;
     }
     render() {
-        return (h(Host, { key: 'ddab00688a9778f798ada103add18ea646bb0882' }, h("div", { key: '7b8aa624dc540e3e981f08695e7fe8807e0b91dc', class: "expansion-content", hidden: this.open }, h("div", { key: '1cf712b7bf727de3fc7784438e47370bb786cd16', class: "with-line" }, h("slot", { key: 'bb9a0251cb488815c6020490a841fd1f22f42df4' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
+        return (h(Host, { key: 'a65279f87968ab71228b7290d59a6e804630ec02' }, h("div", { key: '4081a9c094ec3a61e5c6a646c18c307ac3dda2fc', class: "expansion-content", hidden: this.open }, h("div", { key: '29613c964535335ff794388660b373b55c79c415', class: "with-line" }, h("slot", { key: '8749bc4b6eebb2724a74c71b1cd63a54a44659c5' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
     }
     static get style() { return expansionPanelBodyCss; }
 }, [1, "bds-expansion-panel-body", {

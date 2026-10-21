@@ -9,7 +9,7 @@ const BdsModalAction$1 = /*@__PURE__*/ proxyCustomElement(class BdsModalAction e
         this.__attachShadow();
     }
     render() {
-        return (h("div", { key: '1848e87dac84daf531a6cad1fe89e51588e360d3', class: "modal__action" }, h("slot", { key: 'c3231a296b5df6fdb78341a3f5d708ed9de43d05' })));
+        return (h("div", { key: '28d98797402ea00e105d336ecef9f1f674007db5', class: "modal__action" }, h("slot", { key: '78649472f6d839b1432896f047a023dd76122046' })));
     }
     static get style() { return modalActionCss; }
 }, [1, "bds-modal-action"]);

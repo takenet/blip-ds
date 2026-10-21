@@ -1,5 +1,5 @@
 import { r as registerInstance, h, H as Host } from './index-gowA9FoV.js';
-import { g as getAssetUrl } from './asset-loader-DNAIg-a5.js';
+import { g as getAssetUrl } from './asset-loader-2NONefL6.js';
 
 const illustrationCss = ":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}";
 
@@ -27,7 +27,7 @@ const BdsIllustration = class {
         }
     }
     render() {
-        return (h(Host, { key: '9735f7090b83434a6142d2e92776a3a4b67b52fb', role: "img", class: {
+        return (h(Host, { key: '88d8ec3c305d9e92e00a5fe9ce88eb51ed8d9952', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
     }

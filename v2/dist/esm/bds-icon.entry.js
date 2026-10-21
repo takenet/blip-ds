@@ -1,5 +1,5 @@
 import { r as registerInstance, h, H as Host, a as getElement } from './index-gowA9FoV.js';
-import { l as loadAssetSvg } from './asset-loader-DNAIg-a5.js';
+import { l as loadAssetSvg } from './asset-loader-2NONefL6.js';
 
 const FILL_ELEMENTS = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'line'];
 const getFilledElements = (svg) => {
@@ -187,7 +187,7 @@ const Icon = class {
         }
     }
     render() {
-        return (h(Host, { key: 'e285bf38968d128bf3fd8a0a90bb23183c72b781', role: "img", class: {
+        return (h(Host, { key: '648d7b7d316f92feeaa3f7123ed6bab0e9c15c9f', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (h("div", { class: {

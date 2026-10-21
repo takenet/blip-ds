@@ -32,11 +32,11 @@ const CounterText = class {
     render() {
         const state = this.getState();
         const actualLength = this.getActualLength();
-        return (h("div", { key: '877e99ec4523b315a389839e69b9650a16aa3b0b', class: {
+        return (h("div", { key: '17a58611b6b8840ba4c9d67293f17a9b50b62fea', class: {
                 'counter-text': true,
                 'counter-text--active': this.active,
                 [`counter-text--${state}`]: true,
-            } }, h("bds-typo", { key: '2e69d04172ed9e662903e496587545eafab5a6de', variant: "fs-10" }, actualLength)));
+            } }, h("bds-typo", { key: '1b9104ce4e8459cfefe2139d4df0420f9934d9bb', variant: "fs-10" }, actualLength)));
     }
 };
 CounterText.style = counterTextCss;
