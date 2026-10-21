@@ -62,6 +62,7 @@
  - [bds-toast](../toast)
  - [bds-upload](../upload)
  - [bds-warning](../warning)
+ - [uai-button](../uai-button)
 
 ### Graph
 ```mermaid
@@ -104,6 +105,7 @@ graph TD;
   bds-toast --> bds-icon
   bds-upload --> bds-icon
   bds-warning --> bds-icon
+  uai-button --> bds-icon
   style bds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

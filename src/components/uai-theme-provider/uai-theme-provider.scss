@@ -1,0 +1,30 @@
+@use 'sass:meta';
+@use 'blip-tokens/build/scss/uai-colors-light' as colors-light;
+@use 'blip-tokens/build/scss/uai-colors-dark' as colors-dark;
+@use 'blip-tokens/build/scss/uai-dimensions' as dimensions;
+@use 'blip-tokens/build/scss/uai-typography' as typography;
+@use 'blip-tokens/build/scss/uai-shadows' as shadows;
+
+@mixin custom-properties($module) {
+  @each $name, $value in meta.module-variables($module) {
+    --#{$name}: #{$value};
+  }
+}
+
+:host {
+  display: contents;
+
+  @include custom-properties(dimensions);
+  @include custom-properties(typography);
+  @include custom-properties(shadows);
+}
+
+:host([data-uai-theme='light']) {
+  @include custom-properties(colors-light);
+  color-scheme: light;
+}
+
+:host([data-uai-theme='dark']) {
+  @include custom-properties(colors-dark);
+  color-scheme: dark;
+}

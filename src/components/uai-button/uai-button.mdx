@@ -1,0 +1,89 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiButtonStories from './uai-button.stories';
+
+<Meta isTemplate />
+
+# UAI Button
+
+[Design (UAI Core – Components)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2050-1815)
+
+O `uai-button` é a versão com a nova UI do `bds-button`. A API é a mesma do `bds-button`, com estas diferenças:
+
+| `bds-button` | `uai-button` |
+| --- | --- |
+| `bdsClick` | `uaiClick` (o `detail` traz o evento de clique nativo) |
+| `bdsLoading` | `loading` |
+| `variant` `primary`, `secondary`, `tertiary`, `ghost`, `delete`, `dashed`, `facebook`, `secondary--white` | Não aceitos: use `solid`, `outline` ou `text` com `color` |
+| `size` `tall`, `standard` | Não aceitos: use `large` ou `medium` |
+| — | `size="compact"` (24px) |
+| `bdsLoadingVariant`, `bdsLoadingColor`, `groupIcon` | Aceitos, mas deprecados (aviso no console) |
+
+Valores não aceitos caem no padrão e geram um aviso no console.
+
+## Tema
+
+Os componentes UAI leem os tokens `--uai-*` do `blip-tokens`. Envolva-os em um `uai-theme-provider`:
+
+```html
+<uai-theme-provider theme="light">
+  <uai-button>Salvar</uai-button>
+</uai-theme-provider>
+```
+
+A nova UI usa a fonte **Figtree**. Carregue-a na aplicação; sem ela, o botão usa a fonte atual do blip-ds.
+
+## Estrutura
+
+<Canvas of={UaiButtonStories.Properties} />
+
+## Propriedades
+
+<Controls of={UaiButtonStories.Properties} />
+
+## Variantes e cores
+
+`outline` e `text` usam a cor de destaque escolhida; `content` fica neutro.
+
+<Canvas of={UaiButtonStories.VariantsAndColors} />
+
+## Tamanhos
+
+| Tamanho | Altura | Padding horizontal | Raio | Texto | Ícone |
+| --- | --- | --- | --- | --- | --- |
+| `compact` | 24px | 8px | 8px | 12/20 semibold | 16px |
+| `short` | 32px | 12px | 12px | 14/22 medium | 20px |
+| `medium` (padrão) | 40px | 12px | 12px | 14/22 medium | 24px |
+| `large` | 56px | 16px | 12px | 14/22 medium | 24px |
+
+<Canvas of={UaiButtonStories.Sizes} />
+
+## Estados
+
+Em `loading`, o spinner ocupa o lugar do ícone da esquerda, o botão continua focável e o `uaiClick` não é emitido.
+
+<Canvas of={UaiButtonStories.States} />
+
+## Ícones
+
+Sem texto, o botão fica quadrado. Nesse caso, informe `aria-label`.
+
+<Canvas of={UaiButtonStories.Icons} />
+
+## Eventos
+
+| Evento | Quando | `detail` |
+| --- | --- | --- |
+| `uaiClick` | Clique, Enter ou Space; não é emitido com `disabled` ou `loading` | Evento de clique nativo |
+
+<Canvas of={UaiButtonStories.Events} />
+
+## Acessibilidade
+
+- Renderiza um `<button>` nativo: Tab foca, Enter e Space ativam.
+- `type="submit"` e `type="reset"` agem sobre o `<form>` que envolve o botão.
+- Em `loading`, o botão recebe `aria-busy` e `aria-disabled`.
+- Botões só com ícone precisam de `aria-label`.
+
+## React
+
+<Canvas of={UaiButtonStories.FrameworkReact} />
