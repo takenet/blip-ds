@@ -1,0 +1,62 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+}
+
+:host(.horizontal) {
+  width: 100%;
+  height: fit-content;
+}
+
+:host(.vertical) {
+  width: fit-content;
+  height: 100%;
+}
+
+.navbar {
+  width: fit-content;
+  display: flex;
+  gap: $uai-spacing-lg;
+  box-sizing: border-box;
+
+  ::slotted(*) {
+    display: flex;
+    align-items: center;
+  }
+
+  &__justify-content {
+    &__flex-start { justify-content: flex-start; }
+    &__center { justify-content: center; }
+    &__flex-end { justify-content: flex-end; }
+    &__space-between { justify-content: space-between; }
+    &__space-around { justify-content: space-around; }
+    &__space-evenly { justify-content: space-evenly; }
+  }
+
+  &__orientation {
+    &__horizontal {
+      flex-direction: row;
+      width: 100%;
+      padding: $uai-spacing-md;
+
+      ::slotted(*) { flex-direction: row; }
+    }
+
+    &__vertical {
+      flex-direction: column;
+      height: 100%;
+      padding: $uai-spacing-md $uai-spacing-md;
+
+      ::slotted(*) { flex-direction: column; }
+    }
+  }
+
+  &__background-color {
+    &__surface-background { background-color: var(--uai-surface-background, #{$uai-surface-background}); }
+    &__surface-contrast { background-color: var(--uai-surface-contrast, #{$uai-surface-contrast}); }
+    &__surface-inverse { background-color: var(--uai-surface-inverse, #{$uai-surface-inverse}); }
+    &__surface-muted { background-color: var(--uai-surface-muted, #{$uai-surface-muted}); }
+    &__surface-paper { background-color: var(--uai-surface-paper, #{$uai-surface-paper}); }
+  }
+}

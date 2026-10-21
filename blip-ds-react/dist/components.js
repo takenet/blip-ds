@@ -70,7 +70,9 @@ import { BdsNavTreeGroup as BdsNavTreeGroupElement, defineCustomElement as defin
 import { BdsNavTreeItem as BdsNavTreeItemElement, defineCustomElement as defineBdsNavTreeItem } from "blip-ds/dist/components/bds-nav-tree-item.js";
 import { BdsNavTree as BdsNavTreeElement, defineCustomElement as defineBdsNavTree } from "blip-ds/dist/components/bds-nav-tree.js";
 import { BdsNavbarContent as BdsNavbarContentElement, defineCustomElement as defineBdsNavbarContent } from "blip-ds/dist/components/bds-navbar-content.js";
+import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { BdsNavbar as BdsNavbarElement, defineCustomElement as defineBdsNavbar } from "blip-ds/dist/components/bds-navbar.js";
+import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { BdsPagination as BdsPaginationElement, defineCustomElement as defineBdsPagination } from "blip-ds/dist/components/bds-pagination.js";
 import { BdsPaper as BdsPaperElement, defineCustomElement as defineBdsPaper } from "blip-ds/dist/components/bds-paper.js";
 import { BdsProgressBar as BdsProgressBarElement, defineCustomElement as defineBdsProgressBar } from "blip-ds/dist/components/bds-progress-bar.js";
@@ -686,6 +688,20 @@ export const BdsNavbarContent = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineBdsNavbarContent
+});
+export const UaiNavbar = createComponent({
+    tagName: 'uai-navbar',
+    elementClass: UaiNavbarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbar
+});
+export const UaiNavbarContent = createComponent({
+    tagName: 'uai-navbar-content',
+    elementClass: UaiNavbarContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbarContent
 });
 export const BdsPagination = createComponent({
     tagName: 'bds-pagination',

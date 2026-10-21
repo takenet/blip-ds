@@ -288,9 +288,21 @@ export const WAVE_4: ComponentEntry[] = [
   },
   {
     tag: 'bds-navbar',
+    name: '[deprecated] NavBar',
+    primaryStory: 'components-deprecated-navbar--properties',
+    stories: [{ storyId: 'components-deprecated-navbar--properties', label: 'Properties' }],
+  },
+  {
+    tag: 'uai-navbar',
     name: 'Navbar',
-    primaryStory: 'components-navbar--properties',
-    stories: [{ storyId: 'components-navbar--properties', label: 'Properties' }],
+    primaryStory: 'navigation-navbar--web-component',
+    stories: [{ storyId: 'navigation-navbar--web-component', label: 'Web Component' }],
+  },
+  {
+    tag: 'uai-navbar-content',
+    name: 'UaiNavbarContent',
+    primaryStory: 'navigation-navbar--web-component',
+    stories: [{ storyId: 'navigation-navbar--web-component', label: 'Web Component' }],
   },
   {
     tag: 'bds-stepper',

@@ -1,0 +1,7 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: $uai-spacing-xs;
+}
