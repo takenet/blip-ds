@@ -1,0 +1,72 @@
+// body-lg and body-sm reuse the title and caption tokens until blip-tokens publishes their own.
+$variant-tokens: (
+  display: display,
+  heading-xl: heading-xl,
+  heading-lg: heading-lg,
+  heading-md: heading-md,
+  title: title,
+  body-lg: title,
+  body-base: body-base,
+  body-sm: caption,
+  caption: caption,
+  overline: overline,
+);
+
+$weights: regular, medium, semibold, bold;
+
+$font-fallback: 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
+
+:host {
+  color: var(--uai-content-primary);
+}
+
+.typo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--uai-font-family-sans), $font-fallback;
+  font-style: normal;
+
+  @each $variant, $token in $variant-tokens {
+    &--variant-#{$variant} {
+      font-size: var(--uai-#{$token}-font-size);
+      line-height: var(--uai-#{$token}-line-height);
+    }
+  }
+
+  &--variant-display {
+    font-family: var(--uai-font-family-display), $font-fallback;
+  }
+
+  @each $weight in $weights {
+    &--bold-#{$weight} {
+      font-weight: var(--uai-font-weight-#{$weight});
+    }
+  }
+
+  &--letter-spacing-normal {
+    letter-spacing: var(--uai-letter-spacing-normal);
+  }
+
+  &--letter-spacing-expanded {
+    letter-spacing: var(--uai-letter-spacing-expanded);
+  }
+
+  &--italic {
+    font-style: italic;
+  }
+
+  &--no-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &--paragraph {
+    margin-bottom: var(--uai-spacing-md);
+  }
+
+  &--margin {
+    margin-bottom: var(--uai-spacing-lg);
+  }
+}

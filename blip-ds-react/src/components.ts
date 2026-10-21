@@ -119,6 +119,7 @@ import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton }
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 import React from 'react';
 
 export type BdsAccordionEvents = {
@@ -1602,4 +1603,15 @@ export const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, Ua
     react: React,
     events: {} as UaiThemeProviderEvents,
     defineCustomElement: defineUaiThemeProvider
+});
+
+export type UaiTypoEvents = NonNullable<unknown>;
+
+export const UaiTypo: StencilReactComponent<UaiTypoElement, UaiTypoEvents> = /*@__PURE__*/ createComponent<UaiTypoElement, UaiTypoEvents>({
+    tagName: 'uai-typo',
+    elementClass: UaiTypoElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiTypoEvents,
+    defineCustomElement: defineUaiTypo
 });

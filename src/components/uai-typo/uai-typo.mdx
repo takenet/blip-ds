@@ -1,0 +1,97 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiTypoStories from './uai-typo.stories';
+
+<Meta isTemplate />
+
+# UAI Typo
+
+[Design (UAI Core – Components)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components)
+
+O `uai-typo` é a versão com a nova UI do `bds-typo`. Os nomes de `variant` e `bold` são os mesmos dos estilos de texto do Figma, e todos os valores vêm dos tokens `--uai-*` do `blip-tokens`.
+
+## Tema
+
+Envolva os componentes UAI em um `uai-theme-provider`. Ele define os tokens de tipografia e a cor do texto:
+
+```html
+<uai-theme-provider theme="light">
+  <uai-typo variant="heading-lg" bold="semibold" tag="h2">Título</uai-typo>
+</uai-theme-provider>
+```
+
+A nova UI usa a fonte **Figtree**. Carregue-a na aplicação; sem ela, o texto usa a fonte atual do blip-ds.
+
+## Estrutura
+
+<Canvas of={UaiTypoStories.Properties} />
+
+## Propriedades
+
+<Controls of={UaiTypoStories.Properties} />
+
+## Estilos de texto
+
+Cada estilo do Figma é `variant` + `bold`. Por exemplo, `heading/lg/semibold` é `variant="heading-lg" bold="semibold"`.
+
+| `variant` | Tamanho / altura de linha | Pesos no Figma | Uso |
+| --- | --- | --- | --- |
+| `display` | 40 / 48 | regular, semibold, bold | Hero, landing pages |
+| `heading-xl` | 32 / 40 | regular, semibold, bold | Título principal da página |
+| `heading-lg` | 24 / 32 | regular, semibold, bold | Seções de conteúdo |
+| `heading-md` | 20 / 28 | regular, semibold, bold | Subseções |
+| `title` | 16 / 24 | regular, medium, semibold, bold | Títulos de card, rótulos fortes, navegação |
+| `body-lg` | 16 / 24 | regular, medium, semibold, bold | Texto corrido grande |
+| `body-base` (padrão) | 14 / 22 | regular, medium, semibold, bold | Texto padrão da aplicação |
+| `body-sm` | 12 / 20 | regular, medium, semibold, bold | Texto corrido pequeno |
+| `caption` | 12 / 20 | regular, medium, semibold, bold | Apoio, badges |
+| `overline` | 10 / 16 | regular, medium, semibold | Tags, uso restrito |
+
+`display` usa `--uai-font-family-display`; os demais usam `--uai-font-family-sans`. `body-lg` e `body-sm` usam os tokens de `title` e `caption` até o `blip-tokens` publicar tokens próprios.
+
+O componente aceita qualquer combinação de `variant` e `bold`, mas use as do Figma.
+
+<Canvas of={UaiTypoStories.TextStyles} />
+
+## Espaçamento entre letras
+
+`letter-spacing="expanded"` corresponde ao estilo `body/base/regular-space`.
+
+<Canvas of={UaiTypoStories.LetterSpacing} />
+
+## Semântica
+
+`variant` define a aparência; `tag` define o elemento HTML (`p`, `h1`–`h4`, `span`). Escolha a tag pela estrutura da página, não pelo tamanho.
+
+<Canvas of={UaiTypoStories.Semantics} />
+
+## Migração do `bds-typo`
+
+| `bds-typo` | `uai-typo` |
+| --- | --- |
+| `variant="fs-10"` | `variant="overline"` |
+| `variant="fs-12"` | `variant="caption"` ou `variant="body-sm"` |
+| `variant="fs-14"` | `variant="body-base"` |
+| `variant="fs-16"` (padrão) | `variant="title"` ou `variant="body-lg"` |
+| `variant="fs-20"` | `variant="heading-md"` |
+| `variant="fs-24"` | `variant="heading-lg"` |
+| `variant="fs-32"` | `variant="heading-xl"` |
+| `variant="fs-40"` | `variant="display"` |
+| `bold="semi-bold"` | `bold="semibold"` |
+| `bold="extra-bold"` | Sem equivalente: use `bold="bold"` |
+| — | `bold="medium"` |
+| — | `letter-spacing="expanded"` |
+| `lineHeight` | Aceito, mas deprecado e sem efeito (aviso no console). A altura de linha vem do `variant`. |
+
+Valores não aceitos, inclusive `fs-*`, `semi-bold` e `extra-bold`, caem no padrão (`body-base` e `regular`) e geram um aviso no console.
+
+Outras diferenças:
+
+- O padrão de `variant` passou de `fs-16` para `body-base` (14px).
+- As alturas de linha seguem os tokens, em vez de 150% ou 100%.
+- `margin` aplica 24px em `display` e headings (antes: 22px ou 20px). `paragraph` continua com 16px.
+- A cor do texto é `--uai-content-primary`.
+- A parte CSS se chama `uai-typo__text`.
+
+## React
+
+<Canvas of={UaiTypoStories.FrameworkReact} />
