@@ -70,9 +70,7 @@ import { BdsNavTreeGroup as BdsNavTreeGroupElement, defineCustomElement as defin
 import { BdsNavTreeItem as BdsNavTreeItemElement, defineCustomElement as defineBdsNavTreeItem } from "blip-ds/dist/components/bds-nav-tree-item.js";
 import { BdsNavTree as BdsNavTreeElement, defineCustomElement as defineBdsNavTree } from "blip-ds/dist/components/bds-nav-tree.js";
 import { BdsNavbarContent as BdsNavbarContentElement, defineCustomElement as defineBdsNavbarContent } from "blip-ds/dist/components/bds-navbar-content.js";
-import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { BdsNavbar as BdsNavbarElement, defineCustomElement as defineBdsNavbar } from "blip-ds/dist/components/bds-navbar.js";
-import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { BdsPagination as BdsPaginationElement, defineCustomElement as defineBdsPagination } from "blip-ds/dist/components/bds-pagination.js";
 import { BdsPaper as BdsPaperElement, defineCustomElement as defineBdsPaper } from "blip-ds/dist/components/bds-paper.js";
 import { BdsProgressBar as BdsProgressBarElement, defineCustomElement as defineBdsProgressBar } from "blip-ds/dist/components/bds-progress-bar.js";
@@ -107,6 +105,10 @@ import { BdsTooltip as BdsTooltipElement, defineCustomElement as defineBdsToolti
 import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
+import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
+import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
+import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
+import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import React from 'react';
 export const BdsAccordion = createComponent({
     tagName: 'bds-accordion',
@@ -689,20 +691,6 @@ export const BdsNavbarContent = createComponent({
     events: {},
     defineCustomElement: defineBdsNavbarContent
 });
-export const UaiNavbar = createComponent({
-    tagName: 'uai-navbar',
-    elementClass: UaiNavbarElement,
-    react: React,
-    events: {},
-    defineCustomElement: defineUaiNavbar
-});
-export const UaiNavbarContent = createComponent({
-    tagName: 'uai-navbar-content',
-    elementClass: UaiNavbarContentElement,
-    react: React,
-    events: {},
-    defineCustomElement: defineUaiNavbarContent
-});
 export const BdsPagination = createComponent({
     tagName: 'bds-pagination',
     elementClass: BdsPaginationElement,
@@ -976,5 +964,33 @@ export const BdsWarning = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineBdsWarning
+});
+export const UaiButton = createComponent({
+    tagName: 'uai-button',
+    elementClass: UaiButtonElement,
+    react: React,
+    events: { onUaiClick: 'uaiClick' },
+    defineCustomElement: defineUaiButton
+});
+export const UaiNavbar = createComponent({
+    tagName: 'uai-navbar',
+    elementClass: UaiNavbarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbar
+});
+export const UaiNavbarContent = createComponent({
+    tagName: 'uai-navbar-content',
+    elementClass: UaiNavbarContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbarContent
+});
+export const UaiThemeProvider = createComponent({
+    tagName: 'uai-theme-provider',
+    elementClass: UaiThemeProviderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiThemeProvider
 });
 //# sourceMappingURL=components.js.map

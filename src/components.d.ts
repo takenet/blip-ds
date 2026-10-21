@@ -77,6 +77,7 @@ import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export { collapses } from "./components/accordion/accordion-group";
 export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
@@ -150,6 +151,7 @@ export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export namespace Components {
     interface BdsAccordion {
@@ -3767,6 +3769,30 @@ export namespace Components {
          */
         "variant"?: UaiButtonVariant;
     }
+    interface UaiNavbar {
+        /**
+          * Background surface color.
+          * @default 'surface-paper'
+         */
+        "backgroundColor"?: uaiNavbarBackground;
+        /**
+          * Attribute used to identify the component in tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Alignment for navbar content.
+          * @default 'space-between'
+         */
+        "justifyContent"?: uaiNavbarJustifyContent;
+        /**
+          * Navbar orientation: horizontal or vertical.
+          * @default 'vertical'
+         */
+        "orientation"?: uaiNavbarOrientation;
+    }
+    interface UaiNavbarContent {
+    }
     interface UaiThemeProvider {
         /**
           * Theme applied to the UAI components inside the provider. Can be one of: 'light', 'dark'. Any other value falls back to 'light' with a console warning.
@@ -5289,6 +5315,18 @@ declare global {
         prototype: HTMLUaiButtonElement;
         new (): HTMLUaiButtonElement;
     };
+    interface HTMLUaiNavbarElement extends Components.UaiNavbar, HTMLStencilElement {
+    }
+    var HTMLUaiNavbarElement: {
+        prototype: HTMLUaiNavbarElement;
+        new (): HTMLUaiNavbarElement;
+    };
+    interface HTMLUaiNavbarContentElement extends Components.UaiNavbarContent, HTMLStencilElement {
+    }
+    var HTMLUaiNavbarContentElement: {
+        prototype: HTMLUaiNavbarContentElement;
+        new (): HTMLUaiNavbarContentElement;
+    };
     interface HTMLUaiThemeProviderElement extends Components.UaiThemeProvider, HTMLStencilElement {
     }
     var HTMLUaiThemeProviderElement: {
@@ -5402,6 +5440,8 @@ declare global {
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
         "uai-button": HTMLUaiButtonElement;
+        "uai-navbar": HTMLUaiNavbarElement;
+        "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
     }
 }
@@ -9281,6 +9321,30 @@ declare namespace LocalJSX {
          */
         "variant"?: UaiButtonVariant;
     }
+    interface UaiNavbar {
+        /**
+          * Background surface color.
+          * @default 'surface-paper'
+         */
+        "backgroundColor"?: uaiNavbarBackground;
+        /**
+          * Attribute used to identify the component in tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Alignment for navbar content.
+          * @default 'space-between'
+         */
+        "justifyContent"?: uaiNavbarJustifyContent;
+        /**
+          * Navbar orientation: horizontal or vertical.
+          * @default 'vertical'
+         */
+        "orientation"?: uaiNavbarOrientation;
+    }
+    interface UaiNavbarContent {
+    }
     interface UaiThemeProvider {
         /**
           * Theme applied to the UAI components inside the provider. Can be one of: 'light', 'dark'. Any other value falls back to 'light' with a console warning.
@@ -9395,6 +9459,8 @@ declare namespace LocalJSX {
         "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
         "uai-button": UaiButton;
+        "uai-navbar": UaiNavbar;
+        "uai-navbar-content": UaiNavbarContent;
         "uai-theme-provider": UaiThemeProvider;
     }
 }
@@ -9508,6 +9574,8 @@ declare module "@stencil/core" {
             "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
             "uai-button": LocalJSX.UaiButton & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
+            "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
+            "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
             "uai-theme-provider": LocalJSX.UaiThemeProvider & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
         }
     }
