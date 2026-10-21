@@ -102,6 +102,15 @@ describe('uai-button e2e', () => {
   });
 
   describe('visual recipe', () => {
+    it('falls back to the light tokens when no theme is set', async () => {
+      const page = await newE2EPage({ html: `<uai-button>Save</uai-button>` });
+      const style = await buttonStyle(page, 'uai-button', ['height', 'background-color', 'color']);
+      const label = await labelStyle(page, 'uai-button', ['font-size', 'font-weight']);
+
+      expect(style).toEqual({ height: '40px', 'background-color': 'rgb(36, 39, 41)', color: 'rgb(255, 255, 255)' });
+      expect(label).toEqual({ 'font-size': '14px', 'font-weight': '500' });
+    });
+
     it.each([
       ['compact', '24px', '8px', '8px', '12px', '500'],
       ['short', '32px', '12px', '12px', '14px', '500'],

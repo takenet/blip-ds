@@ -1,3 +1,4 @@
+@use '../../globals/helpers' as *;
 @use 'blip-tokens/build/uai-icons/uai-icon';
 
 :host {
@@ -17,14 +18,14 @@
 }
 
 .button {
-  --button-height: var(--uai-spacing-2xl);
-  --button-padding-x: var(--uai-spacing-sm);
-  --button-radius: var(--uai-radius-lg);
-  --button-icon-size: var(--uai-sizing-lg);
+  --button-height: var(--uai-spacing-2xl, #{$uai-spacing-2xl});
+  --button-padding-x: var(--uai-spacing-sm, #{$uai-spacing-sm});
+  --button-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  --button-icon-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
   --button-bg: transparent;
   --button-bg-hover: var(--button-bg);
   --button-bg-pressed: var(--button-bg);
-  --button-fg: var(--uai-content-primary);
+  --button-fg: var(--uai-content-primary, #{$uai-content-primary});
   --button-border: transparent;
   --button-overlay-hover: transparent;
   --button-overlay-pressed: transparent;
@@ -34,12 +35,12 @@
   flex: 1 1 auto;
   align-items: center;
   justify-content: center;
-  gap: var(--uai-spacing-xs);
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
   box-sizing: border-box;
   min-height: var(--button-height);
   margin: 0;
   padding: 0 var(--button-padding-x);
-  border: var(--uai-border-width-default) solid var(--button-border);
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--button-border);
   border-radius: var(--button-radius);
   background-color: var(--button-bg);
   color: var(--button-fg);
@@ -56,7 +57,7 @@
   &::after {
     content: '';
     position: absolute;
-    inset: calc(-1 * var(--uai-border-width-default));
+    inset: calc(-1 * var(--uai-border-width-default, #{$uai-border-width-default}));
     border-radius: inherit;
     background-color: transparent;
     pointer-events: none;
@@ -81,8 +82,8 @@
   }
 
   &:focus-visible {
-    outline: var(--uai-border-width-thick) solid var(--uai-border-ring);
-    outline-offset: var(--uai-spacing-3xs);
+    outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--uai-border-ring, #{$uai-border-ring});
+    outline-offset: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
   }
 
   &:disabled {
@@ -105,20 +106,20 @@
 
   // Sizes
   &--size-compact {
-    --button-height: var(--uai-spacing-lg);
-    --button-padding-x: var(--uai-spacing-xs);
-    --button-radius: var(--uai-radius-md);
-    --button-icon-size: var(--uai-sizing-sm);
+    --button-height: var(--uai-spacing-lg, #{$uai-spacing-lg});
+    --button-padding-x: var(--uai-spacing-xs, #{$uai-spacing-xs});
+    --button-radius: var(--uai-radius-md, #{$uai-radius-md});
+    --button-icon-size: var(--uai-sizing-sm, #{$uai-sizing-sm});
   }
 
   &--size-short {
-    --button-height: var(--uai-spacing-xl);
-    --button-icon-size: var(--uai-sizing-md);
+    --button-height: var(--uai-spacing-xl, #{$uai-spacing-xl});
+    --button-icon-size: var(--uai-sizing-md, #{$uai-sizing-md});
   }
 
   &--size-large {
-    --button-height: var(--uai-spacing-4xl);
-    --button-padding-x: var(--uai-spacing-md);
+    --button-height: var(--uai-spacing-4xl, #{$uai-spacing-4xl});
+    --button-padding-x: var(--uai-spacing-md, #{$uai-spacing-md});
   }
 
   &--icon-only {
@@ -128,63 +129,63 @@
 
   // Solid
   &--solid.button--color-primary {
-    --button-bg: var(--uai-action-primary-default);
-    --button-bg-hover: var(--uai-action-primary-hover);
-    --button-bg-pressed: var(--uai-action-primary-pressed);
-    --button-fg: var(--uai-action-primary-foreground);
+    --button-bg: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    --button-bg-hover: var(--uai-action-primary-hover, #{$uai-action-primary-hover});
+    --button-bg-pressed: var(--uai-action-primary-pressed, #{$uai-action-primary-pressed});
+    --button-fg: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
   }
 
   &--solid.button--color-content,
   &--solid.button--color-positive,
   &--solid.button--color-negative {
-    --button-overlay-hover: var(--uai-overlay-hover);
-    --button-overlay-pressed: var(--uai-overlay-pressed);
+    --button-overlay-hover: var(--uai-overlay-hover, #{$uai-overlay-hover});
+    --button-overlay-pressed: var(--uai-overlay-pressed, #{$uai-overlay-pressed});
   }
 
   &--solid.button--color-content {
-    --button-bg: var(--uai-content-primary);
-    --button-fg: var(--uai-surface-background);
+    --button-bg: var(--uai-content-primary, #{$uai-content-primary});
+    --button-fg: var(--uai-surface-background, #{$uai-surface-background});
   }
 
   &--solid.button--color-positive {
-    --button-bg: var(--uai-feedback-success);
-    --button-fg: var(--uai-fixed-bright);
+    --button-bg: var(--uai-feedback-success, #{$uai-feedback-success});
+    --button-fg: var(--uai-fixed-bright, #{$uai-fixed-bright});
   }
 
   &--solid.button--color-negative {
-    --button-bg: var(--uai-action-destructive);
-    --button-fg: var(--uai-action-destructive-foreground);
+    --button-bg: var(--uai-action-destructive, #{$uai-action-destructive});
+    --button-fg: var(--uai-action-destructive-foreground, #{$uai-action-destructive-foreground});
   }
 
   // Outline and text share the accent of the chosen color; content stays neutral
   &--outline,
   &--text {
-    --button-bg-hover: var(--uai-action-outline-hover);
-    --button-bg-pressed: var(--uai-action-outline-pressed);
+    --button-bg-hover: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+    --button-bg-pressed: var(--uai-action-outline-pressed, #{$uai-action-outline-pressed});
   }
 
   &--outline {
-    --button-bg: var(--uai-action-outline-default);
+    --button-bg: var(--uai-action-outline-default, #{$uai-action-outline-default});
   }
 
   &--outline.button--color-primary,
   &--text.button--color-primary {
-    --button-fg: var(--uai-action-primary-default);
+    --button-fg: var(--uai-action-primary-default, #{$uai-action-primary-default});
   }
 
   &--outline.button--color-content,
   &--text.button--color-content {
-    --button-fg: var(--uai-content-primary);
+    --button-fg: var(--uai-content-primary, #{$uai-content-primary});
   }
 
   &--outline.button--color-positive,
   &--text.button--color-positive {
-    --button-fg: var(--uai-feedback-success);
+    --button-fg: var(--uai-feedback-success, #{$uai-feedback-success});
   }
 
   &--outline.button--color-negative,
   &--text.button--color-negative {
-    --button-fg: var(--uai-action-destructive);
+    --button-fg: var(--uai-action-destructive, #{$uai-action-destructive});
   }
 
   &--outline.button--color-primary,
@@ -194,7 +195,7 @@
   }
 
   &--outline.button--color-content {
-    --button-border: var(--uai-border-default);
+    --button-border: var(--uai-border-default, #{$uai-border-default});
   }
 
   // Content alignment
@@ -245,7 +246,7 @@
 .button__group {
   display: inline-flex;
   align-items: center;
-  gap: var(--uai-spacing-xs);
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
 }
 
 .button__icon,
@@ -274,9 +275,9 @@
   box-sizing: border-box;
   width: var(--button-icon-size);
   height: var(--button-icon-size);
-  border: var(--uai-border-width-thick) solid currentColor;
+  border: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid currentColor;
   border-right-color: transparent;
-  border-radius: var(--uai-radius-full);
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
   animation: uai-button-spin 800ms linear infinite;
 }
 

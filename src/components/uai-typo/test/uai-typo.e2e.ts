@@ -203,5 +203,15 @@ describe('uai-typo e2e', () => {
       expect(colors.dark).toBe(colors.darkProbe);
       expect(colors.light).not.toBe(colors.dark);
     });
+
+    it('falls back to the light tokens when no theme is set', async () => {
+      const page = await newE2EPage({ html: `<uai-typo variant="heading-lg" bold="semibold">Text</uai-typo>` });
+      const style = await page.evaluate(() => {
+        const computed = getComputedStyle(document.querySelector('uai-typo').shadowRoot.querySelector('.typo'));
+        return [computed.fontSize, computed.lineHeight, computed.fontWeight, computed.color];
+      });
+
+      expect(style).toEqual(['24px', '32px', '600', 'rgb(36, 39, 41)']);
+    });
   });
 });
