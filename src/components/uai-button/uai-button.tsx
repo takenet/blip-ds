@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { colorsVariants, LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { IconSize } from '../icon/icon-interface';
+import { UAI_OUTLINE_ICONS, UAI_SOLID_ICONS } from '../../globals/uai-icons';
 
 export type UaiButtonVariant = 'solid' | 'outline' | 'text';
 export type UaiButtonColor = 'primary' | 'content' | 'negative' | 'positive';
@@ -22,6 +23,11 @@ const ICON_SIZE: Record<UaiButtonSize, IconSize> = {
   short: 'small',
   medium: 'medium',
   large: 'medium',
+};
+
+const UAI_ICONS: Record<UaiButtonIconTheme, ReadonlySet<string>> = {
+  outline: new Set<string>(UAI_OUTLINE_ICONS),
+  solid: new Set<string>(UAI_SOLID_ICONS),
 };
 
 const warnings = new Set<string>();
@@ -278,9 +284,22 @@ export class UaiButton {
   }
 
   private renderIcon(name: string, size: UaiButtonSize, position: 'left' | 'right'): HTMLElement {
+    const theme: UaiButtonIconTheme = this.iconTheme === 'solid' ? 'solid' : 'outline';
+    const classes = { button__icon: true, [`button__icon--${position}`]: true };
+
+    if (this.typeIcon === 'icon' && UAI_ICONS[theme].has(name)) {
+      return (
+        <span class={{ ...classes, 'uai-icon': true, [`uai-icon-${theme}-${name}`]: true }} aria-hidden="true"></span>
+      );
+    }
+
+    warnOnce(
+      `icon:${theme}:${this.typeIcon}:${name}`,
+      `"${name}" is not in the UAI icon set (theme "${theme}", type "${this.typeIcon}"). Falling back to the legacy bds-icon, which is deprecated here.`,
+    );
     return (
       <bds-icon
-        class={{ button__icon: true, [`button__icon--${position}`]: true }}
+        class={classes}
         name={name}
         theme={this.iconTheme}
         type={this.typeIcon}

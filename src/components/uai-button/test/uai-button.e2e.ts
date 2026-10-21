@@ -127,6 +127,28 @@ describe('uai-button e2e', () => {
       expect(label['font-weight']).toBe(fontWeight);
     });
 
+    it.each([
+      ['compact', '16px'],
+      ['short', '20px'],
+      ['medium', '24px'],
+      ['large', '24px'],
+    ])('draws the UAI icon of a %s button at %s, as in the Figma', async (size, iconSize) => {
+      const page = await newE2EPage({
+        html: withTheme(`<uai-button size="${size}" icon-left="info" arrow>Save</uai-button>`),
+      });
+      const icons = await page.evaluate(() =>
+        Array.from(document.querySelector('uai-button').shadowRoot.querySelectorAll('.uai-icon')).map((icon) => {
+          const style = getComputedStyle(icon);
+          return [style.width, style.height, style.fontSize];
+        }),
+      );
+
+      expect(icons).toEqual([
+        [iconSize, iconSize, iconSize],
+        [iconSize, iconSize, iconSize],
+      ]);
+    });
+
     it('makes an icon-only button square', async () => {
       const page = await newE2EPage({
         html: withTheme(`<uai-button icon="add" aria-label="Add" size="short"></uai-button>`),

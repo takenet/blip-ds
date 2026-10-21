@@ -1,4 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { UAI_OUTLINE_ICONS, UAI_SOLID_ICONS } from '../../../globals/uai-icons';
 import { UaiButton } from '../uai-button';
 
 const render = (html: string) => newSpecPage({ components: [UaiButton], html });
@@ -79,23 +82,45 @@ describe('uai-button', () => {
   });
 
   describe('icons', () => {
-    it('renders the left icon with the icon size of the button size', async () => {
+    it('renders the left icon with the UAI icon font', async () => {
       const page = await render(`<uai-button icon-left="edit" size="short">Save</uai-button>`);
-      const icon = page.root.shadowRoot.querySelector('bds-icon.button__icon--left');
+      const icon = page.root.shadowRoot.querySelector('.button__icon--left');
 
-      expect(icon.getAttribute('name')).toBe('edit');
-      expect(icon.getAttribute('size')).toBe('small');
-      expect(icon.getAttribute('theme')).toBe('outline');
-      expect(icon.getAttribute('type')).toBe('icon');
+      expect(icon.tagName).toBe('SPAN');
+      expect(icon).toHaveClass('uai-icon');
+      expect(icon).toHaveClass('uai-icon-outline-edit');
       expect(icon.getAttribute('aria-hidden')).toBe('true');
+      expect(page.root.shadowRoot.querySelector('bds-icon')).toBeNull();
     });
 
     it('prefers icon over iconLeft', async () => {
       const page = await render(`<uai-button icon="add" icon-left="edit">Save</uai-button>`);
-      const icons = page.root.shadowRoot.querySelectorAll('bds-icon.button__icon--left');
+      const icons = page.root.shadowRoot.querySelectorAll('.button__icon--left');
 
       expect(icons.length).toBe(1);
-      expect(icons[0].getAttribute('name')).toBe('add');
+      expect(icons[0]).toHaveClass('uai-icon-outline-add');
+    });
+
+    it('renders an arrow-right icon when arrow is set, instead of iconRight', async () => {
+      const page = await render(`<uai-button arrow icon-right="edit">Next</uai-button>`);
+      const icon = page.root.shadowRoot.querySelector('.button__icon--right');
+
+      expect(icon).toHaveClass('uai-icon-outline-arrow-right');
+    });
+
+    it('uses the solid glyph when iconTheme is solid', async () => {
+      const page = await render(`<uai-button icon="like" icon-theme="solid">Like</uai-button>`);
+
+      expect(page.root.shadowRoot.querySelector('.button__icon')).toHaveClass('uai-icon-solid-like');
+    });
+
+    it('falls back to bds-icon, with a warning, for names outside the UAI set', async () => {
+      const page = await render(`<uai-button icon="not-a-uai-icon">Save</uai-button>`);
+      const icon = page.root.shadowRoot.querySelector('bds-icon.button__icon--left');
+
+      expect(icon.getAttribute('name')).toBe('not-a-uai-icon');
+      expect(icon.getAttribute('size')).toBe('medium');
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('not-a-uai-icon'));
     });
 
     it.each([
@@ -103,23 +128,15 @@ describe('uai-button', () => {
       ['short', 'small'],
       ['medium', 'medium'],
       ['large', 'medium'],
-    ])('uses a %s icon size of %s', async (size, iconSize) => {
-      const page = await render(`<uai-button icon="add" size="${size}">Save</uai-button>`);
+    ])('falls back to a %s bds-icon size of %s', async (size, iconSize) => {
+      const page = await render(`<uai-button icon="not-a-uai-icon" size="${size}">Save</uai-button>`);
       expect(page.root.shadowRoot.querySelector('bds-icon').getAttribute('size')).toBe(iconSize);
     });
 
-    it('renders an arrow-right icon when arrow is set, instead of iconRight', async () => {
-      const page = await render(`<uai-button arrow icon-right="edit">Next</uai-button>`);
-      const icon = page.root.shadowRoot.querySelector('bds-icon.button__icon--right');
-
-      expect(icon.getAttribute('name')).toBe('arrow-right');
-    });
-
-    it('passes iconTheme and typeIcon to the icons', async () => {
-      const page = await render(`<uai-button icon="like" icon-theme="solid" type-icon="emoji">Like</uai-button>`);
+    it('falls back to bds-icon for the logo and emoji types', async () => {
+      const page = await render(`<uai-button icon="like" type-icon="emoji">Like</uai-button>`);
       const icon = page.root.shadowRoot.querySelector('bds-icon');
 
-      expect(icon.getAttribute('theme')).toBe('solid');
       expect(icon.getAttribute('type')).toBe('emoji');
     });
 
@@ -152,7 +169,7 @@ describe('uai-button', () => {
       expect(button.getAttribute('aria-busy')).toBe('true');
       expect(button.getAttribute('aria-disabled')).toBe('true');
       expect(page.root.shadowRoot.querySelector('.button__spinner')).not.toBeNull();
-      expect(page.root.shadowRoot.querySelector('bds-icon.button__icon--left')).toBeNull();
+      expect(page.root.shadowRoot.querySelector('.button__icon--left')).toBeNull();
     });
 
     it('applies full width with block or fullWidth', async () => {
@@ -239,8 +256,19 @@ describe('uai-button', () => {
       );
       const group = page.root.shadowRoot.querySelector('.button__group');
 
-      expect(group.querySelector('bds-icon.button__icon--left')).not.toBeNull();
+      expect(group.querySelector('.button__icon--left')).not.toBeNull();
       expect(group.querySelector('.button__label')).not.toBeNull();
     });
+  });
+});
+
+describe('uai icon names', () => {
+  it('match the glyphs shipped by the blip-tokens UAI icon font', () => {
+    const css = readFileSync(join(process.cwd(), 'node_modules/blip-tokens/build/uai-icons/uai-icon.css'), 'utf8');
+    const read = (theme: string) =>
+      [...css.matchAll(new RegExp(`uai-icon-${theme}-([a-z0-9-]+):before`, 'g'))].map((match) => match[1]);
+
+    expect([...UAI_OUTLINE_ICONS]).toEqual(read('outline'));
+    expect([...UAI_SOLID_ICONS]).toEqual(read('solid'));
   });
 });

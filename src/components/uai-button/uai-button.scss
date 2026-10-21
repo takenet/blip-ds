@@ -1,3 +1,5 @@
+@use 'blip-tokens/build/uai-icons/uai-icon';
+
 :host {
   display: inline-flex;
   position: relative;
@@ -255,6 +257,17 @@
 // bds-icon sets its own color on :host; the button's foreground must win.
 .button__icon {
   color: inherit;
+}
+
+// UAI icon font glyphs: the Figma icon box is --button-icon-size (16, 20 or 24px).
+.button__icon.uai-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+  font-size: var(--button-icon-size);
+  line-height: 1;
 }
 
 .button__spinner {
