@@ -3786,7 +3786,7 @@ export namespace Components {
           * Accessible name. Set it when the icon conveys meaning on its own. Without it, the icon is decorative and hidden from assistive technology.
           * @default null
          */
-        "ariaLabel"?: string;
+        "ariaLabel": string;
         /**
           * Icon color, as a UAI color token: content-primary, content-secondary, content-disabled, content-inverse, content-link, feedback-info, feedback-success, feedback-warning or feedback-error. Without it, the icon uses the surrounding text color.
          */

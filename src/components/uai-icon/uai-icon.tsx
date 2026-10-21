@@ -76,7 +76,7 @@ export class UaiIcon {
   /**
    * Accessible name. Set it when the icon conveys meaning on its own. Without it, the icon is decorative and hidden from assistive technology.
    */
-  @Prop({ attribute: 'aria-label' }) ariaLabel?: string = null;
+  @Prop({ attribute: 'aria-label' }) ariaLabel: string = null;
 
   /**
    * Data test is the prop to specifically test the component action object.

@@ -106,6 +106,7 @@ import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from 
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
+import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
@@ -972,6 +973,13 @@ export const UaiButton = createComponent({
     react: React,
     events: { onUaiClick: 'uaiClick' },
     defineCustomElement: defineUaiButton
+});
+export const UaiIcon = createComponent({
+    tagName: 'uai-icon',
+    elementClass: UaiIconElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiIcon
 });
 export const UaiNavbar = createComponent({
     tagName: 'uai-navbar',
