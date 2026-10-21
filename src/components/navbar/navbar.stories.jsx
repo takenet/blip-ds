@@ -4,6 +4,8 @@ import { BdsNavbar, BdsNavbarContent, BdsAvatar, BdsButtonIcon } from '../../../
 
 export default {
   title: 'Components/[deprecated] Navbar',
+  // Deprecated: kept out of the Storybook MCP manifest so agents use uai-navbar.
+  tags: ['!manifest'],
   parameters: {
     docs: {
       page: DocumentationTemplate,
