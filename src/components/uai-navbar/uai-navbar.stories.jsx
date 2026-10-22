@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Group navigation actions with UaiNavbarContent. Use horizontal at the top of a page and vertical as a side rail; space-between keeps the main actions at the start and the account actions at the end.
+ * Agrupe as ações de navegação com UaiNavbarContent. Use horizontal no topo da página e vertical como barra lateral; space-between deixa as ações principais no início e as da conta no fim.
  */
 export const Playground = (args) => (
   <UaiNavbar {...args}>
@@ -39,19 +39,19 @@ Playground.args = { orientation: 'horizontal', justifyContent: 'space-between', 
 Playground.argTypes = {
   orientation: {
     table: { defaultValue: { summary: 'vertical' } },
-    description: 'Main axis direction for the content groups.',
+    description: 'Direção do eixo principal dos grupos de conteúdo.',
     control: 'select',
     options: ['horizontal', 'vertical'],
   },
   justifyContent: {
     table: { defaultValue: { summary: 'space-between' } },
-    description: 'Distribution of content groups along the main axis.',
+    description: 'Distribuição dos grupos de conteúdo no eixo principal.',
     control: 'select',
     options: ['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly'],
   },
   backgroundColor: {
     table: { defaultValue: { summary: 'surface-paper' } },
-    description: 'UAI surface token used for the Navbar background.',
+    description: 'Token de superfície UAI usado no fundo do Navbar.',
     control: 'select',
     options: ['surface-background', 'surface-contrast', 'surface-inverse', 'surface-muted', 'surface-paper'],
   },

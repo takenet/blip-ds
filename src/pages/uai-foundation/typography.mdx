@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FontTokens, TextStyles } from './foundation-blocks';
+
+<Meta title="UAI/Foundation/Typography" />
+
+# Typography
+
+O UAI usa a fonte **Figtree** em toda a interface. Os textos seguem os estilos de texto do Figma, e cada estilo é uma combinação de `variant` e `bold` do `UaiTypo`.
+
+```jsx
+import { UaiTypo } from 'blip-ds-react/dist/components';
+
+<UaiTypo variant="heading-lg" bold="semibold" tag="h2">
+  Título da seção
+</UaiTypo>;
+```
+
+Carregue a Figtree uma vez na aplicação (pesos 400, 500, 600 e 700). Sem ela, o texto usa a fonte atual do blip-ds.
+
+## Estilos de texto
+
+<TextStyles />
+
+`body-lg` e `body-sm` também existem no `UaiTypo` e no Figma, mas ainda usam os tokens de `title` e `caption` até o `blip-tokens` publicar tokens próprios.
+
+## Fontes, pesos e espaçamento entre letras
+
+<FontTokens />

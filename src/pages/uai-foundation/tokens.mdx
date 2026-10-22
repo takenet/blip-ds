@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="UAI/Foundation/Tokens" />
+
+# Tokens
+
+Tokens são as decisões visuais do UAI com nome: cores, tamanhos, espaços, raios, sombras e tipografia. Eles vêm do pacote `blip-tokens`, gerados a partir das variáveis do Figma (UAI Design Tokens). Os componentes UAI usam só tokens, e as telas devem fazer o mesmo.
+
+## Como escolher um token
+
+1. **Escolha pelo papel, não pelo valor.** Procure o token pelo que o elemento é: `surface-paper` para o fundo de um card, `content-secondary` para um texto de apoio, `feedback-error` para um erro. Dois tokens podem ter o mesmo valor hoje e mudar separados amanhã.
+2. **Leia a descrição.** Cada token diz onde usar. Ela aparece nas páginas desta seção e no Figma.
+3. **Prefira um componente.** Se existe um componente UAI para o que você está construindo, use o componente em vez de recriar o visual com tokens.
+4. **Não use valores soltos.** Se nenhum token serve, fale com o time de design antes de usar um valor fixo.
+
+## Tema claro e escuro
+
+As cores mudam entre os temas; tamanhos, espaços, raios e tipografia são iguais nos dois. Envolva a aplicação em um `UaiThemeProvider` para escolher o tema e declarar os tokens:
+
+```jsx
+import { UaiThemeProvider } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <App />
+</UaiThemeProvider>;
+```
+
+Sem o provider, também dá para carregar `blip-tokens/build/css/uai.css` e colocar `data-uai-theme="light"` ou `"dark"` em um elemento.
+
+## Como usar em código
+
+| Onde | Como |
+| --- | --- |
+| CSS | `var(--uai-surface-paper)` |
+| SCSS | `$uai-surface-paper` (tema claro), com `@use 'blip-tokens/build/scss/uai-colors-light'` |
+| Componentes do blip-ds | `var(--uai-surface-paper, #{$uai-surface-paper})`: a variável do tema, com o valor claro como reserva |
+| Figma | Variáveis da biblioteca **UAI Design Tokens** |
+
+## Nos agentes de IA
+
+O MCP do Storybook (`https://ds.blip.tools/mcp`) publica todos os tokens UAI, com descrição e valores, na entrada **UAI Tokens**. Peça ao agente para consultá-la antes de escolher cores, espaços ou tipografia.
+
+## Nesta seção
+
+- **Colors**: superfícies, conteúdo, ações, bordas, feedback e overlays.
+- **Typography**: fontes, pesos e os estilos de texto do Figma.
+- **Layout**: espaçamento, tamanhos, raios e bordas.
+- **Elevation**: sombras.
+- **Icons**: a fonte de ícones UAI.

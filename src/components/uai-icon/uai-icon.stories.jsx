@@ -171,7 +171,7 @@ export const Catalog = () => {
   const names = all.filter((name) => name.includes(query.trim().toLowerCase()));
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
       <input
         type="search"
         placeholder="Buscar ícone"
@@ -190,3 +190,5 @@ export const Catalog = () => {
     </div>
   );
 };
+
+Catalog.parameters = { layout: 'padded' };

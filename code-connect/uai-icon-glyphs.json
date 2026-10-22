@@ -1,0 +1,3236 @@
+{
+  "_comment": "Figma icon components of UAI Core mapped to <UaiIcon name theme>. Generated from the Icons page and the blip-tokens UAI icon font; used to publish the Code Connect glyph mappings.",
+  "fileKey": "4H8ECPPE83nfyLcIvhz9I5",
+  "icons": {
+    "2098:8184": {
+      "figma": "outline/Adjusments/settings-adjusments",
+      "name": "settings-adjusments",
+      "theme": "outline"
+    },
+    "2097:7693": {
+      "figma": "outline/Adjustments/settings-builder",
+      "name": "settings-builder",
+      "theme": "outline"
+    },
+    "2098:8177": {
+      "figma": "outline/Adjustments/settings-general",
+      "name": "settings-general",
+      "theme": "outline"
+    },
+    "2098:8138": {
+      "figma": "outline/actions/bottom-sheet",
+      "name": "bottom-sheet",
+      "theme": "outline"
+    },
+    "2098:8132": {
+      "figma": "outline/actions/cart-shop",
+      "name": "cart-shop",
+      "theme": "outline"
+    },
+    "2098:8144": {
+      "figma": "outline/actions/checkbox",
+      "name": "checkbox",
+      "theme": "outline"
+    },
+    "2098:8091": {
+      "figma": "outline/actions/clips",
+      "name": "clips",
+      "theme": "outline"
+    },
+    "2098:8036": {
+      "figma": "outline/actions/deslike",
+      "name": "deslike",
+      "theme": "outline"
+    },
+    "2098:8105": {
+      "figma": "outline/actions/download",
+      "name": "download",
+      "theme": "outline"
+    },
+    "2098:8045": {
+      "figma": "outline/actions/edit",
+      "name": "edit",
+      "theme": "outline"
+    },
+    "2098:8051": {
+      "figma": "outline/actions/edit-sparkle-ai",
+      "name": "edit-sparkle-ai",
+      "theme": "outline"
+    },
+    "2098:8018": {
+      "figma": "outline/actions/favorite",
+      "name": "favorite",
+      "theme": "outline"
+    },
+    "2098:8024": {
+      "figma": "outline/actions/heart",
+      "name": "heart",
+      "theme": "outline"
+    },
+    "2098:8039": {
+      "figma": "outline/actions/like",
+      "name": "like",
+      "theme": "outline"
+    },
+    "2098:8113": {
+      "figma": "outline/actions/mark",
+      "name": "mark",
+      "theme": "outline"
+    },
+    "2098:8079": {
+      "figma": "outline/actions/move",
+      "name": "move",
+      "theme": "outline"
+    },
+    "2098:8058": {
+      "figma": "outline/actions/notes",
+      "name": "notes",
+      "theme": "outline"
+    },
+    "2098:8085": {
+      "figma": "outline/actions/order-elements",
+      "name": "order-elements",
+      "theme": "outline"
+    },
+    "2098:8168": {
+      "figma": "outline/actions/phone-keyboard",
+      "name": "phone-keyboard",
+      "theme": "outline"
+    },
+    "2098:8125": {
+      "figma": "outline/actions/pin",
+      "name": "pin",
+      "theme": "outline"
+    },
+    "2098:8156": {
+      "figma": "outline/actions/radiobutton",
+      "name": "radiobutton",
+      "theme": "outline"
+    },
+    "2098:8042": {
+      "figma": "outline/actions/save-disk",
+      "name": "save-disk",
+      "theme": "outline"
+    },
+    "2098:8030": {
+      "figma": "outline/actions/save-flag",
+      "name": "save-flag",
+      "theme": "outline"
+    },
+    "2098:8073": {
+      "figma": "outline/actions/search",
+      "name": "search",
+      "theme": "outline"
+    },
+    "2098:8162": {
+      "figma": "outline/actions/toggle",
+      "name": "toggle",
+      "theme": "outline"
+    },
+    "2098:8067": {
+      "figma": "outline/actions/trash",
+      "name": "trash",
+      "theme": "outline"
+    },
+    "2098:8150": {
+      "figma": "outline/actions/uncheckbox",
+      "name": "uncheckbox",
+      "theme": "outline"
+    },
+    "2098:8119": {
+      "figma": "outline/actions/unpin",
+      "name": "unpin",
+      "theme": "outline"
+    },
+    "2098:8097": {
+      "figma": "outline/actions/upload",
+      "name": "upload",
+      "theme": "outline"
+    },
+    "2098:10043": {
+      "figma": "outline/ai/agent-bot",
+      "name": "agent-bot",
+      "theme": "outline"
+    },
+    "2098:10061": {
+      "figma": "outline/ai/ai-image",
+      "name": "ai-image",
+      "theme": "outline"
+    },
+    "2098:10055": {
+      "figma": "outline/ai/avatar-bot",
+      "name": "avatar-bot",
+      "theme": "outline"
+    },
+    "2098:10067": {
+      "figma": "outline/ai/blip-ai",
+      "name": "blip-ai",
+      "theme": "outline"
+    },
+    "2098:10049": {
+      "figma": "outline/ai/bot-text",
+      "name": "bot-text",
+      "theme": "outline"
+    },
+    "2098:10073": {
+      "figma": "outline/ai/brain-ai",
+      "name": "brain-ai",
+      "theme": "outline"
+    },
+    "2098:10091": {
+      "figma": "outline/ai/sparkle-ai",
+      "name": "sparkle-ai",
+      "theme": "outline"
+    },
+    "2098:10079": {
+      "figma": "outline/ai/speaker-ai",
+      "name": "speaker-ai",
+      "theme": "outline"
+    },
+    "2098:10085": {
+      "figma": "outline/ai/text-ai",
+      "name": "text-ai",
+      "theme": "outline"
+    },
+    "2098:8190": {
+      "figma": "outline/arrow/arrow-ball-down",
+      "name": "arrow-ball-down",
+      "theme": "outline"
+    },
+    "2098:8196": {
+      "figma": "outline/arrow/arrow-ball-left",
+      "name": "arrow-ball-left",
+      "theme": "outline"
+    },
+    "2098:8202": {
+      "figma": "outline/arrow/arrow-ball-right",
+      "name": "arrow-ball-right",
+      "theme": "outline"
+    },
+    "2098:8208": {
+      "figma": "outline/arrow/arrow-ball-up",
+      "name": "arrow-ball-up",
+      "theme": "outline"
+    },
+    "2098:8214": {
+      "figma": "outline/arrow/arrow-down",
+      "name": "arrow-down",
+      "theme": "outline"
+    },
+    "2098:8250": {
+      "figma": "outline/arrow/arrow-filter-table",
+      "name": "arrow-filter-table",
+      "theme": "outline"
+    },
+    "2098:8220": {
+      "figma": "outline/arrow/arrow-first",
+      "name": "arrow-first",
+      "theme": "outline"
+    },
+    "2098:8238": {
+      "figma": "outline/arrow/arrow-last",
+      "name": "arrow-last",
+      "theme": "outline"
+    },
+    "2098:8226": {
+      "figma": "outline/arrow/arrow-left",
+      "name": "arrow-left",
+      "theme": "outline"
+    },
+    "2098:8232": {
+      "figma": "outline/arrow/arrow-right",
+      "name": "arrow-right",
+      "theme": "outline"
+    },
+    "2098:8244": {
+      "figma": "outline/arrow/arrow-up",
+      "name": "arrow-up",
+      "theme": "outline"
+    },
+    "2098:8286": {
+      "figma": "outline/arrow/prioritization",
+      "name": "prioritization",
+      "theme": "outline"
+    },
+    "2098:8256": {
+      "figma": "outline/arrow/redo",
+      "name": "redo",
+      "theme": "outline"
+    },
+    "2098:8262": {
+      "figma": "outline/arrow/refresh",
+      "name": "refresh",
+      "theme": "outline"
+    },
+    "2098:8292": {
+      "figma": "outline/arrow/reply",
+      "name": "reply",
+      "theme": "outline"
+    },
+    "2098:8268": {
+      "figma": "outline/arrow/restore",
+      "name": "restore",
+      "theme": "outline"
+    },
+    "2098:8280": {
+      "figma": "outline/arrow/transfer",
+      "name": "transfer",
+      "theme": "outline"
+    },
+    "2098:8274": {
+      "figma": "outline/arrow/undo",
+      "name": "undo",
+      "theme": "outline"
+    },
+    "2098:8298": {
+      "figma": "outline/audio/audio",
+      "name": "audio",
+      "theme": "outline"
+    },
+    "2098:8304": {
+      "figma": "outline/audio/speaker",
+      "name": "speaker",
+      "theme": "outline"
+    },
+    "2098:8470": {
+      "figma": "outline/bot/ai",
+      "name": "ai",
+      "theme": "outline"
+    },
+    "2098:8476": {
+      "figma": "outline/bot/robot",
+      "name": "robot",
+      "theme": "outline"
+    },
+    "2098:8482": {
+      "figma": "outline/bot/robot-2",
+      "name": "robot-2",
+      "theme": "outline"
+    },
+    "2098:8488": {
+      "figma": "outline/bot/robot-3",
+      "name": "robot-3",
+      "theme": "outline"
+    },
+    "2098:8494": {
+      "figma": "outline/bot/robot-4",
+      "name": "robot-4",
+      "theme": "outline"
+    },
+    "2098:8500": {
+      "figma": "outline/bot/robot-5",
+      "name": "robot-5",
+      "theme": "outline"
+    },
+    "2098:8656": {
+      "figma": "outline/builder/MCP",
+      "name": "mcp",
+      "theme": "outline"
+    },
+    "2098:8620": {
+      "figma": "outline/builder/agent-rule",
+      "name": "agent-rule",
+      "theme": "outline"
+    },
+    "2098:8644": {
+      "figma": "outline/builder/array",
+      "name": "array",
+      "theme": "outline"
+    },
+    "2098:8506": {
+      "figma": "outline/builder/builder-carrousel",
+      "name": "builder-carrousel",
+      "theme": "outline"
+    },
+    "2098:8512": {
+      "figma": "outline/builder/builder-menu",
+      "name": "builder-menu",
+      "theme": "outline"
+    },
+    "2098:8518": {
+      "figma": "outline/builder/builder-new-state",
+      "name": "builder-new-state",
+      "theme": "outline"
+    },
+    "2098:8524": {
+      "figma": "outline/builder/builder-publish-bot",
+      "name": "builder-publish-bot",
+      "theme": "outline"
+    },
+    "2098:8530": {
+      "figma": "outline/builder/builder-quick-reply",
+      "name": "builder-quick-reply",
+      "theme": "outline"
+    },
+    "2098:8536": {
+      "figma": "outline/builder/builder-router",
+      "name": "builder-router",
+      "theme": "outline"
+    },
+    "2098:8542": {
+      "figma": "outline/builder/builder-test-bot",
+      "name": "builder-test-bot",
+      "theme": "outline"
+    },
+    "2098:8548": {
+      "figma": "outline/builder/builder-text-message",
+      "name": "builder-text-message",
+      "theme": "outline"
+    },
+    "2098:8590": {
+      "figma": "outline/builder/channels",
+      "name": "channels",
+      "theme": "outline"
+    },
+    "2098:8718": {
+      "figma": "outline/builder/command",
+      "name": "command",
+      "theme": "outline"
+    },
+    "2098:8554": {
+      "figma": "outline/builder/debug",
+      "name": "debug",
+      "theme": "outline"
+    },
+    "2098:8560": {
+      "figma": "outline/builder/debug-display",
+      "name": "debug-display",
+      "theme": "outline"
+    },
+    "2098:8614": {
+      "figma": "outline/builder/dynamic-content",
+      "name": "dynamic-content",
+      "theme": "outline"
+    },
+    "2098:8662": {
+      "figma": "outline/builder/guardrails",
+      "name": "guardrails",
+      "theme": "outline"
+    },
+    "2098:8668": {
+      "figma": "outline/builder/http",
+      "name": "http",
+      "theme": "outline"
+    },
+    "2098:8680": {
+      "figma": "outline/builder/javascript",
+      "name": "javascript",
+      "theme": "outline"
+    },
+    "2098:8566": {
+      "figma": "outline/builder/library",
+      "name": "library",
+      "theme": "outline"
+    },
+    "2098:8572": {
+      "figma": "outline/builder/link",
+      "name": "link",
+      "theme": "outline"
+    },
+    "2098:8584": {
+      "figma": "outline/builder/link-off",
+      "name": "link-off",
+      "theme": "outline"
+    },
+    "2098:8596": {
+      "figma": "outline/builder/localization",
+      "name": "localization",
+      "theme": "outline"
+    },
+    "2098:8602": {
+      "figma": "outline/builder/localization-ask",
+      "name": "localization-ask",
+      "theme": "outline"
+    },
+    "2098:8608": {
+      "figma": "outline/builder/localization-send",
+      "name": "localization-send",
+      "theme": "outline"
+    },
+    "2098:8638": {
+      "figma": "outline/builder/object",
+      "name": "object",
+      "theme": "outline"
+    },
+    "2098:8650": {
+      "figma": "outline/builder/openAPI",
+      "name": "openapi",
+      "theme": "outline"
+    },
+    "2098:8691": {
+      "figma": "outline/builder/redirect",
+      "name": "redirect",
+      "theme": "outline"
+    },
+    "2098:8626": {
+      "figma": "outline/builder/text-variable",
+      "name": "text-variable",
+      "theme": "outline"
+    },
+    "2098:8632": {
+      "figma": "outline/builder/text-variable-context",
+      "name": "text-variable-context",
+      "theme": "outline"
+    },
+    "2098:8700": {
+      "figma": "outline/builder/tracking",
+      "name": "tracking",
+      "theme": "outline"
+    },
+    "2098:8578": {
+      "figma": "outline/builder/unlink",
+      "name": "unlink",
+      "theme": "outline"
+    },
+    "2098:8709": {
+      "figma": "outline/builder/variable",
+      "name": "variable",
+      "theme": "outline"
+    },
+    "2098:8761": {
+      "figma": "outline/charts/chart-bar",
+      "name": "chart-bar",
+      "theme": "outline"
+    },
+    "2098:8767": {
+      "figma": "outline/charts/chart-column",
+      "name": "chart-column",
+      "theme": "outline"
+    },
+    "2098:8773": {
+      "figma": "outline/charts/chart-line",
+      "name": "chart-line",
+      "theme": "outline"
+    },
+    "2098:8779": {
+      "figma": "outline/charts/chart-pizza",
+      "name": "chart-pizza",
+      "theme": "outline"
+    },
+    "2098:8737": {
+      "figma": "outline/code-editor/code-match",
+      "name": "code-match",
+      "theme": "outline"
+    },
+    "2098:8730": {
+      "figma": "outline/code-editor/code-match-whole-word",
+      "name": "code-match-whole-word",
+      "theme": "outline"
+    },
+    "2098:8724": {
+      "figma": "outline/code-editor/code-preserve-case",
+      "name": "code-preserve-case",
+      "theme": "outline"
+    },
+    "2098:8755": {
+      "figma": "outline/code-editor/code-regax ",
+      "name": "code-regax",
+      "theme": "outline"
+    },
+    "2098:8743": {
+      "figma": "outline/code-editor/code-replace",
+      "name": "code-replace",
+      "theme": "outline"
+    },
+    "2098:8749": {
+      "figma": "outline/code-editor/code-replace-all",
+      "name": "code-replace-all",
+      "theme": "outline"
+    },
+    "2098:8833": {
+      "figma": "outline/communication/barcode",
+      "name": "barcode",
+      "theme": "outline"
+    },
+    "2098:8827": {
+      "figma": "outline/communication/bill",
+      "name": "bill",
+      "theme": "outline"
+    },
+    "2098:8845": {
+      "figma": "outline/communication/chip",
+      "name": "chip",
+      "theme": "outline"
+    },
+    "2098:8869": {
+      "figma": "outline/communication/dolar",
+      "name": "dolar",
+      "theme": "outline"
+    },
+    "2098:8863": {
+      "figma": "outline/communication/euro",
+      "name": "euro",
+      "theme": "outline"
+    },
+    "2098:8785": {
+      "figma": "outline/communication/megaphone",
+      "name": "megaphone",
+      "theme": "outline"
+    },
+    "2098:8851": {
+      "figma": "outline/communication/openfinance",
+      "name": "openfinance",
+      "theme": "outline"
+    },
+    "2098:8791": {
+      "figma": "outline/communication/payment-card",
+      "name": "payment-card",
+      "theme": "outline"
+    },
+    "2098:8797": {
+      "figma": "outline/communication/payment-card-cvc",
+      "name": "payment-card-cvc",
+      "theme": "outline"
+    },
+    "2098:8821": {
+      "figma": "outline/communication/pix",
+      "name": "pix",
+      "theme": "outline"
+    },
+    "2098:8839": {
+      "figma": "outline/communication/qrcode",
+      "name": "qrcode",
+      "theme": "outline"
+    },
+    "2098:8857": {
+      "figma": "outline/communication/real",
+      "name": "real",
+      "theme": "outline"
+    },
+    "2098:8803": {
+      "figma": "outline/communication/share",
+      "name": "share",
+      "theme": "outline"
+    },
+    "2098:8809": {
+      "figma": "outline/communication/smartphone",
+      "name": "smartphone",
+      "theme": "outline"
+    },
+    "2098:8815": {
+      "figma": "outline/communication/target",
+      "name": "target",
+      "theme": "outline"
+    },
+    "2098:8899": {
+      "figma": "outline/community/Level up",
+      "name": "level-up",
+      "theme": "outline"
+    },
+    "2098:8875": {
+      "figma": "outline/community/blip-ideas",
+      "name": "blip-ideas",
+      "theme": "outline"
+    },
+    "2098:8887": {
+      "figma": "outline/community/blip-tutorials",
+      "name": "blip-tutorials",
+      "theme": "outline"
+    },
+    "2098:8881": {
+      "figma": "outline/community/ideas-sparkle-ai",
+      "name": "ideas-sparkle-ai",
+      "theme": "outline"
+    },
+    "2098:8893": {
+      "figma": "outline/community/status",
+      "name": "status",
+      "theme": "outline"
+    },
+    "2098:8907": {
+      "figma": "outline/contract/business",
+      "name": "business",
+      "theme": "outline"
+    },
+    "2098:8913": {
+      "figma": "outline/contract/company",
+      "name": "company",
+      "theme": "outline"
+    },
+    "2098:8919": {
+      "figma": "outline/contract/store",
+      "name": "store",
+      "theme": "outline"
+    },
+    "2098:8925": {
+      "figma": "outline/date-time/calendar",
+      "name": "calendar",
+      "theme": "outline"
+    },
+    "2098:8937": {
+      "figma": "outline/date-time/clock",
+      "name": "clock",
+      "theme": "outline"
+    },
+    "2098:8931": {
+      "figma": "outline/date-time/date-time",
+      "name": "date-time",
+      "theme": "outline"
+    },
+    "2098:8985": {
+      "figma": "outline/file/file-csv",
+      "name": "file-csv",
+      "theme": "outline"
+    },
+    "2098:8979": {
+      "figma": "outline/file/file-doc",
+      "name": "file-doc",
+      "theme": "outline"
+    },
+    "2098:8949": {
+      "figma": "outline/file/file-empty-file",
+      "name": "file-empty-file",
+      "theme": "outline"
+    },
+    "2098:9003": {
+      "figma": "outline/file/file-gif",
+      "name": "file-gif",
+      "theme": "outline"
+    },
+    "2098:9009": {
+      "figma": "outline/file/file-image",
+      "name": "file-image",
+      "theme": "outline"
+    },
+    "2098:9015": {
+      "figma": "outline/file/file-image-broken",
+      "name": "file-image-broken",
+      "theme": "outline"
+    },
+    "2098:9021": {
+      "figma": "outline/file/file-image-expired",
+      "name": "file-image-expired",
+      "theme": "outline"
+    },
+    "2098:8973": {
+      "figma": "outline/file/file-java-script",
+      "name": "file-java-script",
+      "theme": "outline"
+    },
+    "2098:8961": {
+      "figma": "outline/file/file-json",
+      "name": "file-json",
+      "theme": "outline"
+    },
+    "2098:9058": {
+      "figma": "outline/file/file-name-csv",
+      "name": "file-name-csv",
+      "theme": "outline"
+    },
+    "2098:9064": {
+      "figma": "outline/file/file-name-doc",
+      "name": "file-name-doc",
+      "theme": "outline"
+    },
+    "2098:9070": {
+      "figma": "outline/file/file-name-pdf",
+      "name": "file-name-pdf",
+      "theme": "outline"
+    },
+    "2098:9076": {
+      "figma": "outline/file/file-name-ppt",
+      "name": "file-name-ppt",
+      "theme": "outline"
+    },
+    "2098:9082": {
+      "figma": "outline/file/file-name-txt",
+      "name": "file-name-txt",
+      "theme": "outline"
+    },
+    "2098:9088": {
+      "figma": "outline/file/file-name-xls",
+      "name": "file-name-xls",
+      "theme": "outline"
+    },
+    "2098:9094": {
+      "figma": "outline/file/file-name-zip",
+      "name": "file-name-zip",
+      "theme": "outline"
+    },
+    "2098:8943": {
+      "figma": "outline/file/file-new",
+      "name": "file-new",
+      "theme": "outline"
+    },
+    "2098:9052": {
+      "figma": "outline/file/file-notes",
+      "name": "file-notes",
+      "theme": "outline"
+    },
+    "2098:8997": {
+      "figma": "outline/file/file-pdf",
+      "name": "file-pdf",
+      "theme": "outline"
+    },
+    "2098:8991": {
+      "figma": "outline/file/file-ppt",
+      "name": "file-ppt",
+      "theme": "outline"
+    },
+    "2098:8955": {
+      "figma": "outline/file/file-txt",
+      "name": "file-txt",
+      "theme": "outline"
+    },
+    "2098:9046": {
+      "figma": "outline/file/file-txt-1",
+      "name": "file-txt-1",
+      "theme": "outline"
+    },
+    "2098:9040": {
+      "figma": "outline/file/file-video-expired",
+      "name": "file-video-expired",
+      "theme": "outline"
+    },
+    "2098:8967": {
+      "figma": "outline/file/file/xml",
+      "name": "xml",
+      "theme": "outline"
+    },
+    "2098:9033": {
+      "figma": "outline/file/video",
+      "name": "file-video",
+      "theme": "outline"
+    },
+    "2098:9027": {
+      "figma": "outline/file/video-broken",
+      "name": "video-broken",
+      "theme": "outline"
+    },
+    "2098:9100": {
+      "figma": "outline/folders/folder",
+      "name": "folder",
+      "theme": "outline"
+    },
+    "2098:9118": {
+      "figma": "outline/folders/folder-add",
+      "name": "folder-add",
+      "theme": "outline"
+    },
+    "2098:9106": {
+      "figma": "outline/folders/folder-open",
+      "name": "folder-open",
+      "theme": "outline"
+    },
+    "2098:9112": {
+      "figma": "outline/folders/folder-save",
+      "name": "folder-save",
+      "theme": "outline"
+    },
+    "2098:8326": {
+      "figma": "outline/media/audioClosed",
+      "name": "audioclosed",
+      "theme": "outline"
+    },
+    "2098:8402": {
+      "figma": "outline/media/video",
+      "name": "media-video",
+      "theme": "outline"
+    },
+    "2098:8423": {
+      "figma": "outline/media/videoCalling",
+      "name": "videocalling",
+      "theme": "outline"
+    },
+    "2098:8310": {
+      "figma": "outline/media/videoClosed_outline",
+      "name": "videoclosed-outline",
+      "theme": "outline"
+    },
+    "2098:8445": {
+      "figma": "outline/media/videoEnded",
+      "name": "videoended",
+      "theme": "outline"
+    },
+    "2098:8379": {
+      "figma": "outline/media/voip-new",
+      "name": "voip-new",
+      "theme": "outline"
+    },
+    "2098:8357": {
+      "figma": "outline/media/voipCall",
+      "name": "voipcall",
+      "theme": "outline"
+    },
+    "2098:8345": {
+      "figma": "outline/media/voipCalling",
+      "name": "voipcalling",
+      "theme": "outline"
+    },
+    "2098:8368": {
+      "figma": "outline/media/voipEnded",
+      "name": "voipended",
+      "theme": "outline"
+    },
+    "2098:8388": {
+      "figma": "outline/media/voipFinish",
+      "name": "voipfinish",
+      "theme": "outline"
+    },
+    "2073:11020": {
+      "figma": "outline/media/voip_solid",
+      "name": "voip",
+      "theme": "outline"
+    },
+    "2098:9124": {
+      "figma": "outline/message/attention",
+      "name": "attention",
+      "theme": "outline"
+    },
+    "2098:9184": {
+      "figma": "outline/message/bell",
+      "name": "bell",
+      "theme": "outline"
+    },
+    "2098:9256": {
+      "figma": "outline/message/check",
+      "name": "check",
+      "theme": "outline"
+    },
+    "2098:9130": {
+      "figma": "outline/message/checkball",
+      "name": "checkball",
+      "theme": "outline"
+    },
+    "2098:9262": {
+      "figma": "outline/message/double-check",
+      "name": "double-check",
+      "theme": "outline"
+    },
+    "2098:9160": {
+      "figma": "outline/message/email",
+      "name": "email",
+      "theme": "outline"
+    },
+    "2098:9136": {
+      "figma": "outline/message/error",
+      "name": "error",
+      "theme": "outline"
+    },
+    "2098:9287": {
+      "figma": "outline/message/facebook",
+      "name": "facebook",
+      "theme": "outline"
+    },
+    "2098:9190": {
+      "figma": "outline/message/false",
+      "name": "false",
+      "theme": "outline"
+    },
+    "2098:9232": {
+      "figma": "outline/message/faq",
+      "name": "faq",
+      "theme": "outline"
+    },
+    "2098:9142": {
+      "figma": "outline/message/info",
+      "name": "info",
+      "theme": "outline"
+    },
+    "2098:9293": {
+      "figma": "outline/message/instagram",
+      "name": "instagram",
+      "theme": "outline"
+    },
+    "2098:9238": {
+      "figma": "outline/message/message-active",
+      "name": "message-active",
+      "theme": "outline"
+    },
+    "2098:9196": {
+      "figma": "outline/message/message-ballon",
+      "name": "message-ballon",
+      "theme": "outline"
+    },
+    "2098:9311": {
+      "figma": "outline/message/message-ballon-outline",
+      "name": "message-ballon-outline",
+      "theme": "outline"
+    },
+    "2098:9214": {
+      "figma": "outline/message/message-error",
+      "name": "message-error",
+      "theme": "outline"
+    },
+    "2098:9208": {
+      "figma": "outline/message/message-read",
+      "name": "message-read",
+      "theme": "outline"
+    },
+    "2098:9220": {
+      "figma": "outline/message/message-received",
+      "name": "message-received",
+      "theme": "outline"
+    },
+    "2098:9226": {
+      "figma": "outline/message/message-sent",
+      "name": "message-sent",
+      "theme": "outline"
+    },
+    "2098:9202": {
+      "figma": "outline/message/message-sparkle-ai",
+      "name": "message-sparkle-ai",
+      "theme": "outline"
+    },
+    "2098:9244": {
+      "figma": "outline/message/message-talk",
+      "name": "message-talk",
+      "theme": "outline"
+    },
+    "2098:9250": {
+      "figma": "outline/message/message-total",
+      "name": "message-total",
+      "theme": "outline"
+    },
+    "2098:9317": {
+      "figma": "outline/message/message-unread-outline",
+      "name": "message-unread-outline",
+      "theme": "outline"
+    },
+    "2098:9148": {
+      "figma": "outline/message/question",
+      "name": "question",
+      "theme": "outline"
+    },
+    "2098:9178": {
+      "figma": "outline/message/send",
+      "name": "send",
+      "theme": "outline"
+    },
+    "2098:9166": {
+      "figma": "outline/message/sms",
+      "name": "sms",
+      "theme": "outline"
+    },
+    "2098:9305": {
+      "figma": "outline/message/telegram",
+      "name": "telegram",
+      "theme": "outline"
+    },
+    "2098:9268": {
+      "figma": "outline/message/time-passed",
+      "name": "time-passed",
+      "theme": "outline"
+    },
+    "2098:9274": {
+      "figma": "outline/message/typing",
+      "name": "typing",
+      "theme": "outline"
+    },
+    "2098:9299": {
+      "figma": "outline/message/verified",
+      "name": "verified",
+      "theme": "outline"
+    },
+    "2098:9172": {
+      "figma": "outline/message/voip",
+      "name": "voip",
+      "theme": "outline"
+    },
+    "2098:9154": {
+      "figma": "outline/message/warning",
+      "name": "warning",
+      "theme": "outline"
+    },
+    "2098:9280": {
+      "figma": "outline/message/whatsapp",
+      "name": "whatsapp",
+      "theme": "outline"
+    },
+    "2098:9339": {
+      "figma": "outline/more-options/menu-dot",
+      "name": "menu-dot",
+      "theme": "outline"
+    },
+    "2098:9333": {
+      "figma": "outline/more-options/menu-hamburger",
+      "name": "menu-hamburger",
+      "theme": "outline"
+    },
+    "2098:9351": {
+      "figma": "outline/more-options/more-options-horizontal",
+      "name": "more-options-horizontal",
+      "theme": "outline"
+    },
+    "2098:9345": {
+      "figma": "outline/more-options/more-options-vertical",
+      "name": "more-options-vertical",
+      "theme": "outline"
+    },
+    "2098:9357": {
+      "figma": "outline/organize/list",
+      "name": "list",
+      "theme": "outline"
+    },
+    "2098:9369": {
+      "figma": "outline/organize/ordered-list",
+      "name": "ordered-list",
+      "theme": "outline"
+    },
+    "2098:9387": {
+      "figma": "outline/organize/ordering-aleatory",
+      "name": "ordering-aleatory",
+      "theme": "outline"
+    },
+    "2098:9372": {
+      "figma": "outline/organize/ordering-ascending",
+      "name": "ordering-ascending",
+      "theme": "outline"
+    },
+    "2098:9378": {
+      "figma": "outline/organize/pack",
+      "name": "pack",
+      "theme": "outline"
+    },
+    "2098:9363": {
+      "figma": "outline/organize/unordered-list",
+      "name": "unordered-list",
+      "theme": "outline"
+    },
+    "2098:9417": {
+      "figma": "outline/security/data-security",
+      "name": "data-security",
+      "theme": "outline"
+    },
+    "2098:9393": {
+      "figma": "outline/security/eye-closed",
+      "name": "eye-closed",
+      "theme": "outline"
+    },
+    "2098:9399": {
+      "figma": "outline/security/eye-open",
+      "name": "eye-open",
+      "theme": "outline"
+    },
+    "2098:9405": {
+      "figma": "outline/security/lock",
+      "name": "lock",
+      "theme": "outline"
+    },
+    "2098:9411": {
+      "figma": "outline/security/unlock",
+      "name": "unlock",
+      "theme": "outline"
+    },
+    "2098:9429": {
+      "figma": "outline/system/add",
+      "name": "add",
+      "theme": "outline"
+    },
+    "2098:9423": {
+      "figma": "outline/system/add-persistent-menu",
+      "name": "add-persistent-menu",
+      "theme": "outline"
+    },
+    "2098:9694": {
+      "figma": "outline/system/air-balloon",
+      "name": "air-balloon",
+      "theme": "outline"
+    },
+    "2098:9688": {
+      "figma": "outline/system/airplane",
+      "name": "airplane",
+      "theme": "outline"
+    },
+    "2098:9832": {
+      "figma": "outline/system/appearance",
+      "name": "appearance",
+      "theme": "outline"
+    },
+    "2098:9495": {
+      "figma": "outline/system/attach",
+      "name": "attach",
+      "theme": "outline"
+    },
+    "2098:9784": {
+      "figma": "outline/system/automation",
+      "name": "automation",
+      "theme": "outline"
+    },
+    "2098:9802": {
+      "figma": "outline/system/bag",
+      "name": "bag",
+      "theme": "outline"
+    },
+    "2098:9742": {
+      "figma": "outline/system/book",
+      "name": "book",
+      "theme": "outline"
+    },
+    "2098:9760": {
+      "figma": "outline/system/bug-report",
+      "name": "bug-report",
+      "theme": "outline"
+    },
+    "2098:9507": {
+      "figma": "outline/system/button",
+      "name": "button",
+      "theme": "outline"
+    },
+    "2098:9501": {
+      "figma": "outline/system/camera",
+      "name": "camera",
+      "theme": "outline"
+    },
+    "2098:9820": {
+      "figma": "outline/system/catalog",
+      "name": "catalog",
+      "theme": "outline"
+    },
+    "2098:9465": {
+      "figma": "outline/system/clipboard",
+      "name": "clipboard",
+      "theme": "outline"
+    },
+    "2098:9447": {
+      "figma": "outline/system/close",
+      "name": "close",
+      "theme": "outline"
+    },
+    "2098:9712": {
+      "figma": "outline/system/cloud",
+      "name": "cloud",
+      "theme": "outline"
+    },
+    "2098:9706": {
+      "figma": "outline/system/cloud-2",
+      "name": "cloud-2",
+      "theme": "outline"
+    },
+    "2098:9754": {
+      "figma": "outline/system/connections",
+      "name": "connections",
+      "theme": "outline"
+    },
+    "2098:9543": {
+      "figma": "outline/system/cookie",
+      "name": "cookie",
+      "theme": "outline"
+    },
+    "2098:9453": {
+      "figma": "outline/system/copy",
+      "name": "copy",
+      "theme": "outline"
+    },
+    "2098:9700": {
+      "figma": "outline/system/custom-channel",
+      "name": "custom-channel",
+      "theme": "outline"
+    },
+    "2098:9778": {
+      "figma": "outline/system/delete",
+      "name": "delete",
+      "theme": "outline"
+    },
+    "2098:9459": {
+      "figma": "outline/system/duplicate",
+      "name": "duplicate",
+      "theme": "outline"
+    },
+    "2098:9519": {
+      "figma": "outline/system/emoji",
+      "name": "emoji",
+      "theme": "outline"
+    },
+    "2098:9531": {
+      "figma": "outline/system/emoji-negative",
+      "name": "emoji-negative",
+      "theme": "outline"
+    },
+    "2098:9525": {
+      "figma": "outline/system/emoji-neutral",
+      "name": "emoji-neutral",
+      "theme": "outline"
+    },
+    "2098:9483": {
+      "figma": "outline/system/external-file",
+      "name": "external-file",
+      "theme": "outline"
+    },
+    "2098:9513": {
+      "figma": "outline/system/filter",
+      "name": "filter",
+      "theme": "outline"
+    },
+    "2098:9844": {
+      "figma": "outline/system/fire",
+      "name": "fire",
+      "theme": "outline"
+    },
+    "2098:9808": {
+      "figma": "outline/system/gift",
+      "name": "gift",
+      "theme": "outline"
+    },
+    "2098:9736": {
+      "figma": "outline/system/guide",
+      "name": "guide",
+      "theme": "outline"
+    },
+    "2098:9489": {
+      "figma": "outline/system/home",
+      "name": "home",
+      "theme": "outline"
+    },
+    "2098:9652": {
+      "figma": "outline/system/integration",
+      "name": "integration",
+      "theme": "outline"
+    },
+    "2098:9658": {
+      "figma": "outline/system/integrations channels",
+      "name": "integrations-channels",
+      "theme": "outline"
+    },
+    "2098:9579": {
+      "figma": "outline/system/keyboard",
+      "name": "keyboard",
+      "theme": "outline"
+    },
+    "2098:9441": {
+      "figma": "outline/system/less",
+      "name": "less",
+      "theme": "outline"
+    },
+    "2098:9766": {
+      "figma": "outline/system/loading",
+      "name": "loading",
+      "theme": "outline"
+    },
+    "2098:9718": {
+      "figma": "outline/system/logout",
+      "name": "logout",
+      "theme": "outline"
+    },
+    "2098:9646": {
+      "figma": "outline/system/mail",
+      "name": "mail",
+      "theme": "outline"
+    },
+    "2098:9664": {
+      "figma": "outline/system/messenger",
+      "name": "messenger",
+      "theme": "outline"
+    },
+    "2098:9772": {
+      "figma": "outline/system/monitoring",
+      "name": "monitoring",
+      "theme": "outline"
+    },
+    "2098:9561": {
+      "figma": "outline/system/mouse",
+      "name": "mouse",
+      "theme": "outline"
+    },
+    "2098:9555": {
+      "figma": "outline/system/notebook",
+      "name": "notebook",
+      "theme": "outline"
+    },
+    "2098:9549": {
+      "figma": "outline/system/paint",
+      "name": "paint",
+      "theme": "outline"
+    },
+    "2098:9670": {
+      "figma": "outline/system/paperplane",
+      "name": "paperplane",
+      "theme": "outline"
+    },
+    "2098:9676": {
+      "figma": "outline/system/paperplane-add",
+      "name": "paperplane-add",
+      "theme": "outline"
+    },
+    "2098:9471": {
+      "figma": "outline/system/paste",
+      "name": "paste",
+      "theme": "outline"
+    },
+    "2098:9730": {
+      "figma": "outline/system/pause",
+      "name": "pause",
+      "theme": "outline"
+    },
+    "2098:9814": {
+      "figma": "outline/system/piggy-bank",
+      "name": "piggy-bank",
+      "theme": "outline"
+    },
+    "2098:9724": {
+      "figma": "outline/system/play",
+      "name": "play",
+      "theme": "outline"
+    },
+    "2098:9603": {
+      "figma": "outline/system/plugin",
+      "name": "plugin",
+      "theme": "outline"
+    },
+    "2098:9435": {
+      "figma": "outline/system/plus",
+      "name": "plus",
+      "theme": "outline"
+    },
+    "2098:9682": {
+      "figma": "outline/system/primeiro-acesso",
+      "name": "primeiro-acesso",
+      "theme": "outline"
+    },
+    "2098:9477": {
+      "figma": "outline/system/resources",
+      "name": "resources",
+      "theme": "outline"
+    },
+    "2098:9796": {
+      "figma": "outline/system/sale",
+      "name": "sale",
+      "theme": "outline"
+    },
+    "2098:9826": {
+      "figma": "outline/system/scissor",
+      "name": "scissor",
+      "theme": "outline"
+    },
+    "2098:9633": {
+      "figma": "outline/system/screen/expand-fill",
+      "name": "expand-fill",
+      "theme": "outline"
+    },
+    "2098:9627": {
+      "figma": "outline/system/screen/expand-full",
+      "name": "expand-full",
+      "theme": "outline"
+    },
+    "2098:9615": {
+      "figma": "outline/system/screen/screen-fill",
+      "name": "screen-fill",
+      "theme": "outline"
+    },
+    "2098:9621": {
+      "figma": "outline/system/screen/screen-full",
+      "name": "screen-full",
+      "theme": "outline"
+    },
+    "2098:9748": {
+      "figma": "outline/system/service-queue",
+      "name": "service-queue",
+      "theme": "outline"
+    },
+    "2098:9838": {
+      "figma": "outline/system/side-menu",
+      "name": "side-menu",
+      "theme": "outline"
+    },
+    "2098:9537": {
+      "figma": "outline/system/site",
+      "name": "site",
+      "theme": "outline"
+    },
+    "2098:9585": {
+      "figma": "outline/system/skills",
+      "name": "skills",
+      "theme": "outline"
+    },
+    "2098:9609": {
+      "figma": "outline/system/tag",
+      "name": "tag",
+      "theme": "outline"
+    },
+    "2098:9591": {
+      "figma": "outline/system/ticket",
+      "name": "ticket",
+      "theme": "outline"
+    },
+    "2098:9639": {
+      "figma": "outline/system/trophy",
+      "name": "trophy",
+      "theme": "outline"
+    },
+    "2098:9597": {
+      "figma": "outline/system/true",
+      "name": "true",
+      "theme": "outline"
+    },
+    "2098:9790": {
+      "figma": "outline/system/wallet",
+      "name": "wallet",
+      "theme": "outline"
+    },
+    "2098:9856": {
+      "figma": "outline/text-style/123",
+      "name": "123",
+      "theme": "outline"
+    },
+    "2098:9850": {
+      "figma": "outline/text-style/ab",
+      "name": "ab",
+      "theme": "outline"
+    },
+    "2098:9892": {
+      "figma": "outline/text-style/align-center",
+      "name": "align-center",
+      "theme": "outline"
+    },
+    "2098:9886": {
+      "figma": "outline/text-style/align-left",
+      "name": "align-left",
+      "theme": "outline"
+    },
+    "2098:9898": {
+      "figma": "outline/text-style/align-right",
+      "name": "align-right",
+      "theme": "outline"
+    },
+    "2098:9952": {
+      "figma": "outline/text-style/backspace",
+      "name": "backspace",
+      "theme": "outline"
+    },
+    "2098:9946": {
+      "figma": "outline/text-style/code",
+      "name": "code",
+      "theme": "outline"
+    },
+    "2098:9904": {
+      "figma": "outline/text-style/h1",
+      "name": "h1",
+      "theme": "outline"
+    },
+    "2098:9910": {
+      "figma": "outline/text-style/h2",
+      "name": "h2",
+      "theme": "outline"
+    },
+    "2098:9916": {
+      "figma": "outline/text-style/h3",
+      "name": "h3",
+      "theme": "outline"
+    },
+    "2098:9922": {
+      "figma": "outline/text-style/h4",
+      "name": "h4",
+      "theme": "outline"
+    },
+    "2098:9928": {
+      "figma": "outline/text-style/h5",
+      "name": "h5",
+      "theme": "outline"
+    },
+    "2098:9934": {
+      "figma": "outline/text-style/h6",
+      "name": "h6",
+      "theme": "outline"
+    },
+    "2098:9958": {
+      "figma": "outline/text-style/quote",
+      "name": "quote",
+      "theme": "outline"
+    },
+    "2098:9880": {
+      "figma": "outline/text-style/text-style-bold",
+      "name": "text-style-bold",
+      "theme": "outline"
+    },
+    "2098:9862": {
+      "figma": "outline/text-style/text-style-italic",
+      "name": "text-style-italic",
+      "theme": "outline"
+    },
+    "2098:9868": {
+      "figma": "outline/text-style/text-style-strikethrough",
+      "name": "text-style-strikethrough",
+      "theme": "outline"
+    },
+    "2098:9874": {
+      "figma": "outline/text-style/text-style-underline",
+      "name": "text-style-underline",
+      "theme": "outline"
+    },
+    "2098:9940": {
+      "figma": "outline/text-style/unstyled",
+      "name": "unstyled",
+      "theme": "outline"
+    },
+    "2098:9970": {
+      "figma": "outline/user/agent",
+      "name": "agent",
+      "theme": "outline"
+    },
+    "2098:9964": {
+      "figma": "outline/user/avatar-user",
+      "name": "avatar-user",
+      "theme": "outline"
+    },
+    "2098:9976": {
+      "figma": "outline/user/contact",
+      "name": "contact",
+      "theme": "outline"
+    },
+    "2098:9982": {
+      "figma": "outline/user/team",
+      "name": "team",
+      "theme": "outline"
+    },
+    "2098:10000": {
+      "figma": "outline/user/user-active",
+      "name": "user-active",
+      "theme": "outline"
+    },
+    "2098:9988": {
+      "figma": "outline/user/user-default",
+      "name": "user-default",
+      "theme": "outline"
+    },
+    "2098:10019": {
+      "figma": "outline/user/user-engaged",
+      "name": "user-engaged",
+      "theme": "outline"
+    },
+    "2098:10025": {
+      "figma": "outline/user/user-entry",
+      "name": "user-entry",
+      "theme": "outline"
+    },
+    "2098:10031": {
+      "figma": "outline/user/user-exit",
+      "name": "user-exit",
+      "theme": "outline"
+    },
+    "2098:10037": {
+      "figma": "outline/user/user-favorite",
+      "name": "user-favorite",
+      "theme": "outline"
+    },
+    "2098:10006": {
+      "figma": "outline/user/user-lock",
+      "name": "user-lock",
+      "theme": "outline"
+    },
+    "2098:10012": {
+      "figma": "outline/user/user-sso",
+      "name": "user-sso",
+      "theme": "outline"
+    },
+    "2098:9994": {
+      "figma": "outline/user/user-woman",
+      "name": "user-woman",
+      "theme": "outline"
+    },
+    "2098:8180": {
+      "figma": "solid/Adjusments/settings-general",
+      "name": "settings-general",
+      "theme": "solid"
+    },
+    "2098:8187": {
+      "figma": "solid/Adjustments/settings-adjusments",
+      "name": "settings-adjusments",
+      "theme": "solid"
+    },
+    "2098:8174": {
+      "figma": "solid/Adjustments/settings-builder",
+      "name": "settings-builder",
+      "theme": "solid"
+    },
+    "2098:8141": {
+      "figma": "solid/actions/bottom-sheet",
+      "name": "bottom-sheet",
+      "theme": "solid"
+    },
+    "2098:8135": {
+      "figma": "solid/actions/cart-shop",
+      "name": "cart-shop",
+      "theme": "solid"
+    },
+    "2098:8147": {
+      "figma": "solid/actions/checkbox",
+      "name": "checkbox",
+      "theme": "solid"
+    },
+    "2098:8094": {
+      "figma": "solid/actions/clips",
+      "name": "clips",
+      "theme": "solid"
+    },
+    "2073:9382": {
+      "figma": "solid/actions/deslike",
+      "name": "deslike",
+      "theme": "solid"
+    },
+    "2098:8110": {
+      "figma": "solid/actions/download",
+      "name": "download",
+      "theme": "solid"
+    },
+    "2098:8048": {
+      "figma": "solid/actions/edit",
+      "name": "edit",
+      "theme": "solid"
+    },
+    "2098:8054": {
+      "figma": "solid/actions/edit-sparkle-ai",
+      "name": "edit-sparkle-ai",
+      "theme": "solid"
+    },
+    "2098:8021": {
+      "figma": "solid/actions/favorite",
+      "name": "favorite",
+      "theme": "solid"
+    },
+    "2098:8027": {
+      "figma": "solid/actions/heart",
+      "name": "heart",
+      "theme": "solid"
+    },
+    "2073:9408": {
+      "figma": "solid/actions/like",
+      "name": "like",
+      "theme": "solid"
+    },
+    "2098:8116": {
+      "figma": "solid/actions/mark",
+      "name": "mark",
+      "theme": "solid"
+    },
+    "2098:8082": {
+      "figma": "solid/actions/move",
+      "name": "move",
+      "theme": "solid"
+    },
+    "2098:8061": {
+      "figma": "solid/actions/notes",
+      "name": "notes",
+      "theme": "solid"
+    },
+    "2098:8088": {
+      "figma": "solid/actions/order-elements",
+      "name": "order-elements",
+      "theme": "solid"
+    },
+    "2098:8128": {
+      "figma": "solid/actions/pin",
+      "name": "pin",
+      "theme": "solid"
+    },
+    "2098:8159": {
+      "figma": "solid/actions/radiobutton",
+      "name": "radiobutton",
+      "theme": "solid"
+    },
+    "2073:9435": {
+      "figma": "solid/actions/save-disk",
+      "name": "save-disk",
+      "theme": "solid"
+    },
+    "2098:8033": {
+      "figma": "solid/actions/save-flag",
+      "name": "save-flag",
+      "theme": "solid"
+    },
+    "2098:8076": {
+      "figma": "solid/actions/search",
+      "name": "search",
+      "theme": "solid"
+    },
+    "2098:8165": {
+      "figma": "solid/actions/toggle",
+      "name": "toggle",
+      "theme": "solid"
+    },
+    "2098:8070": {
+      "figma": "solid/actions/trash",
+      "name": "trash",
+      "theme": "solid"
+    },
+    "2098:8153": {
+      "figma": "solid/actions/uncheckbox",
+      "name": "uncheckbox",
+      "theme": "solid"
+    },
+    "2098:8122": {
+      "figma": "solid/actions/unpin",
+      "name": "unpin",
+      "theme": "solid"
+    },
+    "2098:8100": {
+      "figma": "solid/actions/upload",
+      "name": "upload",
+      "theme": "solid"
+    },
+    "2098:10046": {
+      "figma": "solid/ai/agent-bot",
+      "name": "agent-bot",
+      "theme": "solid"
+    },
+    "2098:10064": {
+      "figma": "solid/ai/ai-image",
+      "name": "ai-image",
+      "theme": "solid"
+    },
+    "2098:10058": {
+      "figma": "solid/ai/avatar-bot",
+      "name": "avatar-bot",
+      "theme": "solid"
+    },
+    "2098:10070": {
+      "figma": "solid/ai/blip-ai",
+      "name": "blip-ai",
+      "theme": "solid"
+    },
+    "2098:10052": {
+      "figma": "solid/ai/bot-text",
+      "name": "bot-text",
+      "theme": "solid"
+    },
+    "2098:10076": {
+      "figma": "solid/ai/brain-ai",
+      "name": "brain-ai",
+      "theme": "solid"
+    },
+    "2098:10094": {
+      "figma": "solid/ai/sparkle-ai",
+      "name": "sparkle-ai",
+      "theme": "solid"
+    },
+    "2098:10082": {
+      "figma": "solid/ai/speaker-ai",
+      "name": "speaker-ai",
+      "theme": "solid"
+    },
+    "2098:10088": {
+      "figma": "solid/ai/text-ai",
+      "name": "text-ai",
+      "theme": "solid"
+    },
+    "2098:8193": {
+      "figma": "solid/arrow/arrow-ball-down",
+      "name": "arrow-ball-down",
+      "theme": "solid"
+    },
+    "2098:8199": {
+      "figma": "solid/arrow/arrow-ball-left",
+      "name": "arrow-ball-left",
+      "theme": "solid"
+    },
+    "2098:8205": {
+      "figma": "solid/arrow/arrow-ball-right",
+      "name": "arrow-ball-right",
+      "theme": "solid"
+    },
+    "2098:8211": {
+      "figma": "solid/arrow/arrow-ball-up",
+      "name": "arrow-ball-up",
+      "theme": "solid"
+    },
+    "2098:8217": {
+      "figma": "solid/arrow/arrow-down",
+      "name": "arrow-down",
+      "theme": "solid"
+    },
+    "2098:8253": {
+      "figma": "solid/arrow/arrow-filter-table",
+      "name": "arrow-filter-table",
+      "theme": "solid"
+    },
+    "2098:8223": {
+      "figma": "solid/arrow/arrow-first",
+      "name": "arrow-first",
+      "theme": "solid"
+    },
+    "2098:8241": {
+      "figma": "solid/arrow/arrow-last",
+      "name": "arrow-last",
+      "theme": "solid"
+    },
+    "2098:8229": {
+      "figma": "solid/arrow/arrow-left",
+      "name": "arrow-left",
+      "theme": "solid"
+    },
+    "2098:8235": {
+      "figma": "solid/arrow/arrow-right",
+      "name": "arrow-right",
+      "theme": "solid"
+    },
+    "2098:8247": {
+      "figma": "solid/arrow/arrow-up",
+      "name": "arrow-up",
+      "theme": "solid"
+    },
+    "2098:8289": {
+      "figma": "solid/arrow/prioritization",
+      "name": "prioritization",
+      "theme": "solid"
+    },
+    "2098:8259": {
+      "figma": "solid/arrow/redo",
+      "name": "redo",
+      "theme": "solid"
+    },
+    "2098:8265": {
+      "figma": "solid/arrow/refresh",
+      "name": "refresh",
+      "theme": "solid"
+    },
+    "2098:8295": {
+      "figma": "solid/arrow/reply",
+      "name": "reply",
+      "theme": "solid"
+    },
+    "2098:8271": {
+      "figma": "solid/arrow/restore",
+      "name": "restore",
+      "theme": "solid"
+    },
+    "2098:8283": {
+      "figma": "solid/arrow/transfer",
+      "name": "transfer",
+      "theme": "solid"
+    },
+    "2098:8277": {
+      "figma": "solid/arrow/undo",
+      "name": "undo",
+      "theme": "solid"
+    },
+    "2098:8301": {
+      "figma": "solid/audio/audio",
+      "name": "audio",
+      "theme": "solid"
+    },
+    "2098:8307": {
+      "figma": "solid/audio/speaker",
+      "name": "speaker",
+      "theme": "solid"
+    },
+    "2098:8473": {
+      "figma": "solid/bot/ai",
+      "name": "ai",
+      "theme": "solid"
+    },
+    "2098:8479": {
+      "figma": "solid/bot/robot",
+      "name": "robot",
+      "theme": "solid"
+    },
+    "2098:8485": {
+      "figma": "solid/bot/robot-2",
+      "name": "robot-2",
+      "theme": "solid"
+    },
+    "2098:8491": {
+      "figma": "solid/bot/robot-3",
+      "name": "robot-3",
+      "theme": "solid"
+    },
+    "2098:8497": {
+      "figma": "solid/bot/robot-4",
+      "name": "robot-4",
+      "theme": "solid"
+    },
+    "2098:8503": {
+      "figma": "solid/bot/robot-5",
+      "name": "robot-5",
+      "theme": "solid"
+    },
+    "2098:8659": {
+      "figma": "solid/builder/MCP",
+      "name": "mcp",
+      "theme": "solid"
+    },
+    "2098:8623": {
+      "figma": "solid/builder/agent-rule",
+      "name": "agent-rule",
+      "theme": "solid"
+    },
+    "2098:8647": {
+      "figma": "solid/builder/array",
+      "name": "array",
+      "theme": "solid"
+    },
+    "2098:8509": {
+      "figma": "solid/builder/builder-carrousel",
+      "name": "builder-carrousel",
+      "theme": "solid"
+    },
+    "2098:8515": {
+      "figma": "solid/builder/builder-menu",
+      "name": "builder-menu",
+      "theme": "solid"
+    },
+    "2098:8521": {
+      "figma": "solid/builder/builder-new-state",
+      "name": "builder-new-state",
+      "theme": "solid"
+    },
+    "2098:8527": {
+      "figma": "solid/builder/builder-publish-bot",
+      "name": "builder-publish-bot",
+      "theme": "solid"
+    },
+    "2098:8533": {
+      "figma": "solid/builder/builder-quick-reply",
+      "name": "builder-quick-reply",
+      "theme": "solid"
+    },
+    "2098:8539": {
+      "figma": "solid/builder/builder-router",
+      "name": "builder-router",
+      "theme": "solid"
+    },
+    "2098:8545": {
+      "figma": "solid/builder/builder-test-bot",
+      "name": "builder-test-bot",
+      "theme": "solid"
+    },
+    "2098:8551": {
+      "figma": "solid/builder/builder-text-message",
+      "name": "builder-text-message",
+      "theme": "solid"
+    },
+    "2098:8593": {
+      "figma": "solid/builder/channels",
+      "name": "channels",
+      "theme": "solid"
+    },
+    "2098:8721": {
+      "figma": "solid/builder/command",
+      "name": "command",
+      "theme": "solid"
+    },
+    "2098:8557": {
+      "figma": "solid/builder/debug",
+      "name": "debug",
+      "theme": "solid"
+    },
+    "2098:8563": {
+      "figma": "solid/builder/debug-display",
+      "name": "debug-display",
+      "theme": "solid"
+    },
+    "2098:8617": {
+      "figma": "solid/builder/dynamic-content",
+      "name": "dynamic-content",
+      "theme": "solid"
+    },
+    "2098:8665": {
+      "figma": "solid/builder/guardrails",
+      "name": "guardrails",
+      "theme": "solid"
+    },
+    "2098:8677": {
+      "figma": "solid/builder/http",
+      "name": "http",
+      "theme": "solid"
+    },
+    "2098:8688": {
+      "figma": "solid/builder/javascript",
+      "name": "javascript",
+      "theme": "solid"
+    },
+    "2098:8569": {
+      "figma": "solid/builder/library",
+      "name": "library",
+      "theme": "solid"
+    },
+    "2098:8575": {
+      "figma": "solid/builder/link",
+      "name": "link",
+      "theme": "solid"
+    },
+    "2098:8587": {
+      "figma": "solid/builder/link-off",
+      "name": "link-off",
+      "theme": "solid"
+    },
+    "2098:8599": {
+      "figma": "solid/builder/localization",
+      "name": "localization",
+      "theme": "solid"
+    },
+    "2098:8605": {
+      "figma": "solid/builder/localization-ask",
+      "name": "localization-ask",
+      "theme": "solid"
+    },
+    "2098:8611": {
+      "figma": "solid/builder/localization-send",
+      "name": "localization-send",
+      "theme": "solid"
+    },
+    "2098:8641": {
+      "figma": "solid/builder/object",
+      "name": "object",
+      "theme": "solid"
+    },
+    "2098:8653": {
+      "figma": "solid/builder/openAPI",
+      "name": "openapi",
+      "theme": "solid"
+    },
+    "2098:8697": {
+      "figma": "solid/builder/redirect",
+      "name": "redirect",
+      "theme": "solid"
+    },
+    "2098:8629": {
+      "figma": "solid/builder/text-variable",
+      "name": "text-variable",
+      "theme": "solid"
+    },
+    "2098:8635": {
+      "figma": "solid/builder/text-variable-context",
+      "name": "text-variable-context",
+      "theme": "solid"
+    },
+    "2098:8706": {
+      "figma": "solid/builder/tracking",
+      "name": "tracking",
+      "theme": "solid"
+    },
+    "2098:8581": {
+      "figma": "solid/builder/unlink",
+      "name": "unlink",
+      "theme": "solid"
+    },
+    "2098:8715": {
+      "figma": "solid/builder/variable",
+      "name": "variable",
+      "theme": "solid"
+    },
+    "2098:8764": {
+      "figma": "solid/charts/chart-bar",
+      "name": "chart-bar",
+      "theme": "solid"
+    },
+    "2098:8770": {
+      "figma": "solid/charts/chart-column",
+      "name": "chart-column",
+      "theme": "solid"
+    },
+    "2098:8776": {
+      "figma": "solid/charts/chart-line",
+      "name": "chart-line",
+      "theme": "solid"
+    },
+    "2098:8782": {
+      "figma": "solid/charts/chart-pizza",
+      "name": "chart-pizza",
+      "theme": "solid"
+    },
+    "2098:8740": {
+      "figma": "solid/code-editor/code-match",
+      "name": "code-match",
+      "theme": "solid"
+    },
+    "2098:8734": {
+      "figma": "solid/code-editor/code-match-whole-word",
+      "name": "code-match-whole-word",
+      "theme": "solid"
+    },
+    "2098:8727": {
+      "figma": "solid/code-editor/code-preserve-case",
+      "name": "code-preserve-case",
+      "theme": "solid"
+    },
+    "2098:8758": {
+      "figma": "solid/code-editor/code-regax ",
+      "name": "code-regax",
+      "theme": "solid"
+    },
+    "2098:8746": {
+      "figma": "solid/code-editor/code-replace",
+      "name": "code-replace",
+      "theme": "solid"
+    },
+    "2098:8752": {
+      "figma": "solid/code-editor/code-replace-all",
+      "name": "code-replace-all",
+      "theme": "solid"
+    },
+    "2098:8836": {
+      "figma": "solid/communication/barcode",
+      "name": "barcode",
+      "theme": "solid"
+    },
+    "2098:8830": {
+      "figma": "solid/communication/bill",
+      "name": "bill",
+      "theme": "solid"
+    },
+    "2098:8848": {
+      "figma": "solid/communication/chip",
+      "name": "chip",
+      "theme": "solid"
+    },
+    "2098:8872": {
+      "figma": "solid/communication/dolar",
+      "name": "dolar",
+      "theme": "solid"
+    },
+    "2098:8866": {
+      "figma": "solid/communication/euro",
+      "name": "euro",
+      "theme": "solid"
+    },
+    "2098:8788": {
+      "figma": "solid/communication/megaphone",
+      "name": "megaphone",
+      "theme": "solid"
+    },
+    "2098:8854": {
+      "figma": "solid/communication/openfinance",
+      "name": "openfinance",
+      "theme": "solid"
+    },
+    "2098:8794": {
+      "figma": "solid/communication/payment-card",
+      "name": "payment-card",
+      "theme": "solid"
+    },
+    "2098:8800": {
+      "figma": "solid/communication/payment-card-cvc",
+      "name": "payment-card-cvc",
+      "theme": "solid"
+    },
+    "2098:8824": {
+      "figma": "solid/communication/pix",
+      "name": "pix",
+      "theme": "solid"
+    },
+    "2098:8842": {
+      "figma": "solid/communication/qrcode",
+      "name": "qrcode",
+      "theme": "solid"
+    },
+    "2098:8860": {
+      "figma": "solid/communication/real",
+      "name": "real",
+      "theme": "solid"
+    },
+    "2098:8806": {
+      "figma": "solid/communication/share",
+      "name": "share",
+      "theme": "solid"
+    },
+    "2098:8812": {
+      "figma": "solid/communication/smartphone",
+      "name": "smartphone",
+      "theme": "solid"
+    },
+    "2098:8818": {
+      "figma": "solid/communication/target",
+      "name": "target",
+      "theme": "solid"
+    },
+    "2098:8904": {
+      "figma": "solid/community/Level up",
+      "name": "level-up",
+      "theme": "solid"
+    },
+    "2098:8878": {
+      "figma": "solid/community/blip-ideas",
+      "name": "blip-ideas",
+      "theme": "solid"
+    },
+    "2098:8890": {
+      "figma": "solid/community/blip-tutorials",
+      "name": "blip-tutorials",
+      "theme": "solid"
+    },
+    "2098:8884": {
+      "figma": "solid/community/ideas-sparkle-ai",
+      "name": "ideas-sparkle-ai",
+      "theme": "solid"
+    },
+    "2098:8896": {
+      "figma": "solid/community/status",
+      "name": "status",
+      "theme": "solid"
+    },
+    "2098:8910": {
+      "figma": "solid/contract/business",
+      "name": "business",
+      "theme": "solid"
+    },
+    "2098:8916": {
+      "figma": "solid/contract/company",
+      "name": "company",
+      "theme": "solid"
+    },
+    "2098:8922": {
+      "figma": "solid/contract/store",
+      "name": "store",
+      "theme": "solid"
+    },
+    "2098:8928": {
+      "figma": "solid/date-time/calendar",
+      "name": "calendar",
+      "theme": "solid"
+    },
+    "2098:8940": {
+      "figma": "solid/date-time/clock",
+      "name": "clock",
+      "theme": "solid"
+    },
+    "2098:8934": {
+      "figma": "solid/date-time/date-time",
+      "name": "date-time",
+      "theme": "solid"
+    },
+    "2098:8988": {
+      "figma": "solid/file/file-csv",
+      "name": "file-csv",
+      "theme": "solid"
+    },
+    "2098:8982": {
+      "figma": "solid/file/file-doc",
+      "name": "file-doc",
+      "theme": "solid"
+    },
+    "2098:8952": {
+      "figma": "solid/file/file-empty-file",
+      "name": "file-empty-file",
+      "theme": "solid"
+    },
+    "2098:9006": {
+      "figma": "solid/file/file-gif",
+      "name": "file-gif",
+      "theme": "solid"
+    },
+    "2098:9012": {
+      "figma": "solid/file/file-image",
+      "name": "file-image",
+      "theme": "solid"
+    },
+    "2098:9018": {
+      "figma": "solid/file/file-image-broken",
+      "name": "file-image-broken",
+      "theme": "solid"
+    },
+    "2098:9024": {
+      "figma": "solid/file/file-image-expired",
+      "name": "file-image-expired",
+      "theme": "solid"
+    },
+    "2098:8976": {
+      "figma": "solid/file/file-java-script",
+      "name": "file-java-script",
+      "theme": "solid"
+    },
+    "2098:8964": {
+      "figma": "solid/file/file-json",
+      "name": "file-json",
+      "theme": "solid"
+    },
+    "2098:9061": {
+      "figma": "solid/file/file-name-csv",
+      "name": "file-name-csv",
+      "theme": "solid"
+    },
+    "2098:9067": {
+      "figma": "solid/file/file-name-doc",
+      "name": "file-name-doc",
+      "theme": "solid"
+    },
+    "2098:9073": {
+      "figma": "solid/file/file-name-pdf",
+      "name": "file-name-pdf",
+      "theme": "solid"
+    },
+    "2098:9079": {
+      "figma": "solid/file/file-name-ppt",
+      "name": "file-name-ppt",
+      "theme": "solid"
+    },
+    "2098:9085": {
+      "figma": "solid/file/file-name-txt",
+      "name": "file-name-txt",
+      "theme": "solid"
+    },
+    "2098:9091": {
+      "figma": "solid/file/file-name-xls",
+      "name": "file-name-xls",
+      "theme": "solid"
+    },
+    "2098:9097": {
+      "figma": "solid/file/file-name-zip",
+      "name": "file-name-zip",
+      "theme": "solid"
+    },
+    "2098:8946": {
+      "figma": "solid/file/file-new",
+      "name": "file-new",
+      "theme": "solid"
+    },
+    "2098:9055": {
+      "figma": "solid/file/file-notes",
+      "name": "file-notes",
+      "theme": "solid"
+    },
+    "2098:9000": {
+      "figma": "solid/file/file-pdf",
+      "name": "file-pdf",
+      "theme": "solid"
+    },
+    "2098:8994": {
+      "figma": "solid/file/file-ppt",
+      "name": "file-ppt",
+      "theme": "solid"
+    },
+    "2098:8958": {
+      "figma": "solid/file/file-txt",
+      "name": "file-txt",
+      "theme": "solid"
+    },
+    "2098:9049": {
+      "figma": "solid/file/file-txt-1",
+      "name": "file-txt-1",
+      "theme": "solid"
+    },
+    "2098:9043": {
+      "figma": "solid/file/file-video-expired",
+      "name": "file-video-expired",
+      "theme": "solid"
+    },
+    "2098:8970": {
+      "figma": "solid/file/file/xml",
+      "name": "xml",
+      "theme": "solid"
+    },
+    "2098:9037": {
+      "figma": "solid/file/video",
+      "name": "file-video",
+      "theme": "solid"
+    },
+    "2098:9030": {
+      "figma": "solid/file/video-broken",
+      "name": "video-broken",
+      "theme": "solid"
+    },
+    "2098:9103": {
+      "figma": "solid/folders/folder",
+      "name": "folder",
+      "theme": "solid"
+    },
+    "2098:9121": {
+      "figma": "solid/folders/folder-add",
+      "name": "folder-add",
+      "theme": "solid"
+    },
+    "2098:9109": {
+      "figma": "solid/folders/folder-open",
+      "name": "folder-open",
+      "theme": "solid"
+    },
+    "2098:9115": {
+      "figma": "solid/folders/folder-save",
+      "name": "folder-save",
+      "theme": "solid"
+    },
+    "2098:8340": {
+      "figma": "solid/media/audioClosed",
+      "name": "audioclosed",
+      "theme": "solid"
+    },
+    "2098:8415": {
+      "figma": "solid/media/video",
+      "name": "media-video",
+      "theme": "solid"
+    },
+    "2098:8437": {
+      "figma": "solid/media/videoCalling",
+      "name": "videocalling",
+      "theme": "solid"
+    },
+    "2098:8313": {
+      "figma": "solid/media/videoClosed_outline",
+      "name": "videoclosed-outline",
+      "theme": "solid"
+    },
+    "2098:8458": {
+      "figma": "solid/media/videoEnded",
+      "name": "videoended",
+      "theme": "solid"
+    },
+    "2098:8383": {
+      "figma": "solid/media/voip-new",
+      "name": "voip-new",
+      "theme": "solid"
+    },
+    "2098:8363": {
+      "figma": "solid/media/voipCall",
+      "name": "voipcall",
+      "theme": "solid"
+    },
+    "2098:8352": {
+      "figma": "solid/media/voipCalling",
+      "name": "voipcalling",
+      "theme": "solid"
+    },
+    "2098:8375": {
+      "figma": "solid/media/voipEnded_solid",
+      "name": "voipended-solid",
+      "theme": "solid"
+    },
+    "2098:8396": {
+      "figma": "solid/media/voipFinish",
+      "name": "voipfinish",
+      "theme": "solid"
+    },
+    "2098:8467": {
+      "figma": "solid/media/voip_solid",
+      "name": "voip",
+      "theme": "solid"
+    },
+    "2098:9127": {
+      "figma": "solid/message/attention",
+      "name": "attention",
+      "theme": "solid"
+    },
+    "2098:9187": {
+      "figma": "solid/message/bell",
+      "name": "bell",
+      "theme": "solid"
+    },
+    "2098:9259": {
+      "figma": "solid/message/check",
+      "name": "check",
+      "theme": "solid"
+    },
+    "2098:9133": {
+      "figma": "solid/message/checkball",
+      "name": "checkball",
+      "theme": "solid"
+    },
+    "2098:9265": {
+      "figma": "solid/message/double-check",
+      "name": "double-check",
+      "theme": "solid"
+    },
+    "2098:9163": {
+      "figma": "solid/message/email",
+      "name": "email",
+      "theme": "solid"
+    },
+    "2098:9139": {
+      "figma": "solid/message/error",
+      "name": "error",
+      "theme": "solid"
+    },
+    "2098:9290": {
+      "figma": "solid/message/facebook",
+      "name": "facebook",
+      "theme": "solid"
+    },
+    "2098:9193": {
+      "figma": "solid/message/false",
+      "name": "false",
+      "theme": "solid"
+    },
+    "2098:9235": {
+      "figma": "solid/message/faq",
+      "name": "faq",
+      "theme": "solid"
+    },
+    "2098:9145": {
+      "figma": "solid/message/info",
+      "name": "info",
+      "theme": "solid"
+    },
+    "2098:9296": {
+      "figma": "solid/message/instagram",
+      "name": "instagram",
+      "theme": "solid"
+    },
+    "2098:9241": {
+      "figma": "solid/message/message-active",
+      "name": "message-active",
+      "theme": "solid"
+    },
+    "2098:9199": {
+      "figma": "solid/message/message-ballon",
+      "name": "message-ballon",
+      "theme": "solid"
+    },
+    "2098:9314": {
+      "figma": "solid/message/message-ballon-solid",
+      "name": "message-ballon-solid",
+      "theme": "solid"
+    },
+    "2098:9217": {
+      "figma": "solid/message/message-error",
+      "name": "message-error",
+      "theme": "solid"
+    },
+    "2098:9211": {
+      "figma": "solid/message/message-read",
+      "name": "message-read",
+      "theme": "solid"
+    },
+    "2098:9223": {
+      "figma": "solid/message/message-received",
+      "name": "message-received",
+      "theme": "solid"
+    },
+    "2098:9229": {
+      "figma": "solid/message/message-sent",
+      "name": "message-sent",
+      "theme": "solid"
+    },
+    "2098:9205": {
+      "figma": "solid/message/message-sparkle-ai",
+      "name": "message-sparkle-ai",
+      "theme": "solid"
+    },
+    "2098:9247": {
+      "figma": "solid/message/message-talk",
+      "name": "message-talk",
+      "theme": "solid"
+    },
+    "2098:9253": {
+      "figma": "solid/message/message-total",
+      "name": "message-total",
+      "theme": "solid"
+    },
+    "2098:9330": {
+      "figma": "solid/message/message-unread-solid",
+      "name": "message-unread-solid",
+      "theme": "solid"
+    },
+    "2098:9151": {
+      "figma": "solid/message/question",
+      "name": "question",
+      "theme": "solid"
+    },
+    "2098:9181": {
+      "figma": "solid/message/send",
+      "name": "send",
+      "theme": "solid"
+    },
+    "2098:9169": {
+      "figma": "solid/message/sms",
+      "name": "sms",
+      "theme": "solid"
+    },
+    "2098:9308": {
+      "figma": "solid/message/telegram",
+      "name": "telegram",
+      "theme": "solid"
+    },
+    "2098:9271": {
+      "figma": "solid/message/time-passed",
+      "name": "time-passed",
+      "theme": "solid"
+    },
+    "2098:9277": {
+      "figma": "solid/message/typing",
+      "name": "typing",
+      "theme": "solid"
+    },
+    "2098:9302": {
+      "figma": "solid/message/verified",
+      "name": "verified",
+      "theme": "solid"
+    },
+    "2098:9175": {
+      "figma": "solid/message/voip",
+      "name": "voip",
+      "theme": "solid"
+    },
+    "2098:9157": {
+      "figma": "solid/message/warning",
+      "name": "warning",
+      "theme": "solid"
+    },
+    "2098:9283": {
+      "figma": "solid/message/whatsapp",
+      "name": "whatsapp",
+      "theme": "solid"
+    },
+    "2098:9342": {
+      "figma": "solid/more-options/menu-dot",
+      "name": "menu-dot",
+      "theme": "solid"
+    },
+    "2098:9336": {
+      "figma": "solid/more-options/menu-hamburger",
+      "name": "menu-hamburger",
+      "theme": "solid"
+    },
+    "2098:9354": {
+      "figma": "solid/more-options/more-options-horizontal",
+      "name": "more-options-horizontal",
+      "theme": "solid"
+    },
+    "2098:9348": {
+      "figma": "solid/more-options/more-options-vertical",
+      "name": "more-options-vertical",
+      "theme": "solid"
+    },
+    "2098:9360": {
+      "figma": "solid/organize/list",
+      "name": "list",
+      "theme": "solid"
+    },
+    "2073:15035": {
+      "figma": "solid/organize/ordered-list",
+      "name": "ordered-list",
+      "theme": "solid"
+    },
+    "2098:9390": {
+      "figma": "solid/organize/ordering-aleatory",
+      "name": "ordering-aleatory",
+      "theme": "solid"
+    },
+    "2098:9375": {
+      "figma": "solid/organize/ordering-ascending",
+      "name": "ordering-ascending",
+      "theme": "solid"
+    },
+    "2073:15088": {
+      "figma": "solid/organize/pack",
+      "name": "pack",
+      "theme": "solid"
+    },
+    "2098:9366": {
+      "figma": "solid/organize/unordered list",
+      "name": "unordered-list",
+      "theme": "solid"
+    },
+    "2098:9420": {
+      "figma": "solid/security/data-security",
+      "name": "data-security",
+      "theme": "solid"
+    },
+    "2098:9396": {
+      "figma": "solid/security/eye-closed",
+      "name": "eye-closed",
+      "theme": "solid"
+    },
+    "2098:9402": {
+      "figma": "solid/security/eye-open",
+      "name": "eye-open",
+      "theme": "solid"
+    },
+    "2098:9408": {
+      "figma": "solid/security/lock",
+      "name": "lock",
+      "theme": "solid"
+    },
+    "2098:9414": {
+      "figma": "solid/security/unlock",
+      "name": "unlock",
+      "theme": "solid"
+    },
+    "2098:9432": {
+      "figma": "solid/system/add",
+      "name": "add",
+      "theme": "solid"
+    },
+    "2098:9426": {
+      "figma": "solid/system/add-persistent-menu",
+      "name": "add-persistent-menu",
+      "theme": "solid"
+    },
+    "2098:9697": {
+      "figma": "solid/system/air-balloon",
+      "name": "air-balloon",
+      "theme": "solid"
+    },
+    "2098:9691": {
+      "figma": "solid/system/airplane",
+      "name": "airplane",
+      "theme": "solid"
+    },
+    "2098:9835": {
+      "figma": "solid/system/appearance",
+      "name": "appearance",
+      "theme": "solid"
+    },
+    "2098:9498": {
+      "figma": "solid/system/attach",
+      "name": "attach",
+      "theme": "solid"
+    },
+    "2098:9787": {
+      "figma": "solid/system/automation",
+      "name": "automation",
+      "theme": "solid"
+    },
+    "2098:9805": {
+      "figma": "solid/system/bag",
+      "name": "bag",
+      "theme": "solid"
+    },
+    "2098:9745": {
+      "figma": "solid/system/book",
+      "name": "book",
+      "theme": "solid"
+    },
+    "2098:9763": {
+      "figma": "solid/system/bug-report",
+      "name": "bug-report",
+      "theme": "solid"
+    },
+    "2098:9510": {
+      "figma": "solid/system/button",
+      "name": "button",
+      "theme": "solid"
+    },
+    "2098:9504": {
+      "figma": "solid/system/camera",
+      "name": "camera",
+      "theme": "solid"
+    },
+    "2098:9823": {
+      "figma": "solid/system/catalog",
+      "name": "catalog",
+      "theme": "solid"
+    },
+    "2098:9468": {
+      "figma": "solid/system/clipboard",
+      "name": "clipboard",
+      "theme": "solid"
+    },
+    "2098:9450": {
+      "figma": "solid/system/close",
+      "name": "close",
+      "theme": "solid"
+    },
+    "2098:9715": {
+      "figma": "solid/system/cloud",
+      "name": "cloud",
+      "theme": "solid"
+    },
+    "2098:9709": {
+      "figma": "solid/system/cloud-2",
+      "name": "cloud-2",
+      "theme": "solid"
+    },
+    "2098:9757": {
+      "figma": "solid/system/connections",
+      "name": "connections",
+      "theme": "solid"
+    },
+    "2098:9546": {
+      "figma": "solid/system/cookie",
+      "name": "cookie",
+      "theme": "solid"
+    },
+    "2098:9456": {
+      "figma": "solid/system/copy",
+      "name": "copy",
+      "theme": "solid"
+    },
+    "2098:9703": {
+      "figma": "solid/system/custom-channel",
+      "name": "custom-channel",
+      "theme": "solid"
+    },
+    "2098:9781": {
+      "figma": "solid/system/delete",
+      "name": "delete",
+      "theme": "solid"
+    },
+    "2098:9462": {
+      "figma": "solid/system/duplicate",
+      "name": "duplicate",
+      "theme": "solid"
+    },
+    "2098:9522": {
+      "figma": "solid/system/emoji",
+      "name": "emoji",
+      "theme": "solid"
+    },
+    "2098:9534": {
+      "figma": "solid/system/emoji-negative",
+      "name": "emoji-negative",
+      "theme": "solid"
+    },
+    "2098:9528": {
+      "figma": "solid/system/emoji-neutral",
+      "name": "emoji-neutral",
+      "theme": "solid"
+    },
+    "2098:9486": {
+      "figma": "solid/system/external-file",
+      "name": "external-file",
+      "theme": "solid"
+    },
+    "2098:9516": {
+      "figma": "solid/system/filter",
+      "name": "filter",
+      "theme": "solid"
+    },
+    "2098:9847": {
+      "figma": "solid/system/fire",
+      "name": "fire",
+      "theme": "solid"
+    },
+    "2098:9811": {
+      "figma": "solid/system/gift",
+      "name": "gift",
+      "theme": "solid"
+    },
+    "2098:9739": {
+      "figma": "solid/system/guide",
+      "name": "guide",
+      "theme": "solid"
+    },
+    "2098:9492": {
+      "figma": "solid/system/home",
+      "name": "home",
+      "theme": "solid"
+    },
+    "2098:9655": {
+      "figma": "solid/system/integration",
+      "name": "integration",
+      "theme": "solid"
+    },
+    "2098:9661": {
+      "figma": "solid/system/integrations channels",
+      "name": "integrations-channels",
+      "theme": "solid"
+    },
+    "2098:9582": {
+      "figma": "solid/system/keyboard",
+      "name": "keyboard",
+      "theme": "solid"
+    },
+    "2098:9444": {
+      "figma": "solid/system/less",
+      "name": "less",
+      "theme": "solid"
+    },
+    "2098:9769": {
+      "figma": "solid/system/loading",
+      "name": "loading",
+      "theme": "solid"
+    },
+    "2098:9721": {
+      "figma": "solid/system/logout",
+      "name": "logout",
+      "theme": "solid"
+    },
+    "2098:9649": {
+      "figma": "solid/system/mail",
+      "name": "mail",
+      "theme": "solid"
+    },
+    "2098:9667": {
+      "figma": "solid/system/messenger",
+      "name": "messenger",
+      "theme": "solid"
+    },
+    "2098:9775": {
+      "figma": "solid/system/monitoring",
+      "name": "monitoring",
+      "theme": "solid"
+    },
+    "2098:9564": {
+      "figma": "solid/system/mouse",
+      "name": "mouse",
+      "theme": "solid"
+    },
+    "2098:9558": {
+      "figma": "solid/system/notebook",
+      "name": "notebook",
+      "theme": "solid"
+    },
+    "2098:9552": {
+      "figma": "solid/system/paint",
+      "name": "paint",
+      "theme": "solid"
+    },
+    "2098:9673": {
+      "figma": "solid/system/paperplane",
+      "name": "paperplane",
+      "theme": "solid"
+    },
+    "2098:9679": {
+      "figma": "solid/system/paperplane-add",
+      "name": "paperplane-add",
+      "theme": "solid"
+    },
+    "2098:9474": {
+      "figma": "solid/system/paste",
+      "name": "paste",
+      "theme": "solid"
+    },
+    "2098:9733": {
+      "figma": "solid/system/pause",
+      "name": "pause",
+      "theme": "solid"
+    },
+    "2098:8171": {
+      "figma": "solid/system/phone-keyboard",
+      "name": "phone-keyboard",
+      "theme": "solid"
+    },
+    "2098:9817": {
+      "figma": "solid/system/piggy-bank",
+      "name": "piggy-bank",
+      "theme": "solid"
+    },
+    "2098:9727": {
+      "figma": "solid/system/play",
+      "name": "play",
+      "theme": "solid"
+    },
+    "2098:9606": {
+      "figma": "solid/system/plugin",
+      "name": "plugin",
+      "theme": "solid"
+    },
+    "2098:9438": {
+      "figma": "solid/system/plus",
+      "name": "plus",
+      "theme": "solid"
+    },
+    "2098:9685": {
+      "figma": "solid/system/primeiro-acesso",
+      "name": "primeiro-acesso",
+      "theme": "solid"
+    },
+    "2098:9480": {
+      "figma": "solid/system/resources",
+      "name": "resources",
+      "theme": "solid"
+    },
+    "2098:9799": {
+      "figma": "solid/system/sale",
+      "name": "sale",
+      "theme": "solid"
+    },
+    "2098:9829": {
+      "figma": "solid/system/scissor",
+      "name": "scissor",
+      "theme": "solid"
+    },
+    "2098:9636": {
+      "figma": "solid/system/screen/expand-fill",
+      "name": "expand-fill",
+      "theme": "solid"
+    },
+    "2098:9630": {
+      "figma": "solid/system/screen/expand-full",
+      "name": "expand-full",
+      "theme": "solid"
+    },
+    "2098:9618": {
+      "figma": "solid/system/screen/screen-fill",
+      "name": "screen-fill",
+      "theme": "solid"
+    },
+    "2098:9624": {
+      "figma": "solid/system/screen/screen-full",
+      "name": "screen-full",
+      "theme": "solid"
+    },
+    "2098:9751": {
+      "figma": "solid/system/service-queue",
+      "name": "service-queue",
+      "theme": "solid"
+    },
+    "2098:9841": {
+      "figma": "solid/system/side-menu",
+      "name": "side-menu",
+      "theme": "solid"
+    },
+    "2098:9540": {
+      "figma": "solid/system/site",
+      "name": "site",
+      "theme": "solid"
+    },
+    "2098:9588": {
+      "figma": "solid/system/skills",
+      "name": "skills",
+      "theme": "solid"
+    },
+    "2098:9612": {
+      "figma": "solid/system/tag",
+      "name": "tag",
+      "theme": "solid"
+    },
+    "2098:9594": {
+      "figma": "solid/system/ticket",
+      "name": "ticket",
+      "theme": "solid"
+    },
+    "2098:9643": {
+      "figma": "solid/system/trophy",
+      "name": "trophy",
+      "theme": "solid"
+    },
+    "2098:9600": {
+      "figma": "solid/system/true",
+      "name": "true",
+      "theme": "solid"
+    },
+    "2098:9793": {
+      "figma": "solid/system/wallet",
+      "name": "wallet",
+      "theme": "solid"
+    },
+    "2098:9859": {
+      "figma": "solid/text-style/123",
+      "name": "123",
+      "theme": "solid"
+    },
+    "2098:9853": {
+      "figma": "solid/text-style/ab",
+      "name": "ab",
+      "theme": "solid"
+    },
+    "2098:9895": {
+      "figma": "solid/text-style/align-center",
+      "name": "align-center",
+      "theme": "solid"
+    },
+    "2098:9889": {
+      "figma": "solid/text-style/align-left",
+      "name": "align-left",
+      "theme": "solid"
+    },
+    "2098:9901": {
+      "figma": "solid/text-style/align-right",
+      "name": "align-right",
+      "theme": "solid"
+    },
+    "2098:9955": {
+      "figma": "solid/text-style/backspace",
+      "name": "backspace",
+      "theme": "solid"
+    },
+    "2098:9949": {
+      "figma": "solid/text-style/code",
+      "name": "code",
+      "theme": "solid"
+    },
+    "2098:9907": {
+      "figma": "solid/text-style/h1",
+      "name": "h1",
+      "theme": "solid"
+    },
+    "2098:9913": {
+      "figma": "solid/text-style/h2",
+      "name": "h2",
+      "theme": "solid"
+    },
+    "2098:9919": {
+      "figma": "solid/text-style/h3",
+      "name": "h3",
+      "theme": "solid"
+    },
+    "2098:9925": {
+      "figma": "solid/text-style/h4",
+      "name": "h4",
+      "theme": "solid"
+    },
+    "2098:9931": {
+      "figma": "solid/text-style/h5",
+      "name": "h5",
+      "theme": "solid"
+    },
+    "2098:9937": {
+      "figma": "solid/text-style/h6",
+      "name": "h6",
+      "theme": "solid"
+    },
+    "2098:9961": {
+      "figma": "solid/text-style/quote",
+      "name": "quote",
+      "theme": "solid"
+    },
+    "2098:9883": {
+      "figma": "solid/text-style/text-style-bold",
+      "name": "text-style-bold",
+      "theme": "solid"
+    },
+    "2098:9865": {
+      "figma": "solid/text-style/text-style-italic",
+      "name": "text-style-italic",
+      "theme": "solid"
+    },
+    "2098:9871": {
+      "figma": "solid/text-style/text-style-strikethrough",
+      "name": "text-style-strikethrough",
+      "theme": "solid"
+    },
+    "2098:9877": {
+      "figma": "solid/text-style/text-style-underline",
+      "name": "text-style-underline",
+      "theme": "solid"
+    },
+    "2098:9943": {
+      "figma": "solid/text-style/unstyled",
+      "name": "unstyled",
+      "theme": "solid"
+    },
+    "2098:9973": {
+      "figma": "solid/user/agent",
+      "name": "agent",
+      "theme": "solid"
+    },
+    "2098:9967": {
+      "figma": "solid/user/avatar-user",
+      "name": "avatar-user",
+      "theme": "solid"
+    },
+    "2098:9979": {
+      "figma": "solid/user/contact",
+      "name": "contact",
+      "theme": "solid"
+    },
+    "2098:9985": {
+      "figma": "solid/user/team",
+      "name": "team",
+      "theme": "solid"
+    },
+    "2098:10003": {
+      "figma": "solid/user/user-active",
+      "name": "user-active",
+      "theme": "solid"
+    },
+    "2098:9991": {
+      "figma": "solid/user/user-default",
+      "name": "user-default",
+      "theme": "solid"
+    },
+    "2098:10022": {
+      "figma": "solid/user/user-engaged",
+      "name": "user-engaged",
+      "theme": "solid"
+    },
+    "2098:10028": {
+      "figma": "solid/user/user-entry",
+      "name": "user-entry",
+      "theme": "solid"
+    },
+    "2098:10034": {
+      "figma": "solid/user/user-exit",
+      "name": "user-exit",
+      "theme": "solid"
+    },
+    "2098:10040": {
+      "figma": "solid/user/user-favorite",
+      "name": "user-favorite",
+      "theme": "solid"
+    },
+    "2098:10009": {
+      "figma": "solid/user/user-lock",
+      "name": "user-lock",
+      "theme": "solid"
+    },
+    "2098:10016": {
+      "figma": "solid/user/user-sso",
+      "name": "user-sso",
+      "theme": "solid"
+    },
+    "2098:9997": {
+      "figma": "solid/user/user-woman",
+      "name": "user-woman",
+      "theme": "solid"
+    }
+  }
+}

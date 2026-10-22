@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColorTokens } from './foundation-blocks';
+
+<Meta title="UAI/Foundation/Colors" />
+
+# Colors
+
+As cores do UAI são semânticas: cada token tem um papel, e o valor muda entre o tema claro e o escuro. Escolha pelo papel e use sempre a variável, como `var(--uai-surface-paper)`.
+
+## Surface
+
+Fundos de página, cards, painéis e áreas com destaque.
+
+<ColorTokens group="surface" />
+
+## Content
+
+Textos e ícones. Combine com a superfície onde eles aparecem.
+
+<ColorTokens group="content" />
+
+## Action
+
+Componentes interativos, como botões. Normalmente você usa o componente, que já aplica estes tokens.
+
+<ColorTokens group="action" />
+
+## Border
+
+Bordas, divisores e o anel de foco.
+
+<ColorTokens group="border" />
+
+## Feedback
+
+Status: informação, sucesso, atenção e erro. Os tokens `-subtle` são fundos de alertas; use com o token forte no ícone.
+
+<ColorTokens group="feedback" />
+
+## Overlay
+
+Camadas translúcidas de hover e pressed sobre qualquer superfície interativa.
+
+<ColorTokens group="overlay" />
+
+## Fixed
+
+Cores que não mudam com o tema, para usar sobre fundos que também não mudam.
+
+<ColorTokens group="fixed" />
