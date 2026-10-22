@@ -24,7 +24,7 @@ const UaiThemeProvider$1 = /*@__PURE__*/ proxyCustomElement(class UaiThemeProvid
     }
     render() {
         const theme = THEMES.includes(this.theme) ? this.theme : 'light';
-        return (h(Host, { key: '829fecdd0ac930b7fa36e6b2c8b9cfe3b4b71142', "data-uai-theme": theme }, h("slot", { key: 'c2e9455ffb3b460c3754f5548ee8a919cb1138a0' })));
+        return (h(Host, { key: '0180c61962079bc2c88732a947d6a9d4f479d3eb', "data-uai-theme": theme }, h("slot", { key: '2d345d324f46ebfead2f090ce077e1cdd266e7fd' })));
     }
     static get watchers() { return {
         "theme": ["validateTheme"]

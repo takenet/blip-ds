@@ -29,7 +29,7 @@ export class BdsLoading {
         this.setSvgContent();
     }
     render() {
-        return (h(Host, { key: '8d429a85e540b2443d000bd6866d84767d480d38' }, h("div", { key: '735e9eea6e8ef74e609d5a4c45d14ef6e6802903', class: "loading-container", "data-test": this.dataTest }, h("div", { key: '243a8828d49cb2955247519860356eb268f18193', class: { page_loading: true }, innerHTML: this.svgContent }))));
+        return (h(Host, { key: '9ad89281dcafb49272095e3d5939d671ac1cb836' }, h("div", { key: 'c05054d9e158586994ebfb9535189f162d225765', class: "loading-container", "data-test": this.dataTest }, h("div", { key: '4930d9f927751267a2fd723568b531c293a927dd', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
     static get is() { return "bds-loading-page"; }
     static get encapsulation() { return "shadow"; }

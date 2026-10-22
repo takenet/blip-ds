@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
-import { d as defineCustomElement$3 } from './p-uL7cBhI6.js';
-import { d as defineCustomElement$2 } from './p-CY2zUmZM.js';
+import { d as defineCustomElement$3 } from './p-uv6YrdCG.js';
+import { d as defineCustomElement$2 } from './p-B29nqhOO.js';
 
 const tabsCss = ".bds-tabs{width:100%;display:-ms-flexbox;display:flex;z-index:1100;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-negative:0;flex-shrink:0;-ms-flex-direction:row;flex-direction:row;-ms-flex-align:center;align-items:center;height:48px;padding:0 10px 0 10px}.bds-tabs--center{-ms-flex-pack:center;justify-content:center}.bds-tabs--left{-ms-flex-pack:start;justify-content:flex-start}.bds-tabs--right{-ms-flex-pack:end;justify-content:flex-end}.bds-tabs .bds-tabs__header{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;overflow:hidden;-ms-flex-align:stretch;align-items:stretch;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.bds-tabs .bds-tabs__header-button-container{padding:0px;min-width:40px}";
 
@@ -124,10 +124,10 @@ const Tabs = /*@__PURE__*/ proxyCustomElement(class Tabs extends H {
             : (options.left = this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.clientWidth);
     }
     render() {
-        return (h(Host, { key: 'c95c1eddcbf0c8aa2b7f5dc601c0e0294bc41eb8', class: {
+        return (h(Host, { key: 'a1f41001c466030aa3190023b025705439a0a2ec', class: {
                 'bds-tabs': true,
                 [`bds-tabs--${this.align}`]: true,
-            } }, h("div", { key: '92ae87a955874243abd89c089c19c8c01b8a6172', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: 'd27570cc7958c92a99ba65c55f24462df596fbf6', class: "bds-tabs__header-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.handleScrollButtonClick("left" /* ScrollDirection.LEFT */), variant: "secondary" })), h("div", { key: '3fb451eaa14c2223e443f940af186d83dc2e5cc6', class: "bds-tabs__header" }, h("slot", { key: '5ab62ce42b032ae11286a680ade8b0cebedf641c' })), h("div", { key: 'e13c68a65782b8189412d6734bbf5590de414dd2', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: 'ff339cc4dcb8daae25a529948bece181e3df04aa', class: "bds-tabs__header-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.handleScrollButtonClick("right" /* ScrollDirection.RIGHT */), variant: "secondary" }))));
+            } }, h("div", { key: '215c327baa3bb671dac06f813d81d6810a067e11', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: '859990703fad62936d2d4fccdf421ee5e6671f59', class: "bds-tabs__header-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.handleScrollButtonClick("left" /* ScrollDirection.LEFT */), variant: "secondary" })), h("div", { key: 'f5c5c1ffb57c542472ab0f4db436d5567d76ebc9', class: "bds-tabs__header" }, h("slot", { key: '4b4bf30375427f1058a1c93cc1fa40bf9ea3a366' })), h("div", { key: 'eb0396fa0a4ff152b36e941878df931d6547abfa', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: '2ef16aabeada52baa5f18a7b218cc308d036563b', class: "bds-tabs__header-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.handleScrollButtonClick("right" /* ScrollDirection.RIGHT */), variant: "secondary" }))));
     }
     get el() { return this; }
     static get style() { return tabsCss; }

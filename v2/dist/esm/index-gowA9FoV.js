@@ -342,6 +342,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-warning.entry.js').then(processMod, consoleError);
+                case 'uai-button':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-button.entry.js').then(processMod, consoleError);
                 case 'uai-navbar':
                     return import(
                       /* webpackMode: "lazy" */
@@ -382,10 +386,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-toast-container.entry.js').then(processMod, consoleError);
-                case 'uai-typo':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './uai-typo.entry.js').then(processMod, consoleError);
                 case 'bds-banner':
                     return import(
                       /* webpackMode: "lazy" */
@@ -414,10 +414,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-pagination.entry.js').then(processMod, consoleError);
-                case 'uai-button':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './uai-button.entry.js').then(processMod, consoleError);
                 case 'bds-counter-text':
                     return import(
                       /* webpackMode: "lazy" */
@@ -434,6 +430,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-datepicker-period_2.entry.js').then(processMod, consoleError);
+                case 'uai-icon_2':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-icon_2.entry.js').then(processMod, consoleError);
                 case 'bds-illustration_2':
                     return import(
                       /* webpackMode: "lazy" */

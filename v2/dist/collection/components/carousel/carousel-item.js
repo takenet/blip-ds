@@ -9,7 +9,7 @@ export class BdsCarouselItem {
         this.bgImageBrightness = 1;
     }
     render() {
-        return (h(Host, { key: '97d4905acb5925034403e909c4b2c87aeda5ae67', class: "carrosel-item" }, h("bds-theme-provider", { key: 'e7746ebd74e698b99b7286ee93cd37f9c254fa03', theme: this.theme, class: "carrosel-item-frame", style: { background: this.bgColor } }, this.bgImage && (h("bds-image", { key: 'd52e32c3203349d2955e037f93ba02682489b99e', class: "image-bg", alt: "Example of a image", width: "100%", height: "100%", brightness: this.bgImageBrightness, "object-fit": "cover", src: this.bgImage })), h("slot", { key: 'e5544e36e76a18107f8fc15caa4fc65745ee3200' }))));
+        return (h(Host, { key: '90bdd86f3accdbe72fe309be46b1ea39718e4d47', class: "carrosel-item" }, h("bds-theme-provider", { key: '0c97f4a086734107cff9dd68214ca2f6994702b9', theme: this.theme, class: "carrosel-item-frame", style: { background: this.bgColor } }, this.bgImage && (h("bds-image", { key: '09a91b5f2ea0252b0a665dca19f2fbeff2abfa88', class: "image-bg", alt: "Example of a image", width: "100%", height: "100%", brightness: this.bgImageBrightness, "object-fit": "cover", src: this.bgImage })), h("slot", { key: '64e6309857acd317a729c333fd51ee6f3eeed056' }))));
     }
     static get is() { return "bds-carousel-item"; }
     static get encapsulation() { return "shadow"; }

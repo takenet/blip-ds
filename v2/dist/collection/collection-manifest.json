@@ -46,6 +46,7 @@
     "components/table/table-header-cell/table-header-cell.js",
     "components/tooltip/tooltip.js",
     "components/uai-button/uai-button.js",
+    "components/uai-icon/uai-icon.js",
     "components/uai-navbar/uai-navbar.js",
     "components/uai-theme-provider/uai-theme-provider.js",
     "components/uai-typo/uai-typo.js",

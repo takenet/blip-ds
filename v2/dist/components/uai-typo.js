@@ -1,4 +1,4 @@
-import { U as UaiTypo$1, d as defineCustomElement$1 } from './p-Csx9Uapq.js';
+import { U as UaiTypo$1, d as defineCustomElement$1 } from './p-MLwUCFlk.js';
 
 const UaiTypo = UaiTypo$1;
 const defineCustomElement = defineCustomElement$1;

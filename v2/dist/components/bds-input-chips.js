@@ -1,9 +1,9 @@
 import { p as proxyCustomElement, H, c as createEvent, h, a as Host } from './index.js';
 import { w as whitespaceValidation, e as emailValidation } from './p-BXYXNVip.js';
-import { d as defineCustomElement$7 } from './p-DLCuqfEF.js';
-import { d as defineCustomElement$6 } from './p-DkdktrHz.js';
-import { d as defineCustomElement$5 } from './p-UMqb1GdC.js';
-import { d as defineCustomElement$4 } from './p-CY2zUmZM.js';
+import { d as defineCustomElement$7 } from './p-BXSK73UO.js';
+import { d as defineCustomElement$6 } from './p-BUnTY86n.js';
+import { d as defineCustomElement$5 } from './p-Ccg_gUSE.js';
+import { d as defineCustomElement$4 } from './p-B29nqhOO.js';
 import { d as defineCustomElement$3 } from './p-7wwi1guL.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
@@ -390,7 +390,7 @@ const InputChips = /*@__PURE__*/ proxyCustomElement(class InputChips extends H {
         const isPressed = this.isPressed && !this.disabled;
         // Set default maxHeight if not provided to prevent UI breaking
         const defaultMaxHeight = this.maxHeight || '80px';
-        return (h(Host, { key: '6fd64b89c06dd9e78db9e8fc7040128e163398e7', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '51d8fac66354b3997d387324692f5267017ba150', class: {
+        return (h(Host, { key: '84ba3dcca53f80bf920ad0cfa41f59194b160c54', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '70751c1e8f804a080008fc2c647b9638e99ded18', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -398,7 +398,7 @@ const InputChips = /*@__PURE__*/ proxyCustomElement(class InputChips extends H {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: 'a47053b2335bb7327eb1955af3cfb7f1149c4782', class: "input__container" }, this.renderLabel(), h("div", { key: 'ae08d19d0ee662c99e3f129c7d1eda0b5a7744f0', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: 'e1645617a039461ffaa8dd8d08aa882404424aa6', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: '226271b2871415320f74df367044e9555725cd70', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: '19b06ec9fba3725be76f3f7c88796beb5837d3a8', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: 'e497709557ff71b7499b0d4f5c1d40312b93f497', name: "input-right" })), this.renderMessage()));
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: 'a170d3c6377a19a654ae4d1dcdba00582f5cb275', class: "input__container" }, this.renderLabel(), h("div", { key: 'c116a9bb68822e8c2f2645dc349ddc839aa34d4c', class: "input__container__wrapper", style: { maxHeight: defaultMaxHeight } }, this.internalChips.length > 0 && this.renderChips(), this.inputAvalible && (h("input", { key: '58c2f5bdb5907ada9b5a8a2c7d65a1e1f7f0a770', ref: (input) => (this.nativeInput = input), class: "input__container__text", name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest })))), this.counterLength && (h("bds-counter-text", { key: 'c91266bc632544aeca20913f42f63cc2018d8599', length: this.internalChips.length, max: this.maxChipsLength, active: isPressed })), this.success && h("bds-icon", { key: '9ca177b8014302584c64324489dfd28e8a4132ee', class: "icon-success", name: "checkb", theme: "outline", size: "xxx-small" }), h("slot", { key: '5e2e52acf9b51480dc067123f994804d212bc269', name: "input-right" })), this.renderMessage()));
     }
     static get watchers() { return {
         "chips": ["valueChanged"],

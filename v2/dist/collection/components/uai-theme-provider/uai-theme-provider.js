@@ -1,5 +1,9 @@
 import { Host, h } from "@stencil/core";
 const THEMES = ['light', 'dark'];
+/**
+ * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
+ * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+ */
 export class UaiThemeProvider {
     constructor() {
         /**
@@ -18,7 +22,7 @@ export class UaiThemeProvider {
     }
     render() {
         const theme = THEMES.includes(this.theme) ? this.theme : 'light';
-        return (h(Host, { key: '829fecdd0ac930b7fa36e6b2c8b9cfe3b4b71142', "data-uai-theme": theme }, h("slot", { key: 'c2e9455ffb3b460c3754f5548ee8a919cb1138a0' })));
+        return (h(Host, { key: '0180c61962079bc2c88732a947d6a9d4f479d3eb', "data-uai-theme": theme }, h("slot", { key: '2d345d324f46ebfead2f090ce077e1cdd266e7fd' })));
     }
     static get is() { return "uai-theme-provider"; }
     static get encapsulation() { return "shadow"; }

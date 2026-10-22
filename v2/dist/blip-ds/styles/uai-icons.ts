@@ -1,4 +1,4 @@
-// Generated from blip-tokens/build/uai-icons/uai-icon.css (the glyphs the UAI icon font ships). The uai-button spec fails on drift.
+// Generated from blip-tokens/build/uai-icons/uai-icon.css (the glyphs the UAI icon font ships). The uai-icon spec fails on drift.
 export const UAI_OUTLINE_ICONS: readonly string[] = [
   '123',
   'ab',
@@ -650,3 +650,12 @@ export const UAI_SOLID_ICONS: readonly string[] = [
   'whatsapp',
   'xml',
 ];
+
+export type UaiIconTheme = 'outline' | 'solid';
+
+const UAI_ICONS: Record<UaiIconTheme, ReadonlySet<string>> = {
+  outline: new Set(UAI_OUTLINE_ICONS),
+  solid: new Set(UAI_SOLID_ICONS),
+};
+
+export const isUaiIcon = (theme: UaiIconTheme, name: string): boolean => !!name && UAI_ICONS[theme].has(name);

@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$2 } from './p-dCdulcnF.js';
+import { d as defineCustomElement$2 } from './p-D-hI-6BA.js';
 
 const CardBody = /*@__PURE__*/ proxyCustomElement(class CardBody extends H {
     constructor() {
@@ -8,7 +8,7 @@ const CardBody = /*@__PURE__*/ proxyCustomElement(class CardBody extends H {
         this.__attachShadow();
     }
     render() {
-        return (h("bds-grid", { key: 'ba591eb57291b7949f7e0b89fe78007c5379398c' }, h("slot", { key: '59616ae89dd0499425d857ed3545cdf65d9ddbb0' })));
+        return (h("bds-grid", { key: '3e5a5b68b3080abde05c8db7ab1fcc6fc4642ba8' }, h("slot", { key: 'a74a06f59f05c2dfb9fc5378ae21190cb97ba2cd' })));
     }
 }, [1, "bds-card-body"]);
 function defineCustomElement$1() {

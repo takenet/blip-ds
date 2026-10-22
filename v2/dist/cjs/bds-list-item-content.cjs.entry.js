@@ -13,9 +13,9 @@ const ListItemContent = class {
         this.alignItems = 'flex-start';
     }
     render() {
-        return (index.h(index.Host, { key: 'c3d289ae8b49cdaf4b37bc7746533556e172223a', class: {
+        return (index.h(index.Host, { key: 'c9b08b434259a4f52ae7c21154c1a9f89ad89772', class: {
                 list_item_content: true,
-            } }, index.h("bds-grid", { key: '29a200ba2a371261607f2cd9b8ebe5975f8b1b47', direction: this.direction, flexWrap: this.flexWrap, justifyContent: this.justifyContent, alignItems: this.alignItems, gap: this.gap }, index.h("slot", { key: 'a334119b1966e883eb8e6d212da238fc57429b40' }))));
+            } }, index.h("bds-grid", { key: '30610f6e361d8da558862411198138e59d4ddc33', direction: this.direction, flexWrap: this.flexWrap, justifyContent: this.justifyContent, alignItems: this.alignItems, gap: this.gap }, index.h("slot", { key: '85d57769887e0910e04c56a9981d6844861b18f0' }))));
     }
     get hostElement() { return index.getElement(this); }
 };

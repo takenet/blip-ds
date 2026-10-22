@@ -15,12 +15,12 @@ const UaiNavbar = class {
         this.dataTest = null;
     }
     render() {
-        return (h(Host, { key: '6004048115cc251ddc6bdd58fb80d07f132eabee', class: { [`${this.orientation}`]: true } }, h("div", { key: '8a64702263ca879bf9c92cfec2d285b901da56da', class: {
+        return (h(Host, { key: 'a02fad0a9951fc3f5f9b12ec03e254eea7bf4b6d', class: { [`${this.orientation}`]: true } }, h("div", { key: '91bfb19f2139dd8b2453c9f2181fefd742bd1d74', class: {
                 navbar: true,
                 [`navbar__justify-content__${this.justifyContent}`]: true,
                 [`navbar__orientation__${this.orientation}`]: true,
                 [`navbar__background-color__${this.backgroundColor}`]: true,
-            }, "data-test": this.dataTest }, h("slot", { key: '76b23282432952b3e4f3b28aa989c4aef51def51' }))));
+            }, "data-test": this.dataTest }, h("slot", { key: '36a60717b3d0281497b2b2a7571762cfa8bb27f2' }))));
     }
     get hostElement() { return getElement(this); }
 };

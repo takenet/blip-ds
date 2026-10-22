@@ -37,6 +37,10 @@ const hasThemeRoot = (el) => {
     }
     return false;
 };
+/**
+ * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
+ * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+ */
 export class UaiTypo {
     constructor() {
         /**
@@ -95,7 +99,7 @@ export class UaiTypo {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (h(Tag, { key: 'bb89b44f2219412cdcf2aebfe277b653c9088563', class: {
+        return (h(Tag, { key: '14602559616a05f4e47bf3c0eb46ec5937d4cadf', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -104,7 +108,7 @@ export class UaiTypo {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: 'ca5ad3de4dde5c6915560450e78cb146d1148722' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: '342e388a9af14dfc7910b3c77a9e8e00e530142a' })));
     }
     static get is() { return "uai-typo"; }
     static get encapsulation() { return "shadow"; }

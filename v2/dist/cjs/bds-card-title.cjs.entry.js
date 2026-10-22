@@ -9,7 +9,7 @@ const CardTitle = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h("bds-typo", { key: '37234fc3f3fa427df412858653fafa07d2360efe', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
+        return (index.h("bds-typo", { key: 'd0df4eef95cc47118cbedf7b7774223bfa1a07ab', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
     }
 };
 CardTitle.style = cardTitleCss;

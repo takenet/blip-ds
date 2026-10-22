@@ -8,7 +8,7 @@ const TableHeader = /*@__PURE__*/ proxyCustomElement(class TableHeader extends H
         this.__registerHost();
     }
     render() {
-        return (h(Host, { key: '8723ebd242ac0004968f71c140285cfca5418ed7' }, h("slot", { key: 'b5bdcbe2fdc1ed6a722bc30970973dc6758a3991' })));
+        return (h(Host, { key: '196da6466b8dd62a635289cfc79758ecb2153e8e' }, h("slot", { key: '72f704567601e155c2ab4888f1c25c3ab6e17089' })));
     }
     static get style() { return tableHeaderCss; }
 }, [6, "bds-table-header"]);

@@ -1,5 +1,5 @@
 import { Host, h } from "@stencil/core";
-import { UAI_OUTLINE_ICONS, UAI_SOLID_ICONS } from "../../globals/uai-icons";
+import { isUaiIcon } from "../../globals/uai-icons";
 const VARIANTS = ['solid', 'outline', 'text'];
 const COLORS = ['primary', 'content', 'negative', 'positive'];
 const SIZES = ['compact', 'short', 'medium', 'large'];
@@ -9,10 +9,6 @@ const ICON_SIZE = {
     short: 'small',
     medium: 'medium',
     large: 'medium',
-};
-const UAI_ICONS = {
-    outline: new Set(UAI_OUTLINE_ICONS),
-    solid: new Set(UAI_SOLID_ICONS),
 };
 const warnings = new Set();
 const warnOnce = (key, message) => {
@@ -36,6 +32,11 @@ const hasThemeRoot = (el) => {
     }
     return false;
 };
+/**
+ * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+ * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+ * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+ */
 export class UaiButton {
     constructor() {
         this.direction = 'row';
@@ -202,8 +203,8 @@ export class UaiButton {
     renderIcon(name, size, position) {
         const theme = this.iconTheme === 'solid' ? 'solid' : 'outline';
         const classes = { button__icon: true, [`button__icon--${position}`]: true };
-        if (this.typeIcon === 'icon' && UAI_ICONS[theme].has(name)) {
-            return (h("span", { class: Object.assign(Object.assign({}, classes), { 'uai-icon': true, [`uai-icon-${theme}-${name}`]: true }), "aria-hidden": "true" }));
+        if (this.typeIcon === 'icon' && isUaiIcon(theme, name)) {
+            return h("uai-icon", { class: classes, name: name, theme: theme, "aria-hidden": "true" });
         }
         warnOnce(`icon:${theme}:${this.typeIcon}:${name}`, `"${name}" is not in the UAI icon set (theme "${theme}", type "${this.typeIcon}"). Falling back to the legacy bds-icon, which is deprecated here.`);
         return (h("bds-icon", { class: classes, name: name, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: ICON_SIZE[size], "aria-hidden": "true" }));
@@ -218,12 +219,12 @@ export class UaiButton {
         const iconOnly = !this.hasLabel && !!(leftIconName || rightIconName);
         const left = this.loading ? (h("span", { class: "button__spinner", "aria-hidden": "true" })) : leftIconName ? (this.renderIcon(leftIconName, size, 'left')) : null;
         const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
-        const label = (h("span", { key: '6ceb556349ff22bbd45ae3c1a86ba2fa5f264a04', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: 'abcaa8f688d875b0a5ced32a5108e0eec06e4bb8', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: 'ecf53312edc5b4721f21f81b5589d795a195244f', onSlotchange: this.updateHasLabel }))));
+        const label = (h("span", { key: '6a64fe65c4c907f6c31302039907e0f2a4f28762', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: '254e0f9e2ac9b1b17830a9511558c69ab9b03cc0', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: '88fd8437164adf6252664ac8fda2aabc75dbe288', onSlotchange: this.updateHasLabel }))));
         const grouped = this.groupIcon && justify === 'space-between' && left;
-        return (h(Host, { key: '69da07747a8c30ee7e1b702e106050b264e7cd94', class: {
+        return (h(Host, { key: '20444861f19fb316ff095eb6852398a41887cd79', class: {
                 'uai-button--block': this.block || this.fullWidth,
                 'uai-button--group': !!this.position,
-            } }, h("button", { key: 'c51b385cedf5d38e73e00de17b7d803673949ee0', class: {
+            } }, h("button", { key: '19a81f593f93585c5917cbc1813db79436cc5125', class: {
                 button: true,
                 [`button--${variant}`]: true,
                 [`button--color-${color}`]: true,
