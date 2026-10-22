@@ -4,7 +4,8 @@ import DocumentationTemplate from './button.mdx';
 
 export default {
   title: 'Components/[deprecated] Button',
-  tags: ['autodocs'],
+  // Deprecated: kept out of the Storybook MCP manifest so agents use uai-button.
+  tags: ['autodocs', '!manifest'],
   parameters: {
     docs: {
       page: DocumentationTemplate,

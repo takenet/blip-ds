@@ -31,8 +31,27 @@ test('adds Stencil API documentation and real story IDs without losing examples'
   const index = { entries: { primary: { type: 'story', importPath: './src/button.stories.jsx', name: 'Primary', id: 'button--primary' } } };
   const result = enrichManifest(manifest, docs, index).components.button;
   assert.match(result.description, /size.*medium/);
-  assert.match(result.description, /selected/);
+  assert.match(result.description, /onSelected/);
+  assert.equal(result.import, "import { BdsButton } from 'blip-ds-react/dist/components';");
   assert.equal(result.error, undefined);
   assert.equal(result.stories[0].id, 'button--primary');
   assert.equal(result.stories[0].snippet, '<bds-button />');
+});
+test('finds the API of uai components by their full tag and documents React usage', () => {
+  const manifest = { components: { 'uai-button': {
+    path: './src/components/uai-button/uai-button.stories.jsx', name: 'Button', import: 'import { UaiButton } from "blip-ds";',
+    stories: [{ name: 'Properties', snippet: '<UaiButton />' }],
+  } } };
+  const docs = { components: [
+    { tag: 'bds-uai-button', docs: 'wrong', props: [], events: [], methods: [], slots: [] },
+    { tag: 'uai-button', docs: 'UAI button', props: [{ name: 'iconLeft', attr: 'icon-left', type: 'string', default: 'null' }],
+      events: [{ event: 'uaiClick', detail: 'MouseEvent' }], methods: [], slots: [{ name: '', docs: 'Label' }] },
+  ] };
+  const result = enrichManifest(manifest, docs, { entries: {} }).components['uai-button'];
+  assert.equal(result.summary, '<UaiButton> from blip-ds-react/dist/components');
+  assert.equal(result.import, "import { UaiButton } from 'blip-ds-react/dist/components';");
+  assert.match(result.description, /^UAI button/);
+  assert.match(result.description, /- iconLeft: string/);
+  assert.match(result.description, /- onUaiClick: MouseEvent/);
+  assert.match(result.description, /default \(children\): Label/);
 });

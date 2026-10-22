@@ -6,6 +6,6 @@ test.describe('NavBar - Visual Regression', () => {
   });
 
   test('v2 default state', async ({ storybook }) => {
-    await storybook.screenshotStory('uai-navbar--web-component', 'uai-navbar-default');
+    await storybook.screenshotStory('uai-navbar--playground', 'uai-navbar-default');
   });
 });

@@ -5,6 +5,12 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+
 ## Properties
 
 | Property            | Attribute             | Description                                                                                                                                                                                                                  | Type                                                            | Default     |
@@ -148,12 +154,14 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [uai-icon](../uai-icon)
 - [bds-icon](../icon)
 - [uai-typo](../uai-typo)
 
 ### Graph
 ```mermaid
 graph TD;
+  uai-button --> uai-icon
   uai-button --> bds-icon
   uai-button --> uai-typo
   style uai-button fill:#f9f,stroke:#333,stroke-width:4px

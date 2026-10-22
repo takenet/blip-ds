@@ -3,48 +3,34 @@ import * as UaiButtonStories from './uai-button.stories';
 
 <Meta isTemplate />
 
-# UAI Button
+# Button
 
-[Design (UAI Core – Components)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2050-1815)
+Dispara uma ação. Use um botão `solid` para a ação principal da tela e `outline` ou `text` para as demais. Para navegar para outra página, use um link.
 
-O `uai-button` é a versão com a nova UI do `bds-button`. A API é a mesma do `bds-button`, com estas diferenças:
+<Canvas of={UaiButtonStories.Playground} />
 
-| `bds-button` | `uai-button` |
-| --- | --- |
-| `bdsClick` | `uaiClick` (o `detail` traz o evento de clique nativo) |
-| `bdsLoading` | `loading` |
-| `variant` `primary`, `secondary`, `tertiary`, `ghost`, `delete`, `dashed`, `facebook`, `secondary--white` | Não aceitos: use `solid`, `outline` ou `text` com `color` |
-| `size` `tall`, `standard` | Não aceitos: use `large` ou `medium` |
-| — | `size="compact"` (24px) |
-| `bdsLoadingVariant`, `bdsLoadingColor`, `groupIcon` | Aceitos, mas deprecados (aviso no console) |
+<Controls of={UaiButtonStories.Playground} />
 
-Valores não aceitos caem no padrão e geram um aviso no console.
+## Como usar
 
-## Tema
+```jsx
+import { UaiButton, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
 
-Os componentes UAI leem os tokens `--uai-*` do `blip-tokens`. Envolva-os em um `uai-theme-provider`:
-
-```html
-<uai-theme-provider theme="light">
-  <uai-button>Salvar</uai-button>
-</uai-theme-provider>
+<UaiThemeProvider theme="light">
+  <UaiButton variant="solid" color="primary" iconLeft="add" onUaiClick={save}>
+    Salvar
+  </UaiButton>
+</UaiThemeProvider>;
 ```
 
-Sem tema, os componentes usam os valores do tema claro e avisam no console.
-
-A nova UI usa a fonte **Figtree**. Carregue-a na aplicação; sem ela, o botão usa a fonte atual do blip-ds.
-
-## Estrutura
-
-<Canvas of={UaiButtonStories.Properties} />
-
-## Propriedades
-
-<Controls of={UaiButtonStories.Properties} />
+- Envolva a tela em um `UaiThemeProvider`. Sem tema, o botão usa os valores do tema claro e avisa no console.
+- Carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+- Fora do React, use o custom element `<uai-button>`, com as mesmas propriedades em kebab-case (`icon-left`) e o evento `uaiClick`.
 
 ## Variantes e cores
 
-`outline` e `text` usam a cor de destaque escolhida; `content` fica neutro.
+`outline` e `text` usam a cor escolhida no texto e na borda. `content` é neutra.
 
 <Canvas of={UaiButtonStories.VariantsAndColors} />
 
@@ -52,40 +38,32 @@ A nova UI usa a fonte **Figtree**. Carregue-a na aplicação; sem ela, o botão 
 
 | Tamanho | Altura | Padding horizontal | Raio | Texto | Ícone |
 | --- | --- | --- | --- | --- | --- |
-| `compact` | 24px | 8px | 8px | 12/20 medium | 16px |
-| `short` | 32px | 12px | 12px | 14/22 medium | 20px |
-| `medium` (padrão) | 40px | 12px | 12px | 14/22 medium | 24px |
-| `large` | 56px | 16px | 12px | 14/22 medium | 24px |
+| `compact` | 24px | 8px | 8px | caption, medium | 16px |
+| `short` | 32px | 12px | 12px | body-base, medium | 20px |
+| `medium` (padrão) | 40px | 12px | 12px | body-base, medium | 24px |
+| `large` | 56px | 16px | 12px | body-base, medium | 24px |
 
 <Canvas of={UaiButtonStories.Sizes} />
 
 ## Estados
 
-Em `loading`, o spinner ocupa o lugar do ícone da esquerda, o botão continua focável e o `uaiClick` não é emitido.
+Em `loading`, o spinner ocupa o lugar do ícone da esquerda, o botão continua focável e `onUaiClick` não roda.
 
 <Canvas of={UaiButtonStories.States} />
 
 ## Ícones
 
-Os ícones vêm da fonte `uai-icon` do `blip-tokens` (323 ícones `outline` e 323 `solid`). Use o nome do ícone em `icon`, `iconLeft` ou `iconRight` e escolha o estilo com `iconTheme` (`outline` ou `solid`). O tamanho segue o botão: 16px no `compact`, 20px no `short` e 24px no `medium` e no `large`.
+Os ícones são `UaiIcon`, da fonte de ícones UAI. Informe o nome em `icon`, `iconLeft` ou `iconRight` e o estilo em `iconTheme` (`outline` ou `solid`). O tamanho e a cor seguem o botão.
 
-A fonte precisa estar carregada na aplicação, assim como o `uai.css`:
-
-```js
-import 'blip-tokens/uai-icons/css';
-```
-
-Nomes que não existem na fonte `uai-icon`, e `typeIcon` `logo` ou `emoji`, caem no `bds-icon` antigo com um aviso no console.
-
-Sem texto, o botão fica quadrado. Nesse caso, informe `aria-label`.
+Nomes que não existem na fonte UAI, e `typeIcon` `logo` ou `emoji`, usam o `bds-icon` antigo e avisam no console.
 
 <Canvas of={UaiButtonStories.Icons} />
 
 ## Eventos
 
-| Evento | Quando | `detail` |
-| --- | --- | --- |
-| `uaiClick` | Clique, Enter ou Space; não é emitido com `disabled` ou `loading` | Evento de clique nativo |
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiClick` | `uaiClick` | Clique, Enter ou Space; não roda com `disabled` ou `loading` | Evento de clique nativo |
 
 <Canvas of={UaiButtonStories.Events} />
 
@@ -96,6 +74,31 @@ Sem texto, o botão fica quadrado. Nesse caso, informe `aria-label`.
 - Em `loading`, o botão recebe `aria-busy` e `aria-disabled`.
 - Botões só com ícone precisam de `aria-label`.
 
-## React
+## Tokens
 
-<Canvas of={UaiButtonStories.FrameworkReact} />
+| Parte | Tokens |
+| --- | --- |
+| Fundo e texto | `action-primary-*`, `action-destructive-*`, `feedback-success`, `content-primary`, `surface-background`, `fixed-bright` |
+| Borda e foco | `border-default`, `border-width-default`, `border-width-thick`, `border-ring` |
+| Hover e pressed | `overlay-hover`, `overlay-pressed`, `action-outline-*` |
+| Tamanho e forma | `spacing-*`, `sizing-*`, `radius-md`, `radius-lg` |
+| Texto | `body-base` e `caption` com `font-weight-medium` (via `UaiTypo`) |
+
+## Migração do `bds-button`
+
+A API é a mesma do `BdsButton`, com estas diferenças:
+
+| `BdsButton` | `UaiButton` |
+| --- | --- |
+| `onBdsClick` | `onUaiClick` (o `detail` traz o evento de clique nativo) |
+| `bdsLoading` | `loading` |
+| `variant` `primary`, `secondary`, `tertiary`, `ghost`, `delete`, `dashed`, `facebook`, `secondary--white` | Não aceitos: use `solid`, `outline` ou `text` com `color` |
+| `size` `tall`, `standard` | Não aceitos: use `large` ou `medium` |
+| — | `size="compact"` (24px) |
+| `bdsLoadingVariant`, `bdsLoadingColor`, `groupIcon` | Aceitos, mas deprecados (aviso no console) |
+
+Valores não aceitos caem no padrão e avisam no console.
+
+## Design
+
+[UaiButton no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2050-1815)

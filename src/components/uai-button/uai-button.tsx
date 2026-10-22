@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { colorsVariants, LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { IconSize } from '../icon/icon-interface';
-import { UAI_OUTLINE_ICONS, UAI_SOLID_ICONS } from '../../globals/uai-icons';
+import { isUaiIcon } from '../../globals/uai-icons';
 
 export type UaiButtonVariant = 'solid' | 'outline' | 'text';
 export type UaiButtonColor = 'primary' | 'content' | 'negative' | 'positive';
@@ -23,11 +23,6 @@ const ICON_SIZE: Record<UaiButtonSize, IconSize> = {
   short: 'small',
   medium: 'medium',
   large: 'medium',
-};
-
-const UAI_ICONS: Record<UaiButtonIconTheme, ReadonlySet<string>> = {
-  outline: new Set<string>(UAI_OUTLINE_ICONS),
-  solid: new Set<string>(UAI_SOLID_ICONS),
 };
 
 const warnings = new Set<string>();
@@ -52,6 +47,11 @@ const hasThemeRoot = (el: HTMLElement): boolean => {
   return false;
 };
 
+/**
+ * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
+ * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+ * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+ */
 @Component({
   tag: 'uai-button',
   styleUrl: 'uai-button.scss',
@@ -287,10 +287,8 @@ export class UaiButton {
     const theme: UaiButtonIconTheme = this.iconTheme === 'solid' ? 'solid' : 'outline';
     const classes = { button__icon: true, [`button__icon--${position}`]: true };
 
-    if (this.typeIcon === 'icon' && UAI_ICONS[theme].has(name)) {
-      return (
-        <span class={{ ...classes, 'uai-icon': true, [`uai-icon-${theme}-${name}`]: true }} aria-hidden="true"></span>
-      );
+    if (this.typeIcon === 'icon' && isUaiIcon(theme, name)) {
+      return <uai-icon class={classes} name={name} theme={theme} aria-hidden="true"></uai-icon>;
     }
 
     warnOnce(

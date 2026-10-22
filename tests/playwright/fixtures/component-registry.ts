@@ -295,8 +295,8 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'uai-navbar',
     name: 'Navbar',
-    primaryStory: 'uai-navbar--web-component',
-    stories: [{ storyId: 'uai-navbar--web-component', label: 'Web Component' }],
+    primaryStory: 'uai-navbar--playground',
+    stories: [{ storyId: 'uai-navbar--playground', label: 'Playground' }],
   },
   {
     tag: 'uai-button',
@@ -319,16 +319,26 @@ export const WAVE_4: ComponentEntry[] = [
     ],
   },
   {
+    tag: 'uai-icon',
+    name: 'UaiIcon',
+    primaryStory: 'uai-icon--colors',
+    stories: [
+      { storyId: 'uai-icon--sizes', label: 'Sizes' },
+      { storyId: 'uai-icon--colors', label: 'Colors' },
+      { storyId: 'uai-icon--themes', label: 'Themes' },
+    ],
+  },
+  {
     tag: 'uai-theme-provider',
     name: 'UaiThemeProvider',
-    primaryStory: 'uai-theme-provider--properties',
-    stories: [{ storyId: 'uai-theme-provider--properties', label: 'Properties' }],
+    primaryStory: 'uai-theme-provider--playground',
+    stories: [{ storyId: 'uai-theme-provider--playground', label: 'Playground' }],
   },
   {
     tag: 'uai-navbar-content',
     name: 'UaiNavbarContent',
-    primaryStory: 'uai-navbar--web-component',
-    stories: [{ storyId: 'uai-navbar--web-component', label: 'Web Component' }],
+    primaryStory: 'uai-navbar--playground',
+    stories: [{ storyId: 'uai-navbar--playground', label: 'Playground' }],
   },
   {
     tag: 'bds-stepper',

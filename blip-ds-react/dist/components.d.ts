@@ -106,6 +106,7 @@ import { BdsTypo as BdsTypoElement } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement } from "blip-ds/dist/components/bds-warning.js";
 import { UaiButton as UaiButtonElement } from "blip-ds/dist/components/uai-button.js";
+import { UaiIcon as UaiIconElement } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiThemeProvider as UaiThemeProviderElement } from "blip-ds/dist/components/uai-theme-provider.js";
@@ -630,6 +631,8 @@ export type UaiButtonEvents = {
     onUaiClick: EventName<UaiButtonCustomEvent<MouseEvent>>;
 };
 export declare const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents>;
+export type UaiIconEvents = NonNullable<unknown>;
+export declare const UaiIcon: StencilReactComponent<UaiIconElement, UaiIconEvents>;
 export type UaiNavbarEvents = NonNullable<unknown>;
 export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents>;
 export type UaiNavbarContentEvents = NonNullable<unknown>;

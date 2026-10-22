@@ -4,6 +4,10 @@ export type UaiTheme = 'light' | 'dark';
 
 const THEMES: UaiTheme[] = ['light', 'dark'];
 
+/**
+ * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
+ * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+ */
 @Component({
   tag: 'uai-theme-provider',
   styleUrl: 'uai-theme-provider.scss',

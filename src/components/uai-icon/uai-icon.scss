@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+@use '../../globals/helpers' as *;
+@use 'blip-tokens/build/scss/uai-colors-light' as colors;
+@use 'blip-tokens/build/uai-icons/uai-icon';
+
+/**
+ * @prop --uai-icon-size: Overrides the icon size. Components that embed uai-icon (like uai-button) set it to their own icon size.
+ */
+
+$sizes: (
+  x-small: (
+    sizing-sm,
+    $uai-sizing-sm,
+  ),
+  small: (
+    sizing-md,
+    $uai-sizing-md,
+  ),
+  medium: (
+    sizing-lg,
+    $uai-sizing-lg,
+  ),
+);
+
+$colors:
+  content-primary, content-secondary, content-disabled, content-inverse, content-link, feedback-info, feedback-success,
+  feedback-warning, feedback-error;
+
+:host {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--uai-icon-size, var(--icon-size));
+  height: var(--uai-icon-size, var(--icon-size));
+  font-size: var(--uai-icon-size, var(--icon-size));
+  line-height: 1;
+  vertical-align: middle;
+}
+
+@each $size, $token in $sizes {
+  :host(.uai-icon--size-#{$size}) {
+    --icon-size: var(--uai-#{list.nth($token, 1)}, #{list.nth($token, 2)});
+  }
+}
+
+@each $color in $colors {
+  :host(.uai-icon--color-#{$color}) {
+    color: var(--uai-#{$color}, #{map.get(meta.module-variables(colors), 'uai-#{$color}')});
+  }
+}
+
+.uai-icon {
+  font-size: inherit;
+  line-height: 1;
+}

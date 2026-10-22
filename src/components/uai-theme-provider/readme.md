@@ -5,6 +5,11 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
+It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+
 ## Properties
 
 | Property | Attribute | Description                                                                                                                                            | Type                | Default   |
