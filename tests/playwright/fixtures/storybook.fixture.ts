@@ -12,7 +12,7 @@ const visualAssets = new Map([
 
 /**
  * Navigates to a Storybook story iframe and waits for the component to render.
- * Story ID format: "components-button--properties"
+ * Story ID format: "components-deprecated-button--properties"
  */
 async function gotoStory(page: Page, storyId: string) {
   await page.goto(`/iframe.html?id=${storyId}&viewMode=story`, {

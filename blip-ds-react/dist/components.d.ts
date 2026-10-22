@@ -1,5 +1,5 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeItemCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSliderCustomEvent, type BdsTabGroupCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type StepOption, type TypeList, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeItemCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsTabGroupCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiButtonCustomEvent, type stateSelect } from "blip-ds";
 import { BdsAccordionBody as BdsAccordionBodyElement } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement } from "blip-ds/dist/components/bds-accordion-group.js";
 import { BdsAccordionHeader as BdsAccordionHeaderElement } from "blip-ds/dist/components/bds-accordion-header.js";
@@ -70,9 +70,7 @@ import { BdsNavTreeGroup as BdsNavTreeGroupElement } from "blip-ds/dist/componen
 import { BdsNavTreeItem as BdsNavTreeItemElement } from "blip-ds/dist/components/bds-nav-tree-item.js";
 import { BdsNavTree as BdsNavTreeElement } from "blip-ds/dist/components/bds-nav-tree.js";
 import { BdsNavbarContent as BdsNavbarContentElement } from "blip-ds/dist/components/bds-navbar-content.js";
-import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
 import { BdsNavbar as BdsNavbarElement } from "blip-ds/dist/components/bds-navbar.js";
-import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
 import { BdsPagination as BdsPaginationElement } from "blip-ds/dist/components/bds-pagination.js";
 import { BdsPaper as BdsPaperElement } from "blip-ds/dist/components/bds-paper.js";
 import { BdsProgressBar as BdsProgressBarElement } from "blip-ds/dist/components/bds-progress-bar.js";
@@ -107,6 +105,10 @@ import { BdsTooltip as BdsTooltipElement } from "blip-ds/dist/components/bds-too
 import { BdsTypo as BdsTypoElement } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement } from "blip-ds/dist/components/bds-warning.js";
+import { UaiButton as UaiButtonElement } from "blip-ds/dist/components/uai-button.js";
+import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
+import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
+import { UaiThemeProvider as UaiThemeProviderElement } from "blip-ds/dist/components/uai-theme-provider.js";
 export type BdsAccordionEvents = {
     onBdsToggle: EventName<CustomEvent<{
         value: boolean;
@@ -140,7 +142,7 @@ export type BdsAutocompleteEvents = {
     onBdsChange: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>;
     onBdsSelectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteSelectedChangeEventDetail>>;
     onBdsMultiselectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteMultiSelectedChangeEventDetail>>;
-    onBdsInput: EventName<BdsAutocompleteCustomEvent<InputEvent>>;
+    onBdsInput: EventName<BdsAutocompleteCustomEvent<KeyboardEvent>>;
     onBdsCancel: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>;
     onBdsFocus: EventName<CustomEvent<void>>;
     onBdsBlur: EventName<CustomEvent<void>>;
@@ -204,9 +206,7 @@ export declare const BdsCarousel: StencilReactComponent<BdsCarouselElement, BdsC
 export type BdsCarouselItemEvents = NonNullable<unknown>;
 export declare const BdsCarouselItem: StencilReactComponent<BdsCarouselItemElement, BdsCarouselItemEvents>;
 export type BdsCheckboxEvents = {
-    onBdsChange: EventName<CustomEvent<{
-        checked: boolean;
-    }>>;
+    onBdsChange: EventName<CustomEvent<any>>;
     onBdsInput: EventName<BdsCheckboxCustomEvent<KeyboardEvent>>;
 };
 export declare const BdsCheckbox: StencilReactComponent<BdsCheckboxElement, BdsCheckboxEvents>;
@@ -482,10 +482,6 @@ export type BdsNavbarEvents = NonNullable<unknown>;
 export declare const BdsNavbar: StencilReactComponent<BdsNavbarElement, BdsNavbarEvents>;
 export type BdsNavbarContentEvents = NonNullable<unknown>;
 export declare const BdsNavbarContent: StencilReactComponent<BdsNavbarContentElement, BdsNavbarContentEvents>;
-export type UaiNavbarEvents = NonNullable<unknown>;
-export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents>;
-export type UaiNavbarContentEvents = NonNullable<unknown>;
-export declare const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, UaiNavbarContentEvents>;
 export type BdsPaginationEvents = {
     onBdsPaginationChange: EventName<CustomEvent<number>>;
     onBdsItemsPerPageChange: EventName<CustomEvent<number>>;
@@ -560,7 +556,7 @@ export declare const BdsSidebar: StencilReactComponent<BdsSidebarElement, BdsSid
 export type BdsSkeletonEvents = NonNullable<unknown>;
 export declare const BdsSkeleton: StencilReactComponent<BdsSkeletonElement, BdsSkeletonEvents>;
 export type BdsSliderEvents = {
-    onBdsChange: EventName<BdsSliderCustomEvent<StepOption>>;
+    onBdsChange: EventName<CustomEvent<any>>;
 };
 export declare const BdsSlider: StencilReactComponent<BdsSliderElement, BdsSliderEvents>;
 export type BdsStepEvents = NonNullable<unknown>;
@@ -623,13 +619,19 @@ export declare const BdsTooltip: StencilReactComponent<BdsTooltipElement, BdsToo
 export type BdsTypoEvents = NonNullable<unknown>;
 export declare const BdsTypo: StencilReactComponent<BdsTypoElement, BdsTypoEvents>;
 export type BdsUploadEvents = {
-    onBdsUploadDelete: EventName<BdsUploadCustomEvent<{
-        value: File[];
-    }>>;
-    onBdsUploadChange: EventName<BdsUploadCustomEvent<{
-        value: File[];
-    }>>;
+    onBdsUploadDelete: EventName<CustomEvent<any>>;
+    onBdsUploadChange: EventName<CustomEvent<any>>;
 };
 export declare const BdsUpload: StencilReactComponent<BdsUploadElement, BdsUploadEvents>;
 export type BdsWarningEvents = NonNullable<unknown>;
 export declare const BdsWarning: StencilReactComponent<BdsWarningElement, BdsWarningEvents>;
+export type UaiButtonEvents = {
+    onUaiClick: EventName<UaiButtonCustomEvent<MouseEvent>>;
+};
+export declare const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents>;
+export type UaiNavbarEvents = NonNullable<unknown>;
+export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents>;
+export type UaiNavbarContentEvents = NonNullable<unknown>;
+export declare const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, UaiNavbarContentEvents>;
+export type UaiThemeProviderEvents = NonNullable<unknown>;
+export declare const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, UaiThemeProviderEvents>;

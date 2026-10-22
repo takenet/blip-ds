@@ -4,7 +4,7 @@
  */
 
 export interface ComponentStory {
-  /** Storybook story ID (e.g., "components-button--properties") */
+  /** Storybook story ID (e.g., "components-deprecated-button--properties") */
   storyId: string;
   /** Human-readable label */
   label: string;
@@ -28,11 +28,11 @@ export const WAVE_1: ComponentEntry[] = [
   {
     tag: 'bds-button',
     name: 'Button',
-    primaryStory: 'components-button--properties',
+    primaryStory: 'components-deprecated-button--properties',
     stories: [
-      { storyId: 'components-button--properties', label: 'Properties' },
-      { storyId: 'components-button--events', label: 'Events' },
-      { storyId: 'components-button--flexible-layouts', label: 'Flexible Layouts' },
+      { storyId: 'components-deprecated-button--properties', label: 'Properties' },
+      { storyId: 'components-deprecated-button--events', label: 'Events' },
+      { storyId: 'components-deprecated-button--flexible-layouts', label: 'Flexible Layouts' },
     ],
   },
   {
@@ -295,14 +295,14 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'uai-navbar',
     name: 'Navbar',
-    primaryStory: 'navigation-navbar--web-component',
-    stories: [{ storyId: 'navigation-navbar--web-component', label: 'Web Component' }],
+    primaryStory: 'uai-navbar--web-component',
+    stories: [{ storyId: 'uai-navbar--web-component', label: 'Web Component' }],
   },
   {
     tag: 'uai-navbar-content',
     name: 'UaiNavbarContent',
-    primaryStory: 'navigation-navbar--web-component',
-    stories: [{ storyId: 'navigation-navbar--web-component', label: 'Web Component' }],
+    primaryStory: 'uai-navbar--web-component',
+    stories: [{ storyId: 'uai-navbar--web-component', label: 'Web Component' }],
   },
   {
     tag: 'bds-stepper',
