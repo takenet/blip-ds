@@ -1,4 +1,4 @@
-import { B as Button, d as defineCustomElement$1 } from './p-CZ_lpaQL.js';
+import { B as Button, d as defineCustomElement$1 } from './p-BpN3Olfy.js';
 
 const BdsButton = Button;
 const defineCustomElement = defineCustomElement$1;

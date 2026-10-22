@@ -1,4 +1,4 @@
-import { R as Radio, d as defineCustomElement$1 } from './p-BZdd3tLL.js';
+import { R as Radio, d as defineCustomElement$1 } from './p-C_p4ZJQW.js';
 
 const BdsRadio = Radio;
 const defineCustomElement = defineCustomElement$1;

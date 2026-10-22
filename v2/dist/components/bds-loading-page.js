@@ -35,7 +35,7 @@ const BdsLoading = /*@__PURE__*/ proxyCustomElement(class BdsLoading extends H {
         this.setSvgContent();
     }
     render() {
-        return (h(Host, { key: 'a50490c52cbaa3cbc05fc78eb99c05007b13edde' }, h("div", { key: '2c5cfceaa210eff98fb067ef31e4aaf2ab24bf2e', class: "loading-container", "data-test": this.dataTest }, h("div", { key: 'a38d95a072843913e7db188dd3eadd8d0dd35c08', class: { page_loading: true }, innerHTML: this.svgContent }))));
+        return (h(Host, { key: 'b190bd77107fb142652acb0bd3c8333cde9bdc86' }, h("div", { key: '80f8d56cbaa9f4329c995977937cd8ee5b0a7dbc', class: "loading-container", "data-test": this.dataTest }, h("div", { key: '078724376cc8838a9198719ce689a2b78733b94b', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
     static get style() { return loadingPageCss; }
 }, [1, "bds-loading-page", {

@@ -342,6 +342,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-warning.entry.js').then(processMod, consoleError);
+                case 'uai-button':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-button.entry.js').then(processMod, consoleError);
                 case 'uai-navbar':
                     return import(
                       /* webpackMode: "lazy" */
@@ -350,6 +354,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-navbar-content.entry.js').then(processMod, consoleError);
+                case 'uai-theme-provider':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-theme-provider.entry.js').then(processMod, consoleError);
                 case 'bds-badge':
                     return import(
                       /* webpackMode: "lazy" */

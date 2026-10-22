@@ -76,7 +76,9 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
+import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
+import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export { collapses } from "./components/accordion/accordion-group";
 export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 export { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
@@ -148,7 +150,9 @@ export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
+export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
+export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -3642,6 +3646,129 @@ export namespace Components {
     }
     interface BdsWarning {
     }
+    interface UaiButton {
+        /**
+          * Accessible name of the button. Required when the button has no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * If true, renders an 'arrow-right' icon after the label.
+          * @default false
+         */
+        "arrow"?: boolean;
+        /**
+          * @deprecated The spinner follows the button variant and color. This prop has no effect.
+         */
+        "bdsLoadingColor"?: colorsVariants;
+        /**
+          * @deprecated The spinner follows the button variant and color. This prop has no effect.
+         */
+        "bdsLoadingVariant"?: LoadingSpinnerVariant;
+        /**
+          * If true, the button takes the full width of its container.
+          * @default false
+         */
+        "block"?: boolean;
+        /**
+          * Color of the button. Can be one of: 'primary', 'content', 'negative', 'positive'.
+          * @default 'primary'
+         */
+        "color"?: UaiButtonColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the button is disabled.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If true, the button takes the full width of its container with centered content.
+          * @default false
+         */
+        "fullWidth"?: boolean;
+        /**
+          * @deprecated Put the left icon and the label together in the default slot instead. If true, keeps the left icon together with the label when justifyContent is 'space-between'.
+         */
+        "groupIcon"?: boolean;
+        /**
+          * Icon rendered before the label. Uses the bds-icon component. Takes precedence over iconLeft.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Icon rendered before the label. Uses the bds-icon component.
+          * @default null
+         */
+        "iconLeft"?: string;
+        /**
+          * Icon rendered after the label. Uses the bds-icon component.
+          * @default null
+         */
+        "iconRight"?: string;
+        /**
+          * Theme of the icons. Can be one of: 'outline', 'solid'.
+          * @default 'outline'
+         */
+        "iconTheme": UaiButtonIconTheme;
+        /**
+          * Sets the active (pressed) state of the button.
+         */
+        "isActive": (value: boolean) => Promise<void>;
+        /**
+          * Horizontal alignment of the button content. Can be one of: 'center' (default), 'space-between' (left content to the left, right content to the right).
+          * @default 'center'
+         */
+        "justifyContent"?: UaiButtonJustifyContent;
+        /**
+          * If true, shows a loading spinner and blocks uaiClick.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Sets the color of the button.
+         */
+        "setColor": (color: UaiButtonColor) => Promise<void>;
+        /**
+          * Sets the direction of the group the button belongs to.
+         */
+        "setDirection": (direction: UaiButtonDirection) => Promise<void>;
+        /**
+          * Sets the position of the button inside a group.
+         */
+        "setPosition": (position: UaiButtonPosition) => Promise<void>;
+        /**
+          * Sets the size of the button.
+         */
+        "setSize": (size: UaiButtonSize) => Promise<void>;
+        /**
+          * Sets the variant of the button.
+         */
+        "setVariant": (variant: UaiButtonVariant) => Promise<void>;
+        /**
+          * Size of the button. Can be one of: 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).
+          * @default 'medium'
+         */
+        "size"?: UaiButtonSize;
+        /**
+          * Type of the button. Can be one of: 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.
+          * @default 'button'
+         */
+        "type": UaiButtonType;
+        /**
+          * Type of the icons. Can be one of: 'icon', 'logo', 'emoji'.
+          * @default 'icon'
+         */
+        "typeIcon": UaiButtonIconType;
+        /**
+          * Visual style of the button. Can be one of: 'solid', 'outline', 'text'.
+          * @default 'solid'
+         */
+        "variant"?: UaiButtonVariant;
+    }
     interface UaiNavbar {
         /**
           * Background surface color.
@@ -3665,6 +3792,13 @@ export namespace Components {
         "orientation"?: uaiNavbarOrientation;
     }
     interface UaiNavbarContent {
+    }
+    interface UaiThemeProvider {
+        /**
+          * Theme applied to the UAI components inside the provider. Can be one of: 'light', 'dark'. Any other value falls back to 'light' with a console warning.
+          * @default 'light'
+         */
+        "theme"?: UaiTheme;
     }
 }
 export interface BdsAccordionCustomEvent<T> extends CustomEvent<T> {
@@ -3866,6 +4000,10 @@ export interface BdsToastCustomEvent<T> extends CustomEvent<T> {
 export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsUploadElement;
+}
+export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiButtonElement;
 }
 declare global {
     interface HTMLBdsAccordionElementEventMap {
@@ -5160,6 +5298,23 @@ declare global {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
     };
+    interface HTMLUaiButtonElementEventMap {
+        "uaiClick": MouseEvent;
+    }
+    interface HTMLUaiButtonElement extends Components.UaiButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiButtonElementEventMap>(type: K, listener: (this: HTMLUaiButtonElement, ev: UaiButtonCustomEvent<HTMLUaiButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiButtonElementEventMap>(type: K, listener: (this: HTMLUaiButtonElement, ev: UaiButtonCustomEvent<HTMLUaiButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiButtonElement: {
+        prototype: HTMLUaiButtonElement;
+        new (): HTMLUaiButtonElement;
+    };
     interface HTMLUaiNavbarElement extends Components.UaiNavbar, HTMLStencilElement {
     }
     var HTMLUaiNavbarElement: {
@@ -5171,6 +5326,12 @@ declare global {
     var HTMLUaiNavbarContentElement: {
         prototype: HTMLUaiNavbarContentElement;
         new (): HTMLUaiNavbarContentElement;
+    };
+    interface HTMLUaiThemeProviderElement extends Components.UaiThemeProvider, HTMLStencilElement {
+    }
+    var HTMLUaiThemeProviderElement: {
+        prototype: HTMLUaiThemeProviderElement;
+        new (): HTMLUaiThemeProviderElement;
     };
     interface HTMLElementTagNameMap {
         "bds-accordion": HTMLBdsAccordionElement;
@@ -5278,8 +5439,10 @@ declare global {
         "bds-typo": HTMLBdsTypoElement;
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
+        "uai-button": HTMLUaiButtonElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
+        "uai-theme-provider": HTMLUaiThemeProviderElement;
     }
 }
 declare namespace LocalJSX {
@@ -9055,6 +9218,109 @@ declare namespace LocalJSX {
     }
     interface BdsWarning {
     }
+    interface UaiButton {
+        /**
+          * Accessible name of the button. Required when the button has no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, renders an 'arrow-right' icon after the label.
+          * @default false
+         */
+        "arrow"?: boolean;
+        /**
+          * @deprecated The spinner follows the button variant and color. This prop has no effect.
+         */
+        "bdsLoadingColor"?: colorsVariants;
+        /**
+          * @deprecated The spinner follows the button variant and color. This prop has no effect.
+         */
+        "bdsLoadingVariant"?: LoadingSpinnerVariant;
+        /**
+          * If true, the button takes the full width of its container.
+          * @default false
+         */
+        "block"?: boolean;
+        /**
+          * Color of the button. Can be one of: 'primary', 'content', 'negative', 'positive'.
+          * @default 'primary'
+         */
+        "color"?: UaiButtonColor;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the button is disabled.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * If true, the button takes the full width of its container with centered content.
+          * @default false
+         */
+        "fullWidth"?: boolean;
+        /**
+          * @deprecated Put the left icon and the label together in the default slot instead. If true, keeps the left icon together with the label when justifyContent is 'space-between'.
+         */
+        "groupIcon"?: boolean;
+        /**
+          * Icon rendered before the label. Uses the bds-icon component. Takes precedence over iconLeft.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Icon rendered before the label. Uses the bds-icon component.
+          * @default null
+         */
+        "iconLeft"?: string;
+        /**
+          * Icon rendered after the label. Uses the bds-icon component.
+          * @default null
+         */
+        "iconRight"?: string;
+        /**
+          * Theme of the icons. Can be one of: 'outline', 'solid'.
+          * @default 'outline'
+         */
+        "iconTheme"?: UaiButtonIconTheme;
+        /**
+          * Horizontal alignment of the button content. Can be one of: 'center' (default), 'space-between' (left content to the left, right content to the right).
+          * @default 'center'
+         */
+        "justifyContent"?: UaiButtonJustifyContent;
+        /**
+          * If true, shows a loading spinner and blocks uaiClick.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Emitted when the button is activated by click, Enter or Space. Carries the native click event. Not emitted while the button is disabled or loading.
+         */
+        "onUaiClick"?: (event: UaiButtonCustomEvent<MouseEvent>) => void;
+        /**
+          * Size of the button. Can be one of: 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).
+          * @default 'medium'
+         */
+        "size"?: UaiButtonSize;
+        /**
+          * Type of the button. Can be one of: 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.
+          * @default 'button'
+         */
+        "type"?: UaiButtonType;
+        /**
+          * Type of the icons. Can be one of: 'icon', 'logo', 'emoji'.
+          * @default 'icon'
+         */
+        "typeIcon"?: UaiButtonIconType;
+        /**
+          * Visual style of the button. Can be one of: 'solid', 'outline', 'text'.
+          * @default 'solid'
+         */
+        "variant"?: UaiButtonVariant;
+    }
     interface UaiNavbar {
         /**
           * Background surface color.
@@ -9078,6 +9344,13 @@ declare namespace LocalJSX {
         "orientation"?: uaiNavbarOrientation;
     }
     interface UaiNavbarContent {
+    }
+    interface UaiThemeProvider {
+        /**
+          * Theme applied to the UAI components inside the provider. Can be one of: 'light', 'dark'. Any other value falls back to 'light' with a console warning.
+          * @default 'light'
+         */
+        "theme"?: UaiTheme;
     }
     interface IntrinsicElements {
         "bds-accordion": BdsAccordion;
@@ -9185,8 +9458,10 @@ declare namespace LocalJSX {
         "bds-typo": BdsTypo;
         "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
+        "uai-button": UaiButton;
         "uai-navbar": UaiNavbar;
         "uai-navbar-content": UaiNavbarContent;
+        "uai-theme-provider": UaiThemeProvider;
     }
 }
 export { LocalJSX as JSX };
@@ -9298,8 +9573,10 @@ declare module "@stencil/core" {
             "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+            "uai-button": LocalJSX.UaiButton & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
             "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
             "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
+            "uai-theme-provider": LocalJSX.UaiThemeProvider & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
         }
     }
 }

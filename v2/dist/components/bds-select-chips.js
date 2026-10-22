@@ -1,11 +1,11 @@
 import { p as proxyCustomElement, H, c as createEvent, h } from './index.js';
 import { g as getScrollParent, p as positionAbsoluteElement } from './p-BNEKIkjk.js';
 import { w as whitespaceValidation, e as emailValidation } from './p-BXYXNVip.js';
-import { d as defineCustomElement$8 } from './p-DEm9NuoZ.js';
-import { d as defineCustomElement$7 } from './p-iwOku1Z9.js';
-import { d as defineCustomElement$6 } from './p-CFSMFPl2.js';
-import { d as defineCustomElement$5 } from './p-D6zbi0wI.js';
-import { d as defineCustomElement$4 } from './p-D3qyNkix.js';
+import { d as defineCustomElement$8 } from './p-Cl4NeJR_.js';
+import { d as defineCustomElement$7 } from './p-CiicLV2H.js';
+import { d as defineCustomElement$6 } from './p-BYvD3vql.js';
+import { d as defineCustomElement$5 } from './p-R_xz97kF.js';
+import { d as defineCustomElement$4 } from './p-C4JamBpz.js';
 import { d as defineCustomElement$3 } from './p-7wwi1guL.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
@@ -589,7 +589,7 @@ const SelectChips = /*@__PURE__*/ proxyCustomElement(class SelectChips extends H
                 internalOptions = this.options;
             }
         }
-        return (h("div", { key: 'be44235a8a84976ed897abd97b776f4a21e0d2b1', class: "select", tabindex: "0", onFocus: this.setFocusWrapper, onBlur: this.removeFocusWrapper }, h("div", { key: '6e67b6a20b0c4b828c56ba727da4771baac8c10a', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null, onClick: this.toggle }, h("div", { key: '66e4466406ffe0532b8ac08cbee4c88104dc5e3d', class: {
+        return (h("div", { key: '2a6895b34384ff62b85532c1e2089d22bed7d250', class: "select", tabindex: "0", onFocus: this.setFocusWrapper, onBlur: this.removeFocusWrapper }, h("div", { key: '1527014577dc42a850ee363f80a5006c3a87189b', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null, onClick: this.toggle }, h("div", { key: 'e2203883385f25fe0135509c552cfdfeeafa4652', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -597,10 +597,10 @@ const SelectChips = /*@__PURE__*/ proxyCustomElement(class SelectChips extends H
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: 'eb3e2a27330471fc7d62dfb7cfba4073982c725e', class: "input__container" }, this.renderLabel(), h("div", { key: '74b8144fd80e5cc88c0769dbddfaeb25767d6362', class: { input__container__wrapper: true } }, this.internalChips.length > 0 && (h("span", { key: '7a4aa7389c5e3c97984b1043cafa30ebe4344cdc', style: { height: this.height, maxHeight: this.maxHeight }, class: "inside-input-left" }, this.renderChips())), h("input", { key: '912edd05da03c796f24336b3f052d434920583c1', ref: (input) => (this.nativeInput = input), class: { input__container__text: true }, name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper }))), h("div", { key: '2e155e29cdc20ec9091735d2ab25d4ee26c6e28e', class: "select__icon" }, h("bds-icon", { key: '98172911e48c7402459d9f8a213fedee9d05531a', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" })), this.success && h("bds-icon", { key: '86b887bb01421b2633e9bdcdb4bbe1bc5df8c712', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()), h("div", { key: 'f876d89d1287a7ca00c5554aeb3037abc55d5386', ref: (el) => this.refDropdown(el), class: {
+            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: '05f5cfe4e52216078aea9e8be7e05374be02a369', class: "input__container" }, this.renderLabel(), h("div", { key: 'b59abc2bb4921c735e84b7880b5da696475ebadc', class: { input__container__wrapper: true } }, this.internalChips.length > 0 && (h("span", { key: 'dac4c296f0a647e4f8a60e4122edef9ca586954d', style: { height: this.height, maxHeight: this.maxHeight }, class: "inside-input-left" }, this.renderChips())), h("input", { key: '643e3fc551e1499bc8c4223eb30fb3fec040d545', ref: (input) => (this.nativeInput = input), class: { input__container__text: true }, name: this.inputName, maxlength: this.maxlength, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: () => this.handleOnBlur(), onChange: () => this.handleChange, value: this.value, disabled: this.disabled, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper }))), h("div", { key: 'd1ef3099a3193cc1d0b1a138f752be40bcfb4ef4', class: "select__icon" }, h("bds-icon", { key: '234820d570adfc371abcdbf8a6f08f151da22651', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" })), this.success && h("bds-icon", { key: 'ac9620592e8168ebaea579797f856d7b6cccacd5', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()), h("div", { key: '8ee2d1ddd15fd5e7f44f1c43f4f25bcd175fbdc9', ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
-            } }, internalOptions.map((option) => (h("bds-select-option", { key: this.generateKey(option.value), onOptionSelected: this.handler, value: option.value, status: option.status }, option.label))), h("slot", { key: 'e6404032c14d189a98a26e3335877bfbf7a7ebb2' }), this.canAddNew === true && this.enableCreateOption() && (h("bds-select-option", { key: 'bf59e0ee27a9338eef5de8e1f6bc58bad38a2eae', id: "option-add", value: "add", onClick: () => this.handlerNewOption(this.nativeInput.value) }, this.newPrefix, this.nativeInput.value)), !this.canAddNew && this.enableCreateOption() && (h("bds-select-option", { key: 'fdfa06051a04798f476b77bd462112697ae12578', id: "no-option", value: "add" }, this.notFoundMessage)))));
+            } }, internalOptions.map((option) => (h("bds-select-option", { key: this.generateKey(option.value), onOptionSelected: this.handler, value: option.value, status: option.status }, option.label))), h("slot", { key: 'a40f1980a391c11a6a58780bd3e8bc586be2a56b' }), this.canAddNew === true && this.enableCreateOption() && (h("bds-select-option", { key: '7c3581deac07b12899e8f108afc58269c10649c5', id: "option-add", value: "add", onClick: () => this.handlerNewOption(this.nativeInput.value) }, this.newPrefix, this.nativeInput.value)), !this.canAddNew && this.enableCreateOption() && (h("bds-select-option", { key: '4e835dd72aa0b771decc256e6b5554a0c0fc2812', id: "no-option", value: "add" }, this.notFoundMessage)))));
     }
     get el() { return this; }
     static get watchers() { return {

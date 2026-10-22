@@ -9,7 +9,7 @@ const ExpansionPanel = /*@__PURE__*/ proxyCustomElement(class ExpansionPanel ext
         this.__attachShadow();
     }
     render() {
-        return (h(Host, { key: '609f74ca9b104ffc07239a729a0a7511788085c6' }, h("slot", { key: 'dd4a877814f9f27a440b21c0932ff328a711a2b8' })));
+        return (h(Host, { key: '856851827d63c7cd6f03b6bc8725372295af8547' }, h("slot", { key: '1a4e354132bdfb4df8f957095013b449f3ccc2f3' })));
     }
     static get style() { return expansionPanelCss; }
 }, [1, "bds-expansion-panel"]);

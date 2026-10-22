@@ -1,2 +1,0 @@
-import{r,h as s}from"./p-gowA9FoV.js";const t=class{constructor(s){r(this,s)}render(){return s("bds-typo",{key:"efdfe10734b5ce26b040f8d1d184902ec2612c40",variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)}};export{t as bds_card_subtitle};
-//# sourceMappingURL=p-fcc0c6a8.entry.js.map

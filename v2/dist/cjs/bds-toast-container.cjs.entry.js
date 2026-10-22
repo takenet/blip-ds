@@ -9,7 +9,7 @@ const BdsToastContainer = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '9c1ab203578fb6c405d96c73d9ca923d75834904' }, index.h("slot", { key: '1de1f93b7563ead2814d60470b8cced46a4ab80c' })));
+        return (index.h(index.Host, { key: '53e5a316a94f5c50ae33d9e6ce15019b5ce984f6' }, index.h("slot", { key: '18f1cafe68882146fb55f608294e6295926ce0d4' })));
     }
 };
 BdsToastContainer.style = toastContainerCss;

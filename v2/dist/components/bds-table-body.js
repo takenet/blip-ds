@@ -15,7 +15,7 @@ const TableBody = /*@__PURE__*/ proxyCustomElement(class TableBody extends H {
         }
     }
     render() {
-        return (h(Host, { key: 'dfa02fe09893e8d42a60fc23b7d3055f1571aa49', class: { host: true, multiple: this.multipleRows } }, h("slot", { key: 'dc1804decc1b58ef4bf857f1ab080aad5d1ff44a' })));
+        return (h(Host, { key: '81c3774f7076335a6bcd5ff8449794d58c3c12e5', class: { host: true, multiple: this.multipleRows } }, h("slot", { key: '5d75e68693711ce87d3b0e6f31c3677c71bdcabf' })));
     }
     get element() { return this; }
     static get style() { return tableBodyCss; }

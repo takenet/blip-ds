@@ -1,7 +1,7 @@
 import { h } from "@stencil/core";
 export class BdsModalAction {
     render() {
-        return (h("div", { key: '28d98797402ea00e105d336ecef9f1f674007db5', class: "modal__action" }, h("slot", { key: '78649472f6d839b1432896f047a023dd76122046' })));
+        return (h("div", { key: 'a927e08c858e4b83adbfd45146298c6803d3cdee', class: "modal__action" }, h("slot", { key: '5375008304f32a5d0020a2393e23dd60c6f5bc6e' })));
     }
     static get is() { return "bds-modal-action"; }
     static get encapsulation() { return "shadow"; }

@@ -33,7 +33,7 @@ const RadioGroup = /*@__PURE__*/ proxyCustomElement(class RadioGroup extends H {
         }
     }
     render() {
-        return (h(Host, { key: 'ddd787ca83599f6758bd6cd01148c2eb7660b5db' }, h("slot", { key: 'e6f5d2135cd1d7d66fddbcee66a73108eb45ace4' })));
+        return (h(Host, { key: 'b22a7cc8b980f988bd3e3198adb7a9fbbefe8132' }, h("slot", { key: '5e94259e6221a949bad2e1d99f401d70e6d7d4af' })));
     }
     get element() { return this; }
     static get watchers() { return {
