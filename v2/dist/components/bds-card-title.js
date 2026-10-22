@@ -10,7 +10,7 @@ const CardTitle = /*@__PURE__*/ proxyCustomElement(class CardTitle extends H {
         this.__attachShadow();
     }
     render() {
-        return (h("bds-typo", { key: '6a2012851bc5440b821d53af995e959b2bfbe841', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
+        return (h("bds-typo", { key: '37234fc3f3fa427df412858653fafa07d2360efe', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
     }
     static get style() { return cardTitleCss; }
 }, [1, "bds-card-title", {

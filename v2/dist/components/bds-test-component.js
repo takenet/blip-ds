@@ -1,6 +1,6 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$5 } from './p-XsZYgdgq.js';
-import { d as defineCustomElement$4 } from './p-m8KiTeOk.js';
+import { d as defineCustomElement$5 } from './p-dCdulcnF.js';
+import { d as defineCustomElement$4 } from './p-C0iZEmFw.js';
 import { d as defineCustomElement$3 } from './p-HUbgptm9.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
@@ -12,7 +12,7 @@ const TestComponent = /*@__PURE__*/ proxyCustomElement(class TestComponent exten
         this.__registerHost();
     }
     render() {
-        return (h("bds-grid", { key: 'd39cc2a75000c46509a02a78688ded320f33b9e2', xxs: "12", padding: "x-2", "flex-wrap": "wrap" }, h("bds-grid", { key: '50875595976328a1b631e09a412b2d7f75206ae9', xxs: "12", margin: "t-2" }, h("div", { key: 'ad7419d61b38a138ca51017c7df7ad4d40c8e630', class: "titulo" }, h("bds-typo", { key: 'cc3408a7a3acd49d35aa923c7cefb1ab463e496d', variant: "fs-40", bold: "bold" }, "Titulo de teste fora de temas"))), h("bds-grid", { key: '48117d0ecf47312441c4d7af330ac1d254bf377b', xxs: "6", padding: "r-1" }, h("bds-theme-provider", { key: 'ca73c70713341eff247b73f02bb6cb9bd2d9127c', theme: "light" }, h("bds-paper", { key: 'afb13c2238d8d15206f6c497af8b332889be16bd', elevation: "none", border: true }, h("bds-grid", { key: 'ef22e11caef7a56ad3eb5a0e5e22c1ded2cd32fd', padding: "2" })))), h("bds-grid", { key: '90a5fd41cd364c47aab4f4ff871ea1b98b149b32', xxs: "6", padding: "l-1" }, h("bds-theme-provider", { key: '96e18502b7b9648cc6721ab6a92d6fdf39e98510', theme: "dark" }, h("bds-paper", { key: 'c919c7dd34bb398db15dd24a3f1cba11796d1986', elevation: "none", border: true }, h("bds-grid", { key: 'e09d7cd9870dcf3c0f61e7834355135072861b13', padding: "2" }))))));
+        return (h("bds-grid", { key: 'a28928271a49bcbf70c315905c3f8a8d45aaa1f0', xxs: "12", padding: "x-2", "flex-wrap": "wrap" }, h("bds-grid", { key: '5a04365b2d7236bc6860dd3218516852d7a6f036', xxs: "12", margin: "t-2" }, h("div", { key: 'db1b8aa5fa00c2e0353f353e92393ae3d6fd4656', class: "titulo" }, h("bds-typo", { key: '47ab919d7ff1a910a306b7ede565fc2a9918c778', variant: "fs-40", bold: "bold" }, "Titulo de teste fora de temas"))), h("bds-grid", { key: '18a19de5d9721684c01a5674df3edcbee267fd37', xxs: "6", padding: "r-1" }, h("bds-theme-provider", { key: '7b8dfd08abcee76c38284a0eab4f3ebd62968b29', theme: "light" }, h("bds-paper", { key: '70f8aeb82eef402d0b1102b56003d418a140d642', elevation: "none", border: true }, h("bds-grid", { key: '5531edda3b7dd1e761c2a1d1e93ca2fab181f022', padding: "2" })))), h("bds-grid", { key: '4943ca6b9593adafcbebef5dcc1062bd5ef3fdb4', xxs: "6", padding: "l-1" }, h("bds-theme-provider", { key: 'deafa64b18d4e88fe94367a726862f6d38cd7cd5', theme: "dark" }, h("bds-paper", { key: '1f8938d3df7acd57a788d83d0685139de5717931', elevation: "none", border: true }, h("bds-grid", { key: '6ced66939d21ebd6ed8eb299a8726bbcbdc8c559', padding: "2" }))))));
     }
     static get style() { return testComponentCss; }
 }, [0, "bds-test-component"]);

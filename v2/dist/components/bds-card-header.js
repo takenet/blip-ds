@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$2 } from './p-XsZYgdgq.js';
+import { d as defineCustomElement$2 } from './p-dCdulcnF.js';
 
 const cardHeaderCss = ":host{width:100%}";
 

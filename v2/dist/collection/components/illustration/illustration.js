@@ -23,7 +23,7 @@ export class BdsIllustration {
         }
     }
     render() {
-        return (h(Host, { key: 'b06d6ceeb6eb7222f196e8000681a1baeae0db49', role: "img", class: {
+        return (h(Host, { key: '7ab64cde6be16ffbb779acaf00a86c12d4c7cad5', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
     }

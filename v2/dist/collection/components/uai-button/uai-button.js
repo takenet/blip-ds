@@ -1,4 +1,5 @@
 import { Host, h } from "@stencil/core";
+import { UAI_OUTLINE_ICONS, UAI_SOLID_ICONS } from "../../globals/uai-icons";
 const VARIANTS = ['solid', 'outline', 'text'];
 const COLORS = ['primary', 'content', 'negative', 'positive'];
 const SIZES = ['compact', 'short', 'medium', 'large'];
@@ -8,6 +9,10 @@ const ICON_SIZE = {
     short: 'small',
     medium: 'medium',
     large: 'medium',
+};
+const UAI_ICONS = {
+    outline: new Set(UAI_OUTLINE_ICONS),
+    solid: new Set(UAI_SOLID_ICONS),
 };
 const warnings = new Set();
 const warnOnce = (key, message) => {
@@ -195,7 +200,13 @@ export class UaiButton {
         proxy.remove();
     }
     renderIcon(name, size, position) {
-        return (h("bds-icon", { class: { button__icon: true, [`button__icon--${position}`]: true }, name: name, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: ICON_SIZE[size], "aria-hidden": "true" }));
+        const theme = this.iconTheme === 'solid' ? 'solid' : 'outline';
+        const classes = { button__icon: true, [`button__icon--${position}`]: true };
+        if (this.typeIcon === 'icon' && UAI_ICONS[theme].has(name)) {
+            return (h("span", { class: Object.assign(Object.assign({}, classes), { 'uai-icon': true, [`uai-icon-${theme}-${name}`]: true }), "aria-hidden": "true" }));
+        }
+        warnOnce(`icon:${theme}:${this.typeIcon}:${name}`, `"${name}" is not in the UAI icon set (theme "${theme}", type "${this.typeIcon}"). Falling back to the legacy bds-icon, which is deprecated here.`);
+        return (h("bds-icon", { class: classes, name: name, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: ICON_SIZE[size], "aria-hidden": "true" }));
     }
     render() {
         const variant = supported('variant', this.variant, VARIANTS, 'solid');
@@ -207,12 +218,12 @@ export class UaiButton {
         const iconOnly = !this.hasLabel && !!(leftIconName || rightIconName);
         const left = this.loading ? (h("span", { class: "button__spinner", "aria-hidden": "true" })) : leftIconName ? (this.renderIcon(leftIconName, size, 'left')) : null;
         const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
-        const label = (h("span", { key: 'f3138fe5562c5a093c389461c854d12acd27ca0b', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("slot", { key: 'e836fac19ad76fa2fc9bd392405a6dc330ad4c05', onSlotchange: this.updateHasLabel })));
+        const label = (h("span", { key: '6ceb556349ff22bbd45ae3c1a86ba2fa5f264a04', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: 'abcaa8f688d875b0a5ced32a5108e0eec06e4bb8', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: 'ecf53312edc5b4721f21f81b5589d795a195244f', onSlotchange: this.updateHasLabel }))));
         const grouped = this.groupIcon && justify === 'space-between' && left;
-        return (h(Host, { key: 'f4eb3738c2cd6b4df20992ca6eb5105835eaae33', class: {
+        return (h(Host, { key: '69da07747a8c30ee7e1b702e106050b264e7cd94', class: {
                 'uai-button--block': this.block || this.fullWidth,
                 'uai-button--group': !!this.position,
-            } }, h("button", { key: 'd88b0a6e363742172dad5521e41461126c100d0e', class: {
+            } }, h("button", { key: 'c51b385cedf5d38e73e00de17b7d803673949ee0', class: {
                 button: true,
                 [`button--${variant}`]: true,
                 [`button--color-${color}`]: true,

@@ -166,7 +166,7 @@ const BdsTabGroup = class {
         const openTab = (_a = this.internalItens) === null || _a === void 0 ? void 0 : _a.find(item => item.open);
         const headerStyle = (openTab === null || openTab === void 0 ? void 0 : openTab.headerStyle) ? this.parseInlineStyle(openTab.headerStyle) : {};
         const contentStyle = (openTab === null || openTab === void 0 ? void 0 : openTab.contentStyle) ? this.parseInlineStyle(openTab.contentStyle) : {};
-        return (h(Host, { key: 'ea2482599f32a615fb983ed1e50a2e3ee0d7eb17' }, h("div", { key: 'c880c82c26dba9480cb6474976ac8ba83ff987a7', class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { key: '7776c3e913b9a33f857c46fea322aeaf1310ae62', class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { key: '8465386f112f20f98aad6303ec406fefaeee321c', class: { tab_group__header: true, tab_group__slide: this.isSlideTabs }, ref: this.refHeaderElement, style: headerStyle }, h("div", { key: '4ce91e2ae3ac8b83d057f6f1c1d24928cde84974', class: {
+        return (h(Host, { key: '2c1ec9f2c3ba53642f124e7adc1b10a58b44f47b' }, h("div", { key: '19b46c0923a5c012005c7aff2439c1065428b775', class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { key: 'd9aabf70439071ab4b88ca3c2ee106296f19a48f', class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { key: 'f1d5630e4474c5a88850f3f58e16e1af9100a9c4', class: { tab_group__header: true, tab_group__slide: this.isSlideTabs }, ref: this.refHeaderElement, style: headerStyle }, h("div", { key: 'f8abfa575fff7923a1ffae4c1f8697e3813e8797', class: {
                 tab_group__header__itens: true,
                 tab_group__slide__itens: this.isSlideTabs,
                 [`tab_group__header__itens__${this.align}`]: !this.isSlideTabs,
@@ -189,7 +189,7 @@ const BdsTabGroup = class {
                     : '', item.badgePosition === 'right' && item.badge
                     ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
                     : ''));
-            }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { key: '60871e7b58e75217302ecbc78ee1e929f4d24b87', class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { key: 'c695437c198baa518d01382422738b044b1985c1', class: { tab_group__content: true, tab_group__scrolled: this.contentScrollable }, style: contentStyle }, h("slot", { key: '748cba58d65665eb8ed9d0e18d64f1238450c230' })))));
+            }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { key: 'b1670043993597a0a38a45369a105f01367bea1e', class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { key: '1b3f99fd27090a348b118250eb7cac0025bc76fc', class: { tab_group__content: true, tab_group__scrolled: this.contentScrollable }, style: contentStyle }, h("slot", { key: 'ecaeb454950d9cd288fad7b86fd7756ebb7c3919' })))));
     }
     get element() { return getElement(this); }
 };

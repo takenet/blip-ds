@@ -48,6 +48,7 @@
     "components/uai-button/uai-button.js",
     "components/uai-navbar/uai-navbar.js",
     "components/uai-theme-provider/uai-theme-provider.js",
+    "components/uai-typo/uai-typo.js",
     "components/accordion/accordion-body.js",
     "components/accordion/accordion-header.js",
     "components/accordion/accordion.js",

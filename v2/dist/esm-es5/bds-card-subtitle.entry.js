@@ -1,2 +1,2 @@
-import{r as registerInstance,h}from"./index-gowA9FoV.js";var CardSubtitle=function(){function t(t){registerInstance(this,t)}t.prototype.render=function(){return h("bds-typo",{key:"7af610cae988ae1bd39ec129637ea007498bb659",variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)};return t}();export{CardSubtitle as bds_card_subtitle};
+import{r as registerInstance,h}from"./index-gowA9FoV.js";var CardSubtitle=function(){function t(t){registerInstance(this,t)}t.prototype.render=function(){return h("bds-typo",{key:"07b31749c496923453f4300f0314e6b916056857",variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)};return t}();export{CardSubtitle as bds_card_subtitle};
 //# sourceMappingURL=bds-card-subtitle.entry.js.map

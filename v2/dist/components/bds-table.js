@@ -8,7 +8,7 @@ const Table = /*@__PURE__*/ proxyCustomElement(class Table extends H {
         this.__registerHost();
     }
     render() {
-        return (h(Host, { key: '7db122bc55977382759f950a6ffb9c233a327597', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: '0e4fa1f477a431b8a2717aa6637ffe6241f83b45', class: "bds-table" }, h("slot", { key: 'e736bed3c66c19d6ddfbdec34770aabda7ec541f' }))));
+        return (h(Host, { key: '0a1f1bcac66ff041c740cbbe666938e553532b62', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: '459e32cafa8301a63e4baa5d9f2e11f8bce6e994', class: "bds-table" }, h("slot", { key: 'a4003fa46489078c3242ad785badfb0e9338a4b9' }))));
     }
     static get style() { return tableCss; }
 }, [6, "bds-table", {

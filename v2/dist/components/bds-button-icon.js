@@ -1,4 +1,4 @@
-import { I as IconButton, d as defineCustomElement$1 } from './p-BiJofYOI.js';
+import { I as IconButton, d as defineCustomElement$1 } from './p-uL7cBhI6.js';
 
 const BdsButtonIcon = IconButton;
 const defineCustomElement = defineCustomElement$1;

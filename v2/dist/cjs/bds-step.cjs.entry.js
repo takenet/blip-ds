@@ -37,24 +37,24 @@ const BdsStep = class {
         this.dataTest = null;
     }
     render() {
-        return (index.h("div", { key: 'ee5e5cde8e4b9ad75513376567a907f40a7265f1', class: "step" }, index.h("div", { key: 'e4b9103a4982a3056919fbf5bf8740946cc3664f', class: {
+        return (index.h("div", { key: '1db09e6ab43d9e94da63a52b0f69db2597b23e9c', class: "step" }, index.h("div", { key: '9cda40c7733be756a9f31221af39e793d397f039', class: {
                 step__content: true,
                 'step__content--active': this.active,
                 'step__content--completed': this.completed,
                 'step__content--disabled': this.disabled,
                 'step__content--pointer': this.pointer,
                 'step--last': this.last,
-            }, "data-test": this.dataTest }, index.h("div", { key: 'd3a4a4382a9f6e320f3f24c0e6828121a5edcdd4', class: {
+            }, "data-test": this.dataTest }, index.h("div", { key: '1613b8c80a82b0add017b4217cbb38367285885f', class: {
                 step__content__ellipse: true,
                 'step__content__ellipse--active': this.active,
                 'step__content__ellipse--completed': this.completed,
                 'step__content__ellipse--disabled': this.disabled,
-            } }, this.completed && index.h("bds-icon", { key: 'e3e83486783d827c6f1b058839e865c0311df11d', name: "true" }), !this.completed && index.h("bds-typo", { key: 'bbef88115a542dcd81b6bbe80c3edb82ed9df88c' }, this.index + 1)), index.h("bds-typo", { key: '580f9bf9fdc37f44da9d7c0e4da5806cc41fe98f', variant: "fs-16", class: {
+            } }, this.completed && index.h("bds-icon", { key: '407fcb176e5d40b8f10154aaf45b9e1a578d13d7', name: "true" }), !this.completed && index.h("bds-typo", { key: 'c583b2f9e34009eb1affa6d7c5865ffecf37373d' }, this.index + 1)), index.h("bds-typo", { key: 'a332c31e6496129884711359b06d6a1953623685', variant: "fs-16", class: {
                 step__content__text: true,
                 'step__content__text--completed': this.completed && !this.active,
                 'step__content__text--active': this.active,
                 'step__content__text--disabled': this.disabled,
-            }, bold: this.active ? 'bold' : 'regular' }, index.h("slot", { key: 'b98fa9585814e7b475be1c8b91cb837edaba9ab8' })))));
+            }, bold: this.active ? 'bold' : 'regular' }, index.h("slot", { key: '06a4299787846cdffee982e31da8be7fe27ef655' })))));
     }
     get el() { return index.getElement(this); }
 };

@@ -509,7 +509,7 @@
 <header>
   <div class="wrap">
     <h1>Components Manifest</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">71/71 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">71/71 infos</a><span class="filter-pill ok" aria-disabled="true">270 stories ok</span></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">72/72 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">72/72 infos</a><span class="filter-pill ok" aria-disabled="true">275 stories ok</span></div>
   </div>
 </header>
 <main>
@@ -4181,11 +4181,11 @@ Properties.argTypes = {
     control: { type: &#39;select&#39; },
   },
   iconLeft: {
-    description: &#39;Ícone antes do texto (nome do bds-icon).&#39;,
+    description: &#39;Ícone antes do texto (nome do ícone UAI, ex.: `info`).&#39;,
     control: &#39;text&#39;,
   },
   iconRight: {
-    description: &#39;Ícone depois do texto (nome do bds-icon).&#39;,
+    description: &#39;Ícone depois do texto (nome do ícone UAI, ex.: `arrow-right`).&#39;,
     control: &#39;text&#39;,
   },
   arrow: {
@@ -30358,9 +30358,390 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Typo</h2>
       <div class="badges">
-        <label for="c-69-components-typo-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-69-components-typo-info" class="badge info as-toggle">1 info</label>
-        <label for="c-69-components-typo-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-69-uai-typo-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-69-uai-typo-info" class="badge info as-toggle">1 info</label>
+        <label for="c-69-uai-typo-stories" class="badge ok as-toggle">5 stories</label>
+      </div>
+    </div>
+    <div class="meta" title="./src/components/uai-typo/uai-typo.stories.jsx">uai-typo · ./src/components/uai-typo/uai-typo.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-69-uai-typo-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-69-uai-typo-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-69-uai-typo-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">Prop type error</div>
+      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
+  3 | import DocumentationTemplate from &#39;./uai-typo.mdx&#39;;
+  4 |
+&gt; 5 | export default {
+    | ^
+  6 |   title: &#39;UAI/Typo&#39;,
+  7 |   tags: [&#39;autodocs&#39;],
+  8 |   parameters: {
+
+./src/components/uai-typo/uai-typo.stories.jsx:
+import React from &#39;react&#39;;
+import { UaiTypo, UaiThemeProvider } from &#39;../../../blip-ds-react/dist/components&#39;;
+import DocumentationTemplate from &#39;./uai-typo.mdx&#39;;
+
+export default {
+  title: &#39;UAI/Typo&#39;,
+  tags: [&#39;autodocs&#39;],
+  parameters: {
+    docs: {
+      page: DocumentationTemplate,
+    },
+  },
+  decorators: [
+    (Story, context) =&gt; (
+      &lt;uai-theme-provider theme={context.globals.hasTheme === &#39;dark&#39; ? &#39;dark&#39; : &#39;light&#39;}&gt;
+        &lt;Story /&gt;
+      &lt;/uai-theme-provider&gt;
+    ),
+  ],
+};
+
+// Text styles from the UAI Core Figma file; weights follow the published styles.
+const STYLES = [
+  { variant: &#39;display&#39;, size: &#39;40/48&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;heading-xl&#39;, size: &#39;32/40&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;heading-lg&#39;, size: &#39;24/32&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;heading-md&#39;, size: &#39;20/28&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;title&#39;, size: &#39;16/24&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;body-lg&#39;, size: &#39;16/24&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;body-base&#39;, size: &#39;14/22&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;body-sm&#39;, size: &#39;12/20&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;caption&#39;, size: &#39;12/20&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;overline&#39;, size: &#39;10/16&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;] },
+];
+
+const VARIANTS = STYLES.map((style) =&gt; style.variant);
+const BOLDS = [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;];
+
+const column = { display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: &#39;16px&#39; };
+const caption = { fontFamily: &#39;monospace&#39;, fontSize: &#39;12px&#39;, color: &#39;var(--uai-content-secondary)&#39; };
+
+export const Properties = (args) =&gt; (
+  &lt;uai-typo
+    variant={args.variant}
+    bold={args.bold}
+    letter-spacing={args.letterSpacing}
+    tag={args.tag}
+    italic={args.italic}
+    no-wrap={args.noWrap}
+    paragraph={args.paragraph}
+    margin={args.margin}
+    data-test={args.dataTest}
+  &gt;
+    {args.text}
+  &lt;/uai-typo&gt;
+);
+
+Properties.args = {
+  text: &#39;A tipografia organiza a leitura da interface.&#39;,
+  variant: &#39;body-base&#39;,
+  bold: &#39;regular&#39;,
+  letterSpacing: &#39;normal&#39;,
+  tag: &#39;p&#39;,
+  italic: false,
+  noWrap: false,
+  paragraph: false,
+  margin: true,
+  dataTest: &#39;&#39;,
+};
+
+Properties.argTypes = {
+  text: {
+    description: &#39;Texto (conteúdo do slot, não é uma propriedade).&#39;,
+    control: &#39;text&#39;,
+  },
+  variant: {
+    table: { defaultValue: { summary: &#39;body-base&#39; } },
+    description: &#39;Papel do texto na escala tipográfica UAI. Define tamanho e altura de linha.&#39;,
+    options: VARIANTS,
+    control: { type: &#39;select&#39; },
+  },
+  bold: {
+    table: { defaultValue: { summary: &#39;regular&#39; } },
+    description: &#39;Peso da fonte.&#39;,
+    options: BOLDS,
+    control: { type: &#39;select&#39; },
+  },
+  letterSpacing: {
+    table: { defaultValue: { summary: &#39;normal&#39; } },
+    description: &#39;Espaçamento entre letras. expanded corresponde ao estilo body/base/regular-space.&#39;,
+    options: [&#39;normal&#39;, &#39;expanded&#39;],
+    control: { type: &#39;select&#39; },
+  },
+  tag: {
+    table: { defaultValue: { summary: &#39;p&#39; } },
+    description: &#39;Elemento HTML renderizado. Use para dar a semântica correta ao texto.&#39;,
+    options: [&#39;p&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;, &#39;h4&#39;, &#39;span&#39;],
+    control: { type: &#39;select&#39; },
+  },
+  italic: {
+    table: { defaultValue: { summary: &#39;false&#39; } },
+    description: &#39;Aplica itálico.&#39;,
+    control: &#39;boolean&#39;,
+  },
+  noWrap: {
+    table: { defaultValue: { summary: &#39;false&#39; } },
+    description: &#39;Mantém o texto em uma linha e corta com reticências.&#39;,
+    control: &#39;boolean&#39;,
+  },
+  paragraph: {
+    table: { defaultValue: { summary: &#39;false&#39; } },
+    description: &#39;Adiciona margem inferior de parágrafo (16px).&#39;,
+    control: &#39;boolean&#39;,
+  },
+  margin: {
+    table: { defaultValue: { summary: &#39;true&#39; } },
+    description: &#39;Adiciona margem inferior (24px) em display e headings.&#39;,
+    control: &#39;boolean&#39;,
+  },
+  dataTest: {
+    description: &#39;Valor do atributo data-test do elemento de texto.&#39;,
+    control: &#39;text&#39;,
+  },
+};
+
+const grid = {
+  display: &#39;grid&#39;,
+  gridTemplateColumns: &#39;max-content repeat(4, max-content)&#39;,
+  alignItems: &#39;baseline&#39;,
+  columnGap: &#39;32px&#39;,
+  rowGap: &#39;16px&#39;,
+};
+
+export const TextStyles = () =&gt; (
+  &lt;div style={grid}&gt;
+    &lt;span&gt;&lt;/span&gt;
+    {BOLDS.map((bold) =&gt; (
+      &lt;span key={bold} style={caption}&gt;
+        {bold}
+      &lt;/span&gt;
+    ))}
+    {STYLES.map(({ variant, size, weights }) =&gt; (
+      &lt;React.Fragment key={variant}&gt;
+        &lt;span style={caption}&gt;
+          {variant} · {size}
+        &lt;/span&gt;
+        {BOLDS.map((bold) =&gt;
+          weights.includes(bold) ? (
+            &lt;uai-typo key={bold} variant={variant} bold={bold} margin={false}&gt;
+              Aa
+            &lt;/uai-typo&gt;
+          ) : (
+            &lt;span key={bold}&gt;&lt;/span&gt;
+          ),
+        )}
+      &lt;/React.Fragment&gt;
+    ))}
+  &lt;/div&gt;
+);
+
+export const LetterSpacing = () =&gt; (
+  &lt;div style={column}&gt;
+    &lt;uai-typo variant=&quot;body-base&quot;&gt;body-base · normal&lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; letter-spacing=&quot;expanded&quot;&gt;
+      body-base · expanded
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);
+
+export const Semantics = () =&gt; (
+  &lt;div style={{ maxWidth: &#39;480px&#39; }}&gt;
+    &lt;uai-typo variant=&quot;heading-lg&quot; bold=&quot;semibold&quot; tag=&quot;h2&quot;&gt;
+      Título da seção
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; paragraph&gt;
+      O variant define a aparência e o tag define a semântica. Um título visual deve usar uma tag de heading.
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;caption&quot; tag=&quot;span&quot; style={{ color: &#39;var(--uai-content-secondary)&#39; }}&gt;
+      Texto de apoio
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);
+
+export const FrameworkReact = () =&gt; (
+  &lt;UaiThemeProvider theme=&quot;light&quot;&gt;
+    &lt;div style={column}&gt;
+      &lt;UaiTypo variant=&quot;heading-md&quot; bold=&quot;semibold&quot; tag=&quot;h3&quot; margin={false}&gt;
+        Título
+      &lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;body-base&quot;&gt;Texto padrão da aplicação.&lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;caption&quot; bold=&quot;medium&quot;&gt;
+        Legenda
+      &lt;/UaiTypo&gt;
+    &lt;/div&gt;
+  &lt;/UaiThemeProvider&gt;
+);
+</code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import React from "react";
+import { UaiThemeProvider, UaiTypo } from "blip-ds";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Properties</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Properties = () =&gt; &lt;uai-typo
+    variant=&quot;body-base&quot;
+    bold=&quot;regular&quot;
+    letter-spacing=&quot;normal&quot;
+    tag=&quot;p&quot;
+    italic={false}
+    no-wrap={false}
+    paragraph={false}
+    margin
+    data-test=&quot;&quot;&gt;
+    {args.text}
+&lt;/uai-typo&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">TextStyles</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const TextStyles = () =&gt; (
+  &lt;div style={grid}&gt;
+    &lt;span&gt;&lt;/span&gt;
+    {BOLDS.map((bold) =&gt; (
+      &lt;span key={bold} style={caption}&gt;
+        {bold}
+      &lt;/span&gt;
+    ))}
+    {STYLES.map(({ variant, size, weights }) =&gt; (
+      &lt;React.Fragment key={variant}&gt;
+        &lt;span style={caption}&gt;
+          {variant} · {size}
+        &lt;/span&gt;
+        {BOLDS.map((bold) =&gt;
+          weights.includes(bold) ? (
+            &lt;uai-typo key={bold} variant={variant} bold={bold} margin={false}&gt;
+              Aa
+            &lt;/uai-typo&gt;
+          ) : (
+            &lt;span key={bold}&gt;&lt;/span&gt;
+          ),
+        )}
+      &lt;/React.Fragment&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">LetterSpacing</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const LetterSpacing = () =&gt; (
+  &lt;div style={column}&gt;
+    &lt;uai-typo variant=&quot;body-base&quot;&gt;body-base · normal&lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; letter-spacing=&quot;expanded&quot;&gt;
+      body-base · expanded
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Semantics</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Semantics = () =&gt; (
+  &lt;div style={{ maxWidth: &#39;480px&#39; }}&gt;
+    &lt;uai-typo variant=&quot;heading-lg&quot; bold=&quot;semibold&quot; tag=&quot;h2&quot;&gt;
+      Título da seção
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; paragraph&gt;
+      O variant define a aparência e o tag define a semântica. Um título visual deve usar uma tag de heading.
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;caption&quot; tag=&quot;span&quot; style={{ color: &#39;var(--uai-content-secondary)&#39; }}&gt;
+      Texto de apoio
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">FrameworkReact</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FrameworkReact = () =&gt; (
+  &lt;UaiThemeProvider theme=&quot;light&quot;&gt;
+    &lt;div style={column}&gt;
+      &lt;UaiTypo variant=&quot;heading-md&quot; bold=&quot;semibold&quot; tag=&quot;h3&quot; margin={false}&gt;
+        Título
+      &lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;body-base&quot;&gt;Texto padrão da aplicação.&lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;caption&quot; bold=&quot;medium&quot;&gt;
+        Legenda
+      &lt;/UaiTypo&gt;
+    &lt;/div&gt;
+  &lt;/UaiThemeProvider&gt;
+);</code></pre>
+            </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card 
+  has-error 
+  has-info 
+  no-story-error"
+  role="listitem"
+  aria-label="Typo">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> Typo</h2>
+      <div class="badges">
+        <label for="c-70-components-typo-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-70-components-typo-info" class="badge info as-toggle">1 info</label>
+        <label for="c-70-components-typo-stories" class="badge ok as-toggle">2 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/typo/typo.stories.jsx">components-typo · ./src/components/typo/typo.stories.jsx</div>
@@ -30370,9 +30751,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-69-components-typo-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-69-components-typo-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-69-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-70-components-typo-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-70-components-typo-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-70-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
   
 
   <div class="panels">
@@ -30536,9 +30917,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Upload</h2>
       <div class="badges">
-        <label for="c-70-components-upload-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-70-components-upload-info" class="badge info as-toggle">1 info</label>
-        <label for="c-70-components-upload-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-71-components-upload-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-71-components-upload-info" class="badge info as-toggle">1 info</label>
+        <label for="c-71-components-upload-stories" class="badge ok as-toggle">4 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/upload/upload.stories.jsx">components-upload · ./src/components/upload/upload.stories.jsx</div>
@@ -30548,9 +30929,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-70-components-upload-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-70-components-upload-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-70-components-upload-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-71-components-upload-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-71-components-upload-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-71-components-upload-stories" class="tg tg-stories" type="checkbox" hidden />
   
 
   <div class="panels">
@@ -30794,7 +31175,7 @@ export const FrameworkReact = () =&gt; {
           <label for="no-component-found-toggle" class="group-header">
             <span class="caret">▸</span>
             <span class="group-title">No component found</span>
-            <span class="group-count">71</span>
+            <span class="group-count">72</span>
           </label>
           <div class="group-cards">
 <article
@@ -34462,11 +34843,11 @@ Properties.argTypes = {
     control: { type: &#39;select&#39; },
   },
   iconLeft: {
-    description: &#39;Ícone antes do texto (nome do bds-icon).&#39;,
+    description: &#39;Ícone antes do texto (nome do ícone UAI, ex.: `info`).&#39;,
     control: &#39;text&#39;,
   },
   iconRight: {
-    description: &#39;Ícone depois do texto (nome do bds-icon).&#39;,
+    description: &#39;Ícone depois do texto (nome do ícone UAI, ex.: `arrow-right`).&#39;,
     control: &#39;text&#39;,
   },
   arrow: {
@@ -60639,9 +61020,390 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Typo</h2>
       <div class="badges">
-        <label for="c-error-69-components-typo-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-error-69-components-typo-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-69-components-typo-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-69-uai-typo-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-error-69-uai-typo-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-69-uai-typo-stories" class="badge ok as-toggle">5 stories</label>
+      </div>
+    </div>
+    <div class="meta" title="./src/components/uai-typo/uai-typo.stories.jsx">uai-typo · ./src/components/uai-typo/uai-typo.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-error-69-uai-typo-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-69-uai-typo-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-69-uai-typo-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">Prop type error</div>
+      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
+  3 | import DocumentationTemplate from &#39;./uai-typo.mdx&#39;;
+  4 |
+&gt; 5 | export default {
+    | ^
+  6 |   title: &#39;UAI/Typo&#39;,
+  7 |   tags: [&#39;autodocs&#39;],
+  8 |   parameters: {
+
+./src/components/uai-typo/uai-typo.stories.jsx:
+import React from &#39;react&#39;;
+import { UaiTypo, UaiThemeProvider } from &#39;../../../blip-ds-react/dist/components&#39;;
+import DocumentationTemplate from &#39;./uai-typo.mdx&#39;;
+
+export default {
+  title: &#39;UAI/Typo&#39;,
+  tags: [&#39;autodocs&#39;],
+  parameters: {
+    docs: {
+      page: DocumentationTemplate,
+    },
+  },
+  decorators: [
+    (Story, context) =&gt; (
+      &lt;uai-theme-provider theme={context.globals.hasTheme === &#39;dark&#39; ? &#39;dark&#39; : &#39;light&#39;}&gt;
+        &lt;Story /&gt;
+      &lt;/uai-theme-provider&gt;
+    ),
+  ],
+};
+
+// Text styles from the UAI Core Figma file; weights follow the published styles.
+const STYLES = [
+  { variant: &#39;display&#39;, size: &#39;40/48&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;heading-xl&#39;, size: &#39;32/40&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;heading-lg&#39;, size: &#39;24/32&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;heading-md&#39;, size: &#39;20/28&#39;, weights: [&#39;regular&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;title&#39;, size: &#39;16/24&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;body-lg&#39;, size: &#39;16/24&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;body-base&#39;, size: &#39;14/22&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;body-sm&#39;, size: &#39;12/20&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;caption&#39;, size: &#39;12/20&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;] },
+  { variant: &#39;overline&#39;, size: &#39;10/16&#39;, weights: [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;] },
+];
+
+const VARIANTS = STYLES.map((style) =&gt; style.variant);
+const BOLDS = [&#39;regular&#39;, &#39;medium&#39;, &#39;semibold&#39;, &#39;bold&#39;];
+
+const column = { display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: &#39;16px&#39; };
+const caption = { fontFamily: &#39;monospace&#39;, fontSize: &#39;12px&#39;, color: &#39;var(--uai-content-secondary)&#39; };
+
+export const Properties = (args) =&gt; (
+  &lt;uai-typo
+    variant={args.variant}
+    bold={args.bold}
+    letter-spacing={args.letterSpacing}
+    tag={args.tag}
+    italic={args.italic}
+    no-wrap={args.noWrap}
+    paragraph={args.paragraph}
+    margin={args.margin}
+    data-test={args.dataTest}
+  &gt;
+    {args.text}
+  &lt;/uai-typo&gt;
+);
+
+Properties.args = {
+  text: &#39;A tipografia organiza a leitura da interface.&#39;,
+  variant: &#39;body-base&#39;,
+  bold: &#39;regular&#39;,
+  letterSpacing: &#39;normal&#39;,
+  tag: &#39;p&#39;,
+  italic: false,
+  noWrap: false,
+  paragraph: false,
+  margin: true,
+  dataTest: &#39;&#39;,
+};
+
+Properties.argTypes = {
+  text: {
+    description: &#39;Texto (conteúdo do slot, não é uma propriedade).&#39;,
+    control: &#39;text&#39;,
+  },
+  variant: {
+    table: { defaultValue: { summary: &#39;body-base&#39; } },
+    description: &#39;Papel do texto na escala tipográfica UAI. Define tamanho e altura de linha.&#39;,
+    options: VARIANTS,
+    control: { type: &#39;select&#39; },
+  },
+  bold: {
+    table: { defaultValue: { summary: &#39;regular&#39; } },
+    description: &#39;Peso da fonte.&#39;,
+    options: BOLDS,
+    control: { type: &#39;select&#39; },
+  },
+  letterSpacing: {
+    table: { defaultValue: { summary: &#39;normal&#39; } },
+    description: &#39;Espaçamento entre letras. expanded corresponde ao estilo body/base/regular-space.&#39;,
+    options: [&#39;normal&#39;, &#39;expanded&#39;],
+    control: { type: &#39;select&#39; },
+  },
+  tag: {
+    table: { defaultValue: { summary: &#39;p&#39; } },
+    description: &#39;Elemento HTML renderizado. Use para dar a semântica correta ao texto.&#39;,
+    options: [&#39;p&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;, &#39;h4&#39;, &#39;span&#39;],
+    control: { type: &#39;select&#39; },
+  },
+  italic: {
+    table: { defaultValue: { summary: &#39;false&#39; } },
+    description: &#39;Aplica itálico.&#39;,
+    control: &#39;boolean&#39;,
+  },
+  noWrap: {
+    table: { defaultValue: { summary: &#39;false&#39; } },
+    description: &#39;Mantém o texto em uma linha e corta com reticências.&#39;,
+    control: &#39;boolean&#39;,
+  },
+  paragraph: {
+    table: { defaultValue: { summary: &#39;false&#39; } },
+    description: &#39;Adiciona margem inferior de parágrafo (16px).&#39;,
+    control: &#39;boolean&#39;,
+  },
+  margin: {
+    table: { defaultValue: { summary: &#39;true&#39; } },
+    description: &#39;Adiciona margem inferior (24px) em display e headings.&#39;,
+    control: &#39;boolean&#39;,
+  },
+  dataTest: {
+    description: &#39;Valor do atributo data-test do elemento de texto.&#39;,
+    control: &#39;text&#39;,
+  },
+};
+
+const grid = {
+  display: &#39;grid&#39;,
+  gridTemplateColumns: &#39;max-content repeat(4, max-content)&#39;,
+  alignItems: &#39;baseline&#39;,
+  columnGap: &#39;32px&#39;,
+  rowGap: &#39;16px&#39;,
+};
+
+export const TextStyles = () =&gt; (
+  &lt;div style={grid}&gt;
+    &lt;span&gt;&lt;/span&gt;
+    {BOLDS.map((bold) =&gt; (
+      &lt;span key={bold} style={caption}&gt;
+        {bold}
+      &lt;/span&gt;
+    ))}
+    {STYLES.map(({ variant, size, weights }) =&gt; (
+      &lt;React.Fragment key={variant}&gt;
+        &lt;span style={caption}&gt;
+          {variant} · {size}
+        &lt;/span&gt;
+        {BOLDS.map((bold) =&gt;
+          weights.includes(bold) ? (
+            &lt;uai-typo key={bold} variant={variant} bold={bold} margin={false}&gt;
+              Aa
+            &lt;/uai-typo&gt;
+          ) : (
+            &lt;span key={bold}&gt;&lt;/span&gt;
+          ),
+        )}
+      &lt;/React.Fragment&gt;
+    ))}
+  &lt;/div&gt;
+);
+
+export const LetterSpacing = () =&gt; (
+  &lt;div style={column}&gt;
+    &lt;uai-typo variant=&quot;body-base&quot;&gt;body-base · normal&lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; letter-spacing=&quot;expanded&quot;&gt;
+      body-base · expanded
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);
+
+export const Semantics = () =&gt; (
+  &lt;div style={{ maxWidth: &#39;480px&#39; }}&gt;
+    &lt;uai-typo variant=&quot;heading-lg&quot; bold=&quot;semibold&quot; tag=&quot;h2&quot;&gt;
+      Título da seção
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; paragraph&gt;
+      O variant define a aparência e o tag define a semântica. Um título visual deve usar uma tag de heading.
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;caption&quot; tag=&quot;span&quot; style={{ color: &#39;var(--uai-content-secondary)&#39; }}&gt;
+      Texto de apoio
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);
+
+export const FrameworkReact = () =&gt; (
+  &lt;UaiThemeProvider theme=&quot;light&quot;&gt;
+    &lt;div style={column}&gt;
+      &lt;UaiTypo variant=&quot;heading-md&quot; bold=&quot;semibold&quot; tag=&quot;h3&quot; margin={false}&gt;
+        Título
+      &lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;body-base&quot;&gt;Texto padrão da aplicação.&lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;caption&quot; bold=&quot;medium&quot;&gt;
+        Legenda
+      &lt;/UaiTypo&gt;
+    &lt;/div&gt;
+  &lt;/UaiThemeProvider&gt;
+);
+</code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import React from "react";
+import { UaiThemeProvider, UaiTypo } from "blip-ds";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Properties</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Properties = () =&gt; &lt;uai-typo
+    variant=&quot;body-base&quot;
+    bold=&quot;regular&quot;
+    letter-spacing=&quot;normal&quot;
+    tag=&quot;p&quot;
+    italic={false}
+    no-wrap={false}
+    paragraph={false}
+    margin
+    data-test=&quot;&quot;&gt;
+    {args.text}
+&lt;/uai-typo&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">TextStyles</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const TextStyles = () =&gt; (
+  &lt;div style={grid}&gt;
+    &lt;span&gt;&lt;/span&gt;
+    {BOLDS.map((bold) =&gt; (
+      &lt;span key={bold} style={caption}&gt;
+        {bold}
+      &lt;/span&gt;
+    ))}
+    {STYLES.map(({ variant, size, weights }) =&gt; (
+      &lt;React.Fragment key={variant}&gt;
+        &lt;span style={caption}&gt;
+          {variant} · {size}
+        &lt;/span&gt;
+        {BOLDS.map((bold) =&gt;
+          weights.includes(bold) ? (
+            &lt;uai-typo key={bold} variant={variant} bold={bold} margin={false}&gt;
+              Aa
+            &lt;/uai-typo&gt;
+          ) : (
+            &lt;span key={bold}&gt;&lt;/span&gt;
+          ),
+        )}
+      &lt;/React.Fragment&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">LetterSpacing</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const LetterSpacing = () =&gt; (
+  &lt;div style={column}&gt;
+    &lt;uai-typo variant=&quot;body-base&quot;&gt;body-base · normal&lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; letter-spacing=&quot;expanded&quot;&gt;
+      body-base · expanded
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Semantics</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Semantics = () =&gt; (
+  &lt;div style={{ maxWidth: &#39;480px&#39; }}&gt;
+    &lt;uai-typo variant=&quot;heading-lg&quot; bold=&quot;semibold&quot; tag=&quot;h2&quot;&gt;
+      Título da seção
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;body-base&quot; paragraph&gt;
+      O variant define a aparência e o tag define a semântica. Um título visual deve usar uma tag de heading.
+    &lt;/uai-typo&gt;
+    &lt;uai-typo variant=&quot;caption&quot; tag=&quot;span&quot; style={{ color: &#39;var(--uai-content-secondary)&#39; }}&gt;
+      Texto de apoio
+    &lt;/uai-typo&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">FrameworkReact</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FrameworkReact = () =&gt; (
+  &lt;UaiThemeProvider theme=&quot;light&quot;&gt;
+    &lt;div style={column}&gt;
+      &lt;UaiTypo variant=&quot;heading-md&quot; bold=&quot;semibold&quot; tag=&quot;h3&quot; margin={false}&gt;
+        Título
+      &lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;body-base&quot;&gt;Texto padrão da aplicação.&lt;/UaiTypo&gt;
+      &lt;UaiTypo variant=&quot;caption&quot; bold=&quot;medium&quot;&gt;
+        Legenda
+      &lt;/UaiTypo&gt;
+    &lt;/div&gt;
+  &lt;/UaiThemeProvider&gt;
+);</code></pre>
+            </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card 
+  has-error 
+  has-info 
+  no-story-error"
+  role="listitem"
+  aria-label="Typo">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> Typo</h2>
+      <div class="badges">
+        <label for="c-error-70-components-typo-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-error-70-components-typo-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-70-components-typo-stories" class="badge ok as-toggle">2 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/typo/typo.stories.jsx">components-typo · ./src/components/typo/typo.stories.jsx</div>
@@ -60651,9 +61413,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-69-components-typo-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-69-components-typo-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-69-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-70-components-typo-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-70-components-typo-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-70-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
   
 
   <div class="panels">
@@ -60817,9 +61579,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Upload</h2>
       <div class="badges">
-        <label for="c-error-70-components-upload-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-error-70-components-upload-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-70-components-upload-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-71-components-upload-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-error-71-components-upload-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-71-components-upload-stories" class="badge ok as-toggle">4 stories</label>
       </div>
     </div>
     <div class="meta" title="./src/components/upload/upload.stories.jsx">components-upload · ./src/components/upload/upload.stories.jsx</div>
@@ -60829,9 +61591,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-70-components-upload-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-70-components-upload-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-70-components-upload-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-71-components-upload-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-71-components-upload-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-71-components-upload-stories" class="tg tg-stories" type="checkbox" hidden />
   
 
   <div class="panels">

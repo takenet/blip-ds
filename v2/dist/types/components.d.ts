@@ -79,6 +79,7 @@ import { languages as languages4 } from "./components/upload/languages";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
+import { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export { collapses } from "./components/accordion/accordion-group";
 export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
 export { AutocompleteChangeEventDetail, AutocompleteMultiSelectedChangeEventDetail, AutocompleteOption, AutocompleteOptionsPositionType, AutocompleteSelectedChangeEventDetail } from "./components/autocomplete/autocomplete-select-interface";
@@ -153,6 +154,7 @@ export { languages as languages4 } from "./components/upload/languages";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
+export { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export namespace Components {
     interface BdsAccordion {
         "close": () => Promise<void>;
@@ -3800,6 +3802,57 @@ export namespace Components {
          */
         "theme"?: UaiTheme;
     }
+    interface UaiTypo {
+        /**
+          * Font weight. Can be one of: 'regular', 'medium', 'semibold', 'bold'.
+          * @default 'regular'
+         */
+        "bold"?: UaiTypoBold;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Adds font style italic.
+          * @default false
+         */
+        "italic"?: boolean;
+        /**
+          * Letter spacing. 'expanded' matches the spaced body text style.
+          * @default 'normal'
+         */
+        "letterSpacing"?: UaiTypoLetterSpacing;
+        /**
+          * @deprecated The line height comes from the variant. This prop has no effect.
+         */
+        "lineHeight"?: UaiTypoLineHeight;
+        /**
+          * If true, adds the default bottom margin to display and heading variants.
+          * @default true
+         */
+        "margin"?: boolean;
+        /**
+          * Keeps the text on one line and truncates it with an ellipsis.
+          * @default false
+         */
+        "noWrap"?: boolean;
+        /**
+          * Adds a bottom margin for paragraphs.
+          * @default false
+         */
+        "paragraph"?: boolean;
+        /**
+          * Element tag. Use it to give the text the right semantics.
+          * @default 'p'
+         */
+        "tag"?: UaiTypoTag;
+        /**
+          * Text style role from the UAI typography scale. Can be one of: 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
+          * @default 'body-base'
+         */
+        "variant"?: UaiTypoVariant;
+    }
 }
 export interface BdsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5333,6 +5386,12 @@ declare global {
         prototype: HTMLUaiThemeProviderElement;
         new (): HTMLUaiThemeProviderElement;
     };
+    interface HTMLUaiTypoElement extends Components.UaiTypo, HTMLStencilElement {
+    }
+    var HTMLUaiTypoElement: {
+        prototype: HTMLUaiTypoElement;
+        new (): HTMLUaiTypoElement;
+    };
     interface HTMLElementTagNameMap {
         "bds-accordion": HTMLBdsAccordionElement;
         "bds-accordion-body": HTMLBdsAccordionBodyElement;
@@ -5443,6 +5502,7 @@ declare global {
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
+        "uai-typo": HTMLUaiTypoElement;
     }
 }
 declare namespace LocalJSX {
@@ -9352,6 +9412,57 @@ declare namespace LocalJSX {
          */
         "theme"?: UaiTheme;
     }
+    interface UaiTypo {
+        /**
+          * Font weight. Can be one of: 'regular', 'medium', 'semibold', 'bold'.
+          * @default 'regular'
+         */
+        "bold"?: UaiTypoBold;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Adds font style italic.
+          * @default false
+         */
+        "italic"?: boolean;
+        /**
+          * Letter spacing. 'expanded' matches the spaced body text style.
+          * @default 'normal'
+         */
+        "letterSpacing"?: UaiTypoLetterSpacing;
+        /**
+          * @deprecated The line height comes from the variant. This prop has no effect.
+         */
+        "lineHeight"?: UaiTypoLineHeight;
+        /**
+          * If true, adds the default bottom margin to display and heading variants.
+          * @default true
+         */
+        "margin"?: boolean;
+        /**
+          * Keeps the text on one line and truncates it with an ellipsis.
+          * @default false
+         */
+        "noWrap"?: boolean;
+        /**
+          * Adds a bottom margin for paragraphs.
+          * @default false
+         */
+        "paragraph"?: boolean;
+        /**
+          * Element tag. Use it to give the text the right semantics.
+          * @default 'p'
+         */
+        "tag"?: UaiTypoTag;
+        /**
+          * Text style role from the UAI typography scale. Can be one of: 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
+          * @default 'body-base'
+         */
+        "variant"?: UaiTypoVariant;
+    }
     interface IntrinsicElements {
         "bds-accordion": BdsAccordion;
         "bds-accordion-body": BdsAccordionBody;
@@ -9462,6 +9573,7 @@ declare namespace LocalJSX {
         "uai-navbar": UaiNavbar;
         "uai-navbar-content": UaiNavbarContent;
         "uai-theme-provider": UaiThemeProvider;
+        "uai-typo": UaiTypo;
     }
 }
 export { LocalJSX as JSX };
@@ -9577,6 +9689,7 @@ declare module "@stencil/core" {
             "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
             "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
             "uai-theme-provider": LocalJSX.UaiThemeProvider & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
+            "uai-typo": LocalJSX.UaiTypo & JSXBase.HTMLAttributes<HTMLUaiTypoElement>;
         }
     }
 }

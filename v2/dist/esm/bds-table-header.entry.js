@@ -7,7 +7,7 @@ const TableHeader = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '1e60f1072a4742046bf3a427138a03c5bdb3fc5d' }, h("slot", { key: 'b0daae57b5a66f40c317a8afecfc0f377a76bdfa' })));
+        return (h(Host, { key: '8723ebd242ac0004968f71c140285cfca5418ed7' }, h("slot", { key: 'b5bdcbe2fdc1ed6a722bc30970973dc6758a3991' })));
     }
 };
 TableHeader.style = tableHeaderCss;

@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$3 } from './p-R_xz97kF.js';
+import { d as defineCustomElement$3 } from './p-CY2zUmZM.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 const menuActionCss = ".menuaction{position:relative}.menuaction__button{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;gap:8px;-ms-flex-align:center;align-items:center;background-color:var(--color-surface-1, rgb(246, 246, 246));border:0;border-radius:8px;padding:16px;width:100%;text-align:left;cursor:pointer}.menuaction__button__activeicleft{grid-template-columns:auto 1fr}.menuaction__button__activeicright{grid-template-columns:1fr auto}.menuaction__button__activeicleftright{grid-template-columns:auto 1fr auto}.menuaction__button .icon-item{color:var(--color-content-default, rgb(40, 40, 40))}.menuaction__button .content-item{width:100%;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.menuaction__button .arrow{color:var(--color-content-default, rgb(40, 40, 40))}.menuaction__button__lipstick .icon-item{color:#a01c2c}.menuaction__button__lipstick .content-item{color:#a01c2c}.menuaction__button__lipstick .arrow{color:#a01c2c}.menuaction__button__disabled{opacity:0.5;cursor:no-drop}.menuaction__button:hover{background-color:var(--color-surface-2, rgb(237, 237, 237))}.menuaction__submenu{position:absolute;pointer-events:none;display:block;padding:2px;background-color:var(--color-surface-1, rgb(246, 246, 246));border-radius:8px;-webkit-box-shadow:0px 4px 16px rgba(7, 71, 166, 0.12);box-shadow:0px 4px 16px rgba(7, 71, 166, 0.12);min-width:196px;opacity:0;-webkit-transition:opacity 0.5s;-moz-transition:opacity 0.5s;transition:opacity 0.5s}.menuaction__submenu__open{pointer-events:auto;opacity:1}.menuaction.position-right .menuaction__button .icon-item{-ms-flex-order:0;order:0}.menuaction.position-right .menuaction__button .content-item{-ms-flex-order:1;order:1}.menuaction.position-right .menuaction__button .arrow{-ms-flex-order:2;order:2}.menuaction.position-right .menuaction__submenu{top:-2px;left:100%}.menuaction.position-left .menuaction__button .icon-item{-ms-flex-order:1;order:1}.menuaction.position-left .menuaction__button .content-item{-ms-flex-order:2;order:2}.menuaction.position-left .menuaction__button .arrow{-ms-flex-order:0;order:0}.menuaction.position-left .menuaction__submenu{top:-2px;right:100%}";
@@ -108,20 +108,20 @@ const BdsMenuAction$1 = /*@__PURE__*/ proxyCustomElement(class BdsMenuAction ext
         const zIndexSubmenu = {
             zIndex: `${this.zIndex}`,
         };
-        return (h("div", { key: 'bf57129b9b9b69e703cd3e5d6b53b43cb6b5c83e', class: {
+        return (h("div", { key: '69a134b82880f1322be8a29f336c3041c6daa8bb', class: {
                 menuaction: true,
                 [`position-${this.positionSubMenu}`]: true,
-            }, onMouseOver: openSubmenu, onMouseOut: closeSubmenu }, h("button", { key: '9423bb4f608eceb7432d19b825ec0da191464b46', class: {
+            }, onMouseOver: openSubmenu, onMouseOut: closeSubmenu }, h("button", { key: '462271324bffc3e26e1e505ce41e503cd3541872', class: {
                 menuaction__button: true,
                 [`menuaction__button__activeicleft`]: actLeft,
                 [`menuaction__button__activeicright`]: actRight,
                 [`menuaction__button__activeicleftright`]: actLeftright,
                 [`menuaction__button__lipstick`]: this.lipstick,
                 [`menuaction__button__disabled`]: this.disabled,
-            } }, this.iconLeft && h("bds-icon", { key: 'f0004602d60039d14d1359dd53203b377939f74f', class: "icon-item", name: this.iconLeft, theme: "outline", size: "small" }), h("div", { key: 'd7698cebc0a0d167dbfb2d966f4a805153820600', class: "content-item" }, this.buttonText && (h("bds-typo", { key: 'a4cb1f74520030c7733b0474919636d345f4792d', class: "title-item", variant: "fs-16", tag: "span" }, this.buttonText)), this.subtitle && (h("bds-typo", { key: '089806ea64a40665f0e32fd3c0c766b6a10887f3', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (h("bds-typo", { key: 'bbe4ebdd5d98dc73e11769d4a3dc946397d58da6', class: "description-item", variant: "fs-10", tag: "span" }, this.description))), this.subMenu && (h("bds-icon", { key: '1bdc7e618ab26a43f9745a9860d7b95ed511855e', class: { arrow: true }, name: `arrow-${this.positionSubMenu}`, theme: "outline", size: "small" }))), this.subMenu && (h("div", { key: '53f385c77ff98eb32da1e2b618fee22dcb7edb30', class: {
+            } }, this.iconLeft && h("bds-icon", { key: '969c1485e5ec9b92b27eecad839046f19ed6d7b7', class: "icon-item", name: this.iconLeft, theme: "outline", size: "small" }), h("div", { key: '0217df3c8e68662a129fda3ee14a177f1851c6c6', class: "content-item" }, this.buttonText && (h("bds-typo", { key: '6f1edc2523a9273a227ad9286111625f0ba59c07', class: "title-item", variant: "fs-16", tag: "span" }, this.buttonText)), this.subtitle && (h("bds-typo", { key: 'df01dd6eb3307282a38762ed7e61322b0e515527', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (h("bds-typo", { key: 'f3bedba0788f16df30ac8a1184254e8cf11415c2', class: "description-item", variant: "fs-10", tag: "span" }, this.description))), this.subMenu && (h("bds-icon", { key: '96fb1d41c4ca2969189399e982e90f106daed78c', class: { arrow: true }, name: `arrow-${this.positionSubMenu}`, theme: "outline", size: "small" }))), this.subMenu && (h("div", { key: '748302a528ad6f8db3ca9933fcada8d911ffbfd8', class: {
                 menuaction__submenu: true,
                 menuaction__submenu__open: this.delaySubMenu,
-            }, style: zIndexSubmenu }, h("slot", { key: '41674f0eb978f271ddb7905a7cb7cff67f313401' })))));
+            }, style: zIndexSubmenu }, h("slot", { key: 'e6feeb8832a961c3724df5330ee4d8ab5a050d7f' })))));
     }
     get element() { return this; }
     static get watchers() { return {

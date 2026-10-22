@@ -9,7 +9,7 @@ const MenuList = /*@__PURE__*/ proxyCustomElement(class MenuList extends H {
         this.__attachShadow();
     }
     render() {
-        return (h(Host, { key: 'acabd22ae0445bac489939ad1a5dbbd26a508c29' }, h("div", { key: 'c9904e89f290b7470536851563d6775309892dce', class: "menu-list" }, h("div", { key: '5ad615415933402dc4c8a65adc948da147b83719', class: "menu-list__left" }), h("slot", { key: 'bd87939492c9f700fef4b4fa248e902f09573413' }), h("div", { key: '1742ddc25b04d9fec527f1f429913f41e1ff3260', class: "menu-list__right" }))));
+        return (h(Host, { key: '8d14bfbfcbeef23325d5d1071d04c8ca5301487c' }, h("div", { key: '19c284ab66e23ba26633462b9070da4e3b42edfd', class: "menu-list" }, h("div", { key: '1e429f4a67769c3bfc1da9e52a74666eef396341', class: "menu-list__left" }), h("slot", { key: 'dc50428e121f1f248c3f6de71b06cba33bb83142' }), h("div", { key: '6a201e3556ab96f8d12b8febbcb0abefebce5591', class: "menu-list__right" }))));
     }
     static get style() { return menuListCss; }
 }, [1, "bds-menu-list"]);

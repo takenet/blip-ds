@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$2 } from './p-R_xz97kF.js';
+import { d as defineCustomElement$2 } from './p-CY2zUmZM.js';
 
 const modalCloseButtonCss = ".modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}";
 
@@ -14,10 +14,10 @@ const BdsModalCloseButton$1 = /*@__PURE__*/ proxyCustomElement(class BdsModalClo
         this.active = true;
     }
     render() {
-        return (h("div", { key: '662240b4cd2f01292d78bb66168ca174db8cb92f', class: {
+        return (h("div", { key: '2c2e58b13c8881964ae08fe79bdb278073b48a7a', class: {
                 'modal__close__button-icon': true,
                 'modal__close__button-icon--active': this.active,
-            } }, h("bds-icon", { key: 'a1afff112a51924d20d772c901651698f1f03cff', size: "medium", name: "close" })));
+            } }, h("bds-icon", { key: '37f79dc4978ceb73f0b06e4d591c062d57c248c8', size: "medium", name: "close" })));
     }
     static get style() { return modalCloseButtonCss; }
 }, [1, "bds-modal-close-button", {

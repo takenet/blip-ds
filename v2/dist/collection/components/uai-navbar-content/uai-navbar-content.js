@@ -1,7 +1,7 @@
 import { h, Host } from "@stencil/core";
 export class UaiNavbarContent {
     render() {
-        return (h(Host, { key: '5691313c6ab5afce57ac0c480bc0abca3d9a1ab0', class: { NavbarContent: true } }, h("slot", { key: 'c25739390eddb698da251f11336c137415ecbe74' })));
+        return (h(Host, { key: '0a33fd6b4e3b651cc80fdae336fa68e8d5ca5b14', class: { NavbarContent: true } }, h("slot", { key: 'cd56785bdf3be0ac973b03c5482a1e69b2b5ef99' })));
     }
     static get is() { return "uai-navbar-content"; }
     static get encapsulation() { return "shadow"; }
