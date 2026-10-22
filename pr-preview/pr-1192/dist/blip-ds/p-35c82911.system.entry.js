@@ -1,2 +1,0 @@
-System.register(["./p-CD9MMdoC.system.js"],(function(e){"use strict";var t,a,r;return{setters:[function(e){t=e.r;a=e.h;r=e.H}],execute:function(){var o=".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}";var b=e("bds_table_header",function(){function e(e){t(this,e)}e.prototype.render=function(){return a(r,{key:"1e60f1072a4742046bf3a427138a03c5bdb3fc5d"},a("slot",{key:"b0daae57b5a66f40c317a8afecfc0f377a76bdfa"}))};return e}());b.style=o}}}));
-//# sourceMappingURL=p-35c82911.system.entry.js.map
