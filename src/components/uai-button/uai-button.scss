@@ -147,8 +147,8 @@
   }
 
   &--solid.button--color-positive {
-    --button-bg: var(--uai-feedback-success, #{$uai-feedback-success});
-    --button-fg: var(--uai-fixed-bright, #{$uai-fixed-bright});
+    --button-bg: var(--uai-action-positive, var(--uai-feedback-success, #{$uai-feedback-success}));
+    --button-fg: var(--uai-action-positive-foreground, var(--uai-fixed-bright, #{$uai-fixed-bright}));
   }
 
   &--solid.button--color-negative {

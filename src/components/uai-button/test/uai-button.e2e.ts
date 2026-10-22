@@ -202,6 +202,28 @@ describe('uai-button e2e', () => {
       expect(darkStyle['background-color']).not.toBe(lightStyle['background-color']);
     });
 
+    it.each([
+      ['light', '#047857', '#ffffff', 'rgb(4, 120, 87)', 'rgb(255, 255, 255)'],
+      ['dark', '#35de90', '#181a1b', 'rgb(53, 222, 144)', 'rgb(24, 26, 27)'],
+    ])('uses the positive action pair in %s without changing feedback-based outline/text', async (theme, bg, fg, background, foreground) => {
+      const page = await newE2EPage({
+        html: withTheme(
+          `<style>uai-button { --uai-action-positive: ${bg}; --uai-action-positive-foreground: ${fg}; --uai-feedback-success: #10b981; }</style>
+          <uai-button id="solid" color="positive">Save</uai-button>
+          <uai-button id="outline" variant="outline" color="positive">Save</uai-button>
+          <uai-button id="text" variant="text" color="positive">Save</uai-button>`,
+          theme,
+        ),
+      });
+
+      expect(await buttonStyle(page, '#solid', ['background-color', 'color'])).toEqual({
+        'background-color': background,
+        color: foreground,
+      });
+      expect((await buttonStyle(page, '#outline', ['color']))['color']).toBe('rgb(16, 185, 129)');
+      expect((await buttonStyle(page, '#text', ['color']))['color']).toBe('rgb(16, 185, 129)');
+    });
+
     it('dims a disabled button', async () => {
       const page = await newE2EPage({ html: withTheme(`<uai-button disabled>Save</uai-button>`) });
       const style = await buttonStyle(page, 'uai-button', ['opacity']);

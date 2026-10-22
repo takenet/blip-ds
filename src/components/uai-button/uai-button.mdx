@@ -78,11 +78,23 @@ Nomes que não existem na fonte UAI, e `typeIcon` `logo` ou `emoji`, usam o `bds
 
 | Parte | Tokens |
 | --- | --- |
-| Fundo e texto | `action-primary-*`, `action-destructive-*`, `feedback-success`, `content-primary`, `surface-background`, `fixed-bright` |
+| Fundo e texto | `action-primary-*`, `action-positive`, `action-positive-foreground`, `action-destructive-*`, `content-primary`, `surface-background` |
+| Texto e borda de ações positivas outline/text | `feedback-success` |
 | Borda e foco | `border-default`, `border-width-default`, `border-width-thick`, `border-ring` |
 | Hover e pressed | `overlay-hover`, `overlay-pressed`, `action-outline-*` |
 | Tamanho e forma | `spacing-*`, `sizing-*`, `radius-md`, `radius-lg` |
 | Texto | `body-base` e `caption` com `font-weight-medium` (via `UaiTypo`) |
+
+Botões positivos `solid` usam o par `action-positive` / `action-positive-foreground`,
+não o token de feedback como fundo com texto branco. No Dark, os pares positivo e
+destrutivo usam texto escuro sobre o fundo colorido claro. Não substitua seus
+foregrounds por `fixed-bright`.
+
+Os novos tokens positivos são opcionais para compatibilidade com a versão de
+`blip-tokens` atualmente instalada: sem eles, o componente mantém a receita
+anterior. A correção completa depende da publicação e adoção da nova biblioteca
+de tokens em [blip-ai/blip-tokens#209](https://github.com/blip-ai/blip-tokens/pull/209).
+Props, eventos, dimensões e comportamento do botão não mudam.
 
 ## Migração do `bds-button`
 
