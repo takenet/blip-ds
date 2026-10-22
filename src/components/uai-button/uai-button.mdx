@@ -30,6 +30,8 @@ Os componentes UAI leem os tokens `--uai-*` do `blip-tokens`. Envolva-os em um `
 </uai-theme-provider>
 ```
 
+Sem tema, os componentes usam os valores do tema claro e avisam no console.
+
 A nova UI usa a fonte **Figtree**. Carregue-a na aplicação; sem ela, o botão usa a fonte atual do blip-ds.
 
 ## Estrutura
@@ -64,6 +66,16 @@ Em `loading`, o spinner ocupa o lugar do ícone da esquerda, o botão continua f
 <Canvas of={UaiButtonStories.States} />
 
 ## Ícones
+
+Os ícones vêm da fonte `uai-icon` do `blip-tokens` (323 ícones `outline` e 323 `solid`). Use o nome do ícone em `icon`, `iconLeft` ou `iconRight` e escolha o estilo com `iconTheme` (`outline` ou `solid`). O tamanho segue o botão: 16px no `compact`, 20px no `short` e 24px no `medium` e no `large`.
+
+A fonte precisa estar carregada na aplicação, assim como o `uai.css`:
+
+```js
+import 'blip-tokens/uai-icons/css';
+```
+
+Nomes que não existem na fonte `uai-icon`, e `typeIcon` `logo` ou `emoji`, caem no `bds-icon` antigo com um aviso no console.
 
 Sem texto, o botão fica quadrado. Nesse caso, informe `aria-label`.
 

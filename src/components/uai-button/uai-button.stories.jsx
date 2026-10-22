@@ -111,11 +111,11 @@ Properties.argTypes = {
     control: { type: 'select' },
   },
   iconLeft: {
-    description: 'Ícone antes do texto (nome do bds-icon).',
+    description: 'Ícone antes do texto (nome do ícone UAI, ex.: `info`).',
     control: 'text',
   },
   iconRight: {
-    description: 'Ícone depois do texto (nome do bds-icon).',
+    description: 'Ícone depois do texto (nome do ícone UAI, ex.: `arrow-right`).',
     control: 'text',
   },
   arrow: {

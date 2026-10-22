@@ -14,6 +14,18 @@ const buttonStyle = (page: E2EPage, selector: string, props: string[]) =>
     props,
   );
 
+// The label text is rendered by the nested uai-typo, so its typography is read from there.
+const labelStyle = (page: E2EPage, selector: string, props: string[]) =>
+  page.evaluate(
+    (sel: string, keys: string[]) => {
+      const typo = document.querySelector(sel).shadowRoot.querySelector('uai-typo');
+      const style = getComputedStyle(typo.shadowRoot.querySelector('span'));
+      return Object.fromEntries(keys.map((key) => [key, style.getPropertyValue(key)]));
+    },
+    selector,
+    props,
+  );
+
 describe('uai-button e2e', () => {
   describe('form', () => {
     it('submits the enclosing form when type is submit', async () => {
@@ -90,6 +102,15 @@ describe('uai-button e2e', () => {
   });
 
   describe('visual recipe', () => {
+    it('falls back to the light tokens when no theme is set', async () => {
+      const page = await newE2EPage({ html: `<uai-button>Save</uai-button>` });
+      const style = await buttonStyle(page, 'uai-button', ['height', 'background-color', 'color']);
+      const label = await labelStyle(page, 'uai-button', ['font-size', 'font-weight']);
+
+      expect(style).toEqual({ height: '40px', 'background-color': 'rgb(36, 39, 41)', color: 'rgb(255, 255, 255)' });
+      expect(label).toEqual({ 'font-size': '14px', 'font-weight': '500' });
+    });
+
     it.each([
       ['compact', '24px', '8px', '8px', '12px', '500'],
       ['short', '32px', '12px', '12px', '14px', '500'],
@@ -101,19 +122,40 @@ describe('uai-button e2e', () => {
         'height',
         'padding-left',
         'border-top-left-radius',
-        'font-size',
-        'font-weight',
         'column-gap',
       ]);
+      const label = await labelStyle(page, 'uai-button', ['font-size', 'font-weight']);
 
       expect(style).toEqual({
         height,
         'padding-left': paddingX,
         'border-top-left-radius': radius,
-        'font-size': fontSize,
-        'font-weight': fontWeight,
         'column-gap': '8px',
       });
+      expect(label['font-size']).toBe(fontSize);
+      expect(label['font-weight']).toBe(fontWeight);
+    });
+
+    it.each([
+      ['compact', '16px'],
+      ['short', '20px'],
+      ['medium', '24px'],
+      ['large', '24px'],
+    ])('draws the UAI icon of a %s button at %s, as in the Figma', async (size, iconSize) => {
+      const page = await newE2EPage({
+        html: withTheme(`<uai-button size="${size}" icon-left="info" arrow>Save</uai-button>`),
+      });
+      const icons = await page.evaluate(() =>
+        Array.from(document.querySelector('uai-button').shadowRoot.querySelectorAll('.uai-icon')).map((icon) => {
+          const style = getComputedStyle(icon);
+          return [style.width, style.height, style.fontSize];
+        }),
+      );
+
+      expect(icons).toEqual([
+        [iconSize, iconSize, iconSize],
+        [iconSize, iconSize, iconSize],
+      ]);
     });
 
     it('makes an icon-only button square', async () => {

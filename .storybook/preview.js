@@ -4,6 +4,7 @@ import { defineCustomElements } from '../loader/index.js';
 //import { withConsole } from '@storybook/addon-console';
 import './preview.css';
 import 'blip-tokens/build/css/uai.css';
+import 'blip-tokens/uai-icons/css';
 
 // Load the custom elements
 defineCustomElements();

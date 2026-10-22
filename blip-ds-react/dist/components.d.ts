@@ -109,6 +109,7 @@ import { UaiButton as UaiButtonElement } from "blip-ds/dist/components/uai-butto
 import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiThemeProvider as UaiThemeProviderElement } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiTypo as UaiTypoElement } from "blip-ds/dist/components/uai-typo.js";
 export type BdsAccordionEvents = {
     onBdsToggle: EventName<CustomEvent<{
         value: boolean;
@@ -635,3 +636,5 @@ export type UaiNavbarContentEvents = NonNullable<unknown>;
 export declare const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, UaiNavbarContentEvents>;
 export type UaiThemeProviderEvents = NonNullable<unknown>;
 export declare const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, UaiThemeProviderEvents>;
+export type UaiTypoEvents = NonNullable<unknown>;
+export declare const UaiTypo: StencilReactComponent<UaiTypoElement, UaiTypoEvents>;

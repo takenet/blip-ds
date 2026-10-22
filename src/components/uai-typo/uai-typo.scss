@@ -1,0 +1,83 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../globals/helpers' as *;
+@use 'blip-tokens/build/scss/uai-typography' as typography;
+
+// Light value of a UAI typography token, used as the var() fallback.
+@function token($name) {
+  @return map.get(meta.module-variables(typography), 'uai-#{$name}');
+}
+
+// body-lg and body-sm reuse the title and caption tokens until blip-tokens publishes their own.
+$variant-tokens: (
+  display: display,
+  heading-xl: heading-xl,
+  heading-lg: heading-lg,
+  heading-md: heading-md,
+  title: title,
+  body-lg: title,
+  body-base: body-base,
+  body-sm: caption,
+  caption: caption,
+  overline: overline,
+);
+
+$weights: regular, medium, semibold, bold;
+
+$font-fallback: 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
+
+// Components that embed uai-typo can set --uai-typo-color to currentColor to inherit their own text color.
+:host {
+  color: var(--uai-typo-color, var(--uai-content-primary, #{$uai-content-primary}));
+}
+
+.typo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), $font-fallback;
+  font-style: normal;
+
+  @each $variant, $token in $variant-tokens {
+    &--variant-#{$variant} {
+      font-size: var(--uai-#{$token}-font-size, #{token('#{$token}-font-size')});
+      line-height: var(--uai-#{$token}-line-height, #{token('#{$token}-line-height')});
+    }
+  }
+
+  &--variant-display {
+    font-family: var(--uai-font-family-display, #{$uai-font-family-display}), $font-fallback;
+  }
+
+  @each $weight in $weights {
+    &--bold-#{$weight} {
+      font-weight: var(--uai-font-weight-#{$weight}, #{token('font-weight-#{$weight}')});
+    }
+  }
+
+  &--letter-spacing-normal {
+    letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+  }
+
+  &--letter-spacing-expanded {
+    letter-spacing: var(--uai-letter-spacing-expanded, #{$uai-letter-spacing-expanded});
+  }
+
+  &--italic {
+    font-style: italic;
+  }
+
+  &--no-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &--paragraph {
+    margin-bottom: var(--uai-spacing-md, #{$uai-spacing-md});
+  }
+
+  &--margin {
+    margin-bottom: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  }
+}
