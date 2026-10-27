@@ -146,6 +146,12 @@ describe('uai-button', () => {
       expect(page.root.shadowRoot.querySelector('.button__label')).toHaveClass('button__label--hidden');
     });
 
+    it('warns when an icon-only button has no accessible name', async () => {
+      await render(`<uai-button icon="add"></uai-button>`);
+
+      expect(warn).toHaveBeenCalledWith('[uai-button] Icon-only buttons require an aria-label.');
+    });
+
     it('does not mark a labelled button as icon-only', async () => {
       const page = await render(`<uai-button icon="add">Add</uai-button>`);
       expect(innerButton(page)).not.toHaveClass('button--icon-only');

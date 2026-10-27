@@ -32,6 +32,7 @@ jobs:
       - name: Lint
         run: |
           npm run eslint
+          npm run lint:uai-tokens
 
       # Tests currently using https://github.com/stenciljs/core/issues/6157 workaround
       # This may be slower than expected

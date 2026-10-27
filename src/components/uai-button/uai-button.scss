@@ -17,7 +17,7 @@
 }
 
 .button {
-  --button-height: var(--uai-spacing-2xl, #{$uai-spacing-2xl});
+  --button-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
   --button-padding-x: var(--uai-spacing-sm, #{$uai-spacing-sm});
   --button-radius: var(--uai-radius-lg, #{$uai-radius-lg});
   --button-icon-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
@@ -49,9 +49,9 @@
   appearance: none;
   outline: none;
   transition:
-    background-color 150ms ease,
-    border-color 150ms ease,
-    color 150ms ease;
+    background-color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    border-color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard});
 
   &::after {
     content: '';
@@ -60,7 +60,7 @@
     border-radius: inherit;
     background-color: transparent;
     pointer-events: none;
-    transition: background-color 150ms ease;
+    transition: background-color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard});
   }
 
   &:hover {
@@ -86,7 +86,7 @@
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
     cursor: not-allowed;
   }
 
@@ -105,19 +105,19 @@
 
   // Sizes
   &--size-compact {
-    --button-height: var(--uai-spacing-lg, #{$uai-spacing-lg});
+    --button-height: var(--uai-control-height-compact, #{$uai-control-height-compact});
     --button-padding-x: var(--uai-spacing-xs, #{$uai-spacing-xs});
     --button-radius: var(--uai-radius-md, #{$uai-radius-md});
     --button-icon-size: var(--uai-sizing-sm, #{$uai-sizing-sm});
   }
 
   &--size-short {
-    --button-height: var(--uai-spacing-xl, #{$uai-spacing-xl});
+    --button-height: var(--uai-control-height-short, #{$uai-control-height-short});
     --button-icon-size: var(--uai-sizing-md, #{$uai-sizing-md});
   }
 
   &--size-large {
-    --button-height: var(--uai-spacing-4xl, #{$uai-spacing-4xl});
+    --button-height: var(--uai-control-height-large, #{$uai-control-height-large});
     --button-padding-x: var(--uai-spacing-md, #{$uai-spacing-md});
   }
 
@@ -147,8 +147,8 @@
   }
 
   &--solid.button--color-positive {
-    --button-bg: var(--uai-feedback-success, #{$uai-feedback-success});
-    --button-fg: var(--uai-fixed-bright, #{$uai-fixed-bright});
+    --button-bg: var(--uai-action-positive, #{$uai-action-positive});
+    --button-fg: var(--uai-action-positive-foreground, #{$uai-action-positive-foreground});
   }
 
   &--solid.button--color-negative {
@@ -267,7 +267,7 @@
   border: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid currentColor;
   border-right-color: transparent;
   border-radius: var(--uai-radius-full, #{$uai-radius-full});
-  animation: uai-button-spin 800ms linear infinite;
+  animation: uai-button-spin var(--uai-duration-loop, #{$uai-duration-loop}) var(--uai-easing-linear, #{$uai-easing-linear}) infinite;
 }
 
 @keyframes uai-button-spin {
@@ -283,6 +283,6 @@
   }
 
   .button__spinner {
-    animation-duration: 2400ms;
+    animation: none;
   }
 }

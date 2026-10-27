@@ -58,10 +58,14 @@ export const ColorTokens = ({ group }) => (
   </Table>
 );
 
+const tokenName = (token) => token.cssVar ?? token.scssVar;
+
 const dimensionPreview = (group, value) => {
   const base = { background: 'var(--uai-action-primary-default, #242729)' };
   if (group === 'spacing') return <div style={{ ...base, width: value, height: '16px', borderRadius: '2px' }} />;
   if (group === 'sizing') return <div style={{ ...base, width: value, height: value, borderRadius: '4px' }} />;
+  if (group === 'control-height') return <div style={{ ...base, width: '64px', height: value, borderRadius: '8px' }} />;
+  if (group === 'width') return <div style={{ ...base, width: value, maxWidth: '100%', height: '16px', borderRadius: '2px' }} />;
   if (group === 'radius')
     return (
       <div
@@ -73,27 +77,39 @@ const dimensionPreview = (group, value) => {
         }}
       />
     );
+  if (group === 'border-width')
+    return (
+      <div style={{ width: '48px', height: '24px', border: `${value} solid var(--uai-content-primary, #242729)` }} />
+    );
+  return null;
+};
+
+/**
+ * Token, value and usage for one category and group. Groups without a visual preview (opacity, layer,
+ * breakpoint, duration, easing) show only the value.
+ */
+export const TokenTable = ({ category = 'dimension', group }) => {
+  const tokens = tokensOf(category, group);
+  const preview = tokens.some((token) => dimensionPreview(group, token.light));
   return (
-    <div style={{ width: '48px', height: '24px', border: `${value} solid var(--uai-content-primary, #242729)` }} />
+    <Table head={[...(preview ? ['Exemplo'] : []), 'Token', 'Valor', 'Uso']}>
+      {tokens.map((token) => (
+        <tr key={token.name}>
+          {preview && <td style={cell}>{dimensionPreview(group, token.light)}</td>}
+          <td style={{ ...cell, whiteSpace: 'nowrap' }}>
+            <code>{tokenName(token)}</code>
+          </td>
+          <td style={cell}>
+            <code style={mono}>{token.light}</code>
+          </td>
+          <td style={cell}>{token.description}</td>
+        </tr>
+      ))}
+    </Table>
   );
 };
 
-export const DimensionTokens = ({ group }) => (
-  <Table head={['Exemplo', 'Token', 'Valor', 'Uso']}>
-    {tokensOf('dimension', group).map((token) => (
-      <tr key={token.name}>
-        <td style={cell}>{dimensionPreview(group, token.light)}</td>
-        <td style={{ ...cell, whiteSpace: 'nowrap' }}>
-          <code>{token.cssVar}</code>
-        </td>
-        <td style={cell}>
-          <code style={mono}>{token.light}</code>
-        </td>
-        <td style={cell}>{token.description}</td>
-      </tr>
-    ))}
-  </Table>
-);
+export const DimensionTokens = ({ group }) => <TokenTable category="dimension" group={group} />;
 
 export const FontTokens = () => (
   <Table head={['Token', 'Valor', 'Uso']}>
@@ -111,7 +127,7 @@ export const FontTokens = () => (
   </Table>
 );
 
-const ORDER = ['display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-base', 'caption', 'overline'];
+const ORDER = ['display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title', 'title-sm', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'];
 const WEIGHTS = ['regular', 'medium', 'semibold', 'bold'];
 const rank = (props) =>
   ORDER.indexOf(props.variant) * 100 + WEIGHTS.indexOf(props.bold) * 10 + (props.letterSpacing === 'expanded' ? 1 : 0);

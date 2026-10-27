@@ -26,6 +26,9 @@ const STYLES = [
   { variant: 'heading-xl', size: '32/40', weights: ['regular', 'semibold', 'bold'] },
   { variant: 'heading-lg', size: '24/32', weights: ['regular', 'semibold', 'bold'] },
   { variant: 'heading-md', size: '20/28', weights: ['regular', 'semibold', 'bold'] },
+  { variant: 'title-lg', size: '18/24', weights: ['regular', 'medium', 'semibold', 'bold'] },
+  { variant: 'title-md', size: '16/24', weights: ['regular', 'medium', 'semibold', 'bold'] },
+  { variant: 'title-sm', size: '14/20', weights: ['regular', 'medium', 'semibold', 'bold'] },
   { variant: 'title', size: '16/24', weights: ['regular', 'medium', 'semibold', 'bold'] },
   { variant: 'body-lg', size: '16/24', weights: ['regular', 'medium', 'semibold', 'bold'] },
   { variant: 'body-base', size: '14/22', weights: ['regular', 'medium', 'semibold', 'bold'] },
@@ -37,8 +40,8 @@ const STYLES = [
 const VARIANTS = STYLES.map((style) => style.variant);
 const BOLDS = ['regular', 'medium', 'semibold', 'bold'];
 
-const column = { display: 'flex', flexDirection: 'column', gap: '16px' };
-const caption = { fontFamily: 'monospace', fontSize: '12px', color: 'var(--uai-content-secondary)' };
+const column = { display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)' };
+const caption = { fontFamily: 'monospace', fontSize: 'var(--uai-caption-font-size)', color: 'var(--uai-content-secondary)' };
 
 /**
  * Teste todas as propriedades. O texto é o children do UaiTypo.
@@ -92,12 +95,12 @@ Playground.argTypes = {
   },
   paragraph: {
     table: { defaultValue: { summary: 'false' } },
-    description: 'Adiciona margem inferior de parágrafo (16px).',
+    description: 'Adiciona margem inferior de parágrafo (`spacing/md`).',
     control: 'boolean',
   },
   margin: {
     table: { defaultValue: { summary: 'true' } },
-    description: 'Adiciona margem inferior (24px) em display e headings.',
+    description: 'Adiciona margem inferior (`spacing/lg`) em display e headings.',
     control: 'boolean',
   },
   dataTest: {
@@ -110,8 +113,8 @@ const grid = {
   display: 'grid',
   gridTemplateColumns: 'max-content repeat(4, max-content)',
   alignItems: 'baseline',
-  columnGap: '32px',
-  rowGap: '16px',
+  columnGap: 'var(--uai-spacing-xl)',
+  rowGap: 'var(--uai-spacing-md)',
 };
 
 /**
@@ -160,7 +163,7 @@ export const LetterSpacing = () => (
  * variant define a aparência e tag define a semântica. Um título visual precisa de uma tag de heading, para leitores de tela e para a estrutura da página.
  */
 export const Semantics = () => (
-  <div style={{ maxWidth: '480px' }}>
+  <div style={{ maxWidth: 'var(--uai-width-dialog)' }}>
     <UaiTypo variant="heading-lg" bold="semibold" tag="h2">
       Título da seção
     </UaiTypo>

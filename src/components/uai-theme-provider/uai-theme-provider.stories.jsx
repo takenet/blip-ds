@@ -28,9 +28,9 @@ export const Playground = (args) => (
     <div
       style={{
         display: 'flex',
-        gap: '16px',
-        padding: '24px',
-        borderRadius: '16px',
+        gap: 'var(--uai-spacing-md)',
+        padding: 'var(--uai-spacing-lg)',
+        borderRadius: 'var(--uai-radius-xl)',
         background: 'var(--uai-surface-paper)',
         color: 'var(--uai-content-primary)',
       }}

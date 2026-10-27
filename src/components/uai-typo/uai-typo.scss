@@ -8,19 +8,8 @@
   @return map.get(meta.module-variables(typography), 'uai-#{$name}');
 }
 
-// body-lg and body-sm reuse the title and caption tokens until blip-tokens publishes their own.
-$variant-tokens: (
-  display: display,
-  heading-xl: heading-xl,
-  heading-lg: heading-lg,
-  heading-md: heading-md,
-  title: title,
-  body-lg: title,
-  body-base: body-base,
-  body-sm: caption,
-  caption: caption,
-  overline: overline,
-);
+$variants: display, heading-xl, heading-lg, heading-md, title-lg, title-md, title-sm, title, body-lg, body-base, body-sm,
+  caption, overline;
 
 $weights: regular, medium, semibold, bold;
 
@@ -38,10 +27,10 @@ $font-fallback: 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-s
   font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), $font-fallback;
   font-style: normal;
 
-  @each $variant, $token in $variant-tokens {
+  @each $variant in $variants {
     &--variant-#{$variant} {
-      font-size: var(--uai-#{$token}-font-size, #{token('#{$token}-font-size')});
-      line-height: var(--uai-#{$token}-line-height, #{token('#{$token}-line-height')});
+      font-size: var(--uai-#{$variant}-font-size, #{token('#{$variant}-font-size')});
+      line-height: var(--uai-#{$variant}-line-height, #{token('#{$variant}-line-height')});
     }
   }
 

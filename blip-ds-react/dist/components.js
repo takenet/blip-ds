@@ -105,6 +105,7 @@ import { BdsTooltip as BdsTooltipElement, defineCustomElement as defineBdsToolti
 import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
+import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
@@ -966,6 +967,13 @@ export const BdsWarning = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineBdsWarning
+});
+export const UaiAvatar = createComponent({
+    tagName: 'uai-avatar',
+    elementClass: UaiAvatarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiAvatar
 });
 export const UaiButton = createComponent({
     tagName: 'uai-button',

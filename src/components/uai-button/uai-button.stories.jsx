@@ -24,9 +24,9 @@ const VARIANTS = ['solid', 'outline', 'text'];
 const COLORS = ['primary', 'content', 'positive', 'negative'];
 const SIZES = ['compact', 'short', 'medium', 'large'];
 
-const row = { display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' };
-const column = { display: 'flex', flexDirection: 'column', gap: '16px' };
-const caption = { fontFamily: 'monospace', fontSize: '12px', color: 'var(--uai-content-secondary)' };
+const row = { display: 'flex', alignItems: 'center', gap: 'var(--uai-spacing-md)', flexWrap: 'wrap' };
+const column = { display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)' };
+const caption = { fontFamily: 'monospace', fontSize: 'var(--uai-caption-font-size)', color: 'var(--uai-content-secondary)' };
 
 /**
  * Teste todas as propriedades. O texto do botão é o children do UaiButton.
@@ -60,7 +60,7 @@ Playground.argTypes = {
   },
   size: {
     table: { defaultValue: { summary: 'medium' } },
-    description: 'Altura do botão: compact 24px, short 32px, medium 40px, large 56px.',
+    description: 'Altura do botão: compact `control-height/compact`, short `control-height/short`, medium `control-height/medium`, large `control-height/large`.',
     options: SIZES,
     control: { type: 'select' },
   },
@@ -126,7 +126,7 @@ const grid = {
   display: 'grid',
   gridTemplateColumns: `auto repeat(${COLORS.length}, max-content)`,
   alignItems: 'center',
-  gap: '16px',
+  gap: 'var(--uai-spacing-md)',
 };
 
 /**
@@ -207,7 +207,7 @@ export const Icons = () => (
         <UaiButton key={size} size={size} icon="add" aria-label={`Adicionar (${size})`} />
       ))}
     </div>
-    <div style={{ width: '320px' }}>
+    <div style={{ width: 'var(--uai-width-panel)' }}>
       <UaiButton fullWidth justifyContent="space-between" iconLeft="info" arrow>
         Conteúdo nas pontas
       </UaiButton>

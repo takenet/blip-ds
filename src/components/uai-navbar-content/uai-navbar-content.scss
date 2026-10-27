@@ -3,5 +3,5 @@
 :host {
   display: flex;
   align-items: center;
-  gap: $uai-spacing-xs;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
 }

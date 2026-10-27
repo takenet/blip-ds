@@ -17,7 +17,7 @@
 .navbar {
   width: fit-content;
   display: flex;
-  gap: $uai-spacing-lg;
+  gap: var(--uai-spacing-lg, #{$uai-spacing-lg});
   box-sizing: border-box;
 
   ::slotted(*) {
@@ -38,7 +38,7 @@
     &__horizontal {
       flex-direction: row;
       width: 100%;
-      padding: $uai-spacing-md;
+      padding: var(--uai-spacing-md, #{$uai-spacing-md});
 
       ::slotted(*) { flex-direction: row; }
     }
@@ -46,7 +46,7 @@
     &__vertical {
       flex-direction: column;
       height: 100%;
-      padding: $uai-spacing-md $uai-spacing-md;
+      padding: var(--uai-spacing-md, #{$uai-spacing-md}) var(--uai-spacing-md, #{$uai-spacing-md});
 
       ::slotted(*) { flex-direction: column; }
     }

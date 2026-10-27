@@ -11,9 +11,13 @@ export const formatValue = (type, value) => {
     const rgb = `#${value.components.map(hex).join('')}`;
     return value.alpha < 1 ? `${rgb}${hex(value.alpha)}` : rgb;
   }
-  if (type === 'dimension') return `${value.value}${value.unit}`;
+  if (type === 'dimension' || type === 'duration') return `${value.value}${value.unit}`;
+  if (type === 'cubicBezier') return `cubic-bezier(${value.join(', ')})`;
   return String(value);
 };
+
+// Media queries cannot read custom properties, so breakpoints exist only as SCSS ($uai-*) and JS values.
+const isBreakpoint = (path) => path[0] === 'layout' && path[1] === 'breakpoint';
 
 function* walk(node, path) {
   if (node && typeof node === 'object' && '$value' in node) {
@@ -25,7 +29,7 @@ function* walk(node, path) {
   }
 }
 
-const SCALE_TYPES = ['dimension', 'fontWeight'];
+const SCALE_TYPES = ['dimension', 'fontWeight', 'duration'];
 
 // Sizes and weights read from the smallest to the largest; the other tokens keep the blip-tokens order.
 const byScale = (a, b) =>
@@ -34,8 +38,9 @@ const byScale = (a, b) =>
     : 0;
 
 /**
- * Returns every UAI token: name (uai-surface-paper), cssVar, category (color, dimension, typography),
- * group (surface, spacing, font-weight...), type, description and the light and dark values.
+ * Returns every UAI token: name (uai-surface-paper), cssVar, scssVar, category (color, dimension, typography,
+ * layout, motion), group (surface, spacing, font-weight...), type, description and the light and dark values.
+ * Breakpoints have no cssVar: use scssVar in media queries.
  * `usage` replaces the blip-tokens descriptions (English) with the translated usage text, by token name.
  * Within a group, sizes and weights are sorted from the smallest to the largest.
  */
@@ -46,7 +51,8 @@ export const uaiTokens = (light, dark, usage = {}) => {
     const darkToken = darkTokens.get(path.join('.'));
     return {
       name,
-      cssVar: `--${name}`,
+      cssVar: isBreakpoint(path) ? undefined : `--${name}`,
+      scssVar: `$${name}`,
       category: path[0],
       group: path[1],
       type: token.$type,

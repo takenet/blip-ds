@@ -1,0 +1,71 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiAvatarStories from './uai-avatar.stories';
+
+<Meta isTemplate />
+
+# Avatar
+
+Representa uma pessoa por imagem, iniciais ou ícone. É estático: a aplicação consumidora seleciona e envia a foto; o componente não abre seletor de arquivos nem faz upload.
+
+<Canvas of={UaiAvatarStories.Playground} />
+
+<Controls of={UaiAvatarStories.Playground} />
+
+## Como usar
+
+```jsx
+import { UaiAvatar, UaiThemeProvider } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <UaiAvatar src={user.photoUrl} initials="AB" label="Alex Brown" size="standard" />
+</UaiThemeProvider>;
+```
+
+- `src` recebe a URL da foto. O produto que consome o DS faz o upload e passa a URL resultante.
+- `initials` é explícito: informe uma ou duas letras; não é derivado de um nome.
+- Se a foto não carregar, o componente mostra `initials`; sem foto e sem iniciais, mostra o ícone oficial de usuário.
+- `label` dá nome acessível ao avatar. Sem `label`, ele é ocultado de tecnologias assistivas; use isso quando o nome da pessoa já estiver disponível no conteúdo adjacente.
+- Use `data-uai-theme` ou `UaiThemeProvider` para aplicar os temas.
+- Carregue a fonte de ícones UAI uma vez na aplicação: `import 'blip-tokens/uai-icons/css';`.
+
+## Tamanhos
+
+| `size`              | Diâmetro | Texto |
+| ------------------- | -------: | ----: |
+| `micro`             |     24px |  12px |
+| `extra-small`       |     32px |  14px |
+| `small`             |     40px |  16px |
+| `standard` (padrão) |     56px |  20px |
+| `large`             |     64px |  24px |
+| `extra-large`       |     72px |  32px |
+
+<Canvas of={UaiAvatarStories.Sizes} />
+
+## Imagem e fallback
+
+<Canvas of={UaiAvatarStories.ImageFallback} />
+
+## Uso decorativo
+
+Quando outro texto já identifica a pessoa, omita `label` para que leitores de tela não anunciem o avatar novamente.
+
+<Canvas of={UaiAvatarStories.Decorative} />
+
+## Migração de `bds-avatar`
+
+`bds-avatar` está **deprecado**, mas continua disponível e sem mudança de comportamento nesta etapa. A migração para o UAI é explícita:
+
+| `bds-avatar`                                                | `uai-avatar`                                                          |
+| ----------------------------------------------------------- | --------------------------------------------------------------------- |
+| `thumbnail`                                                 | `src` (URL da imagem)                                                 |
+| `name="Alex Brown"` (iniciais calculadas internamente)      | `initials="AB"` (fornecidas explicitamente)                           |
+| —                                                           | `label="Alex Brown"` (nome acessível)                                 |
+| `size="micro/extra-small/small/standard/large/extra-large"` | Mesmos seis valores                                                   |
+| `upload` / `openUpload`                                     | Responsabilidade da aplicação consumidora; passe a URL final em `src` |
+| `ellipsis`, `color`, eventos BDS                            | Sem equivalente no UAI Avatar atual                                   |
+
+Não remova `bds-avatar` de aplicações existentes como parte desta migração. Seus props e eventos legados continuam suportados enquanto consumidores forem migrados deliberadamente.
+
+## Tokens
+
+O componente usa `surface-muted`, `content-secondary`, `radius-full`, Figtree e os estilos tipográficos UAI. `standard` (48px) usa `sizing-3xl`; `extra-large` (72px) usa `sizing-5xl` quando disponível. Há um fallback de 72px para compatibilidade com versões de `blip-tokens` anteriores à 2.4.0.

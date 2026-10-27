@@ -1,13 +1,19 @@
 @use 'sass:meta';
+@use 'sass:string';
 @use 'blip-tokens/build/scss/uai-colors-light' as colors-light;
 @use 'blip-tokens/build/scss/uai-colors-dark' as colors-dark;
 @use 'blip-tokens/build/scss/uai-dimensions' as dimensions;
+@use 'blip-tokens/build/scss/uai-layout' as layout;
+@use 'blip-tokens/build/scss/uai-motion' as motion;
 @use 'blip-tokens/build/scss/uai-typography' as typography;
 @use 'blip-tokens/build/scss/uai-shadows' as shadows;
 
+// Breakpoints stay SCSS-only: media queries cannot read custom properties.
 @mixin custom-properties($module) {
   @each $name, $value in meta.module-variables($module) {
-    --#{$name}: #{$value};
+    @if not string.index($name, 'uai-breakpoint-') {
+      --#{$name}: #{$value};
+    }
   }
 }
 
@@ -15,6 +21,8 @@
   display: contents;
 
   @include custom-properties(dimensions);
+  @include custom-properties(layout);
+  @include custom-properties(motion);
   @include custom-properties(typography);
   @include custom-properties(shadows);
 }

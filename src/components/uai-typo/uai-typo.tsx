@@ -1,10 +1,14 @@
 import { Component, Element, Prop, Watch, h } from '@stencil/core';
+import { warnDeprecated, warnLegacyValue, warnOnce } from '../../utils/deprecation';
 
 export type UaiTypoVariant =
   | 'display'
   | 'heading-xl'
   | 'heading-lg'
   | 'heading-md'
+  | 'title-lg'
+  | 'title-md'
+  | 'title-sm'
   | 'title'
   | 'body-lg'
   | 'body-base'
@@ -21,6 +25,9 @@ const VARIANTS: UaiTypoVariant[] = [
   'heading-xl',
   'heading-lg',
   'heading-md',
+  'title-lg',
+  'title-md',
+  'title-sm',
   'title',
   'body-lg',
   'body-base',
@@ -33,16 +40,9 @@ const LETTER_SPACINGS: UaiTypoLetterSpacing[] = ['normal', 'expanded'];
 const TAGS: UaiTypoTag[] = ['p', 'h1', 'h2', 'h3', 'h4', 'span'];
 const MARGIN_VARIANTS: UaiTypoVariant[] = ['display', 'heading-xl', 'heading-lg', 'heading-md'];
 
-const warnings = new Set<string>();
-const warnOnce = (key: string, message: string): void => {
-  if (warnings.has(key)) return;
-  warnings.add(key);
-  console.warn(`[uai-typo] ${message}`);
-};
-
 const supported = <T extends string>(prop: string, value: string, allowed: T[], fallback: T): T => {
   if ((allowed as string[]).includes(value)) return value as T;
-  warnOnce(`${prop}:${value}`, `Unsupported ${prop} "${value}". Using "${fallback}".`);
+  warnLegacyValue('uai-typo', prop, value, String(fallback));
   return fallback;
 };
 
@@ -58,6 +58,9 @@ const hasThemeRoot = (el: HTMLElement): boolean => {
 /**
  * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
  * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+ *
+ * @slot - Text content.
+ * @part uai-typo__text - The text element.
  */
 @Component({
   tag: 'uai-typo',
@@ -69,7 +72,8 @@ export class UaiTypo {
 
   /**
    * Text style role from the UAI typography scale. Can be one of:
-   * 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
+   * 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title-sm', 'title',
+   * 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
    */
   @Prop() variant?: UaiTypoVariant = 'body-base';
 
@@ -121,7 +125,7 @@ export class UaiTypo {
   @Watch('lineHeight')
   protected warnDeprecated(): void {
     if (this.lineHeight !== undefined && this.lineHeight !== null) {
-      warnOnce('lineHeight', '"lineHeight" is deprecated and has no effect. The line height comes from the variant.');
+      warnDeprecated('uai-typo', 'lineHeight', 'It has no effect. The line height comes from the variant.');
     }
   }
 
@@ -131,7 +135,7 @@ export class UaiTypo {
 
   componentDidLoad(): void {
     if (!hasThemeRoot(this.el)) {
-      warnOnce('theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
+      warnOnce('uai-typo', 'theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
     }
   }
 

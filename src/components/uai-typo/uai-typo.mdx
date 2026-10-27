@@ -5,7 +5,7 @@ import * as UaiTypoStories from './uai-typo.stories';
 
 # Typo
 
-Texto da interface com a escala tipográfica UAI. Os nomes de `variant` e `bold` são os mesmos dos estilos de texto do Figma, e todos os valores vêm dos tokens `--uai-*` do `blip-tokens`.
+Texto da interface com a escala tipográfica UAI. Os nomes de `variant` e `bold` correspondem aos estilos de texto do Figma. Os valores usam os tokens `--uai-*` do `blip-tokens`; os novos papéis têm valores de compatibilidade até a instalação da versão do pacote que os publica.
 
 <Canvas of={UaiTypoStories.Playground} />
 
@@ -38,14 +38,16 @@ Cada estilo do Figma é `variant` + `bold`. Por exemplo, `heading/lg/semibold` �
 | `heading-xl` | 32 / 40 | regular, semibold, bold | Título principal da página |
 | `heading-lg` | 24 / 32 | regular, semibold, bold | Seções de conteúdo |
 | `heading-md` | 20 / 28 | regular, semibold, bold | Subseções |
-| `title` | 16 / 24 | regular, medium, semibold, bold | Títulos de card, rótulos fortes, navegação |
+| `title-lg` | 18 / 24 | regular, medium, semibold, bold | Títulos de destaque |
+| `title-md` | 16 / 24 | regular, medium, semibold, bold | Títulos de card, rótulos fortes, navegação |
+| `title-sm` | 14 / 20 | regular, medium, semibold, bold | Títulos compactos |
 | `body-lg` | 16 / 24 | regular, medium, semibold, bold | Texto corrido grande |
 | `body-base` (padrão) | 14 / 22 | regular, medium, semibold, bold | Texto padrão da aplicação |
 | `body-sm` | 12 / 20 | regular, medium, semibold, bold | Texto corrido pequeno |
 | `caption` | 12 / 20 | regular, medium, semibold, bold | Apoio, badges |
 | `overline` | 10 / 16 | regular, medium, semibold | Tags, uso restrito |
 
-`display` usa a fonte de `font-family-display`; os demais usam `font-family-sans`. `body-lg` e `body-sm` usam os tokens de `title` e `caption` até o `blip-tokens` publicar tokens próprios.
+`display` usa a fonte de `font-family-display`; os demais usam `font-family-sans`. `title` continua disponível como alias de compatibilidade para `title-md`. `body-lg` e `body-sm` usam seus próprios tokens semânticos.
 
 O componente aceita qualquer combinação de `variant` e `bold`, mas use as do Figma.
 
@@ -73,7 +75,7 @@ O componente aceita qualquer combinação de `variant` e `bold`, mas use as do F
 
 | Parte | Tokens |
 | --- | --- |
-| Tamanho e altura de linha | `<papel>-font-size` e `<papel>-line-height` (por exemplo, `body-base-font-size`) |
+| Tamanho e altura de linha | `<papel>-font-size` e `<papel>-line-height` (por exemplo, `title-lg-font-size` ou `body-base-font-size`) |
 | Peso | `font-weight-regular`, `font-weight-medium`, `font-weight-semibold`, `font-weight-bold` |
 | Fonte | `font-family-sans`, `font-family-display` |
 | Espaçamento entre letras | `letter-spacing-normal`, `letter-spacing-expanded` |
@@ -89,7 +91,7 @@ Componentes que usam o `UaiTypo` por dentro, como o `UaiButton`, mudam a cor com
 | `variant="fs-10"` | `variant="overline"` |
 | `variant="fs-12"` | `variant="caption"` ou `variant="body-sm"` |
 | `variant="fs-14"` | `variant="body-base"` |
-| `variant="fs-16"` (padrão) | `variant="title"` ou `variant="body-lg"` |
+| `variant="fs-16"` (padrão) | `variant="title-md"` ou `variant="body-lg"` |
 | `variant="fs-20"` | `variant="heading-md"` |
 | `variant="fs-24"` | `variant="heading-lg"` |
 | `variant="fs-32"` | `variant="heading-xl"` |
@@ -99,6 +101,8 @@ Componentes que usam o `UaiTypo` por dentro, como o `UaiButton`, mudam a cor com
 | — | `bold="medium"` |
 | — | `letterSpacing="expanded"` |
 | `lineHeight` | Aceito, mas deprecado e sem efeito (aviso no console). A altura de linha vem do `variant`. |
+
+`variant="title"` permanece como alias compatível de `variant="title-md"`.
 
 Valores não aceitos, inclusive `fs-*`, `semi-bold` e `extra-bold`, caem no padrão (`body-base` e `regular`) e avisam no console.
 

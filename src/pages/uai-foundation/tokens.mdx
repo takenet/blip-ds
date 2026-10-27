@@ -27,6 +27,27 @@ import { UaiThemeProvider } from 'blip-ds-react/dist/components';
 
 Sem o provider, também dá para carregar `blip-tokens/build/css/uai.css` e colocar `data-uai-theme="light"` ou `"dark"` em um elemento.
 
+## Rota de escolha: componente → token semântico → fundação
+
+Siga sempre nesta ordem e pare no primeiro passo que resolve.
+
+1. **Componente.** Existe um `uai-*` para o que você precisa? Use o componente. Ele já aplica os tokens certos, nos dois temas.
+2. **Token semântico.** Se não existe, escolha o token pelo **papel** do elemento (`surface-*`, `content-*`, `action-*`, `border-*`, `feedback-*`, `overlay-*`, `spacing-*`, `radius-*`). É o que telas e composições usam.
+3. **Fundação.** Os valores brutos (paleta e escalas) ficam abaixo dos tokens semânticos e **não** são usados direto por telas nem por componentes. Quando falta um papel, o time de design cria o token semântico no Figma e no `blip-tokens`; ninguém cria alias duplicado nem usa a fundação como atalho.
+
+### Exemplos por público
+
+| Público | Quer | Usa | Não usa |
+| --- | --- | --- | --- |
+| Quem monta telas | Um card com texto de apoio | `uai-*` quando houver; senão `surface-paper`, `content-secondary`, `spacing-md`, `radius-lg` | Cor ou medida solta; token de componente |
+| Quem monta telas | Mostrar um erro | `feedback-error` (texto) e `feedback-error-subtle` (fundo) | Vermelho fixo |
+| Quem cria componentes | Foco de um campo | `border-ring` com `opacity-focus-ring` | Anel com cor própria |
+| Quem cria componentes | Altura de um controle | `control-height/*` (a partir do `blip-tokens` 2.4.0) | `sizing-*` ou `spacing-*` |
+| Quem cria componentes | Transição de hover | `duration/fast` e `easing/standard` (a partir do `blip-tokens` 2.4.0) | `0.15s` literal |
+| Quem cria componentes | Item desabilitado | `content-disabled` | Reduzir a opacidade do controle inteiro |
+
+No Figma, o modelo de handoff marca quais variáveis são escolhas semânticas de uso direto e quais são especializadas para autoria de componentes.
+
 ## Como usar em código
 
 | Onde | Como |

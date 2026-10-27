@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Wat
 import { colorsVariants, LoadingSpinnerVariant } from '../loading-spinner/loading-spinner';
 import { IconSize } from '../icon/icon-interface';
 import { isUaiIcon } from '../../globals/uai-icons';
+import { warnDeprecated, warnLegacyValue, warnOnce } from '../../utils/deprecation';
 
 export type UaiButtonVariant = 'solid' | 'outline' | 'text';
 export type UaiButtonColor = 'primary' | 'content' | 'negative' | 'positive';
@@ -25,16 +26,9 @@ const ICON_SIZE: Record<UaiButtonSize, IconSize> = {
   large: 'medium',
 };
 
-const warnings = new Set<string>();
-const warnOnce = (key: string, message: string): void => {
-  if (warnings.has(key)) return;
-  warnings.add(key);
-  console.warn(`[uai-button] ${message}`);
-};
-
 const supported = <T extends string>(prop: string, value: string, allowed: T[], fallback: T): T => {
   if ((allowed as string[]).includes(value)) return value as T;
-  warnOnce(`${prop}:${value}`, `Unsupported ${prop} "${value}". Using "${fallback}".`);
+  warnLegacyValue('uai-button', prop, value, fallback);
   return fallback;
 };
 
@@ -51,6 +45,9 @@ const hasThemeRoot = (el: HTMLElement): boolean => {
  * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
  * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
  * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+ *
+ * @slot - Label of the button. Put the left icon and the label together here when using groupIcon.
+ * @part button - The native button element.
  */
 @Component({
   tag: 'uai-button',
@@ -100,7 +97,7 @@ export class UaiButton {
 
   /**
    * Size of the button. Can be one of:
-   * 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).
+   * 'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`).
    */
   @Prop({ mutable: true }) size?: UaiButtonSize = 'medium';
 
@@ -232,13 +229,13 @@ export class UaiButton {
   @Watch('bdsLoadingColor')
   protected warnDeprecated(): void {
     if (this.groupIcon !== undefined) {
-      warnOnce('groupIcon', '"groupIcon" is deprecated. Put the left icon and the label together in the default slot.');
+      warnDeprecated('uai-button', 'groupIcon', 'Put the left icon and the label together in the default slot.');
     }
     if (this.bdsLoadingVariant !== undefined) {
-      warnOnce('bdsLoadingVariant', '"bdsLoadingVariant" is deprecated and has no effect.');
+      warnDeprecated('uai-button', 'bdsLoadingVariant');
     }
     if (this.bdsLoadingColor !== undefined) {
-      warnOnce('bdsLoadingColor', '"bdsLoadingColor" is deprecated and has no effect.');
+      warnDeprecated('uai-button', 'bdsLoadingColor');
     }
   }
 
@@ -249,7 +246,7 @@ export class UaiButton {
 
   componentDidLoad(): void {
     if (!hasThemeRoot(this.el)) {
-      warnOnce('theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
+      warnOnce('uai-button', 'theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
     }
   }
 
@@ -292,6 +289,7 @@ export class UaiButton {
     }
 
     warnOnce(
+      'uai-button',
       `icon:${theme}:${this.typeIcon}:${name}`,
       `"${name}" is not in the UAI icon set (theme "${theme}", type "${this.typeIcon}"). Falling back to the legacy bds-icon, which is deprecated here.`,
     );
@@ -317,6 +315,10 @@ export class UaiButton {
     const leftIconName = this.icon || this.iconLeft;
     const rightIconName = this.arrow ? 'arrow-right' : this.iconRight;
     const iconOnly = !this.hasLabel && !!(leftIconName || rightIconName);
+
+    if (iconOnly && !this.ariaLabel) {
+      warnOnce('uai-button', 'icon-only-accessible-name', 'Icon-only buttons require an aria-label.');
+    }
 
     const left = this.loading ? (
       <span class="button__spinner" aria-hidden="true"></span>

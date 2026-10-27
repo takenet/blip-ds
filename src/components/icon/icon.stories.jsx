@@ -4,7 +4,7 @@ import { BdsIcon } from '../../../blip-ds-react/dist/components';
 import { OutlineIcons, SolidIcons } from 'blip-tokens/icons';
 
 export default {
-  title: 'Components/Icon',
+  title: 'Components/[deprecated] Icon',
   parameters: {
     docs: {
       page: DocumentationTemplate,

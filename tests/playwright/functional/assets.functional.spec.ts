@@ -30,7 +30,7 @@ test.describe('Offline CDN artwork', () => {
   });
 
   test('renders inline icons and native images from the local fixture', async ({ page, storybook }) => {
-    await storybook.goto('components-icon--properties');
+    await storybook.goto('components-deprecated-icon--properties');
     await expect(page.locator('bds-icon svg').first()).toBeVisible();
     await page.context().setOffline(true);
     const assetPath = assetConfig.assets['illustration/default/accessibility-1'];

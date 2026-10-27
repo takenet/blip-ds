@@ -1,0 +1,79 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  --avatar-size: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+  --avatar-font-size: var(--uai-heading-md-font-size, #{$uai-heading-md-font-size});
+  --avatar-line-height: var(--uai-heading-md-line-height, #{$uai-heading-md-line-height});
+
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 var(--avatar-size);
+  align-items: center;
+  justify-content: center;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  overflow: hidden;
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  box-sizing: border-box;
+  background-color: var(--uai-surface-muted, #{$uai-surface-muted});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--avatar-font-size);
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--avatar-line-height);
+  vertical-align: middle;
+}
+
+:host(.uai-avatar--size-micro) {
+  --avatar-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
+  --avatar-font-size: var(--uai-caption-font-size, #{$uai-caption-font-size});
+  --avatar-line-height: var(--uai-caption-line-height, #{$uai-caption-line-height});
+}
+
+:host(.uai-avatar--size-extra-small) {
+  --avatar-size: var(--uai-sizing-xl, #{$uai-sizing-xl});
+  --avatar-font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  --avatar-line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+}
+
+:host(.uai-avatar--size-small) {
+  --avatar-size: var(--uai-sizing-2xl, #{$uai-sizing-2xl});
+  --avatar-font-size: var(--uai-title-md-font-size, #{$uai-title-md-font-size});
+  --avatar-line-height: var(--uai-title-md-line-height, #{$uai-title-md-line-height});
+}
+
+:host(.uai-avatar--size-standard) {
+  --avatar-size: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+}
+
+:host(.uai-avatar--size-large) {
+  --avatar-size: var(--uai-sizing-4xl, #{$uai-sizing-4xl});
+  --avatar-font-size: var(--uai-heading-lg-font-size, #{$uai-heading-lg-font-size});
+  --avatar-line-height: var(--uai-heading-lg-line-height, #{$uai-heading-lg-line-height});
+}
+
+:host(.uai-avatar--size-extra-large) {
+  --avatar-size: var(--uai-sizing-5xl, #{$uai-sizing-5xl});
+  --avatar-font-size: var(--uai-heading-xl-font-size, #{$uai-heading-xl-font-size});
+  --avatar-line-height: var(--uai-heading-xl-line-height, #{$uai-heading-xl-line-height});
+}
+
+.avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar__initials {
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0 var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+  text-overflow: clip;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.avatar__icon {
+  color: currentColor;
+}

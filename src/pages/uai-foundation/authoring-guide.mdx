@@ -1,0 +1,132 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="UAI/Foundation/Guia de autoria" />
+
+# Guia de autoria `uai-*`
+
+Regras para criar ou alterar um componente `uai-*` no blip-ds. Elas valem para qualquer onda de migração. Um componente só está pronto quando cumpre todas.
+
+## Identidade
+
+- A tag é `uai-<nome>` e a classe é `Uai<Nome>`. O wrapper React `Uai<Nome>` é gerado pelo build (`npm run build:react`). Nunca edite o wrapper à mão.
+- O `uai-*` convive com o `bds-*` no mesmo pacote, sem conflito de registro, estilo ou evento. Nenhum `bds-*` é removido: quando há substituto, ele é marcado como deprecated.
+- `uai-textarea` é um componente próprio. `uai-input` continua sendo de linha única, sem modo multiline.
+
+## Relação com o `bds-*`
+
+O `bds-*` equivalente é a linha de base do contrato.
+
+1. **Mesmos nomes.** Props, valores, slots e métodos têm o mesmo nome e o mesmo significado. Toda diferença entra no manifesto de migração; diferença sem registro é defeito.
+2. **Eventos.** `bdsChange` vira `uaiChange`; um evento sem prefixo perde o nome do componente e ganha `uai` (`chipClickableClose` vira `uaiClose`). O payload é o mesmo.
+3. **Props legadas não saem.** Uma prop sem lugar no componente UAI continua aceita, marcada como deprecated, mantém o comportamento quando possível e avisa uma única vez por página no console, indicando a substituta.
+4. **Vocabulário atual.** Só os valores atuais são aceitos. Um valor legado ou desconhecido cai no padrão e avisa no console; o manifesto registra o mapeamento (`primary` → `solid`).
+5. **Extensões só acrescentam.** Uma prop, valor, slot, método ou evento novo nunca muda o significado de um nome herdado.
+
+Use o helper `warnDeprecated` (task 2.4) para os avisos de prop e valor legado. Os avisos aparecem só em desenvolvimento e uma vez por tag.
+
+## Tokens
+
+- Nenhum valor de design fora de token: cor, tamanho, espaço, raio, sombra, tipografia, duração e curva. Isso vale para estilos, TSX, lógica, stories e exemplos.
+- Escolha pelo papel, na ordem componente → token semântico → fundação. Não crie alias duplicado.
+- Use a categoria certa. Altura de controle usa `control-height/*`, não `sizing/*` nem `spacing/*`.
+- Leia o token em tempo de execução: `var(--uai-spacing-md, #{$uai-spacing-md})`. O fallback, quando existir, é só a variável SCSS do próprio token; nunca outro token nem um literal.
+- `$uai-*` sozinho só em media query, e só para `$uai-breakpoint-*`. Breakpoints não existem como propriedade CSS.
+- Se faltar um token, tente primeiro layout fluido (conteúdo, mínimos e máximos, combinação de tokens). Se ainda faltar, registre o token no Figma. Não entregue com literal provisório.
+- A ficha de handoff lista os tokens usados e os criados.
+
+### Literais permitidos (lista fechada)
+
+Só estes valores podem aparecer sem token. Qualquer outro é tratado como valor de design.
+
+| Valor | Exemplo |
+| --- | --- |
+| Zero | `margin: 0` |
+| Porcentagens e frações de layout | `width: 100%`, `1fr`, `100vh` |
+| Rotação de ícone | `rotate(180deg)` |
+| Fator de escala de animação | `scale(0.96)` |
+| Contagens e fatores sem unidade | `flex: 1 1 auto`, `calc(-1 * var(--uai-border-width-default))` |
+| Ordem de empilhamento local, dentro do componente | `z-index: 1` |
+
+Opacidade aceita só `0` e `1` como literal. `line-height` e `font-weight` sempre vêm de token tipográfico. Empilhamento entre header, navegação e conteúdo usa `layer/*`.
+
+### Token da categoria certa
+
+| Propriedade | Categoria |
+| --- | --- |
+| `gap`, `padding`, `margin`, `outline-offset` | `spacing/*` |
+| `inset`, `top`, `right`, `bottom`, `left` | `spacing/*` ou `border-width/*` |
+| `width`, `height` e mínimos e máximos | `sizing/*` (ícone, avatar, indicador, célula), `control-height/*` (controle) ou `width/*` (menu, painel, tooltip, dialog, sidebar, conteúdo) |
+| `border-radius` | `radius/*` |
+| `border-width`, `outline-width` | `border-width/*` |
+| `opacity` | `opacity/*` |
+| `z-index` | `layer/*` |
+| `transition`, `animation` | `duration/*` e `easing/*` |
+| `font-size`, `line-height`, `font-weight`, `letter-spacing`, `font-family` | o token tipográfico correspondente |
+| Cores (`color`, `background`, `border-color`, `fill`…) | tokens da coleção Colors |
+
+Rode `npm run lint:uai-tokens`. O lint lê os nomes reais dos tokens do `blip-tokens` instalado e verifica estilos, TSX (strings, JSDoc e timers), stories e exemplos de MDX. Ele também roda no CI.
+
+### Escala de controles
+
+| Tamanho | Altura | Padding do `uai-button` | Raio |
+| --- | --- | --- | --- |
+| `compact` | `control-height/compact` | `spacing/xs` | `radius/md` |
+| `short` | `control-height/short` | `spacing/sm` | `radius/lg` |
+| `medium` (padrão) | `control-height/medium` | `spacing/sm` | `radius/lg` |
+| `large` | `control-height/large` | `spacing/md` | `radius/lg` |
+
+Use a receita de padding aprovada para cada componente. As famílias `uai-input` e `uai-select` oferecem `short` e `medium`, com `medium` como padrão.
+
+## Formulários
+
+Todo controle de formulário participa de um `<form>` nativo e só envia valor quando tem nome (`inputName` ou `name`). No reset, volta ao valor inicial e emite os eventos de mudança.
+
+## Overlays
+
+Dropdown, listbox, popover, tooltip e toast abrem acima de qualquer conteúdo, inclusive do `bds-modal`, e fecham com Esc e, quando aplicável, com clique fora. Ao fechar, o foco volta ao gatilho. `uai-datepicker`, `uai-select` e `uai-dropdown` expõem `open()` e `close()`.
+
+## Foco, estados e acessibilidade
+
+- Siga a ordem: HTML nativo, depois WAI-ARIA, depois o contrato do blip-ds.
+- Controles mostram o anel `border/ring` com `:focus-visible`. Campos mostram o anel no contêiner com `:focus-within`. Clique de mouse não deixa anel persistente.
+- Estado desabilitado usa as cores `content/disabled`. Reduzir a opacidade do controle inteiro só é permitido onde o contrato do componente define (`opacity/disabled`).
+- Todo botão só com ícone tem nome acessível. Sem `aria-label`, o componente avisa no console e o teste do componente falha.
+- Todo estado tem um sinal além da cor.
+
+## Movimento
+
+- Transições e animações usam tokens de duração e curva (`duration/fast`, `duration/moderate`, `easing/standard`).
+- Com `prefers-reduced-motion: reduce`, as transições de estado acontecem sem animação e as contínuas desaceleram ou param.
+- Quando a fonte mostra um estado interativo sem duração definida, não invente: registre a lacuna e siga o token da família.
+- Consulte a matriz de interações do plano de convergência antes de escolher um token.
+
+## Textos padrão
+
+Um componente com texto próprio oferece `pt_BR` (padrão), `en_US` e `es_ES`, escolhidos por uma prop de idioma. Cada texto pode ser sobrescrito por prop.
+
+## Documentação e testes
+
+- Toda prop, evento, método, slot e part públicos têm JSDoc no formato **o que é · Use · Pair · Avoid**.
+- O Storybook segue o [modelo de documentação](?path=/docs/uai-foundation-modelo-de-documentacao--docs): visão geral, playground, estados, comportamento, acessibilidade e migração do `bds-*`.
+- Cada regra de comportamento tem teste. Testes unitários (`test/*.spec.ts`) cobrem a lógica e testes e2e (`test/*.e2e.ts`) cobrem a integração, incluindo `prefers-reduced-motion: reduce`, foco por teclado e Esc nos overlays.
+- Rode `npm run test -- -- <pasta-do-componente>` antes de abrir o PR.
+
+## Entrega
+
+- Uma branch por componente: `feat/uai-<componente>`. Para uma change que não é de um componente, use `feat/<change-openspec>`.
+- Conventional Commits com escopo, em commits pequenos: `feat(uai-input):`, `test(uai-input):`, `docs(uai-input):`.
+- Preencha a ficha de handoff ao abrir a change do componente.
+- Não edite à mão os arquivos gerados: `src/components.d.ts`, `readme.md` dos componentes e `blip-ds-react/`.
+
+## Checklist de revisão
+
+- [ ] Tag `uai-<nome>` e wrapper gerado pelo build
+- [ ] Props, valores, slots, métodos e eventos iguais aos do `bds-*`, com as diferenças no manifesto
+- [ ] Props legadas aceitas, com aviso único
+- [ ] Nenhum valor de design fora de token (`npm run lint:uai-tokens` verde)
+- [ ] Altura de controle com `control-height/*`
+- [ ] Foco visível, estado desabilitado e nome acessível
+- [ ] Transições com token e `prefers-reduced-motion`
+- [ ] JSDoc em todo membro público
+- [ ] Storybook com as seis seções
+- [ ] Testes unitários e e2e passando

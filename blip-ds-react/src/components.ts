@@ -115,6 +115,7 @@ import { BdsTooltip as BdsTooltipElement, defineCustomElement as defineBdsToolti
 import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
+import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
@@ -1560,6 +1561,17 @@ export const BdsWarning: StencilReactComponent<BdsWarningElement, BdsWarningEven
     react: React,
     events: {} as BdsWarningEvents,
     defineCustomElement: defineBdsWarning
+});
+
+export type UaiAvatarEvents = NonNullable<unknown>;
+
+export const UaiAvatar: StencilReactComponent<UaiAvatarElement, UaiAvatarEvents> = /*@__PURE__*/ createComponent<UaiAvatarElement, UaiAvatarEvents>({
+    tagName: 'uai-avatar',
+    elementClass: UaiAvatarElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiAvatarEvents,
+    defineCustomElement: defineUaiAvatar
 });
 
 export type UaiButtonEvents = { onUaiClick: EventName<UaiButtonCustomEvent<MouseEvent>> };
