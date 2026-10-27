@@ -1,8 +1,11 @@
 import { Host, h } from "@stencil/core";
+import { warnLegacyValue } from "../../utils/deprecation";
 const THEMES = ['light', 'dark'];
 /**
  * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
  * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
+ *
+ * @slot - The app or area that receives the theme.
  */
 export class UaiThemeProvider {
     constructor() {
@@ -14,7 +17,7 @@ export class UaiThemeProvider {
     }
     validateTheme() {
         if (!THEMES.includes(this.theme)) {
-            console.warn(`[uai-theme-provider] Unsupported theme "${this.theme}". Using "light".`);
+            warnLegacyValue('uai-theme-provider', 'theme', this.theme, 'light');
         }
     }
     componentWillLoad() {
@@ -22,7 +25,7 @@ export class UaiThemeProvider {
     }
     render() {
         const theme = THEMES.includes(this.theme) ? this.theme : 'light';
-        return (h(Host, { key: '0180c61962079bc2c88732a947d6a9d4f479d3eb', "data-uai-theme": theme }, h("slot", { key: '2d345d324f46ebfead2f090ce077e1cdd266e7fd' })));
+        return (h(Host, { key: 'f390489ee6590d27d2f2c6dc42ec12e7f61377ef', "data-uai-theme": theme }, h("slot", { key: 'c8b04cb0c285042c34a70551f8bcd9395f93490b' })));
     }
     static get is() { return "uai-theme-provider"; }
     static get encapsulation() { return "shadow"; }

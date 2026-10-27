@@ -1,7 +1,12 @@
 import { h, Host } from "@stencil/core";
+/**
+ * Group of items inside a uai-navbar.
+ *
+ * @slot - Items of the group.
+ */
 export class UaiNavbarContent {
     render() {
-        return (h(Host, { key: '044038bdc03a26f1aa092dc44a0e938f8e0536db', class: { NavbarContent: true } }, h("slot", { key: '7a7377972ad9d5caa96d240579ce6928eb41854f' })));
+        return (h(Host, { key: 'fed44eb1322d1d13795f4f81e3e151a56299dcf4', class: { NavbarContent: true } }, h("slot", { key: '83c5b1d741694ad118c9fc26dd2f37cae7eccd7f' })));
     }
     static get is() { return "uai-navbar-content"; }
     static get encapsulation() { return "shadow"; }

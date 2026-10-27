@@ -1,2 +1,0 @@
-import{r as s,h as e,H as o}from"./p-gowA9FoV.js";const t="*{-webkit-transition:all 0.5s;-moz-transition:all 0.5s;transition:all 0.5s}:host{display:block}";const a=class{constructor(e){s(this,e)}render(){return e(o,{key:"072e1f26e0414de222926056cb733de1e8d93063"},e("slot",{key:"e87bc4844b7a755c2be48981a6673fb7706300e3"}))}};a.style=t;export{a as bds_expansion_panel};
-//# sourceMappingURL=p-278cc83b.entry.js.map

@@ -1,5 +1,5 @@
 import { p as proxyCustomElement, H, h, a as Host } from './index.js';
-import { d as defineCustomElement$4 } from './p-Cmult6Pm.js';
+import { d as defineCustomElement$4 } from './p-lQDFAY-k.js';
 import { d as defineCustomElement$3 } from './p-SgKTTlib.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 

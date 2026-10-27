@@ -1,4 +1,4 @@
-import { B as Badge, d as defineCustomElement$1 } from './p-CJTa2-g0.js';
+import { B as Badge, d as defineCustomElement$1 } from './p-IpWn4gjZ.js';
 
 const BdsBadge = Badge;
 const defineCustomElement = defineCustomElement$1;

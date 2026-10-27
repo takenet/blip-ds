@@ -3,9 +3,11 @@ export type UaiIconSize = 'x-small' | 'small' | 'medium';
 export type UaiIconColor = 'content-primary' | 'content-secondary' | 'content-disabled' | 'content-inverse' | 'content-link' | 'feedback-info' | 'feedback-success' | 'feedback-warning' | 'feedback-error';
 /**
  * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
- * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+ * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
  * Without `color`, the icon takes the text color around it, so it matches the label next to it.
  * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+ *
+ * @part glyph - The element that renders the icon font glyph.
  */
 export declare class UaiIcon {
     /**
@@ -17,7 +19,7 @@ export declare class UaiIcon {
      */
     theme: UaiIconTheme;
     /**
-     * Icon size: 'x-small' (16px), 'small' (20px) or 'medium' (24px, default).
+     * Icon size: 'x-small' (`sizing/sm`), 'small' (`sizing/md`) or 'medium' (`sizing/lg`, default).
      */
     size: UaiIconSize;
     /**

@@ -13,6 +13,9 @@ export type UaiButtonDirection = 'row' | 'column';
  * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
  * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
  * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+ *
+ * @slot - Label of the button. Put the left icon and the label together here when using groupIcon.
+ * @part button - The native button element.
  */
 export declare class UaiButton {
     el: HTMLElement;
@@ -49,7 +52,7 @@ export declare class UaiButton {
     color?: UaiButtonColor;
     /**
      * Size of the button. Can be one of:
-     * 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).
+     * 'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`).
      */
     size?: UaiButtonSize;
     /**

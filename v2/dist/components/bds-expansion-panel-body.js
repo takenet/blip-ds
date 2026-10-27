@@ -11,7 +11,7 @@ const ExpansionPanelBody = /*@__PURE__*/ proxyCustomElement(class ExpansionPanel
         this.text = null;
     }
     render() {
-        return (h(Host, { key: '113496fb9406b9b5f3b034f0ed8ab664855e297a' }, h("div", { key: '42b53c53650b197c5bc5380f4afc360417f49a88', class: "expansion-content", hidden: this.open }, h("div", { key: 'c8a4101e6062f13f25c93fa28b84e50257e17bac', class: "with-line" }, h("slot", { key: '92e4a2b18949c697f40fc4396dfaaf4f6e7833e9' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
+        return (h(Host, { key: 'c14fe374231a7e47dbd2ad96e9fe7f600bc37670' }, h("div", { key: 'b7e532eded0c92b8224d1774f85f672605f313e7', class: "expansion-content", hidden: this.open }, h("div", { key: '042f8c9cf83c9a589052c9e1a79da3e8d3092cc3', class: "with-line" }, h("slot", { key: '632032f4c0d2be6bf149fa561f443a4e89c6c819' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
     }
     static get style() { return expansionPanelBodyCss; }
 }, [1, "bds-expansion-panel-body", {

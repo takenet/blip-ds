@@ -1,13 +1,13 @@
 import { r as registerInstance, h, H as Host, a as getElement } from './index-gowA9FoV.js';
 
-const uaiNavbarContentCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:0.5rem}";
+const uaiNavbarContentCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}";
 
 const UaiNavbarContent = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '044038bdc03a26f1aa092dc44a0e938f8e0536db', class: { NavbarContent: true } }, h("slot", { key: '7a7377972ad9d5caa96d240579ce6928eb41854f' })));
+        return (h(Host, { key: 'fed44eb1322d1d13795f4f81e3e151a56299dcf4', class: { NavbarContent: true } }, h("slot", { key: '83c5b1d741694ad118c9fc26dd2f37cae7eccd7f' })));
     }
     get hostElement() { return getElement(this); }
 };

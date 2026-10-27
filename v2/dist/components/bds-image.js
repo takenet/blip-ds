@@ -1,4 +1,4 @@
-import { I as Image, d as defineCustomElement$1 } from './p-DrVx2f_X.js';
+import { I as Image, d as defineCustomElement$1 } from './p-CfXMK2Xc.js';
 
 const BdsImage = Image;
 const defineCustomElement = defineCustomElement$1;

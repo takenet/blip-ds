@@ -9,7 +9,7 @@ const AlertActions = /*@__PURE__*/ proxyCustomElement(class AlertActions extends
         this.__attachShadow();
     }
     render() {
-        return (h("div", { key: 'fe2bb127c1ca57f346b34a51ca244e4c183c86b9', class: "alert__actions" }, h("slot", { key: 'd56da8892036a113cbd95e70c208a435829635bc' })));
+        return (h("div", { key: '40b2323c307e310f7a8386e3e10b2c372e7506c0', class: "alert__actions" }, h("slot", { key: 'e468f7caba1e57d7cde9d4ab1d15b4af90134bc5' })));
     }
     static get style() { return alertActionsCss; }
 }, [1, "bds-alert-actions"]);

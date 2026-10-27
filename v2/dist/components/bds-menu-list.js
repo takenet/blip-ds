@@ -9,7 +9,7 @@ const MenuList = /*@__PURE__*/ proxyCustomElement(class MenuList extends H {
         this.__attachShadow();
     }
     render() {
-        return (h(Host, { key: 'e0417530a119c97cbd79258405224be0f168db75' }, h("div", { key: 'ff454871d68928aedaaad1338031e4261448e95d', class: "menu-list" }, h("div", { key: 'aa92d2a30b1ae77efa4489110a5c937d0555339d', class: "menu-list__left" }), h("slot", { key: '78f25c25715c5e2f4b611b0da7cbd32e0b57e6dd' }), h("div", { key: 'c00338ba83145a2d5e5b178a5d9c96b266c2e398', class: "menu-list__right" }))));
+        return (h(Host, { key: 'cbe31a41db2a6f0bcccaa4564839b63674e4e226' }, h("div", { key: '37b3694402155dc686b8863384c036993d04d917', class: "menu-list" }, h("div", { key: 'e735a7bd2ef0c5ee0195bccc2cba326d215cd918', class: "menu-list__left" }), h("slot", { key: '887f7aa16ca34d2d54b582c1ca9c3473a98451c9' }), h("div", { key: 'fcb118d5a25ef08090cfe09a15eda2e974c8b78e', class: "menu-list__right" }))));
     }
     static get style() { return menuListCss; }
 }, [1, "bds-menu-list"]);

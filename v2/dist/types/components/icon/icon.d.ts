@@ -1,4 +1,7 @@
 import { IconSize, IconTheme, IconType } from './icon-interface';
+/**
+ * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+ */
 export declare class Icon {
     private io?;
     private requestVersion;

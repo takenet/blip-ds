@@ -15,10 +15,10 @@ const TabPanel = /*@__PURE__*/ proxyCustomElement(class TabPanel extends H {
         this.isActive = event.detail == this.group;
     }
     render() {
-        return (h(Host, { key: '7ec2d1228f8768bffbd8590f41c73e4fb3711a3b', class: {
+        return (h(Host, { key: '5c00938bd0ecc65fb96cf9bdc3c66e1cf9a0285e', class: {
                 'bds-tab-panel': true,
                 ['bds-tab-panel--selected']: this.isActive,
-            } }, h("slot", { key: 'dee4a82d98d4979a39a3d9f3a7e901f98ae1c2f8' })));
+            } }, h("slot", { key: '230a7ece5a265e850470743eebe175ef3c7d5c58' })));
     }
     static get style() { return tabPanelCss; }
 }, [4, "bds-tab-panel", {

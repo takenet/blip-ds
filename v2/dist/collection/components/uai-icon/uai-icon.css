@@ -23,7 +23,7 @@
 */
 @font-face {
   font-family: "uai-icon";
-  src: url("https://cdn.blip.ai/blip-tokens/2.2.0/uai-icon/font/uai-icon.woff2") format("woff2");
+  src: url("https://cdn.blip.ai/blip-tokens/2.4.0/uai-icon/font/uai-icon.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -2654,7 +2654,7 @@
   width: var(--uai-icon-size, var(--icon-size));
   height: var(--uai-icon-size, var(--icon-size));
   font-size: var(--uai-icon-size, var(--icon-size));
-  line-height: 1;
+  line-height: var(--uai-icon-size, var(--icon-size));
   vertical-align: middle;
 }
 
@@ -2708,5 +2708,5 @@
 
 .uai-icon {
   font-size: inherit;
-  line-height: 1;
+  line-height: inherit;
 }

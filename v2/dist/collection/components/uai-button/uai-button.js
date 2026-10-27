@@ -1,5 +1,6 @@
 import { Host, h } from "@stencil/core";
 import { isUaiIcon } from "../../globals/uai-icons";
+import { warnDeprecated, warnLegacyValue, warnOnce } from "../../utils/deprecation";
 const VARIANTS = ['solid', 'outline', 'text'];
 const COLORS = ['primary', 'content', 'negative', 'positive'];
 const SIZES = ['compact', 'short', 'medium', 'large'];
@@ -10,17 +11,10 @@ const ICON_SIZE = {
     medium: 'medium',
     large: 'medium',
 };
-const warnings = new Set();
-const warnOnce = (key, message) => {
-    if (warnings.has(key))
-        return;
-    warnings.add(key);
-    console.warn(`[uai-button] ${message}`);
-};
 const supported = (prop, value, allowed, fallback) => {
     if (allowed.includes(value))
         return value;
-    warnOnce(`${prop}:${value}`, `Unsupported ${prop} "${value}". Using "${fallback}".`);
+    warnLegacyValue('uai-button', prop, value, fallback);
     return fallback;
 };
 const hasThemeRoot = (el) => {
@@ -36,6 +30,9 @@ const hasThemeRoot = (el) => {
  * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
  * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
  * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
+ *
+ * @slot - Label of the button. Put the left icon and the label together here when using groupIcon.
+ * @part button - The native button element.
  */
 export class UaiButton {
     constructor() {
@@ -65,7 +62,7 @@ export class UaiButton {
         this.color = 'primary';
         /**
          * Size of the button. Can be one of:
-         * 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).
+         * 'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`).
          */
         this.size = 'medium';
         /**
@@ -167,13 +164,13 @@ export class UaiButton {
     }
     warnDeprecated() {
         if (this.groupIcon !== undefined) {
-            warnOnce('groupIcon', '"groupIcon" is deprecated. Put the left icon and the label together in the default slot.');
+            warnDeprecated('uai-button', 'groupIcon', 'Put the left icon and the label together in the default slot.');
         }
         if (this.bdsLoadingVariant !== undefined) {
-            warnOnce('bdsLoadingVariant', '"bdsLoadingVariant" is deprecated and has no effect.');
+            warnDeprecated('uai-button', 'bdsLoadingVariant');
         }
         if (this.bdsLoadingColor !== undefined) {
-            warnOnce('bdsLoadingColor', '"bdsLoadingColor" is deprecated and has no effect.');
+            warnDeprecated('uai-button', 'bdsLoadingColor');
         }
     }
     componentWillLoad() {
@@ -182,7 +179,7 @@ export class UaiButton {
     }
     componentDidLoad() {
         if (!hasThemeRoot(this.el)) {
-            warnOnce('theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
+            warnOnce('uai-button', 'theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
         }
     }
     // The native button lives in the shadow root, outside the light-DOM form, so a temporary native button
@@ -206,7 +203,7 @@ export class UaiButton {
         if (this.typeIcon === 'icon' && isUaiIcon(theme, name)) {
             return h("uai-icon", { class: classes, name: name, theme: theme, "aria-hidden": "true" });
         }
-        warnOnce(`icon:${theme}:${this.typeIcon}:${name}`, `"${name}" is not in the UAI icon set (theme "${theme}", type "${this.typeIcon}"). Falling back to the legacy bds-icon, which is deprecated here.`);
+        warnOnce('uai-button', `icon:${theme}:${this.typeIcon}:${name}`, `"${name}" is not in the UAI icon set (theme "${theme}", type "${this.typeIcon}"). Falling back to the legacy bds-icon, which is deprecated here.`);
         return (h("bds-icon", { class: classes, name: name, theme: this.iconTheme, type: this.typeIcon, color: "inherit", size: ICON_SIZE[size], "aria-hidden": "true" }));
     }
     render() {
@@ -217,14 +214,17 @@ export class UaiButton {
         const leftIconName = this.icon || this.iconLeft;
         const rightIconName = this.arrow ? 'arrow-right' : this.iconRight;
         const iconOnly = !this.hasLabel && !!(leftIconName || rightIconName);
+        if (iconOnly && !this.ariaLabel) {
+            warnOnce('uai-button', 'icon-only-accessible-name', 'Icon-only buttons require an aria-label.');
+        }
         const left = this.loading ? (h("span", { class: "button__spinner", "aria-hidden": "true" })) : leftIconName ? (this.renderIcon(leftIconName, size, 'left')) : null;
         const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
-        const label = (h("span", { key: '6a64fe65c4c907f6c31302039907e0f2a4f28762', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: '254e0f9e2ac9b1b17830a9511558c69ab9b03cc0', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: '88fd8437164adf6252664ac8fda2aabc75dbe288', onSlotchange: this.updateHasLabel }))));
+        const label = (h("span", { key: 'bd39af4fc8dee1c43fa5a054093bfd07de4acf83', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: 'e39f136dd648e70abf3960edbacf38d0fda098c7', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: '07a400e275ff0983b04b83945f0931b77dc2ee5c', onSlotchange: this.updateHasLabel }))));
         const grouped = this.groupIcon && justify === 'space-between' && left;
-        return (h(Host, { key: '20444861f19fb316ff095eb6852398a41887cd79', class: {
+        return (h(Host, { key: '9afa9bebc295a97831481594008e8b5972dfdaf0', class: {
                 'uai-button--block': this.block || this.fullWidth,
                 'uai-button--group': !!this.position,
-            } }, h("button", { key: '19a81f593f93585c5917cbc1813db79436cc5125', class: {
+            } }, h("button", { key: '9841dc0aa47a1d81ac6358bba767031ed14d3705', class: {
                 button: true,
                 [`button--${variant}`]: true,
                 [`button--color-${color}`]: true,
@@ -403,7 +403,7 @@ export class UaiButton {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Size of the button. Can be one of:\n'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px)."
+                    "text": "Size of the button. Can be one of:\n'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`)."
                 },
                 "getter": false,
                 "setter": false,

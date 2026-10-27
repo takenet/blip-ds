@@ -1,4 +1,9 @@
 import { h, Host } from "@stencil/core";
+/**
+ * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
+ *
+ * @slot - Navbar content, usually uai-navbar-content elements.
+ */
 export class UaiNavbar {
     constructor() {
         /** Navbar orientation: horizontal or vertical. */
@@ -11,12 +16,12 @@ export class UaiNavbar {
         this.dataTest = null;
     }
     render() {
-        return (h(Host, { key: 'a02fad0a9951fc3f5f9b12ec03e254eea7bf4b6d', class: { [`${this.orientation}`]: true } }, h("div", { key: '91bfb19f2139dd8b2453c9f2181fefd742bd1d74', class: {
+        return (h(Host, { key: '8dc7456635c72587843f079dbfb2bffcfebc222e', class: { [`${this.orientation}`]: true } }, h("div", { key: '216e65bff053fbb338b494bfb6ebd7956d05a169', class: {
                 navbar: true,
                 [`navbar__justify-content__${this.justifyContent}`]: true,
                 [`navbar__orientation__${this.orientation}`]: true,
                 [`navbar__background-color__${this.backgroundColor}`]: true,
-            }, "data-test": this.dataTest }, h("slot", { key: '36a60717b3d0281497b2b2a7571762cfa8bb27f2' }))));
+            }, "data-test": this.dataTest }, h("slot", { key: '5c29225153b5678669eb2c2626b6a47b4664b025' }))));
     }
     static get is() { return "uai-navbar"; }
     static get encapsulation() { return "shadow"; }

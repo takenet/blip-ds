@@ -1,9 +1,9 @@
 import { p as proxyCustomElement, H, h } from './index.js';
-import { d as defineCustomElement$7 } from './p-Bq9uKlrL.js';
+import { d as defineCustomElement$7 } from './p-DxbdVioK.js';
 import { d as defineCustomElement$6 } from './p-BekRLR1J.js';
-import { d as defineCustomElement$5 } from './p-D-hI-6BA.js';
-import { d as defineCustomElement$4 } from './p-Cmult6Pm.js';
-import { d as defineCustomElement$3 } from './p-B7QyX_ov.js';
+import { d as defineCustomElement$5 } from './p-B97SDoLM.js';
+import { d as defineCustomElement$4 } from './p-lQDFAY-k.js';
+import { d as defineCustomElement$3 } from './p-DijSV1kI.js';
 import { d as defineCustomElement$2 } from './p-BTwF0c-l.js';
 
 const breadcrumbCss = ":host{display:block}:host *{color:var(--color-content-default, rgb(40, 40, 40))}.button--icon{-webkit-transform:rotate(180deg);transform:rotate(180deg);color:var(--color-content-ghost, rgb(140, 140, 140))}.breadcrumb__button--0{padding-left:0}.breadcrumb__button--0 .button--icon{display:none}.breadcrumb__button--1{padding-left:8px}.breadcrumb__button--2{padding-left:16px}.breadcrumb__button--3{padding-left:24px}.breadcrumb__button--4{padding-left:32px}.breadcrumb__link--text{color:var(--color-content-disable, rgb(89, 89, 89))}.breadcrumb__link{text-decoration:none}.breadcrumb__item{-webkit-transition:color 0.15s, background-color 0.15s;transition:color 0.15s, background-color 0.15s}.breadcrumb__item bds-typo,.breadcrumb__item bds-icon,.breadcrumb__item .breadcrumb__text{color:var(--color-content-ghost, rgb(140, 140, 140))}.breadcrumb__item bds-typo:hover,.breadcrumb__item .breadcrumb__text:hover{color:var(--color-content-default, rgb(40, 40, 40))}.breadcrumb__item--active{border-radius:12px}.breadcrumb__item--active:hover{background-color:var(--color-surface-3, rgb(227, 227, 227))}.breadcrumb__item--active bds-typo,.breadcrumb__item--active bds-icon,.breadcrumb__item--active .breadcrumb__text{color:var(--color-content-default, rgb(40, 40, 40))}";

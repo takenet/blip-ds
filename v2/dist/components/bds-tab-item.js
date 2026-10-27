@@ -88,7 +88,7 @@ const BdsTabItem$1 = /*@__PURE__*/ proxyCustomElement(class BdsTabItem extends H
         this.tabDisabled.emit({ item: this.numberElement, disable: this.disable });
     }
     render() {
-        return (h(Host, { key: 'b63922721f686fe83dee4602505afea17b7b5df7', class: { [`is-open`]: this.disable === true ? false : this.open } }, h("div", { key: '95cabcc84715a4713531a604de4a46d072c3f58e', class: { tab_item: true }, "data-test": this.dataTest }, h("div", { key: 'e79df78f098632e672bff220a6bd783cd86137e9', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, h("slot", { key: '7381e646b8688e3693667989792c8a3b81eef180' })))));
+        return (h(Host, { key: '7fba977b5aac7b438e396a0909bff59623cb8174', class: { [`is-open`]: this.disable === true ? false : this.open } }, h("div", { key: 'bc698ee5760314ea17c66bacc0718619f6f863fa', class: { tab_item: true }, "data-test": this.dataTest }, h("div", { key: '1d76a0e7fb691d5d54440a2a47874a24ea3b929e', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, h("slot", { key: '25aedd8e9e4689fdcdaf510d862079ae25db02fc' })))));
     }
     static get watchers() { return {
         "disable": ["disableChanged"]

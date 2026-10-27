@@ -1,9 +1,13 @@
 import { h } from "@stencil/core";
+import { warnDeprecated, warnLegacyValue, warnOnce } from "../../utils/deprecation";
 const VARIANTS = [
     'display',
     'heading-xl',
     'heading-lg',
     'heading-md',
+    'title-lg',
+    'title-md',
+    'title-sm',
     'title',
     'body-lg',
     'body-base',
@@ -15,17 +19,10 @@ const BOLDS = ['regular', 'medium', 'semibold', 'bold'];
 const LETTER_SPACINGS = ['normal', 'expanded'];
 const TAGS = ['p', 'h1', 'h2', 'h3', 'h4', 'span'];
 const MARGIN_VARIANTS = ['display', 'heading-xl', 'heading-lg', 'heading-md'];
-const warnings = new Set();
-const warnOnce = (key, message) => {
-    if (warnings.has(key))
-        return;
-    warnings.add(key);
-    console.warn(`[uai-typo] ${message}`);
-};
 const supported = (prop, value, allowed, fallback) => {
     if (allowed.includes(value))
         return value;
-    warnOnce(`${prop}:${value}`, `Unsupported ${prop} "${value}". Using "${fallback}".`);
+    warnLegacyValue('uai-typo', prop, value, String(fallback));
     return fallback;
 };
 const hasThemeRoot = (el) => {
@@ -40,12 +37,16 @@ const hasThemeRoot = (el) => {
 /**
  * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
  * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+ *
+ * @slot - Text content.
+ * @part uai-typo__text - The text element.
  */
 export class UaiTypo {
     constructor() {
         /**
          * Text style role from the UAI typography scale. Can be one of:
-         * 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
+         * 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title-sm', 'title',
+         * 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
          */
         this.variant = 'body-base';
         /**
@@ -83,7 +84,7 @@ export class UaiTypo {
     }
     warnDeprecated() {
         if (this.lineHeight !== undefined && this.lineHeight !== null) {
-            warnOnce('lineHeight', '"lineHeight" is deprecated and has no effect. The line height comes from the variant.');
+            warnDeprecated('uai-typo', 'lineHeight', 'It has no effect. The line height comes from the variant.');
         }
     }
     componentWillLoad() {
@@ -91,7 +92,7 @@ export class UaiTypo {
     }
     componentDidLoad() {
         if (!hasThemeRoot(this.el)) {
-            warnOnce('theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
+            warnOnce('uai-typo', 'theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
         }
     }
     render() {
@@ -99,7 +100,7 @@ export class UaiTypo {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (h(Tag, { key: '14602559616a05f4e47bf3c0eb46ec5937d4cadf', class: {
+        return (h(Tag, { key: '966d21fc61d5a3b87a558a2ec7a6f91a6dcb5d2a', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -108,7 +109,7 @@ export class UaiTypo {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: '342e388a9af14dfc7910b3c77a9e8e00e530142a' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: '312f4db91f3fe5fb50385961168873825cdf2a96' })));
     }
     static get is() { return "uai-typo"; }
     static get encapsulation() { return "shadow"; }
@@ -130,7 +131,7 @@ export class UaiTypo {
                 "mutable": false,
                 "complexType": {
                     "original": "UaiTypoVariant",
-                    "resolved": "\"body-base\" | \"body-lg\" | \"body-sm\" | \"caption\" | \"display\" | \"heading-lg\" | \"heading-md\" | \"heading-xl\" | \"overline\" | \"title\"",
+                    "resolved": "\"body-base\" | \"body-lg\" | \"body-sm\" | \"caption\" | \"display\" | \"heading-lg\" | \"heading-md\" | \"heading-xl\" | \"overline\" | \"title\" | \"title-lg\" | \"title-md\" | \"title-sm\"",
                     "references": {
                         "UaiTypoVariant": {
                             "location": "local",
@@ -143,7 +144,7 @@ export class UaiTypo {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Text style role from the UAI typography scale. Can be one of:\n'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'."
+                    "text": "Text style role from the UAI typography scale. Can be one of:\n'display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title-sm', 'title',\n'body-lg', 'body-base', 'body-sm', 'caption', 'overline'."
                 },
                 "getter": false,
                 "setter": false,

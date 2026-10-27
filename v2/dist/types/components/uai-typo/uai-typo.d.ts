@@ -1,4 +1,4 @@
-export type UaiTypoVariant = 'display' | 'heading-xl' | 'heading-lg' | 'heading-md' | 'title' | 'body-lg' | 'body-base' | 'body-sm' | 'caption' | 'overline';
+export type UaiTypoVariant = 'display' | 'heading-xl' | 'heading-lg' | 'heading-md' | 'title-lg' | 'title-md' | 'title-sm' | 'title' | 'body-lg' | 'body-base' | 'body-sm' | 'caption' | 'overline';
 export type UaiTypoBold = 'regular' | 'medium' | 'semibold' | 'bold';
 export type UaiTypoLetterSpacing = 'normal' | 'expanded';
 export type UaiTypoTag = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'span';
@@ -6,12 +6,16 @@ export type UaiTypoLineHeight = 'none' | 'small' | 'simple' | 'plus' | 'double';
 /**
  * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
  * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+ *
+ * @slot - Text content.
+ * @part uai-typo__text - The text element.
  */
 export declare class UaiTypo {
     el: HTMLElement;
     /**
      * Text style role from the UAI typography scale. Can be one of:
-     * 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
+     * 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title-sm', 'title',
+     * 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
      */
     variant?: UaiTypoVariant;
     /**
