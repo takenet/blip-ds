@@ -1,5 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Build } from '@stencil/core';
+import packageJson from '../../../../package.json';
 
 // Mock Build.isBrowser
 (Build as any).isBrowser = true;
@@ -277,7 +278,7 @@ describe('bds-icon', () => {
       await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/icons/edit-outline.svg');
+      expect(mockFetch).toHaveBeenCalledWith(`https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/icons/edit-outline.svg`);
       expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
@@ -297,7 +298,7 @@ describe('bds-icon', () => {
       await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/emojis/smiling-face.svg');
+      expect(mockFetch).toHaveBeenCalledWith(`https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/emojis/smiling-face.svg`);
       expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
@@ -317,7 +318,7 @@ describe('bds-icon', () => {
       await (page.rootInstance as any).setSvgContent();
 
       expect(page.rootInstance.svgContent).toBeDefined();
-      expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/logos/blip-chat.svg');
+      expect(mockFetch).toHaveBeenCalledWith(`https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/logos/blip-chat.svg`);
       expect(page.rootInstance.svgContent).toContain('<svg');
     });
 
@@ -368,7 +369,7 @@ describe('bds-icon', () => {
       autoApplyChanges: false,
     });
     await (emojiPage.rootInstance as any).setSvgContent();
-    expect(mockFetch).toHaveBeenLastCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/emojis/smiling-face.svg');
+    expect(mockFetch).toHaveBeenLastCalledWith(`https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/emojis/smiling-face.svg`);
 
     const logoPage = await newSpecPage({
       components: [Icon],
@@ -377,7 +378,7 @@ describe('bds-icon', () => {
       autoApplyChanges: false,
     });
     await (logoPage.rootInstance as any).setSvgContent();
-    expect(mockFetch).toHaveBeenLastCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/logos/blip-chat.svg');
+    expect(mockFetch).toHaveBeenLastCalledWith(`https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/logos/blip-chat.svg`);
   });
 
   describe('Lifecycle Methods', () => {

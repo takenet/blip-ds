@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+import packageJson from '../../../../package.json';
 import { BdsLoading } from '../loading-page';
 
 const mockFetch = jest.fn();
@@ -89,7 +90,7 @@ describe('bds-loading-page', () => {
       await page.waitForChanges();
 
       expect(mockFetch).toHaveBeenCalledWith(
-        'https://cdn.blip.ai/blip-tokens/2.0.2/illustrations/brand/blip-ballon-white.svg',
+        `https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/illustrations/brand/blip-ballon-white.svg`,
       );
       expect(pageLoading.innerHTML).toContain('fill="white"');
     });

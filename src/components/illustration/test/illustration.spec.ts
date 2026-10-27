@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+import packageJson from '../../../../package.json';
 
 // Mock fetch globally
 const mockFetch = jest.fn();
@@ -339,7 +340,7 @@ describe('bds-illustration', () => {
 
       expect(fetch).toHaveBeenCalled();
       const fetchCall = (fetch as jest.Mock).mock.calls[0];
-      expect(fetchCall[0]).toContain('/blip-tokens/2.0.2/');
+      expect(fetchCall[0]).toContain(`/blip-tokens/${packageJson.dependencies['blip-tokens']}/`);
       expect(fetchCall[0]).toMatch(/blip-tokens\/[\d.]+\//);
     });
   });

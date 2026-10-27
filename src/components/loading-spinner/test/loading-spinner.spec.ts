@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+import packageJson from '../../../../package.json';
 import { BdsLoadingSpinner } from '../loading-spinner';
 
 const mockFetch = jest.fn();
@@ -343,7 +344,7 @@ describe('bds-loading-spinner', () => {
             const component = page.rootInstance;
             expect(component.svgContent).toBeTruthy();
             expect(component.svgContent).toContain('svg');
-            expect(mockFetch).toHaveBeenCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/components/loading-spinner-standard.svg');
+            expect(mockFetch).toHaveBeenCalledWith(`https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/components/loading-spinner-standard.svg`);
         });
 
         it('should update SVG content when size changes', async () => {
@@ -361,7 +362,7 @@ describe('bds-loading-spinner', () => {
 
             expect(component.svgContent).toBeTruthy();
             expect(component.svgContent).toContain('svg');
-            expect(mockFetch).toHaveBeenLastCalledWith('https://cdn.blip.ai/blip-tokens/2.0.2/components/loading-spinner-standard.svg');
+            expect(mockFetch).toHaveBeenLastCalledWith(`https://cdn.blip.ai/blip-tokens/${packageJson.dependencies['blip-tokens']}/components/loading-spinner-standard.svg`);
         });
     });
 
