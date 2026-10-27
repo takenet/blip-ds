@@ -33,12 +33,14 @@ test('generates only exact-version paths and ignores runtime cluster or root ove
 test('supports safe external font paths from the token asset manifest', async context => {
   const input = fixture(context);
   input.manifest.assets['uai-icon-font'] = { path: 'uai-icon/font/uai-icon.woff2', bytes: 32, sha256: 'a'.repeat(64), contentType: 'font/woff2' };
+  input.manifest.assets['font/figtree/license'] = { path: 'fonts/figtree/OFL.txt', bytes: 32, sha256: 'a'.repeat(64), contentType: 'text/plain' };
   fs.writeFileSync(input.manifestPath, JSON.stringify(input.manifest));
 
   await prepareAssets(input);
 
   const config = JSON.parse(fs.readFileSync(input.outputPath));
   assert.equal(config.assets['uai-icon-font'], 'uai-icon/font/uai-icon.woff2');
+  assert.equal(config.assets['font/figtree/license'], 'fonts/figtree/OFL.txt');
 });
 
 test('installed tokens resolve every public icon and required component asset offline without legacy catalogs', async context => {
@@ -75,7 +77,7 @@ test('installed tokens resolve every public icon and required component asset of
 });
 
 test('rejects release version mismatches and version or asset path traversal', async context => {
-  for (const mutate of [manifest => { manifest.version = '1.2.4'; }, manifest => { manifest.version = '../unsafe'; }, manifest => { manifest.assets.icons.path = '../icon.svg'; }]) {
+  for (const mutate of [manifest => { manifest.version = '1.2.4'; }, manifest => { manifest.version = '../unsafe'; }, manifest => { manifest.assets.icons.path = '../icon.svg'; }, manifest => { manifest.assets.icons.path = 'fonts/../OFL.txt'; }, manifest => { manifest.assets.icons.path = 'fonts/figtree/other.txt'; }]) {
     const input = fixture(context);
     mutate(input.manifest);
     fs.writeFileSync(input.manifestPath, JSON.stringify(input.manifest));

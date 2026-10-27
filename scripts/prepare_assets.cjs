@@ -23,7 +23,8 @@ async function prepareAssets({ verify = false, manifestPath, outputPath = path.r
   const assetRoot = new URL(`${manifest.version}/`, root).href;
   const assets = {};
   for (const [key, asset] of Object.entries(manifest.assets)) {
-    if (!/^[a-zA-Z0-9_./-]+\.(?:svg|woff2|json)$/.test(asset.path) || asset.path.split('/').some(segment => !segment || segment === '.' || segment === '..')) {
+    const supportedPath = /^[a-zA-Z0-9_./-]+\.(?:svg|woff2|json)$/.test(asset.path) || /^fonts\/(?:[a-zA-Z0-9_-]+\/)+OFL\.txt$/.test(asset.path);
+    if (!supportedPath || asset.path.split('/').some(segment => !segment || segment === '.' || segment === '..')) {
       throw new Error(`Unsafe asset path: ${key}`);
     }
     assets[key] = asset.path;

@@ -34,6 +34,45 @@ describe('bds-icon', () => {
     (loadAssetSvg as jest.Mock).mockImplementation((key: string) => key.includes('invalid-icon') ? Promise.reject(new Error('Unknown asset')) : Promise.resolve('<svg width="24" height="24"><path fill="currentColor"/></svg>'));
   });
 
+  it('loads the interpolated name missed before watchers are active', async () => {
+    const component = new Icon();
+    (component as any).isVisible = true;
+    component.name = '{{$ctrl.icon}}';
+    component.loadIcon();
+    component.name = 'builder-text-message';
+    component.componentDidLoad();
+    await Promise.resolve();
+    expect(loadAssetSvg).toHaveBeenLastCalledWith('asset-icon-builder-text-message-outline');
+    expect(component.ariaLabel).toBe('builder-text-message');
+  });
+
+  it('does not reload an unchanged name during componentDidLoad', () => {
+    const component = new Icon();
+    (component as any).isVisible = true;
+    component.name = 'edit';
+    component.loadIcon();
+    component.componentDidLoad();
+    expect(loadAssetSvg).toHaveBeenCalledTimes(1);
+  });
+
+  it('preserves a custom label when the icon name changes', () => {
+    const component = new Icon();
+    component.ariaLabel = 'Custom label';
+    component.name = 'edit';
+    component.loadIcon();
+    component.name = 'close';
+    component.componentDidLoad();
+    expect(component.ariaLabel).toBe('Custom label');
+  });
+
+  it('does not load a lazy icon before it becomes visible', () => {
+    const component = new Icon();
+    component.lazy = true;
+    component.name = 'edit';
+    component.componentDidLoad();
+    expect(loadAssetSvg).not.toHaveBeenCalled();
+  });
+
   it('does not replace a newer icon with a delayed earlier response', async () => {
     const page = await newSpecPage({ components: [Icon], html: '<bds-icon name="edit"></bds-icon>' });
     let resolveEarlier: (svg: string) => void;
