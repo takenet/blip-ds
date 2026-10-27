@@ -3,6 +3,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                                                                                                           | Type                                                                                                                            | Default     |

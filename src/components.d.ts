@@ -1357,6 +1357,9 @@ export namespace Components {
         "xxs"?: breakpoint;
         "xxsOffset"?: breakpoint;
     }
+    /**
+     * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+     */
     interface BdsIcon {
         /**
           * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -4680,6 +4683,9 @@ declare global {
         prototype: HTMLBdsGridElement;
         new (): HTMLBdsGridElement;
     };
+    /**
+     * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+     */
     interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
     }
     var HTMLBdsIconElement: {
@@ -6920,6 +6926,9 @@ declare namespace LocalJSX {
         "xxs"?: breakpoint;
         "xxsOffset"?: breakpoint;
     }
+    /**
+     * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+     */
     interface BdsIcon {
         /**
           * Specifies the label to use for accessibility. Defaults to the icon name.
@@ -9850,6 +9859,9 @@ declare module "@stencil/core" {
             "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
             "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
             "bds-grid": LocalJSX.BdsGrid & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
+            /**
+             * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+             */
             "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.BdsIllustration & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
             "bds-image": LocalJSX.BdsImage & JSXBase.HTMLAttributes<HTMLBdsImageElement>;

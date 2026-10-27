@@ -217,8 +217,8 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'bds-icon',
     name: 'Icon',
-    primaryStory: 'components-icon--properties',
-    stories: [{ storyId: 'components-icon--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-icon--properties',
+    stories: [{ storyId: 'components-deprecated-icon--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-icon-button',
