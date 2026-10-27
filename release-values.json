@@ -1,9 +1,9 @@
 {
   "image": {
-    "tag": "2.0.0-rc.25"
+    "tag": "2.0.0-rc.26"
   },
   "env": {
-    "RELEASE_VERSION": "2.0.0-rc.25",
-    "RELEASE_REVISION": "b312ce0be38ec97773a088e48e35bfcc23c47304"
+    "RELEASE_VERSION": "2.0.0-rc.26",
+    "RELEASE_REVISION": "183a47c76f533bf2296c18b4694295ac804cfa3b"
   }
 }
