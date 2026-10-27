@@ -163,12 +163,21 @@ function checkMdx(content, filename) {
   return errors;
 }
 
+// uai-* components plus the internal UAI primitives (src/globals/_uai-*.scss and src/utils/uai-*.ts).
 function listFiles(root) {
   const dir = path.join(root, 'src', 'components');
-  return fs.readdirSync(dir)
+  const components = fs.readdirSync(dir)
     .filter(name => name.startsWith('uai-'))
     .flatMap(name => fs.readdirSync(path.join(dir, name)).map(file => path.join(dir, name, file)))
     .filter(file => /\.(scss|tsx|jsx|mdx)$/.test(file) && fs.statSync(file).isFile());
+  const primitives = [
+    ['globals', /^_uai-.+\.scss$/],
+    ['utils', /^uai-.+\.ts$/],
+  ].flatMap(([folder, pattern]) => {
+    const base = path.join(root, 'src', folder);
+    return fs.existsSync(base) ? fs.readdirSync(base).filter(file => pattern.test(file)).map(file => path.join(base, file)) : [];
+  });
+  return [...components, ...primitives];
 }
 
 function checkFile(file, content, tokens, root) {
@@ -192,4 +201,4 @@ if (require.main === module) {
   console.log('UAI token check passed.');
 }
 
-module.exports = { checkScss, checkScript, checkMdx, loadTokens, run, tokenCategory };
+module.exports = { checkScss, checkScript, checkMdx, listFiles, loadTokens, run, tokenCategory };

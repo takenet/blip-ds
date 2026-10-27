@@ -48,10 +48,7 @@
   cursor: pointer;
   appearance: none;
   outline: none;
-  transition:
-    background-color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard}),
-    border-color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard}),
-    color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard});
+  @include uai-transition(background-color border-color color);
 
   &::after {
     content: '';
@@ -60,7 +57,7 @@
     border-radius: inherit;
     background-color: transparent;
     pointer-events: none;
-    transition: background-color var(--uai-duration-fast, #{$uai-duration-fast}) var(--uai-easing-standard, #{$uai-easing-standard});
+    @include uai-transition(background-color);
   }
 
   &:hover {
@@ -80,10 +77,7 @@
     }
   }
 
-  &:focus-visible {
-    outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--uai-border-ring, #{$uai-border-ring});
-    outline-offset: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
-  }
+  @include uai-focus-visible;
 
   &:disabled {
     opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
@@ -267,22 +261,16 @@
   border: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid currentColor;
   border-right-color: transparent;
   border-radius: var(--uai-radius-full, #{$uai-radius-full});
-  animation: uai-button-spin var(--uai-duration-loop, #{$uai-duration-loop}) var(--uai-easing-linear, #{$uai-easing-linear}) infinite;
+  animation: uai-button-spin var(--uai-duration-loop, #{$uai-duration-loop})
+    var(--uai-easing-linear, #{$uai-easing-linear}) infinite;
+
+  @include uai-reduced-motion {
+    animation: none;
+  }
 }
 
 @keyframes uai-button-spin {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .button,
-  .button::after {
-    transition: none;
-  }
-
-  .button__spinner {
-    animation: none;
   }
 }
