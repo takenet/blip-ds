@@ -76,6 +76,7 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
+import { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -153,6 +154,7 @@ export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
+export { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -375,6 +377,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-avatar` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsAvatar {
         /**
           * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
@@ -3653,6 +3658,33 @@ export namespace Components {
     interface BdsWarning {
     }
     /**
+     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
+     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     */
+    interface UaiAvatar {
+        /**
+          * Value placed on the avatar host for automated tests.
+         */
+        "dataTest"?: string;
+        /**
+          * Explicit one- or two-character fallback shown when the image is absent or fails to load.
+         */
+        "initials"?: string;
+        /**
+          * Accessible name for the avatar. Without a label, the avatar is hidden from assistive technology.
+         */
+        "label"?: string;
+        /**
+          * Avatar diameter: micro (`sizing/lg`), extra-small (`sizing/xl`), small (`sizing/2xl`), standard (`sizing/3xl`), large (`sizing/4xl`), or extra-large (`sizing/5xl`).
+          * @default 'standard'
+         */
+        "size": UaiAvatarSize;
+        /**
+          * URL of the avatar image. The consuming application handles file selection and upload.
+         */
+        "src"?: string;
+    }
+    /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
      * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
      * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
@@ -3760,7 +3792,7 @@ export namespace Components {
          */
         "setVariant": (variant: UaiButtonVariant) => Promise<void>;
         /**
-          * Size of the button. Can be one of: 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).
+          * Size of the button. Can be one of: 'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`).
           * @default 'medium'
          */
         "size"?: UaiButtonSize;
@@ -3782,7 +3814,7 @@ export namespace Components {
     }
     /**
      * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
-     * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+     * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
      * Without `color`, the icon takes the text color around it, so it matches the label next to it.
      * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
      */
@@ -3806,7 +3838,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Icon size: 'x-small' (16px), 'small' (20px) or 'medium' (24px, default).
+          * Icon size: 'x-small' (`sizing/sm`), 'small' (`sizing/md`) or 'medium' (`sizing/lg`, default).
           * @default 'medium'
          */
         "size": UaiIconSize;
@@ -3816,6 +3848,9 @@ export namespace Components {
          */
         "theme": UaiIconTheme;
     }
+    /**
+     * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
+     */
     interface UaiNavbar {
         /**
           * Background surface color.
@@ -3838,6 +3873,9 @@ export namespace Components {
          */
         "orientation"?: uaiNavbarOrientation;
     }
+    /**
+     * Group of items inside a uai-navbar.
+     */
     interface UaiNavbarContent {
     }
     /**
@@ -3901,7 +3939,7 @@ export namespace Components {
          */
         "tag"?: UaiTypoTag;
         /**
-          * Text style role from the UAI typography scale. Can be one of: 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
+          * Text style role from the UAI typography scale. Can be one of: 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title-sm', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
           * @default 'body-base'
          */
         "variant"?: UaiTypoVariant;
@@ -4223,6 +4261,9 @@ declare global {
         "bdsClickAvatar": PointerEvent;
         "bdsImageUpload": string;
     }
+    /**
+     * @deprecated Use `uai-avatar` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsAvatarElement extends Components.BdsAvatar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsAvatarElementEventMap>(type: K, listener: (this: HTMLBdsAvatarElement, ev: BdsAvatarCustomEvent<HTMLBdsAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5404,6 +5445,16 @@ declare global {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
     };
+    /**
+     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
+     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     */
+    interface HTMLUaiAvatarElement extends Components.UaiAvatar, HTMLStencilElement {
+    }
+    var HTMLUaiAvatarElement: {
+        prototype: HTMLUaiAvatarElement;
+        new (): HTMLUaiAvatarElement;
+    };
     interface HTMLUaiButtonElementEventMap {
         "uaiClick": MouseEvent;
     }
@@ -5428,7 +5479,7 @@ declare global {
     };
     /**
      * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
-     * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+     * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
      * Without `color`, the icon takes the text color around it, so it matches the label next to it.
      * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
      */
@@ -5438,12 +5489,18 @@ declare global {
         prototype: HTMLUaiIconElement;
         new (): HTMLUaiIconElement;
     };
+    /**
+     * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
+     */
     interface HTMLUaiNavbarElement extends Components.UaiNavbar, HTMLStencilElement {
     }
     var HTMLUaiNavbarElement: {
         prototype: HTMLUaiNavbarElement;
         new (): HTMLUaiNavbarElement;
     };
+    /**
+     * Group of items inside a uai-navbar.
+     */
     interface HTMLUaiNavbarContentElement extends Components.UaiNavbarContent, HTMLStencilElement {
     }
     var HTMLUaiNavbarContentElement: {
@@ -5576,6 +5633,7 @@ declare global {
         "bds-typo": HTMLBdsTypoElement;
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
+        "uai-avatar": HTMLUaiAvatarElement;
         "uai-button": HTMLUaiButtonElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-navbar": HTMLUaiNavbarElement;
@@ -5818,6 +5876,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-avatar` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsAvatar {
         /**
           * Color, Entered as one of the color. Can be one of: 'system', 'success', 'warning', 'error', 'info'.
@@ -9358,6 +9419,33 @@ declare namespace LocalJSX {
     interface BdsWarning {
     }
     /**
+     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
+     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     */
+    interface UaiAvatar {
+        /**
+          * Value placed on the avatar host for automated tests.
+         */
+        "dataTest"?: string;
+        /**
+          * Explicit one- or two-character fallback shown when the image is absent or fails to load.
+         */
+        "initials"?: string;
+        /**
+          * Accessible name for the avatar. Without a label, the avatar is hidden from assistive technology.
+         */
+        "label"?: string;
+        /**
+          * Avatar diameter: micro (`sizing/lg`), extra-small (`sizing/xl`), small (`sizing/2xl`), standard (`sizing/3xl`), large (`sizing/4xl`), or extra-large (`sizing/5xl`).
+          * @default 'standard'
+         */
+        "size"?: UaiAvatarSize;
+        /**
+          * URL of the avatar image. The consuming application handles file selection and upload.
+         */
+        "src"?: string;
+    }
+    /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
      * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
      * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
@@ -9445,7 +9533,7 @@ declare namespace LocalJSX {
          */
         "onUaiClick"?: (event: UaiButtonCustomEvent<MouseEvent>) => void;
         /**
-          * Size of the button. Can be one of: 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).
+          * Size of the button. Can be one of: 'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`).
           * @default 'medium'
          */
         "size"?: UaiButtonSize;
@@ -9467,7 +9555,7 @@ declare namespace LocalJSX {
     }
     /**
      * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
-     * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+     * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
      * Without `color`, the icon takes the text color around it, so it matches the label next to it.
      * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
      */
@@ -9491,7 +9579,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Icon size: 'x-small' (16px), 'small' (20px) or 'medium' (24px, default).
+          * Icon size: 'x-small' (`sizing/sm`), 'small' (`sizing/md`) or 'medium' (`sizing/lg`, default).
           * @default 'medium'
          */
         "size"?: UaiIconSize;
@@ -9501,6 +9589,9 @@ declare namespace LocalJSX {
          */
         "theme"?: UaiIconTheme;
     }
+    /**
+     * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
+     */
     interface UaiNavbar {
         /**
           * Background surface color.
@@ -9523,6 +9614,9 @@ declare namespace LocalJSX {
          */
         "orientation"?: uaiNavbarOrientation;
     }
+    /**
+     * Group of items inside a uai-navbar.
+     */
     interface UaiNavbarContent {
     }
     /**
@@ -9586,7 +9680,7 @@ declare namespace LocalJSX {
          */
         "tag"?: UaiTypoTag;
         /**
-          * Text style role from the UAI typography scale. Can be one of: 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
+          * Text style role from the UAI typography scale. Can be one of: 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title-sm', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'.
           * @default 'body-base'
          */
         "variant"?: UaiTypoVariant;
@@ -9697,6 +9791,7 @@ declare namespace LocalJSX {
         "bds-typo": BdsTypo;
         "bds-upload": BdsUpload;
         "bds-warning": BdsWarning;
+        "uai-avatar": UaiAvatar;
         "uai-button": UaiButton;
         "uai-icon": UaiIcon;
         "uai-navbar": UaiNavbar;
@@ -9718,6 +9813,9 @@ declare module "@stencil/core" {
             "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
             "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
             "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
+            /**
+             * @deprecated Use `uai-avatar` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
             "bds-avatar-group": LocalJSX.BdsAvatarGroup & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
             "bds-badge": LocalJSX.BdsBadge & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
@@ -9815,6 +9913,11 @@ declare module "@stencil/core" {
             "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
             /**
+             * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
+             * and an accessible name with `label`. The consuming application is responsible for uploading images.
+             */
+            "uai-avatar": LocalJSX.UaiAvatar & JSXBase.HTMLAttributes<HTMLUaiAvatarElement>;
+            /**
              * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
              * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
              * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
@@ -9822,12 +9925,18 @@ declare module "@stencil/core" {
             "uai-button": LocalJSX.UaiButton & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
             /**
              * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
-             * Sizes keep the bds-icon names: x-small is 16px, small is 20px and medium (default) is 24px.
+             * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
              * Without `color`, the icon takes the text color around it, so it matches the label next to it.
              * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
              */
             "uai-icon": LocalJSX.UaiIcon & JSXBase.HTMLAttributes<HTMLUaiIconElement>;
+            /**
+             * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
+             */
             "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
+            /**
+             * Group of items inside a uai-navbar.
+             */
             "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
             /**
              * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".

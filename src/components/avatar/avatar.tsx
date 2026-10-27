@@ -6,6 +6,9 @@ import { colorLetter } from './color-letter';
 export type avatarSize = 'micro' | 'extra-small' | 'small' | 'standard' | 'large' | 'extra-large';
 export type colors = 'colorLetter' | 'system' | 'success' | 'warning' | 'error' | 'info' | 'surface';
 
+/**
+ * @deprecated Use `uai-avatar` for new UAI experiences. This component remains supported for existing consumers.
+ */
 @Component({
   tag: 'bds-avatar',
   styleUrl: 'avatar.scss',
