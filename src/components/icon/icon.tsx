@@ -13,6 +13,8 @@ import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
 export class Icon {
   private io?: IntersectionObserver;
   private requestVersion = 0;
+  private lastLoadedName?: string;
+  private defaultAriaLabel?: string;
 
   @Element() el!: HTMLElement;
 
@@ -88,6 +90,12 @@ export class Icon {
     });
   }
 
+  componentDidLoad(): void {
+    if (this.name !== this.lastLoadedName) {
+      this.loadIcon();
+    }
+  }
+
   disconnectedCallback(): void {
     this.requestVersion++;
     if (this.io) {
@@ -121,6 +129,7 @@ export class Icon {
   @Watch('theme')
   @Watch('type')
   loadIcon(): void {
+    this.lastLoadedName = this.name;
     if (!this.name) {
       this.requestVersion++;
       this.svgContent = undefined;
@@ -131,11 +140,9 @@ export class Icon {
       this.setSvgContent();
     }
 
-    if (!this.ariaLabel) {
-      const label = this.name;
-      if (label) {
-        this.ariaLabel = label;
-      }
+    if (!this.ariaLabel || this.ariaLabel === this.defaultAriaLabel) {
+      this.ariaLabel = this.name;
+      this.defaultAriaLabel = this.name;
     }
   }
 
