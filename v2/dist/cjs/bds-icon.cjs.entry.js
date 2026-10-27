@@ -148,6 +148,11 @@ const Icon = class {
             this.loadIcon();
         });
     }
+    componentDidLoad() {
+        if (this.name !== this.lastLoadedName) {
+            this.loadIcon();
+        }
+    }
     disconnectedCallback() {
         this.requestVersion++;
         if (this.io) {
@@ -173,6 +178,7 @@ const Icon = class {
         }
     }
     loadIcon() {
+        this.lastLoadedName = this.name;
         if (!this.name) {
             this.requestVersion++;
             this.svgContent = undefined;
@@ -181,15 +187,13 @@ const Icon = class {
         if (this.isVisible) {
             this.setSvgContent();
         }
-        if (!this.ariaLabel) {
-            const label = this.name;
-            if (label) {
-                this.ariaLabel = label;
-            }
+        if (!this.ariaLabel || this.ariaLabel === this.defaultAriaLabel) {
+            this.ariaLabel = this.name;
+            this.defaultAriaLabel = this.name;
         }
     }
     render() {
-        return (index.h(index.Host, { key: '981c25abbd0f7a63285dd0dc7344c63757cc09fc', role: "img", class: {
+        return (index.h(index.Host, { key: '784224bf483ef4e80b248f9e4b4ef1a5fd8b584b', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (index.h("div", { class: {

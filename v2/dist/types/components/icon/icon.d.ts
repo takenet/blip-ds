@@ -2,6 +2,8 @@ import { IconSize, IconTheme, IconType } from './icon-interface';
 export declare class Icon {
     private io?;
     private requestVersion;
+    private lastLoadedName?;
+    private defaultAriaLabel?;
     el: HTMLElement;
     private svgContent?;
     private isVisible;
@@ -54,6 +56,7 @@ export declare class Icon {
      */
     dataTest?: string;
     connectedCallback(): void;
+    componentDidLoad(): void;
     disconnectedCallback(): void;
     private waitUntilVisible;
     loadIcon(): void;
