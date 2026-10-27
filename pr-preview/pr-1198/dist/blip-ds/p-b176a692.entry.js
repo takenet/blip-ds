@@ -1,2 +1,0 @@
-import{r as e,h as a,H as t,a as s}from"./p-gowA9FoV.js";const r=":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:0.5rem}";const n=class{constructor(a){e(this,a)}render(){return a(t,{key:"044038bdc03a26f1aa092dc44a0e938f8e0536db",class:{NavbarContent:true}},a("slot",{key:"7a7377972ad9d5caa96d240579ce6928eb41854f"}))}get hostElement(){return s(this)}};n.style=r;export{n as uai_navbar_content};
-//# sourceMappingURL=p-b176a692.entry.js.map

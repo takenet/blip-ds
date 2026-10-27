@@ -1,2 +1,0 @@
-import{r as registerInstance,h}from"./index-gowA9FoV.js";var cardTitleCss="";var CardTitle=function(){function t(t){registerInstance(this,t)}t.prototype.render=function(){return h("bds-typo",{key:"d0df4eef95cc47118cbedf7b7774223bfa1a07ab",variant:"fs-20",tag:"h4",margin:false,bold:"bold"},this.text)};return t}();CardTitle.style=cardTitleCss;export{CardTitle as bds_card_title};
-//# sourceMappingURL=bds-card-title.entry.js.map
