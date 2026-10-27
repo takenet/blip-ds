@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="UAI/Foundation/Modelo de documentação" />
+
+# Modelo de documentação de componente
+
+Copie a estrutura abaixo para o `.mdx` de cada `uai-*` e troque `Componente` pelo nome do componente. Mantenha a ordem e os títulos das seções. Apague as instruções entre colchetes.
+
+````mdx
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiComponenteStories from './uai-componente.stories';
+
+<Meta isTemplate />
+
+# Componente
+
+[O que é e quando usar, em uma ou duas frases. Diga quando usar outro componente.]
+
+## Visão geral
+
+[Uso mínimo em React e como custom element. Cite o `UaiThemeProvider`, a fonte e o CSS dos ícones quando forem necessários.]
+
+## Playground
+
+<Canvas of={UaiComponenteStories.Playground} />
+
+<Controls of={UaiComponenteStories.Playground} />
+
+## Estados
+
+[Um exemplo por estado: padrão, hover, foco, pressed, desabilitado, erro, carregando. Descreva o sinal de cada estado além da cor.]
+
+<Canvas of={UaiComponenteStories.States} />
+
+## Comportamento
+
+[Teclado, abrir e fechar, posicionamento, validação, valores aplicados, eventos (tabela React · custom element · quando · `detail`), movimento e `prefers-reduced-motion`. Cada regra aqui tem teste.]
+
+## Acessibilidade
+
+[Elemento nativo usado, papéis e atributos ARIA, ordem de foco, nome acessível, anúncio para leitor de tela.]
+
+## Tokens
+
+[Tabela de parte → tokens usados. Sem valores literais.]
+
+## Migração do `bds-componente`
+
+[Tabela `Componente legado` → `UaiComponente` com nomes de props, valores, eventos e slots que mudam. Liste as props deprecated e o aviso que cada uma emite. Se não há legado, escreva "Componente novo, sem equivalente `bds-*`".]
+
+## Design
+
+[Link do component set no Figma UAI Core.]
+````
+
+## Regras do modelo
+
+- **Visão geral:** abre com o que é, quando usar e quando não usar.
+- **Playground:** um story `Playground` com `args` e `argTypes` descritos.
+- **Estados:** cobre todos os estados do Figma que o componente tem.
+- **Comportamento:** cada linha cita o teste que a cobre.
+- **Acessibilidade:** nunca vazia, nem para componentes simples.
+- **Migração:** vem da linha de base do `bds-*` e do manifesto de migração.
+- **JSDoc:** cada prop, evento, método, slot e part público tem JSDoc no formato **o que é · Use · Pair · Avoid**.
