@@ -24,6 +24,8 @@
     "assets:verify": "node scripts/prepare_assets.cjs --verify",
     "assets:check": "node scripts/check_asset_bundle.cjs",
     "assets:strip": "node scripts/check_asset_bundle.cjs --strip-copied",
+    "docs:check-uai": "node scripts/check_uai_jsdoc.cjs",
+    "lint:uai-tokens": "node scripts/check_uai_tokens.cjs",
     "assets:update-tokens": "npm install --package-lock-only --save-exact --ignore-scripts --legacy-peer-deps blip-tokens@latest",
     "prestart": "npm run assets:prepare",
     "predev": "npm run assets:prepare",
@@ -109,7 +111,7 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "blip-tokens": "2.2.0"
+    "blip-tokens": "2.3.0"
   },
   "repository": {
     "type": "git",

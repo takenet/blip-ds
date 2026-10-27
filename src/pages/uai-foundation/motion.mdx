@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from './foundation-blocks';
+
+<Meta title="UAI/Foundation/Motion" />
+
+# Motion
+
+Duração e curva de transições e animações. São iguais nos dois temas. Toda transição de um componente UAI usa um token de duração e um de curva:
+
+```scss
+transition: background-color var(--uai-duration-fast) var(--uai-easing-standard);
+
+@media (prefers-reduced-motion: reduce) {
+  transition: none;
+}
+```
+
+- **Mudança de estado** (hover, foco, pressionado, marcado): `duration-fast` com `easing-standard`.
+- **Overlay entrando e saindo** (dropdown, popover, toast): `duration-moderate` com `easing-standard`.
+- **Retorno imediato** (tooltip): `duration-instant`.
+- **Animação contínua** (spinner): `duration-loop` com `easing-linear`.
+- Com `prefers-reduced-motion: reduce`, as transições de estado acontecem sem animação e as contínuas desaceleram ou param.
+
+## Duration
+
+<TokenTable category="motion" group="duration" />
+
+## Easing
+
+<TokenTable category="motion" group="easing" />

@@ -10,6 +10,9 @@ const VARIANTS = [
   'heading-xl',
   'heading-lg',
   'heading-md',
+  'title-lg',
+  'title-md',
+  'title-sm',
   'title',
   'body-lg',
   'body-base',
@@ -104,7 +107,7 @@ describe('uai-typo', () => {
       expect(text(page)).toHaveClass('typo--margin');
     });
 
-    it.each(['title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'])(
+    it.each(['title-lg', 'title-md', 'title-sm', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'])(
       'does not add the margin to %s',
       async (variant) => {
         const page = await render(`<uai-typo variant="${variant}">Text</uai-typo>`);
@@ -202,7 +205,7 @@ describe('uai-typo', () => {
       const page = await render(`<uai-typo line-height="double">Text</uai-typo>`);
 
       expect(warn).toHaveBeenCalledWith(
-        '[uai-typo] "lineHeight" is deprecated and has no effect. The line height comes from the variant.',
+        '[uai-typo] "lineHeight" is deprecated. It has no effect. The line height comes from the variant.',
       );
       expect(text(page).getAttribute('class')).not.toContain('line-height');
     });

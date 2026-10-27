@@ -7,11 +7,15 @@ O componente não adiciona fundo, borda, padding ou espaçamento próprios. Dent
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Group of items inside a uai-navbar.
+
 ## Slots
 
-| Slot | Description      |
-| ---- | ---------------- |
-|      | The default slot |
+| Slot | Description         |
+| ---- | ------------------- |
+|      | Items of the group. |
 
 
 ----------------------------------------------

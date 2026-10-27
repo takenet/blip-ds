@@ -17,6 +17,13 @@ It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not cha
 | `theme`  | `theme`   | Theme applied to the UAI components inside the provider. Can be one of: 'light', 'dark'. Any other value falls back to 'light' with a console warning. | `"dark" \| "light"` | `'light'` |
 
 
+## Slots
+
+| Slot | Description                              |
+| ---- | ---------------------------------------- |
+|      | The app or area that receives the theme. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

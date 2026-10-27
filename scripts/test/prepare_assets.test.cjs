@@ -30,15 +30,17 @@ test('generates only exact-version paths and ignores runtime cluster or root ove
   assert.equal(JSON.stringify(config).includes('<svg'), false);
 });
 
-test('supports safe external font paths from the token asset manifest', async context => {
+test('supports safe external font and license paths from the token asset manifest', async context => {
   const input = fixture(context);
   input.manifest.assets['uai-icon-font'] = { path: 'uai-icon/font/uai-icon.woff2', bytes: 32, sha256: 'a'.repeat(64), contentType: 'font/woff2' };
+  input.manifest.assets['figtree-font-license'] = { path: 'fonts/figtree/OFL.txt', bytes: 32, sha256: 'b'.repeat(64), contentType: 'text/plain' };
   fs.writeFileSync(input.manifestPath, JSON.stringify(input.manifest));
 
   await prepareAssets(input);
 
   const config = JSON.parse(fs.readFileSync(input.outputPath));
   assert.equal(config.assets['uai-icon-font'], 'uai-icon/font/uai-icon.woff2');
+  assert.equal(config.assets['figtree-font-license'], 'fonts/figtree/OFL.txt');
 });
 
 test('installed tokens resolve every public icon and required component asset offline without legacy catalogs', async context => {

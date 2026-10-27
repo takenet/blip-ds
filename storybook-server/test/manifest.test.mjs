@@ -85,6 +85,36 @@ test('uses the translated usage text and sorts sizes from the smallest to the la
   assert.equal(tokens[0].description, 'Spacing. 4px.');
 });
 
+test('formats motion and layout tokens and keeps breakpoints out of CSS', () => {
+  const light = {
+    motion: {
+      duration: { fast: { $type: 'duration', $description: 'State changes.', $value: { value: 150, unit: 'ms' } } },
+      easing: { standard: { $type: 'cubicBezier', $description: 'Default curve.', $value: [0.25, 0.1, 0.25, 1] } },
+    },
+    layout: {
+      breakpoint: { lg: { $type: 'dimension', $description: 'Collapses the breadcrumb.', $value: { value: 1075, unit: 'px' } } },
+      layer: { header: { $type: 'number', $description: 'Header.', $value: 500 } },
+      width: { dialog: { $type: 'dimension', $description: 'Dialog.', $value: { value: 424, unit: 'px' } } },
+    },
+  };
+  const tokens = uaiTokens(light, light);
+  const byName = name => tokens.find(token => token.name === name);
+  assert.equal(byName('uai-duration-fast').light, '150ms');
+  assert.equal(byName('uai-easing-standard').light, 'cubic-bezier(0.25, 0.1, 0.25, 1)');
+  assert.equal(byName('uai-breakpoint-lg').cssVar, undefined);
+  assert.equal(byName('uai-breakpoint-lg').scssVar, '$uai-breakpoint-lg');
+
+  const entry = uaiTokensEntry({ light, dark: light, shadows: {}, textStyles: {} });
+  assert.match(entry.description, /## Movimento\n\n- --uai-duration-fast: 150ms\. State changes\./);
+  assert.match(entry.description, /- --uai-easing-standard: cubic-bezier\(0\.25, 0\.1, 0\.25, 1\)\./);
+  assert.match(entry.description, /## Layout\n\n- \$uai-breakpoint-lg \(só SCSS\/JS, em media query\): 1075px\./);
+  assert.match(entry.description, /- --uai-layer-header: 500\. Header\./);
+  assert.doesNotMatch(entry.description, /--uai-breakpoint-/);
+  assert.doesNotMatch(entry.description, /\[object Object\]/);
+  assert.match(entry.description, /## Como aplicar/);
+  assert.match(entry.description, /control-height-\*/);
+});
+
 test('has a pt-BR usage text for every published UAI token, shadow and text style', () => {
   const read = file => JSON.parse(readFileSync(new URL(file, import.meta.url), 'utf8'));
   const tokensDir = '../../node_modules/blip-tokens/build/json/';

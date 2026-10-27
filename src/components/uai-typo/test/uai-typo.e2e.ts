@@ -47,11 +47,14 @@ const publishedCases: Case[] = Object.values(textStyles).map((style) => {
   };
 });
 
-// body/lg and body/sm exist only as Figma local styles; they reuse the title and caption tokens.
+// These roles are local Figma styles and their published token variables are not in the installed package yet.
 const WEIGHT_VALUES = { regular: '400', medium: '500', semibold: '600', bold: '700' };
 const localCases: Case[] = [
-  { variant: 'body-lg', role: 'title', fontSize: '16px', lineHeight: '24px' },
-  { variant: 'body-sm', role: 'caption', fontSize: '12px', lineHeight: '20px' },
+  { variant: 'title-lg', role: 'title-lg', fontSize: '18px', lineHeight: '24px' },
+  { variant: 'title-md', role: 'title-md', fontSize: '16px', lineHeight: '24px' },
+  { variant: 'title-sm', role: 'title-sm', fontSize: '14px', lineHeight: '20px' },
+  { variant: 'body-lg', role: 'body-lg', fontSize: '16px', lineHeight: '24px' },
+  { variant: 'body-sm', role: 'body-sm', fontSize: '12px', lineHeight: '20px' },
 ].flatMap(({ variant, role, fontSize, lineHeight }) =>
   Object.entries(WEIGHT_VALUES).map(([bold, fontWeight]) => ({
     name: `${variant.replace('-', '/')}/${bold}`,

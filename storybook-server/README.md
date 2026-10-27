@@ -9,6 +9,26 @@ come from Stencil's generated JSON, combined with the Storybook manifest and
 story IDs. All manifests are loaded from the image at startup; client requests
 cannot select an external documentation source.
 
+`prepare-manifest.mjs` enriches the Storybook manifest so agents can reuse the
+design system without reading source code:
+
+- **API:** props, events, methods, slots and CSS custom properties (`@prop` in
+  the component SCSS) from Stencil's JSDoc.
+- **Self-contained snippets:** each story snippet gets the file-level constants
+  and functions it uses, and the component import covers every name the
+  snippets need. Local relative imports (MDX pages, fixtures) are dropped.
+- **Legacy guidance:** a `bds-*` entry with a `uai-*` of the same name says to
+  use the UAI component in new screens; other `bds-*` entries say there is no
+  UAI equivalent yet. Remove the `manifest` tag (`tags: ['!manifest']`) to hide a
+  story file entirely.
+- **Tokens used:** `uai-*` entries list the UAI tokens they apply, by category,
+  read from the compiled CSS in `dist/collection` (run `npm run build` first).
+- **`uai-tokens`:** every UAI token with light and dark values, pt-BR usage
+  (`src/pages/uai-foundation/uai-token-usage.pt-BR.json`) and the usage rules
+  enforced by `npm run lint:uai-tokens`. Breakpoints are listed as SCSS only.
+
+The script is idempotent, so running it twice on the same build is safe.
+
 ## Connect
 
 VS Code MCP configuration:

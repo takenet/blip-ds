@@ -5,6 +5,10 @@ Navigation bar custom element (`<uai-navbar>`) with the `UaiNavbar` React wrappe
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
+
 ## Properties
 
 | Property          | Attribute          | Description                                        | Type                                                                                                    | Default           |
@@ -17,9 +21,9 @@ Navigation bar custom element (`<uai-navbar>`) with the `UaiNavbar` React wrappe
 
 ## Slots
 
-| Slot | Description      |
-| ---- | ---------------- |
-|      | The default slot |
+| Slot | Description                                          |
+| ---- | ---------------------------------------------------- |
+|      | Navbar content, usually uai-navbar-content elements. |
 
 
 ----------------------------------------------

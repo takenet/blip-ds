@@ -99,6 +99,37 @@ describe('uai-button e2e', () => {
 
       expect(focused).toBe('UAI-BUTTON');
     });
+
+    it('shows the focus ring when reached by keyboard in both themes', async () => {
+      const page = await newE2EPage({
+        html: `${withTheme('<uai-button id="light">Light</uai-button>')}${withTheme('<uai-button id="dark">Dark</uai-button>', 'dark')}`,
+      });
+
+      for (const id of ['light', 'dark']) {
+        await page.keyboard.press('Tab');
+        const style = await buttonStyle(page, `#${id}`, ['outline-style', 'outline-width', 'outline-color']);
+        expect(style['outline-style']).toBe('solid');
+        expect(style['outline-width']).not.toBe('0px');
+      }
+    });
+
+    it('removes transitions and stops the spinner with reduced motion', async () => {
+      const page = await newE2EPage({
+        html: withTheme('<uai-button id="button" loading>Save</uai-button>'),
+      });
+      await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+
+      const style = await page.evaluate(() => {
+        const button = document.querySelector('#button').shadowRoot.querySelector('button');
+        const spinner = document.querySelector('#button').shadowRoot.querySelector('.button__spinner');
+        return {
+          transition: getComputedStyle(button).transition,
+          animationName: getComputedStyle(spinner).animationName,
+        };
+      });
+
+      expect(style).toEqual({ transition: 'none', animationName: 'none' });
+    });
   });
 
   describe('visual recipe', () => {
@@ -170,7 +201,7 @@ describe('uai-button e2e', () => {
     it.each([
       ['solid', 'primary', 'rgb(36, 39, 41)', 'rgb(255, 255, 255)'],
       ['solid', 'negative', 'rgb(207, 0, 34)', 'rgb(255, 255, 255)'],
-      ['solid', 'positive', 'rgb(61, 163, 41)', 'rgb(255, 255, 255)'],
+      ['solid', 'positive', 'rgb(4, 120, 87)', 'rgb(255, 255, 255)'],
       ['outline', 'primary', 'rgb(255, 255, 255)', 'rgb(36, 39, 41)'],
       ['text', 'negative', 'rgba(0, 0, 0, 0)', 'rgb(207, 0, 34)'],
     ])('variant %s with color %s uses the UAI tokens', async (variant, color, background, foreground) => {

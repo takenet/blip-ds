@@ -51,9 +51,9 @@ const outlineIconNames = () => {
   return names;
 };
 
-const row = { display: 'flex', alignItems: 'flex-end', gap: '24px', flexWrap: 'wrap' };
-const cell = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' };
-const caption = { fontFamily: 'monospace', fontSize: '12px', color: 'var(--uai-content-secondary)' };
+const row = { display: 'flex', alignItems: 'flex-end', gap: 'var(--uai-spacing-lg)', flexWrap: 'wrap' };
+const cell = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--uai-spacing-xs)' };
+const caption = { fontFamily: 'monospace', fontSize: 'var(--uai-caption-font-size)', color: 'var(--uai-content-secondary)' };
 
 /**
  * Teste todas as propriedades. O nome é o do ícone no Figma, sem o prefixo do tema.
@@ -79,7 +79,7 @@ Playground.argTypes = {
   },
   size: {
     table: { defaultValue: { summary: 'medium' } },
-    description: 'Tamanho: x-small 16px, small 20px, medium 24px.',
+    description: 'Tamanho: x-small `sizing/sm`, small `sizing/md`, medium `sizing/lg`.',
     options: SIZES,
     control: { type: 'select' },
   },
@@ -122,8 +122,8 @@ export const Colors = () => (
         <span
           style={{
             display: 'inline-flex',
-            padding: '12px',
-            borderRadius: '12px',
+            padding: 'var(--uai-spacing-sm)',
+            borderRadius: 'var(--uai-radius-lg)',
             background: color === 'content-inverse' ? 'var(--uai-surface-inverse)' : 'transparent',
           }}
         >
@@ -155,7 +155,7 @@ export const Themes = () => (
 export const Accessibility = () => (
   <div style={row}>
     <UaiIcon name="warning" color="feedback-warning" aria-label="Atenção" />
-    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--uai-content-primary)' }}>
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--uai-spacing-xs)', color: 'var(--uai-content-primary)' }}>
       <UaiIcon name="check" size="small" color="feedback-success" />
       Salvo
     </span>
@@ -171,15 +171,15 @@ export const Catalog = () => {
   const names = all.filter((name) => name.includes(query.trim().toLowerCase()));
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)', width: '100%' }}>
       <input
         type="search"
         placeholder="Buscar ícone"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        style={{ maxWidth: '320px', padding: '8px 12px', font: 'inherit' }}
+        style={{ maxWidth: 'var(--uai-width-panel)', padding: 'var(--uai-spacing-xs) var(--uai-spacing-sm)', font: 'inherit' }}
       />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '16px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--uai-spacing-md)' }}>
         {names.map((name) => (
           <div key={name} style={{ ...cell, color: 'var(--uai-content-primary)' }}>
             <UaiIcon name={name} />

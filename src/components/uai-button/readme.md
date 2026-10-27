@@ -31,7 +31,7 @@ The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProv
 | `iconTheme`         | `icon-theme`          | Theme of the icons. Can be one of: 'outline', 'solid'.                                                                                                                                                                       | `"outline" \| "solid"`                                          | `'outline'` |
 | `justifyContent`    | `justify-content`     | Horizontal alignment of the button content. Can be one of: 'center' (default), 'space-between' (left content to the left, right content to the right).                                                                       | `"center" \| "space-between"`                                   | `'center'`  |
 | `loading`           | `loading`             | If true, shows a loading spinner and blocks uaiClick.                                                                                                                                                                        | `boolean`                                                       | `false`     |
-| `size`              | `size`                | Size of the button. Can be one of: 'compact' (24px), 'short' (32px), 'medium' (40px), 'large' (56px).                                                                                                                        | `"compact" \| "large" \| "medium" \| "short"`                   | `'medium'`  |
+| `size`              | `size`                | Size of the button. Can be one of: 'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`).                                             | `"compact" \| "large" \| "medium" \| "short"`                   | `'medium'`  |
 | `type`              | `type`                | Type of the button. Can be one of: 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.                                                                                                              | `"button" \| "reset" \| "submit"`                               | `'button'`  |
 | `typeIcon`          | `type-icon`           | Type of the icons. Can be one of: 'icon', 'logo', 'emoji'.                                                                                                                                                                   | `"emoji" \| "icon" \| "logo"`                                   | `'icon'`    |
 | `variant`           | `variant`             | Visual style of the button. Can be one of: 'solid', 'outline', 'text'.                                                                                                                                                       | `"outline" \| "solid" \| "text"`                                | `'solid'`   |
@@ -143,11 +143,18 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot | Description                                                                              |
+| ---- | ---------------------------------------------------------------------------------------- |
+|      | Label of the button. Put the left icon and the label together here when using groupIcon. |
+
+
 ## Shadow Parts
 
-| Part       | Description |
-| ---------- | ----------- |
-| `"button"` |             |
+| Part       | Description                |
+| ---------- | -------------------------- |
+| `"button"` | The native button element. |
 
 
 ## Dependencies
