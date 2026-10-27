@@ -111,7 +111,7 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "blip-tokens": "2.3.0"
+    "blip-tokens": "2.4.0"
   },
   "repository": {
     "type": "git",
