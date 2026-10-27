@@ -17,14 +17,30 @@ const findApi = (stencilDocs, basename) =>
 const deprecationOf = api => api.deprecation || (api.docsTags || []).find(tag => tag.name === 'deprecated')?.text;
 
 // v1 (bds-*) entries tell agents which UAI component replaces them, so new screens do not pick legacy components.
+// Deprecated v1 components stay listed, flagged as deprecated, so agents can still maintain existing screens.
 function legacyNotice(api, stencilDocs) {
   if (!api.tag.startsWith('bds-')) return null;
   const replacement = stencilDocs.components.find(item => item.tag === `uai-${api.tag.slice(4)}`);
+  const deprecation = deprecationOf(api);
+  if (deprecation) {
+    const name = replacement && pascal(replacement.tag);
+    return {
+      summary: replacement
+        ? `Depreciado (v1). Use <${name}> (docs: ${replacement.tag}), o componente UAI mais novo e recomendado.`
+        : 'Depreciado (v1).',
+      description: [
+        replacement
+          ? `**Depreciado (v1).** Use <${name}> de ${REACT_IMPORT} (docs: ${replacement.tag}): é o componente UAI mais novo e recomendado para telas novas. Use este só para manter telas existentes.`
+          : '**Depreciado (v1).** Use este só para manter telas existentes.',
+        deprecation,
+      ].join(' '),
+    };
+  }
   if (replacement) {
     const name = pascal(replacement.tag);
     return {
       summary: `Legado (v1). Em telas novas, use <${name}> (docs: ${replacement.tag}).`,
-      description: `**Legado (v1).** Em telas novas, use <${name}> de ${REACT_IMPORT} (docs: ${replacement.tag}). ${deprecationOf(api) || 'Este componente continua disponível para telas existentes.'}`,
+      description: `**Legado (v1).** Em telas novas, use <${name}> de ${REACT_IMPORT} (docs: ${replacement.tag}). Este componente continua disponível para telas existentes.`,
     };
   }
   return {

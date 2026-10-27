@@ -77,7 +77,8 @@ test('points v1 components to their UAI replacement and documents tokens of uai 
 
   assert.equal(result.button.summary, "Legado (v1). Em telas novas, use <UaiButton> (docs: uai-button). <BdsButton> from blip-ds-react/dist/components");
   assert.match(result.button.description, /^\*\*Legado \(v1\)\.\*\* Em telas novas, use <UaiButton>/);
-  assert.match(result.avatar.description, /use <UaiAvatar>.*Use `uai-avatar` for new UAI experiences\./);
+  assert.equal(result.avatar.summary, 'Depreciado (v1). Use <UaiAvatar> (docs: uai-avatar), o componente UAI mais novo e recomendado. <BdsAvatar> from blip-ds-react/dist/components');
+  assert.match(result.avatar.description, /^\*\*Depreciado \(v1\)\.\*\* Use <UaiAvatar>.*telas existentes\. Use `uai-avatar` for new UAI experiences\./);
   assert.match(result.chip.summary, /^Componente v1\. Ainda não há equivalente UAI\./);
   assert.doesNotMatch(result['uai-button'].summary, /Legado|v1/);
   assert.match(result['uai-button'].description, /## CSS custom properties\n\n- --uai-icon-size: Icon size\./);

@@ -19,7 +19,10 @@ design system without reading source code:
   snippets need. Local relative imports (MDX pages, fixtures) are dropped.
 - **Legacy guidance:** a `bds-*` entry with a `uai-*` of the same name says to
   use the UAI component in new screens; other `bds-*` entries say there is no
-  UAI equivalent yet. Remove the `manifest` tag (`tags: ['!manifest']`) to hide a
+  UAI equivalent yet. A `bds-*` component marked `@deprecated` stays listed,
+  flagged as "Depreciado (v1)", pointing to its `uai-*` replacement and
+  including the `@deprecated` text, so agents can still maintain existing
+  screens. Remove the `manifest` tag (`tags: ['!manifest']`) to hide a
   story file entirely.
 - **Tokens used:** `uai-*` entries list the UAI tokens they apply, by category,
   read from the compiled CSS in `dist/collection` (run `npm run build` first).
