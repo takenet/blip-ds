@@ -1,4 +1,4 @@
-import { I as Input, d as defineCustomElement$1 } from './p-BOXPlPR5.js';
+import { I as Input, d as defineCustomElement$1 } from './p-CAiMGmG0.js';
 
 const BdsInput = Input;
 const defineCustomElement = defineCustomElement$1;

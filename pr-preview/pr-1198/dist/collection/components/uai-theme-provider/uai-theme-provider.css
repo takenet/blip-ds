@@ -26,7 +26,6 @@
   --uai-border-width-default: 1px;
   --uai-border-width-none: 0px;
   --uai-border-width-thick: 2px;
-  --uai-opacity-focus-ring: 0.3;
   --uai-radius-2xl: 1.5rem;
   --uai-radius-full: 624.9375rem;
   --uai-radius-lg: 0.75rem;
@@ -100,15 +99,13 @@
   --uai-action-outline-default: #ffffff;
   --uai-action-outline-hover: #f2f3f3;
   --uai-action-outline-pressed: #e4e6e7;
-  --uai-action-positive: #047857;
-  --uai-action-positive-foreground: #ffffff;
   --uai-action-primary-default: #242729;
   --uai-action-primary-foreground: #ffffff;
   --uai-action-primary-hover: #181a1b;
   --uai-action-primary-pressed: #0a0a0a;
   --uai-border-default: #e4e6e7;
   --uai-border-input: #adb4b8;
-  --uai-border-ring: #242729;
+  --uai-border-ring: #c084fc;
   --uai-content-disabled: #848e94;
   --uai-content-inverse: #ffffff;
   --uai-content-link: #0073e5;
@@ -140,33 +137,31 @@
 }
 
 :host([data-uai-theme=dark]) {
-  --uai-action-destructive: #fca5a5;
-  --uai-action-destructive-foreground: #181a1b;
+  --uai-action-destructive: #cf0022;
+  --uai-action-destructive-foreground: #ffffff;
   --uai-action-outline-default: #242729;
   --uai-action-outline-hover: #2f3437;
   --uai-action-outline-pressed: #3b4144;
-  --uai-action-positive: #35de90;
-  --uai-action-positive-foreground: #181a1b;
   --uai-action-primary-default: #e4e6e7;
   --uai-action-primary-foreground: #242729;
   --uai-action-primary-hover: #d6d9db;
   --uai-action-primary-pressed: #c8cccf;
   --uai-border-default: #2f3437;
-  --uai-border-input: #848e94;
-  --uai-border-ring: #ffffff;
+  --uai-border-input: #5f676d;
+  --uai-border-ring: #c084fc;
   --uai-content-disabled: #768188;
   --uai-content-inverse: #181a1b;
-  --uai-content-link: #93c5fd;
-  --uai-content-placeholder: #adb4b8;
+  --uai-content-link: #0099ff;
+  --uai-content-placeholder: #768188;
   --uai-content-primary: #ffffff;
   --uai-content-secondary: #adb4b8;
-  --uai-feedback-error: #fca5a5;
+  --uai-feedback-error: #cf0022;
   --uai-feedback-error-subtle: #450a0a;
-  --uai-feedback-info: #93c5fd;
+  --uai-feedback-info: #0073e5;
   --uai-feedback-info-subtle: #072563;
-  --uai-feedback-success: #35de90;
+  --uai-feedback-success: #3da329;
   --uai-feedback-success-subtle: #022c22;
-  --uai-feedback-warning: #fb923c;
+  --uai-feedback-warning: #ff8000;
   --uai-feedback-warning-subtle: #431407;
   --uai-fixed-blue: #1e6bf1;
   --uai-fixed-brand: #0099ff;

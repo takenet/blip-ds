@@ -92,7 +92,7 @@
   background-color: var(--button-overlay-pressed);
 }
 .button:focus-visible {
-  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #c084fc);
   outline-offset: var(--uai-spacing-3xs, 0.125rem);
 }
 .button:disabled {

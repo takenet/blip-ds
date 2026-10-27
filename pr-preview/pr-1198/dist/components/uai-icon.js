@@ -1,4 +1,4 @@
-import { U as UaiIcon$1, d as defineCustomElement$1 } from './p-DuGQtt-3.js';
+import { U as UaiIcon$1, d as defineCustomElement$1 } from './p-CuM3OQug.js';
 
 const UaiIcon = UaiIcon$1;
 const defineCustomElement = defineCustomElement$1;
