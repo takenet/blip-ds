@@ -981,7 +981,10 @@ export const UaiAvatar = createComponent({
     tagName: 'uai-avatar',
     elementClass: UaiAvatarElement,
     react: React,
-    events: {},
+    events: {
+        onUaiClickAvatar: 'uaiClickAvatar',
+        onUaiImageUpload: 'uaiImageUpload'
+    },
     defineCustomElement: defineUaiAvatar
 });
 export const UaiButton = createComponent({

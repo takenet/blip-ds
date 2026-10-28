@@ -5,7 +5,13 @@ import * as UaiAvatarStories from './uai-avatar.stories';
 
 # Avatar
 
-Representa uma pessoa por imagem, iniciais ou ícone. É estático: a aplicação consumidora seleciona e envia a foto; o componente não abre seletor de arquivos nem faz upload.
+Representa uma pessoa por imagem ou pelas iniciais do nome. Use em listas, cabeçalhos de perfil, navegação e grupos de participantes. Com `upload` ou `openUpload`, vira um botão para trocar a foto. Não use para ícones de ação nem para logos de marca.
+
+## Visão geral
+
+No React, importe `UaiAvatar` de `blip-ds-react/dist/components` e passe `name` e, quando houver, `thumbnail`. As iniciais vêm do nome: a primeira letra do primeiro nome e a do último, em maiúsculas. Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação (`import 'blip-tokens/uai-icons/css'`). Fora do React, use o custom element `uai-avatar`, com as propriedades em kebab-case (`open-upload`, `data-test`) e os eventos `uaiClickAvatar` e `uaiImageUpload`.
+
+## Playground
 
 <Canvas of={UaiAvatarStories.Playground} />
 
@@ -13,59 +19,138 @@ Representa uma pessoa por imagem, iniciais ou ícone. É estático: a aplicaçã
 
 ## Como usar
 
-```jsx
-import { UaiAvatar, UaiThemeProvider } from 'blip-ds-react/dist/components';
+Cabeçalho de perfil com a foto da pessoa. Com `openUpload`, ativar o avatar abre o seletor de imagem; `onUaiImageUpload` recebe a imagem como data URL e atualiza o estado. O código abaixo pode ser copiado como ponto de partida.
 
-<UaiThemeProvider theme="light">
-  <UaiAvatar src={user.photoUrl} initials="AB" label="Alex Brown" size="standard" />
-</UaiThemeProvider>;
-```
+<Canvas of={UaiAvatarStories.Usage} sourceState="shown" />
 
-- `src` recebe a URL da foto. O produto que consome o DS faz o upload e passa a URL resultante.
-- `initials` é explícito: informe uma ou duas letras; não é derivado de um nome.
-- Se a foto não carregar, o componente mostra `initials`; sem foto e sem iniciais, mostra o ícone oficial de usuário.
-- `label` dá nome acessível ao avatar. Sem `label`, ele é ocultado de tecnologias assistivas; use isso quando o nome da pessoa já estiver disponível no conteúdo adjacente.
-- Use `data-uai-theme` ou `UaiThemeProvider` para aplicar os temas.
-- Carregue a fonte de ícones UAI uma vez na aplicação: `import 'blip-tokens/uai-icons/css';`.
+- Passe sempre o nome completo em `name`: ele gera as iniciais e é o nome acessível. `name="ana maria silva"` mostra `AS`.
+- `thumbnail` recebe a URL da foto. Se a imagem não carregar, o avatar mostra as iniciais.
+- Use `upload` quando a aplicação cuida da troca de foto (o clique só emite `uaiClickAvatar`) e `openUpload` quando o próprio avatar deve abrir o seletor de imagem.
+- Sem `name`, o avatar é decorativo. Use assim só quando o texto ao lado já identifica a pessoa.
 
-## Tamanhos
+## Estados
 
-| `size`              | Diâmetro | Texto |
-| ------------------- | -------: | ----: |
-| `micro`             |     24px |  12px |
-| `extra-small`       |     32px |  14px |
-| `small`             |     40px |  16px |
-| `standard` (padrão) |     56px |  20px |
-| `large`             |     64px |  24px |
-| `extra-large`       |     72px |  32px |
+O avatar mostra, nesta ordem: o contador `+N` com `ellipsis`, a imagem de `thumbnail`, as iniciais do `name` e, sem nome nem imagem, o ícone de usuário. O atributo `hidden` esconde o avatar.
+
+### Tamanhos
+
+| `size` | Diâmetro | Iniciais e `+N` |
+| --- | --- | --- |
+| `micro` | `sizing/lg` | `body/sm` |
+| `extra-small` | `sizing/xl` | `body/base` |
+| `small` | `sizing/2xl` | `body/lg` |
+| `standard` (padrão) | `sizing/3xl` | `heading/md` |
+| `large` | `sizing/4xl` | `heading/lg` |
+| `extra-large` | `sizing/5xl` | `heading/xl` |
+
+As iniciais usam peso `font-weight/regular` e nunca ultrapassam o círculo, nem com nomes longos no tamanho `micro`.
 
 <Canvas of={UaiAvatarStories.Sizes} />
 
-## Imagem e fallback
+### Cores
+
+Com `colorLetter` (padrão), o fundo das iniciais vem da primeira letra do nome, como no `bds-avatar`. As demais cores fixam o fundo. `surface` é o fundo neutro do UAI Core.
+
+| `color` | Fundo | Texto |
+| --- | --- | --- |
+| `colorLetter` (padrão) | pela inicial do nome | `content/primary` |
+| `system` e `info` | `feedback/info-subtle` | `content/primary` |
+| `success` | `feedback/success-subtle` | `content/primary` |
+| `warning` | `feedback/warning-subtle` | `content/primary` |
+| `error` | `feedback/error-subtle` | `content/primary` |
+| `surface` | `surface/muted` | `content/secondary` |
+
+<Canvas of={UaiAvatarStories.Colors} />
+
+### Imagem e fallback
 
 <Canvas of={UaiAvatarStories.ImageFallback} />
 
-## Uso decorativo
+### Upload
 
-Quando outro texto já identifica a pessoa, omita `label` para que leitores de tela não anunciem o avatar novamente.
+Com `upload` ou `openUpload`, o ícone de upload aparece sobre o avatar no hover e no foco.
+
+<Canvas of={UaiAvatarStories.Upload} />
+
+### Contador
+
+<Canvas of={UaiAvatarStories.Ellipsis} />
+
+### Decorativo
 
 <Canvas of={UaiAvatarStories.Decorative} />
 
-## Migração de `bds-avatar`
+## Comportamento
 
-`bds-avatar` está **deprecado**, mas continua disponível e sem mudança de comportamento nesta etapa. A migração para o UAI é explícita:
+As regras são cobertas por `src/components/uai-avatar/test/uai-avatar.spec.ts` (unitário) e `src/components/uai-avatar/test/uai-avatar.e2e.ts` (integração).
 
-| `bds-avatar`                                                | `uai-avatar`                                                          |
-| ----------------------------------------------------------- | --------------------------------------------------------------------- |
-| `thumbnail`                                                 | `src` (URL da imagem)                                                 |
-| `name="Alex Brown"` (iniciais calculadas internamente)      | `initials="AB"` (fornecidas explicitamente)                           |
-| —                                                           | `label="Alex Brown"` (nome acessível)                                 |
-| `size="micro/extra-small/small/standard/large/extra-large"` | Mesmos seis valores                                                   |
-| `upload` / `openUpload`                                     | Responsabilidade da aplicação consumidora; passe a URL final em `src` |
-| `ellipsis`, `color`, eventos BDS                            | Sem equivalente no UAI Avatar atual                                   |
+| Regra | Teste |
+| --- | --- |
+| Com `thumbnail`, o avatar mostra a imagem recortada no círculo | `test/uai-avatar.spec.ts` e `test/uai-avatar.e2e.ts` |
+| Se a imagem falha, o avatar mostra as iniciais | `test/uai-avatar.spec.ts` e `test/uai-avatar.e2e.ts` |
+| `name="ana maria silva"` mostra `AS` e nomeia o avatar; `size="micro"` com `name="Maria Eduarda dos Santos Albuquerque"` mostra `MA` dentro do círculo | `test/uai-avatar.spec.ts` e `test/uai-avatar.e2e.ts` |
+| Sem nome nem imagem, o avatar mostra o ícone de usuário e é decorativo | `test/uai-avatar.spec.ts` e `test/uai-avatar.e2e.ts` |
+| Com `colorLetter`, `name="Bruno Lima"` usa `feedback/success-subtle`; `color` desconhecido cai em `colorLetter` e avisa | `test/uai-avatar.e2e.ts` |
+| Sem `size`, o avatar usa `sizing/3xl`; `size` desconhecido cai em `standard` e avisa | `test/uai-avatar.e2e.ts` |
+| `ellipsis="5"` mostra `+5` | `test/uai-avatar.spec.ts` e `test/uai-avatar.e2e.ts` |
+| O atributo `hidden` esconde o avatar | `test/uai-avatar.e2e.ts` |
+| Clicar no avatar emite `uaiClickAvatar` | `test/uai-avatar.spec.ts` e `test/uai-avatar.e2e.ts` |
+| Com `upload`, o avatar é um botão que emite `uaiClickAvatar` sem abrir o seletor de arquivo | `test/uai-avatar.e2e.ts` |
+| Com `open-upload`, Enter, Espaço ou clique no avatar abre o seletor de arquivo e emite `uaiClickAvatar` | `test/uai-avatar.e2e.ts` |
+| A imagem escolhida vira a `thumbnail` e é emitida em `uaiImageUpload` como data URL | `test/uai-avatar.e2e.ts` |
+| O ícone de upload aparece sobre `overlay/default` no hover e no foco | `test/uai-avatar.e2e.ts` |
+| `src` vale como `thumbnail` e `label` como `name`; `initials="Ana Silva"` sem `name` mostra `AN`; com `name`, `initials` é ignorada; cada prop avisa uma vez no console | `test/uai-avatar.spec.ts` e `test/uai-avatar.e2e.ts` |
 
-Não remova `bds-avatar` de aplicações existentes como parte desta migração. Seus props e eventos legados continuam suportados enquanto consumidores forem migrados deliberadamente.
+### Eventos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiClickAvatar` | `uaiClickAvatar` | A pessoa clica no avatar ou o ativa pelo teclado | `PointerEvent` do clique |
+| `onUaiImageUpload` | `uaiImageUpload` | Com `openUpload`, a pessoa escolhe uma imagem | Data URL da imagem |
+
+### Movimento
+
+A camada de upload aparece com `duration/fast` e `easing/standard`. Com `prefers-reduced-motion: reduce`, aparece sem transição (`test/uai-avatar.e2e.ts`).
+
+## Acessibilidade
+
+- O avatar estático tem `role="img"` com o `name` como rótulo e não recebe foco.
+- Com `upload` ou `openUpload`, o avatar é um botão: recebe foco com Tab e é ativado com Enter ou Espaço. O foco aparece como anel (`uai-focus-visible`) e mostra o ícone de upload.
+- Sem `name`, o avatar é decorativo e não é anunciado. Use só quando o texto ao lado já identifica a pessoa. Com `upload` ou `openUpload` e sem `name`, o botão se chama apenas "Avatar": passe o `name`.
+- No contador, passe em `name` o que o `+N` representa, como "Mais 5 pessoas".
+- A cor do fundo é só visual: as iniciais e o nome acessível identificam a pessoa.
 
 ## Tokens
 
-O componente usa `surface-muted`, `content-secondary`, `radius-full`, Figtree e os estilos tipográficos UAI. `standard` (48px) usa `sizing-3xl`; `extra-large` (72px) usa `sizing-5xl` quando disponível. Há um fallback de 72px para compatibilidade com versões de `blip-tokens` anteriores à 2.4.0.
+| Parte | Tokens |
+| --- | --- |
+| Tamanho e forma | `sizing-lg`, `sizing-xl`, `sizing-2xl`, `sizing-3xl`, `sizing-4xl`, `sizing-5xl`, `radius-full` |
+| Iniciais e contador | `body-sm`, `body-base`, `body-lg`, `heading-md`, `heading-lg`, `heading-xl`, `font-weight-regular` |
+| Fundo | `feedback-info-subtle`, `feedback-success-subtle`, `feedback-warning-subtle`, `feedback-error-subtle`, `surface-muted` |
+| Texto e ícone | `content-primary`, `content-secondary` |
+| Upload no hover e no foco | `overlay-default`, `content-inverse`, anel `uai-focus-visible` |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-avatar`
+
+Props, valores e o payload dos eventos têm os mesmos nomes do `BdsAvatar`. Troque só a tag e os eventos:
+
+| `BdsAvatar` | `UaiAvatar` |
+| --- | --- |
+| Tag `bds-avatar` | Tag `uai-avatar` |
+| `onBdsClickAvatar` (`bdsClickAvatar`) | `onUaiClickAvatar` (`uaiClickAvatar`), com o mesmo `PointerEvent` |
+| `onBdsImageUpload` (`bdsImageUpload`) | `onUaiImageUpload` (`uaiImageUpload`), com a mesma data URL |
+| Avatar estático recebe foco | Só recebe foco com `upload` ou `openUpload` |
+
+## Migração da API anterior do `uai-avatar`
+
+| Antes | Agora |
+| --- | --- |
+| `src` | `thumbnail`. `src` continua aceita como deprecated e avisa |
+| `label` | `name`. `label` continua aceita como deprecated e avisa |
+| `initials` | Sai: as iniciais vêm do `name`. Sem `name`, `initials` ainda vale, com no máximo 2 caracteres, e avisa |
+| Fundo sempre neutro | O padrão é `colorLetter`; use `color="surface"` para manter o fundo neutro |
+
+## Design
+
+[UaiAvatar no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2083-55)

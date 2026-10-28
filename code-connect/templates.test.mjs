@@ -602,3 +602,53 @@ test('input editable preserves special characters in value, label and message', 
   assert.ok(example.includes(`value={${JSON.stringify(Value)}}`));
   assert.ok(example.includes(`successMessage={${JSON.stringify('Salvo "A&B".')}}`));
 });
+
+const avatarSource = readFileSync(new URL('./uai-avatar.figma.ts', import.meta.url), 'utf8');
+const avatarDefaults = { Initials: 'CJ', Size: 'standard', Type: 'Fallback' };
+const avatarSizes = ['micro', 'extra-small', 'small', 'standard', 'large', 'extra-large'];
+
+test('avatar covers every size and type with valid React', () => {
+  for (const Size of avatarSizes)
+    for (const Type of ['Image', 'Fallback']) {
+      const { example } = evaluate(avatarSource, { ...avatarDefaults, Size, Type });
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiAvatar'));
+      assert.ok(example.includes('name={"C J"}'));
+      assert.equal(example.includes(` size="${Size}"`), Size !== 'standard');
+      assert.ok(!example.includes('size="standard"'));
+      assert.equal(/ thumbnail=\{"https:\/\/[^"]+"\}/.test(example), Type === 'Image');
+      assert.equal(example.includes(' color="surface"'), Type === 'Fallback');
+      assert.ok(!/initials=|src=|label=/.test(example));
+    }
+});
+
+test('avatar keeps imports and metadata and builds the exact fallback example', () => {
+  const result = evaluate(avatarSource, avatarDefaults);
+  assert.equal(result.example, '<UaiAvatar name={"C J"} color="surface" />');
+  assert.deepEqual(Array.from(result.imports), ['import { UaiAvatar } from "blip-ds-react/dist/components"']);
+  assert.equal(result.id, 'uai-avatar');
+  assert.equal(result.metadata.nestable, true);
+});
+
+test('avatar turns at most two initials into name words and omits an empty name', () => {
+  const spaced = evaluate(avatarSource, { ...avatarDefaults, Initials: ' a  b c ', Size: 'micro' });
+  assertJsx(spaced.example);
+  assert.equal(spaced.example, '<UaiAvatar name={"a b"} size="micro" color="surface" />');
+
+  const single = evaluate(avatarSource, { ...avatarDefaults, Initials: 'M' });
+  assert.equal(single.example, '<UaiAvatar name={"M"} color="surface" />');
+
+  const empty = evaluate(avatarSource, { ...avatarDefaults, Initials: '  ', Type: 'Image' });
+  assertJsx(empty.example);
+  assert.ok(!empty.example.includes('name='));
+  assert.ok(empty.example.includes(' thumbnail={"https://'));
+
+  const quoted = evaluate(avatarSource, { ...avatarDefaults, Initials: '"{' });
+  assertJsx(quoted.example);
+  assert.ok(quoted.example.includes(`name={${JSON.stringify('" {')}}`));
+});
+
+test('avatar rejects unmapped size and type', () => {
+  assert.throws(() => evaluate(avatarSource, { ...avatarDefaults, Size: 'huge' }), /Unmapped Size/);
+  assert.throws(() => evaluate(avatarSource, { ...avatarDefaults, Type: 'Icon' }), /Unmapped Type/);
+});

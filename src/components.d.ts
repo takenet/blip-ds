@@ -76,7 +76,7 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
-import { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+import { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -162,7 +162,7 @@ export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
-export { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+export { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -3692,31 +3692,64 @@ export namespace Components {
     interface BdsWarning {
     }
     /**
-     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+     * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+     * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+     * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
      */
     interface UaiAvatar {
         /**
-          * Value placed on the avatar host for automated tests.
+          * Background behind the initials. Can be one of: 'colorLetter' (default, picked by the first letter of the name), 'system', 'success', 'warning', 'error', 'info', 'surface' (neutral).
+          * @default 'colorLetter'
+         */
+        "color"?: UaiAvatarColor;
+        /**
+          * Data test id, set on the host.
+          * @default null
          */
         "dataTest"?: string;
         /**
-          * Explicit one- or two-character fallback shown when the image is absent or fails to load.
+          * Number of hidden people, shown as "+N" (for example in a group of avatars).
+          * @default null
+         */
+        "ellipsis"?: number;
+        /**
+          * @deprecated The initials come from name. Without name, at most two characters are shown.
          */
         "initials"?: string;
         /**
-          * Accessible name for the avatar. Without a label, the avatar is hidden from assistive technology.
+          * @deprecated Use name. It builds the initials and the accessible name.
          */
         "label"?: string;
         /**
-          * Avatar diameter: micro (`sizing/lg`), extra-small (`sizing/xl`), small (`sizing/2xl`), standard (`sizing/3xl`), large (`sizing/4xl`), or extra-large (`sizing/5xl`).
+          * Full name of the person. Builds the initials (first letter of the first and the last name) and the accessible name.
+          * @default null
+         */
+        "name"?: string;
+        /**
+          * If true, activating the avatar opens the image picker, shows the chosen image and emits uaiImageUpload.
+          * @default false
+         */
+        "openUpload"?: boolean;
+        /**
+          * Avatar size. Can be one of: 'micro', 'extra-small', 'small', 'standard' (default), 'large', 'extra-large'.
           * @default 'standard'
          */
-        "size": UaiAvatarSize;
+        "size"?: UaiAvatarSize;
         /**
-          * URL of the avatar image. The consuming application handles file selection and upload.
+          * @deprecated Use thumbnail.
          */
         "src"?: string;
+        /**
+          * URL of the photo. Without it, or if it fails to load, the initials are shown.
+          * @default null
+         */
+        "thumbnail"?: string;
+        /**
+          * If true, shows the upload icon on hover and focus. The click only emits uaiClickAvatar; the app opens its own picker.
+          * @default false
+         */
+        "upload"?: boolean;
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
@@ -5523,6 +5556,10 @@ export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsUploadElement;
 }
+export interface UaiAvatarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiAvatarElement;
+}
 export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiButtonElement;
@@ -6869,11 +6906,25 @@ declare global {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
     };
+    interface HTMLUaiAvatarElementEventMap {
+        "uaiClickAvatar": PointerEvent | KeyboardEvent;
+        "uaiImageUpload": string;
+    }
     /**
-     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+     * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+     * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+     * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
      */
     interface HTMLUaiAvatarElement extends Components.UaiAvatar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiAvatarElementEventMap>(type: K, listener: (this: HTMLUaiAvatarElement, ev: UaiAvatarCustomEvent<HTMLUaiAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiAvatarElementEventMap>(type: K, listener: (this: HTMLUaiAvatarElement, ev: UaiAvatarCustomEvent<HTMLUaiAvatarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLUaiAvatarElement: {
         prototype: HTMLUaiAvatarElement;
@@ -11086,31 +11137,72 @@ declare namespace LocalJSX {
     interface BdsWarning {
     }
     /**
-     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+     * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+     * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+     * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
      */
     interface UaiAvatar {
         /**
-          * Value placed on the avatar host for automated tests.
+          * Background behind the initials. Can be one of: 'colorLetter' (default, picked by the first letter of the name), 'system', 'success', 'warning', 'error', 'info', 'surface' (neutral).
+          * @default 'colorLetter'
+         */
+        "color"?: UaiAvatarColor;
+        /**
+          * Data test id, set on the host.
+          * @default null
          */
         "dataTest"?: string;
         /**
-          * Explicit one- or two-character fallback shown when the image is absent or fails to load.
+          * Number of hidden people, shown as "+N" (for example in a group of avatars).
+          * @default null
+         */
+        "ellipsis"?: number;
+        /**
+          * @deprecated The initials come from name. Without name, at most two characters are shown.
          */
         "initials"?: string;
         /**
-          * Accessible name for the avatar. Without a label, the avatar is hidden from assistive technology.
+          * @deprecated Use name. It builds the initials and the accessible name.
          */
         "label"?: string;
         /**
-          * Avatar diameter: micro (`sizing/lg`), extra-small (`sizing/xl`), small (`sizing/2xl`), standard (`sizing/3xl`), large (`sizing/4xl`), or extra-large (`sizing/5xl`).
+          * Full name of the person. Builds the initials (first letter of the first and the last name) and the accessible name.
+          * @default null
+         */
+        "name"?: string;
+        /**
+          * Emitted when the avatar is clicked, or activated with Enter or Space when it is interactive.
+         */
+        "onUaiClickAvatar"?: (event: UaiAvatarCustomEvent<PointerEvent | KeyboardEvent>) => void;
+        /**
+          * Emitted with the chosen image as a data URL, when openUpload is true.
+         */
+        "onUaiImageUpload"?: (event: UaiAvatarCustomEvent<string>) => void;
+        /**
+          * If true, activating the avatar opens the image picker, shows the chosen image and emits uaiImageUpload.
+          * @default false
+         */
+        "openUpload"?: boolean;
+        /**
+          * Avatar size. Can be one of: 'micro', 'extra-small', 'small', 'standard' (default), 'large', 'extra-large'.
           * @default 'standard'
          */
         "size"?: UaiAvatarSize;
         /**
-          * URL of the avatar image. The consuming application handles file selection and upload.
+          * @deprecated Use thumbnail.
          */
         "src"?: string;
+        /**
+          * URL of the photo. Without it, or if it fails to load, the initials are shown.
+          * @default null
+         */
+        "thumbnail"?: string;
+        /**
+          * If true, shows the upload icon on hover and focus. The click only emits uaiClickAvatar; the app opens its own picker.
+          * @default false
+         */
+        "upload"?: boolean;
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
@@ -13607,11 +13699,17 @@ declare namespace LocalJSX {
         "showListPreview": boolean;
     }
     interface UaiAvatarAttributes {
-        "src": string;
-        "initials": string;
-        "label": string;
+        "name": string;
+        "thumbnail": string;
         "size": UaiAvatarSize;
+        "color": UaiAvatarColor;
+        "upload": boolean;
+        "openUpload": boolean;
+        "ellipsis": number;
         "dataTest": string;
+        "src": string;
+        "label": string;
+        "initials": string;
     }
     interface UaiButtonAttributes {
         "block": boolean;
@@ -14183,8 +14281,10 @@ declare module "@stencil/core" {
             "bds-upload": LocalJSX.IntrinsicElements["bds-upload"] & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.IntrinsicElements["bds-warning"] & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
             /**
-             * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-             * and an accessible name with `label`. The consuming application is responsible for uploading images.
+             * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+             * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+             * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+             * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
              */
             "uai-avatar": LocalJSX.IntrinsicElements["uai-avatar"] & JSXBase.HTMLAttributes<HTMLUaiAvatarElement>;
             /**
