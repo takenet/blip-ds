@@ -1,0 +1,15 @@
+import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
+
+const warningCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.warning__body{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;width:100%;max-width:100%;max-height:100%;background-color:#ededed;border-radius:8px;padding:16px}.warning__icon{color:#f6a721}.warning__message{color:#505f79;margin-left:8px}`;
+
+const Warning = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+    }
+    render() {
+        return (h(Host, { key: 'b0b514d6b264b0559c0e730775f1c0c8a16a26f0' }, h("div", { key: '3991f86f37f02a12fe24212f67c7047e0df6c7d5', class: "warning__body" }, h("bds-icon", { key: '10cf6c4f39d7faa6cdbf4db09a8e18236a63cdc9', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), h("bds-typo", { key: 'a8a0952c213f44c5d4c5801e187afa01d7fff3c4', variant: "fs-14", tag: "span", class: "warning__message" }, h("slot", { key: '90b1fb55062305dfb71db85e6329726e332417e0' })))));
+    }
+};
+Warning.style = warningCss();
+
+export { Warning as bds_warning };
