@@ -1,1 +1,0 @@
-import{r as t,h as e}from"./p-BnSR_zce.js";const s=class{constructor(e){t(this,e),this.align="flex-end"}render(){return e("bds-grid",{key:"4876073805454a16fd854ea5903be4e8592d14d1",xxs:"12",direction:"row",gap:"2",justifyContent:this.align},e("slot",{key:"dbfd35937fbf0c4b28dec8aab2116cbcc6dbcfaa"}))}};s.style=":host{width:100%}";export{s as bds_card_footer}
