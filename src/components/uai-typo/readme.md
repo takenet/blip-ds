@@ -45,11 +45,17 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 ### Used by
 
  - [uai-button](../uai-button)
+ - [uai-input](../uai-input)
+ - [uai-input-password](../uai-input-password)
+ - [uai-textarea](../uai-textarea)
 
 ### Graph
 ```mermaid
 graph TD;
   uai-button --> uai-typo
+  uai-input --> uai-typo
+  uai-input-password --> uai-typo
+  uai-textarea --> uai-typo
   style uai-typo fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

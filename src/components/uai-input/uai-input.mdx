@@ -1,0 +1,132 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiInputStories from './uai-input.stories';
+
+<Meta isTemplate />
+
+# Input
+
+Campo para texto curto: nome, e-mail, número ou busca. Tem rótulo opcional acima e mensagem de ajuda, erro ou sucesso abaixo, e participa de formulários nativos. Para texto em várias linhas, use o textarea; para escolher de uma lista, use o select.
+
+<Canvas of={UaiInputStories.Playground} />
+
+<Controls of={UaiInputStories.Playground} />
+
+## Como usar
+
+```jsx
+import { UaiInput, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiInput
+    label="E-mail"
+    name="email"
+    type="email"
+    required
+    requiredErrorMessage="Informe o e-mail."
+    onUaiChange={(event) => setEmail(event.detail.value)}
+  />
+</UaiThemeProvider>;
+```
+
+- Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
+- O campo ocupa a largura do contêiner. Para fixar a largura, use `--uai-input-width`.
+- Fora do React, use o custom element `<uai-input>`, com as propriedades em kebab-case (`helper-message`) e os eventos `uaiChange`, `uaiSubmit` etc.
+
+## Estados
+
+`danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone além da cor. `readonly` mantém a aparência do estado padrão; `disabled` muda as cores e tira o campo do formulário.
+
+<Canvas of={UaiInputStories.States} />
+
+## Tamanhos
+
+| Tamanho | Altura |
+| --- | --- |
+| `short` | `control-height/short` |
+| `medium` (padrão) | `control-height/medium` |
+
+<Canvas of={UaiInputStories.Sizes} />
+
+## Busca, adornos e contador
+
+Busca é o mesmo campo com `type="search"` e `icon="search"`. Use os slots para adornos: `input-left` (antes do conteúdo), `inside-input-left` (colado ao texto) e `input-right` (depois do texto, como uma ação de limpar). Com `counterLength`, o campo mostra `caracteres/maxlength`.
+
+<Canvas of={UaiInputStories.SearchAndAdornments} />
+
+<Canvas of={UaiInputStories.Widths} />
+
+## Comportamento
+
+### Formulário
+
+- O valor é enviado com o nome definido em `name` (ou `inputName`). Sem nome, o campo não é enviado.
+- O reset do formulário volta ao valor inicial e emite `uaiChange`.
+- `required`, `minlength`, `maxlength`, `min`, `max`, `pattern` e `type` bloqueiam o envio quando não são atendidos. O campo mostra o erro com a mensagem da prop correspondente (`requiredErrorMessage`, `minlengthErrorMessage`, `minErrorMessage`, `maxErrorMessage`, `emailErrorMessage`, `numberErrorMessage`) ou, sem ela, a mensagem do navegador.
+- Dentro de um `fieldset` desabilitado, o campo fica desabilitado.
+
+<Canvas of={UaiInputStories.Form} />
+
+### Teclado e eventos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiChange` | `uaiChange` | O valor muda, digitando ou por código | `{ value }` |
+| `onUaiInput` | `uaiInput` | A cada tecla | `InputEvent` nativo |
+| `onUaiFocus` / `onUaiOnBlur` | `uaiFocus` / `uaiOnBlur` | O campo ganha ou perde o foco | — |
+| `onUaiSubmit` | `uaiSubmit` | Enter | `{ event, value }` |
+| `onUaiKeyDownBackspace` | `uaiKeyDownBackspace` | Backspace ou Delete | `{ event, value }` |
+| `onUaiPatternValidation` | `uaiPatternValidation` | Saída do campo com `pattern` | `true` se o valor atende ao padrão |
+
+Enter dentro de um formulário envia o formulário, como num input nativo. Para impedir, chame `event.detail.event.preventDefault()` em `onUaiSubmit`. Com `isSubmit`, Enter emite `uaiSubmit`, limpa o campo e não envia o formulário. Durante a composição de texto (teclados de idiomas como japonês), Enter não envia.
+
+Métodos: `setFocus()`, `removeFocus()`, `getInputElement()`, `isValid()` e `clear()`.
+
+<Canvas of={UaiInputStories.Events} />
+
+## Acessibilidade
+
+- O rótulo é um `<label>` associado ao input nativo: clicar nele foca o campo.
+- Mensagem e contador são ligados ao campo por `aria-describedby`; o erro define `aria-invalid`.
+- Sem rótulo visível, informe `aria-label`. Sem nenhum dos dois, o componente avisa no console.
+- O foco aparece no contorno do campo (`:focus-within`), com borda `border/ring` e halo `opacity/focus-ring`. Em modo de alto contraste, vira um contorno do sistema.
+- Ações no slot `input-right` precisam de nome acessível.
+- O contraste do placeholder no tema claro está abaixo de 4,5:1 (pendência do token `content/placeholder`). Não use o placeholder para informação essencial.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Tamanho e forma | `control-height-short`, `control-height-medium`, `radius-lg`, `border-width-default` |
+| Espaços | `spacing-2xs` (rótulo, campo e mensagem), `spacing-xs` (padding, gap e recuo da mensagem) |
+| Repouso e hover | `surface-paper`, `border-input`, `content-secondary` |
+| Foco | `border-ring`, `border-width-thick`, `opacity-focus-ring` |
+| Erro e sucesso | `feedback-error`, `feedback-success`; contador em alerta: `feedback-warning` |
+| Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
+| Texto | `body-base` (valor), `caption` semibold (rótulo), `caption` (mensagem e contador), `content-primary`, `content-placeholder` |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-input`
+
+A API é a do `BdsInput`, com estas diferenças:
+
+| `BdsInput` | `UaiInput` |
+| --- | --- |
+| `onBdsChange`, `onBdsInput`, `onBdsOnBlur`, `onBdsFocus`, `onBdsSubmit`, `onBdsPatternValidation`, `onBdsKeyDownBackspace` | Mesmo nome com `Uai` no lugar de `Bds`, mesmo `detail` |
+| Rótulo dentro do campo | Rótulo acima do campo |
+| Contador com caracteres restantes | Contador `caracteres/maxlength`; as faixas de `counterLengthRule` continuam valendo sobre os restantes |
+| Mensagem de validação só sem `helperMessage` | A mensagem de validação aparece no lugar da ajuda enquanto o campo é inválido |
+| Sem mensagem quando a prop de erro falta | Mensagem do navegador |
+| Campo fora do `<form>` nativo | Participa do formulário: `FormData`, reset, validação e Enter |
+| `encode` também alterava o texto exibido | `encode` só escapa o valor emitido em `uaiChange` |
+| `type` `password`, `phonenumber`, `date` | Funcionam, mas são deprecados (aviso no console): use os inputs especializados UAI |
+| `isTextarea`, `rows`, `cols`, `autoResize`, `resizable`, `minHeight`, `maxHeight`, `debounceDelay` | Deprecados, sem efeito: use o textarea UAI |
+| `chips` | Deprecado, sem efeito: use o input de chips UAI |
+| `iconSize` | Deprecado, sem efeito: o ícone segue o campo |
+| — | `name`, `size` (`short` \| `medium`), `type="search"`, `aria-label` |
+
+Slots (`input-left`, `inside-input-left`, `input-right`), parts (`input-container`, `input`, `input__message`) e métodos são os mesmos.
+
+## Design
+
+[UaiInput no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2226-7)

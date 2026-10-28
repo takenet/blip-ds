@@ -110,9 +110,12 @@ import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar }
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
+import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
+import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
+import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 export const BdsAccordion = createComponent({
@@ -998,6 +1001,35 @@ export const UaiIcon = createComponent({
     events: {},
     defineCustomElement: defineUaiIcon
 });
+export const UaiInput = createComponent({
+    tagName: 'uai-input',
+    elementClass: UaiInputElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiOnBlur: 'uaiOnBlur',
+        onUaiFocus: 'uaiFocus',
+        onUaiSubmit: 'uaiSubmit',
+        onUaiPatternValidation: 'uaiPatternValidation',
+        onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
+    },
+    defineCustomElement: defineUaiInput
+});
+export const UaiInputPassword = createComponent({
+    tagName: 'uai-input-password',
+    elementClass: UaiInputPasswordElement,
+    react: React,
+    events: {
+        onUaiInputPasswordChange: 'uaiInputPasswordChange',
+        onUaiInputPasswordInput: 'uaiInputPasswordInput',
+        onUaiInputPasswordBlur: 'uaiInputPasswordBlur',
+        onUaiInputPasswordFocus: 'uaiInputPasswordFocus',
+        onUaiInputPasswordSubmit: 'uaiInputPasswordSubmit',
+        onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
+    },
+    defineCustomElement: defineUaiInputPassword
+});
 export const UaiNavbar = createComponent({
     tagName: 'uai-navbar',
     elementClass: UaiNavbarElement,
@@ -1018,6 +1050,21 @@ export const UaiPaper = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiPaper
+});
+export const UaiTextarea = createComponent({
+    tagName: 'uai-textarea',
+    elementClass: UaiTextareaElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiOnBlur: 'uaiOnBlur',
+        onUaiFocus: 'uaiFocus',
+        onUaiSubmit: 'uaiSubmit',
+        onUaiPatternValidation: 'uaiPatternValidation',
+        onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
+    },
+    defineCustomElement: defineUaiTextarea
 });
 export const UaiThemeProvider = createComponent({
     tagName: 'uai-theme-provider',

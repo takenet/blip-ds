@@ -42,12 +42,18 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
 
  - [uai-avatar](../uai-avatar)
  - [uai-button](../uai-button)
+ - [uai-input](../uai-input)
+ - [uai-input-password](../uai-input-password)
+ - [uai-textarea](../uai-textarea)
 
 ### Graph
 ```mermaid
 graph TD;
   uai-avatar --> uai-icon
   uai-button --> uai-icon
+  uai-input --> uai-icon
+  uai-input-password --> uai-icon
+  uai-textarea --> uai-icon
   style uai-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
