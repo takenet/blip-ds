@@ -112,6 +112,7 @@ import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from 
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
+import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 export const BdsAccordion = createComponent({
@@ -1010,6 +1011,13 @@ export const UaiNavbarContent = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiNavbarContent
+});
+export const UaiPaper = createComponent({
+    tagName: 'uai-paper',
+    elementClass: UaiPaperElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiPaper
 });
 export const UaiThemeProvider = createComponent({
     tagName: 'uai-theme-provider',

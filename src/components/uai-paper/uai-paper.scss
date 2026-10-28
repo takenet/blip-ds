@@ -1,0 +1,85 @@
+// UAI tokens first, with the blip-tokens value as the fallback so the
+// component still renders when the theme does not provide --uai-* variables.
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+}
+
+:host(.border) {
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  margin: calc(var(--uai-border-width-default, #{$uai-border-width-default}) * -1);
+}
+
+:host(.bg-surface-0) {
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+}
+
+:host(.bg-surface-1) {
+  background-color: var(--uai-surface-background, #{$uai-surface-background});
+}
+
+:host(.bg-surface-2) {
+  background-color: var(--uai-surface-contrast, #{$uai-surface-contrast});
+}
+
+:host(.bg-surface-3) {
+  background-color: var(--uai-surface-muted, #{$uai-surface-muted});
+}
+
+:host(.bg-surface-4) {
+  background-color: var(--uai-surface-inverse, #{$uai-surface-inverse});
+}
+
+:host(.border-1),
+:host(.border-2) {
+  border-color: var(--uai-border-default, #{$uai-border-default});
+}
+
+:host(.border-primary) {
+  border-color: var(--uai-fixed-blue, #{$uai-fixed-blue});
+}
+
+:host(.border-secondary) {
+  border-color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+:host(.border-positive),
+:host(.border-success) {
+  border-color: var(--uai-feedback-success, #{$uai-feedback-success});
+}
+
+:host(.border-negative),
+:host(.border-error) {
+  border-color: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+:host(.border-warning) {
+  border-color: var(--uai-feedback-warning, #{$uai-feedback-warning});
+}
+
+:host(.border-delete) {
+  border-color: var(--uai-action-destructive, #{$uai-action-destructive});
+}
+
+:host(.paper__elevation--none) {
+  box-shadow: none;
+}
+
+:host(.paper__elevation--static) {
+  box-shadow: var(--uai-elevation-1, #{$uai-elevation-1});
+}
+
+:host(.paper__elevation--primary) {
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+}
+
+:host(.paper__elevation--secondary) {
+  box-shadow: var(--uai-elevation-3, #{$uai-elevation-3});
+}
+
+.paper__display {
+  display: contents;
+}
