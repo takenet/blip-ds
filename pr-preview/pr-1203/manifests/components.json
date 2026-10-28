@@ -380,6 +380,29 @@
       ],
       "import": "import { BdsGrid } from 'blip-ds';"
     },
+    "components-paper": {
+      "id": "components-paper",
+      "name": "[deprecated]Paper",
+      "path": "./src/components/paper/paper.stories.jsx",
+      "jsDocTags": {},
+      "error": {
+        "name": "No component found",
+        "message": "We could not detect the component from your story file. Specify meta.component.\n  3 | import { BdsPaper } from '../../../blip-ds-react/dist/components';\n  4 |\n> 5 | export default {\n    | ^\n  6 |   title: 'Components/[deprecated] Paper',\n  7 |   id: 'components-paper',\n  8 |   parameters: {\n\n./src/components/paper/paper.stories.jsx:\nimport React from 'react';\nimport DocumentationTemplate from './paper.mdx';\nimport { BdsPaper } from '../../../blip-ds-react/dist/components';\n\nexport default {\n  title: 'Components/[deprecated] Paper',\n  id: 'components-paper',\n  parameters: {\n    docs: {\n      page: DocumentationTemplate,\n    },\n  },\n};\n\nexport const Properties = (args) => {\n  return (\n      <bds-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}></bds-paper>\n);\n} \n\nProperties.args = {\n  border: false,\n  elevation: 'primary',\n  height: '100px',\n  width: '150px',\n};\n\nProperties.argTypes = {\n  border: {\n    table: {\n      defaultValue: { summary: 'false' },\n    },\n    control: 'boolean',\n  },\n  elevation: {\n    table: {\n      defaultValue: { summary: 'primary' },\n    },\n    options: [\"primary\", \"secondary\", \"static\", \"none\"],\n    control: 'select',\n  },\n  height: {\n    table: {\n      defaultValue: { summary: '100px' },\n    },\n    control: 'text',\n  },\n  width: {\n    table: {\n      defaultValue: { summary: '150px' },\n    },\n    control: 'text',\n  },\n}\n\nexport const FrameworkReact = () => {\n  return (\n      <BdsPaper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\"></BdsPaper>\n);\n} "
+      },
+      "stories": [
+        {
+          "id": "components-paper--properties",
+          "name": "Properties",
+          "snippet": "const Properties = () => {\n    return <bds-paper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\" />;\n};"
+        },
+        {
+          "id": "components-paper--framework-react",
+          "name": "Framework React",
+          "snippet": "const FrameworkReact = () => {\n  return (\n      <BdsPaper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\"></BdsPaper>\n);\n};"
+        }
+      ],
+      "import": "import { BdsPaper } from 'blip-ds';"
+    },
     "components-navtree": {
       "id": "components-navtree",
       "name": "NavTree",
@@ -1470,29 +1493,6 @@
       ],
       "import": "import { BdsPagination } from 'blip-ds';"
     },
-    "components-paper": {
-      "id": "components-paper",
-      "name": "Paper",
-      "path": "./src/components/paper/paper.stories.jsx",
-      "jsDocTags": {},
-      "error": {
-        "name": "No component found",
-        "message": "We could not detect the component from your story file. Specify meta.component.\n  3 | import { BdsPaper } from '../../../blip-ds-react/dist/components';\n  4 |\n> 5 | export default {\n    | ^\n  6 |   title: 'Components/Paper',\n  7 |   parameters: {\n  8 |     docs: {\n\n./src/components/paper/paper.stories.jsx:\nimport React from 'react';\nimport DocumentationTemplate from './paper.mdx';\nimport { BdsPaper } from '../../../blip-ds-react/dist/components';\n\nexport default {\n  title: 'Components/Paper',\n  parameters: {\n    docs: {\n      page: DocumentationTemplate,\n    },\n  },\n};\n\nexport const Properties = (args) => {\n  return (\n      <bds-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}></bds-paper>\n);\n} \n\nProperties.args = {\n  border: false,\n  elevation: 'primary',\n  height: '100px',\n  width: '150px',\n};\n\nProperties.argTypes = {\n  border: {\n    table: {\n      defaultValue: { summary: 'false' },\n    },\n    control: 'boolean',\n  },\n  elevation: {\n    table: {\n      defaultValue: { summary: 'primary' },\n    },\n    options: [\"primary\", \"secondary\", \"static\", \"none\"],\n    control: 'select',\n  },\n  height: {\n    table: {\n      defaultValue: { summary: '100px' },\n    },\n    control: 'text',\n  },\n  width: {\n    table: {\n      defaultValue: { summary: '150px' },\n    },\n    control: 'text',\n  },\n}\n\nexport const FrameworkReact = () => {\n  return (\n      <BdsPaper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\"></BdsPaper>\n);\n} "
-      },
-      "stories": [
-        {
-          "id": "components-paper--properties",
-          "name": "Properties",
-          "snippet": "const Properties = () => {\n    return <bds-paper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\" />;\n};"
-        },
-        {
-          "id": "components-paper--framework-react",
-          "name": "Framework React",
-          "snippet": "const FrameworkReact = () => {\n  return (\n      <BdsPaper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\"></BdsPaper>\n);\n};"
-        }
-      ],
-      "import": "import { BdsPaper } from 'blip-ds';"
-    },
     "components-progress-bar": {
       "id": "components-progress-bar",
       "name": "ProgressBar",
@@ -2361,6 +2361,6 @@
   },
   "meta": {
     "docgen": "react-docgen",
-    "durationMs": 1515
+    "durationMs": 1609
   }
 }

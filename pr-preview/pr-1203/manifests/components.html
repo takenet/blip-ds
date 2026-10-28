@@ -626,7 +626,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.5s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.6s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -3224,6 +3224,173 @@ SolidIconCustomization.parameters = {
   </div>
 </article>
 <article
+  id="components-paper"
+  class="card 
+  has-error
+  has-info
+  no-story-error
+  no-story-warning
+  
+  no-doc-error"
+  role="listitem"
+  aria-label="[deprecated]Paper">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> [deprecated]Paper</h2>
+      <div class="badges">
+        <label for="c-2-components-paper-err" class="badge err as-toggle">API error</label>
+        <label for="c-2-components-paper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-2-components-paper-stories" class="badge ok as-toggle">2 stories</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/paper/paper.stories.jsx">components-paper · ./src/components/paper/paper.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-2-components-paper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-2-components-paper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-2-components-paper-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">API error</div>
+      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
+  3 | import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
+  4 |
+&gt; 5 | export default {
+    | ^
+  6 |   title: &#39;Components/[deprecated] Paper&#39;,
+  7 |   id: &#39;components-paper&#39;,
+  8 |   parameters: {
+
+./src/components/paper/paper.stories.jsx:
+import React from &#39;react&#39;;
+import DocumentationTemplate from &#39;./paper.mdx&#39;;
+import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
+
+export default {
+  title: &#39;Components/[deprecated] Paper&#39;,
+  id: &#39;components-paper&#39;,
+  parameters: {
+    docs: {
+      page: DocumentationTemplate,
+    },
+  },
+};
+
+export const Properties = (args) =&gt; {
+  return (
+      &lt;bds-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}&gt;&lt;/bds-paper&gt;
+);
+} 
+
+Properties.args = {
+  border: false,
+  elevation: &#39;primary&#39;,
+  height: &#39;100px&#39;,
+  width: &#39;150px&#39;,
+};
+
+Properties.argTypes = {
+  border: {
+    table: {
+      defaultValue: { summary: &#39;false&#39; },
+    },
+    control: &#39;boolean&#39;,
+  },
+  elevation: {
+    table: {
+      defaultValue: { summary: &#39;primary&#39; },
+    },
+    options: [&quot;primary&quot;, &quot;secondary&quot;, &quot;static&quot;, &quot;none&quot;],
+    control: &#39;select&#39;,
+  },
+  height: {
+    table: {
+      defaultValue: { summary: &#39;100px&#39; },
+    },
+    control: &#39;text&#39;,
+  },
+  width: {
+    table: {
+      defaultValue: { summary: &#39;150px&#39; },
+    },
+    control: &#39;text&#39;,
+  },
+}
+
+export const FrameworkReact = () =&gt; {
+  return (
+      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
+);
+} </code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { BdsPaper } from 'blip-ds';</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Properties</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Properties = () =&gt; {
+    return &lt;bds-paper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot; /&gt;;
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Framework React</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FrameworkReact = () =&gt; {
+  return (
+      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
+);
+};</code></pre>
+              
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
   id="components-accordion"
   class="card 
   has-error
@@ -3238,9 +3405,9 @@ SolidIconCustomization.parameters = {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Accordion</h2>
       <div class="badges">
-        <label for="c-2-components-accordion-err" class="badge err as-toggle">API error</label>
-        <label for="c-2-components-accordion-info" class="badge info as-toggle">1 info</label>
-        <label for="c-2-components-accordion-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-3-components-accordion-err" class="badge err as-toggle">API error</label>
+        <label for="c-3-components-accordion-info" class="badge info as-toggle">1 info</label>
+        <label for="c-3-components-accordion-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -3252,9 +3419,9 @@ SolidIconCustomization.parameters = {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-2-components-accordion-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-2-components-accordion-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-2-components-accordion-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-3-components-accordion-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-3-components-accordion-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-3-components-accordion-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -3620,9 +3787,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> AccordionGroup</h2>
       <div class="badges">
-        <label for="c-3-components-accordion-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-3-components-accordion-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-3-components-accordion-group-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-4-components-accordion-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-4-components-accordion-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-4-components-accordion-group-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -3634,9 +3801,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-3-components-accordion-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-3-components-accordion-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-3-components-accordion-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-4-components-accordion-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-4-components-accordion-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-4-components-accordion-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -4023,9 +4190,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Alert</h2>
       <div class="badges">
-        <label for="c-4-components-alert-err" class="badge err as-toggle">API error</label>
-        <label for="c-4-components-alert-info" class="badge info as-toggle">1 info</label>
-        <label for="c-4-components-alert-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-5-components-alert-err" class="badge err as-toggle">API error</label>
+        <label for="c-5-components-alert-info" class="badge info as-toggle">1 info</label>
+        <label for="c-5-components-alert-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -4037,9 +4204,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-4-components-alert-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-4-components-alert-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-4-components-alert-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-5-components-alert-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-5-components-alert-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-5-components-alert-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -4397,9 +4564,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Autocomplete</h2>
       <div class="badges">
-        <label for="c-5-components-autocomplete-err" class="badge err as-toggle">API error</label>
-        <label for="c-5-components-autocomplete-info" class="badge info as-toggle">1 info</label>
-        <label for="c-5-components-autocomplete-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-6-components-autocomplete-err" class="badge err as-toggle">API error</label>
+        <label for="c-6-components-autocomplete-info" class="badge info as-toggle">1 info</label>
+        <label for="c-6-components-autocomplete-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -4411,9 +4578,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-5-components-autocomplete-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-5-components-autocomplete-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-5-components-autocomplete-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-6-components-autocomplete-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-6-components-autocomplete-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-6-components-autocomplete-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -4854,9 +5021,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> AvatarGroup</h2>
       <div class="badges">
-        <label for="c-6-components-avatar-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-6-components-avatar-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-6-components-avatar-group-stories" class="badge ok as-toggle">3 stories · 1 incomplete</label>
+        <label for="c-7-components-avatar-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-7-components-avatar-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-7-components-avatar-group-stories" class="badge ok as-toggle">3 stories · 1 incomplete</label>
         
         
       </div>
@@ -4868,9 +5035,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-6-components-avatar-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-6-components-avatar-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-6-components-avatar-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-7-components-avatar-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-7-components-avatar-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-7-components-avatar-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -5053,9 +5220,9 @@ export const Events = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> AvatarSingle</h2>
       <div class="badges">
-        <label for="c-7-components-avatar-single-err" class="badge err as-toggle">API error</label>
-        <label for="c-7-components-avatar-single-info" class="badge info as-toggle">1 info</label>
-        <label for="c-7-components-avatar-single-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-8-components-avatar-single-err" class="badge err as-toggle">API error</label>
+        <label for="c-8-components-avatar-single-info" class="badge info as-toggle">1 info</label>
+        <label for="c-8-components-avatar-single-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -5067,9 +5234,9 @@ export const Events = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-7-components-avatar-single-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-7-components-avatar-single-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-7-components-avatar-single-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-8-components-avatar-single-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-8-components-avatar-single-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-8-components-avatar-single-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -5277,9 +5444,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Badge</h2>
       <div class="badges">
-        <label for="c-8-components-badge-err" class="badge err as-toggle">API error</label>
-        <label for="c-8-components-badge-info" class="badge info as-toggle">1 info</label>
-        <label for="c-8-components-badge-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-9-components-badge-err" class="badge err as-toggle">API error</label>
+        <label for="c-9-components-badge-info" class="badge info as-toggle">1 info</label>
+        <label for="c-9-components-badge-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -5291,9 +5458,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-8-components-badge-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-8-components-badge-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-8-components-badge-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-9-components-badge-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-9-components-badge-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-9-components-badge-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -5568,9 +5735,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Banner</h2>
       <div class="badges">
-        <label for="c-9-components-banner-err" class="badge err as-toggle">API error</label>
-        <label for="c-9-components-banner-info" class="badge info as-toggle">1 info</label>
-        <label for="c-9-components-banner-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-10-components-banner-err" class="badge err as-toggle">API error</label>
+        <label for="c-10-components-banner-info" class="badge info as-toggle">1 info</label>
+        <label for="c-10-components-banner-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -5582,9 +5749,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-9-components-banner-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-9-components-banner-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-9-components-banner-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-10-components-banner-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-10-components-banner-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-10-components-banner-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -5931,9 +6098,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Breadcrumb</h2>
       <div class="badges">
-        <label for="c-10-components-breadcrumb-err" class="badge err as-toggle">API error</label>
-        <label for="c-10-components-breadcrumb-info" class="badge info as-toggle">1 info</label>
-        <label for="c-10-components-breadcrumb-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-11-components-breadcrumb-err" class="badge err as-toggle">API error</label>
+        <label for="c-11-components-breadcrumb-info" class="badge info as-toggle">1 info</label>
+        <label for="c-11-components-breadcrumb-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -5945,9 +6112,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-10-components-breadcrumb-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-10-components-breadcrumb-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-10-components-breadcrumb-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-11-components-breadcrumb-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-11-components-breadcrumb-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-11-components-breadcrumb-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -6230,9 +6397,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ButtonGroup</h2>
       <div class="badges">
-        <label for="c-11-components-button-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-11-components-button-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-11-components-button-group-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-12-components-button-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-12-components-button-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-12-components-button-group-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -6244,9 +6411,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-11-components-button-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-11-components-button-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-11-components-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-12-components-button-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-12-components-button-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-12-components-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -6557,9 +6724,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ButtonGroup</h2>
       <div class="badges">
-        <label for="c-12-snippets-button-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-12-snippets-button-group-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-12-snippets-button-group-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-13-snippets-button-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-13-snippets-button-group-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-13-snippets-button-group-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -6571,9 +6738,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-12-snippets-button-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-12-snippets-button-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-12-snippets-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-13-snippets-button-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-13-snippets-button-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-13-snippets-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -7131,9 +7298,9 @@ export const MultiSelectButtonGroup = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Buttons</h2>
       <div class="badges">
-        <label for="c-13-snippets-buttons-err" class="badge err as-toggle">API error</label>
-        <label for="c-13-snippets-buttons-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-13-snippets-buttons-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-14-snippets-buttons-err" class="badge err as-toggle">API error</label>
+        <label for="c-14-snippets-buttons-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-14-snippets-buttons-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -7145,9 +7312,9 @@ export const MultiSelectButtonGroup = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-13-snippets-buttons-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-13-snippets-buttons-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-13-snippets-buttons-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-14-snippets-buttons-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-14-snippets-buttons-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-14-snippets-buttons-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -7437,9 +7604,9 @@ export const LoadingButton = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Card</h2>
       <div class="badges">
-        <label for="c-14-components-card-err" class="badge err as-toggle">API error</label>
-        <label for="c-14-components-card-info" class="badge info as-toggle">1 info</label>
-        <label for="c-14-components-card-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-15-components-card-err" class="badge err as-toggle">API error</label>
+        <label for="c-15-components-card-info" class="badge info as-toggle">1 info</label>
+        <label for="c-15-components-card-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -7451,9 +7618,9 @@ export const LoadingButton = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-14-components-card-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-14-components-card-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-14-components-card-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-15-components-card-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-15-components-card-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-15-components-card-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -7760,9 +7927,9 @@ return (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Cards</h2>
       <div class="badges">
-        <label for="c-15-snippets-cards-err" class="badge err as-toggle">API error</label>
-        <label for="c-15-snippets-cards-info" class="badge info as-toggle">1 info</label>
-        <label for="c-15-snippets-cards-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-16-snippets-cards-err" class="badge err as-toggle">API error</label>
+        <label for="c-16-snippets-cards-info" class="badge info as-toggle">1 info</label>
+        <label for="c-16-snippets-cards-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -7774,9 +7941,9 @@ return (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-15-snippets-cards-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-15-snippets-cards-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-15-snippets-cards-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-16-snippets-cards-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-16-snippets-cards-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-16-snippets-cards-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -8850,9 +9017,9 @@ export const CompleteCard = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Carousel</h2>
       <div class="badges">
-        <label for="c-16-components-carousel-err" class="badge err as-toggle">API error</label>
-        <label for="c-16-components-carousel-info" class="badge info as-toggle">1 info</label>
-        <label for="c-16-components-carousel-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-17-components-carousel-err" class="badge err as-toggle">API error</label>
+        <label for="c-17-components-carousel-info" class="badge info as-toggle">1 info</label>
+        <label for="c-17-components-carousel-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -8864,9 +9031,9 @@ export const CompleteCard = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-16-components-carousel-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-16-components-carousel-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-16-components-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-17-components-carousel-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-17-components-carousel-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-17-components-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -9681,9 +9848,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Carousel</h2>
       <div class="badges">
-        <label for="c-17-snippets-carousel-err" class="badge err as-toggle">API error</label>
-        <label for="c-17-snippets-carousel-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-17-snippets-carousel-stories" class="badge ok as-toggle">11 stories</label>
+        <label for="c-18-snippets-carousel-err" class="badge err as-toggle">API error</label>
+        <label for="c-18-snippets-carousel-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-18-snippets-carousel-stories" class="badge ok as-toggle">11 stories</label>
         
         
       </div>
@@ -9695,9 +9862,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-17-snippets-carousel-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-17-snippets-carousel-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-17-snippets-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-18-snippets-carousel-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-18-snippets-carousel-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-18-snippets-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -11864,9 +12031,9 @@ export const CarouselBulletsExamples = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Checkbox</h2>
       <div class="badges">
-        <label for="c-18-components-checkbox-err" class="badge err as-toggle">API error</label>
-        <label for="c-18-components-checkbox-info" class="badge info as-toggle">1 info</label>
-        <label for="c-18-components-checkbox-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-19-components-checkbox-err" class="badge err as-toggle">API error</label>
+        <label for="c-19-components-checkbox-info" class="badge info as-toggle">1 info</label>
+        <label for="c-19-components-checkbox-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -11878,9 +12045,9 @@ export const CarouselBulletsExamples = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-18-components-checkbox-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-18-components-checkbox-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-18-components-checkbox-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-19-components-checkbox-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-19-components-checkbox-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-19-components-checkbox-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -12322,9 +12489,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ChipClickable</h2>
       <div class="badges">
-        <label for="c-19-components-chip-clickable-err" class="badge err as-toggle">API error</label>
-        <label for="c-19-components-chip-clickable-info" class="badge info as-toggle">1 info</label>
-        <label for="c-19-components-chip-clickable-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-20-components-chip-clickable-err" class="badge err as-toggle">API error</label>
+        <label for="c-20-components-chip-clickable-info" class="badge info as-toggle">1 info</label>
+        <label for="c-20-components-chip-clickable-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -12336,9 +12503,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-19-components-chip-clickable-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-19-components-chip-clickable-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-19-components-chip-clickable-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-20-components-chip-clickable-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-20-components-chip-clickable-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-20-components-chip-clickable-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -12537,9 +12704,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ChipSelected</h2>
       <div class="badges">
-        <label for="c-20-components-chip-selected-err" class="badge err as-toggle">API error</label>
-        <label for="c-20-components-chip-selected-info" class="badge info as-toggle">1 info</label>
-        <label for="c-20-components-chip-selected-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-21-components-chip-selected-err" class="badge err as-toggle">API error</label>
+        <label for="c-21-components-chip-selected-info" class="badge info as-toggle">1 info</label>
+        <label for="c-21-components-chip-selected-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -12551,9 +12718,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-20-components-chip-selected-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-20-components-chip-selected-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-20-components-chip-selected-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-21-components-chip-selected-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-21-components-chip-selected-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-21-components-chip-selected-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -12758,9 +12925,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ChipTag</h2>
       <div class="badges">
-        <label for="c-21-components-chip-tag-err" class="badge err as-toggle">API error</label>
-        <label for="c-21-components-chip-tag-info" class="badge info as-toggle">1 info</label>
-        <label for="c-21-components-chip-tag-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-22-components-chip-tag-err" class="badge err as-toggle">API error</label>
+        <label for="c-22-components-chip-tag-info" class="badge info as-toggle">1 info</label>
+        <label for="c-22-components-chip-tag-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -12772,9 +12939,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-21-components-chip-tag-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-21-components-chip-tag-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-21-components-chip-tag-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-22-components-chip-tag-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-22-components-chip-tag-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-22-components-chip-tag-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -12910,9 +13077,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> DataTable</h2>
       <div class="badges">
-        <label for="c-22-components-data-table-err" class="badge err as-toggle">API error</label>
-        <label for="c-22-components-data-table-info" class="badge info as-toggle">1 info</label>
-        <label for="c-22-components-data-table-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-23-components-data-table-err" class="badge err as-toggle">API error</label>
+        <label for="c-23-components-data-table-info" class="badge info as-toggle">1 info</label>
+        <label for="c-23-components-data-table-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -12924,9 +13091,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-22-components-data-table-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-22-components-data-table-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-22-components-data-table-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-23-components-data-table-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-23-components-data-table-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-23-components-data-table-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -13098,9 +13265,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Datepicker</h2>
       <div class="badges">
-        <label for="c-23-components-datepicker-err" class="badge err as-toggle">API error</label>
-        <label for="c-23-components-datepicker-info" class="badge info as-toggle">1 info</label>
-        <label for="c-23-components-datepicker-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-24-components-datepicker-err" class="badge err as-toggle">API error</label>
+        <label for="c-24-components-datepicker-info" class="badge info as-toggle">1 info</label>
+        <label for="c-24-components-datepicker-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -13112,9 +13279,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-23-components-datepicker-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-23-components-datepicker-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-23-components-datepicker-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-24-components-datepicker-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-24-components-datepicker-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-24-components-datepicker-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -13416,9 +13583,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Divider</h2>
       <div class="badges">
-        <label for="c-24-components-divider-err" class="badge err as-toggle">API error</label>
-        <label for="c-24-components-divider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-24-components-divider-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-25-components-divider-err" class="badge err as-toggle">API error</label>
+        <label for="c-25-components-divider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-25-components-divider-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -13430,9 +13597,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-24-components-divider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-24-components-divider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-24-components-divider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-25-components-divider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-25-components-divider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-25-components-divider-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -13606,9 +13773,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Dropdown</h2>
       <div class="badges">
-        <label for="c-25-components-dropdown-err" class="badge err as-toggle">API error</label>
-        <label for="c-25-components-dropdown-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-25-components-dropdown-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-26-components-dropdown-err" class="badge err as-toggle">API error</label>
+        <label for="c-26-components-dropdown-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-26-components-dropdown-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -13620,9 +13787,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-25-components-dropdown-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-25-components-dropdown-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-25-components-dropdown-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-26-components-dropdown-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-26-components-dropdown-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-26-components-dropdown-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -14116,9 +14283,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Form</h2>
       <div class="badges">
-        <label for="c-26-snippets-form-err" class="badge err as-toggle">API error</label>
-        <label for="c-26-snippets-form-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-26-snippets-form-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-27-snippets-form-err" class="badge err as-toggle">API error</label>
+        <label for="c-27-snippets-form-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-27-snippets-form-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -14130,9 +14297,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-26-snippets-form-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-26-snippets-form-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-26-snippets-form-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-27-snippets-form-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-27-snippets-form-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-27-snippets-form-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -14332,9 +14499,9 @@ export const ComplexForm = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Illustration</h2>
       <div class="badges">
-        <label for="c-27-components-illustration-err" class="badge err as-toggle">API error</label>
-        <label for="c-27-components-illustration-info" class="badge info as-toggle">1 info</label>
-        <label for="c-27-components-illustration-stories" class="badge ok as-toggle">12 stories</label>
+        <label for="c-28-components-illustration-err" class="badge err as-toggle">API error</label>
+        <label for="c-28-components-illustration-info" class="badge info as-toggle">1 info</label>
+        <label for="c-28-components-illustration-stories" class="badge ok as-toggle">12 stories</label>
         
         
       </div>
@@ -14346,9 +14513,9 @@ export const ComplexForm = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-27-components-illustration-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-27-components-illustration-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-27-components-illustration-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-28-components-illustration-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-28-components-illustration-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-28-components-illustration-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -15748,9 +15915,9 @@ export const IllustrationsSpots = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Image</h2>
       <div class="badges">
-        <label for="c-28-components-image-err" class="badge err as-toggle">API error</label>
-        <label for="c-28-components-image-info" class="badge info as-toggle">1 info</label>
-        <label for="c-28-components-image-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-29-components-image-err" class="badge err as-toggle">API error</label>
+        <label for="c-29-components-image-info" class="badge info as-toggle">1 info</label>
+        <label for="c-29-components-image-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -15762,9 +15929,9 @@ export const IllustrationsSpots = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-28-components-image-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-28-components-image-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-28-components-image-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-29-components-image-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-29-components-image-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-29-components-image-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -15969,9 +16136,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Input</h2>
       <div class="badges">
-        <label for="c-29-components-input-err" class="badge err as-toggle">API error</label>
-        <label for="c-29-components-input-info" class="badge info as-toggle">1 info</label>
-        <label for="c-29-components-input-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-30-components-input-err" class="badge err as-toggle">API error</label>
+        <label for="c-30-components-input-info" class="badge info as-toggle">1 info</label>
+        <label for="c-30-components-input-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -15983,9 +16150,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-29-components-input-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-29-components-input-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-29-components-input-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-30-components-input-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-30-components-input-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-30-components-input-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -16789,9 +16956,9 @@ export const FrameworkReactTextarea = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputChips</h2>
       <div class="badges">
-        <label for="c-30-components-input-chips-err" class="badge err as-toggle">API error</label>
-        <label for="c-30-components-input-chips-info" class="badge info as-toggle">1 info</label>
-        <label for="c-30-components-input-chips-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-31-components-input-chips-err" class="badge err as-toggle">API error</label>
+        <label for="c-31-components-input-chips-info" class="badge info as-toggle">1 info</label>
+        <label for="c-31-components-input-chips-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -16803,9 +16970,9 @@ export const FrameworkReactTextarea = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-30-components-input-chips-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-30-components-input-chips-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-30-components-input-chips-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-31-components-input-chips-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-31-components-input-chips-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-31-components-input-chips-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -17197,9 +17364,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputEditable</h2>
       <div class="badges">
-        <label for="c-31-components-input-editable-err" class="badge err as-toggle">API error</label>
-        <label for="c-31-components-input-editable-info" class="badge info as-toggle">1 info</label>
-        <label for="c-31-components-input-editable-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-32-components-input-editable-err" class="badge err as-toggle">API error</label>
+        <label for="c-32-components-input-editable-info" class="badge info as-toggle">1 info</label>
+        <label for="c-32-components-input-editable-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -17211,9 +17378,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-31-components-input-editable-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-31-components-input-editable-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-31-components-input-editable-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-32-components-input-editable-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-32-components-input-editable-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-32-components-input-editable-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -17472,9 +17639,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputPassword</h2>
       <div class="badges">
-        <label for="c-32-components-input-password-err" class="badge err as-toggle">API error</label>
-        <label for="c-32-components-input-password-info" class="badge info as-toggle">1 info</label>
-        <label for="c-32-components-input-password-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-33-components-input-password-err" class="badge err as-toggle">API error</label>
+        <label for="c-33-components-input-password-info" class="badge info as-toggle">1 info</label>
+        <label for="c-33-components-input-password-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -17486,9 +17653,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-32-components-input-password-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-32-components-input-password-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-32-components-input-password-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-33-components-input-password-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-33-components-input-password-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-33-components-input-password-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -17783,9 +17950,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputPhoneNumber</h2>
       <div class="badges">
-        <label for="c-33-components-input-phone-number-err" class="badge err as-toggle">API error</label>
-        <label for="c-33-components-input-phone-number-info" class="badge info as-toggle">1 info</label>
-        <label for="c-33-components-input-phone-number-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-34-components-input-phone-number-err" class="badge err as-toggle">API error</label>
+        <label for="c-34-components-input-phone-number-info" class="badge info as-toggle">1 info</label>
+        <label for="c-34-components-input-phone-number-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -17797,9 +17964,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-33-components-input-phone-number-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-33-components-input-phone-number-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-33-components-input-phone-number-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-34-components-input-phone-number-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-34-components-input-phone-number-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-34-components-input-phone-number-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -18065,9 +18232,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> List</h2>
       <div class="badges">
-        <label for="c-34-components-list-err" class="badge err as-toggle">API error</label>
-        <label for="c-34-components-list-info" class="badge info as-toggle">1 info</label>
-        <label for="c-34-components-list-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-35-components-list-err" class="badge err as-toggle">API error</label>
+        <label for="c-35-components-list-info" class="badge info as-toggle">1 info</label>
+        <label for="c-35-components-list-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -18079,9 +18246,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-34-components-list-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-34-components-list-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-34-components-list-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-35-components-list-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-35-components-list-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-35-components-list-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -18439,9 +18606,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> LoadingBar</h2>
       <div class="badges">
-        <label for="c-35-components-loading-bar-err" class="badge err as-toggle">API error</label>
-        <label for="c-35-components-loading-bar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-35-components-loading-bar-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-36-components-loading-bar-err" class="badge err as-toggle">API error</label>
+        <label for="c-36-components-loading-bar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-36-components-loading-bar-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -18453,9 +18620,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-35-components-loading-bar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-35-components-loading-bar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-35-components-loading-bar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-36-components-loading-bar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-36-components-loading-bar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-36-components-loading-bar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -18601,9 +18768,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Loadingpage</h2>
       <div class="badges">
-        <label for="c-36-components-loading-page-err" class="badge err as-toggle">API error</label>
-        <label for="c-36-components-loading-page-info" class="badge info as-toggle">1 info</label>
-        <label for="c-36-components-loading-page-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-37-components-loading-page-err" class="badge err as-toggle">API error</label>
+        <label for="c-37-components-loading-page-info" class="badge info as-toggle">1 info</label>
+        <label for="c-37-components-loading-page-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -18615,9 +18782,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-36-components-loading-page-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-36-components-loading-page-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-36-components-loading-page-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-37-components-loading-page-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-37-components-loading-page-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-37-components-loading-page-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -18737,9 +18904,9 @@ export const FrameworkReact = () =&gt; &lt;BdsLoadingPage&gt;&lt;/BdsLoadingPage
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Loadingspinner</h2>
       <div class="badges">
-        <label for="c-37-components-loading-spinner-err" class="badge err as-toggle">API error</label>
-        <label for="c-37-components-loading-spinner-info" class="badge info as-toggle">1 info</label>
-        <label for="c-37-components-loading-spinner-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-38-components-loading-spinner-err" class="badge err as-toggle">API error</label>
+        <label for="c-38-components-loading-spinner-info" class="badge info as-toggle">1 info</label>
+        <label for="c-38-components-loading-spinner-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -18751,9 +18918,9 @@ export const FrameworkReact = () =&gt; &lt;BdsLoadingPage&gt;&lt;/BdsLoadingPage
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-37-components-loading-spinner-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-37-components-loading-spinner-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-37-components-loading-spinner-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-38-components-loading-spinner-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-38-components-loading-spinner-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-38-components-loading-spinner-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -18900,9 +19067,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Modal</h2>
       <div class="badges">
-        <label for="c-38-components-modal-err" class="badge err as-toggle">API error</label>
-        <label for="c-38-components-modal-info" class="badge info as-toggle">1 info</label>
-        <label for="c-38-components-modal-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-39-components-modal-err" class="badge err as-toggle">API error</label>
+        <label for="c-39-components-modal-info" class="badge info as-toggle">1 info</label>
+        <label for="c-39-components-modal-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -18914,9 +19081,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-38-components-modal-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-38-components-modal-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-38-components-modal-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-39-components-modal-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-39-components-modal-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-39-components-modal-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -19305,9 +19472,9 @@ export const FrameworkReact = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> NavTree</h2>
       <div class="badges">
-        <label for="c-39-components-navtree-err" class="badge err as-toggle">API error</label>
-        <label for="c-39-components-navtree-info" class="badge info as-toggle">1 info</label>
-        <label for="c-39-components-navtree-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-40-components-navtree-err" class="badge err as-toggle">API error</label>
+        <label for="c-40-components-navtree-info" class="badge info as-toggle">1 info</label>
+        <label for="c-40-components-navtree-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -19319,9 +19486,9 @@ export const FrameworkReact = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-39-components-navtree-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-39-components-navtree-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-39-components-navtree-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-40-components-navtree-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-40-components-navtree-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-40-components-navtree-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -19652,9 +19819,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> NavTreeGroup</h2>
       <div class="badges">
-        <label for="c-40-components-navtree-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-40-components-navtree-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-40-components-navtree-group-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-41-components-navtree-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-41-components-navtree-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-41-components-navtree-group-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -19666,9 +19833,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-40-components-navtree-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-40-components-navtree-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-40-components-navtree-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-41-components-navtree-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-41-components-navtree-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-41-components-navtree-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -20154,9 +20321,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Pagination</h2>
       <div class="badges">
-        <label for="c-41-components-pagination-err" class="badge err as-toggle">API error</label>
-        <label for="c-41-components-pagination-info" class="badge info as-toggle">1 info</label>
-        <label for="c-41-components-pagination-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-42-components-pagination-err" class="badge err as-toggle">API error</label>
+        <label for="c-42-components-pagination-info" class="badge info as-toggle">1 info</label>
+        <label for="c-42-components-pagination-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -20168,9 +20335,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-41-components-pagination-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-41-components-pagination-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-41-components-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-42-components-pagination-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-42-components-pagination-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-42-components-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -20363,9 +20530,9 @@ export const SinglePage = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Pagination</h2>
       <div class="badges">
-        <label for="c-42-snippets-pagination-err" class="badge err as-toggle">API error</label>
-        <label for="c-42-snippets-pagination-info" class="badge info as-toggle">1 info</label>
-        <label for="c-42-snippets-pagination-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-43-snippets-pagination-err" class="badge err as-toggle">API error</label>
+        <label for="c-43-snippets-pagination-info" class="badge info as-toggle">1 info</label>
+        <label for="c-43-snippets-pagination-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -20377,9 +20544,9 @@ export const SinglePage = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-42-snippets-pagination-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-42-snippets-pagination-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-42-snippets-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-43-snippets-pagination-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-43-snippets-pagination-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-43-snippets-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -21663,9 +21830,9 @@ export const ListWithPagination = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Paper</h2>
       <div class="badges">
-        <label for="c-43-uai-paper-err" class="badge err as-toggle">API error</label>
-        <label for="c-43-uai-paper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-43-uai-paper-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-44-uai-paper-err" class="badge err as-toggle">API error</label>
+        <label for="c-44-uai-paper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-44-uai-paper-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -21677,9 +21844,9 @@ export const ListWithPagination = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-43-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-43-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-43-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-44-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-44-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-44-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -21815,172 +21982,6 @@ export const FrameworkReact = () =&gt; {
               <pre><code>const FrameworkReact = () =&gt; {
   return (
       &lt;UaiPaper border={false} elevation=&quot;primary&quot; height={PAPER_HEIGHT} width={PAPER_WIDTH}&gt;&lt;/UaiPaper&gt;
-);
-};</code></pre>
-              
-            </div>
-        </div>
-    
-    
-  </div>
-</article>
-<article
-  id="components-paper"
-  class="card 
-  has-error
-  has-info
-  no-story-error
-  no-story-warning
-  
-  no-doc-error"
-  role="listitem"
-  aria-label="Paper">
-  <div class="head">
-    <div class="title">
-      <h2><span class="status-dot dot-err"></span> Paper</h2>
-      <div class="badges">
-        <label for="c-44-components-paper-err" class="badge err as-toggle">API error</label>
-        <label for="c-44-components-paper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-44-components-paper-stories" class="badge ok as-toggle">2 stories</label>
-        
-        
-      </div>
-    </div>
-    <div class="meta" title="./src/components/paper/paper.stories.jsx">components-paper · ./src/components/paper/paper.stories.jsx</div>
-    
-    
-    
-  </div>
-
-  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-44-components-paper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-44-components-paper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-44-components-paper-stories" class="tg tg-stories" type="checkbox" hidden />
-  
-  
-  
-
-  <div class="panels">
-    
-        <div class="panel panel-err">
-          
-    <div class="note err">
-      <div class="note-title">API error</div>
-      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  3 | import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
-  4 |
-&gt; 5 | export default {
-    | ^
-  6 |   title: &#39;Components/Paper&#39;,
-  7 |   parameters: {
-  8 |     docs: {
-
-./src/components/paper/paper.stories.jsx:
-import React from &#39;react&#39;;
-import DocumentationTemplate from &#39;./paper.mdx&#39;;
-import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
-
-export default {
-  title: &#39;Components/Paper&#39;,
-  parameters: {
-    docs: {
-      page: DocumentationTemplate,
-    },
-  },
-};
-
-export const Properties = (args) =&gt; {
-  return (
-      &lt;bds-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}&gt;&lt;/bds-paper&gt;
-);
-} 
-
-Properties.args = {
-  border: false,
-  elevation: &#39;primary&#39;,
-  height: &#39;100px&#39;,
-  width: &#39;150px&#39;,
-};
-
-Properties.argTypes = {
-  border: {
-    table: {
-      defaultValue: { summary: &#39;false&#39; },
-    },
-    control: &#39;boolean&#39;,
-  },
-  elevation: {
-    table: {
-      defaultValue: { summary: &#39;primary&#39; },
-    },
-    options: [&quot;primary&quot;, &quot;secondary&quot;, &quot;static&quot;, &quot;none&quot;],
-    control: &#39;select&#39;,
-  },
-  height: {
-    table: {
-      defaultValue: { summary: &#39;100px&#39; },
-    },
-    control: &#39;text&#39;,
-  },
-  width: {
-    table: {
-      defaultValue: { summary: &#39;150px&#39; },
-    },
-    control: &#39;text&#39;,
-  },
-}
-
-export const FrameworkReact = () =&gt; {
-  return (
-      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
-);
-} </code></pre></div>
-    </div>
-        </div>
-    
-        <div class="panel panel-info">
-          
-    <div class="note info">
-      <div class="note-title">Info</div>
-      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
-    </div>
-        </div>
-    
-    
-        <div class="panel panel-stories">
-          
-          
-          
-          <div class="note ok">
-                <div class="row">
-                  <span class="ex-name">Imports</span>
-                </div>
-                <pre><code>import { BdsPaper } from 'blip-ds';</code></pre>
-              </div>
-          
-          
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Properties</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const Properties = () =&gt; {
-    return &lt;bds-paper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot; /&gt;;
-};</code></pre>
-              
-            </div>
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Framework React</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const FrameworkReact = () =&gt; {
-  return (
-      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
 );
 };</code></pre>
               
@@ -41192,14 +41193,181 @@ SolidIconCustomization.parameters = {
   
   no-doc-error"
   role="listitem"
+  aria-label="[deprecated]Paper">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> [deprecated]Paper</h2>
+      <div class="badges">
+        <label for="c-error-2-components-paper-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-2-components-paper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-2-components-paper-stories" class="badge ok as-toggle">2 stories</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/paper/paper.stories.jsx">components-paper · ./src/components/paper/paper.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-error-2-components-paper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-2-components-paper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-2-components-paper-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">API error</div>
+      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
+  3 | import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
+  4 |
+&gt; 5 | export default {
+    | ^
+  6 |   title: &#39;Components/[deprecated] Paper&#39;,
+  7 |   id: &#39;components-paper&#39;,
+  8 |   parameters: {
+
+./src/components/paper/paper.stories.jsx:
+import React from &#39;react&#39;;
+import DocumentationTemplate from &#39;./paper.mdx&#39;;
+import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
+
+export default {
+  title: &#39;Components/[deprecated] Paper&#39;,
+  id: &#39;components-paper&#39;,
+  parameters: {
+    docs: {
+      page: DocumentationTemplate,
+    },
+  },
+};
+
+export const Properties = (args) =&gt; {
+  return (
+      &lt;bds-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}&gt;&lt;/bds-paper&gt;
+);
+} 
+
+Properties.args = {
+  border: false,
+  elevation: &#39;primary&#39;,
+  height: &#39;100px&#39;,
+  width: &#39;150px&#39;,
+};
+
+Properties.argTypes = {
+  border: {
+    table: {
+      defaultValue: { summary: &#39;false&#39; },
+    },
+    control: &#39;boolean&#39;,
+  },
+  elevation: {
+    table: {
+      defaultValue: { summary: &#39;primary&#39; },
+    },
+    options: [&quot;primary&quot;, &quot;secondary&quot;, &quot;static&quot;, &quot;none&quot;],
+    control: &#39;select&#39;,
+  },
+  height: {
+    table: {
+      defaultValue: { summary: &#39;100px&#39; },
+    },
+    control: &#39;text&#39;,
+  },
+  width: {
+    table: {
+      defaultValue: { summary: &#39;150px&#39; },
+    },
+    control: &#39;text&#39;,
+  },
+}
+
+export const FrameworkReact = () =&gt; {
+  return (
+      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
+);
+} </code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { BdsPaper } from 'blip-ds';</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Properties</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Properties = () =&gt; {
+    return &lt;bds-paper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot; /&gt;;
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Framework React</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FrameworkReact = () =&gt; {
+  return (
+      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
+);
+};</code></pre>
+              
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
+  
+  class="card 
+  has-error
+  has-info
+  no-story-error
+  no-story-warning
+  
+  no-doc-error"
+  role="listitem"
   aria-label="Accordion">
   <div class="head">
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Accordion</h2>
       <div class="badges">
-        <label for="c-error-2-components-accordion-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-2-components-accordion-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-2-components-accordion-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-3-components-accordion-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-3-components-accordion-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-3-components-accordion-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -41211,9 +41379,9 @@ SolidIconCustomization.parameters = {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-2-components-accordion-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-2-components-accordion-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-2-components-accordion-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-3-components-accordion-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-3-components-accordion-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-3-components-accordion-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -41579,9 +41747,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> AccordionGroup</h2>
       <div class="badges">
-        <label for="c-error-3-components-accordion-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-3-components-accordion-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-3-components-accordion-group-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-4-components-accordion-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-4-components-accordion-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-4-components-accordion-group-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -41593,9 +41761,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-3-components-accordion-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-3-components-accordion-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-3-components-accordion-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-4-components-accordion-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-4-components-accordion-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-4-components-accordion-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -41982,9 +42150,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Alert</h2>
       <div class="badges">
-        <label for="c-error-4-components-alert-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-4-components-alert-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-4-components-alert-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-5-components-alert-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-5-components-alert-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-5-components-alert-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -41996,9 +42164,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-4-components-alert-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-4-components-alert-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-4-components-alert-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-5-components-alert-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-5-components-alert-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-5-components-alert-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -42356,9 +42524,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Autocomplete</h2>
       <div class="badges">
-        <label for="c-error-5-components-autocomplete-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-5-components-autocomplete-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-5-components-autocomplete-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-6-components-autocomplete-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-6-components-autocomplete-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-6-components-autocomplete-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -42370,9 +42538,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-5-components-autocomplete-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-5-components-autocomplete-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-5-components-autocomplete-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-6-components-autocomplete-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-6-components-autocomplete-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-6-components-autocomplete-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -42813,9 +42981,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> AvatarGroup</h2>
       <div class="badges">
-        <label for="c-error-6-components-avatar-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-6-components-avatar-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-6-components-avatar-group-stories" class="badge ok as-toggle">3 stories · 1 incomplete</label>
+        <label for="c-error-7-components-avatar-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-7-components-avatar-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-7-components-avatar-group-stories" class="badge ok as-toggle">3 stories · 1 incomplete</label>
         
         
       </div>
@@ -42827,9 +42995,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-6-components-avatar-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-6-components-avatar-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-6-components-avatar-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-7-components-avatar-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-7-components-avatar-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-7-components-avatar-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -43012,9 +43180,9 @@ export const Events = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> AvatarSingle</h2>
       <div class="badges">
-        <label for="c-error-7-components-avatar-single-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-7-components-avatar-single-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-7-components-avatar-single-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-8-components-avatar-single-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-8-components-avatar-single-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-8-components-avatar-single-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -43026,9 +43194,9 @@ export const Events = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-7-components-avatar-single-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-7-components-avatar-single-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-7-components-avatar-single-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-8-components-avatar-single-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-8-components-avatar-single-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-8-components-avatar-single-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -43236,9 +43404,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Badge</h2>
       <div class="badges">
-        <label for="c-error-8-components-badge-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-8-components-badge-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-8-components-badge-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-9-components-badge-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-9-components-badge-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-9-components-badge-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -43250,9 +43418,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-8-components-badge-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-8-components-badge-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-8-components-badge-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-9-components-badge-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-9-components-badge-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-9-components-badge-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -43527,9 +43695,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Banner</h2>
       <div class="badges">
-        <label for="c-error-9-components-banner-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-9-components-banner-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-9-components-banner-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-10-components-banner-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-10-components-banner-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-10-components-banner-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -43541,9 +43709,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-9-components-banner-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-9-components-banner-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-9-components-banner-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-10-components-banner-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-10-components-banner-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-10-components-banner-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -43890,9 +44058,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Breadcrumb</h2>
       <div class="badges">
-        <label for="c-error-10-components-breadcrumb-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-10-components-breadcrumb-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-10-components-breadcrumb-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-11-components-breadcrumb-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-11-components-breadcrumb-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-11-components-breadcrumb-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -43904,9 +44072,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-10-components-breadcrumb-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-10-components-breadcrumb-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-10-components-breadcrumb-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-11-components-breadcrumb-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-11-components-breadcrumb-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-11-components-breadcrumb-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -44189,9 +44357,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ButtonGroup</h2>
       <div class="badges">
-        <label for="c-error-11-components-button-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-11-components-button-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-11-components-button-group-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-12-components-button-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-12-components-button-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-12-components-button-group-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -44203,9 +44371,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-11-components-button-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-11-components-button-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-11-components-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-12-components-button-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-12-components-button-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-12-components-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -44516,9 +44684,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ButtonGroup</h2>
       <div class="badges">
-        <label for="c-error-12-snippets-button-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-12-snippets-button-group-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-12-snippets-button-group-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-13-snippets-button-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-13-snippets-button-group-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-13-snippets-button-group-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -44530,9 +44698,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-12-snippets-button-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-12-snippets-button-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-12-snippets-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-13-snippets-button-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-13-snippets-button-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-13-snippets-button-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -45090,9 +45258,9 @@ export const MultiSelectButtonGroup = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Buttons</h2>
       <div class="badges">
-        <label for="c-error-13-snippets-buttons-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-13-snippets-buttons-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-13-snippets-buttons-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-14-snippets-buttons-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-14-snippets-buttons-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-14-snippets-buttons-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -45104,9 +45272,9 @@ export const MultiSelectButtonGroup = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-13-snippets-buttons-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-13-snippets-buttons-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-13-snippets-buttons-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-14-snippets-buttons-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-14-snippets-buttons-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-14-snippets-buttons-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -45396,9 +45564,9 @@ export const LoadingButton = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Card</h2>
       <div class="badges">
-        <label for="c-error-14-components-card-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-14-components-card-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-14-components-card-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-15-components-card-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-15-components-card-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-15-components-card-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -45410,9 +45578,9 @@ export const LoadingButton = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-14-components-card-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-14-components-card-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-14-components-card-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-15-components-card-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-15-components-card-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-15-components-card-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -45719,9 +45887,9 @@ return (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Cards</h2>
       <div class="badges">
-        <label for="c-error-15-snippets-cards-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-15-snippets-cards-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-15-snippets-cards-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-error-16-snippets-cards-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-16-snippets-cards-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-16-snippets-cards-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -45733,9 +45901,9 @@ return (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-15-snippets-cards-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-15-snippets-cards-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-15-snippets-cards-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-16-snippets-cards-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-16-snippets-cards-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-16-snippets-cards-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -46809,9 +46977,9 @@ export const CompleteCard = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Carousel</h2>
       <div class="badges">
-        <label for="c-error-16-components-carousel-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-16-components-carousel-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-16-components-carousel-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-17-components-carousel-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-17-components-carousel-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-17-components-carousel-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -46823,9 +46991,9 @@ export const CompleteCard = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-16-components-carousel-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-16-components-carousel-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-16-components-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-17-components-carousel-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-17-components-carousel-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-17-components-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -47640,9 +47808,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Carousel</h2>
       <div class="badges">
-        <label for="c-error-17-snippets-carousel-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-17-snippets-carousel-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-17-snippets-carousel-stories" class="badge ok as-toggle">11 stories</label>
+        <label for="c-error-18-snippets-carousel-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-18-snippets-carousel-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-18-snippets-carousel-stories" class="badge ok as-toggle">11 stories</label>
         
         
       </div>
@@ -47654,9 +47822,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-17-snippets-carousel-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-17-snippets-carousel-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-17-snippets-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-18-snippets-carousel-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-18-snippets-carousel-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-18-snippets-carousel-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -49823,9 +49991,9 @@ export const CarouselBulletsExamples = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Checkbox</h2>
       <div class="badges">
-        <label for="c-error-18-components-checkbox-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-18-components-checkbox-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-18-components-checkbox-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-error-19-components-checkbox-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-19-components-checkbox-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-19-components-checkbox-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -49837,9 +50005,9 @@ export const CarouselBulletsExamples = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-18-components-checkbox-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-18-components-checkbox-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-18-components-checkbox-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-19-components-checkbox-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-19-components-checkbox-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-19-components-checkbox-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -50281,9 +50449,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ChipClickable</h2>
       <div class="badges">
-        <label for="c-error-19-components-chip-clickable-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-19-components-chip-clickable-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-19-components-chip-clickable-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-20-components-chip-clickable-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-20-components-chip-clickable-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-20-components-chip-clickable-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -50295,9 +50463,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-19-components-chip-clickable-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-19-components-chip-clickable-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-19-components-chip-clickable-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-20-components-chip-clickable-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-20-components-chip-clickable-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-20-components-chip-clickable-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -50496,9 +50664,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ChipSelected</h2>
       <div class="badges">
-        <label for="c-error-20-components-chip-selected-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-20-components-chip-selected-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-20-components-chip-selected-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-21-components-chip-selected-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-21-components-chip-selected-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-21-components-chip-selected-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -50510,9 +50678,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-20-components-chip-selected-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-20-components-chip-selected-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-20-components-chip-selected-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-21-components-chip-selected-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-21-components-chip-selected-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-21-components-chip-selected-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -50717,9 +50885,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ChipTag</h2>
       <div class="badges">
-        <label for="c-error-21-components-chip-tag-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-21-components-chip-tag-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-21-components-chip-tag-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-22-components-chip-tag-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-22-components-chip-tag-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-22-components-chip-tag-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -50731,9 +50899,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-21-components-chip-tag-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-21-components-chip-tag-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-21-components-chip-tag-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-22-components-chip-tag-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-22-components-chip-tag-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-22-components-chip-tag-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -50869,9 +51037,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> DataTable</h2>
       <div class="badges">
-        <label for="c-error-22-components-data-table-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-22-components-data-table-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-22-components-data-table-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-23-components-data-table-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-23-components-data-table-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-23-components-data-table-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -50883,9 +51051,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-22-components-data-table-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-22-components-data-table-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-22-components-data-table-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-23-components-data-table-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-23-components-data-table-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-23-components-data-table-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -51057,9 +51225,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Datepicker</h2>
       <div class="badges">
-        <label for="c-error-23-components-datepicker-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-23-components-datepicker-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-23-components-datepicker-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-24-components-datepicker-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-24-components-datepicker-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-24-components-datepicker-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -51071,9 +51239,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-23-components-datepicker-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-23-components-datepicker-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-23-components-datepicker-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-24-components-datepicker-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-24-components-datepicker-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-24-components-datepicker-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -51375,9 +51543,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Divider</h2>
       <div class="badges">
-        <label for="c-error-24-components-divider-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-24-components-divider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-24-components-divider-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-25-components-divider-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-25-components-divider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-25-components-divider-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -51389,9 +51557,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-24-components-divider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-24-components-divider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-24-components-divider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-25-components-divider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-25-components-divider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-25-components-divider-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -51565,9 +51733,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Dropdown</h2>
       <div class="badges">
-        <label for="c-error-25-components-dropdown-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-25-components-dropdown-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-25-components-dropdown-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-26-components-dropdown-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-26-components-dropdown-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-26-components-dropdown-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -51579,9 +51747,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-25-components-dropdown-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-25-components-dropdown-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-25-components-dropdown-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-26-components-dropdown-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-26-components-dropdown-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-26-components-dropdown-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -52075,9 +52243,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Form</h2>
       <div class="badges">
-        <label for="c-error-26-snippets-form-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-26-snippets-form-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-26-snippets-form-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-27-snippets-form-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-27-snippets-form-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-27-snippets-form-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -52089,9 +52257,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-26-snippets-form-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-26-snippets-form-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-26-snippets-form-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-27-snippets-form-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-27-snippets-form-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-27-snippets-form-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -52291,9 +52459,9 @@ export const ComplexForm = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Illustration</h2>
       <div class="badges">
-        <label for="c-error-27-components-illustration-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-27-components-illustration-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-27-components-illustration-stories" class="badge ok as-toggle">12 stories</label>
+        <label for="c-error-28-components-illustration-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-28-components-illustration-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-28-components-illustration-stories" class="badge ok as-toggle">12 stories</label>
         
         
       </div>
@@ -52305,9 +52473,9 @@ export const ComplexForm = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-27-components-illustration-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-27-components-illustration-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-27-components-illustration-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-28-components-illustration-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-28-components-illustration-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-28-components-illustration-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -53707,9 +53875,9 @@ export const IllustrationsSpots = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Image</h2>
       <div class="badges">
-        <label for="c-error-28-components-image-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-28-components-image-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-28-components-image-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-29-components-image-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-29-components-image-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-29-components-image-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -53721,9 +53889,9 @@ export const IllustrationsSpots = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-28-components-image-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-28-components-image-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-28-components-image-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-29-components-image-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-29-components-image-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-29-components-image-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -53928,9 +54096,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Input</h2>
       <div class="badges">
-        <label for="c-error-29-components-input-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-29-components-input-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-29-components-input-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-error-30-components-input-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-30-components-input-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-30-components-input-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -53942,9 +54110,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-29-components-input-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-29-components-input-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-29-components-input-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-30-components-input-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-30-components-input-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-30-components-input-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -54748,9 +54916,9 @@ export const FrameworkReactTextarea = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputChips</h2>
       <div class="badges">
-        <label for="c-error-30-components-input-chips-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-30-components-input-chips-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-30-components-input-chips-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-31-components-input-chips-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-31-components-input-chips-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-31-components-input-chips-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -54762,9 +54930,9 @@ export const FrameworkReactTextarea = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-30-components-input-chips-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-30-components-input-chips-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-30-components-input-chips-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-31-components-input-chips-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-31-components-input-chips-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-31-components-input-chips-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -55156,9 +55324,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputEditable</h2>
       <div class="badges">
-        <label for="c-error-31-components-input-editable-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-31-components-input-editable-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-31-components-input-editable-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-32-components-input-editable-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-32-components-input-editable-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-32-components-input-editable-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -55170,9 +55338,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-31-components-input-editable-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-31-components-input-editable-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-31-components-input-editable-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-32-components-input-editable-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-32-components-input-editable-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-32-components-input-editable-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -55431,9 +55599,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputPassword</h2>
       <div class="badges">
-        <label for="c-error-32-components-input-password-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-32-components-input-password-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-32-components-input-password-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-33-components-input-password-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-33-components-input-password-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-33-components-input-password-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -55445,9 +55613,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-32-components-input-password-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-32-components-input-password-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-32-components-input-password-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-33-components-input-password-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-33-components-input-password-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-33-components-input-password-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -55742,9 +55910,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> InputPhoneNumber</h2>
       <div class="badges">
-        <label for="c-error-33-components-input-phone-number-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-33-components-input-phone-number-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-33-components-input-phone-number-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-34-components-input-phone-number-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-34-components-input-phone-number-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-34-components-input-phone-number-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -55756,9 +55924,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-33-components-input-phone-number-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-33-components-input-phone-number-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-33-components-input-phone-number-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-34-components-input-phone-number-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-34-components-input-phone-number-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-34-components-input-phone-number-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -56024,9 +56192,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> List</h2>
       <div class="badges">
-        <label for="c-error-34-components-list-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-34-components-list-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-34-components-list-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-35-components-list-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-35-components-list-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-35-components-list-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -56038,9 +56206,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-34-components-list-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-34-components-list-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-34-components-list-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-35-components-list-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-35-components-list-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-35-components-list-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -56398,9 +56566,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> LoadingBar</h2>
       <div class="badges">
-        <label for="c-error-35-components-loading-bar-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-35-components-loading-bar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-35-components-loading-bar-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-36-components-loading-bar-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-36-components-loading-bar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-36-components-loading-bar-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -56412,9 +56580,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-35-components-loading-bar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-35-components-loading-bar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-35-components-loading-bar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-36-components-loading-bar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-36-components-loading-bar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-36-components-loading-bar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -56560,9 +56728,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Loadingpage</h2>
       <div class="badges">
-        <label for="c-error-36-components-loading-page-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-36-components-loading-page-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-36-components-loading-page-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-37-components-loading-page-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-37-components-loading-page-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-37-components-loading-page-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -56574,9 +56742,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-36-components-loading-page-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-36-components-loading-page-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-36-components-loading-page-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-37-components-loading-page-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-37-components-loading-page-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-37-components-loading-page-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -56696,9 +56864,9 @@ export const FrameworkReact = () =&gt; &lt;BdsLoadingPage&gt;&lt;/BdsLoadingPage
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Loadingspinner</h2>
       <div class="badges">
-        <label for="c-error-37-components-loading-spinner-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-37-components-loading-spinner-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-37-components-loading-spinner-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-38-components-loading-spinner-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-38-components-loading-spinner-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-38-components-loading-spinner-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -56710,9 +56878,9 @@ export const FrameworkReact = () =&gt; &lt;BdsLoadingPage&gt;&lt;/BdsLoadingPage
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-37-components-loading-spinner-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-37-components-loading-spinner-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-37-components-loading-spinner-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-38-components-loading-spinner-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-38-components-loading-spinner-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-38-components-loading-spinner-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -56859,9 +57027,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Modal</h2>
       <div class="badges">
-        <label for="c-error-38-components-modal-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-38-components-modal-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-38-components-modal-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-39-components-modal-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-39-components-modal-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-39-components-modal-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -56873,9 +57041,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-38-components-modal-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-38-components-modal-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-38-components-modal-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-39-components-modal-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-39-components-modal-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-39-components-modal-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -57264,9 +57432,9 @@ export const FrameworkReact = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> NavTree</h2>
       <div class="badges">
-        <label for="c-error-39-components-navtree-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-39-components-navtree-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-39-components-navtree-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-40-components-navtree-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-40-components-navtree-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-40-components-navtree-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -57278,9 +57446,9 @@ export const FrameworkReact = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-39-components-navtree-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-39-components-navtree-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-39-components-navtree-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-40-components-navtree-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-40-components-navtree-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-40-components-navtree-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -57611,9 +57779,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> NavTreeGroup</h2>
       <div class="badges">
-        <label for="c-error-40-components-navtree-group-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-40-components-navtree-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-40-components-navtree-group-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-41-components-navtree-group-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-41-components-navtree-group-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-41-components-navtree-group-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -57625,9 +57793,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-40-components-navtree-group-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-40-components-navtree-group-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-40-components-navtree-group-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-41-components-navtree-group-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-41-components-navtree-group-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-41-components-navtree-group-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -58113,9 +58281,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Pagination</h2>
       <div class="badges">
-        <label for="c-error-41-components-pagination-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-41-components-pagination-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-41-components-pagination-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-error-42-components-pagination-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-42-components-pagination-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-42-components-pagination-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -58127,9 +58295,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-41-components-pagination-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-41-components-pagination-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-41-components-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-42-components-pagination-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-42-components-pagination-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-42-components-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -58322,9 +58490,9 @@ export const SinglePage = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Pagination</h2>
       <div class="badges">
-        <label for="c-error-42-snippets-pagination-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-42-snippets-pagination-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-42-snippets-pagination-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-43-snippets-pagination-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-43-snippets-pagination-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-43-snippets-pagination-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -58336,9 +58504,9 @@ export const SinglePage = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-42-snippets-pagination-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-42-snippets-pagination-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-42-snippets-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-43-snippets-pagination-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-43-snippets-pagination-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-43-snippets-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -59622,9 +59790,9 @@ export const ListWithPagination = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Paper</h2>
       <div class="badges">
-        <label for="c-error-43-uai-paper-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-43-uai-paper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-43-uai-paper-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-44-uai-paper-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-44-uai-paper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-44-uai-paper-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -59636,9 +59804,9 @@ export const ListWithPagination = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-43-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-43-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-43-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-44-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-44-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-44-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -59774,172 +59942,6 @@ export const FrameworkReact = () =&gt; {
               <pre><code>const FrameworkReact = () =&gt; {
   return (
       &lt;UaiPaper border={false} elevation=&quot;primary&quot; height={PAPER_HEIGHT} width={PAPER_WIDTH}&gt;&lt;/UaiPaper&gt;
-);
-};</code></pre>
-              
-            </div>
-        </div>
-    
-    
-  </div>
-</article>
-<article
-  
-  class="card 
-  has-error
-  has-info
-  no-story-error
-  no-story-warning
-  
-  no-doc-error"
-  role="listitem"
-  aria-label="Paper">
-  <div class="head">
-    <div class="title">
-      <h2><span class="status-dot dot-err"></span> Paper</h2>
-      <div class="badges">
-        <label for="c-error-44-components-paper-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-44-components-paper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-44-components-paper-stories" class="badge ok as-toggle">2 stories</label>
-        
-        
-      </div>
-    </div>
-    <div class="meta" title="./src/components/paper/paper.stories.jsx">components-paper · ./src/components/paper/paper.stories.jsx</div>
-    
-    
-    
-  </div>
-
-  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-44-components-paper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-44-components-paper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-44-components-paper-stories" class="tg tg-stories" type="checkbox" hidden />
-  
-  
-  
-
-  <div class="panels">
-    
-        <div class="panel panel-err">
-          
-    <div class="note err">
-      <div class="note-title">API error</div>
-      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-  3 | import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
-  4 |
-&gt; 5 | export default {
-    | ^
-  6 |   title: &#39;Components/Paper&#39;,
-  7 |   parameters: {
-  8 |     docs: {
-
-./src/components/paper/paper.stories.jsx:
-import React from &#39;react&#39;;
-import DocumentationTemplate from &#39;./paper.mdx&#39;;
-import { BdsPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
-
-export default {
-  title: &#39;Components/Paper&#39;,
-  parameters: {
-    docs: {
-      page: DocumentationTemplate,
-    },
-  },
-};
-
-export const Properties = (args) =&gt; {
-  return (
-      &lt;bds-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}&gt;&lt;/bds-paper&gt;
-);
-} 
-
-Properties.args = {
-  border: false,
-  elevation: &#39;primary&#39;,
-  height: &#39;100px&#39;,
-  width: &#39;150px&#39;,
-};
-
-Properties.argTypes = {
-  border: {
-    table: {
-      defaultValue: { summary: &#39;false&#39; },
-    },
-    control: &#39;boolean&#39;,
-  },
-  elevation: {
-    table: {
-      defaultValue: { summary: &#39;primary&#39; },
-    },
-    options: [&quot;primary&quot;, &quot;secondary&quot;, &quot;static&quot;, &quot;none&quot;],
-    control: &#39;select&#39;,
-  },
-  height: {
-    table: {
-      defaultValue: { summary: &#39;100px&#39; },
-    },
-    control: &#39;text&#39;,
-  },
-  width: {
-    table: {
-      defaultValue: { summary: &#39;150px&#39; },
-    },
-    control: &#39;text&#39;,
-  },
-}
-
-export const FrameworkReact = () =&gt; {
-  return (
-      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
-);
-} </code></pre></div>
-    </div>
-        </div>
-    
-        <div class="panel panel-info">
-          
-    <div class="note info">
-      <div class="note-title">Info</div>
-      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
-    </div>
-        </div>
-    
-    
-        <div class="panel panel-stories">
-          
-          
-          
-          <div class="note ok">
-                <div class="row">
-                  <span class="ex-name">Imports</span>
-                </div>
-                <pre><code>import { BdsPaper } from 'blip-ds';</code></pre>
-              </div>
-          
-          
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Properties</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const Properties = () =&gt; {
-    return &lt;bds-paper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot; /&gt;;
-};</code></pre>
-              
-            </div>
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Framework React</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const FrameworkReact = () =&gt; {
-  return (
-      &lt;BdsPaper border={false} elevation=&quot;primary&quot; height=&quot;100px&quot; width=&quot;150px&quot;&gt;&lt;/BdsPaper&gt;
 );
 };</code></pre>
               
