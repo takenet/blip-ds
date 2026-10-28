@@ -3,7 +3,7 @@ import DocumentationTemplate from './input-password.mdx';
 import { BdsInputPassword } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Input Password',
+  title: 'Components/[deprecated] Input Password',
   parameters: {
     docs: {
       page: DocumentationTemplate,

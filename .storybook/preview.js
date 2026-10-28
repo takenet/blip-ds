@@ -30,7 +30,7 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "UAI", ["Foundation", ["Tokens", "Colors", "Typography", "Layout", "Motion", "Elevation", "Icons"], "*"], "Components", ["[deprecated] Navbar", "[deprecated] Button", "[deprecated] Icon", "[deprecated] Grid", "[deprecated] Paper", "NavTree", "*"], "Snippets", "Templates"]
+      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "UAI", ["Foundation", ["Tokens", "Colors", "Typography", "Layout", "Motion", "Elevation", "Icons"], "*"], "Components", ["[deprecated] Navbar", "[deprecated] Button", "[deprecated] Icon", "[deprecated] Grid", "[deprecated] Paper", "[deprecated] Input", "[deprecated] Input Password", "NavTree", "*"], "Snippets", "Templates"]
     }
   },
   controls: {

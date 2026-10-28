@@ -3,7 +3,7 @@ import DocumentationTemplate from './input.mdx';
 import { BdsInput } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Input',
+  title: 'Components/[deprecated] Input',
   parameters: {
     docs: {
       page: DocumentationTemplate,

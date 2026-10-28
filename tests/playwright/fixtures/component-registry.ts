@@ -38,10 +38,10 @@ export const WAVE_1: ComponentEntry[] = [
   {
     tag: 'bds-input',
     name: 'Input',
-    primaryStory: 'components-input--properties',
+    primaryStory: 'components-deprecated-input--properties',
     stories: [
-      { storyId: 'components-input--properties', label: 'Properties' },
-      { storyId: 'components-input--events', label: 'Events' },
+      { storyId: 'components-deprecated-input--properties', label: 'Properties' },
+      { storyId: 'components-deprecated-input--events', label: 'Events' },
     ],
   },
   {
@@ -403,8 +403,8 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'bds-input-password',
     name: 'Input Password',
-    primaryStory: 'components-input-password--properties',
-    stories: [{ storyId: 'components-input-password--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-input-password--properties',
+    stories: [{ storyId: 'components-deprecated-input-password--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-input-phone-number',

@@ -1470,6 +1470,9 @@ export namespace Components {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+     */
     interface BdsInput {
         /**
           * Defines automatic text capitalization (possible values: `on`, `off`).
@@ -1910,6 +1913,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -5483,6 +5489,9 @@ declare global {
         "bdsPatternValidation": boolean;
         "bdsKeyDownBackspace": { event: KeyboardEvent; value: string };
     }
+    /**
+     * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputElementEventMap>(type: K, listener: (this: HTMLBdsInputElement, ev: BdsInputCustomEvent<HTMLBdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5550,6 +5559,9 @@ declare global {
         "bdsInputPasswordSubmit": { event: KeyboardEvent; value: string | null } | void;
         "bdsKeyDownBackspace": { event: KeyboardEvent; value: string | null };
     }
+    /**
+     * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputPasswordElementEventMap>(type: K, listener: (this: HTMLBdsInputPasswordElement, ev: BdsInputPasswordCustomEvent<HTMLBdsInputPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7909,6 +7921,9 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+     */
     interface BdsInput {
         /**
           * Defines automatic text capitalization (possible values: `on`, `off`).
@@ -8394,6 +8409,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -12595,9 +12613,15 @@ declare module "@stencil/core" {
             "bds-icon": LocalJSX.IntrinsicElements["bds-icon"] & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.IntrinsicElements["bds-illustration"] & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
             "bds-image": LocalJSX.IntrinsicElements["bds-image"] & JSXBase.HTMLAttributes<HTMLBdsImageElement>;
+            /**
+             * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+             */
             "bds-input": LocalJSX.IntrinsicElements["bds-input"] & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.IntrinsicElements["bds-input-chips"] & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-editable": LocalJSX.IntrinsicElements["bds-input-editable"] & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
+            /**
+             * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-input-password": LocalJSX.IntrinsicElements["bds-input-password"] & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.IntrinsicElements["bds-input-phone-number"] & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-list": LocalJSX.IntrinsicElements["bds-list"] & JSXBase.HTMLAttributes<HTMLBdsListElement>;
