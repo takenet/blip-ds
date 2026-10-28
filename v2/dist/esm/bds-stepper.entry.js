@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-BnSR_zce.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
 
 const stepperCss = () => `:host{width:100%;border-radius:8px;-webkit-box-sizing:border-box;box-sizing:border-box;padding:16px;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}:host ::slotted(bds-step:last-child){-ms-flex:inherit;flex:inherit}::slotted(.stepper__container__divisor){-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-item-align:center;align-self:center;height:1.5px;background:var(--color-content-disable, rgb(89, 89, 89));margin:0px 8px;min-width:24px}::slotted(.stepper__container__divisor--completed){border-top:2px solid var(--color-primary, rgb(30, 107, 241))}`;
 
@@ -77,7 +77,7 @@ const BdsStepper = class {
         });
     }
     render() {
-        return (h(Host, { key: '9ece6fcb08c7210d8706cf52a451a9ccf6164792', class: "stepper__container" }, h("slot", { key: '9bc808012903557dece77d28a642158747130445' })));
+        return (h(Host, { key: '779e2bf4233c2e1a221243b7036bc33814ec043d', class: "stepper__container" }, h("slot", { key: '27a9ce61fd1f8c59b3025dbfca08751b758698fd' })));
     }
     get el() { return getElement(this); }
 };

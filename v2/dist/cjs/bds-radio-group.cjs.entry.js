@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const RadioGroup = class {
     constructor(hostRef) {
@@ -34,7 +34,7 @@ const RadioGroup = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '6c57f4634eba686aa7a0b058444c12925ed52764' }, index.h("slot", { key: 'd0d1bac35fffe8c708632674a29e5e343195840f' })));
+        return (index.h(index.Host, { key: '7e60bdaab01774ce3dffdb981e8d9771b9509dfb' }, index.h("slot", { key: 'b37af9c72127ac01c6e2d647511da618522ad864' })));
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {

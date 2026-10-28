@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const cardHeaderCss = () => `:host{width:100%}`;
 

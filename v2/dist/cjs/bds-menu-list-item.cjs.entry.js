@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const menuListItemCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex:1;flex:1}.menu-list-item{background-color:#f6f6f6;color:currentColor;cursor:pointer;width:76px;height:56px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none}.menu-list-item:hover,.menu-list-item:hover>.menu-list-item__text{background-color:#f3f6fa;color:#3f7de8}.menu-list-item:active,.menu-list-item:active>.menu-list-item__text{background-color:#d1e3fa;color:#3f7de8}.menu-list-item:focus,.menu-list-item:focus>.menu-list-item__text{background-color:#f3f6fa;color:#3f7de8}.menu-list-item__text{color:#e3e3e3}`;
 
@@ -10,7 +10,7 @@ const MenuListItem = class {
     }
     render() {
         const color = this.color || 'currentColor';
-        return (index.h(index.Host, { key: '2a68cd17db01f60f5e7b75f7aef146386f4f68e6', role: "button" }, index.h("div", { key: '4d9e10de9ecd3f5d066f52ea79a956972e257577', class: "menu-list-item" }, index.h("bds-icon", { key: 'd324f4a957598be0b14feaceca4f35f0d42ec09f', color: color, name: this.icon }), index.h("bds-typo", { key: 'bdeb09c5f1ade0bc50bfb61aa468d0116f52715f', class: "menu-list-item__text", variant: "fs-10" }, index.h("slot", { key: 'f8cf62c9bf7da5970b2f6de2182713ea953096c6' })))));
+        return (index.h(index.Host, { key: 'bdb0bc901f7a7007c95a086749e39051e62ea899', role: "button" }, index.h("div", { key: '7d0761f24b2d146d5654ed889b34504dceaee362', class: "menu-list-item" }, index.h("bds-icon", { key: 'ee8f93fe14fded553d8a14f2ff69108a05f62ac7', color: color, name: this.icon }), index.h("bds-typo", { key: 'e24931592aa40a162ec834d202e0d57a085a9b25', class: "menu-list-item__text", variant: "fs-10" }, index.h("slot", { key: '7ad39f92e4a1163714d23de190f224b4a8e1831b' })))));
     }
 };
 MenuListItem.style = menuListItemCss();

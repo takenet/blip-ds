@@ -1,5 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
+/**
+ * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+ */
 export declare class InputPassword {
     private nativeInput?;
     /**

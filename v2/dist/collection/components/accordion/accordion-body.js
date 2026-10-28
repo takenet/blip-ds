@@ -39,11 +39,11 @@ export class AccordionBody {
         }
     }
     render() {
-        return (h("div", { key: '182c5d949b4e817beb64e20670bf8456ab83b7a5', class: {
+        return (h("div", { key: '49ba3c8ea667589381be70b7cb6d430989c8f627', class: {
                 accordion_body: true,
                 accordion_body_divisor: this.hasDivisor,
                 accordion_body_isOpen: this.isOpenAftAnimation,
-            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, h("div", { key: '62cecfbb15bc3a7e8857617e13934fbd00c05d0d', class: "container", ref: (el) => this.refContainer(el) }, h("slot", { key: '405bc501b46565384d42b3bc31e1ddbfa89e20fc' }))));
+            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, h("div", { key: 'ae2f30bc8a71845bcee56cf5e7e575afedee55ed', class: "container", ref: (el) => this.refContainer(el) }, h("slot", { key: '2f575987cb38fca5c07f0189f2a35b3701b55096' }))));
     }
     static get is() { return "bds-accordion-body"; }
     static get encapsulation() { return "shadow"; }

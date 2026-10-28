@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const tableHeaderCss = () => `.sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}`;
 
@@ -9,7 +9,7 @@ const TableHeader = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '6912979cbae55369fa16a5d3f6cb12cc2802d340' }, index.h("slot", { key: '335b48a7fcf93044973b02b3d033b2347a62330d' })));
+        return (index.h(index.Host, { key: '91ffdca7e75f5d5687bcc545b83e62028530f238' }, index.h("slot", { key: '9dc7e3c96b42659514be7227f04fb8f65d609fc7' })));
     }
 };
 TableHeader.style = tableHeaderCss();

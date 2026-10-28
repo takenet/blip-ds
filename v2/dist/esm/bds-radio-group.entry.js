@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BnSR_zce.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
 
 const RadioGroup = class {
     constructor(hostRef) {
@@ -32,7 +32,7 @@ const RadioGroup = class {
         }
     }
     render() {
-        return (h(Host, { key: '6c57f4634eba686aa7a0b058444c12925ed52764' }, h("slot", { key: 'd0d1bac35fffe8c708632674a29e5e343195840f' })));
+        return (h(Host, { key: '7e60bdaab01774ce3dffdb981e8d9771b9509dfb' }, h("slot", { key: 'b37af9c72127ac01c6e2d647511da618522ad864' })));
     }
     get element() { return getElement(this); }
     static get watchers() { return {

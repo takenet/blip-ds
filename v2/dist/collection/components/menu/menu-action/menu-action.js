@@ -100,20 +100,20 @@ export class BdsMenuAction {
         const zIndexSubmenu = {
             zIndex: `${this.zIndex}`,
         };
-        return (h("div", { key: 'f301d36964ecd0209dba142efed3dcb9c5dd9046', class: {
+        return (h("div", { key: '9405f15f7a1e47b8c380e2ffa19b05478dd74c7f', class: {
                 menuaction: true,
                 [`position-${this.positionSubMenu}`]: true,
-            }, onMouseOver: openSubmenu, onMouseOut: closeSubmenu }, h("button", { key: '4bbccf86ff7be4a8650f7d86b776e90b9dc13c69', class: {
+            }, onMouseOver: openSubmenu, onMouseOut: closeSubmenu }, h("button", { key: 'd3bdf5a8f05f25038f084f620b979371f315a96a', class: {
                 menuaction__button: true,
                 [`menuaction__button__activeicleft`]: actLeft,
                 [`menuaction__button__activeicright`]: actRight,
                 [`menuaction__button__activeicleftright`]: actLeftright,
                 [`menuaction__button__lipstick`]: this.lipstick,
                 [`menuaction__button__disabled`]: this.disabled,
-            } }, this.iconLeft && h("bds-icon", { key: '03d269f200d2ff3fedbee86517b150ab1f92e350', class: "icon-item", name: this.iconLeft, theme: "outline", size: "small" }), h("div", { key: '3f54c92a1fae9b4f6d9d4ef93bfd69ba8d59c636', class: "content-item" }, this.buttonText && (h("bds-typo", { key: '9b21c816a17213fc6315c2cf9e86160c01de404c', class: "title-item", variant: "fs-16", tag: "span" }, this.buttonText)), this.subtitle && (h("bds-typo", { key: 'cb2b537205c4b02d884c409c6e095b217e7b70eb', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (h("bds-typo", { key: 'a3c9e8249afa0d1c37189918f3a1ef3d63d13e15', class: "description-item", variant: "fs-10", tag: "span" }, this.description))), this.subMenu && (h("bds-icon", { key: '79fa0d0dade0a2621dc0cdd9468d0c88f048e397', class: { arrow: true }, name: `arrow-${this.positionSubMenu}`, theme: "outline", size: "small" }))), this.subMenu && (h("div", { key: 'abea0b517b1b2689fae069211f75e2aaafc53e6e', class: {
+            } }, this.iconLeft && h("bds-icon", { key: '5bba2bb1c37e8d4455aa80265c9a59e2ff6430fd', class: "icon-item", name: this.iconLeft, theme: "outline", size: "small" }), h("div", { key: 'f43452d0be9ed51533b4d0d2d078c8a7abe0baa6', class: "content-item" }, this.buttonText && (h("bds-typo", { key: 'b6c186a007783359012a35c49d3828b33fdb9a81', class: "title-item", variant: "fs-16", tag: "span" }, this.buttonText)), this.subtitle && (h("bds-typo", { key: '54548b5676d8941ac603e694548a1578aca0940c', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (h("bds-typo", { key: 'e6c983bcbb7269d45558da01d3c91a7828f8b7c7', class: "description-item", variant: "fs-10", tag: "span" }, this.description))), this.subMenu && (h("bds-icon", { key: '522f84257f00d57a95d708867b1cc40cec393053', class: { arrow: true }, name: `arrow-${this.positionSubMenu}`, theme: "outline", size: "small" }))), this.subMenu && (h("div", { key: 'cda47bbda83b0567fae1cba733480df29fa754c4', class: {
                 menuaction__submenu: true,
                 menuaction__submenu__open: this.delaySubMenu,
-            }, style: zIndexSubmenu }, h("slot", { key: '84f3db8e46cd454da68dfd33b46c0cfb4ebb8be9' })))));
+            }, style: zIndexSubmenu }, h("slot", { key: '9a9fa6196e41ceb40223439b56f727835979e460' })))));
     }
     static get is() { return "bds-menu-action"; }
     static get encapsulation() { return "shadow"; }

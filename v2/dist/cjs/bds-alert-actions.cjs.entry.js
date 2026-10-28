@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const alertActionsCss = () => `.alert__actions{width:100%;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-pack:end;justify-content:flex-end;-ms-flex-align:center;align-items:center;position:relative;padding:12px 16px;-webkit-box-sizing:border-box;box-sizing:border-box}.alert__actions ::slotted(bds-button:nth-child(1)){margin-right:16px !important}`;
 
@@ -9,7 +9,7 @@ const AlertActions = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h("div", { key: '40b2323c307e310f7a8386e3e10b2c372e7506c0', class: "alert__actions" }, index.h("slot", { key: 'e468f7caba1e57d7cde9d4ab1d15b4af90134bc5' })));
+        return (index.h("div", { key: 'ff8a20bbc163ae8d770eb9cd8cb2f88d4b791de7', class: "alert__actions" }, index.h("slot", { key: '76c7088d13dfaf6258e3be94b970e4809988ceff' })));
     }
 };
 AlertActions.style = alertActionsCss();

@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-BnSR_zce.js';
+import { r as registerInstance, h } from './index-CkbvGS8Z.js';
 
 const cardHeaderCss = () => `:host{width:100%}`;
 

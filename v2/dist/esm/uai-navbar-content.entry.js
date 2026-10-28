@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-BnSR_zce.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
 
 const uaiNavbarContentCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}`;
 
@@ -7,7 +7,7 @@ const UaiNavbarContent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '4bcdff36dcb5f462e2c237465a478f450ee0729f', class: { NavbarContent: true } }, h("slot", { key: '99f43c4dac1054eb77ab5c36a296488967a90865' })));
+        return (h(Host, { key: '1441cebdcd32de94f0dbf36fd17349f1decc1f77', class: { NavbarContent: true } }, h("slot", { key: '8d64eaaa382a55725508f806c342a7ccdc70903e' })));
     }
     get hostElement() { return getElement(this); }
 };

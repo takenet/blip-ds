@@ -1,7 +1,7 @@
 import { h } from "@stencil/core";
 export class CardSubtitle {
     render() {
-        return (h("bds-typo", { key: 'b48d7632808b2f32eb87615780650d4cbfa10a8d', variant: "fs-12", tag: "p", bold: "regular", margin: false }, this.text));
+        return (h("bds-typo", { key: '9671d0f025cba9a68b48f415eb46a592ec9134db', variant: "fs-12", tag: "p", bold: "regular", margin: false }, this.text));
     }
     static get is() { return "bds-card-subtitle"; }
     static get encapsulation() { return "shadow"; }

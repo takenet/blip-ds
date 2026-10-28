@@ -70,6 +70,11 @@
   outline: none;
   transition: background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
 }
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
 .button::after {
   content: "";
   position: absolute;
@@ -78,6 +83,11 @@
   background-color: transparent;
   pointer-events: none;
   transition: background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .button::after {
+    transition: none;
+  }
 }
 .button:hover {
   background-color: var(--button-bg-hover);
@@ -234,18 +244,14 @@
   border-radius: var(--uai-radius-full, 624.9375rem);
   animation: uai-button-spin var(--uai-duration-loop, 800ms) var(--uai-easing-linear, cubic-bezier(0, 0, 1, 1)) infinite;
 }
+@media (prefers-reduced-motion: reduce) {
+  .button__spinner {
+    animation: none;
+  }
+}
 
 @keyframes uai-button-spin {
   to {
     transform: rotate(360deg);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .button,
-  .button::after {
-    transition: none;
-  }
-  .button__spinner {
-    animation: none;
   }
 }

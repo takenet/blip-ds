@@ -18,10 +18,10 @@ export class Tab {
     }
     render() {
         const bold = this.isActive ? 'bold' : 'regular';
-        return (h(Host, { key: 'a2b4448a4a1b2de8904509e0e11997388923cd8e', class: {
+        return (h(Host, { key: '6417998c853d830d088baf9a97e0b04bfe0f1fe9', class: {
                 'bds-tab': true,
                 ['bds-tab--selected']: this.isActive,
-            }, onClick: this.onClick.bind(this) }, h("div", { key: 'b1c147157af9a0a19245d60d9760912b543ee82b', class: "bds-tab__text" }, h("bds-typo", { key: '29c3d96e43e0a414a8073ac26c0ff055d5a918e2', variant: "fs-16", bold: bold }, this.label))));
+            }, onClick: this.onClick.bind(this) }, h("div", { key: '34086322760f890b006655279b01e43aa811b2f7', class: "bds-tab__text" }, h("bds-typo", { key: 'b80eb518c8e485892e5ecfd1920f260dd29efd2f', variant: "fs-16", bold: bold }, this.label))));
     }
     static get is() { return "bds-tab"; }
     static get originalStyleUrls() {

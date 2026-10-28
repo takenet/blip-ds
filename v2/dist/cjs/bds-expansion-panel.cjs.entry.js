@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const expansionPanelCss = () => `*{-webkit-transition:all 0.5s;-moz-transition:all 0.5s;transition:all 0.5s}:host{display:block}`;
 
@@ -9,7 +9,7 @@ const ExpansionPanel = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '84b85e529d1855022cdf617706bc10824f4b6f1b' }, index.h("slot", { key: '40ec2f213773b53b9d7791c51b3b105f214bd06a' })));
+        return (index.h(index.Host, { key: 'bd0baabcd3a818180bf7fe09bc384b9415ce1e50' }, index.h("slot", { key: '3c771949116a098ae6356475e1cbe196bd14bc06' })));
     }
 };
 ExpansionPanel.style = expansionPanelCss();

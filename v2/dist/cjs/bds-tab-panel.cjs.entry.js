@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const tabPanelCss = () => `.bds-tab-panel{display:none;font-family:"Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}`;
 
@@ -16,10 +16,10 @@ const TabPanel = class {
         this.isActive = event.detail == this.group;
     }
     render() {
-        return (index.h(index.Host, { key: '5c00938bd0ecc65fb96cf9bdc3c66e1cf9a0285e', class: {
+        return (index.h(index.Host, { key: 'd98f37426689ae7b1c62f85d1f28294446e7e92e', class: {
                 'bds-tab-panel': true,
                 ['bds-tab-panel--selected']: this.isActive,
-            } }, index.h("slot", { key: '230a7ece5a265e850470743eebe175ef3c7d5c58' })));
+            } }, index.h("slot", { key: 'ebc716f26e9c309f5c7d01c9fb204f9dcff8d68f' })));
     }
 };
 TabPanel.style = tabPanelCss();

@@ -1,4 +1,7 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+ */
 export class InputPassword {
     constructor() {
         /**
@@ -163,7 +166,7 @@ export class InputPassword {
         const iconPassword = this.openEyes ? 'eye-open' : 'eye-closed';
         const type = this.openEyes ? 'text' : 'password';
         const autocomplete = this.getAutoComplete();
-        return (h(Host, { key: 'c49063094dd31a51df8215acaef429f901df449f', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '299b34d0281ec4215417a3e3b40066c5a07edcb5', class: {
+        return (h(Host, { key: '3d393f6746b9433177adf426595039264cbae0a5', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'c39bda9b56c9bee08d62d8795f057c6b3e7ab33f', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -171,7 +174,7 @@ export class InputPassword {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: 'a2c3d33785186c15472e5f25f8fa6573c339330e', class: "input__container" }, this.renderLabel(), h("div", { key: 'd59dfb8c67fcc6b45d5398cd5361cda391d51c22', class: { input__container__wrapper: true } }, h("input", { key: 'bf1b529b62e014ccc6098e695eade66105ad564d', ref: this.refNativeInput, class: { input__container__text: true }, type: type, name: this.inputName, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, readOnly: this.readonly, autocomplete: autocomplete, autocapitalize: this.autoCapitalize, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onSubmit: this.onSubmit, value: this.value, disabled: this.disabled, "data-test": this.dataTest }))), h("div", { key: '0da1f39c537d3fead01526c5413905de5920d4f8', class: "input__password--icon", onClick: this.toggleEyePassword, onKeyDown: this.handleKeyDown.bind(this), tabindex: "0" }, h("bds-icon", { key: 'c422fdb0577c381b6b601d680d28732810f76c5e', size: "small", name: iconPassword, color: "inherit" })), this.success && h("bds-icon", { key: '41f0e2b2b108aa8fd85118daf13230238a0da9b3', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()));
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: 'bea00dafcc52efef4c854439cd5fbda3e94ed5bc', class: "input__container" }, this.renderLabel(), h("div", { key: '6ee481357bb27fb68e88dda42633166d336a3983', class: { input__container__wrapper: true } }, h("input", { key: 'b4262e725eb6502cc114c6cd88935f4bdd8b2d23', ref: this.refNativeInput, class: { input__container__text: true }, type: type, name: this.inputName, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, readOnly: this.readonly, autocomplete: autocomplete, autocapitalize: this.autoCapitalize, placeholder: this.placeholder, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onSubmit: this.onSubmit, value: this.value, disabled: this.disabled, "data-test": this.dataTest }))), h("div", { key: '902ad902241ef8cd031dce51a5428b56a26220ac', class: "input__password--icon", onClick: this.toggleEyePassword, onKeyDown: this.handleKeyDown.bind(this), tabindex: "0" }, h("bds-icon", { key: '0704499e9b2d3323ee82375c288ffc6146950859', size: "small", name: iconPassword, color: "inherit" })), this.success && h("bds-icon", { key: '61849acf638041f14713cf7d6a16017c8f7605b5', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()));
     }
     static get is() { return "bds-input-password"; }
     static get encapsulation() { return "shadow"; }

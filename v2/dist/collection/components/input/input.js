@@ -1,6 +1,9 @@
 /* eslint-disable no-console */
 import { h, Host } from "@stencil/core";
 import { emailValidation, numberValidation } from "../../utils/validations";
+/**
+ * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+ */
 export class Input {
     constructor() {
         this.isPressed = false;
@@ -439,7 +442,7 @@ export class Input {
     render() {
         const isPressed = this.isPressed && !this.disabled;
         const Element = this.isTextarea ? 'textarea' : 'input';
-        return (h(Host, { key: 'd830fcdf033cb4d3142e1dd479536ab944103798', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'b7c7aae0e5ee11e93051aa786d9de12c194f2034', class: {
+        return (h(Host, { key: '4701900b11fe205c9137b90b78319b59643b1651', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'e929c33bda8e606dec6828cfb6705ce5cbafbf89', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -448,11 +451,11 @@ export class Input {
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
                 'input--textarea': this.isTextarea,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { key: 'be4cbed374d02d2b85ddfc8efe80adcb4845e08a', name: "input-left" }), h("div", { key: 'cf3b7f0da5229d51ee4c4d35308eb6f646d92c87', class: "input__container" }, this.renderLabel(), h("div", { key: '58a3623ff7dee2ea520eabba1ff39faaf126b5ac', class: {
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { key: 'fe342e7723981d0ba88a2858a6edce57c4cd8082', name: "input-left" }), h("div", { key: '4670c92b5931545f979df9a82ea6a51de85dedbb', class: "input__container" }, this.renderLabel(), h("div", { key: '51d2c4fb112394778cdec45fee2e78729c3b34ed', class: {
                 input__container__wrapper: !this.chips,
                 input__container__wrapper__chips: this.chips,
                 'input__container__wrapper--textarea': this.isTextarea
-            } }, h("slot", { key: 'eee8bb193594fb7e8aa81505b00316e01bd7075d', name: "inside-input-left" }), h(Element, { key: '84dedf18a002295902b6dfb0874ae749e859d436', class: {
+            } }, h("slot", { key: '8f1ce1f576317944d3b263700f3a7edbe9746822', name: "inside-input-left" }), h(Element, { key: 'e3be18626a97af8defea33aeaedca632b13204cd', class: {
                 input__container__text: true,
                 input__container__text__chips: this.chips,
                 'input__container__text--textarea': this.isTextarea
@@ -460,7 +463,7 @@ export class Input {
                 minHeight: `${this.minHeight || 60}px`,
                 maxHeight: `${this.maxHeight || 200}px`,
                 resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
-            } : {} }))), this.counterLength && (h("bds-counter-text", Object.assign({ key: '7d904b4207e21f7f9807d0e01e4a8d5dab468c65', length: this.value.length, max: this.maxlength, active: isPressed }, this.counterLengthRule))), this.success && h("bds-icon", { key: '95f81fbd84ec3d9550bcec3966d150e065d33bf6', class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { key: '87e6edfe3f563e2b2b48fe623c636e5591b4a457', name: "input-right" })), this.renderMessage()));
+            } : {} }))), this.counterLength && (h("bds-counter-text", Object.assign({ key: '6ebe9ed826abf769d526dd7980de67a3ffddc381', length: this.value.length, max: this.maxlength, active: isPressed }, this.counterLengthRule))), this.success && h("bds-icon", { key: '7cfd0709f42b181da4f47c99dcd76625180be294', class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { key: 'f94871defb785ba1901603d45ff4dc2b81bfd57e', name: "input-right" })), this.renderMessage()));
     }
     static get is() { return "bds-input"; }
     static get encapsulation() { return "shadow"; }

@@ -6,3 +6,4 @@ export type InputCounterLengthRules = {
     warning: CounterTextRule;
     delete: CounterTextRule;
 };
+export type UaiControlSize = 'short' | 'medium';

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 var calendar = require('./calendar-DT2tBJeg.js');
 var validations = require('./validations-BrQ_igDv.js');
 var positionElement = require('./position-element-Due63Z64.js');

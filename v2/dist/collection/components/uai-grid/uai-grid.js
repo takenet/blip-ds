@@ -40,7 +40,7 @@ export class UaiGrid {
             classes['container-fluid'] = true;
         if (this.bgColor)
             classes[`bg-color--${this.bgColor.slice(1)}`] = true;
-        return (h(Host, { key: '79ab8134b6169e9fd377ff7a97e57e132609a711', class: classes, style: { height: this.height } }, h("slot", { key: '0743e0863c792011336fd15031c14dd9cc038f30' })));
+        return (h(Host, { key: 'e994bfdcfc0de2adaf66f3c4eb32900385571f10', class: classes, style: { height: this.height } }, h("slot", { key: '414d0b4ae65b0260a8e0d837eb5f25782fa23676' })));
     }
     static get is() { return "uai-grid"; }
     static get encapsulation() { return "shadow"; }

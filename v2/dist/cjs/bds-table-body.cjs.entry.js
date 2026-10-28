@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 const tableBodyCss = () => `.sc-bds-table-body-h{display:table-row-group;height:64px}.multiple.sc-bds-table-body-h{border-bottom:1px solid var(--color-border-2, rgba(0, 0, 0, 0.16))}.sc-bds-table-body-h:last-child{border-bottom:none}`;
 
@@ -16,7 +16,7 @@ const TableBody = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'de3afab3257d576b23f0fb2c00a23c7083e4c8d6', class: { host: true, multiple: this.multipleRows } }, index.h("slot", { key: 'cc1ff144671f8cb8864d08405b4f2e099d2d0954' })));
+        return (index.h(index.Host, { key: 'dc9fd01a1b2b7fe46e8d3592700ed20803759810', class: { host: true, multiple: this.multipleRows } }, index.h("slot", { key: '525b033bfa938a97d9d2bf836d186d90890bf613' })));
     }
     get element() { return index.getElement(this); }
 };

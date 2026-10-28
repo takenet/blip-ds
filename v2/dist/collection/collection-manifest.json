@@ -48,6 +48,8 @@
     "components/uai-avatar/uai-avatar.js",
     "components/uai-button/uai-button.js",
     "components/uai-icon/uai-icon.js",
+    "components/uai-input/uai-input.js",
+    "components/uai-input-password/uai-input-password.js",
     "components/uai-navbar/uai-navbar.js",
     "components/uai-theme-provider/uai-theme-provider.js",
     "components/uai-typo/uai-typo.js",
@@ -112,6 +114,7 @@
     "components/uai-grid/uai-grid.js",
     "components/uai-navbar-content/uai-navbar-content.js",
     "components/uai-paper/uai-paper.js",
+    "components/uai-textarea/uai-textarea.js",
     "components/upload/bds-upload.js",
     "components/warning/warning.js"
   ],

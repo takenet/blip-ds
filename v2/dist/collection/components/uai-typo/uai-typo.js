@@ -100,7 +100,7 @@ export class UaiTypo {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (h(Tag, { key: '966d21fc61d5a3b87a558a2ec7a6f91a6dcb5d2a', class: {
+        return (h(Tag, { key: '5aaa8e17d9740aa71c28f20b2c2d4dad0109b6de', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -109,7 +109,7 @@ export class UaiTypo {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: '312f4db91f3fe5fb50385961168873825cdf2a96' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: '980f35a1888bb65c68599273e7540213118595dd' })));
     }
     static get is() { return "uai-typo"; }
     static get encapsulation() { return "shadow"; }

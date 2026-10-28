@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 
 var CounterTextState;
 (function (CounterTextState) {
@@ -34,11 +34,11 @@ const CounterText = class {
     render() {
         const state = this.getState();
         const actualLength = this.getActualLength();
-        return (index.h("div", { key: '9e73a84b35c6cbc1894aa312eebebc2896700e66', class: {
+        return (index.h("div", { key: '63c2cc56e63dfc9f4f0403392f1051e6082b0b1e', class: {
                 'counter-text': true,
                 'counter-text--active': this.active,
                 [`counter-text--${state}`]: true,
-            } }, index.h("bds-typo", { key: '0bcaf50caba975fe7e75cc7ba58163d2f6e3f18b', variant: "fs-10" }, actualLength)));
+            } }, index.h("bds-typo", { key: '4c45734f4f6ea076bd56c46fa559f3a68a857c8c', variant: "fs-10" }, actualLength)));
     }
 };
 CounterText.style = counterTextCss();

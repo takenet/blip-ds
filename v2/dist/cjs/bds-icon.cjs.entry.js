@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BqjYThoc.js');
+var index = require('./index-BuAR9UTp.js');
 var assetLoader = require('./asset-loader-7VlbCeFu.js');
 
 const FILL_ELEMENTS = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'line'];
@@ -193,7 +193,7 @@ const Icon = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '77603a8552c32ce8663671e1b6936106cd979884', role: "img", class: {
+        return (index.h(index.Host, { key: '844a34521bb8f7f084f389758c1b19bcbbc07a84', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (index.h("div", { class: {
