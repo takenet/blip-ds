@@ -8,6 +8,7 @@ const PAPER_WIDTH = 'calc(var(--uai-sizing-5xl) * 2)';
 
 export default {
   title: 'UAI/Paper',
+  component: UaiPaper,
   parameters: {
     docs: {
       page: DocumentationTemplate,
@@ -15,11 +16,7 @@ export default {
   },
 };
 
-export const Properties = (args) => {
-  return (
-      <uai-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}></uai-paper>
-);
-} 
+export const Properties = (args) => <UaiPaper {...args} />;
 
 Properties.args = {
   border: false,
@@ -55,9 +52,3 @@ Properties.argTypes = {
     control: 'text',
   },
 }
-
-export const FrameworkReact = () => {
-  return (
-      <UaiPaper border={false} elevation="primary" height={PAPER_HEIGHT} width={PAPER_WIDTH}></UaiPaper>
-);
-} 
