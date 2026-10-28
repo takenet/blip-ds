@@ -397,8 +397,8 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'bds-input-editable',
     name: 'Input Editable',
-    primaryStory: 'components-input-editable--properties',
-    stories: [{ storyId: 'components-input-editable--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-input-editable--properties',
+    stories: [{ storyId: 'components-deprecated-input-editable--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-input-password',
