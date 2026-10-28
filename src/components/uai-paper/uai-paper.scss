@@ -8,9 +8,10 @@
 }
 
 :host(.border) {
-  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
-    var(--uai-border-default, #{$uai-border-default});
-  margin: calc(var(--uai-border-width-default, #{$uai-border-width-default}) * -1);
+  --paper-border-color: var(--uai-border-default, #{$uai-border-default});
+
+  // Inset ring instead of a real border, so it does not change the box size.
+  box-shadow: inset 0 0 0 var(--uai-border-width-default, #{$uai-border-width-default}) var(--paper-border-color);
 }
 
 :host(.bg-surface-0) {
@@ -35,33 +36,33 @@
 
 :host(.border-1),
 :host(.border-2) {
-  border-color: var(--uai-border-default, #{$uai-border-default});
+  --paper-border-color: var(--uai-border-default, #{$uai-border-default});
 }
 
 :host(.border-primary) {
-  border-color: var(--uai-fixed-blue, #{$uai-fixed-blue});
+  --paper-border-color: var(--uai-fixed-blue, #{$uai-fixed-blue});
 }
 
 :host(.border-secondary) {
-  border-color: var(--uai-content-secondary, #{$uai-content-secondary});
+  --paper-border-color: var(--uai-content-secondary, #{$uai-content-secondary});
 }
 
 :host(.border-positive),
 :host(.border-success) {
-  border-color: var(--uai-feedback-success, #{$uai-feedback-success});
+  --paper-border-color: var(--uai-feedback-success, #{$uai-feedback-success});
 }
 
 :host(.border-negative),
 :host(.border-error) {
-  border-color: var(--uai-feedback-error, #{$uai-feedback-error});
+  --paper-border-color: var(--uai-feedback-error, #{$uai-feedback-error});
 }
 
 :host(.border-warning) {
-  border-color: var(--uai-feedback-warning, #{$uai-feedback-warning});
+  --paper-border-color: var(--uai-feedback-warning, #{$uai-feedback-warning});
 }
 
 :host(.border-delete) {
-  border-color: var(--uai-action-destructive, #{$uai-action-destructive});
+  --paper-border-color: var(--uai-action-destructive, #{$uai-action-destructive});
 }
 
 :host(.paper__elevation--none) {

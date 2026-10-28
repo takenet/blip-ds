@@ -2,6 +2,10 @@ import React from 'react';
 import DocumentationTemplate from './uai-paper.mdx';
 import { UaiPaper } from '../../../blip-ds-react/dist/components';
 
+// Sample dimensions built from UAI sizing tokens.
+const PAPER_HEIGHT = 'var(--uai-sizing-5xl)';
+const PAPER_WIDTH = 'calc(var(--uai-sizing-5xl) * 2)';
+
 export default {
   title: 'UAI/Paper',
   parameters: {
@@ -20,8 +24,8 @@ export const Properties = (args) => {
 Properties.args = {
   border: false,
   elevation: 'primary',
-  height: '100px',
-  width: '150px',
+  height: PAPER_HEIGHT,
+  width: PAPER_WIDTH,
 };
 
 Properties.argTypes = {
@@ -40,13 +44,13 @@ Properties.argTypes = {
   },
   height: {
     table: {
-      defaultValue: { summary: '100px' },
+      defaultValue: { summary: PAPER_HEIGHT },
     },
     control: 'text',
   },
   width: {
     table: {
-      defaultValue: { summary: '150px' },
+      defaultValue: { summary: PAPER_WIDTH },
     },
     control: 'text',
   },
@@ -54,6 +58,6 @@ Properties.argTypes = {
 
 export const FrameworkReact = () => {
   return (
-      <UaiPaper border={false} elevation="primary" height="100px" width="150px"></UaiPaper>
+      <UaiPaper border={false} elevation="primary" height={PAPER_HEIGHT} width={PAPER_WIDTH}></UaiPaper>
 );
 } 
