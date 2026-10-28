@@ -620,7 +620,7 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">76/76 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">76/76 infos</a><span class="filter-pill ok" aria-disabled="true">296 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/296 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">24 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">76/76 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">76/76 infos</a><span class="filter-pill ok" aria-disabled="true">299 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/299 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">24 docs ok</a></div>
   </div>
 </header>
 <main>
@@ -34867,7 +34867,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-68-uai-input-err" class="badge err as-toggle">API error</label>
         <label for="c-68-uai-input-info" class="badge info as-toggle">1 info</label>
-        <label for="c-68-uai-input-stories" class="badge ok as-toggle">7 stories</label>
+        <label for="c-68-uai-input-stories" class="badge ok as-toggle">8 stories</label>
         
         
       </div>
@@ -36197,6 +36197,43 @@ export const UaiTypo = createComponent({
 };</code></pre>
               
             </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Exemplo completo em React: campo controlado com validação nativa dentro de um formulário.</div>
+              <pre><code>const Usage = () =&gt; {
+  const [email, setEmail] = useState(&#39;&#39;);
+  const [sentTo, setSentTo] = useState(&#39;&#39;);
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    setSentTo(email);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit} style={column}&gt;
+      &lt;UaiInput
+        label=&quot;E-mail&quot;
+        name=&quot;email&quot;
+        type=&quot;email&quot;
+        placeholder=&quot;nome@empresa.com&quot;
+        helperMessage=&quot;Enviaremos as novidades para este e-mail.&quot;
+        value={email}
+        required
+        requiredErrorMessage=&quot;Informe o e-mail.&quot;
+        emailErrorMessage=&quot;Informe um e-mail válido.&quot;
+        onUaiChange={(event) =&gt; setEmail(event.detail.value)}
+      /&gt;
+      &lt;UaiButton type=&quot;submit&quot;&gt;Assinar&lt;/UaiButton&gt;
+      {sentTo &amp;&amp; &lt;span style={caption}&gt;Inscrição feita para {sentTo}.&lt;/span&gt;}
+    &lt;/form&gt;
+  );
+};</code></pre>
+              
+            </div>
         </div>
     
     
@@ -36219,7 +36256,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-69-uai-input-password-err" class="badge err as-toggle">API error</label>
         <label for="c-69-uai-input-password-info" class="badge info as-toggle">1 info</label>
-        <label for="c-69-uai-input-password-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-69-uai-input-password-stories" class="badge ok as-toggle">7 stories</label>
         
         
       </div>
@@ -37516,6 +37553,45 @@ export const UaiTypo = createComponent({
         {log.length ? log.map((item, index) =&gt; &lt;div key={index}&gt;{item}&lt;/div&gt;) : &#39;Nenhum evento ainda.&#39;}
       &lt;/div&gt;
     &lt;/div&gt;
+  );
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Exemplo completo em React: senha controlada com indicador de força calculado pelo consumidor.</div>
+              <pre><code>const Usage = () =&gt; {
+  const [password, setPassword] = useState(&#39;&#39;);
+  const [saved, setSaved] = useState(false);
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    setSaved(true);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit} style={column}&gt;
+      &lt;UaiInputPassword
+        label=&quot;Nova senha&quot;
+        name=&quot;password&quot;
+        autoComplete=&quot;new-password&quot;
+        helperMessage=&quot;Use pelo menos 8 caracteres.&quot;
+        value={password}
+        required
+        minlength={8}
+        requiredErrorMessage=&quot;Informe a senha.&quot;
+        minlengthErrorMessage=&quot;Use pelo menos 8 caracteres.&quot;
+        showStrength
+        strengthLevel={getStrength(password)}
+        onUaiInputPasswordChange={(event) =&gt; setPassword(event.detail.value)}
+      /&gt;
+      &lt;UaiButton type=&quot;submit&quot;&gt;Salvar senha&lt;/UaiButton&gt;
+      {saved &amp;&amp; &lt;span style={caption}&gt;Senha salva.&lt;/span&gt;}
+    &lt;/form&gt;
   );
 };</code></pre>
               
@@ -39901,7 +39977,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-72-uai-textarea-err" class="badge err as-toggle">API error</label>
         <label for="c-72-uai-textarea-info" class="badge info as-toggle">1 info</label>
-        <label for="c-72-uai-textarea-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-72-uai-textarea-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -41180,6 +41256,43 @@ export const UaiTypo = createComponent({
         {log.length ? log.map((item, index) =&gt; &lt;div key={index}&gt;{item}&lt;/div&gt;) : &#39;Nenhum evento ainda.&#39;}
       &lt;/div&gt;
     &lt;/div&gt;
+  );
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Exemplo completo em React: texto controlado com contador e validação nativa dentro de um formulário.</div>
+              <pre><code>const Usage = () =&gt; {
+  const [comment, setComment] = useState(&#39;&#39;);
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    setSent(true);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit} style={column}&gt;
+      &lt;UaiTextarea
+        label=&quot;Comentário&quot;
+        name=&quot;comment&quot;
+        placeholder=&quot;Conte o que achou do atendimento&quot;
+        helperMessage=&quot;Seu comentário ajuda a melhorar o atendimento.&quot;
+        value={comment}
+        maxlength={280}
+        counterLength
+        required
+        requiredErrorMessage=&quot;Escreva um comentário.&quot;
+        onUaiChange={(event) =&gt; setComment(event.detail.value)}
+      /&gt;
+      &lt;UaiButton type=&quot;submit&quot;&gt;Enviar comentário&lt;/UaiButton&gt;
+      {sent &amp;&amp; &lt;span style={caption}&gt;Comentário enviado.&lt;/span&gt;}
+    &lt;/form&gt;
   );
 };</code></pre>
               
@@ -78419,7 +78532,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-error-4-uai-input-err" class="badge err as-toggle">API error</label>
         <label for="c-error-4-uai-input-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-4-uai-input-stories" class="badge ok as-toggle">7 stories</label>
+        <label for="c-error-4-uai-input-stories" class="badge ok as-toggle">8 stories</label>
         
         
       </div>
@@ -79749,6 +79862,43 @@ export const UaiTypo = createComponent({
 };</code></pre>
               
             </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Exemplo completo em React: campo controlado com validação nativa dentro de um formulário.</div>
+              <pre><code>const Usage = () =&gt; {
+  const [email, setEmail] = useState(&#39;&#39;);
+  const [sentTo, setSentTo] = useState(&#39;&#39;);
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    setSentTo(email);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit} style={column}&gt;
+      &lt;UaiInput
+        label=&quot;E-mail&quot;
+        name=&quot;email&quot;
+        type=&quot;email&quot;
+        placeholder=&quot;nome@empresa.com&quot;
+        helperMessage=&quot;Enviaremos as novidades para este e-mail.&quot;
+        value={email}
+        required
+        requiredErrorMessage=&quot;Informe o e-mail.&quot;
+        emailErrorMessage=&quot;Informe um e-mail válido.&quot;
+        onUaiChange={(event) =&gt; setEmail(event.detail.value)}
+      /&gt;
+      &lt;UaiButton type=&quot;submit&quot;&gt;Assinar&lt;/UaiButton&gt;
+      {sentTo &amp;&amp; &lt;span style={caption}&gt;Inscrição feita para {sentTo}.&lt;/span&gt;}
+    &lt;/form&gt;
+  );
+};</code></pre>
+              
+            </div>
         </div>
     
     
@@ -79771,7 +79921,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-error-5-uai-input-password-err" class="badge err as-toggle">API error</label>
         <label for="c-error-5-uai-input-password-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-5-uai-input-password-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-5-uai-input-password-stories" class="badge ok as-toggle">7 stories</label>
         
         
       </div>
@@ -81068,6 +81218,45 @@ export const UaiTypo = createComponent({
         {log.length ? log.map((item, index) =&gt; &lt;div key={index}&gt;{item}&lt;/div&gt;) : &#39;Nenhum evento ainda.&#39;}
       &lt;/div&gt;
     &lt;/div&gt;
+  );
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Exemplo completo em React: senha controlada com indicador de força calculado pelo consumidor.</div>
+              <pre><code>const Usage = () =&gt; {
+  const [password, setPassword] = useState(&#39;&#39;);
+  const [saved, setSaved] = useState(false);
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    setSaved(true);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit} style={column}&gt;
+      &lt;UaiInputPassword
+        label=&quot;Nova senha&quot;
+        name=&quot;password&quot;
+        autoComplete=&quot;new-password&quot;
+        helperMessage=&quot;Use pelo menos 8 caracteres.&quot;
+        value={password}
+        required
+        minlength={8}
+        requiredErrorMessage=&quot;Informe a senha.&quot;
+        minlengthErrorMessage=&quot;Use pelo menos 8 caracteres.&quot;
+        showStrength
+        strengthLevel={getStrength(password)}
+        onUaiInputPasswordChange={(event) =&gt; setPassword(event.detail.value)}
+      /&gt;
+      &lt;UaiButton type=&quot;submit&quot;&gt;Salvar senha&lt;/UaiButton&gt;
+      {saved &amp;&amp; &lt;span style={caption}&gt;Senha salva.&lt;/span&gt;}
+    &lt;/form&gt;
   );
 };</code></pre>
               
@@ -83453,7 +83642,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-error-8-uai-textarea-err" class="badge err as-toggle">API error</label>
         <label for="c-error-8-uai-textarea-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-8-uai-textarea-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-error-8-uai-textarea-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -84732,6 +84921,43 @@ export const UaiTypo = createComponent({
         {log.length ? log.map((item, index) =&gt; &lt;div key={index}&gt;{item}&lt;/div&gt;) : &#39;Nenhum evento ainda.&#39;}
       &lt;/div&gt;
     &lt;/div&gt;
+  );
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Exemplo completo em React: texto controlado com contador e validação nativa dentro de um formulário.</div>
+              <pre><code>const Usage = () =&gt; {
+  const [comment, setComment] = useState(&#39;&#39;);
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    setSent(true);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit} style={column}&gt;
+      &lt;UaiTextarea
+        label=&quot;Comentário&quot;
+        name=&quot;comment&quot;
+        placeholder=&quot;Conte o que achou do atendimento&quot;
+        helperMessage=&quot;Seu comentário ajuda a melhorar o atendimento.&quot;
+        value={comment}
+        maxlength={280}
+        counterLength
+        required
+        requiredErrorMessage=&quot;Escreva um comentário.&quot;
+        onUaiChange={(event) =&gt; setComment(event.detail.value)}
+      /&gt;
+      &lt;UaiButton type=&quot;submit&quot;&gt;Enviar comentário&lt;/UaiButton&gt;
+      {sent &amp;&amp; &lt;span style={caption}&gt;Comentário enviado.&lt;/span&gt;}
+    &lt;/form&gt;
   );
 };</code></pre>
               

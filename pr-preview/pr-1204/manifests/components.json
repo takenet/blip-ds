@@ -222,6 +222,12 @@
           "name": "Events",
           "snippet": "const Events = () => {\n  const [log, setLog] = useState([]);\n  const add = (name) => (event) =>\n    setLog((items) =>\n      [`${name}${event.detail && event.detail.value !== undefined ? `: ${event.detail.value}` : ''}`, ...items].slice(\n        0,\n        6,\n      ),\n    );\n  return (\n    <div style={column}>\n      <UaiInput\n        label=\"Mensagem\"\n        placeholder=\"Digite e pressione Enter\"\n        onUaiChange={add('uaiChange')}\n        onUaiFocus={add('uaiFocus')}\n        onUaiOnBlur={add('uaiOnBlur')}\n        onUaiSubmit={add('uaiSubmit')}\n      />\n      <div style={caption}>\n        {log.length ? log.map((item, index) => <div key={index}>{item}</div>) : 'Nenhum evento ainda.'}\n      </div>\n    </div>\n  );\n};",
           "description": "Eventos emitidos ao digitar, focar, sair e pressionar Enter."
+        },
+        {
+          "id": "uai-input--usage",
+          "name": "Usage",
+          "snippet": "const Usage = () => {\n  const [email, setEmail] = useState('');\n  const [sentTo, setSentTo] = useState('');\n\n  const handleSubmit = (event) => {\n    event.preventDefault();\n    setSentTo(email);\n  };\n\n  return (\n    <form onSubmit={handleSubmit} style={column}>\n      <UaiInput\n        label=\"E-mail\"\n        name=\"email\"\n        type=\"email\"\n        placeholder=\"nome@empresa.com\"\n        helperMessage=\"Enviaremos as novidades para este e-mail.\"\n        value={email}\n        required\n        requiredErrorMessage=\"Informe o e-mail.\"\n        emailErrorMessage=\"Informe um e-mail válido.\"\n        onUaiChange={(event) => setEmail(event.detail.value)}\n      />\n      <UaiButton type=\"submit\">Assinar</UaiButton>\n      {sentTo && <span style={caption}>Inscrição feita para {sentTo}.</span>}\n    </form>\n  );\n};",
+          "description": "Exemplo completo em React: campo controlado com validação nativa dentro de um formulário."
         }
       ],
       "import": "import { UaiButton, UaiInput, UaiThemeProvider } from 'blip-ds-react';"
@@ -265,6 +271,12 @@
           "id": "uai-input-password--events",
           "name": "Events",
           "snippet": "const Events = () => {\n  const [log, setLog] = useState([]);\n  const add = (name) => (event) =>\n    setLog((items) =>\n      [`${name}${event.detail && event.detail.value !== undefined ? `: ${event.detail.value}` : ''}`, ...items].slice(\n        0,\n        6,\n      ),\n    );\n  return (\n    <div style={column}>\n      <UaiInputPassword\n        label=\"Senha\"\n        placeholder=\"Digite e pressione Enter\"\n        onUaiInputPasswordChange={add('uaiInputPasswordChange')}\n        onUaiInputPasswordFocus={add('uaiInputPasswordFocus')}\n        onUaiInputPasswordBlur={add('uaiInputPasswordBlur')}\n        onUaiInputPasswordSubmit={add('uaiInputPasswordSubmit')}\n      />\n      <div style={caption}>\n        {log.length ? log.map((item, index) => <div key={index}>{item}</div>) : 'Nenhum evento ainda.'}\n      </div>\n    </div>\n  );\n};"
+        },
+        {
+          "id": "uai-input-password--usage",
+          "name": "Usage",
+          "snippet": "const Usage = () => {\n  const [password, setPassword] = useState('');\n  const [saved, setSaved] = useState(false);\n\n  const handleSubmit = (event) => {\n    event.preventDefault();\n    setSaved(true);\n  };\n\n  return (\n    <form onSubmit={handleSubmit} style={column}>\n      <UaiInputPassword\n        label=\"Nova senha\"\n        name=\"password\"\n        autoComplete=\"new-password\"\n        helperMessage=\"Use pelo menos 8 caracteres.\"\n        value={password}\n        required\n        minlength={8}\n        requiredErrorMessage=\"Informe a senha.\"\n        minlengthErrorMessage=\"Use pelo menos 8 caracteres.\"\n        showStrength\n        strengthLevel={getStrength(password)}\n        onUaiInputPasswordChange={(event) => setPassword(event.detail.value)}\n      />\n      <UaiButton type=\"submit\">Salvar senha</UaiButton>\n      {saved && <span style={caption}>Senha salva.</span>}\n    </form>\n  );\n};",
+          "description": "Exemplo completo em React: senha controlada com indicador de força calculado pelo consumidor."
         }
       ],
       "import": "import { UaiButton, UaiInputPassword, UaiThemeProvider } from 'blip-ds-react';"
@@ -340,6 +352,12 @@
           "id": "uai-textarea--events",
           "name": "Events",
           "snippet": "const Events = () => {\n  const [log, setLog] = useState([]);\n  const add = (name) => (event) =>\n    setLog((items) =>\n      [`${name}${event.detail && event.detail.value !== undefined ? `: ${event.detail.value}` : ''}`, ...items].slice(\n        0,\n        6,\n      ),\n    );\n  return (\n    <div style={column}>\n      <UaiTextarea\n        label=\"Mensagem\"\n        placeholder=\"Escreva e pressione Enter\"\n        onUaiChange={add('uaiChange')}\n        onUaiFocus={add('uaiFocus')}\n        onUaiOnBlur={add('uaiOnBlur')}\n        onUaiSubmit={add('uaiSubmit')}\n      />\n      <div style={caption}>\n        {log.length ? log.map((item, index) => <div key={index}>{item}</div>) : 'Nenhum evento ainda.'}\n      </div>\n    </div>\n  );\n};"
+        },
+        {
+          "id": "uai-textarea--usage",
+          "name": "Usage",
+          "snippet": "const Usage = () => {\n  const [comment, setComment] = useState('');\n  const [sent, setSent] = useState(false);\n\n  const handleSubmit = (event) => {\n    event.preventDefault();\n    setSent(true);\n  };\n\n  return (\n    <form onSubmit={handleSubmit} style={column}>\n      <UaiTextarea\n        label=\"Comentário\"\n        name=\"comment\"\n        placeholder=\"Conte o que achou do atendimento\"\n        helperMessage=\"Seu comentário ajuda a melhorar o atendimento.\"\n        value={comment}\n        maxlength={280}\n        counterLength\n        required\n        requiredErrorMessage=\"Escreva um comentário.\"\n        onUaiChange={(event) => setComment(event.detail.value)}\n      />\n      <UaiButton type=\"submit\">Enviar comentário</UaiButton>\n      {sent && <span style={caption}>Comentário enviado.</span>}\n    </form>\n  );\n};",
+          "description": "Exemplo completo em React: texto controlado com contador e validação nativa dentro de um formulário."
         }
       ],
       "import": "import { UaiButton, UaiTextarea, UaiThemeProvider } from 'blip-ds-react';"
@@ -2492,6 +2510,6 @@
   },
   "meta": {
     "docgen": "react-docgen",
-    "durationMs": 1461
+    "durationMs": 1508
   }
 }
